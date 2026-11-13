@@ -1,0 +1,1320 @@
+{
+  "class": "unit map of the application range 00478000..0047c000 (2008-06): G3D 6.09 RenderDevice.cpp, inactive",
+  "result": "No RBX translation unit and no Roblox-only template instantiation in the range: all 66 rows are G3D 6.09 RenderDevice.cpp library code (members, header inlines, ICF-shared getters, one compiler helper). Nothing is recovered or counted here.",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit478.py": "29e8586eba3e09a5f1e1a58a587204375507217a19de40dfe5d5bb46d6290b2d"
+  },
+  "unit_map": {
+    "g3d-renderdevice 0x00478000..0x0047bfff": {
+      "rows": 66,
+      "bytes": 15657,
+      "first": "0x004781b0",
+      "last": "0x0047bfc0 (runs to 0x0047c0b1, past the range end)",
+      "unit": "G3D 6.09 GLG3Dcpp/RenderDevice.cpp (contribution 0x00476520..0x0047d40f, starts and ends outside this range), with the G3D header inlines and compiler helpers it emits out of line",
+      "library": true,
+      "recovered": false,
+      "counted_elsewhere": [
+        "004782d0 counted by humanoid2008-working.json"
+      ]
+    }
+  },
+  "row_map": [
+    {
+      "row": "0x004781b0",
+      "size": 4,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "RenderDevice counter getter (+0x7c), ICF-shared",
+      "evidence": [
+        {
+          "kind": "counter-getter",
+          "member": "+0x7c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004781c0",
+      "size": 4,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "RenderDevice counter getter (+0x70), ICF-shared; also XTP report-record-item vtable slot 63",
+      "evidence": [
+        {
+          "kind": "counter-getter",
+          "member": "+0x70"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004781d0",
+      "size": 4,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "RenderDevice counter getter (+0x74), ICF-shared",
+      "evidence": [
+        {
+          "kind": "counter-getter",
+          "member": "+0x74"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004781e0",
+      "size": 4,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "RenderDevice counter getter (+0x78), ICF-shared",
+      "evidence": [
+        {
+          "kind": "counter-getter",
+          "member": "+0x78"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004781f0",
+      "size": 55,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "compiler-generated vector copy-constructor iterator (GLight array copy)",
+      "evidence": [
+        {
+          "kind": "compiler-helper",
+          "what": "vector copy-constructor iterator used with GLight(const GLight&) 0x00477c50"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478230",
+      "size": 12,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::Array<uint16>::operator[] (G3D header inline)",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "??A?$Array@G@G3D@@QAEAAGH@Z"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478240",
+      "size": 82,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::Array<uint16>::realloc (G3D header inline)",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?realloc@?$Array@G@G3D@@AAEXH@Z"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004782a0",
+      "size": 45,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::Vector3::zero() (G3D header inline, function static)",
+      "evidence": [
+        {
+          "kind": "shared-static",
+          "with_row": "0x004782d0",
+          "statics": [
+            "0x0096f044",
+            "0x0096f050"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004782d0",
+      "size": 86,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::CoordinateFrame::CoordinateFrame() (G3D header inline)",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@XZ"
+        }
+      ],
+      "counted_by": [
+        "humanoid2008-working.json"
+      ]
+    },
+    {
+      "row": "0x00478330",
+      "size": 143,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::CoordinateFrame::inverse (G3D header inline)",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004783c0",
+      "size": 138,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047a4f0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478450",
+      "size": 23,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "framebuffer-member",
+          "member": "+0x3e8"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478470",
+      "size": 61,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00483550"
+          ],
+          "imports": [
+            "glGetDoublev"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004784b0",
+      "size": 363,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047a200"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478620",
+      "size": 37,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "shared-member",
+          "member": "+0x488",
+          "with_row": "0x00478f20"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478650",
+      "size": 60,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00476a70"
+          ],
+          "imports": [
+            "glMaterialfv"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478690",
+      "size": 418,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\RenderDevice.cpp"
+        },
+        {
+          "kind": "message-string",
+          "text": "Drawing to a color buffer is only supported by application-created framebuffers!"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glDrawBuffer"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478840",
+      "size": 191,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x004767f0"
+          ],
+          "imports": [
+            "glViewport"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478900",
+      "size": 139,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00477c50",
+            "0x004781f0"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478990",
+      "size": 69,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glEnd"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004789e0",
+      "size": 25,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "counter-increment",
+          "patterns": [
+            "014178",
+            "014170"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x004851b0"
+          ],
+          "imports": [
+            "glFinish"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478a00",
+      "size": 460,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glDisable",
+            "glEnable",
+            "glLightf",
+            "glLightfv",
+            "glLoadIdentity",
+            "glMatrixMode",
+            "glPopMatrix",
+            "glPushMatrix"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00483430",
+            "0x004837e0"
+          ],
+          "imports": [
+            "glGetIntegerv",
+            "glLoadMatrixf"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478bd0",
+      "size": 254,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478240"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478cd0",
+      "size": 23,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "framebuffer-member",
+          "member": "+0x3e8"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478cf0",
+      "size": 70,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00479cf0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478d40",
+      "size": 143,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047bac0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478dd0",
+      "size": 239,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glEnable",
+            "glScissor"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478ec0",
+      "size": 94,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047a4f0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478f20",
+      "size": 31,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "counter-increment",
+          "patterns": [
+            "ff4174"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478f40",
+      "size": 64,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "counter-increment",
+          "patterns": [
+            "ff466c"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00478f80",
+      "size": 121,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\RenderDevice.cpp"
+        },
+        {
+          "kind": "message-string",
+          "text": "s->ok()"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479000",
+      "size": 36,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478f80"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479030",
+      "size": 278,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glDisable",
+            "glMatrixMode"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00477fd0",
+            "0x00483430"
+          ],
+          "imports": [
+            "glDisable",
+            "glEnable",
+            "glLightf",
+            "glLightfv",
+            "glLoadIdentity",
+            "glLoadMatrixf"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479150",
+      "size": 435,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glLoadMatrixf",
+            "glMatrixMode",
+            "glMultMatrixf"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479310",
+      "size": 72,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00479150"
+          ],
+          "imports": [
+            "glLoadMatrixf",
+            "glMatrixMode",
+            "glMultMatrixf"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479360",
+      "size": 129,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00479310"
+          ],
+          "from_rows": [
+            "0x00479900"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004793f0",
+      "size": 85,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047b0d0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479450",
+      "size": 498,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glBindTexture",
+            "glEnable"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00479150",
+            "0x00483500"
+          ],
+          "imports": [
+            "glDisable",
+            "glLoadMatrixf",
+            "glMatrixMode",
+            "glMultMatrixf"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479650",
+      "size": 67,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glReadPixels"
+          ]
+        },
+        {
+          "kind": "framebuffer-member",
+          "member": "+0x3e8"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004796a0",
+      "size": 91,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glPopClientAttrib"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479700",
+      "size": 280,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\RenderDevice.cpp"
+        },
+        {
+          "kind": "message-string",
+          "text": "All vertex arrays used within a single begin/endIndexedPrimitive block must share the same VARArea."
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479820",
+      "size": 22,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x004891f0"
+          ],
+          "imports": [
+            "glEnableClientState",
+            "glVertexPointer"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479840",
+      "size": 22,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00489230"
+          ],
+          "imports": [
+            "glEnableClientState",
+            "glNormalPointer"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479860",
+      "size": 27,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00489260"
+          ],
+          "imports": [
+            "glEnableClientState",
+            "glTexCoordPointer"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479880",
+      "size": 118,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00479c30"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479900",
+      "size": 347,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glEnable",
+            "glTexGeni"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00479450"
+          ],
+          "imports": [
+            "glBindTexture",
+            "glEnable"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479a60",
+      "size": 15,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478bd0"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479a70",
+      "size": 448,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047b5f0",
+            "0x0047bac0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479c30",
+      "size": 191,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "message-string",
+          "text": "VAR Milestone"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00479cf0",
+      "size": 1284,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x004782d0"
+          ],
+          "from_rows": [
+            "0x0047b5f0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047a200",
+      "size": 739,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478d40"
+          ],
+          "from_rows": [
+            "0x0047b5f0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047a4f0",
+      "size": 2777,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glClearDepth",
+            "glClearStencil",
+            "glColor4fv",
+            "glColorMask",
+            "glDepthMask",
+            "glDepthRange",
+            "glDisable",
+            "glEnable",
+            "glLightModeli",
+            "glLineWidth",
+            "glMaterialf",
+            "glMatrixMode",
+            "glNormal3fv",
+            "glPointSize",
+            "glShadeModel",
+            "glTexCoord4fv"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00476a70",
+            "0x00476b50",
+            "0x00476bd0",
+            "0x00476cc0"
+          ],
+          "imports": [
+            "glAlphaFunc",
+            "glBindTexture",
+            "glBlendFunc",
+            "glClearColor",
+            "glCullFace",
+            "glDepthFunc"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047afd0",
+      "size": 96,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x0047b410",
+            "0x0047b450"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b030",
+      "size": 150,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x00477890",
+            "0x00479030"
+          ],
+          "imports": [
+            "glDisable",
+            "glMatrixMode"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b0d0",
+      "size": 832,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478900"
+          ],
+          "from_rows": [
+            "0x0047bac0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b410",
+      "size": 63,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glBegin"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b450",
+      "size": 131,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glDrawElements"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b4e0",
+      "size": 34,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478bd0"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b510",
+      "size": 222,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00479a70",
+            "0x0047b0d0"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047b5f0",
+      "size": 1228,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "message-string",
+          "text": "Setting initial rendering state.\n"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glClearColor",
+            "glClearDepth",
+            "glClearStencil",
+            "glColor4d",
+            "glColorMask",
+            "glColorMaterial",
+            "glCullFace",
+            "glDepthFunc",
+            "glDepthMask",
+            "glDepthRange",
+            "glDisable",
+            "glDrawBuffer",
+            "glEnable",
+            "glGetError",
+            "glLightModelfv",
+            "glLightModeli",
+            "glLineWidth",
+            "glLoadIdentity",
+            "glMaterialf",
+            "glMatrixMode",
+            "glNormal3d",
+            "glPointSize",
+            "glPolygonMode",
+            "glShadeModel",
+            "glStencilFunc",
+            "glStencilMask",
+            "glStencilOp",
+            "glTexCoord4fv"
+          ]
+        },
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x004767f0",
+            "0x00476a70",
+            "0x004834b0"
+          ],
+          "imports": [
+            "glLoadMatrixf",
+            "glMaterialfv",
+            "glViewport"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047bac0",
+      "size": 290,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "opengl-callee",
+          "callees": [
+            "0x0047a4f0"
+          ],
+          "imports": [
+            "glClearDepth",
+            "glClearStencil",
+            "glColor4fv",
+            "glColorMask",
+            "glDepthMask",
+            "glDepthRange"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047bbf0",
+      "size": 72,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00479a70"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047bc40",
+      "size": 380,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00479a70",
+            "0x00479cf0",
+            "0x0047b510"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047bdc0",
+      "size": 252,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00479a70",
+            "0x0047a200",
+            "0x0047b0d0",
+            "0x0047bc40"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047bec0",
+      "size": 243,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00479a70",
+            "0x0047bbf0"
+          ],
+          "from_rows": [],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0047bfc0",
+      "size": 241,
+      "unit": "G3D 6.09 RenderDevice.cpp (library)",
+      "role": "G3D::RenderDevice member or RenderDevice.cpp local",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00478bd0"
+          ],
+          "from_rows": [
+            "0x0047c0c0",
+            "0x0047c3e0"
+          ],
+          "through": []
+        }
+      ],
+      "counted_by": []
+    }
+  ],
+  "evidence_checks": [
+    {
+      "row": "0x00477970",
+      "kind": "anchor-string",
+      "text": "GL_ARB_texture_env_combine",
+      "inside_range": false
+    },
+    {
+      "row": "0x004774f0",
+      "kind": "anchor-string",
+      "text": "GL_EXT_blend_minmax",
+      "inside_range": false
+    },
+    {
+      "row": "0x0047c0c0",
+      "kind": "anchor-string",
+      "text": "wglSwapIntervalEXT(0);\n",
+      "inside_range": false
+    },
+    {
+      "row": "0x0047c3e0",
+      "kind": "anchor-string",
+      "text": "Shutting down RenderDevice.",
+      "inside_range": false
+    },
+    {
+      "row": "0x004781c0",
+      "kind": "icf-vtable-slot",
+      "vtable": "0x0080f65c",
+      "rtti": ".?AVCNameItem@CInstanceRecord@@",
+      "slot": 63
+    },
+    {
+      "row": "0x004781c0",
+      "kind": "icf-vtable-slot",
+      "vtable": "0x008532e4",
+      "rtti": ".?AVCXTPReportRecordItem@@",
+      "slot": 63
+    }
+  ],
+  "notes": {
+    "analog-labels": "The analog labels CInstanceRecord::CNameItem (0x004781c0..0x0047bfc0) and G3D::VARArea (0x004781b0) are wrong: every row is RenderDevice.cpp code; 0x004781c0 is an ICF-shared getter that the XTP report-record-item vtables also use as slot 63.",
+    "no-rbx-unit": "No RBX class, Reflection descriptor, static initializer or Roblox-only template instantiation lies in the range. The G3D template rows (Array<uint16>, CoordinateFrame, Vector3) are library header inlines emitted by RenderDevice.obj; RBX callers (e.g. 0x00552300) only use them."
+  },
+  "range_functions": 66,
+  "range_bytes": 15657,
+  "range_rows_counted_by_other_receipts": [
+    "004782d0 counted by humanoid2008-working.json"
+  ],
+  "exact_function_rows": [],
+  "library_recipes": [
+    "g3d-6.09",
+    "g3d-6.09-rbx2008",
+    "rbxgs-g3d (roc/libs.py)"
+  ],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}

@@ -1,0 +1,1231 @@
+{
+  "class": "RBX util/ContentProvider.cpp template instances of the application range 0055c000..00560000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags",
+  "flags": {
+    "content": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit55c/AppUnit55Ccontent.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit55CContentTemplates.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit55c.py": "481a149058cbaa6ef861e10e2f7135ac393691aeddb05237a5c81447606c0745",
+    "rebuild/2008-06/native-classes/AppUnit55CContentTemplates.cpp": "ea883270be056de6fd78c087e5676bca2f09330faee6ae74e407a0d5f9ac6a99",
+    "rebuild/2008-06/native-headers/content-cache-inline/util/NativeContentProvider.h": "6d8342e6776fc8172bafb7c65790fff417c45230e4e61a3877f723c268c0c2b0",
+    "rebuild/2008-06/native-headers/util/NativeContentProvider.h": "3095f3a7f62c173c4ee8d70cdc03b45d92a061fe48c6644380ad8e1a4a38d76e",
+    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2",
+    "rebuild/2008-06/native-headers/util/Name.h": "83aa4cc4d49368359c20855d119ec20f3fb2fb066ca14fbd823ed905d95f4d4f"
+  },
+  "objects": {
+    "content": "f7538eb71a48627259752075f9a0b7b1db1d435559efa8f659b0bd1466df650f"
+  },
+  "unit_map": {
+    "rbx util/ContentProvider.cpp 0x55bae0..0x56306f (whole range; starts below it and ends past it)": "One translation unit covers every row of 0x55c000..0x55ffff. Boundary evidence (asserted): ContentId isAsset 0x55bae0 / isHttp 0x55bb50 / operator< 0x55bd50 / operator!= 0x55bd60 / fromAssets 0x55bd80 (evidence names) begin it right after the Instance.cpp rows (app-unit558 map); the asset-folder registry read 0x55c3e0 (\"Roblox\\content\\\", \"Failed to get asset folder from registry\") and its call_once getter 0x55c4c0 / path builder 0x55d0b0; NonFactoryProduct<Instance, sContentProvider>() 0x55c080 (ten vtables 0x82db28..0x82dba4); readContent 0x55dc80 + catch 0x55dd60 (\"ContentProvider callback exception: %s\"); the map<ContentId, CachedContent> / list<ContentRequest> / list<FailedUrl> / vector<RequestCallback> instances (\"map/set<T> too long\", \"invalid map/set<T> iterator\", \"list<T> too long\"); FailedUrl 0x55f710, getLocalCachePath 0x55f940 (evidence names), findHashFile 0x55fdc0, the hash-path helpers 0x55fa70 / 0x55fbc0 (MD5Hasher::create caller); past the range classDescriptor 0x5612b0, DescribedNonCreatable 0x5613f0, loadContent 0x561980, getContent 0x561f20, the worker 0x5620f0, ContentProvider() 0x562c30, ~ContentProvider 0x562e60, its ??_E thunks 0x562de0..0x562e50 and ??_G 0x563050. MD5HasherImpl (vtable 0x82dc9c; 0x55c540..0x55c8b0, 0x55e320) is defined in the same unit (misc-leaves counts it).",
+    "library code inside the unit (not recovered)": "boost.date_time (bad_day_of_month / bad_year / bad_month and their copy constructors 0x55c3c0 / 0x55cae0 / 0x55cb00, on_error 0x55c020..0x55c060, gregorian calendar 0x55c1f0..0x55c2d0, int_adapter 0x55c100..0x55c140 / 0x55cc40 / 0x55cdc0, date 0x55d000, counted_time 0x55d270 / 0x55d780, second_clock 0x55e7d0, to_tick_count 0x55c930), ATL CString / CPathT / string resources (0x55c190, 0x55cbb0, 0x55d760, 0x55d950, 0x55d9f0, 0x55dae0, 0x55dee0, 0x55df40, 0x55e250, 0x55ee20), boost.iostreams copy_impl 0x55ec50 and list<linked_streambuf*>::back 0x55ddd0, std exception COMDAT 0x55c390 and the ICF-shared COMDATs listed under library_rows. Header instances; never recovered here.",
+    "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row lies in the range."
+  },
+  "unit_blocks": [
+    "0x55bae0..0x563070 util/ContentProvider.cpp (range 0x55c000..0x560000)"
+  ],
+  "range_functions": 122,
+  "range_rows_counted_by_other_receipts": [
+    "0055c540 counted by misc-leaves-working.json",
+    "0055c6a0 counted by misc-leaves-working.json",
+    "0055c710 counted by misc-leaves-working.json",
+    "0055c740 counted by misc-leaves-working.json",
+    "0055c800 counted by misc-leaves-working.json",
+    "0055c8b0 counted by misc-leaves-working.json",
+    "0055dae0 counted by misc-leaves-working.json",
+    "0055dfd0 counted by browser-view-working.json",
+    "0055e250 counted by misc-leaves-working.json",
+    "0055e320 counted by misc-leaves-working.json",
+    "0055e590 counted by spawn-working.json",
+    "0055e5f0 counted by browser-view-working.json"
+  ],
+  "range_rows_by_category": {
+    "counted here": [
+      "0x55c000",
+      "0x55c080",
+      "0x55c0e0",
+      "0x55c170",
+      "0x55c330",
+      "0x55ca20",
+      "0x55ca90",
+      "0x55cb20",
+      "0x55ced0",
+      "0x55d150",
+      "0x55d1a0",
+      "0x55d1f0",
+      "0x55d210",
+      "0x55d330",
+      "0x55d3d0",
+      "0x55d400",
+      "0x55d6b0",
+      "0x55dab0",
+      "0x55ddb0",
+      "0x55e1d0",
+      "0x55e530",
+      "0x55e690",
+      "0x55e750",
+      "0x55e8d0",
+      "0x55ebb0",
+      "0x55ebf0",
+      "0x55ec20",
+      "0x55eed0",
+      "0x55efc0",
+      "0x55f2c0",
+      "0x55f4b0",
+      "0x55f5b0",
+      "0x55ffc0"
+    ],
+    "boost.date_time (library, not recovered)": [
+      "0x55c020",
+      "0x55c040",
+      "0x55c060",
+      "0x55c100",
+      "0x55c120",
+      "0x55c140",
+      "0x55c1f0",
+      "0x55c290",
+      "0x55c2d0",
+      "0x55c930",
+      "0x55cc40",
+      "0x55cdc0",
+      "0x55d000",
+      "0x55d270",
+      "0x55d780",
+      "0x55e7d0"
+    ],
+    "ATL CString / CPathT / string-resource inlines (library, not recovered)": [
+      "0x55c190",
+      "0x55cbb0",
+      "0x55d760",
+      "0x55d950",
+      "0x55d9f0",
+      "0x55dee0",
+      "0x55df40",
+      "0x55ee20"
+    ],
+    "library / shared COMDAT": [
+      "0x55c390",
+      "0x55c3c0",
+      "0x55c910",
+      "0x55cae0",
+      "0x55cb00",
+      "0x55d6d0",
+      "0x55d71d",
+      "0x55e310"
+    ],
+    "ContentProvider bodies and unnamed rows, open": [
+      "0x55c3e0",
+      "0x55c4c0",
+      "0x55c500",
+      "0x55cc20",
+      "0x55cf30",
+      "0x55cfa0",
+      "0x55d0b0",
+      "0x55d460",
+      "0x55d530",
+      "0x55d5e0",
+      "0x55d64e",
+      "0x55d670",
+      "0x55d840",
+      "0x55d8c0",
+      "0x55d931",
+      "0x55db60",
+      "0x55dbe0",
+      "0x55dc80",
+      "0x55dd60",
+      "0x55de10",
+      "0x55e010",
+      "0x55e08e",
+      "0x55e0b0",
+      "0x55e270",
+      "0x55e650",
+      "0x55ead0",
+      "0x55ed20",
+      "0x55ed8d",
+      "0x55edd0",
+      "0x55f350",
+      "0x55f3b0",
+      "0x55f4f0",
+      "0x55f5f0",
+      "0x55f65d",
+      "0x55f6a0",
+      "0x55f710",
+      "0x55f7b0",
+      "0x55f940",
+      "0x55fa70",
+      "0x55fbc0",
+      "0x55fdc0",
+      "0x55fed0",
+      "0x55ffa9"
+    ],
+    "counted by other receipts": [
+      "0x55c540",
+      "0x55c6a0",
+      "0x55c710",
+      "0x55c740",
+      "0x55c800",
+      "0x55c8b0",
+      "0x55dae0",
+      "0x55dfd0",
+      "0x55e250",
+      "0x55e320",
+      "0x55e590",
+      "0x55e5f0"
+    ],
+    "boost.iostreams (library, not recovered)": [
+      "0x55ddd0",
+      "0x55ec50"
+    ]
+  },
+  "library_rows": {
+    "0x55c390": "std::logic_error-family ??_G (std exception COMDAT; library)",
+    "0x55c3c0": "boost::gregorian::bad_day_of_month copy constructor (vtable RTTI bad_day_of_month; library)",
+    "0x55cae0": "boost::gregorian::bad_year copy constructor (vtable RTTI bad_year; library)",
+    "0x55cb00": "boost::gregorian::bad_month copy constructor (vtable RTTI bad_month; library)",
+    "0x55c910": "auto_ptr / scoped_ptr<std::istream> delete through the virtual base (std library COMDAT, ICF-shared; caller 0x58f270 in another unit)",
+    "0x55d6d0": "std::_Uninit_copy<Reflection::Value> (evidence name; ICF-shared, callers in other units)",
+    "0x55d71d": "catch funclet of 0x55d6d0 (rethrow; library)",
+    "0x55e310": "boost function_obj_invoker0 (evidence name; folded COMDAT of another unit, luahtml-binder2008 binds it)"
+  },
+  "open_reasons": {
+    "asset-folder statics 0x55c3e0 / 0x55c4c0 / 0x55d0b0": "file-static once-initialised std::string (0x9740f0, once flag 0x973fe4) filled by SHGetFolderPathAndSubDirA(CSIDL_COMMON_APPDATA, \"Roblox\\content\\\"), its getter (call_once + copy) and the getter + path builder (9 callers); util/NativeContentProvider.h declares none of them, so their names and signatures are not derived; not attempted (proposal).",
+    "FailedUrl 0x55f710 / isUrlBad 0x55f7b0 / getLocalCachePath 0x55f940 / findHashFile 0x55fdc0 / readContent 0x55dc80": "bodies already drafted by the ContentProvider owner (native-classes/ContentProviderCacheSupport.cpp, ContentRead.cpp and the colin content-* trial receipts); not duplicated or counted here.",
+    "worker / request helpers 0x55cf30 / 0x55cfa0 / 0x55d460 / 0x55d530 / 0x55d670 / 0x55db60 / 0x55dbe0 / 0x55de10 / 0x55e0b0 / 0x55e270 / 0x55ead0 / 0x55ed20 / 0x55edd0 / 0x55f350 / 0x55f3b0 / 0x55f4f0 / 0x55f5f0 / 0x55f6a0 / 0x55fa70 / 0x55fbc0 / 0x55fed0 / 0x55cc20 / 0x55d840": "boost bind_t / function managers (0x55d670 manages bind_t<work_result, mf0<.., ContentProvider>, ..>, typeid 0x944328; it needs the newer boost function manager, as ContentProviderWorkerBinding.cpp uses), for_each / find over the request list, the requestContentString ifstream copy, the hash-file path helpers and shared_ptr assignments reached only from the worker / loadContent / registerFile bodies. Not attempted this pass: they come out of those bodies (ContentProvider owner) or need declarations the native header lacks.",
+    "catch funclets 0x55d64e / 0x55d931 / 0x55e08e / 0x55ed8d / 0x55f65d / 0x55ffa9": "EH funclet fragments of the container instances (split rows); BOUNDS evidence only, not counted."
+  },
+  "row_descriptions": {
+    "0x55bd50": "RBX::operator<(const ContentId&, const ContentId&) (evidence name; below the range, same unit; one jmp to msvcp90 operator<(const string&, const string&))",
+    "0x55c000": "std::less<ContentId>::operator()",
+    "0x55c080": "NonFactoryProduct<Instance, sContentProvider>::NonFactoryProduct() (stores the ten NonFactoryProduct vtables 0x82db28..0x82dba4)",
+    "0x55c0e0": "map<ContentId, CachedContent> _Tree::_Min",
+    "0x55c170": "_Tree::_Max",
+    "0x55c330": "std::_Allocate<function<void(RequestResult, istream&)>>",
+    "0x55ca20": "_Tree::const_iterator::_Inc",
+    "0x55ca90": "_Tree::_Lbound (inline ContentId operator<)",
+    "0x55cb20": "_Tree::const_iterator::_Dec",
+    "0x55ced0": "std::_Construct<FailedUrl>",
+    "0x55d150": "pair<const ContentId, CachedContent>::~pair (caller: map::operator[] 0x560720)",
+    "0x55d1a0": "vector<RequestCallback>::_Buy",
+    "0x55d1f0": "list<ContentRequest>::_Buynode()",
+    "0x55d210": "pair<const ContentId, CachedContent>(key, value)",
+    "0x55d330": "list<ContentRequest>::_Incsize (\"list<T> too long\")",
+    "0x55d3d0": "boost::function<void(RequestResult, istream&)> copy constructor",
+    "0x55d400": "pair<const ContentId, CachedContent> copy constructor",
+    "0x55d6b0": "sp_counted_impl_p<std::string>::dispose (slot 1 of 0x82dbe8)",
+    "0x55dab0": "shared_ptr<const std::string>(std::string*)",
+    "0x55ddb0": "Name::declare<sContentProvider>() (the linker folded NonFactoryProduct<Instance, sContentProvider>::getClassName() const into it: slot 1 of the NonFactoryProduct vtable 0x82db98 holds this row)",
+    "0x55e1d0": "shared_ptr<const std::string>::reset(std::string*)",
+    "0x55e530": "list<ContentRequest>::list() (ContentProvider() 0x562c30 calls it for requestQueue)",
+    "0x55e650": "list<FailedUrl>::push_front",
+    "0x55e690": "list<FailedUrl>::erase(first, last)",
+    "0x55e750": "_Tree::find",
+    "0x55e8d0": "_Tree::_Insert (\"map/set<T> too long\")",
+    "0x55ebb0": "copy of RequestCallback ranges",
+    "0x55ebf0": "fill of RequestCallback ranges",
+    "0x55ec20": "allocator<RequestCallback>::destroy",
+    "0x55eed0": "_Tree::insert(const value_type&)",
+    "0x55efc0": "_Tree::erase(const_iterator) (\"invalid map/set<T> iterator\")",
+    "0x55f2c0": "_Tree::_Erase",
+    "0x55f4b0": "backward move of RequestCallback ranges",
+    "0x55f5b0": "std::_Destroy_range<RequestCallback>",
+    "0x55ffc0": "_Tree::insert(const_iterator hint, const value_type&)",
+    "0x560720": "map<ContentId, CachedContent>::operator[] (past the range, same unit)",
+    "0x560820": "vector<RequestCallback>::_Destroy (past the range)",
+    "0x560840": "vector<RequestCallback>::_Tidy (past the range)",
+    "0x560890": "vector<RequestCallback>::_Ufill (past the range)",
+    "0x5608d0": "vector<RequestCallback>::erase(first, last) (past the range)",
+    "0x560960": "_Tree::erase(first, last) (past the range)",
+    "0x560a40": "vector<RequestCallback>::_Ucopy / _Umove (past the range)",
+    "0x560b60": "vector<RequestCallback>::~vector (past the range)",
+    "0x560bd0": "vector<RequestCallback>::clear (past the range)",
+    "0x560ea0": "ContentRequest copy constructor (past the range)",
+    "0x561020": "ContentRequest::~ContentRequest (past the range; callers: list erase 0x5617c0, loadContent 0x561980, the worker 0x5620f0)",
+    "0x561070": "vector<RequestCallback>::operator= (past the range)",
+    "0x561180": "_Tree::~_Tree (past the range)",
+    "0x5611f0": "vector<RequestCallback>::insert(where, value) (past the range)",
+    "0x561330": "vector<RequestCallback>::push_back (past the range)",
+    "0x561780": "list<ContentRequest>::push_back (past the range)",
+    "0x5617c0": "list<ContentRequest>::erase(where) (past the range)",
+    "0x561850": "list<ContentRequest>::clear (past the range)",
+    "0x562bd0": "list<ContentRequest>::~list (past the range; ~ContentProvider 0x562e60 calls it)"
+  },
+  "rows": [
+    {
+      "address": "0055bd50",
+      "symbol": "??MRBX@@YA_NABVContentId@0@0@Z",
+      "size": 6,
+      "target_size": 6,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055c000",
+      "symbol": "??R?$less@VContentId@RBX@@@std@@QBE_NABVContentId@RBX@@0@Z",
+      "size": 22,
+      "target_size": 22,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055c080",
+      "symbol": "??0?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@QAE@XZ",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82dba4 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82db98 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82db90 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6BDebugable@1@@": "0x82db88 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82db78 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82db68 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82db58 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82db48 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82db38 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82db28 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055c0e0",
+      "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@PAU342@@Z",
+      "size": 27,
+      "target_size": 27,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0055c170",
+      "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@PAU342@@Z",
+      "size": 28,
+      "target_size": 28,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0055c330",
+      "symbol": "??$_Allocate@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@IPAV12@@Z",
+      "size": 87,
+      "target_size": 87,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (ThrowInfo of .?AVbad_alloc@std@@ (2 catchable types))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055ca20",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ",
+      "size": 108,
+      "target_size": 108,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055ca90",
+      "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABVContentId@RBX@@@Z",
+      "size": 70,
+      "target_size": 70,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055cb20",
+      "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ",
+      "size": 132,
+      "target_size": 132,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055ced0",
+      "symbol": "??$_Construct@UFailedUrl@ContentProvider@RBX@@U123@@std@@YAXPAUFailedUrl@ContentProvider@RBX@@ABU123@@Z",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Construct@UFailedUrl@ContentProvider@RBX@@U123@@std@@YAXPAUFailedUrl@ContentProvider@RBX@@ABU123@@Z"
+      ]
+    },
+    {
+      "address": "0055d150",
+      "symbol": "??1?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@XZ",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??1CachedContent@ContentProvider@RBX@@QAE@XZ": "0x422c60 (helper body exact at the bound address (not counted))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0055d1a0",
+      "symbol": "?_Buy@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAE_NI@Z",
+      "size": 74,
+      "target_size": 74,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@KAXXZ": "0x4c6d40 (helper body exact at the bound address (not counted))",
+        "??$_Allocate@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@IPAV12@@Z": "0x55c330 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055d1f0",
+      "symbol": "?_Buynode@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@2@XZ",
+      "size": 26,
+      "target_size": 26,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055d210",
+      "symbol": "??0?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@ABVContentId@RBX@@ABUCachedContent@ContentProvider@3@@Z",
+      "size": 87,
+      "target_size": 87,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055d330",
+      "symbol": "?_Incsize@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@IAEXI@Z",
+      "size": 154,
+      "target_size": 154,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@": "0x80d400 (string 'list<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (ThrowInfo of .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Incsize@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@IAEXI@Z"
+      ]
+    },
+    {
+      "address": "0055d3d0",
+      "symbol": "??0?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@QAE@ABV01@@Z",
+      "size": 46,
+      "target_size": 46,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0055d400",
+      "symbol": "??0?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@ABU01@@Z",
+      "size": 84,
+      "target_size": 84,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055d6b0",
+      "symbol": "?dispose@?$sp_counted_impl_p@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@detail@boost@@UAEXXZ",
+      "size": 27,
+      "target_size": 27,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055dab0",
+      "symbol": "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@QAE@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 41,
+      "target_size": 41,
+      "exact": true,
+      "verified_targets": {
+        "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@shared_count@detail@boost@@QAE@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55d5e0 (external (evidence name))",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055ddb0",
+      "symbol": "??$declare@$1?sContentProvider@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
+      "size": 23,
+      "target_size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sContentProvider@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d0cc (own static (bound by consistency))",
+        "??$callDoDeclare@$1?sContentProvider@RBX@@3PADA@Name@RBX@@CAXXZ": "0x41e0f0 (helper body exact at the bound address (not counted))",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sContentProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41dfe0 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055e1d0",
+      "symbol": "??$reset@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 118,
+      "target_size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@shared_count@detail@boost@@QAE@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55d5e0 (external (evidence name))",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055e530",
+      "symbol": "??0?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE@XZ",
+      "size": 94,
+      "target_size": 94,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@2@XZ": "0x55d1f0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0055e690",
+      "symbol": "?erase@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@0@Z",
+      "size": 189,
+      "target_size": 189,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?clear@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAEXXZ": "0x55dfd0 (row counted by browser-view-working.json (compiled body exact at the bound address))",
+        "?erase@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "0x410350 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055e750",
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABVContentId@RBX@@@Z",
+      "size": 127,
+      "target_size": 127,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABVContentId@RBX@@@Z": "0x55ca90 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055e8d0",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z",
+      "size": 510,
+      "target_size": 510,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (ThrowInfo of .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@D@Z": "0x55e010 (external (evidence name))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z": "0x4abda0 (external (evidence name))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z": "0x4ab010 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z"
+      ]
+    },
+    {
+      "address": "0055ebb0",
+      "symbol": "??$unchecked_copy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@stdext@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00@Z",
+      "size": 57,
+      "target_size": 57,
+      "exact": true,
+      "verified_targets": {
+        "??4?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@QAEAAV01@ABV01@@Z": "0x554f90 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055ebf0",
+      "symbol": "??$fill@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V12@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0ABV12@@Z",
+      "size": 38,
+      "target_size": 38,
+      "exact": true,
+      "verified_targets": {
+        "??4?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@QAEAAV01@ABV01@@Z": "0x554f90 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055ec20",
+      "symbol": "?destroy@?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@QAEXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@Z",
+      "size": 39,
+      "target_size": 39,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0055eed0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z",
+      "size": 235,
+      "target_size": 235,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z": "0x55e8d0 (own row)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x55cb20 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055efc0",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "size": 754,
+      "target_size": 754,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (string 'invalid map/set<T> iterator')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVout_of_range@std@@": "0x8d0c3c (ThrowInfo of .?AVout_of_range@std@@ (3 catchable types))",
+        "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x55ca20 (own row)",
+        "?_Min@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@PAU342@@Z": "0x55c0e0 (own row)",
+        "?_Max@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@PAU342@@Z": "0x55c170 (own row)",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z": "0x4abda0 (external (evidence name))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z": "0x4ab010 (external (evidence name))",
+        "??1CachedContent@ContentProvider@RBX@@QAE@XZ": "0x422c60 (helper body exact at the bound address (not counted))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+      ]
+    },
+    {
+      "address": "0055f2c0",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z",
+      "size": 129,
+      "target_size": 129,
+      "exact": true,
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z": "0x55f2c0 (own row)",
+        "??1CachedContent@ContentProvider@RBX@@QAE@XZ": "0x422c60 (helper body exact at the bound address (not counted))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z"
+      ]
+    },
+    {
+      "address": "0055f4b0",
+      "symbol": "??$_Unchecked_move_backward@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@stdext@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00@Z",
+      "size": 59,
+      "target_size": 59,
+      "exact": true,
+      "verified_targets": {
+        "??4?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@QAEAAV01@ABV01@@Z": "0x554f90 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055f5b0",
+      "symbol": "??$_Destroy_range@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0AAV?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+      "size": 59,
+      "target_size": 59,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0055ffc0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z",
+      "size": 562,
+      "target_size": 562,
+      "exact": true,
+      "verified_targets": {
+        "?_Insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z": "0x55e8d0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x55cb20 (own row)",
+        "??R?$less@VContentId@RBX@@@std@@QBE_NABVContentId@RBX@@0@Z": "0x55c000 (own row)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x55ca20 (own row)",
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (helper body exact at the bound address (not counted))",
+        "?insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z": "0x55eed0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00560720",
+      "symbol": "??A?$map@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@@std@@QAEAAUCachedContent@ContentProvider@RBX@@ABVContentId@4@@Z",
+      "size": 250,
+      "target_size": 250,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@ABVContentId@RBX@@@Z": "0x55ca90 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x80235c (msvcp90.dll!??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "??0?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@ABVContentId@RBX@@ABUCachedContent@ContentProvider@3@@Z": "0x55d210 (own row)",
+        "?insert@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@@Z": "0x55ffc0 (own row)",
+        "??1?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@XZ": "0x55d150 (own row)",
+        "??1CachedContent@ContentProvider@RBX@@QAE@XZ": "0x422c60 (helper body exact at the bound address (not counted))"
+      },
+      "local_eh": [
+        "__ehhandler$??A?$map@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@@std@@QAEAAUCachedContent@ContentProvider@RBX@@ABVContentId@4@@Z"
+      ]
+    },
+    {
+      "address": "00560820",
+      "symbol": "?_Destroy@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAEXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0AAV?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x55f5b0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00560840",
+      "symbol": "?_Tidy@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAEXXZ",
+      "size": 66,
+      "target_size": 66,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0AAV?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x55f5b0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005608d0",
+      "symbol": "?erase@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@2@0@Z",
+      "size": 141,
+      "target_size": 141,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??$unchecked_copy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@stdext@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00@Z": "0x55ebb0 (own row)",
+        "??$_Destroy_range@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0AAV?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x55f5b0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00560960",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "size": 220,
+      "target_size": 220,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@@Z": "0x55f2c0 (own row)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x55ca20 (own row)",
+        "?erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x55efc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00560b60",
+      "symbol": "??1?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE@XZ",
+      "size": 111,
+      "target_size": 111,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0AAV?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x55f5b0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00560bd0",
+      "symbol": "?clear@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAEXXZ",
+      "size": 65,
+      "target_size": 65,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?erase@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@2@0@Z": "0x5608d0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00561020",
+      "symbol": "??1ContentRequest@RBX@@QAE@XZ",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??1?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE@XZ": "0x560b60 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??1ContentRequest@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00561180",
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+      "size": 112,
+      "target_size": 112,
+      "exact": true,
+      "verified_targets": {
+        "?erase@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x560960 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "005617c0",
+      "symbol": "?erase@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??1ContentRequest@RBX@@QAE@XZ": "0x561020 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00561850",
+      "symbol": "?clear@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAEXXZ",
+      "size": 129,
+      "target_size": 129,
+      "exact": true,
+      "verified_targets": {
+        "??1?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE@XZ": "0x560b60 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?clear@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAEXXZ"
+      ]
+    },
+    {
+      "address": "00562bd0",
+      "symbol": "??1?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE@XZ",
+      "size": 85,
+      "target_size": 85,
+      "exact": true,
+      "verified_targets": {
+        "?clear@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAEXXZ": "0x561850 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    }
+  ],
+  "folded_duplicates": {
+    "??0?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@QAE@ABV01@@Z": [
+      "??0?$function2@XW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@V?$allocator@X@4@@boost@@QAE@ABV01@@Z"
+    ],
+    "??$unchecked_copy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@stdext@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00@Z": [
+      "??$_Copy_opt@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@std@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+    ],
+    "??$fill@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V12@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0ABV12@@Z": [
+      "??$_Fill@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V12@@std@@YAXPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@0ABV12@@Z"
+    ],
+    "??$_Unchecked_move_backward@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@stdext@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00@Z": [
+      "??$_Copy_backward_opt@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@@std@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "??$_Move_backward_opt@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@Urandom_access_iterator_tag@std@@U_Undefined_move_tag@4@@std@@YAPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV12@00Urandom_access_iterator_tag@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z"
+    ],
+    "??$_Ucopy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAEPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV23@00@Z": [
+      "??$_Umove@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAEPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV23@00@Z"
+    ]
+  },
+  "bound_only": [
+    "0x55dfd0 ?clear@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentPro: list<FailedUrl>::clear (row counted by browser-view-working.json; compiled body exact there)",
+    "0x55e590 ??0?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvide: list<FailedUrl>::list() (folded with list<TimerService::Item>::list) (row counted by spawn-working.json; compiled body exact there)",
+    "0x55e5f0 ??1?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvide: list<FailedUrl>::~list (row counted by browser-view-working.json; compiled body exact there)"
+  ],
+  "near_misses_not_counted": [
+    {
+      "row": "0x55d5e0 (not counted, exact=false)",
+      "symbol": "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@shared_count@detail@boost@@QAE@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "exact": false,
+      "compiled_size": 131,
+      "target_size": 110,
+      "reason": "shared_count(std::string*): 131 B against 110 B; the original has no try/catch around new sp_counted_impl_p (the boost 1.34.1 ctor here keeps it)"
+    },
+    {
+      "row": "0x55e010 (not counted, exact=false)",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@2@D@Z",
+      "exact": false,
+      "compiled_size": 147,
+      "target_size": 126,
+      "reason": "_Tree::_Buynode(left, parent, right, value): 147 B against 126 B; the original calls the pair copy constructor 0x55d400 out of line, here it is inlined"
+    },
+    {
+      "row": "0x55d8c0 (not counted, exact=false)",
+      "symbol": "?_Buynode@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@2@PAU342@0ABUFailedUrl@ContentProvider@RBX@@@Z",
+      "exact": false,
+      "compiled_size": 134,
+      "target_size": 113,
+      "reason": "list<FailedUrl>::_Buynode(next, prev, value): 134 B against 113 B; the original calls _Construct<FailedUrl> 0x55ced0 out of line, here it is inlined"
+    }
+  ],
+  "built_byte_exact_not_counted": [
+    {
+      "row": "0x55e650 (not counted, exact=false)",
+      "symbol": "?push_front@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAEXABUFailedUrl@ContentProvider@RBX@@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "?_Buynode@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@R -> 0x55d8c0: the body compiled here is not exact there"
+      ]
+    },
+    {
+      "row": "0x560890 (not counted, exact=false)",
+      "symbol": "?_Ufill@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAEPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV34@IABV34@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "??$_Uninit_fill_n@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_tra -> 0x55f5f0: the body compiled here is not exact there"
+      ]
+    },
+    {
+      "row": "0x560a40 (not counted, exact=false)",
+      "symbol": "??$_Ucopy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@IAEPAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@PAV23@00@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "??$_Uninit_copy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_trait -> 0x55ed20: the body compiled here is not exact there"
+      ]
+    },
+    {
+      "row": "0x560ea0 (not counted, exact=false)",
+      "symbol": "??0ContentRequest@RBX@@QAE@ABU01@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "??0?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@st -> 0x560a70: the body compiled here is not exact there"
+      ]
+    },
+    {
+      "row": "0x561070 (not counted, exact=false)",
+      "symbol": "??4?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAEAAV01@ABV01@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "??$_Ucopy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@st -> 0x560a40: row not counted (calls ??$_Uninit_copy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_trait -> 0x55ed20: the body compiled here is not exact there)",
+        "??$_Ucopy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@st -> 0x560a40: row not counted (calls ??$_Uninit_copy@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_trait -> 0x55ed20: the body compiled here is not exact there)"
+      ]
+    },
+    {
+      "row": "0x5611f0 (not counted, exact=false)",
+      "symbol": "?insert@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@2@ABV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "?_Insert_n@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_tra -> 0x560c20: the body compiled here is not exact there"
+      ]
+    },
+    {
+      "row": "0x561330 (not counted, exact=false)",
+      "symbol": "?push_back@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@QAEXABV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "??$_Uninit_fill_n@PAV?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_tra -> 0x55f5f0: the body compiled here is not exact there"
+      ]
+    },
+    {
+      "row": "0x561780 (not counted, exact=false)",
+      "symbol": "?push_back@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAEXABUContentRequest@RBX@@@Z",
+      "exact": false,
+      "body_exact": true,
+      "reason": [
+        "?_Buynode@?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@IAEPAU -> 0x561490: the body compiled here is not exact there"
+      ]
+    }
+  ],
+  "vtables": {
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x82db98",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 2,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WBA@AEPAXI@Z = 0x455f30 (compiled body exact there)"
+      ],
+      "not_bound_here": [
+        "1 ?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@UBEABVNa = 0x55ddb0"
+      ]
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x82db90",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 1,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WBE@AEPAXI@Z = 0x409d40 (compiled body exact there)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x82dba4",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 16,
+      "checked": [
+        "0 ?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (compiled body exact there)",
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@ = 0x55af90 (evidence name)",
+        "4 ?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (evidence name up to the access letter: ?onAncestorChanged@Instance@RBX@@MAEXABUAncestorChanged@2@@Z)",
+        "5 ?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (evidence name up to the access letter: ?onDescendentAdded@Instance@RBX@@MAEXPAV12@@Z)",
+        "6 ?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (evidence name up to the access letter: ?onDescendentRemoving@Instance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z)",
+        "11 ?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (evidence name up to the access letter: ?readProperty@Instance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z)",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "15 ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (evidence name up to the access letter: ?onChildChanged@Instance@RBX@@MAEXPAV12@ABVPropertyChanged@2@@Z)"
+      ],
+      "not_bound_here": [
+        "2 ?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880",
+        "3 ?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880",
+        "7 ?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0",
+        "8 ?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0",
+        "9 ?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0",
+        "10 ?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410",
+        "12 ?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90"
+      ]
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x82db38",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WKE@AEPAXI@Z = 0x45ebd0 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInsta = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VIn = 0x70bdf0 (compiled body exact there)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x82db78",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WCE@AEPAXI@Z = 0x5e28b0 (compiled body exact there)",
+        "1 ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (evidence name up to the access letter: ?onAddListener@Instance@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstanc = 0x70bdf0 (compiled body exact there)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x82db68",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WEE@AEPAXI@Z = 0x609d90 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInsta = 0x70bdf0 (compiled body exact there)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x82db58",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WGE@AEPAXI@Z = 0x4c9c40 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VIn = 0x70bdf0 (compiled body exact there)"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230"
+      ]
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x82db48",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WIE@AEPAXI@Z = 0x458580 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VIn = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@ = 0x70bdf0 (compiled body exact there)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x82db28",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_E?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@WME@AEPAXI@Z = 0x455f20 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInsta = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VIn = 0x70bdf0 (compiled body exact there)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x82db88",
+      "rtti": ".?AV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PADA@RBX@@",
+      "slots": 1,
+      "checked": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      ],
+      "not_bound_here": []
+    },
+    "??_7?$sp_counted_impl_p@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@detail@boost@@6B@": {
+      "address": "0x82dbe8",
+      "rtti": ".?AV?$sp_counted_impl_p@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@detail@boost@@",
+      "slots": 4,
+      "checked": [
+        "1 ?dispose@?$sp_counted_impl_p@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@ = 0x55d6b0 (compiled body exact there)",
+        "2 ?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (compiled body exact there)",
+        "3 ?get_deleter@?$sp_counted_impl_p@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@ = 0x5f2310 (compiled body exact there)"
+      ],
+      "not_bound_here": [
+        "0 ??_E?$sp_counted_impl_p@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@det = 0x415000"
+      ]
+    }
+  },
+  "helper_bodies_not_counted": {
+    "??1CachedContent@ContentProvider@RBX@@QAE@XZ": "0x422c60",
+    "?_Xlen@?$vector@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@V?$allocator@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@std@@@std@@KAXXZ": "0x4c6d40",
+    "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410",
+    "??$callDoDeclare@$1?sContentProvider@RBX@@3PADA@Name@RBX@@CAXXZ": "0x41e0f0",
+    "??$doDeclare@$1?sContentProvider@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41dfe0",
+    "?erase@?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "0x410350",
+    "??4?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@QAEAAV01@ABV01@@Z": "0x554f90",
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0"
+  },
+  "rejected": {
+    "including util/NativeContentProvider.h (out-of-line donor ContentId operator<) instead of the content-cache-inline variant": "less<ContentId>::operator() 21 B vs 22 B (0x55c000), _Tree::_Lbound 61 B vs 70 B (0x55ca90), find 126 B vs 127 B (0x55e750), insert(value) 237 B vs 235 B (0x55eed0), insert(hint, value) 552 B vs 562 B (0x55ffc0); operator[] 0x560720 also differs. The other container rows are identical either way."
+  },
+  "proposals": {
+    "util/NativeContentProvider.h (ContentProvider owner)": "Make ContentId operator< inline in the main header, as the content-cache-inline variant does: the original less<ContentId>::operator() 0x55c000, _Tree::_Lbound 0x55ca90, find 0x55e750, insert 0x55eed0 / 0x55ffc0 and map::operator[] 0x560720 call msvcp90 operator<(const string&, const string&) (import 0x80235c) directly, and the out-of-line operator< 0x55bd50 is one jmp through that import. AppUnit55CContentTemplates.cpp includes the variant read-only for this reason. Also declare the asset-folder statics (string 0x9740f0, once flag 0x973fe4, initialiser 0x55c3e0, getter 0x55c4c0, path builder 0x55d0b0) once their names are derived.",
+    "boost shared_count / _Buynode near misses (FYI)": "shared_count(std::string*) 0x55d5e0 is 110 B without the try/catch the boost 1.34.1 header compiles to (131 B); _Tree::_Buynode 0x55e010 and list<FailedUrl>::_Buynode 0x55d8c0 keep the pair copy / _Construct calls out of line. No header change proposed without the vendor configuration that explains them."
+  },
+  "exact_function_rows": [
+    "0055bd50",
+    "0055c000",
+    "0055c080",
+    "0055c0e0",
+    "0055c170",
+    "0055c330",
+    "0055ca20",
+    "0055ca90",
+    "0055cb20",
+    "0055ced0",
+    "0055d150",
+    "0055d1a0",
+    "0055d1f0",
+    "0055d210",
+    "0055d330",
+    "0055d3d0",
+    "0055d400",
+    "0055d6b0",
+    "0055dab0",
+    "0055ddb0",
+    "0055e1d0",
+    "0055e530",
+    "0055e690",
+    "0055e750",
+    "0055e8d0",
+    "0055ebb0",
+    "0055ebf0",
+    "0055ec20",
+    "0055eed0",
+    "0055efc0",
+    "0055f2c0",
+    "0055f4b0",
+    "0055f5b0",
+    "0055ffc0",
+    "00560720",
+    "00560820",
+    "00560840",
+    "005608d0",
+    "00560960",
+    "00560b60",
+    "00560bd0",
+    "00561020",
+    "00561180",
+    "005617c0",
+    "00561850",
+    "00562bd0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

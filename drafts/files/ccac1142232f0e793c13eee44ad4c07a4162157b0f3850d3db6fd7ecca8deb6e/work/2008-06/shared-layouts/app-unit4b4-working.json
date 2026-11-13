@@ -1,0 +1,315 @@
+{
+  "class": "RBX::Network Replicator.cpp rows of the application range 004b4000..004b8000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "templates": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4b4/NativeAppUnit4B4_templates.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4B4Templates.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4b4.py": "f9c63a713d21f9d073d24a35c879d3145c74d1e7e96add31ce70acdb8f1c11cf",
+    "rebuild/2008-06/native-classes/AppUnit4B4Templates.cpp": "791192b81f1eab5cee62b09819a40067466ffbee4c66f85600749a432f941752",
+    "rebuild/2008-06/native-headers/stats/Stats.h": "902bb2c6304dd935af5de9e1dc151a2d84337e103d49e860b57ca26f37b8152c",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h": "b62f39fdb34649935076cab7daa419c50bae759ec3d252e8b5d81f3850f2a3ad"
+  },
+  "objects": {
+    "templates": "9622ddf3d735e1430a6f96464aa3637ee911ee9ffe4ae9c3717d45c4c8abf86c"
+  },
+  "range_rows": 67,
+  "unit_map": {
+    "replicator 004b4000..004b7fff (whole range)": "Network/Replicator.cpp continued (head below 004b0000 in app-unit4b0-2008, tail to 004ba22f in app-unit4b8). BoundFuncDesc bodies 004b4040..004b42e0: execute / constructor of BoundFuncDesc<Replicator, void()> (vtable 00824cb4; RequestCharacter 004b49e0 and CloseConnection 004aafd0, static initializers 007f21d0 / 007f2200), <Replicator, shared_ptr<Instance>()> (00824cc0; GetPlayer 004ae860, 007f2230) and <Peer, void(bool)> (00824ccc; LogPackets 004ac9e0, 007f2260, argument \"value\"); the multi_index delete_all_nodes 004b43c0; the boost::signals slot / function0 instances bound to Replicator members 004b4410 / 004b44c0 / 004b45b0 / 004b4d80 / 004b5050 / 004b5220 / 004b5be0 / 004b5db0 / 004b61d0 and the connect helpers 004b5f60 / 004b7d30; Peer::Peer 004b4640 (\"Packets Thread\"); DeleteInstanceItem::write 004b47b0 (+ eh 004b4965); requestCharacter 004b49e0; the signal-instance creators 004b4bb0 / 004b52b0 (Security::Impersonator, map<const SignalDescriptor*, ...>); Stats::Item create 004b4e50; slot_call_iterator / signal0 / signal2 bodies 004b4ed0 / 004b4fb0 / 004b5950 / 004b5a70 and SignalDescImpl::fire 004b5f40 / 004b6040; TypedStatsItem<bool> 004b5100 / 004b51d0 / 004b5ca0 / createBoundChildItem<bool> 004b60c0; Peer::onServiceProvider 004b5700 (\"Network\"); shared_ptr<SharedStringDictionary> 004b5d20 (+ catch 004b5d8e) / checked_delete 004b5200 / dispose 004b5e60; the physics receiver 004b58f0 / 004b5e80 / 004b6290; the Replicator member 004b5ed0 (push_back on the vector +0x2c58, then 004b52b0); ReplicatorStatsItem 004b62c0..004b6710 (vtable 00824fbc; ??_E thunks 004b64b0..004b6520); the signal-instance map lookup 004b6730 (+0x2b90, new 0x2a24 SharedStringDictionary); property serialisation 004b6890 / 004b6ab0; ChangePropertyItem::write 004b6d10; the item readers 004b6f00 / 004b7250 / 004b7a30 / 004b7f20; the waitItems tree _Erase 004b7e10; create<ReplicatorStatsItem> 004b7e50. No library code."
+  },
+  "unit_map_checks": [
+    "string 0x8256d4 'RequestCharacter'",
+    "string 0x8256e8 'CloseConnection'",
+    "string 0x8256f8 'GetPlayer'",
+    "string 0x825704 'LogPackets'",
+    "string 0x824cdc 'Packets Thread'",
+    "string 0x8244e4 'NetworkReplicator'",
+    "string 0x8244d8 'NetworkPeer'",
+    "vtable 0x824cb4 RTTI .?AV?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@",
+    "vtable 0x824cc0 RTTI .?AV?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@",
+    "vtable 0x824ccc RTTI .?AV?$BoundFuncDesc@VPeer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@",
+    "vtable 0x824e9c RTTI .?AV?$TypedStatsItem@_N@Stats@RBX@@",
+    "vtable 0x824708 RTTI .?AV?$sp_counted_impl_p@VSharedStringDictionary@Network@RBX@@@detail@boost@@",
+    "vtable 0x824fbc RTTI .?AVReplicatorStatsItem@Replicator@Network@RBX@@",
+    "vtable 0x824944 RTTI .?AVPeer@Network@RBX@@",
+    "vtable 0x8254fc RTTI .?AVReplicator@Network@RBX@@",
+    "static initializer call 0x7f21e5 -> BoundFuncDesc ctor 0x4b40a0 (name RequestCharacter, member 0x4b49e0)",
+    "static initializer call 0x7f2215 -> BoundFuncDesc ctor 0x4b40a0 (name CloseConnection, member 0x4aafd0)",
+    "static initializer call 0x7f2245 -> BoundFuncDesc ctor 0x4b4170 (name GetPlayer, member 0x4ae860)",
+    "static initializer call 0x7f227a -> BoundFuncDesc ctor 0x4b4240 (name LogPackets, member 0x4ac9e0)",
+    "evidence name 0x4b5950 ??R?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allo",
+    "evidence name 0x4b62c0 ??0ReplicatorStatsItem@Replicator@Network@RBX@@QAE@ABV?$shared_ptr@VReplicator@N",
+    "evidence name 0x4b6530 ?update@ReplicatorStatsItem@Replicator@Network@RBX@@UAEXXZ",
+    "evidence name 0x4b6d10 ?write@ChangePropertyItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+    "evidence name 0x4b47b0 ?write@DeleteInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+    "evidence name 0x4b5700 ?onServiceProvider@Peer@Network@RBX@@MAEXPBVServiceProvider@3@0@Z",
+    "evidence name 0x4b7e50 ??$create@VReplicatorStatsItem@Replicator@Network@RBX@@V?$shared_ptr@VReplicator",
+    "call 0x4b63a9 -> 0x4b60c0",
+    "call 0x5afe8f -> 0x4b60c0",
+    "call 0x4b67c0 -> 0x4b5d20",
+    "call 0x4b5d92 -> 0x4b5200",
+    "call 0x4b60e8 -> 0x4b5ca0",
+    "call 0x4b5ce9 -> 0x4b5100"
+  ],
+  "range_rows_counted_by_other_receipts": [
+    "004b43c0 counted by network-physics-senders2008-working.json",
+    "004b4640 counted by network-client-server2008-working.json",
+    "004b4e50 counted by stats-service-working.json",
+    "004b4ed0 counted by humanoid2008-working.json",
+    "004b4fb0 counted by app-unit4b0-2008-working.json",
+    "004b58f0 counted by network-physics-senders2008-working.json",
+    "004b5950 counted by humanoid2008-working.json",
+    "004b5a70 counted by app-unit4b0-2008-working.json",
+    "004b5e80 counted by network-physics-senders2008-working.json",
+    "004b5f40 counted by app-unit4b0-2008-working.json",
+    "004b6040 counted by app-unit4b0-2008-working.json",
+    "004b6290 counted by network-physics-senders2008-working.json",
+    "004b7e50 counted by network-replicator2008-working.json"
+  ],
+  "range_rows_not_counted": "004b4040 004b40a0 004b4110 004b4170 004b41e0 004b4240 004b42e0 004b4410 004b44c0 004b45b0 004b47b0 004b4965 004b49e0 004b4bb0 004b4d80 004b5050 004b5100 004b5220 004b52b0 004b5700 004b5be0 004b5db0 004b5ed0 004b5f60 004b61d0 004b62c0 004b64b0 004b64c0 004b64d0 004b64e0 004b64f0 004b6500 004b6510 004b6520 004b6530 004b6690 004b6710 004b6730 004b6890 004b6ab0 004b6d10 004b6f00 004b7250 004b7a30 004b7d30 004b7f20",
+  "rows": [
+    {
+      "address": "004b51d0",
+      "symbol": "?update@?$TypedStatsItem@_N@Stats@RBX@@MAEXXZ",
+      "size": 34,
+      "target_size": 34,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "??R?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QBE_NXZ": "0x42afc0 (external: evidence name)",
+        "??$formatValue@_N@Item@Stats@RBX@@QAEXAB_N@Z": "0x5c9170 (counted by stats-service-working.json (external here; evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b5ca0",
+      "symbol": "??$create@V?$TypedStatsItem@_N@Stats@RBX@@PB_N@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@_N@Stats@RBX@@@boost@@PB_N@Z",
+      "size": 125,
+      "target_size": 125,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0?$TypedStatsItem@_N@Stats@RBX@@QAE@PB_N@Z": "0x4b5100 (external: constructor: stores vtable 00824e9c (checked below))",
+        "??$?0V?$TypedStatsItem@_N@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@_N@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@_N@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4ad560 (support body exact at the bound address)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@V?$TypedStatsItem@_N@Stats@RBX@@PB_N@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@_N@Stats@RBX@@@boost@@PB_N@Z"
+      ]
+    },
+    {
+      "address": "004b60c0",
+      "symbol": "??$createBoundChildItem@_N@Item@Stats@RBX@@QAEPAV012@PBDAB_N@Z",
+      "size": 271,
+      "target_size": 271,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "??$create@V?$TypedStatsItem@_N@Stats@RBX@@PB_N@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@_N@Stats@RBX@@@boost@@PB_N@Z": "0x4b5ca0 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external: evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??$createBoundChildItem@_N@Item@Stats@RBX@@QAEPAV012@PBDAB_N@Z"
+      ]
+    },
+    {
+      "address": "004b5200",
+      "symbol": "??$checked_delete@VSharedStringDictionary@Network@RBX@@@boost@@YAXPAVSharedStringDictionary@Network@RBX@@@Z",
+      "size": 27,
+      "target_size": 27,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "??1SharedStringDictionary@Network@RBX@@QAE@XZ": "0x4b3d70 (counted by network-replicator-working.json (this build exact there))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b5e60",
+      "symbol": "?dispose@?$sp_counted_impl_p@VSharedStringDictionary@Network@RBX@@@detail@boost@@UAEXXZ",
+      "size": 26,
+      "target_size": 26,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "??1SharedStringDictionary@Network@RBX@@QAE@XZ": "0x4b3d70 (counted by network-replicator-working.json (this build exact there))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b7e10",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z",
+      "size": 61,
+      "target_size": 61,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": "0x4b7e10 (own row)",
+        "??1?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@QAE@XZ": "0x4a7fa0 (counted by app-unit49c-2008-working.json (this build exact there))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b5d20",
+      "symbol": "??$?0VSharedStringDictionary@Network@RBX@@@shared_count@detail@boost@@QAE@PAVSharedStringDictionary@Network@RBX@@@Z",
+      "size": 110,
+      "target_size": 110,
+      "exact": true,
+      "unit": "templates",
+      "note": "head of the 131-byte compiled shared_count constructor; the compiled remainder equals the catch(...) funclet row 004b5d8e (BOUNDS evidence: one original extent 004b5d20..004b5da2)",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_p@VSharedStringDictionary@Network@RBX@@@detail@boost@@6B@": "0x824708 (vtable RTTI .?AV?$sp_counted_impl_p@VSharedStringDictionary@Network@RBX@@@detail@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VSharedStringDictionary@Network@RBX@@@shared_count@detail@boost@@QAE@PAVSharedStringDictionary@Network@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "004b5d8e",
+      "symbol": "__catch$??$?0VSharedStringDictionary@Network@RBX@@@shared_count@detail@boost@@QAE@PAVSharedStringDictionary@Network@RBX@@@Z$0",
+      "size": 21,
+      "target_size": 21,
+      "exact": true,
+      "unit": "templates",
+      "note": "catch(...) funclet of the shared_count(SharedStringDictionary*) constructor: checked_delete(p); throw;",
+      "verified_targets": {
+        "??$checked_delete@VSharedStringDictionary@Network@RBX@@@boost@@YAXPAVSharedStringDictionary@Network@RBX@@@Z": "0x4b5200 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    }
+  ],
+  "compiled_not_exact": [
+    {
+      "address": "004b5100 (not exact, not counted)",
+      "symbol": "??0?$TypedStatsItem@_N@Stats@RBX@@QAE@PB_N@Z",
+      "size": 120,
+      "target_size": 194,
+      "exact": false
+    }
+  ],
+  "support_rows": {
+    "??$?0V?$TypedStatsItem@_N@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@_N@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@_N@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": {
+      "address": "004ad560 support body, not counted",
+      "reached_from": "??$create@V?$TypedStatsItem@_N@Stats@RBX@@PB_N@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@_N@Stats@RBX@@@boost@@PB_N@Z",
+      "note": "COMDAT support body, exact at the bound address; not counted"
+    }
+  },
+  "counted_elsewhere_targets": [
+    "004a7fa0 counted by app-unit49c-2008-working.json (this build exact there)",
+    "004b3d70 counted by network-replicator-working.json (this build exact there)",
+    "005c9170 counted by stats-service-working.json (external here; evidence name)"
+  ],
+  "vtable_checks": [
+    {
+      "vtable": "vtable 00824e9c",
+      "rtti": ".?AV?$TypedStatsItem@_N@Stats@RBX@@",
+      "compiled_slots": 17,
+      "slots_bound_and_equal": [
+        16
+      ],
+      "slots_equal_by_evidence_name": [
+        1,
+        2,
+        13,
+        14
+      ]
+    },
+    {
+      "vtable": "vtable 00824708",
+      "rtti": ".?AV?$sp_counted_impl_p@VSharedStringDictionary@Network@RBX@@@detail@boost@@",
+      "compiled_slots": 4,
+      "slots_bound_and_equal": [
+        1,
+        2
+      ],
+      "slots_equal_by_evidence_name": []
+    }
+  ],
+  "pending_rows": [],
+  "not_exact": [
+    {
+      "address": "TypedStatsItem<bool> constructor 004b5100",
+      "reason": "Known Stats.h gap (as TypedStatsItem<unsigned int> 005bc860, <int> 0045eef0, <G3D::Stopwatch> 0045ecc0 in their receipts): the original inlines boost::function0::assign_to down to has_empty_target (194 bytes); this build keeps assign_to out of line (120 bytes). Bound by its vtable store only."
+    },
+    {
+      "address": "BoundFuncDesc rows 004b4040, 004b40a0, 004b4110, 004b4170, 004b41e0, 004b4240, 004b42e0",
+      "reason": "Blocked, not attempted: the descriptors bind member pointers to Replicator::requestCharacter() 004b49e0 / closeConnection() 004aafd0 / getPlayer() 004ae860 and Peer::logPackets(bool) 004ac9e0, which the read-only Network/Replicator2008.h / Peer2008.h do not declare (proposals below)."
+    },
+    {
+      "address": "Replicator / Peer members 004b47b0, 004b49e0, 004b4bb0, 004b52b0, 004b5700, 004b5ed0, 004b62c0, 004b6530, 004b6730, 004b6890, 004b6ab0, 004b6d10, 004b6f00, 004b7250, 004b7a30, 004b7f20",
+      "reason": "Blocked, not attempted: they read Replicator members past +0x2b90 (or Replicator::Item / ChangePropertyItem / DeleteInstanceItem, not declared natively) that Network/Replicator2008.h leaves pending; Peer::onServiceProvider 004b5700 is declared only in Peer2008.h (owner network-client-server)."
+    },
+    {
+      "address": "slot / function instances 004b4410, 004b44c0, 004b45b0, 004b4d80, 004b5050, 004b5220, 004b5be0, 004b5db0, 004b61d0, 004b5f60, 004b7d30",
+      "reason": "Blocked, not attempted: their functors are boost::bind_t over Replicator member functions (mf2 / value<shared_ptr<...>>) that no native header declares; the bound types follow from the pending Replicator members."
+    },
+    {
+      "address": "ReplicatorStatsItem ??_E thunks 004b64b0..004b6520 and ??_G 004b6710",
+      "reason": "Bytes equal to this build's TypedStatsItem<bool> / Item thunks, but their relocations name ReplicatorStatsItem's own ??_G 004b6710 / destructor 004b6690, emitted only with the (open) ReplicatorStatsItem constructor (network-replicator2008 receipt); not claimable here."
+    }
+  ],
+  "rejected": {
+    "counting 004b5d20 at the compiled 131-byte extent": "functions.jsonl splits the original extent at the catch funclet 004b5d8e (110 + 21 bytes); the head is compared over the row extent and the remainder is proven equal to the funclet row instead."
+  },
+  "proposals": [
+    "native-headers/Network/Replicator2008.h (Replicator family owner): declare the reflected members void requestCharacter() 004b49e0 (static initializer 007f21d0, \"RequestCharacter\"), void closeConnection() 004aafd0 (007f2200, \"CloseConnection\") and boost::shared_ptr<Instance> getPlayer() 004ae860 (007f2230, \"GetPlayer\"); they unblock BoundFuncDesc<Replicator, void()> (vtable 00824cb4: constructor 004b40a0, execute 004b4110) and BoundFuncDesc<Replicator, shared_ptr<Instance>()> (00824cc0: constructor 004b4170, execute 004b4040 with invoke 004b3fa0). Together with the pending +0x2b90..+0x2d68 members (app-unit4b8 proposal) they also unblock the ReplicatorStatsItem constructor 004b62c0 (then ??_E thunks 004b64b0..004b6520 / ??_G 004b6710 / destructor 004b6690) and the signal-instance lookup 004b6730.",
+    "native-headers/Network/Peer2008.h (network-client-server owner): declare void logPackets(bool) 004ac9e0 (static initializer 007f2260, \"LogPackets\", argument \"value\"); unblocks BoundFuncDesc<Peer, void(bool)> (vtable 00824ccc: constructor 004b4240, execute 004b42e0).",
+    "work/2008-06/bounds.json (server host): 004b5d20 and 004b5d8e are one original 131-byte extent (shared_count constructor with its catch(...) funclet), like the pinned Creatable shared_count rows; BOUNDS evidence only."
+  ],
+  "exact_function_rows": [
+    "004b51d0",
+    "004b5200",
+    "004b5ca0",
+    "004b5d20",
+    "004b5d8e",
+    "004b5e60",
+    "004b60c0",
+    "004b7e10"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

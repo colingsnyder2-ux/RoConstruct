@@ -1,0 +1,1765 @@
+{
+  "class": "unit map of the application range 0069c000..006a0000 (2008-06): RbxSceneManager tail, dinput8 data, import thunks; inactive",
+  "result": "No RBX translation unit to recover: the 26 RbxSceneManager rows are already counted by ogre-scene-manager-working.json, the 2 data rows are dinput8.lib c_dfDIMouse2 / c_dfDIKeyboard object arrays and the 179 rows are linker import thunks (dinput8.dll 1, fmodex.dll 28, rgmain.dll 150). Nothing is recovered or counted here.",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit69c.py": "ee3fc4eb5fc3d9f69325fa16ad61d211f6c75ca7999b738beae0ef344d6ca8fc"
+  },
+  "unit_map": {
+    "ogre-rbx-scene-manager-tail 0x0069c5b0..0x0069eb1d": {
+      "rows": 26,
+      "unit": "Ogre::RbxSceneManager fork, RbxSceneManager.cpp (exe-local Ogre 1.4.5 fork; the unit starts at 0x0068b600, below the range)",
+      "library": false,
+      "recovered": true,
+      "counted_elsewhere": [
+        "0069c5b0 counted by ogre-scene-manager-working.json",
+        "0069c5d0 counted by ogre-scene-manager-working.json",
+        "0069c5f0 counted by ogre-scene-manager-working.json",
+        "0069c800 counted by ogre-scene-manager-working.json",
+        "0069d110 counted by ogre-scene-manager-working.json",
+        "0069d660 counted by ogre-scene-manager-working.json",
+        "0069d720 counted by ogre-scene-manager-working.json",
+        "0069d7e0 counted by ogre-scene-manager-working.json",
+        "0069d840 counted by ogre-scene-manager-working.json",
+        "0069d8d0 counted by ogre-scene-manager-working.json",
+        "0069d960 counted by ogre-scene-manager-working.json",
+        "0069da20 counted by ogre-scene-manager-working.json",
+        "0069daf0 counted by ogre-scene-manager-working.json",
+        "0069dc10 counted by ogre-scene-manager-working.json",
+        "0069dd00 counted by ogre-scene-manager-working.json",
+        "0069ddf0 counted by ogre-scene-manager-working.json",
+        "0069df80 counted by ogre-scene-manager-working.json",
+        "0069e020 counted by ogre-scene-manager-working.json",
+        "0069e110 counted by ogre-scene-manager-working.json",
+        "0069e140 counted by ogre-scene-manager-working.json",
+        "0069e180 counted by ogre-scene-manager-working.json",
+        "0069e1e0 counted by ogre-scene-manager-working.json",
+        "0069e220 counted by ogre-scene-manager-working.json",
+        "0069e390 counted by ogre-scene-manager-working.json",
+        "0069e630 counted by ogre-scene-manager-working.json",
+        "0069eb00 counted by ogre-scene-manager-working.json"
+      ]
+    },
+    "dinput8-data 0x0069eb20..0x0069fbcf": {
+      "rows": 2,
+      "unit": "DirectX SDK dinput8.lib static data: c_dfDIMouse2 / c_dfDIKeyboard object arrays",
+      "library": true,
+      "recovered": false
+    },
+    "import-thunks 0x0069fbd0..0x006a0001": {
+      "rows": 179,
+      "unit": "linker import thunks from the import libraries (continues past 0x006a0000 at 0x006a0002)",
+      "dlls": {
+        "dinput8.dll": 1,
+        "fmodex.dll": 28,
+        "rgmain.dll": 150
+      },
+      "library": true,
+      "recovered": false,
+      "support_referenced_by_other_receipts": 142
+    }
+  },
+  "row_map": {
+    "rbx_scene_manager_tail": [
+      {
+        "row": "0x0069c5b0",
+        "size": 19,
+        "symbol": "?addRenderQueueListener@RbxSceneManager@Ogre@@UAEXPAVRenderQueueListener@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069c5d0",
+        "size": 19,
+        "symbol": "?addShadowListener@RbxSceneManager@Ogre@@UAEXPAVShadowListener@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069c5f0",
+        "size": 520,
+        "symbol": "?queryResult@ShadowCasterSceneQueryListener@RbxSceneManager@Ogre@@UAE_NPAVMovableObject@3@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069c800",
+        "size": 2308,
+        "symbol": "?renderShadowVolumesToStencil@RbxSceneManager@Ogre@@MAEXPBVLight@2@PBVCamera@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d110",
+        "size": 1351,
+        "symbol": "?ensureShadowTexturesCreated@RbxSceneManager@Ogre@@MAEXXZ",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d660",
+        "size": 185,
+        "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d720",
+        "size": 185,
+        "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d7e0",
+        "size": 93,
+        "symbol": "?setShadowTextureCount@RbxSceneManager@Ogre@@UAEXI@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d840",
+        "size": 132,
+        "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0PAH0UlightLess@SceneManager@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d8d0",
+        "size": 132,
+        "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0PAH0UlightsForShadowTextureLess@SceneManager@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069d960",
+        "size": 184,
+        "symbol": "?createEntity@RbxSceneManager@Ogre@@UAEPAVEntity@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069da20",
+        "size": 193,
+        "symbol": "?createParticleSystem@RbxSceneManager@Ogre@@UAEPAVParticleSystem@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069daf0",
+        "size": 288,
+        "symbol": "?createParticleSystem@RbxSceneManager@Ogre@@UAEPAVParticleSystem@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I0@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069dc10",
+        "size": 225,
+        "symbol": "?createBillboardSet@RbxSceneManager@Ogre@@UAEPAVBillboardSet@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069dd00",
+        "size": 227,
+        "symbol": "?getMovableObjectCollection@RbxSceneManager@Ogre@@IAEPAUMovableObjectCollection@SceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069ddf0",
+        "size": 389,
+        "symbol": "?createMovableObject@RbxSceneManager@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@5@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069df80",
+        "size": 158,
+        "symbol": "?destroyMovableObject@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e020",
+        "size": 227,
+        "symbol": "?destroyAllMovableObjectsByType@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e110",
+        "size": 37,
+        "symbol": "?getMovableObjectIterator@RbxSceneManager@Ogre@@UAE?AV?$MapIterator@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e140",
+        "size": 51,
+        "symbol": "?injectMovableObject@RbxSceneManager@Ogre@@UAEXPAVMovableObject@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e180",
+        "size": 89,
+        "symbol": "?extractMovableObject@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e1e0",
+        "size": 55,
+        "symbol": "?extractAllMovableObjectsByType@RbxSceneManager@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e220",
+        "size": 359,
+        "symbol": "??1RbxSceneManager@Ogre@@UAE@XZ",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e390",
+        "size": 672,
+        "symbol": "?_populateLightList@RbxSceneManager@Ogre@@UAEXABVVector3@2@MAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069e630",
+        "size": 1219,
+        "symbol": "?findLightsAffectingFrustum@RbxSceneManager@Ogre@@MAEXPBVCamera@2@@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      },
+      {
+        "row": "0x0069eb00",
+        "size": 30,
+        "symbol": "??_GRbxSceneManager@Ogre@@UAEPAXI@Z",
+        "counted_by": "ogre-scene-manager-working.json"
+      }
+    ],
+    "dinput8_data": [
+      {
+        "row": "0x0069eb20",
+        "size": 176,
+        "object": "c_dfDIMouse2 rgodf (DIOBJECTDATAFORMAT[11])",
+        "didataformat": "0x0084ff0c",
+        "didataformat_fields": "dwSize 0x18, dwObjSize 0x10, DIDF_RELAXIS, dwDataSize 0x14, dwNumObjs 11",
+        "referenced_by": "DxUserInput row 0x00467550 (SetDataFormat)",
+        "guids": {
+          "GUID_XAxis": "0x0081f048",
+          "GUID_YAxis": "0x0081f058",
+          "GUID_ZAxis": "0x0081f068"
+        },
+        "library": "DirectX SDK dinput8.lib (static data)",
+        "counted_by": []
+      },
+      {
+        "row": "0x0069ebd0",
+        "size": 4096,
+        "object": "c_dfDIKeyboard rgodf (DIOBJECTDATAFORMAT[256])",
+        "didataformat": "0x00850114",
+        "didataformat_fields": "dwSize 0x18, dwObjSize 0x10, DIDF_RELAXIS, dwDataSize 0x100, dwNumObjs 256",
+        "referenced_by": "DxUserInput row 0x004675e0 (SetDataFormat)",
+        "guids": {
+          "GUID_Key": "0x0081f0c8"
+        },
+        "library": "DirectX SDK dinput8.lib (static data)",
+        "counted_by": []
+      }
+    ],
+    "import_thunks": [
+      {
+        "row": "0x0069fbd0",
+        "iat": "0x00802068",
+        "import": "dinput8.dll!DirectInput8Create",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbd6",
+        "iat": "0x00802f70",
+        "import": "fmodex.dll!FMOD_System_Create",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbdc",
+        "iat": "0x00802f74",
+        "import": "fmodex.dll!?getPaused@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbe2",
+        "iat": "0x00802f6c",
+        "import": "fmodex.dll!?isPlaying@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbe8",
+        "iat": "0x00802f68",
+        "import": "fmodex.dll!?setReverbProperties@System@FMOD@@QAG?AW4FMOD_RESULT@@PBUFMOD_REVERB_PROPERTIES@@@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbee",
+        "iat": "0x00802f64",
+        "import": "fmodex.dll!?set3DSettings@System@FMOD@@QAG?AW4FMOD_RESULT@@MMM@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbf4",
+        "iat": "0x00802f60",
+        "import": "fmodex.dll!?setUserData@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PAX@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fbfa",
+        "iat": "0x00802f5c",
+        "import": "fmodex.dll!?setLoopCount@Channel@FMOD@@QAG?AW4FMOD_RESULT@@H@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc00",
+        "iat": "0x00802f58",
+        "import": "fmodex.dll!?setMode@Channel@FMOD@@QAG?AW4FMOD_RESULT@@I@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc06",
+        "iat": "0x00802f54",
+        "import": "fmodex.dll!?getMode@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PAI@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc0c",
+        "iat": "0x00802f50",
+        "import": "fmodex.dll!?set3DAttributes@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PBUFMOD_VECTOR@@0@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc12",
+        "iat": "0x00802f4c",
+        "import": "fmodex.dll!?release@Sound@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc18",
+        "iat": "0x00802f48",
+        "import": "fmodex.dll!?release@System@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc1e",
+        "iat": "0x00802f44",
+        "import": "fmodex.dll!?init@System@FMOD@@QAG?AW4FMOD_RESULT@@HIPAX@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc24",
+        "iat": "0x00802f40",
+        "import": "fmodex.dll!?setDSPBufferSize@System@FMOD@@QAG?AW4FMOD_RESULT@@IH@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc2a",
+        "iat": "0x00802f3c",
+        "import": "fmodex.dll!?setSpeakerMode@System@FMOD@@QAG?AW4FMOD_RESULT@@W4FMOD_SPEAKERMODE@@@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc30",
+        "iat": "0x00802f38",
+        "import": "fmodex.dll!?getDriverCaps@System@FMOD@@QAG?AW4FMOD_RESULT@@HPAIPAH1PAW4FMOD_SPEAKERMODE@@@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc36",
+        "iat": "0x00802f34",
+        "import": "fmodex.dll!?getDriver@System@FMOD@@QAG?AW4FMOD_RESULT@@PAH@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc3c",
+        "iat": "0x00802f30",
+        "import": "fmodex.dll!?getVersion@System@FMOD@@QAG?AW4FMOD_RESULT@@PAI@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc42",
+        "iat": "0x00802f2c",
+        "import": "fmodex.dll!?update@System@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc48",
+        "iat": "0x00802f28",
+        "import": "fmodex.dll!?set3DListenerAttributes@System@FMOD@@QAG?AW4FMOD_RESULT@@HPBUFMOD_VECTOR@@000@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc4e",
+        "iat": "0x00802f24",
+        "import": "fmodex.dll!FMOD_Channel_GetUserData",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc54",
+        "iat": "0x00802f20",
+        "import": "fmodex.dll!?createSound@System@FMOD@@QAG?AW4FMOD_RESULT@@PBDIPAUFMOD_CREATESOUNDEXINFO@@PAPAVSound@2@@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc5a",
+        "iat": "0x00802f1c",
+        "import": "fmodex.dll!FMOD_Memory_GetStats",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc60",
+        "iat": "0x00802f18",
+        "import": "fmodex.dll!?setCallback@Channel@FMOD@@QAG?AW4FMOD_RESULT@@W4FMOD_CHANNEL_CALLBACKTYPE@@P6G?AW43@PAUFMOD_CHANNEL@@0HII@ZH@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc66",
+        "iat": "0x00802f14",
+        "import": "fmodex.dll!?setVolume@Channel@FMOD@@QAG?AW4FMOD_RESULT@@M@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc6c",
+        "iat": "0x00802f10",
+        "import": "fmodex.dll!?playSound@System@FMOD@@QAG?AW4FMOD_RESULT@@W4FMOD_CHANNELINDEX@@PAVSound@2@_NPAPAVChannel@2@@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc72",
+        "iat": "0x00802f0c",
+        "import": "fmodex.dll!?setPaused@Channel@FMOD@@QAG?AW4FMOD_RESULT@@_N@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc78",
+        "iat": "0x00802f08",
+        "import": "fmodex.dll!?stop@Channel@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fc7e",
+        "iat": "0x00804e54",
+        "import": "rgmain.dll!?read@MemoryDataStream@Ogre@@UAEIPAXI@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fc84",
+        "iat": "0x00804e50",
+        "import": "rgmain.dll!?readLine@MemoryDataStream@Ogre@@UAEIPADIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fc8a",
+        "iat": "0x00804e4c",
+        "import": "rgmain.dll!?getLine@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fc90",
+        "iat": "0x00804e48",
+        "import": "rgmain.dll!?getAsString@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fc96",
+        "iat": "0x00804cd8",
+        "import": "rgmain.dll!?skipLine@MemoryDataStream@Ogre@@UAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fc9c",
+        "iat": "0x00804cd4",
+        "import": "rgmain.dll!?skip@MemoryDataStream@Ogre@@UAEXJ@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fca2",
+        "iat": "0x00804cd0",
+        "import": "rgmain.dll!?seek@MemoryDataStream@Ogre@@UAEXI@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fca8",
+        "iat": "0x00804ccc",
+        "import": "rgmain.dll!?tell@MemoryDataStream@Ogre@@UBEIXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcae",
+        "iat": "0x00804cc8",
+        "import": "rgmain.dll!?eof@MemoryDataStream@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcb4",
+        "iat": "0x00804cc4",
+        "import": "rgmain.dll!?close@MemoryDataStream@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcba",
+        "iat": "0x00804c40",
+        "import": "rgmain.dll!?read@FileStreamDataStream@Ogre@@UAEIPAXI@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcc0",
+        "iat": "0x00804c3c",
+        "import": "rgmain.dll!?readLine@FileStreamDataStream@Ogre@@UAEIPADIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcc6",
+        "iat": "0x00804c38",
+        "import": "rgmain.dll!?skipLine@DataStream@Ogre@@UAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fccc",
+        "iat": "0x00804c34",
+        "import": "rgmain.dll!?skip@FileStreamDataStream@Ogre@@UAEXJ@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcd2",
+        "iat": "0x00804c30",
+        "import": "rgmain.dll!?seek@FileStreamDataStream@Ogre@@UAEXI@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcd8",
+        "iat": "0x00804c2c",
+        "import": "rgmain.dll!?tell@FileStreamDataStream@Ogre@@UBEIXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcde",
+        "iat": "0x00804c28",
+        "import": "rgmain.dll!?eof@FileStreamDataStream@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fce4",
+        "iat": "0x00804c24",
+        "import": "rgmain.dll!?close@FileStreamDataStream@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcea",
+        "iat": "0x00804478",
+        "import": "rgmain.dll!?getMaterial@Node@Ogre@@UBEABVMaterialPtr@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcf0",
+        "iat": "0x00804474",
+        "import": "rgmain.dll!?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcf6",
+        "iat": "0x00804470",
+        "import": "rgmain.dll!?getRenderOperation@Node@Ogre@@UAEXAAVRenderOperation@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fcfc",
+        "iat": "0x0080446c",
+        "import": "rgmain.dll!?getWorldTransforms@Node@Ogre@@UBEXPAVMatrix4@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd02",
+        "iat": "0x00804468",
+        "import": "rgmain.dll!?getWorldOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd08",
+        "iat": "0x00804464",
+        "import": "rgmain.dll!?getWorldPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd0e",
+        "iat": "0x00804140",
+        "import": "rgmain.dll!?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd14",
+        "iat": "0x00804144",
+        "import": "rgmain.dll!?getSquaredViewDepth@Node@Ogre@@UBEMPBVCamera@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd1a",
+        "iat": "0x00804148",
+        "import": "rgmain.dll!?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd20",
+        "iat": "0x0080414c",
+        "import": "rgmain.dll!?getLights@Node@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd26",
+        "iat": "0x00804150",
+        "import": "rgmain.dll!?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd2c",
+        "iat": "0x00804154",
+        "import": "rgmain.dll!?getCastsShadows@Renderable@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd32",
+        "iat": "0x00804158",
+        "import": "rgmain.dll!?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd38",
+        "iat": "0x0080415c",
+        "import": "rgmain.dll!?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd3e",
+        "iat": "0x00804160",
+        "import": "rgmain.dll!?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd44",
+        "iat": "0x00804164",
+        "import": "rgmain.dll!?setParent@SceneNode@Ogre@@MAEXPAVNode@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd4a",
+        "iat": "0x00804168",
+        "import": "rgmain.dll!?_updateFromParent@Node@Ogre@@MBEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd50",
+        "iat": "0x0080416c",
+        "import": "rgmain.dll!?updateFromParentImpl@SceneNode@Ogre@@MBEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd56",
+        "iat": "0x00804170",
+        "import": "rgmain.dll!?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd5c",
+        "iat": "0x00804174",
+        "import": "rgmain.dll!?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd62",
+        "iat": "0x00804178",
+        "import": "rgmain.dll!?getParent@Node@Ogre@@UBEPAV12@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd68",
+        "iat": "0x0080417c",
+        "import": "rgmain.dll!?getOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd6e",
+        "iat": "0x00804180",
+        "import": "rgmain.dll!?setOrientation@Node@Ogre@@UAEXMMMM@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd74",
+        "iat": "0x00804184",
+        "import": "rgmain.dll!?setOrientation@Node@Ogre@@UAEXABVQuaternion@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd7a",
+        "iat": "0x00804188",
+        "import": "rgmain.dll!?resetOrientation@Node@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd80",
+        "iat": "0x0080418c",
+        "import": "rgmain.dll!?setPosition@Node@Ogre@@UAEXMMM@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd86",
+        "iat": "0x00804190",
+        "import": "rgmain.dll!?setPosition@Node@Ogre@@UAEXABVVector3@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd8c",
+        "iat": "0x00804194",
+        "import": "rgmain.dll!?getPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd92",
+        "iat": "0x00804198",
+        "import": "rgmain.dll!?setScale@Node@Ogre@@UAEXMMM@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd98",
+        "iat": "0x0080419c",
+        "import": "rgmain.dll!?setScale@Node@Ogre@@UAEXABVVector3@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fd9e",
+        "iat": "0x008041a0",
+        "import": "rgmain.dll!?getScale@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fda4",
+        "iat": "0x008041a4",
+        "import": "rgmain.dll!?setInheritOrientation@Node@Ogre@@UAEX_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdaa",
+        "iat": "0x008041a8",
+        "import": "rgmain.dll!?getInheritOrientation@Node@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdb0",
+        "iat": "0x008041ac",
+        "import": "rgmain.dll!?setInheritScale@Node@Ogre@@UAEX_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdb6",
+        "iat": "0x008041b0",
+        "import": "rgmain.dll!?getInheritScale@Node@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdbc",
+        "iat": "0x008041b4",
+        "import": "rgmain.dll!?scale@Node@Ogre@@UAEXMMM@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdc2",
+        "iat": "0x008041b8",
+        "import": "rgmain.dll!?scale@Node@Ogre@@UAEXABVVector3@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdc8",
+        "iat": "0x008041bc",
+        "import": "rgmain.dll!?translate@Node@Ogre@@UAEXABVMatrix3@2@MMMW4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdce",
+        "iat": "0x008041c0",
+        "import": "rgmain.dll!?translate@Node@Ogre@@UAEXABVMatrix3@2@ABVVector3@2@W4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdd4",
+        "iat": "0x008041c4",
+        "import": "rgmain.dll!?translate@Node@Ogre@@UAEXMMMW4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdda",
+        "iat": "0x008041c8",
+        "import": "rgmain.dll!?translate@Node@Ogre@@UAEXABVVector3@2@W4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fde0",
+        "iat": "0x008041cc",
+        "import": "rgmain.dll!?roll@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fde6",
+        "iat": "0x008041d0",
+        "import": "rgmain.dll!?pitch@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdec",
+        "iat": "0x008041d4",
+        "import": "rgmain.dll!?yaw@SceneNode@Ogre@@UAEXABVRadian@2@W4TransformSpace@Node@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdf2",
+        "iat": "0x008041d8",
+        "import": "rgmain.dll!?rotate@Node@Ogre@@UAEXABVQuaternion@2@W4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdf8",
+        "iat": "0x008041dc",
+        "import": "rgmain.dll!?rotate@Node@Ogre@@UAEXABVVector3@2@ABVRadian@2@W4TransformSpace@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fdfe",
+        "iat": "0x008041e0",
+        "import": "rgmain.dll!?getLocalAxes@Node@Ogre@@UBE?AVMatrix3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe04",
+        "iat": "0x008041e4",
+        "import": "rgmain.dll!?createChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe0a",
+        "iat": "0x008041e8",
+        "import": "rgmain.dll!?createChild@Node@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe10",
+        "iat": "0x008041ec",
+        "import": "rgmain.dll!?addChild@Node@Ogre@@UAEXPAV12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe16",
+        "iat": "0x008041f0",
+        "import": "rgmain.dll!?numChildren@Node@Ogre@@UBEGXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe1c",
+        "iat": "0x008041f4",
+        "import": "rgmain.dll!?getChild@Node@Ogre@@UBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe22",
+        "iat": "0x008041f8",
+        "import": "rgmain.dll!?getChild@Node@Ogre@@UBEPAV12@G@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe28",
+        "iat": "0x008041fc",
+        "import": "rgmain.dll!?getChildIterator@Node@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe2e",
+        "iat": "0x00804200",
+        "import": "rgmain.dll!?getChildIterator@Node@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe34",
+        "iat": "0x00804204",
+        "import": "rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe3a",
+        "iat": "0x00804208",
+        "import": "rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@PAV12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe40",
+        "iat": "0x0080420c",
+        "import": "rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@G@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe46",
+        "iat": "0x00804210",
+        "import": "rgmain.dll!?removeAllChildren@Node@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe4c",
+        "iat": "0x00804214",
+        "import": "rgmain.dll!?_getDerivedOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe52",
+        "iat": "0x00804218",
+        "import": "rgmain.dll!?_getDerivedPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe58",
+        "iat": "0x0080421c",
+        "import": "rgmain.dll!?_getDerivedScale@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe5e",
+        "iat": "0x00804220",
+        "import": "rgmain.dll!?_getFullTransform@Node@Ogre@@UBEABVMatrix4@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe64",
+        "iat": "0x00804224",
+        "import": "rgmain.dll!?setListener@Node@Ogre@@UAEXPAVListener@12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe6a",
+        "iat": "0x00804228",
+        "import": "rgmain.dll!?getListener@Node@Ogre@@UBEPAVListener@12@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe70",
+        "iat": "0x0080422c",
+        "import": "rgmain.dll!?setInitialState@Node@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe76",
+        "iat": "0x00804230",
+        "import": "rgmain.dll!?resetToInitialState@Node@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe7c",
+        "iat": "0x00804234",
+        "import": "rgmain.dll!?getInitialPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe82",
+        "iat": "0x00804238",
+        "import": "rgmain.dll!?getInitialOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe88",
+        "iat": "0x0080423c",
+        "import": "rgmain.dll!?getInitialScale@Node@Ogre@@UBEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe8e",
+        "iat": "0x00804240",
+        "import": "rgmain.dll!?needUpdate@Node@Ogre@@UAEX_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe94",
+        "iat": "0x00804244",
+        "import": "rgmain.dll!?requestUpdate@Node@Ogre@@UAEXPAV12@_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fe9a",
+        "iat": "0x00804248",
+        "import": "rgmain.dll!?cancelUpdate@Node@Ogre@@UAEXPAV12@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fea0",
+        "iat": "0x0080424c",
+        "import": "rgmain.dll!?setInSceneGraph@SceneNode@Ogre@@MAEX_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fea6",
+        "iat": "0x00804250",
+        "import": "rgmain.dll!?attachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069feac",
+        "iat": "0x00804278",
+        "import": "rgmain.dll!?numAttachedObjects@SceneNode@Ogre@@UBEGXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069feb2",
+        "iat": "0x0080427c",
+        "import": "rgmain.dll!?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069feb8",
+        "iat": "0x00804280",
+        "import": "rgmain.dll!?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069febe",
+        "iat": "0x00804284",
+        "import": "rgmain.dll!?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fec4",
+        "iat": "0x00804288",
+        "import": "rgmain.dll!?detachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069feca",
+        "iat": "0x0080428c",
+        "import": "rgmain.dll!?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fed0",
+        "iat": "0x00804290",
+        "import": "rgmain.dll!?detachAllObjects@SceneNode@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fed6",
+        "iat": "0x00804294",
+        "import": "rgmain.dll!?isInSceneGraph@SceneNode@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fedc",
+        "iat": "0x00804298",
+        "import": "rgmain.dll!?_notifyRootNode@SceneNode@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fee2",
+        "iat": "0x0080429c",
+        "import": "rgmain.dll!?_getWorldAABB@SceneNode@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fee8",
+        "iat": "0x008042a0",
+        "import": "rgmain.dll!?getAttachedObjectIterator@SceneNode@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069feee",
+        "iat": "0x008042a4",
+        "import": "rgmain.dll!?getAttachedObjectIterator@SceneNode@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fef4",
+        "iat": "0x008042a8",
+        "import": "rgmain.dll!?removeAndDestroyChild@SceneNode@Ogre@@UAEXG@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fefa",
+        "iat": "0x008042ac",
+        "import": "rgmain.dll!?removeAndDestroyChild@SceneNode@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff00",
+        "iat": "0x008042b0",
+        "import": "rgmain.dll!?removeAndDestroyAllChildren@SceneNode@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff06",
+        "iat": "0x008042b4",
+        "import": "rgmain.dll!?showBoundingBox@SceneNode@Ogre@@UAEX_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff0c",
+        "iat": "0x008042b8",
+        "import": "rgmain.dll!?_addBoundingBoxToQueue@SceneNode@Ogre@@UAEXPAVRenderQueue@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff12",
+        "iat": "0x008042bc",
+        "import": "rgmain.dll!?getShowBoundingBox@SceneNode@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff18",
+        "iat": "0x008042c0",
+        "import": "rgmain.dll!?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff1e",
+        "iat": "0x008042c4",
+        "import": "rgmain.dll!?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff24",
+        "iat": "0x008042c8",
+        "import": "rgmain.dll!?findLights@SceneNode@Ogre@@UBEXAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@M@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff2a",
+        "iat": "0x008042cc",
+        "import": "rgmain.dll!?setFixedYawAxis@SceneNode@Ogre@@UAEX_NABVVector3@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff30",
+        "iat": "0x008042d0",
+        "import": "rgmain.dll!?setDirection@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff36",
+        "iat": "0x008042d4",
+        "import": "rgmain.dll!?setDirection@SceneNode@Ogre@@UAEXMMMW4TransformSpace@Node@2@ABVVector3@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff3c",
+        "iat": "0x008042d8",
+        "import": "rgmain.dll!?lookAt@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff42",
+        "iat": "0x008042dc",
+        "import": "rgmain.dll!?setAutoTracking@SceneNode@Ogre@@UAEX_NPAV12@ABVVector3@2@2@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff48",
+        "iat": "0x008042e0",
+        "import": "rgmain.dll!?getAutoTrackTarget@SceneNode@Ogre@@UAEPAV12@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff4e",
+        "iat": "0x008042e4",
+        "import": "rgmain.dll!?getAutoTrackOffset@SceneNode@Ogre@@UAEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff54",
+        "iat": "0x008042e8",
+        "import": "rgmain.dll!?getAutoTrackLocalDirection@SceneNode@Ogre@@UAEABVVector3@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff5a",
+        "iat": "0x008042ec",
+        "import": "rgmain.dll!?setVisible@SceneNode@Ogre@@UAEX_N0@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff60",
+        "iat": "0x008042f0",
+        "import": "rgmain.dll!?flipVisibility@SceneNode@Ogre@@UAEX_N@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json",
+          "ogre-rbx-node-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff66",
+        "iat": "0x0080432c",
+        "import": "rgmain.dll!?getMetaData@SceneManagerFactory@Ogre@@UBEABUSceneManagerMetaData@2@XZ",
+        "support_reference_in": [
+          "ogre-scene-manager-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff6c",
+        "iat": "0x008044a0",
+        "import": "rgmain.dll!?getCastShadows@MovableObject@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff72",
+        "iat": "0x008044a4",
+        "import": "rgmain.dll!?getEdgeList@Entity@Ogre@@UAEPAVEdgeData@2@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069ff78",
+        "iat": "0x008044a8",
+        "import": "rgmain.dll!?hasEdgeList@Entity@Ogre@@UAE_NXZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069ff7e",
+        "iat": "0x008044ac",
+        "import": "rgmain.dll!?getWorldBoundingBox@Entity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069ff84",
+        "iat": "0x008044b0",
+        "import": "rgmain.dll!?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff8a",
+        "iat": "0x008044b4",
+        "import": "rgmain.dll!?getDarkCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff90",
+        "iat": "0x008044b8",
+        "import": "rgmain.dll!?getShadowVolumeRenderableIterator@Entity@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069ff96",
+        "iat": "0x008044bc",
+        "import": "rgmain.dll!?getPointExtrusionDistance@MovableObject@Ogre@@UBEMPBVLight@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ff9c",
+        "iat": "0x008044c0",
+        "import": "rgmain.dll!?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffa2",
+        "iat": "0x008044c4",
+        "import": "rgmain.dll!?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffa8",
+        "iat": "0x008044c8",
+        "import": "rgmain.dll!?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z",
+        "support_reference_in": [
+          "app-unit67c-2008-working.json",
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffae",
+        "iat": "0x008044cc",
+        "import": "rgmain.dll!?_notifyCreator@MovableObject@Ogre@@UAEXPAVMovableObjectFactory@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffb4",
+        "iat": "0x008044d0",
+        "import": "rgmain.dll!?_getCreator@MovableObject@Ogre@@UBEPAVMovableObjectFactory@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffba",
+        "iat": "0x008044d4",
+        "import": "rgmain.dll!?_notifyManager@MovableObject@Ogre@@UAEXPAVSceneManager@2@@Z",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffc0",
+        "iat": "0x008044d8",
+        "import": "rgmain.dll!?_getManager@MovableObject@Ogre@@UBEPAVSceneManager@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffc6",
+        "iat": "0x008044dc",
+        "import": "rgmain.dll!?getName@MovableObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffcc",
+        "iat": "0x008044e0",
+        "import": "rgmain.dll!?getMovableType@Entity@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069ffd2",
+        "iat": "0x008044e4",
+        "import": "rgmain.dll!?getParentNode@MovableObject@Ogre@@UBEPAVNode@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffd8",
+        "iat": "0x008044e8",
+        "import": "rgmain.dll!?getParentSceneNode@MovableObject@Ogre@@UBEPAVSceneNode@2@XZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffde",
+        "iat": "0x008044ec",
+        "import": "rgmain.dll!?_notifyAttached@Entity@Ogre@@UAEXPAVNode@2@_N@Z",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069ffe4",
+        "iat": "0x008044f0",
+        "import": "rgmain.dll!?isAttached@MovableObject@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069ffea",
+        "iat": "0x008044f4",
+        "import": "rgmain.dll!?isInScene@MovableObject@Ogre@@UBE_NXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fff0",
+        "iat": "0x008044f8",
+        "import": "rgmain.dll!?_notifyMoved@MovableObject@Ogre@@UAEXXZ",
+        "support_reference_in": [
+          "ogre-rbx-locals-working.json"
+        ]
+      },
+      {
+        "row": "0x0069fff6",
+        "iat": "0x008044fc",
+        "import": "rgmain.dll!?getBoundingBox@Entity@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+        "support_reference_in": []
+      },
+      {
+        "row": "0x0069fffc",
+        "iat": "0x00804500",
+        "import": "rgmain.dll!?getBoundingRadius@Entity@Ogre@@UBEMXZ",
+        "support_reference_in": []
+      }
+    ]
+  },
+  "notes": {
+    "analog-labels": "The analysis labels the data and thunk rows Ogre::RbxSceneManager / Ogre::RbxEntity by proximity only: the data rows are dinput8.lib DIOBJECTDATAFORMAT arrays (the analysis kind is \"data\") and the thunks are import stubs.",
+    "no-rbx-unit": "No RBX class, Reflection descriptor, static initializer or Roblox-only template instantiation lies in the range. The only Roblox code is the RbxSceneManager fork tail, fully counted by ogre-scene-manager-working.json.",
+    "thunk-support": "Import thunks named in other receipts are verified call / vtable-slot targets there (support only); no receipt counts a thunk and none is counted here."
+  },
+  "range_functions": 207,
+  "range_bytes": 14693,
+  "range_rows_counted_by_other_receipts": [
+    "0069c5b0 counted by ogre-scene-manager-working.json",
+    "0069c5d0 counted by ogre-scene-manager-working.json",
+    "0069c5f0 counted by ogre-scene-manager-working.json",
+    "0069c800 counted by ogre-scene-manager-working.json",
+    "0069d110 counted by ogre-scene-manager-working.json",
+    "0069d660 counted by ogre-scene-manager-working.json",
+    "0069d720 counted by ogre-scene-manager-working.json",
+    "0069d7e0 counted by ogre-scene-manager-working.json",
+    "0069d840 counted by ogre-scene-manager-working.json",
+    "0069d8d0 counted by ogre-scene-manager-working.json",
+    "0069d960 counted by ogre-scene-manager-working.json",
+    "0069da20 counted by ogre-scene-manager-working.json",
+    "0069daf0 counted by ogre-scene-manager-working.json",
+    "0069dc10 counted by ogre-scene-manager-working.json",
+    "0069dd00 counted by ogre-scene-manager-working.json",
+    "0069ddf0 counted by ogre-scene-manager-working.json",
+    "0069df80 counted by ogre-scene-manager-working.json",
+    "0069e020 counted by ogre-scene-manager-working.json",
+    "0069e110 counted by ogre-scene-manager-working.json",
+    "0069e140 counted by ogre-scene-manager-working.json",
+    "0069e180 counted by ogre-scene-manager-working.json",
+    "0069e1e0 counted by ogre-scene-manager-working.json",
+    "0069e220 counted by ogre-scene-manager-working.json",
+    "0069e390 counted by ogre-scene-manager-working.json",
+    "0069e630 counted by ogre-scene-manager-working.json",
+    "0069eb00 counted by ogre-scene-manager-working.json"
+  ],
+  "exact_function_rows": [],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}

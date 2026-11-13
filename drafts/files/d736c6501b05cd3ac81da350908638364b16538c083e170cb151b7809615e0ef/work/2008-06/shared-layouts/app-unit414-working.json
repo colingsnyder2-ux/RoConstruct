@@ -1,0 +1,3687 @@
+{
+  "family": "app unit 00414000 (clipboard verb unit tail, VARIANT / SAFEARRAY block, CContent COM unit, DHTMLWindowService / DHTMLWindow unit head)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "NativeAppUnit414ContentAtl": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppUnit414ContentAtl.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit414ContentAtl.cpp"
+    ],
+    "NativeAppUnit414ClipboardActions": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppUnit414ClipboardActions.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ClipboardActions.cpp"
+    ],
+    "NativeAppUnit414DHTMLWindow": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppUnit414DHTMLWindow.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp"
+    ],
+    "NativeAppUnit414DHTMLWindowService": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppUnit414DHTMLWindowService.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindowService.cpp"
+    ],
+    "NativeAppUnit414CContentGuids": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppUnit414CContentGuids.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/CContentGuids.cpp"
+    ],
+    "NativeAppUnit414WorkspaceGuids": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppUnit414WorkspaceGuids.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/WorkspaceGuids.cpp"
+    ]
+  },
+  "profile": "document-swap flags; ClipboardActions.cpp with native-headers/std-noinline-string first (its pinned native-flags); AppLeaves2008DHTMLWindow.cpp with std-noinline-string and boost-function-pod-vtable first (as record_native_app_leaves2008_dhtml.py); the rest plain (as record_native_content_factory.py / record_native_app_leaves2008_services.py)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit414.py": "ff0fb248b99e3d3e2f26f70cf7645825898d932e28f0305bf79fb3fa2bd5a120",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/AppUnit414ContentAtl.cpp": "e27e4f1bd83de7da7ae3ed5588b3b38ac94315b8c4e3a025da909139f2ba712c",
+    "rebuild/2008-06/native-classes/ClipboardActions.cpp": "c5cf548a93a10368918e84eaa1464b9bcffcd43561b1f257da2bd5e2d3b3f43b",
+    "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp": "cbb12b82d238114d16cb2871f4c3d5197e968c90551029d82eb54e971bed819a",
+    "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindowService.cpp": "9b3486e0b584dfc29814d53826bc1e18a192c00e48cec686f23b4906de7f8ee1",
+    "rebuild/2008-06/native-classes/CContentGuids.cpp": "2f4939cf7b1aa9af42fb85702c288f12ca3fe2ff91f17a1e9c48fa378fc8c975",
+    "rebuild/2008-06/native-classes/WorkspaceGuids.cpp": "45b1efca46bc75788a4e67bd19109f6f9d951c0e717d3566d65917540418156e",
+    "rebuild/2008-06/native-headers/CContent.h": "e5ca7b6560ce7d078bbf3905ad64d77fcd6534607534b7fabfc454c3b0f05e62",
+    "rebuild/2008-06/native-headers/RobloxLib.h": "283a8a8c04806b5e853bea9933ead19a9bf70da9d9c6242fc881119d391241bf",
+    "rebuild/2008-06/native-headers/ClipboardVerbs.h": "eb0bba7ce3394e271524d6406eac6ee277ab989b371f3b56644c958d1090f949",
+    "rebuild/2008-06/native-headers/v8xml/XmlSerializer.h": "7f3412ef1a73081399dc982dbb4b7b1de9f6331298e9a732fb4209dbc170707f",
+    "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindow2008.h": "78de3abde07bd4d02e3910a26c72e20f99534ea5a5bffedc6485e865825da43e",
+    "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindowService2008.h": "df4bc9b98ec652f9d71232eea0e826bae5ad452500d41c6b448a9050d27bf8e6",
+    "rebuild/2008-06/native-headers/std-noinline-string/xstring": "abed1fd7598c0041a3ee2dfae5095d43464789877c22452215c0015d981e8bee",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp": "95fb4a51a884f45f6d3148c5a523aaac026919e5dce454e9884f416e57cb3334"
+  },
+  "objects": {
+    "content": "773aac6939117c3b6f098ef68aa041667c6a77c9f926ed211ad459e7a530b462",
+    "clipboard": "8ac3a888fb86e7ca42bf85cd6698581aef5b9eb841e6e91a6b5fa6044ac79c7f",
+    "window": "ab0e3e89e8d18b331d6c3d7d30cd385d896fff878d620b79e1fbf1b4ef425c22",
+    "service": "ddcef7f1e8425633305190000c9b9ec035a0202b61277317bf1bcd2c2540c784"
+  },
+  "range": [
+    "0x00414000",
+    "0x00418000"
+  ],
+  "range_rows": 141,
+  "unit_map": {
+    "clipboard verb unit (from 0x413490) ..0x4159df": {
+      "kind": "rbx",
+      "evidence": "CopyVerb vtable 0x80e960 slot 4 = 0x415800, PasteVerb vtable 0x80e934 slots 2 / 4 = 0x4154a0 / 0x415510 (\"NetworkClient\", clipboard format \"Roblox\"); the Creatable instances counted by app-unit40c-2008 / creatable-shared-count; TextXmlParser ctor / dtor and the map<string, string> / map<InstanceHandle, int> instances emitted by ClipboardActions.cpp.",
+      "recovered": "PasteVerb::doIt, CopyVerb::doIt, TextXmlParser(streambuf*), ~TextXmlParser, ~XmlParser from the committed ClipboardActions.cpp compiled unchanged."
+    },
+    "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f": {
+      "kind": "rbx + ATL / boost library instances",
+      "evidence": "starts with SafeArrayGetVartype right after CopyVerb::doIt; valueToVariant 0x416370 calls makeSafeArray 0x4165e0 and the any_cast / CComSafeArray rows; no clipboard row calls into it. The two RBX bodies have committed sources (ValueConverter.cpp / SafeArray.cpp) whose mismatch receipts are 635 / 615 B and 189 / 168 B; not attempted here."
+    },
+    "CContent COM unit 0x416690..0x416e5f": {
+      "kind": "rbx",
+      "evidence": "CComObject<CContent> vtables 0x80eabc / 0x80ea98 (slot 7 Upload 0x4166a0, \"Untrusted Url\"), CComAggObject<CContent> 0x80eb4c, CComContainedObject<CContent> 0x80eb38 / 0x80eb14, operator new(0x94) in CComCreator<CComObject<CContent>>::CreateInstance 0x416ac0.",
+      "recovered": "the ATL instances over CContent in native-classes/AppUnit414ContentAtl.cpp."
+    },
+    "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)": {
+      "kind": "rbx",
+      "evidence": "DHTMLWindowService vtable 0x80efd4 slot 2 = askAddChild 0x416e60; doDeclare pushes \"HtmlService\"; DHTMLWindow-only boost::bind storages 0x4173b0..0x417ff0 and the DHTMLWindow workers 0x417a10..0x417d10 lie in the same run as the CComObject<CLuaFunction> instances (vtables 0x80ec00 / 0x80ebd8), so app-unit40c-2008's separate CLuaFunction unit at 0x417360 is read here as part of this unit.",
+      "recovered": "the DHTMLWindow-only template rows from the committed AppLeaves2008DHTMLWindow.cpp and AppLeaves2008DHTMLWindowService.cpp compiled unchanged (their receipts prove them only as uncounted instances)."
+    }
+  },
+  "blocks": {
+    "clipboard verb unit (from 0x413490) ..0x4159df": {
+      "rows": 33,
+      "counted_here": 5,
+      "counted_elsewhere": 17,
+      "open": 11
+    },
+    "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f": {
+      "rows": 28,
+      "counted_here": 0,
+      "counted_elsewhere": 2,
+      "open": 26
+    },
+    "CContent COM unit 0x416690..0x416e5f": {
+      "rows": 28,
+      "counted_here": 19,
+      "counted_elsewhere": 6,
+      "open": 3
+    },
+    "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)": {
+      "rows": 52,
+      "counted_here": 10,
+      "counted_elsewhere": 3,
+      "open": 39
+    }
+  },
+  "rows": [
+    {
+      "row": "0x00414070",
+      "size": 755,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<std::string, std::string> erase(iterator) (TextXmlParser entities map; STL library instance)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVlogic_error@std@@",
+          ".?AVout_of_range@std@@"
+        ],
+        "strings": [
+          "\n*R",
+          ">+R",
+          "invalid map/set<T> iterator"
+        ],
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@AB",
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PB",
+          "??0exception@std@@QAE@XZ",
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+        ],
+        "callers": [
+          "0x004145f0"
+        ]
+      }
+    },
+    {
+      "row": "0x00414370",
+      "size": 104,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<InstanceHandle, int>::_Erase (evidence name; STL instance shared with five other units)",
+      "evidence": {
+        "evidence_name": "?_Erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@2@@Z",
+        "callers": [
+          "0x00414370",
+          "0x00414510"
+        ]
+      }
+    },
+    {
+      "row": "0x004143e0",
+      "size": 130,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<std::string, std::string>::_Erase (STL library instance)",
+      "evidence": {
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+        ],
+        "callers": [
+          "0x004143e0",
+          "0x004145f0"
+        ]
+      }
+    },
+    {
+      "row": "0x00414470",
+      "size": 24,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted here",
+      "counted": "00414470 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00414490",
+      "size": 117,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::_Tree constructor (evidence name set<ContentId>; ICF-folded with map<string, string>, see ogre-scene-manager); STL library instance",
+      "evidence": {
+        "evidence_name": "??0?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@VContentId@RBX@@@1@ABV?$allocator@VContentId@RBX@@@1@@Z",
+        "callers": [
+          "0x00415350",
+          "0x0067a7e0",
+          "0x0069d960",
+          "0x0069da20",
+          "0x0069daf0",
+          "0x0069dc10"
+        ]
+      }
+    },
+    {
+      "row": "0x00414510",
+      "size": 220,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<InstanceHandle, int>::erase(range) (evidence name); STL instance shared with other units",
+      "evidence": {
+        "evidence_name": "?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+        "imports": [
+          "_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x004146d0"
+        ]
+      }
+    },
+    {
+      "row": "0x004145f0",
+      "size": 220,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<std::string, std::string>::erase(range) (STL library instance)",
+      "evidence": {
+        "imports": [
+          "_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x00414740",
+          "0x0067a7e0"
+        ]
+      }
+    },
+    {
+      "row": "0x004146d0",
+      "size": 112,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<InstanceHandle, int> destructor (evidence name), called by five other units; STL instance",
+      "evidence": {
+        "evidence_name": "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+        "callers": [
+          "0x00415800",
+          "0x0046b1e0",
+          "0x0049bf90",
+          "0x00568910",
+          "0x00579c10"
+        ]
+      }
+    },
+    {
+      "row": "0x00414740",
+      "size": 117,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "std::map<std::string, std::string> destructor (STL library instance; called by ~TextXmlParser)",
+      "evidence": {
+        "callers": [
+          "0x004147c0",
+          "0x0069d960",
+          "0x0069da20",
+          "0x0069daf0",
+          "0x0069dc10"
+        ]
+      }
+    },
+    {
+      "row": "0x004147c0",
+      "size": 82,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted here",
+      "counted": "004147c0 counted here",
+      "evidence": {
+        "callers": [
+          "0x00415510",
+          "0x00444dd0",
+          "0x0046b9d0",
+          "0x0046d710",
+          "0x00561530",
+          "0x005628e0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414820 counted by creatable-shared-count-working",
+      "evidence": {
+        "evidence_name": "??$?0PAVModelInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVModelInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVModelInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@"
+        ],
+        "callers": [
+          "0x004148b0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 171,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "004148b0 counted by app-unit40c-2008-working",
+      "evidence": {
+        "evidence_name": "??$?0VModelInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VModelInstance@RBX@@@boost@@QAE@PAVModelInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "callers": [
+          "0x00414960"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 122,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414960 counted by app-unit40c-2008-working",
+      "evidence": {
+        "evidence_name": "??$create@VModelInstance@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VModelInstance@RBX@@@boost@@XZ",
+        "imports": [
+          "malloc"
+        ],
+        "callers": [
+          "0x004149e0",
+          "0x0057ea90"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 175,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "004149e0 counted by app-unit40c-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414a90 counted by creatable-shared-count-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVScript@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@"
+        ],
+        "callers": [
+          "0x00414b20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 171,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414b20 counted by app-unit40c-2008-working",
+      "evidence": {
+        "callers": [
+          "0x00414bd0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 120,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414bd0 counted by app-unit40c-2008-working",
+      "evidence": {
+        "imports": [
+          "malloc"
+        ],
+        "callers": [
+          "0x00414c50"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 175,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414c50 counted by app-unit40c-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414d00 counted by creatable-shared-count-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVLocalScript@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@"
+        ],
+        "callers": [
+          "0x00414d90"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 171,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414d90 counted by app-unit40c-2008-working",
+      "evidence": {
+        "callers": [
+          "0x00414e40"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 120,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414e40 counted by app-unit40c-2008-working",
+      "evidence": {
+        "imports": [
+          "malloc"
+        ],
+        "callers": [
+          "0x00414ec0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 175,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414ec0 counted by app-unit40c-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00414f70 counted by creatable-shared-count-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVChangeHistoryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@"
+        ],
+        "callers": [
+          "0x00415020"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 31,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00415000 counted by stats-service-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVsp_counted_base@detail@boost@@"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 171,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00415020 counted by app-unit40c-2008-working",
+      "evidence": {
+        "callers": [
+          "0x004150d0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 120,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "004150d0 counted by app-unit40c-2008-working",
+      "evidence": {
+        "imports": [
+          "malloc"
+        ],
+        "callers": [
+          "0x00415150",
+          "0x00453000"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 175,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted elsewhere",
+      "counted": "00415150 counted by app-unit40c-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x00415200",
+      "size": 328,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "ServiceProvider::find<Selection> (service-selection receipt; needs a find<> body in the core v8tree/Service.h, owner proposal)",
+      "evidence": {
+        "imports": [
+          "_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x004153b0",
+          "0x00426bf0",
+          "0x0046b0e0"
+        ]
+      }
+    },
+    {
+      "row": "0x00415350",
+      "size": 91,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted here",
+      "counted": "00415350 counted here",
+      "evidence": {
+        "evidence_name": "??0TextXmlWriterWithEmbeddedContent@@QAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "rtti_refs": [
+          ".?AVTextXmlParser@@"
+        ],
+        "callers": [
+          "0x00415510",
+          "0x00444dd0",
+          "0x0046b9d0",
+          "0x0046d710",
+          "0x00561530",
+          "0x005628e0"
+        ]
+      }
+    },
+    {
+      "row": "0x004153b0",
+      "size": 228,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "ServiceProvider::create<Selection> (needs a create<> body in the core v8tree/Service.h; bound here as a call target only)",
+      "evidence": {
+        "imports": [
+          "_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x004154a0",
+          "0x00415510",
+          "0x00415800",
+          "0x0041ef90",
+          "0x0041f040",
+          "0x0041f5f0"
+        ]
+      }
+    },
+    {
+      "row": "0x004154a0",
+      "size": 107,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "open",
+      "note": "PasteVerb::isEnabled (vtable 0x80e934 slot 2; body in the committed DocumentInitialize.cpp, document owner)",
+      "evidence": {
+        "strings": [
+          "Roblox"
+        ],
+        "imports": [
+          "IsClipboardFormatAvailable",
+          "RegisterClipboardFormatA"
+        ]
+      }
+    },
+    {
+      "row": "0x00415510",
+      "size": 745,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted here",
+      "counted": "00415510 counted here",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          ">+R",
+          "NetworkClient",
+          "Roblox"
+        ],
+        "imports": [
+          "??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@",
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PB",
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std"
+        ]
+      }
+    },
+    {
+      "row": "0x00415800",
+      "size": 479,
+      "unit": "clipboard verb unit (from 0x413490) ..0x4159df",
+      "kind": "counted here",
+      "counted": "00415800 counted here",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVTextXmlWriter@@"
+        ],
+        "strings": [
+          "\n*R",
+          "J.R",
+          "Roblox",
+          "T*R"
+        ],
+        "imports": [
+          "??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@",
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std",
+          "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QB"
+        ]
+      }
+    },
+    {
+      "row": "0x004159e0",
+      "size": 64,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "ATL CComSafeArray helper (SafeArrayGetVartype; ATL library instance)",
+      "evidence": {
+        "imports": [
+          "SafeArrayGetVartype"
+        ],
+        "callers": [
+          "0x00415a20"
+        ]
+      }
+    },
+    {
+      "row": "0x00415a20",
+      "size": 113,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "ATL CComSafeArray copy (SafeArrayCopy; ATL library instance)",
+      "evidence": {
+        "imports": [
+          "SafeArrayCopy"
+        ],
+        "callers": [
+          "0x00416370"
+        ]
+      }
+    },
+    {
+      "row": "0x00415aa0",
+      "size": 64,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "ATL CComVariant copy (VariantClear / memcpy_s; ATL library instance)",
+      "evidence": {
+        "imports": [
+          "VariantClear",
+          "memcpy_s"
+        ],
+        "callers": [
+          "0x00416370"
+        ]
+      }
+    },
+    {
+      "row": "0x00415ae0",
+      "size": 28,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "std::string copy wrapper (import only), called by other units; library instance",
+      "evidence": {
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@AB"
+        ],
+        "callers": [
+          "0x0058f270",
+          "0x0061b190"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 135,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "counted elsewhere",
+      "counted": "00415b00 counted by safearray-builder-mismatch",
+      "evidence": {
+        "imports": [
+          "SafeArrayGetLBound",
+          "SafeArrayGetUBound"
+        ],
+        "callers": [
+          "0x004165e0"
+        ]
+      }
+    },
+    {
+      "row": "0x00415b90",
+      "size": 57,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "type_info compare helper (57 B), shared reflection / boost instance called from 0x56d410",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0056d410"
+        ]
+      }
+    },
+    {
+      "row": "0x00415bd0",
+      "size": 57,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "type_info compare helper (57 B), shared reflection / boost instance called from 0x56d530",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0056d530"
+        ]
+      }
+    },
+    {
+      "row": "0x00415c10",
+      "size": 57,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "type_info compare helper (57 B), shared reflection / boost instance called from 0x56d650",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0056d650"
+        ]
+      }
+    },
+    {
+      "row": "0x00415c50",
+      "size": 57,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "type_info compare helper (57 B), shared reflection / boost instance called from 0x56d770",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0056d770"
+        ]
+      }
+    },
+    {
+      "row": "0x00415c90",
+      "size": 57,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "type_info compare helper (57 B), shared by eight Value conversion bodies",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0056d410",
+          "0x0056d530",
+          "0x0056d650",
+          "0x0056d770",
+          "0x0056d890",
+          "0x0056d9b0"
+        ]
+      }
+    },
+    {
+      "row": "0x00415cd0",
+      "size": 57,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "type_info compare helper (57 B), shared reflection / boost instance called from 0x56de80",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x0056de80"
+        ]
+      }
+    },
+    {
+      "row": "0x00415d10",
+      "size": 18,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "Value::isType-shaped type_info compare (18 B), shared with 0x5aba50",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "0x00415d30",
+      "size": 18,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "Value::isType-shaped type_info compare (18 B), shared with 0x5aba50",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "0x00415d50",
+      "size": 18,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "Value::isType-shaped type_info compare (18 B), shared with 0x5aba50",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 296,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "counted elsewhere",
+      "counted": "00415d70 counted by declaration-view-working",
+      "evidence": {
+        "imports": [
+          "MultiByteToWideChar",
+          "SysAllocString",
+          "VariantClear",
+          "free"
+        ],
+        "callers": [
+          "0x004162f0",
+          "0x0042c8c0",
+          "0x004346b0",
+          "0x004364b0"
+        ]
+      }
+    },
+    {
+      "row": "0x00415ea0",
+      "size": 41,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "ATL CComSafeArray destroy (SafeArrayUnlock / SafeArrayDestroy; ATL library instance)",
+      "evidence": {
+        "imports": [
+          "SafeArrayDestroy",
+          "SafeArrayUnlock"
+        ]
+      }
+    },
+    {
+      "row": "0x00415ed0",
+      "size": 136,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast<int> (lua-bridge2008 instance); boost library instance shared with other units",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x0056ebb0",
+          "0x0056ed00",
+          "0x0056ee50",
+          "0x0056f0b0",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "0x00415f60",
+      "size": 136,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast<bool> (evidence name); boost library instance shared with other units",
+      "evidence": {
+        "evidence_name": "??$any_cast@_N@boost@@YA_NABVany@0@@Z",
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x0056ea60",
+          "0x0056ed00",
+          "0x0056ee50",
+          "0x0056f0b0",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "0x00415ff0",
+      "size": 136,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast<float> (evidence name); boost library instance shared with other units",
+      "evidence": {
+        "evidence_name": "??$any_cast@M@boost@@YAMABVany@0@@Z",
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x0056ea60",
+          "0x0056ebb0",
+          "0x0056ee50",
+          "0x0056f0b0",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "0x00416080",
+      "size": 136,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast<double> (evidence name); boost library instance shared with other units",
+      "evidence": {
+        "evidence_name": "??$any_cast@N@boost@@YANABVany@0@@Z",
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x0056ea60",
+          "0x0056ebb0",
+          "0x0056ed00",
+          "0x0056f0b0",
+          "0x005aba50"
+        ]
+      }
+    },
+    {
+      "row": "0x00416110",
+      "size": 157,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast<std::string> (evidence name); boost library instance shared with other units",
+      "evidence": {
+        "evidence_name": "??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVany@0@@Z",
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@AB",
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416310",
+          "0x0056eff0",
+          "0x00597a90",
+          "0x005b8090",
+          "0x006156c0",
+          "0x0061fb20"
+        ]
+      }
+    },
+    {
+      "row": "0x004161b0",
+      "size": 161,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast of a string-holding type (ContentId-shaped copy); boost instance",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@AB",
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416340"
+        ]
+      }
+    },
+    {
+      "row": "0x00416260",
+      "size": 134,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "boost::any_cast instance (shared with 0x5aba50 / 0x5ad380)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVbad_any_cast@boost@@"
+        ],
+        "strings": [
+          "bad cast"
+        ],
+        "imports": [
+          "??0bad_cast@std@@QAE@PBD@Z",
+          "??8type_info@@QBE_NABV0@@Z"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x005aba50",
+          "0x005ad380"
+        ]
+      }
+    },
+    {
+      "row": "0x004162f0",
+      "size": 26,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "Value accessor wrapper used by valueToVariant (calls 0x415d70)",
+      "evidence": {
+        "callers": [
+          "0x00416370"
+        ]
+      }
+    },
+    {
+      "row": "0x00416310",
+      "size": 34,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "Value::cast<std::string> wrapper used by valueToVariant (calls any_cast<std::string>)",
+      "evidence": {
+        "callers": [
+          "0x00416370"
+        ]
+      }
+    },
+    {
+      "row": "0x00416340",
+      "size": 34,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "Value cast wrapper used by valueToVariant (calls 0x4161b0)",
+      "evidence": {
+        "callers": [
+          "0x00416370"
+        ]
+      }
+    },
+    {
+      "row": "0x00416370",
+      "size": 615,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "valueToVariant (value-variant-mismatch: committed ValueConverter.cpp is 635 vs 615 B; owner)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "T*R"
+        ],
+        "imports": [
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "??8type_info@@QBE_NABV0@@Z",
+          "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QB",
+          "VariantClear"
+        ],
+        "callers": [
+          "0x004165e0",
+          "0x0042e0c0"
+        ]
+      }
+    },
+    {
+      "row": "0x004165e0",
+      "size": 168,
+      "unit": "VARIANT / SAFEARRAY conversion block 0x4159e0..0x41668f",
+      "kind": "open",
+      "note": "makeSafeArray (safearray-builder-mismatch: committed SafeArray.cpp is 189 vs 168 B; owner)",
+      "evidence": {
+        "imports": [
+          "SafeArrayCreate",
+          "SafeArrayLock",
+          "SafeArrayUnlock"
+        ],
+        "callers": [
+          "0x00416370",
+          "0x0042da40",
+          "0x0046b230"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 3,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted elsewhere",
+      "counted": "00416690 counted by feature-working, services-working, stats-service-working, user-controller-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 394,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted elsewhere",
+      "counted": "004166a0 counted by content-upload-trial",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "Untrusted Url: %s"
+        ],
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "None"
+        ]
+      }
+    },
+    {
+      "row": "0x0041682a",
+      "size": 63,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "open",
+      "note": "catch funclet of CContent::Upload 0x4166a0 (content-upload owner; its recorder preprocesses a profile)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416870",
+      "size": 9,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "open",
+      "note": "what()-shaped 9 B body ICF-folded with std::logic_error::what (library)",
+      "evidence": {
+        "strings": [
+          "*/R"
+        ],
+        "imports": [
+          "??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@"
+        ]
+      }
+    },
+    {
+      "row": "0x00416880",
+      "size": 78,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416880 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x004168d0",
+      "size": 33,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "004168d0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 28,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted elsewhere",
+      "counted": "00416900 counted by content-factory-trial",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 10,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted elsewhere",
+      "counted": "00416920 counted by content-factory-trial",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416930",
+      "size": 10,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416930 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416940",
+      "size": 10,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416940 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 67,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted elsewhere",
+      "counted": "00416950 counted by content-factory-trial",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$CComObject@VCContent@@@ATL@@"
+        ],
+        "strings": [
+          " iA",
+          "*/R"
+        ],
+        "imports": [
+          "??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@"
+        ]
+      }
+    },
+    {
+      "row": "0x004169a0",
+      "size": 10,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "004169a0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x004169b0",
+      "size": 10,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "004169b0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x004169c0",
+      "size": 10,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "004169c0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x004169d0",
+      "size": 90,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "004169d0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416a30",
+      "size": 38,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416a30 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416a60",
+      "size": 91,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416a60 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416ac0",
+      "size": 201,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416ac0 counted here",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$CComObject@VCContent@@@ATL@@"
+        ],
+        "strings": [
+          " iA",
+          "z/R"
+        ],
+        "imports": [
+          "??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@"
+        ]
+      }
+    },
+    {
+      "row": "0x00416b89",
+      "size": 38,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416b89 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416bb0",
+      "size": 124,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416bb0 counted here",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$CComAggObject@VCContent@@@ATL@@",
+          ".?AV?$CComContainedObject@VCContent@@@ATL@@"
+        ],
+        "strings": [
+          "0lA",
+          "z/R"
+        ],
+        "imports": [
+          "??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@"
+        ],
+        "callers": [
+          "0x00416d20"
+        ]
+      }
+    },
+    {
+      "row": "0x00416c30",
+      "size": 102,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416c30 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416ca0",
+      "size": 96,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416ca0 counted here",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$CComAggObject@VCContent@@@ATL@@"
+        ],
+        "strings": [
+          "*/R",
+          "0lA"
+        ],
+        "imports": [
+          "??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@"
+        ],
+        "callers": [
+          "0x00416d00"
+        ]
+      }
+    },
+    {
+      "row": "0x00416d00",
+      "size": 30,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416d00 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416d20",
+      "size": 158,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416d20 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416dbe",
+      "size": 38,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416dbe counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416df0",
+      "size": 26,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted here",
+      "counted": "00416df0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 33,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "counted elsewhere",
+      "counted": "00416e10 counted by leaves2008-working",
+      "evidence": {
+        "evidence_name": "?print@StandardOut@RBX@@QAEXW4MessageType@2@ABVexception@std@@@Z",
+        "callers": [
+          "0x0041a4f0",
+          "0x0041d760",
+          "0x0042b191",
+          "0x0045bc80",
+          "0x004eb190",
+          "0x00569731"
+        ]
+      }
+    },
+    {
+      "row": "0x00416e40",
+      "size": 30,
+      "unit": "CContent COM unit 0x416690..0x416e5f",
+      "kind": "open",
+      "note": "ATL \"ATL:%p\" window-class name formatter (sprintf_s), called from 0x418ab0; ATL library",
+      "evidence": {
+        "strings": [
+          "ATL:%p"
+        ],
+        "imports": [
+          "sprintf_s"
+        ],
+        "callers": [
+          "0x00418ab0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 36,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted elsewhere",
+      "counted": "00416e60 counted by app-leaves2008-dhtml-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 8,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted elsewhere",
+      "counted": "00416e90 counted by app-leaves2008-dhtml-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416ea0",
+      "size": 5,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "5 B jmp shared (ICF) by empty destructors / classDescriptor thunks; symbol not derivable",
+      "evidence": {}
+    },
+    {
+      "row": "0x00416eb0",
+      "size": 85,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "00416eb0 counted here",
+      "evidence": {
+        "callers": [
+          "0x0041c220",
+          "0x004a4530"
+        ]
+      }
+    },
+    {
+      "row": "0x00416f10",
+      "size": 118,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "00416f10 counted here",
+      "evidence": {
+        "callers": [
+          "0x0041c4b0"
+        ]
+      }
+    },
+    {
+      "row": "0x00416f90",
+      "size": 101,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "00416f90 counted here",
+      "evidence": {
+        "strings": [
+          "HtmlService"
+        ],
+        "callers": [
+          "0x007eef90",
+          "0x007fa7a0"
+        ]
+      }
+    },
+    {
+      "row": "0x00417000",
+      "size": 77,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "boost::any::holder<std::string> constructor (evidence name); boost library instance shared widely",
+      "evidence": {
+        "evidence_name": "??0?$holder@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@any@boost@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "rtti_refs": [
+          ".?AV?$holder@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@any@boost@@"
+        ],
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@AB"
+        ],
+        "callers": [
+          "0x00417060",
+          "0x00417230"
+        ]
+      }
+    },
+    {
+      "row": "0x00417050",
+      "size": 6,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "6 B max_size-shaped body (ICF-folded STL leaf); library",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417060",
+      "size": 96,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "boost::any::holder<std::string>::clone (evidence name); boost library instance",
+      "evidence": {
+        "evidence_name": "?clone@?$holder@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      }
+    },
+    {
+      "row": "0x004170c0",
+      "size": 82,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "ATL CStdCallThunk flush (FlushInstructionCache); ATL library",
+      "evidence": {
+        "imports": [
+          "FlushInstructionCache",
+          "GetCurrentProcess"
+        ],
+        "callers": [
+          "0x00418970"
+        ]
+      }
+    },
+    {
+      "row": "0x00417120",
+      "size": 118,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "Lua FunctionRef holder destructor (calls ~FunctionRef 0x594470), reached from CComObject<CLuaFunction> 0x417ea0; CLuaFunction is not natively declared",
+      "evidence": {
+        "callers": [
+          "0x00417ea0",
+          "0x004188f0"
+        ]
+      }
+    },
+    {
+      "row": "0x004171a0",
+      "size": 5,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "5 B jmp to 0x417120 (ICF-shared destructor thunk); symbol not derivable",
+      "evidence": {}
+    },
+    {
+      "row": "0x004171b0",
+      "size": 123,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "std::_Construct<SignatureDescriptor::Item> (evidence name; mouse receipt proves it, not counted); STL instance shared by many reflection units",
+      "evidence": {
+        "evidence_name": "??$_Construct@UItem@SignatureDescriptor@Reflection@RBX@@U1234@@std@@YAXPAUItem@SignatureDescriptor@Reflection@RBX@@ABU1234@@Z",
+        "callers": [
+          "0x00417f00"
+        ]
+      }
+    },
+    {
+      "row": "0x00417230",
+      "size": 89,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "boost::any(const std::string&) (evidence name); boost library instance shared by eight units",
+      "evidence": {
+        "evidence_name": "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@any@boost@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "callers": [
+          "0x004175d0",
+          "0x0041b5a0",
+          "0x0041be50",
+          "0x00443590",
+          "0x004435d0",
+          "0x00491090"
+        ]
+      }
+    },
+    {
+      "row": "0x00417290",
+      "size": 5,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "00417290 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x004172a0",
+      "size": 181,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "XmlNameValuePair(const Name&, InstanceHandle) (evidence name; XmlElement / XmlNameValuePair family is leased by another contributor)",
+      "evidence": {
+        "evidence_name": "??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z",
+        "callers": [
+          "0x00417510",
+          "0x00558030"
+        ]
+      }
+    },
+    {
+      "row": "0x00417360",
+      "size": 73,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "Lua ThreadRef / FunctionRef vtable writer (73 B, called from 0x5947f0); Lua bridge owner",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVFunctionRef@Lua@RBX@@",
+          ".?AVThreadRef@Lua@RBX@@"
+        ],
+        "strings": [
+          "`<Y"
+        ],
+        "callers": [
+          "0x005947f0"
+        ]
+      }
+    },
+    {
+      "row": "0x004173b0",
+      "size": 118,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "004173b0 counted here",
+      "evidence": {
+        "callers": [
+          "0x00419400",
+          "0x0041a150",
+          "0x0041c860"
+        ]
+      }
+    },
+    {
+      "row": "0x00417430",
+      "size": 128,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "ATL CSimpleArray::Add (_recalloc); ATL library",
+      "evidence": {
+        "imports": [
+          "_recalloc"
+        ],
+        "callers": [
+          "0x00418580"
+        ]
+      }
+    },
+    {
+      "row": "0x004174b0",
+      "size": 63,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "MemberDescriptorContainer<PropertyDescriptor>::Iterator::operator* (evidence name; the native inline compiles to 89 B, TANDEM 2026-11-07 reflection proposal)",
+      "evidence": {
+        "evidence_name": "??DIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QBE?AVProperty@23@XZ",
+        "imports": [
+          "_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0041d0a0",
+          "0x00559170",
+          "0x0057f810",
+          "0x0057f960",
+          "0x0061bda0",
+          "0x0061c2c0"
+        ]
+      }
+    },
+    {
+      "row": "0x004174f0",
+      "size": 22,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "boost scoped_lock<recursive_mutex> destructor; boost library",
+      "evidence": {
+        "callers": [
+          "0x00561980"
+        ]
+      }
+    },
+    {
+      "row": "0x00417510",
+      "size": 182,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "XmlElement::XmlElement<InstanceHandle> (evidence name; XmlElement family leased by another contributor)",
+      "evidence": {
+        "evidence_name": "??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z",
+        "callers": [
+          "0x00558c50",
+          "0x005b1480"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 29,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted elsewhere",
+      "counted": "004175d0 counted by lua-args-trial",
+      "evidence": {
+        "evidence_name": "??$?4V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Value@Reflection@RBX@@QAEAAV012@ABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+        "callers": [
+          "0x0042db20"
+        ]
+      }
+    },
+    {
+      "row": "0x004175f0",
+      "size": 99,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "004175f0 counted here",
+      "evidence": {
+        "callers": [
+          "0x00418fb0",
+          "0x00419400"
+        ]
+      }
+    },
+    {
+      "row": "0x00417660",
+      "size": 100,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "00417660 counted here",
+      "evidence": {
+        "evidence_name": "??0?$storage2@V?$value@V?$shared_ptr@Udata@AbuseReporter@Network@RBX@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z",
+        "imports": [
+          "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@AB"
+        ],
+        "callers": [
+          "0x00419010",
+          "0x00419510",
+          "0x00498d40",
+          "0x00499050",
+          "0x0049c440"
+        ]
+      }
+    },
+    {
+      "row": "0x004176d0",
+      "size": 200,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "004176d0 counted here",
+      "evidence": {
+        "callers": [
+          "0x00417ff0"
+        ]
+      }
+    },
+    {
+      "row": "0x004177a0",
+      "size": 169,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "004177a0 counted here",
+      "evidence": {
+        "callers": [
+          "0x004180c0",
+          "0x00418170"
+        ]
+      }
+    },
+    {
+      "row": "0x00417850",
+      "size": 79,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "type_info compare (79 B) functor-manager-shaped body; boost instance",
+      "evidence": {
+        "imports": [
+          "??8type_info@@QBE_NABV0@@Z"
+        ]
+      }
+    },
+    {
+      "row": "0x004178a0",
+      "size": 12,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "12 B leaf (no calls); symbol not derivable",
+      "evidence": {}
+    },
+    {
+      "row": "0x004178b0",
+      "size": 102,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "ATL critical-section lock with RaiseException; ATL library",
+      "evidence": {
+        "imports": [
+          "EnterCriticalSection",
+          "GetCurrentThreadId",
+          "LeaveCriticalSection",
+          "RaiseException"
+        ],
+        "callers": [
+          "0x004189d0"
+        ]
+      }
+    },
+    {
+      "row": "0x00417920",
+      "size": 130,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "ATL critical-section helper (EnterCriticalSection / GetCurrentThreadId); ATL library",
+      "evidence": {
+        "imports": [
+          "EnterCriticalSection",
+          "GetCurrentThreadId",
+          "LeaveCriticalSection"
+        ],
+        "callers": [
+          "0x00418970"
+        ]
+      }
+    },
+    {
+      "row": "0x004179b0",
+      "size": 85,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "Lua ThreadRef / FunctionRef vtable writer (85 B, called from 0x4186d0 / 0x418800); Lua bridge owner",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVFunctionRef@Lua@RBX@@",
+          ".?AVThreadRef@Lua@RBX@@"
+        ],
+        "strings": [
+          "`<Y"
+        ],
+        "callers": [
+          "0x004186d0",
+          "0x00418800"
+        ]
+      }
+    },
+    {
+      "row": "0x00417a10",
+      "size": 134,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "DHTMLWindow worker (pending-build-only in app-leaves2008-dhtml: needs a CLuaHtmlView declaration)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417aa0",
+      "size": 132,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "DHTMLWindow worker (pending-build-only in app-leaves2008-dhtml)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417b30",
+      "size": 5,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "5 B jmp to the storage2<DHTMLWindow, FunctionRef> destructor 0x4173b0 (ICF-shared bind_t / list2 destructor); symbol not derivable",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417b40",
+      "size": 140,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "DHTMLWindow doSetCallback (not exact in app-leaves2008-dhtml: CLuaHtmlView +0xfc not derived)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417bd0",
+      "size": 153,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "DHTMLWindow worker (pending-build-only in app-leaves2008-dhtml)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "T*R"
+        ],
+        "imports": [
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QB"
+        ]
+      }
+    },
+    {
+      "row": "0x00417c70",
+      "size": 143,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "DHTMLWindow worker (pending-build-only in app-leaves2008-dhtml)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "T*R"
+        ],
+        "imports": [
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QB"
+        ]
+      }
+    },
+    {
+      "row": "0x00417d00",
+      "size": 5,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "5 B jmp to the SelectionChanged-signal storage destructor 0x422c60 (ICF-shared); symbol not derivable",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417d10",
+      "size": 245,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "DHTMLWindow worker (pending-build-only in app-leaves2008-dhtml)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "T*R"
+        ],
+        "imports": [
+          "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QB"
+        ]
+      }
+    },
+    {
+      "row": "0x00417e10",
+      "size": 14,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CRT call wrapper (0x7a600b); library",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417e20",
+      "size": 78,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "ISupportErrorInfoImpl::InterfaceSupportsErrorInfo of CLuaFunction (78 B); no native CLuaFunction declaration",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417e70",
+      "size": 13,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComObject AddRef body (13 B) ICF-shared by the CContent and CLuaFunction objects (bound here as the target of the CContent adjustor thunk 0x416940; not counted)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417e80",
+      "size": 28,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComObject<CLuaFunction>::QueryInterface (AtlInternalQueryInterface); no native CLuaFunction",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417ea0",
+      "size": 65,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComObject<CLuaFunction> scalar deleting destructor (RTTI vtables 0x80ec00 / 0x80ebd8)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$CComObject@VCLuaFunction@@@ATL@@"
+        ]
+      }
+    },
+    {
+      "row": "0x00417ef0",
+      "size": 10,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComObject<CLuaFunction> QueryInterface adjustor thunk",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417f00",
+      "size": 113,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "std::list<SignatureDescriptor::Item>::_Buynode (evidence name; mouse receipt proves it, not counted); STL instance shared by many reflection units",
+      "evidence": {
+        "evidence_name": "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z",
+        "callers": [
+          "0x0041bd20",
+          "0x00492890",
+          "0x00492d30",
+          "0x0049b9b0",
+          "0x004a0020",
+          "0x004a0150"
+        ]
+      }
+    },
+    {
+      "row": "0x00417f71",
+      "size": 21,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "catch funclet of _Buynode 0x417f00 (STL instance)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417f90",
+      "size": 18,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComContainedObject AddRef body ICF-shared by the CContent and CLuaFunction objects (bound as the target of 0x4169a0; not counted)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417fb0",
+      "size": 18,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComContainedObject Release body ICF-shared (bound as the target of 0x4169c0; not counted)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417fd0",
+      "size": 17,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "open",
+      "note": "CComContainedObject QueryInterface body ICF-shared (bound as the target of 0x4169b0; not counted)",
+      "evidence": {}
+    },
+    {
+      "row": "0x00417ff0",
+      "size": 195,
+      "unit": "DHTMLWindowService / DHTMLWindow unit 0x416e60.. (continues past the range)",
+      "kind": "counted here",
+      "counted": "00417ff0 counted here",
+      "evidence": {
+        "callers": [
+          "0x00419400"
+        ]
+      }
+    }
+  ],
+  "methods": [
+    {
+      "address": "00416880",
+      "symbol": "?InterfaceSupportsErrorInfo@?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@ATL@@UAGJABU_GUID@@@Z",
+      "size": 78,
+      "exact": true,
+      "verified_targets": {
+        "?IID_IContent@@3U_GUID@@B": "0x816498 (GUID bytes (NativeAppUnit414CContentGuids))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "004168d0",
+      "symbol": "?Release@?$CComObject@VCContent@@@ATL@@UAGKXZ",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416930",
+      "symbol": "?Release@?$CComObject@VCContent@@@ATL@@W3AGKXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?Release@?$CComObject@VCContent@@@ATL@@UAGKXZ": "0x4168d0 (own row)"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416940",
+      "symbol": "?AddRef@?$CComObject@VCContent@@@ATL@@W3AGKXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?AddRef@?$CComObject@VCContent@@@ATL@@UAGKXZ": "0x417e70 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "004169a0",
+      "symbol": "?AddRef@?$CComContainedObject@VCContent@@@ATL@@W3AGKXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?AddRef@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ": "0x417f90 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "004169b0",
+      "symbol": "?QueryInterface@?$CComContainedObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?QueryInterface@?$CComContainedObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z": "0x417fd0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "004169c0",
+      "symbol": "?Release@?$CComContainedObject@VCContent@@@ATL@@W3AGKXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?Release@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ": "0x417fb0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "004169d0",
+      "symbol": "?GetTypeInfo@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJIKPAPAUITypeInfo@@@Z",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "?_tih@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@1VCComTypeInfoHolder@2@A": "0x92c188 (instance (bytes equal, targets verified))",
+        "?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z": "0x404a80 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416a30",
+      "symbol": "?GetIDsOfNames@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJABU_GUID@@PAPA_WIKPAJ@Z",
+      "size": 38,
+      "exact": true,
+      "verified_targets": {
+        "?_tih@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@1VCComTypeInfoHolder@2@A": "0x92c188 (instance (bytes equal, targets verified))",
+        "?GetIDsOfNames@CComTypeInfoHolder@ATL@@QAEJABU_GUID@@PAPA_WIKPAJ@Z": "0x405190 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416a60",
+      "symbol": "?Invoke@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "?_tih@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@1VCComTypeInfoHolder@2@A": "0x92c188 (instance (bytes equal, targets verified))",
+        "?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z": "0x404a80 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416ac0",
+      "symbol": "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z [0x0:0xc9]",
+      "size": 201,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802428 (msvcp90.dll!??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z)",
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": "0x80eabc (vtable RTTI .?AV?$CComObject@VCContent@@@ATL@@ offset 0x0)",
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": "0x80ea98 (vtable RTTI .?AV?$CComObject@VCContent@@@ATL@@ offset 0x4)",
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268 (external (content-factory-trial CreateInstance binding))"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
+      ],
+      "build": "content"
+    },
+    {
+      "address": "00416b89",
+      "symbol": "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z [0xc9:0xef]",
+      "size": 38,
+      "exact": true,
+      "verified_targets": {
+        "?Delete@CException@@QAEXXZ": "0x6a0950 (mfc90.dll!?Delete@CException@@QAEXXZ)"
+      },
+      "local_eh": [
+        "$LN55"
+      ],
+      "build": "content"
+    },
+    {
+      "address": "00416bb0",
+      "symbol": "??0?$CComAggObject@VCContent@@@ATL@@QAE@PAX@Z",
+      "size": 124,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CComAggObject@VCContent@@@ATL@@6B@": "0x80eb4c (vtable RTTI .?AV?$CComAggObject@VCContent@@@ATL@@ offset 0x0)",
+        "__imp_??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802428 (msvcp90.dll!??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z)",
+        "??_7?$CComContainedObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": "0x80eb38 (vtable RTTI .?AV?$CComContainedObject@VCContent@@@ATL@@ offset 0x0)",
+        "??_7?$CComContainedObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": "0x80eb14 (vtable RTTI .?AV?$CComContainedObject@VCContent@@@ATL@@ offset 0x4)",
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268 (external (content-factory-trial CreateInstance binding))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$CComAggObject@VCContent@@@ATL@@QAE@PAX@Z"
+      ],
+      "build": "content"
+    },
+    {
+      "address": "00416c30",
+      "symbol": "?QueryInterface@?$CComAggObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "size": 102,
+      "exact": true,
+      "verified_targets": {
+        "?_entries@?1??_GetEntries@CContent@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B": "0x80ead0 (data instance (bytes equal, fields verified))",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416ca0",
+      "symbol": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CComAggObject@VCContent@@@ATL@@6B@": "0x80eb4c (vtable RTTI .?AV?$CComAggObject@VCContent@@@ATL@@ offset 0x0)",
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268 (external (content-factory-trial CreateInstance binding))",
+        "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x80242c (msvcp90.dll!??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ"
+      ],
+      "build": "content"
+    },
+    {
+      "address": "00416d00",
+      "symbol": "??_G?$CComAggObject@VCContent@@@ATL@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ": "0x416ca0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00416d20",
+      "symbol": "?CreateInstance@?$CComCreator@V?$CComAggObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z [0x0:0x9e]",
+      "size": 158,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$CComAggObject@VCContent@@@ATL@@QAE@PAX@Z": "0x416bb0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateInstance@?$CComCreator@V?$CComAggObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
+      ],
+      "build": "content"
+    },
+    {
+      "address": "00416dbe",
+      "symbol": "?CreateInstance@?$CComCreator@V?$CComAggObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z [0x9e:0xc4]",
+      "size": 38,
+      "exact": true,
+      "verified_targets": {
+        "?Delete@CException@@QAEXXZ": "0x6a0950 (mfc90.dll!?Delete@CException@@QAEXXZ)"
+      },
+      "local_eh": [
+        "$LN49"
+      ],
+      "build": "content"
+    },
+    {
+      "address": "00416df0",
+      "symbol": "?CreateInstance@?$CComCreator2@V?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@V?$CComCreator@V?$CComAggObject@VCContent@@@ATL@@@2@@ATL@@SGJPAXABU_GUID@@PAPAX@Z",
+      "size": 26,
+      "exact": true,
+      "verified_targets": {
+        "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z": "0x416ac0 (own row)",
+        "?CreateInstance@?$CComCreator@V?$CComAggObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z": "0x416d20 (own row)"
+      },
+      "local_eh": [],
+      "build": "content"
+    },
+    {
+      "address": "00415510",
+      "symbol": "?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z",
+      "size": 745,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0O@KPMCFAKM@NetworkClient?$AA@": "0x80ea2c (literal 'NetworkClient')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x557950 (evidence name)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?AfxGetThread@@YGPAVCWinThread@@XZ": "0x6a0e4e (mfc90.dll!?AfxGetThread@@YGPAVCWinThread@@XZ)",
+        "__imp__OpenClipboard@4": "0x802df4 (user32.dll!OpenClipboard)",
+        "??_B?1??getClipboardFormat@@YAIXZ@51": "0x96cbf4 (own static (bound by consistency))",
+        "??_C@_06BJBEHGOF@Roblox?$AA@": "0x80e920 (literal 'Roblox')",
+        "__imp__RegisterClipboardFormatA@4": "0x802df0 (user32.dll!RegisterClipboardFormatA)",
+        "?format@?1??getClipboardFormat@@YAIXZ@4IA": "0x96cbf0 (own static (bound by consistency))",
+        "__imp__GetClipboardData@4": "0x802de4 (user32.dll!GetClipboardData)",
+        "__imp__GlobalLock@4": "0x8021d8 (kernel32.dll!GlobalLock)",
+        "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x4293d0 (evidence name)",
+        "__imp_??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z": "0x80243c (msvcp90.dll!??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z)",
+        "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350 (own row)",
+        "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x58f6c0 (evidence name)",
+        "??1XmlElement@@QAE@XZ": "0x413a70 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0 (external (record_native_settings_dialog.py binding; calls find<Selection> 0x415200 (asserted)))",
+        "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": "0x413c20 (external (document-initialize-trial / join-command-trial binding))",
+        "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660 (evidence name)",
+        "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z": "0x593250 (external (app-unit5a0-2008 external binding))",
+        "?insertInstances@RootInstance@RBX@@QAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@W4InsertMode@2@W4PromptMode@2@@Z": "0x5911d0 (external (app-unit5a0-2008 external binding))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z": "0x413b00 (instance (bytes equal, targets verified))",
+        "??1TextXmlParser@@QAE@XZ": "0x4147c0 (own row)",
+        "__imp_??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x802440 (msvcp90.dll!??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)",
+        "__imp__GlobalUnlock@4": "0x8021d4 (kernel32.dll!GlobalUnlock)",
+        "__imp__CloseClipboard@0": "0x802de8 (user32.dll!CloseClipboard)",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0 (external (app-unit660-2008 external binding))",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z"
+      ],
+      "build": "clipboard"
+    },
+    {
+      "address": "00415800",
+      "symbol": "?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+      "size": 479,
+      "exact": true,
+      "verified_targets": {
+        "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": "0x591a30 (external (app-unit568 identity binding))",
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0 (external (record_native_settings_dialog.py binding; calls find<Selection> 0x415200 (asserted)))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?collectSelection@@YAXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x57e140 (external (row counted by workspace-selection-serializer-trial))",
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x423ba0 (instance (bytes equal, targets verified))",
+        "__imp_??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802430 (msvcp90.dll!??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z)",
+        "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x58fff0 (evidence name)",
+        "??_7TextXmlWriter@@6B@": "0x80ea1c (vtable RTTI .?AVTextXmlWriter@@ offset 0x0)",
+        "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z": "0x58e810 (evidence name)",
+        "??1XmlElement@@QAE@XZ": "0x413a70 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?AfxGetThread@@YGPAVCWinThread@@XZ": "0x6a0e4e (mfc90.dll!?AfxGetThread@@YGPAVCWinThread@@XZ)",
+        "__imp__OpenClipboard@4": "0x802df4 (user32.dll!OpenClipboard)",
+        "__imp__EmptyClipboard@0": "0x802ddc (user32.dll!EmptyClipboard)",
+        "__imp_?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x802434 (msvcp90.dll!?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp__GlobalAlloc@8": "0x8021dc (kernel32.dll!GlobalAlloc)",
+        "__imp__GlobalLock@4": "0x8021d8 (kernel32.dll!GlobalLock)",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "__imp__GlobalUnlock@4": "0x8021d4 (kernel32.dll!GlobalUnlock)",
+        "??_B?1??getClipboardFormat@@YAIXZ@51": "0x96cbf4 (own static (bound by consistency))",
+        "??_C@_06BJBEHGOF@Roblox?$AA@": "0x80e920 (literal 'Roblox')",
+        "__imp__RegisterClipboardFormatA@4": "0x802df0 (user32.dll!RegisterClipboardFormatA)",
+        "?format@?1??getClipboardFormat@@YAIXZ@4IA": "0x96cbf0 (own static (bound by consistency))",
+        "__imp__SetClipboardData@8": "0x802de0 (user32.dll!SetClipboardData)",
+        "__imp__CloseClipboard@0": "0x802de8 (user32.dll!CloseClipboard)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x4146d0 (evidence name)",
+        "__imp_??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x802438 (msvcp90.dll!??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z"
+      ],
+      "build": "clipboard"
+    },
+    {
+      "address": "00415350",
+      "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??0XmlParser@@IAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x58f230 (evidence name)",
+        "??_7TextXmlParser@@6B@": "0x80ea28 (vtable RTTI .?AVTextXmlParser@@ offset 0x0)",
+        "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@1@@Z": "0x414490 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z"
+      ],
+      "build": "clipboard"
+    },
+    {
+      "address": "004147c0",
+      "symbol": "??1TextXmlParser@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@XZ": "0x414740 (instance (bytes equal, targets verified))",
+        "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ": "0x64fa10 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1TextXmlParser@@QAE@XZ"
+      ],
+      "build": "clipboard"
+    },
+    {
+      "address": "00414470",
+      "symbol": "??1XmlParser@@QAE@XZ",
+      "size": 24,
+      "exact": true,
+      "verified_targets": {
+        "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ": "0x64fa10 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "build": "clipboard"
+    },
+    {
+      "address": "00416eb0",
+      "symbol": "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@AAEXPBD0@Z",
+      "size": 85,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (evidence name)",
+        "??$singleton@H@Type@Reflection@RBX@@SAABV012@XZ": "0x56cbc0 (evidence name)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (evidence name)",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)"
+      },
+      "local_eh": [],
+      "build": "window"
+    },
+    {
+      "address": "00416f10",
+      "symbol": "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@AAEXPBD00@Z",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (evidence name)",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (evidence name)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (evidence name)",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (evidence name)"
+      },
+      "local_eh": [],
+      "build": "window"
+    },
+    {
+      "address": "004173b0",
+      "symbol": "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ"
+      ],
+      "build": "window"
+    },
+    {
+      "address": "004175f0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z",
+      "size": 99,
+      "exact": true,
+      "verified_targets": {
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z"
+      ],
+      "build": "window"
+    },
+    {
+      "address": "00417660",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z",
+      "size": 100,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z"
+      ],
+      "build": "window"
+    },
+    {
+      "address": "004176d0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z",
+      "size": 200,
+      "exact": true,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))",
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (evidence name)",
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z"
+      ],
+      "build": "window"
+    },
+    {
+      "address": "004177a0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@@Z",
+      "size": 169,
+      "exact": true,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@@Z"
+      ],
+      "build": "window"
+    },
+    {
+      "address": "00417ff0",
+      "symbol": "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z",
+      "size": 195,
+      "exact": true,
+      "verified_targets": {
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (evidence name)",
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z": "0x4176d0 (own row)",
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z"
+      ],
+      "build": "window"
+    },
+    {
+      "address": "00416f90",
+      "symbol": "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x96cef4 (own static (bound by consistency))",
+        "?sDHTMLWindowService@@3PADA": "0x92c1f8 (data instance (bytes equal, fields verified))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (evidence name)",
+        "?n@?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96cef0 (own static (bound by consistency))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ"
+      ],
+      "build": "service"
+    },
+    {
+      "address": "00417290",
+      "symbol": "??$callDoDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ": "0x416f90 (own row)"
+      },
+      "local_eh": [],
+      "build": "service"
+    }
+  ],
+  "instances": {
+    "?AddRef@?$CComObject@VCContent@@@ATL@@UAGKXZ": {
+      "address": "0x00417e70",
+      "symbol": "?AddRef@?$CComObject@VCContent@@@ATL@@UAGKXZ",
+      "size": 13,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?AddRef@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ": {
+      "address": "0x00417f90",
+      "symbol": "?AddRef@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ",
+      "size": 18,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?QueryInterface@?$CComContainedObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z": {
+      "address": "0x00417fd0",
+      "symbol": "?QueryInterface@?$CComContainedObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "size": 17,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?Release@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ": {
+      "address": "0x00417fb0",
+      "symbol": "?Release@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ",
+      "size": 18,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_tih@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@1VCComTypeInfoHolder@2@A": {
+      "address": "0x0092c188",
+      "symbol": "?_tih@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@1VCComTypeInfoHolder@2@A",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?IID_IContent@@3U_GUID@@B": "0x816498 (GUID bytes (NativeAppUnit414CContentGuids))",
+        "+0x4 ?LIBID_RobloxLib@@3U_GUID@@B": "0x8164e8 (GUID bytes (NativeAppUnit414WorkspaceGuids))"
+      }
+    },
+    "?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z": {
+      "address": "0x00404a80",
+      "symbol": "?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z",
+      "size": 672,
+      "exact": false,
+      "verified_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268 (external (content-factory-trial CreateInstance binding))",
+        "__imp__EnterCriticalSection@4": "0x8022d4 (kernel32.dll!EnterCriticalSection)",
+        "?m_libid@CAtlModule@ATL@@2U_GUID@@A": "0x96c26c (external (_pAtlModule + 4 (atlbase.h selectany pair)))",
+        "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8 (external (record_native_app_leaves2008.py binding))",
+        "__imp__GetModuleFileNameA@12": "0x8021a4 (kernel32.dll!GetModuleFileNameA)",
+        "__imp__lstrlenA@4": "0x8021b8 (kernel32.dll!lstrlenA)",
+        "??$AtlMultiply@H@ATL@@YAJPAHHH@Z": "0x401710 (instance (bytes equal, targets verified))",
+        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": "0x402610 (instance (bytes equal, targets verified))",
+        "__alloca_probe_16": "0x6a1560 (external (CRT (record_native_app_unit49c_2008.py binding)))",
+        "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z": "0x402f50 (instance (bytes equal, targets verified))",
+        "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": "0x401760 (instance (bytes equal, targets verified))",
+        "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": "0x401150 (instance (bytes equal, targets verified))",
+        "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": "0x420bb0 (instance (bytes equal, targets verified))",
+        "__imp__LoadTypeLib@8": "0x802930 (oleaut32.dll!LoadTypeLib)",
+        "__imp__LoadRegTypeLib@20": "0x802934 (oleaut32.dll!LoadRegTypeLib)",
+        "__GUID_00020412_0000_0000_c000_000000000046": "0x80b130 (data instance (bytes equal, fields verified))",
+        "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z": "0x403af0 (instance (bytes equal, targets verified))",
+        "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": "0x402f00 (instance (bytes equal, targets verified))",
+        "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": "0x403da0 (instance (bytes equal, targets verified))",
+        "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "0x402d30 (instance (bytes equal, targets verified))",
+        "__imp__LeaveCriticalSection@4": "0x8021f4 (kernel32.dll!LeaveCriticalSection)"
+      },
+      "local_eh": [
+        "__ehhandler$?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??$AtlMultiply@H@ATL@@YAJPAHHH@Z": {
+      "address": "0x00401710",
+      "symbol": "??$AtlMultiply@H@ATL@@YAJPAHHH@Z",
+      "size": 45,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": {
+      "address": "0x00402610",
+      "symbol": "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z",
+      "size": 156,
+      "exact": false,
+      "verified_targets": {
+        "__except_handler3": "0x6a1512 (msvcr90.dll!_except_handler3)",
+        "??$AtlAdd@K@ATL@@YAJPAKKK@Z": "0x402520 (instance (bytes equal, targets verified))",
+        "__alloca_probe_16": "0x6a1560 (external (CRT (record_native_app_unit49c_2008.py binding)))",
+        "__imp___resetstkoflw": "0x802894 (msvcr90.dll!_resetstkoflw)"
+      },
+      "local_eh": [
+        "__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted; listed extent 0x5d != body 0x9c, whole body compared with the image bytes"
+    },
+    "??$AtlAdd@K@ATL@@YAJPAKKK@Z": {
+      "address": "0x00402520",
+      "symbol": "??$AtlAdd@K@ATL@@YAJPAKKK@Z",
+      "size": 34,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z": {
+      "address": "0x00402f50",
+      "symbol": "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z",
+      "size": 61,
+      "exact": false,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": {
+      "address": "0x00401760",
+      "symbol": "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z",
+      "size": 59,
+      "exact": false,
+      "verified_targets": {
+        "__imp__MultiByteToWideChar@24": "0x80231c (kernel32.dll!MultiByteToWideChar)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": {
+      "address": "0x00401150",
+      "symbol": "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ",
+      "size": 36,
+      "exact": false,
+      "verified_targets": {
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": {
+      "address": "0x00420bb0",
+      "symbol": "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ",
+      "size": 24,
+      "exact": false,
+      "verified_targets": {
+        "__imp__LeaveCriticalSection@4": "0x8021f4 (kernel32.dll!LeaveCriticalSection)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "__GUID_00020412_0000_0000_c000_000000000046": {
+      "address": "0x0080b130",
+      "symbol": "__GUID_00020412_0000_0000_c000_000000000046",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z": {
+      "address": "0x00403af0",
+      "symbol": "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z",
+      "size": 77,
+      "exact": false,
+      "verified_targets": {
+        "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z": "0x402fb0 (instance (bytes equal, targets verified))",
+        "__GUID_00020401_0000_0000_c000_000000000046": "0x80b1f0 (data instance (bytes equal, fields verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z": {
+      "address": "0x00402fb0",
+      "symbol": "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z",
+      "size": 136,
+      "exact": false,
+      "verified_targets": {
+        "__GUID_00000000_0000_0000_c000_000000000046": "0x80b154 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "__GUID_00000000_0000_0000_c000_000000000046": {
+      "address": "0x0080b154",
+      "symbol": "__GUID_00000000_0000_0000_c000_000000000046",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "__GUID_00020401_0000_0000_c000_000000000046": {
+      "address": "0x0080b1f0",
+      "symbol": "__GUID_00020401_0000_0000_c000_000000000046",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": {
+      "address": "0x00402f00",
+      "symbol": "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z",
+      "size": 80,
+      "exact": false,
+      "verified_targets": {
+        "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": "0x401020 (instance (bytes equal, targets verified))",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external (CRT eh vector destructor iterator (record_native_replicator.py binding)))",
+        "??_V@YAXPAX@Z": "0x6a094a (mfc90.dll!??_V@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": {
+      "address": "0x00401020",
+      "symbol": "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+      "size": 10,
+      "exact": false,
+      "verified_targets": {
+        "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": {
+      "address": "0x00403da0",
+      "symbol": "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z",
+      "size": 47,
+      "exact": false,
+      "verified_targets": {
+        "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z": "0x4038f0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z": {
+      "address": "0x004038f0",
+      "symbol": "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z",
+      "size": 191,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?Delete@CException@@QAEXXZ": "0x6a0950 (mfc90.dll!?Delete@CException@@QAEXXZ)",
+        "__imp__EnterCriticalSection@4": "0x8022d4 (kernel32.dll!EnterCriticalSection)",
+        "__imp__LeaveCriticalSection@4": "0x8021f4 (kernel32.dll!LeaveCriticalSection)"
+      },
+      "local_eh": [
+        "$LN43",
+        "__ehhandler$?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted; listed extent 0x6f != body 0xbf, whole body compared with the image bytes"
+    },
+    "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": {
+      "address": "0x00402d30",
+      "symbol": "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z",
+      "size": 459,
+      "exact": false,
+      "verified_targets": {
+        "??_U@YAPAXI@Z": "0x6a0956 (mfc90.dll!??_U@YAPAXI@Z)",
+        "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": "0x401020 (instance (bytes equal, targets verified))",
+        "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": "0x402370 (instance (bytes equal, targets verified))",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external (CRT eh vector constructor iterator (record_native_replicator.py binding)))",
+        "__imp__SysFreeString@4": "0x802944 (oleaut32.dll!SysFreeString)",
+        "__imp__SysStringLen@4": "0x80293c (oleaut32.dll!SysStringLen)",
+        "?Delete@CException@@QAEXXZ": "0x6a0950 (mfc90.dll!?Delete@CException@@QAEXXZ)"
+      },
+      "local_eh": [
+        "$LN37",
+        "__ehhandler$?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted; listed extent 0x18f != body 0x1cb, whole body compared with the image bytes"
+    },
+    "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": {
+      "address": "0x00402370",
+      "symbol": "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+      "size": 23,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?GetIDsOfNames@CComTypeInfoHolder@ATL@@QAEJABU_GUID@@PAPA_WIKPAJ@Z": {
+      "address": "0x00405190",
+      "symbol": "?GetIDsOfNames@CComTypeInfoHolder@ATL@@QAEJABU_GUID@@PAPA_WIKPAJ@Z",
+      "size": 283,
+      "exact": false,
+      "verified_targets": {
+        "?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z": "0x404a80 (instance (bytes equal, targets verified))",
+        "__imp__lstrlenW@4": "0x8022e8 (kernel32.dll!lstrlenW)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_entries@?1??_GetEntries@CContent@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B": {
+      "address": "0x0080ead0",
+      "symbol": "?_entries@?1??_GetEntries@CContent@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B",
+      "size": 48,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 __GUID_d63f927a_1170_4239_9c1d_06e8a658f300": "0x80eb00 (data instance (bytes equal, fields verified))",
+        "+0xc __GUID_00020400_0000_0000_c000_000000000046": "0x80aee8 (data instance (bytes equal, fields verified))",
+        "+0x18 __GUID_df0b3d60_548f_101b_8e65_08002b2bd119": "0x80aef8 (data instance (bytes equal, fields verified))"
+      }
+    },
+    "__GUID_d63f927a_1170_4239_9c1d_06e8a658f300": {
+      "address": "0x0080eb00",
+      "symbol": "__GUID_d63f927a_1170_4239_9c1d_06e8a658f300",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "__GUID_00020400_0000_0000_c000_000000000046": {
+      "address": "0x0080aee8",
+      "symbol": "__GUID_00020400_0000_0000_c000_000000000046",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "__GUID_df0b3d60_548f_101b_8e65_08002b2bd119": {
+      "address": "0x0080aef8",
+      "symbol": "__GUID_df0b3d60_548f_101b_8e65_08002b2bd119",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": {
+      "address": "0x00402280",
+      "symbol": "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z",
+      "size": 233,
+      "exact": false,
+      "verified_targets": {
+        "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z": "0x401b60 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z": {
+      "address": "0x00401b60",
+      "symbol": "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z",
+      "size": 46,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??1XmlElement@@QAE@XZ": {
+      "address": "0x00413a70",
+      "symbol": "??1XmlElement@@QAE@XZ",
+      "size": 138,
+      "exact": false,
+      "verified_targets": {
+        "?clearValue@XmlNameValuePair@@ABEXXZ": "0x57c2d0 (evidence name)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??1XmlElement@@QAE@XZ": "0x413a70 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??1XmlElement@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z": {
+      "address": "0x00413b00",
+      "symbol": "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z",
+      "size": 141,
+      "exact": false,
+      "verified_targets": {
+        "?clearSelection@Selection@RBX@@QAEXXZ": "0x5675d0 (evidence name)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?addToSelection@Selection@RBX@@QAEXPAVInstance@2@@Z": "0x567420 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": {
+      "address": "0x00423ba0",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+      "size": 92,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@1@@Z": {
+      "address": "0x00414490",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@1@@Z",
+      "size": 117,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@XZ": "0x413be0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@1@@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@XZ": {
+      "address": "0x00413be0",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@XZ",
+      "size": 55,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@XZ": {
+      "address": "0x00414740",
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@XZ",
+      "size": 112,
+      "exact": false,
+      "verified_targets": {
+        "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x4145f0 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted; listed extent 0x75 != body 0x70, whole body compared with the image bytes"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": {
+      "address": "0x004145f0",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "size": 220,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x4143e0 (instance (bytes equal, targets verified))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x4139b0 (instance (bytes equal, targets verified))",
+        "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x414070 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": {
+      "address": "0x004143e0",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z",
+      "size": 130,
+      "exact": false,
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x4143e0 (instance (bytes equal, targets verified))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x004139b0",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ",
+      "size": 108,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": {
+      "address": "0x00414070",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "size": 755,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (literal 'invalid map/set<T> iterator')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVout_of_range@std@@": "0x8d0c3c (data instance (bytes equal, fields verified))",
+        "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x4139b0 (instance (bytes equal, targets verified))",
+        "?_Min@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@@Z": "0x4135d0 (instance (bytes equal, targets verified))",
+        "?_Max@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@@Z": "0x4135b0 (instance (bytes equal, targets verified))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x413560 (instance (bytes equal, targets verified))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": "0x4135f0 (instance (bytes equal, targets verified))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "__TI3?AVout_of_range@std@@": {
+      "address": "0x008d0c3c",
+      "symbol": "__TI3?AVout_of_range@std@@",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??1out_of_range@std@@UAE@XZ": "0x4024c0 (instance (bytes equal, targets verified))",
+        "+0xc __CTA3?AVout_of_range@std@@": "0x8d0c4c (data instance (bytes equal, fields verified))"
+      }
+    },
+    "??1out_of_range@std@@UAE@XZ": {
+      "address": "0x004024c0",
+      "symbol": "??1out_of_range@std@@UAE@XZ",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "__CTA3?AVout_of_range@std@@": {
+      "address": "0x008d0c4c",
+      "symbol": "__CTA3?AVout_of_range@std@@",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 __CT??_R0?AVout_of_range@std@@@8??0out_of_range@std@@QAE@ABV01@@Z40": "0x8d0c5c (data instance (bytes equal, fields verified))",
+        "+0x8 __CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40": "0x8d0c78 (data instance (bytes equal, fields verified))",
+        "+0xc __CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12": "0x8d0810 (data instance (bytes equal, fields verified))"
+      }
+    },
+    "__CT??_R0?AVout_of_range@std@@@8??0out_of_range@std@@QAE@ABV01@@Z40": {
+      "address": "0x008d0c5c",
+      "symbol": "__CT??_R0?AVout_of_range@std@@@8??0out_of_range@std@@QAE@ABV01@@Z40",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVout_of_range@std@@@8": "0x9285e4 (RTTI .?AVout_of_range@std@@)",
+        "+0x18 ??0out_of_range@std@@QAE@ABV01@@Z": "0x404f90 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??0out_of_range@std@@QAE@ABV01@@Z": {
+      "address": "0x00404f90",
+      "symbol": "??0out_of_range@std@@QAE@ABV01@@Z",
+      "size": 25,
+      "exact": false,
+      "verified_targets": {
+        "??0logic_error@std@@QAE@ABV01@@Z": "0x404f30 (instance (bytes equal, targets verified))",
+        "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??0logic_error@std@@QAE@ABV01@@Z": {
+      "address": "0x00404f30",
+      "symbol": "??0logic_error@std@@QAE@ABV01@@Z",
+      "size": 89,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@ABV01@@Z": "0x802888 (msvcr90.dll!??0exception@std@@QAE@ABV01@@Z)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z"
+      ],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40": {
+      "address": "0x008d0c78",
+      "symbol": "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVlogic_error@std@@@8": "0x9285a4 (RTTI .?AVlogic_error@std@@)",
+        "+0x18 ??0logic_error@std@@QAE@ABV01@@Z": "0x404f30 (instance (bytes equal, targets verified))"
+      }
+    },
+    "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12": {
+      "address": "0x008d0810",
+      "symbol": "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVexception@std@@@8": "0x928588 (RTTI .?AVexception@std@@)",
+        "+0x18 ??0exception@std@@QAE@ABV01@@Z": "0x6a1592 (msvcr90.dll!??0exception@std@@QAE@ABV01@@Z)"
+      }
+    },
+    "?_Min@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@@Z": {
+      "address": "0x004135d0",
+      "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@@Z",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Max@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@@Z": {
+      "address": "0x004135b0",
+      "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@PAU342@@Z",
+      "size": 28,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": {
+      "address": "0x00413560",
+      "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z",
+      "size": 78,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z": {
+      "address": "0x004135f0",
+      "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z",
+      "size": 82,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ": {
+      "address": "0x0064fa10",
+      "symbol": "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ",
+      "size": 101,
+      "exact": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": {
+      "address": "0x00554810",
+      "symbol": "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z",
+      "size": 96,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted; listed extent 0x65 != body 0x60, whole body compared with the image bytes"
+    },
+    "?sDHTMLWindowService@@3PADA": {
+      "address": "0x0092c1f8",
+      "symbol": "?sDHTMLWindowService@@3PADA",
+      "size": 12,
+      "exact": false,
+      "status": "data instance emitted by this build (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z": {
+      "address": "0x00416900",
+      "symbol": "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "size": 28,
+      "exact": false,
+      "verified_targets": {
+        "?_entries@?1??_GetEntries@CContent@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B": "0x80ead0 (instance (bytes equal, targets verified))",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "??_G?$CComObject@VCContent@@@ATL@@UAEPAXI@Z": {
+      "address": "0x00416950",
+      "symbol": "??_G?$CComObject@VCContent@@@ATL@@UAEPAXI@Z",
+      "size": 67,
+      "exact": false,
+      "verified_targets": {
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": "0x80eabc (vtable RTTI .?AV?$CComObject@VCContent@@@ATL@@ offset 0x0)",
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": "0x80ea98 (vtable RTTI .?AV?$CComObject@VCContent@@@ATL@@ offset 0x4)",
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268 (external (content-factory-trial CreateInstance binding))",
+        "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x80242c (msvcp90.dll!??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?QueryInterface@?$CComObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z": {
+      "address": "0x00416920",
+      "symbol": "?QueryInterface@?$CComObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z",
+      "size": 10,
+      "exact": false,
+      "verified_targets": {
+        "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z": "0x416900 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?GetTypeInfoCount@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJPAI@Z": {
+      "address": "0x00401960",
+      "symbol": "?GetTypeInfoCount@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJPAI@Z",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?AddRef@?$CComAggObject@VCContent@@@ATL@@UAGKXZ": {
+      "address": "0x0040faf0",
+      "symbol": "?AddRef@?$CComAggObject@VCContent@@@ATL@@UAGKXZ",
+      "size": 13,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    },
+    "?Release@?$CComAggObject@VCContent@@@ATL@@UAGKXZ": {
+      "address": "0x004028c0",
+      "symbol": "?Release@?$CComAggObject@VCContent@@@ATL@@UAGKXZ",
+      "size": 33,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this build; every own target verified), bytes equal, not counted"
+    }
+  },
+  "vtables": {
+    "??_7?$CComObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": {
+      "address": "0x80eabc",
+      "rtti": ".?AV?$CComObject@VCContent@@@ATL@@",
+      "offset": 0,
+      "slots": {
+        "0": "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z = 0x416900 (instance (bytes equal, targets verified))",
+        "1": "?AddRef@?$CComObject@VCContent@@@ATL@@UAGKXZ = 0x417e70 (instance (bytes equal, targets verified))",
+        "2": "?Release@?$CComObject@VCContent@@@ATL@@UAGKXZ = 0x4168d0 (own row)",
+        "3": "?InterfaceSupportsErrorInfo@?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@ATL@@UAGJABU_GUID@@@Z = 0x416880 (own row)",
+        "4": "??_E?$CComObject@VCContent@@@ATL@@UAEPAXI@Z = 0x416950 (instance (bytes equal, targets verified) via ??_G)"
+      }
+    },
+    "??_7?$CComObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": {
+      "address": "0x80ea98",
+      "rtti": ".?AV?$CComObject@VCContent@@@ATL@@",
+      "offset": 4,
+      "slots": {
+        "0": "?QueryInterface@?$CComObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z = 0x416920 (instance (bytes equal, targets verified))",
+        "1": "?AddRef@?$CComObject@VCContent@@@ATL@@W3AGKXZ = 0x416940 (own row)",
+        "2": "?Release@?$CComObject@VCContent@@@ATL@@W3AGKXZ = 0x416930 (own row)",
+        "3": "?GetTypeInfoCount@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJPAI@Z = 0x401960 (instance (bytes equal, targets verified))",
+        "4": "?GetTypeInfo@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJIKPAPAUITypeInfo@@@Z = 0x4169d0 (own row)",
+        "5": "?GetIDsOfNames@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJABU_GUID@@PAPA_WIKPAJ@Z = 0x416a30 (own row)",
+        "6": "?Invoke@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z = 0x416a60 (own row)",
+        "7": "?Upload@CContent@@UAGJPA_W@Z = 0x4166a0 (external (content-upload-trial row))"
+      }
+    },
+    "??_7?$CComAggObject@VCContent@@@ATL@@6B@": {
+      "address": "0x80eb4c",
+      "rtti": ".?AV?$CComAggObject@VCContent@@@ATL@@",
+      "offset": 0,
+      "slots": {
+        "0": "?QueryInterface@?$CComAggObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z = 0x416c30 (own row)",
+        "1": "?AddRef@?$CComAggObject@VCContent@@@ATL@@UAGKXZ = 0x40faf0 (instance (bytes equal, targets verified))",
+        "2": "?Release@?$CComAggObject@VCContent@@@ATL@@UAGKXZ = 0x4028c0 (instance (bytes equal, targets verified))",
+        "3": "??_E?$CComAggObject@VCContent@@@ATL@@UAEPAXI@Z = 0x416d00 (own row via ??_G)"
+      }
+    },
+    "??_7?$CComContainedObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": {
+      "address": "0x80eb38",
+      "rtti": ".?AV?$CComContainedObject@VCContent@@@ATL@@",
+      "offset": 0,
+      "slots": {
+        "0": "?QueryInterface@?$CComContainedObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z = 0x417fd0 (instance (bytes equal, targets verified))",
+        "1": "?AddRef@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ = 0x417f90 (instance (bytes equal, targets verified))",
+        "2": "?Release@?$CComContainedObject@VCContent@@@ATL@@UAGKXZ = 0x417fb0 (instance (bytes equal, targets verified))",
+        "3": "?InterfaceSupportsErrorInfo@?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@ATL@@UAGJABU_GUID@@@Z = 0x416880 (own row)"
+      }
+    },
+    "??_7?$CComContainedObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": {
+      "address": "0x80eb14",
+      "rtti": ".?AV?$CComContainedObject@VCContent@@@ATL@@",
+      "offset": 4,
+      "slots": {
+        "0": "?QueryInterface@?$CComContainedObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z = 0x4169b0 (own row)",
+        "1": "?AddRef@?$CComContainedObject@VCContent@@@ATL@@W3AGKXZ = 0x4169a0 (own row)",
+        "2": "?Release@?$CComContainedObject@VCContent@@@ATL@@W3AGKXZ = 0x4169c0 (own row)",
+        "3": "?GetTypeInfoCount@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJPAI@Z = 0x401960 (instance (bytes equal, targets verified))",
+        "4": "?GetTypeInfo@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJIKPAPAUITypeInfo@@@Z = 0x4169d0 (own row)",
+        "5": "?GetIDsOfNames@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJABU_GUID@@PAPA_WIKPAJ@Z = 0x416a30 (own row)",
+        "6": "?Invoke@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z = 0x416a60 (own row)",
+        "7": "?Upload@CContent@@UAGJPA_W@Z = 0x4166a0 (external (content-upload-trial row))"
+      }
+    }
+  },
+  "local_statics": {
+    "??_B?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ@51": {
+      "address": "0x96cef4",
+      "used_by": [
+        "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    "??_B?1??getClipboardFormat@@YAIXZ@51": {
+      "address": "0x96cbf4",
+      "used_by": [
+        "?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+        "?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z"
+      ]
+    },
+    "?format@?1??getClipboardFormat@@YAIXZ@4IA": {
+      "address": "0x96cbf0",
+      "used_by": [
+        "?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+        "?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z"
+      ]
+    },
+    "?n@?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": {
+      "address": "0x96cef0",
+      "used_by": [
+        "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ"
+      ]
+    }
+  },
+  "counted_elsewhere": [
+    "00414820 counted by creatable-shared-count-working",
+    "004148b0 counted by app-unit40c-2008-working",
+    "00414960 counted by app-unit40c-2008-working",
+    "004149e0 counted by app-unit40c-2008-working",
+    "00414a90 counted by creatable-shared-count-working",
+    "00414b20 counted by app-unit40c-2008-working",
+    "00414bd0 counted by app-unit40c-2008-working",
+    "00414c50 counted by app-unit40c-2008-working",
+    "00414d00 counted by creatable-shared-count-working",
+    "00414d90 counted by app-unit40c-2008-working",
+    "00414e40 counted by app-unit40c-2008-working",
+    "00414ec0 counted by app-unit40c-2008-working",
+    "00414f70 counted by creatable-shared-count-working",
+    "00415000 counted by stats-service-working",
+    "00415020 counted by app-unit40c-2008-working",
+    "004150d0 counted by app-unit40c-2008-working",
+    "00415150 counted by app-unit40c-2008-working",
+    "00415b00 counted by safearray-builder-mismatch",
+    "00415d70 counted by declaration-view-working",
+    "00416690 counted by feature-working, services-working, stats-service-working, user-controller-working",
+    "004166a0 counted by content-upload-trial",
+    "00416900 counted by content-factory-trial",
+    "00416920 counted by content-factory-trial",
+    "00416950 counted by content-factory-trial",
+    "00416e10 counted by leaves2008-working",
+    "00416e60 counted by app-leaves2008-dhtml-working",
+    "00416e90 counted by app-leaves2008-dhtml-working",
+    "004175d0 counted by lua-args-trial"
+  ],
+  "not_exact": {},
+  "rejected": [],
+  "proposals": [
+    "native-headers/v8tree/Service.h (core owner): ServiceProvider::find<Class>() const and create<Class>() const are declared without bodies; 0x415200 / 0x4153b0 (find / create<Selection>, 328 / 228 B) stay open until bodies exist. Bound here only as call targets of the verb bodies.",
+    "CLuaFunction owner (no native header): a CLuaFunction declaration (CComObject<CLuaFunction> RTTI vtables 0x80ec00 / 0x80ebd8) would unlock 0x417e20 / 0x417e80 / 0x417ea0 / 0x417ef0 and the ICF-shared ATL bodies 0x417e70 / 0x417f90 / 0x417fb0 / 0x417fd0 in this range."
+  ],
+  "shadowing": "none (no new header; CContent.h, ClipboardVerbs.h, the DHTMLWindow headers and the profile headers are included read-only)",
+  "exact_function_rows": [
+    "00414470",
+    "004147c0",
+    "00415350",
+    "00415510",
+    "00415800",
+    "00416880",
+    "004168d0",
+    "00416930",
+    "00416940",
+    "004169a0",
+    "004169b0",
+    "004169c0",
+    "004169d0",
+    "00416a30",
+    "00416a60",
+    "00416ac0",
+    "00416b89",
+    "00416bb0",
+    "00416c30",
+    "00416ca0",
+    "00416d00",
+    "00416d20",
+    "00416dbe",
+    "00416df0",
+    "00416eb0",
+    "00416f10",
+    "00416f90",
+    "00417290",
+    "004173b0",
+    "004175f0",
+    "00417660",
+    "004176d0",
+    "004177a0",
+    "00417ff0"
+  ],
+  "scope": "Inactive. Exact rows with every target verified; no pending build; no active build, swap or credit."
+}

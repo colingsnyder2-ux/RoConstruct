@@ -1,0 +1,689 @@
+{
+  "scope": "Inactive 2008-06 native recovery of the application range 005e4000..005e8000: unit map of every row; Primitive rows against the native Primitive2008.h and the part-embedded Primitive.h, MotorJoint::isAligned against Joints2008.h, the Assembly-unit std::sort<MotorJoint**> and G3D::Array<Edge*> instances, and MechanismTracker::tracking. No new header, no PENDING build. No runtime, link or class-swap claim.",
+  "exact_function_rows": [
+    "005e50e0",
+    "005e5d00",
+    "005e61e0",
+    "005e6540",
+    "005e6640",
+    "005e66b0",
+    "005e6720",
+    "005e6830",
+    "005e68e0",
+    "005e6920",
+    "005e69d0",
+    "005e6ca0",
+    "005e6e90",
+    "005e7420",
+    "005e7450",
+    "005e7530",
+    "005e7550",
+    "005e7580",
+    "005e75b0",
+    "005e75e0",
+    "005e7600",
+    "005e7640",
+    "005e7680",
+    "005e76f0",
+    "005e7760",
+    "005e7850",
+    "005e7910",
+    "005e7bd0",
+    "005e7f10"
+  ],
+  "exact_function_row_count": 29,
+  "range_rows": 183,
+  "rows": {
+    "primitive": [
+      {
+        "address": "005e7420",
+        "symbol": "?setUnknown0x14@Primitive@RBX@@QAEXH@Z",
+        "size": 21,
+        "target_size": 21,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e7530",
+        "symbol": "?onNewTouch@Primitive@RBX@@SAXPAV12@0@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?newTouch@RBX@@YAXPAVPrimitive@1@0@Z": "0x5e74c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7580",
+        "symbol": "?computeJointK@Primitive@RBX@@IBEMXZ",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?getJointK@Constants@RBX@@SA?BMABVVector3@G3D@@_N@Z": "0x649730 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7850",
+        "symbol": "?setSurfaceType@Primitive@RBX@@QAEXW4NormalId@2@W4SurfaceType@2@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e7910",
+        "symbol": "??1EdgeList@RBX@@QAE@XZ",
+        "size": 100,
+        "target_size": 100,
+        "exact": true,
+        "verified_targets": {
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external (call-site identification))"
+        },
+        "local_eh": [
+          "__ehhandler$??1EdgeList@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005e7bd0",
+        "symbol": "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e7f10",
+        "symbol": "?getRadius@Primitive@RBX@@UBEMXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "parts": [
+      {
+        "address": "005e7450",
+        "symbol": "?setGuid@Primitive@RBX@@QAEXABVGuid@2@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?assign@Guid@RBX@@QAEXUData@12@@Z": "0x5a8200 (external (call-site identification))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7550",
+        "symbol": "?setClump@Primitive@RBX@@QAEXPAVClump@2@@Z",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e75b0",
+        "symbol": "?setCanCollide@Primitive@RBX@@QAEX_N@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "?onPrimitiveCanCollideChanged@World@RBX@@QAEXPAVPrimitive@2@@Z": "0x5e9460 (external (call-site identification))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e75e0",
+        "symbol": "?setCanSleep@Primitive@RBX@@QAEX_N@Z",
+        "size": 21,
+        "target_size": 21,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e7600",
+        "symbol": "?setFriction@Primitive@RBX@@QAEXM@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?onPrimitiveContactParametersChanged@World@RBX@@QAEXPAVPrimitive@2@@Z": "0x5e9190 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7640",
+        "symbol": "?setElasticity@Primitive@RBX@@QAEXM@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?onPrimitiveContactParametersChanged@World@RBX@@QAEXPAVPrimitive@2@@Z": "0x5e9190 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7680",
+        "symbol": "?getFaceCoordInObject@Primitive@RBX@@QAE?AVCoordinateFrame@G3D@@W4NormalId@2@@Z",
+        "size": 104,
+        "target_size": 104,
+        "exact": true,
+        "verified_targets": {
+          "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z": "0x5ec570 (external (evidence name))",
+          "?normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@1@@Z": "0x5ec800 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external (call-site identification))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e76f0",
+        "symbol": "?getFaceInObject@Primitive@RBX@@QAE?AVFace@2@W4NormalId@2@@Z",
+        "size": 108,
+        "target_size": 108,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?fromExtentsSide@Face@RBX@@SA?AV12@ABVExtents@2@W4NormalId@2@@Z": "0x649920 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7760",
+        "symbol": "?setVelocity@Primitive@RBX@@QAEXABVVelocity@2@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?setVelocity@Body@RBX@@QAEXABVVelocity@2@@Z": "0x614040 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "motor": [
+      {
+        "address": "005e5d00",
+        "symbol": "?isAligned@MotorJoint@RBX@@EAE_NXZ",
+        "size": 155,
+        "target_size": 155,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0 (external (evidence name))",
+          "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z": "0x476700 (external (evidence name))",
+          "__real@3727c5ac": "0x82b3b0 (constant 3727c5ac)",
+          "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z": "0x5de1d0 (external (evidence name))",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external (call-site identification))"
+        },
+        "local_eh": []
+      }
+    ],
+    "templates": [
+      {
+        "address": "005e61e0",
+        "symbol": "??$_Push_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@HHPAV12@P6A_NPBV12@2@Z@Z",
+        "size": 94,
+        "target_size": 94,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e6540",
+        "symbol": "?resize@?$Array@PAVEdge@RBX@@@G3D@@QAEXH_N@Z",
+        "size": 256,
+        "target_size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@PAVEdge@RBX@@@G3D@@QAEXH_N@Z@53": "0x97abbc (static data (one address per symbol))",
+          "?minSize@?3??resize@?$Array@PAVEdge@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97abb8 (static data (one address per symbol))",
+          "?realloc@?$Array@PAVEdge@RBX@@@G3D@@AAEXH@Z": "0x502080 (external (call-site identification))",
+          "__real@40400000": "0x81e380 (constant 40400000)",
+          "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "__ftol2_sse": "0x6a17f0 (external (call-site identification))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e6640",
+        "symbol": "?append@?$Array@PAVEdge@RBX@@@G3D@@QAEXABQAVEdge@RBX@@@Z",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVEdge@RBX@@@G3D@@QAEXABQAVEdge@RBX@@@Z": "0x5e6640 (own row)",
+          "?resize@?$Array@PAVEdge@RBX@@@G3D@@QAEXH_N@Z": "0x5e6540 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e66b0",
+        "symbol": "??$_Med3@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@00P6A_NPBV12@1@Z@Z",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e6720",
+        "symbol": "??$_Adjust_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@HHPAV12@P6A_NPBV12@2@Z@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "verified_targets": {
+          "??$_Push_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@HHPAV12@P6A_NPBV12@2@Z@Z": "0x5e61e0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e6830",
+        "symbol": "??$_Median@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@00P6A_NPBV12@1@Z@Z",
+        "size": 165,
+        "target_size": 165,
+        "exact": true,
+        "verified_targets": {
+          "??$_Med3@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@00P6A_NPBV12@1@Z@Z": "0x5e66b0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e68e0",
+        "symbol": "??$_Make_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@0P6A_NPBV12@1@ZPAH0@Z",
+        "size": 61,
+        "target_size": 61,
+        "exact": true,
+        "verified_targets": {
+          "??$_Adjust_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@HHPAV12@P6A_NPBV12@2@Z@Z": "0x5e6720 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e6920",
+        "symbol": "??$_Insertion_sort1@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@ZPAV12@@std@@YAXPAPAVMotorJoint@RBX@@0P6A_NPBV12@1@Z0@Z",
+        "size": 175,
+        "target_size": 175,
+        "exact": true,
+        "verified_targets": {
+          "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e69d0",
+        "symbol": "??$_Unguarded_partition@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YA?AU?$pair@PAPAVMotorJoint@RBX@@PAPAV12@@0@PAPAVMotorJoint@RBX@@0P6A_NPBV23@1@Z@Z",
+        "size": 463,
+        "target_size": 463,
+        "exact": true,
+        "verified_targets": {
+          "??$_Median@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@00P6A_NPBV12@1@Z@Z": "0x5e6830 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e6ca0",
+        "symbol": "??$_Sort_heap@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@0P6A_NPBV12@1@Z@Z",
+        "size": 74,
+        "target_size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??$_Adjust_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@HHPAV12@P6A_NPBV12@2@Z@Z": "0x5e6720 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e6e90",
+        "symbol": "??$_Sort@PAPAVMotorJoint@RBX@@HP6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@0HP6A_NPBV12@1@Z@Z",
+        "size": 217,
+        "target_size": 217,
+        "exact": true,
+        "verified_targets": {
+          "??$_Unguarded_partition@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YA?AU?$pair@PAPAVMotorJoint@RBX@@PAPAV12@@0@PAPAVMotorJoint@RBX@@0P6A_NPBV23@1@Z@Z": "0x5e69d0 (own row)",
+          "??$_Sort@PAPAVMotorJoint@RBX@@HP6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@0HP6A_NPBV12@1@Z@Z": "0x5e6e90 (own row)",
+          "??$_Insertion_sort1@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@ZPAV12@@std@@YAXPAPAVMotorJoint@RBX@@0P6A_NPBV12@1@Z0@Z": "0x5e6920 (own row)",
+          "??$_Make_heap@PAPAVMotorJoint@RBX@@HPAV12@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@0P6A_NPBV12@1@ZPAH0@Z": "0x5e68e0 (own row)",
+          "??$_Sort_heap@PAPAVMotorJoint@RBX@@P6A_NPBV12@0@Z@std@@YAXPAPAVMotorJoint@RBX@@0P6A_NPBV12@1@Z@Z": "0x5e6ca0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "mechanism": [
+      {
+        "address": "005e50e0",
+        "symbol": "?tracking@MechanismTracker@RBX@@QAE_NXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ]
+  },
+  "unit_map": [
+    {
+      "unit": "v8datamodel/JointInstance.cpp 005e4000..005e50bf",
+      "rows": 55,
+      "bytes": 3888,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "library": false,
+      "evidence": "v8datamodel/JointInstance.cpp tail (the unit starts at 005e2760, see app-unit5dc-2008): the Snap / Weld / Glue / Rotate / RotateP / RotateV / Motor FactoryProduct / DescribedCreatable constructors and default constructors (Snap() 005e4600, Weld() 005e4810, Glue() 005e49a0, Rotate() 005e4ad0, Motor() 005e4ee0; the 163-byte FactoryProduct constructors 005e4010 / 005e4100 / 005e41d0 / 005e42b0 / 005e43a0), their ??_E adjustor thunks and getClassName leaves (8 / 11 bytes), JointInstance setPart0 / setPart1 / setC0 / setC1 005e4450..005e44c0, the shared_ptr / Creator helpers 005e44f0 / 005e4710 / 005e4c60 / 005e4dd0 and Motor::setMaxVelocity 005e4fe0 (Motor +0x14c MotorJoint, maxVelocity +0x90), the per-joint ??_G bodies 005e4920 / 005e4a60 / 005e4b90 / 005e4d30 and the JointInstance(Joint*) family constructors. Not built here: in 2008 these joints derive from DescribedCreatable<C, JointInstance, sC> with no AutoJoint base (RTTI of the Weld vtable 0083f24c, stored by Weld() 005e4810), which the native v8datamodel/JointInstance.h does not declare (proposal repeated below). Mapping only."
+    },
+    {
+      "unit": "v8world/Mechanism.cpp 005e50c0..005e54bf",
+      "rows": 10,
+      "bytes": 975,
+      "counted_elsewhere": [
+        "005e50f0 counted by kernel-stages-working.json",
+        "005e5150 counted by kernel-stages-working.json",
+        "005e5190 counted by kernel-stages-working.json",
+        "005e51e0 counted by kernel-stages-working.json"
+      ],
+      "counted_here": 1,
+      "library": false,
+      "evidence": "v8world/Mechanism.cpp (kernel / SimJob owner): Mechanism::getMechanismFromPrimitive 005e50c0 (evidence name: Primitive::getAssembly 005e7570, then the folded 4-byte getter 005e6110 `mov eax, [ecx+0x40]`), MechanismTracker::tracking 005e50e0, the SimJob() / ~SimJob / ??_G / AssemblySimJob rows 005e50f0..005e51e0 (kernel-stages), fastRemoveShort over the job +0x4 vector 005e5200, MechanismTracker::stopTracking 005e5320, setMechanism 005e5350 (vector push_back 004213a0 on job +0x4, then tracker +0x0 = job) and transferTrackers 005e53a0. Built here: tracking 005e50e0 (donor v8world/Mechanism.h; the field at +0x0 is the only one used). Not built: the others need the 2008 tracker / SimJob relation (proposal to the SimJob2008.h owner)."
+    },
+    {
+      "unit": "v8datamodel/JointsService.cpp 005e54c0..005e5bef",
+      "rows": 12,
+      "bytes": 1792,
+      "counted_elsewhere": [
+        "005e54c0 counted by services-working.json",
+        "005e5500 counted by services-working.json",
+        "005e5520 counted by services-working.json",
+        "005e5560 counted by services-working.json",
+        "005e55e0 counted by services-working.json",
+        "005e5660 counted by services-working.json",
+        "005e56e0 counted by services-working.json",
+        "005e5760 counted by services-working.json",
+        "005e57e0 counted by services-working.json",
+        "005e5860 counted by services-working.json",
+        "005e5a80 counted by humanoid2008-working.json"
+      ],
+      "counted_here": 0,
+      "library": false,
+      "evidence": "v8datamodel/JointsService.cpp (services owner, native v8datamodel/JointsService.h): onDescendentAdded 005e54c0 through the shared_ptr deleters to 005e5860 (services-working.json), the Notifier removeListener instance 005e5a80 (humanoid2008-working.json) and onServiceProvider 005e5b50 (needs the Workspace getWorld proposal of the app-unit5dc / services receipts). Not built here."
+    },
+    {
+      "unit": "v8world/MotorJoint.cpp 005e5bf0..005e5eff",
+      "rows": 7,
+      "bytes": 726,
+      "counted_elsewhere": [
+        "005e5bf0 counted by world-joints-working.json",
+        "005e5e00 counted by world-joints-working.json",
+        "005e5e70 counted by world-joints-working.json",
+        "005e5ee0 counted by world-joints-working.json"
+      ],
+      "counted_here": 1,
+      "library": false,
+      "evidence": "v8world/MotorJoint.cpp (world-joints owner, native v8world/Joints2008.h): MotorJoint() 005e5bf0, resetLink 005e5c90, isAligned 005e5d00, setCurrentAngle 005e5da0 (pending-build-only in world-joints), ~MotorJoint 005e5e00, stepUi 005e5e70, ??_G 005e5ee0. Built here: isAligned 005e5d00 (slot 9 of vtable 0083f764), against Joints2008.h and Primitive2008.h. Not built: resetLink reads Body::parent at +0x14 (`mov ecx,[eax+0x14]` at 005e5c9c); the native v8kernel/Body2008.h has it there but cannot share a unit with Joints2008.h, whose donor v8world/Edge.h pulls the donor Body.h (parent +0x8; trial 98 B vs 100 B). See proposals."
+    },
+    {
+      "unit": "v8world/Assembly.cpp 005e5f00..005e729f",
+      "rows": 46,
+      "bytes": 4695,
+      "counted_elsewhere": [],
+      "counted_here": 11,
+      "library": false,
+      "evidence": "v8world/Assembly.cpp (2008 Assembly / Clump unit; engine owner; no native Assembly or Clump declaration exists): a Primitive anchored-or-dragging test 005e5f00 (+0xa8 / +0xa9 / +0xaa), SleepInfo() 005e5f30, a Guid compare 005e5f60 (Primitive::getGuid 005e7440, Guid::compare 005a8330), assemblyPrimBegin / End 005e5fa0 / 005e5fc0, the Assembly members 005e5fe0..005e6170 (root primitive +0x1c, parent +0x20, +0x40 getter 005e6110 = getMechanismFromPrimitive tail), otherAssembly 005e61b0, the recursive primitive walks 005e6240 / 005e62d0 / 005e6360, getMotor 005e6400, 005e6420 (Body / Math 005de630), the 7-byte leaf 005e6530, 005e6790 / 005e67c0 / 005e6cf0 (new Assembly, setClump 005e7550, Body::setParent 006148b0, RigidJoint::getChildInParent 00645930, Body::setMeInParent 006142d0), 005e6ba0 / 005e6c70 (Array<Edge*> collection), the std::vector instance 005e6de0, the MotorJoint sorter 005e6f70 (push_back 004213a0, then std::sort), 005e6fd0 / 005e7050 (MotorJoint::resetLink 005e5c90), ~Assembly 005e70a0 and its ??_G 005e7280. Built here (AppUnit5E4AssemblyTemplates.cpp, Roblox-instantiated templates referenced only by this unit and Primitive.cpp): the std::sort<MotorJoint**, bool (*)(const MotorJoint*, const MotorJoint*)> helpers _Push_heap 005e61e0, _Med3 005e66b0, _Adjust_heap 005e6720, _Median 005e6830, _Make_heap 005e68e0, _Insertion_sort1 005e6920, _Unguarded_partition 005e69d0, _Sort_heap 005e6ca0, _Sort 005e6e90 (evidence names on the first six), and G3D::Array<Edge*>::resize 005e6540 / append 005e6640 (evidence names; /fp:fast proven by resize: 264 B vs 256 B without it). The Assembly / Clump members need a 2008 Assembly / Clump declaration (layout from the constructor 005e6cf0 and ~Assembly 005e70a0); not attempted in this pass."
+    },
+    {
+      "unit": "v8world/Primitive.cpp 005e72a0..005e7fff",
+      "rows": 53,
+      "bytes": 3007,
+      "counted_elsewhere": [
+        "005e72a0 counted by world-shapes-working.json",
+        "005e72c0 counted by humanoid2008-working.json, world-shapes-working.json",
+        "005e72d0 counted by world-shapes-working.json",
+        "005e72f0 counted by world-shapes-working.json",
+        "005e7390 counted by world-shapes-working.json",
+        "005e73b0 counted by world-shapes-working.json",
+        "005e73d0 counted by world-shapes-working.json",
+        "005e73e0 counted by world-shapes-working.json",
+        "005e7400 counted by world-shapes-working.json",
+        "005e7870 counted by world-shapes-working.json",
+        "005e78c0 counted by world-shapes-working.json"
+      ],
+      "counted_here": 16,
+      "library": false,
+      "evidence": "v8world/Primitive.cpp head (continues into 005e8000; Body/Primitive owner, native v8world/Primitive2008.h and part-embedded v8world/Primitive.h). Geometry / Block / Ball inline virtuals 005e72a0..005e7400 and nullGeometry / Geometry::getCenterToCorner 005e7870 / 005e78c0 are counted by world-shapes-working.json. Built here against Primitive2008.h (AppUnit5E4Primitive.cpp): setUnknown0x14 005e7420, onNewTouch 005e7530, computeJointK 005e7580, setSurfaceType 005e7850, ~EdgeList 005e7910, getFirstContact 005e7bd0, getRadius 005e7f10. Built here against part-embedded Primitive.h + engine-world World.h (AppUnit5E4PrimitiveParts.cpp): setGuid 005e7450, setClump 005e7550, setCanCollide 005e75b0, setCanSleep 005e75e0, setFriction 005e7600, setElasticity 005e7640, getFaceCoordInObject 005e7680, getFaceInObject 005e76f0, setVelocity 005e7760. Not built: the Body::getDepth-style walks 005e7300 (a function-static Vector3 compare, guard 0097abd0) / 005e7370 / 005e7470, Edge::otherPrimitive-style 005e7490, newTouch 005e74c0 (needs 2008 Clump +0x24 / Assembly sleep state), getAssembly 005e7560 (unchecked copy) / 005e7570 (donor Clump puts the assembly at +0x20; 2008 +0x24), getGuid 005e7440, setSurfaceData 005e7770, computeFuzzyExtents 005e7980 and getFastFuzzyExtents 005e7a50 (part-embedded: donor Body pv +0x88, 2008 +0x94; Primitive2008.h: computeFuzzyExtents / hitTest not declared), the index-based EdgeList walkers 005e7ae0..005e7ba0, 005e7b20, 005e7c10, getFirstRigid / getNextRigid 005e7c80 / 005e7ca0, getJoint-style 005e7ce0 / 005e7d30 (need the 2008 Edge with list indices +0x14 / +0x18; contact owner proposal), getNextContact 005e7be0 (same), newGeometry 005e7d80 (not declared by Primitive2008.h), ~Primitive 005e7df0 (native-classes/PrimitiveLifetime.cpp, another owner), hitTest 005e7f20 (same Body offset issue)."
+    }
+  ],
+  "proposals": [
+    "Owner of native-headers/v8world/Primitive2008.h (Body/Primitive): declare `Extents computeFuzzyExtents() const;` (005e7980), `bool hitTest(const G3D::Ray&, G3D::Vector3&, bool&);` (005e7f20), `static Geometry* newGeometry(Geometry::GeometryType);` (005e7d80, called by Primitive() 005e8770; Block new 0x18 vtable 0083f7ec, Ball new 0x14 vtable 0083f814, default Geometry::nullGeometry 005e7870), `void setClump(Clump*)` (005e7550), `Assembly* getAssembly() const` (005e7570: clump +0x5c, then Clump +0x24) and the setters setGuid 005e7450 / setCanCollide 005e75b0 / setCanSleep(+0xab) 005e75e0 / setFriction 005e7600 / setElasticity 005e7640. With computeFuzzyExtents declared, getFastFuzzyExtents 005e7a50 (already declared) and hitTest use the native Body2008 pv +0x94 and can be built in the native-Primitive configuration (they are not exact against the donor Body).",
+    "Owner of native-headers/v8world/Joints2008.h (world-joints): MotorJoint::resetLink 005e5c90 needs Body::getParent (+0x14, native Body2008.h) in a unit that includes Joints2008.h; the donor v8world/Edge.h it includes pulls the donor Body.h. Including the native IPipelined2008.h Edge (contact owner proposal) would let resetLink be built. Byte shape: parentId = prim1->body->parent != prim0->body; link->reset(getJointCoord(parentId), getJointCoord(1 - parentId)) (Link::reset 00613da0); jointAngle +0xcc = currentAngle; Link::dirty 00613cb0.",
+    "Owner of native-headers/v8world/SimJob2008.h (kernel stages): in 2008 MechanismTracker (one pointer at +0x0) tracks a SimJob, and the vector at SimJob +0x4 holds the trackers: stopTracking 005e5320 removes the tracker from job+0x4 with fastRemoveShort 005e5200, setMechanism 005e5350 pushes it (push_back 004213a0) and stores the job at tracker+0x0, and the ICF-folded out-of-line ~MechanismTracker 004c99b0 jumps to 005e5320. A 2008 MechanismTracker declaration next to SimJob would let 005e5200 / 005e5320 / 005e5350 / 005e53a0 be built.",
+    "Owner of native-headers/v8datamodel/JointInstance.h (repeats the app-unit5dc / app-unit4b0 proposal): the 2008 joints derive from DescribedCreatable<C, JointInstance, sC> with `extern const char sC[]` and no AutoJoint; the JointInstance.cpp rows 005e4000..005e50bf of this range become candidates with that declaration.",
+    "A future native v8world Assembly / Clump declaration (engine owner): Clump +0x24 is the Assembly (getAssembly 005e7570, newTouch 005e74e3), Assembly root primitive +0x1c, parent +0x20, +0x40 getter 005e6110; the Assembly constructor 005e6cf0 and ~Assembly 005e70a0 give the remaining layout."
+  ],
+  "rejected": {
+    "MotorJoint::resetLink (005e5c90)": "Joints2008.h + Primitive2008.h + donor Body.h: 100 B vs 98 B (donor Body::parent at +0x8, 2008 +0x14). Adding v8kernel/Body2008.h fails to compile (C2011 Body / Cofm / SimBody redefinition through the donor Edge.h -> IPipelined.h -> Kernel.h chain).",
+    "Primitive::hitTest / computeFuzzyExtents / getFastFuzzyExtents (part-embedded)": "same size (212 / 197 / 136 B) but the donor Body.h reads pv at +0x88 (2008 +0x94); with v8kernel/Body2008.h the part-embedded Primitive.h does not compile (donor Body.h already included).",
+    "Primitive::getAssembly (part-embedded + donor Clump.h)": "14 / 14 B, reads Clump +0x20; the 2008 body reads +0x24.",
+    "G3D::Array<Edge*>::resize without /fp:fast": "264 B vs 256 B (x87 growth-factor sequence).",
+    "Primitive::setCanCollide with `canCollide != value`": "cmp operand order (38 vs 3a); `value != canCollide` is exact."
+  },
+  "flags": {
+    "primitive": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e4/NativeAppUnit5E4_primitive.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E4Primitive.cpp"
+    ],
+    "parts": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e4/NativeAppUnit5E4_parts.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E4PrimitiveParts.cpp"
+    ],
+    "motor": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e4/NativeAppUnit5E4_motor.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E4MotorJoint.cpp"
+    ],
+    "templates": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e4/NativeAppUnit5E4_templates.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E4AssemblyTemplates.cpp"
+    ],
+    "mechanism": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e4/NativeAppUnit5E4_mechanism.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E4Mechanism.cpp"
+    ]
+  },
+  "sources": {
+    "primitive": "4f65de15fc847e0059c1e3a08ba70b115f8b155c6188f4b23091811fd8a6258d",
+    "parts": "4e84c2c8932b4252ef58097eb0484078dd8cb0b66208f60393b28b18e0bd9368",
+    "motor": "9e7774d710f3d5df221370afe54fa3df442b4ab7a366de28e14295ab414f56ea",
+    "templates": "5a646bf680b8a6a77fcf284eba7a99c44028c6ed265d31dd8b15be6541fbd341",
+    "mechanism": "6ad47ccc68d653a7d4f1eb85485852ed5449117e4bee2272c9f83afd5ffea736"
+  },
+  "headers_read_only": [
+    "native-headers/v8world/Primitive2008.h",
+    "native-headers/v8world/Contact2008.h",
+    "native-headers/v8world/Joints2008.h",
+    "native-headers/part-embedded/v8world/Primitive.h",
+    "native-headers/engine-world/v8world/World.h",
+    "tools/rbxgs/Client/App/include/v8world/Mechanism.h (donor)",
+    "tools/rbxgs/Client/App/include/v8kernel/Constants.h (donor)",
+    "tools/rbxgs/Client/App/include/util/Math.h (donor)"
+  ],
+  "new_headers": []
+}

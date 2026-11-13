@@ -1,0 +1,188 @@
+{
+  "class": "RBX::Network::Server::ClientProxy",
+  "evidence_only": true,
+  "sources": {
+    "rebuild/2008-06/tests/record_native_client_proxy.py": "dcb5d660f126763aeda8420081823b455c4443ef6702b2170b0120be4eaec166"
+  },
+  "layout": {
+    "sizeof": "0x2d78 (malloc in 004a21c0); 0x2d74 of data, 8-aligned because Replicator holds a double",
+    "bases": "Replicator at 0 (IdSerializer/Instance chain), PluginInterface +0x2b74 (RTTI 00823474)",
+    "sizeof_Replicator": "0x2d68 (first ClientProxy member; Replicator ctor 004b9bd0 last stores +0x2d5c/+0x2d60)",
+    "fields": {
+      "+0x2d68": "boost::shared_ptr<Player> remotePlayer (px +0x2d68, pn +0x2d6c; ctor zeroes both; dtor releases +0x2d6c; findTargetPlayer returns +0x2d68)",
+      "+0x2d70": "Server* server (ctor stores its third argument; slot 16 reads it)"
+    },
+    "replicator_fields_used": {
+      "+0x2c58": "vector-shaped replicationContainers (sendTop 004a2ac0 reads +0x2c58, first +0x2c64, last +0x2c68; element type unproven)",
+      "+0x2cd0": "bool sendPhysicsEnabled",
+      "+0x2d50": "RakPeerInterface* peer",
+      "+0x2d54": "SystemAddress remotePlayerId"
+    },
+    "server_fields_used": {
+      "+0x140": "rakPeer (peerInterface 00609a30)",
+      "+0x164": "container built by 004d8680 in Server ctor 004a4b30, looked up by Script in slot 16"
+    }
+  },
+  "vtable": {
+    "address": "0x823474",
+    "slots": [
+      "0x47d410",
+      "0x55af90",
+      "0x68e880",
+      "0x68e880",
+      "0x55acc0",
+      "0x55ae20",
+      "0x55ae90",
+      "0x70bdf0",
+      "0x70bdf0",
+      "0x70bdf0",
+      "0x47d410",
+      "0x559170",
+      "0x4b87f0",
+      "0x55a470",
+      "0x416690",
+      "0x557490",
+      "0x4a3290",
+      "0x4a1a30",
+      "0x4aaf90",
+      "0x4a1570",
+      "0x4ab960",
+      "0x565950"
+    ],
+    "plugin_interface": {
+      "address": "0x8233c4",
+      "slots": [
+        "0x4a19a0",
+        "0x70bdf0",
+        "0x70bdf0",
+        "0x70bdf0",
+        "0x4b1240",
+        "0x4a2c20",
+        "0x70bdf0",
+        "0x6ad2a0",
+        "0x4e83a0",
+        "0x4e83a0",
+        "0x762d50"
+      ]
+    }
+  },
+  "methods": [
+    {
+      "address": "004a1ed0",
+      "function": "ClientProxy::ClientProxy(SystemAddress, Server*)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header; also Server::peerInterface (shared 00609a30 reads Server +0x140) needs a native Server/Peer"
+    },
+    {
+      "address": "004a18c0",
+      "function": "ClientProxy::~ClientProxy()",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a1f70",
+      "function": "ClientProxy scalar deleting destructor (Creatable operator delete -> free)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a19a0",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x2b74)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a19b0",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x24)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a19c0",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x44)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a19d0",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x64)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a19e0",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x84)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a19f0",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0xa4)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a1a00",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0xc4)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a1a10",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x10)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a1a20",
+      "function": "ClientProxy deleting-destructor thunk (this -= 0x14)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a1a30",
+      "function": "ClientProxy::findTargetPlayer() (slot 17, returns remotePlayer.get() +0x2d68)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a1570",
+      "function": "ClientProxy::onSentMarker(long) (slot 19, sendPhysicsEnabled +0x2cd0 = true)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "00565950",
+      "function": "ClientProxy::canSendItems() (slot 21; ICF-shared `mov al,1; ret`, not ClientProxy-owned)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a3290",
+      "function": "ClientProxy slot 16 bool(const Instance*): Script -> lookup in Server +0x164 container keyed by the script, else !dynamic_cast<Message>",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header; also the Server +0x164 container type (ctor 004d8680) and a native Server/Peer"
+    },
+    {
+      "address": "004a21c0",
+      "function": "Creatable::create<ClientProxy>(SystemAddress, Server*) (malloc 0x2d78)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    },
+    {
+      "address": "004a2ac0",
+      "function": "ClientProxy::sendTop() (packet 0x4b, version string, replicationContainers +0x2c58 vector, peer +0x2d50 Send slot 13, remotePlayerId +0x2d54)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header; also BitStream operator<< and serializeId"
+    },
+    {
+      "address": "004a2c20",
+      "function": "ClientProxy::OnReceive(RakPeerInterface*, Packet*) (PluginInterface slot 5)",
+      "exact": false,
+      "reason": "blocked: needs the native 2008 Network::Replicator class (sizeof 0x2d68; layout +0x2b74..+0x2d68, ctor 004b9bd0, dtor 004b96b0), not recovered by any native header"
+    }
+  ],
+  "exact_distinct_addresses": [],
+  "not_exact": 19,
+  "scope": "Inactive, evidence only. No native-headers/Network/ClientProxy2008.h or native-classes unit is created until a native 2008 Replicator (and Server/Peer, which need util/Profiling.h) exists."
+}

@@ -1,0 +1,1214 @@
+{
+  "class": "RunService unit template instances of the application range 00554000..00558000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags, /fp:fast, boost-function-pod-vtable profile",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast",
+    "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit554/NativeAppUnit554RunServiceTemplates.obj",
+    "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit554RunServiceTemplates.cpp"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit554.py": "49413ba8f4a1f7d6672706545daf9ce5691f48bb21f628d99faec1fbfd4f48f2",
+    "rebuild/2008-06/native-classes/AppUnit554RunServiceTemplates.cpp": "365d4ee2217d8a05b477143b6641d8fb9e61b22d8a3e99b4eeb142017f99a8b0",
+    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "f6c39ef2034fcfd20b2edcae75355c71e5539a2be0db3ac80673911e67ad95e5",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp": "95fb4a51a884f45f6d3148c5a523aaac026919e5dce454e9884f416e57cb3334",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": "9e6bb423072221a911c59ec6bee3c0e51433df20a8a585fd80ae1f93515083dc",
+    "rebuild/2008-06/native-headers/reflection/signal.h": "e8f76a9bf2a75ced4251c425e96766092a4a39783fdbbdb82942a98c8a4c9fb3"
+  },
+  "objects": {
+    "main": "708d351e82f1f57f1c81360ed1c7090cfde548056ace686422f91718e0031af8"
+  },
+  "unit_map": {
+    "name 00554000..0055432f": "util/Name.cpp (starts at 00553910 in the app-unit54c-2008 map): declare thunk 00554160, lookup(string) 00554180, getNullName 00554270, lookup(const char*) 00554290, one-jump body 00554320. Name owner.",
+    "run-service 00554330..0055730f": "util/RunStateOwner.cpp. Boundary evidence: RTTI .?AVRunService@RBX@@ vtables 0082d404..0082d4c4 stored by RunService() 00556b00 / ~RunService 00555c00 (create<RunService> 00405fbf: new 0x2d8), the RunService ??_E thunks 00555e40..00555ef0, the \"rbx_runProc\" thread name (0082d524, start 00556520), \"Run Service\" (ctor), and the event / function descriptors of the unit: SignalDesc<RunService, void(float, float)> vtable 0082d5f8 (ctor 00556830, static initializer 007f2814), SignalDesc<RunService, void(float)> vtable 0082d608 (00556960, 007f283f), BoundFuncDesc<RunService, void(), 0> vtable 0082d618 (00556a30, 007f2865 / 007f2895 / 007f28c5). Members counted by app-unit54c-2008; the COMDAT template instances of the unit are built here.",
+    "instance 00557310..": "v8tree/Instance.cpp (continues past 00558000 in the app-unit558-2008 map): std manipulator 00557310 and boost::call_once 00557330 (library), Object ??_G 00557470 (vtable 0082d6b0), onChildChanged / contains (app-unit558-2008), getFullName 005574d0 (\".\" separator 0081ca8c, name +0x110), the Instance descriptors and Notifier<Instance, E> raises, findFirstChildByName, addAttribute<const Name*>.",
+    "excluded / library code": "no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row. boost::call_once 00557330 (+ catch funclet 00557455) and the ios manipulator 00557310 are library code. The boost.bind / boost.function / boost.signals / boost.any / std::deque bodies built here are Roblox-instantiated templates (element or functor types RunService / DataModel / SignalDescImpl<2, void(float, float)>), not separately linked library objects; scoped_ptr<thread>, function<void()> and condition::timed_wait<scoped_lock> are generic instances whose COMDAT the linker took from this unit (their rows lie in it).",
+    "counted here": "the template instances listed in exact_function_rows (rows below)."
+  },
+  "range_functions": 143,
+  "range_rows_counted_by_other_receipts": [
+    "00554440 counted by app-unit54c-2008-working.json",
+    "00554960 counted by app-unit54c-2008-working.json",
+    "005549e0 counted by app-unit54c-2008-working.json",
+    "00554a60 counted by app-unit54c-2008-working.json",
+    "00554ae0 counted by app-unit54c-2008-working.json",
+    "00554da0 counted by app-unit54c-2008-working.json",
+    "00555350 counted by app-unit54c-2008-working.json",
+    "005555e0 counted by app-unit54c-2008-working.json",
+    "005556d0 counted by app-unit54c-2008-working.json",
+    "005557c0 counted by app-unit54c-2008-working.json",
+    "00555830 counted by app-unit54c-2008-working.json",
+    "00555900 counted by app-unit54c-2008-working.json",
+    "00555c00 counted by app-unit54c-2008-working.json",
+    "00555e40 counted by app-unit54c-2008-working.json",
+    "00555e50 counted by app-unit54c-2008-working.json",
+    "00555e60 counted by app-unit54c-2008-working.json",
+    "00555e70 counted by app-unit54c-2008-working.json",
+    "00555e80 counted by app-unit54c-2008-working.json",
+    "00555e90 counted by app-unit54c-2008-working.json",
+    "00555ea0 counted by app-unit54c-2008-working.json",
+    "00555eb0 counted by app-unit54c-2008-working.json",
+    "00555ec0 counted by app-unit54c-2008-working.json",
+    "00555ed0 counted by app-unit54c-2008-working.json",
+    "00555ee0 counted by app-unit54c-2008-working.json",
+    "00555ef0 counted by app-unit54c-2008-working.json",
+    "00556410 counted by app-unit54c-2008-working.json",
+    "00556b00 counted by app-unit54c-2008-working.json",
+    "00557490 counted by app-unit558-2008-working.json",
+    "005574b0 counted by app-unit558-2008-working.json",
+    "00557950 counted by app-unit558-2008-working.json",
+    "00557e30 counted by app-unit558-2008-working.json",
+    "00557e80 counted by app-unit558-2008-working.json"
+  ],
+  "range_rows_not_built": [
+    "00554160 not built",
+    "00554180 not built",
+    "00554270 not built",
+    "00554290 not built",
+    "00554320 not built",
+    "00554330 not built",
+    "00554350 not built",
+    "005543b0 not built",
+    "00554410 not built",
+    "00554420 not built",
+    "00554430 not built",
+    "00554460 not built",
+    "00554470 not built",
+    "005544f2 not built",
+    "00554510 not built",
+    "00554552 not built",
+    "00554565 not built",
+    "005545d0 not built",
+    "00554612 not built",
+    "00554625 not built",
+    "00554690 not built",
+    "005546d2 not built",
+    "005546e5 not built",
+    "00554750 not built",
+    "0055478e not built",
+    "005547a1 not built",
+    "00554810 not built",
+    "00554880 not built",
+    "00554e10 not built",
+    "00554ed0 not built",
+    "00555020 not built",
+    "005550a0 not built",
+    "00555190 not built",
+    "005559a0 not built",
+    "00555afb not built",
+    "00556430 not built",
+    "00556520 not built",
+    "00556720 not built",
+    "005567c0 not built",
+    "005567d0 not built",
+    "005567e0 not built",
+    "005567f0 not built",
+    "00556800 not built",
+    "00556810 not built",
+    "00557150 not built",
+    "005571b0 not built",
+    "00557310 not built",
+    "00557330 not built",
+    "00557455 not built",
+    "00557470 not built",
+    "005574d0 not built",
+    "005575d0 not built",
+    "00557630 not built",
+    "00557640 not built",
+    "005576e0 not built",
+    "00557700 not built",
+    "00557780 not built",
+    "00557806 not built",
+    "00557828 not built",
+    "00557890 not built",
+    "00557920 not built",
+    "005579e0 not built",
+    "00557a00 not built",
+    "00557a67 not built",
+    "00557ab2 not built",
+    "00557b20 not built",
+    "00557b87 not built",
+    "00557bd2 not built",
+    "00557c40 not built",
+    "00557cc9 not built",
+    "00557ceb not built",
+    "00557d60 not built",
+    "00557db0 not built",
+    "00557dc3 not built",
+    "00557f50 not built",
+    "00557f90 not built",
+    "00557fe0 not built"
+  ],
+  "not_built_reasons": [
+    "00554000..00554320: util/Name.cpp tail: the declare thunk 00554160, Name::lookup(string) 00554180, getNullName 00554270, lookup(const char*) 00554290 (evidence names) and the 5-byte jump 00554320 (ICF-shared one-jump body, 9 callers in unwind funclets): Name owner (util/Name.h core header), not built",
+    "00554330 / 00554460: RunService header inlines called from DataModel (stopRequested = true + notify_all on +0x264; runThread->join() on +0x27c): the native header declares only endRunThread(bool), not emitted out of line (RunService owner proposal in the app-unit54c-2008 receipt)",
+    "00554350 / 005543b0 / 00554410..00554430 / 005567c0..00556810 / 00556720 / 00556430 / 00555020: FactoryProduct<RunService> dtor / ctor / ??_G / ??_E thunks, DescribedCreatable ctor, classDescriptor and getClassName: their symbols or the vtables they store carry the class-name argument $1?sRunService@2@3QBDB, the committed header declares `extern char sRunService[]` (3PADA). classDescriptor 00556430 compiles exact here but under the 3PADA symbol, so it is not bound or counted (app-unit54c-2008 proposal: `extern const char sRunService[];`)",
+    "00554470 + 005544f2: function0<void>::operator=(const function0&): exact only joined with its catch funclet (BOUNDS evidence)",
+    "00554510..005547a1: the four Notifier<RunService, E>::raise(E, Listener*) bodies with their catch funclets (app-unit54c-2008 BOUNDS evidence)",
+    "00554810: storage1<value<shared_ptr<RunService>>> ctor: exact for its 96 bytes, the row includes the next thunk (BOUNDS evidence)",
+    "00554880 / 00554e10 / 00554ed0 / 005550a0 / 00555190: RunService private helpers of runProc (per-frame step with DataModel::Lock and the 1/frame float, wait for state change with condition::timed_wait on +0x264, wait for run views on +0x24c, AdjustThrottle over the views map) and runProc itself: not declared in util/RunStateOwner.h (proposal)",
+    "005559a0 + 00555afb: drainTasks with its catch funclet (app-unit54c-2008 BOUNDS evidence)",
+    "00556520: RunService::start(): needs the run-thread wrapper 00597110 (function0<void> from the bind and the thread name \"rbx_runProc\", priority -1; donor name background_function), not declared in any native header",
+    "00557150 / 005571b0: per-frame Heartbeat / Stepped raises with one float (ret 4): the header declares raiseHeartbeat / raiseStepped(float, float) (app-unit54c-2008 proposal)",
+    "00557310 / 00557330 + 00557455: std::hex-style ios_base manipulator and boost::call_once (boost.thread once.cpp shape, CreateMutexA \"__boost_once_\" name): library code, not recovered",
+    "00557470..00557fe0: v8tree/Instance.cpp (Instance owner): getFullName 005574d0, BoundFuncDesc<Instance, shared_ptr<Instance>(string, bool), 2>::declareSignature 005575d0, isAncestorOf2 00557640, isDescendentOf2 00557890, readProperties 00557920 (app-unit558-2008 pending), the Object / AbstractFactoryProduct deleting dtors 00557470 / 005579e0 (vtable 0082d6b0), the Notifier<Instance, E>::raise(E, Listener*) bodies with catch funclets, the 0x10 / 0x18 sp_counted allocators 00557f50..00557fe0: Instance.h does not declare getFullName / isAncestorOf2 / isDescendentOf2 (proposal); not built here"
+  ],
+  "rows": [
+    {
+      "address": "00554b70",
+      "symbol": "??1?$scoped_ptr@Vthread@boost@@@boost@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: unwind funclets 007cde93 / 007ce003 of RunService() 00556b00 / ~RunService 00555c00 on runThread +0x27c",
+      "exact": true,
+      "size": 25,
+      "target_size": 25,
+      "verified_targets": {
+        "??1thread@boost@@QAE@XZ": "0x5a6840 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00554b90",
+      "symbol": "?swap@?$function0@XV?$allocator@X@std@@@boost@@QAEXAAV12@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00554f90",
+      "exact": true,
+      "size": 156,
+      "target_size": 156,
+      "verified_targets": {
+        "??4?$function0@XV?$allocator@X@std@@@boost@@QAEAAV01@ABV01@@Z": "0x554470 (joined rows (bounds evidence))"
+      },
+      "local_eh": [
+        "__ehhandler$?swap@?$function0@XV?$allocator@X@std@@@boost@@QAEXAAV12@@Z"
+      ]
+    },
+    {
+      "address": "00554c30",
+      "symbol": "??$timed_wait@V?$scoped_lock@Vmutex@boost@@@thread@detail@boost@@@condition@boost@@QAE_NAAV?$scoped_lock@Vmutex@boost@@@thread@detail@1@ABUxtime@1@@Z",
+      "folded_symbols": [],
+      "identity": "root: RunService helpers 00554e9b (+0x264) / 00554f45 (+0x24c), lock and xtime pushed, ret 8",
+      "exact": true,
+      "size": 106,
+      "target_size": 106,
+      "verified_targets": {
+        "??0lock_error@boost@@QAE@XZ": "0x5683f0 (external)",
+        "__TI3?AVlock_error@boost@@": "0x8d0f1c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?enter_wait@condition_impl@detail@boost@@QAEXXZ": "0x5f1dd0 (external)",
+        "?do_unlock@mutex@boost@@AAEXAAPAX@Z": "0x594d40 (external)",
+        "?do_timed_wait@condition_impl@detail@boost@@QAE_NABUxtime@3@@Z": "0x5f1ea0 (external)",
+        "?do_lock@mutex@boost@@AAEXAAPAX@Z": "0x594d20 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00554ca0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@12@@Z",
+      "folded_symbols": [],
+      "identity": "called by 0048bd70",
+      "exact": true,
+      "size": 253,
+      "target_size": 253,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@@Z": "0x554810 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@12@@Z"
+      ]
+    },
+    {
+      "address": "00554f90",
+      "symbol": "??4?$function@$$A6AXXZV?$allocator@X@std@@@boost@@QAEAAV01@ABV01@@Z",
+      "folded_symbols": [],
+      "identity": "root: drainTasks 00555a63 (item = front()); also ContentProvider 0055ebd6 / 0055ec06 / 0055f4db",
+      "exact": true,
+      "size": 142,
+      "target_size": 142,
+      "verified_targets": {
+        "?swap@?$function0@XV?$allocator@X@std@@@boost@@QAEXAAV12@@Z": "0x554b90 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??4?$function@$$A6AXXZV?$allocator@X@std@@@boost@@QAEAAV01@ABV01@@Z"
+      ]
+    },
+    {
+      "address": "00555040",
+      "symbol": "??0?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@QAE@ABV012@@Z",
+      "folded_symbols": [],
+      "identity": "called by 005564a0",
+      "exact": true,
+      "size": 77,
+      "target_size": 77,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00555090",
+      "symbol": "??1?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: unwind funclet 007cddb3 of bind 00555470 (bind_t temporary)",
+      "exact": true,
+      "size": 8,
+      "target_size": 8,
+      "verified_targets": {
+        "??1?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": "0x422c60 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00555470",
+      "symbol": "??$bind@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@4@V34@@boost@@YA?AV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@0@P8RunService@RBX@@AEXV?$shared_ptr@VDataModel@RBX@@@0@@ZV?$shared_ptr@VRunService@RBX@@@0@0@Z",
+      "folded_symbols": [],
+      "identity": "root: evidence name; start() 005565ed (bind(&RunService::runProc, shared_from(this), dataModel))",
+      "exact": true,
+      "size": 353,
+      "target_size": 353,
+      "verified_targets": {
+        "??0?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@12@@Z": "0x48bd70 (own row)",
+        "??1?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": "0x422c60 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@4@V34@@boost@@YA?AV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@0@P8RunService@RBX@@AEXV?$shared_ptr@VDataModel@RBX@@@0@@ZV?$shared_ptr@VRunService@RBX@@@0@0@Z"
+      ]
+    },
+    {
+      "address": "00555780",
+      "symbol": "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+      "folded_symbols": [],
+      "identity": "root: evidence name; slot 1 of the manager table 0082d51c",
+      "exact": true,
+      "size": 52,
+      "target_size": 52,
+      "verified_targets": {
+        "??$?RV?$shared_ptr@VRunService@RBX@@@boost@@@?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@QBEXAAV?$shared_ptr@VRunService@RBX@@@2@V?$shared_ptr@VDataModel@RBX@@@2@@Z": "0x438a30 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005558b0",
+      "symbol": "?manager@?$functor_manager@V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00555b70",
+      "exact": true,
+      "size": 77,
+      "target_size": 77,
+      "verified_targets": {
+        "??0?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@QAE@ABV012@@Z": "0x555040 (own row)",
+        "??1?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": "0x422c60 (own row)",
+        "??_R0?AV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@@8": "0x942fd8 (type descriptor .?AV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00555b70",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "folded_symbols": [],
+      "identity": "root: slot 0 of the constant manager table 0082d51c that function0(bind_t) 005564a0 stores",
+      "exact": true,
+      "size": 50,
+      "target_size": 50,
+      "verified_targets": {
+        "?manager@?$functor_manager@V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": "0x5558b0 (own row)",
+        "??_R0?AV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@@8": "0x942fd8 (type descriptor .?AV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00555bb0",
+      "symbol": "??1?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: unwind funclets 007cdecb / 007ce03b of RunService() / ~RunService on the task queue +0x2b4 (_Tidy 00419b40)",
+      "exact": true,
+      "size": 69,
+      "target_size": 69,
+      "verified_targets": {
+        "?_Tidy@?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@IAEXXZ": "0x419b40 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00555f00",
+      "symbol": "??0?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00555f70",
+      "exact": true,
+      "size": 95,
+      "target_size": 95,
+      "verified_targets": {
+        "??_7?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@6B@": "0x82d508 (vtable RTTI .?AV?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@Z"
+      ]
+    },
+    {
+      "address": "00555f60",
+      "symbol": "?type@?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEABVtype_info@@XZ",
+      "folded_symbols": [],
+      "identity": "root: any::holder<function<void(float, float)>> vtable 0082d508",
+      "exact": true,
+      "size": 6,
+      "target_size": 6,
+      "verified_targets": {
+        "??_R0?AV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@8": "0x9433a4 (type descriptor .?AV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00555f70",
+      "symbol": "?clone@?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "folded_symbols": [],
+      "identity": "root: any::holder<function<void(float, float)>> vtable 0082d508",
+      "exact": true,
+      "size": 96,
+      "target_size": 96,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@Z": "0x555f00 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ]
+    },
+    {
+      "address": "00555fd0",
+      "symbol": "?manager@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z",
+      "folded_symbols": [],
+      "identity": "called by 005561e0",
+      "exact": true,
+      "size": 139,
+      "target_size": 139,
+      "verified_targets": {
+        "??_R0?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@8": "0x9433e8 (type descriptor .?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00556060",
+      "symbol": "??$?0V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@1@@Z",
+      "folded_symbols": [],
+      "identity": "called by 005560c0",
+      "exact": true,
+      "size": 89,
+      "target_size": 89,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@Z": "0x555f00 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@1@@Z"
+      ]
+    },
+    {
+      "address": "005560c0",
+      "symbol": "?connect@?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00557230",
+      "exact": true,
+      "size": 275,
+      "target_size": 275,
+      "verified_targets": {
+        "??$?0V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXMM@ZV?$allocator@X@std@@@1@@Z": "0x556060 (own row)",
+        "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (own row)",
+        "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?connect@?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z"
+      ]
+    },
+    {
+      "address": "005561e0",
+      "symbol": "?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "folded_symbols": [],
+      "identity": "root: slot 0 of the manager table 0082d620",
+      "exact": true,
+      "size": 50,
+      "target_size": 50,
+      "verified_targets": {
+        "?manager@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z": "0x555fd0 (own row)",
+        "??_R0?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@8": "0x9433e8 (type descriptor .?AVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00556220",
+      "symbol": "??0TSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556290",
+      "exact": true,
+      "size": 101,
+      "target_size": 101,
+      "verified_targets": {
+        "??_7SignalInstance@Reflection@RBX@@6B@": "0x80ece0 (vtable RTTI .?AVSignalInstance@Reflection@RBX@@ offset 0x0)",
+        "??0?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": "0x499c00 (own row)",
+        "??_7TSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@6B@": "0x82d518 (vtable RTTI .?AVTSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "00556290",
+      "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+      "folded_symbols": [],
+      "identity": "root: TSignalDesc<void(float, float)> vtable slot (new 0x38, TSignalInstance ctor 00556220 with vtable 0082d518)",
+      "exact": true,
+      "size": 102,
+      "target_size": 102,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0TSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": "0x556220 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?newSignalInstance@?$TSignalDesc@$$A6AXMM@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z"
+      ]
+    },
+    {
+      "address": "00556300",
+      "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@QAEXMM@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556500",
+      "exact": true,
+      "size": 265,
+      "target_size": 265,
+      "verified_targets": {
+        "??0?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@I@Z": "0x41b170 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@M@any@boost@@6B@": "0x8106bc (vtable RTTI .?AV?$holder@M@any@boost@@ offset 0x0)",
+        "??1?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@XZ": "0x41af20 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@QAEXMM@Z"
+      ]
+    },
+    {
+      "address": "005564a0",
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@1@H@Z",
+      "folded_symbols": [],
+      "identity": "root: start() 005565f9 on the bind result (manager table 0082d51c stored without a guard)",
+      "exact": true,
+      "size": 85,
+      "target_size": 85,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (own row)",
+        "??0?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@QAE@ABV012@@Z": "0x555040 (own row)",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x82d51c (manager table (?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVRunService@RBX -> 0x555b70 (own row); ?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf1@XVRun -> 0x555780 (own row)))",
+        "??1?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": "0x422c60 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00556500",
+      "symbol": "?invoke@?$void_function_obj_invoker2@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@XMM@function@detail@boost@@SAXAATfunction_buffer@234@MM@Z",
+      "folded_symbols": [],
+      "identity": "root: evidence name; slot 1 of the function2 manager table 0082d620 (00556e20)",
+      "exact": true,
+      "size": 28,
+      "target_size": 28,
+      "verified_targets": {
+        "??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@QAEXMM@Z": "0x556300 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00556830",
+      "symbol": "??0?$SignalDesc@VRunService@RBX@@$$A6AXMM@Z@Reflection@RBX@@QAE@PBD00@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f2814 (Stepped event; vtable 0082d5f8 RTTI SignalDesc<RunService, void(float, float)>)",
+      "exact": true,
+      "size": 296,
+      "target_size": 296,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VRunService@RBX@@$1?sRunService@2@3PADAV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x556430 (external)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??_7?$SignalDesc@VRunService@RBX@@$$A6AXMM@Z@Reflection@RBX@@6B@": "0x82d5f8 (vtable RTTI .?AV?$SignalDesc@VRunService@RBX@@$$A6AXMM@Z@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0 (external (evidence name))",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$SignalDesc@VRunService@RBX@@$$A6AXMM@Z@Reflection@RBX@@QAE@PBD00@Z"
+      ]
+    },
+    {
+      "address": "00556960",
+      "symbol": "??0?$SignalDesc@VRunService@RBX@@$$A6AXM@Z@Reflection@RBX@@QAE@PBD0@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializer 007f283f (Heartbeat event; vtable 0082d608 RTTI SignalDesc<RunService, void(float)>)",
+      "exact": true,
+      "size": 194,
+      "target_size": 194,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VRunService@RBX@@$1?sRunService@2@3PADAV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x556430 (external)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??_7?$SignalDesc@VRunService@RBX@@$$A6AXM@Z@Reflection@RBX@@6B@": "0x82d608 (vtable RTTI .?AV?$SignalDesc@VRunService@RBX@@$$A6AXM@Z@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0 (external (evidence name))",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$SignalDesc@VRunService@RBX@@$$A6AXM@Z@Reflection@RBX@@QAE@PBD0@Z"
+      ]
+    },
+    {
+      "address": "00556a30",
+      "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "folded_symbols": [],
+      "identity": "root: static initializers 007f2865 / 007f2895 / 007f28c5 (vtable 0082d618 RTTI BoundFuncDesc<RunService, void(), 0>)",
+      "exact": true,
+      "size": 108,
+      "target_size": 108,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VRunService@RBX@@$1?sRunService@2@3PADAV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x556430 (external)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@6B@": "0x82d618 (vtable RTTI .?AV?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00556aa0",
+      "symbol": "?execute@?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "folded_symbols": [],
+      "identity": "root: BoundFuncDesc<RunService, void(), 0> vtable 0082d618 (dynamic_cast + pmf call)",
+      "exact": true,
+      "size": 84,
+      "target_size": 84,
+      "verified_targets": {
+        "??_R0?AVRunService@RBX@@@8": "0x9430c8 (type descriptor .?AVRunService@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (type descriptor .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (string 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00556d20",
+      "symbol": "??$?RV?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556eb0",
+      "exact": true,
+      "size": 254,
+      "target_size": 254,
+      "verified_targets": {
+        "?equal@?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z": "0x40b050 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?increment@?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ": "0x499ed0 (own row)",
+        "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (own row)",
+        "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?RV?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z"
+      ]
+    },
+    {
+      "address": "00556e20",
+      "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$function2@XMMV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@H@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556fe0",
+      "exact": true,
+      "size": 142,
+      "target_size": 142,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (own row)",
+        "?stored_vtable@?1???$assign_to@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$function2@XMMV?$allocator@X@std@@@boost@@AAEXABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@Z@4U?$basic_vtable2@XMMV?$allocator@X@std@@@function@detail@2@B": "0x82d620 (manager table (?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescIm -> 0x5561e0 (own row); ?invoke@?$void_function_obj_invoker2@VGenericSlotAdapter@?$S -> 0x556500 (own row)))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00556eb0",
+      "symbol": "??R?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@MM@Z",
+      "folded_symbols": [],
+      "identity": "root: evidence name; per-frame Stepped raise 00557216 (fire through the TSignalInstance)",
+      "exact": true,
+      "size": 302,
+      "target_size": 302,
+      "verified_targets": {
+        "??0call_notification@detail@signals@boost@@QAE@ABV?$shared_ptr@Vsignal_base_impl@detail@signals@boost@@@3@@Z": "0x56a760 (external)",
+        "?end@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x5713b0 (external)",
+        "??0?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z": "0x4908a0 (own row)",
+        "?begin@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x571380 (external)",
+        "??$?RV?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z": "0x556d20 (own row)",
+        "??1call_notification@detail@signals@boost@@QAE@XZ": "0x56a650 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??R?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@MM@Z"
+      ]
+    },
+    {
+      "address": "00556fe0",
+      "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@H@Z",
+      "folded_symbols": [],
+      "identity": "called by 00557090",
+      "exact": true,
+      "size": 164,
+      "target_size": 164,
+      "verified_targets": {
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$function2@XMMV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@H@Z": "0x556e20 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@H@Z"
+      ]
+    },
+    {
+      "address": "00557090",
+      "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00557230",
+      "exact": true,
+      "size": 180,
+      "target_size": 180,
+      "verified_targets": {
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@H@Z": "0x556fe0 (own row)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0data_t@slot_base@detail@signals@boost@@QAE@XZ": "0x41ad40 (own row)",
+        "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z": "0x41b0f0 (own row)",
+        "?create_connection@slot_base@detail@signals@boost@@IAEXXZ": "0x595840 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00557230",
+      "symbol": "?connectGeneric@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z",
+      "folded_symbols": [],
+      "identity": "root: SignalDesc<RunService, void(float, float)> vtable slot (signal2 connect 005560c0)",
+      "exact": true,
+      "size": 219,
+      "target_size": 219,
+      "verified_targets": {
+        "??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVGenericSlotWrapper@Reflection@RBX@@@Z": "0x41a620 (external)",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (own row)",
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@@Z": "0x557090 (own row)",
+        "?connect@?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": "0x5560c0 (own row)",
+        "??1?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?connectGeneric@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z"
+      ]
+    }
+  ],
+  "support_rows_not_counted": [
+    {
+      "address": "00409d50 (counted by humanoid2008-working.json)",
+      "symbol": "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00409ef0",
+      "size": 83,
+      "target_size": 83,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"
+      ]
+    },
+    {
+      "address": "00409e90 (counted by humanoid2008-working.json)",
+      "symbol": "??0runtime_error@std@@QAE@ABV01@@Z",
+      "folded_symbols": [],
+      "identity": "called by 0040a500",
+      "size": 89,
+      "target_size": 89,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@ABV01@@Z": "0x802888 (msvcr90.dll!??0exception@std@@QAE@ABV01@@Z)",
+        "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0runtime_error@std@@QAE@ABV01@@Z"
+      ]
+    },
+    {
+      "address": "00409ef0 (counted by humanoid2008-working.json)",
+      "symbol": "??0bad_function_call@boost@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00556d20",
+      "size": 105,
+      "target_size": 105,
+      "verified_targets": {
+        "??_C@_0BO@HKHPGMPA@call?5to?5empty?5boost?3?3function?$AA@": "0x80b8e4 (string 'call to empty boost::function')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_7bad_function_call@boost@@6B@": "0x80b8dc (vtable RTTI .?AVbad_function_call@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0bad_function_call@boost@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00409f60 (counted by humanoid2008-working.json)",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@Vstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@V?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@4@V?$allocator@U?$pair@$$CBVstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@@std@@@6@$0A@@std@@@std@@QAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 0040aaa0",
+      "size": 108,
+      "target_size": 108,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040a070 (counted by humanoid2008-working.json)",
+      "symbol": "?equal@named_slot_map_iterator@detail@signals@boost@@QBE_NABV1234@@Z",
+      "folded_symbols": [],
+      "identity": "called by 0040b050",
+      "size": 97,
+      "target_size": 97,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040a500 (counted by humanoid2008-working.json)",
+      "symbol": "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556d20",
+      "size": 40,
+      "target_size": 40,
+      "verified_targets": {
+        "??0runtime_error@std@@QAE@ABV01@@Z": "0x409e90 (own row)",
+        "__TI3?AVbad_function_call@boost@@": "0x8d161c (external)",
+        "??_7bad_function_call@boost@@6B@": "0x80b8dc (vtable RTTI .?AVbad_function_call@boost@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040a8e0 (counted by humanoid2008-working.json)",
+      "symbol": "?init_next_group@named_slot_map_iterator@detail@signals@boost@@AAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 0040aaa0",
+      "size": 162,
+      "target_size": 162,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@Vstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@V?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@4@V?$allocator@U?$pair@$$CBVstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x409f60 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040aaa0 (counted by humanoid2008-working.json)",
+      "symbol": "?increment@named_slot_map_iterator@detail@signals@boost@@QAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 00499ed0",
+      "size": 131,
+      "target_size": 131,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@Vstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@V?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@4@V?$allocator@U?$pair@$$CBVstored_group@detail@signals@boost@@V?$list@Uconnection_slot_pair@detail@signals@boost@@V?$allocator@Uconnection_slot_pair@detail@signals@boost@@@std@@@std@@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x409f60 (own row)",
+        "?init_next_group@named_slot_map_iterator@detail@signals@boost@@AAEXXZ": "0x40a8e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ac30 (counted by humanoid2008-working.json)",
+      "symbol": "??$_Find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z",
+      "folded_symbols": [],
+      "identity": "called by 0040af30",
+      "size": 229,
+      "target_size": 229,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?increment@named_slot_map_iterator@detail@signals@boost@@QAEXXZ": "0x40aaa0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040af30 (counted by humanoid2008-working.json)",
+      "symbol": "??$find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z",
+      "folded_symbols": [],
+      "identity": "called by 004908a0",
+      "size": 288,
+      "target_size": 288,
+      "verified_targets": {
+        "??$_Find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z": "0x40ac30 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040b050 (counted by humanoid2008-working.json)",
+      "symbol": "?equal@?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556d20",
+      "size": 387,
+      "target_size": 387,
+      "verified_targets": {
+        "??$find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z": "0x40af30 (own row)",
+        "?equal@named_slot_map_iterator@detail@signals@boost@@QBE_NABV1234@@Z": "0x40a070 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00419b40 (outside the range 00554000..00558000)",
+      "symbol": "?_Tidy@?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@IAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 00555bb0",
+      "size": 149,
+      "target_size": 149,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041a800 (outside the range 00554000..00558000)",
+      "symbol": "?_Buynode@?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@2@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00594ae0",
+      "size": 26,
+      "target_size": 26,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041ad40 (outside the range 00554000..00558000)",
+      "symbol": "??0data_t@slot_base@detail@signals@boost@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00557090",
+      "size": 85,
+      "target_size": 85,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0data_t@slot_base@detail@signals@boost@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0041ade0 (outside the range 00554000..00558000)",
+      "symbol": "?_Destroy@?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@IAEXPAVany@boost@@0@Z",
+      "folded_symbols": [],
+      "identity": "called by 0041af20",
+      "size": 42,
+      "target_size": 42,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0041af20 (outside the range 00554000..00558000)",
+      "symbol": "??1?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00556300",
+      "size": 104,
+      "target_size": 104,
+      "verified_targets": {
+        "?_Destroy@?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@IAEXPAVany@boost@@0@Z": "0x41ade0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0041b0f0 (outside the range 00554000..00558000)",
+      "symbol": "??$reset@Udata_t@slot_base@detail@signals@boost@@@?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@boost@@QAEXPAUdata_t@slot_base@detail@signals@1@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00557090",
+      "size": 118,
+      "target_size": 118,
+      "verified_targets": {
+        "??$?0Udata_t@slot_base@detail@signals@boost@@@shared_count@detail@boost@@QAE@PAUdata_t@slot_base@1signals@2@@Z": "0x41ae30 (external (evidence name))",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041b170 (outside the range 00554000..00558000)",
+      "symbol": "??0?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@I@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556300",
+      "size": 105,
+      "target_size": 105,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Construct_n@?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAEXIABVany@boost@@@Z": "0x41af90 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAE@I@Z"
+      ]
+    },
+    {
+      "address": "00422c60 (outside the range 00554000..00558000)",
+      "symbol": "??1?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00555470",
+      "size": 161,
+      "target_size": 161,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??1?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00438a30 (outside the range 00554000..00558000)",
+      "symbol": "??$?RV?$shared_ptr@VRunService@RBX@@@boost@@@?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@QBEXAAV?$shared_ptr@VRunService@RBX@@@2@V?$shared_ptr@VDataModel@RBX@@@2@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00555780",
+      "size": 166,
+      "target_size": 166,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??$?RV?$shared_ptr@VRunService@RBX@@@boost@@@?$mf1@XVRunService@RBX@@V?$shared_ptr@VDataModel@RBX@@@boost@@@_mfi@boost@@QBEXAAV?$shared_ptr@VRunService@RBX@@@2@V?$shared_ptr@VDataModel@RBX@@@2@@Z"
+      ]
+    },
+    {
+      "address": "0047d410 (counted by humanoid2008-working.json, network-physics-working.json, stats-service-working.json)",
+      "symbol": "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ",
+      "folded_symbols": [],
+      "identity": "called by 00557230",
+      "size": 1,
+      "target_size": 1,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0048bd70 (outside the range 00554000..00558000)",
+      "symbol": "??0?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@12@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00555470",
+      "size": 259,
+      "target_size": 259,
+      "verified_targets": {
+        "??0?$storage2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@12@@Z": "0x554ca0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list2@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@V?$value@V?$shared_ptr@VDataModel@RBX@@@boost@@@12@@Z"
+      ]
+    },
+    {
+      "address": "004908a0 (counted by humanoid2008-working.json)",
+      "symbol": "??0?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556eb0",
+      "size": 328,
+      "target_size": 328,
+      "verified_targets": {
+        "??$find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z": "0x40af30 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004915b0 (counted by network-players-working.json)",
+      "symbol": "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ",
+      "folded_symbols": [],
+      "identity": "called by 005560c0",
+      "size": 42,
+      "target_size": 42,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00499c00 (outside the range 00554000..00558000)",
+      "symbol": "??0?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556220",
+      "size": 230,
+      "target_size": 230,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@U?$last_value@X@boost@@@any@boost@@6B@": "0x80ed10 (vtable RTTI .?AV?$holder@U?$last_value@X@boost@@@any@boost@@ offset 0x0)",
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (own row)",
+        "?stored_vtable@?1???$assign_to@V?$group_bridge_compare@U?$less@H@std@@H@detail@signals@boost@@@?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$group_bridge_compare@U?$less@H@std@@H@detail@signals@2@@Z@4U?$basic_vtable2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@function@42@B": "0x80ed1c (manager table (?manage@?$functor_manager@V?$group_bridge_compare@U?$less@H@ -> 0x41a6b0 (external (evidence name)); ?invoke@?$function_obj_invoker2@V?$group_bridge_compare@U?$l -> 0x41a700 (external (evidence name))))",
+        "??0signal_base@detail@signals@boost@@QAE@ABV?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@3@ABVany@3@@Z": "0x56b3f0 (external)",
+        "??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ": "0x594ae0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$signal2@XMMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z"
+      ]
+    },
+    {
+      "address": "00499ed0 (counted by humanoid2008-working.json)",
+      "symbol": "?increment@?$slot_call_iterator@U?$caller@MMV?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ",
+      "folded_symbols": [],
+      "identity": "called by 00556d20",
+      "size": 209,
+      "target_size": 209,
+      "verified_targets": {
+        "?increment@named_slot_map_iterator@detail@signals@boost@@QAEXXZ": "0x40aaa0 (own row)",
+        "??$find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z": "0x40af30 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049f710 (outside the range 00554000..00558000)",
+      "symbol": "??1?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00557230",
+      "size": 142,
+      "target_size": 142,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??1?$slot@V?$function@$$A6AXMM@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00594ae0 (outside the range 00554000..00558000)",
+      "symbol": "??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00499c00",
+      "size": 94,
+      "target_size": 94,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@2@XZ": "0x41a800 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0060a2f0 (counted by body-movers-working.json, click-detector-working.json, feature-working.json, flag-family-working.json, humanoid2008-working.json, spawn-working.json, special-shape-working.json, user-controller-working.json)",
+      "symbol": "?has_empty_target@function@detail@boost@@YA_NZZ",
+      "folded_symbols": [],
+      "identity": "called by 005564a0",
+      "size": 3,
+      "target_size": 3,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00682cc0 (counted by humanoid2008-working.json)",
+      "symbol": "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z",
+      "folded_symbols": [],
+      "identity": "called by 00556830",
+      "size": 154,
+      "target_size": 154,
+      "verified_targets": {
+        "??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@": "0x80d400 (string 'list<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (external)",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z"
+      ]
+    }
+  ],
+  "bounds_evidence": [
+    {
+      "rows": "00554470 + 005544f2 (joined; not counted)",
+      "symbol": "??4?$function0@XV?$allocator@X@std@@@boost@@QAEAAV01@ABV01@@Z",
+      "compiled_size": 148,
+      "joined_size": 148,
+      "exact_when_joined": true,
+      "reason": "one function: the assignment body and its catch(...) funclet (clear, rethrow); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "00554810 (first 96 bytes; not counted)",
+      "symbol": "??0?$storage1@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@12@@Z",
+      "compiled_size": 96,
+      "row_size": 101,
+      "exact_prefix": true,
+      "reason": "the row also covers the 5-byte thunk 00554870 (jmp 00554350, the FactoryProduct<RunService> destructor of the adjacent ??_E thunks): the storage1 ctor ends at 0055486f"
+    }
+  ],
+  "pending_build_only": [],
+  "exact_function_rows": [
+    "00554b70",
+    "00554b90",
+    "00554c30",
+    "00554ca0",
+    "00554f90",
+    "00555040",
+    "00555090",
+    "00555470",
+    "00555780",
+    "005558b0",
+    "00555b70",
+    "00555bb0",
+    "00555f00",
+    "00555f60",
+    "00555f70",
+    "00555fd0",
+    "00556060",
+    "005560c0",
+    "005561e0",
+    "00556220",
+    "00556290",
+    "00556300",
+    "005564a0",
+    "00556500",
+    "00556830",
+    "00556960",
+    "00556a30",
+    "00556aa0",
+    "00556d20",
+    "00556e20",
+    "00556eb0",
+    "00556fe0",
+    "00557090",
+    "00557230"
+  ],
+  "rejected": {
+    "without the boost-function-pod-vtable profile (donor boost 1.34.1 function_template.hpp)": "function0(bind_t) compiles to 172 B with a separate assign_to / guarded static vtable init vs the 85 B original 005564a0, which stores the constant table 0082d51c",
+    "explicit `template class SignalDesc<RunService, void(float)>`": "does not compile (the three-name ctor needs arg2_type): only the used two-name ctor is instantiated"
+  },
+  "proposals": {
+    "util/RunStateOwner.h (RunService owner)": "Declare the runProc helpers so the remaining RunService rows can be built: a per-frame step taking shared_ptr<DataModel> by value (00554880, thiscall ret 8: DataModel::Lock 00411b40 / ~Lock 005773c0, fires a one-float signal 00578e50 with framePeriod +0x1c0, stores the elapsed time in +0x1c8), a timed wait for a state change taking a double (00554e10, ret 8: timed_wait on stateChangedCondition +0x264 under runMutex +0x240), a wait for the run views returning bool (00554ed0: timed_wait on runViewsDoneCondition +0x24c while invalidRunViewCount +0x2a8 != 0, stores the wait time in +0x1d0), and an AdjustThrottle(double) loop over the views map (005550a0, ret 8, under viewMutex +0x280). Names are descriptive; ABIs from the call sites in runProc 00555190. Also a declaration of the run-thread wrapper 00597110 (function0<void>, const char* name, int priority; callers 00556623 / 0057bd22 / 0057bf7f / 005972ce / 005ae9eb) for start() 00556520. The earlier app-unit54c-2008 proposals (const sRunService, one-float raises) still apply.",
+    "v8tree/Instance.h (core owner)": "Declare `std::string getFullName() const;` (005574d0: recursive, parent +0x104, \".\" 0081ca8c, name +0x110, hidden return) and the shared_ptr overloads `bool isAncestorOf2(boost::shared_ptr<Instance>);` 00557640 / `bool isDescendentOf2(boost::shared_ptr<Instance>);` 00557890 (evidence manglings QAE_NV?$shared_ptr...). Not built here; the Instance.cpp rows belong to the app-unit558-2008 map.",
+    "BOUNDS (server host; no bounds.json change)": "00554470 + 005544f2 are one function (function0<void>::operator= with its catch funclet), and 00554810 ends at 0055486f (the next 5 bytes 00554870 are a separate jmp 00554350 thunk). See bounds_evidence."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. No new header."
+}

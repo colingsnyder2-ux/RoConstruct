@@ -1,0 +1,846 @@
+{
+  "class": "RBX joint-creator and reflection-signal rows of the application range 004b0000..004bc000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "joints": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4b0-2008/NativeAppUnit4B0_2008_joints.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4B0_2008Joints.cpp"
+    ],
+    "signals": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4b0-2008/NativeAppUnit4B0_2008_signals.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4B0_2008Signals.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4b0_2008.py": "209e8b5c78d769c432d5b4561e2d9ce498d08c1a85992a3daf523541fc2fc679",
+    "rebuild/2008-06/native-classes/AppUnit4B0_2008Joints.cpp": "bdbe8005b5bdadc561b109e00694fb2c15b2b5a30bb808f3dcbf375359e9b769",
+    "rebuild/2008-06/native-classes/AppUnit4B0_2008Signals.cpp": "cf2c602df019efded3829b3ad38c19177f298c46f01d6381639ac25ffa3a96cd",
+    "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h": "31f13819b55a510bc8186ef35ba1ab73d041ad3ad38bffe42cd53c92405be76e",
+    "rebuild/2008-06/native-headers/v8datamodel/Lighting2008.h": "52e9143d9b5b10371d2d2a1e0c496952509bb56ba3d9dd09b67cdb35c898b9dd",
+    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2",
+    "rebuild/2008-06/native-headers/reflection/signal.h": "e8f76a9bf2a75ced4251c425e96766092a4a39783fdbbdb82942a98c8a4c9fb3"
+  },
+  "objects": {
+    "joints": "b1fbeb181f6642ab7ff523efaeac21bb4ef6f13ed7f80642677be180a41f7ee1",
+    "signals": "213ebee0f5a7af16b3189fbc709a87e62ad412b3ffc5f676ebcdd3ed21ecf2b5"
+  },
+  "range_rows": 280,
+  "unit_map": {
+    "replicator ..004b21bf": "Network/Replicator.cpp (starts below 004b0000): NewInstanceItem / DeleteInstanceItem / ChangePropertyItem write/read bodies (strings \"Replication: ~%s:%d << %s\", \"Replication: %s:%s.%s >> %s\"), Replicator::Update 004b1240 (\"SendBuffer = %d\"), the std::map<const SignalDescriptor*, shared_ptr<SignalInstance> > / map<ContentId, CachedContent> / deque<shared_ptr<Marker> > instances 004b0b90..004b16a0, Described<Marker>::classDescriptor 004b18d0 (\"NetworkMarker\"), the boost::function holders and TSignalDesc<void()> / TSignalDesc<void(std::string)> SignalInstance bodies 004b1940..004b2150 (vtables 00824b7c, 00824b8c, 00824b94, 00824ba4). Mostly counted by network-replicator / network-replicator2008 / humanoid2008.",
+    "signal-instances 004b1940..004b2150, 004b4fb0, 004b5a70, 004b5f40, 004b6040": "The two reflection-signal signatures of Replicator.cpp (void() and void(std::string, bool); RTTI of the TSignalInstance vtables 00824b8c / 00824ba4 and the boost::any holder vtables 00824b7c / 00824b94): holder ctor/type/clone, any(const function&), signal0/signal2::connect(slot), the TSignalInstance ctor and newSignalInstance, signal2::operator() 004b5a70, its slot_call_iterator caller 004b4fb0 and the SignalDescImpl<0/2>::fire bodies 004b5f40 / 004b6040. Built here: native-classes/AppUnit4B0_2008Signals.cpp (read-only reflection/signal.h). The void() TSignalInstance ctor / newSignalInstance / signal0::operator() are counted by humanoid2008.",
+    "joint-creators 004b21c0..004b337f": "Compiler-emitted template instances in the order Lighting, Snap, Weld, Glue, Rotate, RotateP, RotateV, Motor. Per class: FactoryProduct<C, D, N>::Creator::create() const (175 B; slot 0 of the Creator vtables 00824bac, 00824bb4, 00824bd0, 00824bec, 00824c08, 00824c24, 00824c40, 00824c5c, checked by RTTI below), shared_count(C*, Deleter) (131 B, sp_counted_impl_pd vtables 00824bbc..00824c64; counted by creatable-shared-count), shared_ptr<C>(C*, Deleter) (171 B) and Creatable<Instance>::create<C>() (120 B, malloc 0x154, then C() 005e4600 / 005e4810 / 005e49a0 / 005e4ad0 / 005e4c60 / 005e4dd0 / 005e4ee0). Lighting's create / shared_ptr / shared_count are below the range (create<Lighting> 004adb60, lighting2008). Built here: native-classes/AppUnit4B0_2008Joints.cpp.",
+    "replicator 004b3380..004ba22f": "Network/Replicator.cpp continued: vector / map instances 004b3380..004b3b40 (004b3a50 counted by the world-service trials as an ICF-shared body), Described<Replicator> / BoundFuncDesc<Replicator> / BoundFuncDesc<Peer> reflection bodies 004b3c30..004b42e0 (\"bad cast\" throw paths), Peer and Client bodies 004b4640 (\"Packets Thread\") / 004b5700 (Peer::onServiceProvider, \"Network\"), TypedStatsItem<bool> 004b5100..004b51d0, ReplicatorStatsItem 004b62c0..004b6710 (vtables 00824f40.., strings \"Ping\", \"Bandwidth Exceeded\", \"%d avg:%d best:%d\"), property serialisation 004b6890..004b7f20 (\"   read %s %s, 1 bit\"), NewInstanceItem::write 004b8620, OnReceive 004b8c20 (\"Lost connection to %s\"), Marker 004b9140 / 004b9190 / 004b9210 (\"Replicator: Requesting Marker %d of %s\"), IdSerializer 004b94a0..004b9bb0 (vtables 008252cc..), DescribedNonCreatable<Replicator> thunks 004b9a20..004b9ab0 and the Replicator constructor 004b9bd0 (1622 B, \"Replication\", \"Data In\", \"Data Out\"). Worked by the network-replicator owners; not rebuilt here (their native Network/Replicator2008.h / IdSerializer.h / ReplicatorMarker.h are read-only for this lease).",
+    "raknet 004ba230..": "RakNet 3.x library code: DataStructures templates 004ba230..004ba9d0 (called from RakPeer 004bff40, 004c42c0, 004c1db0, 004c4d50), PacketLogger.cpp 004baa10..004bb39f (vtable 00825724 .?AVPacketLogger@@; strings \"S|R,Typ,Pckt#,Frm #,PktID,BitLn,Time\", \"ID_INTERNAL_PING\", \"%sSnd,Raw,...\"), RakPeerInterface / RakPeer.cpp members from 004bb3a0 (vtable 00826394 .?AVRakPeerInterface@@) continuing past 004bc000 (app-unit4bc-2008 map). Library code: never recovered here."
+  },
+  "unit_map_checks": [
+    "vtable 0x8252cc RTTI .?AVIdSerializer@Network@RBX@@",
+    "vtable 0x825724 RTTI .?AVPacketLogger@@",
+    "vtable 0x826394 RTTI .?AVRakPeerInterface@@",
+    "vtable 0x824f40 RTTI .?AVReplicatorStatsItem@Replicator@Network@RBX@@"
+  ],
+  "range_rows_counted_by_other_receipts": [
+    "004b0ae0 counted by network-physics-senders2008-working.json",
+    "004b0df0 counted by services-working.json",
+    "004b18d0 counted by network-replicator-working.json",
+    "004b1c60 counted by humanoid2008-working.json",
+    "004b1d50 counted by humanoid2008-working.json",
+    "004b2270 counted by humanoid2008-working.json",
+    "004b2300 counted by humanoid2008-working.json",
+    "004b23b0 counted by humanoid2008-working.json",
+    "004b24e0 counted by creatable-shared-count-working.json",
+    "004b2750 counted by creatable-shared-count-working.json",
+    "004b29c0 counted by creatable-shared-count-working.json",
+    "004b2c30 counted by creatable-shared-count-working.json",
+    "004b2ea0 counted by creatable-shared-count-working.json",
+    "004b3110 counted by humanoid2008-working.json",
+    "004b31a0 counted by humanoid2008-working.json",
+    "004b3250 counted by humanoid2008-working.json",
+    "004b36f0 counted by network-replicator-working.json",
+    "004b3800 counted by network-replicator-working.json",
+    "004b3a50 counted by world-service-actions-secure-trial.json, world-service-actions-trial.json, world-service-all-trial.json, world-service-allocation-trial.json, world-service-complete-trial.json, world-service-factories-trial.json, world-service-find-mismatch.json, world-service-full-trial.json, world-service-joints-find-trial.json, world-service-lifetime-trial.json",
+    "004b3c90 counted by network-replicator-working.json",
+    "004b3d10 counted by network-replicator-working.json",
+    "004b3d70 counted by network-replicator-working.json",
+    "004b43c0 counted by network-physics-senders2008-working.json",
+    "004b4640 counted by network-client-server2008-working.json",
+    "004b4e50 counted by stats-service-working.json",
+    "004b4ed0 counted by humanoid2008-working.json",
+    "004b58f0 counted by network-physics-senders2008-working.json",
+    "004b5950 counted by humanoid2008-working.json",
+    "004b5e80 counted by network-physics-senders2008-working.json",
+    "004b6290 counted by network-physics-senders2008-working.json",
+    "004b7e50 counted by network-replicator2008-working.json",
+    "004b85b0 counted by network-replicator-working.json",
+    "004b8600 counted by network-replicator-working.json",
+    "004b9140 counted by network-replicator-working.json",
+    "004b9190 counted by network-replicator-working.json",
+    "004b93d0 counted by network-replicator-working.json",
+    "004b9440 counted by network-replicator-working.json",
+    "004b94a0 counted by network-replicator-working.json",
+    "004b9560 counted by network-replicator-working.json",
+    "004b9570 counted by network-replicator-working.json",
+    "004b95d0 counted by network-replicator-working.json",
+    "004b9640 counted by network-replicator-working.json",
+    "004b9650 counted by network-replicator-working.json",
+    "004b9660 counted by network-replicator-working.json",
+    "004b9670 counted by network-replicator-working.json",
+    "004b9680 counted by network-replicator-working.json",
+    "004b96a0 counted by network-replicator-working.json",
+    "004b9ad0 counted by network-replicator-working.json",
+    "004b9b70 counted by network-replicator-working.json",
+    "004b9b80 counted by network-replicator-working.json",
+    "004b9b90 counted by network-replicator-working.json",
+    "004b9ba0 counted by network-replicator-working.json",
+    "004b9bb0 counted by network-replicator-working.json"
+  ],
+  "range_rows_not_counted": "004b01e0 004b0540 004b0800 004b0a80 004b0b90 004b0c10 004b0ca0 004b0d80 004b0e70 004b0f20 004b0f70 004b1160 004b1240 004b14c0 004b1530 004b1570 004b15e0 004b1620 004b1690 004b16a0 004b1710 004b17f0 004b1a10 004b1c20 004b1cd0 004b1e90 004b20a0 004b3380 004b34c0 004b3570 004b35d0 004b35e0 004b3750 004b3760 004b3870 004b3960 004b3b40 004b3c30 004b3dd0 004b3e00 004b3f30 004b3fa0 004b4040 004b40a0 004b4110 004b4170 004b41e0 004b4240 004b42e0 004b4410 004b44c0 004b45b0 004b47b0 004b4965 004b49e0 004b4bb0 004b4d80 004b5050 004b5100 004b51d0 004b5200 004b5220 004b52b0 004b5700 004b5be0 004b5ca0 004b5d20 004b5d8e 004b5db0 004b5e60 004b5ed0 004b5f60 004b60c0 004b61d0 004b62c0 004b64b0 004b64c0 004b64d0 004b64e0 004b64f0 004b6500 004b6510 004b6520 004b6530 004b6690 004b6710 004b6730 004b6890 004b6ab0 004b6d10 004b6f00 004b7250 004b7a30 004b7d30 004b7e10 004b7f20 004b82d0 004b8490 004b8620 004b87f0 004b8970 004b8a80 004b8b60 004b8c20 004b9210 004b96b0 004b9a20 004b9a30 004b9a40 004b9a50 004b9a60 004b9a70 004b9a80 004b9a90 004b9aa0 004b9ab0 004b9bd0 004ba230 004ba240 004ba260 004ba300 004ba3b0 004ba400 004ba480 004ba4f0 004ba650 004ba720 004ba790 004ba840 004ba8e0 004ba960 004ba9d0 004baa10 004baa40 004baa50 004baa60 004baa70 004baa90 004baaa0 004baab0 004badb0 004badc0 004bade0 004bae10 004bae40 004bae70 004baf80 004bb090 004bb3a0 004bb530 004bb550 004bb580 004bb5b0 004bb5d0 004bb620 004bb670 004bb680 004bb690 004bb6a0 004bb6d0 004bb720 004bb760 004bb840 004bb870 004bb880 004bb8b0 004bb8e0 004bb900 004bb910 004bb920 004bb980 004bb990 004bb9d0 004bba90 004bbae0 004bbb30 004bbb70 004bbb80 004bbbd0 004bbc20 004bbc60 004bbc70 004bbcb0 004bbd90 004bbdd0 004bbe10 004bbe20 004bbe40 004bbe70 004bbef0 004bbf00 004bbf30 004bbf90",
+  "rows": [
+    {
+      "address": "004b21c0",
+      "symbol": "?create@Creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VLighting@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLighting@RBX@@@boost@@XZ": "0x4adb60 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2430",
+      "symbol": "?create@Creator@?$FactoryProduct@VSnap@RBX@@VAutoJoint@2@$1?sSnap@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VSnap@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VSnap@RBX@@@boost@@XZ": "0x4b23b0 (body exact at the bound address; row counted by humanoid2008)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VSnap@RBX@@VAutoJoint@2@$1?sSnap@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b26a0",
+      "symbol": "?create@Creator@?$FactoryProduct@VWeld@RBX@@VAutoJoint@2@$1?sWeld@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VWeld@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VWeld@RBX@@@boost@@XZ": "0x4b2620 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VWeld@RBX@@VAutoJoint@2@$1?sWeld@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2570",
+      "symbol": "??$?0VWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWeld@RBX@@@boost@@QAE@PAVWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b24e0 (body exact at the bound address; row counted by creatable-shared-count)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWeld@RBX@@@boost@@QAE@PAVWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2620",
+      "symbol": "??$create@VWeld@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VWeld@RBX@@@boost@@XZ",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0Weld@RBX@@QAE@XZ": "0x5e4810 (external constructor (stores the .?AVWeld@RBX@@ vtable 0x83f24c))",
+        "??$?0VWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWeld@RBX@@@boost@@QAE@PAVWeld@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4b2570 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VWeld@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VWeld@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2910",
+      "symbol": "?create@Creator@?$FactoryProduct@VGlue@RBX@@VAutoJoint@2@$1?sGlue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VGlue@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlue@RBX@@@boost@@XZ": "0x4b2890 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VGlue@RBX@@VAutoJoint@2@$1?sGlue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b27e0",
+      "symbol": "??$?0VGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlue@RBX@@@boost@@QAE@PAVGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b2750 (body exact at the bound address; row counted by creatable-shared-count)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlue@RBX@@@boost@@QAE@PAVGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2890",
+      "symbol": "??$create@VGlue@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlue@RBX@@@boost@@XZ",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0Glue@RBX@@QAE@XZ": "0x5e49a0 (external (evidence name))",
+        "??$?0VGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGlue@RBX@@@boost@@QAE@PAVGlue@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4b27e0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VGlue@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGlue@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2b80",
+      "symbol": "?create@Creator@?$FactoryProduct@VRotate@RBX@@VAutoJoint@2@$1?sRotate@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VRotate@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotate@RBX@@@boost@@XZ": "0x4b2b00 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VRotate@RBX@@VAutoJoint@2@$1?sRotate@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2a50",
+      "symbol": "??$?0VRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotate@RBX@@@boost@@QAE@PAVRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b29c0 (body exact at the bound address; row counted by creatable-shared-count)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotate@RBX@@@boost@@QAE@PAVRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2b00",
+      "symbol": "??$create@VRotate@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotate@RBX@@@boost@@XZ",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0Rotate@RBX@@QAE@XZ": "0x5e4ad0 (external (evidence name))",
+        "??$?0VRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotate@RBX@@@boost@@QAE@PAVRotate@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4b2a50 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VRotate@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotate@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2df0",
+      "symbol": "?create@Creator@?$FactoryProduct@VRotateP@RBX@@VAutoJoint@2@$1?sRotateP@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VRotateP@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotateP@RBX@@@boost@@XZ": "0x4b2d70 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VRotateP@RBX@@VAutoJoint@2@$1?sRotateP@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2cc0",
+      "symbol": "??$?0VRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotateP@RBX@@@boost@@QAE@PAVRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b2c30 (body exact at the bound address; row counted by creatable-shared-count)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotateP@RBX@@@boost@@QAE@PAVRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2d70",
+      "symbol": "??$create@VRotateP@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotateP@RBX@@@boost@@XZ",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0RotateP@RBX@@QAE@XZ": "0x5e4c60 (external constructor (stores the .?AVRotateP@RBX@@ vtable 0x83f4dc))",
+        "??$?0VRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotateP@RBX@@@boost@@QAE@PAVRotateP@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4b2cc0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VRotateP@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotateP@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b3060",
+      "symbol": "?create@Creator@?$FactoryProduct@VRotateV@RBX@@VAutoJoint@2@$1?sRotateV@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VRotateV@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotateV@RBX@@@boost@@XZ": "0x4b2fe0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VRotateV@RBX@@VAutoJoint@2@$1?sRotateV@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2f30",
+      "symbol": "??$?0VRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotateV@RBX@@@boost@@QAE@PAVRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4b2ea0 (body exact at the bound address; row counted by creatable-shared-count)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotateV@RBX@@@boost@@QAE@PAVRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b2fe0",
+      "symbol": "??$create@VRotateV@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotateV@RBX@@@boost@@XZ",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0RotateV@RBX@@QAE@XZ": "0x5e4dd0 (external constructor (stores the .?AVRotateV@RBX@@ vtable 0x83f5b4))",
+        "??$?0VRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VRotateV@RBX@@@boost@@QAE@PAVRotateV@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4b2f30 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VRotateV@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRotateV@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b32d0",
+      "symbol": "?create@Creator@?$FactoryProduct@VMotor@RBX@@VAutoJoint@2@$1?sMotor@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VMotor@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMotor@RBX@@@boost@@XZ": "0x4b3250 (body exact at the bound address; row counted by humanoid2008)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VMotor@RBX@@VAutoJoint@2@$1?sMotor@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ],
+      "unit": "joints"
+    },
+    {
+      "address": "004b1940",
+      "symbol": "??0?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@2@@Z",
+      "size": 95,
+      "target_size": 95,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@6B@": "0x824b7c (vtable by RTTI .?AV?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@2@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1dc0",
+      "symbol": "??0?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@2@@Z",
+      "size": 95,
+      "target_size": 95,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@6B@": "0x824b94 (vtable by RTTI .?AV?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@2@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b19a0",
+      "symbol": "?type@?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@UBEABVtype_info@@XZ",
+      "size": 6,
+      "target_size": 6,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@8": "0x93b554 (type descriptor .?AV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@ (by bytes))"
+      },
+      "local_eh": [],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1e20",
+      "symbol": "?type@?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@UBEABVtype_info@@XZ",
+      "size": 6,
+      "target_size": 6,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@8": "0x93b8a0 (type descriptor .?AV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@ (by bytes))"
+      },
+      "local_eh": [],
+      "unit": "signals"
+    },
+    {
+      "address": "004b19b0",
+      "symbol": "?clone@?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "size": 96,
+      "target_size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@2@@Z": "0x4b1940 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1e30",
+      "symbol": "?clone@?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "size": 96,
+      "target_size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@2@@Z": "0x4b1dc0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1aa0",
+      "symbol": "??$?0V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@1@@Z",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@2@@Z": "0x4b1940 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@1@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1f20",
+      "symbol": "??$?0V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@1@@Z",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@2@@Z": "0x4b1dc0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@1@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1b00",
+      "symbol": "?connect@?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+      "size": 275,
+      "target_size": 275,
+      "exact": true,
+      "verified_targets": {
+        "??$?0V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXXZV?$allocator@X@std@@@1@@Z": "0x4b1aa0 (own row)",
+        "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (external)",
+        "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?connect@?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b1f80",
+      "symbol": "?connect@?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@2@W4connect_position@42@@Z",
+      "size": 275,
+      "target_size": 275,
+      "exact": true,
+      "verified_targets": {
+        "??$?0V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@1@@Z": "0x4b1f20 (own row)",
+        "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (external)",
+        "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?connect@?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@2@W4connect_position@42@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b20e0",
+      "symbol": "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_7SignalInstance@Reflection@RBX@@6B@": "0x80ece0 (vtable by RTTI .?AVSignalInstance@Reflection@RBX@@)",
+        "??0?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": "0x499c00 (external)",
+        "??_7TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@6B@": "0x824ba4 (vtable by RTTI .?AVTSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@)"
+      },
+      "local_eh": [
+        "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b2150",
+      "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+      "size": 102,
+      "target_size": 102,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": "0x4b20e0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b4fb0",
+      "symbol": "??$?RV?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "size": 146,
+      "target_size": 146,
+      "exact": true,
+      "verified_targets": {
+        "?equal@?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z": "0x40b050 (support body exact at the bound address)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z": "0x4ad760 (support body exact at the bound address)",
+        "?increment@?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ": "0x499ed0 (support body exact at the bound address)"
+      },
+      "local_eh": [],
+      "unit": "signals"
+    },
+    {
+      "address": "004b5f40",
+      "symbol": "?fire@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@QAEXPAVSignalSource@23@@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@XZ": "0x4b5950 (body exact at the bound address; row counted by humanoid2008)"
+      },
+      "local_eh": [],
+      "unit": "signals"
+    },
+    {
+      "address": "004b6040",
+      "symbol": "?fire@?$SignalDescImpl@$01$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??R?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AUunusable@?$last_value@X@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z": "0x4b5a70 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?fire@?$SignalDescImpl@$01$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+      ],
+      "unit": "signals"
+    },
+    {
+      "address": "004b5a70",
+      "symbol": "??R?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AUunusable@?$last_value@X@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "size": 354,
+      "target_size": 354,
+      "exact": true,
+      "verified_targets": {
+        "??0call_notification@detail@signals@boost@@QAE@ABV?$shared_ptr@Vsignal_base_impl@detail@signals@boost@@@3@@Z": "0x56a760 (external)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z": "0x4ab090 (support body exact at the bound address)",
+        "?end@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x5713b0 (external)",
+        "??0?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z": "0x4908a0 (support body exact at the bound address)",
+        "?begin@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x571380 (external)",
+        "??$?RV?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z": "0x4b4fb0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??1call_notification@detail@signals@boost@@QAE@XZ": "0x56a650 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??R?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AUunusable@?$last_value@X@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+      ],
+      "unit": "signals"
+    }
+  ],
+  "support_rows": {
+    "?equal@?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z": {
+      "address": "0x40b050",
+      "reached_from": "??$?RV?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "note": "ICF-shared support body, exact at the bound address; not counted"
+    },
+    "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z": {
+      "address": "0x4ad760",
+      "reached_from": "??$?RV?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "note": "ICF-shared support body, exact at the bound address; not counted"
+    },
+    "?increment@?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ": {
+      "address": "0x499ed0",
+      "reached_from": "??$?RV?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "note": "ICF-shared support body, exact at the bound address; not counted"
+    },
+    "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z": {
+      "address": "0x4ab090",
+      "reached_from": "??R?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AUunusable@?$last_value@X@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "note": "ICF-shared support body, exact at the bound address; not counted"
+    },
+    "??0?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NV?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@?$call_bound2@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z": {
+      "address": "0x4908a0",
+      "reached_from": "??R?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@4@@boost@@QAE?AUunusable@?$last_value@X@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "note": "ICF-shared support body, exact at the bound address; not counted"
+    }
+  },
+  "pending_rows": [],
+  "creator_vtables": [
+    {
+      "vtable": "0x824bac",
+      "rtti": ".?AVCreator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b21c0 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824bb4",
+      "rtti": ".?AVCreator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b2430 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824bd0",
+      "rtti": ".?AVCreator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b26a0 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824bec",
+      "rtti": ".?AVCreator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b2910 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824c08",
+      "rtti": ".?AVCreator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b2b80 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824c24",
+      "rtti": ".?AVCreator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b2df0 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824c40",
+      "rtti": ".?AVCreator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b3060 (counted row Creator::create)"
+    },
+    {
+      "vtable": "0x824c5c",
+      "rtti": ".?AVCreator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x4b32d0 (counted row Creator::create)"
+    }
+  ],
+  "vtables": [
+    {
+      "vtable": "0x824b7c",
+      "symbol": "??_7?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@6B@",
+      "rtti": ".?AV?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@",
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@UAEPAXI -> 0x41aba0 (ICF-shared body exact at the original slot; not counted here)",
+        "1": "?type@?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@UBEAB -> 0x4b19a0 (own row)",
+        "2": "?clone@?$holder@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@any@boost@@UBEP -> 0x4b19b0 (own row)"
+      }
+    },
+    {
+      "vtable": "0x824b94",
+      "symbol": "??_7?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@6B@",
+      "rtti": ".?AV?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@ZV?$allocator@X@2@@boost@@@any@boost@@",
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocat -> 0x41aba0 (ICF-shared body exact at the original slot; not counted here)",
+        "1": "?type@?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$alloc -> 0x4b1e20 (own row)",
+        "2": "?clone@?$holder@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allo -> 0x4b1e30 (own row)"
+      }
+    },
+    {
+      "vtable": "0x824ba4",
+      "symbol": "??_7TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@6B@",
+      "rtti": ".?AVTSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@",
+      "original_slots": 1,
+      "slots": {
+        "0": "??_ETSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V -> 0x6347a0 (ICF-shared body exact at the original slot; not counted here)"
+      }
+    },
+    {
+      "vtable": "0x80ece0",
+      "symbol": "??_7SignalInstance@Reflection@RBX@@6B@",
+      "rtti": ".?AVSignalInstance@Reflection@RBX@@",
+      "original_slots": 1,
+      "slots": {
+        "0": "??_ESignalInstance@Reflection@RBX@@UAEPAXI@Z -> 0x41a5d0 (ICF-shared body exact at the original slot; not counted here)"
+      }
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "ICF-shared generic bodies",
+      "reason": "Bodies this build also emits but does not count because one copy serves many instances (not attributable to this unit): the 5-byte findSig / iterator_facade::operator* / checked_delete<int> bodies (004b1690, 004b3750), the 9-byte slot_call_iterator increment/dereference body 004b35d0, std::list<connection> destructor 004b0a80 (also list<SignatureDescriptor::Item>), and the 31-byte scalar deleting destructor 004bb530 (sp_counted_base / placeholder / Descriptor, inside the RakNet block)."
+    },
+    {
+      "address": "replicator rows",
+      "reason": "Not attempted in this pass: the Replicator.cpp rows belong to the network-replicator owners' native Network/Replicator2008.h / IdSerializer.h / ReplicatorMarker.h (read-only here); the uncounted ones are listed in range_rows_not_counted."
+    }
+  ],
+  "rejected": {
+    "Creator rows against the original 2008 hierarchy": "not tried as a build: the native JointInstance.h models Snap..Motor on AutoJoint (donor shape); the original RTTI is FactoryProduct<C, JointInstance, sC 3QBDB>. The bytes do not depend on it (same sizeof 0x154 and the Object base at +0x10), so the rows are codegen analogs with AutoJoint in their symbols"
+  },
+  "proposals": [
+    "v8datamodel/JointInstance.h (Joint family owner): in 2008 Snap, Weld, Glue, Rotate, RotateP, RotateV and Motor derive from DescribedCreatable<C, JointInstance, sC> with `extern const char sC[];`, not from AutoJoint with a char array. Evidence: the Weld vtable 0083f24c RTTI lists DescribedCreatable@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB directly over JointInstance (no AutoJoint base), and the Creator vtables 00824bb4..00824c5c name FactoryProduct<C, JointInstance, sC 3QBDB>. sizeof(C) stays 0x154 (create<C> mallocs 0x154). The rows counted here are exact either way (codegen analogs), so this is a naming/ABI correction only; re-run the humanoid2008, script-app2008, seat, services-maps, feature and creatable-shared-count recorders after the change."
+  ],
+  "exact_function_rows": [
+    "004b1940",
+    "004b19a0",
+    "004b19b0",
+    "004b1aa0",
+    "004b1b00",
+    "004b1dc0",
+    "004b1e20",
+    "004b1e30",
+    "004b1f20",
+    "004b1f80",
+    "004b20e0",
+    "004b2150",
+    "004b21c0",
+    "004b2430",
+    "004b2570",
+    "004b2620",
+    "004b26a0",
+    "004b27e0",
+    "004b2890",
+    "004b2910",
+    "004b2a50",
+    "004b2b00",
+    "004b2b80",
+    "004b2cc0",
+    "004b2d70",
+    "004b2df0",
+    "004b2f30",
+    "004b2fe0",
+    "004b3060",
+    "004b32d0",
+    "004b4fb0",
+    "004b5a70",
+    "004b5f40",
+    "004b6040"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

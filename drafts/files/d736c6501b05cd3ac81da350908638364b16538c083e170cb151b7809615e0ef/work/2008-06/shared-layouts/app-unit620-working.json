@@ -1,0 +1,1084 @@
+{
+  "class": "unit map of the application range 00620000..00624000 (2008-06): Lua bridge tail and Lua 5.1 core, inactive",
+  "result": "No row is recovered or counted here. The RBX rows 00620190..006217e2 are the lua-bridge2008 signal bridge tail and YieldingThreads unit: 33 are counted by lua-bridge2008-working.json, 6 are funclet / tail pieces it compares inside counted parents, and the ICF-folded std::_Allocate<0x18-byte element> is counted by no receipt (std template instance with callers in three units: not recovered). The other 76 rows are Lua 5.1 library code compiled by Roblox as C++ (ldo, lobject, ldebug, lstate): 56 are reproduced byte-identically from upstream files with every target bound, 20 are Roblox C++ modifications mapped by evidence name, RTTI and extent.",
+  "compiler": "VS2008 RTM 21022",
+  "library_recipes": [
+    "lua-5.1.1 ldebug.c (/O2 /GS- /MD)",
+    "lua-5.1.1 ldo.c (/O2 /GS- /MD)",
+    "lua-5.1.1 lobject.c (/O2 /GS- /MD)",
+    "lua-5.1.1 lstate.c (/O2 /GS- /MD)",
+    "lua-5.1.2-rbx lstate.c (/O2 /GS- /MD)"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit620.py": "a576fbf538200895a6ade279f41f953bf3fb01275bf0c9da2ca9a4b53637c750"
+  },
+  "objects": {
+    "lua-5_1_1_ldo.obj": "1ff0a132e2ad79e6439ae8bfa13e3ff10b6334fb0007974ee04009b60fd178f2",
+    "lua-5_1_1_lobject.obj": "92eafd99f9bc216e033faeecfd78a65c8df52859dba6344a751dd9e4e36837ef",
+    "lua-5_1_1_ldebug.obj": "a24ed928f7812fde701687a9c9fd6761213fdf5e776e03a14699b6e7689c957c",
+    "lua-5_1_1_lstate.obj": "4630c75f8d13897a50a919e2da26be359634b818b1c1a6e4dbba4cfd33ce8501",
+    "lua-5_1_2-rbx_lstate.obj": "f7bc19323e6a351c76d6a375f8d45bd9891f997b42fb6b5aeed9bda5f6f65343"
+  },
+  "unit_map": {
+    "rbx-lua-signal-bridge 00620000..0062096f": {
+      "unit": "RBX Lua signal bridge tail (lua-bridge2008 LuaBridge2008Signal.cpp) and the ICF-folded _Allocate 00620910",
+      "library": false,
+      "recovered": false,
+      "rows": 13,
+      "bytes": 1927,
+      "counted_by_other_receipts": 9
+    },
+    "rbx-lua-yielding-threads 00620970..006217ef": {
+      "unit": "RBX Lua YieldingThreads unit (lua-bridge2008 LuaBridge2008Yield.cpp)",
+      "library": false,
+      "recovered": false,
+      "rows": 27,
+      "bytes": 3526,
+      "counted_by_other_receipts": 24
+    },
+    "lua-ldo 006217f0..006225ef": {
+      "unit": "Lua 5.1 ldo.c as C++ (luaD_seterrorobj .. luaD_protectedparser)",
+      "library": true,
+      "recovered": false,
+      "rows": 31,
+      "bytes": 3411,
+      "counted_by_other_receipts": 0
+    },
+    "lua-lobject 006225f0..00622c2f": {
+      "unit": "Lua 5.1 lobject.c (luaO_int2fb .. luaO_chunkid)",
+      "library": true,
+      "recovered": false,
+      "rows": 9,
+      "bytes": 1526,
+      "counted_by_other_receipts": 0
+    },
+    "lua-ldebug 00622c30..00623b4f": {
+      "unit": "Lua 5.1 ldebug.c (currentline .. luaG_ordererror)",
+      "library": true,
+      "recovered": false,
+      "rows": 27,
+      "bytes": 3660,
+      "counted_by_other_receipts": 0
+    },
+    "lua-lstate 00623b50..00623fff": {
+      "unit": "Lua 5.1 lstate.c (stack_init .. lua_newstate 00623f40, which runs to 0062407f)",
+      "library": true,
+      "recovered": false,
+      "rows": 9,
+      "bytes": 1287,
+      "counted_by_other_receipts": 0
+    }
+  },
+  "rbx_rows": [
+    "00620190 counted by lua-bridge2008-working.json (??0WaitScriptSlot@@QAE@PAUlua_State@@@Z)",
+    "00620210 counted by lua-bridge2008-working.json (??$connectGeneric@VWaitScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VWaitScriptSlot@@W4connect_position@45@@Z)",
+    "006202a0 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620310 counted by lua-bridge2008-working.json (?execute@?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z)",
+    "row 00620344: TGenericSlotWrapper<FunctionScriptSlot>::execute tail, compared by lua-bridge2008-working.json as part of its counted parent 00620310 (134 B whole)",
+    "row 00620357: TGenericSlotWrapper<FunctionScriptSlot>::execute catch funclet, compared by lua-bridge2008-working.json as part of its counted parent 00620310 (134 B whole)",
+    "006203a0 counted by lua-bridge2008-working.json (?execute@?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z)",
+    "row 00620422: TGenericSlotWrapper<WaitScriptSlot>::execute catch funclet, compared by lua-bridge2008-working.json as part of its counted parent 006203a0 (193 B whole)",
+    "00620470 counted by lua-bridge2008-working.json (?wait@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z)",
+    "00620590 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620620 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620760 counted by lua-bridge2008-working.json (?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z)",
+    "row 00620910: std::_Allocate<0x18-byte element> (ICF-folded; lua-bridge2008 emits it as _Allocate<WaitingThread>, scorehud-leaderboard as _Allocate<vector<string>>; both compare it as an instance / support row, neither counts it); counted by no receipt; not recovered here (callers in three units)",
+    "00620970 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620990 counted by lua-bridge2008-working.json (no evidence name)",
+    "006209d0 counted by lua-bridge2008-working.json (no evidence name)",
+    "row 00620a3e: shared_count<ThreadRef*> catch funclet, compared by lua-bridge2008-working.json as part of its counted parent 006209d0 (131 B whole)",
+    "00620a60 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620a80 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620b10 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620ba0 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620c20 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620c80 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620cd0 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620d60 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620dc0 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620e10 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620e40 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620e80 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620f10 counted by lua-bridge2008-working.json (no evidence name)",
+    "00620f40 counted by lua-bridge2008-working.json (no evidence name)",
+    "row 0062102f: vector<WaitingThread>(const vector&) catch funclet, compared by lua-bridge2008-working.json as part of its counted parent 00620f40 (256 B whole)",
+    "00621050 counted by lua-bridge2008-working.json (no evidence name)",
+    "row 00621284: vector<WaitingThread>::_Insert_n second catch funclet and copy-insert tail, compared by lua-bridge2008-working.json as part of its counted parent 00621050 (723 B whole)",
+    "00621330 counted by lua-bridge2008-working.json (??0YieldingThreads@Lua@RBX@@QAE@PAVScriptContext@2@@Z)",
+    "00621390 counted by lua-bridge2008-working.json (no evidence name)",
+    "00621440 counted by lua-bridge2008-working.json (no evidence name)",
+    "006214e0 counted by lua-bridge2008-working.json (no evidence name)",
+    "00621590 counted by lua-bridge2008-working.json (no evidence name)",
+    "006217d0 counted by lua-bridge2008-working.json (no evidence name)"
+  ],
+  "library_rows_reproduced": [
+    {
+      "row": "row 006217f0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_seterrorobj",
+      "evidence_name": "?luaD_seterrorobj@@YAXPAUlua_State@@HPAUlua_TValue@@@Z",
+      "size": 120,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0BC@ENOOLCNF@not?5enough?5memory?$AA@": "string 'not enough memory' at 008447b4",
+        "??_C@_0BI@KGOCJOGJ@error?5in?5error?5handling?$AA@": "string 'error in error handling' at 0084479c",
+        "local_eh": [
+          "$LN9",
+          "$LN1",
+          "$LN1",
+          "$LN3",
+          "$LN2"
+        ],
+        "_luaS_newlstr": "Lua row 0065f300 (evidence name ?luaS_newlstr@@YAPATTString@@PAUlua_State@@PBDI@Z)"
+      }
+    },
+    {
+      "row": "row 006219e0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_correctstack",
+      "evidence_name": "?correctstack@@YAXPAUlua_State@@PAUlua_TValue@@@Z",
+      "size": 142,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00621a70",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_reallocstack",
+      "evidence_name": "?luaD_reallocstack@@YAXPAUlua_State@@H@Z",
+      "size": 89,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaM_realloc_": "Lua row 006606f0 (evidence name ?luaM_realloc_@@YAPAXPAUlua_State@@PAXII@Z)",
+        "_luaM_toobig": "Lua row 006606d0 (evidence name ?luaM_toobig@@YAPAXPAUlua_State@@@Z)",
+        "_correctstack": "mapped row 006219e0"
+      }
+    },
+    {
+      "row": "row 00621ad0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_reallocCI",
+      "evidence_name": "?luaD_reallocCI@@YAXPAUlua_State@@H@Z",
+      "size": 123,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaM_realloc_": "Lua row 006606f0 (evidence name ?luaM_realloc_@@YAPAXPAUlua_State@@PAXII@Z)",
+        "_luaM_toobig": "Lua row 006606d0 (evidence name ?luaM_toobig@@YAPAXPAUlua_State@@@Z)"
+      }
+    },
+    {
+      "row": "row 00621b50",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_growstack",
+      "evidence_name": "?luaD_growstack@@YAXPAUlua_State@@H@Z",
+      "size": 41,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaD_reallocstack": "mapped row 00621a70"
+      }
+    },
+    {
+      "row": "row 00621b80",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_callhook",
+      "evidence_name": "?luaD_callhook@@YAXPAUlua_State@@HH@Z",
+      "size": 216,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaD_reallocstack": "mapped row 00621a70"
+      }
+    },
+    {
+      "row": "row 00621cd0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_tryfuncTM",
+      "evidence_name": "?tryfuncTM@@YAPAUlua_TValue@@PAUlua_State@@PAU1@@Z",
+      "size": 142,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_04OMFAIDPG@call?$AA@": "string 'call' at 008447d4",
+        "_luaT_gettmbyobj": "Lua row 0065c600 (evidence name ?luaT_gettmbyobj@@YAPBUlua_TValue@@PAUlua_State@@PBU1@W4TMS@@@Z)",
+        "_luaG_typeerror": "mapped row 00623a00",
+        "_luaD_reallocstack": "mapped row 00621a70"
+      }
+    },
+    {
+      "row": "row 00621d60",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_callrethooks",
+      "evidence_name": "?callrethooks@@YAPAUlua_TValue@@PAUlua_State@@PAU1@@Z",
+      "size": 80,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaD_callhook": "mapped row 00621b80"
+      }
+    },
+    {
+      "row": "row 00621db0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_poscall",
+      "evidence_name": "?luaD_poscall@@YAHPAUlua_State@@PAUlua_TValue@@@Z",
+      "size": 135,
+      "masked_equivalents": [],
+      "targets": {
+        "_callrethooks": "mapped row 00621d60"
+      }
+    },
+    {
+      "row": "row 00621e40",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_resume_error",
+      "evidence_name": "?resume_error@@YAHPAUlua_State@@PBD@Z",
+      "size": 114,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaS_newlstr": "Lua row 0065f300 (evidence name ?luaS_newlstr@@YAPATTString@@PAUlua_State@@PBDI@Z)",
+        "_luaD_reallocstack": "mapped row 00621a70"
+      }
+    },
+    {
+      "row": "row 00621ec0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_yield",
+      "evidence_name": "?lua_yield@@YAHPAUlua_State@@H@Z",
+      "size": 50,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0DD@CPKEKIFA@attempt?5to?5yield?5across?5metameth@": "string 'attempt to yield across metamethod/C-call boundary' at 008447dc",
+        "_luaG_runerror": "mapped row 006237d0"
+      }
+    },
+    {
+      "row": "row 00621f00",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_parser",
+      "evidence_name": "?f_parser@@YAXPAUlua_State@@PAX@Z",
+      "size": 214,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaZ_lookahead": "Lua row 0065f870 (evidence name ?luaZ_lookahead@@YAHPAUZio@@@Z)",
+        "_luaC_step": "Lua row 0065c390 (evidence name ?luaC_step@@YAXPAUlua_State@@@Z)",
+        "_luaU_undump": "Lua row 00663fe0 (evidence name ?luaU_undump@@YAPAUProto@@PAUlua_State@@PAUZio@@PAUMbuffer@@PBD@Z)",
+        "_luaY_parser": "Lua row 00663560 (evidence name ?luaY_parser@@YAPAUProto@@PAUlua_State@@PAUZio@@PAUMbuffer@@PBD@Z)",
+        "_luaF_newLclosure": "Lua row 0065f490 (evidence name ?luaF_newLclosure@@YAPATClosure@@PAUlua_State@@HPAUTable@@@Z)",
+        "_luaF_newupval": "Lua row 0065f4f0 (evidence name ?luaF_newupval@@YAPAUUpVal@@PAUlua_State@@@Z)",
+        "_luaD_reallocstack": "mapped row 00621a70"
+      }
+    },
+    {
+      "row": "row 00621fe0",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_resetstack",
+      "evidence_name": "?resetstack@@YAXPAUlua_State@@H@Z",
+      "size": 111,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaF_close": "Lua row 0065f600 (evidence name ?luaF_close@@YAXPAUlua_State@@PAUlua_TValue@@@Z)",
+        "_luaD_seterrorobj": "mapped row 006217f0",
+        "_luaD_reallocCI": "mapped row 00621ad0"
+      }
+    },
+    {
+      "row": "row 00622100",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_growCI",
+      "evidence_name": "?growCI@@YAPAUCallInfo@@PAUlua_State@@@Z",
+      "size": 61,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0P@EODJGPIM@stack?5overflow?$AA@": "string 'stack overflow' at 00844810",
+        "_luaD_throw": "Lua row 00622050 (evidence name ?luaD_throw@@YAXPAUlua_State@@H@Z)",
+        "_luaD_reallocCI": "mapped row 00621ad0",
+        "_luaG_runerror": "mapped row 006237d0"
+      }
+    },
+    {
+      "row": "row 00622300",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_call",
+      "evidence_name": "?luaD_call@@YAXPAUlua_State@@PAUlua_TValue@@H@Z",
+      "size": 127,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0BB@EJOGNINL@C?5stack?5overflow?$AA@": "string 'C stack overflow' at 00844820",
+        "_luaG_runerror": "mapped row 006237d0",
+        "_luaD_precall": "Lua row 00622140 (evidence name ?luaD_precall@@YAHPAUlua_State@@PAUlua_TValue@@H@Z)",
+        "_luaV_execute": "Lua row 0065d2c0 (evidence name ?luaV_execute@@YAXPAUlua_State@@H@Z)",
+        "_luaC_step": "Lua row 0065c390 (evidence name ?luaC_step@@YAXPAUlua_State@@@Z)",
+        "_luaD_throw": "Lua row 00622050 (evidence name ?luaD_throw@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00622380",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_resume",
+      "evidence_name": "?resume@@YAXPAUlua_State@@PAX@Z",
+      "size": 123,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaD_precall": "Lua row 00622140 (evidence name ?luaD_precall@@YAHPAUlua_State@@PAUlua_TValue@@H@Z)",
+        "_luaD_poscall": "mapped row 00621db0",
+        "_luaV_execute": "Lua row 0065d2c0 (evidence name ?luaV_execute@@YAXPAUlua_State@@H@Z)"
+      }
+    },
+    {
+      "row": "row 00622480",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_pcall",
+      "evidence_name": "?luaD_pcall@@YAHPAUlua_State@@P6AX0PAX@Z1HH@Z",
+      "size": 252,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaD_rawrunprotected": "Lua row 00621920 (evidence name ?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z)",
+        "_luaF_close": "Lua row 0065f600 (evidence name ?luaF_close@@YAXPAUlua_State@@PAUlua_TValue@@@Z)",
+        "_luaD_seterrorobj": "mapped row 006217f0",
+        "_luaD_reallocCI": "mapped row 00621ad0"
+      }
+    },
+    {
+      "row": "row 00622580",
+      "block": "lua-ldo",
+      "recipe": "lua-5.1.1",
+      "file": "ldo.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaD_protectedparser",
+      "evidence_name": "?luaD_protectedparser@@YAHPAUlua_State@@PAUZio@@PBD@Z",
+      "size": 99,
+      "masked_equivalents": [],
+      "targets": {
+        "_f_parser": "mapped row 00621f00",
+        "_luaD_pcall": "mapped row 00622480",
+        "_luaM_realloc_": "Lua row 006606f0 (evidence name ?luaM_realloc_@@YAPAXPAUlua_State@@PAXII@Z)"
+      }
+    },
+    {
+      "row": "row 006225f0",
+      "block": "lua-lobject",
+      "recipe": "lua-5.1.1",
+      "file": "lobject.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaO_int2fb",
+      "evidence_name": "?luaO_int2fb@@YAHI@Z",
+      "size": 46,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622620",
+      "block": "lua-lobject",
+      "recipe": "lua-5.1.1",
+      "file": "lobject.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaO_fb2int",
+      "evidence_name": "?luaO_fb2int@@YAHH@Z",
+      "size": 24,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622640",
+      "block": "lua-lobject",
+      "recipe": "lua-5.1.1",
+      "file": "lobject.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaO_log2",
+      "evidence_name": "?luaO_log2@@YAHI@Z",
+      "size": 39,
+      "masked_equivalents": [],
+      "targets": {
+        "?log_2@?1??luaO_log2@@9@9": "own static data at 00844890 (256 bytes equal)"
+      }
+    },
+    {
+      "row": "row 00622670",
+      "block": "lua-lobject",
+      "recipe": "lua-5.1.1",
+      "file": "lobject.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaO_rawequalObj",
+      "evidence_name": "?luaO_rawequalObj@@YAHPBUlua_TValue@@0@Z",
+      "size": 84,
+      "masked_equivalents": [],
+      "targets": {
+        "local_eh": [
+          "$LN15",
+          "$LN5",
+          "$LN1",
+          "$LN1",
+          "$LN4"
+        ]
+      }
+    },
+    {
+      "row": "row 00622780",
+      "block": "lua-lobject",
+      "recipe": "lua-5.1.1",
+      "file": "lobject.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_pushstr",
+      "evidence_name": "?pushstr@@YAXPAUlua_State@@PBD@Z",
+      "size": 77,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaS_newlstr": "Lua row 0065f300 (evidence name ?luaS_newlstr@@YAPATTString@@PAUlua_State@@PBDI@Z)",
+        "_luaD_growstack": "mapped row 00621b50"
+      }
+    },
+    {
+      "row": "row 00622ac0",
+      "block": "lua-lobject",
+      "recipe": "lua-5.1.1",
+      "file": "lobject.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaO_pushfstring",
+      "evidence_name": "?luaO_pushfstring@@YAPBDPAUlua_State@@PBDZZ",
+      "size": 24,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaO_pushvfstring": "Lua row 006227d0 (evidence name ?luaO_pushvfstring@@YAPBDPAUlua_State@@PBDPAD@Z)"
+      }
+    },
+    {
+      "row": "row 00622c30",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_currentline",
+      "evidence_name": "?currentline@@YAHPAUlua_State@@PAUCallInfo@@@Z",
+      "size": 67,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622c80",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_sethook",
+      "evidence_name": "?lua_sethook@@YAHPAUlua_State@@P6AX0PAUlua_Debug@@@ZHH@Z",
+      "size": 46,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622cb0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_gethook",
+      "evidence_name": "?lua_gethook@@YAP6AXPAUlua_State@@PAUlua_Debug@@@Z0@Z",
+      "size": 8,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622cc0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_gethookmask",
+      "evidence_name": "?lua_gethookmask@@YAHPAUlua_State@@@Z",
+      "size": 9,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622cd0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_gethookcount",
+      "evidence_name": "?lua_gethookcount@@YAHPAUlua_State@@@Z",
+      "size": 8,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622ce0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_getstack",
+      "evidence_name": "?lua_getstack@@YAHPAUlua_State@@HPAUlua_Debug@@@Z",
+      "size": 119,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622d60",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_findlocal",
+      "evidence_name": "?findlocal@@YAPBDPAUlua_State@@PAUCallInfo@@H@Z",
+      "size": 100,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0N@NCKPGBEC@?$CI?$CKtemporary?$CJ?$AA@": "string '(*temporary)' at 008449b4",
+        "_luaF_getlocalname": "Lua row 0065f7e0 (evidence name ?luaF_getlocalname@@YAPBDPBUProto@@HH@Z)"
+      }
+    },
+    {
+      "row": "row 00622dd0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_getlocal",
+      "evidence_name": "?lua_getlocal@@YAPBDPAUlua_State@@PBUlua_Debug@@H@Z",
+      "size": 65,
+      "masked_equivalents": [],
+      "targets": {
+        "_findlocal": "mapped row 00622d60",
+        "_luaA_pushobject": "Lua row 00611b10 (evidence name ?luaA_pushobject@@YAXPAUlua_State@@PBUlua_TValue@@@Z)"
+      }
+    },
+    {
+      "row": "row 00622e20",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_setlocal",
+      "evidence_name": "?lua_setlocal@@YAPBDPAUlua_State@@PBUlua_Debug@@H@Z",
+      "size": 76,
+      "masked_equivalents": [],
+      "targets": {
+        "_findlocal": "mapped row 00622d60"
+      }
+    },
+    {
+      "row": "row 00622e70",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_funcinfo",
+      "evidence_name": "?funcinfo@@YAXPAUlua_Debug@@PATClosure@@@Z",
+      "size": 116,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_04BKJOMPG@?$DN?$FLC?$FN?$AA@": "string '=[C]' at 008449d0",
+        "??_C@_01GFHCPBMG@C?$AA@": "string 'C' at 008449cc",
+        "??_C@_04GHJNJNPO@main?$AA@": "string 'main' at 008449c4",
+        "??_C@_03CBKFDHDL@Lua?$AA@": "string 'Lua' at 0083498c",
+        "_luaO_chunkid": "Lua row 00622ae0 (evidence name ?luaO_chunkid@@YAXPADPBDI@Z)"
+      }
+    },
+    {
+      "row": "row 00622ef0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_collectvalidlines",
+      "evidence_name": "?collectvalidlines@@YAXPAUlua_State@@PATClosure@@@Z",
+      "size": 141,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaH_new": "Lua row 0065e910 (evidence name ?luaH_new@@YAPAUTable@@PAUlua_State@@HH@Z)",
+        "_luaH_setnum": "Lua row 0065ebc0 (evidence name ?luaH_setnum@@YAPAUlua_TValue@@PAUlua_State@@PAUTable@@H@Z)",
+        "_luaD_growstack": "mapped row 00621b50"
+      }
+    },
+    {
+      "row": "row 00622f80",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_checkopenop",
+      "evidence_name": "?luaG_checkopenop@@YAHI@Z",
+      "size": 38,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00622fb0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_checkArgMode",
+      "evidence_name": "?checkArgMode@@YAHPBUProto@@HW4OpArgMask@@@Z",
+      "size": 76,
+      "masked_equivalents": [],
+      "targets": {}
+    },
+    {
+      "row": "row 00623000",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_symbexec",
+      "evidence_name": "?symbexec@@YAIPBUProto@@HH@Z",
+      "size": 1108,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaP_opmodes": "external data at 0084c944 (one address per symbol)",
+        "_checkArgMode": "mapped row 00622fb0",
+        "local_eh": [
+          "$LN120",
+          "$LN138",
+          "$LN51",
+          "$LN49",
+          "$LN47",
+          "$LN45",
+          "$LN43",
+          "$LN40",
+          "$LN33",
+          "$LN30",
+          "$LN21",
+          "$LN34",
+          "$LN38",
+          "$LN18",
+          "$LN14",
+          "$LN7",
+          "$LN76"
+        ],
+        "_luaG_checkopenop": "mapped row 00622f80"
+      }
+    },
+    {
+      "row": "row 00623460",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_checkcode",
+      "evidence_name": "?luaG_checkcode@@YAHPBUProto@@@Z",
+      "size": 29,
+      "masked_equivalents": [],
+      "targets": {
+        "_symbexec": "mapped row 00623000"
+      }
+    },
+    {
+      "row": "row 00623480",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_kname",
+      "evidence_name": "?kname@@YAPBDPAUProto@@H@Z",
+      "size": 38,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_01OGPIMHDM@?$DP?$AA@": "string '?' at 00819e10"
+      }
+    },
+    {
+      "row": "row 006234b0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_getobjname",
+      "evidence_name": "?getobjname@@YAPBDPAUlua_State@@PAUCallInfo@@HPAPBD@Z",
+      "size": 372,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_05IDKHKMLA@local?$AA@": "string 'local' at 00844a08",
+        "??_C@_06FJKEMHGD@global?$AA@": "string 'global' at 00844a00",
+        "??_C@_05EIBGDMPB@field?$AA@": "string 'field' at 008449f8",
+        "??_C@_07NAGMKCIK@upvalue?$AA@": "string 'upvalue' at 008449f0",
+        "??_C@_01OGPIMHDM@?$DP?$AA@": "string '?' at 00819e10",
+        "??_C@_06GABBCIBA@method?$AA@": "string 'method' at 008437fc",
+        "_luaF_getlocalname": "Lua row 0065f7e0 (evidence name ?luaF_getlocalname@@YAPBDPBUProto@@HH@Z)",
+        "_symbexec": "mapped row 00623000",
+        "local_eh": [
+          "$LN25",
+          "$LN27",
+          "$LN6",
+          "$LN3",
+          "$LN7",
+          "$LN4",
+          "$LN2",
+          "$LN1"
+        ],
+        "_kname": "mapped row 00623480"
+      }
+    },
+    {
+      "row": "row 00623630",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_getfuncname",
+      "evidence_name": "?getfuncname@@YAPBDPAUlua_State@@PAUCallInfo@@PAPBD@Z",
+      "size": 154,
+      "masked_equivalents": [],
+      "targets": {
+        "_getobjname": "mapped row 006234b0"
+      }
+    },
+    {
+      "row": "row 006236d0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_addinfo",
+      "evidence_name": "?addinfo@@YAXPAUlua_State@@PBD@Z",
+      "size": 110,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_09BHPFBFOI@?$CFs?3?$CFd?3?5?$CFs?$AA@": "string '%s:%d: %s' at 00844a10",
+        "_currentline": "mapped row 00622c30",
+        "_luaO_chunkid": "Lua row 00622ae0 (evidence name ?luaO_chunkid@@YAXPADPBDI@Z)",
+        "_luaO_pushfstring": "mapped row 00622ac0"
+      }
+    },
+    {
+      "row": "row 00623740",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_errormsg",
+      "evidence_name": "?luaG_errormsg@@YAXPAUlua_State@@@Z",
+      "size": 135,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaD_throw": "Lua row 00622050 (evidence name ?luaD_throw@@YAXPAUlua_State@@H@Z)",
+        "_luaD_growstack": "mapped row 00621b50",
+        "_luaD_call": "mapped row 00622300"
+      }
+    },
+    {
+      "row": "row 006237d0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_runerror",
+      "evidence_name": "?luaG_runerror@@YAXPAUlua_State@@PBDZZ",
+      "size": 38,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaO_pushvfstring": "Lua row 006227d0 (evidence name ?luaO_pushvfstring@@YAPBDPAUlua_State@@PBDPAD@Z)",
+        "_addinfo": "mapped row 006236d0",
+        "_luaG_errormsg": "mapped row 00623740"
+      }
+    },
+    {
+      "row": "row 00623800",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_auxgetinfo",
+      "evidence_name": "?auxgetinfo@@YAHPAUlua_State@@PBDPAUlua_Debug@@PATClosure@@PAUCallInfo@@@Z",
+      "size": 334,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_00CNPNBAHC@?$AA@": "string '' at 0080b716",
+        "??_C@_0N@DIENKKJP@?$DN?$CItail?5call?$CJ?$AA@": "string '=(tail call)' at 008449e0",
+        "??_C@_04DIFLAKIP@tail?$AA@": "string 'tail' at 008449d8",
+        "_luaO_chunkid": "Lua row 00622ae0 (evidence name ?luaO_chunkid@@YAXPADPBDI@Z)",
+        "local_eh": [
+          "$LN24",
+          "$LN25",
+          "$LN11",
+          "$LN7",
+          "$LN6",
+          "$LN4",
+          "$LN5",
+          "$LN1"
+        ],
+        "_funcinfo": "mapped row 00622e70",
+        "_currentline": "mapped row 00622c30",
+        "_getfuncname": "mapped row 00623630"
+      }
+    },
+    {
+      "row": "row 00623a00",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_typeerror",
+      "evidence_name": "?luaG_typeerror@@YAXPAUlua_State@@PBUlua_TValue@@PBD@Z",
+      "size": 140,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0BJ@HGCMIDJD@attempt?5to?5?$CFs?5a?5?$CFs?5value?$AA@": "string 'attempt to %s a %s value' at 00844a40",
+        "??_C@_0CD@HAGFMPIP@attempt?5to?5?$CFs?5?$CFs?5?8?$CFs?8?5?$CIa?5?$CFs?5valu@": "string \"attempt to %s %s '%s' (a %s value)\" at 00844a1c",
+        "_luaT_typenames": "external data at 0084c264 (one address per symbol)",
+        "_luaG_runerror": "mapped row 006237d0",
+        "_getobjname": "mapped row 006234b0"
+      }
+    },
+    {
+      "row": "row 00623a90",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_concaterror",
+      "evidence_name": "?luaG_concaterror@@YAXPAUlua_State@@PAUlua_TValue@@1@Z",
+      "size": 31,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0M@LPKAOE@concatenate?$AA@": "string 'concatenate' at 00844a5c",
+        "_luaG_typeerror": "mapped row 00623a00"
+      }
+    },
+    {
+      "row": "row 00623ab0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_aritherror",
+      "evidence_name": "?luaG_aritherror@@YAXPAUlua_State@@PBUlua_TValue@@1@Z",
+      "size": 56,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0BG@IOLALLOM@perform?5arithmetic?5on?$AA@": "string 'perform arithmetic on' at 00844a68",
+        "_luaV_tonumber": "Lua row 0065c660 (evidence name ?luaV_tonumber@@YAPBUlua_TValue@@PBU1@PAU1@@Z)",
+        "_luaG_typeerror": "mapped row 00623a00"
+      }
+    },
+    {
+      "row": "row 00623af0",
+      "block": "lua-ldebug",
+      "recipe": "lua-5.1.1",
+      "file": "ldebug.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaG_ordererror",
+      "evidence_name": "?luaG_ordererror@@YAHPAUlua_State@@PBUlua_TValue@@1@Z",
+      "size": 81,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0CB@DEJMKNMB@attempt?5to?5compare?5two?5?$CFs?5values@": "string 'attempt to compare two %s values' at 00844aa0",
+        "??_C@_0BO@DNBGDDFP@attempt?5to?5compare?5?$CFs?5with?5?$CFs?$AA@": "string 'attempt to compare %s with %s' at 00844a80",
+        "_luaT_typenames": "external data at 0084c264 (one address per symbol)",
+        "_luaG_runerror": "mapped row 006237d0"
+      }
+    },
+    {
+      "row": "row 00623b50",
+      "block": "lua-lstate",
+      "recipe": "lua-5.1.1",
+      "file": "lstate.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_stack_init",
+      "evidence_name": "?stack_init@@YAXPAUlua_State@@0@Z",
+      "size": 125,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaM_realloc_": "Lua row 006606f0 (evidence name ?luaM_realloc_@@YAPAXPAUlua_State@@PAXII@Z)"
+      }
+    },
+    {
+      "row": "row 00623bd0",
+      "block": "lua-lstate",
+      "recipe": "lua-5.1.1",
+      "file": "lstate.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_f_luaopen",
+      "evidence_name": "?f_luaopen@@YAXPAUlua_State@@PAX@Z",
+      "size": 119,
+      "masked_equivalents": [],
+      "targets": {
+        "??_C@_0BC@ENOOLCNF@not?5enough?5memory?$AA@": "string 'not enough memory' at 008447b4",
+        "_stack_init": "mapped row 00623b50",
+        "_luaH_new": "Lua row 0065e910 (evidence name ?luaH_new@@YAPAUTable@@PAUlua_State@@HH@Z)",
+        "_luaS_resize": "Lua row 0065f1a0 (evidence name ?luaS_resize@@YAXPAUlua_State@@H@Z)",
+        "_luaT_init": "Lua row 0065c570 (evidence name ?luaT_init@@YAXPAUlua_State@@@Z)",
+        "_luaX_init": "Lua row 006640c0 (evidence name ?luaX_init@@YAXPAUlua_State@@@Z)",
+        "_luaS_newlstr": "Lua row 0065f300 (evidence name ?luaS_newlstr@@YAPATTString@@PAUlua_State@@PBDI@Z)"
+      }
+    },
+    {
+      "row": "row 00623c50",
+      "block": "lua-lstate",
+      "recipe": "lua-5.1.2-rbx",
+      "file": "lstate.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_close_state",
+      "evidence_name": "?close_state@@YAXPAUlua_State@@@Z",
+      "size": 144,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaF_close": "Lua row 0065f600 (evidence name ?luaF_close@@YAXPAUlua_State@@PAUlua_TValue@@@Z)",
+        "_luaC_freeall": "Lua row 0065bfe0 (evidence name ?luaC_freeall@@YAXPAUlua_State@@@Z)",
+        "_luaM_realloc_": "Lua row 006606f0 (evidence name ?luaM_realloc_@@YAPAXPAUlua_State@@PAXII@Z)"
+      }
+    },
+    {
+      "row": "row 00623ce0",
+      "block": "lua-lstate",
+      "recipe": "lua-5.1.2-rbx",
+      "file": "lstate.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_luaE_newthread",
+      "evidence_name": "?luaE_newthread@@YAPAUlua_State@@PAU1@@Z",
+      "size": 152,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaM_realloc_": "Lua row 006606f0 (evidence name ?luaM_realloc_@@YAPAXPAUlua_State@@PAXII@Z)",
+        "_luaC_link": "Lua row 0065c4e0 (evidence name ?luaC_link@@YAXPAUlua_State@@PATGCObject@@E@Z)",
+        "_stack_init": "mapped row 00623b50"
+      }
+    },
+    {
+      "row": "row 00623d80",
+      "block": "lua-lstate",
+      "recipe": "lua-5.1.1",
+      "file": "lstate.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_callallgcTM",
+      "evidence_name": "?callallgcTM@@YAXPAUlua_State@@PAX@Z",
+      "size": 12,
+      "masked_equivalents": [],
+      "targets": {
+        "_luaC_callGCTM": "Lua row 0065bfc0 (evidence name ?luaC_callGCTM@@YAXPAUlua_State@@@Z)"
+      }
+    },
+    {
+      "row": "row 00623f40",
+      "block": "lua-lstate",
+      "recipe": "lua-5.1.2-rbx",
+      "file": "lstate.c",
+      "flags": "/O2 /GS- /MD",
+      "symbol": "_lua_newstate",
+      "evidence_name": "",
+      "size": 319,
+      "masked_equivalents": [],
+      "targets": {
+        "_f_luaopen": "mapped row 00623bd0",
+        "_luaD_rawrunprotected": "Lua row 00621920 (evidence name ?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z)",
+        "_close_state": "mapped row 00623c50",
+        "_rbx_luai_userstateopen": "in-range Lua row 00623ec0 (RobloxExtraSpace::construct(L, NULL) emitted out of line in lstate.c (luai_userstateopen: L-0xc, threadCount.reset(new int(1)) via shared_ptr<int>::reset 00612de0; only caller lua_newstate))"
+      }
+    }
+  ],
+  "library_rows_modified": [
+    "row 00621870 (17 B): lua_exception::what (vtable 008447cc slot 1): lua_tolstring(L, -1, NULL) of the thrown state",
+    "row 00621890 (98 B): lua_exception::~lua_exception (stores vtable 008447cc; if the +0x14 flag is clear, clears +8 of the +0x10 object and lua_settop(L, -2))",
+    "row 00621900 (30 B): lua_exception scalar deleting destructor (vtable 008447cc slot 0)",
+    "row 00621920 (69 B): luaD_rawrunprotected with a C++ try block (EH frame; catch funclets 00621965 .. 006219a4) [evidence name ?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z]",
+    "row 00621965 (27 B): luaD_rawrunprotected catch funclet (sets the exception +0x14 handled flag, status -1 if 0)",
+    "row 00621980 (36 B): luaD_rawrunprotected catch funclet (luaG_runerror(L, e.what()) through vtable slot 1)",
+    "row 006219a4 (27 B): luaD_rawrunprotected catch funclet (sets the +0x14 handled flag, status -1 if 0)",
+    "row 006219bf (29 B): luaD_rawrunprotected tail (restores L->errorJmp, returns status)",
+    "row 00621c60 (106 B): ldo.c adjust_varargs kept out of line with a register-argument convention (only caller luaD_precall)",
+    "row 00622050 (115 B): luaD_throw: throws lua_exception (vtable 008447cc) through _CxxThrowException [evidence name ?luaD_throw@@YAXPAUlua_State@@H@Z]",
+    "row 006220d0 (47 B): lua_exception copy constructor (stores vtable 008447cc, takes ownership of the handled flag)",
+    "row 00622140 (445 B): luaD_precall calling the out-of-line adjust_varargs 00621c60 [evidence name ?luaD_precall@@YAHPAUlua_State@@PAUlua_TValue@@H@Z]",
+    "row 00622400 (126 B): lua_resume with the RobloxExtraSpace userstateresume hook [evidence name ?lua_resume@@YAHPAUlua_State@@H@Z]",
+    "row 006226d0 (164 B): luaO_str2d: not reproduced by any tried upstream 5.1.x file [evidence name ?luaO_str2d@@YAHPBDPAN@Z]",
+    "row 006227d0 (743 B): luaO_pushvfstring: not reproduced by any tried upstream 5.1.x file [evidence name ?luaO_pushvfstring@@YAPBDPAUlua_State@@PBDPAD@Z]",
+    "row 00622ae0 (325 B): luaO_chunkid: not reproduced by any tried upstream 5.1.x file [evidence name ?luaO_chunkid@@YAXPADPBDI@Z]",
+    "row 00623950 (165 B): lua_getinfo: not reproduced by any tried upstream 5.1.x file [evidence name ?lua_getinfo@@YAHPAUlua_State@@PBDPAUlua_Debug@@@Z]",
+    "row 00623d90 (146 B): luaE_freethread with the RobloxExtraSpace userstatefree hook [evidence name ?luaE_freethread@@YAXPAUlua_State@@0@Z]",
+    "row 00623e30 (142 B): lua_close with the RobloxExtraSpace userstateclose hook [evidence name ?lua_close@@YAXPAUlua_State@@@Z]",
+    "row 00623ec0 (128 B): RobloxExtraSpace::construct(L, NULL) emitted out of line in lstate.c (luai_userstateopen: L-0xc, threadCount.reset(new int(1)) via shared_ptr<int>::reset 00612de0; only caller lua_newstate)"
+  ],
+  "lua_exception_vtable": "vtable 008447cc: RTTI .?AVlua_exception@@ (bases lua_exception, std::exception); slot 0 scalar deleting dtor row 00621900, slot 1 what row 00621870",
+  "range_functions": 116,
+  "range_bytes": 15337,
+  "range_rows_counted_by_other_receipts": [
+    "00620190 counted by lua-bridge2008-working.json",
+    "00620210 counted by lua-bridge2008-working.json",
+    "006202a0 counted by lua-bridge2008-working.json",
+    "00620310 counted by lua-bridge2008-working.json",
+    "006203a0 counted by lua-bridge2008-working.json",
+    "00620470 counted by lua-bridge2008-working.json",
+    "00620590 counted by lua-bridge2008-working.json",
+    "00620620 counted by lua-bridge2008-working.json",
+    "00620760 counted by lua-bridge2008-working.json",
+    "00620970 counted by lua-bridge2008-working.json",
+    "00620990 counted by lua-bridge2008-working.json",
+    "006209d0 counted by lua-bridge2008-working.json",
+    "00620a60 counted by lua-bridge2008-working.json",
+    "00620a80 counted by lua-bridge2008-working.json",
+    "00620b10 counted by lua-bridge2008-working.json",
+    "00620ba0 counted by lua-bridge2008-working.json",
+    "00620c20 counted by lua-bridge2008-working.json",
+    "00620c80 counted by lua-bridge2008-working.json",
+    "00620cd0 counted by lua-bridge2008-working.json",
+    "00620d60 counted by lua-bridge2008-working.json",
+    "00620dc0 counted by lua-bridge2008-working.json",
+    "00620e10 counted by lua-bridge2008-working.json",
+    "00620e40 counted by lua-bridge2008-working.json",
+    "00620e80 counted by lua-bridge2008-working.json",
+    "00620f10 counted by lua-bridge2008-working.json",
+    "00620f40 counted by lua-bridge2008-working.json",
+    "00621050 counted by lua-bridge2008-working.json",
+    "00621330 counted by lua-bridge2008-working.json",
+    "00621390 counted by lua-bridge2008-working.json",
+    "00621440 counted by lua-bridge2008-working.json",
+    "006214e0 counted by lua-bridge2008-working.json",
+    "00621590 counted by lua-bridge2008-working.json",
+    "006217d0 counted by lua-bridge2008-working.json"
+  ],
+  "bounds_evidence": "No new extent evidence. The piece rows tile the whole extents lua-bridge2008 already records as BOUNDS evidence (00620310 134 B, 006203a0 193 B, 006209d0 131 B, 00620f40 256 B, 00621050 723 B); luaD_rawrunprotected row 00621920 with its catch funclets and tail tiles 00621920..006219db, not reproduced (library).",
+  "proposals": [
+    "Owner of lua-bridge2008 (record_native_lua_bridge2008.py): its left note says the folded _Allocate row 00620910 is counted by scorehud-leaderboard-working.json, but that receipt lists it only in exact_support_rows (not exact_function_rows), so no receipt counts it. Either correct the note, or, if maintainers accept an ICF-folded std instance whose first COMDAT sits in the YieldingThreads unit (callers 00620f40 / 00621050 here, 00652e90 and 00697510 elsewhere), count it once in lua-bridge2008, which already emits it as _Allocate<WaitingThread> with bytes and targets verified."
+  ],
+  "exact_function_rows": [],
+  "scope": "Inactive map receipt. No native source, no header, no counted row, no active build, swap or credit."
+}

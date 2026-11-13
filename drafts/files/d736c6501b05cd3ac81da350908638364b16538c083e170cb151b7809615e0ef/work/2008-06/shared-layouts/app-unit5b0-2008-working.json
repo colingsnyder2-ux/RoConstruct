@@ -1,0 +1,511 @@
+{
+  "class": "RBX Accoutrement unit of the application range 005b0000..005bc000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022, /fp:fast",
+  "flags": {
+    "accoutrement": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5b0-2008/NativeAppUnit5B0_2008_accoutrement.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5B0_2008Accoutrement.cpp"
+    ],
+    "owner": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5b0-2008/NativeAppUnit5B0_2008_owner_accoutrement.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Accoutrement.cpp"
+    ],
+    "pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5b0-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_APPUNIT5B0_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5b0-2008/NativeAppUnit5B0_2008_accoutrement_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5B0_2008Accoutrement.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5B0_2008Accoutrement.cpp": "66a8223499fb594b8cb826d46a3fb66a975ed46add95f31834e585f292690bbc",
+    "rebuild/2008-06/native-classes/Accoutrement.cpp": "04a5eadad7d264c3eb7c4de8b5347f5e5c458f098645c1ef2bda3b2c5164f45c",
+    "rebuild/2008-06/tests/record_native_app_unit5b0_2008.py": "92823993421b3d8d17ab871e3a53b21a42565e635a9cab1bc8fc8d283733a326",
+    "rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h": "5be50e8dcbc219a0e437bc067ca34c3a5bee63eb3d6667dfe8182ee026ac0e05"
+  },
+  "objects": {
+    "accoutrement": "3902ee7ef44fdda59af6ce159c91c0ec5f3326583de1b0165f840b807ee5f3da",
+    "owner": "052784c4d73391389e1e674ab606f5283585d4ed4d85683efbbbb6e7d7e84800",
+    "pending": "a9e89023717f91c1855cb9b557443f39f64c6118d0a20d8c2dce14eece717a02"
+  },
+  "pending_header_copy": "rebuild/2008-06/out/native-layouts/app-unit5b0-2008/pending/v8datamodel/Accoutrement.h",
+  "unit_map": {
+    "script-context tail ..005b071f": "script/ScriptContext.cpp, continued from 005a8590 (app-unit5a0 unit map): rows from 005b03b0, startPendingScripts 005b0590, onChangedScriptEnabled 005b06a0, addScript 005b06c0, onEvent(RunService, Heartbeat) 005b0710. Owners: script/ScriptContext.h (ScriptContextLifetime.cpp) and the LuaBridge2008 lease. Not built here.",
+    "accoutrement 005b0820..005b2ebf": "v8datamodel/Accoutrement.cpp. Evidence: RTTI .?AVAccoutrement@RBX@@ / .?AVHat@RBX@@ (vtables 00834bf4 / 00835094), Accoutrement() 005b2230 new(0x1d8) (Creator 00432520), Hat() 005b2d10, ~Accoutrement 005b0da0, the FactoryProduct / DescribedCreatable chains and classDescriptors 005b1950 / 005b19c0 (\"Accoutrement\", \"Hat\"), the six PropDescriptor constructors 005b1a30..005b1bd0 and GetSetImpl getters (static initializers 007f4fb0..007f5190, category \"Appearance\"), readProperty 005b0840 (\"BackendAccoutrementState\"), getHandleConst 005b08a0 (\"Handle\"), the state machine (updateDesiredState 005b10a0, setDesiredState 005b2510 with jump tables 005b25c8 / 005b25d8, connectTouchEvent 005b1d70, upTo_InCharacter 005b1e50, upTo_Equipped 005b1830 (\"HeadWeld\"), downFrom_Equipped 005b1fc0), the boost::function managers / mf1 invokers / slot constructors of its three event binds (005b0ac0, 005b0cd0, 005b0d90, 005b1110, 005b1190, 005b1430, 005b15e0..005b17d0, 005b1ca0), write 005b1480, onAncestorChanged 005b25f0 and the setAttachment* setters. The analysed row 005b1520 covers ??_GAccoutrement 005b15c0 locally (see appearance-working.json bounds_note). Most structural rows are counted by appearance-working.json; built here: 8 counted rows (6 from AppUnit5B0_2008Accoutrement.cpp, 2 from the committed Accoutrement.cpp compiled unchanged), 3 pending-build-only rows, 1 near miss.",
+    "brick-color 005b2ec0..005b658f": "util/BrickColor.cpp: std::map<BrickColor::Number, Color4 / Color4uint8 / int / std::string> _Tree instantiations 005b2ec0..005b43a0 (\"map/set<T> too long\", \"invalid map/set<T> iterator\"), BrickMap::insert 005b4410, ~BrickMap 005b4570, BrickMap() 005b4630 (5601 B: \"White\", \"Grey\", \"Light yellow\" ...), BrickMap::singleton 005b5c20, generatePaletteMap 005b4130 / 005b42f0, BrickColor colorPalette / getClosestPaletteIndex / parse / random / closest(Color4) / closest(Color3) / BrickColor(int) / name / color4 / color3 005b5c80..005b62e0 and helpers to 005b6580. The map instantiations are Roblox-instantiated STL templates referenced only by BrickMap. No committed native BrickColor header (the donor util/BrickColor.h is the only declaration); not built here.",
+    "player inline / sound 005b6590..005bbfff": "Player::getCharacter 005b6590 (header inline, counted by network-player-working.json) and 005b65a0, then util/Sound.cpp / SoundService: FMOD_ErrorString table 005b65b0 (\"Tried to call lock a second time\", \"Neither NTSCSI nor ASPI\"), StringConverter<ContentId> 005b6940, the \"FMOD %d: %s\" checks 005b6fe0 / 005b87a0, Sound / SoundService value conversions (sound-value-* receipts), the FMOD system init 005ba060 (\"Incorrect FMODEX DLL version\", \"No active sound driver detected\"), the ReverbType enum 005bb330 (\"NoReverb\", \"GenericReverb\"), classDescriptors 005bb7f0 / 005bb860 / 005bb8d0 (\"SoundService\", \"Sound\", \"StockSound\") and the shared_count / thunk rows, continuing past 005bc000. Owner: the native sound recoveries (util/Sound.h, native-classes/Sound*.cpp). FMOD itself is a DLL import (no library code here). Not built here."
+  },
+  "unit_rows": {
+    "script-context tail": {
+      "rows": 6,
+      "span": "005b03b0..005b0710"
+    },
+    "accoutrement": {
+      "rows": 94,
+      "span": "005b0820..005b2ea0"
+    },
+    "brick-color": {
+      "rows": 52,
+      "span": "005b2ec0..005b6530"
+    },
+    "player inline / sound": {
+      "rows": 167,
+      "span": "005b6590..005bbfb0"
+    }
+  },
+  "range_rows_total": 319,
+  "range_rows_counted_by_other_receipts": [
+    "005b0820 counted by appearance-working.json",
+    "005b0830 counted by appearance-working.json",
+    "005b0920 counted by appearance-working.json",
+    "005b0940 counted by appearance-working.json",
+    "005b0970 counted by appearance-working.json",
+    "005b09c0 counted by appearance-working.json",
+    "005b09e0 counted by appearance-working.json",
+    "005b0a00 counted by appearance-working.json",
+    "005b0a60 counted by appearance-working.json",
+    "005b0b20 counted by appearance-working.json",
+    "005b0b30 counted by appearance-working.json",
+    "005b0b40 counted by appearance-working.json",
+    "005b0b50 counted by appearance-working.json",
+    "005b0b60 counted by appearance-working.json",
+    "005b0bd0 counted by appearance-working.json",
+    "005b0c30 counted by appearance-working.json, humanoid2008-working.json",
+    "005b0c90 counted by appearance-working.json, humanoid2008-working.json",
+    "005b0da0 counted by appearance-working.json",
+    "005b0ef0 counted by appearance-working.json",
+    "005b0f00 counted by appearance-working.json",
+    "005b0f10 counted by appearance-working.json",
+    "005b0f20 counted by appearance-working.json",
+    "005b0f30 counted by appearance-working.json",
+    "005b0f40 counted by appearance-working.json",
+    "005b0f50 counted by appearance-working.json",
+    "005b0f60 counted by appearance-working.json",
+    "005b0f70 counted by appearance-working.json",
+    "005b0f80 counted by appearance-working.json",
+    "005b0f90 counted by appearance-working.json",
+    "005b1230 counted by appearance-working.json",
+    "005b12f0 counted by appearance-working.json",
+    "005b1300 counted by appearance-working.json",
+    "005b1310 counted by appearance-working.json",
+    "005b1370 counted by appearance-working.json",
+    "005b13d0 counted by appearance-working.json",
+    "005b1470 counted by appearance-working.json",
+    "005b16e0 counted by appearance-working.json",
+    "005b1700 counted by appearance-working.json",
+    "005b1950 counted by appearance-working.json",
+    "005b19c0 counted by appearance-working.json",
+    "005b1a30 counted by appearance-working.json",
+    "005b1b00 counted by appearance-working.json",
+    "005b1bd0 counted by appearance-working.json",
+    "005b2140 counted by appearance-working.json",
+    "005b21e0 counted by appearance-working.json",
+    "005b21f0 counted by appearance-working.json",
+    "005b2200 counted by appearance-working.json",
+    "005b2210 counted by appearance-working.json",
+    "005b2230 counted by appearance-working.json",
+    "005b23f0 counted by appearance-working.json",
+    "005b24e0 counted by appearance-working.json",
+    "005b2700 counted by appearance-working.json",
+    "005b2bb0 counted by appearance-working.json",
+    "005b2cd0 counted by appearance-working.json",
+    "005b2ce0 counted by appearance-working.json",
+    "005b2cf0 counted by appearance-working.json",
+    "005b2d00 counted by appearance-working.json",
+    "005b2d10 counted by appearance-working.json",
+    "005b2e60 counted by appearance-working.json",
+    "005b2e70 counted by appearance-working.json",
+    "005b2e80 counted by appearance-working.json",
+    "005b2e90 counted by appearance-working.json",
+    "005b2ea0 counted by appearance-working.json",
+    "005b2ec0 counted by viewnew-part-mesh-working.json",
+    "005b3020 counted by viewnew-part-mesh-working.json",
+    "005b6590 counted by network-player-working.json",
+    "005b6ae0 counted by viewnew-brick-build-working.json",
+    "005b73c0 counted by special-shape-working.json",
+    "005b7480 counted by creatable-shared-count-working.json",
+    "005b7510 counted by creatable-shared-count-working.json",
+    "005b75a0 counted by creatable-shared-count-working.json",
+    "005b78a0 counted by viewnew-brick-build-working.json",
+    "005b7a80 counted by sound-value-generic-id-integrated.json",
+    "005b8090 counted by sound-value-convert-id-integrated.json",
+    "005b86b0 counted by sound-value-get-integrated.json"
+  ],
+  "rows": {
+    "accoutrement": [
+      {
+        "address": "005b08a0",
+        "symbol": "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ",
+        "size": 123,
+        "target_size": 123,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_06BNNOMDLO@Handle?$AA@": "0x834a28 (string 'Handle')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI type .?AVPartInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x557950 (external (evidence name))",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ"
+        ]
+      },
+      {
+        "address": "005b0b70",
+        "symbol": "?getLocation@Accoutrement@RBX@@MBE?BVCoordinateFrame@G3D@@XZ",
+        "size": 88,
+        "target_size": 88,
+        "exact": true,
+        "verified_targets": {
+          "?getHandleConst@Accoutrement@RBX@@QBEPBVPartInstance@2@XZ": "0x5b08a0 (own row)",
+          "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005b2670",
+        "symbol": "?setAttachmentPoint@Accoutrement@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 134,
+        "target_size": 134,
+        "exact": true,
+        "verified_targets": {
+          "??9CoordinateFrame@G3D@@QBE_NABV01@@Z": "0x4765e0 (support body exact at the bound address)",
+          "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@SAPAVWorkspace@1@PBVInstance@1@@Z": "0x491e50 (external)",
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address)",
+          "_prop_AttachmentPoint": "0x976d20 (static data (one address per symbol))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+          "?setC1@AutoJoint@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x5e44c0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005b2750",
+        "symbol": "?setAttachmentForward@Accoutrement@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 376,
+        "target_size": 376,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector3@G3D@@QAEMM@Z": "0x518470 (external)",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)",
+          "?setAttachmentPoint@Accoutrement@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x5b2670 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005b28d0",
+        "symbol": "?setAttachmentUp@Accoutrement@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 366,
+        "target_size": 366,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector3@G3D@@QAEMM@Z": "0x518470 (external)",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)",
+          "?setAttachmentPoint@Accoutrement@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x5b2670 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005b2a40",
+        "symbol": "?setAttachmentRight@Accoutrement@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 364,
+        "target_size": 364,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector3@G3D@@QAEMM@Z": "0x518470 (external)",
+          "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z": "0x513260 (external)",
+          "?setAttachmentPoint@Accoutrement@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x5b2670 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "owner": [
+      {
+        "address": "005b0fa0",
+        "symbol": "?onCameraNear@Accoutrement@RBX@@UAEXM@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVICameraSubject@RBX@@@8": "0x948304 (RTTI type .?AVICameraSubject@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005b1020",
+        "symbol": "?render3dSelect@Accoutrement@RBX@@MAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "size": 115,
+        "target_size": 115,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVIRenderable@RBX@@@8": "0x939f70 (RTTI type .?AVIRenderable@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_rows": {
+    "??9CoordinateFrame@G3D@@QBE_NABV01@@Z": "0x4765e0 (support body exact at the bound address, not counted here)",
+    "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": "0x576940 (support body exact at the bound address, not counted here)"
+  },
+  "vtables_current_headers": {
+    "??_7Accoutrement@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x834be8",
+      "subobject_offset": "0x10",
+      "slots": 2,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x834be0",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x834bf4",
+      "subobject_offset": "0x0",
+      "slots": 16,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x834b88",
+      "subobject_offset": "0xa4",
+      "slots": 3,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x834bc8",
+      "subobject_offset": "0x24",
+      "slots": 3,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x834bb8",
+      "subobject_offset": "0x44",
+      "slots": 3,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x834ba8",
+      "subobject_offset": "0x64",
+      "slots": 3,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x834b98",
+      "subobject_offset": "0x84",
+      "slots": 3,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x834b78",
+      "subobject_offset": "0xc4",
+      "slots": 3,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6BDebugable@1@@": {
+      "address": "0x834bd8",
+      "subobject_offset": "0x20",
+      "slots": 1,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6BICameraSubject@1@@": {
+      "address": "0x834b34",
+      "subobject_offset": "0x1d0",
+      "slots": 6,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6BIEquipable@1@@": {
+      "address": "0x834b70",
+      "subobject_offset": "0x130",
+      "slots": 1,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6BILocation@1@@": {
+      "address": "0x834b50",
+      "subobject_offset": "0x1c8",
+      "slots": 1,
+      "checked_bound_slots": []
+    },
+    "??_7Accoutrement@RBX@@6BIRenderable@1@@": {
+      "address": "0x834b58",
+      "subobject_offset": "0x140",
+      "slots": 5,
+      "checked_bound_slots": [
+        "4 ?render3dSelect@Accoutrement@RBX@@MAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5b1020"
+      ]
+    }
+  },
+  "vtordisp_thunks_checked": [
+    "005b1470 ?onCameraNear@Accoutrement@RBX@@$4PPPPPPPM@A@AEXM@Z: exact, jumps to a row counted here (counted by appearance-working.json, support only)",
+    "005b0f90 ?getLocation@Accoutrement@RBX@@$2PPPPPPPM@A@BE?BVCoordinateFrame@G3D@@: exact, jumps to a row counted here (counted by appearance-working.json, support only)"
+  ],
+  "not_exact": [
+    "005b0840 ?readProperty@Accoutrement@RBX@@MAEXPBVXmlElement@@AAVIRefer: 96/96 B, not counted (see rejected)"
+  ],
+  "pending_build_only": [
+    "005b1480 ?write@Accoutrement@RBX@@UAEPAVXmlElement@@XZ: exact in the pending build (exact=false, not counted)",
+    "005b10a0 ?updateDesiredState@Accoutrement@RBX@@IAEXXZ: exact in the pending build (exact=false, not counted)",
+    "005b25f0 ?onAncestorChanged@Accoutrement@RBX@@MAEXABUAncestorChanged@2@@Z: exact in the pending build (exact=false, not counted)"
+  ],
+  "not_attempted": {
+    "setDesiredState 005b2510 and its transitions 005b1830 / 005b1d70 / 005b1e50 / 005b1fc0": "need the 2008 state-machine members, the HeadWeld buildWeld path and the three boost::signals binds (proposal; only updateDesiredState / onAncestorChanged / write were built in the pending build)",
+    "boost::function / mf1 / slot helpers of the event binds (005b0ac0, 005b0cd0, 005b0d90, 005b1110, 005b1190, 005b1430, 005b15e0..005b17d0, 005b1ca0)": "emitted only with the onEvent_* members (not declared)",
+    "BrickColor unit": "no committed native BrickColor header; would need a new layout header (not this pass)"
+  },
+  "rejected": {
+    "readProperty 005b0840 (donor body: nested ifs, name->toString() == \"BackendAccoutrementState\")": "96/96 B, register allocation only: edx/eax swapped for the string pointer and the binder argument",
+    "readProperty with one combined condition (getValue && ==)": "same 96 B register swap",
+    "readProperty with negated condition and a single Instance::readProperty call": "same 96 B register swap",
+    "readProperty with a `const std::string&` local for toString()": "same 96 B register swap",
+    "the unit without /fp:fast": "setAttachmentForward 391/376 B, setAttachmentUp / Right 344 B",
+    "setAttachmentUp: donor-shape locals (oldX / oldZ, z = oldX.cross(y), x = y.cross(z))": "368/366 B (x87 order)",
+    "setAttachmentUp: reuse x for the old column (x = col0; z = x.cross(y); x = y.cross(z))": "376/366 B",
+    "setAttachmentUp: z = -y.cross(oldX)": "374/366 B",
+    "setAttachmentUp: x = -z.cross(y)": "380/366 B",
+    "setAttachmentUp: copy of the old column only (oldX = col0) with copies in the second cross": "368/366 B",
+    "setAttachmentUp: copy of y only in the first cross, copies in the second": "364/366 B",
+    "setAttachmentUp: copies in the first cross only": "368/366 B and 372/366 B (order of the two copies)",
+    "setAttachmentUp: copies in the second cross only": "364/366 B",
+    "setAttachmentRight with the donor setAttachmentForward shape (no copies)": "370/364 B",
+    "updateDesiredState (pending) with one combined inline computeDesiredState (?: on getTorso)": "98/100 B: the state lands in esi instead of being returned through eax; the two-level inline returns match"
+  },
+  "proposals": {
+    "v8datamodel/Accoutrement.h (appearance owner)": "Add `static bool writeUnlocked;` (00976cad: write 005b1480 tests it, CMainFrame 0043232d stores it) and the state-machine members `void updateDesiredState();` (005b10a0), `void setDesiredState(AccoutrementState, const ServiceProvider*);` (005b2510) and the inline `computeDesiredState()` / `computeDesiredState(Instance*)` (inlined into 005b10a0: no handle -> NOTHING, not in workspace -> HAS_HANDLE, no character -> IN_WORKSPACE, torso ? EQUIPPED : NOTHING). With these declarations write 005b1480, updateDesiredState 005b10a0 and onAncestorChanged 005b25f0 are exact (pending build, generated header copy under out/app-unit5b0-2008/pending). No field or vtable change. Names are analog (donor) names.",
+    "appearance-working.json (FYI to the appearance owner)": "onCameraNear 005b0fa0 and render3dSelect 005b1020 in the committed native-classes/Accoutrement.cpp are now exact with every target verified (the \"register allocation differs\" note in that receipt is stale against the current headers). This receipt counts them once; the appearance receipt does not."
+  },
+  "exact_function_rows": [
+    "005b08a0",
+    "005b0b70",
+    "005b0fa0",
+    "005b1020",
+    "005b2670",
+    "005b2750",
+    "005b28d0",
+    "005b2a40"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

@@ -1,0 +1,736 @@
+{
+  "class": "RBX::Render::EffectSettings / DepthBlur units of the application range 00504000..00508000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags, /fp:fast",
+  "flags": {
+    "effects": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit504/NativeAppUnit504_effects.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit504EffectSettings.cpp"
+    ],
+    "depthblur": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit504/NativeAppUnit504_depthblur.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit504DepthBlur.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit504.py": "15075342ee7187722a5f8031334d81dd4b4d88a499579ee6005391dec00e07cd",
+    "rebuild/2008-06/native-classes/AppUnit504EffectSettings.cpp": "653f1c4e2602520041cae53bfe54beb4ff1ffbe821bed7c0d41a38a3f20d683c",
+    "rebuild/2008-06/native-classes/AppUnit504DepthBlur.cpp": "77ae9870e329f43317d9f1829e919b941d1c43ea0a70a67a38848d8a7d073ca8",
+    "rebuild/2008-06/native-headers/AppUnit504/RenderEffects.h": "bcb3112bd5f1d5b40eada39b3072ec71b3853a14a01f962f9101d27c0e75d472"
+  },
+  "objects": {
+    "effects": "60c4efe02e837cf638b576fe1869d657a72af2c5a464a213d4e777abc3991098",
+    "depthblur": "56eeb13996aec41829376812f3c0eacea94069689ed90edc88cf586b9bb24c77"
+  },
+  "layout": {
+    "DepthBlur": "0xc: shader +0x0, depth +0x4, color +0x8 (new 0xc at 00506c26; ctor 00507740 zeroes +0x0 / +0x4 / +0x8; implicit dtor 00505b90 releases +0x8 / +0x4 / +0x0)",
+    "EffectSettings": "0x14: bools +0x0..+0x6, floats +0x8 / +0xc / +0x10 (update 00506dd0 stores; RenderScene +0x2d4 member, render-scene layout probe effectSettingsSize 0x14)",
+    "ToneMap (G3D)": "new 0x18 at 00506ba6 before ToneMap() 007b29c0 (matches the G3D 6.09 header layout)"
+  },
+  "unit_map": {
+    "render-scene 00504000..005058ef": "RenderLib RenderScene.cpp / RenderSurface.cpp (continues the 00500000 range: setThrottle 00502d30, setLighting 00502e70, presetLighting 00503cc0, dtor 00503a60). Boundary evidence: Render::RenderScene vtable 00827454 slot 5 render 00504bf0; RenderSceneBase ctor 00504fd0 (vtable 00827424) and RenderScene ctor 00505040 (new 0x500 at 00551820); the RenderSurface sort procs 005051e0 / 00505220 / 00505240 and the std::sort<RenderSurface**> helpers 00505270..00505780 with the sortBy* wrappers 00505860..005058c0. Rows counted by render-scene; render and its three helpers are not built (see not_built_reasons).",
+    "effect-settings 005058f0..00507178": "RenderLib EffectSettings.cpp. Boundary evidence: brighter 005058f0 (address pushed by update 00506f5d / 00506fd5) opens the object; the std::sort<GLight*, brighter> helpers 00505940..00506c80 are referenced only by update; getToneMap 00506b80 / getDepthBlur 00506c00 own the static auto_ptrs 009728d8 / 009728e0 (atexit destructors 007fc5b0 / 007fc5d0 call the implicit ~ToneMap 00505ad0 / ~DepthBlur 00505b90 COMDATs of this object); update 00506dd0 (ret 0x20) is called with this = RenderScene +0x2d4 by setThrottle 00502df4 / setLighting 00502ec8. Built here: native-classes/AppUnit504EffectSettings.cpp.",
+    "depth-blur 00507180..0050783f": "RenderLib DepthBlur.cpp. Boundary evidence: strings \"Depth Buffer\" / \"Color Buffer\" in allocateTextures 005071d0 (evidence names for allocateTextures, apply 00507420 and DepthBlur() 00507740); the G3D::Shader vtable 008274d4 and Table<std::string, Arg> vtable 008274a4 stored by the inline Shader ctor 005074f0; G3D System.cpp starts at 00507840. Built here: native-classes/AppUnit504DepthBlur.cpp.",
+    "g3d-system 00507840..": "G3D 6.09 System.cpp / TextOutput library code; not recovered.",
+    "excluded / library code": "no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row. G3D header inlines and compiler-generated members of G3D classes in the two built objects are verified support rows (LIBRARY_SUPPORT), not counted. The std::sort<GLight*, brighter> instances are Roblox-instantiated templates referenced only by update; they are counted.",
+    "counted here": "the RBX rows and Roblox-instantiated sort templates listed in exact_function_rows.",
+    "bounds": "no extent problem found in the rows built here (every proven row is exact at its analysed size)."
+  },
+  "range_functions": 63,
+  "range_rows_counted_by_other_receipts": [
+    "00504fd0 counted by render-scene-working.json",
+    "00505040 counted by render-scene-working.json",
+    "005051e0 counted by render-scene-working.json",
+    "00505220 counted by render-scene-working.json",
+    "00505240 counted by render-scene-working.json",
+    "00505270 counted by render-scene-working.json",
+    "005052e0 counted by render-scene-working.json",
+    "00505340 counted by render-scene-working.json",
+    "005053b0 counted by render-scene-working.json",
+    "00505460 counted by render-scene-working.json",
+    "005054a0 counted by render-scene-working.json",
+    "00505570 counted by render-scene-working.json",
+    "00505730 counted by render-scene-working.json",
+    "00505780 counted by render-scene-working.json",
+    "00505860 counted by render-scene-working.json",
+    "00505890 counted by render-scene-working.json",
+    "005058c0 counted by render-scene-working.json"
+  ],
+  "range_rows_not_built": [
+    "00504290 not built",
+    "00504b00 not built",
+    "00504b60 not built",
+    "00504bf0 not built",
+    "00507840 not built",
+    "005078b0 not built",
+    "00507940 not built",
+    "00507990 not built",
+    "00507a00 not built",
+    "00507a50 not built",
+    "00507aa0 not built",
+    "00507c00 not built",
+    "00507d00 not built",
+    "00507d20 not built",
+    "00507d40 not built",
+    "00507e80 not built",
+    "00507fd0 not built"
+  ],
+  "not_built_reasons": [
+    "00504290 / 00504b00 / 00504b60: Render::RenderScene render helpers (callers: render 00504bf0 calls 00504b60, which calls 00504290 / 00504b00 and the sortBy* rows 00505860 / 00505890 / 005058c0): private RenderScene members not declared in RenderLib/RenderSceneRender2008.h (render-scene owner; proposal)",
+    "00504bf0: Render::RenderScene::render (vtable 00827454 slot 5): blocked in the render-scene receipt (the G3D draw path: RenderDevice state, shadow volumes, DepthBlur::apply / EffectSettings accessors)",
+    "00507840..00507fd0: G3D 6.09 library code (System.cpp: getStandardProcessorExtensions 00507840, memcpyMMX 005078b0, memfill 00507940, initTime 00507990, BufferPool flushPool / malloc / free 00507a00..00507c00, System::free 00507d00 / alignedFree 00507d20; TextOutput var helpers 00507d40 / 00507e80 / 00507fd0): library, never recovered here"
+  ],
+  "vtables": {
+    "??_7?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@6B@": "0x8274a4 slots: slot 0 ??_E?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$alloca -> 0x5074c0 (own row ??_G?$Table@V?$basic_string@DU?$char_tra (??_E resolved to ??_G))",
+    "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 slots: slot 0 ??_EReferenceCountedObject@G3D@@UAEPAXI@Z -> 0x4729b0 (external)",
+    "??_7Shader@G3D@@6B@": "0x8274d4 slots: slot 0 ??_EShader@G3D@@UAEPAXI@Z -> 0x507720 (own row ??_GShader@G3D@@UAEPAXI@Z (??_E resolved to ??_G)); slot 1 ?setPreserveState@Shader@G3D@@UAEX_N@Z -> 0x5075d0 (own row); slot 2 ?preserveState@Shader@G3D@@UBE_NXZ -> 0x5075e0 (own row); slot 3 ?ok@Shader@G3D@@UBE_NXZ -> 0x485a20 (external); slot 4 ?beforePrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z -> 0x487c60 (external); slot 5 ?afterPrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z -> 0x485460 (external); slot 6 ?messages@Shader@G3D@@UBEABV?$basic_string@DU?$char_traits@D -> 0x485a30 (external)"
+  },
+  "rows": [
+    {
+      "address": "005058f0",
+      "exact": true,
+      "symbol": "?brighter@Render@RBX@@YA_NABVGLight@G3D@@0@Z",
+      "folded_symbols": [],
+      "identity": "root: its address is pushed as the std::sort predicate by update 00506f5d / 00506fd5",
+      "object": "effects",
+      "size": 80,
+      "target_size": 80,
+      "verified_targets": {
+        "__real@3eaaaaab": "0x826e68 (constant 3eaaaaab)",
+        "__real@3ff3333333333333": "0x827480 (constant 3ff3333333333333)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00505940",
+      "exact": true,
+      "symbol": "??$_Push_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00505d20",
+      "object": "effects",
+      "size": 222,
+      "target_size": 222,
+      "verified_targets": {
+        "??4GLight@G3D@@QAEAAV01@ABV01@@Z": "0x4769a0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00505a20",
+      "exact": true,
+      "symbol": "??$_Copy_backward_opt@PAVGLight@G3D@@PAV12@Uforward_iterator_tag@std@@@std@@YAPAVGLight@G3D@@PAV12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506890",
+      "object": "effects",
+      "size": 164,
+      "target_size": 164,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00505b90",
+      "exact": true,
+      "symbol": "??1DepthBlur@Render@RBX@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 007fc5d0",
+      "object": "effects",
+      "size": 211,
+      "target_size": 211,
+      "verified_targets": {
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??1DepthBlur@Render@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00505c70",
+      "exact": true,
+      "symbol": "??$_Med3@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@00P6A_NABV12@1@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00505e30",
+      "object": "effects",
+      "size": 166,
+      "target_size": 166,
+      "verified_targets": {
+        "??0GLight@G3D@@QAE@ABV01@@Z": "0x477c50 (external (evidence name))",
+        "??4GLight@G3D@@QAEAAV01@ABV01@@Z": "0x4769a0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00505d20",
+      "exact": true,
+      "symbol": "??$_Adjust_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00505ee0",
+      "object": "effects",
+      "size": 260,
+      "target_size": 260,
+      "verified_targets": {
+        "??4GLight@G3D@@QAEAAV01@ABV01@@Z": "0x4769a0 (external (evidence name))",
+        "??0GLight@G3D@@QAE@ABV01@@Z": "0x477c50 (external (evidence name))",
+        "??$_Push_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z": "0x505940 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00505e30",
+      "exact": true,
+      "symbol": "??$_Median@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@00P6A_NABV12@1@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00505ff0",
+      "object": "effects",
+      "size": 171,
+      "target_size": 171,
+      "verified_targets": {
+        "??$_Med3@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@00P6A_NABV12@1@Z@Z": "0x505c70 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00505ee0",
+      "exact": true,
+      "symbol": "??$_Make_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@ZPAH0@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506c80",
+      "object": "effects",
+      "size": 92,
+      "target_size": 92,
+      "verified_targets": {
+        "??0GLight@G3D@@QAE@ABV01@@Z": "0x477c50 (external (evidence name))",
+        "??$_Adjust_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z": "0x505d20 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00505ff0",
+      "exact": true,
+      "symbol": "??$_Unguarded_partition@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YA?AU?$pair@PAVGLight@G3D@@PAV12@@0@PAVGLight@G3D@@0P6A_NABV23@1@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506c80",
+      "object": "effects",
+      "size": 2197,
+      "target_size": 2197,
+      "verified_targets": {
+        "??$_Median@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@00P6A_NABV12@1@Z@Z": "0x505e30 (own row)",
+        "??0GLight@G3D@@QAE@ABV01@@Z": "0x477c50 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00506890",
+      "exact": true,
+      "symbol": "??$_Insertion_sort1@PAVGLight@G3D@@P6A_NABV12@0@ZV12@@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@Z0@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506c80",
+      "object": "effects",
+      "size": 464,
+      "target_size": 464,
+      "verified_targets": {
+        "??0GLight@G3D@@QAE@ABV01@@Z": "0x477c50 (external (evidence name))",
+        "??$_Copy_backward_opt@PAVGLight@G3D@@PAV12@Uforward_iterator_tag@std@@@std@@YAPAVGLight@G3D@@PAV12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x505a20 (own row)",
+        "??4GLight@G3D@@QAEAAV01@ABV01@@Z": "0x4769a0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00506ae0",
+      "exact": true,
+      "symbol": "??$_Sort_heap@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506c80",
+      "object": "effects",
+      "size": 146,
+      "target_size": 146,
+      "verified_targets": {
+        "??0GLight@G3D@@QAE@ABV01@@Z": "0x477c50 (external (evidence name))",
+        "??4GLight@G3D@@QAEAAV01@ABV01@@Z": "0x4769a0 (external (evidence name))",
+        "??$_Adjust_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z": "0x505d20 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00506b80",
+      "exact": true,
+      "symbol": "?getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ",
+      "folded_symbols": [],
+      "identity": "root: called by update 0050704d / 0050705f / 0050713c (ToneMap methods 007b1650 / 007b2520 / 007b1580 on the result)",
+      "object": "effects",
+      "size": 117,
+      "target_size": 117,
+      "verified_targets": {
+        "?$S1@?1??getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ@4IA": "0x9728dc (external)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0ToneMap@G3D@@QAE@XZ": "0x7b29c0 (external)",
+        "??__FtoneMap@?1??getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ@YAXXZ": "0x7fc5b0 (own row)",
+        "?toneMap@?1??getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ@4V?$auto_ptr@VToneMap@G3D@@@std@@A": "0x9728d8 (external)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ"
+      ]
+    },
+    {
+      "address": "00506c00",
+      "exact": true,
+      "symbol": "?getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@23@XZ",
+      "folded_symbols": [],
+      "identity": "root: new 0xc and the DepthBlur ctor 00507740; guard 009728e4; its atexit destructor 007fc5d0",
+      "object": "effects",
+      "size": 117,
+      "target_size": 117,
+      "verified_targets": {
+        "?$S2@?1??getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@34@XZ@4IA": "0x9728e4 (external)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0DepthBlur@Render@RBX@@QAE@XZ": "0x507740 (own row)",
+        "??__FdepthBlur@?1??getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@23@XZ@YAXXZ": "0x7fc5d0 (own row)",
+        "?depthBlur@?1??getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@34@XZ@4V?$auto_ptr@VDepthBlur@Render@RBX@@@std@@A": "0x9728e0 (external)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@23@XZ"
+      ]
+    },
+    {
+      "address": "00506c80",
+      "exact": true,
+      "symbol": "??$_Sort@PAVGLight@G3D@@HP6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0HP6A_NABV12@1@Z@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506dd0",
+      "object": "effects",
+      "size": 327,
+      "target_size": 327,
+      "verified_targets": {
+        "??$_Unguarded_partition@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YA?AU?$pair@PAVGLight@G3D@@PAV12@@0@PAVGLight@G3D@@0P6A_NABV23@1@Z@Z": "0x505ff0 (own row)",
+        "??$_Sort@PAVGLight@G3D@@HP6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0HP6A_NABV12@1@Z@Z": "0x506c80 (own row)",
+        "??$_Insertion_sort1@PAVGLight@G3D@@P6A_NABV12@0@ZV12@@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@Z0@Z": "0x506890 (own row)",
+        "??$_Make_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@ZPAH0@Z": "0x505ee0 (own row)",
+        "??$_Sort_heap@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@Z@Z": "0x506ae0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00506dd0",
+      "exact": true,
+      "symbol": "?update@EffectSettings@Render@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z",
+      "folded_symbols": [],
+      "identity": "root: Render::RenderScene::setThrottle 00502df4 / setLighting 00502ec8 call it with this = RenderScene +0x2d4 (EffectSettings member, render-scene layout probe); ret 0x20",
+      "object": "effects",
+      "size": 940,
+      "target_size": 940,
+      "verified_targets": {
+        "?glGetInteger@G3D@@YAHI@Z": "0x4837e0 (external)",
+        "??_B?1??inf@G3D@@YAABNXZ@51": "0x96f020 (external)",
+        "__imp___Inf": "0x8024ac (msvcp90.dll!_Inf)",
+        "?i@?1??inf@G3D@@YAABNXZ@4NB": "0x96f018 (external)",
+        "?create@Lighting@G3D@@SA?AV?$ReferenceCountedPointer@VLighting@G3D@@@2@XZ": "0x503960 (external (evidence name))",
+        "??4Lighting@G3D@@QAEAAV01@ABV01@@Z": "0x506a60 (own row)",
+        "__real@41200000": "0x827490 (constant 41200000)",
+        "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+        "__real@41f00000": "0x874d88 (constant 41f00000)",
+        "__real@3ca3d70a": "0x827488 (constant 3ca3d70a)",
+        "__real@3f800000": "0x827494 (constant 3f800000)",
+        "?brighter@Render@RBX@@YA_NABVGLight@G3D@@0@Z": "0x5058f0 (own row)",
+        "??$_Sort@PAVGLight@G3D@@HP6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0HP6A_NABV12@1@Z@Z": "0x506c80 (own row)",
+        "?append@?$Array@VGLight@G3D@@@G3D@@QAEXABVGLight@2@@Z": "0x503000 (external (evidence name))",
+        "?resize@?$Array@VGLight@G3D@@@G3D@@QAEXH_N@Z": "0x5026d0 (external (evidence name))",
+        "?getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ": "0x506b80 (own row)",
+        "?setEnabled@ToneMap@G3D@@QAEX_N@Z": "0x7b1650 (external)",
+        "?prepareLighting@ToneMap@G3D@@QBE?AV?$ReferenceCountedPointer@VLighting@G3D@@@2@ABV32@@Z": "0x7b2520 (external)",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+        "?prepareLightingParameters@ToneMap@G3D@@QBE?AVLightingParameters@2@ABV32@@Z": "0x7b1580 (external)",
+        "??4LightingParameters@G3D@@QAEAAV01@ABV01@@Z": "0x501d80 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?update@EffectSettings@Render@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z"
+      ]
+    },
+    {
+      "address": "005071d0",
+      "exact": true,
+      "symbol": "?allocateTextures@DepthBlur@Render@RBX@@AAEXABVRect2D@G3D@@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00507420",
+      "object": "depthblur",
+      "size": 588,
+      "target_size": 588,
+      "verified_targets": {
+        "??_C@_0N@PBFCKPAM@Depth?5Buffer?$AA@": "0x8274c0 (string 'Depth Buffer')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?video@Settings@Texture@G3D@@SAABV123@XZ": "0x472b20 (external)",
+        "?depth@TextureFormat@G3D@@SAPBV12@H@Z": "0x483820 (external)",
+        "__ftol2_sse": "0x6a17f0 (external)",
+        "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHPBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z": "0x507180 (own row)",
+        "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z": "0x598fa0 (external)",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_0N@CEFKKFMJ@Color?5Buffer?$AA@": "0x8274b0 (string 'Color Buffer')",
+        "?RGB8@TextureFormat@G3D@@2PBV12@B": "0x96fab0 (external)",
+        "??_C@_05BJGJGKJC@depth?$AA@": "0x8274a8 (string 'depth')",
+        "?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$ReferenceCountedPointer@VTexture@G3D@@@3@@Z": "0x486eb0 (external)",
+        "??_C@_05PEENBMOG@color?$AA@": "0x81c934 (string 'color')"
+      },
+      "local_eh": [
+        "__ehhandler$?allocateTextures@DepthBlur@Render@RBX@@AAEXABVRect2D@G3D@@@Z"
+      ]
+    },
+    {
+      "address": "00507420",
+      "exact": true,
+      "symbol": "?apply@DepthBlur@Render@RBX@@QAEXPAVRenderDevice@G3D@@@Z",
+      "folded_symbols": [],
+      "identity": "root: evidence name; caller Render::RenderScene::render 00504bf0 (blocked there)",
+      "object": "depthblur",
+      "size": 154,
+      "target_size": 154,
+      "verified_targets": {
+        "?push2D@RenderDevice@G3D@@QAEXXZ": "0x47d3a0 (external)",
+        "?getViewport@RenderDevice@G3D@@QBE?AVRect2D@2@XZ": "0x476d60 (external)",
+        "?allocateTextures@DepthBlur@Render@RBX@@AAEXABVRect2D@G3D@@@Z": "0x5071d0 (own row)",
+        "?copyFromScreen@Texture@G3D@@QAEXABVRect2D@2@_N@Z": "0x4739f0 (external)",
+        "?setShader@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VShader@G3D@@@2@@Z": "0x478f20 (external)",
+        "?white@Color3@G3D@@SAABV12@XZ": "0x514a60 (external)",
+        "?fastRect2D@Draw@G3D@@SAXABVRect2D@2@PAVRenderDevice@2@ABVColor4@2@@Z": "0x7b0170 (external)",
+        "?pop2D@RenderDevice@G3D@@QAEXXZ": "0x47d360 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00507740",
+      "exact": true,
+      "symbol": "??0DepthBlur@Render@RBX@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: evidence name; called by getDepthBlur 00506c46 after new 0xc",
+      "object": "depthblur",
+      "size": 256,
+      "target_size": 256,
+      "verified_targets": {
+        "?_supports_GL_ARB_shader_objects@GLCaps@G3D@@0_NA": "0x96ee88 (external)",
+        "?_supports_GL_ARB_shading_language_100@GLCaps@G3D@@0_NA": "0x96ee89 (external)",
+        "?_supports_GL_EXT_texture_rectangle@GLCaps@G3D@@0_NA": "0x96ee79 (external)",
+        "??_C@_0DIA@LOAICCDE@uniform?5sampler2D?5depth?$DL?5uniform@": "0x8274f0 (string 'uniform sampler2D depth; uniform sampler2D color; void main(')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+        "?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z": "0x507680 (own row)",
+        "?setPointer@?$ReferenceCountedPointer@VShader@G3D@@@G3D@@AAEXPAVShader@2@@Z": "0x598fa0 (external (evidence name))",
+        "??1?$ReferenceCountedPointer@VShader@G3D@@@G3D@@QAE@XZ": "0x502a70 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0DepthBlur@Render@RBX@@QAE@XZ"
+      ]
+    }
+  ],
+  "support_rows_not_counted": [
+    {
+      "address": "00505ad0 (G3D library code, not counted: implicit G3D::ToneMap destructor (RCPs +0x10, +0x8[2], +0x0); called by the atexit destructor 007fc5b0)",
+      "symbol": "??1ToneMap@G3D@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 007fc5b0",
+      "object": "effects",
+      "size": 182,
+      "target_size": 182,
+      "verified_targets": {
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+        "??1?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@QAE@XZ": "0x502a70 (external)",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1ToneMap@G3D@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00505f40 (G3D library code, not counted: G3D::Array<GLight>::operator= (G3D Array.h template over a G3D type); called by Lighting::operator=)",
+      "symbol": "??4?$Array@VGLight@G3D@@@G3D@@QAEAAV01@ABV01@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506a60",
+      "object": "effects",
+      "size": 162,
+      "target_size": 162,
+      "verified_targets": {
+        "?resize@?$Array@VGLight@G3D@@@G3D@@QAEXH_N@Z": "0x5026d0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00506a60 (G3D library code, not counted: implicit G3D::Lighting::operator=; also called by RenderNew::EffectSettings::update 007afce0 and the ToneMap code 007b2520)",
+      "symbol": "??4Lighting@G3D@@QAEAAV01@ABV01@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00506dd0",
+      "object": "effects",
+      "size": 123,
+      "target_size": 123,
+      "verified_targets": {
+        "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z": "0x598fa0 (external)",
+        "??4?$Array@VGLight@G3D@@@G3D@@QAEAAV01@ABV01@@Z": "0x505f40 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00507180 (G3D library code, not counted: G3D::Texture::createEmpty(name, w, h, format, dimension, settings), an inline Texture.h overload)",
+      "symbol": "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHPBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z",
+      "folded_symbols": [],
+      "identity": "called by 005071d0",
+      "object": "depthblur",
+      "size": 75,
+      "target_size": 75,
+      "verified_targets": {
+        "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@HHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z": "0x474950 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005074c0 (G3D library code, not counted: scalar deleting destructor of G3D::Table<std::string, VertexAndPixelShader::ArgList::Arg> (vtable 008274a4 slot 0), emitted with the inline Shader ctor)",
+      "symbol": "??_G?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@UAEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: G3D::Table<std::string, Arg> vtable 008274a4 slot 0",
+      "object": "depthblur",
+      "size": 36,
+      "target_size": 36,
+      "verified_targets": {
+        "??_7?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@6B@": "0x8274a4 (vtable RTTI .?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@ offset 0x0; slots: slot 0 ??_E?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$alloca -> 0x5074c0 (own row ??_G?$Table@V?$basic_string@DU?$char_tra (??_E resolved to ??_G)))",
+        "?freeMemory@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@AAEXXZ": "0x486ba0 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005074f0 (G3D library code, not counted: inline G3D::Shader constructor (GLG3D Shader.h))",
+      "symbol": "??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00507680",
+      "object": "depthblur",
+      "size": 213,
+      "target_size": 213,
+      "verified_targets": {
+        "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0; slots: slot 0 ??_EReferenceCountedObject@G3D@@UAEPAXI@Z -> 0x4729b0 (external))",
+        "??_7Shader@G3D@@6B@": "0x8274d4 (vtable RTTI .?AVShader@G3D@@ offset 0x0; slots: slot 0 ??_EShader@G3D@@UAEPAXI@Z -> 0x507720 (own row ??_GShader@G3D@@UAEPAXI@Z (??_E resolved to ??_G)); slot 1 ?setPreserveState@Shader@G3D@@UAEX_N@Z -> 0x5075d0 (own row); slot 2 ?preserveState@Shader@G3D@@UBE_NXZ -> 0x5075e0 (own row); slot 3 ?ok@Shader@G3D@@UBE_NXZ -> 0x485a20 (external); slot 4 ?beforePrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z -> 0x487c60 (external); slot 5 ?afterPrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z -> 0x485460 (external); slot 6 ?messages@Shader@G3D@@UBEABV?$basic_string@DU?$char_traits@D -> 0x485a30 (external))",
+        "?setPointer@?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@G3D@@AAEXPAVVertexAndPixelShader@2@@Z": "0x598fa0 (external)",
+        "??_7?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@6B@": "0x8274a4 (vtable RTTI .?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@ offset 0x0; slots: slot 0 ??_E?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$alloca -> 0x5074c0 (own row ??_G?$Table@V?$basic_string@DU?$char_tra (??_E resolved to ??_G)))",
+        "?alignedMalloc@System@G3D@@SAPAXII@Z": "0x508580 (external)",
+        "?memset@System@G3D@@SAXPAXEI@Z": "0x508a30 (external)",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z"
+      ]
+    },
+    {
+      "address": "005075d0 (G3D library code, not counted: inline G3D::Shader::setPreserveState (vtable 008274d4 slot 1))",
+      "symbol": "?setPreserveState@Shader@G3D@@UAEX_N@Z",
+      "folded_symbols": [],
+      "identity": "root: G3D::Shader vtable 008274d4 slot 1 (evidence name)",
+      "object": "depthblur",
+      "size": 10,
+      "target_size": 10,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005075e0 (G3D library code, not counted: inline G3D::Shader::preserveState (vtable 008274d4 slot 2))",
+      "symbol": "?preserveState@Shader@G3D@@UBE_NXZ",
+      "folded_symbols": [],
+      "identity": "root: G3D::Shader vtable 008274d4 slot 2 (evidence name)",
+      "object": "depthblur",
+      "size": 4,
+      "target_size": 4,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005075f0 (G3D library code, not counted: inline G3D::Shader destructor)",
+      "symbol": "??1Shader@G3D@@UAE@XZ",
+      "folded_symbols": [],
+      "identity": "called by 00507720",
+      "object": "depthblur",
+      "size": 129,
+      "target_size": 129,
+      "verified_targets": {
+        "??_7?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@6B@": "0x8274a4 (vtable RTTI .?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@ offset 0x0; slots: slot 0 ??_E?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$alloca -> 0x5074c0 (own row ??_G?$Table@V?$basic_string@DU?$char_tra (??_E resolved to ??_G)))",
+        "?freeMemory@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@AAEXXZ": "0x486ba0 (external (evidence name))",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+        "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0; slots: slot 0 ??_EReferenceCountedObject@G3D@@UAEPAXI@Z -> 0x4729b0 (external))"
+      },
+      "local_eh": [
+        "__ehhandler$??1Shader@G3D@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00507680 (G3D library code, not counted: inline G3D::Shader::fromStrings (GLG3D Shader.h))",
+      "symbol": "?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z",
+      "folded_symbols": [],
+      "identity": "called by 00507740",
+      "object": "depthblur",
+      "size": 150,
+      "target_size": 150,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?fromStrings@VertexAndPixelShader@G3D@@SA?AV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@_N@Z": "0x488fe0 (external)",
+        "??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z": "0x5074f0 (own row)",
+        "?setPointer@?$ReferenceCountedPointer@VShader@G3D@@@G3D@@AAEXPAVShader@2@@Z": "0x598fa0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z"
+      ]
+    },
+    {
+      "address": "00507720 (G3D library code, not counted: scalar deleting destructor shared by identical-code folding (G3D::Shader vtable 008274d4 slot 0; also the ToneMap / DepthBlur / Lighting ??_G bodies))",
+      "symbol": "??_GShader@G3D@@UAEPAXI@Z",
+      "folded_symbols": [],
+      "identity": "root: G3D::Shader vtable 008274d4 slot 0 (ICF-shared scalar deleting dtor)",
+      "object": "depthblur",
+      "size": 30,
+      "target_size": 30,
+      "verified_targets": {
+        "??1Shader@G3D@@UAE@XZ": "0x5075f0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fc5b0 (outside the range 00504000..00508000)",
+      "symbol": "??__FtoneMap@?1??getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ@YAXXZ",
+      "folded_symbols": [],
+      "identity": "root: atexit argument pushed by getToneMap 00506bcf",
+      "object": "effects",
+      "size": 29,
+      "target_size": 29,
+      "verified_targets": {
+        "?toneMap@?1??getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ@4V?$auto_ptr@VToneMap@G3D@@@std@@A": "0x9728d8 (external)",
+        "??1ToneMap@G3D@@QAE@XZ": "0x505ad0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fc5d0 (outside the range 00504000..00508000)",
+      "symbol": "??__FdepthBlur@?1??getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@23@XZ@YAXXZ",
+      "folded_symbols": [],
+      "identity": "root: atexit argument pushed by getDepthBlur 00506c4f",
+      "object": "effects",
+      "size": 29,
+      "target_size": 29,
+      "verified_targets": {
+        "?depthBlur@?1??getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@34@XZ@4V?$auto_ptr@VDepthBlur@Render@RBX@@@std@@A": "0x9728e0 (external)",
+        "??1DepthBlur@Render@RBX@@QAE@XZ": "0x505b90 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_build_only": [],
+  "exact_function_rows": [
+    "005058f0",
+    "00505940",
+    "00505a20",
+    "00505b90",
+    "00505c70",
+    "00505d20",
+    "00505e30",
+    "00505ee0",
+    "00505ff0",
+    "00506890",
+    "00506ae0",
+    "00506b80",
+    "00506c00",
+    "00506c80",
+    "00506dd0",
+    "005071d0",
+    "00507420",
+    "00507740"
+  ],
+  "rejected": {
+    "EffectSettings::update": [
+      "donor openrbx body as-is: groundLOD / LODShift through G3D::lerp with a double divisor (fld qword 0.01; target multiplies by the float constants 0.01f / 0.02f)",
+      "skyBox / hemisphereLighting tested on meshDetail: the target compares the first float argument (shadingDetail, [esp+0x124] after the call) with 10.0f / 30.0f",
+      "std::sort(begin(), end(), brighter): loads num before data; Array::sort(brighter) loads data first",
+      "empty-bodied light loops or a const reference body: hoisted (no per-iteration Lighting reload); a GLight copy body: calls the GLight copy ctor; enabled self-assignment / color self-assignment: extra stores",
+      "G3D::iMin / iMax for numNonShadowLights, numLights declared after numShadowLights: register allocation differs (ebx / ebp swapped)"
+    ],
+    "brighter": [
+      "(r + g + b) / 3.0f * (1.2 - w) (and with named locals or external linkage): loads B into eax late (target loads it into ecx up front); Color3::average() matches"
+    ]
+  },
+  "proposals": {
+    "RenderLib/RenderSceneRender2008.h (render-scene owner)": "Include \"AppUnit504/RenderEffects.h\" instead of the donor \"RenderLib/EffectSettings.h\" for the RenderScene +0x2d4 EffectSettings member: the donor DepthBlur.h it pulls in declares an out-of-line ~DepthBlur, while the 2008 destructor is implicit (its COMDAT 00505b90 sits in the EffectSettings object and is called by the atexit destructor 007fc5d0). Layout is unchanged (EffectSettings 0x14 bytes; same field order). Re-run tests/record_native_render_scene.py before / after.",
+    "RenderLib/RenderSceneRender2008.h (render-scene owner), render helpers": "Declare the three private Render::RenderScene helpers called from render 00504bf0: 00504b60 (thiscall, calls 00504290 / 00504b00 and sortByMaterialAndDepth / sortByMaterial / sortByDepth 00505860 / 00505890 / 005058c0), 00504290 (2147 B) and 00504b00 (95 B). Names and signatures are not derived here."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. New header native-headers/AppUnit504/RenderEffects.h (no donor header at that path)."
+}

@@ -1,0 +1,974 @@
+{
+  "class": "RBX::ViewNew BrickMesh unit pass 2 (static cache, shadow box, cache map operator[])",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewBrickBuild.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewBrickMeshBuild2008.cpp"
+    ],
+    "pbb": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewBrickBuild_pbb.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPartMesh2008PBB.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/DNATIVE_VIEWNEW_BRICK_BUILD_PENDING",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/viewnew-brick-build-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewBrickBuild_pbb_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPartMesh2008PBB.cpp"
+    ],
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewBrickBuildLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewBrickBuildLayout.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_viewnew_brick_build.py": "b0a145292325dab5a687dd7cf5df2aa248bb64f0fde94dca62c3fd48594d896a",
+    "rebuild/2008-06/native-classes/ViewNewBrickMeshBuild2008.cpp": "868fb314a60bce5b413496eed267f5c00201182a7e43819070543c6069ef34ca",
+    "rebuild/2008-06/native-classes/ViewNewPartMesh2008PBB.cpp": "f493e0f99fad91f1372db5fc47ab9a76a13966760b6726aa05b78b9786da914c",
+    "rebuild/2008-06/native-headers/ViewNewBrickBuild2008/BrickMeshCache2008.h": "5045044a4f86a0e5daf5f0ee0e7dbb988db20e474caaf4cc3211b6b2b2e2a428",
+    "rebuild/2008-06/native-headers/ViewNew/BrickMesh.h": "70f85671aa5fd8e2af5625228c773b998f5e29337c79d8e894edf0cb3e976eb5",
+    "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h": "9f0fc319c4d387c8358a754b54a2a025f7449519649eb3d7e298a8717b7c19ff"
+  },
+  "objects": {
+    "NativeViewNewBrickBuild.obj": "44b49d078547b7bdf3b912e405a5cdc6e2bb5087637280ef770b85f166d78bf5",
+    "NativeViewNewBrickBuild_pbb.obj": "bbca8224510a76e784f601194828f589ebe0c9846f1f92cef08db155ca08c408",
+    "NativeViewNewBrickBuild_pbb_pending.obj": "4bd598e271eddde21e439727e4d705e1507d8cd165762cf913f7bfd2c726fc9b",
+    "NativeViewNewBrickBuildLayout.obj": "92316853da3cf74cb6b55076ffa1656ed9bdfc333afb7098d1f9b1588c5b5075"
+  },
+  "layout": {
+    "nativeBrickCacheSize": "0x30",
+    "nativeBrickCacheMutex": "0x20",
+    "nativeBrickCacheCount": "0x2c",
+    "nativeBrickMapSize": "0x20",
+    "nativeLookupSize": "0x14",
+    "nativeLookupSurface": "0xc",
+    "nativeLookupColor": "0x10",
+    "nativeVariationsSize": "0x14",
+    "nativeVariationsMeshes": "0x4",
+    "nativeBrickNodeValue": "0x28",
+    "nativeMeshShadowIndices": "0x18"
+  },
+  "rows": [
+    {
+      "address": "004e5300",
+      "symbol": "??0Cache@BrickMesh@ViewNew@RBX@@QAE@XZ",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??0?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@ULookup@@@1@ABV?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@1@@Z": "0x671ae0 (template helper (body compared at the bound address))",
+        "??0recursive_mutex@boost@@QAE@XZ": "0x563070 (external)"
+      },
+      "local": [
+        "__ehhandler$??0Cache@BrickMesh@ViewNew@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004e5360",
+      "symbol": "?initCache@BrickMesh@ViewNew@RBX@@CAXXZ",
+      "size": 96,
+      "target_size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0Cache@BrickMesh@ViewNew@RBX@@QAE@XZ": "0x4e5300 (own row)",
+        "?cache@BrickMesh@ViewNew@RBX@@0PAUCache@123@A": "0x972754 (static (evidence checked below))"
+      },
+      "local": [
+        "__ehhandler$?initCache@BrickMesh@ViewNew@RBX@@CAXXZ"
+      ]
+    },
+    {
+      "address": "004e5670",
+      "symbol": "?flushCache@BrickMesh@ViewNew@RBX@@SAXXZ",
+      "size": 147,
+      "target_size": 147,
+      "exact": true,
+      "verified_targets": {
+        "?cacheFlag@BrickMesh@ViewNew@RBX@@0JA": "0x972870 (static (evidence checked below))",
+        "?initCache@BrickMesh@ViewNew@RBX@@CAXXZ": "0x4e5360 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "?cache@BrickMesh@ViewNew@RBX@@0PAUCache@123@A": "0x972754 (static (evidence checked below))",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z": "0x4dd430 (template helper (body compared at the bound address))",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+      },
+      "local": [
+        "__ehhandler$?flushCache@BrickMesh@ViewNew@RBX@@SAXXZ"
+      ]
+    },
+    {
+      "address": "004e5710",
+      "symbol": "?releaseUnused@BrickMesh@ViewNew@RBX@@CAXXZ",
+      "size": 408,
+      "target_size": 408,
+      "exact": true,
+      "verified_targets": {
+        "?cacheFlag@BrickMesh@ViewNew@RBX@@0JA": "0x972870 (static (evidence checked below))",
+        "?initCache@BrickMesh@ViewNew@RBX@@CAXXZ": "0x4e5360 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "?cache@BrickMesh@ViewNew@RBX@@0PAUCache@123@A": "0x972754 (static (evidence checked below))",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x409f60 (template helper (body compared at the bound address))",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+      },
+      "local": [
+        "__ehhandler$?releaseUnused@BrickMesh@ViewNew@RBX@@CAXXZ"
+      ]
+    },
+    {
+      "address": "004e3570",
+      "symbol": "?buildShadowBox@ViewNew@RBX@@YAXABVVector3@G3D@@AAV?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@AAV?$vector@GV?$allocator@G@std@@@6@@Z",
+      "size": 419,
+      "target_size": 419,
+      "exact": true,
+      "verified_targets": {
+        "?reserve@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAEXI@Z": "0x4dd7d0 (template helper (body compared at the bound address))",
+        "?reserve@?$vector@GV?$allocator@G@std@@@std@@QAEXI@Z": "0x4dd360 (template helper (body compared at the bound address))",
+        "?push_back@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAEXABVVector3@G3D@@@Z": "0x4de250 (template helper (body compared at the bound address))",
+        "?appendQuad@@YAXAAV?$vector@GV?$allocator@G@std@@@std@@HHHH@Z": "0x4de1d0 (own row)"
+      },
+      "local": []
+    },
+    {
+      "address": "004de1d0",
+      "symbol": "?appendQuad@@YAXAAV?$vector@GV?$allocator@G@std@@@std@@HHHH@Z",
+      "size": 125,
+      "target_size": 125,
+      "exact": true,
+      "verified_targets": {
+        "?push_back@?$vector@GV?$allocator@G@std@@@std@@QAEXABG@Z": "0x4ddf10 (template helper (body compared at the bound address))"
+      },
+      "local": []
+    },
+    {
+      "address": "004dc360",
+      "symbol": "?orderedCompare@@YAHABVVector3@G3D@@0@Z",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {},
+      "local": []
+    },
+    {
+      "address": "004ddf80",
+      "symbol": "??A?$map@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@@std@@QAEAAUVariations@@ABULookup@@@Z",
+      "size": 369,
+      "target_size": 369,
+      "exact": true,
+      "verified_targets": {
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABULookup@@@Z": "0x4dc590 (template helper (body compared at the bound address))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?orderedCompare@@YAHABVVector3@G3D@@0@Z": "0x4dc360 (own row)",
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (template helper (body compared at the bound address))",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)",
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820 (template helper (body compared at the bound address))",
+        "??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z": "0x6a1bb6 (external)",
+        "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z": "0x4dd9a0 (template helper (body compared at the bound address))",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)"
+      },
+      "local": [
+        "__ehhandler$??A?$map@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@@std@@QAEAAUVariations@@ABULookup@@@Z"
+      ]
+    }
+  ],
+  "helper_rows": {
+    "00409f60": {
+      "address": "00409f60",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+      "size": 108,
+      "target_size": 108,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local": [],
+      "counted_elsewhere": [
+        "humanoid2008-working.json"
+      ],
+      "symbols": [
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ"
+      ]
+    },
+    "004c6d40": {
+      "address": "004c6d40",
+      "symbol": "?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ",
+      "size": 112,
+      "target_size": 112,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x80e190 (string 'vector<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (external)",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local": [
+        "__ehhandler$?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ"
+      ],
+      "counted_elsewhere": [
+        "humanoid2008-working.json",
+        "misc-leaves-working.json"
+      ],
+      "symbols": [
+        "?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ"
+      ]
+    },
+    "004dc430": {
+      "address": "004dc430",
+      "symbol": "??R?$less@ULookup@@@std@@QBE_NABULookup@@0@Z",
+      "size": 67,
+      "target_size": 67,
+      "exact": true,
+      "verified_targets": {
+        "?orderedCompare@@YAHABVVector3@G3D@@0@Z": "0x4dc360 (own row)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??R?$less@ULookup@@@std@@QBE_NABULookup@@0@Z"
+      ]
+    },
+    "004dc480": {
+      "address": "004dc480",
+      "symbol": "??$_Allocate@G@std@@YAPAGIPAG@Z",
+      "size": 87,
+      "target_size": 87,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (external)",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??$_Allocate@G@std@@YAPAGIPAG@Z"
+      ]
+    },
+    "004dc590": {
+      "address": "004dc590",
+      "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABULookup@@@Z",
+      "size": 138,
+      "target_size": 138,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Lbound@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABULookup@@@Z"
+      ]
+    },
+    "004dc620": {
+      "address": "004dc620",
+      "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z",
+      "size": 78,
+      "target_size": 78,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z"
+      ]
+    },
+    "004dca20": {
+      "address": "004dca20",
+      "symbol": "??$fill@PAGG@std@@YAXPAG0ABG@Z",
+      "size": 32,
+      "target_size": 32,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??$fill@PAGG@std@@YAXPAG0ABG@Z"
+      ]
+    },
+    "004dca40": {
+      "address": "004dca40",
+      "symbol": "??$_Unchecked_move_backward@PAGPAG@stdext@@YAPAGPAG00@Z",
+      "size": 43,
+      "target_size": 43,
+      "exact": true,
+      "verified_targets": {
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??$_Unchecked_move_backward@PAGPAG@stdext@@YAPAGPAG00@Z"
+      ]
+    },
+    "004dca70": {
+      "address": "004dca70",
+      "symbol": "??$_Uninit_fill_n@PAVVector3@G3D@@IV12@V?$allocator@VVector3@G3D@@@std@@@std@@YAXPAVVector3@G3D@@IABV12@AAV?$allocator@VVector3@G3D@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 45,
+      "target_size": 45,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??$_Uninit_fill_n@PAVVector3@G3D@@IV12@V?$allocator@VVector3@G3D@@@std@@@std@@YAXPAVVector3@G3D@@IABV12@AAV?$allocator@VVector3@G3D@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+      ]
+    },
+    "004dcdd0": {
+      "address": "004dcdd0",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z",
+      "size": 510,
+      "target_size": 510,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (external)",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBULookup@@UVariations@@@2@D@Z": "0x4dccd0 (template helper (body compared at the bound address))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z": "0x4dc620 (template helper (body compared at the bound address))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z": "0x5b6ae0 (template helper (body compared at the bound address))"
+      },
+      "local": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z"
+      ],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z"
+      ]
+    },
+    "004dd2b0": {
+      "address": "004dd2b0",
+      "symbol": "??$_Umove@PAG@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAG00@Z",
+      "size": 44,
+      "target_size": 44,
+      "exact": true,
+      "verified_targets": {
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "??$_Umove@PAG@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAG00@Z"
+      ]
+    },
+    "004dd360": {
+      "address": "004dd360",
+      "symbol": "?reserve@?$vector@GV?$allocator@G@std@@@std@@QAEXI@Z",
+      "size": 157,
+      "target_size": 157,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ": "0x4c6d40 (template helper (body compared at the bound address))",
+        "??$_Allocate@G@std@@YAPAGIPAG@Z": "0x4dc480 (template helper (body compared at the bound address))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?reserve@?$vector@GV?$allocator@G@std@@@std@@QAEXI@Z"
+      ]
+    },
+    "004dd400": {
+      "address": "004dd400",
+      "symbol": "?_Ufill@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAGIABG@Z",
+      "size": 46,
+      "target_size": 46,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Ufill@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAGIABG@Z"
+      ]
+    },
+    "004dd430": {
+      "address": "004dd430",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z",
+      "size": 71,
+      "target_size": 71,
+      "exact": true,
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z": "0x4dd430 (template helper (body compared at the bound address))",
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (template helper (body compared at the bound address))",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Erase@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z"
+      ]
+    },
+    "004dd480": {
+      "address": "004dd480",
+      "symbol": "?_Insert_n@?$vector@GV?$allocator@G@std@@@std@@IAEXV?$_Vector_const_iterator@GV?$allocator@G@std@@@2@IABG@Z",
+      "size": 399,
+      "target_size": 399,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ": "0x4c6d40 (template helper (body compared at the bound address))",
+        "??$_Allocate@G@std@@YAPAGIPAG@Z": "0x4dc480 (template helper (body compared at the bound address))",
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)",
+        "?_Ufill@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAGIABG@Z": "0x4dd400 (template helper (body compared at the bound address))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??$_Umove@PAG@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAG00@Z": "0x4dd2b0 (template helper (body compared at the bound address))",
+        "??$fill@PAGG@std@@YAXPAG0ABG@Z": "0x4dca20 (template helper (body compared at the bound address))",
+        "??$_Unchecked_move_backward@PAGPAG@stdext@@YAPAGPAG00@Z": "0x4dca40 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Insert_n@?$vector@GV?$allocator@G@std@@@std@@IAEXV?$_Vector_const_iterator@GV?$allocator@G@std@@@2@IABG@Z"
+      ]
+    },
+    "004dd610": {
+      "address": "004dd610",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z",
+      "size": 385,
+      "target_size": 385,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z": "0x4dcdd0 (template helper (body compared at the bound address))",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x66ff20 (template helper (body compared at the bound address))",
+        "??R?$less@ULookup@@@std@@QBE_NABULookup@@0@Z": "0x4dc430 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z"
+      ]
+    },
+    "004dd8e0": {
+      "address": "004dd8e0",
+      "symbol": "?insert@?$vector@GV?$allocator@G@std@@@std@@QAE?AV?$_Vector_iterator@GV?$allocator@G@std@@@2@V?$_Vector_const_iterator@GV?$allocator@G@std@@@2@ABG@Z",
+      "size": 179,
+      "target_size": 179,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert_n@?$vector@GV?$allocator@G@std@@@std@@IAEXV?$_Vector_const_iterator@GV?$allocator@G@std@@@2@IABG@Z": "0x4dd480 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?insert@?$vector@GV?$allocator@G@std@@@std@@QAE?AV?$_Vector_iterator@GV?$allocator@G@std@@@2@V?$_Vector_const_iterator@GV?$allocator@G@std@@@2@ABG@Z"
+      ]
+    },
+    "004dd9a0": {
+      "address": "004dd9a0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z",
+      "size": 544,
+      "target_size": 544,
+      "exact": true,
+      "verified_targets": {
+        "?_Insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z": "0x4dcdd0 (template helper (body compared at the bound address))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??R?$less@ULookup@@@std@@QBE_NABULookup@@0@Z": "0x4dc430 (template helper (body compared at the bound address))",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x66ff20 (template helper (body compared at the bound address))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x409f60 (template helper (body compared at the bound address))",
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (template helper (body compared at the bound address))",
+        "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z": "0x4dd610 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z"
+      ]
+    },
+    "004ddf10": {
+      "address": "004ddf10",
+      "symbol": "?push_back@?$vector@GV?$allocator@G@std@@@std@@QAEXABG@Z",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$vector@GV?$allocator@G@std@@@std@@QAE?AV?$_Vector_iterator@GV?$allocator@G@std@@@2@V?$_Vector_const_iterator@GV?$allocator@G@std@@@2@ABG@Z": "0x4dd8e0 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?push_back@?$vector@GV?$allocator@G@std@@@std@@QAEXABG@Z"
+      ]
+    },
+    "004de100": {
+      "address": "004de100",
+      "symbol": "?insert@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE?AV?$_Vector_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@V?$_Vector_const_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@ABVVector3@G3D@@@Z",
+      "size": 206,
+      "target_size": 206,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert_n@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@IABVVector3@G3D@@@Z": "0x4ddbc0 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?insert@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE?AV?$_Vector_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@V?$_Vector_const_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@ABVVector3@G3D@@@Z"
+      ]
+    },
+    "004de250": {
+      "address": "004de250",
+      "symbol": "?push_back@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAEXABVVector3@G3D@@@Z",
+      "size": 157,
+      "target_size": 157,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAVVector3@G3D@@IV12@V?$allocator@VVector3@G3D@@@std@@@std@@YAXPAVVector3@G3D@@IABV12@AAV?$allocator@VVector3@G3D@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x4dca70 (template helper (body compared at the bound address))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAE?AV?$_Vector_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@V?$_Vector_const_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@ABVVector3@G3D@@@Z": "0x4de100 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?push_back@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAEXABVVector3@G3D@@@Z"
+      ]
+    },
+    "004f0810": {
+      "address": "004f0810",
+      "symbol": "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ",
+      "size": 9,
+      "target_size": 9,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [
+        "viewnew-part-mesh-working.json"
+      ],
+      "symbols": [
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ"
+      ]
+    },
+    "004f0820": {
+      "address": "004f0820",
+      "symbol": "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z",
+      "size": 29,
+      "target_size": 29,
+      "exact": true,
+      "verified_targets": {
+        "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z": "0x598fa0 (template helper (body compared at the bound address))"
+      },
+      "local": [],
+      "counted_elsewhere": [
+        "viewnew-part-mesh-working.json"
+      ],
+      "symbols": [
+        "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z"
+      ]
+    },
+    "00502a70": {
+      "address": "00502a70",
+      "symbol": "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ",
+      "size": 52,
+      "target_size": 52,
+      "exact": true,
+      "verified_targets": {
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+      },
+      "local": [],
+      "counted_elsewhere": [
+        "viewnew-part-mesh-working.json"
+      ],
+      "symbols": [
+        "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ"
+      ]
+    },
+    "00598fa0": {
+      "address": "00598fa0",
+      "symbol": "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z",
+      "size": 80,
+      "target_size": 80,
+      "exact": true,
+      "verified_targets": {
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+        "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)"
+      },
+      "local": [],
+      "counted_elsewhere": [
+        "viewnew-part-mesh-working.json"
+      ],
+      "symbols": [
+        "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z"
+      ]
+    },
+    "005b6ae0": {
+      "address": "005b6ae0",
+      "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z",
+      "size": 82,
+      "target_size": 82,
+      "exact": true,
+      "verified_targets": {},
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@@Z"
+      ]
+    },
+    "005b78a0": {
+      "address": "005b78a0",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@XZ",
+      "size": 55,
+      "target_size": 55,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local": [],
+      "counted_elsewhere": [],
+      "symbols": [
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@XZ"
+      ]
+    },
+    "005ecca0": {
+      "address": "005ecca0",
+      "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QBE_NABV012@@Z",
+      "size": 42,
+      "target_size": 42,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local": [],
+      "counted_elsewhere": [
+        "app-leaves2008-services-working.json"
+      ],
+      "symbols": [
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QBE_NABV012@@Z"
+      ]
+    },
+    "0066ff20": {
+      "address": "0066ff20",
+      "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+      "size": 132,
+      "target_size": 132,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local": [],
+      "counted_elsewhere": [
+        "adorn-working.json"
+      ],
+      "symbols": [
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ"
+      ]
+    },
+    "00671ae0": {
+      "address": "00671ae0",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@ULookup@@@1@ABV?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@1@@Z",
+      "size": 117,
+      "target_size": 117,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@XZ": "0x5b78a0 (template helper (body compared at the bound address))"
+      },
+      "local": [
+        "__ehhandler$??0?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@ULookup@@@1@ABV?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@1@@Z"
+      ],
+      "counted_elsewhere": [
+        "adorn-working.json"
+      ],
+      "symbols": [
+        "??0?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@ULookup@@@1@ABV?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@1@@Z"
+      ]
+    }
+  },
+  "helpers_not_exact": {
+    "004dccd0": {
+      "address": "004dccd0",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBULookup@@UVariations@@@2@D@Z",
+      "size": 135,
+      "target_size": 114,
+      "exact": false,
+      "counted_elsewhere": [],
+      "bounds_evidence": "compiled body equals the target through its 114-byte extent and the image bytes 0x4dcd42..0x4dcd57 equal the compiled tail (a catch funclet that only EH tables reference): the true extent is 135 bytes",
+      "symbols": [
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBULookup@@UVariations@@@2@D@Z"
+      ]
+    },
+    "004dd7d0": {
+      "address": "004dd7d0",
+      "symbol": "?reserve@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAEXI@Z",
+      "size": 270,
+      "target_size": 249,
+      "exact": false,
+      "counted_elsewhere": [],
+      "bounds_evidence": "compiled body equals the target through its 249-byte extent and the image bytes 0x4dd8c9..0x4dd8de equal the compiled tail (a catch funclet that only EH tables reference): the true extent is 270 bytes",
+      "symbols": [
+        "?reserve@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@QAEXI@Z"
+      ]
+    },
+    "004ddbc0": {
+      "address": "004ddbc0",
+      "symbol": "?_Insert_n@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@IABVVector3@G3D@@@Z",
+      "size": 616,
+      "target_size": 354,
+      "exact": false,
+      "counted_elsewhere": [],
+      "bounds_evidence": "compiled body equals the target through its 354-byte extent and the image bytes 0x4ddd22..0x4dde28 equal the compiled tail (a catch funclet that only EH tables reference): the true extent is 616 bytes",
+      "symbols": [
+        "?_Insert_n@?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@IAEXV?$_Vector_const_iterator@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@2@IABVVector3@G3D@@@Z"
+      ]
+    }
+  },
+  "helpers_counted_elsewhere": {
+    "00671ae0": [
+      "adorn-working.json"
+    ],
+    "00409f60": [
+      "humanoid2008-working.json"
+    ],
+    "00502a70": [
+      "viewnew-part-mesh-working.json"
+    ],
+    "004f0810": [
+      "viewnew-part-mesh-working.json"
+    ],
+    "004f0820": [
+      "viewnew-part-mesh-working.json"
+    ],
+    "004c6d40": [
+      "humanoid2008-working.json",
+      "misc-leaves-working.json"
+    ],
+    "00598fa0": [
+      "viewnew-part-mesh-working.json"
+    ],
+    "0066ff20": [
+      "adorn-working.json"
+    ],
+    "005ecca0": [
+      "app-leaves2008-services-working.json"
+    ]
+  },
+  "pending_or_not_exact": [
+    {
+      "address": "004f4cb0",
+      "symbol": "??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+      "size": 390,
+      "target_size": 390,
+      "exact": false,
+      "verified_targets": {
+        "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+        "??_7PBBMesh@ViewNew@RBX@@6B@": "0x827070 (vtable RTTI .?AVPBBMesh@ViewNew@RBX@@ offset 0x0)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (external)",
+        "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+        "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (template helper (body compared at the bound address))",
+        "??0PBBBuilder@ViewNew@RBX@@QAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z": "0x4f1eb0 (external)",
+        "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z": "0x500d30 (external)",
+        "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+        "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+        "?_shadowsEnabled@?1??getShadowsEnabled@ViewBase@RBX@@SAAA_NXZ@4_NA": "0x96de64 (static (evidence checked below))",
+        "__real@3f000000": "0x819bac (float constant 3f000000)",
+        "?buildShadowBox@ViewNew@RBX@@YAXABVVector3@G3D@@AAV?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@AAV?$vector@GV?$allocator@G@std@@@6@@Z": "0x4e3570 (own row)"
+      },
+      "local": [
+        "__ehhandler$??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z"
+      ],
+      "pending_build_only": true,
+      "reason": "compiled only with NATIVE_VIEWNEW_BRICK_BUILD_PENDING against a generated RenderLib/ViewBase2008.h copy that declares the donor `static bool& getShadowsEnabled()` (function-local static bound to 0096de64); relocation-masked bytes and targets checked there"
+    }
+  ],
+  "exact_function_rows": [
+    "004dc360",
+    "004dc430",
+    "004dc480",
+    "004dc590",
+    "004dc620",
+    "004dca20",
+    "004dca40",
+    "004dca70",
+    "004dcdd0",
+    "004dd2b0",
+    "004dd360",
+    "004dd400",
+    "004dd430",
+    "004dd480",
+    "004dd610",
+    "004dd8e0",
+    "004dd9a0",
+    "004ddf10",
+    "004ddf80",
+    "004de100",
+    "004de1d0",
+    "004de250",
+    "004e3570",
+    "004e5300",
+    "004e5360",
+    "004e5670",
+    "004e5710",
+    "005b6ae0",
+    "005b78a0"
+  ],
+  "proposals": {
+    "RenderLib/ViewBase2008.h (render-scene owner)": "declare the donor `static bool& getShadowsEnabled() { static bool _shadowsEnabled = false; return _shadowsEnabled; }` in ViewBase. Evidence: the byte 0096de64 is written by 0045cb3b (cleared when the Ogre render system lacks capability 0x200) and read by the PBBMesh surface ctor 004f4de2 and the BrickMesh ctor 004e544e before building the shadow box 004e3570; the donor PBBMesh / SphereMesh gate shadows on ViewBase::getShadowsEnabled(). With it the PBBMesh surface ctor 004f4cb0 (exact in the pending build here) becomes a counted row.",
+    "record_native_render_scene.py / record_native_viewg3d2008.py owners (FYI)": "the seventh mesh-cache flush, BrickMesh::flushCache 004e5670 (cache 00972754, once flag 00972870), is now declared in ViewNew/BrickMesh.h with its body in native-classes/ViewNewBrickMeshBuild2008.cpp (exact, counted in viewnew-brick-build-working.json). All seven flushes the ViewRbxGfx / ViewG3D dtors 004db4f0 / 004dc270 call are now declared; those dtors and their ??_G 004db5d0 / 004dc340 remain yours."
+  },
+  "not_built": {
+    "004e53c0": "BrickMesh ctor (ret 0x1c: size, surfaceTypes, color, three pointer arguments, float): the types of the three pointers (read as objects with an index at +0xc and 16-byte entries by 004e3720) are not derived; it also reads the shadows flag 0096de64 and the render-mode global 00942ec4",
+    "004e54e0 / 004e58b0": "BrickMesh create functions: need the ctor declaration above and the unnamed globals 009413c0 (set with 0094065c by 004d71a0) and the unit statics 00972758 / 0097275c",
+    "004e2c80 / 004e3720": "BrickMesh flat / bevelled builders (member functions called through dynamic_cast from create): not started",
+    "004de360..004e2040": "the six per-face builders (3108 bytes each; donor template meshFace<NormalId>): not started"
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

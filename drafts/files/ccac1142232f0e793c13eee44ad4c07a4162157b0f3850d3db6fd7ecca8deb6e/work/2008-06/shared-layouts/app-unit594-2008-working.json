@@ -1,0 +1,2418 @@
+{
+  "scope": "Inactive native rows of the application range 00594000..005a0000 (Decal / Texture unit built). Exact bodies with verified call/data targets; no active build, swap or credit.",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags + /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit594-2008/NativeAppUnit594DecalLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit594-2008/NativeAppUnit594DecalLayout.cpp"
+    ],
+    "main": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit594-2008/NativeAppUnit594_2008_decal.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit594_2008Decal.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit594_2008.py": "5272e21976c45981787ce8229293cec90ac0d0ab4861e9e67c6d7f34ebdc8993",
+    "rebuild/2008-06/native-classes/AppUnit594_2008Decal.cpp": "6293764121120a9fdf90b1610efb0ae79d4a20791df373f17ab24904ef7f456d",
+    "rebuild/2008-06/native-headers/AppUnit594_2008/TextureIdType2008.h": "dccb09309aae82bfba3237bc0af857b40dfc6dabb3c081f3a87e9b989b23dfef",
+    "rebuild/2008-06/native-headers/v8datamodel/Decal.h": "b0225ab319a7ea8914a398964d29e1c2afc8420de1d8bb97f7da90b6f4f60495",
+    "rebuild/2008-06/native-headers/v8datamodel/FaceInstance.h": "bef9f5d1e854be797d818cbefff6bb8ef2995e7b41ce4fc3988744f8c620e562"
+  },
+  "objects": {
+    "NativeAppUnit594DecalLayout.obj": "e0ad7d2f296fd758e9ae3fdce504995789174499cc706aa9a73f403819a4cbbc",
+    "NativeAppUnit594_2008_decal.obj": "0e946201835372fe87cfc410da9bd0a1abf2ff25b0edc64cf0beb495a9047fae"
+  },
+  "layout": {
+    "Decal": "0x16c (create<Decal> 0041e4d0 new 0x16c): FaceInstance 0x144 (IRenderable +0x130, face +0x140), texture +0x144 (TextureId 0x20), specular +0x164, shiny +0x168",
+    "Texture": "0x174 (create<Texture> 0041e550 new 0x174): studsPerTile +0x16c / +0x170"
+  },
+  "exact_function_rows": [
+    "0041e0b0",
+    "0041e0c0",
+    "004e5bb0",
+    "004e5be0",
+    "004e5bf0",
+    "00597350",
+    "00597360",
+    "00597370",
+    "005973b0",
+    "00597410",
+    "00597420",
+    "005975c0",
+    "005975d0",
+    "005975e0",
+    "005975f0",
+    "00597600",
+    "00597610",
+    "00597620",
+    "00597680",
+    "005976e0",
+    "00597700",
+    "005978a0",
+    "00597910",
+    "00597960",
+    "005979b0",
+    "00597a00",
+    "00597e00",
+    "00597e10",
+    "00597fa0",
+    "00597fb0",
+    "00598020",
+    "00598090",
+    "00598100",
+    "005981b0",
+    "00598260",
+    "005983e0",
+    "005983f0",
+    "00598500",
+    "00598510",
+    "00598520",
+    "00598530",
+    "00598540",
+    "00598550",
+    "00598560",
+    "00598570",
+    "00598580",
+    "00598610",
+    "00598690",
+    "005986d0",
+    "00598710",
+    "00598750",
+    "00598830",
+    "00598840",
+    "00598850",
+    "00598860",
+    "00598950",
+    "00598960",
+    "00598970",
+    "007f4190",
+    "007f41d0",
+    "007f4210",
+    "007f4250",
+    "007f4290",
+    "007fdae0",
+    "007fdb00",
+    "007fdb20",
+    "007fdb40",
+    "007fdb60",
+    "007fdb80",
+    "007fdb90",
+    "007fdba0"
+  ],
+  "exact_count": 71,
+  "methods": [
+    {
+      "symbol": "?getStudsPerTileU@Texture@RBX@@QBEMXZ",
+      "size": 7,
+      "verified_targets": {},
+      "local_eh": [],
+      "address": "00597350",
+      "exact": true
+    },
+    {
+      "symbol": "?getStudsPerTileV@Texture@RBX@@QBEMXZ",
+      "size": 7,
+      "verified_targets": {},
+      "local_eh": [],
+      "address": "00597360",
+      "exact": true
+    },
+    {
+      "symbol": "??$any_cast@VTextureId@RBX@@@boost@@YAPAVTextureId@RBX@@PAVany@0@@Z",
+      "size": 57,
+      "verified_targets": {
+        "??_R0X@8": "0x929614 (RTTI .X)",
+        "??_R0?AVTextureId@RBX@@@8": "0x949c78 (RTTI .?AVTextureId@RBX@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": [],
+      "address": "00597370",
+      "exact": true
+    },
+    {
+      "symbol": "??0?$holder@VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z",
+      "size": 89,
+      "verified_targets": {
+        "??_7?$holder@VTextureId@RBX@@@any@boost@@6B@": "0x83236c (vtable RTTI .?AV?$holder@VTextureId@RBX@@@any@boost@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z"
+      ],
+      "address": "005973b0",
+      "exact": true
+    },
+    {
+      "symbol": "?type@?$holder@VTextureId@RBX@@@any@boost@@UBEABVtype_info@@XZ",
+      "size": 6,
+      "verified_targets": {
+        "??_R0?AVTextureId@RBX@@@8": "0x949c78 (RTTI .?AVTextureId@RBX@@)"
+      },
+      "local_eh": [],
+      "address": "00597410",
+      "exact": true
+    },
+    {
+      "symbol": "?clone@?$holder@VTextureId@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "size": 96,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z": "0x5973b0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@VTextureId@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ],
+      "address": "00597420",
+      "exact": true
+    },
+    {
+      "symbol": "??$?0VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z",
+      "size": 89,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z": "0x5973b0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z"
+      ],
+      "address": "00597620",
+      "exact": true
+    },
+    {
+      "symbol": "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAE@XZ",
+      "size": 93,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x832414 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x832404 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8323fc (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6BDebugable@1@@": "0x8323f4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8323e4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8323d4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8323c4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8323b4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8323a4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x832394 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@": "0x83237c (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x130)",
+        "??1FaceInstance@RBX@@UAE@XZ": "0x597500 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "00597680",
+      "exact": true
+    },
+    {
+      "symbol": "??_G?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "verified_targets": {
+        "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAE@XZ": "0x597680 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "address": "005976e0",
+      "exact": true
+    },
+    {
+      "symbol": "??_G?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "verified_targets": {
+        "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAE@XZ": "0x597680 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "address": "005976e0",
+      "exact": true
+    },
+    {
+      "symbol": "??$?4VTextureId@RBX@@@any@boost@@QAEAAV01@ABVTextureId@RBX@@@Z",
+      "size": 51,
+      "verified_targets": {
+        "??$?0VTextureId@RBX@@@any@boost@@QAE@ABVTextureId@RBX@@@Z": "0x597620 (own row)"
+      },
+      "local_eh": [],
+      "address": "00597700",
+      "exact": true
+    },
+    {
+      "symbol": "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 98,
+      "verified_targets": {
+        "??$singleton@VContentId@RBX@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd80 (external)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@6B@": "0x832494 (vtable RTTI .?AV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ],
+      "address": "005978a0",
+      "exact": true
+    },
+    {
+      "symbol": "??$getset@P8Decal@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Decal@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z",
+      "size": 77,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Decal@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x832458 (vtable RTTI .?AV?$GetSetImpl@P8Decal@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "00597910",
+      "exact": true
+    },
+    {
+      "symbol": "??$getset@P8Decal@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Decal@2@BEMXZP852@AEXM@Z@Z",
+      "size": 77,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Decal@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@6B@": "0x83246c (vtable RTTI .?AV?$GetSetImpl@P8Decal@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "00597960",
+      "exact": true
+    },
+    {
+      "symbol": "??$getset@P8Texture@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Texture@2@BEMXZP852@AEXM@Z@Z",
+      "size": 77,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Texture@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@6B@": "0x832480 (vtable RTTI .?AV?$GetSetImpl@P8Texture@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "005979b0",
+      "exact": true
+    },
+    {
+      "symbol": "??$any_cast@ABVTextureId@RBX@@@boost@@YAABVTextureId@RBX@@ABVany@0@@Z",
+      "size": 134,
+      "verified_targets": {
+        "??_R0X@8": "0x929614 (RTTI .X)",
+        "??_R0?AVTextureId@RBX@@@8": "0x949c78 (RTTI .?AVTextureId@RBX@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+        "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$any_cast@ABVTextureId@RBX@@@boost@@YAABVTextureId@RBX@@ABVany@0@@Z"
+      ],
+      "address": "00597a00",
+      "exact": true
+    },
+    {
+      "symbol": "??1?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAE@XZ",
+      "size": 5,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ": "0x597da0 (support body exact at the bound address (counted by decal-lifetime-trial.json))"
+      },
+      "local_eh": [],
+      "address": "00597fa0",
+      "exact": true
+    },
+    {
+      "symbol": "?classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x975d60 (local static)",
+        "?sFaceInstance@RBX@@3PADA": "0x840670 (data 'FaceInstance')",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975ca0 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fdba0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ],
+      "address": "00597fb0",
+      "exact": true
+    },
+    {
+      "symbol": "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x975e28 (local static)",
+        "?sDecal@RBX@@3PADA": "0x949c68 (data 'Decal')",
+        "?classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x597fb0 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975d68 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fdb90 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ],
+      "address": "00598020",
+      "exact": true
+    },
+    {
+      "symbol": "?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x975ef0 (local static)",
+        "?sTexture@RBX@@3PADA": "0x949c70 (data 'Texture')",
+        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975e30 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fdb80 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ],
+      "address": "00598090",
+      "exact": true
+    },
+    {
+      "symbol": "??$?0P8Decal@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Decal@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "verified_targets": {
+        "??$getset@P8Decal@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Decal@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "0x597910 (own row)",
+        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020 (own row)",
+        "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x5978a0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x8325a0 (vtable RTTI .?AV?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Decal@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Decal@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ],
+      "address": "00598100",
+      "exact": true
+    },
+    {
+      "symbol": "??$?0P8Decal@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@QAE@PBD0P8Decal@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "verified_targets": {
+        "??$getset@P8Decal@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Decal@2@BEMXZP852@AEXM@Z@Z": "0x597960 (own row)",
+        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020 (own row)",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@6B@": "0x8325d4 (vtable RTTI .?AV?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Decal@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@QAE@PBD0P8Decal@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ],
+      "address": "005981b0",
+      "exact": true
+    },
+    {
+      "symbol": "??$?0P8Texture@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@QAE@PBD0P8Texture@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "verified_targets": {
+        "??$getset@P8Texture@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Texture@2@BEMXZP852@AEXM@Z@Z": "0x5979b0 (own row)",
+        "?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598090 (own row)",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@6B@": "0x832608 (vtable RTTI .?AV?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Texture@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@QAE@PBD0P8Texture@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ],
+      "address": "00598260",
+      "exact": true
+    },
+    {
+      "symbol": "??_GDecal@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "verified_targets": {
+        "??1Decal@RBX@@UAE@XZ": "0x597d30 (support body exact at the bound address (counted by decal-lifetime-trial.json))",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "address": "00598580",
+      "exact": true
+    },
+    {
+      "symbol": "?setTexture@Decal@RBX@@QAEXVTextureId@2@@Z",
+      "size": 126,
+      "verified_targets": {
+        "??9RBX@@YA_NABVContentId@0@0@Z": "0x55bd60 (external 0x55bd60 (jmp msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z))",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B": "0x975f14 (descriptor static (initializer this))",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?setTexture@Decal@RBX@@QAEXVTextureId@2@@Z"
+      ],
+      "address": "00598610",
+      "exact": true
+    },
+    {
+      "symbol": "?setSpecular@Decal@RBX@@QAEXM@Z",
+      "size": 52,
+      "verified_targets": {
+        "?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975ef8 (descriptor static (initializer this))",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "00598690",
+      "exact": true
+    },
+    {
+      "symbol": "?setShiny@Decal@RBX@@QAEXM@Z",
+      "size": 52,
+      "verified_targets": {
+        "?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975f30 (descriptor static (initializer this))",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "005986d0",
+      "exact": true
+    },
+    {
+      "symbol": "?setStudsPerTileU@Texture@RBX@@QAEXM@Z",
+      "size": 52,
+      "verified_targets": {
+        "?prop_StudsPerTileU@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B": "0x975f68 (descriptor static (initializer this))",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "00598710",
+      "exact": true
+    },
+    {
+      "symbol": "?setStudsPerTileV@Texture@RBX@@QAEXM@Z",
+      "size": 52,
+      "verified_targets": {
+        "?prop_StudsPerTileV@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B": "0x975f4c (descriptor static (initializer this))",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "00598750",
+      "exact": true
+    },
+    {
+      "symbol": "??_GTexture@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ": "0x597da0 (support body exact at the bound address (counted by decal-lifetime-trial.json))",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "address": "00598970",
+      "exact": true
+    },
+    {
+      "symbol": "??_G?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ": "0x597da0 (support body exact at the bound address (counted by decal-lifetime-trial.json))",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "address": "00598970",
+      "exact": true
+    },
+    {
+      "symbol": "??_G?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ": "0x597da0 (support body exact at the bound address (counted by decal-lifetime-trial.json))",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "address": "00598970",
+      "exact": true
+    },
+    {
+      "symbol": "??__E?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B@@YAXXZ",
+      "size": 56,
+      "verified_targets": {
+        "?setTexture@Decal@RBX@@QAEXVTextureId@2@@Z": "0x598610 (own row)",
+        "?getTexture@Decal@RBX@@QBE?AVTextureId@2@XZ": "0x4e5bb0 (own row)",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac (literal 'Appearance')",
+        "??_C@_07GKACAEDJ@Texture?$AA@": "0x8328cc (literal 'Texture')",
+        "?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B": "0x975f14 (descriptor static (initializer this))",
+        "??$?0P8Decal@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Decal@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x598100 (own row)",
+        "??__F?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B@@YAXXZ": "0x7fdb60 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [],
+      "address": "007f4190",
+      "exact": true
+    },
+    {
+      "symbol": "??__E?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 56,
+      "verified_targets": {
+        "?setSpecular@Decal@RBX@@QAEXM@Z": "0x598690 (own row)",
+        "?getSpecular@Decal@RBX@@QBEMXZ": "0x4e5be0 (own row)",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac (literal 'Appearance')",
+        "??_C@_08LNEJIEKD@Specular?$AA@": "0x8329b8 (literal 'Specular')",
+        "?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975ef8 (descriptor static (initializer this))",
+        "??$?0P8Decal@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@QAE@PBD0P8Decal@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5981b0 (own row)",
+        "??__F?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B@@YAXXZ": "0x7fdb40 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [],
+      "address": "007f41d0",
+      "exact": true
+    },
+    {
+      "symbol": "??__E?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 56,
+      "verified_targets": {
+        "?setShiny@Decal@RBX@@QAEXM@Z": "0x5986d0 (own row)",
+        "?getShiny@Decal@RBX@@QBEMXZ": "0x4e5bf0 (own row)",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac (literal 'Appearance')",
+        "??_C@_05JHPPIEJF@Shiny?$AA@": "0x8329c4 (literal 'Shiny')",
+        "?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975f30 (descriptor static (initializer this))",
+        "??$?0P8Decal@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VDecal@RBX@@M@Reflection@RBX@@QAE@PBD0P8Decal@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5981b0 (own row)",
+        "??__F?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B@@YAXXZ": "0x7fdb20 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [],
+      "address": "007f4210",
+      "exact": true
+    },
+    {
+      "symbol": "??__E?prop_StudsPerTileU@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 56,
+      "verified_targets": {
+        "?setStudsPerTileU@Texture@RBX@@QAEXM@Z": "0x598710 (own row)",
+        "?getStudsPerTileU@Texture@RBX@@QBEMXZ": "0x597350 (own row)",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac (literal 'Appearance')",
+        "??_C@_0O@CEEKMKLO@StudsPerTileU?$AA@": "0x8329cc (literal 'StudsPerTileU')",
+        "?prop_StudsPerTileU@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B": "0x975f68 (descriptor static (initializer this))",
+        "??$?0P8Texture@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@QAE@PBD0P8Texture@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x598260 (own row)",
+        "??__F?prop_StudsPerTileU@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B@@YAXXZ": "0x7fdb00 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [],
+      "address": "007f4250",
+      "exact": true
+    },
+    {
+      "symbol": "??__E?prop_StudsPerTileV@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 56,
+      "verified_targets": {
+        "?setStudsPerTileV@Texture@RBX@@QAEXM@Z": "0x598750 (own row)",
+        "?getStudsPerTileV@Texture@RBX@@QBEMXZ": "0x597360 (own row)",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac (literal 'Appearance')",
+        "??_C@_0O@PGHJJHN@StudsPerTileV?$AA@": "0x8329dc (literal 'StudsPerTileV')",
+        "?prop_StudsPerTileV@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B": "0x975f4c (descriptor static (initializer this))",
+        "??$?0P8Texture@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VTexture@RBX@@M@Reflection@RBX@@QAE@PBD0P8Texture@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x598260 (own row)",
+        "??__F?prop_StudsPerTileV@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B@@YAXXZ": "0x7fdae0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [],
+      "address": "007f4290",
+      "exact": true
+    },
+    {
+      "symbol": "??__F?prop_StudsPerTileV@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 29,
+      "verified_targets": {
+        "?prop_StudsPerTileV@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B": "0x975f4c (descriptor static (initializer this))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "007fdae0",
+      "exact": true
+    },
+    {
+      "symbol": "??__F?prop_StudsPerTileU@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 29,
+      "verified_targets": {
+        "?prop_StudsPerTileU@Texture@RBX@@2V?$PropDescriptor@VTexture@RBX@@M@Reflection@2@B": "0x975f68 (descriptor static (initializer this))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "007fdb00",
+      "exact": true
+    },
+    {
+      "symbol": "??__F?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 29,
+      "verified_targets": {
+        "?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975f30 (descriptor static (initializer this))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "007fdb20",
+      "exact": true
+    },
+    {
+      "symbol": "??__F?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B@@YAXXZ",
+      "size": 29,
+      "verified_targets": {
+        "?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975ef8 (descriptor static (initializer this))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "007fdb40",
+      "exact": true
+    },
+    {
+      "symbol": "??__F?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B@@YAXXZ",
+      "size": 29,
+      "verified_targets": {
+        "?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B": "0x975f14 (descriptor static (initializer this))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address": "007fdb60",
+      "exact": true
+    },
+    {
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975e30 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "007fdb80",
+      "exact": true
+    },
+    {
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975d68 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "007fdb90",
+      "exact": true
+    },
+    {
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975ca0 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": [],
+      "address": "007fdba0",
+      "exact": true
+    },
+    {
+      "symbol": "?getTexture@Decal@RBX@@QBE?AVTextureId@2@XZ",
+      "size": 44,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [],
+      "address": "004e5bb0",
+      "exact": true
+    },
+    {
+      "symbol": "?getSpecular@Decal@RBX@@QBEMXZ",
+      "size": 7,
+      "verified_targets": {},
+      "local_eh": [],
+      "address": "004e5be0",
+      "exact": true
+    },
+    {
+      "symbol": "?getShiny@Decal@RBX@@QBEMXZ",
+      "size": 7,
+      "verified_targets": {},
+      "local_eh": [],
+      "address": "004e5bf0",
+      "exact": true
+    },
+    {
+      "symbol": "??$callDoDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "verified_targets": {
+        "??$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41de20 (external)"
+      },
+      "local_eh": [],
+      "address": "0041e0b0",
+      "exact": true
+    },
+    {
+      "symbol": "??$callDoDeclare@$1?sTexture@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "verified_targets": {
+        "??$doDeclare@$1?sTexture@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41de90 (external)"
+      },
+      "local_eh": [],
+      "address": "0041e0c0",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598500",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598510",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598520",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598530",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598540",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598550",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598560",
+      "exact": true
+    },
+    {
+      "symbol": "??_EDecal@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_EDecal@RBX@@UAEPAXI@Z": "0x598580 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598570",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597e00",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597e10",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598830",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598840",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598850",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598860",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598950",
+      "exact": true
+    },
+    {
+      "symbol": "??_ETexture@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_ETexture@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598960",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597e00",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597e00",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597e10",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597e10",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598830",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598830",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598840",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598840",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598850",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598850",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598860",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598860",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598950",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598950",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598960",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAEPAXI@Z": "0x598970 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00598960",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975c0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975c0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975d0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975d0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975e0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975e0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975f0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005975f0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597600",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597600",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597610",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "00597610",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005983e0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005983e0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005983f0",
+      "exact": true
+    },
+    {
+      "symbol": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAEPAXI@Z": "0x5976e0 (own row (??_E and ??_G folded))"
+      },
+      "local_eh": [],
+      "address": "005983f0",
+      "exact": true
+    }
+  ],
+  "support_rows": [
+    {
+      "symbol": "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ",
+      "size": 100,
+      "verified_targets": {
+        "??0FaceInstance@RBX@@QAE@XZ": "0x5ef530 (external (evidence name))",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x832414 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x832404 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8323fc (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6BDebugable@1@@": "0x8323f4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8323e4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8323d4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8323c4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8323b4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8323a4 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x832394 (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@": "0x83237c (vtable RTTI .?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x130)"
+      },
+      "local_eh": [],
+      "address_hex": "0x597550",
+      "exact": false,
+      "support": "body exact at 0x597550; counted by decal-lifetime-trial.json (base_methods), not here"
+    },
+    {
+      "symbol": "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ",
+      "size": 100,
+      "verified_targets": {
+        "??0Decal@RBX@@QAE@XZ": "0x598400 (support body exact at the bound address (counted by decal-lifetime-trial.json))",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83255c (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x832550 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x832548 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6BDebugable@1@@": "0x832540 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x832530 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x832520 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x832510 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x832500 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8324f0 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8324e0 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@": "0x8324c8 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x130)"
+      },
+      "local_eh": [],
+      "address_hex": "0x5985a0",
+      "exact": false,
+      "support": "body exact at 0x5985a0; counted by decal-lifetime-trial.json (base_methods), not here"
+    },
+    {
+      "symbol": "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ",
+      "size": 156,
+      "verified_targets": {
+        "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ": "0x597550 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))",
+        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020 (own row)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8326d4 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8326c4 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8326bc (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6BDebugable@1@@": "0x8326b4 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8326a4 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x832694 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x832684 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x832674 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x832664 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x832654 (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@": "0x83263c (vtable RTTI .?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@ offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ"
+      ],
+      "address_hex": "0x598340",
+      "exact": false,
+      "support": "body exact at 0x598340; counted by decal-lifetime-trial.json (base_methods), not here"
+    },
+    {
+      "symbol": "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ",
+      "size": 156,
+      "verified_targets": {
+        "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ": "0x5985a0 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))",
+        "?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598090 (own row)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83288c (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x832880 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x832878 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6BDebugable@1@@": "0x832870 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x832860 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x832850 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x832840 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x832830 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x832820 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x832810 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@": "0x8327f8 (vtable RTTI .?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ"
+      ],
+      "address_hex": "0x598790",
+      "exact": false,
+      "support": "body exact at 0x598790; counted by decal-lifetime-trial.json (base_methods), not here"
+    },
+    {
+      "symbol": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sDecal@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d0bc (local static)",
+        "??$callDoDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAXXZ": "0x41e0b0 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41de20 (external)"
+      },
+      "local_eh": [],
+      "address_hex": "0x597d80",
+      "exact": false,
+      "support": "body exact at 0x597d80; counted by decal-lifetime-trial.json (base_methods), not here"
+    },
+    {
+      "symbol": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sTexture@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d0c0 (local static)",
+        "??$callDoDeclare@$1?sTexture@RBX@@3PADA@Name@RBX@@CAXXZ": "0x41e0c0 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sTexture@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41de90 (external)"
+      },
+      "local_eh": [],
+      "address_hex": "0x597e20",
+      "exact": false,
+      "support": "body exact at 0x597e20; counted by decal-lifetime-trial.json (base_methods), not here"
+    },
+    {
+      "symbol": "??0Decal@RBX@@QAE@XZ",
+      "size": 255,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ": "0x598340 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))",
+        "??_7Decal@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8327b4 (vtable RTTI .?AVDecal@RBX@@ offset 0x0)",
+        "??_7Decal@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8327a8 (vtable RTTI .?AVDecal@RBX@@ offset 0x10)",
+        "??_7Decal@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8327a0 (vtable RTTI .?AVDecal@RBX@@ offset 0x14)",
+        "??_7Decal@RBX@@6BDebugable@1@@": "0x832798 (vtable RTTI .?AVDecal@RBX@@ offset 0x20)",
+        "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x832788 (vtable RTTI .?AVDecal@RBX@@ offset 0x24)",
+        "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x832778 (vtable RTTI .?AVDecal@RBX@@ offset 0x44)",
+        "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x832768 (vtable RTTI .?AVDecal@RBX@@ offset 0x64)",
+        "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x832758 (vtable RTTI .?AVDecal@RBX@@ offset 0x84)",
+        "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x832748 (vtable RTTI .?AVDecal@RBX@@ offset 0xa4)",
+        "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x832738 (vtable RTTI .?AVDecal@RBX@@ offset 0xc4)",
+        "??_7Decal@RBX@@6B@": "0x832720 (vtable RTTI .?AVDecal@RBX@@ offset 0x130)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270 (external (evidence name))",
+        "??_C@_05CCOIDDEK@Decal?$AA@": "0x832714 (literal 'Decal')",
+        "__real@41a00000": "0x8222f0 (float constant 20.0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Decal@RBX@@QAE@XZ"
+      ],
+      "address_hex": "0x598400",
+      "exact": false,
+      "support": "body exact at 0x598400; counted by decal-lifetime-trial.json, not here"
+    },
+    {
+      "symbol": "??0Texture@RBX@@QAE@XZ",
+      "size": 215,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ": "0x598790 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))",
+        "__real@40000000": "0x81c434 (float constant 2.0)",
+        "??_7Texture@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83296c (vtable RTTI .?AVTexture@RBX@@ offset 0x0)",
+        "??_7Texture@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x832960 (vtable RTTI .?AVTexture@RBX@@ offset 0x10)",
+        "??_7Texture@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x832958 (vtable RTTI .?AVTexture@RBX@@ offset 0x14)",
+        "??_7Texture@RBX@@6BDebugable@1@@": "0x832950 (vtable RTTI .?AVTexture@RBX@@ offset 0x20)",
+        "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x832940 (vtable RTTI .?AVTexture@RBX@@ offset 0x24)",
+        "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x832930 (vtable RTTI .?AVTexture@RBX@@ offset 0x44)",
+        "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x832920 (vtable RTTI .?AVTexture@RBX@@ offset 0x64)",
+        "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x832910 (vtable RTTI .?AVTexture@RBX@@ offset 0x84)",
+        "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x832900 (vtable RTTI .?AVTexture@RBX@@ offset 0xa4)",
+        "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8328f0 (vtable RTTI .?AVTexture@RBX@@ offset 0xc4)",
+        "??_7Texture@RBX@@6B@": "0x8328d8 (vtable RTTI .?AVTexture@RBX@@ offset 0x130)",
+        "??_C@_07GKACAEDJ@Texture?$AA@": "0x8328cc (literal 'Texture')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Texture@RBX@@QAE@XZ"
+      ],
+      "address_hex": "0x598870",
+      "exact": false,
+      "support": "body exact at 0x598870; counted by decal-lifetime-trial.json, not here"
+    },
+    {
+      "symbol": "??1Decal@RBX@@UAE@XZ",
+      "size": 80,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAE@XZ": "0x597680 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??1Decal@RBX@@UAE@XZ"
+      ],
+      "address_hex": "0x597d30",
+      "exact": false,
+      "support": "body exact at 0x597d30; counted by decal-lifetime-trial.json, not here"
+    },
+    {
+      "symbol": "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ",
+      "size": 93,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83255c (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x832550 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x832548 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6BDebugable@1@@": "0x832540 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x832530 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x832520 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x832510 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x832500 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8324f0 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8324e0 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@": "0x8324c8 (vtable RTTI .?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@ offset 0x130)",
+        "??1Decal@RBX@@UAE@XZ": "0x597d30 (support body exact at the bound address (counted by decal-lifetime-trial.json))"
+      },
+      "local_eh": [],
+      "address_hex": "0x597da0",
+      "exact": false,
+      "support": "body exact at 0x597da0; counted by decal-lifetime-trial.json, not here"
+    },
+    {
+      "symbol": "??_G?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "address_hex": "0x598310",
+      "exact": false,
+      "support": "body exact at 0x598310; counted by click-detector-working.json / flag-family-working.json, not here"
+    },
+    {
+      "symbol": "??_G?$holder@VTextureId@RBX@@@any@boost@@UAEPAXI@Z",
+      "size": 88,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_7placeholder@any@boost@@6B@": "0x80ba1c (vtable RTTI .?AVplaceholder@any@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??_G?$holder@VTextureId@RBX@@@any@boost@@UAEPAXI@Z"
+      ],
+      "address_hex": "0x59eff0",
+      "exact": false,
+      "support": "body exact at 0x59eff0; counted by special-shape-working.json lists it pending-only as holder<MeshId> (ICF-shared, counted by nobody yet; left to the SpecialShape unit), not here"
+    }
+  ],
+  "non_exact": {
+    "0x597480 (Decal unit)": "StringConverter<ContentId>::convertToValue (value = ContentId(text); return true): COMDAT placed in this unit; util/Utilities.h declares StringConverter<T> without bodies (proposal 2).",
+    "0x597740 (Decal unit)": "Value conversion to TextureId (converts a held std::string through StringConverter<ContentId>, else throws runtime_error \"Unable to cast %s to %s\" 0082f71c): reflection/type.h Value::convert<T> body missing (proposal 3).",
+    "0x597a90 (Decal unit)": "Value::convert<TextureId> string branch (any_cast<std::string> 00416110, ContentId(string) 00615440): type.h body missing (proposal 3).",
+    "0x597b50 (Decal unit)": "TypedPropertyDescriptor<TextureId>::getStringValue (getValue 0061a7b0 + StringConverter<ContentId>::convertToString 005b6940): property.h declares it without a body (proposal 4).",
+    "0x597bd0 (Decal unit)": "TypedPropertyDescriptor<TextureId>::setStringValue (StringConverter<ContentId>::convertToValue then getset->setValue, slot 3): body missing (proposal 4).",
+    "0x597c90 (Decal unit)": "TypedPropertyDescriptor<TextureId>::getVariant(const DescribedBase*, Value&) (vtable 00832494 slot 4): property.h declares getVariant without a body (proposal 4). The row also contains the 5-byte ~DescribedCreatable<Decal> `jmp 00597680` at 00597d20 (BOUNDS: separate function).",
+    "0x597e40 (Decal unit)": "Value::get<TextureId> (any_cast<const TextureId&> 00597a00, else a converted copy 00597a90): type.h declares Value::get<T> without a body (proposal 3, as the SpecialShape MeshId row 0059f310).",
+    "0x597f30 (Decal unit)": "TypedPropertyDescriptor<TextureId>::setVariant(DescribedBase*, const Value&) (slot 5): body missing (proposal 4)."
+  },
+  "rejected": [
+    "setSpecular / setShiny / setStudsPerTileU / setStudsPerTileV with `value != member` (operand order): 56 B (fld member; fld value; fucom) against 52 B; the bytes need `member != value` under /fp:fast.",
+    "the setters without /fp:fast: fucompp, 56-58 B.",
+    "setSpecular as early returns, `!(value == specular) && !(value < 0)`, nested ifs, a named copy, getSpecular() in the compare, `value < specular || value > specular`: 56 B.",
+    "TypedPropertyDescriptor<TextureId> constructor with the generic Type::singleton<TextureId> (also with an explicit instantiation): singleton called after three argument pushes (98 B, schedule differs)."
+  ],
+  "proposals": [
+    "1. util/TextureId.h or reflection/type.h owner: declare `template<> inline const Type& Type::singleton<TextureId>() { return Type::singleton<ContentId>(); }`. Evidence: TypedPropertyDescriptor<TextureId>() 005978a0 calls singleton<ContentId> 0056cd80 directly, scheduled before the argument pushes (an inlined callee; the generic instances 00445610 / 0048b180 call their singleton after three pushes); the TextureId Value helpers 00597b31 / 00597cc8 / 0059782c use the same 0056cd80 type. Used here from native-headers/AppUnit594_2008/TextureIdType2008.h (non-colliding name); with it 005978a0 is exact.",
+    "2. util/Utilities.h owner (donor; StringConverter<T> declared only): an inline 2008 StringConverter<ContentId>::convertToValue body `value = ContentId(text); return true;` (00597480: string copy 0080245c, getNullName 00554270, string assign 0080240c, mime pointer store, string destructor; COMDAT in this unit).",
+    "3. native-headers/reflection/type.h owner: Value::get<T>() const body (`if (isType<T>()) return boost::any_cast<const T&>(value); Value copy(*this); return copy.convert<T>();`, the same proposal as the SpecialShape MeshId row 0059f310) and the Value::convert<T> body for ContentId-derived T (00597740 / 00597a90).",
+    "4. native-headers/reflection/property.h owner: TypedPropertyDescriptor<T> bodies for the 2008 virtuals declared without one: getVariant (slot 4: `value = getValue(object)` through any operator=; 00597c90), setVariant (slot 5: `setValue(object, value.get<T>())`; 00597f30), getStringValue / setStringValue (slots 7 / 8 through StringConverter<T>; 00597b50 / 00597bd0). The SpecialShape receipt proposes the same bodies for MeshId."
+  ],
+  "bounds": [
+    "00597c90 (149 B) ends with the separate 5-byte function ~DescribedCreatable<Decal> `jmp 00597680` at 00597d20 (the Texture counterpart 00597fa0 is its own row); the function list should split it."
+  ],
+  "vtables": {
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x8326c4",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WBA@AEPAXI@Z = 0x5975e0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UBEABVName@2@XZ = 0x597d80 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8326bc",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WBE@AEPAXI@Z = 0x5975f0 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x8326d4",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (inherited (FaceInstance vtable 0x84072c slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x832664",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WKE@AEPAXI@Z = 0x5983f0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x8326a4",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WCE@AEPAXI@Z = 0x597600 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x832694",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WEE@AEPAXI@Z = 0x597610 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x832684",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WGE@AEPAXI@Z = 0x5983e0 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x832674",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WIE@AEPAXI@Z = 0x5975c0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x832654",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@WME@AEPAXI@Z = 0x5975d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@": {
+      "address": "0x83263c",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 3))",
+        "4": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (inherited (FaceInstance vtable 0x840698 slot 4))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x8326b4",
+      "rtti": ".?AV?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x832880",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WBA@AEPAXI@Z = 0x598950 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UBEABVName@2@XZ = 0x597e20 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x832878",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WBE@AEPAXI@Z = 0x598960 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83288c",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (inherited (FaceInstance vtable 0x84072c slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x832820",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WKE@AEPAXI@Z = 0x598840 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x832860",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WCE@AEPAXI@Z = 0x597e00 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x832850",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WEE@AEPAXI@Z = 0x598860 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x832840",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WGE@AEPAXI@Z = 0x598830 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x832830",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WIE@AEPAXI@Z = 0x597e10 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x832810",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@WME@AEPAXI@Z = 0x598850 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@": {
+      "address": "0x8327f8",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 3))",
+        "4": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (inherited (FaceInstance vtable 0x840698 slot 4))"
+      }
+    },
+    "??_7?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x832870",
+      "rtti": ".?AV?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x832404",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OBA@AEPAXI@Z = 0x5975e0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UBEABVName@2@XZ = 0x597d80 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8323fc",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OBE@AEPAXI@Z = 0x5975f0 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x832414",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (inherited (FaceInstance vtable 0x84072c slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8323a4",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OKE@AEPAXI@Z = 0x5983f0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x8323e4",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OCE@AEPAXI@Z = 0x597600 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x8323d4",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OEE@AEPAXI@Z = 0x597610 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x8323c4",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OGE@AEPAXI@Z = 0x5983e0 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x8323b4",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OIE@AEPAXI@Z = 0x5975c0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x832394",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@OME@AEPAXI@Z = 0x5975d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@": {
+      "address": "0x83237c",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 3))",
+        "4": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (inherited (FaceInstance vtable 0x840698 slot 4))"
+      }
+    },
+    "??_7?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x8323f4",
+      "rtti": ".?AV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x832550",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OBA@AEPAXI@Z = 0x598950 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UBEABVName@2@XZ = 0x597e20 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x832548",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OBE@AEPAXI@Z = 0x598960 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83255c",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (inherited (FaceInstance vtable 0x84072c slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8324f0",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OKE@AEPAXI@Z = 0x598840 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x832530",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OCE@AEPAXI@Z = 0x597e00 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x832520",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OEE@AEPAXI@Z = 0x598860 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x832510",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OGE@AEPAXI@Z = 0x598830 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x832500",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OIE@AEPAXI@Z = 0x597e10 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x8324e0",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@OME@AEPAXI@Z = 0x598850 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@": {
+      "address": "0x8324c8",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 3))",
+        "4": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (inherited (FaceInstance vtable 0x840698 slot 4))"
+      }
+    },
+    "??_7?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x832540",
+      "rtti": ".?AV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x8327a8",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_EDecal@RBX@@WBA@AEPAXI@Z = 0x598560 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UBEABVName@2@XZ = 0x597d80 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8327a0",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_EDecal@RBX@@WBE@AEPAXI@Z = 0x598570 (own row)"
+      }
+    },
+    "??_7Decal@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x8327b4",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (inherited (FaceInstance vtable 0x84072c slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x832748",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_EDecal@RBX@@WKE@AEPAXI@Z = 0x598540 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x832788",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_EDecal@RBX@@WCE@AEPAXI@Z = 0x598500 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x832778",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_EDecal@RBX@@WEE@AEPAXI@Z = 0x598510 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x832768",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_EDecal@RBX@@WGE@AEPAXI@Z = 0x598520 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x832758",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_EDecal@RBX@@WIE@AEPAXI@Z = 0x598530 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7Decal@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x832738",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_EDecal@RBX@@WME@AEPAXI@Z = 0x598550 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7Decal@RBX@@6B@": {
+      "address": "0x832720",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 3))",
+        "4": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (inherited (FaceInstance vtable 0x840698 slot 4))"
+      }
+    },
+    "??_7Decal@RBX@@6BDebugable@1@@": {
+      "address": "0x832798",
+      "rtti": ".?AVDecal@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x832960",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_ETexture@RBX@@WBA@AEPAXI@Z = 0x598950 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UBEABVName@2@XZ = 0x597e20 (support body exact at the bound address (counted by decal-lifetime-trial.json (base_methods)))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x832958",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_ETexture@RBX@@WBE@AEPAXI@Z = 0x598960 (own row)"
+      }
+    },
+    "??_7Texture@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83296c",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (inherited (FaceInstance vtable 0x84072c slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x832900",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_ETexture@RBX@@WKE@AEPAXI@Z = 0x598840 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x832940",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_ETexture@RBX@@WCE@AEPAXI@Z = 0x597e00 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x832930",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_ETexture@RBX@@WEE@AEPAXI@Z = 0x598860 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x832920",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_ETexture@RBX@@WGE@AEPAXI@Z = 0x598830 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x832910",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_ETexture@RBX@@WIE@AEPAXI@Z = 0x597e10 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7Texture@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x8328f0",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_ETexture@RBX@@WME@AEPAXI@Z = 0x598850 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7Texture@RBX@@6B@": {
+      "address": "0x8328d8",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (FaceInstance vtable 0x840698 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (FaceInstance vtable 0x840698 slot 3))",
+        "4": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (inherited (FaceInstance vtable 0x840698 slot 4))"
+      }
+    },
+    "??_7Texture@RBX@@6BDebugable@1@@": {
+      "address": "0x832950",
+      "rtti": ".?AVTexture@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    }
+  },
+  "unit_map": [
+    {
+      "range": "00594000..00594d5f",
+      "unit": "Lua ThreadRef / FunctionRef unit (script/ThreadRef.cpp; LuaBridge2008 owner, not built here)",
+      "evidence": "starts before the range (00593bb0, app-unit588 map); evidence names ThreadRef::reset 00594060, operator= 00594100, Node::eraseAllRefs 00594210, FunctionRef ctors/dtor 00594400..005944e0, holder<FunctionRef> 00594570, Node::create 005948f0; initializer 007f4110 builds ThreadRef::syncSingleton (shared_ptr<boost::mutex>, mutex ctor 00594c90 -> 00594c10, boost::thread_resource_error 00568430). COMDATs of reflection headers it uses: Type::singleton<void> 00594a50, Value() 00594ac0, SignatureDescriptor 00594ae0..00594bf0.",
+      "library": false,
+      "rows_in_range": 34,
+      "counted_here": 0,
+      "counted_elsewhere": []
+    },
+    {
+      "range": "00594d60..00594e1f",
+      "unit": "InstanceHandle rows (v8tree/InstanceHandle; owner of the Instance headers, not built)",
+      "evidence": "evidence names linkTo 00594d60, operatorLess 00594de0, InstanceHandle(Instance*) 00594e00 (shared_from 00618a40).",
+      "library": false,
+      "rows_in_range": 3,
+      "counted_here": 0,
+      "counted_elsewhere": []
+    },
+    {
+      "range": "00594e20..00595a2f",
+      "unit": "boost 1.34.1 signals library (libs/signals/src: connection.cpp / named_slot_map.cpp / signal_base.cpp / slot.cpp) - library, not recovered",
+      "evidence": "connection::disconnect 00595230, ~connection 00595370, ~scoped_connection 005954b0, scoped_connection::operator= 00595540 (the bindings record_native_feature.py / app-unit588 use); list helpers ICF-named ArchiveBinder 00595140 / 00595190 / 00595820; FunctionDescriptor ctor 00595790 (reflection/function.h COMDAT: MemberDescriptor 0056b480, SignatureDescriptor 00594bf0, MemberDescriptorContainer::declare 0056fff0).",
+      "library": true,
+      "rows_in_range": 28,
+      "counted_here": 0,
+      "counted_elsewhere": []
+    },
+    {
+      "range": "00595a30..0059734f",
+      "unit": "RBX::worker_thread unit (util/worker_thread.cpp; no native header yet, not built here)",
+      "evidence": "evidence names data() 00595a30, SetThreadName 00595a80, ~ThreadPrioritySetter 00595ae0, checked_delete<data> 00595c50, ~worker_thread 00595cb0, join 00595d70, wake 00595de0, set_thread_name 00596db0, worker_thread(function0) 005971d0; boost::bind / function0 / thread instantiations 00595f90..005965d0.",
+      "library": false,
+      "rows_in_range": 53,
+      "counted_here": 0,
+      "counted_elsewhere": []
+    },
+    {
+      "range": "00597350..0059898f",
+      "unit": "Decal / Texture unit (v8datamodel/Decal.cpp): built here (AppUnit594_2008Decal.cpp)",
+      "evidence": "Decal vtable 008327b4 (RTTI Decal -> DescribedCreatable<Decal, FaceInstance, sDecal>), Texture 0083296c; Creatable<Instance>::create<Decal> 0041e4d0 new 0x16c, <Texture> 0041e550 new 0x174; constructors 00598400 / 00598870; initializers 007f4190..007f4290 and exit destructors 007fdae0..007fdba0; the FaceInstance classDescriptor and ~FaceInstance COMDATs live here (00597fb0 / 00597500).",
+      "library": false,
+      "rows_in_range": 73,
+      "counted_here": 53,
+      "counted_elsewhere": [
+        "00597500 counted by face-instance-lifetime.json",
+        "00597550 counted by decal-lifetime-trial.json",
+        "00597d30 counted by decal-lifetime-trial.json",
+        "00597d80 counted by decal-lifetime-trial.json",
+        "00597da0 counted by decal-lifetime-trial.json",
+        "00597e20 counted by decal-lifetime-trial.json",
+        "00598310 counted by click-detector-working.json, effects-working.json, flag-family-working.json, humanoid2008-working.json, spawn-working.json",
+        "00598340 counted by decal-lifetime-trial.json",
+        "00598400 counted by decal-lifetime-trial.json",
+        "005985a0 counted by decal-lifetime-trial.json",
+        "00598790 counted by decal-lifetime-trial.json",
+        "00598870 counted by decal-lifetime-trial.json"
+      ]
+    },
+    {
+      "range": "00598990..0059ecdf",
+      "unit": "PartInstance unit (v8datamodel/PartInstance.cpp; native PartInstance.h owner, not built here)",
+      "evidence": "G3D inline COMDATs Vector3::operator!= 00598990 / CoordinateFrame helper 005989d0, Controller::getValue 00598a50 (user-controller-working), Part 00598ad0..00598f10, PartInstance members 00598bd0..0059eb50 (ctor 0059d4d0, dtor 0059b970, vtable 00832d4c), Body::updatePV 00599360, G3D Array / std::vector<weak_ptr<PartInstance>> instantiations; initializers 007f42d0..007f4330 (\"Part\" Name 0094a240, CFrame property).",
+      "library": false,
+      "rows_in_range": 214,
+      "counted_here": 0,
+      "counted_elsewhere": [
+        "00598a50 counted by leaves2008-working.json, user-controller-working.json",
+        "00598fa0 counted by viewnew-part-mesh-working.json",
+        "00599e50 counted by leaves2008-working.json",
+        "00599f80 counted by world-service-all-trial.json, world-service-complete-trial.json",
+        "0059a4a0 counted by humanoid2008-working.json",
+        "0059a4b0 counted by humanoid2008-working.json, special-shape-working.json",
+        "0059d4d0 counted by part-resize-trial.json",
+        "0059de20 counted by part-set-locked-compact-trial.json, part-set-locked-trial.json",
+        "0059e150 counted by part-resize-trial.json"
+      ]
+    },
+    {
+      "range": "0059ece0..0059ffff",
+      "unit": "SpecialShape unit (special-shape-working.json; not built here)",
+      "evidence": "FactoryProduct<SpecialShape> 0059ece0 .. setTextureId 005a0030.",
+      "library": false,
+      "rows_in_range": 56,
+      "counted_here": 0,
+      "counted_elsewhere": [
+        "0059ece0 counted by special-shape-working.json",
+        "0059ed40 counted by special-shape-working.json",
+        "0059eda0 counted by special-shape-working.json",
+        "0059edb0 counted by special-shape-working.json",
+        "0059edd0 counted by special-shape-working.json",
+        "0059ede0 counted by special-shape-working.json",
+        "0059edf0 counted by special-shape-working.json",
+        "0059ee00 counted by special-shape-working.json",
+        "0059ee40 counted by special-shape-working.json",
+        "0059ee50 counted by special-shape-working.json",
+        "0059f050 counted by special-shape-working.json",
+        "0059f0a0 counted by special-shape-working.json",
+        "0059f0f0 counted by special-shape-working.json",
+        "0059f140 counted by special-shape-working.json",
+        "0059f260 counted by special-shape-working.json",
+        "0059f470 counted by special-shape-working.json",
+        "0059f480 counted by special-shape-working.json",
+        "0059f610 counted by special-shape-working.json",
+        "0059f630 counted by special-shape-working.json",
+        "0059f7e0 counted by special-shape-working.json",
+        "0059f850 counted by special-shape-working.json",
+        "0059f900 counted by special-shape-working.json",
+        "0059f9b0 counted by special-shape-working.json",
+        "0059fa60 counted by special-shape-working.json",
+        "0059fad0 counted by special-shape-working.json",
+        "0059fb70 counted by special-shape-working.json",
+        "0059fb80 counted by special-shape-working.json",
+        "0059fb90 counted by special-shape-working.json",
+        "0059fba0 counted by special-shape-working.json",
+        "0059fbb0 counted by special-shape-working.json",
+        "0059fcf0 counted by special-shape-working.json",
+        "0059fd00 counted by special-shape-working.json",
+        "0059fd10 counted by special-shape-working.json",
+        "0059fd20 counted by special-shape-working.json",
+        "0059fd30 counted by special-shape-working.json",
+        "0059fd40 counted by special-shape-working.json",
+        "0059fd50 counted by special-shape-working.json",
+        "0059fd60 counted by special-shape-working.json",
+        "0059fd70 counted by special-shape-working.json",
+        "0059fde0 counted by special-shape-working.json",
+        "0059fee0 counted by special-shape-working.json",
+        "0059ff10 counted by special-shape-working.json",
+        "0059ff70 counted by special-shape-working.json",
+        "0059ffd0 counted by special-shape-working.json"
+      ]
+    }
+  ],
+  "unit_map_note": "Rows of the range: 461; counted by other receipts: 65; counted here: 53 (plus 18 rows outside the range: initializers, exit destructors, COMDAT getters/callDoDeclare)."
+}
