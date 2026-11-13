@@ -96,6 +96,18 @@ class MewImportTests(unittest.TestCase):
              [{'addr': '005a4020', 'symbol': '?update'}], False, True, False, [])
         ])
 
+    def test_receipt_groups_skip_named_catch_funclets(self):
+        receipt = {
+            'flags': {'unit': ['AppUnit4ACMarkerTemplates.cpp']},
+            'rows': {'unit': [
+                {'exact': True, 'address': '004ac040', 'symbol': '?whole'},
+                {'exact': True, 'address': '004ac0ae', 'symbol': '?whole (catch funclet)'},
+            ]},
+        }
+        self.assertEqual(mew_import.receipt_groups(receipt)[0][2], [
+            {'addr': '004ac040', 'symbol': '?whole'},
+        ])
+
     def test_receipt_groups_fall_back_to_exact_method_records(self):
         receipt = {
             'sources': {'rebuild/2008-06/native-classes/AppUnit440Metadata.cpp': 'sha'},
