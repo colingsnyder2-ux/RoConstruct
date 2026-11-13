@@ -1050,21 +1050,69 @@ def dll_exports(path):
     return [data[start:data.index(b"\0", start)].decode("latin-1") for start in starts]
 
 
-def dll_import_lib(client, dll):
+def exe_imports(client, dll):
+    """Names the client exe imports by name from `dll` (its import table), or None when it can't be read."""
+    import struct
+    from roc import clients
+    try:
+        data = clients.exe_path(client, clients.load()[client]).read_bytes()
+    except (OSError, KeyError):
+        return None
+    pe = struct.unpack_from("<I", data, 0x3c)[0]
+    nsec, optsize = struct.unpack_from("<H", data, pe + 6)[0], struct.unpack_from("<H", data, pe + 20)[0]
+    sections = [struct.unpack_from("<IIII", data, pe + 24 + optsize + 40 * i + 8) for i in range(nsec)]  # vsize, rva, rawsize, rawptr
+
+    def at(rva):
+        for vsize, base, rawsize, rawptr in sections:
+            if base <= rva < base + max(vsize, rawsize):
+                return rawptr + rva - base
+        raise ValueError(rva)
+
+    table = struct.unpack_from("<I", data, pe + 24 + 104)[0]  # import directory RVA
+    names, wanted = set(), dll.lower()
+    while table:
+        thunk, _, _, name, first = struct.unpack_from("<IIIII", data, at(table))
+        if not name:
+            break
+        if data[at(name):data.index(b"\0", at(name))].decode("latin-1").lower() == wanted:
+            index = at(thunk or first)
+            while True:
+                entry = struct.unpack_from("<I", data, index)[0]
+                if not entry:
+                    break
+                if not entry & 0x80000000:  # by name: hint + name
+                    start = at(entry) + 2
+                    names.add(data[start:data.index(b"\0", start)].decode("latin-1"))
+                index += 4
+        table += 20
+    return names
+
+
+def dll_import_lib(client, dll, exe_only=False):
     """out/importlibs/<dll>.lib: an import library for a DLL the 2008 exe ships (e.g. rgmain.dll, the client's
     OgreMain), made by the period lib.exe from the DLL's own export names."""
     out = workspace(client) / "out" / "importlibs"
-    lib = out / (Path(dll).stem + ".lib")
+    # exe_only: offer only what the exe itself imports from the DLL. A symbol the DLL exports but the exe does not
+    # import is a local function in the exe (a fork or inline copy); an import library that offers it makes mined
+    # objects call the DLL's copy and collides with the exe's own definition.
+    suffix = "-exe" if exe_only else ""
+    lib = out / (Path(dll).stem + suffix + ".lib")
     if not lib.exists():
         out.mkdir(parents=True, exist_ok=True)
         path = ROOT / "clients" / client / dll
-        definition = out / (Path(dll).stem + ".def")
+        definition = out / (Path(dll).stem + suffix + ".def")
         if path.exists():
+            exported = dll_exports(path)
+            if exe_only:
+                used = exe_imports(client, Path(dll).name)
+                if used is None:
+                    raise RuntimeError("%s: cannot read the exe's import table" % lib.name)
+                exported = [n for n in exported if n in used]
             definition.write_text(
-                "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+                "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in exported))
         elif not definition.exists():  # an earlier .def from the same DLL is enough to rebuild the import library
             raise FileNotFoundError("%s: copy the client's %s into %s" % (lib.name, Path(dll).name, path.parent))
-        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + ".def",
+        code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + suffix + ".def",
                                               "/NAME:" + Path(dll).name, "/OUT:" + lib.name], out)
         if code:
             raise RuntimeError("%s: %s" % (lib.name, text[-300:]))
@@ -1261,7 +1309,7 @@ def build_module(client, name, log=print):
         if dll not in spec.get('import_dlls', []):
             raise ValueError('pointer-only import DLL must also be in import_dlls: ' + dll)
         deps.append(dll_pointer_import_lib(client, dll, names))
-    deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
+    deps += [dll_import_lib(client, dll, spec.get("import_exe_only", False)) for dll in spec.get("import_dlls", [])]
     deps += [ROOT / lib if "/" in lib else lib for lib in spec.get("extra_libs", [])]  # repo path or library name (msvcprt.lib)
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()

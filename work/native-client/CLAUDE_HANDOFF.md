@@ -2,6 +2,20 @@
 
 ## Update log
 
+### 2026-11-13 00:10 (Claude) - Ogre trial with NO stubs/aliases: what blocks it now
+- `ogre-native-rbx-trial.json` now layers every `Ogre*.cpp` native file + AppUnit67C_2008SubEntity; the stub file is empty, the
+  /alternatename aliases are gone, and the 4 render-setting globals (0x962f64..0x962f70, written by CRobloxWnd init 0045cbf0/0045df10/0045e3f0)
+  come from the module's TEST program (`tests/ogre_native_trial.cpp`), not product layers. New spec key `import_exe_only` builds the import
+  library from the EXE's import table (908 by-name imports from rgmain.dll), not all 7,465 DLL exports (`rebuild.exe_imports`).
+- With that, link shows 8 unresolved, ALL referenced by native objects (OgreRbxEntity.obj: RbxEntity::_updateRenderQueue (not recovered);
+  OgreRbxSceneManager.obj: SharedPtr<Texture>::destroy/swap, LightInfo copy ctor, PlaneBoundedVolume ctor/copy/dtor/operator=).
+  The exe never imports those from rgmain.dll, so the original inlined them; our compile leaves out-of-line `__imp_` calls = the same inlining-budget
+  mismatch as renderSingleObject 0069bc50 and RbxEntity 0067daf0. A native object is linked WHOLE, so one non-exact function pulls in
+  imports the exe doesn't have. Fix = link only byte-exact functions of native objects (what native_link_select --live-strip-references
+  does for the shell link) or make those functions match. SharedPtr<Texture> could be fixed with an explicit instantiation (not tried).
+- I first re-wrote TwoDManager::createVertexBuffer without seeing OgreTwoDVertexBuffer2008.cpp (yours, 16:39): same body, removed my duplicate.
+  Check native-classes/ for an existing definition before writing any function.
+
 ### 2026-11-12 22:30 (Claude) - state after the library/Ogre session; read before touching rbxgs-app, G3D or the sweep
 - **Engine repaired.** `out/RbxgsApp` links again (test exit 0, 4,419 owned). It was broken 16:23-20:30 by TWO things of mine:
   (1) `verified_layer` wrote helper-only objects (now opt-in: spec key `keep_helper_objects`, on only in ogre.json and mfc-atl.json);
