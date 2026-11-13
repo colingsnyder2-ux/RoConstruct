@@ -1,0 +1,2291 @@
+{
+  "family": "app unit 0042c000 (CLuaHtmlView unit tail, CLuaFunction unit, CMainFrame unit head): boost::function0 <bool(*)()> and std::vector<Reflection::Value> template rows",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "binder_templates": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+    ],
+    "value_vector": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/mfc-noinline-pcxstr",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+    ]
+  },
+  "profile": "document-swap flags; BinderTemplates with native-headers/mfc-noinline-pcxstr, std-noinline-string and boost-function-pod-vtable first (as record_native_luahtml_binder2008.py); ValueVector with mfc-noinline-pcxstr and std-noinline-string first (as native-classes/LuaArgs.cpp)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit42c.py": "86648e3856abaace20e8f31016b4fd91d1e85e975bc114e8ff4e4e119b7f2189",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/AppUnit42CBinderTemplates.cpp": "caf3e57aa97a722c48cb928d1fadaaff9590b3b919f57603ec2573d54af66a46",
+    "rebuild/2008-06/native-classes/AppUnit42CValueVector.cpp": "d09018fc11b064cdd343cefadf35ca4c7500b24ae982d1b758de6f16a64fd30c",
+    "rebuild/2008-06/native-headers/reflection/type.h": "94de0f25823a4c160f0123fb58447fada37396920787cf9f28917d33893ab3a9",
+    "rebuild/2008-06/native-headers/reflection/descriptor.h": "d2516c9b408489f0f94f6e22bd9d5c043511df82af465eeaa5ce9ff68dab713f",
+    "rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h": "be601ae5510ccaae5209999c9da1c9fa86fe2ec0a72946fe1ace10a93414bc04",
+    "rebuild/2008-06/native-headers/std-noinline-string/xstring": "abed1fd7598c0041a3ee2dfae5095d43464789877c22452215c0015d981e8bee",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp": "95fb4a51a884f45f6d3148c5a523aaac026919e5dce454e9884f416e57cb3334",
+    "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": "9e6bb423072221a911c59ec6bee3c0e51433df20a8a585fd80ae1f93515083dc"
+  },
+  "objects": {
+    "binder_templates": "0ac3a7098fe79ef0a05c2a384e6bf8b2fa531beb663f952c45d6d6d60e48d269",
+    "value_vector": "cd4821ab214278f78e9d3e02cb98646fce17a0787a51fdb18736c87e228d23e4"
+  },
+  "range": [
+    "0x0042c000",
+    "0x00430000"
+  ],
+  "range_rows": 129,
+  "unit_map": {
+    "CLuaHtmlView unit 0x42a630..0x42cecf (tail in range)": {
+      "rows_in_range": 16,
+      "counted_here": 4,
+      "counted_elsewhere": 6,
+      "kind": "rbx",
+      "why": "CLuaHtmlView::Binder (vtable 0x810654; ~Binder 0x42c3c0 is the only caller of 0x42c320). Binder methods are counted by luahtml-binder2008 (it proves 0x42c2b0 / 0x42c2c0 / 0x42c320 as uncounted instances); the function0<bool(*)()> rows are counted here; the rest are string-signal instances shared with other units, PropBinding (pending there) and CLuaHtmlView::bindElement (not natively declared)."
+    },
+    "CLuaFunction unit 0x42ced0..0x42e45f": {
+      "rows_in_range": 47,
+      "counted_here": 17,
+      "counted_elsewhere": 14,
+      "kind": "rbx",
+      "why": "starts with Name::doDeclare<sScriptContext> 0x42ced0 (\"ScriptContext\"; app-unit424-2008 counts the ScriptContext templates); CComObject<CLuaFunction> (vtable 0x80ebd8, Invoke 0x42e0c0 calls LuaArgs::push 0x42db20 and ~vector<Value> 0x42d630). The vector<Value> instances are counted here; holder<float> / holder<int> and the MFC / XTP / G3D header instances are library; CLuaFunction is not natively declared."
+    },
+    "CMainFrame unit 0x42e460..0x42ffff (head in range)": {
+      "rows_in_range": 66,
+      "counted_here": 0,
+      "counted_elsewhere": 15,
+      "kind": "excluded",
+      "why": "MainFrm.cpp: CMainFrame (\"CMainFrameV2\"), MyXTPCommandBars (0x810804), CPatchedControlComboBox (0x810914), CWrapperView (0x810a9c) and the XTP control overrides. Maintainer exclusion (CMainFrame / CWrapperView): mapped only; rows counted by patched-control-combo-box / wrapper-view / appearance stay theirs."
+    }
+  },
+  "library_rows": "boost::any holder<float> / holder<int> 0x42cf40..0x42cf90, G3D Color3uint8() 0x42e3d0 and the MFC / XTP header instances 0x42e3e0..0x42e450; no separately compiled library unit lies in the range",
+  "rows": [
+    {
+      "row": "see counted",
+      "size": 202,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042c000 counted by luahtml-binder2008-working",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          ">+R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "OLEAUT32.dll!SysFreeString",
+          "mfc90.dll!#306"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 474,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042c0d0 counted by luahtml-binder2008-working",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException",
+          "OLEAUT32.dll!SysFreeString",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042c8c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042c2b0",
+      "size": 6,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042c2b0 counted here",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042c2c0",
+      "size": 86,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042c2c0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!??8type_info@@QBE_NABV0@@Z"
+        ]
+      }
+    },
+    {
+      "row": "0x0042c320",
+      "size": 113,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042c320 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042c3c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042c391",
+      "size": 45,
+      "unit": "CLuaHtmlView",
+      "kind": "counted here",
+      "counted": "0042c391 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 276,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042c3c0 counted by luahtml-binder2008-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVBinder@CLuaHtmlView@@"
+        ],
+        "strings": [
+          "onchange"
+        ],
+        "imports": [
+          "OLEAUT32.dll!SysFreeString"
+        ],
+        "callers": [
+          "0x0042c4e0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 30,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042c4e0 counted by luahtml-binder2008-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 97,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042c500 counted by luahtml-binder2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 20,
+      "unit": "CLuaHtmlView",
+      "kind": "counted elsewhere",
+      "counted": "0042c570 counted by luahtml-binder2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042c590",
+      "size": 146,
+      "unit": "CLuaHtmlView",
+      "kind": "open",
+      "note": "last_value<void> over the std::string signal slot_call_iterator (evidence name): string-signal instance shared with other units",
+      "evidence": {
+        "evidence_name": "??$?RV?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@boost@@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042ccd0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042c630",
+      "size": 295,
+      "unit": "CLuaHtmlView",
+      "kind": "open",
+      "note": "PropBinding::PropBinding (luahtml-binder2008 pending: needs Instance::event_propertyChanged, proposal to the v8tree/Instance.h owner)",
+      "evidence": {
+        "callers": [
+          "0x0042c760"
+        ]
+      }
+    },
+    {
+      "row": "0x0042c760",
+      "size": 338,
+      "unit": "CLuaHtmlView",
+      "kind": "open",
+      "note": "Binder property binding body that news PropBinding (0x20): luahtml-binder2008 family, not counted there",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042c8c0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042c8c0",
+      "size": 1026,
+      "unit": "CLuaHtmlView",
+      "kind": "open",
+      "note": "CLuaHtmlView::bindElement (CLuaHtmlView is not a CHtmlView subclass in the native header; app-leaves2008 proposal)",
+      "evidence": {
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException",
+          "MSVCR90.dll!_invalid_parameter_noinfo",
+          "OLEAUT32.dll!VariantClear"
+        ],
+        "callers": [
+          "0x00417d10"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ccd0",
+      "size": 370,
+      "unit": "CLuaHtmlView",
+      "kind": "open",
+      "note": "signal1<void, std::string>::operator() (evidence name), string-signal instance shared with other units",
+      "evidence": {
+        "evidence_name": "??R?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE?AUunusable@?$last_value@X@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x0042ce50"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ce50",
+      "size": 115,
+      "unit": "CLuaHtmlView",
+      "kind": "open",
+      "note": "SignalDescImpl<void(std::string)>::fire (evidence name), called by 0x4a1070 / 0x63aca0 / 0x64e660",
+      "evidence": {
+        "evidence_name": "?fire@?$SignalDescImpl@$00$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "strings": [
+          "\n*R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s"
+        ],
+        "callers": [
+          "0x004a1070",
+          "0x0063aca0",
+          "0x0064e660"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 101,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042ced0 counted by app-unit424-2008-working",
+      "evidence": {
+        "strings": [
+          "ScriptContext"
+        ],
+        "callers": [
+          "0x0042de90",
+          "0x007ef120",
+          "0x007fa900"
+        ]
+      }
+    },
+    {
+      "row": "0x0042cf40",
+      "size": 6,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "boost::any::holder<float>::type (boost template of a built-in type, many units): library",
+      "evidence": {
+        "evidence_name": "?type@?$holder@M@any@boost@@UBEABVtype_info@@XZ"
+      }
+    },
+    {
+      "row": "0x0042cf50",
+      "size": 35,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "boost::any::holder<float>::clone: library",
+      "evidence": {
+        "evidence_name": "?clone@?$holder@M@any@boost@@UBEPAVplaceholder@23@XZ",
+        "rtti_refs": [
+          ".?AV?$holder@M@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ]
+      }
+    },
+    {
+      "row": "0x0042cf80",
+      "size": 6,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "boost::any::holder<int>::type: library",
+      "evidence": {
+        "evidence_name": "?type@?$holder@H@any@boost@@UBEABVtype_info@@XZ"
+      }
+    },
+    {
+      "row": "0x0042cf90",
+      "size": 35,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "boost::any::holder<int>::clone: library",
+      "evidence": {
+        "evidence_name": "?clone@?$holder@H@any@boost@@UBEPAVplaceholder@23@XZ",
+        "rtti_refs": [
+          ".?AV?$holder@H@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ]
+      }
+    },
+    {
+      "row": "0x0042cfc0",
+      "size": 109,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042cfc0 counted here",
+      "evidence": {
+        "evidence_name": "??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z",
+        "callers": [
+          "0x0042d470",
+          "0x0055d6d0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 91,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d030 counted by app-unit424-2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042de90",
+          "0x0042dfd0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 5,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d090 counted by app-unit424-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042d0a0",
+      "size": 68,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d0a0 counted here",
+      "evidence": {
+        "evidence_name": "??4Value@Reflection@RBX@@QAEAAV012@ABV012@@Z",
+        "callers": [
+          "0x00589410",
+          "0x005ad380"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 131,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d0f0 counted by creatable-shared-count-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$sp_counted_impl_pd@PAVScriptContext@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@"
+        ],
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042d2c0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 5,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d180 counted by app-unit424-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042d190",
+      "size": 101,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d190 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042d500"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 59,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d200 counted by lua-args-trial",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$holder@M@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042db20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 59,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d240 counted by lua-args-trial",
+      "evidence": {
+        "evidence_name": "??$?0_N@Value@Reflection@RBX@@QAE@AA_N@Z",
+        "rtti_refs": [
+          ".?AV?$holder@_N@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042db20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 59,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d280 counted by lua-args-trial",
+      "evidence": {
+        "rtti_refs": [
+          ".?AV?$holder@H@any@boost@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042db20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 171,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d2c0 counted by app-unit424-2008-working",
+      "evidence": {
+        "callers": [
+          "0x0042d3f0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d370",
+      "size": 88,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d370 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042d6a0",
+          "0x0042d8aa"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d3d0",
+      "size": 28,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d3d0 counted here",
+      "evidence": {
+        "evidence_name": "?destroy@?$allocator@VValue@Reflection@RBX@@@std@@QAEXPAVValue@Reflection@RBX@@@Z",
+        "callers": [
+          "0x0042d4bb",
+          "0x0055d71d"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 120,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042d3f0 counted by app-unit424-2008-working",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!malloc"
+        ],
+        "callers": [
+          "0x0042dde0",
+          "0x0042dfd0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d470",
+      "size": 75,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d470 counted here",
+      "evidence": {
+        "evidence_name": "??$_Uninit_fill_n@PAVValue@Reflection@RBX@@IV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAXPAVValue@Reflection@RBX@@IABV123@AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "callers": [
+          "0x0042d550",
+          "0x0042daa0",
+          "0x005897e0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d4bb",
+      "size": 54,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d4bb counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d500",
+      "size": 76,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d500 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042d8aa"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d550",
+      "size": 54,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d550 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042d6a0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d590",
+      "size": 43,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d590 counted here",
+      "evidence": {
+        "evidence_name": "?_Destroy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXPAVValue@Reflection@RBX@@0@Z",
+        "callers": [
+          "0x0042d5c0",
+          "0x0042d630",
+          "0x0042d6a0",
+          "0x0042d8aa"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d5c0",
+      "size": 57,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d5c0 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0055ffa9",
+          "0x00589878"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d600",
+      "size": 44,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d600 counted here",
+      "evidence": {
+        "callers": [
+          "0x0042d6a0",
+          "0x0042d8aa"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d630",
+      "size": 104,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d630 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0042d960",
+          "0x0042e0c0",
+          "0x00454ac0",
+          "0x00454c41",
+          "0x00454c90",
+          "0x0046b230"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d6a0",
+      "size": 522,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d6a0 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException",
+          "mfc90.dll!#800"
+        ],
+        "callers": [
+          "0x0042d980"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d8aa",
+      "size": 162,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d8aa counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_CxxThrowException"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d950",
+      "size": 5,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "jmp ~vector<Value>: the implicit LuaArgs destructor, reached only from EH unwind funclets; an implicit destructor cannot be instantiated explicitly and no helper function is added",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042d960",
+      "size": 25,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d960 counted here",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042d980",
+      "size": 180,
+      "unit": "CLuaFunction",
+      "kind": "counted here",
+      "counted": "0042d980 counted here",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042daa0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042da40",
+      "size": 84,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "CComObject<CLuaFunction> vtable slot 8 (E_NOTIMPL stub under AFX_MANAGE_STATE): CLuaFunction is not natively declared",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1087",
+          "mfc90.dll!#1117",
+          "mfc90.dll!#321"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 128,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042daa0 counted by lua-args-trial",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042db20"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 644,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042db20 counted by lua-args-trial",
+      "evidence": {
+        "strings": [
+          ">+R"
+        ],
+        "imports": [
+          "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCR90.dll!_CxxThrowException",
+          "OLEAUT32.dll!VariantClear"
+        ],
+        "callers": [
+          "0x0042e0c0",
+          "0x0046b230"
+        ]
+      }
+    },
+    {
+      "row": "0x0042dda4",
+      "size": 48,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "catch funclet of LuaArgs::push 0x42db20 ($LN96 in lua-args-trial): that owner's row",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 175,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042dde0 counted by app-unit424-2008-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042de90",
+      "size": 320,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "ServiceProvider::find<ScriptContext>() const (app-unit424-2008 not_exact: ~shared_ptr inlined)",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042dfd0",
+          "0x00454490",
+          "0x004545d0",
+          "0x004547b0",
+          "0x00454920",
+          "0x00578ef0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 228,
+      "unit": "CLuaFunction",
+      "kind": "counted elsewhere",
+      "counted": "0042dfd0 counted by app-unit424-2008-working",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo"
+        ],
+        "callers": [
+          "0x0042e0c0",
+          "0x00453c30",
+          "0x00454ac0",
+          "0x00454c90",
+          "0x0046b230",
+          "0x005a66b0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e0c0",
+      "size": 656,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "CComObject<CLuaFunction>::Invoke (vtable slot 7): CLuaFunction is not natively declared",
+      "evidence": {
+        "imports": [
+          "MSVCR90.dll!_invalid_parameter_noinfo",
+          "OLEAUT32.dll!VariantCopy",
+          "mfc90.dll!#1087",
+          "mfc90.dll!#1117"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e350",
+      "size": 119,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "catch funclet of Invoke 0x42e0c0 (\"CLuaFunction::Call failed, %s\")",
+      "evidence": {
+        "strings": [
+          "CLuaFunction::Call failed, %s"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e3d0",
+      "size": 13,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "G3D::Color3uint8::Color3uint8() (evidence name): G3D header instance, library",
+      "evidence": {
+        "evidence_name": "??0Color3uint8@G3D@@QAE@XZ"
+      }
+    },
+    {
+      "row": "0x0042e3e0",
+      "size": 28,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "CWnd::SendMessage-shaped MFC header instance (USER32 SendMessageA through m_hWnd +0x20), called by 0x70c410: library",
+      "evidence": {
+        "imports": [
+          "USER32.dll!SendMessageA"
+        ],
+        "callers": [
+          "0x0070c410"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e400",
+      "size": 12,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "CCmdTarget::InternalRelease wrapper (MFC header instance): library",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#4262"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e410",
+      "size": 28,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "XTP header predicate (2 / 3 / 5), called by XTP code 0x6c2820 / 0x73b4e0: library",
+      "evidence": {
+        "callers": [
+          "0x006c2820",
+          "0x0073b4e0",
+          "0x0073df00",
+          "0x0079f610"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e430",
+      "size": 31,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "XTP / MFC frame header instance (vtable +0x198 call, +0x138 store), called by 0x42fe00: library",
+      "evidence": {
+        "callers": [
+          "0x0042fe00"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e450",
+      "size": 5,
+      "unit": "CLuaFunction",
+      "kind": "open",
+      "note": "jmp CXTPMDIFrameWnd method 0x6e1950: XTP header instance, library",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e460",
+      "size": 6,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e470",
+      "size": 48,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e4a0",
+      "size": 5,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e4b0",
+      "size": 6,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e4c0",
+      "size": 54,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "CMainFrameV2"
+        ],
+        "imports": [
+          "mfc90.dll!#6584"
+        ],
+        "callers": [
+          "0x00449bf0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e500",
+      "size": 72,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "USER32.dll!LoadIconA",
+          "mfc90.dll!#1108",
+          "mfc90.dll!#1137",
+          "mfc90.dll!#1222"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 18,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042e550 counted by browser-view-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e570",
+      "size": 100,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "callers": [
+          "0x0042e5e0",
+          "0x0042e610",
+          "0x0042ee90",
+          "0x0042fb80",
+          "0x0042fbb0"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e5e0",
+      "size": 47,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "callers": [
+          "0x00430f50"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e610",
+      "size": 149,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "callers": [
+          "0x00430f50"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e6b0",
+      "size": 27,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVCPatchedControlComboBox@@"
+        ],
+        "callers": [
+          "0x0042fe00"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e6d0",
+      "size": 33,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300"
+        ],
+        "callers": [
+          "0x0042e770",
+          "0x00777a10"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e700",
+      "size": 33,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300"
+        ],
+        "callers": [
+          "0x0042e830"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e730",
+      "size": 54,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#4311"
+        ],
+        "callers": [
+          "0x0042e8f0",
+          "0x00798680"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e770",
+      "size": 191,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#310",
+          "mfc90.dll!#4311",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e830",
+      "size": 191,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#310",
+          "mfc90.dll!#4311",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e8f0",
+      "size": 211,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#300",
+          "mfc90.dll!#310",
+          "mfc90.dll!#4311",
+          "mfc90.dll!#601"
+        ]
+      }
+    },
+    {
+      "row": "0x0042e9d0",
+      "size": 26,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042e9f0",
+      "size": 7,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "evidence_name": "?getSleepCount@Assembly@RBX@@QBEHXZ"
+      }
+    },
+    {
+      "row": "0x0042ea00",
+      "size": 43,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ea30",
+      "size": 26,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ea50",
+      "size": 26,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ea70",
+      "size": 6,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ea80",
+      "size": 7,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ea90",
+      "size": 32,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042eab0",
+      "size": 11,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 89,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042eac0 counted by patched-control-combo-box-working",
+      "evidence": {
+        "imports": [
+          "USER32.dll!SendMessageA"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 5,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042eb20 counted by patched-control-combo-box-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 6,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042eb30 counted by patched-control-combo-box-working",
+      "evidence": {}
+    },
+    {
+      "row": "see counted",
+      "size": 74,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042eb40 counted by wrapper-view-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVCWrapperView@@"
+        ],
+        "imports": [
+          "mfc90.dll!#588"
+        ],
+        "callers": [
+          "0x00430010"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 35,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042eb90 counted by wrapper-view-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#5607"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 73,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042ebc0 counted by wrapper-view-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#4679"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 207,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042ec10 counted by wrapper-view-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1727",
+          "mfc90.dll!#4516",
+          "mfc90.dll!#4529",
+          "mfc90.dll!#5497"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 6,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042ece0 counted by wrapper-view-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ecf0",
+      "size": 13,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1137"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ed00",
+      "size": 19,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ed20",
+      "size": 169,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "T*R",
+          "VAR %s"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@",
+          "mfc90.dll!#2539",
+          "mfc90.dll!#316"
+        ]
+      }
+    },
+    {
+      "row": "0x0042edd0",
+      "size": 169,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "\n*R",
+          "T*R",
+          "TEX %s"
+        ],
+        "imports": [
+          "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s",
+          "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@",
+          "mfc90.dll!#2539",
+          "mfc90.dll!#316"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ee80",
+      "size": 8,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ee90",
+      "size": 48,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042eec0",
+      "size": 24,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042eee0",
+      "size": 5,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#978"
+        ]
+      }
+    },
+    {
+      "row": "0x0042eef0",
+      "size": 24,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ef10",
+      "size": 38,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042ef40",
+      "size": 54,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1855"
+        ],
+        "callers": [
+          "0x00431d00"
+        ]
+      }
+    },
+    {
+      "row": "0x0042ef80",
+      "size": 5,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#670"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 101,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042ef90 counted by appearance-working",
+      "evidence": {
+        "strings": [
+          "Accoutrement"
+        ],
+        "callers": [
+          "0x007ef180",
+          "0x007fa980"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 101,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042f000 counted by appearance-working",
+      "evidence": {
+        "strings": [
+          "Hat"
+        ],
+        "callers": [
+          "0x007ef1d0",
+          "0x007fa940"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 8,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042f070 counted by patched-control-combo-box-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042f080",
+      "size": 27,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "callers": [
+          "0x006ac1c0",
+          "0x006b5340",
+          "0x006b5380",
+          "0x006b6c50",
+          "0x006e1f20",
+          "0x006e2070"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f0a0",
+      "size": 485,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "KERNEL32.dll!FindResourceA",
+          "KERNEL32.dll!FreeResource",
+          "KERNEL32.dll!LoadResource",
+          "KERNEL32.dll!LockResource"
+        ],
+        "callers": [
+          "0x0042f290"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f290",
+      "size": 237,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "\"%s_%d\"",
+          "\"%s_%d_D\"",
+          "\"%s_%d_H\""
+        ],
+        "imports": [
+          "mfc90.dll!#2539",
+          "mfc90.dll!#316",
+          "mfc90.dll!#4481",
+          "mfc90.dll!#601"
+        ],
+        "callers": [
+          "0x0042f380",
+          "0x0042f490"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f380",
+      "size": 271,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "arrowleft_green",
+          "arrowright_green",
+          "home_brown",
+          "refresh_doc"
+        ],
+        "callers": [
+          "0x004108b0",
+          "0x0042f490"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f490",
+      "size": 1211,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "bug_error",
+          "group",
+          "lock",
+          "lock_open"
+        ],
+        "callers": [
+          "0x00431d00"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f950",
+      "size": 83,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVMyXTPCommandBars@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f9b0",
+      "size": 30,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "0x0042f9d0",
+      "size": 336,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "CommandBars",
+          "DockingPane",
+          "Options",
+          "Shortcuts"
+        ],
+        "imports": [
+          "mfc90.dll!#4262"
+        ],
+        "callers": [
+          "0x004309f0",
+          "0x00430f50",
+          "0x00431f10"
+        ]
+      }
+    },
+    {
+      "row": "0x0042fb20",
+      "size": 95,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042fb80",
+      "size": 46,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042fbb0",
+      "size": 49,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042fbf0",
+      "size": 246,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042fcf0",
+      "size": 93,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "strings": [
+          "Camera Positioning"
+        ],
+        "imports": [
+          "MSVCR90.dll!_mbscmp"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 91,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042fd50 counted by patched-control-combo-box-working",
+      "evidence": {
+        "rtti_refs": [
+          ".?AVCPatchedControlComboBox@@"
+        ],
+        "imports": [
+          "mfc90.dll!#798"
+        ],
+        "callers": [
+          "0x0042fdd0"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 30,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042fdb0 counted by patched-control-combo-box-working",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#800"
+        ]
+      }
+    },
+    {
+      "row": "see counted",
+      "size": 36,
+      "unit": "CMainFrame",
+      "kind": "counted elsewhere",
+      "counted": "0042fdd0 counted by patched-control-combo-box-working",
+      "evidence": {}
+    },
+    {
+      "row": "0x0042fe00",
+      "size": 513,
+      "unit": "CMainFrame",
+      "kind": "excluded (maintainer exclusion: CMainFrame / CWrapperView unit, mapped only)",
+      "evidence": {
+        "imports": [
+          "mfc90.dll!#1097",
+          "mfc90.dll!#4262",
+          "mfc90.dll!#798"
+        ]
+      }
+    }
+  ],
+  "methods": [
+    {
+      "address": "0042c2b0",
+      "symbol": "?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042c2c0",
+      "symbol": "?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "size": 86,
+      "exact": true,
+      "verified_targets": {
+        "??_R0P6A_NXZ@8": "0x92eb08 (RTTI .P6A_NXZ)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042c320",
+      "symbol": "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z [0x0:0x71]",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x810658 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z"
+      ]
+    },
+    {
+      "address": "0042c391",
+      "symbol": "??$?4P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@P6A_NXZ@Z [0x71:0x9e]",
+      "size": 45,
+      "exact": true,
+      "verified_targets": {
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042cfc0",
+      "symbol": "??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z",
+      "size": 109,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z"
+      ]
+    },
+    {
+      "address": "0042d0a0",
+      "symbol": "??4Value@Reflection@RBX@@QAEAAV012@ABV012@@Z",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042d190",
+      "symbol": "??$_Copy_backward_opt@PAVValue@Reflection@RBX@@PAV123@Uforward_iterator_tag@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042d370",
+      "symbol": "??$_Fill@PAVValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@0ABV123@@Z",
+      "size": 88,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042d3d0",
+      "symbol": "?destroy@?$allocator@VValue@Reflection@RBX@@@std@@QAEXPAVValue@Reflection@RBX@@@Z",
+      "size": 28,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042d470",
+      "symbol": "??$_Uninit_fill_n@PAVValue@Reflection@RBX@@IV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAXPAVValue@Reflection@RBX@@IABV123@AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z [0x0:0x4b]",
+      "size": 75,
+      "exact": true,
+      "verified_targets": {
+        "??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z": "0x42cfc0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Uninit_fill_n@PAVValue@Reflection@RBX@@IV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAXPAVValue@Reflection@RBX@@IABV123@AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+      ]
+    },
+    {
+      "address": "0042d4bb",
+      "symbol": "??$_Uninit_fill_n@PAVValue@Reflection@RBX@@IV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAXPAVValue@Reflection@RBX@@IABV123@AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z [0x4b:0x81]",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {
+        "?destroy@?$allocator@VValue@Reflection@RBX@@@std@@QAEXPAVValue@Reflection@RBX@@@Z": "0x42d3d0 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d500",
+      "symbol": "??$_Unchecked_move_backward@PAVValue@Reflection@RBX@@PAV123@@stdext@@YAPAVValue@Reflection@RBX@@PAV123@00@Z",
+      "size": 76,
+      "exact": true,
+      "verified_targets": {
+        "??$_Copy_backward_opt@PAVValue@Reflection@RBX@@PAV123@Uforward_iterator_tag@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x42d190 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d550",
+      "symbol": "?_Ufill@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEPAVValue@Reflection@RBX@@PAV345@IABV345@@Z",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAVValue@Reflection@RBX@@IV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAXPAVValue@Reflection@RBX@@IABV123@AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x42d470 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d590",
+      "symbol": "?_Destroy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXPAVValue@Reflection@RBX@@0@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042d5c0",
+      "symbol": "?_Tidy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXXZ",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {
+        "?_Destroy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXPAVValue@Reflection@RBX@@0@Z": "0x42d590 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d600",
+      "symbol": "??$_Umove@PAVValue@Reflection@RBX@@@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEPAVValue@Reflection@RBX@@PAV234@00@Z",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_copy@PAVValue@Reflection@RBX@@PAV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x55d6d0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d630",
+      "symbol": "??1?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ",
+      "size": 104,
+      "exact": true,
+      "verified_targets": {
+        "?_Destroy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXPAVValue@Reflection@RBX@@0@Z": "0x42d590 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0042d6a0",
+      "symbol": "?_Insert_n@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@2@IABVValue@Reflection@RBX@@@Z [0x0:0x20a]",
+      "size": 522,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@KAXXZ": "0x4c6d40 (instance (bytes equal, targets verified))",
+        "??$_Allocate@VValue@Reflection@RBX@@@std@@YAPAVValue@Reflection@RBX@@IPAV123@@Z": "0x66fd40 (instance (bytes equal, targets verified))",
+        "??$_Uninit_copy@PAVValue@Reflection@RBX@@PAV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x55d6d0 (instance (bytes equal, targets verified))",
+        "?_Ufill@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEPAVValue@Reflection@RBX@@PAV345@IABV345@@Z": "0x42d550 (own row)",
+        "?_Destroy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXPAVValue@Reflection@RBX@@0@Z": "0x42d590 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??0Value@Reflection@RBX@@QAE@ABV012@@Z": "0x40a320 (evidence name)",
+        "??$_Umove@PAVValue@Reflection@RBX@@@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEPAVValue@Reflection@RBX@@PAV234@00@Z": "0x42d600 (own row)",
+        "??$_Fill@PAVValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@0ABV123@@Z": "0x42d370 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert_n@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@2@IABVValue@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "0042d8aa",
+      "symbol": "?_Insert_n@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@2@IABVValue@Reflection@RBX@@@Z [0x20a:0x2ac]",
+      "size": 162,
+      "exact": true,
+      "verified_targets": {
+        "?_Destroy@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXPAVValue@Reflection@RBX@@0@Z": "0x42d590 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??0Value@Reflection@RBX@@QAE@ABV012@@Z": "0x40a320 (evidence name)",
+        "??$_Umove@PAVValue@Reflection@RBX@@@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEPAVValue@Reflection@RBX@@PAV234@00@Z": "0x42d600 (own row)",
+        "??$_Unchecked_move_backward@PAVValue@Reflection@RBX@@PAV123@@stdext@@YAPAVValue@Reflection@RBX@@PAV123@00@Z": "0x42d500 (own row)",
+        "??$_Fill@PAVValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@0ABV123@@Z": "0x42d370 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d960",
+      "symbol": "??1?$auto_ptr@V?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@std@@QAE@XZ",
+      "size": 25,
+      "exact": true,
+      "verified_targets": {
+        "??1?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x42d630 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042d980",
+      "symbol": "?insert@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@2@V?$_Vector_const_iterator@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@2@ABVValue@Reflection@RBX@@@Z",
+      "size": 180,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert_n@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@2@IABVValue@Reflection@RBX@@@Z": "0x42d6a0 (own row)"
+      },
+      "local_eh": []
+    }
+  ],
+  "instances": {
+    "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": {
+      "address": "0x00810658",
+      "symbol": "?stored_vtable@?1???$assign_to@P6A_NXZ@?$function0@_NV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABQ6A_NXZ@Z@4U?$basic_vtable0@_NV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ?manage@?$functor_manager@P6A_NXZV?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z": "0x42c2c0 (own row)",
+        "+0x4 ?invoke@?$function_invoker0@P6A_NXZ_N@function@detail@boost@@SA_NAATfunction_buffer@234@@Z": "0x42c2b0 (own row)"
+      }
+    },
+    "??$_Uninit_copy@PAVValue@Reflection@RBX@@PAV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": {
+      "address": "0x0055d6d0",
+      "symbol": "??$_Uninit_copy@PAVValue@Reflection@RBX@@PAV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 139,
+      "exact": false,
+      "verified_targets": {
+        "??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z": "0x42cfc0 (own row)",
+        "?destroy@?$allocator@VValue@Reflection@RBX@@@std@@QAEXPAVValue@Reflection@RBX@@@Z": "0x42d3d0 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Uninit_copy@PAVValue@Reflection@RBX@@PAV123@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@YAPAVValue@Reflection@RBX@@PAV123@00AAV?$allocator@VValue@Reflection@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x4d != body 0x8b, whole body compared with the image bytes"
+    },
+    "?_Xlen@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@KAXXZ": {
+      "address": "0x004c6d40",
+      "symbol": "?_Xlen@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@KAXXZ",
+      "size": 112,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x80e190 (literal 'vector<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (data instance (bytes equal, fields verified))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Xlen@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@KAXXZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "__TI3?AVlength_error@std@@": {
+      "address": "0x008d0cc0",
+      "symbol": "__TI3?AVlength_error@std@@",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??1length_error@std@@UAE@XZ": "0x4024c0 (instance (bytes equal, targets verified))",
+        "+0xc __CTA3?AVlength_error@std@@": "0x8d0cd0 (data instance (bytes equal, fields verified))"
+      }
+    },
+    "??1length_error@std@@UAE@XZ": {
+      "address": "0x004024c0",
+      "symbol": "??1length_error@std@@UAE@XZ",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "__CTA3?AVlength_error@std@@": {
+      "address": "0x008d0cd0",
+      "symbol": "__CTA3?AVlength_error@std@@",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 __CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z40": "0x8d0ce0 (data instance (bytes equal, fields verified))",
+        "+0x8 __CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40": "0x8d0c78 (data instance (bytes equal, fields verified))",
+        "+0xc __CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12": "0x8d0810 (data instance (bytes equal, fields verified))"
+      }
+    },
+    "__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z40": {
+      "address": "0x008d0ce0",
+      "symbol": "__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z40",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVlength_error@std@@@8": "0x9285c4 (RTTI .?AVlength_error@std@@)",
+        "+0x18 ??0length_error@std@@QAE@ABV01@@Z": "0x405040 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??0length_error@std@@QAE@ABV01@@Z": {
+      "address": "0x00405040",
+      "symbol": "??0length_error@std@@QAE@ABV01@@Z",
+      "size": 25,
+      "exact": false,
+      "verified_targets": {
+        "??0logic_error@std@@QAE@ABV01@@Z": "0x404f30 (instance (bytes equal, targets verified))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0logic_error@std@@QAE@ABV01@@Z": {
+      "address": "0x00404f30",
+      "symbol": "??0logic_error@std@@QAE@ABV01@@Z",
+      "size": 89,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@ABV01@@Z": "0x802888 (msvcr90.dll!??0exception@std@@QAE@ABV01@@Z)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40": {
+      "address": "0x008d0c78",
+      "symbol": "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVlogic_error@std@@@8": "0x9285a4 (RTTI .?AVlogic_error@std@@)",
+        "+0x18 ??0logic_error@std@@QAE@ABV01@@Z": "0x404f30 (instance (bytes equal, targets verified))"
+      }
+    },
+    "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12": {
+      "address": "0x008d0810",
+      "symbol": "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVexception@std@@@8": "0x928588 (RTTI .?AVexception@std@@)",
+        "+0x18 ??0exception@std@@QAE@ABV01@@Z": "0x6a1592 (msvcr90.dll!??0exception@std@@QAE@ABV01@@Z)"
+      }
+    },
+    "??$_Allocate@VValue@Reflection@RBX@@@std@@YAPAVValue@Reflection@RBX@@IPAV123@@Z": {
+      "address": "0x0066fd40",
+      "symbol": "??$_Allocate@VValue@Reflection@RBX@@@std@@YAPAVValue@Reflection@RBX@@IPAV123@@Z",
+      "size": 91,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (data instance (bytes equal, fields verified))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "__TI2?AVbad_alloc@std@@": {
+      "address": "0x008d07d8",
+      "symbol": "__TI2?AVbad_alloc@std@@",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??1bad_alloc@std@@UAE@XZ": "0x4023b0 (instance (bytes equal, targets verified))",
+        "+0xc __CTA2?AVbad_alloc@std@@": "0x8d07e8 (data instance (bytes equal, fields verified))"
+      }
+    },
+    "??1bad_alloc@std@@UAE@XZ": {
+      "address": "0x004023b0",
+      "symbol": "??1bad_alloc@std@@UAE@XZ",
+      "size": 12,
+      "exact": false,
+      "verified_targets": {
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__imp_??1exception@std@@UAE@XZ": "0x80289c (msvcr90.dll!??1exception@std@@UAE@XZ)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "__CTA2?AVbad_alloc@std@@": {
+      "address": "0x008d07e8",
+      "symbol": "__CTA2?AVbad_alloc@std@@",
+      "size": 12,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 __CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12": "0x8d07f4 (data instance (bytes equal, fields verified))",
+        "+0x8 __CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12": "0x8d0810 (instance (bytes equal, targets verified))"
+      }
+    },
+    "__CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12": {
+      "address": "0x008d07f4",
+      "symbol": "__CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12",
+      "size": 28,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x4 ??_R0?AVbad_alloc@std@@@8": "0x92856c (RTTI .?AVbad_alloc@std@@)",
+        "+0x18 ??0bad_alloc@std@@QAE@ABV01@@Z": "0x4029d0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??0bad_alloc@std@@QAE@ABV01@@Z": {
+      "address": "0x004029d0",
+      "symbol": "??0bad_alloc@std@@QAE@ABV01@@Z",
+      "size": 26,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@ABV01@@Z": "0x802888 (msvcr90.dll!??0exception@std@@QAE@ABV01@@Z)",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    }
+  },
+  "vtables": "none emitted (the boost::function stored vtable 0x810658 is verified as a data instance)",
+  "counted_elsewhere": [
+    "0042c000 counted by luahtml-binder2008-working",
+    "0042c0d0 counted by luahtml-binder2008-working",
+    "0042c3c0 counted by luahtml-binder2008-working",
+    "0042c4e0 counted by luahtml-binder2008-working",
+    "0042c500 counted by luahtml-binder2008-working",
+    "0042c570 counted by luahtml-binder2008-working",
+    "0042ced0 counted by app-unit424-2008-working",
+    "0042d030 counted by app-unit424-2008-working",
+    "0042d090 counted by app-unit424-2008-working",
+    "0042d0f0 counted by creatable-shared-count-working",
+    "0042d180 counted by app-unit424-2008-working",
+    "0042d200 counted by lua-args-trial",
+    "0042d240 counted by lua-args-trial",
+    "0042d280 counted by lua-args-trial",
+    "0042d2c0 counted by app-unit424-2008-working",
+    "0042d3f0 counted by app-unit424-2008-working",
+    "0042daa0 counted by lua-args-trial",
+    "0042db20 counted by lua-args-trial",
+    "0042dde0 counted by app-unit424-2008-working",
+    "0042dfd0 counted by app-unit424-2008-working",
+    "0042e550 counted by browser-view-working",
+    "0042eac0 counted by patched-control-combo-box-working",
+    "0042eb20 counted by patched-control-combo-box-working",
+    "0042eb30 counted by patched-control-combo-box-working",
+    "0042eb40 counted by wrapper-view-working",
+    "0042eb90 counted by wrapper-view-working",
+    "0042ebc0 counted by wrapper-view-working",
+    "0042ec10 counted by wrapper-view-working",
+    "0042ece0 counted by wrapper-view-working",
+    "0042ef90 counted by appearance-working",
+    "0042f000 counted by appearance-working",
+    "0042f070 counted by patched-control-combo-box-working",
+    "0042fd50 counted by patched-control-combo-box-working",
+    "0042fdb0 counted by patched-control-combo-box-working",
+    "0042fdd0 counted by patched-control-combo-box-working"
+  ],
+  "not_exact": {},
+  "proposals": [
+    "luahtml-binder2008 owner (no header change): 0x42c2b0 / 0x42c2c0 / 0x42c320 (+ funclet 0x42c391) are counted here; keep them as uncounted instances there so no row is counted twice.",
+    "CLuaFunction (no native header yet): CComObject<CLuaFunction> vtable 0x80ebd8 (12 bases: CLuaFunction, CComObjectRootEx<CComSingleThreadModel> +8, CComCoClass<CLuaFunction, &CLSID_LuaFunction> +0xc, ISupportErrorInfoImpl<&IID_ILuaFunction>); Invoke 0x42e0c0 reads the ScriptContext shared_ptr at +8 / +0xc, the callback at +0x10 and the security identity at +0x34. A future owner can declare it in a separate header."
+  ],
+  "rejected": [],
+  "shadowing": "none (no new header; reflection/type.h and the profile headers are included read-only)",
+  "exact_function_rows": [
+    "0042c2b0",
+    "0042c2c0",
+    "0042c320",
+    "0042c391",
+    "0042cfc0",
+    "0042d0a0",
+    "0042d190",
+    "0042d370",
+    "0042d3d0",
+    "0042d470",
+    "0042d4bb",
+    "0042d500",
+    "0042d550",
+    "0042d590",
+    "0042d5c0",
+    "0042d600",
+    "0042d630",
+    "0042d6a0",
+    "0042d8aa",
+    "0042d960",
+    "0042d980"
+  ],
+  "scope": "Inactive. Exact rows with every target verified; no pending build; no active build, swap or credit."
+}
