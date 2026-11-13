@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/engine-world
 // Inactive native Seated/Dead/FallingDown and MovingNoPhysicsBase/RunningNoPhysics/StrafingNoPhysics
 // methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid);
@@ -7,6 +7,12 @@
 // HumanoidStates3 | 2008-06 | draft (no current byte proof)
 // 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src 0e4ae394 | roc native-status --write
+// v8world/SimJob.h is now a native header (SimJob vptr, noncopyable, vector +4, list iterator +0x1c), so the
+// MovingNoPhysicsBase block is enabled here. Flags follow the sibling HumanoidStateFloor.cpp: getTorsoAssembly needs
+// the complete part-embedded Primitive (Primitive::getAssembly 005e7570); Dead needs ModelInstance::breakJoints.
+#define NATIVE_SIMJOB_PENDING
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/ModelInstance.h"
 #include "humanoid/HumanoidStates3.h"
 #include "humanoid/Humanoid.h"
 
@@ -88,11 +94,14 @@ void RunningNoPhysics::onStep(float dt, Controller* controller)
     MovingNoPhysicsBase::onStep(dt, controller);
 }
 
+// 00667210. Pending header: humanoid/Humanoid.h declares no event_Strafing (0097a348; Humanoid2008.h does).
+#ifdef NATIVE_HUMANOID_EVENT_STRAFING_PENDING
 StrafingNoPhysics::StrafingNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
 {
     Humanoid::event_Strafing.fire(humanoid, false);
 }
+#endif
 
 void StrafingNoPhysics::onStep(float dt, Controller* controller)
 {
