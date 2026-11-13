@@ -15,6 +15,7 @@ DONOR_ROOTS = (
     Path("work/upstream/OpenRBX/Client"),
 )
 NATIVE_FLAGS = "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
+ENGINE_DIRS = ("App", "Network", "RbxGraphics", "RbxView", "RbxViewBase", "Rendering", "win")
 
 
 def resolve_sources(root, values):
@@ -32,6 +33,32 @@ def resolve_sources(root, values):
     if len({path.stem.casefold() for path in sources}) != len(sources):
         raise ValueError("donor source basenames must be unique")
     return sources
+
+
+def source_batches(sources):
+    batches, names = [], []
+    for source in sources:
+        stem = source.stem.casefold()
+        slot = next((index for index, used in enumerate(names) if stem not in used), None)
+        if slot is None:
+            slot = len(batches)
+            batches.append([])
+            names.append(set())
+        batches[slot].append(source)
+        names[slot].add(stem)
+    return batches
+
+
+def discover_lane(root, lane):
+    root = Path(root).resolve()
+    if lane == "rbx-engine":
+        client = root / "work/upstream/OpenRBX/Client"
+    elif lane == "rbxgs-engine":
+        client = root / "tools/rbxgs/Client"
+    else:
+        raise ValueError("unknown donor lane: " + lane)
+    return sorted(path.resolve() for name in ENGINE_DIRS for path in (client / name).rglob("*.cpp")
+                  if path.is_file())
 
 
 def identity_hypotheses(closure):
@@ -170,6 +197,11 @@ def label_candidates(rows, integration):
     return counts
 
 
+def donor_includes(root, recipe):
+    return ([(libs.LIBS / folder).resolve() for folder in recipe["include"] if folder != "WINSDK"]
+            + [(Path(root) / "rebuild/2008-06/native-donor-2007").resolve()])
+
+
 def compile_sources(sources, output):
     spec = rebuild.load_module("2008-06", "rbxgs-app-openrbx-selective")
     recipe = libs.RECIPES["rbxgs"]
@@ -177,7 +209,7 @@ def compile_sources(sources, output):
         overlay = rebuild.build_overlay("2008-06", "RbxgsAppOpenRBXProbe", spec.get("overlay"))
         return rebuild.compile_direct(
             "2008-06", sources, output,
-            [(libs.LIBS / folder).resolve() for folder in recipe["include"] if folder != "WINSDK"],
+            donor_includes(ROOT, recipe),
             recipe["defines"] + " BOOST_ALL_NO_LIB",
             NATIVE_FLAGS, overlay=overlay)
 
@@ -217,6 +249,34 @@ def convert(root, values, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2), encoding="utf-8")
     return report
+
+
+def convert_mass(root, lane, output, limit=None):
+    root, output = Path(root).resolve(), Path(output).resolve()
+    sources = discover_lane(root, lane)
+    if limit is not None:
+        sources = sources[:limit]
+    reports = []
+    batch_root = output.parent / (output.stem + "-batches")
+    for index, batch in enumerate(source_batches(sources)):
+        report_path = batch_root / ("%03d" % index) / "report.json"
+        reports.append((report_path, convert(root, batch, report_path)))
+    units = [unit for _, report in reports for unit in report["units"]]
+    summary = {
+        "sources": len(sources),
+        "batches": len(reports),
+        "compiled": sum(report["summary"]["compiled"] for _, report in reports),
+        "exact": sum(report["summary"]["exact"] for _, report in reports),
+        "missing": sum(report["summary"]["missing"] for _, report in reports),
+        "waiting": sum(unit.get("summary", {}).get("waiting", 0) for unit in units),
+        "repair_candidates": sum(unit.get("summary", {}).get("repair_candidates", 0) for unit in units),
+        "proof_candidates": sum(unit.get("summary", {}).get("proof_candidates", 0) for unit in units),
+    }
+    result = {"version": 1, "mode": "mass-read-only-candidates", "lane": lane, "summary": summary,
+              "reports": [{"path": str(path), "summary": report["summary"]} for path, report in reports]}
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return result
 
 
 def main(argv=None):

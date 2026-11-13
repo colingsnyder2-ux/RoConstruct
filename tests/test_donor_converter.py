@@ -11,6 +11,10 @@ class DonorConverterTests(unittest.TestCase):
     def test_converter_uses_canonical_native_float_flags(self):
         self.assertIn("/fp:fast", donor_converter.NATIVE_FLAGS.split())
 
+    def test_converter_includes_existing_donor_compatibility_headers(self):
+        includes = donor_converter.donor_includes(Path("C:/repo"), {"include": []})
+        self.assertIn(Path("C:/repo/rebuild/2008-06/native-donor-2007"), includes)
+
     def test_roc_command_routes_sources_to_converter(self):
         script = Path(__file__).resolve().parents[1] / "roc.py"
         spec = importlib.util.spec_from_file_location("roc_donor_converter_cli_test", script)
@@ -22,6 +26,18 @@ class DonorConverterTests(unittest.TestCase):
             cli.main(["donor-convert", "tools/rbxgs/Client/App/Test.cpp", "--output", "result.json"])
 
         convert.assert_called_once_with(cli.ROOT, ["tools/rbxgs/Client/App/Test.cpp"], Path("result.json"))
+
+    def test_roc_command_routes_mass_lane(self):
+        script = Path(__file__).resolve().parents[1] / "roc.py"
+        spec = importlib.util.spec_from_file_location("roc_donor_mass_cli_test", script)
+        cli = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cli)
+        report = {"summary": {"sources": 5, "batches": 1, "compiled": 5, "exact": 20, "missing": 2}}
+
+        with patch("roc.donor_converter.convert_mass", return_value=report) as convert:
+            cli.main(["donor-convert", "--mass", "rbx-engine", "--limit", "5", "--output", "mass.json"])
+
+        convert.assert_called_once_with(cli.ROOT, "rbx-engine", Path("mass.json"), 5)
 
     def test_resolve_sources_only_accepts_cpp_inside_donor_roots(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -36,6 +52,48 @@ class DonorConverterTests(unittest.TestCase):
             self.assertEqual(donor_converter.resolve_sources(root, [source]), [source.resolve()])
             with self.assertRaisesRegex(ValueError, "outside donor roots"):
                 donor_converter.resolve_sources(root, [outside])
+
+    def test_source_batches_separate_duplicate_object_names(self):
+        sources = [Path("A/Part.cpp"), Path("B/Part.cpp"), Path("C/World.cpp")]
+
+        batches = donor_converter.source_batches(sources)
+
+        self.assertEqual(batches, [[sources[0], sources[2]], [sources[1]]])
+
+    def test_discover_lane_limits_rbx_engine_to_upstream_engine_trees(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            wanted = root / "work/upstream/OpenRBX/Client/App/Foo.cpp"
+            ignored = root / "work/upstream/OpenRBX/Client/boost_1_34_1/Test.cpp"
+            wanted.parent.mkdir(parents=True)
+            ignored.parent.mkdir(parents=True)
+            wanted.write_text("void f() {}")
+            ignored.write_text("void f() {}")
+
+            self.assertEqual(donor_converter.discover_lane(root, "rbx-engine"), [wanted.resolve()])
+
+    def test_convert_mass_batches_and_aggregates_resumably(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for name in ("A/Part.cpp", "B/Part.cpp"):
+                path = root / "work/upstream/OpenRBX/Client/App" / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("void f() {}")
+            output = root / "work/donor-converter/mass.json"
+            reports = [
+                {"summary": {"sources": 1, "compiled": 1, "exact": 3, "missing": 1}, "units": []},
+                {"summary": {"sources": 1, "compiled": 0, "exact": 0, "missing": 0}, "units": []},
+            ]
+
+            with patch("roc.donor_converter.convert", side_effect=reports) as convert:
+                result = donor_converter.convert_mass(root, "rbx-engine", output)
+
+            self.assertEqual(convert.call_count, 2)
+            self.assertEqual(result["summary"], {
+                "sources": 2, "batches": 2, "compiled": 1, "exact": 3, "missing": 1,
+                "waiting": 0, "repair_candidates": 0, "proof_candidates": 0,
+            })
+            self.assertTrue(output.is_file())
 
     def test_identity_hypotheses_keeps_exact_functions_and_marks_conflicts(self):
         closure = {"bindings": [
