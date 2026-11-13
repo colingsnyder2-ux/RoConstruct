@@ -159,10 +159,37 @@
    ]
   },
   {
+   "name": "native-light-inline",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/native-classes",
+   "files": "OgreRbxSceneManager.cpp",
+   "flags": "/nologo /c /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "defines": "WIN32 BOOST_ALL_NO_LIB WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT _VC80_UPGRADE=0x0710 _XTP_STATICLINK _XTPLIB_NOAUTOLINK",
+   "extra_includes": [
+    "rebuild/2008-06/native-headers/OgreLightInline",
+    "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+    "rebuild/2008-06/native-headers",
+    "tools/libs/mfc-9.0-rtm/atlmfc/include",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxGraphics/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/Rendering/png",
+    "tools/rbxgs/Client/Rendering/g3d/include",
+    "tools/rbxgs/Client/Rendering/g3d/zlib",
+    "tools/rbxgs/Client/Rendering/RenderLib/include",
+    "tools/rbxgs/Client/Rendering/AppDraw/include",
+    "tools/rbxgs/Client/boost_1_34_1/src",
+    "tools/rbxgs/Client/App/lua-5.1.1/src",
+    "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+    "tools/libs/xtp-11.2.2/Source"
+   ]
+  },
+  {
    "name": "native-rbx0",
    "mode": "direct",
    "dir": "rebuild/2008-06/native-classes",
-   "files": "OgreClientHeaderInstances.cpp OgreRbxAdornState.cpp OgreRbxEntity.cpp OgreRbxSceneManager.cpp OgreRbxSceneManagerSkybox2008.cpp OgreRbxSky.cpp OgreRbxSubMesh.cpp OgreVisualEngine.cpp OgreVRbxFont.cpp OgreRbxEntitySetMesh2008.cpp OgreRbxEntityClear2008.cpp",
+   "files": "OgreClientHeaderInstances.cpp OgreRbxAdornState.cpp OgreRbxEntity.cpp OgreRbxSceneManagerSkybox2008.cpp OgreRbxSky.cpp OgreRbxSubMesh.cpp OgreVisualEngine.cpp OgreVRbxFont.cpp OgreRbxEntitySetMesh2008.cpp OgreRbxEntityClear2008.cpp",
    "flags": "/nologo /c /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
    "defines": "WIN32 BOOST_ALL_NO_LIB WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT _VC80_UPGRADE=0x0710 _XTP_STATICLINK _XTPLIB_NOAUTOLINK",
    "extra_includes": [
@@ -288,5 +315,16 @@
  "depends": [
   "g3d",
   "boost"
+ ],
+ "import_pointer_only": {
+  "rgmain.dll": [
+   "??RlightsForShadowTextureLess@SceneManager@Ogre@@QBE_NPBVLight@2@0@Z"
+  ]
+ },
+ "verified_exclude": [
+  "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+  "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+  "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+  "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z"
  ]
 }

@@ -66,13 +66,17 @@
    "symbol": "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
    "address": "0068e500",
    "inferred_name": true,
-   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "__imp__memmove_s": "00802850"
+   }
   },
   {
    "symbol": "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
    "address": "0068e5f0",
    "inferred_name": true,
-   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {}
   },
   {
    "symbol": "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
@@ -96,7 +100,10 @@
    "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
    "address": "006906d0",
    "inferred_name": true,
-   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "__imp__memmove_s": "00802850"
+   }
   },
   {
    "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
@@ -132,7 +139,19 @@
    "symbol": "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
    "address": "00698070",
    "inferred_name": true,
-   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "??RlightsForShadowTextureLess@SceneManager@Ogre@@QBE_NPBVLight@2@0@Z": "0068c740",
+    "?_Maxlen@?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$unchecked_copy@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@@stdext@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@std@@PAPAVLight@Ogre@@0V12@@Z": "00692550",
+    "??3@YAXPAX@Z": "006a067a",
+    "??$unchecked_merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@stdext@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@@Z": "00694080",
+    "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z": "0068e500",
+    "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e5f0",
+    "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e6a0",
+    "??$_Buffered_rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAPAPAVLight@Ogre@@PAPAV12@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@@Z": "006925c0",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "00698070"
+   }
   },
   {
    "symbol": "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
@@ -150,13 +169,27 @@
    "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
    "address": "0069d720",
    "inferred_name": true,
-   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z": "00690460",
+    "?_Maxlen@?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "0069b210",
+    "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "0069d720",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "00698070"
+   }
   },
   {
    "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z",
    "address": "0069d660",
    "inferred_name": true,
-   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z": "006903a0",
+    "?_Maxlen@?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "0069b140",
+    "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "0069d660",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "00697e40"
+   }
   },
   {
    "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",

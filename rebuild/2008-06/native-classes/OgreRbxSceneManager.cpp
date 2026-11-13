@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/OgreLightInline /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // Ogre::RbxSceneManager / RbxSceneManagerFactory as compiled into the June 2008 client (inactive native recovery).
 //
 // Roblox forked Ogre 1.4.5's OgreSceneManager.cpp into ".\RbxSceneManager.cpp" (string 0084e9e8) and overrode every
@@ -68,6 +68,12 @@
 #include <cstdio>
 
 namespace Ogre {
+// Original sort bodies inline the 1.4.5 shadow comparator (006906d0, 00690460).
+inline bool SceneManager::lightsForShadowTextureLess::operator()(const Light* l1, const Light* l2) const {
+    if (l1 == l2) return false;
+    if (l1->getCastShadows() != l2->getCastShadows()) return l1->getCastShadows();
+    return l1->tempSquareDist < l2->tempSquareDist;
+}
 
 
 const String RbxSceneManagerFactory::FACTORY_TYPE_NAME = "RbxSceneManager";
