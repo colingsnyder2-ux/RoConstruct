@@ -30,6 +30,7 @@ namespace Ogre
 
 	public:
 		void removeSubEntity(RbxSubEntity* subEntity); // 0067d2d0; existing Chunk destructor call proves declaration.
+		void func_0067da50(RbxSubEntity* subEntity); // INFERRED: appends to the inherited subentity list.
 		void func_0067d3d0(); // INFERRED: clears inherited subentities; called at 00671fc0.
 		void setMesh(MeshPtr mesh); // INFERRED: 0067c520 assigns inherited Entity::mMesh.
 		RbxEntity();                            // 0067d1f0

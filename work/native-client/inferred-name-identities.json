@@ -14886,6 +14886,12 @@
    "address": "00801580",
    "inferred_name": false,
    "evidence": "Original 00685490 relocation names this EH handler or static box destructor; body and all original references match."
+  },
+  {
+   "symbol": "?func_0067da50@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z",
+   "address": "0067da50",
+   "inferred_name": true,
+   "evidence": "Original 00671f69 calls RbxEntity with a RbxSubEntity; body and vector push_back reference 004213a0 match."
   }
  ]
 }
