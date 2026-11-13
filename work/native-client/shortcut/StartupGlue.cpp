@@ -5,6 +5,8 @@
 //   0049ecf0 nativeSetVersion     : RBX::Network::API::init(const char*)  (openrbx Roblox.cpp: RBX::Network::API::init(m_unk0xf0.c_str()))
 #include "reflection/Metadata.h"
 
+namespace RBX { class FactoryRegistrator { public: FactoryRegistrator(); }; }
+
 namespace RBX {
 namespace Profiling { void init(bool); }
 namespace Network { class API { public: static void init(const char*); }; }
@@ -38,4 +40,11 @@ void nativeInitializeTypes()
     Member::classDescriptor();
     Properties::classDescriptor();
     Events::classDescriptor();
+}
+
+// 005c3ca0: openrbx Roblox.cpp InitInstance: `static RBX::FactoryRegistrator registrator;` (the engine's factoryregistration.obj defines it).
+class NativeClassRegistration { public: NativeClassRegistration(); };
+NativeClassRegistration::NativeClassRegistration()
+{
+    RBX::FactoryRegistrator registrator;
 }
