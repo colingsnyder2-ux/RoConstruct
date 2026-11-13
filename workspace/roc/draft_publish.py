@@ -10,6 +10,7 @@ import sqlite3
 import subprocess
 import time
 import uuid
+import re
 
 from roc import native_drafts
 from roc.draft_merger import content_hash, proof_key
@@ -52,7 +53,26 @@ def native_input_snapshot(root):
     return digest_paths(root, paths, hashes), {str(path): value.hex() for path, value in hashes.items()}
 
 
-def verify_sources(root, sources, receipts, output):
+def included_new_headers(root, sources, head):
+    headers = {}
+    base = (root / 'rebuild/2008-06/native-headers').resolve()
+    for raw in sources.values():
+        for include in re.findall(rb'^\s*#\s*include\s*"([^"\r\n]+)"', raw, re.M):
+            path = (base / include.decode()).resolve()
+            if not path.is_relative_to(base) or path.suffix.lower() not in ('.h', '.hpp', '.inl', '.inc', '.ipp'):
+                raise ValueError('Unsafe native header dependency: ' + include.decode(errors='replace'))
+            relative = path.relative_to(root).as_posix()
+            tracked = subprocess.run(['git', '-C', str(root), 'cat-file', '-e', head + ':' + relative],
+                                     capture_output=True).returncode == 0
+            if tracked:
+                continue
+            if not path.is_file() or path.is_symlink():
+                raise ValueError('Proven source needs missing new native header: ' + relative)
+            headers[relative] = path.read_bytes()
+    return headers
+
+
+def verify_sources(root, sources, receipts, output, dependencies=None):
     from roc import rebuild
     from roc.draft_native import closed_function_targets, flags, numeric_literal_targets, original_view, reviewed_call_targets, ReviewedOriginal
     original, binder = original_view(root)
@@ -93,6 +113,10 @@ def verify_sources(root, sources, receipts, output):
         destination.write_bytes(data[end + 1:end + 1 + size])
         cursor = end + 2 + size
     ensure_link(root / 'tools', mirror / 'tools')
+    for name, raw in (dependencies or {}).items():
+        destination = mirror / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(raw)
     evidence = {}
     for name, raw in sources.items():
         directory = output / proof_key(name)[:16]
@@ -198,18 +222,26 @@ def publish(root, push=False):
         if not sources:
             result.update(state='nothing-current-to-publish')
             return result
+        dependencies = included_new_headers(root, {path: sources[path] for path in new_sources}, head)
+        for path in dependencies:
+            name = 'draft-publish-header-' + str(len(leases)) + '-' + output.name[:8]
+            subprocess.run([str(root / 'roc.cmd'), 'lease', 'take', name, path, '--hours', '2'],
+                           cwd=root, check=True, capture_output=True)
+            leases.append(name)
         dirty = git(root, 'diff', '--name-only', head, '--', 'rebuild/2008-06').decode().splitlines()
-        if set(dirty) - sources.keys():
-            raise ValueError('Other native source/header edits are outside the exact publication tree: ' + str(sorted(set(dirty) - sources.keys())))
+        selected_paths = set(sources) | set(dependencies)
+        if set(dirty) - selected_paths:
+            raise ValueError('Other native source/header edits are outside the exact publication tree: ' + str(sorted(set(dirty) - selected_paths)))
         env = dict(os.environ, GIT_INDEX_FILE=str(output / 'index'))
         git(root, 'read-tree', head, env=env)
-        for path, raw in sources.items():
+        for path, raw in {**sources, **dependencies}.items():
             blob = git(root, 'hash-object', '-w', '--stdin', data=raw).decode().strip()
             git(root, 'update-index', '--add', '--cacheinfo', '100644,' + blob + ',' + path, env=env)
-        verification = verify_sources(root, sources, receipts, output / 'verification')
+        verification = verify_sources(root, sources, receipts, output / 'verification', dependencies)
         receipt_path = 'work/2008-06/shared-layouts/draft-publication-' + output.name + '.json'
         public_receipt = dict(scope='Inactive source publication; no runtime selection or server credit',
-                              base=head, verification=verification, acceptance_receipts=receipts)
+                              base=head, verification=verification, acceptance_receipts=receipts,
+                              companion_headers={name: content_hash(raw) for name, raw in dependencies.items()})
         receipt_raw = (json.dumps(public_receipt, indent=2) + '\n').encode()
         blob = git(root, 'hash-object', '-w', '--stdin', data=receipt_raw).decode().strip()
         git(root, 'update-index', '--add', '--cacheinfo', '100644,' + blob + ',' + receipt_path, env=env)
@@ -220,7 +252,7 @@ def publish(root, push=False):
         preserved = json.loads((output / 'preservation.json').read_text())
         if preserved.get('passed') is not True or preserved.get('losses') != []:
             raise ValueError('Exact-tree preservation receipt did not prove zero losses')
-        subprocess.run([str(root / 'roc.cmd'), 'lease', 'check', *sources], cwd=root, check=True, capture_output=True)
+        subprocess.run([str(root / 'roc.cmd'), 'lease', 'check', *sorted(selected_paths)], cwd=root, check=True, capture_output=True)
         subprocess.run([os.sys.executable, str(root / 'scripts/native_status.py'), '--check', '--staged'],
                        cwd=root, env=env, check=True, capture_output=True)
         if verification.get('native_input_key'):
@@ -240,16 +272,16 @@ def publish(root, push=False):
             real_copy = output / 'real-index'
             real_copy.write_bytes(index_path.read_bytes())
             real_env = dict(os.environ, GIT_INDEX_FILE=str(real_copy))
-            for path in sources:
+            for path in sorted(selected_paths):
                 staged = git(root, 'ls-files', '--stage', '--', path, env=real_env).decode().split()
-                if path in new_sources:
+                if path in new_sources or path in dependencies:
                     if staged:
                         raise ValueError('Proven new source became staged before guarded commit: ' + path)
                 else:
                     old_blob = git(root, 'rev-parse', head + ':' + path).decode().strip()
                     if not staged or staged[1] != old_blob:
                         raise ValueError('Selected index changed before guarded commit: ' + path)
-            for path in [*sources, receipt_path]:
+            for path in [*sorted(selected_paths), receipt_path]:
                 blob = git(root, 'rev-parse', tree + ':' + path).decode().strip()
                 git(root, 'update-index', '--add', '--cacheinfo', '100644,' + blob + ',' + path, env=real_env)
             lock_stream.write(real_copy.read_bytes())
@@ -270,7 +302,7 @@ def publish(root, push=False):
                 raise ValueError('HEAD/branch advanced; rebase and reverify publication')
             commit = git(root, 'commit-tree', tree, '-p', head, data=b'Integrate independently proved inactive native methods\n').decode().strip()
             result.update(state='verified-commit-created', commit=commit, tree=tree, base=head,
-                          paths=sorted(sources), publication_receipt=receipt_path)
+                          paths=sorted(selected_paths), publication_receipt=receipt_path)
             native_drafts.atomic(output / 'result.json', result)
             git(root, 'update-ref', 'refs/heads/' + branch, commit, head)
             result['state'] = 'committed-local'
