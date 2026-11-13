@@ -215,26 +215,6 @@ void TwoDManager::render() {
  quads.clear();
 }
 
-// 006829a0: one dynamic vertex buffer of `count` vertices (position float3, diffuse colour, one float2 texture
-// coordinate) for the 2D quad batch; the render operation is an indexless triangle list over it.
-void TwoDManager::createVertexBuffer(unsigned int count)
-{
-	renderOp.vertexData = new VertexData();
-	renderOp.vertexData->vertexStart = 0;
-	VertexDeclaration* decl = renderOp.vertexData->vertexDeclaration;
-	size_t offset = 0;
-	decl->addElement(0, offset, VET_FLOAT3, VES_POSITION);
-	offset += VertexElement::getTypeSize(VET_FLOAT3);
-	decl->addElement(0, offset, VET_COLOUR, VES_DIFFUSE);
-	offset += VertexElement::getTypeSize(VET_COLOUR);
-	decl->addElement(0, offset, VET_FLOAT2, VES_TEXTURE_COORDINATES, 0);
-	vertexBuffer = HardwareBufferManager::getSingleton().createVertexBuffer(
-		decl->getVertexSize(0), count, HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY_DISCARDABLE, false);
-	renderOp.vertexData->vertexBufferBinding->setBinding(0, vertexBuffer);
-	renderOp.useIndexes = false;
-	renderOp.operationType = RenderOperation::OT_TRIANGLE_LIST;
-}
-
 void TwoDManager::prepareRenderState() {
  LayerBlendModeEx colour,alpha;
  RenderSystem* rs=Root::getSingleton().getRenderSystem();

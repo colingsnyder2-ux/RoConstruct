@@ -214,6 +214,30 @@ void RbxEntity::collect(Camera* camera,Light* light,std::vector<ShadowCaster*>& 
     }
 }
 
+// 0067d010 (slot 28): Entity::_updateRenderQueue without the skeleton / vertex-animation parts (Roblox's fork has none):
+// a manual LOD hands over to its LOD entity, otherwise every visible sub-entity goes to the queue.
+void RbxEntity::_updateRenderQueue(RenderQueue* queue)
+{
+	if (!mInitialised)
+		return;
+	if (mMeshLodIndex > 0 && mMesh->isLodManual())
+	{
+		mLodEntityList[mMeshLodIndex - 1]->_updateRenderQueue(queue);
+		return;
+	}
+	SubEntityList::iterator i, iend = mSubEntityList.end();
+	for (i = mSubEntityList.begin(); i != iend; ++i)
+	{
+		if ((*i)->isVisible())
+		{
+			if (mRenderQueueIDSet)
+				queue->addRenderable(*i, mRenderQueueID);
+			else
+				queue->addRenderable(*i);
+		}
+	}
+}
+
 // 0067c570 (slot 24): the per-frame camera notification runs the camera work once until something clears the flag.
 void RbxEntity::_notifyCurrentCamera(Camera* camera)
 {
