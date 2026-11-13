@@ -184,6 +184,8 @@ def main():
     # Native headers declare class-name globals as `extern const char sX[]`; donor sources define `char* sX = "X"`.
     support_text = re.sub(r'^(\s*)(?:const\s+)?char\s*\*\s*(s[A-Z]\w*)\s*=\s*("[^"\n]*")\s*;',
                           r'\1const char \2[] = \3;', support_text, flags=re.M)
+    # Donor static reflection descriptors use the 2007 constructor ABI and are static-init objects, not recovered method bodies.
+    support_text = re.sub(r'^[ \t]*static[ \t]+Reflection::[^;]*;[ \t]*$', '', support_text, flags=re.M)
     args.output.write_text('// generated inactive real-header probe; do not promote without proof\n' + flags + includes +
                            '\n' + opened + support_text + bodies + '\n' + closed)
     print('generated', args.output, 'methods', len(methods),
