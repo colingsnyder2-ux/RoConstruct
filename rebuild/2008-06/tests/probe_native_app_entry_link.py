@@ -149,6 +149,8 @@ checks = [
     ('native-classes/ErrorUploaderConstructor.cpp', ['0044d610=??0ErrorUploader']),
     ('native-classes/ErrorUploaderLifetime.cpp', ['0044a830=??1ErrorUploader']),
     ('native-classes/ErrorUploaderCallback.cpp', ['0041d760=?upload@ErrorUploader']),
+    ('native-classes/CChatPromptWindow.cpp', ['004115c0=?OnSetFocusReflect@CChatPrompt',
+     '00411370=?PreCreateWindow@CChatPrompt', '004113a0=?CtlColor@CChatPrompt']),
     ('native-classes/ApplicationWindowClass.cpp', ['004495a0=?nativeInitializeCom']),
     ('native-classes/CBrowserFrameWnd.cpp', ['00432fc0=?GetThisClass@CBrowserFrameWnd',
      '00433280=?CreateObject@CBrowserFrameWnd', '00433130=?OnCreate@CBrowserFrameWnd',
@@ -272,6 +274,8 @@ for name in ('AppFramework', 'CMainFrameShow'):
 for name in ('AppDocumentStartup', 'ApplicationExceptionLog', 'ErrorUploaderState',
              'ErrorUploaderConstructor', 'ErrorUploaderLifetime', 'ErrorUploaderCallback'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+# Supplies the exact MFC message map; PreCreateWindow still has a separate protected/public ABI spelling gap.
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckCChatPromptWindow.obj'))
 # Isolate native Log and Http trust providers without mutating the shared donor archive.
 donor_log_library = base / 'content-load-owner/linked.lib'
 native_log_library = base / 'content-without-donor-log.lib'
