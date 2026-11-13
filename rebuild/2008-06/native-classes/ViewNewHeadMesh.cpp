@@ -91,28 +91,52 @@ namespace RBX
 			buildFace<NORM_Y_NEG>(EndcapTransform(bevel), G3D::Vector2int16(e, e), purpose);
 		}
 
+		// 00500080 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_X_NEG, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildLeft(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_X_NEG>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_X_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
+		// 005000c0 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_X, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildRight(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_X>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_X>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
+		// 00500100 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_Z_NEG, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildFront(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_Z_NEG>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_Z_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
+		// 00500140 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_Z, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildBack(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_Z>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_Z>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
 		HeadMesh::HeadMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes)
