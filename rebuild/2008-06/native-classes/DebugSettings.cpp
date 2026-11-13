@@ -8,9 +8,7 @@
 // <<< native-status | src 81554b5f | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"
-#ifdef NATIVE_DEBUGSETTINGS_PENDING
-#include "v8datamodel/ModelInstance.h" // pulls the donor Camera.h, which needs the 2008 class-name declaration
-#endif
+#include "v8datamodel/ModelInstance.h" // showModelCoord for setShowModelCoordinateFrames (same include as DebugSettingsCoordinateGetters.cpp)
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>
 #include <stdexcept>
@@ -179,8 +177,7 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_DEBUGSETTINGS_PENDING
-	void DebugSettings::setShowModelCoordinateFrames(bool value)
+	void DebugSettings::setShowModelCoordinateFrames(bool value)    // 00565c80
 	{
 		if (value != ModelInstance::showModelCoord)
 		{
@@ -188,7 +185,6 @@ namespace RBX
 			raisePropertyChanged(prop_ShowModelCoords);
 		}
 	}
-#endif
 
 	void DebugSettings::setValidatingDebug(bool value)
 	{
@@ -199,6 +195,8 @@ namespace RBX
 		}
 	}
 
+	// 00565da0. Not counted exact: identity-registry also names 00565d40 and 00448ed0 setAssertAction (library-replay
+	// evidence); by source order and its int global 0x97ac54 / prop 0x9744f4, 00565d40 is setEnvironmentalThrottle (proposal).
 	void DebugSettings::setAssertAction(Debugable::AssertAction value)
 	{
 		if (value != Debugable::assertAction)
