@@ -101,7 +101,13 @@ class DonorConverterTests(unittest.TestCase):
                 path.write_text("void f() {}")
             output = root / "work/donor-converter/mass.json"
             reports = [
-                {"summary": {"sources": 1, "compiled": 1, "exact": 3, "missing": 1}, "units": []},
+                {"summary": {"sources": 1, "compiled": 1, "exact": 3, "missing": 1}, "units": [{
+                    "exact_candidates": [
+                        {"addr": "00401000", "integration": "integrated"},
+                        {"addr": "00402000", "integration": "integrated"},
+                        {"addr": "00403000", "integration": "missing"},
+                    ], "summary": {"repair_candidates": 0, "proof_candidates": 0},
+                }]},
                 {"summary": {"sources": 1, "compiled": 0, "exact": 0, "missing": 0}, "units": []},
             ]
 
@@ -111,9 +117,24 @@ class DonorConverterTests(unittest.TestCase):
             self.assertEqual(convert.call_count, 2)
             self.assertEqual(result["summary"], {
                 "sources": 2, "batches": 2, "compiled": 1, "exact": 3, "missing": 1,
-                "waiting": 0, "repair_candidates": 0, "proof_candidates": 0,
+                "integrated": 2, "waiting": 0, "repair_candidates": 0, "proof_candidates": 0,
             })
             self.assertTrue(output.is_file())
+
+    def test_summarize_mass_units_counts_aliases_once_and_prefers_integrated(self):
+        units = [
+            {"exact_candidates": [
+                {"addr": "00401000", "integration": "missing"},
+                {"addr": "00401000", "integration": "integrated"},
+                {"addr": "00402000", "integration": "waiting"},
+            ], "summary": {"repair_candidates": 2, "proof_candidates": 1}},
+        ]
+
+        self.assertEqual(donor_converter.summarize_mass_units(3, 1, 1, units), {
+            "sources": 3, "batches": 1, "compiled": 1, "exact": 2,
+            "integrated": 1, "waiting": 1, "missing": 0,
+            "repair_candidates": 2, "proof_candidates": 1,
+        })
 
     def test_identity_hypotheses_keeps_exact_functions_and_marks_conflicts(self):
         closure = {"bindings": [

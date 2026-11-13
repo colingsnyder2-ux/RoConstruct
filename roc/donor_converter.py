@@ -275,6 +275,22 @@ def convert(root, values, output):
     return report
 
 
+def summarize_mass_units(source_count, batch_count, compiled, units):
+    rank = {"missing": 0, "waiting": 1, "integrated": 2}
+    exact = {}
+    for unit in units:
+        for row in unit.get("exact_candidates", ()):
+            old = exact.get(row["addr"])
+            if old is None or rank[row["integration"]] > rank[old]:
+                exact[row["addr"]] = row["integration"]
+    summary = {"sources": source_count, "batches": batch_count, "compiled": compiled, "exact": len(exact)}
+    summary.update({state: sum(value == state for value in exact.values())
+                    for state in ("integrated", "waiting", "missing")})
+    summary["repair_candidates"] = sum(unit.get("summary", {}).get("repair_candidates", 0) for unit in units)
+    summary["proof_candidates"] = sum(unit.get("summary", {}).get("proof_candidates", 0) for unit in units)
+    return summary
+
+
 def convert_mass(root, lane, output, limit=None):
     root, output = Path(root).resolve(), Path(output).resolve()
     sources = discover_lane(root, lane)
@@ -286,16 +302,8 @@ def convert_mass(root, lane, output, limit=None):
         report_path = batch_root / ("%03d" % index) / "report.json"
         reports.append((report_path, convert(root, batch, report_path)))
     units = [unit for _, report in reports for unit in report["units"]]
-    summary = {
-        "sources": len(sources),
-        "batches": len(reports),
-        "compiled": sum(report["summary"]["compiled"] for _, report in reports),
-        "exact": sum(report["summary"]["exact"] for _, report in reports),
-        "missing": sum(report["summary"]["missing"] for _, report in reports),
-        "waiting": sum(unit.get("summary", {}).get("waiting", 0) for unit in units),
-        "repair_candidates": sum(unit.get("summary", {}).get("repair_candidates", 0) for unit in units),
-        "proof_candidates": sum(unit.get("summary", {}).get("proof_candidates", 0) for unit in units),
-    }
+    summary = summarize_mass_units(len(sources), len(reports),
+                                   sum(report["summary"]["compiled"] for _, report in reports), units)
     result = {"version": 1, "mode": "mass-read-only-candidates", "lane": lane, "summary": summary,
               "reports": [{"path": str(path), "summary": report["summary"]} for path, report in reports]}
     output.parent.mkdir(parents=True, exist_ok=True)
