@@ -1,0 +1,81 @@
+{
+ "scope": "Original full function extents, local catch labels and handler references; smoke-selected provider.",
+ "sources": {
+  "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp": "b1a1629f6a8a9c6447773a1892c5bcb21f15ceda3725e046b40177f64b2cdaca",
+  "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h": "6ea7b2e0bbcc860733bb169570dd6db84757013c4e78f2eb10bcd3328ce6c4ad",
+  "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include/OgrePlane.h": "e3bcf02a5914ec71e6d20b72e7be015d0e5948bbc0c4740644f07ebc41b6167f"
+ },
+ "functions": [
+  {
+   "symbol": "??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c890",
+   "size": 115,
+   "catch": {
+    "symbol": "__catch$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+    "address": "0067c8e7"
+   },
+   "handler": {
+    "symbol": "__ehhandler$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "007dd7a1"
+   }
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c9a0",
+   "size": 113,
+   "catch": {
+    "symbol": "__catch$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+    "address": "0067c9f7"
+   },
+   "handler": {
+    "symbol": "__ehhandler$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "007dd7c1"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c890",
+   "bindings": {
+    "__ehhandler$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "007dd7a1",
+    "__imp_??0Plane@Ogre@@QAE@ABV01@@Z": "00804454",
+    "__CxxThrowException@8": "006a158c"
+   }
+  },
+  {
+   "symbol": "__catch$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+   "address": "0067c8e7"
+  },
+  {
+   "symbol": "__ehhandler$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "007dd7a1",
+   "bindings": {
+    "__ehfuncinfo$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "008ff194",
+    "___CxxFrameHandler3": "006a14c0"
+   }
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c9a0",
+   "bindings": {
+    "__ehhandler$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "007dd7c1",
+    "__imp_??0Plane@Ogre@@QAE@ABV01@@Z": "00804454",
+    "__CxxThrowException@8": "006a158c"
+   }
+  },
+  {
+   "symbol": "__catch$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+   "address": "0067c9f7"
+  },
+  {
+   "symbol": "__ehhandler$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "007dd7c1",
+   "bindings": {
+    "__ehfuncinfo$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "008ff1f4",
+    "___CxxFrameHandler3": "006a14c0"
+   }
+  }
+ ]
+}
