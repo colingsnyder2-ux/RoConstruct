@@ -17,7 +17,7 @@ class CTX(ctypes.Structure):  # WOW64_CONTEXT
     _fields_ = [('Flags', w.DWORD)] + [(n, w.DWORD) for n in ('Dr0','Dr1','Dr2','Dr3','Dr6','Dr7')] + \
         [('fc', ctypes.c_byte * 112)] + [(n, w.DWORD) for n in ('SegGs','SegFs','SegEs','SegDs','Edi','Esi','Ebx','Edx','Ecx','Eax','Ebp','Eip','SegCs','EFlags','Esp','SegSs')] + [('ext', ctypes.c_byte * 512)]
 import capstone
-BPSYM = os.environ.get('BPFUNC')
+BPSYM = os.environ.get('BPFUNC') or os.environ.get('BPENTRY')
 syms = []
 txt = open(mapf, errors='replace').read()
 base = int(re.search(r'Preferred load address is ([0-9a-f]+)', txt).group(1), 16)
@@ -34,6 +34,14 @@ class EV(ctypes.Structure):
 bps = {}
 def arm_bps():
     if not BPSYM: return
+    if os.environ.get('BPENTRY'):
+        ent = [v for v, n in syms if n == os.environ['BPENTRY']]
+        if not ent: print('BPENTRY not in map'); return
+        old = (ctypes.c_ubyte * 1)(); n = ctypes.c_size_t()
+        k.ReadProcessMemory(pi.hp, ctypes.c_void_p(ent[0]), old, 1, ctypes.byref(n))
+        bps[ent[0]] = (old[0], 'ENTRY')
+        k.WriteProcessMemory(pi.hp, ctypes.c_void_p(ent[0]), (ctypes.c_ubyte * 1)(0xCC), 1, ctypes.byref(n))
+        print('armed entry breakpoint'); return
     start = [v for v, n in syms if n == BPSYM]
     if not start: print('BPFUNC not in map'); return
     st = start[0]; nxt = [v for v, n in syms if v > st]; end = min(nxt[0], st + 0x2000) if nxt else st + 0x2000
@@ -48,6 +56,7 @@ def arm_bps():
             k.WriteProcessMemory(pi.hp, ctypes.c_void_p(ins.address), (ctypes.c_ubyte * 1)(0xCC), 1, ctypes.byref(n))
     print('armed', len(bps), 'call breakpoints in', BPSYM[:60])
 armed = False
+cxx_seen = 0
 ev = EV(); deadline = time.time() + float(sys.argv[3] if len(sys.argv) > 3 else 20); first = True; ids = {}
 while time.time() < deadline:
     if not k.WaitForDebugEvent(ctypes.byref(ev), 500):
@@ -64,6 +73,13 @@ while time.time() < deadline:
                 k.WriteProcessMemory(pi.hp, ctypes.c_void_p(addr), (ctypes.c_ubyte * 1)(old), 1, ctypes.byref(ctypes.c_size_t()))
                 h = k.OpenThread(0x1fffff, False, ev.tid); c2 = CTX(); c2.Flags = 0x10007
                 k.Wow64GetThreadContext(h, ctypes.byref(c2)); c2.Eip = addr; k.Wow64SetThreadContext(h, ctypes.byref(c2))
+                if tgt == 'ENTRY':
+                    buf = (ctypes.c_uint32 * 256)(); n2 = ctypes.c_size_t()
+                    k.ReadProcessMemory(pi.hp, ctypes.c_void_p(c2.Esp), buf, 1024, ctypes.byref(n2))
+                    print('ENTRY hit; code addresses on stack:'); shown = 0
+                    for v in buf:
+                        if 0x401000 <= v < 0x980000 and shown < 40: print('   ', near(v)); shown += 1
+                    k.TerminateProcess(pi.hp, 1); break
                 print('call', hex(addr), '->', tgt[:100], flush=True)
                 k.ContinueDebugEvent(ev.pid, ev.tid, 0x10002); continue
         if code not in (0x80000003, 0x4000001f, 0x406d1388) and code != 0xe06d7363:
@@ -83,7 +99,16 @@ while time.time() < deadline:
                 if 0x401000 <= v < 0x980000: print('  stack', near(v))
             status = 0x80010001
             k.TerminateProcess(pi.hp, 1); break
-        if code == 0xe06d7363: pass
+        if code == 0xe06d7363 and cxx_seen < 4:
+            cxx_seen += 1
+            h = k.OpenThread(0x1fffff, False, ev.tid); c = CTX(); c.Flags = 0x10007
+            k.Wow64GetThreadContext(h, ctypes.byref(c))
+            buf = (ctypes.c_uint32 * 192)(); n = ctypes.c_size_t()
+            k.ReadProcessMemory(pi.hp, ctypes.c_void_p(c.Esp), buf, 768, ctypes.byref(n))
+            print('C++ throw #%d; code addresses on stack:' % cxx_seen)
+            shown = 0
+            for v in buf:
+                if 0x401000 <= v < 0x980000 and shown < 14: print('   ', near(v)); shown += 1
         status = 0x10002 if code in (0x80000003, 0x4000001f, 0x406d1388) else 0x80010001
     elif ev.code == 8:  # OUTPUT_DEBUG_STRING_INFO: pointer, unicode flag, length
         ptr, uni, ln = struct.unpack('<IHH', bytes(ev.u[:8]))

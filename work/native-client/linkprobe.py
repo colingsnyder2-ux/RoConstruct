@@ -53,6 +53,17 @@ def acceptable_analog(path):
 shell += sorted(p for p in (rebuild.ROOT / 'work/native-client/link/renamed').glob('*.obj')
                 if acceptable_analog(p) and not (os.environ.get('ROC_ENGINE_ABI') == '1' and '@RBX@@' in _ren.get(p.stem, {}).get('symbol', '@RBX@@')))
 engine = sorted((ws / 'out/RbxgsApp/linked').glob('*.obj'))
+if os.environ.get('ROC_SHELL_WINS'):  # shortcut: engine definitions a shell object replaces (stripped copies of the engine objects)
+    _wins = set(json.load(open(os.environ['ROC_SHELL_WINS'])))
+    _sdir = OUT / 'engine-stripped'; _sdir.mkdir(exist_ok=True); _eng2 = []
+    from roc.rebuild import coff_externals as _ce
+    for _e in engine:
+        _raw = _e.read_bytes(); _hit = {n for n, d in _ce(_raw).items() if d} & _wins
+        if _hit:
+            (_sdir / _e.name).write_bytes(rebuild.strip_symbols(_raw, drop=_hit)); _eng2.append(_sdir / _e.name)
+        else:
+            _eng2.append(_e)
+    engine = _eng2
 
 # One owner per strong definition: the engine wins over a native shell object; between two shell objects the
 # first (sorted) keeps it. Losers get a stripped copy (definition -> undefined external) in link/stripped/.
@@ -78,6 +89,12 @@ for p in shell:
         _sc_all = {n for n, k in _sc['symbols'](p.read_bytes()).items() if k != 'undef'} & _dup
         drop |= {n for n in _sc_all if n in _seen_dup}
         _seen_dup |= _sc_all
+    if os.environ.get('ROC_SHELL_WINS'):  # shortcut: only the glue object keeps these definitions
+        if p.name != 'LockFix.obj':
+            drop |= {n for n, k in _sc['symbols'](p.read_bytes()).items() if k != 'undef'} & _wins
+            mine = mine - _wins
+        else:
+            drop -= _wins
     if p.name == 'stubs.obj':
         drop = set()  # shortcut stubs (work/native-client/shortcut): strong definitions must beat weak aliases
     if mine and mine <= owned and p.parent.name == 'renamed':
