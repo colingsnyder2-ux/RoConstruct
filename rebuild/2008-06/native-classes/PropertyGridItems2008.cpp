@@ -217,9 +217,13 @@ void XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::Type
     SetValue(CString(value.c_str()));
 }
 
+// 0043dff0. Parked near-miss (313 of 329 bytes): with the separate end local (accepted; frame 0x24 and every
+// stack slot now match) the only difference is the original's leading group != NULL check (cmp [esp + 0x28], 0
+// -> _invalid_parameter_noinfo at 0043dff3, the _Tree iterator _Plist validation hoisted out of the loop); this
+// unit's group->end() elides it. Rejected: group->end() != found (operand order; no change).
 void ScriptItem::update(RBX::SelectionGroup* group)
 {
-    for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(); it != classes.end(); ++it) {
+    for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(), end = classes.end(); it != end; ++it) {
         const RBX::Reflection::ClassDescriptor* descriptor = *it;
         RBX::SelectionGroup::iterator found = group->find(descriptor);
         if (found != group->end() && found->second.size() > 0) {
@@ -230,14 +234,21 @@ void ScriptItem::update(RBX::SelectionGroup* group)
     SetHidden(TRUE);
 }
 
+// 0043dc00. Parked near-miss (810 of 835 bytes, same frame 0x58 and prologue stores; diverges in register
+// assignment: the original keeps this in ebp and the outer begin container in edi). Accepted steps: hoisted
+// group end, uninitialized first, separate outer end local. Rejected: a separate inner end local
+// (iend = instances->second.end(): frame 0x5c, bl/found moves to a stack byte).
 void RefItem::update(RBX::SelectionGroup* group)
 {
     bool found = false;
-    RBX::Instance* first = NULL;
-    for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(); it != classes.end(); ++it) {
+    RBX::Instance* first;   // the original never zeroes it (only the EH flag at 0043dc20); assigned while !found
+    // The original reads group's end iterator (+0x18 head, +0 container) once, before the loop (0043dc28).
+    const RBX::SelectionGroup::iterator groupEnd = group->end();
+    // Separate begin/end iterator locals: the original keeps both on the stack (0043dc4e..0043dc6b).
+    for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(), end = classes.end(); it != end; ++it) {
         const RBX::Reflection::ClassDescriptor* descriptor = *it;
         RBX::SelectionGroup::iterator instances = group->find(descriptor);
-        if (instances == group->end())
+        if (instances == groupEnd)
             continue;
         for (std::vector<boost::shared_ptr<RBX::Instance> >::const_iterator i = instances->second.begin(); i != instances->second.end(); ++i) {
             if (!found) {
