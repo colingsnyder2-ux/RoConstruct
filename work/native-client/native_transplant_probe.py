@@ -186,6 +186,9 @@ def main():
                           r'\1const char \2[] = \3;', support_text, flags=re.M)
     # Donor static reflection descriptors use the 2007 constructor ABI and are static-init objects, not recovered method bodies.
     support_text = re.sub(r'^[ \t]*static[ \t]+Reflection::[^;]*;[ \t]*$', '', support_text, flags=re.M)
+    # Donor file-scope using-directives (e.g. `using namespace G3D;`) let unqualified names in the bodies resolve.
+    usings = re.findall(r'^using namespace [A-Za-z_][A-Za-z_0-9:]*;', text, re.M)
+    includes += ''.join(u + '\n' for u in dict.fromkeys(usings) if u not in includes)
     args.output.write_text('// generated inactive real-header probe; do not promote without proof\n' + flags + includes +
                            '\n' + opened + support_text + bodies + '\n' + closed)
     print('generated', args.output, 'methods', len(methods),
