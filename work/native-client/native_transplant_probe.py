@@ -166,7 +166,7 @@ def main():
         # small, non-platform C runtime allowlist the original source named.
         source_dir = args.packet.parent
         vendor_includes = [(bracket, value) for bracket, value in vendor_includes
-                           if ((bracket == '"' and (source_dir / value).is_file()) or
+                           if ((bracket == '"' and ((source_dir / value).is_file() or any((Path(d) / value).is_file() for d in include_dirs))) or
                                (bracket == '<' and value.lower() in SAFE_SYSTEM_INCLUDES))
                            and value not in args.include
                            and Path(value).name.lower() not in primary_basenames
@@ -181,6 +181,14 @@ def main():
         externs = active_externs(text[:min(starts)], used)
         if externs:
             support_text += '\n'.join('// native-support-global\n' + line for line in externs) + '\n\n'
+    # Native headers declare class-name globals as `extern const char sX[]`; donor sources define `char* sX = "X"`.
+    support_text = re.sub(r'^(\s*)(?:const\s+)?char\s*\*\s*(s[A-Z]\w*)\s*=\s*("[^"\n]*")\s*;',
+                          r'\1const char \2[] = \3;', support_text, flags=re.M)
+    # Donor static reflection descriptors use the 2007 constructor ABI and are static-init objects, not recovered method bodies.
+    support_text = re.sub(r'^[ \t]*static[ \t]+Reflection::[^;]*;[ \t]*$', '', support_text, flags=re.M)
+    # Donor file-scope using-directives (e.g. `using namespace G3D;`) let unqualified names in the bodies resolve.
+    usings = re.findall(r'^using namespace [A-Za-z_][A-Za-z_0-9:]*;', text, re.M)
+    includes += ''.join(u + '\n' for u in dict.fromkeys(usings) if u not in includes)
     args.output.write_text('// generated inactive real-header probe; do not promote without proof\n' + flags + includes +
                            '\n' + opened + support_text + bodies + '\n' + closed)
     print('generated', args.output, 'methods', len(methods),

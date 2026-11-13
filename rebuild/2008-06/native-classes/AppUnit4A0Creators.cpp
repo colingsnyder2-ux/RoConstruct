@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native rows of the Message / Hint creation instances inside the application range 004a0000..004a4000
 // (inactive). Verified by tests/record_native_app_unit4a0.py. All headers are read-only here.
 //

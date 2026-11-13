@@ -9,7 +9,7 @@ import re
 DUPS = H / 'dups.json'
 def link(objs):
     json.dump({'selected': [{'object': c} for c in objs]}, open(H / 'receipt-final.json', 'w'))
-    env = dict(os.environ, ROC_STRONG_OWN='1', ROC_ENGINE_ABI='1', ROC_LINK_RES=os.path.normpath(str((H / 'Roblox2008.res').resolve())),
+    env = dict(os.environ, ROC_ANALOG_DIR=os.environ.get('ROC_ANALOG_DIR',''), ROC_NODEFAULTLIB='libboost_thread-vc80-mt-1_34_1.lib,libboost_date_time-vc80-mt-1_34_1.lib,libboost_signals-vc80-mt-1_34_1.lib', ROC_STRONG_OWN='1', ROC_ENGINE_ABI='1', ROC_LINK_RES=os.path.normpath(str((H / 'Roblox2008.res').resolve())),
                ROC_LINK_EXTRA=base + ';' + (H / 'receipt-final.json').resolve().as_posix())
     if DUPS.exists(): env['ROC_DEDUPE'] = str(DUPS.resolve())
     if (H / 'shell_wins.json').exists(): env['ROC_SHELL_WINS'] = str((H / 'shell_wins.json').resolve())
@@ -19,7 +19,13 @@ def link(objs):
         if not pr['duplicates']: break
         found = set(json.load(open(DUPS))) if DUPS.exists() else set()
         found |= {m.group(1) for d in pr['duplicates'] for m in [re.search(r'\((\?[^)]*)\)\s*$', d)] if m}
-        json.dump(sorted(found), open(DUPS, 'w')); env['ROC_DEDUPE'] = str(DUPS.resolve())
+        for _t in range(5):
+            try:
+                DUPS.write_text(json.dumps(sorted(found)))
+                break
+            except OSError:
+                import time; time.sleep(1)
+        env['ROC_DEDUPE'] = str(DUPS.resolve())
     return pr
 p = link(chosen + glue)
 print('unstubbed link: unresolved', len(p['unresolved']), 'dups', len(p['duplicates']), flush=True)

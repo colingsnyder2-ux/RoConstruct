@@ -4,6 +4,20 @@ import sqlite3
 from roc import integration_site
 
 
+def test_linked_native_inventory_uses_passing_linked_modules(tmp_path):
+    for name, linked, test, addresses in (
+            ('ATL', True, 0, ['00401000', '00402000']),
+            ('Broken', False, None, ['00403000']),
+            ('Failing', True, 1, ['00404000'])):
+        folder = tmp_path / 'rebuild/2008-06/out' / name
+        folder.mkdir(parents=True)
+        (folder / 'report.json').write_text(json.dumps({
+            'linked': linked, 'test_exit': test, 'owned_addrs': addresses,
+        }))
+
+    assert integration_site.linked_native_inventory(tmp_path) == {'00401000', '00402000'}
+
+
 def test_site_groups_and_merged_receipts(tmp_path):
     work = tmp_path / 'work'
     (work / 'integration').mkdir(parents=True)

@@ -1,10 +1,10 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // Inactive 2008-06 recovery of the CPropGrid translation unit rows in 00438000..0043c000
 // (one TU, as the original lays them out: CPropGrid members, CPropGrid::Item, SelectionGroup::remove,
 // the addItem<Editor> attachments and the XItem<T> constructors).
 // Built against the committed native headers, all included read-only: CPropGrid.h, SelectionGroup.h,
 // PropertyGridItems.h, v8datamodel/DataModel.h, v8tree/Instance.h, v8tree/PropertyChanged.h.
-// Body shapes are the owners' matched native-classes/CPropGrid*.cpp, SelectionGroup.cpp and the
-// PropertyGridItems.h templates; tests/record_native_app_unit438.py verifies bytes and every target.
+// Current intake verifies 15 byte/data-exact rows. Other emitted rows remain useful near matches, not proof.
 #include "PropertyGridItems.h"
 #include "SelectionGroup.h"
 #include "reflection/object.h"

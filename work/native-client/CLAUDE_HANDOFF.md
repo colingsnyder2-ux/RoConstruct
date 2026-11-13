@@ -1,3 +1,53 @@
+# Claude note 2026-11-13 (late) - why File>New dies in Instance::readProperty: engine Instance vtable is shifted by one slot
+- Native (2008) Instance.h virtuals: ~Instance, setName, askAddChild, askSetParent, onAddListener x2, onAncestorChanged, onDescendentAdded, ... readProperty, ...
+  rbxgs engine Instance.h has an extra `virtual void onGuidChanged()` before setName, so every slot after the destructor is +1. 2008 analogs (byte-exact against the exe) call
+  slot k; the 2007 engine objects answer with slot k-1/k+1 (readProperty entered from ServiceProvider::onDescendentAdded with a null XmlElement). Member offsets also differ
+  (parent 0x104 in 2008, Instance size 0x130). So analogs that touch Instance-derived engine objects cannot be mixed with the engine.
+- Options: (a) whole Instance hierarchy from 2008 analogs/native sources (strip the 2007 engine copies of that set; analog-wins mode ROC_ANALOG_DIR links but crashes MFC at startup, bisect_wins.py
+  could not separate link failures from crashes: ~870 unresolved even after stubbing in subset mode), or (b) engine headers patched to the 2008 vtable/layout through rebuild/2008-06/patches/rbxgs-client.json
+  (overlay) and the engine rebuilt: slot order alone is not enough, fields differ too.
+
+# Claude note 2026-11-13 (night) - File>New past GameSettings; now readProperty(null XmlElement)
+- Root cause of the GameSettings/NetworkSettings `Instance::setName` BAADF00D crash: engine-ABI Instance members are emitted with the 2007 access mangling
+  (ctor `??0Instance@RBX@@IAE@..`, dtor `??1Instance@RBX@@MAE@XZ`) while 2008 callers/analogs reference `QAE`/`UAE`, so the public names became zero stubs. Fixed with
+  `shortcut/InstanceAliasGlue.cpp` (#pragma comment(linker,"/alternatename:...")), same trick as Codex's ServiceProviderGlue.cpp. shell_wins.json must stay
+  `["?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z"]` (an Instance ctor entry strips the engine copy and leaves a stub).
+- `ROC_ANALOG_DIR=<dir>` (linkprobe.py, passed through relink_big.py) lets the analog objects in <dir> replace engine definitions of every symbol they define. Applying it to all 327
+  analogs crashes MFC at startup; applying it to the exact Instance ctor analog 0055b7e0 breaks because the analog's vtables/RTTI carry 2008 real names the 2007 engine lacks (they become
+  zero data stubs). Use it only for self-contained functions. Keep default off.
+- Current best set: `python work/native-client/shortcut/relink_big.py chosen_verbs.json` (311 objects, 651 stubs). Idle: no crash. File>New (POSTCMD=57600): GameSettings singleton OK, then
+  `Instance::readProperty(const XmlElement*=null)` -> `XmlElement::findAttribute` (entry stack: DataModel::onDescendentAdded -> ServiceProvider::onDescendentAdded). Suspect 2007-engine vs 2008-analog
+  Instance vtable slot layout (a 2008 slot number lands on readProperty in the 2007 vtable). crashsite stack words are only heuristic code addresses; use BPENTRY=<sym>.
+- Tools added: auto_closure.py (closure loop; learns addresses from analog relocations and helper_addrs.py), bisect_analogs.py, strip_dups_loop.py, who_defines.py, findsym.py, donor_try.py.
+  rename.py now compiles `roc-lib: <recipe> <file>` analogs (about 14,000 server sources are such one-line references) and has ROC_RENAME_* env switches.
+- Playable still NOT reached: no CRobloxDoc finishes, no 3D view, no place.
+
+# Claude note 2026-11-13 (later) - closure-linked client: real IDE frame, File>New still silent
+- `python work/native-client/shortcut/auto_closure.py 12` (server analogs, placeholders func_/dat_, kept comdat helpers, __imp_ fix) then
+  `python work/native-client/shortcut/relink_big.py chosen_closure.json`: links, runs, no crash. Window title is 'Roblox', Explorer + Properties panes docked,
+  status 'TEX 0B / VAR 0B' (screens: shortcut/mine_filenew.png). Stubs still hit: nativeRegisterNames1..3, initializeSettings, nativeInitializeCallbacks,
+  InitializeAllIcons, CWrapperView::OnDraw. Http::get/httpRequest throws (no network/base URL) are caught.
+- Real so far: StartupGlue.cpp (Profiling::init, nativeInitializeTypes = Metadata classDescriptor statics, FactoryRegistrator), NameGlobals_*.cpp.
+- File>New: WM_COMMAND 0xE100 posted to the frame (crashsite POSTCMD=57600) never reaches CIDEDocManager::OnFileNew (BPENTRY not hit), so no CRobloxDoc/CRobloxView/
+  3D view. Check CRobloxApp message map / m_pDocManager type / CWinApp::OnFileNew path next. Screenshot your own window with PrintWindow: the desktop holds the
+  user's 'June 22' Roblox.exe processes and their fmodex dialog; those are not this build.
+
+# Claude note 2026-11-13 - openrbx is a near-exact donor for the 2008 Ogre fork and the Scintilla MFC wrapper
+- `tools/openrbx/Client/Rendering/AppDraw/*.cpp` (RbxEntity, RbxSceneManager, RbxSubEntity, TwoDManager, VisualEngine, RbxSky, RbxFont,
+  RbxSceneNode, Unknown0067eb00) compiles as whole TUs on the 2008 compiler with Ogre 1.4.5 includes + `/I tools/openrbx/util` (decomp.h) and
+  reproduces many exe functions byte-for-byte, incl. `RbxEntity::_updateRenderQueue` 0067d010 and FUN_xxxxxxxx-named members (0067c510/520/570,
+  0067c6a0, 0067d3d0, 0067d9b0, 0067da50). `work/native-client/openrbx_appdraw_probe.py` writes wrappers + `openrbx-appdraw/results.json`
+  (exact_total counts everything in 00401000-00800000 incl. std templates, so it is inflated). NOT integrated: the native OgreRbx* files use
+  RbxEntity2008.h, openrbx uses appdraw/RbxEntity.h (different class decls, duplicate definitions if both are linked). Next: an Ogre trial that
+  layers the openrbx AppDraw TUs INSTEAD of the OgreRbx*.cpp natives. AdornRbxGfx.cpp needs renderlibnew/TextureProxy.h.
+- Scintilla: native-classes/ScintillaCtrl.cpp + ScintillaDocView.cpp now verbatim from `tools/openrbx/Client/win` (namespace Scintilla; 105/82 range-exact,
+  unmatched Scintilla exe functions 51 -> 27). The module `scintilla.json` still builds the 1.20 library recipe.
+- openrbx `Client/win/Roblox.cpp` (1130 lines) is the real 2008 `CRobloxApp::InitInstance` etc. with FUN_xxxxxxxx names that map to exe addresses
+  (FUN_0044d4a0, FUN_004509e0, FUN_00450e30, FUN_0041ac10 in DHTMLWindow.cpp, Profiling::init, Reflection::Metadata::FUN_00447680,
+  static FactoryRegistrator). These are the sources behind the shortcut client's zero stubs (nativeInitializeTypes, nativeRegisterNames1..3,
+  initializeSettings ...). To compile win/*.cpp as TUs the probe needs `/FIafxwin.h /FIshlwapi.h /FIafxpriv.h` plus the XTP include dirs and the
+  MIDL-generated `Roblox_h.h`; first tried 2026-11-13, stopped at those headers.
+
 # Claude note 2026-11-12 23:20 — stub-backed client runs (owner authorized shortcuts)
 
 `work/native-client/shortcut/` builds `link/Roblox2008.exe` with real native objects plus a zero-return stub object for what has no

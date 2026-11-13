@@ -13,8 +13,8 @@ const data = {client:"2008-06", updated:"2026-11-05 12:00 UTC", native:["0000000
   groups:{integrated:{functions:1,bytes:20},owned_waiting:{functions:2,bytes:50},
     exact_waiting:{functions:1,bytes:30},partial:{functions:0,bytes:0},unmined:{functions:0,bytes:0}},
   native_code:{inactive:{functions:1,bytes:40},draft:{functions:1,bytes:10}}};
-assert.match(c.integrationBar(data,data.client), /60 B of 100 B.*60.00%/);
-assert.match(c.integrationSummary(data,data.client), /aria-valuenow="60.00"/);
+assert.match(c.integrationBar(data,data.client), /Native code coverage.*60 B of 100 B.*60.00%/);
+assert.match(c.integrationSummary(data,data.client), /Native coverage[\s\S]*aria-label="Native code coverage bytes"[\s\S]*aria-valuenow="60.00"/);
 const daily = c.integrationDaily({...data,history:[{day:"2026-11-04",groups:data.groups,native_code:data.native_code}]});
 assert.match(daily, /<th>Inactive native<\/th><th>Draft native<\/th>/);
 assert.match(daily, /<td>2026-11-04<\/td><td>1<\/td><td>1<\/td><td>1<\/td><td>1<\/td><td>0<\/td>/);

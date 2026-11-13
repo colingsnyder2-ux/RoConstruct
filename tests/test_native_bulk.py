@@ -84,6 +84,10 @@ class NativeBulkTests(unittest.TestCase):
         self.assertEqual(rows[0]["status"], "draft")
         self.assertIn("reference identity differs: ?callee@@YAXXZ (bound 00003000, original reference 00002000)",
                       rows[0]["rejections"][0]["errors"])
+        self.assertEqual(rows[0]["rejections"][0]["references"], [{
+            "symbol": "?callee@@YAXXZ", "address": "00002000", "kind": REL32,
+            "offset": 1, "external": True, "requires_provider": True,
+        }])
 
     def test_absolute_field_without_original_relocation_is_rejected(self):
         original = b"\xb8\x00\x20\x00\x00\xc3"

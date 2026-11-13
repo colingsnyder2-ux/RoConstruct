@@ -11,7 +11,7 @@
 #include "reflection/reflection.h"
 
 namespace RBX {
-extern char sJointInstance[];
+extern const char sJointInstance[];
 class JointInstance : public DescribedNonCreatable<JointInstance, Instance, sJointInstance>, public IRenderable, public IJointOwner {
 protected:
     Joint* joint;
@@ -23,7 +23,7 @@ public:
     Joint::JointType getJointType() const;
 };
 
-extern char sAutoJoint[];
+extern const char sAutoJoint[];
 class AutoJoint : public DescribedNonCreatable<AutoJoint, JointInstance, sAutoJoint> {
 private:
     boost::shared_ptr<PartInstance> part[2];
@@ -46,19 +46,19 @@ public:
     void setC1(const G3D::CoordinateFrame& value);
 };
 
-extern char sSnap[];
+extern const char sSnap[];
 class Snap : public DescribedCreatable<Snap, AutoJoint, sSnap> { public: Snap(Joint* joint); Snap(); };
-extern char sWeld[];
+extern const char sWeld[];
 class Weld : public DescribedCreatable<Weld, AutoJoint, sWeld> { public: Weld(Joint* joint); Weld(); };
-extern char sGlue[];
+extern const char sGlue[];
 class Glue : public DescribedCreatable<Glue, AutoJoint, sGlue> { public: Glue(Joint* joint); Glue(); };
-extern char sRotate[];
+extern const char sRotate[];
 class Rotate : public DescribedCreatable<Rotate, AutoJoint, sRotate> { public: Rotate(Joint* joint); Rotate(); };
-extern char sRotateP[];
+extern const char sRotateP[];
 class RotateP : public DescribedCreatable<RotateP, AutoJoint, sRotateP> { public: RotateP(Joint* joint); RotateP(); };
-extern char sRotateV[];
+extern const char sRotateV[];
 class RotateV : public DescribedCreatable<RotateV, AutoJoint, sRotateV> { public: RotateV(Joint* joint); RotateV(); };
-extern char sMotor[];
+extern const char sMotor[];
 class Motor : public DescribedCreatable<Motor, AutoJoint, sMotor> {
 private:
     const MotorJoint* getMotorJoint() const;

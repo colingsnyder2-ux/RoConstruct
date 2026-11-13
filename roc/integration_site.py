@@ -46,6 +46,17 @@ def owned_inventory(root, extra_reports=()):
     return rows
 
 
+def linked_native_inventory(root):
+    addresses = set()
+    for path in sorted((root / 'rebuild' / CLIENT / 'out').glob('*/report.json')):
+        report = json.loads(path.read_text(encoding='utf-8'))
+        if report.get('linked') is not True or report.get('test_exit') != 0:
+            continue
+        addresses.update(address.lower() for address in report.get('owned_addrs', ())
+                         if re.fullmatch('[0-9a-fA-F]{8}', address))
+    return addresses
+
+
 def coverage(root, scores, native, owned=None):
     """Website and webhook share the same code-only function/byte denominator."""
     owned = owned_inventory(root) if owned is None else owned
@@ -217,7 +228,8 @@ def announce_inactive(before, after, log=print):
 def build(root=ROOT, log=print, output=None, extra_reports=()):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
-    native = set(json.loads(native_path.read_text())["addresses"]) if native_path.exists() else set()
+    server_native = set(json.loads(native_path.read_text())["addresses"]) if native_path.exists() else set()
+    native = server_native | linked_native_inventory(root)
     names_path = out / "native-names.json"
     names = json.loads(names_path.read_text()) if names_path.exists() else {}
     db = sqlite3.connect("file:%s?mode=ro" % (root / "work/server.db").as_posix(), uri=True, timeout=30)
@@ -277,6 +289,7 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
             # addr -> [user, worker, unit] for unexpired agent claims
             "working": working,
             "native": sorted(native),
+            "server_native": sorted(server_native),
             "owned": sorted(set(owned) & functions.keys()),
             "owned_waiting": sorted((set(owned) & functions.keys()) - native),
             "ownership_note": "Inactive / draft: native code exists (receipt-exact or draft) but is not integrated; link, runtime and server acceptance still pending.",

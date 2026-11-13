@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native STL instance of the Network/Replicator.cpp unit inside the application range 004ac000..004b0000
 // (inactive): the tree of std::map<const Reflection::SignalDescriptor*, shared_ptr<Reflection::SignalInstance> >,
 // the SignalSource::signals map of the read-only native-headers/reflection/signal.h. Rows: _Insert 004ae370,

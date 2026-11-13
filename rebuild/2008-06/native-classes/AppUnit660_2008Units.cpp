@@ -5,8 +5,8 @@
 // 00646c91 (float). See tests/record_native_app_unit660_2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit660_2008Units | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by tester
+// AppUnit660_2008Units | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by tester (ntech:glm-4.5-air)
 // <<< native-status | src e1c3f2e0 | roc native-status --write
 #include "util/Units.h"
 
