@@ -1068,6 +1068,38 @@ def dll_import_lib(client, dll):
     return lib
 
 
+def dll_pointer_import_lib(client, dll, symbols):
+    """Import only the IAT entries for real DLL exports, without local jump thunks.
+
+    Some modules also define a native function with the export's name. A DATA
+    entry in the import library supplies only __imp_*, while the PE still imports
+    the same DLL export by name. Consumers must call through the IAT entry.
+    """
+    if Path(dll).name != dll or not isinstance(symbols, list) or not symbols:
+        raise ValueError('pointer-only imports require a DLL basename and a nonempty symbol list')
+    path = client_dll(client, dll)
+    if not path:
+        raise FileNotFoundError('client DLL not found: ' + dll)
+    names = sorted(set(symbols))
+    missing = set(names) - set(dll_exports(path))
+    if missing:
+        raise ValueError('pointer-only import not exported by %s: %s' % (dll, ', '.join(sorted(missing))))
+    identity = hashlib.sha256(path.read_bytes() + b'\0' + '\n'.join(names).encode()).hexdigest()[:16]
+    out = workspace(client) / 'out' / 'importlibs'
+    out.mkdir(parents=True, exist_ok=True)
+    lib = out / (Path(dll).stem + '-pointer-' + identity + '.lib')
+    if not lib.exists():
+        definition = lib.with_suffix('.def')
+        definition.write_text('LIBRARY %s\nEXPORTS\n' % dll + ''.join('  %s DATA\n' % n for n in names))
+        temporary = lib.with_suffix('.building')
+        code, output = run(toolchain(), 'lib', ['/nologo', '/MACHINE:X86', '/DEF:' + definition.name,
+                            '/NAME:' + dll, '/OUT:' + temporary.name], out)
+        if code:
+            raise RuntimeError('%s: %s' % (lib.name, output[-300:]))
+        temporary.replace(lib)
+    return lib
+
+
 def source_errors(out, spec=None, report=None):
     """Include legacy per-layer failures even when an old link/smoke report says success."""
     errors = dict((report or {}).get('compile_errors', {}))
@@ -1222,6 +1254,10 @@ def build_module(client, name, log=print):
             raise RuntimeError('Dependency source build/link/smoke failed: ' + dep)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
+    for dll, names in spec.get('import_pointer_only', {}).items():
+        if dll not in spec.get('import_dlls', []):
+            raise ValueError('pointer-only import DLL must also be in import_dlls: ' + dll)
+        deps.append(dll_pointer_import_lib(client, dll, names))
     deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
     deps += [ROOT / lib if "/" in lib else lib for lib in spec.get("extra_libs", [])]  # repo path or library name (msvcprt.lib)
     excluded_path = out / "verified" / "excluded.json"
