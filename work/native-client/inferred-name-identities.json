@@ -14898,6 +14898,12 @@
    "address": "00685e10",
    "inferred_name": true,
    "evidence": "Original quadric setter writes Vector3 at +0x20; caller and 2007 Ogre quadric donor establish the class and field. Name inferred."
+  },
+  {
+   "symbol": "?toColourValue@Ogre@@YA?AVColourValue@1@ABVColor4@G3D@@@Z",
+   "address": "006784f0",
+   "inferred_name": true,
+   "evidence": "2007 Ogre VisualEngine colour conversion donor and original 007aa67d Light::setDiffuseColour caller; exact 31-byte body, no references."
   }
  ]
 }
