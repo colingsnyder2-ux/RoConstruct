@@ -108,6 +108,13 @@ namespace RBX
 	// 0060a490: not exact (same instructions, the original allocates ecx/edx/eax for the temporaries).
 	// computeLocalCoordinateFrame 00609da0 is not recovered: it reads PartInstance's embedded Primitive (+0x228)
 	// geometry, a layout the shared PartInstance.h/Primitive.h do not have.
+	// Parked (hard-leftover batch 8, 2026-11-13). Rejected variants, each recompiled and diffed against 0060a490:
+	//   1. c = part->getCoordinateFrame() * computeLocalCoordinateFrame(); -- worse: eax reused for the call
+	//      result as the operator* argument (no re-lea of the temporary).
+	//   2. const G3D::CoordinateFrame& local = computeLocalCoordinateFrame(); -- identical to this body
+	//      (lea eax / lea ecx / lea edx; the original uses lea ecx / lea edx / lea eax).
+	//   3. if (PartInstance* part = dynamic_cast<PartInstance*>(getParent())) -- identical to this body.
+	//   Remaining difference is register naming only; no further source-shape evidence.
 	bool Feature::getRenderCoord(G3D::CoordinateFrame& c) const
 	{
 		PartInstance* part = dynamic_cast<PartInstance*>(getParent());
