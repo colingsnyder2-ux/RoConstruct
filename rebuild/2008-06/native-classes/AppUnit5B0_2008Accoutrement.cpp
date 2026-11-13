@@ -29,6 +29,10 @@ namespace RBX
 
 	// @005b0840: name_name 00975338, findAttribute 0057c2b0, getValue 0057c360, "BackendAccoutrementState" 00834a0c,
 	// Instance::readProperty 00559170
+	// Exact with the public Name::name member read directly: through the inline Name::toString() (marked "guess" in
+	// util/Name.h) the string pointer lands in eax and binder in edx, the original has them in edx / eax.
+	// Rejected: donor nested ifs with name->toString() (eax/edx swap at 005b0873); a single combined
+	// `attrib && getValue && toString() ==` condition (identical codegen, same swap).
 	void Accoutrement::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
 	{
 		const Name* name = NULL;
@@ -36,7 +40,7 @@ namespace RBX
 		{
 			if (attrib->getValue(name))
 			{
-				if (name->toString() == "BackendAccoutrementState")
+				if (name->name == "BackendAccoutrementState")
 					return;
 			}
 		}
