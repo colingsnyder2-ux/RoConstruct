@@ -1,5 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/widget-rect-2008
-// 2008-06 native RelativePanel / PercentPanel / TopMenuBar::render2d and Rect positioning helpers (inactive).
+// 2008-06 native RelativePanel / PercentPanel and Rect positioning helpers (inactive). TopMenuBar::render2d 00574050
+// moved to UnifiedWidgetLayout.cpp (the original GUI.cpp unit beside GuiItem::getMyRect 00573310).
 // Layouts: native-headers/gui/Gui.h (TopMenuBar backdropColor +0x144, layoutStyle +0x154; RelativePanel xLocation
 // +0x15c, yLocation +0x160, offset +0x164; PercentPanel position +0x164) and util/Rect.h. GuiTarget::process 005732d0
 // and TopMenuBar::isVisible 00573e00 are inline in-class bodies already (gui/GuiEvent.h, gui/Gui.h).
@@ -36,26 +37,6 @@ namespace RBX
 		Rect canvas(GuiRoot::getCanvasSize());
 		G3D::Vector2 pixelPosition = GuiRoot::toPixelSize(position);
 		return canvas.positionPoint(pixelPosition, xLocation, yLocation);
-	}
-
-	// 00574050: backdrop rect2d (Adorn slot 0x2c) when backdropColor != Color4::clear() 007baf10, then children.
-	// Byte-exact only in the unit that also defines GuiItem::getMyRect 00573310 (UnifiedWidgetLayout.cpp, the original
-	// GUI.cpp): with getMyRect visible the inline getMyRect2D is called out of line (00573960) as in the original. A
-	// trial with getMyRect defined here matched 220/220 bytes; not kept here to avoid duplicating that body.
-	void TopMenuBar::render2d(Adorn* adorn)
-	{
-		if (isVisible())
-		{
-			if (backdropColor != G3D::Color4::clear())
-				adorn->rect2d(getMyRect2D(), backdropColor);
-
-			for (size_t i = 0; i < numChildren(); i++)
-			{
-				GuiItem* current = dynamic_cast<GuiItem*>(getChild(i));
-				if (current)
-					current->render2d(adorn);
-			}
-		}
 	}
 
 	// 005cef00. The original Rect bodies sit in their own unit (005cef00..005cf000, away from the panels at

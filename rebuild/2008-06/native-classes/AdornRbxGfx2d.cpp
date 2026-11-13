@@ -29,17 +29,25 @@ namespace RBX
                                     0, 0, 1, 1);
     }
 
-    // 0066f9c0 (slot 10): primitive 00683000 with operation type 2 (OT_LINE_LIST); thick is unused.
-    // PARKED (same size 138, not exact): the original spills the four rect floats (y1, x1, y0, x0 order) before it
-    // loads visualEngine->twoD into edi; this local form loads twoD first. Rejected: no local (twoD loaded after the
-    // getHeight calls), float locals x0/y0/x1/y1 (spill order reversed), Rect2D local copy (spill order reversed).
+    // Inline helper of 0066f9c0 (no out-of-line copy in the image). Its by-value float parameters are evaluated right
+    // to left (color, y1, x1, y0, x0, then twoD), which is the original's spill order: y1, x1, y0, x0 are stored before
+    // visualEngine->twoD is loaded into edi and before the two getHeight calls. The helper's name is a naming choice.
+    static inline void outlineRectangle2d(const AdornRbxGfx* adorn, Ogre::TwoDManager* twoD,
+                                          float x0, float y0, float x1, float y1, const G3D::Color4& color)
+    {
+        twoD->primitive(Ogre::RenderOperation::OT_LINE_LIST,
+                        x0, (adorn->getHeight() - 1) - y0,
+                        x1, (adorn->getHeight() - 1) - y1,
+                        color);
+    }
+
+    // 0066f9c0 (slot 10): primitive 00683000 with operation type 2 (OT_LINE_LIST); thick is unused. Exact (138 B) with
+    // the rect floats passed through the inline helper above. Rejected (same size, store order differs): a
+    // `TwoDManager* twoD` local with direct rect.x0().. arguments (twoD loaded first), no local (twoD loaded after the
+    // getHeight calls), float locals x0/y0/x1/y1 (spill order reversed), a Rect2D local copy (spill order reversed).
     void AdornRbxGfx::outlineRect2d(const G3D::Rect2D& rect, float thick, const G3D::Color4& color) const
     {
-        Ogre::TwoDManager* twoD = visualEngine->twoD;
-        twoD->primitive(Ogre::RenderOperation::OT_LINE_LIST,
-                        rect.x0(), (getHeight() - 1) - rect.y0(),
-                        rect.x1(), (getHeight() - 1) - rect.y1(),
-                        color);
+        outlineRectangle2d(this, visualEngine->twoD, rect.x0(), rect.y0(), rect.x1(), rect.y1(), color);
     }
 
     // 0066fa50 (slot 9): 006830b0 with the two end points.

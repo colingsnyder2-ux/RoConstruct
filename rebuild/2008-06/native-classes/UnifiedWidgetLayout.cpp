@@ -1,6 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::UnifiedWidget layout and drawing rows of the original gui/GUI.cpp unit (inactive):
-// childOffset 005735a0, render2dMe 00574170, render2d 00574300, firstChildPosition 00574330,
+// childOffset 005735a0, TopMenuBar::render2d 00574050, render2dMe 00574170, render2d 00574300, firstChildPosition 00574330,
 // getChildPosition 00574400 and onLoseFocus 005cf4e0 (COMDAT-folded with Widget::onLoseFocus: one store of NOTHING at
 // +0x144). Class in native-headers/gui/Gui.h (read-only here). render2dChildren 00574280 is called, not compiled here.
 // render2dMe inlines GuiItem::menuSelect (00573250, the same local static 00974e2c guarded by 00974e3c), so that getter
@@ -28,6 +28,25 @@ namespace RBX
 	G3D::Vector2 UnifiedWidget::childOffset() const
 	{
 		return G3D::Vector2(0.0f, 28.0f);
+	}
+
+	// 00574050: backdrop rect2d (Adorn slot 0x2c) when backdropColor != Color4::clear() 007baf10, then children.
+	// Moved from GuiPanels.cpp: byte-exact only in this unit, which also defines GuiItem::getMyRect 00573310 (the
+	// original GUI.cpp), so the inline getMyRect2D is called out of line (00573960) as in the original.
+	void TopMenuBar::render2d(Adorn* adorn)
+	{
+		if (isVisible())
+		{
+			if (backdropColor != G3D::Color4::clear())
+				adorn->rect2d(getMyRect2D(), backdropColor);
+
+			for (size_t i = 0; i < numChildren(); i++)
+			{
+				GuiItem* current = dynamic_cast<GuiItem*>(getChild(i));
+				if (current)
+					current->render2d(adorn);
+			}
+		}
 	}
 
 	// 00574170: adorn->rect2d (slot 11) / outlineRect2d (slot 10) of the out-of-line getMyRect2D 00573960, then
