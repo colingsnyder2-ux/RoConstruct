@@ -346,7 +346,7 @@ def compile_job(job, folder, tc):
         for line in log.splitlines():
             hit = re.match(r'\s*Note: including file:\s*(.*?)\s*$', line)
             if hit:
-                dependencies.add(Path(hit[1]).resolve())
+                dependencies.add(Path(rebuild._host_include(hit[1])).resolve())  # Wine prints Z:\host\path
         result['dependencies'] = {str(p): sha(p) for p in sorted(dependencies)}
         # Fingerprints are evidence, not a cache key. No reuse of changed builds.
         changed = [str(p) for p in dependencies if p != source and p.stat().st_mtime_ns >= started]

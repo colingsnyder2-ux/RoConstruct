@@ -412,7 +412,8 @@ def _run(config, output, root=ROOT):
                 inputs[str(source)] = result.get('source_sha256', draft_hash)
                 log = (folder / 'compile.log').read_text(encoding='utf-8') if (folder / 'compile.log').exists() else ''
                 for included in re.findall(r'^\s*Note: including file:\s*(.*?)\s*$', log, re.M):
-                    path = Path(included).resolve()
+                    from roc.rebuild import _host_include  # Wine prints Z:\host\path includes
+                    path = Path(_host_include(included)).resolve()
                     inputs[str(path)] = sha(path)
                 for missing in re.findall(r"Cannot open include file:\s*'([^']+)'", log):
                     # Missing declarations wake on creation; no endless identical compiler failures.
