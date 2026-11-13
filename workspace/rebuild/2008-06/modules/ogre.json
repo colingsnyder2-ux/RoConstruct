@@ -189,7 +189,7 @@
    "name": "native-rbx0",
    "mode": "direct",
    "dir": "rebuild/2008-06/native-classes",
-   "files": "OgreClientHeaderInstances.cpp OgreRbxAdornState.cpp OgreRbxEntity.cpp OgreRbxSceneManagerSkybox2008.cpp OgreRbxSky.cpp OgreRbxSubMesh.cpp OgreVisualEngine.cpp OgreVRbxFont.cpp OgreRbxEntitySetMesh2008.cpp OgreRbxEntityClear2008.cpp",
+   "files": "OgreClientHeaderInstances.cpp OgreRbxAdornState.cpp OgreRbxEntity.cpp OgreRbxSceneManagerSkybox2008.cpp OgreRbxSky.cpp OgreRbxSubMesh.cpp OgreVisualEngine.cpp OgreVRbxFont.cpp OgreRbxEntitySetMesh2008.cpp OgreRbxEntityClear2008.cpp OgreRbxEntityAppend2008.cpp OgreRbxAdornOffset2008.cpp OgreColourConversion2008.cpp",
    "flags": "/nologo /c /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast",
    "defines": "WIN32 BOOST_ALL_NO_LIB WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT _VC80_UPGRADE=0x0710 _XTP_STATICLINK _XTPLIB_NOAUTOLINK",
    "extra_includes": [

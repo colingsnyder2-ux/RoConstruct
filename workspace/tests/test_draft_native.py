@@ -7,11 +7,17 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-from roc.draft_native import claims_from, closed_function_targets, compile_review_blockers, freeze_headers, numeric_literal_targets, reviewed_call_targets
+from roc.draft_native import claims_from, closed_function_targets, compile_review_blockers, freeze_headers, numeric_literal_targets, original_function, reviewed_call_targets
 from roc.draft_merger import content_hash
 
 
 class ClaimsFromTests(unittest.TestCase):
+    def test_non_function_target_is_a_blocker_not_process_exit(self):
+        with patch('roc.draft_native.match.target', side_effect=SystemExit('no function starts there')):
+            target, blocker = original_function(0x826bfc)
+        self.assertIsNone(target)
+        self.assertEqual(blocker, 'no function starts there')
+
     def test_external_closure_requires_unique_independent_original_identity(self):
         anchor = dict(symbol='?Good@@YAXXZ', address='00401000', evidence='unique-body',
                       body_exact=True, function_start=True)

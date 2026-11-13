@@ -68,7 +68,19 @@ def blobs(root, identities):
 def receipt_profiles(receipt):
     flags = receipt.get('flags')
     if isinstance(flags, dict):
-        return flags
+        profiles = {group: list(arguments) for group, arguments in flags.items()
+                    if isinstance(arguments, list)}
+        source_paths = [str(path).replace('\\', '/') for path in receipt.get('sources', {})
+                        if '/native-classes/' in str(path).replace('\\', '/')
+                        and str(path).lower().endswith('.cpp')]
+        for group, arguments in profiles.items():
+            if any(str(value).lower().endswith('.cpp') for value in arguments):
+                continue
+            matches = [path for path in source_paths
+                       if str(group).casefold() in path.rsplit('/', 1)[-1].casefold()]
+            if len(matches) == 1:
+                arguments.append(matches[0])
+        return profiles
     if not isinstance(flags, list):
         return {}
     argument_names = {str(value).replace('\\', '/') for value in flags
@@ -104,6 +116,10 @@ def receipt_groups(receipt):
             if len(app_groups) == 1:
                 grouped[app_groups[0]] = rows
         rows = grouped
+    if (isinstance(rows, dict) and len(flags) == 1 and isinstance(receipt.get('methods'), list)
+            and not any(isinstance(row, dict) and row.get('exact') is True and row.get('symbol')
+                        for entries in rows.values() for row in entries)):
+        rows = {next(iter(flags)): receipt['methods']}
     if not isinstance(rows, dict) or not isinstance(flags, dict):
         return []
     result = []
@@ -119,7 +135,10 @@ def receipt_groups(receipt):
         for row in entries:
             if not isinstance(row, dict) or row.get('exact') is not True:
                 continue
-            address, symbol = str(row.get('address', '')).lower().removeprefix('0x'), row.get('symbol')
+            if row.get('piece', 'whole') != 'whole':
+                continue
+            address = str(row.get('address', row.get('row', ''))).lower().removeprefix('0x')
+            symbol = row.get('symbol')
             if (re.fullmatch(r'[0-9a-f]{8}', address) and isinstance(symbol, str) and symbol
                     and not symbol.startswith(('__catch$', '__ehhandler$', '__unwindfunclet$'))
                     and not re.search(r' \[0x[0-9a-f]+:0x[0-9a-f]+\]$', symbol, re.I)):

@@ -78,6 +78,36 @@ class MewImportTests(unittest.TestCase):
              ['part-embedded'])
         ])
 
+    def test_receipt_groups_bind_named_profiles_and_row_addresses(self):
+        receipt = {
+            'sources': {
+                'rebuild/2008-06/native-classes/AppUnit5A4StatsItems.cpp': 'sha',
+            },
+            'flags': {'stats': ['/U_RELEASEASSERT']},
+            'rows': [
+                {'unit': 'stats', 'exact': True, 'row': '005a4020', 'symbol': '?update',
+                 'piece': 'whole'},
+                {'unit': 'stats', 'exact': True, 'row': '005a4026', 'symbol': '?update-fragment',
+                 'piece': 1},
+            ],
+        }
+        self.assertEqual(mew_import.receipt_groups(receipt), [
+            ('appunit5a4statsitems.cpp', 'stats',
+             [{'addr': '005a4020', 'symbol': '?update'}], False, True, False, [])
+        ])
+
+    def test_receipt_groups_fall_back_to_exact_method_records(self):
+        receipt = {
+            'sources': {'rebuild/2008-06/native-classes/AppUnit440Metadata.cpp': 'sha'},
+            'flags': ['/fp:fast'],
+            'rows': [{'row': '00440000', 'kind': 'map-only'}],
+            'methods': [{'address': '00443ab0', 'symbol': '?lookup', 'exact': True}],
+        }
+        self.assertEqual(mew_import.receipt_groups(receipt), [
+            ('appunit440metadata.cpp', 'unit',
+             [{'addr': '00443ab0', 'symbol': '?lookup'}], True, False, False, [])
+        ])
+
     def test_pinned_ogre_profile_detected_without_trusting_external_path(self):
         receipt = {'flags': {'g': ['/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include',
                                    '/tmp/Foo.cpp']},

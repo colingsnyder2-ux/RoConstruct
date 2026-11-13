@@ -14886,6 +14886,24 @@
    "address": "00801580",
    "inferred_name": false,
    "evidence": "Original 00685490 relocation names this EH handler or static box destructor; body and all original references match."
+  },
+  {
+   "symbol": "?func_0067da50@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z",
+   "address": "0067da50",
+   "inferred_name": true,
+   "evidence": "Original 00671f69 calls RbxEntity with a RbxSubEntity; body and vector push_back reference 004213a0 match."
+  },
+  {
+   "symbol": "?setOffset@RbxAdornState@Ogre@@QAEXABVVector3@2@@Z",
+   "address": "00685e10",
+   "inferred_name": true,
+   "evidence": "Original quadric setter writes Vector3 at +0x20; caller and 2007 Ogre quadric donor establish the class and field. Name inferred."
+  },
+  {
+   "symbol": "?toColourValue@Ogre@@YA?AVColourValue@1@ABVColor4@G3D@@@Z",
+   "address": "006784f0",
+   "inferred_name": true,
+   "evidence": "2007 Ogre VisualEngine colour conversion donor and original 007aa67d Light::setDiffuseColour caller; exact 31-byte body, no references."
   }
  ]
 }
