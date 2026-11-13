@@ -1,3 +1,14 @@
+# Claude note 2026-11-13 - openrbx is a near-exact donor for the 2008 Ogre fork and the Scintilla MFC wrapper
+- `tools/openrbx/Client/Rendering/AppDraw/*.cpp` (RbxEntity, RbxSceneManager, RbxSubEntity, TwoDManager, VisualEngine, RbxSky, RbxFont,
+  RbxSceneNode, Unknown0067eb00) compiles as whole TUs on the 2008 compiler with Ogre 1.4.5 includes + `/I tools/openrbx/util` (decomp.h) and
+  reproduces many exe functions byte-for-byte, incl. `RbxEntity::_updateRenderQueue` 0067d010 and FUN_xxxxxxxx-named members (0067c510/520/570,
+  0067c6a0, 0067d3d0, 0067d9b0, 0067da50). `work/native-client/openrbx_appdraw_probe.py` writes wrappers + `openrbx-appdraw/results.json`
+  (exact_total counts everything in 00401000-00800000 incl. std templates, so it is inflated). NOT integrated: the native OgreRbx* files use
+  RbxEntity2008.h, openrbx uses appdraw/RbxEntity.h (different class decls, duplicate definitions if both are linked). Next: an Ogre trial that
+  layers the openrbx AppDraw TUs INSTEAD of the OgreRbx*.cpp natives. AdornRbxGfx.cpp needs renderlibnew/TextureProxy.h.
+- Scintilla: native-classes/ScintillaCtrl.cpp + ScintillaDocView.cpp now verbatim from `tools/openrbx/Client/win` (namespace Scintilla; 105/82 range-exact,
+  unmatched Scintilla exe functions 51 -> 27). The module `scintilla.json` still builds the 1.20 library recipe.
+
 # Claude note 2026-11-12 23:20 — stub-backed client runs (owner authorized shortcuts)
 
 `work/native-client/shortcut/` builds `link/Roblox2008.exe` with real native objects plus a zero-return stub object for what has no

@@ -1,0 +1,2 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include /IC:/Users/colin/RoConstruct/tools/openrbx/Client/Rendering/AppDraw/include /IC:/Users/colin/RoConstruct/tools/openrbx/Client/Rendering/AppDraw /IC:/Users/colin/RoConstruct/tools/openrbx/util
+#include "C:/Users/colin/RoConstruct/tools/openrbx/Client/Rendering/AppDraw/RbxSky.cpp"
