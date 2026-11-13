@@ -74,10 +74,20 @@ def rank_partials(raw, targets, names, exact_symbols, threshold=.8,
     return sorted(rows, key=lambda row: (-row["similarity"], row["symbol"]))
 
 
+def attach_blockers(advisory, harvested):
+    blockers = {
+        (row["symbol"], rejection["addr"]): rejection.get("errors", [])
+        for row in harvested for rejection in row.get("rejections", [])
+    }
+    for row in advisory:
+        row["blockers"] = blockers.get((row["symbol"], row["addr"]), [])
+
+
 def classify_object(raw, targets, names, bindings, harvest=native_bulk.harvest, rank=rank_partials):
     rows = harvest(raw, targets, names, bindings)
     exact = [row for row in rows if row["status"] == "inactive_exact"]
     advisory = rank(raw, targets, names, {row["symbol"] for row in exact})
+    attach_blockers(advisory, rows)
     partials = [row for row in advisory if row["status"] == "repair_candidate"]
     proof_blocked = [row for row in advisory if row["status"] == "proof_candidate"]
     return {

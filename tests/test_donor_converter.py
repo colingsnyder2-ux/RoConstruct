@@ -92,6 +92,17 @@ class DonorConverterTests(unittest.TestCase):
         self.assertEqual(rows[0]["status"], "proof_candidate")
         self.assertEqual(rows[0]["proof"], "advisory-reference-unproved")
 
+    def test_attach_blockers_copies_matching_proof_errors(self):
+        advisory = [{"symbol": "?near@@YAXXZ", "addr": "00401000"}]
+        harvested = [{
+            "symbol": "?near@@YAXXZ",
+            "rejections": [{"addr": "00401000", "errors": ["unproven reference identity: ?data@@3HA"]}],
+        }]
+
+        donor_converter.attach_blockers(advisory, harvested)
+
+        self.assertEqual(advisory[0]["blockers"], ["unproven reference identity: ?data@@3HA"])
+
 
 if __name__ == "__main__":
     unittest.main()
