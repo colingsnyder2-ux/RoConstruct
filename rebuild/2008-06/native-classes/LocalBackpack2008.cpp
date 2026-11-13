@@ -42,6 +42,16 @@ namespace RBX
 		return NULL;
 	}
 
+	// 00573770 (GuiRoot unit of GUI.cpp; assigned here as LocalBackpackItem::render2d's helper). Read from the original:
+	// a function-static Vector2 (100.0f 008163a4, 75.0f 0082f870; guard bit 1 of 00974e5c, value 00974e54), the
+	// out-of-line GuiRoot::toPixelSize 005736f0, fontSize * .x * 0.001f (0081839c), CRT floor 006a1bb0 (the <cmath>
+	// floorf inline) and G3D::iRound's fistp. Body as the donor tools/rbxgs gui/GUI.cpp.
+	int GuiRoot::normalizedFontSize(int fontSize)
+	{
+		static G3D::Vector2 percentSize(100.0f, 75.0f);
+		return G3D::iRound(floorf(fontSize * toPixelSize(percentSize).x * 0.001f));
+	}
+
 	// ---- LocalBackpackItem ---------------------------------------------------------------------------------------
 	LocalBackpackItem::LocalBackpackItem()
 	{
@@ -251,6 +261,12 @@ namespace RBX
 		lastRemovedIndex = -1;
 	}
 
+	// 005fbc80 (129 bytes). PARKED (hard-leftover batch 9): same size, calls, branches and operands; the only difference
+	// is that VC9 shrink-wraps ebp/edi past the `test eax,eax / jbe` entry guard while the original pushes ebx, ebp, esi,
+	// edi at entry (pop order edi, esi, ebp, ebx). Rejected variants, each identical to this body: `return` instead of
+	// `break`; a size_t index; the donor LocakBackpack.cpp form (size_t i, getTypedChild-like static_cast of
+	// getChild((int)i) into a named LocalBackpackItem*, lastRemovedIndex = (int)i, return). The 2026-10-20 mining
+	// pass also left it at 93 (operand-order swap fixed, prologue still shrink-wrapped).
 	void LocalBackpack::removeBackpackItem(BackpackItem* item)
 	{
 		for (int i = 0; i < numChildren(); ++i)
