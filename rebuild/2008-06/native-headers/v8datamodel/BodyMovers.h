@@ -80,11 +80,11 @@ namespace RBX
 		static Reflection::BoundProp<G3D::CoordinateFrame, 1> prop_cframe;
 
 	private:
-		void computeBalance(Body* body);               // 0062ec40 (not recovered)
-		void computeOrientation(Body* body);           // 0062e910 (not recovered)
+		void computeBalance(Body* body);               // 0062ec40 (native-classes/BodyGyro.cpp; parked, 2008 Body)
+		void computeOrientation(Body* body);           // 0062e910 (native-classes/BodyGyro.cpp; needs 2008 Body)
 	public:
 		BodyGyro();                                    // 00632070
-		virtual void computeForce(const float dt, bool throttling); // 006300d0 (not recovered)
+		virtual void computeForce(const float dt, bool throttling); // 006300d0 (BodyMovers.cpp, part-embedded)
 	};
 
 	extern char sBodyPosition[];
