@@ -14,6 +14,7 @@ DONOR_ROOTS = (
     Path("tools/openrbx/Client"),
     Path("work/upstream/OpenRBX/Client"),
 )
+NATIVE_FLAGS = "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
 
 
 def resolve_sources(root, values):
@@ -178,7 +179,7 @@ def compile_sources(sources, output):
             "2008-06", sources, output,
             [(libs.LIBS / folder).resolve() for folder in recipe["include"] if folder != "WINSDK"],
             recipe["defines"] + " BOOST_ALL_NO_LIB",
-            "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", overlay=overlay)
+            NATIVE_FLAGS, overlay=overlay)
 
 
 def convert(root, values, output):

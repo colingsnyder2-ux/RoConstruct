@@ -8,6 +8,9 @@ from roc import donor_converter
 
 
 class DonorConverterTests(unittest.TestCase):
+    def test_converter_uses_canonical_native_float_flags(self):
+        self.assertIn("/fp:fast", donor_converter.NATIVE_FLAGS.split())
+
     def test_roc_command_routes_sources_to_converter(self):
         script = Path(__file__).resolve().parents[1] / "roc.py"
         spec = importlib.util.spec_from_file_location("roc_donor_converter_cli_test", script)
