@@ -1,3 +1,18 @@
+# Claude note 2026-11-13 (night) - File>New past GameSettings; now readProperty(null XmlElement)
+- Root cause of the GameSettings/NetworkSettings `Instance::setName` BAADF00D crash: engine-ABI Instance members are emitted with the 2007 access mangling
+  (ctor `??0Instance@RBX@@IAE@..`, dtor `??1Instance@RBX@@MAE@XZ`) while 2008 callers/analogs reference `QAE`/`UAE`, so the public names became zero stubs. Fixed with
+  `shortcut/InstanceAliasGlue.cpp` (#pragma comment(linker,"/alternatename:...")), same trick as Codex's ServiceProviderGlue.cpp. shell_wins.json must stay
+  `["?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z"]` (an Instance ctor entry strips the engine copy and leaves a stub).
+- `ROC_ANALOG_DIR=<dir>` (linkprobe.py, passed through relink_big.py) lets the analog objects in <dir> replace engine definitions of every symbol they define. Applying it to all 327
+  analogs crashes MFC at startup; applying it to the exact Instance ctor analog 0055b7e0 breaks because the analog's vtables/RTTI carry 2008 real names the 2007 engine lacks (they become
+  zero data stubs). Use it only for self-contained functions. Keep default off.
+- Current best set: `python work/native-client/shortcut/relink_big.py chosen_verbs.json` (311 objects, 651 stubs). Idle: no crash. File>New (POSTCMD=57600): GameSettings singleton OK, then
+  `Instance::readProperty(const XmlElement*=null)` -> `XmlElement::findAttribute` (entry stack: DataModel::onDescendentAdded -> ServiceProvider::onDescendentAdded). Suspect 2007-engine vs 2008-analog
+  Instance vtable slot layout (a 2008 slot number lands on readProperty in the 2007 vtable). crashsite stack words are only heuristic code addresses; use BPENTRY=<sym>.
+- Tools added: auto_closure.py (closure loop; learns addresses from analog relocations and helper_addrs.py), bisect_analogs.py, strip_dups_loop.py, who_defines.py, findsym.py, donor_try.py.
+  rename.py now compiles `roc-lib: <recipe> <file>` analogs (about 14,000 server sources are such one-line references) and has ROC_RENAME_* env switches.
+- Playable still NOT reached: no CRobloxDoc finishes, no 3D view, no place.
+
 # Claude note 2026-11-13 (later) - closure-linked client: real IDE frame, File>New still silent
 - `python work/native-client/shortcut/auto_closure.py 12` (server analogs, placeholders func_/dat_, kept comdat helpers, __imp_ fix) then
   `python work/native-client/shortcut/relink_big.py chosen_closure.json`: links, runs, no crash. Window title is 'Roblox', Explorer + Properties panes docked,
