@@ -14874,6 +14874,18 @@
    "address": "007dddac",
    "inferred_name": false,
    "evidence": "Original RbxFont constructor or fromFile relocation names this handler; handler bytes and FuncInfo references match."
+  },
+  {
+   "symbol": "__ehhandler$?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+   "address": "007dde4e",
+   "inferred_name": false,
+   "evidence": "Original 00685490 relocation names this EH handler or static box destructor; body and all original references match."
+  },
+  {
+   "symbol": "??__Fbox@?1??getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z@YAXXZ",
+   "address": "00801580",
+   "inferred_name": false,
+   "evidence": "Original 00685490 relocation names this EH handler or static box destructor; body and all original references match."
   }
  ]
 }
