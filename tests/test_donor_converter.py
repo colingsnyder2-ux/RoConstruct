@@ -41,9 +41,12 @@ class DonorConverterTests(unittest.TestCase):
             {"symbol": "?no@@YAXXZ", "status": "draft"},
         ]
 
-        report = donor_converter.classify_object(b"obj", object(), {}, {}, harvest=lambda *args: rows)
+        report = donor_converter.classify_object(
+            b"obj", object(), {}, {}, harvest=lambda *args: rows, rank=lambda *args: [])
 
-        self.assertEqual(report["summary"], {"functions": 2, "exact": 1, "draft": 1, "ambiguous": 0})
+        self.assertEqual(report["summary"], {
+            "functions": 2, "exact": 1, "draft": 1, "ambiguous": 0,
+            "repair_candidates": 0, "proof_candidates": 0})
         self.assertEqual(report["exact_candidates"], [rows[0]])
 
     def test_label_candidates_separates_integrated_waiting_and_missing(self):
@@ -60,6 +63,34 @@ class DonorConverterTests(unittest.TestCase):
 
         self.assertEqual([row["integration"] for row in rows], ["integrated", "waiting", "missing"])
         self.assertEqual(summary, {"integrated": 1, "waiting": 1, "missing": 1})
+
+    def test_rank_partials_uses_named_target_but_never_calls_it_exact(self):
+        class Targets:
+            def body(self, address):
+                return b"target", []
+
+        rows = donor_converter.rank_partials(
+            b"obj", Targets(), {"?near@@YAXXZ": {"00401000"}}, set(), threshold=.8,
+            functions=lambda raw: [("?near@@YAXXZ", b"candidate", [])],
+            similarity=lambda *args: .91)
+
+        self.assertEqual(rows, [{
+            "symbol": "?near@@YAXXZ", "addr": "00401000", "similarity": .91,
+            "status": "repair_candidate", "proof": "advisory-not-exact",
+        }])
+
+    def test_rank_partials_calls_full_similarity_proof_blocked(self):
+        class Targets:
+            def body(self, address):
+                return b"target", []
+
+        rows = donor_converter.rank_partials(
+            b"obj", Targets(), {"?near@@YAXXZ": {"00401000"}}, set(),
+            functions=lambda raw: [("?near@@YAXXZ", b"candidate", [])],
+            similarity=lambda *args: 1.0)
+
+        self.assertEqual(rows[0]["status"], "proof_candidate")
+        self.assertEqual(rows[0]["proof"], "advisory-reference-unproved")
 
 
 if __name__ == "__main__":

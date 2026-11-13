@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 
-from roc import libs, native_bulk, rebuild
+from roc import libs, match, native_bulk, rebuild
 from roc.native_drafts import lock
 
 
@@ -51,17 +51,47 @@ def identity_hypotheses(closure):
     return names, bindings
 
 
-def classify_object(raw, targets, names, bindings, harvest=native_bulk.harvest):
+def rank_partials(raw, targets, names, exact_symbols, threshold=.8,
+                  functions=match.coff_functions, similarity=match.similarity_ratio):
+    rows = []
+    for symbol, body, relocs in functions(raw):
+        if symbol in exact_symbols:
+            continue
+        best = None
+        for address in names.get(symbol, ()):
+            try:
+                target, target_relocs = targets.body(address)
+            except (KeyError, ValueError, SystemExit):
+                continue
+            ratio = similarity(target, target_relocs, body, relocs)
+            if ratio >= threshold and (best is None or ratio > best["similarity"]):
+                proof_blocked = ratio == 1.0
+                best = {"symbol": symbol, "addr": address, "similarity": round(ratio, 4),
+                        "status": "proof_candidate" if proof_blocked else "repair_candidate",
+                        "proof": "advisory-reference-unproved" if proof_blocked else "advisory-not-exact"}
+        if best:
+            rows.append(best)
+    return sorted(rows, key=lambda row: (-row["similarity"], row["symbol"]))
+
+
+def classify_object(raw, targets, names, bindings, harvest=native_bulk.harvest, rank=rank_partials):
     rows = harvest(raw, targets, names, bindings)
     exact = [row for row in rows if row["status"] == "inactive_exact"]
+    advisory = rank(raw, targets, names, {row["symbol"] for row in exact})
+    partials = [row for row in advisory if row["status"] == "repair_candidate"]
+    proof_blocked = [row for row in advisory if row["status"] == "proof_candidate"]
     return {
         "summary": {
             "functions": len(rows),
             "exact": len(exact),
             "draft": sum(row["status"] == "draft" for row in rows),
             "ambiguous": sum(row["status"] == "ambiguous" for row in rows),
+            "repair_candidates": len(partials),
+            "proof_candidates": len(proof_blocked),
         },
         "exact_candidates": exact,
+        "repair_candidates": partials,
+        "proof_candidates": proof_blocked,
         "functions": rows,
     }
 
