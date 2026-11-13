@@ -1581,6 +1581,12 @@ import json
 import hashlib
 import time
 
+
+def code_function_count(path):
+    return sum(json.loads(line).get("kind", "code") == "code"
+               for line in path.read_text(encoding="utf-8").splitlines() if line.strip())
+
+
 def progress(client="2008-06", log=print, notify=True):
     """Summarize rebuild module reports into docs/rebuild-progress.json."""
     if os.environ.get('ROC_INTEGRATOR_PRIVATE') == '1':
@@ -1625,7 +1631,7 @@ def progress(client="2008-06", log=print, notify=True):
     total_functions = 0
     functions_file = ROOT / "work" / client / "functions.jsonl"
     if functions_file.exists():
-        total_functions = sum(1 for _ in functions_file.read_text(encoding="utf-8").splitlines() if _.strip())
+        total_functions = code_function_count(functions_file)
     if not total_functions:
         total_functions = 22291
 
