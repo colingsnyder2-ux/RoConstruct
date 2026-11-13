@@ -635,7 +635,7 @@ def strip_symbols(data, keep=None, drop=()):
     return bytes(data)
 
 
-def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None):
+def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None, helper_objects=False):
     """out/<Module>/verified (rebuild/2008-06/swap_build.py) as a preferred layer of kept symbols only, and the
     set of those symbols, to drop from every other object. A symbol kept by several groups is taken once.
     helpers: {symbol: obj} non-exact helpers a swapped function calls that no other object defines, kept in that one
@@ -659,7 +659,10 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         # helpers this object supplies to other swaps: keep writing it even after its own swaps are all swapped out,
         # or every function that relies on those helpers collapses in the next round
         extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
-        if keep or extra:
+        # helper_objects (spec "keep_helper_objects"): write the object while its helpers are still needed even after every
+        # swap in it is gone. Off by default: in a module whose helper list is stale (RbxgsApp) the object would
+        # redefine symbols a regular library object also defines (png_read_init_2 ...) and the link fails with LNK2005.
+        if keep or (helper_objects and extra):
             taken |= keep
             (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols(data, keep=keep | extra, drop=vdrop | exclude))
     log("verified layer: %d exact symbols swapped in" % len(taken))
@@ -1281,7 +1284,8 @@ def build_module(client, name, log=print):
                     counts[sym] = counts.get(sym, 0) + 1
     shared = {sym for sym, n in counts.items() if n > 1}
     while True:  # each retry adds a helper/exclusion; stop only when linking or dependency resolution stops progressing
-        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers)
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
+                                         helper_objects=spec.get("keep_helper_objects", False))
         if spec.get("force_verified"):  # the test links every swapped symbol, so each one's dependencies must resolve
             (out / "force").mkdir(exist_ok=True)
             (out / "force" / "force_verified.h").write_text(

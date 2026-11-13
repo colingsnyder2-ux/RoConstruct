@@ -8,5 +8,6 @@
   "rebuild/2008-06/out/MfcAtl/force"
  ],
  "verified": true,
- "force_verified": true
+ "force_verified": true,
+ "keep_helper_objects": true
 }
