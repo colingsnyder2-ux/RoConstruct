@@ -1,0 +1,397 @@
+{
+  "class": "RBX::Render::SpecData and the RenderLib Profiler.cpp helpers of the application range 00500000..00504000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "profiler": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit500Profiler.cpp": "fb468408044c172ab090bbafb6d4e87560ae2594b010427a4d1d472b82f97514",
+    "rebuild/2008-06/tests/record_native_app_unit500.py": "df8570cabb159d16065011925f59a917292ff2f487efaa095d66d93020fb7ff2",
+    "rebuild/2008-06/native-headers/AppUnit500/RenderSpecData.h": "f741aacde5f324c9c7d73041a31094fbc87edf9a18295b895a11f5e315800a4c"
+  },
+  "objects": {
+    "profiler": "433ba83e9898088eeb008e5d47ee5c7edbfbb6fe2b3ec35b4dfffd3eb901f441"
+  },
+  "layout": {
+    "RBX::Render::SpecData": {
+      "size": "0x84 (sub esp, 0x84 in the Profile getters 00563230 / 00563260 / 00563290)",
+      "shaderModel": "+0x00 float",
+      "videoMemory": "+0x04 int",
+      "CPUSpeed": "+0x08 int",
+      "cpuCount": "+0x0c int",
+      "glVendor": "+0x10 std::string",
+      "gfxcard": "+0x2c std::string",
+      "cpu": "+0x48 std::string",
+      "ram": "+0x64 int",
+      "resolution": "+0x68 std::string",
+      "glLoaded": "static bool 0x972888"
+    }
+  },
+  "unit_map": {
+    "viewnew mesh builders 00500000..0050117f": "ViewNew mesh builder rows of the viewnew owner (native-headers/ViewNew/HeadMesh.h, QuadVolume.h, FileMesh.h, PBBMesh.h, BevelMesh.h): HeadBuilder build* 00500020..00500140 (HeadBuilder vtable slots bound by viewnew-working.json), HeadMesh constructors 00500180 / 00500350 / 005004d0, QuadVolume 00500690 / 00500ca0 / 00500d80..00501000, FileMesh::loadFromMeshFile 00500780 with its catch funclet 00500b7f and 00500b90, PBBBuilder 00500d30, BevelMesh builder 00501040 (ends 0050117d). viewnew-working.json counts 13 of these and records the rest as near misses (x87 / register allocation) or pending (ContentProvider::requestContentFile); extending them is the viewnew owner's work, not rebuilt here.",
+    "profiler 00501180..00501c2f": "RenderLib Profiler.cpp (donor Client/Rendering/RenderLib/Profiler.cpp, RBX::Render): the boost bad_lexical_cast virtuals what 00501180 (returns the \"bad lexical cast...\" literal 00827230), destructor 00501190 and deleting destructor 005011a0 (vtable 00827224, RTTI .?AVbad_lexical_cast@boost@@), getShaderModel 005011d0 (GL extension strings), GetCyclesDifference 00501400 with its __except filter 00501484 and handler block 0050148a (inline-asm rdtsc, not built), Delay 005014b0 / DelayOverhead 00501520 (QueryPerformanceFrequency / Counter), getCPUMake 00501590, getCPUCount 00501650, getCPUSpeed 005016f0 (CentralProcessor registry keys), the boost lexical_cast<std::string, int> instance with lexical_stream operator>> 00501800, bad_lexical_cast copy constructor 00501860, throw_exception 00501890 and lexical_cast 005018d0 (boost library templates also called from 005be233 / 005e013b / 00601206 / 00654f67, so not only this unit: support bodies only), getMaxRes 005019f0 (GetSystemMetrics) and SpecData::SpecData 00501ae0 (ends 00501c25). Built here: the eight RBX rows.",
+    "render scene 00501c30..00503fff": "RenderLib RenderScene.cpp (render-scene owner, native-headers/RenderLib/RenderScene2008.h / RenderSceneRender2008.h / RenderSceneNew2008.h), continued past 00504000: RenderStats() 00501c30 (six G3D::Stopwatch constructors 00512060 at 0x58 strides; only caller the RenderScene constructor 00504fd0), G3D inline / template instances it emits (Vector3::operator+ 00501c70, CoordinateFrame::pointToObjectSpace 00501ca0, Sphere(const Vector3&, float) 00501d10, LightingParameters::operator= 00501d80, Array<Vector3> / Array<GLight> inArray / realloc / resize / append 00501ee0..005026d0 and 00502f40..00503100, VAR constructor / operator= 00502910 / 00502ab0, Sky::getEnvironmentMap 00502a00, ReferenceCountedPointer<Shader> destructor 00502a70, G3D::Lighting constructor / destructor / create 00503820 / 005038a0 / 00503940 / 00503960), the RenderSurface copy constructor 00502500, RenderScene members (00502100, 00502370, 005023e0, 00502560, 00502810, 00502b00, 00502b90, 00502d30, 00502e70, 00503090, 00503110, 005032a0, 005033e0, 00503540, 005035e0, 00503cc0, 00503ea0, 00503fc0, 00503fe0) and the RenderSceneBase inline members 005039d0..00503cb0 (\"shouldn't be here\" 005039e0). Rows counted by render-scene-working.json, app-unit548 / app-unit550 support and viewnew-part-mesh are listed in range_rows_counted_by_other_receipts; the rest needs the render-scene owner's layout and is not rebuilt here (not attempted)."
+  },
+  "unit_rows": {
+    "viewnew mesh builders": {
+      "rows": 21,
+      "span": "0x500020..0x501040"
+    },
+    "profiler": {
+      "rows": 18,
+      "span": "0x501180..0x501ae0"
+    },
+    "render scene": {
+      "rows": 54,
+      "span": "0x501c30..0x503fe0"
+    }
+  },
+  "range_rows_total": 93,
+  "range_rows_counted_by_other_receipts": [
+    "00500020 counted by viewnew-working.json",
+    "00500050 counted by viewnew-working.json",
+    "00500180 counted by viewnew-working.json",
+    "00500690 counted by viewnew-working.json",
+    "00500b90 counted by viewnew-working.json",
+    "00500ca0 counted by viewnew-working.json",
+    "00500d30 counted by viewnew-working.json",
+    "00500d80 counted by viewnew-working.json",
+    "00500de0 counted by viewnew-working.json",
+    "00500eb0 counted by viewnew-working.json",
+    "00500fd0 counted by viewnew-working.json",
+    "00501000 counted by viewnew-working.json",
+    "00501040 counted by viewnew-working.json",
+    "00501ca0 counted by humanoid2008-working.json",
+    "00502500 counted by render-scene-working.json",
+    "00502a70 counted by viewnew-part-mesh-working.json",
+    "00502d30 counted by render-scene-working.json",
+    "00502e70 counted by render-scene-working.json",
+    "005039d0 counted by render-scene-working.json",
+    "005039e0 counted by render-scene-working.json",
+    "00503a30 counted by render-scene-working.json",
+    "00503a60 counted by render-scene-working.json",
+    "00503cc0 counted by render-scene-working.json",
+    "00503fc0 counted by render-scene-working.json"
+  ],
+  "rows": [
+    {
+      "address": "005011d0",
+      "unit": "profiler",
+      "symbol": "?getShaderModel@Render@RBX@@YAMXZ",
+      "size": 558,
+      "target_size": 558,
+      "exact": true,
+      "verified_targets": {
+        "?_supports_GL_ARB_fragment_shader@GLCaps@G3D@@0_NA": "0x96ee8a (static data (one address per symbol))",
+        "?_supports_GL_ARB_vertex_shader@GLCaps@G3D@@0_NA": "0x96ee8b (static data (one address per symbol))",
+        "?_supports_GL_ARB_shader_objects@GLCaps@G3D@@0_NA": "0x96ee88 (static data (one address per symbol))",
+        "?_supports_GL_ARB_shading_language_100@GLCaps@G3D@@0_NA": "0x96ee89 (static data (one address per symbol))",
+        "__real@40000000": "0x81c434 (static data (one address per symbol))",
+        "??_C@_0BH@KOFDLMOM@GL_ATI_fragment_shader?$AA@": "0x8272e8 (literal 'GL_ATI_fragment_shader')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?supports@GLCaps@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x471060 (external)",
+        "??_C@_0BI@HBOFFEDG@GL_NV_fragement_program?$AA@": "0x8272d0 (literal 'GL_NV_fragement_program')",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_0BM@EMDOGOG@GL_ATI_texture_env_combine3?$AA@": "0x8272b4 (literal 'GL_ATI_texture_env_combine3')",
+        "??_C@_0BG@JONFGJMH@GL_NV_texture_shader3?$AA@": "0x82729c (literal 'GL_NV_texture_shader3')",
+        "__real@3fb33333": "0x827298 (static data (one address per symbol))",
+        "??_C@_0BJ@LJODJOAI@GL_NV_register_combiners?$AA@": "0x82727c (literal 'GL_NV_register_combiners')",
+        "__real@3f99999a": "0x827278 (static data (one address per symbol))"
+      },
+      "local_eh": [
+        "__ehhandler$?getShaderModel@Render@RBX@@YAMXZ"
+      ]
+    },
+    {
+      "address": "005014b0",
+      "unit": "profiler",
+      "symbol": "?Delay@Render@RBX@@YAXI@Z",
+      "size": 112,
+      "target_size": 112,
+      "exact": true,
+      "verified_targets": {
+        "__imp__QueryPerformanceFrequency@4": "0x80225c (kernel32.dll!QueryPerformanceFrequency)",
+        "__alldiv": "0x6a1c30 (external)",
+        "__allmul": "0x6a16d0 (external)",
+        "__imp__QueryPerformanceCounter@4": "0x802250 (kernel32.dll!QueryPerformanceCounter)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00501520",
+      "unit": "profiler",
+      "symbol": "?DelayOverhead@Render@RBX@@YAXI@Z",
+      "size": 110,
+      "target_size": 110,
+      "exact": true,
+      "verified_targets": {
+        "__imp__QueryPerformanceFrequency@4": "0x80225c (kernel32.dll!QueryPerformanceFrequency)",
+        "__alldiv": "0x6a1c30 (external)",
+        "__allmul": "0x6a16d0 (external)",
+        "__imp__QueryPerformanceCounter@4": "0x802250 (kernel32.dll!QueryPerformanceCounter)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00501590",
+      "unit": "profiler",
+      "symbol": "?getCPUMake@Render@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 183,
+      "target_size": 183,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_0FG@CDHAPCBD@HKEY_LOCAL_MACHINE?2HARDWARE?2DESC@": "0x827300 (literal 'HKEY_LOCAL_MACHINE\\\\HARDWARE\\\\DESCRIPTION\\\\System\\\\CentralProcessor\\\\0\\\\ProcessorNameString')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z": "0x514190 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??_C@_01OGPIMHDM@?$DP?$AA@": "0x819e10 (literal '?')"
+      },
+      "local_eh": [
+        "__ehhandler$?getCPUMake@Render@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+      ]
+    },
+    {
+      "address": "00501650",
+      "unit": "profiler",
+      "symbol": "?getCPUCount@Render@RBX@@YAHXZ",
+      "size": 160,
+      "target_size": 160,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0ED@EPFFPOF@HKEY_LOCAL_MACHINE?2HARDWARE?2DESC@": "0x827358 (literal 'HKEY_LOCAL_MACHINE\\\\HARDWARE\\\\DESCRIPTION\\\\System\\\\CentralProcessor\\\\%d')",
+        "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+        "?keyExists@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x513f50 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?getCPUCount@Render@RBX@@YAHXZ"
+      ]
+    },
+    {
+      "address": "005016f0",
+      "unit": "profiler",
+      "symbol": "?getCPUSpeed@Render@RBX@@YAHXZ",
+      "size": 266,
+      "target_size": 266,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0EH@LBONKMIF@HKEY_LOCAL_MACHINE?2HARDWARE?2DESC@": "0x8273a0 (literal 'HKEY_LOCAL_MACHINE\\\\HARDWARE\\\\DESCRIPTION\\\\System\\\\CentralProcessor\\\\0\\\\~MHz')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?readInt32@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAH@Z": "0x513fe0 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?Delay@Render@RBX@@YAXI@Z": "0x5014b0 (own row)",
+        "?GetCyclesDifference@Render@RBX@@YA_JP6AXI@ZI@Z": "0x501400 (external (evidence name))",
+        "?DelayOverhead@Render@RBX@@YAXI@Z": "0x501520 (own row)",
+        "__alldiv": "0x6a1c30 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?getCPUSpeed@Render@RBX@@YAHXZ"
+      ]
+    },
+    {
+      "address": "005019f0",
+      "unit": "profiler",
+      "symbol": "?getMaxRes@Render@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 226,
+      "target_size": 226,
+      "exact": true,
+      "verified_targets": {
+        "__imp__GetSystemMetrics@4": "0x802d4c (user32.dll!GetSystemMetrics)",
+        "??$lexical_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABH@Z": "0x5018d0 (support body exact at the bound address (not counted here))",
+        "??_C@_01FJMABOPO@x?$AA@": "0x80f0cc (literal 'x')",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z)",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z": "0x8024a8 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?getMaxRes@Render@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+      ]
+    },
+    {
+      "address": "00501ae0",
+      "unit": "profiler",
+      "symbol": "??0SpecData@Render@RBX@@QAE@XZ",
+      "size": 325,
+      "target_size": 325,
+      "exact": true,
+      "verified_targets": {
+        "?glLoaded@SpecData@Render@RBX@@2_NA": "0x972888 (static data (one address per symbol))",
+        "?getShaderModel@Render@RBX@@YAMXZ": "0x5011d0 (own row)",
+        "?videoMemorySize@DXCaps@G3D@@SA_KXZ": "0x476470 (external)",
+        "?getCPUSpeed@Render@RBX@@YAHXZ": "0x5016f0 (own row)",
+        "?getCPUCount@Render@RBX@@YAHXZ": "0x501650 (own row)",
+        "?vendor@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x470880 (external)",
+        "??_C@_01OGPIMHDM@?$DP?$AA@": "0x819e10 (literal '?')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?renderer@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x4709a0 (external)",
+        "?getCPUMake@Render@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x501590 (own row)",
+        "__imp__GlobalMemoryStatus@4": "0x802268 (kernel32.dll!GlobalMemoryStatus)",
+        "?getMaxRes@Render@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x5019f0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0SpecData@Render@RBX@@QAE@XZ"
+      ]
+    }
+  ],
+  "row_identity": {
+    "00501ae0": "constructor of the 0x84-byte stack SpecData of the DebugSettings \"Profile\" getters 00563230 / 00563260 / 00563290 (VideoMemory +0x4, CpuSpeed +0x8, CpuCount +0xc; initializers 007f2c60 / 007f2c90 / 007f2cc0), destroyed by the implicit destructor 005631c0",
+    "005014b0": "pushed as the GetCyclesDifference callback by getCPUSpeed (push 0x5014b0 at 00501772)",
+    "00501520": "pushed as the GetCyclesDifference callback by getCPUSpeed (push 0x501520 at 00501780)",
+    "005011d0": "called by the SpecData constructor for shaderModel (REL32 verified as an own row)",
+    "005016f0": "called by the SpecData constructor for CPUSpeed (REL32 verified as an own row)",
+    "00501650": "called by the SpecData constructor for cpuCount (REL32 verified as an own row)",
+    "00501590": "called by the SpecData constructor for cpu (REL32 verified as an own row)",
+    "005019f0": "called by the SpecData constructor for resolution (REL32 verified as an own row)"
+  },
+  "support_bodies": {
+    "??$lexical_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABH@Z": "0x5018d0 (support body exact at the bound address, not counted here)",
+    "??5?$lexical_stream@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@detail@boost@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x501800 (support body exact at the bound address, not counted here)",
+    "??$throw_exception@Vbad_lexical_cast@boost@@@boost@@YAXABVbad_lexical_cast@0@@Z": "0x501890 (support body exact at the bound address, not counted here)",
+    "?what@bad_lexical_cast@boost@@UBEPBDXZ": "0x501180 (support body exact at the vtable slot, not counted here)",
+    "??_Gbad_lexical_cast@boost@@UAEPAXI@Z": "0x5011a0 (support body exact at the bound address, vtable slot 0, not counted here)",
+    "??1bad_lexical_cast@boost@@UAE@XZ": "0x501190 (support body exact at the bound address, unwind funclet target, not counted here)",
+    "??0bad_lexical_cast@boost@@QAE@ABV01@@Z": "0x501860 (support body exact at the bound address, catchable-type copy constructor, not counted here)"
+  },
+  "support_body_targets": {
+    "??$lexical_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABH@Z": {
+      "address": "0x5018d0",
+      "verified_targets": {
+        "__imp_??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802428 (msvcp90.dll!??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z": "0x802470 (msvcp90.dll!??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z)",
+        "??5?$lexical_stream@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@detail@boost@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x501800 (support body exact at the bound address (not counted here))",
+        "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x80242c (msvcp90.dll!??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "??_7bad_lexical_cast@boost@@6B@": "0x827224 (vtable RTTI .?AVbad_lexical_cast@boost@@ offset 0x0)",
+        "??_R0H@8": "0x92bed0 (RTTI .H)",
+        "??_R0?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@8": "0x92bef8 (RTTI .?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@)",
+        "??$throw_exception@Vbad_lexical_cast@boost@@@boost@@YAXABVbad_lexical_cast@0@@Z": "0x501890 (support body exact at the bound address (not counted here))"
+      }
+    },
+    "??$throw_exception@Vbad_lexical_cast@boost@@@boost@@YAXABVbad_lexical_cast@0@@Z": {
+      "address": "0x501890",
+      "verified_targets": {
+        "__imp_??0bad_cast@std@@QAE@ABV01@@Z": "0x80285c (msvcr90.dll!??0bad_cast@std@@QAE@ABV01@@Z)",
+        "__TI3?AVbad_lexical_cast@boost@@": "0x8e5c90 (static data (one address per symbol))",
+        "??_7bad_lexical_cast@boost@@6B@": "0x827224 (vtable RTTI .?AVbad_lexical_cast@boost@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      }
+    },
+    "??5?$lexical_stream@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@detail@boost@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": {
+      "address": "0x501800",
+      "verified_targets": {
+        "__imp_?str@?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x8024c8 (msvcp90.dll!?str@?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    "??_Gbad_lexical_cast@boost@@UAEPAXI@Z": {
+      "address": "0x5011a0",
+      "verified_targets": {
+        "??_7bad_lexical_cast@boost@@6B@": "0x827224 (vtable RTTI .?AVbad_lexical_cast@boost@@ offset 0x0)",
+        "__imp_??1bad_cast@std@@UAE@XZ": "0x802860 (msvcr90.dll!??1bad_cast@std@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    "??1bad_lexical_cast@boost@@UAE@XZ": {
+      "address": "0x501190",
+      "verified_targets": {
+        "??_7bad_lexical_cast@boost@@6B@": "0x827224 (vtable RTTI .?AVbad_lexical_cast@boost@@ offset 0x0)",
+        "__imp_??1bad_cast@std@@UAE@XZ": "0x802860 (msvcr90.dll!??1bad_cast@std@@UAE@XZ)"
+      }
+    },
+    "??0bad_lexical_cast@boost@@QAE@ABV01@@Z": {
+      "address": "0x501860",
+      "verified_targets": {
+        "__imp_??0bad_cast@std@@QAE@ABV01@@Z": "0x80285c (msvcr90.dll!??0bad_cast@std@@QAE@ABV01@@Z)",
+        "??_7bad_lexical_cast@boost@@6B@": "0x827224 (vtable RTTI .?AVbad_lexical_cast@boost@@ offset 0x0)"
+      }
+    }
+  },
+  "local_statics": {
+    "?_supports_GL_ARB_fragment_shader@GLCaps@G3D@@0_NA": "0x96ee8a",
+    "?_supports_GL_ARB_shader_objects@GLCaps@G3D@@0_NA": "0x96ee88",
+    "?_supports_GL_ARB_shading_language_100@GLCaps@G3D@@0_NA": "0x96ee89",
+    "?_supports_GL_ARB_vertex_shader@GLCaps@G3D@@0_NA": "0x96ee8b",
+    "?glLoaded@SpecData@Render@RBX@@2_NA": "0x972888",
+    "__TI3?AVbad_lexical_cast@boost@@": "0x8e5c90",
+    "__real@3f99999a": "0x827278",
+    "__real@3fb33333": "0x827298",
+    "__real@40000000": "0x81c434"
+  },
+  "vtables_current_headers": {
+    "??_7bad_lexical_cast@boost@@6B@": {
+      "address": "0x827224",
+      "checked_slots": [
+        "0 ??_Ebad_lexical_cast@boost@@UAEPAXI@Z = 0x5011a0 (deleting destructor, checked below as ??_G)",
+        "1 ?what@bad_lexical_cast@boost@@UBEPBDXZ = 0x501180 (support body exact)"
+      ]
+    }
+  },
+  "not_exact": [],
+  "pending_build_only": [],
+  "not_built": {
+    "GetCyclesDifference 00501400 (+ filter 00501484, handler block 0050148a)": "the body is inline assembly (rdtsc, push / call DelayFunction / pop ebx) under __try / __except(1); inline assembly is not allowed in native sources. The header declares it with external linkage so getCPUSpeed can call it (the original is a static helper; the REL32 call is the same)."
+  },
+  "rejected": {
+    "getCPUMake 00501590 / getMaxRes 005019f0 with external linkage": "183 B not exact / 224 of 226 B: the sret pointer is loaded late (mov esi, [esp + 0x54] after the registry read). Exact only as static helpers, like the donor Profiler.cpp.",
+    "getCPUCount 00501650 as while (keyExists(format(...))) ++count;": "158 of 160 B (the temporary is destroyed before the test). The scoped named key with an early break is exact; also rejected: for (;; ++i) return-in-loop (164 B), keyExists(format(...).c_str()) (163 B), do / while with a bool (111 B).",
+    "SpecData() without /fp:fast": "333 / 325 B: the conditional shaderModel is spilled through a stack temporary.",
+    "whole unit under VS2005 50727": "getShaderModel / getCPUSpeed / SpecData() not exact; VS2008 RTM 21022 kept."
+  },
+  "proposals": {
+    "settings-items owner (DebugSettings \"Profile\" getters)": "native-headers/AppUnit500/RenderSpecData.h now declares the 2008 RBX::Render::SpecData (0x84 bytes: shaderModel +0x0, videoMemory +0x4, CPUSpeed +0x8, cpuCount +0xc, glVendor +0x10, gfxcard +0x2c, cpu +0x48, ram +0x64, resolution +0x68; static glLoaded 00972888). The \"Profile\" getters 00563230..00563a50 and the implicit destructor 005631c0 listed as not attempted in settings-items-working.json can include it read-only (or the header can move to a shared RenderLib path with its owner's agreement)."
+  },
+  "exact_function_rows": [
+    "005011d0",
+    "005014b0",
+    "00501520",
+    "00501590",
+    "00501650",
+    "005016f0",
+    "005019f0",
+    "00501ae0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
