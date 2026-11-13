@@ -1,11 +1,25 @@
+import importlib.util
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from roc import donor_converter
 
 
 class DonorConverterTests(unittest.TestCase):
+    def test_roc_command_routes_sources_to_converter(self):
+        script = Path(__file__).resolve().parents[1] / "roc.py"
+        spec = importlib.util.spec_from_file_location("roc_donor_converter_cli_test", script)
+        cli = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cli)
+        report = {"summary": {"sources": 1, "compiled": 1, "exact": 2, "missing": 1}}
+
+        with patch("roc.donor_converter.convert", return_value=report) as convert:
+            cli.main(["donor-convert", "tools/rbxgs/Client/App/Test.cpp", "--output", "result.json"])
+
+        convert.assert_called_once_with(cli.ROOT, ["tools/rbxgs/Client/App/Test.cpp"], Path("result.json"))
+
     def test_resolve_sources_only_accepts_cpp_inside_donor_roots(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
