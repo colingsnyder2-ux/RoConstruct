@@ -1587,6 +1587,10 @@ def code_function_count(path):
                for line in path.read_text(encoding="utf-8").splitlines() if line.strip())
 
 
+def module_target_count(report):
+    return len(set(report.get("owned_addrs", ())))
+
+
 def progress(client="2008-06", log=print, notify=True):
     """Summarize rebuild module reports into docs/rebuild-progress.json."""
     if os.environ.get('ROC_INTEGRATOR_PRIVATE') == '1':
@@ -1621,6 +1625,7 @@ def progress(client="2008-06", log=print, notify=True):
             "linked": linked,
             "test": report.get("test_exit"),
             "exact": len(module_owned),
+            "target": module_target_count(report),
             "compileErrors": sum(len(failed) for failed in errors.values()),
             "objectFunctions": report.get("object_functions", 0),
             "unresolved": len(unresolved),

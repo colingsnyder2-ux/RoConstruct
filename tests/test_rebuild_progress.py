@@ -9,3 +9,7 @@ def test_code_function_count_excludes_non_code_records(tmp_path):
         "code", "code", "eh", "gen", "adjustor", "thunk", "data")))
 
     assert rebuild.code_function_count(path) == 2
+
+
+def test_module_target_count_uses_unique_owned_addresses():
+    assert rebuild.module_target_count({"owned_addrs": ["00401000", "00402000", "00401000"]}) == 2
