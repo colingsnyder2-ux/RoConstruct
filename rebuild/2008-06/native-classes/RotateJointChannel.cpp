@@ -89,8 +89,10 @@ namespace RBX
 			G3D::Vector3 center0 = f0.center();
 			G3D::Vector3 center1 = f1.center();
 
-			bool inExtrusion0 = f0.fuzzyContainsInExtrusion(center0, 0.05f);
-			bool inExtrusion1 = f1.fuzzyContainsInExtrusion(center1, 0.05f);
+			// Cross checks (006461af receiver f1 with center0, 006461ce receiver f0 with center1): the centre of each
+			// face must lie in the extrusion of the other face.
+			bool inExtrusion0 = f1.fuzzyContainsInExtrusion(center0, 0.05f);
+			bool inExtrusion1 = f0.fuzzyContainsInExtrusion(center1, 0.05f);
 			bool cond0 = s0 >= ROTATE && inExtrusion0;
 			bool cond1 = s1 >= ROTATE && inExtrusion1;
 
