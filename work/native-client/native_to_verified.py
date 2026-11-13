@@ -41,8 +41,8 @@ def main():
         for obj in sorted(layer.glob('*.obj')):
             exact = probe.exact(obj.read_bytes(), targets)
             keep = {symbol: addresses[0] for symbol, addresses in exact.items() if addresses}
-            if not keep:
-                continue
+            # objects with no exact function are still copied (empty keep): with keep_helper_objects they supply the
+            # template instantiations other swapped functions call
             name = 'nat_%s_%s' % (layer.name.removeprefix('layer-'), obj.name)
             shutil.copy2(obj, verified / name)
             data['swaps'].append({'obj': name, 'recipe': 'native', 'file': obj.stem + '.cpp', 'keep': keep})
