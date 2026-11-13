@@ -13,12 +13,24 @@
 //     added into qOrientation +0x54, inline normalize, then Quaternion::toRotationMatrix 005dd6d0 into pv.rotation.
 //   - pv.velocity.linear +0x3c += (force * dt + impulse) * massRecip (+0x84 / +0x9c / +0x7c);
 //     translation +0x30 += linear * dt; the four accumulators reset without the dirty check.
-// PARKED (685 B vs 687 B, first divergence insn 129 at 0065912c): only x87 operand order differs. The inline normalize
+// PARKED (pass 1: 685 B vs 687 B, first divergence insn 129 at 0065912c): only x87 operand order differs. The inline normalize
 // emits `fld [y]; fmul st(1)` where the original has `fld st(0); fmul [y]`; the force * dt and linear * dt products
 // start with `fld st(0); fmul [mem]` instead of `fld [mem]; fmul st(1)`; one `fst [+0x8c]` is scheduled before
 // `pop edi`; and the last two denormal adds load the member first. Rejected: massRecip * (impulse + force * dt)
 // (fixes the linear add, breaks the translation add), no /fp:fast (970 B, qword constants and spills), and
 // qOrientation = qOrientation * (1 / magnitude) (702 B, different register allocation).
+// Near-miss pass 2 (workflow 53, VS2008 RTM 21022): ADOPTED (dt * force + impulse) * massRecip through the G3D free
+// operator*(float, const Vector3&) (Vector3.h, returns v * s): 687 B = target size; it fixes the linear add, the
+// translation add and the `fst [+0x8c]` / `pop edi` schedule. Remaining (16 diff lines, still first divergence insn 129):
+// normalize y `fld st(0); fmul [edi+4]`, force.x `fld [esi+0x84]; fmul st(1)`, and the angMomentum denormal y/z adds
+// load the static first. The sibling update() 00658d20 normalize has a different mixed pattern (x and y `fld st(0);
+// fmul [m]`), so the per-component order is register-stack scheduling, not per-component source order.
+// Rejected in pass 2: VS2005 50727 (same source: new divergence at insn 5, guard test scheduled before push edi);
+// flags /Ob1, no /Oy, /Ox, /Og /Oi /Ot /Oy /Ob2 (unchanged), /Oy- (682 B), /fp:precise (970 B); static const
+// denormalSmall and a local Vector3& to the static (unchanged); dt * torque (685 B, new divergence insn 47);
+// impulse + dt * force (unchanged); massRecip * (dt * force + impulse) (685 B); dt * pv.velocity.linear alone (685 B);
+// explicit x *= invMagnitude per component (register swap ebx/edi from insn 18); 1 / sqrtf(dot) (684 B);
+// qOrientation = qOrientation + qDot * dt (700 B).
 #include "v8kernel/Body2008.h"
 
 namespace RBX
@@ -37,7 +49,7 @@ namespace RBX
 		qOrientation += qDot * dt;
 		qOrientation *= 1.0f / qOrientation.magnitude();
 		qOrientation.toRotationMatrix(pv.position.rotation);
-		pv.velocity.linear += (force * dt + impulse) * massRecip;
+		pv.velocity.linear += (dt * force + impulse) * massRecip;
 		pv.position.translation += pv.velocity.linear * dt;
 		force = G3D::Vector3(0.0f, constantForceY, 0.0f);
 		torque = G3D::Vector3(0.0f, 0.0f, 0.0f);

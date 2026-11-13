@@ -29,6 +29,15 @@ void countSounds(const std::map<RBX::Soundscape::SoundId, boost::shared_ptr<RBX:
                  size_t& numSounds, size_t& numUnusedSounds);
 
 // 005bcd80
+// PARKED near miss (293/293 B): the only divergence is the countSounds call setup; target
+//   push edi; lea ecx,[esi+0x180]; push ebx; mov [edi],0; push ecx; mov [ebx],0
+// this source emits push ecx before mov [edi],0. Rejected variants (do not repeat):
+//   1. separate `numSounds = 0; numUnusedSounds = 0;` (ebx/edi swap: ebx=+0x168, edi=+0x164, push order changes).
+//   2. chain `numSounds = numUnusedSounds = 0;` moved after the soundService local (service kept in ebx, this
+//      advanced in esi; different registers).
+//   3. no soundService local, `service->loadedSounds` directly (service reloaded into ecx, 299 B).
+//   4. compiler gate roc_cl 50727 (native_bulk config): VC8 STL headers shift the layout (service +0x120), so the
+//      unit is VS2008 RTM 21022 (MSVCP90 imports); /fp:fast flag profile gives the identical one-instruction diff.
 void SoundServiceStatsItem::update()
 {
 	if (service->system)

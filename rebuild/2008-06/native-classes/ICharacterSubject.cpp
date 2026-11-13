@@ -63,6 +63,13 @@ namespace RBX
 	// (0x005cbe70, also out of line at both Camera call sites 0x5ccc62/0x5ccdac) while
 	// this compile inlines it, which shifts the frame (0x11c vs 0x10c) and register use.
 	// Rejected: Vector2(x, 0, z) argument form, fastDirection(), unnamed getLocation temp.
+	// Rejected 2026-11-13 (each still inlines Vector2::direction): VS2005 50727 compiler via native_bulk roc_cl
+	// (1145 B, same body); no /fp:fast (1314 B, zoom also breaks); dead named locals for the three discarded
+	// results getIntendedRotationAboutYAxis / rotationERA.getAverage / pushAndGetAverage (1143 B);
+	// location.lookVector() with -atan2(look.x, -look.z) (1162 B); getLocation().getHeading() (G3D inline,
+	// same -atan2(-look.x, look.z)) (1126 B, but the target calls getColumn(2) before rotationERA.getAverage, so
+	// the heading is not one inline call). Closest diff: the kept form, first divergence at insn 0 (frame 0x11c vs
+	// 0x10c); everything up to the direction() call site matches modulo stack offsets.
 	void ICharacterSubject::stepGoalAndFocus(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus, bool cameraExternallyAdjusted)
 	{
 		G3D::Vector3 goalToFocus = cameraFocus.translation - cameraGoal.translation;

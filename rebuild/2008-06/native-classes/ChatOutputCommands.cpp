@@ -18,8 +18,18 @@
 
 namespace RBX
 {
-	// 0064fe90 (PARKED, closest 1451 of 1452 bytes: only the x87 order of the backdrop Rect2D corners differs; tried
-	// corner constants (-2,+1)/(+2,-1) read off the target stack and reassociated width + messageSize.x + position.x)
+	// 0064fe90 (PARKED). Pass 1 closest 1451 of 1452 bytes with corners (-2,-2)/(+1,+1); tried corner constants
+	// (-2,+1)/(+2,-1) read off the target stack and reassociated width + messageSize.x + position.x.
+	// Pass 2 (workflow 53): decoding the target x87 at 006500b8..00650121 (after the three pushes, position at +0x3c,
+	// userSize at +0x9c, messageSize at +0xec) gives low = (position.x - 2, position.y + 1) and high =
+	// ((width + messageSize.x) + position.x + 2, (position.y + userSize.y) - 1): one 2.0f (0081c434) is subtracted and
+	// added, one fld1 is added and subtracted. The pass-1 corners computed different values (y0 = position.y - 2), so
+	// the semantically decoded corners are ADOPTED (1453 B, 199 diff lines vs 202). The remaining byte gap is not the x87
+	// order: the frame-slot coloring differs from the first deque operator[] temporary on (target iterator temps at
+	// +0x64/+0xa4, the two corner Vector2s adjacent at +0xac/+0xb4 and stored low first; candidate +0xa4/+0xb4 and
+	// non-adjacent corners), which changes disp8/disp32 encodings. Rejected in pass 2: position.x + width +
+	// messageSize.x + 2 (1455 B), named locals low/high in either association (1455 B, low stored first but slots still
+	// non-adjacent), VS2005 50727 and /Ob1, /Oy profiles (see the result notes; no effect on slot coloring).
 	void ChatOutput::render2d(Adorn* adorn)
 	{
 		Rect rect = getMyRect();
@@ -33,8 +43,8 @@ namespace RBX
 			G3D::Vector2 messageSize = adorn->get2DStringBounds(fifo[i]->message, 12, Adorn::PROPORTIONAL_SPACING);
 			float width = std::max(userSize.x + 4.0f, 20.0f);
 
-			G3D::Rect2D backdrop = G3D::Rect2D::xyxy(G3D::Vector2(position.x - 2.0f, position.y - 2.0f),
-													  G3D::Vector2(position.x + width + messageSize.x + 1.0f, position.y + userSize.y + 1.0f));
+			G3D::Rect2D backdrop = G3D::Rect2D::xyxy(G3D::Vector2(position.x - 2.0f, position.y + 1.0f),
+													  G3D::Vector2(width + messageSize.x + position.x + 2.0f, position.y + userSize.y - 1.0f));
 			adorn->rect2d(backdrop, GuiItem::translucentBackdrop());
 
 			G3D::Color3 messageColor = G3D::Color3::white();

@@ -93,6 +93,11 @@ namespace RBX
 
 	// onEvent 0062b700 (Listener<RunService, Stepped> slot 0, vtable 00845e18): near miss, not counted. The original
 	// compares age with 0.1f at 0081e704, then drops the dead ~Array stores (see the receipt).
+	// PARKED 2026-11-13 (281 B vs 269 B, the only difference is data/num/numAllocated = 0 after alignedFree 00507d20).
+	// Rejected: VS2005 50727 compiler via native_bulk roc_cl (278 B, stores still emitted, and the VS2005 STL moves
+	// the World/ContactManager offsets); no /fp:fast is already rejected for setBlastRadius. A G3D header without the
+	// stores is contradicted by the binary: Roblox stack-local Arrays followed by another call keep them
+	// (func_005a2580 at 005a26da, 004815d0 at 004818c5), while this site drops them although setParent follows.
 	void Explosion::onEvent(const RunService*, Stepped event)
 	{
 		age += event.step;
