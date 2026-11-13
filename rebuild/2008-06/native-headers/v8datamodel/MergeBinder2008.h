@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// MergeBinder2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src e3f192d3 | roc native-status --write
 // 2008-06 native RBX::IReferenceBinder / RBX::MergeBinder (inactive). Verified by tests/record_native_misc_leaves.py.
 //
 // The donor declares both in v8xml/SerializerV2.h; this header must not be combined with that one.

@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// LDrawMapOperations | 2008-06 | draft (no current byte proof)
+// 0/16 mapped addresses byte-exact | 16 unproved | no mapped strings | by Espeon (+5) (mixed 4)
+// <<< native-status | src dfc22cf6 | roc native-status --write
 #include "util/LDrawMapRoot.h"
 #include <algorithm>
 #include <cctype>
@@ -88,3 +92,9 @@ int LDraw2RobloxMapRoot::readFormFactor(std::string value)
     return 2;
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::LDraw2Lua::NativeRobloxPart> >;
+template class std::_String_iterator<char,std::char_traits<char>,std::allocator<char> >;
+template class std::_Vector_const_iterator<RBX::LDraw2Lua::NativeRobloxPart,std::allocator<RBX::LDraw2Lua::NativeRobloxPart> >;
+template class std::_Vector_iterator<RBX::LDraw2Lua::NativeRobloxPart,std::allocator<RBX::LDraw2Lua::NativeRobloxPart> >;

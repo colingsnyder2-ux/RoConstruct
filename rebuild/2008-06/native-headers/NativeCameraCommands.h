@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// NativeCameraCommands | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 34d1ba9b | roc native-status --write
 namespace RBX {
 class Camera;
 template<class T> class FilteredSelection;

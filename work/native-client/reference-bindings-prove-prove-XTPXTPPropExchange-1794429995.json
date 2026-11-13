@@ -1,0 +1,79 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPPropExchange@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006fc940"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTPPropExchange\\objects\\5503da145b8f1fab\\candidate.obj": "c919f8fd4ccb1f525b079271c53deefe46ce77aaf514725fdfd56e18ca362bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fn1dlw8h\\owners.json": "c40a2a7f68e211b71cc2c3e05fdc0dea41a7268292eee479ff17591c26335924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fn1dlw8h\\import-thunk-identities-as-owner.json": "84c6ff1aec197a66002f63e456ef28186ef4dadf4298592d43446e6f56d6fe9b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPPropExchangeArchive@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006fce60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTPPropExchange\\objects\\5503da145b8f1fab\\candidate.obj": "c919f8fd4ccb1f525b079271c53deefe46ce77aaf514725fdfd56e18ca362bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fn1dlw8h\\owners.json": "c40a2a7f68e211b71cc2c3e05fdc0dea41a7268292eee479ff17591c26335924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fn1dlw8h\\import-thunk-identities-as-owner.json": "84c6ff1aec197a66002f63e456ef28186ef4dadf4298592d43446e6f56d6fe9b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@0@Z",
+    "address": "00455f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTPPropExchange\\objects\\5503da145b8f1fab\\candidate.obj": "c919f8fd4ccb1f525b079271c53deefe46ce77aaf514725fdfd56e18ca362bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fn1dlw8h\\owners.json": "c40a2a7f68e211b71cc2c3e05fdc0dea41a7268292eee479ff17591c26335924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fn1dlw8h\\import-thunk-identities-as-owner.json": "84c6ff1aec197a66002f63e456ef28186ef4dadf4298592d43446e6f56d6fe9b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?_GetBaseClass@CXTPPropExchange@@KGPAUCRuntimeClass@@XZ",
+   "address": "006ab1a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPPropExchangeArchive@@KGPAUCRuntimeClass@@XZ",
+   "address": "006fcfe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@0@Z",
+   "address": "007c238a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PAUIAtlStringMgr@1@@Z",
+   "address": "00802fe8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_?Concatenate@?$CSimpleStringT@D$00@ATL@@KAXAAV12@PBDH1H@Z",
+   "address": "00802fdc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_?GetLength@?$CSimpleStringT@D$00@ATL@@QBEHXZ",
+   "address": "00802fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_?GetManager@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEPAUIAtlStringMgr@2@XZ",
+   "address": "00802fec",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

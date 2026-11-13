@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// COutputView | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src df91f268 | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <deque>
 #include <atlbase.h>

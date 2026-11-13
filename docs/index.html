@@ -320,7 +320,6 @@ footer img { height: 30px; }
       <a href="#contributors" data-nav="contributors">Contributors</a>
       <a href="sources.html" data-nav="sources">Sources</a>
       <a href="findings.html" data-nav="findings">Findings</a>
-      <a href="graph.html">Dependency Graph</a>
     </nav>
     <a class="btn discord" href="https://discord.gg/Tayg763nrG"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0015.4 2.85a.07.07 0 00-.08.04c-.21.38-.45.87-.61 1.26a18.3 18.3 0 00-5.48 0 12.6 12.6 0 00-.62-1.26.08.08 0 00-.08-.04 19.7 19.7 0 00-4.92 1.52.07.07 0 00-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 00.03.06 19.9 19.9 0 005.99 3.03.08.08 0 00.08-.03c.46-.63.87-1.29 1.23-1.99a.08.08 0 00-.04-.11 13.1 13.1 0 01-1.87-.89.08.08 0 01-.01-.13l.37-.29a.07.07 0 01.08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 01.08.01l.37.29a.08.08 0 01-.01.13c-.6.35-1.22.65-1.87.89a.08.08 0 00-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 00.08.03 19.8 19.8 0 006-3.03.08.08 0 00.03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 00-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg>
       Discord</a>
@@ -339,16 +338,16 @@ footer img { height: 30px; }
     </div>
   </div>
 </footer>
-<script src="library-coverage.js" defer></script>
+<script src="library-coverage.js?v=619522051626" defer></script>
 <script>
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
-const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct-findings";
+const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct";
 const app = document.getElementById("app");
 const fmt = n => n.toLocaleString("en-US");
 const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
 const mb = n => (n / 1048576).toFixed(2) + " MB";
 const hex = n => n.toString(16).padStart(8, "0");
-const sourceUrl = (client, address) => `${FINDINGS}/blob/main/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
+const sourceUrl = (client, address) => `${FINDINGS}/blob/work/src/${encodeURIComponent(client)}/${hex(address)}.cpp`;
 let sourceCatalog = {};
 const libraryUrl = meta => {
   if (!meta) return "";
@@ -358,8 +357,10 @@ const libraryUrl = meta => {
 };
 const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
+  const candidate = integrationData?.client === client && integrationData.inactive_sources?.[hex(f[0])];
   const links = [];
-  if (indexed) links.push(`<a href="${FINDINGS}/blob/main/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
+  if (!indexed && candidate) links.push(`<a href="${FINDINGS}/blob/work/${candidate.path.split('/').map(encodeURIComponent).join('/')}#L${candidate.line}" target="_blank" rel="noopener">${integrationData.inactive?.[hex(f[0])]?.[1] ? "Inactive native" : "Draft native"}${short ? "" : " source"} ↗</a>`);
+  if (indexed) links.push(`<a href="${FINDINGS}/blob/work/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
   else {
     const file = f[2] === 100 && f[5] && sourceCatalog[f[5][0]]?.kind !== "archive" ? libraryUrl(f[5]) : "";
@@ -479,11 +480,11 @@ function dailyGraph(days, integration = false, switcher = false) {
   const last = days.at(-1);
   const gain = d => d.gain === null ? "—" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
   const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting + (d.nearly || 0) : 0));
-  const series = integration ? [["integrated", "Integrated", "#a855f7"], ["nearly", "Inactive / draft native", "#f0883e"], ["waiting", "Other exact", "#58a6ff"]] : [["source", "Original source", "#58a6ff"],
+  const series = integration ? [["integrated", "Integrated", "#a855f7"], ["inactive", "Inactive native", "#f0883e"], ["draft", "Draft native", "#db61a2"], ["waiting", "Other exact", "#58a6ff"]] : [["source", "Original source", "#58a6ff"],
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
-    <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes" : "complete"}.
+    <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes (integrated + inactive exact)" : "complete"}.
     One stack per day (US Eastern), toward 100%. Repeated completed days hidden from chart and table. History since ${days[0].day}.</p></div>
     ${switcher ? sectionMode("daily", "Daily progress view") : ""}
     <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, chartDays.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, inactive / draft native, other exact and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
@@ -507,8 +508,8 @@ function dailyGraph(days, integration = false, switcher = false) {
     </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(remaining(last))}</span></div></div>
     ${days.some(d => d.estimated) ? '<p class="note">* Source/mined split estimated from nearby days. Recorded matched and partial totals unchanged.</p>' : ""}
     <details class="mining-days"><summary>Daily function counts</summary><p class="note">${integration ? "Recorded native snapshots only; earlier unrecorded totals are not reconstructed." : "Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; * marks estimated splits, unavailable counts show —."} Changes include inventory corrections. First recorded total has no daily change.</p>
-      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Exact waiting</th><th>Remaining</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
-      ${chartDays.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.waiting)}</td><td>${fmt(remaining(d))}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
+      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Inactive native</th><th>Draft native</th><th>Exact waiting</th><th>Remaining</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
+      ${chartDays.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.inactive)}</td><td>${count(d.draft)}</td><td>${count(d.waiting)}</td><td>${fmt(remaining(d))}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
       </tbody></table></div></details>`;
 }
 
@@ -529,20 +530,20 @@ function codeBar(source, mined, partial, total) {
 }
 
 /* Native integration: mined functions placed into the real rebuilt source tree, reproduced byte-exact by the
-   linked rebuild (docs/integration.json, published hourly). Same groups as the Discord integration digest. */
+   linked rebuild (site/integration.json, published hourly). Same groups as the Discord integration digest. */
 function integrationBar(i, name) {
   if (!i || i.client !== name) return "";
   const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0}, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
-  const inactiveB = Math.min(nearly.bytes, i.native_code?.inactive?.bytes || 0);
+  const inactiveB = Math.min(nearly.bytes, i.native_code?.inactive?.bytes || 0), recovered = g.integrated.bytes + inactiveB;
   const w = n => (100 * n / total).toFixed(3) + "%";
   return `
-    <div class="label">Integrated code <small>(${mb(g.integrated.bytes)} of ${mb(total)}) — ${pct(g.integrated.bytes, total)}</small></div>
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i style="background:#f0883e;width:${w(inactiveB)}"></i><i style="background:#db61a2;width:${w(Math.max(0, nearly.bytes - inactiveB))}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
+    <div class="label">Integrated code <small>(${mb(recovered)} of ${mb(total)}) — ${pct(recovered, total)}</small></div>
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * recovered / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i style="background:#f0883e;width:${w(inactiveB)}"></i><i style="background:#db61a2;width:${w(Math.max(0, nearly.bytes - inactiveB))}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
       <i class="u" style="width:${w(g.partial.bytes + g.unmined.bytes)}"></i></div>
     <div class="legend"><span><i style="background:#a855f7"></i>Integrated</span>
       <span><i style="background:#f0883e"></i>Inactive native</span><span><i style="background:#db61a2"></i>Draft native</span><span><i style="background:#58a6ff"></i>Other exact</span>
       <span><i style="background:#3a3d45"></i>Not exact</span></div>
-    <p class="note">Estimate only: inactive and draft come from local trial receipts and native sources; only integrated code is server-verified in the linked rebuild.</p>
+    <p class="note">Coverage combines published integration and inactive receipt-exact native bodies without overlap. Drafts are separate and excluded from this percentage. Inactive exactness does not establish runtime safety, executable selection or server credit.</p>
 `;
 }
 
@@ -561,11 +562,12 @@ function integrationSection(i, name) {
 function integrationSummary(i, name, compact = false) {
   if (!i || i.client !== name) return "";
   const total = Object.values(i.groups).reduce((sum, g) => sum + g.bytes, 0);
-  const percent = total ? 100 * i.groups.integrated.bytes / total : 0;
+  const selected = total ? 100 * i.groups.integrated.bytes / total : 0;
+  const percent = selected + (total ? 100 * (i.native_code?.inactive?.bytes || 0) / total : 0);
   const waiting = total ? 100 * (i.groups.exact_waiting?.bytes || 0) / total : 0;
   const nearly = total ? 100 * (i.groups.owned_waiting?.bytes || 0) / total : 0;
   return `<div class="integration-summary">${compact ? "" : `<div class="label">Integrated · ${percent.toFixed(2)}%</div>`}
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i><i class="y" style="width:${nearly}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${selected}%"></i><i class="y" style="width:${nearly}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
 }
 
 function integrationDays(i) {
@@ -606,9 +608,10 @@ function integrationDaily(i, switcher = false) {
     const functions = Object.values(row.groups).reduce((sum,g) => sum + g.functions, 0);
     const integrated = row.groups.integrated.functions, waiting = row.groups.exact_waiting.functions;
     const bytes = Object.values(row.groups).reduce((sum,g) => sum + g.bytes, 0);
-    return {day:row.day,functions,integrated,waiting,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
-      byteGroups:{integrated:row.groups.integrated.bytes,nearly:row.groups.owned_waiting?.bytes || 0,waiting:row.groups.exact_waiting.bytes},
-      percent:bytes ? 100 * row.groups.integrated.bytes / bytes : 0,
+    const inactive = row.native_code?.inactive, draft = row.native_code?.draft;
+    return {day:row.day,functions,integrated,waiting,inactive:inactive?.functions,draft:draft?.functions,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
+      byteGroups:{integrated:row.groups.integrated.bytes,inactive:inactive?.bytes || 0,draft:draft?.bytes || 0,waiting:row.groups.exact_waiting.bytes},
+      percent:bytes ? 100 * (row.groups.integrated.bytes + (inactive?.bytes || 0)) / bytes : 0,
       gain:index ? integrated - rows[index-1].groups.integrated.functions : null};
   });
   return dailyGraph(days, true, switcher);
@@ -620,9 +623,9 @@ function sectionMode(key, label) {
 
 function integrationCoverageBar(row) {
   const w = bytes => row.bytes ? 100 * bytes / row.bytes : 0;
-  const nearly = row.nearlyBytes || 0;
+  const nearly = row.nearlyBytes || 0, draft = row.draftBytes || 0;
   return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(nearly, row.bytes)} inactive / draft native, ${pct(row.waitingBytes, row.bytes)} other exact">
-    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i class="y" style="width:${w(nearly)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - nearly - row.waitingBytes)}%"></i></div>`;
+    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i style="background:#f0883e;width:${w(nearly-draft)}%"></i><i style="background:#db61a2;width:${w(draft)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - nearly - row.waitingBytes)}%"></i></div>`;
 }
 
 /* One click opens the console, which then asks the two things that matter:
@@ -645,8 +648,8 @@ function joinHelp() {
     exact compiler bundles and registers <code>roconstruct://</code>. It installs no Ollama, Docker or model.
     Then click "Help out": the worker starts in a console window, fetching the client exe and its compiler
     the first time. Running install.cmd again never reinstalls anything or touches your work.</p>
-    <p>Use your coding agent: <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/MATCHING_AGENT.md">Matching workflow</a>
-    · <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/NATIVE_AGENT.md">Native integration workflow</a>.</p></div>`;
+    <p>Use your coding agent: <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/MATCHING_AGENT.md">Matching workflow</a>
+    · <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md">Native integration workflow</a>.</p></div>`;
 }
 
 function commitPanel() {
@@ -1117,11 +1120,6 @@ async function client(name) {
     <div id="live-mining">${native && views.daily==="integration" ? integrationDaily(native, true) : miningGraph({...latest,
       source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: latest.mined_matched ?? data.funcs.filter(f => f[2] === 100 && !f[5]).length}, !!native)}</div>
-    <div class="head"><h2><small>Tree</small>Classes</h2><p>Every class and function in this client, by native rebuild status.</p></div>
-    <div class="controls"><input id="tree-filter" placeholder="Filter classes, e.g. CRobloxDoc"></div>
-    <div class="tree-legend" id="tree-legend"></div>
-    <div id="link-summary"></div>
-    <div class="tree" id="tree"></div>
     ${leaderboard(latest.leaderboard, "", name)}
     <div class="head"><h2 id="remaining-title">${native && views.remaining==="integration" ? "Functions not integrated" : "Functions Remaining"}</h2><p>Click a column to sort · 25 per page.</p></div>
     ${native ? sectionMode("remaining", "Remaining functions view") : ""}<div class="remaining-card">
@@ -1143,7 +1141,6 @@ async function client(name) {
     </div></div>
     <p class="note">Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
-  renderTree(data, byUnit, nativeSet, native);
   const onLibraryMap = key => {
     const [title, fs] = data.groups.get(key);
     group = fs; unitSel.value = "";
@@ -1324,8 +1321,10 @@ Promise.all([
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
   fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("integration.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([p, h, sources, native]) => {
+  fetch("native-source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
+]).then(([p, h, sources, native, candidates]) => {
   sourceCatalog = sources;
+  if (native && candidates?.client === native.client) native.inactive_sources = {...candidates.sources, ...native.inactive_sources};
   integrationData = native;
   progress = p; history = h; hIdx = h.length - 1;
   route();

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// MaterialFactory2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 651b0345 | roc native-status --write
 // 2008-06 native RBX::ViewNew::MaterialFactory: destructor declaration only (inactive). Named *2008.h so it never
 // shadows the donor RbxView/MaterialFactory.h (a later source base).
 //   Evidence: new 0x10 before the ctor 004f0920(G3D::TextureManager*) in the ViewRbxGfx ctor (004d9ac1) and the ViewG3D

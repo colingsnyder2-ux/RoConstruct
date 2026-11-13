@@ -2,9 +2,17 @@
 // Verified by tests/record_native_network_player.py. Network/Players.h and v8datamodel/ModelInstance.h
 // do not compile against the 2008 const-char-array DescribedCreatable; the recorder supplies
 // declaration-only stand-ins (tests/NativeNetworkPlayerPlayers.h, tests/NativeTeamPendingModel.h).
+// >>> native-status (generated) -- do not edit >>>
+// NetworkPlayer | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/12 mapped addresses byte-exact | named 2 | 8 unproved | 4 referenced strings (not rechecked) | by king_originala (+6) (mixed 5)
+// <<< native-status | src ee51ac95 | roc native-status --write
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/TimerService.h"
+#include "humanoid/Humanoid2008.h"
 #include "v8tree/Service.h"
 #include "security/SecurityContext.h"
 #include "reflection/signal.h"
@@ -184,6 +192,49 @@ namespace RBX
 			}
 		}
 
+		void Player::onCharacterChangedFrontend()
+		{
+			if (this == Players::findLocalPlayer(this))
+			{
+				Workspace* workspace = ServiceProvider::find<Workspace>(this);
+				if (character.get() == NULL)
+				{
+					workspace->getCamera()->setCameraType(Camera::FIXED_CAMERA);
+					workspace->getCamera()->setDistanceFromTarget(0.0f);
+					workspace->getCamera()->zoom(-1.0f);
+				}
+				else
+				{
+					workspace->getCamera()->setCameraSubject(Humanoid::modelIsCharacter(character.get()));
+					workspace->getCamera()->setCameraType(Camera::CUSTOM_CAMERA);
+					workspace->getCamera()->setDistanceFromTarget(13.0f);
+					workspace->getCamera()->zoom(-1.0f);
+					workspace->setDefaultMouseCommand();
+				}
+			}
+		}
+
+		void Player::doPeriodicIdleCheck()
+		{
+			if (ServiceProvider::findServiceProvider(this))
+			{
+				if (lastActivityTime != 0.0)
+				{
+					G3D::RealTime idleTime = G3D::System::getLocalTime() - lastActivityTime;
+					if (idleTime > 120.0)
+					{
+						Players* players = ServiceProvider::find<Players>(this);
+						if (players && players->getLocalPlayer() && Players::clientIsPresent(this, true))
+							event_Idled.fire(this, static_cast<float>(idleTime));
+					}
+				}
+
+				TimerService* timerService = ServiceProvider::create<TimerService>(this);
+				if (timerService)
+					timerService->delay(boost::bind(&Player::doPeriodicIdleCheck, shared_from(this)), 30.0);
+			}
+		}
+
 		void Player::setCharacter(ModelInstance* value)
 		{
 			if (value != character.get())
@@ -215,3 +266,13 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::SignalDescImpl<2,void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::shared_ptr<RBX::Instance>)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::shared_ptr<RBX::Instance>)>;
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::ModelInstance *>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *> >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();

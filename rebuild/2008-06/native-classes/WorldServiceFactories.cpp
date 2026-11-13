@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorldServiceFactories | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 452aec45 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/PhysicsService.h"
 #include "v8datamodel/JointsService.h"
@@ -28,3 +32,6 @@ template<class Class> Class* ServiceProvider::create() const {
 template JointsService* ServiceProvider::create<JointsService>() const;
 template PhysicsService* ServiceProvider::create<PhysicsService>() const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::JointsService>;

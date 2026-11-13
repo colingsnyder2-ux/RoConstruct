@@ -1,0 +1,669 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "4c063352ff430c414cc2129c80742d5d72b57afb",
+  "verification": {
+    "native_input_key": "e340c0ec3213b1c7179f1f51f28cee2e823b63066c137093da1298221a2aa865",
+    "verifier_hashes": {
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_publish.py": "182c9ed29882d876e9d0b5889a038f2ce2ec1f98893402e0a8323484ad68c46f",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+      "C:\\Users\\colin\\RoConstruct\\work\\native-client\\claude-identity-closure.json": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa"
+    },
+    "sources": {
+      "rebuild/2008-06/native-classes/GuiDrawImage.cpp": {
+        "source_sha256": "c5679284ed1c9ed117dc8af919de34342f15816fae1a343d3bd80b468ff3f080",
+        "object_sha256": "d9b2e87e10027867f1a5597023f6e31d7a7b8885655ed1ce3a353d95fba3a7f8",
+        "methods": [
+          {
+            "address": "00642de0",
+            "symbol": "?render2d@GuiDrawImage@RBX@@QAEXPAVAdorn@2@_NAAVRect@2@W4WidgetState@Widget@2@@Z",
+            "size": 292,
+            "exact": true,
+            "verified_targets": {
+              "__real@3f000000": "0x819bac",
+              "?clear@Color4@G3D@@SAABV12@XZ": "0x7baf10",
+              "?blue@Color3@G3D@@SAABV12@XZ": "0x514910",
+              "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820",
+              "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z": "0x642c90",
+              "?yellow@Color3@G3D@@SAABV12@XZ": "0x514980",
+              "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z": "0x598fa0"
+            },
+            "local_eh": []
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?blue@Color3@G3D@@SAABV12@XZ",
+            "address": "00514910",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z",
+            "address": "004f0820",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+            "address": "00642c90",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?yellow@Color3@G3D@@SAABV12@XZ",
+            "address": "00514980",
+            "evidence": "reference-vote",
+            "votes": 2,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+            "address": "00598fa0",
+            "evidence": "unique-body",
+            "votes": 30,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+            "address": "00642c90",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e34efdfc06ac40728414c2dc8398b1df\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e34efdfc06ac40728414c2dc8398b1df\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e34efdfc06ac40728414c2dc8398b1df\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source"
+        ]
+      },
+      "rebuild/2008-06/native-classes/FlagStandService.cpp": {
+        "source_sha256": "c135025eb205f124ac4f15fbc1d7dbb4c6352c0a561a655b8a5d6dbc8c278822",
+        "object_sha256": "00aa9cef9f1e4a957eac0758596b37a2c074150114ac853782f4ffe1e9254cdd",
+        "methods": [
+          {
+            "address": "0062c1c0",
+            "symbol": "??1FlagStandService@RBX@@UAE@XZ",
+            "size": 115,
+            "exact": true,
+            "verified_targets": {
+              "??_7FlagStandService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8461ec (RTTI .?AVFlagStandService@RBX@@, offset 0x0)",
+              "??_7FlagStandService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8461dc (RTTI .?AVFlagStandService@RBX@@, offset 0x10)",
+              "??_7FlagStandService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8461d4 (RTTI .?AVFlagStandService@RBX@@, offset 0x14)",
+              "??_7FlagStandService@RBX@@6BDebugable@1@@": "0x8461cc (RTTI .?AVFlagStandService@RBX@@, offset 0x20)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8461bc (RTTI .?AVFlagStandService@RBX@@, offset 0x24)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8461ac (RTTI .?AVFlagStandService@RBX@@, offset 0x44)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84619c (RTTI .?AVFlagStandService@RBX@@, offset 0x64)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84618c (RTTI .?AVFlagStandService@RBX@@, offset 0x84)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x84617c (RTTI .?AVFlagStandService@RBX@@, offset 0xa4)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x84616c (RTTI .?AVFlagStandService@RBX@@, offset 0xc4)",
+              "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ": "0x682b40",
+              "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+              "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ": "0x62ba70"
+            },
+            "local_eh": []
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ",
+            "address": "00682b40",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ",
+            "address": "0062ba70",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e34efdfc06ac40728414c2dc8398b1df\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e34efdfc06ac40728414c2dc8398b1df\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e34efdfc06ac40728414c2dc8398b1df\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/GuiDrawImage.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/GuiDrawImage.cpp",
+        "candidate_sha256": "f5a94f05fc55c3ac5aaf9353c07dd1292b7dda238169c413f63db4ad5f8d1842",
+        "before_sha256": "51d1cf4e2147d8133a1d75a0e0cb451523732a55408659a5e8647cf665df82b0",
+        "input_key": "9ab413728faa8ce2d5648190d14998b29485f6bfe0d8198995204d6ea3ce71f2",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [
+          "??$max@M@G3D@@YAMABM0@Z",
+          "??$max@M@std@@YAABMABM0@Z",
+          "??$min@M@G3D@@YAMABM0@Z",
+          "??$min@M@std@@YAABMABM0@Z",
+          "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z",
+          "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@PAVTextureProxyBase@RBX@@@Z",
+          "??0Color4@G3D@@QAE@MMMM@Z",
+          "??0ContentId@RBX@@QAE@ABV01@@Z",
+          "??0Rect2D@G3D@@QAE@ABV01@@Z",
+          "??0Rect2D@G3D@@QAE@XZ",
+          "??0TextureId@RBX@@QAE@ABVContentId@1@@Z",
+          "??0Vector2@G3D@@QAE@ABV01@@Z",
+          "??0Vector2@G3D@@QAE@MM@Z",
+          "??1?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@XZ",
+          "??1ContentId@RBX@@QAE@XZ",
+          "??1TextureId@RBX@@QAE@XZ",
+          "??4Vector2@G3D@@QAEAAV01@ABV01@@Z",
+          "??_H@YGXPAXIHP6EPAX0@Z@Z",
+          "??__E?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A@@YAXXZ",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+          "?decrement@AtomicInt32@G3D@@QAEIXZ",
+          "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+          "?increment@AtomicInt32@G3D@@QAEXXZ",
+          "?max@Vector2@G3D@@QBE?AV12@ABV12@@Z",
+          "?min@Vector2@G3D@@QBE?AV12@ABV12@@Z",
+          "?notNull@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QBE_NXZ",
+          "?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+          "?toRect2D@Rect@RBX@@QBE?AVRect2D@G3D@@XZ",
+          "?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z",
+          "?zeroPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXXZ",
+          "__ehhandler$?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+          "__ehhandler$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "__unwindfunclet$?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z$0",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$0",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$1",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$2",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$3"
+        ],
+        "after_methods": [
+          "??$max@M@G3D@@YAMABM0@Z",
+          "??$max@M@std@@YAABMABM0@Z",
+          "??$min@M@G3D@@YAMABM0@Z",
+          "??$min@M@std@@YAABMABM0@Z",
+          "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z",
+          "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@PAVTextureProxyBase@RBX@@@Z",
+          "??0Color4@G3D@@QAE@MMMM@Z",
+          "??0ContentId@RBX@@QAE@ABV01@@Z",
+          "??0Rect2D@G3D@@QAE@ABV01@@Z",
+          "??0Rect2D@G3D@@QAE@XZ",
+          "??0TextureId@RBX@@QAE@ABVContentId@1@@Z",
+          "??0Vector2@G3D@@QAE@ABV01@@Z",
+          "??0Vector2@G3D@@QAE@MM@Z",
+          "??1?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@XZ",
+          "??1ContentId@RBX@@QAE@XZ",
+          "??1TextureId@RBX@@QAE@XZ",
+          "??4Vector2@G3D@@QAEAAV01@ABV01@@Z",
+          "??_H@YGXPAXIHP6EPAX0@Z@Z",
+          "??__E?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A@@YAXXZ",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+          "?decrement@AtomicInt32@G3D@@QAEIXZ",
+          "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+          "?increment@AtomicInt32@G3D@@QAEXXZ",
+          "?max@Vector2@G3D@@QBE?AV12@ABV12@@Z",
+          "?min@Vector2@G3D@@QBE?AV12@ABV12@@Z",
+          "?notNull@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QBE_NXZ",
+          "?render2d@GuiDrawImage@RBX@@QAEXPAVAdorn@2@_NAAVRect@2@W4WidgetState@Widget@2@@Z@00642de0",
+          "?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+          "?toRect2D@Rect@RBX@@QBE?AVRect2D@G3D@@XZ",
+          "?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z",
+          "?zeroPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXXZ",
+          "__ehhandler$?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+          "__ehhandler$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "__unwindfunclet$?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z$0",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$0",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$1",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$2",
+          "__unwindfunclet$?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$3"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence. Review this method independently of blocked siblings.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?blue@Color3@G3D@@SAABV12@XZ",
+            "address": "00514910",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z",
+            "address": "004f0820",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+            "address": "00642c90",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?yellow@Color3@G3D@@SAABV12@XZ",
+            "address": "00514980",
+            "evidence": "reference-vote",
+            "votes": 2,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+            "address": "007baf10",
+            "evidence": "reference-vote",
+            "votes": 14,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+            "address": "00598fa0",
+            "evidence": "unique-body",
+            "votes": 30,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+            "address": "00642c90",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate."
+        ],
+        "scope": "Reviewed inactive source methods; Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "default",
+        "reference_evidence": [
+          {
+            "address": "00642de0",
+            "symbol": "?render2d@GuiDrawImage@RBX@@QAEXPAVAdorn@2@_NAAVRect@2@W4WidgetState@Widget@2@@Z",
+            "size": 292,
+            "exact": true,
+            "verified_targets": {
+              "__real@3f000000": "0x819bac",
+              "?clear@Color4@G3D@@SAABV12@XZ": "0x7baf10",
+              "?blue@Color3@G3D@@SAABV12@XZ": "0x514910",
+              "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820",
+              "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z": "0x642c90",
+              "?yellow@Color3@G3D@@SAABV12@XZ": "0x514980",
+              "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z": "0x598fa0"
+            },
+            "local_eh": []
+          }
+        ],
+        "numeric_literals": [
+          {
+            "symbol": "__real@3f000000",
+            "address": "00819bac",
+            "bytes": "0000003f"
+          }
+        ],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\16ffacc56a8b48cd8eb0699681de4d49\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\16ffacc56a8b48cd8eb0699681de4d49\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 3614,
+          "classes_after": 3614,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [],
+        "native_input_key": "78074450443e0bcc9a0fd8a0775ea6b0299a28926f5709b9c9e1fa387126b7ab",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "0185dc516ba980205c69915dd7e3a524863a31622e2200960a12e5e08aa36bee",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "55d5463911eb6e02401d0b129e0e9e504fafc467e84a490e5196424e595711ea",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "26bb4c627fda0e1cf3cc571a9e9a84b760e0f8a085dc30d4487d921038f51265",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ],
+    "rebuild/2008-06/native-classes/FlagStandService.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/FlagStandService.cpp",
+        "candidate_sha256": "3b4eedd0a9e19932478cfb1d116ec854162fe7f3e17a8e0f92e0681cf9452b9a",
+        "before_sha256": null,
+        "input_key": "558d5c1a16029e6562ea4d9f736db628671f67641071356f94b6e5e05cb1c4ff",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [],
+        "after_methods": [
+          "??1FlagStandService@RBX@@UAE@XZ@0062c1c0"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence. Review this method independently of blocked siblings.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ",
+            "address": "00682b40",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ",
+            "address": "0062ba70",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate.",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_gameplay.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/AppUnit5BC_2008Creators.cpp"
+        ],
+        "scope": "Reviewed new inactive source unit containing only proven methods and reviewed prelude. Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "default",
+        "reference_evidence": [
+          {
+            "address": "0062c1c0",
+            "symbol": "??1FlagStandService@RBX@@UAE@XZ",
+            "size": 115,
+            "exact": true,
+            "verified_targets": {
+              "??_7FlagStandService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8461ec (RTTI .?AVFlagStandService@RBX@@, offset 0x0)",
+              "??_7FlagStandService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8461dc (RTTI .?AVFlagStandService@RBX@@, offset 0x10)",
+              "??_7FlagStandService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8461d4 (RTTI .?AVFlagStandService@RBX@@, offset 0x14)",
+              "??_7FlagStandService@RBX@@6BDebugable@1@@": "0x8461cc (RTTI .?AVFlagStandService@RBX@@, offset 0x20)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8461bc (RTTI .?AVFlagStandService@RBX@@, offset 0x24)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8461ac (RTTI .?AVFlagStandService@RBX@@, offset 0x44)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84619c (RTTI .?AVFlagStandService@RBX@@, offset 0x64)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84618c (RTTI .?AVFlagStandService@RBX@@, offset 0x84)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x84617c (RTTI .?AVFlagStandService@RBX@@, offset 0xa4)",
+              "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x84616c (RTTI .?AVFlagStandService@RBX@@, offset 0xc4)",
+              "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ": "0x682b40",
+              "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+              "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ": "0x62ba70"
+            },
+            "local_eh": []
+          }
+        ],
+        "numeric_literals": [],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [
+              "_Node#6d401bcad8f266e8992f0cd50a33a7f5c98ec3630f77ed705e6c76d33b67b9a5"
+            ],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\968c9e9cd5cd4a27a7de537c0355ad49\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\968c9e9cd5cd4a27a7de537c0355ad49\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 4705,
+          "classes_after": 4706,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/glue/rbxgs/glue_class_names.cpp",
+          "rebuild/2008-06/native-classes/AppUnit5BC_2008Descriptors.cpp",
+          "rebuild/2008-06/native-classes/CreatableSharedCount2008.cpp",
+          "rebuild/2008-06/native-classes/FlagStand.cpp"
+        ],
+        "native_input_key": "3f14f193ac22249fa413816dd2cba9fbf263a1e64877268d354c1893fd83adcc",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "0185dc516ba980205c69915dd7e3a524863a31622e2200960a12e5e08aa36bee",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "55d5463911eb6e02401d0b129e0e9e504fafc467e84a490e5196424e595711ea",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "26bb4c627fda0e1cf3cc571a9e9a84b760e0f8a085dc30d4487d921038f51265",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ]
+  }
+}

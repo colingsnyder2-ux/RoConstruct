@@ -1,0 +1,72 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?collect@RbxEntity@Ogre@@QAEXPAVCamera@2@PAVLight@2@AAV?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@@Z",
+    "address": "0067e2f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxEntity\\objects\\b6ba095d8f499f34\\candidate.obj": "42a992d76ee315fe371d31e9c3c9fd85c16317feced6ebf64f3a889f5855f6eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lgrbu49o\\owners.json": "88fcdfea6a7f2340557ce55fb94f358e1d22e5668c8c19deb4d9260fbb57f0aa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lgrbu49o\\import-thunk-identities-as-owner.json": "63c502a1402af4d0a2fbf25d9bd06f8fd9d462cb1923c19f79fa35724afc4eaa"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Sort@PAURankedShadow@Ogre@@H@std@@YAXPAURankedShadow@Ogre@@0H@Z",
+   "address": "0067d820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?get@FrameHistory@Ogre@@QAEPAUFrame@12@H@Z",
+   "address": "00678630",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getCoarsestSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@XZ",
+   "address": "00685140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?insert@?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@2@V?$_Vector_const_iterator@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@2@ABQAVShadowCaster@Ogre@@@Z",
+   "address": "004c7c60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?nativeShadowMode@@3HA",
+   "address": "00962f68",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?nativeShadowThrottle@@3_NA",
+   "address": "00962f64",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?push_back@?$vector@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@std@@QAEXABURankedShadow@Ogre@@@Z",
+   "address": "006740e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?push_back@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@QAEXABVPlane@Ogre@@@Z",
+   "address": "0067da70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@QAEXIPAVShadowCaster@Ogre@@@Z",
+   "address": "005e6de0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?collect@RbxEntity@Ogre@@QAEXPAVCamera@2@PAVLight@2@AAV?$vector@PAVShadowCaster@Ogre@@V?$allocator@PAVShadowCaster@Ogre@@@std@@@std@@@Z",
+   "address": "007dd878",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

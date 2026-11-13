@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /Irebuild/2008-06/native-headers/part-embedded
+#undef _RELEASEASSERT
 // 2008-06 native recovery (inactive): v8datamodel/PartInstance.cpp rows of the application range 00598000..0059c000.
 // Built by tests/record_native_app_unit598.py against the committed read-only
 // native-headers/part-embedded/v8datamodel/PartInstance.h (Primitive embedded at +0x228, ahead of native-headers on

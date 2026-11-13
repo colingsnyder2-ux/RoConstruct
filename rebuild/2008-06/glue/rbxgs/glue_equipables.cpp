@@ -50,77 +50,18 @@ namespace RBX
 		}
 	}
 
-	bool Accoutrement::writeUnlocked = false;
 
 	// Accoutrement::setAttachmentUp/setAttachmentRight: native (Accoutrement.cpp)
 
 	// undo upTo_Equipped: drop the head weld, listen for pickups again
-	void Accoutrement::downFrom_Equipped()
-	{
-		dropWeld(weld);
-		connectTouchEvent();
-	}
 
-	void Accoutrement::onAncestorChanged(const AncestorChanged& event)
-	{
-		Instance::onAncestorChanged(event);
-		if (const ServiceProvider* provider = ServiceProvider::findServiceProvider(this))
-			if (Network::Players::backendProcessing(provider, false))
-				setDesiredState(computeDesiredState(), provider);
-	}
 
 	// Tool::setGripUp/setGripRight: native (Tool.cpp)
 
-	void Tool::upTo_HasHandle() { connectTouchEvent(); }
-	void Tool::downFrom_HasHandle() { handleTouched.disconnect(); }
-	void Tool::upTo_InWorkspace() {}
-	void Tool::downFrom_InWorkspace() {}
-	void Tool::upTo_Activated() {}
 	void Tool::downFrom_Activated() {}
 
 	// Tool::downFrom_Equipped: native (Tool.cpp)
 
 	// walk one state at a time toward the desired state, as Accoutrement::setDesiredState
-	void Tool::setDesiredState(ToolState desiredState, const ServiceProvider* serviceProvider)
-	{
-		while (desiredState != backendToolState)
-		{
-			if (backendToolState < desiredState)
-			{
-				switch (backendToolState)
-				{
-				case NOTHING: upTo_HasHandle(); break;
-				case HAS_HANDLE: upTo_InWorkspace(); break;
-				case IN_WORKSPACE: upTo_InCharacter(); break;
-				case IN_CHARACTER: upTo_HasTorso(); break;
-				case HAS_TORSO: upTo_Equipped(); break;
-				case EQUIPPED: upTo_Activated(); break;
-				default: break;
-				}
-				setBackendToolStateNoReplicate(backendToolState + 1);
-			}
-			else
-			{
-				switch (backendToolState)
-				{
-				case ACTIVATED: downFrom_Activated(); break;
-				case EQUIPPED: downFrom_Equipped(); break;
-				case HAS_TORSO: downFrom_HasTorso(); break;
-				case IN_CHARACTER: downFrom_InCharacter(); break;
-				case IN_WORKSPACE: downFrom_InWorkspace(); break;
-				case HAS_HANDLE: downFrom_HasHandle(); break;
-				default: break;
-				}
-				setBackendToolStateNoReplicate(backendToolState - 1);
-			}
-		}
-	}
 
-	void Tool::onAncestorChanged(const AncestorChanged& event)
-	{
-		Instance::onAncestorChanged(event);
-		if (const ServiceProvider* provider = ServiceProvider::findServiceProvider(this))
-			if (Network::Players::backendProcessing(provider, false))
-				setDesiredState(computeDesiredState(), provider);
-	}
 }

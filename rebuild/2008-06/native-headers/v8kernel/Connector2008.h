@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Connector2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src cae16136 | roc native-status --write
 // 2008-06 native RBX::Connector, ContactConnector, PointToPointBreakConnector, NormalBreakConnector, RotateConnector
 // (inactive). Declared under a non-colliding name: the original path v8kernel/Connector.h is reached through the donor
 // v8kernel/KernelData.h <- Kernel.h <- IPipelined.h by every engine unit (Edge, Joint, Contact, Primitive, World ...),
@@ -40,6 +44,9 @@ namespace RBX
 	{
 	public:
 		Connector() {}
+		// KernelData indexes Connector through the proven KernelIndex +0x4
+		// field. The donor declaration is noinline; no layout or vtable effect.
+		__declspec(noinline) int& getKernelIndex() { return kernelIndex; }
 		virtual ~Connector() {}                                         // slot 0 (??_G 006062c0)
 		virtual void computeForce(const float dt, bool throttling) = 0; // slot 1
 		virtual bool canThrottle() const                                // slot 2 (00565950)

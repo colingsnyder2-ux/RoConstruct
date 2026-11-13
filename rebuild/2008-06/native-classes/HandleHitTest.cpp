@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// HandleHitTest | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by Espeon (mixed 2)
+// <<< native-status | src 74b85eae | roc native-status --write
 #include "util/Extents.h"
 #include "util/NormalId.h"
 #include <AppDraw/HitTest.h>

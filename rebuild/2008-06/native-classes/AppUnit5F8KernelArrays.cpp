@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native G3D::Array<T*> instances of v8kernel/Kernel.cpp (inactive). Verified by
 // tests/record_native_app_unit5f8.py (built with /fp:fast like the kernel-stages units; without it resize is 264/256 B).
 // Explicit member instantiations only: the element types are the kernel's pointer arrays, identified by their callers

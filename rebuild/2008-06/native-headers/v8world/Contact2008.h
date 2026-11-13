@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Contact2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d6d88c89 | roc native-status --write
 // 2008-06 native RBX::Contact, BallBallContact, BallBlockContact (inactive). Declared under a non-colliding name:
 // the original path v8world/Contact.h is reached through the donor World.h / CollisionStage.h and the maintainer
 // engine-world World.h; see the proposal in tests/record_native_world_shapes.py. The bases Edge / IPipelined come
@@ -26,6 +30,7 @@
 #include "v8world/Edge.h"
 
 struct NativeWorldShapesLayout;
+namespace G3D { class Vector3; class Vector3int16; }
 
 namespace RBX
 {
@@ -112,6 +117,8 @@ namespace RBX
 
 	private:
 		ContactConnector* ballBlockConnector;           // +0x34
+		bool computeIsColliding(short& onBorder, G3D::Vector3int16& clip,
+			G3D::Vector3& projectionInBlock, float overlapIgnored); // 00607020
 
 	private:
 		virtual void deleteAllConnectors()              // slot 5 (0060cb50, folded with BallBallContact's)

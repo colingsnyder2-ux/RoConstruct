@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ForceField | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 99bd9dd2 | roc native-status --write
 // 2008-06 native RBX::ForceField (inactive). No donor header: every base, field and virtual below is read from the
 // 2008-06 binary:
 //   RTTI       vtable 0084682c .?AVForceField@RBX@@ -> DescribedCreatable<ForceField, Instance, sForceField> (name

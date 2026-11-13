@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??__FedgeTable@G3D@@YAXXZ",
+    "address": "00801a90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\5238985601500cfb\\candidate.obj": "ffaa1425dbb1d1c65323e36e6d5ba5c808aaa3063758480cf7fad1e3a5260466",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1fx9qttq\\owners.json": "60b3fbe6ebe6fb57f7708366d7699cc42fc9b862f1a7cbe90dfbe186a7097d14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1fx9qttq\\import-thunk-identities-as-owner.json": "62ceec523175691f0e162c93bdacfd83dd8ee9bcf38bd45bb7154f354f5a0c69"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@UAEPAXI@Z",
+   "address": "007b9600",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?freeMemory@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@AAEXXZ",
+   "address": "007b9550",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

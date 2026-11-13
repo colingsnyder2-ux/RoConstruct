@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMemberTreeView | 2008-06 | 6 byte-exact, inactive (not link-selected)
+// 6/8 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src f17710cf | roc native-status --write
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"
@@ -170,3 +174,6 @@ void CMemberTreeView::showClass(const RBX::Reflection::ClassDescriptor* descript
     sort.lpfnCompare = CClassTreeView::compareItems;
     GetTreeCtrl().SortChildrenCB(&sort);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CMemberTreeView *>;

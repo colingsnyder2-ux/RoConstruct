@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Sky | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 24bc8105 | roc native-status --write
 // 2008-06 native RBX::Sky (inactive). Shape after the donor tools/rbxgs Sky.h; every field, virtual and
 // descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 0083fc0c .?AVSky@RBX@@ -> DescribedCreatable<Sky, Instance, sSky> (21 bases, no other

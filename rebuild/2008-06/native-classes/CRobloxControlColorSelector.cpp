@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxControlColorSelector | 2008-06 | 10 byte-exact, inactive (not link-selected)
+// 10/13 mapped addresses byte-exact | 3 unproved | no mapped strings | by tester (+5) (mixed 5)
+// <<< native-status | src 79ad607a | roc native-status --write
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"
 #include <G3D/Color3uint8.h>
@@ -128,3 +132,8 @@ void CRobloxControlColorSelector::OnLButtonUp(CPoint point)
     if (GetEnabled() && m_pParent->GetPosition() == xtpBarPopup)
         OnClick(TRUE, point);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<CRobloxControlColorSelector::CColorInfo> >;
+template class std::_Vector_const_iterator<CRobloxControlColorSelector::CColorInfo,std::allocator<CRobloxControlColorSelector::CColorInfo> >;
+template class std::_Vector_iterator<CRobloxControlColorSelector::CColorInfo,std::allocator<CRobloxControlColorSelector::CColorInfo> >;

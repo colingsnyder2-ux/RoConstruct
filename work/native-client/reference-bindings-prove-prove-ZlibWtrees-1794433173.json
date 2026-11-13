@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_build_tree",
+    "address": "007a54a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ZlibWtrees\\objects\\f25e6f2ed7cac1d6\\candidate.obj": "38a94d5cc2ae69346846e3687104ee620b4b997602edbc7389ccec2398ad7a4a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ghkt30ey\\owners.json": "a52765d148fc325a1599b899848e7bb1f48a888d770f33bf730096b976c58dfa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ghkt30ey\\import-thunk-identities-as-owner.json": "7c1e94cd9ec20e0dd0ab6417c53cbc918581a1037ad0028de42e19bed7f19857"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_gen_bitlen",
+   "address": "007a42e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_gen_codes",
+   "address": "007a5420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_pqdownheap",
+   "address": "007a4210",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

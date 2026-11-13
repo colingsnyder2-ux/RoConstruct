@@ -1,0 +1,63 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_png_do_read_interlace",
+    "address": "0052c5f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png6pngrutil\\objects\\8ca000a7ebb9de6c\\candidate.obj": "1bf662ad58b62456c749fbb1134c2c1274d425c9c97c50a90bb4ee00e20b0e17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w8tvdx45\\owners.json": "5e3d1a877c144615567dd3faeaf82e99711c0a3e5f9005ee16f9cfdf8848ad23",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w8tvdx45\\import-thunk-identities-as-owner.json": "2aa20f5ddad4c7e3dc072da33c7abe9e87ea8a841c670656dc76a2580fb58889"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_read_start_row",
+    "address": "0052cbe0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png6pngrutil\\objects\\8ca000a7ebb9de6c\\candidate.obj": "1bf662ad58b62456c749fbb1134c2c1274d425c9c97c50a90bb4ee00e20b0e17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w8tvdx45\\owners.json": "5e3d1a877c144615567dd3faeaf82e99711c0a3e5f9005ee16f9cfdf8848ad23",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w8tvdx45\\import-thunk-identities-as-owner.json": "2aa20f5ddad4c7e3dc072da33c7abe9e87ea8a841c670656dc76a2580fb58889"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_png_init_read_transformations",
+   "address": "00523860",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_memset_check",
+   "address": "0052a430",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_pass_inc",
+   "address": "00829508",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_pass_start",
+   "address": "008294ec",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_pass_yinc",
+   "address": "00829540",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_pass_ystart",
+   "address": "00829524",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

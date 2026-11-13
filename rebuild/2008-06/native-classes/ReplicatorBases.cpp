@@ -6,6 +6,10 @@
 // string dictionary and profiler types); this unit instantiates the base chain explicitly instead of through
 // Replicator's constructor: these come out of this unit as COMDATs, a codegen analog, not their original unit.
 // Verified by tests/record_native_replicator.py.
+// >>> native-status (generated) -- do not edit >>>
+// ReplicatorBases | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 093fbeaf | roc native-status --write
 #include "Network/IdSerializer.h"
 
 namespace RBX
@@ -27,3 +31,11 @@ namespace RBX
 
 	template class DescribedNonCreatable<Network::Replicator, Network::IdSerializer, Network::sReplicator>;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Tree<std::_Tmap_traits<RBX::Guid::Data,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem> >,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const ,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem> > > >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,unsigned char,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,unsigned char> >,0> >;
+template class std::_Vector_val<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem> >;
+template class std::allocator<RBX::Network::IdSerializer::WaitItem>;
+template class std::map<RBX::Guid::Data,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem> >,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const ,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem> > > > >;
+template class std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem> >;

@@ -1,0 +1,313 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CAppearanceSetFlat@CXTPTabPaintManager@@QAE@XZ",
+    "address": "00728590"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DrawSplitter@CXTPDockingPanePaintManager@@UAEXAAVCDC@@PAVCXTPDockingPaneSplitterWnd@@@Z",
+    "address": "00763ae0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RefreshMetrics@COfficePanelColorSet@CXTPDockingPaneOfficeTheme@XTPDockingPanePaintThemes@@UAEXXZ",
+    "address": "00762680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DrawPane@CXTPDockingPaneVisioTheme@XTPDockingPanePaintThemes@@UAEXAAVCDC@@PAVCXTPDockingPaneTabbedContainer@@VCRect@@@Z",
+    "address": "00764e20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CAppearanceSetPropertyPageFlat@CXTPTabPaintManager@@QAE@XZ",
+    "address": "00728660"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTPDockingPaneShortcutBar2003Theme@XTPDockingPanePaintThemes@@UAE@XZ",
+    "address": "00767680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPDockingPaneShortcutBar2003Theme@XTPDockingPanePaintThemes@@QAE@XZ",
+    "address": "00768540"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPanePaintManager\\objects\\01adecc7e7800ad8\\candidate.obj": "00dab71f0593cb683a3ae9f4f8782720194ca04acafaa460181585733db0e934",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\owners.json": "efe835e28baf16e63a5c6e849bf745096f5dba5a0ab138e43f210036db2afe7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wn5mu5x1\\import-thunk-identities-as-owner.json": "7095e09205cb017a95dcb74e75d54d53587177acdeedb4ab043f218edb721695"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CAppearanceSet@CXTPTabPaintManager@@QAE@XZ",
+   "address": "00781280",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CXTPDockingPaneOffice2003Theme@XTPDockingPanePaintThemes@@QAE@XZ",
+   "address": "007683a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1CXTPDockingPaneOffice2003Theme@XTPDockingPanePaintThemes@@UAE@XZ",
+   "address": "00767220",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECAppearanceSetFlat@CXTPTabPaintManager@@UAEPAXI@Z",
+   "address": "0077da70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECAppearanceSetPropertyPageFlat@CXTPTabPaintManager@@UAEPAXI@Z",
+   "address": "0077da70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPDockingPaneShortcutBar2003Theme@XTPDockingPanePaintThemes@@UAEPAXI@Z",
+   "address": "00768570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AdjustCaptionRect@CXTPDockingPanePaintManager@@UAEXPBVCXTPDockingPaneTabbedContainer@@AAVCRect@@@Z",
+   "address": "00762620",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AdjustClientRect@CAppearanceSet@CXTPTabPaintManager@@UAEXPAVCXTPTabManager@@AAVCRect@@@Z",
+   "address": "007818f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AdjustClientRect@CXTPDockingPanePaintManager@@UAEXPAVCXTPDockingPaneTabbedContainer@@AAVCRect@@H@Z",
+   "address": "007639c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Draw3dRect@CDC@@QAEXHHHHKK@Z",
+   "address": "007bc862",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCaption@CXTPDockingPaneOffice2003Theme@XTPDockingPanePaintThemes@@UAEXAAVCDC@@PAVCXTPDockingPaneTabbedContainer@@VCRect@@@Z",
+   "address": "00765b30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCaptionButton@CXTPDockingPanePaintManager@@UAEXPAVCDC@@PAVCXTPDockingPaneCaptionButton@@K@Z",
+   "address": "00763380",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCaptionButtonEntry@CXTPDockingPanePaintManager@@MAEXPAVCDC@@PAVCXTPDockingPaneCaptionButton@@VCPoint@@K@Z",
+   "address": "007646e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCaptionButtons@CXTPDockingPanePaintManager@@UAEXPAVCDC@@PAVCXTPDockingPaneCaptionButtons@@AAVCRect@@KHHH@Z",
+   "address": "00767780",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCaptionPart@CXTPDockingPaneOffice2003Theme@XTPDockingPanePaintThemes@@MAEXAAVCDC@@PAVCXTPDockingPaneBase@@VCRect@@ABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@HH@Z",
+   "address": "00767470",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawFloatingFrame@CXTPDockingPaneOffice2003Theme@XTPDockingPanePaintThemes@@UAEXAAVCDC@@PAVCXTPDockingPaneMiniWnd@@VCRect@@@Z",
+   "address": "007658c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawPane@CXTPDockingPanePaintManager@@UAEXAAVCDC@@PAVCXTPDockingPaneTabbedContainer@@VCRect@@@Z",
+   "address": "007638d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawSingleButton@CAppearanceSetFlat@CXTPTabPaintManager@@UAEXPAVCDC@@PAVCXTPTabManagerItem@@@Z",
+   "address": "00784170",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawSingleButton@CAppearanceSetPropertyPageFlat@CXTPTabPaintManager@@UAEXPAVCDC@@PAVCXTPTabManagerItem@@@Z",
+   "address": "00784460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawTabControl@CAppearanceSet@CXTPTabPaintManager@@UAEXPAVCXTPTabManager@@PAVCDC@@VCRect@@@Z",
+   "address": "007285e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawWorkspacePart@CAppearanceSet@CXTPTabPaintManager@@UAEXPAVCDC@@PAUtagRECT@@W4XTPTabWorkspacePart@@@Z",
+   "address": "00780e50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillCaptionPart@CXTPDockingPaneOfficeTheme@XTPDockingPanePaintThemes@@MAEKAAVCDC@@PAVCXTPDockingPaneBase@@VCRect@@HH@Z",
+   "address": "00764160",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillSolidRect@CDC@@QAEXHHHHK@Z",
+   "address": "007bc040",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillTabControl@CAppearanceSetFlat@CXTPTabPaintManager@@UAE?AVCRect@@PAVCXTPTabManager@@PAVCDC@@V3@@Z",
+   "address": "007842b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAppearance@CXTPTabPaintManager@@QBE?AW4XTPTabAppearanceStyle@@XZ",
+   "address": "007110c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetButtonDrawRect@CAppearanceSet@CXTPTabPaintManager@@UAE?AVCRect@@PBVCXTPTabManagerItem@@@Z",
+   "address": "00781370",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetButtonHeight@CAppearanceSet@CXTPTabPaintManager@@UAEHPBVCXTPTabManager@@@Z",
+   "address": "007813b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetButtonLength@CAppearanceSet@CXTPTabPaintManager@@UAEHPAVCDC@@PAVCXTPTabManagerItem@@@Z",
+   "address": "00780d00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCaptionGripperRect@CXTPDockingPaneShortcutBar2003Theme@XTPDockingPanePaintThemes@@UAE?AVCRect@@PBVCXTPDockingPaneTabbedContainer@@@Z",
+   "address": "00763360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetClientMargin@CAppearanceSet@CXTPTabPaintManager@@UAE?AVCRect@@XZ",
+   "address": "00780e20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetClientRect@CAppearanceSet@CXTPTabPaintManager@@UAE?AVCRect@@V3@PAVCXTPTabManager@@@Z",
+   "address": "00780d50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDefaultColorSet@CAppearanceSetFlat@CXTPTabPaintManager@@UAE?AW4XTPTabColorStyle@@XZ",
+   "address": "0077d810",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDefaultColorSet@CAppearanceSetPropertyPageFlat@CXTPTabPaintManager@@UAE?AW4XTPTabColorStyle@@XZ",
+   "address": "007286a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetHeaderMargin@CAppearanceSet@CXTPTabPaintManager@@UAE?AVCRect@@XZ",
+   "address": "007285c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetHeaderRect@CAppearanceSet@CXTPTabPaintManager@@UAE?AVCRect@@V3@PAVCXTPTabManager@@@Z",
+   "address": "00785970",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSupportedColorSets@CAppearanceSetFlat@CXTPTabPaintManager@@UAEHXZ",
+   "address": "0077d800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetXtremeColor@CXTPDockingPanePaintManager@@QAEKI@Z",
+   "address": "007625d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsHorizontal@CXTPDockingPaneSplitterWnd@@QBEHXZ",
+   "address": "00420930",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsTitleVisible@CXTPDockingPaneTabbedContainer@@QBEHXZ",
+   "address": "0075da80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Pixel@CXTPDockingPanePaintManager@@QAEXPAVCDC@@HHH@Z",
+   "address": "00763340",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CAppearanceSet@CXTPTabPaintManager@@UAEXXZ",
+   "address": "007812c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CColorSetVisualStudio@CXTPTabPaintManager@@UAEXXZ",
+   "address": "0079c9f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CXTPDockingPaneShortcutBar2003Theme@XTPDockingPanePaintThemes@@UAEXXZ",
+   "address": "007666e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RepositionTabControl@CAppearanceSet@CXTPTabPaintManager@@UAEXPAVCXTPTabManager@@PAVCDC@@VCRect@@@Z",
+   "address": "00728620",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?XTPFillFramePartRect@@YAXPAVCDC@@VCRect@@PAVCWnd@@2ABVCXTPPaintManagerColorGradient@@H@Z",
+   "address": "00762820",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 7,
+ "owners_bound": 7
+}

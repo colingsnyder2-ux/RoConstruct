@@ -38,8 +38,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574creators.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit574Creators.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574creators.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit574Creators.cpp"
     ],
     "notifiers": [
       "/nologo",
@@ -77,8 +77,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574notifiers.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit574Notifiers.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574notifiers.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit574Notifiers.cpp"
     ],
     "lock": [
       "/nologo",
@@ -116,8 +116,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574lock.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/DataModelLock.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574lock.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelLock.cpp"
     ],
     "textdisplay": [
       "/nologo",
@@ -155,8 +155,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574textdisplay.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit574TextDisplay.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574textdisplay.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit574TextDisplay.cpp"
     ],
     "guiitem": [
       "/nologo",
@@ -194,8 +194,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574guiitem.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/GuiItem.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574guiitem.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\GuiItem.cpp"
     ],
     "timing": [
       "/nologo",
@@ -233,8 +233,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574timing.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/DataModelTiming.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574timing.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelTiming.cpp"
     ],
     "duty": [
       "/nologo",
@@ -272,36 +272,36 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit574/AppUnit574duty.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/DataModelDutyCycle.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574duty.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelDutyCycle.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_app_unit574.py": "be91cbccc3201506f05ba52e11ef760db592b4f9a41bf16385432bb6630be09f",
-    "rebuild/2008-06/native-classes/AppUnit574Creators.cpp": "f90f93f4991924c8d02957c86f4fe41acd9d90959577a89f674be663f2b155f9",
-    "rebuild/2008-06/native-classes/AppUnit574Notifiers.cpp": "0dc98b34faced85ed2f23f3b152e1b05ef95dda383de7ea447e41129d39f867d",
-    "rebuild/2008-06/native-classes/DataModelLock.cpp": "8edb2527244a8ebd13e9f2f78d48233e162473862344f80b7722fd1c5633814c",
-    "rebuild/2008-06/native-classes/AppUnit574TextDisplay.cpp": "6e612f9449c2978b89311f2dabb267e986ada4202e4c6d23c13b961e70743f78",
-    "rebuild/2008-06/native-classes/GuiItem.cpp": "dd633a53ad023d5fc2089cbd53a56ade9f5795878f94c4f6b4e6fa85820c553c",
-    "rebuild/2008-06/native-classes/DataModelTiming.cpp": "1b1c9c9cc1455b4454c4c8210f873bdb4121dff4649f25640f241dd90db2e588",
-    "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp": "f952e7cd6e75cb73bae382de7e0b8d9d1f5472b402bf87881a8cef44cfc70ee9",
-    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2",
-    "rebuild/2008-06/native-headers/util/Events.h": "39a843b3c01f563b19f81d44bf218ee2e9dfe6aed61212e43962617ab6bd82b3",
-    "rebuild/2008-06/native-headers/v8tree/Service.h": "946890300c9996b74bc95ae5473f51f8a11ef09902a0a8a55bd1ffb45a36cd22",
-    "rebuild/2008-06/native-headers/LocalBackpack2008/LocalBackpack2008.h": "ebff9c2fc742b38a44b6720dfadd1c60d0686c42cf19cda447ec32adef3ce124",
-    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "5afc998f6d79228204df3165543daa9f840fd1b52932608164f74adb4513527a",
-    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "6f95760f4775e0eb218b8f78e837f3a628249dec45346f382cee7eba86ec7d86",
-    "rebuild/2008-06/native-headers/gui/Gui.h": "7e3740b3cb478c2f46b1f57e43b96de9666d42156c1e0346d3140ada8b9bb5ba",
-    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "f6c39ef2034fcfd20b2edcae75355c71e5539a2be0db3ac80673911e67ad95e5"
+    "rebuild/2008-06/tests/record_native_app_unit574.py": "4674acc1f03641ba234bfb2cb867044b0dbc1f5c4620ca6ee9e3403bac47b90b",
+    "rebuild/2008-06/native-classes/AppUnit574Creators.cpp": "78da10471303fcd40c15574c765076df95a346daf79ace7f12983f9a299664f7",
+    "rebuild/2008-06/native-classes/AppUnit574Notifiers.cpp": "1a9172ca9ee7a559806b5bfb1028cfb5c1275bc47fcdba5358f7bc63b867c612",
+    "rebuild/2008-06/native-classes/DataModelLock.cpp": "ca99707455510aebc7843be91870beeea325b188c3726f32b305fa04c5fe5b00",
+    "rebuild/2008-06/native-classes/AppUnit574TextDisplay.cpp": "c2b4e0ca677e43ee9f50c58f49275e8a000db887b8ce99c60a68c8f696488276",
+    "rebuild/2008-06/native-classes/GuiItem.cpp": "b2096283a63ec4ae4e9da32b0ed2d83777a08de6ec9caa9f658de3ef7458d5ed",
+    "rebuild/2008-06/native-classes/DataModelTiming.cpp": "4e109bfb16e04191462fc0a6e159bbe7d2b67ba2dd5eefdd44c9cb4034c86b9c",
+    "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp": "d31fd9993fa6cf9d9ac8846c42c8fd50db73e966b192ae7c07d259e664ef19cb",
+    "rebuild/2008-06/native-headers/util/Object.h": "798c5489d36aacc90d8b95fcd3c3f8a42d30034f4ae1239a7f535176e12274a3",
+    "rebuild/2008-06/native-headers/util/Events.h": "1d598e69002f04a8e58e8f688f4f6efbc4fa6e73500fb6f83dc004fda32ee5d7",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "0d0af7b4fcfa53af0684c84ac380d6114bbd8c6f1567064b6075a5b21277ae4c",
+    "rebuild/2008-06/native-headers/LocalBackpack2008/LocalBackpack2008.h": "a42f61b99227f6c45410c643fa053d3cf39f67748d71726cebc9cc796e7a10dd",
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "8b6a5268449fe8c387a39ee60a637b19270748369dde3f7934b919cc07b0e690",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "eec0bae063ddad862595ffd03dd5db58c5793e73381e882f11c9f212fd4e8f11",
+    "rebuild/2008-06/native-headers/gui/Gui.h": "754a8312e436223f51f36c2a120557df21a5c0e5631fcff8393aa77f6d381d62",
+    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "5d96810ac26dd996a9e2ddaf7dabeafcbf38afdb0406c47331a70663bfc89d08"
   },
   "objects": {
-    "creators": "58a438daf9a18c8ed425787ef1cd1d24ff3841341de4ac5aa47e570022295eaf",
-    "notifiers": "9ddaa22187dc66e3c545891cb99a00fe75cf1cdf9111656b4071681b9de1b7f9",
-    "lock": "9931e4b5048350a9af9ba5b45a3e9d9159564319e572d12d7b6a445966172b65",
-    "textdisplay": "4df07ea01e78c8add69fd909ae70a7aa138b1f5d267d5e7cd91f452532e9b871",
-    "guiitem": "6a4aa2c60a248b2a778129477ad28b49425f9b1989eebdae56871b3fcde70606",
-    "timing": "771795158b16c816f57e5c773e4ab390d0ded653854db2048265536ea054fa27",
-    "duty": "a3b644fd5876458a8172f6b4223806905575258052b536549fb088699ea7f4fd"
+    "creators": "4f21ad13cfcda475275ab2c5308cba18b9516b4d6cc0f87ecc4395008dbb4510",
+    "notifiers": "263e57fef8d54ebac83c889b1cabb1eebb2059f8b77898f042f3dd361743037d",
+    "lock": "54b473b6fd2a1ce2b3ededc62196230003f3cd80660e5b8b676a0a65749e73c0",
+    "textdisplay": "22d60ba312c1999c64d74f0f9c03e517b721d0ab7957af8d0f1ce16a9c8f0cc0",
+    "guiitem": "85183786e33a7a30cd599be72603e96d59bb77e203d2660b4b731090ddf80821",
+    "timing": "c834e8615ea9c25b7ae51c2773dea4437b01faec0d85e9356a24da0e5daa574e",
+    "duty": "d0559890f7cf779bd0c6ef93ddf17fad6747bd1caa91e6f29de8b3aec919f320"
   },
   "layout": {
     "Workspace": "sizeof 0x45c (malloc in create<Workspace> 0x576ff0; the compiled push is exact against the native header layout)",
@@ -309,7 +309,7 @@
     "LocalBackpack": "sizeof 0x1ac (malloc in create<LocalBackpack> 0x5771b0; the compiled push is exact against the native header layout)"
   },
   "unit_map": {
-    "rbx gui/GUI.cpp tail 0x574000..0x574f0c (unit 0x573130..0x574f0c)": "Continues the GUI unit app-unit570 maps from 0x573130 (Rect::pointInRect, GuiItem colour statics, GuiItem / RelativePanel / TopMenuBar / GuiRoot members). In range: TopMenuBar::render2d 0x574050 and process 0x574bf0 (evidence names), the ICF-shared Widget ??_E / ??_G thunks 0x574130..0x574150 (widget-family support rows), UnifiedWidget members 0x574170..0x574400 and its process chain 0x5746e0..0x574e70, the TextDisplay block (constructor 0x5744a0 storing the .?AVTextDisplay@RBX@@ vtables, getFontSize 0x574570, getLabel 0x574580, eight ??_E thunks 0x5745b0..0x574620 jumping to ??_G 0x574680, ~TextDisplay 0x574630 whose extent also holds ??_G), and GuiItem::onDescendentRemoving / processNonFocus / process 0x5746a0 / 0x574980 / 0x574b10 (evidence names; committed native-classes/GuiItem.cpp). Built here: the TextDisplay rows (own source) and the three GuiItem rows (owner source, compiled unchanged).",
+    "rbx gui/GUI.cpp tail 0x574000..0x574f0c (unit 0x573130..0x574f0c)": "Continues the GUI unit app-unit570 maps from 0x573130 (Rect::pointInRect, GuiItem colour statics, GuiItem / RelativePanel / TopMenuBar / GuiRoot members). In range: TopMenuBar::render2d 0x574050 and process 0x574bf0 (evidence names), the ICF-shared Widget ??_E / ??_G thunks 0x574130..0x574150 (widget-family support rows), UnifiedWidget members 0x574170..0x574400 and its process chain 0x5746e0..0x574e70, the TextDisplay block (constructor 0x5744a0 storing the .?AVTextDisplay@RBX@@ vtables, getFontSize 0x574570, getLabel 0x574580, eight ??_E thunks 0x5745b0..0x574620 jumping to ??_G 0x574680, ~TextDisplay 0x574630 and ??_G), and GuiItem::onDescendentRemoving / processNonFocus / process 0x5746a0 / 0x574980 / 0x574b10 (evidence names; committed native-classes/GuiItem.cpp). Built here: the TextDisplay rows (own source) and the three GuiItem rows (owner source, compiled unchanged).",
     "rbx v8datamodel/DataModel.cpp 0x574f10..0x578000 (unit 0x574f10..0x57c1af)": "DataModel::setUiMessage 0x574f10 opens the unit (app-unit570 map), followed by DataModel members (doHttpGet / doHttpPost, close \"Couldn't find Exit Verb\", stats text \"%i %%  %s (%.3gfps)\", onChildAdded \"NetworkClient\", onEvent, key handling \"CameraPanLeft\", evaluate \"SimCpu\" / \"GfxCpu\", getGameTime / getFrameRate / getDutyCycle), then the template COMDAT run: Notifier raise instances (ServiceProvider/Closing 0x5768b0 / 0x576390, Workspace/DrawChanged 0x576940 / 0x576450), Name::declare thunks (local-backpack / hopper-family count 0x5754e0 / 0x575550 / 0x5755c0 / 0x576600..0x576620), the shared_count (creatable-shared-count) / shared_ptr / create instances of DataModel, Workspace, GuiRoot and LocalBackpack, doGetClassIndex / callDoGetClassIndex<LocalBackpack>, DataModel::Lock::doLock / ~Lock, shared_count<recursive_mutex>, and the boost bind / function instances of rbx_httpGet / rbx_httpPost / the message binds. Built here: the Creatable / ServiceProvider / Notifier instances (own sources), ~Lock and the timing members (owner sources, compiled unchanged). DataModel's other members need declarations the core v8datamodel/DataModel.h lacks.",
     "library code": "No separately compiled library unit starts in the range. boost::_bi / function / checked_delete / shared_count<recursive_mutex> rows are boost header instances inside the DataModel unit; not recovered.",
     "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range."
@@ -318,18 +318,14 @@
     "0x574000..0x574f10 rbx gui/GUI.cpp tail (unit begins at 0x573130, ends at 0x574f0c)",
     "0x574f10..0x578000 rbx v8datamodel/DataModel.cpp (begins at 0x574f10, continues past 0x578000 to 0x57c1af)"
   ],
-  "range_functions": 130,
+  "range_functions": 127,
   "range_rows_counted_by_other_receipts": [
-    "005754e0 counted by local-backpack-working.json",
-    "00575550 counted by local-backpack-working.json",
+    "005744a0 counted by draft-publication-4874654eaaa04306a15bd77c5ff398b2.json",
+    "00574570 counted by draft-text-display-font-independent.json",
+    "00574580 counted by draft-publication-6a91a406d2554237a6db4ce177e6d299.json",
+    "00574bf0 counted by draft-publication-a8f44b27265d440580fcd9067eacc7c2.json",
     "005755c0 counted by hopper-family-working.json",
-    "00576600 counted by local-backpack-working.json",
-    "00576610 counted by local-backpack-working.json",
-    "00576620 counted by hopper-family-working.json",
-    "00576630 counted by creatable-shared-count-working.json",
-    "005766c0 counted by creatable-shared-count-working.json",
-    "00576750 counted by creatable-shared-count-working.json",
-    "00576810 counted by creatable-shared-count-working.json"
+    "00576620 counted by hopper-family-working.json"
   ],
   "range_rows_open": [
     "0x574050 (open)",
@@ -341,11 +337,9 @@
     "0x574300 (open)",
     "0x574330 (open)",
     "0x574400 (open)",
-    "0x574630 (open)",
     "0x5746e0 (open)",
     "0x574760 (open)",
     "0x574860 (open)",
-    "0x574bf0 (open)",
     "0x574cb0 (open)",
     "0x574de0 (open)",
     "0x574e70 (open)",
@@ -365,6 +359,8 @@
     "0x575300 (open)",
     "0x575400 (open)",
     "0x575460 (open)",
+    "0x5754e0 (open)",
+    "0x575550 (open)",
     "0x575690 (open)",
     "0x5756e0 (open)",
     "0x575700 (open)",
@@ -375,23 +371,23 @@
     "0x575ba0 (open)",
     "0x575d90 (open)",
     "0x576390 (open)",
-    "0x5763ce (open)",
-    "0x5763e1 (open)",
-    "0x576450 (open)",
-    "0x57648e (open)",
-    "0x5764a1 (open)",
     "0x576510 (open)",
     "0x576570 (open)",
+    "0x576600 (open)",
+    "0x576610 (open)",
+    "0x576630 (open)",
+    "0x5766c0 (open)",
+    "0x576750 (open)",
     "0x5767e0 (open)",
+    "0x576810 (open)",
     "0x5768a0 (open)",
     "0x5768b0 (open)",
     "0x5769d0 (open)",
     "0x576a70 (open)",
     "0x576c80 (open)",
-    "0x576cee (open)",
     "0x576dc0 (open)",
     "0x576e50 (open)",
-    "0x576f00 (open)",
+    "0x576f80 (open)",
     "0x576f90 (open)",
     "0x577110 (open)",
     "0x577230 (open)",
@@ -442,16 +438,10 @@
       "0x574330",
       "0x574400"
     ],
-    "~TextDisplay (built: the compiled 80-byte ~TextDisplay and 31-byte ??_G are exact as prefix / tail of this 111-byte extent; BOUNDS: ??_G starts at 0x574680)": [
-      "0x574630"
-    ],
     "UnifiedWidget process helpers (callers 0x574de0 / 0x574e70; Rect::pointInRect 0x573130)": [
       "0x5746e0",
       "0x574760",
       "0x574860"
-    ],
-    "TopMenuBar::process (evidence name): calls the out-of-line Rect::pointInRect 0x573130 (util/Rect.h inline; widget-family proposal)": [
-      "0x574bf0"
     ],
     "UnifiedWidget process chain (0x574e70 called by 0x64ead0)": [
       "0x574cb0",
@@ -479,6 +469,8 @@
       "0x575300",
       "0x575400",
       "0x575460",
+      "0x5754e0",
+      "0x575550",
       "0x575690",
       "0x5756e0"
     ],
@@ -493,20 +485,27 @@
       "0x575ba0",
       "0x575d90"
     ],
-    "Notifier raise(event, listener) bodies: ServiceProvider/Closing 0x576390 and Workspace/DrawChanged 0x576450 (built: exact only when joined with the catch funclets 0x57648e / 0x5764a1; BOUNDS) and their funclet pieces": [
-      "0x576390",
-      "0x5763ce",
-      "0x5763e1",
-      "0x576450",
-      "0x57648e",
-      "0x5764a1"
+    "Notifier raise(event, listener) bodies: ServiceProvider/Closing 0x576390 and Workspace/DrawChanged 0x576450 (built exact with the repaired complete extent)": [
+      "0x576390"
     ],
     "boost::_bi::storage2 copy / value constructors (evidence names)": [
       "0x576510",
       "0x576570"
     ],
-    "boost::checked_delete<recursive_mutex> (dtor 0x594cb0; boost header instance)": [
+    "Name::declare thunks (local-backpack / hopper-family; counted by owner receipts when present)": [
+      "0x576600",
+      "0x576610"
+    ],
+    "boost::detail::shared_count constructors for DataModel / Workspace / GuiRoot": [
+      "0x576630",
+      "0x5766c0",
+      "0x576750"
+    ],
+    "boost::checked_delete<recursive_mutex> and small thunks": [
       "0x5767e0"
+    ],
+    "boost::detail::shared_count constructor for LocalBackpack": [
+      "0x576810"
     ],
     "ICF jmp to the storage2 destructor 0x575700": [
       "0x5768a0"
@@ -521,15 +520,14 @@
       "0x576a70"
     ],
     "shared_count(recursive_mutex*) and its catch piece (boost header instance, sp_counted_impl_p<recursive_mutex> vtable 0x82fdac)": [
-      "0x576c80",
-      "0x576cee"
+      "0x576c80"
     ],
     "boost::_bi list1 / list2 operator() of the rbx_httpGet / rbx_httpPost binds": [
       "0x576dc0",
       "0x576e50"
     ],
-    "DataModel::Lock::doLock (built from DataModelLock.cpp: the compiled 128-byte body is exact as the prefix of this 136-byte extent; BOUNDS: 0x576f80 \"add ecx, 4; jmp 0x575700\" is a separate thunk)": [
-      "0x576f00"
+    "DataModel::Lock::doLock and following thunk (repaired separate extents; doLock built exact)": [
+      "0x576f80"
     ],
     "DataModel helper (caller 0x578c20, RunService transition path)": [
       "0x576f90"
@@ -613,7 +611,7 @@
         "exact": true,
         "build": "creators",
         "verified_targets": {
-          "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
+          "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0 (helper body exact at the bound address (not counted))"
         },
         "local_eh": [
           "__ehhandler$??$?0VWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWorkspace@RBX@@@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -627,7 +625,7 @@
         "exact": true,
         "build": "creators",
         "verified_targets": {
-          "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
+          "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750 (helper body exact at the bound address (not counted))"
         },
         "local_eh": [
           "__ehhandler$??$?0VGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGuiRoot@RBX@@@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -641,7 +639,7 @@
         "exact": true,
         "build": "creators",
         "verified_targets": {
-          "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
+          "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810 (helper body exact at the bound address (not counted))"
         },
         "local_eh": [
           "__ehhandler$??$?0VLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpack@RBX@@@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -698,6 +696,26 @@
     ],
     "notifiers": [
       {
+        "address": "00576450",
+        "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "build": "notifiers",
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external (evidence name))",
+          "??_C@_0CA@IECMHPBD@Exception?5caught?5in?5onEvent?4?5?$CFs?$AA@": "0x80b9c4 (own static (bound by consistency))",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external (evidence name))",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (row counted by physics-find-trial.json (compiled body exact at the bound address))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z",
+          "$LN11"
+        ]
+      },
+      {
         "address": "00576940",
         "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z",
         "size": 129,
@@ -706,12 +724,28 @@
         "build": "notifiers",
         "verified_targets": {
           "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
-          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z": "0x576450 (compiled body exact at the bound address across a split extent (joined; BOUNDS, not counted))"
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z": "0x576450 (own row)"
         },
         "local_eh": []
       }
     ],
     "lock": [
+      {
+        "address": "00576f00",
+        "symbol": "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z",
+        "size": 128,
+        "target_size": 128,
+        "exact": true,
+        "build": "lock",
+        "verified_targets": {
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by roblox-report-view-working.json (compiled body exact at the bound address))",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external (identity: 0x563090: boost 1.34.1 recursive_mutex::do_lock; calls EnterCriticalSection / WaitForSingleObject and releases recursive acquisitions through LeaveCriticalSection / ReleaseMutex))"
+        },
+        "local_eh": [
+          "__ehhandler$?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z"
+        ]
+      },
       {
         "address": "005773c0",
         "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
@@ -730,11 +764,11 @@
     ],
     "textdisplay": [
       {
-        "address": "005744a0",
+        "address": "0x5744a0 counted by draft-publication-4874654eaaa04306a15bd77c5ff398b2.json",
         "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
         "size": 203,
         "target_size": 203,
-        "exact": true,
+        "exact": false,
         "build": "textdisplay",
         "verified_targets": {
           "??0GuiItem@RBX@@QAE@XZ": "0x5739d0 (external (evidence name))",
@@ -756,29 +790,32 @@
         },
         "local_eh": [
           "__ehhandler$??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
-        ]
+        ],
+        "counted_elsewhere": true
       },
       {
-        "address": "00574570",
+        "address": "0x574570 counted by draft-text-display-font-independent.json",
         "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ",
         "size": 7,
         "target_size": 7,
-        "exact": true,
+        "exact": false,
         "build": "textdisplay",
         "verified_targets": {},
-        "local_eh": []
+        "local_eh": [],
+        "counted_elsewhere": true
       },
       {
-        "address": "00574580",
+        "address": "0x574580 counted by draft-publication-6a91a406d2554237a6db4ce177e6d299.json",
         "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
         "size": 36,
         "target_size": 36,
-        "exact": true,
+        "exact": false,
         "build": "textdisplay",
         "verified_targets": {
           "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
         },
-        "local_eh": []
+        "local_eh": [],
+        "counted_elsewhere": true
       },
       {
         "address": "005745b0",
@@ -788,7 +825,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -800,7 +837,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -812,7 +849,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -824,7 +861,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -836,7 +873,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -848,7 +885,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -860,7 +897,7 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
         },
         "local_eh": []
       },
@@ -872,7 +909,35 @@
         "exact": true,
         "build": "textdisplay",
         "verified_targets": {
-          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (compiled body exact at the bound address across a split extent (inside 0x574630; BOUNDS, not counted))"
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00574630",
+        "symbol": "??1TextDisplay@RBX@@UAE@XZ",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??1GuiItem@RBX@@UAE@XZ": "0x411540 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$??1TextDisplay@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00574680",
+        "symbol": "??_GTextDisplay@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??1TextDisplay@RBX@@UAE@XZ": "0x574630 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
         },
         "local_eh": []
       }
@@ -886,7 +951,7 @@
         "exact": true,
         "build": "guiitem",
         "verified_targets": {
-          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (row counted by humanoid2008-working.json (compiled body exact at the bound address))",
+          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (helper body exact at the bound address (not counted))",
           "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x55ae90 (external (evidence name ?onDescendentRemoving@Instance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z; access letter differs))"
         },
         "local_eh": []
@@ -899,14 +964,14 @@
         "exact": true,
         "build": "guiitem",
         "verified_targets": {
-          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (row counted by app-unit480-2008-working.json (compiled body exact at the bound address))",
+          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (helper body exact at the bound address (not counted))",
           "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
           "??_R0?AVGuiItem@RBX@@@8": "0x92b8d8 (RTTI .?AVGuiItem@RBX@@)",
           "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
           "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
-          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (row counted by humanoid2008-working.json (compiled body exact at the bound address))",
-          "??$shared_from@VGuiItem@RBX@@@RBX@@YA?AV?$shared_ptr@VGuiItem@RBX@@@boost@@PAVGuiItem@0@@Z": "0x618a40 (row counted by humanoid2008-working.json, misc-leaves-working.json (compiled body exact at the bound address))",
-          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by humanoid2008-working.json, roblox-report-view-working.json (compiled body exact at the bound address))"
+          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (helper body exact at the bound address (not counted))",
+          "??$shared_from@VGuiItem@RBX@@@RBX@@YA?AV?$shared_ptr@VGuiItem@RBX@@@boost@@PAVGuiItem@0@@Z": "0x618a40 (row counted by misc-leaves-working.json (compiled body exact at the bound address))",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by roblox-report-view-working.json (compiled body exact at the bound address))"
         },
         "local_eh": [
           "__ehhandler$?processNonFocus@GuiItem@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z"
@@ -921,7 +986,7 @@
         "build": "guiitem",
         "verified_targets": {
           "?processNonFocus@GuiItem@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z": "0x574980 (own row)",
-          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (row counted by humanoid2008-working.json (compiled body exact at the bound address))"
+          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (helper body exact at the bound address (not counted))"
         },
         "local_eh": []
       }
@@ -968,6 +1033,7 @@
     "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690: InterlockedIncrement on the index counter (app-unit570 map: ServiceProvider::newIndex shape); the only call of every doGetClassIndex<C> (e.g. 0x575630 here)",
     "?init@TextDisplay@RBX@@AAEXXZ": "0x5735e0: only caller the TextDisplay constructor 0x5744a0 (after the vptr stores); stores fontSize +0x160 = 18, the colours +0x164 / +0x174 and align +0x184",
     "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0: boost 1.34.1 recursive_mutex::do_unlock (LeaveCriticalSection / ReleaseMutex through the IAT); record_native_app_leaves2008_dhtml.py and record_native_app_leaves2008_services.py bind the same address",
+    "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090: boost 1.34.1 recursive_mutex::do_lock; calls EnterCriticalSection / WaitForSingleObject and releases recursive acquisitions through LeaveCriticalSection / ReleaseMutex",
     "DataModel timing rows": "datamodel-timing-working.json records getGameTime / getFrameRate / getDutyCycle at 0x5757d0 / 0x5757e0 / 0x5757f0 (methods list, no exact flag)"
   },
   "textdisplay_vtables_current_headers": {
@@ -1081,34 +1147,16 @@
       "checked_bound_slots": []
     }
   },
-  "split_extent_bodies": {
-    "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@": {
-      "exact": true,
-      "at": "0x576450",
-      "how": "joined"
-    },
-    "??_GTextDisplay@RBX@@UAEPAXI@Z": {
-      "exact": true,
-      "at": "0x574680",
-      "how": "inside 0x574630"
-    },
-    "??1TextDisplay@RBX@@UAE@XZ": {
-      "exact": true,
-      "at": "0x574630",
-      "how": "prefix"
-    },
-    "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z": {
-      "exact": true,
-      "at": "0x576f00",
-      "how": "prefix"
-    }
+  "split_extent_bodies": {},
+  "helper_bodies_not_counted": {
+    "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0",
+    "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750",
+    "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810",
+    "??1GuiItem@RBX@@UAE@XZ": "0x411540",
+    "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80",
+    "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20"
   },
-  "helper_bodies_not_counted": {},
-  "not_exact_bounds": {
-    "0x574630 ~TextDisplay (111 B extent)": "built (own TextDisplay source): the implicit ~TextDisplay (80 B) is exact as the first 0x50 bytes and the ??_G (31 B) as the last 0x1f bytes; BOUNDS for the server host: end 0x574630 at 0x574680 and start ??_G there (the eight ??_E thunks 0x5745b0..0x574620 jump to 0x574680). Not counted.",
-    "0x576f00 DataModel::Lock::doLock (136 B extent)": "built: the compiled 128-byte body is exact as the prefix; BOUNDS: end at 0x576f80, where an 8-byte thunk \"add ecx, 4; jmp 0x575700\" starts. Not counted.",
-    "0x576450 Notifier<Workspace, DrawChanged>::raise(DrawChanged, Listener*) (62 B extent)": "built: the compiled 185-byte body is exact against 0x576450 + 0x57648e + 0x5764a1 joined (the catch funclets are separate extents); BOUNDS: one function 0x576450..0x576509. Not counted."
-  },
+  "not_exact_bounds": {},
   "rejected": {
     "shared_ptr<DataModel>(DataModel*, Deleter) 0x576a70 by explicit constructor instantiation": "`template shared_ptr<DataModel>::shared_ptr(DataModel*, Deleter);` and the `<DataModel, Deleter>` / `<>` spellings do not compile (C2794 sp_enable_if_auto_ptr / C2977 / C2976 with boost 1.34.1 under VS2008)."
   },
@@ -1118,9 +1166,6 @@
     "gui/Gui.h (gui owner; not edited), FYI": "as widget-family records: GuiItem::getMyRect2D 0x573960 is out of line (blocks TopMenuBar::render2d 0x574050), and util/Rect.h pointInRect(Vector2int16) 0x573130 is out of line (blocks TopMenuBar::process 0x574bf0)."
   },
   "exact_function_rows": [
-    "005744a0",
-    "00574570",
-    "00574580",
     "005745b0",
     "005745c0",
     "005745d0",
@@ -1129,6 +1174,8 @@
     "00574600",
     "00574610",
     "00574620",
+    "00574630",
+    "00574680",
     "005746a0",
     "00574980",
     "00574b10",
@@ -1136,11 +1183,13 @@
     "005757d0",
     "005757e0",
     "005757f0",
+    "00576450",
     "00576800",
     "00576940",
     "00576b20",
     "00576bd0",
     "00576d10",
+    "00576f00",
     "00576ff0",
     "00577090",
     "005771b0",

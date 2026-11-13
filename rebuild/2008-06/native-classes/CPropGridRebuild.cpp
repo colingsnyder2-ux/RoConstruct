@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPropGridRebuild | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src beef1144 | roc native-status --write
 #include "CPropGrid.h"
 #include "reflection/object.h"
 #include <algorithm>
@@ -12,3 +16,7 @@ void CPropGrid::rebuild(const RBX::Reflection::ClassDescriptor* descriptor)
                   descriptor->RBX::Reflection::PropertyContainer::descriptors_end(),
                   boost::bind(&CPropGrid::addProperty, this, descriptor, _1));
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CPropGrid *>;
+template class boost::_bi::value<RBX::Reflection::ClassDescriptor const *>;

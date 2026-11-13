@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// DocumentException | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 68baf0f4 | roc native-status --write
 #include "util/StandardOut.h"
 #include <exception>
 

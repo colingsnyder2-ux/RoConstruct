@@ -1,0 +1,376 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_png_write_chunk_start",
+    "address": "00526420"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_chunk_data",
+    "address": "00526480"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_PLTE",
+    "address": "005268d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_hIST",
+    "address": "005269c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_tEXt",
+    "address": "00526c60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_zTXt",
+    "address": "00526d20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_pCAL",
+    "address": "00526e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_chunk",
+    "address": "005275b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_IEND",
+    "address": "00527b30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_gAMA",
+    "address": "00527b80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_sRGB",
+    "address": "00527c40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_iCCP",
+    "address": "00527cc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_sPLT",
+    "address": "00527db0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_sBIT",
+    "address": "00527f90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_cHRM",
+    "address": "00528050"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_tRNS",
+    "address": "00528440"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_bKGD",
+    "address": "00528580"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_oFFs",
+    "address": "005286c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_pHYs",
+    "address": "00528790"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_write_tIME",
+    "address": "00528860"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngwutil\\objects\\4d787c467d7e4430\\candidate.obj": "21d8622a039af6d968b5a69ee8139c1522cf605754bf4df6f0555c0c0ee86c94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\owners.json": "1f4cc5d7dea77bc3a726d7818206b202ffcf373cb9adb7fb6da50e26f674bb4c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rdaiolu5\\import-thunk-identities-as-owner.json": "1d5cc8817a25d28791256dbd86350a6e2e0b0beb45d49900b33b70a7f9ba21f5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_png_IEND",
+   "address": "00829454",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_PLTE",
+   "address": "0082945c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_bKGD",
+   "address": "00829464",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_cHRM",
+   "address": "0082946c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_calculate_crc",
+   "address": "0051dd80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_check_keyword",
+   "address": "00526a80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_error",
+   "address": "005299b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_free",
+   "address": "0052a500",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_gAMA",
+   "address": "00829474",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_hIST",
+   "address": "0082947c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_iCCP",
+   "address": "00829484",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_malloc",
+   "address": "0052a4a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_oFFs",
+   "address": "00829494",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_pCAL",
+   "address": "0082949c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_pHYs",
+   "address": "008294ac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_reset_crc",
+   "address": "0051dd60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_sBIT",
+   "address": "008294b4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_sPLT",
+   "address": "008294bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_sRGB",
+   "address": "008294c4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_save_uint_32",
+   "address": "005263f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_tEXt",
+   "address": "008294cc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_tIME",
+   "address": "008294d4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_tRNS",
+   "address": "008294dc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_text_compress",
+   "address": "00526560",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_warning",
+   "address": "00529a50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_write_chunk_end",
+   "address": "005264b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_write_compressed_data_out",
+   "address": "005267e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_write_data",
+   "address": "0051dab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_zTXt",
+   "address": "008294e4",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 20,
+ "owners_bound": 20
+}

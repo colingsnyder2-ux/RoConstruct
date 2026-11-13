@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Mouse | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 780e1ec8 | roc native-status --write
 // 2008-06 native RBX::Mouse (inactive). Shape after the donor tools/rbxgs v8datamodel/Mouse.h. The changes are the
 // class-name template argument, a const char array (RTTI $1?sMouse@2@3QBDB; "Mouse" at 0084b260 in .rdata), and the
 // descriptor set of the 2008 binary. Every base, field and size below is read from the 2008-06 binary

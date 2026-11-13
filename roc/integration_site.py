@@ -1,9 +1,12 @@
 """docs/integration.json: native integration progress for the website (2008-06 rbxgs rebuild).
 Same four groups as the Discord digest: integrated (linked rebuild reproduces it), exact waiting (mined 100%,
 not yet integrated), partial, unmined. Per-function data is published on gh-pages only (see server.publish_pages)."""
+import hashlib
 import json
+from pathlib import Path
 import re
 import sqlite3
+import subprocess
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -75,29 +78,96 @@ def inactive_code(root):
                 old = found.get(addr)
                 # exact beats not-exact; otherwise the newest receipt wins
                 if not old or (exact, stamp) > (old[1], old[3]):
-                    found[addr] = [symbol, exact, name, stamp]
+                    found[addr] = [symbol, exact, name, stamp, receipt_source]
             for value in node.values():
                 walk(value, name, stamp)
         elif isinstance(node, list):
             for value in node:
                 walk(value, name, stamp)
+    # native source of a trial receipt: the repo file whose hash it records, else the first existing .cpp it names
+    by_hash = {}
+    for item in sorted((root / "rebuild" / CLIENT).rglob("*.cpp")) + sorted((root / "work/native-client").rglob("*.cpp")):
+        by_hash.setdefault(hashlib.sha256(item.read_bytes()).hexdigest(), str(item))
+    def source_in(text, data):
+        digest = data.get("source_sha256") if isinstance(data, dict) else None
+        if isinstance(digest, str) and digest in by_hash:
+            return by_hash[digest]
+        for named in re.findall(r'"([^"\n]*?\.cpp)"', text):
+            item = Path(named.replace("\\\\", "/"))
+            item = item if item.is_absolute() else root / item
+            if item.is_file():
+                return str(item)
+        return None
+    receipt_source = None
     for path in (root / "work" / CLIENT / "shared-layouts").glob("*.json"):
         try:
-            data = json.loads(path.read_text(encoding="utf-8"))
+            text = path.read_text(encoding="utf-8")
+            data = json.loads(text)
+            receipt_source = source_in(text, data)
             walk(data, path.name, path.stat().st_mtime)
             # single-function trial receipt with no exact verdict: native code exists, unproven
             if isinstance(data, dict) and isinstance(data.get("address"), str) and (
                     "inputs" in data or "source_sha256" in data):
                 found.setdefault(data["address"].lower().removeprefix("0x").zfill(8),
-                                 [path.stem, False, path.name, 0])
+                                 [path.stem, False, path.name, 0, receipt_source])
         except (ValueError, OSError):
             continue
+    # native_bulk proofs (work/native-client/prove.py: full census + per-file runs). Byte-exact rows are inactive
+    # (exact); a byte-matched body at one candidate still waiting for identity/reference proof is draft.
+    manifests = sorted((root / "work/native-client/prove-out").glob("*/manifest.json"), key=lambda p: p.stat().st_mtime)
+    # symbol -> source from single-source (per-file) proofs: names the file for census rows outside any job's checks
+    single = {}
+    for path in manifests:
+        try:
+            for family in json.loads(path.read_text(encoding="utf-8")).get("families", []):
+                if len(family.get("jobs", [])) == 1:
+                    for row in family.get("symbols", []):
+                        single[row["symbol"]] = family["jobs"][0]["source"]
+        except (ValueError, OSError, KeyError):
+            continue
+    for path in manifests:
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            continue
+        stamp = path.stat().st_mtime
+        for family in data.get("families", []):
+            source_of = {(c["addr"], c["symbol"]): job["source"] for job in family.get("jobs", []) for c in job.get("checks", [])}
+            for row in family.get("symbols", []):
+                exact = row.get("status") == "inactive_exact"
+                candidates = row.get("candidates") or []
+                if not candidates or row["symbol"].startswith(("__", "$")) or (not exact and len(candidates) != 1):
+                    continue
+                for addr in candidates:
+                    old = found.get(addr)
+                    if not old or (exact, stamp) > (old[1], old[3]):
+                        found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp,
+                                       source_of.get((addr, row["symbol"])) or single.get(row["symbol"])]
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
     for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
         text = path.read_text(encoding="utf-8", errors="replace")
         for cls, addr in re.findall(r"\b(\w+)::handle_([0-9a-f]{6,8})\b", text):
-            found.setdefault(addr.zfill(8), ["%s::handle_%s" % (cls, addr), False, path.relative_to(root).as_posix(), 0])
-    return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] for a, v in sorted(found.items())}
+            found.setdefault(addr.zfill(8), ["%s::handle_%s" % (cls, addr), False, path.relative_to(root).as_posix(), 0, str(path)])
+    texts = {}
+
+    def located(symbol, source):
+        """[repo-relative path, line of the definition (1 if not found)] of the native source, or None."""
+        if not source:
+            return None
+        path = Path(source)
+        try:
+            rel = path.resolve().relative_to(root.resolve()).as_posix()
+        except ValueError:
+            return None
+        if path not in texts:
+            texts[path] = path.read_text(encoding="utf-8", errors="replace").splitlines() if path.is_file() else []
+        parts = readable(symbol).split("(")[0].split("::")
+        needle = "::".join(parts[-2:]) + "("
+        line = next((i + 1 for i, text in enumerate(texts[path]) if needle in text.replace(" (", "(")), 1)
+        return [rel, line]
+    # addr -> [readable symbol, exact, receipt, [native source path, line] or None]
+    return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] + [located(v[0], v[4] if len(v) > 4 else None)]
+            for a, v in sorted(found.items())}
 
 
 def link_errors(root):
@@ -218,6 +288,12 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
             "daily": [daily[day] for day in sorted(daily)],
             "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
+    # addr -> {path, line} on the published work branch (site links these beside the mined source)
+    listed = subprocess.run(["git", "ls-tree", "-r", "--name-only", "refs/remotes/origin/work", "--", "workspace/"],
+                            cwd=root, capture_output=True, text=True).stdout.splitlines()
+    published = {path.removeprefix("workspace/") for path in listed if path}
+    data["inactive_sources"] = {a: {"path": "workspace/" + v[3][0], "line": v[3][1]}
+                                for a, v in data["inactive"].items() if len(v) > 3 and v[3] and v[3][0] in published}
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site

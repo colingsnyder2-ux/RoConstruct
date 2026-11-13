@@ -9,9 +9,11 @@ import tempfile
 import uuid
 
 
-def publish_downloads(root, git_exe, log=print, guide_base=None):
+def _publish_downloads(root, git_exe, log=print, guide_base=None):
     """Publish only reviewed native Worker assets, preserving the remote findings tree."""
     root = Path(root)
+    if (root / 'work/draft-workflow-enabled.json').exists():
+        raise ValueError('Committed workspace owns Worker downloads; use python -m roc.findings_workspace')
     folder = root / 'local/findings/data'
     files = ['native-worker.zip', 'native-worker.json', 'NATIVE_AGENT.md', 'MATCHING_AGENT.md']
     manifest = json.loads((folder / 'native-worker.json').read_text(encoding='utf-8'))
@@ -26,7 +28,7 @@ def publish_downloads(root, git_exe, log=print, guide_base=None):
             raise RuntimeError('Download publication failed: ' + result.stderr.strip()[-300:])
         return result.stdout.strip()
     try:
-        git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
+        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/main:refs/remotes/findings/main')
         parent = git('rev-parse', 'refs/remotes/findings/main')
         if guide_base:
             for name in ('NATIVE_AGENT.md', 'MATCHING_AGENT.md'):
@@ -35,7 +37,7 @@ def publish_downloads(root, git_exe, log=print, guide_base=None):
                     raise ValueError('Agent guide advanced; fetch and merge latest ' + name + ' before publishing')
         git('read-tree', parent)
         for name in files:
-            blob = git('hash-object', '-w', '--', str(folder / name))
+            blob = git('hash-object', '-w', '--no-filters', '--', str(folder / name))
             git('update-index', '--add', '--cacheinfo', '100644', blob, 'data/' + name)
         tree = git('write-tree')
         if tree == git('rev-parse', parent + '^{tree}'):
@@ -47,7 +49,7 @@ def publish_downloads(root, git_exe, log=print, guide_base=None):
         index.unlink(missing_ok=True)
 
 
-def publish_package(root, git_exe, log=print):
+def _publish_package(root, git_exe, log=print):
     """Update the native package using existing blobs for unchanged or renamed files."""
     root = Path(root)
     folder = root / 'local/findings/2008-06'
@@ -62,7 +64,7 @@ def publish_package(root, git_exe, log=print):
             raise RuntimeError('Package publication failed: ' + result.stderr.strip()[-300:])
         return result.stdout.strip()
     try:
-        git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
+        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/main:refs/remotes/findings/main')
         parent = git('rev-parse', 'refs/remotes/findings/main')
         previous = json.loads(git('show', parent + ':2008-06/package.json'))
         git('read-tree', parent)
@@ -100,7 +102,7 @@ def publish_package(root, git_exe, log=print):
         index.unlink(missing_ok=True)
 
 
-def publish(root, git_exe, log=print):
+def _publish(root, git_exe, log=print):
     """Copy local recovered sources into the separate findings repository."""
     from roc.server import findings_source
     source = root / "src"
@@ -112,17 +114,15 @@ def publish(root, git_exe, log=print):
     env["GIT_INDEX_FILE"] = str(index)
     git = lambda *a: subprocess.run([git_exe, *a], cwd=root, env=env, capture_output=True, text=True)
     try:
-        fetched = git("fetch", "findings", "main")
+        fetched = git("fetch", "--no-write-fetch-head", "findings", "refs/heads/main:refs/remotes/findings/main")
         if fetched.returncode:
             return log("Findings fetch failed: %s" % fetched.stderr.strip()[-300:])
-        parent = git("rev-parse", "FETCH_HEAD")
+        parent = git("rev-parse", "refs/remotes/findings/main")
         if parent.returncode:
             return log("Findings revision unavailable: %s" % parent.stderr.strip()[-300:])
         parent = parent.stdout.strip()
-        # The findings tree is rebuilt from an allowlist (sources + portable evidence), so files
-        # that do not belong there never persist. sync_findings has already exported every
-        # stored source into src/.
-        if git("read-tree", "--empty").returncode or git("add", "-f", "src").returncode:
+        # Preserve namespaces owned by other publishers, especially immutable drafts.
+        if git("read-tree", parent).returncode or git("add", "-f", "-A", "src").returncode:
             return log("Findings source staging failed.")
         from roc import libs
         units = libs.generated_units()
@@ -197,6 +197,9 @@ def publish(root, git_exe, log=print):
                     data = path.read_bytes()
                     mark = len(staged) + 1
                     relative = path.relative_to(findings).as_posix()
+                    if ((root / 'work/draft-workflow-enabled.json').exists()
+                            and relative in ('data/native-worker.zip','data/native-worker.json','data/NATIVE_AGENT.md','data/MATCHING_AGENT.md')):
+                        continue
                     if relative == 'agent-memory/lessons.json':
                         relative = 'data/lessons.json'
                     staged.append((relative, mark))
@@ -230,4 +233,85 @@ def publish(root, git_exe, log=print):
     finally:
         if index.exists():
             index.unlink()
+
+
+def serialized(function, root, git_exe, log=print, **kwargs):
+    from roc.native_drafts import lock
+    with lock(Path(root) / 'work/findings-transport.lock'):
+        for attempt in range(3):
+            messages = []
+            try:
+                result = function(Path(root), git_exe, messages.append, **kwargs)
+                failure = next((m for m in messages if 'failed' in m.lower()), None)
+                if failure:
+                    raise RuntimeError(failure)
+                for message in messages:
+                    log(message)
+                return result
+            except RuntimeError as error:
+                if attempt == 2 or not any(s in str(error).lower() for s in ('fetch first','non-fast-forward','rejected','cannot lock ref')):
+                    raise
+
+
+def publish_downloads(root, git_exe, log=print, guide_base=None):
+    return serialized(_publish_downloads, root, git_exe, log, guide_base=guide_base)
+
+
+def publish_package(root, git_exe, log=print):
+    return serialized(_publish_package, root, git_exe, log)
+
+
+def publish(root, git_exe, log=print):
+    return serialized(_publish, root, git_exe, log)
+
+
+def publish_files(root, files, message, remote='findings', guard=None):
+    """Patch exact owned paths, retry remote advances, preserve all unrelated remote entries."""
+    from roc.native_drafts import lock
+    root = Path(root)
+    with lock(root / 'work/findings-transport.lock'):
+        with tempfile.TemporaryDirectory(prefix='findings-index-', dir=root / 'work') as temp:
+            env = dict(os.environ, GIT_INDEX_FILE=str(Path(temp) / 'index'))
+            def git(*args, data=None):
+                p = subprocess.run(['git', *args], cwd=root, env=env, input=data,
+                                   capture_output=True, timeout=180)
+                if p.returncode:
+                    raise RuntimeError(p.stderr.decode(errors='replace')[-1000:])
+                return p.stdout.decode().strip()
+            for attempt in range(3):
+                ref = 'refs/remotes/' + remote + '/main'
+                git('fetch', '--no-write-fetch-head', remote, 'refs/heads/main:' + ref)
+                parent = git('rev-parse', ref)
+                git('read-tree', parent)
+                removals = guard(parent) or [] if guard else []
+                for name in removals:
+                    if not name.startswith('workspace/') or '..' in Path(name).parts:
+                        raise ValueError('Invalid workspace removal')
+                    git('update-index','--force-remove','--',name)
+                stream = bytearray()
+                names = []
+                for name, content in files.items():
+                    p = Path(name)
+                    if p.is_absolute() or '..' in p.parts or '\\' in name or ':' in name:
+                        raise ValueError('Invalid publication path')
+                    names.append(name)
+                    stream.extend(('blob\nmark :%d\ndata %d\n' % (len(names), len(content))).encode())
+                    stream.extend(content)
+                    stream.extend(b'\n')
+                stream.extend(b'done\n')
+                marks = Path(temp) / 'marks'
+                git('fast-import', '--quiet', '--done', '--export-marks=' + str(marks), data=bytes(stream))
+                blobs = dict(line.split() for line in marks.read_text().splitlines())
+                git('update-index', '-z', '--index-info', data=''.join(
+                    '100644 %s\t%s\0' % (blobs[':' + str(i)], name) for i, name in enumerate(names, 1)).encode())
+                tree = git('write-tree')
+                if tree == git('rev-parse', parent + '^{tree}'):
+                    return dict(commit=parent, changed=False)
+                commit = git('commit-tree', tree, '-p', parent, '-m', message)
+                try:
+                    git('push', remote, commit + ':refs/heads/main')
+                    return dict(commit=commit, changed=True)
+                except RuntimeError as error:
+                    if attempt == 2 or not any(s in str(error).lower() for s in ('rejected','fetch first','non-fast-forward')):
+                        raise
 

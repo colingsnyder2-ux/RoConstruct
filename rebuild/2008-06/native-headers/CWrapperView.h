@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CWrapperView | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b7948f81 | roc native-status --write
 #include "CSelectionTreeCtrl.h"
 
 // Explorer pane view (docking pane 0xc2). CRuntimeClass 008107e0 = {"CWrapperView", 0x188, 0xffff,

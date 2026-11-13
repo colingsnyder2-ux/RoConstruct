@@ -1,0 +1,22 @@
+﻿{
+    "createdUtc":  "2026-11-08T16:27:01.3015932Z",
+    "repo":  "C:\\Users\\colin\\RoConstruct",
+    "branch":  "codex/native-partial-search-20261029",
+    "head":  "c9a075722a0c1bc95a2b58cef0f169760ffc4897",
+    "upstream":  "origin/codex/native-partial-search-20261029",
+    "branchTips":  {
+                       "findings/work":  "2da654506111296a9f85e38b18500710df5dd5c3",
+                       "origin/work":  "f3bb038bbd1c987b108da941d1609296d712f25b",
+                       "origin/main":  "1823236cb07950b463eb5dd0b11e1482124256ff",
+                       "origin/gh-pages":  "15b2c90ad45b160dbbb48cfbf4e8faf2a5d3b095",
+                       "mew/main":  "9b307332c4a37d6d0e10fef348099499fafb11bd",
+                       "coldek/main":  "c7e85ce1261f847f7d664ed55fb2eb7a1298fae7",
+                       "origin/codex/native-partial-search-20261029":  "c9a075722a0c1bc95a2b58cef0f169760ffc4897"
+                   },
+    "uniqueFileCount":  3372,
+    "uniqueBytes":  104128083,
+    "archive":  "dirty-checkout-20261108.zip",
+    "archiveBytes":  70541921,
+    "comparison":  "Unique = content (git blob) not present anywhere in findings/work tree 2da654506111296a9f85e38b18500710df5dd5c3, nor in the three RoConstruct-Native-* worker-package snapshots.",
+    "manifestJsonl":  "dirty-checkout-20261108-manifest.jsonl"
+}

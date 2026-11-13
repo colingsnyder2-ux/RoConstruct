@@ -8,6 +8,10 @@
 // recorder's layout probe). Vtables 0081b390 / 0081b39c (RTTI), base EventDataBase (vtable 0080f860).
 // The template bodies come from the native util/MarshaledListener.h (read-only); this unit only names the two
 // specialisations the binary emits here.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit460_2008MarshaledEventData | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1964bcdf | roc native-status --write
 #include "util/MarshaledListener.h"
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"
@@ -20,3 +24,15 @@ template class RBX::MarshaledListener<RBX::RunService, RBX::RunState>::EventData
 // The ctor and execute copy PropertyChanged inline in the original; with the current shared headers the copy is
 // the declared out-of-line PropertyChanged(const PropertyChanged&) (see the receipt proposals).
 template class RBX::MarshaledListener<RBX::Instance, RBX::PropertyChanged>::EventData;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>;
+template class RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>;
+template class boost::shared_ptr<RBX::Instance const >;
+template class boost::shared_ptr<RBX::RunService const >;
+template class std::_Vector_const_iterator<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *,std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *> >;
+template class std::_Vector_const_iterator<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *,std::allocator<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *> >;
+template class std::_Vector_iterator<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *,std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *> >;
+template class std::_Vector_iterator<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *,std::allocator<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *> >;
+template class std::vector<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *,std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *> >;
+template class std::vector<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *,std::allocator<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *> >;

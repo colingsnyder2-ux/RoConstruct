@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Streaming2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 6c361d1c | roc native-status --write
 // 2008-06 native RBX::Network BitStream streaming free functions (Network/Streaming.cpp unit 004a5a30..004a7fff of
 // the application range 0049c000..004a8000; inactive). Shape after the donor tools/rbxgs/Client/Network/Streaming.h
 // (read-only, not on the native include path); every signature below is read from the 2008-06 binary (evidence

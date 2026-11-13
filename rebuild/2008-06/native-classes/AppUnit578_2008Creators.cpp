@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native rows of the Creatable / FactoryProduct / ServiceProvider template instances that the DataModel
 // translation unit (v8datamodel/DataModel.cpp, 00574f10..0057c1af) emits inside the application range
 // 00578000..0057c000, inactive. Verified by tests/record_native_app_unit578_2008.py. Every header is a committed

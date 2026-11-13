@@ -1,0 +1,106 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetAppRegistryKey@CXTRegistryManager@@MAEPAUHKEY__@@K@Z",
+    "address": "007543a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTRegistryManager\\objects\\818ce522983979b8\\candidate.obj": "57e9a21c7df7247d5eeb0de7f140219fce8e7c49780bb6d631397335a66b19ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\owners.json": "a07008b5d4e120feca9f6a2c8406052212b75705850fa45b2b62d03a968423b3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\import-thunk-identities-as-owner.json": "a367eca49d877e247b7bb6a8a43b6b2a2fc999104468d7fedd471ca03a811a7f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetSectionKey@CXTRegistryManager@@MAEPAUHKEY__@@PBDK@Z",
+    "address": "007542c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTRegistryManager\\objects\\818ce522983979b8\\candidate.obj": "57e9a21c7df7247d5eeb0de7f140219fce8e7c49780bb6d631397335a66b19ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\owners.json": "a07008b5d4e120feca9f6a2c8406052212b75705850fa45b2b62d03a968423b3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\import-thunk-identities-as-owner.json": "a367eca49d877e247b7bb6a8a43b6b2a2fc999104468d7fedd471ca03a811a7f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?WriteProfileStringA@CXTRegistryManager@@QAEHPBD00@Z",
+    "address": "007544c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTRegistryManager\\objects\\818ce522983979b8\\candidate.obj": "57e9a21c7df7247d5eeb0de7f140219fce8e7c49780bb6d631397335a66b19ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\owners.json": "a07008b5d4e120feca9f6a2c8406052212b75705850fa45b2b62d03a968423b3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\import-thunk-identities-as-owner.json": "a367eca49d877e247b7bb6a8a43b6b2a2fc999104468d7fedd471ca03a811a7f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?WriteProfileBinary@CXTRegistryManager@@QAEHPBD0PAEI@Z",
+    "address": "00754780"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTRegistryManager\\objects\\818ce522983979b8\\candidate.obj": "57e9a21c7df7247d5eeb0de7f140219fce8e7c49780bb6d631397335a66b19ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\owners.json": "a07008b5d4e120feca9f6a2c8406052212b75705850fa45b2b62d03a968423b3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\import-thunk-identities-as-owner.json": "a367eca49d877e247b7bb6a8a43b6b2a2fc999104468d7fedd471ca03a811a7f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??__E?m_strINIFileName@CXTRegistryManager@@1V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@A@@YAXXZ",
+    "address": "007f99b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTRegistryManager\\objects\\818ce522983979b8\\candidate.obj": "57e9a21c7df7247d5eeb0de7f140219fce8e7c49780bb6d631397335a66b19ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\owners.json": "a07008b5d4e120feca9f6a2c8406052212b75705850fa45b2b62d03a968423b3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fi4qo3mc\\import-thunk-identities-as-owner.json": "a367eca49d877e247b7bb6a8a43b6b2a2fc999104468d7fedd471ca03a811a7f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??__F?m_strINIFileName@CXTRegistryManager@@1V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@A@@YAXXZ",
+   "address": "008018e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetProfileInfo@CXTRegistryManager@@AAEHXZ",
+   "address": "00754360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegCreateKeyExA@36",
+   "address": "0080200c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegDeleteKeyA@8",
+   "address": "00802034",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegDeleteValueA@8",
+   "address": "00802004",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegSetValueExA@24",
+   "address": "00802014",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__WritePrivateProfileStringA@16",
+   "address": "00802308",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__lstrlenA@4",
+   "address": "008021b8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 5,
+ "owners_bound": 5
+}

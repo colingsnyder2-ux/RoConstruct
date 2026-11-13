@@ -1,0 +1,1378 @@
+{
+ "counts": {
+  "parked-api-gap": 41,
+  "rejected-no-gain-or-loss": 92,
+  "retained-proven": 9
+ },
+ "files": [
+  {
+   "file": "util/Sound.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor defines SoundService::getSoundStats(two refs) absent from 2008 header, with live donor call. Removing definition or rewriting body forbidden.",
+   "initial_estimated_value": 457.0
+  },
+  {
+   "file": "humanoid/Humanoid.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 API lacks ForceField::partInForceField used by preserved donor body.",
+   "initial_estimated_value": 449.0
+  },
+  {
+   "file": "v8datamodel/factoryregistration.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 API lacks ForceField and GeometryService registered by donor constructor.",
+   "initial_estimated_value": 436.0
+  },
+  {
+   "file": "v8datamodel/DataModel.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay removes TimeState storage and profileRun used by donor step body; cannot repair via declarations.",
+   "initial_estimated_value": 411.0
+  },
+  {
+   "file": "v8datamodel/Workspace.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "NavKeys/getNavKeys API absent; preserved input body cannot compile.",
+   "initial_estimated_value": 399.0
+  },
+  {
+   "file": "v8datamodel/Hopper.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 377.0,
+   "selected_layer": null
+  },
+  {
+   "file": "v8datamodel/PartInstance.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 Primitive lacks setSizeMultiplier; primitive storage also changes pointer to value. No declaration-only equivalent established.",
+   "initial_estimated_value": 369.0
+  },
+  {
+   "file": "v8datamodel/Explosion.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 API lacks ForceField::partInForceField used by preserved donor body.",
+   "initial_estimated_value": 329.0
+  },
+  {
+   "file": "v8datamodel/RootInstance.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 9,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 317.0
+  },
+  {
+   "file": "v8datamodel/Seat.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 5,
+   "loss_object": 2,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 312.0,
+   "selected_layer": null
+  },
+  {
+   "file": "v8tree/Instance.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 306.0,
+   "selected_layer": null
+  },
+  {
+   "file": "v8datamodel/LocakBackpack.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 296.0
+  },
+  {
+   "file": "v8datamodel/SpawnLocation.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "ForceField API absent in 2008 headers.",
+   "initial_estimated_value": 295.0
+  },
+  {
+   "file": "gui/ChatOutput.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "ChatLine destructor undeclared; frontIsOld declared void. Cannot preserve donor bodies without header changes.",
+   "initial_estimated_value": 293.0
+  },
+  {
+   "file": "v8datamodel/Camera.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "NavKeys/doFly input API absent in 2008 headers.",
+   "initial_estimated_value": 285.0
+  },
+  {
+   "file": "gui/ChatWidget.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 271.0
+  },
+  {
+   "file": "tool/NullTool.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "NavKeys/getNavKeys API absent in 2008 headers.",
+   "initial_estimated_value": 241.0
+  },
+  {
+   "file": "script/LuaSignalBridge.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "ScopedAssign utility absent in 2008 headers; no new helper bodies allowed.",
+   "initial_estimated_value": 233.0
+  },
+  {
+   "file": "tool/DragUtilities.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 12,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 216.0
+  },
+  {
+   "file": "util/Http.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 2,
+   "loss_object": 2,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 143.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/UserController.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "NavKeys/getNavKeys API absent in 2008 headers.",
+   "initial_estimated_value": 112.0
+  },
+  {
+   "file": "util/Name.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 3,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 79.0
+  },
+  {
+   "file": "v8datamodel/MouseCommand.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 2,
+   "loss_object": 12,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 75.333,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Surfaces.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 2,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 70.0
+  },
+  {
+   "file": "v8datamodel/CharacterAppearance.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 42,
+   "loss_object": 8,
+   "gain_unique": 9,
+   "reason": "Historical raw object probe against initial 4409 baseline; rejected before full selection due to lost addresses.",
+   "initial_estimated_value": 65.0
+  },
+  {
+   "file": "util/ContentProvider.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor defines MD5Hasher::convertToLegacyHash absent in 2008 declaration; ContentCache type also absent.",
+   "initial_estimated_value": 65.0
+  },
+  {
+   "file": "v8xml/SerializerV2.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 13,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 57.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Backpack.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 56.2,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/ScriptEvent.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 50.25,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/ScriptContext.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay LuaArguments::get requires extra nilIsMissing argument; no declaration-only compatible call established.",
+   "initial_estimated_value": 44.9
+  },
+  {
+   "file": "v8datamodel/Gyro.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 Rocket stores target as weak_ptr rather than donor raw pointer; methods require lifetime/body changes.",
+   "initial_estimated_value": 44.111
+  },
+  {
+   "file": "v8datamodel/Flag.cpp",
+   "status": "retained-proven",
+   "gain_object": 1,
+   "loss_object": 0,
+   "gain_unique": 1,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 43.5,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Teams.cpp",
+   "status": "retained-proven",
+   "gain_object": 1,
+   "loss_object": 0,
+   "gain_unique": 1,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 41.0
+  },
+  {
+   "file": "v8datamodel/Tool.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 4,
+   "loss_object": 12,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 40.545,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Feature.cpp",
+   "status": "retained-proven",
+   "gain_object": 4,
+   "loss_object": 0,
+   "gain_unique": 4,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 38.818,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/FaceInstance.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 36.5,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/Accoutrement.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 5,
+   "loss_object": 11,
+   "gain_unique": null,
+   "reason": "No acceptable per-object gain after selection.",
+   "initial_estimated_value": 35.0
+  },
+  {
+   "file": "v8datamodel/Sky.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "G3D::Sky::setNumStars absent; no evidenced 2008 equivalent.",
+   "initial_estimated_value": 34.6
+  },
+  {
+   "file": "v8datamodel/DebugSettings.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 2,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 34.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/Script.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 5,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 32.5,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/RunDragger.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 4,
+   "loss_object": 19,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 31.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/FlagStand.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 30.364,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "script/LuaInstanceBridge.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor lua_tofloat helper absent from 2008 headers; no evidenced equivalent without adding/changing body logic.",
+   "initial_estimated_value": 29.7
+  },
+  {
+   "file": "gui/ProfanityFilter.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 28.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "gui/ScoreHud.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 3,
+   "loss_object": 3,
+   "gain_unique": 2,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 27.929,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/ToolMouseCommand.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 27.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/PVInstance.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 2,
+   "loss_object": 2,
+   "gain_unique": 2,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 25.818,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Message.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 5,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 25.364,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/JointInstance.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay merges AutoJoint into JointInstance with weak_ptr storage; donor AutoJoint member bodies have no matching class.",
+   "initial_estimated_value": 25.231
+  },
+  {
+   "file": "humanoid/Running.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "GeometryService API absent in 2008 headers.",
+   "initial_estimated_value": 25.0
+  },
+  {
+   "file": "v8datamodel/Value.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 13,
+   "loss_object": 10,
+   "gain_unique": 11,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 24.5,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Filters.cpp",
+   "status": "retained-proven",
+   "gain_object": 1,
+   "loss_object": 0,
+   "gain_unique": 1,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 22.4,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "gui/HealthHud.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 Humanoid exposes relativeHealth/reflection descriptors rather than donor getHealth/getMaxHealth; body rewrite required.",
+   "initial_estimated_value": 20.5
+  },
+  {
+   "file": "v8datamodel/ICharacterSubject.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 5,
+   "loss_object": 7,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 20.364,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/World.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 ticklePrimitive has one argument; donor two-argument body depends on recursive wake flag absent from API.",
+   "initial_estimated_value": 20.0
+  },
+  {
+   "file": "script/LuaAtomicClasses.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 19.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/Contact.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay replaces vector connector/matched arrays with G3D::Array; donor fastRemoveIndex requires vector.",
+   "initial_estimated_value": 19.0
+  },
+  {
+   "file": "v8world/Controller.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 19.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/ThreadRef.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 4,
+   "loss_object": 38,
+   "gain_unique": 2,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 18.909,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/RunStateOwner.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor defines FUN_00569480 state wrapper absent from 2008 class; renaming to setRunState would recurse.",
+   "initial_estimated_value": 18.0
+  },
+  {
+   "file": "gui/ArrowPanel.cpp",
+   "status": "retained-proven",
+   "gain_object": 3,
+   "loss_object": 0,
+   "gain_unique": 2,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 17.429
+  },
+  {
+   "file": "tool/ToolsArrow.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 4,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 16.571,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/PartDragTool.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay adds selectIfNoDrag constructor argument and stored state; donor constructor/onMouseUp lack required selection behavior.",
+   "initial_estimated_value": 15.643
+  },
+  {
+   "file": "v8datamodel/TimerService.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 2,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 15.286,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Stats.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 15.167,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/Primitive.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 Primitive lacks sizeMultiplier/setSizeMultiplier and changes EdgeList API; no declaration-only mapping.",
+   "initial_estimated_value": 15.0
+  },
+  {
+   "file": "v8datamodel/Decal.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 5,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 14.636,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Visit.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 14.571,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/boost.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 background_function adds thread-priority parameter; donor fixed-priority body cannot implement full new contract without body change.",
+   "initial_estimated_value": 14.0
+  },
+  {
+   "file": "v8datamodel/Selection.cpp",
+   "status": "retained-proven",
+   "gain_object": 2,
+   "loss_object": 0,
+   "gain_unique": 1,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 13.857,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/DebrisService.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 4,
+   "loss_object": 2,
+   "gain_unique": 2,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 13.5,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/Dragger.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 2,
+   "loss_object": 11,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 13.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/standardout.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 13.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/Block.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 13.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/ContactManager.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 7,
+   "gain_unique": 1,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 13.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Lighting.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 39,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 12.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Math.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 12.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "humanoid/Balancing.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 11.5,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "reflection/reflection_property.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 11.5,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/SafeChat.cpp",
+   "status": "retained-proven",
+   "gain_object": 3,
+   "loss_object": 0,
+   "gain_unique": 3,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 11.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Body.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 11.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/custommesh.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 10.9,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/ModelInstance.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor defines FUN_00565040 orientation setter absent from 2008 class; no evidenced named-member mapping.",
+   "initial_estimated_value": 10.231
+  },
+  {
+   "file": "v8tree/Service.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 2,
+   "loss_object": 4,
+   "gain_unique": 1,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 9.75,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Mouse.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor one-argument MouseCommand::getPart call depends on default filter omitted by 2008 declaration; no class/header edit authorized.",
+   "initial_estimated_value": 9.4
+  },
+  {
+   "file": "v8world/JointStage.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 9.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/Team.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 8.818,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/GameSettings.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 8.727,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/SimJobStage.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay replaces mechanisms list with different stage state; donor destroy/insertMechanism definitions no longer declared.",
+   "initial_estimated_value": 8.0
+  },
+  {
+   "file": "util/Profiling.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 7.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8kernel/Connector.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 KernelInput storage/access changes: pointer return, private latch/currentGoal, different get signature; body changes required.",
+   "initial_estimated_value": 7.0
+  },
+  {
+   "file": "v8datamodel/GlobalSettings.cpp",
+   "status": "retained-proven",
+   "gain_object": 40,
+   "loss_object": 0,
+   "gain_unique": 3,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 6.75,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Log.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 stream is value/reference rather than donor pointer; timeStamp return/signature changes, cannot preserve body.",
+   "initial_estimated_value": 6.0
+  },
+  {
+   "file": "util/NormalId.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 6.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/IMoving.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 6.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/RotateJoint.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 World ticklePrimitive drops donor recursive argument; KernelInput goal API also differs.",
+   "initial_estimated_value": 6.0
+  },
+  {
+   "file": "v8datamodel/ScriptMouseCommand.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 5.231,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/MacroTypes.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 2,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 4.5,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/SimBody.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 4.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/MotorJoint.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 2,
+   "loss_object": 9,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 4.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/SpatialHash.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 Vector3int32 lacks donor ordering operator required by ordered grid containers; comparator helper body addition would exceed declaration-only port scope.",
+   "initial_estimated_value": 4.0
+  },
+  {
+   "file": "v8xml/XmlSerializer.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Legacy hash conversion/helper cache state absent from 2008 declarations.",
+   "initial_estimated_value": 3.5
+  },
+  {
+   "file": "humanoid/FallingDown.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 3.143,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "humanoid/Freefall.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 3.143,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "humanoid/GettingUp.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 3.143,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "humanoid/Seated.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 3.143,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "humanoid/Jumping.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "Donor World::ticklePrimitive recursive argument absent from 2008 API.",
+   "initial_estimated_value": 3.125
+  },
+  {
+   "file": "v8kernel/Kernel.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 Point::sameBodyAndOffset takes const reference, while donor body passes pointer; adapting call expression exceeds declaration-only scope.",
+   "initial_estimated_value": 3.0
+  },
+  {
+   "file": "v8world/GlueJoint.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 7,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 3.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/Joint.cpp",
+   "status": "retained-proven",
+   "gain_object": 1,
+   "loss_object": 0,
+   "gain_unique": 1,
+   "reason": "Zero per-object/global loss; module smoke and M2/M4a/M5 passed.",
+   "initial_estimated_value": 3.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/Mechanism.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay tracker stores SimJob* while donor methods return/use Mechanism*, and tracker method declarations differ.",
+   "initial_estimated_value": 3.0
+  },
+  {
+   "file": "tool/MegaDragger.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 member storage changes from dereferenced containers/pointers to direct values/references; source bodies need changes.",
+   "initial_estimated_value": 2.667
+  },
+  {
+   "file": "humanoid/Flying.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 2.25,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Point.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 5,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 2.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8xml/XmlElement.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 2.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "gui/GUI.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.571,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/BrickColor.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.4,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "tool/GroupDragTool.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.286,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Debug.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Guid.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8kernel/Constants.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/Ball.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 3,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/JointBuilder.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/RigidJoint.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/SnapJoint.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/WeldJoint.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 1.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/FileSystem.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.75,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "reflection/signal.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.571,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Extents.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 15,
+   "gain_unique": 1,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.538,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/Edge.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 overlay replaces linked-list next pointers with index fields; donor zero-pointer initialization no longer expresses index semantics.",
+   "initial_estimated_value": 0.5
+  },
+  {
+   "file": "tool/DragTool.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 10,
+   "loss_object": 4,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.4,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/IndexBox.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.4,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8tree/Verb.cpp",
+   "status": "parked-api-gap",
+   "gain_object": null,
+   "loss_object": null,
+   "gain_unique": null,
+   "reason": "2008 XmlState lacks donor addProperty; undo/redo state declarations and VerbContainer private access also differ.",
+   "initial_estimated_value": 0.2
+  },
+  {
+   "file": "v8kernel/Link.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 4,
+   "loss_object": 1,
+   "gain_unique": 1,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.154,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/ExponentialRunningAverage.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.083,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Face.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Quaternion.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Rect.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 1,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/RunningAverage.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Cofm.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 2,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Pair.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 1,
+   "loss_object": 1,
+   "gain_unique": 1,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/IWorldStage.cpp",
+   "status": "rejected-no-gain-or-loss",
+   "gain_object": 0,
+   "loss_object": 0,
+   "gain_unique": 0,
+   "reason": "Per-object loss or no gain; reverted to rbxgs.",
+   "initial_estimated_value": 0.0,
+   "selected_layer": "layer-rbxgs"
+  }
+ ]
+}

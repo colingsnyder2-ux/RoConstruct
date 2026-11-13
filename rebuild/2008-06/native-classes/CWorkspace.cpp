@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspace | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/5 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src 030fba46 | roc native-status --write
 #include <afxwin.h>
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"
@@ -38,3 +42,10 @@ void CWorkspace::cleanup() {
         dataModel.reset();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::IDispatchImpl<IWorkspace,&IID_IWorkspace,&LIBID_RobloxLib,1,2,ATL::CComTypeInfoHolder>;
+template class ATL::IObjectWithSiteImpl<CWorkspace>;
+template class RBX::Listener<RBX::Workspace,RBX::DrawChanged>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std::allocator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std::allocator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *> >;

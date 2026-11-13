@@ -1,0 +1,64 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+    "address": "0050ba30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage_ppm\\objects\\54930b14b6c19b07\\candidate.obj": "d3f8c3d31c8be833fc7a70e88c65763fafa7a97f292e81071a38e782ce37f2d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r0mdhq1r\\owners.json": "0d8bd1d96b962abde892b4b6c99a235a1000faa6d7ffdcb87d79f904244467d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r0mdhq1r\\import-thunk-identities-as-owner.json": "4ffdf958470c7725744d6414f191d058bb6716324c6165e9823a819098d49fc0"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?scanUInt@G3D@@YAHAAVBinaryInput@1@@Z",
+    "address": "0050d1f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage_ppm\\objects\\54930b14b6c19b07\\candidate.obj": "d3f8c3d31c8be833fc7a70e88c65763fafa7a97f292e81071a38e782ce37f2d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r0mdhq1r\\owners.json": "0d8bd1d96b962abde892b4b6c99a235a1000faa6d7ffdcb87d79f904244467d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r0mdhq1r\\import-thunk-identities-as-owner.json": "4ffdf958470c7725744d6414f191d058bb6716324c6165e9823a819098d49fc0"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+    "address": "0050eaf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage_ppm\\objects\\54930b14b6c19b07\\candidate.obj": "d3f8c3d31c8be833fc7a70e88c65763fafa7a97f292e81071a38e782ce37f2d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r0mdhq1r\\owners.json": "0d8bd1d96b962abde892b4b6c99a235a1000faa6d7ffdcb87d79f904244467d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r0mdhq1r\\import-thunk-identities-as-owner.json": "4ffdf958470c7725744d6414f191d058bb6716324c6165e9823a819098d49fc0"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?commitString@TextOutput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00512950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "007ce709",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "007cc204",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?scanUInt@G3D@@YAHAAVBinaryInput@1@@Z",
+   "address": "007ce709",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

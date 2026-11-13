@@ -1,0 +1,68 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?readSymbol@TextInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+    "address": "00518110"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTextInput\\objects\\4000dfdcadde810d\\candidate.obj": "fc226adb40ab46e595d6d1d23286d6a0a97d5e02b2098b0efce8a504f5b91a04",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8v723pw5\\owners.json": "640a8fa0648303e2d62dcd8fce8a4db45f93b76924f90e66175806cc0ffc985c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8v723pw5\\import-thunk-identities-as-owner.json": "f92f01bf2c1de1072e42b01e3a9503236bfc9c3d368bb59a71d3b381d222fe7d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?readSymbol@TextInput@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "00518180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTextInput\\objects\\4000dfdcadde810d\\candidate.obj": "fc226adb40ab46e595d6d1d23286d6a0a97d5e02b2098b0efce8a504f5b91a04",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8v723pw5\\owners.json": "640a8fa0648303e2d62dcd8fce8a4db45f93b76924f90e66175806cc0ffc985c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8v723pw5\\import-thunk-identities-as-owner.json": "f92f01bf2c1de1072e42b01e3a9503236bfc9c3d368bb59a71d3b381d222fe7d"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0TokenException@TextInput@G3D@@QAE@ABV012@@Z",
+   "address": "00517940",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0WrongSymbol@TextInput@G3D@@QAE@ABV012@@Z",
+   "address": "00518240",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0WrongSymbol@TextInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH00@Z",
+   "address": "005168b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1WrongSymbol@TextInput@G3D@@UAE@XZ",
+   "address": "00516990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?readSymbolToken@TextInput@G3D@@QAE?AVToken@2@XZ",
+   "address": "005180b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?readSymbol@TextInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "007cc832",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?readSymbol@TextInput@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007cc84b",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -1,0 +1,470 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z",
+    "address": "007ca0bb"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\133d4dbbbc8ecf7d\\candidate.obj": "edfec76270dc0856240e32ec4eacd8709a63b358ff1ad3e17a7a3438d1da58bd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$00VEndcapTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVEndcapTransform@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004fdd90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$03VEndcapTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVEndcapTransform@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004fe070"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$02VCylinderTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVCylinderTransform@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004fe350"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$0A@VCylinderTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVCylinderTransform@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004fe640"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$04VCylinderTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVCylinderTransform@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004fe930"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$01VCylinderTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVCylinderTransform@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004fec20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?buildTop@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+    "address": "00500020"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+    "address": "00500180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\owners.json": "5b1c6e3975543fe49d3ff56f927460f424fd8249077b871aa3df6dac9cbdfd3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yzy3gh1n\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$buildFace@$00VEndcapTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVEndcapTransform@12@VVector2int16@G3D@@W4Purpose@012@@Z",
+   "address": "004fef10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z",
+   "address": "004fdaf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z",
+   "address": "004dd2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Mesh@RenderBase@RBX@@IAE@XZ",
+   "address": "00548570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??RCylinderTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+   "address": "004fdbd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??REndcapTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+   "address": "004fdcc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EHeadMesh@ViewNew@RBX@@UAEPAXI@Z",
+   "address": "004e54c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?allocVertex@Mesh@RenderBase@RBX@@SAIABVVector3@G3D@@0ABVVector2@5@_N@Z",
+   "address": "00548000",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z",
+   "address": "004dcbb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?appendQuadFromVertexIndices@LevelBuilder@ViewNew@RBX@@IAEXIIII@Z",
+   "address": "00500eb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z",
+   "address": "00500d30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?freeVertex@Mesh@RenderBase@RBX@@SAXI@Z",
+   "address": "00548640",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPointer@?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@AAEXPAVLevel@Mesh@RenderBase@RBX@@@Z",
+   "address": "00598fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?zero@Vector2@G3D@@SAABV12@XZ",
+   "address": "00509ba0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$0",
+   "address": "004da459",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$2",
+   "address": "004da96b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+   "address": "007cb17b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$10",
+   "address": "007c9f17",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$11",
+   "address": "007c9f1f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$12",
+   "address": "007c9f27",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$13",
+   "address": "007c9f2f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$14",
+   "address": "007c9f37",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$15",
+   "address": "007c9f3f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$16",
+   "address": "007c9f47",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$17",
+   "address": "007c9f4f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$18",
+   "address": "007c9f57",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$19",
+   "address": "007c9f60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$20",
+   "address": "007c9f68",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$21",
+   "address": "007c9f71",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$22",
+   "address": "007c9f79",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$23",
+   "address": "007c9f82",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$24",
+   "address": "007c9f8a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$25",
+   "address": "007c9f93",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$26",
+   "address": "007c9f9b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$27",
+   "address": "007c9fa4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$28",
+   "address": "007c9fac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$29",
+   "address": "007ca002",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$30",
+   "address": "007ca00b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$31",
+   "address": "007ca014",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$32",
+   "address": "007ca01d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$33",
+   "address": "007ca026",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$34",
+   "address": "007ca02f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$35",
+   "address": "007c9fb5",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$36",
+   "address": "007c9fcc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$37",
+   "address": "007c9fd8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$38",
+   "address": "007c9fe4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$39",
+   "address": "007c9fed",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$4",
+   "address": "007c9e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$40",
+   "address": "007c9ff6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$41",
+   "address": "007ca038",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$42",
+   "address": "007ca041",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$43",
+   "address": "007ca058",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$44",
+   "address": "007ca061",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$45",
+   "address": "007ca06c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$46",
+   "address": "007ca074",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$47",
+   "address": "007ca07d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$48",
+   "address": "007ca085",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$49",
+   "address": "007ca091",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$5",
+   "address": "007c9eb3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$50",
+   "address": "007ca09d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$51",
+   "address": "007ca0a6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$52",
+   "address": "007ca0b2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$53",
+   "address": "007c9ea7",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$54",
+   "address": "007c9ebe",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$55",
+   "address": "007c9ed5",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$56",
+   "address": "007c9ee6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$57",
+   "address": "007c9efd",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$58",
+   "address": "007c9f0e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$6",
+   "address": "007c9eca",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$7",
+   "address": "007c9ede",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$8",
+   "address": "007c9ef2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z$9",
+   "address": "007c9f06",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 9,
+ "owners_bound": 9
+}

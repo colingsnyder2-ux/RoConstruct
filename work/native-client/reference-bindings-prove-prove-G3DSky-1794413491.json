@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?fromFile@Sky@G3D@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@2@PAVRenderDevice@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1_NNH@Z",
+    "address": "007b58a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSky\\objects\\865fa3080185a58d\\candidate.obj": "7ad632fd77456ee93ae2d5de6a1311c31a703471f569d02a8ab87e7579349fc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hwr4qo36\\owners.json": "6c1e2f5829b5a77ac26234d773018516fe075de319f243e012b0282ba3cf34f6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hwr4qo36\\import-thunk-identities-as-owner.json": "b057fff26221675d23a956efcf869c992d4bee9a0ddc3021806bb8f00378a9ac"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?fromFile@Sky@G3D@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@2@PAVRenderDevice@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBV56@_NNH@Z",
+   "address": "007b5120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?fromFile@Sky@G3D@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@2@PAVRenderDevice@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1_NNH@Z",
+   "address": "007ee366",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

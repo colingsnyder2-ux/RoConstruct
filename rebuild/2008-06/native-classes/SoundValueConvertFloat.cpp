@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SoundValueConvertFloat | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ce8c4162 | roc native-status --write
 #include "reflection/type.h"
 namespace RBX { namespace Reflection {
 template<> float& Value::convert<float>() {

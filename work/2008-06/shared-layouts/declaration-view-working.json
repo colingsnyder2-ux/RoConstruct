@@ -3,14 +3,14 @@
  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
  "sources": {
-  "rebuild/2008-06/tests/record_native_declaration_view.py": "04e81acd9843ad50946e590ecb1f6182f099947b769bb44d0f106178b6c5dfd7",
-  "rebuild/2008-06/tests/declaration_view_profile.py": "4728b5a39c8aece65c16504dff700de69c008f27a67d7a7c904ab141195af5a4",
-  "rebuild/2008-06/native-classes/CDeclarationView.cpp": "4f0dc92ab0fbd6ef2bebb3ce779c89d799af606caee73435801cd569ee0203cf",
-  "rebuild/2008-06/native-headers/CDeclarationView.h": "cc5f53a2f303dc617a0da220cf62250d76b0fe2e41d9d17a697f0bac351743d8",
-  "rebuild/2008-06/tests/NativeDeclarationViewLayout.cpp": "62211b683e402d54abae300567df8c54bae27b0cbf86496343d420adcb63a227"
+  "rebuild/2008-06/tests/record_native_declaration_view.py": "542cd836bdfdfadf87a21ff6a2155c3f65d13732e5c786e23b97734f26eed0d9",
+  "rebuild/2008-06/tests/declaration_view_profile.py": "f9ebc69629543e2d2917a8db936b49d6c9693fbc57c2bb435599d7273340673b",
+  "rebuild/2008-06/native-classes/CDeclarationView.cpp": "4da473c951b8fe567ad5cdee811f9b1b15a2deae7da9c6d48d68c8c9c5663bee",
+  "rebuild/2008-06/native-headers/CDeclarationView.h": "8f79e01b280d40d99e4858735dd653a0225978551a0f03755c114e3607772891",
+  "rebuild/2008-06/tests/NativeDeclarationViewLayout.cpp": "68cfe9ccb41c8f2cb4487b37677ab300654b1b11767103e728571d470e6a0f45"
  },
- "layout_obj": "cdaf7b3cff63aa62053712668f0cd97b3782cc85f81ef19d3af0b3f4c958b087",
- "unit_obj": "e8ecf7b7281023f96655b70b8f96970ae13d1f54d29e2fed04167d623b07a4cd",
+ "layout_obj": "3256c224e0305d5f13ad314f337edbbd7ac0891e7f9c7bbc074a398aa8704676",
+ "unit_obj": "ca00d348624599429ea214cf3015b910248fc3ac18f93bef1b37d7a56d324e7b",
  "methods": [
   {
    "address": "00434500",

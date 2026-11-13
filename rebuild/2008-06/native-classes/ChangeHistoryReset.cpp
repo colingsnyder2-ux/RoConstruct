@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ChangeHistoryReset | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b0044149 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"
 #include <boost/checked_delete.hpp>

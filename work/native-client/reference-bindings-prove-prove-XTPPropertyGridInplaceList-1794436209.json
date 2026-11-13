@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPPropertyGridInplaceList@@UBEPAUCRuntimeClass@@XZ",
+    "address": "0077a400"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceList\\objects\\b1460d72e760f811\\candidate.obj": "42a7f3df511607b9585ec60d80dc7162f7d5284a5139556209b80e10f0913ae7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6wqf7d5l\\owners.json": "80623a6650ffcf42ab9c4bfe951ceeaba94b9eb08a0c0b8474698bd78e424ef2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6wqf7d5l\\import-thunk-identities-as-owner.json": "ec2f22d816517b0c6681254e1bb1c860f4ee7f04edbfbd46be359fef17202ef5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTPPropertyGridInplaceList@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "0077ac90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceList\\objects\\b1460d72e760f811\\candidate.obj": "42a7f3df511607b9585ec60d80dc7162f7d5284a5139556209b80e10f0913ae7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6wqf7d5l\\owners.json": "80623a6650ffcf42ab9c4bfe951ceeaba94b9eb08a0c0b8474698bd78e424ef2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6wqf7d5l\\import-thunk-identities-as-owner.json": "ec2f22d816517b0c6681254e1bb1c860f4ee7f04edbfbd46be359fef17202ef5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisMessageMap@CXTPPropertyGridInplaceList@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "0077aac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPPropertyGridInplaceList@@KGPAUCRuntimeClass@@XZ",
+   "address": "0077a3f0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

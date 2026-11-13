@@ -14,6 +14,10 @@
 //     binds them through boost::bind / for_eachChild); the evidence mangling is the same.
 //   * Player::setUnder13 0048b910 / setSuperSafeChat 0048b940: the Network/Player.h inlines (BoundProp GetSet call
 //     through prop_Under13 / prop_SuperSafeChat + 0x18), emitted out of line here.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit480_2008Player | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src d7fa650b | roc native-status --write
 #include "Network/Player.h"
 #include "v8tree/Service.h"
 #include "v8datamodel/ModelInstance.h"
@@ -119,3 +123,16 @@ template class RBX::DescribedCreatable<RBX::Network::Player, RBX::Instance, RBX:
 // PropDescriptor<Player, std::string>::GetSetImpl (prop_characterAppearance): getValue 0048ab70.
 template class RBX::Reflection::PropDescriptor<RBX::Network::Player, std::string>::GetSetImpl<
 	std::string (RBX::Network::Player::*)() const, void (RBX::Network::Player::*)(const std::string&)>;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TypedPropertyDescriptor<bool>;
+template class RBX::Reflection::TypedPropertyDescriptor<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;
+template class boost::function0<void,std::allocator<boost::function_base> >;
+template class boost::function0<void,std::allocator<void> >;
+template class boost::shared_ptr<RBX::Backpack>;
+template class boost::shared_ptr<RBX::ModelInstance>;
+template class boost::shared_ptr<RBX::TimerService>;
+template class boost::weak_ptr<RBX::Instance>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<bool>::GetSet>;
+template class std::deque<boost::function<void __cdecl(void),std::allocator<void> >,std::allocator<boost::function<void __cdecl(void),std::allocator<void> > > >;

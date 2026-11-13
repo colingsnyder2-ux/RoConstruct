@@ -1,0 +1,72 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisMessageMap@CXTPControlEditCtrl@@KGPBUAFX_MSGMAP@@XZ",
+    "address": "00743cf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlEdit\\objects\\2e6129280e9a2ca5\\candidate.obj": "948750f52c0f2ba179caf2282c1dd3a0bf6db635bb84a90a095c1cc34ccea764",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8v36kmab\\owners.json": "c71098244fd293ba73b52ac753cf24023dcdad8ab32acee5030b1347bbf013dd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8v36kmab\\import-thunk-identities-as-owner.json": "19b78b8dc3010baf37c7517737130d43bceba8d3f8901322cd7808b369e7891e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisMessageMap@CXTPEdit@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "006a9450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnContextMenu@CXTPControlEditCtrl@@IAEXPAVCWnd@@VCPoint@@@Z",
+   "address": "006ad2a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnDestroy@CXTPControlEditCtrl@@IAEXXZ",
+   "address": "00741ef0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEditChanged@CXTPControlEditCtrl@@IAEXXZ",
+   "address": "00742bf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKillFocus@CXTPControlEditCtrl@@IAEXPAVCWnd@@@Z",
+   "address": "00741f10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDown@CXTPControlEditCtrl@@IAEXIVCPoint@@@Z",
+   "address": "00742c40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTPControlEditCtrl@@IAEXIVCPoint@@@Z",
+   "address": "006a8dc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRButtonDown@CXTPControlEditCtrl@@IAEXIVCPoint@@@Z",
+   "address": "00742c90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetFocus@CXTPControlEditCtrl@@IAEXPAVCWnd@@@Z",
+   "address": "00742d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnWindowFromPoint@CXTPControlEditCtrl@@IAEJIJ@Z",
+   "address": "0049ed50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

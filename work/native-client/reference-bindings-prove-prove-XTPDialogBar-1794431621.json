@@ -1,0 +1,184 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetTextColor@CDC@@QBEKXZ",
+    "address": "00401dd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDialogBar\\objects\\2dd740133d13b4ae\\candidate.obj": "c1bfb2d51894fa9048bfb80bcf1229aa8eb90fdd96cd576f322a97be279798b8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_2_fi87\\owners.json": "3dfcb3731595a6fec13c0bca74f2a4893b5dc99da4c9dcb15bfc647414b86217",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_2_fi87\\import-thunk-identities-as-owner.json": "7789c589fd9c8cc148088299c115c1c3cd05218e652453429b4a415fb315710a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CControlButtonHide@CXTPDialogBar@@QAE@XZ",
+    "address": "0079ebd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDialogBar\\objects\\2dd740133d13b4ae\\candidate.obj": "c1bfb2d51894fa9048bfb80bcf1229aa8eb90fdd96cd576f322a97be279798b8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_2_fi87\\owners.json": "3dfcb3731595a6fec13c0bca74f2a4893b5dc99da4c9dcb15bfc647414b86217",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_2_fi87\\import-thunk-identities-as-owner.json": "7789c589fd9c8cc148088299c115c1c3cd05218e652453429b4a415fb315710a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CControlCaptionPopup@CXTPDialogBar@@QAE@XZ",
+    "address": "0079ec20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDialogBar\\objects\\2dd740133d13b4ae\\candidate.obj": "c1bfb2d51894fa9048bfb80bcf1229aa8eb90fdd96cd576f322a97be279798b8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_2_fi87\\owners.json": "3dfcb3731595a6fec13c0bca74f2a4893b5dc99da4c9dcb15bfc647414b86217",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_2_fi87\\import-thunk-identities-as-owner.json": "7789c589fd9c8cc148088299c115c1c3cd05218e652453429b4a415fb315710a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CXTPControlPopup@@QAE@XZ",
+   "address": "006e73e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECControlButtonHide@CXTPDialogBar@@UAEPAXI@Z",
+   "address": "007457e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECControlButtonHide@CXTPDialogBar@@WCA@AEPAXI@Z",
+   "address": "00745730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECControlCaptionPopup@CXTPDialogBar@@UAEPAXI@Z",
+   "address": "006c2230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECControlCaptionPopup@CXTPDialogBar@@WCA@AEPAXI@Z",
+   "address": "006c2120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AdjustExcludeRect@CControlCaptionPopup@CXTPDialogBar@@UAEXAAVCRect@@H@Z",
+   "address": "0079ec50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlButton@@UAEPAVCXTPControl@@H@Z",
+   "address": "007457b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlPopup@@UAEPAVCXTPControl@@H@Z",
+   "address": "006e7b10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Copy@CXTPControlPopup@@UAEXPAVCXTPControl@@H@Z",
+   "address": "006e7fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoPropExchange@CXTPControlPopup@@UAEXPAVCXTPPropExchange@@@Z",
+   "address": "006e3200",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Draw@CControlButtonHide@CXTPDialogBar@@UAEXPAVCDC@@@Z",
+   "address": "0079ee60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Draw@CControlCaptionPopup@CXTPDialogBar@@UAEXPAVCDC@@@Z",
+   "address": "0079ef60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCommandBar@CXTPControlPopup@@UBEPAVCXTPCommandBar@@XZ",
+   "address": "0042ea80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPopuped@CXTPControlPopup@@UBEHXZ",
+   "address": "006a6e80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlButton@@UBEPAUCRuntimeClass@@XZ",
+   "address": "00745630",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlPopup@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006e73d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnClick@CXTPControlPopup@@MAEXHVCPoint@@@Z",
+   "address": "006e7b50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomizeDragOver@CXTPControlPopup@@MAEXPAVCXTPControl@@VCPoint@@AAK@Z",
+   "address": "006e79f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnExecute@CControlButtonHide@CXTPDialogBar@@UAEXXZ",
+   "address": "0079ec00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDblClk@CXTPControlPopup@@MAEHVCPoint@@@Z",
+   "address": "006e77d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonUp@CXTPControlPopup@@MAEXVCPoint@@@Z",
+   "address": "006e7510",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTPControlPopup@@MAEXVCPoint@@@Z",
+   "address": "006e7d60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetPopup@CControlCaptionPopup@CXTPDialogBar@@UAEHH@Z",
+   "address": "0079ec70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUnderlineActivate@CXTPControlPopup@@UAEXXZ",
+   "address": "006e74e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RestoreCommandBarList@CXTPControlPopup@@MAEXPAVCXTPCommandBarList@@@Z",
+   "address": "006e1b00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetBeginGroup@CControlButtonHide@CXTPDialogBar@@UAEXH@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateShadow@CXTPControlPopup@@MAEXXZ",
+   "address": "006e76b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetTextColor@4",
+   "address": "00804114",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

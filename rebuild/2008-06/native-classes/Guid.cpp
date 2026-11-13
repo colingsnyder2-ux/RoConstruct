@@ -1,4 +1,8 @@
 // Inactive: globals and initializer require original data/link proof.
+// >>> native-status (generated) -- do not edit >>>
+// Guid | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (deepseek-v4.1-flash)
+// <<< native-status | src 510e7432 | roc native-status --write
 #include "util/Guid.h"
 #include <windows.h>
 #include <objbase.h>

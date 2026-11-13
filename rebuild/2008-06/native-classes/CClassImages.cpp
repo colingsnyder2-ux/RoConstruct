@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassImages | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/3 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto (+2) (mixed 2)
+// <<< native-status | src d699077e | roc native-status --write
 #include "CClassImages.h"
 #include <XTToolkitPro.h>
 #include <stdexcept>

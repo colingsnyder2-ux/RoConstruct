@@ -1,0 +1,57 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_start_pass_2_quant",
+    "address": "005360e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjquant2\\objects\\d9f532fd6b696144\\candidate.obj": "b85983b10ecffd5d3a262f7ae8ee0341bb43481aeff984f47f4823ca0e3b5c62",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6e2ifse8\\owners.json": "50c2c873d74d1588099b2fc62f111327e6db63d8b8f224df8f14f0eeeacde518",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6e2ifse8\\import-thunk-identities-as-owner.json": "9fdb93de5e2f6476ee419128968dc8b169b282b4086f2a03eb7e0b0a2523d371"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_finish_pass1",
+   "address": "005360b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_finish_pass2",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_init_error_limit",
+   "address": "00536010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jzero_far",
+   "address": "00525ba0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_pass2_fs_dither",
+   "address": "00535d50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_pass2_no_dither",
+   "address": "00535c90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_prescan_quantize",
+   "address": "00535030",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

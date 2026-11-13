@@ -9,6 +9,11 @@
 // offsets, cited there: RTTI 0083d1f4 / 00842834 / 0084ada8 / 0084ae5c, sizes 0x50 / 0x1c / 0x20), but on the 2008
 // Point (native-headers/v8kernel/Point2008.h) and GeoPair (native-headers/v8world/GeoPair2008.h). No constructor or
 // vtable is emitted by this unit. The proposal to switch Connector2008.h to the 2008 headers is in the recorder receipt.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ContactUnit2008ConnectorBody | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by colin (+3) (mixed 3)
+// <<< native-status | src fb643a8d | roc native-status --write
 #include <G3D/Vector3.h>
 #include "v8kernel/KernelIndex.h"
 #include "v8kernel/KernelInput2008.h"

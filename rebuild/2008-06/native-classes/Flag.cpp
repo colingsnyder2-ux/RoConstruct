@@ -2,6 +2,10 @@
 // atexit 00800310). Evidence in native-headers/v8datamodel/Flag.h.
 // Built against the native v8datamodel/Tool.h and Hopper.h (Tool / BackpackItem with the 2008 const-char-array
 // DescribedCreatable); tests/record_native_flag_family.py verifies every row and the Flag vtables.
+// >>> native-status (generated) -- do not edit >>>
+// Flag | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/4 mapped addresses byte-exact | 3 unproved | 1 referenced strings (not rechecked) | by EspClaude (+2) (mixed 2)
+// <<< native-status | src 7607fe17 | roc native-status --write
 #include "v8datamodel/Flag.h"
 #include "Network/Player.h"
 
@@ -52,3 +56,6 @@ namespace RBX
 		raisePropertyChanged(prop_Color);
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sFlag>();

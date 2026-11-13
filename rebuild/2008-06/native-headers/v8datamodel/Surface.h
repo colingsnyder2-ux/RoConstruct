@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Surface | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 181a3af0 | roc native-status --write
 #include "v8world/Controller.h"
 #include "v8xml/XmlElement.h"
 #include "util/SurfaceType.h"

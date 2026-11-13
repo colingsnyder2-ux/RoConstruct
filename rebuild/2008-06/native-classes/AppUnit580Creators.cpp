@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native rows of the Creatable / FactoryProduct template instances for the Feature.cpp classes (Hole,
 // MotorFeature, VelocityMotor) that the StandardVerbs / command verbs translation unit (0057d250..005831ff) emits at
 // the start of the application range 00580000..00584000, inactive. Verified by tests/record_native_app_unit580.py.

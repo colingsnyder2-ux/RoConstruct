@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSecureHtmlView | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/6 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+2) (mixed 2)
+// <<< native-status | src d99ee39f | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <mshtmdid.h>
 

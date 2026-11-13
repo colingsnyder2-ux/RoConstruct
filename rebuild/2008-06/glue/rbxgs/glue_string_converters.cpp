@@ -3,6 +3,8 @@
 // This unit compiles both files unchanged and takes each member's address so the compiler emits them.
 // (The module excludes the two files from its main layer.)
 #include "../../../../tools/rbxgs/Client/App/util/Utilities.cpp"
+#include "util/MeshId.h"
+#include "util/TextureId.h"
 #include "../../../../tools/rbxgs/Client/App/v8tree/Property.cpp"
 
 namespace

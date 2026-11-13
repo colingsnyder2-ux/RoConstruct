@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ChangeHistoryCommit | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 37c6005d | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"
 #include <algorithm>
@@ -86,3 +90,9 @@ void RBX::ChangeHistoryService::mergeFirst()
     delete *it;
     history.erase(it);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<RBX::HistoryItem *>;
+template class boost::_mfi::mf1<void,RBX::HistoryItem,std::pair<RBX::Reflection::PropertyDescriptor const * const,RBX::Reflection::Value> const &>;
+template class std::allocator<std::pair<RBX::Instance * const,RBX::HistoryItem> >;
+template class std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const * const,RBX::Reflection::Value> >;

@@ -1,9 +1,9 @@
 {
-  "revision": "5f07015bca02900bd2615ce5a7eee6a0779acfa7",
+  "revision": "c9a075722a0c1bc95a2b58cef0f169760ffc4897",
   "sources": {
     "tools\\libs\\mfc-9.0-rtm\\atlmfc\\include\\atlimage.h": "900c8e9860bc5bafa45ab49096f255f018c1a48ae798911c7595f3b9906b6bb6",
     "tools\\libs\\xtp-11.2.2\\roc_claudeM_55bb15a72a4fb4db.cpp": "e261d4097e8117acf77bc313ae3cad4132424a39252c2956daeda297a97197ed",
-    "roc\\libs.py": "7050e86fd3f8a30d24845d324ee5269f565dddc70762ba293afcdb5863ab3cf6",
+    "roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
     "rebuild\\2008-06\\p6\\build_native_icons.py": "3998c6c292f176f434b18b4f8b311af9e6091009ff6a2633c4e9a7f5e02af963"
   },
   "reconstructed_alias_sha256": "a2c8499b84be3bb653f84c4960301373edeca0da8ce19069650b5e913133fd5b",

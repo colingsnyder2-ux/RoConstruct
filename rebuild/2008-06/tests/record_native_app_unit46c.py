@@ -216,6 +216,8 @@ ROWS = [
     (0x46df70, 'MapOperations', '??$_Copy_backward_opt@PAUNativeRobloxPart' + NS + 'PAU123@Uforward_iterator_tag'),
     (0x46dfc0, 'MapOperations', '?_Xran@' + VNRP),
     (0x46e040, 'MapOperations', '??$_Allocate@UNativeRobloxPart' + NS),
+    (0x46e0a0, 'MapOperations', '??$_Uninit_copy@PAUNativeRobloxPart' + NS),
+    (0x46e180, 'MapOperations', '??$_Uninit_fill_n@PAUNativeRobloxPart' + NS),
     (0x46e210, 'MapOperations', '??$_Destroy_range@V?$allocator@UNativeRobloxPart' + NS),
     (0x46e280, 'MapOperations', '?at@' + VNRP),
     (0x46e310, 'MapOperations', '?_Ufill@' + VNRP),
@@ -223,6 +225,7 @@ ROWS = [
     (0x46e370, 'MapOperations', '?getPart@LDraw2RobloxPartMap' + NS),
     (0x46e390, 'MapOperations', '??$_Umove@PAUNativeRobloxPart' + NS),
     (0x46e3c0, 'MapOperations', '??1' + VNRP),
+    (0x46e430, 'MapOperations', '?_Insert_n@' + VNRP),
     (0x46e6b0, 'MapOperations', '??0LDraw2RobloxPartMap' + NS),
     (0x46e790, 'MapOperations', '??1LDraw2RobloxPartMap' + NS + 'UAE@XZ'),
     (0x46e800, 'MapOperations', '?insert@' + VNRP),
@@ -263,11 +266,8 @@ PENDING_ROWS = {0x46ea00: '??1LuaObjectWriter' + NS + 'UAE@XZ', 0x46ea10: '??_GL
                 0x46ea30: '??0LDrawCommand' + NS, 0x46eae0: '??_GLDrawCommand' + NS + 'UAEPAXI@Z',
                 0x46f630: '??0LuaWriter' + NS, 0x46f820: '??1LuaWriter' + NS + 'UAE@XZ'}
 # rows split at a catch funclet (or merged with the next function) by the analysis: bounds evidence only
-SPANS = [
-    ((0x46e180, 0x46e1d9), 'MapOperations', '??$_Uninit_fill_n@PAUNativeRobloxPart' + NS),
-    ((0x46e430, 0x46e574, 0x46e612), 'MapOperations', '?_Insert_n@' + VNRP),
-]
-MERGED = [(0x46e0a0, 'MapOperations', '??$_Uninit_copy@PAUNativeRobloxPart' + NS)]
+SPANS = []
+MERGED = []
 # tag_* Name references (LDrawMapTags.cpp): initializer row -> tag text
 TAG_INIT = {'tag_schema_version': 0x7efb60, 'tag_color_map': 0x7efb80, 'tag_color': 0x7efba0,
             'tag_ldraw_code': 0x7efbc0, 'tag_roblox_code': 0x7efbe0, 'tag_part_map': 0x7efc00, 'tag_part': 0x7efc20,
@@ -653,9 +653,6 @@ OPEN = {
         '_Ptr + _Off for the second bound check (edx) and schedules push edi after the _invalid_parameter_noinfo '
         'load; the build reuses ecx. Plain xstring and std-noinline-string: 91 B (/O2, /O1, /Os; 21022 and '
         '50727). Open.'),
-    '0x46e0a0, 0x46e180 + 0x46e1d9, 0x46e430 + 0x46e574 + 0x46e612': (
-        'vector<NativeRobloxPart> helpers whose analysed extents are wrong (bounds_evidence): exact when joined / '
-        'as prefix, not counted.'),
 }
 UNIT_MAP = {
     'workspace 0x46c000..0x46cabf': (
@@ -693,10 +690,8 @@ PROPOSALS = {
         'LDrawEntityLifetime.cpp with the RTTI names: 0x46ea00 / 0x46ea10 / 0x46ea30 / 0x46eae0 / 0x46f630 / 0x46f820 are exact with every '
         'target verified (pending-build-only, not counted).'),
     'work/2008-06/bounds.json (server host)': (
-        'BOUNDS: 0x46e180 + 0x46e1d9 is one function (_Uninit_fill_n<NativeRobloxPart*>, 139 B), 0x46e430 + 0x46e574 '
-        '+ 0x46e612 is one function (vector<NativeRobloxPart>::_Insert_n, 635 B), and 0x46e0a0 is two functions '
-        '(_Uninit_copy<NativeRobloxPart*> 0x46e0a0, 141 B, and a 73-byte function at 0x46e130). Relocation-masked '
-        'exact evidence in bounds_evidence.'),
+        'The current function map now gives 0x46e0a0 (141 B), 0x46e180 (139 B), and 0x46e430 (635 B) their complete '
+        'extents, so all three are counted normally.'),
 }
 
 paths = [Path(__file__).resolve()] + list(SOURCES.values()) + list(OWN_SOURCES.values()) + HEADERS

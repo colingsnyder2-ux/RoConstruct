@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ClearBackpack | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+1) (mixed 2)
+// <<< native-status | src edce6d72 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "Network/Players.h"
 #include "Network/Player.h"

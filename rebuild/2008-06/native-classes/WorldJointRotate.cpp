@@ -5,6 +5,11 @@
 // surfaceTypeToJoint. getChannelValue 00645af0, canBuildJoint 00645f60, getTorqueArmLength and putInKernel 00646550
 // need the native Primitive / Body; DynamicRotateJoint::stepUi 006463f0 needs World::ticklePrimitive (see
 // NATIVE_WORLD_JOINTS_PENDING_WORLD and the recorder's PROPOSALS).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// WorldJointRotate | 2008-06 | draft (no current byte proof)
+// 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by king_originala (+2) (mixed 3)
+// <<< native-status | src 9f4611f5 | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "v8kernel/Kernel.h"
 #include "v8kernel/Connector.h"

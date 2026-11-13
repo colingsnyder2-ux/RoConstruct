@@ -1,0 +1,152 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1?$CArray@PAUHWND__@@PAU1@@@UAE@XZ",
+    "address": "0071d0d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPMouseManager\\objects\\1657047718461637\\candidate.obj": "9f0a2b7a8e47c73af08efef9f902aed36b3f31c6e68fe41a82de63d9f77bda05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\owners.json": "bd487a5bea677a99b1e44e8b4897f7be6c4564f07bf9b6490a57fe61758834d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\import-thunk-identities-as-owner.json": "8d3715c017937403199f48684d493355c91eadaafe837b1c097cf4f333d50719"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Remove@CTrustedArray@CXTPMouseManager@@QAEXPAUHWND__@@@Z",
+    "address": "0071d0f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPMouseManager\\objects\\1657047718461637\\candidate.obj": "9f0a2b7a8e47c73af08efef9f902aed36b3f31c6e68fe41a82de63d9f77bda05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\owners.json": "bd487a5bea677a99b1e44e8b4897f7be6c4564f07bf9b6490a57fe61758834d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\import-thunk-identities-as-owner.json": "8d3715c017937403199f48684d493355c91eadaafe837b1c097cf4f333d50719"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?IsTrackedLock@CXTPMouseManager@@QAEHPBVCXTPCommandBar@@@Z",
+    "address": "0071d010"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPMouseManager\\objects\\1657047718461637\\candidate.obj": "9f0a2b7a8e47c73af08efef9f902aed36b3f31c6e68fe41a82de63d9f77bda05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\owners.json": "bd487a5bea677a99b1e44e8b4897f7be6c4564f07bf9b6490a57fe61758834d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\import-thunk-identities-as-owner.json": "8d3715c017937403199f48684d493355c91eadaafe837b1c097cf4f333d50719"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AddTrustedWindow@CXTPMouseManager@@QAEXPAUHWND__@@@Z",
+    "address": "0071d770"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPMouseManager\\objects\\1657047718461637\\candidate.obj": "9f0a2b7a8e47c73af08efef9f902aed36b3f31c6e68fe41a82de63d9f77bda05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\owners.json": "bd487a5bea677a99b1e44e8b4897f7be6c4564f07bf9b6490a57fe61758834d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\import-thunk-identities-as-owner.json": "8d3715c017937403199f48684d493355c91eadaafe837b1c097cf4f333d50719"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?PreTranslateMouseEvents@CXTPMouseManager@@AAEHIUtagPOINT@@@Z",
+    "address": "0071d380"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPMouseManager\\objects\\1657047718461637\\candidate.obj": "9f0a2b7a8e47c73af08efef9f902aed36b3f31c6e68fe41a82de63d9f77bda05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\owners.json": "bd487a5bea677a99b1e44e8b4897f7be6c4564f07bf9b6490a57fe61758834d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\import-thunk-identities-as-owner.json": "8d3715c017937403199f48684d493355c91eadaafe837b1c097cf4f333d50719"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPMouseManager@@QAE@XZ",
+    "address": "0071d790"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPMouseManager\\objects\\1657047718461637\\candidate.obj": "9f0a2b7a8e47c73af08efef9f902aed36b3f31c6e68fe41a82de63d9f77bda05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\owners.json": "bd487a5bea677a99b1e44e8b4897f7be6c4564f07bf9b6490a57fe61758834d7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a37keos1\\import-thunk-identities-as-owner.json": "8d3715c017937403199f48684d493355c91eadaafe837b1c097cf4f333d50719"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$CArray@PAUHWND__@@PAU1@@@QAE@XZ",
+   "address": "0071d050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CXTPWindowRect@@QAE@PAUHWND__@@@Z",
+   "address": "006f7aa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CArray@PAUHWND__@@PAU1@@@UAEPAXI@Z",
+   "address": "0071d150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECTrackArray@CXTPMouseManager@@UAEPAXI@Z",
+   "address": "006a31f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECTrustedArray@CXTPMouseManager@@UAEPAXI@Z",
+   "address": "0071d150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPMouseManager@@UAEPAXI@Z",
+   "address": "0071d850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DeliverMessage@CXTPMouseManager@@AAEXPAVCXTPCommandBar@@IUtagPOINT@@@Z",
+   "address": "0071d2c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Find@CTrackArray@CXTPMouseManager@@QBEHPBVCXTPCommandBar@@@Z",
+   "address": "0071c330",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAt@?$CArray@PAUHWND__@@PAU1@@@QAEXHH@Z",
+   "address": "0071d070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SendTrackLostRecurse@CXTPMouseManager@@QAEXXZ",
+   "address": "0071d250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@PAUHWND__@@PAU1@@@UAEXAAVCArchive@@@Z",
+   "address": "006e34d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetAtGrow@?$CArray@PAUHWND__@@PAU1@@@QAEXHPAUHWND__@@@Z",
+   "address": "0070e320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetupHook@CXTPMouseManager@@AAEXH@Z",
+   "address": "0071d6a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetClassLongA@8",
+   "address": "00802be8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__IsWindow@4",
+   "address": "00802d50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

@@ -1,6 +1,11 @@
 // 2008-06 native RBX::Humanoid (inactive): one original unit (005d74a0..005dccxx; initializers 007f62d0..007f6950,
 // atexit 007ff300..007ff660). Evidence in native-headers/humanoid/Humanoid2008.h; verified by
 // tests/record_native_humanoid2008.py. Bodies after the donor tools/rbxgs Humanoid.cpp where the 2008 bytes agree.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Humanoid2008 | 2008-06 | draft (no current byte proof)
+// 0/13 mapped addresses byte-exact | 13 unproved | 1 referenced strings (not rechecked) | by king_originala (+5) (mixed 6)
+// <<< native-status | src 0ffbb1d7 | roc native-status --write
 #include "humanoid/Humanoid2008.h"
 #include "v8tree/Service.h"
 #include "util/Object.h"
@@ -270,3 +275,11 @@ namespace RBX
 	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_FallingDown("FallingDown", "active");
 	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_Seated("Seated", "active");
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::SignalDescImpl<1,void __cdecl(float)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(float)>;
+template class std::auto_ptr<RBX::HUMAN::HumanoidState>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sHumanoid>();

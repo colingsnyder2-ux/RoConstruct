@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Explosion | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b08d85b5 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "util/IRenderable.h"
 

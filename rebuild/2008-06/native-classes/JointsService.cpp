@@ -1,6 +1,13 @@
 // 2008-06 native RBX::JointsService (inactive); evidence in native-headers/v8datamodel/JointsService.h.
 // Verified by tests/record_native_services.py.
+// >>> native-status (generated) -- do not edit >>>
+// JointsService | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by colin (+2) (mixed 4)
+// <<< native-status | src 2a8df79d | roc native-status --write
 #include "v8datamodel/JointsService.h"
+#include "v8datamodel/Workspace.h"
+#include "v8tree/Service.h"
+#include <boost/thread/once.hpp>
 
 namespace RBX
 {
@@ -45,6 +52,32 @@ namespace RBX
 		ji->setParent(this);
 	}
 
+	// 005e5b50: semantic match; 156 bytes like the original. Evaluation order still differs.
+	void JointsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		if (world)
+		{
+			Listener<World, AutoJoin>* joinListener = dynamic_cast<Listener<World, AutoJoin>*>(this);
+			static_cast<Notifier<World, AutoJoin>*>(world)->removeListener(joinListener);
+			Listener<World, AutoDestroy>* destroyListener = dynamic_cast<Listener<World, AutoDestroy>*>(this);
+			static_cast<Notifier<World, AutoDestroy>*>(world)->removeListener(destroyListener);
+		}
+		world = NULL;
+		if (newProvider)
+		{
+			Workspace* workspace = ServiceProvider::create<Workspace>(newProvider);
+			if (workspace)
+				world = workspace->getWorld();
+		}
+		if (world)
+		{
+			Listener<World, AutoJoin>* joinListener = dynamic_cast<Listener<World, AutoJoin>*>(this);
+			static_cast<Notifier<World, AutoJoin>*>(world)->addListener(joinListener);
+			Listener<World, AutoDestroy>* destroyListener = dynamic_cast<Listener<World, AutoDestroy>*>(this);
+			static_cast<Notifier<World, AutoDestroy>*>(world)->addListener(destroyListener);
+		}
+	}
+
 	void JointsService::onDescendentAdded(Instance* instance)
 	{
 		Instance::onDescendentAdded(instance);
@@ -62,4 +95,32 @@ namespace RBX
 
 		Instance::onDescendentRemoving(instance);
 	}
+
+	// ServiceProvider find (unsplit; uses explicit name since JointsService is NonFactoryProduct<Instance,NULL>)
+	template<class Class> size_t ServiceProvider::doGetClassIndex() {
+		static size_t index = newIndex();
+		return index;
+	}
+	template<class Class> void ServiceProvider::callDoGetClassIndex() { doGetClassIndex<Class>(); }
+	template<class Class> size_t ServiceProvider::getClassIndex() {
+		static boost::once_flag flag = BOOST_ONCE_INIT;
+		boost::call_once(&callDoGetClassIndex<Class>, flag);
+		return doGetClassIndex<Class>();
+	}
+	template<> JointsService* ServiceProvider::find<JointsService>() const {
+		size_t index = getClassIndex<JointsService>();
+		if (index + 1 > serviceArray.size()) {
+			serviceArray.resize(index + 1, boost::shared_ptr<Instance>());
+		} else {
+			JointsService* service = static_cast<JointsService*>(serviceArray[index].get());
+			if (service) return service;
+		}
+		boost::shared_ptr<Instance> item = findServiceByClassName(Name::declare("JointsService", -1));
+		if (!item) return NULL;
+		serviceArray[index] = item;
+		return static_cast<JointsService*>(item.get());
+	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::JointInstance>;

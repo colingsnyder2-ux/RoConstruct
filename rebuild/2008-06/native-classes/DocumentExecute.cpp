@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// DocumentExecute | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by nuck16 (deepseek:deepseek-chat)
+// <<< native-status | src b15c873f | roc native-status --write
 #include <afxwin.h>
 #include <afxole.h>
 #include <afxcmn.h>
@@ -40,3 +44,6 @@ void CRobloxDoc::handle_453c30(NMHDR* header, LRESULT* result)
     combo->GetEditCtrl()->SetFocus();
     *result = 1;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::iostreams::detail::basic_buffer<char,std::allocator<char> >;

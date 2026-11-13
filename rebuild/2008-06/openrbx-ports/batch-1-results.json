@@ -1,0 +1,120 @@
+[
+ {
+  "file": "v8datamodel/RootInstance.cpp",
+  "gain": [],
+  "loss": [
+   "0045af00",
+   "00485360",
+   "004a6100",
+   "00590190",
+   "00590240",
+   "005909e0",
+   "00590b50",
+   "00590e70",
+   "00590f90"
+  ],
+  "gain_new_to_module": [],
+  "selected_layer": "layer-openrbx"
+ },
+ {
+  "file": "gui/ChatWidget.cpp",
+  "gain": [],
+  "loss": [],
+  "gain_new_to_module": [],
+  "selected_layer": "layer-rbxgs"
+ },
+ {
+  "file": "v8datamodel/Surfaces.cpp",
+  "gain": [
+   "005ecc00"
+  ],
+  "loss": [
+   "0056fe10",
+   "005ec9f0"
+  ],
+  "gain_new_to_module": [
+   "005ecc00"
+  ],
+  "selected_layer": "layer-openrbx"
+ },
+ {
+  "file": "v8datamodel/LocakBackpack.cpp",
+  "gain": [],
+  "loss": [],
+  "gain_new_to_module": [],
+  "selected_layer": "layer-rbxgs"
+ },
+ {
+  "file": "util/Name.cpp",
+  "gain": [],
+  "loss": [
+   "00553f90",
+   "00554160",
+   "00554290"
+  ],
+  "gain_new_to_module": [],
+  "selected_layer": "layer-openrbx"
+ },
+ {
+  "file": "tool/DragUtilities.cpp",
+  "gain": [],
+  "loss": [
+   "0043afb0",
+   "00476520",
+   "00476580",
+   "004765e0",
+   "004766a0",
+   "00476700",
+   "00478330",
+   "00511ce0",
+   "00513080",
+   "005130d0",
+   "0060e840",
+   "0060f0a0"
+  ],
+  "gain_new_to_module": [],
+  "selected_layer": "layer-openrbx"
+ },
+ {
+  "file": "v8datamodel/Accoutrement.cpp",
+  "gain": [
+   "005b0840",
+   "005b0da0",
+   "005b1d70",
+   "005b1e50",
+   "005b25f0"
+  ],
+  "loss": [
+   "0043afb0",
+   "004765e0",
+   "00485360",
+   "004fab70",
+   "00513120",
+   "005846d0",
+   "0059b2a0",
+   "005b0970",
+   "005b2750",
+   "005b2a40",
+   "005fa610"
+  ],
+  "gain_new_to_module": [
+   "005b0840",
+   "005b0da0",
+   "005b1d70",
+   "005b1e50",
+   "005b25f0"
+  ],
+  "selected_layer": "layer-openrbx"
+ },
+ {
+  "file": "v8datamodel/Teams.cpp",
+  "gain": [
+   "005d6070"
+  ],
+  "loss": [],
+  "gain_new_to_module": [
+   "005d6070"
+  ],
+  "selected_layer": "layer-openrbx"
+ }
+]

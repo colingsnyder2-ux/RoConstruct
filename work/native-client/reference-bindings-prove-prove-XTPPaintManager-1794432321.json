@@ -1,0 +1,100 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetCurrentSystemTheme@CXTPPaintManager@@QAE?AW4XTPCurrentSystemTheme@@XZ",
+    "address": "006ae030"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPaintManager\\objects\\6e4d61207274b237\\candidate.obj": "d2f36592d7bef8c924066172a451dd949aab9975bc68671680b8c07de8951ec1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\owners.json": "b79fbf37fc6ecf36984aea3f47c3967aca9ef25fd439cfc5002210fc29d2970a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\import-thunk-identities-as-owner.json": "9ac55f70abc669dec6a6f280b8d0a1df7f7bb72030db8626bc9ba50945d10579"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RefreshMetrics@CXTPPaintManager@@UAEXXZ",
+    "address": "006ae0f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPaintManager\\objects\\6e4d61207274b237\\candidate.obj": "d2f36592d7bef8c924066172a451dd949aab9975bc68671680b8c07de8951ec1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\owners.json": "b79fbf37fc6ecf36984aea3f47c3967aca9ef25fd439cfc5002210fc29d2970a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\import-thunk-identities-as-owner.json": "9ac55f70abc669dec6a6f280b8d0a1df7f7bb72030db8626bc9ba50945d10579"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Mix@@YAKPAVCDC@@HHKKN@Z",
+    "address": "006af290"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPaintManager\\objects\\6e4d61207274b237\\candidate.obj": "d2f36592d7bef8c924066172a451dd949aab9975bc68671680b8c07de8951ec1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\owners.json": "b79fbf37fc6ecf36984aea3f47c3967aca9ef25fd439cfc5002210fc29d2970a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\import-thunk-identities-as-owner.json": "9ac55f70abc669dec6a6f280b8d0a1df7f7bb72030db8626bc9ba50945d10579"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AnimateExpanding@CXTPPaintManager@@UAEXPAVCXTPCommandBar@@PAVCDC@@1H@Z",
+    "address": "006b3700"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPaintManager\\objects\\6e4d61207274b237\\candidate.obj": "d2f36592d7bef8c924066172a451dd949aab9975bc68671680b8c07de8951ec1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\owners.json": "b79fbf37fc6ecf36984aea3f47c3967aca9ef25fd439cfc5002210fc29d2970a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xj5nmxqp\\import-thunk-identities-as-owner.json": "9ac55f70abc669dec6a6f280b8d0a1df7f7bb72030db8626bc9ba50945d10579"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CloseThemeData@CXTPWinThemeWrapper@@QAEXXZ",
+   "address": "00718010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCurrentSystemTheme@CXTPColorManager@@QBE?AW4XTPCurrentSystemTheme@@XZ",
+   "address": "006dfb40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetWinThemeWrapperTheme@CXTPColorManager@@QBE?AW4XTPCurrentSystemTheme@@XZ",
+   "address": "006df800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsLunaColorsDisabled@CXTPColorManager@@QBEHXZ",
+   "address": "005b65a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshXtremeColors@@YAXXZ",
+   "address": "006e1910",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetStandardValue@CXTPPaintManagerColorGradient@@QAEXKKM@Z",
+   "address": "006df280",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetPixel@12",
+   "address": "008020bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__Sleep@4",
+   "address": "00802260",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__StretchBlt@44",
+   "address": "008020c0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

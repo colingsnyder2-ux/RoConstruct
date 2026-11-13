@@ -475,7 +475,7 @@ class Store:
             row["points"] += count
             row["last"] = max(row["last"] or 0, stamp or 0)
         return sorted((row for user, row in ranking.items() if user not in hidden),
-                      key=lambda row: (-row["points"], -row["matched"], row["user"]))
+                      key=lambda row: (-row["matched"], -row["points"], row["user"]))
 
     def native_totals(self, client=None, user=None):
         """One point per distinct accepted native address; mining-only stores have no native table."""
@@ -800,7 +800,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 status = store.status()
                 progress = integration.root / "work/integration/progress-native.json" if integration else None
                 linked = set(json.loads(progress.read_text())["addresses"]) if progress and progress.exists() else None
-                for client in status["clients"]:
+                for client in status.get("clients", []):
                     supported = integration is not None and client["client"] == integration_protocol.CLIENT
                     count = len(linked) if supported and linked is not None else None
                     client.update(native_supported=supported, integrated=count,
@@ -1348,6 +1348,12 @@ def _publish_once(store, public_url, log=print):
                 result = git(*args)
                 if result.returncode:
                     raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
+    # Same cycle commits all source work (rebuild/, roc/, tools under work/native-client, ...): one auto-committer.
+    try:
+        from roc import autocommit
+        autocommit.run_once()
+    except Exception as error:  # never block findings/site publishing
+        log("Work auto-commit failed: %s" % error)
     pushed = git("push", "origin", "HEAD")
     if pushed.returncode:
         log("Source push deferred; publishing findings and website independently: " + pushed.stderr.strip()[-300:])

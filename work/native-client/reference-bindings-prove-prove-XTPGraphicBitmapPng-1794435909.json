@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPGraphicBitmapPng@@QAE@XZ",
+    "address": "00745040"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPGraphicBitmapPng\\objects\\de9ebda17d1605f5\\candidate.obj": "87d6b0436ec1073e56251f2a39181cc92e9f045c2b62218986193b678f66658e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-25vhhd2_\\owners.json": "98d1440feabc304c3910c951951f68a95483e65159d0b3f608c3c2632446de6e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-25vhhd2_\\import-thunk-identities-as-owner.json": "9e8a5b350eeab0efa3217a2b790b5236a8c84955092ccf2f4a8b9c0e53281246"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ECXTPGraphicBitmapPng@@UAEPAXI@Z",
+   "address": "00413430",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAUXTP_COMMANDBARS_CATEGORYINFO@@PAU1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCustomizeCommandsPage\\objects\\a40504c1224b3a0a\\candidate.obj": "70d53421096c3e399901b78324a4764faacc64bd838087eba72ab0a8d0cd27cf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-iz6x9cty\\owners.json": "d2bfdddf7b476753f62ae3b56cc770159fc15f606f37e97a4c31520970e2047b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-iz6x9cty\\import-thunk-identities-as-owner.json": "2de2a39a245006eb1edc352ddc5b079019a5b1bad776b14ed45e1983b6b72481"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAUXTP_COMMANDBARS_CATEGORYINFO@@@@YGXAAVCArchive@@PAPAUXTP_COMMANDBARS_CATEGORYINFO@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@PAUXTP_COMMANDBARS_CATEGORYINFO@@PAU1@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxViewInit | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src aaaef888 | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/CWorkspace.h"
@@ -83,3 +87,10 @@ void CRobloxView::OnInitialUpdate() {
     }
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *> >;
+template class std::vector<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *> >;
+template class std::vector<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *> >;

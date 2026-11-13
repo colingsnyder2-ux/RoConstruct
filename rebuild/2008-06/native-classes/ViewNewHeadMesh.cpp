@@ -1,4 +1,10 @@
+// INFERRED: buildFace EndcapTransform spelling at004ff1e0; unique714B body and original references verified.
 // 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive): the unit 004fdaf0..0050068f.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewHeadMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 31a636d8 | roc native-status --write
 #include "ViewNew/HeadMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 #include <algorithm>
@@ -119,12 +125,16 @@ namespace RBX
 			builder.build(LevelBuilder::Surface);
 		}
 
+		// INFERRED: constructor identity from original HeadMesh factory call and unique exact body.
 		HeadMesh::HeadMesh(const G3D::Vector3& size, NormalId decalFace)
 		{
 			float bevel = std::min(size.x, size.z) * 0.25f;
-			levels.push_back(new RenderBase::Mesh::Level(G3D::RenderDevice::QUADS));
-
-			HeadBuilder builder(levels.last(), size, RenderSurfaceTypes(), 9, bevel);
+			RenderBase::Mesh::Level* created = new RenderBase::Mesh::Level(G3D::RenderDevice::QUADS);
+			{
+				G3D::ReferenceCountedPointer<RenderBase::Mesh::Level> reference(created);
+				levels.push_back(reference);
+			}
+			HeadBuilder builder(created, size, RenderSurfaceTypes(), 9, bevel);
 			builder.buildFace(decalFace, LevelBuilder::Decal);
 		}
 

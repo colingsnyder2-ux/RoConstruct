@@ -1,0 +1,53 @@
+{
+  "scope": "Inferred method name, original class/type anchors; not a proven original spelling",
+  "rows": [
+    {
+      "symbol": "?create@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "address": "004edb20",
+      "inferred_name": true,
+      "evidence": "INFERRED method name: unique byte-exact native PBB MeshFactory create body; original PBBMesh/MeshFactory<PBBMesh,4> RTTI and direct ctor 004f4cb0 establish class/type; original method name remains unknown."
+    },
+    {
+      "symbol": "?create@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVSphereMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "address": "004eea30",
+      "inferred_name": true,
+      "evidence": "INFERRED create spelling; exact body candidate uniquely selected by original direct ctor 004fcfb0 whose code stores original RTTI vftable 00827154 for SphereMesh",
+      "constructor_address": "004fcfb0",
+      "constructor_rtti_vftable": "00827154"
+    },
+    {
+      "symbol": "?create@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVCylinderAlongXMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "address": "004eef30",
+      "inferred_name": true,
+      "evidence": "INFERRED create spelling; exact body candidate uniquely selected by original direct ctor 004fd6b0 whose code stores original RTTI vftable 00827184 for CylinderAlongXMesh",
+      "constructor_address": "004fd6b0",
+      "constructor_rtti_vftable": "00827184"
+    },
+    {
+      "symbol": "?create@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVHeadMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "address": "004ef430",
+      "inferred_name": true,
+      "evidence": "INFERRED create spelling; exact body candidate uniquely selected by original direct ctor 00500180 whose code stores original RTTI vftable 008271b8 for HeadMesh",
+      "constructor_address": "00500180",
+      "constructor_rtti_vftable": "008271b8"
+    },
+    {
+      "symbol": "?create@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVWedgeMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "address": "004ee030",
+      "inferred_name": true,
+      "evidence": "INFERRED create spelling; exact body candidate uniquely selected by original direct ctor 004f7780 whose code stores original RTTI vftable 008270e8 for WedgeMesh",
+      "constructor_address": "004f7780",
+      "constructor_rtti_vftable": "008270e8"
+    },
+    {
+      "symbol": "?create@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVTorsoMesh@23@ABVVector3@G3D@@VRenderSurfaceTypes@23@@Z",
+      "address": "004ee530",
+      "inferred_name": true,
+      "evidence": "INFERRED create spelling; exact body candidate uniquely selected by original direct ctor 004fa590 whose code stores original RTTI vftable 00827124 for TorsoMesh",
+      "constructor_address": "004fa590",
+      "constructor_rtti_vftable": "00827124"
+    }
+  ],
+  "target_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "manifest_sha256": "81a0df903d67e3fc89dad3e390fca7fe4107a881b97ec1b2a7cf2923f7e75f14"
+}

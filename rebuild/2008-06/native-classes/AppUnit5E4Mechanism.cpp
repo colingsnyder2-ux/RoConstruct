@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 v8world/Mechanism.cpp row MechanismTracker::tracking 005e50e0 (`cmp dword ptr [ecx], 0; setne al`), against
 // the donor v8world/Mechanism.h (read-only; one pointer at +0x0, as record_native_network_physics.py uses it). Codegen
 // analog: in 2008 the tracked object is the SimJob whose +0x4 vector the tracker removes itself from (stopTracking

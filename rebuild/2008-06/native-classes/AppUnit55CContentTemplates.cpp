@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native template instances of the util/ContentProvider.cpp unit in the application range 0055c000..00560000
 // (inactive). Verified by tests/record_native_app_unit55c.py (receipt app-unit55c-working.json).
 //

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameMap | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 8bc57265 | roc native-status --write
 #include "CMainFrame.h"
 
 // Native map at 00811624. Address-named handlers remain unresolved.

@@ -1,4 +1,8 @@
 // 2008-06 native RBX::Teams (inactive); evidence in native-headers/v8datamodel/Teams.h.
+// >>> native-status (generated) -- do not edit >>>
+// Teams | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/10 mapped addresses byte-exact | 9 unproved | 1 referenced strings (not rechecked) | by colin (+2) (mixed 5)
+// <<< native-status | src 38f41684 | roc native-status --write
 #include "v8datamodel/Teams.h"
 #include <algorithm>
 #include "Network/Players.h" // native Network::Players (ServiceProvider::find<Players>, 00491d50)
@@ -126,6 +130,7 @@ namespace RBX
 		return getTeamFromTeamColor(player->getTeamColor());
 	}
 
+	// 005d6180: byte-exact (199 bytes; all call/data references independently bound).
 	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
 	{
 		Network::Players* players = ServiceProvider::find<Network::Players>(this);
@@ -178,3 +183,6 @@ namespace RBX
 		}
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sTeams>();

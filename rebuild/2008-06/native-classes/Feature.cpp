@@ -6,6 +6,11 @@
 // JointInstance/MotorJoint fields are exact only against the 2008 layouts of those generated copies.
 // Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600) and /U_RELEASEASSERT
 // (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Feature | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/16 mapped addresses byte-exact | 14 unproved | 1 referenced strings (not rechecked) | by king_originala (+4) (mixed 5)
+// <<< native-status | src 0d38d2b5 | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/MotorJoint.h"
@@ -344,3 +349,56 @@ namespace RBX
 // headers too.
 typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::VelocityMotor>, boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*> > > VelocityMotorHoleBinder;
 template boost::slot<boost::function<void(boost::shared_ptr<RBX::Instance>)> >::slot(const VelocityMotorHoleBinder&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::Hole *>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Feature::InOut>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Feature::LeftRight>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Feature::TopBottom>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::NormalId>;
+template class boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor *> >;
+template class boost::_bi::storage1<boost::_bi::value<RBX::VelocityMotor *> >;
+template class boost::_bi::value<RBX::VelocityMotor *>;
+template class boost::_mfi::mf0<void,RBX::VelocityMotor>;
+template class boost::shared_ptr<RBX::Hole>;
+template class boost::shared_ptr<RBX::VelocityMotor>;
+template class boost::shared_ptr<boost::signals::detail::slot_base::data_t>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::Feature::InOut> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::Feature::LeftRight> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::Feature::TopBottom> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::NormalId> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::InOut> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::LeftRight> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::TopBottom> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::NormalId> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::InOut,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::InOut> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::LeftRight,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::LeftRight> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::TopBottom,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::TopBottom> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::NormalId,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::NormalId> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::InOut,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::InOut> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::LeftRight,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::LeftRight> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::TopBottom,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::TopBottom> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::NormalId,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::NormalId> >,0> >;
+template class std::_Vector_const_iterator<enum RBX::Feature::InOut,std::allocator<enum RBX::Feature::InOut> >;
+template class std::_Vector_const_iterator<enum RBX::Feature::LeftRight,std::allocator<enum RBX::Feature::LeftRight> >;
+template class std::_Vector_const_iterator<enum RBX::Feature::TopBottom,std::allocator<enum RBX::Feature::TopBottom> >;
+template class std::_Vector_iterator<enum RBX::Feature::InOut,std::allocator<enum RBX::Feature::InOut> >;
+template class std::_Vector_iterator<enum RBX::Feature::LeftRight,std::allocator<enum RBX::Feature::LeftRight> >;
+template class std::_Vector_iterator<enum RBX::Feature::TopBottom,std::allocator<enum RBX::Feature::TopBottom> >;
+template class std::_Vector_val<enum RBX::NormalId,std::allocator<enum RBX::NormalId> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::InOut,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::InOut> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::LeftRight,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::LeftRight> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::Feature::TopBottom,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::TopBottom> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::NormalId,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::NormalId> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::InOut> >;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::LeftRight> >;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::Feature::TopBottom> >;
+template class std::map<RBX::Name const *,enum RBX::NormalId,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::NormalId> > >;
+template class std::vector<enum RBX::Feature::InOut,std::allocator<enum RBX::Feature::InOut> >;
+template class std::vector<enum RBX::Feature::LeftRight,std::allocator<enum RBX::Feature::LeftRight> >;
+template class std::vector<enum RBX::Feature::TopBottom,std::allocator<enum RBX::Feature::TopBottom> >;
+template class std::vector<enum RBX::NormalId,std::allocator<enum RBX::NormalId> >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sVelocityMotor>();
+template void RBX::Name::callDoDeclare<RBX::sFeature>();

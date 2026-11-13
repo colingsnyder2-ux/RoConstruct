@@ -7,6 +7,11 @@
 // The Decal / Texture constructors are the bodies of native-classes/DecalLifetime.cpp (counted by
 // decal-lifetime-trial.json); they are defined here only so this unit emits the Decal / Texture vtables, ??_G and the
 // ??_E adjustor thunks.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit594_2008Decal | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | 2 referenced strings (not rechecked) | by king_originala (+2) (mixed 2)
+// <<< native-status | src 0918d885 | roc native-status --write
 #include "AppUnit594_2008/TextureIdType2008.h"   // Type::singleton<TextureId> = singleton<ContentId> (005978a0)
 #include "v8datamodel/Decal.h"
 

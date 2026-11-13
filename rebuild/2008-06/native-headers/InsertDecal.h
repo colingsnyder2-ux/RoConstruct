@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// InsertDecal | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 83b01bae | roc native-status --write
 #include <afxwin.h>
 #include "StandardVerbs.h"
 

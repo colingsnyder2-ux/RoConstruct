@@ -7,6 +7,11 @@
 // Unit profile: document-swap flags plus /fp:fast (getOrigin 0064e050 keeps ray.origin + ray.direction in x87
 // registers). cacheUIEvent is the inline donor member: defined out of line in this file it is compiled before update,
 // whose register allocation then relies on it preserving ecx, unlike the original 0064e660.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Mouse | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/4 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+2) (mixed 3)
+// <<< native-status | src cc5b93d3 | roc native-status --write
 #include "v8datamodel/Mouse.h"
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"
@@ -123,3 +128,6 @@ namespace RBX
 	// instantiated here so the constructor chain, ~Mouse and the shared_ptr instances come out of this unit.
 	template boost::shared_ptr<Mouse> Creatable<Instance>::create<Mouse>();
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sMouse>();

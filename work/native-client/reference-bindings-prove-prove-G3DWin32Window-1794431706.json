@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?append@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@QAEXABUJoystickInfo@_DirectInput@_internal@2@@Z",
+    "address": "00482fd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\edccd27248f72d3a\\candidate.obj": "7e37ef1b19545ceeebc04e00e17a4d8ad2e1ee7e30b3ee31f182dda8a7afcfb1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4vuq307c\\owners.json": "bf06f480669793cc0f14b5548a22af8427ec2fb90c56a025c44902c43bfc33a2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4vuq307c\\import-thunk-identities-as-owner.json": "38c941a557f8f9cbb4966974c5d78b5289a8aa32650135d4e2e26f9858eea003"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0JoystickInfo@_DirectInput@_internal@G3D@@QAE@ABU0123@@Z",
+   "address": "00482360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1JoystickInfo@_DirectInput@_internal@G3D@@QAE@XZ",
+   "address": "0047fb80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??4JoystickInfo@_DirectInput@_internal@G3D@@QAEAAU0123@ABU0123@@Z",
+   "address": "00481530",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "00482e00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?append@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@QAEXABUJoystickInfo@_DirectInput@_internal@2@@Z",
+   "address": "007c5494",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

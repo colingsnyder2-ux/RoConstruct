@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// >>> native-status (generated) -- do not edit >>>
+// PartInstanceGetSurface | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
+// <<< native-status | src 268fa35b | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"
 #include <G3D/AABox.h>

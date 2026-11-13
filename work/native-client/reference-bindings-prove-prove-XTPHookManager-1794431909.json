@@ -1,0 +1,213 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?SetAtGrow@?$CArray@PAVCXTPHookManagerHookAble@@PAV1@@@QAEXHPAVCXTPHookManagerHookAble@@@Z",
+    "address": "0070e320"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPHookManager@@IAE@XZ",
+    "address": "0071c660"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveKey@?$CMap@PAUHWND__@@PAU1@PAXPAX@@QAEHPAUHWND__@@@Z",
+    "address": "006bc1a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AddTail@?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@QAEPAU__POSITION@@PAVCXTPHookManagerHookAble@@@Z",
+    "address": "0076bac0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveAt@?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@QAEXPAU__POSITION@@@Z",
+    "address": "00790410"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Find@?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@QBEPAU__POSITION@@PAVCXTPHookManagerHookAble@@PAU2@@Z",
+    "address": "00757e80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "0076d180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCXTPHookManagerHookAble@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Lookup@?$CMap@PAUHWND__@@PAU1@PAXPAX@@QBEHPAUHWND__@@AAPAX@Z",
+    "address": "00721410"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??A?$CMap@PAUHWND__@@PAU1@PAXPAX@@QAEAAPAXPAUHWND__@@@Z",
+    "address": "007215d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CMap@PAUHWND__@@PAU1@PAXPAX@@UAEXAAVCArchive@@@Z",
+    "address": "006be360"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??__Fs_managerInstance@?1??XTPHookManager@@YAPAVCXTPHookManager@@XZ@YAXXZ",
+    "address": "008018a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPHookManager\\objects\\f0f78bc0d260ddc2\\candidate.obj": "553292db940381a977c9e934638c07eece2e46472926642f4684e2bf6f2eb733",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\owners.json": "64681f7e0414f19a2b0fbd8ee168891b3af029d0e1a0411f60c4d44505fa0b8d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jeaquy4n\\import-thunk-identities-as-owner.json": "214b4c5e22b000d4e6ddf628efb17e677ea3f45d87ea0b160f6c4721ac36fff7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$CompareElements@PAUHWND__@@PAU1@@@YGHPBQAUHWND__@@0@Z",
+   "address": "0071c2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$CompareElements@PAVCXTPHookManagerHookAble@@PAV1@@@YGHPBQAVCXTPHookManagerHookAble@@0@Z",
+   "address": "0071c2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAUHWND__@@@@YGXAAVCArchive@@PAPAUHWND__@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAVCXTPHookManagerHookAble@@@@YGXAAVCArchive@@PAPAVCXTPHookManagerHookAble@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAX@@YGXAAVCArchive@@PAPAXH@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0?$CMap@PAUHWND__@@PAU1@PAXPAX@@QAE@H@Z",
+   "address": "0071c490",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1CXTPHookManager@@QAE@XZ",
+   "address": "0071c670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FreeAssoc@?$CMap@PAUHWND__@@PAU1@PAXPAX@@IAEXPAVCAssoc@1@@Z",
+   "address": "0071c2c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FreeNode@?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@IAEXPAUCNode@1@@Z",
+   "address": "00760970",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAssocAt@?$CMap@PAUHWND__@@PAU1@PAXPAX@@IBEPAVCAssoc@1@PAUHWND__@@AAI1@Z",
+   "address": "00708080",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?InitHashTable@?$CMap@PAUHWND__@@PAU1@PAXPAX@@QAEXIH@Z",
+   "address": "00438850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NewAssoc@?$CMap@PAUHWND__@@PAU1@PAXPAX@@IAEPAVCAssoc@1@PAUHWND__@@@Z",
+   "address": "00721440",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NewNode@?$CList@PAVCXTPHookManagerHookAble@@PAV1@@@IAEPAUCNode@1@PAU21@0@Z",
+   "address": "0076a730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@PAVCXTPHookManagerHookAble@@PAV1@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 12,
+ "owners_bound": 12
+}

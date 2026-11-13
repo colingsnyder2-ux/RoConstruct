@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// LDrawPartWrite | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (deepseek:deepseek-flash)
+// <<< native-status | src 5afe52e2 | roc native-status --write
 #include "util/LDrawEntities.h"
 
 namespace RBX { namespace LDraw2Lua {

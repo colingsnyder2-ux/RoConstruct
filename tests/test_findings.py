@@ -140,7 +140,7 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
     seed = tmp_path / "seed"
     run(tmp_path, "init", "-q", "-b", "main", str(seed))
     (seed / "README.md").write_text("old")
-    (seed / "roc.py").write_text("stale app copy")  # must not survive a publish
+    (seed / "roc.py").write_text("other publisher content")  # unrelated namespaces survive publication
     run(seed, "add", ".")
     run(seed, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed")
     run(seed, "push", "-q", str(remote), "main")
@@ -171,7 +171,7 @@ def test_publisher_stages_sources_and_portable_findings_files(tmp_path):
         server.publish_findings(git, logs.append)
     assert logs == ["Prepared 1 readable library sources.", "Findings published."]
     files = set(run(tmp_path, "--git-dir", str(remote), "ls-tree", "-r", "--name-only", "main").split())
-    assert files == {"README.md", ".gitignore", ".github/workflows/package.yml", "data/lessons.json",
+    assert files == {"roc.py", "README.md", ".gitignore", ".github/workflows/package.yml", "data/lessons.json",
                      "src/2008-06/00401000.cpp", "src/2008-06/007ab0a0.cpp"}
     published = run(tmp_path, "--git-dir", str(remote), "show", "main:src/2008-06/007ab0a0.cpp")
     assert "41% by colin" in published

@@ -1,0 +1,41 @@
+{
+ "files": [
+  {
+   "file": "v8world/Joint.cpp",
+   "gain": [
+    "006454a0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006454a0"
+   ],
+   "source_sha256": "6d0a22b56c99d9b55104d79e710db195f23e9ff96309e24213efdce5e329b0d1",
+   "upstream_sha256": "1b6bdf1e7be77c9148658a7d80ad3e12b56f3c6f08425ffe68fbbf8335527141",
+   "object_sha256": "15e7b76a62f386dc965861b74c8c9ae40e16d91a10a2854d8e3df34e9916e7ff"
+  }
+ ],
+ "owned_before": 4435,
+ "owned_after": 4436,
+ "global_gain": [
+  "006454a0"
+ ],
+ "global_loss": [],
+ "milestones": {
+  "M2": {
+   "passed": true,
+   "linked": true,
+   "exit": 0
+  },
+  "M4a": {
+   "passed": true,
+   "linked": true,
+   "exit": 0
+  },
+  "M5": {
+   "passed": true,
+   "linked": true,
+   "exit": 0
+  }
+ },
+ "status": "proven final increment"
+}

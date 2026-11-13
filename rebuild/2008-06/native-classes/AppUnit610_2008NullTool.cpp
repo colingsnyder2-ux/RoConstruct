@@ -9,6 +9,10 @@
 // 006182c0 reaches NativeToolName<NullTool> in the StandardVerbs unit (005c6210 / 005c5ec0).
 // The helper names (isLocalHeadHidden, queryClickDetectors, NativeToolName) are codegen analogs.
 // See tests/record_native_app_unit610_2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit610_2008NullTool | 2008-06 | draft (no current byte proof)
+// 0/11 mapped addresses byte-exact | 11 unproved | 3 referenced strings (not rechecked) | by king_originala (+3) (mixed 6)
+// <<< native-status | src e324add6 | roc native-status --write
 #include "tool/NullTool.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/ModelInstance.h"

@@ -1,3 +1,28 @@
-{"name": "jpeg", "description": "IJG libjpeg 6b (recipe jpeg-6b, jmemnobs memory manager).",
- "layers": [{"name": "upstream", "mode": "recipe", "recipe": "jpeg-6b", "files": "recipe", "flags": "/O2 /GS- /MD"}],
- "test": "jpeg_roundtrip", "test_includes": ["tools/libs/jpeg-6b"]}
+{
+    "name": "jpeg",
+    "description": "IJG libjpeg 6b (recipe jpeg-6b, jmemnobs memory manager).",
+    "layers": [
+        {
+            "name": "native0",
+            "mode": "direct",
+            "dir": "rebuild/2008-06/native-layers/jpeg-0",
+            "files": "*.cpp *.c",
+            "flags": "/O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC",
+            "defines": "",
+            "extra_includes": [
+                "tools/libs/jpeg-6b"
+            ]
+        },
+        {
+            "name": "upstream",
+            "mode": "recipe",
+            "recipe": "jpeg-6b",
+            "files": "recipe",
+            "flags": "/O2 /GS- /MD"
+        }
+    ],
+    "test": "jpeg_roundtrip",
+    "test_includes": [
+        "tools/libs/jpeg-6b"
+    ]
+}

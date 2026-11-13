@@ -1,0 +1,114 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPOfficeTheme@XTPPaintThemes@@QAE@XZ",
+    "address": "0073eae0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPOfficeTheme\\objects\\ebb6373ac0c8509a\\candidate.obj": "4bac1ae4af834fccad1a99a244fd683efe650576348921406f6db91300ceedf1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c1gi1bwx\\owners.json": "addc4ceab39c7ed9a459d64547be8b2cc25f5a3f8dbc8cb943d579b68480c262",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c1gi1bwx\\import-thunk-identities-as-owner.json": "8fb6f7e913c0ad124cdb5d621c41be505bc799f39f39e906e9d7eb571912d63e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?FillCommandBarEntry@CXTPOfficeTheme@XTPPaintThemes@@UAEXPAVCDC@@PAVCXTPCommandBar@@@Z",
+    "address": "00740120"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPOfficeTheme\\objects\\ebb6373ac0c8509a\\candidate.obj": "4bac1ae4af834fccad1a99a244fd683efe650576348921406f6db91300ceedf1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c1gi1bwx\\owners.json": "addc4ceab39c7ed9a459d64547be8b2cc25f5a3f8dbc8cb943d579b68480c262",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c1gi1bwx\\import-thunk-identities-as-owner.json": "8fb6f7e913c0ad124cdb5d621c41be505bc799f39f39e906e9d7eb571912d63e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DrawTearOffGripper@CXTPOfficeTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@VCRect@@HH@Z",
+    "address": "00740fa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPOfficeTheme\\objects\\ebb6373ac0c8509a\\candidate.obj": "4bac1ae4af834fccad1a99a244fd683efe650576348921406f6db91300ceedf1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c1gi1bwx\\owners.json": "addc4ceab39c7ed9a459d64547be8b2cc25f5a3f8dbc8cb943d579b68480c262",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c1gi1bwx\\import-thunk-identities-as-owner.json": "8fb6f7e913c0ad124cdb5d621c41be505bc799f39f39e906e9d7eb571912d63e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ECXTPOfficeTheme@XTPPaintThemes@@UAEPAXI@Z",
+   "address": "006b4a50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?BaseTheme@CXTPOfficeTheme@XTPPaintThemes@@MAE?AW4XTPPaintTheme@@XZ",
+   "address": "007286a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCommandBarGripper@CXTPOfficeTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@PAVCXTPCommandBar@@H@Z",
+   "address": "007403f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCommandBarSeparator@CXTPOfficeTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@PAVCXTPCommandBar@@PAVCXTPControl@@H@Z",
+   "address": "007406d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawDialogBarGripper@CXTPOfficeTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@PAVCXTPDialogBar@@H@Z",
+   "address": "00740310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawPopupBarGripper@CXTPOfficeTheme@XTPPaintThemes@@MAEXPAVCDC@@HHHHH@Z",
+   "address": "0073ec20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawSpecialControl@CXTPPaintManager@@UAE?AVCSize@@PAVCDC@@W4XTPSpecialControl@@PAVCXTPControl@@PAVCXTPCommandBar@@HPAX@Z",
+   "address": "006b12a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawStatusBarPaneBorder@CXTPOfficeTheme@XTPPaintThemes@@MAEXPAVCDC@@VCRect@@PAVCXTPStatusBarPane@@H@Z",
+   "address": "0073ed20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillIntersectRect@CXTPOfficeTheme@XTPPaintThemes@@IAEXPAVCDC@@PAVCXTPPopupBar@@K@Z",
+   "address": "00740030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCommandBarBorders@CXTPPaintManager@@UAE?AVCRect@@PAVCXTPCommandBar@@@Z",
+   "address": "006b34d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsFlatToolBar@CXTPPaintManager@@IAEHPAVCXTPCommandBar@@@Z",
+   "address": "006aea60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Line@CXTPPaintManager@@QAEXPAVCDC@@HHHHH@Z",
+   "address": "006af510",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CXTPPaintManager@@UAEXXZ",
+   "address": "006ae0f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetPixel@16",
+   "address": "008020b8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

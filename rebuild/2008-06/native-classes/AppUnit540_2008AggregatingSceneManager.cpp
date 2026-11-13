@@ -17,6 +17,10 @@
 //                                             true, then removeFromScene(RCP<Chunk>(aggregate)) 00545e30 / 004d8320
 //                                             and components.clear() 00540780)
 //   Bucket::clear                   005404b0 (queue.clear() 00540780)
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit540_2008AggregatingSceneManager | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src c7fe7f19 | roc native-status --write
 #include "RenderLib/SceneManager2008.h"
 #include "RenderLib/Material2008.h"   // completes RenderBase::MaterialBase (needs the Ogre 1.4.5 client headers)
 #include <algorithm>
@@ -124,3 +128,12 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Tmap_traits<RBX::RenderBase::AggregatingSceneManager::BucketKey,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket>,std::less<RBX::RenderBase::AggregatingSceneManager::BucketKey>,std::allocator<std::pair<RBX::RenderBase::AggregatingSceneManager::BucketKey const ,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket> > >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::RenderBase::AggregatingSceneManager::BucketKey,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket>,std::less<RBX::RenderBase::AggregatingSceneManager::BucketKey>,std::allocator<std::pair<RBX::RenderBase::AggregatingSceneManager::BucketKey const ,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket> > >,0> >;
+template class std::_Vector_const_iterator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk>,std::allocator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> > >;
+template class std::_Vector_iterator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk>,std::allocator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> > >;
+template class std::allocator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> >;
+template class std::allocator<std::pair<RBX::RenderBase::AggregatingSceneManager::BucketKey const ,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket> > >;
+template class std::vector<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk>,std::allocator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> > >;

@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit658/NativeAppUnit658_edge.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit658Edge.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_edge.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658Edge.cpp"
     ],
     "safechat": [
       "/nologo",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit658/NativeAppUnit658_safechat.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit658SafeChat.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_safechat.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp"
     ],
     "layout": [
       "/nologo",
@@ -113,8 +113,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit658/NativeAppUnit658_layout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit658/NativeAppUnit658Layout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_layout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658Layout.cpp"
     ],
     "safechat_pending": [
       "/nologo",
@@ -137,7 +137,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit658/pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\pending",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -153,24 +153,24 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/DNATIVE_APPUNIT658_PENDING",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit658/NativeAppUnit658_safechat_pending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit658SafeChat.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_safechat_pending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/native-classes/AppUnit658Edge.cpp": "9ede1e663c4ed33e034a6e5593778921615342728f8236d2a5e6a4693ed68115",
-    "rebuild/2008-06/native-classes/AppUnit658SafeChat.cpp": "214f4e71de3859c125bb023cbf96b98e7673e70fd93298ae2632ecae98814e30",
-    "rebuild/2008-06/tests/record_native_app_unit658.py": "dbf72b9086b674ad8bfc6efcfbe1dbc66f69bdf30856dbed801d48ccb07b8b0a",
-    "rebuild/2008-06/native-headers/AppUnit658/Edge.h": "aae3a82c116f595f1de470a9bf984550feb1273abd6237f0cff8798fd7906df2",
-    "rebuild/2008-06/native-headers/GuiHud2008/GuiBuilder2008.h": "d72699116bac80f814ebbe82f3208be47cf759bab395f6acae71803596a40a1b"
+    "rebuild\\2008-06\\native-classes\\AppUnit658Edge.cpp": "96d2c3db9fcf4455604e61294bc30dba5fb7ebbcec9dcd29bc7465291180a24e",
+    "rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp": "3789d07a199f96c184f0f53284719859a2232911ac52a983860885851bca99c9",
+    "rebuild\\2008-06\\tests\\record_native_app_unit658.py": "5b757ea08f208c87acf43c79f820bf17cdb48989ef6e9fb25a2c60e5475432df",
+    "rebuild\\2008-06\\native-headers\\AppUnit658\\Edge.h": "5499acd9b88589cea0b54a6931de989a605548fbe23cd3e79d666b67e3ebfebb",
+    "rebuild\\2008-06\\native-headers\\GuiHud2008\\GuiBuilder2008.h": "097989edf710d459ca75f796ac681b82fadb5914720e2d93cfb8d36010be7ab9"
   },
   "objects": {
-    "edge": "00ca53d6c5713ca57e7b1e4b1774ccbcb3df9173f12fc75461aff82a8145e3ca",
-    "safechat": "57dcb568cb9af83d30b54a16367902b67974f0ad9b5979d38d0ff95ad7b9bf33",
-    "layout": "955978b44d8fdaea222f6c9d1cc7d5f5898bcd2c3571f8b5f9f8d2d1ccf33671",
-    "safechat_pending": "eaec44adb653526ad1945344b1f2a391ba112702258bfab3ede2c7a5a261faf4"
+    "edge": "132905a5f3a7fa019d3410d06493671f64f1009509083dd66070eaad57ffab53",
+    "safechat": "2d378fb44b1ae17db12587f2f28a33c6118d12d51507624dee4b2e1eab0073af",
+    "layout": "75f3c19d161245ff69a9c0d6b5a5d943d03508de20df95e72b7f0e36460db41b",
+    "safechat_pending": "d0a835a6e96cabeba30d4de8a53c52be980d4fdf50f4e79592ff0a12243c5d22"
   },
-  "range_total_rows": 153,
+  "range_total_rows": 154,
   "unit_map": {
     "safechat 00657c40..00658897 (tail in range)": "SafeChat.cpp (unit starts at 00657c40 getChatTreeFile, before this range). In range: boost::algorithm trim helpers 00658020 (called only by 006582f6) and trim(std::string&, locale) 006582b0 (called by loadChildren 006583f6 and 0066a276); ChatOption() 00658100 and ChatOption(std::string) 00658170 (ret 0x1c, string by value; both after new(0x34): vector 0x18 + string 0x1c), ~ChatOption 00658200 (evidence name, for_each delete of children), loadChildren 00658360 (findFirstChildByTag / getValue / findNextChildWithSameTag evidence names, utterance Name), getMessage 006584e0 (boost::lexical_cast<int> 005be120, ret 0x1c), loadChatTree 00658660 (TextXmlParser::parse 0058f6c0, new(0x34), \"ROOT\"), SafeChat_singleton 006587e0 (new(4); scoped_ptr reset of the file static 0097d944) and SafeChat::singleton 00658880 (call_once with the once_flag 0097d940; GuiBuilder::buildChatMenu calls it at 00603803). Built here: singleton (counted); ChatOption ctors / dtor and SafeChat_singleton are pending-build-only. Not attempted: the trim helpers (boost templates), loadChildren, getMessage, loadChatTree (they also need the XmlElement API and the utterance Name static).",
     "simbody 006588a0..0065925e": "SimBody.cpp (Body/Primitive owner, Body2008.h): mulMatrixMatrixTranspose helper 006588a0 (only caller 0065898a), computeRotVel 00658920 (only caller step 00659062), PV::pvAtLocalCoord 00658a00 and PV::pvAtLocalOffset 00658c50 (evidence names; out-of-line copies emitted in this unit), the Quaternion product 00658a30 (only caller step 006590b7), SimBody() 00658ae0 and getOwnerPV 00658ca0 (counted by body-primitive2008-working.json), update 00658d20 (near miss there) and step 00658fb0 (not attempted there). Not built here: the SimBody layout belongs to the body-primitive2008 owner.",
@@ -179,13 +179,7 @@
     "lua 0065b5d0..0065fee2": "Lua 5.1 library (evidence names): lgc.c reallymarkobject 0065b5d0 .. luaC_linkupval 0065c510, ltm.c luaT_init 0065c570 .. luaT_gettmbyobj 0065c600, lvm.c luaV_tonumber 0065c660 .. luaV_execute 0065d2c0, ltable.c hashnum 0065e3e0 .. luaH_setstr 0065f150, lstring.c 0065f1a0..0065f3f0, lfunc.c 0065f450..0065f7e0, lzio.c 0065f830..0065f990, ldump.c 0065f9f0..0065fe70: library code, not recovered.",
     "cofm 0065fef0..": "Cofm.cpp: Cofm(Body*) 0065fef0, getMass 0065ff10, updateIfDirty 0065ff20 (evidence names), counted by body-primitive2008-working.json; continues past 00660000."
   },
-  "range_rows_counted_by_other_receipts": [
-    "00658ae0 counted by body-primitive2008-working.json",
-    "00658ca0 counted by body-primitive2008-working.json",
-    "0065fef0 counted by body-primitive2008-working.json",
-    "0065ff10 counted by body-primitive2008-working.json",
-    "0065ff20 counted by body-primitive2008-working.json"
-  ],
+  "range_rows_counted_by_other_receipts": [],
   "layout": {
     "Edge.h": "checked by the generated probe: edgeState +0x8, prim0 +0xc, prim1 +0x10, index0 +0x14, index1 +0x18, inEdgeList +0x1c, sizeof 0x20; novtable"
   },

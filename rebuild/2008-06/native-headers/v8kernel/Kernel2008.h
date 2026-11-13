@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Kernel2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f23688bc | roc native-status --write
 // 2008-06 native RBX::Kernel (inactive). Declared under a non-colliding name: the original path v8kernel/Kernel.h is
 // included by the donor v8world/IPipelined.h, i.e. by every engine unit (Edge, Joint, Contact, Primitive, World ...),
 // so a header at that path would shadow the donor for nearly all recorders. A unit must not include both this header
@@ -29,6 +33,7 @@ namespace RBX
 {
 	class KernelData;
 	class Connector;
+	class Point;
 	namespace Profiling
 	{
 		class CodeProfiler;
@@ -59,5 +64,7 @@ namespace RBX
 		int numBodies() const;                                        // 005faa20
 		int numPoints() const;                                        // 005faa30
 		int numConnectors() const;                                    // 005faa40
+		void insertConnector(Connector* connector);                    // 005fb160
+		void deletePoint(Point* point);                                // 005fb3c0
 	};
 }

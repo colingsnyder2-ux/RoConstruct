@@ -1,0 +1,78 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?getVideoMemory@Ogre@@YAKXZ",
+    "address": "00678510"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreVisualEngine\\objects\\3629e1029b4a6a1c\\candidate.obj": "e2e69ceb2719b43a994f86c655d7789b7ab29e90b0d2bde08927333d87e2d59b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2ku3t8y1\\owners.json": "0c81e7a5e6d28382e21f3ac7ab69d1480ee7e681e7573feba2f82c80bc4d5697",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2ku3t8y1\\import-thunk-identities-as-owner.json": "58e457de5f5c3171d43082a2cc5098c1b91a6a19c3f054e4cba175ed592be346"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?median@FrameHistory@Ogre@@QAEMH@Z",
+    "address": "00679990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreVisualEngine\\objects\\3629e1029b4a6a1c\\candidate.obj": "e2e69ceb2719b43a994f86c655d7789b7ab29e90b0d2bde08927333d87e2d59b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2ku3t8y1\\owners.json": "0c81e7a5e6d28382e21f3ac7ab69d1480ee7e681e7573feba2f82c80bc4d5697",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2ku3t8y1\\import-thunk-identities-as-owner.json": "58e457de5f5c3171d43082a2cc5098c1b91a6a19c3f054e4cba175ed592be346"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Sort@PAMH@std@@YAXPAM0H@Z",
+   "address": "006791e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0?$vector@MV?$allocator@M@std@@@std@@QAE@I@Z",
+   "address": "006798b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?push_back@?$vector@MV?$allocator@M@std@@@std@@QAEXABM@Z",
+   "address": "00679920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_CLSID_DirectDraw",
+   "address": "0081e448",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_IID_IDirectDraw2",
+   "address": "0081e458",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?median@FrameHistory@Ogre@@QAEMH@Z",
+   "address": "007da998",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CoCreateInstance@20",
+   "address": "00804118",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CoInitialize@4",
+   "address": "00804130",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CoUninitialize@0",
+   "address": "0080412c",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

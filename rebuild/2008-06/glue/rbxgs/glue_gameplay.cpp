@@ -38,30 +38,7 @@ namespace RBX
 		}
 	}
 
-	void Seat::onEvent_seatTouched(boost::shared_ptr<Instance> other)
-	{
-		if (weld || G3D::System::getLocalTime() - sleepTime < 3.0)
-			return;
-		Humanoid* humanoid = characterOf(other);
-		if (!humanoid || !humanoid->getTorso())
-			return;
-		seatCharacter(humanoid);
-		humanoidJumped = Humanoid::event_Jumping.connect(humanoid, boost::bind(&Seat::onEvent_humanoidJumped, this, _1));
-	}
 
-	void SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<Instance> other)
-	{
-		if (neutral || !allowTeamChangeOnTouch)
-			return;
-		Humanoid* humanoid = characterOf(other);
-		if (!humanoid)
-			return;
-		if (Network::Player* player = Network::Players::getPlayerFromCharacter(humanoid->getParent()))
-		{
-			player->setNeutral(false);
-			player->setTeamColor(teamColor);
-		}
-	}
 
 	// Flag::canBePickedUpByPlayer: native (Flag.cpp)
 
@@ -70,20 +47,7 @@ namespace RBX
 	// Flag::onServiceProvider: native (Flag.cpp)
 
 	// an enemy flag carried onto a team's stand is captured and sent back to its own stand
-	void FlagStand::onEvent_standTouched(boost::shared_ptr<Instance> other)
-	{
-		Humanoid* humanoid = characterOf(other);
-		if (!humanoid)
-			return;
-		Flag* carried = humanoid->getParent()->findFirstChildOfType<Flag>();
-		if (carried && carried->getTeamColor() != teamColor)
-			returnHome(carried, ServiceProvider::findServiceProvider(this));
-	}
 
-	bool FlagStand::HasFlag()
-	{
-		return GetFlag() != NULL;
-	}
 
 	// the nearest stand of the flag's team that holds no flag, measured from the flag's Handle
 	FlagStand* FlagStandService::FindClosestEmptyStandForFlag(Flag* flag)
@@ -112,48 +76,6 @@ namespace RBX
 	{
 		// ID_CHAT_ALL as Players::chat writes it: speaker guid (scope name, index), then the message.
 		// A server relays it to every other connection.
-		bool Players::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			if (packet->data[0] != ID_CHAT_ALL)
-				return false;
 
-			RakNet::BitStream bitStream(packet->data, packet->length, false);
-			unsigned char id;
-			std::string scope, message;
-			int index;
-			bitStream >> id;
-			bitStream >> scope;
-			bitStream >> index;
-			bitStream >> message;
-
-			boost::shared_ptr<Player> source;
-			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > list = getPlayers();
-			if (list)
-				for (size_t i = 0; i < list->size() && !source; ++i)
-				{
-					Guid::Data data;
-					(*list)[i]->getGuid().extract(data);
-					if (data.index == index && data.scope->toString() == scope)
-						source = boost::shared_static_cast<Player>((*list)[i]);
-				}
-
-			ChatMessage event = {message, source, boost::shared_ptr<Player>()};
-			addChatMessage(event);
-			Notifier<Players, ChatMessage>::raise(event);
-
-			if (Server::serverIsPresent(this, false))
-			{
-				RakNet::BitStream relay(packet->data, packet->length, false);
-				peer->Send(&relay, MEDIUM_PRIORITY, RELIABLE, 2, packet->systemAddress, true);
-			}
-			return true;
-		}
-
-		void Peer::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-		{
-			Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-			Instance::onServiceProvider(oldProvider, newProvider);
-			Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
-		}
 	}
 }

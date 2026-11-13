@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// PropertyChanged | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b0fcf29e | roc native-status --write
 #include "reflection/property.h"
 
 namespace RBX {

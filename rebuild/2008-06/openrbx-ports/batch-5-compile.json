@@ -1,0 +1,12 @@
+{
+ "files": [
+  "script/ScriptEvent.cpp",
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Tool.cpp",
+  "v8datamodel/Feature.cpp",
+  "v8datamodel/FaceInstance.cpp",
+  "v8datamodel/DebugSettings.cpp",
+  "script/Script.cpp",
+  "tool/RunDragger.cpp"
+ ]
+}

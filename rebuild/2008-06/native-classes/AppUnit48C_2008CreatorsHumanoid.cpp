@@ -5,6 +5,10 @@
 //   * Creatable<Instance>::create<Humanoid>() 00490770 (malloc 0x22c, Humanoid() 005db280);
 //   * boost::shared_ptr<Humanoid>(Humanoid*, Creatable<Instance>::Deleter) 004906c0 (shared_count 00490630, counted
 //     by creatable-shared-count).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit48C_2008CreatorsHumanoid | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 254eb711 | roc native-status --write
 #include "humanoid/Humanoid2008.h"
 #include "util/Object.h"
 
@@ -20,3 +24,6 @@ namespace RBX
 
 template boost::shared_ptr<RBX::Humanoid> RBX::Creatable<RBX::Instance>::create<RBX::Humanoid>();
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Humanoid, RBX::Instance, RBX::sHumanoid>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Humanoid>;

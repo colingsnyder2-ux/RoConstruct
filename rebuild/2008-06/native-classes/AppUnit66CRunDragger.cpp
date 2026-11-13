@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+#undef _RELEASEASSERT
 // 2008-06 native RBX::RunDragger unit 0066c330..0066e650 (inactive), against the donor tool/RunDragger.h (read-only; no
 // native header declares RunDragger, and its donor layout is the 2008 one: PartDragTool() 00665fc1 news 0x70 before
 // RunDragger() 0066c900, whose stores cover dragPart +0x0 / snapPart +0x8 (weak_ptrs released in reverse by ~RunDragger

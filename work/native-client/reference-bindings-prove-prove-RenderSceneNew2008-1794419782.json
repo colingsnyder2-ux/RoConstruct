@@ -1,0 +1,77 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1RenderScene@RenderNew@RBX@@UAE@XZ",
+    "address": "007aaa30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-RenderSceneNew2008\\objects\\b792fb54f52f5951\\candidate.obj": "c5c01e21a25f4ff2ec6c4d1697fe302614d7bcc787b78417d65ea81c5b2736b1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-i1fcfxkg\\owners.json": "9f33ea2de047345f4139189fe871e61f1787ce933baea4a0afce90cdd1e4404d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-i1fcfxkg\\import-thunk-identities-as-owner.json": "1851d38b929ec56ab27ee7bc271b83c4dc9df021c60e285d7128d64ae2a6a4fc"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ",
+   "address": "00475f20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$Array@VRenderSurface@Render@RBX@@@G3D@@QAE@XZ",
+   "address": "007aa980",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ERenderScene@RenderNew@RBX@@UAEPAXI@Z",
+   "address": "007aae20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ERenderSceneBase@RenderBase@RBX@@UAEPAXI@Z",
+   "address": "00503a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getMeshDetail@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+   "address": "007b76d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getShadingQuality@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+   "address": "00503cb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?presetLighting@RenderScene@RenderNew@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+   "address": "007aacc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?presetLighting@RenderSceneBase@RenderBase@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+   "address": "005039e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?render@RenderScene@RenderNew@RBX@@UAEXPAVRenderDevice@G3D@@ABVGCamera@5@@Z",
+   "address": "007ab0a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setThrottle@RenderScene@RenderNew@RBX@@UAEXMM_NM@Z",
+   "address": "007aa770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1RenderScene@RenderNew@RBX@@UAE@XZ",
+   "address": "007ed4b0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,64 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPStatusBarPane@@UBEPAUCRuntimeClass@@XZ",
+    "address": "0070deb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPStatusBar\\objects\\6df3a3876f4db2dd\\candidate.obj": "02fdc427f81f00b4b8a05c56669092d72982b1b8b02123a048637e9b54f5b8de",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s4k29g5d\\owners.json": "a8cc5f7384665655397a2f996c372ae0b1635bea810bd5b89b9bfbd76a97c5c3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s4k29g5d\\import-thunk-identities-as-owner.json": "049a9eb30acb1aefe0d38e0b3edc3704658dd13f095e953a9da7de804b71950a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCXTPStatusBarPane@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPStatusBar\\objects\\6df3a3876f4db2dd\\candidate.obj": "02fdc427f81f00b4b8a05c56669092d72982b1b8b02123a048637e9b54f5b8de",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s4k29g5d\\owners.json": "a8cc5f7384665655397a2f996c372ae0b1635bea810bd5b89b9bfbd76a97c5c3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s4k29g5d\\import-thunk-identities-as-owner.json": "049a9eb30acb1aefe0d38e0b3edc3704658dd13f095e953a9da7de804b71950a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@HAAH@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPStatusBar\\objects\\6df3a3876f4db2dd\\candidate.obj": "02fdc427f81f00b4b8a05c56669092d72982b1b8b02123a048637e9b54f5b8de",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s4k29g5d\\owners.json": "a8cc5f7384665655397a2f996c372ae0b1635bea810bd5b89b9bfbd76a97c5c3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s4k29g5d\\import-thunk-identities-as-owner.json": "049a9eb30acb1aefe0d38e0b3edc3704658dd13f095e953a9da7de804b71950a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@H@@YGXAAVCArchive@@PAHH@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAVCXTPStatusBarPane@@@@YGXAAVCArchive@@PAPAVCXTPStatusBarPane@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@HAAH@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPStatusBarPane@@KGPAUCRuntimeClass@@XZ",
+   "address": "006ab1a0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

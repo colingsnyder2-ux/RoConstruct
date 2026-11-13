@@ -104,6 +104,8 @@ ROWS = [
     (0x5b6ca0, '??$any_cast@VSoundId@Soundscape@RBX@@@boost@@YAPAVSoundId@Soundscape@RBX@@PAVany@0@@Z'),
     (0x5b6d50, '??0?$holder@VSoundId@Soundscape@RBX@@@any@boost@@QAE@ABVSoundId@Soundscape@RBX@@@Z'),
     (0x5b6db0, '?type@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEABVtype_info@@XZ'),
+    (0x5b6dc0, '?clone@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ'),
+    (0x5b6e20, '??_G' + FPC + 'MAEPAXI@Z'),
     (0x5b6ce0, '??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ'),
     (0x5b7320, sym('??$getset@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z' + PD)),
     (0x5b7370, sym('??$getset@P8SoundChannel@Soundscape@RBX@@BE_NXZ' + PD)),
@@ -411,12 +413,6 @@ def verify(rows):
 
 
 rows = verify(ROWS)
-# BOUNDS evidence: the compiled holder<SoundId>::clone is exact against the first 96 bytes of the analysed row 005b6dc0
-# (which also covers ??_G FactoryProduct<SoundChannel> 005b6e20); recorded, not counted.
-_cb, _cr = BODIES['?clone@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ']
-_tb, _tr, _ = match.target('2008-06', '005b6dc0')
-CLONE_PREFIX_EXACT = bool(match.exact_match(_tb[:len(_cb)], [x for x in _tr if x < len(_cb)], _cb, _cr))
-assert CLONE_PREFIX_EXACT and len(_tb) == 127 and len(_cb) == 0x60, (len(_tb), len(_cb))
 # near misses built here (recorded, never counted)
 TPD_SOUNDID = [k for k in VTABLE_IDENTITY if k.startswith('??0?$TypedPropertyDescriptor')][0]
 near = verify([(0x5b7be0, TPD_SOUNDID)])
@@ -511,6 +507,12 @@ def counted_elsewhere():
 
 
 elsewhere = counted_elsewhere()
+for row in rows:
+    if row['address'] in elsewhere:
+        row['counted_elsewhere'] = row['exact']
+        row['exact'] = False
+        row['address'] = '%#x counted by %s' % (
+            int(row['address'], 16), ', '.join(sorted(set(elsewhere[row['address']]))))
 exact_rows = sorted({r['address'] for r in rows if r['exact']})
 double = {a: elsewhere[a] for a in exact_rows if a in elsewhere}
 assert not double, double
@@ -562,7 +564,7 @@ UNIT_MAP = {
         'StringConverter<ContentId>::convertToString 005b6940 (open), the getters 005b6960..005b69d0, ~FactoryProduct<SoundService / SoundChannel> 005b69e0 / 005b6a40, std::_Tree helpers '
         '(_Min / _Max of several maps, 005b6aa0..005b6c40; 005b6c40 _Rrotate is ICF-shared with other units 00423e30, '
         '005539d0, 00668010 callers), FactoryProduct<SoundService / SoundChannel>() 005b6b60 / 005b6bc0, '
-        'boost::any_cast<SoundId> / holder<SoundId> members 005b6ca0..005b6e1f (built here, clone see bounds_evidence), the deleting-destructor adjustor thunks 005b6e40..'
+        'boost::any_cast<SoundId> / holder<SoundId> members 005b6ca0..005b6e1f and the separate FactoryProduct deleting destructor 005b6e20, the deleting-destructor adjustor thunks 005b6e40..'
         '005b6ec0 / 005b7770..005b7890 / 005bb230..005bb2b0 / 005bbf60..005bbf80, sanitize / FMOD vector helpers '
         '005b6ed0..005b7370, getset factories 005b7320 / 005b7370 / 005b7db0..005b7ea0, GetSetImpl::setValue / getValue '
         'rows 005b73c0..005b7450, the Creatable shared_count rows 005b7480..005b75a0 (creatable-shared-count), '
@@ -584,21 +586,13 @@ NOT_ATTEMPTED = {
     'garbage collection, setters, update3D)': (
         'larger members of the Sound owners; their scalar deleting destructors 005bb5d0 / 005b8220 and the adjustor '
         'thunks jumping to them (005b7770..005b77e0, 005bb230..005bb2b0) wait for ~SoundService / ~SoundChannel'),
-    'thunks to ??_G FactoryProduct<SoundChannel> 005b6e20 (005b6e40, 005b6e60, 005b6e70, 005b6e80)': (
-        'their target is not a row: the analysed row 005b6dc0 (127 B) covers holder<SoundId>::clone 005b6dc0..005b6e1f '
-        'and ??_G FactoryProduct<SoundChannel> 005b6e20..005b6e3e (BOUNDS evidence, see bounds_evidence)'),
     'thunks to the StockSound ??_G 005bd1b0 (005b7860, 005b7870, 005b7880) and ??_E FactoryProduct<StockSound> 0x130 '
     'thunks (005b77f0, 005b7890, 005bb250)': 'their targets are ~StockSound / ~SoundChannel / ~SoundService rows (not built)',
     '005bb320 / 005bbea0 (5-byte tail jumps to the two EnumDesc singletons)': (
         'identity not proven (no caller or name evidence; any `return singleton()` forwarder compiles the same)'),
     '005b6c40 _Rrotate': 'ICF-shared std::_Tree helper also called from 00423e30 / 005539d0 / 00668010 (not this unit only)',
 }
-BOUNDS_EVIDENCE = {
-    'row 005b6dc0 (not counted)': ('the analysed row (127 B) is two functions: boost::any::holder<SoundId>::clone 005b6dc0..005b6e1f '
-                 '(ret at 005b6e1f; the compiled clone, 96 B, is exact against the first 96 bytes of the row) and ??_G FactoryProduct<SoundChannel> 005b6e20..005b6e3e (push esi; call '
-                 '~FactoryProduct<SoundChannel> 005b6a40; free); the adjustor thunks 005b6e40 / 005b6e60 / 005b6e70 / '
-                 '005b6e80 jump to 005b6e20. bounds.json is not changed here.'),
-}
+BOUNDS_EVIDENCE = {}
 REJECTED = {
     '005ba890 / 005bae40 / 005bb110 as std::map<const Name*, ReverbType / SoundType> erase / ~_Tree / ~map': (
         'relocation-masked matches only: ~EnumDesc<ReverbType / SoundType> call their ~_Tree at 00553d80 (support body '

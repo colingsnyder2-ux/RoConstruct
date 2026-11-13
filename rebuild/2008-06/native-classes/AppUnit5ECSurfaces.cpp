@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 v8datamodel/Surfaces.cpp (application range 005ec000..005f0000): the Surfaces members that do not need the
 // per-face property descriptor statics. Inactive native unit against the read-only native v8datamodel/Surfaces.h.
 // Layout (constructor 005ecbb0): six 8-byte Surface members, Top +0x0 (NORM_Y), Bottom +0x8 (NORM_Y_NEG),

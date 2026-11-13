@@ -1,6 +1,11 @@
 // 2008-06 native RBX::LocalBackpack / RBX::LocalBackpackItem (inactive): the original LocalBackpack unit
 // 005fb710..005fd330. Evidence in native-headers/LocalBackpack2008/LocalBackpack2008.h; verified by
 // tests/record_native_local_backpack.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// LocalBackpack2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 6d41a521 | roc native-status --write
 #include "LocalBackpack2008/LocalBackpack2008.h"
 #include "v8datamodel/Backpack.h"
 #include "Network/Players.h"
@@ -319,3 +324,20 @@ namespace RBX
 			clearLocalCharacter();
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Listener<RBX::Instance,RBX::DescendantAdded>;
+template class RBX::Listener<RBX::Instance,RBX::DescendantRemoving>;
+template class RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded>;
+template class RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving>;
+template class boost::shared_ptr<RBX::LocalBackpackItem>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Instance,RBX::DescendantAdded> *,std::allocator<RBX::Listener<RBX::Instance,RBX::DescendantAdded> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Instance,RBX::DescendantRemoving> *,std::allocator<RBX::Listener<RBX::Instance,RBX::DescendantRemoving> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *,std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *,std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Instance,RBX::DescendantAdded> *,std::allocator<RBX::Listener<RBX::Instance,RBX::DescendantAdded> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Instance,RBX::DescendantRemoving> *,std::allocator<RBX::Listener<RBX::Instance,RBX::DescendantRemoving> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *,std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *,std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *> >;
+template class std::vector<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *,std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterAdded> *> >;
+template class std::vector<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *,std::allocator<RBX::Listener<RBX::Network::Player,RBX::Network::CharacterRemoving> *> >;

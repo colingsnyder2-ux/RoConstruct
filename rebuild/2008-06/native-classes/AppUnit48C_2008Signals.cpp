@@ -15,6 +15,11 @@
 //     00496740 / constructor 004967c0, function2::operator() 00496ac0 and the caller 00497430;
 //   * boost::any::holder<shared_ptr<Instance> > (vtable 00821718): ??_G 0048dc10, type() 0048db50, clone() 0048db60,
 //     destructor 0048dba0, and boost::any::operator=<shared_ptr<Instance> > 0048dd00.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit48C_2008Signals | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9688d543 | roc native-status --write
 #include "reflection/signal.h"
 #include "v8tree/Instance.h"
 #include <boost/any.hpp>
@@ -28,3 +33,11 @@ template class RBX::Reflection::TSignalDesc<void(std::string, boost::shared_ptr<
 
 template class boost::any::holder<boost::shared_ptr<RBX::Instance> >;
 template boost::any& boost::any::operator=<boost::shared_ptr<RBX::Instance> >(const boost::shared_ptr<RBX::Instance>&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function1<void,float,std::allocator<void> >;
+template class boost::function2<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::shared_ptr<RBX::Instance>,std::allocator<void> >;
+template class boost::function<void __cdecl(float),std::allocator<void> >;
+template class boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::shared_ptr<RBX::Instance>),std::allocator<void> >;
+template class boost::signal1<void,float,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(float),std::allocator<void> > >;
+template class boost::signal2<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::shared_ptr<RBX::Instance>,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::shared_ptr<RBX::Instance>),std::allocator<void> > >;

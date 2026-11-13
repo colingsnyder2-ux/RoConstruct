@@ -1,0 +1,30 @@
+{
+ "files": [
+  "v8datamodel/FlagStand.cpp",
+  "script/LuaInstanceBridge.cpp",
+  "gui/ProfanityFilter.cpp",
+  "gui/ScoreHud.cpp",
+  "v8datamodel/ToolMouseCommand.cpp",
+  "v8datamodel/PVInstance.cpp",
+  "v8datamodel/Message.cpp",
+  "v8datamodel/JointInstance.cpp",
+  "humanoid/Running.cpp",
+  "v8datamodel/Value.cpp"
+ ],
+ "status": "complete: no acceptable gain",
+ "parked": {
+  "humanoid/Running.cpp": "GeometryService API absent in 2008 headers.",
+  "v8datamodel/JointInstance.cpp": "2008 overlay merges AutoJoint into JointInstance with weak_ptr storage; donor AutoJoint member bodies have no matching class.",
+  "script/LuaInstanceBridge.cpp": "Donor lua_tofloat helper absent from 2008 headers; no evidenced equivalent without adding/changing body logic."
+ },
+ "compile_files": [
+  "v8datamodel/FlagStand.cpp",
+  "gui/ProfanityFilter.cpp",
+  "gui/ScoreHud.cpp",
+  "v8datamodel/ToolMouseCommand.cpp",
+  "v8datamodel/PVInstance.cpp",
+  "v8datamodel/Message.cpp",
+  "v8datamodel/Value.cpp"
+ ],
+ "retained_after_final_gates": []
+}

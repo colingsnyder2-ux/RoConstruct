@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_MapOperations.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawMapOperations.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_MapOperations.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawMapOperations.cpp"
     ],
     "MapRootConstructor": [
       "/nologo",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_MapRootConstructor.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_MapRootConstructor.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawMapRootConstructor.cpp"
     ],
     "MapRootLifetime": [
       "/nologo",
@@ -113,8 +113,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_MapRootLifetime.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_MapRootLifetime.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawMapRootLifetime.cpp"
     ],
     "EntityLifetime": [
       "/nologo",
@@ -151,8 +151,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_EntityLifetime.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_EntityLifetime.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawEntityLifetime.cpp"
     ],
     "ModelWrite": [
       "/nologo",
@@ -175,7 +175,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-string",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -190,8 +190,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_ModelWrite.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawModelWrite.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_ModelWrite.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawModelWrite.cpp"
     ],
     "Parser": [
       "/nologo",
@@ -228,8 +228,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_Parser.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawParser.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_Parser.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawParser.cpp"
     ],
     "ParserParse": [
       "/nologo",
@@ -252,7 +252,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-ldraw-parse",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-ldraw-parse",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -267,8 +267,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_ParserParse.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawParserParse.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_ParserParse.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawParserParse.cpp"
     ],
     "PartColor": [
       "/nologo",
@@ -305,8 +305,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartColor.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartColor.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_PartColor.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawPartColor.cpp"
     ],
     "PartParent": [
       "/nologo",
@@ -329,7 +329,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-string",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -344,8 +344,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartParent.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartParent.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_PartParent.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawPartParent.cpp"
     ],
     "PartShape": [
       "/nologo",
@@ -368,7 +368,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-ldraw-shape",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-ldraw-shape",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -383,8 +383,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartShape.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartShape.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_PartShape.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawPartShape.cpp"
     ],
     "PartTransform": [
       "/nologo",
@@ -407,7 +407,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-string",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -422,8 +422,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartTransform.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartTransform.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_PartTransform.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawPartTransform.cpp"
     ],
     "PartWrite": [
       "/nologo",
@@ -460,8 +460,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartWrite.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartWrite.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_PartWrite.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawPartWrite.cpp"
     ],
     "StringCompare": [
       "/nologo",
@@ -484,7 +484,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string-iterators",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-string-iterators",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -499,8 +499,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_StringCompare.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawStringCompare.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_StringCompare.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawStringCompare.cpp"
     ],
     "StringIterators": [
       "/nologo",
@@ -523,7 +523,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string-iterators",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers\\std-noinline-string-iterators",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -539,8 +539,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/O1",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_StringIterators.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit46CStringIterators.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_StringIterators.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit46CStringIterators.cpp"
     ],
     "AssetState": [
       "/nologo",
@@ -577,8 +577,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_AssetState.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawAssetState.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_AssetState.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawAssetState.cpp"
     ],
     "Path": [
       "/nologo",
@@ -615,8 +615,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_Path.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPath.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_Path.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LDrawPath.cpp"
     ],
     "EntityLifetime_pending": [
       "/nologo",
@@ -639,7 +639,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\pending",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -654,49 +654,49 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_EntityLifetime_pending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/pending/LDrawEntityLifetime.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\AppUnit46C_EntityLifetime_pending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit46c\\pending\\LDrawEntityLifetime.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_app_unit46c.py": "4c55e41462a7b053ac538687edcd4d6278a4ab3e28f50103b19d89bb12ec998c",
-    "rebuild/2008-06/native-classes/LDrawMapOperations.cpp": "9a7ac7931052164c53ccdbfe9ccb9b44fa2bd91bafe77095900533b10517a6c3",
-    "rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp": "f19416d777df8e07ed5ebde057ea168aa36d9b2668442b7710f64d2668382c82",
-    "rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp": "b05fde405026579a9458be3171efcbe0610aef033d455f50b3433f08fe2fbea5",
-    "rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp": "dcba1e1f1b520b3ebca7a88477026edbd447d7fdf2236614618dfff18adcaece",
-    "rebuild/2008-06/native-classes/LDrawModelWrite.cpp": "9a7e64ae5de1275e8616062ee9374fd0f809bb8b9155a2d535f4d7ce0ad5bfbe",
-    "rebuild/2008-06/native-classes/LDrawParser.cpp": "9f5c84952dfb5eebc817e76b563f7fb2a1b61476eb911cdf82032a6c69ce04b3",
-    "rebuild/2008-06/native-classes/LDrawParserParse.cpp": "3703c272c5158c791f7140c33819b0ccbc6b8ed44b26842aeb5f47d424ce6ed0",
-    "rebuild/2008-06/native-classes/LDrawPartColor.cpp": "c1caa67706d178850be74b2ab59ad1c056db40f092f2e87038593a1bea324e77",
-    "rebuild/2008-06/native-classes/LDrawPartParent.cpp": "8e3caf0490dcfdc05fa243e68fd71c23fbe037ed7e9c39b654a1a5e4fd368ea3",
-    "rebuild/2008-06/native-classes/LDrawPartShape.cpp": "ddbdce15575beee550bab9a986997904b4cc44b5aced5041a365a7b8a6302686",
-    "rebuild/2008-06/native-classes/LDrawPartTransform.cpp": "2214431c7384b22c81c9e1ee685de44c16fb04f297b0b3c877e0feb41ff447d8",
-    "rebuild/2008-06/native-classes/LDrawPartWrite.cpp": "5afe52e278d7f74c6120b27d61537dfcda2c9dbff342af7d097d3ae2b29b95d5",
-    "rebuild/2008-06/native-classes/LDrawStringCompare.cpp": "66082edccacb259c449751a5f80fe0c85af8dff56d8cb915ac6784e216b0029c",
-    "rebuild/2008-06/native-classes/AppUnit46CStringIterators.cpp": "31e4bd483a64d7ce3bc44650e32dd9ef4db03ea93b4d2a6b48e92b8a9fbef149",
-    "rebuild/2008-06/native-headers/util/LDrawMapRoot.h": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
-    "rebuild/2008-06/native-headers/util/LDrawEntities.h": "3ab091e2d8ad0f74e353894e368f51dd203df76da9ec1b004e554ca8c950a183",
-    "rebuild/2008-06/native-headers/util/LDrawParser.h": "ecd10d77ada42990df761e486652274e6e82f5b64eae425c59d3041687553951"
+    "rebuild/2008-06/tests/record_native_app_unit46c.py": "e2b5331940604f3618d30c2acc1b21c802686164f151c91e4ed561f952029e31",
+    "rebuild/2008-06/native-classes/LDrawMapOperations.cpp": "fd31a06564d80485609b268f989e24b1601bf364f23e36fdbc2fffa0b9d83084",
+    "rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp": "0a38e5552932e37314cc341511e656140a347a79d00384e235e75613e58c87ce",
+    "rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp": "c851bf0f81e4716dc429b8a3d4e25acf090b2bef93a59130adf00ae091f45749",
+    "rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp": "76231a372f6df1a231971101e351d72cebc13919eb69ef814bc9adefa7e8712b",
+    "rebuild/2008-06/native-classes/LDrawModelWrite.cpp": "f3b4d1c7f30961a7b0373e22d7d3dabfc93050a4a45394126d9aaad5ea6f4243",
+    "rebuild/2008-06/native-classes/LDrawParser.cpp": "38c20916416c73665feef532038ad88e3db1d4cc076be4c53972a2cb6a3534f8",
+    "rebuild/2008-06/native-classes/LDrawParserParse.cpp": "690a22e7d29f76963e87b8de76a3afd4379db59a5299b571aaba4e8c4fa0b72b",
+    "rebuild/2008-06/native-classes/LDrawPartColor.cpp": "ecef980c3512a55429661d365220adaf4b876f8bc503e939557f00b233326bfc",
+    "rebuild/2008-06/native-classes/LDrawPartParent.cpp": "1eb7cc2952bc29be41029ebbe0cba2812cc6d9107e605615ef13a6109f50e984",
+    "rebuild/2008-06/native-classes/LDrawPartShape.cpp": "b093c339e3fe14564b41341cc4402a6d6cb013fd07205ae8069290f17a9d1dd0",
+    "rebuild/2008-06/native-classes/LDrawPartTransform.cpp": "7db4223553292461ac6cb12724e04636d910f5196f8bff0bf5c69e235ea88500",
+    "rebuild/2008-06/native-classes/LDrawPartWrite.cpp": "5459f151d8a6488217cedfac08242d819a60b057a402c8a676f7ef7794ed413b",
+    "rebuild/2008-06/native-classes/LDrawStringCompare.cpp": "5156ae07db4a3d79b3945117b6547922b3cf99af09461aa4fc0405c9e6a3a7ca",
+    "rebuild/2008-06/native-classes/AppUnit46CStringIterators.cpp": "20cbcb4bb393df47135734f13b9fa9787b2ec5cf911c4e1d67c6787c1e971bb4",
+    "rebuild/2008-06/native-headers/util/LDrawMapRoot.h": "b8853c3ca563ec9cd7c5d0ad85dd1e85e154a134b394818b8c5032267e090305",
+    "rebuild/2008-06/native-headers/util/LDrawEntities.h": "08fda5526e44d6b0e9c9cf705d8b4ed040d6f894b05726a13d1adcb744099832",
+    "rebuild/2008-06/native-headers/util/LDrawParser.h": "730994acdacbad4fc5c76b723d40f7f185441a48fe67cc2a64ea1a1fa245fc34"
   },
   "sources_note": "committed LDraw*.cpp of another owner compiled read-only and unchanged; one new source of this lease (AppUnit46CStringIterators.cpp, an explicit member instantiation); no new header",
   "objects": {
-    "MapOperations": "91bd98c7e84c1464aee05d017ada1eabc2ac6066db89c8f5421ea2314673c3e2",
-    "MapRootConstructor": "ae67efd3e6fa4b762b4deb520365630bb22d88e74a8aaafe066e4b62de33e58b",
-    "MapRootLifetime": "bfe1b879d3618ba45f4f69f8df83bc3d2ca17690108111a2bc3988b5242b5f5e",
-    "EntityLifetime": "547dba0cbf1fe757afc1342023beabf401e580adba184d5d51ab836221d69be4",
-    "ModelWrite": "4d966095e9bb4d5dcfc727a7a5e08c4757fa475966b98ea4454d4924fec8e4ad",
-    "Parser": "72893f3d6c775d3c01254996aab1c2ebd990a2baaedab46ab1a5d1f0855f87f6",
-    "ParserParse": "04f4b59a8b2f2ab291a703cca6ff69526c011766672e9f859edb61ccfe840ea7",
-    "PartColor": "e409fa62b7dd6c391ea7ef738384e37871d0ea37ed95a9b45d1340346d2ffc1e",
-    "PartParent": "53a296257f5ca49536c99b9a36846e28c45cd63c94d9144694369b56d5ad5414",
-    "PartShape": "7f7855f6be721a22f6785468e842ec637a1bcccaec3f6e1ddfda6f4a0b3993ef",
-    "PartTransform": "932cc9068604a2838063c80baf969f14280340132f7698ba4aba6be981e4baf7",
-    "PartWrite": "dbd6cddac91aa2b5e912cb25c1b154443b22abf62fca305d07f97cdc6a4a281a",
-    "StringCompare": "5ed70c984d4e504a40f3ee36f216ee770560b25887ce6884c86e8e3cac76ed8e",
-    "StringIterators": "9e716cd21b45bdef3544fcbd46597b664c60525fc0132b42f0f8f5a2872359dc",
-    "AssetState": "8683351b6e08b6370a9d1b5c065e19417d6cf70fe95c344845bbd3e235f6677c",
-    "Path": "e1fdfa8b6cbd4e638228bc636705b14a5be9780d9e6c2cfea9c79187af112de9",
-    "EntityLifetime_pending": "a2e83184062c0a34174d9bb19d5e7b5816ec8a54063cdcacb83179f7b81113ec"
+    "MapOperations": "d3fde0912dbeeac91618f821632fcbf24c6d4fcdc32eb08a22d66d03cdbf026a",
+    "MapRootConstructor": "b0fc39116e94efab1f9fdd649cd7a14b6e5f9e19f823a21934379c7b5623881e",
+    "MapRootLifetime": "e414ebfc3a251edb8bb7a226bdfcd3445d658f094bf9e971d8f33bc3d5d188a1",
+    "EntityLifetime": "eea4f298b65013c1a664af277e0e00d9d94b033c9f556785ca4cda178799ef51",
+    "ModelWrite": "617f131b10fb96c2ce8d0c27a32f9c05875090ad484c4a0b0ec2b5402031dda0",
+    "Parser": "b0b4539e113d95461ba2bc0755c507863940796c18404cf95a6fe6202ce6c0e2",
+    "ParserParse": "538d8a0ed48db2e4f679f119f7429262c2d61b8f4c3d917cf9c87d8bca6ca1f0",
+    "PartColor": "2656cdb6286fd20e5b19240158c88698620cd513aa983be23fdb78f84e4aaecc",
+    "PartParent": "73b7bf98d4ae3221c1ae92feadaec0a536e60b6543e943a6fb66aea0b5fa1daf",
+    "PartShape": "0f252b8c5b1a7d78756efad5308e0746e5a9ed329eb4f5c6d3e95889e508494a",
+    "PartTransform": "c03b018614fc6add7c72bbda9496952ea3e045f5044c1b2112da501cb63b923d",
+    "PartWrite": "68ec4ac72ef0270e9e04028a70d589b467b9d918b824c2ce38c510d3d8ba4f51",
+    "StringCompare": "083a658904c16b6561799945f69114b40c3f0b4808a7c55f28db198d09a8dce0",
+    "StringIterators": "9b4d07fdab2be594658bc1b7dec833340a997c5bd821b3103f6cc85b8d0f6e14",
+    "AssetState": "a88d9a89acb23162f745355e4736e449ef2e5f0e7c6d9bb7eabba0d8056a5582",
+    "Path": "3871358adb4d56eb8cc194432e17ab0cd4f6d0be4f3e7ab5a28579f2eb26b533",
+    "EntityLifetime_pending": "0d0af19f2e00429122fe3f6157d89a3702655d87b312018c630eafbea0bd38d3"
   },
   "unit_map": {
     "workspace 0x46c000..0x46cabf": "Workspace.cpp (ATL CComObject<CWorkspace> scripting object; CWorkspace.h / CRobloxDoc.h owners and the workspace-*-trial receipts): execScript 0x46c230 (workspace-execscript-port-mismatch), execUrl 0x46c430 (\"Failed to get URL, %s\"; workspace-execurl-trial), 0x46c780 with its funclet row 0x46c8cb, the site-trust check 0x46c920 (\"Untrusted Url: %s\"). Other owners' area: not rebuilt here.",
@@ -706,7 +706,7 @@
   },
   "unit_blocks": {
     "Workspace.cpp tail: ATL CWorkspace (other owners; continues from 0x46a940)": {
-      "rows": 5,
+      "rows": 4,
       "bytes": 2171,
       "counted_here": 0,
       "counted_elsewhere": [
@@ -718,9 +718,9 @@
       "last": "0x46c920"
     },
     "RBX::LDraw2Lua (rbx; native LDraw*.cpp)": {
-      "rows": 70,
-      "bytes": 12145,
-      "counted_here": 56,
+      "rows": 68,
+      "bytes": 12142,
+      "counted_here": 59,
       "counted_elsewhere": [
         "0x46f200 counted by ldraw-parse-trial.json"
       ],
@@ -746,8 +746,8 @@
       "last": "0x473fc0"
     }
   },
-  "range_functions": 138,
-  "range_bytes": 32071,
+  "range_functions": 135,
+  "range_bytes": 32068,
   "range_rows_counted_by_other_receipts": [
     "0x46c430 counted by workspace-execurl-trial.json",
     "0x46c780 counted by workspace-save-trial.json",
@@ -757,12 +757,7 @@
   ],
   "ldraw_rows_open": [
     "0x46cf40",
-    "0x46e0a0",
-    "0x46e180",
-    "0x46e1d9",
-    "0x46e430",
-    "0x46e574",
-    "0x46e612",
+    "0x46e130",
     "0x46ea00",
     "0x46ea10",
     "0x46ea30",
@@ -772,8 +767,7 @@
   ],
   "open": {
     "0x46ea00 / 0x46ea10 / 0x46ea30 / 0x46eae0 / 0x46f630 / 0x46f820": "LuaObjectWriter / LDrawCommand / LuaWriter dtor, ??_G, ctors: byte-exact from LDrawEntityLifetime.cpp, but their vtable relocations name ??_7LDrawItem / LDrawPart / LDrawModel while the RTTI of 0x81ca00 / 0x81ca0c / 0x81cbd4 names LuaObjectWriter / LDrawCommand / LuaWriter: not counted (exact in the pending build).",
-    "0x46cf40 ??Y (operator+=) of std::_String_const_iterator<char>": "std header COMDAT (callers 0x46cfc7 in _Transform 0x46cfa0, 0x48b866, 0x5f5e52, 0x64faf7). Same size (82 B) but not exact with the std-noinline-string-iterators xstring under /O2 or /O1: the original recomputes _Ptr + _Off for the second bound check (edx) and schedules push edi after the _invalid_parameter_noinfo load; the build reuses ecx. Plain xstring and std-noinline-string: 91 B (/O2, /O1, /Os; 21022 and 50727). Open.",
-    "0x46e0a0, 0x46e180 + 0x46e1d9, 0x46e430 + 0x46e574 + 0x46e612": "vector<NativeRobloxPart> helpers whose analysed extents are wrong (bounds_evidence): exact when joined / as prefix, not counted."
+    "0x46cf40 ??Y (operator+=) of std::_String_const_iterator<char>": "std header COMDAT (callers 0x46cfc7 in _Transform 0x46cfa0, 0x48b866, 0x5f5e52, 0x64faf7). Same size (82 B) but not exact with the std-noinline-string-iterators xstring under /O2 or /O1: the original recomputes _Ptr + _Off for the second bound check (edx) and schedules push edi after the _invalid_parameter_noinfo load; the build reuses ecx. Plain xstring and std-noinline-string: 91 B (/O2, /O1, /Os; 21022 and 50727). Open."
   },
   "rows": [
     {
@@ -1159,6 +1153,32 @@
       }
     },
     {
+      "address": "0046e0a0",
+      "symbol": "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "build": "MapOperations",
+      "size": 141,
+      "target_size": 141,
+      "exact": true,
+      "verified_targets": {
+        "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@ABU012@@Z": "0x46deb0 (own row)",
+        "??1NativeRobloxPart@LDraw2Lua@RBX@@QAE@XZ": "0x46cb30 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      }
+    },
+    {
+      "address": "0046e180",
+      "symbol": "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "build": "MapOperations",
+      "size": 139,
+      "target_size": 139,
+      "exact": true,
+      "verified_targets": {
+        "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@ABU012@@Z": "0x46deb0 (own row)",
+        "??1NativeRobloxPart@LDraw2Lua@RBX@@QAE@XZ": "0x46cb30 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      }
+    },
+    {
       "address": "0046e210",
       "symbol": "??$_Destroy_range@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
       "build": "MapOperations",
@@ -1189,7 +1209,7 @@
       "target_size": 58,
       "exact": true,
       "verified_targets": {
-        "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e180 (split row: compiled body exact against the joined extent (bounds_evidence, not counted))"
+        "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e180 (own row)"
       }
     },
     {
@@ -1222,7 +1242,7 @@
       "target_size": 44,
       "exact": true,
       "verified_targets": {
-        "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e0a0 (merged row: compiled body exact as the row prefix (bounds_evidence, not counted))"
+        "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e0a0 (own row)"
       }
     },
     {
@@ -1235,6 +1255,29 @@
       "verified_targets": {
         "??$_Destroy_range@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x46e210 (own row)",
         "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0046e430",
+      "symbol": "?_Insert_n@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@IABUNativeRobloxPart@LDraw2Lua@RBX@@@Z",
+      "build": "MapOperations",
+      "size": 635,
+      "target_size": 635,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@KAXXZ": "0x4c6d40 (helper body exact at the bound address (not counted here))",
+        "??$_Allocate@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@IPAU123@@Z": "0x46e040 (own row)",
+        "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e0a0 (own row)",
+        "?_Ufill@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU345@IABU345@@Z": "0x46e310 (own row)",
+        "??$_Destroy_range@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x46e210 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?_Destroy@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXPAUNativeRobloxPart@LDraw2Lua@RBX@@0@Z": "0x46e350 (own row)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@ABU012@@Z": "0x46deb0 (own row)",
+        "??$_Umove@PAUNativeRobloxPart@LDraw2Lua@RBX@@@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU234@00@Z": "0x46e390 (own row)",
+        "??$_Fill@PAUNativeRobloxPart@LDraw2Lua@RBX@@U123@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0ABU123@@Z": "0x46df20 (own row)",
+        "??$_Unchecked_move_backward@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@@stdext@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00@Z": "0x46e130 (helper body exact at the bound address (not counted here))",
+        "??1NativeRobloxPart@LDraw2Lua@RBX@@QAE@XZ": "0x46cb30 (own row)"
       }
     },
     {
@@ -1273,7 +1316,7 @@
       "exact": true,
       "verified_targets": {
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
-        "?_Insert_n@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@IABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": "0x46e430 (split row: compiled body exact against the joined extent (bounds_evidence, not counted))"
+        "?_Insert_n@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@IABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": "0x46e430 (own row)"
       }
     },
     {
@@ -1296,7 +1339,7 @@
       "target_size": 128,
       "exact": true,
       "verified_targets": {
-        "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e180 (split row: compiled body exact against the joined extent (bounds_evidence, not counted))",
+        "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e180 (own row)",
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
         "?insert@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@ABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": "0x46e800 (own row)"
       }
@@ -1900,32 +1943,7 @@
       }
     }
   ],
-  "bounds_evidence": [
-    {
-      "rows": "0x46e180 + 0x46e1d9",
-      "symbol": "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
-      "compiled_size": 139,
-      "joined_size": 139,
-      "exact_when_joined": true,
-      "reason": "one function: the try body and its catch(...) funclet (destroy the constructed elements and rethrow, __CxxThrowException); the analysis splits it at the funclet. Relocation-masked exact against the joined extent. Not counted (extent fix needed; bounds.json is not changed here)."
-    },
-    {
-      "rows": "0x46e430 + 0x46e574 + 0x46e612",
-      "symbol": "?_Insert_n@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@IABUNativeRobloxPart@LDraw2Lua@RBX@@@Z",
-      "compiled_size": 635,
-      "joined_size": 635,
-      "exact_when_joined": true,
-      "reason": "one function: the try body and its catch(...) funclet (destroy the constructed elements and rethrow, __CxxThrowException); the analysis splits it at the funclet. Relocation-masked exact against the joined extent. Not counted (extent fix needed; bounds.json is not changed here)."
-    },
-    {
-      "rows": "0x46e0a0",
-      "symbol": "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
-      "compiled_size": 141,
-      "row_size": 217,
-      "exact_prefix": true,
-      "reason": "the analysed row is two functions: _Uninit_copy<NativeRobloxPart*> (141 B, exact as the row prefix, its catch(...) funclet inside) then int3 padding and a second function at 0x46e130 (73 B, the copy-backward wrapper that calls 0x46df70). Not counted (extent fix needed)."
-    }
-  ],
+  "bounds_evidence": [],
   "helper_bodies_not_counted": {
     "?find@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABH@Z": "0x5b3990",
     "?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x696f30",
@@ -1943,6 +1961,8 @@
     "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350",
     "??1XmlElement@@QAE@XZ": "0x413a70",
     "??1TextXmlParser@@QAE@XZ": "0x4147c0",
+    "?_Xlen@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@KAXXZ": "0x4c6d40",
+    "??$_Unchecked_move_backward@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@@stdext@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00@Z": "0x46e130",
     "?_Xran@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@KAXXZ": "0x46dfc0",
     "?at@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QBEABQAVLDrawItem@LDraw2Lua@RBX@@I@Z": "0x46f5a0",
     "?push_back@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEXABQAVLDrawItem@LDraw2Lua@RBX@@@Z": "0x4213a0",
@@ -1952,7 +1972,7 @@
   },
   "proposals": {
     "util/LDrawEntities.h (LDraw owner; not edited)": "Rename LDrawItem -> LuaObjectWriter, LDrawPart -> LDrawCommand, LDrawModel -> LuaWriter (and the definitions in native-classes/LDrawEntityLifetime.cpp, LDrawModelWrite.cpp, LDrawPart*.cpp, LDrawParserParse.cpp): the complete-object locators of vtables 0x81ca00 / 0x81ca0c / 0x81cbd4 name .?AVLuaObjectWriter@LDraw2Lua@RBX@@, .?AVLDrawCommand@LDraw2Lua@RBX@@ (bases LDrawCommand, LuaObjectWriter) and .?AVLuaWriter@LDraw2Lua@RBX@@. Verified here with generated copies of the header and of LDrawEntityLifetime.cpp with the RTTI names: 0x46ea00 / 0x46ea10 / 0x46ea30 / 0x46eae0 / 0x46f630 / 0x46f820 are exact with every target verified (pending-build-only, not counted).",
-    "work/2008-06/bounds.json (server host)": "BOUNDS: 0x46e180 + 0x46e1d9 is one function (_Uninit_fill_n<NativeRobloxPart*>, 139 B), 0x46e430 + 0x46e574 + 0x46e612 is one function (vector<NativeRobloxPart>::_Insert_n, 635 B), and 0x46e0a0 is two functions (_Uninit_copy<NativeRobloxPart*> 0x46e0a0, 141 B, and a 73-byte function at 0x46e130). Relocation-masked exact evidence in bounds_evidence."
+    "work/2008-06/bounds.json (server host)": "The current function map now gives 0x46e0a0 (141 B), 0x46e180 (139 B), and 0x46e430 (635 B) their complete extents, so all three are counted normally."
   },
   "library": "G3D 6.09 GLCaps.cpp / Texture.cpp 0x46fc10..0x474000: library code, not recovered.",
   "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range.",
@@ -1983,6 +2003,8 @@
     "0046df70",
     "0046dfc0",
     "0046e040",
+    "0046e0a0",
+    "0046e180",
     "0046e210",
     "0046e280",
     "0046e310",
@@ -1990,6 +2012,7 @@
     "0046e370",
     "0046e390",
     "0046e3c0",
+    "0046e430",
     "0046e6b0",
     "0046e790",
     "0046e800",

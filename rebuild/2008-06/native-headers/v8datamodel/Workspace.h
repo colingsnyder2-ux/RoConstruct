@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Workspace | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5afc998f | roc native-status --write
 #include "v8datamodel/RootInstance.h"
 #include "v8datamodel/Stats.h"
 #include "v8tree/Verb.h"

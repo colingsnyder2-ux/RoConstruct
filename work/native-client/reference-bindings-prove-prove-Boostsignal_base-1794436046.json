@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$?0Vsignal_base_impl@detail@signals@boost@@@shared_count@detail@boost@@QAE@PAVsignal_base_impl@1signals@2@@Z",
+    "address": "0056b2c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostsignal_base\\objects\\ab612e50d1447727\\candidate.obj": "ce376f17b2a82ad9e41a966ed459cfc286f28fa865490a9084d1610bffa13c2b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-kxa0bqyn\\owners.json": "97927f3578efe3d96bfed2c6407070108150dab990e5e9880ea19fe6c2dbaefa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-kxa0bqyn\\import-thunk-identities-as-owner.json": "7fcbdef36d25b926b8e290565e33644a7490ab0d433fa115a680391c4d244138"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$checked_delete@Vsignal_base_impl@detail@signals@boost@@@boost@@YAXPAVsignal_base_impl@detail@signals@0@@Z",
+   "address": "0056b2a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$sp_counted_impl_p@Vsignal_base_impl@detail@signals@boost@@@detail@boost@@UAEPAXI@Z",
+   "address": "00415000",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?dispose@?$sp_counted_impl_p@Vsignal_base_impl@detail@signals@boost@@@detail@boost@@UAEXXZ",
+   "address": "0056b350",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?get_deleter@?$sp_counted_impl_p@Vsignal_base_impl@detail@signals@boost@@@detail@boost@@UAEPAXABVtype_info@@@Z",
+   "address": "005f2310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??$?0Vsignal_base_impl@detail@signals@boost@@@shared_count@detail@boost@@QAE@PAVsignal_base_impl@1signals@2@@Z",
+   "address": "007cfa60",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

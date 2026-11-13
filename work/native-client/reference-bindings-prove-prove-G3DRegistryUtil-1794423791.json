@@ -1,0 +1,63 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?readInt32@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAH@Z",
+    "address": "00513fe0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DRegistryUtil\\objects\\de443a125c2c2b61\\candidate.obj": "4a796323eecb26908f4b0e858735d73a03923b3c60875bb2a1ed79ca4d979830",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-esktx_5s\\owners.json": "6d57cd7090092501a2616d1fca26306b1f4fdf0b74cb0a92496d54735f02524d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-esktx_5s\\import-thunk-identities-as-owner.json": "789f43c59290ef18f70103bae6670f9cc165b04da2f0b3c98df384de34096663"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z",
+    "address": "00514190"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DRegistryUtil\\objects\\de443a125c2c2b61\\candidate.obj": "4a796323eecb26908f4b0e858735d73a03923b3c60875bb2a1ed79ca4d979830",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-esktx_5s\\owners.json": "6d57cd7090092501a2616d1fca26306b1f4fdf0b74cb0a92496d54735f02524d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-esktx_5s\\import-thunk-identities-as-owner.json": "789f43c59290ef18f70103bae6670f9cc165b04da2f0b3c98df384de34096663"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?getKeyFromString@G3D@@YAPAUHKEY__@@PBDI@Z",
+   "address": "00513e80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?readInt32@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAH@Z",
+   "address": "007cc502",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z",
+   "address": "007cc502",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegCloseKey@4",
+   "address": "00802008",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegOpenKeyExA@20",
+   "address": "00802010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__RegQueryValueExA@24",
+   "address": "00802020",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

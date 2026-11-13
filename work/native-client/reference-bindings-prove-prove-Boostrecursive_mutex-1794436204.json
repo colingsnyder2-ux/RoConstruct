@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?new_critical_section@?A0xd55a4d54@@YAPAXXZ",
+    "address": "00594c10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostrecursive_mutex\\objects\\7ea3478c593c6827\\candidate.obj": "7fe4a52be03a0f30991bbeecd5be7122c2de54d7d79656828adbd7e237155d13",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-bcfmapts\\owners.json": "fa5128b6cdc8fb02c1d17000eb027665b9313757eb654025c51a22f0e5b5493a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-bcfmapts\\import-thunk-identities-as-owner.json": "0124fc80d6a67ed07a21b0f7df0e0f9598cd9489b069baafc713372049191f3f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$?new_critical_section@?A0xd55a4d54@@YAPAXXZ",
+   "address": "007d1fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__InitializeCriticalSection@4",
+   "address": "008022e0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -50,10 +50,7 @@
 namespace RBX
 {
 	// reflection
-	Reflection::Property::Property(const Reflection::Property& other) : Reflection::ConstProperty(other) {}
-
 	// rendering
-	Render::SpecData::SpecData() : shaderModel(0), videoMemory(0), CPUSpeed(0), glVendor(), gfxcard(), cpu(), ram(0), resolution() {}
 
 	// raknet logger moved outside namespace
 
@@ -63,39 +60,24 @@ namespace RBX
 
 	// network bitstream helper
 	// position then the rotation rows, as Replicator::deserializeValue reads a CoordinateFrame
-	RakNet::BitStream& Network::operator<<(RakNet::BitStream& stream, const G3D::CoordinateFrame& cf)
-	{
-		stream << cf.translation;
-		for (int r = 0; r < 3; ++r)
-			for (int c = 0; c < 3; ++c)
-				stream << cf.rotation[r][c];
-		return stream;
-	}
 
 	// content id equality
-	bool operator==(const ContentId& a, const ContentId& b) { return a.toString() == b.toString(); }
 
 	// plugin receive (raknet adapter)
 	// PluginInterfaceAdapter moved outside namespace
 
 	// instance tree
-	bool VelocityMotor::askSetParent(const Instance*) const { return true; }
-
 	// replication
 
 	// replication player state
 
 	// gui
-	const Name& ScriptMouseCommand::getName() const { return Name::getNullName(); }  // STUB
 
 	// controllers
 
 	// debug
-	std::string DebugSettings::gfxcard() const { return std::string(); }  // STUB
 
 	// dragging
-	void RunDragger::init(Workspace*, boost::weak_ptr<PartInstance>, const G3D::Vector3&) {}  // STUB
-	bool RunDragger::snap(const G3D::Ray&) { return false; }  // STUB
 
 	// gui item rendering
 
@@ -106,40 +88,22 @@ namespace RBX
 	// service provider
 
 	// tools
-	MouseCommand* DragTool::onMouseDown(PartInstance*, const G3D::Vector3&, const std::vector<Instance*>&, const UIEvent&, Workspace*) { return NULL; }  // STUB
-	void PartDragTool::onMouseMove(const UIEvent&) {}  // STUB
 
 	// widget
 
 	// abuse reporter
-	worker_thread::work_result Network::AbuseReporter::processRequests(boost::shared_ptr<Network::AbuseReporter::data>, std::string) { return (worker_thread::work_result)0; }  // STUB
 
 	// humanoid property
-	Reflection::BoundProp<float, 1> Humanoid::propMaxHealth("MaxHealth", "Data", &Humanoid::maxHealth, Reflection::PropertyDescriptor::STANDARD);
 
 	// events range
 	// Original 00420740: adjust every active dispatch after a listener is removed.
-	void RaiseRange::removeIndex(unsigned int removed)
-	{
-		for (RaiseRange* range = this; range; range = range->previous) {
-			if (range->upper > removed) --range->upper;
-			if (range->index >= removed) --range->index;
-		}
-	}
-
 	// backpack rendering
-	void BackpackItem::render2d(Adorn*) {}  // STUB
-	void LocalBackpackItem::render2d(Adorn*) {}  // STUB
 
 	// explosion
 
 	// dragger search
-	void Dragger::searchDownGross(const G3D::Array<Primitive*>&, G3D::Vector3&, ContactManager&) {}  // STUB
-	void Dragger::searchUpGross(const G3D::Array<Primitive*>&, G3D::Vector3&, ContactManager&) {}  // STUB
 
 	// box select
-	void BoxSelectCommand::selectAnd(const std::set<Instance*, std::less<Instance*>, std::allocator<Instance*> >&) {}  // STUB
-	void BoxSelectCommand::selectReverse(const std::set<Instance*, std::less<Instance*>, std::allocator<Instance*> >&) {}  // STUB
 
 	// string sender
 	void Network::StringSender::send(RakNet::BitStream& stream, const Name& name) { send(stream, name.toString()); }
@@ -148,44 +112,19 @@ namespace RBX
 
 	// instance xml
 	// a place-file root holding this instance (as SerializerV2::newRootElement + Instance::write)
-	XmlElement* Instance::toNewXmlRoot(Instance* instance)
-	{
-		XmlElement* root = SerializerV2::newRootElement();
-		if (XmlElement* item = instance->write())
-			root->addChild(item);
-		return root;
-	}
 
 	// gui root
 
 	// mouse
 
 	// script context
-	XmlElement* ScriptContext::write() { return NULL; }  // STUB
-
 	// server
-	XmlElement* Network::Server::write() { return NULL; }  // STUB
-
 	// sound statics
-	const char* Soundscape::sSoundChannel = "Sound";
-	const char* Soundscape::sSoundService = "SoundService";
 
 	// value statics
-	const char* sBoolValue = "BoolValue";
-	const char* sBrickColorValue = "BrickColorValue";
-	const char* sCFrameValue = "CFrameValue";
-	const char* sColor3Value = "Color3Value";
-	const char* sFloatValue = "NumberValue"; // 2008 client class name
-	const char* sIntValue = "IntValue";
-	const char* sObjectValue = "ObjectValue";
-	const char* sStringValue = "StringValue";
-	const char* sVector3Value = "Vector3Value";
 
 	// sim job stage template instance
 }
 
 // definitions for classes that are not in namespace RBX
-RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper() {}
-::FilePacketLogger::~FilePacketLogger() {}
 // a place file stream: parse and load as SerializerV2::loadXML does (DataModel::loadContent calls this)
-void SerializerV2::load(std::istream& stream, RBX::DataModel* dataModel) { loadXML(stream, dataModel); }

@@ -1,0 +1,109 @@
+{
+ "files": [
+  {
+   "file": "v8kernel/Link.cpp",
+   "gain": [
+    "004377b0",
+    "00476670",
+    "00613cb0",
+    "00613da0"
+   ],
+   "loss": [
+    "0070dee0"
+   ],
+   "new_module_addresses": [
+    "00613cb0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/ExponentialRunningAverage.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Face.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Quaternion.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Rect.cpp",
+   "gain": [],
+   "loss": [
+    "00467260"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/RunningAverage.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Cofm.cpp",
+   "gain": [
+    "00476570"
+   ],
+   "loss": [
+    "004377b0",
+    "0045ac40"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Pair.cpp",
+   "gain": [
+    "00613080"
+   ],
+   "loss": [
+    "00613060"
+   ],
+   "new_module_addresses": [
+    "00613080"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/IWorldStage.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  }
+ ],
+ "parked": {
+  "v8tree/Verb.cpp": "2008 XmlState lacks donor addProperty; undo/redo state declarations and VerbContainer private access also differ."
+ },
+ "linked": false,
+ "unresolved": [
+  "?weight@RunningAverageState@RBX@@CAMXZ"
+ ],
+ "global_gain": [
+  "00613080",
+  "00613cb0",
+  "006454a0"
+ ],
+ "global_loss": [
+  "00613060"
+ ],
+ "owned_before": 4435,
+ "owned_after": 4437,
+ "candidate_keep": [],
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": []
+}

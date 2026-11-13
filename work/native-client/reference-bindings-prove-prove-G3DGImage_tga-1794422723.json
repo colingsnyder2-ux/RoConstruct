@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?encodeTGA@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+    "address": "0050b1a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage_tga\\objects\\d7b8ebf32cc5289e\\candidate.obj": "afe9ef18afe3f966324b474023c9845249987f2934feeb8fffd5d88c26fb3c53",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-03c9yufj\\owners.json": "ba80c1e61d45017c4a81c4a07d580db6325a7a71240d5da7efb8a8853e66adf1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-03c9yufj\\import-thunk-identities-as-owner.json": "172151dfcad5d1dbacc8709e14569715078c3da060afb91be6356f8f45fbf6fe"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+   "address": "00519830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setEndian@BinaryOutput@G3D@@QAEXW4G3DEndian@2@@Z",
+   "address": "00519810",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setLength@BinaryOutput@G3D@@QAEXH@Z",
+   "address": "0050ab80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?writeString@BinaryOutput@G3D@@QAEXPBD@Z",
+   "address": "00519a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?writeUInt16@BinaryOutput@G3D@@QAEXG@Z",
+   "address": "00519950",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?new_critical_section@?A0xd55a4d54@@YAPAXXZ",
+    "address": "007d1fe0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostrecursive_mutex\\objects\\f6fae49456f66de4\\candidate.obj": "b3de243f7f64d115249124252ac170d6a341cebe3c53bacf985bd6d9181a9144",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ulgisg9f\\owners.json": "f30412574f6d0d3e67684316a5058acb6f0dee0769151dd4b71df10affca09b4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ulgisg9f\\import-thunk-identities-as-owner.json": "c4251cf0a829914ea5ca70145971bacc26ea5ff7ce03ae0d861394c9e103396b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?new_critical_section@?A0xd55a4d54@@YAPAXXZ$0",
+   "address": "00594c78",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

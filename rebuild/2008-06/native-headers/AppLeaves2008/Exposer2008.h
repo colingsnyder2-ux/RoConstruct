@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Exposer2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 8dacdf96 | roc native-status --write
 // Inactive native 2008-06 recovery: Exposer (Network/Client.cpp's translation unit), which exposes the protected
 // PacketLogger::IDTOString to the client's connection-failure message.
 #include <PacketLogger.h>

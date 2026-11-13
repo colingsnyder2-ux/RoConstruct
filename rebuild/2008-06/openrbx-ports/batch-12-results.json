@@ -1,0 +1,84 @@
+{
+ "files": [
+  {
+   "file": "humanoid/FallingDown.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "humanoid/Freefall.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "humanoid/GettingUp.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "humanoid/Seated.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/GlueJoint.cpp",
+   "gain": [],
+   "loss": [
+    "0045b310",
+    "00476580",
+    "004766a0",
+    "00476700",
+    "00478330",
+    "00646c10",
+    "00647190"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/Joint.cpp",
+   "gain": [
+    "006454a0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006454a0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "humanoid/Jumping.cpp": "Donor World::ticklePrimitive recursive argument absent from 2008 API.",
+  "tool/MegaDragger.cpp": "2008 member storage changes from dereferenced containers/pointers to direct values/references; source bodies need changes.",
+  "v8kernel/Kernel.cpp": "2008 Point::sameBodyAndOffset takes const reference, while donor body passes pointer; adapting call expression exceeds declaration-only scope.",
+  "v8world/Mechanism.cpp": "2008 overlay tracker stores SimJob* while donor methods return/use Mechanism*, and tracker method declarations differ."
+ },
+ "linked": false,
+ "unresolved": [
+  "?fallCutoff@Balancing@RBX@@KA?BMXZ"
+ ],
+ "global_gain": [
+  "006454a0"
+ ],
+ "global_loss": [
+  "00646c10",
+  "00647190"
+ ],
+ "owned_before": 4435,
+ "owned_after": 4434,
+ "candidate_keep": [
+  "v8world/Joint.cpp"
+ ],
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": [
+  "v8world/Joint.cpp"
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_png_set_sRGB_gAMA_and_cHRM",
+    "address": "0051d3b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngset\\objects\\69a59a9c10901d2f\\candidate.obj": "1e816c515e42b6f56855483ac7594f82a68c51cacaa92c8b8129f52ad6f91a3a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ymqqhyok\\owners.json": "7f47f6f8c2406e1e1db24bb543af677e2790070c742a93868cd8c37931851687",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ymqqhyok\\import-thunk-identities-as-owner.json": "ddbb67ee46120e680b5a26a4f2b1177c420d3dbb27fd13f55910b5b7ef00a716"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_png_set_cHRM",
+   "address": "0051c7a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_set_cHRM_fixed",
+   "address": "0051cae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_set_gAMA",
+   "address": "0051ccd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_set_gAMA_fixed",
+   "address": "0051cd50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

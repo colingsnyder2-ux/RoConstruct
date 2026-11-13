@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RenderBaseMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9fe56c00 | roc native-status --write
 // 2008-06 native RBX::RenderBase::Mesh / Mesh::Level (inactive; base declarations for the ViewNew meshes).
 // The RenderBase library bodies themselves (00547f60..0054c...) are compiled /Od and are not recovered here.
 //   Mesh     vtable 0082d028 .?AVMesh@RenderBase@RBX@@ -> G3D::ReferenceCountedObject (mdisp 0); one slot (??_G 0054a9c0).

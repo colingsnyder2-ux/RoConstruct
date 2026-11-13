@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 v8world/MotorJoint.cpp row MotorJoint::isAligned 005e5d00 (vtable 0083f764 slot 9; inactive native unit),
 // against the native v8world/Joints2008.h and v8world/Primitive2008.h (read-only; donor-IPipelined switch because
 // Joints2008.h includes the donor v8world/Edge.h). /fp:fast. The other MotorJoint rows are in

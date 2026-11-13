@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RobloxModule2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 66f0237a | roc native-status --write
 // Inactive native 2008-06 recovery: the application's ATL module object (CRobloxApp.cpp's translation unit).
 #include <afxwin.h>
 #include <atlbase.h>

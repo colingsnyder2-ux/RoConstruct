@@ -1,4 +1,9 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// TextureProxy2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 28786227 | roc native-status --write
+#include <G3D/Color3uint8.h>
 // RBX::Render::TextureProxy / MegaTextureProxy and RBX::RenderNew::TextureProxy / MegaTextureProxy / BadConversion as
 // compiled into the June 2008 client (inactive native recovery).
 //
@@ -60,6 +65,7 @@ namespace RBX
 			G3D::Color3 shadeColor;                                               // +0x48 (size 0x54)
 
 		public:
+			static void shadePixel(const G3D::Color3uint8&, G3D::Color3uint8&);
 			TextureProxy(G3D::TextureManager& textureManager, const std::string& filename, bool tiled);   // 00551b30
 		protected:
 			TextureProxy(G3D::ReferenceCountedPointer<TextureProxy> root);                               // 007b8450
@@ -116,6 +122,8 @@ namespace RBX
 			Ogre::TexturePtr ogreTexture;                                         // +0x54 (size 0x60)
 
 		public:
+			// INFERRED: helper declaration from exact resolve analog.
+			static void shadePixel(const G3D::Color3uint8&, G3D::Color3uint8&);
 			TextureProxy(G3D::TextureManager& textureManager, const std::string& filename, bool tiled);   // 00551e30
 			TextureProxy(const std::string& name);                                                       // 0066ffb0
 		protected:
@@ -135,6 +143,8 @@ namespace RBX
 			float scalar;                                                         // +0x60 (ctor: 0; size 0x64; name is a choice)
 
 		public:
+			// INFERRED: 007ae4e0 uses a 32-strip atlas.
+			static const size_t numStrips = 32;
 			MegaTextureProxy(G3D::TextureManager& textureManager, const std::string& filename);          // 007ae4b0
 			virtual G3D::ReferenceCountedPointer<G3D::Texture> resolve(G3D::RenderDevice* rd);           // slot 6 007ae4e0
 			virtual TextureProxyBaseRef shade(const G3D::Color3& color, const TextureProxyBaseRef& base) // slot 7 007b8fe0

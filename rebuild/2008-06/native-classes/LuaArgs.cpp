@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// LuaArgs | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src 2b1bedbf | roc native-status --write
 #include <afxwin.h>
 #include <atlbase.h>
 #include <stdexcept>
@@ -21,3 +25,7 @@ void LuaArgs::push(ATL::CComVariant value) {
         throw std::runtime_error(msg);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::Reflection::Value,std::allocator<RBX::Reflection::Value> >;
+template class std::_Vector_iterator<RBX::Reflection::Value,std::allocator<RBX::Reflection::Value> >;

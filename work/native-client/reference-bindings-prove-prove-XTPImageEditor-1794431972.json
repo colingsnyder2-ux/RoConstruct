@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisClass@CXTPImageEditorPicker@@SGPAUCRuntimeClass@@XZ",
+    "address": "0076e0c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-oj6jxxn6\\owners.json": "4dd3774a47254e1dafd8e9e95e244a4293288a8f8d66a124e9b12e56ef780498",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-oj6jxxn6\\import-thunk-identities-as-owner.json": "8d0bd1d84e20843be3c33a55a02ead1694b48604709975c45d236b997828c022"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AddTail@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@QAEPAU__POSITION@@PAVCAlphaBitmap@CXTPImageEditorPicture@@@Z",
+    "address": "0076bac0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-oj6jxxn6\\owners.json": "4dd3774a47254e1dafd8e9e95e244a4293288a8f8d66a124e9b12e56ef780498",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-oj6jxxn6\\import-thunk-identities-as-owner.json": "8d0bd1d84e20843be3c33a55a02ead1694b48604709975c45d236b997828c022"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?NewNode@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@IAEPAUCNode@1@PAU21@0@Z",
+   "address": "0076a730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPImageEditorPicker@@KGPAUCRuntimeClass@@XZ",
+   "address": "00718ac0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

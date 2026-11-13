@@ -1,0 +1,78 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_read_numeral",
+    "address": "006644e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54llex\\objects\\cc949f4d51e8c1b8\\candidate.obj": "ad3b125d851b50f2098d1794f2698dad6c6f2566336efe45c81572ce6038aada",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a8ui48y2\\owners.json": "eefa3d2761e075678c61d35de6c6dc4c39d4a068ade61a69aa4a0cfc1756a2a7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a8ui48y2\\import-thunk-identities-as-owner.json": "9c40b677d0434ccb58d9be478960cb6684df548a5fcfd0ceb9a0eea299014ca6"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_llex",
+    "address": "00664f50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54llex\\objects\\cc949f4d51e8c1b8\\candidate.obj": "ad3b125d851b50f2098d1794f2698dad6c6f2566336efe45c81572ce6038aada",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a8ui48y2\\owners.json": "eefa3d2761e075678c61d35de6c6dc4c39d4a068ade61a69aa4a0cfc1756a2a7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a8ui48y2\\import-thunk-identities-as-owner.json": "9c40b677d0434ccb58d9be478960cb6684df548a5fcfd0ceb9a0eea299014ca6"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_check_next",
+   "address": "006643a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_inclinenumber",
+   "address": "00664280",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaO_str2d",
+   "address": "006226d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaZ_fill",
+   "address": "0065f830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_read_long_string",
+   "address": "00664870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_read_string",
+   "address": "00664ac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_save",
+   "address": "00664050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_skip_sep",
+   "address": "00664720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_trydecpoint",
+   "address": "00664400",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

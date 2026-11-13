@@ -1,0 +1,52 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_jinit_1pass_quantizer",
+    "address": "00536e70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjquant1\\objects\\85d83d84b8882a65\\candidate.obj": "0ffea5323496377337a08127d9a071ba74b6bc3f2a6217886dc7006df8fbc118",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-80_nzh0l\\owners.json": "e91aa3d4c2d258be42abdec290bf4f67c114e8c7c20dfab2e6e78272221a6839",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-80_nzh0l\\import-thunk-identities-as-owner.json": "0c42c6d08742fef024d6e57cd7ef117517749317230d5710f5dfa831e13f61e7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_alloc_fs_workspace",
+   "address": "00536d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_create_colorindex",
+   "address": "005365c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_create_colormap",
+   "address": "00536450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_finish_pass_1_quant",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_new_color_map_1_quant",
+   "address": "00536e50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_start_pass_1_quant",
+   "address": "00536d60",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

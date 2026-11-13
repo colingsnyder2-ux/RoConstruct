@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native (inactive): the std::multimap<Primitive*, Joint*> lower_bound row 00667fd0 of the JointStage unit.
 // Evidence: the map's insert / _Insert rows 00668210 / 00668010 carry the evidence names of
 // _Tree<_Tmap_traits<Primitive*, Joint*, less<Primitive*>, allocator<...>, true>> (the multimap of

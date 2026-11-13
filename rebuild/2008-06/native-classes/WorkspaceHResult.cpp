@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceHResult | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 54da7a95 | roc native-status --write
 #include <afxwin.h>
 #include <afxdisp.h>
 

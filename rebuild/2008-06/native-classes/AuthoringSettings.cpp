@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// AuthoringSettings | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 5961d731 | roc native-status --write
 #include "AuthoringSettings.h"
 #include <boost/thread/recursive_mutex.hpp>
 #include <G3D/format.h>
@@ -55,3 +59,9 @@ template AuthoringSettings& RBX::GlobalSettingsItem<AuthoringSettings, sAuthorin
 
 // 0040d140.
 AuthoringSettings::AuthoringSettings() : showDepricatedObjects(false), showPreliminaryObjects(true) {}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::GlobalSettings>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<::sAuthoringSettings>();

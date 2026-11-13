@@ -10,9 +10,7 @@ Builds (document-swap flags, VS2008 RTM 21022):
   * native-classes/Sky.cpp with NATIVE_SKY_PENDING: the whole Sky unit; the constructor needs
     ContentId::fromAssets(const char*) (0055bd80 calls operator+(const string&, const char*)), checked against a
     generated copy of the donor util/ContentProvider.h carrying that declaration (PROPOSAL_CONTENT below);
-  * native-classes/Sparkles.cpp (base) and with NATIVE_SPARKLES_PENDING: render3dAdorn 0063d710 calls Adorn slot 19
-    (+0x4c, no arguments), absent from the donor RbxGraphics/Adorn.h; checked against a generated copy with one
-    virtual inserted before cylinderAlongX (PROPOSAL_ADORN below; the name is a placeholder);
+  * native-classes/Sparkles.cpp          render3dAdorn 0063d710 calls proven Adorn slot 19 (+0x4c) sparkle();
   * native-classes/SparklesEffect.cpp   Effect unit 00665670..00665690.
 
 Every row must be relocation-masked exact against the original, and every relocation target is bound to the
@@ -48,21 +46,16 @@ DONOR = ROOT / 'tools/rbxgs/Client'
 
 # ---- generated pending headers (copies; shared/donor headers are not edited) -------------------------
 pending = OUT / 'native-effects-pending'
-for sub in ('util', 'RbxGraphics'):
+for sub in ('util',):
     (pending / sub).mkdir(parents=True, exist_ok=True)
 
 CONTENT_ANCHOR = '\t\tstatic ContentId fromAssets(const std::string& filePath);\n'
 PROPOSAL_CONTENT = '\t\tstatic ContentId fromAssets(const char* filePath); // 0055bd80: "rbxasset://" + filePath via operator+(const string&, const char*)\n'
 content = (DONOR / 'App/include/util/ContentProvider.h').read_text()
 assert content.count(CONTENT_ANCHOR) == 1
-(pending / 'util/ContentProvider.h').write_text(content.replace(CONTENT_ANCHOR, PROPOSAL_CONTENT))
-
-ADORN_ANCHOR = '\t\tvirtual void cylinderAlongX('
-PROPOSAL_ADORN = '\t\tvirtual void sparkles() = 0; // 2008 slot 19 (+0x4c), no arguments (AdornRbxGfx 00674790 draws "rbxsparkle"); name is a placeholder\n'
-adorn = (DONOR / 'RbxGraphics/include/RbxGraphics/Adorn.h').read_text()
-assert adorn.count(ADORN_ANCHOR) == 1
-(pending / 'RbxGraphics/Adorn.h').write_text(adorn.replace(ADORN_ANCHOR, PROPOSAL_ADORN + ADORN_ANCHOR))
-
+if PROPOSAL_CONTENT.split(' //', 1)[0] not in content:
+    content = content.replace(CONTENT_ANCHOR, PROPOSAL_CONTENT)
+(pending / 'util/ContentProvider.h').write_text(content)
 
 def build(name, src, extra=()):
     obj = OUT / (name + '.obj')
@@ -80,7 +73,6 @@ msg_obj, msg_flags = build('NativeEffectsMessage', MESSAGE_SRC, ['/fp:fast'])
 sky_obj, sky_flags = build('NativeEffectsSky', SKY_SRC)
 skyp_obj, skyp_flags = build('NativeEffectsSkyPending', SKY_SRC, PEND + ['/DNATIVE_SKY_PENDING'])
 spk_obj, spk_flags = build('NativeEffectsSparkles', SPARKLES_SRC)
-spkp_obj, spkp_flags = build('NativeEffectsSparklesPending', SPARKLES_SRC, PEND + ['/DNATIVE_SPARKLES_PENDING'])
 eff_obj, eff_flags = build('NativeEffectsEffect', EFFECT_SRC)
 
 # ---- layout ---------------------------------------------------------------------------------------
@@ -286,8 +278,6 @@ SPARKLES_ROWS = [
     (0x60a2f0, '?isReadOnly@' + BPS),
     (0x443190, '?getValue@' + BPS),
     (0x63dd00, '?setValue@' + BPS),
-]
-SPARKLES_PENDING_ROWS = [
     (0x63d710, '?render3dAdorn@Sparkles@RBX@@UAEXPAVAdorn@2@@Z'),
 ]
 EFFECT_ROWS = [
@@ -399,7 +389,7 @@ def verify(obj, rows, own):
 
 
 groups = [('message', msg_obj, MESSAGE_ROWS), ('sky_pending', skyp_obj, SKY_ROWS), ('sparkles', spk_obj, SPARKLES_ROWS),
-          ('sparkles_pending', spkp_obj, SPARKLES_PENDING_ROWS), ('effect', eff_obj, EFFECT_ROWS)]
+          ('effect', eff_obj, EFFECT_ROWS)]
 resolved = [(g, obj, resolve(obj, rows)) for g, obj, rows in groups]
 own = {}
 for _, _, rows in resolved:
@@ -415,7 +405,7 @@ results['sky_base'] = verify(sky_obj, resolve(sky_obj, sky_base_rows), own)
 # Bodies guarded by NATIVE_*_PENDING are byte-exact only against generated header copies: they are not counted
 # as exact. Other rows of a pending build are compiled from unguarded source; those emitted only in a pending
 # build (the Sky constructor odr-uses them) are tagged pending_build.
-PENDING_BODIES = {0x5eb640, 0x63d710}
+PENDING_BODIES = {0x5eb640}
 plain_exact = {r['address'] for g, v in results.items() if not g.endswith('_pending') for r in v}
 for g, v in results.items():
     for r in v:
@@ -465,13 +455,13 @@ assert '.?AVMessage@RBX@@' in bases(0x823b6c)
 
 sha = nb.sha
 paths = [Path(__file__).resolve(), MESSAGE_H, R / 'native-headers/Network/Player.h', SKY_H, SPARKLES_H, MESSAGE_SRC, SKY_SRC, SPARKLES_SRC, EFFECT_SRC, LAYOUT]
-objs = (layout_obj, msg_obj, sky_obj, skyp_obj, spk_obj, spkp_obj, eff_obj)
+objs = (layout_obj, msg_obj, sky_obj, skyp_obj, spk_obj, eff_obj)
 count = {g: sum(r['exact'] for r in v) for g, v in results.items()}
 pending_count = sum(not r['exact'] for v in results.values() for r in v)
 receipt = {
     'class': 'RBX::Message, RBX::Hint, RBX::Sky, RBX::Sparkles, RBX::Effect', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': {'layout': layout_flags, 'message': msg_flags, 'sky': sky_flags,
-              'sky_pending': skyp_flags, 'sparkles': spk_flags, 'sparkles_pending': spkp_flags, 'effect': eff_flags},
+              'sky_pending': skyp_flags, 'sparkles': spk_flags, 'effect': eff_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'objects': {p.name: sha(p) for p in objs},
     'layout': {'Message': '0x15c (004a3850); IRenderable +0x130, std::string text +0x140',
@@ -479,14 +469,11 @@ receipt = {
                'Sky': '0x1f8 (004d8c90); TextureId skyUp..skyDn +0x130..+0x1d0, bool +0x1f0, int numStars +0x1f4',
                'Sparkles': '0x148 (005c32f0); IRenderable +0x130, Effect (vptr only) +0x140, bool enabled +0x144'},
     'rows': results,
-    'pending_note': 'Rows with status exact-pending-header (Sky::Sky 005eb640, '
-                    'Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows '
+    'pending_note': 'Rows with status exact-pending-header (Sky::Sky 005eb640) are NATIVE_SKY_PENDING bodies and are not counted as exact; rows '
                     'tagged pending_build are unguarded code emitted only in the pending Sky build. '
                     'sky_pending rows need '
-                    'ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the '
-                    '2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).',
+                    'ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy).',
     'proposal_content_provider_h': PROPOSAL_CONTENT,
-    'proposal_adorn_h': PROPOSAL_ADORN,
     'not_attempted': 'Sky::getG3DSky 005ebbb0 and its helpers (testImage 005eaef0, vector<string> helpers 005eb180/005eb210): '
                      'need the 2008 ContentProvider/GImage/G3D::Sky APIs.',
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',

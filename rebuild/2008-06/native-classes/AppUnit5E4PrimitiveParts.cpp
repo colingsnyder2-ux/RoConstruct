@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 v8world/Primitive.cpp rows of the application range 005e4000..005e8000 (inactive native unit) declared by the
 // committed part-embedded Primitive declaration (native-headers/part-embedded/v8world/Primitive.h, read-only, put first
 // on the include path as for the app-unit5ec / app-unit5f0 surface rows) and the engine-world v8world/World.h

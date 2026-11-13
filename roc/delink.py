@@ -305,7 +305,7 @@ def delink(client, out, swaps=(), exports=()):
     return stats
 
 
-def bind_objects(client, objects, candidates, slots, outdir):
+def bind_objects(client, objects, candidates, slots, outdir, allowed=None):
     """Swap plan for native objects against candidate target addresses.
 
     Every function body in the objects is compared with every same-size candidate. A body
@@ -373,20 +373,29 @@ def bind_objects(client, objects, candidates, slots, outdir):
         symbol, _, secnum, _ = obj['syms'][index]
         return not symbol.startswith(('.', '__imp_')) and (secnum == 0 or obj['storage'][index] == 2)
 
+    allowed = {str(Path(path).resolve()):
+               ({symbol: {int(va)} for symbol, va in symbols.items()}
+                if isinstance(symbols, dict) else {symbol: None for symbol in symbols})
+               for path, symbols in (allowed or {}).items()}
     objs, pending, known, taken, names = [], [], {}, set(), set()
     for path in objects:
         data = Path(path).read_bytes()
+        approved = allowed.get(str(Path(path).resolve())) if allowed else None
         secs, syms, defined, _ = match._coff_data_index(data)
         symptr = struct.unpack_from('<I', data, 8)[0]
         obj = dict(path=Path(path), data=data, secs=secs, syms=syms, defined=defined, picks=[], rename={},
                    storage={i: data[symptr + 18 * i + 16] for i in syms})
         found = False
         for name, body, relocs in match.coff_functions(data):
+            if approved is not None and name not in approved:
+                continue
             if name in defined:
                 # also require the same relocated fields: a source that hard-codes an original
                 # address as an integer matches the masked bytes but breaks once data moves
                 hits = [va for va, form in by_size[len(body)]
                         if set(form[1]) <= set(relocs) and match.exact_match(form[0], form[1], body, relocs)]
+                if approved is not None and approved[name] is not None:
+                    hits = [va for va in hits if va in approved[name]]
                 if hits:
                     pending.append((obj, name, len(body), hits))
                     found = True

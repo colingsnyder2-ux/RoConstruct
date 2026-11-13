@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#undef _RELEASEASSERT
 // 2008-06 native rows of the v8datamodel/Workspace.cpp unit inside the application range 005a4000..005a8000
 // (inactive). Verified by tests/record_native_app_unit5a4.py (receipt app-unit5a4-working.json). Built against the
 // committed native v8datamodel/Workspace.h, v8datamodel/Camera.h and reflection/*.h, all read-only.

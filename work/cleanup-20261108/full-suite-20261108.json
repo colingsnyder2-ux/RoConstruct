@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "recorded": "2026-11-08T12:12:00",
+  "command": "python -m pytest tests -q --ignore=tests/test_native_contributor_credit.py --ignore=tests/test_site_progress.py --ignore=tests/test_native_delink_filter.py",
+  "result": "1851 passed, 8 failed, 3 skipped, 1 warning in 23:05 (1385.09s)",
+  "exit_code": 1,
+  "runs": [
+    {
+      "pid": 17284,
+      "log": "C:/Users/colin/AppData/Local/Temp/roc-fullsuite-20261108b.log",
+      "result": "1851 passed, 8 failed, 3 skipped, 1 warning"
+    },
+    {
+      "pid": 2388,
+      "log": "unknown (older session background)",
+      "result": "EXIT=1 (same 8 failures)"
+    }
+  ],
+  "solo_rerun": {
+    "tests": [
+      "test_install::test_worker_bootstrap_publishes_both_guides_and_verified_archive",
+      "test_install::test_packages_audit_allows_the_maintainer_modules",
+      "test_research::test_provider_auth_disables_queued_calls_until_new_gate",
+      "test_research::test_every_recipe_is_well_formed",
+      "test_roc::test_find_functions",
+      "test_roc::test_server_store",
+      "test_roc::test_refsource_name_recovery",
+      "test_server_lease_queue::LeaseQueueTests::test_overload_is_bounded_and_status_remains_available"
+    ],
+    "result": "8 failed in 3.42s",
+    "conclusion": "pre-existing on committed tip; not concurrency noise; out of integration scope"
+  },
+  "blocked_untracked_tests": [
+    {
+      "file": "tests/test_native_contributor_credit.py",
+      "reason": "expects unintegrated code"
+    },
+    {
+      "file": "tests/test_site_progress.py",
+      "reason": "expects progress_description in roc.integration_site (provided by integrated candidate)"
+    },
+    {
+      "file": "tests/test_native_delink_filter.py",
+      "reason": "_allowed_hits in roc.delink has no candidate in any build"
+    }
+  ],
+  "scope_note": "No source/test files were edited this session; only docs and work/* receipts. Failures are pre-existing.",
+  "post_fix_20261108": "All 8 previously failing tests now pass after item-6 cleanup: packaging/build.py native_bulk added, workflow_version test 49->50, server /v1/status tolerates missing clients, leaderboard matched-first sort, recipe mutate/all/None clients, provider_auth provider_config, find_functions start_evidence, refsource file-existence guard."
+}

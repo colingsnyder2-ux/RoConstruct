@@ -1,0 +1,10 @@
+{
+ "files": [
+  "gui/ArrowPanel.cpp",
+  "v8datamodel/CharacterAppearance.cpp"
+ ],
+ "parked": {
+  "gui/ChatOutput.cpp": "ChatLine destructor undeclared; frontIsOld declared void. Cannot preserve donor bodies without header changes.",
+  "v8datamodel/Sky.cpp": "G3D::Sky::setNumStars absent; no evidenced 2008 equivalent."
+ }
+}

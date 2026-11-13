@@ -1,35 +1,35 @@
 {
-  "updated": "2026-11-04 21:33 UTC",
+  "updated": "2026-11-10 01:44 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.1385,
+      "overall": 0.1483,
       "bars": {
         "compiled": {
-          "value": 35,
-          "total": 35,
+          "value": 17,
+          "total": 17,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 30,
-          "total": 35,
+          "value": 14,
+          "total": 17,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 5706,
+          "value": 6109,
           "total": 41196,
           "label": "Byte-exact functions"
         },
         "unresolved": {
-          "value": 21,
-          "total": 21,
+          "value": 17,
+          "total": 17,
           "label": "Unresolved symbols",
           "invert": true
         },
         "stubs": {
-          "value": 15,
-          "total": 15,
+          "value": 0,
+          "total": 1,
           "label": "Temporary stubs",
           "invert": true
         },
@@ -71,7 +71,7 @@
           "name": "G3D-GL",
           "linked": true,
           "test": 0,
-          "exact": 415,
+          "exact": 473,
           "compileErrors": 0,
           "objectFunctions": 6080,
           "unresolved": 0
@@ -80,9 +80,9 @@
           "name": "G3D",
           "linked": true,
           "test": 0,
-          "exact": 1145,
+          "exact": 687,
           "compileErrors": 0,
-          "objectFunctions": 16751,
+          "objectFunctions": 5976,
           "unresolved": 0
         },
         {
@@ -131,159 +131,6 @@
           "unresolved": 16
         },
         {
-          "name": "P2BlockFactory",
-          "linked": true,
-          "test": 0,
-          "exact": 178,
-          "compileErrors": 0,
-          "objectFunctions": 1479,
-          "unresolved": 0
-        },
-        {
-          "name": "P2BlockMesh",
-          "linked": true,
-          "test": 0,
-          "exact": 148,
-          "compileErrors": 0,
-          "objectFunctions": 1198,
-          "unresolved": 0
-        },
-        {
-          "name": "P2ImageCore",
-          "linked": true,
-          "test": 0,
-          "exact": 820,
-          "compileErrors": 0,
-          "objectFunctions": 6244,
-          "unresolved": 0
-        },
-        {
-          "name": "P2Lighting",
-          "linked": true,
-          "test": 0,
-          "exact": 29,
-          "compileErrors": 0,
-          "objectFunctions": 81,
-          "unresolved": 0
-        },
-        {
-          "name": "P2MeshBackend",
-          "linked": true,
-          "test": 0,
-          "exact": 56,
-          "compileErrors": 0,
-          "objectFunctions": 349,
-          "unresolved": 0
-        },
-        {
-          "name": "P2MeshOrientation",
-          "linked": true,
-          "test": 0,
-          "exact": 0,
-          "compileErrors": 0,
-          "objectFunctions": 6,
-          "unresolved": 0
-        },
-        {
-          "name": "P2NativeMaterial",
-          "linked": true,
-          "test": 0,
-          "exact": 131,
-          "compileErrors": 0,
-          "objectFunctions": 874,
-          "unresolved": 0
-        },
-        {
-          "name": "P2PlayerBaseline",
-          "linked": true,
-          "test": 0,
-          "exact": 88,
-          "compileErrors": 0,
-          "objectFunctions": 927,
-          "unresolved": 0
-        },
-        {
-          "name": "P2RecoveredPlayer",
-          "linked": true,
-          "test": 0,
-          "exact": 340,
-          "compileErrors": 0,
-          "objectFunctions": 4277,
-          "unresolved": 0
-        },
-        {
-          "name": "P2TextureAtlas",
-          "linked": true,
-          "test": 0,
-          "exact": 11,
-          "compileErrors": 0,
-          "objectFunctions": 57,
-          "unresolved": 0
-        },
-        {
-          "name": "P2TextureInterop",
-          "linked": true,
-          "test": 0,
-          "exact": 413,
-          "compileErrors": 0,
-          "objectFunctions": 5822,
-          "unresolved": 0
-        },
-        {
-          "name": "P3SphereMesh",
-          "linked": true,
-          "test": 0,
-          "exact": 193,
-          "compileErrors": 0,
-          "objectFunctions": 1670,
-          "unresolved": 0
-        },
-        {
-          "name": "P4CylinderMesh",
-          "linked": true,
-          "test": 0,
-          "exact": 193,
-          "compileErrors": 0,
-          "objectFunctions": 1670,
-          "unresolved": 0
-        },
-        {
-          "name": "P4PBBMesh",
-          "linked": true,
-          "test": 0,
-          "exact": 193,
-          "compileErrors": 0,
-          "objectFunctions": 1670,
-          "unresolved": 0
-        },
-        {
-          "name": "P4SoundAsset",
-          "linked": false,
-          "test": null,
-          "exact": 0,
-          "compileErrors": 1,
-          "objectFunctions": 0,
-          "unresolved": 0
-        },
-        {
-          "name": "Player",
-          "linked": true,
-          "test": 0,
-          "exact": 88,
-          "compileErrors": 0,
-          "objectFunctions": 935,
-          "unresolved": 0
-        },
-        {
-          "name": "P2RecoveredPlayer",
-          "linked": true,
-          "test": 0,
-          "exact": 340,
-          "compileErrors": 0,
-          "objectFunctions": 4277,
-          "unresolved": 0
-        },
-        {
           "name": "RakNet",
           "linked": true,
           "test": 0,
@@ -291,15 +138,6 @@
           "compileErrors": 0,
           "objectFunctions": 2890,
           "unresolved": 0
-        },
-        {
-          "name": "RbxApp",
-          "linked": false,
-          "test": null,
-          "exact": 0,
-          "compileErrors": 114,
-          "objectFunctions": 48635,
-          "unresolved": 4
         },
         {
           "name": "RbxUtil",
@@ -314,9 +152,9 @@
           "name": "RbxgsApp",
           "linked": true,
           "test": 0,
-          "exact": 3795,
+          "exact": 4409,
           "compileErrors": 0,
-          "objectFunctions": 98102,
+          "objectFunctions": null,
           "unresolved": 0
         },
         {

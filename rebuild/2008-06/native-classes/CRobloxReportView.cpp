@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxReportView | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/7 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src 530e5cd3 | roc native-status --write
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Stats.h"
@@ -105,3 +109,7 @@ void CRobloxReportView::onMarshaledEvent(const RBX::Instance*, RBX::ChildAdded e
     record->SetExpanded(TRUE);
     control.AddRecord(record);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::ChildAdded,RBX::Instance,RBX::ChildAdded>::EventData *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::ChildRemoved,RBX::Instance,RBX::ChildRemoved>::EventData *> >;

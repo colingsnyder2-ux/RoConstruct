@@ -3,6 +3,10 @@
 // methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid);
 // the MovingNoPhysicsBase family needs the proposed SimJob declaration (NATIVE_SIMJOB_PENDING).
+// >>> native-status (generated) -- do not edit >>>
+// HumanoidStates3 | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+1) (mixed 2)
+// <<< native-status | src 0e4ae394 | roc native-status --write
 #include "humanoid/HumanoidStates3.h"
 #include "humanoid/Humanoid.h"
 

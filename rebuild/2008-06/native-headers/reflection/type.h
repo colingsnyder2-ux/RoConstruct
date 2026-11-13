@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// type | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 94de0f25 | roc native-status --write
 #include <boost/any.hpp>
 #include <typeinfo>
 #include <list>

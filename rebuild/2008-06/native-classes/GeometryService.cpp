@@ -6,6 +6,10 @@
 // still compiles only under NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of
 // tests/NativeGeometryServicePendingWorkspace.h (proposal in the recorder); it also constructs RBX::FilterStairs,
 // declared by the native v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
+// >>> native-status (generated) -- do not edit >>>
+// GeometryService | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (mixed 2)
+// <<< native-status | src 5ba08c57 | roc native-status --write
 #include "v8datamodel/GeometryService.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
@@ -78,3 +82,6 @@ namespace RBX
 	}
 #endif
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sGeometryService>();

@@ -2,6 +2,10 @@
 // Verified by tests/record_native_settings_items.py (unit profile: document-swap flags). Bodies that need a declaration
 // the shared headers lack (World::EThrottle) are guarded by NATIVE_DEBUGSETTINGS_PENDING and checked only against a
 // generated header copy (recorded pending-build-only, not counted).
+// >>> native-status (generated) -- do not edit >>>
+// DebugSettings | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | 1 referenced strings (not rechecked) | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 81554b5f | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"
 #ifdef NATIVE_DEBUGSETTINGS_PENDING
@@ -229,3 +233,28 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::DebugSettings::ErrorReporting>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Debugable::AssertAction>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::DebugSettings::ErrorReporting> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::Debugable::AssertAction> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::DebugSettings::ErrorReporting> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::Debugable::AssertAction> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::DebugSettings::ErrorReporting> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::Debugable::AssertAction,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Debugable::AssertAction> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::DebugSettings::ErrorReporting> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::Debugable::AssertAction,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Debugable::AssertAction> >,0> >;
+template class std::_Vector_const_iterator<enum RBX::DebugSettings::ErrorReporting,std::allocator<enum RBX::DebugSettings::ErrorReporting> >;
+template class std::_Vector_const_iterator<enum RBX::Debugable::AssertAction,std::allocator<enum RBX::Debugable::AssertAction> >;
+template class std::_Vector_iterator<enum RBX::DebugSettings::ErrorReporting,std::allocator<enum RBX::DebugSettings::ErrorReporting> >;
+template class std::_Vector_iterator<enum RBX::Debugable::AssertAction,std::allocator<enum RBX::Debugable::AssertAction> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::DebugSettings::ErrorReporting> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::Debugable::AssertAction,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Debugable::AssertAction> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::DebugSettings::ErrorReporting> >;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::Debugable::AssertAction> >;
+template class std::vector<enum RBX::DebugSettings::ErrorReporting,std::allocator<enum RBX::DebugSettings::ErrorReporting> >;
+template class std::vector<enum RBX::Debugable::AssertAction,std::allocator<enum RBX::Debugable::AssertAction> >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sDebugSettings>();

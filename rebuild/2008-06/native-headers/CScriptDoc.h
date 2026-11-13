@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CScriptDoc | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 126550ee | roc native-status --write
 #include <afxwin.h>
 #include <boost/shared_ptr.hpp>
 #include "CBrowserDoc.h"

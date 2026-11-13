@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisMessageMap@CXTPDockingPaneSplitterWnd@@KGPBUAFX_MSGMAP@@XZ",
+    "address": "007617f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\71ad946b26807499\\candidate.obj": "a7e6b8afd37f6188a71f3af0ef79c3b177fc037fb45401b26afd0e117ad7a559",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9dmdqigb\\owners.json": "c668e170e77f73987c60d460709e9f26bf85323c4dbcb96d5fe25b6cc24cd071",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9dmdqigb\\import-thunk-identities-as-owner.json": "ebc256190584463780400195d8b7f78c8377d7eecb04b537a7d368691097ecc3"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?OnEraseBkgnd@CXTPDockingPaneSplitterWnd@@IAEHPAVCDC@@@Z",
+   "address": "006e8870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDown@CXTPDockingPaneSplitterWnd@@IAEXIVCPoint@@@Z",
+   "address": "00760dc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPaint@CXTPDockingPaneSplitterWnd@@IAEXXZ",
+   "address": "007606c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPrintClient@CXTPDockingPaneSplitterWnd@@IAEJIJ@Z",
+   "address": "00760750",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetCursor@CXTPDockingPaneSplitterWnd@@IAEHPAVCWnd@@II@Z",
+   "address": "007615a0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

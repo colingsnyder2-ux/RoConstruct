@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxDHtmlDialog | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/4 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+2) (mixed 2)
+// <<< native-status | src af4c756b | roc native-status --write
 #include "CRobloxDHtmlDialog.h"
 #include "util/Http.h"
 #include <exdispid.h>

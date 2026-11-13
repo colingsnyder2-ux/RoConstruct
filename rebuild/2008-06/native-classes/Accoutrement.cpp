@@ -1,5 +1,10 @@
 // Inactive native recovery of RBX::Accoutrement and RBX::Hat.
 // Layout and evidence: native-headers/v8datamodel/Accoutrement.h. Verified by tests/record_native_appearance.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Accoutrement | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/13 mapped addresses byte-exact | named 1 | 12 unproved | 1 referenced strings (not rechecked) | by colin (+4) (mixed 5)
+// <<< native-status | src 335a3dbb | roc native-status --write
 #include "v8datamodel/Accoutrement.h"
 
 namespace RBX
@@ -124,3 +129,7 @@ namespace RBX
 		setName("Hat");
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sAccoutrement>();
+template void RBX::Name::callDoDeclare<RBX::sHat>();

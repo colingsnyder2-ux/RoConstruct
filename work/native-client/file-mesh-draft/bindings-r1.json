@@ -1,0 +1,97 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z",
+    "address": "00500780"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\file-mesh-proof\\objects\\1c3f2a0be889a142\\candidate.obj": "8ecd908dd0095a959a6451d792060c04b0db3a5ea381f9497282019af7058fde",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-k7wy93mg\\owners.json": "a36534990420b794a43f123da7adc1a6d1566ff76d652cd4c22d79618ccdfbea",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-k7wy93mg\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$vector@IV?$allocator@I@std@@@std@@QAE@XZ",
+   "address": "004293d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z",
+   "address": "004dd2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??2@YAPAXI@Z",
+   "address": "006a0920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??3@YAXPAX@Z",
+   "address": "006a067a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?allocVertex@Mesh@RenderBase@RBX@@SAIABVVector3@G3D@@0ABVVector2@5@_N@Z",
+   "address": "00548000",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?allocVertex@Mesh@RenderBase@RBX@@SAIII@Z",
+   "address": "00547fc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@I@G3D@@QAEXABI00@Z",
+   "address": "00500690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z",
+   "address": "004dcbb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?erase@?$vector@IV?$allocator@I@std@@@std@@QAE?AV?$_Vector_iterator@IV?$allocator@I@std@@@2@V?$_Vector_const_iterator@IV?$allocator@I@std@@@2@0@Z",
+   "address": "00445dc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?freeVertex@Mesh@RenderBase@RBX@@SAXI@Z",
+   "address": "00548640",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?insert@?$vector@IV?$allocator@I@std@@@std@@QAE?AV?$_Vector_iterator@IV?$allocator@I@std@@@2@V?$_Vector_const_iterator@IV?$allocator@I@std@@@2@ABI@Z",
+   "address": "004c7c60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?requestContentFile@ContentProvider@RBX@@QAEXABVContentId@2@PAW4Status@12@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00562670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z",
+   "address": "007cb21c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__InterlockedDecrement@4",
+   "address": "008021ac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__InterlockedIncrement@4",
+   "address": "008021b0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -6,6 +6,11 @@
 // Accoutrement mdisp IEquipable 0x130 -> IRenderable 0x140, Tool 0x1a0 -> 0x1b0), declared by the donor
 // v8datamodel/IEquipable.h that the native Tool.h / Accoutrement.h already include.
 // Verified by tests/record_native_script_app2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ScriptApp2008Equipable | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by auto (+1) (agent:auto:opencode:nvidia/meta/muse-glimmer-30b:strategy-2)
+// <<< native-status | src bc7533dc | roc native-status --write
 #include "v8datamodel/IEquipable.h"
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/PartInstance.h"

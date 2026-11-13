@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSelectionPropGridSelection | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src 882815c0 | roc native-status --write
 #include "CSelectionPropGrid.h"
 #include "v8datamodel/Selection.h"
 #include <algorithm>
@@ -22,3 +26,10 @@ void CSelectionPropGrid::setSelection(RBX::Selection* value)
     dirty = true;
     requestUpdate();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CSelectionPropGrid *>;
+template class boost::_mfi::mf1<void,CPropGrid,boost::shared_ptr<RBX::Instance> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *,std::allocator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *,std::allocator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *> >;
+template class std::vector<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *,std::allocator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *> >;

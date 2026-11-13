@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native Stats::Item COMDATs the ScriptContext unit (script/ScriptContext.cpp) instantiates inside the
 // application range 005ac000..005b0000 (inactive). Verified by tests/record_native_app_unit5ac.py.
 //

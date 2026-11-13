@@ -3,6 +3,11 @@
 // PointToPointBreakConnector / RotateConnector / ContactConnector getBody slots, RotateConnector's constructor,
 // PointToPointBreakConnector::potentialEnergy and ContactConnector::canThrottle. The computeForce bodies (006064a0,
 // 006065d0, 00606670, 00606780) need the native Body / Point / GeoPair kernels and are not part of this unit yet.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// KernelConnector | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by tester (+1) (ntech:glm-4.5-air)
+// <<< native-status | src 0e6c82e2 | roc native-status --write
 #include "v8kernel/Connector2008.h"
 
 namespace RBX

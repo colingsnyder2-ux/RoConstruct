@@ -1,0 +1,249 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?checkBug_redBlueMipmapSwap@GLCaps@G3D@@CAXXZ",
+    "address": "004704a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TextOutput@G3D@@QAE@XZ",
+    "address": "00470700"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?checkBug_slowVBO@GLCaps@G3D@@CAXXZ",
+    "address": "00470ab0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0Node@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NIPAV012@@Z",
+    "address": "00470b70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?computeVendor@GLCaps@G3D@@CA?AW4Vendor@12@XZ",
+    "address": "00470bf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getDriverVersion@GLCaps@G3D@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+    "address": "00470cf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?supports@GLCaps@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "00471060"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AB_N@Z",
+    "address": "004713f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\owners.json": "2140c51598fac739430f5fc7e0042d57e06656da6727bdfbc501f1bbf282548a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8kvewco8\\import-thunk-identities-as-owner.json": "2d809dddd2ef9fb97e9dc422bfc3c5d488752d222d4feede9bb2f7108979ce9d"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@UAEPAXI@Z",
+   "address": "00472820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_U@YAPAXI@Z",
+   "address": "006a0956",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_V@YAXPAX@Z",
+   "address": "006a094a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??__F_glVersion@?4??getDriverVersion@GLCaps@G3D@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@YAXXZ",
+   "address": "007fb010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?beginsWith@G3D@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "address": "005120b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?containsKey@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@QBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00470600",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?crc32@Crypto@G3D@@SAIPBXI@Z",
+   "address": "00512320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBufferDataARB@@3P6GXIHPBXI@ZA",
+   "address": "0096f8f4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteBuffersARB@@3P6GXHPBI@ZA",
+   "address": "0096f8e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenBuffersARB@@3P6GXHPAI@ZA",
+   "address": "0096f8ec",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?renderer@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "004709a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@AAEXH@Z",
+   "address": "00470680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?vendor@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00470880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_GetFileVersionInfoA@16",
+   "address": "007a636e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_GetFileVersionInfoSizeA@8",
+   "address": "007a6374",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0Node@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NIPAV012@@Z",
+   "address": "007c4164",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1TextOutput@G3D@@QAE@XZ",
+   "address": "007c4077",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?checkBug_redBlueMipmapSwap@GLCaps@G3D@@CAXXZ",
+   "address": "007ce709",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?checkBug_slowVBO@GLCaps@G3D@@CAXXZ",
+   "address": "007ce709",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?computeVendor@GLCaps@G3D@@CA?AW4Vendor@12@XZ",
+   "address": "007ce709",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?getDriverVersion@GLCaps@G3D@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "007c41da",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AB_N@Z",
+   "address": "007c42f6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetSystemDirectoryA@8",
+   "address": "0080222c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glBindTexture@8",
+   "address": "008029d8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glDeleteTextures@8",
+   "address": "008029b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGenTextures@8",
+   "address": "00802968",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGetString@4",
+   "address": "00802994",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGetTexImage@20",
+   "address": "00802ab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glTexImage2D@36",
+   "address": "00802954",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glTexParameteri@12",
+   "address": "00802978",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 8,
+ "owners_bound": 8
+}

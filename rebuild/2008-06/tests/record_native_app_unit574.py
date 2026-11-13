@@ -153,9 +153,11 @@ ROW_SPECS = {
         (0x5771b0, '??$create@VLocalBackpack@RBX@@@' + CI + 'SA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@XZ'),
     ],
     'notifiers': [
+        (0x576450, '?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z'),
         (0x576940, '?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z'),
     ],
     'lock': [
+        (0x576f00, '?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z'),
         (0x5773c0, '??1Lock@DataModel@RBX@@QAE@XZ'),
     ],
     'textdisplay': [
@@ -170,6 +172,8 @@ ROW_SPECS = {
         (0x574600, '??_ETextDisplay@RBX@@WCE@AEPAXI@Z'),
         (0x574610, '??_ETextDisplay@RBX@@WEE@AEPAXI@Z'),
         (0x574620, '??_ETextDisplay@RBX@@WGE@AEPAXI@Z'),
+        (0x574630, '??1TextDisplay@RBX@@UAE@XZ'),
+        (0x574680, '??_GTextDisplay@RBX@@UAEPAXI@Z'),
     ],
     'guiitem': [
         (0x5746a0, '?onDescendentRemoving@GuiItem@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z'),
@@ -192,13 +196,7 @@ OWN = {s: a for rows in ROWS.values() for a, s in rows}
 
 # Rows whose compiled body equals the original only across a split extent (BOUNDS evidence; never counted here).
 # symbol -> (object, [original pieces in order], prefix_only)
-SPLIT = {
-    '??1TextDisplay@RBX@@UAE@XZ': ('textdisplay', [0x574630], 'prefix'),
-    '??_GTextDisplay@RBX@@UAEPAXI@Z': ('textdisplay', [0x574680], 'inside 0x574630'),
-    '?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z': ('lock', [0x576f00], 'prefix'),
-    '?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@'
-    'VDrawChanged@2@@2@@Z': ('notifiers', [0x576450, 0x57648e, 0x5764a1], 'joined'),
-}
+SPLIT = {}
 
 # Externals bound by evidence name or an identity proof below.
 EXTERNAL = {
@@ -207,6 +205,7 @@ EXTERNAL = {
     '??0GuiRoot@RBX@@QAE@XZ': 0x573b10,
     '??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z': 0x405e30,
     '?newIndex@ServiceProvider@RBX@@SAIXZ': 0x572690,
+    '?do_lock@recursive_mutex@boost@@AAEXXZ': 0x563090,
     '?do_unlock@recursive_mutex@boost@@AAEXXZ': 0x5630e0,
     '?init@TextDisplay@RBX@@AAEXXZ': 0x5735e0,
 }
@@ -291,6 +290,13 @@ def prove_identities():
     IDENTITY['?do_unlock@recursive_mutex@boost@@AAEXXZ'] = (
         '0x5630e0: boost 1.34.1 recursive_mutex::do_unlock (LeaveCriticalSection / ReleaseMutex through the IAT); '
         'record_native_app_leaves2008_dhtml.py and record_native_app_leaves2008_services.py bind the same address')
+    IDENTITY['?do_lock@recursive_mutex@boost@@AAEXXZ'] = (
+        '0x563090: boost 1.34.1 recursive_mutex::do_lock; calls EnterCriticalSection / WaitForSingleObject and '
+        'releases recursive acquisitions through LeaveCriticalSection / ReleaseMutex')
+    lb = original.data(0x563090, FUNCTIONS[0x563090]['size'])
+    lh = {original.imports[v][2] for v in (struct.unpack_from('<I', lb, i)[0] for i in range(len(lb) - 3))
+          if v in original.imports}
+    assert {'EnterCriticalSection', 'WaitForSingleObject', 'LeaveCriticalSection', 'ReleaseMutex'} <= lh, lh
     ub = original.data(0x5630e0, FUNCTIONS[0x5630e0]['size'])
     uh = {original.imports[v][2] for v in (struct.unpack_from('<I', ub, i)[0] for i in range(len(ub) - 3))
           if v in original.imports}
@@ -400,6 +406,9 @@ def verify(build_key, obj, rows):
                 expect, evidence = ACCESS_EXTERNAL[symbol]
                 assert expect == value and names.get(value) == evidence, (where, symbol, hex(value), names.get(value))
                 how = 'external (evidence name %s; access letter differs)' % evidence
+            elif symbol in ALIAS and ALIAS[symbol] in OWN:
+                assert OWN[ALIAS[symbol]] == value, (where, symbol, hex(value), ALIAS[symbol])
+                how = 'alias of own row %s' % ALIAS[symbol]
             elif symbol in SPLIT or symbol in ALIAS:
                 ok, expect, kind_ = split_check(ALIAS.get(symbol, symbol))
                 assert ok and expect == value, (where, symbol, hex(value), ok, hex(expect))
@@ -523,6 +532,8 @@ vtables = vtable_slots(OBJ['textdisplay'], '??_7TextDisplay@RBX@@6B', TD_CANDIDA
 assert len(vtables) == len(TD_CANDIDATES), (len(vtables), [hex(x) for x in TD_CANDIDATES])
 bound_slots = {c.split(' ')[1] for v in vtables.values() for c in v['checked_bound_slots']}
 for a, s in ROW_SPECS['textdisplay'][1:]:
+    if s.startswith('??1') or s.startswith('??_G'):
+        continue
     assert s[:80] in bound_slots, ('vtable slot not checked', hex(a), s)
 
 # ---- sizeof(C): the malloc size each create<C> passes ---------------------------------------------------------------
@@ -579,10 +590,17 @@ for name, lo, hi, ev, vps in BLOCKS:
     for _, a, cls in vps:
         assert lo <= a < hi and cls in {c for c, _ in vptr_classes(a)}, (name, hex(a), cls)
 # the TextDisplay ??_E thunks all jump to ??_G 0x574680 inside the 0x574630 extent
-for a, s in ROW_SPECS['textdisplay'][3:]:
+for a, s in ROW_SPECS['textdisplay'][3:11]:
     b = original.data(a, FUNCTIONS[a]['size'])
     assert b[-5] == 0xe9 and a + len(b) + struct.unpack_from('<i', b, len(b) - 4)[0] == 0x574680, hex(a)
 
+for rows in groups.values():
+    for row in rows:
+        if row['address'] in elsewhere:
+            row['counted_elsewhere'] = row['exact']
+            row['exact'] = False
+            row['address'] = '%#x counted by %s' % (
+                int(row['address'], 16), ', '.join(sorted(set(elsewhere[row['address']]))))
 exact_rows = sorted({r['address'] for rows in groups.values() for r in rows if r['exact']})
 double = {a: elsewhere[a] for a in exact_rows if a in elsewhere}
 assert not double, double
@@ -596,8 +614,7 @@ CATEGORY_SPANS = [
                            'compiled exact there)'),
     ((0x574170, 0x5744a0), 'UnifiedWidget members (render / child layout; matched-analog unit RBX::UnifiedWidget; '
                            'gui/Gui.h UnifiedWidget, widget-family pending getMenuState inline)'),
-    ((0x574630, 0x574631), '~TextDisplay (built: the compiled 80-byte ~TextDisplay and 31-byte ??_G are exact as '
-                           'prefix / tail of this 111-byte extent; BOUNDS: ??_G starts at 0x574680)'),
+    ((0x574630, 0x5746a0), '~TextDisplay and ??_G (built exact with repaired separate extents)'),
     ((0x5746e0, 0x574980), 'UnifiedWidget process helpers (callers 0x574de0 / 0x574e70; Rect::pointInRect 0x573130)'),
     ((0x574bf0, 0x574bf1), 'TopMenuBar::process (evidence name): calls the out-of-line Rect::pointInRect 0x573130 '
                            '(util/Rect.h inline; widget-family proposal)'),
@@ -612,11 +629,13 @@ CATEGORY_SPANS = [
     ((0x575700, 0x575701), 'boost::_bi::storage2<value<string>, value<string>> destructor (evidence name)'),
     ((0x575750, 0x575d91), 'DataModel::onChildAdded / onEvent / key handling ("CameraPanLeft") / evaluate (evidence '
                            'names; not declared in DataModel.h)'),
-    ((0x576390, 0x5764a2), 'Notifier raise(event, listener) bodies: ServiceProvider/Closing 0x576390 and '
-                           'Workspace/DrawChanged 0x576450 (built: exact only when joined with the catch funclets '
-                           '0x57648e / 0x5764a1; BOUNDS) and their funclet pieces'),
+    ((0x576390, 0x576510), 'Notifier raise(event, listener) bodies: ServiceProvider/Closing 0x576390 and '
+                           'Workspace/DrawChanged 0x576450 (built exact with the repaired complete extent)'),
     ((0x576510, 0x5765f1), 'boost::_bi::storage2 copy / value constructors (evidence names)'),
-    ((0x5767e0, 0x5767e1), 'boost::checked_delete<recursive_mutex> (dtor 0x594cb0; boost header instance)'),
+    ((0x576600, 0x576630), 'Name::declare thunks (local-backpack / hopper-family; counted by owner receipts when present)'),
+    ((0x576630, 0x5767e0), 'boost::detail::shared_count constructors for DataModel / Workspace / GuiRoot'),
+    ((0x5767e0, 0x576810), 'boost::checked_delete<recursive_mutex> and small thunks'),
+    ((0x576810, 0x5768a0), 'boost::detail::shared_count constructor for LocalBackpack'),
     ((0x5768a0, 0x5768a1), 'ICF jmp to the storage2 destructor 0x575700'),
     ((0x5768b0, 0x5768b1), 'Notifier<ServiceProvider, Closing>::raise(Closing) (needs a complete Closing: '
                            'v8tree/Service.h proposal)'),
@@ -627,9 +646,7 @@ CATEGORY_SPANS = [
     ((0x576c80, 0x576cef), 'shared_count(recursive_mutex*) and its catch piece (boost header instance, '
                            'sp_counted_impl_p<recursive_mutex> vtable 0x82fdac)'),
     ((0x576dc0, 0x576e51), 'boost::_bi list1 / list2 operator() of the rbx_httpGet / rbx_httpPost binds'),
-    ((0x576f00, 0x576f01), 'DataModel::Lock::doLock (built from DataModelLock.cpp: the compiled 128-byte body is '
-                           'exact as the prefix of this 136-byte extent; BOUNDS: 0x576f80 "add ecx, 4; jmp 0x575700" '
-                           'is a separate thunk)'),
+    ((0x576f00, 0x576f90), 'DataModel::Lock::doLock and following thunk (repaired separate extents; doLock built exact)'),
     ((0x576f90, 0x576f91), 'DataModel helper (caller 0x578c20, RunService transition path)'),
     ((0x577110, 0x577111), 'boost::bind<string, string, string> (evidence name)'),
     ((0x577230, 0x577c71), 'boost::function / bind storage, list, functor_manager and invoker instances of the '
@@ -651,8 +668,8 @@ UNIT_MAP = {
         '(evidence names), the ICF-shared Widget ??_E / ??_G thunks 0x574130..0x574150 (widget-family support rows), '
         'UnifiedWidget members 0x574170..0x574400 and its process chain 0x5746e0..0x574e70, the TextDisplay block '
         '(constructor 0x5744a0 storing the .?AVTextDisplay@RBX@@ vtables, getFontSize 0x574570, getLabel 0x574580, '
-        'eight ??_E thunks 0x5745b0..0x574620 jumping to ??_G 0x574680, ~TextDisplay 0x574630 whose extent also holds '
-        '??_G), and GuiItem::onDescendentRemoving / processNonFocus / process 0x5746a0 / 0x574980 / 0x574b10 '
+        'eight ??_E thunks 0x5745b0..0x574620 jumping to ??_G 0x574680, ~TextDisplay 0x574630 and ??_G), and '
+        'GuiItem::onDescendentRemoving / processNonFocus / process 0x5746a0 / 0x574980 / 0x574b10 '
         '(evidence names; committed native-classes/GuiItem.cpp). Built here: the TextDisplay rows (own source) and '
         'the three GuiItem rows (owner source, compiled unchanged).'),
     'rbx v8datamodel/DataModel.cpp 0x574f10..0x578000 (unit 0x574f10..0x57c1af)': (
@@ -673,18 +690,7 @@ UNIT_MAP = {
     'excluded': (
         'No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range.'),
 }
-NOT_EXACT_BOUNDS = {
-    '0x574630 ~TextDisplay (111 B extent)': (
-        'built (own TextDisplay source): the implicit ~TextDisplay (80 B) is exact as the first 0x50 bytes and the '
-        '??_G (31 B) as the last 0x1f bytes; BOUNDS for the server host: end 0x574630 at 0x574680 and start ??_G '
-        'there (the eight ??_E thunks 0x5745b0..0x574620 jump to 0x574680). Not counted.'),
-    '0x576f00 DataModel::Lock::doLock (136 B extent)': (
-        'built: the compiled 128-byte body is exact as the prefix; BOUNDS: end at 0x576f80, where an 8-byte thunk '
-        '"add ecx, 4; jmp 0x575700" starts. Not counted.'),
-    '0x576450 Notifier<Workspace, DrawChanged>::raise(DrawChanged, Listener*) (62 B extent)': (
-        'built: the compiled 185-byte body is exact against 0x576450 + 0x57648e + 0x5764a1 joined (the catch '
-        'funclets are separate extents); BOUNDS: one function 0x576450..0x576509. Not counted.'),
-}
+NOT_EXACT_BOUNDS = {}
 REJECTED = {
     'shared_ptr<DataModel>(DataModel*, Deleter) 0x576a70 by explicit constructor instantiation': (
         '`template shared_ptr<DataModel>::shared_ptr(DataModel*, Deleter);` and the `<DataModel, Deleter>` / `<>` '

@@ -2,6 +2,10 @@
 // Built /Ob1 like the committed SoundValueConvertFloat.cpp (convert<float> 0056ed00, counted there): each one checks
 // the held type against the other numeric types in the order the target compares type descriptors, stores the
 // converted value, sets the Type singleton and falls through to genericConvert<T> (tail call).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit564_2008ValueConvert | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 2706dddf | roc native-status --write
 #include "reflection/type.h"
 #include "G3D/g3dmath.h"
 #include "G3D/Vector3.h"

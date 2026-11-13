@@ -4,6 +4,10 @@
 // 0060d0d0 (used there by onPrimitiveGeometryTypeChanged 0060d8e0, which needs the Primitive contact list and is
 // not built), against native-headers/v8world/ContactManager2008.h. Verified by tests/record_native_contact_unit2008.py.
 // Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
+// >>> native-status (generated) -- do not edit >>>
+// ContactUnit2008Manager | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by auto (+1) (Claude Opus 5.5)
+// <<< native-status | src f3dc92b4 | roc native-status --write
 #define NATIVE_IPIPELINED2008_DONOR
 #include <algorithm>
 #include "v8world/ContactManager2008.h"
@@ -136,3 +140,10 @@ namespace RBX
 		return intersectingOthers(check, checkSet, overlapIgnored);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::Array<RBX::Contact *>;
+template class G3D::Array<RBX::Primitive const *>;
+template class std::_Tree<std::_Tset_traits<RBX::Primitive *,std::less<RBX::Primitive *>,std::allocator<RBX::Primitive *>,0> >;
+template class std::allocator<RBX::Primitive *>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<RBX::Primitive *,std::less<RBX::Primitive *>,std::allocator<RBX::Primitive *>,0> >::_Node *>;

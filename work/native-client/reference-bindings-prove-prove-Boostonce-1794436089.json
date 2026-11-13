@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?call_once@boost@@YAXP6AXXZAAJ@Z",
+    "address": "007ce12c"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostonce\\objects\\4854734007b4b704\\candidate.obj": "1f0daf91d4309f9dbdc3ddeeecf32d443f4333e5ffe5d7b29ef878aeca5ac1bf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2awafxwv\\owners.json": "5302b0abfad09ddb31263af0c527fd2fda4852c41c3982790c104b0fd1162df6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2awafxwv\\import-thunk-identities-as-owner.json": "0594cfe487c0ade3d4acfa2f6847a4adf8256687bfec5e3942d01a1e4908fcd6"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?call_once@boost@@YAXP6AXXZAAJ@Z$0",
+   "address": "00557455",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?call_once@boost@@YAXP6AXXZAAJ@Z$2",
+   "address": "007ce120",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

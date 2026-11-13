@@ -1,0 +1,820 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "45436d768eb3e0e97a7a560910583bb41a598c2c",
+  "verification": {
+    "native_input_key": "7bdff8cb8393b2850daefd3947b00ac3e951c1e36fe7f05ae5cb7818d3547f86",
+    "verifier_hashes": {
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_publish.py": "182c9ed29882d876e9d0b5889a038f2ce2ec1f98893402e0a8323484ad68c46f",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "e6e28f165caab118f0227414b455a410f13735b852d3014116025809c763c8c5",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+      "C:\\Users\\colin\\RoConstruct\\work\\native-client\\claude-identity-closure.json": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa"
+    },
+    "sources": {
+      "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp": {
+        "source_sha256": "caa16a81db1e542f37c6e1b7d49943d0ef262ee27203277dd3e7eaaa36ff89da",
+        "object_sha256": "edeae66c9536e6fa8e6dc89508b8b3753563725ec5d88c30ae70e0585d9449fb",
+        "methods": [
+          {
+            "address": "005e0be0",
+            "symbol": "?getTimeStr@Lighting@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 56,
+            "exact": true,
+            "verified_targets": {
+              "?to_simple_string@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@12@@Z": "0x5e0ba0"
+            },
+            "local_eh": []
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?to_simple_string@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@12@@Z",
+            "address": "005e0ba0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e42685b017ab4928b2b527e466d713cf\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e42685b017ab4928b2b527e466d713cf\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e42685b017ab4928b2b527e466d713cf\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source",
+          "/fp:fast"
+        ]
+      },
+      "rebuild/2008-06/native-classes/AppUnit614BoxSelect.cpp": {
+        "source_sha256": "1abc98b060be0907826166f631fa76ee6ad6544a116a9b3aca968bc64cbaa76d",
+        "object_sha256": "bf0bcd7de27a8767bb7251eae0d662eef2235e996e1b7c5ca374dc35a8d4bb50",
+        "methods": [
+          {
+            "address": "00617150",
+            "symbol": "??0BoxSelectCommand@RBX@@QAE@PAVWorkspace@1@@Z",
+            "size": 132,
+            "exact": true,
+            "verified_targets": {
+              "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+              "??_7BoxSelectCommand@RBX@@6BINamed@1@@": "0x843b6c (RTTI .?AVBoxSelectCommand@RBX@@, offset 0x0)",
+              "??_7BoxSelectCommand@RBX@@6BIRenderable@1@@": "0x843b50 (RTTI .?AVBoxSelectCommand@RBX@@, offset 0x4)",
+              "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z": "0x64b2a0"
+            },
+            "local_eh": [
+              "__ehhandler$??0BoxSelectCommand@RBX@@QAE@PAVWorkspace@1@@Z"
+            ]
+          },
+          {
+            "address": "00616f60",
+            "symbol": "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z",
+            "size": 487,
+            "exact": true,
+            "verified_targets": {
+              "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z": "0x45b950",
+              "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+              "??_R0?AVILocation@RBX@@@8": "0x9482e8 (.?AVILocation@RBX@@)",
+              "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+              "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+              "??_R0?AVISelectable3d@RBX@@@8": "0x948618 (.?AVISelectable3d@RBX@@)",
+              "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z": "0x59a040",
+              "?project@GCamera@G3D@@QBE?AVVector3@2@ABV32@ABVRect2D@2@@Z": "0x510d00",
+              "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x5185d0",
+              "?insert@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVInstance@RBX@@@Z": "0x5e8c40"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00617c10",
+            "symbol": "?onMouseDown@BoxSelectCommand@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+            "size": 151,
+            "exact": true,
+            "verified_targets": {
+              "?_Erase@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@2@@Z": "0x669050",
+              "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+              "?clearSelection@Selection@RBX@@QAEXXZ": "0x5675d0"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00617cb0",
+            "symbol": "?onMouseMove@BoxSelectCommand@RBX@@UAEXABVUIEvent@2@@Z",
+            "size": 226,
+            "exact": true,
+            "verified_targets": {
+              "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z": "0x64b2a0",
+              "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z": "0x45b950",
+              "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z": "0x616f60",
+              "?selectReverse@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z": "0x617b30",
+              "?selectAnd@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z": "0x617a50",
+              "??1?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230"
+            },
+            "local_eh": [
+              "__ehhandler$?onMouseMove@BoxSelectCommand@RBX@@UAEXABVUIEvent@2@@Z"
+            ]
+          },
+          {
+            "address": "006164a0",
+            "symbol": "?render2d@BoxSelectCommand@RBX@@UAEXPAVAdorn@2@@Z",
+            "size": 148,
+            "exact": true,
+            "verified_targets": {
+              "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z": "0x45b950",
+              "?gray@Color3@G3D@@SAABV12@XZ": "0x514a20",
+              "__real@3f000000": "0x819bac"
+            },
+            "local_eh": []
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z",
+            "address": "006159f0",
+            "evidence": "unique-body",
+            "votes": 22,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z",
+            "address": "0064b2a0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+            "address": "0045b950",
+            "evidence": "unique-body",
+            "votes": 3,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z",
+            "address": "0059a040",
+            "evidence": "reference-vote",
+            "votes": 4,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?project@GCamera@G3D@@QBE?AVVector3@2@ABV32@ABVRect2D@2@@Z",
+            "address": "00510d00",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ",
+            "address": "005185d0",
+            "evidence": "reference-vote",
+            "votes": 40,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?insert@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVInstance@RBX@@@Z",
+            "address": "005e8c40",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?_Erase@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@2@@Z",
+            "address": "00669050",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z",
+            "address": "00581cc0",
+            "evidence": "vote-selected-body",
+            "votes": 37,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clearSelection@Selection@RBX@@QAEXXZ",
+            "address": "005675d0",
+            "evidence": "unique-body",
+            "votes": 5,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z",
+            "address": "0064b2a0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+            "address": "0045b950",
+            "evidence": "unique-body",
+            "votes": 3,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z",
+            "address": "00616f60",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?selectReverse@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z",
+            "address": "00617b30",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?selectAnd@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z",
+            "address": "00617a50",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??1?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+            "address": "0064b230",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+            "address": "0045b950",
+            "evidence": "unique-body",
+            "votes": 3,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?gray@Color3@G3D@@SAABV12@XZ",
+            "address": "00514a20",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e42685b017ab4928b2b527e466d713cf\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e42685b017ab4928b2b527e466d713cf\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e42685b017ab4928b2b527e466d713cf\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source",
+          "/fp:fast"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp",
+        "candidate_sha256": "b3f8bf2e5873c5b4b01061d32bbd7c1873f9068d2a531714fe0b01d4a39e19ed",
+        "before_sha256": null,
+        "input_key": "09790c26018ebec728ab040aa07735b52a2edfd0b411799dbba6ba13499b89ee",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [],
+        "after_methods": [
+          "?getTimeStr@Lighting@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@005e0be0"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?to_simple_string@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@12@@Z",
+            "address": "005e0ba0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate.",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_replication.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_runtime.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_statics.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/OgreRbxSky.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/RenderSceneBase2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/RenderSceneNew2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewRbxGfxConstructor2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewRbxGfxSkybox2008.cpp"
+        ],
+        "scope": "Reviewed new inactive source unit containing only proven methods and reviewed prelude. Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "fast-fp",
+        "reference_evidence": [
+          {
+            "address": "005e0be0",
+            "symbol": "?getTimeStr@Lighting@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 56,
+            "exact": true,
+            "verified_targets": {
+              "?to_simple_string@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@12@@Z": "0x5e0ba0"
+            },
+            "local_eh": []
+          }
+        ],
+        "numeric_literals": [],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\65847a3157f14c5a8a88d8dee07a614d\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\65847a3157f14c5a8a88d8dee07a614d\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 5129,
+          "classes_after": 5129,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/native-classes/AppUnit4B0_2008Joints.cpp",
+          "rebuild/2008-06/native-classes/AppUnit4D4ViewTemplates.cpp",
+          "rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp",
+          "rebuild/2008-06/native-classes/CreatableSharedCount2008Lighting.cpp",
+          "rebuild/2008-06/native-classes/G3DDraw.cpp",
+          "rebuild/2008-06/native-classes/G3DGFont.cpp",
+          "rebuild/2008-06/native-classes/G3DLightingParameters.cpp",
+          "rebuild/2008-06/native-classes/G3DPosedModel.cpp",
+          "rebuild/2008-06/native-classes/G3DRenderDevice.cpp",
+          "rebuild/2008-06/native-classes/G3DSky.cpp",
+          "rebuild/2008-06/native-classes/G3DToneMap.cpp",
+          "rebuild/2008-06/native-classes/G3DgetOpenGLState.cpp",
+          "rebuild/2008-06/native-classes/Lighting2008.cpp",
+          "rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp",
+          "rebuild/2008-06/native-classes/ViewG3D2008.cpp",
+          "rebuild/2008-06/native-classes/ViewRbxGfxRender2008.cpp"
+        ],
+        "native_input_key": "27e828ec7e436ad4974886c3b83c0316bc950a71bc5fec034d4b744bb101fd33",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "e6e28f165caab118f0227414b455a410f13735b852d3014116025809c763c8c5",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "509cf0071a2e312301d74a9b9437718f9cda7c047fd6ed6fb472898fab03c3d4",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "c7403b49a578c595c5e99addadf39c31a0fa6602ed387c1bc2df8d558d30db7b",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "878f5714c98828c757dd5bf8782972693993138eb95552c2bb82e33abef5e45b",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ],
+    "rebuild/2008-06/native-classes/AppUnit614BoxSelect.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/AppUnit614BoxSelect.cpp",
+        "candidate_sha256": "51a852e6444948e9156b2fa404ed30e4d3e4f97db27c6164a497f2cd3a556518",
+        "before_sha256": null,
+        "input_key": "4c1e051c56d018203c3bb0ec0fc3e96c079a8e9835b1f0e66527a4fc0737c289",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [],
+        "after_methods": [
+          "??0BoxSelectCommand@RBX@@QAE@PAVWorkspace@1@@Z@00617150",
+          "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z@00616f60",
+          "?onMouseDown@BoxSelectCommand@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z@00617c10",
+          "?onMouseMove@BoxSelectCommand@RBX@@UAEXABVUIEvent@2@@Z@00617cb0",
+          "?render2d@BoxSelectCommand@RBX@@UAEXPAVAdorn@2@@Z@006164a0"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+            "address": "0045b950",
+            "evidence": "unique-body",
+            "votes": 3,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z",
+            "address": "0059a040",
+            "evidence": "reference-vote",
+            "votes": 4,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?project@GCamera@G3D@@QBE?AVVector3@2@ABV32@ABVRect2D@2@@Z",
+            "address": "00510d00",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ",
+            "address": "005185d0",
+            "evidence": "reference-vote",
+            "votes": 40,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?insert@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVInstance@RBX@@@Z",
+            "address": "005e8c40",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+            "address": "0045b950",
+            "evidence": "unique-body",
+            "votes": 3,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?gray@Color3@G3D@@SAABV12@XZ",
+            "address": "00514a20",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z",
+            "address": "0064b2a0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+            "address": "0045b950",
+            "evidence": "unique-body",
+            "votes": 3,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z",
+            "address": "00616f60",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?selectReverse@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z",
+            "address": "00617b30",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?selectAnd@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z",
+            "address": "00617a50",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??1?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+            "address": "0064b230",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?_Erase@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@2@@Z",
+            "address": "00669050",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z",
+            "address": "00581cc0",
+            "evidence": "vote-selected-body",
+            "votes": 37,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?clearSelection@Selection@RBX@@QAEXXZ",
+            "address": "005675d0",
+            "evidence": "unique-body",
+            "votes": 5,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z",
+            "address": "006159f0",
+            "evidence": "unique-body",
+            "votes": 22,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z",
+            "address": "0064b2a0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate.",
+          "Original exception metadata remains a runtime-promotion gate"
+        ],
+        "scope": "Reviewed new inactive source unit containing only proven methods and reviewed prelude. Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "fast-fp",
+        "reference_evidence": [
+          {
+            "address": "00616f60",
+            "symbol": "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z",
+            "size": 487,
+            "exact": true,
+            "verified_targets": {
+              "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z": "0x45b950",
+              "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+              "??_R0?AVILocation@RBX@@@8": "0x9482e8 (.?AVILocation@RBX@@)",
+              "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+              "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+              "??_R0?AVISelectable3d@RBX@@@8": "0x948618 (.?AVISelectable3d@RBX@@)",
+              "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z": "0x59a040",
+              "?project@GCamera@G3D@@QBE?AVVector3@2@ABV32@ABVRect2D@2@@Z": "0x510d00",
+              "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x5185d0",
+              "?insert@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVInstance@RBX@@@Z": "0x5e8c40"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "006164a0",
+            "symbol": "?render2d@BoxSelectCommand@RBX@@UAEXPAVAdorn@2@@Z",
+            "size": 148,
+            "exact": true,
+            "verified_targets": {
+              "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z": "0x45b950",
+              "?gray@Color3@G3D@@SAABV12@XZ": "0x514a20",
+              "__real@3f000000": "0x819bac"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00617cb0",
+            "symbol": "?onMouseMove@BoxSelectCommand@RBX@@UAEXABVUIEvent@2@@Z",
+            "size": 226,
+            "exact": true,
+            "verified_targets": {
+              "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z": "0x64b2a0",
+              "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z": "0x45b950",
+              "?getMouseInstances@BoxSelectCommand@RBX@@AAEXAAV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@ABVUIEvent@2@AAVRect2D@G3D@@@Z": "0x616f60",
+              "?selectReverse@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z": "0x617b30",
+              "?selectAnd@BoxSelectCommand@RBX@@AAEXABV?$set@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@@std@@@Z": "0x617a50",
+              "??1?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230"
+            },
+            "local_eh": [
+              "__ehhandler$?onMouseMove@BoxSelectCommand@RBX@@UAEXABVUIEvent@2@@Z"
+            ]
+          },
+          {
+            "address": "00617c10",
+            "symbol": "?onMouseDown@BoxSelectCommand@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+            "size": 151,
+            "exact": true,
+            "verified_targets": {
+              "?_Erase@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@2@@Z": "0x669050",
+              "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+              "?clearSelection@Selection@RBX@@QAEXXZ": "0x5675d0"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00617150",
+            "symbol": "??0BoxSelectCommand@RBX@@QAE@PAVWorkspace@1@@Z",
+            "size": 132,
+            "exact": true,
+            "verified_targets": {
+              "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+              "??_7BoxSelectCommand@RBX@@6BINamed@1@@": "0x843b6c (RTTI .?AVBoxSelectCommand@RBX@@, offset 0x0)",
+              "??_7BoxSelectCommand@RBX@@6BIRenderable@1@@": "0x843b50 (RTTI .?AVBoxSelectCommand@RBX@@, offset 0x4)",
+              "??0?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@PAVInstance@RBX@@@1@@Z": "0x64b2a0"
+            },
+            "local_eh": [
+              "__ehhandler$??0BoxSelectCommand@RBX@@QAE@PAVWorkspace@1@@Z"
+            ]
+          }
+        ],
+        "numeric_literals": [
+          {
+            "symbol": "__real@3f000000",
+            "address": "00819bac",
+            "bytes": "0000003f"
+          }
+        ],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [
+              "?$_Bidit@PAVInstance@RBX@@HPBQAV12@ABQAV12@#9ce8a8240534455629cec0feb57b15bd49dbf289e4b3b005e0b4663223024c07",
+              "?$_Iterator_with_base@Ubidirectional_iterator_tag@std@@PAVInstance@RBX@@HPBQAV34@ABQAV34@V_Iterator_base_aux@2@#4380a28946bddefde7cb64c4d7c43f3eba16a0bc190aefec6d2cd3fa680a7c44",
+              "?$is_integral@V?$shared_ptr@VSelection@RBX@@@boost@@#43b0b1a0b2aa3764d36f6f0c23196287be78dbf47dd9be370b726de14fe12d47",
+              "?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@std@@@std@@_N#4538a46fab4915906a54d9026a821158d3f8ecfc8b47bb0b6220ed84080714fb",
+              "?$sp_enable_if_auto_ptr@V?$shared_ptr@VSelection@RBX@@@boost@@AAV12@#b41889f3b4922fe51b4f2aae3d2731fe6ab6d18b372663f136485a49ef5a084b",
+              "?$sp_enable_if_auto_ptr@V?$shared_ptr@VSelection@RBX@@@boost@@H#b41889f3b4922fe51b4f2aae3d2731fe6ab6d18b372663f136485a49ef5a084b",
+              "?$sp_enable_if_auto_ptr@V?$weak_ptr@VInstance@RBX@@@boost@@H#b41889f3b4922fe51b4f2aae3d2731fe6ab6d18b372663f136485a49ef5a084b",
+              "const_iterator#6851c0ba9681c807fd50498ebe1deee446c2e416065d4fc1782bc543302257e2",
+              "iterator#f262dacdd40437be40eabeae881abfd81fc54fa651cacbc8ec5d9f36075a59e4"
+            ],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\fca3eeebd5b843ba9026826b1c90061b\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\fca3eeebd5b843ba9026826b1c90061b\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 4171,
+          "classes_after": 4180,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/glue/rbxgs/glue_class_names.cpp",
+          "rebuild/2008-06/native-classes/ArrowToolBase.cpp"
+        ],
+        "native_input_key": "06fe5fe3e18ff70ba8f0c33de33510feab39c288e10df7749c0207d1e9669858",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "e6e28f165caab118f0227414b455a410f13735b852d3014116025809c763c8c5",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "509cf0071a2e312301d74a9b9437718f9cda7c047fd6ed6fb472898fab03c3d4",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "c7403b49a578c595c5e99addadf39c31a0fa6602ed387c1bc2df8d558d30db7b",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "878f5714c98828c757dd5bf8782972693993138eb95552c2bb82e33abef5e45b",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ]
+  }
+}

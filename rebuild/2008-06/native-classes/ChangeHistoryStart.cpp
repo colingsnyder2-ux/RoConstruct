@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ChangeHistoryStart | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d7162bc3 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"
 #include <boost/bind.hpp>
@@ -45,3 +49,12 @@ void RBX::ChangeHistoryService::start()
     connectionRemoved = Instance::event_descendentRemoving.connect(context, boost::bind(&ChangeHistoryService::onHistoryRemoving, this, _1), 10);
     connectionChanged = Instance::event_itemChanged.connect(context, boost::bind(&ChangeHistoryService::onHistoryChanged, this, _1, _2), 10);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::SignalDescImpl<2,void __cdecl(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *)>;
+template class boost::_bi::value<RBX::ChangeHistoryService *>;
+template class boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance> >;
+template class boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *>;
+template class boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *,std::allocator<void> >;
+template class boost::function<void __cdecl(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *),std::allocator<void> >;
+template class boost::signal2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *),std::allocator<void> > >;

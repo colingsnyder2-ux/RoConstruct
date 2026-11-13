@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PVFrameOps | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (codex:gpt-6.1-terra)
+// <<< native-status | src 0c25851a | roc native-status --write
 #pragma float_control(precise, off)
 #include "PVFrameOps.h"
 

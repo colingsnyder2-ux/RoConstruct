@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native STL instance of the Network/Replicator.cpp unit inside the application range 004b8000..004bc000
 // (inactive): std::_Tree<map<Guid::Data, std::vector<IdSerializer::WaitItem> > traits>::erase(const_iterator,
 // const_iterator) at 004b8a80, on the IdSerializer::waitItems element types of the read-only

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceReadProperty | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9a1cb05c | roc native-status --write
 #include "v8tree/Instance.h"
 #include "v8xml/XmlElement.h"
 

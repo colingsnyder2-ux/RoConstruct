@@ -1,0 +1,58 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1?$CArray@PAUXTP_COMMANDBARS_CATEGORYINFO@@PAU1@@@UAE@XZ",
+    "address": "006ed3a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCustomizeCommandsPage\\objects\\0c44609ff537d7c1\\candidate.obj": "ec02e1d469186ecdb43d7deb6b9f442719d9fb0f24c973c735dcf56aba995f8f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_tfe855\\owners.json": "5e04ef6aa01f0309d387fcbfde7b22ddbf5c02dd7cf6e5a30df3f22d372a46dd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_tfe855\\import-thunk-identities-as-owner.json": "da4765d3a4b8e74a33325545e29c3b54c4501afc5d4cab80c60e436e16a2459d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnLButtonDown@CXTPCustomizeCommandsListBox@@IAEXIVCPoint@@@Z",
+    "address": "006ed3e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCustomizeCommandsPage\\objects\\0c44609ff537d7c1\\candidate.obj": "ec02e1d469186ecdb43d7deb6b9f442719d9fb0f24c973c735dcf56aba995f8f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_tfe855\\owners.json": "5e04ef6aa01f0309d387fcbfde7b22ddbf5c02dd7cf6e5a30df3f22d372a46dd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-m_tfe855\\import-thunk-identities-as-owner.json": "da4765d3a4b8e74a33325545e29c3b54c4501afc5d4cab80c60e436e16a2459d"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$CArray@PAUXTP_COMMANDBARS_CATEGORYINFO@@PAU1@@@UAEPAXI@Z",
+   "address": "006ed3c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoDragDrop@CXTPCustomizeDropSource@@QAEKPAVCXTPControl@@H@Z",
+   "address": "0071a670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDlgCtrlID@CWnd@@QBEHXZ",
+   "address": "007bc286",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PostMessageA@CWnd@@QAEHIIJ@Z",
+   "address": "004112a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@PAUXTP_COMMANDBARS_CATEGORYINFO@@PAU1@@@UAEXAAVCArchive@@@Z",
+   "address": "006e34d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

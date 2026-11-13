@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+#undef _RELEASEASSERT
 // 2008-06 native RBX::AssemblyStage (inactive); layout evidence in native-headers/AppUnit66C/AssemblyStage.h.
 // Verified by tests/record_native_app_unit66c.py. Built here: stepWorld 0066f570, the destructor 0066f790 and the scalar
 // deleting destructor 0066f8b0 (vtable 0084d1a4 is emitted here).

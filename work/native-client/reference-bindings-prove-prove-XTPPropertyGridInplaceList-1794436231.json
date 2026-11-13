@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_GetBaseClass@CXTPPropertyGridInplaceList@@KGPAUCRuntimeClass@@XZ",
+    "address": "0077a3f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceList\\objects\\b62207007bd6002b\\candidate.obj": "17ce649c95f0877f1d03b51f1595fdfce10a441bb47ca1cc815adef0f39bb30d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pwdux9cf\\owners.json": "a1f12f95c472ac1236b235ca127e28377134bc9656321d236dd8c65072a695ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pwdux9cf\\import-thunk-identities-as-owner.json": "3e6ec10702473bfc12aebd8c68b5e3c13970f72e96dcc9868fcc550830a83d66"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisClass@CListBox@@SGPAUCRuntimeClass@@XZ",
+   "address": "007bc85c",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

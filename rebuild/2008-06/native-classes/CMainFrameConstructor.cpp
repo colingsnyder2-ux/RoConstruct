@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameConstructor | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (+1) (deepseek:deepseek-chat)
+// <<< native-status | src 37c5515d | roc native-status --write
 #include "CMainFrame.h"
 #include "v8datamodel/BrickColor.h"
 #include "v8datamodel/ToolsPart.h"

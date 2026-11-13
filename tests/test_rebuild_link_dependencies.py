@@ -3,6 +3,35 @@ import json
 from roc import rebuild
 
 
+def test_pointer_only_import_uses_verified_export_and_tracks_dll(tmp_path, monkeypatch):
+    import pytest
+
+    dll = tmp_path / 'rgmain.dll'
+    dll.write_bytes(b'version one')
+    monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
+    monkeypatch.setattr(rebuild, 'client_dll', lambda client, name: dll)
+    monkeypatch.setattr(rebuild, 'dll_exports', lambda path: ['?compare@@'])
+    monkeypatch.setattr(rebuild, 'toolchain', lambda: {})
+    calls = []
+
+    def run(tc, tool, args, cwd):
+        calls.append((tool, args, cwd))
+        output = next(x[5:] for x in args if x.startswith('/OUT:'))
+        (cwd / output).write_bytes(b'import library')
+        return 0, ''
+
+    monkeypatch.setattr(rebuild, 'run', run)
+    first = rebuild.dll_pointer_import_lib('2008-06', 'rgmain.dll', ['?compare@@'])
+    assert first.is_file()
+    assert first.with_suffix('.def').read_text() == 'LIBRARY rgmain.dll\nEXPORTS\n  ?compare@@ DATA\n'
+    assert rebuild.dll_pointer_import_lib('2008-06', 'rgmain.dll', ['?compare@@']) == first
+    assert len(calls) == 1
+    dll.write_bytes(b'version two')
+    assert rebuild.dll_pointer_import_lib('2008-06', 'rgmain.dll', ['?compare@@']) != first
+    with pytest.raises(ValueError, match='not exported'):
+        rebuild.dll_pointer_import_lib('2008-06', 'rgmain.dll', ['?missing@@'])
+
+
 def test_refresh_dependencies_run_before_player_and_stop_on_failure(tmp_path, monkeypatch):
     calls = []
     original = rebuild.build_module

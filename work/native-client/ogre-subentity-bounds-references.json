@@ -1,0 +1,40 @@
+{
+ "scope": "Original bounding-box and compiler cleanup references, validated against selected native object.",
+ "sources": {
+  "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp": "970e6529d116e6a5e52d9879f1faa3a4f6c51fc9923e89fbc2e7515dc8cf5a0f",
+  "rebuild/2008-06/native-headers/AppUnit67C_2008/RbxSubEntity2008.h": "60ff4050dd3b3485c547d3d42ad4f551cb74517f8a84bc8d1d0d35491b0f115a",
+  "rebuild/2008-06/native-headers/OgreRbx/RbxSubMesh2008.h": "fc0593cbee22d1491392436854809c8ad45566229f477c45662cb166d75eec85"
+ },
+ "rows": [
+  {
+   "symbol": "?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+   "address": "00685490",
+   "bindings": {
+    "__ehhandler$?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z": "007dde4e",
+    "?$S4@?1??getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@3@_N@Z@4IA": "0097dbec",
+    "?box@?1??getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@3@_N@Z@4V43@A": "0097dbcc",
+    "__imp_??0AxisAlignedBox@Ogre@@QAE@XZ": "00804338",
+    "??__Fbox@?1??getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z@YAXXZ": "00801580",
+    "_atexit": "006a17af",
+    "__real@3fd9999a": "0083785c"
+   }
+  },
+  {
+   "symbol": "__ehhandler$?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+   "address": "007dde4e",
+   "bindings": {
+    "__ehfuncinfo$?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z": "008ff96c",
+    "___CxxFrameHandler3": "006a14c0"
+   }
+  },
+  {
+   "symbol": "??__Fbox@?1??getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z@YAXXZ",
+   "address": "00801580",
+   "bindings": {
+    "?box@?1??getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@3@_N@Z@4V43@A": "0097dbcc",
+    "__imp_??1AxisAlignedBox@Ogre@@QAE@XZ": "008043ec"
+   }
+  }
+ ]
+}

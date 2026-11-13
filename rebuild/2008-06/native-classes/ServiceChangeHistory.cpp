@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor /DSERVICE_HISTORY_FIND_ONLY
+// >>> native-status (generated) -- do not edit >>>
+// ServiceChangeHistory | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d78fbab4 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/ChangeHistoryService.h"
 

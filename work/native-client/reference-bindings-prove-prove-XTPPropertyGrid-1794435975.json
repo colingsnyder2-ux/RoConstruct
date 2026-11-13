@@ -1,0 +1,484 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPPropertyGridToolBar@@QAE@XZ",
+    "address": "006fa260"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTPPropertyGridToolBar@@UAE@XZ",
+    "address": "006fa280"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnCustomDraw@CXTPPropertyGridToolBar@@IAEXPAUtagNMHDR@@PAJ@Z",
+    "address": "006fa5d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$CArray@PAVCXTPPropertyGridVerb@@PAV1@@@UAE@XZ",
+    "address": "006fbb60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPPropertyGridVerbs@@QAE@XZ",
+    "address": "006fbbd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnNavigate@CXTPPropertyGrid@@UAEXW4XTPPropertyGridUI@@HPAVCXTPPropertyGridItem@@@Z",
+    "address": "006fa8a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnKeyDown@CXTPPropertyGrid@@IAEXIII@Z",
+    "address": "006fac70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPPropertyGridUpdateContext@@QAE@XZ",
+    "address": "006fbba0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveAll@CXTPPropertyGridVerbs@@QAEXXZ",
+    "address": "006fc300"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RestoreExpandingState@CXTPPropertyGrid@@AAEXPAVCXTPPropertyGridItems@@AAVCXTPPropertyGridUpdateContext@@@Z",
+    "address": "006fc530"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?EndUpdate@CXTPPropertyGrid@@QAEXAAVCXTPPropertyGridUpdateContext@@@Z",
+    "address": "006fc5b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SaveExpandingState@CXTPPropertyGrid@@AAEXPAVCXTPPropertyGridItems@@AAVCXTPPropertyGridUpdateContext@@@Z",
+    "address": "006fc6c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?BeginUpdate@CXTPPropertyGrid@@QAEXAAVCXTPPropertyGridUpdateContext@@@Z",
+    "address": "006fc780"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\294b7751bf5726e9\\candidate.obj": "851d8eaea3474fe46b45015ac19eef32a34b9ad9e1af819094cf3a1567d5aa1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\owners.json": "793ac7f9fa4ee6017e4bab475a6f37554bd9080d4b7e8b237fdc311b9c3048a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2xmtkdw3\\import-thunk-identities-as-owner.json": "579974f88726255bfaaad3fc17e44a5bda39a96a1a52ecc3963a8bf270bf48d3"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$CArray@PAVCXTPPropertyGridVerb@@PAV1@@@QAE@XZ",
+   "address": "006fbb40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0?$CMap@IIHAAH@@QAE@H@Z",
+   "address": "006fbb10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CToolBar@@QAE@XZ",
+   "address": "007bc580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1CToolBar@@UAE@XZ",
+   "address": "007bc3b8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??A?$CMap@IIHAAH@@QAEAAHI@Z",
+   "address": "00438ba0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CArray@PAVCXTPPropertyGridVerb@@PAV1@@@UAEPAXI@Z",
+   "address": "006fbb80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPPropertyGridToolBar@@UAEPAXI@Z",
+   "address": "006fa5b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPPropertyGridUpdateContext@@UAEPAXI@Z",
+   "address": "006fc2c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPPropertyGridVerbs@@UAEPAXI@Z",
+   "address": "006fc2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CalcDynamicLayout@CToolBar@@UAE?AVCSize@@HK@Z",
+   "address": "007bc5bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CalcFixedLayout@CToolBar@@UAE?AVCSize@@HH@Z",
+   "address": "007bc5b6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Collapse@CXTPPropertyGridItem@@QAEXXZ",
+   "address": "00711780",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CToolBar@@UAEHPAVCWnd@@KI@Z",
+   "address": "007bc610",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateEx@CToolBar@@UAEHPAVCWnd@@KKVCRect@@I@Z",
+   "address": "007bc616",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DelayShow@CControlBar@@UAEXH@Z",
+   "address": "007bc5ec",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DestroyWindow@CControlBar@@UAEHXZ",
+   "address": "007bc58c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoPaint@CControlBar@@UAEXPAVCDC@@@Z",
+   "address": "007bc5c8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawBorders@CControlBar@@UAEXPAVCDC@@AAVCRect@@@Z",
+   "address": "007bc5ce",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawGripper@CControlBar@@UAEXPAVCDC@@ABVCRect@@@Z",
+   "address": "007bc5d4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawNCGripper@CControlBar@@UAEXPAVCDC@@ABVCRect@@@Z",
+   "address": "007bc5da",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawNonThemedGripper@CControlBar@@UAEHPAVCDC@@ABVCRect@@@Z",
+   "address": "007bc5e6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawThemedGripper@CControlBar@@UAEHPAVCDC@@ABVCRect@@H@Z",
+   "address": "007bc5e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Expand@CXTPPropertyGridItem@@QAEXXZ",
+   "address": "007117e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FocusInplaceButton@CXTPPropertyGridView@@QAEXPAVCXTPPropertyGridInplaceButton@@@Z",
+   "address": "00715330",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAt@CXTPPropertyGridInplaceControls@@QAEPAVCXTPPropertyGridInplaceControl@@H@Z",
+   "address": "00774780",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAt@CXTPPropertyGridItems@@QBEPAVCXTPPropertyGridItem@@H@Z",
+   "address": "00712420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAt@CXTPPropertyGridVerbs@@QBEPAVCXTPPropertyGridVerb@@H@Z",
+   "address": "00712640",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCategories@CXTPPropertyGrid@@QBEPAVCXTPPropertyGridItems@@XZ",
+   "address": "006fa530",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCount@CXTPPropertyGridInplaceControls@@QBEHXZ",
+   "address": "00793d50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCount@CXTPPropertyGridVerbs@@QBEHXZ",
+   "address": "006fa5a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetFlags@CXTPPropertyGridItem@@QBEIXZ",
+   "address": "00710e30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetGridView@CXTPPropertyGrid@@QBEAAVCXTPPropertyGridView@@XZ",
+   "address": "006fa3b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetIndex@CXTPPropertyGridInplaceButton@@QBEHXZ",
+   "address": "0074eed0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetIndex@CXTPPropertyGridItem@@QBEHXZ",
+   "address": "00711200",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetInplaceButtons@CXTPPropertyGridItem@@QBEPAVCXTPPropertyGridInplaceButtons@@XZ",
+   "address": "006ab370",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetInplaceControls@CXTPPropertyGridItem@@QBEPAVCXTPPropertyGridInplaceControls@@XZ",
+   "address": "007110b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetItem@CXTPPropertyGridView@@QBEPAVCXTPPropertyGridItem@@H@Z",
+   "address": "00715250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetItemRect@CToolBar@@UBEXHPAUtagRECT@@@Z",
+   "address": "007bc61c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPPropertyGridToolBar@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "006fc350",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetNextGridTabItem@CXTPPropertyGrid@@AAEPAVCWnd@@H@Z",
+   "address": "006fa820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CToolBar@@UBEPAUCRuntimeClass@@XZ",
+   "address": "007bc586",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSelectedItem@CXTPPropertyGridView@@AAEPAVCXTPPropertyGridItem@@XZ",
+   "address": "00715590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsDockBar@CControlBar@@UBEHXZ",
+   "address": "007bc5fe",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsSelected@CXTPPropertyGridItem@@QBEHXZ",
+   "address": "007110f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsVisible@CControlBar@@UBEHXZ",
+   "address": "007bc5f2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Lookup@?$CMap@IIHAAH@@QBEHIAAH@Z",
+   "address": "006fc290",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnBarStyleChange@CToolBar@@UAEXKK@Z",
+   "address": "007bc604",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSelectionChanged@CXTPPropertyGridView@@IAEXXZ",
+   "address": "00715ad0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnToolHitTest@CToolBar@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z",
+   "address": "007bc598",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUpdateCmdUI@CXTPPropertyGridToolBar@@MAEXPAVCFrameWnd@@H@Z",
+   "address": "00458e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnVerbsChanged@CXTPPropertyGrid@@IAEXXZ",
+   "address": "006fbf80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnWndMsg@CXTPPropertyGridToolBar@@MAEHIIJPAJ@Z",
+   "address": "006fa740",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PostNcDestroy@CControlBar@@UAEXXZ",
+   "address": "007bc5b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreTranslateMessage@CControlBar@@UAEHPAUtagMSG@@@Z",
+   "address": "007bc5a4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RecalcDelayShow@CControlBar@@UAEKPAUAFX_SIZEPARENTPARAMS@@@Z",
+   "address": "007bc5f8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Reposition@CXTPPropertyGrid@@QAEXXZ",
+   "address": "006fb670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ResetContent@CXTPPropertyGrid@@QAEXXZ",
+   "address": "006fc4d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Select@CXTPPropertyGridItem@@QAEXXZ",
+   "address": "00711850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@PAVCXTPPropertyGridVerb@@PAV1@@@UAEXAAVCArchive@@@Z",
+   "address": "006e34d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetPropertySort@CXTPPropertyGridView@@AAEXW4XTPPropertyGridSortOrder@@HH@Z",
+   "address": "00716bd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@PAVCXTPPropertyGridVerb@@PAV1@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetStatusText@CControlBar@@UAEHH@Z",
+   "address": "007bc60a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetTopIndex@CXTPPropertyGrid@@QAEXH@Z",
+   "address": "006fb940",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?WindowProc@CControlBar@@UAEJIIJ@Z",
+   "address": "007bc5aa",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?get_accName@CToolBar@@UAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "007bc59e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetSysColorBrush@4",
+   "address": "00802be4",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 13,
+ "owners_bound": 13
+}

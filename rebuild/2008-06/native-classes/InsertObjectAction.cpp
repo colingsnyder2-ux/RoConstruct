@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// InsertObjectAction | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (mixed 2)
+// <<< native-status | src a8a2a9b5 | roc native-status --write
 #include <afxwin.h>
 #include <stdexcept>
 #include <G3D/format.h>

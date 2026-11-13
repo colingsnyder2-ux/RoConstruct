@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /Irebuild/2008-06/native-headers/boost-noinline-shared-destructor
 // 2008-06 native ServiceProvider::find<C>() const instances of the CRobloxDoc translation unit (RobloxDoc.cpp) in the
 // application range 00450000..00454000, inactive. CRobloxDoc's own members are a maintainer exclusion; only these RBX
 // template instances are built here. Verified by tests/record_native_app_unit450.py. Every header is a committed

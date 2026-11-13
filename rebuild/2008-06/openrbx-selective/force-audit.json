@@ -1,0 +1,531 @@
+{
+ "scope": "Object-archive address counts are not executable function counts. Map evidence is for the isolated smoke executable; presence does not prove full ABI or behavioral correctness.",
+ "canonical_archive_baseline": 4419,
+ "selective_archive_count": 4457,
+ "selective_archive_gain": 38,
+ "selective_smoke_mapped_count": 27,
+ "selective_smoke_unmapped_count": 11,
+ "selective_mapped": [
+  {
+   "address": "00566f00",
+   "bindings": [
+    {
+     "object": "Selection.obj",
+     "symbol": "??1Selection@RBX@@UAE@XZ"
+    }
+   ]
+  },
+  {
+   "address": "0056a160",
+   "bindings": [
+    {
+     "object": "verified_selective_HttpSelected.obj",
+     "symbol": "?isRobloxSite@Http@RBX@@SA_NPBD@Z"
+    }
+   ]
+  },
+  {
+   "address": "00572db0",
+   "bindings": [
+    {
+     "object": "verified_selective_ServiceSelected.obj",
+     "symbol": "?clearServices@ServiceProvider@RBX@@IAEXXZ"
+    }
+   ]
+  },
+  {
+   "address": "00592180",
+   "bindings": [
+    {
+     "object": "verified_selective_SerializerSelected.obj",
+     "symbol": "?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005930c0",
+   "bindings": [
+    {
+     "object": "verified_selective_SerializerSelected.obj",
+     "symbol": "?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005a8210",
+   "bindings": [
+    {
+     "object": "verified_selective_GuidSelected.obj",
+     "symbol": "??MData@Guid@RBX@@QBE_NABU012@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005b06c0",
+   "bindings": [
+    {
+     "object": "verified_selective_ScriptContextSelected.obj",
+     "symbol": "?addScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005b0840",
+   "bindings": [
+    {
+     "object": "verified_selective_AccoutrementSelected.obj",
+     "symbol": "?readProperty@Accoutrement@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005b4410",
+   "bindings": [
+    {
+     "object": "verified_selective_BrickColorSelected.obj",
+     "symbol": "?insert@BrickMap@BrickColor@RBX@@AAEXW4Number@23@EEEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005d6070",
+   "bindings": [
+    {
+     "object": "Teams.obj",
+     "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ"
+    }
+   ]
+  },
+  {
+   "address": "005ec240",
+   "bindings": [
+    {
+     "object": "verified_selective_NormalIdSelected.obj",
+     "symbol": "?normalIdToVector3Internal@RBX@@YA?AVVector3@G3D@@W4NormalId@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005ec290",
+   "bindings": [
+    {
+     "object": "verified_selective_NormalIdSelected.obj",
+     "symbol": "?Vector3ToNormalId@RBX@@YA?AW4NormalId@1@ABVVector3@G3D@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005ec570",
+   "bindings": [
+    {
+     "object": "verified_selective_NormalIdSelected.obj",
+     "symbol": "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005ec6e0",
+   "bindings": [
+    {
+     "object": "verified_selective_NormalIdExtra.obj",
+     "symbol": "?normalIdToMatrix3Internal@RBX@@YA?AVMatrix3@G3D@@W4NormalId@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005ec800",
+   "bindings": [
+    {
+     "object": "verified_selective_NormalIdSelected.obj",
+     "symbol": "?normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005fb3c0",
+   "bindings": [
+    {
+     "object": "verified_selective_KernelSelected.obj",
+     "symbol": "?deletePoint@Kernel@RBX@@QAEXPAVPoint@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005fbc80",
+   "bindings": [
+    {
+     "object": "verified_selective_LocakBackpackSelected.obj",
+     "symbol": "?removeBackpackItem@LocalBackpack@RBX@@AAEXPAVBackpackItem@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "005fd3e0",
+   "bindings": [
+    {
+     "object": "verified_selective_ToolSelected.obj",
+     "symbol": "?readProperty@Tool@RBX@@EAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00609690",
+   "bindings": [
+    {
+     "object": "verified_selective_PVInstanceSelected.obj",
+     "symbol": "?computeTopPVController@PVInstance@RBX@@ABE?AV?$ReferenceCountedPointer@VController@RBX@@@G3D@@XZ"
+    }
+   ]
+  },
+  {
+   "address": "0060a0f0",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?onAncestorChanged@VelocityMotor@RBX@@EAEXABUAncestorChanged@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "0060c400",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?setHole@VelocityMotor@RBX@@QAEXPAVHole@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00615820",
+   "bindings": [
+    {
+     "object": "verified_selective_MouseCommandSelected.obj",
+     "symbol": "?capture@MouseCommand@RBX@@MAEXXZ"
+    }
+   ]
+  },
+  {
+   "address": "006195b0",
+   "bindings": [
+    {
+     "object": "Flag.obj",
+     "symbol": "?onEvent_flagTouched@Flag@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006454a0",
+   "bindings": [
+    {
+     "object": "Joint.obj",
+     "symbol": "?setJointOwner@Joint@RBX@@QAEXPAVIJointOwner@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00650560",
+   "bindings": [
+    {
+     "object": "verified_selective_ChatOutputSelected.obj",
+     "symbol": "??0ChatLine@RBX@@QAE@PAVPlayer@Network@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z"
+    }
+   ]
+  },
+  {
+   "address": "00652510",
+   "bindings": [
+    {
+     "object": "verified_selective_ScoreHud.obj",
+     "symbol": "??0ScoreHud@RBX@@QAE@PBVServiceProvider@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00656430",
+   "bindings": [
+    {
+     "object": "verified_selective_ScoreHud.obj",
+     "symbol": "?render2d@ScoreHud@RBX@@MAEXPAVAdorn@2@@Z"
+    }
+   ]
+  }
+ ],
+ "selective_unmapped": [
+  {
+   "address": "00568460",
+   "bindings": [
+    {
+     "object": "GlobalSettings.obj",
+     "symbol": "?FUN_00581c60@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+    }
+   ]
+  },
+  {
+   "address": "005684d0",
+   "bindings": [
+    {
+     "object": "GlobalSettings.obj",
+     "symbol": "?eraseSettingsStore@GlobalSettings@RBX@@QAEXXZ"
+    }
+   ]
+  },
+  {
+   "address": "00568910",
+   "bindings": [
+    {
+     "object": "GlobalSettings.obj",
+     "symbol": "?saveState@GlobalSettings@RBX@@QAEXXZ"
+    }
+   ]
+  },
+  {
+   "address": "00609a60",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?FUN_00617200@RBX@@YA_NPAVInstance@1@0@Z"
+    }
+   ]
+  },
+  {
+   "address": "0060ca00",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?FUN_0061a840@RBX@@YAXPAVInstance@1@0@Z"
+    }
+   ]
+  },
+  {
+   "address": "00657780",
+   "bindings": [
+    {
+     "object": "ArrowPanel.obj",
+     "symbol": "??0ArrowPanel@RBX@@QAE@PAVAdorn@1@PAVDataModel@1@W4ControllerType@Controller@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00657be0",
+   "bindings": [
+    {
+     "object": "ArrowPanel.obj",
+     "symbol": "?isEnabled@ArrowButton@RBX@@UAE_NXZ"
+    }
+   ]
+  },
+  {
+   "address": "00658170",
+   "bindings": [
+    {
+     "object": "SafeChat.obj",
+     "symbol": "??0ChatOption@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00658360",
+   "bindings": [
+    {
+     "object": "SafeChat.obj",
+     "symbol": "?loadChildren@SafeChat@RBX@@AAEXPAVChatOption@2@PBVXmlElement@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006584e0",
+   "bindings": [
+    {
+     "object": "SafeChat.obj",
+     "symbol": "?getMessage@SafeChat@RBX@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006604a0",
+   "bindings": [
+    {
+     "object": "Filters.obj",
+     "symbol": "??0IgnoreDescendantsOf@RBX@@QAE@PAVInstance@1@@Z"
+    }
+   ]
+  }
+ ],
+ "nine_port_archive_gain": 17,
+ "nine_port_smoke_mapped": [
+  {
+   "address": "00566f00",
+   "bindings": [
+    {
+     "object": "Selection.obj",
+     "symbol": "??1Selection@RBX@@UAE@XZ"
+    }
+   ]
+  },
+  {
+   "address": "0060a0f0",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?onAncestorChanged@VelocityMotor@RBX@@EAEXABUAncestorChanged@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "0060c400",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?setHole@VelocityMotor@RBX@@QAEXPAVHole@2@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006195b0",
+   "bindings": [
+    {
+     "object": "Flag.obj",
+     "symbol": "?onEvent_flagTouched@Flag@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006454a0",
+   "bindings": [
+    {
+     "object": "Joint.obj",
+     "symbol": "?setJointOwner@Joint@RBX@@QAEXPAVIJointOwner@2@@Z"
+    }
+   ]
+  }
+ ],
+ "nine_port_smoke_unmapped": [
+  {
+   "address": "00568460",
+   "bindings": [
+    {
+     "object": "GlobalSettings.obj",
+     "symbol": "?FUN_00581c60@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+    }
+   ]
+  },
+  {
+   "address": "005684d0",
+   "bindings": [
+    {
+     "object": "GlobalSettings.obj",
+     "symbol": "?eraseSettingsStore@GlobalSettings@RBX@@QAEXXZ"
+    }
+   ]
+  },
+  {
+   "address": "00568910",
+   "bindings": [
+    {
+     "object": "GlobalSettings.obj",
+     "symbol": "?saveState@GlobalSettings@RBX@@QAEXXZ"
+    }
+   ]
+  },
+  {
+   "address": "005d6070",
+   "bindings": [
+    {
+     "object": "Teams.obj",
+     "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ"
+    }
+   ]
+  },
+  {
+   "address": "00609a60",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?FUN_00617200@RBX@@YA_NPAVInstance@1@0@Z"
+    }
+   ]
+  },
+  {
+   "address": "0060ca00",
+   "bindings": [
+    {
+     "object": "Feature.obj",
+     "symbol": "?FUN_0061a840@RBX@@YAXPAVInstance@1@0@Z"
+    }
+   ]
+  },
+  {
+   "address": "00657780",
+   "bindings": [
+    {
+     "object": "ArrowPanel.obj",
+     "symbol": "??0ArrowPanel@RBX@@QAE@PAVAdorn@1@PAVDataModel@1@W4ControllerType@Controller@1@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00657be0",
+   "bindings": [
+    {
+     "object": "ArrowPanel.obj",
+     "symbol": "?isEnabled@ArrowButton@RBX@@UAE_NXZ"
+    }
+   ]
+  },
+  {
+   "address": "00658170",
+   "bindings": [
+    {
+     "object": "SafeChat.obj",
+     "symbol": "??0ChatOption@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "00658360",
+   "bindings": [
+    {
+     "object": "SafeChat.obj",
+     "symbol": "?loadChildren@SafeChat@RBX@@AAEXPAVChatOption@2@PBVXmlElement@@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006584e0",
+   "bindings": [
+    {
+     "object": "SafeChat.obj",
+     "symbol": "?getMessage@SafeChat@RBX@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z"
+    }
+   ]
+  },
+  {
+   "address": "006604a0",
+   "bindings": [
+    {
+     "object": "Filters.obj",
+     "symbol": "??0IgnoreDescendantsOf@RBX@@QAE@PAVInstance@1@@Z"
+    }
+   ]
+  }
+ ],
+ "selected_symbols_forced_and_mapped_in_smoke_and_each_milestone": 21,
+ "all_forced_symbols_in_each_milestone_map": 103,
+ "forced_milestones": {
+  "M2": true,
+  "M4a": true,
+  "M5": true
+ },
+ "force_12_experiment": "Failed: one helper has only local linkage; duplicate GlobalSettings providers also appeared.",
+ "force_11_experiment": "Smoke linked with 11 external symbols, but M2/M4a/M5 failed to link with duplicate PNG definitions; rejected.",
+ "latest_rebuild": "Failed after G3D was rebuilt with verified_0078.obj providing PNG definitions also provided by LibPng/pngread.obj. Current trial must be revalidated after dependency ownership is resolved.",
+ "sha256": {
+  "canonical_report": "7b4e10fb74b8ed8153fe8d8d41fc18045e9a88c4a95cefca0d4e475e3ebfe6b9",
+  "corrected_ports_report": "59f6986a2c39670556868b3eb4acfed9de941707fccb8dfa70ce3d1bfad5caae",
+  "corrected_ports_smoke_map": "8ea093dfe8ea7ee1603e9087d524c3aefc1b58111565eb97f4524b74ac8dad70",
+  "selective_report": "25084a88b1d5625f349137e8024c9030a997f0a2f3e4581025e70b3ab534b83c",
+  "selective_smoke_map": "3abc80ecdae7ddf1ed8ac8b410648f34f72b6be098cfe94231d935d9e365ad62",
+  "forced_milestones": "b9358b1f47e77d5cd7edece995382abeab0529a162b2935428407ca0b94d235c",
+  "current_g3d_archive": "27ce7159b7fd2260eea6501e484b1400b814fa97bd3a0b4507e62efb21b9f458"
+ }
+}

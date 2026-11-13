@@ -1,0 +1,92 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisMessageMap@CXTPPropertyGridInplaceEdit@@KGPBUAFX_MSGMAP@@XZ",
+    "address": "007762b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceEdit\\objects\\4661db85741b9c78\\candidate.obj": "47f6e50185c9cd5e8b8057731a4e0cf15bf5db4e11cd3c4e10b82a611053cc86",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-kuy2f0s6\\owners.json": "4f55b32308a0efc7a5da21c6dbf447a186c34b0e67b6b2315165b2463070f6bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-kuy2f0s6\\import-thunk-identities-as-owner.json": "f0a74aa125cb6171abeba4a9e47f33a1c370acd538f24a1c36d1d0f1ed9ec447"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CtlColor@CXTPPropertyGridInplaceEdit@@IAEPAUHBRUSH__@@PAVCDC@@I@Z",
+   "address": "00773a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?MaskClear@?$CXTMaskEditT@VCEdit@@@@QAEHXZ",
+   "address": "00775510",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?MaskCut@?$CXTMaskEditT@VCEdit@@@@QAEHXZ",
+   "address": "00775a90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?MaskUndo@?$CXTMaskEditT@VCEdit@@@@QAEHXZ",
+   "address": "007747a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnChar@CXTPPropertyGridInplaceEdit@@IAEXIII@Z",
+   "address": "00775880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEnChange@CXTPPropertyGridInplaceEdit@@IAEXXZ",
+   "address": "00773b80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEnKillfocus@CXTPPropertyGridInplaceEdit@@IAEXXZ",
+   "address": "00773b40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEnSetfocus@CXTPPropertyGridInplaceEdit@@IAEXXZ",
+   "address": "00773af0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnGetDlgCode@CXTPPropertyGridInplaceEdit@@IAEIXZ",
+   "address": "006fa3f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKeyDown@CXTPPropertyGridInplaceEdit@@IAEXIII@Z",
+   "address": "00776110",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDblClk@CXTPPropertyGridInplaceEdit@@IAEXIVCPoint@@@Z",
+   "address": "00773f30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetFocus@?$CXTMaskEditT@VCEdit@@@@IAEXPAVCWnd@@@Z",
+   "address": "007750c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnStyleChanged@CXTPPropertyGridInplaceEdit@@IAEXHPAUtagSTYLESTRUCT@@@Z",
+   "address": "007739f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSysKeyDown@CXTPPropertyGridInplaceEdit@@IAEXIII@Z",
+   "address": "00773dc0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native rows of the physics-replication sender unit inside 004cc000..004d0000 (inactive): boost 1.34.1
 // multi_index_container members of RBX::Network::PhysicsSender::PartItems that the sender's step / sendPackets reach
 // and that the container instantiation in NetworkPhysicsSenders2008.cpp does not emit. Explicit member

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Accoutrement | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5be50e8d | roc native-status --write
 // 2008-06 native layout of RBX::Accoutrement and RBX::Hat. Inactive: no build list or swap uses it.
 //
 // Evidence (2008-06 Roblox.exe):

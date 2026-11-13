@@ -1,7 +1,12 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// GrabTool | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+2) (mixed 2)
+// <<< native-status | src 6df898ac | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "tool/DragTool.h"
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 
 namespace RBX {
@@ -39,4 +44,13 @@ template<> const Name& Named<MouseCommand, sGrabTool>::getName() const
 {
     return NativeToolName<GrabTool>::get();
 }
+template<> MouseCommand* TToolVerb<GrabTool, RunStateVerb>::newMouseCommand()
+{
+    return new GrabTool(dataModel->getWorkspace());
 }
+}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Instance *> >;
+template class std::_Vector_const_iterator<RBX::Instance *,std::allocator<RBX::Instance *> >;
+template class std::_Vector_iterator<RBX::Instance *,std::allocator<RBX::Instance *> >;

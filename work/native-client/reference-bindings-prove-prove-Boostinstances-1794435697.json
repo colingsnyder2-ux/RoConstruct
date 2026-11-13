@@ -1,0 +1,131 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z",
+    "address": "00690210"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\bcc198db1b3d2069\\candidate.obj": "28f40e19a593194794b2f6c8674e1a8ffb4c9fea889d1c487b90e44c41d0b294",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\owners.json": "21f3413cde997255ff6b83202bb51dce6321a9513eb45b7facd1d5497705b306",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\import-thunk-identities-as-owner.json": "53c0caec458d803ab9c70200910ceb185670356f0be1f3714cacd8ed16d04a33"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__ehhandler$??$_Construct@V?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0Uforward_iterator_tag@1@@Z",
+    "address": "007c61d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\bcc198db1b3d2069\\candidate.obj": "28f40e19a593194794b2f6c8674e1a8ffb4c9fea889d1c487b90e44c41d0b294",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\owners.json": "21f3413cde997255ff6b83202bb51dce6321a9513eb45b7facd1d5497705b306",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\import-thunk-identities-as-owner.json": "53c0caec458d803ab9c70200910ceb185670356f0be1f3714cacd8ed16d04a33"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+    "address": "006939b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\bcc198db1b3d2069\\candidate.obj": "28f40e19a593194794b2f6c8674e1a8ffb4c9fea889d1c487b90e44c41d0b294",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\owners.json": "21f3413cde997255ff6b83202bb51dce6321a9513eb45b7facd1d5497705b306",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\import-thunk-identities-as-owner.json": "53c0caec458d803ab9c70200910ceb185670356f0be1f3714cacd8ed16d04a33"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Insert_n@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@2@IABU?$pair@_NPAUre_syntax_base@re_detail@boost@@@2@@Z",
+    "address": "0065af80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\bcc198db1b3d2069\\candidate.obj": "28f40e19a593194794b2f6c8674e1a8ffb4c9fea889d1c487b90e44c41d0b294",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\owners.json": "21f3413cde997255ff6b83202bb51dce6321a9513eb45b7facd1d5497705b306",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\import-thunk-identities-as-owner.json": "53c0caec458d803ab9c70200910ceb185670356f0be1f3714cacd8ed16d04a33"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?insert@?$vector@U?$digraph@D@re_detail@boost@@V?$allocator@U?$digraph@D@re_detail@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@U?$digraph@D@re_detail@boost@@V?$allocator@U?$digraph@D@re_detail@boost@@@std@@@2@V?$_Vector_const_iterator@U?$digraph@D@re_detail@boost@@V?$allocator@U?$digraph@D@re_detail@boost@@@std@@@2@ABU?$digraph@D@re_detail@boost@@@Z",
+    "address": "004dd8e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\bcc198db1b3d2069\\candidate.obj": "28f40e19a593194794b2f6c8674e1a8ffb4c9fea889d1c487b90e44c41d0b294",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\owners.json": "21f3413cde997255ff6b83202bb51dce6321a9513eb45b7facd1d5497705b306",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s5o8esph\\import-thunk-identities-as-owner.json": "53c0caec458d803ab9c70200910ceb185670356f0be1f3714cacd8ed16d04a33"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Allocate@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@std@@YAPAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@0@IPAU10@@Z",
+   "address": "0066fd40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Umove@PAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEPAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@1@PAU21@00@Z",
+   "address": "0067d5b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Unchecked_move_backward@PAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@PAU12@@stdext@@YAPAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@PAU12@00@Z",
+   "address": "0065a830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Uninit_copy@PAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@PAU12@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@YAPAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@0@PAU10@00AAV?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00659f60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$fill@PAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@U12@@std@@YAXPAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@0@0ABU10@@Z",
+   "address": "00670820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@2@@Z",
+   "address": "0068fff0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@std@@QAEXXZ",
+   "address": "0068d3e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Insert_n@?$vector@U?$digraph@D@re_detail@boost@@V?$allocator@U?$digraph@D@re_detail@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@U?$digraph@D@re_detail@boost@@V?$allocator@U?$digraph@D@re_detail@boost@@@std@@@2@IABU?$digraph@D@re_detail@boost@@@Z",
+   "address": "004dd480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Ufill@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEPAU?$pair@_NPAUre_syntax_base@re_detail@boost@@@2@PAU32@IABU32@@Z",
+   "address": "0065ac20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xlen@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@KAXXZ",
+   "address": "004c6d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@U?$less@K@3@V?$allocator@U?$pair@$$CBKV?$_Iterator@$00@?$list@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@V?$allocator@U?$pair@V?$shared_ptr@$$CBV?$w32_regex_traits_implementation@D@re_detail@boost@@@boost@@PBK@std@@@2@@std@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+   "address": "00691f90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$??$_Construct@V?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0Uforward_iterator_tag@1@@Z$0",
+   "address": "0048c3ad",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Insert_n@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@2@IABU?$pair@_NPAUre_syntax_base@re_detail@boost@@@2@@Z",
+   "address": "007dbf50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 5,
+ "owners_bound": 5
+}

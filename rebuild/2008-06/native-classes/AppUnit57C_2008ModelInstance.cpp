@@ -21,6 +21,11 @@
 // copies under out/native-layouts/app-unit57c-2008/pending/ (proposals in the receipt).
 // Codegen analog: bodies follow the donor tools/rbxgs v8datamodel/ModelInstance.cpp shape; the recorder proves each
 // against the bytes and every call / data target.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit57C_2008ModelInstance | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/30 mapped addresses byte-exact | named 1 | 29 unproved | 2 referenced strings (not rechecked) | by king_originala (+5) (mixed 8)
+// <<< native-status | src 8fbfb5a5 | roc native-status --write
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/Primitive.h"
@@ -381,3 +386,22 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::PartInstance *>;
+template class Vector6<enum RBX::SurfaceType>;
+template class boost::scoped_ptr<G3D::CoordinateFrame>;
+template class boost::scoped_ptr<RBX::Primitive>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::IModelModifier *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Primitive const *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Reflection::SignatureDescriptor::Item> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> > >;
+template class std::_List_ptr<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item> >;
+template class std::_List_val<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item> >;
+template class std::_Tmap_traits<RBX::Name const *,RBX::ICreator const *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,RBX::ICreator const *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> >,0> >;
+template class std::allocator<std::_List_nod<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,RBX::ICreator const *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> >;
+template class std::vector<RBX::IModelModifier *,std::allocator<RBX::IModelModifier *> >;
+template class std::vector<RBX::Primitive const *,std::allocator<RBX::Primitive const *> >;

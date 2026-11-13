@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// TwoDManager2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src df125b84 | roc native-status --write
 // Ogre::TwoDManager as compiled into the June 2008 client (inactive native recovery; an exe-local
 // Ogre::RenderQueueListener that collects 2D quads and draws them from a render queue callback). Non-colliding name:
 // there is no donor header for it. Needs the Ogre 1.4.5 client headers on the include path and the G3D headers.
@@ -74,7 +78,9 @@ namespace Ogre
 		HardwareIndexBufferSharedPtr indexBuffer;                           // +0x30
 		std::list<Quad> quads;                                              // +0x3c (size 0x58)
 
-		void render();                                                      // 006832b0 (not built)
+		void render();                                                      // 006832b0
+		void createVertexBuffer(unsigned int count);                        // 006829a0 (INFERRED name)
+		void prepareRenderState();                                          // 006825b0 (INFERRED name)
 
 	public:
 		TwoDManager();                                                      // 006831d0

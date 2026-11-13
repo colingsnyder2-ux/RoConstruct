@@ -1,0 +1,73 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1?$CList@PAVCXTPDockingPaneBase@@PAV1@@@UAE@XZ",
+    "address": "006e6010"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneBaseContainer\\objects\\7f9d2e702c936d5a\\candidate.obj": "18ec954f6e90c61579f23bcde22fddc97885c19e625cdc56494a922297a0bbbe",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-cwbhniis\\owners.json": "27ea152a32d303f78f1a79313eb0d21f28f58ae3e90da5f87bfb2c5243c9e8e8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-cwbhniis\\import-thunk-identities-as-owner.json": "28ea8c32fd31cae8c0a2c8c747e7355afd5d41249a87386103e096b0b40bc509"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPDockingPaneBaseContainer@@IAE@W4XTPDockingPaneType@@PAVCXTPDockingPaneLayout@@@Z",
+    "address": "007a07d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneBaseContainer\\objects\\7f9d2e702c936d5a\\candidate.obj": "18ec954f6e90c61579f23bcde22fddc97885c19e625cdc56494a922297a0bbbe",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-cwbhniis\\owners.json": "27ea152a32d303f78f1a79313eb0d21f28f58ae3e90da5f87bfb2c5243c9e8e8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-cwbhniis\\import-thunk-identities-as-owner.json": "28ea8c32fd31cae8c0a2c8c747e7355afd5d41249a87386103e096b0b40bc509"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$CList@PAVCXTPDockingPaneBase@@PAV1@@@QAE@H@Z",
+   "address": "006e5fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CXTPDockingPaneBase@@IAE@W4XTPDockingPaneType@@PAVCXTPDockingPaneLayout@@@Z",
+   "address": "0075d6a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CList@PAVCXTPDockingPaneBase@@PAV1@@@UAEPAXI@Z",
+   "address": "006e6020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPDockingPaneBaseContainer@@MAEPAXI@Z",
+   "address": "007a0860",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ContainPane@CXTPDockingPaneBaseContainer@@UBEPAU__POSITION@@PAVCXTPDockingPaneBase@@@Z",
+   "address": "007a06f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FindPane@CXTPDockingPaneBaseContainer@@UBEXW4XTPDockingPaneType@@PAV?$CList@PAVCXTPDockingPaneBase@@PAV1@@@@Z",
+   "address": "007a0880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsEmpty@CXTPDockingPaneBaseContainer@@MBEHXZ",
+   "address": "007a0740",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@UAEXAAVCArchive@@@Z",
+   "address": "0076d180",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

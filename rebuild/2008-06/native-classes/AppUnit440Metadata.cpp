@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native rows of the reflection-metadata unit inside the application range 00440000..00444000 (inactive).
 // Verified by tests/record_native_app_unit440.py. Every header is read-only here: reflection/Metadata.h (Reflection
 // 0x134 with the Classes child at +0x130), v8tree/Instance.h (findFirstChildOfType, findFirstChildByName 00557950)

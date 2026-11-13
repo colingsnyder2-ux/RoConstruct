@@ -1,0 +1,35 @@
+{
+ "scope": "RTTI/vftable identities for Ogre::VisualEngine",
+ "rows": [
+  {
+   "symbol": "??_7VisualEngine@Ogre@@6B@",
+   "address": "0084df2c",
+   "evidence": "RTTI .?AVVisualEngine@Ogre@@ complete-object locator 008c1538 at 0084df28"
+  },
+  {
+   "symbol": "??_GVisualEngine@Ogre@@UAEPAXI@Z",
+   "address": "0067c4b0",
+   "evidence": "slot 0 (only slot) of the RTTI-proved VisualEngine vftable; virtual ~VisualEngine is its only virtual"
+  },
+  {
+   "symbol": "??1VisualEngine@Ogre@@UAE@XZ",
+   "address": "0067a130",
+   "evidence": "the only direct call in ??_G 0067c4b0; restores the vftable 0084df2c"
+  },
+  {
+   "symbol": "??0VisualEngine@Ogre@@QAE@XZ",
+   "address": "006786c0",
+   "evidence": "the only other function storing vftable 0084df2c (exe-wide scan; header declares one ctor)"
+  },
+  {
+   "symbol": "??_EVisualEngine@Ogre@@UAEPAXI@Z",
+   "address": "0067c4b0",
+   "evidence": "vftable slot 0 of 0084df2c: MSVC names the slot ??_E; the exe body is the scalar form (no array path), same as ??_G"
+  },
+  {
+   "symbol": "??0FrameHistory@Ogre@@QAE@XZ",
+   "address": "006785b0",
+   "evidence": "only call in VisualEngine ctor 006786c0 (call site 006786dd), constructing frameHistory at this+0x18; sole caller exe-wide"
+  }
+ ]
+}

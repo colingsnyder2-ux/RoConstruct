@@ -1,0 +1,118 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPScrollBase@@QAE@XZ",
+    "address": "0079e0b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTPScrollBase@@UAE@XZ",
+    "address": "0079e0f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CalcScrollBarInfo@CXTPScrollBase@@MAEXPAUtagRECT@@PAUSCROLLBARPOSINFO@1@PAUtagSCROLLINFO@@@Z",
+    "address": "0079e100"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SBPosFromPx@@YAHPAUSCROLLBARPOSINFO@CXTPScrollBase@@H@Z",
+    "address": "0079e390"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?TrackBox@CXTPScrollBase@@IAEXIVCPoint@@@Z",
+    "address": "0079e530"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?ContScroll@CXTPScrollBase@@IAEXXZ",
+    "address": "0079e720"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnPrintClient@CXTPScrollBar@@IAEJIJ@Z",
+    "address": "00758900"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPScrollBar\\objects\\1e3fb9cc307e4a28\\candidate.obj": "2264a18b34c7d32478ee3a9ebfdb67dd665b27a0a637f7785b269f87e14438b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\owners.json": "2786b780b8e344507a35cdc94a97b96d6d1f75081c6208dfff35e14ba05f0a0a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6gdlyw6i\\import-thunk-identities-as-owner.json": "bd08fcd396a663fa981788323ded50657bef9f17a74e48b8f7f194725cde90d7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ECXTPScrollBase@@UAEPAXI@Z",
+   "address": "0079e700",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoAnimate@CXTPScrollBase@@MAEXXZ",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?EndScroll@CXTPScrollBase@@IAEXH@Z",
+   "address": "0079e300",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnDraw@CXTPScrollBar@@IAEXPAVCDC@@@Z",
+   "address": "00757a70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetDoubleClickTime@0",
+   "address": "00802c84",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__MulDiv@12",
+   "address": "00802228",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 7,
+ "owners_bound": 7
+}

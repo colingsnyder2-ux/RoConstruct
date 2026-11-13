@@ -7,8 +7,9 @@ Builds (document-swap flags, VS2008 RTM 21022, RakNet include dirs as tests/reco
                                            const-char-array DescribedCreatable (out/native-network-players/overlay/:
                                            Client.h and Server.h = tests/NativeNetworkPlayersPeers.h,
                                            v8datamodel/ModelInstance.h = tests/NativeTeamPendingModel.h, read only);
-  * 00499ed0 (slot_call_iterator::increment, ICF-shared) is verified here as a support row and not counted: it is
-    counted by tests/record_native_humanoid2008.py (humanoid2008-working.json).
+  * the same unit with NATIVE_NETWORK_PLAYERS_PENDING against generated copies of other owners' headers carrying the
+    PROPOSALS below (out/native-network-players/pending/). Rows exact only there are recorded exact=false
+    (pending-build-only) and are not counted.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, string literals by bytes, type descriptors and
@@ -48,6 +49,28 @@ shutil.copyfile(PEERS_STANDIN, overlay / 'Client.h')
 shutil.copyfile(PEERS_STANDIN, overlay / 'Server.h')
 shutil.copyfile(MODEL_STANDIN, overlay / 'v8datamodel/ModelInstance.h')
 
+# Proposals for other owners' headers, applied only to generated copies (pending build).
+PROPOSALS = [
+    (R / 'native-headers/Network/Player.h', 'Network/Player.h',
+     '\t\t\tvoid removeCharacter();                                   // 004947b0\n',
+     '\t\t\tvoid removeCharacter();                                   // 004947b0\n'
+     '\t\t\tvoid rebuildBackpack();                                   // proposal: 004925c0\n',
+     'Network/Player.h (Player): declare `void rebuildBackpack();` (004925c0, thiscall; throws "rebuildBackpack can only be '
+     'called by the backend server"; called by Players::onEvent 00496cf0 and onChildAdded 0049dc70)'),
+]
+pending = base_dir / 'pending'
+if pending.exists():
+    shutil.rmtree(pending)
+applied_proposals = []
+for source, dest, anchor, replacement, _ in PROPOSALS:
+    text = source.read_text()
+    if 'void rebuildBackpack();' in text:
+        continue
+    assert text.count(anchor) == 1, (source, anchor)
+    (pending / dest).parent.mkdir(parents=True, exist_ok=True)
+    (pending / dest).write_text(text.replace(anchor, replacement))
+    applied_proposals.append(_)
+
 
 def build(name, src, extra=(), tail=()):
     obj = OUT / (name + '.obj')
@@ -61,6 +84,8 @@ def build(name, src, extra=(), tail=()):
 
 layout_obj, layout_flags = build('NativeNetworkPlayersLayout', LAYOUT)
 base_obj, base_flags = build('NativeNetworkPlayers', SRC, ['/I' + str(overlay)], RAKNET)
+pend_obj, pend_flags = build('NativeNetworkPlayersPending', SRC, ['/I' + str(pending), '/I' + str(overlay)],
+                             RAKNET + ['/DNATIVE_NETWORK_PLAYERS_PENDING'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -129,7 +154,6 @@ EXTERNAL = {
     '??0AbuseReporter@Network@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x49e040,
     '??0PluginInterface@@QAE@XZ': 0x49ed30,
     '??1PluginInterface@@UAE@XZ': 0x49ed40,
-    '?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z': 0x49d770,
     '?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z': 0x49fe20,
     '??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@UAE@XZ': 0x4a34e0,
     '??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@UAE@XZ': 0x4a34e0,
@@ -300,20 +324,19 @@ ATEXIT = {
     0x7f19b0: '??__Ffunc_playerFromCharacterOld@@YAXXZ', 0x7f19e0: '??__Ffunc_playerFromCharacter@@YAXXZ',
     0x7f1a10: '??__Fevent_PlayerAdded@@YAXXZ', 0x7f1a30: '??__Fevent_PlayerRemoving@@YAXXZ',
 }
-ROWS += [
-    (0x495e80, '?frontendProcessing@' + P),                 # ServiceProvider::findServiceProvider 004898d0
+PENDING_ROWS = [
+    (0x495e80, '?frontendProcessing@' + P),                 # findServiceProvider (Service.h proposal)
     (0x495eb0, '?backendProcessing@' + P),
-    (0x496cf0, '?onEvent@' + P),                            # Player::rebuildBackpack 004925c0
+    (0x496cf0, '?onEvent@' + P),                            # Player::rebuildBackpack (Player.h proposal)
     (0x49dc70, '?onChildAdded@' + P),
     (0x49daa0, '?onChildRemoving@' + P),
-    (0x49d200, '?fire@?$SignalDescImpl@$00$$A6AX' + SPI + '@Z@'),   # also in instance-ancestor/descendant trials
+    (0x49d200, '?fire@?$SignalDescImpl@$00$$A6AX' + SPI + '@Z@'),
     (0x49cd00, '??R?$signal1@X' + SPI),
     (0x49c4f0, '??$?RV?$slot_call_iterator@U?$caller@' + SPI),
+    (0x499ed0, '?increment@?$slot_call_iterator@U?$caller@' + SPI),
     (0x4973f0, '??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@' + SPI),
-    (0x496a00, '??R?$function1@X' + SPI),                   # also in physics-array-lifetime-trial
+    (0x496a00, '??R?$function1@X' + SPI),
 ]
-# Verified, not counted: exact and counted in humanoid2008-working.json (ICF-shared slot_call_iterator::increment).
-SUPPORT_ROWS = [(0x499ed0, '?increment@?$slot_call_iterator@U?$caller@' + SPI)]
 # Rows compiled in the base object but not exact there (recorded with the reason, not counted).
 NOT_EXACT = {}
 
@@ -424,12 +447,15 @@ for init, key in ATEXIT.items():
     atexit_rows.append((struct.unpack_from('<I', body, push + 1)[0], key))
 
 base_rows = resolve(base_obj, ROWS + atexit_rows)
-support_rows = resolve(base_obj, SUPPORT_ROWS)
+pend_rows = resolve(pend_obj, PENDING_ROWS)
 own = {}
-for address, name in base_rows + support_rows:
+for address, name in base_rows + pend_rows:
     assert own.setdefault(name, address) == address, (name, hex(address))
 base_out = verify(base_obj, base_rows, own)
-support_out = verify(base_obj, support_rows, own)
+pend_out = verify(pend_obj, pend_rows, own)
+for row in pend_out:  # exact only with the generated header copies: not counted as exact
+    row['exact'] = False
+    row['exact_pending_build_only'] = True
 if DISCOVER:
     print('\n'.join(sorted(set(UNBOUND))))
     sys.exit(0)
@@ -487,7 +513,7 @@ for symbol, vt in sorted(vt_symbols.items(), key=lambda x: x[1]):
             how = 'own row (??_G)'
         elif name in own:
             assert own[name] == value, (symbol, slot, name, hex(value), hex(own[name]))
-            how = 'own row' + (' (support, counted elsewhere)' if name in dict((n, a) for a, n in support_rows) else '')
+            how = 'own row' + (' (pending-build-only)' if name in dict((n, a) for a, n in pend_rows) else '')
         elif name in EXTERNAL:
             assert EXTERNAL[name] == value, (symbol, slot, name, hex(value))
             how = 'external'
@@ -497,7 +523,7 @@ for symbol, vt in sorted(vt_symbols.items(), key=lambda x: x[1]):
         entries[slot] = '%s -> %s (%s)' % (name, hex(value), how)
     vtables.append({'vtable': hex(vt), 'symbol': symbol, 'rtti_offset': original.vtable_class(vt)[1], 'slots': entries})
 # Primary vtable: slot 2 askAddChild, slots 7/8 onChildAdded/onChildRemoving, slot 15 onChildChanged; Listener vtable
-# slot 0 onEvent, slot 1 the deleting thunk.
+# slot 0 onEvent (pending-build rows), slot 1 the deleting thunk.
 assert (d(VT + 8), d(VT + 28), d(VT + 32), d(VT + 60)) == (0x495f30, 0x49dc70, 0x49daa0, 0x497ec0)
 assert (d(0x822714), d(0x822714 + 4)) == (0x496cf0, 0x499890)
 locator = d(VT - 4)
@@ -521,80 +547,31 @@ for address, text in ((0x8194d0, 'Players'), (0x822b70, 'NumPlayers'), (0x822490
                       (0x822c34, 'PlayerRemoving'), (0x822af4, 'Local player already exists'),
                       (0x821cac, 'rebuildBackpack can only be called by the backend server')):
     assert original.string(address) == text, (hex(address), text)
-# Players::Plugin vtable 00822688 (base-object layout): RTTI chain Plugin -> PluginInterfaceAdapter<Players> ->
-# PluginInterface, all at offset 0; 11 slots; slot 0 the deleting destructor row, slot 5 the adapter OnReceive row,
-# the rest RakNet PluginInterface defaults (ICF-folded `ret N` bodies at the addresses below).
-PLUGIN_VT = 0x822688
-PLUGIN_SYMBOL = '??_7Plugin@' + P + '6B@'
-assert binding[PLUGIN_SYMBOL][0] == PLUGIN_VT, hex(binding[PLUGIN_SYMBOL][0])
-assert original.vtable_class(PLUGIN_VT) == ('.?AVPlugin@Players@Network@RBX@@', 0)
-PLUGIN_DEFAULTS = {
-    '?OnAttach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
-    '?OnDetach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
-    '?OnStartup@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
-    '?Update@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
-    '?OnShutdown@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
-    '?OnCloseConnection@PluginInterface@@UAEXPAVRakPeerInterface@@USystemAddress@@@Z': 0x6ad2a0,
-    '?OnDirectSocketSend@PluginInterface@@UAEXPBDIUSystemAddress@@@Z': 0x4e83a0,
-    '?OnDirectSocketReceive@PluginInterface@@UAEXPBDIUSystemAddress@@@Z': 0x4e83a0,
-    '?OnInternalPacket@PluginInterface@@UAEXPAUInternalPacket@@IUSystemAddress@@I_N@Z': 0x762d50,
-}
-# The default bodies are `ret 4` / `ret 0xc` / `ret 0x10` / `ret 0x18`, matching each declaration's stack size.
-for value, ret in ((0x70bdf0, 4), (0x6ad2a0, 0xc), (0x4e83a0, 0x10), (0x762d50, 0x18)):
-    assert original.data(value, 3) == b'\xc2' + struct.pack('<H', ret), hex(value)
-slots = vtable_slots(base_obj, PLUGIN_SYMBOL)
-assert sorted(slots) == list(range(11)), slots
-assert original.vtable_class(PLUGIN_VT + 4 * 12)[0].startswith('.?A')  # word after slot 10 is the next vtable's locator
-entries = {}
-for slot, name in sorted(slots.items()):
-    value = d(PLUGIN_VT + 4 * slot)
-    if name.startswith('??_E') and ('??_G' + name[4:]) in own:
-        assert own['??_G' + name[4:]] == value, (slot, name, hex(value))
-        how = 'own row (??_G)'
-    elif name in own:
-        assert own[name] == value, (slot, name, hex(value))
-        how = 'own row'
-    else:
-        assert PLUGIN_DEFAULTS.get(name) == value, (slot, name, hex(value))
-        how = 'RakNet PluginInterface default'
-    bind(name, value, PLUGIN_SYMBOL)
-    entries[slot] = '%s -> %s (%s)' % (name, hex(value), how)
-assert (d(PLUGIN_VT), d(PLUGIN_VT + 20)) == (0x496370, 0x49df50)
-plocator = d(PLUGIN_VT - 4)
-phierarchy = d(plocator + 16)
-pitems = [d(d(phierarchy + 12) + 4 * i) for i in range(d(phierarchy + 8))]
-assert [(original.string(d(item) + 8), struct.unpack('<i', original.data(item + 8, 4))[0]) for item in pitems] == [
-    ('.?AVPlugin@Players@Network@RBX@@', 0), ('.?AV?$PluginInterfaceAdapter@VPlayers@Network@RBX@@@@', 0),
-    ('.?AVPluginInterface@@', 0)], pitems
-vtables.append({'vtable': hex(PLUGIN_VT), 'symbol': PLUGIN_SYMBOL, 'rtti_offset': 0, 'slots': entries})
-assert b'\x6a\x08' in ctor  # new(8) for the Plugin in 0049bdc0
-
 for throw_info, cls in ((0x8d362c, '.?AVbad_cast@std@@'), (0x8d1bc8, '.?AVruntime_error@std@@')):
     cta = d(throw_info + 12)
     assert original.string(d(d(cta + 4) + 4) + 8) == cls, (hex(throw_info), cls)
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), HEADER, R / 'native-headers/Network/Player.h', SRC, LAYOUT, PEERS_STANDIN, MODEL_STANDIN]
+paths = [Path(__file__).resolve(), HEADER, SRC, LAYOUT, PEERS_STANDIN, MODEL_STANDIN]
 exact_addresses = sorted({r['address'] for r in base_out})
-support_addresses = sorted({r['address'] for r in support_out} - set(exact_addresses))
+pending_addresses = sorted({r['address'] for r in pend_out} - set(exact_addresses))
 receipt = {
     'class': 'RBX::Network::Players', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'base': base_flags},
+    'flags': {'layout': layout_flags, 'base': base_flags, 'pending': pend_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, base_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, base_obj, pend_obj)},
     'layout': 'Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, '
               'Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; '
               'abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, '
-              'maxPlayers +0x1ac; Plugin 0x8 (vptr 00822688, PluginInterfaceAdapter::c +0x4); ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)',
-    'methods': base_out, 'support_methods': support_out, 'not_exact': not_exact, 'vtables': vtables,
-    'exact_distinct_addresses': exact_addresses, 'support_addresses': support_addresses,
-    'support_note': 'support rows are exact and verified here but counted by another receipt (humanoid2008-working).',
-    'trial_overlap': {'0049d200': 'instance-ancestor-trial.json, instance-descendant-trial.json',
-                      '00496a00': 'physics-array-lifetime-trial.json'},
+              'maxPlayers +0x1ac; ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)',
+    'methods': base_out, 'pending_methods': pend_out, 'not_exact': not_exact, 'vtables': vtables,
+    'exact_distinct_addresses': exact_addresses, 'pending_only_addresses': pending_addresses,
+    'pending_note': 'pending rows are exact only with generated copies of other owners\' headers (proposals); not counted.',
+    'proposals': applied_proposals,
     'standins_note': 'base build uses declaration-only stand-ins for "Client.h"/"Server.h" (tests/NativeNetworkPlayersPeers.h) '
                      'and v8datamodel/ModelInstance.h (tests/NativeTeamPendingModel.h).',
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/network-players-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS native Network::Players: %d exact rows (%d distinct addresses), %d support rows not counted, %d not exact; '
-      '%d vtables; targets verified' % (len(base_out), len(exact_addresses), len(support_out), len(not_exact), len(vtables)))
+print('PASS native Network::Players: %d exact rows (%d distinct addresses), %d pending-build-only, %d not exact; %d vtables; '
+      'targets verified' % (len(base_out), len(exact_addresses), len(pend_out), len(not_exact), len(vtables)))

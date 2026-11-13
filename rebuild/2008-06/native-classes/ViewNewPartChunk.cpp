@@ -1,6 +1,11 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::PartChunk / Decal / Texture destructors and PartChunk::getMesh (inactive). This
 // unit needs the complete RenderBase::MaterialBase (the material pointer at +0xc4 is released through its virtual
 // destructor), so it includes RenderLib/Material2008.h and not PartInstance.h; see native-headers/ViewNew/PartChunk.h.
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewPartChunk | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (mixed 2)
+// <<< native-status | src bb3c8873 | roc native-status --write
 #include "ViewNew/PartChunk.h"
 #include "RenderLib/Material2008.h"
 
@@ -86,3 +91,8 @@ NATIVE_VIEWNEW_MANAGE(NativeViewNewTextureInstanceBind)        // 004e72e0
 NATIVE_VIEWNEW_MANAGE(NativeViewNewTextureDescriptorBind)      // 004e7340
 NATIVE_VIEWNEW_INVOKE(NativeViewNewDecalInstanceBind, NativeViewNewInstancePtr)       // 004e80a0
 NATIVE_VIEWNEW_INVOKE(NativeViewNewDecalDescriptorBind, NativeViewNewDescriptorPtr)   // 004e8140
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<RBX::ViewNew::Decal *>;
+template class boost::_mfi::mf1<void,RBX::ViewNew::Decal,RBX::Reflection::PropertyDescriptor const *>;
+template class boost::_mfi::mf1<void,RBX::ViewNew::Decal,boost::shared_ptr<RBX::Instance> >;

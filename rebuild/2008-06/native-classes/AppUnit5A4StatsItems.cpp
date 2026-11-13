@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#undef _RELEASEASSERT
 // 2008-06 native rows of the Workspace.cpp unit (application range 005a4000..005a8000): the Stats::TypedStatsItem
 // <double> / <float> update overrides the unit's stats items instantiate (inactive). Built against the committed
 // native stats/Stats.h (read-only). Verified by tests/record_native_app_unit5a4.py.

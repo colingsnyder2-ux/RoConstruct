@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// HistoryRecord | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f36d0b4e | roc native-status --write
 #include "reflection/type.h"
 #include <boost/shared_ptr.hpp>
 #include <map>

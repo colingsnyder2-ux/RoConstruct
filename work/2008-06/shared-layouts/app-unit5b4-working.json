@@ -2,7 +2,7 @@
   "class": "RBX Sound unit (util/Sound.cpp template instances and getters) of the application range 005b4000..005bc000 (2008-06), inactive",
   "compiler": "VS2008 RTM 21022",
   "flags": [
-    "/I/home/user/roconstruct/tools/openrbx/3rdparty/fmod/api/inc",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\openrbx\\3rdparty\\fmod\\api\\inc",
     "/nologo",
     "/c",
     "/O2",
@@ -39,17 +39,17 @@
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
   ],
   "sources": {
-    "rebuild/2008-06/native-classes/AppUnit5B4SoundReflection.cpp": "f26c1caf349103b90c94dd2f15deb6d0c5ef96e7db25286587b82c2385475df8",
-    "rebuild/2008-06/tests/record_native_app_unit5b4.py": "84ebf81a44dfd4e7ed007b001e4aabc6a1598018d08ee8d155b0c1a6e4144152",
-    "rebuild/2008-06/native-headers/util/Sound.h": "92a51f4d3e3e4a935d172f311c5e3adc018350ff12210df4bf33dc87f1faf7a7"
+    "rebuild\\2008-06\\native-classes\\AppUnit5B4SoundReflection.cpp": "f87367edcc11efb2e86cf77caf632a69afe72ab744ae48d0a377a9cb3175db94",
+    "rebuild\\2008-06\\tests\\record_native_app_unit5b4.py": "f9a132c16ec64fa76b477335deccb6dfdde17417a108a2a2d9e1c000ac8484c1",
+    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "0b2f0ccac3d10fc5c0fced64ae8adb0d50ca319eabb97cbccab726a9cbb9862e"
   },
   "objects": {
-    "sound": "3aabca17cb0e82cfb90c0f078d433a02ce36d5a8145d8edc9fc45a38f2f41372"
+    "sound": "8c7fd2ff90fe960daba4ef0a42c83bef6dfd413bc57254af637d85ab2018a6ef"
   },
   "unit_map": {
     "brick-color tail 005b4000..005b658f": "util/BrickColor.cpp, continued from 005b2ec0 (app-unit5b0 unit map): the std::map<BrickColor::Number, std::string> erase / _Tree destructor 005b4050 / 005b43a0, BrickMap::generatePaletteMap 005b4130 / 005b42f0, BrickMap::insert 005b4410, ~BrickMap 005b4570, BrickMap() 005b4630 (5601 B: \"White\", \"Grey\", \"Light yellow\" ...), BrickMap::singleton 005b5c20, BrickColor colorPalette 005b5c80 / getClosestPaletteIndex 005b5c90 / parse 005b5cb0 / random 005b5ee0 / closest(Color4) 005b5f30 / BrickColor(int) 005b6090 / name 005b61b0 / color4 005b6200 / color3 005b6270 / closest(Color3) 005b62e0 (evidence names) and unnamed helpers to 005b658f (vector<BrickColor> / map node helpers). The map instantiations are Roblox-instantiated STL templates of this unit. No committed native BrickColor header (the donor util/BrickColor.h is the only declaration; CPropertyGridItemBrickColor uses it through the donor path); not built here.",
     "player inline 005b6590": "Player::getCharacter (Network/Player.h header inline emitted in this unit), counted by network-player-working.json.",
-    "sound 005b65a0..005bbfff (continues past 005bc000)": "util/Sound.cpp. Evidence: RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@...3PADA (vtable 00837d84) and ...SoundChannel... (00837e44), .?AV?$FactoryProduct@VStockSound@@VSoundChannel@... , the PropDescriptor<SoundChannel, SoundId / float / int / bool> vtables 00837c34 / 00837c68 / 00837c9c / 00837cd0, GetSetImpl / GetImpl / BoundPropGetSet vtables 00837570..0083765c, EnumDesc<ReverbType> 005bb330 (\"ReverbType\", \"NoReverb\" .. \"UnderWater\"), the FMOD import calls (getPaused / isPlaying 005b6960 / 005b6990, \"FMOD %d: %s\" checks 005b6fe0 / 005b87a0, FMOD_ErrorString table 005b65b0, the system init 005ba060 \"Incorrect FMODEX DLL version\"), classDescriptors 005bb7f0 / 005bb860 / 005bb8d0 (\"SoundService\", \"Sound\", \"StockSound\"). Contents in address order: SoundChannel::getPlayCount 005b65a0, FMOD_ErrorString 005b65b0, StringConverter<ContentId>::convertToString 005b6940 (open), the getters 005b6960..005b69d0, ~FactoryProduct<SoundService / SoundChannel> 005b69e0 / 005b6a40, std::_Tree helpers (_Min / _Max of several maps, 005b6aa0..005b6c40; 005b6c40 _Rrotate is ICF-shared with other units 00423e30, 005539d0, 00668010 callers), FactoryProduct<SoundService / SoundChannel>() 005b6b60 / 005b6bc0, boost::any_cast<SoundId> / holder<SoundId> members 005b6ca0..005b6e1f (built here, clone see bounds_evidence), the deleting-destructor adjustor thunks 005b6e40..005b6ec0 / 005b7770..005b7890 / 005bb230..005bb2b0 / 005bbf60..005bbf80, sanitize / FMOD vector helpers 005b6ed0..005b7370, getset factories 005b7320 / 005b7370 / 005b7db0..005b7ea0, GetSetImpl::setValue / getValue rows 005b73c0..005b7450, the Creatable shared_count rows 005b7480..005b75a0 (creatable-shared-count), ~SoundChannel 005b7680, TypedPropertyDescriptor<SoundId> 005b7be0, shared_ptr constructors 005b7c50 / 005b7d00 / 005b7f50, SoundId value conversion rows 005b7a80 / 005b8090 / 005b86b0 (sound-value-* receipts), Name::declare 005b8450..005b8490, the SoundService members (loadSound / stock sounds / garbage collection / openFmod 005b84b0..005ba660, std::map<SoundId, shared_ptr<Sound>> instances), EnumDesc<ReverbType / SoundType> destructors and map helpers 005ba890..005bb110, ~SoundService 005bb120, EnumDesc<SoundType>::singleton 005bb2c0, EnumDesc<ReverbType>() 005bb330, the SoundService / SoundChannel scalar deleting destructors 005bb5d0 / 005b8220, the classDescriptors, the BoundProp / PropDescriptor constructors 005bb940..005bbd70, EnumDesc<ReverbType>::singleton 005bbe40, DescribedCreatable<SoundService / SoundChannel>() 005bbec0 / 005bbfb0 and ??_G FactoryProduct<SoundService> 005bbf90. FMOD itself is a DLL import (no library code here). Built here from AppUnit5B4SoundReflection.cpp against the committed native util/Sound.h."
+    "sound 005b65a0..005bbfff (continues past 005bc000)": "util/Sound.cpp. Evidence: RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@...3PADA (vtable 00837d84) and ...SoundChannel... (00837e44), .?AV?$FactoryProduct@VStockSound@@VSoundChannel@... , the PropDescriptor<SoundChannel, SoundId / float / int / bool> vtables 00837c34 / 00837c68 / 00837c9c / 00837cd0, GetSetImpl / GetImpl / BoundPropGetSet vtables 00837570..0083765c, EnumDesc<ReverbType> 005bb330 (\"ReverbType\", \"NoReverb\" .. \"UnderWater\"), the FMOD import calls (getPaused / isPlaying 005b6960 / 005b6990, \"FMOD %d: %s\" checks 005b6fe0 / 005b87a0, FMOD_ErrorString table 005b65b0, the system init 005ba060 \"Incorrect FMODEX DLL version\"), classDescriptors 005bb7f0 / 005bb860 / 005bb8d0 (\"SoundService\", \"Sound\", \"StockSound\"). Contents in address order: SoundChannel::getPlayCount 005b65a0, FMOD_ErrorString 005b65b0, StringConverter<ContentId>::convertToString 005b6940 (open), the getters 005b6960..005b69d0, ~FactoryProduct<SoundService / SoundChannel> 005b69e0 / 005b6a40, std::_Tree helpers (_Min / _Max of several maps, 005b6aa0..005b6c40; 005b6c40 _Rrotate is ICF-shared with other units 00423e30, 005539d0, 00668010 callers), FactoryProduct<SoundService / SoundChannel>() 005b6b60 / 005b6bc0, boost::any_cast<SoundId> / holder<SoundId> members 005b6ca0..005b6e1f and the separate FactoryProduct deleting destructor 005b6e20, the deleting-destructor adjustor thunks 005b6e40..005b6ec0 / 005b7770..005b7890 / 005bb230..005bb2b0 / 005bbf60..005bbf80, sanitize / FMOD vector helpers 005b6ed0..005b7370, getset factories 005b7320 / 005b7370 / 005b7db0..005b7ea0, GetSetImpl::setValue / getValue rows 005b73c0..005b7450, the Creatable shared_count rows 005b7480..005b75a0 (creatable-shared-count), ~SoundChannel 005b7680, TypedPropertyDescriptor<SoundId> 005b7be0, shared_ptr constructors 005b7c50 / 005b7d00 / 005b7f50, SoundId value conversion rows 005b7a80 / 005b8090 / 005b86b0 (sound-value-* receipts), Name::declare 005b8450..005b8490, the SoundService members (loadSound / stock sounds / garbage collection / openFmod 005b84b0..005ba660, std::map<SoundId, shared_ptr<Sound>> instances), EnumDesc<ReverbType / SoundType> destructors and map helpers 005ba890..005bb110, ~SoundService 005bb120, EnumDesc<SoundType>::singleton 005bb2c0, EnumDesc<ReverbType>() 005bb330, the SoundService / SoundChannel scalar deleting destructors 005bb5d0 / 005b8220, the classDescriptors, the BoundProp / PropDescriptor constructors 005bb940..005bbd70, EnumDesc<ReverbType>::singleton 005bbe40, DescribedCreatable<SoundService / SoundChannel>() 005bbec0 / 005bbfb0 and ??_G FactoryProduct<SoundService> 005bbf90. FMOD itself is a DLL import (no library code here). Built here from AppUnit5B4SoundReflection.cpp against the committed native util/Sound.h."
   },
   "unit_rows": {
     "brick-color tail": {
@@ -61,23 +61,27 @@
       "span": "0x5b6590..0x5b6590"
     },
     "sound": {
-      "rows": 166,
+      "rows": 164,
       "span": "0x5b65a0..0x5bbfb0"
     }
   },
-  "range_rows_total": 198,
+  "range_rows_total": 196,
   "range_rows_counted_by_other_receipts": [
     "005b6590 counted by network-player-working.json",
-    "005b6ae0 counted by viewnew-brick-build-working.json",
+    "005b6ce0 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
     "005b73c0 counted by effects-working.json, special-shape-working.json",
     "005b7400 counted by clothing-working.json",
     "005b7480 counted by creatable-shared-count-working.json",
     "005b7510 counted by creatable-shared-count-working.json",
     "005b75a0 counted by creatable-shared-count-working.json",
-    "005b78a0 counted by viewnew-brick-build-working.json",
     "005b7a80 counted by sound-value-generic-id-integrated.json",
     "005b8090 counted by sound-value-convert-id-integrated.json",
-    "005b86b0 counted by sound-value-get-integrated.json"
+    "005b8240 counted by sound-typed-properties-current-worker.json, sound-typed-properties-integrated.json, sound-typed-variant-direct-worker.json, sound-typed-variant-inline-worker.json",
+    "005b8450 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
+    "005b8470 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
+    "005b8490 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
+    "005b86b0 counted by sound-value-get-integrated.json",
+    "005b9d90 counted by sound-typed-properties-current-worker.json, sound-typed-properties-integrated.json, sound-typed-variant-inline-worker.json"
   ],
   "rows": [
     {
@@ -227,11 +231,11 @@
       "local_eh": []
     },
     {
-      "address": "005b6ce0",
+      "address": "0x5b6ce0 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
       "symbol": "??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ",
       "size": 101,
       "target_size": 101,
-      "exact": true,
+      "exact": false,
       "verified_targets": {
         "??_B?1???$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x9771d8 (static (one address per symbol))",
         "?sStockSound@@3PADA": "0x94d304 (class-name array 'StockSound' (string at the pushed address))",
@@ -240,7 +244,8 @@
       },
       "local_eh": [
         "__ehhandler$??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ"
-      ]
+      ],
+      "counted_elsewhere": true
     },
     {
       "address": "005b6d50",
@@ -264,6 +269,32 @@
       "exact": true,
       "verified_targets": {
         "??_R0?AVSoundId@Soundscape@RBX@@@8": "0x94d3e8 (RTTI .?AVSoundId@Soundscape@RBX@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6dc0",
+      "symbol": "?clone@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "size": 96,
+      "target_size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@VSoundId@Soundscape@RBX@@@any@boost@@QAE@ABVSoundId@Soundscape@RBX@@@Z": "0x5b6d50 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ]
+    },
+    {
+      "address": "005b6e20",
+      "symbol": "??_G?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@MAE@XZ": "0x5b6a40 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
       },
       "local_eh": []
     },
@@ -489,46 +520,49 @@
       ]
     },
     {
-      "address": "005b8450",
+      "address": "0x5b8450 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
       "symbol": "??$declare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
       "size": 23,
       "target_size": 23,
-      "exact": true,
+      "exact": false,
       "verified_targets": {
         "?flag@?1???$declare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d1c4 (static (one address per symbol))",
         "??$callDoDeclare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@CAXXZ": "0x438830 (callDoDeclare of another unit: tail jump to the doDeclare 0x437f20)",
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
         "??$doDeclare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x437f20 (Name::doDeclare of another unit: declares exactly 'SoundService' (body exact at the bound address))"
       },
-      "local_eh": []
+      "local_eh": [],
+      "counted_elsewhere": true
     },
     {
-      "address": "005b8470",
+      "address": "0x5b8470 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
       "symbol": "??$declare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
       "size": 23,
       "target_size": 23,
-      "exact": true,
+      "exact": false,
       "verified_targets": {
         "?flag@?1???$declare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d1c8 (static (one address per symbol))",
         "??$callDoDeclare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@CAXXZ": "0x438840 (callDoDeclare of another unit: tail jump to the doDeclare 0x437f90)",
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
         "??$doDeclare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x437f90 (Name::doDeclare of another unit: declares exactly 'Sound' (body exact at the bound address))"
       },
-      "local_eh": []
+      "local_eh": [],
+      "counted_elsewhere": true
     },
     {
-      "address": "005b8490",
+      "address": "0x5b8490 counted by sound-name-providers-integrated.json, sound-name-providers-worker.json",
       "symbol": "??$declare@$1?sStockSound@@3PADA@Name@RBX@@SAABV01@XZ",
       "size": 23,
       "target_size": 23,
-      "exact": true,
+      "exact": false,
       "verified_targets": {
         "?flag@?1???$declare@$1?sStockSound@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x9771dc (static (one address per symbol))",
         "??$callDoDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAXXZ": "0x5b73b0 (own row)",
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
         "??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ": "0x5b6ce0 (own row)"
       },
-      "local_eh": []
+      "local_eh": [],
+      "counted_elsewhere": true
     },
     {
       "address": "005bac70",
@@ -1090,7 +1124,8 @@
       "address": "0x837560",
       "compiled_slots": 3,
       "checked_own_slots": [
-        "1 ?type@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEABVty = 0x5b6db0 (own row)"
+        "1 ?type@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEABVty = 0x5b6db0 (own row)",
+        "2 ?clone@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEPAVp = 0x5b6dc0 (own row)"
       ]
     },
     "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@6B@": {
@@ -1336,9 +1371,7 @@
     "005b69c0": "address held at 0x7f5340 by the static initializer 0x7f5330, which calls the PropDescriptor constructor row 0x5bbac0",
     "005b69d0": "address held at 0x7f53c0 by the static initializer 0x7f53b0, which calls the PropDescriptor constructor row 0x5bbc20"
   },
-  "bounds_evidence": {
-    "row 005b6dc0 (not counted)": "the analysed row (127 B) is two functions: boost::any::holder<SoundId>::clone 005b6dc0..005b6e1f (ret at 005b6e1f; the compiled clone, 96 B, is exact against the first 96 bytes of the row) and ??_G FactoryProduct<SoundChannel> 005b6e20..005b6e3e (push esi; call ~FactoryProduct<SoundChannel> 005b6a40; free); the adjustor thunks 005b6e40 / 005b6e60 / 005b6e70 / 005b6e80 jump to 005b6e20. bounds.json is not changed here."
-  },
+  "bounds_evidence": {},
   "not_exact": [
     "005b7be0 ??0?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Refle: 98/98 B, not counted",
     "005b7be0: the inline TypedPropertyDescriptor(ClassDescriptor&, ...) constructor of the native reflection/property.h (core header, read-only) loads its arguments before calling Type::singleton<SoundId>() 0056cd80; the original calls the singleton first (same 98 B, instruction order only)"
@@ -1347,7 +1380,6 @@
   "not_attempted": {
     "BrickColor unit tail": "no committed native BrickColor header (would need a new layout header; not this pass)",
     "SoundService / SoundChannel bodies (constructors, destructors 005bb120 / 005b7680, loadSound, openFmod 005ba060, garbage collection, setters, update3D)": "larger members of the Sound owners; their scalar deleting destructors 005bb5d0 / 005b8220 and the adjustor thunks jumping to them (005b7770..005b77e0, 005bb230..005bb2b0) wait for ~SoundService / ~SoundChannel",
-    "thunks to ??_G FactoryProduct<SoundChannel> 005b6e20 (005b6e40, 005b6e60, 005b6e70, 005b6e80)": "their target is not a row: the analysed row 005b6dc0 (127 B) covers holder<SoundId>::clone 005b6dc0..005b6e1f and ??_G FactoryProduct<SoundChannel> 005b6e20..005b6e3e (BOUNDS evidence, see bounds_evidence)",
     "thunks to the StockSound ??_G 005bd1b0 (005b7860, 005b7870, 005b7880) and ??_E FactoryProduct<StockSound> 0x130 thunks (005b77f0, 005b7890, 005bb250)": "their targets are ~StockSound / ~SoundChannel / ~SoundService rows (not built)",
     "005bb320 / 005bbea0 (5-byte tail jumps to the two EnumDesc singletons)": "identity not proven (no caller or name evidence; any `return singleton()` forwarder compiles the same)",
     "005b6c40 _Rrotate": "ICF-shared std::_Tree helper also called from 00423e30 / 005539d0 / 00668010 (not this unit only)"
@@ -1368,9 +1400,10 @@
     "005b6b60",
     "005b6bc0",
     "005b6ca0",
-    "005b6ce0",
     "005b6d50",
     "005b6db0",
+    "005b6dc0",
+    "005b6e20",
     "005b6e50",
     "005b6e90",
     "005b6ea0",
@@ -1389,9 +1422,6 @@
     "005b7e50",
     "005b7ea0",
     "005b7f50",
-    "005b8450",
-    "005b8470",
-    "005b8490",
     "005bac70",
     "005bae20",
     "005baeb0",

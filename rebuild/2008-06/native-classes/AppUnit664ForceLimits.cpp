@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native (inactive): humanoid state force limits 00666350 / 006663a0 (see AppUnit664/HumanoidForceLimits.h).
 #include "AppUnit664/HumanoidForceLimits.h"
 

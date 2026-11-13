@@ -1,0 +1,61 @@
+{
+  "header": "rebuild/2008-06/native-headers/ViewNew/QuadVolumeFace.h",
+  "include": "ViewNew/QuadVolumeFace.h",
+  "sources": [
+    "rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp"
+  ],
+  "groups": [
+    {
+      "name": "local_order",
+      "choices": [
+        {
+          "name": "normal",
+          "replacements": []
+        },
+        {
+          "name": "donor",
+          "replacements": [
+            {
+              "old": "const G3D::Vector3 size = G3D::abs(faceToObject<id>(halfSize));\n\n\t\t\tG3D::Vector2 positionStep",
+              "new": "const G3D::Vector3 size = G3D::abs(faceToObject<id>(halfSize));\n\n\t\t\tfloat x = 0, u = 0, y = 0, v = 0;\n\n\t\t\tG3D::Vector2 positionStep"
+            },
+            {
+              "old": "float x = rect.x0();\n\t\t\tfloat u = textureOrigin.x;",
+              "new": "x = rect.x0();\n\t\t\tu = textureOrigin.x;"
+            },
+            {
+              "old": "float y = rect.y0();\n\t\t\t\tfloat v = textureOrigin.y;",
+              "new": "y = rect.y0();\n\t\t\t\tv = textureOrigin.y;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "position_step",
+      "choices": [
+        {
+          "name": "vector",
+          "replacements": []
+        },
+        {
+          "name": "scalar",
+          "replacements": [
+            {
+              "old": "G3D::Vector2 positionStep((rect.x1() - rect.x0()) / divisions.x, (rect.y1() - rect.y0()) / divisions.y);",
+              "new": "float stepX = (rect.x1() - rect.x0()) / divisions.x;\n\t\t\tfloat stepY = (rect.y1() - rect.y0()) / divisions.y;"
+            },
+            {
+              "old": "y += positionStep.y;",
+              "new": "y += stepY;"
+            },
+            {
+              "old": "x += positionStep.x;",
+              "new": "x += stepX;"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// DocumentInitialize | 2008-06 | 20 byte-exact, inactive (not link-selected)
+// 20/36 mapped addresses byte-exact | 16 unproved | no mapped strings | by king_originala (+5) (mixed 4)
+// <<< native-status | src 7636ea12 | roc native-status --write
 #include <afxwin.h>
 #include <boost/scoped_ptr.hpp>
 #include <stdexcept>
@@ -259,3 +263,6 @@ Instance* InsertDecal::getTarget() const {
 bool InsertDecal::isEnabled() const {
     return EditSelectionVerb::isEnabled() && getTarget() != NULL;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::scoped_ptr<RBX::StandardVerbs>;

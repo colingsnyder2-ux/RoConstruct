@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// TimerService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 7640981d | roc native-status --write
 // 2008-06 native RBX::TimerService (inactive). Shape after the donor tools/rbxgs TimerService.h; every base, field
 // and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 0083d1a4 .?AVTimerService@RBX@@ -> DescribedCreatable<TimerService, Instance, sTimerService>

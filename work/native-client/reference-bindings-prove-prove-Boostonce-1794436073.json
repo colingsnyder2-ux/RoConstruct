@@ -1,0 +1,57 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?call_once@boost@@YAXP6AXXZAAJ@Z",
+    "address": "00557330"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostonce\\objects\\4854734007b4b704\\candidate.obj": "1f0daf91d4309f9dbdc3ddeeecf32d443f4333e5ffe5d7b29ef878aeca5ac1bf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-n7onp18j\\owners.json": "318850143eba2743d7a4e6229104d82525b32258b59819f8cd9cfb1a1de48d05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-n7onp18j\\import-thunk-identities-as-owner.json": "728ee05019016dd9d6c115a03cba79f9969d97aeeff6e116dc92c390ce451c31"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?hex@std@@YAAAVios_base@1@AAV21@@Z",
+   "address": "00557310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?call_once@boost@@YAXP6AXXZAAJ@Z",
+   "address": "007ce12c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CreateMutexA@12",
+   "address": "0080228c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetCurrentProcessId@0",
+   "address": "00802238",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__InterlockedCompareExchange@12",
+   "address": "0080227c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__InterlockedExchange@8",
+   "address": "00802284",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ReleaseMutex@4",
+   "address": "00802280",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,57 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z",
+    "address": "007b9940"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\d1cb78f278f5493b\\candidate.obj": "01896b64885e92916be2feac903961ebde3d0282c3d1e654149fcfb33f1cb157",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fz8kutfl\\owners.json": "3189d97a08157778ca68b73d1cf875d204c21c3b44174db7cab02317f798b2dd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fz8kutfl\\import-thunk-identities-as-owner.json": "d1e432d45ff44b937564266e6407663dc250cf86abaed0fafc62008ca63aadee"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?NONE@Face@MeshAlg@G3D@@2HB",
+   "address": "00875d60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?directionOrZero@Vector3@G3D@@QBE?AV12@XZ",
+   "address": "007b9450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?insert@MeshEdgeTable@G3D@@QAEXABVMeshDirectedEdgeKey@2@H@Z",
+   "address": "007b9890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "0054d430",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@VFace@MeshAlg@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "0054d6e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@VVertex@MeshAlg@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "0054fc70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z",
+   "address": "007ee6a8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

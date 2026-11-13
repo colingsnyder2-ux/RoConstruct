@@ -4,6 +4,11 @@
 // setVertColor compare with `fld; fcomp mem`). The EnumPropDescriptor constructor 0059fe00 and the
 // TypedPropertyDescriptor<MeshId> Value/boost::any helpers 0059eec0..0059f400 come from header templates; they are
 // exact only against the generated reflection.h / type.h / property.h copies the recorder writes (proposals).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// SpecialShape | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | 1 referenced strings (not rechecked) | by king_originala (+1) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src ff07e2e9 | roc native-status --write
 #include "v8datamodel/SpecialShape.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/enumconverter.h"
@@ -108,3 +113,18 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::SpecialShape::MeshType>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::SpecialShape::MeshType> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::SpecialShape::MeshType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::SpecialShape::MeshType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> >,0> >;
+template class std::_Vector_const_iterator<enum RBX::SpecialShape::MeshType,std::allocator<enum RBX::SpecialShape::MeshType> >;
+template class std::_Vector_iterator<enum RBX::SpecialShape::MeshType,std::allocator<enum RBX::SpecialShape::MeshType> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::SpecialShape::MeshType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::SpecialShape::MeshType> >;
+template class std::vector<enum RBX::SpecialShape::MeshType,std::allocator<enum RBX::SpecialShape::MeshType> >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sSpecialShape>();

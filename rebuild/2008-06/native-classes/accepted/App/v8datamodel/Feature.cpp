@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Feature | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src a022f53b | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/Workspace.h"
 #include "v8world/MotorJoint.h"

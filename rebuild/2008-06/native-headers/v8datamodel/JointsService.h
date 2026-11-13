@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// JointsService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 74c25c69 | roc native-status --write
 // 2008-06 native RBX::JointsService (inactive). Shape after the donor tools/rbxgs JointsService.h; every base, field
 // and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00824acc .?AVJointsService@RBX@@ -> NonFactoryProduct<Instance, 0> (no class descriptor, no
@@ -14,7 +18,7 @@
 //              return-NULL body 00416690).
 //   world      onServiceProvider 005e5b50 disconnects Notifier<World, AutoJoin> (World +0) and
 //              Notifier<World, AutoDestroy> (World +0x20) from world (+0x150), then sets world from
-//              ServiceProvider::find<Workspace>(newProvider) (Workspace +0x2e4); it does not call
+//              ServiceProvider::create<Workspace>(newProvider) (00490af0; Workspace +0x2e4); it does not call
 //              Instance::onServiceProvider in 2008.
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

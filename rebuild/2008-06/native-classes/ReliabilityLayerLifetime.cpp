@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ReliabilityLayerLifetime | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto
+// <<< native-status | src de8cad86 | roc native-status --write
 #include <malloc.h>
 /// \file
 ///
@@ -76,3 +80,9 @@ void ReliabilityLayer::FreeThreadedMemory()
 {
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class DataStructures::MemoryPool<DataStructures::Page<unsigned int,InternalPacket *,32> >;
+template class DataStructures::MemoryPool<InternalPacket>;
+template class DataStructures::Queue<DataStructures::Page<unsigned int,InternalPacket *,32> *>;
+template class DataStructures::Queue<__int64>;
+template class DataStructures::RangeNode<unsigned int>;

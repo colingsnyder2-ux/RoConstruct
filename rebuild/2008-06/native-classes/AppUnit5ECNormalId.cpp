@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 util/NormalId.cpp (application range 005ec000..005f0000, rows 005ec180..005ec9ef). Inactive native unit.
 // Declarations: the donor util/NormalId.h (read-only) plus native-headers/AppUnit5EC/NormalIdVector.h.
 #include "AppUnit5EC/NormalIdVector.h"

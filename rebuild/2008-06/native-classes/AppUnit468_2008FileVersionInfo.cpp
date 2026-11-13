@@ -6,6 +6,10 @@
 // Create(HMODULE) 0046a4f0 (GetModuleFileName into a 500-char buffer, then Create(CString)) is not declared by
 // CFileVersionInfo.h: it is built only with NATIVE_APPUNIT468_PENDING against a generated header copy (proposal).
 // A codegen analog: names follow the native header, not the original source.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit468_2008FileVersionInfo | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by EspClaude (+2) (mixed 2)
+// <<< native-status | src 280785ad | roc native-status --write
 #include "CFileVersionInfo.h"
 
 // @0046a200 ??0CFileVersionInfo@@QAE@XZ

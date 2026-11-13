@@ -1,6 +1,10 @@
 // 2008-06 native RBX::Selection rows of the application range 00564000..00570000 (inactive), against the native
 // v8datamodel/Selection.h (read-only; its layout is proven by tests/NativeSelectionLayout.cpp: size 0x174,
 // selection +0x154, filteredSelections +0x15c).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit564_2008Selection | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
+// <<< native-status | src f6211821 | roc native-status --write
 #include "v8datamodel/Selection.h"
 
 namespace RBX
@@ -174,3 +178,8 @@ namespace RBX
 	}
 }
 #endif
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::ISelectionBase *,std::allocator<RBX::ISelectionBase *> >;
+template class std::_Vector_iterator<RBX::ISelectionBase *,std::allocator<RBX::ISelectionBase *> >;
+template class std::vector<RBX::ISelectionBase *,std::allocator<RBX::ISelectionBase *> >;

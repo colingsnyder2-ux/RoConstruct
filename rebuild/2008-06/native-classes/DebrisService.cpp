@@ -1,6 +1,10 @@
 // 2008-06 native RBX::DebrisService (inactive); evidence in native-headers/v8datamodel/DebrisService.h.
 // Verified by tests/record_native_debris_forcefield.py. Unit 0063b330..0063c3a0 plus the descriptor initializers
 // 007f8b60 / 007f8ba0 (atexit 00801060 / 00801080), doDeclare 005bfe20 and classDescriptor 005c06a0.
+// >>> native-status (generated) -- do not edit >>>
+// DebrisService | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | 2 referenced strings (not rechecked) | by king_originala (+1) (mixed 2)
+// <<< native-status | src b194a198 | roc native-status --write
 #include "v8datamodel/DebrisService.h"
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
@@ -99,3 +103,14 @@ namespace RBX
 		timer = ServiceProvider::create<TimerService>(newProvider);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Instance> > >;
+template class boost::_bi::value<boost::shared_ptr<RBX::Instance> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::weak_ptr<RBX::Instance> > >;
+template class std::_Deque_const_iterator<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance> >,1>;
+template class std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance> >,1>;
+template class std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance> > >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sDebrisService>();

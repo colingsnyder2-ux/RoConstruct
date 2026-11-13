@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+#undef _RELEASEASSERT
 // 2008-06 IWorldStage::onEdgeAdded / onEdgeRemoving (inactive): the out-of-line bodies of the donor v8world/IWorldStage.h
 // declarations (donor v8world/IWorldStage.cpp shape; RBXASSERTs compiled out). ClumpStage::onEdgeAdded 0064cec0 and
 // onEdgeRemoving 0064cf10 call them non-virtually (0064cecc / 0064cf46). Verified by tests/record_native_app_unit668.py.

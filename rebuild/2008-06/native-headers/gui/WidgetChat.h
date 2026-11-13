@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// WidgetChat | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ee28700a | roc native-status --write
 // 2008-06 native RBX::ChatWidget, RBX::UnifiedImageWidget and RBX::ChatButton (inactive). Shape after the donor
 // tools/rbxgs gui/ChatWidget.h (a differently named header so that it does not shadow the donor one). Every base,
 // field and size below is read from the binary (tests/record_native_widget.py checks them):

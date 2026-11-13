@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/OgreLightInline /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // Ogre::RbxSceneManager / RbxSceneManagerFactory as compiled into the June 2008 client (inactive native recovery).
 //
 // Roblox forked Ogre 1.4.5's OgreSceneManager.cpp into ".\RbxSceneManager.cpp" (string 0084e9e8) and overrode every
@@ -14,9 +15,12 @@
 //     "fork bodies" marker (cameras, light list, animations, manualRender, the Ogre::Timer-instrumented basic queue
 //     group and _renderScene, the findingShadowCasters guard) follow the fork's versions.
 // Not built (blocked): setSkyBox 00692a10 (constructs RbxSky, new(0xd4), ctor 0067fd60) and renderSingleObject
-// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms). findShadowCastersForLight
-// 006960e0 is compiled only with NATIVE_OGRE_RBXSCENEMANAGER_PENDING (it needs a declaration of RbxEntity::collect).
+// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms).
 // _queueSkiesForRendering 0068d7d0 calls RbxSky::update through the minimal OgreRbx/RbxSky2008.h.
+// >>> native-status (generated) -- do not edit >>>
+// OgreRbxSceneManager | 2008-06 | draft (no current byte proof)
+// 0/203 mapped addresses byte-exact | 203 unproved | no mapped strings | by tester (+7) (mixed 5)
+// <<< native-status | src c93f82db | roc native-status --write
 #include "OgreSceneManager.h"
 #include "OgreCamera.h"
 #include "OgreRenderSystem.h"
@@ -34,6 +38,8 @@
 #include "OgreRenderQueueSortingGrouping.h"
 #include "OgreOverlay.h"
 #include "OgreOverlayManager.h"
+#include "AppUnit67C_2008/RbxSubEntity2008.h"
+#include "OgreRbxNode/RbxSceneNode2008.h"
 #include "OgreStringConverter.h"
 #include "OgreRenderQueueListener.h"
 #include "OgreBillboardSet.h"
@@ -58,12 +64,16 @@
 #include "OgreParticleSystemManager.h"
 #include "OgreTimer.h"
 #include "OgreRbx/RbxSceneManager2008.h"
-#ifdef NATIVE_OGRE_RBXSCENEMANAGER_PENDING
-#include "RbxSceneManagerPendingDecls.h"
-#endif
+#include "OgreRbx/RbxEntity2008.h"
 #include <cstdio>
 
 namespace Ogre {
+// Original sort bodies inline the 1.4.5 shadow comparator (006906d0, 00690460).
+inline bool SceneManager::lightsForShadowTextureLess::operator()(const Light* l1, const Light* l2) const {
+    if (l1 == l2) return false;
+    if (l1->getCastShadows() != l2->getCastShadows()) return l1->getCastShadows();
+    return l1->tempSquareDist < l2->tempSquareDist;
+}
 
 
 const String RbxSceneManagerFactory::FACTORY_TYPE_NAME = "RbxSceneManager";
@@ -4964,10 +4974,6 @@ void RbxSceneManager::_queueSkiesForRendering(Camera* cam)
 	}
 }
 
-#ifdef NATIVE_OGRE_RBXSCENEMANAGER_PENDING
-// Pending-build-only body: it needs a declaration of the exe-local Ogre::RbxEntity (collect) that no native header
-// provides yet (see the recorder's proposal header).
-
 const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight(
 	const Light* light, const Camera* camera)
 {
@@ -4987,11 +4993,420 @@ const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight
 		if (root->getAttachedObjectIterator().hasMoreElements())
 		{
 			RbxEntity* entity = dynamic_cast<RbxEntity*>(root->getAttachedObject(0));
-			entity->collect(camera, light, mShadowCasterList);
+			entity->collect(const_cast<Camera*>(camera), const_cast<Light*>(light), mShadowCasterList);   // collect 0067e2f0 takes non-const (registry mangling)
 		}
 	}
 	return mShadowCasterList;
 }
-#endif
+
+// 0069bc50: upstream 1.4.5 renderSingleObject with the fork edits marked "fork:".
+// DRAFT (2531 B vs 2391 B): the fork edits (RbxSubEntity / RbxSceneNode cached transform, lighting-state skip) are
+// read from the target. The remaining difference is which inline Ogre getters MSVC emitted as rgmain imports: the
+// target calls getStartLight 2x, getMaxSimultaneousLights 4x, Light::getType 1x and has 12 more bytes of locals;
+// this compile calls them 6x / 6x / 2x. Same per-function inlining-budget effect as RbxEntity 0067daf0.
+void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pass, 
+                                      bool doLightIteration, const LightList* manualLightList)
+{
+    unsigned short numMatrices;
+    static RenderOperation ro;
+
+    // fork: an RbxSubEntity whose entity hangs off an RbxSceneNode supplies its cached world matrix (+0xf0)
+    RbxSubEntity* subEntity = dynamic_cast<RbxSubEntity*>(const_cast<Renderable*>(rend));
+    if (subEntity)
+    {
+        subEntity->getRenderOperation(ro);
+        ro.srcRenderable = subEntity;
+        if (dynamic_cast<RbxSceneNode*>(subEntity->getParent()->getParentNode()))
+            mTempXform[0] = subEntity->mTransform;
+        else
+            rend->getWorldTransforms(mTempXform);
+    }
+    else
+    {
+        // I know, I know, const_cast is nasty but otherwise it requires all internal
+        // state of the Renderable assigned to the rop to be mutable
+        const_cast<Renderable*>(rend)->getRenderOperation(ro);
+        ro.srcRenderable = rend;
+
+        // Set world transformation
+        rend->getWorldTransforms(mTempXform);
+    }
+    numMatrices = rend->getNumWorldTransforms();
+    if (numMatrices > 1)
+    {
+        mDestRenderSystem->_setWorldMatrices(mTempXform, numMatrices);
+    }
+    else
+    {
+        mDestRenderSystem->_setWorldMatrix(*mTempXform);
+    }
+
+    // Issue view / projection changes if any
+    useRenderableViewProjMode(rend);
+
+    // fork: a sub-entity whose lighting state is unchanged since the last light setup skips straight to the render
+    if ((!subEntity || mPassLightingEnabled != mLightsLightingEnabled) && !mSuppressRenderStateChanges)
+    {
+        if (subEntity)
+            mLightsLightingEnabled = mPassLightingEnabled;
+        bool passSurfaceAndLightParams = true;
+
+        if (pass->isProgrammable())
+        {
+            // Tell auto params object about the renderable change
+            mAutoParamDataSource.setCurrentRenderable(rend);
+            // Tell auto params object about the world matrices, eliminated query from renderable again
+            mAutoParamDataSource.setWorldMatrices(mTempXform, numMatrices);
+            pass->_updateAutoParamsNoLights(mAutoParamDataSource);
+            if (pass->hasVertexProgram())
+            {
+                passSurfaceAndLightParams = pass->getVertexProgram()->getPassSurfaceAndLightStates();
+            }
+        }
+
+        // Reissue any texture gen settings which are dependent on view matrix
+        Pass::ConstTextureUnitStateIterator texIter =  pass->getTextureUnitStateIterator();
+        size_t unit = 0;
+        while(texIter.hasMoreElements())
+        {
+            TextureUnitState* pTex = texIter.getNext();
+            if (pTex->hasViewRelativeTextureCoordinateGeneration())
+            {
+                mDestRenderSystem->_setTextureUnitSettings(unit, *pTex);
+            }
+            ++unit;
+        }
+
+        // Sort out normalisation
+        mDestRenderSystem->setNormaliseNormals(rend->getNormaliseNormals());
+
+        // Set up the solid / wireframe override
+		// Precedence is Camera, Object, Material
+		// Camera might not override object if not overrideable
+		PolygonMode reqMode = pass->getPolygonMode();
+		if (rend->getPolygonModeOverrideable())
+		{
+            PolygonMode camPolyMode = mCameraInProgress->getPolygonMode();
+			// check camera detial only when render detail is overridable
+			if (reqMode > camPolyMode)
+			{
+				// only downgrade detail; if cam says wireframe we don't go up to solid
+				reqMode = camPolyMode;
+			}
+		}
+		mDestRenderSystem->_setPolygonMode(reqMode);
+
+		mDestRenderSystem->setClipPlanes(rend->getClipPlanes());
+
+		if (doLightIteration)
+		{
+            // Create local light list for faster light iteration setup
+            static LightList localLightList;
+
+
+			// Here's where we issue the rendering operation to the render system
+			// Note that we may do this once per light, therefore it's in a loop
+			// and the light parameters are updated once per traversal through the
+			// loop
+			const LightList& rendLightList = rend->getLights();
+
+			bool iteratePerLight = pass->getIteratePerLight();
+
+			// deliberately unsigned in case start light exceeds number of lights
+			// in which case this pass would be skipped
+			int lightsLeft = 1;
+			if (iteratePerLight)
+			{
+				lightsLeft = static_cast<int>(rendLightList.size()) - pass->getStartLight();
+				// Don't allow total light count for all iterations to exceed max per pass
+				if (lightsLeft > static_cast<int>(pass->getMaxSimultaneousLights()))
+				{
+					lightsLeft = static_cast<int>(pass->getMaxSimultaneousLights());
+				}
+
+			}
+
+			const LightList* pLightListToUse;
+			// Start counting from the start light
+			size_t lightIndex = pass->getStartLight();
+
+			while (lightsLeft > 0)
+			{
+				// Determine light list to use
+				if (iteratePerLight)
+				{
+					localLightList.resize(pass->getLightCountPerIteration());
+
+					LightList::iterator destit = localLightList.begin();
+					unsigned short numShadowTextureLights = 0;
+					for (; destit != localLightList.end() 
+							&& lightIndex < rendLightList.size(); 
+						++lightIndex, --lightsLeft)
+					{
+						// Check whether we need to filter this one out
+						if (pass->getRunOnlyForOneLightType() && 
+							pass->getOnlyLightType() != rendLightList[lightIndex]->getType())
+						{
+							// Skip
+							continue;
+						}
+
+						*destit++ = rendLightList[lightIndex];
+						// potentially need to update content_type shadow texunit
+						// corresponding to this light
+						if (isShadowTechniqueTextureBased() && lightIndex < mShadowTextures.size())
+						{
+							// link the numShadowTextureLights'th shadow texture unit
+							unsigned short tuindex = 
+								pass->_getTextureUnitWithContentTypeIndex(
+								TextureUnitState::CONTENT_SHADOW, numShadowTextureLights);
+							if (tuindex < pass->getNumTextureUnitStates())
+							{
+								// I know, nasty const_cast
+								TextureUnitState* tu = 
+									const_cast<TextureUnitState*>(
+										pass->getTextureUnitState(tuindex));
+								const TexturePtr& shadowTex = mShadowTextures[lightIndex];
+								tu->_setTexturePtr(shadowTex);
+								Camera *cam = shadowTex->getBuffer()->getRenderTarget()->getViewport(0)->getCamera();
+								tu->setProjectiveTexturing(!pass->hasVertexProgram(), cam);
+								mAutoParamDataSource.setTextureProjector(cam, numShadowTextureLights);
+								++numShadowTextureLights;
+								// Have to set TU on rendersystem right now, although
+								// autoparams will be set later
+								mDestRenderSystem->_setTextureUnitSettings(tuindex, *tu);
+							}
+
+						}
+
+
+
+					}
+					// Did we run out of lights before slots? e.g. 5 lights, 2 per iteration
+					if (destit != localLightList.end())
+					{
+						localLightList.erase(destit, localLightList.end());
+						lightsLeft = 0;
+					}
+					pLightListToUse = &localLightList;
+				}
+				else
+				{
+					// Use complete light list potentially adjusted by start light
+					if (pass->getStartLight() || pass->getMaxSimultaneousLights() != OGRE_MAX_SIMULTANEOUS_LIGHTS)
+					{
+						// out of lights?
+						if (pass->getStartLight() >= rendLightList.size())
+						{
+							lightsLeft = 0;
+							break;
+						}
+						else
+						{
+							localLightList.clear();
+							LightList::const_iterator copyStart = rendLightList.begin();
+							std::advance(copyStart, pass->getStartLight());
+							LightList::const_iterator copyEnd = copyStart;
+							// Clamp lights to copy to avoid overrunning the end of the list
+							size_t lightsToCopy = std::min(
+								static_cast<size_t>(pass->getMaxSimultaneousLights()), 
+								rendLightList.size() - pass->getStartLight());
+							std::advance(copyEnd, lightsToCopy);
+							localLightList.insert(localLightList.begin(), 
+								copyStart, copyEnd);
+							pLightListToUse = &localLightList;
+						}
+					}
+					else
+					{
+						pLightListToUse = &rendLightList;
+					}
+					lightsLeft = 0;
+				}
+
+
+				// Do we need to update GPU program parameters?
+				if (pass->isProgrammable())
+				{
+					// Update any automatic gpu params for lights
+					// Other bits of information will have to be looked up
+					mAutoParamDataSource.setCurrentLightList(pLightListToUse);
+					pass->_updateAutoParamsLightsOnly(mAutoParamDataSource);
+					// NOTE: We MUST bind parameters AFTER updating the autos
+
+					if (pass->hasVertexProgram())
+					{
+						mDestRenderSystem->bindGpuProgramParameters(GPT_VERTEX_PROGRAM, 
+							pass->getVertexProgramParameters());
+					}
+					if (pass->hasFragmentProgram())
+					{
+						mDestRenderSystem->bindGpuProgramParameters(GPT_FRAGMENT_PROGRAM, 
+							pass->getFragmentProgramParameters());
+					}
+				}
+				// Do we need to update light states? 
+				// Only do this if fixed-function vertex lighting applies
+				if (pass->getLightingEnabled() && passSurfaceAndLightParams)
+				{
+					mDestRenderSystem->_useLights(*pLightListToUse, pass->getMaxSimultaneousLights());
+				}
+				// issue the render op		
+				// nfz: check for gpu_multipass
+				mDestRenderSystem->setCurrentPassIterationCount(pass->getPassIterationCount());
+				mDestRenderSystem->_render(ro);
+			} // possibly iterate per light
+		}
+		else // no automatic light processing
+		{
+			// Even if manually driving lights, check light type passes
+			bool skipBecauseOfLightType = false;
+			if (pass->getRunOnlyForOneLightType())
+			{
+				if (!manualLightList ||
+					(manualLightList->size() == 1 && 
+					manualLightList->at(0)->getType() != pass->getOnlyLightType())) 
+				{
+					skipBecauseOfLightType = true;
+				}
+			}
+
+			if (!skipBecauseOfLightType)
+			{
+				// Do we need to update GPU program parameters?
+				if (pass->isProgrammable())
+				{
+					// Do we have a manual light list?
+					if (manualLightList)
+					{
+						// Update any automatic gpu params for lights
+						mAutoParamDataSource.setCurrentLightList(manualLightList);
+						pass->_updateAutoParamsLightsOnly(mAutoParamDataSource);
+					}
+
+					if (pass->hasVertexProgram())
+					{
+						mDestRenderSystem->bindGpuProgramParameters(GPT_VERTEX_PROGRAM, 
+							pass->getVertexProgramParameters());
+					}
+					if (pass->hasFragmentProgram())
+					{
+						mDestRenderSystem->bindGpuProgramParameters(GPT_FRAGMENT_PROGRAM, 
+							pass->getFragmentProgramParameters());
+					}
+				}
+
+				// Use manual lights if present, and not using vertex programs that don't use fixed pipeline
+				if (manualLightList && 
+					pass->getLightingEnabled() && passSurfaceAndLightParams)
+				{
+					mDestRenderSystem->_useLights(*manualLightList, pass->getMaxSimultaneousLights());
+				}
+				// issue the render op		
+				// nfz: set up multipass rendering
+				mDestRenderSystem->setCurrentPassIterationCount(pass->getPassIterationCount());
+				mDestRenderSystem->_render(ro);
+			} // !skipBecauseOfLightType
+		}
+
+	}
+	else // mSuppressRenderStateChanges
+	{
+		// Just render
+		mDestRenderSystem->setCurrentPassIterationCount(1);
+		mDestRenderSystem->_render(ro);
+	}
+	
+    // Reset view / projection changes if any
+    resetViewProjMode();
 
 }
+
+}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class Ogre::ConstMapIterator<std::map<unsigned short,Ogre::NodeAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NodeAnimationTrack *> > > >;
+template class Ogre::ConstMapIterator<std::map<unsigned short,Ogre::NumericAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NumericAnimationTrack *> > > >;
+template class Ogre::ConstVectorIterator<std::list<Ogre::AnimationState *,std::allocator<Ogre::AnimationState *> > >;
+template class Ogre::ConstVectorIterator<std::vector<Ogre::TextureUnitState *,std::allocator<Ogre::TextureUnitState *> > >;
+template class Ogre::MapIterator<std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> > > >;
+template class Ogre::MapIterator<std::map<unsigned char,Ogre::RenderQueueGroup *,std::less<unsigned char>,std::allocator<std::pair<unsigned char const ,Ogre::RenderQueueGroup *> > > >;
+template class Ogre::MapIterator<std::map<unsigned short,Ogre::RenderPriorityGroup *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::RenderPriorityGroup *> > > >;
+template class Ogre::SharedPtr<Ogre::AnimableValue>;
+template class Ogre::SharedPtr<Ogre::DataStream>;
+template class Ogre::SharedPtr<Ogre::GpuProgramParameters>;
+template class Ogre::SharedPtr<Ogre::RbxSky>;
+template class Ogre::SharedPtr<Ogre::Resource>;
+template class Ogre::SharedPtr<Ogre::ShadowCameraSetup>;
+template class Ogre::VectorIterator<std::vector<Ogre::RenderQueueInvocation *,std::allocator<Ogre::RenderQueueInvocation *> > >;
+template class Ogre::VectorIterator<std::vector<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::Light *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> > >;
+template class std::_Revranit<std::_Vector_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >,std::iterator<std::random_access_iterator_tag,Ogre::ShadowListener *,int,Ogre::ShadowListener * *,Ogre::ShadowListener * &> >;
+template class std::_Tmap_traits<Ogre::Camera const *,Ogre::Light const *,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::Light const *> >,0>;
+template class std::_Tmap_traits<Ogre::Camera const *,Ogre::VisibleObjectsBoundsInfo,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::VisibleObjectsBoundsInfo> >,0>;
+template class std::_Tree<std::_Tmap_traits<Ogre::Camera const *,Ogre::Light const *,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::Light const *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<Ogre::Camera const *,Ogre::VisibleObjectsBoundsInfo,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::VisibleObjectsBoundsInfo> >,0> >;
+template class std::_Tree<std::_Tmap_traits<enum Ogre::TextureUnitState::TextureEffectType,Ogre::TextureUnitState::TextureEffect,std::less<enum Ogre::TextureUnitState::TextureEffectType>,std::allocator<std::pair<enum Ogre::TextureUnitState::TextureEffectType const ,Ogre::TextureUnitState::TextureEffect> >,1> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::Animation *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Animation *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::Camera *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Camera *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::InstancedGeometry *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::InstancedGeometry *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneManager::MovableObjectCollection *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneManager::MovableObjectCollection *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::StaticGeometry *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::StaticGeometry *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned char,Ogre::RenderQueueGroup *,std::less<unsigned char>,std::allocator<std::pair<unsigned char const ,Ogre::RenderQueueGroup *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned short,Ogre::NodeAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NodeAnimationTrack *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned short,Ogre::NumericAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NumericAnimationTrack *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned short,Ogre::RenderPriorityGroup *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::RenderPriorityGroup *> >,0> >;
+template class std::_Tree<std::_Tset_traits<Ogre::SceneNode *,std::less<Ogre::SceneNode *>,std::allocator<Ogre::SceneNode *>,0> >;
+template class std::_Tree<std::_Tset_traits<unsigned char,std::less<unsigned char>,std::allocator<unsigned char>,0> >;
+template class std::_Vector_const_iterator<Ogre::Camera *,std::allocator<Ogre::Camera *> >;
+template class std::_Vector_const_iterator<Ogre::Light *,std::allocator<Ogre::Light *> >;
+template class std::_Vector_const_iterator<Ogre::PlaneBoundedVolume,std::allocator<Ogre::PlaneBoundedVolume> >;
+template class std::_Vector_const_iterator<Ogre::RenderQueueInvocation *,std::allocator<Ogre::RenderQueueInvocation *> >;
+template class std::_Vector_const_iterator<Ogre::RenderQueueListener *,std::allocator<Ogre::RenderQueueListener *> >;
+template class std::_Vector_const_iterator<Ogre::SceneManager::LightInfo,std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::_Vector_const_iterator<Ogre::ShadowCaster *,std::allocator<Ogre::ShadowCaster *> >;
+template class std::_Vector_const_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >;
+template class std::_Vector_const_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class std::_Vector_const_iterator<Ogre::ShadowTextureConfig,std::allocator<Ogre::ShadowTextureConfig> >;
+template class std::_Vector_const_iterator<Ogre::TexturePtr,std::allocator<Ogre::TexturePtr> >;
+template class std::_Vector_const_iterator<Ogre::TextureUnitState *,std::allocator<Ogre::TextureUnitState *> >;
+template class std::_Vector_iterator<Ogre::Camera *,std::allocator<Ogre::Camera *> >;
+template class std::_Vector_iterator<Ogre::Light *,std::allocator<Ogre::Light *> >;
+template class std::_Vector_iterator<Ogre::RenderQueueInvocation *,std::allocator<Ogre::RenderQueueInvocation *> >;
+template class std::_Vector_iterator<Ogre::RenderQueueListener *,std::allocator<Ogre::RenderQueueListener *> >;
+template class std::_Vector_iterator<Ogre::SceneManager::LightInfo,std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::_Vector_iterator<Ogre::ShadowCaster *,std::allocator<Ogre::ShadowCaster *> >;
+template class std::_Vector_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >;
+template class std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class std::_Vector_iterator<Ogre::ShadowTextureConfig,std::allocator<Ogre::ShadowTextureConfig> >;
+template class std::_Vector_iterator<Ogre::TexturePtr,std::allocator<Ogre::TexturePtr> >;
+template class std::allocator<Ogre::SceneNode *>;
+template class std::allocator<Ogre::TexturePtr>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >,0> >::_Node *>;
+template class std::allocator<std::pair<Ogre::Camera const * const,Ogre::Light const *> >;
+template class std::allocator<std::pair<Ogre::Camera const * const,Ogre::VisibleObjectsBoundsInfo> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Animation *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Camera *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::InstancedGeometry *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneManager::MovableObjectCollection *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::StaticGeometry *> >;
+template class std::allocator<unsigned char>;
+template class std::deque<unsigned long,std::allocator<unsigned long> >;
+template class std::list<Ogre::AnimationState *,std::allocator<Ogre::AnimationState *> >;
+template class std::reverse_iterator<std::_Vector_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> > >;
+template class std::vector<Ogre::Camera *,std::allocator<Ogre::Camera *> >;
+template class std::vector<Ogre::Light *,std::allocator<Ogre::Light *> >;
+template class std::vector<Ogre::Plane,std::allocator<Ogre::Plane> >;
+template class std::vector<Ogre::PlaneBoundedVolume,std::allocator<Ogre::PlaneBoundedVolume> >;
+template class std::vector<Ogre::RenderQueueListener *,std::allocator<Ogre::RenderQueueListener *> >;
+template class std::vector<Ogre::SceneManager::LightInfo,std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::vector<Ogre::ShadowCaster *,std::allocator<Ogre::ShadowCaster *> >;
+template class std::vector<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >;
+template class std::vector<Ogre::ShadowTextureConfig,std::allocator<Ogre::ShadowTextureConfig> >;
+template class std::vector<Ogre::TexturePtr,std::allocator<Ogre::TexturePtr> >;

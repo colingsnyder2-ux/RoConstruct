@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_png_read_rows",
+    "address": "0051f5b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngread\\objects\\aabfed4a294f90ab\\candidate.obj": "c0f07a1d2fd4d898e1a711eec744713134b785e30aacb15504bde00edcbe543a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d29j7nxz\\owners.json": "1ae1bbdeccab1d788e6173de1f6933e80adee3b2b768b94cf63751169f6e5e38",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d29j7nxz\\import-thunk-identities-as-owner.json": "8bc767bb70302f5bf816a9687ba016273ef7374d88ab5bd03936430c684836cc"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_png_read_image",
+    "address": "0051f650"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngread\\objects\\aabfed4a294f90ab\\candidate.obj": "c0f07a1d2fd4d898e1a711eec744713134b785e30aacb15504bde00edcbe543a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d29j7nxz\\owners.json": "1ae1bbdeccab1d788e6173de1f6933e80adee3b2b768b94cf63751169f6e5e38",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d29j7nxz\\import-thunk-identities-as-owner.json": "8bc767bb70302f5bf816a9687ba016273ef7374d88ab5bd03936430c684836cc"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_png_read_row",
+   "address": "0051f140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_set_interlace_handling",
+   "address": "0051fcb0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 Roblox-instantiated templates of the v8world/Assembly.cpp (Clump) unit 005e5f00..005e729f, application range
 // 005e4000..005e8000 (inactive native unit). /fp:fast. Verified by tests/record_native_app_unit5e4.py.
 //  * std::sort over MotorJoint* with a bool (*)(const MotorJoint*, const MotorJoint*) comparator (VS2008 RTM <algorithm>):

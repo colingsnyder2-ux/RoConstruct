@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native template instances of the Network/Replicator.cpp unit inside the application range 004b4000..004b8000
 // (inactive). Explicit instantiations only, against the read-only native headers stats/Stats.h and
 // Network/IdSerializer.h; the Replicator members that use them in the original (the ReplicatorStatsItem constructor

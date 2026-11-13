@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// >>> native-status (generated) -- do not edit >>>
+// LDrawParser | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 9f5c8495 | roc native-status --write
 #include "util/LDrawParser.h"
 #include "util/LDrawMapRoot.h"
 #include <memory>

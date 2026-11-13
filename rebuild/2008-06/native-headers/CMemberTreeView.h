@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CMemberTreeView | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ae1eb83a | roc native-status --write
 #include "CReflectionTreeView.h"
 
 namespace RBX {

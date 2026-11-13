@@ -1,0 +1,58 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Xlen@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@KAXXZ",
+    "address": "004c6d40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostoptions_description\\objects\\72dcb71801755197\\candidate.obj": "c01d825887294791770cdeed5058f26e7b0850818927a9ff94f13ecf96a24a34",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-k7rpl8py\\owners.json": "578811f4f7d9c445a7699aef6867c8fa2e63ea4bc722dfcfe803b82bcaea9d99",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-k7rpl8py\\import-thunk-identities-as-owner.json": "8bfe982ef4c9f5988e642af5eae871b9180385c57f6a644a76cd24045a1029c8"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__ehhandler$?_Insert_n@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@2@IABV?$shared_ptr@Voption_description@program_options@boost@@@boost@@@Z",
+    "address": "007bd770"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostoptions_description\\objects\\72dcb71801755197\\candidate.obj": "c01d825887294791770cdeed5058f26e7b0850818927a9ff94f13ecf96a24a34",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-k7rpl8py\\owners.json": "578811f4f7d9c445a7699aef6867c8fa2e63ea4bc722dfcfe803b82bcaea9d99",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-k7rpl8py\\import-thunk-identities-as-owner.json": "8bfe982ef4c9f5988e642af5eae871b9180385c57f6a644a76cd24045a1029c8"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@2@IABV?$shared_ptr@Voption_description@program_options@boost@@@boost@@@Z$0",
+   "address": "00412388",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@2@IABV?$shared_ptr@Voption_description@program_options@boost@@@boost@@@Z$2",
+   "address": "00412425",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Xlen@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@KAXXZ",
+   "address": "007de842",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?_Insert_n@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@2@IABV?$shared_ptr@Voption_description@program_options@boost@@@boost@@@Z$4",
+   "address": "007bd760",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?_Insert_n@?$vector@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@V?$allocator@V?$shared_ptr@Voption_description@program_options@boost@@@boost@@@std@@@2@IABV?$shared_ptr@Voption_description@program_options@boost@@@boost@@@Z$5",
+   "address": "007bd768",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

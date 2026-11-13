@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native rows of the application range 00404000..00408000 (inactive): Roblox template instances that the
 // ATL COM unit of CApp (00405da0..0040995f) emits. Verified by tests/record_native_app_unit404.py (document-swap
 // flags, VS2008 RTM 21022). Only committed native headers are included, read-only; no declaration is added.

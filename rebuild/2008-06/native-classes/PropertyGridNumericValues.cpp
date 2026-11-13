@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PropertyGridNumericValues | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 56b13a87 | roc native-status --write
 #include "PropertyGridItems.h"
 #include <stdio.h>
 #include "util/Utilities.h"
@@ -45,3 +49,6 @@ int XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<in
     if (valid) return value;
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class XItem<int,CXTPPropertyGridItem,RBX::Reflection::TypedPropertyDescriptor<int> >;

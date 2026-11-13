@@ -3,8 +3,8 @@
 // tests/record_native_app_unit574.py against the committed util/Events.h and v8datamodel/Workspace.h (read-only):
 //   * Notifier<Workspace, DrawChanged>::raise(DrawChanged) const 00576940 (evidence name; the RaiseRange loop over
 //     the listeners, calling raise(event, listener) 00576450 for each).
-//   * Notifier<Workspace, DrawChanged>::raise(DrawChanged, Listener*) const 00576450 is the same compiled body; the
-//     original extent table splits it at the catch funclets 0057648e / 005764a1 (exact only when joined: BOUNDS).
+//   * Notifier<Workspace, DrawChanged>::raise(DrawChanged, Listener*) const 00576450 is the same compiled body.
+//     The current function map records its complete 185-byte extent.
 #include "v8datamodel/Workspace.h"
 
 template void RBX::Notifier<RBX::Workspace, RBX::DrawChanged>::raise(RBX::DrawChanged) const;

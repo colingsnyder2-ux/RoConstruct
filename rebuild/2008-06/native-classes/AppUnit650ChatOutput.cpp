@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::ChatLine constructor and ChatOutput::onEvent(ChatMessage), the ChatOutput half of the HUD unit in
 // the application range 00650000..00654000 (inactive). Verified by tests/record_native_app_unit650.py (receipt
 // app-unit650-working.json); needs /fp:fast like the owner's native-classes/ChatOutput.cpp.

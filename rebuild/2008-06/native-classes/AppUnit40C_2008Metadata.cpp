@@ -19,6 +19,10 @@
 //     0080c248 Member): calls create<C>() and returns it as shared_ptr<Object>.
 // shared_ptr<C>(C*, Creatable<Instance>::Deleter) (Functions 0040c000, Events 0040c2f0, Member 0040c550) and
 // Described<C>::classDescriptor() (Functions 0040c0d0, Events 0040c3c0, Member 0040c760) are implicit instances.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit40C_2008Metadata | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f38c891b | roc native-status --write
 #include "reflection/Metadata.h"
 #include "AuthoringSettings.h"
 #include "util/Object.h"
@@ -75,3 +79,13 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<M::Events, M::Member
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<AuthoringSettings, RBX::GlobalSettings::Item, sAuthoringSettings>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<M::Class, M::Item, M::sClass>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<M::Member, M::Item, M::sMember>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<AuthoringSettings>;
+template class boost::shared_ptr<RBX::Object>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Class>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Classes>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Events>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Functions>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Member>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Properties>;

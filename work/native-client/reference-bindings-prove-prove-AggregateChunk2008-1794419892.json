@@ -1,0 +1,113 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?_Insert_n@?$vector@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@2@IABURankedShadow@Ogre@@@Z",
+    "address": "007dbf50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\c20687b1ba944b39\\candidate.obj": "71fe748ea299e0f6f1144d85f8de6944f6718e319ce0496fe00aa42bec9fb0ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__ehhandler$?_Insert_n@?$vector@URankedSubIndex@Ogre@@V?$allocator@URankedSubIndex@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@URankedSubIndex@Ogre@@V?$allocator@URankedSubIndex@Ogre@@@std@@@2@IABURankedSubIndex@Ogre@@@Z",
+    "address": "007dbf50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\c20687b1ba944b39\\candidate.obj": "71fe748ea299e0f6f1144d85f8de6944f6718e319ce0496fe00aa42bec9fb0ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Reverse@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEXPAVPlaneBoundedVolume@Ogre@@0@Z",
+    "address": "0048a580"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\683bd63fdb110fcf\\candidate.obj": "a2dbc5677545874fdaae45590ea18a4adcdd5a9e5668778068933b40dc325815",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Fill@PAVPlaneBoundedVolume@Ogre@@V12@@std@@YAXPAVPlaneBoundedVolume@Ogre@@0ABV12@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\683bd63fdb110fcf\\candidate.obj": "a2dbc5677545874fdaae45590ea18a4adcdd5a9e5668778068933b40dc325815",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_opt@PAVPlaneBoundedVolume@Ogre@@PAV12@@std@@YAPAVPlaneBoundedVolume@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "00445310"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\683bd63fdb110fcf\\candidate.obj": "a2dbc5677545874fdaae45590ea18a4adcdd5a9e5668778068933b40dc325815",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_backward_opt@PAVPlaneBoundedVolume@Ogre@@PAV12@@std@@YAPAVPlaneBoundedVolume@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "004289c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\683bd63fdb110fcf\\candidate.obj": "a2dbc5677545874fdaae45590ea18a4adcdd5a9e5668778068933b40dc325815",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$fill@PAVPlaneBoundedVolume@Ogre@@V12@@std@@YAXPAVPlaneBoundedVolume@Ogre@@0ABV12@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-AggregateChunk2008\\objects\\683bd63fdb110fcf\\candidate.obj": "a2dbc5677545874fdaae45590ea18a4adcdd5a9e5668778068933b40dc325815",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\owners.json": "764f1a6eabaec0ec65f7db031911ebe49162d13d6699ec89493cd3bafb6f18bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5f6fkaja\\import-thunk-identities-as-owner.json": "28e378f4fc13380dc37d66efea058abc58bfb20a16e0808a6799968210f9829b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@2@IABURankedShadow@Ogre@@@Z$0",
+   "address": "0065b0b1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@URankedShadow@Ogre@@V?$allocator@URankedShadow@Ogre@@@std@@@2@IABURankedShadow@Ogre@@@Z$2",
+   "address": "0065b0bd",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@URankedSubIndex@Ogre@@V?$allocator@URankedSubIndex@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@URankedSubIndex@Ogre@@V?$allocator@URankedSubIndex@Ogre@@@std@@@2@IABURankedSubIndex@Ogre@@@Z$0",
+   "address": "0065b0b1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@URankedSubIndex@Ogre@@V?$allocator@URankedSubIndex@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@URankedSubIndex@Ogre@@V?$allocator@URankedSubIndex@Ogre@@@std@@@2@IABURankedSubIndex@Ogre@@@Z$2",
+   "address": "0065b0bd",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "__imp_??4PlaneBoundedVolume@Ogre@@QAEAAV01@ABV01@@Z": [
+   "008023f0",
+   "0080240c"
+  ]
+ },
+ "owners_tried": 7,
+ "owners_bound": 7
+}

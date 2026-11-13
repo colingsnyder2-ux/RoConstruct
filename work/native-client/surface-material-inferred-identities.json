@@ -1,0 +1,23 @@
+{
+ "scope": "INFERRED descriptive names for Decal/Texture material helpers",
+ "rows": [
+  {
+   "symbol": "?createPartMaterial@@YAPAVMaterialBase@RenderBase@RBX@@XZ",
+   "address": "00551730",
+   "inferred_name": true,
+   "evidence": "INFERRED descriptive name; original relocation in byte-exact Decal/Texture getMaterial at 004ebe70/004ec070."
+  },
+  {
+   "symbol": "?createPartTexture@@YAPAVTextureProxyBase@RBX@@PAVTextureManager@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "address": "00551920",
+   "inferred_name": true,
+   "evidence": "INFERRED descriptive name; original relocation in byte-exact Decal/Texture getMaterial at 004ebe70/004ec070."
+  },
+  {
+   "symbol": "?decalTextureScale@@3MB",
+   "address": "009326f8",
+   "inferred_name": true,
+   "evidence": "INFERRED descriptive name; original relocation in byte-exact Decal/Texture getMaterial at 004ebe70/004ec070."
+  }
+ ]
+}

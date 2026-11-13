@@ -1,3 +1,8 @@
+// >>> native-status (generated) -- do not edit >>>
+// RunService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 8dc59377 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/runservice-events
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
@@ -63,6 +68,12 @@ void RunService::setRunState(RunState next) {
 }
 }
 
+// 005557c0: attach a view and mark it valid for pending-invalidation accounting.
+void RBX::RunService::addRunView(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    views[view] = true;
+}
+
 void RBX::RunService::invalidateRunViews() {
     boost::mutex::scoped_lock guard(viewMutex);
     if (invalidRunViewCount != 0) return;
@@ -75,3 +86,6 @@ void RBX::RunService::invalidateRunViews() {
         runViewsDoneCondition.notify_all();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::map<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> > >;

@@ -1,3 +1,8 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ModelInstance | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 8fcb6b6b | roc native-status --write
 #include "v8datamodel/ModelInstance.h"
 namespace RBX {
 void ModelInstance::onDescendentAdded(Instance* instance) {
@@ -21,3 +26,6 @@ void ModelInstance::onDescendentRemoving(const boost::shared_ptr<Instance>& inst
     PVInstance::onDescendentRemoving(instance);
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::ComputeProp<RBX::Extents,RBX::ModelInstance>;

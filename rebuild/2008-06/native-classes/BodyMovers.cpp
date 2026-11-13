@@ -1,6 +1,11 @@
 // 2008-06 native RBX::BodyMover family (inactive); evidence in native-headers/v8datamodel/BodyMovers.h.
 // The original unit 0062e090..00633101 also holds Rocket (native-classes/Rocket.cpp). Verified by
 // tests/record_native_body_movers.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// BodyMovers | 2008-06 | draft (no current byte proof)
+// 0/11 mapped addresses byte-exact | 11 unproved | 4 referenced strings (not rechecked) | by king_originala (+3) (mixed 5)
+// <<< native-status | src 3793eee6 | roc native-status --write
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
@@ -198,3 +203,16 @@ namespace RBX
 		return force != G3D::Vector3::zero();
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::weak_ptr<RBX::PartInstance>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::RunService,RBX::Stepped> *,std::allocator<RBX::Listener<RBX::RunService,RBX::Stepped> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::RunService,RBX::Stepped> *,std::allocator<RBX::Listener<RBX::RunService,RBX::Stepped> *> >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sBodyGyro>();
+template void RBX::Name::callDoDeclare<RBX::sBodyForce>();
+template void RBX::Name::callDoDeclare<RBX::sBodyThrust>();
+template void RBX::Name::callDoDeclare<RBX::sBodyPosition>();
+template void RBX::Name::callDoDeclare<RBX::sBodyVelocity>();
+template void RBX::Name::callDoDeclare<RBX::sBodyAngularVelocity>();

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native WinINet transport of util/Http.cpp (inactive); declarations in native-headers/AppUnit5F8/HttpTransport.h.
 // Verified by tests/record_native_app_unit5f8.py.
 #define _SCL_SECURE_NO_DEPRECATE // required to disable a warning

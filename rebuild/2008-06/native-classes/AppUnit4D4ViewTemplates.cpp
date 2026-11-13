@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // Inactive 2008-06 native template rows of the ViewRbxGfx unit (ViewNew/ViewRbxGfx.cpp, original 004d6f50..004d8000+)
 // inside the application range 004d4000..004d8000, recorded by tests/record_native_app_unit4d4.py.
 // Built against the read-only native RenderLib/ViewNew2008.h / ViewBase2008.h (render-scene owner) and

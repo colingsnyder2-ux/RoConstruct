@@ -1,12 +1,16 @@
 // 2008-06 native RBX::Widget / RBX::VerbWidget unit (inactive): the original gui/Widget.cpp, 00641ff0..006426f0.
 // Layout and addresses in native-headers/gui/Widget.h; verified by tests/record_native_widget.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Widget | 2008-06 | 3 byte-exact, inactive (not link-selected)
+// 3/8 mapped addresses byte-exact | named 1 | 5 unproved | no mapped strings | by auto (+2) (mixed 4)
+// <<< native-status | src 2c5cc7da | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/widget-rect-2008
 #include "gui/Widget.h"
 
 namespace RBX
 {
-#ifdef NATIVE_WIDGET_PENDING
-	// Needs Rect::pointInRect(G3D::Vector2int16) out of line (00573130 in the original, called from 00642007); the
-	// donor util/Rect.h defines it inline. Pending: verified against a generated Rect.h copy.
+	// 00641ff0: Rect::pointInRect(G3D::Vector2int16) is out of line at 00573130.
 	GuiResponse Widget::processMouse(const GuiEvent& event)
 	{
 		bool inWidget = getMyRect().pointInRect(event.mousePosition);
@@ -99,7 +103,6 @@ namespace RBX
 		}
 		return GuiResponse::notUsed();
 	}
-#endif
 
 	GuiResponse Widget::process(const GuiEvent& event)
 	{

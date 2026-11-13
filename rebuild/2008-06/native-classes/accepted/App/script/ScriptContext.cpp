@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ScriptContext | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 67b4f724 | roc native-status --write
 #include "script/ScriptContext.h"
 #include "script/Script.h"
 #include "script/ScriptEvent.h"

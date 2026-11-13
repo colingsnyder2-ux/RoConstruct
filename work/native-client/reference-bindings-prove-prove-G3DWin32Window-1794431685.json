@@ -1,0 +1,551 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?hasFocus@Win32Window@G3D@@UBE_NXZ",
+    "address": "0047ec20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?swapGLBuffers@Win32Window@G3D@@UAEXXZ",
+    "address": "0047ecb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getSettings@Win32Window@G3D@@UBEXAAVSettings@GWindow@2@@Z",
+    "address": "0047ecc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?reallyMakeCurrent@Win32Window@G3D@@MBEXXZ",
+    "address": "0047f010"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?ChangeResolution@G3D@@YA_NHHHH@Z",
+    "address": "0047f030"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?makeKeyEvent@G3D@@YAXHHAATSDL_Event@@@Z",
+    "address": "0047f110"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?mouseButton@G3D@@YAX_NHKAATSDL_Event@@@Z",
+    "address": "0047f210"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1JoystickInfo@_DirectInput@_internal@G3D@@QAE@XZ",
+    "address": "0047fb80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?append@?$Array@M@G3D@@QAEXABM0@Z",
+    "address": "0047fe70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@QAE@XZ",
+    "address": "00480b60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??4JoystickInfo@_DirectInput@_internal@G3D@@QAEAAU0123@ABU0123@@Z",
+    "address": "00481530"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0JoystickInfo@_DirectInput@_internal@G3D@@QAE@ABU0123@@Z",
+    "address": "00482360"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?realloc@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@AAEXH@Z",
+    "address": "004823d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@PAUHDC__@@@Z",
+    "address": "004829e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?create@Win32Window@G3D@@SAPAV12@ABVSettings@GWindow@2@PAUHWND__@@@Z",
+    "address": "00482b30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1Win32Window@G3D@@UAE@XZ",
+    "address": "00482ba0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@2@@Z",
+    "address": "00482d20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?enumJoysticksCallback@_DirectInput@_internal@G3D@@CGHPBUDIDEVICEINSTANCEA@3@PAX@Z",
+    "address": "004830d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0_DirectInput@_internal@G3D@@QAE@PAUHWND__@@@Z",
+    "address": "00483260"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?enableDirectInput@Win32Window@G3D@@ABEXXZ",
+    "address": "00483320"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DWin32Window\\objects\\6563e9a9d7df8f83\\candidate.obj": "478552dcfe9798a697c05f53b3f94bb29eb3bd04a1acef7d2b4e78135ef8cb8a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\owners.json": "e79841efad718e8adfdfce1d35cec9efee561cb82ded2ea7251e77917cb3ad2a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-v7bot4mr\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0Settings@GWindow@G3D@@QAE@XZ",
+   "address": "0045ace0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@PAUHWND__@@@Z",
+   "address": "004829e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@_N@Z",
+   "address": "004824f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??4?$Array@I@G3D@@QAEAAV01@ABV01@@Z",
+   "address": "00480d00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??4Settings@GWindow@G3D@@QAEAAV012@ABV012@@Z",
+   "address": "0047ea20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$Set@H@G3D@@UAEPAXI@Z",
+   "address": "004815a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$Table@H_N@G3D@@UAEPAXI@Z",
+   "address": "00480bf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EWin32Window@G3D@@UAEPAXI@Z",
+   "address": "00483240",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_copy@?$Array@I@G3D@@AAEXABV12@@Z",
+   "address": "00480d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@QAEXABUJoystickInfo@_DirectInput@_internal@2@@Z",
+   "address": "00482fd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?caption@Win32Window@G3D@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "0047ed30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?dimensions@Win32Window@G3D@@UBE?AVRect2D@2@XZ",
+   "address": "004808f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?freeMemory@?$Table@H_N@G3D@@AAEXXZ",
+   "address": "00480120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getAPIName@Win32Window@G3D@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "0047ec80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getAPIVersion@Win32Window@G3D@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "0047ec50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getJoystickState@Win32Window@G3D@@UAEXIAAV?$Array@M@2@AAV?$Array@_N@2@@Z",
+   "address": "004833e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getRelativeMouseState@Win32Window@G3D@@UBEXAAH0AAE@Z",
+   "address": "0047eea0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getRelativeMouseState@Win32Window@G3D@@UBEXAAN0AAE@Z",
+   "address": "0047ef10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getRelativeMouseState@Win32Window@G3D@@UBEXAAVVector2@2@AAE@Z",
+   "address": "0047ee70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?height@Win32Window@G3D@@UBEHXZ",
+   "address": "006b9a60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?init@Win32Window@G3D@@AAEXPAUHWND__@@_N@Z",
+   "address": "004815d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?initWGL@Win32Window@G3D@@CAXXZ",
+   "address": "00481f40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?inputCapture@Win32Window@G3D@@UBE_NXZ",
+   "address": "0047edf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?joystickName@Win32Window@G3D@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z",
+   "address": "004833b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?mouseVisible@Win32Window@G3D@@UBE_NXZ",
+   "address": "0047edc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?notifyResize@Win32Window@G3D@@UAEXHH@Z",
+   "address": "0047edd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?numJoysticks@Win32Window@G3D@@UBEHXZ",
+   "address": "00483390",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?pollEvent@Win32Window@G3D@@UAE_NAATSDL_Event@@@Z",
+   "address": "00481b40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?requiresMainLoop@Win32Window@G3D@@UBE_NXZ",
+   "address": "0060a2f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@M@G3D@@QAEXH_N@Z",
+   "address": "0047fd70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setCaption@Win32Window@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0047ecd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setDimensions@Win32Window@G3D@@UAEXABVRect2D@2@@Z",
+   "address": "0047eb60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setGammaRamp@Win32Window@G3D@@UAEXABV?$Array@G@2@@Z",
+   "address": "0047fbe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0047f8a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setIcon@Win32Window@G3D@@UAEXABVGImage@2@@Z",
+   "address": "00480dd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setInputCapture@Win32Window@G3D@@UAEX_N@Z",
+   "address": "0047ef40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setMouseVisible@Win32Window@G3D@@UAEX_N@Z",
+   "address": "0047ed60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPosition@Win32Window@G3D@@UAEXHH@Z",
+   "address": "00482990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setRelativeMousePosition@Win32Window@G3D@@UAEXABVVector2@2@@Z",
+   "address": "0047ee50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setRelativeMousePosition@Win32Window@G3D@@UAEXNN@Z",
+   "address": "0047ee00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?width@Win32Window@G3D@@UBEHXZ",
+   "address": "006fa5a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0JoystickInfo@_DirectInput@_internal@G3D@@QAE@ABU0123@@Z",
+   "address": "007c6a9c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@PAUHDC__@@@Z",
+   "address": "007c53fe",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0_DirectInput@_internal@G3D@@QAE@PAUHWND__@@@Z",
+   "address": "007c54db",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@QAE@XZ",
+   "address": "007c6a9c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1JoystickInfo@_DirectInput@_internal@G3D@@QAE@XZ",
+   "address": "007c6a9c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1Win32Window@G3D@@UAE@XZ",
+   "address": "007c53fe",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?create@Win32Window@G3D@@SAPAV12@ABVSettings@GWindow@2@PAUHWND__@@@Z",
+   "address": "007bf43b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@2@@Z",
+   "address": "007c5423",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?enableDirectInput@Win32Window@G3D@@ABEXXZ",
+   "address": "007bf43b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?enumJoysticksCallback@_DirectInput@_internal@G3D@@CGHPBUDIDEVICEINSTANCEA@3@PAX@Z",
+   "address": "007c54b7",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?realloc@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@AAEXH@Z",
+   "address": "007c531d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ChangeDisplaySettingsA@8",
+   "address": "00802ce0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__FreeLibrary@4",
+   "address": "008021a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetCurrentThread@0",
+   "address": "00802230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetForegroundWindow@0",
+   "address": "00802e20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetKeyboardState@4",
+   "address": "00802cd8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetProcAddress@8",
+   "address": "008021c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__IsWindowVisible@4",
+   "address": "00802d3c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__LoadLibraryA@4",
+   "address": "008021cc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SwapBuffers@4",
+   "address": "0080213c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ToUnicode@24",
+   "address": "00802cdc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__WindowFromDC@4",
+   "address": "00802cb4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__wglMakeCurrent@8",
+   "address": "00802a38",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 20,
+ "owners_bound": 20
+}

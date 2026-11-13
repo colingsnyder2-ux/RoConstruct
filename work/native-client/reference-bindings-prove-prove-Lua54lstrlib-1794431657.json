@@ -1,0 +1,279 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_str_reverse",
+    "address": "006263b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_str_rep",
+    "address": "00626590"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_str_char",
+    "address": "006266e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_writer",
+    "address": "00626780"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_classend",
+    "address": "00626810"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_matchbalance",
+    "address": "00626a40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_start_capture",
+    "address": "00626be0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_end_capture",
+    "address": "00626c30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_match_capture",
+    "address": "00626c90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_match",
+    "address": "00626d20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_push_captures",
+    "address": "00627120"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_str_find",
+    "address": "00627320"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_gfind_nodef",
+    "address": "006274f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_add_s",
+    "address": "00627510"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_addquoted",
+    "address": "00627870"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstrlib\\objects\\6e12d756bb4aa0ca\\candidate.obj": "d11f4173a6f53fa75ddaa96e86d2f9550d217dcfc440c3e97e404ad7938d5c24",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\owners.json": "6e9dbc67e6a9e41626b4a426233c1d730e113fc5af3f6409965dd716d275d100",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u3x574zf\\import-thunk-identities-as-owner.json": "8f05d6a468ed30187c9583c5903d055ac244113aab784fb758e7abdbe6472fd3"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_luaL_addlstring",
+   "address": "00610f80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_addvalue",
+   "address": "00611020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_argerror",
+   "address": "006114d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_buffinit",
+   "address": "006110a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_checkinteger",
+   "address": "00611800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_checklstring",
+   "address": "006116c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_checkstack",
+   "address": "00610cf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_error",
+   "address": "00610c60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_prepbuffer",
+   "address": "00610f40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_pushresult",
+   "address": "00610fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_gettop",
+   "address": "00611c10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_tolstring",
+   "address": "00612010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_match_class",
+   "address": "00626880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_matchbracketclass",
+   "address": "006269a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_max_expand",
+   "address": "00626ab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_min_expand",
+   "address": "00626b50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_push_onecapture",
+   "address": "006270a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_str_find_aux",
+   "address": "00627170",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "$LN2": [
+   "00626ec3",
+   "00627905"
+  ],
+  "$LN3": [
+   "00626f5c",
+   "006278f3"
+  ],
+  "$LN4": [
+   "00626f46",
+   "006278ca"
+  ]
+ },
+ "owners_tried": 15,
+ "owners_bound": 15
+}

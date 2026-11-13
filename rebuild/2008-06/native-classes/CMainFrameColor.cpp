@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameColor | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (mixed 2)
+// <<< native-status | src ee01982a | roc native-status --write
 #include "CMainFrame.h"
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"
@@ -30,3 +34,6 @@ void CMainFrame::handle_4300d0(CCmdUI* ui)
     }
     ui->Enable(TRUE);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class CArray<CXTPControl *,CXTPControl *>;

@@ -341,8 +341,9 @@ def collect(root):
 def other_module_owned(root):
     """Recount other linked, source-clean, smoke-tested modules with current code/data checks."""
     owned = set()
+    live = {spec["name"] for _, spec in rebuild.live_module_specs(CLIENT)}
     for report in (root / "rebuild" / CLIENT / "out").glob("*/report.json"):
-        if report.parent.name != "RbxgsApp":
+        if report.parent.name != "RbxgsApp" and report.parent.name in live:
             data = json.loads(report.read_text())
             if data.get("linked") and data.get('test_exit')==0 and not rebuild.source_errors(report.parent, report=data):
                 for obj in (report.parent/'linked').glob('*.obj'):

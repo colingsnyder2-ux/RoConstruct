@@ -28,21 +28,4 @@ namespace RBX
 		}
 	}
 
-	void Mouse::update(const UIEvent& event)
-	{
-		cacheUIEvent(event);
-		switch (event.eventType)
-		{
-		case UIEvent::MOUSE_MOVE: event_Move.fire(this); break;
-		case UIEvent::MOUSE_IDLE: event_Idle.fire(this); break;
-		case UIEvent::MOUSE_LEFT_BUTTON_DOWN: event_Button1Down.fire(this); break;
-		case UIEvent::MOUSE_RIGHT_BUTTON_DOWN: event_Button2Down.fire(this); break;
-		case UIEvent::MOUSE_LEFT_BUTTON_UP: event_Button1Up.fire(this); break;
-		case UIEvent::MOUSE_RIGHT_BUTTON_UP: event_Button2Up.fire(this); break;
-		case UIEvent::MOUSE_WHEEL_FORWARD: event_WheelForward.fire(this); break;
-		case UIEvent::MOUSE_WHEEL_BACKWARD: event_WheelBackward.fire(this); break;
-		case UIEvent::KEY_DOWN: event_KeyDown.fire(this, keyName(event.key)); break;
-		default: break;
-		}
-	}
 }

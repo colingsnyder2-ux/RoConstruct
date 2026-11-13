@@ -15,6 +15,10 @@
 /// Software Foundation; either version 2 of the License, or (at your
 /// option) any later version.
 
+// >>> native-status (generated) -- do not edit >>>
+// ReliabilityLayer | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src bac84c23 | roc native-status --write
 #ifndef __RELIABILITY_LAYER_H
 #define __RELIABILITY_LAYER_H
 

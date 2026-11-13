@@ -1,0 +1,647 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?loadExtensions@GLCaps@G3D@@SAXPAVLog@2@@Z",
+    "address": "004716f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\dd8daf62b238e5f5\\candidate.obj": "2025dcfa47ff086b6c3135c0804d3715fc4eb8fe50603e1ac5523070dc0d0aff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2g_bml8k\\owners.json": "7df7934765675f93ade9aac49874be37b605795d325f9f7be978f6046caaf686",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2g_bml8k\\import-thunk-identities-as-owner.json": "69b8d22867081699c4436a3a94f280275cf2dac4bc2178272fce2b72511bcb79"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?checkAllBugs@GLCaps@G3D@@CAXXZ",
+   "address": "00471590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?driverVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00471070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glActiveStencilFaceEXT@@3P6GXI@ZA",
+   "address": "0096f8e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glAlphaFragmentOp1ATI@@3P6GXIIIIII@ZA",
+   "address": "0096f9ac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glAlphaFragmentOp2ATI@@3P6GXIIIIIIIII@ZA",
+   "address": "0096f9b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glAlphaFragmentOp3ATI@@3P6GXIIIIIIIIIIII@ZA",
+   "address": "0096f9b4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glAttachObjectARB@@3P6GXKK@ZA",
+   "address": "0096f930",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBeginQueryARB@@3P6GXII@ZA",
+   "address": "0096fa0c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBindBufferARB@@3P6GXII@ZA",
+   "address": "0096f8e4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBindFramebufferEXT@@3P6GXII@ZA",
+   "address": "0096f9e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBindRenderbufferEXT@@3P6GXII@ZA",
+   "address": "0096f9c8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBlendEquationEXT@@3P6GXI@ZA",
+   "address": "0096f80c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBufferSubDataARB@@3P6GXIHHPBX@ZA",
+   "address": "0096f8f8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCheckFramebufferStatusEXT@@3P6GII@ZA",
+   "address": "0096f9ec",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glColorFragmentOp3ATI@@3P6GXIIIIIIIIIIIII@ZA",
+   "address": "0096f9a8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerInputNV@@3P6GXIIIIII@ZA",
+   "address": "0096f8b4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerOutputNV@@3P6GXIIIIIIIEEE@ZA",
+   "address": "0096f8b8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerParameterfNV@@3P6GXIM@ZA",
+   "address": "0096f8a8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerParameterfvNV@@3P6GXIPBM@ZA",
+   "address": "0096f8a4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerParameteriNV@@3P6GXIH@ZA",
+   "address": "0096f8b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerParameterivNV@@3P6GXIPBH@ZA",
+   "address": "0096f8ac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCombinerStageParameterfvNV@@3P6GXIIPBM@ZA",
+   "address": "0096f8d8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCreateProgramObjectARB@@3P6GKXZA",
+   "address": "0096f92c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteFragmentShaderATI@@3P6GXI@ZA",
+   "address": "0096f984",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteFramebuffersEXT@@3P6GXHPBI@ZA",
+   "address": "0096f9e4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteProgramsARB@@3P6GXHPBI@ZA",
+   "address": "0096f84c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteProgramsNV@@3P6GXHPBI@ZA",
+   "address": "0096f86c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteQueriesARB@@3P6GXHPBI@ZA",
+   "address": "0096fa10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteRenderbuffersEXT@@3P6GXHPBI@ZA",
+   "address": "0096f9cc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDetachObjectARB@@3P6GXKK@ZA",
+   "address": "0096f91c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDisableVertexAttribArrayARB@@3P6GXI@ZA",
+   "address": "0096f890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDrawBuffersARB@@3P6GXHPBI@ZA",
+   "address": "0096fa08",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDrawRangeElements@@3P6GXIIIHIPBX@ZA",
+   "address": "0096f910",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glEnableVertexAttribArrayARB@@3P6GXI@ZA",
+   "address": "0096f88c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glEndQueryARB@@3P6GXI@ZA",
+   "address": "0096fa14",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFinalCombinerInputNV@@3P6GXIIII@ZA",
+   "address": "0096f8bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFlushVertexArrayRangeNV@@3P6GXXZA",
+   "address": "0096f828",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFramebufferRenderbufferEXT@@3P6GXIIII@ZA",
+   "address": "0096f9fc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFramebufferTexture1DEXT@@3P6GXIIIIH@ZA",
+   "address": "0096f9f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFramebufferTexture2DEXT@@3P6GXIIIIH@ZA",
+   "address": "0096f9f4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFramebufferTexture3DEXT@@3P6GXIIIIHH@ZA",
+   "address": "0096f9f8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenFramebuffersEXT@@3P6GXHPAI@ZA",
+   "address": "0096f9e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenProgramsARB@@3P6GXHPAI@ZA",
+   "address": "0096f844",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenProgramsNV@@3P6GXHPAI@ZA",
+   "address": "0096f868",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenQueriesARB@@3P6GXHPAI@ZA",
+   "address": "0096fa18",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenRenderbuffersEXT@@3P6GXHPAI@ZA",
+   "address": "0096f9d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenerateMipmapEXT@@3P6GXI@ZA",
+   "address": "0096fa04",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetAttribLocationARB@@3P6GHKPAD@ZA",
+   "address": "0096f974",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetBufferParameterivARB@@3P6GXIIPAH@ZA",
+   "address": "0096f908",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetBufferPointervARB@@3P6GXIIPAPAX@ZA",
+   "address": "0096f90c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetBufferSubDataARB@@3P6GXIHHPAX@ZA",
+   "address": "0096f8fc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetCombinerInputParameterfvNV@@3P6GXIIIIPAM@ZA",
+   "address": "0096f8c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetCombinerInputParameterivNV@@3P6GXIIIIPAH@ZA",
+   "address": "0096f8c4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetCombinerOutputParameterfvNV@@3P6GXIIIPAM@ZA",
+   "address": "0096f8c8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetCombinerOutputParameterivNV@@3P6GXIIIPAH@ZA",
+   "address": "0096f8cc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetCombinerStageParameterfvNV@@3P6GXIIPAM@ZA",
+   "address": "0096f8dc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetCompressedTexImageARB@@3P6GXIHPAX@ZA",
+   "address": "0096f830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetFinalCombinerInputParameterfvNV@@3P6GXIIPAM@ZA",
+   "address": "0096f8d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetFinalCombinerInputParameterivNV@@3P6GXIIPAH@ZA",
+   "address": "0096f8d4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetFramebufferAttachmentParameterivEXT@@3P6GXIIIPAH@ZA",
+   "address": "0096fa00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetProgramParameterdvNV@@3P6GXIIIPAN@ZA",
+   "address": "0096f884",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetProgramParameterfvNV@@3P6GXIIIPAM@ZA",
+   "address": "0096f880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetQueryObjectivARB@@3P6GXIIPAH@ZA",
+   "address": "0096fa20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetQueryObjectuivARB@@3P6GXIIPAI@ZA",
+   "address": "0096fa24",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetQueryivARB@@3P6GXIIPAH@ZA",
+   "address": "0096fa1c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetRenderbufferParameterivEXT@@3P6GXIIPAH@ZA",
+   "address": "0096f9d8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glIgnore@G3D@@YGXI@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glIsBufferARB@@3P6GEI@ZA",
+   "address": "0096f8f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glIsFramebufferEXT@@3P6GEI@ZA",
+   "address": "0096f9dc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glIsQueryARB@@3P6GEI@ZA",
+   "address": "0096fa28",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glIsRenderBufferEXT@@3P6GEI@ZA",
+   "address": "0096f9c4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glLinkProgramARB@@3P6GXK@ZA",
+   "address": "0096f934",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glLoadProgramNV@@3P6GXIIHPBE@ZA",
+   "address": "0096f874",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMapBufferARB@@3P6GPAXII@ZA",
+   "address": "0096f900",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiDrawArraysEXT@@3P6GXIPAH0H@ZA",
+   "address": "0096f89c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiDrawElementsEXT@@3P6GXIPBHIPAPBXH@ZA",
+   "address": "0096f8a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord1dARB@@3P6GXIN@ZA",
+   "address": "0096f7e4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord1fARB@@3P6GXIM@ZA",
+   "address": "0096f7e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord2dvARB@@3P6GXIPBN@ZA",
+   "address": "0096f7f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord2fARB@@3P6GXIMM@ZA",
+   "address": "0096f7e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord2fvARB@@3P6GXIPBM@ZA",
+   "address": "0096f7ec",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord3dvARB@@3P6GXIPBN@ZA",
+   "address": "0096f7f8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord3fvARB@@3P6GXIPBM@ZA",
+   "address": "0096f7f4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glMultiTexCoord4dvARB@@3P6GXIPBN@ZA",
+   "address": "0096f800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glPassTexCoordATI@@3P6GXIII@ZA",
+   "address": "0096f994",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glPointParameterfARB@@3P6GXIM@ZA",
+   "address": "0096f894",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glPointParameterfvARB@@3P6GXIPAM@ZA",
+   "address": "0096f898",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glProgramEnvParameter4dvARB@@3P6GXIIPBN@ZA",
+   "address": "0096f860",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glProgramEnvParameter4fARB@@3P6GXIIMMMM@ZA",
+   "address": "0096f854",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glProgramLocalParameter4dvARB@@3P6GXIIPBN@ZA",
+   "address": "0096f864",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glProgramLocalParameter4fARB@@3P6GXIIMMMM@ZA",
+   "address": "0096f858",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glProgramStringARB@@3P6GXIIHPBX@ZA",
+   "address": "0096f850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glRenderbufferStorageEXT@@3P6GXIIHH@ZA",
+   "address": "0096f9d4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glSetFragmentShaderConstantATI@@3P6GXIPBM@ZA",
+   "address": "0096f99c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glStencilFuncSeparateATI@@3P6GXIIHI@ZA",
+   "address": "0096fa2c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glStencilOpSeparateATI@@3P6GXIIII@ZA",
+   "address": "0096fa30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glTexImage3DEXT@@3P6GXIHIHHHHIIPBX@ZA",
+   "address": "0096f810",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glTrackMatrixNV@@3P6GXIIII@ZA",
+   "address": "0096f878",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform1fvARB@@3P6GXHHPBM@ZA",
+   "address": "0096f940",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform1iARB@@3P6GXHH@ZA",
+   "address": "0096f950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform2fvARB@@3P6GXHHPBM@ZA",
+   "address": "0096f944",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform2iARB@@3P6GXHHH@ZA",
+   "address": "0096f954",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform3fvARB@@3P6GXHHPBM@ZA",
+   "address": "0096f948",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform3iARB@@3P6GXHHHH@ZA",
+   "address": "0096f958",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform4fvARB@@3P6GXHHPBM@ZA",
+   "address": "0096f94c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniform4iARB@@3P6GXHHHHH@ZA",
+   "address": "0096f95c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniformMatrix2fvARB@@3P6GXHHEPBM@ZA",
+   "address": "0096f960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniformMatrix3fvARB@@3P6GXHHEPBM@ZA",
+   "address": "0096f964",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUniformMatrix4fvARB@@3P6GXHHEPBM@ZA",
+   "address": "0096f968",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUnmapBufferARB@@3P6GEI@ZA",
+   "address": "0096f904",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glValidateProgramARB@@3P6GXK@ZA",
+   "address": "0096f93c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00470770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glVertexArrayRangeNV@@3P6GXHPBX@ZA",
+   "address": "0096f824",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glVertexAttribPointerARB@@3P6GXIHIEHPBX@ZA",
+   "address": "0096f888",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?set@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AB_N@Z",
+   "address": "004713f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglAllocateMemoryNV@@3P6GPAXHMMM@ZA",
+   "address": "0096f81c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglChoosePixelFormatARB@@3P6GHPAUHDC__@@PBHPBMIPAHPAI@ZA",
+   "address": "0096f818",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglCreatePbufferEXT@@3P6GPAUHPBUFFEREXT__@@PAUHDC__@@HHHPBH@ZA",
+   "address": "0096f9bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglDestroyPbufferEXT@@3P6GHPAUHPBUFFEREXT__@@@ZA",
+   "address": "0096f9c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglEnableGenlockI3D@@3P6AHPAUHDC__@@@ZA",
+   "address": "0096f9b8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglFreeMemoryNV@@3P6GXPAX@ZA",
+   "address": "0096f820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?wglSwapIntervalEXT@@3P6GHH@ZA",
+   "address": "0096f814",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?loadExtensions@GLCaps@G3D@@SAXPAVLog@2@@Z",
+   "address": "007c44d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGetIntegerv@8",
+   "address": "00802ab4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__wglGetProcAddress@4",
+   "address": "008029ac",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

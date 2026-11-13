@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SlingshotToolCore | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 6eb1ff2d | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/ShootTools.h"

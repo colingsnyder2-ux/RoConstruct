@@ -1,0 +1,62 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z",
+    "address": "004fdaf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewRbxGfxSkybox2008\\objects\\c634fdf74892ae9c\\candidate.obj": "b93cd331cd72ad3be39c4959c030fd968cbf4e8aaf0a1c2cfe4decb2205fc0c5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4mi13_yq\\owners.json": "182989b353d78475e269df8c8516d6c11e612bc7db6434dc6ecbe36f7c460fbf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4mi13_yq\\import-thunk-identities-as-owner.json": "dc128a6375ddc97e6e7f25795106768236fab33d2e27dd9eca638cab679a2405"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0LevelBuilder@ViewNew@RBX@@IAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z",
+   "address": "00500d80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildBack@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+   "address": "00500140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildBottom@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+   "address": "00500050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildFront@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+   "address": "00500100",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildLeft@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+   "address": "00500080",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildRight@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+   "address": "005000c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildTop@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+   "address": "00500020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z",
+   "address": "007cb518",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

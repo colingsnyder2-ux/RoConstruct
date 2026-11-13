@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceReadChildren | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src e87c5aef | roc native-status --write
 #include "v8tree/Instance.h"
 #include "v8xml/XmlElement.h"
 namespace RBX {
