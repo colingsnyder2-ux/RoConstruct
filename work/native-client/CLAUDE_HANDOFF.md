@@ -1,3 +1,18 @@
+# Claude note 2026-11-12 23:20 — stub-backed client runs (owner authorized shortcuts)
+
+`work/native-client/shortcut/` builds `link/Roblox2008.exe` with real native objects plus a zero-return stub object for what has no
+body yet (`python work/native-client/shortcut/relink_big.py`; resources from the original exe via `pe_to_res.py`; needs
+`fmodex.dll`, `rgmain.dll`, `SciLexer.dll` beside the exe). It links (0 unresolved, 0 duplicates), starts, creates the real CMainFrame
+(menus/toolbars, title "Roblox - [Untitled]") and sits in CRobloxApp::Run. NOT the no-fake-code build: 180 zero stubs.
+Tools: `crashsite.py` (ctypes debugger; env BPFUNC=<sym> traces calls in a function, BPENTRY=<sym> stack at entry, BPSTUBS=1 logs
+each stub's first call + caller), `stacks.py` (thread stacks without a debugger), `disasm_at.py`, `iat.py`.
+Linkprobe switches (opt-in env): ROC_STRONG_OWN, ROC_DEDUPE, ROC_SHELL_WINS, ROC_LINK_RES. Canonical probe numbers unchanged.
+Fixes found: the rbxgs 2007 donor's `DataModel::Lock::doLock` leaves `lock` uninitialized for a null model (LockFix.cpp overrides it).
+Stubs the running client calls (BPSTUBS): nativeInitializeTypes, NativeClassRegistration ctor, nativeRegisterNames1/2/3, nativeSetVersion,
+initializeSettings, nativeInitializeCallbacks, nativeSetOutputMode, nativeProfilerEnable (exe-only registration code, no source yet);
+CRobloxView::GetThisClass (no 3D view without it), InitializeAllIcons, loadBrowserIcons, isApplicationUrl, renewLogin, CWrapperView::OnDraw.
+Next: real bodies for those, then File>New (CRobloxDoc + CRobloxView + CRobloxWnd, whose ctor is still a stub).
+
 # Handoff to Codex (Claude keeps this file current; newest update first)
 
 ## Update log

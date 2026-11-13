@@ -17,7 +17,7 @@ class CTX(ctypes.Structure):  # WOW64_CONTEXT
     _fields_ = [('Flags', w.DWORD)] + [(n, w.DWORD) for n in ('Dr0','Dr1','Dr2','Dr3','Dr6','Dr7')] + \
         [('fc', ctypes.c_byte * 112)] + [(n, w.DWORD) for n in ('SegGs','SegFs','SegEs','SegDs','Edi','Esi','Ebx','Edx','Ecx','Eax','Ebp','Eip','SegCs','EFlags','Esp','SegSs')] + [('ext', ctypes.c_byte * 512)]
 import capstone
-BPSYM = os.environ.get('BPFUNC') or os.environ.get('BPENTRY')
+BPSYM = os.environ.get('BPFUNC') or os.environ.get('BPENTRY') or os.environ.get('BPSTUBS')
 syms = []
 txt = open(mapf, errors='replace').read()
 base = int(re.search(r'Preferred load address is ([0-9a-f]+)', txt).group(1), 16)
@@ -33,6 +33,14 @@ class EV(ctypes.Structure):
     _fields_ = [('code', w.DWORD), ('pid', w.DWORD), ('tid', w.DWORD), ('pad', w.DWORD), ('u', ctypes.c_ubyte * 160)]
 bps = {}
 def arm_bps():
+    if os.environ.get('BPSTUBS'):
+        n = ctypes.c_size_t(); cnt = 0
+        for m in re.finditer(r'^\s*[0-9a-f]{4}:[0-9a-f]{8}\s+(\S+)\s+([0-9a-f]{8}) f\s+stubs\.obj', txt, re.M):
+            va = int(m.group(2), 16); old = (ctypes.c_ubyte * 1)()
+            k.ReadProcessMemory(pi.hp, ctypes.c_void_p(va), old, 1, ctypes.byref(n))
+            bps[va] = (old[0], 'STUB ' + m.group(1)); cnt += 1
+            k.WriteProcessMemory(pi.hp, ctypes.c_void_p(va), (ctypes.c_ubyte * 1)(0xCC), 1, ctypes.byref(n))
+        print('armed', cnt, 'stub breakpoints'); return
     if not BPSYM: return
     if os.environ.get('BPENTRY'):
         ent = [v for v, n in syms if n == os.environ['BPENTRY']]
@@ -73,6 +81,10 @@ while time.time() < deadline:
                 k.WriteProcessMemory(pi.hp, ctypes.c_void_p(addr), (ctypes.c_ubyte * 1)(old), 1, ctypes.byref(ctypes.c_size_t()))
                 h = k.OpenThread(0x1fffff, False, ev.tid); c2 = CTX(); c2.Flags = 0x10007
                 k.Wow64GetThreadContext(h, ctypes.byref(c2)); c2.Eip = addr; k.Wow64SetThreadContext(h, ctypes.byref(c2))
+                if tgt.startswith('STUB '):
+                    rb = (ctypes.c_uint32 * 1)(); k.ReadProcessMemory(pi.hp, ctypes.c_void_p(c2.Esp), rb, 4, ctypes.byref(ctypes.c_size_t()))
+                    print('STUB', tgt[5:90], '<-', near(rb[0])[:90], flush=True)
+                    k.ContinueDebugEvent(ev.pid, ev.tid, 0x10002); continue
                 if tgt == 'ENTRY':
                     buf = (ctypes.c_uint32 * 256)(); n2 = ctypes.c_size_t()
                     k.ReadProcessMemory(pi.hp, ctypes.c_void_p(c2.Esp), buf, 1024, ctypes.byref(n2))
