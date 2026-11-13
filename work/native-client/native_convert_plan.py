@@ -1,5 +1,6 @@
 """Plan deterministic source-backed native transplant batches from closure gate rows."""
 import argparse
+import os
 import hashlib
 import json
 import re
@@ -256,7 +257,7 @@ def main():
                             'header': row['headers'][0]})
             continue
         namespace = owner_namespace(header_text, row['owner'])
-        roc_cl = int(ROC_CL.search(packet_text).group(1)) if ROC_CL.search(packet_text) else 21022
+        roc_cl = int(os.environ['ROC_FORCE_CL']) if os.environ.get('ROC_FORCE_CL') else (int(ROC_CL.search(packet_text).group(1)) if ROC_CL.search(packet_text) else 21022)
         roc_flags = ROC_FLAGS.search(packet_text).group(1) if ROC_FLAGS.search(packet_text) else ''
         if recipe in {'openrbx-raknet', 'rbxgs-raknet'} and '/FImalloc.h' not in roc_flags:
             roc_flags = (roc_flags + ' /FImalloc.h').strip()
