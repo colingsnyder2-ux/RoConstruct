@@ -5,6 +5,9 @@ functions out of later builds forever; Ogre lost 300+ to them.
   python work/native-client/sweep_stale_drops.py                 -> every live module with a verified layer
   python work/native-client/sweep_stale_drops.py G3D XTP          -> only these module names
 A module that loses owned functions gets its lists back and is rebuilt once more to restore its outputs.
+A kept result must also leave every module that depends on it (transitively) linked with its test passing and no
+fewer owned functions: a cleared list can make a library redefine symbols another library supplies (G3D's png copies
+against libpng), which only the dependent's link shows. Otherwise the lists are restored and the dependents rebuilt.
 """
 import json
 import shutil
@@ -34,6 +37,18 @@ def owned(name):
     return set(data.get('owned_addrs', [])) if data.get('linked') and data.get('test_exit') == 0 else set()
 
 
+def dependents(name):
+    """[(spec stem, module name)] of every live module that depends on `name`, directly or through another module."""
+    specs = {path.stem: spec for path, spec in rebuild.live_module_specs('2008-06')}
+    by_name = {spec['name']: stem for stem, spec in specs.items()}
+    reach, frontier = [], {by_name[name]}
+    while frontier:
+        found = {stem for stem, spec in specs.items() if stem not in reach and frontier & set(spec.get('depends', []))}
+        reach += sorted(found)
+        frontier = found
+    return [(stem, specs[stem]['name']) for stem in reach]
+
+
 def main():
     wanted = set(sys.argv[1:])
     for path, spec in rebuild.live_module_specs('2008-06'):
@@ -55,10 +70,22 @@ def main():
         build(path.stem)
         after = owned(name)
         verdict = 'kept' if after and len(after) >= len(before) and not (before - after) else 'restored'
-        if verdict == 'restored':
+        broken = []
+        if verdict == 'kept':
+            for stem, dep in dependents(name):
+                dep_before = owned(dep)
+                build(stem)
+                dep_after = owned(dep)
+                if not dep_after or dep_before - dep_after:
+                    broken.append(dep)
+            if broken:
+                verdict = 'restored (breaks ' + ', '.join(broken) + ')'
+        if verdict.startswith('restored'):
             for f in lists:
                 shutil.copy2(keep / f.name, f)
             build(path.stem)
+            for stem, dep in dependents(name):
+                build(stem)
         print(json.dumps({'module': name, 'lists': sizes, 'before': len(before), 'after': len(after),
                           'gain': len(after - before), 'loss': len(before - after), 'verdict': verdict,
                           'seconds': round(time.time() - started)}), flush=True)
