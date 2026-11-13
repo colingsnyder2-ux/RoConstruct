@@ -60,7 +60,8 @@ class DonorConverterTests(unittest.TestCase):
 
         self.assertEqual(report["summary"], {
             "functions": 2, "exact": 1, "draft": 1, "ambiguous": 0,
-            "repair_candidates": 0, "proof_candidates": 0})
+            "repair_candidates": 0, "proof_candidates": 0,
+            "reference_identities": 0, "identity_conflicts": 0})
         self.assertEqual(report["exact_candidates"], [rows[0]])
 
     def test_label_candidates_separates_integrated_waiting_and_missing(self):
@@ -86,11 +87,17 @@ class DonorConverterTests(unittest.TestCase):
         rows = donor_converter.rank_partials(
             b"obj", Targets(), {"?near@@YAXXZ": {"00401000"}}, set(), threshold=.8,
             functions=lambda raw: [("?near@@YAXXZ", b"candidate", [])],
-            similarity=lambda *args: .91)
+            similarity=lambda *args: .91,
+            diagnose=lambda *args: {"mismatch_class": "immediate/constant mismatch",
+                                    "classifications": [{"category": "immediate/constant mismatch"}],
+                                    "byte_diffs": [{"offset": 2}]})
 
         self.assertEqual(rows, [{
             "symbol": "?near@@YAXXZ", "addr": "00401000", "similarity": .91,
             "status": "repair_candidate", "proof": "advisory-not-exact",
+            "diagnosis": {"mismatch_class": "immediate/constant mismatch",
+                          "classifications": [{"category": "immediate/constant mismatch"}],
+                          "byte_diffs": [{"offset": 2}], "target_size": 6, "candidate_size": 9},
         }])
 
     def test_rank_partials_calls_full_similarity_proof_blocked(self):
@@ -116,6 +123,56 @@ class DonorConverterTests(unittest.TestCase):
         donor_converter.attach_blockers(advisory, harvested)
 
         self.assertEqual(advisory[0]["blockers"], ["unproven reference identity: ?data@@3HA"])
+
+    def test_learn_reference_identities_requires_external_consensus(self):
+        rows = [{"symbol": "?parent@@YAXXZ", "rejections": [{
+            "addr": "00401000",
+            "errors": ["unproven reference identity: ?callee@@YAXXZ"],
+            "references": [
+                {"symbol": "?callee@@YAXXZ", "address": "00402000", "external": True},
+                {"symbol": "?local@@3HA", "address": "00403000", "external": False},
+            ],
+        }]}]
+
+        learned, conflicts = donor_converter.learn_reference_identities(rows, {})
+
+        self.assertEqual(learned, {"?callee@@YAXXZ": ("00402000", 1)})
+        self.assertEqual(conflicts, {})
+        self.assertNotIn("?local@@3HA", learned)
+
+    def test_learn_reference_identities_rejects_disagreement(self):
+        rows = [{"symbol": "?parent@@YAXXZ", "rejections": [{
+            "addr": "00401000",
+            "errors": ["unproven reference identity: ?callee@@YAXXZ"],
+            "references": [{"symbol": "?callee@@YAXXZ", "address": address, "external": True}],
+        }]} for address in ("00402000", "00403000")]
+
+        learned, conflicts = donor_converter.learn_reference_identities(rows, {})
+
+        self.assertEqual(learned, {})
+        self.assertEqual(conflicts, {"?callee@@YAXXZ": ["00402000", "00403000"]})
+
+    def test_close_reference_identities_rechecks_after_learning(self):
+        calls = []
+
+        def harvest(raw, targets, names, bindings):
+            calls.append(dict(bindings))
+            if "?callee@@YAXXZ" in bindings:
+                return [{"symbol": "?parent@@YAXXZ", "status": "inactive_exact", "addr": "00401000"}]
+            return [{"symbol": "?parent@@YAXXZ", "status": "draft", "rejections": [{
+                "addr": "00401000",
+                "errors": ["unproven reference identity: ?callee@@YAXXZ"],
+                "references": [{"symbol": "?callee@@YAXXZ", "address": "00402000", "external": True}],
+            }]}]
+
+        rows, learned, conflicts = donor_converter.close_reference_identities(
+            b"obj", object(), {"?parent@@YAXXZ": {"00401000"}}, {}, harvest=harvest)
+
+        self.assertEqual(rows[0]["status"], "inactive_exact")
+        self.assertEqual(learned, [{"symbol": "?callee@@YAXXZ", "address": "00402000",
+                                    "observations": 1, "round": 1}])
+        self.assertEqual(conflicts, {})
+        self.assertEqual(len(calls), 2)
 
 
 if __name__ == "__main__":

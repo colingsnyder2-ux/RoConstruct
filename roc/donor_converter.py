@@ -1,5 +1,6 @@
 """Compile trusted donor sources and emit byte-proven native candidates."""
 import argparse
+from collections import defaultdict
 import json
 from pathlib import Path
 
@@ -51,8 +52,50 @@ def identity_hypotheses(closure):
     return names, bindings
 
 
+def learn_reference_identities(rows, bindings):
+    observed = defaultdict(list)
+    prefix = "unproven reference identity: "
+    for row in rows:
+        for rejection in row.get("rejections", ()):
+            errors = rejection.get("errors", ())
+            if not errors or any(not error.startswith(prefix) for error in errors):
+                continue
+            unresolved = {error[len(prefix):] for error in errors}
+            for reference in rejection.get("references", ()):
+                if reference.get("external") and reference.get("symbol") in unresolved:
+                    observed[reference["symbol"]].append(native_bulk.address(reference["address"]))
+    learned, conflicts = {}, {}
+    for symbol, addresses in observed.items():
+        choices = sorted(set(addresses))
+        bound = bindings.get(symbol)
+        if len(choices) != 1 or symbol in bindings and bound != choices[0]:
+            conflicts[symbol] = sorted(set(choices + ([bound] if bound else [])))
+        elif symbol not in bindings:
+            learned[symbol] = (choices[0], len(addresses))
+    return learned, conflicts
+
+
+def close_reference_identities(raw, targets, names, bindings, harvest=native_bulk.harvest, max_rounds=8):
+    names = {symbol: set(addresses) for symbol, addresses in names.items()}
+    bindings = dict(bindings)
+    rows = harvest(raw, targets, names, bindings)
+    evidence, conflicts = [], {}
+    for round_ in range(1, max_rounds + 1):
+        learned, blocked = learn_reference_identities(rows, bindings)
+        conflicts.update(blocked)
+        if not learned:
+            break
+        for symbol, (address, observations) in learned.items():
+            bindings[symbol] = address
+            names.setdefault(symbol, set()).add(address)
+            evidence.append({"symbol": symbol, "address": address, "observations": observations, "round": round_})
+        rows = harvest(raw, targets, names, bindings)
+    return rows, evidence, conflicts
+
+
 def rank_partials(raw, targets, names, exact_symbols, threshold=.8,
-                  functions=match.coff_functions, similarity=match.similarity_ratio):
+                  functions=match.coff_functions, similarity=match.similarity_ratio,
+                  diagnose=match.diagnose):
     rows = []
     for symbol, body, relocs in functions(raw):
         if symbol in exact_symbols:
@@ -69,6 +112,11 @@ def rank_partials(raw, targets, names, exact_symbols, threshold=.8,
                 best = {"symbol": symbol, "addr": address, "similarity": round(ratio, 4),
                         "status": "proof_candidate" if proof_blocked else "repair_candidate",
                         "proof": "advisory-reference-unproved" if proof_blocked else "advisory-not-exact"}
+                if not proof_blocked:
+                    details = diagnose(target, target_relocs, body, relocs)
+                    best["diagnosis"] = {key: details[key] for key in (
+                        "mismatch_class", "classifications", "byte_diffs")}
+                    best["diagnosis"].update(target_size=len(target), candidate_size=len(body))
         if best:
             rows.append(best)
     return sorted(rows, key=lambda row: (-row["similarity"], row["symbol"]))
@@ -84,7 +132,7 @@ def attach_blockers(advisory, harvested):
 
 
 def classify_object(raw, targets, names, bindings, harvest=native_bulk.harvest, rank=rank_partials):
-    rows = harvest(raw, targets, names, bindings)
+    rows, learned, conflicts = close_reference_identities(raw, targets, names, bindings, harvest=harvest)
     exact = [row for row in rows if row["status"] == "inactive_exact"]
     advisory = rank(raw, targets, names, {row["symbol"] for row in exact})
     attach_blockers(advisory, rows)
@@ -98,10 +146,14 @@ def classify_object(raw, targets, names, bindings, harvest=native_bulk.harvest, 
             "ambiguous": sum(row["status"] == "ambiguous" for row in rows),
             "repair_candidates": len(partials),
             "proof_candidates": len(proof_blocked),
+            "reference_identities": len(learned),
+            "identity_conflicts": len(conflicts),
         },
         "exact_candidates": exact,
         "repair_candidates": partials,
         "proof_candidates": proof_blocked,
+        "learned_identities": learned,
+        "identity_conflicts": conflicts,
         "functions": rows,
     }
 
