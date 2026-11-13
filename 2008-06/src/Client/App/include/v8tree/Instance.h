@@ -141,8 +141,11 @@ namespace RBX
 class __declspec(novtable) GuidItem
 {
 public:
-	virtual ~GuidItem();
+	~GuidItem();  // 2008: not virtual; exe Instance vtable 0082d884 slot 0 is onGuidChanged (0047d410 `ret`)
 	GuidItem() : registeredGuid(false) {}
+protected:
+	virtual void onGuidChanged() {}
+public:
 
 protected:
 	bool registeredGuid; // 0x04

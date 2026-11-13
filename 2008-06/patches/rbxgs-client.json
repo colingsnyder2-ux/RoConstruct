@@ -120,7 +120,7 @@
   ],
   [
    "template <class T>\nclass GuidItem\n{\npublic:\n\tvirtual ~GuidItem() {}",
-   "template <class T>\nclass __declspec(novtable) GuidItem\n{\npublic:\n\tvirtual ~GuidItem();\n\tGuidItem() : registeredGuid(false) {}"
+   "template <class T>\nclass __declspec(novtable) GuidItem\n{\npublic:\n\t~GuidItem();  // 2008: not virtual; exe Instance vtable 0082d884 slot 0 is onGuidChanged (0047d410 `ret`)\n\tGuidItem() : registeredGuid(false) {}\nprotected:\n\tvirtual void onGuidChanged() {}\npublic:"
   ],
   [
    "    class Instance : public GuidItem<Instance>,\n",
