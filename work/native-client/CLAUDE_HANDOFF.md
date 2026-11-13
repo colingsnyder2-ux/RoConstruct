@@ -1,3 +1,13 @@
+# Claude note 2026-11-13 (later) - closure-linked client: real IDE frame, File>New still silent
+- `python work/native-client/shortcut/auto_closure.py 12` (server analogs, placeholders func_/dat_, kept comdat helpers, __imp_ fix) then
+  `python work/native-client/shortcut/relink_big.py chosen_closure.json`: links, runs, no crash. Window title is 'Roblox', Explorer + Properties panes docked,
+  status 'TEX 0B / VAR 0B' (screens: shortcut/mine_filenew.png). Stubs still hit: nativeRegisterNames1..3, initializeSettings, nativeInitializeCallbacks,
+  InitializeAllIcons, CWrapperView::OnDraw. Http::get/httpRequest throws (no network/base URL) are caught.
+- Real so far: StartupGlue.cpp (Profiling::init, nativeInitializeTypes = Metadata classDescriptor statics, FactoryRegistrator), NameGlobals_*.cpp.
+- File>New: WM_COMMAND 0xE100 posted to the frame (crashsite POSTCMD=57600) never reaches CIDEDocManager::OnFileNew (BPENTRY not hit), so no CRobloxDoc/CRobloxView/
+  3D view. Check CRobloxApp message map / m_pDocManager type / CWinApp::OnFileNew path next. Screenshot your own window with PrintWindow: the desktop holds the
+  user's 'June 22' Roblox.exe processes and their fmodex dialog; those are not this build.
+
 # Claude note 2026-11-13 - openrbx is a near-exact donor for the 2008 Ogre fork and the Scintilla MFC wrapper
 - `tools/openrbx/Client/Rendering/AppDraw/*.cpp` (RbxEntity, RbxSceneManager, RbxSubEntity, TwoDManager, VisualEngine, RbxSky, RbxFont,
   RbxSceneNode, Unknown0067eb00) compiles as whole TUs on the 2008 compiler with Ogre 1.4.5 includes + `/I tools/openrbx/util` (decomp.h) and
