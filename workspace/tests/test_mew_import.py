@@ -11,6 +11,22 @@ from roc import mew_import
 
 
 class MewImportTests(unittest.TestCase):
+    def test_fetch_donor_defaults_to_active_native_branch_and_pins_selected_ref(self):
+        self.assertEqual(mew_import.DEFAULT_BRANCH, 'claude/optimistic-shannon-0xccuy')
+        with patch('roc.mew_import.subprocess.run', return_value=SimpleNamespace(returncode=0)), \
+                patch('roc.mew_import.git') as git:
+            mew_import.fetch_donor(Path('repo'), 'main')
+        git.assert_called_once_with(
+            Path('repo'), 'fetch', 'https://github.com/mewpokemons/RoConstruct.git',
+            '+refs/heads/main:refs/remotes/mew-review/selected')
+
+    def test_fetch_donor_rejects_invalid_branch_before_fetch(self):
+        with patch('roc.mew_import.subprocess.run', return_value=SimpleNamespace(returncode=1)), \
+                patch('roc.mew_import.git') as git:
+            with self.assertRaisesRegex(ValueError, 'Invalid Mew branch'):
+                mew_import.fetch_donor(Path('repo'), '../main:evil')
+        git.assert_not_called()
+
     def test_failed_batch_does_not_stop_next_batch(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -29,13 +45,44 @@ class MewImportTests(unittest.TestCase):
                                      {'exact': False, 'address': '005a01e1', 'symbol': '?b'}],
                             'bad': [{'exact': True, 'address': '005a01e2', 'symbol': '?c'}]}}
         self.assertEqual(mew_import.receipt_groups(receipt),
-                         [('foo.cpp', 'good', [{'addr': '005a01e0', 'symbol': '?a'}], True, False, False)])
+                         [('foo.cpp', 'good', [{'addr': '005a01e0', 'symbol': '?a'}], True, False, False, [])])
+
+    def test_receipt_groups_support_flat_rows_with_unit(self):
+        receipt = {
+            'flags': {'templates': ['/tmp/AppUnit404Templates.cpp']},
+            'rows': [
+                {'unit': 'templates', 'exact': True, 'address': '00405da0', 'symbol': '?getCreators'},
+                {'unit': 'templates', 'exact': True, 'address': '00405dbe',
+                 'symbol': '__catch$?getCreators$0'},
+                {'unit': 'templates', 'exact': True, 'address': '00405dc0',
+                 'symbol': '?getCreators [0x20:0x30]'},
+                {'unit': 'templates', 'exact': False, 'address': '00405e30', 'symbol': '?partial'},
+            ],
+        }
+        self.assertEqual(mew_import.receipt_groups(receipt), [
+            ('appunit404templates.cpp', 'templates',
+             [{'addr': '00405da0', 'symbol': '?getCreators'}], False, False, False, [])
+        ])
+
+    def test_receipt_groups_support_single_flat_profile_and_safe_native_include(self):
+        receipt = {
+            'sources': {'rebuild/2008-06/native-classes/AppUnit598PartInstance.cpp': 'sha'},
+            'flags': ['/fp:fast', '/U_RELEASEASSERT',
+                      '/I/home/user/rebuild/2008-06/native-headers/part-embedded',
+                      '/home/user/rebuild/2008-06/native-classes/AppUnit598PartInstance.cpp'],
+            'rows': [{'exact': True, 'address': '00598c60', 'symbol': '?onChildAdded'}],
+        }
+        self.assertEqual(mew_import.receipt_groups(receipt), [
+            ('appunit598partinstance.cpp', 'unit',
+             [{'addr': '00598c60', 'symbol': '?onChildAdded'}], True, True, False,
+             ['part-embedded'])
+        ])
 
     def test_pinned_ogre_profile_detected_without_trusting_external_path(self):
         receipt = {'flags': {'g': ['/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include',
                                    '/tmp/Foo.cpp']},
                    'rows': {'g': [{'exact': True, 'address': '005a01e0', 'symbol': '?a'}]}}
-        self.assertTrue(mew_import.receipt_groups(receipt)[0][-1])
+        self.assertTrue(mew_import.receipt_groups(receipt)[0][-2])
 
     def test_inventory_deduplicates_and_does_not_overwrite(self):
         with tempfile.TemporaryDirectory() as temp:

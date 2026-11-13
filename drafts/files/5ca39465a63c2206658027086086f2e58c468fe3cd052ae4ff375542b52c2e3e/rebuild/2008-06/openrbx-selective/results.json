@@ -1,0 +1,50 @@
+{
+ "baseline_owned": 4436,
+ "trial_owned": 4442,
+ "gains": {
+  "00652510": "ScoreHud::ScoreHud",
+  "00656430": "ScoreHud::render2d",
+  "00592180": "ArchiveBinder::resolveIDREF",
+  "005930c0": "ArchiveBinder::processID",
+  "00609690": "PVInstance::computeTopPVController",
+  "005b06c0": "ScriptContext::addScript"
+ },
+ "losses": [],
+ "source_sha256": {
+  "gui\\ScoreHud.cpp": "ac82f6590527b09bedc88c22df170616f3e0188984ac024a4407cda86a8ed1ed",
+  "v8xml\\SerializerSelected.cpp": "5b6ae83710472650a544383fe279b04a9d3f4a3969be696643cf20ff7eb36804",
+  "v8datamodel\\PVInstanceSelected.cpp": "2c731ad3081a5f38befe7df4562ef59869c0bcea7a075d919502860eafeb1a05",
+  "script\\ScriptContextSelected.cpp": "ce11d5a6e809bd158334c02753727aed99d15b2c8a7b689873887e5693bd2cce"
+ },
+ "linked": true,
+ "smoke_exit": 0,
+ "milestones": {
+  "M2": true,
+  "M4a": true,
+  "M5": true
+ },
+ "layout_evidence": "ScoreHud constructor and PVInstance candidate code and resolved data agree with target. Full class layouts, all call bindings and jump-table relocations are not independently proven.",
+ "other_attempts": {
+  "HealthHud": "2008 relativeHealth adaptation compiled; no new unique address.",
+  "Mouse": "Explicit 2007 null filter default compiled; no new unique address.",
+  "LuaInstanceBridge": "2007 helper declaration and 2008 inline/template adaptations compiled; no new unique address.",
+  "ScriptContext": "2008 nil handling adaptation compiled; selected addScript is unchanged 2007 body.",
+  "SerializerV2": "Full donor object pulled incompatible extra provider; two isolated method bodies link and pass runtime gates."
+ },
+ "status": "trial only; not canonical integration",
+ "batch_baseline_owned": 4438,
+ "batch_gains_by_file": {
+  "v8xml/SerializerSelected.cpp": {
+   "gain": 2,
+   "loss": 0
+  },
+  "v8datamodel/PVInstanceSelected.cpp": {
+   "gain": 1,
+   "loss": 0
+  },
+  "script/ScriptContextSelected.cpp": {
+   "gain": 1,
+   "loss": 0
+  }
+ }
+}

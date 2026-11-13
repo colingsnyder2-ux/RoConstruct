@@ -50,6 +50,7 @@ namespace Ogre
 	class RbxSceneNode : public SceneNode
 	{
 		friend struct ::NativeOgreRbxNodeLayout;
+		friend bool eraseSphere(const void* key); // INFERRED: original 00682150 accesses spheres.
 		friend class VisualEngine;   // its destructor 0067a130 reads the node's spheres
 
 	public:

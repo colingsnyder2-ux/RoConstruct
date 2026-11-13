@@ -5,7 +5,7 @@
 // <<< native-status | src 30a4f97a | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
-// 2008-06 native Ogre::VRbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.
+// 2008-06 native Ogre::RbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.
 // Body order follows the original 00684b10 / 00684eb0 and upstream GLG3D/GFont.cpp.
 #include "OgreRbx/VRbxFont2008.h"
 #include "OgreRbx/VisualEngine2008.h"
@@ -24,7 +24,7 @@ namespace Ogre
 	// INFERRED: counter spelling; original read/write address0097dbc8.
 	int fontTextureCount = 0;
 
-	VRbxFont::VRbxFont(const std::string& filename, G3D::BinaryInput& b)
+	RbxFont::RbxFont(const std::string& filename, G3D::BinaryInput& b)
 	{
 		int ver = b.readInt32();
 		(void)ver;
@@ -52,7 +52,7 @@ namespace Ogre
 		texture->loadRawData(stream, width, height, PF_A8);
 	}
 
-	G3D::Vector2 VRbxFont::computePackedArray(
+	G3D::Vector2 RbxFont::computePackedArray(
 		const std::string&  s,
 		double              x,
 		double              y,
@@ -128,7 +128,7 @@ namespace Ogre
 	}
 
 	// INFERRED: method spelling from GFont port; unique target00684640.
-	G3D::Vector2 VRbxFont::get2DStringBounds(
+	G3D::Vector2 RbxFont::get2DStringBounds(
 		const std::string&  s,
 		double              size,
 		Spacing             spacing) const {
@@ -155,7 +155,7 @@ namespace Ogre
 
 	// G3D GFont::draw2D with the OpenGL vertex arrays replaced by one TwoDManager::addQuad per character
 	// (outline passes at dx,dy = +-1 when outline.a > 0.05, then the color pass).
-	G3D::Vector2 VRbxFont::draw2D(
+	G3D::Vector2 RbxFont::draw2D(
 		VisualEngine*               visualEngine,
 		const std::string&          s,
 		const G3D::Vector2&         pos2D,
@@ -250,13 +250,13 @@ namespace Ogre
 	}
 
 
-	SharedPtr<VRbxFont> VRbxFont::fromFile(const std::string& filename)
+	SharedPtr<RbxFont> RbxFont::fromFile(const std::string& filename)
 	{
 		if (! G3D::fileExists(filename)) {
-			return SharedPtr<VRbxFont>();
+			return SharedPtr<RbxFont>();
 		}
 
 		G3D::BinaryInput b(filename, G3D::G3D_LITTLE_ENDIAN, true);
-		return SharedPtr<VRbxFont>(new VRbxFont(filename, b));
+		return SharedPtr<RbxFont>(new RbxFont(filename, b));
 	}
 }

@@ -1,0 +1,11 @@
+{
+ "files": [
+  "v8datamodel/TimerService.cpp",
+  "v8datamodel/Stats.cpp",
+  "v8datamodel/Decal.cpp",
+  "v8datamodel/Visit.cpp",
+  "v8datamodel/Selection.cpp",
+  "v8datamodel/DebrisService.cpp",
+  "tool/Dragger.cpp"
+ ]
+}

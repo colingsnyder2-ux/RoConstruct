@@ -1,0 +1,90 @@
+{
+ "baseline_archive_count": 4457,
+ "candidates": [
+  {
+   "file": "v8kernel/BodyExtra.cpp",
+   "address": "006142d0",
+   "symbol": "?setMeInParent@Body@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+   "size": 164,
+   "source_sha256": "4e01ac317debf218c18fa56672a5934dc59d045aef40d84b81f51b2bdf26a09f",
+   "resolvable_data_matches": 3,
+   "data_mismatches": 0,
+   "unresolved_reference_checks": 4,
+   "status": "candidate: not selected, linked, or runtime-gated",
+   "object_sha256": "3c8da5b2e2e4f695e3002413746205c369a9257a4dfc5cc8289894ed42ce7cd2",
+   "reference_names_agree": 3,
+   "reference_name_differences_or_aliases": [
+    {
+     "symbol": "?makeCofmDirty@Body@RBX@@QAEXXZ",
+     "target": "00613f70",
+     "registry_name": "?makeCofmDirty@Body@RBX@@AAEXXZ"
+    }
+   ],
+   "incorrect_imports": 0
+  },
+  {
+   "file": "util/ExtentsExtra.cpp",
+   "address": "0060f4e0",
+   "symbol": "?getFaceCorners@Extents@RBX@@QBEXW4NormalId@2@AAVVector3@G3D@@111@Z",
+   "size": 620,
+   "source_sha256": "6f733a4b4b6fa22cf812d6b00f413dc8b6a4c7b02bc08149bfc2afb0c0f46f04",
+   "resolvable_data_matches": 0,
+   "data_mismatches": 0,
+   "unresolved_reference_checks": 26,
+   "status": "candidate: not selected, linked, or runtime-gated",
+   "object_sha256": "0ca6d97d10a2790431bd92fc430e2063d34b58c4c35465cc87a5e3b623a4432e",
+   "reference_names_agree": 19,
+   "reference_name_differences_or_aliases": [],
+   "incorrect_imports": 0
+  },
+  {
+   "file": "v8world/IMovingExtra.cpp",
+   "address": "00614cc0",
+   "symbol": "?onMovingHeartbeat@IMovingManager@RBX@@QAEXXZ",
+   "size": 144,
+   "source_sha256": "b8c24302d868babed9218ba9c82707803588b78d88b27978495eca1fd7ae50e9",
+   "resolvable_data_matches": 0,
+   "data_mismatches": 0,
+   "unresolved_reference_checks": 2,
+   "status": "candidate: not selected, linked, or runtime-gated",
+   "object_sha256": "619a8046e848f7650932d01b2465d920c9d2240b0b769a974629bbfb6220f5ea",
+   "reference_names_agree": 1,
+   "reference_name_differences_or_aliases": [
+    {
+     "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVIMoving@RBX@@U?$less@PAVIMoving@RBX@@@std@@V?$allocator@PAVIMoving@RBX@@@4@$0A@@std@@@std@@QAEXXZ",
+     "target": "005e9340",
+     "registry_name": "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAEXXZ"
+    }
+   ],
+   "incorrect_imports": 0
+  },
+  {
+   "file": "reflection/reflection_propertySelected.cpp",
+   "address": "0056c080",
+   "symbol": "??1EnumDescriptor@Reflection@RBX@@MAE@XZ",
+   "size": 195,
+   "source_sha256": "923d9dd5474db22fa57a915a0992c0ad6391d8f5b7a59b2728a963cbd0d60452",
+   "resolvable_data_matches": 2,
+   "data_mismatches": 0,
+   "unresolved_reference_checks": 7,
+   "status": "candidate: not selected, linked, or runtime-gated",
+   "object_sha256": "dfe73c8d621219e868cfca84342cb3e17ca2e578b85aad068d0ee8c2de519aa8",
+   "reference_names_agree": 5,
+   "reference_name_differences_or_aliases": [
+    {
+     "symbol": "__ehhandler$??1EnumDescriptor@Reflection@RBX@@MAE@XZ",
+     "target": "007cfbf3",
+     "registry_name": "func_007cfbf3"
+    },
+    {
+     "symbol": "?erase@?$vector@PBVEnumDescriptor@Reflection@RBX@@V?$allocator@PBVEnumDescriptor@Reflection@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PBVEnumDescriptor@Reflection@RBX@@V?$allocator@PBVEnumDescriptor@Reflection@RBX@@@std@@@2@V?$_Vector_const_iterator@PBVEnumDescriptor@Reflection@RBX@@V?$allocator@PBVEnumDescriptor@Reflection@RBX@@@std@@@2@@Z",
+     "target": "00459830",
+     "registry_name": "?erase@?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@@2@@Z"
+    }
+   ],
+   "incorrect_imports": 0
+  }
+ ],
+ "integration_blocker": "Current G3D verified_0078.obj and LibPng pngread.obj contain duplicate PNG definitions. Do not promote without a current no-loss build and forced milestone/provider checks.",
+ "sound_probe": "Fifteen isolated Sound methods compiled; no new candidate satisfied current scan."
+}

@@ -1,0 +1,30 @@
+{
+ "files": [
+  "v8datamodel/SpawnLocation.cpp",
+  "v8datamodel/Camera.cpp",
+  "tool/NullTool.cpp",
+  "script/LuaSignalBridge.cpp",
+  "util/Http.cpp",
+  "v8datamodel/UserController.cpp",
+  "v8datamodel/MouseCommand.cpp",
+  "util/ContentProvider.cpp",
+  "v8xml/SerializerV2.cpp",
+  "v8datamodel/Backpack.cpp"
+ ],
+ "status": "complete: no acceptable gain",
+ "compile_files": [
+  "util/Http.cpp",
+  "v8datamodel/MouseCommand.cpp",
+  "v8xml/SerializerV2.cpp",
+  "v8datamodel/Backpack.cpp"
+ ],
+ "parked": {
+  "v8datamodel/SpawnLocation.cpp": "ForceField API absent in 2008 headers.",
+  "v8datamodel/Camera.cpp": "NavKeys/doFly input API absent in 2008 headers.",
+  "tool/NullTool.cpp": "NavKeys/getNavKeys API absent in 2008 headers.",
+  "v8datamodel/UserController.cpp": "NavKeys/getNavKeys API absent in 2008 headers.",
+  "script/LuaSignalBridge.cpp": "ScopedAssign utility absent in 2008 headers; no new helper bodies allowed.",
+  "util/ContentProvider.cpp": "Donor defines MD5Hasher::convertToLegacyHash absent in 2008 declaration; ContentCache type also absent."
+ },
+ "retained_after_final_gates": []
+}

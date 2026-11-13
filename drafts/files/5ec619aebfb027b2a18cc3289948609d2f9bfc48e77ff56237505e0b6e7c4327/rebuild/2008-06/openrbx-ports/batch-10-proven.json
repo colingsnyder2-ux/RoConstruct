@@ -1,0 +1,130 @@
+{
+ "files": [
+  {
+   "file": "v8datamodel/Filters.cpp",
+   "gain": [
+    "006604a0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006604a0"
+   ],
+   "source_sha256": "95bef9abf9c9b46bb554f1f2222e842e9c9bff8d0dc2071a8a7360ab077a5f7f",
+   "upstream_sha256": "548275c25fccf67b07d5a5cc1441e4650a41a88d7f34c7204adf10433754a336",
+   "object_sha256": "a3fc183bbfc6071fe85014145b78434fd1e78eb7777b9320f8832455590c4f79"
+  },
+  {
+   "file": "v8datamodel/Selection.cpp",
+   "gain": [
+    "00566f00",
+    "0077d6c0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00566f00"
+   ],
+   "source_sha256": "9267ba4cc804c38ea7344036db86259bfef2def072b935ddfab85e9d84a35cab",
+   "upstream_sha256": "cf870335b34939695bbe0175a2f3dd8d07c1289b55ec03c2d93e33c314a03187",
+   "object_sha256": "91151f04220f9c411beb5895e1b5d9bb233e40e32d079d3ac0eeab857281c5f0"
+  },
+  {
+   "file": "v8datamodel/SafeChat.cpp",
+   "gain": [
+    "00658170",
+    "00658360",
+    "006584e0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00658170",
+    "00658360",
+    "006584e0"
+   ],
+   "source_sha256": "8181bd6245edd8deacc355c4aa1791c4b84e0c08282459c338b4bc4397e150c8",
+   "upstream_sha256": "da6aca858e8b9f5078712860b3b54391ecba95db022bf3f39393583151a2d8fd",
+   "object_sha256": "d0dfb33fb11f80f6f5852e7382b3e89db3afd57a77fed2b51c948bbb3dfd9ab6"
+  },
+  {
+   "file": "v8datamodel/GlobalSettings.cpp",
+   "gain": [
+    "00402400",
+    "004025b0",
+    "00411120",
+    "00411ad0",
+    "00413970",
+    "00413a70",
+    "00413d70",
+    "00414370",
+    "00414470",
+    "0042af90",
+    "0042b1e0",
+    "00443400",
+    "00443a10",
+    "00443a60",
+    "00443d60",
+    "00443e50",
+    "00443ec0",
+    "00443ef0",
+    "00443f80",
+    "00444000",
+    "00444050",
+    "004440a0",
+    "00444200",
+    "004442c0",
+    "00444a70",
+    "004a2070",
+    "004acac0",
+    "004aea80",
+    "004aff20",
+    "0055cc20",
+    "00568460",
+    "005684d0",
+    "00568910",
+    "00618a40",
+    "0063fad0",
+    "0064fa10",
+    "0067c5e0",
+    "0068fef0",
+    "0068ff20",
+    "0071f210"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00568460",
+    "005684d0",
+    "00568910"
+   ],
+   "source_sha256": "522206aabc48d0967fcd17d3757658487f048beb8f18ee05da250ade9a92d87d",
+   "upstream_sha256": "ecead046c0647ecc5ed25a50bc5e186bf192ab61e0d54b10674390030b5ca779",
+   "object_sha256": "a33b02faa8e0022582e058539d2d306fff8729c5e389b194a20505aa2374edb7"
+  }
+ ],
+ "owned_before": 4427,
+ "owned_after": 4435,
+ "global_gain": [
+  "00566f00",
+  "00568460",
+  "005684d0",
+  "00568910",
+  "00658170",
+  "00658360",
+  "006584e0",
+  "006604a0"
+ ],
+ "global_loss": [],
+ "milestones": {
+  "M2": {
+   "passed": true,
+   "exit": 0
+  },
+  "M4a": {
+   "passed": true,
+   "exit": 0
+  },
+  "M5": {
+   "passed": true,
+   "exit": 0
+  }
+ },
+ "status": "proven; ready for scoped commit"
+}

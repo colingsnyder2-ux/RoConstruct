@@ -1,0 +1,50 @@
+{
+ "baseline_commit": "16a6b3987b6af72137ebf16faf545f7bfb2ba2a6",
+ "draft_session": "60a038b01a5848fcb6315287df04be09",
+ "baseline_owned": 4419,
+ "phase": "all-142-reviewed-and-final-gates-passed",
+ "excluded_prior_file": "util/Utilities.cpp",
+ "initial_run_extra_file": "util/Utilities.cpp",
+ "note": "Initial process loaded 143 files before Utilities exclusion was identified; requested 142 all included. Saved spec has exactly 142. Numerator: known original decorated code identities defined in corresponding baseline rbxgs object, minus baseline owned addresses; includes inline/template definitions.",
+ "report.json_sha256": "52c65acf79681c0dff715a8825b375f5b11c748c81343b0dc8b9f6cb02144b02",
+ "owned-symbols.json_sha256": "7d4a2993cf591bcfdece9502f25adda41889cd99b59a8dbd42c1121563fce94a",
+ "initial_errors_file": "Initial errors overwritten by later trial layer builds; observed per-file counts preserved in ranking.tsv. Initial trial included excluded Utilities.cpp in addition to required 142; excluded from ranking and all port batches.",
+ "concurrent_baseline_update": {
+  "owned_before": 4409,
+  "owned_now": 4419,
+  "cause": "Owner integrated five unchanged OpenRBX files during this task; final trial must carry them as separate baseline layer and recopy verified inputs."
+ },
+ "retained": [
+  "gui/ArrowPanel.cpp",
+  "v8datamodel/Teams.cpp",
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Feature.cpp",
+  "v8datamodel/Filters.cpp",
+  "v8datamodel/Selection.cpp",
+  "v8datamodel/SafeChat.cpp",
+  "v8datamodel/GlobalSettings.cpp",
+  "v8world/Joint.cpp"
+ ],
+ "initial_baseline_owned": 4409,
+ "compilable_ports": 101,
+ "total_attempted_files": 142,
+ "owned_after": 4436,
+ "milestones": "M2/M4a/M5 passed",
+ "stop_reason": "All 142 initial failures reviewed; final three batches yielded no acceptable gain. Final gated subset +17/-0.",
+ "continuation_attempted_files": 130,
+ "initial_scope_result": {
+  "attempted": 10,
+  "compilable": 8,
+  "parked": 2
+ },
+ "scope_result": {
+  "attempted": 142,
+  "compiled": 101,
+  "retained": 9,
+  "rejected": 92,
+  "api_blocked": 41,
+  "untried": 0
+ },
+ "spec_only_draft_session": "c231feda086b4ce09efa2d6c4b71c837",
+ "draft_note": "Original immutable directory-scoped session resumed; current snapshot covers all nine retained sources and metadata. Separate glob-scoped session covered only module spec and was stopped."
+}

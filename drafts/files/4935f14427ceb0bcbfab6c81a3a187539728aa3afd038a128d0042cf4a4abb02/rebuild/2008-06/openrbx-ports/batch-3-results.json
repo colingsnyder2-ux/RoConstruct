@@ -1,0 +1,46 @@
+{
+ "files": [
+  {
+   "file": "v8datamodel/Seat.cpp",
+   "gain": [
+    "004377b0",
+    "0043d880",
+    "00476570",
+    "00476640",
+    "0060e8f0"
+   ],
+   "loss": [
+    "004093b0",
+    "0063d390"
+   ]
+  },
+  {
+   "file": "v8datamodel/Hopper.cpp",
+   "gain": [],
+   "loss": []
+  },
+  {
+   "file": "v8tree/Instance.cpp",
+   "gain": [],
+   "loss": []
+  }
+ ],
+ "parked": {
+  "humanoid/Humanoid.cpp": "2008 API lacks ForceField::partInForceField used by preserved donor body.",
+  "v8datamodel/factoryregistration.cpp": "2008 API lacks ForceField and GeometryService registered by donor constructor.",
+  "v8datamodel/Explosion.cpp": "2008 API lacks ForceField::partInForceField used by preserved donor body.",
+  "v8datamodel/Workspace.cpp": "NavKeys/getNavKeys API absent; preserved input body cannot compile.",
+  "v8datamodel/DataModel.cpp": "2008 overlay removes TimeState storage and profileRun used by donor step body; cannot repair via declarations.",
+  "util/Sound.cpp": "Donor defines SoundService::getSoundStats(two refs) absent from 2008 header, with live donor call. Removing definition or rewriting body forbidden.",
+  "v8datamodel/PartInstance.cpp": "2008 Primitive lacks setSizeMultiplier; primitive storage also changes pointer to value. No declaration-only equivalent established."
+ },
+ "global_gain": [],
+ "global_loss": [
+  "0063d390"
+ ],
+ "owned_before": 4422,
+ "owned_after": 4421,
+ "accepted": [],
+ "accepted_files": [],
+ "status": "historical selection receipt; accepted files also passed final campaign gates"
+}

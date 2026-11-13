@@ -15,7 +15,8 @@ SOURCE_ROOT = Path(__file__).resolve().parents[1]
 _repo = subprocess.run(['git', '-C', str(SOURCE_ROOT), 'rev-parse', '--show-toplevel'],
                        capture_output=True, text=True)
 ROOT = Path(_repo.stdout.strip()) if _repo.returncode == 0 else SOURCE_ROOT
-DONOR = 'refs/remotes/mew-review/optimistic'
+DONOR = 'refs/remotes/mew-review/selected'
+DEFAULT_BRANCH = 'claude/optimistic-shannon-0xccuy'
 WORK = 'refs/remotes/findings/work'
 NATIVE = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
           'rebuild/2008-06/native-world/')
@@ -23,6 +24,15 @@ NATIVE = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
 
 def git(root, *args, data=None):
     return subprocess.check_output(['git', *args], cwd=root, input=data)
+
+
+def fetch_donor(root, branch=DEFAULT_BRANCH):
+    valid = subprocess.run(['git', 'check-ref-format', '--branch', branch], cwd=root,
+                           capture_output=True)
+    if valid.returncode:
+        raise ValueError('Invalid Mew branch: ' + branch)
+    git(root, 'fetch', 'https://github.com/mewpokemons/RoConstruct.git',
+        '+refs/heads/' + branch + ':' + DONOR)
 
 
 def tree(root, ref, prefix):
@@ -55,9 +65,45 @@ def blobs(root, identities):
     return result
 
 
+def receipt_profiles(receipt):
+    flags = receipt.get('flags')
+    if isinstance(flags, dict):
+        return flags
+    if not isinstance(flags, list):
+        return {}
+    argument_names = {str(value).replace('\\', '/') for value in flags
+                      if str(value).lower().endswith('.cpp')}
+    if len(argument_names) == 1:
+        return {'unit': flags}
+    sources = receipt.get('sources', {})
+    names = [str(path).replace('\\', '/') for path in sources
+             if '/native-classes/AppUnit' in str(path).replace('\\', '/')
+             and str(path).lower().endswith('.cpp')]
+    if len(names) != 1:
+        return {}
+    return {'unit': flags + [names[0]]}
+
+
 def receipt_groups(receipt):
     """Find original-address leads and the source each receipt group compiled."""
-    rows, flags = receipt.get('rows'), receipt.get('flags')
+    rows, flags = receipt.get('rows'), receipt_profiles(receipt)
+    if isinstance(rows, list):
+        grouped = {}
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            group = row.get('build') if row.get('build') in flags else row.get('unit')
+            if group in flags:
+                grouped.setdefault(group, []).append(row)
+        if not grouped and len(flags) == 1:
+            grouped[next(iter(flags))] = rows
+        if not grouped:
+            app_groups = [group for group, arguments in flags.items()
+                          if sum(str(value).replace('\\', '/').split('/')[-1].lower().startswith('appunit')
+                                 and str(value).lower().endswith('.cpp') for value in arguments) == 1]
+            if len(app_groups) == 1:
+                grouped[app_groups[0]] = rows
+        rows = grouped
     if not isinstance(rows, dict) or not isinstance(flags, dict):
         return []
     result = []
@@ -65,8 +111,8 @@ def receipt_groups(receipt):
         arguments = flags.get(group, [])
         if not isinstance(arguments, list) or not isinstance(entries, list):
             continue
-        names = [str(x).replace('\\', '/').split('/')[-1] for x in arguments
-                 if str(x).lower().endswith('.cpp')]
+        names = list(dict.fromkeys(str(x).replace('\\', '/').split('/')[-1] for x in arguments
+                                   if str(x).lower().endswith('.cpp')))
         if len(names) != 1:
             continue
         checks = []
@@ -74,13 +120,21 @@ def receipt_groups(receipt):
             if not isinstance(row, dict) or row.get('exact') is not True:
                 continue
             address, symbol = str(row.get('address', '')).lower().removeprefix('0x'), row.get('symbol')
-            if re.fullmatch(r'[0-9a-f]{8}', address) and isinstance(symbol, str) and symbol:
+            if (re.fullmatch(r'[0-9a-f]{8}', address) and isinstance(symbol, str) and symbol
+                    and not symbol.startswith(('__catch$', '__ehhandler$', '__unwindfunclet$'))
+                    and not re.search(r' \[0x[0-9a-f]+:0x[0-9a-f]+\]$', symbol, re.I)):
                 checks.append({'addr': address, 'symbol': symbol})
         if checks:
             ogre = any(str(value).replace('\\', '/').lower().endswith(
                 '/tools/libs/ogre-1.4.5/ogrenew/ogremain/include') for value in arguments)
+            native_includes = []
+            for value in arguments:
+                normalized = str(value).replace('\\', '/')
+                marker = '/rebuild/2008-06/native-headers/'
+                if normalized.startswith('/I') and marker in normalized:
+                    native_includes.append(normalized.split(marker, 1)[1])
             result.append((names[0].lower(), group, checks, '/fp:fast' in arguments,
-                           '/U_RELEASEASSERT' in arguments, ogre))
+                           '/U_RELEASEASSERT' in arguments, ogre, native_includes))
     return result
 
 
@@ -106,13 +160,14 @@ def prepare(root, output, donor=DONOR, work=WORK, batch_size=40):
     for path, sha in receipts.items():
         try:
             receipt = json.loads(data[sha])
-            for name, group, checks, fast, undef, ogre in receipt_groups(receipt):
+            for name, group, checks, fast, undef, ogre, native_includes in receipt_groups(receipt):
                 source_hashes = receipt.get('sources', {})
                 if not isinstance(source_hashes, dict):
                     source_hashes = {}
                 hashes = {str(value).lower() for key, value in source_hashes.items()
                           if key == group or str(key).replace('\\', '/').split('/')[-1].lower() == name}
-                leads.setdefault(name, []).append((path, group, checks, fast, undef, ogre, hashes))
+                leads.setdefault(name, []).append(
+                    (path, group, checks, fast, undef, ogre, native_includes, hashes))
         except (ValueError, TypeError, UnicodeError) as error:
             errors.append({'receipt': path, 'error': str(error)})
     inventory, jobs = [], []
@@ -128,7 +183,7 @@ def prepare(root, output, donor=DONOR, work=WORK, batch_size=40):
         if len(candidates) != 1:
             item['blocker'] = 'no unique receipt/profile' if not candidates else 'multiple receipt profiles require review'
             continue
-        receipt, group, checks, fast, undef, ogre, source_hashes = candidates[0]
+        receipt, group, checks, fast, undef, ogre, native_includes, source_hashes = candidates[0]
         source = data[sha]
         source_sha = hashlib.sha256(source).hexdigest()
         if source_sha not in source_hashes:
@@ -145,6 +200,18 @@ def prepare(root, output, donor=DONOR, work=WORK, batch_size=40):
         profile = '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS'
         if fast:
             profile += ' /fp:fast'
+        for relative in native_includes:
+            include = (root / 'rebuild/2008-06/native-headers' / relative).resolve()
+            header_root = (root / 'rebuild/2008-06/native-headers').resolve()
+            if include == header_root or header_root not in include.parents or not include.is_dir():
+                item['blocker'] = 'receipt native-header profile is unavailable'
+                break
+            if ' ' in str(include):
+                item['blocker'] = 'native-header profile path contains spaces'
+                break
+            profile += ' /I' + include.as_posix()
+        if 'blocker' in item:
+            continue
         if ogre:
             include = root / 'tools/libs/ogre-1.4.5/ogrenew/OgreMain/include'
             if not (include / 'OgreTexture.h').is_file():
@@ -208,13 +275,13 @@ def main(argv=None):
     parser.add_argument('--output', type=Path, required=True, help='new scratch directory')
     parser.add_argument('--workers', type=int, choices=range(1, 9), default=3)
     parser.add_argument('--batch-size', type=int, default=40)
+    parser.add_argument('--branch', default=DEFAULT_BRANCH, help='Mew branch to pin')
     parser.add_argument('--offline', action='store_true', help='use already fetched refs')
     parser.add_argument('--check', action='store_true', help='compile proposed candidates in isolated objects')
     args = parser.parse_args(argv)
     if not args.offline:
         git(ROOT, 'fetch', 'findings', 'work')
-        git(ROOT, 'fetch', 'https://github.com/mewpokemons/RoConstruct.git',
-            'refs/heads/claude/optimistic-shannon-0xccuy:' + DONOR)
+        fetch_donor(ROOT, args.branch)
     report = prepare(ROOT, args.output, batch_size=args.batch_size)
     print('Indexed %d fork files; prepared %d batches. No files merged.' %
           (len(report['files']), len(report['manifests'])), flush=True)

@@ -491,9 +491,16 @@ VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib",
                    "ToolkitPro1122vc90S.lib", "ToolkitPro1122vc90LDS.lib")
 
 
+def client_dll(client, dll):
+    """Path of a DLL the original client ships (rgmain.dll...), or None. Looked up in clients/<client>/ and then in the
+    folders listed in ROC_CLIENT_DLL_DIRS (os.pathsep separated), so an extracted client folder can supply it."""
+    folders = [ROOT / "clients" / client] + [Path(p) for p in os.environ.get("ROC_CLIENT_DLL_DIRS", "").split(os.pathsep) if p]
+    return next((f / dll for f in folders if (f / dll).is_file()), None)
+
+
 def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
               system_libs=("kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "shell32.lib", "ole32.lib",
-                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=()):
+                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=(), run_dlls=()):
     """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
     Returns dict(compiled, linked, ran, exit, output, unresolved, map)."""
     tc = toolchain(cl)
@@ -527,6 +534,12 @@ def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBU
         strip = ws / 'out' / 'tests' / 'P2RecoveredPlayer' / 'Content' / 'textures' / 'SurfacesStrip.png'
         if strip.is_file():
             run_env['ROC_TEXTURE_STRIP'] = str(strip)
+    for dll in run_dlls:  # the test calls into the client's own DLLs (OgreMain is rgmain.dll): they must sit beside it
+        found = client_dll(client, dll)
+        if found:
+            shutil.copy2(found, out / dll)
+        else:
+            result["output"] += "\n[%s not found: copy it to clients/%s/ or set ROC_CLIENT_DLL_DIRS]" % (dll, client)
     exe = [str(out / (test + ".exe"))] if setup.WINDOWS else [setup.wine_exe(), str(out / (test + ".exe"))]  # Wine on Linux
     done = subprocess.run(exe + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300, env=run_env)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
@@ -545,8 +558,11 @@ def coff_externals(data):
     while i < nsym:
         raw, _, secnum, _, cls, naux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
         if cls == 2:
-            name = data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0] if raw[:4] == b"\0\0\0\0" \
-                else raw.rstrip(b"\0")
+            if raw[:4] == b"\0\0\0\0":  # find the terminator in place: slicing to the end copied the rest per name
+                at = strtab + struct.unpack_from("<I", raw, 4)[0]
+                name = data[at:data.index(b"\0", at)]
+            else:
+                name = raw.rstrip(b"\0")
             name = name.decode("latin-1")
             out[name] = out.get(name, False) or secnum > 0
         i += 1 + naux
@@ -619,7 +635,7 @@ def strip_symbols(data, keep=None, drop=()):
     return bytes(data)
 
 
-def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None):
+def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset(), helpers=None, helper_objects=False):
     """out/<Module>/verified (rebuild/2008-06/swap_build.py) as a preferred layer of kept symbols only, and the
     set of those symbols, to drop from every other object. A symbol kept by several groups is taken once.
     helpers: {symbol: obj} non-exact helpers a swapped function calls that no other object defines, kept in that one
@@ -640,16 +656,21 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         # force them from an archive, nor can another object resolve them.
         keep = {k for k in item["keep"] if externals.get(k)
                 and not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop
-        if keep:
+        # helpers this object supplies to other swaps: keep writing it even after its own swaps are all swapped out,
+        # or every function that relies on those helpers collapses in the next round
+        extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
+        # helper_objects (spec "keep_helper_objects"): write the object while its helpers are still needed even after every
+        # swap in it is gone. Off by default: in a module whose helper list is stale (RbxgsApp) the object would
+        # redefine symbols a regular library object also defines (png_read_init_2 ...) and the link fails with LNK2005.
+        if keep or (helper_objects and extra):
             taken |= keep
-            extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
             (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols(data, keep=keep | extra, drop=vdrop | exclude))
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
 
 def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print, extra_libs=(), defines=None,
-                    drop=frozenset()):
+                    drop=frozenset(), run_dlls=()):
     """layers: [dir, ...] most-preferred first (e.g. 2008-verified partial files, then complete upstream).
     Start from each file's most-preferred object; when the link reports an unresolved symbol, switch the
     file that defines it in a later layer to that layer. Returns the final link_test result plus choices."""
@@ -674,6 +695,8 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
         if choice:
             code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
         kwargs = {"defines": defines} if defines else {}
+        if run_dlls:
+            kwargs["run_dlls"] = run_dlls
         link_libs = ([out / lib_name] if choice else []) + list(extra_libs)
         result = link_test(client, test, link_libs, includes=includes, **kwargs)
         result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
@@ -975,6 +998,21 @@ def _spec_path(client, value):
     return (ROOT / value).resolve()
 
 
+def is_trial_module(spec):
+    """Trial specs (native_layer_trial.py, OpenRBX trials) share modules/ but never count as linked rebuild."""
+    return bool(spec.get("trial")) or spec.get("name", "").endswith(("Trial", "Ports"))
+
+
+def live_module_specs(client):
+    """[(path, spec)] of the real module specs: trial specs are skipped."""
+    out = []
+    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        if not is_trial_module(spec):
+            out.append((spec_path, spec))
+    return out
+
+
 def load_module(client, name):
     return json.loads((ROOT / "rebuild" / client / "modules" / (name + ".json")).read_text(encoding="utf-8"))
 
@@ -1008,8 +1046,8 @@ def dll_exports(path):
         raise ValueError("rva %x outside sections" % rva)
     export_rva = struct.unpack_from("<I", data, pe + 24 + 96)[0]
     count, _, names = struct.unpack_from("<III", data, at(export_rva) + 24)
-    return [data[at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]):].split(b"\0", 1)[0].decode("latin-1")
-            for i in range(count)]
+    starts = [at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]) for i in range(count)]
+    return [data[start:data.index(b"\0", start)].decode("latin-1") for start in starts]
 
 
 def dll_import_lib(client, dll):
@@ -1020,12 +1058,48 @@ def dll_import_lib(client, dll):
     if not lib.exists():
         out.mkdir(parents=True, exist_ok=True)
         path = ROOT / "clients" / client / dll
-        (out / (Path(dll).stem + ".def")).write_text(
-            "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+        definition = out / (Path(dll).stem + ".def")
+        if path.exists():
+            definition.write_text(
+                "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+        elif not definition.exists():  # an earlier .def from the same DLL is enough to rebuild the import library
+            raise FileNotFoundError("%s: copy the client's %s into %s" % (lib.name, Path(dll).name, path.parent))
         code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + ".def",
                                               "/NAME:" + Path(dll).name, "/OUT:" + lib.name], out)
         if code:
             raise RuntimeError("%s: %s" % (lib.name, text[-300:]))
+    return lib
+
+
+def dll_pointer_import_lib(client, dll, symbols):
+    """Import only the IAT entries for real DLL exports, without local jump thunks.
+
+    Some modules also define a native function with the export's name. A DATA
+    entry in the import library supplies only __imp_*, while the PE still imports
+    the same DLL export by name. Consumers must call through the IAT entry.
+    """
+    if Path(dll).name != dll or not isinstance(symbols, list) or not symbols:
+        raise ValueError('pointer-only imports require a DLL basename and a nonempty symbol list')
+    path = client_dll(client, dll)
+    if not path:
+        raise FileNotFoundError('client DLL not found: ' + dll)
+    names = sorted(set(symbols))
+    missing = set(names) - set(dll_exports(path))
+    if missing:
+        raise ValueError('pointer-only import not exported by %s: %s' % (dll, ', '.join(sorted(missing))))
+    identity = hashlib.sha256(path.read_bytes() + b'\0' + '\n'.join(names).encode()).hexdigest()[:16]
+    out = workspace(client) / 'out' / 'importlibs'
+    out.mkdir(parents=True, exist_ok=True)
+    lib = out / (Path(dll).stem + '-pointer-' + identity + '.lib')
+    if not lib.exists():
+        definition = lib.with_suffix('.def')
+        definition.write_text('LIBRARY %s\nEXPORTS\n' % dll + ''.join('  %s DATA\n' % n for n in names))
+        temporary = lib.with_suffix('.building')
+        code, output = run(toolchain(), 'lib', ['/nologo', '/MACHINE:X86', '/DEF:' + definition.name,
+                            '/NAME:' + dll, '/OUT:' + temporary.name], out)
+        if code:
+            raise RuntimeError('%s: %s' % (lib.name, output[-300:]))
+        temporary.replace(lib)
     return lib
 
 
@@ -1041,10 +1115,43 @@ def source_errors(out, spec=None, report=None):
     return errors
 
 
+def preflight_module(client, spec, log=print):
+    """Seconds-cheap checks before a long build: every input the final link needs must already exist, so a
+    missing import library or unbuilt dependency fails now instead of after the whole build."""
+    problems = []
+    for dll in spec.get("import_dlls", []):
+        try:
+            dll_import_lib(client, dll)
+        except (OSError, RuntimeError) as error:
+            problems.append("import library for %s: %s" % (dll, error))
+    pending, seen = list(spec.get("depends", [])), set()
+    while pending:
+        dependency = pending.pop()
+        if dependency in seen or dependency in spec.get("refresh_dependencies", []):
+            continue
+        seen.add(dependency)
+        try:
+            dep_spec = load_module(client, dependency)
+        except OSError:
+            problems.append("dependency module spec missing: " + dependency)
+            continue
+        report = workspace(client) / "out" / dep_spec["name"] / "report.json"
+        if not report.exists() or not json.loads(report.read_text()).get("linked"):
+            problems.append("dependency %s has no linked build: run `roc rebuild %s module %s`" % (dependency, client, dependency))
+        pending += dep_spec.get("depends", [])
+    for layer in spec["layers"]:
+        if layer["mode"] != "recipe" and not (ROOT / layer["dir"]).exists():
+            problems.append("layer %s: missing source folder %s" % (layer["name"], layer["dir"]))
+    if problems:
+        raise RuntimeError("preflight failed for %s:\n  " % spec["name"] + "\n  ".join(problems))
+    log("preflight ok: %s" % spec["name"])
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
     spec = load_module(client, name)
+    preflight_module(client, spec, log=log)
     # Some runnable modules require fresh, locally maintained dependency code.
     # Build in declared order; do not silently link an older successful library
     # after a failed refresh.
@@ -1102,7 +1209,7 @@ def build_module(client, name, log=print):
         else:
             recipe = libs.RECIPES[layer["includes_from_recipe"]] if layer.get("includes_from_recipe") else {"include": []}
             includes = [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"]
-            includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
+            includes += [_spec_path(client, i) for i in layer.get("extra_includes", [])]  # tree:RECIPE/sub or repo-relative
             defines = libs.RECIPES[layer["defines_from_recipe"]]["defines"] if layer.get("defines_from_recipe") else layer.get("defines", "")
             defines = (defines + " " + layer.get("extra_defines", "")).strip()
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
@@ -1150,7 +1257,12 @@ def build_module(client, name, log=print):
             raise RuntimeError('Dependency source build/link/smoke failed: ' + dep)
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
+    for dll, names in spec.get('import_pointer_only', {}).items():
+        if dll not in spec.get('import_dlls', []):
+            raise ValueError('pointer-only import DLL must also be in import_dlls: ' + dll)
+        deps.append(dll_pointer_import_lib(client, dll, names))
     deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
+    deps += [ROOT / lib if "/" in lib else lib for lib in spec.get("extra_libs", [])]  # repo path or library name (msvcprt.lib)
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     excluded.update(spec.get("verified_exclude", []))
@@ -1161,22 +1273,27 @@ def build_module(client, name, log=print):
     # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
     # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only
     # file-owned functions swap in
-    counts = {}
+    counts, linked_names = {}, set()
     for layer_dir in layer_dirs:
         for obj in Path(layer_dir).glob("*.obj"):
+            if obj.name in linked_names:
+                continue  # shadowed by an earlier layer's object of the same name: never linked, so not a second definer
+            linked_names.add(obj.name)
             for sym, defined in coff_externals(obj.read_bytes()).items():
                 if defined:
                     counts[sym] = counts.get(sym, 0) + 1
     shared = {sym for sym, n in counts.items() if n > 1}
     while True:  # each retry adds a helper/exclusion; stop only when linking or dependency resolution stops progressing
-        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers)
+        verified, drop = verified_layer(client, spec, log=log, exclude=excluded | shared, vdrop=vdrop, helpers=helpers,
+                                         helper_objects=spec.get("keep_helper_objects", False))
         if spec.get("force_verified"):  # the test links every swapped symbol, so each one's dependencies must resolve
             (out / "force").mkdir(exist_ok=True)
             (out / "force" / "force_verified.h").write_text(
                 "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in sorted(drop)))
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
-                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
+                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop,
+                                 run_dlls=spec.get("import_dlls", []))
         if verified and not result["linked"] and result["unresolved"]:
             # a missing helper defined by one of the verified objects themselves: keep it there
             missing, added = set(result["unresolved"]) - set(helpers) - vdrop, 0
@@ -1323,8 +1440,7 @@ def placed(client="2008-06", log=print):
     import hashlib
     base, image = match._image(client)
     found = {}
-    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
-        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    for spec_path, spec in live_module_specs(client):
         out = workspace(client) / "out" / spec["name"]
         report = out / "report.json"
         if not report.exists() or not json.loads(report.read_text()).get("linked"):
@@ -1367,8 +1483,7 @@ def status(client="2008-06", log=print):
     """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
     owned_all, shared_all, compiled_all = set(), set(), set()
     rows = []
-    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
-        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    for spec_path, spec in live_module_specs(client):
         report_path = workspace(client) / "out" / spec["name"] / "report.json"
         if not report_path.exists():
             rows.append((spec_path.stem, "not built", "", "", ""))

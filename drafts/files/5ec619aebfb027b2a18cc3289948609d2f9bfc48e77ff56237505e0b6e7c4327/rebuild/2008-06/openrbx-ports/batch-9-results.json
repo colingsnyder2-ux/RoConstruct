@@ -1,0 +1,185 @@
+{
+ "files": [
+  {
+   "file": "util/standardout.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/Block.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/ContactManager.cpp",
+   "gain": [
+    "0060d6e0"
+   ],
+   "loss": [
+    "00476520",
+    "00502f40",
+    "00511ce0",
+    "00513080",
+    "005130d0",
+    "0060d770",
+    "00792450"
+   ],
+   "new_module_addresses": [
+    "0060d6e0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Lighting.cpp",
+   "gain": [
+    "004377b0"
+   ],
+   "loss": [
+    "004119d0",
+    "00411a50",
+    "00412050",
+    "00412100",
+    "00412240",
+    "004124c0",
+    "00438b60",
+    "0043afb0",
+    "00445b10",
+    "004cb300",
+    "004d6f80",
+    "004d6fb0",
+    "004d6fe0",
+    "004d6ff0",
+    "0056fe10",
+    "00598990",
+    "0059b2a0",
+    "005a1140",
+    "005a1990",
+    "005df480",
+    "005e0610",
+    "005e1a40",
+    "005e2030",
+    "005e2100",
+    "005e2160",
+    "005e2260",
+    "005e22c0",
+    "005e2370",
+    "005e2420",
+    "005e2490",
+    "005e2570",
+    "005e2670",
+    "0066fd40",
+    "0067c910",
+    "0077d6c0",
+    "007f6b80",
+    "007f6bc0",
+    "007f6c00",
+    "007f6c40"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Math.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "humanoid/Balancing.cpp",
+   "gain": [],
+   "loss": [
+    "005d9c10"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "reflection/reflection_property.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/SafeChat.cpp",
+   "gain": [
+    "00658170",
+    "00658360",
+    "006584e0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00658170",
+    "00658360",
+    "006584e0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Body.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/custommesh.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  }
+ ],
+ "parked": {},
+ "linked": false,
+ "unresolved": [
+  "?getPrimitiveType@Primitive@RBX@@QBE?AW4GeometryType@Geometry@2@XZ",
+  "?maxTorqueComponent@Balancing@RBX@@KA?BMXZ"
+ ],
+ "global_gain": [
+  "00566f00",
+  "0060d6e0",
+  "00658170",
+  "00658360",
+  "006584e0",
+  "006604a0"
+ ],
+ "global_loss": [
+  "004d6f80",
+  "004d6fb0",
+  "004d6fe0",
+  "004d6ff0",
+  "005df480",
+  "005e0610",
+  "005e1a40",
+  "005e2030",
+  "005e2100",
+  "005e2160",
+  "005e2260",
+  "005e22c0",
+  "005e2370",
+  "005e2420",
+  "005e2490",
+  "005e2570",
+  "005e2670",
+  "0060d770",
+  "007f6b80",
+  "007f6bc0",
+  "007f6c00",
+  "007f6c40"
+ ],
+ "owned_before": 4427,
+ "owned_after": 4411,
+ "candidate_keep": [
+  "v8datamodel/SafeChat.cpp"
+ ],
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": [
+  "v8datamodel/SafeChat.cpp"
+ ]
+}

@@ -121,22 +121,29 @@ namespace Ogre
 		SceneMgrQueuedRenderableVisitor* mActiveQueuedRenderableVisitor;    // +0x8bec
 		SceneMgrQueuedRenderableVisitor mDefaultQueuedRenderableVisitor;    // +0x8bf0
 
+		// INFERRED: public access on eight helpers follows verified fork call-site symbols; layout is unchanged.
 		// Non-virtual helpers re-declared by the fork: the fork's bodies call exe copies of them directly.
 		const Pass* deriveShadowCasterPass(const Pass* pass);
 		const Pass* deriveShadowReceiverPass(const Pass* pass);
 		bool validatePassForRendering(const Pass* pass);
 		bool validateRenderableForRendering(const Pass* pass, const Renderable* rend);
+
+	public:
 		MeshPtr createSkyboxPlane(
 			BoxPlane bp,
 			Real distance,
 			const Quaternion& orientation,
 			const String& groupName);
+	protected:
+
+	public:
 		MeshPtr createSkydomePlane(
 			BoxPlane bp,
 			Real curvature, Real tiling, Real distance,
 			const Quaternion& orientation,
 			int xsegments, int ysegments, int ySegmentsToKeep,
 			const String& groupName);
+	protected:
 		void useRenderableViewProjMode(const Renderable* pRend);
 		void resetViewProjMode(void);
 		bool fireRenderQueueStarted(uint8 id, const String& invocation);
@@ -153,19 +160,34 @@ namespace Ogre
 		virtual void initRenderQueue(void);
 		virtual void setViewport(Viewport *vp);
 		virtual void renderVisibleObjectsDefaultSequence(void);
+
+	public:
 		virtual void renderVisibleObjectsCustomSequence(RenderQueueInvocationSequence* s);
+	protected:
 		virtual void prepareRenderQueue(void);
 		virtual void renderSingleObject(const Renderable* rend, const Pass* pass,
 			bool doLightIteration, const LightList* manualLightList = 0);
+
+	public:
 		virtual void findLightsAffectingFrustum(const Camera* camera);
+	protected:
 		virtual void initShadowVolumeMaterials(void);
 		virtual void ensureShadowTexturesCreated();
 		virtual void destroyShadowTextures(void);
+
+	public:
 		virtual void prepareShadowTextures(Camera* cam, Viewport* vp);
+	protected:
+
+	public:
 		virtual void renderShadowVolumesToStencil(const Light* light, const Camera* cam);
+	protected:
 		virtual void setShadowVolumeStencilState(bool secondpass, bool zfail, bool twosided);
+
+	public:
 		virtual const ShadowCasterList& findShadowCastersForLight(const Light* light,
 			const Camera* camera);
+	protected:
 		virtual void renderBasicQueueGroupObjects(RenderQueueGroup* pGroup,
 			QueuedRenderableCollection::OrganisationMode om);
 		virtual void renderAdditiveStencilShadowedQueueGroupObjects(RenderQueueGroup* group,
@@ -176,8 +198,11 @@ namespace Ogre
 			QueuedRenderableCollection::OrganisationMode om);
 		virtual void renderTextureShadowReceiverQueueGroupObjects(RenderQueueGroup* group,
 			QueuedRenderableCollection::OrganisationMode om);
+
+	public:
 		virtual void renderModulativeTextureShadowedQueueGroupObjects(RenderQueueGroup* group,
 			QueuedRenderableCollection::OrganisationMode om);
+	protected:
 		virtual void renderAdditiveTextureShadowedQueueGroupObjects(RenderQueueGroup* group,
 			QueuedRenderableCollection::OrganisationMode om);
 		virtual void renderObjects(const QueuedRenderableCollection& objs,

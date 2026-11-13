@@ -68,7 +68,7 @@ def records(value):
         if value.get('symbol') and value.get('address') and '+' not in str(value['address']):
             yield value
         for key, child in value.items():
-            if not any(word in key.lower() for word in ('pending', 'non_exact', 'not_exact', 'not_attempted', 'blocked')):
+            if not any(word in key.lower() for word in ('pending', 'non_exact', 'not_exact', 'not_attempted', 'blocked', 'rejected')):
                 yield from records(child)
     elif isinstance(value, list):
         for child in value:
@@ -77,12 +77,16 @@ def records(value):
 
 def seed_evidence(root, paths, strict_conflicts=True):
     symbols, bindings, blockers, inputs = {}, {}, [], {}
+    receipts, rejected = [], set()
     def bind(symbol, target):
         target = address(target)
+        if (symbol, target) in rejected:
+            return False
         if symbol in bindings and bindings[symbol] != target:
             bindings[symbol] = None
         else:
             bindings[symbol] = target
+        return True
     for name in paths:
         path = project_path(root, name)
         inputs[str(path)] = sha(path)
@@ -101,14 +105,19 @@ def seed_evidence(root, paths, strict_conflicts=True):
             continue
         if receipt.get('layout_pending'):
             blockers.append('layout remains blocked: ' + name)
+        receipts.append(receipt)
+        for row in (() if receipt.get('layout_pending') else receipt.get('rejected_identities', [])):
+            if row.get('symbol') and row.get('address'):
+                rejected.add((row['symbol'], address(row['address'])))
+    for receipt in receipts:
         for row in records(receipt):
             symbol, target = row['symbol'], address(row['address'])
+            if not bind(symbol, target):
+                continue
             symbols.setdefault(symbol, set()).add(target)
-            bind(symbol, target)
             for reference, value in row.get('bindings', row.get('verified_targets', {})).items():
                 hit = re.match(r'^(0x[0-9a-fA-F]+|[0-9a-fA-F]{8})(?:$|\s|\()', str(value))
-                if hit:
-                    bind(reference, hit[1])
+                if hit and bind(reference, hit[1]):
                     symbols.setdefault(reference, set()).add(address(hit[1]))
     for symbol, target in bindings.items():
         if target is None:
@@ -195,6 +204,8 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         imported = re.match(r'__imp__(\w+?)(@\d+)?$', name)
         if imported and import_slots().get(base) == imported.group(1):
             is_tu_guard = True      # the PE import table itself says this slot is that API: wins over a conflicting reference vote
+        if number > 0 and raw[struct.unpack_from('<I', raw, 8)[0] + 18 * index + 16] == 3:
+            is_tu_guard = True      # internal-linkage data defined here (header `static const`): one copy per TU; its bytes are still compared below
         if known is not None and int(known, 16) != base and not is_local_literal and not is_tu_guard:
             errors.append('reference identity differs: %s (bound %s, original reference %08x)' % (name, known, base))
             return

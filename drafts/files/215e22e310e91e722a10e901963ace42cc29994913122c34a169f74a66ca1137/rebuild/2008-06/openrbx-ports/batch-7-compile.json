@@ -1,0 +1,10 @@
+{
+ "files": [
+  "v8datamodel/Filters.cpp",
+  "v8datamodel/ICharacterSubject.cpp",
+  "script/LuaAtomicClasses.cpp",
+  "v8world/Controller.cpp",
+  "script/ThreadRef.cpp",
+  "tool/ToolsArrow.cpp"
+ ]
+}

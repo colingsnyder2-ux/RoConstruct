@@ -173,6 +173,12 @@ FrameHistory::FrameHistory()
 {
 }
 
+// 0071f210 (ICF-folded getter, INFERRED name): returns the frame count at +0x0; RbxEntity 0067daf0 calls it.
+int FrameHistory::getCount() const
+{
+	return count;
+}
+
 // 006785f0 (RbxEntity 0067e26a)
 void FrameHistory::push(const Frame& frame)
 {
@@ -254,8 +260,6 @@ VisualEngine::~VisualEngine()
 
 
 	// 0067a7e0 (initialize: INFERRED name), from the server-exact fork analog roc_espclaude_66d95e9814d0fd44.cpp.
-	// cleanupRoot: INFERRED placeholder name for the exe function the fork calls on startup failure.
-	void cleanupRoot();
 static __forceinline bool has32BitMode(ConfigOptionMap& options)
 {
     ConfigOptionMap::iterator it = options.find("Video Mode");
@@ -282,7 +286,7 @@ void VisualEngine::initialize(int api, HWND hwnd, int width, int height, int ant
                     sRoot->loadPlugin("rgdx.dll");
                 } catch (std::exception& e) {
                     LogManager::getSingleton().logMessage("Error loading DX9 render system.\n");
-                    cleanupRoot();
+                    destroyRoot();
                     throw std::runtime_error(std::string("Cannot initialize graphics; installation error likely. Error: ") + e.what());
                 }
             } else if (api == 1) {
@@ -290,7 +294,7 @@ void VisualEngine::initialize(int api, HWND hwnd, int width, int height, int ant
                     sRoot->loadPlugin("rggl.dll");
                 } catch (...) {
                     LogManager::getSingleton().logMessage("Error loading OGL render system.\n");
-                    cleanupRoot();
+                    destroyRoot();
                     throw std::runtime_error("Cannot initialize graphics; installation error likely.");
                 }
             }
@@ -298,7 +302,7 @@ void VisualEngine::initialize(int api, HWND hwnd, int width, int height, int ant
                 sRoot->loadPlugin("rgpar.dll");
             } catch (...) {
                 LogManager::getSingleton().logMessage("Error loading particle system.\n");
-                cleanupRoot();
+                destroyRoot();
                 throw std::runtime_error("Cannot initialize gfx component; installation error likely.");
             }
             RenderSystemList* renderers = sRoot->getAvailableRenderers();

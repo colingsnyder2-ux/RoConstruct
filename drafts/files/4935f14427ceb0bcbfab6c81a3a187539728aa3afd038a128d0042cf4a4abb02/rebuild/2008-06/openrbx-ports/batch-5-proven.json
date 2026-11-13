@@ -1,0 +1,59 @@
+{
+ "files": [
+  {
+   "file": "v8datamodel/Flag.cpp",
+   "gain": [
+    "006195b0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006195b0"
+   ],
+   "source_sha256": "1d5b6a37cee0cc7f7b175506d762de529a5462ef18fec5801bd27fc0b45fb7fa",
+   "upstream_sha256": "424e9f3423c9e459316c90fd7ef83e8971a1c5c31c9e1ad74b35be499f4c0d78"
+  },
+  {
+   "file": "v8datamodel/Feature.cpp",
+   "gain": [
+    "00609a60",
+    "0060a0f0",
+    "0060c400",
+    "0060ca00"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00609a60",
+    "0060a0f0",
+    "0060c400",
+    "0060ca00"
+   ],
+   "source_sha256": "74e6f7f337f356fdcd8b95075cf6514250adccfc8d38b8c5507955ee0660341b",
+   "upstream_sha256": "d7b6a72f487bb5d9f1ff302b042904b77557b53afe7c73d82bb44ec2f60a25be"
+  }
+ ],
+ "owned_before": 4422,
+ "owned_after": 4427,
+ "global_gain": [
+  "00609a60",
+  "0060a0f0",
+  "0060c400",
+  "0060ca00",
+  "006195b0"
+ ],
+ "global_loss": [],
+ "milestones": {
+  "M2": {
+   "passed": true,
+   "exit": 0
+  },
+  "M4a": {
+   "passed": true,
+   "exit": 0
+  },
+  "M5": {
+   "passed": true,
+   "exit": 0
+  }
+ },
+ "status": "proven; ready for scoped commit"
+}

@@ -1,0 +1,859 @@
+{
+  "scope": "historical 142 files; shared templates and object membership inflate estimates; not guaranteed gains",
+  "baseline_owned": 4457,
+  "distinct_unowned_candidates": 3584,
+  "files": [
+    {
+      "file": "util/Sound.cpp",
+      "unowned_candidates": 457,
+      "original_errors": 1,
+      "estimated_value_per_error": 457.0
+    },
+    {
+      "file": "humanoid/Humanoid.cpp",
+      "unowned_candidates": 449,
+      "original_errors": 1,
+      "estimated_value_per_error": 449.0
+    },
+    {
+      "file": "v8datamodel/factoryregistration.cpp",
+      "unowned_candidates": 436,
+      "original_errors": 1,
+      "estimated_value_per_error": 436.0
+    },
+    {
+      "file": "v8datamodel/DataModel.cpp",
+      "unowned_candidates": 411,
+      "original_errors": 1,
+      "estimated_value_per_error": 411.0
+    },
+    {
+      "file": "v8datamodel/Workspace.cpp",
+      "unowned_candidates": 399,
+      "original_errors": 1,
+      "estimated_value_per_error": 399.0
+    },
+    {
+      "file": "v8datamodel/Hopper.cpp",
+      "unowned_candidates": 377,
+      "original_errors": 1,
+      "estimated_value_per_error": 377.0
+    },
+    {
+      "file": "v8datamodel/PartInstance.cpp",
+      "unowned_candidates": 369,
+      "original_errors": 1,
+      "estimated_value_per_error": 369.0
+    },
+    {
+      "file": "v8datamodel/Explosion.cpp",
+      "unowned_candidates": 329,
+      "original_errors": 1,
+      "estimated_value_per_error": 329.0
+    },
+    {
+      "file": "v8datamodel/RootInstance.cpp",
+      "unowned_candidates": 317,
+      "original_errors": 1,
+      "estimated_value_per_error": 317.0
+    },
+    {
+      "file": "v8datamodel/Seat.cpp",
+      "unowned_candidates": 312,
+      "original_errors": 1,
+      "estimated_value_per_error": 312.0
+    },
+    {
+      "file": "v8tree/Instance.cpp",
+      "unowned_candidates": 306,
+      "original_errors": 1,
+      "estimated_value_per_error": 306.0
+    },
+    {
+      "file": "v8datamodel/LocakBackpack.cpp",
+      "unowned_candidates": 295,
+      "original_errors": 1,
+      "estimated_value_per_error": 295.0
+    },
+    {
+      "file": "v8datamodel/SpawnLocation.cpp",
+      "unowned_candidates": 295,
+      "original_errors": 1,
+      "estimated_value_per_error": 295.0
+    },
+    {
+      "file": "gui/ChatOutput.cpp",
+      "unowned_candidates": 292,
+      "original_errors": 1,
+      "estimated_value_per_error": 292.0
+    },
+    {
+      "file": "v8datamodel/Camera.cpp",
+      "unowned_candidates": 285,
+      "original_errors": 1,
+      "estimated_value_per_error": 285.0
+    },
+    {
+      "file": "gui/ChatWidget.cpp",
+      "unowned_candidates": 271,
+      "original_errors": 1,
+      "estimated_value_per_error": 271.0
+    },
+    {
+      "file": "tool/NullTool.cpp",
+      "unowned_candidates": 241,
+      "original_errors": 1,
+      "estimated_value_per_error": 241.0
+    },
+    {
+      "file": "script/LuaSignalBridge.cpp",
+      "unowned_candidates": 233,
+      "original_errors": 1,
+      "estimated_value_per_error": 233.0
+    },
+    {
+      "file": "tool/DragUtilities.cpp",
+      "unowned_candidates": 216,
+      "original_errors": 1,
+      "estimated_value_per_error": 216.0
+    },
+    {
+      "file": "util/Http.cpp",
+      "unowned_candidates": 142,
+      "original_errors": 1,
+      "estimated_value_per_error": 142.0
+    },
+    {
+      "file": "v8datamodel/UserController.cpp",
+      "unowned_candidates": 112,
+      "original_errors": 1,
+      "estimated_value_per_error": 112.0
+    },
+    {
+      "file": "util/Name.cpp",
+      "unowned_candidates": 79,
+      "original_errors": 1,
+      "estimated_value_per_error": 79.0
+    },
+    {
+      "file": "v8datamodel/MouseCommand.cpp",
+      "unowned_candidates": 225,
+      "original_errors": 3,
+      "estimated_value_per_error": 75.0
+    },
+    {
+      "file": "v8datamodel/Surfaces.cpp",
+      "unowned_candidates": 70,
+      "original_errors": 1,
+      "estimated_value_per_error": 70.0
+    },
+    {
+      "file": "util/ContentProvider.cpp",
+      "unowned_candidates": 65,
+      "original_errors": 1,
+      "estimated_value_per_error": 65.0
+    },
+    {
+      "file": "v8datamodel/CharacterAppearance.cpp",
+      "unowned_candidates": 390,
+      "original_errors": 6,
+      "estimated_value_per_error": 65.0
+    },
+    {
+      "file": "v8datamodel/Backpack.cpp",
+      "unowned_candidates": 281,
+      "original_errors": 5,
+      "estimated_value_per_error": 56.2
+    },
+    {
+      "file": "v8xml/SerializerV2.cpp",
+      "unowned_candidates": 55,
+      "original_errors": 1,
+      "estimated_value_per_error": 55.0
+    },
+    {
+      "file": "script/ScriptEvent.cpp",
+      "unowned_candidates": 201,
+      "original_errors": 4,
+      "estimated_value_per_error": 50.25
+    },
+    {
+      "file": "script/ScriptContext.cpp",
+      "unowned_candidates": 448,
+      "original_errors": 10,
+      "estimated_value_per_error": 44.8
+    },
+    {
+      "file": "v8datamodel/Gyro.cpp",
+      "unowned_candidates": 397,
+      "original_errors": 9,
+      "estimated_value_per_error": 44.111
+    },
+    {
+      "file": "v8datamodel/Flag.cpp",
+      "unowned_candidates": 348,
+      "original_errors": 8,
+      "estimated_value_per_error": 43.5
+    },
+    {
+      "file": "v8datamodel/Teams.cpp",
+      "unowned_candidates": 327,
+      "original_errors": 8,
+      "estimated_value_per_error": 40.875
+    },
+    {
+      "file": "v8datamodel/Tool.cpp",
+      "unowned_candidates": 445,
+      "original_errors": 11,
+      "estimated_value_per_error": 40.455
+    },
+    {
+      "file": "v8datamodel/Feature.cpp",
+      "unowned_candidates": 425,
+      "original_errors": 11,
+      "estimated_value_per_error": 38.636
+    },
+    {
+      "file": "v8datamodel/FaceInstance.cpp",
+      "unowned_candidates": 73,
+      "original_errors": 2,
+      "estimated_value_per_error": 36.5
+    },
+    {
+      "file": "v8datamodel/Accoutrement.cpp",
+      "unowned_candidates": 384,
+      "original_errors": 11,
+      "estimated_value_per_error": 34.909
+    },
+    {
+      "file": "v8datamodel/Sky.cpp",
+      "unowned_candidates": 346,
+      "original_errors": 10,
+      "estimated_value_per_error": 34.6
+    },
+    {
+      "file": "v8datamodel/DebugSettings.cpp",
+      "unowned_candidates": 340,
+      "original_errors": 10,
+      "estimated_value_per_error": 34.0
+    },
+    {
+      "file": "script/Script.cpp",
+      "unowned_candidates": 325,
+      "original_errors": 10,
+      "estimated_value_per_error": 32.5
+    },
+    {
+      "file": "tool/RunDragger.cpp",
+      "unowned_candidates": 217,
+      "original_errors": 7,
+      "estimated_value_per_error": 31.0
+    },
+    {
+      "file": "v8datamodel/FlagStand.cpp",
+      "unowned_candidates": 334,
+      "original_errors": 11,
+      "estimated_value_per_error": 30.364
+    },
+    {
+      "file": "script/LuaInstanceBridge.cpp",
+      "unowned_candidates": 297,
+      "original_errors": 10,
+      "estimated_value_per_error": 29.7
+    },
+    {
+      "file": "gui/ProfanityFilter.cpp",
+      "unowned_candidates": 28,
+      "original_errors": 1,
+      "estimated_value_per_error": 28.0
+    },
+    {
+      "file": "gui/ScoreHud.cpp",
+      "unowned_candidates": 389,
+      "original_errors": 14,
+      "estimated_value_per_error": 27.786
+    },
+    {
+      "file": "v8datamodel/ToolMouseCommand.cpp",
+      "unowned_candidates": 27,
+      "original_errors": 1,
+      "estimated_value_per_error": 27.0
+    },
+    {
+      "file": "v8datamodel/PVInstance.cpp",
+      "unowned_candidates": 283,
+      "original_errors": 11,
+      "estimated_value_per_error": 25.727
+    },
+    {
+      "file": "v8datamodel/Message.cpp",
+      "unowned_candidates": 279,
+      "original_errors": 11,
+      "estimated_value_per_error": 25.364
+    },
+    {
+      "file": "v8datamodel/JointInstance.cpp",
+      "unowned_candidates": 328,
+      "original_errors": 13,
+      "estimated_value_per_error": 25.231
+    },
+    {
+      "file": "humanoid/Running.cpp",
+      "unowned_candidates": 25,
+      "original_errors": 1,
+      "estimated_value_per_error": 25.0
+    },
+    {
+      "file": "v8datamodel/Value.cpp",
+      "unowned_candidates": 294,
+      "original_errors": 12,
+      "estimated_value_per_error": 24.5
+    },
+    {
+      "file": "v8datamodel/Filters.cpp",
+      "unowned_candidates": 224,
+      "original_errors": 10,
+      "estimated_value_per_error": 22.4
+    },
+    {
+      "file": "gui/HealthHud.cpp",
+      "unowned_candidates": 41,
+      "original_errors": 2,
+      "estimated_value_per_error": 20.5
+    },
+    {
+      "file": "v8datamodel/ICharacterSubject.cpp",
+      "unowned_candidates": 224,
+      "original_errors": 11,
+      "estimated_value_per_error": 20.364
+    },
+    {
+      "file": "v8world/World.cpp",
+      "unowned_candidates": 20,
+      "original_errors": 1,
+      "estimated_value_per_error": 20.0
+    },
+    {
+      "file": "script/LuaAtomicClasses.cpp",
+      "unowned_candidates": 19,
+      "original_errors": 1,
+      "estimated_value_per_error": 19.0
+    },
+    {
+      "file": "v8world/Contact.cpp",
+      "unowned_candidates": 19,
+      "original_errors": 1,
+      "estimated_value_per_error": 19.0
+    },
+    {
+      "file": "v8world/Controller.cpp",
+      "unowned_candidates": 19,
+      "original_errors": 1,
+      "estimated_value_per_error": 19.0
+    },
+    {
+      "file": "script/ThreadRef.cpp",
+      "unowned_candidates": 208,
+      "original_errors": 11,
+      "estimated_value_per_error": 18.909
+    },
+    {
+      "file": "util/RunStateOwner.cpp",
+      "unowned_candidates": 270,
+      "original_errors": 15,
+      "estimated_value_per_error": 18.0
+    },
+    {
+      "file": "gui/ArrowPanel.cpp",
+      "unowned_candidates": 242,
+      "original_errors": 14,
+      "estimated_value_per_error": 17.286
+    },
+    {
+      "file": "tool/ToolsArrow.cpp",
+      "unowned_candidates": 232,
+      "original_errors": 14,
+      "estimated_value_per_error": 16.571
+    },
+    {
+      "file": "tool/PartDragTool.cpp",
+      "unowned_candidates": 219,
+      "original_errors": 14,
+      "estimated_value_per_error": 15.643
+    },
+    {
+      "file": "v8datamodel/TimerService.cpp",
+      "unowned_candidates": 107,
+      "original_errors": 7,
+      "estimated_value_per_error": 15.286
+    },
+    {
+      "file": "v8datamodel/Stats.cpp",
+      "unowned_candidates": 91,
+      "original_errors": 6,
+      "estimated_value_per_error": 15.167
+    },
+    {
+      "file": "v8world/Primitive.cpp",
+      "unowned_candidates": 15,
+      "original_errors": 1,
+      "estimated_value_per_error": 15.0
+    },
+    {
+      "file": "v8datamodel/Decal.cpp",
+      "unowned_candidates": 161,
+      "original_errors": 11,
+      "estimated_value_per_error": 14.636
+    },
+    {
+      "file": "v8datamodel/Visit.cpp",
+      "unowned_candidates": 102,
+      "original_errors": 7,
+      "estimated_value_per_error": 14.571
+    },
+    {
+      "file": "util/boost.cpp",
+      "unowned_candidates": 14,
+      "original_errors": 1,
+      "estimated_value_per_error": 14.0
+    },
+    {
+      "file": "v8datamodel/Selection.cpp",
+      "unowned_candidates": 96,
+      "original_errors": 7,
+      "estimated_value_per_error": 13.714
+    },
+    {
+      "file": "v8datamodel/DebrisService.cpp",
+      "unowned_candidates": 108,
+      "original_errors": 8,
+      "estimated_value_per_error": 13.5
+    },
+    {
+      "file": "tool/Dragger.cpp",
+      "unowned_candidates": 13,
+      "original_errors": 1,
+      "estimated_value_per_error": 13.0
+    },
+    {
+      "file": "util/standardout.cpp",
+      "unowned_candidates": 13,
+      "original_errors": 1,
+      "estimated_value_per_error": 13.0
+    },
+    {
+      "file": "v8world/Block.cpp",
+      "unowned_candidates": 13,
+      "original_errors": 1,
+      "estimated_value_per_error": 13.0
+    },
+    {
+      "file": "v8world/ContactManager.cpp",
+      "unowned_candidates": 13,
+      "original_errors": 1,
+      "estimated_value_per_error": 13.0
+    },
+    {
+      "file": "util/Math.cpp",
+      "unowned_candidates": 12,
+      "original_errors": 1,
+      "estimated_value_per_error": 12.0
+    },
+    {
+      "file": "v8datamodel/Lighting.cpp",
+      "unowned_candidates": 120,
+      "original_errors": 10,
+      "estimated_value_per_error": 12.0
+    },
+    {
+      "file": "humanoid/Balancing.cpp",
+      "unowned_candidates": 23,
+      "original_errors": 2,
+      "estimated_value_per_error": 11.5
+    },
+    {
+      "file": "reflection/reflection_property.cpp",
+      "unowned_candidates": 23,
+      "original_errors": 2,
+      "estimated_value_per_error": 11.5
+    },
+    {
+      "file": "v8datamodel/SafeChat.cpp",
+      "unowned_candidates": 11,
+      "original_errors": 1,
+      "estimated_value_per_error": 11.0
+    },
+    {
+      "file": "v8kernel/Body.cpp",
+      "unowned_candidates": 11,
+      "original_errors": 1,
+      "estimated_value_per_error": 11.0
+    },
+    {
+      "file": "v8datamodel/custommesh.cpp",
+      "unowned_candidates": 109,
+      "original_errors": 10,
+      "estimated_value_per_error": 10.9
+    },
+    {
+      "file": "v8datamodel/ModelInstance.cpp",
+      "unowned_candidates": 133,
+      "original_errors": 13,
+      "estimated_value_per_error": 10.231
+    },
+    {
+      "file": "v8tree/Service.cpp",
+      "unowned_candidates": 77,
+      "original_errors": 8,
+      "estimated_value_per_error": 9.625
+    },
+    {
+      "file": "v8datamodel/Mouse.cpp",
+      "unowned_candidates": 94,
+      "original_errors": 10,
+      "estimated_value_per_error": 9.4
+    },
+    {
+      "file": "v8world/JointStage.cpp",
+      "unowned_candidates": 9,
+      "original_errors": 1,
+      "estimated_value_per_error": 9.0
+    },
+    {
+      "file": "v8datamodel/Team.cpp",
+      "unowned_candidates": 97,
+      "original_errors": 11,
+      "estimated_value_per_error": 8.818
+    },
+    {
+      "file": "v8datamodel/GameSettings.cpp",
+      "unowned_candidates": 96,
+      "original_errors": 11,
+      "estimated_value_per_error": 8.727
+    },
+    {
+      "file": "v8world/SimJobStage.cpp",
+      "unowned_candidates": 8,
+      "original_errors": 1,
+      "estimated_value_per_error": 8.0
+    },
+    {
+      "file": "util/Profiling.cpp",
+      "unowned_candidates": 7,
+      "original_errors": 1,
+      "estimated_value_per_error": 7.0
+    },
+    {
+      "file": "v8kernel/Connector.cpp",
+      "unowned_candidates": 7,
+      "original_errors": 1,
+      "estimated_value_per_error": 7.0
+    },
+    {
+      "file": "v8datamodel/GlobalSettings.cpp",
+      "unowned_candidates": 54,
+      "original_errors": 8,
+      "estimated_value_per_error": 6.75
+    },
+    {
+      "file": "util/Log.cpp",
+      "unowned_candidates": 6,
+      "original_errors": 1,
+      "estimated_value_per_error": 6.0
+    },
+    {
+      "file": "v8world/IMoving.cpp",
+      "unowned_candidates": 6,
+      "original_errors": 1,
+      "estimated_value_per_error": 6.0
+    },
+    {
+      "file": "v8world/RotateJoint.cpp",
+      "unowned_candidates": 6,
+      "original_errors": 1,
+      "estimated_value_per_error": 6.0
+    },
+    {
+      "file": "v8datamodel/ScriptMouseCommand.cpp",
+      "unowned_candidates": 68,
+      "original_errors": 13,
+      "estimated_value_per_error": 5.231
+    },
+    {
+      "file": "v8world/MacroTypes.cpp",
+      "unowned_candidates": 18,
+      "original_errors": 4,
+      "estimated_value_per_error": 4.5
+    },
+    {
+      "file": "v8kernel/SimBody.cpp",
+      "unowned_candidates": 4,
+      "original_errors": 1,
+      "estimated_value_per_error": 4.0
+    },
+    {
+      "file": "v8world/MotorJoint.cpp",
+      "unowned_candidates": 4,
+      "original_errors": 1,
+      "estimated_value_per_error": 4.0
+    },
+    {
+      "file": "v8world/SpatialHash.cpp",
+      "unowned_candidates": 4,
+      "original_errors": 1,
+      "estimated_value_per_error": 4.0
+    },
+    {
+      "file": "v8xml/XmlSerializer.cpp",
+      "unowned_candidates": 28,
+      "original_errors": 8,
+      "estimated_value_per_error": 3.5
+    },
+    {
+      "file": "humanoid/FallingDown.cpp",
+      "unowned_candidates": 22,
+      "original_errors": 7,
+      "estimated_value_per_error": 3.143
+    },
+    {
+      "file": "humanoid/Freefall.cpp",
+      "unowned_candidates": 22,
+      "original_errors": 7,
+      "estimated_value_per_error": 3.143
+    },
+    {
+      "file": "humanoid/GettingUp.cpp",
+      "unowned_candidates": 22,
+      "original_errors": 7,
+      "estimated_value_per_error": 3.143
+    },
+    {
+      "file": "humanoid/Seated.cpp",
+      "unowned_candidates": 22,
+      "original_errors": 7,
+      "estimated_value_per_error": 3.143
+    },
+    {
+      "file": "humanoid/Jumping.cpp",
+      "unowned_candidates": 25,
+      "original_errors": 8,
+      "estimated_value_per_error": 3.125
+    },
+    {
+      "file": "v8world/GlueJoint.cpp",
+      "unowned_candidates": 3,
+      "original_errors": 1,
+      "estimated_value_per_error": 3.0
+    },
+    {
+      "file": "v8world/Joint.cpp",
+      "unowned_candidates": 3,
+      "original_errors": 1,
+      "estimated_value_per_error": 3.0
+    },
+    {
+      "file": "v8world/Mechanism.cpp",
+      "unowned_candidates": 3,
+      "original_errors": 1,
+      "estimated_value_per_error": 3.0
+    },
+    {
+      "file": "v8kernel/Kernel.cpp",
+      "unowned_candidates": 11,
+      "original_errors": 4,
+      "estimated_value_per_error": 2.75
+    },
+    {
+      "file": "tool/MegaDragger.cpp",
+      "unowned_candidates": 24,
+      "original_errors": 9,
+      "estimated_value_per_error": 2.667
+    },
+    {
+      "file": "humanoid/Flying.cpp",
+      "unowned_candidates": 18,
+      "original_errors": 8,
+      "estimated_value_per_error": 2.25
+    },
+    {
+      "file": "util/NormalId.cpp",
+      "unowned_candidates": 2,
+      "original_errors": 1,
+      "estimated_value_per_error": 2.0
+    },
+    {
+      "file": "v8kernel/Point.cpp",
+      "unowned_candidates": 2,
+      "original_errors": 1,
+      "estimated_value_per_error": 2.0
+    },
+    {
+      "file": "v8xml/XmlElement.cpp",
+      "unowned_candidates": 2,
+      "original_errors": 1,
+      "estimated_value_per_error": 2.0
+    },
+    {
+      "file": "gui/GUI.cpp",
+      "unowned_candidates": 22,
+      "original_errors": 14,
+      "estimated_value_per_error": 1.571
+    },
+    {
+      "file": "v8datamodel/BrickColor.cpp",
+      "unowned_candidates": 13,
+      "original_errors": 10,
+      "estimated_value_per_error": 1.3
+    },
+    {
+      "file": "tool/GroupDragTool.cpp",
+      "unowned_candidates": 9,
+      "original_errors": 7,
+      "estimated_value_per_error": 1.286
+    },
+    {
+      "file": "util/Debug.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "v8kernel/Constants.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "v8world/Ball.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "v8world/JointBuilder.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "v8world/RigidJoint.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "v8world/SnapJoint.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "v8world/WeldJoint.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 1,
+      "estimated_value_per_error": 1.0
+    },
+    {
+      "file": "util/FileSystem.cpp",
+      "unowned_candidates": 9,
+      "original_errors": 12,
+      "estimated_value_per_error": 0.75
+    },
+    {
+      "file": "reflection/signal.cpp",
+      "unowned_candidates": 8,
+      "original_errors": 14,
+      "estimated_value_per_error": 0.571
+    },
+    {
+      "file": "util/Extents.cpp",
+      "unowned_candidates": 7,
+      "original_errors": 13,
+      "estimated_value_per_error": 0.538
+    },
+    {
+      "file": "v8world/Edge.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 2,
+      "estimated_value_per_error": 0.5
+    },
+    {
+      "file": "tool/DragTool.cpp",
+      "unowned_candidates": 6,
+      "original_errors": 15,
+      "estimated_value_per_error": 0.4
+    },
+    {
+      "file": "util/IndexBox.cpp",
+      "unowned_candidates": 2,
+      "original_errors": 5,
+      "estimated_value_per_error": 0.4
+    },
+    {
+      "file": "v8tree/Verb.cpp",
+      "unowned_candidates": 2,
+      "original_errors": 10,
+      "estimated_value_per_error": 0.2
+    },
+    {
+      "file": "v8kernel/Link.cpp",
+      "unowned_candidates": 2,
+      "original_errors": 13,
+      "estimated_value_per_error": 0.154
+    },
+    {
+      "file": "util/ExponentialRunningAverage.cpp",
+      "unowned_candidates": 1,
+      "original_errors": 12,
+      "estimated_value_per_error": 0.083
+    },
+    {
+      "file": "util/Face.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 1,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "util/Guid.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 1,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "util/Quaternion.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 1,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "util/Rect.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 14,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "util/RunningAverage.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 6,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "v8kernel/Cofm.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 1,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "v8kernel/Pair.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 1,
+      "estimated_value_per_error": 0.0
+    },
+    {
+      "file": "v8world/IWorldStage.cpp",
+      "unowned_candidates": 0,
+      "original_errors": 1,
+      "estimated_value_per_error": 0.0
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+ "files": [
+  {
+   "file": "v8tree/Service.cpp",
+   "gain": [
+    "00572db0",
+    "0077d6c0"
+   ],
+   "loss": [
+    "004898d0",
+    "0048ae20",
+    "00496350",
+    "0056fe20"
+   ],
+   "new_module_addresses": [
+    "00572db0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/JointStage.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/Team.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/GameSettings.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Profiling.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/GlobalSettings.cpp",
+   "gain": [
+    "00402400",
+    "004025b0",
+    "00411120",
+    "00411ad0",
+    "00413970",
+    "00413a70",
+    "00413d70",
+    "00414370",
+    "00414470",
+    "0042af90",
+    "0042b1e0",
+    "00443400",
+    "00443a10",
+    "00443a60",
+    "00443d60",
+    "00443e50",
+    "00443ec0",
+    "00443ef0",
+    "00443f80",
+    "00444000",
+    "00444050",
+    "004440a0",
+    "00444200",
+    "004442c0",
+    "00444a70",
+    "004a2070",
+    "004acac0",
+    "004aea80",
+    "004aff20",
+    "0055cc20",
+    "00568460",
+    "005684d0",
+    "00568910",
+    "00618a40",
+    "0063fad0",
+    "0064fa10",
+    "0067c5e0",
+    "0068fef0",
+    "0068ff20",
+    "0071f210"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00568460",
+    "005684d0",
+    "00568910"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "v8datamodel/ModelInstance.cpp": "Donor defines FUN_00565040 orientation setter absent from 2008 class; no evidenced named-member mapping.",
+  "v8datamodel/Mouse.cpp": "Donor one-argument MouseCommand::getPart call depends on default filter omitted by 2008 declaration; no class/header edit authorized.",
+  "v8world/SimJobStage.cpp": "2008 overlay replaces mechanisms list with different stage state; donor destroy/insertMechanism definitions no longer declared.",
+  "v8kernel/Connector.cpp": "2008 KernelInput storage/access changes: pointer return, private latch/currentGoal, different get signature; body changes required."
+ },
+ "linked": true,
+ "unresolved": [],
+ "global_gain": [
+  "00566f00",
+  "00568460",
+  "005684d0",
+  "00568910",
+  "00572db0",
+  "00658170",
+  "00658360",
+  "006584e0",
+  "006604a0"
+ ],
+ "global_loss": [],
+ "owned_before": 4427,
+ "owned_after": 4436,
+ "candidate_keep": [
+  "v8datamodel/GlobalSettings.cpp"
+ ],
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": [
+  "v8datamodel/GlobalSettings.cpp"
+ ]
+}

@@ -55,3 +55,48 @@ def test_dll_twin_recheck_records_each_address_without_losing_twins(tmp_path, mo
         'exact', 'exact', 'not exact after _DLL twin recompile',
     ]
     assert [r['address'] for r in item['results']] == ['a', 'b', 'c']
+
+
+def test_ogre_install_discards_incompatible_recipes_even_when_addresses_overlap(tmp_path):
+    live, built = tmp_path / "verified", tmp_path / "verified.building"
+    live.mkdir()
+    built.mkdir()
+    old = [{"obj": "old.obj", "recipe": "ogre-1.4.5-dll", "keep": {"old": "a"}},
+           {"obj": "bad.obj", "recipe": "ogre-1.7.0", "keep": {"bad": "a", "bad2": "b"}}]
+    new = [{"obj": "new.obj", "recipe": "ogre-1.4.5-dll", "keep": {"new": "c"}}]
+    (live / "swaps.json").write_text(json.dumps({"swaps": old}))
+    (built / "swaps.json").write_text(json.dumps({"swaps": new}))
+    for name in ("old.obj", "bad.obj"):
+        (live / name).write_bytes(b"old")
+    (built / "new.obj").write_bytes(b"new")
+    assert "installed" in swap_build.install(live, built, allowed_prefix="ogre-1.4.5")
+    rows = json.loads((live / "swaps.json").read_text())["swaps"]
+    assert {row["recipe"] for row in rows} == {"ogre-1.4.5-dll"}
+    assert swap_build.kept_addresses(live) == {"a", "c"}
+    assert (live / "live-old.obj").read_bytes() == b"old"
+
+
+def test_ogre_install_rejects_incompatible_new_layer(tmp_path):
+    import pytest
+    live, built = tmp_path / "verified", tmp_path / "verified.building"
+    layer(live, ["a"])
+    layer(built, ["b"])
+    with pytest.raises(ValueError, match="incompatible recipe"):
+        swap_build.install(live, built, allowed_prefix="ogre-1.4.5")
+    assert swap_build.kept_addresses(live) == {"a"}
+
+
+def test_ogre_install_cleans_incompatible_layer_without_address_gain(tmp_path):
+    live, built = tmp_path / "verified", tmp_path / "verified.building"
+    live.mkdir()
+    built.mkdir()
+    (live / "swaps.json").write_text(json.dumps({"swaps": [
+        {"obj": "old.obj", "recipe": "ogre-1.4.5-dll", "keep": {"old": "a"}},
+        {"obj": "bad.obj", "recipe": "ogre-1.6.4", "keep": {"bad": "b"}},
+    ]}))
+    (built / "swaps.json").write_text(json.dumps({"swaps": [
+        {"obj": "new.obj", "recipe": "ogre-1.4.5-dll", "keep": {"new": "a"}},
+    ]}))
+    (built / "new.obj").write_bytes(b"new")
+    assert "installed" in swap_build.install(live, built, allowed_prefix="ogre-1.4.5")
+    assert swap_build.kept_addresses(live) == {"a"}

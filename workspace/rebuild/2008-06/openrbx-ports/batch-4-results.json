@@ -1,0 +1,107 @@
+{
+ "files": [
+  {
+   "file": "util/Http.cpp",
+   "gain": [
+    "0056a160",
+    "005f9450"
+   ],
+   "loss": [
+    "00569a40",
+    "00569ae0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/MouseCommand.cpp",
+   "gain": [
+    "00615820",
+    "00615f10"
+   ],
+   "loss": [
+    "004452f0",
+    "0045b310",
+    "0045b950",
+    "00476520",
+    "00485360",
+    "005075e0",
+    "00511ce0",
+    "00513080",
+    "005130d0",
+    "006158f0",
+    "00615cc0",
+    "00615d90"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8xml/SerializerV2.cpp",
+   "gain": [
+    "00414960",
+    "0045db40",
+    "004915b0",
+    "00558fa0",
+    "0055b4a0",
+    "0056fe20",
+    "00591c60",
+    "00592180",
+    "00592780",
+    "005930c0",
+    "00593250",
+    "005f1270",
+    "0060a2f0"
+   ],
+   "loss": [
+    "00618830"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Backpack.cpp",
+   "gain": [
+    "005d18e0"
+   ],
+   "loss": [
+    "004c9c50"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "v8datamodel/SpawnLocation.cpp": "ForceField API absent in 2008 headers.",
+  "v8datamodel/Camera.cpp": "NavKeys/doFly input API absent in 2008 headers.",
+  "tool/NullTool.cpp": "NavKeys/getNavKeys API absent in 2008 headers.",
+  "v8datamodel/UserController.cpp": "NavKeys/getNavKeys API absent in 2008 headers.",
+  "script/LuaSignalBridge.cpp": "ScopedAssign utility absent in 2008 headers; no new helper bodies allowed.",
+  "util/ContentProvider.cpp": "Donor defines MD5Hasher::convertToLegacyHash absent in 2008 declaration; ContentCache type also absent."
+ },
+ "linked": false,
+ "unresolved": [
+  "??0UnlockedPartByLocalCharacter@RBX@@QAE@PAVInstance@1@@Z",
+  "?getSurface@PartInstance@RBX@@QAEPAVSurface@2@ABVRay@G3D@@AAH@Z",
+  "?maxSearch@MouseCommand@RBX@@CA?BMXZ"
+ ],
+ "global_gain": [
+  "0056a160",
+  "00592180",
+  "00592780",
+  "005930c0",
+  "00593250",
+  "005d18e0",
+  "005f9450",
+  "00615820",
+  "00615f10"
+ ],
+ "global_loss": [
+  "00569a40",
+  "00569ae0",
+  "006158f0",
+  "00615cc0",
+  "00615d90"
+ ],
+ "owned_before": 4422,
+ "owned_after": 4426,
+ "accepted": [],
+ "accepted_files": [],
+ "status": "historical selection receipt; accepted files also passed final campaign gates"
+}

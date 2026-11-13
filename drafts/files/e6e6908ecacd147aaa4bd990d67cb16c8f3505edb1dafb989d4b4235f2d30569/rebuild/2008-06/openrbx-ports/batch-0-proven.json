@@ -1,0 +1,76 @@
+{
+ "files": [
+  {
+   "file": "gui/ArrowPanel.cpp",
+   "gain": [
+    "004899a0",
+    "00657780",
+    "00657be0"
+   ],
+   "loss": [],
+   "before": 93,
+   "after": 96,
+   "new_module_addresses": [
+    "00657780",
+    "00657be0"
+   ],
+   "upstream_sha256": "6ea45ab6188d6249990a50d70c6c174a0e9d27f94029c250df4dab47e40b64d2",
+   "ported_sha256": "83ab6fc9ab2c9d65237b680ee92abe285fce6df167946a328169f84e21f1eade"
+  },
+  {
+   "file": "v8datamodel/Teams.cpp",
+   "gain": [
+    "005d6070"
+   ],
+   "loss": [],
+   "before": 118,
+   "after": 119,
+   "new_module_addresses": [
+    "005d6070"
+   ],
+   "upstream_sha256": "6d04b75bef0e0fd0c132bc4ae68772517d4e83c0828b2194b0db5373188b1c90",
+   "ported_sha256": "138d82fdc4df267b484e47d282106bde19ec64e55c5abb2b38f83242b5ead65b"
+  }
+ ],
+ "global_gain": [
+  "005d6070",
+  "00657780",
+  "00657be0"
+ ],
+ "global_loss": [],
+ "owned_before": 4419,
+ "owned_after": 4422,
+ "upstream_revision": "4083cfd3761f7d88938700abaa8bf31598b3576b",
+ "status": "proven: zero per-object/global loss; module smoke and M2/M4a/M5 passed",
+ "ranking_note": "Numerator counts known original decorated identities defined in matching rbxgs object, including inline/template definitions; denominator is observed diagnostics retained by errors.json (compiler output truncates). Scores estimate opportunity, not guaranteed exact gains.",
+ "milestones": {
+  "M2": {
+   "passed": true,
+   "exit": 0,
+   "linked": true
+  },
+  "M4a": {
+   "passed": true,
+   "exit": 0,
+   "linked": true
+  },
+  "M5": {
+   "passed": true,
+   "exit": 0,
+   "linked": true
+  }
+ },
+ "runtime_note": "Unmodified stock test sources linked against trial library. Isolated output retains standard directory depth for FMOD autolinks; stock runtime DLLs copied byte-for-byte. Existing linked test exes rerun after supplying missing DLLs.",
+ "proof_sha256": {
+  "final-baseline-report.json": "7b4e10fb74b8ed8153fe8d8d41fc18045e9a88c4a95cefca0d4e475e3ebfe6b9",
+  "final-baseline-owned-symbols.json": "c58e6de48b7d9a5c1c1cd2b0e355954f53e460d8a6a4b67f52ca3cf14be13539",
+  "report.json": "93afe7611a1fa9e8e33c308c3c3407abff232d9ad02168dc0d8042d2dbc5d07d",
+  "owned-symbols.json": "d7b873354a94fcd867637122bf65c841ae8ed0d96445a3e68342f394e0f4d30c",
+  "milestones.json": "d4532b305a7608a6ca51b92683decc4c704234ebaec8345cf1ffaf25c46de297"
+ },
+ "port_objects_sha256": {
+  "gui/ArrowPanel.cpp": "df3c64e43dfd7be797b56631b9ae1a9d911e0320a9cb09ff47d02973620f0a2e",
+  "v8datamodel/Teams.cpp": "b499a8f8a49b3e2a668a0c0813af7bce76e703fdb786043038737a997e76bbe5"
+ },
+ "verified_inputs": "Copied current RbxgsApp/verified before final trial; owner baseline five OpenRBX files retained as separate layer."
+}

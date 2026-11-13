@@ -1,0 +1,207 @@
+{
+ "scope": "Reviewed comparator-specific identity corrections; bodies and references require independent proof.",
+ "sources": {
+  "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764"
+ },
+ "rejected_identities": [
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z",
+   "address": "006118a0",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z",
+   "address": "006118a0",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e390",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+   "address": "0068e440",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+   "address": "0068e4a0",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$unchecked_merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@stdext@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "00694020",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00690620",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z",
+   "address": "006903a0",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightsForShadowTextureLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00692770",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  },
+  {
+   "symbol": "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "00697e40",
+   "evidence": "Contradicted by original comparator implementation and direct call targets at 006903dc, 0069064b, 006906d0, 0069d660 and 0069d720."
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??RlightsForShadowTextureLess@SceneManager@Ogre@@QBE_NPBVLight@2@0@Z",
+   "address": "0068c740",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0068e500",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "__imp__memmove_s": "00802850"
+   }
+  },
+  {
+   "symbol": "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+   "address": "0068e5f0",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {}
+  },
+  {
+   "symbol": "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z",
+   "address": "0068e6a0",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z",
+   "address": "00690460",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z",
+   "address": "006903a0",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@std@@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "006906d0",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "__imp__memmove_s": "00802850"
+   }
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00694080",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightsForShadowTextureLess@SceneManager@2@Uforward_iterator_tag@4@@std@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@0@PAPAVLight@Ogre@@000V10@UlightsForShadowTextureLess@SceneManager@3@Uforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00692880",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$unchecked_merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@stdext@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "00694080",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Chunked_merge@PAPAVLight@Ogre@@PAPAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHUlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z",
+   "address": "006941b0",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$unchecked_merge@PAPAVLight@Ogre@@PAPAV12@V?$_Temp_iterator@PAVLight@Ogre@@@std@@UlightsForShadowTextureLess@SceneManager@2@@stdext@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@std@@PAPAVLight@Ogre@@000V12@UlightsForShadowTextureLess@SceneManager@4@@Z",
+   "address": "00694320",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "00698070",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "??RlightsForShadowTextureLess@SceneManager@Ogre@@QBE_NPBVLight@2@0@Z": "0068c740",
+    "?_Maxlen@?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$unchecked_copy@PAPAVLight@Ogre@@V?$_Temp_iterator@PAVLight@Ogre@@@std@@@stdext@@YA?AV?$_Temp_iterator@PAVLight@Ogre@@@std@@PAPAVLight@Ogre@@0V12@@Z": "00692550",
+    "??3@YAXPAX@Z": "006a067a",
+    "??$unchecked_merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@stdext@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@@Z": "00694080",
+    "??$_Merge_backward@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightsForShadowTextureLess@SceneManager@2@U_Range_checked_iterator_tag@0@@Z": "0068e500",
+    "??$_Lower_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e5f0",
+    "??$_Upper_bound@PAPAVLight@Ogre@@PAV12@HUlightsForShadowTextureLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0ABQAV12@UlightsForShadowTextureLess@SceneManager@2@PAH@Z": "0068e6a0",
+    "??$_Buffered_rotate@PAPAVLight@Ogre@@HPAV12@@std@@YAPAPAVLight@Ogre@@PAPAV12@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@@Z": "006925c0",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "00698070"
+   }
+  },
+  {
+   "symbol": "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "0069b210",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z",
+   "address": "0069b140",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile."
+  },
+  {
+   "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "0069d720",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightsForShadowTextureLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightsForShadowTextureLess@SceneManager@2@0@Z": "00690460",
+    "?_Maxlen@?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "0069b210",
+    "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "0069d720",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z": "00698070"
+   }
+  },
+  {
+   "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z",
+   "address": "0069d660",
+   "inferred_name": true,
+   "evidence": "Original comparator-specific calls and class-owned 1.4.5 body; byte and reference match under shadow-inline profile.",
+   "bindings": {
+    "??$_Insertion_sort1@PAPAVLight@Ogre@@UlightLess@SceneManager@2@PAV12@@std@@YAXPAPAVLight@Ogre@@0UlightLess@SceneManager@2@0@Z": "006903a0",
+    "?_Maxlen@?$_Temp_iterator@PAVLight@Ogre@@@std@@QAEHXZ": "006902d0",
+    "??$_Buffered_merge_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "0069b140",
+    "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "0069d660",
+    "??$_Buffered_merge@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@00HHAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z": "00697e40"
+   }
+  },
+  {
+   "symbol": "??$_Merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightLess@SceneManager@2@@std@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightLess@SceneManager@2@Urandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00694020",
+   "inferred_name": true,
+   "evidence": "Original wrapper 00694020 calls 00690620 lightLess comparator import."
+  },
+  {
+   "symbol": "??$unchecked_merge@PAPAVLight@Ogre@@PAPAV12@PAPAV12@UlightLess@SceneManager@2@@stdext@@YAPAPAVLight@Ogre@@PAPAV12@0000UlightLess@SceneManager@2@@Z",
+   "address": "00694020",
+   "inferred_name": true,
+   "evidence": "Original wrapper 00694020 calls 00690620 lightLess comparator import."
+  }
+ ]
+}

@@ -82,7 +82,7 @@ class NativeBulkTests(unittest.TestCase):
                                    {"?familyBody@@YAXXZ": {"00001000"}},
                                    {"?callee@@YAXXZ": "00003000"})
         self.assertEqual(rows[0]["status"], "draft")
-        self.assertIn("reference identity differs: ?callee@@YAXXZ",
+        self.assertIn("reference identity differs: ?callee@@YAXXZ (bound 00003000, original reference 00002000)",
                       rows[0]["rejections"][0]["errors"])
 
     def test_absolute_field_without_original_relocation_is_rejected(self):
@@ -121,7 +121,7 @@ class NativeBulkTests(unittest.TestCase):
         wrong = dict(bindings, **{"?nested@@3PAHA": "00004000"})
         rejected = native_bulk.harvest(nested_data_object(candidate), targets, names, wrong)
         self.assertEqual(rejected[0]["status"], "draft")
-        self.assertIn("reference identity differs: ?nested@@3PAHA",
+        self.assertIn("reference identity differs: ?nested@@3PAHA (bound 00004000, original reference 00003000)",
                       rejected[0]["rejections"][0]["errors"])
 
     def test_ambiguous_named_aliases_do_not_become_provider(self):
@@ -158,6 +158,48 @@ class NativeBulkTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             with self.assertRaises(ValueError):
                 native_bulk.seed_evidence(Path(folder), ["../outside.json"])
+
+    def test_reviewed_rejection_excludes_only_the_disproved_binding(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "old.json").write_text(json.dumps({"rows": [
+                {"symbol": "?sort@@", "address": "006118a0"},
+                {"symbol": "?other@@", "address": "006118a0"},
+                {"symbol": "?wrapper@@", "address": "00600000",
+                 "bindings": {"?sort@@": "006118a0"}}]}))
+            (root / "corrected.json").write_text(json.dumps({
+                "rejected_identities": [{"symbol": "?sort@@", "address": "006118a0"}],
+                "rows": [{"symbol": "?sort@@", "address": "006903a0"}]}))
+            names, bindings, blockers, _ = native_bulk.seed_evidence(root, ["old.json", "corrected.json"])
+        self.assertEqual(names["?sort@@"], {"006903a0"})
+        self.assertEqual(bindings["?sort@@"], "006903a0")
+        self.assertEqual(bindings["?other@@"], "006118a0")
+        self.assertEqual(bindings["?wrapper@@"], "00600000")
+        self.assertEqual(blockers, [])
+
+    def test_stale_rejection_does_not_suppress_existing_evidence(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "body.cpp").write_text("void f() {}")
+            (root / "old.json").write_text(json.dumps({"rows": [
+                {"symbol": "?sort@@", "address": "006118a0"}]}))
+            (root / "stale.json").write_text(json.dumps({
+                "sources": {"body.cpp": "0" * 64},
+                "rejected_identities": [{"symbol": "?sort@@", "address": "006118a0"}]}))
+            _, bindings, blockers, _ = native_bulk.seed_evidence(root, ["old.json", "stale.json"])
+        self.assertEqual(bindings["?sort@@"], "006118a0")
+        self.assertTrue(any(b.startswith("stale reference receipt:") for b in blockers))
+
+    def test_layout_pending_rejection_does_not_suppress_existing_evidence(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "old.json").write_text(json.dumps({"rows": [
+                {"symbol": "?sort@@", "address": "006118a0"}]}))
+            (root / "pending.json").write_text(json.dumps({"layout_pending": True,
+                "rejected_identities": [{"symbol": "?sort@@", "address": "006118a0"}]}))
+            _, bindings, blockers, _ = native_bulk.seed_evidence(root, ["old.json", "pending.json"])
+        self.assertEqual(bindings["?sort@@"], "006118a0")
+        self.assertTrue(any(b.startswith("layout remains blocked:") for b in blockers))
 
     def test_run_reuses_object_and_harvest_cache_when_inputs_stay_fresh(self):
         code = b"\x55\x8b\xec\x83\xec\x08\xc3"

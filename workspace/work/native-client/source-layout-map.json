@@ -1,0 +1,4661 @@
+{
+ "scope": "Proposed original 2008 path per native source; evidence-ranked; nothing is moved.",
+ "original_root": "d:/Roblox/Releases/2008.06.17/Client (exe path strings)",
+ "library_roots": {
+  "g3d-6.09/source": "Client/Rendering/g3d",
+  "xtp-11.2.2": "Client/3rdparty/XTP",
+  "boost_1_34_1": "Client/boost_1_34_1",
+  "lua-5.1.4/src": "Client/App/lua-5.1.4/src",
+  "lua-5.1.1/src": "Client/App/lua-5.1.1/src",
+  "jpeg-6b": "Client/Rendering/g3d/IJG",
+  "zlib-1.2.3": "Client/Rendering/g3d/zlib",
+  "mfc-9.0-rtm/atlmfc/src/mfc": "VC/atlmfc/src/mfc",
+  "mfc-9.0/atlmfc/src/mfc": "VC/atlmfc/src/mfc"
+ },
+ "guessed_library_roots": [
+  "Client/3rdparty/XTP",
+  "Client/App/lua-5.1.1/src",
+  "Client/App/lua-5.1.4/src",
+  "Client/Rendering/g3d/IJG",
+  "Client/Rendering/g3d/zlib",
+  "VC/atlmfc/src/mfc"
+ ],
+ "rows": [
+  {
+   "native": "rebuild/2008-06/native-classes/Accoutrement.cpp",
+   "path": "Client/App/v8datamodel/Accoutrement.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ActiveDocView.cpp",
+   "path": "Client/win/ActiveDocView.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp",
+   "path": "Client/win/ActiveDocView.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/AdornG3D.cpp",
+   "path": "Client/Rendering/AppDraw/AdornG3D.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
+   "path": "Client/Rendering/AppDraw/AdornRbxGfx.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ArrowPanel.cpp",
+   "path": "Client/App/gui/ArrowPanel.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Atlatl.cpp",
+   "path": "lib:mfc-9.0/atlmfc/src/atl/atl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Backpack.cpp",
+   "path": "Client/App/v8datamodel/Backpack.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Ball.cpp",
+   "path": "Client/App/v8world/Ball.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Block.cpp",
+   "path": "Client/App/v8world/Block.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostbarrier.cpp",
+   "path": "Client/boost_1_34_1/libs/thread/src/barrier.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostcmdline.cpp",
+   "path": "Client/boost_1_34_1/libs/program_options/src/cmdline.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostconnection.cpp",
+   "path": "Client/boost_1_34_1/libs/signals/src/connection.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostconvert.cpp",
+   "path": "Client/boost_1_34_1/libs/program_options/src/convert.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostcpp_regex_traits.cpp",
+   "path": "Client/boost_1_34_1/libs/regex/src/cpp_regex_traits.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostcregex.cpp",
+   "path": "Client/boost_1_34_1/libs/regex/src/cregex.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostgreg_month.cpp",
+   "path": "Client/boost_1_34_1/libs/date_time/src/gregorian/greg_month.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostinstances.cpp",
+   "path": "Client/boost_1_34_1/libs/regex/src/instances.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostmutex.cpp",
+   "path": "Client/boost_1_34_1/libs/thread/src/mutex.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostnamed_slot_map.cpp",
+   "path": "Client/boost_1_34_1/libs/signals/src/named_slot_map.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostonce.cpp",
+   "path": "Client/boost_1_34_1/libs/thread/src/once.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostoperations.cpp",
+   "path": "Client/boost_1_34_1/libs/filesystem/src/operations.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostoptions_description.cpp",
+   "path": "Client/boost_1_34_1/libs/program_options/src/options_description.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostrecursive_mutex.cpp",
+   "path": "Client/boost_1_34_1/libs/thread/src/recursive_mutex.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostsignal_base.cpp",
+   "path": "Client/boost_1_34_1/libs/signals/src/signal_base.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostslot.cpp",
+   "path": "Client/boost_1_34_1/libs/signals/src/slot.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boosttrackable.cpp",
+   "path": "Client/boost_1_34_1/libs/signals/src/trackable.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boosttss.cpp",
+   "path": "Client/boost_1_34_1/libs/thread/src/tss.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boosttss_hooks.cpp",
+   "path": "Client/boost_1_34_1/libs/thread/src/tss_hooks.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostvalue_semantic.cpp",
+   "path": "Client/boost_1_34_1/libs/program_options/src/value_semantic.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Boostzlib.cpp",
+   "path": "Client/boost_1_34_1/libs/iostreams/src/zlib.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrickColorColor3.cpp",
+   "path": "Client/App/v8datamodel/BrickColor.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrickColorConversions.cpp",
+   "path": "Client/App/v8datamodel/BrickColor.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrickColorMapAccess.cpp",
+   "path": "Client/App/v8datamodel/BrickColor.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrickColorMapPopulation.cpp",
+   "path": "Client/App/v8datamodel/BrickColor.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrickColorMapSingleton.cpp",
+   "path": "Client/App/v8datamodel/BrickColor.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrickColorProviders.cpp",
+   "path": "Client/App/v8datamodel/BrickColor.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrowserViewExternalFactory.cpp",
+   "path": "Client/win/BrowserView.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrowserViewExternalGetApp.cpp",
+   "path": "Client/win/BrowserView.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp",
+   "path": "Client/win/BrowserView.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp",
+   "path": "Client/win/AboutRobloxDialog.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CameraCenterCommand.cpp",
+   "path": "Client/App/v8datamodel/Camera.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CameraConstants.cpp",
+   "path": "Client/App/v8datamodel/Camera.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CameraFirstPerson.cpp",
+   "path": "Client/App/v8datamodel/Camera.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CameraHistory.cpp",
+   "path": "Client/App/v8datamodel/Camera.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CameraUnits.cpp",
+   "path": "Client/App/v8datamodel/Camera.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp",
+   "path": "Client/App/v8datamodel/Camera.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CBrowserView.cpp",
+   "path": "Client/win/BrowserView.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CChatPrompt.cpp",
+   "path": "Client/win/ChatPrompt.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ChatOutput.cpp",
+   "path": "Client/App/gui/ChatOutput.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp",
+   "path": "Client/win/InsertObjectDialog.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CInstanceExplorer.cpp",
+   "path": "Client/win/InstanceExplorer.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CMarshalWindow.cpp",
+   "path": "Client/win/MarshalWindow.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "path": "Client/win/MultiPlayerPane.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+   "path": "Client/win/ObjectBrowser.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Contact.cpp",
+   "path": "Client/App/v8world/Contact.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactManagerLifetime.cpp",
+   "path": "Client/App/v8world/ContactManager.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactManagerStats.cpp",
+   "path": "Client/App/v8world/ContactManager.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactUnit2008Connector.cpp",
+   "path": "Client/App/v8world/Contact.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactUnit2008ConnectorBody.cpp",
+   "path": "Client/App/v8world/Contact.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp",
+   "path": "Client/App/v8world/Contact.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp",
+   "path": "Client/App/v8world/Contact.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContactUnit2008PVInstance.cpp",
+   "path": "Client/App/v8world/Contact.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentIdAssets.cpp",
+   "path": "Client/win/Content.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProvider.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderCreateContext.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderGetContent.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderGetFile.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderLoad.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderLoadContent.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderRegisterFile.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderUrl.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentProviderWorkerBinding.cpp",
+   "path": "Client/App/util/ContentProvider.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ContentRead.cpp",
+   "path": "Client/win/Content.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ControllerActions.cpp",
+   "path": "Client/App/v8world/Controller.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ControllerApply.cpp",
+   "path": "Client/App/v8world/Controller.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ControllerEnabled.cpp",
+   "path": "Client/App/v8world/Controller.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CPropGrid.cpp",
+   "path": "Client/win/PropGrid.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CRenderSettings.cpp",
+   "path": "Client/win/RenderSettings.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CRobloxDoc.cpp",
+   "path": "Client/win/RobloxDoc.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CRobloxReportView.cpp",
+   "path": "Client/win/RobloxReportView.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp",
+   "path": "Client/win/RobloxTreeCtrl.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CRobloxView.cpp",
+   "path": "Client/win/RobloxView.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp",
+   "path": "Client/win/SaveToRobloxDialog.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CScriptDoc.cpp",
+   "path": "Client/win/ScriptDoc.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CSecureHtmlView.cpp",
+   "path": "Client/win/SecureHtmlView.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CSelectionCaption.cpp",
+   "path": "Client/win/SelectionCaption.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "path": "Client/win/SettingsDialog.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CVersionInfo.cpp",
+   "path": "Client/win/VersionInfo.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CWebToolbox.cpp",
+   "path": "Client/win/WebToolbox.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/CWorkspace.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelClassName.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelCreate.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelGui.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelInitialize.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelLock.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DataModelTiming.cpp",
+   "path": "Client/App/v8datamodel/DataModel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DebrisService.cpp",
+   "path": "Client/App/v8datamodel/DebrisService.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DebugSettings.cpp",
+   "path": "Client/App/v8datamodel/DebugSettings.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DebugSettingsCoordinateGetters.cpp",
+   "path": "Client/App/v8datamodel/DebugSettings.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DebugSettingsSingleton.cpp",
+   "path": "Client/App/v8datamodel/DebugSettings.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DebugSettingsSpecData.cpp",
+   "path": "Client/App/v8datamodel/DebugSettings.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DecalBases.cpp",
+   "path": "Client/App/v8datamodel/Decal.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DecalLifetime.cpp",
+   "path": "Client/App/v8datamodel/Decal.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
+   "path": "Client/App/tool/Dragger.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DraggerPlacement.cpp",
+   "path": "Client/App/tool/Dragger.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/DragTool.cpp",
+   "path": "Client/App/tool/DragTool.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/EquationDisplay.cpp",
+   "path": "Client/App/gui/EquationDisplay.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ErrorUploader2008.cpp",
+   "path": "Client/win/ErrorUploader.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ErrorUploaderCallback.cpp",
+   "path": "Client/win/ErrorUploader.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ErrorUploaderConstructor.cpp",
+   "path": "Client/win/ErrorUploader.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ErrorUploaderLifetime.cpp",
+   "path": "Client/win/ErrorUploader.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ErrorUploaderState.cpp",
+   "path": "Client/win/ErrorUploader.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Explosion.cpp",
+   "path": "Client/App/v8datamodel/Explosion.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/FaceInstanceLifetime.cpp",
+   "path": "Client/App/v8datamodel/FaceInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Feature.cpp",
+   "path": "Client/App/v8datamodel/Feature.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/FileSystem.cpp",
+   "path": "Client/App/util/FileSystem.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Filters.cpp",
+   "path": "Client/App/v8datamodel/Filters.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Flag.cpp",
+   "path": "Client/App/v8datamodel/Flag.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/FlagStand.cpp",
+   "path": "Client/App/v8datamodel/FlagStand.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/FlagStandService.cpp",
+   "path": "Client/App/v8datamodel/FlagStand.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ForceField.cpp",
+   "path": "Client/App/v8datamodel/ForceField.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DAABox.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/AABox.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DBinaryInput.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/BinaryInput.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/BinaryOutput.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DBox.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Box.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCapsule.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Capsule.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCollisionDetection.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/CollisionDetection.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DColor3.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Color3.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DColor3uint8.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Color3uint8.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DColor4.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Color4.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DColor4uint8.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Color4uint8.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCone.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Cone.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DConvexPolyhedron.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/ConvexPolyhedron.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCoordinateFrame.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/CoordinateFrame.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCrypto.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Crypto.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCrypto_md5.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Crypto_md5.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DCylinder.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Cylinder.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DDDSTexture.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/DDSTexture.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DdebugAssert.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/debugAssert.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DDiscovery.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Discovery.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DDraw.cpp",
+   "path": "Client/Rendering/AppDraw/Draw.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DDXCaps.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/DXCaps.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DedgeFeatures.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/edgeFeatures.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dfileutils.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/fileutils.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dformat.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/format.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DFramebuffer.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Framebuffer.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dg3dmath.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/g3dmath.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGApp.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/GApp.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGCamera.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GCamera.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DgetOpenGLState.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/getOpenGLState.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGFont.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/GFont.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage_bayer.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage_bayer.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage_bmp.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage_bmp.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage_jpeg.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage_jpeg.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage_png.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage_png.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage_ppm.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage_ppm.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGImage_tga.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GImage_tga.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dglcalls.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/glcalls.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGLCaps.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/GLCaps.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dglenumtostring.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/glenumtostring.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGLight.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/GLight.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGModule.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/GModule.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGPUProgram.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/GPUProgram.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DGWindow.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/GWindow.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DIFSModel.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/IFSModel.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DLightingParameters.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/LightingParameters.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DLine.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Line.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DLineSegment.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/LineSegment.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DLog.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Log.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DManualCameraController.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/ManualCameraController.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMatrix3.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Matrix3.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMatrix4.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Matrix4.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMD2Model.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/MD2Model.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMD2Model_load.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/MD2Model_load.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMeshAlg.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/MeshAlg.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMeshAlgAdjacency.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/MeshAlgAdjacency.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMeshAlgWeld.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/MeshAlgWeld.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMeshBuilder.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/MeshBuilder.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DMilestone.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Milestone.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DNetAddress.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/NetAddress.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DNetworkDevice.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/NetworkDevice.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DPhysicsFrame.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/PhysicsFrame.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DPixelProgram.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/PixelProgram.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DPlane.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Plane.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DPosedModel.cpp",
+   "path": "Client/Rendering/g3d/GLG3Dcpp/PosedModel.cpp",
+   "evidence": "upstream",
+   "guessed_root": false
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dprompt.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/prompt.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DQuat.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Quat.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DRay.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Ray.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DRegistryUtil.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/RegistryUtil.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DRenderbuffer.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Renderbuffer.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DRenderDevice.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/RenderDevice.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DSDLWindow.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/SDLWindow.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DShader.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Shader.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DshadowVolume.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/shadowVolume.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DShape.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Shape.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DSky.cpp",
+   "path": "Client/App/v8datamodel/Sky.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DSphere.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Sphere.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DStopwatch.cpp",
+   "path": "Client/Rendering/g3d/g3dcpp/Stopwatch.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dstringutils.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/stringutils.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DSystem.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/System.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3Dtesselate.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/tesselate.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DTextInput.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/TextInput.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DTextOutput.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/TextOutput.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DTexture.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Texture.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DTextureFormat.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/TextureFormat.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DTextureManager.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/TextureManager.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DTriangle.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Triangle.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DUserInput.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/UserInput.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVAR.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/VAR.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVARArea.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/VARArea.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVector2.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Vector2.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVector2int16.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Vector2int16.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVector3.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Vector3.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVector3int16.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Vector3int16.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVector4.cpp",
+   "path": "Client/Rendering/g3d/G3Dcpp/Vector4.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DVertexProgram.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/VertexProgram.cpp",
+   "evidence": "line-directive"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/G3DWin32Window.cpp",
+   "path": "Client/Rendering/g3d/glg3dcpp/Win32Window.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/GameSettings.cpp",
+   "path": "Client/App/v8datamodel/GameSettings.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/GameSettingsSingleton.cpp",
+   "path": "Client/App/v8datamodel/GameSettings.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/GameSettingsStorage.cpp",
+   "path": "Client/App/v8datamodel/GameSettings.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/GeometryService.cpp",
+   "path": "Client/App/v8datamodel/GeometryService.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Guid.cpp",
+   "path": "Client/App/util/Guid.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/GuiDrawImage.cpp",
+   "path": "Client/App/gui/GuiDraw.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HandleHitTest.cpp",
+   "path": "Client/App/util/Handle.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HandleRadius.cpp",
+   "path": "Client/App/util/Handle.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HealthHud.cpp",
+   "path": "Client/App/gui/HealthHud.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Hopper.cpp",
+   "path": "Client/App/v8datamodel/Hopper.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Humanoid2008.cpp",
+   "path": "Client/App/humanoid/Humanoid.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HumanoidState.cpp",
+   "path": "Client/App/humanoid/Humanoid.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+   "path": "Client/App/humanoid/Humanoid.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp",
+   "path": "Client/App/humanoid/Humanoid.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HumanoidStates2.cpp",
+   "path": "Client/App/humanoid/Humanoid.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/HumanoidStates3.cpp",
+   "path": "Client/App/humanoid/Humanoid.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceAnchorChildren.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceArchivableDescriptor.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceChildAcceptance.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceChildListener.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceChildPermission.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceClassLookup.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceContainment.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceDescendantPropagation.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceFullName.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceLifetime.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceParent.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceParentDescriptor.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceReadChildren.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceReadProperty.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceSerialization.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp",
+   "path": "Client/App/v8tree/Instance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/IWorldStage2008.cpp",
+   "path": "Client/App/v8world/IWorldStage.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/JointsService.cpp",
+   "path": "Client/App/v8datamodel/JointsService.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/JointStage2008.cpp",
+   "path": "Client/App/v8world/JointStage.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjcmarker.cpp",
+   "path": "Client/Rendering/g3d/IJG/jcmarker.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjcmaster.cpp",
+   "path": "Client/Rendering/g3d/IJG/jcmaster.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjcomapi.cpp",
+   "path": "Client/Rendering/g3d/IJG/jcomapi.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdatasrc.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdatasrc.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdcoefct.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdcoefct.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdcolor.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdcolor.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdinput.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdinput.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdmainct.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdmainct.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdmarker.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdmarker.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdmaster.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdmaster.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdmerge.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdmerge.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjdsample.cpp",
+   "path": "Client/Rendering/g3d/IJG/jdsample.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjerror.cpp",
+   "path": "Client/Rendering/g3d/IJG/jerror.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjidctred.cpp",
+   "path": "Client/Rendering/g3d/IJG/jidctred.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjmemmgr.cpp",
+   "path": "Client/Rendering/g3d/IJG/jmemmgr.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjquant1.cpp",
+   "path": "Client/Rendering/g3d/IJG/jquant1.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjquant2.cpp",
+   "path": "Client/Rendering/g3d/IJG/jquant2.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Jpegjutils.cpp",
+   "path": "Client/Rendering/g3d/IJG/jutils.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Kernel2008.cpp",
+   "path": "Client/App/v8kernel/Kernel.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/KernelConnector.cpp",
+   "path": "Client/App/v8kernel/Kernel.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/LDrawParser.cpp",
+   "path": "Client/win/LDrawParser.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/LDrawParserParse.cpp",
+   "path": "Client/win/LDrawParser.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lighting2008.cpp",
+   "path": "Client/App/v8datamodel/Lighting.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
+   "path": "Client/win/LogManager.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/LogManagerGet.cpp",
+   "path": "Client/win/LogManager.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/LogManagerState.cpp",
+   "path": "Client/win/LogManager.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua511lbaselib.cpp",
+   "path": "Client/App/lua-5.1.1/src/lbaselib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lapi.cpp",
+   "path": "Client/App/lua-5.1.4/src/lapi.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lauxlib.cpp",
+   "path": "Client/App/lua-5.1.4/src/lauxlib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lbaselib.cpp",
+   "path": "Client/App/lua-5.1.4/src/lbaselib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lcode.cpp",
+   "path": "Client/App/lua-5.1.4/src/lcode.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54ldebug.cpp",
+   "path": "Client/App/lua-5.1.4/src/ldebug.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54ldo.cpp",
+   "path": "Client/App/lua-5.1.4/src/ldo.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lfunc.cpp",
+   "path": "Client/App/lua-5.1.4/src/lfunc.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lgc.cpp",
+   "path": "Client/App/lua-5.1.4/src/lgc.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54liolib.cpp",
+   "path": "Client/App/lua-5.1.4/src/liolib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54llex.cpp",
+   "path": "Client/App/lua-5.1.4/src/llex.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lmathlib.cpp",
+   "path": "Client/App/lua-5.1.4/src/lmathlib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lmem.cpp",
+   "path": "Client/App/lua-5.1.4/src/lmem.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lobject.cpp",
+   "path": "Client/App/lua-5.1.4/src/lobject.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lparser.cpp",
+   "path": "Client/App/lua-5.1.4/src/lparser.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lstate.cpp",
+   "path": "Client/App/lua-5.1.4/src/lstate.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lstrlib.cpp",
+   "path": "Client/App/lua-5.1.4/src/lstrlib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54ltablib.cpp",
+   "path": "Client/App/lua-5.1.4/src/ltablib.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54ltm.cpp",
+   "path": "Client/App/lua-5.1.4/src/ltm.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lundump.cpp",
+   "path": "Client/App/lua-5.1.4/src/lundump.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Lua54lzio.cpp",
+   "path": "Client/App/lua-5.1.4/src/lzio.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MarshalWindowGlobals.cpp",
+   "path": "Client/win/MarshalWindow.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MarshalWindowRegistry.cpp",
+   "path": "Client/win/MarshalWindow.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MegaDragger.cpp",
+   "path": "Client/App/tool/MegaDragger.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MegaDraggerMovement.cpp",
+   "path": "Client/App/tool/MegaDragger.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Message.cpp",
+   "path": "Client/App/v8datamodel/Message.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxacceleratorkey.cpp",
+   "path": "VC/atlmfc/src/mfc/afxacceleratorkey.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxacceleratorkeyassignctrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxacceleratorkeyassignctrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxautohidebar.cpp",
+   "path": "VC/atlmfc/src/mfc/afxautohidebar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxautohidebutton.cpp",
+   "path": "VC/atlmfc/src/mfc/afxautohidebutton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxautohidedocksite.cpp",
+   "path": "VC/atlmfc/src/mfc/afxautohidedocksite.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxbasepane.cpp",
+   "path": "VC/atlmfc/src/mfc/afxbasepane.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxbaseribbonelement.cpp",
+   "path": "VC/atlmfc/src/mfc/afxbaseribbonelement.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxbasetabbedpane.cpp",
+   "path": "VC/atlmfc/src/mfc/afxbasetabbedpane.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxbasetabctrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxbasetabctrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxbutton.cpp",
+   "path": "VC/atlmfc/src/mfc/afxbutton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcaptionbar.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcaptionbar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcmdusagecount.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcmdusagecount.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcolorbar.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcolorbar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcolorpickerctrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcolorpickerctrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcolorpropertysheet.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcolorpropertysheet.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcommandmanager.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcommandmanager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcontrolrenderer.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcontrolrenderer.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxcustomizebutton.cpp",
+   "path": "VC/atlmfc/src/mfc/afxcustomizebutton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxdesktopalertdialog.cpp",
+   "path": "VC/atlmfc/src/mfc/afxdesktopalertdialog.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxdesktopalertwnd.cpp",
+   "path": "VC/atlmfc/src/mfc/afxdesktopalertwnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxdockablepane.cpp",
+   "path": "VC/atlmfc/src/mfc/afxdockablepane.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxdockingpanesrow.cpp",
+   "path": "VC/atlmfc/src/mfc/afxdockingpanesrow.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxdrawmanager.cpp",
+   "path": "VC/atlmfc/src/mfc/afxdrawmanager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxeditbrowsectrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxeditbrowsectrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxglobalutils.cpp",
+   "path": "VC/atlmfc/src/mfc/afxglobalutils.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafximageeditordialog.cpp",
+   "path": "VC/atlmfc/src/mfc/afximageeditordialog.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxmaskededit.cpp",
+   "path": "VC/atlmfc/src/mfc/afxmaskededit.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxmdiclientareawnd.cpp",
+   "path": "VC/atlmfc/src/mfc/afxmdiclientareawnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxmousepropertypage.cpp",
+   "path": "VC/atlmfc/src/mfc/afxmousepropertypage.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxoutlookbartabctrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxoutlookbartabctrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxpanecontainer.cpp",
+   "path": "VC/atlmfc/src/mfc/afxpanecontainer.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxpanedivider.cpp",
+   "path": "VC/atlmfc/src/mfc/afxpanedivider.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxpaneframewnd.cpp",
+   "path": "VC/atlmfc/src/mfc/afxpaneframewnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxpropertygridctrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxpropertygridctrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxpropertysheet.cpp",
+   "path": "VC/atlmfc/src/mfc/afxpropertysheet.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxribbonbar.cpp",
+   "path": "VC/atlmfc/src/mfc/afxribbonbar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxribboncategory.cpp",
+   "path": "VC/atlmfc/src/mfc/afxribboncategory.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxribbonedit.cpp",
+   "path": "VC/atlmfc/src/mfc/afxribbonedit.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxsettingsstore.cpp",
+   "path": "VC/atlmfc/src/mfc/afxsettingsstore.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxshelllistctrl.cpp",
+   "path": "VC/atlmfc/src/mfc/afxshelllistctrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxsmartdockingguide.cpp",
+   "path": "VC/atlmfc/src/mfc/afxsmartdockingguide.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxstate.cpp",
+   "path": "VC/atlmfc/src/mfc/afxstate.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxstatusbar.cpp",
+   "path": "VC/atlmfc/src/mfc/afxstatusbar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxtaskspane.cpp",
+   "path": "VC/atlmfc/src/mfc/afxtaskspane.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxtls.cpp",
+   "path": "VC/atlmfc/src/mfc/afxtls.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxvisualmanager.cpp",
+   "path": "VC/atlmfc/src/mfc/afxvisualmanager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcafxvisualmanageroffice2003.cpp",
+   "path": "VC/atlmfc/src/mfc/afxvisualmanageroffice2003.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcappui1.cpp",
+   "path": "VC/atlmfc/src/mfc/appui1.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcbardock.cpp",
+   "path": "VC/atlmfc/src/mfc/bardock.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcbarstat.cpp",
+   "path": "VC/atlmfc/src/mfc/barstat.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcctlcore.cpp",
+   "path": "VC/atlmfc/src/mfc/ctlcore.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcctlnownd.cpp",
+   "path": "VC/atlmfc/src/mfc/ctlnownd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcctlpbag.cpp",
+   "path": "VC/atlmfc/src/mfc/ctlpbag.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcctlppg.cpp",
+   "path": "VC/atlmfc/src/mfc/ctlppg.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcctltrack.cpp",
+   "path": "VC/atlmfc/src/mfc/ctltrack.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdaodfx.cpp",
+   "path": "VC/atlmfc/src/mfc/daodfx.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdbcore.cpp",
+   "path": "VC/atlmfc/src/mfc/dbcore.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdcprev.cpp",
+   "path": "VC/atlmfc/src/mfc/dcprev.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdlgcore.cpp",
+   "path": "VC/atlmfc/src/mfc/dlgcore.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdlgdhtml.cpp",
+   "path": "VC/atlmfc/src/mfc/dlgdhtml.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdlgprntx.cpp",
+   "path": "VC/atlmfc/src/mfc/dlgprntx.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdlgtempl.cpp",
+   "path": "VC/atlmfc/src/mfc/dlgtempl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdocmapi.cpp",
+   "path": "VC/atlmfc/src/mfc/docmapi.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcdumpstak.cpp",
+   "path": "VC/atlmfc/src/mfc/dumpstak.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcfiletxt.cpp",
+   "path": "VC/atlmfc/src/mfc/filetxt.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcoleasmon.cpp",
+   "path": "VC/atlmfc/src/mfc/oleasmon.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcolecli3.cpp",
+   "path": "VC/atlmfc/src/mfc/olecli3.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcoledisp1.cpp",
+   "path": "VC/atlmfc/src/mfc/oledisp1.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcoledisp2.cpp",
+   "path": "VC/atlmfc/src/mfc/oledisp2.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcoletyplb.cpp",
+   "path": "VC/atlmfc/src/mfc/oletyplb.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MfcThemeHelper.cpp",
+   "path": "VC/atlmfc/src/mfc/ThemeHelper.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcviewedit.cpp",
+   "path": "VC/atlmfc/src/mfc/viewedit.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcviewform.cpp",
+   "path": "VC/atlmfc/src/mfc/viewform.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcviewhtml.cpp",
+   "path": "VC/atlmfc/src/mfc/viewhtml.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcviewprnt.cpp",
+   "path": "VC/atlmfc/src/mfc/viewprnt.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcwincore.cpp",
+   "path": "VC/atlmfc/src/mfc/wincore.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mfcwinctrl3.cpp",
+   "path": "VC/atlmfc/src/mfc/winctrl3.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ModelInstance.cpp",
+   "path": "Client/App/v8datamodel/ModelInstance.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Mouse.cpp",
+   "path": "Client/App/v8datamodel/Mouse.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MouseCommand.cpp",
+   "path": "Client/App/v8datamodel/MouseCommand.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MouseCommandCapture.cpp",
+   "path": "Client/App/v8datamodel/MouseCommand.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MouseCommandDistance.cpp",
+   "path": "Client/App/v8datamodel/MouseCommand.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MouseGetDecal.cpp",
+   "path": "Client/App/v8datamodel/Mouse.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MouseGetSurface.cpp",
+   "path": "Client/App/v8datamodel/Mouse.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/MouseUnlocked.cpp",
+   "path": "Client/App/v8datamodel/Mouse.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/NetworkSettings.cpp",
+   "path": "Client/Network/NetworkSettings.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/NullTool.cpp",
+   "path": "Client/App/tool/NullTool.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/OgreRbxEntity.cpp",
+   "path": "Client/Rendering/AppDraw/RbxEntity.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+   "path": "Client/Rendering/AppDraw/RbxSceneManager.cpp",
+   "evidence": "exe-path"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/OgreRbxSky.cpp",
+   "path": "Client/Rendering/AppDraw/RbxSky.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/OgreVisualEngine.cpp",
+   "path": "Client/Rendering/AppDraw/VisualEngine.cpp",
+   "evidence": "openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/OgreVRbxFont.cpp",
+   "path": "lib:GLG3D/GFont.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PartInstanceCoordinate.cpp",
+   "path": "Client/App/v8datamodel/PartInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PartInstanceGetSurface.cpp",
+   "path": "Client/App/v8datamodel/PartInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PartInstanceLifetime.cpp",
+   "path": "Client/App/v8datamodel/PartInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PartInstanceLocked.cpp",
+   "path": "Client/App/v8datamodel/PartInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PartInstanceLockedInPlace.cpp",
+   "path": "Client/App/v8datamodel/PartInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PartInstanceResize.cpp",
+   "path": "Client/App/v8datamodel/PartInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp",
+   "path": "Client/Network/Players.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PlayersLifetime.cpp",
+   "path": "Client/Network/Players.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PlayersSuperSafe.cpp",
+   "path": "Client/Network/Players.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngerror.cpp",
+   "path": "lib:libpng-1.2.5/pngerror.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngget.cpp",
+   "path": "lib:libpng-1.2.5/pngget.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngmem.cpp",
+   "path": "lib:libpng-1.2.5/pngmem.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngread.cpp",
+   "path": "lib:libpng-1.2.5/pngread.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngrio.cpp",
+   "path": "lib:libpng-1.2.5/pngrio.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngrtran.cpp",
+   "path": "lib:libpng-1.2.5/pngrtran.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngrutil.cpp",
+   "path": "lib:libpng-1.2.5/pngrutil.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngset.cpp",
+   "path": "lib:libpng-1.2.5/pngset.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngtrans.cpp",
+   "path": "lib:libpng-1.2.5/pngtrans.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngwio.cpp",
+   "path": "lib:libpng-1.2.5/pngwio.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png5pngwutil.cpp",
+   "path": "lib:libpng-1.2.5/pngwutil.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png6pngerror.cpp",
+   "path": "lib:libpng-1.2.6/pngerror.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png6pngrtran.cpp",
+   "path": "lib:libpng-1.2.6/pngrtran.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png6pngrutil.cpp",
+   "path": "lib:libpng-1.2.6/pngrutil.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Png7pngwutil.cpp",
+   "path": "lib:libpng-1.2.7/pngwutil.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PrimitiveLifetime.cpp",
+   "path": "Client/App/v8world/Primitive.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ProfanityFilter.cpp",
+   "path": "Client/App/gui/ProfanityFilter.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Profiling.cpp",
+   "path": "Client/App/util/Profiling.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PropertyGridItems2008.cpp",
+   "path": "Client/App/v8tree/Property.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PropertyGridNumericValues.cpp",
+   "path": "Client/App/v8tree/Property.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PropertyGridWriteTrial.cpp",
+   "path": "Client/App/v8tree/Property.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/PVInstanceTopParent.cpp",
+   "path": "Client/App/v8datamodel/PVInstance.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/RenderSceneBase2008.cpp",
+   "path": "Client/Rendering/RenderLib/RenderScene.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/RenderSceneNew2008.cpp",
+   "path": "Client/Rendering/RenderLib/RenderScene.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp",
+   "path": "Client/Rendering/RenderLib/RenderScene.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp",
+   "path": "Client/Rendering/RenderLib/RenderScene.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/RenderStatsItem2008.cpp",
+   "path": "Client/Rendering/RenderLib/RenderStats.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ReplicatorBases.cpp",
+   "path": "Client/Network/Replicator.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ReplicatorMarker.cpp",
+   "path": "Client/Network/Replicator.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScintillaCtrl.cpp",
+   "path": "lib:scintilla-mfc-1.20/ScintillaCtrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScintillaDocView.cpp",
+   "path": "lib:scintilla-mfc-1.20/ScintillaDocView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "path": "Client/App/gui/ScoreHud.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScoreHudLeaderboard2008.cpp",
+   "path": "Client/App/gui/ScoreHud.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp",
+   "path": "Client/App/script/Script.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScriptApp2008SoundType.cpp",
+   "path": "Client/App/script/Script.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScriptContextLifetime.cpp",
+   "path": "Client/App/script/ScriptContext.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ScriptFileLoad.cpp",
+   "path": "Client/App/script/Script.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Seat.cpp",
+   "path": "Client/App/v8datamodel/Seat.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionAncestorListener.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionBack.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionBase.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionCreate.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionFront.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionGroup.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionIterators.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionLifetime.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionMutations.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionRemove.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionVerbConstructors.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SelectionVerbStates.cpp",
+   "path": "Client/App/v8datamodel/Selection.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ServiceChangeHistory.cpp",
+   "path": "Client/App/v8tree/Service.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ServiceLookup.cpp",
+   "path": "Client/App/v8tree/Service.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ServiceProvider.cpp",
+   "path": "Client/App/v8tree/Service.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ServiceSelection.cpp",
+   "path": "Client/App/v8tree/Service.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SettingsDialogShow.cpp",
+   "path": "Client/win/SettingsDialog.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SimJobStage2008.cpp",
+   "path": "Client/App/v8world/SimJobStage.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Sky.cpp",
+   "path": "Client/App/v8datamodel/Sky.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundClassName.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundClassNames.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundConstructors.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundServiceFind.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundServicePlay.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundServiceProvider.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundStringConverter.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundTypedProperties.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundValueConvertSoundId.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundValueGenericFloat.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundValueGenericSoundId.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SoundValueGet.cpp",
+   "path": "Client/App/util/Sound.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SpatialHashStats.cpp",
+   "path": "Client/App/v8world/SpatialHash.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SpawnLocation.cpp",
+   "path": "Client/App/v8datamodel/SpawnLocation.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/StatsClassName.cpp",
+   "path": "Client/App/v8datamodel/Stats.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/StatsCommands.cpp",
+   "path": "Client/App/v8datamodel/Stats.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/StatsService.cpp",
+   "path": "Client/App/v8datamodel/Stats.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceTool.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceToolFactories.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceToolHoverRender.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceToolSiblings.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/SurfaceVisitors.cpp",
+   "path": "Client/App/v8datamodel/Surface.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Team.cpp",
+   "path": "Client/App/v8datamodel/Team.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Teams.cpp",
+   "path": "Client/App/v8datamodel/Teams.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+   "path": "Client/Rendering/RenderLib/TextureProxy.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/TextureProxyImageLoader2008.cpp",
+   "path": "Client/Rendering/RenderLib/TextureProxy.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/TextureProxyRender.cpp",
+   "path": "Client/Rendering/RenderLib/TextureProxy.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+   "path": "Client/Rendering/RenderLib/TextureProxy.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/TextureProxyResolve2008.cpp",
+   "path": "Client/Rendering/RenderLib/TextureProxy.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/TimerService.cpp",
+   "path": "Client/App/v8datamodel/TimerService.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Tool.cpp",
+   "path": "Client/App/v8datamodel/Tool.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/UserController.cpp",
+   "path": "Client/App/v8datamodel/UserController.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
+   "path": "Client/App/util/UserInputBase.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/UserInputBaseLifetime.cpp",
+   "path": "Client/App/util/UserInputBase.cpp",
+   "evidence": "split-of-openrbx"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ValueConverter.cpp",
+   "path": "Client/App/v8datamodel/Value.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ValueDouble2008.cpp",
+   "path": "Client/App/v8datamodel/Value.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Verb.cpp",
+   "path": "Client/App/v8tree/Verb.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/VisitCreator.cpp",
+   "path": "Client/App/v8datamodel/Visit.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/VisitFactory.cpp",
+   "path": "Client/App/v8datamodel/Visit.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/VisitServiceLookup.cpp",
+   "path": "Client/App/v8datamodel/Visit.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Widget.cpp",
+   "path": "Client/App/gui/Widget.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "path": "Client/App/gui/Widget.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "path": "Client/App/gui/Widget.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WidgetMenuItem.cpp",
+   "path": "Client/App/gui/Widget.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceClassName.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceClose.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceEvents.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceExecUrl.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceFactory.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceFinalConstruct.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceFindTopInstance.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceGetWorkspace.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceGroup.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceGuids.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceHResult.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceInsertUrl.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceJoin.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceLifetime.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceSharedFrom.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceSiteTrust.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceStatus.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceWrite.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp",
+   "path": "Client/App/v8datamodel/Workspace.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldJoint.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldJointGlue.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldJointMotor.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldJointRigid.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldJointRotate.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldLifetime.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/WorldServiceFactories.cpp",
+   "path": "Client/App/v8world/World.cpp",
+   "evidence": "split-of-rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XmlElement.cpp",
+   "path": "Client/App/v8xml/XmlElement.cpp",
+   "evidence": "rbxgs"
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarControl.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarControl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarControlView.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarControlView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarCustomProperties.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarCustomProperties.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarDayView.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarDayView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarDayViewEvent.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarDayViewEvent.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarEvent.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarEvent.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarEventLabel.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarEventLabel.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarEventPropertiesDlg.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarEventPropertiesDlg.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarMAPIDataProvider.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarMAPIDataProvider.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarThemeOffice2007.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarThemeOffice2007.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCalendarUtils.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPCalendarUtils.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPColorManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPColorManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCommandBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCommandBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCommandBarAnimation.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCommandBarAnimation.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCommandBars.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCommandBars.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControl.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlButton.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlButton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlComboBox.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlComboBox.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlComboBoxExt.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlComboBoxExt.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlCustom.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlCustom.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlEdit.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlEdit.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlExt.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlExt.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlGallery.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlGallery.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlPopup.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlPopup.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlPopupColor.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlPopupColor.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPControlScrollBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPControlScrollBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCustomizeCommandsPage.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCustomizeCommandsPage.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCustomizeMenusPage.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCustomizeMenusPage.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCustomizeOptionsPage.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCustomizeOptionsPage.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCustomizeToolbarsPage.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCustomizeToolbarsPage.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPCustomizeTools.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPCustomizeTools.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDatePickerDaysCollection.cpp",
+   "path": "Client/3rdparty/XTP/Source/Calendar/XTPDatePickerDaysCollection.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDefaultTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPDefaultTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDialogBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPDialogBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPDockBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockContext.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPDockContext.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPane.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPane.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneAutoHidePanel.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneAutoHidePanel.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneBase.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneBase.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneBaseContainer.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneBaseContainer.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneContext.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneContext.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneKeyboardHook.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneKeyboardHook.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneLayout.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneLayout.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneMiniWnd.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneMiniWnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPanePaintManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPanePaintManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneSplitterContainer.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneSplitterContainer.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockingPaneTabbedContainer.cpp",
+   "path": "Client/3rdparty/XTP/Source/DockingPane/XTPDockingPaneTabbedContainer.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPDockState.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPDockState.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPFrameWnd.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPFrameWnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPGraphicBitmapPng.cpp",
+   "path": "Client/3rdparty/XTP/Source/GraphicLibrary/XTPGraphicBitmapPng.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPHookManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPHookManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPImageEditor.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPImageEditor.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPImageManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPImageManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPMenuBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPMenuBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPMouseManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPMouseManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPNativeXPTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPNativeXPTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPOffice2007FrameHook.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPOffice2007FrameHook.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPOffice2007Image.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPOffice2007Image.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPOfficeTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPOfficeTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPaintManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPPaintManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPopupBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPPopupBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGrid.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGrid.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridInplaceButton.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridInplaceButton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridInplaceEdit.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridInplaceList.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridInplaceList.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridItem.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridItem.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridItemBool.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridItemBool.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridItemColor.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridItemColor.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridPaintManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridPaintManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropertyGridView.cpp",
+   "path": "Client/3rdparty/XTP/Source/PropertyGrid/XTPPropertyGridView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPPropExchange.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPPropExchange.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportColumn.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportColumn.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportDragDrop.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportDragDrop.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportGroupRow.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportGroupRow.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportHeader.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportHeader.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportHyperlink.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportHyperlink.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportInplaceControls.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportInplaceControls.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportNavigator.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportNavigator.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportPaintManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportPaintManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportRecord.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportRecord.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportRecordItem.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportRecordItem.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportRecordItemText.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportRecordItemText.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportRecords.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportRecords.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportRow.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportRow.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportRows.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportRows.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportTip.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportTip.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPReportView.cpp",
+   "path": "Client/3rdparty/XTP/Source/ReportControl/XTPReportView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPResourceManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPResourceManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonControlTab.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonControlTab.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonGroup.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonGroup.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonPopups.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonPopups.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonQuickAccessControls.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonQuickAccessControls.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonSystemButton.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonSystemButton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRibbonTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/Ribbon/XTPRibbonTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPRichRender.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPRichRender.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPScrollBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPScrollBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPShadowsManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPShadowsManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPShortcutManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPShortcutManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSkinManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/SkinFramework/XTPSkinManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSoundManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPSoundManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPStatusBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPStatusBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditColorComboBox.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditColorComboBox.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditColorSampleText.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditColorSampleText.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditDoc.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditDoc.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditLexClass.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditLexClass.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditLineMarksManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditLineMarksManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditUndoManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditUndoManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPSyntaxEditView.cpp",
+   "path": "Client/3rdparty/XTP/Source/SyntaxEdit/XTPSyntaxEditView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTabClientWnd.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPTabClientWnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTabManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/TabManager/XTPTabManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTabPaintManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/TabManager/XTPTabPaintManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTabPaintManagerAppearance.cpp",
+   "path": "Client/3rdparty/XTP/Source/TabManager/XTPTabPaintManagerAppearance.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTabPaintManagerColors.cpp",
+   "path": "Client/3rdparty/XTP/Source/TabManager/XTPTabPaintManagerColors.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTabToolBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPTabToolBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPTaskDialogClient.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTPTaskDialogClient.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPToolBar.cpp",
+   "path": "Client/3rdparty/XTP/Source/CommandBars/XTPToolBar.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPToolTipContext.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPToolTipContext.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPWinThemeWrapper.cpp",
+   "path": "Client/3rdparty/XTP/Source/Common/XTPWinThemeWrapper.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTButton.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTButton.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTButtonTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTButtonTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTCaption.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTCaption.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTCaptionPopupWnd.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTCaptionPopupWnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTCaptionTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTCaptionTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTColorDialog.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTColorDialog.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTColorPageCustom.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTColorPageCustom.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTColorPageStandard.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTColorPageStandard.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTColorPopup.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTColorPopup.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTOutBarCtrl.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTOutBarCtrl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTRegistryManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTRegistryManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTShellPidl.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTShellPidl.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTShellTreeBase.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTShellTreeBase.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTShellTreeCtrlView.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTShellTreeCtrlView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTSplitterWnd.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTSplitterWnd.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTSplitterWndTheme.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTSplitterWndTheme.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTThemeManager.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTThemeManager.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTTreeBase.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTTreeBase.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTTreeCtrlView.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTTreeCtrlView.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTUtil.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTUtil.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTWindowPos.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTWindowPos.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTWndHook.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTWndHook.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/XTPXTWndShadow.cpp",
+   "path": "Client/3rdparty/XTP/Source/Controls/XTWndShadow.cpp",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/Zlibdeflate.cpp",
+   "path": "Client/Rendering/g3d/zlib/deflate.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ZlibWcrc32.cpp",
+   "path": "Client/Rendering/g3d/zlib/crc32.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ZlibWdeflate.cpp",
+   "path": "Client/Rendering/g3d/zlib/deflate.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ZlibWinflate.cpp",
+   "path": "Client/Rendering/g3d/zlib/inflate.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ZlibWtrees.cpp",
+   "path": "Client/Rendering/g3d/zlib/trees.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  },
+  {
+   "native": "rebuild/2008-06/native-classes/ZlibWuncompr.cpp",
+   "path": "Client/Rendering/g3d/zlib/uncompr.c",
+   "evidence": "upstream",
+   "guessed_root": true
+  }
+ ],
+ "merge_groups": {
+  "client/win/activedocview.cpp": [
+   "rebuild/2008-06/native-classes/ActiveDocView.cpp",
+   "rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp"
+  ],
+  "client/app/v8datamodel/brickcolor.cpp": [
+   "rebuild/2008-06/native-classes/BrickColorColor3.cpp",
+   "rebuild/2008-06/native-classes/BrickColorConversions.cpp",
+   "rebuild/2008-06/native-classes/BrickColorMapAccess.cpp",
+   "rebuild/2008-06/native-classes/BrickColorMapPopulation.cpp",
+   "rebuild/2008-06/native-classes/BrickColorMapSingleton.cpp",
+   "rebuild/2008-06/native-classes/BrickColorProviders.cpp"
+  ],
+  "client/win/browserview.cpp": [
+   "rebuild/2008-06/native-classes/BrowserViewExternalFactory.cpp",
+   "rebuild/2008-06/native-classes/BrowserViewExternalGetApp.cpp",
+   "rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp",
+   "rebuild/2008-06/native-classes/CBrowserView.cpp"
+  ],
+  "client/app/v8datamodel/camera.cpp": [
+   "rebuild/2008-06/native-classes/CameraCenterCommand.cpp",
+   "rebuild/2008-06/native-classes/CameraConstants.cpp",
+   "rebuild/2008-06/native-classes/CameraFirstPerson.cpp",
+   "rebuild/2008-06/native-classes/CameraHistory.cpp",
+   "rebuild/2008-06/native-classes/CameraUnits.cpp",
+   "rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp"
+  ],
+  "client/win/marshalwindow.cpp": [
+   "rebuild/2008-06/native-classes/CMarshalWindow.cpp",
+   "rebuild/2008-06/native-classes/MarshalWindowGlobals.cpp",
+   "rebuild/2008-06/native-classes/MarshalWindowRegistry.cpp"
+  ],
+  "client/app/v8world/contact.cpp": [
+   "rebuild/2008-06/native-classes/Contact.cpp",
+   "rebuild/2008-06/native-classes/ContactUnit2008Connector.cpp",
+   "rebuild/2008-06/native-classes/ContactUnit2008ConnectorBody.cpp",
+   "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp",
+   "rebuild/2008-06/native-classes/ContactUnit2008Manager.cpp",
+   "rebuild/2008-06/native-classes/ContactUnit2008PVInstance.cpp"
+  ],
+  "client/app/v8world/contactmanager.cpp": [
+   "rebuild/2008-06/native-classes/ContactManagerLifetime.cpp",
+   "rebuild/2008-06/native-classes/ContactManagerStats.cpp"
+  ],
+  "client/win/content.cpp": [
+   "rebuild/2008-06/native-classes/ContentIdAssets.cpp",
+   "rebuild/2008-06/native-classes/ContentRead.cpp"
+  ],
+  "client/app/util/contentprovider.cpp": [
+   "rebuild/2008-06/native-classes/ContentProvider.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderCreateContext.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderGetContent.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderGetFile.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderLoad.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderLoadContent.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderRegisterFile.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderUrl.cpp",
+   "rebuild/2008-06/native-classes/ContentProviderWorkerBinding.cpp"
+  ],
+  "client/app/v8world/controller.cpp": [
+   "rebuild/2008-06/native-classes/ControllerActions.cpp",
+   "rebuild/2008-06/native-classes/ControllerApply.cpp",
+   "rebuild/2008-06/native-classes/ControllerEnabled.cpp"
+  ],
+  "client/win/settingsdialog.cpp": [
+   "rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "rebuild/2008-06/native-classes/SettingsDialogShow.cpp"
+  ],
+  "client/app/v8datamodel/workspace.cpp": [
+   "rebuild/2008-06/native-classes/CWorkspace.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceClassName.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceClose.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceEvents.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceExecUrl.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceFactory.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceFinalConstruct.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceFindTopInstance.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceGetWorkspace.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceGroup.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceGuids.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceHResult.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceInsertUrl.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceJoin.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceLifetime.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceSelectAll.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceSharedFrom.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceSiteTrust.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceStatus.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceWrite.cpp",
+   "rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp"
+  ],
+  "client/app/v8datamodel/datamodel.cpp": [
+   "rebuild/2008-06/native-classes/DataModelClassName.cpp",
+   "rebuild/2008-06/native-classes/DataModelCreate.cpp",
+   "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp",
+   "rebuild/2008-06/native-classes/DataModelGui.cpp",
+   "rebuild/2008-06/native-classes/DataModelInitialize.cpp",
+   "rebuild/2008-06/native-classes/DataModelLock.cpp",
+   "rebuild/2008-06/native-classes/DataModelTiming.cpp"
+  ],
+  "client/app/v8datamodel/debugsettings.cpp": [
+   "rebuild/2008-06/native-classes/DebugSettings.cpp",
+   "rebuild/2008-06/native-classes/DebugSettingsCoordinateGetters.cpp",
+   "rebuild/2008-06/native-classes/DebugSettingsSingleton.cpp",
+   "rebuild/2008-06/native-classes/DebugSettingsSpecData.cpp"
+  ],
+  "client/app/v8datamodel/decal.cpp": [
+   "rebuild/2008-06/native-classes/DecalBases.cpp",
+   "rebuild/2008-06/native-classes/DecalLifetime.cpp"
+  ],
+  "client/app/tool/dragger.cpp": [
+   "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
+   "rebuild/2008-06/native-classes/DraggerPlacement.cpp"
+  ],
+  "client/win/erroruploader.cpp": [
+   "rebuild/2008-06/native-classes/ErrorUploader2008.cpp",
+   "rebuild/2008-06/native-classes/ErrorUploaderCallback.cpp",
+   "rebuild/2008-06/native-classes/ErrorUploaderConstructor.cpp",
+   "rebuild/2008-06/native-classes/ErrorUploaderLifetime.cpp",
+   "rebuild/2008-06/native-classes/ErrorUploaderState.cpp"
+  ],
+  "client/app/v8datamodel/flagstand.cpp": [
+   "rebuild/2008-06/native-classes/FlagStand.cpp",
+   "rebuild/2008-06/native-classes/FlagStandService.cpp"
+  ],
+  "client/app/v8datamodel/sky.cpp": [
+   "rebuild/2008-06/native-classes/G3DSky.cpp",
+   "rebuild/2008-06/native-classes/Sky.cpp"
+  ],
+  "client/app/v8datamodel/gamesettings.cpp": [
+   "rebuild/2008-06/native-classes/GameSettings.cpp",
+   "rebuild/2008-06/native-classes/GameSettingsSingleton.cpp",
+   "rebuild/2008-06/native-classes/GameSettingsStorage.cpp"
+  ],
+  "client/app/util/handle.cpp": [
+   "rebuild/2008-06/native-classes/HandleHitTest.cpp",
+   "rebuild/2008-06/native-classes/HandleRadius.cpp"
+  ],
+  "client/app/humanoid/humanoid.cpp": [
+   "rebuild/2008-06/native-classes/Humanoid2008.cpp",
+   "rebuild/2008-06/native-classes/HumanoidState.cpp",
+   "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+   "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp",
+   "rebuild/2008-06/native-classes/HumanoidStates2.cpp",
+   "rebuild/2008-06/native-classes/HumanoidStates3.cpp"
+  ],
+  "client/app/v8tree/instance.cpp": [
+   "rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp",
+   "rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp",
+   "rebuild/2008-06/native-classes/InstanceAnchorChildren.cpp",
+   "rebuild/2008-06/native-classes/InstanceArchivableDescriptor.cpp",
+   "rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp",
+   "rebuild/2008-06/native-classes/InstanceChildAcceptance.cpp",
+   "rebuild/2008-06/native-classes/InstanceChildListener.cpp",
+   "rebuild/2008-06/native-classes/InstanceChildPermission.cpp",
+   "rebuild/2008-06/native-classes/InstanceClassLookup.cpp",
+   "rebuild/2008-06/native-classes/InstanceContainment.cpp",
+   "rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp",
+   "rebuild/2008-06/native-classes/InstanceDescendantPropagation.cpp",
+   "rebuild/2008-06/native-classes/InstanceFullName.cpp",
+   "rebuild/2008-06/native-classes/InstanceLifetime.cpp",
+   "rebuild/2008-06/native-classes/InstanceNameDescriptor.cpp",
+   "rebuild/2008-06/native-classes/InstanceParent.cpp",
+   "rebuild/2008-06/native-classes/InstanceParentDescriptor.cpp",
+   "rebuild/2008-06/native-classes/InstanceReadChildren.cpp",
+   "rebuild/2008-06/native-classes/InstanceReadProperty.cpp",
+   "rebuild/2008-06/native-classes/InstanceSerialization.cpp",
+   "rebuild/2008-06/native-classes/InstanceSignalDescriptors.cpp"
+  ],
+  "client/app/v8kernel/kernel.cpp": [
+   "rebuild/2008-06/native-classes/Kernel2008.cpp",
+   "rebuild/2008-06/native-classes/KernelConnector.cpp"
+  ],
+  "client/win/ldrawparser.cpp": [
+   "rebuild/2008-06/native-classes/LDrawParser.cpp",
+   "rebuild/2008-06/native-classes/LDrawParserParse.cpp"
+  ],
+  "client/win/logmanager.cpp": [
+   "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
+   "rebuild/2008-06/native-classes/LogManagerGet.cpp",
+   "rebuild/2008-06/native-classes/LogManagerState.cpp"
+  ],
+  "client/app/tool/megadragger.cpp": [
+   "rebuild/2008-06/native-classes/MegaDragger.cpp",
+   "rebuild/2008-06/native-classes/MegaDraggerMovement.cpp"
+  ],
+  "client/app/v8datamodel/mouse.cpp": [
+   "rebuild/2008-06/native-classes/Mouse.cpp",
+   "rebuild/2008-06/native-classes/MouseGetDecal.cpp",
+   "rebuild/2008-06/native-classes/MouseGetSurface.cpp",
+   "rebuild/2008-06/native-classes/MouseUnlocked.cpp"
+  ],
+  "client/app/v8datamodel/mousecommand.cpp": [
+   "rebuild/2008-06/native-classes/MouseCommand.cpp",
+   "rebuild/2008-06/native-classes/MouseCommandCapture.cpp",
+   "rebuild/2008-06/native-classes/MouseCommandDistance.cpp"
+  ],
+  "client/app/v8datamodel/partinstance.cpp": [
+   "rebuild/2008-06/native-classes/PartInstanceCoordinate.cpp",
+   "rebuild/2008-06/native-classes/PartInstanceGetSurface.cpp",
+   "rebuild/2008-06/native-classes/PartInstanceLifetime.cpp",
+   "rebuild/2008-06/native-classes/PartInstanceLocked.cpp",
+   "rebuild/2008-06/native-classes/PartInstanceLockedInPlace.cpp",
+   "rebuild/2008-06/native-classes/PartInstanceResize.cpp"
+  ],
+  "client/network/players.cpp": [
+   "rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp",
+   "rebuild/2008-06/native-classes/PlayersLifetime.cpp",
+   "rebuild/2008-06/native-classes/PlayersSuperSafe.cpp"
+  ],
+  "client/app/v8tree/property.cpp": [
+   "rebuild/2008-06/native-classes/PropertyGridItems2008.cpp",
+   "rebuild/2008-06/native-classes/PropertyGridNumericValues.cpp",
+   "rebuild/2008-06/native-classes/PropertyGridWriteTrial.cpp"
+  ],
+  "client/rendering/renderlib/renderscene.cpp": [
+   "rebuild/2008-06/native-classes/RenderSceneBase2008.cpp",
+   "rebuild/2008-06/native-classes/RenderSceneNew2008.cpp",
+   "rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp",
+   "rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp"
+  ],
+  "client/network/replicator.cpp": [
+   "rebuild/2008-06/native-classes/ReplicatorBases.cpp",
+   "rebuild/2008-06/native-classes/ReplicatorMarker.cpp"
+  ],
+  "client/app/gui/scorehud.cpp": [
+   "rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "rebuild/2008-06/native-classes/ScoreHudLeaderboard2008.cpp"
+  ],
+  "client/app/script/script.cpp": [
+   "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp",
+   "rebuild/2008-06/native-classes/ScriptApp2008SoundType.cpp",
+   "rebuild/2008-06/native-classes/ScriptFileLoad.cpp"
+  ],
+  "client/app/v8datamodel/selection.cpp": [
+   "rebuild/2008-06/native-classes/SelectionAncestorListener.cpp",
+   "rebuild/2008-06/native-classes/SelectionBack.cpp",
+   "rebuild/2008-06/native-classes/SelectionBase.cpp",
+   "rebuild/2008-06/native-classes/SelectionCreate.cpp",
+   "rebuild/2008-06/native-classes/SelectionFront.cpp",
+   "rebuild/2008-06/native-classes/SelectionGroup.cpp",
+   "rebuild/2008-06/native-classes/SelectionIterators.cpp",
+   "rebuild/2008-06/native-classes/SelectionLifetime.cpp",
+   "rebuild/2008-06/native-classes/SelectionMutations.cpp",
+   "rebuild/2008-06/native-classes/SelectionRemove.cpp",
+   "rebuild/2008-06/native-classes/SelectionVerbConstructors.cpp",
+   "rebuild/2008-06/native-classes/SelectionVerbStates.cpp"
+  ],
+  "client/app/v8tree/service.cpp": [
+   "rebuild/2008-06/native-classes/ServiceChangeHistory.cpp",
+   "rebuild/2008-06/native-classes/ServiceLookup.cpp",
+   "rebuild/2008-06/native-classes/ServiceProvider.cpp",
+   "rebuild/2008-06/native-classes/ServiceSelection.cpp"
+  ],
+  "client/app/util/sound.cpp": [
+   "rebuild/2008-06/native-classes/SoundClassName.cpp",
+   "rebuild/2008-06/native-classes/SoundClassNames.cpp",
+   "rebuild/2008-06/native-classes/SoundConstructors.cpp",
+   "rebuild/2008-06/native-classes/SoundServiceFind.cpp",
+   "rebuild/2008-06/native-classes/SoundServicePlay.cpp",
+   "rebuild/2008-06/native-classes/SoundServiceProvider.cpp",
+   "rebuild/2008-06/native-classes/SoundStringConverter.cpp",
+   "rebuild/2008-06/native-classes/SoundTypedProperties.cpp",
+   "rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp",
+   "rebuild/2008-06/native-classes/SoundValueConvertSoundId.cpp",
+   "rebuild/2008-06/native-classes/SoundValueGenericFloat.cpp",
+   "rebuild/2008-06/native-classes/SoundValueGenericSoundId.cpp",
+   "rebuild/2008-06/native-classes/SoundValueGet.cpp"
+  ],
+  "client/app/v8datamodel/stats.cpp": [
+   "rebuild/2008-06/native-classes/StatsClassName.cpp",
+   "rebuild/2008-06/native-classes/StatsCommands.cpp",
+   "rebuild/2008-06/native-classes/StatsService.cpp"
+  ],
+  "client/app/v8datamodel/surface.cpp": [
+   "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
+   "rebuild/2008-06/native-classes/SurfaceTool.cpp",
+   "rebuild/2008-06/native-classes/SurfaceToolFactories.cpp",
+   "rebuild/2008-06/native-classes/SurfaceToolHoverRender.cpp",
+   "rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp",
+   "rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp",
+   "rebuild/2008-06/native-classes/SurfaceToolSiblings.cpp",
+   "rebuild/2008-06/native-classes/SurfaceVisitors.cpp"
+  ],
+  "client/rendering/renderlib/textureproxy.cpp": [
+   "rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+   "rebuild/2008-06/native-classes/TextureProxyImageLoader2008.cpp",
+   "rebuild/2008-06/native-classes/TextureProxyRender.cpp",
+   "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+   "rebuild/2008-06/native-classes/TextureProxyResolve2008.cpp"
+  ],
+  "client/app/util/userinputbase.cpp": [
+   "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
+   "rebuild/2008-06/native-classes/UserInputBaseLifetime.cpp"
+  ],
+  "client/app/v8datamodel/value.cpp": [
+   "rebuild/2008-06/native-classes/ValueConverter.cpp",
+   "rebuild/2008-06/native-classes/ValueDouble2008.cpp"
+  ],
+  "client/app/v8datamodel/visit.cpp": [
+   "rebuild/2008-06/native-classes/VisitCreator.cpp",
+   "rebuild/2008-06/native-classes/VisitFactory.cpp",
+   "rebuild/2008-06/native-classes/VisitServiceLookup.cpp"
+  ],
+  "client/app/gui/widget.cpp": [
+   "rebuild/2008-06/native-classes/Widget.cpp",
+   "rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "rebuild/2008-06/native-classes/WidgetChat.cpp",
+   "rebuild/2008-06/native-classes/WidgetMenuItem.cpp"
+  ],
+  "client/app/v8world/world.cpp": [
+   "rebuild/2008-06/native-classes/WorldJoint.cpp",
+   "rebuild/2008-06/native-classes/WorldJointGlue.cpp",
+   "rebuild/2008-06/native-classes/WorldJointMotor.cpp",
+   "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
+   "rebuild/2008-06/native-classes/WorldJointRigid.cpp",
+   "rebuild/2008-06/native-classes/WorldJointRotate.cpp",
+   "rebuild/2008-06/native-classes/WorldLifetime.cpp",
+   "rebuild/2008-06/native-classes/WorldServiceFactories.cpp"
+  ],
+  "client/rendering/g3d/zlib/deflate.c": [
+   "rebuild/2008-06/native-classes/Zlibdeflate.cpp",
+   "rebuild/2008-06/native-classes/ZlibWdeflate.cpp"
+  ]
+ },
+ "ambiguous": [],
+ "unmapped": [
+  "ActiveDataModel.cpp",
+  "ActiveDocument.cpp",
+  "ActiveDocumentData.cpp",
+  "AggregateChunk2008.cpp",
+  "AnchorTool.cpp",
+  "AppDocumentStartup.cpp",
+  "AppFramework.cpp",
+  "AppLeaves2008CrashReporter.cpp",
+  "AppLeaves2008DHTMLWindow.cpp",
+  "AppLeaves2008DHTMLWindowService.cpp",
+  "AppLeaves2008DocTemplates.cpp",
+  "AppLeaves2008EventHandler.cpp",
+  "AppLeaves2008Exposer.cpp",
+  "AppLeaves2008IDEDocManager.cpp",
+  "AppLeaves2008IDEDocManagerCtor.cpp",
+  "AppLeaves2008Marshaller.cpp",
+  "AppLeaves2008PlayDocument.cpp",
+  "AppLeaves2008RBXImage.cpp",
+  "AppLeaves2008RobloxModule.cpp",
+  "ApplicationBaseUrl.cpp",
+  "ApplicationExceptionLog.cpp",
+  "ApplicationWindowClass.cpp",
+  "AppOpenFile.cpp",
+  "AppOpenFiles.cpp",
+  "AppUnit400_2008Creators.cpp",
+  "AppUnit400_2008Names.cpp",
+  "AppUnit40C_2008Creators.cpp",
+  "AppUnit40C_2008Metadata.cpp",
+  "AppUnit418_2008Content.cpp",
+  "AppUnit418_2008Creators.cpp",
+  "AppUnit424_2008ScriptContextTemplates.cpp",
+  "AppUnit448_2008Services.cpp",
+  "AppUnit454_2008ReportStats.cpp",
+  "AppUnit454_2008WndServices.cpp",
+  "AppUnit460_2008MarshaledEventData.cpp",
+  "AppUnit468_2008FileVersionInfo.cpp",
+  "AppUnit46CStringIterators.cpp",
+  "AppUnit480_2008Player.cpp",
+  "AppUnit480_2008PlayerTemplates.cpp",
+  "AppUnit48C_2008ClothingThunks.cpp",
+  "AppUnit48C_2008Creators.cpp",
+  "AppUnit48C_2008CreatorsHumanoid.cpp",
+  "AppUnit48C_2008Services.cpp",
+  "AppUnit48C_2008Signals.cpp",
+  "AppUnit49C_2008IdSerializerTemplates.cpp",
+  "AppUnit49C_2008Streaming.cpp",
+  "AppUnit4B0_2008Joints.cpp",
+  "AppUnit4B0_2008Signals.cpp",
+  "AppUnit4BC_2008Receiver.cpp",
+  "AppUnit4C8_2008PhysicsServiceCreate.cpp",
+  "AppUnit540_2008AggregatingSceneManager.cpp",
+  "AppUnit54C_2008RunService.cpp",
+  "AppUnit558_2008Instance.cpp",
+  "AppUnit564_2008GenericConvert.cpp",
+  "AppUnit564_2008Selection.cpp",
+  "AppUnit564_2008Type.cpp",
+  "AppUnit564_2008ValueConvert.cpp",
+  "AppUnit570_2008Reflection.cpp",
+  "AppUnit570_2008ServiceProvider.cpp",
+  "AppUnit574Creators.cpp",
+  "AppUnit574Notifiers.cpp",
+  "AppUnit574TextDisplay.cpp",
+  "AppUnit57C_2008ModelInstance.cpp",
+  "AppUnit57C_2008Script.cpp",
+  "AppUnit588_2008ChangeHistory.cpp",
+  "AppUnit588_2008RootInstance.cpp",
+  "AppUnit594_2008Decal.cpp",
+  "AppUnit5A0_2008Workspace.cpp",
+  "AppUnit5B0_2008Accoutrement.cpp",
+  "AppUnit5B4SoundReflection.cpp",
+  "AppUnit5BC_2008Creators.cpp",
+  "AppUnit5BC_2008Descriptors.cpp",
+  "AppUnit5BC_2008Visit.cpp",
+  "AppUnit5DC_2008IRenderable.cpp",
+  "AppUnit5DC_2008Math.cpp",
+  "AppUnit5DC_2008Quaternion.cpp",
+  "AppUnit5E8_2008FaceInstance.cpp",
+  "AppUnit5E8_2008World.cpp",
+  "AppUnit5F0_2008Surface.cpp",
+  "AppUnit609_2008Dragger.cpp",
+  "AppUnit609_2008Extents.cpp",
+  "AppUnit610_2008NullTool.cpp",
+  "AppUnit634_2008Value.cpp",
+  "AppUnit658Edge.cpp",
+  "AppUnit658SafeChat.cpp",
+  "AppUnit660_2008ERA.cpp",
+  "AppUnit660_2008GroupDragTool.cpp",
+  "AppUnit660_2008PartDragTool.cpp",
+  "AppUnit660_2008Units.cpp",
+  "AppUnit67C_2008SubEntity.cpp",
+  "ArchiveBinder.cpp",
+  "ArrowToolBase.cpp",
+  "ArrowToolFactory.cpp",
+  "AtlErrorCore.cpp",
+  "AuthoringSettings.cpp",
+  "AutoJoint.cpp",
+  "AxisMoveTool.cpp",
+  "AxisMoveToolBounds.cpp",
+  "AxisMoveToolCore.cpp",
+  "AxisMoveToolDown.cpp",
+  "AxisMoveToolMethods.cpp",
+  "AxisMoveToolMove.cpp",
+  "AxisMoveToolRender.cpp",
+  "AxisVerbConstructors.cpp",
+  "BasicVerbConstructors.cpp",
+  "BodyColors.cpp",
+  "BodyMovers.cpp",
+  "BodyPrimitive2008Body.cpp",
+  "BodyPrimitive2008Cofm.cpp",
+  "BodyPrimitive2008Point.cpp",
+  "BodyPrimitive2008SimBody.cpp",
+  "BoolPropertyVerb.cpp",
+  "BrowserPopup.cpp",
+  "CAboutRobloxDialogData.cpp",
+  "CBrowserDoc.cpp",
+  "CBrowserDocManager.cpp",
+  "CBrowserFrameWnd.cpp",
+  "CChatPromptWindow.cpp",
+  "CChildFrame.cpp",
+  "CClassImages.cpp",
+  "CClassTreeView.cpp",
+  "CContentError.cpp",
+  "CContentGuids.cpp",
+  "CContentUpload.cpp",
+  "CDataModelPropGrid.cpp",
+  "CDataModelPropGridUpdate.cpp",
+  "CDeclarationView.cpp",
+  "CFileVersionInfo.cpp",
+  "ChangeHistoryBase.cpp",
+  "ChangeHistoryCommit.cpp",
+  "ChangeHistoryEnable.cpp",
+  "ChangeHistoryEvents.cpp",
+  "ChangeHistoryFactory.cpp",
+  "ChangeHistoryLifetime.cpp",
+  "ChangeHistoryPlayback.cpp",
+  "ChangeHistoryQueries.cpp",
+  "ChangeHistoryReset.cpp",
+  "ChangeHistoryStart.cpp",
+  "ChatEnter.cpp",
+  "CIDEDocManager.cpp",
+  "CInsertObjectDialogAction.cpp",
+  "CInsertObjectDialogCore.cpp",
+  "CleanStage2008.cpp",
+  "ClearBackpack.cpp",
+  "ClearStarterpack.cpp",
+  "ClickDetector.cpp",
+  "ClipboardActions.cpp",
+  "CloneTool.cpp",
+  "Clothing.cpp",
+  "CMainFrameColor.cpp",
+  "CMainFrameColorSelection.cpp",
+  "CMainFrameCommands.cpp",
+  "CMainFrameConstructor.cpp",
+  "CMainFrameCreate.cpp",
+  "CMainFrameDestructor.cpp",
+  "CMainFrameDisplay.cpp",
+  "CMainFrameMap.cpp",
+  "CMainFrameMemoryLabels.cpp",
+  "CMainFrameNewDocument.cpp",
+  "CMainFramePropertyGrid.cpp",
+  "CMainFrameSettingsCommand.cpp",
+  "CMainFrameShow.cpp",
+  "CMainFrameToolbars.cpp",
+  "CMainFrameWindow.cpp",
+  "CMainFrameXtp.cpp",
+  "CMemberTreeView.cpp",
+  "CollectDragParts.cpp",
+  "COutputView.cpp",
+  "CPatchedControlComboBox.cpp",
+  "CPropertyGridItemBrickColor.cpp",
+  "CPropGridCategory.cpp",
+  "CPropGridInstances.cpp",
+  "CPropGridItem.cpp",
+  "CPropGridMap.cpp",
+  "CPropGridRebuild.cpp",
+  "CPropGridRefresh.cpp",
+  "CRbxDocTemplate.cpp",
+  "CreatableSharedCount2008.cpp",
+  "CreatableSharedCount2008Content.cpp",
+  "CreatableSharedCount2008Lighting.cpp",
+  "CreatableSharedCount2008Network.cpp",
+  "CreatableSharedCount2008Stats.cpp",
+  "CRenderSettingsBase.cpp",
+  "CRenderSettingsDefaults.cpp",
+  "CRenderSettingsDescribed.cpp",
+  "CRenderSettingsFullscreen.cpp",
+  "CRenderSettingsSingleton.cpp",
+  "CRenderSettingsSingletonState.cpp",
+  "CRobloxApp.cpp",
+  "CRobloxAppInstance.cpp",
+  "CRobloxCommandLineInfo.cpp",
+  "CRobloxControlColorSelector.cpp",
+  "CRobloxDHtmlDialog.cpp",
+  "CRobloxReportSubViews.cpp",
+  "CRobloxReportViewChildAdded.cpp",
+  "CRobloxReportViewDataModel.cpp",
+  "CRobloxViewHelp.cpp",
+  "CRobloxViewInit.cpp",
+  "CRobloxWndActive.cpp",
+  "CRobloxWndFinishAttach.cpp",
+  "CRobloxWndThrottle.cpp",
+  "CScriptEditor.cpp",
+  "CSelectionCaptionText.cpp",
+  "CSelectionCaptionUpdate.cpp",
+  "CSelectionPropGrid.cpp",
+  "CSelectionPropGridSelection.cpp",
+  "CSelectionTreeCtrl.cpp",
+  "CUploadPlaceDialog.cpp",
+  "CWebToolboxPage.cpp",
+  "CWorkspaceExecScript.cpp",
+  "CWorkspaceExecScriptHelper.cpp",
+  "CWorkspaceInsert.cpp",
+  "CWorkspaceLoad.cpp",
+  "CWorkspaceObjectSafety.cpp",
+  "CWorkspaceSave.cpp",
+  "CWorkspaceSelection.cpp",
+  "CWorkspaceSiteCheck.cpp",
+  "CWorkspaceSiteUrl.cpp",
+  "DebugableDump.cpp",
+  "DocumentException.cpp",
+  "DocumentExecute.cpp",
+  "DocumentInitialize.cpp",
+  "DocumentInsertModel.cpp",
+  "DocumentLaunch.cpp",
+  "DocumentLDraw.cpp",
+  "DocumentLoadFile.cpp",
+  "DocumentLoadFromString.cpp",
+  "DocumentUrl.cpp",
+  "DragPrimitiveBounds.cpp",
+  "DuplicateSelectionVerb.cpp",
+  "EditSelectionVerbConstructor.cpp",
+  "EngineStats.cpp",
+  "ExitCommand.cpp",
+  "FillToolColor.cpp",
+  "FilteredSelectionFactory.cpp",
+  "FilteredSelectionMethods.cpp",
+  "FilteredSelectionService.cpp",
+  "FlatTool.cpp",
+  "G3DHashable.cpp",
+  "G3DToneMap.cpp",
+  "G3DVector3Subtract.cpp",
+  "GameTool.cpp",
+  "GameToolDrag.cpp",
+  "GeoPair.cpp",
+  "GrabTool.cpp",
+  "GroupSelectionVerb.cpp",
+  "GuiContentProviderState.cpp",
+  "GuidGeneration.cpp",
+  "GuidItem.cpp",
+  "GuidRegistryConstructor.cpp",
+  "GuidRegistryCriticalSection.cpp",
+  "GuidRegistryInitialize.cpp",
+  "GuidRegistryMutex.cpp",
+  "GuiHudBuilder2008.cpp",
+  "GuiItem.cpp",
+  "GuiWidgets2008Arrow.cpp",
+  "GuiWidgets2008Chat.cpp",
+  "GuiWidgets2008MenuItem.cpp",
+  "HammerTool.cpp",
+  "HistoryItemCaptureProperty.cpp",
+  "HistoryItemPlayback.cpp",
+  "HistoryItemPropertyTrial.cpp",
+  "HistoryItemState.cpp",
+  "HistoryRecordLifetime.cpp",
+  "HistoryRecordLookup.cpp",
+  "HistoryRecordPlayback.cpp",
+  "HttpResultCheck.cpp",
+  "HttpRobloxSite.cpp",
+  "HttpScriptCheck.cpp",
+  "HttpTransport.cpp",
+  "HttpTransportState.cpp",
+  "HttpTrustCheck.cpp",
+  "HttpTrustInitialize.cpp",
+  "HttpTrustState.cpp",
+  "HttpWinHttp.cpp",
+  "HttpWinInet.cpp",
+  "HuffmanEncodingTree.cpp",
+  "Humanoid2008Parts.cpp",
+  "ImageContentRegistration.cpp",
+  "ImageMimeType.cpp",
+  "InsertDecalAction.cpp",
+  "InsertModelFromRobloxVerb.cpp",
+  "InsertObjectAction.cpp",
+  "JoinCommand.cpp",
+  "LaserTool.cpp",
+  "LDrawAssetState.cpp",
+  "LDrawEntityLifetime.cpp",
+  "LDrawMapOperations.cpp",
+  "LDrawMapRootConstructor.cpp",
+  "LDrawMapRootLifetime.cpp",
+  "LDrawMapTags.cpp",
+  "LDrawModelWrite.cpp",
+  "LDrawPartColor.cpp",
+  "LDrawPartParent.cpp",
+  "LDrawPartShape.cpp",
+  "LDrawPartTransform.cpp",
+  "LDrawPartWrite.cpp",
+  "LDrawPath.cpp",
+  "LDrawStringCompare.cpp",
+  "Leaves2008BlockBlockContact.cpp",
+  "Leaves2008IndexBox.cpp",
+  "Leaves2008Log.cpp",
+  "Leaves2008Point.cpp",
+  "Leaves2008RevoluteLink.cpp",
+  "Leaves2008StandardOut.cpp",
+  "LocalBackpack2008.cpp",
+  "LogArchive.cpp",
+  "LogFormatMemory.cpp",
+  "LogFormatTime.cpp",
+  "LoginRenewalUrl.cpp",
+  "LoginRenewer.cpp",
+  "LogLifetime.cpp",
+  "LogWriteEntry.cpp",
+  "LuaAllocatorStats.cpp",
+  "LuaArgs.cpp",
+  "LuaBridge2008Atomic.cpp",
+  "LuaBridge2008Enum.cpp",
+  "LuaBridge2008Instance.cpp",
+  "LuaBridge2008Signal.cpp",
+  "LuaBridge2008Yield.cpp",
+  "LuaHtmlBinder2008.cpp",
+  "MainLogManagerState.cpp",
+  "MainLogPath.cpp",
+  "MainLogProvider.cpp",
+  "MathClosestRay.cpp",
+  "MathTiltMatrices.cpp",
+  "MathTiltQuadrant.cpp",
+  "Matrix3.cpp",
+  "MD5Hasher.cpp",
+  "MegaTextureProxyResolve2008.cpp",
+  "MergeBinder.cpp",
+  "MetadataClass.cpp",
+  "MetadataClassesLifetime.cpp",
+  "MetadataClassesLookup.cpp",
+  "MetadataClassesRegister.cpp",
+  "MetadataClassNames.cpp",
+  "MetadataContainersLifetime.cpp",
+  "MetadataExplorerOrder.cpp",
+  "MetadataItemLifetime.cpp",
+  "MetadataMemberLookup.cpp",
+  "MetadataMergeBinderConstructor.cpp",
+  "MetadataReflectionLifetime.cpp",
+  "MetadataReflectionLoad.cpp",
+  "MetadataReflectionLookup.cpp",
+  "MetadataReflectionSingleton.cpp",
+  "ModelSetFrontTool.cpp",
+  "ModelTool.cpp",
+  "ModelToolActions.cpp",
+  "ModelToolFactories.cpp",
+  "ModelToolNames.cpp",
+  "MotorFeatureCommands.cpp",
+  "MoveDownSelectionVerb.cpp",
+  "MoveHandleHit.cpp",
+  "MoveHandleRadius.cpp",
+  "MoveUpSelectionVerb.cpp",
+  "MyXTPCommandBars.cpp",
+  "NameCompare.cpp",
+  "NameNull.cpp",
+  "NativeClassNames.cpp",
+  "NativeWorkspaceClassNames.cpp",
+  "NetworkClientServer2008Client.cpp",
+  "NetworkClientServer2008Peer.cpp",
+  "NetworkClientServer2008Server.cpp",
+  "NetworkID.cpp",
+  "NetworkPhysics.cpp",
+  "NetworkPhysicsSenders2008.cpp",
+  "NetworkPlayer.cpp",
+  "NetworkPlayers.cpp",
+  "NetworkReplicator2008AskAddChild.cpp",
+  "NetworkReplicator2008StatsItem.cpp",
+  "NewNullTool.cpp",
+  "OgreAutoCylinderTransform.cpp",
+  "OgreGeometryBuilder2008.cpp",
+  "OgreGeometryCreate2008.cpp",
+  "OgreGeometryIndexed2008.cpp",
+  "OgreRbxAdornState.cpp",
+  "OgreRbxNodeSceneNode.cpp",
+  "OgreRbxNodeTwoDManager.cpp",
+  "OgreRbxSceneManagerSkybox2008.cpp",
+  "OgreRbxSubMesh.cpp",
+  "PacketLogger.cpp",
+  "PartTool.cpp",
+  "PartToolFactories.cpp",
+  "PartTools.cpp",
+  "PeerClassName.cpp",
+  "PeerConstructor.cpp",
+  "PeerLifetime.cpp",
+  "PeerUpdate.cpp",
+  "PhysicsService.cpp",
+  "PhysicsServiceProvider.cpp",
+  "PluginInterface.cpp",
+  "ProfiledRakPeer.cpp",
+  "PVFrameOps.cpp",
+  "RaiseRange.cpp",
+  "RakPeer.cpp",
+  "RakPeerBandwidth.cpp",
+  "RakPeerBitStreamRPC.cpp",
+  "RakPeerCompression.cpp",
+  "RakPeerLifetime.cpp",
+  "RakPeerNetworkLoop.cpp",
+  "RakPeerRawRPC.cpp",
+  "RakPeerUpdate.cpp",
+  "ReliabilityLayer.cpp",
+  "ReliabilityLayerLifetime.cpp",
+  "RenderMaterial.cpp",
+  "RenderMaterialNew.cpp",
+  "RenderSpecData.cpp",
+  "RenderSpecDataState.cpp",
+  "ResizeToolCore.cpp",
+  "ResizeToolDrag.cpp",
+  "ResizeToolFind.cpp",
+  "ResizeToolMethods.cpp",
+  "ResizeToolMove.cpp",
+  "ResizeToolRender.cpp",
+  "Rocket.cpp",
+  "RocketToolCore.cpp",
+  "RocketToolLaunch.cpp",
+  "RocketToolProjectile.cpp",
+  "RotateAxisAction.cpp",
+  "RunService.cpp",
+  "RunServiceClassName.cpp",
+  "RunServiceCreate.cpp",
+  "RunStateCommands.cpp",
+  "RunStateVerbConstructor.cpp",
+  "SafeArray.cpp",
+  "SceneManager2008.cpp",
+  "SceneManagerAggregating2008.cpp",
+  "SecureHtmlAdSyndicator.cpp",
+  "SerializerRoot.cpp",
+  "ShootToolMethods.cpp",
+  "ShootToolShoot.cpp",
+  "SimJob2008.cpp",
+  "SimJobStage2008Ctor.cpp",
+  "SimpleMutex.cpp",
+  "SlingshotBallistic.cpp",
+  "SlingshotToolCore.cpp",
+  "SlingshotToolLaunch.cpp",
+  "SlingshotToolProjectile.cpp",
+  "SocketLayer.cpp",
+  "Sparkles.cpp",
+  "SparklesEffect.cpp",
+  "SpecialShape.cpp",
+  "StandardVerbs.cpp",
+  "StandardVerbsConstructor.cpp",
+  "StringCompressor.cpp",
+  "StringValueGet.cpp",
+  "TextDisplay.cpp",
+  "TextureCollect2008.cpp",
+  "TextureShadePixel2008.cpp",
+  "ThreadLogFactory.cpp",
+  "ThreadLogPath.cpp",
+  "ThreadName.cpp",
+  "ThreadNameState.cpp",
+  "ThreadNameStorage.cpp",
+  "TiltSelectionAxis.cpp",
+  "ToolVerbChecked.cpp",
+  "ToolVerbCheckedAxis.cpp",
+  "ToolVerbCheckedBasic.cpp",
+  "ToolVerbCheckedExisting.cpp",
+  "ToolVerbCheckedModel.cpp",
+  "ToolVerbCheckedResize.cpp",
+  "ToolVerbCheckedShoot.cpp",
+  "ToolVerbCheckedSurface.cpp",
+  "ToolVerbCore.cpp",
+  "ToolVerbFactories.cpp",
+  "ToolVerbFactoriesBasic.cpp",
+  "TopMenuBar.cpp",
+  "TreeNodeAddChildren.cpp",
+  "TreeNodeRefresh.cpp",
+  "TreeNodeRemoveChildren.cpp",
+  "UngroupOperation.cpp",
+  "UngroupSelectionVerb.cpp",
+  "UserInputMovement.cpp",
+  "Vector3.cpp",
+  "Vector3Subtract.cpp",
+  "VerbBaseLifetime.cpp",
+  "VerbContainer.cpp",
+  "VerbQueries.cpp",
+  "ViewCommandRouting.cpp",
+  "ViewG3D2008.cpp",
+  "ViewNewBevelMesh.cpp",
+  "ViewNewBrickCacheRecovery2008.cpp",
+  "ViewNewBrickMeshBuild2008.cpp",
+  "ViewNewCylinderMesh.cpp",
+  "ViewNewFileMesh.cpp",
+  "ViewNewHeadMesh.cpp",
+  "ViewNewPart.cpp",
+  "ViewNewPartChunk.cpp",
+  "ViewNewPartChunkRecovery2008.cpp",
+  "ViewNewPartMesh2008.cpp",
+  "ViewNewPartMesh2008PBB.cpp",
+  "ViewNewPartSurfaceUpdate2008.cpp",
+  "ViewNewPBBMesh.cpp",
+  "ViewNewQuadVolume.cpp",
+  "ViewNewSphereMesh.cpp",
+  "ViewNewSurfaceMaterial2008.cpp",
+  "ViewNewTorsoMesh.cpp",
+  "ViewNewWedgeMesh.cpp",
+  "ViewRbxGfxConstructor2008.cpp",
+  "ViewRbxGfxRender2008.cpp",
+  "ViewRbxGfxSkybox2008.cpp",
+  "ViewVerbs.cpp",
+  "WeldSnapActions.cpp",
+  "XmlNameValuePair.cpp"
+ ]
+}

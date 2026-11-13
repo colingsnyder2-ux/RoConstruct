@@ -1,0 +1,29 @@
+{
+ "files": [
+  "humanoid/Flying.cpp",
+  "v8kernel/Point.cpp",
+  "v8xml/XmlElement.cpp",
+  "gui/GUI.cpp",
+  "v8datamodel/BrickColor.cpp",
+  "tool/GroupDragTool.cpp",
+  "util/Debug.cpp",
+  "util/Guid.cpp",
+  "v8kernel/Constants.cpp",
+  "v8world/Ball.cpp"
+ ],
+ "status": "complete: no acceptable gain",
+ "compile_files": [
+  "humanoid/Flying.cpp",
+  "v8kernel/Point.cpp",
+  "v8xml/XmlElement.cpp",
+  "gui/GUI.cpp",
+  "v8datamodel/BrickColor.cpp",
+  "tool/GroupDragTool.cpp",
+  "util/Debug.cpp",
+  "util/Guid.cpp",
+  "v8kernel/Constants.cpp",
+  "v8world/Ball.cpp"
+ ],
+ "parked": {},
+ "retained_after_final_gates": []
+}

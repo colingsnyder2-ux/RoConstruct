@@ -10,6 +10,17 @@
  ],
  "layers": [
   {
+   "name": "openrbx",
+   "mode": "direct",
+   "dir": "tools/openrbx/Client/App",
+   "files": "v8tree/EnumProperty.cpp v8datamodel/Surface.cpp script/LuaMemory.cpp v8datamodel/IEquipable.cpp gui/GuiDraw.cpp",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "includes_from_recipe": "rbxgs",
+   "defines_from_recipe": "rbxgs",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "note": "OpenRBX (Dec 2007) bodies that compile against the 2008 rbxgs headers and own more 2008 functions with no loss (trial +10/-0)."
+  },
+  {
    "name": "rbxgs",
    "mode": "recipe",
    "recipe": "rbxgs",

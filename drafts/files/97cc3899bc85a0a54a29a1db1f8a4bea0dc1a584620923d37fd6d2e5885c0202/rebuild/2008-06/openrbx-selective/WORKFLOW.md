@@ -1,0 +1,27 @@
+# Selective OpenRBX trial
+
+This is an isolated trial, not a canonical engine swap. Keep source, layout, call-binding and provider review separate from byte-match and runtime results.
+
+Freeze the last successfully verified trial into a new directory:
+
+```powershell
+python rebuild/2008-06/openrbx-selective/snapshot_baseline.py work/openrbx-selective-codex/baseline-N
+```
+
+Compile each candidate once using the rbxgs recipe, then scan the object files against that baseline:
+
+```powershell
+python rebuild/2008-06/openrbx-selective/scan_candidates.py work/openrbx-selective-codex/baseline-N PATH-TO-OBJECTS --output work/openrbx-selective-codex/candidates.json
+```
+
+The scan checks masked code and resolvable data, known symbol identity, existing definitions and exclusions. Its output is a lead, not a call-binding, layout, provider or runtime proof. Review donor source and target evidence, extract selected bodies, and add explicit symbol/address mappings to `run_trial.py`.
+
+Build and verify the batch:
+
+```powershell
+python rebuild/2008-06/openrbx-selective/run_batch.py work/openrbx-selective-codex/baseline-N
+```
+
+The runner rejects global or per-object ownership losses, requires a gain, and runs M2, M4a and M5 in an isolated test workspace. It saves a hash-bound receipt at `rebuild/2008-06/out/RbxgsAppOpenRBXSelective/batch-verification.json`. Freeze a fresh baseline only after this succeeds.
+
+Add `--fast` for diagnostic compile/link/smoke only. Fast mode skips scoring and milestones, overwrites the trial report, and cannot prove a gain. Run the full command afterwards. No scheduler or notifications are created.

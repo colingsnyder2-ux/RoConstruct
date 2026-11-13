@@ -1,0 +1,33 @@
+{
+ "files": [
+  "script/ScriptEvent.cpp",
+  "script/ScriptContext.cpp",
+  "v8datamodel/Gyro.cpp",
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Tool.cpp",
+  "v8datamodel/Feature.cpp",
+  "v8datamodel/FaceInstance.cpp",
+  "v8datamodel/DebugSettings.cpp",
+  "script/Script.cpp",
+  "tool/RunDragger.cpp"
+ ],
+ "status": "complete: retained ports proven by final campaign gates",
+ "parked": {
+  "script/ScriptContext.cpp": "2008 overlay LuaArguments::get requires extra nilIsMissing argument; no declaration-only compatible call established.",
+  "v8datamodel/Gyro.cpp": "2008 Rocket stores target as weak_ptr rather than donor raw pointer; methods require lifetime/body changes."
+ },
+ "compile_files": [
+  "script/ScriptEvent.cpp",
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Tool.cpp",
+  "v8datamodel/Feature.cpp",
+  "v8datamodel/FaceInstance.cpp",
+  "v8datamodel/DebugSettings.cpp",
+  "script/Script.cpp",
+  "tool/RunDragger.cpp"
+ ],
+ "retained_after_final_gates": [
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Feature.cpp"
+ ]
+}

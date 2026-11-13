@@ -1,0 +1,13 @@
+{
+ "files": [
+  "v8world/JointBuilder.cpp",
+  "v8world/RigidJoint.cpp",
+  "v8world/SnapJoint.cpp",
+  "v8world/WeldJoint.cpp",
+  "util/FileSystem.cpp",
+  "reflection/signal.cpp",
+  "util/Extents.cpp",
+  "tool/DragTool.cpp",
+  "util/IndexBox.cpp"
+ ]
+}

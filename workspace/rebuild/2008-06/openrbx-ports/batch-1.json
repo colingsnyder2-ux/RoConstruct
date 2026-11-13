@@ -1,0 +1,16 @@
+{
+ "files": [
+  "v8datamodel/RootInstance.cpp",
+  "gui/ChatWidget.cpp",
+  "v8datamodel/Surfaces.cpp",
+  "v8datamodel/LocakBackpack.cpp",
+  "util/Name.cpp",
+  "tool/DragUtilities.cpp",
+  "v8datamodel/Accoutrement.cpp",
+  "v8datamodel/Teams.cpp"
+ ],
+ "parked": {
+  "gui/ChatOutput.cpp": "ChatLine destructor undeclared; frontIsOld declared void. Cannot preserve donor bodies without header changes.",
+  "v8datamodel/Sky.cpp": "G3D::Sky::setNumStars absent; no evidenced 2008 equivalent."
+ }
+}

@@ -1,0 +1,236 @@
+{
+ "files": [
+  {
+   "file": "gui/ArrowPanel.cpp",
+   "gain": [
+    "004899a0",
+    "00657780",
+    "00657be0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00657780",
+    "00657be0"
+   ],
+   "source_sha256": "83ab6fc9ab2c9d65237b680ee92abe285fce6df167946a328169f84e21f1eade",
+   "upstream_sha256": "6ea45ab6188d6249990a50d70c6c174a0e9d27f94029c250df4dab47e40b64d2",
+   "object_sha256": "df3c64e43dfd7be797b56631b9ae1a9d911e0320a9cb09ff47d02973620f0a2e"
+  },
+  {
+   "file": "v8datamodel/Teams.cpp",
+   "gain": [
+    "005d6070"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "005d6070"
+   ],
+   "source_sha256": "138d82fdc4df267b484e47d282106bde19ec64e55c5abb2b38f83242b5ead65b",
+   "upstream_sha256": "6d04b75bef0e0fd0c132bc4ae68772517d4e83c0828b2194b0db5373188b1c90",
+   "object_sha256": "b499a8f8a49b3e2a668a0c0813af7bce76e703fdb786043038737a997e76bbe5"
+  },
+  {
+   "file": "v8datamodel/Flag.cpp",
+   "gain": [
+    "006195b0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006195b0"
+   ],
+   "source_sha256": "1d5b6a37cee0cc7f7b175506d762de529a5462ef18fec5801bd27fc0b45fb7fa",
+   "upstream_sha256": "424e9f3423c9e459316c90fd7ef83e8971a1c5c31c9e1ad74b35be499f4c0d78",
+   "object_sha256": "0797e1cf9c75ba0260c198d5c344993a1f74626252f005beee9c63f3bc1418fd"
+  },
+  {
+   "file": "v8datamodel/Feature.cpp",
+   "gain": [
+    "00609a60",
+    "0060a0f0",
+    "0060c400",
+    "0060ca00"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00609a60",
+    "0060a0f0",
+    "0060c400",
+    "0060ca00"
+   ],
+   "source_sha256": "74e6f7f337f356fdcd8b95075cf6514250adccfc8d38b8c5507955ee0660341b",
+   "upstream_sha256": "d7b6a72f487bb5d9f1ff302b042904b77557b53afe7c73d82bb44ec2f60a25be",
+   "object_sha256": "b3cef28ebe41034756d9ec2ca562a360ac2d0f373cc541efe769a1de68eb6fac"
+  },
+  {
+   "file": "v8datamodel/Filters.cpp",
+   "gain": [
+    "006604a0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006604a0"
+   ],
+   "source_sha256": "95bef9abf9c9b46bb554f1f2222e842e9c9bff8d0dc2071a8a7360ab077a5f7f",
+   "upstream_sha256": "548275c25fccf67b07d5a5cc1441e4650a41a88d7f34c7204adf10433754a336",
+   "object_sha256": "a3fc183bbfc6071fe85014145b78434fd1e78eb7777b9320f8832455590c4f79"
+  },
+  {
+   "file": "v8datamodel/Selection.cpp",
+   "gain": [
+    "00566f00",
+    "0077d6c0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00566f00"
+   ],
+   "source_sha256": "9267ba4cc804c38ea7344036db86259bfef2def072b935ddfab85e9d84a35cab",
+   "upstream_sha256": "cf870335b34939695bbe0175a2f3dd8d07c1289b55ec03c2d93e33c314a03187",
+   "object_sha256": "91151f04220f9c411beb5895e1b5d9bb233e40e32d079d3ac0eeab857281c5f0"
+  },
+  {
+   "file": "v8datamodel/SafeChat.cpp",
+   "gain": [
+    "00658170",
+    "00658360",
+    "006584e0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00658170",
+    "00658360",
+    "006584e0"
+   ],
+   "source_sha256": "8181bd6245edd8deacc355c4aa1791c4b84e0c08282459c338b4bc4397e150c8",
+   "upstream_sha256": "da6aca858e8b9f5078712860b3b54391ecba95db022bf3f39393583151a2d8fd",
+   "object_sha256": "d0dfb33fb11f80f6f5852e7382b3e89db3afd57a77fed2b51c948bbb3dfd9ab6"
+  },
+  {
+   "file": "v8datamodel/GlobalSettings.cpp",
+   "gain": [
+    "00402400",
+    "004025b0",
+    "00411120",
+    "00411ad0",
+    "00413970",
+    "00413a70",
+    "00413d70",
+    "00414370",
+    "00414470",
+    "0042af90",
+    "0042b1e0",
+    "00443400",
+    "00443a10",
+    "00443a60",
+    "00443d60",
+    "00443e50",
+    "00443ec0",
+    "00443ef0",
+    "00443f80",
+    "00444000",
+    "00444050",
+    "004440a0",
+    "00444200",
+    "004442c0",
+    "00444a70",
+    "004a2070",
+    "004acac0",
+    "004aea80",
+    "004aff20",
+    "0055cc20",
+    "00568460",
+    "005684d0",
+    "00568910",
+    "00618a40",
+    "0063fad0",
+    "0064fa10",
+    "0067c5e0",
+    "0068fef0",
+    "0068ff20",
+    "0071f210"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00568460",
+    "005684d0",
+    "00568910"
+   ],
+   "source_sha256": "522206aabc48d0967fcd17d3757658487f048beb8f18ee05da250ade9a92d87d",
+   "upstream_sha256": "ecead046c0647ecc5ed25a50bc5e186bf192ab61e0d54b10674390030b5ca779",
+   "object_sha256": "a33b02faa8e0022582e058539d2d306fff8729c5e389b194a20505aa2374edb7"
+  },
+  {
+   "file": "v8world/Joint.cpp",
+   "gain": [
+    "006454a0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006454a0"
+   ],
+   "source_sha256": "6d0a22b56c99d9b55104d79e710db195f23e9ff96309e24213efdce5e329b0d1",
+   "upstream_sha256": "1b6bdf1e7be77c9148658a7d80ad3e12b56f3c6f08425ffe68fbbf8335527141",
+   "object_sha256": "15e7b76a62f386dc965861b74c8c9ae40e16d91a10a2854d8e3df34e9916e7ff"
+  }
+ ],
+ "owned_before": 4419,
+ "owned_after": 4436,
+ "global_gain": [
+  "00566f00",
+  "00568460",
+  "005684d0",
+  "00568910",
+  "005d6070",
+  "00609a60",
+  "0060a0f0",
+  "0060c400",
+  "0060ca00",
+  "006195b0",
+  "006454a0",
+  "00657780",
+  "00657be0",
+  "00658170",
+  "00658360",
+  "006584e0",
+  "006604a0"
+ ],
+ "global_loss": [],
+ "continuation_before": 4422,
+ "continuation_unique_gain": 14,
+ "prior_gated_before": 4435,
+ "final_batch_unique_gain": 1,
+ "upstream_revision": "4083cfd3761f7d88938700abaa8bf31598b3576b",
+ "baseline_commit": "636ca09f3b9ae301decad757e27db594a5f202cd",
+ "module_spec_sha256": "f646c9fd94d7802e9d0f5d52f75380f8d084d7dd69892c2bb09149696ddcddb8",
+ "status": "proven: all nine retained objects gain owned addresses with zero object/global loss; module smoke and M2/M4a/M5 pass",
+ "milestones": {
+  "M2": {
+   "passed": true,
+   "linked": true,
+   "exit": 0
+  },
+  "M4a": {
+   "passed": true,
+   "linked": true,
+   "exit": 0
+  },
+  "M5": {
+   "passed": true,
+   "linked": true,
+   "exit": 0
+  }
+ },
+ "proof_sha256": {
+  "campaign-baseline-report.json": "7b4e10fb74b8ed8153fe8d8d41fc18045e9a88c4a95cefca0d4e475e3ebfe6b9",
+  "campaign-baseline-owned-symbols.json": "c58e6de48b7d9a5c1c1cd2b0e355954f53e460d8a6a4b67f52ca3cf14be13539",
+  "report.json": "54675a45e2905aed7d6dbdb1ab09bbf8ea4a75a5778b7d622359dd2899534e38",
+  "owned-symbols.json": "f31c4e5497d1bce3295960cac4545401d994ef98ff686b5c1e12ce5dee422a43",
+  "milestones.json": "fcc765190ec713d0481370ec270364180896436928ec1220a215905a05687481"
+ },
+ "canonical_module_spec_sha256": "57645f2b17f6706dd06dbeb7a2e00076c331e69fd6d1191c9cae3e1bf52de304",
+ "runtime_note": "Unmodified stock tests linked against final trial library in isolated standard-depth output, with unchanged stock FMOD runtime DLLs.",
+ "canonical_layers_preserved": true,
+ "source_draft_session": "60a038b01a5848fcb6315287df04be09",
+ "package_revision": null,
+ "source_revision": null
+}

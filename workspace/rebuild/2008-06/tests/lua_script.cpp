@@ -1,3 +1,4 @@
+#include "force_verified.h"
 // Lua: run a script that uses the base, string, table and math libraries.
 extern "C" {
 #include "lua.h"

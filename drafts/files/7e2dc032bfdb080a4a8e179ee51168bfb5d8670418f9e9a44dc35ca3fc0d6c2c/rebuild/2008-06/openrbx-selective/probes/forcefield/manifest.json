@@ -1,0 +1,47 @@
+[
+ {
+  "file": "ExplosionProbe00.cpp",
+  "source": "batch-3-parked/v8datamodel/Explosion.cpp",
+  "marker": "void Explosion::render3dAdorn("
+ },
+ {
+  "file": "ExplosionProbe01.cpp",
+  "source": "batch-3-parked/v8datamodel/Explosion.cpp",
+  "marker": "void Explosion::onServiceProvider("
+ },
+ {
+  "file": "ExplosionProbe02.cpp",
+  "source": "batch-3-parked/v8datamodel/Explosion.cpp",
+  "marker": "void Explosion::setBlastRadius("
+ },
+ {
+  "file": "ExplosionProbe03.cpp",
+  "source": "batch-3-parked/v8datamodel/Explosion.cpp",
+  "marker": "void Explosion::signalBlast("
+ },
+ {
+  "file": "ExplosionProbe04.cpp",
+  "source": "batch-3-parked/v8datamodel/Explosion.cpp",
+  "marker": "void Explosion::onEvent("
+ },
+ {
+  "file": "ExplosionProbe05.cpp",
+  "source": "batch-3-parked/v8datamodel/Explosion.cpp",
+  "marker": "bool Explosion::askSetParent("
+ },
+ {
+  "file": "SpawnLocationProbe00.cpp",
+  "source": "batch-4-parked/v8datamodel/SpawnLocation.cpp",
+  "marker": "BrickColor SpawnLocation::getTeamColor()"
+ },
+ {
+  "file": "SpawnLocationProbe01.cpp",
+  "source": "batch-4-parked/v8datamodel/SpawnLocation.cpp",
+  "marker": "void SpawnLocation::setTeamColor("
+ },
+ {
+  "file": "SpawnLocationProbe02.cpp",
+  "source": "batch-4-parked/v8datamodel/SpawnLocation.cpp",
+  "marker": "void SpawnLocation::onServiceProvider("
+ }
+]
