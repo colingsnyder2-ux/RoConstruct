@@ -8,6 +8,11 @@
   layers the openrbx AppDraw TUs INSTEAD of the OgreRbx*.cpp natives. AdornRbxGfx.cpp needs renderlibnew/TextureProxy.h.
 - Scintilla: native-classes/ScintillaCtrl.cpp + ScintillaDocView.cpp now verbatim from `tools/openrbx/Client/win` (namespace Scintilla; 105/82 range-exact,
   unmatched Scintilla exe functions 51 -> 27). The module `scintilla.json` still builds the 1.20 library recipe.
+- openrbx `Client/win/Roblox.cpp` (1130 lines) is the real 2008 `CRobloxApp::InitInstance` etc. with FUN_xxxxxxxx names that map to exe addresses
+  (FUN_0044d4a0, FUN_004509e0, FUN_00450e30, FUN_0041ac10 in DHTMLWindow.cpp, Profiling::init, Reflection::Metadata::FUN_00447680,
+  static FactoryRegistrator). These are the sources behind the shortcut client's zero stubs (nativeInitializeTypes, nativeRegisterNames1..3,
+  initializeSettings ...). To compile win/*.cpp as TUs the probe needs `/FIafxwin.h /FIshlwapi.h /FIafxpriv.h` plus the XTP include dirs and the
+  MIDL-generated `Roblox_h.h`; first tried 2026-11-13, stopped at those headers.
 
 # Claude note 2026-11-12 23:20 — stub-backed client runs (owner authorized shortcuts)
 
