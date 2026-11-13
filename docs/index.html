@@ -373,7 +373,7 @@ const cache = new Map();
 const liveScores = new Map();
 const liveFunctions = new Map();
 let liveView = null;
-let progress, history = [], hIdx = -1, integrationData = null, rebuildData = null, views = {libraries:"mining", remaining:"mining", daily:"mining"};
+let progress, history = [], hIdx = -1, integrationData = null, views = {libraries:"mining", remaining:"mining", daily:"mining"};
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                 "November", "December"];
 const ICON = {
@@ -557,23 +557,6 @@ function integrationSection(i, name) {
       <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(nearly.functions)}</b><span>Inactive / draft native</span></div></div>
       <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions - nearly.functions)}</b><span>Other remaining</span></div></div>
     </div><p class="note">Inactive / draft: native code exists (receipt-exact or draft) but is not integrated yet.</p>`;
-}
-
-function rebuildSection(data, name) {
-  const client = data?.clients?.[name];
-  if (!client) return "";
-  const labels = {Boost:"Boost", G3D:"G3D", "G3D-GL":"G3D-GL", jpeg:"JPEG", libpng:"libpng",
-    Lua:"Lua", MfcAtl:"MFC / ATL", Ogre:"Ogre", RakNet:"RakNet", RbxUtil:"RBX utilities",
-    Scintilla:"Scintilla", XTP:"XTP", zlib:"zlib", RbxgsApp:"RBX engine"};
-  const modules = client.modules.filter(row => labels[row.name] && row.target > 0);
-  if (!modules.length) return "";
-  return `<div class="head"><h2><small>Native proof</small>Linked modules</h2><p>Compiled linked-object bodies compared with original executable. Separate from mined-source and server integration counts.</p></div>
-    <div class="table"><table><thead><tr><th>Module</th><th>Native exact</th><th>Coverage</th><th>Link / test</th></tr></thead><tbody>${modules.map(row => {
-      const percent = 100 * row.exact / row.target;
-      const status = row.linked && row.test === 0 && !row.compileErrors && !row.unresolved ? "Linked · test passed" :
-        `${row.linked ? "Linked" : "Not linked"} · ${row.unresolved || 0} unresolved`;
-      return `<tr><td>${esc(labels[row.name])}</td><td>${fmt(row.exact)} / ${fmt(row.target)}</td><td>${percent.toFixed(2)}%<div class="bar native" role="progressbar" aria-label="${esc(labels[row.name])} native exact coverage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i></div></td><td>${esc(status)}</td></tr>`;
-    }).join("")}</tbody></table></div>`;
 }
 
 function integrationSummary(i, name, compact = false) {
@@ -1106,7 +1089,6 @@ async function client(name) {
     <p class="sub">${esc(builtOn(latest))}${esc(latest.compiler)} · ${fmt(latest.classes || 0)} classes · ${fmt(latest.generated || 0)} compiler stubs skipped</p>
     <div class="center">${joinLink(name)}</div>
     ${native ? `<section class="coverage-panel integration-panel" id="live-integration" aria-label="Integration coverage">${integrationSection(native,name)}${integrationBar(native,name)}</section>` : ""}
-    ${rebuildSection(rebuildData,name)}
     <section class="coverage-panel" aria-label="Mining coverage">
     <div class="stats">
       <div class="stat"><div class="ico">${ICON.code}</div><div><b id="live-matched">${fmt(c.matched)}</b><span>Matched</span></div></div>
@@ -1340,12 +1322,10 @@ Promise.all([
   fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("integration.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
   fetch("native-source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
-  fetch("rebuild-progress.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([p, h, sources, native, candidates, rebuilt]) => {
+]).then(([p, h, sources, native, candidates]) => {
   sourceCatalog = sources;
   if (native && candidates?.client === native.client) native.inactive_sources = {...candidates.sources, ...native.inactive_sources};
   integrationData = native;
-  rebuildData = rebuilt;
   progress = p; history = h; hIdx = h.length - 1;
   route();
   if (!progress.clients.some(c => c.name === decodeURIComponent(location.hash.slice(1)))) refreshLiveProgress();
