@@ -1,3 +1,12 @@
+# Claude note 2026-11-13 (late) - why File>New dies in Instance::readProperty: engine Instance vtable is shifted by one slot
+- Native (2008) Instance.h virtuals: ~Instance, setName, askAddChild, askSetParent, onAddListener x2, onAncestorChanged, onDescendentAdded, ... readProperty, ...
+  rbxgs engine Instance.h has an extra `virtual void onGuidChanged()` before setName, so every slot after the destructor is +1. 2008 analogs (byte-exact against the exe) call
+  slot k; the 2007 engine objects answer with slot k-1/k+1 (readProperty entered from ServiceProvider::onDescendentAdded with a null XmlElement). Member offsets also differ
+  (parent 0x104 in 2008, Instance size 0x130). So analogs that touch Instance-derived engine objects cannot be mixed with the engine.
+- Options: (a) whole Instance hierarchy from 2008 analogs/native sources (strip the 2007 engine copies of that set; analog-wins mode ROC_ANALOG_DIR links but crashes MFC at startup, bisect_wins.py
+  could not separate link failures from crashes: ~870 unresolved even after stubbing in subset mode), or (b) engine headers patched to the 2008 vtable/layout through rebuild/2008-06/patches/rbxgs-client.json
+  (overlay) and the engine rebuilt: slot order alone is not enough, fields differ too.
+
 # Claude note 2026-11-13 (night) - File>New past GameSettings; now readProperty(null XmlElement)
 - Root cause of the GameSettings/NetworkSettings `Instance::setName` BAADF00D crash: engine-ABI Instance members are emitted with the 2007 access mangling
   (ctor `??0Instance@RBX@@IAE@..`, dtor `??1Instance@RBX@@MAE@XZ`) while 2008 callers/analogs reference `QAE`/`UAE`, so the public names became zero stubs. Fixed with
