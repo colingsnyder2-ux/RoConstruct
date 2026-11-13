@@ -1,0 +1,810 @@
+{
+  "class": "Ogre::Default{AxisAlignedBox,Sphere,PlaneBoundedVolumeList,Ray,Intersection}SceneQuery (rgmain.dll _OgreExport classes; exe-local compiler-generated parts)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeOgreRbxQueryLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeOgreRbxQueryLayout.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_ogre_rbx_query.py": "feffe719c20c94f1a06609faef659af8a1220cad1e5dbbdc24d9324767dcf554",
+    "rebuild/2008-06/tests/NativeOgreRbxQueryLayout.cpp": "775b233df5d5b1f045f1b0cac1acf9308a51b2a86c23f5eac5e3c153c6bb32c2",
+    "rebuild/2008-06/native-headers/OgreRbxQuery/DefaultSceneQueries2008.h": "5fbe658f56d78dd9d2c78dc6dfe8e1ce38fde7630b931a9f451804f6c0577f11"
+  },
+  "objects": {
+    "NativeOgreRbxQueryLayout.obj": "a741fa584b35dbcb802ed81ebd0f920f6d9dc8bc6bfd5fc41e89069b3c21d4d5"
+  },
+  "layout": {
+    "DefaultAxisAlignedBoxSceneQuery": {
+      "size": "0x5c",
+      "listener_base": "0x34",
+      "create": "0068cad0",
+      "ctor_import": "00804810"
+    },
+    "DefaultSphereSceneQuery": {
+      "size": "0x4c",
+      "listener_base": "0x34",
+      "create": "0068cb80",
+      "ctor_import": "00804850"
+    },
+    "DefaultPlaneBoundedVolumeListSceneQuery": {
+      "size": "0x54",
+      "listener_base": "0x34",
+      "create": "0068cc30",
+      "ctor_import": "00804860"
+    },
+    "DefaultRaySceneQuery": {
+      "size": "0x6c",
+      "listener_base": "0x34",
+      "create": "0068cce0",
+      "ctor_import": "0080486c"
+    },
+    "DefaultIntersectionSceneQuery": {
+      "size": "0x3c",
+      "listener_base": "0x34",
+      "create": "0068cd90",
+      "ctor_import": "008048a0"
+    }
+  },
+  "rows": [
+    {
+      "address": "0068cb60",
+      "symbol": "??_GDefaultAxisAlignedBoxSceneQuery@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1DefaultAxisAlignedBoxSceneQuery@Ogre@@UAE@XZ": "0x804848 (rgmain.dll!??1DefaultAxisAlignedBoxSceneQuery@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0068d630",
+      "symbol": "??_EDefaultAxisAlignedBoxSceneQuery@Ogre@@WDE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EDefaultAxisAlignedBoxSceneQuery@Ogre@@UAEPAXI@Z": "0x68cb60 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "0068cc10",
+      "symbol": "??_GDefaultSphereSceneQuery@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1DefaultSphereSceneQuery@Ogre@@UAE@XZ": "0x804858 (rgmain.dll!??1DefaultSphereSceneQuery@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0068d640",
+      "symbol": "??_EDefaultSphereSceneQuery@Ogre@@WDE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EDefaultSphereSceneQuery@Ogre@@UAEPAXI@Z": "0x68cc10 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "0068ccc0",
+      "symbol": "??_GDefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1DefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAE@XZ": "0x804868 (rgmain.dll!??1DefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0068d620",
+      "symbol": "??_EDefaultPlaneBoundedVolumeListSceneQuery@Ogre@@WDE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EDefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAEPAXI@Z": "0x68ccc0 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "0068cd70",
+      "symbol": "??_GDefaultRaySceneQuery@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1DefaultRaySceneQuery@Ogre@@UAE@XZ": "0x80489c (rgmain.dll!??1DefaultRaySceneQuery@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0068d660",
+      "symbol": "??_EDefaultRaySceneQuery@Ogre@@WDE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EDefaultRaySceneQuery@Ogre@@UAEPAXI@Z": "0x68cd70 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "0068ce10",
+      "symbol": "??_GDefaultIntersectionSceneQuery@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1DefaultIntersectionSceneQuery@Ogre@@UAE@XZ": "0x8048bc (rgmain.dll!??1DefaultIntersectionSceneQuery@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0068d650",
+      "symbol": "??_EDefaultIntersectionSceneQuery@Ogre@@WDE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EDefaultIntersectionSceneQuery@Ogre@@UAEPAXI@Z": "0x68ce10 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    }
+  ],
+  "exact_function_rows": [
+    "0068cb60",
+    "0068cc10",
+    "0068ccc0",
+    "0068cd70",
+    "0068ce10",
+    "0068d620",
+    "0068d630",
+    "0068d640",
+    "0068d650",
+    "0068d660"
+  ],
+  "vtables": {
+    "DefaultAxisAlignedBoxSceneQuery": {
+      "0084eab8": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultAxisAlignedBoxSceneQuery@Ogre@@UAEPAXI@Z",
+          "original": "0068cb60",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?setQueryMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a0212",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getQueryMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0218",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a021e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0224",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z",
+          "original": "006a022a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ",
+          "original": "006a0230",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ",
+          "original": "006a0236",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?execute@DefaultAxisAlignedBoxSceneQuery@Ogre@@UAEXPAVSceneQueryListener@2@@Z",
+          "original": "006a023c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@DefaultAxisAlignedBoxSceneQuery@Ogre@@UAEXPAVSceneQueryListener@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?execute@RegionSceneQuery@Ogre@@UAEAAUSceneQueryResult@2@XZ",
+          "original": "006a0242",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@RegionSceneQuery@Ogre@@UAEAAUSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?getLastResults@RegionSceneQuery@Ogre@@UBEAAUSceneQueryResult@2@XZ",
+          "original": "006a0248",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLastResults@RegionSceneQuery@Ogre@@UBEAAUSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 11,
+          "symbol": "?clearResults@RegionSceneQuery@Ogre@@UAEXXZ",
+          "original": "006a024e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?clearResults@RegionSceneQuery@Ogre@@UAEXXZ"
+        }
+      ],
+      "0084eaa8": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultAxisAlignedBoxSceneQuery@Ogre@@WDE@AEPAXI@Z",
+          "original": "0068d630",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 1,
+          "symbol": "?queryResult@RegionSceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@@Z",
+          "original": "006a0254",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RegionSceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?queryResult@RegionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@@Z",
+          "original": "006a025a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RegionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@@Z"
+        }
+      ]
+    },
+    "DefaultSphereSceneQuery": {
+      "0084eafc": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultSphereSceneQuery@Ogre@@UAEPAXI@Z",
+          "original": "0068cc10",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?setQueryMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a0212",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getQueryMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0218",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a021e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0224",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z",
+          "original": "006a022a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ",
+          "original": "006a0230",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ",
+          "original": "006a0236",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?execute@DefaultSphereSceneQuery@Ogre@@UAEXPAVSceneQueryListener@2@@Z",
+          "original": "006a0260",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@DefaultSphereSceneQuery@Ogre@@UAEXPAVSceneQueryListener@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?execute@RegionSceneQuery@Ogre@@UAEAAUSceneQueryResult@2@XZ",
+          "original": "006a0242",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@RegionSceneQuery@Ogre@@UAEAAUSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?getLastResults@RegionSceneQuery@Ogre@@UBEAAUSceneQueryResult@2@XZ",
+          "original": "006a0248",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLastResults@RegionSceneQuery@Ogre@@UBEAAUSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 11,
+          "symbol": "?clearResults@RegionSceneQuery@Ogre@@UAEXXZ",
+          "original": "006a024e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?clearResults@RegionSceneQuery@Ogre@@UAEXXZ"
+        }
+      ],
+      "0084eaec": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultSphereSceneQuery@Ogre@@WDE@AEPAXI@Z",
+          "original": "0068d640",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 1,
+          "symbol": "?queryResult@RegionSceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@@Z",
+          "original": "006a0254",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RegionSceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?queryResult@RegionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@@Z",
+          "original": "006a025a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RegionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@@Z"
+        }
+      ]
+    },
+    "DefaultPlaneBoundedVolumeListSceneQuery": {
+      "0084eb40": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAEPAXI@Z",
+          "original": "0068ccc0",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?setQueryMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a0212",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getQueryMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0218",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a021e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0224",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z",
+          "original": "006a022a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ",
+          "original": "006a0230",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ",
+          "original": "006a0236",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?execute@DefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAEXPAVSceneQueryListener@2@@Z",
+          "original": "006a0266",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@DefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAEXPAVSceneQueryListener@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?execute@RegionSceneQuery@Ogre@@UAEAAUSceneQueryResult@2@XZ",
+          "original": "006a0242",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@RegionSceneQuery@Ogre@@UAEAAUSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?getLastResults@RegionSceneQuery@Ogre@@UBEAAUSceneQueryResult@2@XZ",
+          "original": "006a0248",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLastResults@RegionSceneQuery@Ogre@@UBEAAUSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 11,
+          "symbol": "?clearResults@RegionSceneQuery@Ogre@@UAEXXZ",
+          "original": "006a024e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?clearResults@RegionSceneQuery@Ogre@@UAEXXZ"
+        }
+      ],
+      "0084eb30": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultPlaneBoundedVolumeListSceneQuery@Ogre@@WDE@AEPAXI@Z",
+          "original": "0068d620",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 1,
+          "symbol": "?queryResult@RegionSceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@@Z",
+          "original": "006a0254",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RegionSceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?queryResult@RegionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@@Z",
+          "original": "006a025a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RegionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@@Z"
+        }
+      ]
+    },
+    "DefaultRaySceneQuery": {
+      "0084eb84": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultRaySceneQuery@Ogre@@UAEPAXI@Z",
+          "original": "0068cd70",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?setQueryMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a0212",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getQueryMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0218",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a021e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0224",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z",
+          "original": "006a022a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ",
+          "original": "006a0230",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ",
+          "original": "006a0236",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?setRay@RaySceneQuery@Ogre@@UAEXABVRay@2@@Z",
+          "original": "006a026c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRay@RaySceneQuery@Ogre@@UAEXABVRay@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?getRay@RaySceneQuery@Ogre@@UBEABVRay@2@XZ",
+          "original": "006a0272",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRay@RaySceneQuery@Ogre@@UBEABVRay@2@XZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?setSortByDistance@RaySceneQuery@Ogre@@UAEX_NG@Z",
+          "original": "006a0278",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setSortByDistance@RaySceneQuery@Ogre@@UAEX_NG@Z"
+        },
+        {
+          "slot": 11,
+          "symbol": "?getSortByDistance@RaySceneQuery@Ogre@@UBE_NXZ",
+          "original": "006a027e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSortByDistance@RaySceneQuery@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 12,
+          "symbol": "?getMaxResults@RaySceneQuery@Ogre@@UBEGXZ",
+          "original": "006a0284",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getMaxResults@RaySceneQuery@Ogre@@UBEGXZ"
+        },
+        {
+          "slot": 13,
+          "symbol": "?execute@DefaultRaySceneQuery@Ogre@@UAEXPAVRaySceneQueryListener@2@@Z",
+          "original": "006a028a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@DefaultRaySceneQuery@Ogre@@UAEXPAVRaySceneQueryListener@2@@Z"
+        },
+        {
+          "slot": 14,
+          "symbol": "?execute@RaySceneQuery@Ogre@@UAEAAV?$vector@URaySceneQueryResultEntry@Ogre@@V?$allocator@URaySceneQueryResultEntry@Ogre@@@std@@@std@@XZ",
+          "original": "006a0290",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@RaySceneQuery@Ogre@@UAEAAV?$vector@URaySceneQueryResultEntry@Ogre@@V?$allocator@URaySceneQueryResultEntry@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 15,
+          "symbol": "?getLastResults@RaySceneQuery@Ogre@@UAEAAV?$vector@URaySceneQueryResultEntry@Ogre@@V?$allocator@URaySceneQueryResultEntry@Ogre@@@std@@@std@@XZ",
+          "original": "006a0296",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLastResults@RaySceneQuery@Ogre@@UAEAAV?$vector@URaySceneQueryResultEntry@Ogre@@V?$allocator@URaySceneQueryResultEntry@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 16,
+          "symbol": "?clearResults@RaySceneQuery@Ogre@@UAEXXZ",
+          "original": "006a029c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?clearResults@RaySceneQuery@Ogre@@UAEXXZ"
+        }
+      ],
+      "0084eb74": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultRaySceneQuery@Ogre@@WDE@AEPAXI@Z",
+          "original": "0068d660",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 1,
+          "symbol": "?queryResult@RaySceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@M@Z",
+          "original": "006a02a2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RaySceneQuery@Ogre@@UAE_NPAUWorldFragment@SceneQuery@2@M@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?queryResult@RaySceneQuery@Ogre@@UAE_NPAVMovableObject@2@M@Z",
+          "original": "006a02a8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@RaySceneQuery@Ogre@@UAE_NPAVMovableObject@2@M@Z"
+        }
+      ]
+    },
+    "DefaultIntersectionSceneQuery": {
+      "0084ebdc": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultIntersectionSceneQuery@Ogre@@UAEPAXI@Z",
+          "original": "0068ce10",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?setQueryMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a0212",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getQueryMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0218",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z",
+          "original": "006a021e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryTypeMask@SceneQuery@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ",
+          "original": "006a0224",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryTypeMask@SceneQuery@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z",
+          "original": "006a022a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setWorldFragmentType@SceneQuery@Ogre@@UAEXW4WorldFragmentType@12@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ",
+          "original": "006a0230",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldFragmentType@SceneQuery@Ogre@@UBE?AW4WorldFragmentType@12@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ",
+          "original": "006a0236",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSupportedWorldFragmentTypes@SceneQuery@Ogre@@UBEPBV?$set@W4WorldFragmentType@SceneQuery@Ogre@@U?$less@W4WorldFragmentType@SceneQuery@Ogre@@@std@@V?$allocator@W4WorldFragmentType@SceneQuery@Ogre@@@5@@std@@XZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?execute@DefaultIntersectionSceneQuery@Ogre@@UAEXPAVIntersectionSceneQueryListener@2@@Z",
+          "original": "006a02ae",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@DefaultIntersectionSceneQuery@Ogre@@UAEXPAVIntersectionSceneQueryListener@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?execute@IntersectionSceneQuery@Ogre@@UAEAAUIntersectionSceneQueryResult@2@XZ",
+          "original": "006a02b4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?execute@IntersectionSceneQuery@Ogre@@UAEAAUIntersectionSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?getLastResults@IntersectionSceneQuery@Ogre@@UBEAAUIntersectionSceneQueryResult@2@XZ",
+          "original": "006a02ba",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLastResults@IntersectionSceneQuery@Ogre@@UBEAAUIntersectionSceneQueryResult@2@XZ"
+        },
+        {
+          "slot": 11,
+          "symbol": "?clearResults@IntersectionSceneQuery@Ogre@@UAEXXZ",
+          "original": "006a02c0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?clearResults@IntersectionSceneQuery@Ogre@@UAEXXZ"
+        }
+      ],
+      "0084ebcc": [
+        {
+          "slot": 0,
+          "symbol": "??_EDefaultIntersectionSceneQuery@Ogre@@WDE@AEPAXI@Z",
+          "original": "0068d650",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 1,
+          "symbol": "?queryResult@IntersectionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@PAUWorldFragment@SceneQuery@2@@Z",
+          "original": "006a02c6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@IntersectionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@PAUWorldFragment@SceneQuery@2@@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?queryResult@IntersectionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@0@Z",
+          "original": "006a02cc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryResult@IntersectionSceneQuery@Ogre@@UAE_NPAVMovableObject@2@0@Z"
+        }
+      ]
+    }
+  },
+  "imports_not_rows": "constructors, destructors, setBox / setSphere / setVolumes / setRay and every non-slot-0 vtable entry are rgmain.dll imports (import thunks verified by export name above)",
+  "proposals": {},
+  "scope": "Inactive. Compiler-generated ??_G / ??_E thunk rows, exact with verified targets; no active build, swap or credit. nativeNew* are probe scaffolding, not recovered functions."
+}

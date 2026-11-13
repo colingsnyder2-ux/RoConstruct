@@ -1,0 +1,160 @@
+{
+  "class": "RBX::Network Replicator.cpp rows of the application range 004b8000..004bc000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "templates": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4b8/NativeAppUnit4B8_templates.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4B8IdSerializerTemplates.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4b8.py": "cd60039c325cdfee4951d69bddbc0a6a04ce6b7bcd4a55e8e97741da53e2e4a8",
+    "rebuild/2008-06/native-classes/AppUnit4B8IdSerializerTemplates.cpp": "50d4289d98a84b7ba2eadd2f36b8cfeec0f48250b012f4c1bedd6cda17c50e17",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h": "b62f39fdb34649935076cab7daa419c50bae759ec3d252e8b5d81f3850f2a3ad"
+  },
+  "objects": {
+    "templates": "e5f6ab51df149df535a3ca8c9eb897822b570a5cb9cc3712dc3986d8036ce83a"
+  },
+  "range_rows": 119,
+  "unit_map": {
+    "replicator ..004ba22f": "Network/Replicator.cpp (starts below 004b0000; app-unit4b0-2008 maps its head). In this range: 004b82d0 (assigns statsItem +0x2b88 = create<ReplicatorStatsItem> 004b7e50, parent \"Network\"), 004b8490 (\"Received marker %d from %s\", pops the incomingMarkers deque +0x2cdc), NewInstanceItem::write 004b8620 (\"Replication: %s:%s >> %s\"), the NonFactoryProduct<DescribedBase, sMarker> ctor 004b85b0 and deleting dtor 004b8600, Replicator::onServiceProvider 004b87f0 (vtable slot 12), the packet handlers 004b8970 (Security::Impersonator) and 004b8b60 (profilers +0x2d1c..), the waitItems tree erase(first, last) 004b8a80, OnReceive 004b8c20 (\"Lost connection to %s\"), Marker() 004b9140 / newMarker 004b9190 / the marker request 004b9210 (\"Replicator: Requesting Marker %d of %s\"), the IdSerializer bases and thunks 004b93d0..004b96a0 / 004b9ad0..004b9bb0 (vtables 008252cc.., 0082534c), ~Replicator 004b96b0 with its ??_E thunks 004b9a20..004b9ab0 and the Replicator constructor 004b9bd0 (\"Replication\" .. \"Split Messages Sent\" profilers).",
+    "raknet 004ba230..": "RakNet 3.x library code: StringCompressor.cpp (Instance 004ba230, EncodeString 004ba4f0, DecodeString 004ba650; proven as library evidence by app-unit49c-2008) with its DataStructures::Map / OrderedList instances on HuffmanEncodingTree* to 004ba9d0; PacketLogger.cpp 004baa10..004bb39f (ctor 004baa10, vtable 00825724 .?AVPacketLogger@@, the message-id name table 004baab0 \"ID_READY_EVENT_QUERY\".., the log formatters 004bae70 / 004baf80 / 004bb090 \"%sSnd,Raw,...\"); RakPeerInterface / RakPeer.cpp from 004bb3a0 (vtable 00826394 .?AVRakPeerInterface@@) continuing past 004bc000 (app-unit4bc-2008 map). Library: never recovered."
+  },
+  "unit_map_checks": [
+    "string 0x8251c8 'Received marker %d from %s'",
+    "string 0x8251ec 'Replication: %s:%s >> %s'",
+    "string 0x825208 'Replicator::OnReceive packet %d: %s'",
+    "string 0x825280 'Lost connection to %s\\n'",
+    "string 0x8252a0 'Replicator: Requesting Marker %d of %s'",
+    "string 0x82444c 'Replication'",
+    "string 0x82564c 'Bits Received'",
+    "string 0x825614 'Split Messages Sent'",
+    "string 0x8257bc 'ID_READY_EVENT_QUERY'",
+    "string 0x825fd4 '%sSnd,Raw,NIL,NIL,%s,%i,%i,%u:%i,%u:%i%s'",
+    "vtable 0x8254fc RTTI .?AVReplicator@Network@RBX@@",
+    "vtable 0x82529c RTTI .?AVMarker@Network@RBX@@",
+    "vtable 0x82534c RTTI .?AVIdSerializer@Network@RBX@@",
+    "vtable 0x825724 RTTI .?AVPacketLogger@@",
+    "vtable 0x826394 RTTI .?AVRakPeerInterface@@",
+    "evidence name 0x4b8620 ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet",
+    "evidence name 0x4b8c20 ?OnReceive@Replicator@Network@RBX@@UAE?AW4PluginReceiveResult@@PAVRakP",
+    "evidence name 0x4b9140 ??0Marker@Network@RBX@@AAE@XZ",
+    "evidence name 0x4b9aa0 ??_EReplicator@Network@RBX@@WPJI@AEPAXI@Z",
+    "app-unit49c-2008-working.json library_evidence: 0x4ba4f0 (library StringCompressor.cpp, body exact here; not",
+    "app-unit49c-2008-working.json library_evidence: 0x4ba650 (library StringCompressor.cpp, body exact here; not"
+  ],
+  "range_rows_counted_by_other_receipts": [
+    "004b85b0 counted by network-replicator-working.json",
+    "004b8600 counted by network-replicator-working.json",
+    "004b9140 counted by network-replicator-working.json",
+    "004b9190 counted by network-replicator-working.json",
+    "004b93d0 counted by network-replicator-working.json",
+    "004b9440 counted by network-replicator-working.json",
+    "004b94a0 counted by network-replicator-working.json",
+    "004b9560 counted by network-replicator-working.json",
+    "004b9570 counted by network-replicator-working.json",
+    "004b95d0 counted by network-replicator-working.json",
+    "004b9640 counted by network-replicator-working.json",
+    "004b9650 counted by network-replicator-working.json",
+    "004b9660 counted by network-replicator-working.json",
+    "004b9670 counted by network-replicator-working.json",
+    "004b9680 counted by network-replicator-working.json",
+    "004b96a0 counted by network-replicator-working.json",
+    "004b9ad0 counted by network-replicator-working.json",
+    "004b9b70 counted by network-replicator-working.json",
+    "004b9b80 counted by network-replicator-working.json",
+    "004b9b90 counted by network-replicator-working.json",
+    "004b9ba0 counted by network-replicator-working.json",
+    "004b9bb0 counted by network-replicator-working.json"
+  ],
+  "range_rows_not_counted": "004b82d0 004b8490 004b8620 004b87f0 004b8970 004b8b60 004b8c20 004b9210 004b96b0 004b9a20 004b9a30 004b9a40 004b9a50 004b9a60 004b9a70 004b9a80 004b9a90 004b9aa0 004b9ab0 004b9bd0 004ba230 004ba240 004ba260 004ba300 004ba3b0 004ba400 004ba480 004ba4f0 004ba650 004ba720 004ba790 004ba840 004ba8e0 004ba960 004ba9d0 004baa10 004baa40 004baa50 004baa60 004baa70 004baa90 004baaa0 004baab0 004badb0 004badc0 004bade0 004bae10 004bae40 004bae70 004baf80 004bb090 004bb3a0 004bb530 004bb550 004bb580 004bb5b0 004bb5d0 004bb620 004bb670 004bb680 004bb690 004bb6a0 004bb6d0 004bb720 004bb760 004bb840 004bb870 004bb880 004bb8b0 004bb8e0 004bb900 004bb910 004bb920 004bb980 004bb990 004bb9d0 004bba90 004bbae0 004bbb30 004bbb70 004bbb80 004bbbd0 004bbc20 004bbc60 004bbc70 004bbcb0 004bbd90 004bbdd0 004bbe10 004bbe20 004bbe40 004bbe70 004bbef0 004bbf00 004bbf30 004bbf90",
+  "rows": [
+    {
+      "address": "004b8a80",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "size": 220,
+      "target_size": 220,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": "0x4b7e10 (support body exact at the bound address)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x68d1a0 (ICF-shared row counted by ogre-scene-manager-working.json (this build exact there))",
+        "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x4a8d50 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    }
+  ],
+  "support_rows": {
+    "?_Erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z": {
+      "address": "0x4b7e10",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "note": "COMDAT support body of the same tree, exact at the bound address (outside this range); not counted"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": {
+      "address": "0x4a8d50",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "note": "COMDAT support body of the same tree, exact at the bound address (outside this range); not counted"
+    }
+  },
+  "pending_rows": [],
+  "not_exact": [
+    {
+      "address": "Replicator members 004b82d0, 004b8490, 004b87f0, 004b8970, 004b8b60, OnReceive 004b8c20, the marker request 004b9210, ~Replicator 004b96b0 and the constructor 004b9bd0",
+      "reason": "Blocked, not attempted: each reads Replicator members past +0x2b90 (peer +0x2d50, remotePlayerId +0x2d54, incomingMarkers +0x2cdc, the ThreadProfiler/CodeProfiler scoped_ptrs +0x2d1c..+0x2d48, Players* +0x2c70 ...) that the read-only Network/Replicator2008.h leaves pending, and the profiler members also need a native util/Profiling.h. Proposal filed for the Replicator2008.h owner."
+    },
+    {
+      "address": "NewInstanceItem::write 004b8620",
+      "reason": "Blocked: Replicator::NewInstanceItem / Item are not declared by any native header (Replicator2008.h owner); not attempted."
+    },
+    {
+      "address": "RakNet rows 004ba230..004bbfff",
+      "reason": "Library code (StringCompressor, PacketLogger, RakPeer): never recovered or counted here."
+    }
+  ],
+  "rejected": {
+    "explicit instantiation of the member erase(const_iterator, const_iterator) alone": "C2248 on 21022: the explicit member instantiation applies the access check to the protected IdSerializer::WaitItem; the explicit class instantiation of the tree does not."
+  },
+  "proposals": [
+    "native-headers/Network/Replicator2008.h (Replicator family owner): declare the members +0x2b90..+0x2d68 (layout already in that header comment and TANDEM 2026-11-05/07) plus a native util/Profiling.h (ThreadProfiler/CodeProfiler 0xc048 bytes, const char* ctors 005c43a0 / 005c43d0, parent +0xc040). In this range they unblock: the statsItem setup 004b82d0 (reads peer +0x2d50 and remotePlayerId +0x2d54, calls peer slot GetStatistics, create<ReplicatorStatsItem> 004b7e50), the marker pop 004b8490 (deque<shared_ptr<Marker> > +0x2cdc, pop_front 004ae2f0), onServiceProvider 004b87f0, the packet handlers 004b8970 / 004b8b60, OnReceive 004b8c20, the marker request 004b9210 (newMarker 004b9190, push_back 004b0c10), ~Replicator 004b96b0 and the constructor 004b9bd0; also Replicator::Item / NewInstanceItem declarations for NewInstanceItem::write 004b8620 (writeItemType 004ab5d0)."
+  ],
+  "exact_function_rows": [
+    "004b8a80"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

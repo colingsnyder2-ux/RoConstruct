@@ -1,0 +1,1854 @@
+{
+  "family": "AppLeaves2008 pass 4 (DHTMLWindow of the DHTMLWindowService unit)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008DHTMLLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeAppLeaves2008DHTMLLayout.cpp"
+    ],
+    "window": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/boost-function-pod-vtable",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008DHTMLWindow.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-leaves2008-dhtml-pending",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_DHTMLWINDOW_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008DHTMLWindowPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp"
+    ]
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_leaves2008_dhtml.py": "5483889ee5e4fa03dcc233f5a0a41dcc71d14fe5b6482bb7009f5c01ad5db229",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/tests/NativeAppLeaves2008DHTMLLayout.cpp": "69da6c5196eaea57e3e5acfd7127e225c52ce287c86d36949100a3cff3f0b372",
+    "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindow2008.h": "78de3abde07bd4d02e3910a26c72e20f99534ea5a5bffedc6485e865825da43e",
+    "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp": "cbb12b82d238114d16cb2871f4c3d5197e968c90551029d82eb54e971bed819a",
+    "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindowService2008.h": "df4bc9b98ec652f9d71232eea0e826bae5ad452500d41c6b448a9050d27bf8e6",
+    "rebuild/2008-06/native-headers/AppLeaves2008/Marshaller2008.h": "5ce8a439f16df27e817b14ddfe4e0d6c28596867c9442fdfef1a6500e9b20a23",
+    "rebuild/2008-06/native-headers/std-noinline-string/xstring": "abed1fd7598c0041a3ee2dfae5095d43464789877c22452215c0015d981e8bee",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313"
+  },
+  "pending_headers": {
+    "rebuild/2008-06/out/native-layouts/app-leaves2008-dhtml-pending/CLuaHtmlView.h": "57c1d1a956ac50d3483cc7f23dd985e3dc4ea06f49c5483e51c3b0d0f8f6fef5",
+    "rebuild/2008-06/out/native-layouts/app-leaves2008-dhtml-pending/reflection/reflection.h": "b38d2760d181fd0acc4658cb29edf1e763d75dae335d64f05cbbdf135efae98b"
+  },
+  "objects": {
+    "window": "e5a6f86dd88bfba4cb4fac8c782957102b8f6066c75e16124a35ddbc0c7422cc",
+    "pending": "069e9e1bdbafcae58790d627ce6b5a2df721f1c2eb10ed6451a9afa07aa2c0f6"
+  },
+  "layout": {
+    "DHTMLWindow": "DescribedNonCreatable<DHTMLWindow, Instance, sDHTMLWindow> (no vtable / COL in the image, type descriptor 0092c210 only); boost::recursive_mutex viewLock +0x130 (0xc), CLuaHtmlView* view +0x13c (every worker 00417a10..004185c0); sizeof not provable (never allocated); member pointers 8 bytes",
+    "statics": "sDHTMLWindow \"HtmlWindow\" 0092c204 (char[]), showAllowed 0096cc49, htmlMarshaller 0096cc4c, descriptors 0096cc50..0096ce90, ClassDescriptor 0096cf00"
+  },
+  "methods": {
+    "window": [
+      {
+        "address": "00416e60",
+        "symbol": "?askAddChild@DHTMLWindowService@@MBE_NPBVInstance@RBX@@@Z",
+        "size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVDHTMLWindow@@@8": "0x92c210 (RTTI .?AVDHTMLWindow@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00416e90",
+        "symbol": "?close@DHTMLWindow@@QAEXXZ",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b2b0",
+        "symbol": "?show@DHTMLWindow@@QAEXXZ",
+        "size": 94,
+        "exact": true,
+        "verified_targets": {
+          "?showAllowed@DHTMLWindow@@2_NA": "0x96cc49 (data)",
+          "?doShow@DHTMLWindow@@AAEXXZ": "0x417a10 (external)",
+          "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": "0x618a40 (instance (bytes equal, targets verified))",
+          "??$bind@XVDHTMLWindow@@V?$shared_ptr@VDHTMLWindow@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXXZV?$shared_ptr@VDHTMLWindow@@@0@@Z": "0x48c4d0 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z": "0x41b040 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (external)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041cac0",
+        "symbol": "?resize@DHTMLWindow@@QAEXHH@Z",
+        "size": 97,
+        "exact": true,
+        "verified_targets": {
+          "?doResize@DHTMLWindow@@AAEXHH@Z": "0x417aa0 (external)",
+          "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": "0x618a40 (instance (bytes equal, targets verified))",
+          "??$bind@XVDHTMLWindow@@HHV?$shared_ptr@VDHTMLWindow@@@boost@@HH@boost@@YA?AV?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXHH@ZV?$shared_ptr@VDHTMLWindow@@@0@HH@Z": "0x419be0 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@1@H@Z": "0x41c7a0 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (external)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041cb30",
+        "symbol": "?setCallback@DHTMLWindow@@QAEXVFunctionRef@Lua@RBX@@@Z",
+        "size": 197,
+        "exact": true,
+        "verified_targets": {
+          "?doSetCallback@DHTMLWindow@@AAEXVFunctionRef@Lua@RBX@@@Z": "0x417b40 (external)",
+          "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (external)",
+          "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": "0x618a40 (instance (bytes equal, targets verified))",
+          "??$bind@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@V?$shared_ptr@VDHTMLWindow@@@boost@@V234@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXVFunctionRef@Lua@RBX@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z": "0x419400 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@1@H@Z": "0x41c860 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (external)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)",
+          "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?setCallback@DHTMLWindow@@QAEXVFunctionRef@Lua@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "0041cc00",
+        "symbol": "?navigate@DHTMLWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 199,
+        "exact": true,
+        "verified_targets": {
+          "?doNavigate@DHTMLWindow@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x417bd0 (external)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": "0x618a40 (instance (bytes equal, targets verified))",
+          "??$bind@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@boost@@V23@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z": "0x419510 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z": "0x41c8f0 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (external)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?navigate@DHTMLWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      },
+      {
+        "address": "0041ccd0",
+        "symbol": "?setBody@DHTMLWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 199,
+        "exact": true,
+        "verified_targets": {
+          "?doSetBody@DHTMLWindow@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x417c70 (external)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": "0x618a40 (instance (bytes equal, targets verified))",
+          "??$bind@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@boost@@V23@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z": "0x419510 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z": "0x41c8f0 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (external)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?setBody@DHTMLWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      },
+      {
+        "address": "0041d0a0",
+        "symbol": "?bind@DHTMLWindow@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z",
+        "size": 612,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0CG@OKGBOLIB@The?5object?5to?5bind?5to?5must?5not?5b@": "0x80f058 (literal 'The object to bind to must not be nil')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?lookup@Name@RBX@@SAABV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x554180 (external)",
+          "?findDescriptor@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QBE?AV?$_Vector_const_iterator@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@ABVName@3@@Z": "0x61ba10 (external)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_C@_0CD@OAGJELOO@Instance?5does?5not?5have?5property?5@": "0x80f034 (literal 'Instance does not have property %s')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??DIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QBE?AVProperty@23@XZ": "0x4174b0 (evidence name)",
+          "?doBind@DHTMLWindow@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x417d10 (external)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": "0x618a40 (instance (bytes equal, targets verified))",
+          "??$bind@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@3@V23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V78@@boost@@YA?AV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@0@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@0@2@Z": "0x419e50 (instance (bytes equal, targets verified))",
+          "??$?0V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z": "0x41cf60 (instance (bytes equal, targets verified))",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (external)",
+          "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x41a530 (external)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?bind@DHTMLWindow@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z"
+        ]
+      },
+      {
+        "address": "0041b8a0",
+        "symbol": "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96cfc0 (local static of ?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@)",
+          "?sDHTMLWindow@@3PADA": "0x92c204 (data)",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external)",
+          "?foo@?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96cf00 (local static of ?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@)",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa620 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      },
+      {
+        "address": "007fa620",
+        "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "?foo@?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96cf00 (local static of ??__Ffoo@?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sD)",
+          "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041be50",
+        "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD20W4Security@FunctionDescriptor@12@@Z",
+        "size": 195,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (evidence name)",
+          "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@6B@": "0x80ef10 (vtable RTTI .?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@ offset 0x0)",
+          "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (Type::singleton (pushes type descriptor 0x92bef8 .?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@))",
+          "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@any@boost@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x417230 (evidence name)",
+          "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (Type::singleton (pushes type descriptor 0x929614 .X))",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+          "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD20W4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0041c000",
+        "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+        "size": 159,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (evidence name)",
+          "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@6B@": "0x80ef10 (vtable RTTI .?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@ offset 0x0)",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (evidence name)",
+          "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (Type::singleton (pushes type descriptor 0x929614 .X))",
+          "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (Type::singleton (pushes type descriptor 0x92bef8 .?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@))",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+          "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0041c0a0",
+        "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXVFunctionRef@Lua@2@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+        "size": 159,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (evidence name)",
+          "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@6B@": "0x80ef1c (vtable RTTI .?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@ offset 0x0)",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (evidence name)",
+          "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (Type::singleton (pushes type descriptor 0x929614 .X))",
+          "??$singleton@VFunctionRef@Lua@RBX@@@Type@Reflection@RBX@@SAABV012@XZ": "0x593d20 (Type::singleton (pushes type descriptor 0x92c2d0 .?AVFunctionRef@Lua@RBX@@))",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+          "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXVFunctionRef@Lua@2@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0041c220",
+        "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXHH@ZPBD11W4Security@FunctionDescriptor@12@@Z",
+        "size": 143,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (evidence name)",
+          "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@6B@": "0x80ef28 (vtable RTTI .?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@ offset 0x0)",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (evidence name)",
+          "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@AAEXPBD0@Z": "0x416eb0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXHH@ZPBD11W4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0041c3e0",
+        "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+        "size": 108,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (evidence name)",
+          "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@6B@": "0x80ef34 (vtable RTTI .?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@ offset 0x0)",
+          "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (Type::singleton (pushes type descriptor 0x929614 .X))"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0041c4b0",
+        "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@ZPBD333W4Security@FunctionDescriptor@12@@Z",
+        "size": 161,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (evidence name)",
+          "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@6B@": "0x80ef40 (vtable RTTI .?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@ offset 0x0)",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (evidence name)",
+          "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@AAEXPBD00@Z": "0x416f10 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@ZPBD333W4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "0041bd20",
+        "symbol": "??0?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PBD0@Z",
+        "size": 194,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41b8a0 (own row)",
+          "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (evidence name)",
+          "??_7?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@": "0x80ef00 (vtable RTTI .?AV?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@ offset 0x0)",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+          "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (Type::singleton (pushes type descriptor 0x92bef8 .?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@))",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (evidence name)",
+          "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (evidence name)",
+          "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PBD0@Z"
+        ]
+      },
+      {
+        "address": "0041bf20",
+        "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+        "size": 224,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVDHTMLWindow@@@8": "0x92c210 (RTTI .?AVDHTMLWindow@@)",
+          "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x56f0b0 (evidence name)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+        ]
+      },
+      {
+        "address": "0041c140",
+        "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+        "size": 223,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVDHTMLWindow@@@8": "0x92c210 (RTTI .?AVDHTMLWindow@@)",
+          "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$convert@VFunctionRef@Lua@RBX@@@Value@Reflection@RBX@@QAEAAVFunctionRef@Lua@2@XZ": "0x5947f0 (external)",
+          "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+        ]
+      },
+      {
+        "address": "0041c2b0",
+        "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+        "size": 301,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVDHTMLWindow@@@8": "0x92c210 (RTTI .?AVDHTMLWindow@@)",
+          "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$convert@H@Value@Reflection@RBX@@QAEAAHXZ": "0x56ea60 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+        ]
+      },
+      {
+        "address": "0041c450",
+        "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+        "size": 84,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVDHTMLWindow@@@8": "0x92c210 (RTTI .?AVDHTMLWindow@@)",
+          "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041bdf0",
+        "symbol": "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+        "size": 87,
+        "exact": true,
+        "verified_targets": {
+          "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z"
+        ]
+      },
+      {
+        "address": "0041c780",
+        "symbol": "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAE@XZ": "0x41b220 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b220",
+        "symbol": "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAE@XZ",
+        "size": 130,
+        "exact": true,
+        "verified_targets": {
+          "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "007eed70",
+        "symbol": "??__Efunc_Navigate@@YAXXZ",
+        "size": 70,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0M@NPJAHKCC@about?3blank?$AA@": "0x80f090 (literal 'about:blank')",
+          "?navigate@DHTMLWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x41cc00 (own row)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??_C@_03BMGHOINI@url?$AA@": "0x80f08c (literal 'url')",
+          "??_C@_08FAFOEMDH@Navigate?$AA@": "0x80f080 (literal 'Navigate')",
+          "_func_Navigate": "0x96cc50 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD20W4Security@FunctionDescriptor@12@@Z": "0x41be50 (own row)",
+          "??__Ffunc_Navigate@@YAXXZ": "0x7fa750 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eedc0",
+        "symbol": "??__Efunc_SetBody@@YAXXZ",
+        "size": 42,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_04PNIFHPHN@html?$AA@": "0x80f0a4 (literal 'html')",
+          "??_C@_07PIBMLFBJ@SetBody?$AA@": "0x80f09c (literal 'SetBody')",
+          "?setBody@DHTMLWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x41ccd0 (own row)",
+          "_func_SetBody": "0x96cc98 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z": "0x41c000 (own row)",
+          "??__Ffunc_SetBody@@YAXXZ": "0x7fa6d0 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eedf0",
+        "symbol": "??__Efunc_SetCallback@@YAXXZ",
+        "size": 42,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_08HFFPPCHF@function?$AA@": "0x80f0b8 (literal 'function')",
+          "??_C@_0M@HFGAKLPN@SetCallback?$AA@": "0x80f0ac (literal 'SetCallback')",
+          "?setCallback@DHTMLWindow@@QAEXVFunctionRef@Lua@RBX@@@Z": "0x41cb30 (own row)",
+          "_func_SetCallback": "0x96cce0 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXVFunctionRef@Lua@2@@ZPBD2W4Security@FunctionDescriptor@12@@Z": "0x41c0a0 (own row)",
+          "??__Ffunc_SetCallback@@YAXXZ": "0x7fa6e0 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eee20",
+        "symbol": "??__Efunc_Resize@@YAXXZ",
+        "size": 47,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_01EANLCPLP@y?$AA@": "0x80f0d0 (literal 'y')",
+          "??_C@_01FJMABOPO@x?$AA@": "0x80f0cc (literal 'x')",
+          "??_C@_06DHFABGAE@Resize?$AA@": "0x80f0c4 (literal 'Resize')",
+          "?resize@DHTMLWindow@@QAEXHH@Z": "0x41cac0 (own row)",
+          "_func_Resize": "0x96cd28 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXHH@ZPBD11W4Security@FunctionDescriptor@12@@Z": "0x41c220 (own row)",
+          "??__Ffunc_Resize@@YAXXZ": "0x7fa6f0 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eee50",
+        "symbol": "??__Efunc_Show@@YAXXZ",
+        "size": 37,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_04JLAJABDJ@Show?$AA@": "0x80f0d4 (literal 'Show')",
+          "?show@DHTMLWindow@@QAEXXZ": "0x41b2b0 (own row)",
+          "_func_Show": "0x96cd78 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXXZPBDW4Security@FunctionDescriptor@12@@Z": "0x41c3e0 (own row)",
+          "??__Ffunc_Show@@YAXXZ": "0x7fa700 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eee80",
+        "symbol": "??__Efunc_Close@@YAXXZ",
+        "size": 37,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_05LGELBCGM@Close?$AA@": "0x80f0dc (literal 'Close')",
+          "?close@DHTMLWindow@@QAEXXZ": "0x416e90 (own row)",
+          "_func_Close": "0x96cdb8 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXXZPBDW4Security@FunctionDescriptor@12@@Z": "0x41c3e0 (own row)",
+          "??__Ffunc_Close@@YAXXZ": "0x7fa650 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eeeb0",
+        "symbol": "??__Efunc_Bind@@YAXXZ",
+        "size": 52,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0O@FDKMCNGA@htmlElementId?$AA@": "0x80f100 (literal 'htmlElementId')",
+          "??_C@_08EMBNBNLN@property?$AA@": "0x80f0f4 (literal 'property')",
+          "??_C@_06IEOJBDIK@object?$AA@": "0x80f0ec (literal 'object')",
+          "??_C@_04BOBIPDML@Bind?$AA@": "0x80f0e4 (literal 'Bind')",
+          "?bind@DHTMLWindow@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z": "0x41d0a0 (own row)",
+          "_func_Bind": "0x96cdf8 (data)",
+          "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@ZPBD333W4Security@FunctionDescriptor@12@@Z": "0x41c4b0 (own row)",
+          "??__Ffunc_Bind@@YAXXZ": "0x7fa740 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eef20",
+        "symbol": "??__Eevent_DocumentComplete@@YAXXZ",
+        "size": 32,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_03BMGHOINI@url?$AA@": "0x80f08c (literal 'url')",
+          "??_C@_0BB@ICILACLA@DocumentComplete?$AA@": "0x80f118 (literal 'DocumentComplete')",
+          "_event_DocumentComplete": "0x96ce90 (data)",
+          "??0?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PBD0@Z": "0x41bd20 (own row)",
+          "??__Fevent_DocumentComplete@@YAXXZ": "0x7fa760 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa750",
+        "symbol": "??__Ffunc_Navigate@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_func_Navigate": "0x96cc50 (data)",
+          "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa6d0",
+        "symbol": "??__Ffunc_SetBody@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_func_SetBody": "0x96cc98 (data)",
+          "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa6e0",
+        "symbol": "??__Ffunc_SetCallback@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_func_SetCallback": "0x96cce0 (data)",
+          "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa6f0",
+        "symbol": "??__Ffunc_Resize@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_func_Resize": "0x96cd28 (data)",
+          "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAE@XZ": "0x4a3d40 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa700",
+        "symbol": "??__Ffunc_Show@@YAXXZ",
+        "size": 63,
+        "exact": true,
+        "verified_targets": {
+          "_func_Show": "0x96cd78 (data)",
+          "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??__Ffunc_Show@@YAXXZ"
+        ]
+      },
+      {
+        "address": "007fa650",
+        "symbol": "??__Ffunc_Close@@YAXXZ",
+        "size": 63,
+        "exact": true,
+        "verified_targets": {
+          "_func_Close": "0x96cdb8 (data)",
+          "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??__Ffunc_Close@@YAXXZ"
+        ]
+      },
+      {
+        "address": "007fa740",
+        "symbol": "??__Ffunc_Bind@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_func_Bind": "0x96cdf8 (data)",
+          "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAE@XZ": "0x41b220 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa760",
+        "symbol": "??__Fevent_DocumentComplete@@YAXXZ",
+        "size": 63,
+        "exact": true,
+        "verified_targets": {
+          "_event_DocumentComplete": "0x96ce90 (data)",
+          "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+          "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??__Fevent_DocumentComplete@@YAXXZ"
+        ]
+      }
+    ]
+  },
+  "pending": [
+    {
+      "address": "00417a10",
+      "symbol": "?doShow@DHTMLWindow@@AAEXXZ",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ": "0x6a0974 (mfc90.dll!?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ)",
+        "?CenterWindow@CWnd@@QAEXPAV1@@Z": "0x6a0e54 (mfc90.dll!?CenterWindow@CWnd@@QAEXPAV1@@Z)",
+        "?ShowWindow@CWnd@@QAEHH@Z": "0x6a096e (mfc90.dll!?ShowWindow@CWnd@@QAEHH@Z)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?doShow@DHTMLWindow@@AAEXXZ"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "00417aa0",
+      "symbol": "?doResize@DHTMLWindow@@AAEXHH@Z",
+      "size": 132,
+      "exact": false,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ": "0x6a0974 (mfc90.dll!?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ)",
+        "?SetWindowPos@CWnd@@QAEHPBV1@HHHHI@Z": "0x6a0a46 (mfc90.dll!?SetWindowPos@CWnd@@QAEHPBV1@HHHHI@Z)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?doResize@DHTMLWindow@@AAEXHH@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "00417bd0",
+      "symbol": "?doNavigate@DHTMLWindow@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 153,
+      "exact": false,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z": "0x6a097a (mfc90.dll!?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?doNavigate@DHTMLWindow@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "00417c70",
+      "symbol": "?doSetBody@DHTMLWindow@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 143,
+      "exact": false,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "?setBody@CLuaHtmlView@@QAEXPBD@Z": "0x42ae50 (external)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?doSetBody@DHTMLWindow@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "00417d10",
+      "symbol": "?doBind@DHTMLWindow@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 245,
+      "exact": false,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "?bindElement@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PBD@Z": "0x42c8c0 (external)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?doBind@DHTMLWindow@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "004185c0",
+      "symbol": "?doWithView@DHTMLWindow@@AAEXV?$function1@XPAVCLuaHtmlView@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z",
+      "size": 151,
+      "exact": false,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+        "??R?$function1@XPAVCLuaHtmlView@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXPAVCLuaHtmlView@@@Z": "0x595b90 (instance (bytes equal, targets verified))",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?doWithView@DHTMLWindow@@AAEXV?$function1@XPAVCLuaHtmlView@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "0041c610",
+      "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 358,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AVDHTMLWindow@@@8": "0x92c210 (RTTI .?AVDHTMLWindow@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@X@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@ABEXPAVDHTMLWindow@@AAVValue@12@111@Z": "0x41c560 (pending-build-only row)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "0041c560",
+      "symbol": "??$call@X@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@ABEXPAVDHTMLWindow@@AAVValue@12@111@Z",
+      "size": 169,
+      "exact": false,
+      "verified_targets": {
+        "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x56f0b0 (evidence name)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??$convert@V?$shared_ptr@VInstance@RBX@@@boost@@@Value@Reflection@RBX@@QAEAAV?$shared_ptr@VInstance@RBX@@@boost@@XZ": "0x56f8c0 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??$call@X@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@ABEXPAVDHTMLWindow@@AAVValue@12@111@Z"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "007eeef0",
+      "symbol": "??__Efunc_Unbind@@YAXXZ",
+      "size": 37,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_06MHIEFMJG@Unbind?$AA@": "0x80f110 (literal 'Unbind')",
+        "?unbind@DHTMLWindow@@QAEXXZ": "0x41b660 (external)",
+        "_func_Unbind": "0x96ce50 (data)",
+        "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXXZPBDW4Security@FunctionDescriptor@12@@Z": "0x41c3e0 (own row)",
+        "??__Ffunc_Unbind@@YAXXZ": "0x7fa690 (pending-build-only row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    },
+    {
+      "address": "007fa690",
+      "symbol": "??__Ffunc_Unbind@@YAXXZ",
+      "size": 63,
+      "exact": false,
+      "verified_targets": {
+        "_func_Unbind": "0x96ce50 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Ffunc_Unbind@@YAXXZ"
+      ],
+      "status": "pending-build-only: exact only with NATIVE_DHTMLWINDOW_PENDING and the generated headers"
+    }
+  ],
+  "instances": {
+    "??R?$function1@XPAVCLuaHtmlView@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXPAVCLuaHtmlView@@@Z": {
+      "address": "00595b90",
+      "symbol": "??R?$function1@XPAVCLuaHtmlView@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXPAVCLuaHtmlView@@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (evidence name)",
+        "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??R?$function1@XPAVCLuaHtmlView@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@QBEXPAVCLuaHtmlView@@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "pending"
+    },
+    "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z": {
+      "address": "00618a40",
+      "symbol": "??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z",
+      "size": 364,
+      "exact": false,
+      "verified_targets": {
+        "?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ": "0x42af90 (evidence name)",
+        "??$shared_static_cast@VDHTMLWindow@@VInstance@RBX@@@boost@@YA?AV?$shared_ptr@VDHTMLWindow@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z": "0x4a2070 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$shared_from@VDHTMLWindow@@@RBX@@YA?AV?$shared_ptr@VDHTMLWindow@@@boost@@PAVDHTMLWindow@@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$shared_static_cast@VDHTMLWindow@@VInstance@RBX@@@boost@@YA?AV?$shared_ptr@VDHTMLWindow@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z": {
+      "address": "004a2070",
+      "symbol": "??$shared_static_cast@VDHTMLWindow@@VInstance@RBX@@@boost@@YA?AV?$shared_ptr@VDHTMLWindow@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z",
+      "size": 44,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$bind@XVDHTMLWindow@@V?$shared_ptr@VDHTMLWindow@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXXZV?$shared_ptr@VDHTMLWindow@@@0@@Z": {
+      "address": "0048c4d0",
+      "symbol": "??$bind@XVDHTMLWindow@@V?$shared_ptr@VDHTMLWindow@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXXZV?$shared_ptr@VDHTMLWindow@@@0@@Z",
+      "size": 260,
+      "exact": false,
+      "verified_targets": {
+        "??0?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x618830 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVDHTMLWindow@@V?$shared_ptr@VDHTMLWindow@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXXZV?$shared_ptr@VDHTMLWindow@@@0@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": {
+      "address": "00618830",
+      "symbol": "??0?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z",
+      "size": 162,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": {
+      "address": "00554810",
+      "symbol": "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z",
+      "size": 96,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "listed_extent": 101,
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$?0V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z": {
+      "address": "0041b040",
+      "symbol": "??$?0V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@H@Z",
+      "size": 77,
+      "exact": false,
+      "verified_targets": {
+        "??$assign_to@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z": "0x419fe0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$assign_to@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z": {
+      "address": "00419fe0",
+      "symbol": "??$assign_to@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@1@@Z",
+      "size": 88,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ecc0 (local static of ??$assign_to@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "?has_empty_target@function@detail@boost@@YA_NZZ": {
+      "address": "0060a2f0",
+      "symbol": "?has_empty_target@function@detail@boost@@YA_NZZ",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$bind@XVDHTMLWindow@@HHV?$shared_ptr@VDHTMLWindow@@@boost@@HH@boost@@YA?AV?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXHH@ZV?$shared_ptr@VDHTMLWindow@@@0@HH@Z": {
+      "address": "00419be0",
+      "symbol": "??$bind@XVDHTMLWindow@@HHV?$shared_ptr@VDHTMLWindow@@@boost@@HH@boost@@YA?AV?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXHH@ZV?$shared_ptr@VDHTMLWindow@@@0@HH@Z",
+      "size": 300,
+      "exact": false,
+      "verified_targets": {
+        "??0?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z": "0x418c90 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVDHTMLWindow@@HHV?$shared_ptr@VDHTMLWindow@@@boost@@HH@boost@@YA?AV?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXHH@ZV?$shared_ptr@VDHTMLWindow@@@0@HH@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z": {
+      "address": "00418c90",
+      "symbol": "??0?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z",
+      "size": 172,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z": "0x418170 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z": {
+      "address": "00418170",
+      "symbol": "??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z",
+      "size": 174,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@@Z": "0x4177a0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@1@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@@Z": {
+      "address": "004177a0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@@Z",
+      "size": 169,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@H@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$?0V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@1@H@Z": {
+      "address": "0041c7a0",
+      "symbol": "??$?0V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@1@H@Z",
+      "size": 186,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ee20 (local static of ??$?0V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$bind@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@V?$shared_ptr@VDHTMLWindow@@@boost@@V234@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXVFunctionRef@Lua@RBX@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z": {
+      "address": "00419400",
+      "symbol": "??$bind@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@V?$shared_ptr@VDHTMLWindow@@@boost@@V234@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXVFunctionRef@Lua@RBX@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z",
+      "size": 264,
+      "exact": false,
+      "verified_targets": {
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (external)",
+        "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z": "0x417ff0 (instance (bytes equal, targets verified))",
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z": "0x4175f0 (instance (bytes equal, targets verified))",
+        "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ": "0x4173b0 (instance (bytes equal, targets verified))",
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@V?$shared_ptr@VDHTMLWindow@@@boost@@V234@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXVFunctionRef@Lua@RBX@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z": {
+      "address": "00417ff0",
+      "symbol": "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z",
+      "size": 195,
+      "exact": false,
+      "verified_targets": {
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (external)",
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z": "0x4176d0 (instance (bytes equal, targets verified))",
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z": {
+      "address": "004176d0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z",
+      "size": 200,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))",
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (external)",
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@VFunctionRef@Lua@RBX@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z": {
+      "address": "004175f0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z",
+      "size": 99,
+      "exact": false,
+      "verified_targets": {
+        "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ": {
+      "address": "004173b0",
+      "symbol": "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ",
+      "size": 118,
+      "exact": false,
+      "verified_targets": {
+        "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@1@H@Z": {
+      "address": "0041c860",
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@1@H@Z",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@ABV123@@Z": "0x418fb0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ee28 (local static of ??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@)",
+        "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@XZ": "0x4173b0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@1@H@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@ABV123@@Z": {
+      "address": "00418fb0",
+      "symbol": "??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@ABV123@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@boost@@QAE@ABU012@@Z": "0x4175f0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@ABV123@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$bind@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@boost@@V23@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z": {
+      "address": "00419510",
+      "symbol": "??$bind@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@boost@@V23@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z",
+      "size": 257,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": "0x497dd0 (instance (bytes equal, targets verified))",
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z": "0x417660 (instance (bytes equal, targets verified))",
+        "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ": "0x497740 (instance (bytes equal, targets verified))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@boost@@V23@@boost@@YA?AV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": {
+      "address": "00497dd0",
+      "symbol": "??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+      "size": 197,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": "0x497250 (instance (bytes equal, targets verified))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": {
+      "address": "00497250",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+      "size": 202,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z": {
+      "address": "00417660",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z",
+      "size": 100,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ": {
+      "address": "00497740",
+      "symbol": "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ",
+      "size": 119,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z": {
+      "address": "0041c8f0",
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z": "0x419010 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ee30 (local static of ??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$ch)",
+        "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ": "0x497740 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z": {
+      "address": "00419010",
+      "symbol": "??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z": "0x417660 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Construct@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$bind@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@3@V23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V78@@boost@@YA?AV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@0@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@0@2@Z": {
+      "address": "00419e50",
+      "symbol": "??$bind@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@3@V23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V78@@boost@@YA?AV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@0@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@0@2@Z",
+      "size": 398,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??0?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": "0x419740 (instance (bytes equal, targets verified))",
+        "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z": "0x418d40 (instance (bytes equal, targets verified))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": "0x422c60 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$bind@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VDHTMLWindow@@@3@V23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V78@@boost@@YA?AV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@0@P8DHTMLWindow@@AEXV?$shared_ptr@VInstance@RBX@@@0@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$shared_ptr@VDHTMLWindow@@@0@0V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@0@2@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": {
+      "address": "00419740",
+      "symbol": "??0?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+      "size": 299,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": "0x418dd0 (instance (bytes equal, targets verified))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z": {
+      "address": "00418dd0",
+      "symbol": "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+      "size": 306,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@@Z": "0x418220 (instance (bytes equal, targets verified))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@@Z": {
+      "address": "00418220",
+      "symbol": "??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@@Z",
+      "size": 266,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@@Z": "0x554ca0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@2@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@@Z": {
+      "address": "00554ca0",
+      "symbol": "??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@@Z",
+      "size": 253,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@@Z": "0x554810 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z": {
+      "address": "00418d40",
+      "symbol": "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": {
+      "address": "00422c60",
+      "symbol": "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ",
+      "size": 161,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$?0V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z": {
+      "address": "0041cf60",
+      "symbol": "??$?0V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??$_Construct@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z": "0x419de0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80f02c (local static of ??$?0V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstanc)",
+        "??1?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ": "0x418680 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@1@H@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??$_Construct@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z": {
+      "address": "00419de0",
+      "symbol": "??$_Construct@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "??0?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z": "0x418d40 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Construct@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@ABV123@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ": {
+      "address": "00418680",
+      "symbol": "??1?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ",
+      "size": 77,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??1?$storage2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ": "0x422c60 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$storage4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@AAEXPBD0@Z": {
+      "address": "00416eb0",
+      "symbol": "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@AAEXPBD0@Z",
+      "size": 85,
+      "exact": false,
+      "verified_targets": {
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (Type::singleton (pushes type descriptor 0x929614 .X))",
+        "??$singleton@H@Type@Reflection@RBX@@SAABV012@XZ": "0x56cbc0 (Type::singleton (pushes type descriptor 0x92bed0 .H))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@AAEXPBD00@Z": {
+      "address": "00416f10",
+      "symbol": "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@AAEXPBD00@Z",
+      "size": 118,
+      "exact": false,
+      "verified_targets": {
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (Type::singleton (pushes type descriptor 0x929614 .X))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (Type::singleton (pushes type descriptor 0x935980 .?AV?$shared_ptr@VInstance@RBX@@@boost@@))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (evidence name)",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (Type::singleton (pushes type descriptor 0x92bef8 .?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ": {
+      "address": "004a34e0",
+      "symbol": "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ",
+      "size": 90,
+      "exact": false,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAE@XZ": {
+      "address": "004a34e0",
+      "symbol": "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAE@XZ",
+      "size": 90,
+      "exact": false,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAE@XZ": {
+      "address": "004a3d40",
+      "symbol": "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAE@XZ",
+      "size": 110,
+      "exact": false,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAEPAXI@Z": {
+      "address": "004a4740",
+      "symbol": "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": false,
+      "verified_targets": {
+        "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAE@XZ": "0x4a3d40 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAEPAXI@Z": {
+      "address": "004a4910",
+      "symbol": "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": false,
+      "verified_targets": {
+        "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAEPAXI@Z": {
+      "address": "004a4910",
+      "symbol": "??_G?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": false,
+      "verified_targets": {
+        "??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??_G?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z": {
+      "address": "0041bdf0",
+      "symbol": "??_G?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z",
+      "size": 87,
+      "exact": false,
+      "verified_targets": {
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (evidence name)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??_G?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z": {
+      "address": "0041b830",
+      "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+      "size": 102,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": "0x41b3f0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": {
+      "address": "0041b3f0",
+      "symbol": "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z",
+      "size": 101,
+      "exact": false,
+      "verified_targets": {
+        "??_7SignalInstance@Reflection@RBX@@6B@": "0x80ece0 (vtable RTTI .?AVSignalInstance@Reflection@RBX@@ offset 0x0)",
+        "??0?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": "0x499c00 (instance (bytes equal, targets verified))",
+        "??_7TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@": "0x80ed40 (vtable RTTI .?AVTSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": {
+      "address": "00499c00",
+      "symbol": "??0?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z",
+      "size": 230,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@U?$last_value@X@boost@@@any@boost@@6B@": "0x80ed10 (vtable RTTI .?AV?$holder@U?$last_value@X@boost@@@any@boost@@ offset 0x0)",
+        "?has_empty_target@function@detail@boost@@YA_NZZ": "0x60a2f0 (instance (bytes equal, targets verified))",
+        "?stored_vtable@?1???$assign_to@V?$group_bridge_compare@U?$less@H@std@@H@detail@signals@boost@@@?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$group_bridge_compare@U?$less@H@std@@H@detail@signals@2@@Z@4U?$basic_vtable2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@function@42@B": "0x80ed1c (local static of ??0?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allo)",
+        "??0signal_base@detail@signals@boost@@QAE@ABV?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@3@ABVany@3@@Z": "0x56b3f0 (external)",
+        "??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ": "0x594ae0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ": {
+      "address": "00594ae0",
+      "symbol": "??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ",
+      "size": 94,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@2@XZ": "0x41a800 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    },
+    "?_Buynode@?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@2@XZ": {
+      "address": "0041a800",
+      "symbol": "?_Buynode@?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@2@XZ",
+      "size": 26,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted",
+      "build": "current"
+    }
+  },
+  "local_statics": {
+    "??_B?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96cfc0",
+    "?foo@?1??classDescriptor@?$Described@VDHTMLWindow@@$1?sDHTMLWindow@@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sDHTMLWindow@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96cf00",
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf0@XVDHTMLWindow@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ecc0",
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVDHTMLWindow@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ee30",
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVDHTMLWindow@@VFunctionRef@Lua@RBX@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@VFunctionRef@Lua@RBX@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ee28",
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf2@XVDHTMLWindow@@HH@_mfi@boost@@V?$list3@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@H@23@V423@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80ee20",
+    "?stored_vtable@?1???$assign_to@V?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@boost@@@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$bind_t@XV?$mf3@XVDHTMLWindow@@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list4@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$reference_wrapper@$$CBVPropertyDescriptor@Reflection@RBX@@@3@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@3@@_bi@2@@Z@4U?$basic_vtable0@XV?$allocator@Vfunction_base@boost@@@std@@@function@detail@2@B": "0x80f02c",
+    "?stored_vtable@?1???$assign_to@V?$group_bridge_compare@U?$less@H@std@@H@detail@signals@boost@@@?$function2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@boost@@AAEXABV?$group_bridge_compare@U?$less@H@std@@H@detail@signals@2@@Z@4U?$basic_vtable2@_NVstored_group@detail@signals@boost@@V1234@V?$allocator@Vfunction_base@boost@@@std@@@function@42@B": "0x80ed1c"
+  },
+  "exact": [
+    "00416e60",
+    "00416e90",
+    "0041b220",
+    "0041b2b0",
+    "0041b8a0",
+    "0041bd20",
+    "0041bdf0",
+    "0041be50",
+    "0041bf20",
+    "0041c000",
+    "0041c0a0",
+    "0041c140",
+    "0041c220",
+    "0041c2b0",
+    "0041c3e0",
+    "0041c450",
+    "0041c4b0",
+    "0041c780",
+    "0041cac0",
+    "0041cb30",
+    "0041cc00",
+    "0041ccd0",
+    "0041d0a0",
+    "007eed70",
+    "007eedc0",
+    "007eedf0",
+    "007eee20",
+    "007eee50",
+    "007eee80",
+    "007eeeb0",
+    "007eef20",
+    "007fa620",
+    "007fa650",
+    "007fa6d0",
+    "007fa6e0",
+    "007fa6f0",
+    "007fa700",
+    "007fa740",
+    "007fa750",
+    "007fa760"
+  ],
+  "exact_count": 40,
+  "pending_build_only": [
+    "00417a10",
+    "00417aa0",
+    "00417bd0",
+    "00417c70",
+    "00417d10",
+    "004185c0",
+    "0041c560",
+    "0041c610",
+    "007eeef0",
+    "007fa690"
+  ],
+  "not_exact": {
+    "0041b660 DHTMLWindow::unbind": "pending build only and not exact: the original inlines the function0 constructor for this bind_t (vtable = 0, assign_to 0041b090 by reference, bind temporary released before post); this source calls the out-of-line constructor (90 bytes against 138)",
+    "00417b40 DHTMLWindow::doSetCallback": "not built: assigns the FunctionRef to +0x14 of the object CLuaHtmlView holds at +0xfc, whose type is not derived (CLuaHtmlView has no RTTI or constructor in the image); bound by byte shape only"
+  },
+  "not_counted": {
+    "instances": "STL / boost / RBX template bodies proven by bytes and targets (see instances)"
+  },
+  "left": {
+    "Creatable<Instance>::create<DHTMLWindowService> 0041cda0, Creator 0041ceb0 / 0041cf60, initializer 007eef90 / atexit 007fa7a0": "FactoryProduct<..>::Creator is private in util/Object.h with only declared members; not attempted in this pass"
+  },
+  "vtables": {
+    "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@6B@": {
+      "address": "0x80ef28",
+      "rtti": ".?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAEPAXI@Z = 0x4a4740 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z = 0x41c2b0 (own row)"
+      }
+    },
+    "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x80ef10",
+      "rtti": ".?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAEPAXI@Z = 0x4a4910 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z = 0x41bf20 (own row)"
+      }
+    },
+    "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@6B@": {
+      "address": "0x80ef40",
+      "rtti": ".?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAEPAXI@Z = 0x41c780 (own row (??_G))",
+        "1": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z = 0x41c610 (pending-build-only row (exact in the pending build))"
+      }
+    },
+    "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x80ef1c",
+      "rtti": ".?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAEPAXI@Z = 0x4a4910 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z = 0x41c140 (own row)"
+      }
+    },
+    "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@6B@": {
+      "address": "0x80ef34",
+      "rtti": ".?AV?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (own row (??_G))",
+        "1": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z = 0x41c450 (own row)"
+      }
+    },
+    "??_7?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@6B@": {
+      "address": "0x80ef00",
+      "rtti": ".?AV?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "??_E?$SignalDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAEPAXI@Z = 0x41bdf0 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?connectGeneric@?$SignalDescImpl@$00$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z = 0x41d3d0 (external)",
+        "2": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z = 0x41b830 (instance (bytes equal, targets verified))"
+      }
+    }
+  },
+  "proposals": [
+    "reflection/reflection.h owner: give BoundFuncDesc<Class, Function, 3> the private call<ReturnType> / call<void>(Class*, Value&, Value& x3) members of the 2-argument specialization (text in out/native-layouts/app-leaves2008-dhtml-pending/reflection/reflection.h); the 3-argument execute 0041c610 is exact with it (it calls call<void> 0041c560, ret 0x14).",
+    "CLuaHtmlView owner: a native CLuaHtmlView : CHtmlView (single inheritance) with setBody(const char*) 0042ae50, bindElement(shared_ptr<Instance>, const PropertyDescriptor&, const char*) 0042c8c0 and unbindAll() 0042b5f0 (generated CLuaHtmlView.h); the DHTMLWindow workers 00417a10 00417aa0 00417bd0 00417c70 00417d10 004185c0 are exact against it."
+  ],
+  "scope": "Inactive. Counted rows are exact with verified targets; pending rows are not counted. No active build, swap or credit."
+}
