@@ -135,6 +135,17 @@ def convert(addr, symbol, target):
     if match.reject_asm(text) if hasattr(match, 'reject_asm') else False:
         return dict(status='rejected', why='inline asm')
     obj = WORK / (addr + '.obj')
+    libref = re.search(r'//\s*roc-lib:\s*(\S+)\s+(\S+)', text)  # server analog that lives in a library recipe file
+    if libref:
+        from roc import libs
+        recipe = libs.RECIPES[libref.group(1)]
+        root = (libs.LIBS / recipe['src']).resolve()
+        found = next(root.rglob(libref.group(2)), None)
+        if found is None:
+            return dict(status='compile', why=['library file %s not found' % libref.group(2)])
+        flags = flags + ['/D' + d for d in recipe.get('defines', '').split()] + ['/I' + str(found.parent)] + \
+            ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']
+        src = found
     code, log = rebuild.run(rebuild.toolchain(cl), 'cl', ['/nologo', '/c', '/w'] + flags + ['/Fo' + obj.name, str(src)], WORK)
     if code or not obj.exists():
         return dict(status='compile', why=[l for l in log.splitlines() if 'error' in l][:3])
