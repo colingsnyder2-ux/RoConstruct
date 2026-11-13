@@ -178,7 +178,7 @@ def convert(addr, symbol, target):
     if not os.environ.get('ROC_RENAME_KEEP_HELPERS'):  # shortcut closure pass keeps the analog's comdat helpers (std/boost templates)
         data = rebuild.strip_symbols(data, keep={symbol})
     (OUT / (addr + '.obj')).write_bytes(data)
-    return dict(status='renamed', analog=fsym, renamed={syms[i][0]: n for i, n in mapping.items()})
+    return dict(status='renamed', analog=fsym, renamed={syms[i][0]: n for i, n in mapping.items()}, refs=refs)
 
 
 KNOWN, CHAIN = set(), {}

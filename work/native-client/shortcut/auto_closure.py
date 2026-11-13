@@ -41,6 +41,18 @@ def link(objs):
     return pr
 
 
+def learn_addresses():
+    """Callee names seen by rename.py (analog relocation -> exe address) fill in symbols the identity closure lacks."""
+    f = C / 'rename.json'
+    if not f.exists():
+        return
+    for a, r in json.load(open(f)).items():
+        if r.get('status') != 'renamed':
+            continue
+        for orig, va in (r.get('refs') or {}).items():
+            symaddr.setdefault(r.get('renamed', {}).get(orig, orig), va)
+
+
 def address_of(sym):
     m = re.fullmatch(r'(?:func|dat)_([0-9a-f]{8})', sym)
     return m.group(1) if m else symaddr.get(sym)
@@ -78,6 +90,7 @@ for r in range(rounds):
     if strip_lib_dups(C / 'renamed'):
         pr = link(chosen + glue + selected)
     un = pr['unresolved']
+    learn_addresses()
     jobs = {}
     for s in un:
         a = address_of(s)
