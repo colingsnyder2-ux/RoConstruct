@@ -40,6 +40,11 @@ namespace RBX
 		elasticJointK = Constants::getElasticMultiplier(elasticity) * jointK;
 	}
 
+	// Constants::getElasticMultiplier 00649320 is not defined in this unit: a trial body here was byte-exact at
+	// 00649320 but /Ob2 inlined it into onPrimitiveContactParametersChanged 00607ad0, which the original calls out
+	// of line, so it lost its exact match. Its home is the Constants unit (ConstantsJoint.cpp, beside
+	// getJointKMultiplier 00649390); the proven body is filed there as a proposal.
+
 #ifdef NATIVE_BODYPRIM_PENDING
 	int Contact::contactPairMatches;           // 0097b880 (++ by BlockBlockContact 00607d3b)
 	int Contact::contactPairMisses;            // 0097b884 (++ by 00607d07)
