@@ -17,6 +17,7 @@
 #include "GLG3D/Draw.h"
 #include "GLG3D/Texture.h"
 #include "RenderLib/TextureProxy2008.h"
+#include <GL/GLU.h>
 
 namespace RBX
 {
@@ -155,6 +156,17 @@ namespace RBX
     void AdornG3D::setColor(const G3D::Color4& color)
     {
         renderDevice->setColor(color);
+    }
+
+    // 00677de0
+    void DrawPrimitives::rawSphere(float radius, G3D::RenderDevice* rd)
+    {
+        glPushMatrix();
+        GLUquadric* quadric = gluNewQuadric();
+        gluQuadricDrawStyle(quadric, GLU_FILL);
+        gluSphere(quadric, radius, 15, 15);
+        gluDeleteQuadric(quadric);
+        glPopMatrix();
     }
 }
 
