@@ -102,6 +102,39 @@ void ScriptContext::onEvent(const RunService* source, RunTransition event)
         lua_gc(globalState, LUA_GCCOLLECT, 0);
 }
 
+// INFERRED: 00976b78 is a file-scope long of this unit: the timeout hook 005ae230 errors while it is > 0
+// (mov eax,[00976b78]; test; jle) and onEvent(Heartbeat) 005b0710 decrements it; no header declares it.
+static long timedOutScripts;
+
+// 005b0710 (Listener<RunService, Heartbeat> slot: this is the listener subobject at +0x134, globalState at +4,
+// nextPendingScripts +0x4c, yieldEvent +0x74, exeTime0/exeTime1/exeState +0x84/+0x8c/+0x94). The donor body plus
+// the 2008 timeout prefix: fldz/fcomp exeTime0/test ah,5 (exeTime0 > 0) -> exeTime1 = getLocalTime 00508410 +
+// exeTime0; InterlockedExchange(&exeState, 0) == 1 -> InterlockedDecrement(00976b78). Then second_clock::local_time
+// (create_time 0055e7d0) >= nextPendingScripts -> startPendingScripts 005b0590 and + 1 s (0xf4240 ticks,
+// add_time_duration 0055d780); YieldingThreads::resume 00621590; lua_gc(globalState, LUA_GCSTEP, 1) 00612a80.
+void ScriptContext::onEvent(const RunService* source, Heartbeat event)
+{
+    if (exeTime0 > 0)
+        exeTime1 = G3D::System::getLocalTime() + exeTime0;
+
+    if (InterlockedExchange(reinterpret_cast<long*>(&exeState), 0) == 1)
+        InterlockedDecrement(&timedOutScripts);
+
+    boost::posix_time::ptime t(boost::posix_time::second_clock::local_time());
+
+    if (t >= nextPendingScripts)
+    {
+        startPendingScripts();
+        nextPendingScripts = boost::posix_time::second_clock::local_time() + boost::posix_time::seconds(1);
+    }
+
+    if (yieldEvent)
+        yieldEvent->resume(event);
+
+    if (globalState)
+        lua_gc(globalState, LUA_GCSTEP, 1);
+}
+
 // 005aeaf0: "io" opens only when DebugSettings::ioEnabled (+0x131); settings() 005adc60 is the "settings" global.
 void ScriptContext::setThreadIdentity(lua_State* thread, Security::Identities identity)
 {
