@@ -105,3 +105,15 @@ char* PacketLogger::BaseIDTOString(unsigned char Id)
 
 	return (char*)IDTable[Id];
 }
+
+// 004badc0 ?IDTOString@PacketLogger@@IAEPADE@Z (31 bytes). Laid out right after UserIDTOString 004badb0 in this unit;
+// calls BaseIDTOString 004baab0, then tail-jumps through vtable slot 0x48 (UserIDTOString) when it returns null.
+// Called by Exposer::IDTOString 0049f180. Body follows the RakNet 3.0 PacketLogger.cpp source.
+char* PacketLogger::IDTOString(unsigned char Id)
+{
+    char *out;
+    out=BaseIDTOString(Id);
+    if (out)
+        return (char*)out;
+    return UserIDTOString(Id);
+}

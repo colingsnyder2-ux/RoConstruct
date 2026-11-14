@@ -9,6 +9,8 @@
 #include "Network/Players.h"
 #include "humanoid/Humanoid.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/ModelInstance.h"
 
 namespace RBX {
 char sNewNullTool[] = "NewNullTool";
