@@ -14,6 +14,7 @@ HRESULT CWorkspace::FinalConstruct() {
     RBX::DataModel::Lock lock(dataModel);
     runService = RBX::shared_from(dataModel->create<RBX::RunService>());
     RBX::Notifier<RBX::Workspace, RBX::DrawChanged>::connect(dataModel->getWorkspace(), this);
-    RBX::Notifier<RBX::Selection, RBX::SelectionChanged>::connect(dataModel->find<RBX::Selection>(), this);
+    // 0046b5c0 calls ServiceProvider::create<Selection>, not find.
+    RBX::Notifier<RBX::Selection, RBX::SelectionChanged>::connect(dataModel->create<RBX::Selection>(), this);
     return S_OK;
 }
