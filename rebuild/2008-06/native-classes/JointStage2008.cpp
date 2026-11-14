@@ -50,6 +50,10 @@ namespace RBX
 	}
 
 	// 00668280
+	// Parked (hard-leftover lf14): 188 bytes, same calls (lower_bound 00667fd0, iterator ++ 0068dfa0, erase 005539d0) and
+	// inline upper_bound; the only difference is that the original pushes esi in the prologue (ebx, ebp, esi, edi) while
+	// this build sinks it after the lower_bound call. Rejected: the iterator declared in the for-init (adds an esi early
+	// test, prologue changes), break instead of return (unchanged), postfix it++ (unchanged).
 	void JointStage::removeFromMap(Joint* j, Primitive* p)
 	{
 		if (p)

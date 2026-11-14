@@ -32,6 +32,13 @@ namespace RBX
 	}
 
 	// 00658d20
+	// Parked (hard-leftover lf14): same size (643 bytes), calls and stores match; two x87 scheduling differences remain.
+	// 1) the unit-quaternion scale: the original loads the reciprocal first for x and y (fld st(0); fmul [q.x]) where
+	//    this build loads the component (fld [q.x]; fmul st(1)); z and w already agree. 2) angMomentum = rotational *
+	//    IWorld (Vector3 * Matrix3 inline): the original sums x*m00 + z*m20 + y*m10 per column, this build z, y, x.
+	// Rejected: qOrientation = qOrientation * s (Quaternion::operator* plus out-of-line operator=, 660 bytes);
+	// component-wise q.x *= s ... (same component-first pattern). Both depend on the donor util/Quaternion.h and G3D
+	// Matrix3.h inline bodies, not on this body (header question).
 	void SimBody::update()
 	{
 		{
