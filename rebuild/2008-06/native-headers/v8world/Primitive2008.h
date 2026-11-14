@@ -170,6 +170,7 @@ namespace RBX
 			return dragging;
 		}
 		void setDragging(bool _dragging);                // 005e8050
+		void setJointAnchored(bool _jointAnchored);      // 005e8140 (analog name; +0xaa sibling, body in PrimitiveState.cpp)
 		const bool getCanCollide() const
 		{
 			return canCollide;

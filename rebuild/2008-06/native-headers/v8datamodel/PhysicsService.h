@@ -35,6 +35,10 @@ namespace RBX
 	class PartInstance;
 	struct AssemblyPhysicsOn;
 	struct AssemblyPhysicsOff;
+	namespace HUMAN
+	{
+		class MovingNoPhysicsBase;
+	}
 
 	extern const char sPhysicsService[];
 
@@ -44,6 +48,7 @@ namespace RBX
 						   public Listener<World, AssemblyPhysicsOff>
 	{
 		friend struct ::NativeServicesLayout; // tests/NativeServicesLayout.cpp offset asserts
+		friend class HUMAN::MovingNoPhysicsBase; // release 0066ed50 calls the private onRemoved 005e9040 (decorated AAE)
 
 	private:
 		std::set<PartInstance*> parts;                                    // +0x138

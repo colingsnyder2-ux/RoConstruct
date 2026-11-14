@@ -2,17 +2,51 @@
 // 2008-06 native RBX::Humanoid (inactive), camera / Connector rows of the original Humanoid unit (005d74a0..005dccxx)
 // that need the 2008 PartInstance with the Primitive embedded at +0x228 (native-headers/part-embedded): getBody
 // 005d9310, tellCameraNear 005d9df0 (+ its helper collectAllDescendantCharacterPrims 005d9d10) and
-// cameraSetWalkOrientation 005dc7f0. Same split as Humanoid2008Parts.cpp: the PartInstance chain reaches the donor
-// v8kernel/Connector.h, so this unit selects the donor Connector for the Humanoid base (see Humanoid2008.h); no
-// constructor here, so no vtable is emitted (every vtable is built from Humanoid2008.cpp).
-#define NATIVE_HUMANOID2008_DONOR_CONNECTOR
+// cameraSetWalkOrientation 005dc7f0. Since batch 14 this unit defines NATIVE_PRIMITIVE_NATIVE_BODY: the part-embedded
+// Primitive.h then reaches native-headers/v8kernel/Body2008.h (root +0x10, pv +0x94) instead of the donor Body (root
+// +0x4, pv +0x88), so getBody 005d9310 / getRootBody 005d9180 read the 2008 root. Nothing here may reach the donor
+// v8kernel/Body.h: Joint comes from the native v8world/Joints2008.h (Edge on IPipelined2008.h; otherPrimitive inline)
+// instead of the donor v8world/Joint.h, and the Humanoid base takes a unit-local Connector (below), exactly as
+// native-headers/v8kernel/Connector2008.h declares it, because Connector2008.h reaches the donor Body.h (pattern of
+// RunningBaseForce.cpp / BodyGyro.cpp). No constructor here, so no vtable is emitted (every vtable is built from
+// Humanoid2008.cpp).
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "util/NativeContentProvider.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8kernel/KernelIndex.h"
+
+// Unit-local Connector, exactly as native-headers/v8kernel/Connector2008.h declares it (see the header comment above).
+namespace RBX
+{
+	class Body;
+
+	class Connector : public KernelIndex
+	{
+	public:
+		Connector() {}
+		__declspec(noinline) int& getKernelIndex() { return kernelIndex; }
+		virtual ~Connector() {}                                         // slot 0 (??_G 006062c0)
+		virtual void computeForce(const float dt, bool throttling) = 0; // slot 1
+		virtual bool canThrottle() const                                // slot 2 (00565950)
+		{
+			return true;
+		}
+		virtual bool getBroken()                                        // slot 3 (0060a2f0)
+		{
+			return false;
+		}
+		virtual Body* getBody(int i) = 0;                               // slot 4 (analog name)
+		virtual float potentialEnergy()                                 // slot 5 (005e72c0)
+		{
+			return 0;
+		}
+	};
+}
+#define NATIVE_HUMANOID_UNIT_CONNECTOR
 #include "humanoid/Humanoid2008.h"
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Tool.h"
-#include "v8world/Joint.h"
-#include "v8kernel/Body.h"
+#include "v8world/Joints2008.h"
 #include "util/Math.h"
 #include <boost/bind.hpp>
 #include <vector>
@@ -22,9 +56,7 @@ namespace RBX
 	extern Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity;   // Humanoid2008.cpp (0097a2d8)
 
 	// 005d9310 (Connector slot, this adjusted by -0x130): torso primitive (+0x228) body (+0xa0 -> part+0x2c8),
-	// then Body::getRoot (+0x10). PARKED (draft): the part-embedded Primitive.h reaches the donor v8kernel/Body.h
-	// (root +0x4), so this compiles to `mov eax, [eax + 4]` where the original reads the 2008 Body root at +0x10
-	// (native-headers/v8kernel/Body2008.h, which cannot share a unit with the donor Body.h). Otherwise identical.
+	// then Body::getRoot (+0x10, the 2008 Body of Body2008.h through NATIVE_PRIMITIVE_NATIVE_BODY).
 	Body* Humanoid::getBody(int i)
 	{
 		if (i == 0)
@@ -89,6 +121,14 @@ namespace RBX
 	{
 		PartInstance* part = getTorso();
 		return part ? part->getPrimitive()->getBody() : NULL;
+	}
+
+	// 005d9180 (30 bytes; RunningBase::onComputeForce 00666550): getTorsoBody 005d9160 inlined (getTorso 005d8b10,
+	// part +0x2c8), then Body::getRoot (2008 Body root +0x10).
+	Body* Humanoid::getRootBody()
+	{
+		Body* body = getTorsoBody();
+		return body ? body->getRoot() : NULL;
 	}
 
 	// 005dc6c0 (119 bytes; called by onEvent 005dc740). Head and torso primitives inline (getHead 005d8a10 /
@@ -183,8 +223,8 @@ namespace RBX
 
 	// 005dc7f0 (ICharacterSubject slot, this adjusted by -0x14c). setWalkRotationalVelocity 005dc090 is inlined twice
 	// in the original (compare with +0x1b0, raisePropertyChanged 0040db00 with 0097a2d8); its out-of-line body lives
-	// in Humanoid2008.cpp, so the same statement sequence is written here. PARKED (draft): same Body conflict as
-	// getBody (root +0x10 / pv +0x94 in the 2008 Body against the donor +0x4 / +0x88), and with the setter written out
+	// in Humanoid2008.cpp, so the same statement sequence is written here. PARKED (draft): the Body offsets are right
+	// since batch 14 (root +0x10, pv +0x94 through NATIVE_PRIMITIVE_NATIVE_BODY), but with the setter written out
 	// the noAdjust branch keeps the ICharacterSubject this in edi instead of adjusting ecx by -0x14c per branch. Body::updatePV 00599360 (getPV),
 	// CoordinateFrame::lookVector 005187f0, Vector3::unitize 00518470, Math::angleToE0 005de0f0, Math::radWrap 005cbec0.
 	void Humanoid::cameraSetWalkOrientation(float rad, bool noAdjust)
