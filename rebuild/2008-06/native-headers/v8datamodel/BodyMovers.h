@@ -30,6 +30,9 @@
 //              BodyThrust 0x160 (005c1ee0), Rocket 0x190 (005c28a0).
 #include "v8tree/Instance.h"
 #include "util/RunStateOwner.h"
+// v8kernel/Connector.h is the 2008 Connector2008.h: a unit that defines NATIVE_PRIMITIVE_NATIVE_BODY (with the
+// part-embedded PartInstance.h) gets the native Body2008.h through it instead of the donor Body.h
+// (native-classes/RocketControl.cpp).
 #include "v8kernel/Connector.h"
 #include <G3D/Vector3.h>
 #include <G3D/CoordinateFrame.h>
@@ -61,6 +64,10 @@ namespace RBX
 			return true;                               // 00565950 (ICF-shared)
 		}
 		virtual void onEvent(const RunService* source, Stepped event); // 0062fae0 (not recovered: needs Primitive at PartInstance+0x228)
+		// Connector slot 4 (analog name of native v8kernel/Connector2008.h): 0062fa10 (`ret 4`) returns the part's Body for
+		// index 0 and NULL otherwise. Without this override every BodyMover subclass is abstract (Connector2008.h declares
+		// the slot pure), so Creatable<Instance>::create<C> (native-classes/AppUnit5BC_2008Creators.cpp) cannot build.
+		virtual Body* getBody(int i);                  // 0062fa10 (native-classes/BodyMovers.cpp)
 	};
 
 	extern char sBodyGyro[];
@@ -107,7 +114,7 @@ namespace RBX
 	public:
 		BodyPosition();                                // 00632190
 		G3D::Vector3 getLastForce();                   // 0062e090
-		virtual void computeForce(const float dt, bool throttling); // 00630140 (not recovered)
+		virtual void computeForce(const float dt, bool throttling); // 00630140 (native-classes/RocketControl.cpp, 2008 Body; parked)
 	};
 
 	extern char sBodyVelocity[];
@@ -130,7 +137,7 @@ namespace RBX
 	public:
 		BodyVelocity();                                // 00632290
 		G3D::Vector3 getLastForce();                   // 0062e0c0
-		virtual void computeForce(const float dt, bool throttling); // 006302d0 (not recovered)
+		virtual void computeForce(const float dt, bool throttling); // 006302d0 (native-classes/RocketControl.cpp, 2008 Body)
 	};
 
 	// Not in the donor. Same shape as BodyVelocity (constructor 00632400, size 0x170); the descriptors 007f8490..
@@ -156,7 +163,7 @@ namespace RBX
 		virtual bool preventBodySleep() const;         // 00632370 (ICF-shared with BodyVelocity)
 	public:
 		BodyAngularVelocity();                         // 00632400
-		virtual void computeForce(const float dt, bool throttling); // 00630420 (not recovered)
+		virtual void computeForce(const float dt, bool throttling); // 00630420 (native-classes/RocketControl.cpp, 2008 Body)
 	};
 
 	extern char sBodyForce[];
@@ -173,7 +180,7 @@ namespace RBX
 		virtual bool preventBodySleep() const;         // 00632720 (ICF-shared with BodyThrust)
 	public:
 		BodyForce();                                   // 006324f0
-		virtual void computeForce(const float dt, bool throttling); // 00630570 (not recovered)
+		virtual void computeForce(const float dt, bool throttling); // 00630570 (native-classes/RocketControl.cpp, 2008 Body; parked)
 	};
 
 	extern char sBodyThrust[];
@@ -192,7 +199,7 @@ namespace RBX
 		virtual bool preventBodySleep() const;         // 00632720 (ICF-shared with BodyForce)
 	public:
 		BodyThrust();                                  // 006325e0
-		virtual void computeForce(const float dt, bool throttling); // 00630610 (not recovered)
+		virtual void computeForce(const float dt, bool throttling); // 00630610 (native-classes/RocketControl.cpp, 2008 Body; parked)
 	};
 
 	void registerBodyMovers();                         // 00630860

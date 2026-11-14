@@ -89,6 +89,16 @@ namespace RBX
 		}
 	}
 
+	// 0062fa10 (Connector slot 4, `ret 4`; `this` is the Connector subobject at +0x130): index 0 tests
+	// weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (the temporary is released under a construction flag), then
+	// locks again and returns the Body* at PartInstance +0x2c8 (embedded Primitive +0x228, body +0xa0); NULL otherwise.
+	Body* BodyMover::getBody(int i)
+	{
+		if (i == 0 && part.lock())
+			return part.lock()->getPrimitive()->getBody();
+		return NULL;
+	}
+
 	// ---- BodyGyro (dynamic initializers 007f81c0..007f8250) ----
 	Reflection::BoundProp<float, 1> BodyGyro::prop_kP("P", "Goals", &BodyGyro::kP, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<float, 1> BodyGyro::prop_kD("D", "Goals", &BodyGyro::kD, Reflection::PropertyDescriptor::STANDARD);
