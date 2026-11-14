@@ -54,7 +54,7 @@ namespace RBX
 		{
 			if (attrib->getValue(name))
 			{
-				if (name->toString() == "BackendToolState" || name->toString() == "ActivationState")
+				if (name->name == "BackendToolState" || name->name == "ActivationState")
 					return;
 			}
 		}
@@ -132,8 +132,7 @@ namespace RBX
 		setName(sTool);
 	}
 
-#ifdef NATIVE_TOOL_PENDING
-	// Needs ServiceProvider::findServiceProvider (004898d0), not declared in the native v8tree/Service.h.
+	// 00600420
 	void Tool::setFrontendActivationState(int value)
 	{
 		int prevState = frontendActivationState;
@@ -153,6 +152,7 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_TOOL_PENDING
 	// 005ff680. Needs a ToolMouseCommand declaration (Named<ScriptMouseCommand, sToolMouseCommand> with the 2008
 	// class-name array); there is no native v8datamodel/ToolMouseCommand.h. ScriptMouseCommand::getMouse 005cf8d0.
 	boost::shared_ptr<Mouse> Tool::getMouse()

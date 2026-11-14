@@ -1,3 +1,4 @@
+// native-flags: /O2 /GS- /EHsc /MD /U_RELEASE /FImalloc.h /I{headers}/../../../tools/openrbx/Client/Network/raknet30/Source /I{headers}/../../../tools/openrbx/util
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -19,7 +20,7 @@
 // 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto (ntech:glm-4.5-air)
 // <<< native-status | src 036ed1b3 | roc native-status --write
 #include "RakNetDefines.h"
-#include "RakPeer.h"
+#include "../native-headers/RakPeer.h"
 #include "RakNetTypes.h"
 
 #ifdef _WIN32

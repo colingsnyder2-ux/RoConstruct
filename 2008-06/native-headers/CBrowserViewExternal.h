@@ -13,7 +13,7 @@
 // CComCoClass +0x1c (empty). The creator 0040fbf0 allocates 0x20 bytes and clears the VARIANT_BOOL at +0x1c.
 extern "C" const IID IID_IBrowserViewExternal;
 extern "C" const CLSID CLSID_BrowserViewExternal;
-extern "C" const IID LIBID_RobloxLib;
+extern const IID LIBID_RobloxLib;
 struct __declspec(uuid("dd754d30-321a-45a2-a40c-75783afabfab")) _IBrowserViewExternalEvents;
 
 // IDispatchImpl vtable 0080d714 slots 7 and 8.
@@ -37,6 +37,7 @@ class ATL_NO_VTABLE CBrowserViewExternal
       public CProxy_IBrowserViewExternalEvents<CBrowserViewExternal>,
       public ATL::IDispatchImpl<IBrowserViewExternal, &IID_IBrowserViewExternal, &LIBID_RobloxLib, 1, 0> {
 public:
+    DECLARE_REGISTRY_RESOURCEID(119)
     CBrowserViewExternal() : isIDE(VARIANT_FALSE) {}
     STDMETHOD(get_IsIDE)(VARIANT_BOOL* result);
     STDMETHOD(GetApp)(IDispatch** result);

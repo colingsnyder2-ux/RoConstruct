@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/g3d-image-2008
 // 2008-06 native G3DGImage (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/GImage.cpp, verbatim.
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage | 2008-06 | draft (no current byte proof)
@@ -212,7 +212,8 @@ void GImage::decode(
         break;
 
     default:
-        debugAssert(false);
+        // INFERRED: 0051041f constructs this error for an invalid format.
+        throw Error("invalid format", input.getFilename());
     }
 
     debugAssert(width >= 0);
@@ -426,8 +427,9 @@ GImage::Format GImage::resolveFormat(
     }
 
     if (dataLen > 10) {
+        // INFERRED: 2008 code at 0050e02d checks the JPEG marker bytes.
         if ((dataLen > 11) && (data[0] == 0xFF) &&
-            (memcmp(&data[6], "JFIF", 4) == 0)) {
+            (data[1] == 0xD8) && (data[2] == 0xFF)) {
             return JPEG;
         }
     }

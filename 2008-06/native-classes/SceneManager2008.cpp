@@ -41,20 +41,12 @@ namespace RBX
 				entity->removeSubEntity(subEntity);
 		}
 
-		void Chunk::setSortValue(float value)
-		{
-			sortValue = value;
-		}
-
-		float Chunk::getSortValue() const
-		{
-			return sortValue;
-		}
-
+#ifndef NATIVE_SCENE_MANAGER_EXTERNAL_CONSTRUCTORS
 		SceneManager::SceneManager(RenderSceneBase* renderScene)
 			: renderScene(renderScene)
 		{
 		}
+#endif
 
 		SceneManager::~SceneManager()
 		{
@@ -75,10 +67,12 @@ namespace RBX
 			renderScene->chunkArray.fastRemove(renderScene->chunkArray.findIndex(chunk));
 		}
 
+#ifndef NATIVE_SCENE_MANAGER_EXTERNAL_CONSTRUCTORS
 		SimpleSceneManager::SimpleSceneManager(RenderSceneBase* renderScene)
 			: SceneManager(renderScene)
 		{
 		}
+#endif
 
 		void SimpleSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
 		{

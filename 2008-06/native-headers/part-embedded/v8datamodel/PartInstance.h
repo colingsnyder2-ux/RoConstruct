@@ -88,6 +88,9 @@ namespace RBX
 		static const Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_Size;
 		static const Reflection::PropDescriptor<PartInstance, G3D::CoordinateFrame> prop_CFrame;
 		static Reflection::SignalDesc<PartInstance, void(boost::shared_ptr<Instance>)> event_Touched;
+		// Original descriptor 009761d4, initializer 007f4b90; dispatcher 0059e3a0.
+		static Reflection::SignalDesc<PartInstance, void()> event_OutfitChanged;
+		void outfitChanged();
 	  
 	private:
 		G3D::Vector3 xmlToUiSize(const G3D::Vector3&) const;

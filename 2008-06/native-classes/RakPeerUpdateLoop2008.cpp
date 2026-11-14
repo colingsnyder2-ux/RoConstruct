@@ -1,0 +1,92 @@
+// native-flags: /O2 /GS- /EHsc /MD /U_RELEASE /D_WIN32_WINNT=0x0501 /FImalloc.h /I{headers}/../../../tools/openrbx/Client/Network/raknet30/Source /I{headers}/../../../tools/openrbx/util
+/// \file
+///
+/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
+///
+/// Usage of RakNet is subject to the appropriate license agreement.
+/// Creative Commons Licensees are subject to the
+/// license found at
+/// http://creativecommons.org/licenses/by-nc/2.5/
+/// Single application licensees are subject to the license found at
+/// http://www.rakkarsoft.com/SingleApplicationLicense.html
+/// Custom license users are subject to the terms therein.
+/// GPL license users are subject to the GNU General Public
+/// License as published by the Free
+/// Software Foundation; either version 2 of the License, or (at your
+/// option) any later version.
+
+#include "../native-headers/RakPeer.h"
+#include "RakSleep.h"
+#include <assert.h>
+#ifdef _WIN32
+unsigned __stdcall UpdateNetworkLoop( LPVOID arguments )
+#else
+// FUNCTION: WEBSERVICE 0x101bab00
+// FUNCTION: ROBLOX 0x004e0910
+void* UpdateNetworkLoop( void* arguments )
+#endif
+{
+	RakPeer * rakPeer = ( RakPeer * ) arguments;
+
+	// 11/15/05 - this is slower than Sleep()
+#ifdef _WIN32
+#if (_WIN32_WINNT >= 0x0400) || (_WIN32_WINDOWS > 0x0400)
+	// Lets see if these timers give better performance than Sleep
+	HANDLE timerHandle;
+	LARGE_INTEGER dueTime;
+
+	if ( rakPeer->threadSleepTimer <= 0 )
+		rakPeer->threadSleepTimer = 1;
+
+	// 2nd parameter of false means synchronization timer instead of manual-reset timer
+	timerHandle = CreateWaitableTimer( NULL, FALSE, 0 );
+
+	assert( timerHandle );
+
+	dueTime.QuadPart = -10000 * rakPeer->threadSleepTimer; // 10000 is 1 ms?
+
+	BOOL success = SetWaitableTimer( timerHandle, &dueTime, rakPeer->threadSleepTimer, NULL, NULL, FALSE );
+
+	assert( success );
+
+#endif
+#endif
+
+#ifdef _RAKNET_THREADSAFE
+	#pragma message("-- RakNet: _RAKNET_THREADSAFE defined.  Safe to use multiple threads on the same instance of RakPeer (Slow!). --")
+#else
+	#pragma message("-- RakNet: _RAKNET_THREADSAFE not defined.  Do NOT use multiple threads on the same instance of RakPeer (Fast!). --")
+#endif
+
+	rakPeer->isMainLoopThreadActive = true;
+
+	while ( rakPeer->endThreads == false )
+	{
+		rakPeer->RunUpdateCycle();
+		/*
+#ifdef _WIN32
+#if (_WIN32_WINNT >= 0x0400) || (_WIN32_WINDOWS > 0x0400)
+		#pragma message("-- RakNet: Using WaitForSingleObject. Comment out USE_WAIT_FOR_MULTIPLE_EVENTS in RakNetDefines.h if you want to use Sleep instead. --")
+
+		if ( WaitForSingleObject( timerHandle, INFINITE ) != WAIT_OBJECT_0 )
+		{
+#ifdef _DEBUG
+
+			assert( 0 );
+	#ifdef _DO_PRINTF
+			printf( "WaitForSingleObject failed (%d)\n", GetLastError() );
+	#endif
+#endif
+		}
+
+#else
+		#pragma message("-- RakNet: Using Sleep(). Uncomment USE_WAIT_FOR_MULTIPLE_EVENTS in RakNetDefines.h if you want to use WaitForSingleObject instead. --")
+*/
+		RakSleep( rakPeer->threadSleepTimer );
+	}
+
+	rakPeer->isMainLoopThreadActive = false;
+
+	return 0;
+}
+

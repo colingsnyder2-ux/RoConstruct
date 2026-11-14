@@ -2,12 +2,17 @@
 
 start MANIFEST launches hidden background work; status RUN reads a compact receipt.
 run MANIFEST runs in foreground. analyze RUN [--manifest MANIFEST] compares the
-recorded objects again WITHOUT compiling. Manifest: {"jobs":[{"source":
+recorded objects again WITHOUT compiling. Add --index-output PATH to analyze one
+reviewed source and write a new inactive receipt only if all proof checks pass.
+PATH must be a new JSON file in work/2008-06/shared-layouts. Manifest: {"jobs":[{"source":
 "native-classes/Foo.cpp","checks":[{"addr":"00500000","symbol":"?foo@"}],
 "ranges":["00500000-00510000"],"layouts":[{"addr":"00500000","symbol":"?foo@",
 "thiscall":true}]}]}. Source paths relative to rebuild/2008-06; other CLI paths
 relative to cwd. Three workers default. No cross-run compile cache, client run,
 link, server match or P5/P6 gate. Range hits prove masked bytes, not identity.
+Optional manifest compiler_build selects 21022 (default) or 50727; the recorded
+compiler is retained during analysis. Optional compiler_variant="rtm" selects
+the installed VS2005 RTM toolchain instead of the default detected 50727 release.
 """
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -55,6 +60,34 @@ def save(path, value):
                 time.sleep(0.05 * (attempt + 1))
     finally:
         temporary.unlink(missing_ok=True)
+
+
+def compiler_build(data):
+    build = data.get('compiler_build', 21022)
+    if type(build) is not int or build not in (21022, 50727):
+        raise ValueError('compiler_build must be 21022 or 50727')
+    return build
+
+
+def compiler_variant(data):
+    variant = data.get('compiler_variant', 'default')
+    if variant not in ('default', 'rtm') or (variant == 'rtm' and compiler_build(data) != 50727):
+        raise ValueError('compiler_variant must be default or 50727 rtm')
+    return variant
+
+
+def selected_toolchain(data):
+    build = compiler_build(data)
+    variant = compiler_variant(data)
+    tc = rebuild.toolchain(build)
+    if variant == 'rtm':
+        vc = ROOT / 'tools/vc2005/Program Files/Microsoft Visual Studio 8/VC'
+        tc.update(cl=vc / 'bin/cl.exe', link=vc / 'bin/link.exe', lib=vc / 'bin/lib.exe',
+                  vc_include=vc / 'include', vc_lib=vc / 'lib', crt=vc / 'lib/msvcrt.lib',
+                  mspdb=vc.parent / 'Common7/IDE/mspdb80.dll')
+        if not tc['cl'].is_file() or not tc['vc_include'].is_dir():
+            raise ValueError('VS2005 RTM compiler or headers unavailable')
+    return tc
 
 
 def jobs_from(data):
@@ -125,23 +158,23 @@ def import_evidence():
     paths = [directory / name for name in ('msvcrt.lib', 'msvcprt.lib')]
     sdk = rebuild.toolchain(21022).get('sdk_lib')
     if sdk:
-        for name in ('Kernel32.Lib', 'WS2_32.Lib'):
+        for name in ('Kernel32.Lib', 'WS2_32.Lib', 'Advapi32.Lib', 'OleAut32.Lib'):
             path = Path(sdk) / name
             if path.is_file():
                 paths.append(path)
-    # Winsock's SDK import library uses ordinal imports. Resolve them through
-    # the actual 32-bit system DLL and retain its hash as proof input.
-    winsock_exports = {}
-    winsock = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'SysWOW64' / 'ws2_32.dll'
-    if winsock.is_file() and any(p.name.lower() == 'ws2_32.lib' for p in paths):
-        data = winsock.read_bytes()
-        dll = pefile.PE(data=data, fast_load=True)
-        if dll.FILE_HEADER.Machine == 0x14c:
-            dll.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_EXPORT']])
-            winsock_exports = {entry.ordinal: entry.name.decode('ascii')
-                               for entry in dll.DIRECTORY_ENTRY_EXPORT.symbols if entry.name}
-            hashes[str(winsock)] = hashlib.sha256(data).hexdigest()
-        dll.close()
+    # Resolve ordinal-only SDK imports against the actual 32-bit DLL exports.
+    ordinal_exports = {}
+    for name in ('ws2_32', 'oleaut32'):
+        dll_path = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'SysWOW64' / (name + '.dll')
+        if dll_path.is_file() and any(p.name.lower() == name + '.lib' for p in paths):
+            data = dll_path.read_bytes()
+            dll = pefile.PE(data=data, fast_load=True)
+            if dll.FILE_HEADER.Machine == 0x14c:
+                dll.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_EXPORT']])
+                ordinal_exports[name + '.dll'] = {entry.ordinal: entry.name.decode('ascii')
+                                                  for entry in dll.DIRECTORY_ENTRY_EXPORT.symbols if entry.name}
+                hashes[str(dll_path)] = hashlib.sha256(data).hexdigest()
+            dll.close()
     for path in paths:
         data = path.read_bytes()
         hashes[str(path)] = hashlib.sha256(data).hexdigest()
@@ -157,9 +190,9 @@ def import_evidence():
             symbol, dll = member[20:].split(b'\0')[:2]
             symbol, dll = symbol.decode('ascii'), dll.decode('ascii').lower()
             name_type = (struct.unpack_from('<H', member, 18)[0] >> 2) & 7
-            if name_type == 0 and dll == 'ws2_32.dll':
+            if name_type == 0 and dll in ordinal_exports:
                 ordinal = struct.unpack_from('<H', member, 16)[0]
-                export = winsock_exports.get(ordinal)
+                export = ordinal_exports[dll].get(ordinal)
                 if not export or symbol.lstrip('_@').split('@', 1)[0] != export:
                     continue
             elif name_type == 1:
@@ -174,16 +207,76 @@ def import_evidence():
     return labels, aliases, hashes
 
 
+def register_import_flow(target, address, load_offset, call_offset, register):
+    """Conservatively prove a callee-saved register holds one import at a call.
+
+    Reject unmodelled branches, paths bypassing the load, writes, and calls to
+    anything else after the load. Callers must separately verify the IAT load.
+    """
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL, CS_GRP_JUMP, CS_GRP_RET
+    from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_INS_JMP, X86_INS_MOV
+    aliases = {'edi': {'edi', 'di'}, 'esi': {'esi', 'si'}, 'ebx': {'ebx', 'bx', 'bl', 'bh'}}
+    if register not in aliases:
+        return False
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    instructions = {i.address: i for i in decoder.disasm(target, address)}
+    load = instructions.get(address + load_offset)
+    call = instructions.get(address + call_offset)
+    if not load or load.id != X86_INS_MOV or len(load.operands) != 2:
+        return False
+    dst, src = load.operands
+    if (dst.type != X86_OP_REG or load.reg_name(dst.reg) != register or src.type != X86_OP_MEM
+            or src.mem.base or src.mem.index):
+        return False
+    if (not call or not call.group(CS_GRP_CALL) or call.operands[0].type != X86_OP_REG
+            or call.reg_name(call.operands[0].reg) != register):
+        return False
+    pending, seen, reached = [(address, False)], set(), False
+    while pending:
+        pc, valid = pending.pop()
+        if (pc, valid) in seen:
+            continue
+        seen.add((pc, valid))
+        ins = instructions.get(pc)
+        if ins is None:
+            return False
+        if pc == address + call_offset:
+            reached = True
+            if not valid:
+                return False
+        if pc == address + load_offset:
+            valid = True
+        elif ins.group(CS_GRP_CALL):
+            op = ins.operands[0]
+            if op.type != X86_OP_REG or ins.reg_name(op.reg) != register:
+                valid = False
+        elif any(ins.reg_name(reg) in aliases[register] for reg in ins.regs_access()[1]):
+            valid = False
+        if ins.group(CS_GRP_RET):
+            continue
+        next_pc = pc + ins.size
+        if ins.group(CS_GRP_JUMP):
+            if ins.operands[0].type != X86_OP_IMM:
+                return False
+            pending.append((ins.operands[0].imm & 0xffffffff, valid))
+            if ins.id != X86_INS_JMP:
+                pending.append((next_pc, valid))
+        else:
+            pending.append((next_pc, valid))
+    return reached
+
+
 def check_calls(raw, symbol, body, target, address, expected):
-    """Check reviewed direct calls and explicitly identified CRT IAT calls.
+    """Check reviewed direct calls, tail jumps and identified IAT calls.
 
     Direct rows specify offset, original target and exact COFF symbol. Import
     rows additionally specify kind=import and the original DLL!export. Their
     PE IAT address and CRT import-library alias must both agree. Dynamic or
     virtual calls, final provider selection and callee ABI remain unproven.
     """
-    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL
-    from capstone.x86 import X86_OP_IMM, X86_OP_MEM
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL, CS_GRP_JUMP
+    from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG
     sections, symbols, definitions, _ = match._coff_data_index(raw)
     start, section = definitions[symbol]
     table = sections[section]
@@ -197,12 +290,15 @@ def check_calls(raw, symbol, body, target, address, expected):
     declarations = {row['offset']: row for row in expected}
     if len(declarations) != len(expected):
         raise ValueError('duplicate call expectation offset')
-    imports = import_evidence() if any(row.get('kind') == 'import' for row in expected) else None
+    imports = import_evidence() if any(row.get('kind') in ('import', 'import_reg') for row in expected) else None
+    instructions = {i.address - address: i for i in decoder.disasm(target, address)}
     rows = []
     for instruction in decoder.disasm(target, address):
-        if not instruction.group(CS_GRP_CALL):
-            continue
         offset = instruction.address - address
+        jump = (instruction.group(CS_GRP_JUMP)
+                and declarations.get(offset, {}).get('kind') == 'jump')
+        if not instruction.group(CS_GRP_CALL) and not jump:
+            continue
         wanted = declarations.pop(offset, None)
         direct = instruction.operands[0].type == X86_OP_IMM
         destination = instruction.operands[0].imm if direct else None
@@ -213,6 +309,13 @@ def check_calls(raw, symbol, body, target, address, expected):
                   and destination == int(wanted['target'], 16)
                   and body[offset + 1:offset + 5] == b'\0\0\0\0')
         kind = 'direct'
+        if jump:
+            kind = 'jump'
+            ok = bool(direct and instruction.bytes[0] == 0xe9
+                      and body[offset:offset + 1] == b'\xe9'
+                      and body[offset + 1:offset + 5] == b'\0\0\0\0'
+                      and binding and binding[1] == 20 and binding[0] == wanted['symbol']
+                      and destination == int(wanted['target'], 16))
         if wanted and wanted.get('kind') == 'import':
             kind = 'import'
             binding = refs.get(offset + 2)
@@ -231,9 +334,32 @@ def check_calls(raw, symbol, body, target, address, expected):
                       and separator and actual_separator and dll.lower() == actual_dll.lower()
                       and export == actual_export
                       and binding[0] in imports[1].get((dll.lower(), export), set()))
+        if wanted and wanted.get('kind') == 'import_reg':
+            kind = 'import_reg'
+            load_offset = wanted.get('load_offset')
+            load = instructions.get(load_offset) if isinstance(load_offset, int) else None
+            op = instruction.operands[0]
+            reg = instruction.reg_name(op.reg) if op.type == X86_OP_REG else None
+            load_op = load.operands[1] if load and len(load.operands) == 2 else None
+            absolute = bool(load_op and load_op.type == X86_OP_MEM and not load_op.mem.base and not load_op.mem.index)
+            destination = load_op.mem.disp & 0xffffffff if absolute else None
+            binding = refs.get(load_offset + load.disp_offset) if absolute else None
+            label = imports[0].get(destination) if absolute else None
+            dll, separator, export = wanted.get('import', '').partition('!')
+            actual_dll, actual_separator, actual_export = (label or '').partition('!')
+            field = load_offset + load.disp_offset if absolute else -1
+            ok = bool(absolute and load.disp_size == 4 and binding and binding[1] == 6
+                      and binding[0] == wanted['symbol'] and destination == int(wanted['target'], 16)
+                      and separator and actual_separator and dll.lower() == actual_dll.lower() and export == actual_export
+                      and binding[0] in imports[1].get((dll.lower(), export), set())
+                      and body[load_offset:field] == bytes(load.bytes[:load.disp_offset])
+                      and body[field:field + 4] == b'\0\0\0\0'
+                      and body[field + 4:load_offset + load.size] == bytes(load.bytes[load.disp_offset + 4:])
+                      and body[offset:offset + instruction.size] == bytes(instruction.bytes)
+                      and register_import_flow(target, address, load_offset, offset, reg))
         rows.append({'offset': offset, 'target': f'{destination:08x}' if destination is not None else None,
                      'symbol': binding[0] if binding else None, 'kind': kind,
-                     'status': ('verified_import' if kind == 'import' else 'verified_binding') if ok
+                     'status': ('verified_import' if kind in ('import', 'import_reg') else 'verified_binding') if ok
                                else 'unresolved_or_wrong_binding'})
     if imports:
         for file, digest in imports[2].items():
@@ -242,7 +368,7 @@ def check_calls(raw, symbol, body, target, address, expected):
     return {'passed': not declarations and all(row['status'] in ('verified_binding', 'verified_import') for row in rows),
             'calls': rows, 'unused_expectations': list(declarations.values()),
             'import_evidence_inputs': imports[2] if imports else {},
-            'scope': 'Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof.'}
+            'scope': 'Reviewed direct calls, explicitly declared tail jumps and IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof.'}
 
 
 def analyze_object(job, obj):
@@ -469,7 +595,10 @@ def execute(run, workers):
     save(run / 'summary.json', summary)
     started, results = time.monotonic(), []
     try:
-        tc = rebuild.toolchain(21022)
+        build = compiler_build(data)
+        tc = selected_toolchain(data)
+        summary['compiler_build'] = build
+        summary['compiler_variant'] = compiler_variant(data)
         summary['compiler'] = str(tc['cl'])
         summary['compiler_sha256'] = sha(tc['cl'])
         with ThreadPoolExecutor(max_workers=workers) as pool:
@@ -541,6 +670,56 @@ def display(run):
     return summary
 
 
+def index_inactive(results, receipts, tc, output, analysis_path):
+    """Index one explicitly reviewed, fully bound native source without overwriting receipts."""
+    require_proof(results)
+    if len(results) != 1:
+        raise ValueError('index one source per receipt')
+    result = results[0]
+    source = Path(result['source']).resolve()
+    roots = [(BASE / name).resolve() for name in ('native-classes', 'native-world', 'native-headers')]
+    if not any(source.is_relative_to(root) for root in roots):
+        raise ValueError('receipt source must be a native source or header')
+    output = Path(output).resolve()
+    if output.parent != (ROOT / 'work/2008-06/shared-layouts').resolve() or output.suffix.lower() != '.json':
+        raise ValueError('receipt must be a JSON file in shared-layouts')
+    receipt = receipts[str(source).casefold()]
+    if receipt.get('status') != 'complete':
+        raise ValueError('recorded build was not complete')
+    if Path(receipt['object']).resolve() != Path(result['object']).resolve():
+        raise ValueError('recorded object differs')
+    checks = result['checks']
+    if len({row['addr'] for row in checks}) != len(checks):
+        raise ValueError('duplicate original address')
+
+    def verify_inputs():
+        expected = dict(receipt['dependencies'])
+        expected[str(source)] = receipt['source_sha256']
+        expected[receipt['object']] = receipt['object_sha256']
+        changed = [name for name, digest in expected.items() if not Path(name).is_file() or sha(name) != digest]
+        changed.extend(build_changes(receipt, tc))
+        if changed:
+            raise ValueError('proof inputs changed: ' + ', '.join(changed[:5]))
+        require_proof(results)
+
+    verify_inputs()
+    rows = [{'address': row['addr'], 'symbol': row['symbol'], 'exact': True,
+             'metrics': row['metrics'], 'data_matches': row['data_matches'],
+             'verified_calls': row['call_identity']['calls']} for row in checks]
+    data = {'source_path': str(source), 'source_sha256': receipt['source_sha256'],
+            'object_sha256': receipt['object_sha256'], 'analysis': str(Path(analysis_path).resolve()),
+            'checks': rows,
+            'scope': 'Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate.'}
+    with output.open('x', encoding='utf-8') as handle:
+        json.dump(data, handle, indent=2)
+        handle.write('\n')
+    try:
+        verify_inputs()
+    except BaseException:
+        output.unlink()
+        raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('start', 'run', 'status', 'analyze', '_worker'))
@@ -548,15 +727,21 @@ def main():
     parser.add_argument('--manifest', type=Path, help='analyze: replacement comparisons against existing objects')
     parser.add_argument('--workers', type=int, choices=range(1, 9), default=3)
     parser.add_argument('--require-proof', action='store_true', help='run/analyze: fail unless every explicit check has fresh exact bytes, data and reviewed call bindings')
+    parser.add_argument('--index-output', type=Path, help='analyze: write one new inactive receipt after all proof checks pass')
     args = parser.parse_args()
     if args.require_proof and args.action not in ('run', 'analyze'):
         parser.error('--require-proof supports foreground run/analyze only')
+    if args.index_output and args.action != 'analyze':
+        parser.error('--index-output supports analyze only')
     if args.action in ('start', 'run'):
-        jobs = jobs_from(json.loads(args.input.read_text(encoding='utf-8-sig')))
+        manifest = json.loads(args.input.read_text(encoding='utf-8-sig'))
+        build = compiler_build(manifest)
+        variant = compiler_variant(manifest)
+        jobs = jobs_from(manifest)
         RUNS.mkdir(parents=True, exist_ok=True)
         run = RUNS / (time.strftime('%Y%m%d-%H%M%S') + '-' + uuid.uuid4().hex[:8])
         run.mkdir()
-        save(run / 'manifest.json', {'jobs': jobs})
+        save(run / 'manifest.json', {'compiler_build': build, 'compiler_variant': variant, 'jobs': jobs})
         save(run / 'summary.json', {'state': 'queued', 'run': str(run), 'total_sources': len(jobs)})
         if args.action == 'start':
             try:
@@ -576,7 +761,8 @@ def main():
         jobs = jobs_from(json.loads((args.manifest or run / 'manifest.json').read_text(encoding='utf-8-sig')))
         receipts = {r['source'].casefold(): r for r in json.loads((run / 'results.json').read_text())}
         results = []
-        tc = rebuild.toolchain(21022)
+        recorded = json.loads((run / 'manifest.json').read_text(encoding='utf-8-sig'))
+        tc = selected_toolchain(recorded)
         for job in jobs:
             receipt = receipts[job['source'].casefold()]
             obj = Path(receipt['object'])
@@ -597,8 +783,11 @@ def main():
         output = run / ('analysis-' + uuid.uuid4().hex[:8] + '.json')
         save(output, results)
         print(json.dumps({'state': 'analyzed', 'sources': len(results), 'changed_input_sources': sum(bool(r['changed_inputs']) for r in results), 'results': str(output)}))
-        if args.require_proof:
+        if args.require_proof or args.index_output:
             require_proof(results)
+        if args.index_output:
+            index_inactive(results, receipts, tc, args.index_output, output)
+            print(json.dumps({'state': 'indexed', 'receipt': str(args.index_output.resolve())}))
         return
     elif args.action == '_worker':
         execute(args.input.resolve(), args.workers)

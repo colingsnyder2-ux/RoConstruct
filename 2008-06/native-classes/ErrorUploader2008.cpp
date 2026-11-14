@@ -7,7 +7,7 @@
 // ErrorUploader2008 | 2008-06 | draft (no current byte proof)
 // 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
 // <<< native-status | src 6998bbb7 | roc native-status --write
-#include "CRobloxApp.h"
+#include "ErrorUploaderState.h"
 #include "util/Http.h"
 #include "util/standardout.h"
 #include <boost/bind.hpp>
@@ -16,16 +16,8 @@
 #include <queue>
 #include <sstream>
 
-struct ErrorUploader::data
-{
-    std::queue<std::string> files;
-    boost::recursive_mutex sync;
-    std::string url;
-    static RBX::worker_thread::work_result uploadNext(boost::shared_ptr<data> state);
-};
-
 ErrorUploader::ErrorUploader()
-    : state(new data()), thread(boost::bind(&data::uploadNext, state), "rbx_erroruploader")
+    : state(new data()), thread(boost::bind(&ErrorUploader::upload, state), "rbx_erroruploader")
 {
 }
 
@@ -33,32 +25,3 @@ ErrorUploader::~ErrorUploader()
 {
 }
 
-// 2007: ErrorUploader::run (ROBLOX 0x0041e020)
-RBX::worker_thread::work_result ErrorUploader::data::uploadNext(boost::shared_ptr<data> state)
-{
-    {
-        std::string file;
-        {
-            boost::recursive_mutex::scoped_lock lock(state->sync);
-            if (state->files.empty())
-                return RBX::worker_thread::done;
-            file = state->files.front();
-        }
-        try
-        {
-            std::string url = state->url + "?filename=" + file;
-            std::fstream data(file.c_str(), std::ios_base::in | std::ios_base::binary);
-            std::string response;
-            RBX::Http(url).post(data, true, response);
-        }
-        catch (std::exception& e)
-        {
-            RBX::StandardOut::singleton()->print(RBX::MESSAGE_ERROR, e);
-        }
-        {
-            boost::recursive_mutex::scoped_lock lock(state->sync);
-            state->files.pop();
-        }
-        return RBX::worker_thread::more;
-    }
-}

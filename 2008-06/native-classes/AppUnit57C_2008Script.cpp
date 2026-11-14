@@ -129,14 +129,15 @@ void Script::onAncestorChanged(const AncestorChanged& event)
     }
 }
 
-// 00586bf0: NOT exact (see the receipt)
+// 00586bf0: remove old provider script, then prefetch code on new provider.
 void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 {
 	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
 	{
 		sc->removeScript(this);
 	}
-	Instance::onServiceProvider(oldProvider, newProvider);
+	if (newProvider)
+		requestCode();
 }
 
 // 00586b10: NOT exact (see the receipt)

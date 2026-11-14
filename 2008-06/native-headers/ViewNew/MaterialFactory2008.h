@@ -15,6 +15,8 @@
 //   only lets std::auto_ptr<MaterialFactory> call the out-of-line destructor. The ctor is not declared (its callers,
 //   the ViewRbxGfx / ViewG3D ctors, stay blocked on the Lighting service).
 
+#include "v8datamodel/BrickColor.h"
+
 namespace RBX
 {
 	namespace ViewNew
@@ -22,6 +24,14 @@ namespace RBX
 		class MaterialFactory
 		{
 		public:
+			// INFERRED: 12-byte material-cache key used by the 2008 comparator.
+			struct Attributes
+			{
+				BrickColor color;
+				float transparency;
+				float reflectance;
+				bool operator<(const Attributes& other) const;
+			};
 			~MaterialFactory();                                          // 004d7460
 		};
 	}

@@ -4,23 +4,76 @@
 #include "OgreRbx/RbxSceneManager2008.h"
 #include "OgreRbx/VisualEngine2008.h"
 #include "OgreRbxNode/TwoDManager2008.h"
+#include "OgreRbxNode/RbxSceneNode2008.h"
+#include "OgreRbx/RbxEntity2008.h"
+#include "OgreRbx/RbxSubMesh2008.h"
+#include "OgreRbx/GeometryCreate2008.h"
+#include "AppUnit67C_2008/RbxSubEntity2008.h"
 #include <GLG3D/LightingParameters.h>
 #include <windows.h>
 #include <cmath>
 #include <cstdio>
+#include <GL/gl.h>
 
 float zoom=42;
 WNDPROC previousProc;
-// Demo ManualObjects need the stock caster query; the recovered query expects
-// Roblox's aggregate RbxEntity beneath rbxroot, which this small driver lacks.
+// Only fixture initialization is demo code; rendering, culling and volumes remain native.
+class DemoSubEntity : public Ogre::RbxSubEntity {
+public:
+    DemoSubEntity(Ogre::RbxEntity* parent,Ogre::RbxSubMesh* mesh,const Ogre::Matrix4& transform)
+        :Ogre::RbxSubEntity(parent,mesh,0) {
+        mTransform=transform;
+        mShadowSubMesh=mesh;
+        setCustomValue(1);
+    }
+    void shadows(bool enabled) { mCastShadows=enabled; }
+
+};
 class DemoSceneManager : public Ogre::RbxSceneManager {
 public:
-    DemoSceneManager(const Ogre::String& name):Ogre::RbxSceneManager(name) {}
+    Ogre::RbxEntity* world;
+    Ogre::RbxSceneNode* worldNode;
+    std::vector<Ogre::RbxSubMesh*> meshes;
+    std::vector<DemoSubEntity*> parts;
+    unsigned shadowQueries;
+    DemoSceneManager(const Ogre::String& name):Ogre::RbxSceneManager(name),world(0),worldNode(0),shadowQueries(0) {}
+    void createWorld() {
+        worldNode=new Ogre::RbxSceneNode(this,"rbxroot");
+        getRootSceneNode()->addChild(worldNode);
+        world=new Ogre::RbxEntity;
+        Ogre::MeshPtr mesh=Ogre::MeshManager::getSingleton().createManual("Castle aggregate","General");
+        mesh->_setBounds(Ogre::AxisAlignedBox(-18,-12,-18,18,17,18));
+        mesh->_setBoundingSphereRadius(32);
+        world->setMesh(mesh);
+        worldNode->attachObject(world);
+    }
+    ~DemoSceneManager() {
+        if(!world) return;
+        worldNode->detachObject(world);
+        delete world;
+        getRootSceneNode()->removeChild(worldNode);
+        delete worldNode;
+        for(unsigned i=0;i<meshes.size();++i) {
+            Ogre::geometryContext->names.erase(meshes[i]);
+            delete meshes[i];
+        }
+    }
     void skyLighting(Ogre::VisualEngine* engine,const G3D::LightingParameters& lighting) {
         mRbxSky->setLighting(engine,lighting);
     }
-    const ShadowCasterList& findShadowCastersForLight(const Ogre::Light* light,const Ogre::Camera* camera) {
-        return Ogre::SceneManager::findShadowCastersForLight(light,camera);
+    void renderSingleObject(const Ogre::Renderable* renderable,const Ogre::Pass* pass,bool iterate,const Ogre::LightList* lights=0) {
+        // The recovered draw body is still a draft. The DLL implementation uses
+        // the native subentity's virtual transforms without its lighting cache.
+        Ogre::SceneManager::renderSingleObject(renderable,pass,iterate,lights);
+    }
+    const ShadowCasterList& findShadowCastersForLight(const Ogre::Light*,const Ogre::Camera*) {
+        // The full game's collect() needs aggregate bounds written by AdornRbxGfx.
+        // The standalone fixture enumerates the same native subentity casters.
+        mShadowCasterList.clear();
+        ++shadowQueries;
+        for(unsigned i=0;i<parts.size();++i)
+            if(parts[i]->getCastShadows()) mShadowCasterList.push_back(parts[i]);
+        return mShadowCasterList;
     }
 };
 class DemoFactory : public Ogre::RbxSceneManagerFactory {
@@ -36,24 +89,29 @@ LRESULT CALLBACK demoProc(HWND hwnd,UINT msg,WPARAM w,LPARAM l) {
     return CallWindowProc(previousProc,hwnd,msg,w,l);
 }
 
-// Batched flat-shaded geometry; no textures or overlays.
+// Native GeometryBuilder -> RbxSubMesh -> RbxSubEntity -> RbxEntity.
 struct Builder {
-    Ogre::ManualObject* object;
+    DemoSubEntity* object;
+    Ogre::MaterialPtr material;
+    std::vector<float> vertices,normals;
+    std::vector<unsigned> indices;
     unsigned index;
     Builder(Ogre::SceneManager* scene,const char* name,Ogre::ColourValue colour,bool glow=false):index(0) {
-        Ogre::MaterialPtr material=Ogre::MaterialManager::getSingleton().create(name,"General");
+        material=Ogre::MaterialManager::getSingleton().create(name,"General");
         material->setDiffuse(colour); material->setAmbient(colour);
         if(glow) { material->setSelfIllumination(colour); material->setReceiveShadows(false); }
-        object=scene->createManualObject(name);
-        object->begin(name,Ogre::RenderOperation::OT_TRIANGLE_LIST);
+
     }
     void quad(Ogre::Vector3 a,Ogre::Vector3 b,Ogre::Vector3 c,Ogre::Vector3 d) {
         Ogre::Vector3 normal=(b-a).crossProduct(c-a).normalisedCopy();
-        object->position(a); object->normal(normal);
-        object->position(b); object->normal(normal);
-        object->position(c); object->normal(normal);
-        object->position(d); object->normal(normal);
-        object->quad(index,index+1,index+2,index+3); index+=4;
+        Ogre::Vector3 points[4]={a,b,c,d};
+        for(int i=0;i<4;++i) {
+            vertices.push_back(points[i].x); vertices.push_back(points[i].y); vertices.push_back(points[i].z);
+            normals.push_back(normal.x); normals.push_back(normal.y); normals.push_back(normal.z);
+        }
+        indices.push_back(index); indices.push_back(index+1); indices.push_back(index+2);
+        indices.push_back(index); indices.push_back(index+2); indices.push_back(index+3);
+        index+=4;
     }
     void box(float x,float y,float z,float w,float h,float depth) {
         Ogre::Vector3 a(x-w/2,y-h/2,z-depth/2),b(x+w/2,y-h/2,z-depth/2);
@@ -76,8 +134,18 @@ struct Builder {
         }
     }
     void finish(Ogre::SceneManager* scene) {
-        object->end();
-        scene->getRootSceneNode()->createChildSceneNode()->attachObject(object);
+        DemoSceneManager* native=static_cast<DemoSceneManager*>(scene);
+        Ogre::GeometryBuilder builder;
+        Ogre::Vector3 minimum,maximum;
+        Ogre::RbxSubMesh* mesh=builder.createIndexed(&vertices[0],index,&normals[0],0,0,0,&indices[0],indices.size()/3,&minimum,&maximum);
+        mesh->setMaterialName(material->getName());
+        unsigned key=native->parts.size()+1;
+        native->worldNode->setTransform(key,Ogre::Matrix4::IDENTITY);
+        native->worldNode->setSphere(mesh,Ogre::Sphere((minimum+maximum)*0.5f,(maximum-minimum).length()*0.5f));
+        object=new DemoSubEntity(native->world,mesh,native->worldNode->getTransform(key));
+        object->setMaterial(material);
+        native->world->func_0067da50(object);
+        native->meshes.push_back(mesh); native->parts.push_back(object);
     }
 };
 
@@ -85,6 +153,7 @@ int main(int argc,char** argv) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
     try {
         bool smoke=argc>2 && std::string(argv[2])=="--smoke";
+        bool tour=argc>2 && std::string(argv[2])=="--tour";
         DemoFactory factory;
         Ogre::Root root("","","ogre_demo.log");
         root.loadPlugin(argc>1 ? argv[1]:"rggl.dll");
@@ -100,34 +169,43 @@ int main(int argc,char** argv) {
         scene->setAmbientLight(Ogre::ColourValue(0.43f,0.43f,0.5f));
         Ogre::Light* sun=scene->createLight("sun");
         sun->setType(Ogre::Light::LT_DIRECTIONAL); sun->setDirection(-0.5f,-1,-0.4f);
+        sun->setCastShadows(true);
         sun->setDiffuseColour(1,0.86f,0.68f);
-        scene->setShadowTechnique(Ogre::SHADOWTYPE_TEXTURE_MODULATIVE);
-        scene->setShadowTextureSettings(2048,1);
-        scene->setShadowColour(Ogre::ColourValue(0.72f,0.74f,0.8f));
+        scene->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+        scene->setShadowDirectionalLightExtrusionDistance(1000);
+        scene->setShadowUseInfiniteFarPlane(false);
+
+        scene->setShadowColour(Ogre::ColourValue(0.55f,0.55f,0.6f));
         scene->setShadowFarDistance(120);
 
         Ogre::ResourceGroupManager::getSingleton().addResourceLocation("assets","FileSystem","General");
         Ogre::MaterialPtr skyMaterial=Ogre::MaterialManager::getSingleton().create("Original Roblox sky","General");
         skyMaterial->setLightingEnabled(false);
         skyMaterial->setReceiveShadows(false);
-        skyMaterial->getTechnique(0)->getPass(0)->createTextureUnitState()->setCubicTextureName("null_plainsky512.jpg",false);
+        // ViewRbxGfx::updateSkybox supplies back, front, left, right, up, down.
+        Ogre::String skyFaces[6]={"null_plainsky512_bk.jpg","null_plainsky512_fr.jpg","null_plainsky512_lf.jpg","null_plainsky512_rt.jpg","null_plainsky512_up.jpg","null_plainsky512_dn.jpg"};
+        skyMaterial->getTechnique(0)->getPass(0)->createTextureUnitState()->setCubicTextureName(skyFaces,false);
         scene->setSkyBox(true,"Original Roblox sky",5000,true);
         Ogre::VisualEngine skyContext;
         skyContext.viewport=window->getViewport(0);
         skyContext.sceneManager=scene;
         skyContext.camera=camera;
-        G3D::LightingParameters lighting(15*3600.0,false);
+        // RBX::Lighting defaults: 14:00, physical sun/moon, G3D latitude.
+        G3D::LightingParameters lighting(14*3600.0,true);
         static_cast<DemoSceneManager*>(scene)->skyLighting(&skyContext,lighting);
         Ogre::TwoDManager hud;
         hud.setup(scene,window,Ogre::RENDER_QUEUE_OVERLAY,true,false);
+        // Shadow render queues would otherwise consume the HUD before the window.
+        scene->removeRenderQueueListener(&hud);
         Ogre::FrameHistory history;
 
+        static_cast<DemoSceneManager*>(scene)->createWorld();
         Builder rock(scene,"Basalt",Ogre::ColourValue(0.18f,0.21f,0.28f));
         rock.tower(0,0,14,-5,-1,11.5f); rock.tower(0,0,6,-10,-5,14); rock.finish(scene);
-        rock.object->setCastShadows(false);
+        rock.object->shadows(false);
         Builder grass(scene,"Moss",Ogre::ColourValue(0.24f,0.43f,0.29f));
         grass.tower(0,0,11.6f,-1,0); grass.finish(scene);
-        grass.object->setCastShadows(false);
+        grass.object->shadows(false);
         Builder stone(scene,"Sandstone",Ogre::ColourValue(0.69f,0.66f,0.58f));
         stone.box(0,1,0,15,2,13);
         stone.box(-6,4,0,1.4f,6,12); stone.box(6,4,0,1.4f,6,12);
@@ -168,12 +246,15 @@ int main(int argc,char** argv) {
         previousProc=reinterpret_cast<WNDPROC>(SetWindowLongPtr(hwnd,GWLP_WNDPROC,reinterpret_cast<LONG_PTR>(demoProc)));
         float yaw=0.65f,pitch=0.48f;
         bool orbit=false,lastSpace=false,dragging=false;
-        bool hudVisible=true,wireframe=false,shadows=true,cycle=false;
-        bool lastKeys[5]={};
-        float hour=15;
-        float elapsed=0;
+        bool hudVisible=true,wireframe=false,shadows=true,cycle=true;
+        bool lastKeys[7]={};
+        bool celestial=false;
+        double clockSeconds=14*3600;
+        // Demo playback speed, not a built-in Roblox Lighting timer.
+        double daySeconds=argc>3 ? atof(argv[3]):90;
+        if(daySeconds<=0) return 4;
         POINT previous={}; DWORD last=GetTickCount();
-        for(int frame=0;!window->isClosed() && (!smoke || frame<45);++frame) {
+        for(int frame=0;!window->isClosed() && (!smoke || frame<45) && (!tour || frame<240);++frame) {
             Ogre::WindowEventUtilities::messagePump();
             if(window->isClosed() || (GetForegroundWindow()==hwnd && (GetAsyncKeyState(VK_ESCAPE)&0x8000))) break;
             DWORD now=GetTickCount(); float dt=(now-last)*0.001f; last=now;
@@ -185,22 +266,25 @@ int main(int argc,char** argv) {
             bool down=focused && (GetAsyncKeyState(VK_LBUTTON)&0x8000);
             if(down && dragging) { yaw-=(mouse.x-previous.x)*0.008f; pitch+=(mouse.y-previous.y)*0.008f; }
             previous=mouse; dragging=down;
-            const int keys[5]={'H','W','S','D','T'};
-            for(int k=0;k<5;++k) {
+            const int keys[7]={'H','W','S','D','T','P','C'};
+            for(int k=0;k<7;++k) {
                 bool pressed=focused && (GetAsyncKeyState(keys[k])&0x8000);
                 if(pressed && !lastKeys[k]) {
                     if(k==0) hudVisible=!hudVisible;
                     if(k==1) { wireframe=!wireframe; camera->setPolygonMode(wireframe?Ogre::PM_WIREFRAME:Ogre::PM_SOLID); }
-                    if(k==2) { shadows=!shadows; scene->setShadowTechnique(shadows?Ogre::SHADOWTYPE_TEXTURE_MODULATIVE:Ogre::SHADOWTYPE_NONE); }
-                    if(k==3) cycle=!cycle;
-                    if(k==4) hour=fmod(hour+3,24.0f);
+                    if(k==2) { shadows=!shadows; scene->setShadowTechnique(shadows?Ogre::SHADOWTYPE_STENCIL_MODULATIVE:Ogre::SHADOWTYPE_NONE); }
+                    if(k==3) cycle=true;
+                    if(k==4) clockSeconds=fmod(clockSeconds+3*3600,86400.0);
+                    if(k==5) cycle=false;
+                    if(k==6) celestial=!celestial;
                 }
                 lastKeys[k]=pressed;
             }
-            elapsed+=dt;
-            if(cycle) hour=fmod(hour+dt*0.4f,24.0f);
-            if(smoke && frame==25) hour=22;
-            lighting.setTime(hour*3600);
+            if(cycle && !smoke) clockSeconds=fmod(clockSeconds+dt*86400/daySeconds,86400.0);
+            if(smoke) clockSeconds=frame<10 ? 5.5*3600:frame<25 ? 14*3600:frame<35 ? 18*3600:22*3600;
+            if(tour) clockSeconds=frame*360;
+            // Lighting::setTime uses whole seconds and wraps at 86400.
+            lighting.setTime(static_cast<int>(clockSeconds));
             static_cast<DemoSceneManager*>(scene)->skyLighting(&skyContext,lighting);
             scene->setAmbientLight(Ogre::ColourValue(lighting.ambient.r,lighting.ambient.g,lighting.ambient.b));
             sun->setDirection(-lighting.lightDirection.x,-lighting.lightDirection.y,-lighting.lightDirection.z);
@@ -213,7 +297,7 @@ int main(int argc,char** argv) {
                 for(int i=1;i<std::min(history.getCount(),100);++i) {
                     float a=std::min(history.get(i)->time,50.0f);
                     float b=std::min(history.get(i-1)->time,50.0f);
-                    hud.outlineRectangle(28+(100-i)*2,580+a,30+(100-i)*2,580+b,G3D::Color4(0.35f,0.9f,0.75f,0.9f));
+                    hud.outlineRectangle(28+(100-i)*2,520+a,30+(100-i)*2,520+b,G3D::Color4(0.35f,0.9f,0.75f,0.9f));
                 }
             }
             if(orbit && !down) yaw+=dt*0.22f;
@@ -221,17 +305,35 @@ int main(int argc,char** argv) {
             pitch=std::max(0.12f,std::min(pitch,1.35f));
             camera->setPosition(zoom*cos(pitch)*sin(yaw),3+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));
             camera->lookAt(0,3,0);
+            if(celestial || (smoke && (frame==19 || frame==43))) {
+                G3D::Vector3 direction=lighting.source==G3D::LightingParameters::SUN ? lighting.trueSunPosition:lighting.trueMoonPosition;
+                camera->lookAt(camera->getPosition()+Ogre::Vector3(direction.x,direction.y,direction.z)*2700);
+            }
+            static_cast<DemoSceneManager*>(scene)->world->func_0067daf0(camera);
             // Direct DLL render-target update fixes the trial's black-frame path.
             window->Ogre::RenderTarget::update();
+            if(smoke && frame==20) {
+                std::vector<unsigned char> stencil(1100*760);
+                glReadPixels(0,0,1100,760,GL_STENCIL_INDEX,GL_UNSIGNED_BYTE,&stencil[0]);
+                unsigned covered=0; for(unsigned p=0;p<stencil.size();++p) if(stencil[p]) ++covered;
+                GLint bits=0; glGetIntegerv(GL_STENCIL_BITS,&bits);
+                fprintf(stderr,"Stencil: %d bits, %u nonzero pixels\n",bits,covered);
+                if(bits==0 || covered==0) return 5;
+            }
             // This standalone scene has no Ogre Overlay to populate queue 100.
             // Flush the native listener explicitly when the queue stayed empty.
             bool repeatHud=false;
             hud.renderQueueEnded(Ogre::RENDER_QUEUE_OVERLAY,"",repeatHud);
             if(frame==20) window->writeContentsToFile("castle_island.png");
+            if(smoke && frame==9) window->writeContentsToFile("castle_dawn.png");
+            if(smoke && frame==34) window->writeContentsToFile("castle_dusk.png");
             if(smoke && frame==44) window->writeContentsToFile("castle_night.png");
+            if(smoke && frame==43) window->writeContentsToFile("castle_moon.png");
+            if(smoke && frame==19) window->writeContentsToFile("castle_sun.png");
             if(frame%30==0) {
                 char title[240];
-                sprintf(title,"CASTLE ISLAND | %.1f h | median %.1f ms | Drag orbit / Wheel zoom | H HUD / W wire / S shadows / D day cycle / T +3h",hour,history.median(std::min(history.getCount(),20)));
+                int seconds=static_cast<int>(clockSeconds);
+                sprintf(title,"CASTLE ISLAND | %02d:%02d:%02d %s | %.0fs/day | D run / P pause / T +3h / C sun-moon / H HUD / W wire / S shadows",seconds/3600,seconds/60%60,seconds%60,cycle?"running":"paused",daySeconds);
                 SetWindowTextA(hwnd,title);
             }
             window->swapBuffers(false);
@@ -240,6 +342,7 @@ int main(int argc,char** argv) {
         if(!window->isClosed()) SetWindowLongPtr(hwnd,GWLP_WNDPROC,reinterpret_cast<LONG_PTR>(previousProc));
         scene->removeRenderQueueListener(&hud);
         skyContext.viewport=0; skyContext.sceneManager=0; skyContext.camera=0;
+        fprintf(stderr,"Native castle: %u batches, %u shadow queries\n",static_cast<DemoSceneManager*>(scene)->parts.size(),static_cast<DemoSceneManager*>(scene)->shadowQueries);
         root.destroySceneManager(scene); root.removeSceneManagerFactory(&factory);
         return 0;
     } catch(const Ogre::Exception& e) {

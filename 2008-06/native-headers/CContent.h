@@ -18,6 +18,7 @@ class ATL_NO_VTABLE CContent :
     public ATL::CComObjectRootEx<ATL::CComSingleThreadModel>,
     public ATL::CComCoClass<CContent, &CLSID_Content> {
 public:
+    DECLARE_REGISTRY_RESOURCEID(116)
     std::stringstream stream;
 
     BEGIN_COM_MAP(CContent)

@@ -27,7 +27,9 @@ PartInstance::PartInstance()
     primitive.setGuid(guid);
 }
 
+#ifndef NATIVE_PART_INSTANCE_EXTERNAL_DESTRUCTOR
 PartInstance::~PartInstance() {}
+#endif
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

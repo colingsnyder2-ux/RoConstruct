@@ -86,8 +86,8 @@ namespace RBX
 			virtual G3D::ReferenceCountedPointer<MaterialBase> getMaterial() = 0;
 			virtual G3D::ReferenceCountedPointer<Mesh> getMesh() = 0;
 			virtual const G3D::CoordinateFrame& cframe() = 0;
-			virtual void setSortValue(float value);                   // 004e5b60
-			virtual float getSortValue() const;                       // 004e5b70
+			virtual void setSortValue(float value) { sortValue = value; } // 004e5b60; header-inline in Part ctor 004ebcc0
+			virtual float getSortValue() const { return sortValue; }     // 004e5b70
 
 			// SimpleSceneManager::invalidateModel 004d7320 (inlined there)
 			void releaseEntity(); // Inline definition in SceneManager2008.cpp, its only caller unit.

@@ -17,8 +17,11 @@ out.mkdir(parents=True, exist_ok=True)
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("plugin", nargs="?", type=Path)
 parser.add_argument("--open", action="store_true", help="Open the interactive demo after its smoke test")
+parser.add_argument("--day-seconds", type=float, default=90, help="Real seconds per full 24-hour demo cycle (default: 90)")
 parser.add_argument("--sky-assets", type=Path, default=Path("C:/Users/colin/OneDrive/Desktop/June 22 (0.3.809.0)/content/sky"))
 args = parser.parse_args()
+if args.day_seconds <= 0:
+    parser.error("--day-seconds must be positive")
 plugin = args.plugin.resolve() if args.plugin else out / "rggl.dll"
 if not plugin.is_file():
     raise SystemExit("Pass the original 2008-06 rggl.dll path.")
@@ -38,8 +41,8 @@ font = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 18)
 title = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 25)
 draw.text((20, 12), "CASTLE ISLAND / RBX OGRE", font=title, fill=(238, 225, 193))
 draw.text((20, 50), "DRAG orbit   WHEEL zoom   SPACE auto orbit", font=font, fill="white")
-draw.text((20, 78), "D day cycle   T +3 hours   S shadows   W wireframe", font=font, fill="white")
-draw.text((20, 106), "H HUD   R camera reset   ESC exit", font=font, fill=(120, 215, 195))
+draw.text((20, 78), "D run / P pause   T +3h   C sun/moon   S shadows", font=font, fill="white")
+draw.text((20, 106), "H HUD   W wireframe   R camera reset   ESC exit", font=font, fill=(120, 215, 195))
 panel.save(assets / "castle_hud.png")
 spec = rebuild.load_module("2008-06", "ogre-native-rbx-trial")
 includes = [ROOT / p for p in (
@@ -47,14 +50,35 @@ includes = [ROOT / p for p in (
     "rebuild/2008-06/native-headers",
     "tools/rbxgs/Client/Rendering/g3d/include",
     "tools/rbxgs/Client/boost_1_34_1/src")]
+# The frozen provider archive owns this getter; avoid a second driver emission
+# from the newer inline header while retaining the same declaration and ABI.
+overlay = out / "headers"
+header = ROOT / "rebuild/2008-06/native-headers/AppUnit67C_2008/RbxSubEntity2008.h"
+text = header.read_text()
+start = text.index("\t\tconst Vector3& getWorldPosition(void) const\n")
+end = text.index("\n\t\tReal getSquaredViewDepth", start)
+text = text[:start] + "\t\tconst Vector3& getWorldPosition(void) const;" + text[end:]
+target = overlay / "AppUnit67C_2008/RbxSubEntity2008.h"
+target.parent.mkdir(parents=True, exist_ok=True)
+target.write_text(text)
+includes.insert(0, overlay)
+providers = out / "native-providers"
+sources = [ROOT / "rebuild/2008-06/native-classes" / name for name in (
+    "OgreGeometryContext2008.cpp", "OgreGeometryVertexProvider2008.cpp",
+    "OgreRbxEntityAppend2008.cpp", "OgreRbxEntitySetMesh2008.cpp")]
+built = rebuild.compile_direct("2008-06", sources, providers, includes,
+    "WIN32 NDEBUG BOOST_ALL_NO_LIB", flags="/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast")
+if any(not result[0] for result in built.values()):
+    raise SystemExit(json.dumps(built, indent=2))
 libs = [base / rebuild.load_module("2008-06", p)["name"] / "linked/linked.lib"
         for p in ("ogre-real-provider-1112", "g3d-gl", "g3d", "boost", "zlib-winapi")]
 libs = [p for p in libs if p.is_file()]
+libs[:0] = [providers / (source.stem + ".obj") for source in sources]
 libs += [base / "importlibs/rgmain.lib", "msvcprt.lib", ROOT / "tools/openrbx/3rdparty/Microsoft DirectX SDK (November 2007)/Lib/x86/dxguid.lib"]
 os.chdir(out)
 result = rebuild.link_test("2008-06", "ogre_demo", libs, includes=includes,
     defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS BOOST_ALL_NO_LIB",
-    run_args=[str(out / plugin.name), "--smoke"], run_dlls=["rgmain.dll"])
+    run_args=[str(out / plugin.name), "--smoke", str(args.day_seconds)], run_dlls=["rgmain.dll"])
 (out / "report.json").write_text(json.dumps(result, indent=2))
 print(json.dumps(result, indent=2))
 if result.get("exit") == 0:
@@ -64,6 +88,6 @@ if result.get("exit") == 0:
             raise SystemExit("Smoke frame is blank or missing geometry.")
     if args.open:
         with (out / "interactive.log").open("w") as log:
-            subprocess.Popen([str(out / "ogre_demo.exe"), str(out / plugin.name)],
+            subprocess.Popen([str(out / "ogre_demo.exe"), str(out / plugin.name), "--interactive", str(args.day_seconds)],
                              cwd=out, stdout=log, stderr=subprocess.STDOUT)
 raise SystemExit(0 if result.get("exit") == 0 else 1)
