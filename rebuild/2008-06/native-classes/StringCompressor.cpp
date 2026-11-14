@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
+// native-flags: /O2 /GS- /EHsc /MD /GS- /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // >>> native-status (generated) -- do not edit >>>
 // StringCompressor | 2008-06 | 1 byte-exact, inactive (not link-selected)
 // 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by -
