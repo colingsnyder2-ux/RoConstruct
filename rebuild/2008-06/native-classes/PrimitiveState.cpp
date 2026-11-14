@@ -14,11 +14,11 @@
 // RBX::Edge (getIndex), RBX::Joint and RBX::Contact for getNextJoint 005e7ba0 / getNextContact 005e7be0 come from
 // native-headers/AppUnit658/Edge.h, v8world/Joints2008.h and v8world/Contact2008.h (native 2008 Edge over
 // IPipelined2008.h), which replaced the earlier unit-local copies.
-// getAssembly 005e7570 and setCoordinateFrame 005e8200 (batch 14, prove.py inactive_exact) read the 2008 Clump (+0x24
-// assembly) and Assembly (+0x24 -> +0x1c root primitive) through the read-only layout view v8world/AssemblyLayout.h;
-// RBX::Clump (donor inline getAssembly) and RBX::Assembly (notifyMoved 005e6170) are unit-local placeholders because no
-// native 2008 declaration exists (the donor Clump.h puts assembly at +0x20; the native-world openrbx port Clump.h /
-// Assembly.h carries the WEBSERVICE layout). Rejected first form: getAssembly as `clump ? reinterpret_cast<...>(clump)
+// getAssembly 005e7570 and setCoordinateFrame 005e8200 (batch 14, prove.py inactive_exact) use the native 2008
+// RBX::Clump / RBX::Assembly of v8world/AssemblyLayout.h (NATIVE_CLUMP_DECL: Clump +0x24 assembly, the assembly's
+// +0x24 -> +0x1c root primitive, Clump-unit notifyMoved 005e6170), which replaced the unit-local placeholders (batch
+// 15). The donor Clump.h puts assembly at +0x20; the native-world openrbx port Clump.h / Assembly.h carries the
+// WEBSERVICE layout. Rejected first form: getAssembly as `clump ? reinterpret_cast<...>(clump)
 // ->assembly : NULL` -> 180 bytes, the `xor edi, edi` NULL arm was jump-threaded away; the nested inline
 // Clump::getAssembly reproduces it. IMoving::notifyMoved 00614be0 is the donor v8world/IMoving.h declaration (its body
 // is native-classes/IMovingManager.cpp). RBX::getJoint 0064ca60 belongs to the ClumpStage unit
@@ -42,6 +42,7 @@
 #include "AppUnit658/Edge.h"
 #include "v8world/Joints2008.h"
 #include "v8world/Contact2008.h"
+#define NATIVE_CLUMP_DECL // the native 2008 RBX::Clump / RBX::Assembly of v8world/AssemblyLayout.h
 #include "v8world/AssemblyLayout.h"
 #include "v8world/IMoving.h"
 
@@ -79,27 +80,6 @@ namespace RBX
 		// call 0064cc40 / 0064ccf0 (the "June anchor swap" pair of native-world ClumpStage).
 		void onPrimitiveAddedAnchor(Primitive* p);
 		void onPrimitiveRemovingAnchor(Primitive* p);
-	};
-
-	// Unit-local placeholder for the 2008 RBX::Assembly (no native 2008 declaration exists; its fields are read through
-	// v8world/AssemblyLayout.h). Only the member this unit calls: 005e6170 walks the primitives from +0x1c and calls
-	// IMoving::notifyMoved 00614be0 on each myOwner (+0xa4); name from the donor Primitive::setCoordinateFrame call
-	// `assembly->notifyMoved()` (analog name: the registry row is a placeholder).
-	class Assembly
-	{
-	public:
-		void notifyMoved();                              // 005e6170
-	};
-
-	// Unit-local placeholder for the 2008 RBX::Clump (polymorphic in 2008, ??_7Clump 0083f7ac; no native 2008
-	// declaration exists). Only the donor inline getAssembly, reading +0x24 through the v8world/AssemblyLayout.h view.
-	class Clump
-	{
-	public:
-		Assembly* getAssembly() const
-		{
-			return reinterpret_cast<const AssemblyLayout::ClumpFields*>(this)->assembly;
-		}
 	};
 
 	class EdgeList
@@ -355,7 +335,7 @@ namespace RBX
 		setCoordinateFrame(pv.position);
 	}
 
-	// 005e7570: clump (+0x5c) ? clump->assembly (+0x24, AssemblyLayout view of the 2008 Clump) : NULL (donor body).
+	// 005e7570: clump (+0x5c) ? clump->assembly (+0x24, the 2008 Clump of v8world/AssemblyLayout.h) : NULL (donor body).
 	Assembly* Primitive::getAssembly() const
 	{
 		return clump ? clump->getAssembly() : NULL;
@@ -380,7 +360,7 @@ namespace RBX
 			}
 			else
 			{
-				if (AssemblyLayout::getRootPrimitive(assembly) == this)
+				if (assembly->getRootClump()->getRootPrimitive() == this)
 				{
 					body->setCoordinateFrame(value);
 					assembly->notifyMoved();
