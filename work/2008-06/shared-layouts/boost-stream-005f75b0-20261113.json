@@ -1,0 +1,57 @@
+{
+ "address": "005f75b0",
+ "symbol": "??1?$stream_buffer@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@UAE@XZ",
+ "exact": true,
+ "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BoostStreamBuffers2008.cpp",
+ "source_sha256": "ffa0ee43727042671ea07618f59b6911655e589ee5cb8e115da0d392ccb95df1",
+ "object_sha256": "f717892be7c6f8a3ab1335eacc76ff5bbc5c121a28d88a2d082eea7eaac75a44",
+ "indexed_bytes": 86,
+ "full_body_bytes": 126,
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 86.507937,
+  "target_bytes": 126,
+  "candidate_bytes": 126,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 106,
+  "unmasked_differences": 0,
+  "masked_bytes": 20,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 5,
+  "candidate_relocations": 5,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "calls": [
+  {
+   "offset": 79,
+   "original_target": "005f7510",
+   "symbol": "?close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAEXXZ",
+   "callee_body_exact": false
+  },
+  {
+   "offset": 104,
+   "original_target": "005f6cf0",
+   "symbol": "??1?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@UAE@XZ",
+   "callee_body_exact": true
+  }
+ ],
+ "relocation_symbols": {
+  "6": "__ehhandler$??1?$stream_buffer@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@UAE@XZ",
+  "40": "??_7?$stream_buffer@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@6B@",
+  "80": "?close@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAEXXZ",
+  "87": "$LN15",
+  "105": "??1?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@UAE@XZ"
+ },
+ "scope": "Full contiguous destructor plus catch/cleanup range exact. Indexed original entry ends at catch funclet. Local evidence only; referenced EH/data identities and runtime selection remain separate.",
+ "data_matches": [
+  [
+   8653700,
+   92
+  ]
+ ],
+ "data_errors": []
+}
