@@ -141,6 +141,7 @@ def receipt_groups(receipt):
             symbol = row.get('symbol')
             if (re.fullmatch(r'[0-9a-f]{8}', address) and isinstance(symbol, str) and symbol
                     and not symbol.startswith(('__catch$', '__ehhandler$', '__unwindfunclet$'))
+                    and not re.search(r' \((?:catch|unwind) funclet\)$', symbol, re.I)
                     and not re.search(r' \[0x[0-9a-f]+:0x[0-9a-f]+\]$', symbol, re.I)):
                 checks.append({'addr': address, 'symbol': symbol})
         if checks:

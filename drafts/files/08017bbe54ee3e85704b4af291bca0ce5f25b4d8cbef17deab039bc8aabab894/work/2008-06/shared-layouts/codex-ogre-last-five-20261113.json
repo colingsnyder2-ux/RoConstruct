@@ -1,0 +1,242 @@
+{
+ "jobs": [
+  {
+   "source": "native-classes/AppUnit67C_2008SubEntity.cpp",
+   "checks": [
+    {
+     "addr": "006857e0",
+     "symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+     "calls": []
+    }
+   ]
+  },
+  {
+   "source": "native-classes/OgreRbxSceneManager.cpp",
+   "checks": [
+    {
+     "addr": "0067c890",
+     "symbol": "??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+    },
+    {
+     "addr": "0067c9a0",
+     "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+    },
+    {
+     "addr": "0069bc50",
+     "symbol": "?renderSingleObject@RbxSceneManager@Ogre@@MAEXPBVRenderable@2@PBVPass@2@_NPBV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z"
+    }
+   ]
+  },
+  {
+   "source": "native-classes/OgreVRbxFont.cpp",
+   "checks": [
+    {
+     "addr": "00684730",
+     "symbol": "?draw2D@RbxFont@Ogre@@QBE?AVVector2@G3D@@PAVVisualEngine@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z",
+     "calls": [
+      {
+       "offset": 101,
+       "target": "00684640",
+       "symbol": "?get2DStringBounds@RbxFont@Ogre@@QBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@12@@Z"
+      },
+      {
+       "offset": 190,
+       "target": "00684640",
+       "symbol": "?get2DStringBounds@RbxFont@Ogre@@QBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@12@@Z"
+      },
+      {
+       "offset": 419,
+       "target": "006843f0",
+       "symbol": "?computePackedArray@RbxFont@Ogre@@ABE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NNNNW4Spacing@12@PAV34@@Z"
+      },
+      {
+       "offset": 713,
+       "target": "00682d60",
+       "symbol": "?addQuad@TwoDManager@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z"
+      },
+      {
+       "offset": 924,
+       "target": "00682d60",
+       "symbol": "?addQuad@TwoDManager@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z"
+      },
+      {
+       "offset": 260,
+       "target": "00802890",
+       "symbol": "__imp___invalid_parameter_noinfo",
+       "kind": "import",
+       "import": "MSVCR90.dll!_invalid_parameter_noinfo"
+      },
+      {
+       "offset": 356,
+       "target": "008028b0",
+       "symbol": "__imp__malloc",
+       "kind": "import",
+       "import": "MSVCR90.dll!malloc"
+      },
+      {
+       "offset": 705,
+       "target": "0080245c",
+       "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+       "kind": "import",
+       "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      {
+       "offset": 916,
+       "target": "0080245c",
+       "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+       "kind": "import",
+       "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      {
+       "offset": 946,
+       "target": "008028c0",
+       "symbol": "__imp__free",
+       "kind": "import",
+       "import": "MSVCR90.dll!free"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": {
+  "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp": "76b58a6407b4000aa568abb1f45e7b974ca899597169843297d24f6c3db3e74c",
+  "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h": "6ea7b2e0bbcc860733bb169570dd6db84757013c4e78f2eb10bcd3328ce6c4ad",
+  "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include/OgrePlane.h": "e3bcf02a5914ec71e6d20b72e7be015d0e5948bbc0c4740644f07ebc41b6167f",
+  "rebuild/2008-06/native-classes/OgreVRbxFont.cpp": "58a7e4fdddfbf48eb0df967341743d28a20f47003d0fa2c3757cad96350f0a08"
+ },
+ "functions": [
+  {
+   "symbol": "??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c890",
+   "size": 115,
+   "catch": {
+    "symbol": "__catch$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+    "address": "0067c8e7"
+   },
+   "handler": {
+    "symbol": "__ehhandler$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "007dd7a1"
+   }
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c9a0",
+   "size": 113,
+   "catch": {
+    "symbol": "__catch$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+    "address": "0067c9f7"
+   },
+   "handler": {
+    "symbol": "__ehhandler$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "007dd7c1"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c890",
+   "bindings": {
+    "__ehhandler$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "007dd7a1",
+    "__imp_??0Plane@Ogre@@QAE@ABV01@@Z": "00804454",
+    "__CxxThrowException@8": "006a158c"
+   }
+  },
+  {
+   "symbol": "__catch$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+   "address": "0067c8e7"
+  },
+  {
+   "symbol": "__ehhandler$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "007dd7a1",
+   "bindings": {
+    "__ehfuncinfo$??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "008ff194",
+    "___CxxFrameHandler3": "006a14c0"
+   }
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c9a0",
+   "bindings": {
+    "__ehhandler$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "007dd7c1",
+    "__imp_??0Plane@Ogre@@QAE@ABV01@@Z": "00804454",
+    "__CxxThrowException@8": "006a158c"
+   }
+  },
+  {
+   "symbol": "__catch$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+   "address": "0067c9f7"
+  },
+  {
+   "symbol": "__ehhandler$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "007dd7c1",
+   "bindings": {
+    "__ehfuncinfo$??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "008ff1f4",
+    "___CxxFrameHandler3": "006a14c0"
+   }
+  }
+ ],
+ "handoff": {
+  "baseline_commit": "993e0962daf988297a70cf44c2254e8bada0fa8b",
+  "package_revision": null,
+  "source_revision": null,
+  "scope": "Five named Ogre registry gaps only; placeholder identities excluded.",
+  "fresh_run": "work\\2008-06\\native-check-runs\\20261113-183602-ea9d271b",
+  "new_exact": [
+   {
+    "addr": "00684730",
+    "body_exact": true,
+    "size": 982,
+    "data_verified": true,
+    "direct_import_calls_verified": 10,
+    "virtual_sites_pending": [
+     455,
+     472
+    ]
+   }
+  ],
+  "verified_existing": [
+   {
+    "addr": "0067c890",
+    "body_exact": true,
+    "full_size": 115,
+    "references_verified": true
+   },
+   {
+    "addr": "0067c9a0",
+    "body_exact": true,
+    "full_size": 113,
+    "references_verified": true
+   }
+  ],
+  "partial": {
+   "0069bc50": {
+    "baseline_score": 59,
+    "score": 77,
+    "object_size": 2385,
+    "target_size": 2391,
+    "blocker": "STL iterator/inlining context; frame 0x4c versus 0x54. Existing exact analog uses synthetic noinline derived-vector begin, not adopted."
+   }
+  },
+  "blocked": {
+   "006857e0": {
+    "score": 93,
+    "object_size": 63,
+    "target_size": 63,
+    "blocker": "First fld scheduled before static guard store. Existing exact analog inserts unsupported _ReadWriteBarrier; not adopted."
+   }
+  },
+  "permuter": [
+   "work/native-client/repair-tool-runs/permuter-006857e0-3c87238ae169/receipt.json",
+   "work/native-client/repair-tool-runs/permuter-00684730-85bfa65acef6/receipt.json",
+   "work/native-client/repair-tool-runs/permuter-0069bc50-5f0ff8372e93/receipt.json"
+  ],
+  "no_loss": "Only draw2D and renderSingleObject emitted bodies changed in respective TUs; others unchanged. Two unused scene helper emissions removed.",
+  "selected_delta": 0,
+  "fully_gated_delta": 0,
+  "server_credit_delta": 0,
+  "next": "Original initialization/codegen context for position; authentic STL iterator/inlining context for renderer; font texture virtual/provider and owner link/runtime gates."
+ }
+}

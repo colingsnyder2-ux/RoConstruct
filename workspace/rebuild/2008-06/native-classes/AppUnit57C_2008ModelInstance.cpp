@@ -21,7 +21,10 @@
 // copies under out/native-layouts/app-unit57c-2008/pending/ (proposals in the receipt).
 // Codegen analog: bodies follow the donor tools/rbxgs v8datamodel/ModelInstance.cpp shape; the recorder proves each
 // against the bytes and every call / data target.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// Prove flags: /U_RELEASEASSERT as stated above (getTypedParent's rbx_static_cast assert otherwise keeps
+// isTopLevelPVInstance out of line in 00584310 / 00584360); {headers}/part-embedded for the 2008 PartInstance /
+// Primitive (005834f0, 00584d80); {headers}/pv-parent for the iterative noinline getTypedRoot<PVInstance> (005836d0).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT /I{headers}/part-embedded /I{headers}/pv-parent
 // >>> native-status (generated) -- do not edit >>>
 // AppUnit57C_2008ModelInstance | 2008-06 | 1 byte-exact, inactive (not link-selected)
 // 1/30 mapped addresses byte-exact | named 1 | 29 unproved | 2 referenced strings (not rechecked) | by king_originala (+5) (mixed 8)
@@ -184,7 +187,9 @@ namespace RBX
 	}
 
 	// 00585b30: NOT exact (278 B against 294 B; with the pending inline isDescendentOf 294 B, but the original keeps
-	// `this` in ebp and that build in ebx).
+	// `this` in ebp and that build in ebx). Parked: the original inlines one level of an inline (tail-recursive)
+	// Instance::isDescendentOf (set->parent == this, parent NULL test, then the out-of-line 00422ae0); the shared
+	// v8tree/Instance.h declares it out of line (header proposal), so no source-only fix applies here.
 	void ModelInstance::setPrimaryPart(PartInstance* set)
 	{
 		if (!set || set->isDescendentOf(this))

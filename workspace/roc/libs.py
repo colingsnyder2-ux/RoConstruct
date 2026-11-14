@@ -744,6 +744,11 @@ RECIPES["scintilla-mfc-1.20"] = dict(src="scintilla-mfc-1.20", langs=["cpp"], bu
 RECIPES["scintilla-mfc-1.20-shared"] = dict(RECIPES["scintilla-mfc-1.20"], defines="_AFXDLL _DLL",
                                               grid=["/O2 /GS- /MD", "/O2 /GS /EHsc /MD", "/O2 /MD /GS /EHsc /Ob1"])
 
+# The 2008 exe renumbers the Scintilla dialog templates (CScintillaFindReplaceDlg::Create 00461e40 selects 101 find / 102 replace).
+RECIPES["scintilla-mfc-1.20-shared-rbx2008"] = dict(RECIPES["scintilla-mfc-1.20-shared"], patches={"resource.h": [
+    ("#define IDD_SCINTILLA_FINDDLGORD 328", "#define IDD_SCINTILLA_FINDDLGORD 101"),
+    ("#define IDD_SCINTILLA_REPLACEDLGORD 329", "#define IDD_SCINTILLA_REPLACEDLGORD 102")]})
+
 # Same dllimport-call rule as XTP: CString members and FreeResource stay imported calls.
 RECIPES["scintilla-mfc-1.20-shared-imports"] = dict(
     RECIPES["scintilla-mfc-1.20-shared"], noinline=RECIPES["xtp-11.2.2-lib-imports"]["noinline"],

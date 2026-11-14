@@ -1,5 +1,6 @@
 """Expose native CRobloxApp closure using existing Doc diagnostic libraries. Never run output."""
 import json
+import os
 import subprocess
 import sys
 import hashlib
@@ -35,7 +36,9 @@ checks = [
      '00456e60=?OnTimer@CRobloxReportView', '004589c0=?OnInitialUpdate@CRobloxReportView']),
     ('native-classes/CMainFrameMemoryLabels.cpp', ['0042ed20=?handle_42ed20@CMainFrame',
      '0042edd0=?handle_42edd0@CMainFrame']),
+    ('native-classes/NativeMainFrameLocks.cpp', []),
     ('native-classes/CChatPrompt.cpp', ['00411be0=??0CChatPrompt', '00412800=?bind@CChatPrompt']),
+    ('native-classes/ChatEnter.cpp', ['00411720=??0ChatEnter', '00574150=??_GChatEnter']),
     ('native-classes/CInstanceExplorer.cpp', ['00421a50=?setRoot@CInstanceExplorer',
      '00466b80=?GetRuntimeClass@CSettingsExplorer', '00466b90=?CreateObject@CSettingsExplorer',
      '00466d40=?onEvent@CSettingsExplorer', '00421d00=?OnReportSelChanged@CInstanceExplorer',
@@ -65,7 +68,9 @@ checks = [
     ('native-classes/PlayersSuperSafe.cpp', ['00497600=?superSafeOn@Players@Network']),
     ('native-classes/SelectionIterators.cpp', ['00413d10=?begin@Selection@RBX', '00413d40=?end@Selection@RBX']),
     ('native-classes/BrickColorConversions.cpp', ['005b6180=?color3uint8@BrickColor@RBX', '005b62a0=?closest@BrickColor@RBX']),
-    ('native-classes/InstanceChildAcceptance.cpp', ['00423700=?canAcceptChildren@Instance@RBX', '005574b0=?isAncestorOf@Instance@RBX']),
+    ('native-classes/BrickColorMapAccess.cpp', ['005b6120=?color4uint8@BrickColor@RBX',
+     '005b5d80=?closest@BrickColor@RBX@@SA?AV12@VColor4uint8']),
+    ('native-classes/InstanceChildAcceptance.cpp', ['00423700=?canAcceptChildren@Instance@RBX']),
     ('native-classes/SettingsDialogShow.cpp', ['00466eb0=?showSettingsDialog']),
     ('native-classes/CSettingsDialog.cpp', ['00466e10=??0CSettingsDialog', '00466ca0=??1CSettingsDialog',
      '00467030=?OnInitDialog@CSettingsDialog', '00466c00=?OnResetSettings@CSettingsDialog']),
@@ -95,7 +100,9 @@ checks = [
      '00432e60=?initialize@CMultiPlayerPane', '00432f20=?OnSize@CMultiPlayerPane',
      '00432f60=?OnDestroy@CMultiPlayerPane']),
     ('native-classes/CRobloxView.cpp', ['00459eb0=??0CRobloxView', '00459ba0=??1CRobloxView',
+     '00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView@CRobloxView',
      '00459270=?getDataModel@CRobloxView', '00459250=?OnUpdateToolboxCheck@CRobloxView']),
+    ('native-classes/CReflectorWnd.cpp', []),
     ('native-classes/CMainFrameToolbars.cpp', ['004307e0=?initializeToolbars@CMainFrame']),
     ('native-classes/ActiveDocViewRefresh.cpp', ['00420bd0=?refresh@ActiveDocView']),
     ('native-classes/CDataModelPropGridUpdate.cpp', ['00442900=?update@CDataModelPropGrid']),
@@ -106,7 +113,6 @@ checks = [
     ('native-classes/BrowserPopup.cpp', ['0040f050=?showBrowserPopup']),
     ('native-classes/CChildFrame.cpp', ['00412af0=?GetThisClass@CChildFrame', '00412b80=?GetThisClass@CRbxChildFrame', '00412c90=?CreateObject@CChildFrame', '00412cf0=?CreateObject@CRbxChildFrame', '00412e60=?OnGetMinMaxInfo@CRbxChildFrame']),
     ('native-classes/CScriptDoc.cpp', ['004638a0=?GetThisClass@CScriptDoc', '004647b0=?CreateObject@CScriptDoc']),
-    ('native-classes/CRobloxViewMethods.cpp', ['00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView']),
     ('native-classes/CRobloxViewHelp.cpp', ['00459570=?showHelp@CRobloxView', '0040e160=??HATL@@']),
     ('native-classes/ActiveDocument.cpp', ['00405aa0=?setActiveDocument']),
     ('native-classes/CIDEDocManager.cpp', ['00449910=??0CIDEDocManager', '0044a1a0=??_GCRbxDocTemplate', '0044a1c0=??_GCRbxPlayDocTemplate']),
@@ -149,6 +155,8 @@ checks = [
     ('native-classes/ErrorUploaderConstructor.cpp', ['0044d610=??0ErrorUploader']),
     ('native-classes/ErrorUploaderLifetime.cpp', ['0044a830=??1ErrorUploader']),
     ('native-classes/ErrorUploaderCallback.cpp', ['0041d760=?upload@ErrorUploader']),
+    ('native-classes/CChatPromptWindow.cpp', ['004115c0=?OnSetFocusReflect@CChatPrompt',
+     '00411370=?PreCreateWindow@CChatPrompt', '004113a0=?CtlColor@CChatPrompt']),
     ('native-classes/ApplicationWindowClass.cpp', ['004495a0=?nativeInitializeCom']),
     ('native-classes/CBrowserFrameWnd.cpp', ['00432fc0=?GetThisClass@CBrowserFrameWnd',
      '00433280=?CreateObject@CBrowserFrameWnd', '00433130=?OnCreate@CBrowserFrameWnd',
@@ -181,7 +189,7 @@ def verify_provider(check):
 # once: separate instances would still write those same object paths.
 assert len({Path(source).stem for source, _ in checks}) == len(checks)
 started = time.monotonic()
-with ThreadPoolExecutor(max_workers=3) as pool:
+with ThreadPoolExecutor(max_workers=min(6, os.cpu_count() or 1)) as pool:
     verification = list(pool.map(verify_provider, checks))
 raw = (ROOT / 'rebuild/2008-06/out/native-layouts/CheckLogManagerState.obj').read_bytes()
 sections, _, definitions, _ = match._coff_data_index(raw)
@@ -234,19 +242,20 @@ for name in ('CObjectBrowser', 'CRobloxReportSubViews'):
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckBrowserPopup.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocument.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocView.obj'))
-for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFiles', 'AppOpenFile',
+for name in ('CRobloxView', 'CReflectorWnd', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFiles', 'AppOpenFile',
              'CRobloxWndActive', 'CSelectionPropGridSelection', 'CSelectionPropGridEvents',
              'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
              'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'CBrowserView', 'BrowserViewExternalFactory', 'BrowserViewExternalMethods', 'BrowserViewExternalGetApp', 'HttpRobloxSite', 'HttpScriptCheck', 'HttpTrustCheck', 'HttpTrustInitialize', 'HttpTrustState', 'HttpTransport', 'HttpTransportState', 'HttpResultCheck', 'HttpWinInet', 'HttpWinHttp', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
-             'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels', 'CRobloxReportView',
+             'CInstanceExplorer', 'CChatPrompt', 'ChatEnter', 'CMainFrameMemoryLabels', 'NativeMainFrameLocks', 'CRobloxReportView',
+             'BrickColorMapAccess',
              'LogLifetime', 'LogWriteEntry', 'LogFormatTime', 'LogFormatMemory', 'MainLogProvider', 'LogManagerGet',
              'LogManagerState', 'LogManagerDestructor', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState',
              'ThreadName', 'ThreadNameState'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
-for name in ('CChildFrame', 'CScriptDoc', 'CRobloxViewMethods'):
+for name in ('CChildFrame', 'CScriptDoc'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('CIDEDocManager', 'CRbxDocTemplate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
@@ -272,6 +281,8 @@ for name in ('AppFramework', 'CMainFrameShow'):
 for name in ('AppDocumentStartup', 'ApplicationExceptionLog', 'ErrorUploaderState',
              'ErrorUploaderConstructor', 'ErrorUploaderLifetime', 'ErrorUploaderCallback'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+# Supplies the exact MFC message map; PreCreateWindow still has a separate protected/public ABI spelling gap.
+args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckCChatPromptWindow.obj'))
 # Isolate native Log and Http trust providers without mutating the shared donor archive.
 donor_log_library = base / 'content-load-owner/linked.lib'
 native_log_library = base / 'content-without-donor-log.lib'

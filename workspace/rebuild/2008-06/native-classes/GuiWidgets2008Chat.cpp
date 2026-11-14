@@ -31,6 +31,37 @@ namespace RBX
 		return players && players->getLocalPlayer() && Network::Players::clientIsPresent(this, true);
 	}
 
+	// 00574e70 (slot of the GuiTarget base at +0x130, so `this` arrives adjusted: lea esi, [edi - 0x130]). Read from the
+	// original: isVisible (Instance-side slot 21, +0x54), the inline mouse-event range test (cmp 1 / jl, cmp 7 / jg, as
+	// in Widget::process), then a jump table on menuState (+0x144): NOTHING -> 00574860, HOVER -> 00574760,
+	// SHOWN_APPEARING and SHOWN -> 00574de0 (both table entries 00574ed2); otherwise GuiResponse::notUsed() ({0, 0}).
+	// The three callees are registry placeholders; they are bound here as processNothing / processHover /
+	// processShown of gui/Gui.h by their switch cases. The default case and the else branch each return notUsed()
+	// (target stores +4 before +0, as Widget::process 00642251); rejected: one trailing `return notUsed()` after the
+	// if, which stores +0 first.
+	GuiResponse UnifiedWidget::process(const GuiEvent& event)
+	{
+		if (isVisible() && event.eventType >= UIEvent::MOUSE_RIGHT_BUTTON_DOWN && event.eventType <= UIEvent::MOUSE_IDLE)
+		{
+			switch (menuState)
+			{
+			case NOTHING:
+				return processNothing(event);
+			case HOVER:
+				return processHover(event);
+			case SHOWN_APPEARING:
+			case SHOWN:
+				return processShown(event);
+			default:
+				return GuiResponse::notUsed();
+			}
+		}
+		else
+		{
+			return GuiResponse::notUsed();
+		}
+	}
+
 #ifdef NATIVE_GUIWIDGETS_PENDING
 	GuiResponse ChatWidget::process(const GuiEvent& event)
 	{

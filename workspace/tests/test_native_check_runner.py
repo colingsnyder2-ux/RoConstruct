@@ -14,6 +14,34 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def test_decimal_diagnostic_score_is_not_positional_byte_percentage(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            obj = Path(temporary) / 'candidate.obj'
+            obj.write_bytes(b'fixture')
+            job = {'checks': [{'addr': '00500000', 'symbol': '?foo'}], 'ranges': [], 'layouts': []}
+            with patch.object(runner.match, 'target', return_value=(b'abcdef', [], None)), \
+                 patch.object(runner.match, 'coff_functions', return_value=[('?foo', b'bcdefa', [])]):
+                row = runner.analyze_object(job, obj)['checks'][0]
+            self.assertEqual(row['status'], 'different')
+            self.assertAlmostEqual(row['score'], 83.333333)
+            self.assertEqual(row['legacy_score'], 83)
+            self.assertEqual(row['metrics']['positional_percent'], 0)
+
+    def test_masked_similarity_of_100_does_not_grant_exact_without_relocations(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            obj = Path(temporary) / 'candidate.obj'
+            obj.write_bytes(b'fixture')
+            job = {'checks': [{'addr': '00500000', 'symbol': '?foo'}], 'ranges': [], 'layouts': []}
+            with patch.object(runner.match, 'target', return_value=(b'A1234Z', [1], None)), \
+                 patch.object(runner.match, 'coff_functions', return_value=[('?foo', b'A0000Z', [])]), \
+                 patch.object(runner.match, 'data_check') as data_check:
+                row = runner.analyze_object(job, obj)['checks'][0]
+            self.assertEqual(row['status'], 'different')
+            self.assertLess(row['score'], 100)
+            self.assertEqual(row['metrics']['fuzzy_percent'], 100)
+            self.assertEqual(row['metrics']['missing_relocations'], [1])
+            data_check.assert_not_called()
+
     def test_batch_header_drift_invalidates_prior_exact_rows(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

@@ -52,6 +52,10 @@ Edge* Primitive::getFirstEdge() const
     return joints.edges.size() > 0 ? joints.edges[0] : (contacts.edges.size() > 0 ? contacts.edges[0] : NULL);
 }
 
+// 005e82c0. PARKED on a header layout, not the body: the compiled code is the original sequence (body +0xa0,
+// Body::updatePV 00599360 through the getPV inline, lea eax,[body+pv]) except the donor v8kernel/Body.h puts pv at
+// +0x88 while the 2008-06 Body has it at +0x94 (Body2008.h: updatePV 00599360 / setCoordinateFrame 00614400).
+// Body2008.h cannot be included next to the donor Primitive.h (Edge.h -> Kernel.h reaches the donor Body.h).
 const G3D::CoordinateFrame& Primitive::getCoordinateFrame() const
 {
     return body->getPV().position;

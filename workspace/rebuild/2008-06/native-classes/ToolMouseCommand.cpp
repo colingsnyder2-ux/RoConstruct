@@ -1,0 +1,64 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// Donor-derived TU (rbxgs v8datamodel/ToolMouseCommand.cpp) on the native headers with the 2008 compiler; exact functions verified by
+// check_native_class.py (inactive range evidence, not identity/layout gated).
+#include "v8datamodel/ToolMouseCommand.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Tool.h"
+#include "humanoid/Humanoid.h"
+
+namespace RBX
+{
+	const char sToolMouseCommand[] = "ToolMouseCommand";
+
+	ToolMouseCommand::ToolMouseCommand(Workspace* workspace, Tool* tool)
+		: Base(workspace),
+		  tool(shared_from(tool))
+	{
+	}
+
+	ToolMouseCommand::~ToolMouseCommand() {}
+
+	void ToolMouseCommand::onMouseHover(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		ScriptMouseCommand::onMouseHover(uiEvent);
+	}
+
+	void ToolMouseCommand::onMouseIdle(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		ScriptMouseCommand::onMouseIdle(uiEvent);
+	}
+
+	MouseCommand* ToolMouseCommand::onMouseDown(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		tool->activate();
+		return ScriptMouseCommand::onMouseDown(uiEvent);
+	}
+
+	MouseCommand* ToolMouseCommand::onMouseUp(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		tool->deactivate();
+		return ScriptMouseCommand::onMouseUp(uiEvent);
+	}
+
+	void ToolMouseCommand::updateTargetPoint(const UIEvent& uiEvent)
+	{
+		G3D::Vector3 hitWorld;
+		
+		Humanoid* humanoid = Humanoid::getLocalHumanoidFromContext(tool.get());
+		if (!humanoid)
+			return;
+
+		if (!getPartByLocalCharacter(uiEvent, hitWorld))
+		{
+			G3D::Ray ray = getSearchRay(uiEvent);
+			hitWorld = humanoid->getHead() ? humanoid->getHead()->getCoordinateFrame().translation : ray.origin;
+			hitWorld += ray.direction;
+		}
+
+		humanoid->setTargetPoint(hitWorld);
+	}
+}

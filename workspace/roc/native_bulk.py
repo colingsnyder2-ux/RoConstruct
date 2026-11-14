@@ -307,7 +307,7 @@ def harvest(raw, targets, names, bindings):
             if not errors:
                 proven.append({'addr': addr, 'references': refs})
             else:
-                rejections.append({'addr': addr, 'errors': errors})
+                rejections.append({'addr': addr, 'errors': errors, 'references': refs})
         row = {'symbol': symbol, 'size': len(body), 'body_sha256': hashlib.sha256(body).hexdigest(),
                'candidates': analogs, 'rejections': rejections,
                'status': 'ambiguous' if len(proven) > 1 else 'inactive_exact' if proven else 'draft'}

@@ -21,6 +21,10 @@ CWrapperView::CWrapperView()
 {
 }
 
+void CWrapperView::OnDraw(CDC*)
+{
+}
+
 BOOL CWrapperView::PreCreateWindow(CREATESTRUCT& cs)
 {
     if (!CView::PreCreateWindow(cs))

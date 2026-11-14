@@ -64,6 +64,12 @@ def portable_include(value, destination):
     return os.path.relpath(str(path.resolve()), str(destination.parent)).replace('\\', '/')
 
 
+def _native_or_root(root, rel):
+    first = (root / rel).resolve()
+    alt = (ROOT / 'rebuild/2008-06/native-headers' / rel).resolve()
+    return first if first.is_file() or not alt.is_file() else alt
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--source', type=Path, required=True)
@@ -96,7 +102,7 @@ def main():
         include_root = args.source_root.resolve()
         for value in probe_includes:
             path = Path(value)
-            path = path.resolve() if path.is_absolute() else (include_root / path).resolve()
+            path = path.resolve() if path.is_absolute() else _native_or_root(include_root, path)
             if path.is_file():
                 if path not in donor_paths:
                     donor_paths.append(path)
@@ -121,7 +127,7 @@ def main():
         include_root = args.source_root.resolve() if args.source_root else args.source.parent.resolve()
         for value in probe_includes:
             path = Path(value)
-            path = path.resolve() if path.is_absolute() else (include_root / path).resolve()
+            path = path.resolve() if path.is_absolute() else _native_or_root(include_root, path)
             if path not in existing:
                 donor_includes.append(portable_include(str(path), destination))
     additions = [(addr, tagged[addr]) for addr in sorted(requested) if tagged[addr] not in old]

@@ -85,6 +85,9 @@ def main():
     # probe; this supplies complete types without importing donor declarations.
     for support in plan.get('support_includes', []):
         probe_command += ['--include', support]
+    # Native headers first: a vendor include root also ships older reflection/Instance headers whose
+    # template ABI (const char* const* class names) differs from the native headers' (char[] names).
+    probe_command += ['--include-dir', str(ROOT / 'rebuild/2008-06/native-headers')]
     probe_command += ['--include-dir', str(Path(plan['source']).parent)]
     for include_dir in header_vendor_include_dirs(Path(plan['headers'][0])):
         probe_command += ['--include-dir', str(include_dir)]

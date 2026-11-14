@@ -6,6 +6,9 @@
 // NetworkPlayer | 2008-06 | 4 byte-exact, inactive (not link-selected)
 // 4/12 mapped addresses byte-exact | named 2 | 8 unproved | 4 referenced strings (not rechecked) | by king_originala (+6) (mixed 5)
 // <<< native-status | src ee51ac95 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /fp:fast
+// /fp:fast: doPeriodicIdleCheck 00494650 stores the double idle time straight to the float argument (fld 004946ba /
+// fstp dword [esp] 004946c2), without the /fp:precise rounding spill of the explicit float conversion.
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include "v8datamodel/ModelInstance.h"
@@ -214,6 +217,8 @@ namespace RBX
 			}
 		}
 
+		// 00494650: exact with /fp:fast (see the flags line). Rejected first: dropping the static_cast<float> (the
+		// implicit conversion keeps the same /fp:precise spill).
 		void Player::doPeriodicIdleCheck()
 		{
 			if (ServiceProvider::findServiceProvider(this))

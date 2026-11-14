@@ -2712,6 +2712,24 @@ def command_groups(sub):
     return "\n".join(lines)
 
 
+def cmd_donor_convert(a):
+    """Compile donor sources and report proof-gated native candidates."""
+    from roc import donor_converter
+    if a.module:
+        report = donor_converter.convert_module(ROOT, a.module, a.output)
+    elif a.mass:
+        report = donor_converter.convert_mass(ROOT, a.mass, a.output, a.limit)
+    else:
+        if not a.sources:
+            raise ValueError("provide donor sources or --mass LANE")
+        report = donor_converter.convert(ROOT, a.sources, a.output)
+    print(json.dumps(report["summary"], indent=2))
+    summary = report["summary"]
+    if ("sources" in summary and summary["compiled"] != summary["sources"]
+            or "objects" in summary and summary["scanned"] != summary["objects"]):
+        raise SystemExit(1)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="roc", description=__doc__, usage="roc <command> [options]",
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -2955,6 +2973,12 @@ def main(argv=None):
         (["--json"], {"action": "store_true", "help": "print index JSON"}),
         (["--path"], {"help": "glob relative to rebuild/2008-06"}),
         (["--staged"], {"action": "store_true", "help": "check only git-staged native files"}))
+    cmd("donor-convert", cmd_donor_convert, "compile RBXGS/OpenRBX sources and report proof-gated candidates",
+        (["sources"], {"nargs": "*"}),
+        (["--mass"], {"choices": ["rbx-engine", "rbxgs-engine"]}),
+        (["--module"], {}),
+        (["--limit"], {"type": int}),
+        (["--output"], {"type": Path, "default": ROOT / "work/donor-converter/report.json"}))
     cmd("native-asm", cmd_native_asm, "target disassembly with named calls/imports; --obj diffs a candidate .obj symbol",
         (["client"], {}), (["addrs"], {"nargs": "+"}),
         (["--obj"], {"help": "candidate COFF .obj to diff against each ADDR"}),

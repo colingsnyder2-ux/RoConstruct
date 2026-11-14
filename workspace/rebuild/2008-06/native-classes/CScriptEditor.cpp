@@ -2,6 +2,8 @@
 // CScriptEditor | 2008-06 | 26 byte-exact, inactive (not link-selected)
 // 26/29 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+4) (mixed 5)
 // <<< native-status | src b5f5dcea | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/scintilla-mfc-1.20 /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// Include path for <Platform.h>/<Scintilla.h> (CScriptEditor.h): same Scintilla MFC 1.20 tree as CIDEDocManager.cpp.
 #include "CScriptEditor.h"
 #include "script/Script.h"
 #include "v8datamodel/DataModel.h"
@@ -159,8 +161,11 @@ void CScriptEditor::setScript(boost::shared_ptr<RBX::Script> value)
         ::PostMessage(m_hWnd, WM_SCRIPT_RELOAD, 0, 0);
 }
 
-// Draft for 00465110 (47 vs 77 bytes): target keeps two separate base-marshal call paths;
+// Draft for 00465110 (83 vs 77 bytes): target keeps two separate base-marshal call paths;
 // only EmbeddedSourceCode and Name changes are marshaled to the UI thread.
+// Parked (header): the original copies the 8-byte PropertyChanged argument inline (two dword stores,
+// 00465126 and 00465128); v8tree/PropertyChanged.h declares an out-of-line copy constructor, so this unit
+// calls it. No original address exists for ??0PropertyChanged@RBX@@QAE@ABV01@@Z.
 void CScriptEditor::marshal(const RBX::Instance* source, RBX::PropertyChanged event) throw()
 {
     if (&event.getDescriptor() == &RBX::Script::prop_EmbeddedSourceCode)
@@ -478,7 +483,9 @@ void CScriptEditor::saveScript()
 }
 
 // Original 00465550 (inventory extent 0x1ed is truncated: the catch funclet sits at 0046573d
-// and the function returns at 004657eb).
+// and the function returns at 004657eb). With the mfc-noinline-pcxstr / std-noinline-string flags this
+// body is byte-equal (relocations masked) over the whole 0x29c bytes 00465550..004657ec; it stays
+// unproved only because of that boundary (proposal: extend the 00465550 extent to 0x29c).
 void CScriptEditor::reload()
 {
     if (!m_hWnd)

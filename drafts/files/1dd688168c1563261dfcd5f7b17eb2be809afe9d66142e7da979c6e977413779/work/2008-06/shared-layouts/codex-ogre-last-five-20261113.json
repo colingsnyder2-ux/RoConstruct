@@ -1,0 +1,40 @@
+{
+ "jobs": [
+  {
+   "source": "native-classes/AppUnit67C_2008SubEntity.cpp",
+   "checks": [
+    {
+     "addr": "006857e0",
+     "symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+     "calls": []
+    }
+   ]
+  },
+  {
+   "source": "native-classes/OgreRbxSceneManager.cpp",
+   "checks": [
+    {
+     "addr": "0067c890",
+     "symbol": "??$_Uninit_copy@PAVPlane@Ogre@@PAV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAPAVPlane@Ogre@@PAV12@00AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+    },
+    {
+     "addr": "0067c9a0",
+     "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+    },
+    {
+     "addr": "0069bc50",
+     "symbol": "?renderSingleObject@RbxSceneManager@Ogre@@MAEXPBVRenderable@2@PBVPass@2@_NPBV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z"
+    }
+   ]
+  },
+  {
+   "source": "native-classes/OgreVRbxFont.cpp",
+   "checks": [
+    {
+     "addr": "00684730",
+     "symbol": "?draw2D@VRbxFont@Ogre@@QBE?AVVector2@G3D@@PAVTwoDManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z"
+    }
+   ]
+  }
+ ]
+}
