@@ -28,3 +28,20 @@ void applyBrickSurface(Ogre::MaterialPtr material,Ogre::ColourValue colour) {
     unit->setTextureAddressingMode(Ogre::TextureUnitState::TAM_WRAP);
     unit->setTextureFiltering(Ogre::TFO_TRILINEAR);
 }
+
+// Ogre's real cubic environment-map path. Reflectance mixes the sky with the
+// lit BrickColor; no painted highlight or screen-space overlay is involved.
+Ogre::ColourValue brickColour(int id);
+void applyWindowReflectance(Ogre::MaterialPtr material,float reflectance) {
+    Ogre::Pass* pass=material->getTechnique(0)->getPass(0);
+    pass->removeAllTextureUnitStates();
+    material->setDiffuse(brickColour(102));
+    material->setAmbient(brickColour(102));
+    Ogre::TextureUnitState* reflection=pass->createTextureUnitState();
+    reflection->setCubicTextureName("null_plainsky512.jpg",true);
+    reflection->setEnvironmentMap(true,Ogre::TextureUnitState::ENV_REFLECTION);
+    reflection->setTextureAddressingMode(Ogre::TextureUnitState::TAM_CLAMP);
+    reflection->setColourOperationEx(Ogre::LBX_BLEND_MANUAL,Ogre::LBS_TEXTURE,Ogre::LBS_CURRENT,
+        Ogre::ColourValue::White,Ogre::ColourValue::White,reflectance);
+    reflection->setAlphaOperation(Ogre::LBX_SOURCE1,Ogre::LBS_CURRENT);
+}

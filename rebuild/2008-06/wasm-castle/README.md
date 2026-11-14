@@ -12,7 +12,10 @@ The scene now uses half-stud grid blocks, smooth bevel normals, original
 Original BrickColors provide the palette. Roof tiers are whole plates;
 trees occupy separate planters. Visible and shadow geometry use identical cap
 triangles, with matching atlas-boundary subdivisions around adjoining faces.
-The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
+Windows and doors are recessed into openings between separate wall blocks.
+Glass uses Ogre cubic environment mapping with the original sky textures; the
+browser bridge implements reflection texgen and cube mipmaps. This reflects
+the sky, not nearby buildings. The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
 is zero. Generated vertex shaders declare invariant gl_Position to keep transforms
 consistent between lit and stencil passes (GLSL ES invariance rules).
 

@@ -6,24 +6,58 @@
         Builder millGrass(scene,"Dark green",brickColour(28));
         millGrass.castShadows=false;millGrass.brick(80,-0.5f,0,28,1,24);millGrass.finish(scene);
         Builder millBody(scene,"White",brickColour(1));
-        millBody.brick(80,7,0,10,14,8,false);
-        for(int layer=0;layer<5;++layer) millBody.brick(80,14.5f+layer,0,10-layer*2,1,8,false);
-        millBody.brick(72,3,0,6,4,7,false);
-        millBody.brick(88,3,0,6,4,7,false);
+        // A hollow house: wall pieces stop at every window and doorway.
+        millBody.brick(80,7,-3.5f,10,14,1,false);
+        millBody.brick(80,0.5f,0,8,1,6,false);
+        millBody.brick(80,4.5f,-0.5f,8,0.5f,5,false);
+        millBody.brick(80,8.5f,-0.5f,8,0.5f,5,false);
+        millBody.brick(80,13.5f,-0.5f,8,0.5f,5,false);
+        const float frontRows[][2]={{0,4},{5,7},{9,11}};
+        for(const auto& row:frontRows) {
+            float y=(row[0]+row[1])*0.5f,h=row[1]-row[0];
+            millBody.brick(77,y,3.5f,4,h,1,false);
+            millBody.brick(83,y,3.5f,4,h,1,false);
+        }
+        const float frontBands[][2]={{4,5},{7,9},{11,14}};
+        for(const auto& band:frontBands) millBody.brick(80,(band[0]+band[1])*0.5f,3.5f,10,band[1]-band[0],1,false);
+        for(int side=-1;side<=1;side+=2) {
+            for(int y=6;y<=10;y+=4) {
+                millBody.brick(80+side*4.5f,y,-2,1,2,2,false);
+                millBody.brick(80+side*4.5f,y,2,1,2,2,false);
+            }
+            millBody.brick(80+side*4.5f,2.5f,0,1,5,6,false);
+            millBody.brick(80+side*4.5f,8,0,1,2,6,false);
+            millBody.brick(80+side*4.5f,12.5f,0,1,3,6,false);
+        }
+        for(int layer=0;layer<5;++layer) {
+            int width=10-layer*2;
+            if(layer==2||layer==3) {
+                millBody.brick(80-(width+2)*0.25f,14.5f+layer,0,(width-2)*0.5f,1,8,false);
+                millBody.brick(80+(width+2)*0.25f,14.5f+layer,0,(width-2)*0.5f,1,8,false);
+            } else millBody.brick(80,14.5f+layer,0,width,1,8,false);
+        }
+        for(int side=-1;side<=1;side+=2) {
+            float x=80+side*8;
+            millBody.brick(x,3,-3,6,4,1,false);
+            millBody.brick(x-2.5f,3,0,1,4,5,false);
+            millBody.brick(x+2.5f,3,0,1,4,5,false);
+            millBody.brick(x-2,3,3,2,4,1,false);
+            millBody.brick(x+2,3,3,2,4,1,false);
+            millBody.brick(x,4.5f,3,2,1,1,false);
+            if(side<0) millBody.brick(x,1.5f,3,2,1,1,false);
+            millBody.brick(x,1,0,4,0.5f,5,false);
+        }
         millBody.finish(scene);
         Builder millTrim(scene,"Dark orange",brickColour(38));
-        millTrim.brick(80,4.5f,0,11,0.5f,9,false);
+        // Thin exterior belt, clear of the window and door openings.
+        millTrim.brick(80,4.5f,-4.5f,10,0.5f,0.5f,false);
+        for(int side=-1;side<=1;side+=2) millTrim.brick(80+side*5.5f,4.5f,0,0.5f,0.5f,8,false);
         for(int x=-1;x<=1;x+=2) {
             for(int z=-1;z<=1;z+=2) {
                 millTrim.brick(80+x*5,7,z*4,0.5f,14,0.5f,false);
-                millTrim.brick(80+x*10.5f,1,z*3,0.5f,2,0.5f,false);
-            }
-            for(int y=6;y<=10;y+=4) {
-                millTrim.brick(80+x*2, y,4.5f,1,2.5f,0.5f,false);
-                millTrim.brick(80+x*5,y,0,0.5f,2.5f,3,false);
+                millTrim.brick(80+x*10.5f,0.5f,z*2.5f,0.5f,1,0.5f,false);
             }
         }
-        for(int step=0;step<3;++step) millTrim.brick(88,1+step*0.5f,6-step,3,1+step,1);
         millTrim.finish(scene);
         Builder millRoof(scene,"Bright red",brickColour(21));
         // Whole gable plates, with a long ridge rather than a pyramid roof.
@@ -32,24 +66,48 @@
         millRoof.brick(88,5.5f,0,7,0.5f,8);millRoof.finish(scene);
         Builder millFrames(scene,"Light stone grey",brickColour(208));
         for(int y=6;y<=10;y+=4) {
-            millFrames.brick(80,y,4.5f,2.5f,2.5f,0.5f,false);
-            millFrames.brick(74.5f,y,0,0.5f,2.5f,2.5f,false);
+            for(int edge=-1;edge<=1;edge+=2) {
+                millFrames.brick(80+edge,y,3.5f,0.5f,2.5f,0.5f,false);
+                millFrames.brick(80,y+edge,3.5f,1.5f,0.5f,0.5f,false);
+                for(int side=-1;side<=1;side+=2) {
+                    millFrames.brick(80+side*4.5f,y,edge,0.5f,2.5f,0.5f,false);
+                    millFrames.brick(80+side*4.5f,y+edge,0,0.5f,0.5f,1.5f,false);
+                }
+            }
         }
-        millFrames.brick(80,17,4.5f,2,2,0.5f,false);
-        for(int side=-1;side<=1;side+=2) millFrames.brick(80+side*8,3,4,2,2,0.5f,false);
+        for(int edge=-1;edge<=1;edge+=2) {
+            millFrames.brick(80+edge,17,3.5f,0.5f,2.5f,0.5f,false);
+            millFrames.brick(80,17+edge,3.5f,1.5f,0.5f,0.5f,false);
+            millFrames.brick(72+edge,3,3,0.5f,2.5f,0.5f,false);
+            millFrames.brick(72,3+edge,3,1.5f,0.5f,0.5f,false);
+        }
         millFrames.finish(scene);
-        Builder millDark(scene,"Medium blue",brickColour(102));
-        millDark.brick(80,2.5f,4.5f,2,3,0.5f,false);
-        millDark.brick(88,3,4,2,3,0.5f,false);
+        Builder glass(scene,"Windmill glass",brickColour(102));
+        glass.castShadows=false;
         for(int y=6;y<=10;y+=4) {
-            millDark.brick(80,y,5,1.5f,1.5f,0.5f,false);
-            millDark.brick(74,y,0,0.5f,1.5f,1.5f,false);
+            glass.brick(80,y,3,1.5f,1.5f,0.5f,false);
+            for(int side=-1;side<=1;side+=2) glass.brick(80+side*4,y,0,0.5f,1.5f,1.5f,false);
         }
-        millDark.brick(80,17,5,1,1,0.5f,false);
-        millDark.brick(72,3,4.5f,1,1,0.5f,false);millDark.finish(scene);
+        glass.brick(80,17,3,1.5f,1.5f,0.5f,false);
+        glass.brick(72,3,2.5f,1.5f,1.5f,0.5f,false);
+        applyWindowReflectance(glass.material,0.45f);
+        glass.finish(scene);
         Builder millDoor(scene,"Reddish brown",brickColour(192));
-        millDoor.brick(80,2,5,2,4,0.5f,false);
-        millDoor.brick(88,2.5f,4.5f,2,3,0.5f,false);millDoor.finish(scene);
+        for(int plank=-1;plank<=1;plank+=2) {
+            millDoor.brick(80+plank*0.5f,2,3,1,4,0.5f,false);
+            millDoor.brick(88+plank*0.5f,2.5f,2.5f,1,3,0.5f,false);
+        }
+        for(int edge=-1;edge<=1;edge+=2) {
+            millDoor.brick(80+edge*1.5f,2,4,1,4,1,false);
+            millDoor.brick(88+edge*1.5f,2.5f,3.5f,1,3,1,false);
+        }
+        millDoor.brick(80,4.5f,4,4,1,1,false);
+        millDoor.brick(88,4.5f,3.5f,4,1,1,false);
+        millDoor.brick(80,0,4.5f,3,0.5f,2);
+        millDoor.finish(scene);
+        Builder handles(scene,"Bright yellow",brickColour(24));
+        handles.brick(80.5f,2,3.5f,0.5f,0.5f,0.5f,false);
+        handles.brick(88.5f,2.5f,3,0.5f,0.5f,0.5f,false);handles.finish(scene);
         Builder trunks(scene,"Reddish brown",brickColour(192));
         Builder leaves(scene,"Earth green",brickColour(141));
         const float millTree[5][2]={{-11,-8},{11,-8},{-3,-9},{-11,8},{11,8}};

@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\colin\AppData\Local\Temp\tmp1xh39z2e.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpc0pnjsga.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -204,21 +204,21 @@ Module['FS_createPath']("/", "assets", true, true);
 
   })();
 
-// end include: C:\Users\colin\AppData\Local\Temp\tmp1xh39z2e.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpf4be2wob.js
+// end include: C:\Users\colin\AppData\Local\Temp\tmpc0pnjsga.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpimro1c73.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER !== 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD !== 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET !== 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpf4be2wob.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpyyjud98u.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpimro1c73.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpsiglwd84.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (!Module['preRun'].includes(task)) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpyyjud98u.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpsiglwd84.js
 
 
 var programArgs = [];
@@ -5624,7 +5624,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           if (TEX_MATRIX_UNIFORM_PREFIX != null) {
             texCoordExpr = `(${TEX_MATRIX_UNIFORM_PREFIX}${texUnitID} * ${texCoordExpr})`;
           }
-          return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;
+          return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;
         }
   
         function getTypeFromCombineOp(op) {
@@ -5812,7 +5812,10 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
               }
               keyView.next(this.texTypesEnabled | (this.env.key0 << 4));
               keyView.next(this.env.key1);
-              keyView.next(this.env.key2);
+              GLEmulation.colourKeyFloats ||= new Float32Array(4);
+              GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
+              GLEmulation.colourKeyFloats.set(this.env.envColor);
+              for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);
             } else {
               // For correctness, must traverse a zero value, theoretically a subsequent integer key could collide with this value otherwise.
               keyView.next(0);
@@ -6545,6 +6548,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         var attributes = GLImmediate.liveClientAttributes;
         var cacheMap = GLImmediate.rendererCache;
         var keyView = cacheMap.getStaticKeyView().reset();
+        for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);
         keyView.next(GLEmulation.colorMaterialEnabled ? (GLEmulation.colorMaterialMode || 0x1602) : 0);
   
         // By attrib state:
@@ -6681,8 +6685,13 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
               for (var texUnit of this.usedTexUnitList) {
                 texUnitAttribList += 'attribute vec4 ' + aTexCoordPrefix + texUnit + ';\n';
                 texUnitVaryingList += 'varying vec4 ' + vTexCoordPrefix + texUnit + ';\n';
-                texUnitUniformList += 'uniform sampler2D ' + uTexUnitPrefix + texUnit + ';\n';
-                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\n';
+                texUnitUniformList += 'uniform ' + (GLImmediate.TexEnvJIT.getTexUnitType(texUnit)==0x8513 ? 'samplerCube ' : 'sampler2D ') + uTexUnitPrefix + texUnit + ';\n';
+                
+                if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
+                  vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\n';
+                } else {
+                  vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\n';
+                }
   
                 if (GLImmediate.useTextureMatrix) {
                   texUnitUniformList += 'uniform mat4 ' + uTexMatrixPrefix + texUnit + ';\n';
@@ -6715,7 +6724,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
                 }
               }
   
-              var vsLightingDefs = '';
+              var reflectionActive=this.usedTexUnitList.some(unit => (GLEmulation.reflectionCoords?.[unit] || 0)==7);
+              var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';
               var vsLightingPass = '';
               if (GLEmulation.lightingEnabled) {
                 vsLightingDefs += 'attribute vec3 a_normal;';
@@ -7192,6 +7202,16 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
         var glEnable = _glEnable;
         _glEnable = _emscripten_glEnable = (cap) => {
+          if (cap >= 0x0C60 && cap <= 0x0C63) {
+            GLImmediate.lastRenderer?.cleanup();
+            GLImmediate.currentRenderer=null;
+            GLEmulation.reflectionCoords ||= [];
+            var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+            var mask=GLEmulation.reflectionCoords[unit] || 0;
+            var bit=1 << (cap-0x0C60);
+            GLEmulation.reflectionCoords[unit]=true ? mask|bit : mask&~bit;
+            return;
+          }
           if (cap == 0x0B57) {
             GLImmediate.lastRenderer?.cleanup();
             GLImmediate.currentRenderer = null;
@@ -7204,6 +7224,16 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
         var glDisable = _glDisable;
         _glDisable = _emscripten_glDisable = (cap) => {
+          if (cap >= 0x0C60 && cap <= 0x0C63) {
+            GLImmediate.lastRenderer?.cleanup();
+            GLImmediate.currentRenderer=null;
+            GLEmulation.reflectionCoords ||= [];
+            var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+            var mask=GLEmulation.reflectionCoords[unit] || 0;
+            var bit=1 << (cap-0x0C60);
+            GLEmulation.reflectionCoords[unit]=false ? mask|bit : mask&~bit;
+            return;
+          }
           if (cap == 0x0B57) {
             GLImmediate.lastRenderer?.cleanup();
             GLImmediate.currentRenderer = null;
@@ -9668,6 +9698,16 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
         var orig_glEnable = _glEnable;
         _glEnable = _emscripten_glEnable = (cap) => {
+          if (cap >= 0x0C60 && cap <= 0x0C63) {
+            GLImmediate.lastRenderer?.cleanup();
+            GLImmediate.currentRenderer=null;
+            GLEmulation.reflectionCoords ||= [];
+            var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+            var mask=GLEmulation.reflectionCoords[unit] || 0;
+            var bit=1 << (cap-0x0C60);
+            GLEmulation.reflectionCoords[unit]=true ? mask|bit : mask&~bit;
+            return;
+          }
           if (cap == 0x0B57) {
             GLImmediate.lastRenderer?.cleanup();
             GLImmediate.currentRenderer = null;
@@ -9726,6 +9766,16 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
         var orig_glDisable = _glDisable;
         _glDisable = _emscripten_glDisable = (cap) => {
+          if (cap >= 0x0C60 && cap <= 0x0C63) {
+            GLImmediate.lastRenderer?.cleanup();
+            GLImmediate.currentRenderer=null;
+            GLEmulation.reflectionCoords ||= [];
+            var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+            var mask=GLEmulation.reflectionCoords[unit] || 0;
+            var bit=1 << (cap-0x0C60);
+            GLEmulation.reflectionCoords[unit]=false ? mask|bit : mask&~bit;
+            return;
+          }
           if (cap == 0x0B57) {
             GLImmediate.lastRenderer?.cleanup();
             GLImmediate.currentRenderer = null;
@@ -12357,7 +12407,10 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       GLImmediate.setClientAttribute(GL_IMMEDIATE_TEXTURE0 + GLImmediate.clientActiveTexture, size, type, stride, pointer);
     };
   var _emscripten_glTexGenfv = (coord, pname, param) => abort('glTexGenfv: TODO');
-  var _emscripten_glTexGeni = (coord, pname, param) => abort('glTexGeni: TODO');
+  var _emscripten_glTexGeni = (coord,pname,param) => {
+      if (pname != 0x2500 || param != 0x8512 || coord < 0x2000 || coord > 0x2002)
+        abort('Unsupported texgen mode: ' + param);
+    };
   var _emscripten_glTexImage1D = (target, level, internalformat, width, border, format, type, data) => abort('glTexImage1D: TODO');
   var colorChannelsInGlTextureFormat = (format) => {
       // Micro-optimizations for size: map format to size by subtracting smallest
@@ -14026,18 +14079,18 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('wasmBinary');
 }
 var ASM_CONSTS = {
-  347004: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
- 347089: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
- 347202: () => { return !!document.fullscreenElement; },  
- 347241: () => { document.exitFullscreen(); },  
- 347270: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
- 347353: () => { document.querySelector('#canvas').focus(); },  
- 347398: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
- 347965: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
- 348097: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
- 348251: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
- 348390: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
- 348519: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
+  347100: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
+ 347185: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
+ 347298: () => { return !!document.fullscreenElement; },  
+ 347337: () => { document.exitFullscreen(); },  
+ 347366: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
+ 347449: () => { document.querySelector('#canvas').focus(); },  
+ 347494: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
+ 348061: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
+ 348193: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
+ 348347: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
+ 348486: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
+ 348615: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
 };
 function browserReadTexture(texture,face,level,width,height,output) { var draw = GLctx.getParameter(GLctx.DRAW_FRAMEBUFFER_BINDING); var read = GLctx.getParameter(GLctx.READ_FRAMEBUFFER_BINDING); var fbo = GLctx.createFramebuffer(); GLctx.bindFramebuffer(GLctx.FRAMEBUFFER, fbo); GLctx.framebufferTexture2D(GLctx.FRAMEBUFFER, GLctx.COLOR_ATTACHMENT0, face, GL.textures[texture], level); if (GLctx.checkFramebufferStatus(GLctx.FRAMEBUFFER) !== GLctx.FRAMEBUFFER_COMPLETE) abort('Texture readback framebuffer incomplete'); GLctx.readPixels(0, 0, width, height, GLctx.RGBA, GLctx.UNSIGNED_BYTE, HEAPU8.subarray(output, output + width * height * 4)); GLctx.bindFramebuffer(GLctx.DRAW_FRAMEBUFFER, draw); GLctx.bindFramebuffer(GLctx.READ_FRAMEBUFFER, read); GLctx.deleteFramebuffer(fbo); }
 
@@ -14047,6 +14100,7 @@ var _free = makeInvalidEarlyAccess('_free');
 var _malloc = makeInvalidEarlyAccess('_malloc');
 var _castle_set_time = Module['_castle_set_time'] = makeInvalidEarlyAccess('_castle_set_time');
 var _castle_set_view = Module['_castle_set_view'] = makeInvalidEarlyAccess('_castle_set_view');
+var _castle_set_reflectance = Module['_castle_set_reflectance'] = makeInvalidEarlyAccess('_castle_set_reflectance');
 var _castle_set_shadow_bias = Module['_castle_set_shadow_bias'] = makeInvalidEarlyAccess('_castle_set_shadow_bias');
 var _castle_command = Module['_castle_command'] = makeInvalidEarlyAccess('_castle_command');
 var _main = Module['_main'] = makeInvalidEarlyAccess('_main');
@@ -14077,6 +14131,7 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['malloc'] !== 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['castle_set_time'] !== 'undefined', 'missing Wasm export: castle_set_time');
   assert(typeof wasmExports['castle_set_view'] !== 'undefined', 'missing Wasm export: castle_set_view');
+  assert(typeof wasmExports['castle_set_reflectance'] !== 'undefined', 'missing Wasm export: castle_set_reflectance');
   assert(typeof wasmExports['castle_set_shadow_bias'] !== 'undefined', 'missing Wasm export: castle_set_shadow_bias');
   assert(typeof wasmExports['castle_command'] !== 'undefined', 'missing Wasm export: castle_command');
   assert(typeof wasmExports['main'] !== 'undefined', 'missing Wasm export: main');
@@ -14103,6 +14158,7 @@ function assignWasmExports(wasmExports) {
   _malloc = createExportWrapper('malloc', wasmExports['malloc'], 1);
   _castle_set_time = Module['_castle_set_time'] = createExportWrapper('castle_set_time', wasmExports['castle_set_time'], 1);
   _castle_set_view = Module['_castle_set_view'] = createExportWrapper('castle_set_view', wasmExports['castle_set_view'], 4);
+  _castle_set_reflectance = Module['_castle_set_reflectance'] = createExportWrapper('castle_set_reflectance', wasmExports['castle_set_reflectance'], 1);
   _castle_set_shadow_bias = Module['_castle_set_shadow_bias'] = createExportWrapper('castle_set_shadow_bias', wasmExports['castle_set_shadow_bias'], 1);
   _castle_command = Module['_castle_command'] = createExportWrapper('castle_command', wasmExports['castle_command'], 1);
   _main = Module['_main'] = createExportWrapper('main', wasmExports['main'], 2);

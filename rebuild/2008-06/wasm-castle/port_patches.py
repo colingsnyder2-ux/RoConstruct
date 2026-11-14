@@ -197,7 +197,7 @@ def castle_entry(root, template, output):
     setup=re.sub(r'^.*hud\.setup\([^\n]+\n|^.*scene->removeRenderQueueListener\(&hud\);\n', '',setup,flags=re.M)
     frame = frame.replace("focused && (GetAsyncKeyState('R')&0x8000)", "keys['R']")
     frame = frame.replace('celestial || (smoke && (frame==19 || frame==43))', 'celestial')
-    frame = frame.replace('camera->setPosition(zoom*cos(pitch)*sin(yaw),(activeScene?9:3)+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));',
+    frame = frame.replace('camera->setPosition(zoom*cos(pitch)*sin(yaw),3+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));',
         'camera->setPosition((activeScene?80:0)+zoom*cos(pitch)*sin(yaw),(activeScene?9:3)+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));')
     frame = frame.replace('camera->lookAt(0,3,0);','camera->lookAt(activeScene?80:0,activeScene?9:3,0);')
     frame += '\n            for(auto* part:static_cast<DemoSceneManager*>(scene)->parts) part->setVisible(part->sceneId==activeScene);\n'
@@ -205,6 +205,50 @@ def castle_entry(root, template, output):
     frame = frame.replace('520+a', 'window->getHeight()-240+a').replace('520+b', 'window->getHeight()-240+b')
     text = template.read_text().replace('// NATIVE_PREFIX', prefix).replace('// NATIVE_SETUP', setup).replace('// NATIVE_FRAME', frame)
     output.parent.mkdir(exist_ok=True)
+    # The upstream integer cache truncates fractional blend colours. Preserve
+    # all four IEEE float values so reflectance changes select the right shader.
+    text = text.replace('keyView.next(this.env.key2);', '''GLEmulation.colourKeyFloats ||= new Float32Array(4);
+            GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
+            GLEmulation.colourKeyFloats.set(this.env.envColor);
+            for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);''')
+    # Complete the legacy GL reflection-map path used by Ogre environment maps.
+    # The upstream emulator advertises cubes but samples them as 2D textures and
+    # aborts on glTexGeni. Keep texgen state per active texture unit and shader key.
+    for operation, enabled in (('Enable','true'),('Disable','false')):
+        prefix = f'_gl{operation} = _emscripten_gl{operation} = (cap) => {{'
+        text = text.replace(prefix,prefix + f'''
+        if (cap >= 0x0C60 && cap <= 0x0C63) {{
+          GLImmediate.lastRenderer?.cleanup();
+          GLImmediate.currentRenderer=null;
+          GLEmulation.reflectionCoords ||= [];
+          var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+          var mask=GLEmulation.reflectionCoords[unit] || 0;
+          var bit=1 << (cap-0x0C60);
+          GLEmulation.reflectionCoords[unit]={enabled} ? mask|bit : mask&~bit;
+          return;
+        }}''')
+    text = text.replace("glTexGeni: (coord, pname, param) => abort('glTexGeni: TODO'),",'''
+  glTexGeni: (coord,pname,param) => {
+    if (pname != 0x2500 || param != 0x8512 || coord < 0x2000 || coord > 0x2002)
+      abort('Unsupported texgen mode: ' + param);
+  },''')
+    text = text.replace('var keyView = cacheMap.getStaticKeyView().reset();',
+        'var keyView = cacheMap.getStaticKeyView().reset();\n'
+        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);')
+    # Use the actual TexEnvJIT cube type for sampler declarations and coordinates.
+    text = text.replace("return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;",
+        "return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;")
+    text = text.replace("texUnitUniformList += 'uniform sampler2D ' + uTexUnitPrefix + texUnit + ';\\n';",
+        "texUnitUniformList += 'uniform ' + (GLImmediate.TexEnvJIT.getTexUnitType(texUnit)==0x8513 ? 'samplerCube ' : 'sampler2D ') + uTexUnitPrefix + texUnit + ';\\n';")
+    text = text.replace("vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';",'''
+              if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\\n';
+              } else {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';
+              }''')
+    text = text.replace("            var vsLightingDefs = '';",'''
+            var reflectionActive=this.usedTexUnitList.some(unit => (GLEmulation.reflectionCoords?.[unit] || 0)==7);
+            var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';''')
     output.write_text(text)
 
 def body(text, signature, replacement):
@@ -389,5 +433,49 @@ def emulation_library(sdk, output):
               }
 '''
     text = text[:begin] + declarations + lighting + text[end:]
+    # The upstream integer cache truncates fractional blend colours. Preserve
+    # all four IEEE float values so reflectance changes select the right shader.
+    text = text.replace('keyView.next(this.env.key2);', '''GLEmulation.colourKeyFloats ||= new Float32Array(4);
+            GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
+            GLEmulation.colourKeyFloats.set(this.env.envColor);
+            for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);''')
+    # Complete the legacy GL reflection-map path used by Ogre environment maps.
+    # The upstream emulator advertises cubes but samples them as 2D textures and
+    # aborts on glTexGeni. Keep texgen state per active texture unit and shader key.
+    for operation, enabled in (('Enable','true'),('Disable','false')):
+        prefix = f'_gl{operation} = _emscripten_gl{operation} = (cap) => {{'
+        text = text.replace(prefix,prefix + f'''
+        if (cap >= 0x0C60 && cap <= 0x0C63) {{
+          GLImmediate.lastRenderer?.cleanup();
+          GLImmediate.currentRenderer=null;
+          GLEmulation.reflectionCoords ||= [];
+          var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+          var mask=GLEmulation.reflectionCoords[unit] || 0;
+          var bit=1 << (cap-0x0C60);
+          GLEmulation.reflectionCoords[unit]={enabled} ? mask|bit : mask&~bit;
+          return;
+        }}''')
+    text = text.replace("glTexGeni: (coord, pname, param) => abort('glTexGeni: TODO'),",'''
+  glTexGeni: (coord,pname,param) => {
+    if (pname != 0x2500 || param != 0x8512 || coord < 0x2000 || coord > 0x2002)
+      abort('Unsupported texgen mode: ' + param);
+  },''')
+    text = text.replace('var keyView = cacheMap.getStaticKeyView().reset();',
+        'var keyView = cacheMap.getStaticKeyView().reset();\n'
+        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);')
+    # Use the actual TexEnvJIT cube type for sampler declarations and coordinates.
+    text = text.replace("return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;",
+        "return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;")
+    text = text.replace("texUnitUniformList += 'uniform sampler2D ' + uTexUnitPrefix + texUnit + ';\\n';",
+        "texUnitUniformList += 'uniform ' + (GLImmediate.TexEnvJIT.getTexUnitType(texUnit)==0x8513 ? 'samplerCube ' : 'sampler2D ') + uTexUnitPrefix + texUnit + ';\\n';")
+    text = text.replace("vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';",'''
+              if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\\n';
+              } else {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';
+              }''')
+    text = text.replace("            var vsLightingDefs = '';",'''
+            var reflectionActive=this.usedTexUnitList.some(unit => (GLEmulation.reflectionCoords?.[unit] || 0)==7);
+            var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';''')
     output.write_text(text)
 

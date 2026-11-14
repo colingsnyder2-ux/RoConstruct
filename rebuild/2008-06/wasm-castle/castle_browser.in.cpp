@@ -161,6 +161,9 @@ extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_view(float yaw,float pitch,float
     castle->clockSeconds=seconds;castle->cycle=false;castle->orbit=false;castle->celestial=false;
     castle->activeScene=0;
 }
+extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_reflectance(float amount) {
+    applyWindowReflectance(Ogre::MaterialManager::getSingleton().getByName("Windmill glass"),amount);
+}
 extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_shadow_bias(float bias) {
     static_cast<DemoSceneManager*>(castle->scene)->stencilBias(bias);
 }

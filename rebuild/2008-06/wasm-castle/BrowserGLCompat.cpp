@@ -59,6 +59,12 @@ GLint gluBuild2DMipmaps(GLenum target, GLint internalFormat, GLsizei width, GLsi
     typedef void (*GenerateMipmap)(GLenum);
     GenerateMipmap generate = reinterpret_cast<GenerateMipmap>(emscripten_webgl_get_proc_address("glGenerateMipmap"));
     if (!generate) unsupported("Mipmap generation");
+    // GLU receives one cube face at a time. WebGL generates the complete cube
+    // chain only after the last face has been uploaded.
+    if (target >= GL_TEXTURE_CUBE_MAP_POSITIVE_X && target <= GL_TEXTURE_CUBE_MAP_NEGATIVE_Z) {
+        if (target != GL_TEXTURE_CUBE_MAP_NEGATIVE_Z) return 0;
+        target = GL_TEXTURE_CUBE_MAP;
+    }
     generate(target);
     return glGetError() == GL_NO_ERROR ? 0 : GLU_INVALID_OPERATION;
 }
