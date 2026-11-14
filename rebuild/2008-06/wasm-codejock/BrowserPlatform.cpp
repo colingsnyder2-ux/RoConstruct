@@ -10,9 +10,12 @@
 static std::deque<MSG> messages;
 static HWND capture=nullptr;
 static CXTPToolBar* toolbar;
+static CXTPPopupBar* activePopup=nullptr;
 static bool dirty=true;
-static int width=960;
+static int width=960,displayScene=0;
 static int commands=0,lastCommand=0;
+static bool embedded=false,running=true;
+static double displayFps=0,displayClock=14*3600;
 struct Timer { HWND window; UINT interval; double next; };
 static std::map<UINT,Timer> timers;
 
@@ -38,6 +41,7 @@ COLORREF GetXtremeColor(int color) {
     case COLOR_GRAYTEXT: return 0x808080;
     case COLOR_3DDKSHADOW: return 0x404040;
     case COLOR_HIGHLIGHTTEXT: return 0xffffff;
+    case COLOR_3DLIGHT: return 0xe3e3e3;
     default: Unported("GDI system color");
     }
 }
@@ -65,8 +69,23 @@ void CDC::DrawText(const CString& text,CRect r,UINT flags) {
     if(!(flags&DT_NOPREFIX)) StripMnemonics(display);
     int x=r.left,y=r.top;
     if(flags&DT_CENTER) x+=(r.Width()-GetTextExtent(display).cx)/2;
+    if(flags&DT_RIGHT)x=r.right-GetTextExtent(display).cx;
     if(flags&DT_VCENTER) y+=(r.Height()-16)/2;
     gdi_text(display.c_str(),x,y+13,GetTextColor());
+}
+int CDC::DrawText(const CString& text,CRect* r,UINT flags) {
+    if(flags&DT_CALCRECT) {
+        CString value=text;if(!(flags&DT_NOPREFIX))StripMnemonics(value);
+        CSize size=GetTextExtent(value);r->right=r->left+size.cx;r->bottom=r->top+size.cy;return size.cy;
+    }
+    DrawText(text,*r,flags);return 16;
+}
+BOOL SystemParametersInfo(UINT action,uintptr_t,RECT* r,UINT) {
+    if(action!=SPI_GETWORKAREA)Unported("SystemParametersInfo");
+    *r={0,0,EM_ASM_INT({return window.innerWidth;}),EM_ASM_INT({return screen.availHeight;})};return TRUE;
+}
+void CXTPPaintManager::Triangle(CDC*,CPoint a,CPoint b,CPoint c,COLORREF color) {
+    EM_ASM({var g=Module.gdi;g.fillStyle='#'+($6&0xffffff).toString(16).padStart(6,'0');g.beginPath();g.moveTo($0,$1);g.lineTo($2,$3);g.lineTo($4,$5);g.closePath();g.fill();},a.x,a.y,b.x,b.y,c.x,c.y,color);
 }
 void StripMnemonics(CString& text) {
     std::string output;
@@ -110,8 +129,29 @@ void DispatchMessage(MSG* m) { m->hwnd->SendMessage(m->message,m->wParam,m->lPar
 LRESULT CWnd::SendMessage(UINT message,WPARAM w,LPARAM) {
     if(message!=WM_COMMAND) Unported("host window message");
     ++commands; lastCommand=w;
+    if(activePopup)toolbar->SetPopuped(-1);
     for(auto* c:toolbar->controls.controls) if(c->id==int(w)&&c->id==100) c->checked=!c->checked;
+    EM_ASM({if(Module.onToolbarCommand)Module.onToolbarCommand($0);},w);
     dirty=true; BrowserState(); return 0;
+}
+void CWnd::UpdateWindow() {BrowserPresent();}
+void CXTPCommandBar::SetTrackingMode(BOOL mode,BOOL,BOOL) {
+    tracking=mode;
+    if(!mode) {
+        if(GetType()==xtpBarTypePopup)activePopup=nullptr;
+        else if(m_nPopuped>=0)SetPopuped(-1);
+        dirty=true;
+    }
+}
+BOOL CXTPCommandBar::Popup(CXTPControlPopup* control,BOOL keyboard) {
+    auto* popup=dynamic_cast<CXTPPopupBar*>(this);
+    if(!popup)Unported("non-menu popup window");
+    popup->control=control;popup->owner=control->GetParent()->GetOwnerSite();
+    popup->originX=control->GetRect().left;popup->originY=control->GetRect().bottom;
+    CDC dc;CSize size=controls.CalcPopupSize(&dc,0,painter.GetCommandBarBorders(this));
+    clientWidth=size.cx;clientHeight=size.cy;tracking=TRUE;activePopup=popup;
+    if(keyboard)SetSelected(0,TRUE);
+    dirty=true;BrowserPresent();return TRUE;
 }
 BOOL CXTPControl::IsCustomizeMode() const { return m_pParent->IsCustomizeMode(); }
 void CXTPControl::RedrawParent(BOOL) { dirty=true; BrowserPresent(); }
@@ -119,19 +159,32 @@ void CXTPCommandBar::Redraw() {dirty=true;BrowserPresent();}
 CXTPPaintManager* CXTPControl::GetPaintManager() const {return m_pParent->GetPaintManager();}
 void NotifyExecute(CXTPControl* control,CWnd* owner) { owner->SendMessage(WM_COMMAND,control->GetID()); }
 void CXTPCommandBar::OnControlSelected(BOOL,CXTPControl*) { dirty=true; }
-void CXTPCommandBar::SetSelected(int index) {
+void CXTPCommandBar::SetSelected(int index,BOOL keyboard) {
     if(index==m_nSelected) return;
     if(m_nSelected>=0) controls.GetAt(m_nSelected)->OnSetSelected(FALSE);
     m_nSelected=index;
-    if(index>=0) controls.GetAt(index)->OnSetSelected(TRUE);
+    if(index>=0) controls.GetAt(index)->OnSetSelected(keyboard?TRUE_KEYBOARD:TRUE);
     dirty=true;
 }
 void CXTPCommandBar::Paint() {
     CDC dc;
-    dc.FillSolidRect({0,0,width,320},0xf4f4f4);
+    if(embedded)EM_ASM({Module.gdi.clearRect(0,0,Module.canvas.width,Module.canvas.height);});
+    else dc.FillSolidRect({0,0,width,320},0xf4f4f4);
     CSize size=static_cast<CXTPToolBar*>(this)->CalcDockingLayout(width,LM_HORZDOCK|LM_COMMIT);
     clientWidth=width;clientHeight=size.cy;
     DrawCommandBar(&dc,{0,0,width,size.cy});
+    if(embedded) {
+        int statusTop=size.cy;
+        dc.FillSolidRect({0,statusTop,width,statusTop+25},GetXtremeColor(COLOR_BTNFACE));
+        dc.Draw3dRect({2,statusTop+2,width-2,statusTop+23},0x808080,0xffffff);
+        dc.SetTextColor(0);
+        int seconds=int(displayClock);
+        char text[160];std::snprintf(text,sizeof(text),"%s  |  %02d:%02d %s  |  %.1f FPS  |  Drag: orbit   Wheel: zoom",displayScene?"WINDMILL ISLAND":"CASTLE ISLAND",seconds/3600,seconds/60%60,running?"Running":"Paused",displayFps);
+        dc.DrawText(text,{8,statusTop+4,width-8,statusTop+22},DT_SINGLELINE|DT_NOPREFIX);
+        int surfaceHeight=activePopup?std::max(statusTop+25,activePopup->originY+activePopup->clientHeight):statusTop+25;
+        EM_ASM({if(Module.reportHeight)Module.reportHeight($0,$1);},surfaceHeight,statusTop+25);
+        return;
+    }
     dc.SetTextColor(0x333333);
     dc.DrawText("Codejock C++ -> Wasm: original layout / hit-test / click tracking / classic theme",{16,90,width,115},DT_SINGLELINE|DT_NOPREFIX);
     char status[160];std::snprintf(status,sizeof(status),"WM_COMMAND: %d   Last ID: %d   Capture: %s",commands,lastCommand,capture?"active":"released");
@@ -143,10 +196,11 @@ LRESULT CXTPCommandBar::SendMessage(UINT message,WPARAM w,LPARAM l) {
     else if(message==WM_LBUTTONDOWN) {
         if(auto* c=controls.HitTest(p)) c->OnClick(FALSE,p);
     } else if(message==WM_KEYDOWN) {
-        if(w==27) ReleaseCapture();
+        if(w==27) {if(activePopup)toolbar->SetPopuped(-1);ReleaseCapture();}
         else if((w==13||w==32)&&m_nSelected>=0) controls.GetAt(m_nSelected)->OnClick(TRUE,p);
-        else if(w==39||w==37) SetSelected((m_nSelected+(w==39?1:controls.GetCount()-1)+controls.GetCount())%controls.GetCount());
-    } else if(message==WM_CANCELMODE) ReleaseCapture();
+        else if(w==39||w==37||w==38||w==40) SetSelected((m_nSelected+((w==39||w==40)?1:controls.GetCount()-1)+controls.GetCount())%controls.GetCount(),TRUE);
+    } else if(message==WM_CANCELMODE) {if(activePopup)toolbar->SetPopuped(-1);ReleaseCapture();}
+    else if(message==WM_LBUTTONUP) {if(auto* c=controls.HitTest(p))c->OnLButtonUp(p);}
     else if(message==WM_SIZE) { width=w; dirty=true; }
     else if(message!=WM_LBUTTONUP && message!=WM_TIMER) Unported("toolbar window message");
     BrowserPresent();return 0;
@@ -160,26 +214,54 @@ void BrowserState() {
         EM_ASM({Module.toolbarState.controls.push(({id:$0,left:$1,top:$2,right:$3,bottom:$4,pressed:!!$5,checked:!!$6,enabled:!!$7}));},
             control->id,r.left,r.top,r.right,r.bottom,control->m_bPressed,control->checked,control->enabled);
     }
+    EM_ASM({Module.toolbarState.popup=null;});
+    if(activePopup) {
+        EM_ASM({Module.toolbarState.popup=({x:$0,y:$1,width:$2,height:$3,controls:[]});},activePopup->originX,activePopup->originY,activePopup->clientWidth,activePopup->clientHeight);
+        for(auto* control:activePopup->controls.controls) {
+            auto r=control->GetRect();
+            EM_ASM({Module.toolbarState.popup.controls.push(({id:$0,left:$1,top:$2,right:$3,bottom:$4}));},control->id,r.left,r.top,r.right,r.bottom);
+        }
+    }
 }
-void BrowserPresent() { if(toolbar&&dirty) { dirty=false;toolbar->Paint();BrowserState(); } }
+void BrowserPresent() { if(toolbar&&dirty) {
+    dirty=false;toolbar->Paint();
+    if(activePopup) {
+        CDC dc;EM_ASM({Module.gdi.save();Module.gdi.translate($0,$1);},activePopup->originX,activePopup->originY);
+        activePopup->DrawCommandBar(&dc,{0,0,activePopup->clientWidth,activePopup->clientHeight});
+        EM_ASM({Module.gdi.restore();});
+    }
+    BrowserState();
+} }
 static EM_BOOL mouse(int type,const EmscriptenMouseEvent* event,void*) {
     UINT message=type==EMSCRIPTEN_EVENT_MOUSEDOWN?WM_LBUTTONDOWN:type==EMSCRIPTEN_EVENT_MOUSEUP?WM_LBUTTONUP:WM_MOUSEMOVE;
     if(message!=WM_MOUSEMOVE&&event->button!=0) return FALSE;
     int x=event->clientX-EM_ASM_INT({return Module.canvas.getBoundingClientRect().left;});
     int y=event->clientY-EM_ASM_INT({return Module.canvas.getBoundingClientRect().top;});
-    BrowserQueue(toolbar,message,0,uint32_t(x&0xffff)|(uint32_t(y&0xffff)<<16));return TRUE;
+    CWnd* target=toolbar;
+    if(activePopup) {
+        x-=activePopup->originX;y-=activePopup->originY;
+        CRect bounds(0,0,activePopup->clientWidth,activePopup->clientHeight);
+        if(!bounds.PtInRect({x,y})) {
+            if(message==WM_LBUTTONDOWN)toolbar->SetPopuped(-1);
+            else if(message==WM_MOUSEMOVE)activePopup->SetSelected(-1);
+            BrowserPresent();return TRUE;
+        }
+        target=activePopup;
+    }
+    BrowserQueue(target,message,0,uint32_t(x&0xffff)|(uint32_t(y&0xffff)<<16));return TRUE;
 }
 static EM_BOOL key(int,const EmscriptenKeyboardEvent* event,void*) {
-    if(event->keyCode!=13&&event->keyCode!=27&&event->keyCode!=32&&event->keyCode!=37&&event->keyCode!=39) return FALSE;
-    BrowserQueue(toolbar,WM_KEYDOWN,event->keyCode,0);return TRUE;
+    if(event->keyCode!=13&&event->keyCode!=27&&event->keyCode!=32&&(event->keyCode<37||event->keyCode>40))return FALSE;
+    BrowserQueue(activePopup?static_cast<CWnd*>(activePopup):toolbar,WM_KEYDOWN,event->keyCode,0);return TRUE;
 }
 static EM_BOOL resize(int,const EmscriptenUiEvent*,void*) {
-    int w=EM_ASM_INT({var w=Math.max(160,window.innerWidth-16);Module.canvas.width=w;Module.gdi.font='13px Tahoma, sans-serif';return w;});
+    int w=EM_ASM_INT({var w=Math.max(160,window.innerWidth-(Module.toolbarEmbedded?0:16));Module.canvas.width=w;Module.gdi.font='13px Tahoma, sans-serif';return w;});
     BrowserQueue(toolbar,WM_SIZE,w,0);return TRUE;
 }
 static EM_BOOL blur(int,const EmscriptenFocusEvent*,void*) { BrowserQueue(toolbar,WM_CANCELMODE,0,0);return FALSE; }
 void BrowserInit(CXTPToolBar* bar) {
     toolbar=bar;
+    embedded=EM_ASM_INT({return !!Module.toolbarEmbedded;});
     EM_ASM({Module.gdi=Module.canvas.getContext('2d');Module.gdi.font='13px Tahoma, sans-serif';Module.canvas.focus();});
     emscripten_set_mousedown_callback("#canvas",nullptr,TRUE,mouse);
     emscripten_set_mousemove_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW,nullptr,TRUE,mouse);
@@ -189,3 +271,13 @@ void BrowserInit(CXTPToolBar* bar) {
     emscripten_set_blur_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW,nullptr,TRUE,blur);
     resize(0,nullptr,nullptr);
 }
+extern "C" EMSCRIPTEN_KEEPALIVE void toolbar_status(double fps,double clock,int cycle,int shadows,int orbit,int wire,int celestial,int hud,int fullscreen,int scene) {
+    displayFps=fps;displayClock=clock;running=cycle;displayScene=scene;
+    int checked[10]={cycle,!cycle,0,shadows,orbit,celestial,wire,0,hud,fullscreen};
+    for(auto* control:toolbar->controls.controls) if(control->id>=100&&control->id<=109)
+        control->checked=checked[control->id-100];
+    for(auto* control:toolbar->controls.controls) if(control->id==120)
+        control->caption=scene?"Scene: Windmill Island":"Scene: Castle Island";
+    dirty=true;
+}
+extern "C" EMSCRIPTEN_KEEPALIVE void toolbar_close_popup() {toolbar->SetPopuped(-1);dirty=true;}

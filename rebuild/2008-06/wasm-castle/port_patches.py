@@ -15,6 +15,10 @@ def native_headers(root, output):
         if 'std::exception("' in text:
             text = '#include <stdexcept>\n' + text.replace('std::exception("', 'std::runtime_error("')
         path.write_text(text)
+    # Only the static tint operation is linked, never a TextureProxy object.
+    (output / 'RenderLib/TextureShadeWasm.h').write_text(
+        '#pragma once\n#include <G3D/Color3uint8.h>\nnamespace RBX { namespace RenderNew {\n'
+        'class TextureProxy { public: static void shadePixel(const G3D::Color3uint8&,G3D::Color3uint8&); };\n}}\n')
 
 def g3d_headers(root, output):
     shutil.copytree(root / 'tools/rbxgs/Client/Rendering/g3d/include', output, dirs_exist_ok=True)
@@ -49,6 +53,8 @@ def g3d_headers(root, output):
         '#include "OgreGLPrerequisites.h"\n#else\n' + original + '\n#endif\n')
 
 def native_source(name, text):
+    if name == 'TextureShadePixel2008.cpp':
+        text = text.replace('RenderLib/TextureProxy2008.h', 'RenderLib/TextureShadeWasm.h')
     text = text.replace('#include "OgreRbxEntityImports/OgreVector3.h"', '#include <OgreVector3.h>')
     if name == 'OgreRbxSceneManager.cpp':
         # DLL and executable originally each carried this identical asset. A
@@ -99,9 +105,77 @@ def castle_entry(root, template, output):
     first = prefix.index('LRESULT CALLBACK demoProc(')
     last = prefix.index('// Native GeometryBuilder', first)
     prefix = prefix[:first] + prefix[last:]
+    prefix = prefix.replace('    void skyLighting(',
+        '    float capDepthBias=0;\n'
+        '    void stencilBias(float bias) {capDepthBias=bias;}\n'
+        '    void skyLighting(')
+    prefix = prefix.replace('        Ogre::SceneManager::renderSingleObject(renderable,pass,iterate,lights);',
+        '        bool stencil=pass==mShadowStencilPass && capDepthBias!=0;\n'
+        '        if(stencil) mDestRenderSystem->_setDepthBias(capDepthBias,0);\n'
+        '        Ogre::SceneManager::renderSingleObject(renderable,pass,iterate,lights);\n'
+        '        if(stencil) mDestRenderSystem->_setDepthBias(0,0);')
+    # Demo styling changes live beside the browser port; frozen native reference
+    # remains byte-for-byte unchanged. All materials come from the 2008 palette.
+    folder = template.parent
+    prefix = prefix.replace('// Native GeometryBuilder',
+        (folder / 'brick_surfaces.in.cpp').read_text() + '\n// Native GeometryBuilder')
+    palette = (root / 'tools/rbxgs/Client/App/v8datamodel/BrickColor.cpp').read_text()
+    colours = {int(i): (int(r), int(g), int(b)) for i, r, g, b in re.findall(
+        r'insert\(lego_(\d+),\s*(\d+),\s*(\d+),\s*(\d+),', palette)}
+    cases = '\n'.join(f'case {i}: return Ogre::ColourValue({colours[i][0]}/255.0f,{colours[i][1]}/255.0f,{colours[i][2]}/255.0f);'
+                      for i in (199,28,208,21,23,192,26,24,141,18,38,5,1,102))
+    marker = '// Native GeometryBuilder'
+    prefix = prefix.replace(marker, 'unsigned castleStudCount=0,castleBevelCount=0;\n'
+        'int sceneBuildId=0;\n'
+        'struct CastleBlock {Ogre::Vector3 center,size;Ogre::String material;bool studs;};\n'
+        'std::vector<CastleBlock> castleBlocks;\n'
+        'Ogre::ColourValue brickColour(int id) { switch(id) {\n' + cases +
+        '\ndefault: throw std::runtime_error("Unknown castle BrickColor"); } }\n' + marker)
+    prefix = prefix.replace('    void finish(Ogre::SceneManager* scene) {',
+        (folder / 'brick_geometry.in.cpp').read_text() + '\n    void finish(Ogre::SceneManager* scene) {')
+    prefix = prefix.replace('    unsigned index;', '    unsigned index;\n    Ogre::SceneManager* owner;\n    bool castShadows=true;')
+    prefix = prefix.replace('    unsigned index;',
+        '    bool suppressShadow=false;\n    std::vector<float> shadowVertices,shadowNormals;\n'
+        '    std::vector<unsigned> shadowIndices;\n    unsigned index;')
+    prefix = prefix.replace('        index+=4;',
+        '        if(!suppressShadow) {shadowTriangle(a,b,c);shadowTriangle(a,c,d);}\n        index+=4;')
+    prefix = prefix.replace('    void shadows(bool enabled) { mCastShadows=enabled; }',
+        '    int sceneId=0;\n'
+        '    void transform(const Ogre::Matrix4& matrix) {mTransform=matrix;}\n'
+        '    void shadows(bool enabled) { mCastShadows=enabled; }\n'
+        '    void shadowMesh(Ogre::RbxSubMesh* mesh) {mShadowSubMesh=mesh;}')
+    prefix = prefix.replace('Ogre::AxisAlignedBox(-18,-12,-18,18,17,18)', 'Ogre::AxisAlignedBox(-30,-20,-30,110,30,30)')
+    prefix = prefix.replace('mesh->_setBoundingSphereRadius(32)', 'mesh->_setBoundingSphereRadius(150)')
+    prefix = prefix.replace('if(parts[i]->getCastShadows())', 'if(parts[i]->getCastShadows()&&parts[i]->isVisible())')
+    prefix = prefix.replace('std::vector<float> vertices,normals;', 'std::vector<float> vertices,normals,texCoords;')
+    prefix = prefix.replace('material->setDiffuse(colour); material->setAmbient(colour);',
+        'if(fresh) applyBrickSurface(material,colour);')
+    prefix = prefix.replace('material=Ogre::MaterialManager::getSingleton().create(name,"General");',
+        'material=Ogre::MaterialManager::getSingleton().getByName(name);\n'
+        '        bool fresh=material.isNull();\n'
+        '        if(fresh) material=Ogre::MaterialManager::getSingleton().create(name,"General");')
+    prefix = prefix.replace('normals.push_back(normal.x); normals.push_back(normal.y); normals.push_back(normal.z);',
+        'normals.push_back(normal.x); normals.push_back(normal.y); normals.push_back(normal.z);\n'
+        '            texCoords.push_back(0.125f);texCoords.push_back(0.25f);')
+    prefix = prefix.replace('&normals[0],0,0,0,&indices[0]', '&normals[0],0,&texCoords[0],0,&indices[0]')
+    prefix = prefix.replace(':index(0) {', ':index(0),owner(scene) {')
+    prefix = prefix.replace('native->meshes.push_back(mesh); native->parts.push_back(object);',
+        'native->meshes.push_back(mesh); native->parts.push_back(object);\n'
+        '        object->sceneId=sceneBuildId;\n'
+        '        if(castShadows) {\n'
+        '            Ogre::RbxSubMesh* shadow=builder.createIndexed(&shadowVertices[0],shadowVertices.size()/3,\n'
+        '                &shadowNormals[0],0,0,0,&shadowIndices[0],shadowIndices.size()/3,&minimum,&maximum);\n'
+        '            object->shadowMesh(shadow);native->meshes.push_back(shadow);\n        }\n'
+        '        object->shadows(castShadows);\n'
+        '        shadowVertices.clear();shadowNormals.clear();shadowIndices.clear();\n'
+        '        vertices.clear();normals.clear();texCoords.clear();indices.clear();index=0;')
     start = source.index('        DemoFactory factory;')
     end = source.index('        HWND hwnd=0;', start)
     setup = source[start:end].replace('        DemoFactory factory;', '')
+    scene_start = setup.index('        static_cast<DemoSceneManager*>(scene)->createWorld();')
+    scene_end = setup.index('        trees.finish(scene);', scene_start) + len('        trees.finish(scene);')
+    setup = setup[:scene_start] + (folder / 'brick_scene.in.cpp').read_text() + setup[scene_end:]
+    setup += '\n' + (folder / 'windmill_scene.in.cpp').read_text()
     setup = setup.replace('Ogre::Root root("","","ogre_demo.log");',
         'rootHandle = new Ogre::Root("", "", "castle_browser.log");\n'
         '        Ogre::Root& root = *rootHandle;\n        Ogre::registerBrowserImageCodecs();')
@@ -117,8 +191,16 @@ def castle_entry(root, template, output):
     first = source.index('            // Lighting::setTime uses whole seconds')
     end = source.index('            // Direct DLL render-target', first)
     frame = source[first:end]
+    first_hud=frame.index('            if(hudVisible) {')
+    end_hud=frame.index('            if(orbit',first_hud)
+    frame=frame[:first_hud]+frame[end_hud:]
+    setup=re.sub(r'^.*hud\.setup\([^\n]+\n|^.*scene->removeRenderQueueListener\(&hud\);\n', '',setup,flags=re.M)
     frame = frame.replace("focused && (GetAsyncKeyState('R')&0x8000)", "keys['R']")
     frame = frame.replace('celestial || (smoke && (frame==19 || frame==43))', 'celestial')
+    frame = frame.replace('camera->setPosition(zoom*cos(pitch)*sin(yaw),(activeScene?9:3)+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));',
+        'camera->setPosition((activeScene?80:0)+zoom*cos(pitch)*sin(yaw),(activeScene?9:3)+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));')
+    frame = frame.replace('camera->lookAt(0,3,0);','camera->lookAt(activeScene?80:0,activeScene?9:3,0);')
+    frame += '\n            for(auto* part:static_cast<DemoSceneManager*>(scene)->parts) part->setVisible(part->sceneId==activeScene);\n'
     frame = frame.replace('24,736,624,600,0,0,1,1', '24,window->getHeight()-24,624,window->getHeight()-160,0,0,1,1')
     frame = frame.replace('520+a', 'window->getHeight()-240+a').replace('520+b', 'window->getHeight()-240+b')
     text = template.read_text().replace('// NATIVE_PREFIX', prefix).replace('// NATIVE_SETUP', setup).replace('// NATIVE_FRAME', frame)
@@ -263,6 +345,9 @@ def emulation_library(sdk, output):
     text = text.replace('GLctx.linkProgram(this.program);', '''GLctx.linkProgram(this.program);
             if (!GLctx.getProgramParameter(this.program, GLctx.LINK_STATUS))
               abort('Fixed-function shader link failed: ' + GLctx.getProgramInfoLog(this.program));''')
+    # Stencil light caps reuse receiver positions in a different shader variant.
+    # GLSL invariance prevents independently optimized transforms disagreeing in Z.
+    text = text.replace("            var vsSource = [", "            var vsSource = [\n              'invariant gl_Position;',")
     text = text.replace('} else if (pname == 0x1601) { // GL_SHININESS',
         '} else if (pname == 0x1600) { // GL_EMISSION\n'
         '      GLEmulation.materialEmission.set(HEAPF32.subarray(param >> 2, (param >> 2) + 4));\n'
@@ -305,3 +390,4 @@ def emulation_library(sdk, output):
 '''
     text = text[:begin] + declarations + lighting + text[end:]
     output.write_text(text)
+

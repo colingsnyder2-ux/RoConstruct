@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\colin\AppData\Local\Temp\tmpffij3spe.js
+// include: C:\Users\colin\AppData\Local\Temp\tmp1xh39z2e.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -200,25 +200,25 @@ Module['FS_createPath']("/", "assets", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/assets/castle_hud.png", "start": 0, "end": 18567}, {"filename": "/assets/moon.jpg", "start": 18567, "end": 25961}, {"filename": "/assets/null_plainsky512_bk.jpg", "start": 25961, "end": 36436}, {"filename": "/assets/null_plainsky512_dn.jpg", "start": 36436, "end": 41816}, {"filename": "/assets/null_plainsky512_fr.jpg", "start": 41816, "end": 54099}, {"filename": "/assets/null_plainsky512_lf.jpg", "start": 54099, "end": 65700}, {"filename": "/assets/null_plainsky512_rt.jpg", "start": 65700, "end": 76517}, {"filename": "/assets/null_plainsky512_up.jpg", "start": 76517, "end": 83108}, {"filename": "/assets/sun-rays.jpg", "start": 83108, "end": 87687}, {"filename": "/assets/sun.jpg", "start": 87687, "end": 91059}], "remote_package_size": 91059});
+    loadPackage({"files": [{"filename": "/assets/Surfaces.png", "start": 0, "end": 16477}, {"filename": "/assets/castle_hud.png", "start": 16477, "end": 35044}, {"filename": "/assets/moon.jpg", "start": 35044, "end": 42438}, {"filename": "/assets/null_plainsky512_bk.jpg", "start": 42438, "end": 52913}, {"filename": "/assets/null_plainsky512_dn.jpg", "start": 52913, "end": 58293}, {"filename": "/assets/null_plainsky512_fr.jpg", "start": 58293, "end": 70576}, {"filename": "/assets/null_plainsky512_lf.jpg", "start": 70576, "end": 82177}, {"filename": "/assets/null_plainsky512_rt.jpg", "start": 82177, "end": 92994}, {"filename": "/assets/null_plainsky512_up.jpg", "start": 92994, "end": 99585}, {"filename": "/assets/sun-rays.jpg", "start": 99585, "end": 104164}, {"filename": "/assets/sun.jpg", "start": 104164, "end": 107536}], "remote_package_size": 107536});
 
   })();
 
-// end include: C:\Users\colin\AppData\Local\Temp\tmpffij3spe.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpp1x6ep3i.js
+// end include: C:\Users\colin\AppData\Local\Temp\tmp1xh39z2e.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpf4be2wob.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER !== 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD !== 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET !== 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpp1x6ep3i.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpsyxr_v9c.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpf4be2wob.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpyyjud98u.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (!Module['preRun'].includes(task)) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpsyxr_v9c.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpyyjud98u.js
 
 
 var programArgs = [];
@@ -6763,6 +6763,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
               }
   
               var vsSource = [
+                'invariant gl_Position;',
                 'attribute vec4 a_position;',
                 'attribute vec4 a_color;',
                 'varying vec4 v_color;',
@@ -13376,6 +13377,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
 
 
+
   var FS_createPath = (...args) => FS.createPath(...args);
 
 
@@ -14024,12 +14026,18 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('wasmBinary');
 }
 var ASM_CONSTS = {
-  346700: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
- 346783: () => { document.querySelector('#canvas').focus(); },  
- 346828: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: !!$10, wireframe: !!$11}); var seconds = Math.floor($0); document.querySelector('#status').textContent = String(Math.floor(seconds / 3600)).padStart(2,'0') + ':' + String(Math.floor(seconds / 60) % 60).padStart(2,'0') + ($1 ? ' · running' : ' · paused'); },  
- 347254: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
- 347393: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
- 347522: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
+  347004: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
+ 347089: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
+ 347202: () => { return !!document.fullscreenElement; },  
+ 347241: () => { document.exitFullscreen(); },  
+ 347270: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
+ 347353: () => { document.querySelector('#canvas').focus(); },  
+ 347398: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
+ 347965: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
+ 348097: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
+ 348251: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
+ 348390: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
+ 348519: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
 };
 function browserReadTexture(texture,face,level,width,height,output) { var draw = GLctx.getParameter(GLctx.DRAW_FRAMEBUFFER_BINDING); var read = GLctx.getParameter(GLctx.READ_FRAMEBUFFER_BINDING); var fbo = GLctx.createFramebuffer(); GLctx.bindFramebuffer(GLctx.FRAMEBUFFER, fbo); GLctx.framebufferTexture2D(GLctx.FRAMEBUFFER, GLctx.COLOR_ATTACHMENT0, face, GL.textures[texture], level); if (GLctx.checkFramebufferStatus(GLctx.FRAMEBUFFER) !== GLctx.FRAMEBUFFER_COMPLETE) abort('Texture readback framebuffer incomplete'); GLctx.readPixels(0, 0, width, height, GLctx.RGBA, GLctx.UNSIGNED_BYTE, HEAPU8.subarray(output, output + width * height * 4)); GLctx.bindFramebuffer(GLctx.DRAW_FRAMEBUFFER, draw); GLctx.bindFramebuffer(GLctx.READ_FRAMEBUFFER, read); GLctx.deleteFramebuffer(fbo); }
 
@@ -14038,6 +14046,9 @@ var ___cxa_get_exception_ptr = makeInvalidEarlyAccess('___cxa_get_exception_ptr'
 var _free = makeInvalidEarlyAccess('_free');
 var _malloc = makeInvalidEarlyAccess('_malloc');
 var _castle_set_time = Module['_castle_set_time'] = makeInvalidEarlyAccess('_castle_set_time');
+var _castle_set_view = Module['_castle_set_view'] = makeInvalidEarlyAccess('_castle_set_view');
+var _castle_set_shadow_bias = Module['_castle_set_shadow_bias'] = makeInvalidEarlyAccess('_castle_set_shadow_bias');
+var _castle_command = Module['_castle_command'] = makeInvalidEarlyAccess('_castle_command');
 var _main = Module['_main'] = makeInvalidEarlyAccess('_main');
 var _fflush = makeInvalidEarlyAccess('_fflush');
 var _emscripten_stack_get_end = makeInvalidEarlyAccess('_emscripten_stack_get_end');
@@ -14065,6 +14076,9 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['free'] !== 'undefined', 'missing Wasm export: free');
   assert(typeof wasmExports['malloc'] !== 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['castle_set_time'] !== 'undefined', 'missing Wasm export: castle_set_time');
+  assert(typeof wasmExports['castle_set_view'] !== 'undefined', 'missing Wasm export: castle_set_view');
+  assert(typeof wasmExports['castle_set_shadow_bias'] !== 'undefined', 'missing Wasm export: castle_set_shadow_bias');
+  assert(typeof wasmExports['castle_command'] !== 'undefined', 'missing Wasm export: castle_command');
   assert(typeof wasmExports['main'] !== 'undefined', 'missing Wasm export: main');
   assert(typeof wasmExports['fflush'] !== 'undefined', 'missing Wasm export: fflush');
   assert(typeof wasmExports['emscripten_stack_get_end'] !== 'undefined', 'missing Wasm export: emscripten_stack_get_end');
@@ -14088,6 +14102,9 @@ function assignWasmExports(wasmExports) {
   _free = createExportWrapper('free', wasmExports['free'], 1);
   _malloc = createExportWrapper('malloc', wasmExports['malloc'], 1);
   _castle_set_time = Module['_castle_set_time'] = createExportWrapper('castle_set_time', wasmExports['castle_set_time'], 1);
+  _castle_set_view = Module['_castle_set_view'] = createExportWrapper('castle_set_view', wasmExports['castle_set_view'], 4);
+  _castle_set_shadow_bias = Module['_castle_set_shadow_bias'] = createExportWrapper('castle_set_shadow_bias', wasmExports['castle_set_shadow_bias'], 1);
+  _castle_command = Module['_castle_command'] = createExportWrapper('castle_command', wasmExports['castle_command'], 1);
   _main = Module['_main'] = createExportWrapper('main', wasmExports['main'], 2);
   _fflush = createExportWrapper('fflush', wasmExports['fflush'], 1);
   _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
@@ -15129,9 +15146,7 @@ var wasmImports = {
   /** @export */
   invoke_viffff,
   /** @export */
-  invoke_viffffff,
-  /** @export */
-  invoke_viffffi,
+  invoke_viffffffi,
   /** @export */
   invoke_vifii,
   /** @export */
@@ -15150,8 +15165,6 @@ var wasmImports = {
   invoke_viiif,
   /** @export */
   invoke_viiiffff,
-  /** @export */
-  invoke_viiiffffffff,
   /** @export */
   invoke_viiifffiiiii,
   /** @export */
@@ -15400,10 +15413,32 @@ function invoke_v(index) {
   }
 }
 
-function invoke_iidif(index,a1,a2,a3,a4) {
+function invoke_iiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9) {
   var sp = stackSave();
   try {
-    return getWasmTableEntry(index)(a1,a2,a3,a4);
+    return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_viiiiiiifii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_viffff(index,a1,a2,a3,a4,a5) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15415,6 +15450,17 @@ function invoke_vif(index,a1,a2) {
   var sp = stackSave();
   try {
     getWasmTableEntry(index)(a1,a2);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
+function invoke_iidif(index,a1,a2,a3,a4) {
+  var sp = stackSave();
+  try {
+    return getWasmTableEntry(index)(a1,a2,a3,a4);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15455,10 +15501,10 @@ function invoke_viiifiii(index,a1,a2,a3,a4,a5,a6,a7) {
   }
 }
 
-function invoke_viffffff(index,a1,a2,a3,a4,a5,a6,a7) {
+function invoke_viffffffi(index,a1,a2,a3,a4,a5,a6,a7,a8) {
   var sp = stackSave();
   try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15488,21 +15534,10 @@ function invoke_vid(index,a1,a2) {
   }
 }
 
-function invoke_viiiffffffff(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11) {
+function invoke_fii(index,a1,a2) {
   var sp = stackSave();
   try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_viffffi(index,a1,a2,a3,a4,a5,a6) {
-  var sp = stackSave();
-  try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6);
+    return getWasmTableEntry(index)(a1,a2);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15514,17 +15549,6 @@ function invoke_fi(index,a1) {
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_fii(index,a1,a2) {
-  var sp = stackSave();
-  try {
-    return getWasmTableEntry(index)(a1,a2);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15624,17 +15648,6 @@ function invoke_viiiifff(index,a1,a2,a3,a4,a5,a6,a7) {
   var sp = stackSave();
   try {
     getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_viiiiiiifii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) {
-  var sp = stackSave();
-  try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;
@@ -15742,17 +15755,6 @@ function invoke_viiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9) {
   }
 }
 
-function invoke_iiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9) {
-  var sp = stackSave();
-  try {
-    return getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7,a8,a9);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
 function invoke_iif(index,a1,a2) {
   var sp = stackSave();
   try {
@@ -15768,17 +15770,6 @@ function invoke_ifff(index,a1,a2,a3) {
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1,a2,a3);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_viffff(index,a1,a2,a3,a4,a5) {
-  var sp = stackSave();
-  try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;

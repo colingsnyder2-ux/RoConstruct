@@ -9,12 +9,12 @@ checks pass in Edge: hover, pressed/checked rendering, command dispatch, disable
 buttons, release outside, drag out/back, Escape, focus loss, Enter/Space, arrow
 navigation and resize wrapping. No HTML buttons or CSS exist in the demo.
 
-This is a source-level, toolbar-only port, not the complete MFC framework or a
+This is a source-level, toolbar and scene-menu port, not the complete MFC framework or a
 binary-compatible Windows emulator. Original method bodies are selected from the
 local XTP 11.2.2 source by `build.py`, hashed in a provenance receipt, and compiled
 without rewriting their bodies. Browser declarations expose only this subset.
 Unported operations fail explicitly. Generated third-party source stays under
-`work/codejock-wasm`; upstream files and the published castle remain untouched.
+`work/codejock-wasm`; upstream files remain untouched. The castle embeds the compiled toolbar.
 
 Acceptance: real Codejock layout and paint execute in Wasm; pointer hover/press,
 release outside cancellation, disabled controls, separator groups and resize work;
@@ -33,8 +33,7 @@ node rebuild/2008-06/wasm-codejock/test_browser.cjs
 ```
 
 Evidence: `work/codejock-wasm/build.json`, `browser-test.json`, `provenance.json`,
-`toolbar.png`, `pressed.png`, and `site/index.html.symbols`. The build selects 39
-original methods plus their layout record. The binary contains the original
+`toolbar.png`, `pressed.png`, and `site/index.html.symbols`. The provenance receipt lists selected original methods and source hashes. The binary contains the original
 `CXTPToolBar::CalcDockingLayout`, `CXTPControls::CalcDynamicSize`,
 `CXTPCommandBar::DrawCommandBar` and `CXTPControl::ClickToolBarButton` paths.
 Canvas2D implements GDI presentation and browser font measurement; Codejock C++
@@ -43,7 +42,8 @@ Emscripten Asyncify lets the original nested GetMessage loop await browser input
 Host command handling and window-event routing are browser adaptation code.
 
 Current profile is classic-theme, fixed caption buttons, not P6's full Whidbey
-frame. Overflow/customization and popup controls fail explicitly. Original C++
+frame. The scene dropdown uses original popup control, layout and paint methods.
+Overflow, customization, split buttons and other popup profiles remain unported. Original C++
 has two non-exhaustive enum-switch compiler warnings; those have not been hidden.
 
 The full Codejock class hierarchy, docking, COM/OLE, image managers, resources,

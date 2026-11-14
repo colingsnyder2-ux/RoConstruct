@@ -43,6 +43,8 @@ selection = {
         'void  CXTPControls::_SizeFloatableBar(',
         'int CXTPControls::GetVisibleCount(',
         'CSize CXTPControls::CalcDynamicSize(',
+        'void CXTPControls::_MakeSameWidth(',
+        'CSize CXTPControls::CalcPopupSize(',
     ],
     'XTPControl.cpp': [
         'BOOL CXTPControl::OnSetSelected(',
@@ -58,10 +60,18 @@ selection = {
         'void CXTPControlButton::OnLButtonUp(',
         'void CXTPControlButton::OnClick(',
     ],
+    'XTPControlPopup.cpp': [
+        'CXTPControlPopup::CXTPControlPopup()',
+        'CXTPControlPopup::~CXTPControlPopup()',
+        'void CXTPControlPopup::OnClick(',
+        'void CXTPControlPopup::OnLButtonUp(',
+        'BOOL CXTPControlPopup::OnSetPopup(',
+    ],
     'XTPToolBar.cpp': ['CRect CXTPToolBar::GetBorders()', 'CSize CXTPToolBar::CalcDockingLayout('],
     'XTPCommandBar.cpp': [
         'void CXTPCommandBar::FillCommandBarEntry(',
         'void CXTPCommandBar::DrawCommandBar(',
+        'BOOL CXTPCommandBar::SetPopuped(',
     ],
     'XTPPaintManager.cpp': [
         'void CXTPPaintManager::DrawControlEntry(',
@@ -75,12 +85,19 @@ selection = {
         'CSize CXTPPaintManager::GetIconSize(',
         'int CXTPPaintManager::GetSplitDropDownHeight() const',
         'COLORREF CXTPPaintManager::GetControlTextColor(',
+        'CSize CXTPPaintManager::DrawControlPopupParent(',
+        'CSize CXTPPaintManager::GetPopupBarImageSize(',
+        'void CXTPPaintManager::DrawPopupBarText(',
+        'void CXTPPaintManager::DrawDropDownGlyph(',
     ],
     'XTPDefaultTheme.cpp': [
         'void CXTPDefaultTheme::DrawRectangle(',
         'void CXTPDefaultTheme::FillCommandBarEntry(',
         'CSize CXTPDefaultTheme::DrawCommandBarSeparator(',
         'COLORREF CXTPDefaultTheme::GetRectangleTextColor(',
+        'CSize CXTPDefaultTheme::DrawControlPopupParent(',
+        'CSize CXTPDefaultTheme::GetPopupBarImageSize(',
+        'CRect CXTPDefaultTheme::GetCommandBarBorders(',
     ],
 }
 chunks = ['#include "ToolbarSubset.h"\n']

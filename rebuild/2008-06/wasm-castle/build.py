@@ -120,7 +120,8 @@ if args.stage in ('rbx', 'support', 'castle'):
         port_patches.castle_entry(ROOT, HERE / 'castle_browser.in.cpp', entry)
         sources = [OGRE / 'OgreMain/src/OgreFont.cpp', OGRE / 'OgreMain/src/OgreRoot.cpp',
                    OGRE / 'OgreMain/src/GLX/OgreTimer.cpp', OGRE / 'OgreMain/src/GLX/OgreErrorDialog.cpp',
-                   HERE / 'BrowserPlatform.cpp', HERE / 'BrowserImageCodec.cpp', entry]
+                   HERE / 'BrowserPlatform.cpp', HERE / 'BrowserImageCodec.cpp', entry,
+                   ROOT / 'rebuild/2008-06/native-classes/TextureShadePixel2008.cpp']
 if not sources:
     raise SystemExit('No matching source files')
 
@@ -166,13 +167,23 @@ if not args.filter and all(r['compiled'] for r in results):
     if args.stage in ('bootstrap', 'castle'):
         target = ROOT / 'work/wasm-castle/site'
         target.mkdir(exist_ok=True)
+        shutil.copyfile(ROOT / 'docs/logo.png',target / 'brand-logo.png')
+        if args.stage == 'castle':
+            subprocess.run([sys.executable,str(HERE.parent / 'wasm-codejock/build.py')],check=True)
+            toolbar=target / 'codejock'
+            toolbar.mkdir(exist_ok=True)
+            for name in ('index.html','index.js','index.wasm'):
+                shutil.copyfile(ROOT / 'work/codejock-wasm/site' / name,toolbar / name)
+        assets=ROOT / 'work/wasm-castle/assets'
+        shutil.copytree(ROOT / 'work/wasm-castle/native-reference/assets', assets, dirs_exist_ok=True)
+        shutil.copytree(HERE / 'assets', assets, dirs_exist_ok=True)
         emulation = OUT / 'browser-glemu.js'
         port_patches.emulation_library(SDK, emulation)
         command = [sys.executable, str(compiler), '-O1', '-g2', '--emit-symbol-map', '-fexceptions', '-sUSE_FREETYPE=1',
             '-sLEGACY_GL_EMULATION=1', '-sMIN_WEBGL_VERSION=2', '-sMAX_WEBGL_VERSION=2',
             '-sGL_ENABLE_GET_PROC_ADDRESS=1', '-sALLOW_MEMORY_GROWTH=1', '-sASSERTIONS=1',
             '-sFORCE_FILESYSTEM=1', '-Wl,--error-limit=0', '--js-library', str(emulation),
-            '--preload-file', str(ROOT / 'work/wasm-castle/native-reference/assets') + '@/assets',
+            '--preload-file', str(assets) + '@/assets',
             '--shell-file', str(HERE / 'shell.html'),
             *[str(objects / (Path(r['source']).stem + '.o')) for r in results],
             *([str(OUT / 'libRbxOgre.a'), str(OUT / 'libRbxSupport.a')] if args.stage == 'castle' else []),

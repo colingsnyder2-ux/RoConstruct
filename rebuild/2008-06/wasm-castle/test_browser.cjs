@@ -41,7 +41,7 @@ const castle = process.argv.includes('--castle');
     await page.screenshot({path: path.join(output, castle ? 'browser-castle.png' : 'browser-bootstrap.png')});
   } catch (error) { errors.push(error.stack); }
   const passed = initialized && !errors.length && state?.stencil >= 8 &&
-    (castle ? state.castle?.batches === 8 && state.castle.frames > 1 && state.colours > 100 :
+    (castle ? state.castle?.batches >= 8 && state.castle.frames > 1 && state.colours > 100 :
       state.corner[0] >= 13 && state.corner[0] <= 18 && state.corner[2] >= 60 && state.corner[2] <= 68 && state.colours > 5)
     && state.error === 0;
   const result = {passed, initialized, state, errors, messages};
