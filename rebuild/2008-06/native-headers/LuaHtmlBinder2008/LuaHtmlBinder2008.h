@@ -17,7 +17,10 @@
 //        list3<arg<1>, reference_wrapper<const PropertyDescriptor>, value<Binder*>>> (the property-changed slot).
 #include "AppLeaves2008/Marshaller2008.h"     // first: MFC/ATL before anything that includes windows.h
 #include "AppLeaves2008/EventHandler2008.h"
+#include <afxext.h>
+#include <afxhtml.h>
 #include <atlbase.h>
+#include <atlcom.h>
 #include <mshtml.h>
 #include <list>
 #include <string>
@@ -26,12 +29,45 @@
 #include <boost/noncopyable.hpp>
 #include <boost/signals/connection.hpp>
 #include "v8tree/Instance.h"
+#include "script/ThreadRef.h"
+#include "security/SecurityContext.h"
 
-// CLuaHtmlView itself is not recovered natively; only the nesting its Binder needs is declared here.
-class CLuaHtmlView
+namespace RBX { class DataModel; }
+
+struct __declspec(uuid("D5AB3A9C-C462-48BA-A430-34B227340E42")) __declspec(novtable) ILuaFunction : public IDispatch
+{
+    virtual HRESULT STDMETHODCALLTYPE Call(VARIANT arg1, VARIANT arg2, VARIANT arg3, VARIANT arg4, VARIANT* result) = 0;
+};
+
+extern const CLSID CLSID_LuaFunction;
+
+class CLuaFunction : public ATL::CComObjectRootEx<ATL::CComSingleThreadModel>, public ISupportErrorInfo, public ILuaFunction
+{
+public:
+    STDMETHOD(Call)(VARIANT arg1, VARIANT arg2, VARIANT arg3, VARIANT arg4, VARIANT* result);
+    boost::shared_ptr<RBX::DataModel> dataModel;
+    RBX::Lua::FunctionRef function;
+    RBX::Security::Identities identity;
+};
+
+class CLuaHtmlView : public CHtmlView
 {
 public:
     class Binder;
+    void setBody(const char* html);
+    void bindElement(boost::shared_ptr<RBX::Instance> object, const RBX::Reflection::PropertyDescriptor& property,
+                     const char* htmlElementId);
+    void unbindAll();
+    DWORD unknownF4;
+    DWORD unknownF8;
+    CLuaFunction* callback;
+    boost::shared_ptr<RBX::DataModel> dataModel;
+    DWORD unknown108;
+    DWORD unknown10C;
+    std::list<boost::shared_ptr<Binder> > binders;
+
+private:
+    static bool isSameObject(IUnknown* first, IUnknown* second);
 };
 
 // sizeof 0x34: the binding view (0042c8c0) news 0x34 before the constructor 0042c0d0 (vptr 00810654). Constructor
@@ -80,6 +116,8 @@ private:
     // 0042c570: the property-changed slot.
     static void onPropertyChanged(const RBX::Reflection::PropertyDescriptor* changed,
                                   const RBX::Reflection::PropertyDescriptor& descriptor, Binder* binder);
+
+    friend class CLuaHtmlView;
 
 protected:
     std::list<boost::shared_ptr<PropBinding> > bindings;   // +0x0c (0x1c: aux proxy +0xc, head +0x20, size +0x24)
