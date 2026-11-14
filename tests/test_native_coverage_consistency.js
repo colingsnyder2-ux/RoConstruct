@@ -24,3 +24,23 @@ vm.runInContext(fs.readFileSync("docs/library-coverage.js","utf8"),c);
 const library = c.libraryTable({name:data.client,units:["Core"],funcs:[[1,20,100,0],[2,40,100,0],[3,10,50,0],[4,30,100,0]]},true);
 assert.match(library, /<th>Native coverage %<\/th>/);
 assert.match(library, /60.00%/);
+
+// Verified native PNG symbols must override a misleading mined zlib recipe.
+const attributed = {name:data.client,units:["Core"],funcs:[[5,536,100,0,true,["zlib-1.2.3-winapi-dll","trial.cpp"]]]};
+c.integrationData = {...data, inactive:{...data.inactive,"00000005":["_png_create_read_struct_2",true]}};
+assert.equal(c.classify(attributed)[0][0], "libpng");
+c.integrationData.inactive["00000005"][1] = false;
+assert.equal(c.classify(attributed)[0][0], "Roblox");
+
+// A generated match compiled against Ogre does not make an RBX unit Ogre source.
+const real = {integrationData:null, data:{name:"2008-06", units:["RBX::AdornRbxGfx"],
+  funcs:[[7,360,100,0,true,["ogre-1.4.5-dll","roc_texturebounds.cpp"]]]}};
+vm.createContext(real);
+vm.runInContext(html.slice(html.indexOf("const MFC ="),html.indexOf("function libraryTable(")), real);
+vm.runInContext(fs.readFileSync("docs/library-coverage.js","utf8").split("libraryTable =")[0], real);
+assert.equal(vm.runInContext("classify(data)[0][0]", real), "Roblox engine");
+real.data.units[0] = "Ogre::RbxSceneNode";
+assert.equal(vm.runInContext("classify(data)[0][0]", real), "Ogre");
+real.data.units[0] = "RBX::AdornRbxGfx";
+real.data.funcs[0][5][2] = "?method@SceneNode@Ogre@@QAEXXZ";
+assert.equal(vm.runInContext("classify(data)[0][0]", real), "Ogre");

@@ -86,6 +86,7 @@ def inactive_code(root):
             symbol = node.get("symbol") or node.get("source_symbol")
             exact = node.get("relocation_normalized_exact", node.get("exact"))
             if isinstance(addr, str) and isinstance(symbol, str) and isinstance(exact, bool):
+                exact = exact and receipt_valid
                 addr = addr.lower().removeprefix("0x").zfill(8)
                 old = found.get(addr)
                 # exact beats not-exact; otherwise the newest receipt wins
@@ -109,8 +110,8 @@ def inactive_code(root):
             item = (root / named).resolve()
             if item.is_relative_to(root.resolve()) and item.is_file() and hashlib.sha256(item.read_bytes()).hexdigest() == digest:
                 return str(item)
-        if isinstance(digest, str) and digest in by_hash:
-            return by_hash[digest]
+        if isinstance(digest, str):
+            return by_hash.get(digest)
         for named in re.findall(r'"([^"\n]*?\.cpp)"', text):
             item = Path(named.replace("\\\\", "/"))
             item = item if item.is_absolute() else root / item
@@ -118,11 +119,13 @@ def inactive_code(root):
                 return str(item)
         return None
     receipt_source = None
+    receipt_valid = True
     for path in (root / "work" / CLIENT / "shared-layouts").glob("*.json"):
         try:
             text = path.read_text(encoding="utf-8")
             data = json.loads(text)
             receipt_source = source_in(text, data)
+            receipt_valid = not isinstance(data, dict) or not isinstance(data.get("source_sha256"), str) or receipt_source is not None
             walk(data, path.name, path.stat().st_mtime)
             # single-function trial receipt with no exact verdict: native code exists, unproven
             if isinstance(data, dict) and isinstance(data.get("address"), str) and (
@@ -134,16 +137,8 @@ def inactive_code(root):
     # native_bulk proofs (work/native-client/prove.py: full census + per-file runs). Byte-exact rows are inactive
     # (exact); a byte-matched body at one candidate still waiting for identity/reference proof is draft.
     manifests = sorted((root / "work/native-client/prove-out").glob("*/manifest.json"), key=lambda p: p.stat().st_mtime)
-    # symbol -> source from single-source (per-file) proofs: names the file for census rows outside any job's checks
-    single = {}
-    for path in manifests:
-        try:
-            for family in json.loads(path.read_text(encoding="utf-8")).get("families", []):
-                if len(family.get("jobs", [])) == 1:
-                    for row in family.get("symbols", []):
-                        single[row["symbol"]] = family["jobs"][0]["source"]
-        except (ValueError, OSError, KeyError):
-            continue
+    # Collect the latest single-source mapping while processing each manifest once.
+    single, bulk = {}, set()
     for path in manifests:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -151,6 +146,12 @@ def inactive_code(root):
             continue
         stamp = path.stat().st_mtime
         for family in data.get("families", []):
+            if len(family.get("jobs", [])) == 1:
+                try:
+                    for row in family.get("symbols", []):
+                        single[row["symbol"]] = family["jobs"][0]["source"]
+                except KeyError:
+                    pass
             source_of = {(c["addr"], c["symbol"]): job["source"] for job in family.get("jobs", []) for c in job.get("checks", [])}
             for row in family.get("symbols", []):
                 exact = row.get("status") == "inactive_exact"
@@ -161,7 +162,11 @@ def inactive_code(root):
                     old = found.get(addr)
                     if not old or (exact, stamp) > (old[1], old[3]):
                         found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp,
-                                       source_of.get((addr, row["symbol"])) or single.get(row["symbol"])]
+                                       source_of.get((addr, row["symbol"]))]
+                        bulk.add(addr)
+    for addr in bulk:
+        if not found[addr][4]:
+            found[addr][4] = single.get(found[addr][0])
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
     for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
         text = path.read_text(encoding="utf-8", errors="replace")

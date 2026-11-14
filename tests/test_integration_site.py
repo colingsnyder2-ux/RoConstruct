@@ -182,3 +182,54 @@ def test_existing_output_merges_published_history(tmp_path):
     alternate.write_text(json.dumps({'client': '2008-06', 'history': [stale_day, alternate_day]}))
     snapshot = integration_site.build(tmp_path, output=alternate, log=lambda _: None)
     assert snapshot['history'][:2] == [published_day, alternate_day]
+
+
+def test_bulk_manifest_read_once_with_later_source(tmp_path, monkeypatch):
+    source = tmp_path / 'rebuild/2008-06/native-classes/Foo.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('void Foo::bar() {}\n')
+    proofs = tmp_path / 'work/native-client/prove-out'
+    first = proofs / 'first/manifest.json'
+    second = proofs / 'second/manifest.json'
+    first.parent.mkdir(parents=True)
+    second.parent.mkdir(parents=True)
+    symbol = '?bar@Foo@@QAE@XZ'
+    first.write_text(json.dumps({'families': [{'jobs': [{'source': 'unused1'}, {'source': 'unused2'}],
+        'symbols': [{'symbol': symbol, 'status': 'inactive_exact', 'candidates': ['00400000']}]}]}))
+    second.write_text(json.dumps({'families': [{'jobs': [{'source': str(source)}],
+        'symbols': [{'symbol': symbol, 'status': 'draft', 'candidates': ['00400000']}]}]}))
+    import os
+    os.utime(first, (1, 1))
+    os.utime(second, (2, 2))
+    read_text = Path.read_text
+    reads = []
+    def count_reads(path, *args, **kwargs):
+        if path.name == 'manifest.json':
+            reads.append(path)
+        return read_text(path, *args, **kwargs)
+    monkeypatch.setattr(Path, 'read_text', count_reads)
+    found = integration_site.inactive_code(tmp_path)
+    assert found['00400000'][1] is True
+    assert found['00400000'][3] == ['rebuild/2008-06/native-classes/Foo.cpp', 1]
+    assert reads == [first, second]
+
+
+def test_stale_hashed_receipt_is_not_exact(tmp_path):
+    source = tmp_path / 'rebuild/2008-06/native-classes/Foo.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('void Foo::bar() { /* changed */ }\n')
+    receipts = tmp_path / 'work/2008-06/shared-layouts'
+    receipts.mkdir(parents=True)
+    old = b'void Foo::bar() {}\n'
+    (receipts / 'stale.json').write_text(json.dumps({
+        'source_path': str(source), 'source_sha256': hashlib.sha256(old).hexdigest(),
+        'checks': [{'address': '00400000', 'symbol': '?bar@Foo@@QAE@XZ', 'exact': True}],
+    }))
+    stale = integration_site.inactive_code(tmp_path)['00400000']
+    assert stale[1] is False
+    assert stale[3] is None
+    original = source.with_name('FooOriginal.cpp')
+    original.write_bytes(old)
+    restored = integration_site.inactive_code(tmp_path)['00400000']
+    assert restored[1] is True
+    assert restored[3][0].endswith('FooOriginal.cpp')

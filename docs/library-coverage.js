@@ -3,6 +3,12 @@ const originalLibraryClassification = classify;
 classify = function (data) {
   return originalLibraryClassification(data).map(([lib, part, exact], i) => {
     const f = data.funcs[i], src = f[2] === 100 && f[5], unit = data.units[f[3]] || "";
+    const native = typeof integrationData !== "undefined" && integrationData?.client === data.name
+      ? integrationData.inactive?.[hex(f[0])] : null;
+    if (native?.[1] && /^_?png_/.test(native[0]))
+      return ["libpng", "Native libpng source", true];
+    if (src && !src[2] && /^ogre-/.test(src[0]) && /(?:^|\/)roc_[^/]*\.(?:c|cpp)$/i.test(src[1]) && /^RBX::/.test(unit))
+      return [ENGINE, partOf(ENGINE, null, unit, ""), false];
     if (src && /^(wildmagic-|templates-)/.test(src[0]))
       return ["Codegen analogs", src[0] + " (source authenticity unproven)", exact];
     if (lib === "Wild Magic") return [UNLABELED, "Near codegen analogs (ownership unproven)", false];
