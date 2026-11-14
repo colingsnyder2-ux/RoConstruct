@@ -77,15 +77,23 @@ namespace RBX
 		G3D::Color3 getAmbientBottom() const { return ambientBottom; }
 		G3D::Color4 getClearColor() const { return clearColor; }
 		G3D::Color4 getShadowColor() const { return shadowColor; }
+		// 005df4a0 (placeholder name in the registry): the Color3 getter the "ShadowColor" PropDescriptor 0097aa58
+		// (initializer 007f6b40) binds; copies +0x254..+0x25c into the returned Color3 (ret 4). Named after the
+		// donor getClearColor3 pattern; the original name is not recorded.
+		G3D::Color3 getShadowColor3() const { return G3D::Color3(shadowColor.r, shadowColor.g, shadowColor.b); }
 
 		// 005e2030 (placeholder name in the registry): compares/stores the Color4 at +0x254, raises the "ShadowColor"
 		// PropDescriptor 0097aa58 (initializer 007f6b40), fires event_LightingChanged(false), then
-		// RunService::invalidateRunViews. Not recovered yet; named after the field it writes.
+		// RunService::invalidateRunViews. Named after the field it writes.
 		void setShadowColor(G3D::Color4 value);
 		// 005e2540: registry name ?setClearColor3@Lighting@RBX@@QAEXVColor3@G3D@@@Z (a relocation-derived name; the
 		// binary binds it as the setter of the "ShadowColor" PropDescriptor 007f6b40). Calls 005e2030 with alpha 1.
 		void setClearColor3(G3D::Color3 value);
-		void setTime(const boost::posix_time::time_duration& value);   // 005e2570 (not recovered yet)
+		// 005e2570 (placeholder name in the registry): normalises total_seconds() modulo 86400, stores timeOfDay
+		// (+0x268) and skyParameters.setTime 007b59b0, raises the "TimeOfDay" PropDescriptor 0097a91c (prop_Time,
+		// initializer 007f69d0), fires event_LightingChanged(false), then RunService::invalidateRunViews.
+		void setTime(const boost::posix_time::time_duration& value);
+		void setTimeStr(const std::string& value);      // 005e2730 (prop_Time setter: duration_from_string 005e0c20)
 		void setMinutesAfterMidnight(double value);     // 005e26e0
 
 		G3D::Vector3 getMoonPosition();                 // 005df4d0
