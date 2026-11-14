@@ -102,6 +102,32 @@ void ScriptContext::onEvent(const RunService* source, RunTransition event)
         lua_gc(globalState, LUA_GCCOLLECT, 0);
 }
 
+// INFERRED: 00976b78 is unit-local timeout count.
+static long timedOutScripts;
+
+// 005b0710
+void ScriptContext::onEvent(const RunService* source, Heartbeat event)
+{
+    if (exeTime0 > 0)
+        exeTime1 = G3D::System::getLocalTime() + exeTime0;
+
+    if (InterlockedExchange(reinterpret_cast<long*>(&exeState), 0) == 1)
+        InterlockedDecrement(&timedOutScripts);
+
+    boost::posix_time::ptime t(boost::posix_time::second_clock::local_time());
+    if (t >= nextPendingScripts)
+    {
+        startPendingScripts();
+        nextPendingScripts = boost::posix_time::second_clock::local_time() + boost::posix_time::seconds(1);
+    }
+
+    if (yieldEvent)
+        yieldEvent->resume(event);
+
+    if (globalState)
+        lua_gc(globalState, LUA_GCSTEP, 1);
+}
+
 // 005aeaf0: "io" opens only when DebugSettings::ioEnabled (+0x131); settings() 005adc60 is the "settings" global.
 void ScriptContext::setThreadIdentity(lua_State* thread, Security::Identities identity)
 {
