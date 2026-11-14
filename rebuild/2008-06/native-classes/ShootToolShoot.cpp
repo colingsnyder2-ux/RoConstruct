@@ -16,7 +16,8 @@ void ShootTool::shoot(const UIEvent& input) {
  PartInstance* head=Humanoid::getLocalHeadFromContext(workspace);
  if (head) {
   if (!projectile) projectile=createProjectile();
-  boost::shared_ptr<PartInstance> part=boost::shared_static_cast<PartInstance>(projectile->clone());
+  // 0063e890 calls the release-shape shared_polymorphic_downcast wrapper.
+  boost::shared_ptr<PartInstance> part=boost::shared_polymorphic_downcast<PartInstance>(projectile->clone());
   part->setParent(workspace);
   part->getPrimitive()->setPV(launch(input,head->getCoordinateFrame()));
   ServiceProvider::create<Soundscape::SoundService>(workspace)->playSound(static_cast<SoundType>(getShootSound()));
