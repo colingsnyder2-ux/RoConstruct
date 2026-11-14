@@ -14,4 +14,10 @@ bool Instance::canAddChild(const Instance* child) const
     if (child->askSetParent(this)) return true;
     return false;
 }
+
+// 0041f390
+bool Instance::canSetParent(const Instance* newParent) const
+{
+    return !newParent || newParent->canAddChild(this);
+}
 }

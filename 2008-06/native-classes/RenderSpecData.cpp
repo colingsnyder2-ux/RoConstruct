@@ -74,7 +74,7 @@ namespace RBX
 				return 0;
 			}
 
-			return (((G3D::int64)t1Hi << 32) + t1Lo) - (((G3D::int64)t0Hi << 32) + t0Lo);
+			return ((G3D::int64)t1Hi * 0x100000000 + t1Lo) - (((G3D::int64)t0Hi << 32) + t0Lo);
 		}
 
 		static void Delay(unsigned time)

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Codejock Wasm — toolbar subset</title>
+<body><canvas id="canvas" width="960" height="320" tabindex="0"></canvas>
+<script>
+var embedded=new URLSearchParams(location.search).has('castle');
+if(embedded){document.body.style.margin='0';document.body.style.overflow='hidden';}
+var Module={canvas:document.getElementById('canvas'),toolbarEmbedded:embedded,
+ onToolbarCommand:function(command){if(embedded)parent.postMessage({type:'castle-command',command:command},location.origin);},
+ reportHeight:function(height){if(embedded)parent.postMessage({type:'toolbar-height',height:height},location.origin);}};
+addEventListener('message',function(event){
+ if(event.source!==parent||event.origin!==location.origin||event.data.type!=='castle-status'||!Module._toolbar_status)return;
+ var s=event.data.state;
+ Module._toolbar_status(s.fps,s.clockSeconds,s.cycle,s.shadows,s.orbit,s.wireframe,s.celestial,s.hud,s.fullscreen);
+ if(s.position)Module._toolbar_camera(s.position[0],s.position[1],s.position[2],s.rotation[0],s.rotation[1],s.rotation[2]);
+});
+</script>
+{{{ SCRIPT }}}
+</body></html>

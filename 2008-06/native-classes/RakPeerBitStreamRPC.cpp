@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASE /FImalloc.h /I{headers}/../../../tools/openrbx/Client/Network/raknet30/Source /I{headers}/../../../tools/openrbx/util
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -19,7 +20,7 @@
 // 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (deepseek:deepseek-chat)
 // <<< native-status | src e3cb46bc | roc native-status --write
 #include "RakNetDefines.h"
-#include "RakPeer.h"
+#include "../native-headers/RakPeer.h"
 #include "RakNetTypes.h"
 
 #ifdef _WIN32

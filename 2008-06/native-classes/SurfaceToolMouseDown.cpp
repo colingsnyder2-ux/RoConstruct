@@ -3,22 +3,4 @@
 // SurfaceToolMouseDown | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
 // <<< native-status | src e0ab03b9 | roc native-status --write
-#include "tool/SurfaceTool.h"
-#include "v8datamodel/Workspace.h"
-#include "util/Sound.h"
-
-namespace RBX {
-void recordCameraHistory(const char*, const Instance*);
-
-MouseCommand* SurfaceTool::onMouseDown(const UIEvent& input)
-{
-    onMouseHover(input);
-    if (surface) {
-        applyToSurface(surface);
-        ServiceProvider::create<Soundscape::SoundService>(static_cast<Instance*>(workspace))->playSound(PING_SOUND);
-        recordCameraHistory(cursor.c_str(), static_cast<Instance*>(workspace));
-        workspace->getDataState().setDirty(true);
-    }
-    return NULL;
-}
-}
+// SurfaceTool::onMouseDown is defined in SurfaceToolInteractions.cpp.

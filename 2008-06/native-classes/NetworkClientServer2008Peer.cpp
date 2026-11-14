@@ -24,9 +24,16 @@ namespace RBX
 		{
 			rakPeer->DetachPlugin(this);
 		}
+
+		// 00609a30
+		RakPeerInterface* Peer::peerInterface()
+		{
+			return rakPeer.get();
+		}
 	}
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::scoped_ptr<PacketLogger>;
 template class boost::scoped_ptr<RBX::Profiling::CodeProfiler>;
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source

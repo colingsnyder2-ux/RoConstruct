@@ -30,11 +30,11 @@ void LockPlayModeVerb::doIt(RBX::IDataState*)
 }
 
 ToggleIDEModeVerb::ToggleIDEModeVerb(RBX::VerbContainer* c)
-    : RBX::Verb(c, std::string("TogglePlayMode")), createdAt(G3D::System::getLocalTime()) {}
+    : RBX::Verb(c, std::string("TogglePlayMode")), createdAt(G3D::System::getTick()) {}
 
 bool ToggleIDEModeVerb::isEnabled() const
 {
-    double now = G3D::System::getLocalTime();
+    double now = G3D::System::getTick();
     if (createdAt + 10.0 > now)
         return false;
     return !mainFrame()->state105;
