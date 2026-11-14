@@ -122,6 +122,7 @@ namespace RBX
 			virtual G3D::ReferenceCountedPointer<Mesh> getMesh();    // 00552720
 			virtual const G3D::CoordinateFrame& cframe();            // 00552760
 
+			void makeMesh(); // 00552270: original Bucket::optimize calls at 00540087.
 			AggregateChunk(const G3D::ReferenceCountedPointer<Chunk>& firstChunk); // 00551f30
 		};
 	}

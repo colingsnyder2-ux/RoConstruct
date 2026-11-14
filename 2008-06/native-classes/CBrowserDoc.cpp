@@ -4,6 +4,10 @@
 // <<< native-status | src 0e9f55a8 | roc native-status --write
 #include "CBrowserDoc.h"
 
+inline CNullDoc::CNullDoc()
+{
+}
+
 CBrowserDoc::CBrowserDoc() : view(NULL) {}
 
 IMPLEMENT_DYNCREATE(CNullDoc, CDocument)

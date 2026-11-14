@@ -58,6 +58,7 @@ overlay(R / 'native-headers/v8tree/Instance.h', 'v8tree/Instance.h',
         'struct ChildAdded;\nstruct ChildRemoved;\n',
         'struct ChildAdded {\n    boost::shared_ptr<Instance> child;\n    ChildAdded(const ChildAdded&);\n};\n'
         'struct ChildRemoved {\n    boost::shared_ptr<Instance> child;\n    ChildRemoved(const ChildRemoved&);\n};\n')
+(pending / 'v8tree/InstanceEvents.h').write_text('#pragma once\n#include "v8tree/Instance.h"\n')
 
 
 def build(name, src, extra=(), post=()):
@@ -164,6 +165,14 @@ EXTERNAL = {
     '??$create@VPlayers@Network@RBX@@@ServiceProvider@RBX@@QBEPAVPlayers@Network@1@XZ': 0x412710,  # 00650c6b
     '??0ProfanityFilter@RBX@@QAE@XZ': 0x66a340,                                              # ChatOutput() 0064fc08
     '??1ProfanityFilter@RBX@@QAE@XZ': 0x66a060,                                              # ~ChatOutput 00650513
+    '??$find@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z': 0x49ab50,
+    '?ContainsProfanity@ProfanityFilter@RBX@@QAE_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x66a350,
+    '?black@Color3@G3D@@SAABV12@XZ': 0x5149f0,
+    '?getTeamFromPlayer@Teams@RBX@@QAEPAVTeam@2@PAVPlayer@Network@2@@Z': 0x5d5ea0,
+    '?isTeamGame@Teams@RBX@@QAE_NXZ': 0x5d6070,
+    '?singleton@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@SAAAVGameSettings@2@XZ': 0x44bee0,
+    '?stringHash@RBX@@YAIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x669f60,
+    '?white@Color3@G3D@@SAABV12@XZ': 0x514a60,
     '?zero@Vector2@G3D@@SAABV12@XZ': 0x509ba0,                                               # GuiItem::getChildPosition 00411810
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                                                     # ~GuiItem 00411540
     # std exception vtables reached from the units (bound by RTTI name): slot 0 values read from the original vtable.
@@ -180,6 +189,7 @@ UNPROVEN = {
     '?renderFFALeaderboard@ScoreHud@RBX@@IAEXPAVAdorn@2@@Z': 0x6551e0,                       # call at 0065646f
     '?renderTeamDeathmatchLeaderboard@ScoreHud@RBX@@IAEXPAVAdorn@2@W4BoardType@12@@Z': 0x655a20,  # call at 0065644d
     '?onEvent@ChatOutput@RBX@@EAEXPBVPlayers@Network@2@VChatMessage@42@@Z': 0x650cc0,        # vtable 0084baf4 slot 0
+    '?ParseCommand@ChatOutput@RBX@@AAE_NVChatMessage@Network@2@@Z': 0x650660,
     '?render2d@ChatOutput@RBX@@EAEXPAVAdorn@2@@Z': 0x64fe90,                                 # vtable 0084bb84 slot 24
 }
 CLASS_NAMES = {'sInstance': b'Instance'}

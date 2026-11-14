@@ -30,9 +30,13 @@ flags += ['/I' + str(ROOT / 'rebuild/2008-06/native-headers'), '/I' + str(ROOT /
 flags += ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']
 flags += ['/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK', '/I' + str(ROOT / 'tools/libs/xtp-11.2.2/Source')]
 obj = out / ('Check' + source.stem + '.obj')
-code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(obj), str(source)], out)
-if code:
-    sys.exit(log[-3000:])
+if os.environ.get('NATIVE_REUSE_OBJECTS') == '1':
+    if not obj.exists() or obj.stat().st_mtime < source.stat().st_mtime:
+        sys.exit('NATIVE_REUSE_OBJECTS needs a fresh Check object: ' + str(obj))
+else:
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(obj), str(source)], out)
+    if code:
+        sys.exit(log[-3000:])
 bodies = match.coff_functions(obj.read_bytes())
 if len(sys.argv) > 2 and sys.argv[2].startswith('range='):  # auto: every body against a TU range
     import json

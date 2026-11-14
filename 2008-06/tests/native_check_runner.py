@@ -239,7 +239,10 @@ def analyze_object(job, obj):
         elif found:
             name, body, relocs = found[0]
             exact = set(refs) <= set(relocs) and match.exact_match(target, refs, body, relocs)
-            row.update(symbol=name, status='exact' if exact else 'different', score=match.score(target, refs, body, relocs),
+            metrics = match.comparison_metrics(target, refs, body, relocs)
+            row.update(symbol=name, status='exact' if exact else 'different',
+                       score=100.0 if exact else min(99.999999, metrics['fuzzy_percent']),
+                       legacy_score=match.score(target, refs, body, relocs), metrics=metrics,
                        target_size=len(target), object_size=len(body), target_sha256=hashlib.sha256(target).hexdigest())
             masked = set(refs) | set(relocs)
             row['first_byte_difference'] = next((i for i in range(min(len(target), len(body)))
@@ -262,6 +265,13 @@ def analyze_object(job, obj):
                 if 'calls' in check:
                     row['call_identity'] = check_calls(raw, name, body, target, int(addr, 16), check['calls'])
         row['check_seconds'] = round(time.monotonic() - check_started, 6)
+        if 'metrics' in row:
+            m = row['metrics']
+            print(f"SCORE {addr} status={row['status']} score={row['score']:.6f} "
+                  f"positional={m['positional_percent']} raw={m['raw_positional_percent']} "
+                  f"diff={m['unmasked_differences']}/{m['compared_unmasked_bytes']} "
+                  f"bytes={m['candidate_bytes']}/{m['target_bytes']} delta={m['length_delta']:+d} "
+                  f"reloc_missing={len(m['missing_relocations'])} reloc_extra={len(m['extra_relocations'])}", flush=True)
         checks.append(row)
     if job['ranges']:
         functions = [json.loads(line) for line in (ROOT / 'work/2008-06/functions.jsonl').read_text().splitlines()]

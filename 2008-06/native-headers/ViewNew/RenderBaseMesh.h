@@ -93,9 +93,20 @@ namespace RBX
 			int meshKind;                                             // +0x84
 
 		protected:
+			// Original 0054aca0 multiplies detail by level count before clamping.
+			int detailIndex(double detail) const
+			{
+				return G3D::iClamp((int)(levels.size() * detail), 0, levels.size() - 1);
+			}
+
+			static void initStatics(); // 00547f60; donor declaration, original call 005485f5.
+
 			Mesh();                                                   // 00548570
 		public:
 			virtual ~Mesh();                                          // 00548a90
+
+			// Donor signature; 0053f828 calls 00548f80 with hidden return and float argument.
+			const G3D::ReferenceCountedPointer<Level> detailLevel(float detail) const; // 00548f80
 
 			static unsigned int allocVertex(unsigned int i, unsigned int count);   // 00547fc0
 			// cdecl statics the LevelBuilder grid template calls (004fac10..: push 4 arguments, add esp 0x10 / 4)

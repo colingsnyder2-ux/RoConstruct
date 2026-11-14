@@ -32,6 +32,7 @@
 
 namespace RBX
 {
+	namespace ViewNew { class ViewRbxGfx; }
 	class Sky;
 
 	extern char sLighting[];
@@ -40,6 +41,8 @@ namespace RBX
 		: public DescribedCreatable<Lighting, Instance, sLighting>,
 		  public Service
 	{
+		// INFERRED access relationship; 004dab50 directly reads the proven lighting fields.
+		friend class ViewNew::ViewRbxGfx;
 	private:
 		G3D::LightingParameters skyParameters;          // +0x130
 		G3D::Color3 ambientTop;                         // +0x228

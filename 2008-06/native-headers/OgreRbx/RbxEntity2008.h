@@ -29,6 +29,7 @@ namespace Ogre
 		std::vector<unsigned char> mVisibility; // +0x2a4, byte element accesses proven
 
 	public:
+		void func_0067c510(FrameHistory* history); // INFERRED name; original stores argument at +0x274.
 		void removeSubEntity(RbxSubEntity* subEntity); // 0067d2d0; existing Chunk destructor call proves declaration.
 		void func_0067da50(RbxSubEntity* subEntity); // INFERRED: appends to the inherited subentity list.
 		void func_0067d3d0(); // INFERRED: clears inherited subentities; called at 00671fc0.
