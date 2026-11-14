@@ -5000,37 +5000,31 @@ const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight
 }
 
 // 0069bc50: upstream 1.4.5 renderSingleObject with the fork edits marked "fork:".
-// DRAFT (2531 B vs 2391 B): the fork edits (RbxSubEntity / RbxSceneNode cached transform, lighting-state skip) are
-// read from the target. The remaining difference is which inline Ogre getters MSVC emitted as rgmain imports: the
-// target calls getStartLight 2x, getMaxSimultaneousLights 4x, Light::getType 1x and has 12 more bytes of locals;
-// this compile calls them 6x / 6x / 2x. Same per-function inlining-budget effect as RbxEntity 0067daf0.
+// Local byte/data exact (2391 B). Fork omits maximum-light clipping in the
+// non-iterated light list and the manual-light type filter. The mutable list
+// reference preserves iterator evaluation order and the original 0x54-byte frame.
 void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pass, 
                                       bool doLightIteration, const LightList* manualLightList)
 {
     unsigned short numMatrices;
     static RenderOperation ro;
 
-    // fork: an RbxSubEntity whose entity hangs off an RbxSceneNode supplies its cached world matrix (+0xf0)
     RbxSubEntity* subEntity = dynamic_cast<RbxSubEntity*>(const_cast<Renderable*>(rend));
     if (subEntity)
     {
         subEntity->getRenderOperation(ro);
         ro.srcRenderable = subEntity;
-        if (dynamic_cast<RbxSceneNode*>(subEntity->getParent()->getParentNode()))
-            mTempXform[0] = subEntity->mTransform;
-        else
-            rend->getWorldTransforms(mTempXform);
     }
     else
     {
-        // I know, I know, const_cast is nasty but otherwise it requires all internal
-        // state of the Renderable assigned to the rop to be mutable
         const_cast<Renderable*>(rend)->getRenderOperation(ro);
         ro.srcRenderable = rend;
-
-        // Set world transformation
-        rend->getWorldTransforms(mTempXform);
     }
+    RbxSceneNode* node = subEntity ? dynamic_cast<RbxSceneNode*>(subEntity->getParent()->getParentNode()) : 0;
+    if (node)
+        *mTempXform = subEntity->mTransform;
+    else
+        rend->getWorldTransforms(mTempXform);
     numMatrices = rend->getNumWorldTransforms();
     if (numMatrices > 1)
     {
@@ -5114,7 +5108,7 @@ void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pas
 
 			// deliberately unsigned in case start light exceeds number of lights
 			// in which case this pass would be skipped
-			int lightsLeft = 1;
+			int lightsLeft;
 			if (iteratePerLight)
 			{
 				lightsLeft = static_cast<int>(rendLightList.size()) - pass->getStartLight();
@@ -5126,6 +5120,7 @@ void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pas
 
 			}
 
+            else lightsLeft = 1;
 			const LightList* pLightListToUse;
 			// Start counting from the start light
 			size_t lightIndex = pass->getStartLight();
@@ -5193,7 +5188,7 @@ void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pas
 				else
 				{
 					// Use complete light list potentially adjusted by start light
-					if (pass->getStartLight() || pass->getMaxSimultaneousLights() != OGRE_MAX_SIMULTANEOUS_LIGHTS)
+					if (pass->getStartLight())
 					{
 						// out of lights?
 						if (pass->getStartLight() >= rendLightList.size())
@@ -5206,14 +5201,8 @@ void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pas
 							localLightList.clear();
 							LightList::const_iterator copyStart = rendLightList.begin();
 							std::advance(copyStart, pass->getStartLight());
-							LightList::const_iterator copyEnd = copyStart;
-							// Clamp lights to copy to avoid overrunning the end of the list
-							size_t lightsToCopy = std::min(
-								static_cast<size_t>(pass->getMaxSimultaneousLights()), 
-								rendLightList.size() - pass->getStartLight());
-							std::advance(copyEnd, lightsToCopy);
-							localLightList.insert(localLightList.begin(), 
-								copyStart, copyEnd);
+							LightList& localLights = localLightList;
+							localLightList.insert(localLights.begin(), copyStart, rendLightList.end());
 							pLightListToUse = &localLightList;
 						}
 					}
@@ -5259,19 +5248,6 @@ void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pas
 		}
 		else // no automatic light processing
 		{
-			// Even if manually driving lights, check light type passes
-			bool skipBecauseOfLightType = false;
-			if (pass->getRunOnlyForOneLightType())
-			{
-				if (!manualLightList ||
-					(manualLightList->size() == 1 && 
-					manualLightList->at(0)->getType() != pass->getOnlyLightType())) 
-				{
-					skipBecauseOfLightType = true;
-				}
-			}
-
-			if (!skipBecauseOfLightType)
 			{
 				// Do we need to update GPU program parameters?
 				if (pass->isProgrammable())
@@ -5306,7 +5282,7 @@ void RbxSceneManager::renderSingleObject(const Renderable* rend, const Pass* pas
 				// nfz: set up multipass rendering
 				mDestRenderSystem->setCurrentPassIterationCount(pass->getPassIterationCount());
 				mDestRenderSystem->_render(ro);
-			} // !skipBecauseOfLightType
+			} // manual lights
 		}
 
 	}

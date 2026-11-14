@@ -237,8 +237,8 @@ namespace Ogre
 		}
 
 		// Draw foreground
-		const G3D::Vector2* q = array;
-		for (int i = 0; i < numChars; ++i, q += 8) {
+		for (int i = 0; i < numChars; ++i) {
+			const G3D::Vector2* q = array + i * 8;
 			twoD->addQuad(texture->getName(), color,
 			              q[1].x, q[1].y, q[5].x, q[5].y,
 			              q[0].x / texWidth, q[4].y / texHeight, q[4].x / texWidth, q[0].y / texHeight);
