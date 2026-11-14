@@ -28,9 +28,17 @@
 //            directly. 0064d1e0 (`jmp 0064d0f0`) and 0064d1f0 (`jmp 0064d180`) are the 5-byte tail-call entries other
 //            units call (HumanoidStates3.cpp MovingNoPhysicsBase::release 0066ed50 calls 0064d1f0). Names are analog
 //            names (no registry name: all four are placeholders); which pair is public is inferred from the callers.
-//            Bodies not built: they need the 2008 Assembly (+0x40 SimJob back-link), which no native header declares.
+//            0064d0f0 / 0064d180 are built in SimJobStage2008.cpp through v8world/AssemblyLayout.h (+0x40 SimJob
+//            back-link). 004cb480 (146 B, thiscall on the stage, ret 4; folded COMDAT, placeholder) is the neighbour-job
+//            helper 0064d180 calls: it = job->stageIterator; ++it; it == simJobs.end() ? *simJobs.begin() : *it.
+//            Declared inline in-class below (analog name getNextSimJob). Not byte-exact (parked after 3 trials): this
+//            form is 147 B with the same blocks and checks, but keeps the stepped node in ebp for the whole body where
+//            the target pushes ebp only around the end() compare (`mov ebx,[ebx]; push ebp; mov ebp,[edi+0x24]`).
+//            Rejected: `if (it == end()) it = begin(); return *it;` (112 B, one shared deref) and
+//            `return (++it == end()) ? front() : *it;` (156 B, end() hoisted into a stack slot).
 #include <list>
 #include "v8world/IWorldStage.h"
+#include "v8world/SimJob2008.h" // getNextSimJob reads SimJob::stageIterator (+0x1c)
 
 struct NativeKernelStagesLayout;
 
@@ -62,5 +70,16 @@ namespace RBX
 	private:
 		void insertSimJob(SimJob* job);                   // 0064d0f0 (analog name)
 		void eraseSimJob(SimJob* job);                    // 0064d180 (analog name)
+
+		SimJob* getNextSimJob(SimJob* job)                // 004cb480 (folded COMDAT; analog name)
+		{
+			std::list<SimJob*>::iterator it = job->stageIterator;
+			++it;
+			if (it == simJobs.end())
+			{
+				return *simJobs.begin();
+			}
+			return *it;
+		}
 	};
 }

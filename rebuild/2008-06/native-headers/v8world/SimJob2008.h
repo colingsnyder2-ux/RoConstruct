@@ -22,6 +22,14 @@
 //            +0x0; 005e53a0 moves those elements between jobs. stageIterator +0x1c / +0x20: the std::list<SimJob*>
 //            iterator (container, node) the SimJobStage insert 0064d0f0 stores after inserting the job into its list
 //            (+0x10 of SimJobStage).
+//   Mechanism (analog name; the vector element, not polymorphic): +0x0 the tracked SimJob. Its members are emitted in
+//            the SimJob unit: stopTracking 005e5320 (`if (simJob) { fastRemoveShort(simJob->mechanisms, this) 005e5200;
+//            simJob = 0; }`), setSimJob 005e5350 (inline stopTracking, then `if (job) { job->mechanisms.push_back(this)
+//            004213a0; simJob = job; }`), and the cdecl transfer 005e53a0 (SimJob::transferMechanisms: while the source
+//            vector is non-empty, back()->setSimJob(to), both inlined). These are the roles the donor
+//            MechanismTracker::stopTracking / setMechanism / transferTrackers play for the donor Mechanism (2008: the
+//            SimJob), so the 2008 element is this tracker. A unit must not include this header and the donor
+//            v8world/Mechanism.h together (both declare RBX::Mechanism; the donor layout is the 2013 one).
 #include <vector>
 #include <list>
 #include <boost/noncopyable.hpp>
@@ -36,6 +44,7 @@ namespace RBX
 	class SimJob : public boost::noncopyable
 	{
 		friend struct ::NativeKernelStagesLayout; // tests/NativeKernelStagesLayout.cpp offset asserts
+		friend class Mechanism;                   // setSimJob / stopTracking edit mechanisms (005e5350, 005e5320)
 
 	private:
 		std::vector<Mechanism*> mechanisms;                    // +0x4
@@ -47,6 +56,19 @@ namespace RBX
 		virtual ~SimJob();                                     // 005e5150 (slot 0 ??_G 005e5190)
 		virtual Assembly* getAssemblyConst() = 0;              // slot 1 (analog name)
 		virtual Assembly* getAssembly() = 0;                   // slot 2 (analog name)
+
+		// 005e53a0 (cdecl; analog name): hands every mechanism of `from` to `to` (NULL: just detaches them).
+		static void transferMechanisms(SimJob* from, SimJob* to);
+	};
+
+	class Mechanism
+	{
+	private:
+		SimJob* simJob;                                        // +0x0 (005e5320, 005e5350, 005e53a0)
+
+	public:
+		void stopTracking();                                   // 005e5320 (analog name)
+		void setSimJob(SimJob* job);                           // 005e5350 (analog name)
 	};
 
 	class AssemblySimJob : public SimJob

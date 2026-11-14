@@ -6,7 +6,10 @@
 // SimJob2008 | 2008-06 | draft (no current byte proof)
 // 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by tester (+2) (mixed 3)
 // <<< native-status | src 812bdd77 | roc native-status --write
+#undef _RELEASEASSERT
 #include "v8world/SimJob2008.h"
+#include <algorithm> // std::find for util/StlExtra.h (it does not include it)
+#include "util/StlExtra.h" // fastRemoveShort 005e5200 (registry: fastRemoveShort<Assembly*>, folded)
 
 namespace RBX
 {
@@ -24,6 +27,36 @@ namespace RBX
 	AssemblySimJob::AssemblySimJob(Assembly* assembly)
 		: assembly(assembly)
 	{
+	}
+
+	// 005e5320 (analog name)
+	void Mechanism::stopTracking()
+	{
+		if (simJob)
+		{
+			fastRemoveShort(simJob->mechanisms, this);
+			simJob = NULL;
+		}
+	}
+
+	// 005e5350 (analog name)
+	void Mechanism::setSimJob(SimJob* job)
+	{
+		stopTracking();
+		if (job)
+		{
+			job->mechanisms.push_back(this);
+			simJob = job;
+		}
+	}
+
+	// 005e53a0 (cdecl; analog name)
+	void SimJob::transferMechanisms(SimJob* from, SimJob* to)
+	{
+		while (!from->mechanisms.empty())
+		{
+			from->mechanisms.back()->setSimJob(to);
+		}
 	}
 }
 

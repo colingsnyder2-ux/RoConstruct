@@ -3,10 +3,11 @@
 // The constructor 0064d300 (with the inline destructor, the scalar deleting destructor 0064d380 and the vtable
 // 0084b174) is built from native-classes/SimJobStage2008Ctor.cpp: it news the 2008 Kernel (Kernel2008.h), which cannot
 // share a unit with the donor v8world/Edge.h (IPipelined.h includes the donor v8kernel/Kernel.h). The insert 0064d0f0
-// is built here through the 2008 Assembly layout view (v8world/AssemblyLayout.h, +0x40 SimJob back-link). Not built:
-// the erase 0064d180 needs SimJobStage2008.h / SimJob2008.h declarations for the neighbour-job member 004cb480
-// (thiscall on the stage, folded COMDAT) and the cdecl mechanism transfer 005e53a0 (SimJob unit); 0064d200 / 0064d2a0
-// and 0064d3d0 / 0064d410 need a 2008 Assembly (IPipelined slots, 005e6110 / 005e6160), Kernel 005fb0e0, Mechanism.
+// and the erase 0064d180 are built here through the 2008 Assembly layout view (v8world/AssemblyLayout.h, +0x40 SimJob
+// back-link); the erase calls the neighbour-job member 004cb480 (SimJobStage2008.h, inline) and the cdecl mechanism
+// transfer SimJob::transferMechanisms 005e53a0 (SimJob2008.cpp). Not built: 0064d200 / 0064d2a0 (add / remove an
+// assembly) and 0064d3d0 / 0064d410: no declaration exists for the Assembly body getter 005e6160
+// (`[[this+0x1c]+0xa0]`, not in the donor Assembly.h) or the +0x40 SimJob getter 005e6110 typed as SimJob*.
 // >>> native-status (generated) -- do not edit >>>
 // SimJobStage2008 | 2008-06 | draft (no current byte proof)
 // 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (gpt-6.1-sol)
@@ -52,15 +53,29 @@ namespace RBX
 		job->stageIterator = --simJobs.end();
 	}
 
-	// Parked (not credited): the prover finds no candidate for these 5-byte tail-jmp bodies (registry names for
-	// 0064d1e0 / 0064d1f0 are placeholders and a lone `jmp rel32` has no unique byte match).
+	// Parked (not credited; tool cause, not source): native_bulk.harvest only byte-indexes bodies of 6 bytes or more,
+	// so a 5-byte `jmp rel32` gets candidates only from its registry name, and 0064d1e0 / 0064d1f0 are placeholders.
 	// 0064d1e0 (`jmp 0064d0f0`: tail call to the insert above)
 	void SimJobStage::addSimJob(SimJob* job)
 	{
 		insertSimJob(job);
 	}
 
-	// 0064d1f0 (`jmp 0064d180`: tail call to the erase, not built here; see the file comment)
+	// 0064d180 (analog name): hands the job's mechanisms to a neighbour job (004cb480; NULL when it is the only one,
+	// SimJob::transferMechanisms 005e53a0), unlinks it from simJobs (erase 005888f0, folded) and clears its assembly's
+	// +0x40 back-link (SimJob slot 2).
+	void SimJobStage::eraseSimJob(SimJob* job)
+	{
+		SimJob* other = (simJobs.size() > 1) ? getNextSimJob(job) : NULL;
+		SimJob::transferMechanisms(job, other);
+		simJobs.erase(job->stageIterator);
+		if (job->getAssembly())
+		{
+			AssemblyLayout::fields(job->getAssembly())->simJob = NULL;
+		}
+	}
+
+	// 0064d1f0 (`jmp 0064d180`: tail call to the erase above)
 	void SimJobStage::removeSimJob(SimJob* job)
 	{
 		eraseSimJob(job);
