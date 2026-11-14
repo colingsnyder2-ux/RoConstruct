@@ -56,8 +56,10 @@ namespace RBX
 				{
 					selection->setSelection(top);
 				}
-				ServiceClient<FilteredSelection<Instance>> instanceSelection(workspace);
-				return DragTool::onMouseDown(part, hitWorld, instanceSelection->items(), uiEvent, workspace, decal);
+				{
+					ServiceClient<FilteredSelection<Instance>> instanceSelection(workspace);
+					return DragTool::onMouseDown(part, hitWorld, instanceSelection->items(), uiEvent, workspace, decal);
+				}
 			}
 			else
 			{
