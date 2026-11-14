@@ -56,5 +56,52 @@ namespace RBX
 
 		return AbstractFactoryProduct<Instance>::create(className);
 	}
+
+	// Batch 11 (mb04): the remaining Service.cpp vtable bodies. All four are slots of ??_7ServiceProvider@RBX@@6B@
+	// 0082f1bc (askAddChild slot 2, onChildAdded slot 7, onChildRemoving slot 8) and need the overrides, plus an
+	// Instance* constructor for ServiceAdded/ServiceRemoving (in-place shared_from into the raise argument slot, the
+	// Network::CharacterRemoving pattern), declared in v8tree/Service.h (proposal). Built only in the pending header copy.
+	void ServiceProvider::onChildAdded(Instance* child)                      // 00572ca0 (272 B)
+	{
+		// __RTDynamicCast(child, 0, Instance 0092907c, Service 00929844); getNullName 00554270 compared with the
+		// DescribedBase (+0x10) getClassName slot 1; serviceMap operator[] (folded 00592610) + shared_ptr assign
+		// 004025b0; raise of the ServiceAdded notifier at +0x150 (folded 0048ba70). No Instance::onChildAdded call.
+		if (dynamic_cast<Service*>(child))
+		{
+			// Trial 3: Name::operator!=(const Name&): the argument (getNullName) is evaluated before the object, as in
+			// the binary. Rejected: trial 1 (&child->getClassName() != &Name::getNullName()) and trial 2 (operands
+			// swapped) both called getClassName first (273 B).
+			if (child->getClassName() != Name::getNullName())
+				serviceMap[&child->getClassName()] = shared_from(child);
+			Notifier<ServiceProvider, ServiceAdded>::raise(ServiceAdded(child));
+		}
+	}
+
+	void ServiceProvider::onChildRemoving(Instance* child)                   // 00572b40 (120 B)
+	{
+		// serviceMap.find (folded 00591bd0) against end(); raise of the ServiceRemoving notifier at +0x170 (folded
+		// 005728f0). The binary neither erases the map entry nor calls Instance::onChildRemoving.
+		// Trial 2: named iterator, end() read after find (trial 1 compared find() with end() directly: end() was
+		// loaded before the find call and the returned iterator was used through its address, 129 B).
+		std::map<const Name*, boost::shared_ptr<Instance> >::iterator iter = serviceMap.find(&child->getClassName());
+		if (iter != serviceMap.end())
+			Notifier<ServiceProvider, ServiceRemoving>::raise(ServiceRemoving(child));
+	}
+
+	void ServiceProvider::clearServices()                                    // 00572db0 (129 B)
+	{
+		// vector<shared_ptr<Instance>>::erase(begin, end) 00412180 at +0x190, then the map _Erase(root) 004b0d80
+		// and head reset at +0x1a8 (same body as openrbx-selective/v8tree/ServiceSelected.cpp).
+		serviceArray.clear();
+		serviceMap.clear();
+	}
 }
+#endif
+
+#ifdef NATIVE_SERVICE_ASKADDCHILD_PENDING
+// 00575240 (36 B) ServiceProvider::askAddChild, vtable slot 2. It lies in the DataModel.cpp COMDAT run
+// (00574f10..0057c1af), not in Service.cpp 005726a0..00573060, so it is an in-class inline body of v8tree/Service.h
+// emitted out of line; proposal for that header:
+//     virtual bool askAddChild(const Instance* instance) const { return dynamic_cast<const Service*>(instance) != NULL; }
+// (__RTDynamicCast(instance, 0, Instance, Service); neg/sbb/neg).
 #endif
