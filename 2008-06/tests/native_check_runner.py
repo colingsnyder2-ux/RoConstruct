@@ -124,8 +124,24 @@ def import_evidence():
     directory = ROOT / 'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
     paths = [directory / name for name in ('msvcrt.lib', 'msvcprt.lib')]
     sdk = rebuild.toolchain(21022).get('sdk_lib')
-    if sdk and (Path(sdk) / 'Kernel32.Lib').is_file():
-        paths.append(Path(sdk) / 'Kernel32.Lib')
+    if sdk:
+        for name in ('Kernel32.Lib', 'WS2_32.Lib'):
+            path = Path(sdk) / name
+            if path.is_file():
+                paths.append(path)
+    # Winsock's SDK import library uses ordinal imports. Resolve them through
+    # the actual 32-bit system DLL and retain its hash as proof input.
+    winsock_exports = {}
+    winsock = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'SysWOW64' / 'ws2_32.dll'
+    if winsock.is_file() and any(p.name.lower() == 'ws2_32.lib' for p in paths):
+        data = winsock.read_bytes()
+        dll = pefile.PE(data=data, fast_load=True)
+        if dll.FILE_HEADER.Machine == 0x14c:
+            dll.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_EXPORT']])
+            winsock_exports = {entry.ordinal: entry.name.decode('ascii')
+                               for entry in dll.DIRECTORY_ENTRY_EXPORT.symbols if entry.name}
+            hashes[str(winsock)] = hashlib.sha256(data).hexdigest()
+        dll.close()
     for path in paths:
         data = path.read_bytes()
         hashes[str(path)] = hashlib.sha256(data).hexdigest()
@@ -141,7 +157,12 @@ def import_evidence():
             symbol, dll = member[20:].split(b'\0')[:2]
             symbol, dll = symbol.decode('ascii'), dll.decode('ascii').lower()
             name_type = (struct.unpack_from('<H', member, 18)[0] >> 2) & 7
-            if name_type == 1:
+            if name_type == 0 and dll == 'ws2_32.dll':
+                ordinal = struct.unpack_from('<H', member, 16)[0]
+                export = winsock_exports.get(ordinal)
+                if not export or symbol.lstrip('_@').split('@', 1)[0] != export:
+                    continue
+            elif name_type == 1:
                 export = symbol
             elif name_type in (2, 3):
                 export = symbol[1:] if symbol[:1] in ('_', '@', '?') else symbol
@@ -248,6 +269,27 @@ def analyze_object(job, obj):
             row['first_byte_difference'] = next((i for i in range(min(len(target), len(body)))
                 if not any(r <= i < r + 4 for r in masked) and target[i] != body[i]),
                 min(len(target), len(body)) if len(target) != len(body) else None)
+            if len(target) < len(body) <= 65536:
+                _, symbols, definitions, _ = match._coff_data_index(raw)
+                start, section = definitions[name]
+                catch_prefix = '__catch$' + name + '$'
+                has_catch = any(s.startswith(catch_prefix) and n == section + 1
+                                and start + len(target) <= value < start + len(body)
+                                for s, value, n, _ in symbols.values())
+                if has_catch:
+                    base, image = match._image('2008-06')
+                    va = int(addr, 16)
+                    offset = va - base
+                    if 0 <= offset and offset + len(body) <= len(image):
+                        extended = bytes(image[offset:offset + len(body)])
+                        extended_refs = [r - va for r in match._base_relocs('2008-06')
+                                         if va <= r < va + len(body)]
+                        row['contiguous_catch_comparison'] = {
+                            'scope': 'diagnostic contiguous bytes only; not a function boundary, reference, or runtime proof',
+                            'relocation_normalized_match': set(extended_refs) <= set(relocs) and
+                                match.exact_match(extended, extended_refs, body, relocs),
+                            'metrics': match.comparison_metrics(extended, extended_refs, body, relocs),
+                        }
             identity = METHOD_IDENTITIES.get(name)
             if identity:
                 expected, slot = identity
@@ -272,6 +314,14 @@ def analyze_object(job, obj):
                   f"diff={m['unmasked_differences']}/{m['compared_unmasked_bytes']} "
                   f"bytes={m['candidate_bytes']}/{m['target_bytes']} delta={m['length_delta']:+d} "
                   f"reloc_missing={len(m['missing_relocations'])} reloc_extra={len(m['extra_relocations'])}", flush=True)
+            if 'contiguous_catch_comparison' in row:
+                extra = row['contiguous_catch_comparison']
+                m = extra['metrics']
+                print(f"CATCH_RANGE {addr} match={extra['relocation_normalized_match']} "
+                      f"fuzzy={m['fuzzy_percent']} positional={m['positional_percent']} "
+                      f"raw={m['raw_positional_percent']} "
+                      f"diff={m['unmasked_differences']}/{m['compared_unmasked_bytes']} "
+                      f"bytes={m['candidate_bytes']}/{m['target_bytes']} (diagnostic only)", flush=True)
         checks.append(row)
     if job['ranges']:
         functions = [json.loads(line) for line in (ROOT / 'work/2008-06/functions.jsonl').read_text().splitlines()]

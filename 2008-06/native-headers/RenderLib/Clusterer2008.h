@@ -53,7 +53,8 @@ public:
 		unsigned int i = 0;
 		for (; _Iter != _End; ++_Iter) {
 			clusters[i].samples.push_back(&**_Iter);
-			i = (i + 1) % clusterCount;
+			++i;
+			i %= clusterCount;
 			sampleSize++;
 		}
 	}
