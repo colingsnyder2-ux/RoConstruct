@@ -15,6 +15,13 @@ void CRobloxWnd::finishAttach() {
     //   global_0x974d74 = eax;
     //   eax = this->slots_ac_b8[2]; ecx = this->gWindow;
     //   fn_005756e0(ecx, eax); global_0x974d74 = 0;
+    // Identities (work/2008-06/identity-registry.json): 0096eff4 = G3D::GWindow::m_current, so +0xa4 is
+    //   a G3D::GWindow* and the first block is the inline gWindow->makeCurrent() (vtable +0x98);
+    //   0041eea0 = ServiceProvider::create<ContentProvider>() on +0x70, 00974d74 = RBX::guiContentProvider,
+    //   005756e0 = DataModel::buildGui(Adorn*) on +0x70 with +0xb4. Proposed authentic body:
+    //     window->makeCurrent(); guiContentProvider = ServiceProvider::create<ContentProvider>(dataModel);
+    //     dataModel->buildGui(adorn); guiContentProvider = NULL;
+    //   Blocked: DataModel.h does not declare buildGui (core header) and CRobloxView.h types 0x70/0xa4/0xb4 wrongly.
     // STUB (not authentic): none of the calls above are made yet. Reference members to keep layout meaningful; renderer wiring comes later.
     (void)this->dataModel;
     (void)this->gWindow;
