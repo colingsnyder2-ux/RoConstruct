@@ -32,14 +32,28 @@
 #include "script/ThreadRef.h"                // RBX::Lua::FunctionRef (CLuaFunction +0x14, 0x24 bytes)
 #include "security/SecurityContext.h"       // RBX::Security::Identities (CLuaFunction +0x38)
 
+namespace RBX
+{
+	class DataModel;                         // CLuaHtmlView::dataModel (+0x100); defined by v8datamodel/DataModel.h
+}
+
 // ILuaFunction: the dual interface of CLuaFunction. IID {D5AB3A9C-C462-48BA-A430-34B227340E42} (008164a8, compared by
 // InterfaceSupportsErrorInfo 00417e20; the first COM map entry 0080ec14 has the same GUID at 0080ec44, offset 4).
 // Its vtable is the second one of CComObject<CLuaFunction> (0080ebd8: IUnknown and IDispatchImpl slots 0..6, then
 // its own methods 0042e0c0 (slot 7: four VARIANTs by value and a VARIANT* result, calls the FunctionRef) and 0042da40
-// (slot 8: returns E_NOTIMPL)). Those two methods have no proven names or parameter types and are not declared here.
+// (slot 8: returns E_NOTIMPL, ret 0xc; its second argument receives makeSafeArray(NULL) 004165e0)). Slot 7 is Call: its
+// catch prints "CLuaFunction::Call failed, %s" (00810714). Slot 8 has no proven name or first-parameter type and is
+// not declared here.
 struct __declspec(uuid("D5AB3A9C-C462-48BA-A430-34B227340E42")) __declspec(novtable) ILuaFunction : public IDispatch
 {
+    // INFERRED: parameter names (types from the 0x48-byte argument area and the VariantCopy / valueToVariant uses).
+    virtual HRESULT STDMETHODCALLTYPE Call(VARIANT arg1, VARIANT arg2, VARIANT arg3, VARIANT arg4, VARIANT* result) = 0;
 };
+
+// The coclass CLSID: {7FD4F714-8BA6-47D0-ABBF-0D6F1163521A} at 00816528, the entry after CLSID_Content (00816518) in
+// the type library's GUID table; CLuaFunction::Call 0042e38c passes it to reportWorkspaceSiteError. INFERRED: name,
+// from the CComCoClass<CLuaFunction, &CLSID_LuaFunction> RTTI.
+extern const CLSID CLSID_LuaFunction;
 
 // CLuaFunction: the COM object a Lua function is handed to the page through (RTTI CComObject<CLuaFunction> 0087cfe0
 // / 0087cdd0, CComContainedObject / CComAggObject / CComCoClass<CLuaFunction, &CLSID_LuaFunction> type descriptors).
@@ -50,26 +64,31 @@ struct __declspec(uuid("D5AB3A9C-C462-48BA-A430-34B227340E42")) __declspec(novta
 // ~FunctionRef 00594470 on +0x14, then the shared_ptr release (+0x10); ~CComObject 00417ea0 stores m_dwRef =
 // 0xc0000001 and unlocks the module. AddRef (00417e70, ICF-shared) is a plain `inc [this+8]`: single-threaded model.
 // CComCoClass and IDispatchImpl<ILuaFunction, ...> add no data and are not declared (their GUID arguments are not
-// derived). Only DHTMLWindow::doSetCallback 00417b40 uses the layout natively (function, +0x14).
+// derived). DHTMLWindow::doSetCallback 00417b40 (function, +0x14) and CLuaFunction::Call 0042e0c0 use the layout natively.
 class CLuaFunction : public ATL::CComObjectRootEx<ATL::CComSingleThreadModel>, public ISupportErrorInfo,
                      public ILuaFunction
 {
 public:
-    // +0x0c: Invoke 0042e0c0 copies it as a shared_ptr (px +0xc, pn +0x10 with a lock xadd on pn+4) and asks
-    // ServiceProvider::create<ScriptContext> 0042dfd0 with its pointer.
-    boost::shared_ptr<RBX::Instance> context;   // INFERRED: pointee type (only the shared_ptr shape and the
-                                                //   ServiceProvider lookup are visible)
+    // 0042e0c0 (ILuaFunction slot 7): the FunctionRef called through ScriptContext::call 005af830 under the
+    // DataModel lock and an Impersonator(identity); the first result goes to *result (valueToVariant 00416370).
+    STDMETHOD(Call)(VARIANT arg1, VARIANT arg2, VARIANT arg3, VARIANT arg4, VARIANT* result);
+
+    // +0x0c: Call 0042e0c0 copies it into DataModel::Lock::Lock(shared_ptr<const DataModel>) 00411b40 (px +0xc, pn
+    // +0x10 with a lock xadd on pn+4) and asks ServiceProvider::create<ScriptContext> 0042dfd0 with its pointer.
+    boost::shared_ptr<RBX::DataModel> dataModel;   // INFERRED: name
     RBX::Lua::FunctionRef function;             // +0x14 (assigned by DHTMLWindow::doSetCallback 00417b40)
-    // +0x38: Invoke 0042e0c0 passes it to Security::Impersonator::Impersonator(Identities) 0042bc10.
+    // +0x38: Call 0042e0c0 passes it to Security::Impersonator::Impersonator(Identities) 0042bc10.
     RBX::Security::Identities identity;         // INFERRED: name (type from the Impersonator argument)
 };
 
 // CLuaHtmlView: the CHtmlView-based browser view of the HtmlWindow. Only partially declared: the image keeps no
 // constructor, vtable or RTTI for it (only its nested Binder has RTTI), so neither its exact base nor its size is
 // derivable. Members used by native code: the CLuaFunction pointer at +0xfc (DHTMLWindow::doSetCallback 00417b89:
-// `mov ecx, [view + 0xfc]; add ecx, 0x14`, no null test). Members not declared yet: +0x100/+0x104 (read by
-// 0042b60b / 0042b618, copied by 0042cb5a as a shared_ptr-like pair), +0x108 / +0x10c (0042c1ee / 0042c43e) and the
-// container at +0x110 (+0x124; 0042b63e, 0042caba).
+// `mov ecx, [view + 0xfc]; add ecx, 0x14`, no null test), the DataModel at +0x100/+0x104 (unbindAll 0042b60b /
+// 0042b618 and bindElement 0042cb5a hand it to DataModel::Lock::Lock(shared_ptr<const DataModel>) 00411b40) and the
+// Binder list at +0x110 (unbindAll clears it, 0042b63e -> 0042b390; bindElement walks it from the head +0x124 and
+// push_backs a new shared_ptr<Binder>, 004af080). The [x + 0x108] / [x + 0x10c] reads at 0042c1ee / 0042c43e are
+// IHTMLElement2::attachEvent / detachEvent vtable slots in the Binder, not CLuaHtmlView members.
 class CLuaHtmlView : public CHtmlView
 {
 public:
@@ -89,6 +108,17 @@ public:
     DWORD unknownF8;                            // +0xf8 INFERRED
     CLuaFunction* callback;                     // +0xfc INFERRED: pointee type (CComObject<CLuaFunction> starts at
                                                 //   CLuaFunction; +0x14 is its FunctionRef)
+    boost::shared_ptr<RBX::DataModel> dataModel;   // +0x100 (px), +0x104 (pn); INFERRED: name (the pointee type comes
+                                                   //   from the DataModel::Lock it is converted to)
+    // INFERRED: +0x108..+0x10f. The Binder list starts at +0x110 and no surviving code reads or writes these 8 bytes.
+    DWORD unknown108;                           // +0x108 INFERRED
+    DWORD unknown10C;                           // +0x10c INFERRED
+    std::list<boost::shared_ptr<Binder> > binders;   // +0x110 (0x1c: head +0x124, size +0x128); INFERRED: name
+
+private:
+    // 0042a930 (cdecl): COM identity of two interface pointers (IUnknown, then IObjectIdentity::IsEqualObject),
+    // used by bindElement to find the Binder of an element. INFERRED: name and its place as a static member.
+    static bool isSameObject(IUnknown* first, IUnknown* second);
 };
 
 // sizeof 0x34: the binding view (0042c8c0) news 0x34 before the constructor 0042c0d0 (vptr 00810654). Constructor
@@ -137,6 +167,8 @@ private:
     // 0042c570: the property-changed slot.
     static void onPropertyChanged(const RBX::Reflection::PropertyDescriptor* changed,
                                   const RBX::Reflection::PropertyDescriptor& descriptor, Binder* binder);
+
+    friend class CLuaHtmlView;                             // bindElement 0042c8c0 compares element (+0x30)
 
 protected:
     std::list<boost::shared_ptr<PropBinding> > bindings;   // +0x0c (0x1c: aux proxy +0xc, head +0x20, size +0x24)

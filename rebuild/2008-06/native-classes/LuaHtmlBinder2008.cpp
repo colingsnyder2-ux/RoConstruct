@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <stdexcept>
 #include <boost/bind.hpp>
+#include <G3D/format.h>
+#include "v8datamodel/DataModel.h"
 
 namespace {
 // 00565950 (ICF-shared): what the event handler calls once the binder is gone.
@@ -113,4 +115,81 @@ void CLuaHtmlView::Binder::onPropertyChanged(const RBX::Reflection::PropertyDesc
 {
     if (changed == &descriptor)
         binder->requestUpdate();
+}
+
+// 0042ae50
+void CLuaHtmlView::setBody(const char* html)
+{
+    CComQIPtr<IHTMLDocument2> document(GetHtmlDocument());
+    if (!document)
+        throw std::runtime_error("The HtmlDocument is not loaded");
+    CComPtr<IHTMLElement> body;
+    document->get_body(&body);
+    if (!body)
+        throw std::runtime_error("The HtmlDocument does not contain a body");
+    body->put_innerHTML(CComBSTR(html));
+}
+
+// 0042b5f0
+void CLuaHtmlView::unbindAll()
+{
+    RBX::DataModel::Lock lock(dataModel);
+    binders.clear();
+}
+
+// 0042a930
+bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
+{
+    CComPtr<IUnknown> firstUnknown;
+    CComPtr<IUnknown> secondUnknown;
+    CComPtr<IObjectIdentity> identity;
+    if (first == second)
+        return true;
+    if (first == NULL || second == NULL)
+        return false;
+    first->QueryInterface(IID_IUnknown, (void**)&firstUnknown);
+    second->QueryInterface(IID_IUnknown, (void**)&secondUnknown);
+    if (firstUnknown != secondUnknown)
+    {
+        if (firstUnknown == NULL || secondUnknown == NULL)
+            return false;
+        if (FAILED(firstUnknown->QueryInterface(IID_IObjectIdentity, (void**)&identity)) || identity == NULL)
+            return false;
+        if (identity->IsEqualObject(secondUnknown) != S_OK)
+            return false;
+    }
+    return true;
+}
+
+// 0042c8c0
+void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
+                               const RBX::Reflection::PropertyDescriptor& property, const char* htmlElementId)
+{
+    CComQIPtr<IHTMLDocument2> document(GetHtmlDocument());
+    if (!document)
+        throw std::runtime_error("The HtmlDocument is not loaded");
+    CComPtr<IHTMLElementCollection> all;
+    document->get_all(&all);
+    CComPtr<IDispatch> dispatch;
+    all->item(CComVariant(htmlElementId), CComVariant(), &dispatch);
+    if (!dispatch)
+        throw std::runtime_error(G3D::format("%s not found", htmlElementId));
+    CComQIPtr<IHTMLInputElement> input(dispatch);
+    if (!input)
+        throw std::runtime_error(G3D::format("%s is not an input element", htmlElementId));
+
+    Binder* binder = NULL;
+    std::list<boost::shared_ptr<Binder> >::iterator it = binders.begin(), end = binders.end();
+    for (; it != end; ++it)
+        if (isSameObject((*it)->element, input))
+            break;
+    if (it != end)
+        binder = it->get();
+    if (!binder)
+    {
+        RBX::DataModel::Lock lock(dataModel);
+        binder = new Binder(input);
+        binders.push_back(boost::shared_ptr<Binder>(binder));
+    }
+    binder->bind(object, property);
 }
