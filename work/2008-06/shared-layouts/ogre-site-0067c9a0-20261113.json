@@ -1,0 +1,30 @@
+{
+ "address": "0067c9a0",
+ "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+ "exact": true,
+ "source_path": "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+ "source_sha256": "5b036cfb1efdc7c8b1208888789733d8bc79bf04b019ad646923b4afebe65f51",
+ "object_sha256": "28b17f9bb650b9623c1d282d48568b50c8bf15f1405e263e7c543ccf15a6d386",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 92.035398,
+  "target_bytes": 113,
+  "candidate_bytes": 113,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 101,
+  "unmasked_differences": 0,
+  "masked_bytes": 12,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 3,
+  "candidate_relocations": 3,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [],
+ "indexed_bytes": 87,
+ "full_body_bytes": 113,
+ "scope": "Authentic Ogre Plane STL helper, full contiguous catch range exact. Local native code/data evidence; EH/call/provider/runtime gates separate."
+}
