@@ -127,4 +127,3 @@ namespace RBX
 		return value * 1.5f;
 	}
 }
-
