@@ -46,10 +46,17 @@
 //              (canSendItems 004aafc0), +0x2d4d bool (004aaf6f), +0x2d50 RakPeerInterface* peer (AttachPlugin slot
 //              58 in the ctor, DetachPlugin slot 59 in the dtor), +0x2d54 SystemAddress remotePlayerId, +0x2d5c /
 //              +0x2d60 two 4-byte counters (zeroed, not destroyed; 004b73e5, 004b8a18, 004b7d03), 4 bytes alignment.
-//   vtable     slots after Instance's: 16 00565ff0, 17 findTargetPlayer 004ab9a0, 18 wantReplicate 004aaf90, 19 pure,
-//              20 004ab960, 21 canSendItems 004aafc0; slot 12 onServiceProvider 004b87f0, slot 14 write 00416690;
-//              PluginInterface slot 4 Update 004b1240, slot 5 OnReceive 004b8c20. Not declared here (no vtable of
-//              Replicator is emitted from this header).
+//   vtable     008254fc, 22 slots; after Instance's 16: 16 00565ff0 (bool (const Instance*): ICF-shared `mov al,1;
+//              ret 4`; name not derived, no donor counterpart; ClientProxy overrides it with 004a3290, the Server
+//              script-name set lookup), 17 findTargetPlayer 004ab9a0, 18 wantReplicate 004aaf90, 19 onSentMarker(long)
+//              0070bdf0 (an empty `ret 4` ICF-shared with Instance's empty virtuals, not a pure call: donor order
+//              findTargetPlayer, wantReplicate, onSentMarker, remoteDeleteOnDisconnect, canSendItems), 20 004ab960
+//              (donor remoteDeleteOnDisconnect position; reads +0x2c70 Players*), 21 canSendItems 004aafc0 (reads
+//              +0x2d4c); ClientProxy vtable 00823474 keeps 18 and 20 and overrides 16, 17, 19, 21. Slot 12
+//              onServiceProvider 004b87f0, slot 14 write 00416690; PluginInterface (vtable 00825450) slot 4 Update
+//              004b1240, slot 5 OnReceive 004b8c20. Not declared here: slot 16 has no name evidence (declaring 17-21
+//              without it would shift every slot) and no unit emits the Replicator vtable before the constructor
+//              004b9bd0 / destructor 004b96b0 exist, so an inline wantReplicate would land in no object.
 //
 // ReplicatorStatsItem: complete.
 //   RTTI       vtable 00824fbc .?AVReplicatorStatsItem@Replicator@Network@RBX@@ (22 bases) -> Stats::Item (no other

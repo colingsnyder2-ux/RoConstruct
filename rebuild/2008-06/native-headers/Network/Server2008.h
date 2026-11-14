@@ -20,9 +20,11 @@
 //              a std::string at node +0x0c; looked up by ClientProxy 004a3290 through 004a2fa0; name provisional).
 //              The constructor then calls setName(sServer), rakPeer->SetMaximumIncomingConnections(64) (slot 4) and
 //              rakPeer->SetIncomingPassword(API::version.c_str(), API::version.size()) (slot 7; std::string 00970b88).
-//   vtable     slot 2 askAddChild 004a3640 (dynamic_cast<const ClientProxy*>), slot 12 onServiceProvider 004a4100,
-//              slot 14 write 00416690 (ICF-shared `return NULL`), PluginInterface slot 5 OnReceive 004a4dc0 (all
-//              declared only); destructor 004a3540.
+//   vtable     slot 2 askAddChild 004a3640 (dynamic_cast<const ClientProxy*>; declared only), slot 12
+//              onServiceProvider 004a4100 (body in native-classes/NetworkClientServer2008Server.cpp, byte-exact), slot
+//              14 write 00416690 (ICF-shared `return NULL`; declared only), PluginInterface slot 5 OnReceive 004a4dc0
+//              (body in NetworkClientServer2008Server.cpp; not exact yet: it calls ClientProxy::sendTop 004a2ac0, still
+//              open in Network/ClientProxy2008.h); destructor 004a3540.
 //   statics    serverIsPresent 004a40d0: ServiceProvider::find<Server>(findServiceProvider(context)) != NULL
 //              (findServiceProvider 004898d0, ServiceProvider::find<Server> 004a3e40).
 #include "Network/Peer2008.h"

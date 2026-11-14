@@ -125,6 +125,10 @@ namespace RBX
 			peer = NULL;
 		}
 
+		// 00495e60 / 00495e70: 5-byte tail jumps (jmp 0049fe20 Client::clientIsPresent / jmp 004a40d0
+		// Server::serverIsPresent) in the Players unit. backendProcessing 00495eb0, frontendProcessing 00495e80,
+		// canReportAbuse 00496390 and onChildAdded 0049dc70 / onChildRemoving 0049daa0 call 0049fe20 / 004a40d0
+		// directly, as this source does.
 		bool Players::clientIsPresent(const Instance* context, bool testInDatamodel)
 		{
 			return Client::clientIsPresent(context, testInDatamodel);
