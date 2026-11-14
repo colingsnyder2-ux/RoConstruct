@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // 2008-06 native RBX::FlagStand (inactive): the FlagStand half of the original FlagStand/FlagStandService unit
 // (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470). The FlagStandService half lives in
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.

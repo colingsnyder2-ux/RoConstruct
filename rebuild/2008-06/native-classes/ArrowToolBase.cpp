@@ -30,6 +30,9 @@ namespace RBX
 		onMouseIdle(uiEvent);
 	}
 
+	// 00617780. Frame 0x34: the shared_from temporary (frame +0) shares its slot with the by-value decal argument's
+	// unwind pointer (mov [esp+0x18], esp at 006178dc), so the FilteredSelection client and the DragTool call sit in
+	// their own block. Rejected (frame 0x38): no inner block; shift-first early return; `if (!isSelected) setSelection`.
 	MouseCommand* ArrowToolBase::onMouseDown(const UIEvent& uiEvent)
 	{
 		RBXASSERT(uiEvent.eventType == UIEvent::MOUSE_LEFT_BUTTON_DOWN);
@@ -56,8 +59,10 @@ namespace RBX
 				{
 					selection->setSelection(top);
 				}
-				ServiceClient<FilteredSelection<Instance>> instanceSelection(workspace);
-				return DragTool::onMouseDown(part, hitWorld, instanceSelection->items(), uiEvent, workspace, decal);
+				{
+					ServiceClient<FilteredSelection<Instance>> instanceSelection(workspace);
+					return DragTool::onMouseDown(part, hitWorld, instanceSelection->items(), uiEvent, workspace, decal);
+				}
 			}
 			else
 			{
