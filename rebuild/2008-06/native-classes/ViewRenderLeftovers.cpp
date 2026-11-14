@@ -10,8 +10,15 @@
 // Already defined elsewhere (not duplicated): ViewNew EndcapTransform 004fd4a0 / CylinderTransform 004fd530
 // (ViewNewCylinderMesh.cpp), LevelBuilder::offset 004f1ff0 (ViewNew/QuadVolume.h inline), CameraVerb::isEnabled
 // 00565950 (NativeCameraCommands.h inline, ICF `return true`), ArrowTool::isSticky 005a04b0 (tool/ToolsArrow.h inline).
+// The util/Sound.cpp unit negates Vector3 componentwise in x, y, z order (005bc334..005bc354), as SoundServiceStock.cpp.
+#include "axis-vector-negation/G3D/Vector3.h"
 #include "util/Handle.h"
 #include "util/Sound.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/PVInstance.h"
+#include "v8datamodel/Stats.h"
+#include <G3D/System.h>
 #include <fmod.hpp>
 
 namespace RBX
@@ -61,5 +68,121 @@ void SoundServiceStatsItem::update()
 		std::string disabled("-disabled-");
 		val = 0;
 		sValue = disabled;
+	}
+}
+
+// SoundService members of the util/Sound.cpp unit (005bc2c0 sits before SoundChannel::updateListenState 005bc5b0;
+// 005bdcf0 follows SoundChannel::setPlayCount 005bda10). They are built here, not in SoundChannel.cpp, because the
+// FMOD subset of native-headers/SoundChannel/SoundChannel.h has no System::set3DListenerAttributes / update and no
+// FMOD_VECTOR; this unit uses util/Sound.h with the SDK fmod.hpp. Layout (util/Sound.h, confirmed by the accesses):
+// Listener<RunService, Heartbeat> +0x130, system +0x134, statsItem +0x168, nextGarbageCollectTime +0x178,
+// loadedSounds +0x180, loaded3DSounds +0x1a0.
+namespace RBX
+{
+	namespace Soundscape
+	{
+		// INFERRED: name (same declaration as SoundChannel.cpp). 005b87a0 logs a failed FMOD result (cdecl, no throw).
+		void logFmodResult(FMOD_RESULT result); // 005b87a0
+		// INFERRED: name. 005b70c0 (cdecl, two pointer arguments, returns bool): zeroes denormal components
+		// (Math::isDenormal 005dd7b0), returns false when 005dd8b0 rejects the vector, else scales it into the FMOD vector.
+		bool toFmodVector(const G3D::Vector3& v, FMOD_VECTOR& out); // 005b70c0
+
+		// Inlined into onEvent 005bc2c0 (005bc41a..005bc452), where its fields are addressed from the full SoundService
+		// pointer (edi = this - 0x130, [edi+0x178]) while system is read from the listener this; no out-of-line copy
+		// survives in the image (unreferenced, removed by the linker). getTick 005083d0 `fcomp; test ah, 5; jnp skip`:
+		// the gc runs unless tick < nextGarbageCollectTime. Interval 5.0 (008358a8).
+		void SoundService::garbageCollectSounds()
+		{
+			if (G3D::System::getTick() < nextGarbageCollectTime)
+				return;
+			gcSounds(loadedSounds);
+			gcSounds(loaded3DSounds);
+			nextGarbageCollectTime = G3D::System::getTick() + 5.0;
+		}
+
+		// 005bc2c0 (Listener<RunService, Heartbeat> slot: this is the listener subobject, system at +4).
+		// find<Workspace>(const Instance*) 00491e50, Camera::getCameraCoordinateFrame 0045af00, lookVector 005187f0,
+		// Matrix3::getColumn(1) 00513240, getCameraSubjectInstance 005cc410, dynamic_cast Instance 0092907c ->
+		// PVInstance 00947f1c, getPrimaryPart through the IPrimaryPart virtual base (PVInstance vbptr +0x134),
+		// PartInstance velocity 00599850, getTick 005083d0, gcSounds 005ba2e0, 5.0 (008358a8).
+		// Rejected variants (do not repeat): 1. the gc block written in place as `if (getTick() >= next)` (test ah,1 /
+		// jne; fields addressed from the listener this); 2. default G3D Vector3 negation (y, z, x order plus a copy);
+		// 3. pos/forward/up declared together (frame 0x6c instead of 0x60).
+		void SoundService::onEvent(const RunService*, Heartbeat)
+		{
+			if (system)
+			{
+				if (Workspace* workspace = ServiceProvider::find<Workspace>(this))
+				{
+					if (Camera* camera = workspace->getCamera())
+					{
+						G3D::CoordinateFrame cf = camera->getCameraCoordinateFrame();
+						// Each FMOD vector is declared in its own scope: up shares the stack slot of the lookVector temporary
+						// (both at esp+0x18) and vel that of the negated vector (esp+0xc).
+						FMOD_VECTOR pos;
+						if (toFmodVector(cf.translation, pos))
+						{
+							FMOD_VECTOR forward;
+							if (toFmodVector(-cf.lookVector(), forward))
+							{
+								FMOD_VECTOR up;
+								if (toFmodVector(cf.upVector(), up))
+								{
+									FMOD_VECTOR vel;
+									vel.x = vel.y = vel.z = 0;
+									if (PVInstance* pv = dynamic_cast<PVInstance*>(camera->getCameraSubjectInstance()))
+									{
+										if (PartInstance* part = pv->getPrimaryPart())
+											toFmodVector(part->getLinearVelocity(), vel);
+									}
+									logFmodResult(system->set3DListenerAttributes(0, &pos, &vel, &forward, &up));
+								}
+							}
+						}
+					}
+				}
+
+				garbageCollectSounds();
+
+				logFmodResult(system->update());
+			}
+		}
+
+		// 005bdcf0: find<RunService>() const 00452c80, removeListener 005e5a80 / addListener 004218a0 (Notifier at
+		// RunService +0x130), Instance::setParent 0055a8f0, shared_ptr<Instance>::reset 00456e80, closeFmod 005ba970,
+		// openFmod 005ba060, loadStockSounds 005bdb10, create<StatsService>() const 00458610,
+		// Creatable<Instance>::create<SoundServiceStatsItem> 005bd1d0. No Instance::onServiceProvider call.
+		// Byte-identical (311 B) but held by reference identity: find<RunService>() const is bound to 004530f0 (the
+		// registry's create<RunService>) while the original calls 00452c80, as for Workspace::onServiceProvider 005a66b0;
+		// closeFmod / openFmod / create<StatsService> are unproven references. Rejected variant (do not repeat):
+		//   1. connect(newProvider->find<RunService>(), this) inside `if (newProvider)`: the listener pointer is formed
+		//      after the newProvider test and ebp is pushed late (prologue push ebx/esi/edi only).
+		void SoundService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+		{
+			Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
+
+			if (statsItem)
+			{
+				statsItem->setParent(NULL);
+				statsItem.reset();
+			}
+
+			if (oldProvider)
+				closeFmod();
+
+			Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
+
+			if (newProvider)
+			{
+				openFmod();
+				loadStockSounds();
+
+				if (Stats::StatsService* stats = newProvider->create<Stats::StatsService>())
+				{
+					statsItem = Creatable<Instance>::create<SoundServiceStatsItem>(this);
+					statsItem->setParent(stats);
+				}
+			}
+		}
 	}
 }
