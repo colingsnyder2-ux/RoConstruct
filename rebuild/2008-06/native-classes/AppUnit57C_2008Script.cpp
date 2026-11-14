@@ -129,14 +129,18 @@ void Script::onAncestorChanged(const AncestorChanged& event)
     }
 }
 
-// 00586bf0: NOT exact (see the receipt)
+// 00586bf0: after find<ScriptContext>(old) 0042de90 / removeScript 005ad030 the original tests newProvider
+// (00586c0f), calls requestCode 00586b10 (00586c1d) into a discarded shared_ptr (released at 00586c22..00586c52)
+// and returns: no Instance::onServiceProvider call in 2008 (as BodyMover 00632db0 / DebrisService 0063c280).
+// Rejected: the donor tail `Instance::onServiceProvider(oldProvider, newProvider);` (call the original lacks).
 void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 {
 	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
 	{
 		sc->removeScript(this);
 	}
-	Instance::onServiceProvider(oldProvider, newProvider);
+	if (newProvider)
+		requestCode();	// prefetch the script source when entering a provider
 }
 
 // 00586b10: NOT exact (see the receipt)
