@@ -31,6 +31,59 @@ namespace RBX
 {
 	// Defined in native-classes/Hopper.cpp (00979d18). Proposal: drop `static` there so this unit can link to it.
 	extern Reflection::SignalDesc<HopperBin, void(boost::shared_ptr<Instance>)> desc_Selected;
+	// Defined in native-classes/Hopper.cpp (`static`, dynamic initializer 007f5df0; setTextureId passes 00979cbc to
+	// raisePropertyChanged). Same proposal as desc_Selected: drop `static` there so this unit can link to it.
+	extern Reflection::PropDescriptor<BackpackItem, TextureId> desc_TextureId;
+
+	// 005cfcd0 (vtable slot render2d; donor tools/rbxgs v8datamodel/Hopper.cpp body). TopMenuBar::render2d 00574050,
+	// findFirstChildOfType<BackpackItem> 005cfc30 (out of line in this unit), Adorn slot 4 getViewport, GuiRoot::
+	// normalizedFontSize(12) 00573770, Color3::white 00514a60 widened to Color4 (alpha fld1), Color4::zero 007baf10
+	// (Color4::clear() is ICF-identical to it), literal 0083ad60, Adorn slot 13 drawFont2D(XALIGN_LEFT 1,
+	// YALIGN_BOTTOM 3, PROPORTIONAL_SPACING 0).
+	// NEAR MISS (249/251 bytes): the only difference is the drawFont2D vtable load. The target computes the slot
+	// address early (`mov edi, [esi]; add edi, 0x34` before the Color4::zero call, then `mov edx, [edi]`); this unit
+	// emits `mov edx, [edi + 0x34]` (and the `je` target moves by 2). Rejected variants: (1) G3D::Color4::clear()
+	// (donor) and (2) G3D::Color4::zero() (registry name of 007baf10): identical output. Kept zero().
+	void StarterPackService::render2d(Adorn* adorn)
+	{
+		TopMenuBar::render2d(adorn);
+
+		if (findFirstChildOfType<BackpackItem>())
+		{
+			G3D::Rect2D viewPort = adorn->getViewport();
+			int fontSize = GuiRoot::normalizedFontSize(12);
+			G3D::Vector2 pos2d = viewPort.x0y1() + G3D::Vector2(4.0f, -4.0f);
+
+			adorn->drawFont2D(
+				"StarterPack - these items will be given to each new player",
+				pos2d,
+				fontSize,
+				G3D::Color3::white(),
+				G3D::Color4::zero(),
+				Adorn::XALIGN_LEFT,
+				Adorn::YALIGN_BOTTOM,
+				Adorn::PROPORTIONAL_SPACING
+			);
+		}
+	}
+
+	// 005d11e0 (setter of desc_TextureId). ContentId operator!= 0055bd60 (value first), std::string::operator= then the
+	// Name* copy (+0x19c), ServiceProvider::find<Workspace> 00491e50, Workspace::raiseDrawChanged inline
+	// (Notifier<Workspace, DrawChanged>::raise 00576940 on Workspace +0x344), raisePropertyChanged 0040db00. The 2008
+	// body has no ContentProvider::requestContentFile call (the donor's later addition).
+	void BackpackItem::setTextureId(const TextureId& value)
+	{
+		if (value != textureId)
+		{
+			textureId = value;
+
+			Workspace* workspace = ServiceProvider::find<Workspace>(this);
+			if (workspace)
+				workspace->raiseDrawChanged();
+
+			raisePropertyChanged(desc_TextureId);
+		}
+	}
 
 	// 005d1240
 	void HopperBin::onSelectScript()
