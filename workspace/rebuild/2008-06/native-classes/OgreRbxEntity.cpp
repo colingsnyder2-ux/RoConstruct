@@ -25,6 +25,12 @@ extern float nativeLodHighMs;
 
 namespace Ogre
 {
+	// INFERRED name: 0067c510 writes the non-owning FrameHistory pointer at +0x274.
+	void RbxEntity::func_0067c510(FrameHistory* history)
+	{
+		mHistory = history;
+	}
+
 	RbxEntity::RbxEntity()
 	{
 		mLodBudget = 20.0f;

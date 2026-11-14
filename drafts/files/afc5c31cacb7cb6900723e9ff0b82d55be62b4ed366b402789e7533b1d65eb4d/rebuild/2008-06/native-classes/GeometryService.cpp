@@ -1,0 +1,88 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
+// 2008-06 native RBX::GeometryService (inactive); evidence in native-headers/v8datamodel/GeometryService.h.
+// Verified by tests/record_native_geometry_service.py. Unit 0062d8f0..0062e070 plus class descriptor 005c0470 and
+// doDeclare 005bfa30 / callDoDeclare 005bffc0. getPartsTouchingExtents 0062db60 reads the Workspace world (+0x2e4)
+// through the native Workspace.h and World::getContactManager through native-headers/engine-world (World +0x84; the
+// recorder puts that directory first, as record_native_humanoid2008.py does). getHitLocationFilterStairs 0062dc10
+// formerly compiled only under NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of
+// tests/NativeGeometryServicePendingWorkspace.h; the native Workspace.h now replaces it. It also constructs RBX::FilterStairs,
+// declared by the native v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
+// >>> native-status (generated) -- do not edit >>>
+// GeometryService | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (mixed 2)
+// <<< native-status | src 5ba08c57 | roc native-status --write
+#include "v8datamodel/GeometryService.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8world/World.h"
+#include "v8world/ContactManager.h"
+#include "v8datamodel/Filters2008.h"
+#include <vector>
+
+namespace RBX
+{
+	char sGeometryService[] = "Geometry"; // 0095c530 (.data; doDeclare 005bfa30, classDescriptor 005c0470, ctor 0062def7)
+
+	// Template members the shared headers only declare (same definitions as DebrisService.cpp).
+	template<class C, class D, const char* N>
+	const Name& FactoryProduct<C, D, N>::className() { return Name::declare<N>(); }
+
+	template<class C, class D, const char* N>
+	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
+
+	template<class C, class D, const char* N>
+	template<typename Arg0Type>
+	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // 0062ddc0
+		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+
+	// 0062dee0: the class-name array itself is the Instance name (push 0095c530), passed as const char*
+	// (DescribedCreatable<..>::DescribedCreatable<const char*> 0062ddc0).
+	GeometryService::GeometryService()
+		: Base(static_cast<const char*>(sGeometryService)),
+		  workspace(NULL)
+	{
+	}
+
+	// 0062dda0: no Instance::onServiceProvider call; workspace is kept when newProvider is NULL.
+	void GeometryService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		if (newProvider)
+			workspace = newProvider->create<Workspace>();
+	}
+
+	// 0062db60
+	void GeometryService::getPartsTouchingExtents(const Extents& extents, const Primitive* ignore, G3D::Array<PartInstance*>& result)
+	{
+		if (workspace)
+		{
+			ContactManager& contactManager = workspace->getWorld()->getContactManager();
+			primitives.fastClear();
+			contactManager.getPrimitivesTouchingExtents(extents, ignore, primitives);
+			for (int i = 0; i < primitives.size(); ++i)
+				result.append(PartInstance::fromPrimitive(primitives[i]));
+		}
+	}
+
+	// 0062dc10 (the NATIVE_GEOMETRYSERVICE_PENDING guard is gone: native Workspace.h now provides the inline
+	// Workspace +0x2e4 world and native-flags carry the recorder's /fp:fast and engine-world include)
+	// 0062dccc compares the getHit result with the cached zero register (cmp eax, ebx): a named Primitive* local
+	// matches. Rejected: `if (!getHit(...))` and `if (getHit(...) == NULL)` (both emit test eax, eax).
+	G3D::Vector3 GeometryService::getHitLocationFilterStairs(Instance* filterModel, G3D::Ray ray)
+	{
+		if (!workspace)
+			return G3D::Vector3::ZERO;
+
+		FilterStairs filter(filterModel);
+		ContactManager& contactManager = workspace->getWorld()->getContactManager();
+		G3D::Vector3 hitPoint(0.0f, 0.0f, 0.0f);
+		std::vector<const Primitive*> ignore;
+		Primitive* hit = contactManager.getHit(ray, &ignore, &filter, hitPoint);
+		if (!hit)
+			hitPoint = ray.unit().origin + ray.direction;
+
+		return hitPoint;
+	}
+}
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sGeometryService>();

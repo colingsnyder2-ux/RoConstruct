@@ -1,0 +1,217 @@
+{
+  "scope": "Candidate references only; identities, data, ABI, selection and runtime still require review",
+  "run": "20261114-020550-ccfc7ba9",
+  "object_sha256": "e542edd13fbf8407f7a28d3cf63328d195952ef13d2739040435b18bdf8dc54b",
+  "functions": [
+    {
+      "symbol": "_fill_window",
+      "address": "0079fdc0",
+      "references": [
+        {
+          "offset": 41,
+          "symbol": "_memcpy",
+          "opcode": "0xe8",
+          "target": "006a17e0"
+        },
+        {
+          "offset": 147,
+          "symbol": "_read_buf",
+          "opcode": "0xe8",
+          "target": "0079fb50"
+        }
+      ]
+    },
+    {
+      "symbol": "_deflate_stored",
+      "address": "0079fea0",
+      "references": [
+        {
+          "offset": 32,
+          "symbol": "_fill_window",
+          "opcode": "0xe8",
+          "target": "0079fdc0"
+        },
+        {
+          "offset": 101,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 117,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        },
+        {
+          "offset": 168,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 184,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        },
+        {
+          "offset": 247,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 263,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        }
+      ]
+    },
+    {
+      "symbol": "_deflate_fast",
+      "address": "0079ffd0",
+      "references": [
+        {
+          "offset": 27,
+          "symbol": "_fill_window",
+          "opcode": "0xe8",
+          "target": "0079fdc0"
+        },
+        {
+          "offset": 180,
+          "symbol": "_longest_match",
+          "opcode": "0xe8",
+          "target": "0079fbc0"
+        },
+        {
+          "offset": 199,
+          "symbol": "_longest_match_fast",
+          "opcode": "0xe8",
+          "target": "0079fd20"
+        },
+        {
+          "offset": 278,
+          "symbol": "__length_code",
+          "opcode": "0x90",
+          "target": null
+        },
+        {
+          "offset": 319,
+          "symbol": "__dist_code",
+          "opcode": "0x81",
+          "target": null
+        },
+        {
+          "offset": 334,
+          "symbol": "__dist_code",
+          "opcode": "0x82",
+          "target": null
+        },
+        {
+          "offset": 659,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 675,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        },
+        {
+          "offset": 732,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 748,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        }
+      ]
+    },
+    {
+      "symbol": "_deflate_slow",
+      "address": "007a02f0",
+      "references": [
+        {
+          "offset": 33,
+          "symbol": "_fill_window",
+          "opcode": "0xe8",
+          "target": "0079fdc0"
+        },
+        {
+          "offset": 223,
+          "symbol": "_longest_match",
+          "opcode": "0xe8",
+          "target": "0079fbc0"
+        },
+        {
+          "offset": 242,
+          "symbol": "_longest_match_fast",
+          "opcode": "0xe8",
+          "target": "0079fd20"
+        },
+        {
+          "offset": 383,
+          "symbol": "__length_code",
+          "opcode": "0x90",
+          "target": null
+        },
+        {
+          "offset": 424,
+          "symbol": "__dist_code",
+          "opcode": "0x81",
+          "target": null
+        },
+        {
+          "offset": 439,
+          "symbol": "__dist_code",
+          "opcode": "0x82",
+          "target": null
+        },
+        {
+          "offset": 633,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 649,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        },
+        {
+          "offset": 793,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 809,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        },
+        {
+          "offset": 954,
+          "symbol": "__tr_flush_block",
+          "opcode": "0xe8",
+          "target": "007a5a00"
+        },
+        {
+          "offset": 970,
+          "symbol": "_flush_pending",
+          "opcode": "0xe8",
+          "target": "007a64a0"
+        }
+      ]
+    }
+  ]
+}

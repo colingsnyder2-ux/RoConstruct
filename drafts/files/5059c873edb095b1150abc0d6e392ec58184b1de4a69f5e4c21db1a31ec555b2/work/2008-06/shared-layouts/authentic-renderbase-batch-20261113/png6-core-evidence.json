@@ -1,0 +1,43 @@
+{
+  "scope": "Local evidence; no selected provider, complete reference closure, ABI or runtime",
+  "object_sha256": "6bf4b90d52aeb91ff878be237c4c1f1320e457686dfd657b7ec3b6a001ed1b3f",
+  "run": "work/2008-06/native-check-runs/20261114-020320-f237539e",
+  "functions": [
+    {
+      "symbol": "_png_zfree",
+      "address": "0051dd50",
+      "references": [
+        {
+          "offset": 1,
+          "symbol": "_png_free",
+          "original_opcode": "0xe9",
+          "original_target": "0052a500"
+        }
+      ]
+    },
+    {
+      "symbol": "_png_reset_crc",
+      "address": "0051dd60",
+      "references": [
+        {
+          "offset": 7,
+          "symbol": "_crc32@12",
+          "original_opcode": "0xe8",
+          "original_target": "007a8110"
+        }
+      ]
+    },
+    {
+      "symbol": "_png_calculate_crc",
+      "address": "0051dd80",
+      "references": [
+        {
+          "offset": 58,
+          "symbol": "_crc32@12",
+          "original_opcode": "0xe8",
+          "original_target": "007a8110"
+        }
+      ]
+    }
+  ]
+}

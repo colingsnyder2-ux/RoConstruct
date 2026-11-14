@@ -1,0 +1,1038 @@
+{
+  "class": "RBX RunService unit of the application range 0054c000..00558000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit54c-2008/NativeAppUnit54CLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit54c-2008/NativeAppUnit54CLayout.cpp"
+    ],
+    "run": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit54c-2008/NativeAppUnit54C_2008_run.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit54C_2008RunService.cpp"
+    ],
+    "run_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit54c-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit54c-2008/NativeAppUnit54C_2008_run_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit54C_2008RunService.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit54c_2008.py": "eb9a9e259d39ea60d55360f8199dbddac92617387046062200e40b4070186d78",
+    "rebuild/2008-06/native-classes/AppUnit54C_2008RunService.cpp": "5d4725f54db81eab91930fc164650e9abac034d11013ff6c633e6a8aa8bb692f",
+    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "f6c39ef2034fcfd20b2edcae75355c71e5539a2be0db3ac80673911e67ad95e5",
+    "rebuild/2008-06/native-headers/util/Events.h": "39a843b3c01f563b19f81d44bf218ee2e9dfe6aed61212e43962617ab6bd82b3"
+  },
+  "objects": {
+    "layout": "084d3af71ad629ffcc6d11274b03fe4b0570f6b4224253db8c41aaf69639ec28",
+    "run": "79d7efedb072ecf3c193915178b3629a9e3fe5cd49bf836bd653964b707e82f6",
+    "run_pending": "79640495ec61906940eb026b5c6e379c72f74493e4d34d150127a3fa3b56a18b"
+  },
+  "layout": {
+    "runService": "0x2d8"
+  },
+  "rtti_bases_runservice": {
+    ".?AVRunService@RBX@@": 0,
+    ".?AV?$DescribedCreatable@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@": 0,
+    ".?AV?$Described@VRunService@RBX@@$1?sRunService@2@3QBDBV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@2@@Reflection@RBX@@": 0,
+    ".?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@": 0,
+    ".?AVInstance@RBX@@": 0,
+    ".?AV?$enable_shared_from_this@VInstance@RBX@@@boost@@": 228,
+    ".?AV?$GuidItem@VInstance@RBX@@@RBX@@": 0,
+    ".?AV?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@": 16,
+    ".?AV?$Creatable@VInstance@RBX@@@RBX@@": 16,
+    ".?AVObject@RBX@@": 16,
+    ".?AV?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@": 20,
+    ".?AVDescribedBase@Reflection@RBX@@": 20,
+    ".?AVSignalSource@Reflection@RBX@@": 20,
+    ".?AVDebugable@RBX@@": 32,
+    ".?AV?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@": 36,
+    ".?AV?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@": 68,
+    ".?AV?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@": 100,
+    ".?AV?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@": 132,
+    ".?AV?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@": 164,
+    ".?AV?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@": 196,
+    ".?AVnoncopyable@noncopyable_@boost@@": 236,
+    ".?AVService@RBX@@": 433,
+    ".?AV?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@": 304,
+    ".?AV?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@": 336,
+    ".?AV?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@": 368,
+    ".?AV?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@": 400
+  },
+  "unit_map": {
+    "renderbase-templates 0054c000..0055172f": "STL / G3D template instantiations of the RenderBase render unit that starts below the range: every row is reached only from 00540000..0054bfff (Mesh ctor 00548570 / dtor 00548a90, AggregatingSceneManager and Chunk members) or from rows of this block: std::vector _Buy / _Insert_n / _Ufill for 2-byte and 0xc-byte elements (Mesh +0x50 / +0x68, see the TANDEM RenderBase proposal), std::map/set _Tree members (\"map/set<T> too long\" in 0054e6b0 / 0054f3f0, \"invalid map/set<T> iterator\" in 005500a0), G3D::Array helpers, and the catch / unwind funclets 0054daee / 0054fadc / 0054fc1c / 00550acc. render-scene-working.json counts 0054da40 / 0054e310 / 0054ef60. Roblox-instantiated templates of the render unit (app-unit540 / render-scene owners): not built here.",
+    "texture-proxy 00551730..00551f2f": "TextureProxy factories (\"Invalid factory type\" in 00551730 / 00551820 / 00551920 / 00551a30) and the TextureProxy@Render (vtable 0082d140), TextureProxyBase (0082d168) and TextureProxy@RenderNew (0082d18c) members; render-material-working.json counts 00551b30..00551f00. Not built here.",
+    "renderbase-aggregate-chunk 00551f30..0055390f": "RenderBase::AggregateChunk (vtable 0082d258: 00551f30 / 00552160, ??_G 00552780) and the render-scene tail (Chunk / ShadowSurface helpers 005528a0..00553910, \"vector<T> too long\" 00553270); render-scene-working.json counts 00551f30 / 00552160 / 00552690..005527f0 / 005530e0 / 00553220 / 00553270. Not built here.",
+    "name 00553910..0055432f": "util/Name.cpp: Name::declare(const char*, int) 00553f90 (307 callers), lookup(string) 00554180, getNullName 00554270, lookup(const char*) 00554290 (evidence names), the name-map mutex accessor 00553910 / thunk 00553970, the map<string, Name*> _Lbound 00553980 and the ICF-shared std::map _Tree erase / dtor bodies 005539d0 / 00553ca0 / 00553d80 (evidence names under map<BrickColor::Number, int>; 42 callers across units), the static helpers 00553df0 / 00553e60 / 00553f20 and the declare thunk 00554160. Name owner (native util/Name.h core header and native-classes/accepted/App/util/Name.cpp): not built here.",
+    "run-service 00554330..0055730f": "util/RunStateOwner.cpp. Evidence: RTTI .?AVRunService@RBX@@ vtables 0082d404..0082d4c4 (stored by RunService() 00556b00 and ~RunService 00555c00; the ??_E thunks 00555e40..00555ef0 and ??_G 00556410), FactoryProduct<RunService, Instance, sRunService> (3QBDB) dtor 00554350 / ctor 005543b0 / ??_G 00556810 and its ??_E thunks 00554410..00554430 / 005567c0..00556800, DescribedCreatable ctor 00556720, classDescriptor 00556430 (\"RunService\"), getClassName 00555020, the Notifier<RunService, Heartbeat / Stepped / RunTransition / RunState> raises 00554510..00554ae0, setRunState 00554da0, invalidateRunViews 00555350, enqueueTask 00555900 / drainTasks 005559a0, start 00556520 (\"rbx_runProc\"), runProc 00555190 with its helpers 00554880 / 00554e10 / 00554ed0 / 005550a0, the run-view map members 005555e0 / 005556d0 / 005557c0 / 00555830, the boost::bind / function / signal2<void(float, float)> instantiations 00554810..00554f90, 00555040..00555090, 00555470, 00555780, 005558b0, 00555b70, 00555f00..00556300, 00556500, 00556d20..00557090 and 00557230, the event_Stepped / event_Heartbeat SignalDesc initializers 00556830 / 00556960 and the Run / Pause / Reset BoundFuncDesc initializer 00556a30 (\"bad cast\" 00556aa0), the per-frame raises 00557150 / 005571b0 (one float, ret 4), and the DataModel-called inlines 00554330 (stopRequested +0x248, notify_all +0x264) / 00554460 (runThread +0x27c join). Built here.",
+    "instance 00557310..0055ffff": "v8tree/Instance.cpp: the 00557330 Name static (GUID string \"2AC1A572DB6944B0A65C38C4140AF2F4\", 526 callers), onChildChanged 00557490, contains 005574b0, isAncestorOf2 00557640, isDescendentOf2 00557890, readProperties 00557920, findFirstChildByName 00557950, the Notifier<Instance, ...> raises 00557780..00557e80, the property descriptor instantiations 00557f50.. (evidence names); continues past 00558000. Instance owner (v8tree/Instance.h core header): not built here."
+  },
+  "unit_rows": {
+    "renderbase-templates": {
+      "rows": 130,
+      "span": "0054c000..005516d0"
+    },
+    "texture-proxy": {
+      "rows": 16,
+      "span": "00551730..00551f00"
+    },
+    "renderbase-aggregate-chunk": {
+      "rows": 65,
+      "span": "00551f30..005538b0"
+    },
+    "name": {
+      "rows": 15,
+      "span": "00553910..00554320"
+    },
+    "run-service": {
+      "rows": 102,
+      "span": "00554330..00557230"
+    },
+    "instance": {
+      "rows": 36,
+      "span": "00557310..00557fe0"
+    }
+  },
+  "range_rows_total": 364,
+  "range_rows_counted_by_other_receipts": [
+    "0054da40 counted by render-scene-working.json",
+    "0054e310 counted by render-scene-working.json",
+    "0054ef60 counted by render-scene-working.json",
+    "00551b30 counted by render-material-working.json",
+    "00551bf0 counted by render-material-working.json",
+    "00551c70 counted by render-material-working.json",
+    "00551c90 counted by render-material-working.json",
+    "00551cb0 counted by render-material-working.json",
+    "00551cd0 counted by render-material-working.json",
+    "00551cf0 counted by render-material-working.json",
+    "00551d50 counted by render-material-working.json",
+    "00551d80 counted by render-material-working.json",
+    "00551db0 counted by render-material-working.json",
+    "00551e30 counted by render-material-working.json",
+    "00551f00 counted by render-material-working.json",
+    "00551f30 counted by render-scene-working.json",
+    "00552160 counted by render-scene-working.json",
+    "00552690 counted by render-scene-working.json",
+    "005526b0 counted by render-scene-working.json",
+    "005526d0 counted by render-scene-working.json",
+    "005526e0 counted by render-scene-working.json",
+    "00552720 counted by render-scene-working.json",
+    "00552760 counted by render-scene-working.json",
+    "00552780 counted by render-scene-working.json",
+    "005527f0 counted by render-scene-working.json",
+    "005530e0 counted by render-scene-working.json",
+    "00553220 counted by render-scene-working.json",
+    "00553270 counted by render-scene-working.json"
+  ],
+  "rows": {
+    "run": [
+      {
+        "address": "00556b00",
+        "symbol": "??0RunService@RBX@@QAE@XZ",
+        "size": 531,
+        "target_size": 531,
+        "exact": true,
+        "verified_targets": {
+          "??0?$DescribedCreatable@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@IAE@XZ": "0x556720 (external)",
+          "??0?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@IAE@XZ": "0x5e9ec0 (support body exact at the bound address)",
+          "??0?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@IAE@XZ": "0x5e9ec0 (support body exact at the bound address)",
+          "??0?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IAE@XZ": "0x5e9ec0 (support body exact at the bound address)",
+          "??0?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IAE@XZ": "0x5e9ec0 (support body exact at the bound address)",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VStepped@2@@1@@": "0x82d424 (vtable (RTTI .?AVRunService@RBX@@, offset 0x150))",
+          "__real@3d088889": "0x82d634 (constant 3d088889)",
+          "??_7RunService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82d4c4 (vtable (RTTI .?AVRunService@RBX@@, offset 0x0))",
+          "??_7RunService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82d4b4 (vtable (RTTI .?AVRunService@RBX@@, offset 0x10))",
+          "??_7RunService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82d4ac (vtable (RTTI .?AVRunService@RBX@@, offset 0x14))",
+          "??_7RunService@RBX@@6BDebugable@1@@": "0x82d4a4 (vtable (RTTI .?AVRunService@RBX@@, offset 0x20))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82d494 (vtable (RTTI .?AVRunService@RBX@@, offset 0x24))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82d484 (vtable (RTTI .?AVRunService@RBX@@, offset 0x44))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82d474 (vtable (RTTI .?AVRunService@RBX@@, offset 0x64))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82d464 (vtable (RTTI .?AVRunService@RBX@@, offset 0x84))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82d454 (vtable (RTTI .?AVRunService@RBX@@, offset 0xa4))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82d444 (vtable (RTTI .?AVRunService@RBX@@, offset 0xc4))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VHeartbeat@2@@1@@": "0x82d434 (vtable (RTTI .?AVRunService@RBX@@, offset 0x130))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VRunTransition@2@@1@@": "0x82d414 (vtable (RTTI .?AVRunService@RBX@@, offset 0x170))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@W4RunState@2@@1@@": "0x82d404 (vtable (RTTI .?AVRunService@RBX@@, offset 0x190))",
+          "??0Stopwatch@G3D@@QAE@XZ": "0x512060 (external)",
+          "??0mutex@boost@@QAE@XZ": "0x594c90 (external)",
+          "??0condition_impl@detail@boost@@QAE@XZ": "0x5f1bd0 (external)",
+          "??0?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVIRunView@RBX@@@1@ABV?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@1@@Z": "0x446110 (support body exact at the bound address)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_C@_0M@LAKKMJAC@Run?5Service?$AA@": "0x82d628 (string 'Run Service')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?tick@Stopwatch@G3D@@QAEXXZ": "0x511cf0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0RunService@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00555c00",
+        "symbol": "??1RunService@RBX@@UAE@XZ",
+        "size": 573,
+        "target_size": 573,
+        "exact": true,
+        "verified_targets": {
+          "??_7RunService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82d4c4 (vtable (RTTI .?AVRunService@RBX@@, offset 0x0))",
+          "??_7RunService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82d4b4 (vtable (RTTI .?AVRunService@RBX@@, offset 0x10))",
+          "??_7RunService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82d4ac (vtable (RTTI .?AVRunService@RBX@@, offset 0x14))",
+          "??_7RunService@RBX@@6BDebugable@1@@": "0x82d4a4 (vtable (RTTI .?AVRunService@RBX@@, offset 0x20))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82d494 (vtable (RTTI .?AVRunService@RBX@@, offset 0x24))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82d484 (vtable (RTTI .?AVRunService@RBX@@, offset 0x44))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82d474 (vtable (RTTI .?AVRunService@RBX@@, offset 0x64))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82d464 (vtable (RTTI .?AVRunService@RBX@@, offset 0x84))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82d454 (vtable (RTTI .?AVRunService@RBX@@, offset 0xa4))",
+          "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82d444 (vtable (RTTI .?AVRunService@RBX@@, offset 0xc4))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VHeartbeat@2@@1@@": "0x82d434 (vtable (RTTI .?AVRunService@RBX@@, offset 0x130))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VStepped@2@@1@@": "0x82d424 (vtable (RTTI .?AVRunService@RBX@@, offset 0x150))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VRunTransition@2@@1@@": "0x82d414 (vtable (RTTI .?AVRunService@RBX@@, offset 0x170))",
+          "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@W4RunState@2@@1@@": "0x82d404 (vtable (RTTI .?AVRunService@RBX@@, offset 0x190))",
+          "?tock@Stopwatch@G3D@@QAEXXZ": "0x511df0 (external)",
+          "?_Tidy@?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@IAEXXZ": "0x419b40 (support body exact at the bound address)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1mutex@boost@@QAE@XZ": "0x594cb0 (external)",
+          "??1?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x553d80 (support body exact at the bound address)",
+          "??1thread@boost@@QAE@XZ": "0x5a6840 (external)",
+          "??1condition_impl@detail@boost@@QAE@XZ": "0x5f1c70 (external)",
+          "??1?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@MAE@XZ": "0x554350 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1RunService@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00556410",
+        "symbol": "??_GRunService@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1RunService@RBX@@UAE@XZ": "0x555c00 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555e40",
+        "symbol": "??_ERunService@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555e50",
+        "symbol": "??_ERunService@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555e60",
+        "symbol": "??_ERunService@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555e70",
+        "symbol": "??_ERunService@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555e80",
+        "symbol": "??_ERunService@RBX@@WBDA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555e90",
+        "symbol": "??_ERunService@RBX@@WBFA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555ea0",
+        "symbol": "??_ERunService@RBX@@WBHA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555eb0",
+        "symbol": "??_ERunService@RBX@@WBJA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555ec0",
+        "symbol": "??_ERunService@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555ed0",
+        "symbol": "??_ERunService@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555ee0",
+        "symbol": "??_ERunService@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555ef0",
+        "symbol": "??_ERunService@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERunService@RBX@@UAEPAXI@Z": "0x556410 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00554440",
+        "symbol": "?onAncestorChanged@RunService@RBX@@UAEXABUAncestorChanged@2@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?notify_all@condition_impl@detail@boost@@QAEXXZ": "0x5f1d30 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00554da0",
+        "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {
+          "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z": "0x554ae0 (own row)",
+          "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@@Z": "0x554a60 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00554ae0",
+        "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z": "0x554750 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00554a60",
+        "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@@Z",
+        "size": 123,
+        "target_size": 123,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z": "0x554690 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00554960",
+        "symbol": "?raise@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@IBEXVHeartbeat@2@@Z",
+        "size": 123,
+        "target_size": 123,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@IBEXVHeartbeat@2@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@2@@Z": "0x554510 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005549e0",
+        "symbol": "?raise@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@IBEXVStepped@2@@Z",
+        "size": 123,
+        "target_size": 123,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@IBEXVStepped@2@PAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z": "0x5545d0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00555350",
+        "symbol": "?invalidateRunViews@RunService@RBX@@QAEXXZ",
+        "size": 281,
+        "target_size": 281,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (support body exact at the bound address)",
+          "?notify_all@condition_impl@detail@boost@@QAEXXZ": "0x5f1d30 (external)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?invalidateRunViews@RunService@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "00555900",
+        "symbol": "?enqueueTask@RunService@RBX@@QAEXV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@Z",
+        "size": 147,
+        "target_size": 147,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "?push_back@?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@QAEXABV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@Z": "0x419ae0 (support body exact at the bound address)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?enqueueTask@RunService@RBX@@QAEXV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005555e0",
+        "symbol": "?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+        "size": 239,
+        "target_size": 239,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "?find@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQAVIRunView@RBX@@@Z": "0x451600 (support body exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??Citerator@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QBEPAU?$pair@QAVIRunView@RBX@@_N@2@XZ": "0x6787f0 (support body exact at the bound address)",
+          "?notify_all@condition_impl@detail@boost@@QAEXXZ": "0x5f1d30 (external)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z"
+        ]
+      },
+      {
+        "address": "005556d0",
+        "symbol": "??A?$map@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@@std@@QAEAA_NABQAVIRunView@RBX@@@Z",
+        "size": 166,
+        "target_size": 166,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QAVIRunView@RBX@@_N@2@@Z": "0x5642c0 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005557c0",
+        "symbol": "?addRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "??A?$map@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@@std@@QAEAA_NABQAVIRunView@RBX@@@Z": "0x5556d0 (own row)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?addRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z"
+        ]
+      },
+      {
+        "address": "00555830",
+        "symbol": "?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "?runViewValid@RunService@RBX@@QAEXPAVIRunView@2@@Z": "0x5555e0 (own row)",
+          "?erase@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAEIABQAVIRunView@RBX@@@Z": "0x405ce0 (support body exact at the bound address)",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?removeRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z"
+        ]
+      }
+    ]
+  },
+  "pending_build_only": [
+    {
+      "address": "00554350 (pending-build-only)",
+      "symbol": "??1?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "target_size": 83,
+      "exact": false,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82d3b4 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x0))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82d3a8 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x10))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82d3a0 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x14))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6BDebugable@1@@": "0x82d398 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x20))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82d388 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x24))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82d378 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x44))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82d368 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x64))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82d358 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0x84))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82d348 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0xa4))",
+        "??_7?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82d338 (vtable (RTTI .?AV?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@, offset 0xc4))",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "00556810 (pending-build-only)",
+      "symbol": "??_G?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??1?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAE@XZ": "0x554350 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "00554410 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "00554420 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "00554430 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "005567c0 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "005567d0 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "005567e0 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "005567f0 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    },
+    {
+      "address": "00556800 (pending-build-only)",
+      "symbol": "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@MAEPAXI@Z": "0x556810 (ICF-folded body (alias of a row proven here))"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only: exact with the generated util/RunStateOwner.h copy that declares `extern const char sRunService[];` (original RTTI 3QBDB); not counted"
+    }
+  ],
+  "support_rows": {
+    "??0?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@IAE@XZ": "0x5e9ec0",
+    "??0?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@IAE@XZ": "0x5e9ec0",
+    "??0?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IAE@XZ": "0x5e9ec0",
+    "??0?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IAE@XZ": "0x5e9ec0",
+    "??0?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVIRunView@RBX@@@1@ABV?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@1@@Z": "0x446110",
+    "?_Tidy@?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@IAEXXZ": "0x419b40",
+    "??1?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x553d80",
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x68dfa0",
+    "?push_back@?$deque@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@V?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@@std@@QAEXABV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@Z": "0x419ae0",
+    "?find@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQAVIRunView@RBX@@@Z": "0x451600",
+    "??Citerator@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QBEPAU?$pair@QAVIRunView@RBX@@_N@2@XZ": "0x6787f0",
+    "?insert@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QAVIRunView@RBX@@_N@2@@Z": "0x5642c0",
+    "?erase@?$_Tree@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@QAEIABQAVIRunView@RBX@@@Z": "0x405ce0"
+  },
+  "vtables_current_headers": {
+    "??_7RunService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x82d4b4",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 2,
+      "checked": [
+        "0 ??_ERunService@RBX@@WBA@AEPAXI@Z = 0x555e60"
+      ],
+      "not_bound_here": [
+        "1 ?getClassName@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PA = 0x555020"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x82d4ac",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 1,
+      "checked": [
+        "0 ??_ERunService@RBX@@WBE@AEPAXI@Z = 0x555e70"
+      ],
+      "not_bound_here": []
+    },
+    "??_7RunService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x82d4c4",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 16,
+      "checked": [
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator = 0x55af90",
+        "4 ?onAncestorChanged@RunService@RBX@@UAEXABUAncestorChanged@2@@Z = 0x554440",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@ = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)"
+      ],
+      "not_bound_here": [
+        "0 ?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410",
+        "2 ?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880",
+        "3 ?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880",
+        "5 ?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20",
+        "6 ?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@ = 0x55ae90",
+        "7 ?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0",
+        "8 ?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0",
+        "9 ?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0",
+        "10 ?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410",
+        "11 ?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170",
+        "12 ?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90",
+        "15 ?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x82d454",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WKE@AEPAXI@Z = 0x555e40"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Li = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x82d494",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WCE@AEPAXI@Z = 0x555ec0"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@ = 0x558d90",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listene = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x82d484",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WEE@AEPAXI@Z = 0x555ed0"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x82d474",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WGE@AEPAXI@Z = 0x555ee0"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2 = 0x559230",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Li = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x82d464",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WIE@AEPAXI@Z = 0x555ef0"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Li = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV? = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x82d444",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WME@AEPAXI@Z = 0x555e50"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Li = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VHeartbeat@2@@1@@": {
+      "address": "0x82d434",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WBDA@AEPAXI@Z = 0x555e80"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@MBEXPAV?$Listener@ = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@MBEXPAV?$Listen = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VRunTransition@2@@1@@": {
+      "address": "0x82d414",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WBHA@AEPAXI@Z = 0x555ea0"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@MBEXPAV?$Li = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@VStepped@2@@1@@": {
+      "address": "0x82d424",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WBFA@AEPAXI@Z = 0x555e90"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@MBEXPAV?$Listener@VR = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@MBEXPAV?$Listener = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6B?$Notifier@VRunService@RBX@@W4RunState@2@@1@@": {
+      "address": "0x82d404",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERunService@RBX@@WBJA@AEPAXI@Z = 0x555eb0"
+      ],
+      "not_bound_here": [
+        "1 ?onAddListener@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@MBEXPAV?$Listener@ = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@MBEXPAV?$Listen = 0x70bdf0"
+      ]
+    },
+    "??_7RunService@RBX@@6BDebugable@1@@": {
+      "address": "0x82d4a4",
+      "rtti": ".?AVRunService@RBX@@",
+      "slots": 1,
+      "checked": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      ],
+      "not_bound_here": []
+    }
+  },
+  "bounds_evidence": [
+    {
+      "rows": "005559a0 + 00555afb (joined; not counted)",
+      "symbol": "?drainTasks@RunService@RBX@@QAEXXZ",
+      "compiled_size": 462,
+      "joined_size": 462,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "00554510 + 00554552 + 00554565 (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@IBEXVHeartbeat@2@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@2@@Z",
+      "compiled_size": 189,
+      "joined_size": 189,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "005545d0 + 00554612 + 00554625 (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@IBEXVStepped@2@PAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z",
+      "compiled_size": 189,
+      "joined_size": 189,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "00554690 + 005546d2 + 005546e5 (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+      "compiled_size": 189,
+      "joined_size": 189,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    },
+    {
+      "rows": "00554750 + 0055478e + 005547a1 (joined; not counted)",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z",
+      "compiled_size": 185,
+      "joined_size": 185,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch funclet (\"Exception caught in onEvent. %s\" / the drainTasks print); the analysed rows split it (extent fix needed)"
+    }
+  ],
+  "not_attempted": {
+    "00554330 / 00554460": "DataModel-called inlines (stopRequested = true + notify_all; join of runThread): the header declares only endRunThread(bool), which the original does not emit out of line (proposal)",
+    "00557150 / 005571b0": "per-frame raises with one float (ret 4) that also call drainTasks / fire event_Heartbeat / event_Stepped through the signal registry 00973b40; the header declares raiseHeartbeat / raiseStepped(float, float) (proposal)",
+    "00556720 / 00556430 / 005543b0": "DescribedCreatable ctor, classDescriptor and FactoryProduct ctor: store the Described / FactoryProduct vtables whose RTTI names carry 3QBDB (pending header change first) and need the classDescriptor statics",
+    "00556520 / 00555190 / runProc helpers": "start() / runProc thread body: not attempted this pass",
+    "00556830 / 00556960 / 00556a30": "descriptor static initializers: not attempted this pass"
+  },
+  "rejected": {},
+  "proposals": {
+    "util/RunStateOwner.h (RunService header owner)": "Declare the class name as `extern const char sRunService[];`: the original RTTI of every RunService base (vtable 0082d4c4 hierarchy) spells the template argument $1?sRunService@2@3QBDB (const char[]), and the committed `extern char sRunService[];` mangles 3PADA. With that change ~FactoryProduct 00554350, its ??_G 00556810 and the eight ??_E thunks 00554410 / 00554420 / 00554430 / 005567c0..00556800 are exact (verified in the pending build against out/app-unit54c-2008/pending/util/RunStateOwner.h) and can be counted here.",
+    "util/RunStateOwner.h (per-frame raises)": "The original per-frame entry points 00557150 / 005571b0 take one float (ret 4): they drain the task queue (005559a0, heartbeat only), raise Notifier<Heartbeat / Stepped> with (float)gameTime and the step, then fire the signal through the registry 00973b40 (0056b620). raiseHeartbeat / raiseStepped(float, float) do not match that ABI; a one-float declaration is needed before they can be built.",
+    "BOUNDS / unit map for the server host (no bounds.json change)": "drainTasks 005559a0 + 00555afb and the four Notifier<RunService, E>::raise(E, Listener*) bodies 00554510 / 005545d0 / 00554690 / 00554750 with their 19-byte tails and catch funclets are single functions; the compiled bodies are relocation-masked exact against the joined rows (bounds_evidence)."
+  },
+  "exact_function_rows": [
+    "00554440",
+    "00554960",
+    "005549e0",
+    "00554a60",
+    "00554ae0",
+    "00554da0",
+    "00555350",
+    "005555e0",
+    "005556d0",
+    "005557c0",
+    "00555830",
+    "00555900",
+    "00555c00",
+    "00555e40",
+    "00555e50",
+    "00555e60",
+    "00555e70",
+    "00555e80",
+    "00555e90",
+    "00555ea0",
+    "00555eb0",
+    "00555ec0",
+    "00555ed0",
+    "00555ee0",
+    "00555ef0",
+    "00556410",
+    "00556b00"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

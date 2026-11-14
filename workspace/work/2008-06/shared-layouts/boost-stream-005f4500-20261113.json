@@ -1,0 +1,38 @@
+{
+ "address": "005f4500",
+ "symbol": "??1?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@UAE@XZ",
+ "exact": true,
+ "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F8WinHttp.cpp",
+ "source_sha256": "4cf98321d547482d20a0e74036dbee3fd6af75bb3de3b483092735aac6d67dc0",
+ "object_sha256": "b018b5355fdf6b141f519a323ab7224fee1f6704f0be502e2b7a997dceae9d94",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 86.086957,
+  "target_bytes": 115,
+  "candidate_bytes": 115,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 95,
+  "unmasked_differences": 0,
+  "masked_bytes": 20,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 5,
+  "candidate_relocations": 5,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [
+  [
+   8653552,
+   8
+  ],
+  [
+   8653544,
+   4
+  ]
+ ],
+ "data_errors": [],
+ "scope": "Authentic Boost instantiated by native HTTP source. Full contiguous function/catch range checked. Local byte/data evidence; final provider/ABI/EH/runtime gates separate."
+}

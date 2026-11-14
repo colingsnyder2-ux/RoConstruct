@@ -1,0 +1,90 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-explicit-shared-assignment
+// >>> native-status (generated) -- do not edit >>>
+// ArrowToolBase | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/5 mapped addresses byte-exact | 4 unproved | 2 referenced strings (not rechecked) | by tester (+4) (mixed 2)
+// <<< native-status | src d585137e | roc native-status --write
+#undef _RELEASEASSERT
+#include "tool/ToolsArrow.h"
+#include "tool/DragTool.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Decal.h"
+#include "v8datamodel/Selection.h"
+#include "v8datamodel/Workspace.h"
+#include <G3D/Rect2D.h>
+
+namespace RBX
+{
+	const std::string ArrowToolBase::getCursorName() const
+	{
+		return overInstance ? "DragCursor" : "ArrowCursor";
+	}
+
+	void ArrowToolBase::onMouseIdle(const UIEvent& uiEvent)
+	{
+		overInstance = getUnlockedPart(uiEvent) != NULL;
+	}
+
+	void ArrowToolBase::onMouseHover(const UIEvent& uiEvent)
+	{
+		onMouseIdle(uiEvent);
+	}
+
+	// 00617780. Frame 0x34: the shared_from temporary (frame +0) shares its slot with the by-value decal argument's
+	// unwind pointer (mov [esp+0x18], esp at 006178dc), so the FilteredSelection client and the DragTool call sit in
+	// their own block. Rejected (frame 0x38): no inner block; shift-first early return; `if (!isSelected) setSelection`.
+	MouseCommand* ArrowToolBase::onMouseDown(const UIEvent& uiEvent)
+	{
+		RBXASSERT(uiEvent.eventType == UIEvent::MOUSE_LEFT_BUTTON_DOWN);
+
+		G3D::Vector3 hitWorld;
+
+		PartInstance* part = getUnlockedPart(uiEvent, hitWorld);
+		if (part)
+		{
+			Instance* top = getTopSelectable3d(part);
+			UserInputBase* input = uiEvent.userInput;
+
+			ServiceClient<Selection> selection(workspace);
+
+			if (!input->keyDown(SDLK_RSHIFT) && !input->keyDown(SDLK_LSHIFT) &&
+				!input->keyDown(SDLK_RCTRL) && !input->keyDown(SDLK_LCTRL))
+			{
+				boost::shared_ptr<Decal> decal;
+				if (selection->isSelected(top))
+				{
+					decal = shared_from(getDecal(part, uiEvent));
+				}
+				else
+				{
+					selection->setSelection(top);
+				}
+				{
+					ServiceClient<FilteredSelection<Instance>> instanceSelection(workspace);
+					return DragTool::onMouseDown(part, hitWorld, instanceSelection->items(), uiEvent, workspace, decal);
+				}
+			}
+			else
+			{
+				if (selection->isSelected(top))
+					selection->removeFromSelection(top);
+				else
+					selection->addToSelection(top);
+			}
+
+			return NULL;
+		}
+		else
+		{
+			MouseCommand* newCommand = new BoxSelectCommand(workspace);
+			return newCommand->onMouseDown(uiEvent);
+		}
+	}
+
+}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::FilteredSelection<RBX::Instance>;
+template class RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance> >;
+template class boost::shared_ptr<RBX::Decal>;
+template class boost::shared_ptr<RBX::FilteredSelection<RBX::Instance> >;

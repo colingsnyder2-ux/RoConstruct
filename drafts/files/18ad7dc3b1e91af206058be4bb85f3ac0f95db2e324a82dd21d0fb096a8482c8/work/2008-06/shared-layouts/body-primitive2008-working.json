@@ -1,0 +1,1007 @@
+{
+  "class": "RBX::Body / RBX::Cofm / RBX::SimBody / RBX::Point, IPipelined / Primitive / EdgeList layout (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008Layout.cpp"
+    ],
+    "body": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008_body.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp"
+    ],
+    "cofm": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008_cofm.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp"
+    ],
+    "point": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008_point.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp"
+    ],
+    "simbody": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008_simbody.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyPrimitive2008SimBody.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp": "0d63c3f3047a33fbcddf089195a5b26c9c3bac95d7d36ed94f06c005d03005f1",
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp": "d0020ffe4edf9c22465ee7927c9287bdd7881826538b5fa9d49d6fa13fda7f56",
+    "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp": "fdeb934ab559b73e1005db6fa7edf0bb75ab0a58aced4afcb96802f666a03af6",
+    "rebuild/2008-06/native-classes/BodyPrimitive2008SimBody.cpp": "fe6e64c94f57e3e67568defce2c8b4adf66688000b81f3ddcb77ac5f3c383962",
+    "rebuild/2008-06/tests/record_native_body_primitive2008.py": "c58b1af002d7895c80f114ef682d5058809d0fa712f1bd350827d0b7756c1fb5",
+    "rebuild/2008-06/native-headers/v8kernel/Body2008.h": "d8674bd72bf53a63576d37cb20fb94d5cfc0d78b04fde56bf4cfd91821f98555",
+    "rebuild/2008-06/native-headers/v8world/Primitive2008.h": "4083759dfa7e7fdb9160a2477743ec925c5385451309feeb81ccebcdcb9f31cc",
+    "rebuild/2008-06/native-headers/v8kernel/Point2008.h": "217c158ef6dad5e3fddb936646cc3788586a3b0615d89564884fb171925d98fe",
+    "rebuild/2008-06/native-headers/v8world/GeoPair2008.h": "d66b2bca49ccc1057aeb5c7c3542d085e8f0c81d16f9a0eafa7cc426c937bca1",
+    "rebuild/2008-06/native-headers/v8kernel/IPipelined2008.h": "37ec8f6e6f4dd3990410b7b9e33502656be78bda581cc804312924042396e125"
+  },
+  "generated_layout_unit": {
+    "rebuild/2008-06/out/native-layouts/NativeBodyPrimitive2008Layout.cpp": "a63070b0668a16f2437801ff3ce71b02915cb1ac4bd2aef4b93930f266153489"
+  },
+  "layout": {
+    "Body": {
+      "size": "0xdc",
+      "fields": {
+        "kernelIndex": "0x0",
+        "leafBodyIndex": "0x4",
+        "numConnectors": "0x8",
+        "unreadFlag": "0xc",
+        "root": "0x10",
+        "parent": "0x14",
+        "index": "0x18",
+        "children": "0x1c",
+        "cofm": "0x28",
+        "simBody": "0x2c",
+        "canThrottle": "0x30",
+        "link": "0x34",
+        "meInParent": "0x38",
+        "moment": "0x68",
+        "mass": "0x8c",
+        "stateIndex": "0x90",
+        "pv": "0x94"
+      }
+    },
+    "Cofm": {
+      "size": "0x3c",
+      "fields": {
+        "body": "0x0",
+        "dirty": "0x4",
+        "cofmInBody": "0x8",
+        "mass": "0x14",
+        "moment": "0x18"
+      }
+    },
+    "SimBody": {
+      "size": "0xb4",
+      "fields": {
+        "body": "0x0",
+        "dt": "0x4",
+        "dirty": "0x8",
+        "pv": "0xc",
+        "qOrientation": "0x54",
+        "angMomentum": "0x64",
+        "momentRecip": "0x70",
+        "massRecip": "0x7c",
+        "constantForceY": "0x80",
+        "force": "0x84",
+        "torque": "0x90",
+        "impulse": "0x9c",
+        "rotImpulse": "0xa8"
+      }
+    },
+    "Point": {
+      "size": "0x34",
+      "fields": {
+        "kernelIndex": "0x4",
+        "numOwners": "0x8",
+        "body": "0xc",
+        "localPos": "0x10",
+        "worldPos": "0x1c",
+        "force": "0x28"
+      }
+    },
+    "IPipelined": {
+      "size": "0x8",
+      "fields": {
+        "currentStage": "0x4"
+      }
+    },
+    "EdgeList": {
+      "size": "0x1c",
+      "fields": {
+        "owner": "0x0",
+        "edges": "0x4",
+        "otherPrimitives": "0x10"
+      }
+    },
+    "Primitive": {
+      "size": "0xfc",
+      "fields": {
+        "guid": "0x8",
+        "guidSetExternally": "0x10",
+        "unknown0x14": "0x14",
+        "contacts": "0x18",
+        "joints": "0x34",
+        "worldIndex": "0x50",
+        "traverseId": "0x54",
+        "world": "0x58",
+        "clump": "0x5c",
+        "clumpDepth": "0x60",
+        "spatialNodes": "0x64",
+        "oldSpatialMin": "0x68",
+        "oldSpatialMax": "0x74",
+        "fuzzyExtents": "0x80",
+        "fuzzyExtentsStateId": "0x98",
+        "geometry": "0x9c",
+        "body": "0xa0",
+        "myOwner": "0xa4",
+        "dragging": "0xa8",
+        "anchored": "0xa9",
+        "jointAnchored": "0xaa",
+        "canSleep": "0xab",
+        "canCollide": "0xac",
+        "friction": "0xb0",
+        "elasticity": "0xb4",
+        "surfaceType": "0xb8",
+        "surfaceData": "0xd0",
+        "controller": "0xe8",
+        "JointK": "0xec"
+      }
+    },
+    "GeoPair": {
+      "size": "0x24",
+      "fields": {
+        "geoPairType": "0x0",
+        "offset0": "0x4",
+        "offset1": "0x8",
+        "body0": "0xc",
+        "body1": "0x10",
+        "edgeLength0": "0x14",
+        "pairData": "0x18"
+      }
+    }
+  },
+  "objects": {
+    "layout": "a2a603b392977502bbd8b9baa48e1ad452c57e438d68eea29a38851cb2446f57",
+    "body": "f4125a1cf99a3f1976ec3091fa7ceb91debf68c5fc73fde3902675a2f0581d7f",
+    "cofm": "f9b8524695eda3b27a5a4ea06714784b83b09948605d055db427747b62531330",
+    "point": "d28455b07a1a9822deb9c33687814a5458dc4b6dfbecead8ae394291b2945818",
+    "simbody": "a7d4a16490568e0eb9650c45343a55389402cb50a90f94c49e4532e6a4b4e7f4"
+  },
+  "rows": {
+    "body": [
+      {
+        "address": "00613e80",
+        "symbol": "?resetAccumulators@SimBody@RBX@@QAEXXZ",
+        "size": 98,
+        "target_size": 98,
+        "exact": true,
+        "verified_targets": {
+          "?update@SimBody@RBX@@AAEXXZ": "0x658d20 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613ef0",
+        "symbol": "?calcRoot@Body@RBX@@AAEPAV12@XZ",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {
+          "?calcRoot@Body@RBX@@AAEPAV12@XZ": "0x613ef0 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613f00",
+        "symbol": "?getBranchMass@Body@RBX@@QBEMXZ",
+        "size": 21,
+        "target_size": 21,
+        "exact": true,
+        "verified_targets": {
+          "?getMass@Cofm@RBX@@QBE?BMXZ": "0x65ff10 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613f20",
+        "symbol": "?getNextStateIndex@Body@RBX@@SAHXZ",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613f40",
+        "symbol": "?advanceStateIndex@Body@RBX@@QAEXXZ",
+        "size": 35,
+        "target_size": 35,
+        "exact": true,
+        "verified_targets": {
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613f70",
+        "symbol": "?makeCofmDirty@Body@RBX@@AAEXXZ",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00613fb0",
+        "symbol": "?setPv@Body@RBX@@QAEXABVPV@2@@Z",
+        "size": 137,
+        "target_size": 137,
+        "exact": true,
+        "verified_targets": {
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614040",
+        "symbol": "?setVelocity@Body@RBX@@QAEXABVVelocity@2@@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "verified_targets": {
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006140b0",
+        "symbol": "?setMass@Body@RBX@@QAEXM@Z",
+        "size": 82,
+        "target_size": 82,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614110",
+        "symbol": "?setMoment@Body@RBX@@QAEXABVMatrix3@G3D@@@Z",
+        "size": 86,
+        "target_size": 86,
+        "exact": true,
+        "verified_targets": {
+          "??9Matrix3@G3D@@QBE_NABV01@@Z": "0x5132d0 (external)",
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614170",
+        "symbol": "??0Velocity@RBX@@QAE@XZ",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614200",
+        "symbol": "?step@Body@RBX@@QAEX_N@Z",
+        "size": 193,
+        "target_size": 193,
+        "exact": true,
+        "verified_targets": {
+          "?resetAccumulators@SimBody@RBX@@QAEXXZ": "0x613e80 (own row)",
+          "?step@SimBody@RBX@@QAEXXZ": "0x658fb0 (external)",
+          "?getOwnerPV@SimBody@RBX@@QAE?AVPV@2@XZ": "0x658ca0 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006142d0",
+        "symbol": "?setMeInParent@Body@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 164,
+        "target_size": 164,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614380",
+        "symbol": "?setMeInParent@Body@RBX@@QAEXPAVLink@2@@Z",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614400",
+        "symbol": "?setCoordinateFrame@Body@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?setPv@Body@RBX@@QAEXABVPV@2@@Z": "0x613fb0 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614480",
+        "symbol": "?getBranchCofmPos@Body@RBX@@QBE?AVVector3@G3D@@XZ",
+        "size": 84,
+        "target_size": 84,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "?getCofmInBody@Cofm@RBX@@QBEABVVector3@G3D@@XZ": "0x660160 (own row)",
+          "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": "0x4766a0 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006144e0",
+        "symbol": "?getBranchCofmCoordinateFrame@Body@RBX@@QBE?AVCoordinateFrame@G3D@@XZ",
+        "size": 71,
+        "target_size": 71,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "?getBranchCofmPos@Body@RBX@@QBE?AVVector3@G3D@@XZ": "0x614480 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614530",
+        "symbol": "?resetRoot@Body@RBX@@AAEXPAV12@@Z",
+        "size": 43,
+        "target_size": 43,
+        "exact": true,
+        "verified_targets": {
+          "?resetRoot@Body@RBX@@AAEXPAV12@@Z": "0x614530 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614560",
+        "symbol": "?getIWorldAtPoint@Body@RBX@@QBE?AVMatrix3@G3D@@ABVVector3@4@@Z",
+        "size": 113,
+        "target_size": 113,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?momentToWorldSpace@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z": "0x5ddb70 (external (evidence name))",
+          "?getIWorldAtPoint@Math@RBX@@SA?AVMatrix3@G3D@@ABVVector3@4@0ABV34@M@Z": "0x5dda70 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006145e0",
+        "symbol": "?getBranchIWorldAtPoint@Body@RBX@@QBE?AVMatrix3@G3D@@ABVVector3@4@@Z",
+        "size": 142,
+        "target_size": 142,
+        "exact": true,
+        "verified_targets": {
+          "?getMass@Cofm@RBX@@QBE?BMXZ": "0x65ff10 (own row)",
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "?getMoment@Cofm@RBX@@QBEABVMatrix3@G3D@@XZ": "0x660170 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?momentToWorldSpace@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z": "0x5ddb70 (external (evidence name))",
+          "?getBranchCofmPos@Body@RBX@@QBE?AVVector3@G3D@@XZ": "0x614480 (own row)",
+          "?getIWorldAtPoint@Math@RBX@@SA?AVMatrix3@G3D@@ABVVector3@4@0ABV34@M@Z": "0x5dda70 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614670",
+        "symbol": "?kineticEnergy@Body@RBX@@QBEMXZ",
+        "size": 238,
+        "target_size": 238,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?momentToWorldSpace@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z": "0x5ddb70 (external (evidence name))",
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614760",
+        "symbol": "?onChildRemoved@Body@RBX@@AAEXPAV12@@Z",
+        "size": 130,
+        "target_size": 130,
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@PAVBody@RBX@@@G3D@@QAEXH_N@Z": "0x5fa770 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006147f0",
+        "symbol": "?onChildAdded@Body@RBX@@AAEXPAV12@@Z",
+        "size": 184,
+        "target_size": 184,
+        "exact": true,
+        "verified_targets": {
+          "?makeCofmDirty@Body@RBX@@AAEXXZ": "0x613f70 (own row)",
+          "?append@?$Array@PAVBody@RBX@@@G3D@@QAEXABQAVBody@RBX@@@Z": "0x5fabc0 (external)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Cofm@RBX@@QAE@PAVBody@1@@Z": "0x65fef0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?onChildAdded@Body@RBX@@AAEXPAV12@@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006148b0",
+        "symbol": "?setParent@Body@RBX@@QAEXPAV12@@Z",
+        "size": 263,
+        "target_size": 263,
+        "exact": true,
+        "verified_targets": {
+          "?onChildRemoved@Body@RBX@@AAEXPAV12@@Z": "0x614760 (own row)",
+          "??1SimBody@RBX@@QAE@XZ": "0x47d410 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?onChildAdded@Body@RBX@@AAEXPAV12@@Z": "0x6147f0 (own row)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0SimBody@RBX@@QAE@PAVBody@1@@Z": "0x658ae0 (own row)",
+          "?calcRoot@Body@RBX@@AAEPAV12@XZ": "0x613ef0 (own row)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)",
+          "?resetRoot@Body@RBX@@AAEXPAV12@@Z": "0x614530 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?setParent@Body@RBX@@QAEXPAV12@@Z"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "006149c0",
+        "symbol": "??0Body@RBX@@QAE@XZ",
+        "size": 251,
+        "target_size": 251,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "?zero@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?p@?1??getNextStateIndex@Body@RBX@@SAHXZ@4HA": "0x95a898 (data)",
+          "??0Velocity@RBX@@QAE@XZ": "0x614170 (own row)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0SimBody@RBX@@QAE@PAVBody@1@@Z": "0x658ae0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0Body@RBX@@QAE@XZ"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614ac0",
+        "symbol": "??1Body@RBX@@QAE@XZ",
+        "size": 121,
+        "target_size": 121,
+        "exact": true,
+        "verified_targets": {
+          "?setParent@Body@RBX@@QAEXPAV12@@Z": "0x6148b0 (own row)",
+          "??1SimBody@RBX@@QAE@XZ": "0x47d410 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1Body@RBX@@QAE@XZ"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614b40",
+        "symbol": "?initWorldBody@Body@RBX@@CAXXZ",
+        "size": 99,
+        "target_size": 99,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Body@RBX@@QAE@XZ": "0x6149c0 (own row)",
+          "?worldBody@Body@RBX@@0PAV12@A": "0x97bec4 (data)"
+        },
+        "local_eh": [
+          "__ehhandler$?initWorldBody@Body@RBX@@CAXXZ"
+        ],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00614bb0",
+        "symbol": "?getWorldBody@Body@RBX@@SAPAV12@XZ",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "_worldBodyFlag": "0x97bed8 (data)",
+          "?initWorldBody@Body@RBX@@CAXXZ": "0x614b40 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "?worldBody@Body@RBX@@0PAV12@A": "0x97bec4 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "point": [
+      {
+        "address": "0064dc70",
+        "symbol": "?forceToBody@Point@RBX@@QAEXXZ",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {
+          "?accumulateForce@SimBody@RBX@@QAEXABVVector3@G3D@@0@Z": "0x612fb0 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0064dc90",
+        "symbol": "?step@Point@RBX@@QAEXXZ",
+        "size": 163,
+        "target_size": 163,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0064dd40",
+        "symbol": "?setWorldPos@Point@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 166,
+        "target_size": 166,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "simbody": [
+      {
+        "address": "00612fb0",
+        "symbol": "?accumulateForce@SimBody@RBX@@QAEXABVVector3@G3D@@0@Z",
+        "size": 167,
+        "target_size": 167,
+        "exact": true,
+        "verified_targets": {
+          "?update@SimBody@RBX@@AAEXXZ": "0x658d20 (external)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00658ae0",
+        "symbol": "??0SimBody@RBX@@QAE@PAVBody@1@@Z",
+        "size": 366,
+        "target_size": 366,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "??0Velocity@RBX@@QAE@XZ": "0x614170 (own row)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00658ca0",
+        "symbol": "?getOwnerPV@SimBody@RBX@@QAE?AVPV@2@XZ",
+        "size": 123,
+        "target_size": 123,
+        "exact": true,
+        "verified_targets": {
+          "?getCofmInBody@Cofm@RBX@@QBEABVVector3@G3D@@XZ": "0x660160 (own row)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)",
+          "?pvAtLocalOffset@PV@RBX@@QBE?AV12@ABVVector3@G3D@@@Z": "0x658c50 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ],
+    "cofm": [
+      {
+        "address": "0065fef0",
+        "symbol": "??0Cofm@RBX@@QAE@PAVBody@1@@Z",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0065ff10",
+        "symbol": "?getMass@Cofm@RBX@@QBE?BMXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {
+          "?updateIfDirty@Cofm@RBX@@ABEXXZ": "0x65ff20 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "0065ff20",
+        "symbol": "?updateIfDirty@Cofm@RBX@@ABEXXZ",
+        "size": 575,
+        "target_size": 575,
+        "exact": true,
+        "verified_targets": {
+          "?updatePV@Body@RBX@@ABEXXZ": "0x599360 (external (evidence name))",
+          "?updateIfDirty@Cofm@RBX@@ABEXXZ": "0x65ff20 (own row)",
+          "?getBranchCofmPos@Body@RBX@@QBE?AVVector3@G3D@@XZ": "0x614480 (own row)",
+          "??KVector3@G3D@@QBE?AV01@M@Z": "0x518740 (external)",
+          "?getIWorldAtPoint@Body@RBX@@QBE?AVMatrix3@G3D@@ABVVector3@4@@Z": "0x614560 (own row)",
+          "?getBranchIWorldAtPoint@Body@RBX@@QBE?AVMatrix3@G3D@@ABVVector3@4@@Z": "0x6145e0 (own row)",
+          "??HMatrix3@G3D@@QBE?AV01@ABV01@@Z": "0x5132f0 (external)",
+          "?momentToObjectSpace@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z": "0x5ddb30 (external (evidence name))"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00660160",
+        "symbol": "?getCofmInBody@Cofm@RBX@@QBEABVVector3@G3D@@XZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {
+          "?updateIfDirty@Cofm@RBX@@ABEXXZ": "0x65ff20 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      },
+      {
+        "address": "00660170",
+        "symbol": "?getMoment@Cofm@RBX@@QBEABVMatrix3@G3D@@XZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {
+          "?updateIfDirty@Cofm@RBX@@ABEXXZ": "0x65ff20 (own row)"
+        },
+        "local_eh": [],
+        "vtables": [],
+        "counted": true
+      }
+    ]
+  },
+  "vtables": {},
+  "exact_function_rows": [
+    "00612fb0",
+    "00613e80",
+    "00613ef0",
+    "00613f00",
+    "00613f20",
+    "00613f40",
+    "00613f70",
+    "00613fb0",
+    "00614040",
+    "006140b0",
+    "00614110",
+    "00614170",
+    "00614200",
+    "006142d0",
+    "00614380",
+    "00614400",
+    "00614480",
+    "006144e0",
+    "00614530",
+    "00614560",
+    "006145e0",
+    "00614670",
+    "00614760",
+    "006147f0",
+    "006148b0",
+    "006149c0",
+    "00614ac0",
+    "00614b40",
+    "00614bb0",
+    "0064dc70",
+    "0064dc90",
+    "0064dd40",
+    "00658ae0",
+    "00658ca0",
+    "0065fef0",
+    "0065ff10",
+    "0065ff20",
+    "00660160",
+    "00660170"
+  ],
+  "exact_but_vtable_unproven_rows": [],
+  "rejected_variants": {
+    "00614670 kineticEnergy": "returning the expression directly (238 B, matrix-row products scheduled differently); (I*w).dot(w); `* 0.5f`; `* 0.5`; mass * linear.dot(linear); linear.squaredLength() (230 B); linear term first (244 B); named Vector3 / split float locals (238 / 242 B). Exact: a named float `calc` local, then return it.",
+    "Body::getBranchMass out of line": "Cofm::updateIfDirty 0065ff20 is 526 / 575 B when getBranchMass is a call; the original inlines it (header-inline definition).",
+    "/fp:precise": "getBranchMass 37 / 21 B, kineticEnergy 274 / 238 B, updateIfDirty 611 / 575 B.",
+    "Body::nextStateIndex as a class static": "the inline getNextStateIndex copies in setVelocity 00614040, step 00614200 and Body() 006149c0 then keep the last float store before the counter load (same size, scheduling differs). Exact: the function-local `static int p` of the donor getNextStateIndex (0095a898); getNextStateIndex 00613f20 stays exact.",
+    "calcRoot inline": "setParent 006148b0 is 269 / 263 B when calcRoot is inlined one level; the original calls it (00614958): `__declspec(noinline)` as in the donor declaration.",
+    "VS2005 50727 for the Body unit": "setVelocity 113 / 111 B (kineticEnergy is exact there too); kept on 21022."
+  },
+  "not_exact": [
+    {
+      "address": "00658d20",
+      "symbol": "?update@SimBody@RBX@@AAEXXZ",
+      "size": 643,
+      "target_size": 643,
+      "exact": false,
+      "reason": "643 / 643 B: two x87 scheduling spots differ under /fp:fast (the qOrientation normalisation multiplies `fld st0; fmul [x]` where this build emits `fld [x]; fmul st1`, and angMomentum = rotational * getBranchIWorld() sums the x, z, y products where this build sums z, y, x). Rejected: a named Vector3 copy of Math::toDiagonal (647 B, 12 more frame bytes; a const-reference local is the same), /fp:precise (726 B), VS2005 50727 (same diff), a named Matrix3 iWorld local, a named reciprocal float, explicit `q.x = q.x * f` stores, an explicit x/z/y row product helper (all keep the same diff or reorder the stores)."
+    }
+  ],
+  "blocked": {
+    "Body::accumulateTorque 006060b0": "out-of-line COMDAT of the header-inline Body::accumulateTorque emitted in the Connector unit (callers 0062ec1a / 00666634 / 006676f2 in other units); no unit here calls it out of line (RotateConnector::computeForce inlines it), so it is not emitted.",
+    "SimBody::step 00658fb0": "not attempted in this pass (687 B: computeRotVel matrix helpers, Quaternion * Quaternion 00658a30, the denormFix static); update 00658d20 is the near miss in not_exact."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

@@ -1,0 +1,55 @@
+{
+  "scope": "Candidate references only; identities, data, ABI, selection and runtime still require review",
+  "run": "20261114-020507-d68068b2",
+  "object_sha256": "bfb4516ad82307030f8322b02c83729133da545774d53b8bee59a10fe0f80122",
+  "functions": [
+    {
+      "symbol": "_inflate_table",
+      "address": "007a3730",
+      "references": [
+        {
+          "offset": 7,
+          "symbol": "___security_cookie",
+          "opcode": "0xa1",
+          "target": null
+        },
+        {
+          "offset": 248,
+          "symbol": "@__security_check_cookie@4",
+          "opcode": "0xe8",
+          "target": "006a1dd2"
+        },
+        {
+          "offset": 508,
+          "symbol": "?dbase@?1??inflate_table@@9@9",
+          "opcode": "0x3c",
+          "target": null
+        },
+        {
+          "offset": 516,
+          "symbol": "?dext@?1??inflate_table@@9@9",
+          "opcode": "0x30",
+          "target": null
+        },
+        {
+          "offset": 527,
+          "symbol": "?lbase@?1??inflate_table@@9@9",
+          "opcode": "0xb8",
+          "target": null
+        },
+        {
+          "offset": 541,
+          "symbol": "?lext@?1??inflate_table@@9@9",
+          "opcode": "0xb8",
+          "target": null
+        },
+        {
+          "offset": 1251,
+          "symbol": "@__security_check_cookie@4",
+          "opcode": "0xe8",
+          "target": "006a1dd2"
+        }
+      ]
+    }
+  ]
+}
