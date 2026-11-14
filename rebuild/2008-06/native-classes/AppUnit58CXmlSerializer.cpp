@@ -11,3 +11,19 @@ XmlWriter::XmlWriter(std::ostream& stream)
 	: stream(stream)
 {
 }
+
+bool isCloseTag(const std::string& test)
+{
+	if (test.size() >= 2)
+		return test.substr(0, 2) == "</";
+
+	return false;
+}
+
+bool endsWithClose(const std::string& test)
+{
+	if (test.size() >= 2)
+		return test.substr(test.size() - 2, 2) == "/>";
+
+	return false;
+}
