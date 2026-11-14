@@ -73,6 +73,16 @@ class HourlyDraftTests(unittest.TestCase):
         self.mocks['roc.draft_source_queue.work'].assert_called_once_with(self.root, 3, False)
         self.mocks['roc.draft_publish.publish'].assert_not_called()
 
+    def test_replans_once_when_family_work_sees_changed_inputs(self):
+        self.mocks['roc.draft_family_queue.work'].side_effect = [
+            ValueError('Family queue inputs changed; prepare a fresh plan'),
+            {'stale': False, 'attempted': 2},
+        ]
+        result = hourly.run_once(self.root)
+        self.assertEqual(result['state'], 'completed')
+        self.assertEqual(self.mocks['roc.draft_family_queue.plan'].call_count, 2)
+        self.assertEqual(self.mocks['roc.draft_family_queue.work'].call_count, 2)
+
 
 if __name__ == '__main__':
     unittest.main()
