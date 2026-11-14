@@ -93,26 +93,26 @@ namespace RBX
 
 		void HeadBuilder::buildLeft(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_X_NEG>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_X_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
 		void HeadBuilder::buildRight(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_X>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_X>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
 		void HeadBuilder::buildFront(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_Z_NEG>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_Z_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
 		void HeadBuilder::buildBack(Purpose purpose)
 		{
-			int e = elements;
-			buildFace<NORM_Z>(CylinderTransform(bevel, (elements + 1) / 2), G3D::Vector2int16(e, e), purpose);
+			CylinderTransform transform(bevel, (elements + 1) / 2);
+			buildFace<NORM_Z>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
 		HeadMesh::HeadMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes)
