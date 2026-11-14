@@ -47,6 +47,10 @@ namespace RBX
 	static Reflection::SignalDesc<Tool, void(void)> event_Activated("Activated");
 	static Reflection::SignalDesc<Tool, void(void)> event_Deactivated("Deactivated");
 
+	// 005fd3e0: name_name 00975338, findAttribute 0057c2b0, getValue 0057c360, "BackendToolState" 008416e8,
+	// "ActivationState" 008416d8, Instance::readProperty 00559170. Reads the public Name::name member directly, as the
+	// exact sibling Accoutrement::readProperty 005b0840 does. Rejected: donor name->toString() (inline accessor marked
+	// "guess" in util/Name.h): string pointer in eax and binder in edx where the original has edx / ecx.
 	void Tool::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
 	{
 		const Name* name = NULL;
@@ -54,7 +58,7 @@ namespace RBX
 		{
 			if (attrib->getValue(name))
 			{
-				if (name->toString() == "BackendToolState" || name->toString() == "ActivationState")
+				if (name->name == "BackendToolState" || name->name == "ActivationState")
 					return;
 			}
 		}
@@ -132,8 +136,8 @@ namespace RBX
 		setName(sTool);
 	}
 
-#ifdef NATIVE_TOOL_PENDING
-	// Needs ServiceProvider::findServiceProvider (004898d0), not declared in the native v8tree/Service.h.
+	// 00600420. ServiceProvider::findServiceProvider (004898d0) is now declared in the native v8tree/Service.h, so this
+	// body no longer waits on NATIVE_TOOL_PENDING; drawSelected inlines as backendToolState >= EQUIPPED (+0x1c4 >= 5).
 	void Tool::setFrontendActivationState(int value)
 	{
 		int prevState = frontendActivationState;
@@ -153,6 +157,7 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_TOOL_PENDING
 	// 005ff680. Needs a ToolMouseCommand declaration (Named<ScriptMouseCommand, sToolMouseCommand> with the 2008
 	// class-name array); there is no native v8datamodel/ToolMouseCommand.h. ScriptMouseCommand::getMouse 005cf8d0.
 	boost::shared_ptr<Mouse> Tool::getMouse()

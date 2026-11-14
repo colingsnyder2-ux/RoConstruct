@@ -1,3 +1,6 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// Flags (lf10): /I{headers}/part-embedded gives PartInstance its 2008 non-virtual size 0x3e8, so teamColor sits at
+// +0x3e8 as getTeamColor 005d1ba0 / setTeamColor 005d37b0 read it (default include path compiled +0x2d0).
 // 2008-06 native RBX::SpawnLocation and RBX::SpawnerService (inactive): one original unit (005d1ba0..005d39f0,
 // initializers 007f5f20..007f5fb0, atexit 007feff0..007ff070). Evidence in native-headers/v8datamodel/
 // SpawnLocation.h and SpawnerService.h. Verified by tests/record_native_spawn.py.
