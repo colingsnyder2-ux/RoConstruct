@@ -1,0 +1,244 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVector3.cpp",
+      "checks": [
+        {
+          "addr": "004377b0",
+          "symbol": "??0Vector3@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "0043afb0",
+          "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "0043d880",
+          "symbol": "??AVector3@G3D@@QBEABMH@Z"
+        },
+        {
+          "addr": "0045ac40",
+          "symbol": "??GVector3@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "0045b310",
+          "symbol": "?magnitude@Vector3@G3D@@QBEMXZ"
+        },
+        {
+          "addr": "004782a0",
+          "symbol": "?zero@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00483410",
+          "symbol": "??GVector3@G3D@@QBE?AV01@XZ"
+        },
+        {
+          "addr": "00485360",
+          "symbol": "??DVector3@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "004a59e0",
+          "symbol": "?isFinite@Vector3@G3D@@QBE_NXZ"
+        },
+        {
+          "addr": "004a6100",
+          "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z"
+        },
+        {
+          "addr": "004fab70",
+          "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00501c70",
+          "symbol": "??HVector3@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "005020d0",
+          "symbol": "?unitY@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00510720",
+          "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z"
+        },
+        {
+          "addr": "00510960",
+          "symbol": "?inf@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00513120",
+          "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00514890",
+          "symbol": "?xyz@Vector3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "005148b0",
+          "symbol": "?unitX@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514a20",
+          "symbol": "?minFinite@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514be0",
+          "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "005183a0",
+          "symbol": "?hashCode@Vector3@G3D@@QBEIXZ"
+        },
+        {
+          "addr": "00518470",
+          "symbol": "?unitize@Vector3@G3D@@QAEMM@Z"
+        },
+        {
+          "addr": "005184c0",
+          "symbol": "?generateOrthonormalBasis@Vector3@G3D@@SAXAAV12@00_N@Z"
+        },
+        {
+          "addr": "005185f0",
+          "symbol": "?xz@Vector3@G3D@@QBE?AVVector2@2@XZ"
+        },
+        {
+          "addr": "00518610",
+          "symbol": "?yz@Vector3@G3D@@QBE?AVVector2@2@XZ"
+        },
+        {
+          "addr": "00518630",
+          "symbol": "?xxx@Vector3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00518740",
+          "symbol": "??KVector3@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "00525e00",
+          "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00525e60",
+          "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00530730",
+          "symbol": "??YVector3@G3D@@QAEAAV01@ABV01@@Z"
+        },
+        {
+          "addr": "00598990",
+          "symbol": "??9Vector3@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "007b9450",
+          "symbol": "?directionOrZero@Vector3@G3D@@QBE?AV12@XZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGWindow.cpp",
+      "checks": [
+        {
+          "addr": "0045ad50",
+          "symbol": "?makeCurrent@GWindow@G3D@@QBEXXZ"
+        },
+        {
+          "addr": "0047f860",
+          "symbol": "??1GWindow@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0047f8a0",
+          "symbol": "?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0047f900",
+          "symbol": "?incInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f940",
+          "symbol": "?decInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f980",
+          "symbol": "?incMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f9c0",
+          "symbol": "?decMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047faf0",
+          "symbol": "??_GGWindow@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "00481570",
+          "symbol": "?pushLoopBody@GWindow@G3D@@UAEXP6AXPAX@Z0@Z"
+        },
+        {
+          "addr": "004896d0",
+          "symbol": "?executeLoopBody@GWindow@G3D@@IAEXXZ"
+        },
+        {
+          "addr": "00489720",
+          "symbol": "?pushLoopBody@GWindow@G3D@@UAEXPAVGApplet@2@@Z"
+        },
+        {
+          "addr": "00489760",
+          "symbol": "?popLoopBody@GWindow@G3D@@UAEXXZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DLine.cpp",
+      "checks": [
+        {
+          "addr": "00525f40",
+          "symbol": "??0Line@G3D@@IAE@ABVVector3@1@0@Z"
+        },
+        {
+          "addr": "00525fc0",
+          "symbol": "??_ELine@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "00594650",
+          "symbol": "?fromPointAndDirection@Line@G3D@@SA?AV12@ABVVector3@2@0@Z"
+        },
+        {
+          "addr": "005dd780",
+          "symbol": "?fromPointAndDirection@Line@G3D@@SA?AV12@ABVVector3@2@0@Z"
+        },
+        {
+          "addr": "007bbce0",
+          "symbol": "?intersection@Line@G3D@@QBE?AVVector3@2@ABVPlane@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGLight.cpp",
+      "checks": [
+        {
+          "addr": "004769a0",
+          "symbol": "??4GLight@G3D@@QAEAAV01@ABV01@@Z"
+        },
+        {
+          "addr": "00477c50",
+          "symbol": "??0GLight@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "00514390",
+          "symbol": "??0GLight@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00514400",
+          "symbol": "??8GLight@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "005144f0",
+          "symbol": "??9GLight@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "00514510",
+          "symbol": "?directional@GLight@G3D@@SA?AV12@ABVVector3@2@ABVColor3@2@_N2@Z"
+        }
+      ]
+    }
+  ]
+}

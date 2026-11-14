@@ -1,0 +1,53 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVARArea.cpp",
+      "checks": [
+        {
+          "addr": "004765e0",
+          "symbol": "??9CoordinateFrame@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "00476700",
+          "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DMilestone.cpp",
+      "checks": [
+        {
+          "addr": "00485390",
+          "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PartInstanceCoordinate.cpp",
+      "checks": [
+        {
+          "addr": "004765e0",
+          "symbol": "??9CoordinateFrame@G3D@@QBE_NABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGCamera.cpp",
+      "checks": [
+        {
+          "addr": "00485390",
+          "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/PartInstanceCoordinate.cpp": "9e41a8b8e959e095be24920eccee29a148d29809bc9ab6315beacfde8b3a1f94",
+      "rebuild/2008-06/native-classes/G3DGCamera.cpp": "0fc001f3086829e8f6f58598e660b1e3ab5ce0fe4445552f2e482dc7e2649d9f"
+    },
+    "run": "20261114-043843-5c7e3c88",
+    "proof": "analysis-6994ae59.json",
+    "note": "Existing callers emit two previously absent CoordinateFrame bodies: inequality 004765e0 raw 96.428571%, masked 100%, verified call to Matrix3 equality; Vector4 world transform 00485390 raw 100%, call-free. G3DVARArea and G3DMilestone objects did not emit three tested symbols. Across current batches 16/21 CoordinateFrame bodies have masked matches; five still absent from examined objects. Candidate ABI/provider/runtime and independent credit unproven; inactive."
+  }
+}

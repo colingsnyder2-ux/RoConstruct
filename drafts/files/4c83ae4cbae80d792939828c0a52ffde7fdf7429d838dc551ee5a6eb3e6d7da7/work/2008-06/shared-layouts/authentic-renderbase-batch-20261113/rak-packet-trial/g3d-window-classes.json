@@ -1,0 +1,170 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGWindow.cpp",
+      "checks": [
+        {
+          "addr": "0045ad50",
+          "symbol": "?makeCurrent@GWindow@G3D@@QBEXXZ"
+        },
+        {
+          "addr": "0047f860",
+          "symbol": "??1GWindow@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0047f8a0",
+          "symbol": "?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0047f900",
+          "symbol": "?incInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f940",
+          "symbol": "?decInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f980",
+          "symbol": "?incMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f9c0",
+          "symbol": "?decMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047faf0",
+          "symbol": "??_GGWindow@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "00481570",
+          "symbol": "?pushLoopBody@GWindow@G3D@@UAEXP6AXPAX@Z0@Z"
+        },
+        {
+          "addr": "004896d0",
+          "symbol": "?executeLoopBody@GWindow@G3D@@IAEXXZ"
+        },
+        {
+          "addr": "00489720",
+          "symbol": "?pushLoopBody@GWindow@G3D@@UAEXPAVGApplet@2@@Z"
+        },
+        {
+          "addr": "00489760",
+          "symbol": "?popLoopBody@GWindow@G3D@@UAEXXZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DWin32Window.cpp",
+      "checks": [
+        {
+          "addr": "0047eb60",
+          "symbol": "?setDimensions@Win32Window@G3D@@UAEXABVRect2D@2@@Z"
+        },
+        {
+          "addr": "0047ec20",
+          "symbol": "?hasFocus@Win32Window@G3D@@UBE_NXZ"
+        },
+        {
+          "addr": "0047ec50",
+          "symbol": "?getAPIVersion@Win32Window@G3D@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "0047ec80",
+          "symbol": "?getAPIName@Win32Window@G3D@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "0047ecb0",
+          "symbol": "?swapGLBuffers@Win32Window@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047ecc0",
+          "symbol": "?getSettings@Win32Window@G3D@@UBEXAAVSettings@GWindow@2@@Z"
+        },
+        {
+          "addr": "0047ecd0",
+          "symbol": "?setCaption@Win32Window@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0047ed30",
+          "symbol": "?caption@Win32Window@G3D@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "0047ed60",
+          "symbol": "?setMouseVisible@Win32Window@G3D@@UAEX_N@Z"
+        },
+        {
+          "addr": "0047edd0",
+          "symbol": "?notifyResize@Win32Window@G3D@@UAEXHH@Z"
+        },
+        {
+          "addr": "0047ee00",
+          "symbol": "?setRelativeMousePosition@Win32Window@G3D@@UAEXNN@Z"
+        },
+        {
+          "addr": "0047eea0",
+          "symbol": "?getRelativeMouseState@Win32Window@G3D@@UBEXAAH0AAE@Z"
+        },
+        {
+          "addr": "0047ef40",
+          "symbol": "?setInputCapture@Win32Window@G3D@@UAEX_N@Z"
+        },
+        {
+          "addr": "0047f010",
+          "symbol": "?reallyMakeCurrent@Win32Window@G3D@@MBEXXZ"
+        },
+        {
+          "addr": "004808f0",
+          "symbol": "?dimensions@Win32Window@G3D@@UBE?AVRect2D@2@XZ"
+        },
+        {
+          "addr": "00480da0",
+          "symbol": "?injectSizeEvent@Win32Window@G3D@@AAEXHH@Z"
+        },
+        {
+          "addr": "004824f0",
+          "symbol": "??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@_N@Z"
+        },
+        {
+          "addr": "00482990",
+          "symbol": "?setPosition@Win32Window@G3D@@UAEXHH@Z"
+        },
+        {
+          "addr": "004829e0",
+          "symbol": "??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@PAUHDC__@@@Z"
+        },
+        {
+          "addr": "00482b30",
+          "symbol": "?create@Win32Window@G3D@@SAPAV12@ABVSettings@GWindow@2@PAUHWND__@@@Z"
+        },
+        {
+          "addr": "00482ba0",
+          "symbol": "??1Win32Window@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "00482d20",
+          "symbol": "?createShareWindow@Win32Window@G3D@@CAXVSettings@GWindow@2@@Z"
+        },
+        {
+          "addr": "00483320",
+          "symbol": "?enableDirectInput@Win32Window@G3D@@ABEXXZ"
+        },
+        {
+          "addr": "00483390",
+          "symbol": "?numJoysticks@Win32Window@G3D@@UBEHXZ"
+        },
+        {
+          "addr": "004833b0",
+          "symbol": "?joystickName@Win32Window@G3D@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z"
+        },
+        {
+          "addr": "004833e0",
+          "symbol": "?getJoystickState@Win32Window@G3D@@UAEXIAAV?$Array@M@2@AAV?$Array@_N@2@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "baseline": "20261114-052054-64b1206e",
+    "note": "Initial GWindow 3 exact/9 missing, Win32Window 22 exact/4 different. Later Win32Window profile corrected in native source and separately checked. Local byte/data only; no ABI, linked selection, runtime, server credit claim."
+  }
+}

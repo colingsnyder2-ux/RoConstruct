@@ -1,0 +1,144 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVector3.cpp",
+      "checks": [
+        {
+          "addr": "004377b0",
+          "symbol": "??0Vector3@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "0043afb0",
+          "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "0043d880",
+          "symbol": "??AVector3@G3D@@QBEABMH@Z"
+        },
+        {
+          "addr": "0045ac40",
+          "symbol": "??GVector3@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "0045b310",
+          "symbol": "?magnitude@Vector3@G3D@@QBEMXZ"
+        },
+        {
+          "addr": "004782a0",
+          "symbol": "?zero@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00483410",
+          "symbol": "??GVector3@G3D@@QBE?AV01@XZ"
+        },
+        {
+          "addr": "00485360",
+          "symbol": "??DVector3@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "004a59e0",
+          "symbol": "?isFinite@Vector3@G3D@@QBE_NXZ"
+        },
+        {
+          "addr": "004a6100",
+          "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z"
+        },
+        {
+          "addr": "004fab70",
+          "symbol": "?direction@Vector3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00501c70",
+          "symbol": "??HVector3@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "005020d0",
+          "symbol": "?unitY@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00510720",
+          "symbol": "?dot@Vector3@G3D@@QBEMABV12@@Z"
+        },
+        {
+          "addr": "00510960",
+          "symbol": "?inf@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00513120",
+          "symbol": "?cross@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00514890",
+          "symbol": "?xyz@Vector3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "005148b0",
+          "symbol": "?unitX@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514a20",
+          "symbol": "?minFinite@Vector3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514be0",
+          "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "005183a0",
+          "symbol": "?hashCode@Vector3@G3D@@QBEIXZ"
+        },
+        {
+          "addr": "00518470",
+          "symbol": "?unitize@Vector3@G3D@@QAEMM@Z"
+        },
+        {
+          "addr": "005184c0",
+          "symbol": "?generateOrthonormalBasis@Vector3@G3D@@SAXAAV12@00_N@Z"
+        },
+        {
+          "addr": "005185f0",
+          "symbol": "?xz@Vector3@G3D@@QBE?AVVector2@2@XZ"
+        },
+        {
+          "addr": "00518610",
+          "symbol": "?yz@Vector3@G3D@@QBE?AVVector2@2@XZ"
+        },
+        {
+          "addr": "00518630",
+          "symbol": "?xxx@Vector3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00518740",
+          "symbol": "??KVector3@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "00525e00",
+          "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00525e60",
+          "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00530730",
+          "symbol": "??YVector3@G3D@@QAEAAV01@ABV01@@Z"
+        },
+        {
+          "addr": "00598990",
+          "symbol": "??9Vector3@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "007b9450",
+          "symbol": "?directionOrZero@Vector3@G3D@@QBE?AV12@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "d13d89f7fe7d43ef966b5c67604115864582a36019a1f2d35ece1fc181e8e5ba",
+    "baseline": "20261114-044452-914f0243",
+    "experimental": "20261114-044520-5588add9",
+    "canonical": "20261114-044544-086ecd26",
+    "note": "Corrected native build profile to /fp:fast. Baseline: 13/32 masked matches, 9 different, 10 absent. Fast profile: 22/32 masked matches, 0 different, 10 absent; all prior 13 retained. Source body unchanged. Calls, data identities, actual source-version authenticity, selection, ABI, runtime, server credit unproven; inactive."
+  }
+}

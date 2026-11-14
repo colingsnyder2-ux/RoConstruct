@@ -86,6 +86,8 @@ def discover(root, users=()):
                 includes = [node.text.decode().strip() for node in tree.root_node.named_children
                             if node.type == 'preproc_include' and node.text.decode().strip() not in current_includes]
                 declarations = []
+                type_declarations = []
+                owners = {row['signature'].split('(')[0].rsplit('::', 2)[-2] for row in methods}
                 pending = [(tree.root_node, [])]
                 selected_text = '\n'.join(row['source'] for row in methods)
                 while pending:
@@ -98,6 +100,10 @@ def discover(root, users=()):
                                        for child in node.child_by_field_name('body').named_children)
                     elif node.type == 'translation_unit':
                         pending.extend((child, scopes) for child in node.named_children)
+                    elif node.type in ('class_specifier', 'struct_specifier'):
+                        name_node = node.child_by_field_name('name')
+                        if not target.is_file() and name_node is not None and name_node.text.decode() in owners:
+                            type_declarations.append(dict(namespace='::'.join(scopes), source=node.text.decode() + ';'))
                     elif node.type == 'declaration':
                         declarator = node.child_by_field_name('declarator')
                         identifier = declarator.child_by_field_name('declarator') if declarator else None
@@ -107,7 +113,7 @@ def discover(root, users=()):
                 review = dict(bundle=manifest['bundle_id'], uploader=uploader, target=name, namespace=namespace,
                     before_sha256=content_hash(current_raw) if target.is_file() else None,
                     new_file=not target.is_file(), compiler_profile=profile, methods=methods,
-                    includes=includes, declarations=declarations,
+                    includes=includes, declarations=declarations, type_declarations=type_declarations,
                     reviewer='deterministic missing-method/original-instruction source review',
                     rationale='Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence.',
                     inferences=['Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.'],

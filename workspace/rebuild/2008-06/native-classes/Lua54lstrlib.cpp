@@ -1,5 +1,5 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
-// 2008-06 native Lua54lstrlib (inactive): upstream tools/libs/lua-5.1.4/src/lstrlib.c, verbatim.
+// 2008-06 native Lua54lstrlib (inactive): Lua 5.1.4 with the original compatibility setting.
 // >>> native-status (generated) -- do not edit >>>
 // Lua54lstrlib | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -24,6 +24,9 @@
 
 #include "lauxlib.h"
 #include "lualib.h"
+
+/* The 2008 client does not replace string.gfind with string.gmatch. */
+#undef LUA_COMPAT_GFIND
 
 
 /* macro to `unsign' a character */

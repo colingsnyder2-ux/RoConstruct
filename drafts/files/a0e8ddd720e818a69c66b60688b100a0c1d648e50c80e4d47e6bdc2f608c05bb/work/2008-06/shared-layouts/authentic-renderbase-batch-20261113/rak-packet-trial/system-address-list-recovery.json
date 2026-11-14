@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/SystemAddressList2008.cpp",
+      "checks": []
+    }
+  ],
+  "recovery": {
+    "source_sha256": "c59641143a17cede6f361ad5c6767d019cece5aed074d266f67a87bf59b20e77",
+    "donor_sha256": "a5ad4c9860988e459b3dff0dd1e4e1b34182de13459398fb7460757c8e93747e",
+    "donor_header_sha256": "498ea4e2a4e37f7f03eee4adf020d28902a74f981d5ff06e3fa9d9a518b36b70",
+    "run": "20261114-042554-6eb71a01",
+    "compile": "passed",
+    "mapped_byte_checks": 0,
+    "status": "inactive; original identity, source version, ABI, selection, runtime, server credit unproven"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "scope": "Parser candidate only; target identities and full ABI remain unverified",
+  "run": "20261114-021918-2deb2902",
+  "object_sha256": "395850823e14e853f64cd274811e3ff5264645a5682a6b108a696d32428b56e7",
+  "symbol": "?parlist@@YAXPAULexState@@@Z",
+  "address": "006614f0",
+  "refs": [
+    {
+      "offset": 68,
+      "symbol": "??_C@_0BJ@MHIGIDHO@?$DMname?$DO?5or?5?8?4?4?4?8?5expected?$AA@",
+      "target": null
+    },
+    {
+      "offset": 74,
+      "symbol": "?luaX_syntaxerror@@YAXPAULexState@@PBD@Z",
+      "target": "00664210"
+    },
+    {
+      "offset": 91,
+      "symbol": "?luaX_next@@YAXPAULexState@@@Z",
+      "target": "00665600"
+    },
+    {
+      "offset": 123,
+      "symbol": "??_C@_0BA@EIDMAHJI@local?5variables?$AA@",
+      "target": null
+    },
+    {
+      "offset": 140,
+      "symbol": "??_C@_0CC@OKOPEFGK@main?5function?5has?5more?5than?5?$CFd?5?$CF@",
+      "target": null
+    },
+    {
+      "offset": 146,
+      "symbol": "?luaO_pushfstring@@YAPBDPAUlua_State@@PBDZZ",
+      "target": "00622ac0"
+    },
+    {
+      "offset": 160,
+      "symbol": "??_C@_0CI@FLAOKACM@function?5at?5line?5?$CFd?5has?5more?5tha@",
+      "target": null
+    },
+    {
+      "offset": 166,
+      "symbol": "?luaO_pushfstring@@YAPBDPAUlua_State@@PBDZZ",
+      "target": "00622ac0"
+    },
+    {
+      "offset": 181,
+      "symbol": "?luaX_lexerror@@YAXPAULexState@@PBDH@Z",
+      "target": "00664170"
+    },
+    {
+      "offset": 191,
+      "symbol": "?registerlocalvar@@YAHPAULexState@@PATTString@@@Z",
+      "target": "00660910"
+    },
+    {
+      "offset": 225,
+      "symbol": "?luaX_next@@YAXPAULexState@@@Z",
+      "target": "00665600"
+    },
+    {
+      "offset": 250,
+      "symbol": "?luaX_next@@YAXPAULexState@@@Z",
+      "target": "00665600"
+    },
+    {
+      "offset": 267,
+      "symbol": "?adjustlocalvars@@YAXPAULexState@@H@Z",
+      "target": "006609b0"
+    },
+    {
+      "offset": 292,
+      "symbol": "?luaK_reserveregs@@YAXPAUFuncState@@H@Z",
+      "target": "0066ada0"
+    }
+  ]
+}

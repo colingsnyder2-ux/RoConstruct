@@ -1,0 +1,67 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DBinaryInput.cpp",
+      "checks": [
+        {
+          "addr": "00509b40",
+          "symbol": "?readUInt32@BinaryInput@G3D@@QAEIXZ"
+        },
+        {
+          "addr": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "0050aa60",
+          "symbol": "?setPosition@BinaryInput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "0050aa80",
+          "symbol": "?readUInt8@BinaryInput@G3D@@QAEEXZ"
+        },
+        {
+          "addr": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ"
+        },
+        {
+          "addr": "0050ab00",
+          "symbol": "?skip@BinaryInput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z"
+        },
+        {
+          "addr": "005158c0",
+          "symbol": "??0BinaryInput@G3D@@QAE@PBEHW4G3DEndian@1@_N2@Z"
+        },
+        {
+          "addr": "00515a00",
+          "symbol": "??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z"
+        },
+        {
+          "addr": "00515c20",
+          "symbol": "??1BinaryInput@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "00515d10",
+          "symbol": "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z"
+        },
+        {
+          "addr": "00515d50",
+          "symbol": "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z"
+        },
+        {
+          "addr": "00515e00",
+          "symbol": "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "5e0389e8c6cddb7afeb3cbe9fc23c7c5b8ebc85de4c521a5556c22ced324f671",
+    "baseline": "20261114-051730-a73054c3",
+    "native": "20261114-051823-6f8b4b69",
+    "note": "Restored 2008 std::exception behavior for three allocation failure paths, with exception include after platform.h, and removed absent global file tracker update. Baseline BinaryInput 10 exact, 2 different, 1 missing; native 12 exact, 1 missing, no data mismatches. 005157d0 68.907563% fuzzy/7.142857% positional -> 100% masked, 84.126984% raw; 00515a00 70.521327%/33.502538% -> 100% masked, 83.054004% raw. All ten old matches retained; getFilename not emitted. Calls/data identities, class ABI, provider selection, runtime and independent server verification remain open; inactive."
+  }
+}

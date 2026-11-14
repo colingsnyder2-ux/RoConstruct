@@ -1,0 +1,54 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DWin32Window.cpp",
+      "checks": [
+        {
+          "addr": "0045ad50",
+          "symbol": "?makeCurrent@GWindow@G3D@@QBEXXZ"
+        },
+        {
+          "addr": "0047f860",
+          "symbol": "??1GWindow@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0047f8a0",
+          "symbol": "?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0047f900",
+          "symbol": "?incInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f940",
+          "symbol": "?decInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f980",
+          "symbol": "?incMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f9c0",
+          "symbol": "?decMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047faf0",
+          "symbol": "??_GGWindow@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "00481570",
+          "symbol": "?pushLoopBody@GWindow@G3D@@UAEXP6AXPAX@Z0@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DWin32Window.cpp": "428d3bd9dbec3002e6df3a1f4a47c2c28b016e1140374ea67101eb30faad8339",
+      "rebuild/2008-06/native-classes/G3DGWindow.cpp": "6ce52e8e65879238653e814385ea200cfe6133e2d0322287e79931b7d08b74dd"
+    },
+    "run": "20261114-052314-ec3b85b6",
+    "proof": "analysis-730a0035.json",
+    "note": "Nine previously missing GWindow methods appear in corrected Win32Window object and match masked bytes/data, raw 76%-100%. The four capture/hide methods each have two indirect virtual calls, so their target identity remains unproven even though bodies are 100% raw. Combined with the existing 3/12 GWindow body matches from 20261114-052054-64b1206e, all 12 indexed methods have local byte candidates across objects. Vtable targets, other references, ABI, scoped-header compatibility, provider selection, runtime, and independent server verification remain open; inactive."
+  }
+}

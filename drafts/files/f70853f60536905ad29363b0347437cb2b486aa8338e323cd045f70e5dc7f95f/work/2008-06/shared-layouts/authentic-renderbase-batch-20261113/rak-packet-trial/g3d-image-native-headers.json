@@ -1,0 +1,136 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage.cpp",
+      "checks": [
+        {
+          "addr": "0050d530",
+          "symbol": "?pasteSubImage@GImage@G3D@@SA_NAAV12@ABV12@HHHHHH@Z"
+        },
+        {
+          "addr": "0050d600",
+          "symbol": "?stringToFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0050d800",
+          "symbol": "?decodePCX@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050e160",
+          "symbol": "?resize@GImage@G3D@@QAEXHHH@Z"
+        },
+        {
+          "addr": "0050e1b0",
+          "symbol": "?_copy@GImage@G3D@@AAEXABV12@@Z"
+        },
+        {
+          "addr": "0050e210",
+          "symbol": "??0GImage@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "0050e230",
+          "symbol": "??1GImage@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0050edb0",
+          "symbol": "?resolveFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0050eea0",
+          "symbol": "??0GImage@G3D@@QAE@HHH@Z"
+        },
+        {
+          "addr": "0050f360",
+          "symbol": "?insertRedAsAlpha@GImage@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "0050f430",
+          "symbol": "?save@GImage@G3D@@QBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@12@@Z"
+        },
+        {
+          "addr": "005105b0",
+          "symbol": "??0GImage@G3D@@QAE@PBEHW4Format@01@@Z"
+        },
+        {
+          "addr": "00510670",
+          "symbol": "??0GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_tga.cpp",
+      "checks": [
+        {
+          "addr": "0050b1a0",
+          "symbol": "?encodeTGA@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050bb30",
+          "symbol": "?decodeTGA@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_png.cpp",
+      "checks": [
+        {
+          "addr": "0050b700",
+          "symbol": "?encodePNG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050cdd0",
+          "symbol": "?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_bmp.cpp",
+      "checks": [
+        {
+          "addr": "0050c040",
+          "symbol": "?decodeBMP@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050f4c0",
+          "symbol": "?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_ppm.cpp",
+      "checks": [
+        {
+          "addr": "0050ba30",
+          "symbol": "?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050eaf0",
+          "symbol": "?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050ec40",
+          "symbol": "?decodePPM@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050fef0",
+          "symbol": "?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild\\2008-06\\native-headers\\g3d-image-2008\\G3D\\GImage.h": "d83fd9c2724ee92320fefba32c4615fb7123278ee20b32e1ef5249335ada10fc",
+      "rebuild\\2008-06\\native-headers\\g3d-image-2008\\G3D\\BinaryInput.h": "b3c71c499b66de636f41905d30f94ef50124add9f70fdd146f18b2974d2f0a79",
+      "rebuild\\2008-06\\native-classes\\G3DGImage.cpp": "86056cf6ac5a5a04321cc7386a15fafe15c75e2a3afa537c4c25fa3f3ba53ecc",
+      "rebuild\\2008-06\\native-classes\\G3DGImage_tga.cpp": "e339a4b097bf3b1a9b94114501dec9e957dd0f041d6cde7cf8282723720a47fd",
+      "rebuild\\2008-06\\native-classes\\G3DGImage_png.cpp": "bae520001dc2c7b3805dcc86117d0f45c03d853b5ef5222f3dca2e79edaf823e",
+      "rebuild\\2008-06\\native-classes\\G3DGImage_bmp.cpp": "db72ea81e9dfdc2cdd32cd91011c7db3fce6eef536c81f20449b6c5bab3613e4",
+      "rebuild\\2008-06\\native-classes\\G3DGImage_ppm.cpp": "28599c34cdb48837737761dbbf4f25b5b7e82a85646131c1f73d33ae9d8ef51d"
+    },
+    "baseline_core": "20261114-050014-80cd08bf",
+    "baseline_formats": "20261114-050044-952d328b",
+    "canonical": "20261114-050527-836f8449",
+    "note": "Promoted isolated 2008 RTTI/exception header recipe to scoped native headers; five existing GImage sources explicitly include this profile. Fresh build dependencies confirm both scoped headers used by all five. 23/23 mapped byte/data checks pass; compared with baseline core 11 exact/2 different and format 3 exact/7 different. No changed code bodies, no global header override. Remaining constructor/deletion candidates were separately checked; deleting symbol/alias, other references, full ABI, selection, runtime and independent server verification remain open."
+  }
+}

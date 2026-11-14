@@ -1,0 +1,52 @@
+#pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxApp | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5c10be2c | roc native-status --write
+#include <afxwin.h>
+#include <string>
+#include <vector>
+#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include "util/boost.hpp"
+
+// Log manager embedded in CRobloxApp at +0xa4 (constructed with "Roblox" by 0042a1c0), sizeof 0x4c.
+// Uses the Dec 2007 client class (rebuild/2008-06/native-donor-2007/LogManager.h, OpenRBX): same size,
+// RBX::ILogProvider + LogManager bases; 2008 split crash-reporter start into startCrashReporter 00428180.
+#include "LogManager.h"
+
+// Crash-report uploader owned through CRobloxApp+0x10c: 28 bytes (new(0x1c) in InitInstance).
+// Constructor 0044d610 allocates the 72-byte state; destructor 0044a830.
+class ErrorUploader {
+    struct data;
+    boost::shared_ptr<data> state;   // +0
+    RBX::worker_thread thread;       // +8
+public:
+    ErrorUploader();
+    ~ErrorUploader();
+    bool IsUploading();
+    static RBX::worker_thread::work_result upload(boost::shared_ptr<data>); // 0041d760
+};
+
+// CRuntimeClass via DECLARE_DYNAMIC (GetRuntimeClass 0044d440). Constructor 0044c3d0:
+// CWinApp(NULL) (sizeof 0xa4), MainLogManager("Roblox") at +0xa4, std::string at +0xf0,
+// scoped_ptr<ErrorUploader> at +0x10c; vptr 00816a64.
+class CRobloxApp : public CWinApp {
+    DECLARE_DYNAMIC(CRobloxApp)
+    DECLARE_MESSAGE_MAP()  // INFERRED: openrbx Client/win/Roblox.cpp BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
+public:
+    CRobloxApp();
+    virtual ~CRobloxApp();                         // 0044c440
+    virtual BOOL InitInstance();                   // 0044d810 (slot 22)
+    virtual int Run();                             // 0044d790 (slot 23)
+    virtual int ExitInstance();                    // 0044ad60 (slot 28)
+    BOOL initializeFramework(bool);                // 00449bf0
+    void initializeSettings();                     // 0044c760
+    void initializeEmptyDocument();                // 0044a2c0
+    BOOL openFile(std::string);                    // 0044a1f0
+    int openFileFailed(std::string);               // 0044a950
+    BOOL openFiles(std::vector<std::string>::iterator, std::vector<std::string>::iterator); // 0044d1b0
+    MainLogManager logManager;                     // +0xa4
+    std::string version;                           // +0xf0
+    boost::scoped_ptr<ErrorUploader> errorUploader; // +0x10c
+};

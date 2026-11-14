@@ -1,0 +1,348 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DShape.cpp",
+      "checks": [
+        {
+          "addr": "00433860",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00438060",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447da0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447e10",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447e80",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447ef0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447f60",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447fd0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "004a7ca0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "004aa6a0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "004aa710",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00565360",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005653d0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00565440",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056b530",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056b690",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056be10",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056fe30",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056fef0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056ff80",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0059c430",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0059c780",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0059fa60",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005bb2c0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005bbe40",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005cd850",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005d0300",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005ed5c0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005ed630",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005ef4c0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "006093a0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0060b770",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0060b7e0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0060b850",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "006a74a0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "006e8030",
+          "symbol": "?box@Shape@G3D@@UAEAAVBox@2@XZ"
+        },
+        {
+          "addr": "006f9bd0",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        },
+        {
+          "addr": "00710cc0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00718890",
+          "symbol": "?box@Shape@G3D@@UAEAAVBox@2@XZ"
+        },
+        {
+          "addr": "0071c740",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        },
+        {
+          "addr": "007278d0",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        },
+        {
+          "addr": "0076d2e0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0078e670",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00790770",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild\\2008-06\\native-classes\\G3DShape.cpp": "36cf46fd1e0f2ff62a8b1724595c8a4a191b658e17116247d4ce3ed6b1146a56",
+      "C:\\Users\\colin\\RoConstruct\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-052944-f36e1322\\unit-000\\candidate.obj": "7ec3f7317cdc850c4a08a9d892a0a23181dcad96e619c9b82eadbfe838031456"
+    },
+    "run": "20261114-052944-f36e1322",
+    "original_direct_calls": {
+      "00433860": [
+        "00563070",
+        "006a17af"
+      ],
+      "00438060": [
+        "00563070",
+        "006a17af"
+      ],
+      "00447da0": [
+        "00447060",
+        "006a17af"
+      ],
+      "00447e10": [
+        "004471e0",
+        "006a17af"
+      ],
+      "00447e80": [
+        "00447380",
+        "006a17af"
+      ],
+      "00447ef0": [
+        "00447500",
+        "006a17af"
+      ],
+      "00447f60": [
+        "00447680",
+        "006a17af"
+      ],
+      "00447fd0": [
+        "00447800",
+        "006a17af"
+      ],
+      "004a7ca0": [
+        "004293d0",
+        "006a17af"
+      ],
+      "004aa6a0": [
+        "004aa150",
+        "006a17af"
+      ],
+      "004aa710": [
+        "004aa2c0",
+        "006a17af"
+      ],
+      "00565360": [
+        "00564a60",
+        "006a17af"
+      ],
+      "005653d0": [
+        "00564be0",
+        "006a17af"
+      ],
+      "00565440": [
+        "00564d70",
+        "006a17af"
+      ],
+      "0056b530": [
+        "00563070",
+        "006a17af"
+      ],
+      "0056b690": [
+        "004293d0",
+        "006a17af"
+      ],
+      "0056be10": [
+        "00563070",
+        "006a17af"
+      ],
+      "0056fe30": [
+        "00563070",
+        "006a17af"
+      ],
+      "0056fef0": [
+        "004293d0",
+        "006a17af"
+      ],
+      "0056ff80": [
+        "004293d0",
+        "006a17af"
+      ],
+      "0059c430": [
+        "00614e00",
+        "006a17af"
+      ],
+      "0059c780": [
+        "0059c4a0",
+        "006a17af"
+      ],
+      "0059fa60": [
+        "0059f630",
+        "006a17af"
+      ],
+      "005bb2c0": [
+        "00629120",
+        "006a17af"
+      ],
+      "005bbe40": [
+        "005bb330",
+        "006a17af"
+      ],
+      "005cd850": [
+        "005cd3f0",
+        "006a17af"
+      ],
+      "005d0300": [
+        "005d0140",
+        "006a17af"
+      ],
+      "005ed5c0": [
+        "0064d750",
+        "006a17af"
+      ],
+      "005ed630": [
+        "00615070",
+        "006a17af"
+      ],
+      "005ef4c0": [
+        "0056fac0",
+        "006a17af"
+      ],
+      "006093a0": [
+        "00615280",
+        "006a17af"
+      ],
+      "0060b770": [
+        "0060b1d0",
+        "006a17af"
+      ],
+      "0060b7e0": [
+        "0060b350",
+        "006a17af"
+      ],
+      "0060b850": [
+        "0060b4d0",
+        "006a17af"
+      ],
+      "006f9bd0": [
+        "006f6b10",
+        "006a17af"
+      ],
+      "0071c740": [
+        "0071c660",
+        "006a17af"
+      ],
+      "007278d0": [
+        "00727820",
+        "006a17af"
+      ],
+      "00790770": [
+        "007905f0",
+        "006a17af"
+      ]
+    },
+    "note": "44 indexed addresses correspond to only 3 candidate symbols. 38 masked byte/data matches are NOT 38 recovered methods: many are same-shaped lazy singletons with different referenced constructors. Example 00433860 calls GuidRegistryMutex ctor 00563070, whereas Shape::axes candidate references CoordinateFrame ctor; 006f9bd0 calls CXTPDrawHelpers ctor 006f6b10, whereas Shape::ray candidate references Ray ctor. Both are false identity examples despite 100% masked scoring. Other targets and possible aliases require individual reference proof. No runtime, selection or server credit claimed."
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVector2.cpp",
+      "checks": [
+        {
+          "addr": "00411790",
+          "symbol": "??0Vector2@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "00467260",
+          "symbol": "??0Vector2@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00467270",
+          "symbol": "??0Vector2@G3D@@QAE@ABVVector2int16@1@@Z"
+        },
+        {
+          "addr": "00509ba0",
+          "symbol": "?zero@Vector2@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00509bd0",
+          "symbol": "?inf@Vector2@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00509c30",
+          "symbol": "??KVector2@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "00509c80",
+          "symbol": "?unitize@Vector2@G3D@@QAEMM@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DMatrix4.cpp",
+      "checks": [
+        {
+          "addr": "00514590",
+          "symbol": "??0Matrix4@G3D@@QAE@ABVCoordinateFrame@1@@Z"
+        },
+        {
+          "addr": "005145f0",
+          "symbol": "??0Matrix4@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00514630",
+          "symbol": "?getRow@Matrix4@G3D@@QBE?AVVector4@2@H@Z"
+        },
+        {
+          "addr": "00514670",
+          "symbol": "??8Matrix4@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "005146c0",
+          "symbol": "?orthogonalProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z"
+        },
+        {
+          "addr": "00514750",
+          "symbol": "?perspectiveProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z"
+        },
+        {
+          "addr": "00514840",
+          "symbol": "??9Matrix4@G3D@@QBE_NABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DQuat.cpp",
+      "checks": [
+        {
+          "addr": "00513160",
+          "symbol": "?unitize@Quat@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00526050",
+          "symbol": "??0Quat@G3D@@QAE@ABVMatrix3@1@@Z"
+        },
+        {
+          "addr": "00526160",
+          "symbol": "?nlerp@Quat@G3D@@QBE?AV12@ABV12@M@Z"
+        },
+        {
+          "addr": "005261f0",
+          "symbol": "?toRotationMatrix@Quat@G3D@@QBE?AVMatrix3@2@XZ"
+        },
+        {
+          "addr": "00526230",
+          "symbol": "?slerp@Quat@G3D@@QBE?AV12@ABV12@MM@Z"
+        },
+        {
+          "addr": "00658a30",
+          "symbol": "??DQuat@G3D@@QBE?AV01@ABV01@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DVector2.cpp": "fec3b5f93a5339d9b000e39b13ae60ae26993ac18080410708ff20e5f119ba76",
+      "rebuild/2008-06/native-classes/G3DMatrix4.cpp": "53f121cd7a6594369907e2118400764a7b32a6e48d06bdc1caf02e8f5110e5b1",
+      "rebuild/2008-06/native-classes/G3DQuat.cpp": "76100c055a44df3619c87d0559987e72fa8ba98b30c3820e803c8d6d57035cf0",
+      "rebuild/2008-06/native-classes/G3DMatrix3.cpp": "964015442008f223f808a72d7eefd19db74f2e713a2e5a172a8c1970bb98f074"
+    },
+    "baseline": "20261114-045803-99e3be49",
+    "quat_caller": "20261114-043604-9a2c3e28/analysis-42c286e3.json",
+    "note": "Current existing-source batch: Vector2 6/7, Matrix4 7/7, Quat 5/6 masked-byte/data matches. Missing Quat::unitize is emitted in existing Matrix3 caller object and matches 179/179 masked, 97.765363% raw, with eps(double) call binding verified. Combined 19/20 mapped methods locally match; Vector2(Vector2int16) constructor not emitted by tested Vector2 object. No class/provider/ABI/runtime/server-credit claim."
+  }
+}

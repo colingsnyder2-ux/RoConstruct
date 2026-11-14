@@ -1,0 +1,28 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Humanoid2008.cpp",
+      "checks": [
+        {
+          "addr": "005d9c10",
+          "symbol": "?updateWalkDirection@Humanoid@RBX@@QAE?AVVector3@G3D@@XZ",
+          "calls": [
+            {
+              "offset": 8,
+              "target": "005d9a50",
+              "symbol": "?getIntendedMovementVector@Humanoid@RBX@@AAE?AVVector3@G3D@@_N@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/Humanoid2008.cpp": "cec63bb3cbdaa6488c382199774ce5e32cd62f934de45c2c0ea03d95796ed7c3",
+      "tools/libs/g3d-6.09/source/include/G3D/CoordinateFrame.h": "70030cf522fe3b6f5160a0dc3eea6ad7c179ac48a22b5ae0572dea2da654bfc2"
+    },
+    "run": "20261114-044228-26271c03",
+    "note": "Target 005d9c10 indexed as CoordinateFrame::upVector, but exact native Humanoid::updateWalkDirection body passes 19/19 masked, 78.947368% raw, verified call to Humanoid::getIntendedMovementVector(bool) with literal true. Source upVector returns rotation.getColumn(1). Indexed ownership appears wrong; generic folding/other uses cannot be entirely ruled out. Do not count this as an upVector match or modify shared registry without owner review. Prior 19/21 CoordinateFrame count included this disputed row; 19 other matches are unchanged, 0057d210 remains unverified. ABI, selected provider, runtime and server credit unproven."
+  }
+}

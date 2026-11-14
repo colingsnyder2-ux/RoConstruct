@@ -1,0 +1,98 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage_tga.cpp",
+      "checks": [
+        {
+          "addr": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "calls": [
+            {
+              "offset": 20,
+              "kind": "import",
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_png.cpp",
+      "checks": [
+        {
+          "addr": "0050ab60",
+          "symbol": "?getFilename@BinaryOutput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "calls": [
+            {
+              "offset": 17,
+              "kind": "import",
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_ppm.cpp",
+      "checks": [
+        {
+          "addr": "00487b00",
+          "symbol": "??1TextInput@G3D@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 41,
+              "kind": "import",
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 57,
+              "target": "00507d20",
+              "symbol": "?alignedFree@System@G3D@@SAXPAX@Z"
+            },
+            {
+              "offset": 84,
+              "target": "0044b7d0",
+              "symbol": "?_Tidy@?$deque@VToken@G3D@@V?$allocator@VToken@G3D@@@std@@@std@@IAEXXZ"
+            },
+            {
+              "offset": 92,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        },
+        {
+          "addr": "00470700",
+          "symbol": "??1TextOutput@G3D@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 41,
+              "kind": "import",
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 57,
+              "target": "00507d20",
+              "symbol": "?alignedFree@System@G3D@@SAXPAX@Z"
+            },
+            {
+              "offset": 85,
+              "kind": "import",
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

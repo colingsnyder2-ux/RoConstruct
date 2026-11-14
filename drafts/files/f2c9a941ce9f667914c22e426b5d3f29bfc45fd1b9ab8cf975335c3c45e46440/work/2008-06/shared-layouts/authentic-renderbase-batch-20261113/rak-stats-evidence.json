@@ -1,0 +1,21 @@
+{
+  "scope": "Local match and literal data only; complete ABI and runtime unproven",
+  "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ReliabilityLayerStats2008.cpp",
+  "source_sha256": "9d53d1ba2a15536eae5a54e00341467bba1844a686ca85087be3d3a0ff965f61",
+  "object_sha256": "93f6f9d8c4d548cbbe71253fb58974f659d7b32baf8afb52bd2209647093228b",
+  "run": "work\\2008-06\\native-check-runs\\20261114-022315-a9acd51e",
+  "address": "004d1380",
+  "symbol": "?GetStatistics@ReliabilityLayer@@QAEQAURakNetStatistics@@XZ",
+  "data_matches": [
+    [
+      8458816,
+      8
+    ],
+    [
+      8547056,
+      8
+    ]
+  ],
+  "reference_checks": null,
+  "note": "Original uses multiplication by reciprocal; /fp:fast reproduces operation and referenced data."
+}

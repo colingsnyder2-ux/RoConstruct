@@ -1,0 +1,64 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage_tga.cpp",
+      "checks": [
+        {
+          "addr": "0050b1a0",
+          "symbol": "?encodeTGA@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050bb30",
+          "symbol": "?decodeTGA@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_png.cpp",
+      "checks": [
+        {
+          "addr": "0050b700",
+          "symbol": "?encodePNG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050cdd0",
+          "symbol": "?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_bmp.cpp",
+      "checks": [
+        {
+          "addr": "0050c040",
+          "symbol": "?decodeBMP@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050f4c0",
+          "symbol": "?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_ppm.cpp",
+      "checks": [
+        {
+          "addr": "0050ba30",
+          "symbol": "?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050eaf0",
+          "symbol": "?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050ec40",
+          "symbol": "?decodePPM@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050fef0",
+          "symbol": "?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    }
+  ]
+}

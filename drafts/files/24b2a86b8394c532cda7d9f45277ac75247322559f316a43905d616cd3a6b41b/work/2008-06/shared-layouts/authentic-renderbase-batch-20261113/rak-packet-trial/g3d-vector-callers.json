@@ -1,0 +1,37 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGLight.cpp",
+      "checks": [
+        {
+          "addr": "0043afb0",
+          "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/RenderBaseMeshBounds2008.cpp",
+      "checks": [
+        {
+          "addr": "00525e00",
+          "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00525e60",
+          "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DGLight.cpp": "5207fbcb6f1e83d87b4dc4fc4b7bf48356cad3462dd5b55a8950e4b0aba4e6ee",
+      "rebuild/2008-06/native-classes/RenderBaseMeshBounds2008.cpp": "d06c895a0d687f3eb90f02110d66c23c50aee56e73dc8b0e1de3d65cafa2f2c6"
+    },
+    "baseline": "20261114-044700-35f37809",
+    "optimized_bounds": "20261114-044728-cb14edcb",
+    "equality_proof": "20261114-044700-35f37809/analysis-5cdc5a46.json",
+    "minmax_proof": "20261114-044728-cb14edcb/analysis-412a10fa.json",
+    "note": "Existing GLight object emits Vector3 equality 0043afb0: 54/54 raw, call-free. Mesh bounds min/max compile under existing /Od to 93/82 bytes, 32.000000% fuzzy, 3.896104% positional. Optimized /fp:fast alternate profile emits both at 82/82 raw, call-free; this profile is NOT selected for Mesh bounds because its parent currently needs /Od. Across separately compiled local candidates, 25/32 Vector3 indexed bodies match masked bytes, with 7 missing. Source identity, provider selection, ABI, runtime and server credit unproven; inactive."
+  }
+}

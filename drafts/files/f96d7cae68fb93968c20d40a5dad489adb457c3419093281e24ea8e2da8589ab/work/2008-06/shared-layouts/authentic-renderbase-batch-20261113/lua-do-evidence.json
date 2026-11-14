@@ -1,0 +1,136 @@
+{
+  "scope": "Direct reference inventory; EH metadata, ABI, provider and runtime remain unproven",
+  "run": "20261114-021648-fcf9e323",
+  "object_sha256": "c6141faf82fe0f53db9c1a45593f26e0e339ce724a006f0c500fa0361206257c",
+  "functions": [
+    {
+      "symbol": "?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z",
+      "address": "00621920",
+      "refs": [
+        {
+          "offset": 6,
+          "symbol": "__ehhandler$?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z",
+          "original_target": null
+        },
+        {
+          "offset": 91,
+          "symbol": "$LN24",
+          "original_target": null
+        },
+        {
+          "offset": 119,
+          "symbol": "?luaG_runerror@@YAXPAUlua_State@@PBDZZ",
+          "original_target": "006237d0"
+        },
+        {
+          "offset": 127,
+          "symbol": "$LN24",
+          "original_target": null
+        },
+        {
+          "offset": 154,
+          "symbol": "$LN15",
+          "original_target": null
+        }
+      ]
+    },
+    {
+      "symbol": "?luaD_throw@@YAXPAUlua_State@@H@Z",
+      "address": "00622050",
+      "refs": [
+        {
+          "offset": 32,
+          "symbol": "__imp_??0exception@std@@QAE@XZ",
+          "original_target": null
+        },
+        {
+          "offset": 37,
+          "symbol": "__TI2?AVlua_exception@@",
+          "original_target": null
+        },
+        {
+          "offset": 50,
+          "symbol": "??_7lua_exception@@6B@",
+          "original_target": null
+        },
+        {
+          "offset": 68,
+          "symbol": "__CxxThrowException@8",
+          "original_target": "006a158c"
+        },
+        {
+          "offset": 91,
+          "symbol": "?resetstack@@YAXPAUlua_State@@H@Z",
+          "original_target": "00621fe0"
+        },
+        {
+          "offset": 111,
+          "symbol": "__imp__exit",
+          "original_target": null
+        }
+      ]
+    },
+    {
+      "symbol": "?luaD_precall@@YAHPAUlua_State@@PAUlua_TValue@@H@Z",
+      "address": "00622140",
+      "refs": [
+        {
+          "offset": 20,
+          "symbol": "?tryfuncTM@@YAPAUlua_TValue@@PAUlua_State@@PAU1@@Z",
+          "original_target": "00621cd0"
+        },
+        {
+          "offset": 95,
+          "symbol": "?luaD_reallocstack@@YAXPAUlua_State@@H@Z",
+          "original_target": "00621a70"
+        },
+        {
+          "offset": 148,
+          "symbol": "?adjust_varargs@@YAPAUlua_TValue@@PAUlua_State@@PAUProto@@H@Z",
+          "original_target": "00621c60"
+        },
+        {
+          "offset": 170,
+          "symbol": "?growCI@@YAPAUCallInfo@@PAUlua_State@@@Z",
+          "original_target": "00622100"
+        },
+        {
+          "offset": 261,
+          "symbol": "?luaD_callhook@@YAXPAUlua_State@@HH@Z",
+          "original_target": "00621b80"
+        },
+        {
+          "offset": 306,
+          "symbol": "?luaD_reallocstack@@YAXPAUlua_State@@H@Z",
+          "original_target": "00621a70"
+        },
+        {
+          "offset": 322,
+          "symbol": "?growCI@@YAPAUCallInfo@@PAUlua_State@@@Z",
+          "original_target": "00622100"
+        },
+        {
+          "offset": 381,
+          "symbol": "?luaD_callhook@@YAXPAUlua_State@@HH@Z",
+          "original_target": "00621b80"
+        },
+        {
+          "offset": 429,
+          "symbol": "?luaD_poscall@@YAHPAUlua_State@@PAUlua_TValue@@@Z",
+          "original_target": "00621db0"
+        }
+      ]
+    },
+    {
+      "symbol": "?what@lua_exception@@UBEPBDXZ",
+      "address": "00621870",
+      "refs": [
+        {
+          "offset": 9,
+          "symbol": "?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z",
+          "original_target": "00612010"
+        }
+      ]
+    }
+  ]
+}

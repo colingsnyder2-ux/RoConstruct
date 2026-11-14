@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DTexture.cpp",
+      "checks": [
+        {
+          "addr": "0045aca0",
+          "symbol": "??0GImage@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "0045acc0",
+          "symbol": "??_GGImage@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "0045acc0",
+          "symbol": "??_EGImage@G3D@@UAEPAXI@Z"
+        }
+      ]
+    }
+  ]
+}

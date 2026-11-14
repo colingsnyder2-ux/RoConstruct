@@ -1,0 +1,87 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DColor3.cpp",
+      "checks": [
+        {
+          "addr": "005148e0",
+          "symbol": "?green@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514910",
+          "symbol": "?blue@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514940",
+          "symbol": "?purple@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514980",
+          "symbol": "?yellow@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "005149b0",
+          "symbol": "?orange@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "005149f0",
+          "symbol": "?black@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514a60",
+          "symbol": "?white@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514a90",
+          "symbol": "?wheelRandom@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514c00",
+          "symbol": "??0Color3@G3D@@QAE@ABVColor3uint8@1@@Z"
+        },
+        {
+          "addr": "00514c40",
+          "symbol": "??KColor3@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "00514ce0",
+          "symbol": "?fromARGB@Color3@G3D@@SA?AV12@I@Z"
+        },
+        {
+          "addr": "005183c0",
+          "symbol": "??_0Color3@G3D@@QAEAAV01@M@Z"
+        },
+        {
+          "addr": "00599190",
+          "symbol": "?white@Color3@G3D@@SAABV12@XZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DColor4.cpp",
+      "checks": [
+        {
+          "addr": "007baf10",
+          "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "007bb030",
+          "symbol": "??0Color4@G3D@@QAE@ABVColor4uint8@1@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DColor3uint8.cpp",
+      "checks": [
+        {
+          "addr": "0042e3d0",
+          "symbol": "??0Color3uint8@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "005106a0",
+          "symbol": "??0Color3uint8@G3D@@QAE@ABVColor3@1@@Z"
+        }
+      ]
+    }
+  ]
+}

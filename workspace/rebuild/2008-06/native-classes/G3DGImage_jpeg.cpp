@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/g3d-image-2008
 // 2008-06 native G3DGImage_jpeg (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/GImage_jpeg.cpp, verbatim.
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_jpeg | 2008-06 | draft (no current byte proof)
@@ -30,6 +30,15 @@ extern "C" {
 }
 
 namespace G3D {
+
+static void jpegErrorExit(j_common_ptr cinfo) {
+    (*cinfo->err->output_message)(cinfo);
+    jpeg_destroy(cinfo);
+    char message[JMSG_LENGTH_MAX];
+    (*cinfo->err->format_message)(cinfo, message);
+    throw std::runtime_error(message);
+}
+
 
 
 const int jpegQuality = 96;
@@ -273,6 +282,7 @@ void GImage::encodeJPEG(
     jpeg_error_mgr          jerr;
 
 	cinfo.err = jpeg_std_error(&jerr);
+    jerr.error_exit = jpegErrorExit;
 	jpeg_create_compress(&cinfo);
 
     // Specify the destination for the compressed data.
@@ -344,6 +354,7 @@ void GImage::decodeJPEG(
     channels = 3;
     // We have to set up the error handler, in case initialization fails.
 	cinfo.err = jpeg_std_error(&jerr);
+    jerr.error_exit = jpegErrorExit;
 
     // Initialize the JPEG decompression object.
 	jpeg_create_decompress(&cinfo);

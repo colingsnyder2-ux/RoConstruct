@@ -1,0 +1,31 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/AppUnit504DepthBlur.cpp",
+      "checks": [
+        {
+          "addr": "005071d0",
+          "symbol": "?allocateTextures@DepthBlur@Render@RBX@@AAEXABVRect2D@G3D@@@Z"
+        },
+        {
+          "addr": "00507180",
+          "symbol": "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHPBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z"
+        },
+        {
+          "addr": "00507420",
+          "symbol": "?apply@DepthBlur@Render@RBX@@QAEXPAVRenderDevice@G3D@@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/AppUnit504DepthBlur.cpp": "cd510eec1abfd5eba0ed473925f17835bd468804950d702538a631cd987c03d5",
+      "rebuild/2008-06/native-headers/AppUnit504/RenderEffects.h": "bcb3112bd5f1d5b40eada39b3072ec71b3853a14a01f962f9101d27c0e75d472",
+      "tools/openrbx/Client/Rendering/RenderLib/DepthBlur.cpp": "ec4fedda96682420d231d5bd6a5f0989991a255200054b1f2643234126bdcd64"
+    },
+    "run": "20261114-051546-b30e3df4",
+    "texture_proof": "analysis-b210a58c.json",
+    "note": "Recovered donor DepthBlur::allocateTextures. 005071d0 588/588 masked, 82.653061% raw; emits Texture::createEmpty wrapper 00507180 75/75 masked, 94.666667% raw, target call verified; pre-existing apply 00507420 remains masked exact, 78.571429% raw. Compared to prior G3DTexture-only 10/12 indexed matches, wrapper gives 11/12 across separate objects; fromGImage remains missing. Full call/data, object ABI, linked provider, runtime and independent server verification unproven; inactive."
+  }
+}

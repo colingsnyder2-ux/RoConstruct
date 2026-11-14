@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DLog (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Log.cpp, verbatim.
+// 2008-06 native G3DLog (inactive): OpenRBX G3D Log source; 2008 file checks supported by original assembly.
 // >>> native-status (generated) -- do not edit >>>
 // G3DLog | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -37,36 +37,16 @@ Log::Log(const std::string& filename, int stripFromStackBottom) :
 
     logFile = fopen(filename.c_str(), "w");
 
-    if (logFile == NULL) {
-        std::string drive, base, ext;
-        Array<std::string> path;
-        parseFilename(filename, drive, path, base, ext);
-        std::string logName = base + ((ext != "") ? ("." + ext) : ""); 
+    if (logFile != NULL) {
+        // Turn off buffering.
+        setvbuf(logFile, NULL, _IONBF, 0);
 
-        // Write time is greater than 1ms.  This may be a network drive.... try another file.
-        #ifdef G3D_WIN32
-            if (fileExists("c:/tmp")) {
-                logName = std::string("c:/tmp/") + logName;
-            } else if (fileExists("c:/temp")) { 
-                logName = std::string("c:/temp/") + logName;
-            } else {
-                logName = std::string("c:/") + logName;
-            }
-        #else
-            logName = std::string("/tmp/") + logName;
-        #endif
-
-        logFile = fopen(logName.c_str(), "w");
+        fprintf(logFile, "Application Log\n");
+        time_t t;
+        time(&t);
+        fprintf(logFile, "Start: %s\n", ctime(&t));
+        fflush(logFile);
     }
-
-    // Turn off buffering.
-    setvbuf(logFile, NULL, _IONBF, 0);
-
-    fprintf(logFile, "Application Log\n");
-    time_t t;
-    time(&t);
-    fprintf(logFile, "Start: %s\n", ctime(&t));
-    fflush(logFile);
 
     if (commonLog == NULL) {
         commonLog = this;
@@ -83,7 +63,9 @@ Log::~Log() {
         Log::commonLog = NULL;
     }
 
-    fclose(logFile);
+    if (logFile != NULL) {
+        fclose(logFile);
+    }
 }
 
 
@@ -105,8 +87,10 @@ std::string Log::getCommonLogFilename() {
 
 
 void Log::section(const std::string& s) {
-    fprintf(logFile, "_____________________________________________________\n");
-    fprintf(logFile, "\n    ###    %s    ###\n\n", s.c_str());
+    if (logFile != NULL) {
+        fprintf(logFile, "_____________________________________________________\n");
+        fprintf(logFile, "\n    ###    %s    ###\n\n", s.c_str());
+    }
 }
 
 
@@ -126,14 +110,18 @@ void __cdecl Log::vprintf(const char* fmt, va_list argPtr) {
 
 
 void Log::print(const std::string& s) {
-    printHeader();
-    fprintf(logFile, "%s", s.c_str());
+    if (logFile != NULL) {
+        printHeader();
+        fprintf(logFile, "%s", s.c_str());
+    }
 }
 
 
 void Log::println(const std::string& s) {
-    printHeader();
-    fprintf(logFile, "%s\n", s.c_str());
+    if (logFile != NULL) {
+        printHeader();
+        fprintf(logFile, "%s\n", s.c_str());
+    }
 }
 
 

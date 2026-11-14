@@ -53,6 +53,7 @@ class ATL_NO_VTABLE CWorkspace :
     public RBX::Listener<RBX::Selection, RBX::SelectionChanged>,
     public RBX::Listener<RBX::Workspace, RBX::DrawChanged> {
 public:
+    DECLARE_REGISTRY_RESOURCEID(106)
     BEGIN_COM_MAP(CWorkspace)
         COM_INTERFACE_ENTRY(IWorkspace)
         COM_INTERFACE_ENTRY(IDispatch)

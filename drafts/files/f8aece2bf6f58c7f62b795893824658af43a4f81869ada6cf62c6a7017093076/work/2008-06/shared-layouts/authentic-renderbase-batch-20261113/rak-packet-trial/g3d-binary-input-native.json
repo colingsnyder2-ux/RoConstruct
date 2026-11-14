@@ -1,0 +1,61 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DBinaryInput.cpp",
+      "checks": [
+        {
+          "addr": "00509b40",
+          "symbol": "?readUInt32@BinaryInput@G3D@@QAEIXZ"
+        },
+        {
+          "addr": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "0050aa60",
+          "symbol": "?setPosition@BinaryInput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "0050aa80",
+          "symbol": "?readUInt8@BinaryInput@G3D@@QAEEXZ"
+        },
+        {
+          "addr": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ"
+        },
+        {
+          "addr": "0050ab00",
+          "symbol": "?skip@BinaryInput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z"
+        },
+        {
+          "addr": "005158c0",
+          "symbol": "??0BinaryInput@G3D@@QAE@PBEHW4G3DEndian@1@_N2@Z"
+        },
+        {
+          "addr": "00515a00",
+          "symbol": "??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z"
+        },
+        {
+          "addr": "00515c20",
+          "symbol": "??1BinaryInput@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "00515d10",
+          "symbol": "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z"
+        },
+        {
+          "addr": "00515d50",
+          "symbol": "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z"
+        },
+        {
+          "addr": "00515e00",
+          "symbol": "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        }
+      ]
+    }
+  ]
+}

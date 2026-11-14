@@ -1,0 +1,65 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGLCaps.cpp",
+      "checks": [
+        {
+          "addr": "0046ffd0",
+          "symbol": "?supports_two_sided_stencil@GLCaps@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "0046fff0",
+          "symbol": "?checkBug_cubeMapBugs@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "004704a0",
+          "symbol": "?checkBug_redBlueMipmapSwap@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "00470770",
+          "symbol": "?glVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00470880",
+          "symbol": "?vendor@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "004709a0",
+          "symbol": "?renderer@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00470ab0",
+          "symbol": "?checkBug_slowVBO@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "00470bf0",
+          "symbol": "?computeVendor@GLCaps@G3D@@CA?AW4Vendor@12@XZ"
+        },
+        {
+          "addr": "00470cf0",
+          "symbol": "?getDriverVersion@GLCaps@G3D@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00471070",
+          "symbol": "?driverVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "004716f0",
+          "symbol": "?loadExtensions@GLCaps@G3D@@SAXPAVLog@2@@Z"
+        },
+        {
+          "addr": "00472850",
+          "symbol": "?init@GLCaps@G3D@@SAXXZ"
+        },
+        {
+          "addr": "004d71b0",
+          "symbol": "?supports_GL_ARB_texture_non_power_of_two@GLCaps@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "006f70a0",
+          "symbol": "?supports@GLCaps@G3D@@SA_NPBVTextureFormat@2@@Z"
+        }
+      ]
+    }
+  ]
+}

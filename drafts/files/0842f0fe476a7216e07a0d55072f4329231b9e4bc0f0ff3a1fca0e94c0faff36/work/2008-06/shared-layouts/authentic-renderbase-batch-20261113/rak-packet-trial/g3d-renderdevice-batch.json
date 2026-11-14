@@ -1,0 +1,373 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DRenderDevice.cpp",
+      "checks": [
+        {
+          "addr": "0045ae70",
+          "symbol": "?enableAlphaWrite@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "004768d0",
+          "symbol": "?notifyResize@RenderDevice@G3D@@QAEXHH@Z"
+        },
+        {
+          "addr": "004768e0",
+          "symbol": "?project@RenderDevice@G3D@@QBE?AVVector4@2@ABV32@@Z"
+        },
+        {
+          "addr": "00476b10",
+          "symbol": "?setShininess@RenderDevice@G3D@@QAEXM@Z"
+        },
+        {
+          "addr": "00476b50",
+          "symbol": "?setRenderMode@RenderDevice@G3D@@QAEXW4RenderMode@12@@Z"
+        },
+        {
+          "addr": "00476bd0",
+          "symbol": "?setCullFace@RenderDevice@G3D@@QAEXW4CullFace@12@@Z"
+        },
+        {
+          "addr": "00476c60",
+          "symbol": "?setSwapBuffersAutomatically@RenderDevice@G3D@@QAEX_N@Z"
+        },
+        {
+          "addr": "00476c90",
+          "symbol": "?setStencilClearValue@RenderDevice@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "00476cc0",
+          "symbol": "?setColorClearValue@RenderDevice@G3D@@QAEXABVColor4@2@@Z"
+        },
+        {
+          "addr": "00476d60",
+          "symbol": "?getViewport@RenderDevice@G3D@@QBE?AVRect2D@2@XZ"
+        },
+        {
+          "addr": "00476d90",
+          "symbol": "?setDepthTest@RenderDevice@G3D@@QAEXW4DepthTest@12@@Z"
+        },
+        {
+          "addr": "00476f30",
+          "symbol": "?_setStencilTest@RenderDevice@G3D@@AAEXW4StencilTest@12@H@Z"
+        },
+        {
+          "addr": "00476fc0",
+          "symbol": "?setStencilConstant@RenderDevice@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "00476ff0",
+          "symbol": "?setStencilTest@RenderDevice@G3D@@QAEXW4StencilTest@12@@Z"
+        },
+        {
+          "addr": "00477090",
+          "symbol": "?setAlphaTest@RenderDevice@G3D@@QAEXW4AlphaTest@12@N@Z"
+        },
+        {
+          "addr": "004771b0",
+          "symbol": "?toGLStencilOp@RenderDevice@G3D@@ABEHW4StencilOp@12@@Z"
+        },
+        {
+          "addr": "00477230",
+          "symbol": "?setStencilOp@RenderDevice@G3D@@QAEXW4StencilOp@12@00000@Z"
+        },
+        {
+          "addr": "00477480",
+          "symbol": "?setStencilOp@RenderDevice@G3D@@QAEXW4StencilOp@12@00@Z"
+        },
+        {
+          "addr": "004774f0",
+          "symbol": "?setBlendFunc@RenderDevice@G3D@@QAEXW4BlendFunc@12@0W4BlendEq@12@@Z"
+        },
+        {
+          "addr": "00477640",
+          "symbol": "?setLineWidth@RenderDevice@G3D@@QAEXN@Z"
+        },
+        {
+          "addr": "00477680",
+          "symbol": "?setAmbientLightColor@RenderDevice@G3D@@QAEXABVColor4@2@@Z"
+        },
+        {
+          "addr": "00477740",
+          "symbol": "?setAmbientLightColor@RenderDevice@G3D@@QAEXABVColor3@2@@Z"
+        },
+        {
+          "addr": "00477770",
+          "symbol": "?enableLighting@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "004777b0",
+          "symbol": "?disableLighting@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "004777e0",
+          "symbol": "?setObjectToWorldMatrix@RenderDevice@G3D@@QAEXABVCoordinateFrame@2@@Z"
+        },
+        {
+          "addr": "00477870",
+          "symbol": "?getProjectionMatrix@RenderDevice@G3D@@QBE?AVMatrix4@2@XZ"
+        },
+        {
+          "addr": "00477890",
+          "symbol": "?setProjectionMatrix@RenderDevice@G3D@@QAEXABVMatrix4@2@@Z"
+        },
+        {
+          "addr": "004778f0",
+          "symbol": "?setTextureLODBias@RenderDevice@G3D@@QAEXIM@Z"
+        },
+        {
+          "addr": "00477970",
+          "symbol": "?setTextureCombineMode@RenderDevice@G3D@@QAEXIW4CombineMode@12@@Z"
+        },
+        {
+          "addr": "00477ce0",
+          "symbol": "?setPolygonOffset@RenderDevice@G3D@@QAEXN@Z"
+        },
+        {
+          "addr": "00477db0",
+          "symbol": "?setNormal@RenderDevice@G3D@@QAEXABVVector3@2@@Z"
+        },
+        {
+          "addr": "00477df0",
+          "symbol": "?setTexCoord@RenderDevice@G3D@@QAEXIABVVector4@2@@Z"
+        },
+        {
+          "addr": "00477e60",
+          "symbol": "?setTexCoord@RenderDevice@G3D@@QAEXIABVVector2@2@@Z"
+        },
+        {
+          "addr": "00477ea0",
+          "symbol": "?sendVertex@RenderDevice@G3D@@QAEXABVVector2@2@@Z"
+        },
+        {
+          "addr": "00477ec0",
+          "symbol": "?sendVertex@RenderDevice@G3D@@QAEXABVVector3@2@@Z"
+        },
+        {
+          "addr": "00477ee0",
+          "symbol": "?sendVertex@RenderDevice@G3D@@QAEXABVVector2@2@@Z"
+        },
+        {
+          "addr": "00477f00",
+          "symbol": "?countTriangles@RenderDevice@G3D@@AAEXW4Primitive@12@H@Z"
+        },
+        {
+          "addr": "00477fb0",
+          "symbol": "?beginIndexedPrimitives@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "00477fd0",
+          "symbol": "?setLight@RenderDevice@G3D@@AAEXHPBVGLight@2@_N@Z"
+        },
+        {
+          "addr": "00478450",
+          "symbol": "?width@RenderDevice@G3D@@QBEHXZ"
+        },
+        {
+          "addr": "00478470",
+          "symbol": "?project@RenderDevice@G3D@@QBE?AVVector4@2@ABVVector3@2@@Z"
+        },
+        {
+          "addr": "00478620",
+          "symbol": "?afterPrimitive@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "00478650",
+          "symbol": "?setSpecularCoefficient@RenderDevice@G3D@@QAEXM@Z"
+        },
+        {
+          "addr": "00478840",
+          "symbol": "?setViewport@RenderDevice@G3D@@QAEXABVRect2D@2@@Z"
+        },
+        {
+          "addr": "00478990",
+          "symbol": "?endPrimitive@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "004789e0",
+          "symbol": "?setMilestone@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VMilestone@G3D@@@2@@Z"
+        },
+        {
+          "addr": "00478cd0",
+          "symbol": "?height@RenderDevice@G3D@@QBEHXZ"
+        },
+        {
+          "addr": "00478dd0",
+          "symbol": "?enableClip2D@RenderDevice@G3D@@QAEXABVRect2D@2@@Z"
+        },
+        {
+          "addr": "00478ec0",
+          "symbol": "?setFramebuffer@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VFramebuffer@G3D@@@2@@Z"
+        },
+        {
+          "addr": "00478f20",
+          "symbol": "?setShader@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VShader@G3D@@@2@@Z"
+        },
+        {
+          "addr": "00478f40",
+          "symbol": "?forceVertexAndPixelShaderBind@RenderDevice@G3D@@AAEXXZ"
+        },
+        {
+          "addr": "00478f80",
+          "symbol": "?setVertexAndPixelShader@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@@Z"
+        },
+        {
+          "addr": "00479000",
+          "symbol": "?setVertexAndPixelShader@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@ABVArgList@VertexAndPixelShader@2@@Z"
+        },
+        {
+          "addr": "00479030",
+          "symbol": "?setCameraToWorldMatrix@RenderDevice@G3D@@QAEXABVCoordinateFrame@2@@Z"
+        },
+        {
+          "addr": "00479150",
+          "symbol": "?forceSetTextureMatrix@RenderDevice@G3D@@AAEXHPBM@Z"
+        },
+        {
+          "addr": "00479310",
+          "symbol": "?setTextureMatrix@RenderDevice@G3D@@QAEXIPBM@Z"
+        },
+        {
+          "addr": "00479360",
+          "symbol": "?setTextureMatrix@RenderDevice@G3D@@QAEXIABVCoordinateFrame@2@@Z"
+        },
+        {
+          "addr": "00479450",
+          "symbol": "?setTexture@RenderDevice@G3D@@QAEXIV?$ReferenceCountedPointer@VTexture@G3D@@@2@@Z"
+        },
+        {
+          "addr": "00479650",
+          "symbol": "?getDepthBufferValue@RenderDevice@G3D@@QBENHH@Z"
+        },
+        {
+          "addr": "004796a0",
+          "symbol": "?endIndexedPrimitives@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "00479700",
+          "symbol": "?setVARAreaFromVAR@RenderDevice@G3D@@AAEXABVVAR@2@@Z"
+        },
+        {
+          "addr": "00479820",
+          "symbol": "?setVertexArray@RenderDevice@G3D@@QAEXABVVAR@2@@Z"
+        },
+        {
+          "addr": "00479840",
+          "symbol": "?setVertexArray@RenderDevice@G3D@@QAEXABVVAR@2@@Z"
+        },
+        {
+          "addr": "00479860",
+          "symbol": "?setTexCoordArray@RenderDevice@G3D@@QAEXIABVVAR@2@@Z"
+        },
+        {
+          "addr": "00479880",
+          "symbol": "?createMilestone@RenderDevice@G3D@@QAE?AV?$ReferenceCountedPointer@VMilestone@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "00479900",
+          "symbol": "?configureReflectionMap@RenderDevice@G3D@@QAEXIV?$ReferenceCountedPointer@VTexture@G3D@@@2@@Z"
+        },
+        {
+          "addr": "00479c30",
+          "symbol": "?setVARAreaMilestone@RenderDevice@G3D@@AAEXXZ"
+        },
+        {
+          "addr": "0047a4f0",
+          "symbol": "?setState@RenderDevice@G3D@@AAEXABVRenderState@12@@Z"
+        },
+        {
+          "addr": "0047afd0",
+          "symbol": "?beforePrimitive@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047b030",
+          "symbol": "?setProjectionAndCameraMatrix@RenderDevice@G3D@@QAEXABVGCamera@2@@Z"
+        },
+        {
+          "addr": "0047b410",
+          "symbol": "?beginPrimitive@RenderDevice@G3D@@QAEXW4Primitive@12@@Z"
+        },
+        {
+          "addr": "0047b450",
+          "symbol": "?internalSendIndices@RenderDevice@G3D@@AAEXW4Primitive@12@IHPBX@Z"
+        },
+        {
+          "addr": "0047b5f0",
+          "symbol": "?resetState@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047bac0",
+          "symbol": "?resetTextureUnit@RenderDevice@G3D@@QAEXI@Z"
+        },
+        {
+          "addr": "0047bec0",
+          "symbol": "??1RenderDevice@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "0047bfc0",
+          "symbol": "?setGamma@RenderDevice@G3D@@AAEXNN@Z"
+        },
+        {
+          "addr": "0047c0c0",
+          "symbol": "?setVideoMode@RenderDevice@G3D@@AAEXXZ"
+        },
+        {
+          "addr": "0047c3e0",
+          "symbol": "?cleanup@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047c530",
+          "symbol": "?init@RenderDevice@G3D@@QAE_NPAVGWindow@2@PAVLog@2@@Z"
+        },
+        {
+          "addr": "0047cce0",
+          "symbol": "?pushState@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047cd20",
+          "symbol": "?clear@RenderDevice@G3D@@QAEX_N00@Z"
+        },
+        {
+          "addr": "0047ce40",
+          "symbol": "?beginFrame@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047cea0",
+          "symbol": "?endFrame@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047d0d0",
+          "symbol": "??0RenderDevice@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "0047d200",
+          "symbol": "?push2D@RenderDevice@G3D@@AAEXABV?$ReferenceCountedPointer@VFramebuffer@G3D@@@2@ABVRect2D@2@@Z"
+        },
+        {
+          "addr": "0047d360",
+          "symbol": "?popState@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "0047d3a0",
+          "symbol": "?push2D@RenderDevice@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "005029c0",
+          "symbol": "??$sendIndices@H@RenderDevice@G3D@@QAEXW4Primitive@01@ABV?$Array@H@1@@Z"
+        },
+        {
+          "addr": "006a26e0",
+          "symbol": "?getCardDescription@RenderDevice@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "006aad80",
+          "symbol": "?getCardDescription@RenderDevice@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "baseline": "20261114-052514-2abccd5d",
+    "note": "Initial mapped class baseline 85 exact, four different, one missing. No reference/ABI/runtime credit implied."
+  }
+}

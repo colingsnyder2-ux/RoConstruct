@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Clusterer2008.cpp",
+      "checks": [
+        {
+          "addr": "00530730",
+          "symbol": "??YVector3@G3D@@QAEAAV01@ABV01@@Z"
+        },
+        {
+          "addr": "00552d50",
+          "symbol": "?computeCentroid@Cluster@Clusterer@RenderBase@RBX@@QAEXXZ"
+        }
+      ]
+    }
+  ]
+}

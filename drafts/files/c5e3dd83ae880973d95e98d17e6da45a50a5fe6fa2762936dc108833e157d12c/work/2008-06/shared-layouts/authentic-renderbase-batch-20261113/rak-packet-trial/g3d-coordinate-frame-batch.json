@@ -1,0 +1,103 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DCoordinateFrame.cpp",
+      "checks": [
+        {
+          "addr": "00476580",
+          "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z"
+        },
+        {
+          "addr": "004765e0",
+          "symbol": "??9CoordinateFrame@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "00476640",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@ABVMatrix3@1@ABVVector3@1@@Z"
+        },
+        {
+          "addr": "00476670",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "004766a0",
+          "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z"
+        },
+        {
+          "addr": "00476700",
+          "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "004782d0",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00478330",
+          "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00485390",
+          "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z"
+        },
+        {
+          "addr": "00501ca0",
+          "symbol": "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z"
+        },
+        {
+          "addr": "005187c0",
+          "symbol": "?vectorToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z"
+        },
+        {
+          "addr": "005187f0",
+          "symbol": "?lookVector@CoordinateFrame@G3D@@QBE?AVVector3@2@XZ"
+        },
+        {
+          "addr": "00518890",
+          "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z"
+        },
+        {
+          "addr": "00518970",
+          "symbol": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z"
+        },
+        {
+          "addr": "00518a50",
+          "symbol": "?lerp@CoordinateFrame@G3D@@QBE?AV12@ABV12@M@Z"
+        },
+        {
+          "addr": "00518b90",
+          "symbol": "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@V32@@Z"
+        },
+        {
+          "addr": "00518e20",
+          "symbol": "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z"
+        },
+        {
+          "addr": "0057d210",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@ABVVector3@1@@Z"
+        },
+        {
+          "addr": "005d9c10",
+          "symbol": "?upVector@CoordinateFrame@G3D@@QBE?AVVector3@2@XZ"
+        },
+        {
+          "addr": "0060e8f0",
+          "symbol": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z"
+        },
+        {
+          "addr": "0061c6f0",
+          "symbol": "??HCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z"
+        },
+        {
+          "addr": "0061c740",
+          "symbol": "??GCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "81726ba8aa73ee53fa844ec4174a1d5b0d9d7c3ecd7aecc0def3ec443bafc35a",
+    "run": "20261114-043709-7593ba4b",
+    "leaf_proof": "analysis-fc71c10d.json",
+    "note": "Existing source emits missing Matrix3::operator*(Vector3) 00476580: 91/91 raw bytes, no calls. Fourteen of 21 mapped CoordinateFrame checks match masked bytes; seven symbols absent from this object. One other target is potentially generic/shared (00501ca0). All 15 matches raw range 65.116279%-100%. Unreviewed calls/data, ABI, source identity, selected provider, runtime and server credit remain unproven; inactive."
+  }
+}

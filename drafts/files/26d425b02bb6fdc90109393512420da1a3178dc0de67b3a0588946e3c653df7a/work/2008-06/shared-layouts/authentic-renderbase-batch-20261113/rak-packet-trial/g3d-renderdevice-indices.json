@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RenderBaseMeshRender2008.cpp",
+      "checks": [
+        {
+          "addr": "005029c0",
+          "symbol": "??$sendIndices@I@RenderDevice@G3D@@QAEXW4Primitive@01@ABV?$Array@I@1@@Z"
+        },
+        {
+          "addr": "00548fe0",
+          "symbol": "?sendGeometry@Mesh@RenderBase@RBX@@SAXPBVLevel@123@PAVRenderDevice@G3D@@@Z"
+        }
+      ]
+    }
+  ]
+}

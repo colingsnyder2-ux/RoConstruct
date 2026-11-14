@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\shared-layouts\\authentic-renderbase-batch-20261113\\rak-packet-trial\\g3d-jpeg-context.cpp",
+      "checks": [
+        {
+          "addr": "0050e8a0",
+          "symbol": "?encodeJPEG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050cb40",
+          "symbol": "?decodeJPEG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050b530",
+          "symbol": "?jpegErrorExit@G3D@@YAXPAUjpeg_common_struct@@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "run": "20261114-050838-7fb95b0c",
+    "note": "Scratch source places genuine existing copy constructor, destructor, clear and JPEG code together. JPEG encode 577/577, decode 617/617, callback 156/156 masked; raw 87.348354%, 88.168558%, 84.615385%. Duplicate core method definitions make this an unselected trial."
+  }
+}

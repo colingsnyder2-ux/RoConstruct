@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/SimpleMutex.cpp",
+      "checks": [
+        {
+          "addr": "004d3f80",
+          "symbol": "??0SimpleMutex@@QAE@XZ"
+        },
+        {
+          "addr": "00432940",
+          "symbol": "??1SimpleMutex@@QAE@XZ"
+        },
+        {
+          "addr": "004d3f90",
+          "symbol": "?Lock@SimpleMutex@@QAEXXZ"
+        },
+        {
+          "addr": "004d3fa0",
+          "symbol": "?Unlock@SimpleMutex@@QAEXXZ"
+        }
+      ]
+    }
+  ]
+}

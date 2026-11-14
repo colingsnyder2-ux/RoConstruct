@@ -43,12 +43,12 @@
   "profile": "noinline std::string::c_str (imported)",
   "sources": {
     "rebuild/2008-06/tests/record_native_instance_explorer.py": "df418d5ec6c707375efb8fa41bd25c179f3ef3456c395ab2633fa83f746ea2c5",
-    "rebuild/2008-06/native-classes/CInstanceExplorer.cpp": "935eb726cdcdfe591da1a69f67cc081187cf1beb430b183ed675127b36692872",
-    "rebuild/2008-06/native-headers/CInstanceExplorer.h": "c334619a7db58283880f1ec10a644280c446fa7daa28ed7c402b7951706578c7",
-    "rebuild/2008-06/native-headers/CSettingsExplorer.h": "a1b18236247e32daff6120a8dc7f2660e22d6f4f6ce25173be33c9a480b7bc3c",
+    "rebuild/2008-06/native-classes/CInstanceExplorer.cpp": "27ffd38fa42ec4cb75654c22ef6aece23d6aba4df816c9b0764327ac4d933c60",
+    "rebuild/2008-06/native-headers/CInstanceExplorer.h": "196d35f53efe304e48ca69d687d7cd53f6ca4ac6f03e170d9464dd0b6be11542",
+    "rebuild/2008-06/native-headers/CSettingsExplorer.h": "07c3e72cf56a6cb43bd4c6d90a7a1e13965a60473d9c36f5a68863c13154a0f4",
     "rebuild/2008-06/tests/NativeInstanceExplorerLayout.cpp": "b3d34f7b00f0d5e89d578268969d9daedb3e70caa3c4a194b34edad730ee450f"
   },
-  "object_sha256": "afd70f88d8dab8272481d9ef830e59001169b346dca2ce4eba898154bbe355d5",
+  "object_sha256": "7516fb41eb1bffc2e47cf4d8b610b741b3ca5aeaeb4c63c5a88db8ac82a1d810",
   "methods": [
     {
       "address": "00420780",

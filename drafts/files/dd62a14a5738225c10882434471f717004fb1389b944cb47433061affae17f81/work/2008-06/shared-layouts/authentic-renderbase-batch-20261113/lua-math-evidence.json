@@ -1,0 +1,225 @@
+{
+  "scope": "Original direct target inventory only; symbols/data/ABI/integration remain under review",
+  "run": "20261114-020927-646ac639",
+  "object_sha256": "b5f433e3900d4a7b21ed94c616aa675689a9e63c6486d4cc224328d30e8b9235",
+  "functions": [
+    {
+      "symbol": "_math_sinh",
+      "address": "00625b90",
+      "refs": [
+        {
+          "offset": 9,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 17,
+          "symbol": "__CIsinh",
+          "target": "006a1f72"
+        },
+        {
+          "offset": 29,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_math_cosh",
+      "address": "00625bf0",
+      "refs": [
+        {
+          "offset": 9,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 17,
+          "symbol": "__CIcosh",
+          "target": "006a1f78"
+        },
+        {
+          "offset": 29,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_math_tanh",
+      "address": "00625c50",
+      "refs": [
+        {
+          "offset": 9,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 17,
+          "symbol": "__CItanh",
+          "target": "006a1f7e"
+        },
+        {
+          "offset": 29,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_math_asin",
+      "address": "00625c80",
+      "refs": [
+        {
+          "offset": 9,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 17,
+          "symbol": "__CIasin",
+          "target": "006a1dc0"
+        },
+        {
+          "offset": 29,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_math_acos",
+      "address": "00625cb0",
+      "refs": [
+        {
+          "offset": 9,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 17,
+          "symbol": "__CIacos",
+          "target": "006a1dc6"
+        },
+        {
+          "offset": 29,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_math_fmod",
+      "address": "00625db0",
+      "refs": [
+        {
+          "offset": 12,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 24,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 38,
+          "symbol": "__CIfmod",
+          "target": "006a1f84"
+        },
+        {
+          "offset": 50,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_math_pow",
+      "address": "00625e80",
+      "refs": [
+        {
+          "offset": 12,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 24,
+          "symbol": "_luaL_checknumber",
+          "target": "00611780"
+        },
+        {
+          "offset": 38,
+          "symbol": "__CIpow",
+          "target": "006a1c20"
+        },
+        {
+          "offset": 50,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        }
+      ]
+    },
+    {
+      "symbol": "_luaopen_math",
+      "address": "00626280",
+      "refs": [
+        {
+          "offset": 6,
+          "symbol": "_mathlib",
+          "target": null
+        },
+        {
+          "offset": 11,
+          "symbol": "??_C@_04CFDJAKFL@math?$AA@",
+          "target": null
+        },
+        {
+          "offset": 17,
+          "symbol": "_luaL_register",
+          "target": "00611a70"
+        },
+        {
+          "offset": 23,
+          "symbol": "__real@400921fb54442d18",
+          "target": null
+        },
+        {
+          "offset": 35,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        },
+        {
+          "offset": 40,
+          "symbol": "??_C@_02OAHAJOFD@pi?$AA@",
+          "target": null
+        },
+        {
+          "offset": 48,
+          "symbol": "_lua_setfield",
+          "target": "006126b0"
+        },
+        {
+          "offset": 53,
+          "symbol": "__imp___HUGE",
+          "target": null
+        },
+        {
+          "offset": 67,
+          "symbol": "_lua_pushnumber",
+          "target": "00612200"
+        },
+        {
+          "offset": 72,
+          "symbol": "??_C@_04JJGMCGIH@huge?$AA@",
+          "target": null
+        },
+        {
+          "offset": 80,
+          "symbol": "_lua_setfield",
+          "target": "006126b0"
+        }
+      ]
+    }
+  ]
+}

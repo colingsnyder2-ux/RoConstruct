@@ -1,0 +1,36 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ReliabilityLayerLifetime.cpp",
+      "checks": [
+        {
+          "addr": "004d0a00",
+          "symbol": "?Serialize@?$RangeList@I@DataStructures@@QAEIPAVBitStream@RakNet@@H_N@Z"
+        },
+        {
+          "addr": "004d1530",
+          "symbol": "?Insert@?$RangeList@I@DataStructures@@QAEXI@Z"
+        },
+        {
+          "addr": "004d1680",
+          "symbol": "?Deserialize@?$RangeList@I@DataStructures@@QAE_NPAVBitStream@RakNet@@@Z"
+        },
+        {
+          "addr": "004d24e0",
+          "symbol": "??1?$RangeList@I@DataStructures@@QAE@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/ReliabilityLayerLifetime.cpp": "dbe743f7351e6e3b1409084799f873f8345a9376f68a5055c66ed24d17c545c0",
+      "rebuild/2008-06/native-headers/ReliabilityLayer.h": "16b168b19769a11e5fd311813e1e257a15d58005a62f471602e75272cc5dc8be",
+      "tools/rbxgs/Client/Network/raknet30/Source/DS_RangeList.h": "8cc47ab52ae4f3a91534c106b84fe23786becc910d28efcf30f2a8e9dc598d1b"
+    },
+    "baseline_run": "20261114-042956-ca11add5",
+    "current_run": "20261114-043005-aafd5fc0",
+    "previous_body_regression_check": "analysis-38423f04.json",
+    "note": "Existing donor RangeList emitted three mapped functions; explicit Insert emits the fourth. Four masked-byte matches, raw 88.484848%-91.250000%; four pre-existing allocator/lifetime matches retained. Calls, relocations, ABI, linked selection, runtime and independent server credit remain unproven. Inactive."
+  }
+}

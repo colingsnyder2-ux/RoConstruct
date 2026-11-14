@@ -1,0 +1,185 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DShape.cpp",
+      "checks": [
+        {
+          "addr": "00433860",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00438060",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447da0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447e10",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447e80",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447ef0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447f60",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00447fd0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "004a7ca0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "004aa6a0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "004aa710",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00565360",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005653d0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00565440",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056b530",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056b690",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056be10",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056fe30",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056fef0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0056ff80",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0059c430",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0059c780",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0059fa60",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005bb2c0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005bbe40",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005cd850",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005d0300",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005ed5c0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005ed630",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "005ef4c0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "006093a0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0060b770",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0060b7e0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0060b850",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "006a74a0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "006e8030",
+          "symbol": "?box@Shape@G3D@@UAEAAVBox@2@XZ"
+        },
+        {
+          "addr": "006f9bd0",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        },
+        {
+          "addr": "00710cc0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00718890",
+          "symbol": "?box@Shape@G3D@@UAEAAVBox@2@XZ"
+        },
+        {
+          "addr": "0071c740",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        },
+        {
+          "addr": "007278d0",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        },
+        {
+          "addr": "0076d2e0",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "0078e670",
+          "symbol": "?axes@Shape@G3D@@UAEAAVCoordinateFrame@2@XZ"
+        },
+        {
+          "addr": "00790770",
+          "symbol": "?ray@Shape@G3D@@UAEAAVRay@2@XZ"
+        }
+      ]
+    }
+  ]
+}

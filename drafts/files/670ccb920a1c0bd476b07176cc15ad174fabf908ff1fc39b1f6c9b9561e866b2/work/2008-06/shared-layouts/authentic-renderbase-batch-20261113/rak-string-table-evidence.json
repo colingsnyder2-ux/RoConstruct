@@ -1,0 +1,109 @@
+{
+  "scope": "Reference inventory; full ABI, static lifetime, provider and runtime remain unproven",
+  "run": "20261114-022123-0f047a18",
+  "object_sha256": "041e9789f2a35399359e53b599477bc33bb85f99c8249e7615f9d6e0693df203",
+  "functions": [
+    {
+      "symbol": "?RemoveReference@StringTable@@SAXXZ",
+      "address": "004d42a0",
+      "refs": [
+        {
+          "offset": 2,
+          "symbol": "?referenceCount@StringTable@@1HA",
+          "target": "00972704",
+          "relocation_type": 6
+        },
+        {
+          "offset": 11,
+          "symbol": "?referenceCount@StringTable@@1HA",
+          "target": "00972704",
+          "relocation_type": 6
+        },
+        {
+          "offset": 20,
+          "symbol": "?instance@StringTable@@1PAV1@A",
+          "target": "00972700",
+          "relocation_type": 6
+        },
+        {
+          "offset": 32,
+          "symbol": "??1StringTable@@QAE@XZ",
+          "target": "004d41f0",
+          "relocation_type": 20
+        },
+        {
+          "offset": 38,
+          "symbol": "??3@YAXPAX@Z",
+          "target": "006a067a",
+          "relocation_type": 20
+        },
+        {
+          "offset": 47,
+          "symbol": "?instance@StringTable@@1PAV1@A",
+          "target": "00972700",
+          "relocation_type": 6
+        }
+      ]
+    },
+    {
+      "symbol": "?AddReference@StringTable@@SAXXZ",
+      "address": "004d4260",
+      "refs": [
+        {
+          "offset": 1,
+          "symbol": "?referenceCount@StringTable@@1HA",
+          "target": "00972704",
+          "relocation_type": 6
+        },
+        {
+          "offset": 7,
+          "symbol": "?referenceCount@StringTable@@1HA",
+          "target": "00972704",
+          "relocation_type": 6
+        },
+        {
+          "offset": 19,
+          "symbol": "??2@YAPAXI@Z",
+          "target": "006a0920",
+          "relocation_type": 20
+        },
+        {
+          "offset": 41,
+          "symbol": "?instance@StringTable@@1PAV1@A",
+          "target": "00972700",
+          "relocation_type": 6
+        },
+        {
+          "offset": 49,
+          "symbol": "?instance@StringTable@@1PAV1@A",
+          "target": "00972700",
+          "relocation_type": 6
+        }
+      ]
+    },
+    {
+      "symbol": "??1StringTable@@QAE@XZ",
+      "address": "004d41f0",
+      "refs": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$??1StringTable@@QAE@XZ",
+          "target": "007c9278",
+          "relocation_type": 6
+        },
+        {
+          "offset": 64,
+          "symbol": "??3@YAXPAX@Z",
+          "target": "006a067a",
+          "relocation_type": 20
+        },
+        {
+          "offset": 88,
+          "symbol": "??1?$OrderedList@PADUStrAndBool@@$1?StrAndBoolComp@@YAHABQADABU1@@Z@DataStructures@@QAE@XZ",
+          "target": "004ba400",
+          "relocation_type": 20
+        }
+      ]
+    }
+  ]
+}

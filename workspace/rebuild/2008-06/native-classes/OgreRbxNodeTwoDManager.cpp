@@ -146,7 +146,7 @@ void TwoDManager::render() {
  RenderSystem* rs=Root::getSingleton().getRenderSystem();
  std::list<Quad>::iterator i,end;
  std::list<Batch> batches;
- if(quads.empty()) return;
+ if(!quads.empty()) {
  end=quads.end();
  i=quads.begin();
  unsigned need=0;
@@ -213,6 +213,7 @@ void TwoDManager::render() {
   rs->_render(renderOp);renderOp.vertexData->vertexStart+=b->count;
  }
  quads.clear();
+ }
 }
 
 void TwoDManager::prepareRenderState() {

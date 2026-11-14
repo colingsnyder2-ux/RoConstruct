@@ -8,6 +8,7 @@ import ast
 import json
 import re
 import sys
+from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -39,16 +40,34 @@ def current_string_proof(receipt, provider, binding):
     return bool(candidate and candidate.is_file() and hashlib.sha256(candidate.read_bytes()).hexdigest() == digest)
 
 
+@lru_cache(maxsize=1)
+def target_sha256():
+    import hashlib
+    return hashlib.sha256((ROOT / 'clients/2008-06/Roblox.exe').read_bytes()).hexdigest()
+
+
 def current_typed_proof(receipt, provider, source):
     """A typed receipt is valid only for its proved source and object bytes."""
     import hashlib
     obj = provider.get('object') or receipt.get('object')
     object_hash = provider.get('object_sha256') or receipt.get('object_sha256')
     source_hash = receipt.get('source_sha256')
-    return bool(obj and object_hash and source_hash and source.is_file() and
+    dependencies = receipt.get('source_dependencies', {})
+    return bool((not receipt.get('target_sha256') or receipt['target_sha256'] == target_sha256()) and
+                obj and object_hash and source_hash and source.is_file() and
                 (ROOT / obj).is_file() and
                 hashlib.sha256(source.read_bytes()).hexdigest() == source_hash and
-                hashlib.sha256((ROOT / obj).read_bytes()).hexdigest() == object_hash)
+                hashlib.sha256((ROOT / obj).read_bytes()).hexdigest() == object_hash and
+                all((ROOT / path).is_file() and hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+                    for path, digest in dependencies.items()))
+
+
+def typed_source(receipt, provider):
+    path = provider.get('source_path') or receipt.get('source_path')
+    if path:
+        return ROOT / path
+    obj = provider.get('object') or receipt.get('object')
+    return (ROOT / obj).with_suffix('.cpp') if obj else None
 
 
 def method_facts():
@@ -120,14 +139,13 @@ def data_coverage():
     # record address and exact emitted storage size, so union them here rather
     # than reporting converter-local coverage as whole-client coverage.
     link = ROOT / 'work/native-client/link'
-    for path in (list(link.glob('selected-typed*.json')) + list(link.glob('typed-data-coverage-batch*.json')) +
+    for path in (list(link.glob('selected-typed*.json')) + list(link.glob('typed-data-coverage-*.json')) +
                  list(link.glob('native-string-data-*.json'))):
         receipt = load(path.relative_to(ROOT), {})
         for provider in receipt.get('selected', []):
             generic = set()
             if not path.name.startswith('native-string-data-'):
-                obj = provider.get('object') or receipt.get('object')
-                source = (ROOT / obj).with_suffix('.cpp') if obj else None
+                source = typed_source(receipt, provider)
                 if not source or not current_typed_proof(receipt, provider, source):
                     continue
                 source_text = source.read_text(errors='replace')
@@ -137,7 +155,8 @@ def data_coverage():
                 if path.name.startswith('native-string-data-') and not current_string_proof(receipt, provider, symbol):
                     continue
                 key, size = addr(symbol.get('address')), symbol.get('bytes')
-                if key in generic:
+                if key in generic and not (symbol.get('kind') == 'string' and
+                                           symbol.get('symbol', '').startswith('??_C@_0')):
                     continue
                 if key and isinstance(size, int) and size > 0:
                     covered[key] = max(size, covered.get(key, 0))
@@ -197,6 +216,10 @@ def main():
     from roc import match, native_asm, rtti
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--output', default='work/2008-06/identity-registry.json')
+    mfc_receipt = ROOT / 'work/native-client/link/mfc-ordinal-thunk-identities-v2.json'
+    ap.add_argument('--mfc-ordinal-evidence', type=Path,
+                    default=mfc_receipt if mfc_receipt.is_file() else None,
+                    help='verify original MFC ordinal import thunks before naming registry entries')
     args = ap.parse_args()
     rows = {}
     methods = method_facts()
@@ -218,6 +241,25 @@ def main():
         if previous and previous != binding.get('symbol') and rows[key].get('name') != binding.get('symbol'):
             rows[key]['evidence'].append({'kind': 'folded-or-conflicting-name', 'symbol': binding.get('symbol'),
                                           'votes': binding.get('votes', 0), 'evidence': binding.get('evidence')})
+    if args.mfc_ordinal_evidence:
+        from roc import native_bulk
+        from native_link_select import mfc_ordinal_bindings
+        deferred = set()
+        for rename_receipt in (ROOT / 'work/native-client/link').glob('registry-*-renames-*.json'):
+            deferred.update(addr(value) for value in load(rename_receipt.relative_to(ROOT), {}).get('pending_semantic_rename', []))
+        _, _, errors, inputs = native_bulk.seed_evidence(ROOT, [str(args.mfc_ordinal_evidence)])
+        if errors:
+            raise ValueError('MFC input evidence blocked: ' + '; '.join(errors))
+        receipt = json.loads(args.mfc_ordinal_evidence.read_text())
+        for symbol, key in mfc_ordinal_bindings(receipt).items():
+            evidence = {'kind': 'verified-mfc-ordinal-thunk', 'symbol': symbol,
+                        'receipt': str(args.mfc_ordinal_evidence), 'input_sha256': inputs}
+            if key in deferred and key in rows and rows[key].get('placeholder'):
+                rows[key]['evidence'].append(evidence)
+                continue
+            add_name(rows, key, symbol, 'mfc-ordinal-import', [evidence])
+            if rows[key]['name'] != symbol:
+                rows[key]['evidence'].append(evidence)
     for binding in load('work/2008-06/shared-layouts/identity-registry-batch.json', {}).get('identity_bindings', []):
         add_name(rows, addr(binding['address']), binding['symbol'], 'reviewed-reference-binding',
                  [binding['evidence']], kind=binding['kind'])
@@ -226,9 +268,26 @@ def main():
         for provider in receipt.get('selected', []):
             for binding in provider.get('symbols', []):
                 if binding.get('kind') == 'string' and current_string_proof(receipt, provider, binding):
+                    size = binding.get('bytes')
                     add_name(rows, addr(binding.get('address')), binding.get('symbol'), 'compiler-string-proof',
                              [{'kind': 'compiler-string-proof', 'receipt': path.relative_to(ROOT).as_posix(),
-                               'bytes': binding.get('bytes'), 'evidence': binding.get('evidence')}], kind='string')
+                               'bytes': size, 'evidence': binding.get('evidence')}],
+                             signature='const char[%d]' % size if isinstance(size, int) and size > 0 else None,
+                             kind='string')
+    for path in (ROOT / 'work/native-client/link').glob('typed-data-coverage-*.json'):
+        receipt = load(path.relative_to(ROOT), {})
+        for provider in receipt.get('selected', []):
+            source = typed_source(receipt, provider)
+            if not source or not current_typed_proof(receipt, provider, source):
+                continue
+            for binding in provider.get('symbols', []):
+                size = binding.get('bytes')
+                if (binding.get('kind') != 'string' or not binding.get('symbol', '').startswith('??_C@_0') or
+                        not isinstance(size, int) or size <= 0):
+                    continue
+                add_name(rows, addr(binding.get('address')), binding['symbol'], 'compiler-string-proof',
+                         [{'kind': 'typed-compiler-string', 'receipt': path.relative_to(ROOT).as_posix(),
+                           'bytes': size}], signature='const char[%d]' % size, kind='string')
     for path, source in (('work/native-client/link/names.json', 'header-address'),
                          ('work/native-client/ogre/link/ogre_names.json', 'header-address')):
         for key, name in load(path, {}).items():

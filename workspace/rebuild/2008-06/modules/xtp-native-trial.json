@@ -1,0 +1,151 @@
+{
+ "name": "XTPNativeTrial",
+ "description": "TRIAL: XTP with recovered native sources layered before upstream (not a gate candidate).",
+ "mfc_import": true,
+ "layers": [
+  {
+   "name": "native0",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-0",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Calendar /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/Calendar",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native1",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-1",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Controls /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/Controls",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native2",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-2",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/CommandBars /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/CommandBars",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native3",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-3",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/SyntaxEdit /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/SyntaxEdit",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native4",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-4",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/DockingPane /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/DockingPane",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native5",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-5",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/PropertyGrid /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/PropertyGrid",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native6",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-6",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/Ribbon /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/Ribbon",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "native7",
+   "mode": "direct",
+   "dir": "work/native-layers/xtp-7",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob1 /GS- /EHsc /MD /D_AFXDLL /D_DLL /D_LIB /D_XTP_STATICLINK /I{headers}/../../../work/native-client/xtp-shadow /I{headers}/../../../tools/libs/xtp-11.2.2/Source /FICommon/XTPDLLExports.h /FIXTToolkitPro.h /I{headers}/../../../tools/libs/xtp-11.2.2/Source/SkinFramework /FICommon/XTPDLLExports.h /FIXTToolkitPro.h",
+   "defines": "_AFXDLL _XTP_STATICLINK _DLL _LIB",
+   "extra_includes": [
+    "tools/libs/xtp-11.2.2/Source/SkinFramework",
+    "tools/libs/xtp-11.2.2",
+    "tools/libs/xtp-11.2.2/Source",
+    "tools/libs/mfc-9.0/atlmfc/include"
+   ]
+  },
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "files": "recipe",
+   "direct": true,
+   "flags": "/O2 /MD /GS /EHsc /Ob1"
+  },
+  {
+   "name": "internals",
+   "note": "extra_defines: XP target for files the recipe build fails on. The 2008 build used a pre-Vista SDK; this SDK hides TMT_STOCKIMAGEFILE (XTPSkinObjectTab.cpp) when NTDDI_VERSION defaults to Vista.",
+   "extra_defines": "_WIN32_WINNT=0x0501 WINVER=0x0501",
+   "mode": "recipe",
+   "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
+   "files": "Source/Controls/XTComboBoxEx.cpp Source/Controls/XTDateTimeCtrl.cpp Source/Controls/XTExcelTabCtrl.cpp Source/CommandBars/XTPCommandBar.cpp Source/CommandBars/XTPCustomizeSheet.cpp Source/Common/XTPDrawHelpers.cpp Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp Source/PropertyGrid/XTPPropertyGridItemExt.cpp Source/Controls/XTPPropertyPage.cpp Source/SkinFramework/XTPSkinObjectTab.cpp Source/CommandBars/XTPStatusBar.cpp Source/Controls/XTSplitterWnd.cpp",
+   "direct": true,
+   "flags": "/O2 /MD /GS /EHsc /Ob1"
+  }
+ ],
+ "test": "xtp_colors",
+ "test_includes": [
+  "tools/libs/xtp-11.2.2/Source",
+  "tools/libs/mfc-9.0-rtm/atlmfc/include",
+  "rebuild/2008-06/out/XTPNativeTrial/force"
+ ],
+ "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK",
+ "verified": true,
+ "force_verified": true,
+ "depends": [
+  "libpng"
+ ],
+ "trial": true,
+ "keep_helper_objects": true
+}

@@ -1,0 +1,30 @@
+{
+ "name": "LuaNativeTrial",
+ "description": "TRIAL: Lua with recovered native sources layered before upstream (not a gate candidate).",
+ "layers": [
+  {
+   "name": "native0",
+   "mode": "direct",
+   "dir": "work/native-layers/lua-0",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC",
+   "defines": "",
+   "extra_includes": [
+    "tools/libs/lua-5.1.4/src"
+   ]
+  },
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "lua-5.1.4",
+   "files": "recipe",
+   "direct": true,
+   "flags": "/O2 /GS- /MD"
+  }
+ ],
+ "test": "lua_script",
+ "test_includes": [
+  "tools/libs/lua-5.1.4/src"
+ ],
+ "verified": true
+}

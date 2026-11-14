@@ -1,0 +1,68 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/SimpleMutex.cpp",
+      "checks": [
+        {
+          "addr": "004d3f80",
+          "symbol": "??0SimpleMutex@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 4,
+              "kind": "import",
+              "target": "008022e0",
+              "symbol": "__imp__InitializeCriticalSection@4",
+              "import": "KERNEL32.dll!InitializeCriticalSection"
+            }
+          ]
+        },
+        {
+          "addr": "00432940",
+          "symbol": "??1SimpleMutex@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 1,
+              "kind": "import",
+              "target": "008022dc",
+              "symbol": "__imp__DeleteCriticalSection@4",
+              "import": "KERNEL32.dll!DeleteCriticalSection"
+            }
+          ]
+        },
+        {
+          "addr": "004d3f90",
+          "symbol": "?Lock@SimpleMutex@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 1,
+              "kind": "import",
+              "target": "008022d4",
+              "symbol": "__imp__EnterCriticalSection@4",
+              "import": "KERNEL32.dll!EnterCriticalSection"
+            }
+          ]
+        },
+        {
+          "addr": "004d3fa0",
+          "symbol": "?Unlock@SimpleMutex@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 1,
+              "kind": "import",
+              "target": "008021f4",
+              "symbol": "__imp__LeaveCriticalSection@4",
+              "import": "KERNEL32.dll!LeaveCriticalSection"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "run": "20261114-042658-be867b92",
+    "proof": "analysis-9bbf25bc.json",
+    "source_sha256": "cf7479bc91e6da044194f0a0d0b7d21ea2cd3f856c0c127ad0d2c319dcf03b30",
+    "donor_header_sha256": "f5c80af7b05ecbb18bb77e7a30489ca73e249385c4d909eed2a40e79ebd8e694",
+    "note": "Constructor and destructor recovered from donor; Lock/Unlock pre-existing. 4 masked matches and reviewed import calls; destructor target is shared generic body, unique ownership unproven. Generated source status predates edits. ABI, selected provider, runtime, independent server credit unproven."
+  }
+}

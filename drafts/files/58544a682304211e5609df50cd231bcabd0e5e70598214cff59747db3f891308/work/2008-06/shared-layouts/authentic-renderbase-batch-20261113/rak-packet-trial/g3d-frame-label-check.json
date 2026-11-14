@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Humanoid2008.cpp",
+      "checks": [
+        {
+          "addr": "005d9c10",
+          "symbol": "?updateWalkDirection@Humanoid@RBX@@QAE?AVVector3@G3D@@XZ",
+          "calls": [
+            {
+              "offset": 8,
+              "target": "005d9a50",
+              "symbol": "?getIntendedMovementVector@Humanoid@RBX@@AAE?AVVector3@G3D@@_N@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

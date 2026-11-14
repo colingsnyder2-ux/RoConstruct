@@ -20,6 +20,7 @@ public:
 };
 // INFERRED: context member names; 0067c130 accesses SubMesh->String map at +0, counter +0x20; 0067bcc0 locks +0x24.
 struct GeometryContext {
+    GeometryContext() { counter = 0; } // original 0054abe0
     std::map<RbxSubMesh*, String> names;
     int counter;
     boost::recursive_mutex mutex;

@@ -1,0 +1,26 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGLight.cpp",
+      "checks": [
+        {
+          "addr": "0043afb0",
+          "symbol": "??8Vector3@G3D@@QBE_NABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/RenderBaseMeshBounds2008.cpp",
+      "checks": [
+        {
+          "addr": "00525e00",
+          "symbol": "?min@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "00525e60",
+          "symbol": "?max@Vector3@G3D@@QBE?AV12@ABV12@@Z"
+        }
+      ]
+    }
+  ]
+}

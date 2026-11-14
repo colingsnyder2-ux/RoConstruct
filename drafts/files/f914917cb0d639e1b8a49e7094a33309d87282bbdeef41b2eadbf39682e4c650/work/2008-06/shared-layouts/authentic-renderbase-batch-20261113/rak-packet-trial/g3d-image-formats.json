@@ -1,0 +1,73 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage_tga.cpp",
+      "checks": [
+        {
+          "addr": "0050b1a0",
+          "symbol": "?encodeTGA@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050bb30",
+          "symbol": "?decodeTGA@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_png.cpp",
+      "checks": [
+        {
+          "addr": "0050b700",
+          "symbol": "?encodePNG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050cdd0",
+          "symbol": "?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_bmp.cpp",
+      "checks": [
+        {
+          "addr": "0050c040",
+          "symbol": "?decodeBMP@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050f4c0",
+          "symbol": "?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_ppm.cpp",
+      "checks": [
+        {
+          "addr": "0050ba30",
+          "symbol": "?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050eaf0",
+          "symbol": "?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050ec40",
+          "symbol": "?decodePPM@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050fef0",
+          "symbol": "?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "baseline": "20261114-050044-952d328b",
+    "overlay_run": "20261114-050148-fdc9a6f8",
+    "overlay_hashes": {
+      "work\\2008-06\\shared-layouts\\authentic-renderbase-batch-20261113\\rak-packet-trial\\g3d-image-overlay\\G3D\\GImage.h": "d83fd9c2724ee92320fefba32c4615fb7123278ee20b32e1ef5249335ada10fc",
+      "work\\2008-06\\shared-layouts\\authentic-renderbase-batch-20261113\\rak-packet-trial\\g3d-image-overlay\\G3D\\BinaryInput.h": "b3c71c499b66de636f41905d30f94ef50124add9f70fdd146f18b2974d2f0a79"
+    },
+    "note": "TGA/PNG/BMP/ICO/PPM 10 methods: baseline 3/10 exact, 7 different; 2008 exception header overlay 10/10 masked byte/data exact. Overlay is an inactive experiment; calls, data ownership, header compatibility, ABI, selection, runtime and independent credit remain unproven."
+  }
+}

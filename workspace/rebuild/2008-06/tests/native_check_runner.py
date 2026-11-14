@@ -8,6 +8,9 @@ recorded objects again WITHOUT compiling. Manifest: {"jobs":[{"source":
 "thiscall":true}]}]}. Source paths relative to rebuild/2008-06; other CLI paths
 relative to cwd. Three workers default. No cross-run compile cache, client run,
 link, server match or P5/P6 gate. Range hits prove masked bytes, not identity.
+Optional manifest compiler_build selects 21022 (default) or 50727; the recorded
+compiler is retained during analysis. Optional compiler_variant="rtm" selects
+the installed VS2005 RTM toolchain instead of the default detected 50727 release.
 """
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -55,6 +58,34 @@ def save(path, value):
                 time.sleep(0.05 * (attempt + 1))
     finally:
         temporary.unlink(missing_ok=True)
+
+
+def compiler_build(data):
+    build = data.get('compiler_build', 21022)
+    if type(build) is not int or build not in (21022, 50727):
+        raise ValueError('compiler_build must be 21022 or 50727')
+    return build
+
+
+def compiler_variant(data):
+    variant = data.get('compiler_variant', 'default')
+    if variant not in ('default', 'rtm') or (variant == 'rtm' and compiler_build(data) != 50727):
+        raise ValueError('compiler_variant must be default or 50727 rtm')
+    return variant
+
+
+def selected_toolchain(data):
+    build = compiler_build(data)
+    variant = compiler_variant(data)
+    tc = rebuild.toolchain(build)
+    if variant == 'rtm':
+        vc = ROOT / 'tools/vc2005/Program Files/Microsoft Visual Studio 8/VC'
+        tc.update(cl=vc / 'bin/cl.exe', link=vc / 'bin/link.exe', lib=vc / 'bin/lib.exe',
+                  vc_include=vc / 'include', vc_lib=vc / 'lib', crt=vc / 'lib/msvcrt.lib',
+                  mspdb=vc.parent / 'Common7/IDE/mspdb80.dll')
+        if not tc['cl'].is_file() or not tc['vc_include'].is_dir():
+            raise ValueError('VS2005 RTM compiler or headers unavailable')
+    return tc
 
 
 def jobs_from(data):
@@ -124,8 +155,24 @@ def import_evidence():
     directory = ROOT / 'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
     paths = [directory / name for name in ('msvcrt.lib', 'msvcprt.lib')]
     sdk = rebuild.toolchain(21022).get('sdk_lib')
-    if sdk and (Path(sdk) / 'Kernel32.Lib').is_file():
-        paths.append(Path(sdk) / 'Kernel32.Lib')
+    if sdk:
+        for name in ('Kernel32.Lib', 'WS2_32.Lib', 'Advapi32.Lib', 'OleAut32.Lib'):
+            path = Path(sdk) / name
+            if path.is_file():
+                paths.append(path)
+    # Resolve ordinal-only SDK imports against the actual 32-bit DLL exports.
+    ordinal_exports = {}
+    for name in ('ws2_32', 'oleaut32'):
+        dll_path = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'SysWOW64' / (name + '.dll')
+        if dll_path.is_file() and any(p.name.lower() == name + '.lib' for p in paths):
+            data = dll_path.read_bytes()
+            dll = pefile.PE(data=data, fast_load=True)
+            if dll.FILE_HEADER.Machine == 0x14c:
+                dll.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_EXPORT']])
+                ordinal_exports[name + '.dll'] = {entry.ordinal: entry.name.decode('ascii')
+                                                  for entry in dll.DIRECTORY_ENTRY_EXPORT.symbols if entry.name}
+                hashes[str(dll_path)] = hashlib.sha256(data).hexdigest()
+            dll.close()
     for path in paths:
         data = path.read_bytes()
         hashes[str(path)] = hashlib.sha256(data).hexdigest()
@@ -141,7 +188,12 @@ def import_evidence():
             symbol, dll = member[20:].split(b'\0')[:2]
             symbol, dll = symbol.decode('ascii'), dll.decode('ascii').lower()
             name_type = (struct.unpack_from('<H', member, 18)[0] >> 2) & 7
-            if name_type == 1:
+            if name_type == 0 and dll in ordinal_exports:
+                ordinal = struct.unpack_from('<H', member, 16)[0]
+                export = ordinal_exports[dll].get(ordinal)
+                if not export or symbol.lstrip('_@').split('@', 1)[0] != export:
+                    continue
+            elif name_type == 1:
                 export = symbol
             elif name_type in (2, 3):
                 export = symbol[1:] if symbol[:1] in ('_', '@', '?') else symbol
@@ -154,14 +206,14 @@ def import_evidence():
 
 
 def check_calls(raw, symbol, body, target, address, expected):
-    """Check reviewed direct calls and explicitly identified CRT IAT calls.
+    """Check reviewed direct calls, tail jumps and identified IAT calls.
 
     Direct rows specify offset, original target and exact COFF symbol. Import
     rows additionally specify kind=import and the original DLL!export. Their
     PE IAT address and CRT import-library alias must both agree. Dynamic or
     virtual calls, final provider selection and callee ABI remain unproven.
     """
-    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL, CS_GRP_JUMP
     from capstone.x86 import X86_OP_IMM, X86_OP_MEM
     sections, symbols, definitions, _ = match._coff_data_index(raw)
     start, section = definitions[symbol]
@@ -179,9 +231,11 @@ def check_calls(raw, symbol, body, target, address, expected):
     imports = import_evidence() if any(row.get('kind') == 'import' for row in expected) else None
     rows = []
     for instruction in decoder.disasm(target, address):
-        if not instruction.group(CS_GRP_CALL):
-            continue
         offset = instruction.address - address
+        jump = (instruction.group(CS_GRP_JUMP)
+                and declarations.get(offset, {}).get('kind') == 'jump')
+        if not instruction.group(CS_GRP_CALL) and not jump:
+            continue
         wanted = declarations.pop(offset, None)
         direct = instruction.operands[0].type == X86_OP_IMM
         destination = instruction.operands[0].imm if direct else None
@@ -192,6 +246,13 @@ def check_calls(raw, symbol, body, target, address, expected):
                   and destination == int(wanted['target'], 16)
                   and body[offset + 1:offset + 5] == b'\0\0\0\0')
         kind = 'direct'
+        if jump:
+            kind = 'jump'
+            ok = bool(direct and instruction.bytes[0] == 0xe9
+                      and body[offset:offset + 1] == b'\xe9'
+                      and body[offset + 1:offset + 5] == b'\0\0\0\0'
+                      and binding and binding[1] == 20 and binding[0] == wanted['symbol']
+                      and destination == int(wanted['target'], 16))
         if wanted and wanted.get('kind') == 'import':
             kind = 'import'
             binding = refs.get(offset + 2)
@@ -221,7 +282,7 @@ def check_calls(raw, symbol, body, target, address, expected):
     return {'passed': not declarations and all(row['status'] in ('verified_binding', 'verified_import') for row in rows),
             'calls': rows, 'unused_expectations': list(declarations.values()),
             'import_evidence_inputs': imports[2] if imports else {},
-            'scope': 'Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof.'}
+            'scope': 'Reviewed direct calls, explicitly declared tail jumps and IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof.'}
 
 
 def analyze_object(job, obj):
@@ -248,6 +309,27 @@ def analyze_object(job, obj):
             row['first_byte_difference'] = next((i for i in range(min(len(target), len(body)))
                 if not any(r <= i < r + 4 for r in masked) and target[i] != body[i]),
                 min(len(target), len(body)) if len(target) != len(body) else None)
+            if len(target) < len(body) <= 65536:
+                _, symbols, definitions, _ = match._coff_data_index(raw)
+                start, section = definitions[name]
+                catch_prefix = '__catch$' + name + '$'
+                has_catch = any(s.startswith(catch_prefix) and n == section + 1
+                                and start + len(target) <= value < start + len(body)
+                                for s, value, n, _ in symbols.values())
+                if has_catch:
+                    base, image = match._image('2008-06')
+                    va = int(addr, 16)
+                    offset = va - base
+                    if 0 <= offset and offset + len(body) <= len(image):
+                        extended = bytes(image[offset:offset + len(body)])
+                        extended_refs = [r - va for r in match._base_relocs('2008-06')
+                                         if va <= r < va + len(body)]
+                        row['contiguous_catch_comparison'] = {
+                            'scope': 'diagnostic contiguous bytes only; not a function boundary, reference, or runtime proof',
+                            'relocation_normalized_match': set(extended_refs) <= set(relocs) and
+                                match.exact_match(extended, extended_refs, body, relocs),
+                            'metrics': match.comparison_metrics(extended, extended_refs, body, relocs),
+                        }
             identity = METHOD_IDENTITIES.get(name)
             if identity:
                 expected, slot = identity
@@ -272,6 +354,14 @@ def analyze_object(job, obj):
                   f"diff={m['unmasked_differences']}/{m['compared_unmasked_bytes']} "
                   f"bytes={m['candidate_bytes']}/{m['target_bytes']} delta={m['length_delta']:+d} "
                   f"reloc_missing={len(m['missing_relocations'])} reloc_extra={len(m['extra_relocations'])}", flush=True)
+            if 'contiguous_catch_comparison' in row:
+                extra = row['contiguous_catch_comparison']
+                m = extra['metrics']
+                print(f"CATCH_RANGE {addr} match={extra['relocation_normalized_match']} "
+                      f"fuzzy={m['fuzzy_percent']} positional={m['positional_percent']} "
+                      f"raw={m['raw_positional_percent']} "
+                      f"diff={m['unmasked_differences']}/{m['compared_unmasked_bytes']} "
+                      f"bytes={m['candidate_bytes']}/{m['target_bytes']} (diagnostic only)", flush=True)
         checks.append(row)
     if job['ranges']:
         functions = [json.loads(line) for line in (ROOT / 'work/2008-06/functions.jsonl').read_text().splitlines()]
@@ -419,7 +509,10 @@ def execute(run, workers):
     save(run / 'summary.json', summary)
     started, results = time.monotonic(), []
     try:
-        tc = rebuild.toolchain(21022)
+        build = compiler_build(data)
+        tc = selected_toolchain(data)
+        summary['compiler_build'] = build
+        summary['compiler_variant'] = compiler_variant(data)
         summary['compiler'] = str(tc['cl'])
         summary['compiler_sha256'] = sha(tc['cl'])
         with ThreadPoolExecutor(max_workers=workers) as pool:
@@ -502,11 +595,14 @@ def main():
     if args.require_proof and args.action not in ('run', 'analyze'):
         parser.error('--require-proof supports foreground run/analyze only')
     if args.action in ('start', 'run'):
-        jobs = jobs_from(json.loads(args.input.read_text(encoding='utf-8-sig')))
+        manifest = json.loads(args.input.read_text(encoding='utf-8-sig'))
+        build = compiler_build(manifest)
+        variant = compiler_variant(manifest)
+        jobs = jobs_from(manifest)
         RUNS.mkdir(parents=True, exist_ok=True)
         run = RUNS / (time.strftime('%Y%m%d-%H%M%S') + '-' + uuid.uuid4().hex[:8])
         run.mkdir()
-        save(run / 'manifest.json', {'jobs': jobs})
+        save(run / 'manifest.json', {'compiler_build': build, 'compiler_variant': variant, 'jobs': jobs})
         save(run / 'summary.json', {'state': 'queued', 'run': str(run), 'total_sources': len(jobs)})
         if args.action == 'start':
             try:
@@ -526,7 +622,8 @@ def main():
         jobs = jobs_from(json.loads((args.manifest or run / 'manifest.json').read_text(encoding='utf-8-sig')))
         receipts = {r['source'].casefold(): r for r in json.loads((run / 'results.json').read_text())}
         results = []
-        tc = rebuild.toolchain(21022)
+        recorded = json.loads((run / 'manifest.json').read_text(encoding='utf-8-sig'))
+        tc = selected_toolchain(recorded)
         for job in jobs:
             receipt = receipts[job['source'].casefold()]
             obj = Path(receipt['object'])

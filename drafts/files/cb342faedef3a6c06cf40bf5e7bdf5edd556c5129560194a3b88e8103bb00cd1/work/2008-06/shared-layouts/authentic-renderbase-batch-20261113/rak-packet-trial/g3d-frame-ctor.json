@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Humanoid2008.cpp",
+      "checks": [
+        {
+          "addr": "0057d210",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@ABVVector3@1@@Z"
+        }
+      ]
+    }
+  ]
+}

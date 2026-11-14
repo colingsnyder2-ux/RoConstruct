@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage_jpeg.cpp",
+      "checks": [
+        {
+          "addr": "0050e8a0",
+          "symbol": "?encodeJPEG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050cb40",
+          "symbol": "?decodeJPEG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    }
+  ]
+}

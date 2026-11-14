@@ -1,0 +1,97 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/HuffmanEncodingTree.cpp",
+      "checks": [
+        {
+          "addr": "00481520",
+          "symbol": "??0?$CircularLinkedList@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAE@XZ",
+          "calls": []
+        },
+        {
+          "addr": "004cde00",
+          "symbol": "?Insert@?$CircularLinkedList@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+          "calls": [
+            {
+              "offset": 11,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 63,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 134,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            }
+          ]
+        },
+        {
+          "addr": "004cded0",
+          "symbol": "?Add@?$CircularLinkedList@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEAAPAUHuffmanEncodingTreeNode@@ABQAU3@@Z",
+          "calls": [
+            {
+              "offset": 11,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 63,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 134,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            }
+          ]
+        },
+        {
+          "addr": "004cdf90",
+          "symbol": "?Clear@?$CircularLinkedList@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 18,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 38,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        },
+        {
+          "addr": "004cf490",
+          "symbol": "?Del@?$CircularLinkedList@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 21,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 79,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/HuffmanEncodingTree.cpp": "0353eefde95f8ebca3a70b0019c34266b5d3f998398946611cbfcfcb2130030c",
+      "tools/rbxgs/Client/Network/raknet30/Source/DS_LinkedList.h": "1ef81d1aa9e0a27676db5ee36df7d7090f212a6168639c0af9fbcfdea20e0c12"
+    },
+    "run": "20261114-043106-625a784f",
+    "proof": "analysis-ea78555f.json",
+    "note": "All five bodies already existed; 5/5 masked-byte and reviewed direct-call checks; raw 91.891892%-100%. Constructor target is a shared generic body, so unique ownership is unproven. Full provider selection, ABI, runtime, server credit remain unproven; inactive."
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "scope": "Direct reference inventory; provider, registration table and runtime unproven",
+  "run": "20261114-021117-fb93722b",
+  "object_sha256": "ae2ea20fb2f4dc72cf789ec4ca17b871054eb55389166c277be456222ee4cdf4",
+  "functions": [
+    {
+      "symbol": "_str_lower",
+      "address": "00626450",
+      "refs": [
+        {
+          "offset": 24,
+          "symbol": "_luaL_checklstring",
+          "target": "006116c0"
+        },
+        {
+          "offset": 37,
+          "symbol": "_luaL_buffinit",
+          "target": "006110a0"
+        },
+        {
+          "offset": 55,
+          "symbol": "__imp__tolower",
+          "target": null
+        },
+        {
+          "offset": 83,
+          "symbol": "_luaL_prepbuffer",
+          "target": "00610f40"
+        },
+        {
+          "offset": 124,
+          "symbol": "_luaL_pushresult",
+          "target": "00610fe0"
+        }
+      ]
+    },
+    {
+      "symbol": "_str_upper",
+      "address": "006264f0",
+      "refs": [
+        {
+          "offset": 24,
+          "symbol": "_luaL_checklstring",
+          "target": "006116c0"
+        },
+        {
+          "offset": 37,
+          "symbol": "_luaL_buffinit",
+          "target": "006110a0"
+        },
+        {
+          "offset": 55,
+          "symbol": "__imp__toupper",
+          "target": null
+        },
+        {
+          "offset": 83,
+          "symbol": "_luaL_prepbuffer",
+          "target": "00610f40"
+        },
+        {
+          "offset": 124,
+          "symbol": "_luaL_pushresult",
+          "target": "00610fe0"
+        }
+      ]
+    },
+    {
+      "symbol": "_luaopen_string",
+      "address": "00627e00",
+      "refs": [
+        {
+          "offset": 6,
+          "symbol": "_strlib",
+          "target": null
+        },
+        {
+          "offset": 11,
+          "symbol": "??_C@_06ICGJLFIM@string?$AA@",
+          "target": null
+        },
+        {
+          "offset": 17,
+          "symbol": "_luaL_register",
+          "target": "00611a70"
+        },
+        {
+          "offset": 25,
+          "symbol": "_createmetatable",
+          "target": "00627da0"
+        }
+      ]
+    }
+  ]
+}

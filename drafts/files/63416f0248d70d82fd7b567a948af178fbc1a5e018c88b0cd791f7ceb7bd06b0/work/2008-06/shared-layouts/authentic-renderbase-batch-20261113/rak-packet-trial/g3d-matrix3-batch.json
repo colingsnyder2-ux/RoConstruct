@@ -1,0 +1,107 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DMatrix3.cpp",
+      "checks": [
+        {
+          "addr": "00476570",
+          "symbol": "??AMatrix3@G3D@@QBEPBMH@Z"
+        },
+        {
+          "addr": "00476580",
+          "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z"
+        },
+        {
+          "addr": "00513220",
+          "symbol": "??4Matrix3@G3D@@QAEAAV01@ABV01@@Z"
+        },
+        {
+          "addr": "00513240",
+          "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z"
+        },
+        {
+          "addr": "00513260",
+          "symbol": "?setColumn@Matrix3@G3D@@QAEXHABVVector3@2@@Z"
+        },
+        {
+          "addr": "00513280",
+          "symbol": "??8Matrix3@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "005132d0",
+          "symbol": "??9Matrix3@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "005132f0",
+          "symbol": "??HMatrix3@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "00513350",
+          "symbol": "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z"
+        },
+        {
+          "addr": "005133c0",
+          "symbol": "??XMatrix3@G3D@@QAEAAV01@ABV01@@Z"
+        },
+        {
+          "addr": "00513450",
+          "symbol": "??GMatrix3@G3D@@QBE?AV01@XZ"
+        },
+        {
+          "addr": "00513510",
+          "symbol": "?transpose@Matrix3@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00513550",
+          "symbol": "?orthonormalize@Matrix3@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "00513680",
+          "symbol": "?fromAxisAngle@Matrix3@G3D@@SA?AV12@ABVVector3@2@M@Z"
+        },
+        {
+          "addr": "00513720",
+          "symbol": "?toEulerAnglesXYZ@Matrix3@G3D@@QBE_NAAM00@Z"
+        },
+        {
+          "addr": "005137f0",
+          "symbol": "?_mul@Matrix3@G3D@@CAXABV12@0AAV12@@Z"
+        },
+        {
+          "addr": "005138e0",
+          "symbol": "?isOrthonormal@Matrix3@G3D@@QBE_NXZ"
+        },
+        {
+          "addr": "00513aa0",
+          "symbol": "??0Matrix3@G3D@@QAE@ABVQuat@1@@Z"
+        },
+        {
+          "addr": "00513b70",
+          "symbol": "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z"
+        },
+        {
+          "addr": "00513bc0",
+          "symbol": "?fromEulerAnglesXYZ@Matrix3@G3D@@SA?AV12@MMM@Z"
+        },
+        {
+          "addr": "00513cc0",
+          "symbol": "?fromEulerAnglesZXY@Matrix3@G3D@@SA?AV12@MMM@Z"
+        },
+        {
+          "addr": "00513dc0",
+          "symbol": "?zero@Matrix3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00513e20",
+          "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "964015442008f223f808a72d7eefd19db74f2e713a2e5a172a8c1970bb98f074",
+    "run": "20261114-043604-9a2c3e28",
+    "leaf_proof": "analysis-7e248e6c.json",
+    "note": "Pre-existing source: 22/23 mapped bodies match masked bytes; 00476580 missing from object. 14 checked call-free bodies match all raw bytes. All 22 raw range 55.555556%-100%. Other method call/relocation identities, source version, static data, class ABI, selected provider, runtime and server credit remain unproven; inactive. Scores are local only."
+  }
+}

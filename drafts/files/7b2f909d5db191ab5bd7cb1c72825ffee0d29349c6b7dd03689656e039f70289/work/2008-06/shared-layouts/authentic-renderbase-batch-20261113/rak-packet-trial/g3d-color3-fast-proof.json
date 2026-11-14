@@ -1,0 +1,30 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DColor3.cpp",
+      "checks": [
+        {
+          "addr": "00514c00",
+          "symbol": "??0Color3@G3D@@QAE@ABVColor3uint8@1@@Z",
+          "calls": []
+        },
+        {
+          "addr": "00514c40",
+          "symbol": "??KColor3@G3D@@QBE?AV01@M@Z",
+          "calls": []
+        },
+        {
+          "addr": "005183c0",
+          "symbol": "??_0Color3@G3D@@QAEAAV01@M@Z",
+          "calls": []
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "5342f686cbe657e2263a589cb5c7a9a34517375bc168e6caa39c72b256d10675",
+    "run": "20261114-045556-0cb3befe",
+    "proof": "analysis-d0ef1182.json",
+    "note": "The three methods corrected by /fp:fast are call-free per reviewed original disassembly; all three pass native runner byte/data and explicit no-call proofs. Raw positional scores: 95.312500%, 81.506849%, 73.053892%; relocation/static data ownership, ABI, final provider, runtime, independent server verification remain unproven. A 13-byte default Color3uint8 constructor target is shared generic; existing source defines it inline and the candidate object did not emit it, so unique identity is not claimed."
+  }
+}

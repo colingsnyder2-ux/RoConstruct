@@ -1,0 +1,141 @@
+{
+  "scope": "Extended contiguous range, RTTI and call bindings only; EH boundaries, provider selection, ABI and runtime remain unproven.",
+  "source_sha256": "796a78661947d295a731d57942ae3128781a74e6a753b1d86d927cb0066223c3",
+  "object_sha256": "e8c0275c069f4b475c851acfa1732510add72b1abdfe4d21c9f59d3f80554934",
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "runner_sha256": "baab9a817f9b0573be293557d3b511aa1b4f3df484306c5b0e6a151939b1f30c",
+  "rows": [
+    {
+      "address": "005f3a40",
+      "symbol": "??1?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@UAE@XZ",
+      "target_sha256": "6449309f60d0891a7ee6351cf1f4d6c3a779b33eab0755f8848a8bc39914c6bb",
+      "candidate_sha256": "fbe9ee4c37011e4512090196e80cca53ba96f38cd399e7cebf20547de5c6c4ba",
+      "extended_length": 120,
+      "indexed_length": 80,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.833333,
+        "target_bytes": 120,
+        "candidate_bytes": 120,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 100,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          74,
+          99
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8653140,
+          92
+        ]
+      ],
+      "vtable_rtti": [
+        {
+          "instruction": "005f3a66",
+          "destination": "dword ptr [esi]",
+          "vtable": "00840954",
+          "type_descriptor": "00957a70",
+          "type": ".?AV?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@"
+        }
+      ],
+      "calls": {
+        "passed": true,
+        "calls": [
+          {
+            "offset": 73,
+            "target": "005f24c0",
+            "symbol": "?close@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@QAEXXZ",
+            "kind": "direct",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 98,
+            "target": "005f2e30",
+            "symbol": "??1?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@UAE@XZ",
+            "kind": "direct",
+            "status": "verified_binding"
+          }
+        ],
+        "unused_expectations": [],
+        "import_evidence_inputs": {},
+        "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+      }
+    },
+    {
+      "address": "005f3ac0",
+      "symbol": "??1?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@UAE@XZ",
+      "target_sha256": "5b41b70524dfb402012fdcf945894a98538227970e584203da3a458c369d2652",
+      "candidate_sha256": "fbe9ee4c37011e4512090196e80cca53ba96f38cd399e7cebf20547de5c6c4ba",
+      "extended_length": 120,
+      "indexed_length": 80,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.833333,
+        "target_bytes": 120,
+        "candidate_bytes": 120,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 100,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          74,
+          99
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8653236,
+          92
+        ]
+      ],
+      "vtable_rtti": [
+        {
+          "instruction": "005f3ae6",
+          "destination": "dword ptr [esi]",
+          "vtable": "008409b4",
+          "type_descriptor": "00957b18",
+          "type": ".?AV?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@"
+        }
+      ],
+      "calls": {
+        "passed": true,
+        "calls": [
+          {
+            "offset": 73,
+            "target": "005f24c0",
+            "symbol": "?close@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAEXXZ",
+            "kind": "direct",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 98,
+            "target": "005f2e30",
+            "symbol": "??1?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@UAE@XZ",
+            "kind": "direct",
+            "status": "verified_binding"
+          }
+        ],
+        "unused_expectations": [],
+        "import_evidence_inputs": {},
+        "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+      }
+    }
+  ]
+}

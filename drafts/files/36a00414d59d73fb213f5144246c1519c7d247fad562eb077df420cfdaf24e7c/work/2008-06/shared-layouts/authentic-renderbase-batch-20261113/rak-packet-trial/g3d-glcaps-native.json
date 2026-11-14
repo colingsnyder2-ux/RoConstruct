@@ -1,0 +1,75 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGLCaps.cpp",
+      "checks": [
+        {
+          "addr": "0046ffd0",
+          "symbol": "?supports_two_sided_stencil@GLCaps@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "0046fff0",
+          "symbol": "?checkBug_cubeMapBugs@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "004704a0",
+          "symbol": "?checkBug_redBlueMipmapSwap@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "00470770",
+          "symbol": "?glVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00470880",
+          "symbol": "?vendor@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "004709a0",
+          "symbol": "?renderer@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00470ab0",
+          "symbol": "?checkBug_slowVBO@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "00470bf0",
+          "symbol": "?computeVendor@GLCaps@G3D@@CA?AW4Vendor@12@XZ"
+        },
+        {
+          "addr": "00470cf0",
+          "symbol": "?getDriverVersion@GLCaps@G3D@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00471070",
+          "symbol": "?driverVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "004716f0",
+          "symbol": "?loadExtensions@GLCaps@G3D@@SAXPAVLog@2@@Z"
+        },
+        {
+          "addr": "00472850",
+          "symbol": "?init@GLCaps@G3D@@SAXXZ"
+        },
+        {
+          "addr": "004d71b0",
+          "symbol": "?supports_GL_ARB_texture_non_power_of_two@GLCaps@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "006f70a0",
+          "symbol": "?supports@GLCaps@G3D@@SA_NPBVTextureFormat@2@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DGLCaps.cpp": "ac134845508f9107a3e082efd083040895f41a032ff50bbf5b34c048e3aa6c43",
+      "tools/openrbx/Client/Rendering/g3d/glg3dcpp/GLCaps.cpp": "fcc02f9aa44796a8b7974a0cc2d4f0170769d1ea1288a8a6f0769abd9bb5a52a"
+    },
+    "baseline": "20261114-051012-a072e753",
+    "donor_trial": "20261114-051129-770b392d",
+    "canonical": "20261114-051215-16865b3d",
+    "note": "Replaced prior G3D 6.09 source with earlier OpenRBX GLCaps source; retains observed missing current-context assertion and glDepthBoundsEXT, plus earlier assertion line context and vendor null handling. Baseline 8 exact/5 different/1 missing; native 12 exact/1 different/1 missing. Four newly exact raw 75.090253%-76.973684%; previous eight retained. 006f70a0 labeled GLCaps::supports but original disassembly constructs CWindowDC and calls EnumFontFamiliesExA, so its label is contradicted; 004d71b0 generic global accessor not emitted. Source-version identity, all calls/data, ABI, provider selection, runtime and independent server credit remain unproven; inactive."
+  }
+}

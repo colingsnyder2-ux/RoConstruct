@@ -1,0 +1,236 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DBinaryInput.cpp",
+      "checks": [
+        {
+          "addr": "00509b40",
+          "symbol": "?readUInt32@BinaryInput@G3D@@QAEIXZ"
+        },
+        {
+          "addr": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "0050aa60",
+          "symbol": "?setPosition@BinaryInput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "0050aa80",
+          "symbol": "?readUInt8@BinaryInput@G3D@@QAEEXZ"
+        },
+        {
+          "addr": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ"
+        },
+        {
+          "addr": "0050ab00",
+          "symbol": "?skip@BinaryInput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z"
+        },
+        {
+          "addr": "005158c0",
+          "symbol": "??0BinaryInput@G3D@@QAE@PBEHW4G3DEndian@1@_N2@Z"
+        },
+        {
+          "addr": "00515a00",
+          "symbol": "??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z"
+        },
+        {
+          "addr": "00515c20",
+          "symbol": "??1BinaryInput@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "00515d10",
+          "symbol": "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z"
+        },
+        {
+          "addr": "00515d50",
+          "symbol": "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z"
+        },
+        {
+          "addr": "00515e00",
+          "symbol": "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DBinaryOutput.cpp",
+      "checks": [
+        {
+          "addr": "0050ab30",
+          "symbol": "?reserveBytes@BinaryOutput@G3D@@AAEXH@Z"
+        },
+        {
+          "addr": "0050ab60",
+          "symbol": "?getFilename@BinaryOutput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "005197b0",
+          "symbol": "??1BinaryOutput@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00519810",
+          "symbol": "?setEndian@BinaryOutput@G3D@@QAEXW4G3DEndian@2@@Z"
+        },
+        {
+          "addr": "00519830",
+          "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z"
+        },
+        {
+          "addr": "005198d0",
+          "symbol": "??0BinaryOutput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@@Z"
+        },
+        {
+          "addr": "00519950",
+          "symbol": "?writeUInt16@BinaryOutput@G3D@@QAEXG@Z"
+        },
+        {
+          "addr": "005199b0",
+          "symbol": "?writeUInt32@BinaryOutput@G3D@@QAEXI@Z"
+        },
+        {
+          "addr": "00519a30",
+          "symbol": "?writeString@BinaryOutput@G3D@@QAEXPBD@Z"
+        },
+        {
+          "addr": "00519a90",
+          "symbol": "?commit@BinaryOutput@G3D@@QAEX_N@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DTextInput.cpp",
+      "checks": [
+        {
+          "addr": "00487b00",
+          "symbol": "??1TextInput@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00516b00",
+          "symbol": "?eatInputChar@TextInput@G3D@@AAEHXZ"
+        },
+        {
+          "addr": "00516b40",
+          "symbol": "?peekInputChar@TextInput@G3D@@AAEHI@Z"
+        },
+        {
+          "addr": "00516b70",
+          "symbol": "?parseQuotedString@TextInput@G3D@@AAEXEAAVToken@2@@Z"
+        },
+        {
+          "addr": "00516d10",
+          "symbol": "?eatAndPeekInputChar@TextInput@G3D@@AAEHXZ"
+        },
+        {
+          "addr": "00516d50",
+          "symbol": "?nextToken@TextInput@G3D@@AAE?AVToken@2@XZ"
+        },
+        {
+          "addr": "00517b30",
+          "symbol": "?read@TextInput@G3D@@QAE?AVToken@2@XZ"
+        },
+        {
+          "addr": "00517c50",
+          "symbol": "??0TextInput@G3D@@QAE@W4FS@01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVSettings@01@@Z"
+        },
+        {
+          "addr": "00517ed0",
+          "symbol": "?readNumber@TextInput@G3D@@QAENXZ"
+        },
+        {
+          "addr": "005180b0",
+          "symbol": "?readSymbolToken@TextInput@G3D@@QAE?AVToken@2@XZ"
+        },
+        {
+          "addr": "00518110",
+          "symbol": "?readString@TextInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00518180",
+          "symbol": "?readString@TextInput@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "005182b0",
+          "symbol": "?peek@TextInput@G3D@@QAE?AVToken@2@XZ"
+        },
+        {
+          "addr": "00518370",
+          "symbol": "?hasMore@TextInput@G3D@@QAE_NXZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DTextOutput.cpp",
+      "checks": [
+        {
+          "addr": "00470700",
+          "symbol": "??1TextOutput@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00512360",
+          "symbol": "?setOptions@TextOutput@G3D@@AAEXABVOptions@12@@Z"
+        },
+        {
+          "addr": "005123c0",
+          "symbol": "?pushIndent@TextOutput@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "005123f0",
+          "symbol": "?popIndent@TextOutput@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "00512590",
+          "symbol": "?convertNewlines@TextOutput@G3D@@AAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z"
+        },
+        {
+          "addr": "00512800",
+          "symbol": "?indentAppend@TextOutput@G3D@@AAEXD@Z"
+        },
+        {
+          "addr": "00512910",
+          "symbol": "?commitString@TextOutput@G3D@@QAEXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "00512950",
+          "symbol": "?commitString@TextOutput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "005129d0",
+          "symbol": "??0TextOutput@G3D@@QAE@ABVOptions@01@@Z"
+        },
+        {
+          "addr": "00512a80",
+          "symbol": "?writeNewline@TextOutput@G3D@@QAEXXZ"
+        },
+        {
+          "addr": "00512ac0",
+          "symbol": "?wordWrapIndentAppend@TextOutput@G3D@@AAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "00512e10",
+          "symbol": "?vprintf@TextOutput@G3D@@QAAXPBDPAD@Z"
+        },
+        {
+          "addr": "00512ed0",
+          "symbol": "?writeString@TextOutput@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "00512f50",
+          "symbol": "?writeNumber@TextOutput@G3D@@QAEXH@Z"
+        },
+        {
+          "addr": "00512f70",
+          "symbol": "?writeSymbols@TextOutput@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00000@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "run": "20261114-051730-a73054c3",
+    "note": "Baseline existing sources: BinaryInput 10 exact/2 different/1 missing; BinaryOutput 9 exact/1 missing; TextInput 13 exact/1 missing; TextOutput 14 exact/1 missing. Local byte/data only; remaining reference, ABI, provider, runtime and independent credit unproven."
+  }
+}

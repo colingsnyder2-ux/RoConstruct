@@ -1,0 +1,65 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\shared-layouts\\authentic-renderbase-batch-20261113\\rak-packet-trial\\g3d-image-core-relocated.cpp",
+      "checks": [
+        {
+          "addr": "0050d530",
+          "symbol": "?pasteSubImage@GImage@G3D@@SA_NAAV12@ABV12@HHHHHH@Z"
+        },
+        {
+          "addr": "0050d600",
+          "symbol": "?stringToFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0050d800",
+          "symbol": "?decodePCX@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050e160",
+          "symbol": "?resize@GImage@G3D@@QAEXHHH@Z"
+        },
+        {
+          "addr": "0050e1b0",
+          "symbol": "?_copy@GImage@G3D@@AAEXABV12@@Z"
+        },
+        {
+          "addr": "0050e210",
+          "symbol": "??0GImage@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "0050e230",
+          "symbol": "??1GImage@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0050edb0",
+          "symbol": "?resolveFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0050eea0",
+          "symbol": "??0GImage@G3D@@QAE@HHH@Z"
+        },
+        {
+          "addr": "0050f360",
+          "symbol": "?insertRedAsAlpha@GImage@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "0050f430",
+          "symbol": "?save@GImage@G3D@@QBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@12@@Z"
+        },
+        {
+          "addr": "005105b0",
+          "symbol": "??0GImage@G3D@@QAE@PBEHW4Format@01@@Z"
+        },
+        {
+          "addr": "00510670",
+          "symbol": "??0GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@01@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "run": "20261114-050906-ebf30eca",
+    "note": "Scratch removes copy constructor, destructor and clear from original core to test relocation. Only 7/13 previous checks match, 4 differ and 2 missing; rejected. Existing core source unchanged."
+  }
+}

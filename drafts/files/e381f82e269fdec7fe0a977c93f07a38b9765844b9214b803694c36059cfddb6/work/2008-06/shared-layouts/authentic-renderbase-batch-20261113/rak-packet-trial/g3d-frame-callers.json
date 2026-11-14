@@ -1,0 +1,44 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVARArea.cpp",
+      "checks": [
+        {
+          "addr": "004765e0",
+          "symbol": "??9CoordinateFrame@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "00476700",
+          "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DMilestone.cpp",
+      "checks": [
+        {
+          "addr": "00485390",
+          "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PartInstanceCoordinate.cpp",
+      "checks": [
+        {
+          "addr": "004765e0",
+          "symbol": "??9CoordinateFrame@G3D@@QBE_NABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGCamera.cpp",
+      "checks": [
+        {
+          "addr": "00485390",
+          "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z"
+        }
+      ]
+    }
+  ]
+}

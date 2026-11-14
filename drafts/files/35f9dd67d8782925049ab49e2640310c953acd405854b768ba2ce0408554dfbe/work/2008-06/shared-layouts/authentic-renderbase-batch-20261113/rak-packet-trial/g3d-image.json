@@ -1,0 +1,118 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage.cpp",
+      "checks": [
+        {
+          "addr": "0045aca0",
+          "symbol": "??0GImage@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "0045acc0",
+          "symbol": "??_EGImage@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "0050b1a0",
+          "symbol": "?encodeTGA@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050b700",
+          "symbol": "?encodePNG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050ba30",
+          "symbol": "?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050bb30",
+          "symbol": "?decodeTGA@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050c040",
+          "symbol": "?decodeBMP@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050cdd0",
+          "symbol": "?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050d530",
+          "symbol": "?pasteSubImage@GImage@G3D@@SA_NAAV12@ABV12@HHHHHH@Z"
+        },
+        {
+          "addr": "0050d600",
+          "symbol": "?stringToFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0050d800",
+          "symbol": "?decodePCX@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050e160",
+          "symbol": "?resize@GImage@G3D@@QAEXHHH@Z"
+        },
+        {
+          "addr": "0050e1b0",
+          "symbol": "?_copy@GImage@G3D@@AAEXABV12@@Z"
+        },
+        {
+          "addr": "0050e210",
+          "symbol": "??0GImage@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "0050e230",
+          "symbol": "??1GImage@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0050eaf0",
+          "symbol": "?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050ec40",
+          "symbol": "?decodePPM@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050edb0",
+          "symbol": "?resolveFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0050eea0",
+          "symbol": "??0GImage@G3D@@QAE@HHH@Z"
+        },
+        {
+          "addr": "0050f360",
+          "symbol": "?insertRedAsAlpha@GImage@G3D@@QBE?AV12@ABV12@@Z"
+        },
+        {
+          "addr": "0050f430",
+          "symbol": "?save@GImage@G3D@@QBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@12@@Z"
+        },
+        {
+          "addr": "0050f4c0",
+          "symbol": "?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "0050fef0",
+          "symbol": "?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        },
+        {
+          "addr": "005105b0",
+          "symbol": "??0GImage@G3D@@QAE@PBEHW4Format@01@@Z"
+        },
+        {
+          "addr": "00510670",
+          "symbol": "??0GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@01@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "baseline": "20261114-050014-80cd08bf",
+    "overlay_run": "20261114-050208-18945022",
+    "overlay_hashes": {
+      "work\\2008-06\\shared-layouts\\authentic-renderbase-batch-20261113\\rak-packet-trial\\g3d-image-overlay\\G3D\\GImage.h": "d83fd9c2724ee92320fefba32c4615fb7123278ee20b32e1ef5249335ada10fc",
+      "work\\2008-06\\shared-layouts\\authentic-renderbase-batch-20261113\\rak-packet-trial\\g3d-image-overlay\\G3D\\BinaryInput.h": "b3c71c499b66de636f41905d30f94ef50124add9f70fdd146f18b2974d2f0a79"
+    },
+    "note": "Corrected headers based on pre-existing 2008 RTTI/exception evidence. GImage core: baseline 11/25 exact, 2 different, 12 absent; overlay 13/25 exact, 12 absent. Combining format overlay run yields 23/25 distinct mapped byte/data matches; default constructor and deleting destructor absent from examined objects. PCX 0050d800 baseline 89.942431% fuzzy/86.757624% positional, overlay 100% masked; resolveFormat baseline 97.021277%/96.174863%, overlay 100% masked. Scoped overlay not canonical, no class ABI, all reference identities, selection, runtime or independent server credit claimed."
+  }
+}

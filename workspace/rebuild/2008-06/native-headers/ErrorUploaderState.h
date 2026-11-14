@@ -13,3 +13,8 @@ struct ErrorUploader::data {
     std::string url;
     data();
 };
+
+inline bool ErrorUploader::IsUploading()
+{
+    return !state->files.empty();
+}

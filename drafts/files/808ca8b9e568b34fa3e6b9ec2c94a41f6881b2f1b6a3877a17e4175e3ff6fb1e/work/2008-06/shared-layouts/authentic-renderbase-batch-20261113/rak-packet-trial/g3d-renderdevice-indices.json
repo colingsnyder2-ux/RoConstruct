@@ -1,0 +1,27 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RenderBaseMeshRender2008.cpp",
+      "checks": [
+        {
+          "addr": "005029c0",
+          "symbol": "??$sendIndices@I@RenderDevice@G3D@@QAEXW4Primitive@01@ABV?$Array@I@1@@Z"
+        },
+        {
+          "addr": "00548fe0",
+          "symbol": "?sendGeometry@Mesh@RenderBase@RBX@@SAXPBVLevel@123@PAVRenderDevice@G3D@@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/RenderBaseMeshRender2008.cpp": "7a02dd299cc99fb549cae14e6a65c356e8232cc678665c69a2ea040e7fccf6cb",
+      "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h": "2576c10b1bdf55f1115da25ed7c12573a0d2007fd2f212bbf7b82cec2184c9ff"
+    },
+    "baseline": "20261114-052753-3dc63a06/analysis-6163deb4.json",
+    "optimized": "20261114-052829-695fb331",
+    "proof": "analysis-d161f5e5.json",
+    "note": "Original 00548fe0 caller is Mesh::sendGeometry and its actual Level indexArray uses unsigned int; registry labels 005029c0 signed int, which could share code. Native /Od caller matches 75/75 masked, 85.333333% raw; its unsigned sendIndices candidate differs 43/50, 45.161290% fuzzy, 2.631579% positional. Alternate /O2 /fp:fast candidate matches 50/50 masked, 76% raw, three direct calls checked; caller then differs (34.482759% fuzzy, 1.587302% positional), so alternate profile unselected. Combined with prior RenderDevice native source 88 matches, 89/90 indexed targets have local masked candidates; remaining 006a26e0 is likely misattributed MFC method. Original signed/unsigned provider identity, ABI, selection, runtime, and independent server credit unproven."
+  }
+}

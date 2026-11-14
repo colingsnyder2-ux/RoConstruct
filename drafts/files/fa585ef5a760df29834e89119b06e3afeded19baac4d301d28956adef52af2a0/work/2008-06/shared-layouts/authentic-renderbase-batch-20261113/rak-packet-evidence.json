@@ -1,0 +1,15 @@
+{
+  "scope": "Partial packet methods; class layout, call identity, provider and runtime unproven",
+  "run": "20261114-022524-d227167e",
+  "object_sha256": "91f421b464a1a1c5363cbfabc4b99692229dc7b3998d7ff4bbb0897fcd9bf0c7",
+  "send_allocate_refs": [
+    {
+      "offset": 89,
+      "symbol": "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ"
+    }
+  ],
+  "receive_first_mismatches": [
+    "freeThreadedMemoryOnNextUpdate original +0x78c vs candidate +0x784",
+    "internalPacketPool original +0x7b0 vs candidate +0x788"
+  ]
+}

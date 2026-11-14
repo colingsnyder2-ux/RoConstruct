@@ -1,0 +1,54 @@
+{
+  "scope": "Native source candidate; full dependency ABI, data and runtime remain unverified",
+  "run": "20261114-021401-fcdcc825",
+  "object_sha256": "80da0b74849eadf44f2326e27cd58ed5eca4b16a60819fc1ba49c696584992e8",
+  "functions": [
+    {
+      "symbol": "?lua_newstate@@YAPAUlua_State@@P6APAXPAX0II@Z0@Z",
+      "address": "00623f40",
+      "refs": [
+        {
+          "offset": 216,
+          "symbol": "?f_luaopen@@YAXPAUlua_State@@PAX@Z",
+          "target": null
+        },
+        {
+          "offset": 276,
+          "symbol": "?luaD_rawrunprotected@@YAHPAUlua_State@@P6AX0PAX@Z1@Z",
+          "target": "00621920"
+        },
+        {
+          "offset": 290,
+          "symbol": "?close_state@@YAXPAUlua_State@@@Z",
+          "target": "00623c50"
+        },
+        {
+          "offset": 305,
+          "symbol": "?rbx_userstateopen@@YAXPAUlua_State@@@Z",
+          "target": "00623ec0"
+        }
+      ]
+    },
+    {
+      "symbol": "?rbx_userstateopen@@YAXPAUlua_State@@@Z",
+      "address": "00623ec0",
+      "refs": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?rbx_userstateopen@@YAXPAUlua_State@@@Z",
+          "target": null
+        },
+        {
+          "offset": 83,
+          "symbol": "??2@YAPAXI@Z",
+          "target": "006a0920"
+        },
+        {
+          "offset": 108,
+          "symbol": "??$reset@H@?$shared_ptr@H@boost@@QAEXPAH@Z",
+          "target": "00612de0"
+        }
+      ]
+    }
+  ]
+}

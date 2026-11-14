@@ -15,6 +15,15 @@ class SourceMethodContractTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             prelude_contract(dict(includes=['#include "safe.h"\n#define unsafe 1\n']))
 
+    def test_declaration_only_class_allowed_without_layout_or_bodies(self):
+        raw = prelude_contract(dict(type_declarations=[dict(namespace='RBX',
+            source='class Color { public: static const G3D::Color3& red(); };')]))
+        self.assertIn(b'class Color', raw)
+        for bad in ['class Color { int value; };', 'class Color { static int red() { return 1; } };',
+                    'class Color : public Base { public: static int red(); };']:
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                prelude_contract(dict(type_declarations=[dict(namespace='RBX', source=bad)]))
+
     def method(self, **changes):
         result = dict(source='int Foo::calculate(int value) const { return value + 1; }',
                       signature='RBX::Foo::calculate(int)const', address='00401000',

@@ -1,0 +1,99 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVector2.cpp",
+      "checks": [
+        {
+          "addr": "00411790",
+          "symbol": "??0Vector2@G3D@@QAE@ABV01@@Z"
+        },
+        {
+          "addr": "00467260",
+          "symbol": "??0Vector2@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00467270",
+          "symbol": "??0Vector2@G3D@@QAE@ABVVector2int16@1@@Z"
+        },
+        {
+          "addr": "00509ba0",
+          "symbol": "?zero@Vector2@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00509bd0",
+          "symbol": "?inf@Vector2@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00509c30",
+          "symbol": "??KVector2@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "00509c80",
+          "symbol": "?unitize@Vector2@G3D@@QAEMM@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DMatrix4.cpp",
+      "checks": [
+        {
+          "addr": "00514590",
+          "symbol": "??0Matrix4@G3D@@QAE@ABVCoordinateFrame@1@@Z"
+        },
+        {
+          "addr": "005145f0",
+          "symbol": "??0Matrix4@G3D@@QAE@XZ"
+        },
+        {
+          "addr": "00514630",
+          "symbol": "?getRow@Matrix4@G3D@@QBE?AVVector4@2@H@Z"
+        },
+        {
+          "addr": "00514670",
+          "symbol": "??8Matrix4@G3D@@QBE_NABV01@@Z"
+        },
+        {
+          "addr": "005146c0",
+          "symbol": "?orthogonalProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z"
+        },
+        {
+          "addr": "00514750",
+          "symbol": "?perspectiveProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z"
+        },
+        {
+          "addr": "00514840",
+          "symbol": "??9Matrix4@G3D@@QBE_NABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DQuat.cpp",
+      "checks": [
+        {
+          "addr": "00513160",
+          "symbol": "?unitize@Quat@G3D@@QBE?AV12@XZ"
+        },
+        {
+          "addr": "00526050",
+          "symbol": "??0Quat@G3D@@QAE@ABVMatrix3@1@@Z"
+        },
+        {
+          "addr": "00526160",
+          "symbol": "?nlerp@Quat@G3D@@QBE?AV12@ABV12@M@Z"
+        },
+        {
+          "addr": "005261f0",
+          "symbol": "?toRotationMatrix@Quat@G3D@@QBE?AVMatrix3@2@XZ"
+        },
+        {
+          "addr": "00526230",
+          "symbol": "?slerp@Quat@G3D@@QBE?AV12@ABV12@MM@Z"
+        },
+        {
+          "addr": "00658a30",
+          "symbol": "??DQuat@G3D@@QBE?AV01@ABV01@@Z"
+        }
+      ]
+    }
+  ]
+}

@@ -9,6 +9,8 @@ namespace RBX
 {
 	class Joint;
 	class Primitive;
+	class Assembly;
+	class SimJobStage;
 
 	class World
 	{
@@ -18,5 +20,10 @@ namespace RBX
 		void insertJoint(Joint* j);
 		void removeJoint(Joint* j);
 		void ticklePrimitive(Primitive* p, int value);
+		void onPrimitiveExtentsChanged(Primitive* p);     // 005e91c0
+		void onAssemblyExtentsChanged(Assembly* a);       // 005e91d0
+		SimJobStage& getSimJobStage();                     // 005e93b0
+		void onPrimitiveAddedAnchor(Primitive* p);        // 005e94a0
+		void onPrimitiveRemovingAnchor(Primitive* p);     // 005e94e0
 	};
 }

@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DGLCaps (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/GLCaps.cpp, verbatim.
+// 2008-06 native G3DGLCaps (inactive): upstream tools/openrbx/Client/Rendering/g3d/glg3dcpp/GLCaps.cpp.
 // >>> native-status (generated) -- do not edit >>>
 // G3DGLCaps | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -227,7 +227,7 @@ void GLCaps::loadExtensions(Log* debugLog) {
     alwaysAssertM(! _initialized, "Internal error.");
 
     // Require an OpenGL context to continue
-    // RBX edit (client 2008-06): the current-context assertion is not present in the shipped build.
+
 
     // Initialize statically cached strings
 	vendor();
@@ -423,10 +423,6 @@ void GLCaps::loadExtensions(Log* debugLog) {
     LOAD_EXTENSION(glGetQueryObjectivARB);
     LOAD_EXTENSION(glGetQueryObjectuivARB);
     LOAD_EXTENSION(glIsQueryARB);
-
-    // Depth bounds
-    // RBX edit (client 2008-06): glDepthBoundsEXT is not loaded.
-
     #undef LOAD_EXTENSION
 
     std::istringstream extensions;
@@ -638,7 +634,8 @@ const std::string& GLCaps::driverVersion() {
 
 const std::string& GLCaps::vendor() {
     alwaysAssertM(_loadedExtensions, "Cannot call GLCaps::vendor before GLCaps::init().");
-    static std::string _driverVendor = (char*)glGetString(GL_VENDOR);
+    const char* str = (const char*)glGetString(GL_VENDOR);
+    static std::string _driverVendor = (str != NULL) ? str : "";
 	return _driverVendor;
 }
 

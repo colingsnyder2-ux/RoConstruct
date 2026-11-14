@@ -1,0 +1,163 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGLCaps.cpp",
+      "checks": [
+        {
+          "addr": "0046ffd0",
+          "symbol": "?supports_two_sided_stencil@GLCaps@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "0046fff0",
+          "symbol": "?checkBug_cubeMapBugs@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "004704a0",
+          "symbol": "?checkBug_redBlueMipmapSwap@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "00470770",
+          "symbol": "?glVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00470880",
+          "symbol": "?vendor@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "004709a0",
+          "symbol": "?renderer@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00470ab0",
+          "symbol": "?checkBug_slowVBO@GLCaps@G3D@@CAXXZ"
+        },
+        {
+          "addr": "00470bf0",
+          "symbol": "?computeVendor@GLCaps@G3D@@CA?AW4Vendor@12@XZ"
+        },
+        {
+          "addr": "00470cf0",
+          "symbol": "?getDriverVersion@GLCaps@G3D@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00471070",
+          "symbol": "?driverVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "004716f0",
+          "symbol": "?loadExtensions@GLCaps@G3D@@SAXPAVLog@2@@Z"
+        },
+        {
+          "addr": "00472850",
+          "symbol": "?init@GLCaps@G3D@@SAXXZ"
+        },
+        {
+          "addr": "004d71b0",
+          "symbol": "?supports_GL_ARB_texture_non_power_of_two@GLCaps@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "006f70a0",
+          "symbol": "?supports@GLCaps@G3D@@SA_NPBVTextureFormat@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DShader.cpp",
+      "checks": [
+        {
+          "addr": "00485430",
+          "symbol": "?supportsPixelShaders@Shader@G3D@@SA_NXZ"
+        },
+        {
+          "addr": "00485460",
+          "symbol": "?afterPrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z"
+        },
+        {
+          "addr": "00485a20",
+          "symbol": "?ok@Shader@G3D@@UBE_NXZ"
+        },
+        {
+          "addr": "00485a30",
+          "symbol": "?messages@Shader@G3D@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "addr": "00487c60",
+          "symbol": "?beforePrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z"
+        },
+        {
+          "addr": "005074f0",
+          "symbol": "??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z"
+        },
+        {
+          "addr": "005075d0",
+          "symbol": "?setPreserveState@Shader@G3D@@UAEX_N@Z"
+        },
+        {
+          "addr": "005075f0",
+          "symbol": "??1Shader@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "00507680",
+          "symbol": "?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DTexture.cpp",
+      "checks": [
+        {
+          "addr": "00473510",
+          "symbol": "?newGLTextureID@Texture@G3D@@SAIXZ"
+        },
+        {
+          "addr": "00473670",
+          "symbol": "?sizeInMemory@Texture@G3D@@QBEIXZ"
+        },
+        {
+          "addr": "00473700",
+          "symbol": "?getOpenGLTextureTarget@Texture@G3D@@QBEIXZ"
+        },
+        {
+          "addr": "00473ef0",
+          "symbol": "?fromGLTexture@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IPBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z"
+        },
+        {
+          "addr": "00473f90",
+          "symbol": "?rect2DBounds@Texture@G3D@@QBE?AVRect2D@2@XZ"
+        },
+        {
+          "addr": "00473fc0",
+          "symbol": "?fromMemory@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$Array@V?$Array@PBX@G3D@@@2@PBVTextureFormat@2@HHH2W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@MM@Z"
+        },
+        {
+          "addr": "00474690",
+          "symbol": "?fromMemory@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAPBEPBVTextureFormat@2@HHH2W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@MM@Z"
+        },
+        {
+          "addr": "004747f0",
+          "symbol": "?fromGImage@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVGImage@2@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z"
+        },
+        {
+          "addr": "00474950",
+          "symbol": "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@HHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z"
+        },
+        {
+          "addr": "004753c0",
+          "symbol": "?fromFile@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@NW4DepthReadMode@12@MM@Z"
+        },
+        {
+          "addr": "00507180",
+          "symbol": "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHPBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z"
+        },
+        {
+          "addr": "007b8400",
+          "symbol": "?fromGImage@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVGImage@2@PBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "baseline": "20261114-051012-a072e753",
+    "note": "Before source correction: GLCaps 8 exact/5 different/1 missing; Shader 5 exact/4 missing; Texture 10 exact/2 missing. Local diagnostics only; ABI, references, provider selection, runtime and server verification remain unproven."
+  }
+}

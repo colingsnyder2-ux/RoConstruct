@@ -69,6 +69,27 @@ def prelude_contract(review):
                 or declarator.type != 'function_declarator'):
             raise ValueError('Prelude declarations must be function prototypes, not definitions or state')
         raw += wrapped
+    for declaration in review.get('type_declarations', []):
+        wrapped, nodes, error = scoped_item(declaration['namespace'], declaration['source'])
+        if error or len(nodes) != 1 or nodes[0].type not in ('class_specifier', 'struct_specifier'):
+            raise ValueError('Prelude types must be declaration-only classes')
+        node = nodes[0]
+        body = next((child for child in node.named_children if child.type == 'field_declaration_list'), None)
+        if body is None or any(child.type == 'base_class_clause' for child in node.named_children):
+            raise ValueError('Prelude types cannot define layout or inheritance')
+        for member in body.named_children:
+            if member.type == 'access_specifier':
+                continue
+            pending = [member]
+            kinds = []
+            while pending:
+                part = pending.pop()
+                kinds.append(part.type)
+                pending.extend(part.named_children)
+            if (member.type != 'field_declaration' or kinds.count('function_declarator') != 1
+                    or 'function_definition' in kinds or 'initialized_declarator' in kinds):
+                raise ValueError('Prelude types may contain only method declarations')
+        raw += wrapped
     return raw
 
 
@@ -167,7 +188,7 @@ def prove(root, review_file, apply=False):
             calls = draft_native.reviewed_call_targets(
                 original, binder, objects[1], witnesses, bindings, allow_exact_inferred=True)
             reviewed_original = draft_native.ReviewedOriginal(original, calls['import_aliases'])
-            reference = binder.verify(reviewed_original, objects[1], witnesses,
+            reference = draft_native.verified_reference_evidence(reviewed_original, binder, objects[1], witnesses,
                 dict(calls['targets'], **external, **numeric['targets']), dict(witnesses))
             layout = draft_family.measure_layout_preservation(root, dict(builds=builds), output)
             if layout['state'] != 'preserved-before-layout':

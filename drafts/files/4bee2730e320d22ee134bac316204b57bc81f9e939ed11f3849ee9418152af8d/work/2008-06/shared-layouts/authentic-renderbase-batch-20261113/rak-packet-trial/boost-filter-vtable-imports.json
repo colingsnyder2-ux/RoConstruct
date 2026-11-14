@@ -1,0 +1,96 @@
+{
+  "scope": "Explicit imported vtable data operands only; vtable contents, final linker selection, ABI and runtime remain open.",
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "source_sha256": "f72ae9dde6e596caf87bb7db7ec79734e22053fd83a7560ca6a49e45d4ca1e91",
+  "object_sha256": "a989e7fe422f27af085046ad1da0666d8e72aa4d49d609ee960a32a90df96ba4",
+  "import_evidence_inputs": {
+    "C:\\Users\\colin\\RoConstruct\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "C:\\WINDOWS\\SysWOW64\\ws2_32.dll": "c454780ce7710afed2c0e048bd4b061aa54eaf82a5c711e98c73db584ebe2688",
+    "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+    "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020",
+    "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\Kernel32.Lib": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819",
+    "C:\\Users\\colin\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\WS2_32.Lib": "2183b4ad6883839f34803651b314e5904ede19143755df47c63ed671399a133e"
+  },
+  "results": [
+    {
+      "address": "005f4cf0",
+      "symbol": "??_G?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@UAEPAXI@Z",
+      "imports": [
+        {
+          "offset": 10,
+          "target_iat": "00802584",
+          "import": "MSVCP90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "candidate_symbol": "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "status": "verified_import_data"
+        },
+        {
+          "offset": 21,
+          "target_iat": "00802580",
+          "import": "MSVCP90.dll!??_7ios_base@std@@6B@",
+          "candidate_symbol": "__imp_??_7ios_base@std@@6B@",
+          "status": "verified_import_data"
+        }
+      ]
+    },
+    {
+      "address": "005f4d30",
+      "symbol": "??_G?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@UAEPAXI@Z",
+      "imports": [
+        {
+          "offset": 10,
+          "target_iat": "00802584",
+          "import": "MSVCP90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "candidate_symbol": "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "status": "verified_import_data"
+        },
+        {
+          "offset": 21,
+          "target_iat": "00802580",
+          "import": "MSVCP90.dll!??_7ios_base@std@@6B@",
+          "candidate_symbol": "__imp_??_7ios_base@std@@6B@",
+          "status": "verified_import_data"
+        }
+      ]
+    },
+    {
+      "address": "005f8920",
+      "symbol": "??_G?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z",
+      "imports": [
+        {
+          "offset": 10,
+          "target_iat": "00802584",
+          "import": "MSVCP90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "candidate_symbol": "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "status": "verified_import_data"
+        },
+        {
+          "offset": 21,
+          "target_iat": "00802580",
+          "import": "MSVCP90.dll!??_7ios_base@std@@6B@",
+          "candidate_symbol": "__imp_??_7ios_base@std@@6B@",
+          "status": "verified_import_data"
+        }
+      ]
+    },
+    {
+      "address": "005f8a20",
+      "symbol": "??_G?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z",
+      "imports": [
+        {
+          "offset": 10,
+          "target_iat": "00802584",
+          "import": "MSVCP90.dll!??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "candidate_symbol": "__imp_??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@",
+          "status": "verified_import_data"
+        },
+        {
+          "offset": 21,
+          "target_iat": "00802580",
+          "import": "MSVCP90.dll!??_7ios_base@std@@6B@",
+          "candidate_symbol": "__imp_??_7ios_base@std@@6B@",
+          "status": "verified_import_data"
+        }
+      ]
+    }
+  ]
+}

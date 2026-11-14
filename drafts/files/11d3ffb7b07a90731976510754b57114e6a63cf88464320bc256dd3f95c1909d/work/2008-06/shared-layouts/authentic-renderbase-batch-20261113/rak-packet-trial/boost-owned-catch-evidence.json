@@ -1,0 +1,468 @@
+{
+  "scope": "Read-only FuncInfo catch ownership and extended masked-byte diagnostic; no authoritative boundary edits, selected-provider, complete relocation identity, ABI or runtime proof. Exact-locked rows cannot be merged by the normal updater.",
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "functions_sha256": "9bf3ee1e8e782bf61b930cd29552d9a96927212bdf19efa380ce9d0dc40cd7fc",
+  "analyze_sha256": "5989c0d3a48aa53252d7ac91d98f4545bf785a9b4528831f03b09f2213e2a298",
+  "bounds_proof_sha256": "3a7ee0bdbf7b9450a087c6d796600d0d6ecccba723c7d22341b570ae445373e7",
+  "results": [
+    {
+      "address": "005f3a40",
+      "symbol": "??1?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@UAE@XZ",
+      "extent": {
+        "addr": "005f3a40",
+        "old": 80,
+        "new": 120,
+        "absorbs": [
+          "005f3a90"
+        ],
+        "handler": "007d7418"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8221720,
+          "func_info": 9396720,
+          "try_map": 9396676,
+          "handler_array": 9396660,
+          "try_low": 1,
+          "try_high": 1,
+          "catch_high": 2,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostNullStreams2008.cpp",
+      "source_sha256": "796a78661947d295a731d57942ae3128781a74e6a753b1d86d927cb0066223c3",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040722-20313f28\\unit-000\\candidate.obj",
+      "object_sha256": "e8c0275c069f4b475c851acfa1732510add72b1abdfe4d21c9f59d3f80554934",
+      "target_sha256": "6449309f60d0891a7ee6351cf1f4d6c3a779b33eab0755f8848a8bc39914c6bb",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.833333,
+        "target_bytes": 120,
+        "candidate_bytes": 120,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 100,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          74,
+          99
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [
+        [
+          8653140,
+          92
+        ]
+      ],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f3ac0",
+      "symbol": "??1?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@UAE@XZ",
+      "extent": {
+        "addr": "005f3ac0",
+        "old": 80,
+        "new": 120,
+        "absorbs": [
+          "005f3b10"
+        ],
+        "handler": "007d7438"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8221752,
+          "func_info": 9396816,
+          "try_map": 9396772,
+          "handler_array": 9396756,
+          "try_low": 1,
+          "try_high": 1,
+          "catch_high": 2,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostNullStreams2008.cpp",
+      "source_sha256": "796a78661947d295a731d57942ae3128781a74e6a753b1d86d927cb0066223c3",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040722-20313f28\\unit-000\\candidate.obj",
+      "object_sha256": "e8c0275c069f4b475c851acfa1732510add72b1abdfe4d21c9f59d3f80554934",
+      "target_sha256": "5b41b70524dfb402012fdcf945894a98538227970e584203da3a458c369d2652",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.833333,
+        "target_bytes": 120,
+        "candidate_bytes": 120,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 100,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          74,
+          99
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [
+        [
+          8653236,
+          92
+        ]
+      ],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f3c50",
+      "symbol": "?sync@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ",
+      "extent": {
+        "addr": "005f3c50",
+        "old": 103,
+        "new": 129,
+        "absorbs": [
+          "005f3cb7"
+        ],
+        "handler": "007d7460"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8221792,
+          "func_info": 9396992,
+          "try_map": 9396972,
+          "handler_array": 9396940,
+          "try_low": 0,
+          "try_high": 0,
+          "catch_high": 1,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostNullStreams2008.cpp",
+      "source_sha256": "796a78661947d295a731d57942ae3128781a74e6a753b1d86d927cb0066223c3",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040722-20313f28\\unit-000\\candidate.obj",
+      "object_sha256": "e8c0275c069f4b475c851acfa1732510add72b1abdfe4d21c9f59d3f80554934",
+      "target_sha256": "74384fab300b7a906efd0006363fb7cd25569eba206b0618c67d7bdda47a935d",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 91.472868,
+        "target_bytes": 129,
+        "candidate_bytes": 129,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 113,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          67
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f5f30",
+      "symbol": "?sync@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ",
+      "extent": {
+        "addr": "005f5f30",
+        "old": 109,
+        "new": 135,
+        "absorbs": [
+          "005f5f9d"
+        ],
+        "handler": "007d7690"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8222352,
+          "func_info": 9398712,
+          "try_map": 9398692,
+          "handler_array": 9398660,
+          "try_low": 0,
+          "try_high": 0,
+          "catch_high": 1,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostStreamBuffers2008.cpp",
+      "source_sha256": "ffa0ee43727042671ea07618f59b6911655e589ee5cb8e115da0d392ccb95df1",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040507-dd0edf3e\\unit-000\\candidate.obj",
+      "object_sha256": "20cc3727eb3819d3c0c2dc00276651b36ca80f4c298dc6bb1b7c97f9c03aebab",
+      "target_sha256": "01ba5ecaa2f608f5070e6068ca05d10992d2f393f903d26d9d9e35a4ec674a73",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.37037,
+        "target_bytes": 135,
+        "candidate_bytes": 135,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 119,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          70
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f82f0",
+      "symbol": "?close@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXH@Z",
+      "extent": {
+        "addr": "005f82f0",
+        "old": 88,
+        "new": 94,
+        "absorbs": [
+          "005f8348"
+        ],
+        "handler": "007d7970"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8223088,
+          "func_info": 9400580,
+          "try_map": 9400560,
+          "handler_array": 9400528,
+          "try_low": 0,
+          "try_high": 0,
+          "catch_high": 1,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostStreamBuffers2008.cpp",
+      "source_sha256": "ffa0ee43727042671ea07618f59b6911655e589ee5cb8e115da0d392ccb95df1",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040507-dd0edf3e\\unit-000\\candidate.obj",
+      "object_sha256": "20cc3727eb3819d3c0c2dc00276651b36ca80f4c298dc6bb1b7c97f9c03aebab",
+      "target_sha256": "589b895aec83c913562c3cd048295a8b084225ced285cfe353e33f9da8a1b73b",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.106383,
+        "target_bytes": 94,
+        "candidate_bytes": 94,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 78,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          38,
+          62
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f7f80",
+      "symbol": "??1chain_impl@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@QAE@XZ",
+      "extent": {
+        "addr": "005f7f80",
+        "old": 63,
+        "new": 107,
+        "absorbs": [
+          "005f7fbf"
+        ],
+        "handler": "007d7908"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8222984,
+          "func_info": 9400132,
+          "try_map": 9400088,
+          "handler_array": 9400072,
+          "try_low": 1,
+          "try_high": 1,
+          "catch_high": 2,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostFilteringStreams2008.cpp",
+      "source_sha256": "f72ae9dde6e596caf87bb7db7ec79734e22053fd83a7560ca6a49e45d4ca1e91",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040945-f208847b\\unit-000\\candidate.obj",
+      "object_sha256": "a989e7fe422f27af085046ad1da0666d8e72aa4d49d609ee960a32a90df96ba4",
+      "target_sha256": "20e842c3f97d4b67465fbc17a80bdc9eae04c1fc08689ca19141d8389675b5c6",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.308411,
+        "target_bytes": 107,
+        "candidate_bytes": 107,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 83,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          50,
+          57,
+          75,
+          83
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f7ff0",
+      "symbol": "??1chain_impl@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAE@XZ",
+      "extent": {
+        "addr": "005f7ff0",
+        "old": 63,
+        "new": 107,
+        "absorbs": [
+          "005f802f"
+        ],
+        "handler": "007d7928"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8223016,
+          "func_info": 9400228,
+          "try_map": 9400184,
+          "handler_array": 9400168,
+          "try_low": 1,
+          "try_high": 1,
+          "catch_high": 2,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\BoostFilteringStreams2008.cpp",
+      "source_sha256": "f72ae9dde6e596caf87bb7db7ec79734e22053fd83a7560ca6a49e45d4ca1e91",
+      "object": "work\\2008-06\\native-check-runs\\20261114-040945-f208847b\\unit-000\\candidate.obj",
+      "object_sha256": "a989e7fe422f27af085046ad1da0666d8e72aa4d49d609ee960a32a90df96ba4",
+      "target_sha256": "c8b3bd844e8b8fa6eee4d90bd383fdcb53fa3db01ea69635d7e43b3dafc61882",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.308411,
+        "target_bytes": 107,
+        "candidate_bytes": 107,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 83,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          50,
+          57,
+          75,
+          83
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [],
+      "data_mismatches": []
+    },
+    {
+      "address": "005f99f0",
+      "symbol": "?sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAEHXZ",
+      "extent": {
+        "addr": "005f99f0",
+        "old": 103,
+        "new": 129,
+        "absorbs": [
+          "005f9a57"
+        ],
+        "handler": "007d7bd0"
+      },
+      "owner_locked": true,
+      "catch_locked": true,
+      "catch_context": [
+        {
+          "handler": 8223696,
+          "func_info": 9401668,
+          "try_map": 9401648,
+          "handler_array": 9401616,
+          "try_low": 0,
+          "try_high": 0,
+          "catch_high": 1,
+          "catch_type": 9602440,
+          "catch_object": 0
+        }
+      ],
+      "source": "rebuild\\2008-06\\native-classes\\AppUnit5F8WinInet.cpp",
+      "source_sha256": "66dbf4eb91575a1909069d592d40514f7a4585660d078ff666ece4a88bed62b7",
+      "object": "work\\2008-06\\native-check-runs\\20261114-041134-fb7d47fe\\unit-000\\candidate.obj",
+      "object_sha256": "c2d92d587555afdb6de39f832418c823d91252ab495540b05bf4efae5c9337fd",
+      "target_sha256": "40c9c33536f75fc9b4ffaf31ef0093ae216675b30532d8fda4e19b1de3797c21",
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.922481,
+        "target_bytes": 129,
+        "candidate_bytes": 129,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 113,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          67
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "matched_local_data": [],
+      "data_mismatches": []
+    }
+  ]
+}

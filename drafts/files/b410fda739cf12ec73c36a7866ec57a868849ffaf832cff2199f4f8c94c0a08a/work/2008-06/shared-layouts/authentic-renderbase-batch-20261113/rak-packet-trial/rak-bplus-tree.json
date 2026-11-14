@@ -1,0 +1,79 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RakBPlusTree2008.cpp",
+      "checks": [
+        {
+          "addr": "004cf200",
+          "symbol": "?DeleteFromPageAtIndex@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXHPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z"
+        },
+        {
+          "addr": "004cf4f0",
+          "symbol": "?CanRotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z"
+        },
+        {
+          "addr": "004cf520",
+          "symbol": "?CanRotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NPAU?$Page@IPAUInternalPacket@@$0CA@@2@H@Z"
+        },
+        {
+          "addr": "004cf550",
+          "symbol": "?RotateRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z"
+        },
+        {
+          "addr": "004cf5d0",
+          "symbol": "?RotateLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@HPAUReturnAction@12@@Z"
+        },
+        {
+          "addr": "004cf6d0",
+          "symbol": "?ShiftNodeLeft@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z"
+        },
+        {
+          "addr": "004cf740",
+          "symbol": "?ShiftNodeRight@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXPAU?$Page@IPAUInternalPacket@@$0CA@@2@@Z"
+        },
+        {
+          "addr": "004cff00",
+          "symbol": "?InsertIntoNode@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@HPAU32@1PAUReturnAction@12@@Z"
+        },
+        {
+          "addr": "004d02d0",
+          "symbol": "?FixUnderflow@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NHPAU?$Page@IPAUInternalPacket@@$0CA@@2@IPAUReturnAction@12@@Z"
+        },
+        {
+          "addr": "004d0c30",
+          "symbol": "?FreePages@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEXXZ"
+        },
+        {
+          "addr": "004d0d60",
+          "symbol": "?InsertBranchDown@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@IABQAUInternalPacket@@PAU32@PAUReturnAction@12@PA_N@Z"
+        },
+        {
+          "addr": "004d0fd0",
+          "symbol": "?FindDeleteRebalance@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@IAE_NIPAU?$Page@IPAUInternalPacket@@$0CA@@2@PA_NIPAUReturnAction@12@AAPAUInternalPacket@@@Z"
+        },
+        {
+          "addr": "004d1780",
+          "symbol": "?Delete@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIAAPAUInternalPacket@@@Z"
+        },
+        {
+          "addr": "004d1850",
+          "symbol": "?Insert@?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE_NIABQAUInternalPacket@@@Z"
+        },
+        {
+          "addr": "004d2570",
+          "symbol": "??1?$BPlusTree@IPAUInternalPacket@@$0CA@@DataStructures@@QAE@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/RakBPlusTree2008.cpp": "4a284282695ebbae914d5b1300d75b3221d916186f4c749cd61045d5aafe2720",
+      "rebuild/2008-06/native-headers/ReliabilityLayer.h": "16b168b19769a11e5fd311813e1e257a15d58005a62f471602e75272cc5dc8be",
+      "tools/rbxgs/Client/Network/raknet30/Source/DS_BPlusTree.h": "c0c7b6d6dee5b9c8585f92de4caa5db142cf8c22a2c88bb445fc267d371cc2d8"
+    },
+    "run": "20261114-042832-d1cb7d15",
+    "leaf_proof": "analysis-430dcf47.json",
+    "note": "15/15 mapped masked-byte matches, raw 83.695652%-100%; seven call-free methods raw identical. Eight other methods have extra relocations whose targets are not independently proven. First explicit whole-class instantiation failed because donor ValidateTree assigns a pointer to int; instantiating actual Delete, Insert and destructor avoids unused invalid method. Provider selection, source-version identity, ABI, runtime and server credit remain unproven; inactive."
+  }
+}

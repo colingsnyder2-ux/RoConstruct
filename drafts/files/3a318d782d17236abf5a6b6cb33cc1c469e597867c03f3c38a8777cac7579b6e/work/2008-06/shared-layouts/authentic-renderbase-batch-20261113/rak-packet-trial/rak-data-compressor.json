@@ -1,0 +1,8 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RakDataCompressor2008.cpp",
+      "checks": []
+    }
+  ]
+}

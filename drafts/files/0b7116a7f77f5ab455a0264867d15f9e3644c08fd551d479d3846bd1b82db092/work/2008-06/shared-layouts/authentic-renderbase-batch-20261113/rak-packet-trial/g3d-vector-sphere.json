@@ -1,0 +1,27 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DSphere.cpp",
+      "checks": [
+        {
+          "addr": "004a6100",
+          "symbol": "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z"
+        },
+        {
+          "addr": "00514a20",
+          "symbol": "?minFinite@Vector3@G3D@@SAABV12@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DSphere.cpp": "776b5b6339c44be17a0c6777743cc4af95f3c0cbbb5bcdfe894bb8a6396fb29c",
+      "rebuild/2008-06/native-classes/G3DColor3.cpp": "cf92859fd5d668f4c79654388561cf604dc82498798782a0f0de0709c0646910"
+    },
+    "run": "20261114-045228-f96707a1",
+    "clamp_proof": "analysis-d6c40ff5.json",
+    "gray_run": "20261114-045254-849849e9",
+    "note": "Vector3::clamp 004a6100: 152/152 raw, no calls, versus prior Root candidate 144/152 28.378378% fuzzy / 1.470588% positional. Indexed Vector3::minFinite 00514a20 has matching masked bytes but FAILS data: target constant 0.7, candidate -FLT_MAX. Color3::gray source initializes (0.7,0.7,0.7), and passes same 49-byte masked/data and no-call proof in gray_run. Index label likely wrong; do not count as Vector3. 30/32 indexed Vector3 entries have local matches; 00514a20 disputed, 00530730 remains missing. ABI, linked provider, runtime and independent server credit remain unproven; inactive."
+  }
+}

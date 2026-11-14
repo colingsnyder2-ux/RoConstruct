@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RakDataCompressor2008.cpp",
+      "checks": []
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/RakDataCompressor2008.cpp": "697b2225aa1ccdd41d8d5d6cfb4e011e6043a1c15c0855fa4393bc02194ecd35",
+      "tools/rbxgs/Client/Network/raknet30/Source/DataCompressor.cpp": "f9d0ed812547830df511a2373685be65c31882ebbc9723b1734b29dc231a8414",
+      "tools/rbxgs/Client/Network/raknet30/Source/DataCompressor.h": "4362e1ca01a7a667cd634c7d8a1b7aab751dece8467b49729edd83a8228a71ef"
+    },
+    "run": "20261114-043315-1de7fc4f",
+    "note": "Recovered donor Compress and DecompressAndAllocate, compile succeeds. No original method address established, no byte or binding proof, no claim that these donor methods occur in target executable. Version identity, ABI, selection, runtime and independent server credit unproven; inactive."
+  }
+}

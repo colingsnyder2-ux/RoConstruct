@@ -1,0 +1,69 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DColor3.cpp",
+      "checks": [
+        {
+          "addr": "005148e0",
+          "symbol": "?green@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514910",
+          "symbol": "?blue@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514940",
+          "symbol": "?purple@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514980",
+          "symbol": "?yellow@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "005149b0",
+          "symbol": "?orange@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "005149f0",
+          "symbol": "?black@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514a60",
+          "symbol": "?white@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514a90",
+          "symbol": "?wheelRandom@Color3@G3D@@SAABV12@XZ"
+        },
+        {
+          "addr": "00514c00",
+          "symbol": "??0Color3@G3D@@QAE@ABVColor3uint8@1@@Z"
+        },
+        {
+          "addr": "00514c40",
+          "symbol": "??KColor3@G3D@@QBE?AV01@M@Z"
+        },
+        {
+          "addr": "00514ce0",
+          "symbol": "?fromARGB@Color3@G3D@@SA?AV12@I@Z"
+        },
+        {
+          "addr": "005183c0",
+          "symbol": "??_0Color3@G3D@@QAEAAV01@M@Z"
+        },
+        {
+          "addr": "00599190",
+          "symbol": "?white@Color3@G3D@@SAABV12@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "5342f686cbe657e2263a589cb5c7a9a34517375bc168e6caa39c72b256d10675",
+    "baseline": "20261114-045519-7d5eb9fa",
+    "trial": "20261114-045538-6f54ef34",
+    "canonical": "20261114-045556-0cb3befe",
+    "gray_proof": "analysis-1bcca77d.json",
+    "note": "Changed source compile profile to /fp:fast; baseline 10/13 exact, 3 different. Fast profile 13/13 masked byte/data matches; changed methods raw 95.312500%, 81.506849%, 73.053892%. Previously identified 00514a20 Color3::gray still matches byte/data and has no calls. Other call/data references, ABI, source-version identity, provider selection, runtime, and independent server verification unproven; inactive."
+  }
+}

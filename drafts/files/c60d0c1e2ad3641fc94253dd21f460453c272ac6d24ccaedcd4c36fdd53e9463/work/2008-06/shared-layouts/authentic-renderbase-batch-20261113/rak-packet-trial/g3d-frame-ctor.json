@@ -1,0 +1,31 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Humanoid2008.cpp",
+      "checks": [
+        {
+          "addr": "0057d210",
+          "symbol": "??0CoordinateFrame@G3D@@QAE@ABVVector3@1@@Z",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "00513e20",
+              "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 11,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "source_sha256": "cec63bb3cbdaa6488c382199774ce5e32cd62f934de45c2c0ea03d95796ed7c3",
+    "run": "20261114-044228-26271c03",
+    "proof": "analysis-258e2cb3.json",
+    "note": "Existing Humanoid2008 object emits native CoordinateFrame(Vector3) 0057d210, masked 100%, raw 83.720930%, 43 bytes; both original direct calls verified. Matrix3 copy constructor 00513220 independently matched in 20261114-043604-9a2c3e28/analysis-7b1f76cb.json; identity static state, full ABI, linked provider, runtime and independent server verification remain open. 20/21 indexed CoordinateFrame entries now have local masked matches; 005d9c10 is disputed Humanoid method, not counted."
+  }
+}

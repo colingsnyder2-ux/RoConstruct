@@ -1,0 +1,29 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage_jpeg.cpp",
+      "checks": [
+        {
+          "addr": "0050e8a0",
+          "symbol": "?encodeJPEG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z"
+        },
+        {
+          "addr": "0050cb40",
+          "symbol": "?decodeJPEG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DGImage_jpeg.cpp": "fb83ae2a181c6db2a6b3338b732a36cde02f395a11af1966d8c236838e14b312",
+      "rebuild/2008-06/native-headers/g3d-image-2008/G3D/GImage.h": "d83fd9c2724ee92320fefba32c4615fb7123278ee20b32e1ef5249335ada10fc",
+      "rebuild/2008-06/native-headers/g3d-image-2008/G3D/BinaryInput.h": "b3c71c499b66de636f41905d30f94ef50124add9f70fdd146f18b2974d2f0a79"
+    },
+    "baseline": "20261114-050633-86c9c1d6",
+    "header_trial": "20261114-050641-749c1810",
+    "native": "20261114-050742-da1c3d99",
+    "callback_proof": "analysis-a6b9ff9c.json",
+    "note": "Restored observed 2008 JPEG error callback in encode/decode, and scoped 2008 headers. Decoder 0050cb40 baseline 88.168558% fuzzy / 55.769231% positional, 617/617 bytes; native 100% masked / 88.168558% raw. Callback 0050b530 156/156 masked / 84.615385% raw. Encoder remains 55.506608% fuzzy / 8.456660% positional, 558/577. Scratch combined lifetime context matches encoder but duplicates core definitions. Moving definitions breaks six of 13 existing core checks, so no duplicate definitions promoted. All callback dynamic calls, reference closure, ABI, selection, runtime and independent server proof remain open; inactive."
+  }
+}

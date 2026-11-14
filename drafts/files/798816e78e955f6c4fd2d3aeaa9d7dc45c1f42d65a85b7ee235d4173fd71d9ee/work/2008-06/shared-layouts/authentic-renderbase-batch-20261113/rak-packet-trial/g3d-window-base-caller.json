@@ -1,0 +1,45 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DWin32Window.cpp",
+      "checks": [
+        {
+          "addr": "0045ad50",
+          "symbol": "?makeCurrent@GWindow@G3D@@QBEXXZ"
+        },
+        {
+          "addr": "0047f860",
+          "symbol": "??1GWindow@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "0047f8a0",
+          "symbol": "?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "addr": "0047f900",
+          "symbol": "?incInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f940",
+          "symbol": "?decInputCaptureCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f980",
+          "symbol": "?incMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047f9c0",
+          "symbol": "?decMouseHideCount@GWindow@G3D@@UAEXXZ"
+        },
+        {
+          "addr": "0047faf0",
+          "symbol": "??_GGWindow@G3D@@UAEPAXI@Z"
+        },
+        {
+          "addr": "00481570",
+          "symbol": "?pushLoopBody@GWindow@G3D@@UAEXP6AXPAX@Z0@Z"
+        }
+      ]
+    }
+  ]
+}

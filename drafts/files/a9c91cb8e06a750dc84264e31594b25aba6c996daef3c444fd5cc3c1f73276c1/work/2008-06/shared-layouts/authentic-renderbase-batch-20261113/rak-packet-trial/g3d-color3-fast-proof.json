@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DColor3.cpp",
+      "checks": [
+        {
+          "addr": "00514c00",
+          "symbol": "??0Color3@G3D@@QAE@ABVColor3uint8@1@@Z",
+          "calls": []
+        },
+        {
+          "addr": "00514c40",
+          "symbol": "??KColor3@G3D@@QBE?AV01@M@Z",
+          "calls": []
+        },
+        {
+          "addr": "005183c0",
+          "symbol": "??_0Color3@G3D@@QAEAAV01@M@Z",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

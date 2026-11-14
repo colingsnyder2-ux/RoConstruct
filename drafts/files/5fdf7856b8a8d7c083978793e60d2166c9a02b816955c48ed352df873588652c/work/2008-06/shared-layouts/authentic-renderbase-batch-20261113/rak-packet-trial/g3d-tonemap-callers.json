@@ -1,0 +1,43 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DToneMap.cpp",
+      "checks": [
+        {
+          "addr": "005074f0",
+          "symbol": "??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z"
+        },
+        {
+          "addr": "005075d0",
+          "symbol": "?setPreserveState@Shader@G3D@@UAEX_N@Z"
+        },
+        {
+          "addr": "005075f0",
+          "symbol": "??1Shader@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "00507680",
+          "symbol": "?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z"
+        },
+        {
+          "addr": "00507180",
+          "symbol": "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHPBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z"
+        },
+        {
+          "addr": "007b8400",
+          "symbol": "?fromGImage@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVGImage@2@PBVTextureFormat@2@W4Dimension@12@ABVSettings@12@@Z"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DShader.cpp": "b05f99d38376eceea1fa14d54e62e8478257a156d3f61676520491adefe95e8d",
+      "rebuild/2008-06/native-classes/G3DToneMap.cpp": "0b5cd2fd5b82a1f19e8937efdeb4cb5bf405695805418c01a40cd51f769f2ed5"
+    },
+    "base_shader_run": "20261114-051012-a072e753",
+    "caller_run": "20261114-051348-c47cf355",
+    "leaf_proof": "analysis-e9345b52.json",
+    "note": "Existing Shader object emitted five mapped byte/data matches; existing ToneMap caller emits remaining four (005074f0, 005075d0, 005075f0, 00507680), all masked exact, raw 84.496124%-100%. 005075d0 is 10/10 raw and no calls. 9/9 indexed Shader bodies have local masked candidates across two objects. Two Texture overloads absent from ToneMap object. Other reference identities, source version, ABI, selection, runtime and independent server credit remain unproven; inactive."
+  }
+}

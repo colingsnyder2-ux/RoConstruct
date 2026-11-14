@@ -778,3 +778,110 @@ template class DataStructures::List<PluginInterface *>;
 template class DataStructures::SingleProducerConsumer<RakPeer::BufferedCommandStruct>;
 template class DataStructures::SingleProducerConsumer<RakPeer::RequestedConnectionStruct>;
 template class big::RSACrypt<unsigned int [8]>;
+
+void RakPeer::SecuredConnectionConfirmation( RakPeer::RemoteSystemStruct * remoteSystem, char* data )
+{
+#if !defined(_COMPATIBILITY_1)
+	int i, j;
+	unsigned char randomNumber[ 20 ];
+	unsigned int number;
+	//bool doSend;
+	Packet *packet;
+	big::u32 e;
+	RSA_BIT_SIZE n, message, encryptedMessage;
+	big::RSACrypt<RSA_BIT_SIZE> privKeyPncrypt;
+
+	// Make sure that we still want to connect
+	if (remoteSystem->connectMode!=RemoteSystemStruct::REQUESTED_CONNECTION)
+		return;
+
+	// Copy out e and n
+#ifdef HOST_ENDIAN_IS_BIG
+	BSWAPCPY( (unsigned char *)&e, (unsigned char *)(data + 1 + 20), sizeof( big::u32 ) );
+	BSWAPCPY( (unsigned char *)n, (unsigned char *)(data + 1 + 20 + sizeof( big::u32 )), sizeof( RSA_BIT_SIZE ) );
+#else
+	memcpy( ( char* ) & e, data + 1 + 20, sizeof( big::u32 ) );
+	memcpy( n, data + 1 + 20 + sizeof( big::u32 ), sizeof( RSA_BIT_SIZE ) );
+#endif
+
+	// If we preset a size and it doesn't match, or the keys do not match, then tell the user
+	if ( usingSecurity == true && keysLocallyGenerated == false )
+	{
+		if ( memcmp( ( char* ) & e, ( char* ) & publicKeyE, sizeof( big::u32 ) ) != 0 ||
+			memcmp( n, publicKeyN, sizeof( RSA_BIT_SIZE ) ) != 0 )
+		{
+			packet=AllocPacket(1);
+			packet->data[ 0 ] = ID_RSA_PUBLIC_KEY_MISMATCH;
+			packet->bitSize = sizeof( char ) * 8;
+			packet->systemAddress = remoteSystem->systemAddress;
+			packet->systemIndex = ( SystemIndex ) GetIndexFromSystemAddress( packet->systemAddress, true );
+			AddPacketToProducer(packet);
+			remoteSystem->connectMode=RemoteSystemStruct::DISCONNECT_ASAP_SILENTLY;
+			return;
+		}
+	}
+
+	// Create a random number
+	for ( i = 0; i < (int) sizeof( randomNumber ); i += (int) sizeof( number ) )
+	{
+		number = randomMT();
+		memcpy( randomNumber + i, ( char* ) & number, sizeof( number ) );
+	}
+
+	memset( message, 0, sizeof( message ) );
+	assert( sizeof( message ) >= sizeof( randomNumber ) );
+
+#ifdef HOST_ENDIAN_IS_BIG
+	// Scramble the plaintext message (the random number)
+	BSWAPCPY( (unsigned char *)message, randomNumber, sizeof(randomNumber) );
+#else
+	memcpy( message, randomNumber, sizeof( randomNumber ) );
+#endif
+	privKeyPncrypt.setPublicKey( e, n );
+	privKeyPncrypt.encrypt( message, encryptedMessage );
+#ifdef HOST_ENDIAN_IS_BIG
+	// A big-endian machine needs to scramble the byte order of an outgoing (encrypted) message
+	BSWAPSELF( (unsigned char *)encryptedMessage, sizeof( RSA_BIT_SIZE ) );
+#endif
+
+	/*
+	rakPeerMutexes[ RakPeer::requestedConnections_MUTEX ].Lock();
+	for ( i = 0; i < ( int ) requestedConnectionsList.Size(); i++ )
+	{
+		if ( requestedConnectionsList[ i ]->systemAddress == systemAddress )
+		{
+			doSend = true;
+			// Generate the AES key
+
+			for ( j = 0; j < 16; j++ )
+				requestedConnectionsList[ i ]->AESKey[ j ] = data[ 1 + j ] ^ randomNumber[ j ];
+
+			requestedConnectionsList[ i ]->setAESKey = true;
+
+			break;
+		}
+	}
+	rakPeerMutexes[ RakPeer::requestedConnections_MUTEX ].Unlock();
+	*/
+
+	// Take the remote system's AESKey (SynCookie) and XOR with our random number.
+		for ( j = 0; j < 16; j++ )
+			remoteSystem->AESKey[ j ] = data[ 1 + j ] ^ randomNumber[ j ];
+	remoteSystem->setAESKey = true;
+
+//	if ( doSend )
+//	{
+		char reply[ 1 + 20 + sizeof( RSA_BIT_SIZE ) ];
+		// c2s RSA(random number), same syn-cookie
+		reply[ 0 ] = ID_SECURED_CONNECTION_CONFIRMATION;
+		memcpy( reply + 1, data + 1, 20 );  // Copy the syn-cookie
+		memcpy( reply + 1 + 20, encryptedMessage, sizeof( RSA_BIT_SIZE ) ); // Copy the encoded random number
+
+		//SocketLayer::Instance()->SendTo( connectionSocket, reply, 1 + 20 + sizeof( RSA_BIT_SIZE ), systemAddress.binaryAddress, systemAddress.port );
+		// All secure connection requests are unreliable because the entire process needs to be restarted if any part fails.
+		// Connection requests are resent periodically
+		SendImmediate((char*)reply, (1 + 20 + sizeof( RSA_BIT_SIZE )) * 8, SYSTEM_PRIORITY, UNRELIABLE, 0, remoteSystem->systemAddress, false, false, RakNet::GetTimeNS());
+//	}
+
+#endif
+}

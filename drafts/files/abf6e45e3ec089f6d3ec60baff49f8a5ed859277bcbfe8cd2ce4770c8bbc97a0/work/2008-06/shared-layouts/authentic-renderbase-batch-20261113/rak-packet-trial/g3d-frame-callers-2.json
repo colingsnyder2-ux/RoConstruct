@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DRenderDevice.cpp",
+      "checks": [
+        {
+          "addr": "00476700",
+          "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/LuaBridge2008Atomic.cpp",
+      "checks": [
+        {
+          "addr": "0061c6f0",
+          "symbol": "??HCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z"
+        },
+        {
+          "addr": "0061c740",
+          "symbol": "??GCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/HumanoidState.cpp",
+      "checks": [
+        {
+          "addr": "005d9c10",
+          "symbol": "?upVector@CoordinateFrame@G3D@@QBE?AVVector3@2@XZ"
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "sha256": {
+      "rebuild/2008-06/native-classes/G3DRenderDevice.cpp": "63670fd916c0e94fbe1f84d5914049cc7c922730fd818e90457887fa0c64e9ca",
+      "rebuild/2008-06/native-classes/LuaBridge2008Atomic.cpp": "dbab3f1540ec48f3a378510a34490ea8125e2e5a2061e132145d51dfb3279353",
+      "rebuild/2008-06/native-classes/HumanoidState.cpp": "fbba3a26b2a6211fdf8ccb9812b4e472551dc795b79b81c7d7c55c04a8b566b1"
+    },
+    "run": "20261114-043953-f31e635e",
+    "call_proof": "analysis-49db9df1.json",
+    "copy_ctor_proof": "20261114-043604-9a2c3e28/analysis-7b1f76cb.json",
+    "note": "Three additional bodies from existing source: 00476700 raw 95.918367%, 0061c6f0/0061c740 raw 94.936709%, all 100% masked and direct-call bindings reviewed. Candidate copy constructor matches shared original target 00513220 raw in separate object. HumanoidState.cpp did not compile because Primitive is incomplete; upVector 005d9c10 remains unverified. Mapped CoordinateFrame 19/21 locally match; two absent/unverified. ABI, provider selection, runtime and server credit unproven; inactive."
+  }
+}
