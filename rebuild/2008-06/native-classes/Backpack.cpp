@@ -5,6 +5,8 @@
 // no original address mapped to this file yet | by -
 // <<< native-status | src ad5f3cec | roc native-status --write
 #include "v8datamodel/Backpack.h"
+#include "v8datamodel/Workspace.h"
+#include "Network/Players.h"
 
 namespace RBX
 {
@@ -26,6 +28,24 @@ namespace RBX
 	Backpack::Backpack()
 	{
 		setName("Backpack");
+	}
+
+	// 005d18e0
+	IScriptOwner* Backpack::scriptShouldRun(Script* script)
+	{
+		Workspace* workspace = ServiceProvider::find<Workspace>(this);
+		if (!workspace)
+			return NULL;
+
+		bool isLocalBackpack = getParent() == Network::Players::findLocalPlayer(this);
+		bool backend = Network::Players::backendProcessing(this, true);
+		bool isLocalScript = dynamic_cast<LocalScript*>(script) != NULL;
+		bool inHopperBin = dynamic_cast<HopperBin*>(script->getParent()) != NULL;
+
+		if (isLocalScript ? isLocalBackpack : ((inHopperBin && isLocalBackpack) || backend))
+			return workspace;
+
+		return NULL;
 	}
 }
 
