@@ -154,6 +154,7 @@ namespace RBX
 
 		World* getWorld() const { return world; }
 		G3D::CoordinateFrame getTopOfHead() const;                            // 005d76a0
+		G3D::CoordinateFrame getRightArmGrip() const;                         // 005d7a30
 		JointInstance* findRightShoulder() const;                             // 005d9010
 
 	public:

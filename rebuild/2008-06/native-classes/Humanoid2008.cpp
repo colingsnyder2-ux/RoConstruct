@@ -131,6 +131,15 @@ namespace RBX
 		return G3D::CoordinateFrame(G3D::Vector3(0.0f, 0.5f, 0.0f));
 	}
 
+	G3D::CoordinateFrame Humanoid::getRightArmGrip() const
+	{
+		G3D::CoordinateFrame cframe;
+		cframe.lookAt(G3D::Vector3(0.0f, -1.0f, 0.0f), G3D::Vector3(0.0f, 0.0f, -1.0f));
+		cframe.translation = G3D::Vector3(0.0f, -1.0f, 0.0f);
+
+		return cframe;
+	}
+
 	void Humanoid::renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint)
 	{
 		DrawAdorn::cylinder(adorn, G3D::CoordinateFrame(waypoint), 1, 0.2f, 1.0f, G3D::Color3::green());
