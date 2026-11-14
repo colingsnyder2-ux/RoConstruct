@@ -9,9 +9,20 @@
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
+#include "v8datamodel/DataModel.h"
 
 namespace RBX
 {
+	// INFERRED: native wrapper has priority parameter absent from donor header.
+	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name, int priority);
+
+	// 00556520
+	void RunService::start()
+	{
+		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
+		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc", -1)));
+	}
+
 	// 00556b00: Run Service name, framePeriod 1/30 (float constant 0082d634), state and timers zeroed, stopwatch tick.
 	RunService::RunService()
 		: framePeriod(1.0f / 30.0f),
