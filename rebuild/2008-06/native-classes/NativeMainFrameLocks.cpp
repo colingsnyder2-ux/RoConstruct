@@ -1,4 +1,5 @@
-// Main-frame construction writes these before any observed read.
-// 00432327 / 00432331 are the sole original references to C and A.
+// Main-frame construction writes all three from the same registry value.
+// B is observed only in Accoutrement::write, after application startup.
 bool nativeLockA;
+bool nativeLockB;
 bool nativeLockC;
