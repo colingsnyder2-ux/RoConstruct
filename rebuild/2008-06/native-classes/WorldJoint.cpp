@@ -42,6 +42,11 @@ namespace RBX
 
 #ifdef NATIVE_WORLD_JOINTS_PENDING_WORLD
 	// Needs a World declaration (v8world/World.h) reachable without the donor joint headers; see PROPOSALS.
+	// Trial (lf13): native-headers/v8world/World2008.h now provides that World declaration and the unit compiles with
+	// it, but the body stays non-exact: the donor IPipelined::getWorld (v8world/IPipelined.h, 85 bytes with its
+	// asserts, KERNEL_STAGE 8) is called out of line, while 006456e0 inlines it (currentStage +0x4, getStageType
+	// slot 1, `cmp eax, 7`, upstream +0x4, IWorldStage world +0xc). Header proposal (IStage/IPipelined owner), so the
+	// guard stays until the 2008 getWorld is reachable from Joints2008.h.
 	// 006456e0: IPipelined::getWorld inline (KERNEL_STAGE 7 -> upstream), World::onJointPrimitiveNulling 005e9240,
 	// Edge::setPrimitive 00659290, World::onJointPrimitiveSet 005e9250.
 	void Joint::setPrimitive(int i, Primitive* p)

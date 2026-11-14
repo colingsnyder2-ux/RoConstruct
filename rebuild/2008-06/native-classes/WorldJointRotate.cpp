@@ -74,6 +74,9 @@ namespace RBX
 	// 006463f0 (slot 14 of RotatePJoint and RotateVJoint): getChannelValue 00645af0, IPipelined::getWorld inline
 	// (KERNEL_STAGE 7), World::ticklePrimitive 005e9410 for both primitives. Needs a World declaration reachable
 	// without the donor joint headers, and the 2008 IStage (see PROPOSALS).
+	// lf13: World2008.h now declares ticklePrimitive(Primitive*, int); the remaining blocker is the same as
+	// Joint::setPrimitive 006456e0 in WorldJoint.cpp: the donor IPipelined::getWorld is not inlined and uses
+	// KERNEL_STAGE 8, the 2008 inline compares with 7 (header proposal), so the guard stays.
 	void DynamicRotateJoint::stepUi(int uiStepId)
 	{
 		channelValue = getChannelValue(uiStepId);
