@@ -65,6 +65,8 @@ checks = [
     ('native-classes/PlayersSuperSafe.cpp', ['00497600=?superSafeOn@Players@Network']),
     ('native-classes/SelectionIterators.cpp', ['00413d10=?begin@Selection@RBX', '00413d40=?end@Selection@RBX']),
     ('native-classes/BrickColorConversions.cpp', ['005b6180=?color3uint8@BrickColor@RBX', '005b62a0=?closest@BrickColor@RBX']),
+    ('native-classes/BrickColorMapAccess.cpp', ['005b6120=?color4uint8@BrickColor@RBX',
+     '005b5d80=?closest@BrickColor@RBX@@SA?AV12@VColor4uint8']),
     ('native-classes/InstanceChildAcceptance.cpp', ['00423700=?canAcceptChildren@Instance@RBX']),
     ('native-classes/SettingsDialogShow.cpp', ['00466eb0=?showSettingsDialog']),
     ('native-classes/CSettingsDialog.cpp', ['00466e10=??0CSettingsDialog', '00466ca0=??1CSettingsDialog',
@@ -243,6 +245,7 @@ for name in ('CRobloxView', 'CReflectorWnd', 'CMainFrameToolbars', 'CMultiPlayer
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
              'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'CBrowserView', 'BrowserViewExternalFactory', 'BrowserViewExternalMethods', 'BrowserViewExternalGetApp', 'HttpRobloxSite', 'HttpScriptCheck', 'HttpTrustCheck', 'HttpTrustInitialize', 'HttpTrustState', 'HttpTransport', 'HttpTransportState', 'HttpResultCheck', 'HttpWinInet', 'HttpWinHttp', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
              'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels', 'CRobloxReportView',
+             'BrickColorMapAccess',
              'LogLifetime', 'LogWriteEntry', 'LogFormatTime', 'LogFormatMemory', 'MainLogProvider', 'LogManagerGet',
              'LogManagerState', 'LogManagerDestructor', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState',
              'ThreadName', 'ThreadNameState'):
