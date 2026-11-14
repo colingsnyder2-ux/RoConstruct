@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::Primitive state setters of v8world/Primitive.cpp, application range 005e8000.. (inactive):
 // getNextJoint 005e7ba0, getNextContact 005e7be0, setDragging 005e8050, setAnchor 005e80d0, setJointAnchored 005e8140, clipToSafeSize 005e83c0,
-// setGridSize 005e8470 and setPV 005e85b0.
+// setGridSize 005e8470, setPV 005e85b0, getAssembly 005e7570 and setCoordinateFrame 005e8200.
 // Flags: the sibling rows of native-classes/AppUnit5E4Primitive.cpp (/fp:fast).
 //
 // Unit-local redeclarations (pattern of ContactUnit2008ConnectorBody.cpp / BlockBlockContactStep.cpp), because the
@@ -14,10 +14,14 @@
 // RBX::Edge (getIndex), RBX::Joint and RBX::Contact for getNextJoint 005e7ba0 / getNextContact 005e7be0 come from
 // native-headers/AppUnit658/Edge.h, v8world/Joints2008.h and v8world/Contact2008.h (native 2008 Edge over
 // IPipelined2008.h), which replaced the earlier unit-local copies.
-// Parked (declarations missing from read-only headers, see the batch result): getAssembly 005e7570 and
-// setCoordinateFrame 005e8200 read the 2008 Clump (+0x24 assembly) and Assembly (+0x24 -> +0x1c root primitive,
-// notifyMoved 005e6170), which no native header declares (the donor Clump.h puts assembly at +0x20; the native-world
-// openrbx port Clump.h / Assembly.h carries the WEBSERVICE layout). RBX::getJoint 0064ca60 belongs to the ClumpStage unit
+// getAssembly 005e7570 and setCoordinateFrame 005e8200 (batch 14, prove.py inactive_exact) read the 2008 Clump (+0x24
+// assembly) and Assembly (+0x24 -> +0x1c root primitive) through the read-only layout view v8world/AssemblyLayout.h;
+// RBX::Clump (donor inline getAssembly) and RBX::Assembly (notifyMoved 005e6170) are unit-local placeholders because no
+// native 2008 declaration exists (the donor Clump.h puts assembly at +0x20; the native-world openrbx port Clump.h /
+// Assembly.h carries the WEBSERVICE layout). Rejected first form: getAssembly as `clump ? reinterpret_cast<...>(clump)
+// ->assembly : NULL` -> 180 bytes, the `xor edi, edi` NULL arm was jump-threaded away; the nested inline
+// Clump::getAssembly reproduces it. IMoving::notifyMoved 00614be0 is the donor v8world/IMoving.h declaration (its body
+// is native-classes/IMovingManager.cpp). RBX::getJoint 0064ca60 belongs to the ClumpStage unit
 // (next to 0064cc40 / 0064ccf0) and already has a body in native-world/App/v8world/ClumpStage.cpp: not duplicated.
 // Primitive2008.h and World2008.h are therefore not included here. The Body is the native 2008 Body
 // (native-headers/v8kernel/Body2008.h): setVelocity 00614040.
@@ -38,12 +42,12 @@
 #include "AppUnit658/Edge.h"
 #include "v8world/Joints2008.h"
 #include "v8world/Contact2008.h"
+#include "v8world/AssemblyLayout.h"
+#include "v8world/IMoving.h"
 
 namespace RBX
 {
-	class Assembly;
 	class Body;
-	class Clump;
 	class Contact;
 	class ContactConnector;
 	class Controller;
@@ -63,7 +67,11 @@ namespace RBX
 		void onJointPrimitiveSet(Joint* j, Primitive* p);
 		void insertJoint(Joint* j);
 		void removeJoint(Joint* j);
-		void ticklePrimitive(Primitive* p, int value);
+		void ticklePrimitive(Primitive* p, int value);   // 005e9410
+
+		// Not in World2008.h (proposal). 005e91d0: the assembly's primitives (005e5fc0 / 005e5fa0 iterator pair,
+		// ++ 00647640) each passed to contactManager (+0x84) 0060cc50 (donor World::onAssemblyExtentsChanged).
+		void onAssemblyExtentsChanged(Assembly* a);
 
 		// Not in World2008.h (proposal). 005e91c0: contactManager (+0x84) -> 0060cc50 (tail jump).
 		void onPrimitiveExtentsChanged(Primitive* p);
@@ -71,6 +79,27 @@ namespace RBX
 		// call 0064cc40 / 0064ccf0 (the "June anchor swap" pair of native-world ClumpStage).
 		void onPrimitiveAddedAnchor(Primitive* p);
 		void onPrimitiveRemovingAnchor(Primitive* p);
+	};
+
+	// Unit-local placeholder for the 2008 RBX::Assembly (no native 2008 declaration exists; its fields are read through
+	// v8world/AssemblyLayout.h). Only the member this unit calls: 005e6170 walks the primitives from +0x1c and calls
+	// IMoving::notifyMoved 00614be0 on each myOwner (+0xa4); name from the donor Primitive::setCoordinateFrame call
+	// `assembly->notifyMoved()` (analog name: the registry row is a placeholder).
+	class Assembly
+	{
+	public:
+		void notifyMoved();                              // 005e6170
+	};
+
+	// Unit-local placeholder for the 2008 RBX::Clump (polymorphic in 2008, ??_7Clump 0083f7ac; no native 2008
+	// declaration exists). Only the donor inline getAssembly, reading +0x24 through the v8world/AssemblyLayout.h view.
+	class Clump
+	{
+	public:
+		Assembly* getAssembly() const
+		{
+			return reinterpret_cast<const AssemblyLayout::ClumpFields*>(this)->assembly;
+		}
 	};
 
 	class EdgeList
@@ -143,6 +172,8 @@ namespace RBX
 		{
 			return clump;
 		}
+		// Not in Primitive2008.h (proposal): ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ.
+		Assembly* getAssembly() const;                   // 005e7570
 		int getClumpDepth() const
 		{
 			return clumpDepth;
@@ -322,5 +353,42 @@ namespace RBX
 	{
 		body->setVelocity(pv.velocity);
 		setCoordinateFrame(pv.position);
+	}
+
+	// 005e7570: clump (+0x5c) ? clump->assembly (+0x24, AssemblyLayout view of the 2008 Clump) : NULL (donor body).
+	Assembly* Primitive::getAssembly() const
+	{
+		return clump ? clump->getAssembly() : NULL;
+	}
+
+	// 005e8200: donor tools/rbxgs v8world/Primitive.cpp body. CoordinateFrame != 004765e0 against the body's frame (updatePV
+	// 00599360, pv +0x94); no assembly: Body::setCoordinateFrame 00614400, myOwner (+0xa4) IMoving::notifyMoved 00614be0,
+	// world (+0x58) 005e91c0; with one whose root clump's root primitive (+0x24 -> +0x1c) is this: setCoordinateFrame,
+	// Assembly 005e6170, World 005e91d0, then World::ticklePrimitive 005e9410 (this, 0) unless dragging / anchored /
+	// jointAnchored (+0xa8..+0xaa).
+	void Primitive::setCoordinateFrame(const G3D::CoordinateFrame& value)
+	{
+		if (value != body->getCoordinateFrame())
+		{
+			Assembly* assembly = getAssembly();
+			if (!assembly)
+			{
+				body->setCoordinateFrame(value);
+				myOwner->notifyMoved();
+				if (world)
+					world->onPrimitiveExtentsChanged(this);
+			}
+			else
+			{
+				if (AssemblyLayout::getRootPrimitive(assembly) == this)
+				{
+					body->setCoordinateFrame(value);
+					assembly->notifyMoved();
+					world->onAssemblyExtentsChanged(assembly);
+					if (!(dragging || anchored || jointAnchored))
+						world->ticklePrimitive(this, 0);
+				}
+			}
+		}
 	}
 }

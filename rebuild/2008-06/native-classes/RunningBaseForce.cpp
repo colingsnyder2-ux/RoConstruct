@@ -150,6 +150,12 @@ void RunningBase::onComputeForce(float dt)
 // updatePV 00599360 is called before the first moment copy (target: moment first); (2) one named iBody local assigned
 // twice -> worse (three-float copy of the second result). Next hypothesis (not tried, three-trial limit): the inline
 // Body::getBranchIBodyV3() in both places (its out-of-line COMDAT 0062e100 is what RunningBase calls).
+// Batch 14 (three more rejected, kept body unchanged): (a) `iBody = body->getBranchIBodyV3()` and getBranchIBodyV3().y
+// for the limit -> 515 bytes, frame still 0x60, gain/limit fmul operands swapped; (b) a float local
+// `iBodyY = Math::toDiagonal(...).y` -> 521 bytes, frame 0x54 (as the target) but .y copied to a float spill; (c)
+// `Math::toDiagonal(...).y * (desired - rotational.y) * 7500` -> 513 bytes, frame and slots as the target, but updatePV
+// 00599360 runs between the moment copy and toDiagonal and .y is read from [eax + 4]. The target shares one Vector3 temp
+// for both toDiagonal results (both read from [esp + 0x1c] / +0x24) and finishes toDiagonal before updatePV.
 extern float freefallYawLimitGain;                       // 00962aa8 (analog name)
 
 // 006675d0
