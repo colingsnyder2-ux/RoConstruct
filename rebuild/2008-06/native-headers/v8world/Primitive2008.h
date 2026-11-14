@@ -27,7 +27,8 @@
 //            +0xf8 = computeJointK 005e7580), then surfaceType[i] +0xb8 / surfaceData[i] +0xd0 = 0 for i < 6.
 //   fields   setUnknown0x14 005e7420 writes +0x14 (int) only while world +0x58 is NULL (evidence name); setGuid
 //            005e7450 copies the Guid (+0x8, Guid::operator= 005a8200) and sets +0x10; setWorld 006fd220 (+0x58);
-//            setClump 005e7550 / getClump 00469080 / getAssembly 005e7560 (clump +0x5c, Clump +0x24); getClumpDepth
+//            setClump 005e7550 / getClump 00469080 (clump +0x5c) / getAssembly 005e7570 (Clump +0x24 behind a NULL check; 005e7560
+//            is a separate placeholder reading clump->+0x24 without the check); getClumpDepth
 //            006d45e0 (+0x60); getFastFuzzyExtents 005e7a50 (fuzzyExtents +0x80, fuzzyExtentsStateId +0x98 against
 //            Body::stateIndex +0x90); computeJointK 005e7580 / ContactManager::createContact 0060d770 (geometry +0x9c);
 //            getCoordinateFrame 005e82c0 (body +0xa0, Body::pv +0x94); PartInstance::fromPrimitiveConst 00599f80
@@ -58,6 +59,7 @@ struct NativeContactUnit2008Layout;
 
 namespace RBX
 {
+	class Assembly;
 	class Body;
 	class Clump;
 	class Contact;
@@ -141,6 +143,7 @@ namespace RBX
 		{
 			return clump;
 		}
+		Assembly* getAssembly() const;                   // 005e7570 ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ
 		int getClumpDepth() const
 		{
 			return clumpDepth;
