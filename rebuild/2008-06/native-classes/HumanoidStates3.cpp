@@ -83,6 +83,33 @@ Assembly* MovingNoPhysicsBase::getAssembly2()
     return getTorsoAssembly();
 }
 
+#ifdef NATIVE_MOVING_NO_PHYSICS_RELEASE_PENDING
+// 0066ed50 (103 bytes, called by the destructor 0066ee10 when torso +0xc4 is set). Draft, not compiled.
+// Evidence: torso->getPrimitive() (PartInstance +0x228, null-tested) -> Primitive 005e8140 (the +0xaa anchor-flag
+// setter, `ret 4`, called with false); connection.disconnect() 00595230 (+0xd0); getHumanoid() 00793d50 -> world
+// +0x21c -> World::getSimJobStage 005e93b0 (walks the stage list from World +0x88 to getStageType 6) -> 0064d1f0
+// (`jmp 0064d180`: the SimJobStage job-removal entry, erases the job's list iterator +0x1c/+0x20) with the SimJob
+// base (this +0xa0); physicsService (+0xcc)->onRemoved(torso.get()) 005e9040; torso.reset() tail-jumps 00456e80
+// (shared_ptr<Instance>::reset, identical-code folded).
+// BLOCKED on header proposals (not this unit's files):
+//   1. part-embedded/v8world/Primitive.h: declare the +0xaa setter 005e8140 (`void setJointAnchored(bool)`,
+//      analog name; PrimitiveState.cpp already names the field jointAnchored and defines its two siblings).
+//   2. v8world/SimJobStage2008.h: declare the removal entry 0064d1f0 (`void removeSimJob(SimJob* job);`, analog name)
+//      and its body 0064d180; reachable from this unit without the donor v8world/SimJobStage.h.
+//   3. v8datamodel/PhysicsService.h: onRemoved 005e9040 is private (decorated `?onRemoved@PhysicsService@RBX@@AAE...`):
+//      the original granted access, e.g. `friend class HUMAN::MovingNoPhysicsBase;`.
+// 0 compile trials, 0 rejected variants.
+void MovingNoPhysicsBase::release()
+{
+    if (Primitive* primitive = torso->getPrimitive())
+        primitive->setJointAnchored(false);
+    connection.disconnect();
+    getHumanoid()->getWorld()->getSimJobStage().removeSimJob(this);
+    physicsService->onRemoved(torso.get());
+    torso.reset();
+}
+#endif
+
 RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
 {

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::JointStage (inactive); evidence in native-headers/v8world/JointStage2008.h.
 // Verified by tests/record_native_kernel_stages.py. Rows of the JointStage unit built here: edgeHasPrimitivesDownstream
 // 00667f70, removeFromMap 00668280, insertToListAndMap 00668340, onEdgeAdded 006683b0, onEdgeRemoving 006683f0, the
@@ -12,6 +13,8 @@
 #include "v8world/JointStage2008.h"
 #include "v8world/Primitive.h"
 #include "v8world/Joint.h"
+#include "util/RunningAverage.h"
+#include "util/Math.h"
 
 namespace RBX
 {
@@ -96,6 +99,24 @@ namespace RBX
 			removeFromMap(j, j->getPrimitive(1));
 		}
 		e->removeFromStage(this);
+	}
+
+	// 00668af0 RunningAverageState::withinTolerance. Codegen analog placement: the original unit is the small
+	// util/RunningAverage obj linked right after JointStage (rows 006689b0 Quaternion::maxComponent-shaped helper,
+	// 00668a20 update, 00668af0 withinTolerance), which no assigned native file represents. Callees: Math::vector3Abs
+	// 005de630, Math::maxAxisLength 005df220, Quaternion(const Matrix3&) 005dd570, maxComponent 006689b0 (all out
+	// of line); the `> tolerance` tests are `test ah, 0x41; jne`. Donor body: tools/rbxgs util/RunningAverage.cpp.
+	// /fp:fast (file flags) is required: without it the build is 218 bytes (spilled Quaternion temps, fcompp/test ah,5);
+	// the integer JointStage rows above stay exact under /fp:fast.
+	bool RunningAverageState::withinTolerance(const G3D::CoordinateFrame& cofm, float radius, float tolerance)
+	{
+		G3D::Vector3 deltaPos = Math::vector3Abs(this->position - cofm.translation);
+		if (Math::maxAxisLength(deltaPos) > tolerance)
+			return false;
+		Quaternion deltaAngles = Quaternion(cofm.rotation) * radius;
+		if ((this->angles - deltaAngles).maxComponent() > tolerance)
+			return false;
+		return true;
 	}
 }
 
