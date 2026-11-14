@@ -2,6 +2,10 @@
 // CAboutRobloxDialogData | 2008-06 | draft (no current byte proof)
 // 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-chat)
 // <<< native-status | src ce144ce4 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /I{headers}/std-noinline-string
+// 00401390 DoDataExchange calls std::string::c_str through msvcp90 (describeSystem result and each
+// G3D::GLCaps string: mov ecx,eax; call [__imp_?c_str]), so this unit uses the std-noinline-string
+// header overlay the way CMemberTreeView.cpp does.
 #include "CAboutRobloxDialog.h"
 #include "CFileVersionInfo.h"
 #include <afxpriv.h>
