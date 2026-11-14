@@ -29,6 +29,9 @@ def test_site_groups_and_merged_receipts(tmp_path):
     (work / 'integration/progress-native.json').write_text(json.dumps({'addresses': ['00400000']}))
     (work / '2008-06/functions.jsonl').write_text('\n'.join(
         json.dumps({'addr': '%08x' % (0x400000 + n), 'size': 10 * (n + 1)}) for n in range(4)))
+    trial = tmp_path / 'rebuild/2008-06/out/Trial'
+    trial.mkdir(parents=True)
+    (trial / 'report.json').write_text(json.dumps({'linked': True, 'test_exit': 0, 'owned_addrs': ['00400001']}))
     db = sqlite3.connect(work / 'server.db')
     db.executescript('''
         CREATE TABLE funcs(client TEXT, addr TEXT, score INTEGER);

@@ -345,7 +345,8 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
     server_native = set(json.loads(native_path.read_text())["addresses"]) if native_path.exists() else set()
-    native = server_native | linked_native_inventory(root)
+    # Isolated linked module reports do not prove selection in the client.
+    native = server_native
     names_path = out / "native-names.json"
     names = json.loads(names_path.read_text()) if names_path.exists() else {}
     db = sqlite3.connect("file:%s?mode=ro" % (root / "work/server.db").as_posix(), uri=True, timeout=30)
