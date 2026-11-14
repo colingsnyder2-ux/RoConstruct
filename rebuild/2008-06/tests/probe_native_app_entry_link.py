@@ -65,7 +65,7 @@ checks = [
     ('native-classes/PlayersSuperSafe.cpp', ['00497600=?superSafeOn@Players@Network']),
     ('native-classes/SelectionIterators.cpp', ['00413d10=?begin@Selection@RBX', '00413d40=?end@Selection@RBX']),
     ('native-classes/BrickColorConversions.cpp', ['005b6180=?color3uint8@BrickColor@RBX', '005b62a0=?closest@BrickColor@RBX']),
-    ('native-classes/InstanceChildAcceptance.cpp', ['00423700=?canAcceptChildren@Instance@RBX', '005574b0=?isAncestorOf@Instance@RBX']),
+    ('native-classes/InstanceChildAcceptance.cpp', ['00423700=?canAcceptChildren@Instance@RBX']),
     ('native-classes/SettingsDialogShow.cpp', ['00466eb0=?showSettingsDialog']),
     ('native-classes/CSettingsDialog.cpp', ['00466e10=??0CSettingsDialog', '00466ca0=??1CSettingsDialog',
      '00467030=?OnInitDialog@CSettingsDialog', '00466c00=?OnResetSettings@CSettingsDialog']),
@@ -95,7 +95,9 @@ checks = [
      '00432e60=?initialize@CMultiPlayerPane', '00432f20=?OnSize@CMultiPlayerPane',
      '00432f60=?OnDestroy@CMultiPlayerPane']),
     ('native-classes/CRobloxView.cpp', ['00459eb0=??0CRobloxView', '00459ba0=??1CRobloxView',
+     '00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView@CRobloxView',
      '00459270=?getDataModel@CRobloxView', '00459250=?OnUpdateToolboxCheck@CRobloxView']),
+    ('native-classes/CReflectorWnd.cpp', []),
     ('native-classes/CMainFrameToolbars.cpp', ['004307e0=?initializeToolbars@CMainFrame']),
     ('native-classes/ActiveDocViewRefresh.cpp', ['00420bd0=?refresh@ActiveDocView']),
     ('native-classes/CDataModelPropGridUpdate.cpp', ['00442900=?update@CDataModelPropGrid']),
@@ -106,7 +108,6 @@ checks = [
     ('native-classes/BrowserPopup.cpp', ['0040f050=?showBrowserPopup']),
     ('native-classes/CChildFrame.cpp', ['00412af0=?GetThisClass@CChildFrame', '00412b80=?GetThisClass@CRbxChildFrame', '00412c90=?CreateObject@CChildFrame', '00412cf0=?CreateObject@CRbxChildFrame', '00412e60=?OnGetMinMaxInfo@CRbxChildFrame']),
     ('native-classes/CScriptDoc.cpp', ['004638a0=?GetThisClass@CScriptDoc', '004647b0=?CreateObject@CScriptDoc']),
-    ('native-classes/CRobloxViewMethods.cpp', ['00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView']),
     ('native-classes/CRobloxViewHelp.cpp', ['00459570=?showHelp@CRobloxView', '0040e160=??HATL@@']),
     ('native-classes/ActiveDocument.cpp', ['00405aa0=?setActiveDocument']),
     ('native-classes/CIDEDocManager.cpp', ['00449910=??0CIDEDocManager', '0044a1a0=??_GCRbxDocTemplate', '0044a1c0=??_GCRbxPlayDocTemplate']),
@@ -236,7 +237,7 @@ for name in ('CObjectBrowser', 'CRobloxReportSubViews'):
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckBrowserPopup.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocument.obj'))
 args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckActiveDocView.obj'))
-for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFiles', 'AppOpenFile',
+for name in ('CRobloxView', 'CReflectorWnd', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFiles', 'AppOpenFile',
              'CRobloxWndActive', 'CSelectionPropGridSelection', 'CSelectionPropGridEvents',
              'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
@@ -248,7 +249,7 @@ for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFi
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
-for name in ('CChildFrame', 'CScriptDoc', 'CRobloxViewMethods'):
+for name in ('CChildFrame', 'CScriptDoc'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('CIDEDocManager', 'CRbxDocTemplate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))

@@ -24,6 +24,7 @@ class ErrorUploader {
 public:
     ErrorUploader();
     ~ErrorUploader();
+    static RBX::worker_thread::work_result upload(boost::shared_ptr<data>); // 0041d760
 };
 
 // CRuntimeClass via DECLARE_DYNAMIC (GetRuntimeClass 0044d440). Constructor 0044c3d0:
@@ -31,15 +32,18 @@ public:
 // scoped_ptr<ErrorUploader> at +0x10c; vptr 00816a64.
 class CRobloxApp : public CWinApp {
     DECLARE_DYNAMIC(CRobloxApp)
+    DECLARE_MESSAGE_MAP()  // INFERRED: openrbx Client/win/Roblox.cpp BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
 public:
     CRobloxApp();
     virtual ~CRobloxApp();                         // 0044c440
     virtual BOOL InitInstance();                   // 0044d810 (slot 22)
     virtual int Run();                             // 0044d790 (slot 23)
     virtual int ExitInstance();                    // 0044ad60 (slot 28)
-    BOOL initializeFramework(void*);               // 00449bf0
+    BOOL initializeFramework(bool);                // 00449bf0
     void initializeSettings();                     // 0044c760
     void initializeEmptyDocument();                // 0044a2c0
+    BOOL openFile(std::string);                    // 0044a1f0
+    int openFileFailed(std::string);               // 0044a950
     BOOL openFiles(std::vector<std::string>::iterator, std::vector<std::string>::iterator); // 0044d1b0
     MainLogManager logManager;                     // +0xa4
     std::string version;                           // +0xf0
