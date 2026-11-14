@@ -167,6 +167,35 @@ XmlElement* Instance::write()
     return new XmlElement(tag_External, InstanceHandle(this));
 }
 
+// 00558b80 (196 B, ret 4); called by write 00558c50. Walks classDescriptor (+0x1c) property vector (+8, checked
+// _Vector_const_iterator), builds ConstProperty(**iter, this as DescribedBase +0x14), calls
+// PropertyDescriptor::write(instance, false) 0056bee0 and links a non-NULL result through the inline
+// Parent<XmlElement>::pushBackChild (+4 first / +8 last / sibling +0).
+// Trial 1 (rejected, C2665): XmlElement* child = (*iter).write(); -- native reflection/member.h ConstIterator::operator*
+// returns Describing = Property from a const DescribedBase* (proposal: ConstProperty), and ConstProperty::write() /
+// ConstIterator::operator++() are declared out of line although 00558b80 inlines both (proposal).
+}
+template<>
+inline RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::ConstIterator&
+RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::ConstIterator::operator++()
+{
+    ++iter;
+    return *this;
+}
+namespace RBX {
+void Instance::writeProperties(XmlElement* container) const
+{
+    for (Reflection::ConstPropertyIterator iter = properties_begin(); iter != properties_end(); ++iter) {
+        // Parked (closest, 192 B vs 196 B): this form hoists the this -> DescribedBase (+0x14, NULL-checked) conversion
+        // out of the loop; 00558b80 redoes it after the checked dereference each iteration (inline ConstProperty::write
+        // over (*iter) in the 2008 header). Trial 3 (rejected, 236 B): an explicit local ConstProperty(**iter, this)
+        // and property.getDescriptor().write(property.getInstance(), false).
+        XmlElement* child = iter.getDescriptor().write(this, false);
+        if (child)
+            container->addChild(child);
+    }
+}
+
 // 0055b4a0; std::for_each<bind_t<mf0<void, Instance> > > 00558fa0
 void Instance::remove()
 {

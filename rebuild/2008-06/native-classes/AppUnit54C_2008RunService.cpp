@@ -9,9 +9,23 @@
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
+#include "v8datamodel/DataModel.h" // dynamic_cast<DataModel*> in start 00556520
 
 namespace RBX
 {
+	// 00556520 (505 B): runThread (+0x27c) reset to a new boost::thread (0xc bytes; ctor 005a6a80, dtor 005a6840) over
+	// the 2008 background-function wrapper 00597110 (thread name "rbx_runProc" 0082d524, third argument -1) of
+	// boost::bind(&RunService::runProc 00555190, shared_from(this), dataModel) (bind 00555470); the DataModel comes from
+	// __RTDynamicCast(parent +0x104, Instance 0092907c -> DataModel 0092e8a0) and shared_from 00618a40 first.
+	// INFERRED: the third parameter of the 2008 background_function (the native util headers declare none; the donor
+	// util/boost.hpp declares only (const function0<void>&, const char*)). Unit-local declaration; header proposal.
+	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name, int priority);
+	void RunService::start()
+	{
+		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
+		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc", -1)));
+	}
+
 	// 00556b00: Run Service name, framePeriod 1/30 (float constant 0082d634), state and timers zeroed, stopwatch tick.
 	RunService::RunService()
 		: framePeriod(1.0f / 30.0f),
