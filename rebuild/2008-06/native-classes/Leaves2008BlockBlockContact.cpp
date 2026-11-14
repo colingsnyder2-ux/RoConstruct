@@ -53,6 +53,9 @@ namespace RBX
 #ifdef NATIVE_BLOCKBLOCKCONTACT_PENDING
 // 006087a0 compares IPipelined::currentStage->getStageType() with 7, the 2008 KERNEL_STAGE; the donor IStage.h numbers
 // KERNEL_STAGE 8. Built only against the generated IStage.h copy of the recorder (2008 StageType values).
+// Rechecked (lf11): with a scratch IStage.h carrying the 2008 values (CLEAN 0 .. KERNEL 7) the compare becomes
+// `cmp eax, 7`, but the donor IPipelined::inKernel still emits its assertion (`cmp [..], 0` / call before 006087af,
+// 163 bytes vs 137) under /D_RELEASEASSERT; the 2008 body has none. Needs a 2008 inKernel (header proposal).
 namespace RBX
 {
 	void BlockBlockContact::updateConnectors()

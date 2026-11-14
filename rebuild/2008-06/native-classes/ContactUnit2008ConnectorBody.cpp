@@ -163,7 +163,12 @@ namespace RBX
 		lastRotation = result;
 	}
 
-	// 006064a0
+	// 006064a0. The scalar is named (v1) as in the server-verified mining source of 006064a0. With the current
+	// Body2008.h the body is not exact: the inlined Body::accumulateTorque reads root->simBody twice there, and the
+	// pointer chain at 006064f3..006064fe / 0060657b..00606584 (fresh ecx / edx per load) and the x87 add order of the
+	// second torque add (006065a9..006065c3) match only when Body::accumulateTorque loads `SimBody* simBody =
+	// root->simBody` once (header proposal; verified IDENTICAL with that header in a scratch overlay, lf11).
+	// Rejected variant: the current header with this body (pointer chain diverges at 006064f6).
 	void RotateConnector::computeForce(const float dt, bool throttling)
 	{
 		G3D::Vector3 normal;
@@ -173,7 +178,8 @@ namespace RBX
 
 		float currentGoal = kernelInput.setGoal(rotation);
 
-		G3D::Vector3 v2 = normal * ((currentGoal - rotation) * k);
+		float v1 = (currentGoal - rotation) * k;
+		G3D::Vector3 v2 = normal * v1;
 
 		ref0->getBody()->accumulateTorque(-v2);
 		ref1->getBody()->accumulateTorque(v2);
@@ -192,7 +198,10 @@ namespace RBX
 		return answer;
 	}
 
-	// 00606780
+	// 00606780. `dt * perpVel` and the named v27 store follow the server-verified mining source of 00606780; both are
+	// needed for the x87 order at 00606870..00606875 (`fxch st(2); fadd [esi + 0x44]`). Rejected variants (lf11):
+	// `perpVel * dt` with a single forceMagLast expression (fld / faddp st(3) at 00606872), `dt * perpVel` alone
+	// (same diff), the named v27 store alone (same diff).
 	void ContactConnector::computeForce(const float dt, bool throttling)
 	{
 		PairParams params;
@@ -204,7 +213,7 @@ namespace RBX
 			float normalVel;
 			G3D::Vector3 perpVel;
 			geoPair.computeNormalPerpVel(normalVel, perpVel, params);
-			frictionOffset += perpVel * dt;
+			frictionOffset += dt * perpVel;
 
 			float v8 = k * 0.2f;
 			float mag = frictionOffset.magnitude() * v8;
@@ -237,7 +246,8 @@ namespace RBX
 			firstApproach = newFirstApproach;
 
 			float kApplied = normalVel < 0 ? k : kNeg;
-			forceMagLast = (firstApproach - params.length) * kApplied;
+			float v27 = (firstApproach - params.length) * kApplied;
+			forceMagLast = v27;
 			forceMagLast = params.length <= threshold ? forceMagLast : 0.0f;
 
 			G3D::Vector3 v31 = frictionOffset * v8;
