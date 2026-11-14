@@ -339,6 +339,11 @@ CRobloxTreeCtrlNode* CSelectionTreeCtrl::findNode(const boost::shared_ptr<RBX::I
     return parent->addChild(instance);
 }
 
+// Original 00426900 (371 B). Draft, not exact (503 B, 2026-11-13 lf02): the target copies *it into `instance` as
+// shared_count::operator= with pi_ known null (pn tracked in ebp from the loop-top xor; pn stored only when *it's count
+// is non-null; no compare/release), frame 0x2c. This source re-reads instance.pn after do_lock and keeps the full
+// compare/add_ref/release (frame 0x34). Same gap as CRobloxTreeCtrlNode::addChildren 00426450 (see CRobloxTreeCtrl.cpp,
+// variants 1-5 there, incl. a swap-based copy); parked without a new variant.
 void CSelectionTreeCtrl::processSelectionQueue()
 {
     for (int i = 0; i < 10; ++i) {

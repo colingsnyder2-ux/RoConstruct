@@ -325,6 +325,12 @@ void CRobloxTreeCtrlNode::populate()
 // Draft, not exact (00426450): the target copies *it into the loop-local child without the shared_count::operator=
 // compare/release that this source emits, and keeps child 8 bytes lower in the frame. Parked after three variants
 // (direct begin()/end(), held iterator, held begin/end).
+// 2026-11-13 lf02 (both rejected, guard kept; the active body is TreeNodeAddChildren.cpp, also not exact):
+//   4. boost::shared_ptr<RBX::Instance>(*it).swap(child) -> frame now 0x34 like the target, but the lock stays at
+//      esp+0x20 (target 0x28, with the begin() node at 0x24) and the copy still differs (375 vs 387 B).
+//   5. 4 plus the iterator declared before the scoped_lock -> identical object to 4 (declaration order is not it).
+//   Target evidence: child.pn is tracked in ebx (xor ebx,ebx at loop top; pn stored only when *it's count is non-null),
+//   i.e. shared_count::operator= with pi_ known null; this source does not let the compiler prove that.
 #ifdef NATIVE_TREE_DRAFT
 void CRobloxTreeCtrlNode::addChildren()
 {

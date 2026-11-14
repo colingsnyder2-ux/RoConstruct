@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
 // CDeclarationView | 2008-06 | 5 byte-exact, inactive (not link-selected)
 // 5/7 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+3) (mixed 3)
@@ -119,6 +120,11 @@ static void appendArgument(int& count, std::string& text, const RBX::Reflection:
     ++count;
 }
 
+// Original 00435860 (1048 B). 2026-11-13 lf02: the target calls the MSVCP90 c_str import (00435a7c, 00435b80), so this
+// unit now takes /I{headers}/std-noinline-string (1079 -> 1064 B; the unit's other exact bodies are unchanged).
+// Remaining gap is only the signal branch: the target reads SignalDescriptor::signature inline ([esi+0x2c] / [esi+0x18],
+// 00435ad5..00435b10), while reflection/signal.h declares getSignature() out of line, so this emits two calls.
+// Needs the header proposal (inline getSignature in signal.h, as FunctionDescriptor has in function.h); not worked around.
 void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descriptor)
 {
     using namespace RBX::Reflection;

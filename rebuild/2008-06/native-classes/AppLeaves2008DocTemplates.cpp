@@ -1,8 +1,12 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../native-donor-2007
 // Inactive native 2008-06 CRbxDocTemplate / CRbxPlayDocTemplate (native-headers/AppLeaves2008/RbxDocTemplates2008.h).
 // >>> native-status (generated) -- do not edit >>>
 // AppLeaves2008DocTemplates | 2008-06 | draft (no current byte proof)
 // 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by atomic.potato (ntech:glm-4.5-air)
 // <<< native-status | src 2fec990b | roc native-status --write
+// LogManager.h (donor, via CRobloxApp.h) builds ThreadLogManager's inline constructor from RBX::get_thread_name;
+// declared here as in the sibling AppLeftovers.cpp unit.
+namespace RBX { const char* get_thread_name(); }
 #include "AppLeaves2008/RbxDocTemplates2008.h"
 #include <afxpriv.h>
 #include "CRobloxApp.h"
