@@ -89,3 +89,19 @@ template class boost::shared_ptr<RBX::Reflection::Metadata::Events>;
 template class boost::shared_ptr<RBX::Reflection::Metadata::Functions>;
 template class boost::shared_ptr<RBX::Reflection::Metadata::Member>;
 template class boost::shared_ptr<RBX::Reflection::Metadata::Properties>;
+
+// PARKED: RBX::Instance::raisePropertyChanged 0040db00 (?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@
+// Reflection@2@@Z, 160 bytes). It is a COMDAT of this metadata unit: the donor v8tree/Instance.h (tools/rbxgs App/include
+// v8tree/Instance.h:359) defines it inline. Body (exact in the isolated worker
+// rebuild/2008-06/tests/NativeInstancePropertyChangedWorker.cpp / record_native_instance_property_worker.py):
+//   PropertyChanged event(Reflection::Property(descriptor, this));
+//   Notifier<Instance, PropertyChanged>::raise(event);                         // 0040a530, Event by value
+//   if (!event_propertyChanged.empty(this)) event_propertyChanged.fire(this, &descriptor); // 00973f48
+//   Instance* p = parent; if (p) p->onChildChanged(this, event);              // +0x104, slot 0x3c
+// Blocked by read-only headers: v8tree/Instance.h has no 'static Reflection::SignalDesc<Instance,
+// void(const Reflection::PropertyDescriptor*)> event_propertyChanged;' and reflection/property.h /
+// v8tree/PropertyChanged.h declare the Property / PropertyChanged copy constructors without the inline bodies the
+// by-value raise needs (target: two stores, no call).
+// Rejected trial 1: /I{headers}/partchunk-profile (its Instance.h declares event_propertyChanged) - MSVC resolves
+// AuthoringSettings.h -> v8datamodel/GlobalSettings.h -> "v8tree/Instance.h" through the includer directory
+// (native-headers/), so both Instance.h copies are included: C2011 'RBX::Instance' redefinition.

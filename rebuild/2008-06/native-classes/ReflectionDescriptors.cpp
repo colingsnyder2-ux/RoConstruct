@@ -40,3 +40,56 @@ namespace RBX
 //       boost::call_once(initLocalScope, flag);
 //       return *localScope;
 //   }
+
+// ---------------------------------------------------------------------------------------------------------------
+// RBX::worker_thread rows (00595d70 join, 00595de0 wake, 00596db0 set_thread_name). Their original unit is
+// util/boost.cpp (worker_thread unit 00595a30..00597350: data() 00595a30, SetThreadName 00595a80, ~worker_thread
+// 00595cb0, init_foo 00596d50, worker_thread(function0) 005971d0; record_native_app_unit594_2008.py unit map), which
+// has no native file of its own; the assignment places them here. Layout from the targets: _data px +0 (data: mutex
+// +0, condition +8 (notify_all 005f1d30), endRequest +0x20), boost::thread +8 (join 005a6850) - the donor
+// util/boost.hpp declaration.
+#include <windows.h>
+#include <boost/thread/once.hpp>
+#include <boost/thread/tss.hpp>
+#include "util/boost.hpp"
+
+namespace RBX
+{
+	namespace boost_detail
+	{
+		extern boost::thread_specific_ptr<std::string>* foo;   // 00975c90 (ThreadNameStorage.cpp)
+		extern boost::once_flag once_init_foo;                 // 00975c94
+		void init_foo();                                       // 00596d50
+	}
+
+	void SetThreadName(DWORD dwThreadID, LPCSTR szThreadName); // 00595a80 (same unit, out of line)
+
+	// 00595d70 ?join@worker_thread@RBX@@QAEXXZ
+	void worker_thread::join()
+	{
+		{
+			boost::mutex::scoped_lock scoped_lock(_data->sync);
+			_data->endRequest = true;
+			_data->wakeCondition.notify_all();
+		}
+
+		thread.join();
+	}
+
+	// 00595de0 ?wake@worker_thread@RBX@@QAEXXZ
+	void worker_thread::wake()
+	{
+		boost::mutex::scoped_lock scoped_lock(_data->sync);
+		_data->wakeCondition.notify_all();
+	}
+
+	// 00596db0 ?set_thread_name@RBX@@YAXPBD@Z: new std::string(name) (0x1c), call_once(init_foo), foo->reset
+	// (tss get 005a7570 / set 005a76b0 / cleanup 005a6ff0), then SetThreadName(GetCurrentThreadId(), name).
+	void set_thread_name(const char* name)
+	{
+		std::string* value = new std::string(name);
+		boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
+		boost_detail::foo->reset(value);
+		SetThreadName(GetCurrentThreadId(), name);
+	}
+}
