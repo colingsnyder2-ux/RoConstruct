@@ -35,7 +35,57 @@
 
 namespace RBX
 {
-	G3D::Vector3 computeRotVel(const G3D::Matrix3& rot, const G3D::Vector3& momentRecip, const G3D::Vector3& angMomentum);   // 00658920
+	// 006588a0 (?mulMatrixMatrixTranspose@RBX@@YAXABVMatrix3@G3D@@0AAV23@@Z, cdecl; only caller computeRotVel 0065898a):
+	// answer = mat0 * transpose(mat1), one row per loop pass (esi = 3) over flat float pointers.
+	void mulMatrixMatrixTranspose(const G3D::Matrix3& _mat0, const G3D::Matrix3& _mat1, G3D::Matrix3& _answer)
+	{
+		const float* matrix0 = &_mat0[0][0];
+		const float* matrix1 = &_mat1[0][0];
+		float* answer = &_answer[0][0];
+
+		for (int iRow = 0; iRow < 3; iRow++)
+		{
+			for (int iCol = 0; iCol < 3; iCol++)
+			{
+				answer[iRow*3+iCol] =
+					matrix0[iRow*3+0] * matrix1[iCol*3+0] +
+					matrix0[iRow*3+1] * matrix1[iCol*3+1] +
+					matrix0[iRow*3+2] * matrix1[iCol*3+2];
+			}
+		}
+	}
+
+	// 00658920 (?computeRotVel@RBX@@YA?AVVector3@G3D@@ABVMatrix3@3@ABV23@1@Z, cdecl; only caller step 00659062):
+	// temp = rot scaled per column by momentRecip (nine inline products), iWorldInv = temp * transpose(rot) through
+	// mulMatrixMatrixTranspose 006588a0, then the inline Matrix3 * Vector3.
+	G3D::Vector3 computeRotVel(const G3D::Matrix3& rot, const G3D::Vector3& momentRecip, const G3D::Vector3& angMomentum)
+	{
+		G3D::Matrix3 temp;
+		G3D::Matrix3 iWorldInv;
+		const float* matrix = &rot[0][0];
+		float* answer = &temp[0][0];
+		answer[0] = matrix[0] * momentRecip.x;
+		answer[1] = matrix[1] * momentRecip.y;
+		answer[2] = matrix[2] * momentRecip.z;
+		answer[3] = matrix[3] * momentRecip.x;
+		answer[4] = matrix[4] * momentRecip.y;
+		answer[5] = matrix[5] * momentRecip.z;
+		answer[6] = matrix[6] * momentRecip.x;
+		answer[7] = matrix[7] * momentRecip.y;
+		answer[8] = matrix[8] * momentRecip.z;
+		mulMatrixMatrixTranspose(temp, rot, iWorldInv);
+		return iWorldInv * angMomentum;
+	}
+
+	// 00658c50 (?pvAtLocalOffset@PV@RBX@@QBE?AV12@ABVVector3@G3D@@@Z): emitted inside the SimBody unit between
+	// SimBody(Body*) 00658ae0 and getOwnerPV 00658ca0; Matrix3::identity 00513e20, Matrix3 copy 00513220, inline
+	// translation copy, then pvAtLocalCoord 00658a00 (also in this unit). Its only callers are update 00658d0c and
+	// getOwnerPV 00658d97. Defined here (not in BodyPrimitive2008SimBody.cpp) so it cannot be inlined into those callers.
+	PV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const
+	{
+		G3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);
+		return pvAtLocalCoord(cf);
+	}
 
 	// 00658fb0
 	void SimBody::step()

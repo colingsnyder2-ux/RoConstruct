@@ -23,6 +23,7 @@
 // <<< native-status | src 67095a65 | roc native-status --write
 #include "gui/ArrowPanel.h"
 #include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
 #include "util/RunStateOwner.h"
 
 namespace RBX
@@ -30,6 +31,17 @@ namespace RBX
 	bool ArrowButton::isEnabled()
 	{
 		return dataModel->create<RunService>()->getRunState() == RS_RUNNING;
+	}
+
+	// 00656db0 (?isVisible@ArrowPanel@RBX@@UBE_NXZ, slot 21 of 0084c164; vtable pointer 0084c1b8): dataModel (+0x15c)
+	// -> workspace (+0x204) -> RootInstance::ControllersUsed (+0x2a8 of the Workspace) through the out-of-line
+	// ComputeProp<ControllerTypeArray, RootInstance>::getValue 00656c30 (this unit), then values[controller (+0x160)].
+	// Not exact while native-headers/v8datamodel/RootInstance.h declares getControllersUsed() out of line: the
+	// original has no out-of-line RootInstance::getControllersUsed (none in the identity registry), it inlines
+	// `return ControllersUsed;` (header proposal).
+	bool ArrowPanel::isVisible() const
+	{
+		return dataModel->getWorkspace()->getControllersUsed().hasController(controller);
 	}
 
 #ifdef NATIVE_GUIWIDGETS_PENDING
