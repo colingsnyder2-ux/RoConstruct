@@ -24,6 +24,7 @@ class ErrorUploader {
 public:
     ErrorUploader();
     ~ErrorUploader();
+    bool IsUploading();
     static RBX::worker_thread::work_result upload(boost::shared_ptr<data>); // 0041d760
 };
 

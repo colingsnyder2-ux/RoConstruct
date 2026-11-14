@@ -1,5 +1,5 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
-// 2008-06 native Jpegjutils (inactive): upstream tools/libs/jpeg-6b/jutils.c, verbatim.
+// 2008-06 native Jpegjutils (inactive): IJG JPEG 6b with OpenRBX robust temporary-file helpers.
 // >>> native-status (generated) -- do not edit >>>
 // Jpegjutils | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -183,3 +183,114 @@ jzero_far (void FAR * target, size_t bytestozero)
   }
 #endif
 }
+
+
+/** Used by robustTmpfile.  Returns nonzero if fread, fwrite, and fseek all
+succeed on the file.
+  @author Morgan McGuire, morgan@graphics3d.com  */
+static int isFileGood(FILE* f) {
+
+	int x, n, result;
+
+	/* Must be a valid file handle */
+	if (f == NULL) {
+		return 0;
+	}
+
+	/* Try to write */
+	x = 1234;
+	n = fwrite(&x, sizeof(int), 1, f);
+
+	if (n != 1) {
+		return 0;
+	}
+
+	/* Seek back to the beginning */
+	result = fseek(f, 0, SEEK_SET);
+	if (result != 0) {
+		return 0;
+	}
+
+	/* Read */
+	n =	fread(&x, sizeof(int), 1, f);
+	if (n != 1) {
+		return 0;
+	}
+
+	/* Seek back to the beginning again */
+	fseek(f, 0, SEEK_SET);
+
+	return 1;
+}
+
+
+FILE* _robustTmpfile() {
+    FILE* t = tmpfile();
+#ifdef _WIN32
+	char* n = NULL;
+#endif
+	char name[256];
+
+    if (isFileGood(t)) {
+		return t;
+	}
+
+    /* tmpfile failed; try the tmpnam routine */
+    t = fopen(tmpnam(NULL), "w+");
+    if (isFileGood(t)) {
+		return t;
+	}
+
+    #ifdef _WIN32
+		n = _tempnam("c:/tmp/", "t");
+        /* Try to create something in C:\tmp */
+        t = fopen(n, "w+");
+		if (isFileGood(t)) {
+			return t;
+		}
+
+        /* Try c:\temp */
+		n = _tempnam("c:/temp/", "t");
+        t = fopen(n, "w+");
+	    if (isFileGood(t)) {
+			return t;
+		}
+
+        /* try the current directory */
+		n = _tempnam("./", "t");
+        t = fopen(n, "w+");
+		if (isFileGood(t)) {
+			return t;
+		}
+    #endif
+
+    /* Try some hardcoded paths */
+    sprintf(name, "%s/tmp%d", "c:/tmp", rand());
+    t = fopen(name, "w+");
+    if (isFileGood(t)) {
+		return t;
+	}
+
+    sprintf(name, "%s/tmp%d", "/tmp", rand());
+    t = fopen(name, "w+");
+    if (isFileGood(t)) {
+		return t;
+	}
+
+    sprintf(name, "%s/tmp%d", "c:/temp", rand());
+    t = fopen(name, "w+");
+    if (isFileGood(t)) {
+		return t;
+	}
+
+    sprintf(name, "tmp%d", rand());
+    t = fopen(name, "w+");
+    if (isFileGood(t)) {
+		return t;
+	}
+
+    fprintf(stderr, "Unable to create a temporary file; robustTmpfile returning NULL\n");
+
+    return NULL;
+}
+

@@ -55,8 +55,14 @@ shell += sorted(p for p in (rebuild.ROOT / 'work/native-client/link/renamed').gl
 engine = sorted((ws / 'out/RbxgsApp/linked').glob('*.obj'))
 if os.environ.get('ROC_SHELL_WINS'):  # shortcut: engine definitions a shell object replaces (stripped copies of the engine objects)
     _wins = set(json.load(open(os.environ['ROC_SHELL_WINS'])))
-    _sdir = OUT / 'engine-stripped'; _sdir.mkdir(exist_ok=True); _eng2 = []
     from roc.rebuild import coff_externals as _ce
+    _sc_pre = lambda raw: {n: ('strong' if d else 'undef') for n, d in _ce(raw).items()}
+    _winners = {'LockFix.obj'}
+    if os.environ.get('ROC_ANALOG_DIR'):  # shortcut: server byte-exact analogs replace the 2007 engine definition of every symbol they define
+        for _a in Path(os.environ['ROC_ANALOG_DIR']).glob('*.obj'):
+            _wins |= {n for n, k in _sc_pre(_a.read_bytes()).items() if k == 'strong'}
+            _winners.add(_a.name)
+    _sdir = OUT / 'engine-stripped'; _sdir.mkdir(exist_ok=True); _eng2 = []
     for _e in engine:
         _raw = _e.read_bytes(); _hit = {n for n, d in _ce(_raw).items() if d} & _wins
         if _hit:
@@ -89,8 +95,8 @@ for p in shell:
         _sc_all = {n for n, k in _sc['symbols'](p.read_bytes()).items() if k != 'undef'} & _dup
         drop |= {n for n in _sc_all if n in _seen_dup}
         _seen_dup |= _sc_all
-    if os.environ.get('ROC_SHELL_WINS'):  # shortcut: only the glue object keeps these definitions
-        if p.name != 'LockFix.obj':
+    if os.environ.get('ROC_SHELL_WINS'):  # shortcut: only the winner objects keep these definitions
+        if p.name not in _winners:
             drop |= {n for n, k in _sc['symbols'](p.read_bytes()).items() if k != 'undef'} & _wins
             mine = mine - _wins
         else:
@@ -134,7 +140,7 @@ rsp.write_text('\n'.join('"%s"' % p for p in shell + engine + libs) + '\n')
 code, text = rebuild.run(rebuild.toolchain(), 'link', ['/nologo', '/SUBSYSTEM:WINDOWS', '/MACHINE:X86', '/MAP:Roblox2008.map',
                                                        '/OUT:Roblox2008.exe', '@' + str(rsp)] + system
                          + ([os.environ['ROC_LINK_RES']] if os.environ.get('ROC_LINK_RES') else [])  # original exe resources (pe_to_res.py)
-                         + ['/NODEFAULTLIB:' + l for l in rebuild.VENDOR_AUTOLINK] + ['/NODEFAULTLIB:../../../../../tools/rbxgs/Client/fmod/api/lib/fmodexL_vc.lib'], OUT)
+                         + ['/NODEFAULTLIB:' + l for l in list(rebuild.VENDOR_AUTOLINK) + [x for x in os.environ.get('ROC_NODEFAULTLIB', '').split(',') if x]] + ['/NODEFAULTLIB:../../../../../tools/rbxgs/Client/fmod/api/lib/fmodexL_vc.lib'], OUT)
 (OUT / 'link.txt').write_text(text, encoding='utf-8')
 unres = sorted(set(rebuild.unresolved_symbols(text)))
 dups = sorted(set(re.findall(r'error LNK2005:\s*(.*?)\s+already defined in', text)))

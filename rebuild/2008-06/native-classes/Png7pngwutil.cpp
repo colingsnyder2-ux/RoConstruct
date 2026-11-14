@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.7 /TC
+// native-flags: /O2 /GS- /MD /DZLIB_WINAPI /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.7 /TC
 // 2008-06 native Png7pngwutil (inactive): upstream tools/libs/libpng-1.2.7/pngwutil.c, verbatim.
 
 // >>> native-status (generated) -- do not edit >>>

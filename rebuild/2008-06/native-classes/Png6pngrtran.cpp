@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.6 /TC
+// native-flags: /O2 /GS- /MD /DZLIB_WINAPI /fp:fast /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.6 /TC
 // 2008-06 native Png6pngrtran (inactive): upstream tools/libs/libpng-1.2.6/pngrtran.c, verbatim.
 
 // >>> native-status (generated) -- do not edit >>>

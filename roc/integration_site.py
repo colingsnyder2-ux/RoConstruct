@@ -3,6 +3,7 @@ Same four groups as the Discord digest: integrated (linked rebuild reproduces it
 not yet integrated), partial, unmined. Per-function data is published on gh-pages only (see server.publish_pages)."""
 import hashlib
 import json
+import posixpath
 from pathlib import Path
 import re
 import sqlite3
@@ -97,10 +98,17 @@ def inactive_code(root):
                 walk(value, name, stamp)
     # native source of a trial receipt: the repo file whose hash it records, else the first existing .cpp it names
     by_hash = {}
-    for item in sorted((root / "rebuild" / CLIENT).rglob("*.cpp")) + sorted((root / "work/native-client").rglob("*.cpp")):
+    for item in (sorted((root / "rebuild" / CLIENT / "native-classes").rglob("*.cpp")) +
+                 sorted((root / "rebuild" / CLIENT / "native-world").rglob("*.cpp")) +
+                 sorted((root / "rebuild" / CLIENT / "native-headers").rglob("*.h"))):
         by_hash.setdefault(hashlib.sha256(item.read_bytes()).hexdigest(), str(item))
     def source_in(text, data):
         digest = data.get("source_sha256") if isinstance(data, dict) else None
+        named = data.get("source_path") if isinstance(data, dict) else None
+        if isinstance(named, str) and isinstance(digest, str):
+            item = (root / named).resolve()
+            if item.is_relative_to(root.resolve()) and item.is_file() and hashlib.sha256(item.read_bytes()).hexdigest() == digest:
+                return str(item)
         if isinstance(digest, str) and digest in by_hash:
             return by_hash[digest]
         for named in re.findall(r'"([^"\n]*?\.cpp)"', text):
@@ -175,10 +183,118 @@ def inactive_code(root):
         parts = readable(symbol).split("(")[0].split("::")
         needle = "::".join(parts[-2:]) + "("
         line = next((i + 1 for i, text in enumerate(texts[path]) if needle in text.replace(" (", "(")), 1)
+        if line == 1 and path.suffix == ".h":
+            line = next((i + 1 for i, text in enumerate(texts[path])
+                         if re.search(r"\b" + re.escape(parts[-1]) + r"\s*\(", text)), 1)
         return [rel, line]
     # addr -> [readable symbol, exact, receipt, [native source path, line] or None]
     return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] + [located(v[0], v[4] if len(v) > 4 else None)]
             for a, v in sorted(found.items())}
+
+
+WORK = "refs/remotes/origin/work"
+WRAPPER = re.compile(r'^\s*(?://[^\n]*\n\s*)*#include "([^"]+\.(?:cpp|c))"\s*$')
+
+
+def work_blobs(root, paths):
+    """{path: text} for workspace paths on the published work branch (one git cat-file call)."""
+    paths = sorted(set(paths))
+    if not paths:
+        return {}
+    run = subprocess.run(["git", "cat-file", "--batch"], cwd=root, capture_output=True,
+                         input="".join("%s:%s\n" % (WORK, p) for p in paths).encode())
+    out, data, at = {}, run.stdout, 0
+    for path in paths:
+        end = data.index(b"\n", at)
+        header = data[at:end].split()
+        at = end + 1
+        if len(header) == 3 and header[1] == b"blob":
+            size = int(header[2])
+            out[path] = data[at:at + size].decode("utf-8", errors="replace")
+            at += size + 1
+    return out
+
+
+def function_line(text, name):
+    parts = name.split("(")[0].split("::")
+    needle = "::".join(parts[-2:]) + "("
+    return next((i + 1 for i, line in enumerate(text.splitlines()) if needle in line.replace(" (", "(")), 1)
+
+
+def follow_wrappers(root, links, names):
+    """Compatibility units on the work branch (`#include "../WindowsClient/src/X.cpp"`) link their real file."""
+    for _ in range(3):  # wrappers of wrappers
+        texts = work_blobs(root, [l["path"] for l in links.values()])
+        targets = {}
+        for path, text in texts.items():
+            hit = WRAPPER.match(text) if len(text) < 2000 else None
+            if hit:
+                targets[path] = posixpath.normpath(posixpath.join(posixpath.dirname(path), hit.group(1)))
+        if not targets:
+            break
+        real = work_blobs(root, targets.values())
+        for addr, link in links.items():
+            target = targets.get(link["path"])
+            if target in real:
+                link["path"], link["line"] = target, function_line(real[target], names.get(addr, ""))
+
+
+def integrated_sources(root, missing, published):
+    """{addr: link} for integrated functions: owning object in a linked module -> the source that built it.
+    Roblox/OpenRBX trees link to their public repositories at the pinned revision; native layers and repo sources
+    link to the work branch. Upstream library trees and mined swaps (already linked) are skipped."""
+    from roc import libs, rebuild
+    lock = json.loads((root / "research/native-source-lock.json").read_text())
+    repos = {"tools/rbxgs/": "https://github.com/RBLXDecomp/RBXGSdecomp/blob/%s/" % lock.get("https://github.com/RBLXDecomp/RBXGSdecomp.git", "master"),
+             "tools/openrbx/": "https://github.com/Asphaltian/OpenRBX/blob/%s/" % lock.get("https://github.com/Asphaltian/OpenRBX.git", "main"),
+             "work/upstream/OpenRBX/": "https://github.com/Asphaltian/OpenRBX/blob/%s/" % lock.get("https://github.com/Asphaltian/OpenRBX.git", "main")}
+    out, texts = {}, {}
+    for _, spec in rebuild.live_module_specs(CLIENT):
+        folder = root / "rebuild" / CLIENT / "out" / spec["name"]
+        owners = folder / "owned-symbols.json"
+        report = folder / "report.json"
+        if not owners.exists() or not report.exists():
+            continue
+        choices = json.loads(report.read_text()).get("choices") or {}
+        sources = {}
+        for layer in spec["layers"]:
+            try:
+                if layer["mode"] == "recipe":
+                    src = libs._case_path(libs.LIBS / libs.RECIPES[layer["recipe"]]["src"])
+                    listed = libs.RECIPES[layer["recipe"]].get("files")
+                    globs = [] if layer["files"] == "recipe" and isinstance(listed, list) else \
+                        (listed if layer["files"] == "recipe" else layer["files"]).split()
+                    paths = [src / f for f in listed] if not globs else [p for g in globs for p in src.glob(g)]
+                else:
+                    paths = [p for g in layer["files"].split() for p in (root / layer["dir"]).glob(g)]
+            except (KeyError, OSError):
+                continue
+            sources["layer-" + layer["name"]] = {p.stem.lower(): p for p in paths}
+        for addr, rows in json.loads(owners.read_text()).items():
+            if addr not in missing or addr in out:
+                continue
+            for row in rows:
+                obj = row["object"]
+                path = sources.get(choices.get(obj) or "", {}).get(Path(obj).stem.lower())
+                if path is None:
+                    continue
+                try:
+                    rel = path.resolve().relative_to(root.resolve()).as_posix()
+                except ValueError:
+                    continue
+                name = readable(row["symbol"]) if row["symbol"].startswith("?") else row["symbol"]
+                prefix = next((p for p in repos if rel.startswith(p)), None)
+                if prefix:
+                    if path not in texts:
+                        texts[path] = path.read_text(encoding="utf-8", errors="replace")
+                    out[addr] = {"url": repos[prefix] + rel[len(prefix):], "line": function_line(texts[path], name)}
+                elif rel in published:
+                    if path not in texts:
+                        texts[path] = path.read_text(encoding="utf-8", errors="replace")
+                    out[addr] = {"path": "workspace/" + rel, "line": function_line(texts[path], name)}
+                if addr in out:
+                    break
+    return out
 
 
 def link_errors(root):
@@ -308,13 +424,25 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     published = {path.removeprefix("workspace/") for path in listed if path}
     data["inactive_sources"] = {a: {"path": "workspace/" + v[3][0], "line": v[3][1]}
                                 for a, v in data["inactive"].items() if len(v) > 3 and v[3] and v[3][0] in published}
+    follow_wrappers(root, data["inactive_sources"], {a: v[0] for a, v in data["inactive"].items()})
+    # integrated functions without an indexed source: the object that owns them in the linked rebuild -> its source
+    for addr, link in integrated_sources(root, native - set(data["sources"]), published).items():
+        data["sources"][addr] = link
+    follow_wrappers(root, {a: s for a, s in data["sources"].items() if "url" not in s},
+                    {a: v[0] for a, v in data["names"].items()})
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site
         data.setdefault("native_code", {})[key[7:]] = {"functions": len(hits), "bytes": sum(f["size"] for f in hits)}
     path = output or root / "docs/integration.json"
-    previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    previous_path = path if path.exists() else root / "docs/integration.json"
+    previous = json.loads(previous_path.read_text(encoding="utf-8")) if previous_path.exists() else {}
     history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
+    published_path = root / "docs/integration.json"
+    if published_path != previous_path and published_path.exists():
+        published = json.loads(published_path.read_text(encoding="utf-8"))
+        if published.get("client") == CLIENT:
+            history.update({row["day"]: row for row in published.get("history", [])})
     day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     history[day] = {"day": day, "groups": data["groups"], "native_code": data.get("native_code", {})}
     data["history"] = [history[day] for day in sorted(history)]

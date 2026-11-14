@@ -76,7 +76,7 @@ def unresolved_objects(scope, symbols, funcs):
     return newest
 
 
-def typed_data(symbols, output, mode):
+def typed_data(symbols, output, mode, string_evidence=None):
     """Compile every currently unresolved, already typed data definition once."""
     registry = conv.load_registry()
     names = {r['name']: a for a, r in registry.items() if not r.get('placeholder') and r['kind'] == 'data'}
@@ -89,6 +89,52 @@ def typed_data(symbols, output, mode):
         folder = HERE / 'link' / ('typed-data' if mode == 'link' else 'typed-data-coverage') / output.stem
     folder.mkdir(parents=True, exist_ok=True)
     definitions, bindings = [], []
+    if mode == 'function-pointers':
+        for address, row in sorted(registry.items()):
+            symbol, signature = row.get('name', ''), row.get('signature') or ''
+            if row.get('placeholder') or row.get('kind') != 'data' or not conv.re.fullmatch(r'\?[A-Za-z_]\w*@@3P6[A-Z].+', symbol):
+                continue
+            # Deliberately support only primitive function-pointer declarations.
+            declaration = conv.re.fullmatch(r'(?:void|int|long|unsigned int|unsigned long) \(__(?:cdecl|stdcall)\* ([A-Za-z_]\w*)\)\((.*)\)', signature)
+            if not declaration or symbol.split('@@')[0] != '?' + declaration[1]:
+                continue
+            if any(not conv.re.fullmatch(r'(?:void|int|long|unsigned int|unsigned long|float const \*)', t.strip()) for t in declaration[2].split(',')):
+                continue
+            va = int(address, 16)
+            section = conv.data_section(va)
+            if not section or section[0] != '.data' or va < section[1]:
+                continue
+            definitions.append(signature + ' = 0;')
+            bindings.append({'symbol': symbol, 'address': address, 'kind': 'data', 'bytes': 4,
+                             'emitted_symbol': symbol, 'signature': signature})
+    if string_evidence:
+        evidence = json.loads(string_evidence.read_text())
+        objects, addresses = {}, set()
+        for provider in evidence.get('selected', []):
+            for row in provider.get('symbols', []):
+                address, symbol = row['address'], row['symbol']
+                if row.get('kind') != 'string' or not symbol.startswith('??_C@_0'):
+                    raise ValueError('not independently proved narrow-string storage')
+                path = ROOT / (row.get('object') or provider['object'])
+                if path not in objects:
+                    objects[path] = path.read_bytes()
+                raw = objects[path]
+                if hashlib.sha256(raw).hexdigest() != row.get('object_sha256'):
+                    raise ValueError('stale string object: ' + str(path))
+                va, size = int(address, 16), row['bytes']
+                if not conv.data_proved(raw, symbol, va, size):
+                    raise ValueError('string evidence no longer matches target: ' + address)
+                if address in addresses:
+                    continue
+                data = bytes(conv.IMAGE[va - conv.BASE:va - conv.BASE + size])
+                if len(data) != size or not data.endswith(b'\0') or b'\0' in data[:-1]:
+                    raise ValueError('incomplete string extent: ' + address)
+                literal = json.dumps(data[:-1].decode('ascii'))
+                # Separate escapes from following digits and disable C trigraphs.
+                literal = literal.replace('?', r'\?')
+                definitions.append('extern "C" const char roc_data_%s[] = %s;' % (address, literal))
+                bindings.append({'symbol': symbol, 'address': address, 'kind': 'string', 'bytes': size})
+                addresses.add(address)
     for symbol in sorted(symbols):
         addr = names.get(symbol)
         # Class/table/array types stay parked. data_def accepts only independently
@@ -117,7 +163,7 @@ def typed_data(symbols, output, mode):
         raise RuntimeError(log[-3000:])
     raw = obj.read_bytes()
     for row in bindings:
-        if not conv.data_proved(raw, '_roc_data_' + row['address'], int(row['address'], 16), row['bytes']):
+        if not conv.data_proved(raw, row.get('emitted_symbol', '_roc_data_' + row['address']), int(row['address'], 16), row['bytes']):
             raise RuntimeError('typed scalar proof failed: ' + row['address'])
     mapping = {i: next(r['symbol'] for r in bindings if name == '_roc_data_' + r['address'])
                for i, name, sec, cls, val in conv.r1.symtab(raw)[0]
@@ -158,6 +204,8 @@ def main():
     ap.add_argument('--typed-scalars', action='store_true')
     ap.add_argument('--typed-data', action='store_true', help='include supported strings and null/zero-fill pointers')
     ap.add_argument('--all-typed-data', action='store_true', help='unlinked coverage batch for every supported named data row')
+    ap.add_argument('--typed-string-evidence', type=Path, help='emit standalone typed strings from current compiler-string proof')
+    ap.add_argument('--typed-function-pointers', action='store_true', help='compile exact registry-declared primitive function-pointer BSS globals')
     args = ap.parse_args()
     if args.limit < 1:
         ap.error('--limit must be positive')
@@ -167,17 +215,21 @@ def main():
     conv.BASE, conv.IMAGE = match._image('2008-06')
     funcs = match._functions('2008-06')
     unresolved = set(json.loads(args.unresolved.read_text()).get('unresolved', [])) if args.unresolved.is_file() else set()
-    if sum((args.typed_scalars, args.typed_data, args.all_typed_data)) > 1:
+    if sum((args.typed_scalars, args.typed_data, args.all_typed_data, args.typed_function_pointers, bool(args.typed_string_evidence))) > 1:
         ap.error('choose one typed-data mode')
-    if args.typed_scalars or args.typed_data or args.all_typed_data:
-        if args.all_typed_data:
+    if args.typed_scalars or args.typed_data or args.all_typed_data or args.typed_string_evidence or args.typed_function_pointers:
+        if args.typed_function_pointers:
+            symbols, mode = set(), 'function-pointers'
+        elif args.typed_string_evidence:
+            symbols, mode = set(), 'coverage'
+        elif args.all_typed_data:
             registry = conv.load_registry()
             symbols = {row['name'] for row in registry.values() if not row.get('placeholder') and row['kind'] == 'data'}
             mode = 'coverage'
         else:
             symbols = unresolved
             mode = 'scalars' if args.typed_scalars else 'link'
-        typed_data(symbols, args.output, mode)
+        typed_data(symbols, args.output, mode, args.typed_string_evidence)
         return
     policy_cache = {}
     selected, rejected, used_symbols = [], [], set()

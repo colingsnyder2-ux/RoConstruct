@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DBinaryInput (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/BinaryInput.cpp, verbatim.
+// 2008-06 native G3DBinaryInput (inactive): G3D 6.09 source with observed 2008 exception and tracker changes.
 // >>> native-status (generated) -- do not edit >>>
 // G3DBinaryInput | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -39,6 +39,7 @@
  */
 
 #include "G3D/platform.h"
+#include <exception>
 #include "G3D/BinaryInput.h"
 #include "G3D/Array.h"
 #include "G3D/fileutils.h"
@@ -148,7 +149,7 @@ void BinaryInput::loadIntoMemory(int startPosition, int minLength) {
 		debugAssert(freeBuffer);
         buffer = (uint8*)System::realloc(buffer, bufferLength);
         if (buffer == NULL) {
-            throw "Tried to read a larger memory chunk than could fit in memory. (2)";
+            throw std::exception("Tried to read a larger memory chunk than could fit in memory. (2)");
         }
     }
 
@@ -258,8 +259,7 @@ BinaryInput::BinaryInput(
     beginEndBits = 0;
     bitPos = 0;
 
-    // Update global file tracker
-    _internal::currentFilesUsed.append(filename);
+    // The 2008 client does not append to the global file tracker.
     
     swapBytes = needSwapBytes(fileEndian);
 
@@ -288,7 +288,7 @@ BinaryInput::BinaryInput(
     buffer = (uint8*)System::malloc(bufferLength);
     if (buffer == NULL) {
         if (compressed) {
-            throw "Not enough memory to load compressed file. (1)";
+            throw std::exception("Not enough memory to load compressed file. (1)");
         }
 
         // Try to allocate a small array; not much memory is available.
@@ -308,7 +308,7 @@ BinaryInput::BinaryInput(
 
     if (compressed) {
         if (bufferLength != length) {
-            throw "Not enough memory to load compressed file. (2)";
+            throw std::exception("Not enough memory to load compressed file. (2)");
         }
 
         // Decompress

@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\NativeNetworkPlayerLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeNetworkPlayerLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkPlayerLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeNetworkPlayerLayout.cpp"
     ],
     "base": [
       "/nologo",
@@ -61,8 +61,8 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\network-player-overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\network-player-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -77,8 +77,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\NativeNetworkPlayer.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayer.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkPlayer.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPlayer.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\network-player-pending",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\network-player-overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\network-player-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\network-player-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -118,22 +118,22 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_player\\NativeNetworkPlayerPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayer.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkPlayerPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPlayer.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_network_player.py": "bde87e7cc8a6ed39fade919d0fe194a53e8fb6c68c5ee1740d149b91816a2eff",
-    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
-    "rebuild/2008-06/native-classes/NetworkPlayer.cpp": "3ccdfe1faffa303e7a4c3abf88b4d8210c6d9b681ae5b1efe19f4fa06015d4bb",
-    "rebuild/2008-06/tests/NativeNetworkPlayerLayout.cpp": "c4aa4320f139db39aa74dab6668f734c73012234abd69a384ee59cdcc76f9383",
-    "rebuild/2008-06/tests/NativeNetworkPlayerPlayers.h": "8d2ac72891e78788c483a7ec83d6015f0f03c501434bf411c915c7d8a99de1fd",
+    "rebuild/2008-06/tests/record_native_network_player.py": "cc2593a75353cf1f9717d8b55f4b962d076cf9cf0a75f3f307c43ab3100d6c2d",
+    "rebuild/2008-06/native-headers/Network/Player.h": "0c974480e79112e14ae75d401af4c0232849685ef231f0da95f3ce0884b398ed",
+    "rebuild/2008-06/native-classes/NetworkPlayer.cpp": "c3669a0d21f11c128c3357b654b4e62d6637e86e01ef0c34c20ab2fed18d914c",
+    "rebuild/2008-06/tests/NativeNetworkPlayerLayout.cpp": "a1b112241513a40227e0ff2f076fb770556db23dc4a3298090d34c5771b176be",
+    "rebuild/2008-06/tests/NativeNetworkPlayerPlayers.h": "6f590ffb6ab134d113d55517750b6e1cbfa8e6aeb2ed6e7ce3c1909f3879a265",
     "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
   },
   "objects": {
-    "NativeNetworkPlayerLayout.obj": "3833a85b781f17e4f74e0f6e8f5e850a3ef7d6b156a20acb5712dba348115d0d",
-    "NativeNetworkPlayer.obj": "efe3cc6bc94fbe81a3a6bece52b1ecf704a38ff1716eca8307a5a1a81391aa52",
-    "NativeNetworkPlayerPending.obj": "54a60eecf0d2f78e3f240387468f8207e6b0b23f63bff7fefb6e2a2f9277ed6a"
+    "NativeNetworkPlayerLayout.obj": "fde8506a9c838820d0416d234a87c8631292b5dbcb3e0bb45b19aeebc9fed9ac",
+    "NativeNetworkPlayer.obj": "44ee3bb6f2876c916f9c962bb18c6172c24ba5a3b5c75feb6c374b15aa226249",
+    "NativeNetworkPlayerPending.obj": "d62c0b40c42b7515c76a5e31c28715947a3e8731b2363e22b8de3724b0866517"
   },
   "layout": "Player 0x1d8 (Creatable<Instance>::create<Player> 004093b0); Notifiers 0x130/0x150; character +0x170, teamColor +0x178, neutral +0x17c, characterDiedConnection +0x180, characterAppearance +0x194, under13 +0x1b0, superSafeChat +0x1b1, userId +0x1b4, six Vector2int16 DPHYS regions +0x1b8..+0x1cc, lastActivityTime +0x1d0",
   "methods": [
@@ -1477,14 +1477,12 @@
       "local_eh": [
         "__ehhandler$??__Fevent_Idled@@YAXXZ"
       ]
-    }
-  ],
-  "pending_methods": [
+    },
     {
       "address": "004913d0",
       "symbol": "??$?0P8Player@Network@RBX@@BEPAVModelInstance@2@XZP8012@AEXPAV32@@Z@?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@QAE@PBD0P8Player@Network@2@BEPAVModelInstance@2@XZP8342@AEXPAV52@@ZW4Functionality@PropertyDescriptor@12@@Z",
       "size": 169,
-      "exact": false,
+      "exact": true,
       "verified_targets": {
         "??$singleton@PAVPlayer@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x48a910 (own row)",
         "?classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x491360 (own row)",
@@ -1496,10 +1494,10 @@
       },
       "local_eh": [
         "__ehhandler$??$?0P8Player@Network@RBX@@BEPAVModelInstance@2@XZP8012@AEXPAV32@@Z@?$RefPropDescriptor@VPlayer@Network@RBX@@VModelInstance@3@@Reflection@RBX@@QAE@PBD0P8Player@Network@2@BEPAVModelInstance@2@XZP8342@AEXPAV52@@ZW4Functionality@PropertyDescriptor@12@@Z"
-      ],
-      "exact_pending_build_only": true
+      ]
     }
   ],
+  "pending_methods": [],
   "not_exact": [
     {
       "address": "00493da0",
@@ -1527,6 +1525,7 @@
     "0048b9a0",
     "0048ba70",
     "00491360",
+    "004913d0",
     "004918f0",
     "004919a0",
     "00491a50",
@@ -1609,7 +1608,8 @@
     "007fb760",
     "007fb770"
   ],
-  "pending_note": "pending rows are exact only with the generated reflection.h copy (IIDREF __declspec(novtable)); not counted.",
+  "pending_note": "rows exact in the base build are credited there; only rows exact in the generated reflection.h build and not in base are pending-only.",
+  "reflection_h_pending_control": false,
   "standins_note": "base build uses declaration-only stand-ins for Network/Players.h and v8datamodel/ModelInstance.h (other classes; donor/native headers do not compile with the 2008 DescribedCreatable).",
   "proposal_reflection_h": "\tclass __declspec(novtable) IIDREF\n",
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."

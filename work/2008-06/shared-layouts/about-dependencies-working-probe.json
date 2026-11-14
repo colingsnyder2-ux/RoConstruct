@@ -1,14 +1,14 @@
 {
-  "revision": "c9a075722a0c1bc95a2b58cef0f169760ffc4897",
+  "revision": "3170f0e37a576406e11ad752e73fadede5319bbf",
   "sources": {
     "rebuild\\2008-06\\p6\\build_native_about.py": "2353885b20b7c405c1159c67ae65c240336190c49248d983c0f50ac92c06fbc9",
-    "rebuild\\2008-06\\native-classes\\CFileVersionInfo.cpp": "7cb064040ab561792d01f8fb2756df6cf605d78137bcd278070a7dff4e31fd7a",
-    "rebuild\\2008-06\\native-classes\\CAboutRobloxDialogData.cpp": "f395990e06e337475b538221f04c6bef3a9cb8a9276fccbc9208b1d539fe2919",
+    "rebuild\\2008-06\\native-classes\\CFileVersionInfo.cpp": "5cfcb3eb6e1dd4eb7ddcc5fd2fbfaaf60f8e85fab9ce8989e01ba810bc6387a2",
+    "rebuild\\2008-06\\native-classes\\CAboutRobloxDialogData.cpp": "adee76876896ebb5d6dff980a2d6e33df757cbdb341a22afd0d03387f7970a90",
     "tools\\libs\\g3d-6.09\\source\\roc_large_glcaps_11e595a340f00f1c.cpp": "d58a002bf16c97e75f54074afa881c17bfa65f8873b03ee74b28032612833578",
-    "rebuild\\2008-06\\native-headers\\CFileVersionInfo.h": "cc04a88adc2ce496278fc3854431da96c0f34966fbb2583ab72f95de2bf97bdd",
-    "rebuild\\2008-06\\native-headers\\CAboutRobloxDialog.h": "127f4cbb7e8f83152b2e917da910705bc5b0bf4f84a9622d2f3566c26165e34f",
+    "rebuild\\2008-06\\native-headers\\CFileVersionInfo.h": "8cc1f469ca959485148ee39d497782b1a04c7e10f02101b9230851177f968074",
+    "rebuild\\2008-06\\native-headers\\CAboutRobloxDialog.h": "ffce01f1856ef318fe60c324cb891ed009ef0c7777a7b3881519ccf6f742e6a3",
     "roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialogData.cpp": "e227b8493c8d1ba9e62d2ec65d010163711c971bed6fadd21c4ae74eeff4ae4e",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialogData.cpp": "1778339b51aba9e069e479e9d199834df53ac784296334566f314155b96340b9",
     "rebuild\\2008-06\\out\\native-layouts\\NativeGLCaps.cpp": "8a43a8b4a0ac9eb35174cd4723880ceef9cf59fc5588df4420f134106d3a625e"
   },
   "compiler_build": 21022,

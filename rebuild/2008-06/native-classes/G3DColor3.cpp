@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /EHsc /MD
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DColor3 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Color3.cpp, verbatim.
 // >>> native-status (generated) -- do not edit >>>
 // G3DColor3 | 2008-06 | draft (no current byte proof)

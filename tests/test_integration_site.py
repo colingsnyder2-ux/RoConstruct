@@ -1,5 +1,7 @@
 import json
 import sqlite3
+import hashlib
+from pathlib import Path
 
 from roc import integration_site
 
@@ -74,6 +76,45 @@ def test_readable_native_method():
     assert integration_site.readable('??1Camera@RBX@@UAE@XZ') == 'RBX::Camera::~Camera'
 
 
+def test_inactive_inline_header_source_location(tmp_path):
+    header = tmp_path / 'rebuild/2008-06/native-headers/Ogre/Entity.h'
+    header.parent.mkdir(parents=True)
+    header.write_text('class Entity {\npublic:\n    int getCount() const { return count; }\n};\n')
+    receipts = tmp_path / 'work/2008-06/shared-layouts'
+    receipts.mkdir(parents=True)
+    (receipts / 'getter.json').write_text(json.dumps({
+        'address': '006857e0', 'symbol': '?getCount@Entity@Ogre@@QBEHXZ',
+        'exact': True, 'source_sha256': hashlib.sha256(header.read_bytes()).hexdigest(),
+    }))
+    row = integration_site.inactive_code(tmp_path)['006857e0']
+    assert row[1] is True
+    assert row[3] == ['rebuild/2008-06/native-headers/Ogre/Entity.h', 3]
+
+
+def test_inactive_index_skips_temporary_search_trees(tmp_path, monkeypatch):
+    source = tmp_path / 'rebuild/2008-06/native-classes/accepted/Foo.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('void foo() {}\n')
+    scratch = tmp_path / 'work/native-client/search/trial.cpp'
+    scratch.parent.mkdir(parents=True)
+    scratch.write_text('temporary trial')
+    receipts = tmp_path / 'work/2008-06/shared-layouts'
+    receipts.mkdir(parents=True)
+    (receipts / 'foo.json').write_text(json.dumps({
+        'address': '00401000', 'symbol': '?foo@@YAXXZ', 'exact': True,
+        'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+    }))
+    read_bytes = Path.read_bytes
+
+    def checked_read(path):
+        assert path != scratch
+        return read_bytes(path)
+
+    monkeypatch.setattr(Path, 'read_bytes', checked_read)
+    row = integration_site.inactive_code(tmp_path)['00401000']
+    assert row[3][0] == 'rebuild/2008-06/native-classes/accepted/Foo.cpp'
+
+
 def test_daily_history_exceeds_recent_jobs(tmp_path):
     (tmp_path / "research").mkdir()
     (tmp_path / "research/native-source-lock.json").write_text("{}")
@@ -112,3 +153,29 @@ def test_build_reads_inactive_receipts_once(tmp_path, monkeypatch):
     data = integration_site.build(tmp_path, log=lambda _: None)
     assert len(calls) == 1
     assert set(data['inactive']) == set(data['owned']) == {'00400000'}
+
+
+def test_new_output_preserves_published_history(tmp_path):
+    test_daily_history_exceeds_recent_jobs(tmp_path)
+    published = tmp_path / 'docs/integration.json'
+    data = json.loads(published.read_text())
+    old = {'day': '2020-01-01', 'groups': data['groups']}
+    data['history'].insert(0, old)
+    published.write_text(json.dumps(data))
+    snapshot = integration_site.build(tmp_path, output=tmp_path / 'snapshot.json', log=lambda _: None)
+    assert snapshot['history'][0] == old
+
+
+def test_existing_output_merges_published_history(tmp_path):
+    test_daily_history_exceeds_recent_jobs(tmp_path)
+    published = tmp_path / 'docs/integration.json'
+    data = json.loads(published.read_text())
+    published_day = {'day': '2020-01-01', 'groups': data['groups']}
+    alternate_day = {'day': '2020-01-02', 'groups': data['groups']}
+    data['history'].insert(0, published_day)
+    published.write_text(json.dumps(data))
+    alternate = tmp_path / 'snapshot.json'
+    stale_day = {'day': published_day['day'], 'groups': {}}
+    alternate.write_text(json.dumps({'client': '2008-06', 'history': [stale_day, alternate_day]}))
+    snapshot = integration_site.build(tmp_path, output=alternate, log=lambda _: None)
+    assert snapshot['history'][:2] == [published_day, alternate_day]

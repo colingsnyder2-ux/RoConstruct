@@ -52,6 +52,9 @@
 #include "util/Extents.h"
 #include "util/SurfaceType.h"
 #include "util/ComputeProp.h"
+#include "util/Face.h"
+#include "util/PV.h"
+#include "v8world/SurfaceData.h"
 
 struct NativeBodyPrimitive2008Layout;
 struct NativeContactUnit2008Layout;
@@ -59,11 +62,13 @@ struct NativeContactUnit2008Layout;
 namespace RBX
 {
 	class Body;
+	class Assembly;
 	class Clump;
 	class Contact;
 	class Controller;
 	class Edge;
 	class IMoving;
+	class Joint;
 	class Primitive;
 	class SpatialNode;
 	class SurfaceData;
@@ -125,6 +130,7 @@ namespace RBX
 		ComputeProp<float, Primitive> JointK;            // +0xec
 
 	protected:
+		G3D::Vector3 clipToSafeSize(const G3D::Vector3& newSize); // 005e83c0
 		float computeJointK() const;                     // 005e7580
 
 	public:
@@ -141,6 +147,7 @@ namespace RBX
 		{
 			return clump;
 		}
+		Assembly* getAssembly() const;                   // 005e7570
 		int getClumpDepth() const
 		{
 			return clumpDepth;
@@ -170,6 +177,8 @@ namespace RBX
 			return dragging;
 		}
 		void setDragging(bool _dragging);                // 005e8050
+		void setAnchor(bool _anchored);                  // 005e80d0
+		void setJointAnchored(bool _jointAnchored);      // 005e8140
 		const bool getCanCollide() const
 		{
 			return canCollide;
@@ -186,7 +195,19 @@ namespace RBX
 		{
 			return JointK;
 		}
+		void setCoordinateFrame(const G3D::CoordinateFrame& value); // 005e8200
+		void setPV(const PV& pv);                        // 005e85b0
+		void setMassInertia(float mass);                 // 005e8000
+		void setGridSize(const G3D::Vector3& gridSize);  // 005e8470
 		void setSurfaceType(NormalId id, SurfaceType type);   // 005e7850
+		SurfaceType getSurfaceType(NormalId id) const
+		{
+			return surfaceType[id];
+		}
+		const SurfaceData& getSurfaceData(NormalId id) const
+		{
+			return surfaceData[id] ? *surfaceData[id] : SurfaceData::empty();
+		}
 		void setController(Controller* _controller);     // 005e85e0
 		Controller* getController()
 		{
@@ -194,12 +215,17 @@ namespace RBX
 		}
 
 		const G3D::CoordinateFrame& getCoordinateFrame() const;   // 005e82c0
+		Face getFaceInWorld(NormalId objectFace);        // 005e81b0
+		G3D::CoordinateFrame getFaceCoordInObject(NormalId objectFace); // 005e7680
 		const Extents& getFastFuzzyExtents() const;      // 005e7a50 (00606ce6 / 00606cee)
 
+		Joint* getFirstJoint() const;                    // 005e7b80
+		Joint* getNextJoint(Joint* prev) const;          // 005e7ba0
 		Contact* getFirstContact();                      // 005e7bd0
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
+		static bool aaBoxCollide(const Primitive& p0, const Primitive& p1);
 // Declarations proven by closure symbols of byte-exact recovered methods.
 public:
     void setCanSleep(bool);

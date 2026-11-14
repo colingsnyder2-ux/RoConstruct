@@ -360,7 +360,7 @@ const sourceLinks = (client, f, short = false) => {
   const candidate = integrationData?.client === client && integrationData.inactive_sources?.[hex(f[0])];
   const links = [];
   if (!indexed && candidate) links.push(`<a href="${FINDINGS}/blob/work/${candidate.path.split('/').map(encodeURIComponent).join('/')}#L${candidate.line}" target="_blank" rel="noopener">${integrationData.inactive?.[hex(f[0])]?.[1] ? "Inactive native" : "Draft native"}${short ? "" : " source"} ↗</a>`);
-  if (indexed) links.push(`<a href="${FINDINGS}/blob/work/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
+  if (indexed) links.push(`<a href="${esc(indexed.url || FINDINGS + "/blob/work/" + indexed.path.split('/').map(encodeURIComponent).join('/'))}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
   else {
     const file = f[2] === 100 && f[5] && sourceCatalog[f[5][0]]?.kind !== "archive" ? libraryUrl(f[5]) : "";

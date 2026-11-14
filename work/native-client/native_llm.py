@@ -29,10 +29,10 @@ sys.path.insert(0, str(ROOT))
 from roc import match  # noqa: E402
 
 HERE = ROOT / 'work/native-client/native-llm'
-QUEUE = ROOT / 'work/native-client/ogre-conversion-queue-v10.json'
+QUEUE = ROOT / 'work/native-client/codex-native-conversion-queue-v44.json'
 CLOSURE = ROOT / 'work/native-client/claude-identity-closure.json'
 LOG = HERE / 'attempts.jsonl'
-REGISTRY = ROOT / 'work/native-client/ogre-names-registry.json'
+REGISTRY = ROOT / 'work/2008-06/identity-registry.json'
 METRICS = HERE / 'bytes-per-hour.jsonl'
 PREFLIGHT = HERE / 'preflight-blocked.json'
 LAYOUTS = ROOT / 'work/native-client/ogre-layout-solutions.json'
@@ -191,8 +191,6 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
         if (cl['template'] or (prefixes and not cl['owner'].startswith(tuple(prefixes)))
                 or cl['owner'].startswith(('G3D::', 'std::', 'boost::'))):     # library code: vendor lane, not native
             continue
-        prov = collections.Counter(p for m in cl['methods'] if m['state'] == 'existing-native'
-                                   for p in m['native_providers'])
         dest, is_new = destination_for(cl['owner'])
         if not dest:
             PREFLIGHT_BLOCKED.append({'owner': cl['owner'], 'reason': 'multiple-native-destinations'})
@@ -206,7 +204,8 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
             continue
         for m in cl['methods']:
             identity = registry.get(m['addr'])
-            if (m['addr'].lower() in native_exact or m['state'] != 'convert' or len(m['headers']) != 1 or '$' in m['symbol'] or m['addr'] in tried
+            method_headers = m.get('headers', cl.get('headers', []))
+            if (m['addr'].lower() in native_exact or m['state'] != 'convert' or len(method_headers) != 1 or '$' in m['symbol'] or m['addr'] in tried
                     or shared[m['addr']] > 1 or not identity or identity['placeholder']
                     or identity['name'] != m['symbol'] or identity.get('owner_class') != cl['owner']):
                 continue
@@ -216,7 +215,11 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
                 continue
             qual = m['declaration'].split('(')[0].split()[-1]          # RBX::Camera::lookAt
             name = qual.rsplit('::', 1)[-1]
-            text = Path(ROOT / m['headers'][0]).read_text(errors='replace')
+            if not qual.startswith(cl['owner'] + '::') or not re.fullmatch(r'~?[A-Za-z_][A-Za-z_0-9]*', name):
+                PREFLIGHT_BLOCKED.append({'addr': m['addr'], 'owner': cl['owner'],
+                                          'reason': 'unsupported-declaration-spelling', 'names': [qual]})
+                continue
+            text = Path(ROOT / method_headers[0]).read_text(errors='replace')
             if name not in text or re.search(r'\b%s\s*\([^;{}]*\)[^;{}]*\{' % re.escape(name), text):
                 continue                                   # undeclared, or the header already defines it inline
             leaf = cl['owner'].rsplit('::', 1)[-1]
@@ -235,7 +238,7 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
             size = len(match.target('2008-06', m['addr'])[0])
             if 16 <= size <= max_size:
                 out.append(dict(addr=m['addr'], symbol=m['symbol'], decl=m['declaration'], owner=cl['owner'],
-                                qual=qual, header=m['headers'][0], dest=dest, size=size,
+                                qual=qual, header=method_headers[0], dest=dest, size=size,
                                 name_source=identity['name_source'], placeholder=False,
                                 new_source=is_new))
     # ponytail: smallest first, highest pass rate; add a byte-weighted order once rates are measured

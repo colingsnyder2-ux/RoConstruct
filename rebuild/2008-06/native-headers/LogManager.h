@@ -4,6 +4,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <exception>
 #include <string>
+#include <vector>
 
 class RobloxCrashReporter;
 
@@ -33,6 +34,8 @@ public:
     virtual RBX::Log* provideLog();
     virtual std::string getLogPath();
     void startCrashReporter();
+    bool hasCrashLogs() const;
+    std::vector<std::string> archiveCrashLogs();
 };
 
 class ThreadLogManager : public LogManager

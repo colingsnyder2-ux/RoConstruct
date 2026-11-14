@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeNetworkPlayersLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkPlayersLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeNetworkPlayersLayout.cpp"
     ],
     "base": [
       "/nologo",
@@ -61,8 +61,8 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-network-players\\overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,9 +76,9 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayers.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkPlayers.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\pending",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-network-players\\pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-network-players\\overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -117,24 +117,24 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
       "/DNATIVE_NETWORK_PLAYERS_PENDING",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkPlayersPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_network_players.py": "12d547eac142764a28eb8e6be64f98a045ecb8ffc21b8f163e4ecd962b76d829",
-    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
-    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "32d12fa3557c1976c6b2e9255866a8c1e20ba17fd36d171dcd95a8825709972c",
-    "rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp": "c6a507cbe6d721e0948dc11fd99a4dfa84faaac2771e623fa3ec723919a7b121",
-    "rebuild/2008-06/tests/NativeNetworkPlayersPeers.h": "92a7c176346f13f66e6dd2e5b320c31d1d8f861ccea0451e09dbe647bbd39e92",
+    "rebuild/2008-06/tests/record_native_network_players.py": "71643da99321effcc331169d0c8d15db780825350e31ee9357e4599a618f5b3a",
+    "rebuild/2008-06/native-headers/Network/Players.h": "de886518a83e7a13e7c2c732ad1a18a8f50aaec9b2746717b50af27c9e37c74c",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "3275c94e4b7a88dd2beaef6d57a4bb13e6fbdeda59cc4ad9cc49e9466351aa43",
+    "rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp": "9cd43507485450de3e41c7f1177634f86fd23923ba9fe94b5be4ebd7ec15be63",
+    "rebuild/2008-06/tests/NativeNetworkPlayersPeers.h": "5f9d6b06134028df8427f75097833a9f4e0f3fd0745000072d8ae65e385a79f6",
     "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
   },
   "objects": {
-    "NativeNetworkPlayersLayout.obj": "26763d43e8ebf8c31de726ee157be78cdfcc1dbbb9927418528a137f3b54f72c",
-    "NativeNetworkPlayers.obj": "769934194c01f3749824867e5d14bdb80c98ae10578611da99a744e4618856d5",
-    "NativeNetworkPlayersPending.obj": "d3579d344457309747053599ec995c74de45975e6696f71f292339a3dc62a46a"
+    "NativeNetworkPlayersLayout.obj": "bc45f7c2200391f046b6abc86b9b547c381888ef8368c24207ac035ef5e52d3a",
+    "NativeNetworkPlayers.obj": "1aa43c8c71f33d57eaa7f62935bb97d64b2ce92b31524084c5af692922b16161",
+    "NativeNetworkPlayersPending.obj": "f7de3bcbf3d7936b1938d87bc4c9ede318528cc4265d0a55318e67eb4e0614d5"
   },
   "layout": "Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, maxPlayers +0x1ac; ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)",
   "methods": [
@@ -472,6 +472,35 @@
       "local_eh": []
     },
     {
+      "address": "0049d480",
+      "symbol": "?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z",
+      "size": 418,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BM@MJOEDKAK@Local?5player?5already?5exists?$AA@": "0x822af4 (literal 'Local player already exists')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z": "0x42bc10 (external (evidence name))",
+        "??$create@VPlayer@Network@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPlayer@Network@RBX@@@boost@@XZ": "0x4093b0 (external (evidence name))",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+        "?ptr@Context@Security@RBX@@CAAAV?$thread_specific_ptr@VContext@Security@RBX@@@boost@@XZ": "0x42bbb0 (external (evidence name))",
+        "?get@tss@detail@boost@@QBEPAXXZ": "0x5a7570 (external)",
+        "?set@tss@detail@boost@@QAEXPAX@Z": "0x5a76b0 (external)",
+        "?cleanup@tss@detail@boost@@QAEXPAX@Z": "0x5a6ff0 (external)",
+        "?setUserID@Player@Network@RBX@@QAEXH@Z": "0x494830 (external)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A": "0x970388 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A": "0x96fcd4 (data)",
+        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z": "0x496e20 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z"
+      ]
+    },
+    {
       "address": "0049e1d0",
       "symbol": "?setAbuseReportUrl@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
       "size": 191,
@@ -498,6 +527,45 @@
         "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
       },
       "local_eh": []
+    },
+    {
+      "address": "0049df50",
+      "symbol": "?OnReceive@?$PluginInterfaceAdapter@VPlayers@Network@RBX@@@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z": "0x49d770 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00497ec0",
+      "symbol": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z",
+      "size": 97,
+      "exact": true,
+      "verified_targets": {
+        "?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A": "0x96fcd4 (data)",
+        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z": "0x496e20 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049aa60",
+      "symbol": "??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 164,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x496870 (own row)",
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x82288c (vtable RTTI .?AV?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@ offset 0x0)",
+        "??_7?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@6BIIDREF@2@@": "0x822884 (vtable RTTI .?AV?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@ offset 0x18)",
+        "??$getset@P8Players@Network@RBX@@BEPAVPlayer@23@XZ@?$PropDescriptor@VPlayers@Network@RBX@@PAVPlayer@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPlayer@Network@RBX@@@Reflection@RBX@@@std@@P8Players@Network@2@BEPAVPlayer@62@XZH@Z": "0x4973b0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z"
+      ]
     },
     {
       "address": "004971c0",
@@ -1551,67 +1619,6 @@
       "exact_pending_build_only": true
     },
     {
-      "address": "00497ec0",
-      "symbol": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z",
-      "size": 97,
-      "exact": false,
-      "verified_targets": {
-        "?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A": "0x96fcd4 (data)",
-        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z": "0x496e20 (own row)"
-      },
-      "local_eh": [],
-      "exact_pending_build_only": true
-    },
-    {
-      "address": "0049d480",
-      "symbol": "?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z",
-      "size": 418,
-      "exact": false,
-      "verified_targets": {
-        "??_C@_0BM@MJOEDKAK@Local?5player?5already?5exists?$AA@": "0x822af4 (literal 'Local player already exists')",
-        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
-        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
-        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (external)",
-        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
-        "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z": "0x42bc10 (external (evidence name))",
-        "??$create@VPlayer@Network@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPlayer@Network@RBX@@@boost@@XZ": "0x4093b0 (external (evidence name))",
-        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
-        "?ptr@Context@Security@RBX@@CAAAV?$thread_specific_ptr@VContext@Security@RBX@@@boost@@XZ": "0x42bbb0 (external (evidence name))",
-        "?get@tss@detail@boost@@QBEPAXXZ": "0x5a7570 (external)",
-        "?set@tss@detail@boost@@QAEXPAX@Z": "0x5a76b0 (external)",
-        "?cleanup@tss@detail@boost@@QAEXPAX@Z": "0x5a6ff0 (external)",
-        "?setUserID@Player@Network@RBX@@QAEXH@Z": "0x494830 (external)",
-        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
-        "?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A": "0x970388 (data)",
-        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
-        "?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A": "0x96fcd4 (data)",
-        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z": "0x496e20 (own row)"
-      },
-      "local_eh": [
-        "__ehhandler$?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z"
-      ],
-      "exact_pending_build_only": true
-    },
-    {
-      "address": "0049aa60",
-      "symbol": "??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z",
-      "size": 164,
-      "exact": false,
-      "verified_targets": {
-        "??$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x496870 (own row)",
-        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
-        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
-        "??_7?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x82288c (vtable RTTI .?AV?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@ offset 0x0)",
-        "??_7?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@6BIIDREF@2@@": "0x822884 (vtable RTTI .?AV?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@ offset 0x18)",
-        "??$getset@P8Players@Network@RBX@@BEPAVPlayer@23@XZ@?$PropDescriptor@VPlayers@Network@RBX@@PAVPlayer@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPlayer@Network@RBX@@@Reflection@RBX@@@std@@P8Players@Network@2@BEPAVPlayer@62@XZH@Z": "0x4973b0 (own row)",
-        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
-      },
-      "local_eh": [
-        "__ehhandler$??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z"
-      ],
-      "exact_pending_build_only": true
-    },
-    {
       "address": "0049d200",
       "symbol": "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
       "size": 175,
@@ -1696,24 +1703,7 @@
       "exact_pending_build_only": true
     }
   ],
-  "not_exact": [
-    {
-      "address": "00497ec0",
-      "symbol": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z",
-      "size": 97,
-      "target_size": 97,
-      "exact": false,
-      "reason": "reads SuperSafeChat through GetSet slot 2 (+8); the current property.h GetSet has getValue at slot 1 (exact in the pending build)"
-    },
-    {
-      "address": "0049d480",
-      "symbol": "?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z",
-      "size": 418,
-      "target_size": 418,
-      "exact": false,
-      "reason": "same GetSet slot difference (exact in the pending build)"
-    }
-  ],
+  "not_exact": [],
   "vtables": [
     {
       "vtable": "0x822714",
@@ -1780,7 +1770,7 @@
       "rtti_offset": 100,
       "slots": {
         "0": "??_EPlayers@Network@RBX@@WGE@AEPAXI@Z -> 0x4998c0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x559230 (bound (consistent across rows/slots))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x559230 (bound (consistent across rows/slots))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
       }
     },
@@ -1800,7 +1790,7 @@
       "rtti_offset": 36,
       "slots": {
         "0": "??_EPlayers@Network@RBX@@WCE@AEPAXI@Z -> 0x4998a0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x558d90 (bound (consistent across rows/slots))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x558d90 (bound (consistent across rows/slots))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
       }
     },
@@ -1849,7 +1839,7 @@
         "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90 (bound (consistent across rows/slots))",
         "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470 (evidence name)",
         "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50 (evidence name)",
-        "15": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z -> 0x497ec0 (own row (pending-build-only))"
+        "15": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z -> 0x497ec0 (own row)"
       }
     }
   ],
@@ -1875,6 +1865,7 @@
     "00497360",
     "004973b0",
     "004974c0",
+    "00497ec0",
     "00497f40",
     "00498030",
     "00498250",
@@ -1899,6 +1890,7 @@
     "0049a8a0",
     "0049a910",
     "0049a9b0",
+    "0049aa60",
     "0049ac80",
     "0049aca0",
     "0049ad50",
@@ -1921,6 +1913,8 @@
     "0049bdc0",
     "0049ca70",
     "0049d450",
+    "0049d480",
+    "0049df50",
     "0049e1d0",
     "007f17c0",
     "007f17f0",
@@ -1957,23 +1951,15 @@
     "00496a00",
     "00496cf0",
     "004973f0",
-    "00497ec0",
     "00499ed0",
-    "0049aa60",
     "0049c4f0",
     "0049cd00",
     "0049d200",
-    "0049d480",
     "0049daa0",
     "0049dc70"
   ],
   "pending_note": "pending rows are exact only with generated copies of other owners' headers (proposals); not counted.",
-  "proposals": [
-    "v8tree/Service.h (ServiceProvider): declare `static const ServiceProvider* findServiceProvider(const Instance* context);` (not inline: 2008 calls 004898d0 from frontendProcessing 00495e80, backendProcessing 00495eb0, onChildAdded 0049dc70, onChildRemoving 0049daa0)",
-    "Network/Player.h (Player): declare `void rebuildBackpack();` (004925c0, thiscall; throws \"rebuildBackpack can only be called by the backend server\"; called by Players::onEvent 00496cf0 and onChildAdded 0049dc70)",
-    "reflection/property.h (TypedPropertyDescriptor::GetSet): the 2008 GetSet has a second bool virtual at slot 1 (same proposal as tests/record_native_clothing.py); getValue is slot 2 (+8) in onChildChanged 00497ec0 and createLocalPlayer 0049d480",
-    "reflection/reflection.h: IIDREF __declspec(novtable) (same proposal as tests/record_native_network_player.py); RefPropDescriptor<Players, Player> constructor 0049aa60 stores only the final vtable"
-  ],
+  "proposals": [],
   "standins_note": "base build uses declaration-only stand-ins for \"Client.h\"/\"Server.h\" (tests/NativeNetworkPlayersPeers.h) and v8datamodel/ModelInstance.h (tests/NativeTeamPendingModel.h).",
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }

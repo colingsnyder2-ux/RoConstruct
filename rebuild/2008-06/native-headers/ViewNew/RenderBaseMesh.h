@@ -31,9 +31,12 @@
 #include <vector>
 
 struct NativeViewNewLayout;
+namespace G3D { class VAR; }
 
 namespace Ogre
 {
+	class GeometryBuilder;
+	class MeshPtr;
 	class RbxSubMesh; // incomplete: only owned through a pointer (deleted via 0054ac70)
 }
 
@@ -41,9 +44,21 @@ namespace RBX
 {
 	namespace RenderBase
 	{
+		class Chunk;
 		class Mesh : public G3D::ReferenceCountedObject
 		{
 			friend struct ::NativeViewNewLayout;
+			typedef G3D::Array<int> VertexList;
+			static VertexList vertexRefCounts;
+			static VertexList freeList;
+			static G3D::MeshAlg::Geometry visibleGeometry;
+			static G3D::Array<G3D::Vector2> texCoordArray;
+			static G3D::Array<G3D::Vector3> tangentArray;
+			static G3D::VAR vertexVAR, normalVAR, texCoordVAR, tangentVAR;
+			static void computeAABounds(const std::vector<G3D::ReferenceCountedPointer<Chunk> >&, G3D::Vector3&, G3D::Vector3&); // 00547440
+			static void makeVAR(); // 00548cb0
+			static bool varDirty;
+			static Ogre::MeshPtr sharedMesh; // inferred name; 009738b8, donor Mesh shared buffer
 		public:
 			class Level : public G3D::ReferenceCountedObject
 			{
@@ -63,8 +78,10 @@ namespace RBX
 					  subMesh(NULL)
 				{
 				}
+				void invalidate();                       // inferred name; 005486e0
 				virtual ~Level();                        // 005489b0
 			};
+			typedef G3D::ReferenceCountedPointer<Level> LevelRef;
 
 			class ShadowSurface
 			{
@@ -93,9 +110,29 @@ namespace RBX
 			int meshKind;                                             // +0x84
 
 		protected:
+			void computeShadowSurface(const LevelRef& level); // donor signature; 00548150
+			// Original 0054aca0 multiplies detail by level count before clamping.
+			int detailIndex(double detail) const
+			{
+				return G3D::iClamp((int)(levels.size() * detail), 0, levels.size() - 1);
+			}
+
+			static void updateGeometry(Ogre::GeometryBuilder*); // inferred name and receiver; 005493e0
+			static void initStatics(); // 00547f60; donor declaration, original call 005485f5.
+
 			Mesh();                                                   // 00548570
 		public:
+			static G3D::ReferenceCountedPointer<Mesh> aggregate(const std::vector<G3D::ReferenceCountedPointer<Chunk> >&, G3D::CoordinateFrame&, float&); // 00547610
 			virtual ~Mesh();                                          // 00548a90
+			static void sendGeometry(const Level*, G3D::RenderDevice*); // 00548fe0
+			static void beginRender(G3D::RenderDevice*, bool, bool);   // 00548ec0
+			static void setShadowVertex(const G3D::Vector3&);          // 00548c60
+			void computeDirectionalShadowVolume(const G3D::CoordinateFrame&, const G3D::Vector3&,
+				G3D::Array<unsigned int>&, G3D::Array<G3D::Vector3>&, bool) const; // 00549050
+			static void endRender(G3D::RenderDevice*);                  // 00549030
+
+			// Donor signature; 0053f828 calls 00548f80 with hidden return and float argument.
+			const G3D::ReferenceCountedPointer<Level> detailLevel(float detail) const; // 00548f80
 
 			static unsigned int allocVertex(unsigned int i, unsigned int count);   // 00547fc0
 			// cdecl statics the LevelBuilder grid template calls (004fac10..: push 4 arguments, add esp 0x10 / 4)

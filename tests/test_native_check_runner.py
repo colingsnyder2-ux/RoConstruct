@@ -14,6 +14,104 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def test_oleaut_ordinal_import_matches_system_export(self):
+        sdk = runner.rebuild.toolchain(21022).get('sdk_lib')
+        if not sdk or not (Path(sdk) / 'OleAut32.Lib').is_file():
+            self.skipTest('VC9 SDK OleAut32 import library unavailable')
+        labels, aliases, hashes = runner.import_evidence()
+        self.assertEqual(labels[0x802938].lower(), 'oleaut32.dll!varui4fromstr')
+        self.assertIn('__imp__VarUI4FromStr@16', aliases[('oleaut32.dll', 'VarUI4FromStr')])
+        self.assertIn(str(Path(sdk) / 'OleAut32.Lib'), hashes)
+        self.assertTrue(any(Path(path).name.lower() == 'oleaut32.dll' for path in hashes))
+
+    def test_reviewed_tail_jump_checks_target_opcode_and_relocation(self):
+        import struct
+        raw = struct.pack('<IIH', 1, 0, 20)
+        sections = [(0, 0, 0, 0, 0, 0, 0, 1)]
+        symbols = [('_callee',)]
+        defs = {'_caller': (0, 0)}
+        target = b'\xe9\x0b\x00\x00\x00'
+        body = b'\xe9\x00\x00\x00\x00'
+        expected = [{'offset': 0, 'target': '00001010', 'symbol': '_callee', 'kind': 'jump'}]
+        with patch.object(runner.match, '_coff_data_index', return_value=(sections, symbols, defs, None)):
+            self.assertTrue(runner.check_calls(raw, '_caller', body, target, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', b'\xe8'+body[1:], target, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', body, target, 0x1000, [dict(expected[0], target='00001011')])['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', body, target, 0x1000, [dict(expected[0], symbol='_wrong')])['passed'])
+            self.assertFalse(runner.check_calls(struct.pack('<IIH', 1, 0, 6), '_caller', body, target, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', body, b'\xeb\x0e', 0x1000, expected)['passed'])
+
+    def test_registry_import_alias_is_checked_against_sdk_library(self):
+        sdk = runner.rebuild.toolchain(21022).get('sdk_lib')
+        if not sdk or not (Path(sdk) / 'Advapi32.Lib').is_file():
+            self.skipTest('VC9 SDK Advapi32 import library unavailable')
+        labels, aliases, hashes = runner.import_evidence()
+        self.assertEqual(labels[0x802020].lower(), 'advapi32.dll!regqueryvalueexa')
+        self.assertIn('__imp__RegQueryValueExA@24', aliases[('advapi32.dll', 'RegQueryValueExA')])
+        self.assertIn(str(Path(sdk) / 'Advapi32.Lib'), hashes)
+
+    def test_manifest_compiler_selection_is_explicit_and_validated(self):
+        self.assertEqual(runner.compiler_build({}), 21022)
+        self.assertEqual(runner.compiler_build({'compiler_build': 50727}), 50727)
+        for value in (True, '50727', 12345, None):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                runner.compiler_build({'compiler_build': value})
+
+    def test_vc2005_rtm_variant_is_explicit_and_has_its_own_paths(self):
+        manifest = {'compiler_build': 50727, 'compiler_variant': 'rtm'}
+        with patch.object(runner.rebuild, 'toolchain', return_value={'build': 50727}):
+            tc = runner.selected_toolchain(manifest)
+        self.assertIn('vc2005', str(tc['cl']))
+        self.assertEqual(tc['cl'].name.lower(), 'cl.exe')
+        self.assertIn('vc2005', str(tc['vc_include']))
+        with self.assertRaises(ValueError):
+            runner.selected_toolchain({'compiler_build': 21022, 'compiler_variant': 'rtm'})
+        with self.assertRaises(ValueError):
+            runner.selected_toolchain({'compiler_build': 50727, 'compiler_variant': 'unknown'})
+
+    def test_execute_uses_persisted_compiler_build(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            compiler = root / 'cl.exe'
+            compiler.write_bytes(b'tool')
+            runner.save(root / 'manifest.json', {'compiler_build': 50727, 'jobs': []})
+            with patch.object(runner.rebuild, 'toolchain', return_value={'cl': compiler}) as tc, \
+                 patch.object(runner.native_work, 'headers', return_value={}):
+                summary = runner.execute(root, 1)
+            tc.assert_called_once_with(50727)
+            self.assertEqual(summary['compiler_build'], 50727)
+
+    def test_catch_continuation_reports_separate_full_range_without_promoting_status(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            obj = Path(temporary) / 'candidate.obj'
+            obj.write_bytes(b'fixture')
+            job = {'checks': [{'addr': '00500000', 'symbol': '?foo'}], 'ranges': [], 'layouts': []}
+            symbols = {0: ('?foo', 0, 1, 0x20), 1: ('__catch$?foo$0', 4, 1, 0x20)}
+            index = ([], symbols, {'?foo': (0, 0)}, {})
+            with patch.object(runner.match, 'target', return_value=(b'abcd', [], None)), \
+                 patch.object(runner.match, 'coff_functions', return_value=[('?foo', b'abcdef', [])]), \
+                 patch.object(runner.match, '_coff_data_index', return_value=index), \
+                 patch.object(runner.match, '_image', return_value=(0x500000, b'abcdef')), \
+                 patch.object(runner.match, '_base_relocs', return_value=set()):
+                row = runner.analyze_object(job, obj)['checks'][0]
+            self.assertEqual(row['status'], 'different')
+            self.assertTrue(row['contiguous_catch_comparison']['relocation_normalized_match'])
+            self.assertEqual(row['contiguous_catch_comparison']['metrics']['unmasked_differences'], 0)
+
+    def test_larger_function_without_owned_catch_has_no_continuation_comparison(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            obj = Path(temporary) / 'candidate.obj'
+            obj.write_bytes(b'fixture')
+            job = {'checks': [{'addr': '00500000', 'symbol': '?foo'}], 'ranges': [], 'layouts': []}
+            symbols = {0: ('?foo', 0, 1, 0x20), 1: ('__catch$?other$0', 4, 1, 0x20)}
+            with patch.object(runner.match, 'target', return_value=(b'abcd', [], None)), \
+                 patch.object(runner.match, 'coff_functions', return_value=[('?foo', b'abcdef', [])]), \
+                 patch.object(runner.match, '_coff_data_index', return_value=([], symbols, {'?foo': (0, 0)}, {})), \
+                 patch.object(runner.match, '_image') as image:
+                row = runner.analyze_object(job, obj)['checks'][0]
+            self.assertNotIn('contiguous_catch_comparison', row)
+            image.assert_not_called()
+
     def test_decimal_diagnostic_score_is_not_positional_byte_percentage(self):
         with tempfile.TemporaryDirectory() as temporary:
             obj = Path(temporary) / 'candidate.obj'

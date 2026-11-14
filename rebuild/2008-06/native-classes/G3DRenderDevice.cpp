@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DRenderDevice (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/RenderDevice.cpp, verbatim.
+// 2008-06 native G3DRenderDevice (inactive): G3D 6.09 source with observed 2008 reset behavior.
 // >>> native-status (generated) -- do not edit >>>
 // G3DRenderDevice | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -820,6 +820,8 @@ void RenderDevice::resetState() {
         glDisable(GL_LIGHTING);
 
         glDrawBuffer(GL_BACK);
+        // Clear the initial OpenGL error state.
+        glGetError();
 
         for (int i = 0; i < MAX_LIGHTS; ++i) {
             setLight(i, NULL, true);
