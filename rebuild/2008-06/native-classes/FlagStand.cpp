@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // 2008-06 native RBX::FlagStand (inactive): the FlagStand half of the original FlagStand/FlagStandService unit
 // (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470). The FlagStandService half lives in
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.
@@ -8,6 +9,7 @@
 // <<< native-status | src 66c1a3dd | roc native-status --write
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"
+#include "v8datamodel/Flag.h"
 
 namespace RBX
 {
@@ -39,6 +41,22 @@ namespace RBX
 	FlagStand::FlagStand()
 	{
 		setName(sFlagStand);
+	}
+
+	// 0062b900
+	Flag* FlagStand::GetFlag()
+	{
+		Primitive* primitive = getPrimitive();
+		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
+				if (flag)
+					return flag;
+			}
+		}
+		return NULL;
 	}
 
 	void FlagStand::setTeamColor(BrickColor color)
