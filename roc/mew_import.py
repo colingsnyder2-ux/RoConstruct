@@ -22,6 +22,10 @@ NATIVE = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
           'rebuild/2008-06/native-world/')
 
 
+def work_prefix(ref):
+    return 'rebuild/2008-06' if ref in ('HEAD', '.') else 'workspace/rebuild/2008-06'
+
+
 def git(root, *args, data=None):
     return subprocess.check_output(['git', *args], cwd=root, input=data)
 
@@ -167,7 +171,7 @@ def prepare(root, output, donor=DONOR, work=WORK, batch_size=40):
     work_sha = git(root, 'rev-parse', work).decode().strip()
     donor_tree = tree(root, donor_sha, 'rebuild/2008-06')
     donor_files = {p: h for p, h in donor_tree.items() if p.startswith(NATIVE)}
-    canonical = tree(root, work_sha, 'workspace/rebuild/2008-06')
+    canonical = tree(root, work_sha, work_prefix(work))
     by_blob = {}
     by_name = {}
     for path, sha in canonical.items():
@@ -296,13 +300,15 @@ def main(argv=None):
     parser.add_argument('--workers', type=int, choices=range(1, 9), default=3)
     parser.add_argument('--batch-size', type=int, default=40)
     parser.add_argument('--branch', default=DEFAULT_BRANCH, help='Mew branch to pin')
+    parser.add_argument('--work-ref', default='HEAD', help='canonical source ref; default is current HEAD')
     parser.add_argument('--offline', action='store_true', help='use already fetched refs')
     parser.add_argument('--check', action='store_true', help='compile proposed candidates in isolated objects')
     args = parser.parse_args(argv)
     if not args.offline:
-        git(ROOT, 'fetch', 'findings', 'work')
+        if args.work_ref == WORK:
+            git(ROOT, 'fetch', 'findings', 'work')
         fetch_donor(ROOT, args.branch)
-    report = prepare(ROOT, args.output, batch_size=args.batch_size)
+    report = prepare(ROOT, args.output, work=args.work_ref, batch_size=args.batch_size)
     print('Indexed %d fork files; prepared %d batches. No files merged.' %
           (len(report['files']), len(report['manifests'])), flush=True)
     if args.check:
