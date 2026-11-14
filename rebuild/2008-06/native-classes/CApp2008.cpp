@@ -1,4 +1,4 @@
-// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /D_ATL_APARTMENT_THREADED /I{headers}/std-noinline-string /I{headers}/../../../tools/libs/mfc-9.0-rtm/atlmfc/include
+// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /D_ATL_APARTMENT_THREADED /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../../../tools/libs/mfc-9.0-rtm/atlmfc/include
 // App COM registration and recovered methods, inactive pending ABI and provider proof.
 #include <afx.h>
 #include "CApp2008.h"
@@ -47,6 +47,19 @@ STDMETHODIMP CApp::get_Version(BSTR* value)
     AFX_MANAGE_STATE(AfxGetAppModuleState());
     CComBSTR version(static_cast<CRobloxApp*>(AfxGetApp())->version.c_str());
     return version.CopyTo(value);
+}
+
+void CApp::uploadErrorFiles(const char* url)
+{
+    AFX_MANAGE_STATE(AfxGetAppModuleState());
+    theApp.errorUploader->Upload(url, false);
+}
+
+STDMETHODIMP CApp::SendErrorFiles(BSTR url)
+{
+    AFX_MANAGE_STATE(AfxGetAppModuleState());
+    uploadErrorFiles(CString(url));
+    return S_OK;
 }
 
 OBJECT_ENTRY_AUTO(CLSID_App, CApp)

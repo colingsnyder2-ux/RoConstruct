@@ -41,6 +41,7 @@ public:
         COM_INTERFACE_ENTRY(IObjectSafety)
     END_COM_MAP()
     DECLARE_PROTECT_FINAL_CONSTRUCT()
+    static void uploadErrorFiles(const char* url);
     STDMETHOD(CreateGame)(WINDOW_TYPE, IWorkspace**);
     STDMETHOD(LaunchIDE)();
     STDMETHOD(get_Version)(BSTR*);

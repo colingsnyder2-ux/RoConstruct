@@ -25,6 +25,7 @@ public:
     ErrorUploader();
     ~ErrorUploader();
     bool IsUploading();
+    void Upload(std::string url, bool synchronous);
     static RBX::worker_thread::work_result upload(boost::shared_ptr<data>); // 0041d760
 };
 
