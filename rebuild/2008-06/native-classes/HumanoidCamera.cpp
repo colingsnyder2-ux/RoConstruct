@@ -53,8 +53,6 @@ namespace RBX
 
 namespace RBX
 {
-	extern Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity;   // Humanoid2008.cpp (0097a2d8)
-
 	// 005d9310 (Connector slot, this adjusted by -0x130): torso primitive (+0x228) body (+0xa0 -> part+0x2c8),
 	// then Body::getRoot (+0x10, the 2008 Body of Body2008.h through NATIVE_PRIMITIVE_NATIVE_BODY).
 	Body* Humanoid::getBody(int i)
@@ -222,21 +220,16 @@ namespace RBX
 	}
 
 	// 005dc7f0 (ICharacterSubject slot, this adjusted by -0x14c). setWalkRotationalVelocity 005dc090 is inlined twice
-	// in the original (compare with +0x1b0, raisePropertyChanged 0040db00 with 0097a2d8); its out-of-line body lives
-	// in Humanoid2008.cpp, so the same statement sequence is written here. PARKED (draft): the Body offsets are right
-	// since batch 14 (root +0x10, pv +0x94 through NATIVE_PRIMITIVE_NATIVE_BODY), but with the setter written out
-	// the noAdjust branch keeps the ICharacterSubject this in edi instead of adjusting ecx by -0x14c per branch. Body::updatePV 00599360 (getPV),
-	// CoordinateFrame::lookVector 005187f0, Vector3::unitize 00518470, Math::angleToE0 005de0f0, Math::radWrap 005cbec0.
+	// (compare with +0x1b0, raisePropertyChanged 0040db00 with 0097a2d8): batch 15 made it an inline body in
+	// humanoid/Humanoid2008.h, which gives the target's per-branch `add ecx, -0x14c` (written out here before, the
+	// noAdjust branch kept the ICharacterSubject this in edi). Body offsets through NATIVE_PRIMITIVE_NATIVE_BODY (root
+	// +0x10, pv +0x94). Body::updatePV 00599360 (getPV), CoordinateFrame::lookVector 005187f0, Vector3::unitize 00518470,
+	// Math::angleToE0 005de0f0, Math::radWrap 005cbec0.
 	void Humanoid::cameraSetWalkOrientation(float rad, bool noAdjust)
 	{
 		if (noAdjust)
 		{
-			const float value = 0.0f;
-			if (walkRotationalVelocity != value)
-			{
-				walkRotationalVelocity = value;
-				raisePropertyChanged(propWalkRotationalVelocity);
-			}
+			setWalkRotationalVelocity(0.0f);
 		}
 		else
 		{
@@ -258,11 +251,7 @@ namespace RBX
 					if (fabs(value) < 0.1f)
 						value = 0.0f;
 
-					if (walkRotationalVelocity != value)
-					{
-						walkRotationalVelocity = value;
-						raisePropertyChanged(propWalkRotationalVelocity);
-					}
+					setWalkRotationalVelocity(value);
 				}
 			}
 		}

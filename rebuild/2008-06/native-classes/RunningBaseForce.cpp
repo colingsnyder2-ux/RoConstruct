@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native RBX::HUMAN::RunningBase::onComputeForce 00666550 (inactive; vtable 0084cc38 slot 8), plus Freefall 006675d0 / Jumping 00667a40 onComputeForce (below). Not in any build list.
+// 2008-06 native RBX::HUMAN::RunningBase::onComputeForce 00666550 (inactive; vtable 0084cc38 slot 8), plus Jumping 00667a40 onComputeForce (below). Not in any build list.
 // Layout and the other RunningBase rows: native-headers/humanoid/HumanoidStates1.h, native-classes/HumanoidStates1.cpp.
 //
 // Evidence (2008-06 Roblox.exe, 00666550..00666975, `ret 4`):
@@ -138,44 +138,9 @@ void RunningBase::onComputeForce(float dt)
         floorPrimitive->getBody()->accumulateForce(-force, floorTouchInWorld);
 }
 
-// Freefall::onComputeForce 006675d0 and Jumping::onComputeForce 00667a40 (drafts moved here from HumanoidStates2.cpp,
-// whose constructors need the native PartInstance.h; that header reaches the donor v8kernel/Body.h, which cannot share
-// a unit with Body2008.h). Freefall inlines the Body branch getters (moment copy 00513220 + Math::toDiagonal 005ddbb0,
-// branch torque +0x90 / static zero 0096f044 under guard 0096f050, branch velocity +0x3c / static 0097d568, branch
-// mass), and calls accumulateTorque 006060b0 and accumulateForceAtBranchCofm 0062e140 out of line.
-// 00962aa8: writable .data float 120000.0f without a symbol; the yaw-torque limit gain.
-// PARKED near miss (batch 13, 514 bytes = target size): the only differences are the stack frame (sub esp 0x60 against
-// 0x54) and the second Math::toDiagonal result, which the target reads back from the shared stack temp ([esp + 0x24])
-// while this compile reads [eax + 4]. Rejected variants: (1) both toDiagonal calls inline in the expressions -> 513 bytes,
-// updatePV 00599360 is called before the first moment copy (target: moment first); (2) one named iBody local assigned
-// twice -> worse (three-float copy of the second result). Next hypothesis (not tried, three-trial limit): the inline
-// Body::getBranchIBodyV3() in both places (its out-of-line COMDAT 0062e100 is what RunningBase calls).
-// Batch 14 (three more rejected, kept body unchanged): (a) `iBody = body->getBranchIBodyV3()` and getBranchIBodyV3().y
-// for the limit -> 515 bytes, frame still 0x60, gain/limit fmul operands swapped; (b) a float local
-// `iBodyY = Math::toDiagonal(...).y` -> 521 bytes, frame 0x54 (as the target) but .y copied to a float spill; (c)
-// `Math::toDiagonal(...).y * (desired - rotational.y) * 7500` -> 513 bytes, frame and slots as the target, but updatePV
-// 00599360 runs between the moment copy and toDiagonal and .y is read from [eax + 4]. The target shares one Vector3 temp
-// for both toDiagonal results (both read from [esp + 0x1c] / +0x24) and finishes toDiagonal before updatePV.
-extern float freefallYawLimitGain;                       // 00962aa8 (analog name)
-
-// 006675d0
-void Freefall::onComputeForce(float dt)
-{
-    Balancing::onComputeForce(dt);
-    Body* body = getHumanoid()->getRootBody();
-    if (!body)
-        return;
-    G3D::Vector3 iBody = Math::toDiagonal(body->getBranchIBody());
-    float torqueY = (desiredYRotationalVelocity - body->getVelocity().rotational.y) * iBody.y * 7500.0f;
-    torqueY -= body->getBranchTorque().y;
-    float maxTorqueY = Math::toDiagonal(body->getBranchIBody()).y * freefallYawLimitGain;
-    body->accumulateTorque(G3D::Vector3(0.0f, G3D::clamp(torqueY, -maxTorqueY, maxTorqueY), 0.0f));
-    G3D::Vector3 accel = (desiredVelocity - body->getBranchVelocity().linear) * 1250.0f;
-    G3D::Vector3 clamped = accel.clamp(minMoveForce(), maxMoveForce());
-    float mass = body->getBranchMass();
-    body->accumulateForceAtBranchCofm(G3D::Vector3(clamped.x * mass, 0.0f, clamped.z * mass));
-}
-
+// Freefall::onComputeForce 006675d0 moved back to HumanoidStates2.cpp in batch 15 (that unit now reaches Body2008.h
+// through NATIVE_PRIMITIVE_NATIVE_BODY). Jumping::onComputeForce 00667a40 stays here: it calls Flying::onComputeForce
+// 0070bdf0 directly, and HumanoidStates2.cpp defines Flying's empty body, which makes the compiler drop that call.
 // 00667a40: Flying::onComputeForce 0070bdf0 called directly; flag11 (+0x11) set when there is no root body or the
 // jump force (50.0f [0084ced4] - pv.velocity.linear.y +0xc8) * 5000.0f [0084ced0] is not positive. With a floor
 // primitive (00643d30 called twice): floor root = primitive body +0xa0 -> root +0x10; std::min of the two branch masses

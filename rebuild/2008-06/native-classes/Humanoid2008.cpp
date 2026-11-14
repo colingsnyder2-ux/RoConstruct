@@ -281,14 +281,7 @@ namespace RBX
 		}
 	}
 
-	void Humanoid::setWalkRotationalVelocity(const float& value)
-	{
-		if (walkRotationalVelocity != value)
-		{
-			walkRotationalVelocity = value;
-			raisePropertyChanged(propWalkRotationalVelocity);
-		}
-	}
+	// setWalkRotationalVelocity 005dc090: inline body in humanoid/Humanoid2008.h (emitted here through the descriptor).
 
 	void Humanoid::setWalkToPoint(const G3D::Vector3& value)
 	{

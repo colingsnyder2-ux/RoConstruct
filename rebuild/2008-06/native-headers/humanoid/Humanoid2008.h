@@ -136,7 +136,7 @@ namespace RBX
 		void setMaxHealth(float value);                      // 005dbf10
 		void takeDamage(float amount);                       // 005dbf40 ("TakeDamage")
 		void setWalkDirection(const G3D::Vector3& value);    // 005dbf80
-		void setWalkRotationalVelocity(const float& value);  // 005dc090
+		void setWalkRotationalVelocity(const float& value);  // 005dc090 (inline body below the class)
 		void setWalkToPoint(const G3D::Vector3& value);      // 005dc0c0
 		void setWalkToPart(PartInstance* value);             // 005dc150
 		void setJump(bool value);                            // 005dc270
@@ -228,4 +228,18 @@ namespace RBX
 	public:
 		virtual void getIgnorePrims(std::vector<const Primitive*>& ignore);   // 005db9e0
 	};
+
+	extern Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity; // 0097a2d8 (defined in Humanoid2008.cpp)
+
+	// 005dc090 (43 bytes): compare with +0x1b0, store, raisePropertyChanged 0040db00 with 0097a2d8. Inline in the header:
+	// cameraSetWalkOrientation 005dc7f0 inlines it twice (`add ecx, -0x14c; fcom [ecx + 0x1b0]` on the noAdjust path), and
+	// the out-of-line copy at 005dc090 is the one the WalkRotationalVelocity descriptor binds (Humanoid2008.cpp).
+	inline void Humanoid::setWalkRotationalVelocity(const float& value)
+	{
+		if (walkRotationalVelocity != value)
+		{
+			walkRotationalVelocity = value;
+			raisePropertyChanged(propWalkRotationalVelocity);
+		}
+	}
 }
