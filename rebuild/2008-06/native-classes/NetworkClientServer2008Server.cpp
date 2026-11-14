@@ -96,6 +96,19 @@ namespace RBX
 			}
 		}
 
+		// 004a1ed0 (donor Server.cpp ClientProxy constructor: Replicator(address, server->peerInterface() 00609a30)
+		// 004b9bd0, then remotePlayer +0x2d68 zeroed and server +0x2d70)
+		Server::ClientProxy::ClientProxy(SystemAddress systemAddress, Server* server)
+			: Replicator(systemAddress, server->peerInterface()),
+			  server(server)
+		{
+		}
+
+		// 004a18c0 (donor Server.cpp: releases remotePlayer +0x2d6c, then ~Replicator 004b96b0)
+		Server::ClientProxy::~ClientProxy()
+		{
+		}
+
 		// 004a4dc0 (donor Server.cpp OnReceive; strings 00823bcc "New connection from %s\n", "Server::OnReceive packet
 		// %d: %s"; create<ClientProxy> 004a21c0, setParent 0055a8f0, sendTop 004a2ac0, fire 0049d2b0 on 00970ebc)
 		PluginReceiveResult Server::OnReceive(RakPeerInterface* peer, Packet* packet)
