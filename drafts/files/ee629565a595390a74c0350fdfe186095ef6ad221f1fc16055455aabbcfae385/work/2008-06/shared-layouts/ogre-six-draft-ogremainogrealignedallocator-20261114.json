@@ -1,0 +1,61 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreMainOgreAlignedAllocator.cpp",
+  "source_sha256": "bbb39b426082f5967fe7213d63de6928f40853b862e37b5552bd9e6b83c38404",
+  "object_sha256": "e15a2e879d580cf486aaf69163633fb8fedd4d69794773fed0a40788103eaee9",
+  "run": "20261114-094651-46a9b5a5",
+  "checks": [
+    {
+      "address": "006517d0",
+      "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABU01@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.804878,
+        "target_bytes": 82,
+        "candidate_bytes": 82,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 70,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          57
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "body_comparison": "exact"
+    },
+    {
+      "address": "00651ae0",
+      "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@1@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.654321,
+        "target_bytes": 81,
+        "candidate_bytes": 81,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 69,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          57
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "body_comparison": "exact"
+    }
+  ],
+  "scope": "SDK or template codegen analog; original ownership and reference bindings remain unproven. Inactive draft; no selected provider, ABI, runtime, or server credit."
+}

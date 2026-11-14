@@ -1,0 +1,43 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ViewNewPartConstructor2008.cpp",
+      "checks": [
+        {
+          "addr": "004ebcc0",
+          "symbol": "??0Part@ViewNew@RBX@@QAE@ABV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVViewBase@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PartOutfitChanged2008.cpp",
+      "checks": [
+        {
+          "addr": "0059e3a0",
+          "symbol": "?outfitChanged@PartInstance@RBX@@QAEXXZ"
+        },
+        {
+          "addr": "007f4b90",
+          "symbol": "??__E?event_OutfitChanged@PartInstance@RBX@@2V?$SignalDesc@VPartInstance@RBX@@$$A6AXXZ@Reflection@2@A@@YAXXZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/SceneManager2008.cpp",
+      "checks": [
+        {
+          "addr": "004e8160",
+          "symbol": "??0Chunk@RenderBase@RBX@@QAE@M@Z"
+        },
+        {
+          "addr": "004e81d0",
+          "symbol": "??1Chunk@RenderBase@RBX@@UAE@XZ"
+        },
+        {
+          "addr": "004d6f60",
+          "symbol": "??0SceneManager@RenderBase@RBX@@IAE@PAVRenderSceneBase@12@@Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage_ppm.cpp",
+  "source_sha256": "28599c34cdb48837737761dbbf4f25b5b7e82a85646131c1f73d33ae9d8ef51d",
+  "object_sha256": "556a2f878150ac964790c1f39ae7183b99adb5cdde1d4426fcf6be17471745cc",
+  "run": "work\\2008-06\\native-check-runs\\20261114-105014-60ef8596\\results.json",
+  "checks": [
+    {
+      "address": "0050fef0",
+      "symbol": "?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.137056,
+        "target_bytes": 985,
+        "candidate_bytes": 985,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 833,
+        "unmasked_differences": 0,
+        "masked_bytes": 152,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 20,
+        "candidate_relocations": 38,
+        "missing_relocations": [],
+        "extra_relocations": [
+          50,
+          167,
+          189,
+          206,
+          211,
+          222,
+          227,
+          269,
+          362,
+          449,
+          499,
+          550,
+          629,
+          709,
+          823,
+          934,
+          963,
+          981
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "scope": "Draft: donor function and normalized code/data match; calls, ABI and runtime unverified."
+    },
+    {
+      "address": "0050ec40",
+      "symbol": "?decodePPM@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.179775,
+        "target_bytes": 356,
+        "candidate_bytes": 356,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 276,
+        "unmasked_differences": 0,
+        "masked_bytes": 80,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 7,
+        "candidate_relocations": 20,
+        "missing_relocations": [],
+        "extra_relocations": [
+          48,
+          79,
+          88,
+          97,
+          128,
+          139,
+          161,
+          226,
+          252,
+          270,
+          308,
+          334,
+          352
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "scope": "Draft: donor function and normalized code/data match; calls, ABI and runtime unverified."
+    }
+  ]
+}

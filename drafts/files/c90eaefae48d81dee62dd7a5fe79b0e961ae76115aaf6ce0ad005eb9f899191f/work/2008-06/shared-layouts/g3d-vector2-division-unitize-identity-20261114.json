@@ -1,0 +1,12 @@
+{
+  "source": "rebuild/2008-06/native-classes/G3DVector2.cpp",
+  "methods": {
+    "00509c30": "Vector2::operator/",
+    "00509c80": "Vector2::unitize"
+  },
+  "evidence": [
+    "Vector2 division calls 00509bd0 for zero divisor; that function initializes a two-float vector from C runtime infinity, matching Vector2::inf. The same scalar infinity guard 0096f020 and value 0096f018 are used by G3D::inf 00476520.",
+    "Original unitize computes square root of x*x+y*y, compares tolerance and scales both floats, matching donor source.",
+    "Inactive proof only; provider selection, ABI, runtime and server credit remain separate."
+  ]
+}

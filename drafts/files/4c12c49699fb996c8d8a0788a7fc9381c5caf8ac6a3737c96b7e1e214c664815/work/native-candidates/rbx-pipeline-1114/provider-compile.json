@@ -1,0 +1,110 @@
+{
+  "DataModelCreate": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelCreate.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "DataModelLock": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelLock.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxConstructor2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxConstructor2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderSceneViewBase2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneViewBase2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderSceneViewRbxGfx2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneViewRbxGfx2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxRender2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxRender2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "SceneManagerAggregating2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SceneManagerAggregating2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "PartInstanceLifetime": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLifetime.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AppUnit598PartInstance": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit598PartInstance.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "PartInstanceCoordinate": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceCoordinate.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "InstanceParent": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp": [
+      true,
+      "InstanceParent.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "AppUnit5ECSurfaces": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5ECSurfaces.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AppUnit5F0_2008Surface": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F0_2008Surface.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartConstructor2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartConstructor2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "PartOutfitChanged2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartOutfitChanged2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "SceneManager2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SceneManager2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "InstanceFullName": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceFullName.cpp": [
+      true,
+      "InstanceFullName.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "InstanceDescendantPropagation": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceDescendantPropagation.cpp": [
+      true,
+      "InstanceDescendantPropagation.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  }
+}

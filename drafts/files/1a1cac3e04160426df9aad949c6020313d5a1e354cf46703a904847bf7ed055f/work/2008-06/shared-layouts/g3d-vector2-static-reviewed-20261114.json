@@ -1,0 +1,135 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector2.cpp",
+      "checks": [
+        {
+          "addr": "00509ba0",
+          "symbol": "?zero@Vector2@G3D@@SAABV12@XZ",
+          "calls": [],
+          "references": [
+            {
+              "offset": 7,
+              "symbol": "?$S1@?1??zero@Vector2@G3D@@SAABV23@XZ@4IA",
+              "target": "009735bc",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 17,
+              "symbol": "?$S1@?1??zero@Vector2@G3D@@SAABV23@XZ@4IA",
+              "target": "009735bc",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 23,
+              "symbol": "?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A",
+              "target": "009735b4",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 29,
+              "symbol": "?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A",
+              "target": "009735b4",
+              "addend": 4,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 34,
+              "symbol": "?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A",
+              "target": "009735b4",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            }
+          ]
+        },
+        {
+          "addr": "00509bd0",
+          "symbol": "?inf@Vector2@G3D@@SAABV12@XZ",
+          "calls": [],
+          "references": [
+            {
+              "offset": 7,
+              "symbol": "?$S4@?1??inf@Vector2@G3D@@SAABV23@XZ@4IA",
+              "target": "009735c8",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 14,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 20,
+              "symbol": "?$S4@?1??inf@Vector2@G3D@@SAABV23@XZ@4IA",
+              "target": "009735c8",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 37,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 45,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 56,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 64,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 70,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 76,
+              "symbol": "?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+              "target": "009735c0",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 82,
+              "symbol": "?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+              "target": "009735c0",
+              "addend": 4,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            },
+            {
+              "offset": 87,
+              "symbol": "?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+              "target": "009735c0",
+              "addend": 0,
+              "evidence": "Original initializes a two-float static value and its guard; scalar infinity uses the independently identified G3D::inf globals."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

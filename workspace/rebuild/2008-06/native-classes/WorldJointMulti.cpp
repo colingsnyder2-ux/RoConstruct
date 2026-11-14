@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::MultiJoint (inactive); evidence in native-headers/v8world/Joints2008.h.
 // Verified by tests/record_native_world_joints.py. Rows of the MultiJoint unit (006468a0..00646ac0): init, both
 // constructors, the destructor, putInKernel, addToMultiJoint, getPoint, removeFromKernel, isBroken and the scalar
@@ -7,7 +8,9 @@
 // WorldJointMulti | 2008-06 | draft (no current byte proof)
 // 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by auto (+1) (mixed 2)
 // <<< native-status | src 7501bcc1 | roc native-status --write
+#define NATIVE_IPIPELINED2008_DONOR
 #include "v8world/Joints2008.h"
+#include "v8world/Primitive2008.h"
 #include "v8kernel/Kernel.h"
 #include "v8kernel/Connector.h"
 
@@ -101,5 +104,11 @@ namespace RBX
 		}
 
 		return false;
+	}
+
+	// 00646af0
+	float MultiJoint::getJointK()
+	{
+		return std::min(getPrimitive(0)->getJointK(), getPrimitive(1)->getJointK());
 	}
 }

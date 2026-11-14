@@ -1,0 +1,92 @@
+{
+  "DataModelCreate": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelCreate.cpp": [
+      true,
+      "DataModelCreate.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "DataModelLock": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelLock.cpp": [
+      true,
+      "DataModelLock.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "ViewRbxGfxConstructor2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxConstructor2008.cpp": [
+      true,
+      "ViewRbxGfxConstructor2008.cpp\nC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D/platform.h(230) : warning C4005: 'NOMINMAX' : macro redefinition\n        C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxConstructor2008.cpp(8) : see previous definition of 'NOMINMAX'\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "RenderSceneViewBase2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneViewBase2008.cpp": [
+      true,
+      "RenderSceneViewBase2008.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "RenderSceneViewRbxGfx2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneViewRbxGfx2008.cpp": [
+      true,
+      "RenderSceneViewRbxGfx2008.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "ViewRbxGfxRender2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxRender2008.cpp": [
+      true,
+      "ViewRbxGfxRender2008.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "SceneManagerAggregating2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SceneManagerAggregating2008.cpp": [
+      true,
+      "SceneManagerAggregating2008.cpp"
+    ]
+  },
+  "PartInstanceLifetime": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLifetime.cpp": [
+      true,
+      "-classes\\PartInstanceLifetime.cpp(13) : warning C4355: 'this' : used in base member initializer list\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLifetime.cpp(15) : warning C4355: 'this' : used in base member initializer list\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLifetime.cpp(16) : warning C4355: 'this' : used in base member initializer list"
+    ]
+  },
+  "AppUnit598PartInstance": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit598PartInstance.cpp": [
+      true,
+      "AppUnit598PartInstance.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "PartInstanceCoordinate": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceCoordinate.cpp": [
+      true,
+      "PartInstanceCoordinate.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "InstanceParent": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp": [
+      false,
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(15) : error C2228: left of '.c_str' must have class/struct/union\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(15) : error C3861: 'getFullName': identifier not found\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(16) : error C3861: 'isAncestorOf': identifier not found\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(16) : error C2228: left of '.c_str' must have class/struct/union\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(16) : error C2039: 'getFullName' : is not a member of 'RBX::Instance'\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(16) : error C2228: left of '.c_str' must have class/struct/union\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(16) : error C3861: 'getFullName': identifier not found\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(20) : error C3861: 'signalDescendentRemoving': identifier not found\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(27) : error C2440: '<function-style-cast>' : cannot convert from 'RBX::Instance *const ' to 'RBX::ChildRemoved'\nC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp(35) : error C3861: 'signalDescendentAdded': identifier not found"
+    ]
+  },
+  "AppUnit5ECSurfaces": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5ECSurfaces.cpp": [
+      true,
+      "AppUnit5ECSurfaces.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "AppUnit5F0_2008Surface": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F0_2008Surface.cpp": [
+      true,
+      "AppUnit5F0_2008Surface.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "ViewNewPartConstructor2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartConstructor2008.cpp": [
+      true,
+      "ViewNewPartConstructor2008.cpp\nC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D/platform.h(230) : warning C4005: 'NOMINMAX' : macro redefinition\n        C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartConstructor2008.cpp(4) : see previous definition of 'NOMINMAX'\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "PartOutfitChanged2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartOutfitChanged2008.cpp": [
+      true,
+      "PartOutfitChanged2008.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  }
+}

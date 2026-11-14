@@ -23,6 +23,7 @@
 // <<< native-status | src 67095a65 | roc native-status --write
 #include "gui/ArrowPanel.h"
 #include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
 #include "util/RunStateOwner.h"
 
 namespace RBX
@@ -30,6 +31,12 @@ namespace RBX
 	bool ArrowButton::isEnabled()
 	{
 		return dataModel->create<RunService>()->getRunState() == RS_RUNNING;
+	}
+
+	// 00656db0
+	bool ArrowPanel::isVisible() const
+	{
+		return dataModel->getWorkspace()->getControllersUsed().hasController(controller);
 	}
 
 #ifdef NATIVE_GUIWIDGETS_PENDING

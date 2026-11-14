@@ -1,0 +1,31 @@
+{
+  "address": "00550f90",
+  "symbol": "??0?$Array@H@G3D@@QAE@ABV01@@Z",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshShadow2008.cpp",
+  "source_sha256": "0367a02b871bdc78da38fd206e50bdff50d95dfafbd9f70e975e2eb9fb25ad73",
+  "object_sha256": "fb933b4ebb0b4cd13d4b13ec9f3c7f88b501298b15984b8ebbca1fa2272c6525",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-090312-ec6fc370\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 96.428571,
+    "target_bytes": 28,
+    "candidate_bytes": 28,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 24,
+    "unmasked_differences": 0,
+    "masked_bytes": 4,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 0,
+    "candidate_relocations": 1,
+    "missing_relocations": [],
+    "extra_relocations": [
+      15
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [],
+  "scope": "Fresh masked byte/data match; original context identifies G3D Array<int> copy constructor. Provider selection, ABI, runtime and server credit remain unverified."
+}

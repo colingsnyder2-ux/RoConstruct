@@ -1,0 +1,297 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage.cpp",
+  "source_sha256": "b3fdb1dacb23bc8a17e50af4fe755b241aef01bf962d8cc407e7743e6131b0b9",
+  "object_sha256": "50d022782f9c0e23d0d1f8590dd2955705569eaf7959cfa637e44c31f998af1b",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-104932-4b3d24c7\\analysis-42cfb670.json",
+  "checks": [
+    {
+      "address": "0050ddc0",
+      "symbol": "?resolveFormat@GImage@G3D@@CA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBEHW4312@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 92.307692,
+        "target_bytes": 923,
+        "candidate_bytes": 923,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 827,
+        "unmasked_differences": 0,
+        "masked_bytes": 96,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 21,
+        "candidate_relocations": 24,
+        "missing_relocations": [],
+        "extra_relocations": [
+          186,
+          301,
+          512
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8547104,
+          4
+        ],
+        [
+          8552332,
+          17
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 44,
+          "target": "00802460",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 112,
+          "target": "00802890",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 168,
+          "target": "008023e0",
+          "symbol": "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 185,
+          "target": "00512210",
+          "symbol": "?toUpper@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 203,
+          "target": "0080240c",
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 218,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 233,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 250,
+          "target": "0080236c",
+          "symbol": "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 300,
+          "target": "0050d600",
+          "symbol": "?stringToFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 332,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 420,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 472,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 511,
+          "target": "0051dbf0",
+          "symbol": "_png_sig_cmp",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 535,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 585,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 653,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 734,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 803,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 853,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 894,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 9,
+          "symbol": "__ehhandler$?resolveFormat@GImage@G3D@@CA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBEHW4312@@Z",
+          "target": "007cc1bb",
+          "status": "verified_simple_eh_metadata"
+        },
+        {
+          "offset": 46,
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 114,
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 147,
+          "symbol": "__imp_?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB",
+          "target": "008023e8",
+          "status": "verified_data_import"
+        },
+        {
+          "offset": 170,
+          "symbol": "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 205,
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 220,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 235,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 245,
+          "symbol": "??_C@_03DMNNDALJ@PPM?$AA@",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 252,
+          "symbol": "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 334,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 422,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 474,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 537,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 587,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 655,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 685,
+          "symbol": "??_C@_0BB@JAOLCNB@TRUEVISION?9XFILE?$AA@",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 736,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 805,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 855,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 896,
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "status": "verified_call_import"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

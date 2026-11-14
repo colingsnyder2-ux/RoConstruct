@@ -1,0 +1,64 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibInffast.cpp",
+  "source_sha256": "080fc2a1717e81f8c6a80040266cce52cdf545b0897170b8a6ef56ab5a4303d6",
+  "object_sha256": "ea78b98d0714d485524b577dd79ea440756e92f5d362e49999767f508ad4824f",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-124645-4fcda1ae\\analysis-8de9c3fa.json",
+  "checks": [
+    {
+      "address": "007a32d0",
+      "symbol": "_inflate_fast",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 99.189189,
+        "target_bytes": 1110,
+        "candidate_bytes": 1110,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1098,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8842472,
+          30
+        ],
+        [
+          8842504,
+          22
+        ],
+        [
+          8842528,
+          28
+        ]
+      ],
+      "verified_calls": [],
+      "verified_references": [
+        {
+          "offset": 961,
+          "symbol": "??_C@_0BO@ECPMAOGG@invalid?5distance?5too?5far?5back?$AA@",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 980,
+          "symbol": "??_C@_0BG@LBKINIKP@invalid?5distance?5code?$AA@",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 1010,
+          "symbol": "??_C@_0BM@FFFLPBBC@invalid?5literal?1length?5code?$AA@",
+          "status": "verified_readonly_data"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

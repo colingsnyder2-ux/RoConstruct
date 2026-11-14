@@ -1,0 +1,31 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+  "source_sha256": "d13d89f7fe7d43ef966b5c67604115864582a36019a1f2d35ece1fc181e8e5ba",
+  "object_sha256": "7d7cf2196c9f945e0a97f137d9686d72e683b6a259e8ac3567758c47326e9fd9",
+  "checks": [
+    {
+      "address": "00518650",
+      "symbol": "?random@Vector3@G3D@@SA?AV12@XZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.869565,
+        "target_bytes": 230,
+        "candidate_bytes": 230,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 202,
+        "unmasked_differences": 0,
+        "masked_bytes": 28,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 7,
+        "candidate_relocations": 7,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "scope": "Draft: original loads MSVCR90.dll!rand into EDI and invokes it three times; dynamic-call binding and runtime remain pending checker support."
+    }
+  ]
+}

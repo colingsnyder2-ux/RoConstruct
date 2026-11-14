@@ -1,0 +1,100 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HuffmanEncodingTree.cpp",
+  "source_sha256": "0353eefde95f8ebca3a70b0019c34266b5d3f998398946611cbfcfcb2130030c",
+  "object_sha256": "a8383220c6580fa2a882c30ffcebdc131059019d3b4db0279d74d164bacf3fb1",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-130359-b991a16e\\analysis-7d804b9c.json",
+  "checks": [
+    {
+      "address": "004cdfe0",
+      "symbol": "?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 93.841642,
+        "target_bytes": 341,
+        "candidate_bytes": 341,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 309,
+        "unmasked_differences": 0,
+        "masked_bytes": 32,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 8,
+        "missing_relocations": [],
+        "extra_relocations": [
+          71,
+          100,
+          192,
+          223,
+          241,
+          276,
+          317
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 70,
+          "target": "006a0920",
+          "symbol": "??2@YAPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 99,
+          "target": "004cede0",
+          "symbol": "?Push@?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 191,
+          "target": "004cede0",
+          "symbol": "?Push@?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 222,
+          "target": "004cede0",
+          "symbol": "?Push@?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 240,
+          "target": "006a067a",
+          "symbol": "??3@YAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 275,
+          "target": "006a067a",
+          "symbol": "??3@YAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 316,
+          "target": "006a067a",
+          "symbol": "??3@YAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+          "target": "007c9a88",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

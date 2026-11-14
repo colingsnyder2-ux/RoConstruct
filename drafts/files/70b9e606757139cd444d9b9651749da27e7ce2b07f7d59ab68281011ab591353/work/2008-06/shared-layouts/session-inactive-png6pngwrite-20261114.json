@@ -1,0 +1,35 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Png6pngwrite.cpp",
+  "source_sha256": "e7db6493f3c4ab6a2ad61117bebb501b87425b4995514caf96ec5fd0a32559c6",
+  "checks": [
+    {
+      "address": "0051c740",
+      "symbol": "_png_create_write_struct",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 88.571429,
+        "target_bytes": 35,
+        "candidate_bytes": 35,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 31,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          27
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-054713-4c555821\\analysis-a2ac3787.json",
+      "object_sha256": "c86490bcbd23067117d57b43f798c0ce99318fa3c70ca26c107117a2718ee79f"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

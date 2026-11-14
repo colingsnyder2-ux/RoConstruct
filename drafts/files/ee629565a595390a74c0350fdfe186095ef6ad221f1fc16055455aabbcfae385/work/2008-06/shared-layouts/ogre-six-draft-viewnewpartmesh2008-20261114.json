@@ -1,0 +1,35 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartMesh2008.cpp",
+  "source_sha256": "ae534869b355349447edd2f1dd9a32f554cb9fb2b9a9886825402a67fb6e7223",
+  "object_sha256": "de5499684c4d18fc7c4f8eecfd98485ddec62ac41adb05884f41e6daafebdd4b",
+  "run": "20261114-094651-46a9b5a5",
+  "checks": [
+    {
+      "address": "004d7680",
+      "symbol": "??1?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@QAE@XZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.5,
+        "target_bytes": 56,
+        "candidate_bytes": 56,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 48,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          28
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "body_comparison": "exact"
+    }
+  ],
+  "scope": "SDK or template codegen analog; original ownership and reference bindings remain unproven. Inactive draft; no selected provider, ABI, runtime, or server credit."
+}

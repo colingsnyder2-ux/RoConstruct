@@ -1,0 +1,68 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DBinaryOutputLength2008.cpp",
+  "source_sha256": "b4d64fd7136810713fc4ecade0f3b2f9b0fd435f38c05094afb999ec77d25d82",
+  "object_sha256": "d5d001007d83c1a12a08520396439ced860a00bd2e09315426f586c2cf844400",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-112359-6446a127\\analysis-20b76d2f.json",
+  "checks": [
+    {
+      "address": "0050ab80",
+      "symbol": "?setLength@BinaryOutput@G3D@@QAEXH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.714286,
+        "target_bytes": 98,
+        "candidate_bytes": 98,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 78,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          46,
+          87
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8551996,
+          40
+        ],
+        [
+          9279868,
+          16
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 29,
+          "target": "008028a4",
+          "symbol": "__imp_??0exception@std@@QAE@ABQBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 45,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 86,
+          "target": "00519830",
+          "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

@@ -1,0 +1,16 @@
+{
+  "source": "rebuild/2008-06/native-classes/G3DVector3.cpp",
+  "methods": {
+    "005183a0": "hashCode",
+    "005183c0": "operator/=",
+    "00518470": "unitize",
+    "005184c0": "generateOrthonormalBasis",
+    "00518740": "operator/"
+  },
+  "evidence": [
+    "Original hashCode multiplies Y and Z bit patterns by 37 and 101, matching the source. Unitize and basis construct match their distinctive three-component floating point operations.",
+    "Original G3D::inf 00476520 initializes and accesses guard 0096f020 and infinity value 0096f018 from the verified C-runtime infinity import. The same guard and value appear at all reviewed operator/= references.",
+    "Original Vector3::inf 00510960 constructs three identical floats using those same infinity globals; operator/ calls it for a zero divisor.",
+    "All five passed byte, local data, call and absolute reference checks. This is local inactive evidence; provider selection, ABI, runtime and server credit remain separate."
+  ]
+}

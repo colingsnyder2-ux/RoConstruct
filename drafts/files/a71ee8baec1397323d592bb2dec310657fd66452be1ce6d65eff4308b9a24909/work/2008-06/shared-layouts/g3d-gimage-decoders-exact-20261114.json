@@ -1,0 +1,741 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage.cpp",
+  "source_sha256": "b3fdb1dacb23bc8a17e50af4fe755b241aef01bf962d8cc407e7743e6131b0b9",
+  "object_sha256": "50d022782f9c0e23d0d1f8590dd2955705569eaf7959cfa637e44c31f998af1b",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-104932-4b3d24c7\\analysis-1b2dc7e2.json",
+  "checks": [
+    {
+      "address": "005102d0",
+      "symbol": "?decode@GImage@G3D@@AAEXAAVBinaryInput@2@W4Format@12@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.696429,
+        "target_bytes": 448,
+        "candidate_bytes": 448,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 352,
+        "unmasked_differences": 0,
+        "masked_bytes": 96,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 13,
+        "candidate_relocations": 24,
+        "missing_relocations": [],
+        "extra_relocations": [
+          56,
+          92,
+          128,
+          164,
+          200,
+          236,
+          272,
+          308,
+          374,
+          397,
+          412
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8553092,
+          15
+        ],
+        [
+          9290872,
+          16
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 55,
+          "target": "0050fef0",
+          "symbol": "?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 91,
+          "target": "0050ec40",
+          "symbol": "?decodePPM@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 127,
+          "target": "0050cdd0",
+          "symbol": "?decodePNG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 163,
+          "target": "0050cb40",
+          "symbol": "?decodeJPEG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 199,
+          "target": "0050bb30",
+          "symbol": "?decodeTGA@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 235,
+          "target": "0050c040",
+          "symbol": "?decodeBMP@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 271,
+          "target": "0050f4c0",
+          "symbol": "?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 307,
+          "target": "0050d800",
+          "symbol": "?decodePCX@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 344,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 373,
+          "target": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 396,
+          "target": "004728b0",
+          "symbol": "??0Error@GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 411,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    },
+    {
+      "address": "0050ddc0",
+      "symbol": "?resolveFormat@GImage@G3D@@CA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBEHW4312@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 92.307692,
+        "target_bytes": 923,
+        "candidate_bytes": 923,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 827,
+        "unmasked_differences": 0,
+        "masked_bytes": 96,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 21,
+        "candidate_relocations": 24,
+        "missing_relocations": [],
+        "extra_relocations": [
+          186,
+          301,
+          512
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8547104,
+          4
+        ],
+        [
+          8552332,
+          17
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 44,
+          "target": "00802460",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 112,
+          "target": "00802890",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 168,
+          "target": "008023e0",
+          "symbol": "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 185,
+          "target": "00512210",
+          "symbol": "?toUpper@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 203,
+          "target": "0080240c",
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 218,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 233,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 250,
+          "target": "0080236c",
+          "symbol": "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 300,
+          "target": "0050d600",
+          "symbol": "?stringToFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 332,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 420,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 472,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 511,
+          "target": "0051dbf0",
+          "symbol": "_png_sig_cmp",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 535,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 585,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 653,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 734,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 803,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 853,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 894,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ]
+    },
+    {
+      "address": "0050d800",
+      "symbol": "?decodePCX@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.645051,
+        "target_bytes": 1465,
+        "candidate_bytes": 1465,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1241,
+        "unmasked_differences": 0,
+        "masked_bytes": 224,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 16,
+        "candidate_relocations": 56,
+        "missing_relocations": [],
+        "extra_relocations": [
+          66,
+          106,
+          135,
+          175,
+          199,
+          213,
+          227,
+          241,
+          255,
+          262,
+          320,
+          354,
+          380,
+          400,
+          407,
+          444,
+          542,
+          646,
+          698,
+          841,
+          863,
+          870,
+          914,
+          921,
+          953,
+          989,
+          995,
+          1035,
+          1043,
+          1097,
+          1128,
+          1253,
+          1279,
+          1297,
+          1335,
+          1361,
+          1379,
+          1417,
+          1443,
+          1461
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8552860,
+          23
+        ],
+        [
+          8552776,
+          84
+        ],
+        [
+          8552748,
+          27
+        ],
+        [
+          9290872,
+          16
+        ],
+        [
+          8552696,
+          52
+        ],
+        [
+          9290872,
+          16
+        ],
+        [
+          8552672,
+          22
+        ],
+        [
+          9290872,
+          16
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 65,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 105,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 134,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 174,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 198,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 212,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 226,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 240,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 254,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 261,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 319,
+          "target": "00515d10",
+          "symbol": "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 353,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 379,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 399,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 406,
+          "target": "0050aab0",
+          "symbol": "?readUInt16@BinaryInput@G3D@@QAEGXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 443,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 541,
+          "target": "00508530",
+          "symbol": "?malloc@System@G3D@@SAPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 645,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 697,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 840,
+          "target": "004066c0",
+          "symbol": "??_H@YGXPAXIHP6EPAX0@Z@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 862,
+          "target": "0050aa60",
+          "symbol": "?setPosition@BinaryInput@G3D@@QAEXH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 869,
+          "target": "0050aa80",
+          "symbol": "?readUInt8@BinaryInput@G3D@@QAEEXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 891,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 913,
+          "target": "00509db0",
+          "symbol": "?common@Log@G3D@@SAPAV12@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 920,
+          "target": "00509ef0",
+          "symbol": "?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 939,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 952,
+          "target": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 988,
+          "target": "00509db0",
+          "symbol": "?common@Log@G3D@@SAPAV12@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 994,
+          "target": "0050a120",
+          "symbol": "?printf@Log@G3D@@QAAXPBDZZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1013,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 1034,
+          "target": "00515d10",
+          "symbol": "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1042,
+          "target": "0050aa60",
+          "symbol": "?setPosition@BinaryInput@G3D@@QAEXH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1096,
+          "target": "005157d0",
+          "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1127,
+          "target": "0050aa80",
+          "symbol": "?readUInt8@BinaryInput@G3D@@QAEEXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1225,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 1252,
+          "target": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1278,
+          "target": "004728b0",
+          "symbol": "??0Error@GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1296,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1310,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 1334,
+          "target": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1360,
+          "target": "004728b0",
+          "symbol": "??0Error@GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1378,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1392,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 1416,
+          "target": "0050aa30",
+          "symbol": "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1442,
+          "target": "004728b0",
+          "symbol": "??0Error@GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1460,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

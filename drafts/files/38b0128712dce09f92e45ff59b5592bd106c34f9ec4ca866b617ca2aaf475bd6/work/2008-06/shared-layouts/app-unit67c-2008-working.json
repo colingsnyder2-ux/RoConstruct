@@ -1,0 +1,1063 @@
+{
+  "class": "Ogre::RbxSubEntity / RbxSubEntityShadowRenderable unit of the application range 0067c000..00688000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit67c-2008/NativeAppUnit67CLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit67c-2008/NativeAppUnit67CLayout.cpp"
+    ],
+    "sub_entity": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit67c-2008/NativeAppUnit67C_2008_sub_entity.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit67c_2008.py": "0cbc95d971cc2abb500fd4918e644232921c824a6110d8c50e705ff19fd4ce84",
+    "rebuild/2008-06/native-headers/AppUnit67C_2008/RbxSubEntity2008.h": "c615ebded594e78e1f6b6b176824b0e41241977d7b7ce2e81b6ee4776b713bb9",
+    "rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp": "a2b4c4bbf64d5864723c94879107881f94c779f7f5cf78ca601b1e8fff1622c9"
+  },
+  "objects": {
+    "layout": "716dc97f16958459d2efe7b168953a9c5e606a46080dab030e0557c19dd3091a",
+    "sub_entity": "d061743f269412c6c76c20cf79ab9bd730d0f7877605f6264ada052a94cd1be8"
+  },
+  "layout": {
+    "size": "0x15c",
+    "subEntitySize": "0xec",
+    "shadowCaster": "0xec",
+    "parentEntity": "0x28",
+    "material": "0x48",
+    "subMesh": "0x54",
+    "cachedDist": "0xe4",
+    "cachedCamera": "0xe8",
+    "transform": "0xf0",
+    "lodSubMeshes": "0x130",
+    "lod": "0x134",
+    "customValue": "0x138",
+    "castShadows": "0x13c",
+    "shadowSubMesh": "0x140",
+    "shadowRenderables": "0x144",
+    "srSize": "0x70",
+    "srBase": "0x4c",
+    "srPosition": "0x4c",
+    "srW": "0x58",
+    "srVertexData": "0x64",
+    "srBinding": "0x68",
+    "srSubEntity": "0x6c"
+  },
+  "unit_map": {
+    "visual-engine tail 0067c000..0067c4c0": "VisualEngine unit (ogre-visual-engine-working.json, pending-build-only there): 0067c020 (boost::call_once 0054ab60 / flag 00973984, then the SubMesh name map 0097db44 and Mesh::createSubMesh; ret 0x10), 0067c130 (896 B, boost thread_exception / call_once helpers), ??_G VisualEngine 0067c4b0 (vtable 0084df2c slot 0). Library-shaped boost code and pending VisualEngine rows; not built here.",
+    "rbx-entity 0067c4d0..0067f16f": "Ogre::RbxEntity (RTTI 0084e45c -> Entity -> MovableObject -> ShadowCaster, AnimableObject +0x4, Resource::Listener +0xc8; secondary vtables 0084e448 / 0084e43c). Size 0x2bc (new 0x2bc at 0067452d / 007ab470 before the constructor 0067d1f0); imported Entity() / ~Entity (Entity is 0x274). Constructor / destructor 0067d420: +0x274 4-byte value (setter 0067c510), bools +0x278 / +0x27a = true, +0x279 (set by slot 24 0067c570), AxisAlignedBox +0x27c, float +0x29c = [008222f0], int +0x2a0 = 0x378, std::vector +0x2a4..+0x2bb (aux proxy, first/last/end +0x2b0); the destructor deletes every SubEntity via dynamic_cast<RbxSubEntity*> (TD 0096301c) and erases the Entity +0xd8 vector. Rows: 0067c4d0 (InvalidParametersException factory, Ogre header template), 0067c510, 0067c520 (MeshPtr assign at +0xcc), 0067c570, 0067c5a0, STL instantiations 0067c5e0..0067d1a0 / 0067d580 / 0067d5b0 / 0067d600 / 0067d820 / 0067d8f0 / 0067da70 (Vector4, Plane, double sort, 8/12/16-byte PODs, String vectors), constructor 0067d1f0, removeSubEntity 0067d2d0, 0067d3d0, destructor 0067d420, ??_G 0067d5e0, 0067d9b0 (news RbxSubEntity 00685850 at 0067d9f3), 0067da50, slot 53 0067daf0 (2039 B), 0067e2f0 (3704 B). Not built: RenderLib/AggregateChunk2008.h (render-scene owner) already declares Ogre::RbxEntity (removeSubEntity only, no base), so this unit sends a proposal instead of redeclaring it.",
+    "rbx-sky 0067f170..0068118f": "Ogre::RbxSky (ogre-rbx-sky-working.json: the vector COMDATs are counted there, RbxSky members are pending-build-only) and the exe-local ManualObject rows 00681160 / 00681180 (ogre-rbx-locals).",
+    "rbx-scene-node 00681190..006843ef": "Ogre::RbxSceneNode / TwoDManager (ogre-rbx-node-working.json). Uncounted there: 00682150 (map erase by key), 00682430 (prepares the edge list of an exe-local SubMesh subclass: +0xc4 bool, +0xc8 = EdgeListBuilder::build; called by the RbxSubEntity iterator 00685a92), 006824e0 (its destructor: ~EdgeData +0xc8, ~AxisAlignedBox +0xcc, imported ~SubMesh; called by 0054ac7a), 006825b0, 006829a0, 00682ad0, 00682c70 and render 006832b0.",
+    "rbx-font 006843f0..00684f9f": "Ogre::RbxFont (SharedPtr<RbxFont> vtable 0084d1d4): 006843f0 / 00684640 (STL helpers), 00684730 (draws a string through TwoDManager::addQuad 00682d60; caller 0066fe0c), 00684b10 (loads the \"ft%d\" textures from a G3D BinaryInput into MemoryDataStreams; called by 00684f42), 00684eb0 (creates the SharedPtr<RbxFont>; caller AdornRbxGfx 00674398). No declaration is derived (constructor size not read); not built.",
+    "rbx-sub-entity 00684fa0..00685e07": "Ogre::RbxSubEntity and RbxSubEntity::RbxSubEntityShadowRenderable (built here; header AppUnit67C_2008/RbxSubEntity2008.h). getPositionBuffer 00684fa0 (only caller the iterator 00685c9c) starts the block; the vtables 0084e90c / 0084e8d4 / 0084e88c reference every virtual row; the iterator 00685a40 (968 B) ends at 00685e07. Not built: getWorldBoundingBox 00685490 and getShadowVolumeRenderableIterator 00685a40 (exe-local SubMesh subclass +0xc8 / +0xec).",
+    "mesh-builders 00685e10..": "00685e10 (Vector3 setter at +0x20) and 00685e30 (initialises a 0x2c-byte parameter block: +0 / +8 = 0, +4 = false, +0xc = 2, +0x10..+0x1c colour from 0081c3b8, +0x20 Vector3 zero), both called only by AdornRbxGfx 00672751..00673774 next to the builders 00685ea0 (6588 B, frame 0x180c; callers 006727c5 / 00673678 / 006736f4) and 00687860 (6738 B; caller 0068b5fd), which run past 00688000 (next row 006892b2). Owner and parameter type not derived; not built."
+  },
+  "range_functions": 145,
+  "range_rows_counted_by_other_receipts": {
+    "0067c5e0": [
+      "misc-leaves-working.json"
+    ],
+    "0067f170": [
+      "ogre-rbx-sky-working.json"
+    ],
+    "0067f1d0": [
+      "ogre-rbx-sky-working.json"
+    ],
+    "0067f7c0": [
+      "ogre-rbx-sky-working.json"
+    ],
+    "0067fa80": [
+      "ogre-rbx-sky-working.json"
+    ],
+    "0067fb10": [
+      "ogre-rbx-sky-working.json"
+    ],
+    "0067fc70": [
+      "ogre-rbx-sky-working.json"
+    ],
+    "00681160": [
+      "ogre-rbx-locals-working.json"
+    ],
+    "00681180": [
+      "ogre-rbx-locals-working.json"
+    ],
+    "00681190": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681250": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681300": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681360": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681560": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006817e0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006818e0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681a00": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681a50": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681b40": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681c30": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681f00": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00681f90": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682040": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682100": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006821c0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006822e0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682350": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682560": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682b20": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682b40": [
+      "flagstandservice-working.json",
+      "ogre-rbx-node-working.json"
+    ],
+    "00682b90": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682bd0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00682cc0": [
+      "humanoid2008-working.json"
+    ],
+    "00682d60": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00683000": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006830b0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00683170": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006831d0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00683240": [
+      "ogre-rbx-node-working.json"
+    ],
+    "00684390": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006843b0": [
+      "ogre-rbx-node-working.json"
+    ],
+    "006843d0": [
+      "ogre-rbx-node-working.json"
+    ]
+  },
+  "rows": {
+    "sub_entity": [
+      {
+        "address": "006851d0",
+        "symbol": "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAV12@3@Z",
+        "size": 460,
+        "target_size": 460,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0ShadowRenderable@Ogre@@QAE@XZ": "0x804730 (rgmain.dll!??0ShadowRenderable@Ogre@@QAE@XZ)",
+          "??_7RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@6B@": "0x84e88c (vtable RTTI .?AVRbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@ offset 0x0)",
+          "__imp_??0HardwareVertexBufferSharedPtr@Ogre@@QAE@XZ": "0x804700 (rgmain.dll!??0HardwareVertexBufferSharedPtr@Ogre@@QAE@XZ)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "__imp_??0IndexData@Ogre@@QAE@XZ": "0x80472c (rgmain.dll!??0IndexData@Ogre@@QAE@XZ)",
+          "__imp_??4HardwareIndexBufferSharedPtr@Ogre@@QAEAAV01@ABV01@@Z": "0x804444 (rgmain.dll!??4HardwareIndexBufferSharedPtr@Ogre@@QAEAAV01@ABV01@@Z)",
+          "__imp_??0VertexData@Ogre@@QAE@XZ": "0x8043e0 (rgmain.dll!??0VertexData@Ogre@@QAE@XZ)",
+          "__imp_??4HardwareVertexBufferSharedPtr@Ogre@@QAEAAV01@ABV01@@Z": "0x804360 (rgmain.dll!??4HardwareVertexBufferSharedPtr@Ogre@@QAEAAV01@ABV01@@Z)",
+          "??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAV12@3@Z": "0x6851d0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE@PAVEntity@2@PAVHardwareIndexBufferSharedPtr@2@PBVVertexData@2@_NPAV12@3@Z"
+        ]
+      },
+      {
+        "address": "006853a0",
+        "symbol": "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ",
+        "size": 167,
+        "target_size": 167,
+        "exact": true,
+        "verified_targets": {
+          "??_7RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@6B@": "0x84e88c (vtable RTTI .?AVRbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@ offset 0x0)",
+          "__imp_??1IndexData@Ogre@@QAE@XZ": "0x804cb0 (rgmain.dll!??1IndexData@Ogre@@QAE@XZ)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "__imp_??1VertexData@Ogre@@QAE@XZ": "0x804324 (rgmain.dll!??1VertexData@Ogre@@QAE@XZ)",
+          "__imp_??1HardwareVertexBufferSharedPtr@Ogre@@UAE@XZ": "0x80435c (rgmain.dll!??1HardwareVertexBufferSharedPtr@Ogre@@UAE@XZ)",
+          "__imp_??1ShadowRenderable@Ogre@@UAE@XZ": "0x804728 (rgmain.dll!??1ShadowRenderable@Ogre@@UAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00685640",
+        "symbol": "??_GRbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAE@XZ": "0x6853a0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00685450",
+        "symbol": "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685460",
+        "symbol": "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685470",
+        "symbol": "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00684fa0",
+        "symbol": "?getPositionBuffer@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@QAE?AVHardwareVertexBufferSharedPtr@3@XZ",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0HardwareVertexBufferSharedPtr@Ogre@@QAE@ABV01@@Z": "0x80471c (rgmain.dll!??0HardwareVertexBufferSharedPtr@Ogre@@QAE@ABV01@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00685480",
+        "symbol": "?isVisible@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBE_NXZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685660",
+        "symbol": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z",
+        "size": 156,
+        "target_size": 156,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0SubEntity@Ogre@@IAE@PAVEntity@1@PAVSubMesh@1@@Z": "0x804750 (rgmain.dll!??0SubEntity@Ogre@@IAE@PAVEntity@1@PAVSubMesh@1@@Z)",
+          "??_7RbxSubEntity@Ogre@@6BSubEntity@1@@": "0x84e90c (vtable RTTI .?AVRbxSubEntity@Ogre@@ offset 0x0)",
+          "??_7RbxSubEntity@Ogre@@6BShadowCaster@1@@": "0x84e8d4 (vtable RTTI .?AVRbxSubEntity@Ogre@@ offset 0xec)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@@Z"
+        ]
+      },
+      {
+        "address": "00685850",
+        "symbol": "??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@PAVSubMesh@1@H@Z",
+        "size": 192,
+        "target_size": 192,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0SubEntity@Ogre@@IAE@PAVEntity@1@PAVSubMesh@1@@Z": "0x804750 (rgmain.dll!??0SubEntity@Ogre@@IAE@PAVEntity@1@PAVSubMesh@1@@Z)",
+          "??_7RbxSubEntity@Ogre@@6BSubEntity@1@@": "0x84e90c (vtable RTTI .?AVRbxSubEntity@Ogre@@ offset 0x0)",
+          "??_7RbxSubEntity@Ogre@@6BShadowCaster@1@@": "0x84e8d4 (vtable RTTI .?AVRbxSubEntity@Ogre@@ offset 0xec)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0RbxSubEntity@Ogre@@QAE@PAVEntity@1@PAVSubMesh@1@H@Z"
+        ]
+      },
+      {
+        "address": "00685910",
+        "symbol": "??1RbxSubEntity@Ogre@@UAE@XZ",
+        "size": 269,
+        "target_size": 269,
+        "exact": true,
+        "verified_targets": {
+          "??_7RbxSubEntity@Ogre@@6BSubEntity@1@@": "0x84e90c (vtable RTTI .?AVRbxSubEntity@Ogre@@ offset 0x0)",
+          "??_7RbxSubEntity@Ogre@@6BShadowCaster@1@@": "0x84e8d4 (vtable RTTI .?AVRbxSubEntity@Ogre@@ offset 0xec)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?erase@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@2@V?$_Vector_const_iterator@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@2@0@Z": "0x445dc0 (folded / helper body, compared exact)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "__imp_??_7ShadowCaster@Ogre@@6B@": "0x80477c (rgmain.dll!??_7ShadowCaster@Ogre@@6B@)",
+          "__imp_??1SubEntity@Ogre@@MAE@XZ": "0x80474c (rgmain.dll!??1SubEntity@Ogre@@MAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??1RbxSubEntity@Ogre@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00685a20",
+        "symbol": "??_GRbxSubEntity@Ogre@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1RbxSubEntity@Ogre@@UAE@XZ": "0x685910 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00685840",
+        "symbol": "??_ERbxSubEntity@Ogre@@WOM@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_ERbxSubEntity@Ogre@@UAEPAXI@Z": "0x685a20 (own ??_G row (deleting destructor))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00684fd0",
+        "symbol": "?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?_getRenderOperation@SubMesh@Ogre@@QAEXAAVRenderOperation@2@G@Z": "0x804720 (rgmain.dll!?_getRenderOperation@SubMesh@Ogre@@QAEXAAVRenderOperation@2@G@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00685710",
+        "symbol": "?getWorldTransforms@RbxSubEntity@Ogre@@UBEXPAVMatrix4@2@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685730",
+        "symbol": "?getWorldOrientation@RbxSubEntity@Ogre@@UBEABVQuaternion@2@XZ",
+        "size": 168,
+        "target_size": 168,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BC@DKEDINFM@RBX?5perf?5warning?$CB?$AA@": "0x84e95c (string 'RBX perf warning!')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_?getSingleton@LogManager@Ogre@@SAAAV12@XZ": "0x804e74 (rgmain.dll!?getSingleton@LogManager@Ogre@@SAAAV12@XZ)",
+          "__imp_?logMessage@LogManager@Ogre@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4LogMessageLevel@2@_N@Z": "0x804e78 (rgmain.dll!?logMessage@LogManager@Ogre@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4LogMessageLevel@2@_N@Z)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?$S1@?1??getWorldOrientation@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ@4IA": "0x97dc24 (local static)",
+          "__imp_?extract3x3Matrix@Matrix4@Ogre@@QBEXAAVMatrix3@2@@Z": "0x804778 (rgmain.dll!?extract3x3Matrix@Matrix4@Ogre@@QBEXAAVMatrix3@2@@Z)",
+          "?orientation@?1??getWorldOrientation@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ@4V43@A": "0x97dc14 (local static)",
+          "__imp_?FromRotationMatrix@Quaternion@Ogre@@QAEXABVMatrix3@2@@Z": "0x804c78 (rgmain.dll!?FromRotationMatrix@Quaternion@Ogre@@QAEXABVMatrix3@2@@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?getWorldOrientation@RbxSubEntity@Ogre@@UBEABVQuaternion@2@XZ"
+        ]
+      },
+      {
+        "address": "00685010",
+        "symbol": "?getSquaredViewDepth@RbxSubEntity@Ogre@@UBEMPBVCamera@2@@Z",
+        "size": 144,
+        "target_size": 144,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVRbxSceneNode@Ogre@@@8": "0x932d04 (type descriptor .?AVRbxSceneNode@Ogre@@)",
+          "??_R0?AVNode@Ogre@@@8": "0x932cec (type descriptor .?AVNode@Ogre@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "__imp_?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ": "0x804490 (rgmain.dll!?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00685820",
+        "symbol": "?setCustomValue@RbxSubEntity@Ogre@@UAEXM@Z",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685830",
+        "symbol": "?getCustomValue@RbxSubEntity@Ogre@@UBEMXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685700",
+        "symbol": "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ",
+        "size": 4,
+        "target_size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685170",
+        "symbol": "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ",
+        "size": 40,
+        "target_size": 40,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0DG@JFCMHDNB@RBX?5RbxSubEntity?3?3getEdgeList?$CI?$CJ?3@": "0x84e818 (string 'RBX RbxSubEntity::getEdgeList(): should not be called')",
+          "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+          "__TI1?AVexception@std@@": "0x8d997c (throw info .?AVexception@std@@)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006851a0",
+        "symbol": "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ",
+        "size": 40,
+        "target_size": 40,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0DG@MOCJAFLG@RBX?5RbxSubEntity?3?3hasEdgeList?$CI?$CJ?3@": "0x84e850 (string 'RBX RbxSubEntity::hasEdgeList(): should not be called')",
+          "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+          "__TI1?AVexception@std@@": "0x8d997c (throw info .?AVexception@std@@)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00685100",
+        "symbol": "?getLightCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685590",
+        "symbol": "?getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z",
+        "size": 170,
+        "target_size": 170,
+        "exact": true,
+        "verified_targets": {
+          "?$S3@?1??getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@3@ABVLight@3@M@Z@4IA": "0x97dc10 (local static)",
+          "?darkCapBounds@?1??getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@3@ABVLight@3@M@Z@4V43@A": "0x97dbf0 (local static)",
+          "__imp_??0AxisAlignedBox@Ogre@@QAE@XZ": "0x804338 (rgmain.dll!??0AxisAlignedBox@Ogre@@QAE@XZ)",
+          "??__FdarkCapBounds@?1??getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z@YAXXZ": "0x801590 (folded / helper body, compared exact)",
+          "_atexit": "0x6a17af (external)",
+          "__imp_??4AxisAlignedBox@Ogre@@QAEAAV01@ABV01@@Z": "0x804348 (rgmain.dll!??4AxisAlignedBox@Ogre@@QAEAAV01@ABV01@@Z)",
+          "__imp_?getAs4DVector@Light@Ogre@@QBE?AVVector4@2@XZ": "0x804744 (rgmain.dll!?getAs4DVector@Light@Ogre@@QBE?AVVector4@2@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z"
+        ]
+      },
+      {
+        "address": "00685110",
+        "symbol": "?getPointExtrusionDistance@RbxSubEntity@Ogre@@UBEMPBVLight@2@@Z",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?getExtrusionDistance@ShadowCaster@Ogre@@IBEMABVVector3@2@PBVLight@2@@Z": "0x804724 (rgmain.dll!?getExtrusionDistance@ShadowCaster@Ogre@@IBEMABVVector3@2@PBVLight@2@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006850a0",
+        "symbol": "?setMaterial@RbxSubEntity@Ogre@@QAEXABVMaterialPtr@2@@Z",
+        "size": 9,
+        "target_size": 9,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??4MaterialPtr@Ogre@@QAEAAV01@ABV01@@Z": "0x8045f4 (rgmain.dll!??4MaterialPtr@Ogre@@QAEAAV01@ABV01@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006850b0",
+        "symbol": "?setSubMesh@RbxSubEntity@Ogre@@QAEXHPAVSubMesh@2@@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006850d0",
+        "symbol": "?getSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@H@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006850f0",
+        "symbol": "?setLod@RbxSubEntity@Ogre@@QAEXH@Z",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00685140",
+        "symbol": "?getCoarsestSubMesh@RbxSubEntity@Ogre@@QAEPAVSubMesh@2@XZ",
+        "size": 40,
+        "target_size": 40,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ]
+  },
+  "folded_not_counted": [
+    {
+      "address": "00445dc0",
+      "symbol": "?erase@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@2@V?$_Vector_const_iterator@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@2@0@Z",
+      "size": 141,
+      "target_size": 141,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)"
+      },
+      "local_eh": [],
+      "folded_exact": true,
+      "reason": "body outside this block (folded by the linker or a compiler helper); compared, not counted"
+    },
+    {
+      "address": "00801590",
+      "symbol": "??__FdarkCapBounds@?1??getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z@YAXXZ",
+      "size": 11,
+      "target_size": 11,
+      "exact": false,
+      "verified_targets": {
+        "?darkCapBounds@?1??getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@3@ABVLight@3@M@Z@4V43@A": "0x97dbf0 (local static)",
+        "__imp_??1AxisAlignedBox@Ogre@@QAE@XZ": "0x8043ec (rgmain.dll!??1AxisAlignedBox@Ogre@@QAE@XZ)"
+      },
+      "local_eh": [],
+      "folded_exact": true,
+      "reason": "body outside this block (folded by the linker or a compiler helper); compared, not counted"
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "006857e0",
+      "symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+      "size": 63,
+      "target_size": 63,
+      "exact": false,
+      "reason": "63 / 63 B: only the static-guard store `or [guard], 1` is scheduled one fld later than in the original (the original sets the guard before the three translation loads). Tried: `static Vector3 position = mTransform.getTrans()` (this source), Vector3(m[0][3], m[1][3], m[2][3]) direct / copy init, a const static, a Matrix4 reference local, Vector3(getTrans()) and position(getTrans()) (all 63 B, same pair), a non-static translation local (75 B), /fp:precise (81 B), VS2005 50727 (same pair; 7 of the 31 rows exact)."
+    }
+  ],
+  "not_built": {
+    "?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z": "00685490",
+    "?getShadowVolumeRenderableIterator@RbxSubEntity@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z": "00685a40"
+  },
+  "vtables": {
+    "RbxSubEntity@Ogre 0084e90c": [
+      {
+        "slot": 0,
+        "symbol": "??_ERbxSubEntity@Ogre@@UAEPAXI@Z",
+        "original": "00685a20",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getMaterial@SubEntity@Ogre@@UBEABVMaterialPtr@2@XZ",
+        "original": "006a01d0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getMaterial@SubEntity@Ogre@@UBEABVMaterialPtr@2@XZ"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getTechnique@SubEntity@Ogre@@UBEPAVTechnique@2@XZ",
+        "original": "006a01d6",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getTechnique@SubEntity@Ogre@@UBEPAVTechnique@2@XZ"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z",
+        "original": "00684fd0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getWorldTransforms@RbxSubEntity@Ogre@@UBEXPAVMatrix4@2@@Z",
+        "original": "00685710",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getWorldOrientation@RbxSubEntity@Ogre@@UBEABVQuaternion@2@XZ",
+        "original": "00685730",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+        "original": "006857e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getNumWorldTransforms@SubEntity@Ogre@@UBEGXZ",
+        "original": "006a01dc",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getNumWorldTransforms@SubEntity@Ogre@@UBEGXZ"
+      },
+      {
+        "slot": 8,
+        "symbol": "?getSquaredViewDepth@RbxSubEntity@Ogre@@UBEMPBVCamera@2@@Z",
+        "original": "00685010",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getNormaliseNormals@SubEntity@Ogre@@UBE_NXZ",
+        "original": "006a01e2",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getNormaliseNormals@SubEntity@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 10,
+        "symbol": "?getLights@SubEntity@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+        "original": "006a01e8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getLights@SubEntity@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+      },
+      {
+        "slot": 11,
+        "symbol": "?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ",
+        "original": "0069fd26",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ"
+      },
+      {
+        "slot": 12,
+        "symbol": "?getCastsShadows@SubEntity@Ogre@@UBE_NXZ",
+        "original": "006a01ee",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getCastsShadows@SubEntity@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 13,
+        "symbol": "?_updateCustomGpuParameter@SubEntity@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z",
+        "original": "006a01f4",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_updateCustomGpuParameter@SubEntity@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z"
+      },
+      {
+        "slot": 14,
+        "symbol": "?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z",
+        "original": "0069fd38",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd3e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 16,
+        "symbol": "?setVisible@SubEntity@Ogre@@UAEX_N@Z",
+        "original": "006a01fa",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setVisible@SubEntity@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 17,
+        "symbol": "?isVisible@SubEntity@Ogre@@UBE_NXZ",
+        "original": "006a0200",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?isVisible@SubEntity@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 18,
+        "symbol": "?setCustomValue@RbxSubEntity@Ogre@@UAEXM@Z",
+        "original": "00685820",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 19,
+        "symbol": "?getCustomValue@RbxSubEntity@Ogre@@UBEMXZ",
+        "original": "00685830",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RbxSubEntity@Ogre (ShadowCaster) 0084e8d4": [
+      {
+        "slot": 0,
+        "symbol": "??_ERbxSubEntity@Ogre@@WOM@AEPAXI@Z",
+        "original": "00685840",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getCastShadows@RbxSubEntity@Ogre@@UBE_NXZ",
+        "original": "00685700",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getEdgeList@RbxSubEntity@Ogre@@UAEPAVEdgeData@2@XZ",
+        "original": "00685170",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?hasEdgeList@RbxSubEntity@Ogre@@UAE_NXZ",
+        "original": "006851a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getWorldBoundingBox@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+        "original": "00685490",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getLightCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+        "original": "00685100",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getDarkCapBounds@RbxSubEntity@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z",
+        "original": "00685590",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getShadowVolumeRenderableIterator@RbxSubEntity@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z",
+        "original": "00685a40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?getPointExtrusionDistance@RbxSubEntity@Ogre@@UBEMPBVLight@2@@Z",
+        "original": "00685110",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z",
+        "original": "0069ff9c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z"
+      },
+      {
+        "slot": 10,
+        "symbol": "?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z",
+        "original": "0069ffa2",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z"
+      },
+      {
+        "slot": 11,
+        "symbol": "?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z",
+        "original": "0069ffa8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z"
+      }
+    ],
+    "RbxSubEntityShadowRenderable 0084e88c": [
+      {
+        "slot": 0,
+        "symbol": "??_ERbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAEPAXI@Z",
+        "original": "00685640",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getMaterial@ShadowRenderable@Ogre@@UBEABVMaterialPtr@2@XZ",
+        "original": "006a01b8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getMaterial@ShadowRenderable@Ogre@@UBEABVMaterialPtr@2@XZ"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ",
+        "original": "0069fcf0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getRenderOperation@ShadowRenderable@Ogre@@UAEXAAVRenderOperation@2@@Z",
+        "original": "006a01be",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getRenderOperation@ShadowRenderable@Ogre@@UAEXAAVRenderOperation@2@@Z"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getWorldTransforms@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEXPAVMatrix4@3@@Z",
+        "original": "00685450",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getWorldOrientation@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVQuaternion@3@XZ",
+        "original": "00685460",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getWorldPosition@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBEABVVector3@3@XZ",
+        "original": "00685470",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ",
+        "original": "0069fd0e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ"
+      },
+      {
+        "slot": 8,
+        "symbol": "?getSquaredViewDepth@ShadowRenderable@Ogre@@UBEMPBVCamera@2@@Z",
+        "original": "006a01c4",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getSquaredViewDepth@ShadowRenderable@Ogre@@UBEMPBVCamera@2@@Z"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd1a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 10,
+        "symbol": "?getLights@ShadowRenderable@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+        "original": "006a01ca",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getLights@ShadowRenderable@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+      },
+      {
+        "slot": 11,
+        "symbol": "?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ",
+        "original": "0069fd26",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ"
+      },
+      {
+        "slot": 12,
+        "symbol": "?getCastsShadows@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd2c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getCastsShadows@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 13,
+        "symbol": "?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z",
+        "original": "0069fd32",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z"
+      },
+      {
+        "slot": 14,
+        "symbol": "?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z",
+        "original": "0069fd38",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd3e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 16,
+        "symbol": "?isVisible@RbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UBE_NXZ",
+        "original": "00685480",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00684fa0",
+    "00684fd0",
+    "00685010",
+    "006850a0",
+    "006850b0",
+    "006850d0",
+    "006850f0",
+    "00685100",
+    "00685110",
+    "00685140",
+    "00685170",
+    "006851a0",
+    "006851d0",
+    "006853a0",
+    "00685450",
+    "00685460",
+    "00685470",
+    "00685480",
+    "00685590",
+    "00685640",
+    "00685660",
+    "00685700",
+    "00685710",
+    "00685730",
+    "00685820",
+    "00685830",
+    "00685840",
+    "00685850",
+    "00685910",
+    "00685a20"
+  ],
+  "proposals": {
+    "RenderLib/AggregateChunk2008.h (render-scene owner): Ogre::RbxEntity": "The minimal Ogre::RbxEntity there (removeSubEntity 0067d2d0 only, no base) is the only native declaration of the class. Evidence for a full one: RTTI 0084e45c RbxEntity -> Entity (Entity 0x274, rgmain import, ctor Entity() 0x80449c, ~Entity 0x804460), size 0x2bc (new 0x2bc 0067452d / 007ab470), constructor 0067d1f0 / destructor 0067d420 (members listed in unit_map rbx-entity). With `class RbxEntity : public Entity` and those members the RbxEntity unit 0067c4d0..0067f16f can be built here against it (the owner would include OgreEntity.h; its units already use the Ogre include path).",
+    "Ogre::RbxSubEntity users (RbxGraphics/AdornRbxGfx2008.h, RenderLib/AggregateChunk2008.h)": "Ogre::RbxSubEntity is now declared in native-headers/AppUnit67C_2008/RbxSubEntity2008.h (0x15c, constructors 00685660 / 00685850, vtables 0084e90c / 0084e8d4). The forward declarations can include it once their units need a complete type (RbxSceneManager::renderSingleObject 0069bc50 reads mTransform +0xf0).",
+    "exe-local SubMesh subclass (owner not derived)": "getWorldBoundingBox 00685490 / getShadowVolumeRenderableIterator 00685a40 read +0xc8 (EdgeData*, built by 00682430) and +0xec (a radius scaled by [0083785c]) of the selected sub-mesh; the imported SubMesh is 0xc4 bytes and the subclass destructor is 006824e0 (AxisAlignedBox at +0xcc). Its constructor and size are not found, so no declaration is written; with one, both rows can be built in this unit."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

@@ -1,0 +1,1302 @@
+{
+  "class": "RBX TreeStage / IWorldStage rows and the unit map of the application range 00668000..0066c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast /U_RELEASEASSERT",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit668/NativeAppUnit668Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit668/NativeAppUnit668Layout.cpp"
+    ],
+    "tree": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit668/NativeAppUnit668_tree.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit668TreeStage.cpp"
+    ],
+    "worldstage": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit668/NativeAppUnit668_worldstage.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit668IWorldStage.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit668.py": "d75a81c354858bc503d6f07063e30a57cc7ca35b6da8b8a0f4e055e79e5764d8",
+    "rebuild/2008-06/native-classes/AppUnit668TreeStage.cpp": "83e52b0535e0a8da4d0b41f06656d72107101324e56833e6c0c0653dabdd4b8c",
+    "rebuild/2008-06/native-classes/AppUnit668IWorldStage.cpp": "24af64d636857838f5f1b8b94e1442fc36c3caabbd2a067c70001795ded613f1",
+    "rebuild/2008-06/native-headers/AppUnit668/TreeStage.h": "8bd8ec9306c189f1bcdf5998aee5cb3234a86beb0a25eab4d14f2d3448c28842",
+    "tools/rbxgs/Client/App/include/v8world/IWorldStage.h": "c5bd6a525b5e1cc00bb9f6ddacfc36e2bd80729c2ba13b600d85113b79227682",
+    "tools/rbxgs/Client/App/include/v8kernel/IStage.h": "af562073699d7db13115a01f88bb8efb9c6258e40d00ff3357cf1938f63aaa67",
+    "tools/rbxgs/Client/App/include/v8world/IPipelined.h": "f6c1f9cebd18d0ba07d4a9b0f07f62e8064a5c9e3f7345ce8c84d2093443e5ab",
+    "tools/rbxgs/Client/App/include/v8world/Edge.h": "2856bbd932b16745e1a477b75644c6e0eb19046bec5151d947cc95a56083cfd0"
+  },
+  "objects": {
+    "layout": "4e47e675fe931fc503eb96d9d15d7dde670a8c3bfab672d36e23b5f25fa9e73f",
+    "tree": "4b8d639a8801a54b86c2edb1c4881313887c1d551943e9406839f6a4defd05b1",
+    "worldstage": "bf0480ed30ca8f6af9dcf8342cd00751153ed9e1999a945eeadc5f6333b462d2"
+  },
+  "layout": {
+    "treeStageSize": "0x78",
+    "maxTreeDepth": "0x10",
+    "dirty": "0x14",
+    "set18": "0x18",
+    "assemblies": "0x38",
+    "edges": "0x58",
+    "setSize": "0x20"
+  },
+  "allocations": [
+    "0064d012: new(0x78) before 00669870",
+    "006698b2: new(0x50) before 0066f800"
+  ],
+  "rtti_bases": {
+    "TreeStage 0084cf94": {
+      ".?AVTreeStage@RBX@@": 0,
+      ".?AVIWorldStage@RBX@@": 0,
+      ".?AVIStage@RBX@@": 0
+    }
+  },
+  "unit_map": {
+    "joint-stage 0x00668000..0x006685af": {
+      "rows": 9,
+      "unit": "RBX JointStage.cpp tail (kernel-stages owner, JointStage2008.cpp): map<Primitive*, Joint*> _Tree::_Insert 0x00668010 (ICF-shared with other map<K*, V*> instances) and insert 0x00668210, removeFromMap 0x00668280 (built by kernel-stages, not exact), JointStage() 0x00668470 (not built: 0x30-byte 2008 ClumpStage); edgeHasPrimitivesDownstream .. ??_G are counted there. Not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "00668340 counted by kernel-stages-working.json",
+        "006683b0 counted by kernel-stages-working.json",
+        "006683f0 counted by kernel-stages-working.json",
+        "00668520 counted by kernel-stages-working.json",
+        "00668590 counted by kernel-stages-working.json"
+      ]
+    },
+    "joint-stage-primitives 0x006685b0..0x006689af": {
+      "rows": 2,
+      "unit": "JointStage::onPrimitiveAdded 0x006685b0 / onPrimitiveRemoving 0x00668850 (callers CleanStage 0x0064a3e0 / 0x0064a400; they walk the primitive edge lists through the 2008 Primitive). Kernel-stages owner; not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "world-stage-helpers 0x006689b0..0x00668d2f": {
+      "rows": 6,
+      "unit": "free helpers of the stage units: 0x006689b0 (max |component| of a 4-float), 0x00668a20 / 0x00668af0 (called by CleanStage 0x0064a644 .. 0x0064a72e: Quaternion / CoordinateFrame joint alignment tests), getPrimitiveSize 0x00668bb0 (floor 0x006a1bb0, 64-bit multiply 0x006a16d0), biggerJointGuid 0x00668c60 (Guid::compare 0x005a83b0), 0x00668cd0. ClumpStage2-shaped (tools/openrbx); not built: they read the 2008 Primitive / Geometry / Guid layouts.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "tree-stage 0x00668d30..0x00669cef": {
+      "rows": 30,
+      "unit": "RBX::TreeStage (RTTI .?AVTreeStage@RBX@@, vtable 0x0084cf94, 0x78 bytes): onPrimitiveAdded / onPrimitiveRemoving, set _Max 0x00668d50, biggerJointSize 0x00668d70, JointSort::lighterJoint 0x00668e20, heavyParent 0x00668ea0, cleanAssembly 0x00668f20, cleanEdge 0x00668fa0, getMetric, set<T*>::_Erase 0x00669050 (ICF-shared), findHeaviestUpstream 0x00669090, buildDownstreamTree 0x00669150, 0x006691e0, dirtyAssemblies, removeAssembly 0x00669290 / destroyAssembly 0x006692e0, insertEdge 0x00669340, ~TreeStage, process 0x00669410, 0x00669560, eraseEdge 0x00669710, ??_G, stepWorld, 0x006697a0, TreeStage() 0x00669870, 0x00669940, 0x006699a0, 0x00669b60, onEdgeAdded 0x00669c00, onEdgeRemoving 0x00669c70. Built here: the 7 rows of the receipt; the others need the 2008 Edge (inEdgeList accessors), Joint, Assembly, Clump and AssemblyStage declarations (see proposals).",
+      "library": false,
+      "counted_here": [
+        "00668d30",
+        "00668d40",
+        "00669030",
+        "00669240",
+        "00669390",
+        "00669760",
+        "00669780"
+      ],
+      "counted_elsewhere": []
+    },
+    "iworld-stage 0x00669cf0..0x00669d2f": {
+      "rows": 2,
+      "unit": "IWorldStage::onEdgeAdded 0x00669cf0 / onEdgeRemoving 0x00669d10 (out of line; callers ClumpStage 0x0064cecc / 0x0064cf46). Built here.",
+      "library": false,
+      "counted_here": [
+        "00669cf0",
+        "00669d10"
+      ],
+      "counted_elsewhere": []
+    },
+    "snap-weld 0x00669d30..0x00669f0f": {
+      "rows": 2,
+      "unit": "SnapJoint::canBuildJoint 0x00669d30 / WeldJoint::canBuildJoint 0x00669e20 (evidence names; new 0x88, Joint() 0x006455c0). Not built: needs the Joints2008.h statics (open proposal from app-unit660, engine joints owner).",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "hud-text 0x00669f10..0x0066a56f": {
+      "rows": 7,
+      "unit": "string hash 0x00669f10 (seed 0xf8c9, multiplier 0x5c6b7) and its std::string wrapper 0x00669f60 (declared in native gui/ScoreHud.h as stringHash; ScoreHud family lease), the word test 0x00669fa0 / splitter 0x0066a350 (ChatOutput ProfanityFilter), thunk 0x0066a060, the font loader 0x0066a070 and its wrapper 0x0066a340 (ScoreHud / ChatOutput owners, active leases). Not built here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "group-drag-tool 0x0066a570..0x0066aa7f": {
+      "rows": 12,
+      "unit": "RBX::GroupDragTool (vtables 0x0084d02c / 0x0084d014): counted by app-unit660-2008-working.json.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "0066a570 counted by app-unit660-2008-working.json",
+        "0066a5b0 counted by app-unit660-2008-working.json",
+        "0066a620 counted by app-unit660-2008-working.json",
+        "0066a630 counted by app-unit660-2008-working.json",
+        "0066a700 counted by app-unit660-2008-working.json",
+        "0066a730 counted by app-unit660-2008-working.json",
+        "0066a7c0 counted by app-unit660-2008-working.json",
+        "0066a930 counted by app-unit660-2008-working.json",
+        "0066a980 counted by app-unit660-2008-working.json",
+        "0066a9d0 counted by app-unit660-2008-working.json",
+        "0066aa40 counted by app-unit660-2008-working.json",
+        "0066aa60 counted by app-unit660-2008-working.json"
+      ]
+    },
+    "lua-lcode 0x0066aa80..0x0066bfff": {
+      "rows": 45,
+      "unit": "Lua 5.1.1 lcode.c (fixjump 0x0066aa80 .. luaK_prefix 0x0066bfa0; Lua evidence names): library code, not recovered.",
+      "library": true,
+      "counted_here": [],
+      "counted_elsewhere": []
+    }
+  },
+  "row_map": [
+    {
+      "row": "0x00668010",
+      "size": 510,
+      "block": "joint-stage",
+      "evidence_name": "?_Insert@?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPr",
+      "counted": "no"
+    },
+    {
+      "row": "0x00668210",
+      "size": 107,
+      "block": "joint-stage",
+      "evidence_name": "?insert@?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPri",
+      "counted": "no"
+    },
+    {
+      "row": "0x00668280",
+      "size": 188,
+      "block": "joint-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668340",
+      "size": 107,
+      "block": "joint-stage",
+      "evidence_name": null,
+      "counted": "elsewhere: kernel-stages-working.json"
+    },
+    {
+      "row": "0x006683b0",
+      "size": 56,
+      "block": "joint-stage",
+      "evidence_name": "?onEdgeAdded@JointStage@RBX@@UAEXPAVEdge@2@@Z",
+      "counted": "elsewhere: kernel-stages-working.json"
+    },
+    {
+      "row": "0x006683f0",
+      "size": 114,
+      "block": "joint-stage",
+      "evidence_name": "?onEdgeRemoving@JointStage@RBX@@UAEXPAVEdge@2@@Z",
+      "counted": "elsewhere: kernel-stages-working.json"
+    },
+    {
+      "row": "0x00668470",
+      "size": 164,
+      "block": "joint-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668520",
+      "size": 103,
+      "block": "joint-stage",
+      "evidence_name": null,
+      "counted": "elsewhere: kernel-stages-working.json"
+    },
+    {
+      "row": "0x00668590",
+      "size": 30,
+      "block": "joint-stage",
+      "evidence_name": null,
+      "counted": "elsewhere: kernel-stages-working.json"
+    },
+    {
+      "row": "0x006685b0",
+      "size": 671,
+      "block": "joint-stage-primitives",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668850",
+      "size": 348,
+      "block": "joint-stage-primitives",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006689b0",
+      "size": 97,
+      "block": "world-stage-helpers",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668a20",
+      "size": 197,
+      "block": "world-stage-helpers",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668af0",
+      "size": 188,
+      "block": "world-stage-helpers",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668bb0",
+      "size": 163,
+      "block": "world-stage-helpers",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668c60",
+      "size": 98,
+      "block": "world-stage-helpers",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668cd0",
+      "size": 95,
+      "block": "world-stage-helpers",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668d30",
+      "size": 13,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00668d40",
+      "size": 13,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00668d50",
+      "size": 28,
+      "block": "tree-stage",
+      "evidence_name": "?_Max@?$_Tree@V?$_Tset_traits@PAVIMoving@RBX@@U?$less@PAVIMoving@RBX@@@std@@V?$allocator@PAVIMoving@RBX@@@4@$0A@@std@@@s",
+      "counted": "no"
+    },
+    {
+      "row": "0x00668d70",
+      "size": 174,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668e20",
+      "size": 119,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668ea0",
+      "size": 119,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668f20",
+      "size": 114,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00668fa0",
+      "size": 132,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669030",
+      "size": 29,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00669050",
+      "size": 53,
+      "block": "tree-stage",
+      "evidence_name": "?_Erase@?$_Tree@V?$_Tset_traits@PAVInstance@RBX@@U?$less@PAVInstance@RBX@@@std@@V?$allocator@PAVInstance@RBX@@@4@$0A@@st",
+      "counted": "no"
+    },
+    {
+      "row": "0x00669090",
+      "size": 183,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669150",
+      "size": 144,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006691e0",
+      "size": 87,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669240",
+      "size": 78,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00669290",
+      "size": 76,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006692e0",
+      "size": 90,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669340",
+      "size": 78,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669390",
+      "size": 116,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00669410",
+      "size": 323,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669560",
+      "size": 427,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669710",
+      "size": 78,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669760",
+      "size": 30,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00669780",
+      "size": 19,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x006697a0",
+      "size": 208,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669870",
+      "size": 198,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669940",
+      "size": 92,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006699a0",
+      "size": 446,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669b60",
+      "size": 160,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669c00",
+      "size": 100,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669c70",
+      "size": 121,
+      "block": "tree-stage",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669cf0",
+      "size": 32,
+      "block": "iworld-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00669d10",
+      "size": 32,
+      "block": "iworld-stage",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x00669d30",
+      "size": 239,
+      "block": "snap-weld",
+      "evidence_name": "?canBuildJoint@SnapJoint@RBX@@SAPAV12@PAVPrimitive@2@0W4NormalId@2@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00669e20",
+      "size": 233,
+      "block": "snap-weld",
+      "evidence_name": "?canBuildJoint@WeldJoint@RBX@@SAPAV12@PAVPrimitive@2@0W4NormalId@2@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00669f10",
+      "size": 79,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669f60",
+      "size": 49,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00669fa0",
+      "size": 184,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066a060",
+      "size": 5,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066a070",
+      "size": 719,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066a340",
+      "size": 12,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066a350",
+      "size": 542,
+      "block": "hud-text",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x0066a570",
+      "size": 54,
+      "block": "group-drag-tool",
+      "evidence_name": "?onMouseDown@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a5b0",
+      "size": 101,
+      "block": "group-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a620",
+      "size": 5,
+      "block": "group-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a630",
+      "size": 199,
+      "block": "group-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a700",
+      "size": 45,
+      "block": "group-drag-tool",
+      "evidence_name": "?getCursorName@GroupDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a730",
+      "size": 143,
+      "block": "group-drag-tool",
+      "evidence_name": "?onMouseMove@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a7c0",
+      "size": 360,
+      "block": "group-drag-tool",
+      "evidence_name": "?onMouseIdle@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a930",
+      "size": 74,
+      "block": "group-drag-tool",
+      "evidence_name": "?onMouseUp@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a980",
+      "size": 79,
+      "block": "group-drag-tool",
+      "evidence_name": "?onKeyDown@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066a9d0",
+      "size": 106,
+      "block": "group-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066aa40",
+      "size": 30,
+      "block": "group-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066aa60",
+      "size": 23,
+      "block": "group-drag-tool",
+      "evidence_name": "?getName@?$Named@VMouseCommand@RBX@@$1?sGroupDragTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x0066aa80",
+      "size": 68,
+      "block": "lua-lcode",
+      "evidence_name": "?fixjump@@YAXPAUFuncState@@HH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066aad0",
+      "size": 11,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_getlabel@@YAHPAUFuncState@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066aae0",
+      "size": 93,
+      "block": "lua-lcode",
+      "evidence_name": "?need_value@@YAHPAUFuncState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ab40",
+      "size": 122,
+      "block": "lua-lcode",
+      "evidence_name": "?patchtestreg@@YAHPAUFuncState@@HH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066abc0",
+      "size": 130,
+      "block": "lua-lcode",
+      "evidence_name": "?removevalues@@YAXPAUFuncState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ac50",
+      "size": 186,
+      "block": "lua-lcode",
+      "evidence_name": "?patchlistaux@@YAXPAUFuncState@@HHHH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ad10",
+      "size": 72,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_concat@@YAXPAUFuncState@@PAHH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ad60",
+      "size": 56,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_checkstack@@YAXPAUFuncState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ada0",
+      "size": 63,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_reserveregs@@YAXPAUFuncState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ade0",
+      "size": 27,
+      "block": "lua-lcode",
+      "evidence_name": "?freeexp@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ae00",
+      "size": 222,
+      "block": "lua-lcode",
+      "evidence_name": "?addk@@YAHPAUFuncState@@PAUlua_TValue@@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066aee0",
+      "size": 35,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_stringK@@YAHPAUFuncState@@PATTString@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066af10",
+      "size": 38,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_numberK@@YAHPAUFuncState@@N@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066af40",
+      "size": 129,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_setreturns@@YAXPAUFuncState@@PAUexpdesc@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066afd0",
+      "size": 88,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_setoneret@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b030",
+      "size": 67,
+      "block": "lua-lcode",
+      "evidence_name": "?invertjump@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b080",
+      "size": 232,
+      "block": "lua-lcode",
+      "evidence_name": "?constfolding@@YAHW4OpCode@@PAUexpdesc@@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b170",
+      "size": 21,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_fixline@@YAXPAUFuncState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b190",
+      "size": 155,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_code@@YAHPAUFuncState@@IH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b230",
+      "size": 48,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_codeABC@@YAHPAUFuncState@@W4OpCode@@HHH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b260",
+      "size": 41,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_codeABx@@YAHPAUFuncState@@W4OpCode@@HI@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b290",
+      "size": 141,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_setlist@@YAXPAUFuncState@@HHH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b320",
+      "size": 142,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_nil@@YAXPAUFuncState@@HH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b3b0",
+      "size": 59,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_jump@@YAHPAUFuncState@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b3f0",
+      "size": 43,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_ret@@YAXPAUFuncState@@HH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b420",
+      "size": 91,
+      "block": "lua-lcode",
+      "evidence_name": "?condjump@@YAHPAUFuncState@@W4OpCode@@HHH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b480",
+      "size": 29,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_patchtohere@@YAXPAUFuncState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b4a0",
+      "size": 256,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_dischargevars@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b5a0",
+      "size": 268,
+      "block": "lua-lcode",
+      "evidence_name": "?discharge2reg@@YAXPAUFuncState@@PAUexpdesc@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b6b0",
+      "size": 81,
+      "block": "lua-lcode",
+      "evidence_name": "?discharge2anyreg@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b710",
+      "size": 275,
+      "block": "lua-lcode",
+      "evidence_name": "?exp2reg@@YAXPAUFuncState@@PAUexpdesc@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b830",
+      "size": 115,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_exp2nextreg@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b8b0",
+      "size": 79,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_exp2anyreg@@YAHPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b900",
+      "size": 26,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_exp2val@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066b920",
+      "size": 252,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_exp2RK@@YAHPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066ba20",
+      "size": 236,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_storevar@@YAXPAUFuncState@@PAUexpdesc@@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bb10",
+      "size": 185,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_self@@YAXPAUFuncState@@PAUexpdesc@@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bbd0",
+      "size": 115,
+      "block": "lua-lcode",
+      "evidence_name": "?jumponcond@@YAHPAUFuncState@@PAUexpdesc@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bc50",
+      "size": 153,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_goiftrue@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bcf0",
+      "size": 142,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_goiffalse@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bd80",
+      "size": 192,
+      "block": "lua-lcode",
+      "evidence_name": "?codenot@@YAXPAUFuncState@@PAUexpdesc@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066be40",
+      "size": 32,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_indexed@@YAXPAUFuncState@@PAUexpdesc@@1@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066be60",
+      "size": 170,
+      "block": "lua-lcode",
+      "evidence_name": "?codearith@@YAXPAUFuncState@@W4OpCode@@PAUexpdesc@@2@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bf10",
+      "size": 143,
+      "block": "lua-lcode",
+      "evidence_name": "?codecomp@@YAXPAUFuncState@@W4OpCode@@HPAUexpdesc@@2@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x0066bfa0",
+      "size": 150,
+      "block": "lua-lcode",
+      "evidence_name": "?luaK_prefix@@YAXPAUFuncState@@W4UnOpr@@PAUexpdesc@@@Z",
+      "counted": "no"
+    }
+  ],
+  "range_functions": 115,
+  "range_lua_library_rows": 45,
+  "range_rows_counted_by_other_receipts": [
+    "00668340 counted by kernel-stages-working.json",
+    "006683b0 counted by kernel-stages-working.json",
+    "006683f0 counted by kernel-stages-working.json",
+    "00668520 counted by kernel-stages-working.json",
+    "00668590 counted by kernel-stages-working.json",
+    "0066a570 counted by app-unit660-2008-working.json",
+    "0066a5b0 counted by app-unit660-2008-working.json",
+    "0066a620 counted by app-unit660-2008-working.json",
+    "0066a630 counted by app-unit660-2008-working.json",
+    "0066a700 counted by app-unit660-2008-working.json",
+    "0066a730 counted by app-unit660-2008-working.json",
+    "0066a7c0 counted by app-unit660-2008-working.json",
+    "0066a930 counted by app-unit660-2008-working.json",
+    "0066a980 counted by app-unit660-2008-working.json",
+    "0066a9d0 counted by app-unit660-2008-working.json",
+    "0066aa40 counted by app-unit660-2008-working.json",
+    "0066aa60 counted by app-unit660-2008-working.json"
+  ],
+  "rows": {
+    "tree": [
+      {
+        "address": "00668d30",
+        "symbol": "?onPrimitiveAdded@TreeStage@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {
+          "?putInStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645830 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00668d40",
+        "symbol": "?onPrimitiveRemoving@TreeStage@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645840 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00669030",
+        "symbol": "?getMetric@TreeStage@RBX@@UAEHW4MetricType@IWorldStage@2@@Z",
+        "size": 29,
+        "target_size": 29,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00669240",
+        "symbol": "?dirtyAssemblies@TreeStage@RBX@@AAEXPAVJoint@2@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {
+          "?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ": "0x5e7570 (external (evidence name))",
+          "?insert@?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVAssembly@RBX@@@Z": "0x5e8c40 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00669390",
+        "symbol": "??1TreeStage@RBX@@UAE@XZ",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "??_7TreeStage@RBX@@6B@": "0x84cf94 (vtable RTTI .?AVTreeStage@RBX@@ offset 0x0)",
+          "??1?$_Tree@V?$_Tset_traits@PAVEdge@RBX@@U?$less@PAVEdge@RBX@@@std@@V?$allocator@PAVEdge@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (helper / COMDAT body, compared exact at the bound address)",
+          "??1?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (helper / COMDAT body, compared exact at the bound address)",
+          "??1?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??1TreeStage@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00669760",
+        "symbol": "??_GTreeStage@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1TreeStage@RBX@@UAE@XZ": "0x669390 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00669780",
+        "symbol": "?stepWorld@TreeStage@RBX@@UAEXHH_N@Z",
+        "size": 19,
+        "target_size": 19,
+        "exact": true,
+        "verified_targets": {
+          "?process@TreeStage@RBX@@QAEXXZ": "0x669410 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "worldstage": [
+      {
+        "address": "00669cf0",
+        "symbol": "?onEdgeAdded@IWorldStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {
+          "?putInPipeline@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645830 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00669d10",
+        "symbol": "?onEdgeRemoving@IWorldStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645840 (external)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "helper_bodies_not_counted": [
+    {
+      "address": "0x0064b230",
+      "symbol": "??1?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+      "unit": "tree",
+      "reason": "COMDAT / STL helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x0064b230",
+      "symbol": "??1?$_Tree@V?$_Tset_traits@PAVEdge@RBX@@U?$less@PAVEdge@RBX@@@std@@V?$allocator@PAVEdge@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+      "unit": "tree",
+      "reason": "COMDAT / STL helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x0064b230",
+      "symbol": "??1?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@XZ",
+      "unit": "tree",
+      "reason": "COMDAT / STL helper body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0x005e8c40",
+      "symbol": "?insert@?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVAssembly@RBX@@@Z",
+      "unit": "tree",
+      "reason": "COMDAT / STL helper body bound at this address and compared exact; not counted"
+    }
+  ],
+  "vtables": {
+    "TreeStage 0084cf94": [
+      {
+        "slot": 0,
+        "symbol": "??_ETreeStage@RBX@@UAEPAXI@Z",
+        "original": "0x00669760",
+        "ok": true,
+        "how": "bound (??_G row)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getStageType@TreeStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+        "original": "0x005e2790",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      },
+      {
+        "slot": 2,
+        "symbol": "?stepWorld@TreeStage@RBX@@UAEXHH_N@Z",
+        "original": "0x00669780",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getKernel@IStage@RBX@@UAEPAVKernel@2@XZ",
+        "original": "0x0064a390",
+        "ok": true,
+        "how": "inline body compared exact"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onEdgeAdded@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0x00669c00",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onEdgeRemoving@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0x00669c70",
+        "ok": true,
+        "how": "not built here; slot value checked"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMetric@TreeStage@RBX@@UAEHW4MetricType@IWorldStage@2@@Z",
+        "original": "0x00669030",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "not_built": {
+    "TreeStage() 0x00669870": "news a 0x50-byte AssemblyStage (0x0066f800); no native header declares a 2008 AssemblyStage (native-world AssemblyStage.h is the source-derived port).",
+    "TreeStage::getStageType 0x005e2790": "folded `mov eax, 3`: TREE_STAGE is 3 in 2008, 2 in the donor IStage.h (kernel-stages IStage.h proposal); slot value checked only.",
+    "TreeStage::insertEdge 0x00669340 / eraseEdge 0x00669710 / process 0x00669410": "read and write Edge +0x1c (inEdgeList) inline; the donor Edge.h declares getInEdgeList / setInEdgeList out of line.",
+    "TreeStage 0x006691e0 / 0x00669290 / 0x006692e0, cleanAssembly 0x00668f20": "call AssemblyStage members 0x0066f510 / 0x0066f530 / 0x0066f550 through the downstream stage (no AssemblyStage declaration).",
+    "TreeStage 0x00669560 / 0x006697a0 / 0x00669940 / 0x006699a0 / 0x00669b60 / onEdgeAdded / onEdgeRemoving": "read the 2008 Joint (+0x24 active flag, getJointType slot 5), Clump (+0x1c, +0x24) and Primitive (+0x5c, +0xa0) layouts."
+  },
+  "exact_function_rows": [
+    "00668d30",
+    "00668d40",
+    "00669030",
+    "00669240",
+    "00669390",
+    "00669760",
+    "00669780",
+    "00669cf0",
+    "00669d10"
+  ],
+  "rejected": {
+    "getMetric as `if (metricType == MAX_TREE_DEPTH) return maxTreeDepth; return ...`": "branch inverted (je vs jne); the switch is exact",
+    "dirtyAssemblies with assemblies.insert(a) / dirty = true written in the loop": "stores the insert argument before the NULL test and swaps edi / ebp; the inline dirtyAssembly(Assembly*) helper is exact"
+  },
+  "proposals": {
+    "v8world/Edge.h owner (native AppUnit658/Edge.h, Mew-new-app-units lease) and engine owner": "inline `bool getInEdgeList() const { return inEdgeList; }` and `void setInEdgeList(bool b) { inEdgeList = b; }`: TreeStage 0x00669340 (`cmp byte [edi+0x1c], 0` then `mov byte [edi+0x1c], 1`), 0x00669710 and process 0x00669410 (`mov byte [eax+0x1c], 0`) access +0x1c inline; the donor declares both out of line.",
+    "engine owner (AssemblyStage)": "a 2008 AssemblyStage declaration: 0x50 bytes (TreeStage() 0x006698ac pushes 0x50 before AssemblyStage(this, world) 0x0066f800); TreeStage calls its members 0x0066f510 / 0x0066f530 / 0x0066f550 on the downstream stage. With it TreeStage() and the assembly rows can be built here.",
+    "open question (TreeStage +0x18)": "the third std::set<T*> of TreeStage (+0x18) is constructed and destroyed only; no row of the unit reads it, so its element type is unproven. It is declared std::set<Primitive*> set18 (codegen-identical for any pointer element: shared 0x0064b2a0 / 0x0064b230 bodies). A reader elsewhere in the binary would settle the type.",
+    "native-classes/JointStage2008.cpp (kernel-stages owner), FYI": "the JointStage rows of this range that kernel-stages does not count (0x00668010, 0x00668210, 0x00668280, 0x00668470, 0x006685b0, 0x00668850) are left to that unit; nothing here redefines JointStage."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

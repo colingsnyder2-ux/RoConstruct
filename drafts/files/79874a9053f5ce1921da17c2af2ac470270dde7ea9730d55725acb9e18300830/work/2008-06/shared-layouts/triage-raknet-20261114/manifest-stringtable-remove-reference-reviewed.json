@@ -1,0 +1,57 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RakStringTable.cpp",
+      "checks": [
+        {
+          "calls": [
+            {
+              "target": "004d41f0",
+              "offset": 31,
+              "symbol": "??1StringTable@@QAE@XZ",
+              "kind": "direct"
+            },
+            {
+              "target": "006a067a",
+              "offset": 37,
+              "symbol": "??3@YAXPAX@Z",
+              "kind": "direct"
+            }
+          ],
+          "addr": "004d42a0",
+          "references": [
+            {
+              "target": "00972704",
+              "offset": 2,
+              "evidence": "Original absolute referenceCount storage at 00972704 in target 004d42a0",
+              "addend": 0,
+              "symbol": "?referenceCount@StringTable@@1HA"
+            },
+            {
+              "target": "00972704",
+              "offset": 11,
+              "evidence": "Original absolute referenceCount storage at 00972704 in target 004d42a0",
+              "addend": 0,
+              "symbol": "?referenceCount@StringTable@@1HA"
+            },
+            {
+              "target": "00972700",
+              "offset": 20,
+              "evidence": "Original absolute instance storage at 00972700 in target 004d42a0",
+              "addend": 0,
+              "symbol": "?instance@StringTable@@1PAV1@A"
+            },
+            {
+              "target": "00972700",
+              "offset": 47,
+              "evidence": "Original absolute instance storage at 00972700 in target 004d42a0",
+              "addend": 0,
+              "symbol": "?instance@StringTable@@1PAV1@A"
+            }
+          ],
+          "symbol": "?RemoveReference@StringTable@@SAXXZ"
+        }
+      ]
+    }
+  ]
+}

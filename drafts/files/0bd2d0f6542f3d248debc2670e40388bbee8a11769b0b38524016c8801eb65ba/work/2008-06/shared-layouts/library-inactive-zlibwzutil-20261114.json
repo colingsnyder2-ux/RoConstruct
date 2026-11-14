@@ -1,0 +1,33 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibWzutil.cpp",
+  "source_sha256": "1b2ce1898ec5af71e1b22934767fcead605ede9918f6e9c33e60fb3c6e3c6b5e",
+  "checks": [
+    {
+      "address": "007a32b0",
+      "symbol": "_zcalloc",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.0,
+        "target_bytes": 20,
+        "candidate_bytes": 20,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 16,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-061408-66356eae\\results.json",
+      "object_sha256": "ac726b764ef6558275349c3f8480e92a3c4fe5e24327cafbb5d983a7b149115e"
+    }
+  ],
+  "scope": "Existing inactive native candidate source; local relocation-masked byte and checked-data match. Competing versions, reference identity, provider selection, ABI, runtime and server credit remain separate."
+}

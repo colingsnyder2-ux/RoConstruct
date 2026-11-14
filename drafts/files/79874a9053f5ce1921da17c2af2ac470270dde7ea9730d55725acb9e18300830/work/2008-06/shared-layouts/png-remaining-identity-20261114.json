@@ -1,0 +1,15 @@
+{
+  "source": "rebuild/2008-06/native-classes/Png5png.cpp",
+  "methods": {
+    "0051ddd0": "png_free_data",
+    "0051e170": "png_info_destroy",
+    "0051e1d0": "png_handle_as_unknown",
+    "0051e220": "png_init_mmx_flags"
+  },
+  "evidence": [
+    "The exact raw bytes and source-compatible chunk-list traversal identify png_handle_as_unknown; init_mmx_flags clears the same three libpng structure fields.",
+    "Original png_free at 0052a500 checks png and data pointers, invokes the structure free callback when present and otherwise calls MSVCR90 free; this matches Png5pngmem.cpp.",
+    "Original 006a1704 jumps through import slot 0080287c, resolved to MSVCR90.dll!memset. The 915-byte png_free_data recursively calls its own address, matching its source structure.",
+    "All four have local inactive code/data/call/reference proofs. ABI, provider selection, runtime and server credit are separate."
+  ]
+}

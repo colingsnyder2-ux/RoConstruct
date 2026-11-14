@@ -1,0 +1,56 @@
+{
+  "scope": "Reviewed identity hypotheses only, not a byte, ABI or runtime proof. PhysicsSender constructor and destructor write RTTI vtable 00826928; constructor calls container constructor 004cc400; destructor calls sender container destructor 004ccab0, which calls delete_all_nodes 004cc460. Original disassembly and native type declarations establish the call chain. All bodies and references must be independently checked by native-bulk.",
+  "sources": {
+    "rebuild/2008-06/native-classes/NetworkPhysicsSenders2008.cpp": "03df6484bbd7cfb4f4df4d2be74158c44e8b9058da8c87db57fdee2d2052e365",
+    "rebuild/2008-06/native-headers/Network/PhysicsSenders2008.h": "5af5ba664f68e28c631db7c8d59134ccc568d9afdf26f2969166a475f7b57fb4",
+    "rebuild/2008-06/tests/record_native_network_physics.py": "ab67dd9416118253ff115bb72ecf8712441999fffce9f9cfbbd6d60a0c3b336d",
+    "rebuild/2008-06/tests/record_native_app_unit5b4.py": "f9a132c16ec64fa76b477335deccb6dfdde17417a108a2a2d9e1c000ac8484c1"
+  },
+  "identities": [
+    {
+      "address": "004ccb10",
+      "symbol": "??0PhysicsSender@Network@RBX@@QAE@PAVReplicator@12@@Z"
+    },
+    {
+      "address": "004ccb90",
+      "symbol": "??1PhysicsSender@Network@RBX@@UAE@XZ"
+    },
+    {
+      "address": "004cc400",
+      "symbol": "??0?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z"
+    },
+    {
+      "address": "004ccab0",
+      "symbol": "??1?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ"
+    },
+    {
+      "address": "004cc460",
+      "symbol": "?delete_all_nodes_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXXZ"
+    },
+    {
+      "symbol": "??3@YAXPAX@Z",
+      "address": "006a067a",
+      "evidence": "Previously verified by record_native_network_physics.py and network-physics-working.json; original thunk jumps to mfc90.dll ordinal 800."
+    },
+    {
+      "symbol": "__ehhandler$??1?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ",
+      "address": "007c9946",
+      "evidence": "Original 004ccab2 installs 007c9946 as this destructor frame handler; 007c9946 loads exception metadata 008e39a0 and jumps to __CxxFrameHandler3. Handler metadata and runtime behavior remain unverified."
+    },
+    {
+      "address": "004cbdc0",
+      "symbol": "??0?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE@ABU?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@3@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z",
+      "evidence": "Original sender container constructor 004cc43f invokes hashed index constructor; native PhysicsSenders2008.h declares matching index and layout."
+    },
+    {
+      "address": "006a0920",
+      "symbol": "??2@YAPAXI@Z",
+      "evidence": "MFC operator new import thunk; independently recorded in record_native_app_unit5b4.py."
+    },
+    {
+      "address": "007c98db",
+      "symbol": "__ehhandler$??0?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z",
+      "evidence": "Original 004cc402 installs this container constructor exception handler; handler metadata remains unverified."
+    }
+  ]
+}

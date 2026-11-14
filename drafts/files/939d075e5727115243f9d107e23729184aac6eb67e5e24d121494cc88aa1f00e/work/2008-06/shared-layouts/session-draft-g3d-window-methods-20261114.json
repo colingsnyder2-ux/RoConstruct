@@ -1,0 +1,576 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DWin32Window.cpp",
+  "source_sha256": "428d3bd9dbec3002e6df3a1f4a47c2c28b016e1140374ea67101eb30faad8339",
+  "object_sha256": "22aa34f3ef846c4a7850f6d97701e9b02b98daed2c91dad6f2b3f34095c3acb8",
+  "run": "work\\2008-06\\native-check-runs\\20261114-111742-0f48d266\\analysis-8ece20a4.json",
+  "checks": [
+    {
+      "address": "0047fa00",
+      "symbol": "?runMainLoop@GWindow@G3D@@UAEXXZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 82.773109,
+        "target_bytes": 238,
+        "candidate_bytes": 238,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 182,
+        "unmasked_differences": 0,
+        "masked_bytes": 56,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 11,
+        "candidate_relocations": 14,
+        "missing_relocations": [],
+        "extra_relocations": [
+          65,
+          192,
+          211
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "calls": [
+        {
+          "offset": 54,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 64,
+          "target": "0050a940",
+          "symbol": "?_releaseInputGrab_@_internal@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 86,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 131,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 170,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 185,
+          "target": "008027f4",
+          "symbol": "__imp__exit",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 191,
+          "target": "0050a9b0",
+          "symbol": "?_restoreInputGrab_@_internal@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 210,
+          "target": "004896d0",
+          "symbol": "?executeLoopBody@GWindow@G3D@@IAEXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        }
+      ],
+      "scope": "Draft source match; dynamic calls and provider ABI remain unverified."
+    },
+    {
+      "address": "004807e0",
+      "symbol": "?getJoystickState@_DirectInput@_internal@G3D@@QAE_NIAAV?$Array@M@3@AAV?$Array@_N@3@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 94.594595,
+        "target_bytes": 259,
+        "candidate_bytes": 259,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 243,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          17,
+          117,
+          176
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "calls": [
+        {
+          "offset": 16,
+          "target": "006a1704",
+          "symbol": "_memset",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 55,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 69,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 90,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 116,
+          "target": "0047ff20",
+          "symbol": "?resize@?$Array@_N@G3D@@QAEXH_N@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 175,
+          "target": "0047fd70",
+          "symbol": "?resize@?$Array@M@G3D@@QAEXH_N@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        }
+      ],
+      "scope": "Draft source match; dynamic calls and provider ABI remain unverified."
+    },
+    {
+      "address": "004808f0",
+      "symbol": "?dimensions@Win32Window@G3D@@UBE?AVRect2D@2@XZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 96.774194,
+        "target_bytes": 124,
+        "candidate_bytes": 124,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 120,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          108
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "calls": [
+        {
+          "offset": 31,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 52,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 107,
+          "target": "0045b950",
+          "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        }
+      ],
+      "scope": "Draft source match; dynamic calls and provider ABI remain unverified."
+    },
+    {
+      "address": "004824f0",
+      "symbol": "??0Win32Window@G3D@@AAE@ABVSettings@GWindow@1@_N@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 83.474576,
+        "target_bytes": 1180,
+        "candidate_bytes": 1180,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 932,
+        "unmasked_differences": 0,
+        "masked_bytes": 248,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 43,
+        "candidate_relocations": 62,
+        "missing_relocations": [],
+        "extra_relocations": [
+          84,
+          155,
+          179,
+          222,
+          272,
+          283,
+          560,
+          595,
+          718,
+          786,
+          810,
+          926,
+          938,
+          998,
+          1009,
+          1021,
+          1076,
+          1117,
+          1123
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "calls": [
+        {
+          "offset": 83,
+          "target": "0045ace0",
+          "symbol": "??0Settings@GWindow@G3D@@QAE@XZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 98,
+          "target": "00802460",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 154,
+          "target": "00508580",
+          "symbol": "?alignedMalloc@System@G3D@@SAPAXII@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 178,
+          "target": "00508a30",
+          "symbol": "?memset@System@G3D@@SAXPAXEI@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 221,
+          "target": "00481f40",
+          "symbol": "?initWGL@Win32Window@G3D@@CAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 251,
+          "target": "00802230",
+          "symbol": "__imp__GetCurrentThread@0",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 271,
+          "target": "0047f2a0",
+          "symbol": "?initWin32KeyMap@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 282,
+          "target": "0047ea20",
+          "symbol": "??4Settings@GWindow@G3D@@QAEAAV012@ABV012@@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 295,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 367,
+          "target": "00802cb8",
+          "symbol": "__imp__AdjustWindowRect@12",
+          "kind": "import",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 440,
+          "target": "00802d4c",
+          "symbol": "__imp__GetSystemMetrics@4",
+          "kind": "import",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 458,
+          "target": "00802d4c",
+          "symbol": "__imp__GetSystemMetrics@4",
+          "kind": "import",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 529,
+          "target": "008021bc",
+          "symbol": "__imp__GetModuleHandleA@4",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 559,
+          "target": "00481460",
+          "symbol": "?G3DWndClass@G3D@@YAPBDXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 566,
+          "target": "00802dc0",
+          "symbol": "__imp__CreateWindowExA@48",
+          "kind": "import",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 594,
+          "target": "0050a940",
+          "symbol": "?_releaseInputGrab_@_internal@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 615,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 658,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 698,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 711,
+          "target": "008027f4",
+          "symbol": "__imp__exit",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 717,
+          "target": "0050a9b0",
+          "symbol": "?_restoreInputGrab_@_internal@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 732,
+          "target": "00802dd8",
+          "symbol": "__imp__SetWindowLongA@12",
+          "kind": "import",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 749,
+          "target": "00802cbc",
+          "symbol": "__imp__ShowWindow@8",
+          "kind": "import",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 785,
+          "target": "0047f030",
+          "symbol": "?ChangeResolution@G3D@@YA_NHHHH@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 809,
+          "target": "0050a940",
+          "symbol": "?_releaseInputGrab_@_internal@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 830,
+          "target": "00802458",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 870,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 906,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 919,
+          "target": "008027f4",
+          "symbol": "__imp__exit",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 925,
+          "target": "0050a9b0",
+          "symbol": "?_restoreInputGrab_@_internal@G3D@@YAXXZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 937,
+          "target": "004815d0",
+          "symbol": "?init@Win32Window@G3D@@AAEXPAUHWND__@@_N@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 951,
+          "target": "008023cc",
+          "symbol": "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 997,
+          "target": "00510490",
+          "symbol": "?load@GImage@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@12@@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1008,
+          "target": "00480dd0",
+          "symbol": "?setIcon@Win32Window@G3D@@UAEXABVGImage@2@@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1020,
+          "target": "0050e230",
+          "symbol": "??1GImage@G3D@@UAE@XZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1075,
+          "target": "0047d410",
+          "symbol": "?debugPrintf@G3D@@YAXPBDZZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1116,
+          "target": "00509db0",
+          "symbol": "?common@Log@G3D@@SAPAV12@XZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1122,
+          "target": "0050a120",
+          "symbol": "?printf@Log@G3D@@QAAXPBDZZ",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1153,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ],
+      "scope": "Draft source match; dynamic calls and provider ABI remain unverified."
+    },
+    {
+      "address": "00482990",
+      "symbol": "?setPosition@Win32Window@G3D@@UAEXHH@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 94.736842,
+        "target_bytes": 76,
+        "candidate_bytes": 76,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 72,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          48
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "calls": [
+        {
+          "offset": 47,
+          "target": "0045b950",
+          "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 67,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        }
+      ],
+      "scope": "Draft source match; dynamic calls and provider ABI remain unverified."
+    }
+  ]
+}

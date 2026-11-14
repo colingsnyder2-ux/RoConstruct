@@ -1,0 +1,18 @@
+{
+  "address": "005a67f0",
+  "candidate": "boost::barrier::~barrier",
+  "score": {
+    "adjusted": 100,
+    "raw": 86.842105
+  },
+  "status": "draft: source identity ambiguous",
+  "evidence": [
+    "Original caller 005a6a80 matches boost::thread constructor and constructs a stack thread_param before calling 005a67f0 on that object.",
+    "Boost 1.34.1 thread.cpp defines thread_param with a mutex and condition; its implicit destructor cleans those fields in the same order as barrier::~barrier.",
+    "Native body and exception metadata graph match, but they cannot alone distinguish these class identities. Do not promote the barrier symbol until another independently verified barrier call site supports it."
+  ],
+  "artifacts": [
+    "work/2008-06/shared-layouts/boost-barrier-calls-reviewed-20261114.json",
+    "work/2008-06/shared-layouts/boost-barrier-eh-audit-20261114.json"
+  ]
+}

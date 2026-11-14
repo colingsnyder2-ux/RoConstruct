@@ -1,0 +1,641 @@
+{
+  "manifest": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\shared-layouts\\g3d-batch-review.json",
+  "indexed": [],
+  "unresolved": [
+    {
+      "address": "00475510",
+      "reason": "different",
+      "metrics": {
+        "fuzzy_percent": 97.345824,
+        "positional_percent": 95.352994,
+        "raw_positional_percent": 84.410646,
+        "target_bytes": 1247,
+        "candidate_bytes": 1315,
+        "length_delta": 68,
+        "compared_unmasked_bytes": 1119,
+        "unmasked_differences": 52,
+        "masked_bytes": 196,
+        "mismatch_offsets": [
+          1247,
+          1248,
+          1249,
+          1250,
+          1251,
+          1252,
+          1253,
+          1254,
+          1255,
+          1256,
+          1257,
+          1258,
+          1259,
+          1260,
+          1261,
+          1262,
+          1263,
+          1264,
+          1265,
+          1266,
+          1267,
+          1268,
+          1269,
+          1270,
+          1271,
+          1272,
+          1273,
+          1274,
+          1275,
+          1276,
+          1277,
+          1278
+        ],
+        "mismatch_offsets_truncated": true,
+        "target_relocations": 33,
+        "candidate_relocations": 49,
+        "missing_relocations": [],
+        "extra_relocations": [
+          188,
+          217,
+          247,
+          529,
+          547,
+          647,
+          878,
+          948,
+          1050,
+          1099,
+          1137,
+          1162,
+          1284,
+          1289,
+          1295,
+          1310
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "contiguous_catch_comparison": {
+        "scope": "diagnostic contiguous bytes only; not a function boundary, reference, or runtime proof",
+        "relocation_normalized_match": true,
+        "metrics": {
+          "fuzzy_percent": 100.0,
+          "positional_percent": 100.0,
+          "raw_positional_percent": 88.669202,
+          "target_bytes": 1315,
+          "candidate_bytes": 1315,
+          "length_delta": 0,
+          "compared_unmasked_bytes": 1119,
+          "unmasked_differences": 0,
+          "masked_bytes": 196,
+          "mismatch_offsets": [],
+          "mismatch_offsets_truncated": false,
+          "target_relocations": 35,
+          "candidate_relocations": 49,
+          "missing_relocations": [],
+          "extra_relocations": [
+            188,
+            217,
+            247,
+            529,
+            547,
+            647,
+            878,
+            948,
+            1050,
+            1099,
+            1137,
+            1162,
+            1289,
+            1295
+          ],
+          "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+        }
+      }
+    },
+    {
+      "address": "007b47f0",
+      "offset": 82,
+      "instruction": "call 0x6a1598",
+      "candidate": "??_L@YGXPAXIHP6EX0@Z1@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 169,
+      "instruction": "call 0x598fa0",
+      "candidate": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 232,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 249,
+      "instruction": "call eax",
+      "candidate": null
+    },
+    {
+      "address": "007b47f0",
+      "offset": 479,
+      "instruction": "call 0x475510",
+      "candidate": "?fromTwoFiles@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 525,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 543,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 603,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 622,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 688,
+      "instruction": "call ebx",
+      "candidate": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 737,
+      "instruction": "call 0x4753c0",
+      "candidate": "?fromFile@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@NW4DepthReadMode@12@MM@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 783,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 801,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 861,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 880,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 925,
+      "instruction": "call ebx",
+      "candidate": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 974,
+      "instruction": "call 0x4753c0",
+      "candidate": "?fromFile@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@NW4DepthReadMode@12@MM@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1020,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1038,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1098,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1117,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1162,
+      "instruction": "call ebx",
+      "candidate": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1211,
+      "instruction": "call 0x4753c0",
+      "candidate": "?fromFile@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@NW4DepthReadMode@12@MM@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1257,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1275,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1335,
+      "instruction": "call 0x45ad90",
+      "candidate": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1354,
+      "instruction": "call edx",
+      "candidate": "?RGBA8@TextureFormat@G3D@@2PBV12@B"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1399,
+      "instruction": "call ebx",
+      "candidate": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1410,
+      "instruction": "call 0x514d90",
+      "candidate": "?fileExists@G3D@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1468,
+      "instruction": "call ebx",
+      "candidate": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1490,
+      "instruction": "call 0x515a00",
+      "candidate": "??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1633,
+      "instruction": "call 0x510e50",
+      "candidate": "?resize@?$Array@VVector4@G3D@@@G3D@@QAEXH_N@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 1644,
+      "instruction": "call 0x47fd70",
+      "candidate": "?resize@?$Array@M@G3D@@QAEXH_N@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 2178,
+      "instruction": "call 0x515c20",
+      "candidate": "??1BinaryInput@G3D@@UAE@XZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 2198,
+      "instruction": "call 0x510e50",
+      "candidate": "?resize@?$Array@VVector4@G3D@@@G3D@@QAEXH_N@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 2212,
+      "instruction": "call 0x47fd70",
+      "candidate": "?resize@?$Array@M@G3D@@QAEXH_N@Z"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 2245,
+      "instruction": "call 0x518650",
+      "candidate": "?random@Vector3@G3D@@SA?AV12@XZ"
+    },
+    {
+      "address": "007b47f0",
+      "offset": 2281,
+      "instruction": "call ebx",
+      "candidate": "__imp__rand"
+    },
+    {
+      "address": "0047fa00",
+      "offset": 54,
+      "instruction": "call edx",
+      "candidate": null
+    },
+    {
+      "address": "0047fa00",
+      "offset": 64,
+      "instruction": "call 0x50a940",
+      "candidate": "?_releaseInputGrab_@_internal@G3D@@YAXXZ"
+    },
+    {
+      "address": "0047fa00",
+      "offset": 131,
+      "instruction": "call dword ptr [0x94278c]",
+      "candidate": "?_failureHook@_internal@G3D@@3P6A_NPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAA_N_N@ZA"
+    },
+    {
+      "address": "0047fa00",
+      "offset": 191,
+      "instruction": "call 0x50a9b0",
+      "candidate": "?_restoreInputGrab_@_internal@G3D@@YAXXZ"
+    },
+    {
+      "address": "0047fa00",
+      "offset": 210,
+      "instruction": "call 0x4896d0",
+      "candidate": "?executeLoopBody@GWindow@G3D@@IAEXXZ"
+    },
+    {
+      "address": "004807e0",
+      "offset": 16,
+      "instruction": "call 0x6a1704",
+      "candidate": "_memset"
+    },
+    {
+      "address": "004807e0",
+      "offset": 55,
+      "instruction": "call eax",
+      "candidate": null
+    },
+    {
+      "address": "004807e0",
+      "offset": 69,
+      "instruction": "call eax",
+      "candidate": null
+    },
+    {
+      "address": "004807e0",
+      "offset": 90,
+      "instruction": "call edx",
+      "candidate": null
+    },
+    {
+      "address": "004807e0",
+      "offset": 116,
+      "instruction": "call 0x47ff20",
+      "candidate": "?resize@?$Array@_N@G3D@@QAEXH_N@Z"
+    },
+    {
+      "address": "004807e0",
+      "offset": 175,
+      "instruction": "call 0x47fd70",
+      "candidate": "?resize@?$Array@M@G3D@@QAEXH_N@Z"
+    },
+    {
+      "address": "004808f0",
+      "offset": 31,
+      "instruction": "call edx",
+      "candidate": null
+    },
+    {
+      "address": "004808f0",
+      "offset": 52,
+      "instruction": "call edx",
+      "candidate": null
+    },
+    {
+      "address": "004808f0",
+      "offset": 107,
+      "instruction": "call 0x45b950",
+      "candidate": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z"
+    },
+    {
+      "address": "00482990",
+      "offset": 47,
+      "instruction": "call 0x45b950",
+      "candidate": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z"
+    },
+    {
+      "address": "00482990",
+      "offset": 67,
+      "instruction": "call edx",
+      "candidate": null
+    },
+    {
+      "address": "00482e00",
+      "offset": 344,
+      "instruction": "call 0x4823d0",
+      "candidate": "?realloc@?$Array@UJoystickInfo@_DirectInput@_internal@G3D@@@G3D@@AAEXH@Z"
+    },
+    {
+      "address": "0050fef0",
+      "reason": "data, call, or byte verification failed",
+      "unresolved_references": [
+        {
+          "offset": 9,
+          "symbol": "__ehhandler$?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "target": "007cc316",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 968,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ]
+    },
+    {
+      "address": "0050ec40",
+      "reason": "data, call, or byte verification failed",
+      "unresolved_references": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ]
+    },
+    {
+      "address": "0050cdd0",
+      "reason": "data, call, or byte verification failed",
+      "unresolved_references": [
+        {
+          "offset": 29,
+          "symbol": "?png_warning@G3D@@YAXPAUpng_struct_def@@PBD@Z",
+          "target": "0050b6a0",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 34,
+          "symbol": "?png_error@G3D@@YAXPAUpng_struct_def@@PBD@Z",
+          "target": "0050b620",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 130,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 243,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 364,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 391,
+          "symbol": "?png_read_data@G3D@@YAXPAUpng_struct_def@@PAEI@Z",
+          "target": "0050cdb0",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 556,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 834,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ]
+    },
+    {
+      "address": "0050bb30",
+      "reason": "data, call, or byte verification failed",
+      "unresolved_references": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 396,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 622,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ]
+    },
+    {
+      "address": "0050c040",
+      "reason": "data, call, or byte verification failed",
+      "unresolved_references": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 376,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2200,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2699,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2793,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ]
+    },
+    {
+      "address": "0050f4c0",
+      "reason": "data, call, or byte verification failed",
+      "unresolved_references": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "target": "007cc2c3",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 105,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 492,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ]
+    },
+    {
+      "address": "0047fa00",
+      "reason": "discovered identity needs review"
+    },
+    {
+      "address": "004807e0",
+      "reason": "discovered identity needs review"
+    },
+    {
+      "address": "004808f0",
+      "reason": "discovered identity needs review"
+    },
+    {
+      "address": "00482990",
+      "reason": "discovered identity needs review"
+    },
+    {
+      "address": "00482e00",
+      "reason": "discovered identity needs review"
+    }
+  ],
+  "variants": [],
+  "variant_scope": "diagnostic only; verify source, calls and chosen build flags before indexing"
+}

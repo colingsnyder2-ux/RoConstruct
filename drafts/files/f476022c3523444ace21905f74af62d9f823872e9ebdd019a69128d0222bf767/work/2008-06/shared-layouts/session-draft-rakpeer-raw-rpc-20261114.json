@@ -1,0 +1,374 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RakPeerRawRPC.cpp",
+  "source_sha256": "d653cf66aa98ee75e31033c8cb12856a5e0b45aaa74cefd8d8e9faaa7c486e56",
+  "object_sha256": "27386a008b54a26a4afcd27c45887ec7bd53df337662956efcd70ae568dca833",
+  "run": "work\\2008-06\\native-check-runs\\20261114-103858-1addcfb5\\analysis-33e44be6.json",
+  "checks": [
+    {
+      "address": "004c42c0",
+      "symbol": "?RPC@RakPeer@@UAE_NPBD0IW4PacketPriority@@W4PacketReliability@@DUSystemAddress@@_NPAIUNetworkID@@PAVBitStream@RakNet@@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.990991,
+        "target_bytes": 1665,
+        "candidate_bytes": 1665,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1497,
+        "unmasked_differences": 0,
+        "masked_bytes": 168,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 4,
+        "candidate_relocations": 42,
+        "missing_relocations": [],
+        "extra_relocations": [
+          117,
+          152,
+          234,
+          263,
+          292,
+          319,
+          342,
+          386,
+          408,
+          433,
+          483,
+          565,
+          625,
+          648,
+          655,
+          672,
+          679,
+          704,
+          717,
+          732,
+          739,
+          772,
+          799,
+          827,
+          1003,
+          1034,
+          1043,
+          1081,
+          1125,
+          1178,
+          1189,
+          1217,
+          1465,
+          1493,
+          1527,
+          1583,
+          1611,
+          1654
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "verified_calls": [
+        {
+          "offset": 116,
+          "target": "006a1520",
+          "symbol": "__alloca_probe",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 151,
+          "target": "004bfd30",
+          "symbol": "?GetIndexFromSystemAddress@RakPeer@@IAEHUSystemAddress@@_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 233,
+          "target": "004a5090",
+          "symbol": "??0BitStream@RakNet@@QAE@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 262,
+          "target": "004a51d0",
+          "symbol": "?ResetWritePointer@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 291,
+          "target": "004a5600",
+          "symbol": "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 318,
+          "target": "004a5600",
+          "symbol": "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 341,
+          "target": "004a5600",
+          "symbol": "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 385,
+          "target": "004d3d30",
+          "symbol": "?GetIndexFromFunctionName@RPCMap@@QAEEPBD@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 407,
+          "target": "004a5540",
+          "symbol": "?Write0@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 432,
+          "target": "004a5790",
+          "symbol": "?WriteCompressed@BitStream@RakNet@@AAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 482,
+          "target": "006a1560",
+          "symbol": "__alloca_probe_16",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 502,
+          "target": "008028b0",
+          "symbol": "__imp__malloc",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 564,
+          "target": "004a9850",
+          "symbol": "??9SystemAddress@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 624,
+          "target": "004a5560",
+          "symbol": "?Write1@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 647,
+          "target": "004ba230",
+          "symbol": "?Instance@StringCompressor@@SAPAV1@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 654,
+          "target": "004ba4f0",
+          "symbol": "?EncodeString@StringCompressor@@QAEXPBDHPAVBitStream@RakNet@@H@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 671,
+          "target": "004a5560",
+          "symbol": "?Write1@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 678,
+          "target": "004a5540",
+          "symbol": "?Write0@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 703,
+          "target": "004a5790",
+          "symbol": "?WriteCompressed@BitStream@RakNet@@AAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 716,
+          "target": "004a99e0",
+          "symbol": "??8NetworkID@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 731,
+          "target": "004a5540",
+          "symbol": "?Write0@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 738,
+          "target": "004a5560",
+          "symbol": "?Write1@BitStream@RakNet@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 771,
+          "target": "004bce80",
+          "symbol": "??$Write@UNetworkID@@@BitStream@RakNet@@QAEXUNetworkID@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 798,
+          "target": "004a5600",
+          "symbol": "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 826,
+          "target": "004a5790",
+          "symbol": "?WriteCompressed@BitStream@RakNet@@AAEXPBEH_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 935,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1002,
+          "target": "004c9910",
+          "symbol": "?GetTime@RakNet@@YAIXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1033,
+          "target": "004a9820",
+          "symbol": "??8SystemAddress@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1042,
+          "target": "004c9910",
+          "symbol": "?GetTime@RakNet@@YAIXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1075,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1080,
+          "target": "004c9910",
+          "symbol": "?GetTime@RakNet@@YAIXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1124,
+          "target": "004a51a0",
+          "symbol": "??1BitStream@RakNet@@QAE@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1177,
+          "target": "004c9910",
+          "symbol": "?GetTime@RakNet@@YAIXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1188,
+          "target": "004d4170",
+          "symbol": "?RakSleep@@YAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1216,
+          "target": "004bc000",
+          "symbol": "?ValidSendTarget@RakPeer@@IAE_NUSystemAddress@@_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1464,
+          "target": "004a9820",
+          "symbol": "??8SystemAddress@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1492,
+          "target": "004a9850",
+          "symbol": "??9SystemAddress@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1526,
+          "target": "004a5700",
+          "symbol": "?Write@BitStream@RakNet@@QAEXPBDH@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1577,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1582,
+          "target": "004bd9c0",
+          "symbol": "?RemoveAtIndex@?$Queue@PAUPacket@@@DataStructures@@QAEXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1610,
+          "target": "004c4090",
+          "symbol": "?ReceiveIgnoreRPC@RakPeer@@IAEPAUPacket@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 1620,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 1653,
+          "target": "004a51a0",
+          "symbol": "??1BitStream@RakNet@@QAE@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "scope": "Draft: source and normalized bytes match, 39 direct/import calls verified; four virtual calls need provider/runtime proof."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "address": "004166a0",
+  "symbol": "?Upload@CContent@@UAGJPA_W@Z",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CContentUpload.cpp",
+  "source_sha256": "190871d2888ebad53d3dab45249a57a8eddb01d9f5e80aa8750e84eb2ef1a1c8",
+  "object_sha256": "a69aa12b87d97eaf95a8332dc906b2e5c1ab5a0502dff6637d0661a73fad6146",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-085046-6ad8a6e9\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 82.056893,
+    "target_bytes": 457,
+    "candidate_bytes": 457,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 349,
+    "unmasked_differences": 0,
+    "masked_bytes": 108,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 16,
+    "candidate_relocations": 27,
+    "missing_relocations": [],
+    "extra_relocations": [
+      34,
+      43,
+      59,
+      154,
+      205,
+      275,
+      299,
+      310,
+      369,
+      404,
+      431
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [
+    [
+      8448640,
+      18
+    ]
+  ],
+  "verified_calls": [
+    {
+      "offset": 58,
+      "target": "0041dcd0",
+      "symbol": "?validateWorkspaceSiteUrl@@YAJPB_W@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+    },
+    {
+      "offset": 153,
+      "target": "00429330",
+      "symbol": "?ReportCOMError@LogManager@@SAJABU_GUID@@PBDJ@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+    },
+    {
+      "offset": 403,
+      "target": "00429360",
+      "symbol": "?ReportExceptionAsCOMError@LogManager@@SAJABU_GUID@@ABVexception@std@@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+    }
+  ],
+  "scope": "Recovered real LogManager error handlers; 3 direct bindings checked, 19 other calls remain unverified. Selection, ABI, runtime and server credit remain open."
+}

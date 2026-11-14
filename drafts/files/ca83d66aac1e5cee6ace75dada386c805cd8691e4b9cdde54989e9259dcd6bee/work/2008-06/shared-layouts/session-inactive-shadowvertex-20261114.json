@@ -1,0 +1,63 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshShadow2008.cpp",
+  "source_sha256": "0367a02b871bdc78da38fd206e50bdff50d95dfafbd9f70e975e2eb9fb25ad73",
+  "object_sha256": "011a73129805564935015c33c76403caeeb20b8fbcebfed107f6d96d32801f73",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-084338-e148cffc\\results.json",
+  "checks": [
+    {
+      "address": "0054c220",
+      "symbol": "??1?$Array@VVertex@MeshAlg@G3D@@@G3D@@QAE@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 94.285714,
+        "target_bytes": 105,
+        "candidate_bytes": 105,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 97,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          52,
+          65
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "0054c4b0",
+      "symbol": "??_GVertex@MeshAlg@G3D@@QAEPAXI@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 88.636364,
+        "target_bytes": 44,
+        "candidate_bytes": 44,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 36,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          11,
+          28
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    }
+  ],
+  "scope": "Fresh masked byte/data matches. Prior analysis-6ca31f11 verifies direct calls; selection, ABI and runtime remain unverified."
+}

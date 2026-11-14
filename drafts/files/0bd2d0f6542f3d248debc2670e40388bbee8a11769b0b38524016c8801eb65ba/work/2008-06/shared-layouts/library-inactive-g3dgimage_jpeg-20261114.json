@@ -1,0 +1,66 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage_jpeg.cpp",
+  "source_sha256": "fb83ae2a181c6db2a6b3338b732a36cde02f395a11af1966d8c236838e14b312",
+  "checks": [
+    {
+      "address": "0050cb40",
+      "symbol": "?decodeJPEG@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 88.168558,
+        "target_bytes": 617,
+        "candidate_bytes": 617,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 525,
+        "unmasked_differences": 0,
+        "masked_bytes": 92,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 8,
+        "candidate_relocations": 23,
+        "missing_relocations": [],
+        "extra_relocations": [
+          49,
+          81,
+          137,
+          153,
+          163,
+          171,
+          203,
+          307,
+          389,
+          407,
+          483,
+          493,
+          569,
+          595,
+          613
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8522856,
+          33
+        ],
+        [
+          9279868,
+          16
+        ],
+        [
+          8552484,
+          32
+        ],
+        [
+          9290872,
+          16
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-050742-da1c3d99\\results.json",
+      "object_sha256": "7505dc155c4c94cb6f64c72e69cccb9a48af9da5aefa42fb40d4039c9d6f626d"
+    }
+  ],
+  "scope": "Existing inactive native candidate source; local relocation-masked byte and checked-data match. Competing versions, reference identity, provider selection, ABI, runtime and server credit remain separate."
+}

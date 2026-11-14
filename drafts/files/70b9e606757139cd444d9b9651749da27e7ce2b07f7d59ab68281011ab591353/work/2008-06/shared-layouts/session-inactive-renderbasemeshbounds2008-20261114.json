@@ -1,0 +1,61 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshBounds2008.cpp",
+  "source_sha256": "d06c895a0d687f3eb90f02110d66c23c50aee56e73dc8b0e1de3d65cafa2f2c6",
+  "checks": [
+    {
+      "address": "00547440",
+      "symbol": "?computeAABounds@Mesh@RenderBase@RBX@@CAXABV?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@AAVVector3@G3D@@1@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 77.006508,
+        "target_bytes": 461,
+        "candidate_bytes": 461,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 341,
+        "unmasked_differences": 0,
+        "masked_bytes": 120,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 30,
+        "missing_relocations": [],
+        "extra_relocations": [
+          38,
+          47,
+          56,
+          63,
+          72,
+          84,
+          96,
+          106,
+          118,
+          137,
+          148,
+          189,
+          211,
+          221,
+          258,
+          265,
+          277,
+          309,
+          326,
+          345,
+          358,
+          374,
+          383,
+          399,
+          408,
+          422,
+          437
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-002806-a837c0db\\results.json",
+      "object_sha256": "69b2096dd745de08381db40eefac418d5bb2f19d6b142ffb99270cc329ffdc69"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

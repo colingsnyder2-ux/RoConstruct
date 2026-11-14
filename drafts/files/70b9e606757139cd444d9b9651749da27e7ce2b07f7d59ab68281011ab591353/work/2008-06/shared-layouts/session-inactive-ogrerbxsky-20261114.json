@@ -1,0 +1,256 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreRbxSky.cpp",
+  "source_sha256": "3e2f5cc4bdf337bcdfa36373cae902e9719996e630d9799b14ef488190f57f22",
+  "checks": [
+    {
+      "address": "0067fd60",
+      "symbol": "??0RbxSky@Ogre@@QAE@PAVSceneManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 88.535156,
+        "target_bytes": 5120,
+        "candidate_bytes": 5120,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 4344,
+        "unmasked_differences": 0,
+        "masked_bytes": 776,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 177,
+        "candidate_relocations": 194,
+        "missing_relocations": [],
+        "extra_relocations": [
+          198,
+          243,
+          2548,
+          2632,
+          2669,
+          2720,
+          2806,
+          2828,
+          2891,
+          3020,
+          3149,
+          3383,
+          3587,
+          3615,
+          3661,
+          3724,
+          4484
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8709484,
+          4
+        ],
+        [
+          8479684,
+          8
+        ],
+        [
+          8709988,
+          9
+        ],
+        [
+          8479684,
+          8
+        ],
+        [
+          8709980,
+          8
+        ],
+        [
+          8479684,
+          8
+        ],
+        [
+          8709964,
+          13
+        ],
+        [
+          8479684,
+          8
+        ],
+        [
+          8709956,
+          8
+        ],
+        [
+          8547268,
+          12
+        ],
+        [
+          8709944,
+          12
+        ],
+        [
+          8479684,
+          8
+        ],
+        [
+          8709932,
+          9
+        ],
+        [
+          8547268,
+          12
+        ],
+        [
+          8709928,
+          4
+        ],
+        [
+          8494540,
+          4
+        ],
+        [
+          8709956,
+          8
+        ],
+        [
+          8709920,
+          8
+        ],
+        [
+          8494540,
+          4
+        ],
+        [
+          8709944,
+          12
+        ],
+        [
+          8709912,
+          5
+        ],
+        [
+          8682136,
+          4
+        ],
+        [
+          8709932,
+          9
+        ],
+        [
+          8709904,
+          8
+        ],
+        [
+          8709896,
+          8
+        ],
+        [
+          8709884,
+          9
+        ],
+        [
+          8709872,
+          9
+        ],
+        [
+          8709872,
+          9
+        ],
+        [
+          8549524,
+          4
+        ],
+        [
+          8709868,
+          4
+        ],
+        [
+          8549524,
+          4
+        ],
+        [
+          8709868,
+          4
+        ],
+        [
+          8549524,
+          4
+        ],
+        [
+          8709868,
+          4
+        ],
+        [
+          8494540,
+          4
+        ],
+        [
+          8549524,
+          4
+        ],
+        [
+          8709868,
+          4
+        ],
+        [
+          8527360,
+          8
+        ],
+        [
+          8494540,
+          4
+        ],
+        [
+          8547904,
+          4
+        ],
+        [
+          8527360,
+          8
+        ],
+        [
+          8709856,
+          10
+        ],
+        [
+          8479684,
+          8
+        ],
+        [
+          8709844,
+          10
+        ],
+        [
+          8547268,
+          12
+        ],
+        [
+          8538616,
+          4
+        ],
+        [
+          8709840,
+          3
+        ],
+        [
+          8709516,
+          324
+        ],
+        [
+          8709492,
+          16
+        ],
+        [
+          8512384,
+          4
+        ],
+        [
+          8512384,
+          4
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-004952-b82c333b\\analysis-32f27033.json",
+      "object_sha256": "02da7b38d7d83922d83bf2390c0d652c5269d9681adf95a50e8967fbd3aea747"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

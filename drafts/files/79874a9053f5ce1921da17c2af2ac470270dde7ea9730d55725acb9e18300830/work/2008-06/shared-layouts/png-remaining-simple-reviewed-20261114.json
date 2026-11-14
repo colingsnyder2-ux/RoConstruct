@@ -1,0 +1,19 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Png5png.cpp",
+      "checks": [
+        {
+          "addr": "0051e1d0",
+          "symbol": "_png_handle_as_unknown",
+          "calls": []
+        },
+        {
+          "addr": "0051e220",
+          "symbol": "_png_init_mmx_flags",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

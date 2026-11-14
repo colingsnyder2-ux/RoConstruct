@@ -1,0 +1,36 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreSphereErase2008.cpp",
+  "source_sha256": "bd08920377123c542939153aa2a8b94ce9e65e78684dd43c6100a51d7ea4fa54",
+  "checks": [
+    {
+      "address": "00682150",
+      "symbol": "?eraseSphere@Ogre@@YA_NPBX@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.308411,
+        "target_bytes": 107,
+        "candidate_bytes": 107,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 83,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 4,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          32,
+          87
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261113-233718-e99bd941\\results.json",
+      "object_sha256": "20a76c3fc505302940a6d0d3bdd1e9e030665a20db561857ebcd84a43b4187a9"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

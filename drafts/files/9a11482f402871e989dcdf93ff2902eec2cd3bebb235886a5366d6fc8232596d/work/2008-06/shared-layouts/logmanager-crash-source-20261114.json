@@ -1,0 +1,265 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LogManagerCrash.cpp",
+  "source_sha256": "e9bde75d27db30b4eb884569690e8c15fb04b4c0d0dcd33be93a99dd355a2cf6",
+  "object_sha256": "b382e98350eeab4db6028e51f0aa291350097853ddf1794f17b4ee3e9e0f1c98",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-082850-8b631d06\\results.json",
+  "checks": [
+    {
+      "address": "00427b60",
+      "symbol": "?getMainLogManger@LogManager@@SAPAVMainLogManager@@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 50.0,
+        "target_bytes": 6,
+        "candidate_bytes": 6,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 2,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "004284e0",
+      "symbol": "?hasCrashLogs@MainLogManager@@QBE_NXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 82.329317,
+        "target_bytes": 249,
+        "candidate_bytes": 249,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 193,
+        "unmasked_differences": 0,
+        "masked_bytes": 56,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 12,
+        "candidate_relocations": 14,
+        "missing_relocations": [],
+        "extra_relocations": [
+          38,
+          110
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8455144,
+          6
+        ]
+      ]
+    },
+    {
+      "address": "00427ba0",
+      "symbol": "?GetLogPath@LogManager@@QBE?AV?$CPathT@V?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@ATL@@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.826772,
+        "target_bytes": 127,
+        "candidate_bytes": 127,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 103,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 5,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          46
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8455076,
+          5
+        ]
+      ]
+    },
+    {
+      "address": "00428310",
+      "symbol": "?MoveRelative@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDV12@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 40.40404,
+        "positional_percent": 20.661157,
+        "raw_positional_percent": 14.348786,
+        "target_bytes": 453,
+        "candidate_bytes": 438,
+        "length_delta": -15,
+        "compared_unmasked_bytes": 242,
+        "unmasked_differences": 192,
+        "masked_bytes": 211,
+        "mismatch_offsets": [
+          23,
+          31,
+          37,
+          39,
+          40,
+          48,
+          59,
+          60,
+          65,
+          66,
+          67,
+          68,
+          69,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          87,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          106,
+          107,
+          108,
+          109,
+          116
+        ],
+        "mismatch_offsets_truncated": true,
+        "target_relocations": 34,
+        "candidate_relocations": 30,
+        "missing_relocations": [
+          70,
+          81,
+          88,
+          100,
+          110,
+          119,
+          134,
+          149,
+          155,
+          171,
+          181,
+          188,
+          202,
+          209,
+          223,
+          238,
+          249,
+          256,
+          268,
+          278,
+          287,
+          302,
+          317,
+          333,
+          343,
+          351,
+          362,
+          372,
+          385,
+          403,
+          428
+        ],
+        "extra_relocations": [
+          61,
+          83,
+          90,
+          102,
+          112,
+          121,
+          147,
+          153,
+          169,
+          179,
+          186,
+          200,
+          207,
+          221,
+          243,
+          250,
+          262,
+          272,
+          281,
+          313,
+          329,
+          339,
+          347,
+          357,
+          370,
+          388,
+          398
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "00429bc0",
+      "symbol": "?archiveCrashLogs@MainLogManager@@QAE?AV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 84.174312,
+        "target_bytes": 872,
+        "candidate_bytes": 872,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 700,
+        "unmasked_differences": 0,
+        "masked_bytes": 172,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 33,
+        "candidate_relocations": 43,
+        "missing_relocations": [],
+        "extra_relocations": [
+          49,
+          108,
+          180,
+          301,
+          342,
+          361,
+          549,
+          669,
+          707,
+          726
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8455144,
+          6
+        ],
+        [
+          8455152,
+          9
+        ],
+        [
+          8455388,
+          4
+        ],
+        [
+          8455152,
+          9
+        ]
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data checks; MoveRelative remains draft. Reference bindings, provider selection, ABI and runtime remain unverified."
+}

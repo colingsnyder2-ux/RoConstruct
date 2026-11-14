@@ -1,0 +1,908 @@
+{
+  "class": "RBX rows of the application range 004cc000..004d0000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4cc/NativeAppUnit4CCPhysicsSenderIndex.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4CCPhysicsSenderIndex.cpp"
+    ],
+    "sender_unit_evidence": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-classes",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4cc/SenderUnitEvidence.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/app-unit4cc/SenderUnitEvidence.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4cc.py": "cb0d56c93da74fa452011d2e61b87d95a41b577c1b864436c2ff0faed3496aa0",
+    "rebuild/2008-06/native-classes/AppUnit4CCPhysicsSenderIndex.cpp": "29d00a16a5799379cc30a99bbcbb8e30dc1a278cfed64f854fb98e6b47f1d518",
+    "rebuild/2008-06/native-headers/Network/PhysicsSenders2008.h": "f3e22a64b34eab55652e5ac2172f265abac7806701b691451629882b5ed33917"
+  },
+  "evidence_sources": {
+    "rebuild/2008-06/native-classes/NetworkPhysicsSenders2008.cpp": "2001f98be5b43de2fa05e03c3ad9d7d6592f3f8a2af609e441ef7a8c3c36d79a"
+  },
+  "objects": {
+    "NativeAppUnit4CCPhysicsSenderIndex.obj": "b475db2e3604614a08de7812c649b697e426fcd00df586e28fa3c3d9419a3500",
+    "SenderUnitEvidence.obj": "53daff6f8da0a10aadaee60b9d4bf4ea6136721a9b5f0cfef5550e4963b5370e"
+  },
+  "unit_map": {
+    "head 0x4cc000..0x4cc1a7": "Tail of the sender ordered_index<priority, greater<double> >::replace_ (starts at 0x4cbfb0, 503 B, below this range; network-physics-senders2008 not_exact).",
+    "physics-sender 0x4cc1b0..0x4cdcbf": "The physics-replication sender unit (continues from 0x4c9930; app-unit4c8-2008 unit_map). PartItems container members (hashed / ordered insert_, replace_, modify_, erase, container insert_ / modify_<Modifier> with their catch funclets), the boost::function / signals slot pieces of the PhysicsSender connection 0x4cc1b0 / 0x4cd370, std::for_each over the PhysicsService parts set 0x4cc720 (functor call 0x4cbb60), PhysicsSender ctor / dtor / ??_G (vtable 0x826928, RTTI .?AVPhysicsSender@Network@RBX@@), sendPackets 0x4cce00 and step 0x4cd920 (slots 2 / 1), the part handler 0x4cd170 (its address is a DIR32 operand in step), RoundRobinPhysicsSender::sendPackets 0x4cd420 (vtable 0x826760 slot 2), the PhysicsService members 0x4cd300..0x4cd7e0 (services-working, world-service trials) and ServiceProvider::create<PhysicsService>(const Instance*) 0x4cd8d0 (app-unit4c8-2008); step ends at 0x4cdcb8.",
+    "raknet 0x4cdcc0..0x4d0000": "RakNet 3.x library code, never recovered here: HuffmanEncodingTree.cpp with its CircularLinkedList / Queue instances to 0x4ce56f, SocketLayer.cpp 0x4ce570..0x4ce97f (WS2_32 imports: WSAGetLastError, bind, gethostbyname, gethostname, getsockname, getsockopt, htons, inet_addr, inet_ntoa, ioctlsocket, ntohs, recvfrom, sendto, setsockopt, socket), ReliabilityLayer.cpp from 0x4ce980 with the BPlusTree / MemoryPool / RangeList / OrderedList instances, running past 0x4d0000 (app-unit4c8-2008 / app-unit4d0-2008 unit maps)."
+  },
+  "row_map": [
+    "004cc1b0 84 code: not exact: boost::function1 constructor from a 16-byte functor (has_empty_target 0x60a2f0, stored vtable 0x82691c); the functor binds an undeclared PhysicsSender member (slot construction 0x4cd370): open.",
+    "004cc210 484 code: counted here",
+    "004cc400 95 code: counted by network-physics-senders2008-working.json",
+    "004cc460 118 code: counted by network-physics-senders2008-working.json",
+    "004cc4e0 160 code: not exact: hashed_index::insert_(value, node): exact only in the sender-unit evidence build (inlines RBX::hash_value); proposed to the NetworkPhysicsSenders2008.cpp owner.",
+    "004cc580 86 code: counted by network-physics-senders2008-working.json",
+    "004cc5e0 261 code: not exact: hashed_index::replace_: exact with its funclet 0x4cc6e5 only in the sender-unit evidence build; proposed.",
+    "004cc6e5 58 eh: not exact: catch funclet of hashed_index::replace_ 0x4cc5e0 (same build); proposed.",
+    "004cc720 192 code: not exact: std::for_each over a std::set const_iterator (_Inc 0x5e9340) with a 24-byte bind_t whose call operator 0x4cbb60 calls 0x587420 through a member pointer with a shared_ptr by value: functor type not derived.",
+    "004cc7e0 368 code: not exact: hashed_index::modify_(node): exact only in the sender-unit evidence build (inlines RBX::hash_value); proposed.",
+    "004cc960 148 code: counted here",
+    "004cc9f4 21 eh: counted here",
+    "004cca10 122 code: counted here",
+    "004cca8a 27 eh: counted here",
+    "004ccab0 91 code: counted by network-physics-senders2008-working.json",
+    "004ccb10 125 code: counted by network-physics-senders2008-working.json",
+    "004ccb90 152 code: counted by network-physics-senders2008-working.json",
+    "004ccc30 110 code: counted here",
+    "004ccca0 320 code: counted by physics-array-find-trial.json",
+    "004ccde0 30 gen: counted by network-physics-senders2008-working.json",
+    "004cce00 880 code: not exact: PhysicsSender::sendPackets (880 B): needs the native Replicator / BitStream API (network-physics-senders2008 not_exact).",
+    "004cd170 385 code: not exact: PhysicsSender part handler (shared_dynamic_cast<PartInstance> 0x5d4080, container insert_ 0x4cc960): undeclared PhysicsSender member; open.",
+    "004cd300 101 code: counted by services-working.json",
+    "004cd370 172 code: not exact: signals slot construction for a bind of an undeclared PhysicsSender member (slot_base data_t 0x41ad40, create_connection 0x595840, function ctor 0x4cc1b0): open.",
+    "004cd420 225 code: not exact: RoundRobinPhysicsSender::sendPackets: World / Workspace API (network-physics not_exact).",
+    "004cd510 146 code: counted by services-working.json",
+    "004cd5b0 233 code: counted by physics-array-lifetime-trial.json, services-working.json",
+    "004cd6a0 8 adjustor: counted by services-working.json",
+    "004cd6b0 8 adjustor: counted by services-working.json",
+    "004cd6c0 8 adjustor: counted by services-working.json",
+    "004cd6d0 11 adjustor: counted by services-working.json",
+    "004cd6e0 11 adjustor: counted by services-working.json",
+    "004cd6f0 11 adjustor: counted by services-working.json",
+    "004cd700 8 adjustor: counted by services-working.json",
+    "004cd710 8 adjustor: counted by services-working.json",
+    "004cd720 11 adjustor: counted by services-working.json",
+    "004cd730 11 adjustor: counted by services-working.json",
+    "004cd740 31 gen: counted by services-working.json",
+    "004cd760 120 code: counted by physics-array-lifetime-trial.json, services-working.json",
+    "004cd7e0 228 code: counted by world-service-actions-secure-trial.json, world-service-actions-trial.json, world-service-all-trial.json, world-service-allocation-trial.json, world-service-complete-trial.json, world-service-factories-trial.json, world-service-find-mismatch.json, world-service-full-trial.json, world-service-joints-find-trial.json, world-service-lifetime-trial.json",
+    "004cd8d0 65 code: counted by app-unit4c8-2008-working.json",
+    "004cd920 921 code: not exact: PhysicsSender::step (921 B): needs the native Replicator and the item update 0x4c9e30 (network-physics-senders2008 not_exact).",
+    "004cdcc0 95 code: RakNet library",
+    "004cdd20 197 code: RakNet library",
+    "004cddf0 16 code: RakNet library",
+    "004cde00 200 code: RakNet library",
+    "004cded0 186 code: RakNet library",
+    "004cdf90 74 code: RakNet library",
+    "004cdfe0 341 code: RakNet library",
+    "004ce140 146 code: RakNet library",
+    "004ce1e0 129 code: RakNet library",
+    "004ce270 5 code: RakNet library",
+    "004ce280 73 code: RakNet library",
+    "004ce2d0 5 code: RakNet library",
+    "004ce2e0 642 code: RakNet library",
+    "004ce570 264 code: RakNet library",
+    "004ce680 42 code: RakNet library",
+    "004ce6b0 206 code: RakNet library",
+    "004ce780 128 code: RakNet library",
+    "004ce800 46 code: RakNet library",
+    "004ce830 134 code: RakNet library",
+    "004ce8c0 115 code: RakNet library",
+    "004ce940 60 code: RakNet library",
+    "004ce980 20 code: RakNet library",
+    "004ce9a0 33 code: RakNet library",
+    "004ce9d0 31 code: RakNet library",
+    "004ce9f0 13 code: RakNet library",
+    "004cea00 7 code: RakNet library",
+    "004cea10 336 code: RakNet library",
+    "004ceb60 155 code: RakNet library",
+    "004cec00 33 code: RakNet library",
+    "004cec30 20 code: RakNet library",
+    "004cec50 7 code: RakNet library",
+    "004cec60 7 code: RakNet library",
+    "004cec70 88 code: RakNet library",
+    "004cecd0 13 code: RakNet library",
+    "004cece0 13 code: RakNet library",
+    "004cecf0 13 code: RakNet library",
+    "004ced00 153 code: RakNet library",
+    "004ceda0 50 code: RakNet library",
+    "004cede0 194 code: RakNet library",
+    "004ceeb0 227 code: RakNet library",
+    "004cefa0 30 code: RakNet library",
+    "004cefc0 221 code: RakNet library",
+    "004cf0a0 26 code: RakNet library",
+    "004cf0c0 169 code: RakNet library",
+    "004cf170 143 code: RakNet library",
+    "004cf200 123 code: RakNet library",
+    "004cf280 96 code: RakNet library",
+    "004cf2e0 156 code: RakNet library",
+    "004cf380 145 code: RakNet library",
+    "004cf420 105 code: RakNet library",
+    "004cf490 95 code: RakNet library",
+    "004cf4f0 38 code: RakNet library",
+    "004cf520 39 code: RakNet library",
+    "004cf550 126 code: RakNet library",
+    "004cf5d0 134 code: RakNet library",
+    "004cf660 111 code: RakNet library",
+    "004cf6d0 106 code: RakNet library",
+    "004cf740 118 code: RakNet library",
+    "004cf7c0 42 code: RakNet library",
+    "004cf7f0 268 code: RakNet library",
+    "004cf900 158 code: RakNet library",
+    "004cf9a0 208 code: RakNet library",
+    "004cfa70 143 code: RakNet library",
+    "004cfb00 5 code: RakNet library",
+    "004cfb10 158 code: RakNet library",
+    "004cfbb0 211 code: RakNet library",
+    "004cfc90 44 code: RakNet library",
+    "004cfcc0 267 code: RakNet library",
+    "004cfdd0 301 code: RakNet library",
+    "004cff00 964 code: RakNet library"
+  ],
+  "range_functions": 112,
+  "range_rows_counted_by_other_receipts": [
+    "0x4cc400 counted by network-physics-senders2008-working.json",
+    "0x4cc460 counted by network-physics-senders2008-working.json",
+    "0x4cc580 counted by network-physics-senders2008-working.json",
+    "0x4ccab0 counted by network-physics-senders2008-working.json",
+    "0x4ccb10 counted by network-physics-senders2008-working.json",
+    "0x4ccb90 counted by network-physics-senders2008-working.json",
+    "0x4ccca0 counted by physics-array-find-trial.json",
+    "0x4ccde0 counted by network-physics-senders2008-working.json",
+    "0x4cd300 counted by services-working.json",
+    "0x4cd510 counted by services-working.json",
+    "0x4cd5b0 counted by physics-array-lifetime-trial.json, services-working.json",
+    "0x4cd6a0 counted by services-working.json",
+    "0x4cd6b0 counted by services-working.json",
+    "0x4cd6c0 counted by services-working.json",
+    "0x4cd6d0 counted by services-working.json",
+    "0x4cd6e0 counted by services-working.json",
+    "0x4cd6f0 counted by services-working.json",
+    "0x4cd700 counted by services-working.json",
+    "0x4cd710 counted by services-working.json",
+    "0x4cd720 counted by services-working.json",
+    "0x4cd730 counted by services-working.json",
+    "0x4cd740 counted by services-working.json",
+    "0x4cd760 counted by physics-array-lifetime-trial.json, services-working.json",
+    "0x4cd7e0 counted by world-service-actions-secure-trial.json, world-service-actions-trial.json, world-service-all-trial.json, world-service-allocation-trial.json, world-service-complete-trial.json, world-service-factories-trial.json, world-service-find-mismatch.json, world-service-full-trial.json, world-service-joints-find-trial.json, world-service-lifetime-trial.json",
+    "0x4cd8d0 counted by app-unit4c8-2008-working.json"
+  ],
+  "rows": [
+    {
+      "address": "004cc960",
+      "symbol": "?insert_@?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@IAE?AU?$pair@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@_N@std@@ABUPartItem@PhysicsSender@Network@RBX@@@Z [0x0:0x94]",
+      "size": 148,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?insert_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cc4e0 (instance (sender-unit evidence build))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?insert_@?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@IAE?AU?$pair@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@_N@std@@ABUPartItem@PhysicsSender@Network@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "004cc9f4",
+      "symbol": "?insert_@?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@IAE?AU?$pair@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@_N@std@@ABUPartItem@PhysicsSender@Network@RBX@@@Z [0x94:0xa9]",
+      "size": 21,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cca10",
+      "symbol": "??$modify_@V?$bind_t@XP6AXAAUPartItem@PhysicsSender@Network@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@boost@@@_bi@boost@@@?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@IAE_NV?$bind_t@XP6AXAAUPartItem@PhysicsSender@Network@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@boost@@@_bi@2@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@12@@Z [0x0:0x7a]",
+      "size": 122,
+      "exact": true,
+      "verified_targets": {
+        "?modify_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cc7e0 (instance (sender-unit evidence build))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$modify_@V?$bind_t@XP6AXAAUPartItem@PhysicsSender@Network@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@boost@@@_bi@boost@@@?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@IAE_NV?$bind_t@XP6AXAAUPartItem@PhysicsSender@Network@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@boost@@@_bi@2@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@12@@Z"
+      ]
+    },
+    {
+      "address": "004cca8a",
+      "symbol": "??$modify_@V?$bind_t@XP6AXAAUPartItem@PhysicsSender@Network@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@boost@@@_bi@boost@@@?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@IAE_NV?$bind_t@XP6AXAAUPartItem@PhysicsSender@Network@RBX@@@ZV?$list1@V?$arg@$00@boost@@@_bi@boost@@@_bi@2@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@12@@Z [0x7a:0x95]",
+      "size": 27,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cc210",
+      "symbol": "?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 484,
+      "exact": true,
+      "verified_targets": {
+        "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z": "0x4cae60 (instance (unit build))",
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (instance (unit build))",
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABNAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb200 (instance (unit build))",
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z": "0x4cb850 (instance (unit build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (instance (unit build))",
+        "?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z": "0x4cbc10 (instance (unit build))"
+      },
+      "local_eh": [
+        "__ehhandler$?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z"
+      ]
+    },
+    {
+      "address": "004ccc30",
+      "symbol": "?erase@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@QAE?AV?$bidir_node_iterator@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@Una@mpl@4@@234@V5234@@Z",
+      "size": 110,
+      "exact": true,
+      "verified_targets": {
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (instance (unit build))",
+        "?erase_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cc580 (instance (unit build))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    }
+  ],
+  "instances": [
+    {
+      "address": "0x420b50",
+      "symbol": "??$_Allocate@Uhashed_index_node_impl@detail@multi_index@boost@@@std@@YAPAUhashed_index_node_impl@detail@multi_index@boost@@IPAU1234@@Z",
+      "size": 91,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (throw info (catchable types .?AVbad_alloc@std@@, .?AVexception@std@@))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 91,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x420b50",
+      "symbol": "??$_Allocate@I@std@@YAPAIIPAI@Z",
+      "size": 91,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (throw info (catchable types .?AVbad_alloc@std@@, .?AVexception@std@@))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 91,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4acf00",
+      "symbol": "??$_Lower_bound@PBIIH@std@@YAPBIPBI0ABIPAH@Z",
+      "size": 68,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 68,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c66c0",
+      "symbol": "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z",
+      "size": 73,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 73,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c6710",
+      "symbol": "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z",
+      "size": 87,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 87,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c6770",
+      "symbol": "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+      "size": 121,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 121,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c67f0",
+      "symbol": "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+      "size": 121,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 121,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c6870",
+      "symbol": "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+      "size": 267,
+      "exact": false,
+      "verified_targets": {
+        "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6770 (instance (unit build))",
+        "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c67f0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 267,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c6980",
+      "symbol": "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z",
+      "size": 94,
+      "exact": false,
+      "verified_targets": {
+        "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6870 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 94,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c69e0",
+      "symbol": "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z",
+      "size": 762,
+      "exact": false,
+      "verified_targets": {
+        "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6770 (instance (unit build))",
+        "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c67f0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 762,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c70f0",
+      "symbol": "?first_nonempty@?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QBEII@Z",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 27,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c9930",
+      "symbol": "?restore@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@00@Z",
+      "size": 118,
+      "exact": false,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710 (instance (unit build))",
+        "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6870 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "sender-unit evidence build",
+      "listed_size": 118,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c9b20",
+      "symbol": "?link@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@PAUhashed_index_node_impl@234@@Z",
+      "size": 39,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 39,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4c9d90",
+      "symbol": "??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z",
+      "size": 149,
+      "exact": false,
+      "verified_targets": {
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z"
+      ],
+      "build": "unit build",
+      "listed_size": 149,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cad90",
+      "symbol": "?link_point@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@AAPAUhashed_index_node_impl@234@Uhashed_unique_tag@234@@Z",
+      "size": 54,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 54,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cae60",
+      "symbol": "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z",
+      "size": 212,
+      "exact": false,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710 (instance (unit build))",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 212,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4caf40",
+      "symbol": "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z",
+      "size": 202,
+      "exact": false,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710 (instance (unit build))",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 202,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb010",
+      "symbol": "?insert_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 75,
+      "exact": false,
+      "verified_targets": {
+        "??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z": "0x4c9d90 (instance (unit build))"
+      },
+      "local_eh": [
+        "__ehhandler$?insert_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z"
+      ],
+      "build": "unit build",
+      "listed_size": 75,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb060",
+      "symbol": "??4PartItem@PhysicsSender@Network@RBX@@QAEAAU0123@ABU0123@@Z",
+      "size": 95,
+      "exact": false,
+      "verified_targets": {
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external)"
+      },
+      "local_eh": [],
+      "build": "sender-unit evidence build",
+      "listed_size": 95,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb200",
+      "symbol": "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABNAAUlink_info@1234@Uordered_non_unique_tag@234@@Z",
+      "size": 128,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 128,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb280",
+      "symbol": "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NHAAUlink_info@1234@Uordered_non_unique_tag@234@@Z",
+      "size": 124,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 124,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb300",
+      "symbol": "?erase_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEXPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@@Z",
+      "size": 58,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 58,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb540",
+      "symbol": "??0?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z",
+      "size": 122,
+      "exact": false,
+      "verified_targets": {
+        "?prime_list@?1??next_prime@bucket_array_base@detail@multi_index@boost@@KAII@Z@4QBIB": "0x824988 (prime table bytes)",
+        "??$_Lower_bound@PBIIH@std@@YAPBIPBI0ABIPAH@Z": "0x4acf00 (instance (unit build))",
+        "??$_Allocate@Uhashed_index_node_impl@detail@multi_index@boost@@@std@@YAPAUhashed_index_node_impl@detail@multi_index@boost@@IPAU1234@@Z": "0x420b50 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 122,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb5c0",
+      "symbol": "?unchecked_rehash@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z",
+      "size": 482,
+      "exact": false,
+      "verified_targets": {
+        "??0?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z": "0x4cb540 (instance (unit build))",
+        "??$_Allocate@I@std@@YAPAIIPAI@Z": "0x420b50 (instance (unit build))",
+        "__real@4f800000": "0x819778 (constant bytes equal)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?unchecked_rehash@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z"
+      ],
+      "build": "sender-unit evidence build",
+      "listed_size": 482,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb7b0",
+      "symbol": "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 157,
+      "exact": false,
+      "verified_targets": {
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NHAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb280 (instance (unit build))",
+        "?insert_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cb010 (instance (unit build))",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 157,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb850",
+      "symbol": "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 134,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cb8e0",
+      "symbol": "?replace_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z",
+      "size": 495,
+      "exact": false,
+      "verified_targets": {
+        "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z": "0x4caf40 (instance (unit build))",
+        "??4PartItem@PhysicsSender@Network@RBX@@QAEAAU0123@ABU0123@@Z": "0x4cb060 (instance (sender-unit evidence build))",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (instance (unit build))",
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (instance (unit build))",
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NHAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb280 (instance (unit build))",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (instance (unit build))",
+        "?restore@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@00@Z": "0x4c9930 (instance (sender-unit evidence build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?replace_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z"
+      ],
+      "build": "sender-unit evidence build",
+      "listed_size": 337,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cbc10",
+      "symbol": "?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z",
+      "size": 296,
+      "exact": false,
+      "verified_targets": {
+        "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z": "0x4caf40 (instance (unit build))",
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (instance (unit build))",
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NHAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb280 (instance (unit build))",
+        "?erase_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEXPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@@Z": "0x4cb300 (instance (unit build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (instance (unit build))"
+      },
+      "local_eh": [
+        "__ehhandler$?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z"
+      ],
+      "build": "unit build",
+      "listed_size": 296,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cbe20",
+      "symbol": "?reserve@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z",
+      "size": 117,
+      "exact": false,
+      "verified_targets": {
+        "__real@4f800000": "0x819778 (constant bytes equal)",
+        "__real@3f800000": "0x827494 (constant bytes equal)",
+        "?unchecked_rehash@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z": "0x4cb5c0 (instance (sender-unit evidence build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 117,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cbea0",
+      "symbol": "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 157,
+      "exact": false,
+      "verified_targets": {
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABNAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb200 (instance (unit build))",
+        "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cb7b0 (instance (unit build))",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 157,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cbf40",
+      "symbol": "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 97,
+      "exact": false,
+      "verified_targets": {
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (instance (unit build))",
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z": "0x4cb850 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 97,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cbfb0",
+      "symbol": "?replace_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 503,
+      "exact": false,
+      "verified_targets": {
+        "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z": "0x4cae60 (instance (unit build))",
+        "?replace_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z": "0x4cb8e0 (instance (sender-unit evidence build))",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (instance (unit build))",
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (instance (unit build))",
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABNAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb200 (instance (unit build))",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (instance (unit build))",
+        "?restore@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@00@Z": "0x4c9930 (instance (sender-unit evidence build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?replace_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z"
+      ],
+      "build": "sender-unit evidence build",
+      "listed_size": 503,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cc4e0",
+      "symbol": "?insert_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 160,
+      "exact": false,
+      "verified_targets": {
+        "?reserve@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z": "0x4cbe20 (instance (unit build))",
+        "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cbea0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "sender-unit evidence build",
+      "listed_size": 160,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cc580",
+      "symbol": "?erase_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 86,
+      "exact": false,
+      "verified_targets": {
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cbf40 (instance (unit build))"
+      },
+      "local_eh": [],
+      "build": "unit build",
+      "listed_size": 86,
+      "status": "instance: bytes equal at the called address (relocations masked) in the unit build, every own target verified; not counted here"
+    },
+    {
+      "address": "0x4cc7e0",
+      "symbol": "?modify_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 368,
+      "exact": false,
+      "verified_targets": {
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cbf40 (instance (unit build))",
+        "?first_nonempty@?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QBEII@Z": "0x4c70f0 (instance (unit build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cc210 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?modify_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z"
+      ],
+      "build": "sender-unit evidence build",
+      "listed_size": 368,
+      "status": "instance: bytes equal at the called address (relocations masked) in the sender-unit evidence build, every own target verified; not counted here"
+    }
+  ],
+  "proposal_rows": [
+    {
+      "address": "0x4cc4e0",
+      "symbol": "?insert_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 160,
+      "exact": false,
+      "verified_targets": {
+        "?reserve@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z": "0x4cbe20 (instance (unit build))",
+        "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cbea0 (instance (unit build))"
+      },
+      "local_eh": [],
+      "status": "exact in the sender-unit evidence build only (inlines RBX::hash_value): not counted; proposed"
+    },
+    {
+      "address": "0x4cc5e0",
+      "symbol": "?replace_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z [0x0:0x105]",
+      "size": 261,
+      "exact": false,
+      "verified_targets": {
+        "?replace_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cbfb0 (instance (sender-unit evidence build))",
+        "?link_point@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@AAPAUhashed_index_node_impl@234@Uhashed_unique_tag@234@@Z": "0x4cad90 (instance (unit build))",
+        "?first_nonempty@?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QBEII@Z": "0x4c70f0 (instance (unit build))"
+      },
+      "local_eh": [
+        "__ehhandler$?replace_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z"
+      ],
+      "status": "exact in the sender-unit evidence build only (inlines RBX::hash_value): not counted; proposed"
+    },
+    {
+      "address": "0x4cc6e5",
+      "symbol": "?replace_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z [0x105:0x13f]",
+      "size": 58,
+      "exact": false,
+      "verified_targets": {
+        "?link@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@PAUhashed_index_node_impl@234@@Z": "0x4c9b20 (instance (unit build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "status": "exact in the sender-unit evidence build only (inlines RBX::hash_value): not counted; proposed"
+    },
+    {
+      "address": "0x4cc7e0",
+      "symbol": "?modify_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 368,
+      "exact": false,
+      "verified_targets": {
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cbf40 (instance (unit build))",
+        "?first_nonempty@?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QBEII@Z": "0x4c70f0 (instance (unit build))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?modify_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAE_NPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cc210 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?modify_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z"
+      ],
+      "status": "exact in the sender-unit evidence build only (inlines RBX::hash_value): not counted; proposed"
+    }
+  ],
+  "not_exact": [
+    "0x4cc1b0: boost::function1 constructor from a 16-byte functor (has_empty_target 0x60a2f0, stored vtable 0x82691c); the functor binds an undeclared PhysicsSender member (slot construction 0x4cd370): open.",
+    "0x4cc4e0: hashed_index::insert_(value, node): exact only in the sender-unit evidence build (inlines RBX::hash_value); proposed to the NetworkPhysicsSenders2008.cpp owner.",
+    "0x4cc5e0: hashed_index::replace_: exact with its funclet 0x4cc6e5 only in the sender-unit evidence build; proposed.",
+    "0x4cc6e5: catch funclet of hashed_index::replace_ 0x4cc5e0 (same build); proposed.",
+    "0x4cc720: std::for_each over a std::set const_iterator (_Inc 0x5e9340) with a 24-byte bind_t whose call operator 0x4cbb60 calls 0x587420 through a member pointer with a shared_ptr by value: functor type not derived.",
+    "0x4cc7e0: hashed_index::modify_(node): exact only in the sender-unit evidence build (inlines RBX::hash_value); proposed.",
+    "0x4cce00: PhysicsSender::sendPackets (880 B): needs the native Replicator / BitStream API (network-physics-senders2008 not_exact).",
+    "0x4cd170: PhysicsSender part handler (shared_dynamic_cast<PartInstance> 0x5d4080, container insert_ 0x4cc960): undeclared PhysicsSender member; open.",
+    "0x4cd370: signals slot construction for a bind of an undeclared PhysicsSender member (slot_base data_t 0x41ad40, create_connection 0x595840, function ctor 0x4cc1b0): open.",
+    "0x4cd420: RoundRobinPhysicsSender::sendPackets: World / Workspace API (network-physics not_exact).",
+    "0x4cd920: PhysicsSender::step (921 B): needs the native Replicator and the item update 0x4c9e30 (network-physics-senders2008 not_exact)."
+  ],
+  "rejected": [
+    "Without hash_value defined in the unit, hashed insert_ / replace_ / modify_ call it out of line (not exact): not counted from this unit."
+  ],
+  "proposals": [
+    "Owner of native-classes/NetworkPhysicsSenders2008.cpp / tests/record_native_network_physics_senders2008.py: the sender hashed insert_(value, node) 0x4cc4e0 is already relocation-masked exact in that unit's own build (its explicit container instantiation emits it) but is not listed; add it. With the two member instantiations of AppUnit4CCPhysicsSenderIndex.cpp in that unit (where hash_value is defined and inlined, as in the original), hashed replace_ 0x4cc5e0 (+ catch funclet 0x4cc6e5, 0x105 + 0x3a = the 319-B body) and hashed modify_ 0x4cc7e0 (368 B) are exact too (this recorder's sender-unit evidence build, proposal_rows).",
+    "Same owner, outside this range: the index-2 ordered replace_ 0x4cb8e0 is a catch-funclet split, not a different body: 337 B + the eh row 0x4cba31 (158 B, catch handler 0x7c9890) = the 495-B compiled body, bytes equal (relocation masked). That removes the only blocker of index-1 replace_ 0x4cbfb0; the index-2 modify_ 0x4cbc10 (296 B) is exact as well (instance here)."
+  ],
+  "exact_function_rows": [
+    "004cc210",
+    "004cc960",
+    "004cc9f4",
+    "004cca10",
+    "004cca8a",
+    "004ccc30"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

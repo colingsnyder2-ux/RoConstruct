@@ -1,0 +1,47 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "005a6a80",
+  "primary_body_size": 183,
+  "primary_body_exact": true,
+  "tool_sha256": "fb2af5d97c1db0b42c3d42263ecb513e74e0864126b88b473f1eb553942a55e2",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "work\\2008-06\\native-check-runs\\20261114-130806-fed4b393\\unit-000\\candidate.obj",
+  "object_sha256": "28f3513ea4277b31ee92776d7f4cd5f60f810db6dd228c4181766f4c39ba0da4",
+  "events": [
+    {
+      "symbol": "__ehhandler$??0thread@boost@@QAE@ABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@1@@Z",
+      "original": "0x7d2f70",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??0thread@boost@@QAE@ABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@1@@Z",
+      "original": "0x8f00d4",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931902000000c4008f00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??0thread@boost@@QAE@ABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@1@@Z",
+      "original": "0x8f00c4",
+      "kind": "EH data",
+      "size": 16,
+      "exact": true,
+      "original_bytes": "ffffffff602f7d00ffffffff682f7d00",
+      "native_bytes": "ffffffff00000000ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??0thread@boost@@QAE@ABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@1@@Z$1",
+      "original": "0x7d2f60",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    }
+  ],
+  "errors": [
+    "('__unwindfunclet$??0thread@boost@@QAE@ABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@1@@Z$1', '??1mutex@boost@@QAE@XZ', '0x594cb0')"
+  ]
+}

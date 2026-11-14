@@ -1,0 +1,22 @@
+{
+  "scope": "Candidate identity conflict; no exact promotion.",
+  "rejected_identities": [
+    {
+      "symbol": "??__E?dummyString@RenderDevice@G3D@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A@@YAXXZ",
+      "address": "007f1af0",
+      "reason": "Initializer writes global 00970b88; original 0049ecf0 assigns this global from its argument before network class registration, matching donor Network::API::init and API::version. RenderDevice attribution is only a matching generic initializer."
+    }
+  ],
+  "review_candidates": [
+    {
+      "symbol": "??__E?version@API@Network@RBX@@",
+      "address": "007f1af0",
+      "evidence": [
+        "original references at 0049ecf6, 007f1af1, 007fba21",
+        "tools/rbxgs/Client/Network/API.cpp",
+        "tools/openrbx/Client/Network/API.cpp"
+      ],
+      "status": "inferred; not independently verified"
+    }
+  ]
+}

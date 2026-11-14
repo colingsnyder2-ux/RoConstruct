@@ -1,0 +1,14 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibInffast.cpp",
+      "checks": [
+        {
+          "addr": "007a32d0",
+          "symbol": "_inflate_fast",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

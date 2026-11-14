@@ -1,0 +1,46 @@
+{
+  "source_path": "rebuild/2008-06/native-classes/NetworkPhysicsSenders2008.cpp",
+  "source_sha256": "03df6484bbd7cfb4f4df4d2be74158c44e8b9058da8c87db57fdee2d2052e365",
+  "checks": [
+    {
+      "address": "004cc460",
+      "symbol": "?delete_all_nodes_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 97.457627,
+        "target_bytes": 118,
+        "candidate_bytes": 118,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 114,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          88
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "references": [
+        {
+          "symbol": "??3@YAXPAX@Z",
+          "address": "006a067a",
+          "kind": 20,
+          "offset": 88,
+          "external": true,
+          "requires_provider": true
+        }
+      ]
+    }
+  ],
+  "identity_evidence": "work/2008-06/shared-layouts/boost-sender-identities-20261114.json",
+  "bulk_manifest": "work/native-client/prove-out/prove-BoostMultiIndex1114/manifest.json",
+  "bulk_manifest_sha256": "e291f190fa41e19f0c3470072c0214d0bc95dd8f8461e252bd663eab5159313b",
+  "analysis": "work/2008-06/native-check-runs/20261114-091944-3ebc1d31/analysis-0fede709.json",
+  "scope": "Boost.MultiIndex sender delete_all_nodes_: relocation-normalized exact bytes and bound operator delete thunk. Two indirect virtual calls, full ABI, selected provider, runtime and server credit remain unverified."
+}

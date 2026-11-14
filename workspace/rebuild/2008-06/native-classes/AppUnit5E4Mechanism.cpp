@@ -5,9 +5,20 @@
 // 005e5320 -> 005e5200); see the receipt's proposals. Inactive native unit; verified by tests/record_native_app_unit5e4.py.
 #undef _RELEASEASSERT
 #include "v8world/Mechanism.h"
+#include "v8world/Primitive.h"
+#include "v8world/Assembly.h"
 
 namespace RBX
 {
+	// 005e50c0
+	Mechanism* Mechanism::getMechanismFromPrimitive(const Primitive* primitive)
+	{
+		Assembly* assembly;
+		if (primitive && (assembly = primitive->getAssembly()))
+			return assembly->getMechanism();
+		return NULL;
+	}
+
 	bool MechanismTracker::tracking()
 	{
 		if (this->mechanism)

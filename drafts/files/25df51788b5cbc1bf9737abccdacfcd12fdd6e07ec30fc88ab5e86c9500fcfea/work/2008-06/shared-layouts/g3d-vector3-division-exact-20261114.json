@@ -1,0 +1,45 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+  "source_sha256": "d13d89f7fe7d43ef966b5c67604115864582a36019a1f2d35ece1fc181e8e5ba",
+  "object_sha256": "3f342d52122584ca12a8692f9ce0d6ac0d23354a3d515ab355a21cd08a427d21",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-121849-69097b6b\\analysis-acf5e16e.json",
+  "checks": [
+    {
+      "address": "00518740",
+      "symbol": "??KVector3@G3D@@QBE?AV01@M@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 95.238095,
+        "target_bytes": 84,
+        "candidate_bytes": 84,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 80,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          55
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 54,
+          "target": "00510960",
+          "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": []
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

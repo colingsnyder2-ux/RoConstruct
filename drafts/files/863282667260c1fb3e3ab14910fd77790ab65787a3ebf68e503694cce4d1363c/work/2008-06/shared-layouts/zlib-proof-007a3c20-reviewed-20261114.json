@@ -1,0 +1,14 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibAdler32.cpp",
+      "checks": [
+        {
+          "addr": "007a3c20",
+          "symbol": "_adler32",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

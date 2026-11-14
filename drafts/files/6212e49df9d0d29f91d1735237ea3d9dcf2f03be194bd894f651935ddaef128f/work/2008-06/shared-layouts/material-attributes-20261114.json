@@ -1,0 +1,34 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\MaterialFactoryAttributes2008.cpp",
+  "source_sha256": "b1d24466a0515c873ca02347f44109bf78d3e36a99776ce9d21fd4243a5b3187",
+  "object_sha256": "6fa2e986af5791e33fcbde7190d249e4d3df5b1a3eb22213afc580d4358593a0",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-101111-b1028872\\analysis-788dc39b.json",
+  "checks": [
+    {
+      "address": "004f07b0",
+      "symbol": "??MAttributes@MaterialFactory@ViewNew@RBX@@QBE_NABU0123@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 100.0,
+        "target_bytes": 81,
+        "candidate_bytes": 81,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 81,
+        "unmasked_differences": 0,
+        "masked_bytes": 0,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 0,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": []
+    }
+  ],
+  "scope": "81 raw bytes exact; no calls or relocations. MaterialFactory::Attributes identity inferred from donor key layout and original material-cache caller chain. Provider selection, complete ABI, runtime and server credit unverified."
+}

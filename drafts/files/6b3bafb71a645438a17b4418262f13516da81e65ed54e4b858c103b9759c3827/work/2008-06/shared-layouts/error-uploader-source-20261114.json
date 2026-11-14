@@ -1,0 +1,187 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ErrorUploaderUpload.cpp",
+  "source_sha256": "66a058a606e3e63fc12f958fb14073f7712924ee2ee4fd1144ce7f534e757eba",
+  "object_sha256": "7c45f2ee85742e309134b8dcb57a87d62f6412da88477089284cec64f369ae8e",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-080459-a0ec678f\\results.json",
+  "checks": [
+    {
+      "address": "0041db00",
+      "symbol": "?Upload@ErrorUploader@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.238095,
+        "target_bytes": 420,
+        "candidate_bytes": 420,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 364,
+        "unmasked_differences": 0,
+        "masked_bytes": 56,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 5,
+        "candidate_relocations": 14,
+        "missing_relocations": [],
+        "extra_relocations": [
+          42,
+          49,
+          70,
+          190,
+          239,
+          254,
+          296,
+          349,
+          374
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "reviewed_direct_calls": [
+        {
+          "offset": 41,
+          "target": "00427b60",
+          "symbol": "?getMainLogManger@LogManager@@SAPAVMainLogManager@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 48,
+          "target": "00429bc0",
+          "symbol": "?archiveCrashLogs@MainLogManager@@QAE?AV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 69,
+          "target": "00563090",
+          "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 94,
+          "target": "0080240c",
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 173,
+          "target": "00802890",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 189,
+          "target": "0041d6d0",
+          "symbol": "?push_back@?$deque@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 238,
+          "target": "005630e0",
+          "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 253,
+          "target": "00595de0",
+          "symbol": "?wake@worker_thread@RBX@@QAEXXZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 295,
+          "target": "0041d760",
+          "symbol": "?upload@ErrorUploader@@SA?AW4work_result@worker_thread@RBX@@V?$shared_ptr@Udata@ErrorUploader@@@boost@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 330,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 348,
+          "target": "006a067a",
+          "symbol": "??3@YAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 373,
+          "target": "006a067a",
+          "symbol": "??3@YAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 393,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ],
+      "call_binding_scope": "All 13 direct and imported calls verified. Provider selection, ABI and runtime remain unverified.",
+      "call_analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-080459-a0ec678f\\analysis-4b0071e3.json"
+    },
+    {
+      "address": "0041d760",
+      "symbol": "?upload@ErrorUploader@@SA?AW4work_result@worker_thread@RBX@@V?$shared_ptr@Udata@ErrorUploader@@@boost@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.262009,
+        "target_bytes": 916,
+        "candidate_bytes": 916,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 740,
+        "unmasked_differences": 0,
+        "masked_bytes": 176,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 29,
+        "candidate_relocations": 44,
+        "missing_relocations": [],
+        "extra_relocations": [
+          73,
+          102,
+          226,
+          247,
+          434,
+          458,
+          469,
+          567,
+          591,
+          605,
+          684,
+          762,
+          865,
+          887,
+          899
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8450372,
+          11
+        ],
+        [
+          8450360,
+          9
+        ]
+      ]
+    }
+  ],
+  "scope": "Local relocation-masked byte and available data matches. Call binding, provider selection, ABI and runtime remain unverified."
+}

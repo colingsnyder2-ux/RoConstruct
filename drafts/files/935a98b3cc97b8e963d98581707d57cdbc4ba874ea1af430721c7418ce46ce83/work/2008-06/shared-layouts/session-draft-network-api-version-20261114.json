@@ -1,0 +1,60 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkAPI2008.cpp",
+  "source_sha256": "5c7072de474aaf8c9c002f667adb01e0671a4aac11f25aa58975835725a3bf88",
+  "object_sha256": "76bdd3bf9c2af9c978013c13e6855d72c79d0198f8db91663ebbfc73e7028fd0",
+  "run": "work\\2008-06\\native-check-runs\\20261114-114444-9e79c9f9\\results.json",
+  "checks": [
+    {
+      "address": "007f1af0",
+      "symbol": "??__E?version@API@Network@RBX@@2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A@@YAXXZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 43.478261,
+        "target_bytes": 23,
+        "candidate_bytes": 23,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 7,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          17
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "identity_evidence": "Initializer and destructor reference 00970b88, which original 0049ecf0 assigns from init argument; RBXGS and OpenRBX Network::API::init assign API::version before class registration.",
+      "scope": "Draft: normalized code matches; global identity, destructor callback binding and runtime need explicit proof."
+    },
+    {
+      "address": "007fba20",
+      "symbol": "??__F?version@API@Network@RBX@@2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A@@YAXXZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 45.454545,
+        "target_bytes": 11,
+        "candidate_bytes": 11,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 3,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "identity_evidence": "Initializer and destructor reference 00970b88, which original 0049ecf0 assigns from init argument; RBXGS and OpenRBX Network::API::init assign API::version before class registration.",
+      "scope": "Draft: normalized code matches; global identity, destructor callback binding and runtime need explicit proof."
+    }
+  ]
+}

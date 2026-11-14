@@ -1,0 +1,31 @@
+{
+  "address": "0044a830",
+  "symbol": "??1ErrorUploader@@QAE@XZ",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ErrorUploader2008.cpp",
+  "source_sha256": "48dca42ed97679ad23641527694385e8a2ffee23338dfcb9e9925aa4e437f713",
+  "object_sha256": "02170480933d5412e2dc6ec241d73d5de27550cc7b33fec8a6b299509429f7a6",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 94.915254,
+    "target_bytes": 118,
+    "candidate_bytes": 118,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 110,
+    "unmasked_differences": 0,
+    "masked_bytes": 8,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 1,
+    "candidate_relocations": 2,
+    "missing_relocations": [],
+    "extra_relocations": [
+      41
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [],
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-082530-400434dc\\results.json",
+  "scope": "Existing destructor: relocation-masked byte/data match; call binding, provider selection, ABI and runtime unverified. Constructor remains nonmatching; compiler-variant results in 20261114-082519-73a9cd62."
+}

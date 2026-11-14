@@ -1,0 +1,64 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RakPeerUpdateLoop2008.cpp",
+  "source_sha256": "0c0d7a64759cf2b75efe44ea04cf19862e84dc570512986579ee4c30b03983a4",
+  "object_sha256": "4ea2e25f8dd4e91b7b5f6ba2f4938b72d7ac25c2413529f4dd74fe9554a77a0f",
+  "run": "work\\2008-06\\native-check-runs\\20261114-103733-55517446\\analysis-183c672e.json",
+  "checks": [
+    {
+      "address": "004bc090",
+      "symbol": "?UpdateNetworkLoop@@YGIPAX@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 93.661972,
+        "target_bytes": 142,
+        "candidate_bytes": 142,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 130,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          116
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "verified_calls": [
+        {
+          "offset": 34,
+          "target": "0080224c",
+          "symbol": "__imp__CreateWaitableTimerA@12",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 78,
+          "target": "00802248",
+          "symbol": "__imp__SetWaitableTimer@24",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 106,
+          "target": null,
+          "symbol": null,
+          "kind": "direct",
+          "status": "unresolved_or_wrong_binding"
+        },
+        {
+          "offset": 115,
+          "target": "004d4170",
+          "symbol": "?RakSleep@@YAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "scope": "Draft: donor source and bytes match; two imports and RakSleep verified, virtual RunUpdateCycle call requires provider and runtime proof."
+    }
+  ]
+}

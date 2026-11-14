@@ -1,13 +1,10 @@
 // native-flags: /O2 /Gy /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-resize /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// PartInstanceResize | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/3 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (deepseek:deepseek-chat)
-// <<< native-status | src 455f9e80 | roc native-status --write
 #include "v8datamodel/PartInstance.h"
 #include "util/Math.h"
 namespace RBX {
 inline const G3D::Vector3& PartInstance::getPartSizeXml() const { return primitive.getGeometry()->getGridSize(); }
 inline const G3D::CoordinateFrame& PartInstance::getCoordinateFrame() const { return primitive.getCoordinateFrame(); }
+// 0059e150
 bool PartInstance::resize(NormalId normal,int amount) {
  if(amount==0)return false;
  G3D::Vector3 oldSize=getPartSizeXml();
@@ -26,7 +23,7 @@ bool PartInstance::resize(NormalId normal,int amount) {
  G3D::CoordinateFrame desired(oldFrame.rotation,t);
  setCoordinateFrame(desired);
  {G3D::Vector3 finalSize=uiToXmlSize(newUiSize); setPartSizeXml(finalSize);}
- join();
+ safeMove();
  if(Math::fuzzyEq(getCoordinateFrame(),desired,0.00001f,0.00001f))return true;
  setCoordinateFrame(oldFrame); setPartSizeXml(oldSize); return false;
 }

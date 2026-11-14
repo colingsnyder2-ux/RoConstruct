@@ -1,0 +1,49 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ReliabilityLayerPacket2008.cpp",
+      "checks": [
+        {
+          "references": [],
+          "symbol": "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ",
+          "calls": [
+            {
+              "target": "008028b0",
+              "kind": "import",
+              "symbol": "__imp__malloc",
+              "import": "MSVCR90.dll!malloc",
+              "offset": 114
+            },
+            {
+              "target": "004cf420",
+              "kind": "direct",
+              "symbol": "?InitPage@?$MemoryPool@UInternalPacket@@@DataStructures@@IAEXPAUPage@12@0@Z",
+              "offset": 136
+            }
+          ],
+          "addr": "004cf900"
+        },
+        {
+          "references": [],
+          "symbol": "?Allocate@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@XZ",
+          "calls": [
+            {
+              "target": "008028b0",
+              "kind": "import",
+              "symbol": "__imp__malloc",
+              "import": "MSVCR90.dll!malloc",
+              "offset": 114
+            },
+            {
+              "target": "004cf660",
+              "kind": "direct",
+              "symbol": "?InitPage@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@IAEXPAUPage@12@0@Z",
+              "offset": 136
+            }
+          ],
+          "addr": "004cfb10"
+        }
+      ]
+    }
+  ]
+}

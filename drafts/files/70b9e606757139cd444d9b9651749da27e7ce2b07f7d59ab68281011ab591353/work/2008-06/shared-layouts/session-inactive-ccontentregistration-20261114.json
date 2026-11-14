@@ -1,0 +1,35 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CContentRegistration.cpp",
+  "source_sha256": "a6663e13c959ebce0f2610dfa437ae597b810c1fef42632c8894dd13225639f4",
+  "checks": [
+    {
+      "address": "004199b0",
+      "symbol": "?UpdateRegistry@CContent@@SGJH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 70.833333,
+        "target_bytes": 24,
+        "candidate_bytes": 24,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 16,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          17
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-073117-39ac0e05\\results.json",
+      "object_sha256": "9450c5fd5e869858d3577c90e2f7813937080cfabf8336a793c6c08468bf05be"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

@@ -1,0 +1,62 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshUpdate2008.cpp",
+  "source_sha256": "076f86a37750b65e3552289bdb400bbaea834186bee046500a9de572600525f9",
+  "checks": [
+    {
+      "address": "005493e0",
+      "symbol": "?updateGeometry@Mesh@RenderBase@RBX@@KAXPAVGeometryBuilder@Ogre@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 71.636364,
+        "target_bytes": 550,
+        "candidate_bytes": 550,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 354,
+        "unmasked_differences": 0,
+        "masked_bytes": 196,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 38,
+        "candidate_relocations": 49,
+        "missing_relocations": [],
+        "extra_relocations": [
+          62,
+          105,
+          120,
+          131,
+          144,
+          158,
+          208,
+          223,
+          234,
+          247,
+          270
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8572748,
+          8
+        ],
+        [
+          8572756,
+          8
+        ],
+        [
+          8572764,
+          4
+        ],
+        [
+          8572768,
+          13
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-002806-a837c0db\\results.json",
+      "object_sha256": "afdeeb31be45f20444cc69087680f4dbfcf72e40e610b9cba266053a9926e968"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

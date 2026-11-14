@@ -1,0 +1,2858 @@
+{
+  "family": "LuaBridge2008 (RBX::Lua instance / atomic / enum / signal bridges and YieldingThreads, 2008-06)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "unit_flags": {
+    "instance": [],
+    "atomic": [
+      "/fp:fast"
+    ],
+    "signal": [],
+    "enum": [],
+    "yield": []
+  },
+  "profile": "document-swap flags (atomic unit + /fp:fast)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_lua_bridge2008.py": "827be07bc282f4e757bbf1642eec2fd75829a939a9b5fcbdb477c79cfa7a19d9",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-headers/LuaBridge2008/LuaBridge2008.h": "b53d3795837b184de343c02a2ff8fecd91547abd3cfb348f31f40b91eaeff98f",
+    "rebuild/2008-06/native-headers/LuaBridge2008/LuaSignalBridge2008.h": "4f1cc46e7b95bdfcd3570677f0da528d395e61d5a818b7819f99f21840a4052a",
+    "rebuild/2008-06/native-headers/LuaBridge2008/LuaInstanceBridge2008.h": "df3e9b40230d174d5238433e11780af0a55e330a62eec2931018dce5145d79eb",
+    "rebuild/2008-06/native-headers/LuaBridge2008/LuaEnumBridge2008.h": "023f9ac6b8f143e49ce6c6e35b781c2a69f1d210c3a4fc2a1c81abcb26d0ea5f",
+    "rebuild/2008-06/native-headers/LuaBridge2008/LuaYieldingThreads2008.h": "22b13a5298e170a63c26e2e446dfe3b75c8b0315dfc2101d31713d0eddf7e844",
+    "rebuild/2008-06/native-headers/LuaBridge2008/LuaArguments2008.h": "2fa3e38eb2a691f960d41c8205c0ddc124c863e5aa7f7b9cc49726baa46f4e5f",
+    "rebuild/2008-06/out/native-layouts/lua-bridge2008-pending/reflection/enumconverter.h": "5fa53a5824152f0468f79b2f6d90755446d8f7b7067b59eca4788882e728eb23",
+    "rebuild/2008-06/native-classes/LuaBridge2008Instance.cpp": "cde4bbe2d1ecf90223365119b39d0d53673a81bcca32356c935220f6c43419af",
+    "rebuild/2008-06/native-classes/LuaBridge2008Atomic.cpp": "e5b2a333bb53cf6b54f393e0530e9f1e57617b5bbd0fcd9e310fd42cd9abbba7",
+    "rebuild/2008-06/native-classes/LuaBridge2008Signal.cpp": "a1f7c0060753bf9644c48657ee8f8fe67dc024107c24f8fa30f209e1e712dd93",
+    "rebuild/2008-06/native-classes/LuaBridge2008Enum.cpp": "b05a5a751eb190358521ce66f9079190a352272e150081dbcb41c29cf4e8dfe9",
+    "rebuild/2008-06/native-classes/LuaBridge2008Yield.cpp": "737e13cdff77ff102ecba2bfb0d9206309889b8e1cc2e6e124126a9e9188e21f"
+  },
+  "objects": {
+    "instance": "fd84e4a5b86819f2578ebead0d85f4ca47392cbc11206f13ffff0e26a32b1ba2",
+    "atomic": "cb68feaade30a5eb8e99cbe7e2ad2d1ca0a52cac6fad4ef3577e48fdeca11510",
+    "signal": "eab607de88b40b87e77d7763bddeaf7661c308abc342a503cf837be1d740d74a",
+    "enum": "8ea5b0aacd94ede4c620103caf737e7e78f95468fd9ad94ebf96cd36d3fe2001",
+    "yield": "61a40a5d407b6ff17d78d4005031cd9b8e8627efb83c4df3b9e3d884cc4f19fc",
+    "enum_pending": "65116be1f2318874a54501f0c0564e0abac82f0ba409d2739d6c4dabf9665c3a"
+  },
+  "boundary": {
+    "range": "0061a420..006217e2 (functions listed 0061a420 <= addr < 006217f0: 147)",
+    "before": "0061a090..0061a3f0 boost thread tss_hooks unit (0061a3f0 TLS callback: DLL_PROCESS_DETACH -> on_process_exit 0061a110; 0061a260 creates the tss cleanup list); 0061a400 (31 bytes) is called only from 0061b190 (enum conversion) and is left unattributed",
+    "first": "0061a420 RBX::Lua::newweaktable (exact row; pushes the literal \"__mode\")",
+    "after": "006217f0 luaD_seterrorobj, 00621920 luaD_rawrunprotected, 00621a70 luaD_reallocstack ... (Lua 5.1.1 ldo.c compiled as C++, calls only Lua internals); the library runs to lbaselib luaopen_base 00628f50 (ends 00628f73) and the next Roblox code is the IEquipable unit 00628f80 (script-app2008-working.json)",
+    "last": "006217d0 YieldingThreads::queueWaiter(lua_State*) (pushes 0.0 as a double and calls 006214e0; exact row)",
+    "units": "instance bridge 0061a420..0061c6ef (data: bad_alloc message 0095af70, className \"Object\" 0095af74); atomic classes 0061c6f0..0061ecaf (data 0095b1b8: Color3/Vector3/BrickColor/CFrame classNames 0095b1bc..0095b1c8); enum bridges 0061edb0..0061f0f0 (data 0095b1d0: Enums/Enum/EnumItem 0095b1d4..0095b1dc); signal bridge 0061f180..00620a3e (data 0095b1e0: RBXScriptSignal 0095b1e4, RBXScriptConnection 0095b1e8); YieldingThreads 00620970..006217e2 (shared_ptr<ThreadRef> pieces 00620970..00620a60, std::vector<WaitingThread> instances, YieldingThreads ctor 00621330, queueWaiter 006214e0 / 006217d0, resume 00621590)",
+    "rtti_vtables": {
+      "0084463c": "sp_counted_impl_p<boost::signals::connection>",
+      "00844688": "TGenericSlotWrapper<WaitScriptSlot>",
+      "00844694": "TGenericSlotWrapper<FunctionScriptSlot>",
+      "0084478c": "sp_counted_impl_p<RBX::Lua::ThreadRef>"
+    },
+    "classNames": {
+      "0095af74": "Object",
+      "0095b1bc": "Color3",
+      "0095b1c0": "Vector3",
+      "0095b1c4": "BrickColor",
+      "0095b1c8": "CFrame",
+      "0095b1e4": "RBXScriptSignal",
+      "0095b1e8": "RBXScriptConnection",
+      "0095b1d4": "Enums",
+      "0095b1d8": "Enum",
+      "0095b1dc": "EnumItem"
+    }
+  },
+  "layout": {
+    "userdata_sizes_pushed_to_lua_newuserdata": {
+      "0061caf0": [
+        12
+      ],
+      "0061ce80": [
+        12
+      ],
+      "0061cf30": [
+        12
+      ],
+      "0061d230": [
+        4
+      ],
+      "0061d270": [
+        4
+      ],
+      "0061d2b0": [
+        4
+      ],
+      "0061d2f0": [
+        4
+      ],
+      "0061d330": [
+        4
+      ],
+      "0061d370": [
+        4
+      ],
+      "0061d3b0": [
+        4
+      ],
+      "0061d3f0": [
+        4
+      ],
+      "0061d430": [
+        4,
+        4
+      ],
+      "0061d5f0": [
+        4
+      ],
+      "0061f180": [
+        16
+      ]
+    },
+    "note": "Color3 / Vector3 0xc (newColor3 0061caf0 / newVector3 0061ce80 / lerp 0061cf30), BrickColor 4, boost::signals::connection 0x10 (pushNewObject<connection> 0061f180), metatables named by the Bridge<T>::className statics above. The bridges are static-only classes (no fields).",
+    "FunctionScriptSlot": {
+      "size_evidence": "ctor 0061fea0 writes +0x00..+0x50; copy ctor 0061f960 copies +0x50 last",
+      "fields": {
+        "+0x00": "Script::Slot (shared_ptr<connection> cnction)",
+        "+0x08": "ScriptContext& context (ScriptContext::getContext 005a86e0)",
+        "+0x0c": "FunctionRef function (ctor 00594400, copy 005944e0)",
+        "+0x30": "ThreadRef cachedSlotThread (vtable 0080ebc8, copy 00593f70)",
+        "+0x50": "int callDepth: zeroed by the ctor (0061ff55), copied by the copy ctor (0061f9c7); operator() 0061ff70 saves it, stores old+1, prints \"maximum event re-entrancy depth exceeded\" above 6, skips the cached thread when re-entrant (old > 0), and restores the saved value on every exit (ScopedAssign2008, out-of-line dtor 0061fab0)"
+      }
+    }
+  },
+  "methods": {
+    "instance": [
+      {
+        "address": "0061a420",
+        "symbol": "?newweaktable@Lua@RBX@@YAXPAUlua_State@@PBD@Z",
+        "size": 68,
+        "exact": true,
+        "verified_targets": {
+          "?lua_createtable@@YAXPAUlua_State@@HH@Z": "0x612570 (evidence name)",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)",
+          "??_C@_06BPGFKLEK@__mode?$AA@": "0x844168 (literal '__mode')",
+          "?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z": "0x612240 (evidence name)",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (evidence name)",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a4f0",
+        "symbol": "?getPtr@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@I@Z",
+        "size": 106,
+        "exact": true,
+        "verified_targets": {
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (evidence name)",
+          "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95af74 (className static -> 'Object')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061aac0",
+        "symbol": "?getInstance@ObjectBridge@Lua@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAUlua_State@@I@Z",
+        "size": 275,
+        "exact": true,
+        "verified_targets": {
+          "?getPtr@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@I@Z": "0x61a4f0 (own row)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_0BN@KHJJLFGJ@Object?5?$CFs?5is?5not?5an?5Instance?$AA@": "0x84417c (literal 'Object %s is not an Instance')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$?getInstance@ObjectBridge@Lua@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAUlua_State@@I@Z"
+        ]
+      },
+      {
+        "address": "0061bb00",
+        "symbol": "?signals_end@DescribedBase@Reflection@RBX@@QAE?AVIterator@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@23@XZ",
+        "size": 45,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061bb30",
+        "symbol": "?findSignal@DescribedBase@Reflection@RBX@@QAE?AVIterator@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@23@ABVName@3@@Z",
+        "size": 53,
+        "exact": true,
+        "verified_targets": {
+          "?findDescriptor@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QBE?AV?$_Vector_const_iterator@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@ABVName@3@@Z": "0x61ba10 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061bb70",
+        "symbol": "?newInstance@ObjectBridge@Lua@RBX@@SAHPAUlua_State@@@Z",
+        "size": 313,
+        "exact": true,
+        "verified_targets": {
+          "?tostringChecked@Lua@RBX@@YAPBDPAUlua_State@@H@Z": "0x61c7b0 (own row)",
+          "?lookup@Name@RBX@@SAABV12@PBD@Z": "0x554290 (evidence name)",
+          "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": "0x420190 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?getInstance@ObjectBridge@Lua@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAUlua_State@@I@Z": "0x61aac0 (own row)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (evidence name)",
+          "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": "0x5aa730 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$?newInstance@ObjectBridge@Lua@RBX@@SAHPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061a470",
+        "symbol": "??$getValue@PBVItem@EnumDescriptor@Reflection@RBX@@@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAPBVItem@EnumDescriptor@Reflection@2@@Z",
+        "size": 117,
+        "exact": true,
+        "verified_targets": {
+          "?lua_touserdata@@YAPAXPAUlua_State@@H@Z": "0x612120 (evidence name)",
+          "?lua_getmetatable@@YAHPAUlua_State@@H@Z": "0x6125b0 (evidence name)",
+          "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_rawequal@@YAHPAUlua_State@@HH@Z": "0x611ee0 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a560",
+        "symbol": "??$getValue@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+        "size": 129,
+        "exact": true,
+        "verified_targets": {
+          "?lua_touserdata@@YAPAXPAUlua_State@@H@Z": "0x612120 (evidence name)",
+          "?lua_getmetatable@@YAHPAUlua_State@@H@Z": "0x6125b0 (evidence name)",
+          "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95af74 (className static -> 'Object')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_rawequal@@YAHPAUlua_State@@HH@Z": "0x611ee0 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a720",
+        "symbol": "??$getPtr@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+        "size": 132,
+        "exact": true,
+        "verified_targets": {
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (evidence name)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (evidence name)",
+          "??$getValue@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": "0x61a560 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$getPtr@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA_NPAUlua_State@@IAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "0061a7b0",
+        "symbol": "?getValue@?$TypedPropertyDescriptor@VContentId@RBX@@@Reflection@RBX@@QBE?AVContentId@3@PBVDescribedBase@23@@Z",
+        "size": 37,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0061a5f0",
+        "symbol": "?size@LuaArguments2008@Lua@RBX@@UBEIXZ",
+        "size": 14,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061bcb0",
+        "symbol": "?get@LuaArguments2008@Lua@RBX@@UBEXHAAVValue@Reflection@3@@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?get@LuaArguments2008@Lua@RBX@@SA_NPAUlua_State@@HAAVValue@Reflection@3@_N@Z": "0x5ad380 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a600",
+        "symbol": "??$setValue@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Property@Reflection@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@8": "0x9303c0 (RTTI .?AV?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a660",
+        "symbol": "??$setValue@VSoundId@Soundscape@RBX@@@Property@Reflection@RBX@@QAEXABVSoundId@Soundscape@2@@Z",
+        "size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@@8": "0x92fdd0 (RTTI .?AV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a6c0",
+        "symbol": "??$setValue@VTextureId@RBX@@@Property@Reflection@RBX@@QAEXABVTextureId@2@@Z",
+        "size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@8": "0x92fe28 (RTTI .?AV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a7e0",
+        "symbol": "??$getValue@V?$shared_ptr@VInstance@RBX@@@boost@@@ConstProperty@Reflection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+        "size": 98,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@@8": "0x95af78 (RTTI .?AV?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@PBVDescribedBase@23@@Z": "0x61a7b0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a850",
+        "symbol": "??$getValue@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@ConstProperty@Reflection@RBX@@QBE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ",
+        "size": 98,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@@8": "0x95afd8 (RTTI .?AV?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PBVDescribedBase@23@@Z": "0x61a7b0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a8c0",
+        "symbol": "??$getValue@VFunctionRef@Lua@RBX@@@ConstProperty@Reflection@RBX@@QBE?AVFunctionRef@Lua@2@XZ",
+        "size": 98,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@@8": "0x95b048 (RTTI .?AV?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?getValue@?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@QBE?AVFunctionRef@Lua@3@PBVDescribedBase@23@@Z": "0x61a7b0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a930",
+        "symbol": "??$getValue@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ConstProperty@Reflection@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ",
+        "size": 98,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Reflection@RBX@@@8": "0x95b098 (RTTI .?AV?$TypedPropertyDescriptor@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@PBVDescribedBase@23@@Z": "0x61a7b0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061a9a0",
+        "symbol": "??$setValue@VFunctionRef@Lua@RBX@@@Property@Reflection@RBX@@QAEXABVFunctionRef@Lua@2@@Z",
+        "size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@@8": "0x95b048 (RTTI .?AV?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061aa00",
+        "symbol": "??$setValue@V?$shared_ptr@VInstance@RBX@@@boost@@@Property@Reflection@RBX@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@@8": "0x95af78 (RTTI .?AV?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061aa60",
+        "symbol": "??$setValue@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Property@Reflection@RBX@@QAEXABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+        "size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@@8": "0x95afd8 (RTTI .?AV?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@)",
+          "??_R0?AVPropertyDescriptor@Reflection@RBX@@@8": "0x9295b4 (RTTI .?AVPropertyDescriptor@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (throw info .?AVbad_cast@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": []
+      }
+    ],
+    "atomic": [
+      {
+        "address": "0061c6f0",
+        "symbol": "??HCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z",
+        "size": 79,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061c740",
+        "symbol": "??GCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z",
+        "size": 79,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061c790",
+        "symbol": "?tostringOrEmpty@Lua@RBX@@YAPBDPAUlua_State@@H@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z": "0x612010 (evidence name)",
+          "?emptyString2008@Lua@RBX@@3PBDB": "0x95b1cc (data instance (bytes equal, fields verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061c7b0",
+        "symbol": "?tostringChecked@Lua@RBX@@YAPBDPAUlua_State@@H@Z",
+        "size": 114,
+        "exact": true,
+        "verified_targets": {
+          "?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z": "0x612010 (evidence name)",
+          "??_C@_0BA@KDBBHCOC@String?5expected?$AA@": "0x844470 (literal 'String expected')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?tostringChecked@Lua@RBX@@YAPBDPAUlua_State@@H@Z"
+        ]
+      },
+      {
+        "address": "0061c830",
+        "symbol": "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z",
+        "size": 142,
+        "exact": true,
+        "verified_targets": {
+          "?lua_tonumber@@YANPAUlua_State@@H@Z": "0x611f60 (evidence name (unique once own rows 0061c830 are excluded))",
+          "__imp___Inf": "0x8024ac (msvcp90.dll!_Inf)",
+          "__imp___FInf": "0x80250c (msvcp90.dll!_FInf)",
+          "__real@47efffffe0000000": "0x844488 (data instance (bytes equal, fields verified))",
+          "__real@7f7fffff": "0x827a24 (data instance (bytes equal, fields verified))",
+          "__real@c7efffffe0000000": "0x844480 (data instance (bytes equal, fields verified))",
+          "__real@ff7fffff": "0x827a20 (data instance (bytes equal, fields verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061c8c0",
+        "symbol": "?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PBDPAUlua_State@@@Z",
+        "size": 314,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_01KDCPPGHE@r?$AA@": "0x827204 (literal 'r')",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "??_C@_01JEJKBAGA@g?$AA@": "0x844494 (literal 'g')",
+          "??_C@_01OJONOECF@b?$AA@": "0x844490 (literal 'b')",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061ca60",
+        "symbol": "??$getValue@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVVector3@G3D@@@Z",
+        "size": 129,
+        "exact": true,
+        "verified_targets": {
+          "?lua_touserdata@@YAPAXPAUlua_State@@H@Z": "0x612120 (evidence name)",
+          "?lua_getmetatable@@YAHPAUlua_State@@H@Z": "0x6125b0 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_rawequal@@YAHPAUlua_State@@HH@Z": "0x611ee0 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061caf0",
+        "symbol": "?newColor3@Color3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 172,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061cba0",
+        "symbol": "?on_add@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 85,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061cc00",
+        "symbol": "?on_sub@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 85,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061cc60",
+        "symbol": "?on_mul@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 214,
+        "exact": true,
+        "verified_targets": {
+          "??$getValue@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVVector3@G3D@@@Z": "0x61ca60 (own row)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061cd40",
+        "symbol": "?on_div@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 247,
+        "exact": true,
+        "verified_targets": {
+          "??$getValue@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVVector3@G3D@@@Z": "0x61ca60 (own row)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "??KVector3@G3D@@QBE?AV01@M@Z": "0x518740 (external)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061ce40",
+        "symbol": "?on_unm@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061ce80",
+        "symbol": "?newVector3@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 172,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061cf30",
+        "symbol": "?lerp@@YAHPAUlua_State@@@Z",
+        "size": 175,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061cfe0",
+        "symbol": "?on_index@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PBDPAUlua_State@@@Z",
+        "size": 581,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_01FJMABOPO@x?$AA@": "0x80f0cc (literal 'x')",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "??_C@_01EANLCPLP@y?$AA@": "0x80f0d0 (literal 'y')",
+          "??_C@_01GLPGHMHM@z?$AA@": "0x814a74 (literal 'z')",
+          "??_C@_04NPEDKLDA@unit?$AA@": "0x8444ac (literal 'unit')",
+          "?unit@Vector3@G3D@@QBE?AV12@XZ": "0x4fab70 (instance (bytes equal, targets verified))",
+          "??$pushNewObject@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SAPAVVector3@G3D@@PAUlua_State@@V34@@Z": "0x5a8cf0 (instance (bytes equal, targets verified))",
+          "??_C@_09FKMPKHJJ@magnitude?$AA@": "0x8444a0 (literal 'magnitude')",
+          "??_C@_04BBKNFAFH@lerp?$AA@": "0x844498 (literal 'lerp')",
+          "?lerp@@YAHPAUlua_State@@@Z": "0x61cf30 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (evidence name)",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061d230",
+        "symbol": "?pushRed@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d270",
+        "symbol": "?pushWhite@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d2b0",
+        "symbol": "?pushGray@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d2f0",
+        "symbol": "?pushDarkGray@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d330",
+        "symbol": "?pushBlack@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d370",
+        "symbol": "?pushYellow@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d3b0",
+        "symbol": "?pushGreen@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d3f0",
+        "symbol": "?pushBlue@@YAHPAUlua_State@@@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d430",
+        "symbol": "?newBrickColor@BrickColorBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 447,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "?closest@BrickColor@RBX@@SA?AV12@VColor4@G3D@@@Z": "0x5b5f30 (evidence name)",
+          "?lua_isnumber@@YAHPAUlua_State@@H@Z": "0x611e70 (evidence name)",
+          "?lua_tointeger@@YAHPAUlua_State@@H@Z": "0x611fa0 (evidence name)",
+          "??0BrickColor@RBX@@QAE@H@Z": "0x5b6090 (evidence name)",
+          "??$pushNewObject@VBrickColor@RBX@@@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SAPAVBrickColor@2@PAUlua_State@@V32@@Z": "0x5a8d90 (evidence name)",
+          "?lua_isstring@@YAHPAUlua_State@@H@Z": "0x611eb0 (evidence name)",
+          "?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z": "0x612010 (evidence name)",
+          "?parse@BrickColor@RBX@@SA?AV12@PBD@Z": "0x5b5cb0 (evidence name)",
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?closest@BrickColor@RBX@@SA?AV12@VColor3@G3D@@@Z": "0x5b62e0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d5f0",
+        "symbol": "?randomBrickColor@BrickColorBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 74,
+        "exact": true,
+        "verified_targets": {
+          "?random@BrickColor@RBX@@SA?AV12@XZ": "0x5b5ee0 (evidence name)",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061d640",
+        "symbol": "?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PBDPAUlua_State@@@Z",
+        "size": 834,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_06EBGNBFIA@number?$AA@": "0x8444bc (literal 'number')",
+          "?lua_pushinteger@@YAXPAUlua_State@@H@Z": "0x612220 (evidence name)",
+          "??_C@_06IONACMBM@Number?$AA@": "0x8444b4 (literal 'Number')",
+          "??_C@_05PDOBBJNA@Color?$AA@": "0x810de0 (literal 'Color')",
+          "?color3@BrickColor@RBX@@QBE?AVColor3@G3D@@XZ": "0x5b6270 (evidence name)",
+          "?pushColor3@Color3Bridge@Lua@RBX@@SAXPAUlua_State@@VColor3@G3D@@@Z": "0x5a8d40 (evidence name)",
+          "??_C@_01KDCPPGHE@r?$AA@": "0x827204 (literal 'r')",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "??_C@_01JEJKBAGA@g?$AA@": "0x844494 (literal 'g')",
+          "??_C@_01OJONOECF@b?$AA@": "0x844490 (literal 'b')",
+          "??_C@_04MEMAJGDJ@name?$AA@": "0x81c968 (literal 'name')",
+          "?name@BrickColor@RBX@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x5b61b0 (evidence name)",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (evidence name)",
+          "??_C@_04FABLJDN@Name?$AA@": "0x80f7cc (literal 'Name')",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061d990",
+        "symbol": "?newCoordinateFrame@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 605,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z": "0x518e20 (external)",
+          "?tonumberClamped@Lua@RBX@@YAMPAUlua_State@@H@Z": "0x61c830 (own row)",
+          "??0Matrix3@G3D@@QAE@ABVQuat@1@@Z": "0x513aa0 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)",
+          "??_C@_0CA@DEBPEFLJ@Invalid?5number?5of?5arguments?3?5?$CFd?$AA@": "0x8444c4 (literal 'Invalid number of arguments: %d')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "$LN1",
+          "$LN11",
+          "$LN15",
+          "$LN19",
+          "$LN20",
+          "$LN21",
+          "$LN73",
+          "$LN75",
+          "$LN78",
+          "__ehhandler$?newCoordinateFrame@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061dbf0",
+        "symbol": "?on_add@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "??HCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z": "0x61c6f0 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061dc70",
+        "symbol": "?on_sub@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "??GCoordinateFrame@G3D@@QBE?AV01@ABVVector3@1@@Z": "0x61c740 (own row)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061dcf0",
+        "symbol": "?on_inverse@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 100,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ": "0x478330 (evidence name)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061dd60",
+        "symbol": "?on_toWorldSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 249,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)",
+          "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z": "0x476700 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061de60",
+        "symbol": "?on_toObjectSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 231,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ": "0x478330 (evidence name)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)",
+          "?toObjectSpace@CoordinateFrame@G3D@@QBE?AV12@ABV12@@Z": "0x60e8f0 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061df50",
+        "symbol": "?on_pointToWorldSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 249,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (data)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)",
+          "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": "0x4766a0 (evidence name)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e050",
+        "symbol": "?on_pointToObjectSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 255,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (data)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)",
+          "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": "0x501ca0 (instance (bytes equal, targets verified))",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e150",
+        "symbol": "?on_vectorToWorldSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 344,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (data)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e2b0",
+        "symbol": "?on_components@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 138,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e340",
+        "symbol": "?on_toEulerAnglesXYZ@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 108,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?toEulerAnglesXYZ@Matrix3@G3D@@QBE_NAAM00@Z": "0x513720 (external)",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e3b0",
+        "symbol": "?on_vectorToObjectSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 403,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (data)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)",
+          "?transpose@Matrix3@G3D@@QBE?AV12@XZ": "0x513510 (external)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e550",
+        "symbol": "?fromEulerAnglesXYZ@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 159,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (evidence name)",
+          "?luaL_checknumber@@YANPAUlua_State@@H@Z": "0x611780 (evidence name)",
+          "?fromEulerAnglesXYZ@Matrix3@G3D@@SA?AV12@MMM@Z": "0x513bc0 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e5f0",
+        "symbol": "?fromAxisAngle@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 146,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?luaL_checknumber@@YANPAUlua_State@@H@Z": "0x611780 (evidence name)",
+          "?fromAxisAngle@Matrix3@G3D@@SA?AV12@ABVVector3@2@M@Z": "0x513680 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061e690",
+        "symbol": "?on_index@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHABVCoordinateFrame@G3D@@PBDPAUlua_State@@@Z",
+        "size": 1436,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_01JBBJJEPG@p?$AA@": "0x844580 (literal 'p')",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)",
+          "??_C@_0L@JMHAAINC@lookVector?$AA@": "0x844574 (literal 'lookVector')",
+          "?lookVector@CoordinateFrame@G3D@@QBE?AVVector3@2@XZ": "0x5187f0 (evidence name)",
+          "??_C@_07INFCJLKD@inverse?$AA@": "0x834518 (literal 'inverse')",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (evidence name)",
+          "?on_inverse@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61dcf0 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (evidence name)",
+          "??_C@_0N@CFMIBNHG@toWorldSpace?$AA@": "0x844564 (literal 'toWorldSpace')",
+          "?on_toWorldSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61dd60 (own row)",
+          "??_C@_0O@IKHAFBCM@toObjectSpace?$AA@": "0x844554 (literal 'toObjectSpace')",
+          "?on_toObjectSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61de60 (own row)",
+          "??_C@_0BC@DKGCMNEO@pointToWorldSpace?$AA@": "0x844540 (literal 'pointToWorldSpace')",
+          "?on_pointToWorldSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61df50 (own row)",
+          "??_C@_0BD@KCGNEDGC@pointToObjectSpace?$AA@": "0x84452c (literal 'pointToObjectSpace')",
+          "?on_pointToObjectSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61e050 (own row)",
+          "??_C@_0BD@JDHGNIHO@vectorToWorldSpace?$AA@": "0x844518 (literal 'vectorToWorldSpace')",
+          "?on_vectorToWorldSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61e150 (own row)",
+          "??_C@_0BE@IEBNGHNL@vectorToObjectSpace?$AA@": "0x844504 (literal 'vectorToObjectSpace')",
+          "?on_vectorToObjectSpace@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61e3b0 (own row)",
+          "??_C@_0BB@DLGLLMND@toEulerAnglesXYZ?$AA@": "0x8444f0 (literal 'toEulerAnglesXYZ')",
+          "?on_toEulerAnglesXYZ@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61e340 (own row)",
+          "??_C@_0L@OOBPNGCG@components?$AA@": "0x8444e4 (literal 'components')",
+          "?on_components@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61e2b0 (own row)",
+          "??_C@_01FJMABOPO@x?$AA@": "0x80f0cc (literal 'x')",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "??_C@_01EANLCPLP@y?$AA@": "0x80f0d0 (literal 'y')",
+          "??_C@_01GLPGHMHM@z?$AA@": "0x814a74 (literal 'z')",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHABVCoordinateFrame@G3D@@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061ec30",
+        "symbol": "??$getValue@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVCoordinateFrame@G3D@@@Z",
+        "size": 142,
+        "exact": true,
+        "verified_targets": {
+          "?lua_touserdata@@YAPAXPAUlua_State@@H@Z": "0x612120 (evidence name)",
+          "?lua_getmetatable@@YAHPAUlua_State@@H@Z": "0x6125b0 (evidence name)",
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_rawequal@@YAHPAUlua_State@@HH@Z": "0x611ee0 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061ecc0",
+        "symbol": "?on_mul@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 240,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (evidence name)",
+          "??$getValue@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVCoordinateFrame@G3D@@@Z": "0x61ec30 (own row)",
+          "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z": "0x476700 (evidence name)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "??$pushNewObject@VCoordinateFrame@G3D@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAPAVCoordinateFrame@G3D@@PAUlua_State@@V34@@Z": "0x5a8c50 (evidence name)",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z": "0x485390 (evidence name)",
+          "?xyz@Vector4@G3D@@QBE?AVVector3@2@XZ": "0x514890 (external)",
+          "?pushVector3@Vector3Bridge@Lua@RBX@@SAXPAUlua_State@@VVector3@G3D@@@Z": "0x5a9040 (evidence name)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061ca00",
+        "symbol": "?on_newindex@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAXAAVColor3@G3D@@PBDPAUlua_State@@@Z",
+        "size": 80,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BJ@BGGAAPFH@?$CFs?5cannot?5be?5assigned?5to?$AA@": "0x832224 (literal '%s cannot be assigned to')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_newindex@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAXAAVColor3@G3D@@PBDPAUlua_State@@@Z"
+        ]
+      }
+    ],
+    "signal": [
+      {
+        "address": "0061f180",
+        "symbol": "??$pushNewObject@Vconnection@signals@boost@@@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@SAPAVconnection@signals@boost@@PAUlua_State@@V345@@Z",
+        "size": 150,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+          "??0connection@signals@boost@@QAE@ABV012@@Z": "0x5950f0 (external)",
+          "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB": "0x95b1e8 (className static -> 'RBXScriptConnection')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)",
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??$pushNewObject@Vconnection@signals@boost@@@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@SAPAVconnection@signals@boost@@PAUlua_State@@V345@@Z"
+        ]
+      },
+      {
+        "address": "0061f2c0",
+        "symbol": "??1FunctionScriptSlot@@QAE@XZ",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380 (evidence name)",
+          "??1FunctionRef@Lua@RBX@@QAE@XZ": "0x594470 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??1FunctionScriptSlot@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0061f350",
+        "symbol": "??1WaitScriptSlot@@QAE@XZ",
+        "size": 118,
+        "exact": true,
+        "verified_targets": {
+          "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??1WaitScriptSlot@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0061f3d0",
+        "symbol": "?disconnect@SignalConnectionBridge@Lua@RBX@@CAHPAUlua_State@@@Z",
+        "size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB": "0x95b1e8 (className static -> 'RBXScriptConnection')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061f3f0",
+        "symbol": "??$checked_delete@Vconnection@signals@boost@@@boost@@YAXPAVconnection@signals@0@@Z",
+        "size": 27,
+        "exact": true,
+        "verified_targets": {
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061f410",
+        "symbol": "??0WaitScriptSlot@@QAE@ABV0@@Z",
+        "size": 99,
+        "exact": true,
+        "verified_targets": {
+          "??0ThreadRef@Lua@RBX@@QAE@ABV012@@Z": "0x593f70 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??0WaitScriptSlot@@QAE@ABV0@@Z"
+        ]
+      },
+      {
+        "address": "0061f480",
+        "symbol": "?on_index@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHABVconnection@signals@boost@@PBDPAUlua_State@@@Z",
+        "size": 285,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0L@KKPFIJOL@disconnect?$AA@": "0x844678 (literal 'disconnect')",
+          "?disconnect@SignalConnectionBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61f3d0 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (evidence name)",
+          "??_C@_09JGOMOAGJ@connected?$AA@": "0x84466c (literal 'connected')",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (evidence name)",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHABVconnection@signals@boost@@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061f5a0",
+        "symbol": "??$?0Vconnection@signals@boost@@@shared_count@detail@boost@@QAE@PAVconnection@signals@2@@Z",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@6B@": "0x84463c (vtable RTTI .?AV?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@ offset 0x0)",
+          "??$checked_delete@Vconnection@signals@boost@@@boost@@YAXPAVconnection@signals@0@@Z": "0x61f3f0 (own row)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0Vconnection@signals@boost@@@shared_count@detail@boost@@QAE@PAVconnection@signals@2@@Z"
+        ]
+      },
+      {
+        "address": "0061f630",
+        "symbol": "?dispose@?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEXXZ",
+        "size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0061f650",
+        "symbol": "??0?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@AAE@ABVWaitScriptSlot@@@Z",
+        "size": 76,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@6B@": "0x844688 (vtable RTTI .?AV?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@ offset 0x0)",
+          "??0WaitScriptSlot@@QAE@ABV0@@Z": "0x61f410 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@AAE@ABVWaitScriptSlot@@@Z"
+        ]
+      },
+      {
+        "address": "0061f6a0",
+        "symbol": "??$any_cast@I@boost@@YAIABVany@0@@Z",
+        "size": 136,
+        "exact": true,
+        "verified_targets": {
+          "??_R0X@8": "0x929614 (RTTI .X)",
+          "??_R0I@8": "0x94e378 (RTTI .I)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+          "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??$any_cast@I@boost@@YAIABVany@0@@Z"
+        ]
+      },
+      {
+        "address": "0061f730",
+        "symbol": "??$any_cast@V?$shared_ptr@VInstance@RBX@@@boost@@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABVany@0@@Z",
+        "size": 172,
+        "exact": true,
+        "verified_targets": {
+          "??_R0X@8": "0x929614 (RTTI .X)",
+          "??_R0?AV?$shared_ptr@VInstance@RBX@@@boost@@@8": "0x935980 (RTTI .?AV?$shared_ptr@VInstance@RBX@@@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+          "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??$any_cast@V?$shared_ptr@VInstance@RBX@@@boost@@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABVany@0@@Z"
+        ]
+      },
+      {
+        "address": "0061f960",
+        "symbol": "??0FunctionScriptSlot@@QAE@ABV0@@Z",
+        "size": 130,
+        "exact": true,
+        "verified_targets": {
+          "??0FunctionRef@Lua@RBX@@QAE@ABV012@@Z": "0x5944e0 (evidence name)",
+          "??0ThreadRef@Lua@RBX@@QAE@ABV012@@Z": "0x593f70 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??0FunctionScriptSlot@@QAE@ABV0@@Z"
+        ]
+      },
+      {
+        "address": "0061f7e0",
+        "symbol": "??$any_cast@PBVPropertyDescriptor@Reflection@RBX@@@boost@@YAPBVPropertyDescriptor@Reflection@RBX@@ABVany@0@@Z",
+        "size": 136,
+        "exact": true,
+        "verified_targets": {
+          "??_R0X@8": "0x929614 (RTTI .X)",
+          "??_R0PBVPropertyDescriptor@Reflection@RBX@@@8": "0x943aa0 (RTTI .PBVPropertyDescriptor@Reflection@RBX@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+          "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??$any_cast@PBVPropertyDescriptor@Reflection@RBX@@@boost@@YAPBVPropertyDescriptor@Reflection@RBX@@ABVany@0@@Z"
+        ]
+      },
+      {
+        "address": "0061f870",
+        "symbol": "??$any_cast@PBD@boost@@YAPBDABVany@0@@Z",
+        "size": 136,
+        "exact": true,
+        "verified_targets": {
+          "??_R0X@8": "0x929614 (RTTI .X)",
+          "??_R0PBD@8": "0x95b2b8 (RTTI .PBD)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+          "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??$any_cast@PBD@boost@@YAPBDABVany@0@@Z"
+        ]
+      },
+      {
+        "address": "0061f900",
+        "symbol": "??_G?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEPAXI@Z",
+        "size": 96,
+        "exact": true,
+        "verified_targets": {
+          "??1WaitScriptSlot@@QAE@XZ": "0x61f350 (own row)",
+          "??1GenericSlotWrapper@Reflection@RBX@@UAE@XZ": "0x47d410 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??_G?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEPAXI@Z"
+        ]
+      },
+      {
+        "address": "0061f9f0",
+        "symbol": "??$create@VWaitScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VWaitScriptSlot@@@Z",
+        "size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@AAE@ABVWaitScriptSlot@@@Z": "0x61f650 (own row)",
+          "??1WaitScriptSlot@@QAE@XZ": "0x61f350 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VWaitScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VWaitScriptSlot@@@Z"
+        ]
+      },
+      {
+        "address": "0061fa60",
+        "symbol": "??0?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@AAE@ABVFunctionScriptSlot@@@Z",
+        "size": 76,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@6B@": "0x844694 (vtable RTTI .?AV?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@ offset 0x0)",
+          "??0FunctionScriptSlot@@QAE@ABV0@@Z": "0x61f960 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@AAE@ABVFunctionScriptSlot@@@Z"
+        ]
+      },
+      {
+        "address": "0061fab0",
+        "symbol": "??1ScopedAssign2008@Lua@RBX@@QAE@XZ",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0061fac0",
+        "symbol": "??_G?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEPAXI@Z",
+        "size": 96,
+        "exact": true,
+        "verified_targets": {
+          "??1FunctionScriptSlot@@QAE@XZ": "0x61f2c0 (own row)",
+          "??1GenericSlotWrapper@Reflection@RBX@@UAE@XZ": "0x47d410 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??_G?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEPAXI@Z"
+        ]
+      },
+      {
+        "address": "0061fb20",
+        "symbol": "?pushArgs@@YAIPAUlua_State@@ABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z",
+        "size": 892,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+          "??_R0X@8": "0x929614 (RTTI .X)",
+          "??_R0?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@8": "0x92bef8 (RTTI .?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@)",
+          "??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVany@0@@Z": "0x416110 (evidence name)",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (evidence name)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??_R0H@8": "0x92bed0 (RTTI .H)",
+          "??$any_cast@H@boost@@YAHABVany@0@@Z": "0x415ed0 (instance (bytes equal, targets verified))",
+          "?lua_pushinteger@@YAXPAUlua_State@@H@Z": "0x612220 (evidence name)",
+          "??_R0I@8": "0x94e378 (RTTI .I)",
+          "??$any_cast@I@boost@@YAIABVany@0@@Z": "0x61f6a0 (own row)",
+          "??_R0M@8": "0x92bedc (RTTI .M)",
+          "??$any_cast@M@boost@@YAMABVany@0@@Z": "0x415ff0 (evidence name)",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "??_R0N@8": "0x92bee8 (RTTI .N)",
+          "??D?$_Vector_const_iterator@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QBEABVany@boost@@XZ": "0x413970 (instance (bytes equal, targets verified))",
+          "??$any_cast@N@boost@@YANABVany@0@@Z": "0x416080 (evidence name)",
+          "??_R0_N@8": "0x929644 (RTTI ._N)",
+          "??$any_cast@_N@boost@@YA_NABVany@0@@Z": "0x415f60 (evidence name)",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (evidence name)",
+          "??_R0?AV?$shared_ptr@VInstance@RBX@@@boost@@@8": "0x935980 (RTTI .?AV?$shared_ptr@VInstance@RBX@@@boost@@)",
+          "??$any_cast@V?$shared_ptr@VInstance@RBX@@@boost@@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABVany@0@@Z": "0x61f730 (own row)",
+          "??$?0VInstance@RBX@@@?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@QAE@ABV?$shared_ptr@VInstance@RBX@@@1@@Z": "0x559a20 (instance (bytes equal, targets verified))",
+          "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": "0x5aa730 (instance (bytes equal, targets verified))",
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660 (evidence name)",
+          "??_R0PBVPropertyDescriptor@Reflection@RBX@@@8": "0x943aa0 (RTTI .PBVPropertyDescriptor@Reflection@RBX@@)",
+          "??$any_cast@PBVPropertyDescriptor@Reflection@RBX@@@boost@@YAPBVPropertyDescriptor@Reflection@RBX@@ABVany@0@@Z": "0x61f7e0 (own row)",
+          "??_R0PBD@8": "0x95b2b8 (RTTI .PBD)",
+          "??$any_cast@PBD@boost@@YAPBDABVany@0@@Z": "0x61f870 (own row)",
+          "?__type_info_root_node@@3U__type_info_node@@A": "0x97dce8 (data)",
+          "__imp_?name@type_info@@QBEPBDPAU__type_info_node@@@Z": "0x802654 (msvcr90.dll!?_name_internal_method@type_info@@QBEPBDPAU__type_info_node@@@Z (msvcrt.lib alias of ?name@type_info@@QBEPBDPAU__type_info_node@@@Z))",
+          "?lua_pushnil@@YAXPAUlua_State@@@Z": "0x6121e0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$?pushArgs@@YAIPAUlua_State@@ABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z"
+        ]
+      },
+      {
+        "address": "0061fea0",
+        "symbol": "??0FunctionScriptSlot@@QAE@PAUlua_State@@H@Z",
+        "size": 202,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??$?0Vconnection@signals@boost@@@shared_count@detail@boost@@QAE@PAVconnection@signals@2@@Z": "0x61f5a0 (own row)",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (instance (bytes equal, targets verified))",
+          "?getContext@ScriptContext@RBX@@SAAAV12@PAUlua_State@@@Z": "0x5a86e0 (evidence name)",
+          "??0FunctionRef@Lua@RBX@@QAE@PAUlua_State@@H@Z": "0x594400 (evidence name)",
+          "??_7ThreadRef@Lua@RBX@@6B@": "0x80ebc8 (vtable RTTI .?AVThreadRef@Lua@RBX@@ offset 0x0)",
+          "?syncSingleton@ThreadRef@Lua@RBX@@0V?$shared_ptr@Vmutex@boost@@@boost@@A": "0x975c6c (data)"
+        },
+        "local_eh": [
+          "__ehhandler$??0FunctionScriptSlot@@QAE@PAUlua_State@@H@Z"
+        ]
+      },
+      {
+        "address": "0061ff70",
+        "symbol": "??RFunctionScriptSlot@@QAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z",
+        "size": 543,
+        "exact": true,
+        "verified_targets": {
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external)",
+          "??_C@_0CJ@FMFDFGB@maximum?5event?5re?9entrancy?5depth?5@": "0x8446c8 (literal 'maximum event re-entrancy depth exceeded')",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external)",
+          "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230 (external)",
+          "?lua_newthread@@YAPAUlua_State@@PAU1@@Z": "0x612f60 (evidence name)",
+          "??_C@_0CM@IICOOLKD@Unable?5to?5create?5a?5new?5event?5han@": "0x84469c (literal 'Unable to create a new event handler thread')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?lua_pushfunction@Lua@RBX@@YAXPAUlua_State@@ABVFunctionRef@12@@Z": "0x593c40 (evidence name)",
+          "?lua_xmove@@YAXPAUlua_State@@0H@Z": "0x611ba0 (evidence name)",
+          "?pushArgs@@YAIPAUlua_State@@ABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z": "0x61fb20 (own row)",
+          "?resume@ScriptContext@RBX@@QAE?AW4Result@12@PAUlua_State@@H@Z": "0x5ae0d0 (evidence name)",
+          "?reset@ThreadRef@Lua@RBX@@QAEXXZ": "0x594060 (evidence name)",
+          "??0ThreadRef@Lua@RBX@@QAE@PAUlua_State@@@Z": "0x593e40 (evidence name)",
+          "??4ThreadRef@Lua@RBX@@QAEAAV012@ABV012@@Z": "0x594100 (evidence name)",
+          "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??RFunctionScriptSlot@@QAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z"
+        ]
+      },
+      {
+        "address": "00620190",
+        "symbol": "??0WaitScriptSlot@@QAE@PAUlua_State@@@Z",
+        "size": 127,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??$?0Vconnection@signals@boost@@@shared_count@detail@boost@@QAE@PAVconnection@signals@2@@Z": "0x61f5a0 (own row)",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (instance (bytes equal, targets verified))",
+          "??0ThreadRef@Lua@RBX@@QAE@PAUlua_State@@@Z": "0x593e40 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$??0WaitScriptSlot@@QAE@PAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "00620210",
+        "symbol": "??$connectGeneric@VWaitScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VWaitScriptSlot@@W4connect_position@45@@Z",
+        "size": 132,
+        "exact": true,
+        "verified_targets": {
+          "??0WaitScriptSlot@@QAE@ABV0@@Z": "0x61f410 (own row)",
+          "??$create@VWaitScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VWaitScriptSlot@@@Z": "0x61f9f0 (own row)",
+          "??1WaitScriptSlot@@QAE@XZ": "0x61f350 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$connectGeneric@VWaitScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VWaitScriptSlot@@W4connect_position@45@@Z"
+        ]
+      },
+      {
+        "address": "00620310",
+        "symbol": "?execute@?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z",
+        "size": 134,
+        "exact": true,
+        "verified_targets": {
+          "??RFunctionScriptSlot@@QAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z": "0x61ff70 (own row)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external)",
+          "??_C@_0CM@OGJCIHED@Exception?5caught?5in?5TGenericSlot@": "0x8446f4 (literal 'Exception caught in TGenericSlotWrapper. %s')",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external)",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "$LN8",
+          "__ehhandler$?execute@?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z"
+        ]
+      },
+      {
+        "address": "006203a0",
+        "symbol": "?execute@?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z",
+        "size": 193,
+        "exact": true,
+        "verified_targets": {
+          "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230 (external)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?pushArgs@@YAIPAUlua_State@@ABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z": "0x61fb20 (own row)",
+          "?getContext@ScriptContext@RBX@@SAAAV12@PAUlua_State@@@Z": "0x5a86e0 (evidence name)",
+          "?resume@ScriptContext@RBX@@QAE?AW4Result@12@PAUlua_State@@H@Z": "0x5ae0d0 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external)",
+          "??_C@_0CM@OGJCIHED@Exception?5caught?5in?5TGenericSlot@": "0x8446f4 (literal 'Exception caught in TGenericSlotWrapper. %s')",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external)",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "$LN8",
+          "__ehhandler$?execute@?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z"
+        ]
+      },
+      {
+        "address": "006202a0",
+        "symbol": "??$create@VFunctionScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VFunctionScriptSlot@@@Z",
+        "size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@AAE@ABVFunctionScriptSlot@@@Z": "0x61fa60 (own row)",
+          "??1FunctionScriptSlot@@QAE@XZ": "0x61f2c0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VFunctionScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VFunctionScriptSlot@@@Z"
+        ]
+      },
+      {
+        "address": "00620470",
+        "symbol": "?wait@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z",
+        "size": 280,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "??0WaitScriptSlot@@QAE@PAUlua_State@@@Z": "0x620190 (own row)",
+          "??0WaitScriptSlot@@QAE@ABV0@@Z": "0x61f410 (own row)",
+          "??$connectGeneric@VWaitScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VWaitScriptSlot@@W4connect_position@45@@Z": "0x620210 (own row)",
+          "??4connection@signals@boost@@QAEAAV012@ABV012@@Z": "0x5953f0 (external)",
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)",
+          "??1WaitScriptSlot@@QAE@XZ": "0x61f350 (own row)",
+          "?lua_yield@@YAHPAUlua_State@@H@Z": "0x621ec0 (evidence name)"
+        },
+        "local_eh": [
+          "__ehhandler$?wait@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "00620590",
+        "symbol": "??$connectGeneric@VFunctionScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VFunctionScriptSlot@@W4connect_position@45@@Z",
+        "size": 135,
+        "exact": true,
+        "verified_targets": {
+          "??0FunctionScriptSlot@@QAE@ABV0@@Z": "0x61f960 (own row)",
+          "??$create@VFunctionScriptSlot@@@GenericSlotWrapper@Reflection@RBX@@SAPAV012@VFunctionScriptSlot@@@Z": "0x6202a0 (own row)",
+          "??1FunctionScriptSlot@@QAE@XZ": "0x61f2c0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$connectGeneric@VFunctionScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VFunctionScriptSlot@@W4connect_position@45@@Z"
+        ]
+      },
+      {
+        "address": "00620620",
+        "symbol": "?connect@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z",
+        "size": 307,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (evidence name)",
+          "??0FunctionScriptSlot@@QAE@PAUlua_State@@H@Z": "0x61fea0 (own row)",
+          "??0FunctionScriptSlot@@QAE@ABV0@@Z": "0x61f960 (own row)",
+          "??$connectGeneric@VFunctionScriptSlot@@@SignalInstance@Reflection@RBX@@QAE?AVconnection@signals@boost@@VFunctionScriptSlot@@W4connect_position@45@@Z": "0x620590 (own row)",
+          "??4connection@signals@boost@@QAEAAV012@ABV012@@Z": "0x5953f0 (external)",
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)",
+          "??0connection@signals@boost@@QAE@ABV012@@Z": "0x5950f0 (external)",
+          "??$pushNewObject@Vconnection@signals@boost@@@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@SAPAVconnection@signals@boost@@PAUlua_State@@V345@@Z": "0x61f180 (own row)",
+          "??1FunctionScriptSlot@@QAE@XZ": "0x61f2c0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?connect@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "00620760",
+        "symbol": "?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z",
+        "size": 425,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BO@CBKBAADO@The?5?$CFs?5event?5has?5been?5deleted?$AA@": "0x84464c (literal 'The %s event has been deleted')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_07KAIBNCHO@connect?$AA@": "0x844774 (literal 'connect')",
+          "?connect@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z": "0x620620 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (evidence name)",
+          "??_C@_04PNOAOIAG@wait?$AA@": "0x8348a0 (literal 'wait')",
+          "?wait@SignalBridge@Lua@RBX@@SAHPAUlua_State@@@Z": "0x620470 (own row)",
+          "??_C@_0L@KKPFIJOL@disconnect?$AA@": "0x844678 (literal 'disconnect')",
+          "??_C@_0FE@KMJHDHHO@Event?3disconnect?$CI?$CJ?5has?5been?5depr@": "0x844720 (literal 'Event:disconnect() has been deprecated. Use connection object returned by connect()')",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061f220",
+        "symbol": "?on_newindex@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAXAAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z",
+        "size": 150,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BO@CBKBAADO@The?5?$CFs?5event?5has?5been?5deleted?$AA@": "0x84464c (literal 'The %s event has been deleted')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_0BJ@BGGAAPFH@?$CFs?5cannot?5be?5assigned?5to?$AA@": "0x832224 (literal '%s cannot be assigned to')"
+        },
+        "local_eh": [
+          "__ehhandler$?on_newindex@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAXAAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z"
+        ]
+      }
+    ],
+    "enum": [
+      {
+        "address": "0061edb0",
+        "symbol": "?on_newindex@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAXAAPBVAllEnumDescriptors@23@PBDPAUlua_State@@@Z",
+        "size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BJ@NBJODJOD@Enums?5cannot?5be?5modified?$AA@": "0x8445a0 (literal 'Enums cannot be modified')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_newindex@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAXAAPBVAllEnumDescriptors@23@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061ee00",
+        "symbol": "?on_newindex@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAXAAPBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z",
+        "size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BI@PFPPFJOG@Enum?5cannot?5be?5modified?$AA@": "0x8445bc (literal 'Enum cannot be modified')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_newindex@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAXAAPBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061ee50",
+        "symbol": "?on_index@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z",
+        "size": 287,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_04FABLJDN@Name?$AA@": "0x80f7cc (literal 'Name')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (evidence name)",
+          "??_C@_05LPIJGKJ@Value?$AA@": "0x818478 (literal 'Value')",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "??_C@_0BJ@EPKDEDPA@?$CFs?5is?5not?5a?5valid?5member?$AA@": "0x832208 (literal '%s is not a valid member')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061ef70",
+        "symbol": "?on_newindex@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAXAAPBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z",
+        "size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BM@HHIJACBD@EnumItem?5cannot?5be?5modified?$AA@": "0x8445d4 (literal 'EnumItem cannot be modified')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_newindex@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAXAAPBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061efc0",
+        "symbol": "?on_index@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z",
+        "size": 134,
+        "exact": true,
+        "verified_targets": {
+          "?push@?$SingletonBridge@PBVItem@EnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVItem@EnumDescriptor@Reflection@3@@Z": "0x5a9bd0 (instance (bytes equal, targets verified))",
+          "??_C@_0BL@IFFIGDFN@?$CFs?5is?5not?5a?5valid?5EnumItem?$AA@": "0x8445f0 (literal '%s is not a valid EnumItem')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "0061f050",
+        "symbol": "?declareAllEnums@Enums@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 43,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_04PAFOOALK@Enum?$AA@": "0x844590 (literal 'Enum')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (evidence name)",
+          "_allEnumDescriptors": "0x97bf5c (data)",
+          "?push@?$SingletonBridge@PBVAllEnumDescriptors@Lua@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVAllEnumDescriptors@23@@Z": "0x5a9a90 (instance (bytes equal, targets verified))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (evidence name)"
+        },
+        "local_eh": []
+      }
+    ],
+    "yield": [
+      {
+        "address": "00620970",
+        "symbol": "??$checked_delete@VThreadRef@Lua@RBX@@@boost@@YAXPAVThreadRef@Lua@RBX@@@Z",
+        "size": 27,
+        "exact": true,
+        "verified_targets": {
+          "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380 (evidence name)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620990",
+        "symbol": "??0WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@ABU0123@@Z",
+        "size": 49,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006209d0",
+        "symbol": "??$?0VThreadRef@Lua@RBX@@@shared_count@detail@boost@@QAE@PAVThreadRef@Lua@RBX@@@Z",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@6B@": "0x84478c (vtable RTTI .?AV?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@ offset 0x0)",
+          "??$checked_delete@VThreadRef@Lua@RBX@@@boost@@YAXPAVThreadRef@Lua@RBX@@@Z": "0x620970 (own row)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VThreadRef@Lua@RBX@@@shared_count@detail@boost@@QAE@PAVThreadRef@Lua@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "00620a60",
+        "symbol": "?dispose@?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEXXZ",
+        "size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380 (evidence name)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620a80",
+        "symbol": "??$_Copy_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "size": 135,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00620b10",
+        "symbol": "??$_Copy_backward_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "size": 136,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00620ba0",
+        "symbol": "??$_Fill@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@U1234@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0ABU1234@@Z",
+        "size": 125,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00620c20",
+        "symbol": "??$_Copy_backward_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "size": 95,
+        "exact": true,
+        "verified_targets": {
+          "??$_Copy_backward_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620b10 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620c80",
+        "symbol": "??$_Uninit_copy@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "size": 73,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00620cd0",
+        "symbol": "??0WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@PAUlua_State@@N@Z",
+        "size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0ThreadRef@Lua@RBX@@QAE@PAUlua_State@@@Z": "0x593e40 (evidence name)",
+          "??$?0VThreadRef@Lua@RBX@@@shared_count@detail@boost@@QAE@PAVThreadRef@Lua@RBX@@@Z": "0x6209d0 (own row)",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??0WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@PAUlua_State@@N@Z"
+        ]
+      },
+      {
+        "address": "00620d60",
+        "symbol": "??$unchecked_copy@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@stdext@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00@Z",
+        "size": 86,
+        "exact": true,
+        "verified_targets": {
+          "??$_Copy_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620a80 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620dc0",
+        "symbol": "??$_Uninit_fill_n@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@IU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IABU1234@AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+        "size": 71,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00620e10",
+        "symbol": "??$_Unchecked_move_backward@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@stdext@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00@Z",
+        "size": 43,
+        "exact": true,
+        "verified_targets": {
+          "??$_Copy_backward_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620c20 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620e40",
+        "symbol": "?_Ufill@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU3456@IABU3456@@Z",
+        "size": 57,
+        "exact": true,
+        "verified_targets": {
+          "??$_Uninit_fill_n@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@IU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IABU1234@AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620dc0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620e80",
+        "symbol": "?erase@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@0@Z",
+        "size": 141,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$unchecked_copy@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@stdext@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00@Z": "0x620d60 (own row)",
+          "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x5aca00 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620f10",
+        "symbol": "??$_Umove@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU2345@00@Z",
+        "size": 44,
+        "exact": true,
+        "verified_targets": {
+          "??$_Uninit_copy@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620c80 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00620f40",
+        "symbol": "??0?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@ABV01@@Z",
+        "size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?_Xlen@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@KAXXZ": "0x4c6d40 (instance (bytes equal, targets verified))",
+          "??$_Allocate@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IPAU1234@@Z": "0x620910 (instance (bytes equal, targets verified))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$_Uninit_copy@PBUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PBU1234@0PAU1234@AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620c80 (instance (bytes equal, targets verified))",
+          "?_Tidy@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXXZ": "0x5ace90 (instance (bytes equal, targets verified))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@ABV01@@Z"
+        ]
+      },
+      {
+        "address": "00621050",
+        "symbol": "?_Insert_n@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@IABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z",
+        "size": 723,
+        "exact": true,
+        "verified_targets": {
+          "?_Xlen@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@KAXXZ": "0x4c6d40 (instance (bytes equal, targets verified))",
+          "??$_Allocate@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IPAU1234@@Z": "0x620910 (instance (bytes equal, targets verified))",
+          "??$_Uninit_copy@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620c80 (own row)",
+          "?_Ufill@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU3456@IABU3456@@Z": "0x620e40 (own row)",
+          "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x5aca00 (instance (bytes equal, targets verified))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?_Destroy@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0@Z": "0x5acc50 (instance (bytes equal, targets verified))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??0WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@ABU0123@@Z": "0x620990 (own row)",
+          "??$_Umove@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU2345@00@Z": "0x620f10 (own row)",
+          "??$_Fill@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@U1234@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0ABU1234@@Z": "0x620ba0 (own row)",
+          "??$_Unchecked_move_backward@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@stdext@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00@Z": "0x620e10 (own row)",
+          "??1WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@XZ": "0x600660 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$?_Insert_n@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@IABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "00621330",
+        "symbol": "??0YieldingThreads2008@Lua@RBX@@QAE@PAVScriptContext@2@@Z",
+        "size": 89,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0YieldingThreads2008@Lua@RBX@@QAE@PAVScriptContext@2@@Z"
+        ]
+      },
+      {
+        "address": "00621390",
+        "symbol": "?insert@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@ABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z",
+        "size": 174,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Insert_n@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@IABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z": "0x621050 (own row)",
+          "??Y?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAEAAV01@H@Z": "0x68d450 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00621440",
+        "symbol": "?push_back@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAEXABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z",
+        "size": 159,
+        "exact": true,
+        "verified_targets": {
+          "??$_Uninit_fill_n@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@IU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IABU1234@AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x620dc0 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?insert@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@ABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z": "0x621390 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006214e0",
+        "symbol": "?queueWaiter@YieldingThreads2008@Lua@RBX@@QAEXPAUlua_State@@N@Z",
+        "size": 161,
+        "exact": true,
+        "verified_targets": {
+          "??0WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@PAUlua_State@@N@Z": "0x620cd0 (own row)",
+          "?push_back@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAEXABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z": "0x621440 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?queueWaiter@YieldingThreads2008@Lua@RBX@@QAEXPAUlua_State@@N@Z"
+        ]
+      },
+      {
+        "address": "00621590",
+        "symbol": "?resume@YieldingThreads2008@Lua@RBX@@QAEXVHeartbeat@3@@Z",
+        "size": 573,
+        "exact": true,
+        "verified_targets": {
+          "??0?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@ABV01@@Z": "0x620f40 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?erase@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@2@0@Z": "0x620e80 (own row)",
+          "?push_back@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAEXABUWaitingThread@YieldingThreads2008@Lua@RBX@@@Z": "0x621440 (own row)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (evidence name)",
+          "?resume@ScriptContext@RBX@@QAE?AW4Result@12@PAUlua_State@@H@Z": "0x5ae0d0 (evidence name)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+          "??1?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@XZ": "0x5ad190 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$?resume@YieldingThreads2008@Lua@RBX@@QAEXVHeartbeat@3@@Z"
+        ]
+      },
+      {
+        "address": "006217d0",
+        "symbol": "?queueWaiter@YieldingThreads2008@Lua@RBX@@QAEXPAUlua_State@@@Z",
+        "size": 21,
+        "exact": true,
+        "verified_targets": {
+          "?queueWaiter@YieldingThreads2008@Lua@RBX@@QAEXPAUlua_State@@N@Z": "0x6214e0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "enum_pending": [
+      {
+        "address": "0061f080",
+        "symbol": "?lookupDescriptor@EnumDescriptor@Reflection@RBX@@SAPBV123@ABVName@3@@Z",
+        "size": 110,
+        "exact": false,
+        "verified_targets": {
+          "?allEnumsByName@EnumDescriptor@Reflection@RBX@@CAAAV?$map@PBVName@RBX@@PBVEnumDescriptor@Reflection@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVEnumDescriptor@Reflection@2@@std@@@6@@std@@XZ": "0x56c520 (external)",
+          "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVEnumDescriptor@Reflection@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVEnumDescriptor@Reflection@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z": "0x451600 (instance (bytes equal, targets verified))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": [],
+        "status": "pending-build-only"
+      },
+      {
+        "address": "0061f0f0",
+        "symbol": "?on_index@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAHABQBVAllEnumDescriptors@23@PBDPAUlua_State@@@Z",
+        "size": 135,
+        "exact": false,
+        "verified_targets": {
+          "?lookup@Name@RBX@@SAABV12@PBD@Z": "0x554290 (evidence name)",
+          "?lookupDescriptor@EnumDescriptor@Reflection@RBX@@SAPBV123@ABVName@3@@Z": "0x61f080 (pending-build-only row)",
+          "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z": "0x5a9b30 (instance (bytes equal, targets verified))",
+          "??_C@_0BL@IFFIGDFN@?$CFs?5is?5not?5a?5valid?5EnumItem?$AA@": "0x8445f0 (literal '%s is not a valid EnumItem')",
+          "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10 (external)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_index@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAHABQBVAllEnumDescriptors@23@PBDPAUlua_State@@@Z"
+        ],
+        "status": "pending-build-only"
+      }
+    ]
+  },
+  "instances": {
+    "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": {
+      "address": "005aa730",
+      "symbol": "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+      "size": 290,
+      "exact": false,
+      "verified_targets": {
+        "?lua_pushnil@@YAXPAUlua_State@@@Z": "0x6121e0 (evidence name)",
+        "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+        "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": "0x5aa730 (instance (bytes equal, targets verified))",
+        "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (evidence name)",
+        "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (evidence name)",
+        "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (evidence name)",
+        "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+        "??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z": "0x5aa110 (instance (bytes equal, targets verified))",
+        "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (evidence name)",
+        "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (evidence name)",
+        "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z": {
+      "address": "005aa110",
+      "symbol": "??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z",
+      "size": 190,
+      "exact": false,
+      "verified_targets": {
+        "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+        "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95af74 (className static -> 'Object')",
+        "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+        "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@PBVDescribedBase@23@@Z": {
+      "address": "0061a7b0",
+      "symbol": "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@VInstance@RBX@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@PBVDescribedBase@23@@Z",
+      "size": 37,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PBVDescribedBase@23@@Z": {
+      "address": "0061a7b0",
+      "symbol": "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PBVDescribedBase@23@@Z",
+      "size": 37,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?getValue@?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@QBE?AVFunctionRef@Lua@3@PBVDescribedBase@23@@Z": {
+      "address": "0061a7b0",
+      "symbol": "?getValue@?$TypedPropertyDescriptor@VFunctionRef@Lua@RBX@@@Reflection@RBX@@QBE?AVFunctionRef@Lua@3@PBVDescribedBase@23@@Z",
+      "size": 37,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@PBVDescribedBase@23@@Z": {
+      "address": "0061a7b0",
+      "symbol": "?getValue@?$TypedPropertyDescriptor@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Reflection@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@PBVDescribedBase@23@@Z",
+      "size": 37,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?emptyString2008@Lua@RBX@@3PBDB": {
+      "address": "0095b1cc",
+      "symbol": "?emptyString2008@Lua@RBX@@3PBDB",
+      "size": 4,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x0 ??_C@_00CNPNBAHC@?$AA@": "0x80b716 (literal '')"
+      }
+    },
+    "__real@47efffffe0000000": {
+      "address": "00844488",
+      "symbol": "__real@47efffffe0000000",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "__real@7f7fffff": {
+      "address": "00827a24",
+      "symbol": "__real@7f7fffff",
+      "size": 4,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "__real@c7efffffe0000000": {
+      "address": "00844480",
+      "symbol": "__real@c7efffffe0000000",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "__real@ff7fffff": {
+      "address": "00827a20",
+      "symbol": "__real@ff7fffff",
+      "size": 4,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?unit@Vector3@G3D@@QBE?AV12@XZ": {
+      "address": "004fab70",
+      "symbol": "?unit@Vector3@G3D@@QBE?AV12@XZ",
+      "size": 55,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$pushNewObject@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SAPAVVector3@G3D@@PAUlua_State@@V34@@Z": {
+      "address": "005a8cf0",
+      "symbol": "??$pushNewObject@VVector3@G3D@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SAPAVVector3@G3D@@PAUlua_State@@V34@@Z",
+      "size": 76,
+      "exact": false,
+      "verified_targets": {
+        "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+        "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+        "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+        "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z": {
+      "address": "00501ca0",
+      "symbol": "?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+      "size": 90,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$any_cast@H@boost@@YAHABVany@0@@Z": {
+      "address": "00415ed0",
+      "symbol": "??$any_cast@H@boost@@YAHABVany@0@@Z",
+      "size": 136,
+      "exact": false,
+      "verified_targets": {
+        "??_R0X@8": "0x929614 (RTTI .X)",
+        "??_R0H@8": "0x92bed0 (RTTI .H)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+        "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$??$any_cast@H@boost@@YAHABVany@0@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??D?$_Vector_const_iterator@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QBEABVany@boost@@XZ": {
+      "address": "00413970",
+      "symbol": "??D?$_Vector_const_iterator@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QBEABVany@boost@@XZ",
+      "size": 51,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$?0VInstance@RBX@@@?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@QAE@ABV?$shared_ptr@VInstance@RBX@@@1@@Z": {
+      "address": "00559a20",
+      "symbol": "??$?0VInstance@RBX@@@?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@QAE@ABV?$shared_ptr@VInstance@RBX@@@1@@Z",
+      "size": 46,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": {
+      "address": "0047d410",
+      "symbol": "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ",
+      "size": 1,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": {
+      "address": "00600660",
+      "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+      "size": 53,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?push@?$SingletonBridge@PBVItem@EnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVItem@EnumDescriptor@Reflection@3@@Z": {
+      "address": "005a9bd0",
+      "symbol": "?push@?$SingletonBridge@PBVItem@EnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVItem@EnumDescriptor@Reflection@3@@Z",
+      "size": 158,
+      "exact": false,
+      "verified_targets": {
+        "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+        "?push@?$SingletonBridge@PBVItem@EnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVItem@EnumDescriptor@Reflection@3@@Z": "0x5a9bd0 (instance (bytes equal, targets verified))",
+        "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (evidence name)",
+        "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (evidence name)",
+        "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (evidence name)",
+        "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+        "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+        "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+        "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+        "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)",
+        "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (evidence name)",
+        "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (evidence name)",
+        "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?push@?$SingletonBridge@PBVAllEnumDescriptors@Lua@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVAllEnumDescriptors@23@@Z": {
+      "address": "005a9a90",
+      "symbol": "?push@?$SingletonBridge@PBVAllEnumDescriptors@Lua@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVAllEnumDescriptors@23@@Z",
+      "size": 158,
+      "exact": false,
+      "verified_targets": {
+        "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+        "?push@?$SingletonBridge@PBVAllEnumDescriptors@Lua@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVAllEnumDescriptors@23@@Z": "0x5a9a90 (instance (bytes equal, targets verified))",
+        "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (evidence name)",
+        "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (evidence name)",
+        "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (evidence name)",
+        "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+        "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+        "?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d4 (className static -> 'Enums')",
+        "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+        "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)",
+        "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (evidence name)",
+        "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (evidence name)",
+        "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": {
+      "address": "005aca00",
+      "symbol": "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+      "size": 76,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Xlen@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@KAXXZ": {
+      "address": "004c6d40",
+      "symbol": "?_Xlen@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@KAXXZ",
+      "size": 112,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x80e190 (literal 'vector<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Xlen@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@KAXXZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$_Allocate@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IPAU1234@@Z": {
+      "address": "00620910",
+      "symbol": "??$_Allocate@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@IPAU1234@@Z",
+      "size": 93,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (throw info .?AVbad_alloc@std@@ (2 catchable types))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$_Uninit_copy@PBUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PBU1234@0PAU1234@AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": {
+      "address": "00620c80",
+      "symbol": "??$_Uninit_copy@PBUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PBU1234@0PAU1234@AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 73,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Tidy@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXXZ": {
+      "address": "005ace90",
+      "symbol": "?_Tidy@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXXZ",
+      "size": 66,
+      "exact": false,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x5aca00 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Destroy@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0@Z": {
+      "address": "005acc50",
+      "symbol": "?_Destroy@?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@IAEXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0@Z",
+      "size": 30,
+      "exact": false,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x5aca00 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@XZ": {
+      "address": "00600660",
+      "symbol": "??1WaitingThread@YieldingThreads2008@Lua@RBX@@QAE@XZ",
+      "size": 53,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??Y?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAEAAV01@H@Z": {
+      "address": "0068d450",
+      "symbol": "??Y?$_Vector_const_iterator@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAEAAV01@H@Z",
+      "size": 82,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@XZ": {
+      "address": "005ad190",
+      "symbol": "??1?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@XZ",
+      "size": 111,
+      "exact": false,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@YAXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@0AAV?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x5aca00 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVEnumDescriptor@Reflection@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVEnumDescriptor@Reflection@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z": {
+      "address": "00451600",
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVEnumDescriptor@Reflection@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVEnumDescriptor@Reflection@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z",
+      "size": 139,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z": {
+      "address": "005a9b30",
+      "symbol": "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z",
+      "size": 158,
+      "exact": false,
+      "verified_targets": {
+        "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (evidence name)",
+        "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z": "0x5a9b30 (instance (bytes equal, targets verified))",
+        "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (evidence name)",
+        "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (evidence name)",
+        "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (evidence name)",
+        "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (evidence name)",
+        "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (evidence name)",
+        "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d8 (className static -> 'Enum')",
+        "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (evidence name)",
+        "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (evidence name)",
+        "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (evidence name)",
+        "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (evidence name)",
+        "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (evidence name)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??_G?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEPAXI@Z": {
+      "address": "00415000",
+      "symbol": "??_G?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?get_deleter@?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEPAXABVtype_info@@@Z": {
+      "address": "005f2310",
+      "symbol": "?get_deleter@?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEPAXABVtype_info@@@Z",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??_G?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEPAXI@Z": {
+      "address": "00415000",
+      "symbol": "??_G?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??_7sp_counted_base@detail@boost@@6B@": "0x80b2f0 (vtable RTTI .?AVsp_counted_base@detail@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?get_deleter@?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEPAXABVtype_info@@@Z": {
+      "address": "005f2310",
+      "symbol": "?get_deleter@?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEPAXABVtype_info@@@Z",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    }
+  },
+  "exact": [
+    "0061a420",
+    "0061a470",
+    "0061a4f0",
+    "0061a560",
+    "0061a5f0",
+    "0061a600",
+    "0061a660",
+    "0061a6c0",
+    "0061a720",
+    "0061a7b0",
+    "0061a7e0",
+    "0061a850",
+    "0061a8c0",
+    "0061a930",
+    "0061a9a0",
+    "0061aa00",
+    "0061aa60",
+    "0061aac0",
+    "0061bb00",
+    "0061bb30",
+    "0061bb70",
+    "0061bcb0",
+    "0061c6f0",
+    "0061c740",
+    "0061c790",
+    "0061c7b0",
+    "0061c830",
+    "0061c8c0",
+    "0061ca00",
+    "0061ca60",
+    "0061caf0",
+    "0061cba0",
+    "0061cc00",
+    "0061cc60",
+    "0061cd40",
+    "0061ce40",
+    "0061ce80",
+    "0061cf30",
+    "0061cfe0",
+    "0061d230",
+    "0061d270",
+    "0061d2b0",
+    "0061d2f0",
+    "0061d330",
+    "0061d370",
+    "0061d3b0",
+    "0061d3f0",
+    "0061d430",
+    "0061d5f0",
+    "0061d640",
+    "0061d990",
+    "0061dbf0",
+    "0061dc70",
+    "0061dcf0",
+    "0061dd60",
+    "0061de60",
+    "0061df50",
+    "0061e050",
+    "0061e150",
+    "0061e2b0",
+    "0061e340",
+    "0061e3b0",
+    "0061e550",
+    "0061e5f0",
+    "0061e690",
+    "0061ec30",
+    "0061ecc0",
+    "0061edb0",
+    "0061ee00",
+    "0061ee50",
+    "0061ef70",
+    "0061efc0",
+    "0061f050",
+    "0061f180",
+    "0061f220",
+    "0061f2c0",
+    "0061f350",
+    "0061f3d0",
+    "0061f3f0",
+    "0061f410",
+    "0061f480",
+    "0061f5a0",
+    "0061f630",
+    "0061f650",
+    "0061f6a0",
+    "0061f730",
+    "0061f7e0",
+    "0061f870",
+    "0061f900",
+    "0061f960",
+    "0061f9f0",
+    "0061fa60",
+    "0061fab0",
+    "0061fac0",
+    "0061fb20",
+    "0061fea0",
+    "0061ff70",
+    "00620190",
+    "00620210",
+    "006202a0",
+    "00620310",
+    "006203a0",
+    "00620470",
+    "00620590",
+    "00620620",
+    "00620760",
+    "00620970",
+    "00620990",
+    "006209d0",
+    "00620a60",
+    "00620a80",
+    "00620b10",
+    "00620ba0",
+    "00620c20",
+    "00620c80",
+    "00620cd0",
+    "00620d60",
+    "00620dc0",
+    "00620e10",
+    "00620e40",
+    "00620e80",
+    "00620f10",
+    "00620f40",
+    "00621050",
+    "00621330",
+    "00621390",
+    "00621440",
+    "006214e0",
+    "00621590",
+    "006217d0"
+  ],
+  "exact_count": 130,
+  "instances_in_range_not_counted": [
+    "00620910"
+  ],
+  "pending_build_only": [
+    "0061f080",
+    "0061f0f0"
+  ],
+  "not_exact": {
+    "0061f080 / 0061f0f0": "EnumDescriptor::lookupDescriptor(const Name&) and Enums on_index: byte-exact only in the pending build (generated enumconverter.h copy; allEnumsByName() 0056c520 is private in the read-only native header): pending-build-only, not counted",
+    "0061abe0 / 0061b190 / 0061bda0 / 0061c0e0 / 0061c2c0": "instance-bridge property push / set / function call / on_newindex paths: need NATIVE_LUABRIDGE_PENDING (Instances typedef / setParent2 in v8tree/Instance.h)",
+    "0061bcd0": "write-access check called from 0061be19 / 0061c185 (201 B): takes its Instance* in esi (no prologue; edi is not an argument: it is saved at 0061bd2b before the DataModel dynamic_cast and restored at 0061bd97), Security::Context::isInRole / requirePermission with \"modify a StatsService\" (dynamic_cast to Stats::StatsService), \"GuiRoot\" / \"GuiHooks\" (DataModel +0x21c / +0x224 through getRootAncestor and isAncestorOf); an esi-argument convention for an internal function is whole-program (/GL + /LTCG) code generation, which a COFF /c compile cannot emit; a plain static function was tried in pass 1 and is not repeated. Next hypothesis (not run here): a /GL /LTCG DLL link of the instance unit compared from the linked image",
+    "0061ba10": "MemberDescriptorContainer<SignalDescriptor>::findDescriptor (ICF-folded, called from 9 sites in other units): the read-only native reflection/member.h body emits 202 B against 232 B: the target inlines the checked _Vector_const_iterator::operator+= of `descriptors.begin()+i` (ours calls it out of line) and its end() path checks only _Myfirst <= _Mylast; owner of reflection/member.h, not changed here",
+    "00620910": "std::_Allocate<0x18-byte element> (ICF-folded; this unit emits it as _Allocate<WaitingThread>, bytes equal, recorded as an instance): counted by scorehud-leaderboard-working.json, not here",
+    "0061f60e": "catch funclet of shared_count<connection> 0061f5a0, compared as part of that row (not counted separately)",
+    "00620344 / 00620357 / 00620422": "pieces of TGenericSlotWrapper<FunctionScriptSlot / WaitScriptSlot>::execute 00620310 / 006203a0, compared as part of those rows (not counted separately)",
+    "00620a3e": "catch funclet of shared_count<ThreadRef*> 006209d0, compared as part of that row (not counted separately)",
+    "0062102f": "catch funclet of vector<WaitingThread>(const vector&) 00620f40, compared as part of that row (not counted separately)",
+    "00621284": "tail of vector<WaitingThread>::_Insert_n 00621050 (second catch funclet and the copy-insert branch), compared as part of that row (not counted separately)"
+  },
+  "left": [
+    "0061abe0",
+    "0061b190",
+    "0061ba10",
+    "0061bcd0",
+    "0061bda0",
+    "0061c0e0",
+    "0061c2c0",
+    "0061f080",
+    "0061f0f0"
+  ],
+  "bounds_evidence": [
+    "0061f5a0 shared_count<boost::signals::connection> ctor: 131 bytes (listed 110) including its catch funclet 0061f60e, which only the EH tables reference; whole body byte-exact against the image",
+    "00620310 TGenericSlotWrapper<FunctionScriptSlot>::execute: 134 bytes (listed 52 + 00620344 19 + catch funclet 00620357 63); whole body byte-exact against the image",
+    "006203a0 TGenericSlotWrapper<WaitScriptSlot>::execute: 193 bytes (listed 130 + catch funclet 00620422 63); whole body byte-exact against the image",
+    "006209d0 shared_count<ThreadRef*> ctor: 131 bytes (listed 110 + catch funclet 00620a3e 21); whole body byte-exact against the image",
+    "00620f40 vector<WaitingThread>(const vector&): 256 bytes (listed 239 + catch funclet 0062102f 17); whole body byte-exact against the image",
+    "00621050 vector<WaitingThread>::_Insert_n: 723 bytes (listed 564 + 00621284 159); whole body byte-exact against the image"
+  ],
+  "vtables": {
+    "??_7?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@6B@": {
+      "address": "0x84463c",
+      "rtti": ".?AV?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@",
+      "slots": {
+        "0": "??_E?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEPAXI@Z = 0x415000 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?dispose@?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEXXZ = 0x61f630 (own row)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (evidence name)",
+        "3": "?get_deleter@?$sp_counted_impl_p@Vconnection@signals@boost@@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5f2310 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@6B@": {
+      "address": "0x844688",
+      "rtti": ".?AV?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@",
+      "slots": {
+        "0": "??_E?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEPAXI@Z = 0x61f900 (own row (??_G))",
+        "1": "?execute@?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z = 0x6203a0 (own row)"
+      }
+    },
+    "??_7?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@6B@": {
+      "address": "0x844694",
+      "rtti": ".?AV?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@",
+      "slots": {
+        "0": "??_E?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEPAXI@Z = 0x61fac0 (own row (??_G))",
+        "1": "?execute@?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEXABV?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@@Z = 0x620310 (own row)"
+      }
+    },
+    "??_7?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@6B@": {
+      "address": "0x84478c",
+      "rtti": ".?AV?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@",
+      "slots": {
+        "0": "??_E?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEPAXI@Z = 0x415000 (instance (bytes equal, targets verified) via ??_G)",
+        "1": "?dispose@?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEXXZ = 0x620a60 (own row)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ = 0x405e10 (evidence name)",
+        "3": "?get_deleter@?$sp_counted_impl_p@VThreadRef@Lua@RBX@@@detail@boost@@UAEPAXABVtype_info@@@Z = 0x5f2310 (instance (bytes equal, targets verified))"
+      }
+    }
+  },
+  "proposals": [
+    "native-headers/v8tree/Instance.h (owner): `typedef std::vector<boost::shared_ptr<Instance> > Instances;` in namespace RBX and `void setParent2(boost::shared_ptr<Instance>)` (shape from the donor). Needed by the Instances branch of the property push 0061abe0 / LuaArguments::push and by ObjectBridge::on_newindex; guarded with NATIVE_LUABRIDGE_PENDING in native-classes/LuaBridge2008Instance.cpp; no row depends on it yet.",
+    "native-headers/reflection/enumconverter.h (owner): add to EnumDescriptor, public: `static const EnumDescriptor* lookupDescriptor(const Name& name) { std::map<const Name*, const EnumDescriptor*>::const_iterator iter = allEnumsByName().find(&name); if (iter != allEnumsByName().end()) return iter->second; return NULL; }` (name provisional). Evidence: 0061f080 (110 B, called only from the Enums __index body 0061f0f0 after Name::lookup 00554290) calls allEnumsByName 0056c520 twice and the ICF-folded map find 00451600, copying the returned iterator before the end() compare (hence const_iterator); 0061f080 and 0061f0f0 are byte-exact against the generated out/native-layouts/lua-bridge2008-pending/reflection/enumconverter.h (pending-build-only).",
+    "native-headers/script/ScriptContext.h (owner; it includes the donor script/ScriptEvent.h), optional since pass 4: the YieldingThreads unit is now built and exact through the non-colliding YieldingThreads2008 declaration in LuaBridge2008/LuaYieldingThreads2008.h; a native 2008 ScriptEvent.h (so that ScriptContext::yieldEvent names the real class) would take that shape: `struct WaitingThread { boost::shared_ptr<ThreadRef> thread; double requestedDelay; double elapsedTime; WaitingThread(lua_State*, double); }` and `void queueWaiter(lua_State*, double)`. Evidence: element stride 0x18 (imul 0x2aaaaaab / sar 2 in push_back 00621440), queueWaiter 006214e0 reads its delay with fld qword [esp+0x30] and stores yieldCaptured at RobloxExtraSpace+8 (L-0xc), queueWaiter(L) 006217d0 pushes fldz as a qword, the WaitingThread ctor 00620cd0 news the ThreadRef (0x20, ThreadRef(lua_State*) 00593e40); resume(Heartbeat) 00621590 pushes elapsedTime and heartbeat.time and calls ScriptContext::resume(L, 2) (the donor pushes one value and resumes with 1)."
+  ],
+  "scope": "Inactive. Exact rows with every call/data target verified; the enum-unit pending build (generated enumconverter.h copy) only records pending-build-only rows, which are not counted; no active build, swap or credit. Lua library functions are external targets bound by address (offline evidence names)."
+}

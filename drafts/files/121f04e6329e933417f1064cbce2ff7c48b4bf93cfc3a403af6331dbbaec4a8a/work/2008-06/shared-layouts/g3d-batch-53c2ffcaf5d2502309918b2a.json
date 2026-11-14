@@ -1,0 +1,53 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DLine.cpp",
+  "source_sha256": "4e09dc3e28bf0d1875e7fa32eff8f15fe6502d663a2de29bdbbcb1e0b7b539b9",
+  "object_sha256": "ad764a2aaaee6cfaaf04309bfdeec2381ee454afb7997f1a7ed347d9a3fbb272",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-130318-4c28da44\\analysis-ab7e21da.json",
+  "checks": [
+    {
+      "address": "007bbce0",
+      "symbol": "?intersection@Line@G3D@@QBE?AVVector3@2@ABVPlane@2@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 96.190476,
+        "target_bytes": 210,
+        "candidate_bytes": 210,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 202,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          42,
+          101
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 41,
+          "target": "00525ad0",
+          "symbol": "?getEquation@Plane@G3D@@QBEXAAVVector3@2@AAM@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 100,
+          "target": "00510960",
+          "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": []
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

@@ -1,0 +1,14 @@
+{
+  "methods": {
+    "007a4170": "crc32",
+    "007a5770": "_tr_stored_block",
+    "007a5810": "_tr_align",
+    "004ba9d0": "StringCompressor::RemoveReference"
+  },
+  "evidence": [
+    "The CRC wrapper tail-jumps to 007a3e90, independently checked as crc32_little in zlib-proof-007a3e90-exact-20261114.json.",
+    "The stored-block and alignment calls target copy_block and bi_flush; their 138- and 114-byte original bodies match the donor objects, with the flush helper matching raw bytes fully. The original copy helper writes stored-block header fields and copies the input, matching source.",
+    "Original StringCompressor::AddReference 004ba960 increments 00971814 and initializes instance 00971810; RemoveReference decrements that same count and clears that same instance on zero.",
+    "All claims are inactive local code, data and reference checks, not selected provider, ABI, runtime or server credit."
+  ]
+}

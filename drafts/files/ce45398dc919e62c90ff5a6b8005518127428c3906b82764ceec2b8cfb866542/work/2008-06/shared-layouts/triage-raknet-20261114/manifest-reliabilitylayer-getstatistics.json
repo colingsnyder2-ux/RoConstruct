@@ -1,0 +1,15 @@
+{
+  "jobs": [
+    {
+      "checks": [
+        {
+          "references": [],
+          "calls": [],
+          "symbol": "?GetStatistics@ReliabilityLayer@@QAEQAURakNetStatistics@@XZ",
+          "addr": "004d1380"
+        }
+      ],
+      "source": "native-classes/ReliabilityLayerStats2008.cpp"
+    }
+  ]
+}

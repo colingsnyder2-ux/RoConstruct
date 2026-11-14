@@ -1,0 +1,1328 @@
+{
+  "class": "RBX Units / DragTool / PartDragTool / ERA / GroupDragTool units of the application range 00660000..0066c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660Layout.cpp"
+    ],
+    "units": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660_2008_units.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit660_2008Units.cpp"
+    ],
+    "drag": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660_2008_drag.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/DragTool.cpp"
+    ],
+    "part": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660_2008_part.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit660_2008PartDragTool.cpp"
+    ],
+    "era": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660_2008_era.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit660_2008ERA.cpp"
+    ],
+    "group": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660_2008_group.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit660_2008GroupDragTool.cpp"
+    ],
+    "part_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_APPUNIT660_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit660-2008/NativeAppUnit660_2008_part_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit660_2008PartDragTool.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit660_2008.py": "def858aa0d3449a772d386b6e9753a4970593d90daa84e2de99d9bea39627825",
+    "rebuild/2008-06/native-classes/AppUnit660_2008Units.cpp": "b33f69ae4fb0095b3305b0f3eab66c499010ea8b25265e4e2bb6f385035319b4",
+    "rebuild/2008-06/native-classes/DragTool.cpp": "65b13f2592e82d62a33c00df03f1c48330ddd9fc01e5555aa8734fd7a69559b6",
+    "rebuild/2008-06/native-classes/AppUnit660_2008PartDragTool.cpp": "11fcf06f77299b296b50f080089ada9769862d1dc7f76322518dae6a105878fb",
+    "rebuild/2008-06/native-classes/AppUnit660_2008ERA.cpp": "6a84cc7e583ef192bfb5b9cd30eebd0302b21502c40cb4785105b508c2958e25",
+    "rebuild/2008-06/native-classes/AppUnit660_2008GroupDragTool.cpp": "0598f8628ca5b4c80795ac59ab852d460031e791a3d9515880916568174f444b",
+    "rebuild/2008-06/native-headers/tool/DragTool.h": "728b455e3d329ff3b91346cd49595a55ff2edff3beca4e85798673020d50a6c3",
+    "rebuild/2008-06/native-headers/tool/PartDragTool.h": "b1b49dc2cb351683c7507d5dd66239dd6da743b447db720e5c9a748c6532535b",
+    "rebuild/2008-06/native-headers/tool/GroupDragTool.h": "f73d602fcb6782673ff14596c2c4e04d639391f2bb05944ce1a49b0a3d4b38f7",
+    "rebuild/2008-06/native-headers/tool/MegaDragger.h": "f59f7dca7885c08a1883f14fd84163b1d93b773e3798382c6672b5128389e5fd",
+    "tools/rbxgs/Client/App/include/util/Units.h": "eea3b81aa26a4b816677e40e06d1d07bbd11f9102a1ac6877df7410f96cf35ed",
+    "tools/rbxgs/Client/App/include/util/ExponentialRunningAverage.h": "8e9760556854fcb55784bb529da18f75f962c069176ee623f4f863b3c78e17d0"
+  },
+  "objects": {
+    "layout": "62bfb06de456b0c4a9cb7b9774a45414fc36ae912d9f72686c87ee6cec6a65d5",
+    "units": "878f6b16615156579bdb79f22c855f50579c06b1f2b6eff8bb1eb07256a148aa",
+    "drag": "f9fbfcf655a81c199dc471d9d78b8b11d6179c1c8ba086e9e39b55b13a124440",
+    "part": "f03fa6fc13873f2b24ec76b09419ba092eb65ce40307e0646ab4484f078ee4f2",
+    "era": "e92ea5f873390aa0003065ca2beb1b4f865ceae1299dbc53292aa65760d56674",
+    "group": "4f7eeb43e2e27fcdb594d83ee20136b0f6dee764467abcae024912085d0254da",
+    "part_pending": "30030c807abc6bbc72038e5759f4d9002da3d0c7e68dfda584a8fa319e04766d"
+  },
+  "layout": {
+    "partDragTool": "0x44",
+    "groupDragTool": "0x38",
+    "megaDragger": "0x2c",
+    "mouseCommand": "0x1c",
+    "floatERA": "0x8",
+    "vector3ERA": "0x10"
+  },
+  "allocations": [
+    "00660612: new(0x44) before 00665f20",
+    "00660646: new(0x38) before 0066a630",
+    "00665fc1: new(0x70) before 0066c900",
+    "00666056: new(0x2c) before 0060e540",
+    "0066a6b3: new(0x2c) before 0060e630"
+  ],
+  "rtti_bases": {
+    "PartDragTool": {
+      ".?AVPartDragTool@RBX@@": 0,
+      ".?AV?$Named@VMouseCommand@RBX@@$1?sPartDragTool@2@3PADA@RBX@@": 0,
+      ".?AVMouseCommand@RBX@@": 0,
+      ".?AVINamed@RBX@@": 0,
+      ".?AVIRenderable@RBX@@": 4
+    },
+    "GroupDragTool": {
+      ".?AVGroupDragTool@RBX@@": 0,
+      ".?AV?$Named@VMouseCommand@RBX@@$1?sGroupDragTool@2@3PADA@RBX@@": 0,
+      ".?AVMouseCommand@RBX@@": 0,
+      ".?AVINamed@RBX@@": 0,
+      ".?AVIRenderable@RBX@@": 4
+    }
+  },
+  "unit_map": {
+    "body-cofm tail 00660160..0066017d": "Cofm::getCofmInBody 00660160 / getMoment 00660170 (inline Cofm getters emitted out of line; counted by body-primitive2008-working.json).",
+    "units 00660180..006601ba": "Units::kmsAccelerationToRbx 00660180 (Vector3 * 20.0f, constant 008222f0; callers 0063e5bb, 00658f82, 0066ec49) and Units::kmsForceToRbx 006601b0 (float * 20.0f; caller 00646c91): the two out-of-line members of donor util/Units.cpp. Built here.",
+    "hit-filters 006601c0..00660544": "PartInstance::getIsTransparent 006601c0, Unlocked::unlocked 006601f0, the filters 00660210..006602b0, FilterStairs::filterResult 00660320, PartByLocalCharacter() 00660380, FilterStairs() 006604a0 (hit-filters-working.json counts 006601f0, 00660210, 00660220, 00660320, 00660380, 006604a0; 006601c0, 00660260 and 006602b0 are its non-exact rows waiting for the PartInstance.h getTransparencyUi proposal). Not rebuilt here.",
+    "drag-tool 00660550..006606c0": "DragTool::onMouseDown 00660550 (369 B: collectDragParts 0060e920, then new(0x44) PartDragTool 00665f20 or new(0x38) GroupDragTool 0066a630 and onMouseDown through slot 4; called by the Grab / Clone tools). Built here from the existing native-classes/DragTool.cpp, compiled read-only.",
+    "lua lmem/lparser/lundump/llex 006606d0..00665667": "Lua 5.1.1 library (luaM_toobig 006606d0 .. luaX_lookahead 00665650; evidence names, Lua error strings): library code, not recovered. 006640c0 luaX_init appears in script-app2008-working.json (support row).",
+    "effect 00665670..006656ae": "RBX::Effect leaf rows 00665670 / 00665680 / 00665690 (RTTI .?AVEffect@RBX@@, vtable 0084cb84; native-classes/SparklesEffect.cpp, effects-working.json rows, Sparkles owner). Not rebuilt here.",
+    "tool-trials 006656b0..006659a0": "006656b0 (462 B) and 00665880 (281 B): counted by resize-tool-methods-trial.json and axis-move-tool-lifetime-trial.json.",
+    "part-drag-tool 006659a0..00666238": "RBX::PartDragTool (RTTI .?AVPartDragTool@RBX@@, vtables 0084cbb4 / IRenderable 0084cb9c): onMouseDown 006659a0 .. onMouseUp 00666100 (ends 00666239), with the Name declare 00665a30 (sPartDragTool 0096265c, guard 0097d960, value 0097d95c), its call_once thunk 00665af0, getName 00665f00 (flag 0097d964), auto_ptr<RunDragger>::~auto_ptr 00665ad0 and the out-of-line MegaDragger::getMousePart 00665aa0. Built here; getMousePart / onMouseDelta / onKeyDown / render3dAdorn are pending-build-only (MegaDragger.h proposal).",
+    "era 00666240..006662e5": "floatERA::reset / pushAndGetAverage / getAverage 00666240..00666270 and Vector3ERA::reset / pushAndGetAverage / getAverage 00666280..006662d0 (donor util/ExponentialRunningAverage.cpp). Built here.",
+    "humanoid-states 006662f0..00667f6f": "HUMAN::RunningBase / Running / Dead / FallingDown / Seated / Strafing / RunningNoPhysics / Flying / Freefall / Jumping / GettingUp rows (RTTI names; humanoid-states1/2/3-working.json list them as verified methods without an exact flag, so no receipt counts them; their sources belong to the HumanoidState family, not rebuilt here). 006672a0 (5 B) is not listed by those receipts.",
+    "joint-stage 00667f70..006685af": "JointStage members and the map<Primitive*, Joint*> _Tree instantiations 00668010 / 00668210 (kernel-stages-working.json counts 00667f70, 00668340, 006683b0, 006683f0, 00668520, 00668590; KernelStages lease, JointStage2008.cpp). Not rebuilt here.",
+    "clump-stage 006685b0..00669d2f": "ClumpStage / Assembly helpers (callers in the kernel stage units 0064a3e0 .. 0064cfd0; IPipelined::putInKernel 00645830 / removeFromKernel 00645840 calls, set<Primitive*> / set<IMoving*> / set<Instance*> _Tree instantiations 00668d50 / 00669050). Needs the 2008 ClumpStage (0x30, see the TANDEM JointStage proposal); not built here.",
+    "snap-weld 00669d30..00669f0d": "SnapJoint::canBuildJoint 00669d30 / WeldJoint::canBuildJoint 00669e20 (new 0x88, Joint() 006455c0, vtables 0083e0fc / Weld): the static is not declared in native v8world/Joints2008.h and the inline compatibleSurfaces reads the 2008 Primitive surface types at +0xb8 + 4 * face (Primitive2008 lease). Not built here (proposal).",
+    "hud-text 00669f10..0066a56f": "Player-name hash 00669f10 / 00669f60 (hud-family-working.json, RBX::stringHash analog), the diogenes font loader 0066a070 / 0066a340 and the word splitter 0066a350 / 00669fa0 (ScoreHud / ChatOutput owner). Not rebuilt here.",
+    "group-drag-tool 0066a570..0066aa76": "RBX::GroupDragTool (RTTI .?AVGroupDragTool@RBX@@, vtables 0084d02c / IRenderable 0084d014): onMouseDown 0066a570, the Name declare 0066a5b0 (sGroupDragTool 00962c54, guard 0097da04, value 0097da00), call_once thunk 0066a620, GroupDragTool() 0066a630 .. ??_G 0066aa40, getName 0066aa60 (flag 0097da08). Built here.",
+    "lua lcode 0066aa80..": "Lua 5.1.1 lcode.c (fixjump 0066aa80 .. luaK_prefix 0066bfa0): library, not recovered."
+  },
+  "range_functions": 307,
+  "range_lua_library_rows": 123,
+  "range_rows_counted_by_other_receipts": {
+    "00660160": [
+      "body-primitive2008-working.json"
+    ],
+    "00660170": [
+      "body-primitive2008-working.json"
+    ],
+    "006601f0": [
+      "hit-filters-working.json"
+    ],
+    "00660210": [
+      "hit-filters-working.json"
+    ],
+    "00660220": [
+      "hit-filters-working.json"
+    ],
+    "00660320": [
+      "hit-filters-working.json"
+    ],
+    "00660380": [
+      "hit-filters-working.json"
+    ],
+    "006604a0": [
+      "hit-filters-working.json"
+    ],
+    "006656b0": [
+      "resize-tool-methods-trial.json"
+    ],
+    "00665880": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "00667f70": [
+      "kernel-stages-working.json"
+    ],
+    "00668340": [
+      "kernel-stages-working.json"
+    ],
+    "006683b0": [
+      "kernel-stages-working.json"
+    ],
+    "006683f0": [
+      "kernel-stages-working.json"
+    ],
+    "00668520": [
+      "kernel-stages-working.json"
+    ],
+    "00668590": [
+      "kernel-stages-working.json"
+    ]
+  },
+  "rows": {
+    "units": [
+      {
+        "address": "00660180",
+        "symbol": "?kmsAccelerationToRbx@Units@RBX@@SA?AVVector3@G3D@@ABV34@@Z",
+        "size": 37,
+        "target_size": 37,
+        "exact": true,
+        "verified_targets": {
+          "__real@41a00000": "0x8222f0 (constant 41a00000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006601b0",
+        "symbol": "?kmsForceToRbx@Units@RBX@@SAMM@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "__real@41a00000": "0x8222f0 (constant 41a00000)"
+        },
+        "local_eh": []
+      }
+    ],
+    "drag": [
+      {
+        "address": "00660550",
+        "symbol": "?onMouseDown@DragTool@RBX@@SAPAVMouseCommand@2@PAVPartInstance@2@ABVVector3@G3D@@ABV?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@ABVUIEvent@2@PAVWorkspace@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 369,
+        "target_size": 369,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?collectDragParts@RBX@@YAXABV?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@3@@Z": "0x60e920 (external)",
+          "??0PartDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@PAVWorkspace@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x665f20 (own row)",
+          "??0GroupDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVWorkspace@1@@Z": "0x66a630 (own row)",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (helper / COMDAT body, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?onMouseDown@DragTool@RBX@@SAPAVMouseCommand@2@PAVPartInstance@2@ABVVector3@G3D@@ABV?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@ABVUIEvent@2@PAVWorkspace@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      }
+    ],
+    "part": [
+      {
+        "address": "006659a0",
+        "symbol": "?onMouseDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006659e0",
+        "symbol": "?onMouseMove@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "size": 77,
+        "target_size": 77,
+        "exact": true,
+        "verified_targets": {
+          "__real@40800000": "0x826e6c (constant 40800000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00665a30",
+        "symbol": "?doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x97d960 (local static)",
+          "?sPartDragTool@RBX@@3PADA": "0x96265c (own data 'PartDragTool')",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?name@?1??doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x97d95c (local static)"
+        },
+        "local_eh": [
+          "__ehhandler$?doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@2@XZ"
+        ]
+      },
+      {
+        "address": "00665ad0",
+        "symbol": "??1?$auto_ptr@VRunDragger@RBX@@@std@@QAE@XZ",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "??1RunDragger@RBX@@QAE@XZ": "0x66c400 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00665af0",
+        "symbol": "?callDoDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "?doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@2@XZ": "0x665a30 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00665b60",
+        "symbol": "?onMouseIdle@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "size": 112,
+        "target_size": 112,
+        "exact": true,
+        "verified_targets": {
+          "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dde0 (external (evidence name))",
+          "?continueDragging@MegaDragger@RBX@@QAEXXZ": "0x60dd60 (external)",
+          "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00 (external)",
+          "?snap@RunDragger@RBX@@QAE_NABVRay@G3D@@@Z": "0x66e3d0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?onMouseIdle@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z"
+        ]
+      },
+      {
+        "address": "00665bd0",
+        "symbol": "??1PartDragTool@RBX@@UAE@XZ",
+        "size": 188,
+        "target_size": 188,
+        "exact": true,
+        "verified_targets": {
+          "??_7PartDragTool@RBX@@6BINamed@1@@": "0x84cbb4 (vtable RTTI .?AVPartDragTool@RBX@@ offset 0x0)",
+          "??_7PartDragTool@RBX@@6BIRenderable@1@@": "0x84cb9c (vtable RTTI .?AVPartDragTool@RBX@@ offset 0x4)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1RunDragger@RBX@@QAE@XZ": "0x66c400 (external (evidence name))",
+          "??1MouseCommand@RBX@@UAE@XZ": "0x615780 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1PartDragTool@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00665c90",
+        "symbol": "?getCursorName@PartDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BB@HJOIIPFA@GrabRotateCursor?$AA@": "0x84cbf4 (string 'GrabRotateCursor')",
+          "??_C@_0L@BLHFJFLM@DragCursor?$AA@": "0x843a60 (string 'DragCursor')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00665cc0",
+        "symbol": "??_GPartDragTool@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1PartDragTool@RBX@@UAE@XZ": "0x665bd0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00665f00",
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sPartDragTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1??get@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x97d964 (local static)",
+          "?callDoDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAXXZ": "0x665af0 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "?doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@2@XZ": "0x665a30 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00665f20",
+        "symbol": "??0PartDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@PAVWorkspace@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 479,
+        "target_size": 479,
+        "exact": true,
+        "verified_targets": {
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_7PartDragTool@RBX@@6BINamed@1@@": "0x84cbb4 (vtable RTTI .?AVPartDragTool@RBX@@ offset 0x0)",
+          "??_7PartDragTool@RBX@@6BIRenderable@1@@": "0x84cb9c (vtable RTTI .?AVPartDragTool@RBX@@ offset 0x4)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0RunDragger@RBX@@QAE@XZ": "0x66c900 (external (evidence name))",
+          "??1RunDragger@RBX@@QAE@XZ": "0x66c400 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?push_back@?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAEXABQAVPVInstance@RBX@@@Z": "0x4213a0 (helper / COMDAT body, compared exact at the bound address)",
+          "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e540 (external)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??0PartDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@PAVWorkspace@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "00666100",
+        "symbol": "?onMouseUp@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 313,
+        "target_size": 313,
+        "exact": true,
+        "verified_targets": {
+          "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dde0 (external (evidence name))",
+          "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00 (external)",
+          "?snap@RunDragger@RBX@@QAE_NABVRay@G3D@@@Z": "0x66e3d0 (external)",
+          "?finishDragging@MegaDragger@RBX@@QAEXXZ": "0x60e780 (external (evidence name))",
+          "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0 (external)",
+          "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0 (helper / COMDAT body, compared exact at the bound address)",
+          "?clearSelection@Selection@RBX@@QAEXXZ": "0x5675d0 (external (evidence name))",
+          "?addToSelection@Selection@RBX@@QAEXPAVInstance@2@@Z": "0x567420 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?onMouseUp@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z"
+        ]
+      }
+    ],
+    "era": [
+      {
+        "address": "00666240",
+        "symbol": "?reset@floatERA@RBX@@QAEXXZ",
+        "size": 6,
+        "target_size": 6,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00666250",
+        "symbol": "?pushAndGetAverage@floatERA@RBX@@QAEMM@Z",
+        "size": 18,
+        "target_size": 18,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00666270",
+        "symbol": "?getAverage@floatERA@RBX@@QAEMXZ",
+        "size": 4,
+        "target_size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00666280",
+        "symbol": "?reset@Vector3ERA@RBX@@QAEXXZ",
+        "size": 12,
+        "target_size": 12,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00666290",
+        "symbol": "?pushAndGetAverage@Vector3ERA@RBX@@QAE?AVVector3@G3D@@V34@@Z",
+        "size": 62,
+        "target_size": 62,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006662d0",
+        "symbol": "?getAverage@Vector3ERA@RBX@@QAE?AVVector3@G3D@@XZ",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "group": [
+      {
+        "address": "0066a570",
+        "symbol": "?onMouseDown@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0066a5b0",
+        "symbol": "?doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x97da04 (local static)",
+          "?sGroupDragTool@RBX@@3PADA": "0x962c54 (own data 'GroupDragTool')",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?name@?1??doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x97da00 (local static)"
+        },
+        "local_eh": [
+          "__ehhandler$?doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@2@XZ"
+        ]
+      },
+      {
+        "address": "0066a620",
+        "symbol": "?callDoDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "?doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@2@XZ": "0x66a5b0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066a630",
+        "symbol": "??0GroupDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVWorkspace@1@@Z",
+        "size": 199,
+        "target_size": 199,
+        "exact": true,
+        "verified_targets": {
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_7GroupDragTool@RBX@@6BINamed@1@@": "0x84d02c (vtable RTTI .?AVGroupDragTool@RBX@@ offset 0x0)",
+          "??_7GroupDragTool@RBX@@6BIRenderable@1@@": "0x84d014 (vtable RTTI .?AVGroupDragTool@RBX@@ offset 0x4)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e630 (external (evidence name))",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0GroupDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVWorkspace@1@@Z"
+        ]
+      },
+      {
+        "address": "0066a700",
+        "symbol": "?getCursorName@GroupDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BB@HJOIIPFA@GrabRotateCursor?$AA@": "0x84cbf4 (string 'GrabRotateCursor')",
+          "??_C@_0L@BLHFJFLM@DragCursor?$AA@": "0x843a60 (string 'DragCursor')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066a730",
+        "symbol": "?onMouseMove@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "size": 143,
+        "target_size": 143,
+        "exact": true,
+        "verified_targets": {
+          "__real@40800000": "0x826e6c (constant 40800000)",
+          "?startDragging@MegaDragger@RBX@@QAEXXZ": "0x60de00 (external (evidence name))",
+          "?alignAndCleanParts@MegaDragger@RBX@@QAEXXZ": "0x60df80 (external (evidence name))",
+          "?hitObjectOrPlane@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABVUIEvent@2@@Z": "0x60dec0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066a7c0",
+        "symbol": "?onMouseIdle@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "size": 360,
+        "target_size": 360,
+        "exact": true,
+        "verified_targets": {
+          "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dde0 (external (evidence name))",
+          "?zero@Vector3@G3D@@SAABV12@XZ": "0x4782a0 (helper / COMDAT body, compared exact at the bound address)",
+          "?unitY@Vector3@G3D@@SAABV12@XZ": "0x5020d0 (helper / COMDAT body, compared exact at the bound address)",
+          "??0Plane@G3D@@QAE@ABVVector3@1@0@Z": "0x5259e0 (external)",
+          "?getSearchRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d40 (external)",
+          "?intersectRayPlane@Math@RBX@@SA_NABVRay@G3D@@ABVPlane@4@AAVVector3@4@@Z": "0x5df380 (external)",
+          "?hitObjectOrPlane@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABVUIEvent@2@@Z": "0x60dec0 (external (evidence name))",
+          "?continueDragging@MegaDragger@RBX@@QAEXXZ": "0x60dd60 (external)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "?safeMoveYDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x60e100 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?onMouseIdle@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z"
+        ]
+      },
+      {
+        "address": "0066a930",
+        "symbol": "?onMouseUp@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 74,
+        "target_size": 74,
+        "exact": true,
+        "verified_targets": {
+          "?finishDragging@MegaDragger@RBX@@QAEXXZ": "0x60e780 (external (evidence name))",
+          "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066a980",
+        "symbol": "?onKeyDown@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 79,
+        "target_size": 79,
+        "exact": true,
+        "verified_targets": {
+          "?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x5de890 (external (evidence name))",
+          "?safeRotate@MegaDragger@RBX@@QAEXABVMatrix3@G3D@@@Z": "0x60e310 (external)",
+          "?matrixRotateY@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x5de800 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066a9d0",
+        "symbol": "??1GroupDragTool@RBX@@UAE@XZ",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {
+          "??_7GroupDragTool@RBX@@6BINamed@1@@": "0x84d02c (vtable RTTI .?AVGroupDragTool@RBX@@ offset 0x0)",
+          "??_7GroupDragTool@RBX@@6BIRenderable@1@@": "0x84d014 (vtable RTTI .?AVGroupDragTool@RBX@@ offset 0x4)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1MouseCommand@RBX@@UAE@XZ": "0x615780 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1GroupDragTool@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0066aa40",
+        "symbol": "??_GGroupDragTool@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1GroupDragTool@RBX@@UAE@XZ": "0x66a9d0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0066aa60",
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sGroupDragTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1??get@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x97da08 (local static)",
+          "?callDoDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAXXZ": "0x66a620 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "?doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@2@XZ": "0x66a5b0 (own row)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "pending_build_only": [
+    {
+      "address": "00665aa0",
+      "symbol": "?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ",
+      "size": 42,
+      "target_size": 42,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT660_PENDING with the generated tool/MegaDragger.h copy that adds the inline getMousePart; proposal); not counted"
+    },
+    {
+      "address": "00665b00",
+      "symbol": "?onMouseDelta@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+      "size": 87,
+      "target_size": 87,
+      "exact": false,
+      "verified_targets": {
+        "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dde0 (external (evidence name))",
+        "?startDragging@MegaDragger@RBX@@QAEXXZ": "0x60de00 (external (evidence name))",
+        "?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ": "0x665aa0 (own row)",
+        "?init@RunDragger@RBX@@QAEXPAVWorkspace@2@V?$weak_ptr@VPartInstance@RBX@@@boost@@ABVVector3@G3D@@@Z": "0x66d4f0 (external)"
+      },
+      "local_eh": [],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT660_PENDING with the generated tool/MegaDragger.h copy that adds the inline getMousePart; proposal); not counted"
+    },
+    {
+      "address": "00665ce0",
+      "symbol": "?onKeyDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "size": 314,
+      "target_size": 314,
+      "exact": false,
+      "verified_targets": {
+        "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dde0 (external (evidence name))",
+        "?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ": "0x665aa0 (own row)",
+        "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))",
+        "?getCameraCoordinateFrame@Camera@RBX@@QBE?AVCoordinateFrame@G3D@@XZ": "0x45af00 (helper / COMDAT body, compared exact at the bound address)",
+        "?tiltPart@RunDragger@RBX@@SAXPAVPartInstance@2@ABVCoordinateFrame@G3D@@@Z": "0x66ced0 (external (evidence name))",
+        "??1?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@XZ": "0x600660 (helper / COMDAT body, compared exact at the bound address)",
+        "?rotatePart@RunDragger@RBX@@SAXPAVPartInstance@2@@Z": "0x66c5a0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?onKeyDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z"
+      ],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT660_PENDING with the generated tool/MegaDragger.h copy that adds the inline getMousePart; proposal); not counted"
+    },
+    {
+      "address": "00665e20",
+      "symbol": "?render3dAdorn@PartDragTool@RBX@@UAEXPAVAdorn@2@@Z",
+      "size": 219,
+      "target_size": 219,
+      "exact": false,
+      "verified_targets": {
+        "?mousePartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dde0 (external (evidence name))",
+        "?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ": "0x665aa0 (own row)",
+        "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?render3dAdorn@PartDragTool@RBX@@UAEXPAVAdorn@2@@Z"
+      ],
+      "pending_exact": true,
+      "reason": "pending-build-only (NATIVE_APPUNIT660_PENDING with the generated tool/MegaDragger.h copy that adds the inline getMousePart; proposal); not counted"
+    }
+  ],
+  "helper_bodies_not_counted": [
+    {
+      "address": "00600660",
+      "symbol": "??1?$shared_ptr@VPartInstance@RBX@@@boost@@QAE@XZ",
+      "unit": "part_pending",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "00590550",
+      "symbol": "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "unit": "drag",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "00581cc0",
+      "symbol": "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z",
+      "unit": "part",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "0045af00",
+      "symbol": "?getCameraCoordinateFrame@Camera@RBX@@QBE?AVCoordinateFrame@G3D@@XZ",
+      "unit": "part_pending",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAEXABQAVPVInstance@RBX@@@Z",
+      "unit": "part",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "005020d0",
+      "symbol": "?unitY@Vector3@G3D@@SAABV12@XZ",
+      "unit": "group",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    },
+    {
+      "address": "004782a0",
+      "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+      "unit": "group",
+      "reason": "compiler helper / COMDAT body bound at this address and compared exact; not counted"
+    }
+  ],
+  "own_data": {
+    "?sPartDragTool@RBX@@3PADA": "0096265c",
+    "?sGroupDragTool@RBX@@3PADA": "00962c54"
+  },
+  "local_statics": {
+    "??_B?1??doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0097d960",
+    "?name@?1??doDeclare@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0097d95c",
+    "?flag@?1??get@?$NativeToolName@VPartDragTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0097d964",
+    "??_B?1??doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0097da04",
+    "?name@?1??doDeclare@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0097da00",
+    "?flag@?1??get@?$NativeToolName@VGroupDragTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0097da08"
+  },
+  "vtables": {
+    "PartDragTool 0084cbb4": [
+      {
+        "slot": 0,
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sPartDragTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "original": "00665f00",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?onMouseDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "006659a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?onMouseIdle@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "original": "00665b60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?onMouseHover@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onKeyDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "00665ce0",
+        "ok": true,
+        "how": "bound (pending-build-only row)"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "original": "005f2310",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onMouseMove@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "original": "006659e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onMouseDelta@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "original": "00665b00",
+        "ok": true,
+        "how": "bound (pending-build-only row)"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onMouseUp@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "00666100",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?capture@MouseCommand@RBX@@MAEXXZ",
+        "original": "00615820",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 10,
+        "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+        "original": "005a0150",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 11,
+        "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+        "original": "005a04a0",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 12,
+        "symbol": "??_EPartDragTool@RBX@@UAEPAXI@Z",
+        "original": "00665cc0",
+        "ok": true,
+        "how": "bound (??_G row)"
+      },
+      {
+        "slot": 13,
+        "symbol": "?isSticky@MouseCommand@RBX@@UBEPAV12@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 14,
+        "symbol": "?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ",
+        "original": "00615a50",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getCursorName@PartDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "original": "00665c90",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "PartDragTool (IRenderable) 0084cb9c": [
+      {
+        "slot": 0,
+        "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 1,
+        "symbol": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 2,
+        "symbol": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 3,
+        "symbol": "?render3dAdorn@PartDragTool@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "00665e20",
+        "ok": true,
+        "how": "bound (pending-build-only row)"
+      },
+      {
+        "slot": 4,
+        "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "original": "00458e90",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      }
+    ],
+    "GroupDragTool 0084d02c": [
+      {
+        "slot": 0,
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sGroupDragTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "original": "0066aa60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?onMouseDown@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "0066a570",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?onMouseIdle@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "original": "0066a7c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?onMouseHover@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onKeyDown@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "0066a980",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "original": "005f2310",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onMouseMove@GroupDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+        "original": "0066a730",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onMouseUp@GroupDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "0066a930",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?capture@MouseCommand@RBX@@MAEXXZ",
+        "original": "00615820",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 10,
+        "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+        "original": "005a0150",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 11,
+        "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+        "original": "005a04a0",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 12,
+        "symbol": "??_EGroupDragTool@RBX@@UAEPAXI@Z",
+        "original": "0066aa40",
+        "ok": true,
+        "how": "bound (??_G row)"
+      },
+      {
+        "slot": 13,
+        "symbol": "?isSticky@MouseCommand@RBX@@UBEPAV12@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 14,
+        "symbol": "?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ",
+        "original": "00615a50",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getCursorName@GroupDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "original": "0066a700",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "GroupDragTool (IRenderable) 0084d014": [
+      {
+        "slot": 0,
+        "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 1,
+        "symbol": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 2,
+        "symbol": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 3,
+        "symbol": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 4,
+        "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "original": "00458e90",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00660180",
+    "006601b0",
+    "00660550",
+    "006659a0",
+    "006659e0",
+    "00665a30",
+    "00665ad0",
+    "00665af0",
+    "00665b60",
+    "00665bd0",
+    "00665c90",
+    "00665cc0",
+    "00665f00",
+    "00665f20",
+    "00666100",
+    "00666240",
+    "00666250",
+    "00666270",
+    "00666280",
+    "00666290",
+    "006662d0",
+    "0066a570",
+    "0066a5b0",
+    "0066a620",
+    "0066a630",
+    "0066a700",
+    "0066a730",
+    "0066a7c0",
+    "0066a930",
+    "0066a980",
+    "0066a9d0",
+    "0066aa40",
+    "0066aa60"
+  ],
+  "rejected": {
+    "AppUnit660_2008ERA.cpp without /fp:fast": "floatERA::pushAndGetAverage 26/18 B, Vector3ERA::pushAndGetAverage 84/62 B (the other four ERA rows are exact either way)",
+    "AppUnit660_2008Units.cpp without /fp:fast": "kmsAccelerationToRbx 37/37 B (x87 operand order), kmsForceToRbx 19/11 B",
+    "PartDragTool bodies calling getMousePart against the committed tool/MegaDragger.h": "C2039 (no getMousePart member); guarded as pending"
+  },
+  "proposals": {
+    "tool/MegaDragger.h (MegaDragger owner)": "Add the inline `boost::weak_ptr<PartInstance> getMousePart() { return mousePart; }` (the donor also has RBXASSERT(!mousePart.expired()), compiled out here). Evidence: ?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ 00665aa0 (42 B: copies px/pn from +0/+4 and increments the weak count at pn+8), called out of line by PartDragTool::onMouseDelta 00665b33, onKeyDown 00665d33 / 00665d96 and render3dAdorn 00665e53. With it, those four rows are exact (verified in the pending build against the generated copy out/app-unit660-2008/pending/tool/MegaDragger.h) and can be counted here.",
+    "v8world/Joints2008.h (engine joints owner)": "Declare `static SnapJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);` in SnapJoint (00669d30, evidence name ?canBuildJoint@SnapJoint@RBX@@SAPAV12@PAVPrimitive@2@0W4NormalId@2@1@Z) and the WeldJoint one (00669e20), plus the inline surface test both expand: the surface types of p0 / p1 at Primitive +0xb8 + 4 * face compared against 3 / 4 (STUDS / INLET pairs) before Joint::canBuildJointTight 00645560, then faceIdToCoords 00645980 and new(0x88) Joint(p0, p1, c0, c1) 006455c0 with the vtable store."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

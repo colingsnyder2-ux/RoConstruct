@@ -1,0 +1,158 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DSystem.cpp",
+  "source_sha256": "979ecd531cb514460905d8d96571214c7dcaf2a4fa384892364625ed984f29a3",
+  "checks": [
+    {
+      "address": "00508110",
+      "symbol": "?init@System@G3D@@SAXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 74.710983,
+        "target_bytes": 692,
+        "candidate_bytes": 692,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 436,
+        "unmasked_differences": 0,
+        "masked_bytes": 256,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 61,
+        "candidate_relocations": 64,
+        "missing_relocations": [],
+        "extra_relocations": [
+          541,
+          654,
+          659
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8550700,
+          12
+        ],
+        [
+          9708364,
+          4
+        ],
+        [
+          9708368,
+          1024
+        ],
+        [
+          9708372,
+          1020
+        ],
+        [
+          9708376,
+          1016
+        ],
+        [
+          9708380,
+          1012
+        ],
+        [
+          8550672,
+          25
+        ],
+        [
+          8550656,
+          16
+        ],
+        [
+          8550660,
+          12
+        ],
+        [
+          8550664,
+          8
+        ],
+        [
+          8550668,
+          4
+        ],
+        [
+          8550640,
+          16
+        ],
+        [
+          8550644,
+          12
+        ],
+        [
+          8550648,
+          8
+        ],
+        [
+          8550652,
+          4
+        ],
+        [
+          8550624,
+          14
+        ],
+        [
+          8550628,
+          10
+        ],
+        [
+          8550632,
+          6
+        ],
+        [
+          8550636,
+          2
+        ],
+        [
+          8549352,
+          6
+        ],
+        [
+          8550616,
+          5
+        ],
+        [
+          8550608,
+          6
+        ],
+        [
+          8550596,
+          9
+        ],
+        [
+          8507224,
+          8
+        ],
+        [
+          8458816,
+          8
+        ],
+        [
+          8548304,
+          8
+        ],
+        [
+          8550568,
+          25
+        ],
+        [
+          8550528,
+          38
+        ],
+        [
+          8550520,
+          8
+        ],
+        [
+          8550524,
+          4
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-053459-3e174060\\analysis-b9ee245b.json",
+      "object_sha256": "8fde9ab0dcb571ee782d298fcb534454423b2ef8da3c86eac8842c551afa4637"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

@@ -1,0 +1,45 @@
+{
+  "receipt": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\shared-layouts\\g3d-plane-through-points-exact-20261114.json",
+  "receipt_sha256": "b7e9ee76f3f08ea90ed0b9394f0988e53104100e0411a1c9eca7e33539035fae",
+  "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DPlane.cpp",
+  "source_sha256": "2d7758f3675b1cb60e8479fcb841670311ff086ada21495125106861151b3f26",
+  "object_sha256": "9f54eb2401384bc80778aaa7ea7eefb61cd176630c3de9220ea868173d3c2d1c",
+  "address": "00525940",
+  "symbol": "??0Plane@G3D@@QAE@ABVVector3@1@00@Z",
+  "exact": true,
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 98.089172,
+    "target_bytes": 157,
+    "candidate_bytes": 157,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 153,
+    "unmasked_differences": 0,
+    "masked_bytes": 4,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 1,
+    "candidate_relocations": 1,
+    "missing_relocations": [],
+    "extra_relocations": [],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "verified_calls": [],
+  "verified_references": [
+    {
+      "offset": 14,
+      "symbol": "??_7Plane@G3D@@6B@",
+      "target": "008282bc",
+      "status": "verified_reviewed_reference"
+    }
+  ],
+  "fresh_compile": true,
+  "compile_seconds": 0.407,
+  "changed_inputs": null,
+  "identity_evidence": {
+    "original_caller": "0064a200 calls 00525940 with three vertex pointers at 0064a23d, then calls Plane::getEquation on constructed plane at 0064a26a",
+    "original_body": "00525940 ret 0xC; subtracts point0 from point1/point2, computes normalized cross product, dot-products point0, writes normal/distance fields",
+    "class_identity": "constructor writes vftable pointer 008282bc; source Plane::Plane(Vector3,Vector3,Vector3) matches body and caller usage"
+  }
+}

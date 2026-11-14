@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+      "checks": [
+        {
+          "addr": "005183a0",
+          "symbol": "?hashCode@Vector3@G3D@@QBEIXZ",
+          "calls": []
+        },
+        {
+          "addr": "00518470",
+          "symbol": "?unitize@Vector3@G3D@@QAEMM@Z",
+          "calls": []
+        },
+        {
+          "addr": "005184c0",
+          "symbol": "?generateOrthonormalBasis@Vector3@G3D@@SAXAAV12@00_N@Z",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

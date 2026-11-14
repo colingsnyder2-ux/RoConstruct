@@ -1,0 +1,6 @@
+{
+  "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\rbx-pipeline-1114\\Entry.cpp": [
+    true,
+    "Entry.cpp\nUnknown compiler version - please run the configure tests and report the results\nC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include\\G3D/platform.h(230) : warning C4005: 'NOMINMAX' : macro redefinition\n        C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\rbx-pipeline-1114\\Entry.cpp(4) : see previous definition of 'NOMINMAX'"
+  ]
+}

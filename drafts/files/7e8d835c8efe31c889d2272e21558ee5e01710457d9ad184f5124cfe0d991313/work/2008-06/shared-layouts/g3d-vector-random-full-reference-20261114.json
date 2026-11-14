@@ -1,0 +1,118 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+  "source_sha256": "d13d89f7fe7d43ef966b5c67604115864582a36019a1f2d35ece1fc181e8e5ba",
+  "object_sha256": "898d98db393e0da230199e153206747393badfd3d12a150af355a521a20893c7",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-112833-bcfa9d34\\analysis-437f4728.json",
+  "checks": [
+    {
+      "address": "00518650",
+      "symbol": "?random@Vector3@G3D@@SA?AV12@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.869565,
+        "target_bytes": 230,
+        "candidate_bytes": 230,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 202,
+        "unmasked_differences": 0,
+        "masked_bytes": 28,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 7,
+        "candidate_relocations": 7,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8554720,
+          4
+        ],
+        [
+          8549524,
+          4
+        ],
+        [
+          8554720,
+          4
+        ],
+        [
+          8549524,
+          4
+        ],
+        [
+          8554720,
+          4
+        ],
+        [
+          8547952,
+          4
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 40,
+          "target": "008027b0",
+          "symbol": "__imp__rand",
+          "kind": "import_reg",
+          "status": "verified_import"
+        },
+        {
+          "offset": 66,
+          "target": "008027b0",
+          "symbol": "__imp__rand",
+          "kind": "import_reg",
+          "status": "verified_import"
+        },
+        {
+          "offset": 92,
+          "target": "008027b0",
+          "symbol": "__imp__rand",
+          "kind": "import_reg",
+          "status": "verified_import"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 15,
+          "symbol": "__imp__rand",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 52,
+          "symbol": "__real@38800100",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 58,
+          "symbol": "__real@3f800000",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 78,
+          "symbol": "__real@38800100",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 84,
+          "symbol": "__real@3f800000",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 104,
+          "symbol": "__real@38800100",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 175,
+          "symbol": "__real@358637bd",
+          "status": "verified_readonly_data"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

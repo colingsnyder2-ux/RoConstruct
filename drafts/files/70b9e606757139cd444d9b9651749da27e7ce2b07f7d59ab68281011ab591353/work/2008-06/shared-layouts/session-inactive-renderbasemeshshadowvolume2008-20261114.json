@@ -1,0 +1,71 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshShadowVolume2008.cpp",
+  "source_sha256": "6709d8157009c2d1ad1b3f0f9778d2bac9e1e6ccc19f42acd0c06dbc05cb38e9",
+  "checks": [
+    {
+      "address": "00549050",
+      "symbol": "?computeDirectionalShadowVolume@Mesh@RenderBase@RBX@@QBEXABVCoordinateFrame@G3D@@ABVVector3@5@AAV?$Array@I@5@AAV?$Array@VVector3@G3D@@@5@_N@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 83.666667,
+        "target_bytes": 900,
+        "candidate_bytes": 900,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 716,
+        "unmasked_differences": 0,
+        "masked_bytes": 184,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 14,
+        "candidate_relocations": 46,
+        "missing_relocations": [],
+        "extra_relocations": [
+          58,
+          99,
+          109,
+          135,
+          146,
+          178,
+          205,
+          212,
+          261,
+          311,
+          334,
+          353,
+          400,
+          418,
+          441,
+          465,
+          489,
+          511,
+          531,
+          551,
+          560,
+          597,
+          624,
+          652,
+          674,
+          715,
+          739,
+          758,
+          774,
+          782,
+          801,
+          874
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8488872,
+          8
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-002806-a837c0db\\results.json",
+      "object_sha256": "f94e559cd00dae747d3bc90f231257d8c7f20dac8cebd5c7387e589fe91e1410"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

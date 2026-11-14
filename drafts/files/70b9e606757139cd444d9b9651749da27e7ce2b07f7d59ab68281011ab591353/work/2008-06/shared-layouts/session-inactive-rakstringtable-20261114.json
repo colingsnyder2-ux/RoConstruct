@@ -1,0 +1,36 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RakStringTable.cpp",
+  "source_sha256": "30bacf1bd3b2ede2fa71ccccbd5b0db87aff22c3deb07385c985a9f10899bf8f",
+  "checks": [
+    {
+      "address": "004d42a0",
+      "symbol": "?RemoveReference@StringTable@@SAXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 70.175439,
+        "target_bytes": 57,
+        "candidate_bytes": 57,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 33,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 4,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          32,
+          38
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-022123-0f047a18\\results.json",
+      "object_sha256": "041e9789f2a35399359e53b599477bc33bb85f99c8249e7615f9d6e0693df203"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

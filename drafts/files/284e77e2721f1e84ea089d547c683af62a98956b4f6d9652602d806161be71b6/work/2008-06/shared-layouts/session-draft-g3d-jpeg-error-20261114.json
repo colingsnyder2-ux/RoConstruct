@@ -1,0 +1,36 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage_jpeg.cpp",
+  "source_sha256": "fb83ae2a181c6db2a6b3338b732a36cde02f395a11af1966d8c236838e14b312",
+  "object_sha256": "10fe7aff60db14f89de349aa0fe8c47dc583df22288e96d6f8945e61b5e4802a",
+  "run": "work\\2008-06\\native-check-runs\\20261114-114125-ecfe1006\\results.json",
+  "checks": [
+    {
+      "address": "0050b530",
+      "symbol": "?jpegErrorExit@G3D@@YAXPAUjpeg_common_struct@@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 84.615385,
+        "target_bytes": 156,
+        "candidate_bytes": 156,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 124,
+        "unmasked_differences": 0,
+        "masked_bytes": 32,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 6,
+        "candidate_relocations": 8,
+        "missing_relocations": [],
+        "extra_relocations": [
+          45,
+          151
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "identity_evidence": "Original decodeJPEG at 0050cb85 stores 0050b530 into JPEG error_exit, matching donor registration.",
+      "scope": "Draft: body and data match; two JPEG error-manager callback targets, provider ABI and runtime remain unverified."
+    }
+  ]
+}

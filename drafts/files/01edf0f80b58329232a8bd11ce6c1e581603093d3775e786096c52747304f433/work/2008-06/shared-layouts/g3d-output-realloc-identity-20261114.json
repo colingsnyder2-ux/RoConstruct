@@ -1,0 +1,14 @@
+{
+  "source": "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp",
+  "target": "00519830",
+  "callees": {
+    "00508bb0": "G3D::System::realloc",
+    "005196b0": "G3D::BinaryOutput::reserveBytesWhenOutOfMemory"
+  },
+  "evidence": [
+    "00508bb0 matches the 71-byte System::realloc donor object after relocation normalization and performs lazy buffer-pool initialization then passes pointer and size to pool reallocation.",
+    "005196b0 checks the same <memory> filename and buffer capacity and handles allocation failure by throwing or flushing; it uses the same BinaryOutput fields. The donor exception type differs from the original, so this call establishes function identity only, not an exact match for that callee.",
+    "00519830 bytes and local read-only constants match; imports and both direct call destinations were checked.",
+    "This receipt establishes inactive code and reference evidence, not linked provider, ABI, runtime or server credit."
+  ]
+}

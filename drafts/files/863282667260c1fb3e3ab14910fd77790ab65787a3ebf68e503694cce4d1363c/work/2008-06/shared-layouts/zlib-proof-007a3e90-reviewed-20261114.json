@@ -1,0 +1,14 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibCrc32.cpp",
+      "checks": [
+        {
+          "addr": "007a3e90",
+          "symbol": "_crc32_little",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

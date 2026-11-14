@@ -1,0 +1,19 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Zlibdeflate.cpp",
+      "checks": [
+        {
+          "addr": "0079fbc0",
+          "symbol": "_longest_match",
+          "calls": []
+        },
+        {
+          "addr": "0079fd20",
+          "symbol": "_longest_match_fast",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

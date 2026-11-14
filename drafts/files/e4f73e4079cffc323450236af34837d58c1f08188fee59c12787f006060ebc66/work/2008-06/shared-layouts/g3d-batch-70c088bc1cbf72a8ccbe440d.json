@@ -1,0 +1,122 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DTextInput.cpp",
+  "source_sha256": "ad7f6693e1e46396536a19e42d762de76b9e74d93e0b35f0eb58f1f3d93921db",
+  "object_sha256": "3b2c65acc1c1b5843e414859a7ddfa036c603585ee87f9b60116fca6549ea8bb",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-110827-399d1ce8\\analysis-56b4f087.json",
+  "checks": [
+    {
+      "address": "00518110",
+      "symbol": "?readSymbol@TextInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.850467,
+        "target_bytes": 107,
+        "candidate_bytes": 107,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 91,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          39
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 38,
+          "target": "005180b0",
+          "symbol": "?readSymbolToken@TextInput@G3D@@QAE?AVToken@2@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 58,
+          "target": "0080245c",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 81,
+          "target": "00802468",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ]
+    },
+    {
+      "address": "005180b0",
+      "symbol": "?readSymbolToken@TextInput@G3D@@QAE?AVToken@2@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 80.21978,
+        "target_bytes": 91,
+        "candidate_bytes": 91,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 71,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          21,
+          45,
+          72,
+          87
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          9335472,
+          16
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 20,
+          "target": "00517b30",
+          "symbol": "?read@TextInput@G3D@@QAE?AVToken@2@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 44,
+          "target": "00517e70",
+          "symbol": "?push_front@?$deque@VToken@G3D@@V?$allocator@VToken@G3D@@@std@@@std@@QAEXABVToken@G3D@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 71,
+          "target": "00516730",
+          "symbol": "??0WrongTokenType@TextInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHW4Type@Token@2@1@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 86,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

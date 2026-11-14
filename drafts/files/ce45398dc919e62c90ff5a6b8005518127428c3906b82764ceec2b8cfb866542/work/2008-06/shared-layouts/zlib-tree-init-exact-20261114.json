@@ -1,0 +1,77 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibWtrees.cpp",
+  "source_sha256": "b56d5d7c8ae7c201c017d42a7bf1973d4c9512f1905e8c1692e7289ce70f75a8",
+  "object_sha256": "78ea19883dbfc72f6ecaee818691a5a2b8764774e870ded77d59234dc75b4dd6",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-124645-4fcda1ae\\analysis-ce254159.json",
+  "checks": [
+    {
+      "address": "007a53b0",
+      "symbol": "__tr_init",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.0,
+        "target_bytes": 100,
+        "candidate_bytes": 100,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 84,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          96
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          9878968,
+          20
+        ],
+        [
+          9878988,
+          20
+        ],
+        [
+          9879008,
+          20
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 95,
+          "target": "007a4190",
+          "symbol": "_init_block",
+          "kind": "jump",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 42,
+          "symbol": "_static_l_desc",
+          "target": "0096bdb8",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 52,
+          "symbol": "_static_d_desc",
+          "target": "0096bdcc",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 68,
+          "symbol": "_static_bl_desc",
+          "target": "0096bde0",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

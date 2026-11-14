@@ -1,0 +1,22 @@
+{
+  "scope": "Legacy exact receipts with unresolved non-call relocations; require a newer reference-checked receipt before counting inactive exact.",
+  "addresses": [
+    "00473350",
+    "0050ab80",
+    "0050bb30",
+    "0050c040",
+    "0050cdd0",
+    "0050d800",
+    "0050ddc0",
+    "0050ec40",
+    "0050edb0",
+    "0050f4c0",
+    "0050fef0",
+    "005102d0",
+    "00510490",
+    "005157d0",
+    "00515a00",
+    "005180b0",
+    "00518110"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LogManagerCOM.cpp",
+  "source_sha256": "b2826af25ed958b367238721ed6b25e5aabc0a2feceaef4a7d176ca10fa93917",
+  "object_sha256": "313428e99dbd8e93409b758e88c7069e277b229693664fd9a8e3780eb9aeb659",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-083443-a9eba9ea\\results.json",
+  "checks": [
+    {
+      "address": "00427d80",
+      "symbol": "?ReportEventA@LogManager@@SAXGJPBDH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 84.951456,
+        "target_bytes": 206,
+        "candidate_bytes": 206,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 166,
+        "unmasked_differences": 0,
+        "masked_bytes": 40,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 7,
+        "candidate_relocations": 10,
+        "missing_relocations": [],
+        "extra_relocations": [
+          33,
+          84,
+          167
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8455044,
+          32
+        ],
+        [
+          8455088,
+          24
+        ]
+      ]
+    },
+    {
+      "address": "00429330",
+      "symbol": "?ReportCOMError@LogManager@@SAJABU_GUID@@PBDJ@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 74.418605,
+        "target_bytes": 43,
+        "candidate_bytes": 43,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 31,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          9,
+          37
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "00429360",
+      "symbol": "?ReportExceptionAsCOMError@LogManager@@SAJABU_GUID@@ABVexception@std@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 77.55102,
+        "target_bytes": 49,
+        "candidate_bytes": 49,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 37,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          18,
+          43
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    }
+  ],
+  "scope": "Local masked byte/data checks; call bindings, provider selection, ABI and runtime remain unverified."
+}

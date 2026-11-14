@@ -1,0 +1,34 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DBinaryOutput.cpp",
+      "checks": [
+        {
+          "addr": "00519830",
+          "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+          "calls": [
+            {
+              "offset": 66,
+              "target": "0080236c",
+              "symbol": "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z"
+            },
+            {
+              "offset": 92,
+              "target": "00508bb0",
+              "symbol": "?realloc@System@G3D@@SAPAXPAXI@Z",
+              "kind": "direct"
+            },
+            {
+              "offset": 139,
+              "target": "005196b0",
+              "symbol": "?reserveBytesWhenOutOfMemory@BinaryOutput@G3D@@AAEXI@Z",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

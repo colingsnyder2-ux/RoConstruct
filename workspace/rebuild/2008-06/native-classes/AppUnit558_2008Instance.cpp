@@ -167,6 +167,24 @@ XmlElement* Instance::write()
     return new XmlElement(tag_External, InstanceHandle(this));
 }
 
+template<>
+inline Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::ConstIterator&
+Reflection::MemberDescriptorContainer<Reflection::PropertyDescriptor>::ConstIterator::operator++()
+{
+    ++iter;
+    return *this;
+}
+
+// 00558b80
+void Instance::writeProperties(XmlElement* container) const
+{
+    for (Reflection::ConstPropertyIterator iter = properties_begin(); iter != properties_end(); ++iter) {
+        XmlElement* child = iter.getDescriptor().write(this, false);
+        if (child)
+            container->addChild(child);
+    }
+}
+
 // 0055b4a0; std::for_each<bind_t<mf0<void, Instance> > > 00558fa0
 void Instance::remove()
 {

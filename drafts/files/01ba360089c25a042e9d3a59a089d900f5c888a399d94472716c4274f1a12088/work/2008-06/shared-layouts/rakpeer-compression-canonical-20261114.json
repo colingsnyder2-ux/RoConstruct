@@ -1,0 +1,77 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RakPeerCompression.cpp",
+  "source_sha256": "9d5aec62909f98ed32cb426872f3a5f3024c9d62b7ea484fc23625bb89590731",
+  "object_sha256": "b05de5670788e75e5302893d2fe067295753da3058a113a9311c915ebc5fdbcb",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-103603-c6955994\\analysis-2d17f48a.json",
+  "checks": [
+    {
+      "address": "004bbd90",
+      "symbol": "?GetCompressionRatio@RakPeer@@UBEMXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.473684,
+        "target_bytes": 57,
+        "candidate_bytes": 57,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 49,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8492920,
+          4
+        ],
+        [
+          8492920,
+          4
+        ]
+      ],
+      "verified_calls": []
+    },
+    {
+      "address": "004bbdd0",
+      "symbol": "?GetDecompressionRatio@RakPeer@@UBEMXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.473684,
+        "target_bytes": 57,
+        "candidate_bytes": 57,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 49,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8492920,
+          4
+        ],
+        [
+          8492920,
+          4
+        ]
+      ],
+      "verified_calls": []
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

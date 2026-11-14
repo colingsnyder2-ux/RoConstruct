@@ -80,3 +80,4 @@ template class std::_List_val<RBX::SpawnLocation *,std::allocator<RBX::SpawnLoca
 template class std::allocator<std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >::_Node *>;
 template class std::allocator<std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >::_Node>;
 template class std::list<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded

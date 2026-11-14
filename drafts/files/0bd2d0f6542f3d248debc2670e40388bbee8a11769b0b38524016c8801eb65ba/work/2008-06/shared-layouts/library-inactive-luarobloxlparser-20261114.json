@@ -1,0 +1,61 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LuaRobloxLparser.cpp",
+  "source_sha256": "e68d31a504175ee475596c7a1a158fcf9eaa3d1dd9463b1a3b1b8f6c93fffd3c",
+  "checks": [
+    {
+      "address": "006614f0",
+      "symbol": "?parlist@@YAXPAULexState@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 86.928105,
+        "target_bytes": 306,
+        "candidate_bytes": 306,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 250,
+        "unmasked_differences": 0,
+        "masked_bytes": 56,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 4,
+        "candidate_relocations": 14,
+        "missing_relocations": [],
+        "extra_relocations": [
+          74,
+          91,
+          146,
+          166,
+          181,
+          191,
+          225,
+          250,
+          267,
+          292
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8701396,
+          25
+        ],
+        [
+          8701284,
+          16
+        ],
+        [
+          8701176,
+          34
+        ],
+        [
+          8701136,
+          40
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-021918-2deb2902\\results.json",
+      "object_sha256": "395850823e14e853f64cd274811e3ff5264645a5682a6b108a696d32428b56e7"
+    }
+  ],
+  "scope": "Existing inactive native candidate source; local relocation-masked byte and checked-data match. Competing versions, reference identity, provider selection, ABI, runtime and server credit remain separate."
+}

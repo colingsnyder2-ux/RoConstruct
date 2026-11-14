@@ -1,0 +1,75 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibWtrees.cpp",
+      "checks": [
+        {
+          "addr": "007a5a00",
+          "symbol": "__tr_flush_block",
+          "calls": [
+            {
+              "offset": 43,
+              "symbol": "_set_data_type",
+              "target": "007a5150",
+              "kind": "direct"
+            },
+            {
+              "offset": 55,
+              "symbol": "_build_tree",
+              "target": "007a54a0",
+              "kind": "direct"
+            },
+            {
+              "offset": 67,
+              "symbol": "_build_tree",
+              "target": "007a54a0",
+              "kind": "direct"
+            },
+            {
+              "offset": 77,
+              "symbol": "_build_bl_tree",
+              "target": "007a56a0",
+              "kind": "direct"
+            },
+            {
+              "offset": 144,
+              "symbol": "__tr_stored_block",
+              "target": "007a5770",
+              "kind": "direct"
+            },
+            {
+              "offset": 318,
+              "symbol": "_send_all_trees",
+              "target": "007a4af0",
+              "kind": "direct"
+            },
+            {
+              "offset": 339,
+              "symbol": "_compress_block",
+              "target": "007a4d50",
+              "kind": "direct"
+            },
+            {
+              "offset": 480,
+              "symbol": "_compress_block",
+              "target": "007a4d50",
+              "kind": "direct"
+            },
+            {
+              "offset": 490,
+              "symbol": "_init_block",
+              "target": "007a4190",
+              "kind": "direct"
+            },
+            {
+              "offset": 507,
+              "symbol": "_bi_windup",
+              "target": "007a52c0",
+              "kind": "jump"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

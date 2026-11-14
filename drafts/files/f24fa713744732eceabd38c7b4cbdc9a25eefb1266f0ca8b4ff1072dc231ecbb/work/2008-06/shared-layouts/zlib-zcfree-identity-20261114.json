@@ -1,0 +1,8 @@
+{
+  "method": "00530770 zcfree",
+  "evidence": [
+    "Original zlib stream initialization functions at 007a7c40 and 007a81a0 both install 00530770 in the stream zfree field at offset 0x24.",
+    "Original 00530770 passes its second argument to MSVCR90.dll!free through import slot 008028c0; this matches ZlibWzutil.cpp zcfree.",
+    "Inactive local proof only; provider, ABI, runtime and server credit are separate."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibInftrees.cpp",
+  "source_sha256": "6b253da1ee35f0b227cbecaeeab8eeb4fe1d21f2182460940273ddb7052ff86a",
+  "checks": [
+    {
+      "address": "007a3730",
+      "symbol": "_inflate_table",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 98.256735,
+        "target_bytes": 1262,
+        "candidate_bytes": 1262,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1234,
+        "unmasked_differences": 0,
+        "masked_bytes": 28,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 5,
+        "candidate_relocations": 7,
+        "missing_relocations": [],
+        "extra_relocations": [
+          248,
+          1251
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8844416,
+          64
+        ],
+        [
+          8844480,
+          64
+        ],
+        [
+          8844288,
+          64
+        ],
+        [
+          8844352,
+          64
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-020507-d68068b2\\results.json",
+      "object_sha256": "bfb4516ad82307030f8322b02c83729133da545774d53b8bee59a10fe0f80122"
+    }
+  ],
+  "scope": "Existing inactive native candidate source; local relocation-masked byte and checked-data match. Competing versions, reference identity, provider selection, ABI, runtime and server credit remain separate."
+}

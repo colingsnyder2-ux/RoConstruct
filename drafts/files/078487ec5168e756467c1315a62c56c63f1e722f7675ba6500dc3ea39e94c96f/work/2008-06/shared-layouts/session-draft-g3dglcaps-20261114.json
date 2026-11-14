@@ -1,0 +1,39 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGLCaps.cpp",
+  "source_sha256": "ac134845508f9107a3e082efd083040895f41a032ff50bbf5b34c048e3aa6c43",
+  "object_sha256": "348ef4a1e447b1494067e2d840c7113aad04b66887cad370367b5dbcca3181dd",
+  "run": "work\\2008-06\\native-check-runs\\20261114-113514-a912b1f7\\analysis-f076bee3.json",
+  "checks": [
+    {
+      "address": "00471590",
+      "symbol": "?checkAllBugs@GLCaps@G3D@@CAXXZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 74.089069,
+        "target_bytes": 247,
+        "candidate_bytes": 247,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 167,
+        "unmasked_differences": 0,
+        "masked_bytes": 80,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 14,
+        "candidate_relocations": 20,
+        "missing_relocations": [],
+        "extra_relocations": [
+          79,
+          208,
+          213,
+          218,
+          223,
+          228
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "scope": "Draft source and normalized body match; function identity, indirect calls, ABI and runtime require review."
+    }
+  ]
+}

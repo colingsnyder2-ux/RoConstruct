@@ -1,0 +1,63 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ReliabilityLayerPacket2008.cpp",
+  "source_sha256": "6dea50dae080218a9285b658f611cdc873333a16b9bd227d395bec2be8ad06e8",
+  "checks": [
+    {
+      "address": "004cf900",
+      "symbol": "?Allocate@?$MemoryPool@UInternalPacket@@@DataStructures@@QAEPAUInternalPacket@@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 95.56962,
+        "target_bytes": 158,
+        "candidate_bytes": 158,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 150,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          137
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-025208-59ea8b8e\\results.json",
+      "object_sha256": "e546e3ced2db5ec5bd379c4e7e0ec101a66906ceb7c477c745f5bcc7c476b109"
+    },
+    {
+      "address": "004cfb10",
+      "symbol": "?Allocate@?$MemoryPool@U?$Page@IPAUInternalPacket@@$0CA@@DataStructures@@@DataStructures@@QAEPAU?$Page@IPAUInternalPacket@@$0CA@@2@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 95.56962,
+        "target_bytes": 158,
+        "candidate_bytes": 158,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 150,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          137
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-025208-59ea8b8e\\results.json",
+      "object_sha256": "e546e3ced2db5ec5bd379c4e7e0ec101a66906ceb7c477c745f5bcc7c476b109"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

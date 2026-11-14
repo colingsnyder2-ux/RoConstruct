@@ -1,0 +1,66 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/HuffmanEncodingTree.cpp",
+      "checks": [
+        {
+          "addr": "004cdfe0",
+          "symbol": "?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+          "references": [
+            {
+              "target": "007c9a88",
+              "addend": 0,
+              "symbol": "__ehhandler$?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+              "evidence": "native EH graph audit matches original handler and cleanup nodes for FreeMemory",
+              "offset": 3
+            }
+          ],
+          "calls": [
+            {
+              "target": "006a0920",
+              "kind": "direct",
+              "symbol": "??2@YAPAXI@Z",
+              "offset": 70
+            },
+            {
+              "target": "004cede0",
+              "kind": "direct",
+              "symbol": "?Push@?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+              "offset": 99
+            },
+            {
+              "target": "004cede0",
+              "kind": "direct",
+              "symbol": "?Push@?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+              "offset": 191
+            },
+            {
+              "target": "004cede0",
+              "kind": "direct",
+              "symbol": "?Push@?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAEXABQAUHuffmanEncodingTreeNode@@@Z",
+              "offset": 222
+            },
+            {
+              "target": "006a067a",
+              "kind": "direct",
+              "symbol": "??3@YAXPAX@Z",
+              "offset": 240
+            },
+            {
+              "target": "006a067a",
+              "kind": "direct",
+              "symbol": "??3@YAXPAX@Z",
+              "offset": 275
+            },
+            {
+              "target": "006a067a",
+              "kind": "direct",
+              "symbol": "??3@YAXPAX@Z",
+              "offset": 316
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

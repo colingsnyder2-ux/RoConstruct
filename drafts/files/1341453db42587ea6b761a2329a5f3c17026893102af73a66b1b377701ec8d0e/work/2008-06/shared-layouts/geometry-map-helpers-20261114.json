@@ -1,0 +1,151 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreGeometryContext2008.cpp",
+  "source_sha256": "a69a35f8fd88a10fbcd3fb9e72b208b803df18c07596ce3e79c9aa972bcfbb52",
+  "object_sha256": "9113e6b1fd16b378e54cd999607d4e0f32c209bfdfae2052324e12e41bccb3cc",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-085346-7f075be6\\results.json",
+  "checks": [
+    {
+      "address": "0054ac50",
+      "symbol": "??1?$map@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@@std@@QAE@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.473684,
+        "target_bytes": 19,
+        "candidate_bytes": 19,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 15,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          11
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "0054b4c0",
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@$0A@@std@@@std@@QAE@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 85.542169,
+        "target_bytes": 83,
+        "candidate_bytes": 83,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 67,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          49,
+          64
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "0054c650",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVRbxSubMesh@Ogre@@@1@ABV?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@1@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 87.155963,
+        "target_bytes": 109,
+        "candidate_bytes": 109,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 89,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          51,
+          63,
+          78
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "0054f9a0",
+      "symbol": "?clear@?$_Tree@V?$_Tmap_traits@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.818182,
+        "target_bytes": 88,
+        "candidate_bytes": 88,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 68,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [
+          11,
+          22,
+          30,
+          56,
+          72
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "00550b50",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@$0A@@std@@@2@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 80.327869,
+        "target_bytes": 122,
+        "candidate_bytes": 122,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 98,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          28,
+          47,
+          61,
+          70,
+          93,
+          110
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    }
+  ],
+  "scope": "Actual geometry registry map helpers; fresh masked byte/data checks, identities supported by geometry-context-closure/closure-da94735b/closure-round-03.json. Provider selection, ABI, runtime and server credit remain unverified."
+}

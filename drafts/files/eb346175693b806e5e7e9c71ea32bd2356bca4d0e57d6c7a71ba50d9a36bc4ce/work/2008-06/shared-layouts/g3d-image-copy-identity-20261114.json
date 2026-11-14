@@ -1,0 +1,12 @@
+{
+  "source": "rebuild/2008-06/native-classes/G3DGImage.cpp",
+  "methods": {
+    "0050e160": "GImage::resize",
+    "0050e1b0": "GImage::_copy"
+  },
+  "evidence": [
+    "00508b20 matches the 136-byte System::calloc donor object after relocation normalization; original multiplies arguments, allocates from the buffer pool and zero-fills the result, consistent with the source.",
+    "006a17e0 is an indirect jump via import slot 0080284c, identified from the PE import table as MSVCR90.dll!memcpy.",
+    "Image resize and copy match source data accesses and byte counts; full local code, data, call and reference checks pass. Provider selection, ABI, runtime and server credit remain separate."
+  ]
+}

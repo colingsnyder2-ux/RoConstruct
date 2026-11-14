@@ -1,0 +1,62 @@
+{
+  "scope": "Scoped x86 layout measurements only: 35 ReliabilityLayer field offsets agree with donor profile; original SendImmediate confirms remote stride 0x850, MTU +0x844 and mode +0x848. Complete class, vtable ABI and runtime remain unverified.",
+  "remote_size": 2128,
+  "reliability_size": 1992,
+  "offsets": {
+    "_remote_size": 2128,
+    "_reliability_size": 1992,
+    "_statistics_size": 200,
+    "_rpcmap_size": 12,
+    "_reliability_offset": 24,
+    "_ping_offset": 2020,
+    "_last_send_offset": 2072,
+    "_rpcmap_offset": 2104,
+    "_mtu_offset": 2116,
+    "_mode_offset": 2120
+  },
+  "fields": {
+    "_field_orderingList": 0,
+    "_field_outputQueue": 12,
+    "_field_acknowlegements": 28,
+    "_field_splitMessageProgressInterval": 40,
+    "_field_unreliableTimeout": 48,
+    "_field_resendList": 56,
+    "_field_resendQueue": 84,
+    "_field_sendPacketSet": 100,
+    "_field_splitPacketChannelList": 164,
+    "_field_sendMessageNumberIndex": 176,
+    "_field_lastAckTime": 184,
+    "_field_updateBitStream": 192,
+    "_field_waitingForOrderedPacketWriteIndex": 468,
+    "_field_waitingForOrderedPacketReadIndex": 724,
+    "_field_deadConnection": 980,
+    "_field_splitPacketId": 982,
+    "_field_timeoutTime": 984,
+    "_field_blockWindowIncreaseUntilTime": 988,
+    "_field_statistics": 992,
+    "_field_histogramStart": 1192,
+    "_field_hasReceivedPacketQueue": 1204,
+    "_field_lastUpdateTime": 1232,
+    "_field_nextSendTime": 1248,
+    "_field_ackPing": 1272,
+    "_field_remoteSystemTime": 1280,
+    "_field_continuousSend": 1284,
+    "_field_lastTimeBetweenPacketsIncrease": 1288,
+    "_field_encryptor": 1320,
+    "_field_sendPacketCount": 1924,
+    "_field_freeThreadedMemoryOnNextUpdate": 1932,
+    "_field_delayList": 1936,
+    "_field_maxSendBPS": 1952,
+    "_field_minExtraPing": 1960,
+    "_field_extraPingVariance": 1964,
+    "_field_internalPacketPool": 1968
+  },
+  "runs": [
+    "work\\2008-06\\native-check-runs\\20261114-102829-76220066\\results.json",
+    "work\\2008-06\\native-check-runs\\20261114-102803-3ab9f644\\unit-001\\candidate.obj"
+  ],
+  "objects_sha256": [
+    "baea79e122fec72bc6f9493969c42afa06d13a95c90a59c479c5931694003b32",
+    "6452cbcafba551438db3e577f2e5360e5d7bfee5f87053b00e7670c2a72b29c0"
+  ]
+}

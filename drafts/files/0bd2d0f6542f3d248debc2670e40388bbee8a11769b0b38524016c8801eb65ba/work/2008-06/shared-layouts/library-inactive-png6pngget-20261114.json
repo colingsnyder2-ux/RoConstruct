@@ -1,0 +1,60 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Png6pngget.cpp",
+  "source_sha256": "2e2d49846bfa3ee1ff15eca404dcbadfba1c2ae792b06fa22385d9303c76438e",
+  "checks": [
+    {
+      "address": "00524990",
+      "symbol": "_png_get_IHDR",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 91.258741,
+        "target_bytes": 286,
+        "candidate_bytes": 286,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 246,
+        "unmasked_differences": 0,
+        "masked_bytes": 40,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 5,
+        "candidate_relocations": 10,
+        "missing_relocations": [],
+        "extra_relocations": [
+          111,
+          141,
+          209,
+          236,
+          262
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8564012,
+          18
+        ],
+        [
+          8563992,
+          19
+        ],
+        [
+          8563972,
+          20
+        ],
+        [
+          8563948,
+          21
+        ],
+        [
+          8563896,
+          50
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-054336-24fb7262\\results.json",
+      "object_sha256": "e0aec7d647527f5d0fb5915d238c704d9bfb8e96aa607be007c9bb3f3f7bd03b"
+    }
+  ],
+  "scope": "Existing inactive native candidate source; local relocation-masked byte and checked-data match. Competing versions, reference identity, provider selection, ABI, runtime and server credit remain separate."
+}

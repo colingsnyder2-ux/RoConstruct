@@ -1,0 +1,12 @@
+{
+  "address": "005a67f0",
+  "identity": "anonymous namespace thread_param::~thread_param",
+  "source": "rebuild/2008-06/native-classes/BoostThreadStartup2008.cpp",
+  "evidence": [
+    "Original boost::thread constructor at 005a6a80 creates the stack mutex and condition, launches the thread with that stack parameter, waits for startup, and invokes 005a67f0 on that same parameter. This matches thread_param in the Boost 1.34.1 thread.cpp donor.",
+    "The destructor cleans condition_impl then mutex; 005f1c70 closes three condition handles, matching condition_impl fields, and 00594cb0 destroys the Boost mutex, matching its compiled 37-byte donor body.",
+    "The original and compiled exception handler graph match with zero errors; see boost-thread-param-eh-20261114.json.",
+    "The identical barrier destructor remains an unproven codegen analog, not evidence that a barrier owns this original function.",
+    "This is inactive local proof, not linked provider, ABI, runtime or server credit."
+  ]
+}

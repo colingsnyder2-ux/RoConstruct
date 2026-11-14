@@ -1,0 +1,38 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewMaterialFactory2008.cpp",
+  "source_sha256": "7fd4b48965e7b10bf0c29a3f6a970d61e5b6465ac3f8051ba05ec4e20a3d4262",
+  "object_sha256": "78e42daabb9ec57cfb03018404de758b024c7b6c499e2ce0a94c0d267f6346ad",
+  "run": "20261114-094518-7ef3453e",
+  "checks": [
+    {
+      "address": "004d7460",
+      "symbol": "??1MaterialFactory@ViewNew@RBX@@QAE@XZ",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 91.2,
+        "target_bytes": 250,
+        "candidate_bytes": 250,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 226,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          68,
+          116,
+          163,
+          212
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "body_comparison": "exact"
+    }
+  ],
+  "scope": "Scoped inferred member types; reference bindings not independently verified. Inactive draft; no selected provider, ABI, runtime, or server credit."
+}

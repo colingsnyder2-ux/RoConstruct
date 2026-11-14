@@ -1,0 +1,20 @@
+{
+  "identities": [
+    {
+      "symbol": "?getEquation@Plane@G3D@@QBEXAAVVector3@2@AAM@Z",
+      "address": "00525ad0",
+      "evidence": "Source Plane::getEquation extracts plane normal and d; original 00525ad0 disassembly writes those four values to the supplied outputs."
+    },
+    {
+      "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+      "address": "00510960",
+      "evidence": "Original Line::intersection call site at 007bbd44 takes parallel branch after direction\u00b7normal equals zero. Target 00510960 initializes and returns three infinity components from CRT _Inf; source Line::intersection returns Vector3::inf on exactly this branch."
+    }
+  ],
+  "target": {
+    "address": "007bbce0",
+    "symbol": "?intersection@Line@G3D@@QBE?AVVector3@2@ABVPlane@2@@Z",
+    "source": "rebuild/2008-06/native-classes/G3DLine.cpp",
+    "evidence": "Original disassembly at 007bbce0 calls Plane::getEquation at +0x29, computes line direction dot plane normal, branches to Vector3 infinity on zero rate, otherwise computes t and writes point + direction*t into Vector3 return buffer. This matches Line::intersection(const Plane&) exactly. docs/data/2008-06.json maps 007bbce0 to G3Dcpp/Line.cpp at size 210, but contains no symbol; source+original branch/call behavior supplies identity."
+  }
+}

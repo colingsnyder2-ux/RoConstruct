@@ -1,0 +1,126 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+  "source_sha256": "d13d89f7fe7d43ef966b5c67604115864582a36019a1f2d35ece1fc181e8e5ba",
+  "object_sha256": "3f342d52122584ca12a8692f9ce0d6ac0d23354a3d515ab355a21cd08a427d21",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-121849-69097b6b\\analysis-52e1b52d.json",
+  "checks": [
+    {
+      "address": "005183c0",
+      "symbol": "??_0Vector3@G3D@@QAEAAV01@M@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 73.053892,
+        "target_bytes": 167,
+        "candidate_bytes": 167,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 107,
+        "unmasked_differences": 0,
+        "masked_bytes": 60,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 15,
+        "candidate_relocations": 15,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [],
+      "verified_references": [
+        {
+          "offset": 55,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 63,
+          "symbol": "__imp___Inf",
+          "target": "008024ac",
+          "status": "verified_data_import"
+        },
+        {
+          "offset": 69,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 77,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 83,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 91,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 99,
+          "symbol": "__imp___Inf",
+          "target": "008024ac",
+          "status": "verified_data_import"
+        },
+        {
+          "offset": 105,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 113,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 119,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 128,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 136,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 141,
+          "symbol": "__imp___Inf",
+          "target": "008024ac",
+          "status": "verified_data_import"
+        },
+        {
+          "offset": 149,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 155,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

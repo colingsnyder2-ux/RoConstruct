@@ -1,0 +1,31 @@
+{
+  "address": "00546d00",
+  "symbol": "?construct@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@ABV34@@Z",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AggregatingSceneManagerOptimize2008.cpp",
+  "source_sha256": "2553604f9020114501b66a9db97bcb9a8787c5ff7bbe9aefb61e06c472c23b48",
+  "object_sha256": "5df44bb06b88ad3af9d2db2c5b73b0c72199d9efc0ee0caf76142390563a161e",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-090312-ec6fc370\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 93.103448,
+    "target_bytes": 29,
+    "candidate_bytes": 29,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 25,
+    "unmasked_differences": 0,
+    "masked_bytes": 4,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 0,
+    "candidate_relocations": 1,
+    "missing_relocations": [],
+    "extra_relocations": [
+      16
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [],
+  "scope": "Fresh masked byte/data match; original allocator direct call verified. Provider selection, ABI, runtime and server credit remain unverified."
+}

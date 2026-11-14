@@ -1,0 +1,92 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DGImage_ppm.cpp",
+      "checks": [
+        {
+          "addr": "0050fef0",
+          "symbol": "?decodePPMASCII@GImage@G3D@@"
+        },
+        {
+          "addr": "0050ec40",
+          "symbol": "?decodePPM@GImage@G3D@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_png.cpp",
+      "checks": [
+        {
+          "addr": "0050cdd0",
+          "symbol": "?decodePNG@GImage@G3D@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_tga.cpp",
+      "checks": [
+        {
+          "addr": "0050bb30",
+          "symbol": "?decodeTGA@GImage@G3D@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DGImage_bmp.cpp",
+      "checks": [
+        {
+          "addr": "0050c040",
+          "symbol": "?decodeBMP@GImage@G3D@@"
+        },
+        {
+          "addr": "0050f4c0",
+          "symbol": "?decodeICO@GImage@G3D@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DTexture.cpp",
+      "checks": [
+        {
+          "addr": "00475510",
+          "symbol": "?fromTwoFiles@Texture@G3D@@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/G3DSky.cpp",
+      "checks": [
+        {
+          "addr": "007b47f0",
+          "symbol": "??0Sky@G3D@@"
+        }
+      ],
+      "ranges": [
+        "007b4000-007b6000"
+      ],
+      "scan_scopes": [
+        "@Sky@G3D@@"
+      ]
+    },
+    {
+      "source": "native-classes/G3DWin32Window.cpp",
+      "ranges": [
+        "0047f000-00483000"
+      ],
+      "scan_scopes": [
+        "@Win32Window@G3D@@",
+        "@GWindow@G3D@@",
+        "@_DirectInput@_internal@G3D@@"
+      ]
+    },
+    {
+      "source": "native-classes/G3DTextureManager.cpp",
+      "ranges": [
+        "0047d000-0047f000"
+      ],
+      "scan_scopes": [
+        "@TextureManager@G3D@@"
+      ]
+    }
+  ]
+}

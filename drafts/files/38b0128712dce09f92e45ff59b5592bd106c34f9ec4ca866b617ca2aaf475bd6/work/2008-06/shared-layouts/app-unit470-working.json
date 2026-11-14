@@ -1,0 +1,1126 @@
+{
+  "class": "unit map of the application range 00470000..00474000 (2008-06): G3D 6.09 GLCaps.cpp / Texture.cpp, inactive",
+  "result": "No RBX translation unit and no Roblox-only template instantiation in the range: all 54 rows are G3D 6.09 library code (GLCaps.cpp tail, G3D header COMDATs, Texture.cpp head). Nothing is recovered or counted here.",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit470.py": "336dbb8fd45392be905ccdb2f6f27121327e77b1c10ca4647be393f5794da918"
+  },
+  "unit_map": {
+    "g3d-glcaps 0x004704a0..0x00472850": {
+      "rows": 22,
+      "bytes": 9010,
+      "unit": "G3D 6.09 GLG3Dcpp/GLCaps.cpp (library; starts at 0x0046fc10 below this range): members, the extension Table<std::string,bool> / Table<const TextureFormat*,bool> instances and init()",
+      "library": true,
+      "recovered": false,
+      "counted_elsewhere": []
+    },
+    "g3d-header-comdats 0x00472860..0x004729b0": {
+      "rows": 6,
+      "bytes": 324,
+      "unit": "G3D header COMDATs between GLCaps.obj and Texture.obj (Set<std::string>, GImage::Error, ReferenceCountedObject). Which of the two objects emitted them is not decided by the bytes; they are G3D library code either way",
+      "library": true,
+      "recovered": false,
+      "counted_elsewhere": [
+        "004729b0 counted by user-controller-working.json"
+      ]
+    },
+    "g3d-texture 0x004729d0..0x00473fc0": {
+      "rows": 26,
+      "bytes": 6308,
+      "unit": "G3D 6.09 GLG3Dcpp/Texture.cpp (library; continues past 0x00474000 to 0x00475b4f, see app-unit474-2008-working.json): file statics, Texture::Settings, Texture members",
+      "library": true,
+      "recovered": false,
+      "counted_elsewhere": []
+    }
+  },
+  "row_map": [
+    {
+      "row": "0x004704a0",
+      "size": 344,
+      "block": "g3d-glcaps",
+      "role_hint": "GLCaps static: GL_SGIS_generate_mipmap probe (glGenTextures/glBindTexture/glDeleteTextures)",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "GL_SGIS_generate_mipmap",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glBindTexture",
+            "glDeleteTextures",
+            "glGenTextures",
+            "glGetString",
+            "glGetTexImage",
+            "glPopAttrib",
+            "glPushAttrib",
+            "glTexImage2D"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470600",
+      "size": 114,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::Table<std::string,bool>::containsKey (GLCaps extension table)",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00471060",
+            "0x004711a0",
+            "0x004716f0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470680",
+      "size": 126,
+      "block": "g3d-glcaps",
+      "role_hint": "",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x004713f0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470700",
+      "size": 108,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D destructor with two std::string members and an Array buffer (likely TextOutput, header COMDAT)",
+      "evidence": [
+        {
+          "kind": "g3d-free-callee",
+          "callee": "0x00507d20",
+          "shared_with": "0x00473740",
+          "caller": "0x0050eaf0",
+          "caller_string": "P3\n%d %d\n255\n"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470770",
+      "size": 268,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::glVersion",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\GLCaps.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Cannot call GLCaps::glVersion before GLCaps::init().",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470880",
+      "size": 277,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::vendor",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\GLCaps.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Cannot call GLCaps::vendor before GLCaps::init().",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004709a0",
+      "size": 268,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::renderer",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\GLCaps.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Cannot call GLCaps::renderer before GLCaps::init().",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470ab0",
+      "size": 187,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps slow-VBO / Radeon bug check",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "MOBILITY RADEON 7500",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470b70",
+      "size": 126,
+      "block": "g3d-glcaps",
+      "role_hint": "",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x004713f0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470bf0",
+      "size": 249,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::computeVendor",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "Brian Paul",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00470cf0",
+      "size": 868,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::getDriverVersion",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "\\nv4_disp.dll",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00471060",
+      "size": 16,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::supports(const std::string&)",
+      "evidence": [
+        {
+          "kind": "shared-static",
+          "static": "0x009336b0",
+          "with_rows": [
+            "0x004711a0",
+            "0x004716f0"
+          ],
+          "what": "GLCaps extension Table<std::string,bool>"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00471070",
+      "size": 304,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::driverVersion",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\GLCaps.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Cannot call GLCaps::driverVersion before GLCaps::init().",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004711a0",
+      "size": 514,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps mipmap-generation bug check",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "Intel 854G",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004713b0",
+      "size": 11,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::Table<const TextureFormat*,bool> dtor",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081ce24",
+          "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004713c0",
+      "size": 36,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::Table<const TextureFormat*,bool> ??_G",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-slot0",
+          "vtable": "0x0081ce24",
+          "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081ce24",
+          "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004713f0",
+      "size": 409,
+      "block": "g3d-glcaps",
+      "role_hint": "",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x004716f0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00471590",
+      "size": 247,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::checkAllBugs",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\GLCaps.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Cannot check for OpenGL bugs before extensions are loaded.",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00471690",
+      "size": 93,
+      "block": "g3d-glcaps",
+      "role_hint": "",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00472820",
+            "0x00472860",
+            "0x00472880"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004716f0",
+      "size": 4396,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::loadExtensions",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\GLCaps.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "wglAllocateMemoryNV",
+          "upstream": "g3d-6.09 GLG3Dcpp/GLCaps.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetIntegerv",
+            "glGetString",
+            "wglGetProcAddress"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472820",
+      "size": 36,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::Table<std::string,bool> ??_G",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-slot0",
+          "vtable": "0x0081ce1c",
+          "rtti": ".?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081ce1c",
+          "rtti": ".?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472850",
+      "size": 13,
+      "block": "g3d-glcaps",
+      "role_hint": "G3D::GLCaps::init",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x004716f0"
+          ],
+          "from_rows": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472860",
+      "size": 20,
+      "block": "g3d-header-comdats",
+      "role_hint": "G3D::Set<std::string> dtor",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081ce1c",
+          "rtti": ".?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e194",
+          "rtti": ".?AV?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472880",
+      "size": 45,
+      "block": "g3d-header-comdats",
+      "role_hint": "G3D::Set<std::string> ??_G",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-slot0",
+          "vtable": "0x0081e194",
+          "rtti": ".?AV?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081ce1c",
+          "rtti": ".?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e194",
+          "rtti": ".?AV?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004728b0",
+      "size": 104,
+      "block": "g3d-header-comdats",
+      "role_hint": "G3D::GImage::Error ctor (std::runtime_error base)",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e1d4",
+          "rtti": ".?AVError@GImage@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472920",
+      "size": 107,
+      "block": "g3d-header-comdats",
+      "role_hint": "G3D::GImage::Error dtor",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00473790"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472990",
+      "size": 17,
+      "block": "g3d-header-comdats",
+      "role_hint": "G3D::ReferenceCountedObject ctor",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e1e0",
+          "rtti": ".?AVReferenceCountedObject@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004729b0",
+      "size": 31,
+      "block": "g3d-header-comdats",
+      "role_hint": "G3D::ReferenceCountedObject ??_G",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-slot0",
+          "vtable": "0x0081e1e0",
+          "rtti": ".?AVReferenceCountedObject@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e1e0",
+          "rtti": ".?AVReferenceCountedObject@G3D@@"
+        }
+      ],
+      "counted_by": [
+        "user-controller-working.json"
+      ]
+    },
+    {
+      "row": "0x004729d0",
+      "size": 168,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static hasAutoMipMap",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "GL_SGIS_generate_mipmap",
+          "upstream": "g3d-6.09 GLG3Dcpp/Texture.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGetString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472a80",
+      "size": 50,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::Settings::Settings",
+      "evidence": [
+        {
+          "kind": "texture-settings-pattern",
+          "constants": [
+            "0x3e8",
+            "0xfffffc18"
+          ],
+          "float": "0x0081c434"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472ac0",
+      "size": 87,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::Settings::defaults",
+      "evidence": [
+        {
+          "kind": "texture-settings-pattern",
+          "constants": [
+            "0x3e8",
+            "0xfffffc18"
+          ],
+          "float": "0x0081c434",
+          "static": "0x0096ef4c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472b20",
+      "size": 133,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::Settings::video",
+      "evidence": [
+        {
+          "kind": "texture-settings-pattern",
+          "constants": [
+            "0x3e8",
+            "0xfffffc18"
+          ],
+          "float": "0x0081c434",
+          "static": "0x0096ef70"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472bb0",
+      "size": 482,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static createTexture (glTexImage2D)",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glTexImage2D"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472da0",
+      "size": 355,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static createMipMapTexture",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00473fc0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00472f10",
+      "size": 680,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static setTexParameters",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "GL_EXT_texture_filter_anisotropic",
+          "upstream": "g3d-6.09 GLG3Dcpp/Texture.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glTexParameterf",
+            "glTexParameterfv",
+            "glTexParameteri"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004731c0",
+      "size": 136,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static brightenImage",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00474c60"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473250",
+      "size": 252,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static isMipMapformat",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\Texture.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Illegal interpolate mode",
+          "upstream": "g3d-6.09 GLG3Dcpp/Texture.cpp"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473350",
+      "size": 328,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::splitFilenameAtWildCard",
+      "evidence": [
+        {
+          "kind": "g3d-message",
+          "text": "Cube map filenames must contain",
+          "upstream": "g3d-6.09 GLG3Dcpp/Texture.cpp"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004734a0",
+      "size": 106,
+      "block": "g3d-texture",
+      "role_hint": "G3D::GImage::Error copy ctor",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e1d4",
+          "rtti": ".?AVError@GImage@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473510",
+      "size": 231,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::newGLTextureID",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\Texture.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glGenTextures",
+            "glGetError"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473600",
+      "size": 108,
+      "block": "g3d-texture",
+      "role_hint": "Texture.cpp static getCurrentBuffer",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x004739f0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473670",
+      "size": 130,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::sizeInMemory",
+      "evidence": [
+        {
+          "kind": "texture-member",
+          "patterns": [
+            "83 79 58 05",
+            "8b 79 64",
+            "8b 59 68"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473700",
+      "size": 64,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::getOpenGLTextureTarget",
+      "evidence": [
+        {
+          "kind": "texture-member",
+          "patterns": [
+            "8b 49 58"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473740",
+      "size": 76,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Array<bool>::realloc",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?realloc@?$Array@_N@G3D@@AAEXH@Z"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473790",
+      "size": 30,
+      "block": "g3d-texture",
+      "role_hint": "G3D::GImage::Error ??_G",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-slot0",
+          "vtable": "0x0081e1d4",
+          "rtti": ".?AVError@GImage@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004737b0",
+      "size": 456,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::Texture",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glBindTexture",
+            "glGetTexLevelParameteriv",
+            "glPopAttrib",
+            "glPopClientAttrib",
+            "glPushAttrib",
+            "glPushClientAttrib"
+          ]
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e1e0",
+          "rtti": ".?AVReferenceCountedObject@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e36c",
+          "rtti": ".?AVTexture@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473980",
+      "size": 105,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::~Texture",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glDeleteTextures"
+          ]
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e1e0",
+          "rtti": ".?AVReferenceCountedObject@G3D@@"
+        },
+        {
+          "kind": "g3d-vtable-ref",
+          "vtable": "0x0081e36c",
+          "rtti": ".?AVTexture@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x004739f0",
+      "size": 736,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::copyFromScreen",
+      "evidence": [
+        {
+          "kind": "file-string",
+          "text": ".\\glg3dcpp\\Texture.cpp"
+        },
+        {
+          "kind": "g3d-message",
+          "text": "Error encountered during glBindTexture: ",
+          "upstream": "g3d-6.09 GLG3Dcpp/Texture.cpp"
+        },
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glBindTexture",
+            "glCopyTexImage2D",
+            "glDisable",
+            "glEnable",
+            "glGetDoublev",
+            "glGetError",
+            "glPopAttrib",
+            "glPopClientAttrib"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473cd0",
+      "size": 256,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Array<uint8>::resize (Texture.cpp instance)",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [],
+          "from_rows": [
+            "0x00474690",
+            "0x00474c60"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473dd0",
+      "size": 252,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Array<bool>::resize",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x00473740"
+          ],
+          "from_rows": []
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473ed0",
+      "size": 30,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture ??_G",
+      "evidence": [
+        {
+          "kind": "g3d-vtable-slot0",
+          "vtable": "0x0081e36c",
+          "rtti": ".?AVTexture@G3D@@"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473ef0",
+      "size": 159,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::fromGLTexture (new 0x74 + Texture ctor)",
+      "evidence": [
+        {
+          "kind": "graph-edge",
+          "to": [
+            "0x004737b0"
+          ],
+          "from_rows": [
+            "0x00473fc0"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473f90",
+      "size": 46,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::rect2DBounds",
+      "evidence": [
+        {
+          "kind": "texture-member",
+          "patterns": [
+            "db 41 68",
+            "db 41 64"
+          ]
+        },
+        {
+          "kind": "g3d-callee",
+          "callee": "0x0045b950",
+          "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x00473fc0",
+      "size": 852,
+      "block": "g3d-texture",
+      "role_hint": "G3D::Texture::fromMemory",
+      "evidence": [
+        {
+          "kind": "opengl-import",
+          "imports": [
+            "glBindTexture",
+            "glEnable",
+            "glPixelStorei",
+            "glPopAttrib",
+            "glPopClientAttrib",
+            "glPushAttrib",
+            "glPushClientAttrib",
+            "glTexParameteri"
+          ]
+        }
+      ],
+      "counted_by": []
+    }
+  ],
+  "evidence_checks": [
+    {
+      "row": "0x0046fff0",
+      "kind": "anchor-below",
+      "opengl_imports": [
+        "glBegin",
+        "glBindTexture",
+        "glClear",
+        "glClearColor"
+      ],
+      "only_caller": "0x00471590",
+      "caller_file": ".\\glg3dcpp\\GLCaps.cpp"
+    },
+    {
+      "row": "0x00473fc0",
+      "kind": "anchor-above",
+      "runs_to": "0x00474314",
+      "callers": [
+        "0x00474690",
+        "0x00474c60"
+      ],
+      "texture_file_row": "0x004747f0"
+    },
+    {
+      "kind": "upstream-text",
+      "tree": "tools/libs/g3d-6.09/source/GLG3Dcpp",
+      "checked": true,
+      "messages": 16
+    },
+    {
+      "kind": "g3d-vtable",
+      "vtable": "0x0081ce24",
+      "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@",
+      "slot0": "0x004713c0"
+    },
+    {
+      "kind": "g3d-vtable",
+      "vtable": "0x0081ce1c",
+      "rtti": ".?AV?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@",
+      "slot0": "0x00472820"
+    },
+    {
+      "kind": "g3d-vtable",
+      "vtable": "0x0081e194",
+      "rtti": ".?AV?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@",
+      "slot0": "0x00472880"
+    },
+    {
+      "kind": "g3d-vtable",
+      "vtable": "0x0081e1d4",
+      "rtti": ".?AVError@GImage@G3D@@",
+      "slot0": "0x00473790"
+    },
+    {
+      "kind": "g3d-vtable",
+      "vtable": "0x0081e1e0",
+      "rtti": ".?AVReferenceCountedObject@G3D@@",
+      "slot0": "0x004729b0"
+    },
+    {
+      "kind": "g3d-vtable",
+      "vtable": "0x0081e36c",
+      "rtti": ".?AVTexture@G3D@@",
+      "slot0": "0x00473ed0"
+    },
+    {
+      "kind": "rtti-bases",
+      "vtable": "0x0081e1d4",
+      "note": "GImage::Error -> std::runtime_error -> std::exception (Roblox G3D tree)"
+    }
+  ],
+  "notes": {
+    "analog-labels": "The analog unit labels RBX::LDraw2Lua::LuaWriter (0x00470600, 0x00471060), G3D::GImage::Error (0x004737b0..0x00473cd0) and G3D::ReferenceCountedObject (0x00472a80..0x00473700) are wrong for these rows: they are GLCaps.cpp / Texture.cpp code.",
+    "no-rbx-unit": "No RBX class, Reflection descriptor, static initializer or Roblox-only template instantiation lies in the range. RBX callers (MegaTexture 0x007b9000 / 0x007b8610, DepthBlur::allocateTextures 0x005071d0) only call the G3D Texture::Settings rows.",
+    "gimage-error": "GImage::Error derives std::runtime_error here (RTTI 0x0081e1d4 base list; ctors call runtime_error(const string&) 0x00409d50 / runtime_error(const runtime_error&) 0x00409e90), a Roblox G3D-tree change against upstream 6.09; relevant to the g3d-6.09-rbx2008 recipe only.",
+    "neighbour-maps": "Agrees with app-unit468-2008 / app-unit46c (GLCaps 0x0046fc10..0x004729cf, Texture 0x004729d0..) and app-unit474-2008 (Texture to 0x00475b4f); this receipt adds per-row evidence and splits out the header-COMDAT seam."
+  },
+  "range_functions": 54,
+  "range_bytes": 15642,
+  "range_rows_counted_by_other_receipts": [
+    "004729b0 counted by user-controller-working.json"
+  ],
+  "exact_function_rows": [],
+  "library_recipes": [
+    "g3d-6.09",
+    "g3d-6.09-rbx2008",
+    "rbxgs-g3d (roc/libs.py)"
+  ],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}

@@ -1,0 +1,27 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Boostbarrier.cpp",
+      "checks": [
+        {
+          "addr": "005a67f0",
+          "symbol": "??1barrier@boost@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "005f1c70",
+              "symbol": "??1condition_impl@detail@boost@@QAE@XZ",
+              "kind": "direct"
+            },
+            {
+              "offset": 55,
+              "target": "00594cb0",
+              "symbol": "??1mutex@boost@@QAE@XZ",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

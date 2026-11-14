@@ -1,0 +1,52 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "004cdfe0",
+  "primary_body_size": 341,
+  "primary_body_exact": true,
+  "tool_sha256": "fb2af5d97c1db0b42c3d42263ecb513e74e0864126b88b473f1eb553942a55e2",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "work\\2008-06\\native-check-runs\\20261114-130359-b991a16e\\unit-000\\candidate.obj",
+  "object_sha256": "a8383220c6580fa2a882c30ffcebdc131059019d3b4db0279d74d164bacf3fb1",
+  "events": [
+    {
+      "symbol": "__ehhandler$?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+      "original": "0x7c9a88",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+      "original": "0x8e3b50",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931901000000483b8e00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?FreeMemory@HuffmanEncodingTree@@QAEXXZ",
+      "original": "0x8e3b48",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffff809a7c00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?FreeMemory@HuffmanEncodingTree@@QAEXXZ$0",
+      "original": "0x7c9a80",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$Queue@PAUHuffmanEncodingTreeNode@@@DataStructures@@QAE@XZ",
+      "original": "0x4cddf0",
+      "kind": "cleanup/handler code",
+      "size": 16,
+      "exact": true
+    }
+  ],
+  "errors": []
+}

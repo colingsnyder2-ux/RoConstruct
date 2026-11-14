@@ -1,0 +1,50 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AtlErrorCore.cpp",
+  "source_sha256": "5dbc1f437c3325e43bbfe6ebbf8b3e97e68ffe593884e21d70054559ee035abe",
+  "checks": [
+    {
+      "address": "00428ae0",
+      "symbol": "?AtlSetErrorInfo@ATL@@YGJABU_GUID@@PB_WK10JPAUHINSTANCE__@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.189189,
+        "target_bytes": 518,
+        "candidate_bytes": 518,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 450,
+        "unmasked_differences": 0,
+        "masked_bytes": 68,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 10,
+        "candidate_relocations": 17,
+        "missing_relocations": [],
+        "extra_relocations": [
+          94,
+          123,
+          157,
+          171,
+          184,
+          205,
+          219
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8455328,
+          14
+        ],
+        [
+          8455312,
+          16
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-004129-a0d42af7\\results.json",
+      "object_sha256": "d81f80b08cd5f1ffaf99070f904fa99ba65bd3d5932c4be718331159dc0fa413"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

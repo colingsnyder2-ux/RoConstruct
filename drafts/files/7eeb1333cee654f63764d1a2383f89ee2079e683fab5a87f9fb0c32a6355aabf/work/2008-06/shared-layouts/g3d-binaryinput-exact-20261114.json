@@ -1,0 +1,305 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DBinaryInput.cpp",
+  "source_sha256": "5e0389e8c6cddb7afeb3cbe9fc23c7c5b8ebc85de4c521a5556c22ced324f671",
+  "object_sha256": "b14b44e4d73bf696daf77cd529b998a414118ddcd1f7d9a4f5e470a7bad548d1",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-104412-30bcd2d6\\analysis-f8f270a4.json",
+  "checks": [
+    {
+      "address": "005157d0",
+      "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 84.126984,
+        "target_bytes": 189,
+        "candidate_bytes": 189,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 149,
+        "unmasked_differences": 0,
+        "masked_bytes": 40,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 8,
+        "candidate_relocations": 10,
+        "missing_relocations": [],
+        "extra_relocations": [
+          31,
+          79
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8554752,
+          66
+        ],
+        [
+          9279868,
+          16
+        ],
+        [
+          8547080,
+          3
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 30,
+          "target": "00508bb0",
+          "symbol": "?realloc@System@G3D@@SAPAXPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 62,
+          "target": "008028a4",
+          "symbol": "__imp_??0exception@std@@QAE@ABQBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 78,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 111,
+          "target": "00802814",
+          "symbol": "__imp__fopen",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 126,
+          "target": "008027b8",
+          "symbol": "__imp__fseek",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 158,
+          "target": "008027c0",
+          "symbol": "__imp__fread",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 165,
+          "target": "008027d4",
+          "symbol": "__imp__fclose",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ]
+    },
+    {
+      "address": "00515a00",
+      "symbol": "??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 83.054004,
+        "target_bytes": 537,
+        "candidate_bytes": 537,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 425,
+        "unmasked_differences": 0,
+        "masked_bytes": 112,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 16,
+        "candidate_relocations": 28,
+        "missing_relocations": [],
+        "extra_relocations": [
+          103,
+          119,
+          214,
+          268,
+          292,
+          392,
+          407,
+          416,
+          448,
+          464,
+          515,
+          533
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8554824,
+          4
+        ],
+        [
+          8547080,
+          3
+        ],
+        [
+          8554900,
+          47
+        ],
+        [
+          9279868,
+          16
+        ],
+        [
+          8554852,
+          47
+        ],
+        [
+          9279868,
+          16
+        ],
+        [
+          8554828,
+          21
+        ],
+        [
+          9294896,
+          16
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 45,
+          "target": "00802460",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 78,
+          "target": "0080240c",
+          "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 102,
+          "target": "00508880",
+          "symbol": "?machineEndian@System@G3D@@SA?AW4G3DEndian@2@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 118,
+          "target": "00514d50",
+          "symbol": "?fileLength@G3D@@YA_JABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 151,
+          "target": "00802814",
+          "symbol": "__imp__fopen",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 213,
+          "target": "00508530",
+          "symbol": "?malloc@System@G3D@@SAPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 251,
+          "target": "008028a4",
+          "symbol": "__imp_??0exception@std@@QAE@ABQBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 267,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 291,
+          "target": "00508530",
+          "symbol": "?malloc@System@G3D@@SAPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 321,
+          "target": "008027c0",
+          "symbol": "__imp__fread",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 328,
+          "target": "008027d4",
+          "symbol": "__imp__fclose",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 375,
+          "target": "008028a4",
+          "symbol": "__imp_??0exception@std@@QAE@ABQBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 391,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 406,
+          "target": "00515890",
+          "symbol": "?readUInt32@G3D@@YAIPBE_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 415,
+          "target": "00508530",
+          "symbol": "?malloc@System@G3D@@SAPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 447,
+          "target": "007a63c0",
+          "symbol": "_uncompress@16",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 463,
+          "target": "00507d00",
+          "symbol": "?free@System@G3D@@SAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 514,
+          "target": "00509b10",
+          "symbol": "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 532,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

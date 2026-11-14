@@ -1,0 +1,13 @@
+{
+  "methods": {
+    "007a53b0": "_tr_init",
+    "007a5a00": "_tr_flush_block",
+    "004d1380": "ReliabilityLayer::GetStatistics"
+  },
+  "evidence": [
+    "Original zlib descriptors at 0096bdb8, 0096bdcc and 0096bde0 have expected code counts, limits and table pointers. All 29 length extra-bits, 30 distance extra-bits and 19 bit-length extra-bits match source. Original fixed literal and distance trees match compiled object bytes, 1152 and 120 bytes respectively.",
+    "_init_block, _set_data_type and _bi_windup helper bodies match original raw bytes completely. _send_all_trees, _compress_block, _build_tree and _build_bl_tree match relocation-normalized code and their distinctive tree/compression behavior; _send_tree, _pqdownheap, _gen_bitlen and _scan_tree match raw bytes completely. _tr_stored_block was independently checked in zlib-trees-exact-20261114.json. Helper call identities are reviewed evidence; helper ABI and full provider closure remain separate.",
+    "ReliabilityLayer GetStatistics matches 424 bytes after address adjustment; both floating-point constants match original read-only data.",
+    "These are inactive local code/data/call/reference proofs; selected provider, ABI, runtime and server credit remain separate."
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "source_path": "rebuild/2008-06/native-classes/NetworkPhysicsSenders2008.cpp",
+  "source_sha256": "03df6484bbd7cfb4f4df4d2be74158c44e8b9058da8c87db57fdee2d2052e365",
+  "checks": [
+    {
+      "address": "004cbdc0",
+      "symbol": "??0?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE@ABU?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@3@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 81.818182,
+        "target_bytes": 88,
+        "candidate_bytes": 88,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 72,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          5,
+          12,
+          60,
+          77
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "references": [
+        {
+          "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+          "address": "004cadd0",
+          "kind": 20,
+          "offset": 5,
+          "external": false,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+          "address": "004cacc0",
+          "kind": 20,
+          "offset": 12,
+          "external": false,
+          "requires_provider": true
+        },
+        {
+          "symbol": "??0?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z",
+          "address": "004cb540",
+          "kind": 20,
+          "offset": 60,
+          "external": false,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?calculate_max_load@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXXZ",
+          "address": "004ca090",
+          "kind": 20,
+          "offset": 77,
+          "external": false,
+          "requires_provider": true
+        }
+      ]
+    },
+    {
+      "address": "004cadd0",
+      "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 100.0,
+        "target_bytes": 129,
+        "candidate_bytes": 129,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 129,
+        "unmasked_differences": 0,
+        "masked_bytes": 0,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 0,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "references": []
+    },
+    {
+      "address": "004cacc0",
+      "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 100.0,
+        "target_bytes": 129,
+        "candidate_bytes": 129,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 129,
+        "unmasked_differences": 0,
+        "masked_bytes": 0,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 0,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "references": []
+    },
+    {
+      "address": "004ca090",
+      "symbol": "?calculate_max_load@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 93.258427,
+        "target_bytes": 89,
+        "candidate_bytes": 89,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 81,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "references": [
+        {
+          "symbol": "__real@4f800000",
+          "address": "00819778",
+          "kind": 6,
+          "offset": 15,
+          "external": false,
+          "requires_provider": false
+        },
+        {
+          "symbol": "__real@4f800000",
+          "address": "00819778",
+          "kind": 6,
+          "offset": 31,
+          "external": false,
+          "requires_provider": false
+        }
+      ]
+    }
+  ],
+  "identity_evidence": "work/2008-06/shared-layouts/boost-sender-identities-20261114.json",
+  "bulk_manifest": "work/2008-06/shared-layouts/authentic-renderbase-batch-20261113/rak-packet-trial/boost-bulk-proof-init-20261114.json",
+  "bulk_manifest_sha256": "b1192200d9949300e790d92aec1c08d1fc673587d24d67651478f37bc9f4eddf",
+  "analysis": "work/2008-06/native-check-runs/20261114-091944-3ebc1d31/analysis-cacf0f95.json",
+  "scope": "Boost.MultiIndex sender initialization: relocation-normalized exact bytes, applicable data and direct references. Selection, complete ABI, runtime and server credit unverified."
+}

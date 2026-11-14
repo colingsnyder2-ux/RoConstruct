@@ -1,0 +1,41 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibWtrees.cpp",
+      "checks": [
+        {
+          "addr": "007a53b0",
+          "symbol": "__tr_init",
+          "calls": [
+            {
+              "offset": 95,
+              "target": "007a4190",
+              "symbol": "_init_block",
+              "kind": "jump"
+            }
+          ],
+          "references": [
+            {
+              "offset": 42,
+              "symbol": "_static_l_desc",
+              "target": "0096bdb8",
+              "evidence": "Original descriptor fields and all referenced fixed tree and extra-bit tables match compiled zlib source."
+            },
+            {
+              "offset": 52,
+              "symbol": "_static_d_desc",
+              "target": "0096bdcc",
+              "evidence": "Original descriptor fields and all referenced fixed tree and extra-bit tables match compiled zlib source."
+            },
+            {
+              "offset": 68,
+              "symbol": "_static_bl_desc",
+              "target": "0096bde0",
+              "evidence": "Original descriptor fields and all referenced fixed tree and extra-bit tables match compiled zlib source."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

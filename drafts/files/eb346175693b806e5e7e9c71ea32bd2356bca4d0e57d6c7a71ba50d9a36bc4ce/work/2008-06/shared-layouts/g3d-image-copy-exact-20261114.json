@@ -1,0 +1,105 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage.cpp",
+  "source_sha256": "b3fdb1dacb23bc8a17e50af4fe755b241aef01bf962d8cc407e7743e6131b0b9",
+  "object_sha256": "d0824dba72b24237a5bf962da101d4e636012d2ad6863aae91097d174863613c",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-123844-3c86d39d\\analysis-77d5c7bd.json",
+  "checks": [
+    {
+      "address": "0050e160",
+      "symbol": "?resize@GImage@G3D@@QAEXHHH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.74359,
+        "target_bytes": 78,
+        "candidate_bytes": 78,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 70,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          22,
+          64
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 21,
+          "target": "00507d00",
+          "symbol": "?free@System@G3D@@SAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 63,
+          "target": "00508b20",
+          "symbol": "?calloc@System@G3D@@SAPAXII@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": []
+    },
+    {
+      "address": "0050e1b0",
+      "symbol": "?_copy@GImage@G3D@@AAEXABV12@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 86.904762,
+        "target_bytes": 84,
+        "candidate_bytes": 84,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 72,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          18,
+          57,
+          71
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 17,
+          "target": "00507d00",
+          "symbol": "?free@System@G3D@@SAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 56,
+          "target": "00508530",
+          "symbol": "?malloc@System@G3D@@SAPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 70,
+          "target": "006a17e0",
+          "symbol": "_memcpy",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": []
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

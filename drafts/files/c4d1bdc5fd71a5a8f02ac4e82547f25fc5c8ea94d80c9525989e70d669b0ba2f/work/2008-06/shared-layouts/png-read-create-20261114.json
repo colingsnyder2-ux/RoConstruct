@@ -1,0 +1,74 @@
+{
+  "address": "0051eb90",
+  "symbol": "_png_create_read_struct_2",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Png6pngread.cpp",
+  "source_sha256": "5098c52dbbb14c7360b2715b7f1f2e6fb6c312932c294035ce6fd8adca8ba6f1",
+  "object_sha256": "3cd69180b38dd2d5922800b0370c5d4bb83129c3af934dbec2ef2efb8fdce910",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-084742-d92b428e\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 80.783582,
+    "target_bytes": 536,
+    "candidate_bytes": 536,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 384,
+    "unmasked_differences": 0,
+    "masked_bytes": 152,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 23,
+    "candidate_relocations": 38,
+    "missing_relocations": [],
+    "extra_relocations": [
+      20,
+      38,
+      63,
+      86,
+      110,
+      140,
+      158,
+      271,
+      300,
+      318,
+      342,
+      393,
+      433,
+      470,
+      478
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [
+    [
+      8556224,
+      54
+    ],
+    [
+      8556168,
+      54
+    ],
+    [
+      8556112,
+      55
+    ],
+    [
+      8563408,
+      6
+    ],
+    [
+      8563388,
+      18
+    ],
+    [
+      8563368,
+      19
+    ],
+    [
+      8563348,
+      19
+    ]
+  ],
+  "scope": "libpng 1.2.6 png_create_read_struct_2, despite site zlib recipe attribution: fresh masked byte/data match; 1.2.5 differs. Reference closure, provider selection, ABI, runtime and server credit remain unverified."
+}

@@ -1,0 +1,143 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RakPeerSendImmediate2008.cpp",
+  "source_sha256": "b2e3d0804ab35c403f75c4590c82f9aa648892a5dd3c99299f7365c41f04de3b",
+  "object_sha256": "f813678f0f4902e9352955375994e0458c7f134b076f79dfc489c5658ae701ba",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-101911-f2ca7917\\analysis-8b26a51a.json",
+  "checks": [
+    {
+      "address": "004c0420",
+      "symbol": "?SendImmediate@RakPeer@@IAE_NPADHW4PacketPriority@@W4PacketReliability@@DUSystemAddress@@_N4_J@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 94.334975,
+        "target_bytes": 812,
+        "candidate_bytes": 812,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 756,
+        "unmasked_differences": 0,
+        "masked_bytes": 56,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 3,
+        "candidate_relocations": 14,
+        "missing_relocations": [],
+        "extra_relocations": [
+          70,
+          105,
+          277,
+          307,
+          388,
+          406,
+          434,
+          520,
+          547,
+          696,
+          745
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          9685872,
+          8
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 69,
+          "target": "006a1520",
+          "symbol": "__alloca_probe",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 104,
+          "target": "004bfd30",
+          "symbol": "?GetIndexFromSystemAddress@RakPeer@@IAEHUSystemAddress@@_N@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 276,
+          "target": "004a50c0",
+          "symbol": "??0BitStream@RakNet@@QAE@H@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 306,
+          "target": "004ce140",
+          "symbol": "?EncodeArray@HuffmanEncodingTree@@QAEXPAEIPAVBitStream@RakNet@@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 387,
+          "target": "004d1140",
+          "symbol": "?Send@ReliabilityLayer@@QAE_NPADHW4PacketPriority@@W4PacketReliability@@E_NH_J@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 405,
+          "target": "004a51a0",
+          "symbol": "??1BitStream@RakNet@@QAE@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 433,
+          "target": "006a1560",
+          "symbol": "__alloca_probe_16",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 453,
+          "target": "008028b0",
+          "symbol": "__imp__malloc",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 519,
+          "target": "004a9850",
+          "symbol": "??9SystemAddress@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 546,
+          "target": "004a9850",
+          "symbol": "??9SystemAddress@@QBE_NABU0@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 695,
+          "target": "004d1140",
+          "symbol": "?Send@ReliabilityLayer@@QAE_NPADHW4PacketPriority@@W4PacketReliability@@E_NH_J@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 744,
+          "target": "006a1c30",
+          "symbol": "__alldiv",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    }
+  ],
+  "scope": "OpenRBX donor header profile with _RELEASE undefined: 812 relocation-normalized bytes and data match; all 11 direct calls and one import verified. Native canonical headers produce 10 byte differences from RemoteSystemStruct 0x828 vs original 0x850. Full class ABI, linked provider, runtime and server credit remain unverified.",
+  "runtime_helper_evidence": {
+    "symbol": "__alldiv",
+    "address": "006a1c30",
+    "source_library": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcmt.lib",
+    "sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c",
+    "comparison": "lldiv.obj __alldiv is 170 raw bytes identical to original helper"
+  }
+}

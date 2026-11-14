@@ -1,0 +1,63 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage_tga.cpp",
+  "source_sha256": "e339a4b097bf3b1a9b94114501dec9e957dd0f041d6cde7cf8282723720a47fd",
+  "object_sha256": "c9c2cb7a050de083b2a3fc0a78efe48ff542d6a4e78920951ceb761ea9ec3412",
+  "run": "work\\2008-06\\native-check-runs\\20261114-105014-60ef8596\\results.json",
+  "checks": [
+    {
+      "address": "0050bb30",
+      "symbol": "?decodeTGA@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.733591,
+        "target_bytes": 1295,
+        "candidate_bytes": 1295,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1123,
+        "unmasked_differences": 0,
+        "masked_bytes": 172,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 13,
+        "candidate_relocations": 43,
+        "missing_relocations": [],
+        "extra_relocations": [
+          67,
+          81,
+          150,
+          173,
+          188,
+          217,
+          243,
+          283,
+          312,
+          368,
+          391,
+          406,
+          437,
+          471,
+          478,
+          492,
+          527,
+          594,
+          617,
+          632,
+          670,
+          707,
+          724,
+          806,
+          849,
+          888,
+          1030,
+          1073,
+          1116,
+          1155
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "scope": "Draft: donor function and normalized code/data match; calls, ABI and runtime unverified."
+    }
+  ]
+}

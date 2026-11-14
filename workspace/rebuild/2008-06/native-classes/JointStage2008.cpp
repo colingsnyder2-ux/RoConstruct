@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::JointStage (inactive); evidence in native-headers/v8world/JointStage2008.h.
 // Verified by tests/record_native_kernel_stages.py. Rows of the JointStage unit built here: edgeHasPrimitivesDownstream
 // 00667f70, removeFromMap 00668280, insertToListAndMap 00668340, onEdgeAdded 006683b0, onEdgeRemoving 006683f0, the
@@ -12,6 +13,8 @@
 #include "v8world/JointStage2008.h"
 #include "v8world/Primitive.h"
 #include "v8world/Joint.h"
+#include "util/RunningAverage.h"
+#include "util/Math.h"
 
 namespace RBX
 {
@@ -92,6 +95,18 @@ namespace RBX
 			removeFromMap(j, j->getPrimitive(1));
 		}
 		e->removeFromStage(this);
+	}
+
+	// 00668af0
+	bool RunningAverageState::withinTolerance(const G3D::CoordinateFrame& cofm, float radius, float tolerance)
+	{
+		G3D::Vector3 deltaPos = Math::vector3Abs(this->position - cofm.translation);
+		if (Math::maxAxisLength(deltaPos) > tolerance)
+			return false;
+		Quaternion deltaAngles = Quaternion(cofm.rotation) * radius;
+		if ((this->angles - deltaAngles).maxComponent() > tolerance)
+			return false;
+		return true;
 	}
 }
 

@@ -1,0 +1,28 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RakPeer.cpp",
+      "checks": [
+        {
+          "addr": "004bb840",
+          "symbol": "?DeallocatePacket@RakPeer@@UAEXPAUPacket@@@Z",
+          "calls": [
+            {
+              "symbol": "??3@YAXPAX@Z",
+              "kind": "direct",
+              "target": "006a067a",
+              "offset": 19
+            },
+            {
+              "symbol": "__imp__free",
+              "kind": "import",
+              "target": "008028c0",
+              "import": "MSVCR90.dll!free",
+              "offset": 28
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

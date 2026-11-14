@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DSphere.cpp",
+      "checks": [
+        {
+          "addr": "00518e80",
+          "symbol": "?toString@Sphere@G3D@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "calls": [
+            {
+              "offset": 50,
+              "target": "00509b10",
+              "symbol": "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

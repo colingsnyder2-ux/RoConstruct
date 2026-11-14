@@ -1,0 +1,678 @@
+{
+  "counts": {
+    "tested": 29,
+    "remaining": 28
+  },
+  "rows": [
+    {
+      "address": "0050ec40",
+      "receipt": "g3d-batch-1ead5c8138665263c754d93d.json",
+      "unresolved": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050ec40",
+      "receipt": "g3d-batch-3f1ae61db9ec-0.json",
+      "unresolved": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050bb30",
+      "receipt": "g3d-batch-3f1ae61db9ec-1.json",
+      "unresolved": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 396,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 622,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050c040",
+      "receipt": "g3d-batch-3f1ae61db9ec-2.json",
+      "unresolved": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 376,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2200,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2699,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2793,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050f4c0",
+      "receipt": "g3d-batch-3f1ae61db9ec-2.json",
+      "unresolved": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "target": "007cc2c3",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 105,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 492,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "00518110",
+      "receipt": "g3d-batch-70c088bc1cbf72a8ccbe440d.json",
+      "unresolved": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?readSymbol@TextInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "target": "007cc832",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "005180b0",
+      "receipt": "g3d-batch-70c088bc1cbf72a8ccbe440d.json",
+      "unresolved": [
+        {
+          "offset": 77,
+          "symbol": "__TI2?AVWrongTokenType@TextInput@G3D@@",
+          "target": "008e72b0",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "0050fef0",
+      "receipt": "g3d-batch-7b737ea945a985682502ba94.json",
+      "unresolved": [
+        {
+          "offset": 9,
+          "symbol": "__ehhandler$?decodePPMASCII@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "target": "007cc316",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 968,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "0050ec40",
+      "receipt": "g3d-batch-7b737ea945a985682502ba94.json",
+      "unresolved": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050bb30",
+      "receipt": "g3d-batch-9c73cec9bc304342afd373cc.json",
+      "unresolved": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 396,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 622,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050ab80",
+      "receipt": "g3d-batch-9fd8fafacbf9a690d07f0ada.json",
+      "unresolved": [
+        {
+          "offset": 36,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "00473350",
+      "receipt": "g3d-batch-a19bc5c99f268dd9ad64e44a.json",
+      "unresolved": [
+        {
+          "offset": 314,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050ec40",
+      "receipt": "g3d-batch-b71f5d622d5f32cbf187e445.json",
+      "unresolved": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050ec40",
+      "receipt": "g3d-batch-d65787787f34-0.json",
+      "unresolved": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050bb30",
+      "receipt": "g3d-batch-d65787787f34-1.json",
+      "unresolved": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 396,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 622,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050c040",
+      "receipt": "g3d-batch-d65787787f34-2.json",
+      "unresolved": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 376,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2200,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2699,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2793,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050f4c0",
+      "receipt": "g3d-batch-d65787787f34-2.json",
+      "unresolved": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "target": "007cc2c3",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 105,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 492,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "0050c040",
+      "receipt": "g3d-batch-d676f42aa8f5c538a56dcbd5.json",
+      "unresolved": [
+        {
+          "offset": 178,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 376,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2200,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2699,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 2793,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050f4c0",
+      "receipt": "g3d-batch-d676f42aa8f5c538a56dcbd5.json",
+      "unresolved": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?decodeICO@GImage@G3D@@AAEXAAVBinaryInput@2@@Z",
+          "target": "007cc2c3",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 105,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 492,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "0050cdd0",
+      "receipt": "g3d-batch-dbde6bc54cfbe2786659f6fd.json",
+      "unresolved": [
+        {
+          "offset": 29,
+          "symbol": "?png_warning@G3D@@YAXPAUpng_struct_def@@PBD@Z",
+          "target": "0050b6a0",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 34,
+          "symbol": "?png_error@G3D@@YAXPAUpng_struct_def@@PBD@Z",
+          "target": "0050b620",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 130,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 243,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 364,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 391,
+          "symbol": "?png_read_data@G3D@@YAXPAUpng_struct_def@@PAEI@Z",
+          "target": "0050cdb0",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 556,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 834,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050ab80",
+      "receipt": "g3d-batch-dd64382328599ec491d772dd.json",
+      "unresolved": [
+        {
+          "offset": 36,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "0050ec40",
+      "receipt": "g3d-batch-e138ea483e0f75e891595cde.json",
+      "unresolved": [
+        {
+          "offset": 257,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 339,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "005157d0",
+      "receipt": "g3d-binaryinput-exact-20261114.json",
+      "unresolved": [
+        {
+          "offset": 69,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "00515a00",
+      "receipt": "g3d-binaryinput-exact-20261114.json",
+      "unresolved": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z",
+          "target": "007cc65c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 41,
+          "symbol": "??_7BinaryInput@G3D@@6B@",
+          "target": "00828948",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 258,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 382,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 523,
+          "symbol": "__TI4?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@",
+          "target": "008dd430",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "005102d0",
+      "receipt": "g3d-gimage-decoders-exact-20261114.json",
+      "unresolved": [
+        {
+          "offset": 402,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050ddc0",
+      "receipt": "g3d-gimage-decoders-exact-20261114.json",
+      "unresolved": [],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050d800",
+      "receipt": "g3d-gimage-decoders-exact-20261114.json",
+      "unresolved": [
+        {
+          "offset": 821,
+          "symbol": "??0Color3uint8@G3D@@QAE@XZ",
+          "target": "0042e3d0",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 1284,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 1366,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 1448,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 1
+    },
+    {
+      "address": "0050edb0",
+      "receipt": "g3d-gimage-resolve-load-exact-20261114.json",
+      "unresolved": [
+        {
+          "offset": 3,
+          "symbol": "__ehhandler$?resolveFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "target": "007cc267",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 110,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 158,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    },
+    {
+      "address": "00510490",
+      "receipt": "g3d-gimage-resolve-load-exact-20261114.json",
+      "unresolved": [
+        {
+          "offset": 6,
+          "symbol": "__ehhandler$?load@GImage@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Format@12@@Z",
+          "target": "007cc364",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 131,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 173,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "unresolved_reference"
+        },
+        {
+          "offset": 266,
+          "symbol": "__TI3?AVError@GImage@G3D@@",
+          "target": "008dc478",
+          "status": "unresolved_reference"
+        }
+      ],
+      "verified_eh": 0
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "address": "0067c020",
+  "symbol": "?createIndices@Ogre@@YGPAVSubMesh@1@ABVMeshPtr@1@PBGPBII@Z",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreGeometryIndices2008.cpp",
+  "source_sha256": "a896a57142385ca5db6cf101d377f4f33d0b2c0d5a385a6f978d67f04c6a590a",
+  "object_sha256": "5c2a0b6e65082db761af9c8d5f327c61e42d8838228640f15363637a44fee83e",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-084532-a1588e93\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 85.992218,
+    "target_bytes": 257,
+    "candidate_bytes": 257,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 213,
+    "unmasked_differences": 0,
+    "masked_bytes": 44,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 8,
+    "candidate_relocations": 11,
+    "missing_relocations": [],
+    "extra_relocations": [
+      39,
+      62,
+      230
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [],
+  "scope": "Fresh local masked byte/data match. Geometry index-buffer helper ownership/name inferred; original caller and indexed-geometry donor support behavior. Reference closure, provider selection, ABI, runtime and server credit remain unverified."
+}

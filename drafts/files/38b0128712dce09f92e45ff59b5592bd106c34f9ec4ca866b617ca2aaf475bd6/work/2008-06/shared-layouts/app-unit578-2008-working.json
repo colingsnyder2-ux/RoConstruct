@@ -1,0 +1,475 @@
+{
+  "class": "RBX Creatable / FactoryProduct / ServiceProvider template instances of the application range 00578000..0057c000 (2008-06, DataModel unit), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags, /fp:fast",
+  "flags": {
+    "creators": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit578-2008/AppUnit578_2008creators.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit578_2008Creators.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit578_2008.py": "7c69d47ed67af33c67562684bb007c75a1d3c2ee165534050b73da5a37fd2967",
+    "rebuild/2008-06/native-classes/AppUnit578_2008Creators.cpp": "bf9e1ca68aba9b8ae1fdbebeea39abf450da344377c9a6a8c993e42ca8e651a6",
+    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2",
+    "rebuild/2008-06/native-headers/util/Name.h": "83aa4cc4d49368359c20855d119ec20f3fb2fb066ca14fbd823ed905d95f4d4f",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "946890300c9996b74bc95ae5473f51f8a11ef09902a0a8a55bd1ffb45a36cd22",
+    "rebuild/2008-06/native-headers/LocalBackpack2008/LocalBackpack2008.h": "ebff9c2fc742b38a44b6720dfadd1c60d0686c42cf19cda447ec32adef3ce124",
+    "rebuild/2008-06/native-headers/v8datamodel/Tool.h": "ee1739601cbe99d862761a90640acc920a8a6a03c792962895144967d8d9c236",
+    "rebuild/2008-06/native-headers/v8datamodel/Hopper.h": "b43abcdd0d0d8e2e80f19769b83160d906f99ebd100de80385057319d80bc24a",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "6f95760f4775e0eb218b8f78e837f3a628249dec45346f382cee7eba86ec7d86"
+  },
+  "objects": {
+    "creators": "04b93ebdf0d85efa92c5ea0ccf4ffa867252c12a5272861344388ffeac342051"
+  },
+  "layout": {
+    "LocalBackpackItem": "sizeof 0x188 (malloc in create<LocalBackpackItem> 0x5780e0; exact here against the native header layout)",
+    "LocalBackpack": "sizeof 0x1ac (malloc in create<LocalBackpack> 0x5771b0; compiled helper body exact at that address (outside the range, not counted))",
+    "Tool": "sizeof 0x270 (malloc in create<Tool> 0x578400; exact here against the native header layout)"
+  },
+  "unit_map": {
+    "rbx v8datamodel/DataModel.cpp 0x578000..0x57c000 (unit 0x574f10..0x57c1af)": "The whole range continues the DataModel unit that app-unit570 maps from 0x574f10 and app-unit57c ends at 0x57c1af (Creatable<Instance>::create<DataModel> 0x57c080, createDataModel 0x57c100). Link order: the Creatable / FactoryProduct COMDATs of LocalBackpackItem (shared_ptr 0x578030, create 0x5780e0, Creator 0x578160 = slot 0 of 0x82fffc), LocalBackpack (Creator 0x578210 = slot 0 of 0x830018) and Tool (shared_count 0x5782c0, shared_ptr 0x578350, create 0x578400, Creator 0x578480 = slot 0 of 0x830020); ServiceProvider::find / create<LocalBackpack> 0x578530 / 0x578930 (caller initializeContents 0x57a9f0); the DataModel reflection descriptors (SignalDesc<DataModel> vtable 0x8300a4, BoundFuncDesc<DataModel, ...> vtables 0x83005c..0x830098, static initializers 0x7f3440..0x7f3670, classDescriptor 0x5788c0 \"DataModel\"); DataModel members (clearContents 0x578ef0, load \"DataModel Loading %s\" 0x579db0, stats text 0x57a1b0, initializeContents 0x57a9f0, setDirty / isDirty 0x57b020 / 0x57b030, onDescendentAdded / Removing 0x57b040 / 0x57b070, onChildChanged 0x57b630); the DescribedNonCreatable<DataModel> constructor 0x57a7b0, the DataModel ??_E thunks 0x57b0a0..0x57b160, ~DataModel 0x57ad70, DataModel() 0x57b9f0 (\"Level\"), ??_G 0x57bbe0, and rbx_httpGet / rbx_httpPost 0x57bc00 / 0x57be10. Built here: the Creatable / FactoryProduct / ServiceProvider instances (current headers). DataModel's own rows need declarations the core v8datamodel/DataModel.h lacks (proposals); not built.",
+    "library code": "No separately compiled library unit starts in the range. The boost function / bind / any and STL rows (functor_manager 0x579b70 / 0x57a9b0, storage helpers) are header instances inside the DataModel unit, instantiated with Roblox types; not recovered here.",
+    "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range. 0x57a1b0 / 0x57a6c0 are called from the view unit (0x45bc80 / 0x45e3f0) but are DataModel code (stats strings, ArrowCursor)."
+  },
+  "unit_blocks": [
+    "0x578000..0x57c000 rbx v8datamodel/DataModel.cpp (begins at 0x574f10, ends at 0x57c1af)"
+  ],
+  "range_functions": 84,
+  "range_rows_counted_by_other_receipts": [
+    "005782c0 counted by creatable-shared-count-working.json",
+    "0057a9f0 counted by datamodel-initialize-trial.json"
+  ],
+  "range_rows_open": [
+    "0x578530 (open)",
+    "0x578670 (open)",
+    "0x578790 (open)",
+    "0x5788c0 (open)",
+    "0x578a20 (open)",
+    "0x578ad0 (open)",
+    "0x578b80 (open)",
+    "0x578c20 (open)",
+    "0x578ca0 (open)",
+    "0x578e50 (open)",
+    "0x578ef0 (open)",
+    "0x578fa0 (open)",
+    "0x579040 (open)",
+    "0x579100 (open)",
+    "0x5791d0 (open)",
+    "0x579270 (open)",
+    "0x579360 (open)",
+    "0x579420 (open)",
+    "0x5794e0 (open)",
+    "0x579600 (open)",
+    "0x5796d0 (open)",
+    "0x5797b0 (open)",
+    "0x579920 (open)",
+    "0x579990 (open)",
+    "0x5799f0 (open)",
+    "0x579a90 (open)",
+    "0x579b70 (open)",
+    "0x579c10 (open)",
+    "0x579db0 (open)",
+    "0x579f70 (open)",
+    "0x57a1b0 (open)",
+    "0x57a6c0 (open)",
+    "0x57a7b0 (open)",
+    "0x57a830 (open)",
+    "0x57a840 (open)",
+    "0x57a850 (open)",
+    "0x57a870 (open)",
+    "0x57a900 (open)",
+    "0x57a9b0 (open)",
+    "0x57abf0 (open)",
+    "0x57aca0 (open)",
+    "0x57acb0 (open)",
+    "0x57ad70 (open)",
+    "0x57b020 (open)",
+    "0x57b030 (open)",
+    "0x57b040 (open)",
+    "0x57b070 (open)",
+    "0x57b0a0 (open)",
+    "0x57b0b0 (open)",
+    "0x57b0c0 (open)",
+    "0x57b0d0 (open)",
+    "0x57b0e0 (open)",
+    "0x57b0f0 (open)",
+    "0x57b100 (open)",
+    "0x57b110 (open)",
+    "0x57b120 (open)",
+    "0x57b130 (open)",
+    "0x57b140 (open)",
+    "0x57b150 (open)",
+    "0x57b160 (open)",
+    "0x57b170 (open)",
+    "0x57b1e0 (open)",
+    "0x57b2b0 (open)",
+    "0x57b300 (open)",
+    "0x57b3a0 (open)",
+    "0x57b570 (open)",
+    "0x57b630 (open)",
+    "0x57b680 (open)",
+    "0x57b760 (open)",
+    "0x57b800 (open)",
+    "0x57b9f0 (open)",
+    "0x57bbe0 (open)",
+    "0x57bc00 (open)",
+    "0x57be10 (open)"
+  ],
+  "range_rows_open_by_category": {
+    "ServiceProvider::find<LocalBackpack>() const (built, 404 vs 320 B: inlined ~shared_ptr<Instance>, the known find<C> blocker)": [
+      "0x578530"
+    ],
+    "SignalDesc<DataModel, void()> helper (vector<any> argument pack; caller 0x578b80)": [
+      "0x578670"
+    ],
+    "SignalDesc<Instance, void(shared_ptr<Instance>, const PropertyDescriptor*)> constructor (static initializer 0x7f3440)": [
+      "0x578790"
+    ],
+    "Described<DataModel>::classDescriptor() (\"DataModel\"; ClassDescriptor(base, name) 0x5708f0)": [
+      "0x5788c0"
+    ],
+    "boost::function / bind storage helpers of rbx_httpGet / rbx_httpPost": [
+      "0x578a20",
+      "0x578ad0"
+    ],
+    "SignalDesc<DataModel, void()> slot 4 (vtable 0x8300a4)": [
+      "0x578b80"
+    ],
+    "DataModel RunService-transition path (caller chain from 0x554880)": [
+      "0x578c20",
+      "0x578ca0",
+      "0x578e50"
+    ],
+    "DataModel::clearContents (removeAllChildren; callers 0x455580, 0x57b800)": [
+      "0x578ef0"
+    ],
+    "BoundFuncDesc<DataModel, ...> descriptor constructors (static initializers 0x7f3470..0x7f3670) and their call / execute slots (\"bad cast\")": [
+      "0x578fa0",
+      "0x579040",
+      "0x579100",
+      "0x5791d0",
+      "0x579270",
+      "0x579360",
+      "0x579420",
+      "0x5794e0",
+      "0x579600",
+      "0x5796d0",
+      "0x5797b0",
+      "0x579920",
+      "0x579990",
+      "0x5799f0",
+      "0x579a90"
+    ],
+    "boost functor_manager of bind_t<void(*)(const function0&, MessageType, bool)> (boost header instance with RBX::MessageType)": [
+      "0x579b70"
+    ],
+    "DataModel members bound by the reflection descriptors (load \"DataModel Loading %s\", stats text \"[[[progress]]]\", callers 0x45bc80 / 0x45e3f0)": [
+      "0x579c10",
+      "0x579db0",
+      "0x579f70",
+      "0x57a1b0"
+    ],
+    "DataModel member (callers 0x45bc80 / 0x45e3f0)": [
+      "0x57a6c0"
+    ],
+    "DescribedNonCreatable<DataModel, ServiceProvider, sDataModel> constructor (vtables 0x8301bc..0x83010c)": [
+      "0x57a7b0"
+    ],
+    "ICF-shared ServiceProvider / GlobalSettings ??_E adjustor thunks (jmp 0x568d40)": [
+      "0x57a830",
+      "0x57a840"
+    ],
+    "NonFactoryProduct<ServiceProvider, sDataModel>::getClassName": [
+      "0x57a850"
+    ],
+    "boost::function assignment helpers of the Instance signal connection (0x57acb0 chain)": [
+      "0x57a870",
+      "0x57a900"
+    ],
+    "boost function manage entry for the same bind_t (vtable 0x8302d4 slot 6)": [
+      "0x57a9b0"
+    ],
+    "DataModel base-construction helper (classDescriptor 0x5788c0, 0x57a7b0; caller 0x57b9f0)": [
+      "0x57abf0"
+    ],
+    "ICF-shared ServiceProvider / GlobalSettings ??_E adjustor thunk (jmp 0x568d40)": [
+      "0x57aca0"
+    ],
+    "Instance signal connection helper (caller 0x57b680)": [
+      "0x57acb0"
+    ],
+    "~DataModel (called by the deleting destructor 0x57bbe0)": [
+      "0x57ad70"
+    ],
+    "DataModel::setDirty / isDirty (IDataState slots 0/1; header inlines)": [
+      "0x57b020",
+      "0x57b030"
+    ],
+    "DataModel::onDescendentAdded / onDescendentRemoving (vtable 0x8303cc slots 5/6)": [
+      "0x57b040",
+      "0x57b070"
+    ],
+    "DataModel ??_E adjustor thunks (jmp 0x57bbe0)": [
+      "0x57b0a0",
+      "0x57b0b0",
+      "0x57b0c0",
+      "0x57b0d0",
+      "0x57b0e0",
+      "0x57b0f0",
+      "0x57b100",
+      "0x57b110",
+      "0x57b120",
+      "0x57b130",
+      "0x57b140",
+      "0x57b150",
+      "0x57b160"
+    ],
+    "DataModel::onChildChanged 0x57b630 and its property-changed raise chain": [
+      "0x57b170",
+      "0x57b1e0",
+      "0x57b2b0",
+      "0x57b300",
+      "0x57b3a0",
+      "0x57b570",
+      "0x57b630"
+    ],
+    "SignalDesc<Instance, void(shared_ptr<Instance>, const PropertyDescriptor*)> slot 1": [
+      "0x57b680"
+    ],
+    "boost::function assign helper of rbx_httpGet / rbx_httpPost": [
+      "0x57b760"
+    ],
+    "DataModel close / stop path (RunStateOwner inlines 0x554330 / 0x554460; caller 0x46b0e0)": [
+      "0x57b800"
+    ],
+    "DataModel() (evidence name)": [
+      "0x57b9f0"
+    ],
+    "DataModel deleting destructor": [
+      "0x57bbe0"
+    ],
+    "rbx_httpGet / rbx_httpPost": [
+      "0x57bc00",
+      "0x57be10"
+    ]
+  },
+  "rows": {
+    "creators": [
+      {
+        "address": "00578160",
+        "symbol": "?create@Creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+        "size": 175,
+        "target_size": 175,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$create@VLocalBackpackItem@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpackItem@RBX@@@boost@@XZ": "0x5780e0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?create@Creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "00578030",
+        "symbol": "??$?0VLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpackItem@RBX@@@boost@@QAE@PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$?0PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x577fa0 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpackItem@RBX@@@boost@@QAE@PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "005780e0",
+        "symbol": "??$create@VLocalBackpackItem@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpackItem@RBX@@@boost@@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0LocalBackpackItem@RBX@@QAE@XZ": "0x5fccd0 (constructor (evidence name))",
+          "??$?0VLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpackItem@RBX@@@boost@@QAE@PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x578030 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VLocalBackpackItem@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpackItem@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "00578210",
+        "symbol": "?create@Creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+        "size": 175,
+        "target_size": 175,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$create@VLocalBackpack@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@XZ": "0x5771b0 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$?create@Creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "00578480",
+        "symbol": "?create@Creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+        "size": 175,
+        "target_size": 175,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$create@VTool@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTool@RBX@@@boost@@XZ": "0x578400 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?create@Creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "00578350",
+        "symbol": "??$?0VTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTool@RBX@@@boost@@QAE@PAVTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$?0PAVTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5782c0 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTool@RBX@@@boost@@QAE@PAVTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00578400",
+        "symbol": "??$create@VTool@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTool@RBX@@@boost@@XZ",
+        "size": 122,
+        "target_size": 122,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0Tool@RBX@@QAE@XZ": "0x600240 (constructor (evidence name))",
+          "??$?0VTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VTool@RBX@@@boost@@QAE@PAVTool@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x578350 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VTool@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTool@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "00578930",
+        "symbol": "??$create@VLocalBackpack@RBX@@@ServiceProvider@RBX@@QBEPAVLocalBackpack@1@XZ",
+        "size": 228,
+        "target_size": 228,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$find@VLocalBackpack@RBX@@@ServiceProvider@RBX@@QBEPAVLocalBackpack@1@XZ": "0x578530 (open row of this range (not counted), identified by its call_once push of callDoGetClassIndex 0x576800, its call to doGetClassIndex 0x575630 and to the doDeclare 0x575550 of 'LocalBackpack')",
+          "??$create@VLocalBackpack@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@XZ": "0x5771b0 (helper body exact at the bound address (not counted))",
+          "?flag@?1???$getClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x975210 (own static (bound by consistency))",
+          "??$callDoGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x576800 (helper body exact at the bound address (not counted))",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "??$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x575630 (helper body exact at the bound address (not counted))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by humanoid2008-working.json, roblox-report-view-working.json (compiled body exact at the bound address))",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VLocalBackpack@RBX@@@ServiceProvider@RBX@@QBEPAVLocalBackpack@1@XZ"
+        ]
+      }
+    ]
+  },
+  "open_rows_built": [
+    {
+      "row": "0x578530 (open, not counted)",
+      "symbol": "??$find@VLocalBackpack@RBX@@@ServiceProvider@RBX@@QBEPAVLocalBackpack@1@XZ",
+      "exact": false,
+      "size": 404,
+      "target_size": 320
+    }
+  ],
+  "identity_bindings": {
+    "??$find@VLocalBackpack@RBX@@@ServiceProvider@RBX@@QBEPAVLocalBackpack@1@XZ": "open row of this range (not counted), identified by its call_once push of callDoGetClassIndex 0x576800, its call to doGetClassIndex 0x575630 and to the doDeclare 0x575550 of 'LocalBackpack'"
+  },
+  "creator_vtables": [
+    {
+      "vtable": "0x82fffc",
+      "rtti": ".?AVCreator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x578160 (Creator::create row)"
+    },
+    {
+      "vtable": "0x830018",
+      "rtti": ".?AVCreator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x578210 (Creator::create row)"
+    },
+    {
+      "vtable": "0x830020",
+      "rtti": ".?AVCreator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x578480 (Creator::create row)"
+    }
+  ],
+  "helper_bodies_not_counted": {
+    "??$?0PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpackItem@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x577fa0",
+    "??$create@VLocalBackpack@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@XZ": "0x5771b0",
+    "??$callDoGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x576800",
+    "??$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x575630"
+  },
+  "not_exact": {
+    "0x578530 ServiceProvider::find<LocalBackpack>() const (320 B)": "built: 404 B, the native boost shared_ptr<Instance> destructor is inlined; the original calls it out of line at 0x600660 (the same blocker app-unit448 / app-unit48c record for find<C>). Open; create<LocalBackpack> 0x578930 binds it by identity."
+  },
+  "rejected": {},
+  "proposals": {
+    "v8datamodel/DataModel.h (core owner; not edited)": "(1) `extern const char sDataModel[];` instead of `extern char sDataModel[];`: the RTTI of 0x8301ac / 0x8302a0 names .?AV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3QBDB@RBX@@ and .?AV?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3QBDB@RBX@@ (const char array). (2) declare `DataModel();` (0x57b9f0, evidence name ??0DataModel@RBX@@QAE@XZ) and `virtual ~DataModel();` (0x57ad70, called by ??_G 0x57bbe0; the 13 ??_E thunks 0x57b0a0..0x57b160 jump there). (3) declare the protected overrides `virtual void onDescendentAdded(Instance*);` (0x57b040: ServiceProvider::onDescendentAdded 0x5726a0, then setDirty(true) through the IDataState subobject +0x1f0 slot 0) and `virtual void onDescendentRemoving(const boost::shared_ptr<Instance>&);` (0x57b070, ServiceProvider 0x5726c0), slots 5/6 of vtable 0x8303cc, and `virtual void onChildChanged(Instance*, const PropertyChanged&);` (0x57b630, evidence name, slot 5 of 0x8303f4). (1)-(3) are evidence-backed but not verified in a pending build here; the first also needs the Service.h onDescendentAdded / Removing proposal of app-unit570."
+  },
+  "exact_function_rows": [
+    "00578030",
+    "005780e0",
+    "00578160",
+    "00578210",
+    "00578350",
+    "00578400",
+    "00578480",
+    "00578930"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

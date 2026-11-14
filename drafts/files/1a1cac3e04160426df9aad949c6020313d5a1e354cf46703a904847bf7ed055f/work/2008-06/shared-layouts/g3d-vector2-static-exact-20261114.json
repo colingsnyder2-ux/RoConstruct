@@ -1,0 +1,165 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector2.cpp",
+  "source_sha256": "fec3b5f93a5339d9b000e39b13ae60ae26993ac18080410708ff20e5f119ba76",
+  "object_sha256": "c50edab524ef4ce0507818559466d5ad66a1019592ffadd780115b1b69e245c7",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-123639-9c3992a6\\analysis-14579d83.json",
+  "checks": [
+    {
+      "address": "00509ba0",
+      "symbol": "?zero@Vector2@G3D@@SAABV12@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 61.538462,
+        "target_bytes": 39,
+        "candidate_bytes": 39,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 19,
+        "unmasked_differences": 0,
+        "masked_bytes": 20,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 5,
+        "candidate_relocations": 5,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [],
+      "verified_references": [
+        {
+          "offset": 7,
+          "symbol": "?$S1@?1??zero@Vector2@G3D@@SAABV23@XZ@4IA",
+          "target": "009735bc",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 17,
+          "symbol": "?$S1@?1??zero@Vector2@G3D@@SAABV23@XZ@4IA",
+          "target": "009735bc",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 23,
+          "symbol": "?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A",
+          "target": "009735b4",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 29,
+          "symbol": "?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A",
+          "target": "009735b8",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 34,
+          "symbol": "?v@?1??zero@Vector2@G3D@@SAABV23@XZ@4V23@A",
+          "target": "009735b4",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    },
+    {
+      "address": "00509bd0",
+      "symbol": "?inf@Vector2@G3D@@SAABV12@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 60.869565,
+        "target_bytes": 92,
+        "candidate_bytes": 92,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 44,
+        "unmasked_differences": 0,
+        "masked_bytes": 48,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 12,
+        "candidate_relocations": 12,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [],
+      "verified_references": [
+        {
+          "offset": 7,
+          "symbol": "?$S4@?1??inf@Vector2@G3D@@SAABV23@XZ@4IA",
+          "target": "009735c8",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 14,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 20,
+          "symbol": "?$S4@?1??inf@Vector2@G3D@@SAABV23@XZ@4IA",
+          "target": "009735c8",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 26,
+          "symbol": "__imp___Inf",
+          "target": "008024ac",
+          "status": "verified_data_import"
+        },
+        {
+          "offset": 37,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 45,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 56,
+          "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+          "target": "0096f020",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 64,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 70,
+          "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+          "target": "0096f018",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 76,
+          "symbol": "?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+          "target": "009735c0",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 82,
+          "symbol": "?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+          "target": "009735c4",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 87,
+          "symbol": "?v@?1??inf@Vector2@G3D@@SAABV23@XZ@4V23@A",
+          "target": "009735c0",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

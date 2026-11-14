@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RakPeer.cpp",
+      "checks": [
+        {
+          "symbol": "?NumberOfConnections@RakPeer@@UBEGXZ",
+          "references": [],
+          "calls": [],
+          "addr": "004bb6a0"
+        },
+        {
+          "symbol": "?DisableSecurity@RakPeer@@UAEXXZ",
+          "references": [],
+          "calls": [],
+          "addr": "004bb670"
+        }
+      ]
+    }
+  ]
+}

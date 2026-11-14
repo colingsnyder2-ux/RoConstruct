@@ -1,0 +1,35 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\BoostThreadStartup2008.cpp",
+      "checks": [
+        {
+          "addr": "005a67f0",
+          "symbol": "??1thread_param@?A0xa58bff48@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "005f1c70",
+              "symbol": "??1condition_impl@detail@boost@@QAE@XZ",
+              "kind": "direct"
+            },
+            {
+              "offset": 55,
+              "target": "00594cb0",
+              "symbol": "??1mutex@boost@@QAE@XZ",
+              "kind": "direct"
+            }
+          ],
+          "references": [
+            {
+              "offset": 3,
+              "target": "007d2f48",
+              "symbol": "__ehhandler$??1thread_param@?A0xa58bff48@@QAE@XZ",
+              "evidence": "Independently audited full exception graph boost-thread-param-eh-20261114.json."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

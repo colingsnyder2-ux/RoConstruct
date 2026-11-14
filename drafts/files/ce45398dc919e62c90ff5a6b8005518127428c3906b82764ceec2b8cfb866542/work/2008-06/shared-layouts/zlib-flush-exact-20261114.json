@@ -1,0 +1,137 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibWtrees.cpp",
+  "source_sha256": "b56d5d7c8ae7c201c017d42a7bf1973d4c9512f1905e8c1692e7289ce70f75a8",
+  "object_sha256": "78ea19883dbfc72f6ecaee818691a5a2b8764774e870ded77d59234dc75b4dd6",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-124645-4fcda1ae\\analysis-25ba848a.json",
+  "checks": [
+    {
+      "address": "007a5a00",
+      "symbol": "__tr_flush_block",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 91.085271,
+        "target_bytes": 516,
+        "candidate_bytes": 516,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 468,
+        "unmasked_differences": 0,
+        "masked_bytes": 48,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 12,
+        "missing_relocations": [],
+        "extra_relocations": [
+          44,
+          56,
+          68,
+          78,
+          145,
+          319,
+          340,
+          481,
+          491,
+          508
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8854224,
+          120
+        ],
+        [
+          8853072,
+          1152
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 43,
+          "target": "007a5150",
+          "symbol": "_set_data_type",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 55,
+          "target": "007a54a0",
+          "symbol": "_build_tree",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 67,
+          "target": "007a54a0",
+          "symbol": "_build_tree",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 77,
+          "target": "007a56a0",
+          "symbol": "_build_bl_tree",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 144,
+          "target": "007a5770",
+          "symbol": "__tr_stored_block",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 318,
+          "target": "007a4af0",
+          "symbol": "_send_all_trees",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 339,
+          "target": "007a4d50",
+          "symbol": "_compress_block",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 480,
+          "target": "007a4d50",
+          "symbol": "_compress_block",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 490,
+          "target": "007a4190",
+          "symbol": "_init_block",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 507,
+          "target": "007a52c0",
+          "symbol": "_bi_windup",
+          "kind": "jump",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 469,
+          "symbol": "_static_dtree",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 474,
+          "symbol": "_static_ltree",
+          "status": "verified_readonly_data"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

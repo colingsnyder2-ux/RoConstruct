@@ -1,0 +1,27 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DLine.cpp",
+      "checks": [
+        {
+          "addr": "007bbce0",
+          "symbol": "?intersection@Line@G3D@@QBE?AVVector3@2@ABVPlane@2@@Z",
+          "calls": [
+            {
+              "offset": 41,
+              "target": "00525ad0",
+              "symbol": "?getEquation@Plane@G3D@@QBEXAAVVector3@2@AAM@Z",
+              "kind": "direct"
+            },
+            {
+              "offset": 100,
+              "target": "00510960",
+              "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

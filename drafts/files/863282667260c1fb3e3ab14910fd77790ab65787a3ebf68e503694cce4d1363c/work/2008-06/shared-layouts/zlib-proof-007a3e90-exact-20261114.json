@@ -1,0 +1,379 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibCrc32.cpp",
+  "source_sha256": "3f3387fad8705a47b46a73c443761e44f3f70fe8f97a303ff3bf883605156a95",
+  "object_sha256": "5898f963e74e9d93cec1899840906a6e919f31508eae9672f4808eb6654cc408",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-124645-4fcda1ae\\analysis-8458af97.json",
+  "checks": [
+    {
+      "address": "007a3e90",
+      "symbol": "_crc32_little",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 89.659864,
+        "target_bytes": 735,
+        "candidate_bytes": 735,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 583,
+        "unmasked_differences": 0,
+        "masked_bytes": 152,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 38,
+        "candidate_relocations": 38,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8844544,
+          8192
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8845568,
+          7168
+        ],
+        [
+          8846592,
+          6144
+        ],
+        [
+          8844544,
+          8192
+        ],
+        [
+          8847616,
+          5120
+        ],
+        [
+          8844544,
+          8192
+        ]
+      ],
+      "verified_calls": [],
+      "verified_references": [
+        {
+          "offset": 38,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 88,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 101,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 113,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 125,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 156,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 169,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 181,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 194,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 223,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 239,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 251,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 263,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 291,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 304,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 316,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 329,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 352,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 368,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 380,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 392,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 414,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 430,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 442,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 455,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 487,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 500,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 512,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 524,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 547,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 565,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 577,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 590,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 632,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 650,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 662,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 674,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 721,
+          "symbol": "_crc_table",
+          "status": "verified_readonly_data"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

@@ -1,0 +1,368 @@
+{
+  "DataModelCreate": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelCreate.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "DataModelLock": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelLock.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxConstructor2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxConstructor2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderSceneViewBase2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneViewBase2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderSceneViewRbxGfx2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneViewRbxGfx2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxRender2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxRender2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "SceneManagerAggregating2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SceneManagerAggregating2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "PartInstanceLifetime": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceLifetime.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AppUnit598PartInstance": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit598PartInstance.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "PartInstanceCoordinate": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartInstanceCoordinate.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "InstanceParent": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AppUnit5ECSurfaces": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5ECSurfaces.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AppUnit5F0_2008Surface": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F0_2008Surface.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartConstructor2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartConstructor2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "PartOutfitChanged2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PartOutfitChanged2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "SceneManager2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SceneManager2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "InstanceFullName": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceFullName.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "InstanceDescendantPropagation": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceDescendantPropagation.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxDescendant2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxDescendant2008.cpp": [
+      true,
+      "ViewRbxGfxDescendant2008.cpp\nUnknown compiler version - please run the configure tests and report the results"
+    ]
+  },
+  "ViewRbxGfxLifecycle2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxLifecycle2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewMaterialFactory2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewMaterialFactory2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AggregatingSceneManagerPrerender2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AggregatingSceneManagerPrerender2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AggregatingSceneManagerOptimize2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AggregatingSceneManagerOptimize2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AggregatingSceneManagerBucket2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AggregatingSceneManagerBucket2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AggregateChunk2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AggregateChunk2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AppUnit540_2008AggregatingSceneManager": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit540_2008AggregatingSceneManager.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderSceneNew2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneNew2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPart": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPart.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartChunk": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartChunk.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartChunkRecovery2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartChunkRecovery2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartSurfaceUpdate2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartSurfaceUpdate2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartMesh2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartMesh2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPartMesh2008PBB": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPartMesh2008PBB.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "InstanceSignalDescriptors": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceSignalDescriptors.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderSceneBase2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderSceneBase2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "Clusterer2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Clusterer2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshConstruction2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshConstruction2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshBounds2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshBounds2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshVAR2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshVAR2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshUpdate2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshUpdate2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshShadowVolume2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshShadowVolume2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshShadow2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshShadow2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshRender2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshRender2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshMethods2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshMethods2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshLifetime2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshLifetime2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshLevelLifetime2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshLevelLifetime2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "RenderBaseMeshVertices2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderBaseMeshVertices2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewBrickMeshBuild2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewBrickMeshBuild2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewBevelMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewBevelMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewWedgeMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewWedgeMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewTorsoMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewTorsoMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewHeadMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewHeadMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewCylinderMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewCylinderMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewSphereMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewSphereMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewPBBMesh": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewPBBMesh.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewNewSurfaceMaterial2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewNewSurfaceMaterial2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxLighting2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxLighting2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "ViewRbxGfxSkybox2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ViewRbxGfxSkybox2008.cpp": [
+      true,
+      "content cache hit"
+    ]
+  },
+  "AggregateChunkBuild2008": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AggregateChunkBuild2008.cpp": [
+      true,
+      "AggregateChunkBuild2008.cpp"
+    ]
+  },
+  "RenderMaterialNew": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderMaterialNew.cpp": [
+      true,
+      "RenderMaterialNew.cpp"
+    ]
+  },
+  "RenderMaterial": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RenderMaterial.cpp": [
+      true,
+      "RenderMaterial.cpp"
+    ]
+  }
+}

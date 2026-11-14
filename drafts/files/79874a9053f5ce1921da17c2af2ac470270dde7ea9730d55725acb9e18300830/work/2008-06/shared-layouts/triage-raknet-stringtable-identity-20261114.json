@@ -1,0 +1,9 @@
+{
+  "source": "rebuild/2008-06/native-classes/RakStringTable.cpp",
+  "method": "004d42a0 StringTable::RemoveReference",
+  "evidence": [
+    "Original AddReference 004d4260 increments 00972704 and stores an allocated StringTable at 00972700 when count becomes one. RemoveReference 004d42a0 decrements the same count and destroys and clears that instance when count reaches zero, matching donor source.",
+    "Original calls 004d41f0 for StringTable destruction and 006a067a for operator delete.",
+    "Local inactive proof only; ABI, runtime and server credit are separate."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "methods": {
+    "007a3c20": "adler32",
+    "007a3e90": "crc32_little",
+    "0079fbc0": "longest_match",
+    "0079fd20": "longest_match_fast",
+    "007a32d0": "inflate_fast"
+  },
+  "evidence": [
+    "The 622-byte Adler-32 implementation and 344/159-byte longest-match implementations match original bytes without relocations, with source-specific checksum and compression logic.",
+    "CRC-32 matches 735 bytes after relocation normalization; all 38 local table references were checked.",
+    "The 1110-byte inflate_fast decompressor matches source after relocation normalization; its three local data references were checked.",
+    "These are inactive local code, data and reference proofs; provider, ABI, runtime and server credit are separate."
+  ]
+}

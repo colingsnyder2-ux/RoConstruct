@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+      "checks": [
+        {
+          "addr": "00518740",
+          "symbol": "??KVector3@G3D@@QBE?AV01@M@Z",
+          "calls": [
+            {
+              "offset": 54,
+              "target": "00510960",
+              "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

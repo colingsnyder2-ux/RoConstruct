@@ -1,0 +1,58 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DColor3.cpp",
+      "checks": [
+        {
+          "addr": "00514a60",
+          "symbol": "?white@Color3@G3D@@SAABV12@XZ",
+          "calls": [],
+          "references": [
+            {
+              "offset": 7,
+              "symbol": "?$S11@?1??white@Color3@G3D@@SAABV23@XZ@4IA",
+              "target": "00973774",
+              "addend": 0,
+              "evidence": "Original 00514a60 tests address 00973774 as local-static guard; source Color3::white declares static Color3 c, and 00514a60 initializes it only when guard is clear."
+            },
+            {
+              "offset": 17,
+              "symbol": "?$S11@?1??white@Color3@G3D@@SAABV23@XZ@4IA",
+              "target": "00973774",
+              "addend": 0,
+              "evidence": "Original 00514a60 sets the same local-static guard at 00973774 after initialization."
+            },
+            {
+              "offset": 23,
+              "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+              "target": "00973768",
+              "addend": 0,
+              "evidence": "Original 00514a60 stores first Color3::white component at static local object base 00973768."
+            },
+            {
+              "offset": 29,
+              "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+              "target": "00973768",
+              "addend": 4,
+              "evidence": "Original 00514a60 stores second Color3::white component at static local object base+4, 0097376c."
+            },
+            {
+              "offset": 35,
+              "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+              "target": "00973768",
+              "addend": 8,
+              "evidence": "Original 00514a60 stores third Color3::white component at static local object base+8, 00973770."
+            },
+            {
+              "offset": 40,
+              "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+              "target": "00973768",
+              "addend": 0,
+              "evidence": "Original 00514a60 returns address 00973768 for the function-local static Color3 object declared by Color3::white."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

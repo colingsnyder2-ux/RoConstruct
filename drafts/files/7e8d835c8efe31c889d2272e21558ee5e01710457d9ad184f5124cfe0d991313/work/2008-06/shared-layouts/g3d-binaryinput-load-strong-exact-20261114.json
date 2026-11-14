@@ -1,0 +1,143 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DBinaryInput.cpp",
+  "source_sha256": "5e0389e8c6cddb7afeb3cbe9fc23c7c5b8ebc85de4c521a5556c22ced324f671",
+  "object_sha256": "b14b44e4d73bf696daf77cd529b998a414118ddcd1f7d9a4f5e470a7bad548d1",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-104412-30bcd2d6\\analysis-33e66a14.json",
+  "checks": [
+    {
+      "address": "005157d0",
+      "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 84.126984,
+        "target_bytes": 189,
+        "candidate_bytes": 189,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 149,
+        "unmasked_differences": 0,
+        "masked_bytes": 40,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 8,
+        "candidate_relocations": 10,
+        "missing_relocations": [],
+        "extra_relocations": [
+          31,
+          79
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8554752,
+          66
+        ],
+        [
+          9279868,
+          16
+        ],
+        [
+          8547080,
+          3
+        ]
+      ],
+      "verified_calls": [
+        {
+          "offset": 30,
+          "target": "00508bb0",
+          "symbol": "?realloc@System@G3D@@SAPAXPAXI@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 62,
+          "target": "008028a4",
+          "symbol": "__imp_??0exception@std@@QAE@ABQBD@Z",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 78,
+          "target": "006a158c",
+          "symbol": "__CxxThrowException@8",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 111,
+          "target": "00802814",
+          "symbol": "__imp__fopen",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 126,
+          "target": "008027b8",
+          "symbol": "__imp__fseek",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 158,
+          "target": "008027c0",
+          "symbol": "__imp__fread",
+          "kind": "import",
+          "status": "verified_import"
+        },
+        {
+          "offset": 165,
+          "target": "008027d4",
+          "symbol": "__imp__fclose",
+          "kind": "import",
+          "status": "verified_import"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 58,
+          "symbol": "??_C@_0EC@NPIDPODH@Tried?5to?5read?5a?5larger?5memory?5ch@",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 64,
+          "symbol": "__imp_??0exception@std@@QAE@ABQBD@Z",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 69,
+          "symbol": "__TI1?AVexception@std@@",
+          "target": "008d997c",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 106,
+          "symbol": "??_C@_02JDPG@rb?$AA@",
+          "status": "verified_readonly_data"
+        },
+        {
+          "offset": 113,
+          "symbol": "__imp__fopen",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 128,
+          "symbol": "__imp__fseek",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 160,
+          "symbol": "__imp__fread",
+          "status": "verified_call_import"
+        },
+        {
+          "offset": 167,
+          "symbol": "__imp__fclose",
+          "status": "verified_call_import"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

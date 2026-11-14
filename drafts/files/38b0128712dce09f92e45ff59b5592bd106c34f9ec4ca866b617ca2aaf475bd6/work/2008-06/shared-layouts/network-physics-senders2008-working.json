@@ -1,0 +1,726 @@
+{
+  "class": "RBX::Network::PhysicsSender, RBX::Network::InterpolatingPhysicsReceiver",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-network-physics-senders2008/NativeNetworkPhysicsSenders2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeNetworkPhysicsSenders2008Layout.cpp"
+    ],
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-network-physics-senders2008/NativeNetworkPhysicsSenders2008.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkPhysicsSenders2008.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_network_physics_senders2008.py": "8e8bc372bd6bcb012dc7683ffef8d1a9256323730585e42cf7065954471e56f8",
+    "rebuild/2008-06/native-classes/NetworkPhysicsSenders2008.cpp": "2001f98be5b43de2fa05e03c3ad9d7d6592f3f8a2af609e441ef7a8c3c36d79a",
+    "rebuild/2008-06/tests/NativeNetworkPhysicsSenders2008Layout.cpp": "cdaf890e07fe8293dcb0336e3f3e1257235d9e57b4cbd0f254bf235f994f4b9e",
+    "rebuild/2008-06/native-headers/Network/PhysicsSenders2008.h": "f3e22a64b34eab55652e5ac2172f265abac7806701b691451629882b5ed33917",
+    "rebuild/2008-06/native-headers/Network/PhysicsReplication.h": "c8318741e9b6e6b42e3686681809c3c1a19afbcbb2fc3383c2bb2afb02183e63"
+  },
+  "objects": {
+    "NativeNetworkPhysicsSenders2008Layout.obj": "e72d40633d741da1fb6bf9220abf1768b106413a4ae525afc2477ea700450d19",
+    "NativeNetworkPhysicsSenders2008.obj": "7b35269c968572b5f33a5a0f5f4f24f257d4b20101eabf6147c263b83e54d6d8"
+  },
+  "layout": "PhysicsSender 0x74 (items multi_index_container +4 [hashed_unique part, ordered_non_unique priority greater<double>, ordered_non_unique int +0x44], index-1 iterator +0x38, replicator +0x3c, step count +0x40, shared_ptr<PhysicsService> +0x44, scoped_connection +0x4c/+0x60; PartItem 0x50); InterpolatingPhysicsReceiver 0x3c (replicator +4, items +8 [hashed_unique part, ordered_non_unique unsigned +8]; PartItem 0x280 with History[8] of 0x4c at +0x20).",
+  "methods": [
+    {
+      "address": "004ca5b0",
+      "symbol": "?hash_value@RBX@@YAIABV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+      "size": 14,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004ccb10",
+      "symbol": "??0PhysicsSender@Network@RBX@@QAE@PAVReplicator@12@@Z",
+      "size": 125,
+      "exact": true,
+      "verified_targets": {
+        "??_7PhysicsSender@Network@RBX@@6B@": "0x826928 (RTTI .?AVPhysicsSender@Network@RBX@@, offset 0x0)",
+        "??0?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z": "0x4cc400"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ccb90",
+      "symbol": "??1PhysicsSender@Network@RBX@@UAE@XZ",
+      "size": 152,
+      "exact": true,
+      "verified_targets": {
+        "??_7PhysicsSender@Network@RBX@@6B@": "0x826928 (RTTI .?AVPhysicsSender@Network@RBX@@, offset 0x0)",
+        "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+        "??1?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ": "0x4ccab0"
+      },
+      "local_eh": [
+        "__ehhandler$??1PhysicsSender@Network@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004ccde0",
+      "symbol": "??_GPhysicsSender@Network@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1PhysicsSender@Network@RBX@@UAE@XZ": "0x4ccb90",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cc400",
+      "symbol": "??0?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z",
+      "size": 95,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE@ABU?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@3@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z": "0x4cbdc0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z"
+      ]
+    },
+    {
+      "address": "004cbdc0",
+      "symbol": "??0?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE@ABU?$cons@V?$tuple@IU?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@23@@tuples@3@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@Z",
+      "size": 88,
+      "exact": true,
+      "verified_targets": {
+        "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ": "0x4cadd0",
+        "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ": "0x4cacc0",
+        "??0?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z": "0x4cb540",
+        "?calculate_max_load@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXXZ": "0x4ca090"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cacc0",
+      "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+      "size": 129,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cadd0",
+      "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+      "size": 129,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cb540",
+      "symbol": "??0?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z",
+      "size": 122,
+      "exact": true,
+      "verified_targets": {
+        "?prime_list@?1??next_prime@bucket_array_base@detail@multi_index@boost@@KAII@Z@4QBIB": "0x824988 (external)",
+        "??$_Lower_bound@PBIIH@std@@YAPBIPBI0ABIPAH@Z": "0x4acf00",
+        "??$_Allocate@Uhashed_index_node_impl@detail@multi_index@boost@@@std@@YAPAUhashed_index_node_impl@detail@multi_index@boost@@IPAU1234@@Z": "0x420b50"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ca090",
+      "symbol": "?calculate_max_load@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXXZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "__real@4f800000": "0x819778 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ccab0",
+      "symbol": "??1?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "?delete_all_nodes_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXXZ": "0x4cc460",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$multi_index_container@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004cc460",
+      "symbol": "?delete_all_nodes_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXXZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c9b20",
+      "symbol": "?link@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@PAUhashed_index_node_impl@234@@Z",
+      "size": 39,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c9d90",
+      "symbol": "??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z",
+      "size": 149,
+      "exact": true,
+      "verified_targets": {
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z"
+      ]
+    },
+    {
+      "address": "004cad90",
+      "symbol": "?link_point@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@AAPAUhashed_index_node_impl@234@Uhashed_unique_tag@234@@Z",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cae60",
+      "symbol": "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z",
+      "size": 212,
+      "exact": true,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710 (external)",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004caf40",
+      "symbol": "?in_place@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABUPartItem@PhysicsSender@Network@RBX@@PAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@Uordered_non_unique_tag@234@@Z",
+      "size": 202,
+      "exact": true,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710 (external)",
+        "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c66c0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cb010",
+      "symbol": "?insert_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 75,
+      "exact": true,
+      "verified_targets": {
+        "??0PartItem@PhysicsSender@Network@RBX@@QAE@ABU0123@@Z": "0x4c9d90"
+      },
+      "local_eh": [
+        "__ehhandler$?insert_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z"
+      ]
+    },
+    {
+      "address": "004cb060",
+      "symbol": "??4PartItem@PhysicsSender@Network@RBX@@QAEAAU0123@ABU0123@@Z",
+      "size": 95,
+      "exact": true,
+      "verified_targets": {
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external, evidence name)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cb200",
+      "symbol": "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABNAAUlink_info@1234@Uordered_non_unique_tag@234@@Z",
+      "size": 128,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cb280",
+      "symbol": "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NHAAUlink_info@1234@Uordered_non_unique_tag@234@@Z",
+      "size": 124,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cb300",
+      "symbol": "?erase_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEXPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cb7b0",
+      "symbol": "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 157,
+      "exact": true,
+      "verified_targets": {
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NHAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb280",
+        "?insert_@?$index_base@UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@IAEPAU?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cb010",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cb850",
+      "symbol": "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z",
+      "size": 134,
+      "exact": true,
+      "verified_targets": {
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cb5c0",
+      "symbol": "?unchecked_rehash@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z",
+      "size": 482,
+      "exact": true,
+      "verified_targets": {
+        "??0?$bucket_array@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z": "0x4cb540",
+        "??$_Allocate@I@std@@YAPAIIPAI@Z": "0x420b50",
+        "__real@4f800000": "0x819778 (external)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$?unchecked_rehash@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z"
+      ]
+    },
+    {
+      "address": "004cbe20",
+      "symbol": "?reserve@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z",
+      "size": 117,
+      "exact": true,
+      "verified_targets": {
+        "__real@4f800000": "0x819778 (external)",
+        "__real@3f800000": "0x827494 (external)",
+        "?unchecked_rehash@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXI@Z": "0x4cb5c0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cbea0",
+      "symbol": "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z",
+      "size": 157,
+      "exact": true,
+      "verified_targets": {
+        "?link_point@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAE_NABNAAUlink_info@1234@Uordered_non_unique_tag@234@@Z": "0x4cb200",
+        "?insert_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@ABUPartItem@PhysicsSender@Network@RBX@@PAU5234@@Z": "0x4cb7b0",
+        "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z": "0x4c6980 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cbf40",
+      "symbol": "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 97,
+      "exact": true,
+      "verified_targets": {
+        "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z": "0x4c69e0 (external)",
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@U?$less@H@std@@U?$nth_layer@$02UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@234@@Z": "0x4cb850"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004cc580",
+      "symbol": "?erase_@?$hashed_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXPAU?$hashed_index_node@U?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+      "size": 86,
+      "exact": true,
+      "verified_targets": {
+        "?erase_@?$ordered_index@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@U?$nth_layer@$01UPartItem@PhysicsSender@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@N$07@multi_index@boost@@U?$greater@N@std@@Una@mpl@3@@23@U?$ordered_non_unique@U?$member@UPartItem@PhysicsSender@Network@RBX@@H$0EE@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@U673@@multi_index@boost@@V?$allocator@UPartItem@PhysicsSender@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@IAEXPAU?$ordered_index_node@U?$ordered_index_node@U?$index_node_base@UPartItem@PhysicsSender@Network@RBX@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z": "0x4cbf40"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b5e80",
+      "symbol": "??0InterpolatingPhysicsReceiver@Network@RBX@@QAE@PAVReplicator@12@@Z",
+      "size": 70,
+      "exact": true,
+      "verified_targets": {
+        "??_7InterpolatingPhysicsReceiver@Network@RBX@@6B@": "0x824ee4 (RTTI .?AVInterpolatingPhysicsReceiver@Network@RBX@@, offset 0x0)",
+        "??0?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@Z": "0x4b0ae0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b6290",
+      "symbol": "??_GInterpolatingPhysicsReceiver@Network@RBX@@UAEPAXI@Z",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {
+        "??1?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ": "0x4b58f0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b0ae0",
+      "symbol": "??0?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@Z",
+      "size": 161,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "?empty_initialize@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ": "0x4acc30",
+        "??0?$bucket_array@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z": "0x4cb540",
+        "?calculate_max_load@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXXZ": "0x4ca090"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@ABU?$default_constructible_tuple_cons@U?$cons@V?$tuple@IU?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@Unull_type@tuples@3@U783@U783@U783@U783@U783@@tuples@boost@@U?$cons@V?$tuple@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@Unull_type@tuples@3@U673@U673@U673@U673@U673@U673@U673@@tuples@boost@@Unull_type@23@@23@@tuples@boost@@@detail@12@ABV?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@Z"
+      ]
+    },
+    {
+      "address": "004acc30",
+      "symbol": "?empty_initialize@?$ordered_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@U?$less@I@std@@U?$nth_layer@$01UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uordered_non_unique_tag@723@@detail@multi_index@boost@@AAEXXZ",
+      "size": 153,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004cb540",
+      "symbol": "??0?$bucket_array@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@multi_index@boost@@QAE@ABV?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@PAUhashed_index_node_impl@123@I@Z",
+      "size": 122,
+      "exact": true,
+      "verified_targets": {
+        "?prime_list@?1??next_prime@bucket_array_base@detail@multi_index@boost@@KAII@Z@4QBIB": "0x824988 (external)",
+        "??$_Lower_bound@PBIIH@std@@YAPBIPBI0ABIPAH@Z": "0x4acf00",
+        "??$_Allocate@Uhashed_index_node_impl@detail@multi_index@boost@@@std@@YAPAUhashed_index_node_impl@detail@multi_index@boost@@IPAU1234@@Z": "0x420b50"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ca090",
+      "symbol": "?calculate_max_load@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@AAEXXZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "__real@4f800000": "0x819778 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b58f0",
+      "symbol": "??1?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "?delete_all_nodes_@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXXZ": "0x4b43c0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b43c0",
+      "symbol": "?delete_all_nodes_@?$hashed_index@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@U?$hash@V?$shared_ptr@VPartInstance@RBX@@@boost@@@3@U?$equal_to@V?$shared_ptr@VPartInstance@RBX@@@boost@@@std@@U?$nth_layer@$00UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAEXXZ",
+      "size": 74,
+      "exact": true,
+      "verified_targets": {
+        "??1PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ": "0x4af950",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004af950",
+      "symbol": "??1PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ",
+      "size": 128,
+      "exact": true,
+      "verified_targets": {
+        "??1History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ": "0x4ae910",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1PartItem@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004ae910",
+      "symbol": "??1History@InterpolatingPhysicsReceiver@Network@RBX@@QAE@XZ",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004acf00",
+      "symbol": "??$_Lower_bound@PBIIH@std@@YAPBIPBI0ABIPAH@Z",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00420b50",
+      "symbol": "??$_Allocate@Uhashed_index_node_impl@detail@multi_index@boost@@@std@@YAPAUhashed_index_node_impl@detail@multi_index@boost@@IPAU1234@@Z",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "msvcr90.dll!??0exception@std@@QAE@ABQBD@Z",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (external)",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (RTTI .?AVbad_alloc@std@@, offset 0x0)",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00420b50",
+      "symbol": "??$_Allocate@I@std@@YAPAIIPAI@Z",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "msvcr90.dll!??0exception@std@@QAE@ABQBD@Z",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (external)",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (RTTI .?AVbad_alloc@std@@, offset 0x0)",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": []
+    }
+  ],
+  "support_rows": [
+    {
+      "address": "004c6710",
+      "symbol": "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z",
+      "size": 87,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c66c0",
+      "symbol": "?increment@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z",
+      "size": 73,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c6980",
+      "symbol": "?link@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@W4ordered_index_side@234@00@Z",
+      "size": 94,
+      "exact": true,
+      "verified_targets": {
+        "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6870"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c6870",
+      "symbol": "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+      "size": 267,
+      "exact": true,
+      "verified_targets": {
+        "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6770",
+        "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c67f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c69e0",
+      "symbol": "?rebalance_for_erase@ordered_index_node_impl@detail@multi_index@boost@@SAPAU1234@PAU1234@Uparent_ref@ordered_index_node_compressed_base@234@AAPAU1234@2@Z",
+      "size": 762,
+      "exact": true,
+      "verified_targets": {
+        "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6770",
+        "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c67f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c9930",
+      "symbol": "?restore@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@00@Z",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z": "0x4c6710",
+        "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z": "0x4c6870"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004c6770",
+      "symbol": "?rotate_left@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+      "size": 121,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c67f0",
+      "symbol": "?rotate_right@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+      "size": 121,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "not_exact": [
+    [
+      "004cd920",
+      "PhysicsSender::step (921 bytes): needs the native Replicator (+0x3c use), ServiceProvider::create<PhysicsService> 004cd8d0, the static signal 0097abec connect 004a3340 and the item update 004c9e30; declared only, bound through vtable 00826928 slot 1."
+    ],
+    [
+      "004cce00",
+      "PhysicsSender::sendPackets (BitStream packet build, item copy 004c9d90, Replicator API); declared only, bound through vtable slot 2."
+    ],
+    [
+      "004cbfb0",
+      "ordered_index<priority, greater<double>>::replace_ (503 B): byte-exact, but its call target, the index-2 replace_ 004cb8e0, is not (337 B original vs 495 B compiled from the explicit instantiation), so it is not counted."
+    ],
+    [
+      "004cb8e0",
+      "ordered_index<lastSendStep, less<int>>::replace_: 337 B original vs 495 B compiled (the boost 1.34.1 body with in_place inlined); not derived."
+    ],
+    [
+      "004c8fa0",
+      "InterpolatingPhysicsReceiver::step (iterates items, 004c6f70 interpolation; World/Clump/MotorJoint API); declared only, bound through vtable 00824ee4 slot 1."
+    ],
+    [
+      "004c9120",
+      "InterpolatingPhysicsReceiver::receivePacket (Replicator / IdSerializer deserialize 004a8b60); declared only, bound through vtable slot 2."
+    ]
+  ],
+  "vtables": [
+    {
+      "vtable": "0x826928",
+      "symbol": "??_7PhysicsSender@Network@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EPhysicsSender@Network@RBX@@UAEPAXI@Z -> 0x4ccde0 (own row (??_G))",
+        "1": "?step@PhysicsSender@Network@RBX@@UAEXXZ -> 0x4cd920 (declared only (open))",
+        "2": "?sendPackets@PhysicsSender@Network@RBX@@UAEHH@Z -> 0x4cce00 (declared only (open))"
+      }
+    },
+    {
+      "vtable": "0x824ee4",
+      "symbol": "??_7InterpolatingPhysicsReceiver@Network@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EInterpolatingPhysicsReceiver@Network@RBX@@UAEPAXI@Z -> 0x4b6290 (own row (??_G))",
+        "1": "?step@InterpolatingPhysicsReceiver@Network@RBX@@UAEXI@Z -> 0x4c8fa0 (declared only (open))",
+        "2": "?receivePacket@InterpolatingPhysicsReceiver@Network@RBX@@UAEXAAVBitStream@RakNet@@I@Z -> 0x4c9120 (declared only (open))"
+      }
+    }
+  ],
+  "proposals": [],
+  "exact_distinct_addresses": [
+    "00420b50",
+    "004acc30",
+    "004acf00",
+    "004ae910",
+    "004af950",
+    "004b0ae0",
+    "004b43c0",
+    "004b58f0",
+    "004b5e80",
+    "004b6290",
+    "004c9b20",
+    "004c9d90",
+    "004ca090",
+    "004ca5b0",
+    "004cacc0",
+    "004cad90",
+    "004cadd0",
+    "004cae60",
+    "004caf40",
+    "004cb010",
+    "004cb060",
+    "004cb200",
+    "004cb280",
+    "004cb300",
+    "004cb540",
+    "004cb5c0",
+    "004cb7b0",
+    "004cb850",
+    "004cbdc0",
+    "004cbe20",
+    "004cbea0",
+    "004cbf40",
+    "004cc400",
+    "004cc460",
+    "004cc580",
+    "004ccab0",
+    "004ccb10",
+    "004ccb90",
+    "004ccde0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. The four slot bodies need the native Replicator and remain open."
+}

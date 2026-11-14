@@ -1,0 +1,36 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\StringCompressor.cpp",
+  "source_sha256": "f3ca8adbc38b97f079e4d0ed52d935d33d3f4b0271c0d031ffdcc4c8712e8ebb",
+  "checks": [
+    {
+      "address": "004ba9d0",
+      "symbol": "?RemoveReference@StringCompressor@@SAXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 66.666667,
+        "target_bytes": 57,
+        "candidate_bytes": 57,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 33,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 4,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          32,
+          38
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-030806-ddea8f69\\analysis-883ce3c5.json",
+      "object_sha256": "8530ebb89759407beef5f41b758184a436fb899660779a78098fdfd5b75832c8"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

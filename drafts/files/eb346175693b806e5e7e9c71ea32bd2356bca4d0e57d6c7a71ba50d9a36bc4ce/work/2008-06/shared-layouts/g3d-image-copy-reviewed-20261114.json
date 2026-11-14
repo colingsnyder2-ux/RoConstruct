@@ -1,0 +1,51 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DGImage.cpp",
+      "checks": [
+        {
+          "addr": "0050e160",
+          "symbol": "?resize@GImage@G3D@@QAEXHHH@Z",
+          "calls": [
+            {
+              "offset": 21,
+              "target": "00507d00",
+              "symbol": "?free@System@G3D@@SAXPAX@Z",
+              "kind": "direct"
+            },
+            {
+              "offset": 63,
+              "target": "00508b20",
+              "symbol": "?calloc@System@G3D@@SAPAXII@Z",
+              "kind": "direct"
+            }
+          ]
+        },
+        {
+          "addr": "0050e1b0",
+          "symbol": "?_copy@GImage@G3D@@AAEXABV12@@Z",
+          "calls": [
+            {
+              "offset": 17,
+              "target": "00507d00",
+              "symbol": "?free@System@G3D@@SAXPAX@Z",
+              "kind": "direct"
+            },
+            {
+              "offset": 56,
+              "target": "00508530",
+              "symbol": "?malloc@System@G3D@@SAPAXI@Z",
+              "kind": "direct"
+            },
+            {
+              "offset": 70,
+              "target": "006a17e0",
+              "symbol": "_memcpy",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DBinaryOutput.cpp",
+      "checks": [
+        {
+          "addr": "00519810",
+          "symbol": "?setEndian@BinaryOutput@G3D@@QAEXW4G3DEndian@2@@Z",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "00508880",
+              "symbol": "?machineEndian@System@G3D@@SA?AW4G3DEndian@2@XZ",
+              "kind": "direct"
+            }
+          ]
+        },
+        {
+          "addr": "00519a30",
+          "symbol": "?writeString@BinaryOutput@G3D@@QAEXPBD@Z",
+          "calls": [
+            {
+              "offset": 54,
+              "target": "00519830",
+              "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+              "kind": "direct"
+            },
+            {
+              "offset": 68,
+              "target": "005089e0",
+              "symbol": "?memcpy@System@G3D@@SAXPAXPBXI@Z",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

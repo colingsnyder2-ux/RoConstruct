@@ -169,3 +169,4 @@ void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descrip
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class ATL::CComPtrBase<IHTMLStyle>;
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string

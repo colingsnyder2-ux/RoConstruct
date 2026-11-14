@@ -1,0 +1,101 @@
+{
+  "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": [
+    "00515e00"
+  ],
+  "??0TextInput@G3D@@QAE@W4FS@01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVSettings@01@@Z": [
+    "00517c50"
+  ],
+  "?readNumber@TextInput@G3D@@QAENXZ": [
+    "00517ed0"
+  ],
+  "__ftol2_sse": [
+    "006a17f0"
+  ],
+  "?malloc@System@G3D@@SAPAXI@Z": [
+    "00508530"
+  ],
+  "??1TextInput@G3D@@QAE@XZ": [
+    "00487b00"
+  ],
+  "?getFilename@BinaryInput@G3D@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": [
+    "0050aa30"
+  ],
+  "??0Error@GImage@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": [
+    "004728b0"
+  ],
+  "__CxxThrowException@8": [
+    "006a158c"
+  ],
+  "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z": [
+    "00515d10"
+  ],
+  "?scanUInt@G3D@@YAHAAVBinaryInput@1@@Z": [
+    "0050d1f0"
+  ],
+  "?readUInt8@BinaryInput@G3D@@QAEEXZ": [
+    "0050aa80"
+  ],
+  "?resize@GImage@G3D@@QAEXHHH@Z": [
+    "0050e160"
+  ],
+  "_png_destroy_read_struct": [
+    "0051fbb0"
+  ],
+  "_png_set_read_fn": [
+    "00524b10"
+  ],
+  "_png_read_info": [
+    "0051edb0"
+  ],
+  "_png_get_IHDR": [
+    "00524990"
+  ],
+  "_png_set_swap": [
+    "0051fc70"
+  ],
+  "_png_set_strip_16": [
+    "005201b0"
+  ],
+  "_png_get_valid": [
+    "005248d0"
+  ],
+  "_png_set_packing": [
+    "0051fc90"
+  ],
+  "_png_set_interlace_handling": [
+    "0051fcb0"
+  ],
+  "_png_read_update_info": [
+    "0051f0f0"
+  ],
+  "_png_read_rows": [
+    "0051f5b0"
+  ],
+  "_png_read_end": [
+    "0051f6b0"
+  ],
+  "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z": [
+    "005157d0"
+  ],
+  "?readString@BinaryInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z": [
+    "00515d50"
+  ],
+  "?readUInt16@BinaryInput@G3D@@QAEGXZ": [
+    "0050aab0"
+  ],
+  "?readUInt32@BinaryInput@G3D@@QAEIXZ": [
+    "00509b40"
+  ],
+  "?free@System@G3D@@SAXPAX@Z": [
+    "00507d00"
+  ],
+  "?skip@BinaryInput@G3D@@QAEXH@Z": [
+    "0050ab00"
+  ],
+  "?resize@?$Array@VColor4uint8@G3D@@@G3D@@QAEXH_N@Z": [
+    "0050e7a0"
+  ],
+  "?alignedFree@System@G3D@@SAXPAX@Z": [
+    "00507d20"
+  ]
+}

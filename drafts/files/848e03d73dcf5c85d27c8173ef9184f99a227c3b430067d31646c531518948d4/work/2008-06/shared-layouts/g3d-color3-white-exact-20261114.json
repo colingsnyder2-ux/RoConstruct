@@ -1,0 +1,72 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DColor3.cpp",
+  "source_sha256": "5342f686cbe657e2263a589cb5c7a9a34517375bc168e6caa39c72b256d10675",
+  "object_sha256": "4a8a36b77c4829657ea8f0c955543112c4175cff366c382744e65fdd1906fa2a",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-124237-388f242a\\analysis-9e4c276d.json",
+  "checks": [
+    {
+      "address": "00514a60",
+      "symbol": "?white@Color3@G3D@@SAABV12@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 60.0,
+        "target_bytes": 45,
+        "candidate_bytes": 45,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 21,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 6,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [],
+      "verified_references": [
+        {
+          "offset": 7,
+          "symbol": "?$S11@?1??white@Color3@G3D@@SAABV23@XZ@4IA",
+          "target": "00973774",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 17,
+          "symbol": "?$S11@?1??white@Color3@G3D@@SAABV23@XZ@4IA",
+          "target": "00973774",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 23,
+          "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+          "target": "00973768",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 29,
+          "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+          "target": "0097376c",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 35,
+          "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+          "target": "00973770",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 40,
+          "symbol": "?c@?1??white@Color3@G3D@@SAABV23@XZ@4V23@A",
+          "target": "00973768",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

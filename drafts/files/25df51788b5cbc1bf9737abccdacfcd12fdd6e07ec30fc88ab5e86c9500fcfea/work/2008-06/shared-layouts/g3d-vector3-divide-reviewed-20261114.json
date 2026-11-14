@@ -1,0 +1,88 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DVector3.cpp",
+      "checks": [
+        {
+          "addr": "005183c0",
+          "symbol": "??_0Vector3@G3D@@QAEAAV01@M@Z",
+          "calls": [],
+          "references": [
+            {
+              "offset": 55,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 69,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 77,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 83,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 91,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 105,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 113,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 119,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 128,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 136,
+              "symbol": "??_B?1??inf@G3D@@YAABNXZ@51",
+              "target": "0096f020",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 149,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            },
+            {
+              "offset": 155,
+              "symbol": "?i@?1??inf@G3D@@YAABNXZ@4NB",
+              "target": "0096f018",
+              "evidence": "Original G3D::inf at 00476520 uses this same initialization guard and imported infinity data slot."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

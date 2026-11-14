@@ -1,0 +1,165 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Png5png.cpp",
+      "checks": [
+        {
+          "addr": "0051ddd0",
+          "symbol": "_png_free_data",
+          "calls": [
+            {
+              "offset": 80,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 109,
+              "symbol": "_png_free_data",
+              "target": "0051ddd0",
+              "kind": "direct"
+            },
+            {
+              "offset": 128,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 166,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 219,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 232,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 283,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 320,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 365,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 378,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 454,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 471,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 525,
+              "symbol": "_png_free_data",
+              "target": "0051ddd0",
+              "kind": "direct"
+            },
+            {
+              "offset": 550,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 629,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 670,
+              "symbol": "_png_free_data",
+              "target": "0051ddd0",
+              "kind": "direct"
+            },
+            {
+              "offset": 695,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 737,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 773,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 833,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 864,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            }
+          ]
+        },
+        {
+          "addr": "0051e170",
+          "symbol": "_png_info_destroy",
+          "calls": [
+            {
+              "offset": 19,
+              "symbol": "_png_free_data",
+              "target": "0051ddd0",
+              "kind": "direct"
+            },
+            {
+              "offset": 44,
+              "symbol": "_png_free",
+              "target": "0052a500",
+              "kind": "direct"
+            },
+            {
+              "offset": 80,
+              "symbol": "_memset",
+              "target": "006a1704",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Atlatl.cpp",
+  "source_sha256": "d6205930442ae8a72561533886bc78387a4391c6a5c208ac96a6d593ff75e2f4",
+  "checks": [
+    {
+      "address": "004043f0",
+      "symbol": "?RegisterSubkeys@CRegParser@ATL@@IAEJPADPAUHKEY__@@HH@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 86.295631,
+        "target_bytes": 1671,
+        "candidate_bytes": 1671,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1419,
+        "unmasked_differences": 0,
+        "masked_bytes": 252,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 21,
+        "candidate_relocations": 63,
+        "missing_relocations": [],
+        "extra_relocations": [
+          27,
+          78,
+          169,
+          246,
+          275,
+          295,
+          313,
+          371,
+          389,
+          449,
+          496,
+          514,
+          588,
+          669,
+          736,
+          884,
+          985,
+          1019,
+          1070,
+          1116,
+          1127,
+          1145,
+          1195,
+          1217,
+          1269,
+          1312,
+          1328,
+          1361,
+          1380,
+          1474,
+          1495,
+          1509,
+          1518,
+          1540,
+          1549,
+          1557,
+          1572,
+          1578,
+          1592,
+          1598,
+          1609,
+          1623
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8433000,
+          7
+        ],
+        [
+          8433020,
+          12
+        ],
+        [
+          8433008,
+          9
+        ],
+        [
+          8433032,
+          4
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-064412-76f190ef\\results.json",
+      "object_sha256": "3ef7fcfbcb1be8c30bb0e2b7041b68f046ac911df052a2bbb5868013a0ff2f8b"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

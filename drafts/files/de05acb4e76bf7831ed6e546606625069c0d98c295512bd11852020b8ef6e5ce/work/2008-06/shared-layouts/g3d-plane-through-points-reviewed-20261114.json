@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DPlane.cpp",
+      "checks": [
+        {
+          "addr": "00525940",
+          "symbol": "??0Plane@G3D@@QAE@ABVVector3@1@00@Z",
+          "calls": [],
+          "references": [
+            {
+              "offset": 14,
+              "symbol": "??_7Plane@G3D@@6B@",
+              "target": "008282bc",
+              "addend": 0,
+              "evidence": "Original 00525940 constructor stores 008282bc in this at relocation offset 14. Caller 0064a200 passes three face points then calls Plane::getEquation on constructed object; source Plane::Plane(Vector3,Vector3,Vector3) computes their normalized cross product and distance. Candidate COFF reference names matching Plane vtable."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

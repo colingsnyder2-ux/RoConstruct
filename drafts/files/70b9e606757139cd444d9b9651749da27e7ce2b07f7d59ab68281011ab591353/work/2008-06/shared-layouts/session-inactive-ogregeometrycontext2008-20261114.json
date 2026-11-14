@@ -1,0 +1,36 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreGeometryContext2008.cpp",
+  "source_sha256": "a69a35f8fd88a10fbcd3fb9e72b208b803df18c07596ce3e79c9aa972bcfbb52",
+  "checks": [
+    {
+      "address": "0054abe0",
+      "symbol": "??0GeometryContext@Ogre@@QAE@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 88.888889,
+        "target_bytes": 99,
+        "candidate_bytes": 99,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 83,
+        "unmasked_differences": 0,
+        "masked_bytes": 16,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 2,
+        "candidate_relocations": 4,
+        "missing_relocations": [],
+        "extra_relocations": [
+          42,
+          60
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261113-235237-cc9a652a\\results.json",
+      "object_sha256": "2830accad4c3b6e6caea511f6fb95502f91d815d4170fd6ed54530854ac1fcd2"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

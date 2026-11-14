@@ -1,0 +1,17 @@
+{
+  "source": "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp",
+  "identities": {
+    "00519810": "BinaryOutput::setEndian",
+    "00519a30": "BinaryOutput::writeString",
+    "00508880": "System::machineEndian",
+    "005089e0": "System::memcpy",
+    "00519830": "BinaryOutput::reallocBuffer"
+  },
+  "evidence": [
+    "Original System::machineEndian calls System initialization then reads global 0x94234c; initialization stores 1 to that global. BinaryOutput::setEndian compares its argument with this result and stores the swap flag at offset 0x2c.",
+    "Original System::memcpy checks processor-feature flags and selects the MMX routine or C memcpy, matching the donor implementation and compiled object. writeString measures the NUL-terminated input, reserves space, passes buffer+position, input and length to that helper, then advances position.",
+    "System helpers additionally matched original bytes with relocation normalization: machineEndian 100% normalized, 36.36% raw; memcpy 100% normalized, 45.07% raw. These helper comparisons support identity only, not fully verified helper proofs.",
+    "reallocBuffer identity reviewed in g3d-output-writing-identity-20261114.json.",
+    "Receipts are local inactive evidence only; provider, ABI, runtime, and server credit remain separate."
+  ]
+}

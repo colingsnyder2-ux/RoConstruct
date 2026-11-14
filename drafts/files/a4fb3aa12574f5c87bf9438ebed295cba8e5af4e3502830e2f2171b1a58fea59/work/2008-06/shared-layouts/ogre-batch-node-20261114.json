@@ -1,0 +1,31 @@
+{
+  "address": "00682c70",
+  "symbol": "?_Buynode@?$list@UBatch@Ogre@@V?$allocator@UBatch@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UBatch@Ogre@@V?$allocator@UBatch@Ogre@@@std@@@2@PAU342@0ABUBatch@Ogre@@@Z",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreRbxNodeTwoDManager.cpp",
+  "source_sha256": "fdcbbc035457046afba89a606e162bddd52e732765af771bdfe5c0fe43a79395",
+  "object_sha256": "207b2f8d074b6a3dbf3ceca1a136a3b54c776e129b2867e76e77198f086362a5",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-084532-a1588e93\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 95.774648,
+    "target_bytes": 71,
+    "candidate_bytes": 71,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 67,
+    "unmasked_differences": 0,
+    "masked_bytes": 4,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 0,
+    "candidate_relocations": 1,
+    "missing_relocations": [],
+    "extra_relocations": [
+      3
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [],
+  "scope": "Fresh local masked byte/data match. Original TwoDManager::render calls 00682c70; list node layout and native Batch source correspond. Reference closure, provider selection, ABI, runtime and server credit remain unverified."
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Diagnostic source candidates only; no inactive exact identity claimed.",
+  "source": "rebuild/2008-06/native-classes/Boostcmdline.cpp",
+  "matches": [
+    "0055ed20",
+    "0055f5f0",
+    "00560c20",
+    "005611f0",
+    "00561330"
+  ],
+  "finding": "All five match after relocation normalization, but original units include RBX::MD5HasherImpl and RBX::VContentProvider. Two helpers contain unresolved indirect call eax and other calls lack independently verified typed targets. A template body can be shared by unrelated boost::function signatures; raw byte equality and donor symbol names do not establish the original specialization.",
+  "next": "Identify each caller and its real types, then verify indirect call behavior, direct calls and exception metadata before indexing.",
+  "artifacts": "work/2008-06/shared-layouts/boost-cmdline-reviewed-20261114-report.json"
+}

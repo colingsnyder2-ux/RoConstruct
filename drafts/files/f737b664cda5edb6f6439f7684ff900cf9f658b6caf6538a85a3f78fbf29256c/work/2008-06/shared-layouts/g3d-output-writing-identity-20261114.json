@@ -1,0 +1,16 @@
+{
+  "source": "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp",
+  "addresses": {
+    "0050ab30": "reserveBytes",
+    "00519950": "writeUInt16",
+    "005199b0": "writeUInt32",
+    "00519830": "reallocBuffer"
+  },
+  "evidence": [
+    "Original and VC2008 objects match after relocation normalization with matching data.",
+    "0050ab30 uses buffer length and position fields at offsets 0x34, 0x38, 0x3c and calls 00519830 when capacity is exceeded.",
+    "00519950 and 005199b0 use the same fields and call 00519830 before writing 2 and 4 bytes with byte swapping, respectively.",
+    "00519830 independently matches the 153-byte reallocBuffer body and uses the same buffer fields and growth calculation.",
+    "This is local inactive code/reference evidence; linked provider, ABI, runtime and server credit are not established."
+  ]
+}

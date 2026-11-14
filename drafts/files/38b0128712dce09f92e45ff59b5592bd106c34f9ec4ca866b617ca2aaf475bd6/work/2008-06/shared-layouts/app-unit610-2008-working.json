@@ -1,0 +1,875 @@
+{
+  "class": "RBX NullTool / NewNullTool unit of the application range 00610000..0061c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit610-2008/NativeAppUnit610Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit610-2008/NativeAppUnit610Layout.cpp"
+    ],
+    "null": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit610-2008/NativeAppUnit610_2008_null.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit610_2008NullTool.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit610_2008.py": "f86a0d38effcc98dfed0d8eb8a55f2b74177f4b8697759bccac99b6f562cc23a",
+    "rebuild/2008-06/native-classes/AppUnit610_2008NullTool.cpp": "e324add6438837b0c85e497d235bd53444e0ccf0a3f83858af2543b7158c64a3",
+    "rebuild/2008-06/native-headers/tool/NullTool.h": "4f6a3c9f503ec303aea07b5197b6384c5dcc9ea3b203d5576ec0028eb93f2bb9",
+    "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h": "3039250130ccb053ae2eeae44d50c442b0f45517a63a1046b169825960e2a27e",
+    "rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h": "8f09901d8ba53b9b434bb200d7fb6defbec01a1a7724c02497b2a16736433200",
+    "rebuild/2008-06/native-headers/StandardVerbs.h": "76c76e1dfcedc17ccad87e7386efa1032256e4fcac924a96a2742304bfe56431",
+    "rebuild/2008-06/native-headers/v8datamodel/UserController.h": "50d100ac1c8d51dad2f8e4aacfbdb17a0cb71d9009a771029722fe220a89d839",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+    "rebuild/2008-06/native-headers/humanoid/Humanoid.h": "888cf285f0469122a7fbeefcc1204dcbf2d0f2903d1b27b4bed4ece8c9239309"
+  },
+  "objects": {
+    "layout": "e71833249c8138786da12e04f7701f17aa247fe6628d7e32a0952fec8a3a2740",
+    "null": "3381d43f34cd149e187086a80adc725ac8353b20b12eec34ce5326fc60f2ae35"
+  },
+  "layout": {
+    "newNullTool": "0x48",
+    "nullTool": "0x1c",
+    "mouseCommand": "0x1c"
+  },
+  "allocations": [
+    "00618277: new(0x48) before 00618160",
+    "00618218: new(0x1c) (constructor inlined)"
+  ],
+  "rtti_bases": {
+    "NullTool": {
+      ".?AVNullTool@RBX@@": 0,
+      ".?AV?$Named@VMouseCommand@RBX@@$1?sNullTool@2@3PADA@RBX@@": 0,
+      ".?AVMouseCommand@RBX@@": 0,
+      ".?AVINamed@RBX@@": 0,
+      ".?AVIRenderable@RBX@@": 4
+    },
+    "NewNullTool": {
+      ".?AVNewNullTool@RBX@@": 0,
+      ".?AV?$Named@VMouseCommand@RBX@@$1?sNewNullTool@2@3PADA@RBX@@": 0,
+      ".?AVMouseCommand@RBX@@": 0,
+      ".?AVINamed@RBX@@": 0,
+      ".?AVIRenderable@RBX@@": 4
+    }
+  },
+  "unit_map": {
+    "dragger tail 00610000..00610bee": "RBX::Dragger unit (begins 0060fea0, see app-unit609-2008-working.json unit_map): computeExtents(Array) 00610070 .. safeRotate 00610a60. intersectingWorldOrOthers / movePrimitivesDelta / the four search loops / safeMoveYDrop / safeMoveNoDrop are counted by app-unit609-2008-working.json, three more by axis-move-tool-lifetime-trial.json; computeExtents(Array) and safeRotate need the 2008 Primitive geometry at +0x9c (not built).",
+    "lua lauxlib/lapi 00610bf0..00612ddf": "Lua 5.1.1 library: lauxlib luaL_where 00610bf0 .. luaL_register 00611a70 (Lua error strings \"%s:%d: \", \"stack overflow (%s)\", \"bad argument #%d (%s)\") and lapi index2adr 00611a90 .. lua_setupvalue 00612d30 (evidence names): library code, not recovered.",
+    "lua roblox extra space 00612de0..00612f5f": "Roblox code linked into the Lua state: boost::shared_ptr<int>::reset<int> 00612de0 (callers 00612e60 and 00623ec0), RobloxExtraSpace(RobloxExtraSpace*) 00612e60 (operator new 006a0920) and RobloxExtraSpace::construct 00612f00 (called by lua_newthread 00612f60, which is lapi library code). The RobloxExtraSpace layout has no committed native header; not built here.",
+    "simbody/geopair 00612fb0..00613cbf": "SimBody::accumulateForce 00612fb0 (counted by body-primitive2008-working.json), GeoPair() 00613060 (caller the Contact unit 00606d40) and nine inline contact helpers 00613080..006139c0 called only from the Contact / ContactManager units 00606780 / 00606270 / 00599250 plus 00613cb0 (callers 005e5c90 / 005e5da0, World unit): COMDATs of the Contact / GeoPair / World owners; not rebuilt here.",
+    "revolute-link/body 00613cc0..00614bcf": "RevoluteLink::computeChildInParent 00613cc0, Link() 00613d20, Link::getChildInParent 00613d60, PV / Velocity and Body members 00613e30..00614bb0 (evidence names): counted by body-primitive2008-working.json and leaves2008-working.json except 00613cc0, 00613d60, 00613e30. Body/Primitive owner; not rebuilt here.",
+    "imoving-manager 00614bd0..00614dff": "IMovingManager::remove 00614c20, IMovingManager() 00614dc0 and four small members 00614bd0 / 00614be0 / 00614cc0 / 00614d50 / 00614db0 (callers in the Workspace unit 005a.. and the World unit 005e..). No committed native IMovingManager header; not built here.",
+    "enum descriptors 00614e00..00615497": "EnumDesc static constructors for Part::PartType 00614e00 (\"PartType\", \"Ball\", \"Block\"), InputType 00615070 (\"InputType\", \"NoInput\") and ControllerType 00615280 (\"ControllerType\", \"Player\"), Controller::controllerTypeToColor 00614f80, the map<Primitive*, Joint*> _Buynode 00614ff0, ContentId(string) 00615440 and the 5 B thunk 00615490: template / COMDAT instantiations first referenced here, owned by the Part / Controller / reflection owners; not rebuilt here.",
+    "contentid property 006154a0..0061579f": "TypedPropertyDescriptor<ContentId> rows 006154a0 .. 00615640 / 006156c0 (\"Unable to cast %s to %s\", called by the reflection units) and ~MouseCommand 00615780 (5 C++ callers, MouseCommand owner). Not built.",
+    "mouse-command 006157a0..006160af": "RBX::MouseCommand unit (RTTI .?AVMouseCommand@RBX@@, vtable 008439fc / IRenderable 008439e0): getTopSelectable3d 006157a0, capture 00615820, distanceFromCharacter 00615830, characterCanReach 00615880, getMousePart 00615940 / 006160b0, MouseCommand(Workspace*) 006159f0, getCursorId 00615a50, getUnitMouseRay 00615c30, getPart 00615d90 .. getUnlockedPart 00616080; Unlocked::filterResult 00615b60 and ~PartByLocalCharacter 00615b80 are counted by hit-filters-working.json. MouseCommand.h owner; not rebuilt here.",
+    "arrow-tool/box-select 00616180..00617d9f": "ArrowToolBase (onMouseIdle 00616180, getCursorName 006161a0, onMouseDown 00617780) and BoxSelectCommand (RTTI .?AVBoxSelectCommand@RBX@@, vtable 00843b6c / IRenderable 00843b50: render2d 006164a0, getName 00616d80, getMouseInstances 00616f60, selectAnd / selectReverse 00617a50 / 00617b30, onMouseDown 00617c10, onMouseMove 00617cb0, ??_G 00617270) with the FilteredSelection<Instance> instantiations; 00616410 is counted by creatable-shared-count-working.json. ArrowToolBase / BoxSelectCommand have no committed native header; not built here.",
+    "null-tool 00617da0..00618377": "RBX::NullTool (RTTI .?AVNullTool@RBX@@, vtables 00843bd4 / IRenderable 00843bbc) and RBX::NewNullTool (.?AVNewNullTool@RBX@@, 00843c44 / 00843c28): one translation unit (the \"ArrowFarCursor\" literal 00843c14 is shared by NullTool::getCursorName 00617da0 and the NewNullTool cursor updates). Built here.",
+    "flag 00618380..00619a7f": "RBX::Flag unit (Flag::getTeamColor 00618380 .. setTeamColor 00619a60): counted by flag-family-working.json except 00618520 / 00618580 / 00618650 / 00618830 / 00618940 / 006189a0 / 006189e0 / 00618bb0 .. 00618f70 / 00619080 / 00619290 .. 006195b0 / 00619970 (boost::bind / function instantiations and Flag helpers; 00618a40 shared_from<Instance> is counted by humanoid2008-working.json). Flag owner; not rebuilt here.",
+    "part tools 00619a80..0061a41f": "Vtable-slot bodies without direct callers of the part tools (DecalTool 00619a80 / 00619c30 / 00619c90 / 00619d00 / 00619e50, FlatTool 00619ad0 / 00619f00, HingeTool / RightMotorTool / LeftMotorTool / OscillateMotorTool 00619af0..00619be0, ModelSetFrontTool 00619d40 / 00619de0, Glue / Weld / Studs / Inlet tools 00619f70..0061a030) and their Name thunks / static initializers 0061a080..0061a400; the boost::iostreams list ctor 0061a200. PartTools owner (native-classes/PartTools.cpp); not rebuilt here.",
+    "lua bridge 0061a420..0061c000": "RBX::Lua bridge (newweaktable 0061a420, SharedPtrBridge<DescribedBase>, LuaArguments, the property / enum / signal bridges 0061abe0 / 0061b190 / 0061ba10 .. 0061bda0): mostly counted by lua-bridge2008-working.json (LuaBridge2008 owner); not rebuilt here."
+  },
+  "excluded_classes": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView rows lie in this range.",
+  "range_functions": 377,
+  "range_lua_library_rows": 97,
+  "range_rows_counted_by_other_receipts": [
+    "00610130 counted by app-unit609-2008-working.json",
+    "00610180 counted by axis-move-tool-lifetime-trial.json",
+    "00610270 counted by app-unit609-2008-working.json",
+    "00610310 counted by app-unit609-2008-working.json",
+    "006103a0 counted by app-unit609-2008-working.json",
+    "00610440 counted by app-unit609-2008-working.json",
+    "006104e0 counted by app-unit609-2008-working.json",
+    "00610580 counted by axis-move-tool-lifetime-trial.json",
+    "006106c0 counted by axis-move-tool-lifetime-trial.json",
+    "00610830 counted by app-unit609-2008-working.json",
+    "00610930 counted by app-unit609-2008-working.json",
+    "00612fb0 counted by body-primitive2008-working.json",
+    "00613d20 counted by leaves2008-working.json",
+    "00613da0 counted by leaves2008-working.json",
+    "00613e80 counted by body-primitive2008-working.json",
+    "00613ef0 counted by body-primitive2008-working.json",
+    "00613f00 counted by body-primitive2008-working.json",
+    "00613f20 counted by body-primitive2008-working.json",
+    "00613f40 counted by body-primitive2008-working.json",
+    "00613f70 counted by body-primitive2008-working.json",
+    "00613fb0 counted by body-primitive2008-working.json",
+    "00614040 counted by body-primitive2008-working.json",
+    "006140b0 counted by body-primitive2008-working.json",
+    "00614110 counted by body-primitive2008-working.json",
+    "00614170 counted by body-primitive2008-working.json",
+    "00614200 counted by body-primitive2008-working.json",
+    "006142d0 counted by body-primitive2008-working.json",
+    "00614380 counted by body-primitive2008-working.json",
+    "00614400 counted by body-primitive2008-working.json",
+    "00614480 counted by body-primitive2008-working.json",
+    "006144e0 counted by body-primitive2008-working.json",
+    "00614530 counted by body-primitive2008-working.json",
+    "00614560 counted by body-primitive2008-working.json",
+    "006145e0 counted by body-primitive2008-working.json",
+    "00614670 counted by body-primitive2008-working.json",
+    "00614760 counted by body-primitive2008-working.json",
+    "006147f0 counted by body-primitive2008-working.json",
+    "006148b0 counted by body-primitive2008-working.json",
+    "006149c0 counted by body-primitive2008-working.json",
+    "00614ac0 counted by body-primitive2008-working.json",
+    "00614b40 counted by body-primitive2008-working.json",
+    "00614bb0 counted by body-primitive2008-working.json",
+    "00615b60 counted by hit-filters-working.json",
+    "00615b80 counted by hit-filters-working.json",
+    "00616410 counted by creatable-shared-count-working.json",
+    "00618380 counted by flag-family-working.json",
+    "00618390 counted by flag-family-working.json",
+    "006183c0 counted by flag-family-working.json",
+    "00618460 counted by flag-family-working.json",
+    "006185e0 counted by flag-family-working.json",
+    "006185f0 counted by flag-family-working.json",
+    "00618600 counted by flag-family-working.json",
+    "00618610 counted by flag-family-working.json",
+    "00618660 counted by flag-family-working.json",
+    "00618670 counted by flag-family-working.json",
+    "00618790 counted by flag-family-working.json",
+    "006187a0 counted by flag-family-working.json",
+    "006187b0 counted by flag-family-working.json",
+    "006187c0 counted by flag-family-working.json",
+    "006187d0 counted by flag-family-working.json",
+    "006187e0 counted by flag-family-working.json",
+    "006187f0 counted by flag-family-working.json",
+    "00618800 counted by flag-family-working.json",
+    "00618810 counted by flag-family-working.json",
+    "00618820 counted by flag-family-working.json",
+    "006188e0 counted by flag-family-working.json",
+    "00618980 counted by flag-family-working.json",
+    "00618a20 counted by flag-family-working.json",
+    "00618a40 counted by humanoid2008-working.json, misc-leaves-working.json",
+    "006191c0 counted by flag-family-working.json",
+    "006196b0 counted by flag-family-working.json",
+    "006197a0 counted by flag-family-working.json",
+    "006197b0 counted by flag-family-working.json",
+    "006197c0 counted by flag-family-working.json",
+    "006197d0 counted by flag-family-working.json",
+    "006197e0 counted by flag-family-working.json",
+    "006197f0 counted by flag-family-working.json",
+    "00619800 counted by flag-family-working.json",
+    "00619820 counted by flag-family-working.json",
+    "00619a60 counted by flag-family-working.json",
+    "0061a420 counted by lua-bridge2008-working.json",
+    "0061a470 counted by lua-bridge2008-working.json",
+    "0061a4f0 counted by lua-bridge2008-working.json",
+    "0061a560 counted by lua-bridge2008-working.json",
+    "0061a5f0 counted by lua-bridge2008-working.json",
+    "0061a600 counted by lua-bridge2008-working.json",
+    "0061a660 counted by lua-bridge2008-working.json",
+    "0061a6c0 counted by lua-bridge2008-working.json",
+    "0061a720 counted by lua-bridge2008-working.json",
+    "0061a7b0 counted by lua-bridge2008-working.json",
+    "0061a7e0 counted by lua-bridge2008-working.json",
+    "0061a850 counted by lua-bridge2008-working.json",
+    "0061a8c0 counted by lua-bridge2008-working.json",
+    "0061a930 counted by lua-bridge2008-working.json",
+    "0061a9a0 counted by lua-bridge2008-working.json",
+    "0061aa00 counted by lua-bridge2008-working.json",
+    "0061aa60 counted by lua-bridge2008-working.json",
+    "0061aac0 counted by lua-bridge2008-working.json",
+    "0061bb00 counted by lua-bridge2008-working.json",
+    "0061bb30 counted by lua-bridge2008-working.json",
+    "0061bb70 counted by lua-bridge2008-working.json",
+    "0061bcb0 counted by lua-bridge2008-working.json"
+  ],
+  "rows": {
+    "null": [
+      {
+        "address": "00617da0",
+        "symbol": "?getCursorName@NullTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 34,
+        "target_size": 34,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0P@LLIFPKGM@ArrowFarCursor?$AA@": "0x843c14 (string 'ArrowFarCursor')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00617dd0",
+        "symbol": "??1?$Named@VMouseCommand@RBX@@$1?sNewNullTool@2@3PADA@RBX@@UAE@XZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??1MouseCommand@RBX@@UAE@XZ": "0x615780 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00617de0",
+        "symbol": "??1NewNullTool@RBX@@UAE@XZ",
+        "size": 90,
+        "target_size": 90,
+        "exact": true,
+        "verified_targets": {
+          "??_7NewNullTool@RBX@@6BINamed@1@@": "0x843c44 (vtable RTTI .?AVNewNullTool@RBX@@ offset 0x0)",
+          "??_7NewNullTool@RBX@@6BIRenderable@1@@": "0x843c28 (vtable RTTI .?AVNewNullTool@RBX@@ offset 0x4)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??1MouseCommand@RBX@@UAE@XZ": "0x615780 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1NewNullTool@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00617e40",
+        "symbol": "?getCursorName@NewNullTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00617e70",
+        "symbol": "?onMouseUp@NewNullTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00617e80",
+        "symbol": "?isLocalHeadHidden@NewNullTool@RBX@@ABE_NXZ",
+        "size": 61,
+        "target_size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?modelIsCharacter@Humanoid@RBX@@SAPAV12@PBVInstance@2@@Z": "0x5d9a20 (external (evidence name))",
+          "?getHead@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "0x5d8a10 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00617ec0",
+        "symbol": "?onMouseIdle@NewNullTool@RBX@@EAEXABVUIEvent@2@@Z",
+        "size": 135,
+        "target_size": 135,
+        "exact": true,
+        "verified_targets": {
+          "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@AAVVector3@G3D@@@Z": "0x615f90 (external)",
+          "?distanceFromCharacter@MouseCommand@RBX@@IBEMABVVector3@G3D@@@Z": "0x615830 (external)",
+          "?queryClickDetectors@RBX@@YA_NPAVPartInstance@1@M_N@Z": "0x629b20 (external)",
+          "??_C@_0L@BLHFJFLM@DragCursor?$AA@": "0x843a60 (string 'DragCursor')",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+          "?characterCanReach@MouseCommand@RBX@@IBE_NABVVector3@G3D@@@Z": "0x615880 (external)",
+          "?isLocalHeadHidden@NewNullTool@RBX@@ABE_NXZ": "0x617e80 (own row)",
+          "??_C@_0M@NEEHHCEG@ArrowCursor?$AA@": "0x833850 (string 'ArrowCursor')",
+          "??_C@_0P@LLIFPKGM@ArrowFarCursor?$AA@": "0x843c14 (string 'ArrowFarCursor')"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00617f50",
+        "symbol": "?onMouseHover@NewNullTool@RBX@@EAEXABVUIEvent@2@@Z",
+        "size": 147,
+        "target_size": 147,
+        "exact": true,
+        "verified_targets": {
+          "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@AAVVector3@G3D@@@Z": "0x615f90 (external)",
+          "?distanceFromCharacter@MouseCommand@RBX@@IBEMABVVector3@G3D@@@Z": "0x615830 (external)",
+          "?queryClickDetectors@RBX@@YA_NPAVPartInstance@1@M_N@Z": "0x629b20 (external)",
+          "??_C@_0L@BLHFJFLM@DragCursor?$AA@": "0x843a60 (string 'DragCursor')",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+          "?characterCanReach@MouseCommand@RBX@@IBE_NABVVector3@G3D@@@Z": "0x615880 (external)",
+          "?isLocalHeadHidden@NewNullTool@RBX@@ABE_NXZ": "0x617e80 (own row)",
+          "??_C@_0M@NEEHHCEG@ArrowCursor?$AA@": "0x833850 (string 'ArrowCursor')",
+          "??_C@_0P@LLIFPKGM@ArrowFarCursor?$AA@": "0x843c14 (string 'ArrowFarCursor')"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00617ff0",
+        "symbol": "?onMouseDown@NewNullTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "size": 170,
+        "target_size": 170,
+        "exact": true,
+        "verified_targets": {
+          "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@AAVVector3@G3D@@@Z": "0x615f90 (external)",
+          "?distanceFromCharacter@MouseCommand@RBX@@IBEMABVVector3@G3D@@@Z": "0x615830 (external)",
+          "?queryClickDetectors@RBX@@YA_NPAVPartInstance@1@M_N@Z": "0x629b20 (external)",
+          "?characterCanReach@MouseCommand@RBX@@IBE_NABVVector3@G3D@@@Z": "0x615880 (external)",
+          "?isLocalHeadHidden@NewNullTool@RBX@@ABE_NXZ": "0x617e80 (own row)",
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?contains@Instance@RBX@@QBE_NPBV12@@Z": "0x5574b0 (external (evidence name))",
+          "?modelIsCharacter@Humanoid@RBX@@SAPAV12@PBVInstance@2@@Z": "0x5d9a20 (external (evidence name))",
+          "?moveTo@Humanoid@RBX@@QAEXABVVector3@G3D@@PAVPartInstance@2@@Z": "0x5dc3d0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006180a0",
+        "symbol": "?doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@2@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x97bf08 (local static)",
+          "?sNewNullTool@RBX@@3PADA": "0x95ab08 (own data 'NewNullTool')",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?name@?1??doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x97bf04 (local static)"
+        },
+        "local_eh": [
+          "__ehhandler$?doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@2@XZ"
+        ]
+      },
+      {
+        "address": "00618110",
+        "symbol": "??0NullTool@RBX@@QAE@PAVWorkspace@1@@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_7NullTool@RBX@@6BINamed@1@@": "0x843bd4 (vtable RTTI .?AVNullTool@RBX@@ offset 0x0)",
+          "??_7NullTool@RBX@@6BIRenderable@1@@": "0x843bbc (vtable RTTI .?AVNullTool@RBX@@ offset 0x4)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00618130",
+        "symbol": "??_GNullTool@RBX@@UAEPAXI@Z",
+        "size": 43,
+        "target_size": 43,
+        "exact": true,
+        "verified_targets": {
+          "??_7NullTool@RBX@@6BINamed@1@@": "0x843bd4 (vtable RTTI .?AVNullTool@RBX@@ offset 0x0)",
+          "??_7NullTool@RBX@@6BIRenderable@1@@": "0x843bbc (vtable RTTI .?AVNullTool@RBX@@ offset 0x4)",
+          "??1MouseCommand@RBX@@UAE@XZ": "0x615780 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00618160",
+        "symbol": "??0NewNullTool@RBX@@QAE@PAVWorkspace@1@@Z",
+        "size": 109,
+        "target_size": 109,
+        "exact": true,
+        "verified_targets": {
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_C@_0M@NEEHHCEG@ArrowCursor?$AA@": "0x833850 (string 'ArrowCursor')",
+          "??_7NewNullTool@RBX@@6BINamed@1@@": "0x843c44 (vtable RTTI .?AVNewNullTool@RBX@@ offset 0x0)",
+          "??_7NewNullTool@RBX@@6BIRenderable@1@@": "0x843c28 (vtable RTTI .?AVNewNullTool@RBX@@ offset 0x4)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0NewNullTool@RBX@@QAE@PAVWorkspace@1@@Z"
+        ]
+      },
+      {
+        "address": "006181d0",
+        "symbol": "??_GNewNullTool@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1NewNullTool@RBX@@UAE@XZ": "0x617de0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006181f0",
+        "symbol": "?callDoDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "?doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@2@XZ": "0x6180a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00618200",
+        "symbol": "?isSticky@NullTool@RBX@@UBEPAVMouseCommand@2@XZ",
+        "size": 95,
+        "target_size": 95,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0 (external (evidence name))",
+          "??_7NullTool@RBX@@6BINamed@1@@": "0x843bd4 (vtable RTTI .?AVNullTool@RBX@@ offset 0x0)",
+          "??_7NullTool@RBX@@6BIRenderable@1@@": "0x843bbc (vtable RTTI .?AVNullTool@RBX@@ offset 0x4)"
+        },
+        "local_eh": [
+          "__ehhandler$?isSticky@NullTool@RBX@@UBEPAVMouseCommand@2@XZ"
+        ]
+      },
+      {
+        "address": "00618260",
+        "symbol": "?isSticky@NewNullTool@RBX@@EBEPAVMouseCommand@2@XZ",
+        "size": 96,
+        "target_size": 96,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0NewNullTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x618160 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?isSticky@NewNullTool@RBX@@EBEPAVMouseCommand@2@XZ"
+        ]
+      },
+      {
+        "address": "006182c0",
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sNullTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1??get@?$NativeToolName@VNullTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979698 (local static)",
+          "?callDoDeclare@?$NativeToolName@VNullTool@RBX@@@RBX@@SAXXZ": "0x5c6210 (external)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "?doDeclare@?$NativeToolName@VNullTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5ec0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006182e0",
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sNewNullTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1??get@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x97bf0c (local static)",
+          "?callDoDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAXXZ": "0x6181f0 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "?doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@2@XZ": "0x6180a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00618300",
+        "symbol": "?render3dAdorn@NewNullTool@RBX@@EAEXPAVAdorn@2@@Z",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "verified_targets": {
+          "??$find@VControllerService@RBX@@@ServiceProvider@RBX@@SAPAVControllerService@1@PBVInstance@1@@Z": "0x5a32e0 (external)",
+          "?getMovementKeys@UserInputBase@RBX@@QBEXAAUMovementKeys@2@@Z": "0x5ce960 (external)",
+          "?any@MovementKeys@RBX@@QBE_NXZ": "0x5a0190 (external)",
+          "?renderWaypoint@Humanoid@RBX@@SAXPAVAdorn@2@ABVVector3@G3D@@@Z": "0x5d7750 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "helper_bodies_not_counted": [],
+  "own_data": {
+    "?sNewNullTool@RBX@@3PADA": "0x95ab08"
+  },
+  "local_statics": {
+    "??_B?1??doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x97bf08",
+    "?name@?1??doDeclare@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x97bf04",
+    "?flag@?1??get@?$NativeToolName@VNullTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979698",
+    "?flag@?1??get@?$NativeToolName@VNewNullTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x97bf0c"
+  },
+  "vtables": {
+    "NullTool 00843bd4": [
+      {
+        "slot": 0,
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sNullTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "original": "0x6182c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?onMouseDown@MouseCommand@RBX@@UAEPAV12@ABVUIEvent@2@@Z",
+        "original": "0x5c72e0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 2,
+        "symbol": "?onMouseIdle@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 3,
+        "symbol": "?onMouseHover@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "original": "0x5c72e0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "original": "0x5f2310",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onMouseMove@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onMouseUp@NullTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "0x617e70",
+        "ok": true,
+        "how": "compiled body exact at the slot target (identical-code folded)"
+      },
+      {
+        "slot": 9,
+        "symbol": "?capture@MouseCommand@RBX@@MAEXXZ",
+        "original": "0x615820",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 10,
+        "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+        "original": "0x5a0150",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 11,
+        "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+        "original": "0x5a04a0",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 12,
+        "symbol": "??_ENullTool@RBX@@UAEPAXI@Z",
+        "original": "0x618130",
+        "ok": true,
+        "how": "bound (??_G row)"
+      },
+      {
+        "slot": 13,
+        "symbol": "?isSticky@NullTool@RBX@@UBEPAVMouseCommand@2@XZ",
+        "original": "0x618200",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ",
+        "original": "0x615a50",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getCursorName@NullTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "original": "0x617da0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "NullTool (IRenderable) 00843bbc": [
+      {
+        "slot": 0,
+        "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+        "original": "0x60a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 1,
+        "symbol": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ",
+        "original": "0x60a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 2,
+        "symbol": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 3,
+        "symbol": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 4,
+        "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "original": "0x458e90",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      }
+    ],
+    "NewNullTool 00843c44": [
+      {
+        "slot": 0,
+        "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sNewNullTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "original": "0x6182e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?onMouseDown@NewNullTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "0x617ff0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?onMouseIdle@NewNullTool@RBX@@EAEXABVUIEvent@2@@Z",
+        "original": "0x617ec0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?onMouseHover@NewNullTool@RBX@@EAEXABVUIEvent@2@@Z",
+        "original": "0x617f50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "original": "0x5c72e0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+        "original": "0x5f2310",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onMouseMove@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand MouseCommand vtable"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onMouseUp@NewNullTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+        "original": "0x617e70",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?capture@MouseCommand@RBX@@MAEXXZ",
+        "original": "0x615820",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 10,
+        "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+        "original": "0x5a0150",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 11,
+        "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+        "original": "0x5a04a0",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 12,
+        "symbol": "??_ENewNullTool@RBX@@UAEPAXI@Z",
+        "original": "0x6181d0",
+        "ok": true,
+        "how": "bound (??_G row)"
+      },
+      {
+        "slot": 13,
+        "symbol": "?isSticky@NewNullTool@RBX@@EBEPAVMouseCommand@2@XZ",
+        "original": "0x618260",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ",
+        "original": "0x615a50",
+        "ok": true,
+        "how": "evidence name at the slot target"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getCursorName@NewNullTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "original": "0x617e40",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "NewNullTool (IRenderable) 00843c28": [
+      {
+        "slot": 0,
+        "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+        "original": "0x60a2f0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 1,
+        "symbol": "?shouldRender3dAdorn@NewNullTool@RBX@@EBE_NXZ",
+        "original": "0x565950",
+        "ok": true,
+        "how": "compiled body exact at the slot target (identical-code folded)"
+      },
+      {
+        "slot": 2,
+        "symbol": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z",
+        "original": "0x70bdf0",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      },
+      {
+        "slot": 3,
+        "symbol": "?render3dAdorn@NewNullTool@RBX@@EAEXPAVAdorn@2@@Z",
+        "original": "0x618300",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+        "original": "0x458e90",
+        "ok": true,
+        "how": "inherited: same slot of the MouseCommand IRenderable vtable"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00617da0",
+    "00617dd0",
+    "00617de0",
+    "00617e40",
+    "00617e70",
+    "00617e80",
+    "00617ec0",
+    "00617f50",
+    "00617ff0",
+    "006180a0",
+    "00618110",
+    "00618130",
+    "00618160",
+    "006181d0",
+    "006181f0",
+    "00618200",
+    "00618260",
+    "006182c0",
+    "006182e0",
+    "00618300"
+  ],
+  "rejected": {
+    "AppUnit610_2008NullTool.cpp against the default v8datamodel/PartInstance.h (without native-headers/part-embedded)": "C2039 getAlphaModifier is not a member (isLocalHeadHidden 00617e80 reads alphaModifier at +0x328)"
+  },
+  "proposals": {},
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

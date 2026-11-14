@@ -1,0 +1,46 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreMainOgreCompositorManager.cpp",
+  "source_sha256": "2246daa2b83e807533ef854a188da43e6b4131f3669275d06d7090f342d0d30d",
+  "object_sha256": "c863916263379c75265f4579efc6c083c41d7f2714bd9b9ac458063c45225a6a",
+  "run": "20261114-094651-46a9b5a5",
+  "checks": [
+    {
+      "address": "005b9a30",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexturePtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.331492,
+        "target_bytes": 724,
+        "candidate_bytes": 724,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 644,
+        "unmasked_differences": 0,
+        "masked_bytes": 80,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 8,
+        "candidate_relocations": 20,
+        "missing_relocations": [],
+        "extra_relocations": [
+          122,
+          140,
+          243,
+          279,
+          451,
+          500,
+          526,
+          549,
+          620,
+          644,
+          659,
+          669
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "body_comparison": "exact"
+    }
+  ],
+  "scope": "SDK or template codegen analog; original ownership and reference bindings remain unproven. Inactive draft; no selected provider, ABI, runtime, or server credit."
+}

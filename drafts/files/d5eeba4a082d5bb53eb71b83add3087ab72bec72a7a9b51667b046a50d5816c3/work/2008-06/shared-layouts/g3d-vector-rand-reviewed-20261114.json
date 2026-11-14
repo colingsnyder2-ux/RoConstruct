@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/G3DVector3.cpp",
+      "checks": [
+        {
+          "addr": "00518650",
+          "symbol": "?random@Vector3@G3D@@",
+          "calls": [
+            {
+              "offset": 40,
+              "load_offset": 13,
+              "target": "008027b0",
+              "symbol": "__imp__rand",
+              "kind": "import_reg",
+              "import": "MSVCR90.dll!rand"
+            },
+            {
+              "offset": 66,
+              "load_offset": 13,
+              "target": "008027b0",
+              "symbol": "__imp__rand",
+              "kind": "import_reg",
+              "import": "MSVCR90.dll!rand"
+            },
+            {
+              "offset": 92,
+              "load_offset": 13,
+              "target": "008027b0",
+              "symbol": "__imp__rand",
+              "kind": "import_reg",
+              "import": "MSVCR90.dll!rand"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

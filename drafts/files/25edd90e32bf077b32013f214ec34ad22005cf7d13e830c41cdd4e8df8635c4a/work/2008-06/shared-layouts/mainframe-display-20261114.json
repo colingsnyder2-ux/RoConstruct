@@ -1,0 +1,133 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CMainFrameDisplay.cpp",
+  "source_sha256": "587a5bc36f142dfe63bb5ff2460d48d5e7581576501e338c0ddba0166d6e4d13",
+  "object_sha256": "c04287a0bc697d7eec56451485f5a7e49058fba85e53d51ce5cb006946781b85",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-090639-6f98ad8c\\results.json",
+  "checks": [
+    {
+      "address": "00430bf0",
+      "symbol": "?findDisplayMode@@YA?AU_devicemodeA@@PBDH@Z",
+      "exact": false,
+      "metrics": {
+        "fuzzy_percent": 96.603774,
+        "positional_percent": 64.782609,
+        "raw_positional_percent": 57.924528,
+        "target_bytes": 530,
+        "candidate_bytes": 530,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 460,
+        "unmasked_differences": 162,
+        "masked_bytes": 70,
+        "mismatch_offsets": [
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          53,
+          54,
+          55,
+          56,
+          57,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70
+        ],
+        "mismatch_offsets_truncated": true,
+        "target_relocations": 11,
+        "candidate_relocations": 14,
+        "missing_relocations": [
+          84,
+          120,
+          126,
+          222,
+          246
+        ],
+        "extra_relocations": [
+          49,
+          81,
+          95,
+          117,
+          123,
+          131,
+          219,
+          243
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": []
+    },
+    {
+      "address": "004318b0",
+      "symbol": "?configureFullscreen@CMainFrame@@QAEXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 90.030675,
+        "target_bytes": 652,
+        "candidate_bytes": 652,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 568,
+        "unmasked_differences": 0,
+        "masked_bytes": 84,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 7,
+        "candidate_relocations": 21,
+        "missing_relocations": [],
+        "extra_relocations": [
+          58,
+          84,
+          256,
+          279,
+          378,
+          385,
+          417,
+          481,
+          492,
+          499,
+          564,
+          576,
+          600,
+          620
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8459772,
+          40
+        ],
+        [
+          8459748,
+          22
+        ],
+        [
+          8459720,
+          28
+        ]
+      ]
+    }
+  ],
+  "scope": "Fullscreen method fresh masked match; display helper differs despite equal length: 96.603774% fuzzy, 64.782609% positional, 57.924528% raw. Donor/register-setting variants did not improve. Binding, provider, ABI and runtime unverified."
+}

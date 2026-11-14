@@ -1,0 +1,35 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LuaRobloxLstrlib.cpp",
+  "source_sha256": "259bde680f264a3414067b9417e4469d3ca598c5e647773c98d4e7d75bf85b9c",
+  "checks": [
+    {
+      "address": "00627330",
+      "symbol": "?str_match@@YAHPAUlua_State@@@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 75.0,
+        "target_bytes": 16,
+        "candidate_bytes": 16,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 12,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          8
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-063218-507b41c7\\analysis-9dbe5c6e.json",
+      "object_sha256": "2b985330aab7b015a26802c892e681b42fecfeeca04205a63c7eb791f9fa43f8"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

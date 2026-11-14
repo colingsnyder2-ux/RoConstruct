@@ -1,0 +1,57 @@
+{
+  "jobs": [
+    {
+      "checks": [
+        {
+          "calls": [
+            {
+              "offset": 31,
+              "target": "004ba8e0",
+              "kind": "direct",
+              "symbol": "??1StringCompressor@@QAE@XZ"
+            },
+            {
+              "offset": 37,
+              "target": "006a067a",
+              "kind": "direct",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ],
+          "references": [
+            {
+              "offset": 2,
+              "target": "00971814",
+              "evidence": "Original absolute referenceCount storage at 00971814 in target 004ba9d0",
+              "addend": 0,
+              "symbol": "?referenceCount@StringCompressor@@0HA"
+            },
+            {
+              "offset": 11,
+              "target": "00971814",
+              "evidence": "Original absolute referenceCount storage at 00971814 in target 004ba9d0",
+              "addend": 0,
+              "symbol": "?referenceCount@StringCompressor@@0HA"
+            },
+            {
+              "offset": 20,
+              "target": "00971810",
+              "evidence": "Original absolute instance storage at 00971810 in target 004ba9d0",
+              "addend": 0,
+              "symbol": "?instance@StringCompressor@@0PAV1@A"
+            },
+            {
+              "offset": 47,
+              "target": "00971810",
+              "evidence": "Original absolute instance storage at 00971810 in target 004ba9d0",
+              "addend": 0,
+              "symbol": "?instance@StringCompressor@@0PAV1@A"
+            }
+          ],
+          "addr": "004ba9d0",
+          "symbol": "?RemoveReference@StringCompressor@@SAXXZ"
+        }
+      ],
+      "source": "native-classes/StringCompressor.cpp"
+    }
+  ]
+}

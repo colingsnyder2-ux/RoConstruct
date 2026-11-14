@@ -1,0 +1,45 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\G3DBinaryOutput.cpp",
+      "checks": [
+        {
+          "addr": "0050ab30",
+          "symbol": "?reserveBytes@BinaryOutput@G3D@@AAEXH@Z",
+          "calls": [
+            {
+              "offset": 29,
+              "target": "00519830",
+              "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+              "kind": "direct"
+            }
+          ]
+        },
+        {
+          "addr": "00519950",
+          "symbol": "?writeUInt16@BinaryOutput@G3D@@QAEXG@Z",
+          "calls": [
+            {
+              "offset": 31,
+              "target": "00519830",
+              "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+              "kind": "direct"
+            }
+          ]
+        },
+        {
+          "addr": "005199b0",
+          "symbol": "?writeUInt32@BinaryOutput@G3D@@QAEXI@Z",
+          "calls": [
+            {
+              "offset": 31,
+              "target": "00519830",
+              "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

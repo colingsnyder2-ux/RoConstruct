@@ -1,0 +1,35 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HuffmanEncodingTree.cpp",
+  "source_sha256": "0353eefde95f8ebca3a70b0019c34266b5d3f998398946611cbfcfcb2130030c",
+  "checks": [
+    {
+      "address": "004ce2d0",
+      "symbol": "??1HuffmanEncodingTree@@QAE@XZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 20.0,
+        "target_bytes": 5,
+        "candidate_bytes": 5,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          1
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-070540-3f6bf326\\analysis-7c88a228.json",
+      "object_sha256": "c041ad058b330f5e3384f1ff8e0fb383187c1ee7578542f538ec3d02ccbd8cb3"
+    }
+  ],
+  "scope": "Documented session source: local relocation-masked byte and checked-data match. Reference closure, provider selection, ABI, runtime and server credit remain separate."
+}

@@ -57,14 +57,22 @@ def run_once(root, family_limit=2, source_limit=3, apply=True, publish=True):
                 with native_drafts.lock(root / 'work/draft-integration.lock'):
                     stage('intake', lambda: draft_merger._process(root, None, True, False))
                 if family_limit:
-                    planned = stage('family-plan', lambda: draft_family_queue.plan(root))
-                    if planned['stale']:
-                        status['state'] = 'inputs-changed'
-                        return status
-                    measured = stage('family-work', lambda: draft_family_queue.work(root, family_limit))
-                    if measured['stale']:
-                        status['state'] = 'inputs-changed'
-                        return status
+                    for attempt in range(2):
+                        suffix = '' if attempt == 0 else '-retry'
+                        planned = stage('family-plan' + suffix, lambda: draft_family_queue.plan(root))
+                        if planned['stale']:
+                            status['state'] = 'inputs-changed'
+                            return status
+                        try:
+                            measured = stage('family-work' + suffix, lambda: draft_family_queue.work(root, family_limit))
+                        except ValueError as error:
+                            if str(error) == 'Family queue inputs changed; prepare a fresh plan' and attempt == 0:
+                                continue
+                            raise
+                        if measured['stale']:
+                            status['state'] = 'inputs-changed'
+                            return status
+                        break
                 stage('source-discovery', lambda: draft_source_queue.discover(root))
                 stage('source-work', lambda: draft_source_queue.work(root, source_limit, apply))
                 if publish:

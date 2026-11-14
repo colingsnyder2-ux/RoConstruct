@@ -1,0 +1,34 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Png5pngget.cpp",
+      "checks": [
+        {
+          "addr": "005248d0",
+          "symbol": "_png_get_valid",
+          "calls": []
+        },
+        {
+          "addr": "005248f0",
+          "symbol": "_png_get_rowbytes",
+          "calls": []
+        },
+        {
+          "addr": "00524910",
+          "symbol": "_png_get_channels",
+          "calls": []
+        },
+        {
+          "addr": "00524930",
+          "symbol": "_png_get_bKGD",
+          "calls": []
+        },
+        {
+          "addr": "00524960",
+          "symbol": "_png_get_gAMA",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

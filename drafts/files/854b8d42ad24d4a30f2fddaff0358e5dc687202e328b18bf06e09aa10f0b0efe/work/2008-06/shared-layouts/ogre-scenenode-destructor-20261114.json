@@ -1,0 +1,40 @@
+{
+  "address": "006821c0",
+  "symbol": "??1RbxSceneNode@Ogre@@UAE@XZ",
+  "exact": true,
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreRbxNodeSceneNode.cpp",
+  "source_sha256": "2fda497dc38904e143262eb2745e08f21ff297edebf0691dc6e5ef399be44b7f",
+  "object_sha256": "97f6406d2da9540278833706f6c2dac932b021cc80c1b6db6893d828e76216c7",
+  "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-084617-0b80060e\\results.json",
+  "metrics": {
+    "fuzzy_percent": 100.0,
+    "positional_percent": 100.0,
+    "raw_positional_percent": 87.81362,
+    "target_bytes": 279,
+    "candidate_bytes": 279,
+    "length_delta": 0,
+    "compared_unmasked_bytes": 235,
+    "unmasked_differences": 0,
+    "masked_bytes": 44,
+    "mismatch_offsets": [],
+    "mismatch_offsets_truncated": false,
+    "target_relocations": 6,
+    "candidate_relocations": 11,
+    "missing_relocations": [],
+    "extra_relocations": [
+      129,
+      141,
+      183,
+      191,
+      238
+    ],
+    "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+  },
+  "data_matches": [
+    [
+      8704780,
+      464
+    ]
+  ],
+  "scope": "Existing RbxSceneNode destructor: fresh masked byte/data match; RTTI and vtable support identity. Reference closure, provider selection, ABI, runtime and server credit remain unverified."
+}

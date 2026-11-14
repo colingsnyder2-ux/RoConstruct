@@ -1,0 +1,78 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\StringCompressor.cpp",
+  "source_sha256": "f3ca8adbc38b97f079e4d0ed52d935d33d3f4b0271c0d031ffdcc4c8712e8ebb",
+  "object_sha256": "80d92766dd131429ca6c79d4c27792cafccc2ecf85021622e5513aef0755c1a3",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-124929-12678f61\\analysis-a301a780.json",
+  "checks": [
+    {
+      "address": "004ba9d0",
+      "symbol": "?RemoveReference@StringCompressor@@SAXXZ",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 66.666667,
+        "target_bytes": 57,
+        "candidate_bytes": 57,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 33,
+        "unmasked_differences": 0,
+        "masked_bytes": 24,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 4,
+        "candidate_relocations": 6,
+        "missing_relocations": [],
+        "extra_relocations": [
+          32,
+          38
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 31,
+          "target": "004ba8e0",
+          "symbol": "??1StringCompressor@@QAE@XZ",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 37,
+          "target": "006a067a",
+          "symbol": "??3@YAXPAX@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ],
+      "verified_references": [
+        {
+          "offset": 2,
+          "symbol": "?referenceCount@StringCompressor@@0HA",
+          "target": "00971814",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 11,
+          "symbol": "?referenceCount@StringCompressor@@0HA",
+          "target": "00971814",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 20,
+          "symbol": "?instance@StringCompressor@@0PAV1@A",
+          "target": "00971810",
+          "status": "verified_reviewed_reference"
+        },
+        {
+          "offset": 47,
+          "symbol": "?instance@StringCompressor@@0PAV1@A",
+          "target": "00971810",
+          "status": "verified_reviewed_reference"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data, reviewed call and absolute-reference checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}

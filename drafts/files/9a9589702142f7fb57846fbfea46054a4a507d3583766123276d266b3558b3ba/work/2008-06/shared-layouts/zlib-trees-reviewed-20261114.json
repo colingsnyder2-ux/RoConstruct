@@ -1,0 +1,51 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ZlibWtrees.cpp",
+      "checks": [
+        {
+          "addr": "007a5770",
+          "symbol": "__tr_stored_block",
+          "calls": [
+            {
+              "offset": 111,
+              "symbol": "_copy_block",
+              "target": "007a5320",
+              "kind": "direct"
+            },
+            {
+              "offset": 150,
+              "symbol": "_copy_block",
+              "target": "007a5320",
+              "kind": "direct"
+            }
+          ]
+        },
+        {
+          "addr": "007a5810",
+          "symbol": "__tr_align",
+          "calls": [
+            {
+              "offset": 222,
+              "symbol": "_bi_flush",
+              "target": "007a5240",
+              "kind": "direct"
+            },
+            {
+              "offset": 446,
+              "symbol": "_bi_flush",
+              "target": "007a5240",
+              "kind": "direct"
+            },
+            {
+              "offset": 474,
+              "symbol": "_bi_flush",
+              "target": "007a5240",
+              "kind": "direct"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

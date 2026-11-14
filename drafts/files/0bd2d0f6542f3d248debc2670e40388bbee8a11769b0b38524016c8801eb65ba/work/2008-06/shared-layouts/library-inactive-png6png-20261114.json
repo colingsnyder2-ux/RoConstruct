@@ -1,0 +1,125 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Png6png.cpp",
+  "source_sha256": "a5bdfb1fc4b62c88550a30a7fa2a6e6cbbd9a6258e9935a590a89b2e3a4659af",
+  "checks": [
+    {
+      "address": "0051dd00",
+      "symbol": "_png_zalloc",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 91.139241,
+        "target_bytes": 79,
+        "candidate_bytes": 79,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 67,
+        "unmasked_differences": 0,
+        "masked_bytes": 12,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 1,
+        "candidate_relocations": 3,
+        "missing_relocations": [],
+        "extra_relocations": [
+          36,
+          65
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [
+        [
+          8558056,
+          35
+        ]
+      ],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-020320-f237539e\\results.json",
+      "object_sha256": "6bf4b90d52aeb91ff878be237c4c1f1320e457686dfd657b7ec3b6a001ed1b3f"
+    },
+    {
+      "address": "0051dd50",
+      "symbol": "_png_zfree",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 60.0,
+        "target_bytes": 5,
+        "candidate_bytes": 5,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 1,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          1
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-020320-f237539e\\results.json",
+      "object_sha256": "6bf4b90d52aeb91ff878be237c4c1f1320e457686dfd657b7ec3b6a001ed1b3f"
+    },
+    {
+      "address": "0051dd60",
+      "symbol": "_png_reset_crc",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 86.363636,
+        "target_bytes": 22,
+        "candidate_bytes": 22,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 18,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          7
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-020320-f237539e\\results.json",
+      "object_sha256": "6bf4b90d52aeb91ff878be237c4c1f1320e457686dfd657b7ec3b6a001ed1b3f"
+    },
+    {
+      "address": "0051dd80",
+      "symbol": "_png_calculate_crc",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 95.714286,
+        "target_bytes": 70,
+        "candidate_bytes": 70,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 66,
+        "unmasked_differences": 0,
+        "masked_bytes": 4,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 1,
+        "missing_relocations": [],
+        "extra_relocations": [
+          58
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "run": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-020320-f237539e\\results.json",
+      "object_sha256": "6bf4b90d52aeb91ff878be237c4c1f1320e457686dfd657b7ec3b6a001ed1b3f"
+    }
+  ],
+  "scope": "Existing inactive native candidate source; local relocation-masked byte and checked-data match. Competing versions, reference identity, provider selection, ABI, runtime and server credit remain separate."
+}

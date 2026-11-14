@@ -14,11 +14,11 @@ class Client { public: static bool clientIsPresent(const Instance*, bool); };
 } }
 
 InsertModelFromRobloxVerb::InsertModelFromRobloxVerb(CRobloxView* view, RBX::DataModel* model)
-    : RBX::Verb(model, "ToggleToolbox"), view(view), model(model), createdAt(G3D::System::getLocalTime()) {}
+    : RBX::Verb(model, "ToggleToolbox"), view(view), model(model), createdAt(G3D::System::getTick()) {}
 
 bool InsertModelFromRobloxVerb::isEnabled() const
 {
-    double now = G3D::System::getLocalTime();
+    double now = G3D::System::getTick();
     if (createdAt + 10.0 > now)
         return false;
     return !RBX::Network::Client::clientIsPresent(model, true);

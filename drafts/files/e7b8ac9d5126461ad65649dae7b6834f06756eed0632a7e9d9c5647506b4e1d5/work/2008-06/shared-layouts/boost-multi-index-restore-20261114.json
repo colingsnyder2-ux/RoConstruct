@@ -1,0 +1,52 @@
+{
+  "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit4BC_2008Receiver.cpp",
+  "source_sha256": "50e3d52b2202474b2dc4d8e21077061d906fa125e40688105dbe1be4350f727c",
+  "object_sha256": "3927b1a27a7cadcf4d7eca90ee81668f3bef93bc94681bf20abfd73e8a8f9e9c",
+  "analysis": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261114-091944-3ebc1d31\\analysis-c85a8811.json",
+  "checks": [
+    {
+      "address": "004c9930",
+      "symbol": "?restore@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@00@Z",
+      "exact": true,
+      "metrics": {
+        "fuzzy_percent": 100.0,
+        "positional_percent": 100.0,
+        "raw_positional_percent": 93.220339,
+        "target_bytes": 118,
+        "candidate_bytes": 118,
+        "length_delta": 0,
+        "compared_unmasked_bytes": 110,
+        "unmasked_differences": 0,
+        "masked_bytes": 8,
+        "mismatch_offsets": [],
+        "mismatch_offsets_truncated": false,
+        "target_relocations": 0,
+        "candidate_relocations": 2,
+        "missing_relocations": [],
+        "extra_relocations": [
+          29,
+          108
+        ],
+        "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+      },
+      "data_matches": [],
+      "verified_calls": [
+        {
+          "offset": 28,
+          "target": "004c6710",
+          "symbol": "?decrement@ordered_index_node_impl@detail@multi_index@boost@@SAXAAPAU1234@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        },
+        {
+          "offset": 107,
+          "target": "004c6870",
+          "symbol": "?rebalance@ordered_index_node_impl@detail@multi_index@boost@@SAXPAU1234@Uparent_ref@ordered_index_node_compressed_base@234@@Z",
+          "kind": "direct",
+          "status": "verified_binding"
+        }
+      ]
+    }
+  ],
+  "scope": "Local masked byte/data and reviewed call checks; original owner, provider selection, ABI, runtime and server credit remain separate."
+}
