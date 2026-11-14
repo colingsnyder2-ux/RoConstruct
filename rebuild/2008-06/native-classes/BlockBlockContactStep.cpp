@@ -10,7 +10,10 @@
 //     getBestPlaneEdge(float) 00607280 (`ret 4`, returns bool in al) that both bodies call after aaBoxCollide.
 // Parked (declarations missing from read-only headers, see the batch result): deleteUnmatchedConnectors 00607e00 calls
 // the ContactConnector member 00606770 (`add ecx, 8; jmp 00606270`, a GeoPair test) that Connector2008.h does not
-// declare; loadGeoPairEdgeEdge 00607ea0 needs matchContactConnector 00607cc0, Block::getEdgeVertex 00606b00 /
+// declare (rechecked: 00606270 returns true unless geoPairType == POINT_PLANE_PAIR, then PairParams p;
+// computePointPlane 00613560; return p.length < 0.02f (00827488); the loop removes connector i when
+// !matched[i] || !connectors[i]->test(), then fastRemoveIndex on both arrays (resize 006078f0 / 0047ff20),
+// getKernel()->removeConnector, delete; no name for either member in the donor or registry); loadGeoPairEdgeEdge 00607ea0 needs matchContactConnector 00607cc0, Block::getEdgeVertex 00606b00 /
 // getEdgeNormal and a 2008 ContactConnector::setEdgeEdge (writes geoPair type / offsets / normals, not the bodies);
 // computePlaneContact 00608580 needs Body pv +0x94 without updatePV (the donor Body reached through Connector2008.h
 // has none), the Block face-vertex table 0084aec8 and intersectRectQuad 00608160.

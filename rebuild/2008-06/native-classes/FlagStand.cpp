@@ -9,6 +9,7 @@
 // <<< native-status | src 66c1a3dd | roc native-status --write
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"
+#include "v8datamodel/Flag.h"
 
 namespace RBX
 {
@@ -40,6 +41,26 @@ namespace RBX
 	FlagStand::FlagStand()
 	{
 		setName(sFlagStand);
+	}
+
+	// 0062b900: embedded Primitive +0x228, Primitive::getFirstRigid 005e7c80 / getNextRigid 005e7ca0, the joint's two
+	// primitives (+0xc, +0x10), PartInstance::fromPrimitive 00599f80, parent +0x104, __RTDynamicCast Instance -> Flag
+	// (RTTI 0092907c -> 0094be40). Donor tools/rbxgs v8datamodel/FlagStand.cpp FlagStand::GetFlag.
+	Flag* FlagStand::GetFlag()
+	{
+		Primitive* primitive = getPrimitive();
+
+		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
+				if (flag)
+					return flag;
+			}
+		}
+
+		return NULL;
 	}
 
 	void FlagStand::setTeamColor(BrickColor color)
