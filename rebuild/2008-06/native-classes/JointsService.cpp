@@ -55,13 +55,8 @@ namespace RBX
 	// 005e5b50: semantic match; 156 bytes like the original. Evaluation order still differs.
 	void JointsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
-		if (world)
-		{
-			Listener<World, AutoJoin>* joinListener = dynamic_cast<Listener<World, AutoJoin>*>(this);
-			static_cast<Notifier<World, AutoJoin>*>(world)->removeListener(joinListener);
-			Listener<World, AutoDestroy>* destroyListener = dynamic_cast<Listener<World, AutoDestroy>*>(this);
-			static_cast<Notifier<World, AutoDestroy>*>(world)->removeListener(destroyListener);
-		}
+		Notifier<World, AutoJoin>::disconnect(world, this);
+		Notifier<World, AutoDestroy>::disconnect(world, this);
 		world = NULL;
 		if (newProvider)
 		{
@@ -69,13 +64,8 @@ namespace RBX
 			if (workspace)
 				world = workspace->getWorld();
 		}
-		if (world)
-		{
-			Listener<World, AutoJoin>* joinListener = dynamic_cast<Listener<World, AutoJoin>*>(this);
-			static_cast<Notifier<World, AutoJoin>*>(world)->addListener(joinListener);
-			Listener<World, AutoDestroy>* destroyListener = dynamic_cast<Listener<World, AutoDestroy>*>(this);
-			static_cast<Notifier<World, AutoDestroy>*>(world)->addListener(destroyListener);
-		}
+		Notifier<World, AutoJoin>::connect(world, this);
+		Notifier<World, AutoDestroy>::connect(world, this);
 	}
 
 	void JointsService::onDescendentAdded(Instance* instance)
