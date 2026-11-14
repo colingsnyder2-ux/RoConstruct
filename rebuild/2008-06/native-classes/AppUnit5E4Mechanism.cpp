@@ -5,9 +5,28 @@
 // 005e5320 -> 005e5200); see the receipt's proposals. Inactive native unit; verified by tests/record_native_app_unit5e4.py.
 #undef _RELEASEASSERT
 #include "v8world/Mechanism.h"
+#include "v8world/Primitive.h"
+#include "v8world/Assembly.h"
 
 namespace RBX
 {
+	// @005e50c0 ?getMechanismFromPrimitive@Mechanism@RBX@@SAPAV12@PBVPrimitive@2@@Z (identity-registry). Calls
+	// Primitive::getAssembly 005e7570 (clump +0x5c -> +0x24) and tail-jumps to Assembly::getMechanism 005e6110
+	// (`mov eax, [ecx + 0x40]`; the registry's folded name there is World::getContactManager). Donor body:
+	// tools/rbxgs v8world/Mechanism.cpp.
+	Mechanism* Mechanism::getMechanismFromPrimitive(const Primitive* primitive)
+	{
+		Assembly* assembly;
+		if (primitive && (assembly = primitive->getAssembly()))
+		{
+			return assembly->getMechanism();
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+
 	bool MechanismTracker::tracking()
 	{
 		if (this->mechanism)
