@@ -1,5 +1,6 @@
 """Expose native CRobloxApp closure using existing Doc diagnostic libraries. Never run output."""
 import json
+import os
 import subprocess
 import sys
 import hashlib
@@ -188,7 +189,7 @@ def verify_provider(check):
 # once: separate instances would still write those same object paths.
 assert len({Path(source).stem for source, _ in checks}) == len(checks)
 started = time.monotonic()
-with ThreadPoolExecutor(max_workers=3) as pool:
+with ThreadPoolExecutor(max_workers=min(6, os.cpu_count() or 1)) as pool:
     verification = list(pool.map(verify_provider, checks))
 raw = (ROOT / 'rebuild/2008-06/out/native-layouts/CheckLogManagerState.obj').read_bytes()
 sections, _, definitions, _ = match._coff_data_index(raw)
