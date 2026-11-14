@@ -44,3 +44,5 @@ assert.equal(vm.runInContext("classify(data)[0][0]", real), "Ogre");
 real.data.units[0] = "RBX::AdornRbxGfx";
 real.data.funcs[0][5][2] = "?method@SceneNode@Ogre@@QAEXXZ";
 assert.equal(vm.runInContext("classify(data)[0][0]", real), "Ogre");
+const defaultView = html.match(/views = \{libraries:"([^"]+)", remaining:"([^"]+)", daily:"([^"]+)"\}/);
+assert.deepEqual(defaultView && defaultView.slice(1), ["integration", "integration", "integration"]);
