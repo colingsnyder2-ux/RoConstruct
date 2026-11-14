@@ -78,5 +78,18 @@ namespace RBX
 		{
 			return *vertices;
 		}
+
+		// donor v8world/Block.h inline, computed twice by BlockBlockContact::loadGeoPairEdgeEdge 00607ea0
+		// (00607ea6..00607ed9 / 00607edb..00607f0f).
+		NormalId getEdgeNormal(int edge)
+		{
+			int answer = edge / 4 + 3 * (edge % 2);
+			if (edge > 12)
+				answer = (answer + 3) % 6;
+			return (NormalId)answer;
+		}
+		// 00606b00 (?getEdgeVertex@Block@RBX@@QBEPBVVector3@G3D@@H@Z, `ret 4`; called by loadGeoPairEdgeEdge 00607ea0
+		// on Primitive +0x9c). Body: native-classes/BlockBallShape.cpp.
+		const G3D::Vector3* getEdgeVertex(int edge) const;   // 00606b00
 	};
 }

@@ -35,6 +35,7 @@ namespace G3D { class Vector3; class Vector3int16; }
 
 namespace RBX
 {
+	class Body;
 	class ContactConnector;
 	class Kernel;
 
@@ -67,11 +68,30 @@ namespace RBX
 
 	protected:
 		void deleteConnector(ContactConnector*& c);     // 00606d10
+		// 00606e00 (`ret 8`, placeholder func_00606e00): new ContactConnector(jointK +0x28, elasticJointK +0x2c,
+		// kFriction +0x30) 00606d40, stores the two Body arguments at connector +0x14 / +0x18, then
+		// getKernel()->insertConnector 005fb160. Donor name Contact::createConnector() (the 2008 one takes the bodies);
+		// called by BallBallContact 00606f80, BallBlockContact 00607150 and BlockBlockContact 00607cc0.
+		ContactConnector* createConnector(Body* b0, Body* b1);   // 00606e00
 		virtual void deleteAllConnectors() = 0;         // slot 5
 		virtual bool stepContact() = 0;                 // slot 6
 
 	public:
 		Contact(Primitive* prim0, Primitive* prim1);    // 00606c20
+
+		// donor v8world/Contact.h; bodies in native-classes/ContactUnit2008Contact.cpp. step: stepContact slot 6, then
+		// Primitive::onNewTouch 005e7530 on the first touching step. computeIsAdjacent: computeIsColliding slot 7 with
+		// +space, then -space. The hit counters are read by contactPairHitRatio / contactFeatureHitRatio
+		// (DataModel::evaluate 005760a1 / 005760d5) and incremented by BlockBlockContact 00607d3b / 00607d07 /
+		// 00607588 / 00607548.
+		bool step(int uiStepId);                        // 00606c50
+		bool computeIsAdjacent(float spaceAllowed);     // 00606ca0
+		static int contactPairMatches;                  // 0097b880
+		static int contactPairMisses;                   // 0097b884
+		static int contactFeatureMatches;               // 0097b888
+		static int contactFeatureMisses;                // 0097b88c
+		static float contactPairHitRatio();             // 00606bc0
+		static float contactFeatureHitRatio();          // 00606bf0
 
 		virtual bool computeIsColliding(float overlapIgnored) = 0;   // slot 7
 		virtual int numConnectors() const = 0;                       // slot 8 (analog name)

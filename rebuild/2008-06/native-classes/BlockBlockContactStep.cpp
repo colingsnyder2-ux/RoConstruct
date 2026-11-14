@@ -598,8 +598,9 @@ namespace RBX
 	// a match, writes them into the matched connector (match accepts both body orders). Not exact yet: 316 B, same
 	// instructions and stores, but this / i are allocated to esi / edi (original edi / esi) and connectors[i] is loaded
 	// before the match arguments are pushed (original after). Rejected: a direct connectors[i]->geoPair.match call
-	// (318 B) and a single `!matched[i] && ...` condition (unchanged). The identity registry has only the placeholder
-	// func_00607cc0.
+	// (318 B) and a single `!matched[i] && ...` condition (unchanged). Batch 15 rejected: friend + direct
+	// connectors[i]->geoPair.match (318 B: &data[i] early, deref late) and ContactConnector deriving from GeoPair at +0x8
+	// (same 318 B). The identity registry has only the placeholder func_00607cc0.
 	ContactConnector* BlockBlockContact::matchContactConnector(Body* b0, Body* b1, GeoPairType _pairType, int param0, int param1)
 	{
 		for (int i = 0; i < matched.size(); i++)
@@ -627,7 +628,10 @@ namespace RBX
 	// 00607ea0: donor v8world/Contact.cpp body; the 2008 setEdgeEdge leaves the bodies to matchContactConnector.
 	// Not exact yet: 240 B against 238; identical up to the first getEdgeVertex call, then this build loads both
 	// Block pointers before it (the original loads block(b0) after it) and stores offset0 after the normals.
-	// Rejected: direct matched->geoPair.setEdgeEdge (unchanged).
+	// Rejected: direct matched->geoPair.setEdgeEdge (unchanged); batch 15: donor body arguments passed and ignored
+	// (unchanged); block(int) out of line and auto-inlined (unchanged). Closest (238 B, same size, register / spill
+	// slot differences only): separate statements offset1 = block(b1)->getEdgeVertex(edge1), then offset0, then
+	// setEdgeEdge(offset0, offset1, ...); not kept (no evidence for that source order).
 	void BlockBlockContact::loadGeoPairEdgeEdge(int b0, int b1, int edge0, int edge1)
 	{
 		NormalId edgeNormal0 = block(b0)->getEdgeNormal(edge0);
