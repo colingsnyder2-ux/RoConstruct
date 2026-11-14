@@ -19,14 +19,16 @@
 //   fields   currentStage +0x4: Primitive() 005e8770 zeroes +0x4 before the vtable store (005e8795); putInKernel 00645830
 //            stores the Kernel* (Kernel RTTI 0084105c -> IStage at mdisp 0, so no adjustment); removeFromKernel
 //            00645860 and removeFromStage 00645840 set it to currentStage->upstream (IStage +0x4);
-//            removeFromPipeline 00645820 stores NULL. Edge (Contact2008.h) starts its fields at +0x8, Primitive at +0x8.
+//            removeFromPipeline 00645820 stores NULL. Edge (AppUnit658/Edge.h) and Primitive start at +0x8.
 //   members  out of line: getStage(StageType) 006457e0 (walks upstream / downstream by getStageType, slot 1 of IStage),
 //            getKernel 00645850 (`push 7; call getStage`), removeFromPipeline 00645820, removeFromStage 00645840.
 //
-// Switch: a unit that also includes the donor v8world/Edge.h (for example through native-headers/v8world/
-// Contact2008.h) defines NATIVE_IPIPELINED2008_DONOR, and this header then includes the donor v8world/IPipelined.h,
-// whose IPipelined has the same 2008 layout (novtable, the same three slots, currentStage +0x4; the
-// body-primitive2008 layout probe checks both configurations).
+// Switch: a unit that also reaches the donor v8world/IPipelined.h (through the donor v8world/Edge.h, Primitive.h or
+// World.h) defines NATIVE_IPIPELINED2008_DONOR, and this header then includes the donor v8world/IPipelined.h, whose
+// IPipelined has the same 2008 layout (novtable, the same three slots, currentStage +0x4; the body-primitive2008
+// layout probe checks both configurations). native-headers/v8world/Contact2008.h and Joints2008.h are no longer such
+// a path: they include the native AppUnit658/Edge.h, which includes this header. No native-classes unit defines the
+// switch now; its remaining user is the generated layout unit of tests/record_native_contact_unit2008.py.
 #ifdef NATIVE_IPIPELINED2008_DONOR
 #include "v8world/IPipelined.h"
 #else

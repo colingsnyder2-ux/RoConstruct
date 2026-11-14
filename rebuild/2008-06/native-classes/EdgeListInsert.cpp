@@ -24,8 +24,14 @@ namespace RBX
 	}
 
 	// 005e8610. Byte-identical to the original with relocations masked (138 B), but not credited: the prover binds this
-	// unit's G3D::Array<Primitive*>::resize to 005025c0 while the original calls 00599a70 (both are folded
-	// Array<pointer>::resize COMDATs, registry names ?resize@?$Array@VVector3@G3D@@ and ?resize@?$Array@PBX@G3D@@).
+	// unit's G3D::Array<Primitive*>::resize to 005025c0 while the original calls 00599a70. Identity: 00599a70 (registry
+	// ?resize@?$Array@PBX@G3D@@, a folded 4-byte-element resize: `add eax, eax; add eax, eax` scaling, minSize guard
+	// 00976380, realloc 00502080) is the Array<Primitive*>::resize of this unit; it is also the resize that
+	// Array<Primitive*>::append 0059a190 (insertEdge 005e8990's callee) calls. 005025c0 is Array<G3D::Vector3>::resize
+	// (registry ?resize@?$Array@VVector3@G3D@@, 12-byte elements, zero-fills three floats, realloc 00501f10), so the
+	// row "?resize@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXH_N@Z -> 005025c0" of the shared evidence
+	// work/native-client/reference-bindings-prove-OgreNativeFull-1794426114.json is a wrong binding (blocker, owner of
+	// that evidence file).
 	// Rejected first: resize(size() - 1, false) after edges[size() - 1] (150 B, `index` spilled) and after last()
 	// (138 B, this in esi instead of ebx); popDiscard() reaches the array sizes through the array pointers as the original.
 	void EdgeList::removeEdge(Edge* e)

@@ -2,7 +2,8 @@
 // 2008-06 native RBX::Edge (inactive), declared under a non-colliding name: v8world/Edge.h is the donor header, whose
 // Edge keeps Edge* next0 / next1 links at +0x14 / +0x18 and whose base comes from the donor v8world/IPipelined.h. This
 // header builds on native-headers/v8kernel/IPipelined2008.h and must not be included in a unit that also reaches the
-// donor v8world/Edge.h (for example through v8world/Contact2008.h).
+// donor v8world/Edge.h (for example through the donor v8world/Primitive.h, World.h or Contact.h). The native
+// native-headers/v8world/Contact2008.h and Joints2008.h include this header themselves.
 //
 // Read from the 2008-06 binary (tests/record_native_app_unit658.py checks the offsets and the two bodies):
 //   RTTI     BallBallContact 008436bc -> Contact -> Edge -> IPipelined, all at mdisp 0. Edge has no vtable of its own:
