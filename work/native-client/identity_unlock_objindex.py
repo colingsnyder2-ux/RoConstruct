@@ -39,6 +39,9 @@ def scan(job):
     from native_identity_closure import functions, vtables
     funcs, tabs, hashes = set(), set(), set()
     for p in paths:
+        # delinked slices of the original exe carry only registry names and parse very slowly
+        if p.replace(chr(92), '/').endswith('/orig.obj') and '/delink-' in p.replace(chr(92), '/'):
+            continue
         try:
             raw = open(p, 'rb').read()
         except OSError:
@@ -64,6 +67,14 @@ def scan(job):
     return funcs, tabs, len(paths)
 
 
+def digest(path):
+    try:
+        with open(path, 'rb') as fh:
+            return path, hashlib.sha1(fh.read()).digest()
+    except OSError:
+        return path, None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--workers', type=int, default=12)
@@ -84,8 +95,21 @@ def main():
     shards.mkdir(exist_ok=True)
     # resumable: one shard per 200-object chunk, reused on rerun (files are sorted)
     chunks = [(i, files[i:i + 200], shards / ('%07d.pkl.gz' % i)) for i in range(0, len(files), 200)]
+    # objects added/removed since an earlier run shift chunk boundaries; an unfinished chunk
+    # after a finished one also takes the 600 files before it (rows are a set, overlap is harmless)
+    chunks = [(i, files[max(0, i - 600):i + 200] if i and (shards / ('%07d.pkl.gz' % (i - 200))).exists()
+               and not p.exists() else ps, p) for i, ps, p in chunks]
     funcs, tabs, done = set(), set(), 0
     with Pool(args.workers, initializer=init, initargs=(vts,)) as pool:
+        # unfinished chunks: byte-identical objects are parsed once (first occurrence wins)
+        todo = [c for c in chunks if not c[2].exists()]
+        seen, keep = set(), set()
+        for path, h in pool.imap(digest, [f for c in todo for f in c[1]], chunksize=64):
+            if h is not None and h not in seen:
+                seen.add(h)
+                keep.add(path)
+        print('unfinished objects', sum(len(c[1]) for c in todo), 'unique', len(keep), flush=True)
+        chunks = [c if c[2].exists() else (c[0], [f for f in c[1] if f in keep], c[2]) for c in chunks]
         for f, t, n in pool.imap_unordered(scan, chunks, chunksize=1):
             funcs |= f
             tabs |= t

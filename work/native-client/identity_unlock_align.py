@@ -8,7 +8,7 @@ accepted in earlier rounds; repeated to a fixpoint.
             the original C, agreeing at every named callee (>=1 anchor), names the
             callee symbol at an unnamed position.
   callee  - an object function (symbol not yet a registry name) whose direct-call list has
-            the original's length and agrees at every named position, with >=2 anchors
+            the original's length and agrees at every named position, with >=3 anchors
             counting call and string/data references, is a candidate for the unnamed
             function itself.  Only a single surviving candidate symbol is accepted.
 A symbol voted to two addresses, or an address with two symbols, is rejected.
@@ -99,12 +99,16 @@ def main():
         if rnd == 1:
             for vname, slots in tabs:
                 base = vt_slots[vname]
+                at = {off: '%08x' % int.from_bytes(IMG[base + off - BASE:base + off - BASE + 4], 'little')
+                      for off, _ in slots if off >= 0}
+                # a compiled vtable whose virtual order differs from the original (imperfect
+                # header) shifts every slot: require agreement at every already-named slot
+                named_slots = [(at[off], sym) for off, sym in slots if off >= 0 and at[off] in name]
+                if not named_slots or any(name[t] != sym for t, sym in named_slots):
+                    continue
                 for off, sym in slots:
-                    if off < 0:
-                        continue
-                    t = '%08x' % int.from_bytes(IMG[base + off - BASE:base + off - BASE + 4], 'little')
-                    if t in targets:
-                        votes[t][sym].append(('vtable', vname, off // 4))
+                    if off >= 0 and at[off] in targets:
+                        votes[at[off]][sym].append(('vtable', vname, off // 4))
         # caller alignment
         work = {t for t in targets if t not in accepted}
         callers = {c for t in work for c in callers_of.get(t, ()) if known(c)}
@@ -141,12 +145,12 @@ def main():
             size = end_of(int(t, 16)) - int(t, 16)
             for row in pool:
                 sym, ln, oc, od = row
-                if len(oc) != len(tc) or not (size // 2 <= ln <= size * 2):
+                if len(oc) != len(tc) or not (size * 3 // 4 <= ln <= size * 4 // 3):
                     continue
                 if any(oc[i] != k for i, k in named_calls):
                     continue
                 anchors = len(named_calls) + len(td & set(od))
-                if anchors >= 2 and sym not in regnames:
+                if anchors >= 3 and sym not in regnames:
                     votes[t][sym].append(('callee', anchors))
         # resolve
         used = Counter(s for v in accepted.values() for s in [v[0]])
