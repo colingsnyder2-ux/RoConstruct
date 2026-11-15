@@ -7,6 +7,8 @@ classify = function (data) {
       ? integrationData.inactive?.[hex(f[0])] : null;
     if (native?.[1] && /^_?png_/.test(native[0]))
       return ["libpng", "Native libpng source", true];
+    if (native?.[1] && /^boost::multi_index::/.test(native[0]))
+      return ["boost", "Boost.MultiIndex native source", true];
     if (src && !src[2] && /^ogre-/.test(src[0]) && /(?:^|\/)roc_[^/]*\.(?:c|cpp)$/i.test(src[1]) && /^RBX::/.test(unit))
       return [ENGINE, partOf(ENGINE, null, unit, ""), false];
     if (src && /^(wildmagic-|templates-)/.test(src[0]))

@@ -1,0 +1,985 @@
+{
+  "class": "RBX Lighting.cpp reflection rows and JointInstance.cpp getset factories of the application range 005e0000..005e4000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "lighting": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast"
+    ],
+    "lighting-pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e0/pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_APPUNIT5E0_PENDING"
+    ],
+    "joint": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp": "b03d55cbfe41592bb8305edceb8312a82af3ec3a565074f3b24d3f5eb4ae2e27",
+    "rebuild/2008-06/native-classes/AppUnit5E0JointReflection.cpp": "bec03aba3db21d89f096226b202cce7aaf358f4ad20bbbaa569a61b782a07788",
+    "rebuild/2008-06/tests/record_native_app_unit5e0.py": "98ebbfd6bb1b50a98dcd2012f247afaf36fc6619f869f70a4dbbbcf2a1e70d7a",
+    "rebuild/2008-06/native-headers/v8datamodel/Lighting2008.h": "52e9143d9b5b10371d2d2a1e0c496952509bb56ba3d9dd09b67cdb35c898b9dd",
+    "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h": "31f13819b55a510bc8186ef35ba1ab73d041ad3ad38bffe42cd53c92405be76e",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313",
+    "rebuild/2008-06/native-headers/reflection/type.h": "94de0f25823a4c160f0123fb58447fada37396920787cf9f28917d33893ab3a9"
+  },
+  "objects": {
+    "lighting": "aa3f4f8c24e3599a61bc7a61f732d79fe9e980c50d37feb3d9c11371b941fca2",
+    "lighting-pending": "d6ec4711e43f5a20cf2f1a160023c064e3d010ec97c7e141d08f9ceff05ad8c8",
+    "joint": "311efd6c858b6dca7fe2a5237b056fe17996bdd7438e7e4fcd2e047ff9911d2a"
+  },
+  "unit_map": {
+    "lighting tail 005e0000..005e275f": "v8datamodel/Lighting.cpp, from 005df0c0 (app-unit5dc-2008 maps the head). Evidence: the static initializers 007f69b0..007f6c40 (\"LightingChanged\", \"TimeOfDay\", \"GeographicLatitude\", \"GetMoonPhase\", \"GetMoonDirection\", \"GetSunDirection\", \"GetMinutesAfterMidnight\", \"SetMinutesAfterMidnight\" / \"minutes\", \"ShadowColor\", \"Brightness\", \"ColorShift_Top\", \"ColorShift_Bottom\", \"Ambient\") call the descriptor constructors 005e1170 / 005e1220 / 005e12d0 / 005e1560 / 005e1690 / 005e1780 / 005e18c0 with the member functions as immediates; RTTI of the PropDescriptor / GetSetImpl / BoundFuncDesc vtables 0083dc28..0083de24 names Lighting; the setters 005e2030..005e2730 push the descriptor objects 0097a900..0097aa90 and fire event_LightingChanged (0097a88c). Contents: lexical_cast / tokenizer / date_time instances 005e0020..005e0ae0 (lighting2008), the getset factories 005e02d0 / 005e0320 / 005e0370, getMinutesAfterMidnight 005e0610, replaceSky 005e0650, boost::posix_time::to_simple_string_type<char> 005e06b0 and to_simple_string 005e0ba0 (boost header template / inline instantiated by this unit, reached only from getTimeStr 005e0be0), duration_from_string 005e0c20, classDescriptor 005e1100, the descriptor constructors / execute rows 005e1170..005e1960, Lighting() 005e1a40 with its thunks, ~Lighting 005e1d60, the signal call 005e1e00 / 005e1f00, the setters and onChild* rows 005e2030..005e2730. Built here: the template instances and getTimeStr (counted), the setters and getMinutesAfterMidnight (pending build).",
+    "joint-instance head 005e2760..005e3fff (continues to 005e50bf)": "v8datamodel/JointInstance.cpp (app-unit5dc-2008 / app-unit5e4 map the rest). Evidence: RTTI of the Weld vtable 0083f24c (DescribedCreatable<Weld, JointInstance, sWeld 3QBDB> directly on JointInstance, no AutoJoint), GetSetImpl vtables 0083e280 / 0083e294 / 0083e2a8 (JointInstance PartInstance* / CoordinateFrame, Motor float), the per-joint getClassName rows 005e2ad0 / 005e3040 / 005e30e0 / 005e31b0 / 005e3290 / 005e3330 / 005e33f0 / 005e3490 (Name::declare through call_once 00557330), ~JointInstance 005e2e10 (??_G 005e34f0) and the FactoryProduct / NonFactoryProduct destructors and constructors. Contents: ??_G of world-joints 005e2760, the ICF leaves 005e2790 (world-shapes) and 005e28c0 / 005e28e0 (world-joints), 005e28b0 (feature / stats-service thunk), shouldRender3dAdorn 005e27a0, getC0 / getC1 005e27b0 / 005e27c0, NonFactoryProduct<Instance, sJointInstance> 005e27e0 / 005e2840, the getset factories 005e2920 / 005e2970 / 005e29c0, getPart0 / getPart1 005e2a10 / 005e2a70, render3dAdorn 005e2af0, setPart 005e2cd0, ~JointInstance 005e2e10, the Snap .. Motor FactoryProduct destructors 005e2fa0..005e3410 with their ??_E adjustor thunks, RefPropDescriptor<JointInstance, PartInstance> 005e3540 / setRefValue 005e35f0, PropDescriptor<JointInstance, CoordinateFrame> / <Motor, float> constructors 005e3630 / 005e36e0, askSetParent 005e3790, DescribedNonCreatable<JointInstance>() 005e37d0, JointInstance(Joint*) 005e3870, onAncestorChanged 005e3a80, the FactoryProduct(Joint*) constructors 005e3b30..005e3dd0 and DescribedCreatable(Joint*) constructors 005e3e60 / 005e3f10. Built here: the three getset factories (their bytes and symbols depend on the member-pointer types only). The rest waits for the 2008 JointInstance declaration (proposal)."
+  },
+  "unit_rows": {
+    "lighting tail": {
+      "rows": 67,
+      "span": "0x5e0020..0x5e2730"
+    },
+    "joint-instance head": {
+      "rows": 98,
+      "span": "0x5e2760..0x5e3ff0"
+    }
+  },
+  "range_rows_total": 165,
+  "range_rows_counted_by_other_receipts": [
+    "005e0020 counted by lighting2008-working.json",
+    "005e0150 counted by lighting2008-working.json",
+    "005e0160 counted by lighting2008-working.json",
+    "005e01b0 counted by lighting2008-working.json",
+    "005e03c0 counted by lighting2008-working.json",
+    "005e04c0 counted by lighting2008-working.json",
+    "005e0560 counted by lighting2008-working.json",
+    "005e0650 counted by lighting2008-working.json",
+    "005e0690 counted by lighting2008-working.json",
+    "005e0a10 counted by lighting2008-working.json",
+    "005e0ae0 counted by lighting2008-working.json",
+    "005e0c20 counted by lighting2008-working.json",
+    "005e1100 counted by lighting2008-working.json",
+    "005e1380 counted by lighting2008-working.json",
+    "005e1420 counted by lighting2008-working.json",
+    "005e1430 counted by lighting2008-working.json",
+    "005e1440 counted by lighting2008-working.json",
+    "005e1450 counted by lighting2008-working.json",
+    "005e1460 counted by lighting2008-working.json",
+    "005e1470 counted by lighting2008-working.json",
+    "005e1490 counted by lighting2008-working.json",
+    "005e1a40 counted by lighting2008-working.json",
+    "005e1ce0 counted by lighting2008-working.json",
+    "005e1cf0 counted by lighting2008-working.json",
+    "005e1d00 counted by lighting2008-working.json",
+    "005e1d10 counted by lighting2008-working.json",
+    "005e1d20 counted by lighting2008-working.json",
+    "005e1d30 counted by lighting2008-working.json",
+    "005e1d40 counted by lighting2008-working.json",
+    "005e1d50 counted by lighting2008-working.json",
+    "005e1d60 counted by lighting2008-working.json",
+    "005e1de0 counted by lighting2008-working.json",
+    "005e1e00 counted by lighting2008-working.json",
+    "005e1f00 counted by lighting2008-working.json",
+    "005e2100 counted by lighting2008-working.json",
+    "005e2160 counted by lighting2008-working.json",
+    "005e2260 counted by lighting2008-working.json",
+    "005e2760 counted by world-joints-working.json",
+    "005e2790 counted by world-shapes-working.json",
+    "005e28b0 counted by feature-working.json, stats-service-working.json",
+    "005e28c0 counted by world-joints-working.json",
+    "005e28e0 counted by world-joints-working.json"
+  ],
+  "rows": [
+    {
+      "address": "005e02d0",
+      "unit": "lighting",
+      "symbol": "??$getset@P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP812@AEXABV34@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@P8Lighting@2@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@XZP852@AEXABV64@@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP812@AEXABV34@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@6B@": "0x83dc28 (vtable RTTI .?AV?$GetSetImpl@P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP812@AEXABV34@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e0320",
+      "unit": "lighting",
+      "symbol": "??$getset@P8Lighting@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Lighting@2@BEMXZP852@AEXM@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Lighting@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@6B@": "0x83dc3c (vtable RTTI .?AV?$GetSetImpl@P8Lighting@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e0370",
+      "unit": "lighting",
+      "symbol": "??$getset@P8Lighting@RBX@@BE?AVColor3@G3D@@XZP812@AEXV34@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@std@@P8Lighting@2@BE?AVColor3@G3D@@XZP852@AEXV67@@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Lighting@RBX@@BE?AVColor3@G3D@@XZP812@AEXV34@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@6B@": "0x83dc50 (vtable RTTI .?AV?$GetSetImpl@P8Lighting@RBX@@BE?AVColor3@G3D@@XZP812@AEXV34@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e06b0",
+      "unit": "lighting",
+      "symbol": "??$to_simple_string_type@D@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@01@@Z",
+      "size": 855,
+      "target_size": 855,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802430 (msvcp90.dll!??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z)",
+        "?compare@?$int_adapter@_J@date_time@boost@@ABEHABV123@@Z": "0x5df8e0 (support body exact at the bound address (not counted here))",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@D@Z": "0x44a640 (external (evidence name))",
+        "__alldiv": "0x6a1c30 (external)",
+        "__imp_?setw@std@@YA?AU?$_Smanip@H@1@H@Z": "0x802538 (msvcp90.dll!?setw@std@@YA?AU?$_Smanip@H@1@H@Z)",
+        "??_C@_01JLIPDDHJ@?3?$AA@": "0x821348 (literal ':')",
+        "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@J@Z": "0x802534 (msvcp90.dll!??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@J@Z)",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (evidence-name binding (the linked COMDAT is another unit's copy; not exact here, not counted))",
+        "__allrem": "0x6a1e90 (external)",
+        "??_C@_01LFCBOECM@?4?$AA@": "0x81ca8c (literal '.')",
+        "??$?6DU?$char_traits@D@std@@H@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABU?$_Smanip@H@0@@Z": "0x5df740 (support body exact at the bound address (not counted here))",
+        "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@_J@Z": "0x802530 (msvcp90.dll!??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@_J@Z)",
+        "__imp_?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x802434 (msvcp90.dll!?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp_??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x802438 (msvcp90.dll!??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (literal '')",
+        "??_C@_09JENNLOAD@?$CLinfinity?$AA@": "0x83dc84 (literal '+infinity')",
+        "??_C@_09JJMDMOEE@?9infinity?$AA@": "0x83dc78 (literal '-infinity')",
+        "??_C@_0BA@COBEFOKA@not?9a?9date?9time?$AA@": "0x83dc68 (literal 'not-a-date-time')"
+      },
+      "local_eh": [
+        "__ehhandler$??$to_simple_string_type@D@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@01@@Z"
+      ]
+    },
+    {
+      "address": "005e0ba0",
+      "unit": "lighting",
+      "symbol": "?to_simple_string@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@12@@Z",
+      "size": 50,
+      "target_size": 50,
+      "exact": true,
+      "verified_targets": {
+        "??$to_simple_string_type@D@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@01@@Z": "0x5e06b0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e0be0",
+      "unit": "lighting",
+      "symbol": "?getTimeStr@Lighting@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 56,
+      "target_size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?to_simple_string@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@12@@Z": "0x5e0ba0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e1170",
+      "unit": "lighting",
+      "symbol": "??$?0P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP801@AEXABV23@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@QAE@PBD0P8Lighting@2@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP812@AEXABV34@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@P8Lighting@2@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@XZP852@AEXABV64@@Z@Z": "0x5e02d0 (own row)",
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x443230 (support body exact at the bound address (not counted here))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@6B@": "0x83dc94 (vtable RTTI .?AV?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP801@AEXABV23@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@QAE@PBD0P8Lighting@2@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e1220",
+      "unit": "lighting",
+      "symbol": "??$?0P8Lighting@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@QAE@PBD0P8Lighting@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Lighting@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Lighting@2@BEMXZP852@AEXM@Z@Z": "0x5e0320 (own row)",
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (support body exact at the bound address (not counted here))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@6B@": "0x83dcc8 (vtable RTTI .?AV?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Lighting@RBX@@BEMXZP801@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@QAE@PBD0P8Lighting@2@BEMXZP832@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e12d0",
+      "unit": "lighting",
+      "symbol": "??$?0P8Lighting@RBX@@BE?AVColor3@G3D@@XZP801@AEXV23@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@QAE@PBD0P8Lighting@2@BE?AVColor3@G3D@@XZP832@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Lighting@RBX@@BE?AVColor3@G3D@@XZP812@AEXV34@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@std@@P8Lighting@2@BE?AVColor3@G3D@@XZP852@AEXV67@@Z@Z": "0x5e0370 (own row)",
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x59a410 (support body exact at the bound address (not counted here))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@6B@": "0x83dcfc (vtable RTTI .?AV?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Lighting@RBX@@BE?AVColor3@G3D@@XZP801@AEXV23@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@QAE@PBD0P8Lighting@2@BE?AVColor3@G3D@@XZP832@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e1560",
+      "unit": "lighting",
+      "symbol": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 108,
+      "target_size": 108,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@6B@": "0x83de00 (vtable RTTI .?AV?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AEMXZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e1690",
+      "unit": "lighting",
+      "symbol": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AE?AVVector3@G3D@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 108,
+      "target_size": 108,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@6B@": "0x83de0c (vtable RTTI .?AV?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@VVector3@G3D@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56ce60 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AE?AVVector3@G3D@@XZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e1780",
+      "unit": "lighting",
+      "symbol": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AENXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 108,
+      "target_size": 108,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@6B@": "0x83de18 (vtable RTTI .?AV?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@N@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd10 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AENXZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e18c0",
+      "unit": "lighting",
+      "symbol": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+      "size": 159,
+      "target_size": 159,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address (not counted here))",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@6B@": "0x83de24 (vtable RTTI .?AV?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "??$singleton@N@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd10 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005e1960",
+      "unit": "lighting",
+      "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 216,
+      "target_size": 216,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVLighting@RBX@@@8": "0x954964 (RTTI .?AVLighting@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (static data (one address per symbol))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$convert@N@Value@Reflection@RBX@@QAEAANXZ": "0x56ee50 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "005e2920",
+      "unit": "joint",
+      "symbol": "??$getset@P8JointInstance@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VJointInstance@RBX@@PAVPartInstance@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPartInstance@RBX@@@Reflection@RBX@@@std@@P8JointInstance@2@BEPAVPartInstance@2@XZP852@AEXPAV62@@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8JointInstance@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VJointInstance@RBX@@PAVPartInstance@2@@Reflection@RBX@@6B@": "0x83e280 (vtable RTTI .?AV?$GetSetImpl@P8JointInstance@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VJointInstance@RBX@@PAVPartInstance@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e2970",
+      "unit": "joint",
+      "symbol": "??$getset@P8JointInstance@RBX@@BEABVCoordinateFrame@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VJointInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@@std@@P8JointInstance@2@BEABVCoordinateFrame@G3D@@XZP852@AEXABV67@@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8JointInstance@RBX@@BEABVCoordinateFrame@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VJointInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": "0x83e294 (vtable RTTI .?AV?$GetSetImpl@P8JointInstance@RBX@@BEABVCoordinateFrame@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VJointInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e29c0",
+      "unit": "joint",
+      "symbol": "??$getset@P8Motor@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VMotor@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8Motor@2@BEMXZP852@AEXM@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Motor@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VMotor@RBX@@M@Reflection@RBX@@6B@": "0x83e2a8 (vtable RTTI .?AV?$GetSetImpl@P8Motor@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VMotor@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    }
+  ],
+  "row_identity": {
+    "0x5e1170": [
+      "static initializer 0x7f69d0 (Data / TimeOfDay) calls this constructor for the object 0x97a91c with member(s) 0x5e0be0 / 0x5e2730"
+    ],
+    "0x5e1220": [
+      "static initializer 0x7f6a10 (Data / GeographicLatitude) calls this constructor for the object 0x97a9f8 with member(s) 0x5df490 / 0x5e2670",
+      "static initializer 0x7f6b80 (Appearance / Brightness) calls this constructor for the object 0x97a980 with member(s) 0x4d6fe0 / 0x5e2420"
+    ],
+    "0x5e1560": [
+      "static initializer 0x7f6a50 (GetMoonPhase) calls this constructor for the object 0x97a8c0 with member(s) 0x5df480"
+    ],
+    "0x5e1690": [
+      "static initializer 0x7f6a80 (GetMoonDirection) calls this constructor for the object 0x97aa18 with member(s) 0x5df4d0",
+      "static initializer 0x7f6ab0 (GetSunDirection) calls this constructor for the object 0x97a9b8 with member(s) 0x5df500"
+    ],
+    "0x5e1780": [
+      "static initializer 0x7f6ae0 (GetMinutesAfterMidnight) calls this constructor for the object 0x97aa90 with member(s) 0x5e0610"
+    ],
+    "0x5e18c0": [
+      "static initializer 0x7f6b10 (minutes / SetMinutesAfterMidnight) calls this constructor for the object 0x97a938 with member(s) 0x5e26e0"
+    ],
+    "0x5e12d0": [
+      "static initializer 0x7f6b40 (Appearance / ShadowColor) calls this constructor for the object 0x97aa58 with member(s) 0x5df4a0 / 0x5e2540",
+      "static initializer 0x7f6bc0 (Appearance / ColorShift_Top) calls this constructor for the object 0x97a900 with member(s) 0x4d6f80 / 0x5e22c0",
+      "static initializer 0x7f6c00 (Appearance / ColorShift_Bottom) calls this constructor for the object 0x97a99c with member(s) 0x4d6fb0 / 0x5e2370",
+      "static initializer 0x7f6c40 (Appearance / Ambient) calls this constructor for the object 0x97aa74 with member(s) 0x4d6ff0 / 0x5e2490"
+    ],
+    "0x5e0be0": [
+      "getter immediate of the TimeOfDay initializer 0x7f69d0 (mov edx, 0x5e0be0); reads timeOfDay (+0x268) as declared in Lighting2008.h (getTimeStr 005e0be0)"
+    ],
+    "0x5e02d0": [
+      "called by 0x5e1170"
+    ],
+    "0x5e0320": [
+      "called by 0x5e1220"
+    ],
+    "0x5e0370": [
+      "called by 0x5e12d0"
+    ],
+    "0x5e2920": [
+      "called by 0x5e3540"
+    ],
+    "0x5e2970": [
+      "called by 0x5e3630"
+    ],
+    "0x5e29c0": [
+      "called by 0x5e36e0"
+    ],
+    "0x5e0ba0": [
+      "called by 0x5e0be0"
+    ],
+    "0x5e06b0": [
+      "called by 0x5e0ba0"
+    ]
+  },
+  "support_bodies": {
+    "?compare@?$int_adapter@_J@date_time@boost@@ABEHABV123@@Z": "0x5df8e0 (support body exact at the bound address, not counted here)",
+    "??$?6DU?$char_traits@D@std@@H@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABU?$_Smanip@H@0@@Z": "0x5df740 (support body exact at the bound address, not counted here)",
+    "?classDescriptor@?$Described@VLighting@RBX@@$1?sLighting@2@3PADAV?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5e1100 (support body exact at the bound address, not counted here)",
+    "??0?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x443230 (support body exact at the bound address, not counted here)",
+    "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (support body exact at the bound address, not counted here)",
+    "??0?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x59a410 (support body exact at the bound address, not counted here)",
+    "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address, not counted here)",
+    "??$str_from_delimited_time_duration@Vtime_duration@posix_time@boost@@D@date_time@boost@@YA?AVtime_duration@posix_time@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5e0c20 (support body exact at the bound address, not counted here)"
+  },
+  "evidence_name_bindings": {
+    "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450"
+  },
+  "local_statics": {
+    "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c",
+    "__TI2?AVbad_cast@std@@": "0x8d362c",
+    "__real@3ef179ec9cbd821e": "0x83dc60",
+    "__real@404e000000000000": "0x83df30"
+  },
+  "vtables_current_headers": {
+    "??_7?$GetSetImpl@P8Lighting@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZP812@AEXABV34@@Z@?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@6B@": {
+      "address": "0x83dc28",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8Lighting@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@6B@": {
+      "address": "0x83dc3c",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8Lighting@RBX@@BE?AVColor3@G3D@@XZP812@AEXV34@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@6B@": {
+      "address": "0x83dc50",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VLighting@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@6B@": {
+      "address": "0x83dc94",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VLighting@RBX@@M@Reflection@RBX@@6B@": {
+      "address": "0x83dcc8",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@6B@": {
+      "address": "0x83dcfc",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@6B@": {
+      "address": "0x83de00",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@U = 0x5e1630 (near-miss row, not counted)"
+      ]
+    },
+    "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@6B@": {
+      "address": "0x83de0c",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Re = 0x5e1700 (near-miss row, not counted)"
+      ]
+    },
+    "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@6B@": {
+      "address": "0x83de18",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@U = 0x5e1860 (near-miss row, not counted)"
+      ]
+    },
+    "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x83de24",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "1 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@U = 0x5e1960 (own row)"
+      ]
+    },
+    "??_7?$GetSetImpl@P8JointInstance@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VJointInstance@RBX@@PAVPartInstance@2@@Reflection@RBX@@6B@": {
+      "address": "0x83e280",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8JointInstance@RBX@@BEABVCoordinateFrame@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VJointInstance@RBX@@VCoordinateFrame@G3D@@@Reflection@RBX@@6B@": {
+      "address": "0x83e294",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8Motor@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VMotor@RBX@@M@Reflection@RBX@@6B@": {
+      "address": "0x83e2a8",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    }
+  },
+  "near_misses": [
+    {
+      "address": "0x5e15d0",
+      "unit": "lighting",
+      "symbol": "??$call@M@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@ABEXPAVLighting@2@AAVValue@12@@Z",
+      "size": 35,
+      "target_size": 94,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "reason": "the native reflection.h call<ReturnType> uses Value::set<T>, which stays out of line (82 B); the original assigns through Value::operator= inline (94 B). Exact with the stats-service reflection.h proposal (pending build)"
+    },
+    {
+      "address": "0x5e1630",
+      "unit": "lighting",
+      "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 105,
+      "target_size": 90,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "reason": "execute calls call<float> (see 0x5e15d0): 105 vs 90 B; exact in the pending build"
+    },
+    {
+      "address": "0x5e1700",
+      "unit": "lighting",
+      "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 114,
+      "target_size": 114,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "reason": "execute with call<Vector3> inlined: same 114 B, different frame slots (the native template lets the bad_cast and the Vector3 temporaries share one slot; body-movers records the same near miss for BodyPosition 006328f0); not exact in the pending build either"
+    },
+    {
+      "address": "0x5e17f0",
+      "unit": "lighting",
+      "symbol": "??$call@N@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@ABEXPAVLighting@2@AAVValue@12@@Z",
+      "size": 39,
+      "target_size": 100,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "reason": "call<double>, see 0x5e15d0 (39 vs 100 B); exact in the pending build. ICF-shared: stats-service binds BoundFuncDesc<Stats::Item, double()>::call<double> to the same body (pending-build-only there)"
+    },
+    {
+      "address": "0x5e1860",
+      "unit": "lighting",
+      "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 105,
+      "target_size": 90,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "reason": "execute calls call<double> (see 0x5e17f0): 105 vs 90 B; exact in the pending build"
+    }
+  ],
+  "not_exact": [
+    "0x5e15d0 ??$call@M@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflec: 35/94 B, not counted (the native reflection.h call<ReturnType> uses Value::set<T>, which stays out of line (82 B); the original assigns through Value::operator= inline (94 B). Exact with the stats-service reflection.h proposal (pending build))",
+    "0x5e1630 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflect: 105/90 B, not counted (execute calls call<float> (see 0x5e15d0): 105 vs 90 B; exact in the pending build)",
+    "0x5e1700 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@: 114/114 B, not counted (execute with call<Vector3> inlined: same 114 B, different frame slots (the native template lets the bad_cast and the Vector3 temporaries share one slot; body-movers records the same near miss for BodyPosition 006328f0); not exact in the pending build either)",
+    "0x5e17f0 ??$call@N@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflec: 39/100 B, not counted (call<double>, see 0x5e15d0 (39 vs 100 B); exact in the pending build. ICF-shared: stats-service binds BoundFuncDesc<Stats::Item, double()>::call<double> to the same body (pending-build-only there))",
+    "0x5e1860 ?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflect: 105/90 B, not counted (execute calls call<double> (see 0x5e17f0): 105 vs 90 B; exact in the pending build)"
+  ],
+  "pending_build_only": [
+    {
+      "address": "0x5e0610",
+      "unit": "lighting-pending",
+      "symbol": "?getMinutesAfterMidnight@Lighting@RBX@@QAENXZ",
+      "size": 49,
+      "target_size": 49,
+      "verified_targets": {
+        "__alldiv": "0x6a1c30 (external)",
+        "__real@3ef179ec9cbd821e": "0x83dc60 (static data (one address per symbol))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e15d0",
+      "unit": "lighting-pending",
+      "symbol": "??$call@M@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@ABEXPAVLighting@2@AAVValue@12@@Z",
+      "size": 94,
+      "target_size": 94,
+      "verified_targets": {
+        "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0 (external (evidence name))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@M@any@boost@@6B@": "0x8106bc (vtable RTTI .?AV?$holder@M@any@boost@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e1630",
+      "unit": "lighting-pending",
+      "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 90,
+      "target_size": 90,
+      "verified_targets": {
+        "??_R0?AVLighting@RBX@@@8": "0x954964 (RTTI .?AVLighting@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (static data (one address per symbol))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@M@?$BoundFuncDesc@VLighting@RBX@@$$A6AMXZ$0A@@Reflection@RBX@@ABEXPAVLighting@2@AAVValue@12@@Z": "0x5e15d0 (own row)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e17f0",
+      "unit": "lighting-pending",
+      "symbol": "??$call@N@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@ABEXPAVLighting@2@AAVValue@12@@Z",
+      "size": 100,
+      "target_size": 100,
+      "verified_targets": {
+        "??$singleton@N@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd10 (external (evidence name))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@N@any@boost@@6B@": "0x82e21c (vtable RTTI .?AV?$holder@N@any@boost@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e1860",
+      "unit": "lighting-pending",
+      "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 90,
+      "target_size": 90,
+      "verified_targets": {
+        "??_R0?AVLighting@RBX@@@8": "0x954964 (RTTI .?AVLighting@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (static data (one address per symbol))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@N@?$BoundFuncDesc@VLighting@RBX@@$$A6ANXZ$0A@@Reflection@RBX@@ABEXPAVLighting@2@AAVValue@12@@Z": "0x5e17f0 (own row)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2030",
+      "unit": "lighting-pending",
+      "symbol": "?setShadowColor@Lighting@RBX@@QAEXVColor4@G3D@@@Z",
+      "size": 201,
+      "target_size": 201,
+      "verified_targets": {
+        "_prop_ShadowColor": "0x97aa58 (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e22c0",
+      "unit": "lighting-pending",
+      "symbol": "?setColorShiftTop@Lighting@RBX@@QAEXVColor3@G3D@@@Z",
+      "size": 172,
+      "target_size": 172,
+      "verified_targets": {
+        "_prop_ColorShiftTop": "0x97a900 (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2370",
+      "unit": "lighting-pending",
+      "symbol": "?setColorShiftBottom@Lighting@RBX@@QAEXVColor3@G3D@@@Z",
+      "size": 172,
+      "target_size": 172,
+      "verified_targets": {
+        "_prop_ColorShiftBottom": "0x97a99c (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2420",
+      "unit": "lighting-pending",
+      "symbol": "?setBrightness@Lighting@RBX@@QAEXM@Z",
+      "size": 103,
+      "target_size": 103,
+      "verified_targets": {
+        "_prop_Brightness": "0x97a980 (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2490",
+      "unit": "lighting-pending",
+      "symbol": "?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z",
+      "size": 172,
+      "target_size": 172,
+      "verified_targets": {
+        "_prop_Ambient": "0x97aa74 (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2540",
+      "unit": "lighting-pending",
+      "symbol": "?setShadowColor3@Lighting@RBX@@QAEXVColor3@G3D@@@Z",
+      "size": 38,
+      "target_size": 38,
+      "verified_targets": {
+        "?setShadowColor@Lighting@RBX@@QAEXVColor4@G3D@@@Z": "0x5e2030 (own row)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2570",
+      "unit": "lighting-pending",
+      "symbol": "?setTime@Lighting@RBX@@QAEXABVtime_duration@posix_time@boost@@@Z",
+      "size": 243,
+      "target_size": 243,
+      "verified_targets": {
+        "__alldiv": "0x6a1c30 (external)",
+        "__allmul": "0x6a16d0 (external)",
+        "?setTime@LightingParameters@G3D@@QAEXN@Z": "0x7b59b0 (external)",
+        "_prop_Time": "0x97a91c (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2670",
+      "unit": "lighting-pending",
+      "symbol": "?setGeographicLatitude@Lighting@RBX@@QAEXM@Z",
+      "size": 103,
+      "target_size": 103,
+      "verified_targets": {
+        "_prop_GeographicLatitude": "0x97a9f8 (descriptor object constructed at this address by its static initializer)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?event_LightingChanged@Lighting@RBX@@2V?$SignalDesc@VLighting@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a88c (static data (one address per symbol))",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00 (support body exact at the bound address (not counted here))",
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0 (external)",
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e26e0",
+      "unit": "lighting-pending",
+      "symbol": "?setMinutesAfterMidnight@Lighting@RBX@@QAEXN@Z",
+      "size": 72,
+      "target_size": 72,
+      "verified_targets": {
+        "__real@404e000000000000": "0x83df30 (static data (one address per symbol))",
+        "__ftol2_sse": "0x6a17f0 (external)",
+        "__allmul": "0x6a16d0 (external)",
+        "?setTime@Lighting@RBX@@QAEXABVtime_duration@posix_time@boost@@@Z": "0x5e2570 (own row)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    },
+    {
+      "address": "0x5e2730",
+      "unit": "lighting-pending",
+      "symbol": "?setTimeStr@Lighting@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 43,
+      "target_size": 43,
+      "verified_targets": {
+        "??$str_from_delimited_time_duration@Vtime_duration@posix_time@boost@@D@date_time@boost@@YA?AVtime_duration@posix_time@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5e0c20 (support body exact at the bound address (not counted here))",
+        "?setTime@Lighting@RBX@@QAEXABVtime_duration@posix_time@boost@@@Z": "0x5e2570 (own row)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "exact": false
+    }
+  ],
+  "pending_note": "exact only under /DNATIVE_APPUNIT5E0_PENDING with the generated header copies (Lighting2008.h member declarations, reflection.h call<> assignment); exact=false, never counted",
+  "not_attempted": {
+    "JointInstance.cpp rows other than the getset factories": "need the 2008 JointInstance / Snap .. Motor declarations: class names extern const char[] (RTTI $1?sJointInstance@2@3QBDB, the native header has char[] / 3PADA), joints derive from DescribedCreatable<C, JointInstance, sC> (RTTI 0083f24c), part[2] / getPart0 / setPart / askSetParent / onAncestorChanged are JointInstance members. The native JointInstance.h belongs to another owner (read-only here); proposal repeated below.",
+    "Lighting::getMoonPhase 005df480 / getGeographicLatitude 005df490 / getShadowColor3 005df4a0": "outside this range (app-unit5dc-2008); declared in the pending header copy only"
+  },
+  "rejected": {
+    "005e15d0 / 005e17f0 / 005e1630 / 005e1860 with the current reflection.h": "Value::set<T> is not inlined into call<T> (82-byte COMDAT) where the original inlines the assignment: not exact; the only change that makes them exact is the stats-service reflection.h proposal (returnValue = ...), a core header (pending build here)",
+    "Lighting setters without /fp:fast": "setShadowColor 207/201 B, the Color3 setters 176/172 B, setBrightness / setGeographicLatitude / getMinutesAfterMidnight same size but different compare / multiply order: /fp:fast is required (the original multiplies by 1/60000 at 0083dc60)"
+  },
+  "proposals": {
+    "native-headers/v8datamodel/Lighting2008.h owner (lighting2008)": "Declare the 2008 Lighting reflection members (the generated copy under out/native-layouts/app-unit5e0/pending/v8datamodel/Lighting2008.h, public section): getMoonPhase 005df480, getMinutesAfterMidnight 005e0610 (non-const: BoundFuncDesc<Lighting, double(), 0> stores `double (Lighting::*)()`), setMinutesAfterMidnight 005e26e0, setTimeStr 005e2730, setTime(const time_duration&) 005e2570, getGeographicLatitude 005df490 / setGeographicLatitude 005e2670 (skyParameters.geoLatitude +0x224), getShadowColor3 005df4a0 / setShadowColor3 005e2540 / setShadowColor(Color4) 005e2030 (+0x254; the \"ShadowColor\" descriptor initializer 007f6b40 passes 005df4a0 / 005e2540), inline getBrightness / getColorShiftTop / getColorShiftBottom / getAmbient (004d6fe0 / 004d6f80 / 004d6fb0 / 004d6ff0) with setBrightness 005e2420, setColorShiftTop 005e22c0, setColorShiftBottom 005e2370, setAmbient 005e2490. Signatures from the GetSetImpl RTTI (0083dc28 / 0083dc3c / 0083dc50: std::string () const with void (const std::string&); float () const with void (float); Color3 () const with void (Color3)) and the BoundFuncDesc RTTI 0083de00..0083de24. With them the 11 setter / getter rows of this range are exact (pending build, /fp:fast).",
+    "native-headers/reflection/reflection.h owner (core header)": "Same change the stats-service receipt proposes: BoundFuncDesc<C, F, 0>::call<ReturnType> assigns `returnValue = (o->*function)();` (Value::operator= inline) instead of Value::set<ReturnType>. It makes call<float> 005e15d0, call<double> 005e17f0 and their execute rows 005e1630 / 005e1860 exact here.",
+    "native-headers/v8datamodel/JointInstance.h owner": "Repeat of the app-unit5dc-2008 / app-unit5e4 proposal: the 2008 JointInstance.cpp block 005e2760..005e50bf has no AutoJoint; getPart0 / getPart1 005e2a10 / 005e2a70, setPart 005e2cd0, askSetParent 005e3790, onAncestorChanged 005e3a80 and getC0 / getC1 005e27b0 / 005e27c0 are JointInstance members; sJointInstance and sSnap .. sMotor are extern const char[] (RTTI 3QBDB); Snap .. Motor derive from DescribedCreatable<C, JointInstance, sC> (Weld vtable 0083f24c). About 110 uncounted rows of this range wait for it."
+  },
+  "exact_function_rows": [
+    "005e02d0",
+    "005e0320",
+    "005e0370",
+    "005e06b0",
+    "005e0ba0",
+    "005e0be0",
+    "005e1170",
+    "005e1220",
+    "005e12d0",
+    "005e1560",
+    "005e1690",
+    "005e1780",
+    "005e18c0",
+    "005e1960",
+    "005e2920",
+    "005e2970",
+    "005e29c0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

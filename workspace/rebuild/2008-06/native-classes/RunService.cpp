@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// RunService | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 8dc59377 | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/runservice-events
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"

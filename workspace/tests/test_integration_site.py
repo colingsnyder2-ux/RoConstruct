@@ -2,6 +2,7 @@ import json
 import sqlite3
 import hashlib
 from pathlib import Path
+import pytest
 
 from roc import integration_site
 
@@ -233,3 +234,68 @@ def test_stale_hashed_receipt_is_not_exact(tmp_path):
     restored = integration_site.inactive_code(tmp_path)['00400000']
     assert restored[1] is True
     assert restored[3][0].endswith('FooOriginal.cpp')
+
+
+def test_reference_review_prevents_legacy_or_bulk_exact_until_strong_proof(tmp_path):
+    source = tmp_path / 'rebuild/2008-06/native-classes/Foo.cpp'
+    source.parent.mkdir(parents=True)
+    source.write_text('void Foo::bar() {}\n')
+    receipts = tmp_path / 'work/2008-06/shared-layouts'
+    receipts.mkdir(parents=True)
+    docs = tmp_path / 'docs'
+    docs.mkdir()
+    (docs / 'native-reference-review.json').write_text(json.dumps({'addresses': ['00400000']}))
+    symbol = '?bar@Foo@@QAEXXZ'
+    legacy = {'source_path': str(source), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+              'checks': [{'address': '00400000', 'symbol': symbol, 'exact': True}]}
+    (receipts / 'legacy.json').write_text(json.dumps(legacy))
+    bulk = tmp_path / 'work/native-client/prove-out/example/manifest.json'
+    bulk.parent.mkdir(parents=True)
+    bulk.write_text(json.dumps({'families': [{'jobs': [{'source': str(source)}], 'symbols': [
+        {'symbol': symbol, 'status': 'inactive_exact', 'candidates': ['00400000']}]}]}))
+    assert integration_site.inactive_code(tmp_path)['00400000'][1] is False
+    legacy['checks'][0].update(verified_calls=[], verified_references=[])
+    (receipts / 'strong.json').write_text(json.dumps(legacy))
+    assert integration_site.inactive_code(tmp_path)['00400000'][1] is True
+
+
+def test_invalid_reference_review_does_not_silently_restore_exact(tmp_path):
+    docs = tmp_path / 'docs'
+    docs.mkdir()
+    (docs / 'native-reference-review.json').write_text('{"addresses": ["bad"]}')
+    with pytest.raises(ValueError, match='invalid native reference review'):
+        integration_site.inactive_code(tmp_path)
+
+
+def test_bulk_index_cache_reuses_and_invalidates_manifest(tmp_path, monkeypatch):
+    proof = tmp_path / 'work/native-client/prove-out/example/manifest.json'
+    proof.parent.mkdir(parents=True)
+    symbol = '?foo@Foo@@QAE@XZ'
+    def write(status):
+        proof.write_text(json.dumps({'families': [{'jobs': [{'source': 'foo.cpp'}],
+            'symbols': [{'symbol': symbol, 'status': status, 'candidates': ['00400000']}]}]}))
+    write('inactive_exact')
+    original = Path.read_text
+    reads = []
+    def count(path, *args, **kwargs):
+        if path == proof:
+            reads.append(path)
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path, 'read_text', count)
+    assert integration_site.inactive_code(tmp_path)['00400000'][1] is True
+    assert integration_site.inactive_code(tmp_path)['00400000'][1] is True
+    assert len(reads) == 1
+    write('draft')
+    assert integration_site.inactive_code(tmp_path)['00400000'][1] is False
+    assert len(reads) == 2
+
+
+def test_bulk_index_cache_recovers_corrupt_cache(tmp_path, monkeypatch):
+    proof = tmp_path / 'work/native-client/prove-out/example/manifest.json'
+    proof.parent.mkdir(parents=True)
+    proof.write_text(json.dumps({'families': [{'jobs': [{'source': 'foo.cpp'}],
+        'symbols': [{'symbol': '?foo@@YAXXZ', 'status': 'inactive_exact', 'candidates': ['00400000']}]}]}))
+    expected = integration_site.inactive_code(tmp_path)
+    cache = next((tmp_path / 'work/integration/inactive-bulk-cache').glob('*.json'))
+    cache.write_text('{broken')
+    assert integration_site.inactive_code(tmp_path) == expected

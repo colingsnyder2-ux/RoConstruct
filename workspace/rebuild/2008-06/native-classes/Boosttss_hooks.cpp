@@ -6,10 +6,6 @@
 // Boost Software License, Version 1.0. (See accompanying file
 // LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// >>> native-status (generated) -- do not edit >>>
-// Boosttss_hooks | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 632f20db | roc native-status --write
 #include <boost/thread/detail/config.hpp>
 
 #if defined(BOOST_HAS_WINTHREADS)

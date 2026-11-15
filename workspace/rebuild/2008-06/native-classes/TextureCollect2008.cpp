@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // Collector and helper symbols follow the original identity registry.
-// >>> native-status (generated) -- do not edit >>>
-// TextureCollect2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src e64d9714 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #include <OgreTextureManager.h>
 #include <OgreLogManager.h>

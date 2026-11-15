@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Block2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 85c2c7b2 | roc native-status --write
 // 2008-06 native RBX::Block (inactive); non-colliding name, see v8world/Geometry2008.h.
 //   RTTI     vtable 0083f7ec .?AVBlock@RBX@@ -> Geometry (mdisp 0); 9 slots: 0 onSetSize 00648fd0, 1 ??_G 005e73b0
 //            (folded with Geometry's: the destructor is empty), 2 getGeometryType 0077d810 (folded `mov eax, 2`),
@@ -78,5 +74,18 @@ namespace RBX
 		{
 			return *vertices;
 		}
+
+		// donor v8world/Block.h inline, computed twice by BlockBlockContact::loadGeoPairEdgeEdge 00607ea0
+		// (00607ea6..00607ed9 / 00607edb..00607f0f).
+		NormalId getEdgeNormal(int edge)
+		{
+			int answer = edge / 4 + 3 * (edge % 2);
+			if (edge > 12)
+				answer = (answer + 3) % 6;
+			return (NormalId)answer;
+		}
+		// 00606b00 (?getEdgeVertex@Block@RBX@@QBEPBVVector3@G3D@@H@Z, `ret 4`; called by loadGeoPairEdgeEdge 00607ea0
+		// on Primitive +0x9c). Body: native-classes/BlockBallShape.cpp.
+		const G3D::Vector3* getEdgeVertex(int edge) const;   // 00606b00
 	};
 }

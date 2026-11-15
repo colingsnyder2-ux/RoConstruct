@@ -1,9 +1,5 @@
 // INFERRED: method/global names and constructor argument types, evidenced by original calls.
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /I{headers}/brickcache-profile /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// ViewNewBrickCacheRecovery2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 614ed767 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"

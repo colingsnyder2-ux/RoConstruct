@@ -2,10 +2,6 @@
 // atexit 007ff300..007ff660). Evidence in native-headers/humanoid/Humanoid2008.h; verified by
 // tests/record_native_humanoid2008.py. Bodies after the donor tools/rbxgs Humanoid.cpp where the 2008 bytes agree.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// Humanoid2008 | 2008-06 | draft (no current byte proof)
-// 0/13 mapped addresses byte-exact | 13 unproved | 1 referenced strings (not rechecked) | by king_originala (+5) (mixed 6)
-// <<< native-status | src 0ffbb1d7 | roc native-status --write
 #include "humanoid/Humanoid2008.h"
 #include "v8tree/Service.h"
 #include "util/Object.h"
@@ -15,6 +11,7 @@
 #include "Network/Players.h"
 #endif
 #include <G3D/g3dmath.h>
+#include "v8datamodel/PartInstance.h"   // getIntendedMovementVector(bool) 005d9a50: getCoordinateFrame 00598cb0
 
 namespace RBX
 {
@@ -131,6 +128,12 @@ namespace RBX
 		return G3D::CoordinateFrame(G3D::Vector3(0.0f, 0.5f, 0.0f));
 	}
 
+	// 005d7a30 ?getRightArmGrip@Humanoid@RBX@@QBE?AVCoordinateFrame@G3D@@XZ (90 bytes; caller Tool weld "RightGrip").
+	// Declared in humanoid/Humanoid2008.h. Donor tools/rbxgs
+	// Humanoid.cpp body: CoordinateFrame() 004782d0, lookAt 00518b90 with target (0,-1,0) and up (0,0,-1) (-1.0f
+	// 0081c3b8), translation (0,-1,0) stored at +0x24..+0x2c. A trial (2026-11-14) compiled this body against the
+	// donor humanoid/Humanoid.h declaration (HumanoidStateFloor.cpp flags) and it was byte-identical to 005d7a30
+	// (90/90 bytes, relocations masked; prove.py inactive_exact). The body reads no Humanoid field.
 	G3D::CoordinateFrame Humanoid::getRightArmGrip() const
 	{
 		G3D::CoordinateFrame cframe;
@@ -149,6 +152,54 @@ namespace RBX
 	{
 		if (world)
 			currentState->onComputeForce(dt);
+	}
+
+	// 005d9a50 (337 bytes): donor tools/rbxgs Humanoid.cpp body. walkMode +0x1b8 (3 DIRECTION_MOVE -> walkDirection
+	// +0x1d0; 2 CLICK_TO_MOVE -> getTorso 005d8b10, hasWalkToPoint 005d79b0, getCoordinateFrame 00598cb0,
+	// Vector3::zero 004782a0, Vector3::direction 004fab70).
+	G3D::Vector3 Humanoid::getIntendedMovementVector(bool setWalkMode)
+	{
+		G3D::Vector3 result = G3D::Vector3::zero();
+
+		if (walkMode == DIRECTION_MOVE)
+		{
+			result = walkDirection;
+		}
+		else if (walkMode == CLICK_TO_MOVE)
+		{
+			PartInstance* torso = getTorso();
+			G3D::Vector3 worldPosition;
+
+			if (torso && hasWalkToPoint(worldPosition))
+			{
+				// Target: the distance test adds 3.0f (0081e380) to the y difference and the flattened delta
+				// (y = 0) is stored before the 2.0f (0081c434) comparison; the delta lives in worldPosition's slot.
+				// Rejected: donor body (delta.y = 0 before magnitude; separate delta, 308 bytes); separate
+				// G3D::Vector3 delta = worldPosition - torsoPosition with y += 3 (335 bytes, extra 12-byte local).
+				// PARKED (3 hypotheses): this in-place form is 339 bytes with the target's frame (0x18); it still
+				// stores x'/y'/z' as they are computed, while the target keeps y' + 3 in st only and sums
+				// z'*z' + x'*x' before (y' + 3)^2. Next lead: a magnitude over a temporary such as
+				// (worldPosition + G3D::Vector3(0, 3, 0)).magnitude() after flattening x/z in place.
+				worldPosition -= torso->getCoordinateFrame().translation;
+				worldPosition.y += 3.0f;
+				float distance = worldPosition.magnitude();
+				worldPosition.y = 0.0f;
+
+				if (distance < 2.0f)
+				{
+					if (setWalkMode)
+						walkMode = DIRECTION_MOVE;
+
+					result = G3D::Vector3::zero();
+				}
+				else
+				{
+					result = worldPosition.direction();
+				}
+			}
+		}
+
+		return result;
 	}
 
 	G3D::Vector3 Humanoid::getIntendedMovementVector()
@@ -226,14 +277,7 @@ namespace RBX
 		}
 	}
 
-	void Humanoid::setWalkRotationalVelocity(const float& value)
-	{
-		if (walkRotationalVelocity != value)
-		{
-			walkRotationalVelocity = value;
-			raisePropertyChanged(propWalkRotationalVelocity);
-		}
-	}
+	// setWalkRotationalVelocity 005dc090: inline body in humanoid/Humanoid2008.h (emitted here through the descriptor).
 
 	void Humanoid::setWalkToPoint(const G3D::Vector3& value)
 	{

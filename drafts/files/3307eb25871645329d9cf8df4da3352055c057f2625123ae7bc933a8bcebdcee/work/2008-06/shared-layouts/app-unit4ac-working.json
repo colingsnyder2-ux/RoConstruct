@@ -1,0 +1,726 @@
+{
+  "class": "RBX Network/Replicator.cpp COMDAT rows of the application range 004ac000..004b0000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "names": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4ac/NativeAppUnit4AC_names.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4ACNames.cpp"
+    ],
+    "marker": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4ac/NativeAppUnit4AC_marker.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4ACMarkerTemplates.cpp"
+    ],
+    "signals": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4ac/NativeAppUnit4AC_signals.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4ACSignalMap.cpp"
+    ],
+    "guids": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4ac/NativeAppUnit4AC_guids.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4ACGuidMap.cpp"
+    ],
+    "peer": [
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit4ac/NativeAppUnit4AC_peer.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4ACPeerHeartbeat.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4ac.py": "3c763ece939842540ed9061c44a3feb7ea8244291bedbb42748e1391c27673cf",
+    "rebuild/2008-06/native-classes/AppUnit4ACNames.cpp": "073667bf772195782a41a967a2807e20dcc5f2a51798e81a864a640fe52193f8",
+    "rebuild/2008-06/native-classes/AppUnit4ACMarkerTemplates.cpp": "5cdb6768867b8516d62050d5d995bd5e1ed7a4f0964a8ba9edc64c8e841ff59d",
+    "rebuild/2008-06/native-classes/AppUnit4ACSignalMap.cpp": "1ff5192933f25cd2a1bd07ac9cee1d37e672cb133470a1e3b3c2715a42b9420d",
+    "rebuild/2008-06/native-classes/AppUnit4ACGuidMap.cpp": "537aef7c0c165dc4b8712f088c23c1afa0a587d61fe27c9b1e018a391d0e7c6d",
+    "rebuild/2008-06/native-classes/AppUnit4ACPeerHeartbeat.cpp": "ee29011a6fa168167f416d8c068009dea915814ab099747817ab72a40758c665",
+    "rebuild/2008-06/native-headers/AppUnit4AC/PeerHeartbeat.h": "44030eb54551dfc8629ad79a17ac3ff48aaa5ea82a09fe89421a4c54a4bd3c03",
+    "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h": "31f13819b55a510bc8186ef35ba1ab73d041ad3ad38bffe42cd53c92405be76e",
+    "rebuild/2008-06/native-headers/util/Name.h": "83aa4cc4d49368359c20855d119ec20f3fb2fb066ca14fbd823ed905d95f4d4f",
+    "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h": "3fbb7a704f7a4c0643326c24f693c4d0dbe8e91b96ee018bbcf4df352307ee0c",
+    "rebuild/2008-06/native-headers/reflection/signal.h": "e8f76a9bf2a75ced4251c425e96766092a4a39783fdbbdb82942a98c8a4c9fb3",
+    "rebuild/2008-06/native-headers/util/GuidRegistry.h": "70cb57f82f847c8b4f2a16e7ec35a109aaa0d1234ffa7cee588398340eb64893",
+    "rebuild/2008-06/native-headers/Network/Peer2008.h": "51822d04c699852ad10376527790ded186b1f46717ceca51a2980afc8515702d"
+  },
+  "objects": {
+    "names": "2a27092b8eac8c0459291e962c6b0282efe8098480284a42752f2314598047a9",
+    "marker": "2520eba96ab5d75a8820e989cd98dd40cf65a015b01840244070448e00d90032",
+    "signals": "0c5ebab395e20e22e3d67162f7e342af451e42f0af2b6bccb5eda27b5e646ee5",
+    "guids": "98835650a360dcd131a51b6dc445d18c8f5fdf80b48809e83274924786246d5b",
+    "peer": "6a9ded7bcefbb6fa2000ea32cad1ad6c627e6e1b86bc63523d1ea35d03d348c6"
+  },
+  "range_rows": 146,
+  "unit_map": {
+    "Network/Replicator.cpp COMDAT run 004ac000..004b0000 (all 146 rows)": "The range lies inside the Replicator.cpp unit (it starts below 004ac000; app-unit4b0-2008 maps it up to the Replicator constructor 004b9bd0). Blocks: 0x4ac040..0x4ac2ff boost::detail::shared_count(T*) for Marker, NewInstanceItem, ChangePropertyItem, DeleteInstanceItem and MarkerItem (vtables 008246f4..00824758), each a 110-byte row plus its 21-byte catch funclet row; 0x4ac310..0x4ac38f Name::callDoDeclare for Lighting and the seven joint names; 0x4ac390..0x4ac82f sp_counted_impl_p / sp_counted_impl_pd members (the shared_count(T*, Deleter) rows of the creatable-shared-count fan-out), boost::function2<void, string, int>::operator() and the joint-name doDeclare-index jumps 0x4ac600 / 0x4ac610; 0x4ac830..0x4ac9df ~Peer and its ten adjustor thunks (network-client-server2008); 0x4ac9e0 a Peer logger toggle (PacketLogger new(0x210) 004ab630); 0x4acac0..0x4ad7bf ChangePropertyItem members, list<shared_ptr<Replicator::Item> > members, reflection ConstProperty / Property get/set templates (dynamic_cast to TypedPropertyDescriptor<T>, std::bad_cast \"bad cast\"), boost::bind storage / list3 on Replicator members, the creatable shared_count rows of Stats::Item, Lighting, TypedStatsItem<bool> and JointsService, boost::function managers and ~Peer deleting dtor; 0x4ad7c0..0x4ae7ff STL instances (list _Buynode, set / map _Eqrange / find / _Insert, the map<const SignalDescriptor*, shared_ptr<SignalInstance> > tree, deque<shared_ptr<Marker> >::pop_front), Peer::onEvent(Heartbeat) 0x4add50 and create<Lighting> 0x4adb60; 0x4ae800..0x4af9ff boost::function invokers on Replicator members, MarkerItem members (\"Replication: Sending marker %d to %s\" 0x4ae9a0), map <const Instance*, ...> / list / deque members on Replicator member types, the map<Guid::Data, Instance*> erase(key) and the network-physics-senders rows; 0x4afa30..0x4afc6f the JointsService descriptor block (services); 0x4afc70..0x4affff NewInstanceItem / DeleteInstanceItem constructors and members.",
+    "library / excluded": "none: no RakNet, CRT, MFC/ATL, XTP, G3D, Ogre, zlib or Lua unit and no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row in this range."
+  },
+  "unit_map_checks": [
+    "vtable 0x8246f4 RTTI .?AV?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@",
+    "vtable 0x82471c RTTI .?AV?$sp_counted_impl_p@VNewInstanceItem@Replicator@Network@RBX@@@detail@boost@@",
+    "vtable 0x824730 RTTI .?AV?$sp_counted_impl_p@VChangePropertyItem@Replicator@Network@RBX@@@detail@boost@@",
+    "vtable 0x824744 RTTI .?AV?$sp_counted_impl_p@VDeleteInstanceItem@Replicator@Network@RBX@@@detail@boost@@",
+    "vtable 0x824758 RTTI .?AV?$sp_counted_impl_p@VMarkerItem@Replicator@Network@RBX@@@detail@boost@@",
+    "vtable 0x824828 RTTI .?AVChangePropertyItem@Replicator@Network@RBX@@",
+    "vtable 0x8246e8 RTTI .?AVMarkerItem@Replicator@Network@RBX@@",
+    "vtable 0x824b20 RTTI .?AVNewInstanceItem@Replicator@Network@RBX@@",
+    "vtable 0x824b2c RTTI .?AVDeleteInstanceItem@Replicator@Network@RBX@@",
+    "vtable 0x824944 RTTI .?AVPeer@Network@RBX@@",
+    "string 0x824a04 'Replication: Sending marker %d to %s'",
+    "evidence name 0x4ac040 ??$?0VMarker@Network@RBX@@@shared_count@detail@boost@@QAE@PAVMarker@Network@RBX@",
+    "evidence name 0x4add50 ?onEvent@Peer@Network@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z",
+    "evidence name 0x4ae2f0 ?pop_front@?$deque@V?$shared_ptr@VMarker@Network@RBX@@@boost@@V?$allocator@V?$sh",
+    "evidence name 0x4af1b0 ?_Tidy@?$deque@V?$shared_ptr@VMarker@Network@RBX@@@boost@@V?$allocator@V?$shared",
+    "Peer Listener<RunService, Heartbeat> vtable 0x82488c slot 0 -> 0x4add50"
+  ],
+  "range_rows_counted_by_other_receipts": [
+    "004ac310 counted by lighting2008-working.json",
+    "004ac3a0 counted by creatable-shared-count-working.json",
+    "004ac430 counted by stats-service-working.json",
+    "004ac4c0 counted by creatable-shared-count-working.json",
+    "004ac620 counted by creatable-shared-count-working.json",
+    "004ac710 counted by creatable-shared-count-working.json",
+    "004ac830 counted by network-client-server2008-working.json",
+    "004ac940 counted by network-client-server2008-working.json",
+    "004ac950 counted by network-client-server2008-working.json",
+    "004ac960 counted by network-client-server2008-working.json",
+    "004ac970 counted by network-client-server2008-working.json",
+    "004ac980 counted by network-client-server2008-working.json",
+    "004ac990 counted by network-client-server2008-working.json",
+    "004ac9a0 counted by network-client-server2008-working.json",
+    "004ac9b0 counted by network-client-server2008-working.json",
+    "004ac9c0 counted by network-client-server2008-working.json",
+    "004ac9d0 counted by network-client-server2008-working.json",
+    "004acc30 counted by network-physics-senders2008-working.json",
+    "004acf00 counted by network-physics-senders2008-working.json",
+    "004acf50 counted by network-replicator2008-working.json",
+    "004ad3c0 counted by stats-service-working.json",
+    "004ad470 counted by lighting2008-working.json",
+    "004ad610 counted by services-working.json",
+    "004ad7a0 counted by network-client-server2008-working.json",
+    "004adb60 counted by lighting2008-working.json",
+    "004ae910 counted by network-physics-senders2008-working.json",
+    "004af360 counted by debris-forcefield-working.json",
+    "004af950 counted by network-physics-senders2008-working.json",
+    "004afa30 counted by services-working.json",
+    "004afb30 counted by services-working.json",
+    "004afb60 counted by services-working.json",
+    "004afb70 counted by services-working.json",
+    "004afb80 counted by services-working.json",
+    "004afb90 counted by services-working.json",
+    "004afba0 counted by services-working.json",
+    "004afbb0 counted by services-working.json",
+    "004afbc0 counted by services-working.json",
+    "004afbd0 counted by services-working.json",
+    "004afbe0 counted by services-working.json",
+    "004afbf0 counted by services-working.json",
+    "004afc00 counted by services-working.json",
+    "004afc50 counted by services-working.json"
+  ],
+  "range_rows_not_counted": "004ac0d0 004ac13e 004ac160 004ac1ce 004ac1f0 004ac25e 004ac280 004ac2ee 004ac550 004ac600 004ac610 004ac6b0 004ac7a0 004ac9e0 004acac0 004acb10 004acb30 004acb50 004acbf0 004accd0 004acd30 004acd50 004acdb0 004acdf0 004ace20 004ace50 004ad000 004ad060 004ad0c0 004ad120 004ad180 004ad1e0 004ad240 004ad2a0 004ad300 004ad360 004ad560 004ad6c0 004ad700 004ad760 004ad7c0 004ad846 004ad860 004ad8b0 004ad9f0 004ada80 004adaa0 004adac0 004adaf0 004adb20 004adbe0 004adc90 004adcf0 004addb0 004adec0 004adfd0 004ae060 004ae0f0 004ae570 004ae690 004ae7b0 004ae7d0 004ae800 004ae840 004ae860 004ae950 004ae9a0 004aea80 004aeac0 004aeb10 004aeba0 004aec10 004aed00 004aefe0 004af040 004af080 004af0c0 004af100 004af830 004af9d0 004afc70 004afd00 004afe90 004aff20 004aff70",
+  "rows": [
+    {
+      "address": "004ac320",
+      "symbol": "??$callDoDeclare@$1?sSnap@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sSnap@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab160 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac330",
+      "symbol": "??$callDoDeclare@$1?sWeld@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sWeld@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab1d0 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac340",
+      "symbol": "??$callDoDeclare@$1?sGlue@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sGlue@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab240 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac350",
+      "symbol": "??$callDoDeclare@$1?sRotate@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sRotate@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab2b0 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac360",
+      "symbol": "??$callDoDeclare@$1?sRotateP@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sRotateP@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab320 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac370",
+      "symbol": "??$callDoDeclare@$1?sRotateV@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sRotateV@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab390 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac380",
+      "symbol": "??$callDoDeclare@$1?sMotor@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "unit": "names",
+      "verified_targets": {
+        "??$doDeclare@$1?sMotor@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4ab400 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac040",
+      "symbol": "??$?0VMarker@Network@RBX@@@shared_count@detail@boost@@QAE@PAVMarker@Network@RBX@@@Z",
+      "size": 131,
+      "target_size": 110,
+      "exact": true,
+      "unit": "marker",
+      "split": "compiled 131 B = row 110 B + catch-funclet row 004ac0ae 21 B (both halves exact)",
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@6B@": "0x8246f4 (vtable (original RTTI .?AV?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@))",
+        "??$checked_delete@VMarker@Network@RBX@@@boost@@YAXPAVMarker@Network@RBX@@@Z": "0x427b70 (support body exact at the bound address)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VMarker@Network@RBX@@@shared_count@detail@boost@@QAE@PAVMarker@Network@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "004ac390",
+      "symbol": "?dispose@?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@UAEXXZ",
+      "size": 16,
+      "target_size": 16,
+      "exact": true,
+      "unit": "marker",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004ae2f0",
+      "symbol": "?pop_front@?$deque@V?$shared_ptr@VMarker@Network@RBX@@@boost@@V?$allocator@V?$shared_ptr@VMarker@Network@RBX@@@boost@@@std@@@std@@QAEXXZ",
+      "size": 116,
+      "target_size": 116,
+      "exact": true,
+      "unit": "marker",
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004af1b0",
+      "symbol": "?_Tidy@?$deque@V?$shared_ptr@VMarker@Network@RBX@@@boost@@V?$allocator@V?$shared_ptr@VMarker@Network@RBX@@@boost@@@std@@@std@@IAEXXZ",
+      "size": 181,
+      "target_size": 181,
+      "exact": true,
+      "unit": "marker",
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ae370",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+      "size": 510,
+      "target_size": 510,
+      "exact": true,
+      "unit": "signals",
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (literal 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable (original RTTI .?AVlogic_error@std@@))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info (original type .?AVlength_error@std@@))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable (original RTTI .?AVlength_error@std@@))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@00ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@D@Z": "0x5b82d0 (support body exact at the bound address)",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z": "0x4abdf0 (support body exact at the bound address)",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z": "0x587360 (support body exact at the bound address)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z"
+      ]
+    },
+    {
+      "address": "004af270",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@_N@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+      "size": 239,
+      "target_size": 239,
+      "exact": true,
+      "unit": "signals",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z": "0x4ae370 (own row)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ": "0x4abf40 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004af530",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "size": 765,
+      "target_size": 765,
+      "exact": true,
+      "unit": "signals",
+      "verified_targets": {
+        "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (literal 'invalid map/set<T> iterator')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable (original RTTI .?AVlogic_error@std@@))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVout_of_range@std@@": "0x8d0c3c (throw info (original type .?AVout_of_range@std@@))",
+        "??_7out_of_range@std@@6B@": "0x80b128 (vtable (original RTTI .?AVout_of_range@std@@))",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ": "0x5b7250 (support body exact at the bound address)",
+        "?_Min@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z": "0x5b6c20 (support body exact at the bound address)",
+        "?_Max@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z": "0x4ab070 (support body exact at the bound address)",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z": "0x4abdf0 (support body exact at the bound address)",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z": "0x587360 (support body exact at the bound address)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+      ]
+    },
+    {
+      "address": "004af4c0",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEIABUData@Guid@RBX@@@Z",
+      "size": 106,
+      "target_size": 106,
+      "exact": true,
+      "unit": "guids",
+      "verified_targets": {
+        "?_Eqrange@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@V123@@2@ABUData@Guid@RBX@@@Z": "0x4ad940 (own row)",
+        "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z": "0x4ad520 (own row)",
+        "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x4983f0 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ad940",
+      "symbol": "?_Eqrange@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@V123@@2@ABUData@Guid@RBX@@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "unit": "guids",
+      "verified_targets": {
+        "??MData@Guid@RBX@@QBE_NABU012@@Z": "0x5a8210 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ad520",
+      "symbol": "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z",
+      "size": 58,
+      "target_size": 58,
+      "exact": true,
+      "unit": "guids",
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x5b7250 (support body exact at the bound address)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004add50",
+      "symbol": "?onEvent@Peer@Network@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z",
+      "size": 96,
+      "target_size": 96,
+      "exact": true,
+      "unit": "peer",
+      "verified_targets": {
+        "?getTick@System@G3D@@SANXZ": "0x5083d0 (external (call site; body evidence))",
+        "__real@3e4ccccd": "0x8249f8 (data, bytes cdcc4c3e)",
+        "?checkDisconnect@@YAXPAVInstance@RBX@@@Z": "0x4aaf50 (external (call site; body evidence))",
+        "??$for_eachChild@P6AXPAVInstance@RBX@@@Z@Instance@RBX@@QBEXP6AXPAV01@@Z@Z": "0x45c470 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ac0ae",
+      "symbol": "??$?0VMarker@Network@RBX@@@shared_count@detail@boost@@QAE@PAVMarker@Network@RBX@@@Z (catch funclet)",
+      "size": 21,
+      "target_size": 21,
+      "exact": true,
+      "unit": "marker",
+      "split_of": "004ac040",
+      "note": "catch(...) funclet `boost::checked_delete(p); throw;` of shared_count<Marker>: the tail 21 bytes of the compiled body, exact with its relocations (checked_delete 00427b70, _CxxThrowException 006a158c) verified in the 004ac040 entry"
+    }
+  ],
+  "vtables": [
+    {
+      "vtable": "0x8246f4",
+      "symbol": "??_7?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@6B@",
+      "rtti": ".?AV?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@",
+      "slots": {
+        "0": "??_E?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@UAEPAXI@Z -> 0x415000 (ICF-shared support body exact)",
+        "1": "?dispose@?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@UAEXXZ -> 0x4ac390 (own row)",
+        "2": "?destroy@sp_counted_base@detail@boost@@UAEXXZ -> 0x405e10 (ICF-shared support body exact)",
+        "3": "?get_deleter@?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@UAEPAXABVtype_info@@@Z -> 0x5f2310 (ICF-shared support body exact)"
+      }
+    }
+  ],
+  "support_rows": {
+    "??$doDeclare@$1?sSnap@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab160",
+      "reached_from": "??$callDoDeclare@$1?sSnap@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$doDeclare@$1?sWeld@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab1d0",
+      "reached_from": "??$callDoDeclare@$1?sWeld@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$doDeclare@$1?sGlue@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab240",
+      "reached_from": "??$callDoDeclare@$1?sGlue@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$doDeclare@$1?sRotate@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab2b0",
+      "reached_from": "??$callDoDeclare@$1?sRotate@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$doDeclare@$1?sRotateP@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab320",
+      "reached_from": "??$callDoDeclare@$1?sRotateP@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$doDeclare@$1?sRotateV@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab390",
+      "reached_from": "??$callDoDeclare@$1?sRotateV@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$doDeclare@$1?sMotor@RBX@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "0x4ab400",
+      "reached_from": "??$callDoDeclare@$1?sMotor@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "??$checked_delete@VMarker@Network@RBX@@@boost@@YAXPAVMarker@Network@RBX@@@Z": {
+      "address": "0x427b70",
+      "reached_from": "??$?0VMarker@Network@RBX@@@shared_count@detail@boost@@QAE@PAVMarker@Network@RBX@@@Z",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@00ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@D@Z": {
+      "address": "0x5b82d0",
+      "reached_from": "?_Insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z": {
+      "address": "0x4abdf0",
+      "reached_from": "?_Insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z": {
+      "address": "0x587360",
+      "reached_from": "?_Insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x4abf40",
+      "reached_from": "?insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@_N@2@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x5b7250",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?_Min@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z": {
+      "address": "0x5b6c20",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?_Max@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z": {
+      "address": "0x4ab070",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": {
+      "address": "0x4983f0",
+      "reached_from": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEIABUData@Guid@RBX@@@Z",
+      "note": "COMDAT support body exact at the bound address; not counted"
+    },
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0x5b7250",
+      "reached_from": "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z",
+      "note": "COMDAT / ICF-shared body exact at the bound address; not counted here"
+    },
+    "??_E?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@UAEPAXI@Z": {
+      "address": "0x415000",
+      "reached_from": "??_7?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@6B@",
+      "note": "ICF-shared generic body bound through vtable slot 0, exact at the bound address; not counted"
+    },
+    "?destroy@sp_counted_base@detail@boost@@UAEXXZ": {
+      "address": "0x405e10",
+      "reached_from": "??_7?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@6B@",
+      "note": "ICF-shared generic body bound through vtable slot 2, exact at the bound address; not counted"
+    },
+    "?get_deleter@?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@UAEPAXABVtype_info@@@Z": {
+      "address": "0x5f2310",
+      "reached_from": "??_7?$sp_counted_impl_p@VMarker@Network@RBX@@@detail@boost@@6B@",
+      "note": "ICF-shared generic body bound through vtable slot 3, exact at the bound address; not counted"
+    }
+  },
+  "pending_rows": [],
+  "not_exact": [
+    {
+      "address": "shared_count(T*) for NewInstanceItem / ChangePropertyItem / DeleteInstanceItem / MarkerItem (0x4ac0d0, 0x4ac160, 0x4ac1f0, 0x4ac280 with catch funclets 0x4ac13e .. 0x4ac2ee), the item members (ChangePropertyItem deleting dtor 0x4acac0, MarkerItem 0x4ae9a0, NewInstanceItem / DeleteInstanceItem 0x4afc70 / 0x4afd00 / 0x4afe90 / 0x4aff20 / 0x4aff70) and the list<shared_ptr<Replicator::Item> > members (0x4acb10, 0x4acb50, 0x4ad860, 0x4af100 ...)",
+      "reason": "Blocked, not attempted: Replicator::Item and its subclasses are nested in Replicator and no native header declares them (Replicator2008.h owner; proposal)."
+    },
+    {
+      "address": "Replicator-member templates (boost::bind / list3 / storage3 0x4ace50 / 0x4adbe0 / 0x4af830, function invokers / managers 0x4ae800 / 0x4ad6c0 / 0x4ad700, map<const Instance*, ...> 0x4aec10 / 0x4aed00 / 0x4ae0f0, pointer-set find 0x4adfd0 / 0x4ae060, 0x4ae570 / 0x4ae690)",
+      "reason": "Blocked, not attempted: their element / bound types are Replicator members past +0x2b90 or Replicator member functions not declared by Replicator2008.h; the ICF-shared pointer-set bodies have no proven element type."
+    },
+    {
+      "address": "Peer logger toggle 0x4ac9e0 and Peer network-simulator settings 0x4ae950",
+      "reason": "Not declared by Network/Peer2008.h (network-client-server2008 owner; proposal)."
+    },
+    {
+      "address": "reflection property templates 0x4accd0 .. 0x4ad360, 0x4adc90, 0x4adcf0, 0x4acb30, 0x4ae7b0, 0x4ae7d0, 0x4ada80 .. 0x4adb20",
+      "reason": "Not attempted this batch: ConstProperty::getValue<T> / Property::setValue<T> instances (ICF-shared across value types); the value type of each must be proven from its type descriptor first."
+    },
+    {
+      "address": "doDeclare-index jumps 0x4ac600 / 0x4ac610 (to 0x4ab470 / 0x4ab4d0: InterlockedIncrement on 0x946610)",
+      "reason": "Not attempted: the template they belong to is not identified."
+    }
+  ],
+  "rejected": {
+    "template boost::detail::shared_count::shared_count<Marker>(Marker*) (explicit template argument list on the constructor)": "C2143 on 21022; the deduced form `template shared_count::shared_count(Marker*);` is used.",
+    "counting shared_count<Marker> 004ac040 at its 110-byte extent alone": "the compiler emits the catch(...) funclet inside the body (131 B); compared split instead (head = row, tail = row 004ac0ae), never truncated."
+  },
+  "proposals": [
+    "native-headers/Network/Replicator2008.h (Replicator family owner): declare Replicator::Item and its subclasses NewInstanceItem / DeleteInstanceItem / ChangePropertyItem / MarkerItem (RTTI vtables 00824b20, 00824b2c, 00824828, 008246e8; shared_count(T*) rows 004ac0d0 / 004ac1f0 / 004ac160 / 004ac280 called by 004aff70, 004b01e0, 004acdf0, 004ace20) and the members +0x2b90..+0x2d68 (incl. +0x2d4d bool disconnected, read by checkDisconnect 004aaf50). That unblocks checkDisconnect, the item rows and list<shared_ptr<Item> > members listed in not_exact.",
+    "native-headers/Network/Peer2008.h (network-client-server2008 owner): declare the Peer logger toggle at 004ac9e0 (bool argument, ret 4: false -> rakPeer->DetachPlugin(logger) (slot 59) and reset; true -> logger.reset(new (0x210) PacketLogger-derived 004ab630(this)) then rakPeer->AttachPlugin (slot 58)) and the network-simulator apply at 004ae950 (rakPeer slot 64 with NetworkSettings 0049e890 +0x154 (int as double), +0x158 / +0x15c (unsigned short)). Peer::onEvent 004add50 is built here (native-classes/AppUnit4ACPeerHeartbeat.cpp) against the existing declaration; it could move into NetworkClientServer2008Peer.cpp with checkDisconnect once the Replicator +0x2d4d member is declared.",
+    "BOUNDS note (server host; bounds.json not changed): shared_count(T*) rows 004ac040 / 004ac0d0 / 004ac160 / 004ac1f0 / 004ac280 are each one function with their catch funclet rows 004ac0ae / 004ac13e / 004ac1ce / 004ac25e / 004ac2ee (131 B extents; funclets reached only from the EH tables). This receipt verifies 004ac040 split at the current extents and counts both rows."
+  ],
+  "exact_function_rows": [
+    "004ac040",
+    "004ac0ae",
+    "004ac320",
+    "004ac330",
+    "004ac340",
+    "004ac350",
+    "004ac360",
+    "004ac370",
+    "004ac380",
+    "004ac390",
+    "004ad520",
+    "004ad940",
+    "004add50",
+    "004ae2f0",
+    "004ae370",
+    "004af1b0",
+    "004af270",
+    "004af4c0",
+    "004af530"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

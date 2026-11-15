@@ -2,10 +2,6 @@
 // Bodies 00682560..006843e6 except render 006832b0. Built with the Ogre 1.4.5 client headers (/fp:fast);
 // record_native_ogre_rbx_node.py verifies them.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// OgreRbxNodeTwoDManager | 2008-06 | draft (no current byte proof)
-// 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by colin (+2) (mixed 3)
-// <<< native-status | src d4045eb0 | roc native-status --write
 #include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>

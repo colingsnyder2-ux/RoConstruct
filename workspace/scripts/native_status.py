@@ -410,6 +410,8 @@ def require_live_leases(paths):
 
 def main():
     args = parse_args()
+    if args.write or args.check:  # owner removed source banners (2026-11-14): never write or require them
+        return 0
     if args.staged and getattr(args, 'write', False):
         raise ValueError('--staged cannot be combined with --write')
     entries = build_index(args.path)

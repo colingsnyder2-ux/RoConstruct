@@ -937,7 +937,12 @@ def _coding_cli(provider, remote, config, prompt, state, options):
     text = "\n\n".join(message["role"].upper() + ":\n" + message["content"] for message in messages)
     if provider == "claude":
         argv = [exe, "-p", "--output-format", "json", "--tools", "", "--strict-mcp-config",
-                "--mcp-config", '{"mcpServers":{}}', "--no-session-persistence"]
+                "--mcp-config", '{"mcpServers":{}}', "--no-session-persistence",
+                # No user/project settings: their plugins, hooks and memory add ~3.5k input tokens to every call.
+                "--setting-sources", "", "--disable-slash-commands",
+                # Replace the agent system prompt: with it the model still writes tool-call markup as plain text.
+                "--system-prompt", SYSTEM + " You are a text-only compiler worker with no tools: never search, never "
+                "emit tool calls, answer only from the text given."]
     else:
         argv = [exe, "exec", "--json", "--sandbox", "read-only", "--skip-git-repo-check", "--ephemeral"]
     if remote != "default":
@@ -991,9 +996,12 @@ def _coding_cli(provider, remote, config, prompt, state, options):
             raise ProviderError("provider_error", "Claude CLI returned invalid JSON") from None
         if result.get("is_error"):
             raise ProviderError("provider_error", "Claude CLI rejected generation; check sign-in and plan limits")
-        answer, usage = result.get("result", ""), result.get("usage", {})
+        answer, usage = result.get("result", ""), dict(result.get("usage", {}))
+        # Claude CLI reports fresh, cache-write and cache-read input separately; bill all of it as input.
+        usage["input_tokens"] = (usage.get("input_tokens") or 0) + (usage.get("cache_creation_input_tokens") or 0)
+        cli_cost = result.get("total_cost_usd")
     else:
-        answer, usage = "", {}
+        answer, usage, cli_cost = "", {}, None
         for line in output.splitlines():
             try:
                 event = json.loads(line)
@@ -1007,10 +1015,12 @@ def _coding_cli(provider, remote, config, prompt, state, options):
                 usage = event.get("usage", {})
     if not answer.strip():
         raise ProviderError("provider_error", provider + " CLI returned no text")
-    return Generation(answer, {"messages": messages + [{"role": "assistant", "content": answer}]},
+    out = Generation(answer, {"messages": messages + [{"role": "assistant", "content": answer}]},
                       input_tokens=usage.get("input_tokens", 0), output_tokens=usage.get("output_tokens", 0),
                       cached_tokens=usage.get("cached_input_tokens", usage.get("cache_read_input_tokens", 0)),
                       provider=provider, model=remote)
+    out.cli_cost_usd = cli_cost if provider == "claude" else None
+    return out
 
 
 def generate(model, messages, options=None, state=None):

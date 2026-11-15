@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// OgreGeometryBuilder2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src dcb5e242 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #include "OgreRbx/GeometryBuilder2008.h"
 #include <OgreRoot.h>

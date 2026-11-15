@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// MouseCommand | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 30392501 | roc native-status --write
 #include "util/Name.h"
 #include "util/UIEvent.h"
 #include "util/TextureId.h"

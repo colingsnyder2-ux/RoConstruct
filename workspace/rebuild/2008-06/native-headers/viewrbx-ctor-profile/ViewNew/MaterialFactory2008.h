@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// MaterialFactory2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 6903dcf9 | roc native-status --write
 namespace G3D { class TextureManager; }
 #include "RbxGraphics/TextureProxyBase2008.h"
 #include "RenderLib/Material2008.h"

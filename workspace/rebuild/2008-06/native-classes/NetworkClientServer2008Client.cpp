@@ -1,11 +1,8 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // 2008-06 native RBX::Network::Client (inactive); evidence in native-headers/Network/Client2008.h.
 // Verified by tests/record_native_network_client_server2008.py. Original bodies: constructor 004a0990,
 // DescribedCreatable<Client> 0049ff10, FactoryProduct<Client> 0049eef0 / ~FactoryProduct 0049edb0, destructor
 // 0049f2e0 (deleting 0049f4e0), classDescriptor 0049eb30 (atexit 007fba60).
-// >>> native-status (generated) -- do not edit >>>
-// NetworkClientServer2008Client | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5e7de074 | roc native-status --write
 #include "Network/Client2008.h"
 
 namespace RBX

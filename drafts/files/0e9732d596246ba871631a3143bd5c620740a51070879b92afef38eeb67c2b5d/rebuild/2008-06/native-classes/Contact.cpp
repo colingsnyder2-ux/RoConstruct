@@ -1,0 +1,51 @@
+// 2008-06 native RBX::Contact (inactive); evidence in native-headers/v8world/Contact2008.h.
+// Verified by tests/record_native_world_shapes.py. Recovered rows of the Contact unit (00606b00..00608950):
+// the constructor 00606c20 and deleteConnector 00606d10. The other rows of the unit (step, computeIsAdjacent,
+// createConnector, onPrimitiveContactParametersChanged, the ball / block contact geometry) need the native
+// Primitive / Body / ContactConnector layouts and are not part of this unit yet.
+// >>> native-status (generated) -- do not edit >>>
+// Contact | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (gpt-6)
+// <<< native-status | src 4c385f91 | roc native-status --write
+#include "v8world/Contact2008.h"
+#include "v8kernel/Kernel.h"
+#include "v8kernel/Connector.h"
+
+namespace RBX
+{
+	// 00606c20 (out of line: BallBallContact 0060cae0 / BallBlockContact 0060cb90 / BlockBlockContact 0060d500 call it)
+	Contact::Contact(Primitive* prim0, Primitive* prim1)
+		: Edge(prim0, prim1),
+		  lastContactStep(-1),
+		  steppingIndex(-1),
+		  jointK(0),
+		  elasticJointK(0),
+		  kFriction(0)
+	{
+	}
+
+	// 00606d10: no null test of its own (the callers test, 0060cb50); IPipelined::getKernel 00645850,
+	// Kernel::removeConnector 005fb1f0, then the virtual deleting destructor.
+	void Contact::deleteConnector(ContactConnector*& c)
+	{
+		getKernel()->removeConnector(c);
+		delete c;
+		c = NULL;
+	}
+
+	// 00606d40 (out of line: Contact::createConnector 00606e00 calls it inside its EH frame). KernelIndex -1 at +0x4,
+	// vtable 00842834, GeoPair() 00613060 at +0x8, frictionOffset +0x44 default-constructed to zero, k +0x2c, kNeg
+	// +0x34, kFriction +0x30, frictionOffset = Vector3::zero() (guard 0096f050, static 0096f044), then firstApproach
+	// +0x38, threshold +0x3c, forceMagLast +0x40 = 0. Moved from the former inline body of v8kernel/Connector2008.h.
+	ContactConnector::ContactConnector(float _k, float _kNeg, float _kFriction)
+		: geoPair()
+	{
+		k = _k;
+		kNeg = _kNeg;
+		kFriction = _kFriction;
+		frictionOffset = G3D::Vector3::zero();
+		firstApproach = 0;
+		threshold = 0;
+		forceMagLast = 0;
+	}
+}

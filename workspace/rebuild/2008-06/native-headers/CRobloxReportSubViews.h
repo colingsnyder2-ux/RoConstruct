@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CRobloxReportSubViews | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 9b600081 | roc native-status --write
 #include "CRobloxReportView.h"
 #include "ActiveDocView.h"
 

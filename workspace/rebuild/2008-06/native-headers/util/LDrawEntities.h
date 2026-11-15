@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// LDrawEntities | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 3ab091e2 | roc native-status --write
 #include "LDrawMapRoot.h"
 #include <ostream>
 #include <string>

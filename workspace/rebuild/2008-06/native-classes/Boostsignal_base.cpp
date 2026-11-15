@@ -9,10 +9,6 @@
 
 // For more information, see http://www.boost.org
 
-// >>> native-status (generated) -- do not edit >>>
-// Boostsignal_base | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src d9bd2abd | roc native-status --write
 #define BOOST_SIGNALS_SOURCE
 
 #include <boost/signals/detail/signal_base.hpp>

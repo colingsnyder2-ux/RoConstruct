@@ -1,0 +1,224 @@
+{
+  "class": "RBX::Network::Replicator (partial), Replicator::ReplicatorStatsItem, Server::ClientProxy (partial)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-network-replicator2008/NetworkReplicator2008Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-network-replicator2008/NativeNetworkReplicator2008Layout.cpp"
+    ],
+    "units": {
+      "statsitem": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-network-replicator2008/NetworkReplicator2008StatsItem.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkReplicator2008StatsItem.cpp"
+      ],
+      "askaddchild": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+        "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-network-replicator2008/NetworkReplicator2008AskAddChild.obj",
+        "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkReplicator2008AskAddChild.cpp"
+      ]
+    }
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_network_replicator2008.py": "f54da44a08255f36280c8bfb8d9db7f13f29244e2515fa0a2afd91ca9a0fd624",
+    "rebuild/2008-06/out/native-network-replicator2008/NativeNetworkReplicator2008Layout.cpp": "ebbef17640d6d253cd0b55e678cb1db6459f1f0bb88c24e6dba8ff5d27bb079a",
+    "rebuild/2008-06/native-headers/Network/Replicator2008.h": "a2d95b4059c89aebdf4612af9e36cbbc5a5daf55f7013eb629a963e56befc044",
+    "rebuild/2008-06/native-headers/Network/ClientProxy2008.h": "a031e7794eb8bab48080bb230b8df329eb1585973a6b5c201d59e02ce91b151e",
+    "rebuild/2008-06/native-classes/NetworkReplicator2008StatsItem.cpp": "29318a54f04893a7a27a32874f380510e8aa105713d1e948701c301eaefad115",
+    "rebuild/2008-06/native-classes/NetworkReplicator2008AskAddChild.cpp": "5b06dd93c5ce2fe1c3293b3e975310b39db6c4a379b8f692fde099d9010e042a"
+  },
+  "objects": {
+    "NetworkReplicator2008Layout.obj": "83b29abbe1f6dd9f98dbd23360405773e16b5f49ac4062a3b5c03caeeb267a10",
+    "NetworkReplicator2008StatsItem.obj": "c709abb7a9e41c5e62f9573b2370b6aa19213585107e883c2281849e68a8be94",
+    "NetworkReplicator2008AskAddChild.obj": "e60935594a2e34f840268d114199a01f2e60d6d5d5476fb26d3e0e0bcfced46e"
+  },
+  "layout": {
+    "Replicator": "PARTIAL. DescribedNonCreatable<Replicator, IdSerializer, sReplicator> 0, PluginInterface +0x2b74, RealTime lastSendTime +0x2b78, scoped_ptr<IPhysicsSender> +0x2b80, scoped_ptr<IPhysicsReceiver> +0x2b84, shared_ptr<ReplicatorStatsItem> +0x2b88; members +0x2b90..+0x2d68 pending (original sizeof 0x2d68)",
+    "ReplicatorStatsItem": "0x180 (create 004b7e50 malloc 0x180): Stats::Item 0, Item* waitingRefs +0x158, packetLoss +0x15c, ping +0x160, instanceSize +0x164, shared_ptr<Replicator> +0x168, const RakNetStatistics* +0x170, size_t instanceCount +0x174, instanceBits +0x178",
+    "ClientProxy": "PARTIAL. Replicator 0 (PluginInterface +0x2b74); remotePlayer +0x2d68 / server +0x2d70 pending (create 004a21c0 malloc 0x2d78)",
+    "rtti_base_counts": {
+      ".?AVReplicator@Network@RBX@@": 23,
+      ".?AVClientProxy@Server@Network@RBX@@": 24,
+      ".?AVReplicatorStatsItem@Replicator@Network@RBX@@": 22
+    }
+  },
+  "methods": [
+    {
+      "address": "004b7e50",
+      "unit": "statsitem",
+      "symbol": "??$create@VReplicatorStatsItem@Replicator@Network@RBX@@V?$shared_ptr@VReplicator@Network@RBX@@@boost@@PAURakNetStatistics@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VReplicatorStatsItem@Replicator@Network@RBX@@@boost@@V?$shared_ptr@VReplicator@Network@RBX@@@3@PAURakNetStatistics@@@Z",
+      "size": 198,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0ReplicatorStatsItem@Replicator@Network@RBX@@QAE@ABV?$shared_ptr@VReplicator@Network@RBX@@@boost@@PBURakNetStatistics@@@Z": "0x4b62c0 (external (evidence name))",
+        "??$?0VReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@?$shared_ptr@VReplicatorStatsItem@Replicator@Network@RBX@@@boost@@QAE@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z": "0x4acf50 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VReplicatorStatsItem@Replicator@Network@RBX@@V?$shared_ptr@VReplicator@Network@RBX@@@boost@@PAURakNetStatistics@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VReplicatorStatsItem@Replicator@Network@RBX@@@boost@@V?$shared_ptr@VReplicator@Network@RBX@@@3@PAURakNetStatistics@@@Z"
+      ]
+    },
+    {
+      "address": "004acf50",
+      "unit": "statsitem",
+      "symbol": "??$?0VReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@?$shared_ptr@VReplicatorStatsItem@Replicator@Network@RBX@@@boost@@QAE@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z",
+      "size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@shared_count@detail@boost@@QAE@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@6@@Z": "0x4ac3a0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@?$shared_ptr@VReplicatorStatsItem@Replicator@Network@RBX@@@boost@@QAE@PAVReplicatorStatsItem@Replicator@Network@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z"
+      ]
+    },
+    {
+      "address": "0049ee20",
+      "unit": "askaddchild",
+      "symbol": "?askAddChild@Peer@Network@RBX@@MBE_NPBVInstance@3@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVReplicator@Network@RBX@@@8": "0x938db4 (RTTI .?AVReplicator@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004a3640",
+      "unit": "askaddchild",
+      "symbol": "?askAddChild@Server@Network@RBX@@MBE_NPBVInstance@3@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVClientProxy@Server@Network@RBX@@@8": "0x9398dc (RTTI .?AVClientProxy@Server@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    }
+  ],
+  "exact_function_rows": [
+    "0049ee20",
+    "004a3640",
+    "004acf50",
+    "004b7e50"
+  ],
+  "not_exact": {
+    "004b9bd0": "Replicator constructor: needs the members +0x2b90..+0x2d68 (partial declaration; see the header).",
+    "004b96b0": "Replicator destructor: same.",
+    "004b62c0": "ReplicatorStatsItem constructor: reads Replicator profilers +0x2d1c..+0x2d48 and calls the createBoundChildItem<T> instance 004b60c0 (T from RakNetStatistics +0xc4); declared only.",
+    "004b6530": "ReplicatorStatsItem::update: reads Replicator +0x2d50 (peer) / +0x2d54 (remotePlayerId); declared only (vtable 00824fbc slot 16).",
+    "004b6690": "ReplicatorStatsItem destructor (implicit, no vtable pointer stores): only emitted with the vtable, i.e. with the open constructor; a user-declared destructor stores all ten vtable pointers (200 vs 122 bytes, rejected).",
+    "004b6710": "ReplicatorStatsItem deleting destructor and thunks 004b64b0..004b6520: same.",
+    "004a1ed0": "ClientProxy constructor: members +0x2d68 / +0x2d70 follow the Replicator size (pending).",
+    "004a18c0": "ClientProxy destructor: same.",
+    "0049e6b0": "shared_ptr<Replicator>(Replicator*, Deleter): only reachable through create<Replicator> 0049f500 (malloc 0x2d68, needs the full sizeof); an explicit instantiation of the shared_ptr member-template constructor is rejected by 15.00.21022 (C2794 sp_enable_if_auto_ptr / C2977), recorded as rejected.",
+    "004a20a0": "shared_ptr<ClientProxy>(ClientProxy*, Deleter): same, through create<ClientProxy> 004a21c0 (malloc 0x2d78)."
+  },
+  "proposals": [],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. Rows built from the partial Replicator / ClientProxy declarations depend only on class identity and base offsets."
+}

@@ -3,6 +3,7 @@
 
 namespace RBX
 {
+	// makeMoving and moved have no out-of-line copy in the image; inlined into notifyMoved / setMovingManager.
 	void IMovingManager::moved(IMoving* iMoving)
 	{
 		moving.insert(iMoving);
@@ -15,6 +16,7 @@ namespace RBX
 			iMovingManager->moved(this);
 	}
 
+	// 00614be0
 	void IMoving::notifyMoved()
 	{
 		if (stepsToSleep == 0)
@@ -24,6 +26,7 @@ namespace RBX
 		}
 	}
 
+	// 00614c20
 	void IMovingManager::remove(IMoving* iMoving)
 	{
 		if (current != moving.end() && *current == iMoving)
@@ -32,6 +35,7 @@ namespace RBX
 			moving.erase(iMoving);
 	}
 
+	// 00614cc0
 	void IMovingManager::onMovingHeartbeat()
 	{
 		current = moving.begin();
@@ -52,6 +56,7 @@ namespace RBX
 		}
 	}
 
+	// 00614d50
 	void IMoving::setMovingManager(IMovingManager* _iMovingManager)
 	{
 		if (iMovingManager)

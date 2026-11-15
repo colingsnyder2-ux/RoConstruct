@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPSyntaxEditColorComboBox | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 153daa1b | roc native-status --write
 #include "stdafx.h"
 #include "Resource.h"
 #include "Common/Resource.h"

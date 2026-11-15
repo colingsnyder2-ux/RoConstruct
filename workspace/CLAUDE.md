@@ -65,7 +65,7 @@ lists them all.
   diagnostic evidence, not ABI, runtime, complete call-identity or gate proof.
 - Preserve in-flight checkout changes. Report the running executable's exact
   count and P5/P6 status separately from inactive local matches.
-- Spawn workers only when useful; use `gpt-6-luna` with medium reasoning for
+- Spawn workers only when useful; use `claude:sonnet` (Sonnet) for
   new workers, give them distinct files, and keep one shared-header owner.
 
 ## File leases: never edit the same files as another worker

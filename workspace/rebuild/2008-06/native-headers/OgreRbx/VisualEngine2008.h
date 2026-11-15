@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// VisualEngine2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 21fdce51 | roc native-status --write
 // 2008-06 native Ogre::VisualEngine (Roblox exe-local owner of the Ogre Root / scene manager / camera / render window).
 // Layout derived from the original exe (evidence per member below; derivation: commit e816da27a6,
 // tests/record_native_ogre_visual_engine.py). Size 0x808 (new(0x808) at CRobloxView 0045cc9c).

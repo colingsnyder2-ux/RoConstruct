@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// InstanceDescendantPropagation | 2008-06 | draft (no current byte proof)
-// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (deepseek:deepseek-flash)
-// <<< native-status | src 6039f8fd | roc native-status --write
 #include "v8tree/Instance.h"
 namespace RBX {
 	void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)

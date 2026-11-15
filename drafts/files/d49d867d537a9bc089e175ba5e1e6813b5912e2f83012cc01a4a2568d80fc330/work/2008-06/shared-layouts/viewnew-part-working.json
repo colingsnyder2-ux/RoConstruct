@@ -1,0 +1,912 @@
+{
+  "class": "RBX::ViewNew::PartChunk / Part / Decal / Texture",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPartLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeViewNewPartLayout.cpp"
+    ],
+    "chunk": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPart_chunk.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp"
+    ],
+    "part": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewPart_part.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewPart.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_viewnew_part.py": "49a997e8996f0c93776321a58ee97f02c29745d800119fceb67c343a8b043aca",
+    "rebuild/2008-06/tests/NativeViewNewPartLayout.cpp": "de93f5edddf5e6309de0c500d2bb32a229c55378010acbde1c2d0d5b074765b5",
+    "rebuild/2008-06/native-headers/ViewNew/PartChunk.h": "80fe20d84114cb06be66fd8dd3d3c2c67b537e34f166fbe0015eab932558c08d",
+    "rebuild/2008-06/native-classes/ViewNewPartChunk.cpp": "3183b1720180e215e0bda4cac830f61da4ec51b44f96812c0e4e22dde5c7032f",
+    "rebuild/2008-06/native-classes/ViewNewPart.cpp": "728c41aa0b2b3fb8a2b6676fb50a5d1bcf5cf70759f6184c80e9e61b1f074db3"
+  },
+  "objects": {
+    "NativeViewNewPartLayout.obj": "5f23e75b6f7e98e0e813b9e21204de6f6241f72bb4b7b328dd462940f650f3e8",
+    "NativeViewNewPart_chunk.obj": "19886aa564a0587226f1cda27aebf69d68694ffece58845065dc6e581484b5a7",
+    "NativeViewNewPart_part.obj": "a2e6cbc743ec96fa474dd8a9a93c2f1703a56f2b966b586b5ae6418ff3bf1423"
+  },
+  "layout": {
+    "partChunkSize": "0xd8",
+    "partChunkCoordinateFrame": "0x28",
+    "partChunkChildAdded": "0x58",
+    "partChunkChildRemoved": "0x6c",
+    "partChunkAncestorChanged": "0x80",
+    "partChunkPropertyChanged": "0x94",
+    "partChunkShapePropertyChanged": "0xa8",
+    "partChunkPartInstance": "0xbc",
+    "partChunkMaterial": "0xc4",
+    "partChunkMaterialInvalid": "0xc8",
+    "partChunkMesh": "0xcc",
+    "partChunkView": "0xd0",
+    "partChunkSpecialShape": "0xd4",
+    "scopedConnectionSize": "0x14",
+    "partSize": "0xf0",
+    "partConnection": "0xdc",
+    "decalSize": "0x108",
+    "decalDecal": "0xd8",
+    "decalAncestorChanged": "0xe0",
+    "decalPropertyChanged": "0xf4",
+    "textureSize": "0x108",
+    "textureDecal": "0xd8",
+    "textureAncestorChanged": "0xe0",
+    "texturePropertyChanged": "0xf4"
+  },
+  "rows": {
+    "chunk": [
+      {
+        "address": "004e8250",
+        "symbol": "??1PartChunk@ViewNew@RBX@@UAE@XZ",
+        "size": 336,
+        "target_size": 336,
+        "exact": true,
+        "verified_targets": {
+          "??_7PartChunk@ViewNew@RBX@@6B@": "0x826ec4 (vtable RTTI .?AVPartChunk@ViewNew@RBX@@ offset 0x0)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+          "??1Chunk@RenderBase@RBX@@UAE@XZ": "0x4e81d0 (external)"
+        },
+        "local": [
+          "__ehhandler$??1PartChunk@ViewNew@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "004e8fc0",
+        "symbol": "??_GPartChunk@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1PartChunk@ViewNew@RBX@@UAE@XZ": "0x4e8250 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e6b50",
+        "symbol": "?getMesh@PartChunk@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "size": 61,
+        "target_size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z": "0x598fa0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e8550",
+        "symbol": "??1Decal@ViewNew@RBX@@UAE@XZ",
+        "size": 160,
+        "target_size": 160,
+        "exact": true,
+        "verified_targets": {
+          "??_7Decal@ViewNew@RBX@@6B@": "0x826ef8 (vtable RTTI .?AVDecal@ViewNew@RBX@@ offset 0x0)",
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+          "??1PartChunk@ViewNew@RBX@@UAE@XZ": "0x4e8250 (own row)"
+        },
+        "local": [
+          "__ehhandler$??1Decal@ViewNew@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "004e8fe0",
+        "symbol": "??_GDecal@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Decal@ViewNew@RBX@@UAE@XZ": "0x4e8550 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e85f0",
+        "symbol": "??1Texture@ViewNew@RBX@@UAE@XZ",
+        "size": 160,
+        "target_size": 160,
+        "exact": true,
+        "verified_targets": {
+          "??_7Texture@ViewNew@RBX@@6B@": "0x826f2c (vtable RTTI .?AVTexture@ViewNew@RBX@@ offset 0x0)",
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+          "??1PartChunk@ViewNew@RBX@@UAE@XZ": "0x4e8250 (own row)"
+        },
+        "local": [
+          "__ehhandler$??1Texture@ViewNew@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "004e9000",
+        "symbol": "??_GTexture@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Texture@ViewNew@RBX@@UAE@XZ": "0x4e85f0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e7100",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x941700 (RTTI .?AV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e7160",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x9417c8 (RTTI .?AV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e71c0",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVPartChunk@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf0@XVPartChunk@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x941888 (RTTI .?AV?$bind_t@XV?$mf0@XVPartChunk@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e70c0",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z": "0x4e63a0 (own row)",
+          "??_R0?AV?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x941678 (RTTI .?AV?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e63a0",
+        "symbol": "?manager@?$functor_manager@V?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@Ufunction_obj_tag@234@@Z",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@@8": "0x941678 (RTTI .?AV?$bind_t@XV?$mf0@XVPart@ViewNew@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVPart@ViewNew@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e7220",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x941918 (RTTI .?AV?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e7280",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x9419d8 (RTTI .?AV?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e72e0",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x941a90 (RTTI .?AV?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e7340",
+        "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+        "size": 85,
+        "target_size": 85,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AV?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x941b50 (RTTI .?AV?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+          "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e80a0",
+        "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+        "size": 160,
+        "target_size": 160,
+        "exact": true,
+        "verified_targets": {
+          "??R?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z": "0x4e6300 (own row)"
+        },
+        "local": [
+          "__ehhandler$?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z"
+        ]
+      },
+      {
+        "address": "004e8140",
+        "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XPBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@PBVPropertyDescriptor@Reflection@RBX@@@Z",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004e6300",
+        "symbol": "??R?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z",
+        "size": 159,
+        "target_size": 159,
+        "exact": true,
+        "verified_targets": {},
+        "local": [
+          "__ehhandler$??R?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z"
+        ]
+      }
+    ],
+    "part": [
+      {
+        "address": "004e5ff0",
+        "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "size": 52,
+        "target_size": 52,
+        "exact": true,
+        "verified_targets": {
+          "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "004ea3e0",
+        "symbol": "??1Part@ViewNew@RBX@@UAE@XZ",
+        "size": 124,
+        "target_size": 124,
+        "exact": true,
+        "verified_targets": {
+          "??_7Part@ViewNew@RBX@@6BPartChunk@12@@": "0x826f94 (vtable RTTI .?AVPart@ViewNew@RBX@@ offset 0x0)",
+          "??_7Part@ViewNew@RBX@@6B?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@": "0x826f88 (vtable RTTI .?AVPart@ViewNew@RBX@@ offset 0xd8)",
+          "?removeListener@?$Notifier@VPartInstance@RBX@@UCanAggregateChanged@2@@RBX@@QBEXPAV?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@Z": "0x5e5a80 (external)",
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+          "??1PartChunk@ViewNew@RBX@@UAE@XZ": "0x4e8250 (own row)"
+        },
+        "local": [
+          "__ehhandler$??1Part@ViewNew@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "004ea470",
+        "symbol": "??_GPart@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Part@ViewNew@RBX@@UAE@XZ": "0x4ea3e0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004ea460",
+        "symbol": "??_EPart@ViewNew@RBX@@WNI@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EPart@ViewNew@RBX@@UAEPAXI@Z": "0x4ea470 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e6b00",
+        "symbol": "?onPropertyChanged@Part@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "?onPropertyChanged@PartChunk@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z": "0x4e6a30 (external)",
+          "?prop_Color@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VColor3@G3D@@@Reflection@2@B": "0x97610c (descriptor (initializer checked))",
+          "?usesMegaTexture@Part@ViewNew@RBX@@ABE_NXZ": "0x4e5f80 (external)",
+          "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e6740 (external)",
+          "?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e68b0 (external)",
+          "?prop_Transparency@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B": "0x976128 (descriptor (initializer checked))",
+          "?prop_Reflectance@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B": "0x97601c (descriptor (initializer checked))"
+        },
+        "local": []
+      },
+      {
+        "address": "004e73a0",
+        "symbol": "?invalidate@Part@ViewNew@RBX@@AAEXXZ",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {
+          "?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e68b0 (external)",
+          "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e6740 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e6b90",
+        "symbol": "?onDecalPropertyChanged@Decal@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "size": 48,
+        "target_size": 48,
+        "exact": true,
+        "verified_targets": {
+          "?prop_Face@FaceInstance@RBX@@2V?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@2@B": "0x97b57c (descriptor (initializer checked))",
+          "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e6740 (external)",
+          "?prop_Texture@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@2@B": "0x975f14 (descriptor (initializer checked))",
+          "?prop_Specular@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975ef8 (descriptor (initializer checked))",
+          "?prop_Shiny@Decal@RBX@@2V?$PropDescriptor@VDecal@RBX@@M@Reflection@2@B": "0x975f30 (descriptor (initializer checked))",
+          "?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ": "0x4e68b0 (external)"
+        },
+        "local": []
+      }
+    ],
+    "pending_or_not_exact": [
+      {
+        "address": "004e6bc0",
+        "symbol": "?onTexturePropertyChanged@Texture@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "size": 62,
+        "target_size": 62,
+        "exact": false,
+        "reason": "block order: the original places the invalidateMaterial block before the StudsPerTileU/V compares (Face / StudsPerTile share the invalidateMesh tail); else-if chain, early returns, goto, a combined condition and two separate StudsPerTileU / StudsPerTileV else-if statements were tried"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "004e5ff0",
+    "004e6300",
+    "004e63a0",
+    "004e6b00",
+    "004e6b50",
+    "004e6b90",
+    "004e70c0",
+    "004e7100",
+    "004e7160",
+    "004e71c0",
+    "004e7220",
+    "004e7280",
+    "004e72e0",
+    "004e7340",
+    "004e73a0",
+    "004e80a0",
+    "004e8140",
+    "004e8250",
+    "004e8550",
+    "004e85f0",
+    "004e8fc0",
+    "004e8fe0",
+    "004e9000",
+    "004ea3e0",
+    "004ea460",
+    "004ea470"
+  ],
+  "vtables": {
+    "??_7PartChunk@ViewNew@RBX@@6B@": [
+      {
+        "slot": 0,
+        "symbol": "??_EPartChunk@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004e8fc0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?cachesShadows@Chunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?renderShadows@Chunk@RenderBase@RBX@@UAEXPAVRenderDevice@G3D@@ABVGLight@5@_NM@Z",
+        "original": "004e83a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?castsShadows@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?cullable@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMesh@PartChunk@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004e6b50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "original": "004e5ff0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+        "original": "004e5b60",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+        "original": "004e5b70",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 10,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 11,
+        "symbol": "?onPropertyChanged@PartChunk@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "original": "004e6a30",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "??_7Decal@ViewNew@RBX@@6B@": [
+      {
+        "slot": 0,
+        "symbol": "??_EDecal@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004e8fe0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?cachesShadows@Chunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?renderShadows@Chunk@RenderBase@RBX@@UAEXPAVRenderDevice@G3D@@ABVGLight@5@_NM@Z",
+        "original": "004e83a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?castsShadows@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?cullable@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getMaterial@Decal@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004ebe70",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMesh@PartChunk@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004e6b50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "original": "004e5ff0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+        "original": "004e5b60",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+        "original": "004e5b70",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 10,
+        "symbol": "?updateMesh@Decal@ViewNew@RBX@@EAEXXZ",
+        "original": "004f0300",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 11,
+        "symbol": "?onPropertyChanged@PartChunk@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "original": "004e6a30",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "??_7Texture@ViewNew@RBX@@6B@": [
+      {
+        "slot": 0,
+        "symbol": "??_ETexture@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004e9000",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?cachesShadows@Chunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?renderShadows@Chunk@RenderBase@RBX@@UAEXPAVRenderDevice@G3D@@ABVGLight@5@_NM@Z",
+        "original": "004e83a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?castsShadows@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?cullable@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getMaterial@Texture@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004ec070",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMesh@PartChunk@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004e6b50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "original": "004e5ff0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+        "original": "004e5b60",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+        "original": "004e5b70",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 10,
+        "symbol": "?updateMesh@Texture@ViewNew@RBX@@EAEXXZ",
+        "original": "004f0540",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 11,
+        "symbol": "?onPropertyChanged@PartChunk@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "original": "004e6a30",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "??_7Part@ViewNew@RBX@@6BPartChunk@12@@": [
+      {
+        "slot": 0,
+        "symbol": "??_EPart@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004ea470",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?cachesShadows@Chunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?renderShadows@Chunk@RenderBase@RBX@@UAEXPAVRenderDevice@G3D@@ABVGLight@5@_NM@Z",
+        "original": "004e83a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?castsShadows@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?cullable@PartChunk@ViewNew@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getMaterial@Part@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004eb190",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMesh@PartChunk@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "original": "004e6b50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "original": "004e5ff0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+        "original": "004e5b60",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+        "original": "004e5b70",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 10,
+        "symbol": "?updateMesh@Part@ViewNew@RBX@@EAEXXZ",
+        "original": "004ef930",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 11,
+        "symbol": "?onPropertyChanged@Part@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+        "original": "004e6b00",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "??_7Part@ViewNew@RBX@@6B?$Listener@VPartInstance@RBX@@UCanAggregateChanged@2@@2@@": [
+      {
+        "slot": 0,
+        "symbol": "?onEvent@Part@ViewNew@RBX@@MAEXPBVPartInstance@3@UCanAggregateChanged@3@@Z",
+        "original": "004e6400",
+        "ok": true,
+        "how": "slot external"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EPart@ViewNew@RBX@@WNI@AEPAXI@Z",
+        "original": "004ea460",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "proposals": {
+    "v8datamodel/PartInstance.h (native, owner: PartInstance)": "PartChunk::invalidateMesh 004e6740 / invalidateMaterial 004e68b0 / onPropertyChanged 004e6a30 and Part::onEvent / ctor read PartInstance +0x1c8 (int compared with 0: the aggregate / sleeping state passed to SceneManager::invalidateModel and setSleeping), +0x224 (float, slot 8 setSortValue argument) and +0x1dc (int == 1 in usesMegaTexture 004e5f80, presumably the part type). The Notifier<PartInstance, CanAggregateChanged> base is at +0x1a0 (~Part 004ea3e0), which the current header already yields.",
+    "PartInstance.h include chain (owner: PartInstance / util)": "v8datamodel/PartInstance.h reaches the donor RbxGraphics/TextureProxyBase.h through util/IRenderable.h, so a unit cannot include both PartInstance.h and RenderLib/Material2008.h (TextureProxyBase2008.h). That is why ~PartChunk (needs the complete MaterialBase) and cframe / ~Part (need PartInstance) sit in two units.",
+    "view type (owner: render scene views, RenderLib/View*2008.h)": "PartChunk stores the view at +0xd0 and calls view+4 -> SceneManager slot 1 addModel (ctor 004eaae0), slot 4 setSleeping (Part ctor 004ebcc0), slot 0 invalidateModel (004e6740) and slot 2 (Decal ancestor 004e83b0). ViewRbxGfx / ViewG3D (RTTI base RBX::ViewBase only) both pass `this` unadjusted and both store the scene manager at +4 (ViewRbxGfx ctor 004d9ac3). A 2008 declaration of that view member unblocks the four ctors."
+  },
+  "not_built": {
+    "004eaae0/004ebcc0/004eae10/004eafd0": "PartChunk / Part / Decal / Texture ctors: the view type with the scene manager at +4 is not declared (render-scene views owner)",
+    "004e6740/004e68b0/004e6a30/004e5f80/004e6400": "read PartInstance +0x1c8 / +0x224 / +0x1dc (PartInstance owner)",
+    "004eb190/004ebe70/004ec070/004ef930/004f0300/004f0540": "getMaterial / updateMesh bodies (material factory, mesh factories, SpecialShape) not attempted"
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

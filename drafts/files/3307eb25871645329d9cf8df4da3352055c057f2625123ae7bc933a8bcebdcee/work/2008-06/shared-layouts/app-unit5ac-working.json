@@ -1,0 +1,685 @@
+{
+  "class": "RBX ScriptContext unit (script/ScriptContext.cpp template instances, Stats::Item COMDATs) of the application range 005ac000..005b0000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022 (document-swap flags)",
+  "flags": {
+    "script": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5ac/NativeAppUnit5AC_script.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5ACScriptContext.cpp"
+    ],
+    "stats": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5ac/NativeAppUnit5AC_stats.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5ACStatsItem.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5ACScriptContext.cpp": "7246feb7d8c67c7722fa7a89769e5abe95a5148838972172be4b142c362881a2",
+    "rebuild/2008-06/native-classes/AppUnit5ACStatsItem.cpp": "05894eb325a363788ffd612ff687853bef1b41b52ea34738e49340b0b2b1a4fd",
+    "rebuild/2008-06/tests/record_native_app_unit5ac.py": "29781fe6457686459836a8f8f86ca104b17af8a490eec48b2851a8853e121945",
+    "rebuild/2008-06/native-headers/script/ScriptContext.h": "84a272b073c1abe45677d17f3bbffc7aeb773a118dd24efd4579e412ebd2c433",
+    "rebuild/2008-06/native-headers/stats/Stats.h": "902bb2c6304dd935af5de9e1dc151a2d84337e103d49e860b57ca26f37b8152c",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "40c3aa4516e701059368d929ff88049b0c2ec12aad84ce568690d3bf21037313"
+  },
+  "objects": {
+    "script": "ab0859ab7f88b727253b113eb5fb72d7ad205e854a6d159c3808afe062a54f6b",
+    "stats": "42d8ee6c290774d98ea94c9686a25376f53301d82de5657e07a224c47acc0797"
+  },
+  "layout": {
+    "Stats::Item": "sizeof 0x158 (malloc 0x158 in Creatable<Instance>::create<Stats::Item, const char*> 005adb70); val +0x130 (fldz/fstp in Item(const char*) 005ad810), sValue +0x138 (std::string() there)",
+    "BoundFuncDesc<ScriptContext, void(double), 1>": "function pointer-to-member +0x38/+0x3c (8 B: ScriptContext has multiple bases), default1 Value +0x40, signature +0x14 (005ad9f0)",
+    "DescribedCreatable<ScriptContext>": "descriptor +0x1c; vptrs at +0, +0x10, +0x14, +0x20, +0x24, +0x44, +0x64, +0x84, +0xa4, +0xc4 (005ad930)"
+  },
+  "unit_map": {
+    "script-context 005ac000..005affff": "script/ScriptContext.cpp, the middle of the unit 005a8590..005b071f (start: app-unit5a8-2008 unit map, Lua::ScopedPopper::~ScopedPopper 005a8590 after Guid.cpp; tail: app-unit5b0-2008 unit map, Accoutrement.cpp from 005b0820). Evidence in this range: DescribedCreatable<ScriptContext> vtable 0083465c (RTTI ...3PADA), stored by DescribedCreatable<ScriptContext>() 005ad930, which ScriptContext() 005ae490 calls; the ScriptContext ??_E thunks 005ae690..005ae720, ~ScriptContext 005ae730 and ??_G 005aed20 (counted by app-unit5a8-2008); BoundFuncDesc<ScriptContext, void(double), 1> vtable 008346a0 (constructor 005ad9f0, called from the unit's dynamic initializer; execute 005ada90) and the timeout check 005adbf0 / hook 005ae230 (\"Game script timout\" 008346a8, counter 00976b78, ScriptContext +0x1c8); the Lua C functions settings 005adc60 (\"settings()\"), the identity printer 005add30 (\"Current identity is %d\"), loadfile 005ade40 / dofile 005adf80 (the active P6 ScriptFileLoad.cpp proves them; no receipt counts them), stats 005aeea0 (\"Stats\", ServiceProvider::create<StatsService>(const Instance*) 005aecd0); resume 005ae0d0, closeState 005ae280 (\"Script memory leaks\"), ScriptContext() 005ae490 (\"Script Context\"), the RunService handler 005ae8f0 (\"ScriptContext Timeout\"), setThreadIdentity 005aeaf0, the call helpers 005aeb80 / 005aed40 (\"Cannot call a nil function\"), openState 005aefa0 (\"Failed to create Lua state\"), 005af830, executeInNewThread 005af940 (\"Unable to create trusted sandbox\"), onServiceProvider 005afd60 (\"disabled threads\") and startScript 005affa0 (continues past 005b0000); reportError 005ac610 (\"%s, line %d - %s %s\"), LuaArguments get 005ad380 and the Value tuple helpers 005ad6d0 / 005ad270 / 005ad2b0; the Stats::Item COMDATs 005ad770 / 005ad810 / 005adb70 (left to \"the script unit\" by stats-service); FactoryProduct<ScriptContext>::getClassName 005ac030 and classDescriptor 005ad200 (\"ScriptContext\" 0094c440); the Lua bridge template COMDATs the unit instantiates first (Bridge<shared_ptr<DescribedBase>>::getValue / getPtr<Value> 005ac0d0..005ac270 / 005ac560 / 005ac8d0, pushTable<vector<shared_ptr<Instance>>> 005ac2f0) and the STL / boost instantiations for set<Script*> (_Copy 005ac050, for_each 005ac450, _Tree() 005aca50), vector<shared_ptr<Script>> (for_each 005ac4f0), vector<WaitingThread> (_Destroy_range 005aca00, ~vector 005ad190), vector<shared_ptr<Instance>> (copy constructor 005acb00), boost::function invokers / managers (005ac5f0, 005ac600, 005ac960, 005acaf0, 005acc70..005ad140), boost::any holders (005acd00..005acf40) and scoped_ptr<YieldingThreads> 005ae210. Library code: none (Lua 5.1.1 lies at 006217f0..00628f73; its calls are bound by address). Maintainer exclusion: none."
+  },
+  "range_rows_total": 84,
+  "range_rows_counted_by_other_receipts": [
+    "005ac8d0 counted by app-unit5a8-2008-working.json",
+    "005ad8c0 counted by app-unit5a8-2008-working.json",
+    "005ad9d0 counted by app-unit5a8-2008-working.json",
+    "005ad9e0 counted by app-unit5a8-2008-working.json",
+    "005adc60 counted by app-unit5a8-2008-working.json",
+    "005ae690 counted by app-unit5a8-2008-working.json",
+    "005ae6a0 counted by app-unit5a8-2008-working.json",
+    "005ae6b0 counted by app-unit5a8-2008-working.json",
+    "005ae6c0 counted by app-unit5a8-2008-working.json",
+    "005ae6d0 counted by app-unit5a8-2008-working.json",
+    "005ae6e0 counted by app-unit5a8-2008-working.json",
+    "005ae6f0 counted by app-unit5a8-2008-working.json",
+    "005ae700 counted by app-unit5a8-2008-working.json",
+    "005ae710 counted by app-unit5a8-2008-working.json",
+    "005ae720 counted by app-unit5a8-2008-working.json",
+    "005ae730 counted by app-unit5a8-2008-working.json",
+    "005aeaf0 counted by app-unit5a8-2008-working.json",
+    "005aed20 counted by app-unit5a8-2008-working.json"
+  ],
+  "rows": {
+    "script": [
+      {
+        "address": "005ac030",
+        "symbol": "?getClassName@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1???$declare@$1?sScriptContext@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d12c (static (one address per symbol))",
+          "??$callDoDeclare@$1?sScriptContext@RBX@@3PADA@Name@RBX@@CAXXZ": "0x42d090 (row counted by app-unit424-2008-working.json (body exact at the bound address))",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "??$doDeclare@$1?sScriptContext@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x42ced0 (row counted by app-unit424-2008-working.json (body exact at the bound address))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ad200",
+        "symbol": "?classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x976ca8 (static (one address per symbol))",
+          "?sScriptContext@RBX@@3PADA": "0x94c440 (class-name array 'ScriptContext' (string at the pushed address))",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?foo@?1??classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x976be8 (static (one address per symbol))",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe1c0 (support body exact at the bound address (not counted here))",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      },
+      {
+        "address": "005ad930",
+        "symbol": "??0?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@IAE@XZ",
+        "size": 146,
+        "target_size": 146,
+        "exact": true,
+        "verified_targets": {
+          "??0?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@IAE@XZ": "0x5a8970 (support body exact at the bound address (not counted here))",
+          "?classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5ad200 (own row)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83465c (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x834650 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x834648 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6BDebugable@1@@": "0x834640 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x834630 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x834620 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x834610 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x834600 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8345f0 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8345e0 (vtable RTTI .?AV?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "005ad9f0",
+        "symbol": "??0?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8ScriptContext@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+        "size": 159,
+        "target_size": 159,
+        "exact": true,
+        "verified_targets": {
+          "?classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5ad200 (own row)",
+          "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+          "??_7?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@6B@": "0x8346a0 (vtable RTTI .?AV?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@ offset 0x0)",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+          "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+          "??$singleton@N@Type@Reflection@RBX@@SAABV012@XZ": "0x56cd10 (external (evidence name))",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8ScriptContext@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z"
+        ]
+      },
+      {
+        "address": "005ada90",
+        "symbol": "?execute@?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+        "size": 216,
+        "target_size": 216,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVScriptContext@RBX@@@8": "0x94cbf0 (RTTI .?AVScriptContext@RBX@@)",
+          "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+          "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+          "__TI2?AVbad_cast@std@@": "0x8d362c (static (one address per symbol))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??$convert@N@Value@Reflection@RBX@@QAEAANXZ": "0x56ee50 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?execute@?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+        ]
+      },
+      {
+        "address": "005ae210",
+        "symbol": "??1?$scoped_ptr@VYieldingThreads@Lua@RBX@@@boost@@QAE@XZ",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??1?$vector@UWaitingThread@YieldingThreads@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads@Lua@RBX@@@std@@@std@@QAE@XZ": "0x5ad190 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "stats": [
+      {
+        "address": "005ad770",
+        "symbol": "??$?0PBD@?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@IAE@PBD@Z",
+        "size": 153,
+        "target_size": 153,
+        "exact": true,
+        "verified_targets": {
+          "??$?0PBD@?$NonFactoryProduct@VInstance@RBX@@$1?sStatsItem@Stats@2@3PADA@RBX@@QAE@PBD@Z": "0x5a8dd0 (support body exact at the bound address (not counted here))",
+          "?classDescriptor@?$Described@VItem@Stats@RBX@@$1?sStatsItem@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sStatsItem@Stats@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x45dc70 (external (evidence name))",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x819f04 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x0)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x819ef4 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x10)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x819eec (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6BDebugable@1@@": "0x819ee4 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x20)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x819ed4 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x24)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x819ec4 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x44)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x819eb4 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x64)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x819ea4 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0x84)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x819e94 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x819e84 (vtable RTTI .?AV?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PBD@?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@IAE@PBD@Z"
+        ]
+      },
+      {
+        "address": "005ad810",
+        "symbol": "??0Item@Stats@RBX@@QAE@PBD@Z",
+        "size": 165,
+        "target_size": 165,
+        "exact": true,
+        "verified_targets": {
+          "??$?0PBD@?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@IAE@PBD@Z": "0x5ad770 (own row)",
+          "??_7Item@Stats@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@": "0x819fc4 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x0)",
+          "??_7Item@Stats@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@": "0x819fb8 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x10)",
+          "??_7Item@Stats@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@": "0x819fb0 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x14)",
+          "??_7Item@Stats@RBX@@6BDebugable@2@@": "0x819fa8 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x20)",
+          "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@": "0x819f98 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x24)",
+          "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@": "0x819f88 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x44)",
+          "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@": "0x819f78 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x64)",
+          "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@": "0x819f68 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0x84)",
+          "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@": "0x819f58 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0xa4)",
+          "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@": "0x819f48 (vtable RTTI .?AVItem@Stats@RBX@@ offset 0xc4)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??0Item@Stats@RBX@@QAE@PBD@Z"
+        ]
+      },
+      {
+        "address": "005adb70",
+        "symbol": "??$create@VItem@Stats@RBX@@PBD@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VItem@Stats@RBX@@@boost@@PBD@Z",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0Item@Stats@RBX@@QAE@PBD@Z": "0x5ad810 (own row)",
+          "??$?0VItem@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@VItem@Stats@RBX@@@boost@@QAE@PAVItem@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x4ad3c0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VItem@Stats@RBX@@PBD@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VItem@Stats@RBX@@@boost@@PBD@Z"
+        ]
+      },
+      {
+        "address": "005aecd0",
+        "symbol": "??$create@VStatsService@Stats@RBX@@@ServiceProvider@RBX@@SAPAVStatsService@Stats@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VStatsService@Stats@RBX@@@ServiceProvider@RBX@@QBEPAVStatsService@Stats@1@XZ": "0x458610 (row counted by app-unit454-2008-working.json (body exact at the bound address))"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_bodies": {
+    "??__Ffoo@?1??classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe1c0",
+    "??0?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@IAE@XZ": "0x5a8970",
+    "??$?0PBD@?$NonFactoryProduct@VInstance@RBX@@$1?sStatsItem@Stats@2@3PADA@RBX@@QAE@PBD@Z": "0x5a8dd0",
+    "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ": "0x47d410",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WBA@AEPAXI@Z": "0x5a8ea0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WBE@AEPAXI@Z": "0x5a8eb0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WCE@AEPAXI@Z": "0x5a8e40",
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x70bdf0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WEE@AEPAXI@Z": "0x5a8e70",
+    "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": "0x70bdf0",
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": "0x70bdf0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WGE@AEPAXI@Z": "0x5a8e80",
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x70bdf0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WIE@AEPAXI@Z": "0x5a8e90",
+    "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": "0x70bdf0",
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": "0x70bdf0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WKE@AEPAXI@Z": "0x5ad9d0",
+    "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "0x70bdf0",
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "0x70bdf0",
+    "??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@WME@AEPAXI@Z": "0x5ad9e0",
+    "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x70bdf0",
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x70bdf0",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WBA@AEPAXI@Z": "0x455f30",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WBE@AEPAXI@Z": "0x409d40",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WCE@AEPAXI@Z": "0x5e28b0",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WEE@AEPAXI@Z": "0x609d90",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WGE@AEPAXI@Z": "0x4c9c40",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WIE@AEPAXI@Z": "0x458580",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WKE@AEPAXI@Z": "0x45ebd0",
+    "??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@WME@AEPAXI@Z": "0x455f20",
+    "?update@Item@Stats@RBX@@MAEXXZ": "0x47d410",
+    "??_EItem@Stats@RBX@@WBA@AEPAXI@Z": "0x5ca170",
+    "??_EItem@Stats@RBX@@WBE@AEPAXI@Z": "0x45f720",
+    "??_EItem@Stats@RBX@@WCE@AEPAXI@Z": "0x5c9b90",
+    "??_EItem@Stats@RBX@@WEE@AEPAXI@Z": "0x5bcd70",
+    "??_EItem@Stats@RBX@@WGE@AEPAXI@Z": "0x5ca180",
+    "??_EItem@Stats@RBX@@WIE@AEPAXI@Z": "0x5ca190",
+    "??_EItem@Stats@RBX@@WKE@AEPAXI@Z": "0x45ecb0",
+    "??_EItem@Stats@RBX@@WME@AEPAXI@Z": "0x5a6610"
+  },
+  "local_statics": {
+    "??_B?1??classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x976ca8",
+    "?flag@?1???$declare@$1?sScriptContext@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d12c",
+    "?foo@?1??classDescriptor@?$Described@VScriptContext@RBX@@$1?sScriptContext@2@3PADAV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x976be8",
+    "__TI2?AVbad_cast@std@@": "0x8d362c"
+  },
+  "vtables_current_headers": {
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83465c",
+      "compiled_slots": 16,
+      "checked_slots": [
+        "0 ?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (compiled body exact there)",
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V? = 0x55af90 (evidence name)",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@A = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)"
+      ],
+      "slots_not_identified": 12
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x834650",
+      "compiled_slots": 2,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5a8ea0 (compiled body exact there)",
+        "1 ?getClassName@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScr = 0x5ac030"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x834648",
+      "compiled_slots": 1,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5a8eb0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x834640",
+      "compiled_slots": 1,
+      "checked_slots": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@st = 0x56a560 (evidence name)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x834630",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5a8e40 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPA = 0x70bdf0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x834620",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5a8e70 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEX = 0x70bdf0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x834610",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5a8e80 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@M = 0x70bdf0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x834600",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5a8e90 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@M = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX = 0x70bdf0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8345f0",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5ad9d0 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEX = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@M = 0x70bdf0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x8345e0",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptCon = 0x5ad9e0 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEX = 0x70bdf0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@M = 0x70bdf0 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@6B@": {
+      "address": "0x8346a0",
+      "compiled_slots": 2,
+      "checked_slots": [
+        "1 ?execute@?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@R = 0x5ada90"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x819f04",
+      "compiled_slots": 16,
+      "checked_slots": [
+        "0 ?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410",
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V? = 0x55af90 (evidence name)",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@A = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)"
+      ],
+      "slots_not_identified": 12
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x819ef4",
+      "compiled_slots": 2,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x455f30 (compiled body exact there)",
+        "1 ?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sStatsItem@Stats@2 = 0x45c660 (evidence name)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x819eec",
+      "compiled_slots": 1,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x409d40 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x819ee4",
+      "compiled_slots": 1,
+      "checked_slots": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@st = 0x56a560 (evidence name)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x819ed4",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x5e28b0 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPA = 0x70bdf0"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x819ec4",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x609d90 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEX = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x819eb4",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x4c9c40 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@M = 0x70bdf0"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x819ea4",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x458580 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@M = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x819e94",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x45ebd0 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEX = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@M = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x819e84",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_E?$DescribedNonCreatable@VItem@Stats@RBX@@VInstance@3@$1?sStatsItem = 0x455f20 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEX = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@M = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@": {
+      "address": "0x819fc4",
+      "compiled_slots": 17,
+      "checked_slots": [
+        "0 ?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410",
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V? = 0x55af90 (evidence name)",
+        "2 ?askAddChild@Item@Stats@RBX@@MBE_NPBVInstance@3@@Z = 0x45ec80 (evidence name)",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@A = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "16 ?update@Item@Stats@RBX@@MAEXXZ = 0x47d410 (compiled body exact there)"
+      ],
+      "slots_not_identified": 11
+    },
+    "??_7Item@Stats@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@": {
+      "address": "0x819fb8",
+      "compiled_slots": 2,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WBA@AEPAXI@Z = 0x5ca170 (compiled body exact there)",
+        "1 ?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sStatsItem@Stats@2 = 0x45c660 (evidence name)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@": {
+      "address": "0x819fb0",
+      "compiled_slots": 1,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WBE@AEPAXI@Z = 0x45f720 (compiled body exact there)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6BDebugable@2@@": {
+      "address": "0x819fa8",
+      "compiled_slots": 1,
+      "checked_slots": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@st = 0x56a560 (evidence name)"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@": {
+      "address": "0x819f98",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WCE@AEPAXI@Z = 0x5c9b90 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPA = 0x70bdf0"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@": {
+      "address": "0x819f88",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WEE@AEPAXI@Z = 0x5bcd70 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEX = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@": {
+      "address": "0x819f78",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WGE@AEPAXI@Z = 0x5ca180 (compiled body exact there)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@M = 0x70bdf0"
+      ],
+      "slots_not_identified": 1
+    },
+    "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@": {
+      "address": "0x819f68",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WIE@AEPAXI@Z = 0x5ca190 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@M = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@": {
+      "address": "0x819f58",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WKE@AEPAXI@Z = 0x45ecb0 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEX = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@M = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    },
+    "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@": {
+      "address": "0x819f48",
+      "compiled_slots": 3,
+      "checked_slots": [
+        "0 ??_EItem@Stats@RBX@@WME@AEPAXI@Z = 0x5a6610 (compiled body exact there)",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEX = 0x70bdf0",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@M = 0x70bdf0"
+      ],
+      "slots_not_identified": 0
+    }
+  },
+  "not_exact": [],
+  "pending_build_only": [],
+  "not_attempted": {
+    "ScriptContext members (reportError 005ac610, resume 005ae0d0, closeState 005ae280, the timeout check / hook 005adbf0 / 005ae230, the RunService handler 005ae8f0, the call helpers 005aeb80 / 005aed40, stats 005aeea0, openState 005aefa0, 005af830, executeInNewThread 005af940, onServiceProvider 005afd60, startScript 005affa0, the identity printer 005add30)": "they need 2008 declarations the native script/ScriptContext.h does not have (the timeout fields +0x1c8.. and the 00976b78 counter, the SetTimeout member the BoundFuncDesc row binds, the 2008 YieldingThreads, LuaAllocator), and the inline getContext these bodies inline is defined by the app-unit5a8-2008 source; see proposals",
+    "ScriptContext() 005ae490": "committed ScriptContextLifetime.cpp (owner) builds 504/504 B but not exact: a temporary at [esp+0x13] vs [esp+0x12] and the exeTime1 store scheduled after the exeState store (proposal to the owner)",
+    "loadfile 005ade40 / dofile 005adf80": "owned by the active P6 native ScriptFileLoad.cpp (p6/script_context_owner.py)",
+    "STL / boost / any instantiations (005ac050, 005ac450, 005ac4f0, 005ac5f0, 005ac600, 005ac960, 005aca00, 005aca50, 005acaf0, 005acb00, 005acbf0..005ad140, 005ad190)": "ICF-folded bodies shared by several instantiations (bytes match more than one candidate; 005ac4f0 calls a Replicator mf1 and 005acaf0 a Player mf0, so they are other units' folded copies), identity not proven by a relocation; not counted",
+    "Lua bridge / LuaArguments rows (005ac0d0..005ac270, 005ac2f0, 005ac560, 005ad270, 005ad2b0, 005ad380, 005ad6d0)": "LuaBridge2008 / LuaArguments2008 owner templates; not exact in app-unit5a8-2008 (005ac560) or not built"
+  },
+  "rejected": {
+    "~vector<WaitingThread> 005ad190 as a counted row": "the compiled donor body (float WaitingThread of script/ScriptEvent.h) is exact at 005ad190, but the _Destroy_range<WaitingThread> 005aca00 it calls is not (76 B; the 2008 element is {shared_ptr<ThreadRef>, double, double}), so its call target cannot be verified; kept as a support body of ~scoped_ptr only"
+  },
+  "proposals": {
+    "native-headers/script/ScriptContext.h (owner)": "Declare the 2008 timeout API: a `void setTimeout(double seconds)` member (the function bound by BoundFuncDesc<ScriptContext, void(double), 1> 005ad9f0 / execute 005ada90, which call [desc+0x38] with a double), the timeout state the check 005adbf0 reads at +0x1c8 (int, nonzero = armed) and the global counter 00976b78 the hook 005ae230 tests; they unlock 005adbf0 / 005ae230 / 005ae8f0 and the descriptor initializer.",
+    "native-classes/ScriptContextLifetime.cpp (owner of script/ScriptContext.h)": "ScriptContext() 005ae490 builds 504/504 B but not exact: the original stores exeTime1 (+0x1c0, fstp) before exeState (+0x1c8) and uses one less byte of temporaries ([esp+0x12] vs [esp+0x13]) for the date-time arguments; with DescribedCreatable() 005ad930 proven here the ctor is the next step."
+  },
+  "exact_function_rows": [
+    "005ac030",
+    "005ad200",
+    "005ad770",
+    "005ad810",
+    "005ad930",
+    "005ad9f0",
+    "005ada90",
+    "005adb70",
+    "005ae210",
+    "005aecd0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

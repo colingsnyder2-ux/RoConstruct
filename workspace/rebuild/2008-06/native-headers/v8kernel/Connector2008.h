@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Connector2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src cae16136 | roc native-status --write
 // 2008-06 native RBX::Connector, ContactConnector, PointToPointBreakConnector, NormalBreakConnector, RotateConnector
 // (inactive). Declared under a non-colliding name: the original path v8kernel/Connector.h is reached through the donor
 // v8kernel/KernelData.h <- Kernel.h <- IPipelined.h by every engine unit (Edge, Joint, Contact, Primitive, World ...),
@@ -31,9 +27,20 @@
 #include <G3D/Vector3.h>
 #include "v8kernel/KernelIndex.h"
 #include "v8kernel/KernelInput.h"
+#ifdef NATIVE_PRIMITIVE_NATIVE_BODY
+// The opt-in switch of native-headers/part-embedded/v8world/Primitive.h (undefined by default, so every existing
+// includer compiles exactly as before): a unit on the 2008 Body (native-headers/v8kernel/Body2008.h: root +0x10, pv
+// +0x94) takes the native Body / Point / GeoPair declarations instead of the donor v8kernel/Body.h / Point.h / Pair.h,
+// which cannot sit next to Body2008.h (C2011). Same Connector layout either way: the connectors hold only Point / Body
+// pointers, and GeoPair2008.h keeps the donor 0x24-byte GeoPair (body0 +0xc / body1 +0x10).
+#include "v8kernel/Body2008.h"
+#include "v8world/GeoPair2008.h"
+#include "v8kernel/Point2008.h"
+#else
 #include "v8kernel/Body.h"
 #include "v8kernel/Pair.h"
 #include "v8kernel/Point.h"
+#endif
 #include "util/Math.h"
 
 struct NativeWorldJointsConnectorLayout;
@@ -91,6 +98,14 @@ namespace RBX
 			firstApproach = 0;
 			threshold = 0;
 			forceMagLast = 0;
+		}
+
+		// Donor inline forwarder (tools/rbxgs v8kernel/Connector.h): no address of its own, inlined into
+		// BlockBlockContact::matchContactConnector 00607cc0 (00607cf5 `add ecx, 8; call 00606a50`: GeoPair::match
+		// 00606a50 on the GeoPair at +0x8, five arguments, `ret 0x14`).
+		bool match(Body* _b0, Body* _b1, GeoPairType _pairType, int param0, int param1)
+		{
+			return geoPair.match(_b0, _b1, _pairType, param0, param1);
 		}
 
 		virtual void computeForce(const float dt, bool throttling);    // slot 1 (00606780)

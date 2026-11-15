@@ -4,10 +4,6 @@
 // ctor 00551f30, dtor 00552160, ??_G 00552780 and getMaterial 005526e0 use the complete RenderBase::MaterialBase from
 // RenderLib/Material2008.h (material owner; Ogre 1.4.5 client include path).
 // native-flags: /Od /Ob0 /GS /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// AggregateChunk2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 042b7d4b | roc native-status --write
 #include "RenderLib/AggregateChunk2008.h"
 #include "RenderLib/Material2008.h"   // completes RenderBase::MaterialBase (needs the Ogre 1.4.5 client headers)
 

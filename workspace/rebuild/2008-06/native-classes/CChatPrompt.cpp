@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CChatPrompt | 2008-06 | 2 byte-exact, inactive (not link-selected)
-// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
-// <<< native-status | src d9f3c2f2 | roc native-status --write
 #include "../native-headers/CChatPrompt.h"
 #include "../native-headers/ChatEnter.h"
 #include "../native-headers/v8datamodel/DataModel.h"

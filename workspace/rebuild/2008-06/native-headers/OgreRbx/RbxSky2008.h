@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// RbxSky2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src fdf86ae6 | roc native-status --write
 // Ogre::RbxSky as compiled into the June 2008 client: full declaration (inactive native recovery). Layout from tests/record_native_ogre_rbx_sky.py (commit
 // 5650640db1) with the one INFERRED member at +0x50: the real object is 0xd4 bytes (new(0xd4) in RbxSceneManager::setSkyBox 00692a10,
 // constructor 0067fd60), but no member is declared here; one 4-byte member at +0x50 is not derived (no instruction of

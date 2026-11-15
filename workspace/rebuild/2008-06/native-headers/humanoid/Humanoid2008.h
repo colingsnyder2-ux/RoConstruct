@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Humanoid2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 89c1f7ee | roc native-status --write
 // 2008-06 native RBX::Humanoid (inactive). Declared under a non-colliding name: the original path humanoid/Humanoid.h
 // is the donor header that many units still include (Team, Seat, Clothing, hit-test filters ...), so a native header
 // at that path would shadow it for every recorder. Shape after the donor tools/rbxgs humanoid/Humanoid.h (a later
@@ -41,6 +37,11 @@
 // translation unit with Connector2008.h. Same Connector size (vptr + KernelIndex); that unit builds no vtable (no
 // constructor) and its one virtual body, getContactManager, does not depend on slot order.
 #include "v8kernel/Connector.h"
+#elif defined(NATIVE_HUMANOID_UNIT_CONNECTOR)
+// Units that include native-headers/v8kernel/Body2008.h (RunningBaseForce.cpp): Connector2008.h reaches the donor
+// v8kernel/Body.h (C2011 next to Body2008.h), so such a unit redeclares Connector unit-locally, exactly as
+// Connector2008.h declares it (the BodyGyro.cpp / ContactUnit2008ConnectorBody.cpp pattern), before this header.
+// That unit builds no Humanoid vtable (no constructor).
 #else
 #include "v8kernel/Connector2008.h"
 #endif
@@ -65,6 +66,7 @@ namespace RBX
 	class ModelInstance;
 	class ContactManager;
 	class JointInstance;
+	class Primitive;
 
 	extern char sHumanoid[];
 
@@ -130,7 +132,7 @@ namespace RBX
 		void setMaxHealth(float value);                      // 005dbf10
 		void takeDamage(float amount);                       // 005dbf40 ("TakeDamage")
 		void setWalkDirection(const G3D::Vector3& value);    // 005dbf80
-		void setWalkRotationalVelocity(const float& value);  // 005dc090
+		void setWalkRotationalVelocity(const float& value);  // 005dc090 (inline body below the class)
 		void setWalkToPoint(const G3D::Vector3& value);      // 005dc0c0
 		void setWalkToPart(PartInstance* value);             // 005dc150
 		void setJump(bool value);                            // 005dc270
@@ -152,10 +154,22 @@ namespace RBX
 		PartInstance* getLeftArm() const;                    // 005d8e10
 		PartInstance* getRightArm() const;                   // 005d8f10
 
+		// Embedded Primitive of each limb (part + 0x228, else NULL): 18-byte bodies `call getX; test; add eax, 0x228`.
+		Primitive* getTorsoPrimitive() const;                // 005d90a0 (inlined in onEvent 005dc740)
+		Primitive* getLeftLegPrimitive() const;              // 005d90c0
+		Primitive* getRightLegPrimitive() const;             // 005d90e0
+		Primitive* getHeadPrimitive() const;                 // 005d9100 (inlined in checkForJointDeath 005dc6c0)
+		Primitive* getLeftArmPrimitive() const;              // 005d9120 (getLeftArm 005d8e10; HumanoidState::setArmsFlag 00643c20)
+		Primitive* getRightArmPrimitive() const;             // 005d9140 (getRightArm 005d8f10; HumanoidState::setArmsFlag 00643c20)
+		// Torso body (part + 0x2c8, the embedded Primitive's body +0xa0) and its root (Body +0x10).
+		Body* getTorsoBody();                                // 005d9160 (19 bytes)
+		Body* getRootBody();                                 // 005d9180 (30 bytes; called by RunningBase::onComputeForce 00666550)
+
 		World* getWorld() const { return world; }
 		G3D::CoordinateFrame getTopOfHead() const;                            // 005d76a0
 		G3D::CoordinateFrame getRightArmGrip() const;                         // 005d7a30
 		JointInstance* findRightShoulder() const;                             // 005d9010
+		void checkForJointDeath();                                            // 005dc6c0 (called by onEvent 005dc740)
 
 	public:
 		// Dynamic initializers 007f6840 and 007f6870..007f6950 (in this order); names after the donor.
@@ -210,4 +224,18 @@ namespace RBX
 	public:
 		virtual void getIgnorePrims(std::vector<const Primitive*>& ignore);   // 005db9e0
 	};
+
+	extern Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity; // 0097a2d8 (defined in Humanoid2008.cpp)
+
+	// 005dc090 (43 bytes): compare with +0x1b0, store, raisePropertyChanged 0040db00 with 0097a2d8. Inline in the header:
+	// cameraSetWalkOrientation 005dc7f0 inlines it twice (`add ecx, -0x14c; fcom [ecx + 0x1b0]` on the noAdjust path), and
+	// the out-of-line copy at 005dc090 is the one the WalkRotationalVelocity descriptor binds (Humanoid2008.cpp).
+	inline void Humanoid::setWalkRotationalVelocity(const float& value)
+	{
+		if (walkRotationalVelocity != value)
+		{
+			walkRotationalVelocity = value;
+			raisePropertyChanged(propWalkRotationalVelocity);
+		}
+	}
 }

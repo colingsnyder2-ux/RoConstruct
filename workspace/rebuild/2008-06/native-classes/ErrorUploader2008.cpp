@@ -3,11 +3,7 @@
 // Body ported from the Dec 2007 client decomp (OpenRBX Client/win/ErrorUploader.{h,cpp}, ROBLOX 0x004520c0 /
 // 0x0041e020), same 0x1c object layout (shared state + worker_thread). The 2008 state is 72 bytes vs 0x3c in
 // 2007; the private fields below are the 2007 ones (behavioural, not byte-verified).
-// >>> native-status (generated) -- do not edit >>>
-// ErrorUploader2008 | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
-// <<< native-status | src 6998bbb7 | roc native-status --write
-#include "CRobloxApp.h"
+#include "ErrorUploaderState.h"
 #include "util/Http.h"
 #include "util/standardout.h"
 #include <boost/bind.hpp>
@@ -16,16 +12,8 @@
 #include <queue>
 #include <sstream>
 
-struct ErrorUploader::data
-{
-    std::queue<std::string> files;
-    boost::recursive_mutex sync;
-    std::string url;
-    static RBX::worker_thread::work_result uploadNext(boost::shared_ptr<data> state);
-};
-
 ErrorUploader::ErrorUploader()
-    : state(new data()), thread(boost::bind(&data::uploadNext, state), "rbx_erroruploader")
+    : state(new data()), thread(boost::bind(&ErrorUploader::upload, state), "rbx_erroruploader")
 {
 }
 

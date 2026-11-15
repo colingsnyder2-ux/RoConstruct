@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Sound | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 92a51f4d | roc native-status --write
 #include "util/ContentProvider.h"
 #include "util/RunStateOwner.h"
 #include "v8datamodel/PartInstance.h"
@@ -19,6 +15,8 @@ namespace FMOD
 
 namespace RBX
 {
+#ifndef RBX_SOUNDTYPE_DEFINED  // also declared by SoundChannel/SoundChannel.h; keep one definition per TU
+#define RBX_SOUNDTYPE_DEFINED
 	enum SoundType
 	{
 		NO_SOUND,
@@ -37,6 +35,7 @@ namespace RBX
 		SWOOSH_SOUND,
 		VICTORY_SOUND
 	};
+#endif
 
 	namespace Soundscape
 	{

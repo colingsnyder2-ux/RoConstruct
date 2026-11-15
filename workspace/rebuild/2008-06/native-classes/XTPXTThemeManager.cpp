@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPXTThemeManager | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 20d5a330 | roc native-status --write
 #include "stdafx.h"
 #include "XTThemeManager.h"
 #include "Common/XTPDrawHelpers.h"

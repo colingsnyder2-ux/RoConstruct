@@ -1,0 +1,1009 @@
+{
+  "class": "MarshaledListener EventData rows of the CScriptEditor unit and unit map of the application range 00460000..0046c000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit460-2008/NativeAppUnit460Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit460-2008/NativeAppUnit460Layout.cpp"
+    ],
+    "eventdata": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit460-2008/NativeAppUnit460_2008_eventdata.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit460_2008MarshaledEventData.cpp"
+    ],
+    "eventdata_pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit460-2008/pending",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit460-2008/NativeAppUnit460_2008_eventdata_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit460_2008MarshaledEventData.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit460_2008.py": "04ac3467487a841eb0ff0ada41238920c09aad3e077c944e9c4a33081c927995",
+    "rebuild/2008-06/native-classes/AppUnit460_2008MarshaledEventData.cpp": "25ba6f7c3f61ac99b6145eb4f13fe3756bb3a36bb02eff72025ce327f75aebac",
+    "rebuild/2008-06/native-headers/util/MarshaledListener.h": "be70aacb9916b2a5ea5f047d33a5b21b752e6556dd99dee4865ae0b0bd145f56",
+    "rebuild/2008-06/native-headers/util/EventDataBase.h": "21985d505316538d2f164c7f31d4a6b7ed7db3a716fc06b2c1f5932dd2cc32c5",
+    "rebuild/2008-06/native-headers/v8tree/PropertyChanged.h": "b0fcf29e39cfd4806d1c9bd22d61fd7bfc6da6e4a9df492a3c62e73a43ccd81f",
+    "rebuild/2008-06/native-headers/reflection/property.h": "62aeba1205a57e8f0f0adcba36f8e07b57422e5b3097a3eef248dc45219b1c64",
+    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "f6c39ef2034fcfd20b2edcae75355c71e5539a2be0db3ac80673911e67ad95e5",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/CScriptEditor.h": "15706d4177b7b0b7a7ac38cb4bd5cf0bd2b0c12366bc137e203402bc7bb41dea"
+  },
+  "objects": {
+    "layout": "162637afc3c36f8e6a4c148114ae5376b71a53d6b34192f4d83e5d59ac1004ad",
+    "eventdata": "9f009dfa13cc32224854824c8bfd96e0e3358905908c25b4f76326b027b5b694",
+    "eventdata_pending": "316cfc6b3bc3a84bd5bd812109b5d6be79beb3db1f41ac24d764a6ebfb793b9d"
+  },
+  "layout": {
+    "instanceEventData": "0x18",
+    "runServiceEventData": "0x14",
+    "instanceListener": "0xc",
+    "instanceEvent": "0x10",
+    "runServiceListener": "0xc",
+    "runServiceEvent": "0x10"
+  },
+  "allocations": [
+    "00464ea3: new(0x18) before 00464af0",
+    "00464f82: new(0x14) before 00464b60"
+  ],
+  "rtti_bases": {
+    "Instance, PropertyChanged": {
+      ".?AVEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@": 0,
+      ".?AVEventDataBase@RBX@@": 0
+    },
+    "RunService, RunState": {
+      ".?AVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@": 0,
+      ".?AVEventDataBase@RBX@@": 0
+    }
+  },
+  "unit_map": {
+    "scintilla-mfc 00460000..0046388f": {
+      "rows": 149,
+      "bytes": 13316,
+      "first": "row 00460000",
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "last": "row 004636e0",
+      "unit": "PJ Naughter CScintillaCtrl / CScintillaView / CScintillaFindReplaceDlg (library recipe scintilla-mfc-1.20; CScriptEditor.h names the statically linked wrapper classes): ~CScintillaCtrl 00460000 (vtable 0081a754, RTTI .?AVCScintillaCtrl@Scintilla@@) and its SendMessage wrappers through the direct function / pointer at +0x54 / +0x58 00460070..004612e0, CScintillaView 004613c0.. (ctor 00461f00 stores vtable 0081aa74 and the CArray<int,int> 0081aa5c), CScintillaFindReplaceDlg 00461e40.. (vtable 0081ace4 in 004633b0) and the CCommonDialog leaves 00463130 / 00463430 (vtable 0081a8ec). Library code, not recovered.",
+      "library": true,
+      "recovered": false
+    },
+    "script 00463890..00464aef": {
+      "rows": 42,
+      "bytes": 4305,
+      "first": "row 00463890",
+      "counted_elsewhere": [
+        "004638a0 counted by script-doc-working.json",
+        "004638b0 counted by script-editor-working.json",
+        "004638c0 counted by script-editor-working.json",
+        "004638d0 counted by script-editor-working.json",
+        "00463910 counted by object-browser-working.json, script-editor-working.json",
+        "00463930 counted by script-editor-working.json",
+        "00463980 counted by script-editor-working.json",
+        "004639a0 counted by script-editor-working.json",
+        "00463ed0 counted by script-editor-working.json",
+        "00463f10 counted by script-editor-working.json",
+        "00463f40 counted by script-editor-working.json",
+        "00463f80 counted by script-editor-working.json",
+        "00463fb0 counted by script-editor-working.json",
+        "00463ff0 counted by script-editor-working.json",
+        "00464040 counted by script-editor-working.json",
+        "00464090 counted by script-editor-working.json",
+        "004640d0 counted by script-editor-working.json",
+        "00464100 counted by script-editor-working.json",
+        "00464140 counted by script-editor-working.json",
+        "00464170 counted by script-editor-working.json",
+        "004641b0 counted by script-editor-working.json",
+        "004641e0 counted by script-editor-working.json",
+        "00464270 counted by script-editor-working.json",
+        "00464300 counted by script-editor-working.json",
+        "004643b0 counted by script-editor-working.json",
+        "00464460 counted by script-editor-working.json",
+        "004644e0 counted by script-editor-working.json",
+        "00464540 counted by script-editor-working.json",
+        "00464590 counted by script-editor-working.json",
+        "00464670 counted by script-doc-working.json",
+        "004646f0 counted by script-doc-working.json",
+        "004647b0 counted by script-doc-working.json",
+        "00464830 counted by script-editor-working.json",
+        "00464960 counted by script-editor-working.json",
+        "00464970 counted by script-editor-working.json",
+        "00464a40 counted by script-editor-working.json",
+        "00464ac0 counted by script-editor-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 00464ac0",
+      "unit": "CScriptDoc / CScriptEditor (native CScriptDoc.h / CScriptEditor.h with their working receipts): Script::getScriptId 00463890 (evidence name), the CScriptDoc runtime-class rows, the CScriptEditor Lua lexer setup 004639a0 (keyword list literal), CFont scalar deleting destructor 00464510 (vtable 0081b228, MFC inline), CScriptDoc 00464710 / 00464750 (DataModel::getMutex) and 004647b0 (vtable 0081b2ac), the MarshaledListener<Instance, PropertyChanged> / <RunService, RunState> ctors 00464970 / 00464a40 (vtables 0081b368 / 0081b37c) and their onEvent / marshal bodies 004649f0 / 00464ac0. CScriptEditor / CScriptDoc owners; not rebuilt here (004649f0 is open in script-editor-working.json: inline PropertyChanged copy).",
+      "library": false,
+      "recovered": false
+    },
+    "marshaled-eventdata 00464af0..00464e1f": {
+      "rows": 10,
+      "bytes": 758,
+      "first": "row 00464af0",
+      "counted_elsewhere": [],
+      "counted_here": 5,
+      "last": "row 00464e00",
+      "unit": "MarshaledListener<Instance, PropertyChanged>::EventData (vtable 0081b390) and MarshaledListener<RunService, RunState>::EventData (vtable 0081b39c), both with base EventDataBase (vtable 0080f860): ctors 00464af0 / 00464b60 (called by the marshal bodies 00464ea0 / 00464f80 after new(0x18) / new(0x14)), execute 00464c60 / 00464d70 with their catch funclet rows 00464cbd / 00464dbe, dtors 00464bd0 / 00464ce0 and ??_G 00464de0 / 00464e00 (vtable slot 1). Built here from the native util/MarshaledListener.h.",
+      "library": false,
+      "recovered": true
+    },
+    "script-editor 00464e20..00465a4f": {
+      "rows": 24,
+      "bytes": 2946,
+      "first": "row 00464e20",
+      "counted_elsewhere": [
+        "00464e20 counted by script-editor-working.json",
+        "00464f00 counted by script-editor-working.json",
+        "00464f80 counted by script-editor-working.json",
+        "00464fd0 counted by script-editor-working.json",
+        "00464ff0 counted by script-editor-working.json",
+        "00465010 counted by script-editor-working.json",
+        "004650e0 counted by script-editor-working.json",
+        "004650f0 counted by script-editor-working.json",
+        "00465100 counted by script-editor-working.json",
+        "00465160 counted by script-editor-working.json",
+        "00465260 counted by script-editor-working.json",
+        "00465500 counted by script-editor-working.json",
+        "004657f0 counted by script-editor-working.json",
+        "00465830 counted by script-editor-working.json",
+        "004659a0 counted by script-editor-working.json",
+        "004659f0 counted by script-editor-working.json",
+        "00465a20 counted by script-editor-working.json",
+        "00465a40 counted by script-editor-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 00465a40",
+      "unit": "CScriptEditor (native CScriptEditor.h; script-editor-working.json): the listener dtors 00464e20 / 00464f00 and ??_G 00464fd0 / 00464ff0, marshal 00464ea0 / 00464f80, ctor 00465010 (vtables 0081b3dc / 0081b3d0 / 0081b3bc / 0081b3a8 at +0 / +0xec / +0xf0 / +0x114), the this-adjusting ??_E thunks 004650e0..00465100, onMarshaledEvent 00465110 (Instance::desc_Name 00973d54), CreateObject 00465160, reload 00465550 (split at its catch funclet 0046573d, bounds evidence in script-editor-working.json) and dtor 00465830. CScriptEditor owner; not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "secure-html-view 00465a50..00465ddf": {
+      "rows": 9,
+      "bytes": 829,
+      "first": "row 00465a50",
+      "counted_elsewhere": [
+        "00465a50 counted by secure-html-view-working.json",
+        "00465a60 counted by secure-html-view-working.json",
+        "00465a80 counted by secure-html-view-working.json",
+        "00465a90 counted by secure-html-view-working.json",
+        "00465ae0 counted by secure-html-view-working.json",
+        "00465b20 counted by secure-html-view-working.json",
+        "00465d70 counted by secure-html-view-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 00465d70",
+      "unit": "CSecureHtmlView (native CSecureHtmlView.h; secure-html-view-working.json): the CXTPCommandBarsSiteBase members 00465a50..00465ae0 / 00465d70 (vtable 0081b864), isApplicationUrl 00465b50 (\"/IDE/IsAdSyndicator.ashx?site=%s\") and 00465d30. CSecureHtmlView owner; not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "selection-caption 00465de0..00466b5f": {
+      "rows": 23,
+      "bytes": 3272,
+      "first": "row 00465de0",
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "last": "row 00466940",
+      "unit": "CSelectionCaption : CXTCaption, ActiveDocView, FilteredListener<Selection, SelectionChanged> (native CSelectionCaption.h, util/MarshaledListener.h; RTTI vtable 0081bbc4 with sub-vtables at +0x54 / +0x190 / +0x194): GetRuntimeClass 00465de0, updateCaption 00465e40, the MarshaledListener<Selection> ctor / dtor 004661e0 / 004663c0 (vtable 0081bb58), EventData ctor / dtor 00466260 / 00466310 (vtable 0081bb6c), dtor 00466510, FilteredListener::marshal 00466700, ctor 00466880 (vtable 0081bb78) and update 00466940. These bodies are relocation-masked matches in frame-marshalling-working-probe.json / pane-callbacks-working-probe.json (no exact_function_rows, no exact flags: not counted under the rule). CSelectionCaption owner; not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "settings 00466b60..0046725f": {
+      "rows": 16,
+      "bytes": 1680,
+      "first": "row 00466b60",
+      "counted_elsewhere": [
+        "00466b60 counted by settings-dialog-working.json",
+        "00466b80 counted by instance-explorer-working.json",
+        "00466b90 counted by instance-explorer-working.json",
+        "00466c00 counted by settings-dialog-working.json",
+        "00466ca0 counted by settings-dialog-working.json",
+        "00466d10 counted by settings-dialog-working.json",
+        "00466d40 counted by instance-explorer-working.json",
+        "00466e00 counted by settings-dialog-working.json",
+        "00466e10 counted by settings-dialog-working.json",
+        "00466fa0 counted by settings-dialog-working.json",
+        "00467030 counted by settings-dialog-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 004671f0",
+      "unit": "CSettingsDialog / CSettingsExplorer / CSettingsPropGrid (native CSettingsDialog.h; settings-dialog-working.json): runtime classes 00466b60 / 00466b80, CSettingsExplorer ctor 00466b90 (vtables 0081bdf4 / 0081bde0 / 0081bdcc), CSettingsDialog 00466ca0 / 00466e10 (vtable 0081bfb4, CSettingsPropGrid vtables 0081c174 / 0081c168 / 0081c15c), the this-adjusting thunk 00466d30, the CSettingsPropGrid filter 00467000 (Described<Instance> classDescriptor 0040ad80) and the dynamic initializer 004671f0 (CRT initializer table entries 007efac0 / 007efae0). Settings owner; not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "dxuserinput 00467260..0046a1ff": {
+      "rows": 58,
+      "bytes": 11678,
+      "first": "row 00467260",
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "last": "row 0046a1b0",
+      "unit": "DxUserInput.cpp (see app-unit468-2008-working.json unit_map and blocked): the G3D Vector2 inlines 00467260 / 00467270 (evidence names, library header COMDATs emitted first here), the Vector2 / rect helpers 004672a0..004674a0 called only from DxUserInput rows (00467670 / 00467b50 / 00467f10 / 00468b90), vtable 0081c404 slot 6 00467530, ~UserInputBase 00467770, ctor 004690f0 / dtor 00468e90. Blocked by the unexplained member at +0x30; not recovered.",
+      "library": false,
+      "recovered": false
+    },
+    "fileversioninfo 0046a200..0046a57f": {
+      "rows": 6,
+      "bytes": 837,
+      "first": "row 0046a200",
+      "counted_elsewhere": [
+        "0046a200 counted by app-unit468-2008-working.json",
+        "0046a220 counted by app-unit468-2008-working.json",
+        "0046a370 counted by app-unit468-2008-working.json",
+        "0046a440 counted by app-unit468-2008-working.json",
+        "0046a4b0 counted by app-unit468-2008-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 0046a4f0",
+      "unit": "CFileVersionInfo (native CFileVersionInfo.h): counted by app-unit468-2008-working.json (\"\\VarFileInfo\\Translation\" 0046a220). Not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "webtoolbox 0046a580..0046a93f": {
+      "rows": 15,
+      "bytes": 862,
+      "first": "row 0046a580",
+      "counted_elsewhere": [
+        "0046a580 counted by web-toolbox-working.json",
+        "0046a640 counted by web-toolbox-working.json",
+        "0046a660 counted by web-toolbox-working.json",
+        "0046a680 counted by web-toolbox-working.json",
+        "0046a6a0 counted by web-toolbox-working.json",
+        "0046a6d0 counted by web-toolbox-working.json",
+        "0046a6f0 counted by web-toolbox-working.json",
+        "0046a710 counted by web-toolbox-working.json",
+        "0046a7a0 counted by web-toolbox-working.json",
+        "0046a7c0 counted by web-toolbox-working.json",
+        "0046a7e0 counted by web-toolbox-working.json",
+        "0046a850 counted by web-toolbox-working.json",
+        "0046a8d0 counted by web-toolbox-working.json",
+        "0046a8e0 counted by web-toolbox-working.json"
+      ],
+      "counted_here": 0,
+      "last": "row 0046a8e0",
+      "unit": "CWebToolbox (native CWebToolbox.h; web-toolbox-working.json; vtable 0081c4f4 in 0046a7e0 / 0046a850). Not rebuilt here.",
+      "library": false,
+      "recovered": false
+    },
+    "workspace 0046a940..0046bfff": {
+      "rows": 30,
+      "bytes": 6161,
+      "first": "row 0046a940",
+      "counted_elsewhere": [
+        "0046a990 counted by workspace-events-trial.json",
+        "0046ab10 counted by workspace-events-trial.json",
+        "0046ac90 counted by content-factory-trial.json",
+        "0046b550 counted by workspace-xml-writer-mismatch.json",
+        "0046b750 counted by workspace-selection-serializer-trial.json",
+        "0046b8d0 counted by workspace-save-trial.json",
+        "0046bc90 counted by workspace-insert-url-trial.json",
+        "0046bd70 counted by workspace-write-trial.json",
+        "0046bfd0 counted by workspace-write-trial.json"
+      ],
+      "counted_here": 0,
+      "last": "row 0046bfd0",
+      "unit": "Workspace.cpp, the ATL COM CWorkspace scripting object (continues past 0046c000, see app-unit468-2008-working.json): IObjectSafetyRobloxImpl<CWorkspace> 0046ab60 (vtable 0081c80c), the CComObject<CContent> factory 0046ac90, TextXmlWriterWithEmbeddedContent 0046b1e0 / 0046b550 (vtable 0081c848), ExecScript 0046b230 (\"DoExecScript failed because %s.  %s\"), write 0046bd70 / 0046bfd0 (\".\\Workspace.cpp\"). Other owners' area (workspace-*-trial receipts); not rebuilt here.",
+      "library": false,
+      "recovered": false
+    }
+  },
+  "evidence_checks": [
+    {
+      "row": "row 00465b50",
+      "block": "secure-html-view",
+      "kind": "string",
+      "at": "data 0081ba9c",
+      "text": "/IDE/IsAdSyndicator.ashx?site=%s"
+    },
+    {
+      "row": "row 0046a220",
+      "block": "fileversioninfo",
+      "kind": "string",
+      "at": "data 0081c440",
+      "text": "\\VarFileInfo\\Translation"
+    },
+    {
+      "row": "row 0046b230",
+      "block": "workspace",
+      "kind": "string",
+      "at": "data 0081c820",
+      "text": "DoExecScript failed because %s.  %s"
+    },
+    {
+      "row": "row 0046bd70",
+      "block": "workspace",
+      "kind": "string",
+      "at": "data 0081c850",
+      "text": ".\\Workspace.cpp"
+    },
+    {
+      "row": "row 00460000",
+      "block": "scintilla-mfc",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081a754",
+      "rtti": ".?AVCScintillaCtrl@Scintilla@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00461f00",
+      "block": "scintilla-mfc",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081aa74",
+      "rtti": ".?AVCScintillaView@Scintilla@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004633b0",
+      "block": "scintilla-mfc",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081ace4",
+      "rtti": ".?AVCScintillaFindReplaceDlg@Scintilla@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464510",
+      "block": "script",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b228",
+      "rtti": ".?AVCFont@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004647b0",
+      "block": "script",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b2ac",
+      "rtti": ".?AVCScriptDoc@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464970",
+      "block": "script",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b368",
+      "rtti": ".?AV?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464a40",
+      "block": "script",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b37c",
+      "rtti": ".?AV?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464af0",
+      "block": "marshaled-eventdata",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b390",
+      "rtti": ".?AVEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464b60",
+      "block": "marshaled-eventdata",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b39c",
+      "rtti": ".?AVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464bd0",
+      "block": "marshaled-eventdata",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0080f860",
+      "rtti": ".?AVEventDataBase@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464ce0",
+      "block": "marshaled-eventdata",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0080f860",
+      "rtti": ".?AVEventDataBase@RBX@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00465010",
+      "block": "script-editor",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b3dc",
+      "rtti": ".?AVCScriptEditor@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00465010",
+      "block": "script-editor",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b3a8",
+      "rtti": ".?AVCScriptEditor@@",
+      "offset": "0x114"
+    },
+    {
+      "row": "row 00465a60",
+      "block": "secure-html-view",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081b864",
+      "rtti": ".?AVCSecureHtmlView@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00466880",
+      "block": "selection-caption",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081bbc4",
+      "rtti": ".?AVCSelectionCaption@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00466510",
+      "block": "selection-caption",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081bba8",
+      "rtti": ".?AVCSelectionCaption@@",
+      "offset": "0x190"
+    },
+    {
+      "row": "row 00466b90",
+      "block": "settings",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081bdf4",
+      "rtti": ".?AVCSettingsExplorer@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00466e10",
+      "block": "settings",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c174",
+      "rtti": ".?AVCSettingsPropGrid@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00466ca0",
+      "block": "settings",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081bfb4",
+      "rtti": ".?AVCSettingsDialog@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 004690f0",
+      "block": "dxuserinput",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c404",
+      "rtti": ".?AVDxUserInput@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046a7e0",
+      "block": "webtoolbox",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c4f4",
+      "rtti": ".?AVCWebToolbox@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046ab60",
+      "block": "workspace",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c80c",
+      "rtti": ".?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 0046b550",
+      "block": "workspace",
+      "kind": "rtti-ref",
+      "vtable": "vtable 0081c848",
+      "rtti": ".?AVTextXmlWriterWithEmbeddedContent@@",
+      "offset": "0x0"
+    },
+    {
+      "row": "row 00464c60",
+      "block": "marshaled-eventdata",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081b390",
+      "rtti": ".?AVEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@",
+      "slot": 0
+    },
+    {
+      "row": "row 00464de0",
+      "block": "marshaled-eventdata",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081b390",
+      "rtti": ".?AVEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@",
+      "slot": 1
+    },
+    {
+      "row": "row 00464d70",
+      "block": "marshaled-eventdata",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081b39c",
+      "rtti": ".?AVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@",
+      "slot": 0
+    },
+    {
+      "row": "row 00464e00",
+      "block": "marshaled-eventdata",
+      "kind": "vtable-slot",
+      "vtable": "vtable 0081b39c",
+      "rtti": ".?AVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@",
+      "slot": 1
+    },
+    {
+      "row": "row 00463890",
+      "block": "script",
+      "kind": "evidence-name",
+      "symbol": "?getScriptId@Script@RBX@@QBEABVContentId@2@XZ"
+    },
+    {
+      "row": "row 00467260",
+      "block": "dxuserinput",
+      "kind": "evidence-name",
+      "symbol": "??0Vector2@G3D@@QAE@XZ"
+    },
+    {
+      "row": "row 00467270",
+      "block": "dxuserinput",
+      "kind": "evidence-name",
+      "symbol": "??0Vector2@G3D@@QAE@ABVVector2int16@1@@Z"
+    },
+    {
+      "row": "row 0046b1e0",
+      "block": "workspace",
+      "kind": "evidence-name",
+      "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ"
+    },
+    {
+      "row": "row 00464af0",
+      "block": "marshaled-eventdata",
+      "kind": "caller",
+      "caller": "row 00464ea0"
+    },
+    {
+      "row": "row 00464b60",
+      "block": "marshaled-eventdata",
+      "kind": "caller",
+      "caller": "row 00464f80"
+    },
+    {
+      "row": "row 00464bd0",
+      "block": "marshaled-eventdata",
+      "kind": "caller",
+      "caller": "row 00464de0"
+    },
+    {
+      "row": "row 00464ce0",
+      "block": "marshaled-eventdata",
+      "kind": "caller",
+      "caller": "row 00464e00"
+    },
+    {
+      "row": "row 004672e0",
+      "block": "dxuserinput",
+      "kind": "caller",
+      "caller": "row 00467670"
+    },
+    {
+      "row": "row 00467440",
+      "block": "dxuserinput",
+      "kind": "caller",
+      "caller": "row 00468b90"
+    }
+  ],
+  "excluded_classes": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView rows lie in this range (the CWorkspace rows belong to Workspace.cpp, not CRobloxDoc.cpp).",
+  "range_functions": 382,
+  "range_bytes": 46644,
+  "range_library_rows": 149,
+  "range_rows_counted_by_other_receipts": [
+    "004638a0 counted by script-doc-working.json",
+    "004638b0 counted by script-editor-working.json",
+    "004638c0 counted by script-editor-working.json",
+    "004638d0 counted by script-editor-working.json",
+    "00463910 counted by object-browser-working.json, script-editor-working.json",
+    "00463930 counted by script-editor-working.json",
+    "00463980 counted by script-editor-working.json",
+    "004639a0 counted by script-editor-working.json",
+    "00463ed0 counted by script-editor-working.json",
+    "00463f10 counted by script-editor-working.json",
+    "00463f40 counted by script-editor-working.json",
+    "00463f80 counted by script-editor-working.json",
+    "00463fb0 counted by script-editor-working.json",
+    "00463ff0 counted by script-editor-working.json",
+    "00464040 counted by script-editor-working.json",
+    "00464090 counted by script-editor-working.json",
+    "004640d0 counted by script-editor-working.json",
+    "00464100 counted by script-editor-working.json",
+    "00464140 counted by script-editor-working.json",
+    "00464170 counted by script-editor-working.json",
+    "004641b0 counted by script-editor-working.json",
+    "004641e0 counted by script-editor-working.json",
+    "00464270 counted by script-editor-working.json",
+    "00464300 counted by script-editor-working.json",
+    "004643b0 counted by script-editor-working.json",
+    "00464460 counted by script-editor-working.json",
+    "004644e0 counted by script-editor-working.json",
+    "00464540 counted by script-editor-working.json",
+    "00464590 counted by script-editor-working.json",
+    "00464670 counted by script-doc-working.json",
+    "004646f0 counted by script-doc-working.json",
+    "004647b0 counted by script-doc-working.json",
+    "00464830 counted by script-editor-working.json",
+    "00464960 counted by script-editor-working.json",
+    "00464970 counted by script-editor-working.json",
+    "00464a40 counted by script-editor-working.json",
+    "00464ac0 counted by script-editor-working.json",
+    "00464e20 counted by script-editor-working.json",
+    "00464f00 counted by script-editor-working.json",
+    "00464f80 counted by script-editor-working.json",
+    "00464fd0 counted by script-editor-working.json",
+    "00464ff0 counted by script-editor-working.json",
+    "00465010 counted by script-editor-working.json",
+    "004650e0 counted by script-editor-working.json",
+    "004650f0 counted by script-editor-working.json",
+    "00465100 counted by script-editor-working.json",
+    "00465160 counted by script-editor-working.json",
+    "00465260 counted by script-editor-working.json",
+    "00465500 counted by script-editor-working.json",
+    "004657f0 counted by script-editor-working.json",
+    "00465830 counted by script-editor-working.json",
+    "004659a0 counted by script-editor-working.json",
+    "004659f0 counted by script-editor-working.json",
+    "00465a20 counted by script-editor-working.json",
+    "00465a40 counted by script-editor-working.json",
+    "00465a50 counted by secure-html-view-working.json",
+    "00465a60 counted by secure-html-view-working.json",
+    "00465a80 counted by secure-html-view-working.json",
+    "00465a90 counted by secure-html-view-working.json",
+    "00465ae0 counted by secure-html-view-working.json",
+    "00465b20 counted by secure-html-view-working.json",
+    "00465d70 counted by secure-html-view-working.json",
+    "00466b60 counted by settings-dialog-working.json",
+    "00466b80 counted by instance-explorer-working.json",
+    "00466b90 counted by instance-explorer-working.json",
+    "00466c00 counted by settings-dialog-working.json",
+    "00466ca0 counted by settings-dialog-working.json",
+    "00466d10 counted by settings-dialog-working.json",
+    "00466d40 counted by instance-explorer-working.json",
+    "00466e00 counted by settings-dialog-working.json",
+    "00466e10 counted by settings-dialog-working.json",
+    "00466fa0 counted by settings-dialog-working.json",
+    "00467030 counted by settings-dialog-working.json",
+    "0046a200 counted by app-unit468-2008-working.json",
+    "0046a220 counted by app-unit468-2008-working.json",
+    "0046a370 counted by app-unit468-2008-working.json",
+    "0046a440 counted by app-unit468-2008-working.json",
+    "0046a4b0 counted by app-unit468-2008-working.json",
+    "0046a580 counted by web-toolbox-working.json",
+    "0046a640 counted by web-toolbox-working.json",
+    "0046a660 counted by web-toolbox-working.json",
+    "0046a680 counted by web-toolbox-working.json",
+    "0046a6a0 counted by web-toolbox-working.json",
+    "0046a6d0 counted by web-toolbox-working.json",
+    "0046a6f0 counted by web-toolbox-working.json",
+    "0046a710 counted by web-toolbox-working.json",
+    "0046a7a0 counted by web-toolbox-working.json",
+    "0046a7c0 counted by web-toolbox-working.json",
+    "0046a7e0 counted by web-toolbox-working.json",
+    "0046a850 counted by web-toolbox-working.json",
+    "0046a8d0 counted by web-toolbox-working.json",
+    "0046a8e0 counted by web-toolbox-working.json",
+    "0046a990 counted by workspace-events-trial.json",
+    "0046ab10 counted by workspace-events-trial.json",
+    "0046ac90 counted by content-factory-trial.json",
+    "0046b550 counted by workspace-xml-writer-mismatch.json",
+    "0046b750 counted by workspace-selection-serializer-trial.json",
+    "0046b8d0 counted by workspace-save-trial.json",
+    "0046bc90 counted by workspace-insert-url-trial.json",
+    "0046bd70 counted by workspace-write-trial.json",
+    "0046bfd0 counted by workspace-write-trial.json"
+  ],
+  "rows": {
+    "eventdata": [
+      {
+        "address": "00464b60",
+        "symbol": "??0EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@PAV12@PBVRunService@2@W4RunState@2@@Z",
+        "size": 98,
+        "target_size": 98,
+        "exact": true,
+        "verified_targets": {
+          "??_7EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@6B@": "0x81b39c (vtable RTTI .?AVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@ offset 0x0)",
+          "?setSource@EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXPBVRunService@3@@Z": "0x4571d0 (COMDAT body folded across instantiations, compared exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??0EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@PAV12@PBVRunService@2@W4RunState@2@@Z"
+        ]
+      },
+      {
+        "address": "00464bd0",
+        "symbol": "??1EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "??_7EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@6B@": "0x81b390 (vtable RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@ offset 0x0)",
+          "?remove@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAEXPAVEventData@12@@Z": "0x4574b0 (COMDAT body folded across instantiations, compared exact at the bound address)",
+          "??_7EventDataBase@RBX@@6B@": "0x80f860 (vtable RTTI .?AVEventDataBase@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??1EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00464ce0",
+        "symbol": "??1EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "??_7EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@6B@": "0x81b39c (vtable RTTI .?AVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@ offset 0x0)",
+          "?remove@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXPAVEventData@12@@Z": "0x4574b0 (COMDAT body folded across instantiations, compared exact at the bound address)",
+          "??_7EventDataBase@RBX@@6B@": "0x80f860 (vtable RTTI .?AVEventDataBase@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??1EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00464de0",
+        "symbol": "??_GEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ": "0x464bd0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00464e00",
+        "symbol": "??_GEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ": "0x464ce0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "pending_build_only": [
+    {
+      "address": "00464af0 (pending-build-only, not counted)",
+      "symbol": "??0EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@PAV12@PBVInstance@2@VPropertyChanged@2@@Z",
+      "size": 105,
+      "target_size": 105,
+      "exact": false,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@6B@": "0x81b390 (vtable RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@ offset 0x0)",
+        "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAEXPBVInstance@3@@Z": "0x4571d0 (COMDAT body folded across instantiations, compared exact at the bound address)"
+      },
+      "local_eh": [
+        "__ehhandler$??0EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@PAV12@PBVInstance@2@VPropertyChanged@2@@Z"
+      ],
+      "pending_exact": true,
+      "reason": "pending-build-only (generated v8tree/PropertyChanged.h and reflection/property.h copies under out/app-unit460-2008/pending/ without the out-of-line copy-constructor declarations; proposal); not counted"
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "0x464af0 (not exact with the current headers, not counted)",
+      "symbol": "??0EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@PAV12@PBVInstance@2@VPropertyChanged@2@@Z",
+      "size": 104,
+      "target_size": 105,
+      "reason": "the original copies the 8-byte PropertyChanged inline (four movs at +0x10 / +0x14); the current v8tree/PropertyChanged.h declares an out-of-line PropertyChanged(const PropertyChanged&), so the build calls it (104 vs 105 B). Exact in the pending build (pending_build_only)"
+    }
+  ],
+  "bounds_evidence": [
+    {
+      "rows": "00464d70 + 00464dbe (joined; not counted)",
+      "symbol": "?execute@EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXXZ",
+      "build": "current headers",
+      "compiled_size": 111,
+      "joined_size": 111,
+      "exact_when_joined": true,
+      "verified_targets": {
+        "?remove@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXPAVEventData@12@@Z": "0x4574b0 (COMDAT body folded across instantiations, compared exact at the bound address)"
+      },
+      "reason": "one function: the try body (remove + onMarshaledEvent through the listener vtable) and its catch(...) funclet; the analysed rows split it at the funclet (extent fix needed)"
+    },
+    {
+      "rows": "00464c60 + 00464cbd (joined; not counted)",
+      "symbol": "?execute@EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAEXXZ",
+      "build": "pending build (the current build calls the out-of-line PropertyChanged copy); still a near-miss there: the original loads +0x14 then +0x10 before both stores of the by-value event copy, the pending build interleaves load / store (same size, 126 B)",
+      "compiled_size": 126,
+      "joined_size": 126,
+      "exact_when_joined": false,
+      "verified_targets": {},
+      "reason": "one function: the try body (remove + onMarshaledEvent through the listener vtable) and its catch(...) funclet; the analysed rows split it at the funclet (extent fix needed); not exact even when joined (see build)"
+    }
+  ],
+  "helper_bodies_not_counted": [
+    {
+      "address": "0x4574b0",
+      "symbol": "?remove@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAEXPAVEventData@12@@Z",
+      "unit": "eventdata",
+      "reason": "COMDAT body bound at this address and compared exact; not counted (other receipts)"
+    },
+    {
+      "address": "0x4574b0",
+      "symbol": "?remove@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXPAVEventData@12@@Z",
+      "unit": "eventdata",
+      "reason": "COMDAT body bound at this address and compared exact; not counted (other receipts)"
+    },
+    {
+      "address": "0x4571d0",
+      "symbol": "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAEXPBVInstance@3@@Z",
+      "unit": "eventdata_pending",
+      "reason": "COMDAT body bound at this address and compared exact; not counted (other receipts)"
+    },
+    {
+      "address": "0x4571d0",
+      "symbol": "?setSource@EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXPBVRunService@3@@Z",
+      "unit": "eventdata",
+      "reason": "COMDAT body bound at this address and compared exact; not counted (other receipts)"
+    }
+  ],
+  "vtables": {
+    "EventData<Instance, PropertyChanged> 0081b390": [
+      {
+        "slot": 0,
+        "symbol": "?execute@EventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAEXXZ",
+        "original": "0x464c60",
+        "ok": true,
+        "how": "bound (first row of the joined span)"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EEventData@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAEPAXI@Z",
+        "original": "0x464de0",
+        "ok": true,
+        "how": "bound (??_G row)"
+      }
+    ],
+    "EventData<RunService, RunState> 0081b39c": [
+      {
+        "slot": 0,
+        "symbol": "?execute@EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXXZ",
+        "original": "0x464d70",
+        "ok": true,
+        "how": "bound (first row of the joined span)"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEPAXI@Z",
+        "original": "0x464e00",
+        "ok": true,
+        "how": "bound (??_G row)"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00464b60",
+    "00464bd0",
+    "00464ce0",
+    "00464de0",
+    "00464e00"
+  ],
+  "blocked": {
+    "MarshaledListener<Instance, PropertyChanged>::EventData ctor 00464af0 and execute 00464c60 + 00464cbd": "The original copies the 8-byte PropertyChanged (Reflection::Property descriptor + instance) inline; the core headers v8tree/PropertyChanged.h and reflection/property.h declare out-of-line copy constructors, so the current build calls ??0PropertyChanged@RBX@@QAE@ABV01@@Z. Exact in the pending build (see proposals).",
+    "DxUserInput (00467260..0046a1ff)": "see app-unit468-2008-working.json blocked (unexplained member at +0x30)."
+  },
+  "rejected": {
+    "AppUnit460_2008MarshaledEventData.cpp including CScriptEditor.h for the pending build": "quoted includes of a header in native-headers/ resolve native-headers/v8tree/PropertyChanged.h before the /I pending directory, so the generated copies were not used (00464af0 stayed 104 B); the unit includes util/MarshaledListener.h, v8tree/Instance.h, v8tree/PropertyChanged.h and util/RunStateOwner.h directly",
+    "pending build that also drops the inline ConstProperty(const ConstProperty&) (trivial bitwise copy)": "ctor 00464af0 and dtor 00464bd0 stay exact, but execute 00464c60 + 00464cbd gets worse (115 vs 126 B, the by-value argument copy changes); not kept"
+  },
+  "proposals": {
+    "v8tree/PropertyChanged.h and reflection/property.h (core header owners)": "Drop the out-of-line `PropertyChanged(const PropertyChanged&);` and `Property(const Property&);` declarations (use the implicit member-wise copies: ConstProperty already has an inline copy ctor). Evidence: MarshaledListener<Instance, PropertyChanged>::EventData ctor 00464af0 copies the event as two dword loads / stores into +0x10 / +0x14 with no call; with generated copies of both headers (out/app-unit460-2008/pending/) the ctor is exact (105 B) and execute 00464c60 + 00464cbd is exact when joined; the same inline copy is what script-editor-working.json lists as open for 004649f0 / 00464ea0 / 00465110. Every recorder compiling those headers must be re-run by the owner.",
+    "work/2008-06/bounds.json (server host)": "execute 00464c60 + 00464cbd and 00464d70 + 00464dbe are single functions (try body + catch funclet), bounds evidence in this receipt"
+  },
+  "library_recipes": [
+    "scintilla-mfc-1.20 (roc/libs.py) for the CScintillaCtrl / CScintillaView block"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

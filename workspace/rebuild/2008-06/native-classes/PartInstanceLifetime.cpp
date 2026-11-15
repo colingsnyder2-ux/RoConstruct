@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// PartInstanceLifetime | 2008-06 | 2 byte-exact, inactive (not link-selected)
-// 2/2 mapped addresses byte-exact | named 2 | 0 unproved | 1 referenced strings (not rechecked) | by EspClaude (+1) (deepseek:deepseek-chat)
-// <<< native-status | src b45ba4a6 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"
 
@@ -27,7 +23,9 @@ PartInstance::PartInstance()
     primitive.setGuid(guid);
 }
 
+#ifndef NATIVE_PART_INSTANCE_EXTERNAL_DESTRUCTOR
 PartInstance::~PartInstance() {}
+#endif
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

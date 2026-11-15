@@ -1,0 +1,1593 @@
+{
+  "family": "AppLeaves2008 pass 3 (DHTMLWindowService + Marshaller registry, CIDEDocManager)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008Layout3.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeAppLeaves2008Layout3.cpp"
+    ],
+    "dhtml": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008DHTMLWindowService.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindowService.cpp"
+    ],
+    "ide": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008IDEDocManager.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008IDEDocManager.cpp"
+    ],
+    "ide_ctor": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/tools/libs/xtp-11.2.2/Source",
+      "/I/home/user/roconstruct/tools/libs/scintilla-mfc-1.20",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/UNOMINMAX",
+      "/D_XTP_STATICLINK",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppLeaves2008IDEDocManagerCtor.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppLeaves2008IDEDocManagerCtor.cpp"
+    ]
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_leaves2008_services.py": "6439738de5d3cf832666a67a177f27132f60f1129e20a0a40d33b7657644aeb3",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/tests/NativeAppLeaves2008Layout3.cpp": "e2d9ca54efa311a4048d80cac14472567ecbafb8f8bdb44f6a97ee8d0d8effea",
+    "rebuild/2008-06/native-headers/AppLeaves2008/DHTMLWindowService2008.h": "df4bc9b98ec652f9d71232eea0e826bae5ad452500d41c6b448a9050d27bf8e6",
+    "rebuild/2008-06/native-headers/AppLeaves2008/IDEDocManager2008.h": "4e9ca587dac986ecdd89ade06a020adc8a8d176a5ac004d73e9a86d4dc67d284",
+    "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindowService.cpp": "9b3486e0b584dfc29814d53826bc1e18a192c00e48cec686f23b4906de7f8ee1",
+    "rebuild/2008-06/native-classes/AppLeaves2008IDEDocManager.cpp": "7bd9c0d18ed74ea431fe4e8fee794b40cc8578c279a1bca6a96f95153f9845b4",
+    "rebuild/2008-06/native-classes/AppLeaves2008IDEDocManagerCtor.cpp": "5a3edeb80364a5c5fa23999e2d7b0439ebfbc7000009f2db091f71758b988d10",
+    "rebuild/2008-06/native-headers/AppLeaves2008/Marshaller2008.h": "5ce8a439f16df27e817b14ddfe4e0d6c28596867c9442fdfef1a6500e9b20a23",
+    "rebuild/2008-06/native-headers/AppLeaves2008/RbxDocTemplates2008.h": "2fa2c9ca6e134062121e11789c0c63d2590a99388fce0cce08e7e849a1044dc7"
+  },
+  "objects": {
+    "dhtml": "cb7af551329573db8471db904b7e0980cbe95138f064ec45a1670cb305184881",
+    "ide": "04154d70c59276356f043f554df6e2c45997572e0a671c4638e6f99cfc85a3c5",
+    "ide_ctor": "76efb84eb3208a82580800e772a24d8de2322c36f781490f06b3f57bacebc816"
+  },
+  "layout": {
+    "DHTMLWindowService": "0x130 == sizeof(Instance) (0041cda0 mallocs 0x130); empty Service base at mdisp 0x130; class name \"HtmlService\" (char[] 0092c1f8), instance name \"WindowService\"",
+    "CIDEDocManager": "0x30 (InitInstance news 0x30 at 0044dc03 / 0044dd5a): CDocManager (0x20), then the templates browser +0x20, play +0x24, script +0x28, object browser +0x2c",
+    "Marshaller registry": "std::map<DWORD, Marshaller*> 0096cec4, boost::recursive_mutex 0096cee4, htmlMarshaller 0096cc4c (defined with the DHTMLWindow statics)"
+  },
+  "methods": {
+    "dhtml": [
+      {
+        "address": "0041c9c0",
+        "symbol": "??0DHTMLWindowService@@QAE@XZ",
+        "size": 187,
+        "exact": true,
+        "verified_targets": {
+          "??0?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@IAE@XZ": "0x41bc50 (own row)",
+          "??_C@_0O@FGMOOAEO@WindowService?$AA@": "0x80f014 (literal 'WindowService')",
+          "??_7DHTMLWindowService@@6B?$GuidItem@VInstance@RBX@@@RBX@@@": "0x80efd4 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x0)",
+          "??_7DHTMLWindowService@@6B?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@@": "0x80efc4 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x10)",
+          "??_7DHTMLWindowService@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@@": "0x80efbc (vtable RTTI .?AVDHTMLWindowService@@ offset 0x14)",
+          "??_7DHTMLWindowService@@6BDebugable@RBX@@@": "0x80efb4 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x20)",
+          "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@@": "0x80efa4 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x24)",
+          "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@@": "0x80ef94 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x44)",
+          "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@@": "0x80ef84 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x64)",
+          "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@": "0x80ef74 (vtable RTTI .?AVDHTMLWindowService@@ offset 0x84)",
+          "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": "0x80ef64 (vtable RTTI .?AVDHTMLWindowService@@ offset 0xa4)",
+          "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x80ef54 (vtable RTTI .?AVDHTMLWindowService@@ offset 0xc4)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??0DHTMLWindowService@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0041caa0",
+        "symbol": "??_GDHTMLWindowService@@UAEPAXI@Z",
+        "size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAE@XZ": "0x41b910 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041ca80",
+        "symbol": "??_EDHTMLWindowService@@WIE@AEPAXI@Z",
+        "size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041ca90",
+        "symbol": "??_EDHTMLWindowService@@WBA@AEPAXI@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b9d0",
+        "symbol": "??_EDHTMLWindowService@@WEE@AEPAXI@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b9e0",
+        "symbol": "??_EDHTMLWindowService@@WGE@AEPAXI@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b9f0",
+        "symbol": "??_EDHTMLWindowService@@WBE@AEPAXI@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041bcf0",
+        "symbol": "??_EDHTMLWindowService@@WKE@AEPAXI@Z",
+        "size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041bd00",
+        "symbol": "??_EDHTMLWindowService@@WME@AEPAXI@Z",
+        "size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041bd10",
+        "symbol": "??_EDHTMLWindowService@@WCE@AEPAXI@Z",
+        "size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EDHTMLWindowService@@UAEPAXI@Z": "0x41caa0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041bc50",
+        "symbol": "??0?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@IAE@XZ",
+        "size": 146,
+        "exact": true,
+        "verified_targets": {
+          "??0?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@IAE@XZ": "0x41b970 (own row)",
+          "?classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x41bb70 (own row)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x80eebc (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x0)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x80eeac (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x10)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x80eea4 (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6BDebugable@1@@": "0x80ee9c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x20)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x80ee8c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x24)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x80ee7c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x44)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x80ee6c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x64)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x80ee5c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x84)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x80ee4c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x80ee3c (vtable RTTI .?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "0041b970",
+        "symbol": "??0?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@IAE@XZ",
+        "size": 90,
+        "exact": true,
+        "verified_targets": {
+          "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x80edcc (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x0)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x80edc0 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x10)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x80edb8 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6BDebugable@1@@": "0x80edb0 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x20)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x80eda0 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x24)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x80ed90 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x44)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x80ed80 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x64)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x80ed70 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x84)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x80ed60 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x80ed50 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b910",
+        "symbol": "??1?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAE@XZ",
+        "size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x80edcc (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x0)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x80edc0 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x10)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x80edb8 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6BDebugable@1@@": "0x80edb0 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x20)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x80eda0 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x24)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x80ed90 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x44)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x80ed80 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x64)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x80ed70 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0x84)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x80ed60 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x80ed50 (vtable RTTI .?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@ offset 0xc4)",
+          "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041ba90",
+        "symbol": "??1?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAE@XZ",
+        "size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAE@XZ": "0x41b910 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041bb70",
+        "symbol": "?classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96d088 (local static of ?classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLW)",
+          "?sDHTMLWindowService@@3PADA": "0x92c1f8 (data)",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external)",
+          "?foo@?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96cfc8 (local static of ?classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLW)",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa630 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      },
+      {
+        "address": "0041bb50",
+        "symbol": "?getClassName@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1???$declare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96cef8 (local static of ?getClassName@?$FactoryProduct@VDHTMLWindowService@@VInstanc)",
+          "??$callDoDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAXXZ": "0x417290 (instance (bytes equal, targets verified))",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ": "0x416f90 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa630",
+        "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "?foo@?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96cfc8 (local static of ??__Ffoo@?1??classDescriptor@?$Described@VDHTMLWindowService)",
+          "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b6f0",
+        "symbol": "?acquireMarshaller@@YAPAVMarshaller@@XZ",
+        "size": 314,
+        "exact": true,
+        "verified_targets": {
+          "_marshallersLock": "0x96cee4 (data)",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external)",
+          "__imp__GetCurrentThreadId@0": "0x802198 (kernel32.dll!GetCurrentThreadId)",
+          "_marshallers": "0x96cec4 (data)",
+          "?find@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@ABK@Z": "0x451600 (instance (bytes equal, targets verified))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Marshaller@@QAE@K@Z": "0x41b310 (external)",
+          "??A?$map@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@@std@@QAEAAPAVMarshaller@@ABK@Z": "0x5644a0 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$?acquireMarshaller@@YAPAVMarshaller@@XZ"
+        ]
+      },
+      {
+        "address": "0041bc40",
+        "symbol": "?initializeHtmlMarshaller@@YAXXZ",
+        "size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?acquireMarshaller@@YAPAVMarshaller@@XZ": "0x41b6f0 (own row)",
+          "?htmlMarshaller@@3PAVMarshaller@@A": "0x96cc4c (data)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eef40",
+        "symbol": "??__Emarshallers@@YAXXZ",
+        "size": 35,
+        "exact": true,
+        "verified_targets": {
+          "_marshallers": "0x96cec4 (data)",
+          "??0?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@K@1@ABV?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@1@@Z": "0x446110 (instance (bytes equal, targets verified))",
+          "??__Fmarshallers@@YAXXZ": "0x7fa640 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007eef70",
+        "symbol": "??__EmarshallersLock@@YAXXZ",
+        "size": 22,
+        "exact": true,
+        "verified_targets": {
+          "_marshallersLock": "0x96cee4 (data)",
+          "??0recursive_mutex@boost@@QAE@XZ": "0x563070 (external)",
+          "??__FmarshallersLock@@YAXXZ": "0x7fa610 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa640",
+        "symbol": "??__Fmarshallers@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_marshallers": "0x96cec4 (data)",
+          "??1?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@XZ": "0x553d80 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fa610",
+        "symbol": "??__FmarshallersLock@@YAXXZ",
+        "size": 10,
+        "exact": true,
+        "verified_targets": {
+          "_marshallersLock": "0x96cee4 (data)",
+          "??1recursive_mutex@boost@@QAE@XZ": "0x594cb0 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "ide": [
+      {
+        "address": "00449ae0",
+        "symbol": "?DoPromptFileName@CIDEDocManager@@UAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@IKHPAVCDocTemplate@@@Z",
+        "size": 20,
+        "exact": true,
+        "verified_targets": {
+          "?DoPromptFileName@CDocManager@@UAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@IKHPAVCDocTemplate@@@Z": "0x6a11b4 (mfc90.dll!?DoPromptFileName@CDocManager@@UAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@IKHPAVCDocTemplate@@@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0044abd0",
+        "symbol": "?OnFileNew@CIDEDocManager@@UAEXXZ [0x0:0x5f]",
+        "size": 95,
+        "exact": true,
+        "verified_targets": {
+          "?pendingPlayError@@3V?$scoped_ptr@Vexception@std@@@boost@@A": "0x96dcf4 (data)",
+          "?throwPendingPlayError@@YAXXZ": "0x44ab30 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?OnFileNew@CIDEDocManager@@UAEXXZ"
+        ]
+      },
+      {
+        "address": "0044ac2f",
+        "symbol": "?OnFileNew@CIDEDocManager@@UAEXXZ [0x5f:0x70]",
+        "size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0044ac40",
+        "symbol": "?OnFileNew@CIDEDocManager@@UAEXXZ [0x70:0xa1]",
+        "size": 49,
+        "exact": true,
+        "verified_targets": {
+          "?reportDocumentException@@YAXABVexception@std@@@Z": "0x428850 (external)",
+          "?AfxMessageBox@@YGHIII@Z": "0x6a1160 (mfc90.dll!?AfxMessageBox@@YGHIII@Z)"
+        },
+        "local_eh": [
+          "$LN8"
+        ]
+      }
+    ],
+    "ide_ctor": [
+      {
+        "address": "00449910",
+        "symbol": "??0CIDEDocManager@@QAE@_N@Z",
+        "size": 464,
+        "exact": true,
+        "verified_targets": {
+          "??0CDocManager@@QAE@XZ": "0x6a117e (mfc90.dll!??0CDocManager@@QAE@XZ)",
+          "??_7CIDEDocManager@@6B@": "0x81685c (vtable RTTI .?AVCIDEDocManager@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?GetThisClass@CRobloxReportDocView@@SGPAUCRuntimeClass@@XZ": "0x455d40 (runtime class CRobloxReportDocView (CRuntimeClass 0x818364))",
+          "?GetThisClass@CRobloxView@@SGPAUCRuntimeClass@@XZ": "0x458e70 (runtime class CRobloxView (CRuntimeClass 0x819070))",
+          "?GetThisClass@CRbxChildFrame@@SGPAUCRuntimeClass@@XZ": "0x412b80 (runtime class CRbxChildFrame (CRuntimeClass 0x80e484))",
+          "?GetThisClass@CRobloxDoc@@SGPAUCRuntimeClass@@XZ": "0x44f200 (runtime class CRobloxDoc (CRuntimeClass 0x8172c0))",
+          "??0CMultiDocTemplate@@QAE@IPAUCRuntimeClass@@00@Z": "0x6a11cc (mfc90.dll!??0CMultiDocTemplate@@QAE@IPAUCRuntimeClass@@00@Z)",
+          "??_7CRbxPlayDocTemplate@@6B@": "0x81671c (vtable RTTI .?AVCRbxPlayDocTemplate@@ offset 0x0)",
+          "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f04 (mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ)",
+          "?AddDocTemplate@CDocManager@@UAEXPAVCDocTemplate@@@Z": "0x6a1172 (mfc90.dll!?AddDocTemplate@CDocManager@@UAEXPAVCDocTemplate@@@Z)",
+          "?GetThisClass@CIDEBrowserView@@SGPAUCRuntimeClass@@XZ": "0x40df70 (runtime class CIDEBrowserView (CRuntimeClass 0x80cf74))",
+          "?GetThisClass@CChildFrame@@SGPAUCRuntimeClass@@XZ": "0x412af0 (runtime class CChildFrame (CRuntimeClass 0x80e468))",
+          "?GetThisClass@CBrowserDoc@@SGPAUCRuntimeClass@@XZ": "0x40dfa0 (runtime class CBrowserDoc (CRuntimeClass 0x80cfac))",
+          "??_7CRbxDocTemplate@@6B@": "0x816684 (vtable RTTI .?AVCRbxDocTemplate@@ offset 0x0)",
+          "?GetThisClass@CScriptEditor@@SGPAUCRuntimeClass@@XZ": "0x4638c0 (runtime class CScriptEditor (CRuntimeClass 0x81b208))",
+          "?GetThisClass@CMDIChildWnd@@SGPAUCRuntimeClass@@XZ": "0x6a0d2e (mfc90.dll!?GetThisClass@CMDIChildWnd@@SGPAUCRuntimeClass@@XZ)",
+          "?GetThisClass@CScriptDoc@@SGPAUCRuntimeClass@@XZ": "0x4638a0 (runtime class CScriptDoc (CRuntimeClass 0x81b1ec))",
+          "?GetThisClass@CObjectBrowser@@SGPAUCRuntimeClass@@XZ": "0x433410 (runtime class CObjectBrowser (CRuntimeClass 0x812520))",
+          "?GetThisClass@CNullDoc@@SGPAUCRuntimeClass@@XZ": "0x4332e0 (runtime class CNullDoc (CRuntimeClass 0x812410))"
+        },
+        "local_eh": [
+          "__ehhandler$??0CIDEDocManager@@QAE@_N@Z"
+        ]
+      },
+      {
+        "address": "0044a150",
+        "symbol": "??_GCIDEDocManager@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1CDocManager@@UAE@XZ": "0x6a116c (mfc90.dll!??1CDocManager@@UAE@XZ)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "instances": {
+    "??$callDoDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAXXZ": {
+      "address": "00417290",
+      "symbol": "??$callDoDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {
+        "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ": "0x416f90 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ": {
+      "address": "00416f90",
+      "symbol": "??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": false,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x96cef4 (local static of ??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01)",
+        "?sDHTMLWindowService@@3PADA": "0x92c1f8 (data)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external)",
+        "?n@?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96cef0 (local static of ??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?find@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@ABK@Z": {
+      "address": "00451600",
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@ABK@Z",
+      "size": 139,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??A?$map@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@@std@@QAEAAPAVMarshaller@@ABK@Z": {
+      "address": "005644a0",
+      "symbol": "??A?$map@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@@std@@QAEAAPAVMarshaller@@ABK@Z",
+      "size": 169,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": "0x5642c0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": {
+      "address": "005642c0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z",
+      "size": 470,
+      "exact": false,
+      "verified_targets": {
+        "?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": "0x668010 (instance (bytes equal, targets verified))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": "0x609bd0 (instance (bytes equal, targets verified))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (instance (bytes equal, targets verified))",
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (instance (bytes equal, targets verified))",
+        "?insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": "0x681a50 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": {
+      "address": "00668010",
+      "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z",
+      "size": 510,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (literal 'map/set<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBKPAVMarshaller@@@2@D@Z": "0x614ff0 (instance (bytes equal, targets verified))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": "0x4452a0 (instance (bytes equal, targets verified))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": "0x5b6c40 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBKPAVMarshaller@@@2@D@Z": {
+      "address": "00614ff0",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBKPAVMarshaller@@@2@D@Z",
+      "size": 63,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": {
+      "address": "004452a0",
+      "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z",
+      "size": 78,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": {
+      "address": "005b6c40",
+      "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z",
+      "size": 82,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": {
+      "address": "00609bd0",
+      "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ",
+      "size": 132,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": {
+      "address": "0068dfa0",
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ",
+      "size": 108,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QBE_NABV012@@Z": {
+      "address": "005ecca0",
+      "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QBE_NABV012@@Z",
+      "size": 42,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": {
+      "address": "00681a50",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z",
+      "size": 239,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@ABU?$pair@$$CBKPAVMarshaller@@@2@@Z": "0x668010 (instance (bytes equal, targets verified))",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": "0x609bd0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??0?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@K@1@ABV?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@1@@Z": {
+      "address": "00446110",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@K@1@ABV?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@1@@Z",
+      "size": 117,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@XZ": "0x56d3d0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@K@1@ABV?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@1@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@XZ": {
+      "address": "0056d3d0",
+      "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@XZ",
+      "size": 55,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??1?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@XZ": {
+      "address": "00553d80",
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@XZ",
+      "size": 112,
+      "exact": false,
+      "verified_targets": {
+        "?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x553ca0 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE@XZ"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": {
+      "address": "00553ca0",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "size": 220,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": "0x432a30 (instance (bytes equal, targets verified))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (instance (bytes equal, targets verified))",
+        "?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x5539d0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": {
+      "address": "00432a30",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z",
+      "size": 53,
+      "exact": false,
+      "verified_targets": {
+        "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": "0x432a30 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": {
+      "address": "005539d0",
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "size": 712,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (literal 'invalid map/set<T> iterator')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVout_of_range@std@@": "0x8d0c3c (throw info .?AVout_of_range@std@@ (3 catchable types))",
+        "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (instance (bytes equal, targets verified))",
+        "?_Min@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@@Z": "0x46cee0 (instance (bytes equal, targets verified))",
+        "?_Max@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@@Z": "0x609bb0 (instance (bytes equal, targets verified))",
+        "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": "0x4452a0 (instance (bytes equal, targets verified))",
+        "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@@Z": "0x5b6c40 (instance (bytes equal, targets verified))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+      ],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Min@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@@Z": {
+      "address": "0046cee0",
+      "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@@Z",
+      "size": 27,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?_Max@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@@Z": {
+      "address": "00609bb0",
+      "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMarshaller@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMarshaller@@@std@@@3@$0A@@std@@@2@PAU342@@Z",
+      "size": 28,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WBA@AEPAXI@Z": {
+      "address": "0041ca90",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_G?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": {
+      "address": "0041caa0",
+      "symbol": "??_G?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??1?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAE@XZ": "0x41b910 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WBE@AEPAXI@Z": {
+      "address": "0041b9f0",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ": {
+      "address": "0047d410",
+      "symbol": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+      "size": 1,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WKE@AEPAXI@Z": {
+      "address": "0041bcf0",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WCE@AEPAXI@Z": {
+      "address": "0041bd10",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WEE@AEPAXI@Z": {
+      "address": "0041b9d0",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WGE@AEPAXI@Z": {
+      "address": "0041b9e0",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WIE@AEPAXI@Z": {
+      "address": "0041ca80",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WME@AEPAXI@Z": {
+      "address": "0041bd00",
+      "symbol": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OBA@AEPAXI@Z": {
+      "address": "0041ca90",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_G?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": {
+      "address": "0041caa0",
+      "symbol": "??_G?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??1?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAE@XZ": "0x41b910 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OBE@AEPAXI@Z": {
+      "address": "0041b9f0",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OKE@AEPAXI@Z": {
+      "address": "0041bcf0",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OCE@AEPAXI@Z": {
+      "address": "0041bd10",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OEE@AEPAXI@Z": {
+      "address": "0041b9d0",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OGE@AEPAXI@Z": {
+      "address": "0041b9e0",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OIE@AEPAXI@Z": {
+      "address": "0041ca80",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OME@AEPAXI@Z": {
+      "address": "0041bd00",
+      "symbol": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@MAEPAXI@Z": "0x41caa0 (instance (bytes equal, targets verified) via ??_G)"
+      },
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?Serialize@CObject@@UAEXAAVCArchive@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?AssertValid@CObject@@UBEXXZ": {
+      "address": "0047d410",
+      "symbol": "?AssertValid@CObject@@UBEXXZ",
+      "size": 1,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    },
+    "?Dump@CObject@@UBEXAAVCDumpContext@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance emitted by this unit (STL / boost / RBX template), bytes equal, every target verified, not counted"
+    }
+  },
+  "local_statics": {
+    "??_B?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x96cef4",
+    "??_B?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96d088",
+    "?flag@?1???$declare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96cef8",
+    "?foo@?1??classDescriptor@?$Described@VDHTMLWindowService@@$1?sDHTMLWindowService@@3PADAV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96cfc8",
+    "?n@?1???$doDeclare@$1?sDHTMLWindowService@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96cef0"
+  },
+  "exact": [
+    "0041b6f0",
+    "0041b910",
+    "0041b970",
+    "0041b9d0",
+    "0041b9e0",
+    "0041b9f0",
+    "0041ba90",
+    "0041bb50",
+    "0041bb70",
+    "0041bc40",
+    "0041bc50",
+    "0041bcf0",
+    "0041bd00",
+    "0041bd10",
+    "0041c9c0",
+    "0041ca80",
+    "0041ca90",
+    "0041caa0",
+    "00449910",
+    "00449ae0",
+    "0044a150",
+    "0044abd0",
+    "007eef40",
+    "007eef70",
+    "007fa610",
+    "007fa630",
+    "007fa640"
+  ],
+  "exact_count": 27,
+  "pending_build_only": [],
+  "not_counted": {
+    "0044ac2f / 0044ac40": "pieces of OnFileNew 0044abd0 (listed separately by the function list)",
+    "instances": "STL / boost / RBX template bodies proven by bytes and targets (see instances)"
+  },
+  "left": {
+    "DHTMLWindow (descriptors and methods of the same unit)": "Navigate 0041cc00, SetBody 0041ccd0, SetCallback 0041cb30, Resize 0041cac0, Show 0041b2b0, Unbind 0041b660, Bind 0041d0a0, the BoundFuncDesc / SignalDesc initializers 007eed70..007eef20: they belong to class DHTMLWindow (FuncDesc<DHTMLWindow>, recursive_mutex +0x130, CLuaHtmlView* +0x13c), which has no vtable in this binary and whose own unit (00416e60.., 00417a10..) is not recovered",
+    "Creatable<Instance>::create<DHTMLWindowService> 0041cda0 / Creator 0041ceb0 / creator initializer 007eef90": "FactoryProduct::Creator has no native definition yet (util/Object.h declares it only)",
+    "CRobloxApp 0044bbf0": "tail jump m_pDocManager->playTemplate->getPlayDocument(): a CRobloxApp member, not recovered here (CRobloxApp files are not edited)",
+    "CRobloxWnd::RenderStatsItem (vtable 0081a32c, ctor 0045f340, update 0045f570)": "its constructor argument (stored at +0x170) is an object whose type is not derived (fields +0x58 .. +0x234 bound as child items, +0x210..+0x21c read by update); createBoundChildItem helpers 0045f120 / 0045f230 and the memory counters 0096ef44 / 0096efd0 / 00476470 belong to other units. Layout: Stats::Item (0x158), child Item* at +0x158..+0x16c, source pointer +0x170 (size 0x174 not yet read from its factory).",
+    "CLuaHtmlView::Binder (vtable 00810654)": "COM element binder (EventHandler +0x2c, IHTMLElement* +0x30, property-binding container +0xc, enable_shared_from_this +4); constructor 0042c0d0 needs the CLuaHtmlView unit and PropertyDescriptor bindings: not attempted in this pass"
+  },
+  "vtables": {
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x80eeac",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WBA@AEPAXI@Z = 0x41ca90 (instance (bytes equal, targets verified))",
+        "1": "?getClassName@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UBEABVName@2@XZ = 0x41bb50 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x80eea4",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WBE@AEPAXI@Z = 0x41b9f0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x80eebc",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (instance (bytes equal, targets verified))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external)",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x80ee4c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WKE@AEPAXI@Z = 0x41bcf0 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x80ee8c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WCE@AEPAXI@Z = 0x41bd10 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x80ee7c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WEE@AEPAXI@Z = 0x41b9d0 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x80ee6c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WGE@AEPAXI@Z = 0x41b9e0 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x80ee5c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WIE@AEPAXI@Z = 0x41ca80 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x80ee3c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@WME@AEPAXI@Z = 0x41bd00 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x80ee9c",
+      "rtti": ".?AV?$DescribedCreatable@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x80edc0",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OBA@AEPAXI@Z = 0x41ca90 (instance (bytes equal, targets verified))",
+        "1": "?getClassName@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UBEABVName@2@XZ = 0x41bb50 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x80edb8",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OBE@AEPAXI@Z = 0x41b9f0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x80edcc",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (instance (bytes equal, targets verified))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external)",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x80ed60",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OKE@AEPAXI@Z = 0x41bcf0 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x80eda0",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OCE@AEPAXI@Z = 0x41bd10 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x80ed90",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OEE@AEPAXI@Z = 0x41b9d0 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x80ed80",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OGE@AEPAXI@Z = 0x41b9e0 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x80ed70",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OIE@AEPAXI@Z = 0x41ca80 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x80ed50",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@OME@AEPAXI@Z = 0x41bd00 (instance (bytes equal, targets verified))",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x80edb0",
+      "rtti": ".?AV?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@@": {
+      "address": "0x80efc4",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WBA@AEPAXI@Z = 0x41ca90 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UBEABVName@2@XZ = 0x41bb50 (own row)"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@@": {
+      "address": "0x80efbc",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WBE@AEPAXI@Z = 0x41b9f0 (own row)"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$GuidItem@VInstance@RBX@@@RBX@@@": {
+      "address": "0x80efd4",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (instance (bytes equal, targets verified))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external)",
+        "2": "?askAddChild@DHTMLWindowService@@MBE_NPBVInstance@RBX@@@Z = 0x416e60 (defined in the DHTMLWindow unit (not compiled here; body shape checked above))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": {
+      "address": "0x80ef64",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WKE@AEPAXI@Z = 0x41bcf0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@@": {
+      "address": "0x80efa4",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WCE@AEPAXI@Z = 0x41bd10 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@@": {
+      "address": "0x80ef94",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WEE@AEPAXI@Z = 0x41b9d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@@": {
+      "address": "0x80ef84",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WGE@AEPAXI@Z = 0x41b9e0 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@": {
+      "address": "0x80ef74",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WIE@AEPAXI@Z = 0x41ca80 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7DHTMLWindowService@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": {
+      "address": "0x80ef54",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_EDHTMLWindowService@@WME@AEPAXI@Z = 0x41bd00 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7DHTMLWindowService@@6BDebugable@RBX@@@": {
+      "address": "0x80efb4",
+      "rtti": ".?AVDHTMLWindowService@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      }
+    },
+    "??_7CIDEDocManager@@6B@": {
+      "address": "0x81685c",
+      "rtti": ".?AVCIDEDocManager@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?GetRuntimeClass@CDocManager@@UBEPAUCRuntimeClass@@XZ = 0x6a1184 (mfc90.dll!?GetRuntimeClass@CDocManager@@UBEPAUCRuntimeClass@@XZ)",
+        "1": "??_ECIDEDocManager@@UAEPAXI@Z = 0x44a150 (own row (??_G))",
+        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (instance (bytes equal, targets verified))",
+        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "5": "?AddDocTemplate@CDocManager@@UAEXPAVCDocTemplate@@@Z = 0x6a1172 (mfc90.dll!?AddDocTemplate@CDocManager@@UAEXPAVCDocTemplate@@@Z)",
+        "6": "?GetFirstDocTemplatePosition@CDocManager@@UBEPAU__POSITION@@XZ = 0x6a118a (mfc90.dll!?GetFirstDocTemplatePosition@CDocManager@@UBEPAU__POSITION@@XZ)",
+        "7": "?GetNextDocTemplate@CDocManager@@UBEPAVCDocTemplate@@AAPAU__POSITION@@@Z = 0x6a1190 (mfc90.dll!?GetNextDocTemplate@CDocManager@@UBEPAVCDocTemplate@@AAPAU__POSITION@@@Z)",
+        "8": "?RegisterShellFileTypes@CDocManager@@UAEXH@Z = 0x6a1196 (mfc90.dll!?RegisterShellFileTypes@CDocManager@@UAEXH@Z)",
+        "9": "?OpenDocumentFile@CDocManager@@UAEPAVCDocument@@PBD@Z = 0x6a119c (mfc90.dll!?OpenDocumentFile@CDocManager@@UAEPAVCDocument@@PBD@Z)",
+        "10": "?SaveAllModified@CDocManager@@UAEHXZ = 0x6a11a2 (mfc90.dll!?SaveAllModified@CDocManager@@UAEHXZ)",
+        "11": "?CloseAllDocuments@CDocManager@@UAEXH@Z = 0x6a11a8 (mfc90.dll!?CloseAllDocuments@CDocManager@@UAEXH@Z)",
+        "12": "?GetOpenDocumentCount@CDocManager@@UAEHXZ = 0x6a11ae (mfc90.dll!?GetOpenDocumentCount@CDocManager@@UAEHXZ)",
+        "13": "?DoPromptFileName@CIDEDocManager@@UAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@IKHPAVCDocTemplate@@@Z = 0x449ae0 (own row)",
+        "14": "?OnDDECommand@CDocManager@@UAEHPAD@Z = 0x6a11ba (mfc90.dll!?OnDDECommand@CDocManager@@UAEHPAD@Z)",
+        "15": "?OnFileNew@CIDEDocManager@@UAEXXZ = 0x44abd0 (own row)",
+        "16": "?OnFileOpen@CDocManager@@UAEXXZ = 0x6a11c6 (mfc90.dll!?OnFileOpen@CDocManager@@UAEXXZ)"
+      }
+    }
+  },
+  "proposals": [],
+  "scope": "Inactive. Exact rows with verified targets; no pending rows. No active build, swap or credit."
+}

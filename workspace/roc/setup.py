@@ -275,6 +275,31 @@ _TOOLCHAIN_SCAN_LOCK = threading.Lock()
 @functools.lru_cache(maxsize=8)
 def _toolchain_paths(tools):
     """One walk for the same installed VC/SDK candidates formerly found by globs."""
+    # The full walk costs ~3 s per process.  Reuse it while the top-level packages (names + mtimes) are unchanged
+    # and every cached path still exists; any install/removal of a package changes the key.
+    packages = sorted((p.name, p.stat().st_mtime_ns) for p in tools.iterdir() if p.is_dir()) if tools.exists() else []
+    cache = Path(__file__).resolve().parent.parent / 'work' / 'cache' / 'toolchain-paths.json'
+    key = [str(tools.resolve()), packages]
+    try:
+        saved = json.loads(cache.read_text())
+        if saved['key'] == json.loads(json.dumps(key)):
+            found = tuple(tuple(Path(p) for p in group) for group in saved['paths'])
+            if all(p.exists() for group in found for p in group):
+                return found
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    found = _walk_toolchain_paths(tools)
+    try:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        tmp = cache.with_suffix('.%d.tmp' % os.getpid())
+        tmp.write_text(json.dumps({'key': key, 'paths': [[str(p) for p in group] for group in found]}))
+        os.replace(tmp, cache)
+    except OSError:
+        pass
+    return found
+
+
+def _walk_toolchain_paths(tools):
     compilers, sdks = [], []
     case = re.IGNORECASE if os.name == 'nt' else 0
     sdk_name, vc_name = re.compile('WinSDK',case), re.compile('VC',case)

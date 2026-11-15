@@ -11,10 +11,6 @@
 // Microsoft Foundation Classes product.
 //
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxcommandmanager | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5b10cd9f | roc native-status --write
 #include "stdafx.h"
 #include "afxcommandmanager.h"
 #include "afxsettingsstore.h"

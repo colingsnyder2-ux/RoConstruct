@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPXTUtil | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 00c64f6d | roc native-status --write
 #include "stdafx.h"
 #include "Common/XTPVC80Helpers.h"  // Visual Studio 2005 helper functions
 

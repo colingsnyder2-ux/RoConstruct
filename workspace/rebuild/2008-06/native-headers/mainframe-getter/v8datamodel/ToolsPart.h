@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ToolsPart | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7146536f | roc native-status --write
 // Inactive TU profile: original setter signature, inline value snapshot.
 // Do not combine this definition with the shared ToolsPart.h in one TU.
 #include "v8datamodel/MouseCommand.h"

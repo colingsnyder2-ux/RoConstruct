@@ -18,7 +18,7 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
-                native_agent_submit=True, native_agent_minutes=4, native_agent_checks=6, native_agent_tasks="", native_excluded_classes="CRobloxView,CMainFrame,HUMAN", native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="method", native_compile_batch=4,
+                native_agent_submit=True, native_source_only=False, native_agent_minutes=4, native_agent_checks=6, native_agent_tasks="", native_excluded_classes="CRobloxView,CMainFrame,HUMAN", native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="method", native_compile_batch=4,
                 native_selection='balanced', native_escalation_model='', native_escalate_after=2, native_max_no_improvement=3, native_repair_rounds=2, native_repair_trials=24)
 LIVE = {"native_agent_submit","native_agent_minutes", "native_agent_checks", "native_agent_tasks", "native_excluded_classes", "workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
@@ -113,7 +113,9 @@ def validate(values, base=None, check_model=True):
         if config["source_only"]:
             raise ValueError("Integrator requires a model")
         config["client"] = "2008-06"
-    for key in ("native_agent_submit", "use_revng", "use_remill", "guided_mutations", "near_repair", "source_only", "cloud_allowed"):
+    if config['native_source_only'] and (config['lease_mode']!='native' or config['native_generation']!='agent' or config['native_agent_submit']):
+        raise ValueError('Source recovery requires native agents with local-only drafts')
+    for key in ("native_agent_submit", "native_source_only", "use_revng", "use_remill", "guided_mutations", "near_repair", "source_only", "cloud_allowed"):
         if type(config[key]) is not bool:
             raise ValueError("Invalid %s" % key)
     if not worker.USER_RE.fullmatch(config["user"]):
@@ -275,8 +277,8 @@ def native_loop(config, control, emit):
     from roc.rebuild_install import prepare
     prepare(log=lambda message: emit('log', slot=0, message=message), **({'build_dependencies':False} if config['native_generation']=='agent' else {}))
     worker.save_settings(user=config["user"], server=config["server"])
-    emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
-    while not control.stopping:
+    emit("log", slot=0, message="Startup: native source recovery; client selection stays unchanged" if config['native_source_only'] else "Startup: syncing accepted native baseline (unchanged overlays are reused)")
+    while not config['native_source_only'] and not control.stopping:
         try:
             integration.command(SimpleNamespace(action="sync", server=config["server"], user=config["user"], token=None))
             outage_started = None

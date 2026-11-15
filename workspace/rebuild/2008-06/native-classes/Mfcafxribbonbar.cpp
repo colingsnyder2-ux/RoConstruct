@@ -11,10 +11,6 @@
 // Copyright (C) Microsoft Corporation
 // All rights reserved.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxribbonbar | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src fa0f3a43 | roc native-status --write
 #include "stdafx.h"
 #include "afxcontextmenumanager.h"
 #include "afxribbonbar.h"

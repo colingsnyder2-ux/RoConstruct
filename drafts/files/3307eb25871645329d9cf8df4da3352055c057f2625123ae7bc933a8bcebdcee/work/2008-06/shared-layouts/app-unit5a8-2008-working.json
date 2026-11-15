@@ -1,0 +1,1920 @@
+{
+  "class": "RBX ScriptContext unit of the application range 005a8000..005b0000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022 (document-swap flags)",
+  "flags": {
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5a8-2008/NativeAppUnit5A8_2008_script_context.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5A8_2008ScriptContext.cpp"
+    ],
+    "lifetime": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5a8-2008/NativeAppUnit5A8_2008_owner_script_context_lifetime.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ScriptContextLifetime.cpp"
+    ],
+    "guid": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5a8-2008/NativeAppUnit5A8_2008_owner_guid.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Guid.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5A8_2008ScriptContext.cpp": "33cd51d397c4a2aeb6ec950a73811915c9c162a43fd63b2f41b8e5adc42eea32",
+    "rebuild/2008-06/native-classes/ScriptContextLifetime.cpp": "fa5458538e8d2f4786a6b895e815fd876d93a9846fee7664a79a639d9ccdf2d4",
+    "rebuild/2008-06/native-classes/Guid.cpp": "510e74327e8083c5ddc2ad6efb148440939d9ca3dfc22a78561e5a639727c442",
+    "rebuild/2008-06/tests/record_native_app_unit5a8_2008.py": "eb66d1639eae8d9aed19617ad49382361e3ce8ab124f487eecbbc65611c1dbe4",
+    "rebuild/2008-06/native-headers/script/ScriptContext.h": "84a272b073c1abe45677d17f3bbffc7aeb773a118dd24efd4579e412ebd2c433"
+  },
+  "objects": {
+    "unit": "53b20021d72429aa79a986e39cf3a797e57f0ea0b01ea353d2786ae5924e7c19",
+    "lifetime": "b1fd6c395bbcfdd9eb70c295c75f58314cd67ab3bae84c96bbd723f94748983e",
+    "guid": "64f5611f7245dcfb8ce1e5e85220b2d0375862cfa3488acd2937c64e7560eb8c"
+  },
+  "layout": {
+    "ScriptContext": "sizeof 0x1f8 (malloc 0x1f8 in Creatable<Instance>::create<ScriptContext> 0042d3f0); globalState +0x138 (gc 005a86c0, getThreadCount 005a9120; +8 from the Listener<RunService, RunTransition> subobject at +0x130 in onEvent 005a8770); yieldEvent +0x1a8 (wait 005a9260); RobloxExtraSpace 12 bytes before lua_State (getThreadCount reads [L-0xc] -> *threadCount)"
+  },
+  "classnames": {
+    "0095af74": "Object",
+    "0095b1bc": "Color3",
+    "0095b1c0": "Vector3",
+    "0095b1c4": "BrickColor",
+    "0095b1c8": "CFrame",
+    "0095b1e4": "RBXScriptSignal",
+    "0095b1e8": "RBXScriptConnection",
+    "0095b1d4": "Enums",
+    "0095b1d8": "Enum",
+    "0095b1dc": "EnumItem",
+    "00949730": "shared_ptr<ThreadRef::Node>"
+  },
+  "unit_map": {
+    "guid tail ..005a858f": "util/Guid.cpp, continued from 005a80d0 (app-unit5a0 unit map): generateGUID 005a8140 (CoCreateGuid / StringFromGUID2 / WideCharToMultiByte imports), Data::operator< 005a8210, initLocalScope 005a8260, Guid() 005a8300 (boost::call_once 00557330), the scope / index comparisons 005a8330 / 005a83b0 and readableString 005a8440 (\"%%s_%%d\"). Owner: native-classes/Guid.cpp / util/Guid.h (guid-working-probe.json records them relocation-normalized but does not count them). Built here from the committed Guid.cpp compiled unchanged: makeGuidString 005a80d0, generateGUID 005a8140, initLocalScope 005a8260, Guid() 005a8300 (4 counted rows). Not exact from the donor shapes: Data::operator< 005a8210 (86/70 B), Data::readableString 005a8440 (303/324 B); not attempted: 005a8200 (Data copy), 005a82e0 (localScope getter), 005a8330 / 005a83b0 (compare).",
+    "script-context 005a8590..005affff": "script/ScriptContext.cpp (continues to 005b071f, app-unit5b0 unit map). Boundary: after Guid.cpp readableString 005a8440; Lua::ScopedPopper::~ScopedPopper 005a8590 (called only from this unit's EH funclets 007d35c5 / 007d363c) opens the unit. Evidence: RTTI .?AVScriptContext@RBX@@ vtables (vptr stores of ~ScriptContext 005ae730 and ScriptContext() 005ae490, malloc 0x1f8 in Creatable<Instance>::create<ScriptContext> 0042d3f0 = sizeof ScriptContext), FactoryProduct<ScriptContext, Instance, sScriptContext> ctor 005a8970 / dtor 005a8790 / ??_G 005a8e50 and its ??_E thunks 005a8e40..005a8eb0 / 005ad9d0 / 005ad9e0, DescribedCreatable ctor 005ad930, Described<ScriptContext>::classDescriptor 005ad200 (\"ScriptContext\", classDescriptor<Instance> 0040ad80), the ScriptContext ??_E thunks 005ae690..005ae720 and ??_G 005aed20, the static Lua C functions (sandboxThread 005a8660, getContext 005a86e0, tick 005a8750, delay 005a9140 (\"delay function requires 2 arguments\"), wait 005a9260, the RunService time getter 005a92d0, print 005a9320 (\"tostring\"), settings() 005adc60, loadfile 005ade40, dofile 005adf80, stats 005aeea0 (\"Stats\")), setThreadIdentity 005aeaf0 (\"io\", \"settings\"), ScriptImpersonator 005ad8c0, resume 005ae0d0 (\"Game script timout\"), the timeout hook 005adbf0 / 005ae230, closeState 005ae280 (\"Script memory leaks\"), openState 005aefa0 (\"Failed to create Lua state\"), executeInNewThread 005af940, onServiceProvider 005afd60, startScript 005affa0, reportError 005ac610 (\"nSlu\", \"%%s, line %%d - %%s %%s\"), LuaArguments::push 005aba50 / get 005ad380 and pushArguments 005abf90, the Stats::Item COMDATs 005ad770 / 005ad810 (Item(const char*)) / Creatable::create<Item> 005adb70, and the Lua bridge template COMDATs this unit is the first to instantiate: Bridge<T>::getObject / on_index / on_newindex / on_gc / on_tostring / on_eq wrappers, registerClass (\"__index\" / \"__newindex\" / \"__gc\" / \"__eq\" / \"__tostring\") and pushNewObject for CFrame, Vector3, Color3, BrickColor, Object (shared_ptr<DescribedBase>), RBXScriptSignal, RBXScriptConnection, ThreadRef::Node and Enums / Enum / EnumItem (className statics listed under classnames), SharedPtrBridge<T>::push, SingletonBridge<T>::push, getValue / getPtr<Value>, boost::any holder<shared_ptr<DescribedBase>>, plus the STL / boost instantiations for set<Script*>, vector<shared_ptr<Script>>, vector<WaitingThread>, vector<shared_ptr<Instance>>, thread_specific_ptr<Security::Context> (functor_manager / tss_adapter) and boost::function invokers. Library code: none (Lua 5.1.1 lies at 006217f0..00628f73; lapi / lauxlib calls are bound by address). Maintainer exclusion: none in this range."
+  },
+  "unit_rows": {
+    "guid tail": {
+      "rows": 10,
+      "span": "005a80d0..005a8440"
+    },
+    "script-context": {
+      "rows": 227,
+      "span": "005a8590..005affa0"
+    }
+  },
+  "range_rows_total": 237,
+  "range_rows_counted_by_other_receipts": [],
+  "rows": {
+    "unit": [
+      {
+        "address": "005a8660",
+        "symbol": "?sandboxThread@ScriptContext@RBX@@CAXPAUlua_State@@@Z",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "?lua_createtable@@YAXPAUlua_State@@HH@Z": "0x612570 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushlstring@@YAXPAUlua_State@@PBDI@Z": "0x612240 (external (evidence name))",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (external (evidence name))",
+          "?lua_replace@@YAXPAUlua_State@@H@Z": "0x611d10 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a86e0",
+        "symbol": "?getContext@ScriptContext@RBX@@SAAAV12@PAUlua_State@@@Z",
+        "size": 51,
+        "target_size": 51,
+        "exact": true,
+        "verified_targets": {
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_gettable@@YAXPAUlua_State@@H@Z": "0x612460 (external (evidence name))",
+          "?lua_touserdata@@YAPAXPAUlua_State@@H@Z": "0x612120 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8750",
+        "symbol": "?tick@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?getTick@System@G3D@@SANXZ": "0x5083d0 (external)",
+          "?lua_pushnumber@@YAXPAUlua_State@@N@Z": "0x612200 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8770",
+        "symbol": "?onEvent@ScriptContext@RBX@@MAEXPBVRunService@2@VRunTransition@2@@Z",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gc@@YAHPAUlua_State@@HH@Z": "0x612a80 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8830",
+        "symbol": "?getObject@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAAAVCoordinateFrame@G3D@@PAUlua_State@@I@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8850",
+        "symbol": "?on_tostring@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHABVCoordinateFrame@G3D@@PAUlua_State@@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "?convertToString@?$StringConverter@VCoordinateFrame@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCoordinateFrame@G3D@@@Z": "0x5beaf0 (external)",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_tostring@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHABVCoordinateFrame@G3D@@PAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005a88d0",
+        "symbol": "?getObject@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SAAAVVector3@G3D@@PAUlua_State@@I@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a88f0",
+        "symbol": "?on_tostring@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PAUlua_State@@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "?convertToString@?$StringConverter@VVector3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@G3D@@@Z": "0x5bea10 (external (evidence name))",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_tostring@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005a8a30",
+        "symbol": "?getObject@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@SAAAVColor3@G3D@@PAUlua_State@@I@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8a50",
+        "symbol": "?on_tostring@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PAUlua_State@@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z": "0x5becf0 (external (evidence name))",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_tostring@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005a8ad0",
+        "symbol": "?getObject@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SAAAVBrickColor@3@PAUlua_State@@I@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8af0",
+        "symbol": "?on_tostring@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PAUlua_State@@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "?convertToString@?$StringConverter@VBrickColor@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVBrickColor@2@@Z": "0x5becc0 (external (evidence name))",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_tostring@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005a8b70",
+        "symbol": "?on_gc@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8b90",
+        "symbol": "?on_tostring@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_tostring@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVItem@EnumDescriptor@Reflection@3@PAUlua_State@@@Z": "0x5a85b0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8be0",
+        "symbol": "?on_index@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVItem@EnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z": "0x61ee50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8c10",
+        "symbol": "?on_eq@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 64,
+        "target_size": 64,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8f70",
+        "symbol": "?on_tostring@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PAUlua_State@@@Z",
+        "size": 139,
+        "target_size": 139,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_07DLHKKNML@Signal?5?$AA@": "0x83444c (string 'Signal ')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x802450 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?on_tostring@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005a9120",
+        "symbol": "?getThreadCount@ScriptContext@RBX@@QBEIXZ",
+        "size": 19,
+        "target_size": 19,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005a9320",
+        "symbol": "?print@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+        "size": 439,
+        "target_size": 439,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (external (evidence name))",
+          "??_C@_08FNIIFOJC@tostring?$AA@": "0x8344a8 (string 'tostring')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (external (evidence name))",
+          "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z": "0x8024b4 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z)",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_call@@YAXPAUlua_State@@HH@Z": "0x612920 (external (evidence name))",
+          "?lua_tolstring@@YAPBDPAUlua_State@@HPAI@Z": "0x612010 (external (evidence name))",
+          "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x802448 (msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+          "__imp____iob_func": "0x802758 (msvcr90.dll!__iob_func)",
+          "??_C@_01GPOEFGEJ@?7?$AA@": "0x8344a4 (string '\\t')",
+          "__imp__fputs": "0x8027c8 (msvcr90.dll!fputs)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external (evidence name))",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external (evidence name))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??_C@_0CL@KMHHCBJA@?8tostring?8?5must?5return?5a?5string?5@": "0x834478 (string \"'tostring' must return a string to 'prin\")",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7runtime_error@std@@6B@": "0x80b7f8 (external)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?print@ScriptContext@RBX@@CAHPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005a94e0",
+        "symbol": "?on_gc@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9500",
+        "symbol": "?on_tostring@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_tostring@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHABVCoordinateFrame@G3D@@PAUlua_State@@@Z": "0x5a8850 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9550",
+        "symbol": "?on_index@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHABVCoordinateFrame@G3D@@PBDPAUlua_State@@@Z": "0x61e690 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9600",
+        "symbol": "?on_gc@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9620",
+        "symbol": "?on_tostring@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_tostring@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PAUlua_State@@@Z": "0x5a88f0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9670",
+        "symbol": "?on_index@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHABVVector3@G3D@@PBDPAUlua_State@@@Z": "0x61cfe0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9710",
+        "symbol": "?on_gc@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB": "0x95b1e8 (className static -> 'RBXScriptConnection')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9730",
+        "symbol": "?on_tostring@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 40,
+        "target_size": 40,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB": "0x95b1e8 (className static -> 'RBXScriptConnection')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "??_C@_0L@PJJKMLL@Connection?$AA@": "0x834358 (string 'Connection')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9790",
+        "symbol": "?on_index@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB": "0x95b1e8 (className static -> 'RBXScriptConnection')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHABVconnection@signals@boost@@PBDPAUlua_State@@@Z": "0x61f480 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9810",
+        "symbol": "?on_tostring@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 40,
+        "target_size": 40,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@1PBDB": "0x949730 (className static -> 'shared_ptr<ThreadRef::Node>')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "??_C@_09MPGPGIBJ@ThreadRef?$AA@": "0x834364 (string 'ThreadRef')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a98a0",
+        "symbol": "?on_gc@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a98c0",
+        "symbol": "?on_tostring@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_tostring@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PAUlua_State@@@Z": "0x5a8a50 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9910",
+        "symbol": "?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHABVColor3@G3D@@PBDPAUlua_State@@@Z": "0x61c8c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a99b0",
+        "symbol": "?on_gc@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a99d0",
+        "symbol": "?on_tostring@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_tostring@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PAUlua_State@@@Z": "0x5a8af0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9a20",
+        "symbol": "?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHABVBrickColor@3@PBDPAUlua_State@@@Z": "0x61d640 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9a50",
+        "symbol": "?on_eq@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 64,
+        "target_size": 64,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9a90",
+        "symbol": "?push@?$SingletonBridge@PBVAllEnumDescriptors@Lua@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVAllEnumDescriptors@23@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (external (evidence name))",
+          "?push@?$SingletonBridge@PBVAllEnumDescriptors@Lua@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVAllEnumDescriptors@23@@Z": "0x5a9a90 (own row)",
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (external (evidence name))",
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (external (evidence name))",
+          "?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d4 (className static -> 'Enums')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (external (evidence name))",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (external (evidence name))",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (external (evidence name))",
+          "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9b30",
+        "symbol": "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (external (evidence name))",
+          "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z": "0x5a9b30 (own row)",
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (external (evidence name))",
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (external (evidence name))",
+          "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d8 (className static -> 'Enum')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (external (evidence name))",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (external (evidence name))",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (external (evidence name))",
+          "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9bd0",
+        "symbol": "?push@?$SingletonBridge@PBVItem@EnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVItem@EnumDescriptor@Reflection@3@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "verified_targets": {
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (external (evidence name))",
+          "?push@?$SingletonBridge@PBVItem@EnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVItem@EnumDescriptor@Reflection@3@@Z": "0x5a9bd0 (own row)",
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (external (evidence name))",
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))",
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (external (evidence name))",
+          "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1dc (className static -> 'EnumItem')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (external (evidence name))",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (external (evidence name))",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (external (evidence name))",
+          "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9d60",
+        "symbol": "?on_tostring@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_tostring@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PAUlua_State@@@Z": "0x5a8f70 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9db0",
+        "symbol": "?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHABV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z": "0x620760 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9de0",
+        "symbol": "?on_gc@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d4 (className static -> 'Enums')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9e90",
+        "symbol": "?on_eq@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 64,
+        "target_size": 64,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d4 (className static -> 'Enums')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9ed0",
+        "symbol": "?on_gc@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d8 (className static -> 'Enum')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9f70",
+        "symbol": "?on_index@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?luaL_checklstring@@YAPBDPAUlua_State@@HPAI@Z": "0x6116c0 (external (evidence name))",
+          "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d8 (className static -> 'Enum')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?on_index@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHABQBVEnumDescriptor@Reflection@3@PBDPAUlua_State@@@Z": "0x61efc0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a9fa0",
+        "symbol": "?on_eq@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 64,
+        "target_size": 64,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@1PBDB": "0x95b1d8 (className static -> 'Enum')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aa110",
+        "symbol": "??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z",
+        "size": 190,
+        "target_size": 190,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (external (evidence name))",
+          "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95af74 (className static -> 'Object')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (external (evidence name))",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z"
+        ]
+      },
+      {
+        "address": "005aa1d0",
+        "symbol": "??$pushNewObject@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z",
+        "size": 190,
+        "target_size": 190,
+        "exact": true,
+        "verified_targets": {
+          "?lua_newuserdata@@YAPAXPAUlua_State@@I@Z": "0x612c40 (external (evidence name))",
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?lua_getfield@@YAXPAUlua_State@@HPBD@Z": "0x612490 (external (evidence name))",
+          "?lua_setmetatable@@YAHPAUlua_State@@H@Z": "0x6127f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??$pushNewObject@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z"
+        ]
+      },
+      {
+        "address": "005aa2f0",
+        "symbol": "?registerClass@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 362,
+        "target_size": 362,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c0 (className static -> 'Vector3')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9670 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9640 (structural: on_newindex wrapper reading className 'Vector3')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9600 (own row)",
+          "??_C@_04GIMIAOHA@__eq?$AA@": "0x8344c0 (string '__eq')",
+          "?on_eq@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a96a0 (structural: on_eq wrapper reading className 'Vector3')",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9620 (own row)",
+          "??_C@_05MEHDOBFN@__add?$AA@": "0x834510 (string '__add')",
+          "?on_add@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61cba0 (external)",
+          "??_C@_05HFNNBAII@__sub?$AA@": "0x834508 (string '__sub')",
+          "?on_sub@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61cc00 (external)",
+          "??_C@_05FLJIBNKK@__mul?$AA@": "0x834500 (string '__mul')",
+          "?on_mul@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61cc60 (external)",
+          "??_C@_05IDIBPCOP@__div?$AA@": "0x8344f8 (string '__div')",
+          "?on_div@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61cd40 (external)",
+          "??_C@_05MHFNBPAK@__unm?$AA@": "0x8344f0 (string '__unm')",
+          "?on_unm@Vector3Bridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61ce40 (external)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aa460",
+        "symbol": "?registerClass@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 330,
+        "target_size": 330,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1c8 (className static -> 'CFrame')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9550 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9520 (structural: on_newindex wrapper reading className 'CFrame')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a94e0 (own row)",
+          "??_C@_04GIMIAOHA@__eq?$AA@": "0x8344c0 (string '__eq')",
+          "?on_eq@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9580 (structural: on_eq wrapper reading className 'CFrame')",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9500 (own row)",
+          "??_C@_05MEHDOBFN@__add?$AA@": "0x834510 (string '__add')",
+          "?on_add@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61dbf0 (external)",
+          "??_C@_05HFNNBAII@__sub?$AA@": "0x834508 (string '__sub')",
+          "?on_sub@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61dc70 (external)",
+          "??_C@_05FLJIBNKK@__mul?$AA@": "0x834500 (string '__mul')",
+          "?on_mul@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61ecc0 (external (evidence name))",
+          "??_C@_07INFCJLKD@inverse?$AA@": "0x834518 (string 'inverse')",
+          "?on_inverse@CoordinateFrameBridge@Lua@RBX@@CAHPAUlua_State@@@Z": "0x61dcf0 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aa660",
+        "symbol": "?registerClass@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 196,
+        "target_size": 196,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB": "0x95b1e8 (className static -> 'RBXScriptConnection')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9790 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9760 (structural: on_newindex wrapper reading className 'RBXScriptConnection')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9710 (own row)",
+          "??_C@_04GIMIAOHA@__eq?$AA@": "0x8344c0 (string '__eq')",
+          "?on_eq@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a97c0 (structural: on_eq wrapper reading className 'RBXScriptConnection')",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9730 (own row)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aa730",
+        "symbol": "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+        "size": 290,
+        "target_size": 290,
+        "exact": true,
+        "verified_targets": {
+          "?lua_pushnil@@YAXPAUlua_State@@@Z": "0x6121e0 (external (evidence name))",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (external (evidence name))",
+          "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": "0x5aa730 (own row)",
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (external (evidence name))",
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))",
+          "??$pushNewObject@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z": "0x5aa110 (own row)",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (external (evidence name))",
+          "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005aa860",
+        "symbol": "?registerClass@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 196,
+        "target_size": 196,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB": "0x95b1bc (className static -> 'Color3')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9910 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a98e0 (structural: on_newindex wrapper reading className 'Color3')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a98a0 (own row)",
+          "??_C@_04GIMIAOHA@__eq?$AA@": "0x8344c0 (string '__eq')",
+          "?on_eq@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9940 (structural: on_eq wrapper reading className 'Color3')",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a98c0 (own row)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aa930",
+        "symbol": "?registerClass@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 196,
+        "target_size": 196,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@1PBDB": "0x95b1c4 (className static -> 'BrickColor')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9a20 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a99f0 (structural: on_newindex wrapper reading className 'BrickColor')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a99b0 (own row)",
+          "??_C@_04GIMIAOHA@__eq?$AA@": "0x8344c0 (string '__eq')",
+          "?on_eq@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9a50 (own row)",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a99d0 (own row)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aaa30",
+        "symbol": "?on_gc@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@1PBDB": "0x949730 (className static -> 'shared_ptr<ThreadRef::Node>')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aaa80",
+        "symbol": "?on_eq@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 64,
+        "target_size": 64,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@1PBDB": "0x949730 (className static -> 'shared_ptr<ThreadRef::Node>')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))",
+          "?lua_pushboolean@@YAXPAUlua_State@@H@Z": "0x6123f0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aaac0",
+        "symbol": "?push@?$SharedPtrBridge@VSignalInstance@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@Z",
+        "size": 290,
+        "target_size": 290,
+        "exact": true,
+        "verified_targets": {
+          "?lua_pushnil@@YAXPAUlua_State@@@Z": "0x6121e0 (external (evidence name))",
+          "?lua_gettop@@YAHPAUlua_State@@@Z": "0x611c10 (external (evidence name))",
+          "?push@?$SharedPtrBridge@VSignalInstance@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@Z": "0x5aaac0 (own row)",
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_rawget@@YAXPAUlua_State@@H@Z": "0x6124f0 (external (evidence name))",
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))",
+          "??$pushNewObject@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAPAV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@PAUlua_State@@V34@@Z": "0x5aa1d0 (own row)",
+          "?lua_pushvalue@@YAXPAUlua_State@@H@Z": "0x611dd0 (external (evidence name))",
+          "?lua_rawset@@YAXPAUlua_State@@H@Z": "0x612710 (external (evidence name))",
+          "?lua_remove@@YAXPAUlua_State@@H@Z": "0x611c70 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?push@?$SharedPtrBridge@VSignalInstance@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "005aad90",
+        "symbol": "?on_gc@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95af74 (className static -> 'Object')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aade0",
+        "symbol": "?on_gc@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?luaL_checkudata@@YAPAXPAUlua_State@@HPBD@Z": "0x6115b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ab6c0",
+        "symbol": "?registerClass@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 196,
+        "target_size": 196,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@1PBDB": "0x949730 (className static -> 'shared_ptr<ThreadRef::Node>')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9870 (structural: on_index wrapper reading className 'shared_ptr<ThreadRef::Node>')",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9840 (structural: on_newindex wrapper reading className 'shared_ptr<ThreadRef::Node>')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5aaa30 (own row)",
+          "??_C@_04GIMIAOHA@__eq?$AA@": "0x8344c0 (string '__eq')",
+          "?on_eq@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5aaa80 (own row)",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9810 (own row)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ab790",
+        "symbol": "?registerClass@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 161,
+        "target_size": 161,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95af74 (className static -> 'Object')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a8a00 (structural: on_index wrapper reading className 'Object')",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a89d0 (structural: on_newindex wrapper reading className 'Object')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5aad90 (own row)",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9d40 (structural: on_tostring wrapper reading className 'Object')",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ab840",
+        "symbol": "?registerClass@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
+        "size": 161,
+        "target_size": 161,
+        "exact": true,
+        "verified_targets": {
+          "?className@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB": "0x95b1e4 (className static -> 'RBXScriptSignal')",
+          "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z": "0x610c90 (external (evidence name))",
+          "??_C@_07NHABFFHN@__index?$AA@": "0x834384 (string '__index')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9db0 (own row)",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "??_C@_0L@GADKNKH@__newindex?$AA@": "0x8344d0 (string '__newindex')",
+          "?on_newindex@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9d80 (structural: on_newindex wrapper reading className 'RBXScriptSignal')",
+          "??_C@_04BDLIKKMN@__gc?$AA@": "0x8344c8 (string '__gc')",
+          "?on_gc@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5aade0 (own row)",
+          "??_C@_0L@HDFPAPPH@__tostring?$AA@": "0x8344b4 (string '__tostring')",
+          "?on_tostring@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z": "0x5a9d60 (own row)",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ac8d0",
+        "symbol": "??$getPtr@VValue@Reflection@RBX@@@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z",
+        "size": 135,
+        "target_size": 135,
+        "exact": true,
+        "verified_targets": {
+          "?lua_type@@YAHPAUlua_State@@H@Z": "0x611e00 (external (evidence name))",
+          "??$singleton@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56ca70 (external (evidence name))",
+          "??$?4V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@1@@Z": "0x491790 (external (evidence name))",
+          "??$getValue@VValue@Reflection@RBX@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z": "0x5ac560 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??$getPtr@VValue@Reflection@RBX@@@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z"
+        ]
+      },
+      {
+        "address": "005ad8c0",
+        "symbol": "??0ScriptImpersonator@ScriptContext@RBX@@QAE@PAUlua_State@@@Z",
+        "size": 98,
+        "target_size": 98,
+        "exact": true,
+        "verified_targets": {
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_gettable@@YAXPAUlua_State@@H@Z": "0x612460 (external (evidence name))",
+          "?lua_isnumber@@YAHPAUlua_State@@H@Z": "0x611e70 (external (evidence name))",
+          "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z": "0x42bc10 (external (evidence name))",
+          "?lua_tointeger@@YAHPAUlua_State@@H@Z": "0x611fa0 (external (evidence name))",
+          "?lua_settop@@YAXPAUlua_State@@H@Z": "0x611c20 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005adc60",
+        "symbol": "?settings@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+        "size": 198,
+        "target_size": 198,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0L@ENHDPDOG@settings?$CI?$CJ?$AA@": "0x8346bc (string 'settings()')",
+          "?current@Context@Security@RBX@@SAAAV123@XZ": "0x493760 (external (evidence name))",
+          "?requirePermission@Context@Security@RBX@@QBEXW4Permissions@23@PBD@Z": "0x489810 (external (evidence name))",
+          "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x5690f0 (external (evidence name))",
+          "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z": "0x5aa730 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?settings@ScriptContext@RBX@@CAHPAUlua_State@@@Z"
+        ]
+      },
+      {
+        "address": "005aeaf0",
+        "symbol": "?setThreadIdentity@ScriptContext@RBX@@CAXPAUlua_State@@W4Identities@Security@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "?lua_pushlightuserdata@@YAXPAUlua_State@@PAX@Z": "0x612410 (external (evidence name))",
+          "?lua_pushinteger@@YAXPAUlua_State@@H@Z": "0x612220 (external (evidence name))",
+          "?lua_settable@@YAXPAUlua_State@@H@Z": "0x612680 (external (evidence name))",
+          "?singleton@?$GlobalSettingsItem@VDebugSettings@RBX@@$1?sDebugSettings@2@3QBDB@RBX@@SAAAVDebugSettings@2@XZ": "0x407be0 (external)",
+          "?luaopen_io@@YAHPAUlua_State@@@Z": "0x624f80 (external (evidence name))",
+          "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z": "0x612350 (external (evidence name))",
+          "??_C@_02KFNNKBCK@io?$AA@": "0x834860 (string 'io')",
+          "?lua_pushstring@@YAXPAUlua_State@@PBD@Z": "0x612280 (external (evidence name))",
+          "?lua_call@@YAXPAUlua_State@@HH@Z": "0x612920 (external (evidence name))",
+          "??_C@_08MGBGGDON@settings?$AA@": "0x834854 (string 'settings')",
+          "?settings@ScriptContext@RBX@@CAHPAUlua_State@@@Z": "0x5adc60 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "guid": [
+      {
+        "address": "005a80d0",
+        "symbol": "?makeGuidString@RBX@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 110,
+        "target_size": 110,
+        "exact": true,
+        "verified_targets": {
+          "__imp__CoCreateGuid@4": "0x804138 (ole32.dll!CoCreateGuid)",
+          "_memset": "0x6a1704 (msvcr90.dll!memset)",
+          "__imp__StringFromGUID2@12": "0x804128 (ole32.dll!StringFromGUID2)",
+          "__imp__WideCharToMultiByte@32": "0x8022ec (kernel32.dll!WideCharToMultiByte)",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8140",
+        "symbol": "?generateGUID@Guid@RBX@@SAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 178,
+        "target_size": 178,
+        "exact": true,
+        "verified_targets": {
+          "?makeGuidString@RBX@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5a80d0 (own row)",
+          "??_C@_03LOMDGJDI@RBX?$AA@": "0x834344 (string 'RBX')",
+          "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z": "0x802368 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z)",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "__imp_?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z": "0x8023ec (msvcp90.dll!?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?generateGUID@Guid@RBX@@SAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ]
+      },
+      {
+        "address": "005a8260",
+        "symbol": "?initLocalScope@@YAXXZ",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?generateGUID@Guid@RBX@@SAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5a8140 (own row)",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?localScope@@3PBVName@RBX@@B": "0x976b64 (static data (one address per symbol))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?initLocalScope@@YAXXZ"
+        ]
+      },
+      {
+        "address": "005a8300",
+        "symbol": "??0Guid@RBX@@QAE@XZ",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1???0Guid@RBX@@QAE@XZ@4JA": "0x976b6c (static data (one address per symbol))",
+          "?initLocalScope@@YAXXZ": "0x5a8260 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "?localScope@@3PBVName@RBX@@B": "0x976b64 (static data (one address per symbol))",
+          "?nextIndex@@3JA": "0x976b68 (static data (one address per symbol))",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)"
+        },
+        "local_eh": []
+      }
+    ],
+    "lifetime": [
+      {
+        "address": "005a8790",
+        "symbol": "??1?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAE@XZ",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83440c (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x0))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x834400 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x10))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8343f8 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x14))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6BDebugable@1@@": "0x8343f0 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x20))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8343e0 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x24))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8343d0 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x44))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8343c0 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x64))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8343b0 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0x84))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8343a0 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0xa4))",
+          "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x834390 (vtable (RTTI .?AV?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@, offset 0xc4))",
+          "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8e40",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8e50",
+        "symbol": "??_G?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAE@XZ": "0x5a8790 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8e70",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8e80",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8e90",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8ea0",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005a8eb0",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005aa650",
+        "symbol": "??1?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@UAE@XZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAE@XZ": "0x5a8790 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ad9d0",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ad9e0",
+        "symbol": "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@OME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAEPAXI@Z": "0x5a8e50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae690",
+        "symbol": "??_EScriptContext@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae6a0",
+        "symbol": "??_EScriptContext@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae6b0",
+        "symbol": "??_EScriptContext@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae6c0",
+        "symbol": "??_EScriptContext@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae6d0",
+        "symbol": "??_EScriptContext@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae6e0",
+        "symbol": "??_EScriptContext@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae6f0",
+        "symbol": "??_EScriptContext@RBX@@WBDA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae700",
+        "symbol": "??_EScriptContext@RBX@@WBDE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae710",
+        "symbol": "??_EScriptContext@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae720",
+        "symbol": "??_EScriptContext@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EScriptContext@RBX@@UAEPAXI@Z": "0x5aed20 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ae730",
+        "symbol": "??1ScriptContext@RBX@@UAE@XZ",
+        "size": 435,
+        "target_size": 435,
+        "exact": true,
+        "verified_targets": {
+          "??_7ScriptContext@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8347fc (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x0))",
+          "??_7ScriptContext@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8347f0 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x10))",
+          "??_7ScriptContext@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8347e8 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x14))",
+          "??_7ScriptContext@RBX@@6BDebugable@1@@": "0x8347e0 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x20))",
+          "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8347d0 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x24))",
+          "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8347c0 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x44))",
+          "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8347b0 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x64))",
+          "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8347a0 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x84))",
+          "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x834790 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0xa4))",
+          "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x834780 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0xc4))",
+          "??_7ScriptContext@RBX@@6B?$Listener@VRunService@RBX@@VRunTransition@2@@1@@": "0x834774 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x130))",
+          "??_7ScriptContext@RBX@@6B?$Listener@VRunService@RBX@@VHeartbeat@2@@1@@": "0x834768 (vtable (RTTI .?AVScriptContext@RBX@@, offset 0x134))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1condition_impl@detail@boost@@QAE@XZ": "0x5f1c70 (external)",
+          "??1mutex@boost@@QAE@XZ": "0x594cb0 (external)",
+          "??1thread@boost@@QAE@XZ": "0x5a6840 (external)",
+          "??1?$vector@UWaitingThread@YieldingThreads@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads@Lua@RBX@@@std@@@std@@QAE@XZ": "0x5ad190 (external (evidence name))",
+          "??1?$vector@V?$shared_ptr@VScript@RBX@@@boost@@V?$allocator@V?$shared_ptr@VScript@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0 (external)",
+          "??1?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (external)",
+          "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380 (external (evidence name))",
+          "??1?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@MAE@XZ": "0x5a8790 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??1ScriptContext@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "005aed20",
+        "symbol": "??_GScriptContext@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1ScriptContext@RBX@@UAE@XZ": "0x5ae730 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_rows": {},
+  "structural_targets": [
+    "005a89d0: on_newindex(lua_State*) wrapper of Bridge<V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@> (reads className Object; not counted here)",
+    "005a8a00: on_index(lua_State*) wrapper of Bridge<V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@> (reads className Object; not counted here)",
+    "005a9520: on_newindex(lua_State*) wrapper of Bridge<VCoordinateFrame@G3D@@$00> (reads className CFrame; not counted here)",
+    "005a9580: on_eq(lua_State*) wrapper of Bridge<VCoordinateFrame@G3D@@$00> (reads className CFrame; not counted here)",
+    "005a9640: on_newindex(lua_State*) wrapper of Bridge<VVector3@G3D@@$00> (reads className Vector3; not counted here)",
+    "005a96a0: on_eq(lua_State*) wrapper of Bridge<VVector3@G3D@@$00> (reads className Vector3; not counted here)",
+    "005a9760: on_newindex(lua_State*) wrapper of Bridge<Vconnection@signals@boost@@$00> (reads className RBXScriptConnection; not counted here)",
+    "005a97c0: on_eq(lua_State*) wrapper of Bridge<Vconnection@signals@boost@@$00> (reads className RBXScriptConnection; not counted here)",
+    "005a9840: on_newindex(lua_State*) wrapper of Bridge<V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00> (reads className shared_ptr<ThreadRef::Node>; not counted here)",
+    "005a9870: on_index(lua_State*) wrapper of Bridge<V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00> (reads className shared_ptr<ThreadRef::Node>; not counted here)",
+    "005a98e0: on_newindex(lua_State*) wrapper of Bridge<VColor3@G3D@@$00> (reads className Color3; not counted here)",
+    "005a9940: on_eq(lua_State*) wrapper of Bridge<VColor3@G3D@@$00> (reads className Color3; not counted here)",
+    "005a99f0: on_newindex(lua_State*) wrapper of Bridge<VBrickColor@RBX@@$00> (reads className BrickColor; not counted here)",
+    "005a9d40: on_tostring(lua_State*) wrapper of Bridge<V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@> (reads className Object; not counted here)",
+    "005a9d80: on_newindex(lua_State*) wrapper of Bridge<V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@> (reads className RBXScriptSignal; not counted here)"
+  ],
+  "vtables_current_headers": {
+    "??_7ScriptContext@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x8347f0",
+      "subobject_offset": "0x10",
+      "slots": 2,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WBA@AEPAXI@Z = 0x5ae6d0"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8347e8",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WBE@AEPAXI@Z = 0x5ae6e0"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x8347fc",
+      "subobject_offset": "0x0",
+      "slots": 16,
+      "checked_bound_slots": []
+    },
+    "??_7ScriptContext@RBX@@6B?$Listener@VRunService@RBX@@VHeartbeat@2@@1@@": {
+      "address": "0x834768",
+      "subobject_offset": "0x134",
+      "slots": 2,
+      "checked_bound_slots": [
+        "1 ??_EScriptContext@RBX@@WBDE@AEPAXI@Z = 0x5ae700"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Listener@VRunService@RBX@@VRunTransition@2@@1@@": {
+      "address": "0x834774",
+      "subobject_offset": "0x130",
+      "slots": 2,
+      "checked_bound_slots": [
+        "0 ?onEvent@ScriptContext@RBX@@MAEXPBVRunService@2@VRunTransition@2@@Z = 0x5a8770",
+        "1 ??_EScriptContext@RBX@@WBDA@AEPAXI@Z = 0x5ae6f0"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x834790",
+      "subobject_offset": "0xa4",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WKE@AEPAXI@Z = 0x5ae6b0"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x8347d0",
+      "subobject_offset": "0x24",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WCE@AEPAXI@Z = 0x5ae710"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x8347c0",
+      "subobject_offset": "0x44",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WEE@AEPAXI@Z = 0x5ae720"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x8347b0",
+      "subobject_offset": "0x64",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WGE@AEPAXI@Z = 0x5ae690"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x8347a0",
+      "subobject_offset": "0x84",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WIE@AEPAXI@Z = 0x5ae6a0"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x834780",
+      "subobject_offset": "0xc4",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_EScriptContext@RBX@@WME@AEPAXI@Z = 0x5ae6c0"
+      ]
+    },
+    "??_7ScriptContext@RBX@@6BDebugable@1@@": {
+      "address": "0x8347e0",
+      "subobject_offset": "0x20",
+      "slots": 1,
+      "checked_bound_slots": []
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x834400",
+      "subobject_offset": "0x10",
+      "slots": 2,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5a8ea0"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8343f8",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5a8eb0"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83440c",
+      "subobject_offset": "0x0",
+      "slots": 16,
+      "checked_bound_slots": []
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8343a0",
+      "subobject_offset": "0xa4",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5ad9d0"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x8343e0",
+      "subobject_offset": "0x24",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5a8e40"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x8343d0",
+      "subobject_offset": "0x44",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5a8e70"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x8343c0",
+      "subobject_offset": "0x64",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5a8e80"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x8343b0",
+      "subobject_offset": "0x84",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5a8e90"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x834390",
+      "subobject_offset": "0xc4",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_E?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@R = 0x5ad9e0"
+      ]
+    },
+    "??_7?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x8343f0",
+      "subobject_offset": "0x20",
+      "slots": 1,
+      "checked_bound_slots": []
+    }
+  },
+  "not_exact": [
+    "005a8ec0 ?on_tostring@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@bo: 156/161 B, not counted",
+    "005a9520 ?on_newindex@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_Sta: 45/48 B, not counted",
+    "005a9640 ?on_newindex@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z: 45/48 B, not counted",
+    "005a9760 ?on_newindex@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlu: 45/48 B, not counted",
+    "005a9840 ?on_newindex@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$: 45/48 B, not counted",
+    "005a98e0 ?on_newindex@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z: 45/48 B, not counted",
+    "005a99f0 ?on_newindex@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@: 45/48 B, not counted",
+    "005a89d0 ?on_newindex@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@bo: 45/48 B, not counted",
+    "005a9d80 ?on_newindex@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@b: 45/48 B, not counted",
+    "005a8bb0 ?on_newindex@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@: 45/48 B, not counted",
+    "005a9e30 ?on_newindex@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@KAH: 45/48 B, not counted",
+    "005a9f40 ?on_newindex@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@: 45/48 B, not counted",
+    "005a9580 ?on_eq@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z: 127/121 B, not counted",
+    "005a96a0 ?on_eq@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z: 115/109 B, not counted",
+    "005a9940 ?on_eq@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z: 115/109 B, not counted",
+    "005ac560 ??$getValue@VValue@Reflection@RBX@@@?$Bridge@V?$shared_ptr@VDescribedB: 119/129 B, not counted"
+  ],
+  "not_attempted": {
+    "gc 005a86c0 / ScopedPopper::~ScopedPopper 005a8590": "out-of-line copies of header inlines (gc is __declspec(noinline) in ScriptContext.h; ~ScopedPopper is called only from EH funclets): emitted only by the callers (closeState / startScript / executeInNewThread), which are not built here",
+    "delay 005a9140 / wait 005a9260": "call YieldingThreads::queueWaiter(lua_State*, double) 006214e0 through yieldEvent (+0x1a8): the native ScriptContext.h holds scoped_ptr<Lua::YieldingThreads> of the donor ScriptEvent.h (float queueWaiter); the 2008 class is LuaBridge2008/LuaYieldingThreads2008.h YieldingThreads2008 (proposal)",
+    "openState / closeState / executeInNewThread / resume / startScript / onServiceProvider / reportError / loadfile / dofile / stats / timeout hook": "large members needing 2008 declarations not in the native headers (LuaAllocator, the timeout fields +0x1c8.. and the 00976b78 counter, Stats::Item binds, ObjectBridge registration); next pass",
+    "STL / boost instantiations (vector<shared_ptr<Script>>, vector<WaitingThread>, set<Script*>, tss_adapter, boost::function invokers)": "ICF-folded bodies shared by several instantiations (e.g. 005aaa00, 005acc50, 005ace90, 005ad190, 005ab470, 005acc70): bytes match more than one candidate, identity not proven by a relocation; not counted",
+    "boost::any holder<shared_ptr<DescribedBase>> ~holder 005ab000 / ??_G 005ab070": "bytes exact (and holder::type 005acd00, whose type descriptor 0092bf60 is .?AV?$vector@VValue@...: another holder), but ~holder stores the placeholder vtable 008265e4, an ICF-folded vtable whose COL names .?AVItem@?$Association@VInstance@RBX@@@RBX@@: the vtable cannot be verified by RTTI; not counted",
+    "Bridge<T>::getValue<Value> 005ac0d0 .. 005ac270, 005a9c70.. enum registerClass, pushVector3 / Color3 / CFrame helpers": "not exact in this build or bound to rows of the lua-bridge2008 owner; see not_exact / next pass"
+  },
+  "rejected": {},
+  "proposals": {
+    "native-headers/script/ScriptContext.h (owner)": "Declare yieldEvent as the 2008 YieldingThreads (LuaBridge2008/LuaYieldingThreads2008.h YieldingThreads2008, queueWaiter(lua_State*, double) 006214e0): delay 005a9140 and wait 005a9260 load the delay with fstp qword and call [this+0x1a8]->queueWaiter(L, double). With the donor float class they cannot be exact.",
+    "lua/LuaBridge.h (maintainer: donor header at the donor path, read-only)": "The 2008 Bridge<T>::on_newindex(T&, const char*, lua_State*) was only declared in the class in the units that instantiate the __newindex wrappers: the 11 wrappers 005a89d0 / 005a8bb0 / 005a9520 / 005a9640 / 005a9760 / 005a9840 / 005a98e0 / 005a99f0 / 005a9d80 / 005a9e30 / 005a9f40 are 48 B and end with `add esp,0x24; pop edi; xor eax,eax; pop esi; ret` after the call, while the in-class definition lets the compiler see the throw and drop the return path (45 B). Same finding as lua-bridge2008 (0061f220).",
+    "LuaBridge2008/LuaInstanceBridge2008.h (LuaBridge2008 owner)": "SharedPtrBridge<DescribedBase>::on_tostring(const shared_ptr&, L) 005a8ec0 is 161 B; the header version (classDescriptor().name) builds 156 B: the target reads the descriptor through [object+8]->+4 (getDescriptor inline, as getInstance 0061aac0 does)."
+  },
+  "exact_function_rows": [
+    "005a80d0",
+    "005a8140",
+    "005a8260",
+    "005a8300",
+    "005a8660",
+    "005a86e0",
+    "005a8750",
+    "005a8770",
+    "005a8790",
+    "005a8830",
+    "005a8850",
+    "005a88d0",
+    "005a88f0",
+    "005a8a30",
+    "005a8a50",
+    "005a8ad0",
+    "005a8af0",
+    "005a8b70",
+    "005a8b90",
+    "005a8be0",
+    "005a8c10",
+    "005a8e40",
+    "005a8e50",
+    "005a8e70",
+    "005a8e80",
+    "005a8e90",
+    "005a8ea0",
+    "005a8eb0",
+    "005a8f70",
+    "005a9120",
+    "005a9320",
+    "005a94e0",
+    "005a9500",
+    "005a9550",
+    "005a9600",
+    "005a9620",
+    "005a9670",
+    "005a9710",
+    "005a9730",
+    "005a9790",
+    "005a9810",
+    "005a98a0",
+    "005a98c0",
+    "005a9910",
+    "005a99b0",
+    "005a99d0",
+    "005a9a20",
+    "005a9a50",
+    "005a9a90",
+    "005a9b30",
+    "005a9bd0",
+    "005a9d60",
+    "005a9db0",
+    "005a9de0",
+    "005a9e90",
+    "005a9ed0",
+    "005a9f70",
+    "005a9fa0",
+    "005aa110",
+    "005aa1d0",
+    "005aa2f0",
+    "005aa460",
+    "005aa650",
+    "005aa660",
+    "005aa730",
+    "005aa860",
+    "005aa930",
+    "005aaa30",
+    "005aaa80",
+    "005aaac0",
+    "005aad90",
+    "005aade0",
+    "005ab6c0",
+    "005ab790",
+    "005ab840",
+    "005ac8d0",
+    "005ad8c0",
+    "005ad9d0",
+    "005ad9e0",
+    "005adc60",
+    "005ae690",
+    "005ae6a0",
+    "005ae6b0",
+    "005ae6c0",
+    "005ae6d0",
+    "005ae6e0",
+    "005ae6f0",
+    "005ae700",
+    "005ae710",
+    "005ae720",
+    "005ae730",
+    "005aeaf0",
+    "005aed20"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

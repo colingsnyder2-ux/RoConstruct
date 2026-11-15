@@ -2,10 +2,6 @@
 // Verified by tests/record_native_network_player.py. Network/Players.h and v8datamodel/ModelInstance.h
 // do not compile against the 2008 const-char-array DescribedCreatable; the recorder supplies
 // declaration-only stand-ins (tests/NativeNetworkPlayerPlayers.h, tests/NativeTeamPendingModel.h).
-// >>> native-status (generated) -- do not edit >>>
-// NetworkPlayer | 2008-06 | 4 byte-exact, inactive (not link-selected)
-// 4/12 mapped addresses byte-exact | named 2 | 8 unproved | 4 referenced strings (not rechecked) | by king_originala (+6) (mixed 5)
-// <<< native-status | src ee51ac95 | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /fp:fast
 // /fp:fast: doPeriodicIdleCheck 00494650 stores the double idle time straight to the float argument (fld 004946ba /
 // fstp dword [esp] 004946c2), without the /fp:precise rounding spill of the explicit float conversion.

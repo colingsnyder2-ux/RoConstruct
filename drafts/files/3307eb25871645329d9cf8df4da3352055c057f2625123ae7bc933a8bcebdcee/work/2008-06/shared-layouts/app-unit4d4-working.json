@@ -1,0 +1,332 @@
+{
+  "class": "ViewRbxGfx unit template instances of the application range 004d4000..004d8000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags, /fp:fast",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast",
+    "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit4d4/NativeAppUnit4D4ViewTemplates.obj",
+    "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit4D4ViewTemplates.cpp"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit4d4.py": "151708e8c4a94ce70bc3c0bae5d25dc680379082000a257184378ee11ea6d918",
+    "rebuild/2008-06/native-classes/AppUnit4D4ViewTemplates.cpp": "4408a9f9fbf9acf9ea64444cb3fbd16a07b207455b4d3ee180a101cc3d4a11f2",
+    "rebuild/2008-06/native-headers/RenderLib/ViewNew2008.h": "53cb079c857655b92edc3dc13e57dafe18be887ed86f0b918f23ee6d57aee5a0",
+    "rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h": "9c8e51f8d08ce56c7cef8df6e8cd8001c982d6e702f2209eb051361a6c04f80a",
+    "rebuild/2008-06/native-headers/ViewNew/MaterialFactory2008.h": "651b0345bc02a676cb5c148a2c5b7f4b8bdf2f6e3edc10db2ee4b7a127f96de0",
+    "rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h": "dd1bdeec3ee58da6f291eac9d5ca7a1ede3863ee3aa9bbb7a489026ecdb98d6d",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114"
+  },
+  "objects": {
+    "main": "f9a9c644f2d9186cf8293a38bcda500ec41867724713b0964daabbae1db4405e"
+  },
+  "unit_map": {
+    "raknet 004d4000..004d6f4f": "RakNet 3.0 library (continues the 004d0000 map: ReliabilityLayer / RPCMap / SimpleMutex / Rand). Boundary evidence: randomMT 004d4120 tail-jumps to reloadMT 004d3ff0 (Rand.cpp); RakSleep 004d4170 calls the Sleep import; CSHA1 rows use the CSHA1 vtable / RTTI; DataBlockEncryptor rows read keySet +0x258 and call the rijndael key schedule; CheckSum::Add 004d6f00 ends the library block. Library code, not recovered.",
+    "view-rbxgfx 004d6f50..": "ViewNew/ViewRbxGfx.cpp (continues past 004d8000: ViewBase dtor 004d8920, ctor 004d8a20, ViewRbxGfx ctor 004d9990, render 004daf10, dtor 004db4f0). Boundary evidence: the SceneManager inline dtor / ctor 004d6f50 / 004d6f60 open the object (vtable 00826b44 RTTI .?AVSceneManager@RenderBase@RBX@@), the ViewRbxGfx vtable 00826c70 slots 004d7180 / 004d7370 / 004d76d0, the boost.function type descriptors 00940b90 / 00940c30 (bind_t<mf1<void, ViewRbxGfx, ...>>) compared by the managers 004d77b0 / 004d7810, the any::holder vtable 00826bd4, and the unwind funclets 007c9c4e..007c9cb7 of the ViewRbxGfx ctor that call the auto_ptr destructors 004d71c0 / 004d7870. Members counted by render-scene; template instances counted here.",
+    "excluded / library code": "no CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView row. RakNet (004d4120..004d6f00), the Ogre SharedPtr header templates, the G3D LightingParameters copy and the generic RCP operator= are library code. The auto_ptr / boost.function / boost.any / visitDescendents bodies built here are Roblox-instantiated templates (element or functor types SceneManager / MaterialFactory / ViewRbxGfx binds), whose COMDATs the linker took from this unit.",
+    "counted here": "the template instances listed in exact_function_rows (rows below).",
+    "bounds": "two analysed rows each hold two functions: 004d73a0 (63 B) is SharedPtr destroy (ends with ret at 004d73bf) plus a SharedPtr destructor at 004d73c0 (31 B); 004d7580 (32 B) is two 16-byte eh-vector-destructor thunks (ret at 004d758f, second at 004d7590). Report only; no bounds.json change."
+  },
+  "range_functions": 82,
+  "range_rows_counted_by_other_receipts": [
+    "004d6f50 counted by render-scene-working.json",
+    "004d6f60 counted by render-scene-working.json",
+    "004d7180 counted by render-scene-working.json",
+    "004d7240 counted by viewnew-part-mesh-working.json",
+    "004d7320 counted by render-scene-working.json",
+    "004d7350 counted by render-scene-working.json",
+    "004d7370 counted by render-scene-working.json",
+    "004d75a0 counted by viewnew-part-mesh-working.json",
+    "004d75f0 counted by viewnew-part-mesh-working.json",
+    "004d76d0 counted by render-scene-working.json",
+    "004d7770 counted by viewnew-part-mesh-working.json",
+    "004d7890 counted by render-scene-working.json",
+    "004d7ae0 counted by render-scene-working.json",
+    "004d7db0 counted by render-scene-working.json",
+    "004d7dc0 counted by viewnew-part-mesh-working.json",
+    "004d7e30 counted by viewnew-part-mesh-working.json"
+  ],
+  "range_rows_not_built": [
+    "004d4120 not built",
+    "004d4170 not built",
+    "004d4180 not built",
+    "004d41e0 not built",
+    "004d41f0 not built",
+    "004d4260 not built",
+    "004d42a0 not built",
+    "004d42e0 not built",
+    "004d4310 not built",
+    "004d56e0 not built",
+    "004d57a0 not built",
+    "004d58a0 not built",
+    "004d58b0 not built",
+    "004d58f0 not built",
+    "004d5930 not built",
+    "004d5980 not built",
+    "004d5990 not built",
+    "004d59a0 not built",
+    "004d59f0 not built",
+    "004d5a00 not built",
+    "004d5b70 not built",
+    "004d5d30 not built",
+    "004d5d80 not built",
+    "004d5f30 not built",
+    "004d5f70 not built",
+    "004d6350 not built",
+    "004d66f0 not built",
+    "004d6810 not built",
+    "004d6870 not built",
+    "004d6bc0 not built",
+    "004d6f00 not built",
+    "004d6f80 not built",
+    "004d6fb0 not built",
+    "004d6fe0 not built",
+    "004d6ff0 not built",
+    "004d7020 not built",
+    "004d71a0 not built",
+    "004d71b0 not built",
+    "004d71d0 not built",
+    "004d71f0 not built",
+    "004d7200 not built",
+    "004d7220 not built",
+    "004d72b0 not built",
+    "004d7380 not built",
+    "004d73a0 not built",
+    "004d73e0 not built",
+    "004d7420 not built",
+    "004d7460 not built",
+    "004d7560 not built",
+    "004d7580 not built",
+    "004d7640 not built",
+    "004d7680 not built",
+    "004d76c0 not built",
+    "004d76e0 not built",
+    "004d7730 not built",
+    "004d7750 not built",
+    "004d7ea0 not built"
+  ],
+  "not_built_reasons": [
+    "004d4120..004d6f00: RakNet 3.0 library code (evidence names / openrbx-raknet sources): randomMT 004d4120 (the end of Rand.cpp, 004d0000 map), RakSleep 004d4170 (Sleep import), NetworkIDManager::GET_OBJECT_FROM_ID 004d4180, DataStructures::List<RPCNode*> dtor 004d41e0, StringTable 004d41f0..004d42a0, CSHA1 004d42e0..004d5930 (Transform 004d4310, GetHash 004d58a0, ??_G 004d5930), DataBlockEncryptor 004d5980..004d5b70, rijndael 004d5d30..004d6bc0 and CheckSum::Add 004d6f00: library, never recovered here",
+    "004d6f80 / 004d6fb0 / 004d6fe0 / 004d6ff0: inline Lighting property getters (ColorShift_Top +0x270 and ColorShift_Bottom +0x27c returned by value through the hidden pointer, Brightness +0x288 on the x87 stack, Ambient +0x28c), referenced only by the Lighting descriptor initializers 007f6bd0 / 007f6c10 / 007f6b90 / 007f6c50: the native v8datamodel/Lighting2008.h declares the fields but no getters (proposal)",
+    "004d7020: the implicit G3D::LightingParameters copy constructor (two GCamera copies 00513220; callers in ViewRbxGfx / ViewG3D 004d9d1e / 004dad0c / 004dbf8c / 004dc1fd and 007b15b1): a compiler-generated member of a G3D library class, emitted only by its (blocked) Lighting callers; not built",
+    "004d71a0 / 004d71b0: ViewRbxGfx static debug switch (analog name setDebug: stores its bool in the globals 0094065c and 009413c0) and the getter of 0094065c (callers 0045d0f9 / 0045e272): neither member nor the two globals are declared in RenderLib/ViewNew2008.h or any native header (proposal)",
+    "004d71d0: thiscall equality on the first word (ret 4) called by the AggregatingSceneManager rows 00540eed / 0054451d / 0054689d: a RenderBase bucket key comparison, render-scene owner (MaterialBase / BucketKey blocker)",
+    "004d71f0: a 5-byte jump to the destructor 00507d00 (member at offset 0) used by unwind funclets of several units: the class is not derived",
+    "004d7200 / 004d7220: std::map<BrickColor::Number, Color4> _Min / _Max (evidence names): ICF-folded tree helpers, compared but not counted by the ogre-rbx-node receipt; BrickColor owner",
+    "004d72b0 / 004d76c0: Name::doDeclare for the Sky class name (static local, Name::declare 00553f90) and its jump thunk: Sky / effects owner (pending build in the effects receipt)",
+    "004d7380 / 004d73a0 (+ 004d73c0) / 004d73e0 / 004d7420: Ogre::SharedPtr<Resource> / SharedPtr<DataStream> destructors, destroy and ??_G (vtables 00826bc4 / 00826bb4): Ogre 1.4.5 header templates used by unwind funclets of many units (007af387..007edd2a) and ICF-folded with SharedPtr<RbxSky> (ogre-scene-manager receipt compares them, not counted); not built here",
+    "004d7460: MaterialFactory destructor: the +0xc pointee type is not derived (ViewNew/MaterialFactory2008.h declares the destructor only); bound here as the external callee of the auto_ptr destructor",
+    "004d7560: G3D::ReferenceCountedPointer<T>::operator= (setPointer 00598fa0), ICF-shared by 16 callers in mesh, material and Ogre units: a G3D header template whose element type is not provable from this unit",
+    "004d7580 (+ 004d7590) / 004d7730 / 004d7750: eh vector destructor calls (006a165b with the element dtor 00502a70) for G3D::Table entry arrays of the ViewNew mesh factories: ViewNew mesh owner (MeshFactory types)",
+    "004d7640 / 004d7680 / 004d76e0: RCP member releases at +0x10 / +0x18 and an RCP holder ??_G (callers 00546fd8 / 0054bf13): G3D RenderDevice / ViewNew mesh factory types, not declared natively",
+    "004d7ea0: std::_Tree::erase of the MeshFactory<PBBMesh> DecalKey map (796 B, caller 004d88fc): ViewNew mesh owner (key / value types not declared)"
+  ],
+  "rows": [
+    {
+      "address": "004d71c0",
+      "symbol": "??1?$auto_ptr@VSceneManager@RenderBase@RBX@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: unwind funclets 007c9c96 / 007d5fbf on ViewBase::sceneManager +0x4 (delete through the SceneManager ??_G, slot 6)",
+      "exact": true,
+      "size": 16,
+      "target_size": 16,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004d77b0",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@_N@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "folded_symbols": [],
+      "identity": "root: compares the functor type with the RTTI type descriptor 00940b90 (bind_t<mf1<void, ViewRbxGfx, bool>>)",
+      "exact": true,
+      "size": 85,
+      "target_size": 85,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@_N@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x940b90 (type descriptor .?AV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@_N@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004d7810",
+      "symbol": "?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+      "folded_symbols": [],
+      "identity": "root: compares the functor type with the RTTI type descriptor 00940c30 (bind_t<mf1<void, ViewRbxGfx, shared_ptr>>)",
+      "exact": true,
+      "size": 85,
+      "target_size": 85,
+      "verified_targets": {
+        "??_R0?AV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@8": "0x940c30 (type descriptor .?AV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004d7870",
+      "symbol": "??1?$auto_ptr@VMaterialFactory@ViewNew@RBX@@@std@@QAE@XZ",
+      "folded_symbols": [],
+      "identity": "root: unwind funclet 007c9cb7 on ViewBase::materialFactory +0x10 (calls ~MaterialFactory, then operator delete)",
+      "exact": true,
+      "size": 25,
+      "target_size": 25,
+      "verified_targets": {
+        "??1MaterialFactory@ViewNew@RBX@@QAE@XZ": "0x4d7460 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004d7a10",
+      "symbol": "??0?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@Z",
+      "folded_symbols": [],
+      "identity": "called by 004d7d50",
+      "exact": true,
+      "size": 95,
+      "target_size": 95,
+      "verified_targets": {
+        "??_7?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@6B@": "0x826bd4 (vtable RTTI .?AV?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@Z"
+      ]
+    },
+    {
+      "address": "004d7a70",
+      "symbol": "?type@?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEABVtype_info@@XZ",
+      "folded_symbols": [],
+      "identity": "root: any::holder<function<void(bool)>> vtable 00826bd4 slot 1",
+      "exact": true,
+      "size": 6,
+      "target_size": 6,
+      "verified_targets": {
+        "??_R0?AV?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@8": "0x940d7c (type descriptor .?AV?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004d7a80",
+      "symbol": "?clone@?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "folded_symbols": [],
+      "identity": "root: any::holder<function<void(bool)>> vtable 00826bd4 slot 2",
+      "exact": true,
+      "size": 96,
+      "target_size": 96,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@Z": "0x4d7a10 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ]
+    },
+    {
+      "address": "004d7c00",
+      "symbol": "??$visitDescendents@V?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+      "folded_symbols": [],
+      "identity": "root: ViewRbxGfx ctor 004d9bba (children +0x108, recursion 004d7cd2; ViewG3D ctor 004dbe31 shares the body by ICF)",
+      "exact": true,
+      "size": 329,
+      "target_size": 329,
+      "verified_targets": {
+        "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??R?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z": "0x4e6300 (own row)",
+        "??$visitDescendents@V?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z": "0x4d7c00 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$visitDescendents@V?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XV?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVViewRbxGfx@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z"
+      ]
+    },
+    {
+      "address": "004d7d50",
+      "symbol": "??$?0V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AX_N@ZV?$allocator@X@std@@@1@@Z",
+      "folded_symbols": [],
+      "identity": "root: callers 004d8264 / 005da11e: new 0x28, holder ctor 004d7a10 (slot of the Lighting-changed connection)",
+      "exact": true,
+      "size": 89,
+      "target_size": 89,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@Z": "0x4d7a10 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$function@$$A6AX_N@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AX_N@ZV?$allocator@X@std@@@1@@Z"
+      ]
+    }
+  ],
+  "support_rows_not_counted": [
+    {
+      "address": "004915b0 (counted by network-players-working.json)",
+      "symbol": "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ",
+      "folded_symbols": [],
+      "identity": "called by 004d7c00",
+      "size": 42,
+      "target_size": 42,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004e6300 (counted by viewnew-part-working.json)",
+      "symbol": "??R?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z",
+      "folded_symbols": [],
+      "identity": "called by 004d7c00",
+      "size": 159,
+      "target_size": 159,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??R?$mf1@XVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVViewRbxGfx@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z"
+      ]
+    }
+  ],
+  "pending_build_only": [],
+  "exact_function_rows": [
+    "004d71c0",
+    "004d77b0",
+    "004d7810",
+    "004d7870",
+    "004d7a10",
+    "004d7a70",
+    "004d7a80",
+    "004d7c00",
+    "004d7d50"
+  ],
+  "rejected": {},
+  "proposals": {
+    "v8datamodel/Lighting2008.h (Lighting owner)": "Add the inline property getters the Lighting descriptors use: `G3D::Color3 getColorShift_Top() const { return colorShiftTop; }` (004d6f80: copies +0x270..+0x278 through the hidden return pointer, ret 4), `G3D::Color3 getColorShift_Bottom() const { return colorShiftBottom; }` (004d6fb0, +0x27c), `float getBrightness() const { return brightness; }` (004d6fe0: fld +0x288; ret) and `G3D::Color3 getAmbient() const { return ambient; }` (004d6ff0, +0x28c); referenced by the descriptor initializers 007f6bd0 / 007f6c10 / 007f6b90 / 007f6c50. Not compiled here (no pending build).",
+    "RenderLib/ViewNew2008.h (render-scene owner)": "Declare the ViewRbxGfx static debug switch 004d71a0 (cdecl, bool argument: stores it in the byte globals 0094065c and 009413c0; caller 0045d0f9) and its static getter 004d71b0 (returns 0094065c; caller 0045e272), with the two globals (009413c0 is also read by the BrickMesh create functions 004e54e0 / 004e58b0, see the viewnew-brick-build receipt). Names are not derived (analog: setDebug / showFrameRate / showProfile).",
+    "ViewNew/MaterialFactory2008.h (render-scene owner)": "Carried over: the +0xc member type of MaterialFactory is still needed for its destructor 004d7460, which the auto_ptr destructor 004d7870 counted here calls."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. No new header."
+}

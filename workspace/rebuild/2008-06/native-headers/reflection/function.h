@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// function | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src e334687d | roc native-status --write
 #include "reflection/member.h"
 #include "reflection/type.h"
 #include "util/Utilities.h"

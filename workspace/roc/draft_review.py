@@ -286,7 +286,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('prepare', 'work'))
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument('--model', default='codex:gpt-6-luna')
+    parser.add_argument('--model', default='claude:sonnet')
     parser.add_argument('--limit', type=int, default=3)
     args = parser.parse_args()
     print(json.dumps(prepare(args.root) if args.action == 'prepare' else work(args.root, args.model, args.limit), indent=2))

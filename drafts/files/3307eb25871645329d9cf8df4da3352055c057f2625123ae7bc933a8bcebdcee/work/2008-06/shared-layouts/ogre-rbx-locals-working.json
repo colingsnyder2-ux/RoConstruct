@@ -1,0 +1,2862 @@
+{
+  "class": "Ogre::{ManualObject,Rectangle2D,InstancedGeometry,StaticGeometry,SceneNode,MemoryDataStream,FileStreamDataStream,RenderQueue,Animation} (rgmain.dll _OgreExport classes; exe-local compiler-generated parts)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeOgreRbxLocalsLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeOgreRbxLocalsLayout.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_ogre_rbx_locals.py": "7fcf590e4666ca2cc928d9cdee9ae537794b392c0a5e843787a1cf683d55d374",
+    "rebuild/2008-06/tests/NativeOgreRbxLocalsLayout.cpp": "e5c261f9b1043ac41f7456f536c4bc4574e8b36f67aca95ff00db53603527cd0",
+    "rebuild/2008-06/native-headers/OgreRbxLocals/OgreLocals2008.h": "f57b2e90e23e042f14df90eed91a441cbc3355c4200747b09f395b668ba29071"
+  },
+  "objects": {
+    "NativeOgreRbxLocalsLayout.obj": "032c79e5ee0b6f528d9e5ecaa9f3b22aaef2b3e279f76fea45b217e8cb2d883c"
+  },
+  "layout": {
+    "ManualObject": {
+      "size": "0x1d4",
+      "bases": {
+        "ManualObject": "0x0",
+        "MovableObject": "0x0",
+        "ShadowCaster": "0x0",
+        "AnimableObject": "0x4"
+      },
+      "construction_sites": [
+        "00680f04"
+      ],
+      "ctor_imports": [
+        "008045e8 ??0ManualObject@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    "Rectangle2D": {
+      "size": "0x194",
+      "bases": {
+        "Rectangle2D": "0x0",
+        "SimpleRenderable": "0x0",
+        "MovableObject": "0x0",
+        "ShadowCaster": "0x0",
+        "AnimableObject": "0x4",
+        "Renderable": "0xc8"
+      },
+      "construction_sites": [
+        "0069127e"
+      ],
+      "ctor_imports": [
+        "00804ef4 ??0Rectangle2D@Ogre@@QAE@_N@Z"
+      ]
+    },
+    "InstancedGeometry": {
+      "size": "0x104",
+      "bases": {
+        "InstancedGeometry": "0x0"
+      },
+      "construction_sites": [
+        "0069aee6"
+      ],
+      "ctor_imports": [
+        "00804a18 ??0InstancedGeometry@Ogre@@QAE@PAVSceneManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    "StaticGeometry": {
+      "size": "0xd0",
+      "bases": {
+        "StaticGeometry": "0x0"
+      },
+      "construction_sites": [
+        "0069ad63"
+      ],
+      "ctor_imports": [
+        "00804a94 ??0StaticGeometry@Ogre@@QAE@PAVSceneManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    "SceneNode": {
+      "size": "0x228",
+      "bases": {
+        "SceneNode": "0x0",
+        "Node": "0x0",
+        "Renderable": "0x0"
+      },
+      "construction_sites": [
+        "0069a29c",
+        "0069a41c"
+      ],
+      "ctor_imports": [
+        "0080447c ??0SceneNode@Ogre@@QAE@PAVSceneManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "008046c4 ??0SceneNode@Ogre@@QAE@PAVSceneManager@1@@Z"
+      ]
+    },
+    "MemoryDataStream": {
+      "size": "0x34",
+      "bases": {
+        "MemoryDataStream": "0x0",
+        "DataStream": "0x0"
+      },
+      "construction_sites": [
+        "00684dfc",
+        "00691709"
+      ],
+      "ctor_imports": [
+        "00804e5c ??0MemoryDataStream@Ogre@@QAE@PAXI_N@Z"
+      ]
+    },
+    "FileStreamDataStream": {
+      "size": "0x2c",
+      "bases": {
+        "FileStreamDataStream": "0x0",
+        "DataStream": "0x0"
+      },
+      "construction_sites": [
+        "007ae290"
+      ],
+      "ctor_imports": [
+        "00804c50 ??0FileStreamDataStream@Ogre@@QAE@PAV?$basic_ifstream@DU?$char_traits@D@std@@@std@@_N@Z"
+      ]
+    },
+    "RenderQueue": {
+      "size": "0x30",
+      "bases": {
+        "RenderQueue": "0x0"
+      },
+      "construction_sites": [
+        "0068b727"
+      ],
+      "ctor_imports": [
+        "0080479c ??0RenderQueue@Ogre@@QAE@XZ"
+      ]
+    },
+    "Animation": {
+      "size": "0xa8",
+      "bases": {
+        "Animation": "0x0"
+      },
+      "construction_sites": [
+        "0069a8ed"
+      ],
+      "ctor_imports": [
+        "00804aa0 ??0Animation@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z"
+      ]
+    }
+  },
+  "rows": [
+    {
+      "address": "00681160",
+      "symbol": "??_GManualObject@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1ManualObject@Ogre@@UAE@XZ": "0x8046bc (rgmain.dll!??1ManualObject@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "00681180",
+      "symbol": "??_EManualObject@Ogre@@W3AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EManualObject@Ogre@@UAEPAXI@Z": "0x681160 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "006918c0",
+      "symbol": "??_GRectangle2D@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1Rectangle2D@Ogre@@UAE@XZ": "0x804e2c (rgmain.dll!??1Rectangle2D@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "006918e0",
+      "symbol": "??_ERectangle2D@Ogre@@W3AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ERectangle2D@Ogre@@UAEPAXI@Z": "0x6918c0 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "006918f0",
+      "symbol": "??_ERectangle2D@Ogre@@WMI@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ERectangle2D@Ogre@@UAEPAXI@Z": "0x6918c0 (own row (??_E resolved to ??_G))"
+      },
+      "local": []
+    },
+    {
+      "address": "0069af30",
+      "symbol": "??_GInstancedGeometry@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1InstancedGeometry@Ogre@@UAE@XZ": "0x80499c (rgmain.dll!??1InstancedGeometry@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0069adb0",
+      "symbol": "??_GStaticGeometry@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1StaticGeometry@Ogre@@UAE@XZ": "0x804a1c (rgmain.dll!??1StaticGeometry@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0069a2e0",
+      "symbol": "??_GSceneNode@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1SceneNode@Ogre@@UAE@XZ": "0x804480 (rgmain.dll!??1SceneNode@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "004dab30",
+      "symbol": "??_GMemoryDataStream@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1MemoryDataStream@Ogre@@UAE@XZ": "0x804cc0 (rgmain.dll!??1MemoryDataStream@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "006700c0",
+      "symbol": "??_GFileStreamDataStream@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1FileStreamDataStream@Ogre@@UAE@XZ": "0x804c20 (rgmain.dll!??1FileStreamDataStream@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0068b780",
+      "symbol": "??_GRenderQueue@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1RenderQueue@Ogre@@UAE@XZ": "0x8047a0 (rgmain.dll!??1RenderQueue@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    },
+    {
+      "address": "0069a930",
+      "symbol": "??_GAnimation@Ogre@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1Animation@Ogre@@UAE@XZ": "0x804a9c (rgmain.dll!??1Animation@Ogre@@UAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local": []
+    }
+  ],
+  "exact_function_rows": [
+    "004dab30",
+    "006700c0",
+    "00681160",
+    "00681180",
+    "0068b780",
+    "006918c0",
+    "006918e0",
+    "006918f0",
+    "0069a2e0",
+    "0069a930",
+    "0069adb0",
+    "0069af30"
+  ],
+  "vtables": {
+    "ManualObject": {
+      "0084e58c": [
+        {
+          "slot": 0,
+          "symbol": "??_EManualObject@Ogre@@UAEPAXI@Z",
+          "original": "00681160",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?getCastShadows@MovableObject@Ogre@@UBE_NXZ",
+          "original": "0069ff6c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getCastShadows@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getEdgeList@ManualObject@Ogre@@UAEPAVEdgeData@2@XZ",
+          "original": "006a00c2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getEdgeList@ManualObject@Ogre@@UAEPAVEdgeData@2@XZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?hasEdgeList@ManualObject@Ogre@@UAE_NXZ",
+          "original": "006a00c8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?hasEdgeList@ManualObject@Ogre@@UAE_NXZ"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getWorldBoundingBox@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+          "original": "006a00ce",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldBoundingBox@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@_N@Z"
+        },
+        {
+          "slot": 5,
+          "symbol": "?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+          "original": "0069ff84",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getDarkCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z",
+          "original": "0069ff8a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getDarkCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getShadowVolumeRenderableIterator@ManualObject@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z",
+          "original": "006a00d4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getShadowVolumeRenderableIterator@ManualObject@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z"
+        },
+        {
+          "slot": 8,
+          "symbol": "?getPointExtrusionDistance@MovableObject@Ogre@@UBEMPBVLight@2@@Z",
+          "original": "0069ff96",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getPointExtrusionDistance@MovableObject@Ogre@@UBEMPBVLight@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z",
+          "original": "0069ff9c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z"
+        },
+        {
+          "slot": 10,
+          "symbol": "?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z",
+          "original": "0069ffa2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z"
+        },
+        {
+          "slot": 11,
+          "symbol": "?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z",
+          "original": "0069ffa8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z"
+        },
+        {
+          "slot": 12,
+          "symbol": "?_notifyCreator@MovableObject@Ogre@@UAEXPAVMovableObjectFactory@2@@Z",
+          "original": "0069ffae",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyCreator@MovableObject@Ogre@@UAEXPAVMovableObjectFactory@2@@Z"
+        },
+        {
+          "slot": 13,
+          "symbol": "?_getCreator@MovableObject@Ogre@@UBEPAVMovableObjectFactory@2@XZ",
+          "original": "0069ffb4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getCreator@MovableObject@Ogre@@UBEPAVMovableObjectFactory@2@XZ"
+        },
+        {
+          "slot": 14,
+          "symbol": "?_notifyManager@MovableObject@Ogre@@UAEXPAVSceneManager@2@@Z",
+          "original": "0069ffba",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyManager@MovableObject@Ogre@@UAEXPAVSceneManager@2@@Z"
+        },
+        {
+          "slot": 15,
+          "symbol": "?_getManager@MovableObject@Ogre@@UBEPAVSceneManager@2@XZ",
+          "original": "0069ffc0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getManager@MovableObject@Ogre@@UBEPAVSceneManager@2@XZ"
+        },
+        {
+          "slot": 16,
+          "symbol": "?getName@MovableObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "0069ffc6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getName@MovableObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 17,
+          "symbol": "?getMovableType@ManualObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "006a00da",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getMovableType@ManualObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 18,
+          "symbol": "?getParentNode@MovableObject@Ogre@@UBEPAVNode@2@XZ",
+          "original": "0069ffd2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getParentNode@MovableObject@Ogre@@UBEPAVNode@2@XZ"
+        },
+        {
+          "slot": 19,
+          "symbol": "?getParentSceneNode@MovableObject@Ogre@@UBEPAVSceneNode@2@XZ",
+          "original": "0069ffd8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getParentSceneNode@MovableObject@Ogre@@UBEPAVSceneNode@2@XZ"
+        },
+        {
+          "slot": 20,
+          "symbol": "?_notifyAttached@MovableObject@Ogre@@UAEXPAVNode@2@_N@Z",
+          "original": "006a00e0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyAttached@MovableObject@Ogre@@UAEXPAVNode@2@_N@Z"
+        },
+        {
+          "slot": 21,
+          "symbol": "?isAttached@MovableObject@Ogre@@UBE_NXZ",
+          "original": "0069ffe4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isAttached@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 22,
+          "symbol": "?isInScene@MovableObject@Ogre@@UBE_NXZ",
+          "original": "0069ffea",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isInScene@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 23,
+          "symbol": "?_notifyMoved@MovableObject@Ogre@@UAEXXZ",
+          "original": "0069fff0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyMoved@MovableObject@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 24,
+          "symbol": "?_notifyCurrentCamera@MovableObject@Ogre@@UAEXPAVCamera@2@@Z",
+          "original": "006a00e6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyCurrentCamera@MovableObject@Ogre@@UAEXPAVCamera@2@@Z"
+        },
+        {
+          "slot": 25,
+          "symbol": "?getBoundingBox@ManualObject@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+          "original": "006a00ec",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBoundingBox@ManualObject@Ogre@@UBEABVAxisAlignedBox@2@XZ"
+        },
+        {
+          "slot": 26,
+          "symbol": "?getBoundingRadius@ManualObject@Ogre@@UBEMXZ",
+          "original": "006a00f2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBoundingRadius@ManualObject@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 27,
+          "symbol": "?getWorldBoundingSphere@MovableObject@Ogre@@UBEABVSphere@2@_N@Z",
+          "original": "006a00f8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldBoundingSphere@MovableObject@Ogre@@UBEABVSphere@2@_N@Z"
+        },
+        {
+          "slot": 28,
+          "symbol": "?_updateRenderQueue@ManualObject@Ogre@@UAEXPAVRenderQueue@2@@Z",
+          "original": "006a00fe",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_updateRenderQueue@ManualObject@Ogre@@UAEXPAVRenderQueue@2@@Z"
+        },
+        {
+          "slot": 29,
+          "symbol": "?setVisible@MovableObject@Ogre@@UAEX_N@Z",
+          "original": "006a0008",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisible@MovableObject@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 30,
+          "symbol": "?getVisible@MovableObject@Ogre@@UBE_NXZ",
+          "original": "006a000e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getVisible@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 31,
+          "symbol": "?isVisible@MovableObject@Ogre@@UBE_NXZ",
+          "original": "006a0014",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isVisible@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 32,
+          "symbol": "?setRenderingDistance@MovableObject@Ogre@@UAEXM@Z",
+          "original": "006a001a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderingDistance@MovableObject@Ogre@@UAEXM@Z"
+        },
+        {
+          "slot": 33,
+          "symbol": "?getRenderingDistance@MovableObject@Ogre@@UBEMXZ",
+          "original": "006a0020",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderingDistance@MovableObject@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 34,
+          "symbol": "?setUserObject@MovableObject@Ogre@@UAEXPAVUserDefinedObject@2@@Z",
+          "original": "006a0026",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setUserObject@MovableObject@Ogre@@UAEXPAVUserDefinedObject@2@@Z"
+        },
+        {
+          "slot": 35,
+          "symbol": "?getUserObject@MovableObject@Ogre@@UAEPAVUserDefinedObject@2@XZ",
+          "original": "006a002c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getUserObject@MovableObject@Ogre@@UAEPAVUserDefinedObject@2@XZ"
+        },
+        {
+          "slot": 36,
+          "symbol": "?setUserAny@MovableObject@Ogre@@UAEXABVAny@2@@Z",
+          "original": "006a0032",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setUserAny@MovableObject@Ogre@@UAEXABVAny@2@@Z"
+        },
+        {
+          "slot": 37,
+          "symbol": "?getUserAny@MovableObject@Ogre@@UBEABVAny@2@XZ",
+          "original": "006a0038",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getUserAny@MovableObject@Ogre@@UBEABVAny@2@XZ"
+        },
+        {
+          "slot": 38,
+          "symbol": "?setRenderQueueGroup@MovableObject@Ogre@@UAEXE@Z",
+          "original": "006a0104",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderQueueGroup@MovableObject@Ogre@@UAEXE@Z"
+        },
+        {
+          "slot": 39,
+          "symbol": "?getRenderQueueGroup@MovableObject@Ogre@@UBEEXZ",
+          "original": "006a0044",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderQueueGroup@MovableObject@Ogre@@UBEEXZ"
+        },
+        {
+          "slot": 40,
+          "symbol": "?_getParentNodeFullTransform@MovableObject@Ogre@@UBEABVMatrix4@2@XZ",
+          "original": "006a004a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getParentNodeFullTransform@MovableObject@Ogre@@UBEABVMatrix4@2@XZ"
+        },
+        {
+          "slot": 41,
+          "symbol": "?setQueryFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0050",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 42,
+          "symbol": "?addQueryFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0056",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addQueryFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 43,
+          "symbol": "?removeQueryFlags@MovableObject@Ogre@@UAEXK@Z",
+          "original": "006a005c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeQueryFlags@MovableObject@Ogre@@UAEXK@Z"
+        },
+        {
+          "slot": 44,
+          "symbol": "?getQueryFlags@MovableObject@Ogre@@UBEIXZ",
+          "original": "006a0062",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryFlags@MovableObject@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 45,
+          "symbol": "?setVisibilityFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0068",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisibilityFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 46,
+          "symbol": "?addVisibilityFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a006e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addVisibilityFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 47,
+          "symbol": "?removeVisibilityFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0074",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeVisibilityFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 48,
+          "symbol": "?getVisibilityFlags@MovableObject@Ogre@@UBEIXZ",
+          "original": "006a007a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getVisibilityFlags@MovableObject@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 49,
+          "symbol": "?setListener@MovableObject@Ogre@@UAEXPAVListener@12@@Z",
+          "original": "006a0080",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setListener@MovableObject@Ogre@@UAEXPAVListener@12@@Z"
+        },
+        {
+          "slot": 50,
+          "symbol": "?getListener@MovableObject@Ogre@@UBEPAVListener@12@XZ",
+          "original": "006a0086",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getListener@MovableObject@Ogre@@UBEPAVListener@12@XZ"
+        },
+        {
+          "slot": 51,
+          "symbol": "?queryLights@MovableObject@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+          "original": "006a008c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryLights@MovableObject@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 52,
+          "symbol": "?getTypeFlags@MovableObject@Ogre@@UBEIXZ",
+          "original": "006a010a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getTypeFlags@MovableObject@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 53,
+          "symbol": "?clear@ManualObject@Ogre@@UAEXXZ",
+          "original": "006a0110",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?clear@ManualObject@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 54,
+          "symbol": "?estimateVertexCount@ManualObject@Ogre@@UAEXI@Z",
+          "original": "006a0116",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?estimateVertexCount@ManualObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 55,
+          "symbol": "?estimateIndexCount@ManualObject@Ogre@@UAEXI@Z",
+          "original": "006a011c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?estimateIndexCount@ManualObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 56,
+          "symbol": "?begin@ManualObject@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4OperationType@RenderOperation@2@@Z",
+          "original": "006a0122",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?begin@ManualObject@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4OperationType@RenderOperation@2@@Z"
+        },
+        {
+          "slot": 57,
+          "symbol": "?setDynamic@ManualObject@Ogre@@UAEX_N@Z",
+          "original": "006a0128",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setDynamic@ManualObject@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 58,
+          "symbol": "?getDynamic@ManualObject@Ogre@@UBE_NXZ",
+          "original": "006a012e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getDynamic@ManualObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 59,
+          "symbol": "?beginUpdate@ManualObject@Ogre@@UAEXI@Z",
+          "original": "006a0134",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?beginUpdate@ManualObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 60,
+          "symbol": "?position@ManualObject@Ogre@@UAEXMMM@Z",
+          "original": "006a013a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?position@ManualObject@Ogre@@UAEXMMM@Z"
+        },
+        {
+          "slot": 61,
+          "symbol": "?position@ManualObject@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a0140",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?position@ManualObject@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 62,
+          "symbol": "?normal@ManualObject@Ogre@@UAEXMMM@Z",
+          "original": "006a0146",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?normal@ManualObject@Ogre@@UAEXMMM@Z"
+        },
+        {
+          "slot": 63,
+          "symbol": "?normal@ManualObject@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a014c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?normal@ManualObject@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 64,
+          "symbol": "?textureCoord@ManualObject@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a0152",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?textureCoord@ManualObject@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 65,
+          "symbol": "?textureCoord@ManualObject@Ogre@@UAEXABVVector2@2@@Z",
+          "original": "006a0158",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?textureCoord@ManualObject@Ogre@@UAEXABVVector2@2@@Z"
+        },
+        {
+          "slot": 66,
+          "symbol": "?textureCoord@ManualObject@Ogre@@UAEXMMM@Z",
+          "original": "006a015e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?textureCoord@ManualObject@Ogre@@UAEXMMM@Z"
+        },
+        {
+          "slot": 67,
+          "symbol": "?textureCoord@ManualObject@Ogre@@UAEXMM@Z",
+          "original": "006a0164",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?textureCoord@ManualObject@Ogre@@UAEXMM@Z"
+        },
+        {
+          "slot": 68,
+          "symbol": "?textureCoord@ManualObject@Ogre@@UAEXM@Z",
+          "original": "006a016a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?textureCoord@ManualObject@Ogre@@UAEXM@Z"
+        },
+        {
+          "slot": 69,
+          "symbol": "?colour@ManualObject@Ogre@@UAEXMMMM@Z",
+          "original": "006a0170",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?colour@ManualObject@Ogre@@UAEXMMMM@Z"
+        },
+        {
+          "slot": 70,
+          "symbol": "?colour@ManualObject@Ogre@@UAEXABVColourValue@2@@Z",
+          "original": "006a0176",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?colour@ManualObject@Ogre@@UAEXABVColourValue@2@@Z"
+        },
+        {
+          "slot": 71,
+          "symbol": "?index@ManualObject@Ogre@@UAEXG@Z",
+          "original": "006a017c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?index@ManualObject@Ogre@@UAEXG@Z"
+        },
+        {
+          "slot": 72,
+          "symbol": "?triangle@ManualObject@Ogre@@UAEXGGG@Z",
+          "original": "006a0182",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?triangle@ManualObject@Ogre@@UAEXGGG@Z"
+        },
+        {
+          "slot": 73,
+          "symbol": "?quad@ManualObject@Ogre@@UAEXGGGG@Z",
+          "original": "006a0188",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?quad@ManualObject@Ogre@@UAEXGGGG@Z"
+        },
+        {
+          "slot": 74,
+          "symbol": "?end@ManualObject@Ogre@@UAEPAVManualObjectSection@12@XZ",
+          "original": "006a018e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?end@ManualObject@Ogre@@UAEPAVManualObjectSection@12@XZ"
+        },
+        {
+          "slot": 75,
+          "symbol": "?setMaterialName@ManualObject@Ogre@@UAEXIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "006a0194",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setMaterialName@ManualObject@Ogre@@UAEXIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 76,
+          "symbol": "?convertToMesh@ManualObject@Ogre@@UAE?AVMeshPtr@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "original": "006a019a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?convertToMesh@ManualObject@Ogre@@UAE?AVMeshPtr@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+        },
+        {
+          "slot": 77,
+          "symbol": "?resetTempAreas@ManualObject@Ogre@@MAEXXZ",
+          "original": "006a01a0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?resetTempAreas@ManualObject@Ogre@@MAEXXZ"
+        },
+        {
+          "slot": 78,
+          "symbol": "?resizeTempVertexBufferIfNeeded@ManualObject@Ogre@@MAEXI@Z",
+          "original": "006a01a6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?resizeTempVertexBufferIfNeeded@ManualObject@Ogre@@MAEXI@Z"
+        },
+        {
+          "slot": 79,
+          "symbol": "?resizeTempIndexBufferIfNeeded@ManualObject@Ogre@@MAEXI@Z",
+          "original": "006a01ac",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?resizeTempIndexBufferIfNeeded@ManualObject@Ogre@@MAEXI@Z"
+        },
+        {
+          "slot": 80,
+          "symbol": "?copyTempVertexToBuffer@ManualObject@Ogre@@MAEXXZ",
+          "original": "006a01b2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?copyTempVertexToBuffer@ManualObject@Ogre@@MAEXXZ"
+        }
+      ],
+      "0084e574": [
+        {
+          "slot": 0,
+          "symbol": "?getAnimableDictionaryName@AnimableObject@Ogre@@MBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "006a0098",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAnimableDictionaryName@AnimableObject@Ogre@@MBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 1,
+          "symbol": "?initialiseAnimableDictionary@AnimableObject@Ogre@@MBEXAAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z",
+          "original": "006a009e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?initialiseAnimableDictionary@AnimableObject@Ogre@@MBEXAAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "??_EManualObject@Ogre@@W3AEPAXI@Z",
+          "original": "00681180",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 3,
+          "symbol": "?createAnimableValue@AnimableObject@Ogre@@UAE?AV?$SharedPtr@VAnimableValue@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "006a00a4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createAnimableValue@AnimableObject@Ogre@@UAE?AV?$SharedPtr@VAnimableValue@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        }
+      ]
+    },
+    "Rectangle2D": {
+      "0084f24c": [
+        {
+          "slot": 0,
+          "symbol": "??_ERectangle2D@Ogre@@UAEPAXI@Z",
+          "original": "006918c0",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?getCastShadows@MovableObject@Ogre@@UBE_NXZ",
+          "original": "0069ff6c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getCastShadows@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getEdgeList@MovableObject@Ogre@@UAEPAVEdgeData@2@XZ",
+          "original": "006a02d8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getEdgeList@MovableObject@Ogre@@UAEPAVEdgeData@2@XZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?hasEdgeList@MovableObject@Ogre@@UAE_NXZ",
+          "original": "006a02de",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?hasEdgeList@MovableObject@Ogre@@UAE_NXZ"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getWorldBoundingBox@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@_N@Z",
+          "original": "006a00ce",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldBoundingBox@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@_N@Z"
+        },
+        {
+          "slot": 5,
+          "symbol": "?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+          "original": "0069ff84",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLightCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@XZ"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getDarkCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z",
+          "original": "0069ff8a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getDarkCapBounds@MovableObject@Ogre@@UBEABVAxisAlignedBox@2@ABVLight@2@M@Z"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getShadowVolumeRenderableIterator@MovableObject@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z",
+          "original": "006a02e4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getShadowVolumeRenderableIterator@MovableObject@Ogre@@UAE?AV?$VectorIterator@V?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@@2@W4ShadowTechnique@2@PBVLight@2@PAVHardwareIndexBufferSharedPtr@2@_NMK@Z"
+        },
+        {
+          "slot": 8,
+          "symbol": "?getPointExtrusionDistance@MovableObject@Ogre@@UBEMPBVLight@2@@Z",
+          "original": "0069ff96",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getPointExtrusionDistance@MovableObject@Ogre@@UBEMPBVLight@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z",
+          "original": "0069ff9c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?updateEdgeListLightFacing@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVVector4@2@@Z"
+        },
+        {
+          "slot": 10,
+          "symbol": "?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z",
+          "original": "0069ffa2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?generateShadowVolume@ShadowCaster@Ogre@@MAEXPAVEdgeData@2@ABVHardwareIndexBufferSharedPtr@2@PBVLight@2@AAV?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@K@Z"
+        },
+        {
+          "slot": 11,
+          "symbol": "?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z",
+          "original": "0069ffa8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?extrudeBounds@ShadowCaster@Ogre@@MBEXAAVAxisAlignedBox@2@ABVVector4@2@M@Z"
+        },
+        {
+          "slot": 12,
+          "symbol": "?_notifyCreator@MovableObject@Ogre@@UAEXPAVMovableObjectFactory@2@@Z",
+          "original": "0069ffae",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyCreator@MovableObject@Ogre@@UAEXPAVMovableObjectFactory@2@@Z"
+        },
+        {
+          "slot": 13,
+          "symbol": "?_getCreator@MovableObject@Ogre@@UBEPAVMovableObjectFactory@2@XZ",
+          "original": "0069ffb4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getCreator@MovableObject@Ogre@@UBEPAVMovableObjectFactory@2@XZ"
+        },
+        {
+          "slot": 14,
+          "symbol": "?_notifyManager@MovableObject@Ogre@@UAEXPAVSceneManager@2@@Z",
+          "original": "0069ffba",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyManager@MovableObject@Ogre@@UAEXPAVSceneManager@2@@Z"
+        },
+        {
+          "slot": 15,
+          "symbol": "?_getManager@MovableObject@Ogre@@UBEPAVSceneManager@2@XZ",
+          "original": "0069ffc0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getManager@MovableObject@Ogre@@UBEPAVSceneManager@2@XZ"
+        },
+        {
+          "slot": 16,
+          "symbol": "?getName@MovableObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "0069ffc6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getName@MovableObject@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 17,
+          "symbol": "?getMovableType@SimpleRenderable@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "006a02ea",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getMovableType@SimpleRenderable@Ogre@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 18,
+          "symbol": "?getParentNode@MovableObject@Ogre@@UBEPAVNode@2@XZ",
+          "original": "0069ffd2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getParentNode@MovableObject@Ogre@@UBEPAVNode@2@XZ"
+        },
+        {
+          "slot": 19,
+          "symbol": "?getParentSceneNode@MovableObject@Ogre@@UBEPAVSceneNode@2@XZ",
+          "original": "0069ffd8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getParentSceneNode@MovableObject@Ogre@@UBEPAVSceneNode@2@XZ"
+        },
+        {
+          "slot": 20,
+          "symbol": "?_notifyAttached@MovableObject@Ogre@@UAEXPAVNode@2@_N@Z",
+          "original": "006a00e0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyAttached@MovableObject@Ogre@@UAEXPAVNode@2@_N@Z"
+        },
+        {
+          "slot": 21,
+          "symbol": "?isAttached@MovableObject@Ogre@@UBE_NXZ",
+          "original": "0069ffe4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isAttached@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 22,
+          "symbol": "?isInScene@MovableObject@Ogre@@UBE_NXZ",
+          "original": "0069ffea",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isInScene@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 23,
+          "symbol": "?_notifyMoved@MovableObject@Ogre@@UAEXXZ",
+          "original": "0069fff0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyMoved@MovableObject@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 24,
+          "symbol": "?_notifyCurrentCamera@SimpleRenderable@Ogre@@UAEXPAVCamera@2@@Z",
+          "original": "006a02f0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyCurrentCamera@SimpleRenderable@Ogre@@UAEXPAVCamera@2@@Z"
+        },
+        {
+          "slot": 25,
+          "symbol": "?getBoundingBox@SimpleRenderable@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+          "original": "006a02f6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBoundingBox@SimpleRenderable@Ogre@@UBEABVAxisAlignedBox@2@XZ"
+        },
+        {
+          "slot": 26,
+          "symbol": "?getBoundingRadius@Rectangle2D@Ogre@@UBEMXZ",
+          "original": "006a02fc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBoundingRadius@Rectangle2D@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 27,
+          "symbol": "?getWorldBoundingSphere@MovableObject@Ogre@@UBEABVSphere@2@_N@Z",
+          "original": "006a00f8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldBoundingSphere@MovableObject@Ogre@@UBEABVSphere@2@_N@Z"
+        },
+        {
+          "slot": 28,
+          "symbol": "?_updateRenderQueue@SimpleRenderable@Ogre@@UAEXPAVRenderQueue@2@@Z",
+          "original": "006a0302",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_updateRenderQueue@SimpleRenderable@Ogre@@UAEXPAVRenderQueue@2@@Z"
+        },
+        {
+          "slot": 29,
+          "symbol": "?setVisible@MovableObject@Ogre@@UAEX_N@Z",
+          "original": "006a0008",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisible@MovableObject@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 30,
+          "symbol": "?getVisible@MovableObject@Ogre@@UBE_NXZ",
+          "original": "006a000e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getVisible@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 31,
+          "symbol": "?isVisible@MovableObject@Ogre@@UBE_NXZ",
+          "original": "006a0014",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isVisible@MovableObject@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 32,
+          "symbol": "?setRenderingDistance@MovableObject@Ogre@@UAEXM@Z",
+          "original": "006a001a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderingDistance@MovableObject@Ogre@@UAEXM@Z"
+        },
+        {
+          "slot": 33,
+          "symbol": "?getRenderingDistance@MovableObject@Ogre@@UBEMXZ",
+          "original": "006a0020",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderingDistance@MovableObject@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 34,
+          "symbol": "?setUserObject@MovableObject@Ogre@@UAEXPAVUserDefinedObject@2@@Z",
+          "original": "006a0026",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setUserObject@MovableObject@Ogre@@UAEXPAVUserDefinedObject@2@@Z"
+        },
+        {
+          "slot": 35,
+          "symbol": "?getUserObject@MovableObject@Ogre@@UAEPAVUserDefinedObject@2@XZ",
+          "original": "006a002c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getUserObject@MovableObject@Ogre@@UAEPAVUserDefinedObject@2@XZ"
+        },
+        {
+          "slot": 36,
+          "symbol": "?setUserAny@MovableObject@Ogre@@UAEXABVAny@2@@Z",
+          "original": "006a0032",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setUserAny@MovableObject@Ogre@@UAEXABVAny@2@@Z"
+        },
+        {
+          "slot": 37,
+          "symbol": "?getUserAny@MovableObject@Ogre@@UBEABVAny@2@XZ",
+          "original": "006a0038",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getUserAny@MovableObject@Ogre@@UBEABVAny@2@XZ"
+        },
+        {
+          "slot": 38,
+          "symbol": "?setRenderQueueGroup@MovableObject@Ogre@@UAEXE@Z",
+          "original": "006a0104",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderQueueGroup@MovableObject@Ogre@@UAEXE@Z"
+        },
+        {
+          "slot": 39,
+          "symbol": "?getRenderQueueGroup@MovableObject@Ogre@@UBEEXZ",
+          "original": "006a0044",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderQueueGroup@MovableObject@Ogre@@UBEEXZ"
+        },
+        {
+          "slot": 40,
+          "symbol": "?_getParentNodeFullTransform@MovableObject@Ogre@@UBEABVMatrix4@2@XZ",
+          "original": "006a004a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getParentNodeFullTransform@MovableObject@Ogre@@UBEABVMatrix4@2@XZ"
+        },
+        {
+          "slot": 41,
+          "symbol": "?setQueryFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0050",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setQueryFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 42,
+          "symbol": "?addQueryFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0056",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addQueryFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 43,
+          "symbol": "?removeQueryFlags@MovableObject@Ogre@@UAEXK@Z",
+          "original": "006a005c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeQueryFlags@MovableObject@Ogre@@UAEXK@Z"
+        },
+        {
+          "slot": 44,
+          "symbol": "?getQueryFlags@MovableObject@Ogre@@UBEIXZ",
+          "original": "006a0062",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getQueryFlags@MovableObject@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 45,
+          "symbol": "?setVisibilityFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0068",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisibilityFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 46,
+          "symbol": "?addVisibilityFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a006e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addVisibilityFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 47,
+          "symbol": "?removeVisibilityFlags@MovableObject@Ogre@@UAEXI@Z",
+          "original": "006a0074",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeVisibilityFlags@MovableObject@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 48,
+          "symbol": "?getVisibilityFlags@MovableObject@Ogre@@UBEIXZ",
+          "original": "006a007a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getVisibilityFlags@MovableObject@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 49,
+          "symbol": "?setListener@MovableObject@Ogre@@UAEXPAVListener@12@@Z",
+          "original": "006a0080",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setListener@MovableObject@Ogre@@UAEXPAVListener@12@@Z"
+        },
+        {
+          "slot": 50,
+          "symbol": "?getListener@MovableObject@Ogre@@UBEPAVListener@12@XZ",
+          "original": "006a0086",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getListener@MovableObject@Ogre@@UBEPAVListener@12@XZ"
+        },
+        {
+          "slot": 51,
+          "symbol": "?queryLights@MovableObject@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+          "original": "006a008c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?queryLights@MovableObject@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 52,
+          "symbol": "?getTypeFlags@MovableObject@Ogre@@UBEIXZ",
+          "original": "006a010a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getTypeFlags@MovableObject@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 53,
+          "symbol": "?setRenderOperation@SimpleRenderable@Ogre@@UAEXABVRenderOperation@2@@Z",
+          "original": "006a0308",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderOperation@SimpleRenderable@Ogre@@UAEXABVRenderOperation@2@@Z"
+        }
+      ],
+      "0084f238": [
+        {
+          "slot": 0,
+          "symbol": "?getAnimableDictionaryName@AnimableObject@Ogre@@MBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "006a0098",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAnimableDictionaryName@AnimableObject@Ogre@@MBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 1,
+          "symbol": "?initialiseAnimableDictionary@AnimableObject@Ogre@@MBEXAAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z",
+          "original": "006a009e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?initialiseAnimableDictionary@AnimableObject@Ogre@@MBEXAAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "??_ERectangle2D@Ogre@@W3AEPAXI@Z",
+          "original": "006918e0",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 3,
+          "symbol": "?createAnimableValue@AnimableObject@Ogre@@UAE?AV?$SharedPtr@VAnimableValue@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "006a00a4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createAnimableValue@AnimableObject@Ogre@@UAE?AV?$SharedPtr@VAnimableValue@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        }
+      ],
+      "0084f1f4": [
+        {
+          "slot": 0,
+          "symbol": "??_ERectangle2D@Ogre@@WMI@AEPAXI@Z",
+          "original": "006918f0",
+          "ok": true,
+          "how": "own row"
+        },
+        {
+          "slot": 1,
+          "symbol": "?getMaterial@SimpleRenderable@Ogre@@UBEABVMaterialPtr@2@XZ",
+          "original": "006a030e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getMaterial@SimpleRenderable@Ogre@@UBEABVMaterialPtr@2@XZ"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ",
+          "original": "0069fcf0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?getRenderOperation@SimpleRenderable@Ogre@@UAEXAAVRenderOperation@2@@Z",
+          "original": "006a0314",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderOperation@SimpleRenderable@Ogre@@UAEXAAVRenderOperation@2@@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getWorldTransforms@Rectangle2D@Ogre@@MBEXPAVMatrix4@2@@Z",
+          "original": "006a031a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldTransforms@Rectangle2D@Ogre@@MBEXPAVMatrix4@2@@Z"
+        },
+        {
+          "slot": 5,
+          "symbol": "?getWorldOrientation@Rectangle2D@Ogre@@MBEABVQuaternion@2@XZ",
+          "original": "006a0320",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldOrientation@Rectangle2D@Ogre@@MBEABVQuaternion@2@XZ"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldPosition@Rectangle2D@Ogre@@MBEABVVector3@2@XZ",
+          "original": "006a0326",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldPosition@Rectangle2D@Ogre@@MBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ",
+          "original": "0069fd0e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?getSquaredViewDepth@Rectangle2D@Ogre@@UBEMPBVCamera@2@@Z",
+          "original": "006a032c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSquaredViewDepth@Rectangle2D@Ogre@@UBEMPBVCamera@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ",
+          "original": "0069fd1a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?getLights@SimpleRenderable@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+          "original": "006a0332",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLights@SimpleRenderable@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 11,
+          "symbol": "?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ",
+          "original": "0069fd26",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 12,
+          "symbol": "?getCastsShadows@Renderable@Ogre@@UBE_NXZ",
+          "original": "0069fd2c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getCastsShadows@Renderable@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 13,
+          "symbol": "?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z",
+          "original": "0069fd32",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z"
+        },
+        {
+          "slot": 14,
+          "symbol": "?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z",
+          "original": "0069fd38",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 15,
+          "symbol": "?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ",
+          "original": "0069fd3e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ"
+        }
+      ]
+    },
+    "InstancedGeometry": {
+      "0084fc0c": [
+        {
+          "slot": 0,
+          "symbol": "?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@I@Z",
+          "original": "006a05c6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@I@Z"
+        },
+        {
+          "slot": 1,
+          "symbol": "?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@GGG_N@Z",
+          "original": "006a05cc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@GGG_N@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@ABVVector3@2@_N@Z",
+          "original": "006a05d2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@ABVVector3@2@_N@Z"
+        },
+        {
+          "slot": 3,
+          "symbol": "?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@ABVAxisAlignedBox@2@_N@Z",
+          "original": "006a05d8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@ABVAxisAlignedBox@2@_N@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getBatchInstanceIndexes@InstancedGeometry@Ogre@@MAEXABVVector3@2@AAG11@Z",
+          "original": "006a05de",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstanceIndexes@InstancedGeometry@Ogre@@MAEXABVVector3@2@AAG11@Z"
+        },
+        {
+          "slot": 5,
+          "symbol": "?getInstancedGeometryInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@XZ",
+          "original": "006a05e4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getInstancedGeometryInstance@InstancedGeometry@Ogre@@MAEPAVBatchInstance@12@XZ"
+        },
+        {
+          "slot": 6,
+          "symbol": "?packIndex@InstancedGeometry@Ogre@@MAEIGGG@Z",
+          "original": "006a05ea",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?packIndex@InstancedGeometry@Ogre@@MAEIGGG@Z"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getVolumeIntersection@InstancedGeometry@Ogre@@MAEMABVAxisAlignedBox@2@GGG@Z",
+          "original": "006a05f0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getVolumeIntersection@InstancedGeometry@Ogre@@MAEMABVAxisAlignedBox@2@GGG@Z"
+        },
+        {
+          "slot": 8,
+          "symbol": "?getBatchInstanceBounds@InstancedGeometry@Ogre@@MAE?AVAxisAlignedBox@2@GGG@Z",
+          "original": "006a05f6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstanceBounds@InstancedGeometry@Ogre@@MAE?AVAxisAlignedBox@2@GGG@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?getBatchInstanceCentre@InstancedGeometry@Ogre@@MAE?AVVector3@2@GGG@Z",
+          "original": "006a05fc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstanceCentre@InstancedGeometry@Ogre@@MAE?AVVector3@2@GGG@Z"
+        },
+        {
+          "slot": 10,
+          "symbol": "?calculateBounds@InstancedGeometry@Ogre@@MAE?AVAxisAlignedBox@2@PAVVertexData@2@ABVVector3@2@ABVQuaternion@2@1@Z",
+          "original": "006a0602",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?calculateBounds@InstancedGeometry@Ogre@@MAE?AVAxisAlignedBox@2@PAVVertexData@2@ABVVector3@2@ABVQuaternion@2@1@Z"
+        },
+        {
+          "slot": 11,
+          "symbol": "??_EInstancedGeometry@Ogre@@UAEPAXI@Z",
+          "original": "0069af30",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 12,
+          "symbol": "?addEntity@InstancedGeometry@Ogre@@UAEXPAVEntity@2@ABVVector3@2@ABVQuaternion@2@1@Z",
+          "original": "006a0608",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addEntity@InstancedGeometry@Ogre@@UAEXPAVEntity@2@ABVVector3@2@ABVQuaternion@2@1@Z"
+        },
+        {
+          "slot": 13,
+          "symbol": "?addSceneNode@InstancedGeometry@Ogre@@UAEXPBVSceneNode@2@@Z",
+          "original": "006a060e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addSceneNode@InstancedGeometry@Ogre@@UAEXPBVSceneNode@2@@Z"
+        },
+        {
+          "slot": 14,
+          "symbol": "?build@InstancedGeometry@Ogre@@UAEXXZ",
+          "original": "006a0614",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?build@InstancedGeometry@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 15,
+          "symbol": "?destroy@InstancedGeometry@Ogre@@UAEXXZ",
+          "original": "006a061a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?destroy@InstancedGeometry@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 16,
+          "symbol": "?reset@InstancedGeometry@Ogre@@UAEXXZ",
+          "original": "006a0620",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?reset@InstancedGeometry@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 17,
+          "symbol": "?setRenderingDistance@InstancedGeometry@Ogre@@UAEXM@Z",
+          "original": "006a0626",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderingDistance@InstancedGeometry@Ogre@@UAEXM@Z"
+        },
+        {
+          "slot": 18,
+          "symbol": "?getRenderingDistance@InstancedGeometry@Ogre@@UBEMXZ",
+          "original": "006a062c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderingDistance@InstancedGeometry@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 19,
+          "symbol": "?getSquaredRenderingDistance@InstancedGeometry@Ogre@@UBEMXZ",
+          "original": "006a0632",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSquaredRenderingDistance@InstancedGeometry@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 20,
+          "symbol": "?setVisible@InstancedGeometry@Ogre@@UAEX_N@Z",
+          "original": "006a0638",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisible@InstancedGeometry@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 21,
+          "symbol": "?isVisible@InstancedGeometry@Ogre@@UBE_NXZ",
+          "original": "006a063e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isVisible@InstancedGeometry@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 22,
+          "symbol": "?setCastShadows@InstancedGeometry@Ogre@@UAEX_N@Z",
+          "original": "006a0644",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setCastShadows@InstancedGeometry@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 23,
+          "symbol": "?getCastShadows@InstancedGeometry@Ogre@@UAE_NXZ",
+          "original": "006a064a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getCastShadows@InstancedGeometry@Ogre@@UAE_NXZ"
+        },
+        {
+          "slot": 24,
+          "symbol": "?setBatchInstanceDimensions@InstancedGeometry@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a0650",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setBatchInstanceDimensions@InstancedGeometry@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 25,
+          "symbol": "?getBatchInstanceDimensions@InstancedGeometry@Ogre@@UBEABVVector3@2@XZ",
+          "original": "006a0656",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getBatchInstanceDimensions@InstancedGeometry@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 26,
+          "symbol": "?setOrigin@InstancedGeometry@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a065c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setOrigin@InstancedGeometry@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 27,
+          "symbol": "?getOrigin@InstancedGeometry@Ogre@@UBEABVVector3@2@XZ",
+          "original": "006a0662",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getOrigin@InstancedGeometry@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 28,
+          "symbol": "?setRenderQueueGroup@InstancedGeometry@Ogre@@UAEXE@Z",
+          "original": "006a0668",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderQueueGroup@InstancedGeometry@Ogre@@UAEXE@Z"
+        },
+        {
+          "slot": 29,
+          "symbol": "?getRenderQueueGroup@InstancedGeometry@Ogre@@UBEEXZ",
+          "original": "006a066e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderQueueGroup@InstancedGeometry@Ogre@@UBEEXZ"
+        },
+        {
+          "slot": 30,
+          "symbol": "?dump@InstancedGeometry@Ogre@@UBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "006a0674",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?dump@InstancedGeometry@Ogre@@UBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        }
+      ]
+    },
+    "StaticGeometry": {
+      "0084fb7c": [
+        {
+          "slot": 0,
+          "symbol": "?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@I@Z",
+          "original": "006a0518",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@I@Z"
+        },
+        {
+          "slot": 1,
+          "symbol": "?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@GGG_N@Z",
+          "original": "006a051e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@GGG_N@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@ABVVector3@2@_N@Z",
+          "original": "006a0524",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@ABVVector3@2@_N@Z"
+        },
+        {
+          "slot": 3,
+          "symbol": "?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@ABVAxisAlignedBox@2@_N@Z",
+          "original": "006a052a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegion@StaticGeometry@Ogre@@MAEPAVRegion@12@ABVAxisAlignedBox@2@_N@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getRegionIndexes@StaticGeometry@Ogre@@MAEXABVVector3@2@AAG11@Z",
+          "original": "006a0530",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegionIndexes@StaticGeometry@Ogre@@MAEXABVVector3@2@AAG11@Z"
+        },
+        {
+          "slot": 5,
+          "symbol": "?packIndex@StaticGeometry@Ogre@@MAEIGGG@Z",
+          "original": "006a0536",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?packIndex@StaticGeometry@Ogre@@MAEIGGG@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getVolumeIntersection@StaticGeometry@Ogre@@MAEMABVAxisAlignedBox@2@GGG@Z",
+          "original": "006a053c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getVolumeIntersection@StaticGeometry@Ogre@@MAEMABVAxisAlignedBox@2@GGG@Z"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getRegionBounds@StaticGeometry@Ogre@@MAE?AVAxisAlignedBox@2@GGG@Z",
+          "original": "006a0542",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegionBounds@StaticGeometry@Ogre@@MAE?AVAxisAlignedBox@2@GGG@Z"
+        },
+        {
+          "slot": 8,
+          "symbol": "?getRegionCentre@StaticGeometry@Ogre@@MAE?AVVector3@2@GGG@Z",
+          "original": "006a0548",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegionCentre@StaticGeometry@Ogre@@MAE?AVVector3@2@GGG@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?calculateBounds@StaticGeometry@Ogre@@MAE?AVAxisAlignedBox@2@PAVVertexData@2@ABVVector3@2@ABVQuaternion@2@1@Z",
+          "original": "006a054e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?calculateBounds@StaticGeometry@Ogre@@MAE?AVAxisAlignedBox@2@PAVVertexData@2@ABVVector3@2@ABVQuaternion@2@1@Z"
+        },
+        {
+          "slot": 10,
+          "symbol": "??_EStaticGeometry@Ogre@@UAEPAXI@Z",
+          "original": "0069adb0",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 11,
+          "symbol": "?addEntity@StaticGeometry@Ogre@@UAEXPAVEntity@2@ABVVector3@2@ABVQuaternion@2@1@Z",
+          "original": "006a0554",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addEntity@StaticGeometry@Ogre@@UAEXPAVEntity@2@ABVVector3@2@ABVQuaternion@2@1@Z"
+        },
+        {
+          "slot": 12,
+          "symbol": "?addSceneNode@StaticGeometry@Ogre@@UAEXPBVSceneNode@2@@Z",
+          "original": "006a055a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addSceneNode@StaticGeometry@Ogre@@UAEXPBVSceneNode@2@@Z"
+        },
+        {
+          "slot": 13,
+          "symbol": "?build@StaticGeometry@Ogre@@UAEXXZ",
+          "original": "006a0560",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?build@StaticGeometry@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 14,
+          "symbol": "?destroy@StaticGeometry@Ogre@@UAEXXZ",
+          "original": "006a0566",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?destroy@StaticGeometry@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 15,
+          "symbol": "?reset@StaticGeometry@Ogre@@UAEXXZ",
+          "original": "006a056c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?reset@StaticGeometry@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 16,
+          "symbol": "?setRenderingDistance@StaticGeometry@Ogre@@UAEXM@Z",
+          "original": "006a0572",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderingDistance@StaticGeometry@Ogre@@UAEXM@Z"
+        },
+        {
+          "slot": 17,
+          "symbol": "?getRenderingDistance@StaticGeometry@Ogre@@UBEMXZ",
+          "original": "006a0578",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderingDistance@StaticGeometry@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 18,
+          "symbol": "?getSquaredRenderingDistance@StaticGeometry@Ogre@@UBEMXZ",
+          "original": "006a057e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSquaredRenderingDistance@StaticGeometry@Ogre@@UBEMXZ"
+        },
+        {
+          "slot": 19,
+          "symbol": "?setVisible@StaticGeometry@Ogre@@UAEX_N@Z",
+          "original": "006a0584",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisible@StaticGeometry@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 20,
+          "symbol": "?isVisible@StaticGeometry@Ogre@@UBE_NXZ",
+          "original": "006a058a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isVisible@StaticGeometry@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 21,
+          "symbol": "?setCastShadows@StaticGeometry@Ogre@@UAEX_N@Z",
+          "original": "006a0590",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setCastShadows@StaticGeometry@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 22,
+          "symbol": "?getCastShadows@StaticGeometry@Ogre@@UAE_NXZ",
+          "original": "006a0596",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getCastShadows@StaticGeometry@Ogre@@UAE_NXZ"
+        },
+        {
+          "slot": 23,
+          "symbol": "?setRegionDimensions@StaticGeometry@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a059c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRegionDimensions@StaticGeometry@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 24,
+          "symbol": "?getRegionDimensions@StaticGeometry@Ogre@@UBEABVVector3@2@XZ",
+          "original": "006a05a2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRegionDimensions@StaticGeometry@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 25,
+          "symbol": "?setOrigin@StaticGeometry@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "006a05a8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setOrigin@StaticGeometry@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 26,
+          "symbol": "?getOrigin@StaticGeometry@Ogre@@UBEABVVector3@2@XZ",
+          "original": "006a05ae",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getOrigin@StaticGeometry@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 27,
+          "symbol": "?setRenderQueueGroup@StaticGeometry@Ogre@@UAEXE@Z",
+          "original": "006a05b4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setRenderQueueGroup@StaticGeometry@Ogre@@UAEXE@Z"
+        },
+        {
+          "slot": 28,
+          "symbol": "?getRenderQueueGroup@StaticGeometry@Ogre@@UBEEXZ",
+          "original": "006a05ba",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderQueueGroup@StaticGeometry@Ogre@@UBEEXZ"
+        },
+        {
+          "slot": 29,
+          "symbol": "?dump@StaticGeometry@Ogre@@UBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "006a05c0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?dump@StaticGeometry@Ogre@@UBEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        }
+      ]
+    },
+    "SceneNode": {
+      "0084f934": [
+        {
+          "slot": 0,
+          "symbol": "??_ESceneNode@Ogre@@UAEPAXI@Z",
+          "original": "0069a2e0",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?getMaterial@Node@Ogre@@UBEABVMaterialPtr@2@XZ",
+          "original": "0069fcea",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getMaterial@Node@Ogre@@UBEABVMaterialPtr@2@XZ"
+        },
+        {
+          "slot": 2,
+          "symbol": "?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ",
+          "original": "0069fcf0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ"
+        },
+        {
+          "slot": 3,
+          "symbol": "?getRenderOperation@Node@Ogre@@UAEXAAVRenderOperation@2@@Z",
+          "original": "0069fcf6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getRenderOperation@Node@Ogre@@UAEXAAVRenderOperation@2@@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getWorldTransforms@Node@Ogre@@UBEXPAVMatrix4@2@@Z",
+          "original": "0069fcfc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldTransforms@Node@Ogre@@UBEXPAVMatrix4@2@@Z"
+        },
+        {
+          "slot": 5,
+          "symbol": "?getWorldOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+          "original": "0069fd02",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+        },
+        {
+          "slot": 6,
+          "symbol": "?getWorldPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fd08",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getWorldPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 7,
+          "symbol": "?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ",
+          "original": "0069fd0e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ"
+        },
+        {
+          "slot": 8,
+          "symbol": "?getSquaredViewDepth@Node@Ogre@@UBEMPBVCamera@2@@Z",
+          "original": "0069fd14",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getSquaredViewDepth@Node@Ogre@@UBEMPBVCamera@2@@Z"
+        },
+        {
+          "slot": 9,
+          "symbol": "?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ",
+          "original": "0069fd1a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?getLights@Node@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+          "original": "0069fd20",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLights@Node@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 11,
+          "symbol": "?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ",
+          "original": "0069fd26",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ"
+        },
+        {
+          "slot": 12,
+          "symbol": "?getCastsShadows@Renderable@Ogre@@UBE_NXZ",
+          "original": "0069fd2c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getCastsShadows@Renderable@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 13,
+          "symbol": "?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z",
+          "original": "0069fd32",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z"
+        },
+        {
+          "slot": 14,
+          "symbol": "?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z",
+          "original": "0069fd38",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 15,
+          "symbol": "?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ",
+          "original": "0069fd3e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 16,
+          "symbol": "?setParent@SceneNode@Ogre@@MAEXPAVNode@2@@Z",
+          "original": "0069fd44",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setParent@SceneNode@Ogre@@MAEXPAVNode@2@@Z"
+        },
+        {
+          "slot": 17,
+          "symbol": "?_updateFromParent@Node@Ogre@@MBEXXZ",
+          "original": "0069fd4a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_updateFromParent@Node@Ogre@@MBEXXZ"
+        },
+        {
+          "slot": 18,
+          "symbol": "?updateFromParentImpl@SceneNode@Ogre@@MBEXXZ",
+          "original": "0069fd50",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?updateFromParentImpl@SceneNode@Ogre@@MBEXXZ"
+        },
+        {
+          "slot": 19,
+          "symbol": "?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fd56",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 20,
+          "symbol": "?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@XZ",
+          "original": "0069fd5c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@XZ"
+        },
+        {
+          "slot": 21,
+          "symbol": "?getParent@Node@Ogre@@UBEPAV12@XZ",
+          "original": "0069fd62",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getParent@Node@Ogre@@UBEPAV12@XZ"
+        },
+        {
+          "slot": 22,
+          "symbol": "?getOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+          "original": "0069fd68",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+        },
+        {
+          "slot": 23,
+          "symbol": "?setOrientation@Node@Ogre@@UAEXMMMM@Z",
+          "original": "0069fd6e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setOrientation@Node@Ogre@@UAEXMMMM@Z"
+        },
+        {
+          "slot": 24,
+          "symbol": "?setOrientation@Node@Ogre@@UAEXABVQuaternion@2@@Z",
+          "original": "0069fd74",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setOrientation@Node@Ogre@@UAEXABVQuaternion@2@@Z"
+        },
+        {
+          "slot": 25,
+          "symbol": "?resetOrientation@Node@Ogre@@UAEXXZ",
+          "original": "0069fd7a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?resetOrientation@Node@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 26,
+          "symbol": "?setPosition@Node@Ogre@@UAEXMMM@Z",
+          "original": "0069fd80",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setPosition@Node@Ogre@@UAEXMMM@Z"
+        },
+        {
+          "slot": 27,
+          "symbol": "?setPosition@Node@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "0069fd86",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setPosition@Node@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 28,
+          "symbol": "?getPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fd8c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 29,
+          "symbol": "?setScale@Node@Ogre@@UAEXMMM@Z",
+          "original": "0069fd92",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setScale@Node@Ogre@@UAEXMMM@Z"
+        },
+        {
+          "slot": 30,
+          "symbol": "?setScale@Node@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "0069fd98",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setScale@Node@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 31,
+          "symbol": "?getScale@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fd9e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getScale@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 32,
+          "symbol": "?setInheritOrientation@Node@Ogre@@UAEX_N@Z",
+          "original": "0069fda4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setInheritOrientation@Node@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 33,
+          "symbol": "?getInheritOrientation@Node@Ogre@@UBE_NXZ",
+          "original": "0069fdaa",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getInheritOrientation@Node@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 34,
+          "symbol": "?setInheritScale@Node@Ogre@@UAEX_N@Z",
+          "original": "0069fdb0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setInheritScale@Node@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 35,
+          "symbol": "?getInheritScale@Node@Ogre@@UBE_NXZ",
+          "original": "0069fdb6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getInheritScale@Node@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 36,
+          "symbol": "?scale@Node@Ogre@@UAEXMMM@Z",
+          "original": "0069fdbc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?scale@Node@Ogre@@UAEXMMM@Z"
+        },
+        {
+          "slot": 37,
+          "symbol": "?scale@Node@Ogre@@UAEXABVVector3@2@@Z",
+          "original": "0069fdc2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?scale@Node@Ogre@@UAEXABVVector3@2@@Z"
+        },
+        {
+          "slot": 38,
+          "symbol": "?translate@Node@Ogre@@UAEXABVMatrix3@2@MMMW4TransformSpace@12@@Z",
+          "original": "0069fdc8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXABVMatrix3@2@MMMW4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 39,
+          "symbol": "?translate@Node@Ogre@@UAEXABVMatrix3@2@ABVVector3@2@W4TransformSpace@12@@Z",
+          "original": "0069fdce",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXABVMatrix3@2@ABVVector3@2@W4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 40,
+          "symbol": "?translate@Node@Ogre@@UAEXMMMW4TransformSpace@12@@Z",
+          "original": "0069fdd4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXMMMW4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 41,
+          "symbol": "?translate@Node@Ogre@@UAEXABVVector3@2@W4TransformSpace@12@@Z",
+          "original": "0069fdda",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXABVVector3@2@W4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 42,
+          "symbol": "?roll@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z",
+          "original": "0069fde0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?roll@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 43,
+          "symbol": "?pitch@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z",
+          "original": "0069fde6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?pitch@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 44,
+          "symbol": "?yaw@SceneNode@Ogre@@UAEXABVRadian@2@W4TransformSpace@Node@2@@Z",
+          "original": "0069fdec",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?yaw@SceneNode@Ogre@@UAEXABVRadian@2@W4TransformSpace@Node@2@@Z"
+        },
+        {
+          "slot": 45,
+          "symbol": "?rotate@Node@Ogre@@UAEXABVQuaternion@2@W4TransformSpace@12@@Z",
+          "original": "0069fdf2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?rotate@Node@Ogre@@UAEXABVQuaternion@2@W4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 46,
+          "symbol": "?rotate@Node@Ogre@@UAEXABVVector3@2@ABVRadian@2@W4TransformSpace@12@@Z",
+          "original": "0069fdf8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?rotate@Node@Ogre@@UAEXABVVector3@2@ABVRadian@2@W4TransformSpace@12@@Z"
+        },
+        {
+          "slot": 47,
+          "symbol": "?getLocalAxes@Node@Ogre@@UBE?AVMatrix3@2@XZ",
+          "original": "0069fdfe",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLocalAxes@Node@Ogre@@UBE?AVMatrix3@2@XZ"
+        },
+        {
+          "slot": 48,
+          "symbol": "?createChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z",
+          "original": "0069fe04",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z"
+        },
+        {
+          "slot": 49,
+          "symbol": "?createChild@Node@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z",
+          "original": "0069fe0a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createChild@Node@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z"
+        },
+        {
+          "slot": 50,
+          "symbol": "?addChild@Node@Ogre@@UAEXPAV12@@Z",
+          "original": "0069fe10",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?addChild@Node@Ogre@@UAEXPAV12@@Z"
+        },
+        {
+          "slot": 51,
+          "symbol": "?numChildren@Node@Ogre@@UBEGXZ",
+          "original": "0069fe16",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?numChildren@Node@Ogre@@UBEGXZ"
+        },
+        {
+          "slot": 52,
+          "symbol": "?getChild@Node@Ogre@@UBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fe1c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getChild@Node@Ogre@@UBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 53,
+          "symbol": "?getChild@Node@Ogre@@UBEPAV12@G@Z",
+          "original": "0069fe22",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getChild@Node@Ogre@@UBEPAV12@G@Z"
+        },
+        {
+          "slot": 54,
+          "symbol": "?getChildIterator@Node@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ",
+          "original": "0069fe28",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getChildIterator@Node@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ"
+        },
+        {
+          "slot": 55,
+          "symbol": "?getChildIterator@Node@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ",
+          "original": "0069fe2e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getChildIterator@Node@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ"
+        },
+        {
+          "slot": 56,
+          "symbol": "?removeChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fe34",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 57,
+          "symbol": "?removeChild@Node@Ogre@@UAEPAV12@PAV12@@Z",
+          "original": "0069fe3a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@PAV12@@Z"
+        },
+        {
+          "slot": 58,
+          "symbol": "?removeChild@Node@Ogre@@UAEPAV12@G@Z",
+          "original": "0069fe40",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@G@Z"
+        },
+        {
+          "slot": 59,
+          "symbol": "?removeAllChildren@Node@Ogre@@UAEXXZ",
+          "original": "0069fe46",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeAllChildren@Node@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 60,
+          "symbol": "?_getDerivedOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+          "original": "0069fe4c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getDerivedOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+        },
+        {
+          "slot": 61,
+          "symbol": "?_getDerivedPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fe52",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getDerivedPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 62,
+          "symbol": "?_getDerivedScale@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fe58",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getDerivedScale@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 63,
+          "symbol": "?_getFullTransform@Node@Ogre@@UBEABVMatrix4@2@XZ",
+          "original": "0069fe5e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getFullTransform@Node@Ogre@@UBEABVMatrix4@2@XZ"
+        },
+        {
+          "slot": 64,
+          "symbol": "?_update@SceneNode@Ogre@@UAEX_N0@Z",
+          "original": "006a0506",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_update@SceneNode@Ogre@@UAEX_N0@Z"
+        },
+        {
+          "slot": 65,
+          "symbol": "?setListener@Node@Ogre@@UAEXPAVListener@12@@Z",
+          "original": "0069fe64",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setListener@Node@Ogre@@UAEXPAVListener@12@@Z"
+        },
+        {
+          "slot": 66,
+          "symbol": "?getListener@Node@Ogre@@UBEPAVListener@12@XZ",
+          "original": "0069fe6a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getListener@Node@Ogre@@UBEPAVListener@12@XZ"
+        },
+        {
+          "slot": 67,
+          "symbol": "?setInitialState@Node@Ogre@@UAEXXZ",
+          "original": "0069fe70",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setInitialState@Node@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 68,
+          "symbol": "?resetToInitialState@Node@Ogre@@UAEXXZ",
+          "original": "0069fe76",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?resetToInitialState@Node@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 69,
+          "symbol": "?getInitialPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fe7c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getInitialPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 70,
+          "symbol": "?getInitialOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+          "original": "0069fe82",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getInitialOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+        },
+        {
+          "slot": 71,
+          "symbol": "?getInitialScale@Node@Ogre@@UBEABVVector3@2@XZ",
+          "original": "0069fe88",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getInitialScale@Node@Ogre@@UBEABVVector3@2@XZ"
+        },
+        {
+          "slot": 72,
+          "symbol": "?needUpdate@Node@Ogre@@UAEX_N@Z",
+          "original": "0069fe8e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?needUpdate@Node@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 73,
+          "symbol": "?requestUpdate@Node@Ogre@@UAEXPAV12@_N@Z",
+          "original": "0069fe94",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?requestUpdate@Node@Ogre@@UAEXPAV12@_N@Z"
+        },
+        {
+          "slot": 74,
+          "symbol": "?cancelUpdate@Node@Ogre@@UAEXPAV12@@Z",
+          "original": "0069fe9a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?cancelUpdate@Node@Ogre@@UAEXPAV12@@Z"
+        },
+        {
+          "slot": 75,
+          "symbol": "?setInSceneGraph@SceneNode@Ogre@@MAEX_N@Z",
+          "original": "0069fea0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setInSceneGraph@SceneNode@Ogre@@MAEX_N@Z"
+        },
+        {
+          "slot": 76,
+          "symbol": "?attachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z",
+          "original": "0069fea6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?attachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z"
+        },
+        {
+          "slot": 77,
+          "symbol": "?numAttachedObjects@SceneNode@Ogre@@UBEGXZ",
+          "original": "0069feac",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?numAttachedObjects@SceneNode@Ogre@@UBEGXZ"
+        },
+        {
+          "slot": 78,
+          "symbol": "?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069feb2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 79,
+          "symbol": "?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z",
+          "original": "0069feb8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z"
+        },
+        {
+          "slot": 80,
+          "symbol": "?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069febe",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 81,
+          "symbol": "?detachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z",
+          "original": "0069fec4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?detachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z"
+        },
+        {
+          "slot": 82,
+          "symbol": "?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z",
+          "original": "0069feca",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z"
+        },
+        {
+          "slot": 83,
+          "symbol": "?detachAllObjects@SceneNode@Ogre@@UAEXXZ",
+          "original": "0069fed0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?detachAllObjects@SceneNode@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 84,
+          "symbol": "?isInSceneGraph@SceneNode@Ogre@@UBE_NXZ",
+          "original": "0069fed6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?isInSceneGraph@SceneNode@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 85,
+          "symbol": "?_notifyRootNode@SceneNode@Ogre@@UAEXXZ",
+          "original": "0069fedc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_notifyRootNode@SceneNode@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 86,
+          "symbol": "?_updateBounds@SceneNode@Ogre@@UAEXXZ",
+          "original": "006a050c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_updateBounds@SceneNode@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 87,
+          "symbol": "?_findVisibleObjects@SceneNode@Ogre@@UAEXPAVCamera@2@PAVRenderQueue@2@PAUVisibleObjectsBoundsInfo@2@_N33@Z",
+          "original": "006a0512",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_findVisibleObjects@SceneNode@Ogre@@UAEXPAVCamera@2@PAVRenderQueue@2@PAUVisibleObjectsBoundsInfo@2@_N33@Z"
+        },
+        {
+          "slot": 88,
+          "symbol": "?_getWorldAABB@SceneNode@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+          "original": "0069fee2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_getWorldAABB@SceneNode@Ogre@@UBEABVAxisAlignedBox@2@XZ"
+        },
+        {
+          "slot": 89,
+          "symbol": "?getAttachedObjectIterator@SceneNode@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ",
+          "original": "0069fee8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAttachedObjectIterator@SceneNode@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ"
+        },
+        {
+          "slot": 90,
+          "symbol": "?getAttachedObjectIterator@SceneNode@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ",
+          "original": "0069feee",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAttachedObjectIterator@SceneNode@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ"
+        },
+        {
+          "slot": 91,
+          "symbol": "?removeAndDestroyChild@SceneNode@Ogre@@UAEXG@Z",
+          "original": "0069fef4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeAndDestroyChild@SceneNode@Ogre@@UAEXG@Z"
+        },
+        {
+          "slot": 92,
+          "symbol": "?removeAndDestroyChild@SceneNode@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fefa",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeAndDestroyChild@SceneNode@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 93,
+          "symbol": "?removeAndDestroyAllChildren@SceneNode@Ogre@@UAEXXZ",
+          "original": "0069ff00",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?removeAndDestroyAllChildren@SceneNode@Ogre@@UAEXXZ"
+        },
+        {
+          "slot": 94,
+          "symbol": "?showBoundingBox@SceneNode@Ogre@@UAEX_N@Z",
+          "original": "0069ff06",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?showBoundingBox@SceneNode@Ogre@@UAEX_N@Z"
+        },
+        {
+          "slot": 95,
+          "symbol": "?_addBoundingBoxToQueue@SceneNode@Ogre@@UAEXPAVRenderQueue@2@@Z",
+          "original": "0069ff0c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?_addBoundingBoxToQueue@SceneNode@Ogre@@UAEXPAVRenderQueue@2@@Z"
+        },
+        {
+          "slot": 96,
+          "symbol": "?getShowBoundingBox@SceneNode@Ogre@@UBE_NXZ",
+          "original": "0069ff12",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getShowBoundingBox@SceneNode@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 97,
+          "symbol": "?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z",
+          "original": "0069ff18",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z"
+        },
+        {
+          "slot": 98,
+          "symbol": "?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z",
+          "original": "0069ff1e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z"
+        },
+        {
+          "slot": 99,
+          "symbol": "?findLights@SceneNode@Ogre@@UBEXAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@M@Z",
+          "original": "0069ff24",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?findLights@SceneNode@Ogre@@UBEXAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@M@Z"
+        },
+        {
+          "slot": 100,
+          "symbol": "?setFixedYawAxis@SceneNode@Ogre@@UAEX_NABVVector3@2@@Z",
+          "original": "0069ff2a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setFixedYawAxis@SceneNode@Ogre@@UAEX_NABVVector3@2@@Z"
+        },
+        {
+          "slot": 101,
+          "symbol": "?setDirection@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z",
+          "original": "0069ff30",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setDirection@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z"
+        },
+        {
+          "slot": 102,
+          "symbol": "?setDirection@SceneNode@Ogre@@UAEXMMMW4TransformSpace@Node@2@ABVVector3@2@@Z",
+          "original": "0069ff36",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setDirection@SceneNode@Ogre@@UAEXMMMW4TransformSpace@Node@2@ABVVector3@2@@Z"
+        },
+        {
+          "slot": 103,
+          "symbol": "?lookAt@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z",
+          "original": "0069ff3c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?lookAt@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z"
+        },
+        {
+          "slot": 104,
+          "symbol": "?setAutoTracking@SceneNode@Ogre@@UAEX_NPAV12@ABVVector3@2@2@Z",
+          "original": "0069ff42",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setAutoTracking@SceneNode@Ogre@@UAEX_NPAV12@ABVVector3@2@2@Z"
+        },
+        {
+          "slot": 105,
+          "symbol": "?getAutoTrackTarget@SceneNode@Ogre@@UAEPAV12@XZ",
+          "original": "0069ff48",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAutoTrackTarget@SceneNode@Ogre@@UAEPAV12@XZ"
+        },
+        {
+          "slot": 106,
+          "symbol": "?getAutoTrackOffset@SceneNode@Ogre@@UAEABVVector3@2@XZ",
+          "original": "0069ff4e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAutoTrackOffset@SceneNode@Ogre@@UAEABVVector3@2@XZ"
+        },
+        {
+          "slot": 107,
+          "symbol": "?getAutoTrackLocalDirection@SceneNode@Ogre@@UAEABVVector3@2@XZ",
+          "original": "0069ff54",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAutoTrackLocalDirection@SceneNode@Ogre@@UAEABVVector3@2@XZ"
+        },
+        {
+          "slot": 108,
+          "symbol": "?setVisible@SceneNode@Ogre@@UAEX_N0@Z",
+          "original": "0069ff5a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?setVisible@SceneNode@Ogre@@UAEX_N0@Z"
+        },
+        {
+          "slot": 109,
+          "symbol": "?flipVisibility@SceneNode@Ogre@@UAEX_N@Z",
+          "original": "0069ff60",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?flipVisibility@SceneNode@Ogre@@UAEX_N@Z"
+        }
+      ]
+    },
+    "MemoryDataStream": {
+      "00826cc4": [
+        {
+          "slot": 0,
+          "symbol": "??_EMemoryDataStream@Ogre@@UAEPAXI@Z",
+          "original": "004dab30",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?read@MemoryDataStream@Ogre@@UAEIPAXI@Z",
+          "original": "0069fc7e",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?read@MemoryDataStream@Ogre@@UAEIPAXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?readLine@MemoryDataStream@Ogre@@UAEIPADIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fc84",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?readLine@MemoryDataStream@Ogre@@UAEIPADIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 3,
+          "symbol": "?getLine@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+          "original": "0069fc8a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLine@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getAsString@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "0069fc90",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAsString@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?skipLine@MemoryDataStream@Ogre@@UAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fc96",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?skipLine@MemoryDataStream@Ogre@@UAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?skip@MemoryDataStream@Ogre@@UAEXJ@Z",
+          "original": "0069fc9c",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?skip@MemoryDataStream@Ogre@@UAEXJ@Z"
+        },
+        {
+          "slot": 7,
+          "symbol": "?seek@MemoryDataStream@Ogre@@UAEXI@Z",
+          "original": "0069fca2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?seek@MemoryDataStream@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 8,
+          "symbol": "?tell@MemoryDataStream@Ogre@@UBEIXZ",
+          "original": "0069fca8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?tell@MemoryDataStream@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 9,
+          "symbol": "?eof@MemoryDataStream@Ogre@@UBE_NXZ",
+          "original": "0069fcae",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?eof@MemoryDataStream@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?close@MemoryDataStream@Ogre@@UAEXXZ",
+          "original": "0069fcb4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?close@MemoryDataStream@Ogre@@UAEXXZ"
+        }
+      ]
+    },
+    "FileStreamDataStream": {
+      "0084d1e8": [
+        {
+          "slot": 0,
+          "symbol": "??_EFileStreamDataStream@Ogre@@UAEPAXI@Z",
+          "original": "006700c0",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        },
+        {
+          "slot": 1,
+          "symbol": "?read@FileStreamDataStream@Ogre@@UAEIPAXI@Z",
+          "original": "0069fcba",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?read@FileStreamDataStream@Ogre@@UAEIPAXI@Z"
+        },
+        {
+          "slot": 2,
+          "symbol": "?readLine@FileStreamDataStream@Ogre@@UAEIPADIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fcc0",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?readLine@FileStreamDataStream@Ogre@@UAEIPADIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 3,
+          "symbol": "?getLine@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+          "original": "0069fc8a",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getLine@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+        },
+        {
+          "slot": 4,
+          "symbol": "?getAsString@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original": "0069fc90",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?getAsString@DataStream@Ogre@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+        },
+        {
+          "slot": 5,
+          "symbol": "?skipLine@DataStream@Ogre@@UAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "original": "0069fcc6",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?skipLine@DataStream@Ogre@@UAEIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        },
+        {
+          "slot": 6,
+          "symbol": "?skip@FileStreamDataStream@Ogre@@UAEXJ@Z",
+          "original": "0069fccc",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?skip@FileStreamDataStream@Ogre@@UAEXJ@Z"
+        },
+        {
+          "slot": 7,
+          "symbol": "?seek@FileStreamDataStream@Ogre@@UAEXI@Z",
+          "original": "0069fcd2",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?seek@FileStreamDataStream@Ogre@@UAEXI@Z"
+        },
+        {
+          "slot": 8,
+          "symbol": "?tell@FileStreamDataStream@Ogre@@UBEIXZ",
+          "original": "0069fcd8",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?tell@FileStreamDataStream@Ogre@@UBEIXZ"
+        },
+        {
+          "slot": 9,
+          "symbol": "?eof@FileStreamDataStream@Ogre@@UBE_NXZ",
+          "original": "0069fcde",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?eof@FileStreamDataStream@Ogre@@UBE_NXZ"
+        },
+        {
+          "slot": 10,
+          "symbol": "?close@FileStreamDataStream@Ogre@@UAEXXZ",
+          "original": "0069fce4",
+          "ok": true,
+          "how": "import thunk rgmain.dll!?close@FileStreamDataStream@Ogre@@UAEXXZ"
+        }
+      ]
+    },
+    "RenderQueue": {
+      "0084e9b8": [
+        {
+          "slot": 0,
+          "symbol": "??_ERenderQueue@Ogre@@UAEPAXI@Z",
+          "original": "0068b780",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        }
+      ]
+    },
+    "Animation": {
+      "0084fb30": [
+        {
+          "slot": 0,
+          "symbol": "??_EAnimation@Ogre@@UAEPAXI@Z",
+          "original": "0069a930",
+          "ok": true,
+          "how": "own row (??_E resolved to ??_G)"
+        }
+      ]
+    }
+  },
+  "imports_not_rows": "constructors, destructors and every other vftable entry are rgmain.dll imports (import thunks verified by export name above)",
+  "not_double_counted": "ManualObject ??_G 00681160 / ??_E 00681180 are listed in ogre-rbx-sky-working.json only as pending_build_only (exact=false, not counted); none of the other rows appears in any receipt. The vftables are bound targets (not rows) in ogre-scene-manager / ogre-rbx-sky / ogre-rbx-node.",
+  "proposals": {},
+  "scope": "Inactive. Compiler-generated ??_G / ??_E thunk rows, exact with verified targets; no active build, swap or credit. nativeNew* are probe scaffolding, not recovered functions."
+}

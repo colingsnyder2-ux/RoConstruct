@@ -6,10 +6,6 @@
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying 
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// >>> native-status (generated) -- do not edit >>>
-// Boostbarrier | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src fac485cf | roc native-status --write
 #include <boost/thread/detail/config.hpp>
 #include <boost/thread/barrier.hpp>
 #include <string> // see http://article.gmane.org/gmane.comp.lib.boost.devel/106981

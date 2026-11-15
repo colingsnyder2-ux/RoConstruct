@@ -1,10 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::Lighting (inactive); evidence in native-headers/v8datamodel/Lighting2008.h.
 // Verified by tests/record_native_lighting2008.py. Original unit 005df0c0..005e2760 (constructor 005e1a40,
 // destructor 005e1d60); classDescriptor 005e1100, doDeclare 004ab0f0.
-// >>> native-status (generated) -- do not edit >>>
-// Lighting2008 | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
-// <<< native-status | src 05533627 | roc native-status --write
 #include "v8datamodel/Lighting2008.h"
 #include "v8datamodel/Sky.h"
 #include "util/RunStateOwner.h"
@@ -29,6 +26,8 @@ namespace RBX
 
 	// Dynamic initializer 007f69b0 (the other Lighting descriptors, 007f6a50..007f6c40, are not recovered yet).
 	Reflection::SignalDesc<Lighting, void(bool)> Lighting::event_LightingChanged("LightingChanged", "skyboxChanged");
+	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ShadowColor("ShadowColor", "Appearance", &Lighting::getShadowColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
 
 	Lighting::Lighting()
 		: ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
@@ -65,6 +64,50 @@ namespace RBX
 	G3D::Vector3 Lighting::getSunPosition()
 	{
 		return (skyParameters.physicallyCorrect) ? skyParameters.trueSunPosition : skyParameters.sunPosition;
+	}
+
+	void Lighting::setShadowColor(G3D::Color4 value)
+	{
+		if (value != shadowColor)
+		{
+			shadowColor = value;
+			raisePropertyChanged(desc_ShadowColor);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+
+	void Lighting::setTime(const boost::posix_time::time_duration& value)
+	{
+		int totalSeconds = value.total_seconds();
+		totalSeconds -= (totalSeconds / 86400) * 86400;
+		if (timeOfDay.total_seconds() != totalSeconds)
+		{
+			timeOfDay = boost::posix_time::seconds(totalSeconds);
+			skyParameters.setTime(timeOfDay.total_seconds());
+			raisePropertyChanged(prop_Time);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+
+	void Lighting::setTimeStr(const std::string& value)
+	{
+		setTime(boost::posix_time::duration_from_string(value));
+	}
+
+	void Lighting::setClearColor3(G3D::Color3 value)
+	{
+		setShadowColor(G3D::Color4(value, 1.0f));
+	}
+
+	void Lighting::setMinutesAfterMidnight(double value)
+	{
+		setTime(boost::posix_time::seconds(value * 60.0));
 	}
 
 	void Lighting::replaceSky(Sky* newSky)

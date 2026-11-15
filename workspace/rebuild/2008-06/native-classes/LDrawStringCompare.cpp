@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string-iterators
-// >>> native-status (generated) -- do not edit >>>
-// LDrawStringCompare | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 66082edc | roc native-status --write
 #include <string>
 #include <cctype>
 

@@ -11,10 +11,6 @@
 // Microsoft Foundation Classes product.
 
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcdaodfx | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 9d262f93 | roc native-status --write
 #include "stdafx.h"
 #include "math.h"
 
