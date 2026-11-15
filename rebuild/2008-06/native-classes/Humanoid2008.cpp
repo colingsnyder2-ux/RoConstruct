@@ -107,6 +107,13 @@ namespace RBX
 		return NULL;
 	}
 
+	// 005d76d0 (127 bytes): std::string("Torso") from 00832a1c, getParent (+0x104)->findFirstChildByName 00557950, then
+	// __RTDynamicCast(Instance 0092907c -> PartInstance 0092dd50). No parent test and no cache (getTorso 005d8b10 caches).
+	PartInstance* Humanoid::getTorsoSlow() const
+	{
+		return dynamic_cast<PartInstance*>(getParent()->findFirstChildByName("Torso"));
+	}
+
 	// 005d9a20 (45 bytes): dynamic_cast<const ModelInstance*> then a tail jump to ModelInstance::findModifierOfType<Humanoid>
 	// 005d8690 (member template in the native v8datamodel/ModelInstance.h since batch 16).
 	Humanoid* Humanoid::modelIsCharacter(const Instance* testModel)

@@ -158,6 +158,10 @@ namespace RBX
 		PartInstance* getRightLeg() const;                   // 005d8d10
 		PartInstance* getLeftArm() const;                    // 005d8e10
 		PartInstance* getRightArm() const;                   // 005d8f10
+		// 005d76d0 (127 bytes, thiscall; callers only MovingNoPhysicsBase 0066edc0 / 0066f070): uncached
+		// dynamic_cast<PartInstance*>(getParent()->findFirstChildByName("Torso")), no parent test. Analog name (the donor
+		// has no such member).
+		PartInstance* getTorsoSlow() const;                  // 005d76d0 (analog name)
 
 		// Embedded Primitive of each limb (part + 0x228, else NULL): 18-byte bodies `call getX; test; add eax, 0x228`.
 		Primitive* getTorsoPrimitive() const;                // 005d90a0 (inlined in onEvent 005dc740)
@@ -169,6 +173,8 @@ namespace RBX
 		// Torso body (part + 0x2c8, the embedded Primitive's body +0xa0) and its root (Body +0x10).
 		Body* getTorsoBody();                                // 005d9160 (19 bytes)
 		Body* getRootBody();                                 // 005d9180 (30 bytes; called by RunningBase::onComputeForce 00666550)
+		// Donor name and body (tools/rbxgs humanoid/Humanoid.cpp): Math::getHeading 005de650 of the torso lookVector, else 0.
+		float getTorsoHeading() const;                       // 005d91a0 (105 bytes; MovingNoPhysicsBase::onStep 0066f2c0)
 
 		World* getWorld() const { return world; }
 		G3D::CoordinateFrame getTopOfHead() const;                            // 005d76a0

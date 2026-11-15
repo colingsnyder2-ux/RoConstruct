@@ -174,6 +174,21 @@ namespace RBX
 		return body ? body->getRoot() : NULL;
 	}
 
+	// 005d91a0 (105 bytes; MovingNoPhysicsBase::onStep 0066f2c0, RunningBase::onStep 00666410): getTorso 005d8b10 and the
+	// embedded Primitive (+0x228) tested inline, Primitive::getCoordinateFrame 005e82c0, lookVector (column 2 00513240
+	// times -1.0f [00828b60]), Math::getHeading 005de650; else fldz. Body after the donor tools/rbxgs Humanoid.cpp.
+	float Humanoid::getTorsoHeading() const
+	{
+		if (Primitive* primitive = getTorsoPrimitive())
+		{
+			return Math::getHeading(primitive->getCoordinateFrame().lookVector());
+		}
+		else
+		{
+			return 0.0f;
+		}
+	}
+
 	// 005dc6c0 (119 bytes; called by onEvent 005dc740). Head and torso primitives inline (getHead 005d8a10 /
 	// getTorso 005d8b10, + 0x228); Primitive::getFirstJoint 005e7b90 / getNextJoint 005e7ba0; Edge::otherPrimitive
 	// inline (prim0 +0xc / prim1 +0x10); hadHeadJoint is bit 2 of +0x1e8; setHealth 005dbe70(0.0f).

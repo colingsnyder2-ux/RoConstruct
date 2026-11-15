@@ -107,7 +107,6 @@ void MovingNoPhysicsBase::release()
     torso.reset();
 }
 
-#ifdef NATIVE_MOVING_NO_PHYSICS_CTOR_PENDING
 // 0066f070 (589 bytes; decorated ??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z in the identity registry).
 // Decoded order: HumanoidState(humanoid) 00643e00; SimJob() 005e50f0 at +0xa0; vtables 0084d168/0084d160/0084d150;
 // torso/physicsService/connection zeroed; CoordinateFrame() 004782d0 at +0xe4. Then torso = shared_from(
@@ -117,10 +116,7 @@ void MovingNoPhysicsBase::release()
 // (function ctor 0066ef70, TSignalDesc::connect 004a3340, scoped_connection::operator= 00595540); physicsService =
 // ServiceProvider::find<PhysicsService>(humanoid) 0066f020; physicsService->onAdded(torso) 005e8f70; humanoid world
 // +0x21c ->getSimJobStage() 005e93b0 ->addSimJob(this +0xa0) 0064d1e0. Always: Humanoid::event_Running.fire(humanoid,
-// 0.0f) (0097a504). Not compiled: 005d76d0 (parent->findFirstChildByName("Torso") dynamic_cast<PartInstance>, no
-// cache; callers only 0066edc0/0066f070) is not declared in humanoid/Humanoid2008.h, and the ancestry handler 0066edc0
-// (`if (torso.get() != getHumanoid()->005d76d0()) release();`) is not declared in humanoid/HumanoidStates3.h.
-// Placeholder names below (getTorsoSlow, onTorsoAncestryChanged) are analog names pending those declarations.
+// 0.0f) (0097a504). getTorsoSlow 005d76d0 (Humanoid2008.h) and onTorsoAncestryChanged 0066edc0 are analog names.
 MovingNoPhysicsBase::MovingNoPhysicsBase(Humanoid* humanoid)
     : Base(humanoid), physicsService(0)
 {
@@ -138,13 +134,17 @@ MovingNoPhysicsBase::MovingNoPhysicsBase(Humanoid* humanoid)
     Humanoid::event_Running.fire(humanoid, 0.0f);
 }
 
-// 0066edc0 (33 bytes, no arguments; bound by the constructor 0066f070 to event_ancestryChanged).
+// 0066edc0 (33 bytes, no arguments; bound by the constructor 0066f070 to event_ancestryChanged). The target calls
+// getHumanoid 00793d50 / getTorsoSlow 005d76d0 before it reads torso +0xc4 (`cmp [esi + 0xc4], eax`). Trial 1,
+// `torso.get() != getHumanoid()->getTorsoSlow()`: torso loaded into edi before the calls (rejected, 37 B); trial 2,
+// operands swapped: same edi preload (rejected, 37 B); trial 3, this local: 33 B, only `cmp eax, [esi + 0xc4]` where the
+// target has `cmp [esi + 0xc4], eax` (rejected, closest; parked).
 void MovingNoPhysicsBase::onTorsoAncestryChanged()
 {
-    if (torso.get() != getHumanoid()->getTorsoSlow())
+    PartInstance* current = getHumanoid()->getTorsoSlow();
+    if (current != torso.get())
         release();
 }
-#endif
 
 RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
