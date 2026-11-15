@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native rows of the original ContactManager unit (0060cae0..0060dd5f) that need no ContactManager, Primitive
 // or World layout (inactive): getHit(Ray, vector*, ...) 0060db10, intersectingOthers(Array, float) 0060dc10 and
 // intersectingOthers(Primitive*, float) 0060dcd0, plus the G3D::Array<Contact*> resize / append instances 0060cfd0 /
@@ -62,7 +63,9 @@ namespace RBX
 
 	// 0060d6e0. PARKED near miss (141 bytes against 139): the target keeps `stopped` in the dead stack slot of the
 	// `inside` argument ([esp+0x20], after `inside` is loaded into ebx), this build adds a push ecx slot ([esp+0xf]);
-	// every call, constant and branch agrees. Rejected: declaring `stopped` before world->update() (same 141 bytes).
+	// every call, constant and branch agrees. Rejected: declaring `stopped` before world->update() (same 141 bytes);
+	// the openrbx `if (stopped) ... else if (fastHit) return fastHit;` shape (141); the sibling ContactUnit2008
+	// /fp:fast flags line (141; it did make G3D::Array<const Primitive*>::resize 005cc9a0 exact). Three trials: parked.
 	Primitive* ContactManager::getHit(const G3D::Ray& worldRay, const G3D::Array<const Primitive*>* ignorePrim,
 		const HitTestFilter* filter, G3D::Vector3& hitPoint, bool& inside) const
 	{
