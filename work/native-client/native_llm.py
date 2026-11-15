@@ -1169,7 +1169,11 @@ def _prove(t, body, out, depth=0):
                 if retried[0] == 'compile_failed' and 'C2011' in retried[1]:
                     # Drop only the added header(s) that redefine a class; keep the ones that were needed.
                     clash = {Path(m).name.lower() for m in re.findall(r'([^\s(]+\.h)\(\d+\) : error C2011', retried[1])}
-                    keep = [h for h in found if Path(h).name.lower() not in clash]
+                    # A donor header (SimBody.h) drags in donor Body.h/IPipelined.h, so the C2011 points at the native
+                    # Body2008.h / IPipelined2008.h instead: drop every added header that is not a native-headers file.
+                    native_root = ROOT / 'rebuild/2008-06/native-headers'
+                    keep = [h for h in found if Path(h).name.lower() not in clash
+                            and ((native_root / h).is_file() or str(Path(h)).startswith(str(native_root)))]
                     EXTRA_INCLUDES[t['addr']] = before + keep
                     return prove(t, body, out, depth + 1 if keep and depth < 1 else 2)
                 return retried
@@ -1370,7 +1374,9 @@ def work(t, ladder, tries, start=0):
             return t, folder(t) / 'recheck'
         history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                    % (body, feedback)]
-    for n in range(tries):
+    n, bonus = -1, True
+    while n + 1 < tries:
+        n += 1
         live = [m for m in ladder if m not in EXHAUSTED]
         if not live:
             break                                       # every quota spent: stop instead of burning attempts
@@ -1438,6 +1444,10 @@ def work(t, ladder, tries, start=0):
         if body:
             history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                        % (body, feedback)]
+        # Near-miss bonus: a last-try draft within 4 diff lines gets one extra try (a blanket 3rd try yielded ~1%).
+        diff_lines = sum(1 for line in (feedback or '').splitlines() if line[:1] in '+-' and line[:3] not in ('+++', '---'))
+        if n == tries - 1 and bonus and status == 'draft' and 0 < diff_lines <= 4 and body:
+            tries, bonus = tries + 1, False
     return t, None
 
 
