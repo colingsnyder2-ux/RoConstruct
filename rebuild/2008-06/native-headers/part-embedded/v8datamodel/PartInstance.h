@@ -65,6 +65,8 @@ namespace RBX
 		ContentId contentId; // Recovered member type; original field name unproven.
 
 	public:
+		static bool showContactPoints; // 00975f89 (rbxgs patch name; tested by shouldRender3dAdorn 00599fa0 and the
+		                               // contact loop of render3dAdorn 0059e4d0; declaration only)
 		static bool highlightSleepParts;
 		static bool highlightAwakeParts;
 		static bool showAnchoredParts;

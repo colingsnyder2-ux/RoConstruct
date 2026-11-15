@@ -23,6 +23,8 @@
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/Camera.h"
 #include "util/Object.h"
+#include "v8datamodel/PartInstance.h"     // setRenderImportance 0059dd50 (defined in PartInstanceProperties.cpp)
+#include "v8datamodel/ModelInstance.h"
 
 namespace RBX
 {
@@ -89,6 +91,20 @@ namespace RBX
 	template boost::shared_ptr<Object> FactoryProduct<Camera, Instance, sCamera>::Creator::create() const;
 
 	template void Instance::for_eachChild<void (*)(Instance*)>(void (*)(Instance*)) const;
+
+	// 0045c600 (88 B, registry placeholder func_0045c600; INFERRED name: the original is a file-local helper, its name is
+	// not in the binary). Passed to for_eachChild 0045c470 by the CRobloxWnd frame body 0045e3f0 (local character from
+	// Network::Players::findLocalCharacter 0049aca0) and by Humanoid::render3dAdorn 005d9c30 (identical-code folded or
+	// shared): dynamic_cast<PartInstance*> (TypeDescriptor 0092dd50) -> setRenderImportance(1.0f) 0059dd50, otherwise
+	// dynamic_cast<ModelInstance*> (TypeDescriptor 00932a40) and recursion through for_eachChild. Generalizes the donor
+	// Humanoid::onLocalHumanoidEnteringWorkspace per-limb setRenderImportance(1.0f) calls to every part of the character.
+	void setCharacterRenderImportance(Instance* instance)
+	{
+		if (PartInstance* part = dynamic_cast<PartInstance*>(instance))
+			part->setRenderImportance(1.0f);
+		else if (ModelInstance* model = dynamic_cast<ModelInstance*>(instance))
+			model->for_eachChild(&setCharacterRenderImportance);
+	}
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
