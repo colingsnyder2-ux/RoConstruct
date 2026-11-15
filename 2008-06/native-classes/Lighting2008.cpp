@@ -26,8 +26,6 @@ namespace RBX
 
 	// Dynamic initializer 007f69b0 (the other Lighting descriptors, 007f6a50..007f6c40, are not recovered yet).
 	Reflection::SignalDesc<Lighting, void(bool)> Lighting::event_LightingChanged("LightingChanged", "skyboxChanged");
-	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ShadowColor("ShadowColor", "Appearance", &Lighting::getShadowColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
 
 	// 0097a91c, dynamic initializer 007f69d0 (??__Eprop_Time@RBX@@YAXXZ: a namespace-scope static, as in the donor
 	// Lighting.cpp): PropDescriptor<Lighting, std::string> ctor 005e1170, "TimeOfDay" 0083df58 / "Data" 00822490,
