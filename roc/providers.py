@@ -937,7 +937,10 @@ def _coding_cli(provider, remote, config, prompt, state, options):
     text = "\n\n".join(message["role"].upper() + ":\n" + message["content"] for message in messages)
     if provider == "claude":
         argv = [exe, "-p", "--output-format", "json", "--tools", "", "--strict-mcp-config",
-                "--mcp-config", '{"mcpServers":{}}', "--no-session-persistence"]
+                "--mcp-config", '{"mcpServers":{}}', "--no-session-persistence",
+                # Replace the agent system prompt: with it the model still writes tool-call markup as plain text.
+                "--system-prompt", SYSTEM + " You are a text-only compiler worker with no tools: never search, never "
+                "emit tool calls, answer only from the text given."]
     else:
         argv = [exe, "exec", "--json", "--sandbox", "read-only", "--skip-git-repo-check", "--ephemeral"]
     if remote != "default":

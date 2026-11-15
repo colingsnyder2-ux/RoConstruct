@@ -30,7 +30,9 @@ from roc import match  # noqa: E402
 
 HERE = ROOT / 'work/native-client/native-llm'
 QUEUE = ROOT / 'work/native-client/codex-native-conversion-queue-v44.json'
-CLOSURE = ROOT / 'work/native-client/claude-identity-closure.json'
+BASE_CLOSURE = ROOT / 'work/native-client/claude-identity-closure.json'
+# Base closure plus callee identities proven from byte-identical LLM bodies (learn_identities).
+CLOSURE = ROOT / 'work/native-client/claude-identity-closure-llm.json'
 LOG = HERE / 'attempts.jsonl'
 REGISTRY = ROOT / 'work/2008-06/identity-registry.json'
 METRICS = HERE / 'bytes-per-hour.jsonl'
@@ -62,6 +64,10 @@ uses invented names, raw pointer offsets and placeholder types. Rewrite it as th
   compiler output must stay byte-identical. Do not "clean up" logic.
 - No inline asm, no casts to raw offsets, no new fields, globals, includes or declarations.
 - Output ONE ```cpp block containing only the definition, qualified as `{qual}(` (no namespace block).
+- Never define or redeclare anything else: no other functions, enums, structs, classes, typedefs or
+  globals. Functions the header already defines inline must not be written again (C2084).
+- Use only names the REAL HEADER (or a header it includes) declares. If the analog calls something the
+  header does not declare, call the header member at that address/offset instead; never invent it.
 """
 
 
@@ -75,6 +81,13 @@ def flags_of(dest):
         return ''
     m = re.search(r'^// native-flags:\s*(.*)$', (ROOT / dest).read_text(errors='replace'), re.M)
     return m.group(1).strip() if m else ''
+
+
+def analog_flags(addr):
+    """The server-exact analog's own compiler flags (src/2008-06/ADDR.cpp `// roc-flags:`)."""
+    path = ROOT / 'src/2008-06' / (addr + '.cpp')
+    m = re.search(r'^//\s*roc-flags:\s*(.*)$', path.read_text(errors='replace'), re.M) if path.is_file() else None
+    return m.group(1).strip() if m else '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD'
 
 
 def destination_for(owner):
@@ -256,10 +269,14 @@ def ask(model, prompt, name):
         except providers.ProviderError as error:
             if providers.quota_exhausted(str(error)):
                 EXHAUSTED.add(model)
+            print('provider error', model, name, str(error)[:200], flush=True)
             return None
     # Only a block that defines the target counts; models sometimes echo header excerpts as code.
     blocks = re.findall(r'```(?:cpp|c\+\+)?\s*\n(.*?)```', text or '', re.S) or [text or '']   # codex CLI strips fences
     code = [c for c in blocks if re.search(r'::\s*%s\s*\(' % re.escape(name), c)]
+    if not code:  # keep the unusable reply so the prompt can be tuned from what the model actually wrote
+        (HERE / 'noreply').mkdir(parents=True, exist_ok=True)
+        (HERE / 'noreply' / ('%s-%d.txt' % (re.sub(r'\W+', '_', name)[:40], int(time.time() * 1000)))).write_text(text or '', errors='replace')
     return code[-1] if code else None
 
 
@@ -287,6 +304,42 @@ def _json(line):
         return None
 
 
+def learn_identities(t, res):
+    """If the target's only rejections are unproven callee identities, bind them from the exact candidate's relocations
+    (native_reference_alias_bind.py) into CLOSURE. -> True when new bindings were added."""
+    try:
+        manifest = json.loads(Path(res['manifest']).read_text())
+    except (OSError, ValueError, KeyError):
+        return False
+    rows = [s for f in manifest.get('families', []) for s in f.get('symbols', [])
+            if s.get('symbol') == t['symbol']]
+    errors = [e for r in rows for j in r.get('rejections', []) if j.get('addr') == t['addr'] for e in j.get('errors', [])]
+    if not errors or not all(e.startswith('unproven reference identity') for e in errors):
+        return False
+    objs = sorted(Path(res['manifest']).parent.rglob('candidate.obj'), key=lambda p: p.stat().st_mtime)
+    if not objs:
+        return False
+    receipt = Path(res['manifest']).parent / 'alias-bind.json'
+    subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_reference_alias_bind.py'), '--object', str(objs[-1]),
+                    '--symbol', t['symbol'], '--address', t['addr'], '--closure', str(CLOSURE), '--output', str(receipt)],
+                   cwd=ROOT, capture_output=True, text=True)
+    try:
+        found = json.loads(receipt.read_text()).get('identity_bindings', [])
+    except (OSError, ValueError):
+        return False
+    closure = json.loads(CLOSURE.read_text())
+    have = {(b['symbol'], b.get('addr')) for b in closure['bindings']}
+    new = [dict(symbol=b['symbol'], addr=b['address'], address=b['address'], evidence=b.get('identity_evidence', 'llm-exact-reference'),
+                votes=b.get('votes', 1), body_exact=False, function_start=False)
+           for b in found if (b['symbol'], b['address']) not in have]
+    if not new:
+        return False
+    closure['bindings'] += new
+    CLOSURE.write_text(json.dumps(closure))
+    print('%s learned %d callee identities' % (t['addr'], len(new)), flush=True)
+    return True
+
+
 def prove(t, body, out):
     """Write donor + one-row plan, run the existing isolated gates. -> (status, feedback text)."""
     ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
@@ -303,7 +356,9 @@ def prove(t, body, out):
         native = (header_root / relative).resolve()
         if native.is_file() and native != (ROOT / t['header']).resolve():
             support_includes.append(str(native))
-    flags = ' '.join(x for x in (flags_of(t['dest']), header_include_flags(t['header'], t['dest'])) if x)
+    # A destination without its own profile would compile at /Od and can never match: use the analog's exact flags.
+    base = flags_of(t['dest']) or analog_flags(t['addr'])
+    flags = ' '.join(x for x in (base, header_include_flags(t['header'], t['dest'])) if x)
     plan = {'plans': [{'owner': t['owner'], 'headers': [t['header']],
                        'source': str((out / 'donor' / 'donor.cpp').relative_to(ROOT)),
                        'namespace': ns, 'roc_cl': 21022, 'roc_flags': flags, 'destination': t['dest'],
@@ -313,14 +368,20 @@ def prove(t, body, out):
                                  'namespace': ns, 'roc_cl': 21022, 'roc_flags': flags,
                                  'evidence': 'llm rewrite of server-exact analog; every gate rerun'}]}]}
     (out / 'plan.json').write_text(json.dumps(plan, indent=1))
-    run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_convert_run.py'), '--plan', str(out / 'plan.json'),
-                          '--closure', str(CLOSURE), '--batch', '0', '--out', str(out / 'run'),
-                          '--source-includes', '--add-flags', '/GS-'], cwd=ROOT, capture_output=True, text=True)
-    try:
-        res = json.loads((out / 'run' / 'result.json').read_text())
-    except (OSError, ValueError):
-        return 'tool-error', (run.stdout + run.stderr)[-1500:]
-    status = res['requested'][0]['status']
+    for attempt in range(2):
+        if not CLOSURE.is_file():
+            CLOSURE.write_text(BASE_CLOSURE.read_text())
+        run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_convert_run.py'), '--plan', str(out / 'plan.json'),
+                              '--closure', str(CLOSURE), '--batch', '0', '--out', str(out / 'run'),
+                              '--source-includes', '--add-flags', '/GS-'], cwd=ROOT, capture_output=True, text=True)
+        try:
+            res = json.loads((out / 'run' / 'result.json').read_text())
+        except (OSError, ValueError):
+            return 'tool-error', (run.stdout + run.stderr)[-1500:]
+        status = res['requested'][0]['status']
+        # Byte-identical but blocked only by unproven callee names: prove them from the exact body, regate once.
+        if status != 'draft' or attempt or not learn_identities(t, res):
+            break
     if status == 'compile_failed':
         return status, 'Compile error:\n' + str(res.get('first_compile_error', ''))[:1500]
     if status == 'inactive_exact':
@@ -342,7 +403,10 @@ def work(t, ladder, tries, start=0):
     if 'lib' in directives:
         from roc import libs
         recipe, _, path = directives['lib'].partition(' ')
-        expanded = libs.unit(recipe, path.strip(), 21022)
+        try:
+            expanded = libs.unit(recipe, path.strip(), 21022)
+        except (Exception, SystemExit) as error:  # one unbuildable library unit must not abort the batch
+            expanded = 'library unit did not preprocess: %s' % str(error)[:300]
         # Recipe preprocessors can emit megabytes of dependency declarations.
         # Give the actual trailing analog body instead of an empty directive.
         if t.get('donor_body'):
@@ -437,7 +501,13 @@ def main():
     PREFLIGHT.write_text(json.dumps(PREFLIGHT_BLOCKED, indent=1) + '\n')
     print('%d targets (%d B)' % (len(todo), sum(t['size'] for t in todo)), flush=True)
     with ThreadPoolExecutor(args.jobs) as pool:
-        done = list(pool.map(lambda it: work(it[1], args.models.split(','), args.tries, it[0]), enumerate(todo)))
+        def _safe(it):
+            try:
+                return work(it[1], args.models.split(','), args.tries, it[0])
+            except (Exception, SystemExit) as error:
+                print('target failed', it[1].get('addr'), str(error)[:160], flush=True)
+                return None
+        done = [r for r in pool.map(_safe, enumerate(todo)) if r]
     exact = [(t, d) for t, d in done if d]
     print('exact %d/%d (%d B)' % (len(exact), len(done), sum(t['size'] for t, _ in exact)), flush=True)
     attempts = [json.loads(line) for line in LOG.read_text().splitlines()[prior_log:]] if LOG.is_file() else []
