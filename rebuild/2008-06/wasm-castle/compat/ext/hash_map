@@ -1,0 +1,10 @@
+#pragma once
+// Ogre 1.4 uses libstdc++'s pre-standard names. Keep its hash specializations,
+// using libc++'s actual containers for the browser build.
+#include <unordered_map>
+namespace __gnu_cxx {
+template<class T> struct hash : std::hash<T> {};
+template<class K, class V, class H = hash<K>, class E = std::equal_to<K>,
+    class A = std::allocator<std::pair<const K, V> > >
+using hash_map = std::unordered_map<K, V, H, E, A>;
+}

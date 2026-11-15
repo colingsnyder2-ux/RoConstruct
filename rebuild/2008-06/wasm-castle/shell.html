@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Castle Island â€” RBX Ogre</title>
+<link rel="icon" href="../favicon.ico">
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#0a0e15;color:#e8eef6;font:14px/1.5 Inter,system-ui,sans-serif}
+a{color:#38c8ff;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{width:min(1200px,calc(100% - 32px));margin:auto}
+.site-top{display:flex;align-items:center;gap:24px;margin-top:8px;padding:12px 18px;border:1px solid #1b2a45;border-radius:12px;background:#0f1520}
+.brand img{height:27px;display:block}.site-top nav{margin-left:auto;display:flex;gap:20px;align-items:center;white-space:nowrap}
+.site-top nav a{font-size:13px;color:#8a97a8}.site-top nav .on{color:#e8eef6;border-bottom:2px solid #38c8ff}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:24px 0 14px}.intro h1{font:700 28px/1.2 'Segoe UI',sans-serif;margin:0}.intro p{color:#8a97a8;margin:5px 0 0;font-size:13px}
+.game-shell{border:1px solid #2a4372;border-radius:10px;background:#0f1520;overflow:hidden;box-shadow:0 12px 48px #0007}
+.game-title{display:flex;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #2a4372;font:12px Consolas,monospace;color:#a6bad4;letter-spacing:.06em}
+.game-view{height:clamp(440px,calc(100vh - 248px),800px);display:grid;grid-template-rows:var(--toolbar-height,51px) minmax(0,1fr);background:#d4d0c8}
+.game-shell:fullscreen{width:100vw;height:100vh;border:0;border-radius:0;display:grid;grid-template-rows:auto minmax(0,1fr)}.game-shell:fullscreen .game-view{height:100%}
+iframe{width:100%;height:100%;border:0;display:block}canvas{width:100%;height:100%;display:block;min-height:0;outline:none}
+.toolbar-slot{position:relative;min-height:0;z-index:2}.toolbar-slot iframe{position:absolute;top:0;left:0;height:var(--toolbar-surface-height,var(--toolbar-height,51px))}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:22px 0;padding:14px 0;border-top:1px solid #1b2a45;color:#8a97a8;font-size:12px}footer nav{display:flex;gap:18px}
+#status{position:fixed;bottom:8px;left:8px;font:13px Tahoma,sans-serif;color:#000;background:#d4d0c8}#status:empty{display:none}
+@media(max-width:650px){.wrap{width:calc(100% - 16px)}.site-top{padding:10px;gap:12px;flex-wrap:wrap}.site-top nav{margin:0;gap:14px;overflow:auto;width:100%}.intro{margin-top:18px}.intro h1{font-size:24px}.game-view{height:520px}}
+</style>
+<div class="wrap">
+<header class="site-top"><a class="brand" href="../"><img src="brand-logo.png" alt="RoConstruct"></a><nav aria-label="Main navigation"><a href="../">Home</a><a href="../#clients">Clients</a><a href="../#contributors">Contributors</a><a class="on" href="./" aria-current="page">Demo</a><a href="../sources.html">Sources</a><a href="../findings.html">Findings</a></nav></header>
+<section class="intro"><div><h1>Castle Island</h1><p>Explore floating islands built with classic Roblox colors and surfaces.</p></div><a href="../#demos">← All demos</a></section>
+<section class="game-shell" aria-label="Castle Island game"><div class="game-title"><span id="game-name">ROCONSTRUCT / CASTLE ISLAND</span><span>BROWSER DEMO</span></div>
+<main class="game-view"><div class="toolbar-slot"><iframe id="toolbar" title="Codejock scene toolbar" src="codejock/index.html?castle=1"></iframe></div>
+<canvas id="canvas" tabindex="0" aria-label="Interactive castle scene. Drag to rotate; mouse wheel to zoom." oncontextmenu="event.preventDefault()"></canvas></main></section>
+<footer><span>RoConstruct · Preserving classic Roblox</span><nav aria-label="Footer navigation"><a href="../">Project home</a><a href="https://github.com/colingsnyder2-ux/RoConstruct/tree/codex/wasm-castle">Source code</a><a href="licenses/README.txt">Credits</a></nav></footer>
+</div>
+<span id="status">Loading castle...</span>
+<script>
+var Module={canvas:document.querySelector('#canvas'),print:console.log,printErr:console.error,
+ setStatus:function(text){document.querySelector('#status').textContent=text;},
+ onRuntimeInitialized:function(){document.querySelector('#status').textContent='';},
+ onAbort:function(reason){document.querySelector('#status').textContent='Failed: '+reason;}};
+addEventListener('message',function(event){
+ var toolbar=document.getElementById('toolbar');
+ if(event.source!==toolbar.contentWindow||event.origin!==location.origin)return;
+ if(event.data.type==='toolbar-height'){
+   document.documentElement.style.setProperty('--toolbar-height',event.data.baseHeight+'px');
+   document.documentElement.style.setProperty('--toolbar-surface-height',event.data.height+'px');
+ }
+ if(event.data.type==='castle-command'&&Module._castle_command){
+   if(event.data.command===110){navigator.clipboard.writeText(JSON.stringify(Module.castleState,null,2)).catch(function(error){document.querySelector('#status').textContent='Copy failed: '+error.message;});}
+   else if(event.data.command===109){
+     var action=document.fullscreenElement?document.exitFullscreen():document.querySelector('.game-shell').requestFullscreen();
+     action.catch(function(error){document.querySelector('#status').textContent='Fullscreen: '+error.message;});
+
+   }else Module._castle_command(event.data.command);
+ }
+});
+addEventListener('keydown',function(event){if(event.code==='KeyV'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();navigator.clipboard.writeText(JSON.stringify(Module.castleState,null,2));}});
+addEventListener('mousedown',function(){document.getElementById('toolbar').contentWindow.postMessage({type:'toolbar-close'},location.origin);});
+</script>
+{{{ SCRIPT }}}
+</html>
