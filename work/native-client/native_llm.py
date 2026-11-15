@@ -1515,6 +1515,20 @@ def main():
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
+    # One run at a time: two runs picked the same targets (55 of 58 'exacts' re-proved already-exact functions) and
+    # raced on the shared closure.  A dead PID's lock is taken over.
+    lock = HERE / 'run.lock'
+    try:
+        other = int(lock.read_text().split()[0])
+        alive = subprocess.run(['tasklist', '/FI', 'PID eq %d' % other, '/NH'], capture_output=True, text=True).stdout
+        if str(other) in alive and 'python' in alive.lower() and other != os.getpid():
+            print('another native_llm run is active (pid %d, %s): exiting' % (other, lock), flush=True)
+            return
+    except (OSError, ValueError, IndexError):
+        pass
+    lock.write_text('%d %d\n' % (os.getpid(), time.time()))
+    import atexit
+    atexit.register(lambda: lock.unlink(missing_ok=True) if lock.is_file() and lock.read_text().split()[0] == str(os.getpid()) else None)
     QUEUE, CLOSURE = args.queue.resolve(), args.closure.resolve()
     globals()['FIRST_MODEL'] = args.first_model
     picked = 'given' if args.models else 'claude' if args.pick == 'claude' else pick_mode(args.pick)
