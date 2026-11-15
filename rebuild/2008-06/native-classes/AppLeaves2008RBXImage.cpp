@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // Inactive native 2008-06 RBXImage (native-headers/AppLeaves2008/RBXImage2008.h).
 #include "AppLeaves2008/RBXImage2008.h"
 #include <atlbase.h>
@@ -5,9 +6,19 @@
 #include <stdlib.h>
 
 RBXImage::RBXImage() throw()
-    : m_hBitmap(NULL), m_pBits(NULL), m_hDC(NULL), m_nDCRefCount(0), m_hOldBitmap(NULL), m_nWidth(0), m_nHeight(0),
-      m_nPitch(0), m_nBPP(0), m_iTransparentColor(-1), m_bHasAlphaChannel(false), m_bIsDIBSection(false)
 {
+    m_hBitmap = NULL;
+    m_pBits = NULL;
+    m_nWidth = 0;
+    m_nHeight = 0;
+    m_nPitch = 0;
+    m_nBPP = 0;
+    m_bIsDIBSection = false;
+    m_bHasAlphaChannel = false;
+    m_iTransparentColor = -1;
+    m_hDC = NULL;
+    m_nDCRefCount = 0;
+    m_hOldBitmap = NULL;
 }
 
 RBXImage::~RBXImage() throw()
@@ -17,7 +28,7 @@ RBXImage::~RBXImage() throw()
 
 void* RBXImage::GetPixelAddress(int x, int y) throw()
 {
-    return LPBYTE(m_pBits) + (y * m_nPitch) + ((x * m_nBPP) / 8);
+    return (void*)(((m_nBPP * x) / 8) + (m_nPitch * y) + (int)m_pBits);
 }
 
 int RBXImage::GetWidth() const throw()

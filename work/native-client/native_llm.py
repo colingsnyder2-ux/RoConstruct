@@ -261,6 +261,19 @@ def unmapped_externs(packet, header, destination):
     return sorted(set(missing))
 
 
+REMAINING = None
+
+
+def remaining_set():
+    """Addresses the website counts as 'other remaining' (neither integrated nor native-owned): remaining-3901.json,
+    written from docs/integration.json; empty when absent."""
+    global REMAINING
+    if REMAINING is None:
+        path = ROOT / 'work/native-client/remaining-3901.json'
+        REMAINING = set(json.loads(path.read_text())) if path.is_file() else set()
+    return REMAINING
+
+
 def registry_classes(queue_classes):
     """Extra conversion rows from the identity registry: named, non-template members of non-vendor classes that the
     queue never listed (766 at last count).  Header = the native (else donor) header that defines the class and
@@ -274,8 +287,7 @@ def registry_classes(queue_classes):
         name = row.get('name') or ''
         if (addr in listed or row.get('kind') != 'code' or row.get('placeholder') or not owner or '<' in owner
                 or name.startswith('??$') or names[name] > 1 or not row.get('signature')
-                or owner.startswith(('G3D::', 'std::', 'boost::', 'ATL::', 'Ogre::', 'XTPPaintThemes', 'Wml::'))
-                or (owner[:1] == 'C' and owner[1:2].isupper())):
+                or owner.startswith(('G3D::', 'std::', 'boost::', 'ATL::', 'Ogre::', 'XTPPaintThemes', 'Wml::'))):
             continue
         grouped[owner].append((addr, row))
     out = []
@@ -340,7 +352,9 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
                 method_headers = used if len(used) == 1 else method_headers
             # 'name-only' = queue saw only reference votes; the identity registry's exact, non-placeholder name below
             # is the proof the gate needs (compiler-generated members stay out).
-            state_ok = m['state'] == 'convert' or (m['state'] == 'name-only' and '`' not in m['declaration'])
+            state_ok = (m['state'] == 'convert' or (m['state'] == 'name-only' and '`' not in m['declaration'])
+                        # Stale queue 'native-exact': the site counts it neither integrated nor owned (remaining set).
+                        or (m['state'] == 'native-exact' and m['addr'] in remaining_set()))
             if (m['addr'].lower() in native_exact or not state_ok or len(method_headers) != 1 or '$' in m['symbol'] or m['addr'] in tried
                     or shared[m['addr']] > 1 or not identity or identity['placeholder']
                     or identity['name'] != m['symbol'] or identity.get('owner_class') != cl['owner']):
@@ -802,6 +816,26 @@ def type_defined(leaf):
     return TYPE_DEFINED[leaf]
 
 
+def implicit_member(t):
+    """A default/copy ctor, dtor or operator= the owner's header never declares is compiler-generated: no source can
+    define it (C2600 for Part::Part 00598f10, FunctionScriptSlot::FunctionScriptSlot 0061f960)."""
+    leaf, name = t['owner'].rsplit('::', 1)[-1], t['qual'].rsplit('::', 1)[-1]
+    path = ROOT / t['header']
+    text = path.read_text(errors='replace') if path.is_file() else ''
+    params = (re.search(r'\((.*)\)', t.get('decl') or '') or re.search('()', '')).group(1).strip()
+    if name == leaf and params in ('', 'void'):
+        declared = re.search(r'\b%s\s*\(\s*(?:void)?\s*\)' % re.escape(leaf), text)
+    elif name == leaf and re.fullmatch(r'(?:class|struct) [\w:]*\b%s const &' % re.escape(leaf), params):
+        declared = re.search(r'\b%s\s*\(\s*const\s+%s\s*&' % (re.escape(leaf), re.escape(leaf)), text)
+    elif name == '~' + leaf:
+        declared = re.search(r'~%s\s*\(' % re.escape(leaf), text)
+    elif name == 'operator=':
+        declared = re.search(r'\boperator\s*=\s*\(', text)
+    else:
+        return False
+    return not declared
+
+
 def headers_compile(t):
     """No-LLM preflight: the target's own signature with an empty body through the real gate.  -> '' when the
     headers compile, else the header-side error (every model answer would fail on it too).  Errors in the probe/donor
@@ -1065,7 +1099,7 @@ def work(t, ladder, tries, start=0):
                                                                  class_context(t, names, header, analog)))
     status, history = 'no-reply', []
     if ladder:     # model runs only (regates pass no ladder): skip targets whose headers cannot compile at all
-        broken = headers_compile(t)
+        broken = 'implicit member: compiler-generated, the header never declares it' if implicit_member(t) else headers_compile(t)
         if broken:
             print('%s %-34s %4dB header-blocked: %s' % (t['addr'], t['qual'][-34:], t['size'], broken[-160:]), flush=True)
             gui('native_result', file=t['qual'], addr=t['addr'], local_exact=0, seconds=0, error=broken,
@@ -1274,7 +1308,8 @@ def main():
         todo = [t for t in todo if t not in park]
     # Never-tried targets first (run 16 spent its whole budget on leftovers while 55 fresh ones waited), then owners
     # with exacts, then the rest; placeholder-global targets last.
-    rank = lambda t: (tries_of[t['addr']] > 0, bool(t.get('unmapped')),
+    # Website 'other remaining' functions first: an exact there moves the public count (others are already owned).
+    rank = lambda t: (t['addr'] not in remaining_set(), tries_of[t['addr']] > 0, bool(t.get('unmapped')),
                       0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, t['size'])
     todo = sorted(todo, key=rank)[:args.limit]
     if args.retry_address:
@@ -1296,6 +1331,18 @@ def main():
         # Drafts plus answers a harness bug stopped before gating (tool-error): re-gate them free after fixes.
         drafts = {r['addr'] for r in history if r['status'] in ('draft', 'tool-error')} - won - {t['addr'] for t, d in done if d}
         again = [t for t in targets(args.owner_prefix, args.max_size, set(), args.new_source) if t['addr'] in drafts]
+        # Only drafts with new evidence since their last gate (learned closure, header/destination or harness
+        # edit): re-proving all ~250 every run took 20+ minutes and blocked the next run.
+        gated = {}
+        for r in history:
+            gated[r['addr']] = max(gated.get(r['addr'], 0), r.get('time', 0))
+        harness = max(p.stat().st_mtime for p in (Path(__file__), ROOT / 'work/native-client/native_transplant_probe.py',
+                                                    ROOT / 'work/native-client/native_identity_evidence.py'))
+        def stale(t):
+            # Not CLOSURE: it changes on every learn, and learning already regates its own target at once.
+            inputs = [ROOT / t['header']] + ([ROOT / t['dest']] if t['dest'] else [])
+            return max([harness] + [p.stat().st_mtime for p in inputs if p.is_file()]) > gated.get(t['addr'], 0)
+        again = [t for t in again if stale(t)]
         print('regate %d drafts' % len(again), flush=True)
         with ThreadPoolExecutor(args.jobs) as pool:
             done += [r for r in pool.map(lambda t: _regate(t), again) if r]

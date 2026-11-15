@@ -122,8 +122,13 @@ def main():
     old_includes = list(dict.fromkeys(re.findall(r'^\s*#include\s+"([^"]+)"', old, re.M)))
     donor_includes = []
     if args.source_includes and old.strip():
-        existing = {((destination.parent / value).resolve() if not Path(value).is_absolute()
-                    else Path(value).resolve()) for value in old_includes}
+        # A TU's quoted includes resolve beside it or under native-headers (its first /I root):
+        # "v8datamodel/Flag.h" already is ../native-headers/v8datamodel/Flag.h.
+        headers_root = ROOT / 'rebuild/2008-06/native-headers'
+        existing = {Path(value).resolve() for value in old_includes if Path(value).is_absolute()}
+        for value in old_includes:
+            if not Path(value).is_absolute():
+                existing |= {(destination.parent / value).resolve(), (headers_root / value).resolve()}
         include_root = args.source_root.resolve() if args.source_root else args.source.parent.resolve()
         for value in probe_includes:
             path = Path(value)
@@ -131,8 +136,32 @@ def main():
             if path not in existing:
                 donor_includes.append(portable_include(str(path), destination))
     additions = [(addr, tagged[addr]) for addr in sorted(requested) if tagged[addr] not in old]
+    # The TU may already define the method (a draft or differently formatted body: RaiseRange::removeIndex
+    # 00420740): appending a second one is C2084.  Exactly one existing definition is replaced by the proven body.
+    replaced = []
+    for addr, body in list(additions):
+        head = re.match(r'[^{(]*?([~\w:]+)\s*\(', body)
+        if not head:
+            continue
+        name = head.group(1).rsplit('::', 2)[-2:] if '::' in head.group(1) else [head.group(1)]
+        marker = r'\b%s\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?::[^;{]*)?\{' % r'\s*::\s*'.join(map(re.escape, name))
+        found = list(re.finditer(marker, old))
+        if len(found) != 1:
+            continue
+        start = old.rfind('\n', 0, found[0].start()) + 1
+        depth, end = 0, found[0].end() - 1
+        for end in range(found[0].end() - 1, len(old)):
+            depth += {'{': 1, '}': -1}.get(old[end], 0)
+            if depth == 0:
+                break
+        old = old[:start] + body + old[end + 1:]
+        additions.remove((addr, body))
+        replaced.append(addr)
     support_additions = [line for line in supports if line not in old]
-    profile = '// native-flags: %s\n' % args.flags if args.flags else ''
+    # Probe-only include roots (the donor scratch directory under work/) never belong in a native source profile.
+    flags = ' '.join(token for token in (args.flags or '').split()
+                     if not (token.startswith('/I') and re.search(r'(^|[\\/])work[\\/]', token[2:])))
+    profile = '// native-flags: %s\n' % flags if flags else ''
     needs_profile = bool(old.strip() and profile and not re.search(r'^// native-flags:', old, re.M))
     # Existing sources own their compiler profile.  A transplant profile only
     # seeds a new source or one that has no declared profile; otherwise it
@@ -141,7 +170,8 @@ def main():
     result = {'source': str(args.source), 'manifest': str(args.manifest), 'destination': rel,
               'requested': sorted(requested), 'exact': sorted(requested & exact),
               'added': [addr for addr, _ in additions],
-              'already_present': sorted(requested - {addr for addr, _ in additions}),
+              'replaced': replaced,
+              'already_present': sorted(requested - {addr for addr, _ in additions} - set(replaced)),
               'support_globals': supports,
               'support_globals_added': support_additions,
               'source_includes_added': donor_includes,
@@ -156,7 +186,12 @@ def main():
                 raise ValueError('existing destination has no include block for donor includes')
             at = includes[-1].end()
             base = base[:at] + '\n' + ''.join('#include "%s"\n' % value for value in donor_includes) + base[at:]
-        rendered = rendered_profile + base + ('\n\n' + '\n\n'.join(body for _, body in additions) if additions else '') + '\n'
+        # Bodies are namespace-relative (`void Flag::onChildAdded`): appended after an existing TU's closing
+        # namespace they must reopen it, exactly as a new TU wraps them below.
+        scopes = [name for name in args.namespace.split('::') if name]
+        wrapped = ''.join('namespace %s {\n' % name for name in scopes) + '\n\n'.join(body for _, body in additions) + \
+            '\n' + ''.join('}\n' for _ in scopes)
+        rendered = rendered_profile + base + ('\n\n' + wrapped if additions else '') + '\n'
     else:
         if not args.include:
             raise ValueError('new native source needs --include')
@@ -185,7 +220,7 @@ def main():
         args.render.parent.mkdir(parents=True, exist_ok=True)
         args.render.write_text(rendered)
         result['rendered'] = str(args.render.resolve())
-    if args.apply and (additions or needs_profile):
+    if args.apply and (additions or replaced or needs_profile):
         check = subprocess.run([str(ROOT / 'roc.cmd'), 'lease', 'check', rel], cwd=ROOT,
                                capture_output=True, text=True)
         if check.returncode:
