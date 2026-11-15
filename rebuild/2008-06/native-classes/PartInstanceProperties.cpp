@@ -58,15 +58,19 @@ namespace RBX
 		return primitive.getExtentsLocal();
 	}
 
-	// 00599fa0: IRenderable override (this = PartInstance + 0x1cc). PARKED: the 2008 body tests seven static bools in
-	// the order 00975f89, 8a, 8b, 8d, 8c, 8e, 8f. render3dAdorn uses 8a/8b as highlightSleepParts/highlightAwakeParts
-	// (0059e583/0059e635), 8d showPartCoord, 8c showAnchoredParts, 8e showUnalignedParts, 8f showSpanningTree, and
-	// 00975f89 last (0059e9a0). The shared header does not declare the 00975f89 member (rbxgs-client patch names it
-	// showContactPoints), so this draft omits its first test until the header gains the member.
+	// 00975f89: debug flag (rbxgs patch name showContactPoints), the byte before highlightSleepParts 00975f8a in the
+	// 0x975f89..8f run of PartInstance debug bools; tested first by shouldRender3dAdorn 00599fa0 (00599ff6) and by the
+	// contact loop of render3dAdorn 0059e4d0 (0059e99e). Zero-initialized like its neighbours.
+	bool PartInstance::showContactPoints = false;
+
+	// 00599fa0: IRenderable override (this = PartInstance + 0x1cc). Tests the static bools in the order 00975f89
+	// (showContactPoints), 8a highlightSleepParts, 8b highlightAwakeParts, 8d showPartCoord, 8c showAnchoredParts,
+	// 8e showUnalignedParts, 8f showSpanningTree (render3dAdorn 0059e4d0 reads 8a/8b at 0059e581/0059e633).
 	bool PartInstance::shouldRender3dAdorn() const
 	{
 		return partType == Part::CYLINDER_PART ||
 			   SurfacesNeedAdorn ||
+			   showContactPoints ||
 			   highlightSleepParts ||
 			   highlightAwakeParts ||
 			   showPartCoord ||

@@ -2,125 +2,17 @@
 // (inactive): ContactConnector::percentConnectorsActive 00606100, canThrottle 00606250, NormalBreakConnector::
 // computeForce 00606670 and GeoPair::match 00606a50. Verified by tests/record_native_contact_unit2008.py.
 //
-// This unit does not include native-headers/v8kernel/Connector2008.h (kernel / world-joints owner): that header
-// includes the donor v8kernel/Body.h, Pair.h and Point.h, whose Body layout is not the 2008 one, and the donor Body
-// cannot be declared next to native-headers/v8kernel/Body2008.h (C2011). The connector classes are therefore
-// redeclared here, unit-locally, exactly as Connector2008.h declares them (same bases, virtual slots, fields and
-// offsets, cited there: RTTI 0083d1f4 / 00842834 / 0084ada8 / 0084ae5c, sizes 0x50 / 0x1c / 0x20), but on the 2008
-// Point (native-headers/v8kernel/Point2008.h) and GeoPair (native-headers/v8world/GeoPair2008.h). No constructor or
-// vtable is emitted by this unit. The proposal to switch Connector2008.h to the 2008 headers is in the recorder receipt.
+// Declarations: native-headers/v8kernel/Connector2008.h on the 2008 Body path (NATIVE_PRIMITIVE_NATIVE_BODY: Body2008.h,
+// Point2008.h, GeoPair2008.h and KernelInput2008.h), which now carries the connector counters, percentConnectorsActive,
+// PointToPointBreakConnector::forceToPoints and RotateConnector::computeParams that the former unit-local copies of
+// Connector / ContactConnector / PointToPointBreakConnector / NormalBreakConnector / RotateConnector declared. No
+// constructor or vtable is emitted by this unit.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-#include <G3D/Vector3.h>
-#include "v8kernel/KernelIndex.h"
-#include "v8kernel/KernelInput2008.h"
-#include "v8kernel/Body2008.h"
-#include "v8kernel/Point2008.h"
-#include "v8world/GeoPair2008.h"
-#include "util/Math.h"
+#define NATIVE_PRIMITIVE_NATIVE_BODY
+#include "v8kernel/Connector2008.h"
 
 namespace RBX
 {
-	class Connector : public KernelIndex
-	{
-	public:
-		virtual ~Connector() {}                                         // slot 0
-		virtual void computeForce(const float dt, bool throttling) = 0; // slot 1
-		virtual bool canThrottle() const                                // slot 2 (00565950)
-		{
-			return true;
-		}
-		virtual bool getBroken()                                        // slot 3 (0060a2f0)
-		{
-			return false;
-		}
-		virtual Body* getBody(int i) = 0;                               // slot 4 (analog name)
-		virtual float potentialEnergy()                                 // slot 5 (005e72c0)
-		{
-			return 0;
-		}
-	};
-
-	class ContactConnector : public Connector
-	{
-	protected:
-		GeoPair geoPair;                  // +0x8
-		float k;                          // +0x2c
-		float kFriction;                  // +0x30
-		float kNeg;                       // +0x34
-		float firstApproach;              // +0x38
-		float threshold;                  // +0x3c
-		float forceMagLast;               // +0x40
-		G3D::Vector3 frictionOffset;      // +0x44
-
-	public:
-		virtual void computeForce(const float dt, bool throttling);    // slot 1 (00606780)
-		virtual bool canThrottle() const;                               // slot 2 (00606250)
-		virtual Body* getBody(int i)                                    // slot 4 (00606230)
-		{
-			return geoPair.getBody(i);
-		}
-
-		// Not in Connector2008.h (proposal in the recorder receipt): the counters are incremented only by
-		// computeForce 00606780 (00606832 when the normal force is positive / 00606a1b otherwise) and read and reset
-		// by percentConnectorsActive 00606100 (DataModel::evaluate 005762f3, "percentConnectorsActive").
-		static int numActiveConnectors;                                 // 0097b878
-		static int numInactiveConnectors;                               // 0097b87c
-		static float percentConnectorsActive();                         // 00606100
-	};
-
-	class PointToPointBreakConnector : public Connector
-	{
-	protected:
-		Point* point0;                    // +0x8
-		Point* point1;                    // +0xc
-		float k;                          // +0x10
-		float breakForce;                 // +0x14
-		bool broken;                      // +0x18
-
-		void forceToPoints(const G3D::Vector3& force)
-		{
-			point0->accumulateForce(-force);
-			point1->accumulateForce(force);
-		}
-
-	public:
-		virtual void computeForce(const float dt, bool throttling);    // slot 1 (006065d0)
-		virtual bool getBroken()                                        // slot 3 (00645a60)
-		{
-			return broken;
-		}
-		virtual Body* getBody(int i);                                   // slot 4 (00606150)
-		virtual float potentialEnergy();                                // slot 5 (006061f0)
-	};
-
-	class NormalBreakConnector : public PointToPointBreakConnector
-	{
-	private:
-		NormalId normalIdBody0;           // +0x1c
-
-	public:
-		virtual void computeForce(const float dt, bool throttling);    // slot 1 (00606670)
-	};
-
-	class RotateConnector : public Connector
-	{
-	private:
-		float k;                          // +0x8
-		Point* base0;                     // +0xc
-		Point* ray0;                      // +0x10
-		Point* ref0;                      // +0x14
-		Point* ref1;                      // +0x18
-		float lastRotation;               // +0x1c
-		int windings;                     // +0x20
-		KernelInput kernelInput;          // +0x24
-
-		void computeParams(G3D::Vector3& normal, float& rotation, float& rotVel);   // 006062e0
-
-	public:
-		virtual void computeForce(const float dt, bool throttling);    // slot 1 (006064a0)
-		virtual Body* getBody(int i);                                   // slot 4 (006061d0)
-	};
-
 	// 006062e0
 	void RotateConnector::computeParams(G3D::Vector3& normal, float& rotation, float& rotVel)
 	{
@@ -159,12 +51,9 @@ namespace RBX
 		lastRotation = result;
 	}
 
-	// 006064a0. The scalar is named (v1) as in the server-verified mining source of 006064a0. With the current
-	// Body2008.h the body is not exact: the inlined Body::accumulateTorque reads root->simBody twice there, and the
-	// pointer chain at 006064f3..006064fe / 0060657b..00606584 (fresh ecx / edx per load) and the x87 add order of the
-	// second torque add (006065a9..006065c3) match only when Body::accumulateTorque loads `SimBody* simBody =
-	// root->simBody` once (header proposal; verified IDENTICAL with that header in a scratch overlay, lf11).
-	// Rejected variant: the current header with this body (pointer chain diverges at 006064f6).
+	// 006064a0. The scalar is named (v1) as in the server-verified mining source of 006064a0. Exact on the Body2008.h
+	// whose Body::accumulateTorque loads `SimBody* simBody = root->simBody` once (006060b0); the pointer chain at
+	// 006064f3..006064fe / 0060657b..00606584 and the x87 add order at 006065a9..006065c3 depend on it.
 	void RotateConnector::computeForce(const float dt, bool throttling)
 	{
 		G3D::Vector3 normal;

@@ -34,6 +34,7 @@ namespace RBX
 	namespace Reflection
 	{
 		class RefPropertyDescriptor;
+		class ConstProperty;
 	}
 
 	namespace Network
@@ -55,6 +56,9 @@ namespace RBX
 			// Bodies in native-classes/AppUnit49C_2008IdSerializerTemplates.cpp (Network/Streaming.cpp unit).
 			bool trySend(RakNet::BitStream& stream, const std::string& value);       // 004a7ba0
 			void send(RakNet::BitStream& stream, const std::string& value);          // 004a7e20
+			// Donor Streaming.h StringSender::serializeString (thiscall, ret 8; caller Replicator::serializeValue
+			// 004b6890 passes getSharedDictionary 004b6730's result, StringSender at +0 of SharedStringDictionary).
+			void serializeString(const Reflection::ConstProperty& property, RakNet::BitStream& stream); // 004a83e0
 		};
 
 		class StringReceiver
@@ -97,6 +101,9 @@ namespace RBX
 			// argument's Guid after GuidItem<Instance>::registerGuid 0049bba0 (Guid::Data at +0x8/+0xc), and the
 			// GuidItem<Instance> accessor for that guid is not declared in util/GuidItem.h.
 			void serializeId(RakNet::BitStream& stream, const Instance* instance);
+			// Donor Streaming.h IdSerializer::serializeRef (thiscall, ret 8; caller Replicator::serializeValue 004b6890
+			// passes the Replicator this unadjusted: IdSerializer at +0). Body in AppUnit49C_2008IdSerializerTemplates.cpp.
+			void serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& stream); // 004a8b90
 		};
 	}
 }

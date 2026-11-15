@@ -9,6 +9,7 @@
 // Verified by tests/record_native_app_unit49c_2008.py.
 #include "Network/IdSerializer.h"
 #include "AppUnit49C_2008/Streaming2008.h"
+#include "reflection/property.h"
 #include <BitStream.h>
 
 // StringReceiver / StringSender members of the same Network/Streaming.cpp unit, in the original's address order.
@@ -95,6 +96,25 @@ namespace RBX
 				stream << value;                                                              // 004a6560
 				lastIndex = lastIndex % 127 + 1;
 			}
+		}
+
+		// Donor Streaming.cpp StringSender::serializeString: the instance goes DescribedBase -> Instance -> DescribedBase
+		// (two NULL-checked +-0x14 adjustments before descriptor slot 0x1c getStringValue), then send 004a7e20.
+		void StringSender::serializeString(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream) // 004a83e0
+		{
+			const Instance* instance = static_cast<const Instance*>(property.getInstance());
+			const Reflection::PropertyDescriptor& desc = property.getDescriptor();
+
+			std::string value = desc.getStringValue(instance);
+			send(bitStream, value);
+		}
+
+		// Donor Streaming.cpp IdSerializer::serializeRef: RefPropertyDescriptor slot 0x30 getRefValue, NULL-checked -0x14
+		// to Instance, then serializeId 004a8ae0.
+		void IdSerializer::serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream) // 004a8b90
+		{
+			const Reflection::RefPropertyDescriptor& prop = static_cast<const Reflection::RefPropertyDescriptor&>(property.getDescriptor());
+			serializeId(bitStream, (Instance*)prop.getRefValue(property.getInstance()));
 		}
 	}
 }
