@@ -82,7 +82,9 @@ namespace RBX
 	class Shirt : public DescribedCreatable<Shirt, Clothing, sShirt>
 	{
 	public:
-		Shirt();
+		// 004939b0: inline (a COMDAT of the Network/Player.cpp unit 0048c000..00498000, called out of line by
+		// create<Shirt> 00494250; stores the Shirt vtable 00822114 after DescribedCreatable<Shirt> 004933c0).
+		Shirt() {}
 		TextureId getTemplate() const;                                   // 005d3a00 (+0x154)
 		void setTemplate(TextureId value);                               // 005d40c0 (prop_Outfit2)
 	};
@@ -90,7 +92,9 @@ namespace RBX
 	class Pants : public DescribedCreatable<Pants, Clothing, sPants>
 	{
 	public:
-		Pants();
+		// 00493920: inline (a COMDAT of the Network/Player.cpp unit, called out of line by create<Pants> 004941d0;
+		// stores the Pants vtable 00822044 after DescribedCreatable<Pants> 004932c0).
+		Pants() {}
 		TextureId getTemplate() const;                                   // 005d3b90 (+0x134)
 		void setTemplate(TextureId value);                               // 005d4120 (prop_Outfit1)
 	};

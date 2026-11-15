@@ -1,12 +1,14 @@
 // 2008-06 native RBX::Feature, RBX::Hole, RBX::MotorFeature and RBX::VelocityMotor (inactive); evidence in
 // native-headers/v8datamodel/Feature.h. Verified by tests/record_native_feature.py.
-// NATIVE_FEATURE_PENDING bodies need declarations the shared headers do not have yet (2008 SignalDesc::connect
-// with a group argument, JointInstance::onAncestorChanged, Workspace::getWorldIfInWorkspace); the recorder builds
-// them against generated copies under out/native-feature-pending/. The unguarded VelocityMotor bodies that read
-// JointInstance/MotorJoint fields are exact only against the 2008 layouts of those generated copies.
-// Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600) and /U_RELEASEASSERT
+// VelocityMotor::setHole 0060c400 uses the 2008 SignalDesc::connect(source, slot, int group) of reflection/signal.h;
+// VelocityMotor::onAncestorChanged 0060a0f0 uses JointInstance::onAncestorChanged 005e3a80 (native JointInstance.h),
+// Workspace::getWorldIfInWorkspace 005a3390 and the inline IPipelined::getWorld with the 2008 KERNEL_STAGE 7 (opt-in
+// kernel-stages IStage.h on the flags line). The VelocityMotor bodies that read MotorJoint fields still use the donor
+// v8world/MotorJoint.h (with `polarity`); the 2008 MotorJoint (Joints2008.h) cannot be included next to the donor
+// v8world/Joint.h that native JointInstance.h includes.
+// Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600), /I{headers}/kernel-stages and /U_RELEASEASSERT
 // (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/MotorJoint.h"
@@ -14,9 +16,7 @@
 #include "AppDraw/Draw.h"
 #include "AppDraw/DrawAdorn.h"
 #include <boost/bind.hpp>
-#ifdef NATIVE_FEATURE_PENDING
-#include "v8datamodel/Workspace.h"
-#endif
+#include "v8datamodel/Workspace.h"   // Workspace::getWorldIfInWorkspace 005a3390 (onAncestorChanged 0060a0f0)
 
 namespace RBX
 {
@@ -253,8 +253,7 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_FEATURE_PENDING
-	// Needs JointInstance::onAncestorChanged (005e3a80) and Workspace::getWorldIfInWorkspace (005a3390).
+	// 0060a0f0: JointInstance::onAncestorChanged 005e3a80, Workspace::getWorldIfInWorkspace 005a3390.
 	void VelocityMotor::onAncestorChanged(const AncestorChanged& event)
 	{
 		JointInstance::onAncestorChanged(event);
@@ -277,15 +276,13 @@ namespace RBX
 				wsWorld->insertJoint(motorJoint());
 		}
 	}
-#endif
 
 	void VelocityMotor::onEvent_HoleAncestorChanged()
 	{
 		setPart(1, hole.get());
 	}
 
-#ifdef NATIVE_FEATURE_PENDING
-	// Needs the 2008 SignalDesc::connect(source, slot, int group) (004a3340, group 10).
+	// 0060c400: the 2008 SignalDesc::connect(source, slot, int group) (004a3340, group 10) of reflection/signal.h.
 	void VelocityMotor::setHole(Hole* value)
 	{
 		if (value != getHole())
@@ -301,7 +298,6 @@ namespace RBX
 				holeAncestorChanged.disconnect();
 		}
 	}
-#endif
 
 	float VelocityMotor::getMaxVelocity() const
 	{
@@ -346,10 +342,9 @@ namespace RBX
 	}
 }
 
-// VelocityMotor::setHole 0060c400 stays pending (2008 SignalDesc::connect with a group argument). The slot it builds
-// from boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this) (0060b650) is instantiated here explicitly, so
-// this unit emits its boost::function manager / invoker rows (0060a300, 0060aac0, 0060abe0) against the current
-// headers too.
+// The slot VelocityMotor::setHole 0060c400 builds from boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this)
+// (0060b650) is also instantiated here explicitly, so this unit emits its boost::function manager / invoker rows
+// (0060a300, 0060aac0, 0060abe0).
 typedef boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::VelocityMotor>, boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*> > > VelocityMotorHoleBinder;
 template boost::slot<boost::function<void(boost::shared_ptr<RBX::Instance>)> >::slot(const VelocityMotorHoleBinder&);
 

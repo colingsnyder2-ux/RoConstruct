@@ -9,7 +9,7 @@
 //     00493390 (-0x14), 00493990 (-0x24), 004939a0 (-0x130) -> ??_GPants 004933a0 (clothing-working.json);
 //   * Shirt: 00493460 (-0x130), 00493470 (-0x24), 00493480 (-0x44), 00493490 (-0xa4), 00493a20 (-0x64), 00493a30
 //     (-0x84), 00493a40 (-0xc4), 00493a50 (-0x10), 00493a60 (-0x14) -> ??_GShirt 00493a70 (clothing-working.json;
-//     evidence names ??_EShirt@RBX@@W...). The Pants / Shirt thunks need the inline constructors (pending build only).
+//     evidence names ??_EShirt@RBX@@W...). The Pants / Shirt thunks come with the inline constructors (below).
 // The adjustments are the base offsets of the native Clothing.h hierarchy (RTTI of the FactoryProduct<Clothing>
 // vtables 008218c8..00821850 at +0x10/+0x64/+0x84/+0xa4/+0x130).
 #include "v8datamodel/Clothing.h"
@@ -24,12 +24,11 @@ namespace RBX
 // FactoryProduct<Clothing, CharacterAppearance, sClothing>: its vtables and their thunks.
 template class RBX::FactoryProduct<RBX::Clothing, RBX::CharacterAppearance, RBX::sClothing>;
 
-#ifdef NATIVE_APPUNIT48C_PENDING
-// Pending build only (generated v8datamodel/Clothing.h copy with the inline constructors `Pants() {}` / `Shirt() {}`;
-// proposal for the Clothing.h owner). The original emitted Pants() 00493920 / Shirt() 004939b0 as COMDATs in this
-// unit (create<Pants> 004941d0 / create<Shirt> 00494250 call them out of line), and with them the Pants / Shirt
-// vtables and the thunks above. The current header declares the constructors out of line (native-classes/Clothing.cpp
-// defines them), so the current-header build emits no Pants / Shirt vtable.
+// Pants() 00493920 / Shirt() 004939b0 are the inline constructors of v8datamodel/Clothing.h; the original emitted them as
+// COMDATs in this unit (create<Pants> 004941d0 / create<Shirt> 00494250 call them out of line), and with them the
+// Pants / Shirt vtables and the thunks above. Their DescribedCreatable bases are 004932c0 (Pants) / 004933c0 (Shirt).
+// The two create<> instantiations live here (not in AppUnit48C_2008Creators.cpp) so that this unit, which defines the
+// DescribedCreatable constructor, emits the whole Pants / Shirt construction chain.
 namespace RBX
 {
 	template<class C, class D, const char* N>
@@ -37,6 +36,5 @@ namespace RBX
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 }
 
-template boost::shared_ptr<RBX::Pants> RBX::Creatable<RBX::Instance>::create<RBX::Pants>();
-template boost::shared_ptr<RBX::Shirt> RBX::Creatable<RBX::Instance>::create<RBX::Shirt>();
-#endif
+template boost::shared_ptr<RBX::Pants> RBX::Creatable<RBX::Instance>::create<RBX::Pants>();   // 004941d0
+template boost::shared_ptr<RBX::Shirt> RBX::Creatable<RBX::Instance>::create<RBX::Shirt>();   // 00494250
