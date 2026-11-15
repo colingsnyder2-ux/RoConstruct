@@ -5,10 +5,12 @@
 var embedded=new URLSearchParams(location.search).has('castle');
 if(embedded){document.body.style.margin='0';document.body.style.overflow='hidden';document.documentElement.style.background='transparent';}
 var Module={canvas:document.getElementById('canvas'),toolbarEmbedded:embedded,
+ onRuntimeInitialized:function(){Module.toolbarReady=true;},
  onToolbarCommand:function(command){if(embedded)parent.postMessage({type:'castle-command',command:command},location.origin);},
  reportHeight:function(height,baseHeight){if(embedded&&(Module.lastHeight!==height||Module.lastBaseHeight!==baseHeight)){Module.lastHeight=height;Module.lastBaseHeight=baseHeight;parent.postMessage({type:'toolbar-height',height:height,baseHeight:baseHeight},location.origin);}}};
 addEventListener('message',function(event){
  if(event.source!==parent||event.origin!==location.origin)return;
+ if(!Module.toolbarReady||!Module.toolbarState)return;
  if(event.data.type==='toolbar-close'&&Module._toolbar_close_popup){Module._toolbar_close_popup();return;}
  if(event.data.type!=='castle-status'||!Module._toolbar_status)return;
  var s=event.data.state;

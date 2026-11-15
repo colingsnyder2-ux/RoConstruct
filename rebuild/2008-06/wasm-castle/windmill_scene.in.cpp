@@ -36,15 +36,15 @@
                 millBody.brick(80+(width+2)*0.25f,14.5f+layer,0,(width-2)*0.5f,1,8,false);
             } else millBody.brick(80,14.5f+layer,0,width,1,8,false);
         }
-        for(int side=-1;side<=1;side+=2) {
-            float x=80+side*8;
+        {
+            float x=72;
             millBody.brick(x,3,-3,6,4,1,false);
             millBody.brick(x-2.5f,3,0,1,4,5,false);
             millBody.brick(x+2.5f,3,0,1,4,5,false);
             millBody.brick(x-2,3,3,2,4,1,false);
             millBody.brick(x+2,3,3,2,4,1,false);
             millBody.brick(x,4.5f,3,2,1,1,false);
-            if(side<0) millBody.brick(x,1.5f,3,2,1,1,false);
+            millBody.brick(x,1.5f,3,2,1,1,false);
             millBody.brick(x,1,0,4,0.5f,5,false);
         }
         millBody.finish(scene);
@@ -55,7 +55,7 @@
         for(int x=-1;x<=1;x+=2) {
             for(int z=-1;z<=1;z+=2) {
                 millTrim.brick(80+x*5,7,z*4,0.5f,14,0.5f,false);
-                millTrim.brick(80+x*10.5f,0.5f,z*2.5f,0.5f,1,0.5f,false);
+                if(x<0) millTrim.brick(69.5f,0.5f,z*2.5f,0.5f,1,0.5f,false);
             }
         }
         millTrim.finish(scene);
@@ -63,7 +63,7 @@
         // Whole gable plates, with a long ridge rather than a pyramid roof.
         for(int layer=0;layer<7;++layer) millRoof.brick(80,14.5f+layer,0,14-layer*2,1,11);
         for(int layer=0;layer<3;++layer) millRoof.brick(72,5.5f+layer*0.5f,0,7-layer,0.5f,8-layer);
-        millRoof.brick(88,5.5f,0,7,0.5f,8);millRoof.finish(scene);
+        millRoof.finish(scene);
         Builder millFrames(scene,"Light stone grey",brickColour(208));
         for(int y=6;y<=10;y+=4) {
             for(int edge=-1;edge<=1;edge+=2) {
@@ -90,24 +90,20 @@
         }
         glass.brick(80,17,3,1.5f,1.5f,0.5f,false);
         glass.brick(72,3,2.5f,1.5f,1.5f,0.5f,false);
-        applyWindowReflectance(glass.material,0.45f);
+        applyWindowReflectance(glass.material,0.8f);
         glass.finish(scene);
         Builder millDoor(scene,"Reddish brown",brickColour(192));
         for(int plank=-1;plank<=1;plank+=2) {
             millDoor.brick(80+plank*0.5f,2,3,1,4,0.5f,false);
-            millDoor.brick(88+plank*0.5f,2.5f,2.5f,1,3,0.5f,false);
         }
         for(int edge=-1;edge<=1;edge+=2) {
             millDoor.brick(80+edge*1.5f,2,4,1,4,1,false);
-            millDoor.brick(88+edge*1.5f,2.5f,3.5f,1,3,1,false);
         }
         millDoor.brick(80,4.5f,4,4,1,1,false);
-        millDoor.brick(88,4.5f,3.5f,4,1,1,false);
         millDoor.brick(80,0,4.5f,3,0.5f,2);
         millDoor.finish(scene);
         Builder handles(scene,"Bright yellow",brickColour(24));
-        handles.brick(80.5f,2,3.5f,0.5f,0.5f,0.5f,false);
-        handles.brick(88.5f,2.5f,3,0.5f,0.5f,0.5f,false);handles.finish(scene);
+        handles.brick(80.5f,2,3.5f,0.5f,0.5f,0.5f,false);handles.finish(scene);
         Builder trunks(scene,"Reddish brown",brickColour(192));
         Builder leaves(scene,"Earth green",brickColour(141));
         const float millTree[5][2]={{-11,-8},{11,-8},{-3,-9},{-11,8},{11,8}};
@@ -132,6 +128,9 @@
                 sails.brick(x,y,0,arm%2?0.5f:1.5f,arm%2?1.5f:0.5f,0.5f,false);
             }
         }
-        sails.brick(0,0,0,1.5f,1.5f,1,false);
         sails.finish(scene);windmillRotor=sails.object;
         windmillTransformKey=static_cast<DemoSceneManager*>(scene)->parts.size();
+        Builder hub(scene,"Windmill hub",brickColour(26));
+        hub.brick(0,0,0,2,2,1.5f,false);hub.finish(scene);
+        windmillHub=hub.object;
+        windmillHubKey=static_cast<DemoSceneManager*>(scene)->parts.size();

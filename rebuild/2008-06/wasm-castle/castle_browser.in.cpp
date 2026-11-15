@@ -20,6 +20,8 @@ public:
     Ogre::FrameHistory history;
     int activeScene=0;
     DemoSubEntity* windmillRotor=nullptr;
+    DemoSubEntity* windmillHub=nullptr;
+    unsigned windmillHubKey=0;
     unsigned windmillTransformKey=0;
     float windmillAngle=0;
     float yaw = 0.65f, pitch = 0.48f;
@@ -121,6 +123,8 @@ public:
             auto* world=static_cast<DemoSceneManager*>(scene);
             world->worldNode->setTransform(windmillTransformKey,rotorTransform);
             windmillRotor->transform(world->worldNode->getTransform(windmillTransformKey));
+            world->worldNode->setTransform(windmillHubKey,rotorTransform);
+            windmillHub->transform(world->worldNode->getTransform(windmillHubKey));
             window->Ogre::RenderTarget::update();
             bool repeatHud = false;
             window->swapBuffers(false);

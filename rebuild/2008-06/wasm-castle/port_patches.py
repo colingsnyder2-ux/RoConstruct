@@ -229,12 +229,14 @@ def castle_entry(root, template, output):
         }}''')
     text = text.replace("glTexGeni: (coord, pname, param) => abort('glTexGeni: TODO'),",'''
   glTexGeni: (coord,pname,param) => {
-    if (pname != 0x2500 || param != 0x8512 || coord < 0x2000 || coord > 0x2002)
+    if (pname != 0x2500 || (param != 0x8512 && param != 0x2402) || coord < 0x2000 || coord > 0x2002)
       abort('Unsupported texgen mode: ' + param);
+    GLEmulation.reflectionMode ||= [];
+    GLEmulation.reflectionMode[GLImmediate.TexEnvJIT.getActiveTexture()]=param;
   },''')
     text = text.replace('var keyView = cacheMap.getStaticKeyView().reset();',
         'var keyView = cacheMap.getStaticKeyView().reset();\n'
-        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);')
+        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);keyView.next(GLEmulation.reflectionMode?.[unit] || 0);}')
     # Use the actual TexEnvJIT cube type for sampler declarations and coordinates.
     text = text.replace("return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;",
         "return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;")
@@ -243,11 +245,15 @@ def castle_entry(root, template, output):
     text = text.replace("vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';",'''
               if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
                 vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\\n';
+              } else if ((GLEmulation.reflectionCoords?.[texUnit] || 0)==3 && GLEmulation.reflectionMode?.[texUnit]==0x2402) {
+                vsTexCoordInits += 'vec3 sphereR'+texUnit+'=reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal));';
+                vsTexCoordInits += 'vec3 sphereM'+texUnit+'=sphereR'+texUnit+'+vec3(0.0,0.0,1.0);';
+                vsTexCoordInits += vTexCoordPrefix+texUnit+'=vec4(sphereR'+texUnit+'.xy/max(2.0*length(sphereM'+texUnit+'),0.00001)+vec2(0.5),0.0,1.0);';
               } else {
                 vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';
               }''')
     text = text.replace("            var vsLightingDefs = '';",'''
-            var reflectionActive=this.usedTexUnitList.some(unit => (GLEmulation.reflectionCoords?.[unit] || 0)==7);
+            var reflectionActive=this.usedTexUnitList.some(unit => [3,7].includes(GLEmulation.reflectionCoords?.[unit] || 0));
             var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';''')
     output.write_text(text)
 
@@ -457,12 +463,14 @@ def emulation_library(sdk, output):
         }}''')
     text = text.replace("glTexGeni: (coord, pname, param) => abort('glTexGeni: TODO'),",'''
   glTexGeni: (coord,pname,param) => {
-    if (pname != 0x2500 || param != 0x8512 || coord < 0x2000 || coord > 0x2002)
+    if (pname != 0x2500 || (param != 0x8512 && param != 0x2402) || coord < 0x2000 || coord > 0x2002)
       abort('Unsupported texgen mode: ' + param);
+    GLEmulation.reflectionMode ||= [];
+    GLEmulation.reflectionMode[GLImmediate.TexEnvJIT.getActiveTexture()]=param;
   },''')
     text = text.replace('var keyView = cacheMap.getStaticKeyView().reset();',
         'var keyView = cacheMap.getStaticKeyView().reset();\n'
-        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);')
+        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);keyView.next(GLEmulation.reflectionMode?.[unit] || 0);}')
     # Use the actual TexEnvJIT cube type for sampler declarations and coordinates.
     text = text.replace("return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;",
         "return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;")
@@ -471,11 +479,15 @@ def emulation_library(sdk, output):
     text = text.replace("vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';",'''
               if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
                 vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\\n';
+              } else if ((GLEmulation.reflectionCoords?.[texUnit] || 0)==3 && GLEmulation.reflectionMode?.[texUnit]==0x2402) {
+                vsTexCoordInits += 'vec3 sphereR'+texUnit+'=reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal));';
+                vsTexCoordInits += 'vec3 sphereM'+texUnit+'=sphereR'+texUnit+'+vec3(0.0,0.0,1.0);';
+                vsTexCoordInits += vTexCoordPrefix+texUnit+'=vec4(sphereR'+texUnit+'.xy/max(2.0*length(sphereM'+texUnit+'),0.00001)+vec2(0.5),0.0,1.0);';
               } else {
                 vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';
               }''')
     text = text.replace("            var vsLightingDefs = '';",'''
-            var reflectionActive=this.usedTexUnitList.some(unit => (GLEmulation.reflectionCoords?.[unit] || 0)==7);
+            var reflectionActive=this.usedTexUnitList.some(unit => [3,7].includes(GLEmulation.reflectionCoords?.[unit] || 0));
             var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';''')
     output.write_text(text)
 

@@ -13,9 +13,9 @@ Original BrickColors provide the palette. Roof tiers are whole plates;
 trees occupy separate planters. Visible and shadow geometry use identical cap
 triangles, with matching atlas-boundary subdivisions around adjoining faces.
 Windows and doors are recessed into openings between separate wall blocks.
-Glass uses Ogre cubic environment mapping with the original sky textures; the
-browser bridge implements reflection texgen and cube mipmaps. This reflects
-the sky, not nearby buildings. The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
+Glass follows Roblox RenderLibNew/RenderScene.cpp: an additive reflection pass,
+ambient 2*Reflectance, original skyspheremap.jpg and ENV_CURVED. The bridge
+implements sphere-map texgen. This reflects the sky, not nearby buildings. The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
 is zero. Generated vertex shaders declare invariant gl_Position to keep transforms
 consistent between lit and stencil passes (GLSL ES invariance rules).
 
@@ -31,7 +31,8 @@ Space: auto-orbit; R: reset; W: wireframe; S: shadows.
 P: pause clock; D: resume; T: advance three hours; C: sun/moon view.
 A full day takes 90 seconds. Escape stops the demo; reload to restart.
 Wireframe requires WEBGL_polygon_mode and may be unavailable on mobile.
-Help and camera debug controls have been removed.
+Help and camera readouts have been removed. Copy view copies diagnostic state
+without displaying coordinates.
 
 ## Published files
 

@@ -43,7 +43,8 @@ addEventListener('message',function(event){
    document.documentElement.style.setProperty('--toolbar-surface-height',event.data.height+'px');
  }
  if(event.data.type==='castle-command'&&Module._castle_command){
-   if(event.data.command===109){
+   if(event.data.command===110){navigator.clipboard.writeText(JSON.stringify(Module.castleState,null,2)).catch(function(error){document.querySelector('#status').textContent='Copy failed: '+error.message;});}
+   else if(event.data.command===109){
      var action=document.fullscreenElement?document.exitFullscreen():document.querySelector('.game-shell').requestFullscreen();
      action.catch(function(error){document.querySelector('#status').textContent='Fullscreen: '+error.message;});
 

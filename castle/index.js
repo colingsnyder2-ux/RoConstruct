@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\colin\AppData\Local\Temp\tmpc0pnjsga.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpzbe24176.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -200,25 +200,25 @@ Module['FS_createPath']("/", "assets", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/assets/Surfaces.png", "start": 0, "end": 16477}, {"filename": "/assets/castle_hud.png", "start": 16477, "end": 35044}, {"filename": "/assets/moon.jpg", "start": 35044, "end": 42438}, {"filename": "/assets/null_plainsky512_bk.jpg", "start": 42438, "end": 52913}, {"filename": "/assets/null_plainsky512_dn.jpg", "start": 52913, "end": 58293}, {"filename": "/assets/null_plainsky512_fr.jpg", "start": 58293, "end": 70576}, {"filename": "/assets/null_plainsky512_lf.jpg", "start": 70576, "end": 82177}, {"filename": "/assets/null_plainsky512_rt.jpg", "start": 82177, "end": 92994}, {"filename": "/assets/null_plainsky512_up.jpg", "start": 92994, "end": 99585}, {"filename": "/assets/sun-rays.jpg", "start": 99585, "end": 104164}, {"filename": "/assets/sun.jpg", "start": 104164, "end": 107536}], "remote_package_size": 107536});
+    loadPackage({"files": [{"filename": "/assets/Surfaces.png", "start": 0, "end": 16477}, {"filename": "/assets/castle_hud.png", "start": 16477, "end": 35044}, {"filename": "/assets/moon.jpg", "start": 35044, "end": 42438}, {"filename": "/assets/null_plainsky512_bk.jpg", "start": 42438, "end": 52913}, {"filename": "/assets/null_plainsky512_dn.jpg", "start": 52913, "end": 58293}, {"filename": "/assets/null_plainsky512_fr.jpg", "start": 58293, "end": 70576}, {"filename": "/assets/null_plainsky512_lf.jpg", "start": 70576, "end": 82177}, {"filename": "/assets/null_plainsky512_rt.jpg", "start": 82177, "end": 92994}, {"filename": "/assets/null_plainsky512_up.jpg", "start": 92994, "end": 99585}, {"filename": "/assets/skyspheremap.jpg", "start": 99585, "end": 110065}, {"filename": "/assets/sun-rays.jpg", "start": 110065, "end": 114644}, {"filename": "/assets/sun.jpg", "start": 114644, "end": 118016}], "remote_package_size": 118016});
 
   })();
 
-// end include: C:\Users\colin\AppData\Local\Temp\tmpc0pnjsga.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpimro1c73.js
+// end include: C:\Users\colin\AppData\Local\Temp\tmpzbe24176.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpha66c5s9.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER !== 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD !== 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET !== 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpimro1c73.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpsiglwd84.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpha66c5s9.js
+// include: C:\Users\colin\AppData\Local\Temp\tmp2br5da06.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (!Module['preRun'].includes(task)) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpsiglwd84.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmp2br5da06.js
 
 
 var programArgs = [];
@@ -6548,7 +6548,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         var attributes = GLImmediate.liveClientAttributes;
         var cacheMap = GLImmediate.rendererCache;
         var keyView = cacheMap.getStaticKeyView().reset();
-        for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);
+        for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);keyView.next(GLEmulation.reflectionMode?.[unit] || 0);}
         keyView.next(GLEmulation.colorMaterialEnabled ? (GLEmulation.colorMaterialMode || 0x1602) : 0);
   
         // By attrib state:
@@ -6689,6 +6689,10 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
                 
                 if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
                   vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\n';
+                } else if ((GLEmulation.reflectionCoords?.[texUnit] || 0)==3 && GLEmulation.reflectionMode?.[texUnit]==0x2402) {
+                  vsTexCoordInits += 'vec3 sphereR'+texUnit+'=reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal));';
+                  vsTexCoordInits += 'vec3 sphereM'+texUnit+'=sphereR'+texUnit+'+vec3(0.0,0.0,1.0);';
+                  vsTexCoordInits += vTexCoordPrefix+texUnit+'=vec4(sphereR'+texUnit+'.xy/max(2.0*length(sphereM'+texUnit+'),0.00001)+vec2(0.5),0.0,1.0);';
                 } else {
                   vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\n';
                 }
@@ -6724,7 +6728,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
                 }
               }
   
-              var reflectionActive=this.usedTexUnitList.some(unit => (GLEmulation.reflectionCoords?.[unit] || 0)==7);
+              var reflectionActive=this.usedTexUnitList.some(unit => [3,7].includes(GLEmulation.reflectionCoords?.[unit] || 0));
               var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';
               var vsLightingPass = '';
               if (GLEmulation.lightingEnabled) {
@@ -12408,8 +12412,10 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     };
   var _emscripten_glTexGenfv = (coord, pname, param) => abort('glTexGenfv: TODO');
   var _emscripten_glTexGeni = (coord,pname,param) => {
-      if (pname != 0x2500 || param != 0x8512 || coord < 0x2000 || coord > 0x2002)
+      if (pname != 0x2500 || (param != 0x8512 && param != 0x2402) || coord < 0x2000 || coord > 0x2002)
         abort('Unsupported texgen mode: ' + param);
+      GLEmulation.reflectionMode ||= [];
+      GLEmulation.reflectionMode[GLImmediate.TexEnvJIT.getActiveTexture()]=param;
     };
   var _emscripten_glTexImage1D = (target, level, internalformat, width, border, format, type, data) => abort('glTexImage1D: TODO');
   var colorChannelsInGlTextureFormat = (format) => {
@@ -14079,18 +14085,18 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('wasmBinary');
 }
 var ASM_CONSTS = {
-  347100: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
- 347185: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
- 347298: () => { return !!document.fullscreenElement; },  
- 347337: () => { document.exitFullscreen(); },  
- 347366: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
- 347449: () => { document.querySelector('#canvas').focus(); },  
- 347494: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
- 348061: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
- 348193: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
- 348347: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
- 348486: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
- 348615: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
+  347132: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
+ 347217: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
+ 347330: () => { return !!document.fullscreenElement; },  
+ 347369: () => { document.exitFullscreen(); },  
+ 347398: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
+ 347481: () => { document.querySelector('#canvas').focus(); },  
+ 347526: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
+ 348093: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
+ 348225: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
+ 348379: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
+ 348518: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
+ 348647: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
 };
 function browserReadTexture(texture,face,level,width,height,output) { var draw = GLctx.getParameter(GLctx.DRAW_FRAMEBUFFER_BINDING); var read = GLctx.getParameter(GLctx.READ_FRAMEBUFFER_BINDING); var fbo = GLctx.createFramebuffer(); GLctx.bindFramebuffer(GLctx.FRAMEBUFFER, fbo); GLctx.framebufferTexture2D(GLctx.FRAMEBUFFER, GLctx.COLOR_ATTACHMENT0, face, GL.textures[texture], level); if (GLctx.checkFramebufferStatus(GLctx.FRAMEBUFFER) !== GLctx.FRAMEBUFFER_COMPLETE) abort('Texture readback framebuffer incomplete'); GLctx.readPixels(0, 0, width, height, GLctx.RGBA, GLctx.UNSIGNED_BYTE, HEAPU8.subarray(output, output + width * height * 4)); GLctx.bindFramebuffer(GLctx.DRAW_FRAMEBUFFER, draw); GLctx.bindFramebuffer(GLctx.READ_FRAMEBUFFER, read); GLctx.deleteFramebuffer(fbo); }
 

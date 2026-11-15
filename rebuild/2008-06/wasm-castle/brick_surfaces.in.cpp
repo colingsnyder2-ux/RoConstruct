@@ -29,19 +29,27 @@ void applyBrickSurface(Ogre::MaterialPtr material,Ogre::ColourValue colour) {
     unit->setTextureFiltering(Ogre::TFO_TRILINEAR);
 }
 
-// Ogre's real cubic environment-map path. Reflectance mixes the sky with the
-// lit BrickColor; no painted highlight or screen-space overlay is involved.
+// Original Roblox RenderLibNew/RenderScene.cpp reflection material setup:
+// skyspheremap.jpg + additive pass, ambient 2*reflectance, ENV_CURVED.
+// This adapter binds that setup to the demo's existing Ogre material.
 Ogre::ColourValue brickColour(int id);
 void applyWindowReflectance(Ogre::MaterialPtr material,float reflectance) {
-    Ogre::Pass* pass=material->getTechnique(0)->getPass(0);
-    pass->removeAllTextureUnitStates();
-    material->setDiffuse(brickColour(102));
-    material->setAmbient(brickColour(102));
-    Ogre::TextureUnitState* reflection=pass->createTextureUnitState();
-    reflection->setCubicTextureName("null_plainsky512.jpg",true);
-    reflection->setEnvironmentMap(true,Ogre::TextureUnitState::ENV_REFLECTION);
-    reflection->setTextureAddressingMode(Ogre::TextureUnitState::TAM_CLAMP);
-    reflection->setColourOperationEx(Ogre::LBX_BLEND_MANUAL,Ogre::LBS_TEXTURE,Ogre::LBS_CURRENT,
-        Ogre::ColourValue::White,Ogre::ColourValue::White,reflectance);
-    reflection->setAlphaOperation(Ogre::LBX_SOURCE1,Ogre::LBS_CURRENT);
+    Ogre::Technique* technique=material->getTechnique(0);
+    while(technique->getNumPasses()>1) technique->removePass(1);
+    Ogre::Pass* base=technique->getPass(0);
+    base->removeAllTextureUnitStates();
+    base->setDiffuse(brickColour(102));base->setAmbient(brickColour(102));
+    if(reflectance<=0) return;
+    Ogre::TexturePtr sky=Ogre::TextureManager::getSingleton().getByName("skysphmap");
+    if(sky.isNull()) {
+        Ogre::Image image;image.load("skyspheremap.jpg","General");
+        sky=Ogre::TextureManager::getSingleton().loadImage("skysphmap","General",image);
+    }
+    Ogre::Pass* reflection=technique->createPass();
+    reflection->setDiffuse(0,0,0,1);
+    reflection->setAmbient(Ogre::ColourValue(2,2,2,2)*reflectance);
+    reflection->setSceneBlending(Ogre::SBF_ONE,Ogre::SBF_ONE);
+    Ogre::TextureUnitState* unit=reflection->createTextureUnitState();
+    unit->setTextureName(sky->getName(),Ogre::TEX_TYPE_2D);
+    unit->setEnvironmentMap(true,Ogre::TextureUnitState::ENV_CURVED);
 }
