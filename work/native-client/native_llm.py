@@ -211,7 +211,9 @@ VENDOR_ROOTS = [ROOT / 'tools/rbxgs/Client/Network/raknet30/Source', ROOT / 'too
 def header_include_flags(header, destination, extra=()):
     """Known vendor roots required by real native headers, never guessed from analog text."""
     native_headers = ROOT / 'rebuild/2008-06/native-headers'
-    paths = [ROOT / header] + [Path(p) for p in extra]      # auto-added includes can reach RakNet/Ogre headers too
+    # Auto-added includes can reach RakNet/Ogre headers too; they may be native-headers-relative
+    # ('OgreAuto/CylinderTransform2008.h' needs the Ogre root for <OgreVector2.h>).
+    paths = [ROOT / header] + [Path(p) if Path(p).is_absolute() else native_headers / p for p in extra]
     if destination:
         paths.append(ROOT / destination)
     seen, text = set(), ''
@@ -708,7 +710,9 @@ def missing_names(error):
                        r"|identifier '(\w+)'|'(\w+)': identifier not found"
                        # C3083 / C2653 / C2681: a class used through :: or dynamic_cast that is only forward-declared
                        r"|'(\w+)': the symbol to the left of a '::' must be a type|'(\w+)' : is not a class or namespace name"
-                       r"|'([\w:]+) \*' : invalid (?:expression|target) type", error)
+                       r"|'([\w:]+) \*' : invalid (?:expression|target) type"
+                       # C2514: `new ArrowTool` / temporaries of a class that is only forward-declared
+                       r"|'([\w:]+)' : class has no constructors", error)
     return [next(x for x in group if x) for group in names]
 
 
@@ -1065,7 +1069,12 @@ def _prove(t, body, out, depth=0):
             have = set(EXTRA_INCLUDES.get(t['addr'], [])) | {str((ROOT / t['header']).resolve())}
             # A donor (2007 rbxgs) header is included by its relative name ("util/Math.h"): the gate searches
             # native-headers before rbxgs/Client/App/include, so a native override wins and nothing is defined twice.
-            found = [donor_relative(h) for h in (declaring_header(n) for n in missing_names(error)) if h]
+            # A name the destination TU defines itself (file-local helper such as HeadMesh's CylinderTransform) is not
+            # a header's: auto-including another class of that name only adds a wrong type and its includes.
+            local = (ROOT / t['dest']).read_text(errors='replace') if t.get('dest') and (ROOT / t['dest']).is_file() else ''
+            wanted = [n for n in missing_names(error)
+                      if not re.search(r'^\s*(?:class|struct)\s+%s\b' % re.escape(n.split('::')[-1]), local, re.M)]
+            found = [donor_relative(h) for h in (declaring_header(n) for n in wanted) if h]
             found = [h for h in found if h not in have]
             tool_time('include_search', time.time() - tick)
             if found:

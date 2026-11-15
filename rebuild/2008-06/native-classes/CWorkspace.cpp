@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include <afxwin.h>
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"
@@ -45,3 +46,11 @@ template class ATL::IObjectWithSiteImpl<CWorkspace>;
 template class RBX::Listener<RBX::Workspace,RBX::DrawChanged>;
 template class std::_Vector_const_iterator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std::allocator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *> >;
 template class std::_Vector_iterator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std::allocator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *> >;
+
+RBX::Workspace* CWorkspace::getWorkspace()
+{
+    if (dataModel)
+        return dataModel->getWorkspace();
+    return 0;
+}
+

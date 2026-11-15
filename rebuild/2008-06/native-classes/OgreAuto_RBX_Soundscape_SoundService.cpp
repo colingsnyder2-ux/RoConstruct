@@ -34,3 +34,12 @@ void SoundService::onServiceProvider(const ServiceProvider* oldProvider, const S
 }
 }
 }
+
+namespace RBX {
+namespace Soundscape {
+SoundService::~SoundService()
+{
+}
+}
+}
+
