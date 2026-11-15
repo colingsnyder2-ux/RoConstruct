@@ -74,7 +74,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--since', type=float, default=0, help='only attempts from the last N hours (0 = all)')
     ap.add_argument('--json', type=Path)
+    ap.add_argument('--throughput', action='store_true', help='combined new-exact bytes/hour over all runs')
     args = ap.parse_args()
+    if args.throughput:
+        t = throughput()
+        print('combined B/hour  1h %(bytes_per_hour_1h)d  6h %(bytes_per_hour_6h)d  24h %(bytes_per_hour_24h)d  all %(bytes_per_hour_all)d'
+              '  | exact %(exact_functions)d fns %(exact_bytes)d B (%(exact_1h)d last hour, %(exact_24h)d last 24h)' % t)
+        print('hourly (newest first):', ' '.join(str(h['bytes']) for h in t['hourly'][:24]))
+        return
     out = report(args.since)
     print('%-46s %5s %5s %5s %6s %6s %6s %6s %6s %6s %6s %6s %5s %7s %8s %7s %7s %6s %8s %6s %6s' % ('model', 'tries', 'tgts', 'exact', 'match%', 'cfail%',
           'draft%', 'norep%', 'llm_s', 'tool_s', 'gate_s', 'diff_s', 'incl', 'bytes', 'B/hour', 'tok_in', 'tok_out', 'tok/B', 'tok/h', 'usd', '$/KB'))
@@ -85,9 +92,6 @@ def main():
     if args.json:
         args.json.write_text(json.dumps(out, indent=1) + '\n')
 
-
-if __name__ == '__main__':
-    main()
 
 
 def runs(rows=None, gap=900):
@@ -122,6 +126,40 @@ def runs(rows=None, gap=900):
     return out[::-1]
 
 
+def throughput(rows=None, hours=48):
+    """Combined new-exact bytes/hour across every run and session (all write attempts.jsonl): each address counts once,
+    at its first inactive_exact.  -> windows (1h/6h/24h/all), an hourly series, totals."""
+    if rows is None:
+        rows = [json.loads(line) for line in LOG.read_text().splitlines() if line.strip()] if LOG.is_file() else []
+    first = {}
+    for r in sorted((r for r in rows if r.get('time')), key=lambda r: r['time']):
+        if r['status'] == 'inactive_exact' and r['addr'] not in first:
+            first[r['addr']] = (r['time'], r.get('size', 0))
+    now = time.time()
+    events = sorted(first.values())
+    window = lambda h: sum(b for t, b in events if t >= now - h * 3600)
+    start = events[0][0] if events else now
+    series = collections.Counter()
+    for t, b in events:
+        if t >= now - hours * 3600:
+            series[int((now - t) // 3600)] += b
+    return {'bytes_per_hour_1h': window(1), 'bytes_per_hour_6h': round(window(6) / 6),
+            'bytes_per_hour_24h': round(window(24) / 24),
+            'bytes_per_hour_all': round(sum(b for _, b in events) / max((now - start) / 3600, 1)),
+            'exact_functions': len(events), 'exact_bytes': sum(b for _, b in events),
+            'exact_1h': sum(1 for t, _ in events if t >= now - 3600), 'exact_24h': sum(1 for t, _ in events if t >= now - 86400),
+            'hourly': [{'hours_ago': h, 'bytes': series.get(h, 0)} for h in range(hours)]}
+
+
+def log_throughput(run_id=None):
+    """Append one combined-throughput line (called at the end of every run) to native-llm/throughput.jsonl."""
+    t = throughput()
+    t.pop('hourly')
+    with (LOG.parent / 'throughput.jsonl').open('a') as out:
+        out.write(json.dumps(dict(t, time=round(time.time(), 1), run=run_id)) + '\n')
+    return t
+
+
 def dashboard_state():
     """Everything the dashboard's Native LLM panel shows (roc/gui.py loads this file per request: no restart)."""
     rows = [json.loads(line) for line in LOG.read_text().splitlines() if line.strip()] if LOG.is_file() else []
@@ -133,9 +171,13 @@ def dashboard_state():
     logs = sorted(LOG.parent.parent.glob('native-llm-run*.log'), key=lambda p: p.stat().st_mtime)
     return {'cost': {'usd_total': spend(rows), 'usd_24h': spend(recent), 'tokens_total': tokens(rows), 'tokens_24h': tokens(recent),
                      'since': min((r['time'] for r in rows if r.get('tokens')), default=None)},
-            'models': report(), 'runs': runs(rows),
+            'models': report(), 'runs': runs(rows), 'throughput': throughput(rows),
             'unique_exact': len({r['addr'] for r in rows if r['status'] == 'inactive_exact'}),
             'attempts': [{k: r.get(k) for k in keep} for r in rows[-40:]][::-1],
             'run': logs[-1].name if logs else '',
             'running': bool(rows) and time.time() - rows[-1].get('time', 0) < 600,
             'log': '\n'.join(logs[-1].read_text(errors='replace').splitlines()[-60:]) if logs else ''}
+
+
+if __name__ == '__main__':
+    main()

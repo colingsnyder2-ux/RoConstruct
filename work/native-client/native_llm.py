@@ -1463,8 +1463,15 @@ def main():
     # Never-tried targets first (run 16 spent its whole budget on leftovers while 55 fresh ones waited), then owners
     # with exacts, then the rest; placeholder-global targets last.
     # Website 'other remaining' functions first: an exact there moves the public count (others are already owned).
+    # Bytes/hour: expected bytes per try = size x smoothed exact rate of its size bucket (history, Claude rows).
+    # Smallest-first left 128-512 B targets (~1400 B/worker-hour) behind 32-64 B ones (~650).
+    bucket = lambda size: min(7, max(0, size.bit_length() - 5))
+    seen_b = collections.Counter(bucket(r.get('size', 0)) for r in history if str(r.get('model', '')).startswith('claude'))
+    won_b = collections.Counter(bucket(r.get('size', 0)) for r in history
+                                if str(r.get('model', '')).startswith('claude') and r['status'] == 'inactive_exact')
+    expected = lambda t: t['size'] * (won_b[bucket(t['size'])] + 1) / (seen_b[bucket(t['size'])] + 10)
     rank = lambda t: (t['addr'] not in remaining_set(), tries_of[t['addr']] > 0, bool(t.get('unmapped')),
-                      0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, t['size'])
+                      0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, -expected(t))
     todo = sorted(todo, key=rank)[:args.limit]
     if args.retry_address:
         wanted = {address.lower() for address in args.retry_address}
@@ -1516,6 +1523,14 @@ def main():
                   top_failure_causes=failures.most_common(5))
     with METRICS.open('a') as stream:
         stream.write(json.dumps(metric, sort_keys=True) + '\n')
+    try:      # combined bytes/hour across all runs and sessions -> native-llm/throughput.jsonl + run log
+        sys.path.insert(0, str(ROOT / 'work/native-client'))
+        import native_llm_models
+        tp = native_llm_models.log_throughput(RUN_ID)
+        print('combined B/hour: 1h %(bytes_per_hour_1h)d  6h %(bytes_per_hour_6h)d  24h %(bytes_per_hour_24h)d  (%(exact_functions)d exact fns)'
+              % tp, flush=True)
+    except Exception as error:          # reporting only
+        print('throughput log failed:', error, flush=True)
     for t, d in exact if args.apply else []:
         # Serial: one destination edit at a time; the runner leases, drafts, re-proves the whole TU.
         run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_autorecover.py'), '--plan-file',
