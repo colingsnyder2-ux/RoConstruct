@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::Part::updateMesh 004ef930 (inactive; Part vtable 00826f94 slot 10, 2508 bytes, `ret`,
 // EH frame 007cace8). Not in any build list. DRAFT: the body is parked behind NATIVE_PARTMESH_PENDING (pending-guard
-// pattern) until the header gaps listed under BLOCKED land; with the guard defined it still fails on blockers 1-4
-// (setSurfaceType, createCharacter + tables, findClothing, Clothing outfits) and on Instance children access.
+// pattern) until the header gaps listed under BLOCKED land; with the guard defined it still fails on blockers 1, 2
+// and 6 (setSurfaceType, createCharacter + tables, Instance children access).
 // Sibling bodies: Decal / Texture::updateMesh in native-classes/ViewNewPartSurfaceUpdate2008.cpp (same size / radius tail).
 //
 // Evidence (decoded from the 2008-06 bytes; every call below is an original call site):
@@ -43,13 +43,17 @@
 //   2. The limb factory 004e54e0 is only an INFERRED free function in ViewNewBrickCacheRecovery2008.cpp
 //      (createSpecialBrick with int arguments); its owner must declare it with the table pointer types, and the five
 //      .data tables 00941448..00941640 need declarations (owner unit unknown).
-//   3. v8datamodel/ModelInstance.h: the Clothing modifier finder 004e7ff0 (template or member; analog name).
-//   4. v8datamodel/Clothing.h: outfit1 / outfit2 are protected; the bytes read them inline from this unit, so a public
-//      inline accessor (or friend) is needed.
+//   3. RESOLVED (untested): 004e7ff0 has the shape of ModelInstance::findModifierOfType<Clothing>() (modifiers end
+//      (+0x1f8 / +0x1fc) read first, begin (+0x1ec), checked iterators, __RTDynamicCast IModelModifier 00936908 -> Clothing 00936980,
+//      thiscall returning the first hit), so the draft calls that existing template.
+//   4. RESOLVED: Clothing.h now has public inline getOutfit1() / getOutfit2() (+0x134 / +0x154).
 //   5. A Humanoid header that shares a unit with the part-embedded PartInstance.h (Humanoid2008.h with
 //      NATIVE_HUMANOID2008_DONOR_CONNECTOR, as Humanoid2008Parts.cpp does) - not yet tried here.
+//   6. Core v8tree/Instance.h: the children loop (004efbd6..) reads children (+0x108) directly with checked
+//      end 0068ff20 / begin 0068fef0 and no copy_on_write read() (no refcount), iterating every child; Instance has no
+//      public accessor for that vector (findFirstChildOfType stops at the first hit, for_eachChild copies via read()).
 // Placeholder names used below until the proposals land (none is an original name): RenderSurfaceType / setSurfaceType
-// (donor names), ModelInstance::findClothing (004e7ff0), Clothing::getOutfit1 / getOutfit2 (+0x134 / +0x154),
+// (donor names), Clothing::getOutfit1 / getOutfit2 (+0x134 / +0x154),
 // BrickMesh::createCharacter (004e54e0) and the table names torsoFaces .. rightLegTemplate / characterRegions
 // (00941448..00941640).
 #undef OGRE_NONCLIENT_BUILD
@@ -114,7 +118,7 @@ namespace RBX
 				if (parent)
 				{
 					ModelInstance* model = dynamic_cast<ModelInstance*>(parent);
-					clothing = model ? model->findClothing() : NULL;      // 004e7ff0 (analog name)
+					clothing = model ? model->findModifierOfType<Clothing>() : NULL;   // 004e7ff0
 					humanoid = Humanoid::modelIsCharacter(parent);
 				}
 				if (parent && clothing && humanoid)

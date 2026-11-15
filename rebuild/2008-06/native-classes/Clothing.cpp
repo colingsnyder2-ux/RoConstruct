@@ -124,13 +124,56 @@ namespace RBX
 		if (PartInstance* part = humanoid->getRightArm()) part->outfitChanged();
 	}
 
-	// 005d4b00 Clothing::resetLimbs (93 bytes, declared in Clothing.h): NOT BUILT (header proposal). For each limb
-	// helper of this unit, in this order, `if (PartInstance* part = helper()) part->outfitChanged()` (0059e3a0, the
-	// same pending PartInstance member as apply above; the last call is a tail jump): 005d4640 "Left Leg" (0083c4b8),
-	// 005d4770 "Right Leg" (0083c4c4), 005d4510 "Torso" (00832a1c), 005d48a0 "Left Arm" (0083c4d0), 005d49d0
-	// "Right Arm" (0083c4dc). Each helper is a Clothing thiscall: parent (+0x104) findFirstChildByName(literal)
-	// 00557950, shared_from_dynamic_cast<PartInstance> 005d42f0, returns the raw pointer. None of the five helpers
-	// is declared in Clothing.h (PartInstance::outfitChanged itself is now declared in PartInstance.h).
+	// Limb lookups (analog names): a fresh shared_ptr each call, unlike the cached Humanoid getters.
+	PartInstance* Clothing::getTorso()      // 005d4510
+	{
+		boost::shared_ptr<PartInstance> part;
+		if (getParent())
+			part = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Torso"));
+		return part.get();
+	}
+
+	PartInstance* Clothing::getLeftLeg()    // 005d4640
+	{
+		boost::shared_ptr<PartInstance> part;
+		if (getParent())
+			part = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Left Leg"));
+		return part.get();
+	}
+
+	PartInstance* Clothing::getRightLeg()   // 005d4770
+	{
+		boost::shared_ptr<PartInstance> part;
+		if (getParent())
+			part = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Right Leg"));
+		return part.get();
+	}
+
+	PartInstance* Clothing::getLeftArm()    // 005d48a0
+	{
+		boost::shared_ptr<PartInstance> part;
+		if (getParent())
+			part = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Left Arm"));
+		return part.get();
+	}
+
+	PartInstance* Clothing::getRightArm()   // 005d49d0
+	{
+		boost::shared_ptr<PartInstance> part;
+		if (getParent())
+			part = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Right Arm"));
+		return part.get();
+	}
+
+	// 005d4b00 (93 B): outfitChanged (0059e3a0) on each limb; the last call is a tail jump.
+	void Clothing::resetLimbs()
+	{
+		if (PartInstance* part = getLeftLeg()) part->outfitChanged();
+		if (PartInstance* part = getRightLeg()) part->outfitChanged();
+		if (PartInstance* part = getTorso()) part->outfitChanged();
+		if (PartInstance* part = getLeftArm()) part->outfitChanged();
+		if (PartInstance* part = getRightArm()) part->outfitChanged();
+	}
 
 	// Shirt / Pants
 	// Shirt() 004939b0 / Pants() 00493920 are inline in Clothing.h (emitted by the Network/Player.cpp unit).
