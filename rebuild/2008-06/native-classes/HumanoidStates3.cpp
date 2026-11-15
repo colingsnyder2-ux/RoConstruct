@@ -107,6 +107,45 @@ void MovingNoPhysicsBase::release()
     torso.reset();
 }
 
+#ifdef NATIVE_MOVING_NO_PHYSICS_CTOR_PENDING
+// 0066f070 (589 bytes; decorated ??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z in the identity registry).
+// Decoded order: HumanoidState(humanoid) 00643e00; SimJob() 005e50f0 at +0xa0; vtables 0084d168/0084d160/0084d150;
+// torso/physicsService/connection zeroed; CoordinateFrame() 004782d0 at +0xe4. Then torso = shared_from(
+// humanoid->005d76d0()) (00618a40; shared_count assignment 004025b0); if (torso): frame = torso->getCoordinateFrame()
+// (00598cb0, rep movsd 9 dwords + 3 fld/fstp), torso->getPrimitive() (lea +0x228, no null test)->setJointAnchored(true)
+// 005e8140; connection = Instance::event_ancestryChanged (00973c38).connect(torso, boost::bind(&0066edc0, this), 10)
+// (function ctor 0066ef70, TSignalDesc::connect 004a3340, scoped_connection::operator= 00595540); physicsService =
+// ServiceProvider::find<PhysicsService>(humanoid) 0066f020; physicsService->onAdded(torso) 005e8f70; humanoid world
+// +0x21c ->getSimJobStage() 005e93b0 ->addSimJob(this +0xa0) 0064d1e0. Always: Humanoid::event_Running.fire(humanoid,
+// 0.0f) (0097a504). Not compiled: 005d76d0 (parent->findFirstChildByName("Torso") dynamic_cast<PartInstance>, no
+// cache; callers only 0066edc0/0066f070) is not declared in humanoid/Humanoid2008.h, and the ancestry handler 0066edc0
+// (`if (torso.get() != getHumanoid()->005d76d0()) release();`) is not declared in humanoid/HumanoidStates3.h.
+// Placeholder names below (getTorsoSlow, onTorsoAncestryChanged) are analog names pending those declarations.
+MovingNoPhysicsBase::MovingNoPhysicsBase(Humanoid* humanoid)
+    : Base(humanoid), physicsService(0)
+{
+    torso = shared_from(humanoid->getTorsoSlow());
+    if (torso)
+    {
+        frame = torso->getCoordinateFrame();
+        torso->getPrimitive()->setJointAnchored(true);
+        connection = Instance::event_ancestryChanged.connect(torso.get(),
+            boost::bind(&MovingNoPhysicsBase::onTorsoAncestryChanged, this), 10);
+        physicsService = ServiceProvider::find<PhysicsService>(humanoid);
+        physicsService->onAdded(torso.get());
+        humanoid->getWorld()->getSimJobStage().addSimJob(this);
+    }
+    Humanoid::event_Running.fire(humanoid, 0.0f);
+}
+
+// 0066edc0 (33 bytes, no arguments; bound by the constructor 0066f070 to event_ancestryChanged).
+void MovingNoPhysicsBase::onTorsoAncestryChanged()
+{
+    if (torso.get() != getHumanoid()->getTorsoSlow())
+        release();
+}
+#endif
+
 RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
 {
@@ -133,6 +172,26 @@ void StrafingNoPhysics::onStep(float dt, Controller* controller)
 #endif
 
 }
+
+#ifdef NATIVE_SIMJOB_PENDING
+// 0066f020 (65 bytes, cdecl): ServiceProvider::find<PhysicsService>(const Instance*), emitted in this unit for the
+// MovingNoPhysicsBase constructor 0066f070 (0066f23e, called with the humanoid). Walks the context up through
+// getParent (+0x104) until __RTDynamicCast(context, 0, Instance 0092907c, ServiceProvider 0092e15c, 0) succeeds,
+// then tail-jumps to the member find<PhysicsService>() const 004ccca0; NULL when no provider is found. Same shape as
+// the create<PhysicsService>(const Instance*) 004cd8d0 in AppUnit4C8_2008PhysicsServiceCreate.cpp.
+template<class Class> Class* ServiceProvider::find(const Instance* context)
+{
+    while (context)
+    {
+        if (const ServiceProvider* provider = dynamic_cast<const ServiceProvider*>(context))
+            return provider->find<Class>();
+        context = context->getParent();
+    }
+    return NULL;
+}
+
+template PhysicsService* ServiceProvider::find<PhysicsService>(const Instance* context);
+#endif
 template<> const Name& Named<HUMAN::HumanoidState, HUMAN::sSeated>::getName() const { return Name::declare<HUMAN::sSeated>(); }
 template<> const Name& Named<HUMAN::HumanoidState, HUMAN::sDead>::getName() const { return Name::declare<HUMAN::sDead>(); }
 template<> const Name& Named<HUMAN::HumanoidState, HUMAN::sFallingDown>::getName() const { return Name::declare<HUMAN::sFallingDown>(); }
