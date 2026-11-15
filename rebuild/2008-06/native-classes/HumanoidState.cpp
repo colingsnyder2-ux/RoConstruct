@@ -14,6 +14,11 @@
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/HumanoidState.h"
 #include "humanoid/Humanoid2008.h"
+// The state factories 00643660 / 00643280 construct every leaf state (constructors out of line in their own units).
+#include "humanoid/HumanoidStates1.h"
+#include "humanoid/HumanoidStates2.h"
+#define NATIVE_SIMJOB_PENDING  // RunningNoPhysics / StrafingNoPhysics (humanoid/HumanoidStates3.h, v8world/SimJob.h)
+#include "humanoid/HumanoidStates3.h"
 
 namespace RBX {
 namespace HUMAN {
@@ -109,6 +114,36 @@ void HumanoidState::setTorsoHeadFlag(bool value)
         bool disabled = !value;
         owner->getHeadPrimitive()->setCanSleep(disabled);
     }
+}
+
+// 00643660 (836 bytes, cdecl; analog name): the state factory. Jump table 00643974 for cases 0..11 in getStateType order
+// (tests/record_native_humanoid_factory.py: allocation sizes 0xa0..0x114 and constructor RTTI per case); every case
+// news its state with EH state = case index, and the default (EH state 0xc) news Running, whose tail case 6 shares.
+HumanoidState* HumanoidState::create(int stateType, Humanoid* humanoid)
+{
+    switch (stateType)
+    {
+    case 0:  return new FallingDown(humanoid);          // 0xa0, 00666e30
+    case 1:  return new GettingUp(humanoid);            // 0xa8, 00667e20
+    case 2:  return new Jumping(humanoid);              // 0xa8, 00667c40
+    case 3:  return new Freefall(humanoid);             // 0xc0, 00667810
+    case 4:  return new Flying(humanoid);               // 0xa8, 006674b0
+    case 5:  return new Landed(humanoid);               // 0xcc, 00643550
+    case 6:  return new Running(humanoid);              // 0xcc, 00666ac0
+    case 7:  return new RunningNoPhysics(humanoid);     // 0x114, 00667370
+    case 8:  return new StrafingNoPhysics(humanoid);    // 0x114, 00667210
+    case 9:  return new Climbing(humanoid);             // 0xcc, 006435a0
+    case 10: return new Seated(humanoid);               // 0xa0, 00667010
+    case 11: return new Dead(humanoid);                 // 0xa0, 00666d30
+    default: return new Running(humanoid);              // 0xcc, 00666ac0
+    }
+}
+
+// 00643280 (94 bytes, cdecl; analog name): new Running(humanoid) (0xcc, constructor 00666ac0). Caller
+// Humanoid::onAncestorChanged 005db560 stores the result in currentState (+0x220) when the humanoid enters a world.
+HumanoidState* HumanoidState::createDefault(Humanoid* humanoid)
+{
+    return new Running(humanoid);
 }
 
 }

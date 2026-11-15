@@ -130,6 +130,7 @@ Jumping::~Jumping()
 // getBranchIBodyV3() for both -> 515 bytes, frame 0x60; (b) a float local `iBodyY = Math::toDiagonal(...).y` -> 521
 // bytes, .y copied to a float spill; (c) `Math::toDiagonal(...).y * (desired - rotational.y) * 7500` -> 513 bytes,
 // updatePV between the moment copy and toDiagonal. Batch 15 (d) `freefallYawLimitGain * iBody.y` -> identical output.
+// Batch 16 (e) the gain as a function-local `static float yawLimitGain = 120000.0f` -> still 515 bytes, no new exact.
 // Jumping::onComputeForce 00667a40 stays in RunningBaseForce.cpp: it calls Flying::onComputeForce 0070bdf0 directly,
 // and with Flying's empty body visible in this unit the compiler drops that call (batch 15 trial: 322 bytes, no call).
 extern float freefallYawLimitGain;                       // 00962aa8 (analog name)

@@ -78,6 +78,11 @@ public:
     // 00645450 (cdecl, `ret`): (*state)->006451c0(dt), 006453a0(state, dt), then (*state)->onStep(dt, controller)
     // (slot 1). Called by Humanoid::onEvent 005dc740 with &currentState (+0x220) (analog name).
     static void stepState(std::auto_ptr<HumanoidState>& state, float dt, Controller* controller);
+    // State factories of the HumanoidState unit (cdecl statics; analog names: the registry has placeholders only).
+    static HumanoidState* create(int stateType, Humanoid* humanoid);  // 00643660: switch on the getStateType values 0..11
+                                                                      //   (FallingDown .. Dead), default Running
+    static HumanoidState* createDefault(Humanoid* humanoid);          // 00643280: new Running (Humanoid::onAncestorChanged
+                                                                      //   005db560)
     void setLimbFlag(bool value);                                     // 006431b0
     bool speedSettled() const;                                        // 00643330 (callers 00666b20/00666bc0 test al)
     // Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;
