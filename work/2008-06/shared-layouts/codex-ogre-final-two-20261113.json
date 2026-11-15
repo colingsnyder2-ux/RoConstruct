@@ -1,0 +1,323 @@
+{
+ "jobs": [
+  {
+   "source": "native-classes/AppUnit67C_2008SubEntity.cpp",
+   "checks": [
+    {
+     "addr": "006857e0",
+     "symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+     "calls": []
+    }
+   ]
+  },
+  {
+   "source": "native-classes/OgreRbxSceneManager.cpp",
+   "checks": [
+    {
+     "addr": "0069bc50",
+     "symbol": "?renderSingleObject@RbxSceneManager@Ogre@@MAEXPBVRenderable@2@PBVPass@2@_NPBV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z"
+    }
+   ]
+  }
+ ],
+ "progress": {
+  "state": "both_native_bodies_byte_and_data_exact_inactive",
+  "fresh_run": "work/2008-06/native-check-runs/20261113-195654-83b71573",
+  "receipt_sha256": "9883ea8bb825dc896c3f4eb8bace0f0310caf871b2cae76d114a86dc6705d084",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "getter_fix": "Move unchanged virtual getter definition into its authentic class header; ordinary implicit inline emission reproduces static guard/read ordering.",
+  "renderer_fix": "Native fork light-list control flow plus mutable LightList reference preserve iterator evaluation order, 0x54-byte frame and later temporary register choice.",
+  "getter_header": "rebuild/2008-06/native-headers/AppUnit67C_2008/RbxSubEntity2008.h",
+  "getter_header_sha256": "40c06d87270c432dde38d772f5fba9fd176f17036043ceb253da965aa3c4f3fc",
+  "getter_vtable_slot": {
+   "original_vtable": "0084e90c",
+   "slot": 6,
+   "target": "006857e0",
+   "native_symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+   "verified": true
+  },
+  "baselines": {
+   "getter": {
+    "fuzzy_percent": 93.650794,
+    "positional_percent": 88.571429,
+    "unmasked_differences": 4,
+    "target_bytes": 63,
+    "candidate_bytes": 63
+   },
+   "renderer": {
+    "fuzzy_percent": 99.247177,
+    "positional_percent": 98.330804,
+    "unmasked_differences": 33,
+    "target_bytes": 2391,
+    "candidate_bytes": 2391
+   }
+  },
+  "checks": [
+   {
+    "addr": "006857e0",
+    "source": "rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp",
+    "source_sha256": "fda367e043fe2993a53c6b02567b3be3b1c61ac118906defa99b2f28aaf94719",
+    "object_sha256": "f29fe8e04513730328720c8613839f86be9bafa97fc4847da5aa41f59aab69fd",
+    "status": "exact",
+    "metrics": {
+     "fuzzy_percent": 100.0,
+     "positional_percent": 100.0,
+     "raw_positional_percent": 71.428571,
+     "target_bytes": 63,
+     "candidate_bytes": 63,
+     "length_delta": 0,
+     "compared_unmasked_bytes": 39,
+     "unmasked_differences": 0,
+     "masked_bytes": 24,
+     "mismatch_offsets": [],
+     "mismatch_offsets_truncated": false,
+     "target_relocations": 6,
+     "candidate_relocations": 6,
+     "missing_relocations": [],
+     "extra_relocations": [],
+     "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+    },
+    "data_matches": [],
+    "data_errors": [],
+    "call_identity": {
+     "passed": true,
+     "calls": [],
+     "unused_expectations": [],
+     "import_evidence_inputs": {},
+     "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+    },
+    "compiler_flags": [
+     "/DBOOST_ALL_NO_LIB",
+     "/DWIN32",
+     "/DNDEBUG",
+     "/D_LIB",
+     "/D_RELEASE",
+     "/D_RELEASEASSERT",
+     "/D_VC80_UPGRADE=0x0710",
+     "/nologo",
+     "/c",
+     "/O2",
+     "/Ob2",
+     "/Oy",
+     "/GF",
+     "/GS-",
+     "/EHsc",
+     "/MD",
+     "/D_AFXDLL",
+     "/DNDEBUG",
+     "/D_MBCS",
+     "/fp:fast",
+     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+     "/D_XTP_STATICLINK",
+     "/D_XTPLIB_NOAUTOLINK",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+    ]
+   },
+   {
+    "addr": "0069bc50",
+    "source": "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+    "source_sha256": "5b036cfb1efdc7c8b1208888789733d8bc79bf04b019ad646923b4afebe65f51",
+    "object_sha256": "5aa4b7f46640c01ff9f700f664325f3879289abe734c09344b9233db90c8d0b9",
+    "status": "exact",
+    "metrics": {
+     "fuzzy_percent": 100.0,
+     "positional_percent": 100.0,
+     "raw_positional_percent": 86.741949,
+     "target_bytes": 2391,
+     "candidate_bytes": 2391,
+     "length_delta": 0,
+     "compared_unmasked_bytes": 1979,
+     "unmasked_differences": 0,
+     "masked_bytes": 412,
+     "mismatch_offsets": [],
+     "mismatch_offsets_truncated": false,
+     "target_relocations": 88,
+     "candidate_relocations": 103,
+     "missing_relocations": [],
+     "extra_relocations": [
+      99,
+      160,
+      281,
+      790,
+      800,
+      985,
+      1382,
+      1677,
+      1740,
+      1752,
+      1770,
+      1788,
+      1805,
+      1839,
+      2366
+     ],
+     "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+    },
+    "data_matches": [
+     [
+      9842716,
+      32
+     ],
+     [
+      9842248,
+      30
+     ],
+     [
+      9645316,
+      32
+     ],
+     [
+      9645292,
+      24
+     ]
+    ],
+    "data_errors": [],
+    "call_identity": null,
+    "compiler_flags": [
+     "/DBOOST_ALL_NO_LIB",
+     "/DWIN32",
+     "/DNDEBUG",
+     "/D_LIB",
+     "/D_RELEASE",
+     "/D_RELEASEASSERT",
+     "/D_VC80_UPGRADE=0x0710",
+     "/nologo",
+     "/c",
+     "/O2",
+     "/Ob2",
+     "/Oi",
+     "/Ot",
+     "/Oy",
+     "/GF",
+     "/GS-",
+     "/EHsc",
+     "/MD",
+     "/fp:fast",
+     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers/OgreLightInline",
+     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+     "/D_XTP_STATICLINK",
+     "/D_XTPLIB_NOAUTOLINK",
+     "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+    ]
+   }
+  ],
+  "no_loss": {
+   "0": {
+    "before": 643,
+    "after": 643,
+    "removed": [],
+    "new": [],
+    "changed": [
+     "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ"
+    ]
+   },
+   "1": {
+    "before": 6208,
+    "after": 6208,
+    "removed": [],
+    "new": [],
+    "changed": [
+     "?renderSingleObject@RbxSceneManager@Ogre@@MAEXPBVRenderable@2@PBVPass@2@_NPBV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z"
+    ]
+   }
+  },
+  "no_loss_baseline_run": "work/2008-06/native-check-runs/20261113-190148-020f8dd3",
+  "getter_require_proof": "work/2008-06/native-check-runs/20261113-195654-83b71573/analysis-0b518631.json",
+  "renderer_calls": {
+   "total_call_sites": 98,
+   "dynamic_virtual_sites": 38,
+   "verified_import_sites": 45,
+   "direct_callee_exact_sites": 12,
+   "direct_callee_different_sites": 0,
+   "external_direct_sites": 3,
+   "scope": "Import names independently checked against original PE imports and CRT archive aliases. Direct callee byte checks are local diagnostic evidence, not provider selection/ABI/runtime proof. Virtual calls remain unresolved.",
+   "verified_crt_thunk_sites": 2
+  },
+  "renderer_call_inventory": "work/2008-06/shared-layouts/ogre-renderer-call-inventory-20261113.json",
+  "renderer_unresolved_virtual_offsets": [
+   128,
+   156,
+   211,
+   233,
+   242,
+   267,
+   275,
+   438,
+   613,
+   650,
+   661,
+   680,
+   716,
+   736,
+   744,
+   824,
+   863,
+   913,
+   1267,
+   1417,
+   1437,
+   1448,
+   1547,
+   1609,
+   1627,
+   1651,
+   1699,
+   1721,
+   1758,
+   1949,
+   1994,
+   2047,
+   2080,
+   2194,
+   2239,
+   2290,
+   2323,
+   2359
+  ],
+  "renderer_external_crt_wrapper": {
+   "offset": 799,
+   "target": "006a17af",
+   "symbol": "_atexit",
+   "selected_provider_verified": false
+  },
+  "permuter": {
+   "run": "work/native-client/repair-tool-runs/permuter-0069bc50-ffa60d6c8647",
+   "compiles": 25,
+   "failures": 8,
+   "improvements": 1,
+   "captured_source_sha256": "53997a7ca420934d24dae22dbee6a863d8b10d261fef15e8993eca1eaa92e128",
+   "independent_reproduction_run": "work/2008-06/native-check-runs/20261113-195535-4494fee1"
+  },
+  "scope": "Local codegen analogs, not claimed original source. Exact means relocation-normalized bytes and referenced data; raw bytes retain unresolved address differences. No runtime provider selection, ABI closure, P5/P6 gate, server credit or publication gain.",
+  "upload_status": "Automatic approval review rejected draft-session initialization earlier. Current sources and proof retained locally.",
+  "next": "Owner integration: reviewed dependencies, call/data/EH identities, provider selection and required runtime gates. Do not repeat body matching."
+ }
+}

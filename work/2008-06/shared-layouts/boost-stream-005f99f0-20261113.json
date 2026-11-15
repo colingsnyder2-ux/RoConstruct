@@ -1,0 +1,29 @@
+{
+ "address": "005f99f0",
+ "symbol": "?sync@?$indirect_streambuf@VWiniInetRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@MAEHXZ",
+ "exact": true,
+ "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit5F8WinInet.cpp",
+ "source_sha256": "66dbf4eb91575a1909069d592d40514f7a4585660d078ff666ece4a88bed62b7",
+ "object_sha256": "fbbefec925234580832271bc2b76fbf293cfcdd13e9a4393773b6902603a6b8a",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 89.922481,
+  "target_bytes": 129,
+  "candidate_bytes": 129,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 113,
+  "unmasked_differences": 0,
+  "masked_bytes": 16,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 4,
+  "candidate_relocations": 4,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [],
+ "data_errors": [],
+ "scope": "Native WinINet instantiates authentic Boost. Full function/catch range exact. Inactive evidence; provider/ABI/runtime gates separate."
+}

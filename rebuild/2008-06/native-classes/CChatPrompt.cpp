@@ -5,6 +5,9 @@
 #include "../native-headers/CChatPrompt.h"
 #include "../native-headers/ChatEnter.h"
 #include "../native-headers/v8datamodel/DataModel.h"
+
+IMPLEMENT_DYNCREATE(CChatPrompt, CEditView)
+
 CChatPrompt::CChatPrompt() : hostWindow(0), players(0) {}
 
 // 00412800: bind the chat widget to a DataModel and its player service.

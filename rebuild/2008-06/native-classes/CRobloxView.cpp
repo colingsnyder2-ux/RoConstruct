@@ -4,6 +4,14 @@
 // <<< native-status | src e3537d7c | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 
+class CRobloxDoc;
+void setActiveDocument(bool active, CRobloxDoc* document);
+
+IMPLEMENT_DYNCREATE(CRobloxView, CView)
+
+BEGIN_MESSAGE_MAP(CRobloxView, CView)
+END_MESSAGE_MAP()
+
 // Constructor 00459eb0. Binder 00459890 and CRobloxWnd 0045c730 are external here.
 CRobloxView::CRobloxView() : RBX::VerbContainer(0), window(0), slot_1d8(0) {
     popupMenu.Attach(::LoadMenu(AfxFindResourceHandle(MAKEINTRESOURCE(0x67), RT_MENU), MAKEINTRESOURCE(0x67)));
@@ -29,9 +37,14 @@ boost::shared_ptr<const RBX::DataModel> CRobloxView::getDataModel() const { retu
 
 // 004593b0
 void CRobloxView::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView) {
-    if (bActivate) window.setActive(true);
-    else window.setActive(false);
     CView::OnActivateView(bActivate, pActivateView, pDeactiveView);
+    if (bActivate) {
+        setActiveDocument(true, reinterpret_cast<CRobloxDoc*>(m_pDocument));
+        window.setActive(true);
+    } else if (pActivateView != pDeactiveView) {
+        setActiveDocument(false, reinterpret_cast<CRobloxDoc*>(m_pDocument));
+        window.setActive(false);
+    }
 }
 
 // 00458e80-style shared stub

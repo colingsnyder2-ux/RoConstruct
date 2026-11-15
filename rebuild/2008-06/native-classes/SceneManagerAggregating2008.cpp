@@ -1,3 +1,4 @@
+// native-flags: /Od /Ob0 /GS /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::RenderBase::AggregatingSceneManager / Bucket (inactive): RenderBase library unit, built with the
 // /Od profile of tests/record_native_render_scene.py. Rows: Bucket ctor 00540390 / dtor 00540440 / ??_G 00540410,
 // AggregatingSceneManager::addModel 0053f1e0, ctor 0053f0d0 / dtor 0053f160 / ??_G 00540300 and the BucketKey ctor

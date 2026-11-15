@@ -10,6 +10,13 @@
 
 IMPLEMENT_DYNAMIC(CRobloxApp, CWinApp)
 
+// The original map (openrbx Roblox.cpp:125) also routes ID_APP_ABOUT, ID_HELP, 0x80de, WM_USER+2, 0x80f1 and 0x8101 to members that are not recovered yet.
+BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
+    ON_COMMAND(ID_FILE_NEW, CWinApp::OnFileNew)
+    ON_COMMAND(ID_FILE_OPEN, CWinApp::OnFileOpen)
+    ON_COMMAND(ID_FILE_PRINT_SETUP, CWinApp::OnFilePrintSetup)
+END_MESSAGE_MAP()
+
 CRobloxApp::CRobloxApp() : CWinApp(NULL), logManager("Roblox")
 {
 }

@@ -11,6 +11,10 @@ from roc import mew_import
 
 
 class MewImportTests(unittest.TestCase):
+    def test_head_work_ref_uses_current_native_tree(self):
+        self.assertEqual(mew_import.work_prefix('HEAD'), 'rebuild/2008-06')
+        self.assertEqual(mew_import.work_prefix('work-test'), 'workspace/rebuild/2008-06')
+
     def test_fetch_donor_defaults_to_active_native_branch_and_pins_selected_ref(self):
         self.assertEqual(mew_import.DEFAULT_BRANCH, 'claude/optimistic-shannon-0xccuy')
         with patch('roc.mew_import.subprocess.run', return_value=SimpleNamespace(returncode=0)), \

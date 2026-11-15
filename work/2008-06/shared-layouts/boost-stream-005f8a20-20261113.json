@@ -1,0 +1,31 @@
+{
+ "address": "005f8a20",
+ "symbol": "??_G?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAEPAXI@Z",
+ "exact": true,
+ "source_sha256": "4cf98321d547482d20a0e74036dbee3fd6af75bb3de3b483092735aac6d67dc0",
+ "source_path": "C:/Users/colin/RoConstruct/rebuild/2008-06/native-classes/AppUnit5F8WinHttp.cpp",
+ "object_sha256": "b018b5355fdf6b141f519a323ab7224fee1f6704f0be502e2b7a997dceae9d94",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 72.881356,
+  "target_bytes": 59,
+  "candidate_bytes": 59,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 39,
+  "unmasked_differences": 0,
+  "masked_bytes": 20,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 3,
+  "candidate_relocations": 5,
+  "missing_relocations": [],
+  "extra_relocations": [
+   4,
+   46
+  ],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [],
+ "scope": "Authentic Boost headers instantiated by native HTTP source. Local byte/data exact; provider/ABI/runtime proof remains separate."
+}

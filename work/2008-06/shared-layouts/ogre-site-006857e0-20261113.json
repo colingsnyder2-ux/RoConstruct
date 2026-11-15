@@ -1,0 +1,28 @@
+{
+ "address": "006857e0",
+ "symbol": "?getWorldPosition@RbxSubEntity@Ogre@@UBEABVVector3@2@XZ",
+ "exact": true,
+ "source_sha256": "40c06d87270c432dde38d772f5fba9fd176f17036043ceb253da965aa3c4f3fc",
+ "source_path": "rebuild/2008-06/native-headers/AppUnit67C_2008/RbxSubEntity2008.h",
+ "object_sha256": "cb05e98e8b1de9722d31960b59ecd9ebb5ed57ffdde38df0ce4eee49f1af58b7",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 71.428571,
+  "target_bytes": 63,
+  "candidate_bytes": 63,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 39,
+  "unmasked_differences": 0,
+  "masked_bytes": 24,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 6,
+  "candidate_relocations": 6,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [],
+ "scope": "Inactive local byte/data proof. Provider, ABI and runtime gates separate."
+}

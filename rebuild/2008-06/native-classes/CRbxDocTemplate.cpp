@@ -9,7 +9,7 @@ extern CRobloxApp theApp;
 
 CFrameWnd* CRbxDocTemplate::CreateNewFrame(CDocument* document, CFrameWnd* other)
 {
-    theApp.initializeFramework(reinterpret_cast<void*>(1)); // header takes void* (00449bf0); same push 1
+    theApp.initializeFramework(true);
     return CMultiDocTemplate::CreateNewFrame(document, other);
 }
 

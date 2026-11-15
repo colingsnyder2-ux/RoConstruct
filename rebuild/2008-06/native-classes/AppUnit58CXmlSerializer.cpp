@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/writer-2008
 // 2008-06 native XmlSerializer.cpp rows (inactive) of the application range 0058c000..00590000: the TextXmlParser /
 // TextXmlWriter unit 0058c990..0059001f, against the read-only v8xml owner headers native-headers/v8xml/XmlSerializer.h
 // and XmlElement.h. Verified by tests/record_native_app_unit58c.py (receipt app-unit58c-working.json).

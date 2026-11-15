@@ -3,7 +3,7 @@
 // Rows: cachesShadows 005526d0, castsShadows 00552690, cullable 005526b0, getMesh 00552720, cframe 00552760.
 // ctor 00551f30, dtor 00552160, ??_G 00552780 and getMaterial 005526e0 use the complete RenderBase::MaterialBase from
 // RenderLib/Material2008.h (material owner; Ogre 1.4.5 client include path).
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// native-flags: /Od /Ob0 /GS /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // >>> native-status (generated) -- do not edit >>>
 // AggregateChunk2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -

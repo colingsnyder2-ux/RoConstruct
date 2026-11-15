@@ -1,0 +1,39 @@
+{
+ "address": "0051e380",
+ "symbol": "_jpeg_destroy_decompress",
+ "exact": true,
+ "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Jpegjdapimin.cpp",
+ "source_sha256": "edc60d9988e0aa35ace5b99f29d3903a2731e2f2cfde53ead65104cbbe231d60",
+ "object_sha256": "dcd4fc88328e5874736e1a98a1b5e8e8e9aae43dec73cfa563021e9d70467978",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 20.0,
+  "target_bytes": 5,
+  "candidate_bytes": 5,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 1,
+  "unmasked_differences": 0,
+  "masked_bytes": 4,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 0,
+  "candidate_relocations": 1,
+  "missing_relocations": [],
+  "extra_relocations": [
+   1
+  ],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [],
+ "tail_jump": {
+  "offset": 0,
+  "target": "0051b6b0",
+  "symbol": "_jpeg_destroy",
+  "coff_relocation_offset": 1,
+  "coff_relocation_kind": 20,
+  "provider_raw_exact_bytes": 33,
+  "provider_run": "work/2008-06/native-check-runs/20261113-202452-43fa50fc"
+ },
+ "scope": "Original JPEG 6b API source. Local wrapper bytes/data plus tail destination identity verified. Existing library coverage plus this inactive body closes indexed libjpeg gaps; linked provider/ABI/runtime gates separate."
+}

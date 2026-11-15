@@ -1,6 +1,6 @@
 {
   "scope": "Typed static storage symbol and loader zero initialization verified. Constructor assignment and runtime ownership not proven; link closure not yet checked.",
-  "symbol": "?sing@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3PADA@RBX@@0PAV12@A",
+  "symbol": "?sing@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@0PAV12@A",
   "original_address": "0x96dd10",
   "original_section": ".data",
   "original_is_zero_filled_virtual_tail": true,
@@ -8,12 +8,12 @@
   "object_offset": 0,
   "singleton_refs": "0x44bee0 reads storage at 0x44bf10 and 0x44bfc0",
   "native_header_sha256": {
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "18f0c36e0bba8a3ec7853ad64501988b2bd566b31b742a3f588d978a6c53e8f5",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
-    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "5f47d945c05f66054d34ada404d280465475430f1c07b6c16697ac23080dac66"
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "0e65ff9c4073da8d697a8644616cdc8ca2891b3d62b7e8e10461d115ce3e754f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "5568d885f2f690a0981e9b7678b93eea0f01b1ddcd1d302a9b96518e8d9cf455",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "c67cb57e9615b2d6efff87a0a5e6f0fd9c7fbeee5325e321624d63e545453742",
+    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "0b2f0ccac3d10fc5c0fced64ae8adb0d50ca319eabb97cbccab726a9cbb9862e"
   },
-  "source_sha256": "03f4d9924676e59588b8943fa368311094d07da57a10ff81582ec21dede8d970",
-  "object_sha256": "ec04620e17dd2d76133c3160b47d31aa5ec08c05eb14c39c588a8ca61269227c",
-  "recorder_sha256": "5f7253a5bb50a67bab68b192bc246eacb6dfd497cf4dc5a08d8efbd3aa9ba9ff"
+  "source_sha256": "5e971bc900812cbab8f0c900fee47bebe6bc7ef6e9212b0fa3395bba7a100881",
+  "object_sha256": "fb46174d8db3998a0384c9a31c8938aeaec8c34ef96859d96a827da52ad97e91",
+  "recorder_sha256": "212314837dbae3c280edc672e6fa1311fdaf0fc37d0d5f7d7065028bafb05074"
 }

@@ -26,8 +26,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--object', type=Path, required=True)
     ap.add_argument('--tables', type=Path, required=True)
-    ap.add_argument('--vtable', action='append', required=True,
+    ap.add_argument('--vtable', action='append', default=[],
                     help='COFF vtable symbol=original address')
+    ap.add_argument('--vtable-list', type=Path, help='JSON array of symbol/address vtable candidates')
     ap.add_argument('--closure', action='append', type=Path, default=[],
                     help='optional closure used only for explicit symbols')
     ap.add_argument('--closure-symbol', action='append', default=[],
@@ -36,12 +37,18 @@ def main():
                     help='verify and bind RTTI/data edges reachable from supplied vtables')
     ap.add_argument('--output', type=Path, required=True)
     args = ap.parse_args()
+    if args.vtable_list:
+        args.vtable.extend(row['symbol'] + '=' + row['address']
+                           for row in json.loads(args.vtable_list.read_text()))
+    if not args.vtable:
+        ap.error('provide --vtable or --vtable-list')
     raw = args.object.read_bytes()
     sections, symbols, definitions, _ = match._coff_data_index(raw)
     table_rows = {row['vtable'].lower(): row for row in json.loads(args.tables.read_text())}
     bindings = {}
     data_roots = []
     proved_data = []
+    targets = Targets('2008-06')
     for item in args.vtable:
         if '=' not in item:
             raise SystemExit('--vtable needs SYMBOL=ADDRESS')
@@ -79,11 +86,10 @@ def main():
             if not table[4] or start < 4:
                 raise SystemExit('vtable locator outside initialized COFF data: ' + name)
             addend = struct.unpack_from('<i', raw, table[4] + start - 4)[0]
-            target = (struct.unpack('<I', Targets('2008-06').data(int(va, 16) - 4, 4))[0] - addend) & 0xffffffff
+            target = (struct.unpack('<I', targets.data(int(va, 16) - 4, 4))[0] - addend) & 0xffffffff
             bindings[symbol] = f'{target:08x}'
             data_roots.append((symbol, target))
     if args.recursive_data:
-        targets = Targets('2008-06')
         queued, seen = list(data_roots), set()
         while queued:
             name, va = queued.pop()

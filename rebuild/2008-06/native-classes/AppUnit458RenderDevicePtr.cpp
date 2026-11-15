@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native recovery (inactive): the CRobloxWnd unit's std::auto_ptr<G3D::RenderDevice> destructor 0045b620.
 // Verified by tests/record_native_app_unit458.py (receipt work/2008-06/shared-layouts/app-unit458-working.json).
 //

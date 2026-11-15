@@ -1,0 +1,51 @@
+{
+ "address": "00684730",
+ "symbol": "?draw2D@RbxFont@Ogre@@QBE?AVVector2@G3D@@PAVVisualEngine@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z",
+ "exact": true,
+ "source_sha256": "58a7e4fdddfbf48eb0df967341743d28a20f47003d0fa2c3757cad96350f0a08",
+ "source_path": "C:/Users/colin/RoConstruct/rebuild/2008-06/native-classes/OgreVRbxFont.cpp",
+ "object_sha256": "97d60bf6b2a52db379e68c36e1e1f1ece048e482bda895333a942081c6373abe",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 95.213849,
+  "target_bytes": 982,
+  "candidate_bytes": 982,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 926,
+  "unmasked_differences": 0,
+  "masked_bytes": 56,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 9,
+  "candidate_relocations": 14,
+  "missing_relocations": [],
+  "extra_relocations": [
+   102,
+   191,
+   420,
+   714,
+   925
+  ],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [
+  [
+   8572984,
+   8
+  ],
+  [
+   8493996,
+   4
+  ],
+  [
+   8493996,
+   4
+  ],
+  [
+   8504368,
+   4
+  ]
+ ],
+ "scope": "Inactive local byte/data proof. Provider, ABI and runtime gates separate."
+}

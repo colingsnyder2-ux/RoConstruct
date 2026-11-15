@@ -4,9 +4,7 @@
 // doDeclare 005bfa30 / callDoDeclare 005bffc0. getPartsTouchingExtents 0062db60 reads the Workspace world (+0x2e4)
 // through the native Workspace.h and World::getContactManager through native-headers/engine-world (World +0x84; the
 // recorder puts that directory first, as record_native_humanoid2008.py does). getHitLocationFilterStairs 0062dc10
-// formerly compiled only under NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of
-// tests/NativeGeometryServicePendingWorkspace.h; the native Workspace.h now replaces it. It also constructs RBX::FilterStairs,
-// declared by the native v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
+// uses native Workspace.h and RBX::FilterStairs from native v8datamodel/Filters2008.h.
 // >>> native-status (generated) -- do not edit >>>
 // GeometryService | 2008-06 | draft (no current byte proof)
 // 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (mixed 2)
@@ -63,8 +61,7 @@ namespace RBX
 		}
 	}
 
-	// 0062dc10 (the NATIVE_GEOMETRYSERVICE_PENDING guard is gone: native Workspace.h now provides the inline
-	// Workspace +0x2e4 world and native-flags carry the recorder's /fp:fast and engine-world include)
+	// 0062dc10
 	// 0062dccc compares the getHit result with the cached zero register (cmp eax, ebx): a named Primitive* local
 	// matches. Rejected: `if (!getHit(...))` and `if (getHit(...) == NULL)` (both emit test eax, eax).
 	G3D::Vector3 GeometryService::getHitLocationFilterStairs(Instance* filterModel, G3D::Ray ray)

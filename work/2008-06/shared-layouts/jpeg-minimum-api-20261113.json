@@ -1,0 +1,13 @@
+{
+ "jobs": [
+  {
+   "source": "native-classes/Jpegjdapimin.cpp",
+   "checks": [
+    {
+     "addr": "0051e380",
+     "symbol": "_jpeg_destroy_decompress"
+    }
+   ]
+  }
+ ]
+}

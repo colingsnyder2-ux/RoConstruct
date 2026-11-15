@@ -16,10 +16,7 @@ void ShootTool::shoot(const UIEvent& input) {
  PartInstance* head=Humanoid::getLocalHeadFromContext(workspace);
  if (head) {
   if (!projectile) projectile=createProjectile();
-  // 0063e890: the original calls 005a1680, a cdecl wrapper that only forwards to the folded
-  // shared_static_cast body 004a2070 -- the release shape of boost 1.34 shared_polymorphic_downcast
-  // (BOOST_ASSERT compiled out, then shared_static_cast). Rejected: shared_static_cast called directly
-  // (body IDENTICAL, but its call bound 004a2070 instead of the original 005a1680).
+  // 0063e890 calls the release-shape shared_polymorphic_downcast wrapper.
   boost::shared_ptr<PartInstance> part=boost::shared_polymorphic_downcast<PartInstance>(projectile->clone());
   part->setParent(workspace);
   part->getPrimitive()->setPV(launch(input,head->getCoordinateFrame()));

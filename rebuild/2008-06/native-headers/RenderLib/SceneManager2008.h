@@ -79,6 +79,7 @@ namespace RBX
 		{
 			friend struct ::NativeRenderSceneLayout;
 		public:
+			static unsigned int aggregationSize; // 00942df8; unsigned comparison in 0053fd80; donor declaration agrees.
 			class Bucket : public G3D::ReferenceCountedObject, public boost::noncopyable
 			{
 				friend struct ::NativeRenderSceneLayout;

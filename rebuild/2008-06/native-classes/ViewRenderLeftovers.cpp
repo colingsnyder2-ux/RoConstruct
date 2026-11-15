@@ -71,8 +71,7 @@ void SoundServiceStatsItem::update()
 	}
 }
 
-// SoundService members of the util/Sound.cpp unit (005bc2c0 sits before SoundChannel::updateListenState 005bc5b0;
-// 005bdcf0 follows SoundChannel::setPlayCount 005bda10). They are built here, not in SoundChannel.cpp, because the
+// SoundService members of the util/Sound.cpp unit (005bdcf0 follows SoundChannel::setPlayCount 005bda10). They are built here, not in SoundChannel.cpp, because the
 // FMOD subset of native-headers/SoundChannel/SoundChannel.h has no System::set3DListenerAttributes / update and no
 // FMOD_VECTOR; this unit uses util/Sound.h with the SDK fmod.hpp. Layout (util/Sound.h, confirmed by the accesses):
 // Listener<RunService, Heartbeat> +0x130, system +0x134, statsItem +0x168, nextGarbageCollectTime +0x178,
@@ -81,72 +80,8 @@ namespace RBX
 {
 	namespace Soundscape
 	{
-		// INFERRED: name (same declaration as SoundChannel.cpp). 005b87a0 logs a failed FMOD result (cdecl, no throw).
-		void logFmodResult(FMOD_RESULT result); // 005b87a0
-		// INFERRED: name. 005b70c0 (cdecl, two pointer arguments, returns bool): zeroes denormal components
-		// (Math::isDenormal 005dd7b0), returns false when 005dd8b0 rejects the vector, else scales it into the FMOD vector.
-		bool toFmodVector(const G3D::Vector3& v, FMOD_VECTOR& out); // 005b70c0
-
-		// Inlined into onEvent 005bc2c0 (005bc41a..005bc452), where its fields are addressed from the full SoundService
-		// pointer (edi = this - 0x130, [edi+0x178]) while system is read from the listener this; no out-of-line copy
-		// survives in the image (unreferenced, removed by the linker). getTick 005083d0 `fcomp; test ah, 5; jnp skip`:
-		// the gc runs unless tick < nextGarbageCollectTime. Interval 5.0 (008358a8).
-		void SoundService::garbageCollectSounds()
-		{
-			if (G3D::System::getTick() < nextGarbageCollectTime)
-				return;
-			gcSounds(loadedSounds);
-			gcSounds(loaded3DSounds);
-			nextGarbageCollectTime = G3D::System::getTick() + 5.0;
-		}
-
-		// 005bc2c0 (Listener<RunService, Heartbeat> slot: this is the listener subobject, system at +4).
-		// find<Workspace>(const Instance*) 00491e50, Camera::getCameraCoordinateFrame 0045af00, lookVector 005187f0,
-		// Matrix3::getColumn(1) 00513240, getCameraSubjectInstance 005cc410, dynamic_cast Instance 0092907c ->
-		// PVInstance 00947f1c, getPrimaryPart through the IPrimaryPart virtual base (PVInstance vbptr +0x134),
-		// PartInstance velocity 00599850, getTick 005083d0, gcSounds 005ba2e0, 5.0 (008358a8).
-		// Rejected variants (do not repeat): 1. the gc block written in place as `if (getTick() >= next)` (test ah,1 /
-		// jne; fields addressed from the listener this); 2. default G3D Vector3 negation (y, z, x order plus a copy);
-		// 3. pos/forward/up declared together (frame 0x6c instead of 0x60).
-		void SoundService::onEvent(const RunService*, Heartbeat)
-		{
-			if (system)
-			{
-				if (Workspace* workspace = ServiceProvider::find<Workspace>(this))
-				{
-					if (Camera* camera = workspace->getCamera())
-					{
-						G3D::CoordinateFrame cf = camera->getCameraCoordinateFrame();
-						// Each FMOD vector is declared in its own scope: up shares the stack slot of the lookVector temporary
-						// (both at esp+0x18) and vel that of the negated vector (esp+0xc).
-						FMOD_VECTOR pos;
-						if (toFmodVector(cf.translation, pos))
-						{
-							FMOD_VECTOR forward;
-							if (toFmodVector(-cf.lookVector(), forward))
-							{
-								FMOD_VECTOR up;
-								if (toFmodVector(cf.upVector(), up))
-								{
-									FMOD_VECTOR vel;
-									vel.x = vel.y = vel.z = 0;
-									if (PVInstance* pv = dynamic_cast<PVInstance*>(camera->getCameraSubjectInstance()))
-									{
-										if (PartInstance* part = pv->getPrimaryPart())
-											toFmodVector(part->getLinearVelocity(), vel);
-									}
-									logFmodResult(system->set3DListenerAttributes(0, &pos, &vel, &forward, &up));
-								}
-							}
-						}
-					}
-				}
-
-				garbageCollectSounds();
-
-				logFmodResult(system->update());
-			}
-		}
+		// SoundService::onEvent 005bc2c0 (with the inlined garbageCollectSounds and the logFmodResult 005b87a0 /
+		// toFmodVector 005b70c0 declarations it uses) lives in SoundServiceEvent.cpp; not duplicated here.
 
 		// 005bdcf0: find<RunService>() const 00452c80, removeListener 005e5a80 / addListener 004218a0 (Notifier at
 		// RunService +0x130), Instance::setParent 0055a8f0, shared_ptr<Instance>::reset 00456e80, closeFmod 005ba970,

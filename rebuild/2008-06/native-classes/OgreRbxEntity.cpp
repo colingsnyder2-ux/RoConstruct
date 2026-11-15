@@ -17,14 +17,21 @@
 #include <OgrePass.h>
 #include <algorithm>
 
-// INFERRED placeholder names (owner rule 2026-11-11): globals read by RbxEntity::collect 0067e2f0.
-extern bool nativeShadowThrottle;
-extern int nativeShadowMode;
-extern float nativeLodLowMs;
-extern float nativeLodHighMs;
+// INFERRED names; initial values and references match original shadow settings.
+// Original runtime writers still require integration.
+bool nativeShadowThrottle = true; // 00962f64
+int nativeShadowMode = 2;         // 00962f68
+float nativeLodLowMs = 50.0f;    // 00962f6c
+float nativeLodHighMs = 100.0f;  // 00962f70
 
 namespace Ogre
 {
+	// INFERRED name: 0067c510 writes the non-owning FrameHistory pointer at +0x274.
+	void RbxEntity::func_0067c510(FrameHistory* history)
+	{
+		mHistory = history;
+	}
+
 	RbxEntity::RbxEntity()
 	{
 		mLodBudget = 20.0f;

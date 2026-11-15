@@ -75,6 +75,49 @@ def live_definitions(raw):
     return out
 
 
+def prune_unreferenced_data(raw, roots=()):
+    """Discard unreferenced plain data and local-only read-only sections."""
+    raw = bytearray(raw)
+    _, count, _, symptr, nsym, optional, _ = struct.unpack_from('<HHIIIHH', raw)
+    sections = [struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optional + 40 * i) for i in range(count)]
+    directives = b''
+    for section in sections:
+        if section[0].startswith(b'.drectve'):
+            directives += bytes(raw[section[4]:section[4] + section[3]]).lower()
+    _, symbols, definitions, _ = match._coff_data_index(bytes(raw))
+    protected = {definitions[name][1] + 1 for name in roots if name in definitions}
+    referenced = set()
+    for number, section in enumerate(sections, 1):
+        if section[9] & 0x800 or section[0].startswith(b'.debug'):
+            continue
+        for j in range(section[7]):
+            target = struct.unpack_from('<I', raw, section[5] + 10 * j + 4)[0]
+            if target in symbols and symbols[target][2] > 0:
+                referenced.add(symbols[target][2])
+    external_sections = set()
+    i = 0
+    while i < nsym:
+        at = symptr + 18 * i
+        _, value, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, at)
+        if cls == 2 and sec > 0:
+            external_sections.add(sec)
+        if cls == 3 and aux and value == 0 and sec > 0 and not sections[sec - 1][9] & 0x800:
+            parent, selection = struct.unpack_from('<HB', raw, at + 30)
+            if selection == 5:
+                referenced.add(parent)
+        i += 1 + aux
+    for number, section in enumerate(sections, 1):
+        names = [name.encode('latin-1').lower() for name, _, sec, _ in symbols.values()
+                 if sec == number and not name.startswith(('.', '$'))]
+        directive_root = any(name in directives for name in names if name)
+        name = section[0].rstrip(b'\0')
+        eligible = name == b'.data' or (name == b'.rdata' and number not in external_sections)
+        if (eligible and not section[9] & (0x800 | 0x1000 | 0x20) and
+                number not in protected and number not in referenced and not directive_root):
+            struct.pack_into('<I', raw, 20 + optional + 40 * (number - 1) + 36, section[9] | 0x800)
+    return bytes(raw)
+
+
 def prune_unused_comdat_data(raw, roots=()):
     """Drop data COMDATs unreachable from retained sections; never drop code."""
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
@@ -170,6 +213,86 @@ def prune_orphan_initializers(raw):
     return bytes(raw)
 
 
+def prune_discarded_symbols(raw):
+    """Compact COFF metadata only; discard debug and removed-section references."""
+    raw = bytearray(raw)
+    _, count, _, symptr, nsym, optional, _ = struct.unpack_from('<HHIIIHH', raw)
+    sections = [struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optional + 40 * i) for i in range(count)]
+    dead = {i + 1 for i, s in enumerate(sections) if s[9] & 0x800 or s[0].startswith(b'.debug')}
+    groups, used = {}, set()
+    i = 0
+    while i < nsym:
+        at = symptr + 18 * i
+        _, value, sec, typ, cls, aux = struct.unpack_from('<8sIhHBB', raw, at)
+        groups[i] = (sec, typ, cls, aux, bytes(raw[at:at + 18 * (aux + 1)]))
+        if sec not in dead and (sec != 0 or cls == 103):
+            used.add(i)
+        i += aux + 1
+    safe_handlers = {}
+    for sec, s in enumerate(sections, 1):
+        if sec in dead:
+            at = 20 + optional + 40 * (sec - 1)
+            struct.pack_into('<HHI', raw, at + 32, 0, 0, (s[9] | 0x800) & ~0x1000)
+            continue
+        if s[0].rstrip(b'\0') == b'.sxdata':
+            if s[3] % 4 or s[4] + s[3] > symptr:
+                raise ValueError('invalid SafeSEH section')
+            handlers = []
+            for pos in range(s[4], s[4] + s[3], 4):
+                index = struct.unpack_from('<I', raw, pos)[0]
+                if index not in groups:
+                    raise ValueError('invalid SafeSEH symbol index')
+                if groups[index][0] not in dead:
+                    handlers.append(index)
+                    used.add(index)
+            safe_handlers[sec] = handlers
+        for j in range(s[7]):
+            used.add(struct.unpack_from('<I', raw, s[5] + 10 * j + 4)[0])
+    pending = list(used)
+    while pending:
+        index = pending.pop()
+        sec, typ, cls, aux, record = groups[index]
+        if sec in dead:
+            raise ValueError('retained relocation references a discarded definition')
+        if aux and cls == 105:
+            target = struct.unpack_from('<I', record, 18)[0]
+            if target not in used:
+                used.add(target)
+                pending.append(target)
+        elif aux and cls not in (3, 103):
+            raise ValueError('unsupported COFF auxiliary record')
+    mapping, total = {}, 0
+    for index in sorted(used):
+        mapping[index] = total
+        total += 1 + groups[index][3]
+    records = []
+    for index in sorted(used):
+        sec, typ, cls, aux, original = groups[index]
+        record = bytearray(original)
+        if aux and cls == 105:
+            struct.pack_into('<I', record, 18, mapping[struct.unpack_from('<I', record, 18)[0]])
+        records.append(record)
+    for sec, s in enumerate(sections, 1):
+        if sec in dead:
+            continue
+        if sec in safe_handlers:
+            handlers = safe_handlers[sec]
+            at = 20 + optional + 40 * (sec - 1)
+            struct.pack_into('<I', raw, at + 16, 4 * len(handlers))
+            if not handlers:
+                # LINK 9 validates even discarded sections named .sxdata.
+                struct.pack_into('<8s', raw, at, b'.noseh')
+                struct.pack_into('<I', raw, at + 36, (s[9] | 0x800) & ~0x1000)
+            for j, index in enumerate(handlers):
+                struct.pack_into('<I', raw, s[4] + 4 * j, mapping[index])
+        for j in range(s[7]):
+            at = s[5] + 10 * j + 4
+            struct.pack_into('<I', raw, at, mapping[struct.unpack_from('<I', raw, at)[0]])
+    strings = bytes(raw[symptr + nsym * 18:])
+    struct.pack_into('<I', raw, 12, total)
+    return bytes(raw[:symptr]) + b''.join(records) + strings
+
+
 def isolate_single_code_section(raw, root, size):
     """Experimental diagnostic only: MSVC linker still sees other section references."""
     raise RuntimeError('disabled: LNK_REMOVE does not prevent discarded-section unresolved references')
@@ -204,7 +327,7 @@ def isolate_single_code_section(raw, root, size):
     return bytes(raw)
 
 
-def string_bindings(raw, symbols, functions):
+def string_bindings(raw, symbols, functions, target_index=None):
     """Prove live compiler strings through retained exact-body relocations."""
     base, image = match._image('2008-06')
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
@@ -222,10 +345,10 @@ def string_bindings(raw, symbols, functions):
     headers = {sec: struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optsz + 40 * (sec - 1))
                for sec in range(1, nsec + 1)}
     candidates = {name for name, _, sec, cls in entries.values()
-                  if cls == 2 and sec > 0 and not headers[sec][9] & 0x800 and name.startswith('??_C@')}
+                  if cls == 2 and sec > 0 and not headers[sec][9] & 0x800 and name.startswith('??_C@_0')}
     refs = {name: set() for name in candidates}
     for symbol in symbols:
-        if symbol['kind'] != 'code' or symbol['symbol'] not in entries:
+        if symbol['kind'] != 'code' or target_index is None:
             continue
         owner = next((row for row in entries.values() if row[0] == symbol['symbol'] and row[3] == 2 and row[2] > 0), None)
         if not owner:
@@ -237,15 +360,15 @@ def string_bindings(raw, symbols, functions):
         if not rawptr or not size:
             continue
         for rel in range(nrel):
-            off, target_index, kind = struct.unpack_from('<IIH', raw, relptr + rel * 10)
+            off, target_symbol_index, kind = struct.unpack_from('<IIH', raw, relptr + rel * 10)
             if kind != 6 or not value <= off < value + size:
                 continue
-            target = entries.get(target_index, ('', 0, 0, 0))[0]
+            target = entries.get(target_symbol_index, ('', 0, 0, 0))[0]
             if target not in refs:
                 continue
             addend = struct.unpack_from('<i', raw, rawptr + off)[0]
             site = int(symbol['address'], 16) + off - value
-            if not base <= site <= base + len(image) - 4:
+            if not base <= site <= base + len(image) - 4 or site not in target_index.relocs:
                 continue
             refs[target].add(struct.unpack_from('<I', image, site - base)[0] - addend)
     proved = []
@@ -286,13 +409,66 @@ def string_bindings(raw, symbols, functions):
     return proved
 
 
-def string_coverage(output):
+def proved_type_descriptors(raw, targets):
+    """Prove emitted primitive RTTI against named target bytes and relocation identities."""
+    registry = json.loads((ROOT / 'work/2008-06/identity-registry.json').read_text())
+    names = {}
+    for address, row in registry.items():
+        if not row.get('placeholder') and row.get('name'):
+            names.setdefault(row['name'], set()).add(int(address, 16))
+    sections, symbols, definitions, _ = match._coff_data_index(raw)
+    proved = []
+    for name, (start, index) in definitions.items():
+        if name not in ('??_R0H@8', '??_R0M@8', '??_R0N@8', '??_R0X@8', '??_R0_N@8'):
+            continue
+        if len(names.get(name, ())) != 1:
+            continue
+        section = sections[index]
+        if section[9] & (0x20 | 0x800) or not section[4]:
+            continue
+        end = min([value for _, value, number, _ in symbols.values()
+                   if number == index + 1 and value > start] + [section[3]])
+        native = raw[section[4] + start:section[4] + end]
+        address = next(iter(names[name]))
+        try:
+            original = targets.data(address, len(native))
+            original_relocs = targets.data_relocations(address, len(native))
+        except ValueError:
+            continue
+        offsets, identities = [], True
+        for offset, symbol_index, kind in (struct.unpack_from('<IIH', raw, section[5] + i * 10)
+                                            for i in range(section[7])):
+            if not start <= offset < end:
+                continue
+            at = offset - start
+            if kind != 6 or symbol_index not in symbols or at + 4 > len(native):
+                identities = False
+                break
+            target_name = symbols[symbol_index][0]
+            target_address = (struct.unpack_from('<I', original, at)[0] -
+                              struct.unpack_from('<i', native, at)[0]) & 0xffffffff
+            if names.get(target_name) != {target_address}:
+                identities = False
+                break
+            offsets.append(at)
+        if (identities and original_relocs == set(offsets) and
+                match.exact_match(original, original_relocs, native, offsets)):
+            proved.append({'symbol': name, 'address': f'{address:08x}', 'kind': 'rtti',
+                           'bytes': len(native), 'evidence': 'named target bytes and relocation identities'})
+    return proved
+
+
+def string_coverage(output, roots=()):
     """Whole native-object string pass; unique target bytes are the only identity gate."""
     rows, seen = [], set()
-    for obj in sorted((HERE / 'obj').glob('*.obj')):
+    objects = set((HERE / 'obj').glob('*.obj'))
+    for root in roots:
+        objects.update(root.rglob('*.obj') if root.is_dir() else [root])
+    for obj in sorted({path.resolve() for path in objects}):
+        raw = obj.read_bytes()
         object_path = str(obj.relative_to(ROOT)).replace('\\', '/')
-        object_sha256 = hashlib.sha256(obj.read_bytes()).hexdigest()
-        for binding in string_bindings(obj.read_bytes(), [], {}):
+        object_sha256 = hashlib.sha256(raw).hexdigest()
+        for binding in string_bindings(raw, [], {}):
             key = binding['address'], binding['symbol']
             if key not in seen:
                 seen.add(key)
@@ -355,6 +531,11 @@ def main():
     ap.add_argument('--engine-abi', action='store_true')
     ap.add_argument('--native-headers', action='store_true', help='compile providers with native 2008 headers, retaining engine-ABI link baseline')
     ap.add_argument('--function-comdat', action='store_true', help='native-header compile with /Gy for safe function-level isolation')
+    ap.add_argument('--prune-discarded-symbols', action='store_true', help='compact removed-section COFF metadata before isolation reproof')
+    ap.add_argument('--live-strip-references', action='store_true', help='create undefined COMDAT aliases only for live code/data references')
+    ap.add_argument('--prune-unreferenced-data', action='store_true', help='discard unreachable plain .data sections before COMDAT pruning')
+    ap.add_argument('--prune-orphan-initializers', action='store_true', help='discard compiler initializers with no live non-debug incoming reference')
+    ap.add_argument('--prove-rtti-data', action='store_true', help='prove compiler-emitted primitive RTTI data against registry identities')
     ap.add_argument('--closure-from', type=Path, help='also prove introduced dependencies from a prior family trial')
     ap.add_argument('--closed-from', type=Path, help='trial the prior batch providers with no introduced dependencies')
     ap.add_argument('--exclude', type=Path, default=HERE / 'link' / 'selected-engine-cumulative.json')
@@ -369,15 +550,20 @@ def main():
     ap.add_argument('--closure-discover', type=Path, help='discover pre-isolatable providers from a closure and cached objects')
     ap.add_argument('--fresh-only', action='store_true', help='trial only providers compiled during this invocation')
     ap.add_argument('--reuse-current', action='store_true', help='reuse a hash-checked successful object after selector-only changes')
+    ap.add_argument('--retry-legacy-attempts', action='store_true', help='recheck legacy compiles only after verifying their inputs changed')
     ap.add_argument('--string-coverage', action='store_true', help='prove unique compiler string data across cached native objects')
+    ap.add_argument('--string-object-root', type=Path, action='append', default=[],
+                    help='additional native object file or tree for string coverage; no compilation')
     ap.add_argument('--audit-selected', type=Path, help='recheck named receipt bodies in existing selected objects without recompiling')
     ap.add_argument('--reference-evidence', type=Path, action='append', default=[],
                     help='also audit selected code references using these identity receipts')
     ap.add_argument('--mfc-ordinal-evidence', type=Path,
                     help='verify MFC ordinal thunk evidence and prefer it over conflicting closure votes')
     args = ap.parse_args()
+    if args.prune_discarded_symbols:
+        ap.error('COFF compaction parked: vendor trial still fails LNK1279; not selection-safe')
     if args.string_coverage:
-        string_coverage(args.output)
+        string_coverage(args.output, args.string_object_root)
         return
     if args.audit_selected:
         sys.path.insert(0, str(HERE / 'ogre'))
@@ -558,7 +744,7 @@ def main():
         current_attempts = trial_data.setdefault('attempts', {})
         header_hash = hashlib.sha256()
         inputs = sorted(p for p in (ROOT / 'rebuild/2008-06/native-headers').rglob('*')
-                        if p.is_file() and p.suffix.lower() in ('.h', '.hpp', '.inl', '.inc')) + [HERE / 'inventory_flags.py', HERE / 'inventory.py', Path(__file__)]
+                        if p.is_file() and p.suffix.lower() in ('.h', '.hpp', '.inl', '.inc')) + [HERE / 'inventory_flags.py', HERE / 'inventory.py']
         for path in inputs:
             header_hash.update(str(path.relative_to(ROOT)).encode())
             header_hash.update(path.read_bytes())
@@ -577,7 +763,10 @@ def main():
                 attempt = current_attempts.get(stem, {})
                 obj = HERE / ('obj-function-comdat' if args.function_comdat else 'obj' if args.native_headers else 'obj-engine-abi') / (stem + '.obj')
                 reusable = args.reuse_current and attempt.get('compile_ok') and obj.is_file() and \
-                    hashlib.sha256(obj.read_bytes()).hexdigest() == attempt.get('object_sha256')
+                    hashlib.sha256(obj.read_bytes()).hexdigest() == attempt.get('object_sha256') and \
+                    (attempt.get('fingerprint_schema') != 2 or attempt.get('fingerprint') == fingerprints[stem])
+                if attempt and attempt.get('fingerprint_schema') != 2 and not reusable and not args.retry_legacy_attempts:
+                    continue  # A legacy hash change does not prove compiler inputs changed.
                 if stem in seen or stem in excluded or stem not in fingerprints or attempt.get('fingerprint') == fingerprints[stem] or reusable:
                     continue
                 source = provider_source(stem)
@@ -609,7 +798,7 @@ def main():
                 obj = HERE / ('obj-function-comdat' if args.function_comdat else 'obj' if args.native_headers else 'obj-engine-abi') / (stem + '.obj')
                 result = results.get(Path(name).name, {})
                 ok = result.get('ok', False) and obj.is_file()
-                current_attempts[stem] = {'fingerprint': fingerprints[stem], 'compile_ok': ok,
+                current_attempts[stem] = {'fingerprint': fingerprints[stem], 'fingerprint_schema': 2, 'compile_ok': ok,
                                           'object_sha256': hashlib.sha256(obj.read_bytes()).hexdigest() if ok else None,
                                           'errors': result.get('errors', [])}
             trials.write_text(json.dumps(trial_data, indent=1) + '\n')
@@ -637,7 +826,8 @@ def main():
                 attempt = current_attempts.get(candidate_stem, {})
                 reusable = args.reuse_current and attempt.get('compile_ok') and any(
                     hashlib.sha256(obj.read_bytes()).hexdigest() == attempt.get('object_sha256')
-                    for obj in objects(candidate_stem, args.engine_abi, args.native_headers, args.function_comdat))
+                    for obj in objects(candidate_stem, args.engine_abi, args.native_headers, args.function_comdat)) and \
+                    (attempt.get('fingerprint_schema') != 2 or attempt.get('fingerprint') == fingerprints.get(candidate_stem))
                 if (attempt.get('fingerprint') != fingerprints.get(candidate_stem) and not reusable) or not attempt.get('compile_ok'):
                     continue
             for obj in objects(candidate_stem, args.engine_abi, args.native_headers, args.function_comdat):
@@ -689,10 +879,20 @@ def main():
     for item in selected:
         raw = (ROOT / item['object']).read_bytes()
         keep = {symbol['symbol'] for symbol in item['symbols']}
-        trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep), keep)
+        if args.prune_unreferenced_data:
+            raw = prune_unreferenced_data(raw, keep)
+        trimmed = rebuild.strip_symbols(raw, keep=keep, live_references_only=args.live_strip_references)
+        if args.prune_orphan_initializers:
+            trimmed = prune_orphan_initializers(trimmed)
+        if args.prune_unreferenced_data:
+            trimmed = prune_unreferenced_data(trimmed, keep)
+        trimmed = prune_unused_comdat_data(trimmed, keep)
+        if args.prune_discarded_symbols:
+            trimmed = prune_discarded_symbols(trimmed)
         definitions = live_definitions(trimmed)
-        strings = string_bindings(trimmed, item['symbols'], funcs)
-        allowed = keep | {string['symbol'] for string in strings}
+        strings = string_bindings(trimmed, item['symbols'], funcs, targets)
+        rtti = proved_type_descriptors(trimmed, targets) if args.prove_rtti_data else []
+        allowed = keep | {row['symbol'] for row in strings + rtti}
         # `$LN*` is VS2008's local EH/debug label spelling.  It cannot satisfy
         # another object and has no target identity; all named link externals
         # remain subject to the strict residual-definition gate.
@@ -715,7 +915,7 @@ def main():
         path = isolate_root / (item['source'] + '.obj')
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(trimmed)
-        copy = dict(item, object=str(path.relative_to(ROOT)).replace('\\', '/'), data_symbols=strings)
+        copy = dict(item, object=str(path.relative_to(ROOT)).replace('\\', '/'), data_symbols=strings + rtti)
         isolated.append(copy)
     selected = isolated
     code_addresses = {symbol['address'] for item in selected for symbol in item['symbols'] if symbol['kind'] == 'code'}
@@ -743,6 +943,18 @@ def main():
                 raise RuntimeError('link probe failed: ' + run.stdout[-2000:])
             result = json.loads((HERE / 'link/probe.json').read_text())
             if result.get('link_exit_code') not in (0, 1120):
+                failure_log = args.output.with_suffix('.link-error.txt')
+                failure_log.write_text((HERE / 'link/link.txt').read_text(errors='replace'), encoding='utf-8')
+                receipt = json.loads(args.output.read_text())
+                receipt['link_trial'] = {'eligible_for_selection': False,
+                                         'link_exit_code': result.get('link_exit_code'),
+                                         'error_log': str(failure_log)}
+                args.output.write_text(json.dumps(receipt, indent=1) + '\n')
+                env['ROC_LINK_EXTRA'] = baseline
+                restore = subprocess.run([sys.executable, str(HERE / 'linkprobe.py')], cwd=ROOT, env=env,
+                                         text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                if restore.returncode:
+                    raise RuntimeError('baseline restore failed after linker error: ' + restore.stdout[-2000:])
                 raise RuntimeError('link trial has a non-unresolved linker error: ' + str(result.get('link_exit_code')))
             probes.append(result)
         before, after = probes
@@ -768,15 +980,15 @@ def main():
         print(json.dumps({key: comparison[key] for key in ('unresolved_before', 'unresolved_after', 'net_gain', 'eligible_for_selection')} |
                          {'resolved_count': len(resolved), 'introduced_count': len(introduced),
                           'duplicate_count': len(after['duplicates']), 'receipt': str(args.output)}))
-        if not comparison['eligible_for_selection']:
-            env['ROC_LINK_EXTRA'] = baseline
-            restore = subprocess.run([sys.executable, str(HERE / 'linkprobe.py')], cwd=ROOT, env=env,
-                                     text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            if restore.returncode:
-                raise RuntimeError('baseline restore failed: ' + restore.stdout[-2000:])
-            restored = json.loads((HERE / 'link/probe.json').read_text())
-            if restored['unresolved'] != before['unresolved'] or restored['duplicates'] != before['duplicates']:
-                raise RuntimeError('baseline input state changed during rejected trial')
+        # An eligible experiment is still not the canonical selection.
+        env['ROC_LINK_EXTRA'] = baseline
+        restore = subprocess.run([sys.executable, str(HERE / 'linkprobe.py')], cwd=ROOT, env=env,
+                                 text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        if restore.returncode:
+            raise RuntimeError('baseline restore failed: ' + restore.stdout[-2000:])
+        restored = json.loads((HERE / 'link/probe.json').read_text())
+        if restored['unresolved'] != before['unresolved'] or restored['duplicates'] != before['duplicates']:
+            raise RuntimeError('baseline input state changed during trial')
 
 
 if __name__ == '__main__':

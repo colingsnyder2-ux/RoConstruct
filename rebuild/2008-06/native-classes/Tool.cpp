@@ -136,8 +136,7 @@ namespace RBX
 		setName(sTool);
 	}
 
-	// 00600420. ServiceProvider::findServiceProvider (004898d0) is now declared in the native v8tree/Service.h, so this
-	// body no longer waits on NATIVE_TOOL_PENDING; drawSelected inlines as backendToolState >= EQUIPPED (+0x1c4 >= 5).
+	// 00600420: drawSelected inlines as backendToolState >= EQUIPPED (+0x1c4 >= 5).
 	void Tool::setFrontendActivationState(int value)
 	{
 		int prevState = frontendActivationState;

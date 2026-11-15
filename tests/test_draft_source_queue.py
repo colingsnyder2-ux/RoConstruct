@@ -69,6 +69,15 @@ class SourceQueueTests(unittest.TestCase):
         self.assertIsNone(review['before_sha256'])
         self.assertEqual([row['signature'] for row in review['methods']], ['RBX::Foo::added()'])
 
+    def test_new_file_preserves_declaration_only_owner_class(self):
+        self.target.unlink()
+        self.candidate.write_text('namespace RBX {\nclass Foo { public: int added(); };\nint Foo::added() {return 3;}\n}\n')
+        queue.discover(self.root)
+        payload = json.loads((self.folder / 'source-queue.json').read_text())
+        review = json.loads(Path(payload['proposals'][0]).read_text())
+        self.assertEqual(review['type_declarations'], [dict(
+            namespace='RBX', source='class Foo { public: int added(); };')])
+
     def test_existing_method_is_never_proposed_again(self):
         self.target.write_text(self.candidate.read_text())
         self.assertEqual(queue.discover(self.root)['count'], 0)

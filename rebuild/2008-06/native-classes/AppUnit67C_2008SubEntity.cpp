@@ -154,13 +154,6 @@ namespace Ogre
 		return orientation;
 	}
 
-	// 006857e0
-	const Vector3& RbxSubEntity::getWorldPosition(void) const
-	{
-		static Vector3 position = mTransform.getTrans();
-		return position;
-	}
-
 	// 00685010
 	Real RbxSubEntity::getSquaredViewDepth(const Camera* cam) const
 	{

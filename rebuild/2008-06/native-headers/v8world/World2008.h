@@ -7,9 +7,10 @@
 // native Joint family; bodies remain inactive and are not selected in the running player.
 namespace RBX
 {
-	class Assembly;
 	class Joint;
 	class Primitive;
+	class Assembly;
+	class SimJobStage;
 
 	class World
 	{
@@ -30,5 +31,6 @@ namespace RBX
 		// names by call order (callers setDragging 005e8050, setAnchor 005e80d0 and 005e8140, anchored / not anchored).
 		void onPrimitiveAddedAnchor(Primitive* p);
 		void onPrimitiveRemovingAnchor(Primitive* p);
+		SimJobStage& getSimJobStage();                     // 005e93b0
 	};
 }

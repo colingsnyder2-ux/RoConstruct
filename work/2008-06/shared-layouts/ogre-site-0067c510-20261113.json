@@ -1,0 +1,27 @@
+{
+ "address": "0067c510",
+ "symbol": "?func_0067c510@RbxEntity@Ogre@@QAEXPAVFrameHistory@2@@Z",
+ "exact": true,
+ "source_path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\OgreRbxEntity.cpp",
+ "source_sha256": "8970d58cd27b553965f436a780aef689b62ce2f6c8235ab3f327a2ed84d5108b",
+ "object_sha256": "6939eb1f1726449e6a535dd8fca08a835b8556c137cc6d07d44875ae2ecb4eb7",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 100.0,
+  "target_bytes": 13,
+  "candidate_bytes": 13,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 13,
+  "unmasked_differences": 0,
+  "masked_bytes": 0,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 0,
+  "candidate_relocations": 0,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "scope": "Inferred method name; native layout-derived setter. Leaf call proof passes. Runtime selection separate."
+}

@@ -22,6 +22,7 @@
 // two are not distinguished by these bytes).
 // Profile: document-swap flags, VS2008 RTM 21022, native-headers/mfc-noinline-pcxstr first (GetApp calls the imported
 // CSimpleStringT::operator PCXSTR, as CBrowserView.cpp does).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
 #define _ATL_APARTMENT_THREADED
 #include <afxwin.h>
 #include "CBrowserViewExternal.h"

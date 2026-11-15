@@ -56,7 +56,7 @@ def extract(source):
         if node.type=='function_definition':
             decl=node.child_by_field_name('declarator')
             while decl and decl.type!='function_declarator':
-                decl=decl.child_by_field_name('declarator')
+                decl=decl.child_by_field_name('declarator') or (decl.named_children[0] if decl.named_children else None)
             if decl:
                 name=decl.child_by_field_name('declarator')
                 params=decl.child_by_field_name('parameters')

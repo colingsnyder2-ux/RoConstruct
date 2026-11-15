@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
 // >>> native-status (generated) -- do not edit >>>
 // CWebToolbox | 2008-06 | 10 byte-exact, inactive (not link-selected)
 // 10/10 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+3) (mixed 2)

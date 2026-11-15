@@ -1,0 +1,13 @@
+{
+ "jobs": [
+  {
+   "source": "native-classes/Jpegjcomapi.cpp",
+   "checks": [
+    {
+     "addr": "0051b6b0",
+     "symbol": "_jpeg_destroy"
+    }
+   ]
+  }
+ ]
+}

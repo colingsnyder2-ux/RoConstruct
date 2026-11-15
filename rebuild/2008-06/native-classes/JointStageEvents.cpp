@@ -1,11 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// 2008-06 native RBX::JointStage primitive events (inactive): onPrimitiveAdded 006685b0 and onPrimitiveRemoving
-// 00668850. Evidence in native-headers/v8world/JointStage2008.h; the other rows of the JointStage unit live in
-// JointStage2008.cpp (same includes). Donor bodies: tools/rbxgs v8world/JointStage.cpp.
-// ClumpStage::onPrimitiveAdded 0064cae0 / onPrimitiveRemoving 0064cbf0 are direct (non-virtual) calls on the downstream
-// stage (+0x8); the donor v8world/ClumpStage.h only supplies their declarations here (its 0x1cc layout is not used).
-// No RBXASSERT survives in these bodies (no Debugable::assertAction reads, no dynamic_cast in rbx_static_cast or
-// IPipelined::downstreamOfStage), so the release-assert define is dropped as in RotateJointChannel.cpp.
+// 2008-06 native RBX::JointStage primitive events (inactive).
 #undef _RELEASEASSERT
 #include "v8world/JointStage2008.h"
 #include "v8world/ClumpStage.h"
@@ -52,9 +46,6 @@ namespace RBX
 		}
 	}
 
-	// 00668850: Primitive::getFirstJoint 005e7b90 / getNextJoint 005e7ba0, Joint slot 5 getJointType (ANCHOR_JOINT 5 /
-	// FREE_JOINT 9 skipped), downstream slot 5 onEdgeRemoving, insertToListAndMap 00668340, ClumpStage::
-	// onPrimitiveRemoving 0064cbf0, IPipelined::removeFromStage 00645840.
 	void JointStage::onPrimitiveRemoving(Primitive* p)
 	{
 		std::vector<Joint*> moveJoints;

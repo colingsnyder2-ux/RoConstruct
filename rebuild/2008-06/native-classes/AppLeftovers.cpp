@@ -7,10 +7,15 @@
 //     explicit instantiation in AppLeaves2008RobloxModule.cpp.
 //   * DHTMLWindow::doSetCallback 00417b40 needs the CLuaHtmlView / CLuaFunction layouts (+0xfc, +0x14).
 //   * ScriptItem::OnInplaceButtonDown 0043e140 needs a CRobloxApp declaration of 0044ae00.
-// LogManager.h (donor, via CRobloxApp.h) builds ThreadLogManager's inline constructor from RBX::get_thread_name,
-// which no native header declares yet (see the header proposal); declaration only, never called here.
+// The donor LogManager.h builds ThreadLogManager's inline constructor from RBX::get_thread_name, which no native
+// header declares yet (see the header proposal); declaration only, never called here.
+// The bodies below need the donor MainLogManager / LogManager declarations (guid at +0x30, crashReporter at +0x2c,
+// LogManager::GetLogPath 00427ba0 returning ATL::CPath on the +4 subobject, RobloxCrashReporter / CrashReporter).
+// native-headers/LogManager.h (reached through CRobloxApp.h) does not declare GetLogPath, guid or the reporter
+// classes yet, so this unit includes the donor header by path instead of CRobloxApp.h until that header gains them.
 namespace RBX { const char* get_thread_name(); }
-#include "CRobloxApp.h"
+#include <afxwin.h>
+#include "../native-donor-2007/LogManager.h"
 #include "PropertyGridItems2008.h"
 #include <afxdlgs.h>
 #include <fstream>

@@ -1,0 +1,14 @@
+CChatPromptLifetime.cpp
+CPropGridEvents.cpp
+CSelectionPropGridEvents.cpp
+FeatureLifetime.cpp
+GameToolEvents.cpp
+JointsServiceFind.cpp
+MouseCommandLifetime.cpp
+PhysicsServiceAllocation.cpp
+PhysicsServiceEvents.cpp
+PhysicsServiceFind.cpp
+PhysicsServiceLifetime.cpp
+PhysicsServiceSignals.cpp
+RunServiceFind.cpp
+VerbLifetime.cpp

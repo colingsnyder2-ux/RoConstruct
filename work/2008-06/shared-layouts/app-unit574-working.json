@@ -282,7 +282,7 @@
     "rebuild/2008-06/native-classes/AppUnit574Notifiers.cpp": "1a9172ca9ee7a559806b5bfb1028cfb5c1275bc47fcdba5358f7bc63b867c612",
     "rebuild/2008-06/native-classes/DataModelLock.cpp": "ca99707455510aebc7843be91870beeea325b188c3726f32b305fa04c5fe5b00",
     "rebuild/2008-06/native-classes/AppUnit574TextDisplay.cpp": "c2b4e0ca677e43ee9f50c58f49275e8a000db887b8ce99c60a68c8f696488276",
-    "rebuild/2008-06/native-classes/GuiItem.cpp": "b2096283a63ec4ae4e9da32b0ed2d83777a08de6ec9caa9f658de3ef7458d5ed",
+    "rebuild/2008-06/native-classes/GuiItem.cpp": "032fd2ea9d0cb5098a3a1b210ad292bd48743b2694d02a0d453e9e4806e8d2a9",
     "rebuild/2008-06/native-classes/DataModelTiming.cpp": "4e109bfb16e04191462fc0a6e159bbe7d2b67ba2dd5eefdd44c9cb4034c86b9c",
     "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp": "d31fd9993fa6cf9d9ac8846c42c8fd50db73e966b192ae7c07d259e664ef19cb",
     "rebuild/2008-06/native-headers/util/Object.h": "798c5489d36aacc90d8b95fcd3c3f8a42d30034f4ae1239a7f535176e12274a3",
@@ -295,13 +295,13 @@
     "rebuild/2008-06/native-headers/util/RunStateOwner.h": "5d96810ac26dd996a9e2ddaf7dabeafcbf38afdb0406c47331a70663bfc89d08"
   },
   "objects": {
-    "creators": "4f21ad13cfcda475275ab2c5308cba18b9516b4d6cc0f87ecc4395008dbb4510",
-    "notifiers": "263e57fef8d54ebac83c889b1cabb1eebb2059f8b77898f042f3dd361743037d",
-    "lock": "54b473b6fd2a1ce2b3ededc62196230003f3cd80660e5b8b676a0a65749e73c0",
-    "textdisplay": "22d60ba312c1999c64d74f0f9c03e517b721d0ab7957af8d0f1ce16a9c8f0cc0",
-    "guiitem": "85183786e33a7a30cd599be72603e96d59bb77e203d2660b4b731090ddf80821",
-    "timing": "c834e8615ea9c25b7ae51c2773dea4437b01faec0d85e9356a24da0e5daa574e",
-    "duty": "d0559890f7cf779bd0c6ef93ddf17fad6747bd1caa91e6f29de8b3aec919f320"
+    "creators": "1a35b62171b46e68912891e55ca0bb7a7faf20374629a6ab3e4a434c36ca4872",
+    "notifiers": "d027e07b3b05384fc58f4abc9dd7b001698d10121271e9e5d9dae2d782837698",
+    "lock": "bd8e088fba9e1064e10e316c911da039628e9b416ed4d08ef7a10b53cbd8524c",
+    "textdisplay": "bb0673e43306a10ad20852238ccc1c441cd03eb1a29eefc8b86804b6f997c843",
+    "guiitem": "8367153de161ec65cc28a7785ab879aa1378dbc9a2e14a0eb909b7dc9aa5a3f9",
+    "timing": "37f52d51385dd8518515a4a57628342c10a38eb6584bb20887d637314bf96760",
+    "duty": "7ca7189915cf3129da7b0d10bbe4ceeeb8256b989ad74aa1933de1a30931674a"
   },
   "layout": {
     "Workspace": "sizeof 0x45c (malloc in create<Workspace> 0x576ff0; the compiled push is exact against the native header layout)",
@@ -325,7 +325,11 @@
     "00574580 counted by draft-publication-6a91a406d2554237a6db4ce177e6d299.json",
     "00574bf0 counted by draft-publication-a8f44b27265d440580fcd9067eacc7c2.json",
     "005755c0 counted by hopper-family-working.json",
-    "00576620 counted by hopper-family-working.json"
+    "00576620 counted by hopper-family-working.json",
+    "00576630 counted by creatable-shared-count-working.json",
+    "005766c0 counted by creatable-shared-count-working.json",
+    "00576750 counted by creatable-shared-count-working.json",
+    "00576810 counted by creatable-shared-count-working.json"
   ],
   "range_rows_open": [
     "0x574050 (open)",
@@ -375,11 +379,7 @@
     "0x576570 (open)",
     "0x576600 (open)",
     "0x576610 (open)",
-    "0x576630 (open)",
-    "0x5766c0 (open)",
-    "0x576750 (open)",
     "0x5767e0 (open)",
-    "0x576810 (open)",
     "0x5768a0 (open)",
     "0x5768b0 (open)",
     "0x5769d0 (open)",
@@ -496,16 +496,8 @@
       "0x576600",
       "0x576610"
     ],
-    "boost::detail::shared_count constructors for DataModel / Workspace / GuiRoot": [
-      "0x576630",
-      "0x5766c0",
-      "0x576750"
-    ],
     "boost::checked_delete<recursive_mutex> and small thunks": [
       "0x5767e0"
-    ],
-    "boost::detail::shared_count constructor for LocalBackpack": [
-      "0x576810"
     ],
     "ICF jmp to the storage2 destructor 0x575700": [
       "0x5768a0"
@@ -611,7 +603,7 @@
         "exact": true,
         "build": "creators",
         "verified_targets": {
-          "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0 (helper body exact at the bound address (not counted))"
+          "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
         },
         "local_eh": [
           "__ehhandler$??$?0VWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWorkspace@RBX@@@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -625,7 +617,7 @@
         "exact": true,
         "build": "creators",
         "verified_targets": {
-          "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750 (helper body exact at the bound address (not counted))"
+          "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
         },
         "local_eh": [
           "__ehhandler$??$?0VGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGuiRoot@RBX@@@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -639,7 +631,7 @@
         "exact": true,
         "build": "creators",
         "verified_targets": {
-          "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810 (helper body exact at the bound address (not counted))"
+          "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810 (row counted by creatable-shared-count-working.json (compiled body exact at the bound address))"
         },
         "local_eh": [
           "__ehhandler$??$?0VLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpack@RBX@@@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -1149,9 +1141,6 @@
   },
   "split_extent_bodies": {},
   "helper_bodies_not_counted": {
-    "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0",
-    "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750",
-    "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810",
     "??1GuiItem@RBX@@UAE@XZ": "0x411540",
     "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80",
     "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20"

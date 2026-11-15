@@ -4454,12 +4454,6 @@
    "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
   },
   {
-   "symbol": "?erase@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@2@0@Z",
-   "address": "00541400",
-   "inferred_name": true,
-   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
-  },
-  {
    "symbol": "?clear@?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAEXXZ",
    "address": "00540780",
    "inferred_name": true,
@@ -14708,6 +14702,18 @@
    "evidence": "body byte-exact; only 0066fe90 stores vtable 0084d1d4, which the registry names ??_7?$SharedPtr@VRbxFont@Ogre@@@Ogre@@6B@"
   },
   {
+   "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightsForShadowTextureLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightsForShadowTextureLess@SceneManager@2@@Z",
+   "address": "0069d720",
+   "inferred_name": false,
+   "evidence": "twin bodies 0069d660/0069d720 differ only in callees; 0069d720 calls 00690460 _Insertion_sort1<lightsForShadowTextureLess> and 00698070 _Buffered_merge<lightsForShadowTextureLess>"
+  },
+  {
+   "symbol": "??$_Stable_sort@PAPAVLight@Ogre@@HPAV12@UlightLess@SceneManager@2@@std@@YAXPAPAVLight@Ogre@@0HAAV?$_Temp_iterator@PAVLight@Ogre@@@0@UlightLess@SceneManager@2@@Z",
+   "address": "0069d660",
+   "inferred_name": false,
+   "evidence": "twin bodies 0069d660/0069d720 differ only in callees; 0069d660 calls 006903a0/00697e40 (not the lightsForShadowTextureLess helpers)"
+  },
+  {
    "symbol": "?func_0067d3d0@RbxEntity@Ogre@@QAEXXZ",
    "address": "0067d3d0",
    "inferred_name": true,
@@ -14904,6 +14910,54 @@
    "address": "006784f0",
    "inferred_name": true,
    "evidence": "2007 Ogre VisualEngine colour conversion donor and original 007aa67d Light::setDiffuseColour caller; exact 31-byte body, no references."
+  },
+  {
+   "symbol": "?getGeometry@Primitive@RBX@@QAEPAVGeometry@2@XZ",
+   "address": "00792450",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@2@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@2@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?size@?$vector@PAVContact@RBX@@V?$allocator@PAVContact@RBX@@@std@@@std@@QBEIXZ",
+   "address": "00445290",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?fastClear@?$Array@PAVContact@RBX@@@G3D@@QAEXXZ",
+   "address": "00502f40",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?fastClear@?$Array@PBVPrimitive@RBX@@@G3D@@QAEXXZ",
+   "address": "00502f40",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$_Sort@PAPAVContact@RBX@@H@std@@YAXPAPAVContact@RBX@@0H@Z",
+   "address": "006791e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$_Sort@PAPBVPrimitive@RBX@@H@std@@YAXPAPBVPrimitive@RBX@@0H@Z",
+   "address": "006791e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
   }
  ]
 }

@@ -261,6 +261,28 @@ def score(target, target_relocs, cand, cand_relocs):
     return min(99, int(100 * similarity_ratio(target, target_relocs, cand, cand_relocs)))
 
 
+def comparison_metrics(target, target_relocs, cand, cand_relocs):
+    """Diagnostic baselines, not verification; union masking can hide shifted references."""
+    original, candidate = set(target_relocs), set(cand_relocs)
+    length = max(len(target), len(cand))
+    mask = {i for r in original | candidate for i in range(max(0, r), min(length, r + 4))}
+    compared = length - len(mask)
+    differences = [i for i in range(length) if i not in mask and
+                   (i >= len(target) or i >= len(cand) or target[i] != cand[i])]
+    raw_equal = sum(a == b for a, b in zip(target, cand))
+    return {
+        'fuzzy_percent': round(100 * similarity_ratio(target, target_relocs, cand, cand_relocs), 6),
+        'positional_percent': round(100 * (compared - len(differences)) / compared, 6) if compared else None,
+        'raw_positional_percent': round(100 * raw_equal / length, 6) if length else None,
+        'target_bytes': len(target), 'candidate_bytes': len(cand), 'length_delta': len(cand) - len(target),
+        'compared_unmasked_bytes': compared, 'unmasked_differences': len(differences), 'masked_bytes': len(mask),
+        'mismatch_offsets': differences[:32], 'mismatch_offsets_truncated': len(differences) > 32,
+        'target_relocations': len(original), 'candidate_relocations': len(candidate),
+        'missing_relocations': sorted(original - candidate), 'extra_relocations': sorted(candidate - original),
+        'scope': 'Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity.',
+    }
+
+
 def precise_score(client, addr, text, obj=None):
     """Untruncated similarity (e.g. 97.412) of the closest function in text: a search
     tie-breaker that sees sub-percent gains. Acceptance still uses score()/exact bytes."""

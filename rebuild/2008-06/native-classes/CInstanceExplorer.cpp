@@ -1,7 +1,9 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
 // CInstanceExplorer | 2008-06 | 10 byte-exact, inactive (not link-selected)
 // 10/10 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+3) (mixed 3)
 // <<< native-status | src 9c070ae2 | roc native-status --write
+#undef NOMINMAX
 #include "CInstanceExplorer.h"
 #include "CSettingsExplorer.h"
 #include "v8datamodel/Selection.h"

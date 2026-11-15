@@ -1,0 +1,33 @@
+{
+ "name": "libpngNativeTrial",
+ "description": "TRIAL: libpng with recovered native sources layered before upstream (not a gate candidate).",
+ "depends": [
+  "zlib"
+ ],
+ "layers": [
+  {
+   "name": "native0",
+   "mode": "direct",
+   "dir": "work/native-layers/libpng-0",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.5 /TC",
+   "defines": "",
+   "extra_includes": [
+    "tools/libs/libpng-1.2.5",
+    "tools/libs/zlib-1.2.3"
+   ]
+  },
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "libpng-1.2.5",
+   "files": "recipe",
+   "flags": "/O2 /GS- /MD"
+  }
+ ],
+ "test": "png_roundtrip",
+ "test_includes": [
+  "tools/libs/libpng-1.2.5",
+  "tools/libs/zlib-1.2.3"
+ ]
+}

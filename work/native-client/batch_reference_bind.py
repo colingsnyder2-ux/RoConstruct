@@ -108,15 +108,16 @@ def main():
     for path in args.known:
         known += json.loads(path.read_text())['rows']
     owner_evidence.write_text(json.dumps({'identity_bindings': thunks + known}))
-    already = {row['symbol'] for row in thunks + known}
+    already = {(row['symbol'], row.get('object_sha256')) for row in thunks + known}
     results = [r for r in map(bind, work.items()) if r]      # in-process: argv-driven, so sequential
     votes = defaultdict(set)
     for result in results:
         for row in result['identity_bindings']:
-            votes[row['symbol']].add(row['address'])
-    rows = [{'symbol': s, 'address': next(iter(a)), 'evidence': 'original relocation target at an exact owner'}
-            for s, a in sorted(votes.items()) if len(a) == 1 and not s.startswith('$') and s not in already]   # $LN labels are per-object
-    conflicts = {s: sorted(a) for s, a in votes.items() if len(a) > 1}
+            votes[(row['symbol'], row.get('object_sha256'))].add(row['address'])
+    rows = [{'symbol': s, 'address': next(iter(a)), 'evidence': 'original relocation target at an exact owner',
+             **({'object_sha256': scope} if scope else {})}
+            for (s, scope), a in sorted(votes.items()) if len(a) == 1 and (s, scope) not in already]
+    conflicts = {'%s@%s' % (s, scope or 'global'): sorted(a) for (s, scope), a in votes.items() if len(a) > 1}
     args.out.write_text(json.dumps({'scope': 'merged exact-owner reference identities', 'sources': {},
                                     'owner_proofs': [{'owner': r['owner'], 'input_sha256': r['input_sha256']}
                                                      for r in results],

@@ -1,3 +1,4 @@
+// native-flags: /Od /Ob0 /GS /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::RenderBase AggregateChunk.cpp template members (inactive), the application range 00550000..00554000.
 // Built by tests/record_native_app_unit550.py with the RenderBase library profile of tests/record_native_render_scene.py
 // and tests/record_native_app_unit540_2008.py (/Od /Ob0 /GS plus the Ogre 1.4.5 client headers) against the read-only

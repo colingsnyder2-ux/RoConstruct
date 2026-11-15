@@ -1,0 +1,30 @@
+{
+ "address": "00697510",
+ "symbol": "?reserve@?$vector@ULightInfo@SceneManager@Ogre@@V?$allocator@ULightInfo@SceneManager@Ogre@@@std@@@std@@QAEXI@Z",
+ "exact": true,
+ "source_path": "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+ "source_sha256": "5b036cfb1efdc7c8b1208888789733d8bc79bf04b019ad646923b4afebe65f51",
+ "object_sha256": "28b17f9bb650b9623c1d282d48568b50c8bf15f1405e263e7c543ccf15a6d386",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 90.073529,
+  "target_bytes": 272,
+  "candidate_bytes": 272,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 236,
+  "unmasked_differences": 0,
+  "masked_bytes": 36,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 9,
+  "candidate_relocations": 9,
+  "missing_relocations": [],
+  "extra_relocations": [],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [],
+ "indexed_bytes": 251,
+ "full_body_bytes": 272,
+ "scope": "Authentic Ogre LightInfo vector reserve, full contiguous catch range exact. Local native evidence; provider, EH identity and runtime integration remain separate."
+}

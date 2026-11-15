@@ -133,6 +133,29 @@ def reviewed_call_targets(original, binder, obj, methods, bindings, allow_exact_
                 notes=notes, import_aliases=aliases)
 
 
+def verified_reference_evidence(original, binder, obj, methods, targets, own):
+    """Use legacy binder first; full data audit closes compiler-local static symbols."""
+    try:
+        return binder.verify(original, obj, methods, targets, own)
+    except (AssertionError, KeyError, ValueError, IndexError, UnicodeError) as binder_error:
+        from roc import native_bulk
+        raw = Path(obj).read_bytes()
+        bodies = {name: (body, refs) for name, body, refs in match.coff_functions(raw)}
+        original_targets = native_bulk.Targets('2008-06')
+        known = {name: '%08x' % address for name, address in dict(targets, **own).items()}
+        evidence = []
+        for symbol, address in methods:
+            body, _ = bodies[symbol]
+            target, target_relocs, _ = match.target('2008-06', '%08x' % address)
+            references, errors = native_bulk.audit_references(
+                raw, symbol, body, target, target_relocs, address, original_targets, known)
+            if errors:
+                raise ValueError('; '.join(errors)) from binder_error
+            evidence.append(dict(symbol=symbol, address='%08x' % address, local_eh=[],
+                                 verifier='whole-object-data-audit', references=references))
+        return evidence
+
+
 class ReviewedOriginal:
     """Keep byte/import/RTTI verification; permit explicitly evidenced function-name aliases."""
     def __init__(self, original, aliases):

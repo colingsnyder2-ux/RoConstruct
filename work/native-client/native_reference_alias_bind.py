@@ -31,6 +31,15 @@ def imports():
     return {key: value for key, value in out.items() if key not in duplicate}
 
 
+def evidence_bindings(rows, object_sha256):
+    bindings = {}
+    for row in rows:
+        if row.get('object_sha256') not in (None, object_sha256):
+            continue
+        bindings.setdefault(row['symbol'], row['address'].lower())
+    return bindings
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--object', type=Path, required=True)
@@ -42,14 +51,15 @@ def main():
     ap.add_argument('--output', type=Path, required=True)
     args = ap.parse_args()
     address = '%08x' % int(args.address, 16)
+    raw = args.object.read_bytes()
+    object_sha256 = hashlib.sha256(raw).hexdigest()
     closure = json.loads(args.closure.read_text())['bindings']
     bindings = {row['symbol']: row['addr'].lower() for row in closure}
     for path in args.owner_evidence:
         evidence = json.loads(path.read_text())
-        for row in evidence.get('identity_bindings', []):
-            bindings.setdefault(row['symbol'], row['address'].lower())
+        bindings.update({key: value for key, value in evidence_bindings(
+            evidence.get('identity_bindings', []), object_sha256).items() if key not in bindings})
     bindings.update({key: value for key, value in imports().items() if key not in bindings})
-    raw = args.object.read_bytes()
     candidate = next((row for row in match.coff_functions(raw) if row[0] == args.symbol), None)
     if not candidate or bindings.get(args.symbol) != address:
         raise SystemExit('requires closure-bound emitted owner')
@@ -118,7 +128,8 @@ def main():
         walk(index, struct.unpack_from('<i', body, at)[0], original)
     ambiguous = {name: sorted(values) for name, values in found.items() if len(values) != 1}
     rows = [{'symbol': name, 'address': next(iter(values)),
-             'identity_evidence': 'exact-target-coff-reference-alias', 'votes': 1}
+             'identity_evidence': 'exact-target-coff-reference-alias', 'votes': 1,
+             **({'object_sha256': object_sha256} if name.startswith('$') else {})}
             for name, values in sorted(found.items()) if len(values) == 1]
     out = {'scope': 'exact target COFF relocation/data alias identities only; no body/layout claim',
            'owner': {'symbol': args.symbol, 'address': address},

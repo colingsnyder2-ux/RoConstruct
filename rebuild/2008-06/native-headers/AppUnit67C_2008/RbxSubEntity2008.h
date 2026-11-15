@@ -96,7 +96,12 @@ namespace Ogre
 		void getRenderOperation(RenderOperation& op);                        // slot 3  00684fd0
 		void getWorldTransforms(Matrix4* xform) const;                       // slot 4  00685710
 		const Quaternion& getWorldOrientation(void) const;                   // slot 5  00685730
-		const Vector3& getWorldPosition(void) const;                         // slot 6  006857e0
+		// 006857e0: inline emission preserves the original static guard/read order.
+		const Vector3& getWorldPosition(void) const
+		{
+			static Vector3 position = mTransform.getTrans();
+			return position;
+		}
 		Real getSquaredViewDepth(const Camera* cam) const;                   // slot 8  00685010
 		virtual void setCustomValue(Real value);                             // slot 18 00685820
 		virtual Real getCustomValue(void) const;                             // slot 19 00685830

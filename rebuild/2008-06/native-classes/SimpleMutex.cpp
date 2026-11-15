@@ -55,3 +55,26 @@ void SimpleMutex::Unlock(void)
 	assert(error==0);
 #endif
 }
+
+SimpleMutex::SimpleMutex()
+{
+#ifdef _WIN32
+	//	hMutex = CreateMutex(NULL, FALSE, 0);
+	//	assert(hMutex);
+	InitializeCriticalSection(&criticalSection);
+#else
+	int error = pthread_mutex_init(&hMutex, 0);
+	assert(error==0);
+#endif
+}
+
+SimpleMutex::~SimpleMutex()
+{
+#ifdef _WIN32
+	//	CloseHandle(hMutex);
+	DeleteCriticalSection(&criticalSection);
+#else
+	pthread_mutex_destroy(&hMutex);
+#endif
+}
+

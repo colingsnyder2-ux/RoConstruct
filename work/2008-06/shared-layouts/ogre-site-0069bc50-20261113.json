@@ -1,0 +1,61 @@
+{
+ "address": "0069bc50",
+ "symbol": "?renderSingleObject@RbxSceneManager@Ogre@@MAEXPBVRenderable@2@PBVPass@2@_NPBV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@@Z",
+ "exact": true,
+ "source_sha256": "5b036cfb1efdc7c8b1208888789733d8bc79bf04b019ad646923b4afebe65f51",
+ "source_path": "C:/Users/colin/RoConstruct/rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+ "object_sha256": "28b17f9bb650b9623c1d282d48568b50c8bf15f1405e263e7c543ccf15a6d386",
+ "metrics": {
+  "fuzzy_percent": 100.0,
+  "positional_percent": 100.0,
+  "raw_positional_percent": 86.741949,
+  "target_bytes": 2391,
+  "candidate_bytes": 2391,
+  "length_delta": 0,
+  "compared_unmasked_bytes": 1979,
+  "unmasked_differences": 0,
+  "masked_bytes": 412,
+  "mismatch_offsets": [],
+  "mismatch_offsets_truncated": false,
+  "target_relocations": 88,
+  "candidate_relocations": 103,
+  "missing_relocations": [],
+  "extra_relocations": [
+   99,
+   160,
+   281,
+   790,
+   800,
+   985,
+   1382,
+   1677,
+   1740,
+   1752,
+   1770,
+   1788,
+   1805,
+   1839,
+   2366
+  ],
+  "scope": "Fuzzy: aligned bytes after zeroing relocation fields. Positional: same-offset unmasked bytes, including missing tails. Raw: includes unresolved address fields. None proves reference identity."
+ },
+ "data_matches": [
+  [
+   9842716,
+   32
+  ],
+  [
+   9842248,
+   30
+  ],
+  [
+   9645316,
+   32
+  ],
+  [
+   9645292,
+   24
+  ]
+ ],
+ "scope": "Inactive local byte/data proof. Provider, ABI and runtime gates separate."
+}

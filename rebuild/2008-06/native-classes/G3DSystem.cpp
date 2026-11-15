@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// 2008-06 native G3DSystem (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/System.cpp, verbatim.
+// 2008-06 native G3DSystem (inactive): G3D 6.09 with 2008 CPU-detection changes supported by original 00508110.
 // >>> native-status (generated) -- do not edit >>>
 // G3DSystem | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
@@ -416,8 +416,6 @@ void System::init() {
     }
 
     #ifdef G3D_WIN32
-        bool success = RegistryUtil::readInt32("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz", _CPUSpeed);
-
         SYSTEM_INFO systemInfo;
         GetSystemInfo(&systemInfo);
         char* arch;
@@ -443,15 +441,14 @@ void System::init() {
         }
 
         uint32 maxAddr = (uint32)systemInfo.lpMaximumApplicationAddress;
-        sprintf(_cpuArchCstr, "%d x %d-bit %s processor @ %4.1 GHz",
+        sprintf(_cpuArchCstr, "%d x %d-bit %s processor",
                     systemInfo.dwNumberOfProcessors,
                     (int)(::log((double)maxAddr) / ::log(2.0) + 2.0),
-                    arch,
-                    _CPUSpeed / (1024.0 * 1024));
+                    arch);
 
         OSVERSIONINFO osVersionInfo;
         osVersionInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-        success = GetVersionEx(&osVersionInfo) != 0;
+        bool success = GetVersionEx(&osVersionInfo) != 0;
 
         if (success) {
             sprintf(_operatingSystemCstr, "Windows %d.%d build %d Platform %d %s",

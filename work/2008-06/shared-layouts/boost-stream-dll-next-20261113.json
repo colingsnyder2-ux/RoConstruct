@@ -1,0 +1,25 @@
+{
+ "jobs": [
+  {
+   "source": "native-classes/AppUnit5F8WinHttp.cpp",
+   "checks": [
+    {
+     "addr": "005f3c50",
+     "symbol": "?sync@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ"
+    },
+    {
+     "addr": "005f4470",
+     "symbol": "??1?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@UAE@XZ"
+    },
+    {
+     "addr": "005f4500",
+     "symbol": "??1?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@UAE@XZ"
+    },
+    {
+     "addr": "005f5f30",
+     "symbol": "?sync@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ"
+    }
+   ]
+  }
+ ]
+}

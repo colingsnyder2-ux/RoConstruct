@@ -17,6 +17,9 @@ class MethodTests(unittest.TestCase):
         self.assertEqual(self.keys('void X::f(int x = 2) {}'), self.keys('void X::f(int y) {}'))
     def test_pointer_reference_distinct(self):
         self.assertEqual(len(self.keys('void X::f(int* x) {} void X::f(int& x) {}')),2)
+    def test_reference_return_method_is_extracted(self):
+        self.assertEqual(self.keys('namespace RBX { const G3D::Color3& Color::red() { return value; } }'),
+                         {'RBX::Color::red()'})
     def test_declarations_not_implementations(self):
         self.assertFalse(self.keys('namespace R { class X { void f(); }; }'))
     def test_preprocessor_requires_resolution(self):

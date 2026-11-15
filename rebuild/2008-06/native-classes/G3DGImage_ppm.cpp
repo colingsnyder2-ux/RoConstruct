@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/g3d-image-2008
 // 2008-06 native G3DGImage_ppm (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/GImage_ppm.cpp, verbatim.
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_ppm | 2008-06 | draft (no current byte proof)

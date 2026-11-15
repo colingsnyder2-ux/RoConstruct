@@ -569,7 +569,7 @@ def coff_externals(data):
     return out
 
 
-def strip_symbols(data, keep=None, drop=()):
+def strip_symbols(data, keep=None, drop=(), live_references_only=False):
     """COFF rewrite for per-function swaps. Each external definition that is dropped (named in drop, or, with
     keep given, not named in keep) becomes an undefined external, so references resolve to the definition
     another object supplies; a COMDAT section keyed by it, and its associative sections, are removed. With
@@ -622,6 +622,15 @@ def strip_symbols(data, keep=None, drop=()):
     for s in remove:
         flags = struct.unpack_from("<I", data, sec_at(s - 1) + 36)[0]
         struct.pack_into("<I", data, sec_at(s - 1) + 36, flags | 0x800)  # IMAGE_SCN_LNK_REMOVE
+    if twins and live_references_only:
+        referenced = set()
+        for s in range(nsec):
+            if s + 1 in remove or bytes(data[sec_at(s):sec_at(s) + 8]).startswith(b'.debug'):
+                continue
+            relptr = struct.unpack_from('<I', data, sec_at(s) + 24)[0]
+            nrel = struct.unpack_from('<H', data, sec_at(s) + 32)[0]
+            referenced.update(struct.unpack_from('<I', data, relptr + 10 * k + 4)[0] for k in range(nrel))
+        twins = {old: record for old, record in twins.items() if old in referenced}
     if twins:
         index = {old: nsym + n for n, old in enumerate(sorted(twins))}
         for s in range(nsec):

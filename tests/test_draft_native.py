@@ -7,11 +7,27 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-from roc.draft_native import claims_from, closed_function_targets, compile_review_blockers, freeze_headers, numeric_literal_targets, original_function, reviewed_call_targets
+from roc.draft_native import claims_from, closed_function_targets, compile_review_blockers, freeze_headers, numeric_literal_targets, original_function, reviewed_call_targets, verified_reference_evidence
 from roc.draft_merger import content_hash
 
 
 class ClaimsFromTests(unittest.TestCase):
+    def test_reference_verifier_falls_back_to_full_data_audit(self):
+        binder = SimpleNamespace(verify=lambda *_args: (_ for _ in ()).throw(KeyError('local guard')))
+        original = SimpleNamespace()
+        with TemporaryDirectory() as temp:
+            obj = Path(temp) / 'unit.obj'
+            obj.write_bytes(b'object')
+            with patch('roc.match.coff_functions', return_value=[('?method', b'code', {1})]), \
+                    patch('roc.match.target', return_value=(b'target', {1}, None)), \
+                    patch('roc.native_bulk.Targets') as targets, \
+                    patch('roc.native_bulk.audit_references', return_value=([{'symbol': 'guard'}], [])):
+                result = verified_reference_evidence(original, binder, obj,
+                    [('?method', 0x401000)], {'?callee': 0x402000}, {'?method': 0x401000})
+        self.assertEqual(result[0]['references'], [{'symbol': 'guard'}])
+        self.assertEqual(result[0]['local_eh'], [])
+        targets.assert_called_once_with('2008-06')
+
     def test_non_function_target_is_a_blocker_not_process_exit(self):
         with patch('roc.draft_native.match.target', side_effect=SystemExit('no function starts there')):
             target, blocker = original_function(0x826bfc)

@@ -4,3 +4,4 @@
 // <<< native-status | src 723f3f21 | roc native-status --write
 #include "../native-headers/ChatEnter.h"
 ChatEnter::ChatEnter() {}
+ChatEnter::~ChatEnter() {}
