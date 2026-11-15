@@ -426,7 +426,7 @@ def run_pipeline(root, report=None, record_reviews=False, review_limit=3, apply=
             status['stages'].append(dict(name='llm-review', state='running'))
             native_drafts.atomic(status_file, status)
             draft_review.prepare(root)
-            reviewed = draft_review.work(root, 'codex:gpt-6-luna', review_limit)
+            reviewed = draft_review.work(root, 'claude:sonnet', review_limit)
             status['stages'][-1].update(state='done', attempted=reviewed['attempted'], proposals=reviewed['proposals'])
             if reviewed['proposals']:
                 subprocess.run([sys.executable, '-m', 'roc.draft_native', '--reviews-only', '--root', str(root)],

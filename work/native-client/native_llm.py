@@ -42,7 +42,7 @@ OPENCODE = Path(os.environ.get('APPDATA', '')) / 'ai.opencode.desktop/cli/2.2.6-
 # roc/providers.py (NVIDIA NIM API key, signed-in Codex CLI); "opencode*/..." through the OpenCode CLI.
 # Owner's standing choice: strongest NVIDIA + OpenCode models are first-class here, not a backlog. Each
 # target starts at a different rung (its index), so all providers' quotas work in parallel.
-LADDER = ['codex:gpt-6-luna', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'opencode-go/kimi-k3.1-pro',
+LADDER = ['claude:sonnet', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'opencode-go/kimi-k3.1-pro',
           'codex:gpt-6.1-terra', 'nvidia:nvidia/nemotron-3.5-super-vl-120b-a12b', 'opencode-go/deepseek-v4-pro',
           'opencode-go/qwen3.8-max', 'opencode-go/longcat-2.5-free']
 EXHAUSTED = set()          # models that reported a spent quota this run

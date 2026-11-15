@@ -522,7 +522,7 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None, allow_
                   + header_context(header) + '\nDONOR/TRIAL:\n'
                   + text[text.index(marker):] + '\nCOMPILE ERRORS:\n' + errors)
         cheap = [m for m in nl.LADDER if m.startswith(('nvidia:', 'opencode'))]
-        cheap += ['codex:gpt-6-luna']
+        cheap += ['claude:sonnet']
         if models:
             cheap = models
         requests = set()
