@@ -4,7 +4,7 @@
 // createConnector, onPrimitiveContactParametersChanged, the ball / block contact geometry) need the native
 // Primitive / Body / ContactConnector layouts and are not part of this unit yet.
 #include "v8world/Contact2008.h"
-#include "v8kernel/Kernel.h"
+#include "v8kernel/Kernel2008.h" // the 2008 Kernel (removeConnector 005fb1f0); formerly the donor v8kernel/Kernel.h
 #include "v8kernel/Connector.h"
 
 namespace RBX
