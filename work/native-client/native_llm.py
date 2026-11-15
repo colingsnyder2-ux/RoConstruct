@@ -47,6 +47,12 @@ OPENCODE = Path(os.environ.get('APPDATA', '')) / 'ai.opencode.desktop/cli/2.2.6-
 LADDER = ['claude:sonnet', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'opencode-go/kimi-k3.1-pro',
           'codex:gpt-6.1-terra', 'nvidia:nvidia/nemotron-3.5-super-vl-120b-a12b', 'opencode-go/deepseek-v4-pro',
           'opencode-go/qwen3.8-max', 'opencode-go/longcat-2.5-free']
+# Strongest NVIDIA NIM chat models for C++ rewrites (checked against the account's /v1/models list, 2026-11-14).
+# Each run adds a random sample of these after Sonnet so their quotas and strengths spread over the batch.
+CLAUDE_MODELS = ['claude:sonnet', 'claude:opus', 'claude:haiku']
+BEST_NIM = ['nvidia:mistralai/mistral-large-4-1t-a52b', 'nvidia:deepseek-ai/deepseek-v4.1-flash',
+            'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'nvidia:minimaxai/minimax-m3.1-flash', 'nvidia:z-ai/glm-5.3-flash',
+            'nvidia:nvidia/nemotron-3.5-super-vl-120b-a12b']
 EXHAUSTED = set()          # models that reported a spent quota this run
 PREFLIGHT_BLOCKED = []
 SOURCE_DESTINATIONS = None
@@ -304,6 +310,38 @@ def _json(line):
         return None
 
 
+HEADER_INDEX = None
+
+
+def declarations_for(error, limit=6):
+    """Declarations of the identifiers a compile error names, found in native-headers/, so the retry can use them."""
+    global HEADER_INDEX
+    names = []
+    for name in re.findall(r"'([A-Za-z_][\w:]*)'", error):
+        leaf = name.split('::')[-1]
+        if len(leaf) > 2 and leaf not in names and leaf not in ('class', 'struct', 'enum', 'int', 'void', 'this'):
+            names.append(leaf)
+    if not names:
+        return ''
+    if HEADER_INDEX is None:
+        HEADER_INDEX = [(path, path.read_text(errors='replace').splitlines())
+                        for path in (ROOT / 'rebuild/2008-06/native-headers').rglob('*.h')]
+    out = []
+    for name in names[:limit]:
+        decl = re.compile(r'\b(class|struct|enum|typedef)\s+(\w+\s+)?%s\b|[\w:<>,*& ]+[\s*&]%s\s*\(' % (re.escape(name), re.escape(name)))
+        for path, lines in HEADER_INDEX:
+            hit = next((i for i, line in enumerate(lines) if decl.search(line) and not line.strip().startswith('//')), None)
+            if hit is not None:
+                start = max(0, hit - 2)
+                block = lines[start:hit + 12]
+                out.append('// %s (%s)\n%s' % (name, path.relative_to(ROOT).as_posix(), '\n'.join(block)))
+                break
+    if not out:
+        return ''
+    return ('\n--- DECLARATIONS FOR NAMES IN THAT ERROR (from native-headers; use these exact names/signatures, '
+            'or the header member at the same offset) ---\n' + '\n\n'.join(out)[:4000])
+
+
 def learn_identities(t, res):
     """If the target's only rejections are unproven callee identities, bind them from the exact candidate's relocations
     (native_reference_alias_bind.py) into CLOSURE. -> True when new bindings were added."""
@@ -383,7 +421,8 @@ def prove(t, body, out):
         if status != 'draft' or attempt or not learn_identities(t, res):
             break
     if status == 'compile_failed':
-        return status, 'Compile error:\n' + str(res.get('first_compile_error', ''))[:1500]
+        error = str(res.get('first_compile_error', ''))
+        return status, 'Compile error:\n' + error[:1500] + declarations_for(error)
     if status == 'inactive_exact':
         return status, ''
     objs = sorted(Path(res['manifest']).parent.rglob('*.obj'))
@@ -432,7 +471,7 @@ def work(t, ladder, tries, start=0):
         body = cached[-1].read_text(errors='replace')
         started = time.time()
         status, feedback = prove(t, body, folder(t) / 'recheck')
-        row = dict(t, model='cache', attempt=-1, status=status, llm_seconds=0.0,
+        row = dict(t, model='cache', attempt=-1, status=status, time=round(time.time(), 1), llm_seconds=0.0,
                    gate_seconds=round(time.time() - started, 1))
         with LOG.open('a') as log:
             log.write(json.dumps(row) + '\n')
@@ -456,7 +495,7 @@ def work(t, ladder, tries, start=0):
             status, feedback = 'no-reply', ''
         else:
             status, feedback = prove(t, body, folder(t) / ('try%d' % n))
-        row = dict(t, model=model, attempt=n, status=status, llm_seconds=round(llm, 1),
+        row = dict(t, model=model, attempt=n, status=status, time=round(time.time(), 1), llm_seconds=round(llm, 1),
                    gate_seconds=round(time.time() - started - llm, 1))
         with LOG.open('a') as log:
             log.write(json.dumps(row) + '\n')
@@ -470,6 +509,14 @@ def work(t, ladder, tries, start=0):
     return t, None
 
 
+def _regate(t):
+    try:
+        return work(t, [], 0)
+    except (Exception, SystemExit) as error:
+        print('regate failed', t.get('addr'), str(error)[:160], flush=True)
+        return None
+
+
 def main():
     global QUEUE, CLOSURE
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -477,7 +524,8 @@ def main():
     ap.add_argument('--jobs', type=int, default=4)
     ap.add_argument('--tries', type=int, default=len(LADDER))
     ap.add_argument('--max-size', type=int, default=512)
-    ap.add_argument('--models', default=','.join(LADDER), help='comma ladder, fastest first')
+    ap.add_argument('--models', default=None, help='comma ladder (default: CLAUDE_MODELS + --nim random BEST_NIM)')
+    ap.add_argument('--nim', type=int, default=3, help='random BEST_NIM models added after the Claude models when --models is not given')
     ap.add_argument('--owner-prefix', action='append', default=[])
     ap.add_argument('--queue', type=Path, default=QUEUE, help='identity-backed conversion queue')
     ap.add_argument('--closure', type=Path, default=CLOSURE, help='matching identity evidence for native gates')
@@ -486,15 +534,26 @@ def main():
                     help='probe real-header methods with no native .cpp; never promotes them')
     ap.add_argument('--retry-address', action='append', default=[], metavar='ADDR',
                     help='recheck cached donor only for this address after a driver/input repair')
+    ap.add_argument('--no-regate', dest='regate', action='store_false',
+                    help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
     QUEUE, CLOSURE = args.queue.resolve(), args.closure.resolve()
+    if not args.models:
+        import random
+        args.models = ','.join(CLAUDE_MODELS + random.sample(BEST_NIM, min(args.nim, len(BEST_NIM))))
+    print('models:', args.models, flush=True)
     HERE.mkdir(parents=True, exist_ok=True)
     started = time.time()
     prior_log = LOG.read_text().count('\n') if LOG.is_file() else 0
     tried = {json.loads(l)['addr'] for l in LOG.open()} if LOG.is_file() else set()
     for address in args.retry_address:
         tried.discard(address.lower())
-    todo = targets(args.owner_prefix, args.max_size, tried, args.new_source)[:args.limit]
+    todo = targets(args.owner_prefix, args.max_size, tried, args.new_source)
+    history = [json.loads(l) for l in LOG.open()] if LOG.is_file() else []
+    owner_exact = {r.get('owner') for r in history if r['status'] == 'inactive_exact'}
+    owner_tries = collections.Counter(r.get('owner') for r in history)
+    rank = lambda t: (0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, t['size'])
+    todo = sorted(todo, key=rank)[:args.limit]
     if args.retry_address:
         wanted = {address.lower() for address in args.retry_address}
         todo = [target for target in todo if target['addr'].lower() in wanted]
@@ -508,6 +567,14 @@ def main():
                 print('target failed', it[1].get('addr'), str(error)[:160], flush=True)
                 return None
         done = [r for r in pool.map(_safe, enumerate(todo)) if r]
+    if args.regate:
+        history = [json.loads(l) for l in LOG.open()] if LOG.is_file() else []
+        won = {r['addr'] for r in history if r['status'] == 'inactive_exact'}
+        drafts = {r['addr'] for r in history if r['status'] == 'draft'} - won - {t['addr'] for t, d in done if d}
+        again = [t for t in targets(args.owner_prefix, args.max_size, set(), args.new_source) if t['addr'] in drafts]
+        print('regate %d drafts' % len(again), flush=True)
+        with ThreadPoolExecutor(args.jobs) as pool:
+            done += [r for r in pool.map(lambda t: _regate(t), again) if r]
     exact = [(t, d) for t, d in done if d]
     print('exact %d/%d (%d B)' % (len(exact), len(done), sum(t['size'] for t, _ in exact)), flush=True)
     attempts = [json.loads(line) for line in LOG.read_text().splitlines()[prior_log:]] if LOG.is_file() else []
