@@ -72,7 +72,7 @@ namespace RBX
 
 	void NewNullTool::onMouseIdle(const UIEvent& event)
 	{
-		PartInstance* part = getUnlockedPartByLocalCharacter(event, waypoint);
+		PartInstance* part = getPartByLocalCharacter(event, waypoint); // 00617ece calls 00615f90 getPartByLocalCharacter, not the Unlocked filter
 		bool clickable = queryClickDetectors(part, distanceFromCharacter(waypoint), false);
 		if (part)
 		{
@@ -92,7 +92,7 @@ namespace RBX
 
 	void NewNullTool::onMouseHover(const UIEvent& event)
 	{
-		PartInstance* part = getUnlockedPartByLocalCharacter(event, waypoint);
+		PartInstance* part = getPartByLocalCharacter(event, waypoint); // 00617f5e calls 00615f90
 		bool clickable = queryClickDetectors(part, distanceFromCharacter(waypoint), false);
 		if (part)
 		{
@@ -116,7 +116,7 @@ namespace RBX
 	MouseCommand* NewNullTool::onMouseDown(const UIEvent& event)
 	{
 		G3D::Vector3 point;
-		PartInstance* part = getUnlockedPartByLocalCharacter(event, point);
+		PartInstance* part = getPartByLocalCharacter(event, point); // 00618011 calls 00615f90
 		if (queryClickDetectors(part, distanceFromCharacter(point), true))
 			return this;
 		if (part && characterCanReach(point) && !isLocalHeadHidden())
