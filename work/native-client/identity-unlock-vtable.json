@@ -1,0 +1,614 @@
+{
+ "00402960": {
+  "evidence": [
+   {
+    "kind": "vtable-slot-iunknown",
+    "slot": 1,
+    "vtable": "??_7?$CComContainedObject@VCWorkspace@@@ATL@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?AddRef@?$CComContainedObject@VCWorkspace@@@ATL@@UAGKXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?AddRef@?$CComContainedObject@VCWorkspace@@@ATL@@UAGKXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "ATL::CComContainedObject<class CWorkspace>",
+  "signature": "public: virtual unsigned long __stdcall ATL::CComContainedObject<class CWorkspace>::AddRef(void)"
+ },
+ "00402980": {
+  "evidence": [
+   {
+    "kind": "vtable-slot-iunknown",
+    "slot": 2,
+    "vtable": "??_7?$CComContainedObject@VCWorkspace@@@ATL@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?Release@?$CComContainedObject@VCWorkspace@@@ATL@@UAGKXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?Release@?$CComContainedObject@VCWorkspace@@@ATL@@UAGKXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "ATL::CComContainedObject<class CWorkspace>",
+  "signature": "public: virtual unsigned long __stdcall ATL::CComContainedObject<class CWorkspace>::Release(void)"
+ },
+ "004029a0": {
+  "evidence": [
+   {
+    "kind": "vtable-slot-iunknown",
+    "slot": 0,
+    "vtable": "??_7?$CComContainedObject@VCWorkspace@@@ATL@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?QueryInterface@?$CComContainedObject@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?QueryInterface@?$CComContainedObject@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "ATL::CComContainedObject<class CWorkspace>",
+  "signature": "public: virtual long __stdcall ATL::CComContainedObject<class CWorkspace>::QueryInterface(struct _GUID const &,void * *)"
+ },
+ "00407d90": {
+  "evidence": [
+   {
+    "kind": "vtable-slot-iunknown",
+    "slot": 2,
+    "vtable": "??_7?$CComObject@VCApp@@@ATL@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?Release@?$CComObject@VCApp@@@ATL@@UAGKXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?Release@?$CComObject@VCApp@@@ATL@@UAGKXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "ATL::CComObject<class CApp>",
+  "signature": "public: virtual unsigned long __stdcall ATL::CComObject<class CApp>::Release(void)"
+ },
+ "0041c2b0": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class DHTMLWindow,void __cdecl(int,int),2>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class DHTMLWindow,void __cdecl(int,int),2>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "0041c610": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class DHTMLWindow,void __cdecl(class boost::shared_ptr<class RBX::Instance>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >),3>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class DHTMLWindow,void __cdecl(class boost::shared_ptr<class RBX::Instance>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >),3>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "00437920": {
+  "evidence": [
+   {
+    "donor_symbol": "?readValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAE_NXZ",
+    "donor_vtable": "??_7?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 60,
+    "vtable": "??_7?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?readValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAE_NXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?readValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAE_NXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "XItem<class G3D::Color3,class CXTPPropertyGridItemColor,class RBX::Reflection::TypedPropertyDescriptor<class G3D::Color3> >",
+  "signature": "public: virtual bool __thiscall XItem<class G3D::Color3,class CXTPPropertyGridItemColor,class RBX::Reflection::TypedPropertyDescriptor<class G3D::Color3> >::readValue(void)"
+ },
+ "00437970": {
+  "evidence": [
+   {
+    "donor_symbol": "?displayValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXAB_N@Z",
+    "donor_vtable": "??_7?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 61,
+    "vtable": "??_7?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?displayValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXAB_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?displayValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXAB_N@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "XItem<class G3D::Color3,class CXTPPropertyGridItemColor,class RBX::Reflection::TypedPropertyDescriptor<class G3D::Color3> >",
+  "signature": "public: virtual void __thiscall XItem<class G3D::Color3,class CXTPPropertyGridItemColor,class RBX::Reflection::TypedPropertyDescriptor<class G3D::Color3> >::displayValue(bool const &)"
+ },
+ "0043a700": {
+  "evidence": [
+   {
+    "donor_symbol": "?equalValues@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAE_NABH0@Z",
+    "donor_vtable": "??_7?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 59,
+    "vtable": "??_7?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?equalValues@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAE_NABH0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?equalValues@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAE_NABH0@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "XItem<float,class CXTPPropertyGridItem,class RBX::Reflection::TypedPropertyDescriptor<float> >",
+  "signature": "public: virtual bool __thiscall XItem<float,class CXTPPropertyGridItem,class RBX::Reflection::TypedPropertyDescriptor<float> >::equalValues(int const &,int const &)"
+ },
+ "004414e0": {
+  "evidence": [
+   {
+    "donor_symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+    "donor_vtable": "??_7CXTPPropertyGridItem@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 25,
+    "vtable": "??_7?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnValueChanged@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnValueChanged@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "XItem<class G3D::Color3,class CXTPPropertyGridItemColor,class RBX::Reflection::TypedPropertyDescriptor<class G3D::Color3> >",
+  "signature": "public: virtual void __thiscall XItem<class G3D::Color3,class CXTPPropertyGridItemColor,class RBX::Reflection::TypedPropertyDescriptor<class G3D::Color3> >::OnValueChanged(class ATL::CStringT<char,class StrTraitMFC_DLL<char,class ATL::ChTraitsCRT<char> > >)"
+ },
+ "004415d0": {
+  "evidence": [
+   {
+    "donor_symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+    "donor_vtable": "??_7CXTPPropertyGridItem@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 25,
+    "vtable": "??_7?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnValueChanged@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnValueChanged@?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "XItem<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class CXTPPropertyGridItem,class RBX::Reflection::PropertyDescriptor>",
+  "signature": "public: virtual void __thiscall XItem<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class CXTPPropertyGridItem,class RBX::Reflection::PropertyDescriptor>::OnValueChanged(class ATL::CStringT<char,class StrTraitMFC_DLL<char,class ATL::ChTraitsCRT<char> > >)"
+ },
+ "0045eff0": {
+  "evidence": [
+   {
+    "donor_symbol": "?update@?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@MAEXXZ",
+    "donor_vtable": "??_7?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 16,
+    "vtable": "??_7?$TypedStatsItem@H@Stats@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@?$TypedStatsItem@H@Stats@RBX@@MAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@?$TypedStatsItem@H@Stats@RBX@@MAEXXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Stats::TypedStatsItem<int>",
+  "signature": "protected: virtual void __thiscall RBX::Stats::TypedStatsItem<int>::update(void)"
+ },
+ "004a4a00": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VServer@Network@RBX@@$$A6AHXZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VServer@Network@RBX@@$$A6AHXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VServer@Network@RBX@@$$A6AHXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::Network::Server,int __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Network::Server,int __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "004aae00": {
+  "evidence": [
+   {
+    "donor_symbol": "?UserIDTOString@PacketLogger@@MAEPADE@Z",
+    "donor_vtable": "??_7PacketLogger@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 18,
+    "vtable": "??_7FilePacketLogger@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?UserIDTOString@FilePacketLogger@@MAEPADE@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?UserIDTOString@FilePacketLogger@@MAEPADE@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "FilePacketLogger",
+  "signature": "protected: virtual char * __thiscall FilePacketLogger::UserIDTOString(unsigned char)"
+ },
+ "004aaea0": {
+  "evidence": [
+   {
+    "donor_symbol": "?WriteLog@PacketLogger@@UAEXPBD@Z",
+    "donor_vtable": "??_7PacketLogger@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 12,
+    "vtable": "??_7FilePacketLogger@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?WriteLog@FilePacketLogger@@UAEXPBD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?WriteLog@FilePacketLogger@@UAEXPBD@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "FilePacketLogger",
+  "signature": "public: virtual void __thiscall FilePacketLogger::WriteLog(char const *)"
+ },
+ "004ab7f0": {
+  "evidence": [
+   {
+    "donor_symbol": "??_EPacketLogger@@UAEPAXI@Z",
+    "donor_vtable": "??_7PacketLogger@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 0,
+    "vtable": "??_7FilePacketLogger@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??_EFilePacketLogger@@UAEPAXI@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??_EFilePacketLogger@@UAEPAXI@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "FilePacketLogger",
+  "signature": "public: virtual void * __thiscall FilePacketLogger::`vector deleting destructor'(unsigned int)"
+ },
+ "004b4040": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,class boost::shared_ptr<class RBX::Reflection::DescribedBase> __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,class boost::shared_ptr<class RBX::Reflection::DescribedBase> __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "004b41e0": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,class boost::shared_ptr<class RBX::Instance> __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,class boost::shared_ptr<class RBX::Instance> __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "005797b0": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@0_N@Z$02@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@0_N@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@0_N@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::DataModel,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool),3>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::DataModel,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool),3>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "0057b040": {
+  "evidence": [
+   {
+    "donor_symbol": "?onDescendentAdded@ServiceProvider@RBX@@MAEXPAVInstance@2@@Z",
+    "donor_vtable": "??_7ServiceProvider@RBX@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 5,
+    "vtable": "??_7DataModel@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onDescendentAdded@DataModel@RBX@@MAEXPAVInstance@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onDescendentAdded@DataModel@RBX@@MAEXPAVInstance@2@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::DataModel",
+  "signature": "protected: virtual void __thiscall RBX::DataModel::onDescendentAdded(class RBX::Instance *)"
+ },
+ "0057b070": {
+  "evidence": [
+   {
+    "donor_symbol": "?onDescendentRemoving@ServiceProvider@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+    "donor_vtable": "??_7ServiceProvider@RBX@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 6,
+    "vtable": "??_7DataModel@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onDescendentRemoving@DataModel@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onDescendentRemoving@DataModel@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::DataModel",
+  "signature": "protected: virtual void __thiscall RBX::DataModel::onDescendentRemoving(class boost::shared_ptr<class RBX::Instance> const &)"
+ },
+ "0058bb40": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::ChangeHistoryService,struct RBX::Reflection::Tuple __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::ChangeHistoryService,struct RBX::Reflection::Tuple __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "005a4020": {
+  "evidence": [
+   {
+    "donor_symbol": "?update@?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@MAEXXZ",
+    "donor_vtable": "??_7?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 16,
+    "vtable": "??_7?$TypedStatsItem@N@Stats@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@?$TypedStatsItem@N@Stats@RBX@@MAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@?$TypedStatsItem@N@Stats@RBX@@MAEXXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Stats::TypedStatsItem<double>",
+  "signature": "protected: virtual void __thiscall RBX::Stats::TypedStatsItem<double>::update(void)"
+ },
+ "005a4160": {
+  "evidence": [
+   {
+    "donor_symbol": "?update@?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@MAEXXZ",
+    "donor_vtable": "??_7?$TypedStatsItem@VStopwatch@G3D@@@Stats@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 16,
+    "vtable": "??_7?$TypedStatsItem@M@Stats@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@?$TypedStatsItem@M@Stats@RBX@@MAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@?$TypedStatsItem@M@Stats@RBX@@MAEXXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Stats::TypedStatsItem<float>",
+  "signature": "protected: virtual void __thiscall RBX::Stats::TypedStatsItem<float>::update(void)"
+ },
+ "005a4750": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::Workspace,void __cdecl(class boost::shared_ptr<class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > const >),1>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Workspace,void __cdecl(class boost::shared_ptr<class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > const >),1>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "005ada90": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::ScriptContext,void __cdecl(double),1>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::ScriptContext,void __cdecl(double),1>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "005e1700": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::Lighting,class G3D::Vector3 __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Lighting,class G3D::Vector3 __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "006328f0": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VBodyPosition@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VBodyPosition@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VBodyPosition@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::BodyPosition,class G3D::Vector3 __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::BodyPosition,class G3D::Vector3 __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "006329e0": {
+  "evidence": [
+   {
+    "donor_symbol": "?execute@?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+    "donor_vtable": "??_7?$BoundFuncDesc@VPlayer@Network@RBX@@$$A6AX_N@Z$00@Reflection@RBX@@6B@",
+    "kind": "vtable-slot-peer",
+    "slot": 1,
+    "vtable": "??_7?$BoundFuncDesc@VBodyVelocity@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@?$BoundFuncDesc@VBodyVelocity@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@?$BoundFuncDesc@VBodyVelocity@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "RBX::Reflection::BoundFuncDesc<class RBX::BodyVelocity,class G3D::Vector3 __cdecl(void),0>",
+  "signature": "public: virtual void __thiscall RBX::Reflection::BoundFuncDesc<class RBX::BodyVelocity,class G3D::Vector3 __cdecl(void),0>::execute(class RBX::Reflection::DescribedBase *,class RBX::Reflection::FunctionDescriptor::Arguments &)const "
+ },
+ "0072d5e0": {
+  "evidence": [
+   {
+    "donor_symbol": "?RefreshMetrics@CColorSetOffice2003@CXTPTabPaintManager@@UAEXXZ",
+    "donor_vtable": "??_7CColorSetOffice2003@CXTPTabPaintManager@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 1,
+    "vtable": "??_7CRibbonColorSet@CXTPRibbonTheme@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?RefreshMetrics@CRibbonColorSet@CXTPRibbonTheme@@UAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?RefreshMetrics@CRibbonColorSet@CXTPRibbonTheme@@UAEXXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "CXTPRibbonTheme::CRibbonColorSet",
+  "signature": "public: virtual void __thiscall CXTPRibbonTheme::CRibbonColorSet::RefreshMetrics(void)"
+ },
+ "00793c50": {
+  "evidence": [
+   {
+    "donor_symbol": "?OnRemoved@CXTPTabManagerItem@@MAEXXZ",
+    "donor_vtable": "??_7CXTPTabManagerItem@@6B@",
+    "kind": "vtable-slot-base",
+    "slot": 23,
+    "vtable": "??_7CXTPRibbonTab@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnRemoved@CXTPRibbonTab@@MAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnRemoved@CXTPRibbonTab@@MAEXXZ",
+  "name_source": "identity-unlock-vtable",
+  "owner_class": "CXTPRibbonTab",
+  "signature": "protected: virtual void __thiscall CXTPRibbonTab::OnRemoved(void)"
+ }
+}
