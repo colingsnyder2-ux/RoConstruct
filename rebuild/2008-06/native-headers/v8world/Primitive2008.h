@@ -222,7 +222,17 @@ namespace RBX
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
-		static bool aaBoxCollide(const Primitive& p0, const Primitive& p1);
+		// Inline in the 2008 binary: BlockBlockContact::computeIsColliding 00607c20 and stepContact 00608830 read
+		// fuzzyExtents (+0x80) of both primitives directly (`sub reg, -0x80`) and call Extents::overlapsOrTouches
+		// 00606b60, with no state check and no call of their own. Name and parameters: the donor Primitive.h.
+		static bool aaBoxCollide(const Primitive& p0, const Primitive& p1)
+		{
+			return p0.fuzzyExtents.overlapsOrTouches(p1.fuzzyExtents);
+		}
+		// Donor names (tools/rbxgs v8world/Primitive.h); bodies in native-classes/PrimitiveState.cpp. setPrimitiveType
+		// calls newGeometry 005e7d80 and World::onPrimitiveGeometryTypeChanged 005e9230 (call at 005e874b).
+		void setPrimitiveType(Geometry::GeometryType geometryType);   // 005e86f0
+		static Geometry* newGeometry(Geometry::GeometryType geometryType);   // 005e7d80
 // Declarations proven by closure symbols of byte-exact recovered methods.
 public:
     void setCanSleep(bool);

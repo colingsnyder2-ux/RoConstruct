@@ -58,6 +58,11 @@
 
 struct NativeHumanoid2008Layout;
 
+namespace G3D
+{
+	class GCamera;
+}
+
 namespace RBX
 {
 	class World;
@@ -170,6 +175,17 @@ namespace RBX
 		G3D::CoordinateFrame getRightArmGrip() const;                         // 005d7a30
 		JointInstance* findRightShoulder() const;                             // 005d9010
 		void checkForJointDeath();                                            // 005dc6c0 (called by onEvent 005dc740)
+
+	private:
+		// 005db4c0 (151 bytes, thiscall, no arguments; only caller onAncestorChanged 005db560 after the kernel insert):
+		// ServiceProvider::find<Workspace> 00491e50, then for the local character only (findLocalCharacter 0049aca0 +
+		// findModifierOfType<Humanoid> 005d8690) a CUSTOM_CAMERA (Camera +0x1d4 == 5) subject check through
+		// ICameraOwner::getCamera (Workspace +0x288, slot 1), Camera::getCameraSubject 005cc420 / setCameraSubject 005cde10.
+		// Donor name (tools/rbxgs humanoid/Humanoid.cpp, which also sets the limbs' render importance; the 2008 body does not).
+		void onLocalHumanoidEnteringWorkspace();
+		// 005db680 (734 bytes, thiscall, `ret 8`; only caller render2d 005db960 with Workspace::getGCamera through
+		// ICameraOwner slot 2). Donor name (declared in tools/rbxgs humanoid/Humanoid.h; the donor has no body).
+		void renderMultiplayer(Adorn* adorn, const G3D::GCamera& camera);
 
 	public:
 		// Dynamic initializers 007f6840 and 007f6870..007f6950 (in this order); names after the donor.

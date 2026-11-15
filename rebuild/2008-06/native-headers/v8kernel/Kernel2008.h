@@ -63,6 +63,9 @@ namespace RBX
 		int numPoints() const;                                        // 005faa30
 		int numConnectors() const;                                    // 005faa40
 		void insertConnector(Connector* connector);                    // 005fb160
+		// Callers: Contact::deleteConnector 00606d10, BlockBlockContact::deleteAllConnectors 00607c60 /
+		// deleteUnmatchedConnectors 00607e00 (thiscall `ret 4`; body native-classes/KernelStep.cpp, pending).
+		void removeConnector(Connector* connector);                    // 005fb1f0
 		void deletePoint(Point* point);                                // 005fb3c0
 		// Donor signatures; thiscall `ret 4` (005fad50 / 005fad80) and `ret 8` (005fb260). newPoint news 0x34 and calls
 		// the Point constructor 0064dc00 (native-classes/AppUnit5F8KernelArrays.cpp). Callers: BodyMover /

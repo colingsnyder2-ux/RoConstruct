@@ -12,7 +12,8 @@
 //            (SimJobStage 0064d200 news 0x28 and calls AssemblySimJob(assembly) 005e51e0).
 //   ctor     SimJob() 005e50f0: vtable, the std::vector at +0x4 (VS2008 RTM _SECURE_SCL: aux owner object new(4) at
 //            +0x4, first/last/end +0x10/+0x14/+0x18), +0x1c / +0x20 = 0.
-//   dtor     ~SimJob 005e5150: vtable, the vector destructor (delete first, clear, delete the aux object).
+//   dtor     ~SimJob 005e5150: vtable, the vector destructor (delete first, clear, delete the aux object). Inline
+//            (0066ee10 inlines it); 005e5150 is the COMDAT copy.
 //   fields   mechanisms +0x4: std::vector of 4-byte pointers; Mechanism (005e5350, in the Mechanism unit after
 //            Mechanism::getMechanismFromPrimitive 005e50c0) pushes `this` into simJob+0x4 and stores the job at its
 //            +0x0; 005e53a0 moves those elements between jobs. stageIterator +0x1c / +0x20: the std::list<SimJob*>
@@ -49,7 +50,12 @@ namespace RBX
 
 	public:
 		SimJob();                                              // 005e50f0
-		virtual ~SimJob();                                     // 005e5150 (slot 0 ??_G 005e5190)
+		// 005e5150 (slot 0 ??_G 005e5190). Inline in the class: the MovingNoPhysicsBase destructor 0066ee10 writes the
+		// SimJob vptr 0083f72c and frees the vector (+0xb0 / +0xa4 from its SimJob base at +0xa0) inline, so the original
+		// declaration had the body here; 005e5150 is its COMDAT copy.
+		virtual ~SimJob()
+		{
+		}
 		virtual Assembly* getAssemblyConst() = 0;              // slot 1 (analog name)
 		virtual Assembly* getAssembly() = 0;                   // slot 2 (analog name)
 

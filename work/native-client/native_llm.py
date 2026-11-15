@@ -26,6 +26,18 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+_PRINT_LOCK = threading.Lock()
+
+
+def print(*args, sep=' ', end='\n', file=None, flush=False):
+    """Atomic line print: builtin print writes text and newline separately, so 8 worker threads interleaved
+    and split ROC_EVENT lines (the dashboard then showed raw JSON as a log line)."""
+    stream = file or sys.stdout
+    with _PRINT_LOCK:
+        stream.write(sep.join(map(str, args)) + end)
+        if flush:
+            stream.flush()
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from roc import match  # noqa: E402

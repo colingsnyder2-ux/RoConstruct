@@ -8,12 +8,12 @@
   "object_offset": 0,
   "singleton_refs": "0x44bee0 reads storage at 0x44bf10 and 0x44bfc0",
   "native_header_sha256": {
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "0e65ff9c4073da8d697a8644616cdc8ca2891b3d62b7e8e10461d115ce3e754f",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "5568d885f2f690a0981e9b7678b93eea0f01b1ddcd1d302a9b96518e8d9cf455",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "c67cb57e9615b2d6efff87a0a5e6f0fd9c7fbeee5325e321624d63e545453742",
-    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "06edcfd4f797704066c3105c9a01e761bb973766707a951fa4a9667ca2e64645"
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "bf2ca9e0c87d7fe688623950ce44018e6ad53665af0d15b9515f413ffbc8ae50",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "8171866c14c7dbd6a39b52755786803296a819ab924c8e925b728ac938345ee8",
+    "rebuild\\2008-06\\native-headers\\util\\Sound.h": "29df3b617a2cfdf625134445d283bb66f3103abfb0d65d8783317fed35f7f9c4"
   },
-  "source_sha256": "5e971bc900812cbab8f0c900fee47bebe6bc7ef6e9212b0fa3395bba7a100881",
-  "object_sha256": "bfc73af984a283984f0101f0a8d238d8899326ad2f45e87e5b39f7e73a8721c0",
+  "source_sha256": "5426d9c1610956839d09356b76e3685eed18b430078ba2f7a315a910c994ee6f",
+  "object_sha256": "bf1b20b973cc33bb1ef7baab9ade733d5f6420de7dedc8aee4020d495e81590b",
   "recorder_sha256": "212314837dbae3c280edc672e6fa1311fdaf0fc37d0d5f7d7065028bafb05074"
 }
