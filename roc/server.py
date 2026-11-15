@@ -1393,14 +1393,17 @@ def publish_pages(git_exe, log=print):
     parentless commit: the hourly 20+ MB of function data never accumulates in any history."""
     # Guard: a local inventory loss (work/native-client/prove-out deleted 2026-11-15) once published
     # 8121 -> 2961 inactive/draft functions.  Never replace the live site with a >25% drop.
+    # Compared with a high-water mark (work/site-high-water.json), not the live site: a bad publish must not lower the
+    # bar for the next one (17:44 UTC published 2961 because the live copy it compared with was already wrong).
+    # Fail closed: an unreadable count blocks the publish.
+    mark = ROOT / "work" / "site-high-water.json"
     try:
         new = json.loads((ROOT / "docs/integration.json").read_text())["groups"]["owned_waiting"]["functions"]
-        live = json.loads(subprocess.run([git_exe, "show", "refs/remotes/origin/gh-pages:integration.json"], cwd=ROOT,
-                                         capture_output=True, text=True).stdout)["groups"]["owned_waiting"]["functions"]
-        if new < live * 0.75:
-            return log("Website NOT published: inactive/draft would drop %d -> %d (local proof inventory missing?)" % (live, new))
-    except (OSError, ValueError, KeyError, TypeError):
-        pass
+        best = json.loads(mark.read_text()).get("owned_waiting", 0) if mark.exists() else 0
+        if new < best * 0.9:
+            return log("Website NOT published: inactive/draft would drop %d -> %d (local proof inventory incomplete?)" % (best, new))
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        return log("Website NOT published: cannot read the inactive/draft count (%s)" % error)
     index = ROOT / "work" / ("pages-index-" + uuid.uuid4().hex)
     env = dict(os.environ, GIT_INDEX_FILE=str(index))
     git = lambda *a, **kw: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True, **kw)
@@ -1437,6 +1440,8 @@ def publish_pages(git_exe, log=print):
         pushed = git("push", "-f", "origin", commit.stdout.strip() + ":refs/heads/gh-pages")
         if pushed.returncode == 0:
             git("update-ref", "refs/remotes/origin/gh-pages", commit.stdout.strip())
+            if new > best:
+                mark.write_text(json.dumps({"owned_waiting": new, "time": time.time()}))
         log("Website published." if pushed.returncode == 0 else "Website push failed: %s" % pushed.stderr.strip()[-300:])
     finally:
         index.unlink(missing_ok=True)
