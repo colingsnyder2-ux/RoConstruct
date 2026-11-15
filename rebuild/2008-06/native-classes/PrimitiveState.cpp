@@ -76,6 +76,8 @@ namespace RBX
 
 		// Not in World2008.h (proposal). 005e91c0: contactManager (+0x84) -> 0060cc50 (tail jump).
 		void onPrimitiveExtentsChanged(Primitive* p);
+		// Not in World2008.h (proposal). 005e9230: contactManager (+0x84) -> 0060d8e0 (tail jump).
+		void onPrimitiveGeometryTypeChanged(Primitive* p);
 		// Not in World2008.h (proposal). 005e94a0 / 005e94e0: walk the stage chain from +0x88 to stage type 2 and
 		// call 0064cc40 / 0064ccf0 (the "June anchor swap" pair of native-world ClumpStage).
 		void onPrimitiveAddedAnchor(Primitive* p);
@@ -228,6 +230,9 @@ namespace RBX
 		void setMassInertia(float mass);                 // 005e8000 (donor name; Body::setMass 006140b0 /
 		                                                 // setMoment 00614110 of geometry slot 6 getMoment)
 		void setGridSize(const G3D::Vector3& gridSize);  // 005e8470 ?setGridSize@Primitive@RBX@@QAEXABVVector3@G3D@@@Z
+		// Not in Primitive2008.h (proposal): donor tools/rbxgs v8world/Primitive.h names.
+		void setPrimitiveType(Geometry::GeometryType geometryType);   // 005e86f0 (donor name)
+		static Geometry* newGeometry(Geometry::GeometryType geometryType);   // 005e7d80
 	};
 
 	// 005e7ba0: the index of prev in this primitive's list (+0x14 when this is prim0 +0xc, else +0x18) plus one, checked
@@ -339,6 +344,28 @@ namespace RBX
 	Assembly* Primitive::getAssembly() const
 	{
 		return clump ? clump->getAssembly() : NULL;
+	}
+
+	// 005e86f0: donor tools/rbxgs v8world/Primitive.cpp setPrimitiveType (asserts compiled out). On a changed type
+	// (geometry +0x9c slot 2 getGeometryType): keep the grid size (+4 / +8 / +0xc), delete the geometry (slot 1 with
+	// 1), newGeometry 005e7d80, World::onPrimitiveGeometryTypeChanged 005e9230 (call at 005e874b) when world (+0x58)
+	// is set, setGridSize 005e8470 of the old size, JointK dirty (+0xf0).
+	void Primitive::setPrimitiveType(Geometry::GeometryType geometryType)
+	{
+		if (geometry->getGeometryType() != geometryType)
+		{
+			G3D::Vector3 oldSize = geometry->getGridSize();
+			if (geometry)
+				delete geometry;
+
+			geometry = newGeometry(geometryType);
+
+			if (world)
+				world->onPrimitiveGeometryTypeChanged(this);
+
+			setGridSize(oldSize);
+			JointK.setDirty();
+		}
 	}
 
 	// 005e8200: donor tools/rbxgs v8world/Primitive.cpp body. CoordinateFrame != 004765e0 against the body's frame (updatePV

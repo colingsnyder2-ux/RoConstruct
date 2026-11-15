@@ -44,6 +44,7 @@ struct NativeKernelStagesLayout;
 
 namespace RBX
 {
+	class Assembly;
 	class SimJob;
 	class Edge;
 	class World;
@@ -66,6 +67,9 @@ namespace RBX
 
 		void addSimJob(SimJob* job);                      // 0064d1e0 (`jmp 0064d0f0`; analog name)
 		void removeSimJob(SimJob* job);                   // 0064d1f0 (`jmp 0064d180`; analog name)
+		void addAssembly(Assembly* a);                    // 0064d200 (analog name; SleepStage 0064ae90 calls it)
+		void removeAssembly(Assembly* a);                 // 0064d2a0 (analog name; SleepStage 0064ae90 / 0064b0a0 / 0064c470)
+		void notifyMovingPrimitives();                    // 0064d3d0 (openrbx name; caller 005e9fd0)
 
 	private:
 		void insertSimJob(SimJob* job);                   // 0064d0f0 (analog name)

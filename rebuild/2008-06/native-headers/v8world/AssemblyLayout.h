@@ -78,7 +78,50 @@ namespace RBX
 namespace RBX
 {
 	class Body;
+	class Joint;
 	class Kernel;
+
+	// Declared as native-world/App/include/v8world/Clump.h declares it (that header also declares the WEBSERVICE
+	// Clump / Assembly, so it cannot be included next to the 2008 Clump below). 2008 evidence: the Clump-unit loops
+	// 005e6120 / 005e6170 build {root primitive, 1 (IN_ASSEMBLY)} on the stack (`mov [esp], eax; mov [esp+4], 1`),
+	// call ++ 00647640 (??EPrimIterator@RBX@@QAEAAV01@XZ) and stop when the primitive is NULL; ++ 00647640 calls
+	// findFirstChild 00647540 / findParent 006474e0 / findNextRelative 00647600 with (primitive, searchType).
+	class PrimIterator
+	{
+	public:
+		enum SearchType
+		{
+			IN_CLUMP = 0,
+			IN_ASSEMBLY = 1,
+		};
+
+	private:
+		Primitive* primitive;  // 0x00
+		SearchType searchType; // 0x04
+
+		static bool isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType);
+		static Primitive* findFirstChild(Primitive* primitive, SearchType searchType);
+		static Primitive* findNextSibling(Primitive* parent, Primitive* child, SearchType searchType);
+		static Primitive* findNextRelative(Primitive* parent, Primitive* child, SearchType searchType);
+
+		PrimIterator(Primitive* primitive, SearchType searchType) : primitive(primitive), searchType(searchType) {}
+
+	public:
+		static PrimIterator begin(Primitive* primitive, SearchType searchType)
+		{
+			return PrimIterator(primitive, searchType);
+		}
+		static PrimIterator end(SearchType searchType) { return PrimIterator(NULL, searchType); }
+
+		Primitive* operator*() const { return primitive; }
+
+		bool operator==(const PrimIterator& other) const { return primitive == other.primitive; }
+		bool operator!=(const PrimIterator& other) const { return primitive != other.primitive; }
+
+		PrimIterator& operator++();                      // 00647640
+
+		static Primitive* findParent(Primitive* primitive, SearchType searchType);
+	};
 
 	class Clump : public IPipelined, public boost::noncopyable
 	{
@@ -93,6 +136,9 @@ namespace RBX
 		SimJob* simJob;                                  // +0x40 (005e6cf0, 0064d0f0, 0064d180, 005e6110)
 		char unknown44[0x34];                            // INFERRED: +0x44..+0x77 (size 0x78): -1 pair +0x44 / +0x48,
 		                                                 // computed properties +0x54..+0x74 (005e6cf0), not read here
+
+		bool computeCanSleep() const;                    // 005e6120 (analog name: openrbx Assembly::computeCanSleep;
+		                                                 // the ctor 005e6cf0 stores it at +0x70 with this at +0x6c)
 
 	public:
 		virtual ~Clump();                                // slot 0 (??_G 005e7280, body 005e70a0)
