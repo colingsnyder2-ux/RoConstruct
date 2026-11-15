@@ -51,6 +51,7 @@ addEventListener('message',function(event){
    }else Module._castle_command(event.data.command);
  }
 });
+addEventListener('keydown',function(event){if(event.code==='KeyV'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();navigator.clipboard.writeText(JSON.stringify(Module.castleState,null,2));}});
 addEventListener('mousedown',function(){document.getElementById('toolbar').contentWindow.postMessage({type:'toolbar-close'},location.origin);});
 </script>
 <script async type="text/javascript" src="index.js"></script>

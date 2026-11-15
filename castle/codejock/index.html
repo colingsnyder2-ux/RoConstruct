@@ -8,6 +8,7 @@ var Module={canvas:document.getElementById('canvas'),toolbarEmbedded:embedded,
  onRuntimeInitialized:function(){Module.toolbarReady=true;},
  onToolbarCommand:function(command){if(embedded)parent.postMessage({type:'castle-command',command:command},location.origin);},
  reportHeight:function(height,baseHeight){if(embedded&&(Module.lastHeight!==height||Module.lastBaseHeight!==baseHeight)){Module.lastHeight=height;Module.lastBaseHeight=baseHeight;parent.postMessage({type:'toolbar-height',height:height,baseHeight:baseHeight},location.origin);}}};
+addEventListener('keydown',function(event){if(embedded&&event.code==='KeyV'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();Module.onToolbarCommand(110);}});
 addEventListener('message',function(event){
  if(event.source!==parent||event.origin!==location.origin)return;
  if(!Module.toolbarReady||!Module.toolbarState)return;

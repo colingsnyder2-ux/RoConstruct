@@ -16,9 +16,9 @@ int main() {
         bar.controls.m_pParent=&bar;
         bool embedded=EM_ASM_INT({return !!Module.toolbarEmbedded;});
         const char* demoLabels[]={"&Run","&Pause","&Reset","Disabled"};
-        const char* castleLabels[]={"Scene: Castle Island","Run","Pause","Reset camera","Shadows","Orbit","Sun / Moon","Wireframe","+3 hours","Fullscreen","Copy view"};
-        const int castleCommands[]={120,100,101,102,103,104,105,106,107,109,110};
-        int count=embedded?11:4;
+        const char* castleLabels[]={"Scene: Castle Island","Run","Pause","Reset camera","Shadows","Orbit","Sun / Moon","Wireframe","+3 hours","Fullscreen"};
+        const int castleCommands[]={120,100,101,102,103,104,105,106,107,109};
+        int count=embedded?10:4;
         for(int i=0;i<count;++i) {
             CXTPControl* button;
             if(embedded&&i==0) {

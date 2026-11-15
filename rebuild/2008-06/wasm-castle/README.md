@@ -16,7 +16,7 @@ Windows and doors are recessed into openings between separate wall blocks.
 Glass follows Roblox RenderLibNew/RenderScene.cpp: an additive reflection pass,
 ambient 2*Reflectance, original skyspheremap.jpg and ENV_CURVED. The bridge
 implements sphere-map texgen and uploads its texture matrix independently of
-vertex UV arrays. Windows use full reflectance with unlit reflection brightness
+vertex UV arrays. Windows use full reflectance with the native day/night ambient brightness
 and brown frames. This reflects the original sky image, not nearby buildings. The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
 is zero. Fixture shadow bounds are transformed from the mesh extents so off-origin
 scenes select the correct near-plane algorithm and include their shadow caps.
@@ -35,8 +35,7 @@ Space: auto-orbit; R: reset; W: wireframe; S: shadows.
 P: pause clock; D: resume; hold T: run time five times faster; C: sun/moon view.
 A full day takes 90 seconds. Escape stops the demo; reload to restart.
 Wireframe requires WEBGL_polygon_mode and may be unavailable on mobile.
-Help and camera readouts have been removed. Copy view copies diagnostic state
-without displaying coordinates.
+Help and camera readouts have been removed. V copies diagnostic state without displaying coordinates.
 
 ## Published files
 
