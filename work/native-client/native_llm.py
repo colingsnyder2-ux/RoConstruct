@@ -274,6 +274,74 @@ def remaining_set():
     return REMAINING
 
 
+def split_qual(name):
+    """'RBX::X<class std::a<char>,1>::f' -> ['RBX', 'X<class std::a<char>,1>', 'f'] (splits at template depth 0)."""
+    parts, depth, cur, i = [], 0, '', 0
+    while i < len(name):
+        ch = name[i]
+        depth += {'<': 1, '>': -1}.get(ch, 0)
+        if depth == 0 and name.startswith('::', i):
+            parts.append(cur)
+            cur, i = '', i + 2
+            continue
+        cur += ch
+        i += 1
+    return parts + [cur]
+
+
+def signature_qual(sig):
+    """Qualified function name of an undname signature (template args may contain spaces and parentheses)."""
+    depth = 0
+    for i, ch in enumerate(sig):
+        depth += {'<': 1, '>': -1}.get(ch, 0)
+        if ch == '(' and depth == 0 and not sig[:i].endswith('operator'):
+            head, start, depth2 = sig[:i], i, 0
+            for j in range(len(head) - 1, -1, -1):
+                depth2 += {'>': 1, '<': -1}.get(head[j], 0)
+                if head[j] == ' ' and depth2 == 0:
+                    return head[j + 1:]
+            return head
+    return sig
+
+
+TEMPLATE_VENDOR = ('std::', 'boost::', 'G3D::', 'ATL::', 'Ogre::', 'stdext::', 'CXTP', 'Wml::')
+
+
+def template_targets(tried, max_size):
+    """Template-member instantiations the free gate (native_template_gate.py) found without an exact header body:
+    the model writes the template definition plus the explicit instantiation."""
+    results_path = ROOT / 'work/native-client/template-gate/results.json'
+    if not results_path.is_file():
+        return []
+    results = json.loads(results_path.read_text())
+    registry = json.loads(REGISTRY.read_text())
+    out = []
+    for addr, res in results.items():
+        row = registry.get(addr) or {}
+        sig = row.get('signature') or ''
+        if res['status'] not in ('needs-body', 'draft') or addr in tried or not sig:
+            continue
+        headers = []
+        for name in dict.fromkeys(re.findall(r'\b((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)(?=\s*<|\s*::|\s*[\s*&>,)])', sig)):
+            if not name.startswith(TEMPLATE_VENDOR):
+                header = declaring_header(name)
+                if header and header not in headers:
+                    headers.append(header)
+        size = len(match.target('2008-06', addr)[0])
+        analog = ROOT / 'src/2008-06' / (addr + '.cpp')
+        if not headers or not (16 <= size <= max_size) or not analog.is_file():
+            continue
+        header = Path(headers[0])
+        EXTRA_INCLUDES[addr] = [str(Path(h).resolve()) for h in headers[1:]]
+        inst = re.sub(r'\b(?:virtual|static) |\b__(?:thiscall|cdecl|stdcall|fastcall) ', '',
+                      re.sub(r'^(?:public|private|protected): ', '', sig)).strip()
+        out.append(dict(addr=addr, symbol=row['name'], decl=sig, owner=row.get('owner_class') or '',
+                        qual=signature_qual(sig), header=header.relative_to(ROOT).as_posix() if header.is_absolute() else str(header),
+                        dest='', size=size, name_source=row.get('name_source', ''), placeholder=False, unmapped=[],
+                        new_source=True, template_inst='template ' + inst + ';'))
+    return out
+
+
 def registry_classes(queue_classes):
     """Extra conversion rows from the identity registry: named, non-template members of non-vendor classes that the
     queue never listed (766 at last count).  Header = the native (else donor) header that defines the class and
@@ -316,6 +384,9 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
     classes = json.loads(QUEUE.read_text())['classes']
     if allow_new_source:
         classes = classes + registry_classes(classes)
+        templates = template_targets(tried, max_size)
+    else:
+        templates = []
     registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
     native_exact = native_exact_addresses()
     solved = ({row['owner'] for row in json.loads(LAYOUTS.read_text()).get('rows', []) if row.get('accepted')}
@@ -397,7 +468,7 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
                                 name_source=identity['name_source'], placeholder=False, unmapped=missing,
                                 new_source=is_new))
     # ponytail: smallest first, highest pass rate; add a byte-weighted order once rates are measured
-    return sorted(out, key=lambda t: t['size'])
+    return sorted(out + templates, key=lambda t: t['size'])
 
 
 def ask(model, prompt, name):
@@ -555,9 +626,17 @@ def tool_time(step, seconds):
         times[step] = round(times.get(step, 0.0) + seconds, 1)
 
 
+DECL_SPACES = {}
+DECL_MEMO = {}
+
+
 def declaring_header(name):
-    """Header (native-headers first, then RakNet) that defines class/struct/enum NAME or declares a function NAME."""
+    """Header (native-headers first, then RakNet) that defines class/struct/enum NAME or declares a function NAME.
+    Memoized; files without the name as plain text are skipped before any regex (startup took 8 min: 1426 names x
+    every header x 3 patterns)."""
     global DECL_FILES
+    if name in DECL_MEMO:
+        return DECL_MEMO[name]
     if DECL_FILES is None:
         # Per root, shallowest path first: canonical v8tree/Instance.h before snapshot copies such as
         # instance-ancestor-inline/v8tree/Instance.h, which redefine classes (C2011) when mixed in.
@@ -573,16 +652,24 @@ def declaring_header(name):
     # Namespace-aware: RBX::Primitive must not resolve to G3D's RenderDevice::Primitive enum.  Qualified names need
     # their namespaces in the file; unqualified ones try `namespace RBX` files first.
     spaces = [ns for ns in name.split('::')[:-1] if ns]
-    def in_spaces(text, wanted):
-        return all(re.search(r'\bnamespace\s+%s\b' % re.escape(ns), text) for ns in wanted)
+    if not DECL_SPACES:
+        for path, text in DECL_FILES:
+            DECL_SPACES[path] = set(re.findall(r'\bnamespace\s+(\w+)', text))
+    raw = name.split('::')[-1]
+    files = [(path, text) for path, text in DECL_FILES if raw in text] if raw else DECL_FILES
     passes = [spaces] if spaces else [['RBX'], []]
+    found = None
     for wanted in passes:
         for pattern in kinds:
             rx = re.compile(pattern, re.M)
-            for path, text in DECL_FILES:
-                if in_spaces(text, wanted) and rx.search(text):
-                    return str(path)
-    return None
+            found = next((str(path) for path, text in files
+                          if all(ns in DECL_SPACES[path] for ns in wanted) and rx.search(text)), None)
+            if found:
+                break
+        if found:
+            break
+    DECL_MEMO[name] = found
+    return found
 
 
 DONOR_CLASSES = {}
@@ -866,10 +953,26 @@ def headers_compile(t):
 
 
 def prove(t, body, out, depth=0):
+    """Gate, then drop the gate's bulk/object folders and closure copy (~5 MB + objects per gate; 98 GB filled the
+    disk on 2026-11-15).  The donor, plan and result stay for cache regates and promotion."""
+    import shutil
+    try:
+        return _prove(t, body, out, depth)
+    finally:
+        for junk in list(out.glob('run-bulk-*')) + list(out.glob('*-destination-*')):
+            shutil.rmtree(junk, ignore_errors=True)
+        (out / 'closure.json').unlink(missing_ok=True)
+
+
+def _prove(t, body, out, depth=0):
     """Write donor + one-row plan, run the existing isolated gates. -> (status, feedback text)."""
-    ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
-    marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
-    body = body.replace(t['qual'] + '(', marker + '(')          # definition goes inside the namespace block
+    if t.get('template_inst'):
+        # `template<class T> bool RBX::X<T>::f(...) {...}` + `template bool RBX::X<A>::f(...);` at global scope.
+        ns, marker = '', split_qual(t['qual'])[-1]
+    else:
+        ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
+        marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
+        body = body.replace(t['qual'] + '(', marker + '(')      # definition goes inside the namespace block
     # The donor's folder becomes an include dir; keep the gate's own output out of it, or the gate
     # sees the include search change mid-compile and voids an exact result as 'stale'.
     (out / 'donor').mkdir(parents=True, exist_ok=True)
@@ -1092,6 +1195,11 @@ def work(t, ladder, tries, start=0):
                          capture_output=True, text=True).stdout[-6000:]
     note = ('\nThe analog uses placeholder globals %s. They stand for real statics/globals: use the name the REAL HEADER '
             '(or its includes) declares for that object; never declare a new one.\n' % ', '.join(t['unmapped'])) if t.get('unmapped') else ''
+    if t.get('template_inst'):
+        note += ('\nTEMPLATE MEMBER: this function is one instantiation of a class/function template member.  Write the '
+                 'TEMPLATE DEFINITION fully qualified at global scope (`template<class T, ...> Ret NS::Cls<T, ...>::%s(...) '
+                 '{...}`; the header only declares it), then on its own line the explicit instantiation exactly:\n%s\n'
+                 % (split_qual(t['qual'])[-1], t['template_inst']))
     names = annotate_asm(asm) + file_globals(t)
     t = dict(t, names=names)          # header-gap logging checks compile errors against these binary names
     prompt = (RULES.format(decl=t['decl'], qual=t['qual']) + note + '\n--- REAL HEADER %s ---\n%s\n--- REFERENCE ANALOG ---\n%s\n'
@@ -1099,7 +1207,8 @@ def work(t, ladder, tries, start=0):
                                                                  class_context(t, names, header, analog)))
     status, history = 'no-reply', []
     if ladder:     # model runs only (regates pass no ladder): skip targets whose headers cannot compile at all
-        broken = 'implicit member: compiler-generated, the header never declares it' if implicit_member(t) else headers_compile(t)
+        broken = ('' if t.get('template_inst') else
+                  'implicit member: compiler-generated, the header never declares it' if implicit_member(t) else headers_compile(t))
         if broken:
             print('%s %-34s %4dB header-blocked: %s' % (t['addr'], t['qual'][-34:], t['size'], broken[-160:]), flush=True)
             gui('native_result', file=t['qual'], addr=t['addr'], local_exact=0, seconds=0, error=broken,
@@ -1112,7 +1221,8 @@ def work(t, ladder, tries, start=0):
     # Driver/header flag changes are valid new evidence; model text is not resent unchanged.
     cached = sorted((folder(t)).glob('try*/donor/donor.cpp'))
     leaf = re.escape('::'.join(t['qual'].split('::')[-2:]))
-    if cached and not re.search(leaf + r'\s*\(', cached[-1].read_text(errors='replace')):
+    if cached and not re.search(leaf + r'\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?::[^;{]*)?\{',
+                                cached[-1].read_text(errors='replace')):
         cached = []         # an old reply with prose and no definition: regating it is a tool-error, not evidence
     if not cached and ladder:
         native = dest_body(t)
@@ -1245,6 +1355,7 @@ def main():
     ap.add_argument('--retry-failed', action='store_true', help='also retry earlier targets that never became exact')
     ap.add_argument('--retry-older-than', type=float, default=0, metavar='HOURS',
                     help='retry non-exact targets whose last model try is older than HOURS (after harness fixes)')
+    ap.add_argument('--regate-all', action='store_true', help='re-prove every earlier draft (after a gate fix)')
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
@@ -1336,13 +1447,14 @@ def main():
         gated = {}
         for r in history:
             gated[r['addr']] = max(gated.get(r['addr'], 0), r.get('time', 0))
-        harness = max(p.stat().st_mtime for p in (Path(__file__), ROOT / 'work/native-client/native_transplant_probe.py',
-                                                    ROOT / 'work/native-client/native_identity_evidence.py'))
+        # Harness edits no longer count: they made every run re-prove all ~250 drafts (20+ min, rarely a gain).
+        # After a real gate fix, pass --regate-all once.
+        harness = 0
         def stale(t):
             # Not CLOSURE: it changes on every learn, and learning already regates its own target at once.
             inputs = [ROOT / t['header']] + ([ROOT / t['dest']] if t['dest'] else [])
             return max([harness] + [p.stat().st_mtime for p in inputs if p.is_file()]) > gated.get(t['addr'], 0)
-        again = [t for t in again if stale(t)]
+        again = [t for t in again if args.regate_all or stale(t)]
         print('regate %d drafts' % len(again), flush=True)
         with ThreadPoolExecutor(args.jobs) as pool:
             done += [r for r in pool.map(lambda t: _regate(t), again) if r]

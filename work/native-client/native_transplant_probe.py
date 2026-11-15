@@ -133,6 +133,13 @@ def main():
     closed = ''.join('}\n' for _ in scopes)
     bodies = ('\n\n'.join('// native-transplant: %s\n%s' % (addr, body)
                            for addr, body in records) if records else '\n\n'.join(methods))
+    # Template member definitions are emitted only when instantiated: keep the answer's explicit instantiation
+    # lines (`template bool T<A>::f(int) const;`) that follow the bodies.
+    if records:
+        tail = text[max(text.find(body) + len(body) for _, body in records):]
+        explicit = re.findall(r'^[ \t]*template[ \t]+(?!<)[^;{}]+;[ \t]*$', tail, re.M)
+        if explicit:
+            bodies += '\n\n' + '\n'.join(line.strip() for line in explicit)
     supports = []
     if args.support_globals and records:
         used = set(re.findall(r'\b[A-Za-z_]\w*\b', bodies))
