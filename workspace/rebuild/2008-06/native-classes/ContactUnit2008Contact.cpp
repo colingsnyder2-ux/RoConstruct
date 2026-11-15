@@ -4,8 +4,13 @@
 // NATIVE_BODYPRIM_PENDING proposal of tests/record_native_contact_unit2008.py).
 // Contact2008.h builds on the native 2008 Edge (AppUnit658/Edge.h -> IPipelined2008.h), shared with Primitive2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// The 2008 Body / GeoPair path of Connector2008.h (ContactConnector::setBody) for createConnector 00606e00, with the
+// 2008 Kernel2008.h (insertConnector 005fb160); Primitive2008.h / Contact2008.h already build on IPipelined2008.h.
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"
+#include "v8kernel/Connector2008.h"
+#include "v8kernel/Kernel2008.h"
 #include "v8kernel/Constants.h"
 #include <G3D/Vector3int16.h>
 #include <algorithm>
@@ -62,6 +67,19 @@ namespace RBX
 			return -1.0f;
 		else
 			return (float)contactFeatureMatches / sum;
+	}
+
+	// 00606e00 (placeholder func_00606e00, `ret 8`; declared in Contact2008.h): operator new 0x50, the out of line
+	// ContactConnector(jointK +0x28, elasticJointK +0x2c, kFriction +0x30) 00606d40 inside the EH frame, the two Body
+	// arguments stored at connector +0x14 / +0x18 (no null test of the new pointer), then IPipelined::getKernel
+	// 00645850 -> Kernel::insertConnector 005fb160. Donor Contact::createConnector() without the bodies.
+	ContactConnector* Contact::createConnector(Body* b0, Body* b1)
+	{
+		ContactConnector* answer = new ContactConnector(jointK, elasticJointK, kFriction);
+		answer->setBody(0, b0);
+		answer->setBody(1, b1);
+		getKernel()->insertConnector(answer);
+		return answer;
 	}
 
 	// 00606c50

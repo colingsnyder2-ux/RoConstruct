@@ -37,6 +37,10 @@
 #include "v8world/GeoPair2008.h"
 #include "v8kernel/Point2008.h"
 #else
+// The donor path keeps the donor v8kernel/Pair.h: the donor v8world/Contact.h includes the donor v8world/Block.h, which
+// includes v8kernel/Pair.h, so a donor unit that reaches both this header and Contact.h (through World.h /
+// Primitive.h) would see two GeoPair definitions (C2011) if this path took GeoPair2008.h. Units on the 2008 Body
+// define NATIVE_PRIMITIVE_NATIVE_BODY and get GeoPair2008.h above.
 #include "v8kernel/Body.h"
 #include "v8kernel/Pair.h"
 #include "v8kernel/Point.h"
@@ -88,17 +92,10 @@ namespace RBX
 		G3D::Vector3 frictionOffset;      // +0x44
 
 	public:
-		ContactConnector(float _k, float _kNeg, float _kFriction)       // 00606d40
-			: geoPair()
-		{
-			k = _k;
-			kNeg = _kNeg;
-			kFriction = _kFriction;
-			frictionOffset = G3D::Vector3::zero();
-			firstApproach = 0;
-			threshold = 0;
-			forceMagLast = 0;
-		}
+		// Out of line: Contact::createConnector 00606e00 calls 00606d40 inside its EH frame (`call 0x606d40` after
+		// operator new 0x50). Body: native-classes/Contact.cpp (the Contact unit, between deleteConnector 00606d10 and
+		// createConnector 00606e00).
+		ContactConnector(float _k, float _kNeg, float _kFriction);      // 00606d40
 
 		// Donor inline forwarder (tools/rbxgs v8kernel/Connector.h): no address of its own, inlined into
 		// BlockBlockContact::matchContactConnector 00607cc0 (00607cf5 `add ecx, 8; call 00606a50`: GeoPair::match
@@ -107,6 +104,27 @@ namespace RBX
 		{
 			return geoPair.match(_b0, _b1, _pairType, param0, param1);
 		}
+
+		// 00606770 (placeholder func_00606770, `add ecx, 8; jmp 00606270`): out of line forwarder to the GeoPair test
+		// GeoPair::isWithinPointPlaneTolerance 00606270 (GeoPair2008.h) of geoPair +0x8; BlockBlockContact::
+		// deleteUnmatchedConnectors 00607e00 calls it on connectors[i] (00607e2f). No donor or registry name: analog
+		// name. Body: native-classes/ContactUnit2008Connector.cpp (needs the 2008 GeoPair, NATIVE_PRIMITIVE_NATIVE_BODY).
+		bool isGeoPairWithinTolerance();                                // 00606770
+
+#ifdef NATIVE_PRIMITIVE_NATIVE_BODY
+		// Forwarders to the 2008 GeoPair2008.h inlines (the donor v8kernel/Pair.h has neither): setEdgeEdge is inlined
+		// into BlockBlockContact::loadGeoPairEdgeEdge 00607ea0 (00607f70..00607f81, geoPair +0x8), setBody into
+		// matchContactConnector 00607cc0 (00607d47 / 00607d50) and Contact::createConnector 00606e00 (00606e5a /
+		// 00606e5d), body0 / body1 at connector +0x14 / +0x18.
+		void setEdgeEdge(const G3D::Vector3* offset0, const G3D::Vector3* offset1, NormalId norm0, NormalId norm1)   // INFERRED: forwards to geoPair (+0x8)
+		{
+			geoPair.setEdgeEdge(offset0, offset1, norm0, norm1);
+		}
+		void setBody(int i, Body* b)   // INFERRED: analog name, forwards to geoPair (+0x8)
+		{
+			geoPair.setBody(i, b);
+		}
+#endif
 
 		virtual void computeForce(const float dt, bool throttling);    // slot 1 (00606780)
 		virtual bool canThrottle() const;                               // slot 2 (00606250; reads Body +0x30)

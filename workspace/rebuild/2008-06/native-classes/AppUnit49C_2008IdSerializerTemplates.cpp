@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // 2008-06 native STL instances of the Network/Streaming.cpp unit on the element types of RBX::Network::IdSerializer
 // and StringSender (read-only native-headers/Network/IdSerializer.h), inside the application range 0049c000..004a8000
 // (inactive). The original emits them for IdSerializer::resolvePendingBindings / deserializeInstanceRef and
@@ -7,6 +8,97 @@
 // checks do not apply to names in an explicit instantiation, so the protected WaitItem can be named).
 // Verified by tests/record_native_app_unit49c_2008.py.
 #include "Network/IdSerializer.h"
+#include "AppUnit49C_2008/Streaming2008.h"
+#include <BitStream.h>
+
+// StringReceiver / StringSender members of the same Network/Streaming.cpp unit, in the original's address order.
+// Shape after the donor tools/rbxgs/Client/Network/Streaming.cpp; 2008 keeps std::string strings[] arrays (see
+// IdSerializer.h). The original's `stream << (unsigned char)x` is the same unit's operator<< 004a6350
+// (AppUnit49C_2008Streaming.cpp), which it inlines to BitStream::Write<unsigned char> (WriteBits(&x, 8, true)); this
+// unit does not define that operator, so the bodies call Write directly (a codegen analog of the inlined operator).
+namespace RBX
+{
+	namespace Network
+	{
+		void StringReceiver::receive(RakNet::BitStream& stream, std::string& value)          // 004a6e20
+		{
+			unsigned char id;
+			stream >> id;                                                                     // 004a6380
+
+			if (id == 0)
+			{
+				value.clear();
+			}
+			else if (id >> 7)
+			{
+				stream >> value;                                                              // 004a6610
+				strings[id & 127] = value;
+			}
+			else
+			{
+				value = strings[id];
+			}
+		}
+
+		void StringReceiver::receive(RakNet::BitStream& stream, const Name*& value)          // 004a6f70
+		{
+			std::string s;
+			receive(stream, s);
+
+			value = &Name::declare(s.c_str(), -1);                                            // 00553f90
+		}
+
+		bool StringSender::trySend(RakNet::BitStream& stream, const std::string& value)      // 004a7ba0
+		{
+			if (value == "")
+			{
+				stream.Write((unsigned char)0);
+				return true;
+			}
+
+			std::map<std::string, unsigned char>::const_iterator iter = dictionary.find(value);
+
+			if (iter == dictionary.end())
+			{
+				return false;
+			}
+			else
+			{
+				stream.Write(iter->second);
+				return true;
+			}
+		}
+
+		// 2008 differs from the donor: the new entry is inserted with the current lastIndex, the evicted string is
+		// erased afterwards (map erase(key) 004a7d30) and lastIndex advances last.
+		void StringSender::send(RakNet::BitStream& stream, const std::string& value)         // 004a7e20
+		{
+			if (value == "")
+			{
+				stream.Write((unsigned char)0);
+				return;
+			}
+
+			std::pair<std::map<std::string, unsigned char>::iterator, bool> pair =
+				dictionary.insert(std::pair<const std::string, unsigned char>(value, (unsigned char)lastIndex)); // 004a7a30
+
+			if (!pair.second)
+			{
+				stream.Write(pair.first->second);
+			}
+			else
+			{
+				dictionary.erase(strings[lastIndex]);
+				strings[lastIndex] = value;
+
+				stream.Write((unsigned char)(lastIndex | 0x80));
+				stream << value;                                                              // 004a6560
+				lastIndex = lastIndex % 127 + 1;
+			}
+		}
+	}
+}
+
 
 template class std::vector<RBX::Network::IdSerializer::WaitItem>;
 template class std::map<RBX::Guid::Data, std::vector<RBX::Network::IdSerializer::WaitItem> >;

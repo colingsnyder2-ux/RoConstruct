@@ -21,6 +21,9 @@
 #include "Network/Peer2008.h"
 #include "v8tree/Service.h"
 #include "RakNetTypes.h"
+#include "reflection/signal.h"
+#include <boost/shared_ptr.hpp>
+#include <string>
 
 class XmlElement;
 
@@ -38,6 +41,17 @@ namespace RBX
 
 		private:
 			SystemAddress serverId;                                                 // +0x148
+
+		public:
+			// Signals (donor Client.h:21-23; descriptors read from the binary). OnReceive 004a1070 fires them as
+			// fire(this, systemAddress.ToString(), ...): 0049d2b0 (ret 0x28: string + shared_ptr), 004a0f00 (ret 0x40:
+			// string, int packet id, string Exposer::IDTOString(id) -- three arguments, unlike the donor's two), 0042ce50
+			// (string). Constructors 004a0020 (static initializer 007f1bd0) / 004a02e0 (007f1c00).
+			static Reflection::SignalDesc<Client, void(std::string, boost::shared_ptr<Instance>)> event_ConnectionAccepted; // 00970c48
+			// 00970bb4 event_ConnectionFailed: SignalDesc<Client, void(std::string, int, std::string)> is not declared:
+			// the core reflection/signal.h has no SignalDescImpl<3, ...> (the arity-3 primary template is abstract,
+			// C2259). Pending a core-header proposal.
+			static Reflection::SignalDesc<Client, void(std::string)> event_ConnectionRejected;                              // 00970c7c
 
 		public:
 			Client();                                                               // 004a0990

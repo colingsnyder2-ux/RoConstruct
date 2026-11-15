@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
 // 2008-06 native RBX::World rows of the World.cpp unit 005e9150..005eaeef (inactive), application range
 // 005e8000..005f4000. Built against Colin's native-headers/engine-world/v8world/World.h and ContactManager.h (read-only;
 // the recorder puts native-headers/engine-world first, as record_native_geometry_service.py does) and the native

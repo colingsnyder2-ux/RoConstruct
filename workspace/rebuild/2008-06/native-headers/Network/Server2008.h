@@ -16,13 +16,16 @@
 //              a std::string at node +0x0c; looked up by ClientProxy 004a3290 through 004a2fa0; name provisional).
 //              The constructor then calls setName(sServer), rakPeer->SetMaximumIncomingConnections(64) (slot 4) and
 //              rakPeer->SetIncomingPassword(API::version.c_str(), API::version.size()) (slot 7; std::string 00970b88).
-//   vtable     slot 2 askAddChild 004a3640 (dynamic_cast<const ClientProxy*>), slot 12 onServiceProvider 004a4100,
-//              slot 14 write 00416690 (ICF-shared `return NULL`), PluginInterface slot 5 OnReceive 004a4dc0 (all
-//              declared only); destructor 004a3540.
+//   vtable     slot 2 askAddChild 004a3640 (dynamic_cast<const ClientProxy*>; declared only), slot 12
+//              onServiceProvider 004a4100 (body in native-classes/NetworkClientServer2008Server.cpp, byte-exact), slot
+//              14 write 00416690 (ICF-shared `return NULL`; declared only), PluginInterface slot 5 OnReceive 004a4dc0
+//              (body in NetworkClientServer2008Server.cpp; not exact yet: it calls ClientProxy::sendTop 004a2ac0, still
+//              open in Network/ClientProxy2008.h); destructor 004a3540.
 //   statics    serverIsPresent 004a40d0: ServiceProvider::find<Server>(findServiceProvider(context)) != NULL
 //              (findServiceProvider 004898d0, ServiceProvider::find<Server> 004a3e40).
 #include "Network/Peer2008.h"
 #include "v8tree/Service.h"
+#include "reflection/signal.h"
 #include <boost/signals/connection.hpp>
 #include <boost/shared_ptr.hpp>
 #include <set>
@@ -53,14 +56,29 @@ namespace RBX
 			std::set<std::string> names;                                            // +0x164 (name provisional)
 
 		public:
+			// 00970ebc (donor Server.h event_IncommingConnection): fired by OnReceive 004a4dc0 through 0049d2b0 with
+			// (systemAddress.ToString(), shared_ptr<ClientProxy> converted to shared_ptr<Instance>).
+			static Reflection::SignalDesc<Server, void(std::string, boost::shared_ptr<Instance>)> event_IncommingConnection;
+
+		public:
 			Server();                                                               // 004a4b30
 			virtual ~Server();                                                      // 004a3540
+			void stop(int blockDuration);                                           // 004a1880 (donor Server::stop, bound as "Stop")
+			int getClientCount();                                                   // 004a2250 (donor Server::getClientCount)
 			virtual XmlElement* write();                                            // 00416690 (ICF)
 			virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet); // 004a4dc0
 
 		protected:
 			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 004a4100
 			virtual bool askAddChild(const Instance* instance) const;               // 004a3640
+
+		private:
+			// 004a31d0 (thiscall, ret 8; name provisional, no symbol evidence): dynamic_cast<Script*> (type descriptor
+			// 0092e1c8 .?AVScript@RBX@@), then inserts the script id (Script +0x138, when not empty: +0x14c size) or the
+			// embedded source (*Script +0x130) into names (+0x164) via set::insert 004a2eb0. onServiceProvider 004a4100
+			// binds it with boost::bind(&Server::registerScript, this, _1) into visitDescendents 004a27e0 and
+			// Instance::event_descendentAdded.connect 004a3340.
+			void registerScript(boost::shared_ptr<Instance> instance);
 
 		public:
 			// 004a40d0 (evidence name ?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z; the bool is not read)

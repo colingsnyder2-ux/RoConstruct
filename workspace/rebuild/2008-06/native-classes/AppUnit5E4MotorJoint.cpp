@@ -1,10 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 v8world/MotorJoint.cpp row MotorJoint::isAligned 005e5d00 (vtable 0083f764 slot 9; inactive native unit),
-// against the native v8world/Joints2008.h and v8world/Primitive2008.h (read-only; donor-IPipelined switch because
-// Joints2008.h includes the donor v8world/Edge.h). /fp:fast. The other MotorJoint rows are in
+// against the native v8world/Joints2008.h and v8world/Primitive2008.h (read-only; both now build on the native 2008
+// Edge / IPipelined2008.h, so no donor-IPipelined switch). /fp:fast. The other MotorJoint rows are in
 // native-classes/WorldJointMotor.cpp (world-joints owner). Verified by tests/record_native_app_unit5e4.py.
 #undef _RELEASEASSERT
-#define NATIVE_IPIPELINED2008_DONOR
 #include "v8world/Joints2008.h"
 #include "v8world/Primitive2008.h"
 #include "util/Math.h"

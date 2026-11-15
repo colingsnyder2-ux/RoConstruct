@@ -113,6 +113,7 @@ void CLuaHtmlView::Binder::onPropertyChanged(const RBX::Reflection::PropertyDesc
         binder->requestUpdate();
 }
 
+// 0042ae50
 void CLuaHtmlView::setBody(const char* html)
 {
     CComQIPtr<IHTMLDocument2> document(GetHtmlDocument());
@@ -125,12 +126,14 @@ void CLuaHtmlView::setBody(const char* html)
     body->put_innerHTML(CComBSTR(html));
 }
 
+// 0042b5f0
 void CLuaHtmlView::unbindAll()
 {
     RBX::DataModel::Lock lock(dataModel);
     binders.clear();
 }
 
+// 0042a930
 bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
 {
     CComPtr<IUnknown> firstUnknown;
@@ -154,6 +157,7 @@ bool CLuaHtmlView::isSameObject(IUnknown* first, IUnknown* second)
     return true;
 }
 
+// 0042c8c0
 void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
                                const RBX::Reflection::PropertyDescriptor& property, const char* htmlElementId)
 {
@@ -169,6 +173,7 @@ void CLuaHtmlView::bindElement(boost::shared_ptr<RBX::Instance> object,
     CComQIPtr<IHTMLInputElement> input(dispatch);
     if (!input)
         throw std::runtime_error(G3D::format("%s is not an input element", htmlElementId));
+
     Binder* binder = NULL;
     std::list<boost::shared_ptr<Binder> >::iterator it = binders.begin(), end = binders.end();
     for (; it != end; ++it)

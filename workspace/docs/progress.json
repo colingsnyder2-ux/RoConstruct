@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14 10:09 UTC",
+ "updated": "2026-11-15 05:40 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -287,12 +287,12 @@
    "functions": 22293,
    "matched": 22293,
    "partial": 0,
-   "source_matched": 13825,
-   "mined_matched": 8468,
+   "source_matched": 13824,
+   "mined_matched": 8469,
    "bytes": 3738870,
    "matched_bytes": 3738870,
-   "source_bytes": 2787982,
-   "mined_bytes": 950888,
+   "source_bytes": 2787314,
+   "mined_bytes": 951556,
    "partial_bytes": 0,
    "data_bytes": 1559926,
    "leaderboard": [

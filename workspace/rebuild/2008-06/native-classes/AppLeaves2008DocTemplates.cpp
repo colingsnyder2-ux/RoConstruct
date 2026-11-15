@@ -1,4 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../native-donor-2007
 // Inactive native 2008-06 CRbxDocTemplate / CRbxPlayDocTemplate (native-headers/AppLeaves2008/RbxDocTemplates2008.h).
+// LogManager.h (donor, via CRobloxApp.h) builds ThreadLogManager's inline constructor from RBX::get_thread_name;
+// declared here as in the sibling AppLeftovers.cpp unit.
 namespace RBX { const char* get_thread_name(); }
 #include "AppLeaves2008/RbxDocTemplates2008.h"
 #include <afxpriv.h>
@@ -75,4 +78,3 @@ CDocument* CRbxPlayDocTemplate::openDocumentFile(LPCTSTR lpszPathName, BOOL bMak
     InitialUpdateFrame(pFrame, pDocument, bMakeVisible);
     return pDocument;
 }
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string /I{headers}/../native-donor-2007

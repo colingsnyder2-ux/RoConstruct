@@ -32,6 +32,11 @@ namespace RBX
 	}
 
 	// 00660260
+	// Parked (hard-leftover lf14): the original calls the head transparency test out of line (006601c0, thiscall on
+	// head, only callers 0066028e and 006602df; fld1/fsub +0x1e8/fmul +0x328/fsubp/fcomp 0.1f), while the native
+	// PartInstance.h getIsTransparent is inline and is expanded here (115 bytes against 73). Trial 1 (kept): the
+	// /I{headers}/part-embedded layout, which moves alphaModifier from +0x230 to the binary's +0x328; the exact set is
+	// unchanged. The remaining difference is the header definition of 006601c0 (header proposal), not this body.
 	HitTestFilter::Result PartByLocalCharacter::filterResult(const Primitive* testMe) const
 	{
 		if (character && head)
@@ -48,6 +53,7 @@ namespace RBX
 	}
 
 	// 006602b0: PartByLocalCharacter::filterResult and Unlocked::unlocked are inlined.
+	// Parked with 00660260: the base call is inlined only once 006601c0 stays out of line (46 bytes against 97).
 	HitTestFilter::Result UnlockedPartByLocalCharacter::filterResult(const Primitive* testMe) const
 	{
 		HitTestFilter::Result result = PartByLocalCharacter::filterResult(testMe);

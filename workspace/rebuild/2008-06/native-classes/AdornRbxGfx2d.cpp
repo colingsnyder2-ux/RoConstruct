@@ -67,4 +67,14 @@ namespace RBX
                                  viewport->getActualWidth(), viewport->getActualHeight());
     }
 
+    // 00671f90 (slot 3)
+    void AdornRbxGfx::finishRenderPass()
+    {
+        rootNode->removeAndDestroyAllChildren();
+        visualEngine->sceneManager->destroyAllManualObjects();
+        nameCounter = 0;
+        entity->func_0067d3d0();
+        releaseSubEntities();
+    }
 }
+

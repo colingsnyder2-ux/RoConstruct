@@ -19,6 +19,18 @@ namespace RBX
 		offset = layout.offset;
 	}
 
+	// 005737e0: canvas Rect(GuiRoot::canvasSize) inset by offset, positionChild 005cef60 of Rect(getSize()).
+	// PARKED (225 of 241 bytes): the original copies the canvasSize temporary into canvas.high before getSize and
+	// reads the inset from that copy; this build forwards the temporary. Tried: the chained inset(...).positionChild
+	// expression, the two-argument Rect(Vector2::zero(), size) form (identical code), and insetting before getSize.
+	G3D::Vector2 RelativePanel::getPosition() const
+	{
+		Rect canvas(GuiRoot::getCanvasSize());
+		Rect me(getSize());
+		canvas = canvas.inset(offset);
+		return canvas.positionChild(me, xLocation, yLocation).low;
+	}
+
 	// 005738e0: GuiRoot::toPixelSize 005736f0 of position, then Rect::positionPoint 005cef00.
 	G3D::Vector2 PercentPanel::getPosition() const
 	{
