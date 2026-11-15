@@ -276,6 +276,10 @@ namespace RBX
 		{
 			return contacts.edges.size();
 		}
+		// 005e7af0 (registry placeholder func_005e7af0; analog name, INFERRED): out of line, `ret 4`, returns
+		// contacts.edges[i] (edge data at Primitive +0x1c, count at +0x20 as getNumContacts reads it); caller
+		// PartInstance::render3dAdorn 0059e9c8 (showContactPoints loop).
+		Contact* getContact(int i);
 		int getNumEdges() const;
 		bool hasEdge();
 		Edge* getFirstEdge() const;

@@ -8,6 +8,15 @@
 #include "v8world/World.h"
 #include "tool/Dragger.h"
 #include <G3D/g3dmath.h>
+#include <G3D/Sphere.h>
+#include <G3D/AABox.h>
+#include "v8world/Assembly.h"        // donor: Sim::AssemblyState (render3dAdorn 0059e4d0)
+#include "v8world/AssemblyLayout.h"  // 2008 sleepInfo +0x18 / root primitive views (render3dAdorn)
+#include "v8world/Controller.h"
+#include "AppDraw/Draw.h"
+#include "AppDraw/DrawAdorn.h"
+#include "RbxGraphics/Adorn.h"
+#include "util/Math.h"
 
 namespace RBX
 {
@@ -251,5 +260,150 @@ namespace RBX
 			primitive.setElasticity(newElasticity);
 			raisePropertyChanged(prop_Elasticity);
 		}
+	}
+
+	// PARKED (not exact): render3dAdorn 0059e4d0 below compiles every section except the showContactPoints loop
+	// (0059e99e..0059eb0d), which is kept in the NATIVE_PARTINSTANCE_CONTACT_POINTS_PENDING block and never
+	// compiled. Remaining blockers, all in headers this unit may not edit: (1) the part-embedded Primitive.h path
+	// reaches the donor v8world/Contact.h, whose Contact has no slot 8 numConnectors (+0x20) / slot 9 getConnector
+	// (+0x24); the 2008 v8world/Contact2008.h declares them but collides with the donor RBX::Contact (usable only
+	// with NATIVE_PRIMITIVE_NATIVE_BODY); (2) ContactConnector::geoPair (+0x8) is protected in
+	// v8kernel/Connector2008.h with no accessor; (3) v8world/GeoPair2008.h has no inline for 00599250 (thiscall,
+	// `ret 4`, hidden return: zeroed PairParams, computeLengthNormalPosition, return position; getGeoPair /
+	// computePosition above are analog placeholders). Without the loop the candidate is 1252 B (target 1660 B); the
+	// compiled sections match the target instruction for instruction apart from the register / frame allocation
+	// the loop forces (ebx / edi saved, 0x94 frame) and two scheduling differences in the spanning-tree block
+	// (Adorn vtable slot loaded before the Color4::clear call; the box branch keeps a second copy of boxSize).
+
+	// 0059e4d0: IRenderable override (this = PartInstance + 0x1cc, like shouldRender3dAdorn 00599fa0). Donor rbxgs
+	// PartInstance::render3dAdorn with the 2008 callees: getTopPVController 0059a9e0, Controller::controllerTypeToColor
+	// 00614f80, getPart 0059aa90, Draw::partAdorn 006770f0 / selectionBox(Color4) 00676e00, Primitive::getAssembly
+	// 005e7570 (called twice per sleep block), the 2008 Clump sleep state [[assembly+0x18]] (AssemblyLayout view),
+	// Color3 purple 00514940 / orange 005149b0 / yellow 00514980 / red 005148b0 (2008: AWAKE red, SLEEPING_CHECKING
+	// orange, the donor has them the other way round; jump tables 0059eb28 / 0059eb3c), renderCoordinateFrame 00608aa0,
+	// gray 00514a20, Math::getClosestObjectNormalId 005de560, DrawAdorn::partSurface 00677630, aligned 005994c0,
+	// setAlphaModifier(0.3f) inlined (0059e7f0..0059e821, 0082711c), main primitive [[assembly+0x24]+0x1c],
+	// Adorn slots +0x38 setObjectToWorldMatrix / +0x40 box / +0x44 sphere, Sphere 00501d10, Vector3::zero 004782a0,
+	// Vector3::one 00599190, AABox 00518ed0, Color4::clear 007baf10, green 005148e0, 0.25f 0083a3e4.
+	void PartInstance::render3dAdorn(Adorn* adorn)
+	{
+		if (partType == Part::CYLINDER_PART || SurfacesNeedAdorn)
+			Draw::partAdorn(getPart(), adorn, Controller::controllerTypeToColor(getTopPVController()->getControllerType()));
+
+		if (highlightSleepParts && primitive.getAssembly())
+		{
+			Sim::AssemblyState sleepStatus = (Sim::AssemblyState)AssemblyLayout::getSleepStatus(primitive.getAssembly());
+
+			if (sleepStatus != Sim::ANCHORED && sleepStatus != Sim::AWAKE)
+			{
+				G3D::Color3 sleepColor;
+
+				switch (sleepStatus)
+				{
+				case Sim::RECURSIVE_WAKE_PENDING:
+				case Sim::WAKE_PENDING:
+					sleepColor = G3D::Color3::purple();
+					break;
+				case Sim::SLEEPING_CHECKING:
+					sleepColor = G3D::Color3::orange();
+					break;
+				case Sim::SLEEPING_DEEPLY:
+					sleepColor = G3D::Color3::yellow();
+					break;
+				default:
+					sleepColor = sleepColor;
+					break;
+				}
+
+				Draw::selectionBox(getPart(), adorn, sleepColor);
+			}
+		}
+
+		if (highlightAwakeParts && primitive.getAssembly())
+		{
+			Sim::AssemblyState sleepStatus = (Sim::AssemblyState)AssemblyLayout::getSleepStatus(primitive.getAssembly());
+
+			if (sleepStatus != Sim::ANCHORED && sleepStatus != Sim::SLEEPING_DEEPLY)
+			{
+				G3D::Color3 wakeColor;
+
+				switch (sleepStatus)
+				{
+				case Sim::AWAKE:
+					wakeColor = G3D::Color3::red();
+					break;
+				case Sim::SLEEPING_CHECKING:
+					wakeColor = G3D::Color3::orange();
+					break;
+				case Sim::RECURSIVE_WAKE_PENDING:
+				case Sim::WAKE_PENDING:
+					wakeColor = G3D::Color3::purple();
+					break;
+				default:
+					wakeColor = wakeColor;
+					break;
+				}
+
+				Draw::selectionBox(getPart(), adorn, wakeColor);
+			}
+		}
+
+		if (showPartCoord)
+			renderCoordinateFrame(adorn);
+
+		if (showAnchoredParts && primitive.getAnchor())
+		{
+			float transparency = 1.0f - alpha();
+			G3D::Color4 color(G3D::Color3::gray(), transparency);
+			const G3D::CoordinateFrame& cframe = primitive.getCoordinateFrame();
+
+			DrawAdorn::partSurface(getPart(), Math::getClosestObjectNormalId(G3D::Vector3(0.0f, -1.0f, 0.0f), cframe.rotation), adorn, color);
+		}
+
+		if (showUnalignedParts && !aligned())
+			Draw::selectionBox(getPart(), adorn, G3D::Color3::yellow());
+
+		if (showSpanningTree)
+		{
+			setAlphaModifier(0.3f);
+
+			Assembly* assembly = primitive.getAssembly();
+			if (assembly && &primitive == AssemblyLayout::getRootPrimitive(assembly))
+			{
+				adorn->setObjectToWorldMatrix(G3D::CoordinateFrame(primitive.getCoordinateFrame().translation));
+
+				if (primitive.getAnchor())
+				{
+					adorn->sphere(G3D::Sphere(G3D::Vector3::zero(), 0.5f), G3D::Color3::green(), G3D::Color4::clear());
+				}
+				else
+				{
+					G3D::Vector3 boxSize = G3D::Vector3::one() * 0.25f;
+					adorn->box(G3D::AABox(-boxSize, boxSize), G3D::Color3::green(), G3D::Color4::clear());
+				}
+			}
+		}
+
+#ifdef NATIVE_PARTINSTANCE_CONTACT_POINTS_PENDING
+		// 0059e99e..0059eb0d, not compiled: blocked by read-only headers (see the pending note above the function).
+		// Per contact (Primitive::getContact 005e7af0), per connector (Contact slot 8 numConnectors +0x20, slot 9
+		// getConnector +0x24): the GeoPair inline 00599250 on connector +0x8 (zeroed PairParams,
+		// computeLengthNormalPosition, returns params.position), CoordinateFrame(position) through slot +0x38, then
+		// slot +0x44 with an inlined Sphere (vtable 00827404, inlined Vector3::zero static 0096f044 / guard 0096f050,
+		// radius 0.5f 00819bac), Color4(Color3::red() 005148b0) and Color4::clear() 007baf10.
+		if (showContactPoints)
+		{
+			for (int i = 0; i < primitive.getNumContacts(); ++i)
+			{
+				Contact* contact = primitive.getContact(i);
+				for (int j = 0; j < contact->numConnectors(); ++j)
+				{
+					G3D::Vector3 position = contact->getConnector(j)->getGeoPair().computePosition();
+					adorn->setObjectToWorldMatrix(G3D::CoordinateFrame(position));
+					adorn->sphere(G3D::Sphere(G3D::Vector3::zero(), 0.5f), G3D::Color3::red(), G3D::Color4::clear());
+				}
+			}
+		}
+#endif
 	}
 }
