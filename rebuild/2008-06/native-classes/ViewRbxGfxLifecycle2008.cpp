@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/viewrbx-ctor-profile /I{headers}/partchunk-profile /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// Originals 004db4f0 (destructor), 004d9c90 (lighting without skybox).
+// Original 004db4f0 (destructor). suppressSkybox 004d9c90 is defined (exact) in RenderSceneViewRbxGfx2008.cpp.
 #include "RenderLib/ViewNew2008.h"
 #include "RenderLib/RenderSceneNew2008.h"
 #include "v8datamodel/DataModel.h"
@@ -26,13 +26,5 @@ ViewRbxGfx::~ViewRbxGfx()
     WedgeMesh::flushCache();
     HeadMesh::flushCache();
     TorsoMesh::flushCache();
-}
-void ViewRbxGfx::suppressSkybox()
-{
-    Lighting* lighting=ServiceProvider::create<Lighting>(static_cast<ServiceProvider*>(dataModel.get()));
-    renderLibScene->presetLighting(NULL,lighting->skyParameters,lighting->ambientTop,lighting->ambientBottom);
-    renderLibScene->colorClearValue=lighting->clearColor;
-    G3D::Color4 shadow=lighting->shadowColor;
-    dynamic_cast<RenderNew::RenderScene*>(renderLibScene.get())->shadowColor=shadow;
 }
 } }
