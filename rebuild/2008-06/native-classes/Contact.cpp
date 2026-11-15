@@ -32,4 +32,20 @@ namespace RBX
 		delete c;
 		c = NULL;
 	}
+
+	// 00606d40 (out of line: Contact::createConnector 00606e00 calls it inside its EH frame). KernelIndex -1 at +0x4,
+	// vtable 00842834, GeoPair() 00613060 at +0x8, frictionOffset +0x44 default-constructed to zero, k +0x2c, kNeg
+	// +0x34, kFriction +0x30, frictionOffset = Vector3::zero() (guard 0096f050, static 0096f044), then firstApproach
+	// +0x38, threshold +0x3c, forceMagLast +0x40 = 0. Moved from the former inline body of v8kernel/Connector2008.h.
+	ContactConnector::ContactConnector(float _k, float _kNeg, float _kFriction)
+		: geoPair()
+	{
+		k = _k;
+		kNeg = _kNeg;
+		kFriction = _kFriction;
+		frictionOffset = G3D::Vector3::zero();
+		firstApproach = 0;
+		threshold = 0;
+		forceMagLast = 0;
+	}
 }

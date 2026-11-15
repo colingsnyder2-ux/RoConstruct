@@ -48,6 +48,25 @@ namespace RBX
 		connectors.fastClear();
 		matched.fastClear();
 	}
+
+	// 00607e00: from the last connector down; connector i is removed unless matched[i] and its GeoPair test
+	// ContactConnector::isGeoPairWithinTolerance 00606770 holds (the donor removes only !matched[i]). Removal is
+	// G3D::Array::fastRemove on both arrays (resize 006078f0 / 0047ff20 with shrink), then Contact::deleteConnector
+	// 00606d10 inlined as in deleteAllConnectors: Kernel::removeConnector 005fb1f0 and the deleting destructor.
+	void BlockBlockContact::deleteUnmatchedConnectors()
+	{
+		for (int i = connectors.size() - 1; i >= 0; i--)
+		{
+			if (!matched[i] || !connectors[i]->isGeoPairWithinTolerance())
+			{
+				ContactConnector* connector = connectors[i];
+				connectors.fastRemove(i);
+				matched.fastRemove(i);
+				getKernel()->removeConnector(connector);
+				delete connector;
+			}
+		}
+	}
 }
 
 #ifdef NATIVE_BLOCKBLOCKCONTACT_PENDING

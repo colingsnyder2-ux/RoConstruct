@@ -16,7 +16,9 @@
 //   cornerRadius +0x14: onSetSize stores vertices[0].magnitude() (fsqrt); getRadius 004e5b70 and getCenterToCorner
 //            00648270 read it.
 #include "v8world/Geometry2008.h"
-#include "v8kernel/Pair.h"
+// GeoPairType (getBallInsideInfo / getBallBlockInfo): the 2008 GeoPair2008.h, not the donor v8kernel/Pair.h (which
+// pulls the donor Body.h and cannot share a unit with Body2008.h / GeoPair2008.h, e.g. BlockBlockContactStep.cpp).
+#include "v8world/GeoPair2008.h"
 #include "util/NormalId.h"
 #include <G3D/Vector2.h>
 #include <G3D/Vector3int16.h>
