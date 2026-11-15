@@ -113,17 +113,28 @@ def run(addr):
     analog = ROOT / 'src/2008-06' / (addr + '.cpp')
     prompt = (RULES.format(name=row['name'], signature=row.get('signature', '')) +
               '\n--- REAL HEADERS (already included) ---\n' + '\n'.join(headers) +
-              ('\n--- FactoryProduct definitions that already compile (Creator ctor/dtor, className) ---\n' + cg.DEFINITIONS
+              ('\n--- FactoryProduct template definitions (compile; the atexit side already matches byte for byte) ---\n'
+               + cg.DEFINITIONS + '\nWrite a COMPLETE REPLACEMENT of this namespace RBX { ... } block (keep what is right, '
+               'add/change what the target assembly needs, e.g. the extra store). Do NOT write any explicit instantiation: '
+               'the harness appends `template const RBX::ICreator& RBX::FactoryProduct<...>::getCreator();` (creator is private).\n'
                if 'FactoryProduct<' in row.get('signature', '') else '') +
               '\n--- ORIGINAL ASSEMBLY (the target) ---\n' + asm + m.annotate_asm(asm) +
               ('\n--- REFERENCE ANALOG (placeholder names) ---\n' + analog.read_text(errors='replace')[:4000] if analog.is_file() else ''))
     history, status, detail, used = '', 'no-reply', '', ''
     for n, model in enumerate(LADDER):
-        body = m.ask(model, prompt + history, row['name'])
+        m.ask(model, prompt + history, row['name'])
+        # ask() keeps only blocks defining `::name(` (methods); a global definition has none: take the last block.
+        blocks = re.findall(r'```(?:cpp|c\+\+)?\s*\n(.*?)```', getattr(m.TOOL, 'reply', '') or '', re.S)
+        body = blocks[-1] if blocks else None
         used = model
         if not body:
             continue
-        status, detail = cg.gate_code(work, headers, body, want)
+        code = body
+        if 'FactoryProduct<' in row.get('signature', ''):
+            targs, _ = cg.instance(row['signature'])
+            code = (re.sub(r'^\s*template\s+(?!<)[^;{}]+;\s*$', '', body, flags=re.M) +
+                    '\ntemplate const RBX::ICreator& RBX::FactoryProduct<%s>::getCreator();\n' % targs)
+        status, detail = cg.gate_code(work, headers, code, want)
         status = status[addr]
         (work / ('try%d.cpp' % n)).write_text(body)
         if status == 'inactive_exact':

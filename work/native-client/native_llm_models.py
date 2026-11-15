@@ -132,7 +132,8 @@ def throughput(rows=None, hours=48):
     if rows is None:
         rows = [json.loads(line) for line in LOG.read_text().splitlines() if line.strip()] if LOG.is_file() else []
     first = {}
-    for r in sorted((r for r in rows if r.get('time')), key=lambda r: r['time']):
+    retracted = {r['addr'] for r in rows if r.get('status') == 'retracted'}
+    for r in sorted((r for r in rows if r.get('time') and r['addr'] not in retracted), key=lambda r: r['time']):
         if r['status'] == 'inactive_exact' and r['addr'] not in first:
             first[r['addr']] = (r['time'], r.get('size', 0))
     now = time.time()
@@ -172,7 +173,8 @@ def dashboard_state():
     return {'cost': {'usd_total': spend(rows), 'usd_24h': spend(recent), 'tokens_total': tokens(rows), 'tokens_24h': tokens(recent),
                      'since': min((r['time'] for r in rows if r.get('tokens')), default=None)},
             'models': report(), 'runs': runs(rows), 'throughput': throughput(rows),
-            'unique_exact': len({r['addr'] for r in rows if r['status'] == 'inactive_exact'}),
+            'unique_exact': len({r['addr'] for r in rows if r['status'] == 'inactive_exact'}
+                                - {r['addr'] for r in rows if r['status'] == 'retracted'}),
             'attempts': [{k: r.get(k) for k in keep} for r in rows[-40:]][::-1],
             'run': logs[-1].name if logs else '',
             'running': bool(rows) and time.time() - rows[-1].get('time', 0) < 600,

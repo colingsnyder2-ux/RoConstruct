@@ -593,6 +593,30 @@ def declarations_for(error, limit=6):
             'or the header member at the same offset) ---\n' + '\n\n'.join(out)[:4000])
 
 
+HEADER_TEXT = None
+REGISTRY_NAMES = None
+
+
+def plausible_binding(symbol, addr):
+    """A learned reference identity is rejected only when it is a plain C++ name (`?leaf@...`) that no native/vendor
+    header declares and the registry never saw: the model's own invention (2026-11-15: an answer declared
+    `extern int g_factoryCreatorTag;` and learning bound it to whatever address the store hit).  Header-class
+    ctors/dtors/operators/templates (`??...`), C/import names and ICF-folded twins stay allowed."""
+    global HEADER_TEXT, REGISTRY_NAMES
+    if not symbol.startswith('?') or symbol.startswith('??'):
+        return True
+    if REGISTRY_NAMES is None:
+        REGISTRY_NAMES = {row.get('name') for row in load_registry().values()}
+    if symbol in REGISTRY_NAMES:
+        return True
+    if HEADER_TEXT is None:
+        declaring_header('')                                   # loads DECL_FILES
+        # identifiers declared anywhere in native/vendor headers (one set: O(1) per check)
+        vendor = '\n'.join(p.read_text(errors='replace') for root in VENDOR_ROOTS if root.is_dir() for p in root.glob('*.h'))
+        HEADER_TEXT = set(re.findall(r'[A-Za-z_]\w*', '\n'.join(text for _, text in DECL_FILES) + vendor))
+    return symbol[1:].split('@', 1)[0] in HEADER_TEXT
+
+
 def learn_identities(t, res):
     """If the target's only rejections are unproven callee identities, bind them from the exact candidate's relocations
     (native_reference_alias_bind.py) into CLOSURE. -> True when new bindings were added."""
@@ -627,7 +651,7 @@ def learn_identities(t, res):
         have = {(b['symbol'], b.get('addr')) for b in closure['bindings']}
         new = [dict(symbol=b['symbol'], addr=b['address'], address=b['address'], evidence=b.get('identity_evidence', 'llm-exact-reference'),
                     votes=b.get('votes', 1), body_exact=False, function_start=False)
-               for b in found if (b['symbol'], b['address']) not in have]
+               for b in found if (b['symbol'], b['address']) not in have and plausible_binding(b['symbol'], b['address'])]
         if not new:
             return False
         closure['bindings'] += new
@@ -894,9 +918,11 @@ ANNOTATE = {}            # lazily loaded: registry names + exe image
 def annotate_asm(asm):
     """Names for the raw addresses in the target assembly, so models stop guessing callees, RTTI casts and globals:
     identity-registry symbols (demangled with VC9 undname), RTTI TypeDescriptor names and string literals."""
-    if not ANNOTATE:
-        ANNOTATE['reg'] = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
-        ANNOTATE['base'], ANNOTATE['image'] = match._image('2008-06')
+    if 'image' not in ANNOTATE:
+        # Filled aside, published in one update: threads saw 'reg' present but 'base' missing (KeyError).
+        reg = load_registry()
+        base, image = match._image('2008-06')
+        ANNOTATE.update(reg=reg, base=base, image=image)
     reg, base, image = ANNOTATE['reg'], ANNOTATE['base'], ANNOTATE['image']
     notes, decorated = {}, {}
     for hexaddr in dict.fromkeys(re.findall(r'\b0x([0-9a-f]{6,8})\b', asm)):

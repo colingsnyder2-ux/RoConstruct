@@ -139,7 +139,7 @@ def gate_code(work, headers, code, want, keep=False):
         have = {(b['symbol'], b['addr']) for b in closure['bindings']}
         new = [dict(symbol=b['symbol'], addr=b['address'], address=b['address'], votes=1,
                     evidence=b.get('identity_evidence', 'creator-gate-reference'), body_exact=False, function_start=False)
-               for b in learned if (b['symbol'], b['address']) not in have]
+               for b in learned if (b['symbol'], b['address']) not in have and m.plausible_binding(b['symbol'], b['address'])]
         if not new:
             break
         closure['bindings'] += new
