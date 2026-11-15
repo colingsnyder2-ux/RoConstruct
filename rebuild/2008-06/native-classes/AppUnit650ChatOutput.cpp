@@ -51,8 +51,10 @@ namespace RBX
 	}
 
 #ifdef NATIVE_APPUNIT650_PENDING
-	// Needs Player::getSuperSafeChat() const { return superSafeChat; } inline in native Network/Player.h (proposal:
-	// the original reads Player +0x1b1 directly at 00650d65; no out-of-line getter exists).
+	// 00650cc0. The Player.h blocker is gone (inline getSuperSafeChat() reads +0x1b1, as 00650d65 does), and with the
+	// guard defined this body is exact in this unit (batch 22 isolated trial). It stays guarded only because
+	// native-classes/ChatOutput.cpp already defines the same ChatOutput::onEvent (exact there): one owner per body in a
+	// linked set. Drop this copy once the owner confirms ChatOutput.cpp keeps it.
 	void ChatOutput::onEvent(const Network::Players*, Network::ChatMessage event)
 	{
 		while (fifo.size() > (size_t)GameSettings::singleton().chatScrollLength)

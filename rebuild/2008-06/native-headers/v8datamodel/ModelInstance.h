@@ -41,6 +41,11 @@ namespace RBX
 		virtual void render3dAdorn(Adorn* adorn);
 		virtual void render3dSelect(Adorn* adorn, SelectState selectState);
 	protected:
+		// 00585050 / 00584fc0: ModelInstance's own entries in vtable slots 7 / 8 of 00830dc4 (also inherited unchanged by
+		// the RootInstance / Workspace vtables 00831d68, 008337f0, 00833a70 and 00833db0); they override the PVInstance
+		// declarations, so the slot order is unchanged.
+		virtual void onChildAdded(Instance* child);
+		virtual void onChildRemoving(Instance* child);
 		virtual void onDescendentAdded(Instance* instance);
 		virtual void onDescendentRemoving(const boost::shared_ptr<Instance>& instance);
 		virtual bool askSetParent(const Instance* instance) const;

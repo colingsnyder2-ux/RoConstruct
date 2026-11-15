@@ -3,10 +3,11 @@
 // (00645a70..00646550): both RotateJoint constructors, the destructor, removeFromKernel, the RotateP / RotateV
 // stepWorld bodies and constructors, the RotateJoint scalar deleting destructor (vtable 0084adc4 is emitted here) and
 // surfaceTypeToJoint. getChannelValue 00645af0, canBuildJoint 00645f60, getTorqueArmLength and putInKernel 00646550
-// need the native Primitive / Body; DynamicRotateJoint::stepUi 006463f0 needs World::ticklePrimitive (see
-// NATIVE_WORLD_JOINTS_PENDING_WORLD and the recorder's PROPOSALS).
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// need the native Primitive / Body; DynamicRotateJoint::stepUi 006463f0 uses World::ticklePrimitive
+// (v8world/World2008.h) and the 2008 IPipelined::getWorld (opt-in kernel-stages IStage, KERNEL_STAGE 7).
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Joints2008.h"
+#include "v8world/World2008.h"
 #include "v8kernel/Kernel.h"
 #include "v8kernel/Connector.h"
 #include "v8kernel/Constants.h"
@@ -66,13 +67,9 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_WORLD_JOINTS_PENDING_WORLD
 	// 006463f0 (slot 14 of RotatePJoint and RotateVJoint): getChannelValue 00645af0, IPipelined::getWorld inline
-	// (KERNEL_STAGE 7), World::ticklePrimitive 005e9410 for both primitives. Needs a World declaration reachable
-	// without the donor joint headers, and the 2008 IStage (see PROPOSALS).
-	// lf13: World2008.h now declares ticklePrimitive(Primitive*, int); the remaining blocker is the same as
-	// Joint::setPrimitive 006456e0 in WorldJoint.cpp: the donor IPipelined::getWorld is not inlined and uses
-	// KERNEL_STAGE 8, the 2008 inline compares with 7 (header proposal), so the guard stays.
+	// (IPipelined2008.h, KERNEL_STAGE 7 of the opt-in kernel-stages IStage), World::ticklePrimitive 005e9410
+	// (v8world/World2008.h) for both primitives.
 	void DynamicRotateJoint::stepUi(int uiStepId)
 	{
 		channelValue = getChannelValue(uiStepId);
@@ -83,7 +80,6 @@ namespace RBX
 			world->ticklePrimitive(getPrimitive(1), true);
 		}
 	}
-#endif
 
 	// 00645d90
 	RotatePJoint::RotatePJoint(Primitive* axlePrim, Primitive* holePrim, const G3D::CoordinateFrame& c0,

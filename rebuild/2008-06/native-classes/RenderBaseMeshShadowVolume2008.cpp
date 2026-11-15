@@ -5,7 +5,7 @@ namespace RBX { namespace RenderBase {
 void Mesh::computeDirectionalShadowVolume(
 	const G3D::CoordinateFrame& cframe,
 	const G3D::Vector3& wsLightVector,
-	G3D::Array<unsigned int>& indexArray,
+	G3D::Array<int>& indexArray,
 	G3D::Array<G3D::Vector3>& shadowVertex,
 	bool generateLightCap
 ) const
@@ -22,7 +22,7 @@ void Mesh::computeDirectionalShadowVolume(
 	if (generateLightCap) {
 		for (int f = 0; f < backface.size(); f++) {
 			if (!backface[f]) {
-				int n = shadowVertex.size();
+				unsigned int n = shadowVertex.size(); // 00549050 copies n into a conversion temporary before append
 				indexArray.append(n, n + 1, n + 2);
 
 				const G3D::MeshAlg::Face& face = shadowSurface.faceArray[f];
@@ -53,8 +53,8 @@ void Mesh::computeDirectionalShadowVolume(
 			int v1 = shadowVertex.size(); // first new vertex index
 			shadowVertex.append(wvertex0, wvertex1);
 
-			unsigned int A;
-			unsigned int B;
+			int A; // int with the Array<int> index type: no conversion temporaries at 00549050
+			int B;
 
 			if (b0) {
 				A = v1;

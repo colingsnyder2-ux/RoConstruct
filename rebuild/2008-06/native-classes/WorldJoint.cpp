@@ -1,11 +1,13 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::Joint (inactive); evidence in native-headers/v8world/Joints2008.h.
 // Verified by tests/record_native_world_joints.py. Rows of the Joint unit (00645490..006456e0, 00645750): the
 // destructor 00645490, the constructors 006455c0 / 006456a0, the scalar deleting destructor 00645680 (vtable
 // 0084ad44 is emitted here), canBuildJointTight 00645560 / canBuildJointLoose 00645590. canBuildJoint 006454b0 needs
 // the native Primitive (getCoordinateFrame, getFaceInWorld) and is not part of this unit; setPrimitive 006456e0 and
-// setJointCoord 00645750 need a World declaration that does not drag the donor joint headers in (see
-// NATIVE_WORLD_JOINTS_PENDING_WORLD and the recorder's PROPOSALS).
+// setJointCoord 00645750 use v8world/World2008.h and the 2008 IPipelined::getWorld of IPipelined2008.h (this unit
+// opts in to the kernel-stages IStage, KERNEL_STAGE 7).
 #include "v8world/Joints2008.h"
+#include "v8world/World2008.h"
 #include "util/Math.h"
 
 namespace RBX
@@ -36,13 +38,9 @@ namespace RBX
 	{
 	}
 
-#ifdef NATIVE_WORLD_JOINTS_PENDING_WORLD
-	// Needs a World declaration (v8world/World.h) reachable without the donor joint headers; see PROPOSALS.
-	// Trial (lf13): native-headers/v8world/World2008.h now provides that World declaration and the unit compiles with
-	// it, but the body stays non-exact: the donor IPipelined::getWorld (v8world/IPipelined.h, 85 bytes with its
-	// asserts, KERNEL_STAGE 8) is called out of line, while 006456e0 inlines it (currentStage +0x4, getStageType
-	// slot 1, `cmp eax, 7`, upstream +0x4, IWorldStage world +0xc). Header proposal (IStage/IPipelined owner), so the
-	// guard stays until the 2008 getWorld is reachable from Joints2008.h.
+	// Built through the opt-in kernel-stages IStage (native-flags) and the 2008 IPipelined::getWorld inline of
+	// IPipelined2008.h (KERNEL_STAGE 7), with the World declaration of v8world/World2008.h. Earlier trial (lf13): with
+	// the donor getWorld (out of line, 85 B with asserts, KERNEL_STAGE 8) the body was not exact.
 	// 006456e0: IPipelined::getWorld inline (KERNEL_STAGE 7 -> upstream), World::onJointPrimitiveNulling 005e9240,
 	// Edge::setPrimitive 00659290, World::onJointPrimitiveSet 005e9250.
 	void Joint::setPrimitive(int i, Primitive* p)
@@ -76,7 +74,6 @@ namespace RBX
 			}
 		}
 	}
-#endif
 
 	// 00645590
 	bool Joint::canBuildJointLoose(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)

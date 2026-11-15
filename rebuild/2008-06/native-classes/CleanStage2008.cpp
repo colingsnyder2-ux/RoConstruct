@@ -1,3 +1,4 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::CleanStage (inactive); evidence in native-headers/v8world/CleanStage2008.h.
 // Verified by tests/record_native_kernel_stages.py. Rows of the CleanStage unit (0064a310..0064a510): the constructor
 // 0064a310, the header-inline COMDATs IStage::stepWorld 0064a380 / IStage::getKernel 0064a390, the scalar deleting
@@ -17,13 +18,12 @@ namespace RBX
 	{
 	}
 
-#ifdef NATIVE_KERNEL_STAGES_PENDING
-	// 00416690 (folded `xor eax, eax`); needs the 2008 StageType (generated v8kernel/IStage.h).
+	// 00416690 (folded `xor eax, eax`): CLEAN_STAGE 0 of the 2008 StageType (opt-in native-headers/kernel-stages
+	// v8kernel/IStage.h through the native-flags line; the default flags of this file plus that overlay).
 	IStage::StageType CleanStage::getStageType()
 	{
 		return CLEAN_STAGE;
 	}
-#endif
 
 	// 0064a3e0
 	void CleanStage::onPrimitiveAdded(Primitive* p)

@@ -12,14 +12,12 @@
 // 00573210 (0.6, 0.6, 0.6, 1) are written as menuSelect / menuEnabledFill / menuDisabledFill of gui/Gui.h (codegen
 // analogs; the recorder binds them by their call sites).
 //
-// NATIVE_GUIWIDGETS_PENDING: the body needs `Verb* getVerb() { return verb; }` (the donor's protected accessor) in
-// VerbWidget (gui/Widget.h, owner: widget family); the generated overlay under out/native-layouts/gui-widgets2008-pending
-// supplies it.
+// VerbWidget::getVerb (the donor's protected accessor) is inline in native-headers/gui/Widget.h.
 #include "gui/WidgetMenuItem.h"
 
 namespace RBX
 {
-#ifdef NATIVE_GUIWIDGETS_PENDING
+	// 0064edb0
 	void MenuItem::render2d(Adorn* adorn)
 	{
 		if (widgetState == HOVER || widgetState == DOWN_OVER)
@@ -34,5 +32,4 @@ namespace RBX
 			label2d(adorn, accelerator, isEnabled() ? GuiItem::menuEnabledFill() : GuiItem::menuDisabledFill(),
 					G3D::Color4::clear(), Adorn::XALIGN_RIGHT);
 	}
-#endif
 }

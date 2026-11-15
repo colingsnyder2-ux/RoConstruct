@@ -11,8 +11,10 @@ extern CRobloxApp theApp;   // 0096dbe0 (ecx of the 00449bf0 call in 0044a170)
 
 #ifdef NATIVE_APPLEAVES2008_PENDING
 // 0044a170: theApp.initializeFramework(true) (push 1; 00449bf0 tests its argument as a byte), then the
-// CDocTemplate::CreateNewFrame import. Needs CRobloxApp::initializeFramework(bool); the committed header declares
-// it as (void*), see the proposal in tests/record_native_app_leaves2008.py.
+// CDocTemplate::CreateNewFrame import. The header blocker is gone (CRobloxApp.h:40 declares
+// BOOL initializeFramework(bool) // 00449bf0) and with the guard defined this body is exact in this unit (batch 22
+// isolated trial). It stays guarded only because native-classes/CRbxDocTemplate.cpp (native-headers/CRbxDocTemplate.h)
+// already defines the same CRbxDocTemplate::CreateNewFrame, exact there: one class owner must be chosen first.
 CFrameWnd* CRbxDocTemplate::CreateNewFrame(CDocument* pDoc, CFrameWnd* pOther)
 {
     theApp.initializeFramework(true);

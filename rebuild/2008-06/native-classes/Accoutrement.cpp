@@ -62,7 +62,10 @@ namespace RBX
 		return attachmentPoint;
 	}
 
-	void Accoutrement::downFrom_InCharacter()
+	// 005b0920. Only caller setDesiredState 005b2510 calls it out of line (as Tool::setDesiredState 005ff900 calls
+	// the two-disconnect steps 005fd4c0 / 005fd4e0), while VS2008 /Ob2 inlines a plain body; the rbxgs donor marks
+	// it __declspec(noinline) for the same reason. INFERRED: the attribute is not proven to be original source.
+	__declspec(noinline) void Accoutrement::downFrom_InCharacter()
 	{
 		characterChildAdded.disconnect();
 		characterChildRemoved.disconnect();
@@ -113,6 +116,58 @@ namespace RBX
 			backendAccoutrementState = (AccoutrementState)value;
 			raisePropertyChanged(prop_BackendAccoutrementState);
 		}
+	}
+
+	// 005b2510: walk one state per pass toward desiredState (backendAccoutrementState +0x154), the inlined
+	// setBackendAccoutrementState raising prop_BackendAccoutrementState (00976ccc) through 0040db00. serviceProvider is
+	// only read by the donor's RBXASSERT(Network::Players::backendProcessing(...)), absent in this release build.
+	void Accoutrement::setDesiredState(AccoutrementState desiredState, const ServiceProvider* serviceProvider)
+	{
+		do
+		{
+			if (backendAccoutrementState < desiredState)
+			{
+				switch (backendAccoutrementState)
+				{
+				case IN_CHARACTER:
+					upTo_Equipped();
+					break;
+				case IN_WORKSPACE:
+					upTo_InCharacter();
+					break;
+				case HAS_HANDLE:
+					upTo_InWorkspace();
+					break;
+				case NOTHING:
+					connectTouchEvent();
+					break;
+				default:
+					break;
+				}
+				setBackendAccoutrementState(backendAccoutrementState + HAS_HANDLE);
+			}
+			else if (desiredState < backendAccoutrementState)
+			{
+				switch (backendAccoutrementState)
+				{
+				case EQUIPPED:
+					downFrom_Equipped();
+					break;
+				case IN_CHARACTER:
+					downFrom_InCharacter();
+					break;
+				case IN_WORKSPACE:
+					downFrom_InWorkspace();
+					break;
+				case HAS_HANDLE:
+					downFrom_HasHandle();
+					break;
+				default:
+					break;
+				}
+				setBackendAccoutrementState(backendAccoutrementState - HAS_HANDLE);
+			}
+		} while (desiredState != backendAccoutrementState);
 	}
 
 	void Accoutrement::setAttachmentPos(const G3D::Vector3& v)

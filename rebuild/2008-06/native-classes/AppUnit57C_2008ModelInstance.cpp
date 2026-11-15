@@ -16,9 +16,6 @@
 //            (FlagHeight).
 // Unit profile: document-swap flags, /fp:fast (x87 order of updatePrimaryPart / getPrimaryPartInternal) and
 // /U_RELEASEASSERT (rbx_static_cast and RBXASSERT compile to nothing, as in Feature.cpp).
-// NATIVE_APPUNIT57C_PENDING bodies need declarations the shared headers do not have yet (the ModelInstance
-// onChildAdded / onChildRemoving overrides, vtable slots 7 / 8); the recorder builds them against generated header
-// copies under out/native-layouts/app-unit57c-2008/pending/ (proposals in the receipt).
 // Codegen analog: bodies follow the donor tools/rbxgs v8datamodel/ModelInstance.cpp shape; the recorder proves each
 // against the bytes and every call / data target.
 // Prove flags: /U_RELEASEASSERT as stated above (getTypedParent's rbx_static_cast assert otherwise keeps
@@ -30,10 +27,8 @@
 #include "v8world/Primitive.h"
 #include "tool/DragUtilities.h"
 #include "AppDraw/Draw.h"
-#ifdef NATIVE_APPUNIT57C_PENDING
 #include "v8datamodel/Clothing.h"           // IModelModifier (defined there)
 #include <algorithm>
-#endif
 
 static bool physicalCharacterHacked = false;
 
@@ -130,21 +125,19 @@ namespace RBX
 		PVInstance::onDescendentRemoving(instance);
 	}
 
-#ifdef NATIVE_APPUNIT57C_PENDING
 	// 00585050 / 00584fc0: vtable slots 7 / 8 of 00830dc4 (dynamic_cast to IModelModifier 00936908, modifiers +0x1ec,
-	// push_back 004213a0 / erase 00459830). The native ModelInstance.h does not declare these overrides (proposal).
-	void ModelInstance::onChildAdded(Instance* child)
+	// push_back 004213a0 / erase 00459830).
+	void ModelInstance::onChildAdded(Instance* child)   // 00585050
 	{
 		if (IModelModifier* modifier = dynamic_cast<IModelModifier*>(child))
 			modifiers.push_back(modifier);
 	}
 
-	void ModelInstance::onChildRemoving(Instance* child)
+	void ModelInstance::onChildRemoving(Instance* child)   // 00584fc0
 	{
 		if (IModelModifier* modifier = dynamic_cast<IModelModifier*>(child))
 			modifiers.erase(std::find(modifiers.begin(), modifiers.end(), modifier));
 	}
-#endif
 
 	// 005834f0: exact only with the 2008 PartInstance (embedded Primitive at +0x228, native-headers/part-embedded).
 	const Primitive* ModelInstance::getBiggestPrimitive() const

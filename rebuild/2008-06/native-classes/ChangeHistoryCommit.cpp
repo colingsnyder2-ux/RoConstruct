@@ -14,7 +14,7 @@ RBX::HistoryItem* findHistoryItem(RBX::HistoryRecord* record, RBX::Instance* key
 RBX::HistoryItem::HistoryItem() : kind(0) {}
 
 void RBX::HistoryItem::mergeProperty(
-    const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>& property)
+    const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>& property)
 {
     properties[property.first] = property.second;
 }
@@ -89,6 +89,6 @@ void RBX::ChangeHistoryService::mergeFirst()
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::_bi::value<RBX::HistoryItem *>;
-template class boost::_mfi::mf1<void,RBX::HistoryItem,std::pair<RBX::Reflection::PropertyDescriptor const * const,RBX::Reflection::Value> const &>;
+template class boost::_mfi::mf1<void,RBX::HistoryItem,std::pair<RBX::Reflection::PropertyDescriptor const *,RBX::Reflection::Value> const &>;
 template class std::allocator<std::pair<RBX::Instance * const,RBX::HistoryItem> >;
 template class std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const * const,RBX::Reflection::Value> >;

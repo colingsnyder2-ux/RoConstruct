@@ -41,20 +41,14 @@ namespace RBX
 	{
 	}
 
-#ifdef NATIVE_SPAWN_PENDING
-	// Needs Instance::propArchivable (BoundProp<bool,1> 00973e74, initializer 007f28e0) in v8tree/Instance.h and the
-	// 2008 TypedPropertyDescriptor::GetSet second bool virtual (setValue is slot 3, +0xc). Verified against generated
-	// header copies by the recorder.
+	// 005d30c0: Instance::propArchivable (BoundProp<bool,1> 00973e74, initializer 007f28e0) set through the 2008
+	// TypedPropertyDescriptor::GetSet setValue (slot 3, +0xc). The ctor instantiates DescribedCreatable<SpawnerService,
+	// Instance, sSpawnerService>() (005d2fc0, 005d1d10) implicitly.
 	SpawnerService::SpawnerService()
 	{
 		setName("SpawnerService");
 		Instance::propArchivable.setValue(this, false);
 	}
-#else
-	// The SpawnerService constructor is pending; instantiate its base constructor so the template bodies the original
-	// emits in this unit (005d2fc0, 005d1d10) are also compiled from the current headers.
-	template DescribedCreatable<SpawnerService, Instance, sSpawnerService>::DescribedCreatable();
-#endif
 
 	SpawnLocation::SpawnLocation()
 		: neutral(true),

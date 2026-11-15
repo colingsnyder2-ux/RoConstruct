@@ -91,7 +91,7 @@ extern const char sStrafingNoPhysics[];                  // 0084cd80 "StrafingNo
 // - destructor 0066ee10: if (+0xc4) 0066ed50; ~scoped_connection 005954b0 (+0xd0);
 //   shared_ptr release (+0xc4/+0xc8); inline ~SimJob (vptr 0083f72c, vector +0xb0/+0xa4);
 //   ~HumanoidState 006435c0. Deleting destructor 00667410. Allocation size of the leaves 0x114.
-// - onStep 0066f2c0 (pending: World/Body layouts) adds to the +0xe4 frame translation
+// - onStep 0066f2c0 (pending: see the guarded draft in HumanoidStates3.cpp) adds to the +0xe4 frame translation
 //   (+0x108..+0x110). Slots 3..5 return false; getStateType 7 (0077d800, also inherited
 //   by RunningNoPhysics).
 // - 0066eaa0 (nonvirtual, this = MovingNoPhysicsBase): getHumanoid()->getTorsoPrimitive()
@@ -117,6 +117,12 @@ public:
     // 0066edc0 (33 bytes, thiscall, no arguments; analog name): bound by the constructor 0066f070 through
     // boost::bind(&MovingNoPhysicsBase::onTorsoAncestryChanged, this) (member pointer {0066edc0, 0}).
     void onTorsoAncestryChanged();                       // 0066edc0
+    // 0066eb90 (259 bytes, thiscall, `ret 4`, analog name): only caller onStep 0066f2c0 (its last call). It lies in this
+    // class's address run (0066eaa0 getTorsoAssembly .. 0066f2c0 onStep), not in the HumanoidState unit (00643xxx).
+    // getRootBody 005d9180, getFloorPrimitive 00643d30, std::min of the two branch masses (Cofm::getMass 0065ff10 or
+    // Body::mass +0x8c), Units::kmsAccelerationToRbx 00660180 of a function-local static (0, -9.81f, 0) (0097bec8, guard
+    // 0097bed4), times dt and 0.5f, sent to the floor body's root SimBody 00629bb0 at floorTouchInWorld (+0x2c).
+    void applyFloorImpulse(float dt);                    // 0066eb90
 };
 
 // RunningNoPhysics : Named<MovingNoPhysicsBase, sRunningNoPhysics> (9 bases).

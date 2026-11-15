@@ -6,11 +6,14 @@
 #include <GLG3D/RenderDevice.h>
 
 namespace RBX { namespace RenderBase {
+// 00552270 (Bucket::optimize call 00540087): cdecl Mesh::aggregate 00547610 with hidden RCP<Mesh> return,
+// assigned to mesh +0x2c through RCP<Mesh>::operator= (original reference 004d7560).
 void AggregateChunk::makeMesh()
 {
     mesh = Mesh::aggregate(components, _cframe, radius);
 }
 
+// 00552300 (vtable 0082d258 slot 2, ret 0x10). shadowIndexArray is Array<int>: 00552612 calls sendIndices<int> 005029c0.
 void AggregateChunk::renderShadows(G3D::RenderDevice* rd, const G3D::GLight& light,
     bool caps, float shadowVertexDistance)
 {

@@ -28,6 +28,10 @@ namespace RBX
 		void continueDragging();
 		void finishDragging();
 		bool mousePartAlive();
+		boost::weak_ptr<PartInstance> getMousePart()                     // 00665aa0 (inline, emitted out of line in the PartDragTool unit)
+		{
+			return mousePart;
+		}
 		bool anyDragPartAlive();
 		void alignAndCleanParts();
 		G3D::Vector3 hitObjectOrPlane(const UIEvent&);

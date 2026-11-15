@@ -1,3 +1,4 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::SimJobStage (inactive); evidence in native-headers/v8world/SimJobStage2008.h.
 // Verified by tests/record_native_kernel_stages.py. Rows built here: onEdgeAdded 0064d060, onEdgeRemoving 0064d090.
 // The constructor 0064d300 (with the inline destructor, the scalar deleting destructor 0064d380 and the vtable
@@ -17,13 +18,12 @@
 
 namespace RBX
 {
-#ifdef NATIVE_KERNEL_STAGES_PENDING
-	// 005cb9d0 (folded `mov eax, 6`); needs the 2008 StageType (generated v8kernel/IStage.h).
+	// 005cb9d0 (folded `mov eax, 6`): SIMJOB_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h
+	// through the native-flags line).
 	IStage::StageType SimJobStage::getStageType()
 	{
 		return SIMJOB_STAGE;
 	}
-#endif
 
 	// 0064d060
 	void SimJobStage::onEdgeAdded(Edge* e)

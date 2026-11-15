@@ -11,7 +11,9 @@
 //               STL build; size read from _Myfirst +0x0c / _Mylast +0x10 at 006034f7) and text +0x18 (std::string,
 //               copied at 006035a7). Only the members these bodies read; no size is claimed.
 //   SafeChat    singleton() 00658880 (called at 00603803); chatRoot (boost::scoped_ptr<ChatOption>) +0x00 is read
-//               directly by buildChatMenu(Adorn*) (00603808). Only that member; no size is claimed.
+//               directly by buildChatMenu(Adorn*) (00603808). Only that member; no size is claimed. The constructor is
+//               inline (SafeChat_singleton 006587e0 calls loadChatTree 00658660 after new); ChatOption is 0x34 bytes
+//               (new(0x34) at 0065840d / 00658712) with out-of-line ctors 00658100 / 00658170 and dtor 00658200.
 #include "gui/Gui.h"
 #include "v8tree/Verb.h"
 #include <boost/scoped_ptr.hpp>
@@ -19,6 +21,7 @@
 #include <string>
 
 struct NativeGuiHudBuilderLayout;
+class XmlElement;
 
 namespace RBX
 {
@@ -31,6 +34,11 @@ namespace RBX
 	public:
 		std::vector<ChatOption*> children;                           // +0x00 (006034f7)
 		std::string text;                                            // +0x18 (006035a7)
+
+	public:
+		ChatOption(std::string text);                                // 00658170 (new(0x34) in loadChildren 0065840d)
+		ChatOption();                                                // 00658100 (new(0x34) in loadChatTree 00658712)
+		~ChatOption();                                               // 00658200 (evidence name)
 	};
 
 	class SafeChat
@@ -39,10 +47,19 @@ namespace RBX
 		boost::scoped_ptr<ChatOption> chatRoot;                      // +0x00 (00603808)
 
 	public:
+		SafeChat()                                                   // inline in SafeChat_singleton 006587e0
+		{
+			loadChatTree();
+		}
 		ChatOption* getChatRoot()
 		{
 			return chatRoot.get();
 		}
+		std::string getMessage(std::vector<std::string> code);       // 006584e0
+	private:
+		void loadChatTree();                                         // 00658660
+		void loadChildren(ChatOption* parent, const XmlElement* parentElement);  // 00658360
+	public:
 		static SafeChat& singleton();                                // 00658880
 	};
 

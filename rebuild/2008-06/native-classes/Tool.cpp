@@ -5,10 +5,8 @@
 #include "v8datamodel/PartInstance.h"
 #include "Network/Players.h"
 #include "v8xml/XmlElement.h"
-#ifdef NATIVE_TOOL_PENDING
 #include "v8datamodel/Mouse.h"
 #include "v8datamodel/ToolMouseCommand.h"
-#endif
 
 namespace RBX
 {
@@ -152,9 +150,8 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_TOOL_PENDING
-	// 005ff680. Needs a ToolMouseCommand declaration (Named<ScriptMouseCommand, sToolMouseCommand> with the 2008
-	// class-name array); there is no native v8datamodel/ToolMouseCommand.h. ScriptMouseCommand::getMouse 005cf8d0.
+	// 005ff680: toolMouseCommand +0x200 -> the inherited non-virtual ScriptMouseCommand::getMouse 005cf8d0 (direct call
+	// 005ff6c7); otherwise Creatable<Instance>::create<Mouse> 005ff600.
 	boost::shared_ptr<Mouse> Tool::getMouse()
 	{
 		boost::shared_ptr<Mouse> mouse;
@@ -166,7 +163,6 @@ namespace RBX
 
 		return mouse;
 	}
-#endif
 
 	void Tool::activate()
 	{

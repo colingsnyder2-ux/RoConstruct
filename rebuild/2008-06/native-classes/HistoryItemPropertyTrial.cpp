@@ -15,7 +15,7 @@ void RBX::HistoryItem::captureProperty(const Reflection::PropertyDescriptor* pro
 }
 
 void RBX::HistoryItem::applyProperty(
-    const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>& property)
+    const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>& property)
 {
     property.first->setVariant(object.get(), property.second);
 }
@@ -27,7 +27,7 @@ static __forceinline RBX::HistoryItem* findHistoryItem(RBX::HistoryRecord* recor
 }
 
 void RBX::HistoryItem::unplayProperty(
-    const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>& property)
+    const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>& property)
 {
     bool isParent = property.first == &Instance::propParent;
     std::list<HistoryRecord*>::iterator it = service->backward;
