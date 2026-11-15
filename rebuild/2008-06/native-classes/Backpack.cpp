@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // 2008-06 native RBX::Backpack (inactive): the Backpack part of the original Hopper unit (005d16d0..005d1b70).
 // Evidence in native-headers/v8datamodel/Backpack.h (IScriptOwner from the native script/Script.h).
 #include "v8datamodel/Backpack.h"
@@ -27,22 +28,27 @@ namespace RBX
 	}
 
 	// 005d18e0
-	IScriptOwner* Backpack::scriptShouldRun(Script* script)
+IScriptOwner* Backpack::scriptShouldRun(Script* script)
+{
+	Workspace* workspace = ServiceProvider::find<Workspace>(this);
+	if (workspace)
 	{
-		Workspace* workspace = ServiceProvider::find<Workspace>(this);
-		if (!workspace)
-			return NULL;
-
 		bool isLocalBackpack = getParent() == Network::Players::findLocalPlayer(this);
 		bool backend = Network::Players::backendProcessing(this, true);
 		bool isLocalScript = dynamic_cast<LocalScript*>(script) != NULL;
 		bool inHopperBin = dynamic_cast<HopperBin*>(script->getParent()) != NULL;
 
-		if (isLocalScript ? isLocalBackpack : ((inHopperBin && isLocalBackpack) || backend))
-			return workspace;
-
-		return NULL;
+		if (!isLocalScript)
+		{
+			if (!(inHopperBin && isLocalBackpack) && !backend)
+				return NULL;
+		}
+		else if (!isLocalBackpack)
+			return NULL;
+		return workspace;
 	}
+	return NULL;
+}
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

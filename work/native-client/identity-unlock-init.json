@@ -1666,6 +1666,29 @@
   "owner_class": null,
   "signature": null
  },
+ "007f54e0": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "Stop"
+    ],
+    "source": "tools/rbxgs/Client/App/util/Sound.cpp:99",
+    "this": [
+     "009770a0"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Esound_stopFunction@Soundscape@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Esound_stopFunction@Soundscape@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
  "007f5510": {
   "evidence": [
    {

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "../native-headers/v8datamodel/DataModel.h"
 #include "../native-headers/StandardVerbs.h"
 

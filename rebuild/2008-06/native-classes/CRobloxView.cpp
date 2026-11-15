@@ -1,6 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "../native-headers/CRobloxView.h"
 
+#include "../native-headers/Network/Players.h"
+#include "../native-headers/v8datamodel/DataModel.h"
+
 class CRobloxDoc;
 void setActiveDocument(bool active, CRobloxDoc* document);
 
@@ -76,7 +79,23 @@ void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceRemovi
 
 // 0045a2f0
 void CRobloxView::detachDataModel() {
-    owner_170.reset();
+    RBX::DataModel::Lock lock(owner_170);
+    slot_1dc.reset();
+    slot_1e0.reset();
+    slot_1e4.reset();
+    slot_1e8.reset();
+    slot_1ec.reset();
+    RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>* added = this;
+    if (owner_170.get())
+        owner_170->RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::removeListener(added);
+    RBX::Listener<RBX::ServiceProvider, RBX::ServiceRemoving>* removing =
+        &static_cast<RBX::Listener<RBX::ServiceProvider, RBX::ServiceRemoving>&>(*this);
+    if (owner_170.get())
+        owner_170->RBX::Notifier<RBX::ServiceProvider, RBX::ServiceRemoving>::removeListener(removing);
+    RBX::Network::Players* players = RBX::ServiceProvider::find<RBX::Network::Players>(getDataModel().get());
+    if (players)
+        players->RBX::Notifier<RBX::Network::Players, RBX::SuperSafeChanged>::removeListener(
+            static_cast<RBX::Listener<RBX::Network::Players, RBX::SuperSafeChanged>*>(this));
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
@@ -95,5 +114,104 @@ void CRobloxView::openToolboxPage()
 {
     showToolbox(true, true);
     slot_1d8->showPage(9);
+}
+
+LRESULT CRobloxView::closeToolbox(WPARAM, LPARAM)
+{
+    if (slot_1d8) {
+        slot_1d8->DestroyWindow();
+        slot_1d8 = 0;
+        layout();
+    }
+    return 0;
+}
+
+void CRobloxView::OnSetFocus(CWnd* pOldWnd)
+{
+    CView::OnSetFocus(pOldWnd);
+    GetParentFrame()->SetActiveView(this, 0);
+    window.SetFocus();
+}
+
+void CRobloxView::layout()
+{
+    RECT rect;
+    GetClientRect(&rect);
+    int height = rect.bottom - rect.top;
+    int width = rect.right - rect.left;
+    int viewHeight = height;
+
+    if (slot_1d8 && slot_1d8->m_hWnd)
+        width -= 0xe1;
+    if (reflector.m_hWnd)
+        viewHeight = height - 0x14;
+
+    int h = std::max(viewHeight, 0);
+    int w = std::max(width, 0);
+
+    if (window.m_hWnd)
+        window.MoveWindow(0, 0, w, h, 1);
+    if (slot_1d8 && slot_1d8->m_hWnd)
+        slot_1d8->MoveWindow(w, 0, 0xe1, height, 1);
+    if (reflector.m_hWnd)
+        reflector.MoveWindow(0, h, w, 0x14, 1);
+}
+
+void CRobloxView::showHelp()
+{
+    CStringA applicationBaseUrl();
+    class CBrowserView* showBrowserPopup(tagRECT, CWnd*, CStringA, IDispatch*);
+
+    tagRECT rect;
+    ::GetClientRect(window.m_hWnd, &rect);
+    ::InflateRect(&rect, -12, -12);
+
+    rect.right = (rect.right - rect.left) / 2;
+    int height = rect.bottom - rect.top;
+    int limit = 480;
+    const int& m = height < limit ? height : limit;
+    rect.bottom = m - rect.top;
+
+    showBrowserPopup(rect, &window, applicationBaseUrl() + "/Game/Help.aspx", 0);
+}
+
+void CRobloxView::showToolbox(bool show, bool notify)
+{
+    if ((unsigned char)show == (unsigned char)(slot_1d8 != 0))
+        return;
+
+    if (show) {
+        CWebToolbox* t = (CWebToolbox*)CWebToolbox::GetThisClass()->CreateObject();
+        slot_1d8 = t;
+        IDispatch* r = *(IDispatch**)((char*)m_pDocument + 0x94);
+        if (t->external.p != r) {
+            if (r)
+                r->AddRef();
+            if (t->external.p)
+                t->external.p->Release();
+            t->external.p = r;
+        }
+        slot_1d8->owner = &window;
+        RECT rect = { 0, 0, 0, 0 };
+        if (!slot_1d8->Create(0, 0, 0x50000000, rect, this, 0x413, 0)) {
+            slot_1d8 = 0;
+            return;
+        }
+        if (notify)
+            ::SendMessageA(slot_1d8->m_hWnd, 0x364, 0, 0);
+    } else {
+        slot_1d8->DestroyWindow();
+        slot_1d8 = 0;
+    }
+    layout();
+}
+
+int CRobloxView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+    RECT rect;
+    if (CView::OnCreate(lpCreateStruct) == -1)
+        return -1;
+
+    ::GetClientRect(m_hWnd, &rect);
+    return (window.Create(0, "Roblox", 0x50000000, rect, this, 1, 0) != 0) - 1;
 }
 

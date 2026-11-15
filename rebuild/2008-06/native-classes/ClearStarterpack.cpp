@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "StandardVerbs.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Hopper.h"
@@ -35,3 +36,12 @@ void ClearStarterpack::doIt(IDataState*)
 }
 
 }
+
+namespace RBX {
+ClearStarterpack::ClearStarterpack(RBX::DataModel* dm)
+    : Verb(dm, std::string("ClearStarterpack")),
+      dataModel(dm)
+{
+}
+}
+

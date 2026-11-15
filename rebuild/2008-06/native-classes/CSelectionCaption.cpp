@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "CSelectionCaption.h"
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/SelectionChanged.h"

@@ -30,7 +30,12 @@ def init(vts):
     VTABLES = vts
 
 
-def scan(paths):
+def scan(job):
+    k, paths, shard = job
+    if shard.exists():
+        with gzip.open(shard, 'rb') as fh:
+            f, t = pickle.load(fh)
+        return f, t, len(paths)
     from native_identity_closure import functions, vtables
     funcs, tabs, hashes = set(), set(), set()
     for p in paths:
@@ -52,6 +57,10 @@ def scan(paths):
                         tabs.add((name, slots))
         except Exception:
             continue
+    tmp = shard.with_suffix('.tmp')
+    with gzip.open(tmp, 'wb') as fh:
+        pickle.dump((funcs, tabs), fh, protocol=4)
+    os.replace(tmp, shard)
     return funcs, tabs, len(paths)
 
 
@@ -70,14 +79,18 @@ def main():
     norm = [f.replace(chr(92), '/') for f in files]
     files = [f for f, n in zip(files, norm) if not any(x in n for x in args.exclude)
              and (not args.only or any(x in n for x in args.only))]
-    chunks = [files[i:i + 400] for i in range(0, len(files), 400)]
+    files.sort()
+    shards = args.output.with_name(args.output.name.replace('.pkl.gz', '-shards'))
+    shards.mkdir(exist_ok=True)
+    # resumable: one shard per 200-object chunk, reused on rerun (files are sorted)
+    chunks = [(i, files[i:i + 200], shards / ('%07d.pkl.gz' % i)) for i in range(0, len(files), 200)]
     funcs, tabs, done = set(), set(), 0
     with Pool(args.workers, initializer=init, initargs=(vts,)) as pool:
-        for f, t, n in pool.imap_unordered(scan, chunks):
+        for f, t, n in pool.imap_unordered(scan, chunks, chunksize=1):
             funcs |= f
             tabs |= t
             done += n
-            if done % 40000 < 400:
+            if done % 10000 < 200:
                 print('objects', done, '/', len(files), 'funcs', len(funcs), 'vtables', len(tabs), flush=True)
     with gzip.open(args.output, 'wb') as fh:
         pickle.dump({'funcs': sorted(funcs), 'vtables': sorted(tabs), 'objects': len(files)}, fh, protocol=4)

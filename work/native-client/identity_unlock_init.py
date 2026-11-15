@@ -192,15 +192,22 @@ def main():
         for t in f['this']:
             cand += [(d, 'source-address-comment') for d in by_addr.get('%08x' % t, []) if d['tier'] == 'native-classes']
         if not cand and f['strings'] and f['ctors']:
-            owner = re.match(r'\?\?0\?\$(\w+)@V(\w+)@', f['ctors'][0])
-            if owner:
-                tm, cls = owner.groups()
+            tms = re.findall(r'\?\$(\w+)@', f['ctors'][0])
+            owner = re.match(r'\?\?0\?\$\w+@V(\w+)@', f['ctors'][0])
+            for lit in f['strings']:
                 for tier in ('native-classes', 'rbxgs'):
-                    hit = [d for d in by_lit.get(f['strings'][0], []) if d['tier'] == tier and d['tmpl'] == tm
-                           and re.match(r'\s*' + cls + r'\b', d['args'])]
+                    same = [d for d in by_lit.get(lit, []) if d['tier'] == tier and d['tmpl'] in tms]
+                    hit = [d for d in same if owner and re.match(r'\s*' + owner.group(1) + r'\b', d['args'])]
+                    # the constructor's owner can be an ICF alias; a literal unique within the
+                    # descriptor template is enough on its own
                     if hit:
                         cand = [(d, 'reflection-literal+ctor-owner') for d in hit]
+                    elif len({scoped(d['var'], d['ns']) for d in same}) == 1:
+                        cand = [(d, 'reflection-literal-unique') for d in same]
+                    if cand:
                         break
+                if cand:
+                    break
         names = {scoped(d['var'], d['ns']) for d, _ in cand}
         if len(names) == 1:
             d, why = cand[0]

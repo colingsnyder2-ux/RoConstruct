@@ -3115,6 +3115,34 @@
   "owner_class": "FactoryProduct",
   "signature": "void __cdecl `dynamic initializer for 'private: static class RBX::FactoryProduct<class RBX::Flag,class RBX::Tool,&char const * const RBX::sFlag>::Creator const RBX::FactoryProduct<class RBX::Flag,class RBX::Tool,&char const * const RBX::sFlag>::creator''(void)"
  },
+ "007f54e0": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "Stop"
+    ],
+    "source": "tools/rbxgs/Client/App/util/Sound.cpp:99",
+    "this": [
+     "009770a0"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Esound_stopFunction@Soundscape@RBX@@YAXXZ"
+   },
+   {
+    "kind": "header-known",
+    "known": false,
+    "owner_leaf": null
+   }
+  ],
+  "kind": "code",
+  "name": "??__Esound_stopFunction@Soundscape@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": "void __cdecl RBX::Soundscape::`dynamic initializer for 'sound_stopFunction''(void)"
+ },
  "007f5510": {
   "evidence": [
    {
