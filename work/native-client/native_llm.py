@@ -145,13 +145,16 @@ def destination_for(owner):
     if SOURCE_DESTINATIONS is None:
         SOURCE_DESTINATIONS = collections.defaultdict(collections.Counter)
         SOURCE_LEAVES = collections.defaultdict(set)
-        pattern = re.compile(r'\b((?:[A-Za-z_]\w*::)+[A-Za-z_]\w*)::~?[A-Za-z_]\w*\s*\(')
+        # Definitions only: `Owner::m(args) [const] {` or a ctor initializer.  Calls such as
+        # RBX::DebugSettings::singleton() routed DebugSettings members into the MFC TU CApp2008.cpp (C1189).
+        body = r'\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?:\{|:[^:;])'
+        pattern = re.compile(r'\b((?:[A-Za-z_]\w*::)+[A-Za-z_]\w*)::~?[A-Za-z_]\w*' + body)
         for path in classes.glob('*.cpp'):
             relative = path.relative_to(ROOT).as_posix()
             text = path.read_text(errors='replace')
             for found in pattern.findall(text):
                 SOURCE_DESTINATIONS[found][relative] += 1
-            for leaf in re.findall(r'\b([A-Za-z_]\w*)::~?[A-Za-z_]\w*\s*\(', text):
+            for leaf in re.findall(r'\b([A-Za-z_]\w*)::~?[A-Za-z_]\w*' + body, text):
                 SOURCE_LEAVES[leaf].add(relative)
     counts = SOURCE_DESTINATIONS.get(owner, collections.Counter())
     hits = sorted(counts)
@@ -494,9 +497,13 @@ def learn_identities(t, res):
     if not objs:
         return False
     receipt = Path(res['manifest']).parent / 'alias-bind.json'
+    # The gate's own snapshot binds the target itself (registry targets are absent from CLOSURE); with CLOSURE
+    # alias-bind refused every one of them ('requires closure-bound emitted owner').
+    snapshot = Path(res['manifest']).parent.parent / 'closure.json'
     tick = time.time()
     subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_reference_alias_bind.py'), '--object', str(objs[-1]),
-                    '--symbol', t['symbol'], '--address', t['addr'], '--closure', str(CLOSURE), '--output', str(receipt)],
+                    '--symbol', t['symbol'], '--address', t['addr'],
+                    '--closure', str(snapshot if snapshot.is_file() else CLOSURE), '--output', str(receipt)],
                    cwd=ROOT, capture_output=True, text=True)
     tool_time('identity_learn', time.time() - tick)
     try:
@@ -622,6 +629,44 @@ def file_globals(t):
     hits = [g for g in FILE_GLOBALS if (len(word) > 2 and word.lower() in g.lower()) or owner.lower() in g.lower()][:12]
     return ('--- KNOWN FILE GLOBALS (defined in the original .cpp; declare `extern` with the right type if used) ---\n'
             + '\n'.join(hits) + '\n') if hits else ''
+
+
+def bytes_identical(feedback):
+    """Gate feedback whose every candidate is byte-identical (relocations masked): only references/identity differ."""
+    lines = [x for x in (feedback or '').splitlines() if x.startswith('candidate ')]
+    return bool(lines) and all('IDENTICAL' in x for x in lines)
+
+
+def dest_body(t):
+    """The target's body already written in its native .cpp, prefixed by the file-local classes/structs it names
+    (with their out-of-class members), so it gates standalone.  '' when the .cpp has no such body."""
+    path = ROOT / t['dest'] if t.get('dest') else None
+    if not path or not path.is_file():
+        return ''
+    from native_transplant_probe import body_at
+    text = path.read_text(errors='replace')
+    marker = '::'.join(t['qual'].split('::')[-2:])
+    try:
+        body = body_at(text, marker)
+    except ValueError:
+        return ''
+    helpers = []
+    for found in re.finditer(r'^[ \t]*(?:class|struct)[ \t]+(\w+)[^;{(]*\{', text, re.M):
+        name = found.group(1)
+        if not re.search(r'\b%s\b' % name, body) or name == t['owner'].rsplit('::', 1)[-1]:
+            continue
+        depth, end = 0, found.end() - 1
+        for end in range(found.end() - 1, len(text)):
+            depth += {'{': 1, '}': -1}.get(text[end], 0)
+            if depth == 0:
+                break
+        helpers.append(text[found.start():text.find(';', end) + 1])
+        for member in re.finditer(r'^[ \t]*[\w:<>&* ]*\b%s::(operator\s*\(\)|~?\w+)\s*\(' % name, text, re.M):
+            try:
+                helpers.append(body_at(text[member.start():], name + '::' + member.group(1)))
+            except ValueError:
+                pass
+    return '\n\n'.join(dict.fromkeys(h.strip() for h in helpers + [body]))
 
 
 def class_block(leaf, limit=3000):
@@ -808,6 +853,11 @@ def prove(t, body, out, depth=0):
     if '/MD' in base.split() and '/D_AFXDLL' not in base:
         base += ' /D_AFXDLL'      # MFC headers reached through any include refuse /MD without it (C1189)
     flags = ' '.join(x for x in (base, header_include_flags(t['header'], t['dest'], support_includes)) if x)
+    # Native opt-in guards (#ifdef NATIVE_CLUMP_DECL in v8world/AssemblyLayout.h hides EdgeIterator/Clump): the native
+    # .cpp files #define them before including the header, so the probe must too.
+    header_text = (ROOT / t['header']).read_text(errors='replace') if (ROOT / t['header']).is_file() else ''
+    for guard in dict.fromkeys(re.findall(r'^\s*#\s*ifdef\s+(NATIVE_\w+)', header_text, re.M)):
+        flags += ' /D' + guard
     plan = {'plans': [{'owner': t['owner'], 'headers': [t['header']],
                        'source': str((out / 'donor' / 'donor.cpp').relative_to(ROOT)),
                        'namespace': ns, 'roc_cl': 21022, 'roc_flags': flags, 'destination': t['dest'],
@@ -825,6 +875,14 @@ def prove(t, body, out, depth=0):
             snapshot = out / 'closure.json'
             closure = json.loads(CLOSURE.read_text())
             own = [b for b in closure['bindings'] if (b.get('addr') or '').lower() == t['addr'].lower()]
+            if own and not any(b.get('symbol') == t['symbol'] for b in own):
+                # Closure binding (compiled from the real header) differs from the registry name only by access
+                # (005e83c0 clipToSafeSize: header protected IAE, registry guess private AAE): the header wins.
+                t['symbol'] = own[0]['symbol']
+                for one in plan['plans']:
+                    for row in one['rows']:
+                        row['symbol'] = t['symbol']
+                (out / 'plan.json').write_text(json.dumps(plan, indent=1))
             if not own:
                 # Registry-sourced targets: the identity registry names the target itself (the queue rows always
                 # came with a closure binding).  Snapshot-only; callee identities still need their own proof.
@@ -840,7 +898,8 @@ def prove(t, body, out, depth=0):
         tick = time.time()
         run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_convert_run.py'), '--plan', str(out / 'plan.json'),
                               '--closure', str(snapshot), '--batch', '0', '--out', str(out / 'run'),
-                              '--source-includes', '--add-flags', '/GS-'], cwd=ROOT, capture_output=True, text=True)
+                              '--source-includes', '--source-preamble', '--add-flags', '/GS-'],
+                             cwd=ROOT, capture_output=True, text=True)
         try:
             res = json.loads((out / 'run' / 'result.json').read_text())
         except (OSError, ValueError):
@@ -1018,6 +1077,28 @@ def work(t, ladder, tries, start=0):
     # Re-gate an already generated answer before spending another provider call.
     # Driver/header flag changes are valid new evidence; model text is not resent unchanged.
     cached = sorted((folder(t)).glob('try*/donor/donor.cpp'))
+    leaf = re.escape('::'.join(t['qual'].split('::')[-2:]))
+    if cached and not re.search(leaf + r'\s*\(', cached[-1].read_text(errors='replace')):
+        cached = []         # an old reply with prose and no definition: regating it is a tool-error, not evidence
+    if not cached and ladder:
+        native = dest_body(t)
+        if native:
+            # The native .cpp already has this body (HeadBuilder::buildTop ...): gate it free first.
+            started = time.time()
+            TOOL.times = {}
+            status, feedback = prove(t, native, folder(t) / 'dest')
+            with LOG.open('a') as log:
+                log.write(json.dumps(dict(slim(t), model='dest', attempt=-1, status=status, time=round(time.time(), 1), run=RUN_ID,
+                                          tool=TOOL.times, llm_seconds=0.0, gate_seconds=round(time.time() - started, 1))) + '\n')
+            print('%s %-34s %4dB dest  %-16s' % (t['addr'], t['qual'][-34:], t['size'], status), flush=True)
+            gui('native_result', file=t['qual'] + ' [native .cpp]', addr=t['addr'], local_exact=int(status == 'inactive_exact'),
+                seconds=round(time.time() - started, 1), error='', error_summary=status + ' | existing native body, no model call')
+            if status == 'inactive_exact':
+                return t, folder(t) / 'dest'
+            if bytes_identical(feedback):
+                return t, None          # bytes already exact; only reference/identity proof is missing: no model can fix it
+            history =['\n--- CURRENT NATIVE .CPP BODY (with its file-local helpers) ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\n'
+                       'Fix it. Same output rules.\n' % (native, feedback)]
     if cached:
         body = cached[-1].read_text(errors='replace')
         started = time.time()
@@ -1090,6 +1171,8 @@ def work(t, ladder, tries, start=0):
               status, model.split('/')[-1][:28], row['llm_seconds'], row['gate_seconds']), flush=True)
         if status == 'inactive_exact':
             return t, folder(t) / ('try%d' % n)
+        if status == 'draft' and bytes_identical(feedback):
+            return t, None              # bytes exact, reference/identity gate open: another model try cannot help
         if body:
             history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                        % (body, feedback)]

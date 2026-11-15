@@ -176,9 +176,10 @@ def main():
                             for bracket, value in dict.fromkeys(vendor_includes))
     if args.source_preamble and records:
         namespace = re.search(r'\bnamespace\s+' + re.escape(scopes[0]) + r'\s*\{', text) if scopes else None
-        if scopes and not namespace:
-            raise ValueError('source preamble needs a matching namespace')
-        support_text = text[namespace.end() if namespace else 0:min(starts)].strip() + '\n\n'
+        # No namespace block (LLM answers, extracted native bodies): the plain prefix (helper functors, extern file
+        # globals) already belongs inside the probe's opened namespaces.  Includes/using lines are handled above.
+        support_text = re.sub(r'^[ \t]*#[ \t]*(?:include|pragma)\b.*$|^[ \t]*using namespace [^;]*;[ \t]*$', '',
+                              text[namespace.end() if namespace else 0:min(starts)], flags=re.M).strip() + '\n\n'
         externs = active_externs(text[:min(starts)], used)
         if externs:
             support_text += '\n'.join('// native-support-global\n' + line for line in externs) + '\n\n'
