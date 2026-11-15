@@ -4,7 +4,7 @@
 // any donor header. The bases IStage / IWorldStage come from the donor v8kernel/IStage.h / v8world/IWorldStage.h
 // (reached through the donor v8world/IPipelined.h by every engine unit): their layout (vptr, upstream +0x4,
 // downstream +0x8, world +0xc) and their seven slots match the 2008 vtables. Only the StageType values differ (see
-// the PENDING note below and the recorder's PROPOSALS).
+// the StageType note below and the recorder's PROPOSALS).
 // Every CleanStage field, slot and size below is read from the 2008-06 binary:
 //   RTTI     CleanStage 0084b05c -> IWorldStage -> IStage (all mdisp 0; no IWorldStage / IStage vtable exists:
 //            __declspec(novtable) bases, as in the donor).
@@ -18,8 +18,8 @@
 //   2008 StageType (getStageType bodies): CleanStage 0 (00416690), JointStage 1 (007286a0), ClumpStage 2 (0077d810),
 //            TreeStage 3 (005e2790), AssemblyStage 4 (006fa3f0), SleepStage 5 (007359e0), SimJobStage 6 (005cb9d0),
 //            Kernel 7 (0077d800). The donor IStage.h has no CLEAN_STAGE and numbers JOINT_STAGE 0 ... KERNEL_STAGE 8, so
-//            the getStageType bodies are defined only under NATIVE_KERNEL_STAGES_PENDING (built with a generated
-//            v8kernel/IStage.h that carries the 2008 values).
+//            the getStageType bodies are built only in units that opt in to native-headers/kernel-stages
+//            (its v8kernel/IStage.h carries the 2008 values; native-flags /I{headers}/kernel-stages).
 #include "v8world/IWorldStage.h"
 
 struct NativeKernelStagesLayout;
@@ -47,7 +47,7 @@ namespace RBX
 		virtual ~CleanStage()                                        // slot 0 (??_G 0064a3a0 keeps the vtable store)
 		{
 		}
-		virtual StageType getStageType();                            // slot 1 (00416690; NATIVE_KERNEL_STAGES_PENDING)
+		virtual StageType getStageType();                            // slot 1 (00416690; opt-in kernel-stages IStage)
 		virtual void onEdgeAdded(Edge* e);                           // slot 4 (0064a4d0)
 		virtual void onEdgeRemoving(Edge* e);                        // slot 5 (0064a510)
 		void onPrimitiveAdded(Primitive* p);                         // 0064a3e0

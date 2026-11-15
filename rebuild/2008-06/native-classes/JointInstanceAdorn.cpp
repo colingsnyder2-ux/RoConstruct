@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
 #undef _RELEASEASSERT
 // 2008-06 RBX::JointInstance IRenderable rows of the v8datamodel/JointInstance.cpp unit (inactive), built against the
 // committed native v8datamodel/JointInstance.h (read-only; the getset factories of the same unit are in
@@ -10,7 +10,7 @@
 // Lifecycle rows: setPart 005e2cd0, JointInstance(Joint*) 005e3870, ~JointInstance 005e2e10 (both byte-identical with
 // relocations masked; the identity registry names the +0 vtable 0083e354 ??_7JointInstance@RBX@@6B@, while this
 // compile gives that unqualified name to the IRenderable vtable at +0x130, 0083e2bc, as VelocityMotor's 00842cbc), and
-// onAncestorChanged 005e3a80 (pending the 2008 KERNEL_STAGE value).
+// onAncestorChanged 005e3a80 (the 2008 KERNEL_STAGE value through the opt-in kernel-stages IStage).
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/Workspace.h"
 #include "v8world/World.h"
@@ -128,10 +128,9 @@ namespace RBX
 	// IStage slot 1 == KERNEL_STAGE 7 -> upstream +0x4, IWorldStage world +0xc); a parent that is a plain Instance
 	// (0040ad80, descriptor compare 0056fe10) uses ServiceProvider::find<Workspace> 00491e50 and its world (+0x2e4),
 	// anything else Workspace::getWorldIfInWorkspace 005a3390; then World::removeJoint 005ea3a0 / insertJoint 005ea320.
-	// Built only with the 2008 StageType values (NATIVE_KERNEL_STAGES_PENDING): the donor v8kernel/IStage.h numbers
-	// KERNEL_STAGE 8, so the inline getWorld compares with 8 instead of 7 (005e3aa9 `cmp eax, 7`; every other byte and
-	// relocation of the default build matches).
-#ifdef NATIVE_KERNEL_STAGES_PENDING
+	// Built with the 2008 StageType values of the opt-in kernel-stages IStage (native-flags): the donor
+	// v8kernel/IStage.h numbers KERNEL_STAGE 8, while the inline donor getWorld must compare with 7 (005e3aa9
+	// `cmp eax, 7`; ji03 found every other byte and relocation of the default build matching).
 	void JointInstance::onAncestorChanged(const AncestorChanged& event)
 	{
 		Instance::onAncestorChanged(event);
@@ -164,5 +163,4 @@ namespace RBX
 				wsWorld->insertJoint(joint);
 		}
 	}
-#endif
 }

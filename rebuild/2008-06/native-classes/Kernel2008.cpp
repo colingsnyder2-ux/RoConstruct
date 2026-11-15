@@ -1,3 +1,4 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::Kernel (inactive); evidence in native-headers/v8kernel/Kernel2008.h.
 // Verified by tests/record_native_kernel_stages.py. Rows: the scalar deleting destructor 005fb0c0 (vtable 0084105c is
 // emitted here), numBodies 005faa20, numPoints 005faa30, numConnectors 005faa40. The constructor 005fb650 and the
@@ -29,13 +30,12 @@ namespace RBX
 		delete kernelData;
 	}
 
-#ifdef NATIVE_KERNEL_STAGES_PENDING
-	// 0077d800 (folded `mov eax, 7`); needs the 2008 StageType (generated v8kernel/IStage.h).
+	// 0077d800 (folded `mov eax, 7`): KERNEL_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h
+	// through the native-flags line).
 	IStage::StageType Kernel::getStageType()
 	{
 		return KERNEL_STAGE;
 	}
-#endif
 
 	// 005faa20
 	int Kernel::numBodies() const
