@@ -1142,7 +1142,14 @@ def _prove(t, body, out, depth=0):
                     EXTRA_INCLUDES[t['addr']] = before + keep
                     return prove(t, body, out, depth + 1 if keep and depth < 1 else 2)
                 return retried
-        return status, 'Compile error:\n' + error[:1500] + declarations_for(error)
+        # C2039 "'getBody' : is not a member of 'RBX::PartInstance'": most such members are invented (header-gaps.jsonl:
+        # 59 of 67 have no binary symbol).  Show the class's real members so the retry picks an existing one.
+        members = ''
+        for cls in dict.fromkeys(re.findall(r"is not a member of '([\w:]+)'", error)[:2]):
+            block = class_block(cls.split('::')[-1], limit=2500)
+            if block:
+                members += '\n--- REAL MEMBERS OF %s (use only these) ---\n%s\n' % (cls, block)
+        return status, 'Compile error:\n' + error[:1500] + declarations_for(error) + members
     if status == 'inactive_exact':
         return status, ''
     objs = sorted(Path(res['manifest']).parent.rglob('*.obj'))
