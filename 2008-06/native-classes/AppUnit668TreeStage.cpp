@@ -27,16 +27,12 @@ namespace RBX
 	}
 
 	// 00669030
-	int TreeStage::getMetric(MetricType metricType)
-	{
-		switch (metricType)
-		{
-		case MAX_TREE_DEPTH:
-			return maxTreeDepth;
-		default:
-			return getDownstreamWS()->getMetric(metricType);
-		}
-	}
+int TreeStage::getMetric(MetricType metricType)
+{
+	if (metricType != MAX_TREE_DEPTH)
+		return static_cast<IWorldStage*>(getDownstream())->getMetric(metricType);
+	return maxTreeDepth;
+}
 
 	// 00669240
 	void TreeStage::dirtyAssemblies(Joint* j)

@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "v8datamodel/DataModel.h"
 #include "Network/Players.h"
 #include "Network/Player.h"
@@ -29,3 +30,13 @@ void ClearBackpack::doIt(IDataState*) {
         player->getPlayerBackpack()->removeAllChildren();
 }
 }
+
+namespace RBX {
+ClearBackpack::ClearBackpack(DataModel* dm)
+    : Verb(dm ? static_cast<VerbContainer*>(dm) : 0,
+           std::string("ClearBackpack")),
+      dataModel(dm)
+{
+}
+}
+

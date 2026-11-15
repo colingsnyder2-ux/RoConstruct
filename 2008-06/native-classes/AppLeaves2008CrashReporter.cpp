@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // Inactive native 2008-06 RobloxCrashReporter (native-headers/AppLeaves2008/RobloxCrashReporter2008.h).
 #include <afxwin.h>
 #include <string.h>

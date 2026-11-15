@@ -156,3 +156,62 @@ void CRobloxView::layout()
     if (reflector.m_hWnd)
         reflector.MoveWindow(0, h, w, 0x14, 1);
 }
+
+void CRobloxView::showHelp()
+{
+    CStringA applicationBaseUrl();
+    class CBrowserView* showBrowserPopup(tagRECT, CWnd*, CStringA, IDispatch*);
+
+    tagRECT rect;
+    ::GetClientRect(window.m_hWnd, &rect);
+    ::InflateRect(&rect, -12, -12);
+
+    rect.right = (rect.right - rect.left) / 2;
+    int height = rect.bottom - rect.top;
+    int limit = 480;
+    const int& m = height < limit ? height : limit;
+    rect.bottom = m - rect.top;
+
+    showBrowserPopup(rect, &window, applicationBaseUrl() + "/Game/Help.aspx", 0);
+}
+
+void CRobloxView::showToolbox(bool show, bool notify)
+{
+    if ((unsigned char)show == (unsigned char)(slot_1d8 != 0))
+        return;
+
+    if (show) {
+        CWebToolbox* t = (CWebToolbox*)CWebToolbox::GetThisClass()->CreateObject();
+        slot_1d8 = t;
+        IDispatch* r = *(IDispatch**)((char*)m_pDocument + 0x94);
+        if (t->external.p != r) {
+            if (r)
+                r->AddRef();
+            if (t->external.p)
+                t->external.p->Release();
+            t->external.p = r;
+        }
+        slot_1d8->owner = &window;
+        RECT rect = { 0, 0, 0, 0 };
+        if (!slot_1d8->Create(0, 0, 0x50000000, rect, this, 0x413, 0)) {
+            slot_1d8 = 0;
+            return;
+        }
+        if (notify)
+            ::SendMessageA(slot_1d8->m_hWnd, 0x364, 0, 0);
+    } else {
+        slot_1d8->DestroyWindow();
+        slot_1d8 = 0;
+    }
+    layout();
+}
+
+int CRobloxView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+    RECT rect;
+    if (CView::OnCreate(lpCreateStruct) == -1)
+        return -1;
+
+    ::GetClientRect(m_hWnd, &rect);
+    return (window.Create(0, "Roblox", 0x50000000, rect, this, 1, 0) != 0) - 1;
+}
+
