@@ -134,7 +134,12 @@ def run(addr):
             targs, _ = cg.instance(row['signature'])
             code = (re.sub(r'^\s*template\s+(?!<)[^;{}]+;\s*$', '', body, flags=re.M) +
                     '\ntemplate const RBX::ICreator& RBX::FactoryProduct<%s>::getCreator();\n' % targs)
-        status, detail = cg.gate_code(work, headers, code, want)
+        invented = m.invented_externs(body)
+        if invented:            # the gate does not check data identities: an invented global would pass as exact
+            status, detail = {addr: 'rejected-invented'}, ('Rejected: `extern` names no header or binary symbol knows: %s. '
+                                                           'Find the real global; never invent one.' % ', '.join(invented))
+        else:
+            status, detail = cg.gate_code(work, headers, code, want)
         status = status[addr]
         (work / ('try%d.cpp' % n)).write_text(body)
         if status == 'inactive_exact':

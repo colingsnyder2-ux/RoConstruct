@@ -597,6 +597,27 @@ HEADER_TEXT = None
 REGISTRY_NAMES = None
 
 
+REGISTRY_LEAVES = None
+
+
+def invented_externs(code):
+    """`extern` variables/functions an answer declares whose name neither the registry (any decorated leaf) nor a
+    native/vendor header knows.  The gate does not check data-reference identities, so `extern int gCreatorTag;`
+    written to the right address would otherwise pass as exact (2026-11-15: 9 such 'exacts')."""
+    global REGISTRY_LEAVES
+    names = re.findall(r'\bextern\s+(?:"C"\s+)?[^;(]*?\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*(?:\([^;]*\))?\s*;', code)
+    if not names:
+        return []
+    plausible_binding('?x@', '0')               # loads HEADER_TEXT / REGISTRY_NAMES
+    if REGISTRY_LEAVES is None:
+        REGISTRY_LEAVES = {n[1:].split('@', 1)[0] for n in REGISTRY_NAMES if n and n.startswith('?') and not n.startswith('??')}
+        REGISTRY_LEAVES |= {n.lstrip('_') for n in REGISTRY_NAMES if n and not n.startswith('?')}
+        closure = json.loads(CLOSURE.read_text()) if CLOSURE.is_file() else {'bindings': []}
+        REGISTRY_LEAVES |= {b['symbol'][1:].split('@', 1)[0] for b in closure['bindings']
+                            if b['symbol'].startswith('?') and not b['symbol'].startswith('??')}     # e.g. luaL_unref
+    return [n for n in names if n not in HEADER_TEXT and n not in REGISTRY_LEAVES]
+
+
 def plausible_binding(symbol, addr):
     """A learned reference identity is rejected only when it is a plain C++ name (`?leaf@...`) that no native/vendor
     header declares and the registry never saw: the model's own invention (2026-11-15: an answer declared
@@ -1410,7 +1431,13 @@ def work(t, ladder, tries, start=0):
         else:
             FAILS[model] = 0
             TOOL.times = {}
-            status, feedback = prove(t, body, folder(t) / ('try%d' % n))
+            invented = invented_externs(body)
+            if invented:
+                # The gate cannot see invented data globals: refuse before gating (no exact may rest on them).
+                status, feedback = 'compile_failed', ('Rejected: `extern` names no header or binary symbol knows: %s. Use the '
+                                                      'real global the headers/KNOWN FILE GLOBALS name, or none.' % ', '.join(invented))
+            else:
+                status, feedback = prove(t, body, folder(t) / ('try%d' % n))
         row = dict(slim(t), model=model, attempt=n, status=status, time=round(time.time(), 1), run=RUN_ID,
                    tool=dict(getattr(TOOL, 'times', None) or {}), tokens=dict(getattr(TOOL, 'tokens', None) or {}),
                    llm_seconds=round(llm, 1),
