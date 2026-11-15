@@ -756,10 +756,26 @@ def _functions(client):
 @_single_load
 @functools.lru_cache(maxsize=8)
 def _functions_at(path, mtime_ns, size):
+    # Every native-bulk gate is a new process: 41k json.loads (~2 s) per gate.  A pickle per file version loads ~10x faster.
+    import pickle
+    cache = ROOT / "work" / "cache" / ("functions-%s-%d-%d.pickle" % (path.parent.name, mtime_ns, size))
+    try:
+        return pickle.loads(cache.read_bytes())
+    except (OSError, pickle.UnpicklingError, EOFError, ValueError):
+        pass
     rows = {}
     for line in path.read_text().splitlines():
         row = json.loads(line)
         rows[row["addr"]] = row
+    try:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        for old in cache.parent.glob("functions-%s-*.pickle" % path.parent.name):
+            old.unlink(missing_ok=True)
+        tmp = cache.with_suffix(".%d.tmp" % os.getpid())
+        tmp.write_bytes(pickle.dumps(rows, pickle.HIGHEST_PROTOCOL))
+        os.replace(tmp, cache)
+    except OSError:
+        pass
     return rows
 
 

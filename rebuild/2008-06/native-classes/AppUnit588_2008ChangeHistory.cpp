@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // Inactive 2008-06 native recovery: the ChangeHistoryService.cpp unit of the application range 00588000..0058c91f
 // (ChangeHistoryService, HistoryRecord, HistoryItem), one translation unit as in the original. Layout from the
 // committed read-only native v8datamodel/ChangeHistoryService.h / HistoryRecord.h (0x1a4 from 004150d0, HistoryRecord
@@ -483,3 +484,15 @@ void RBX::ChangeHistoryService::start()
     connectionRemoved = Instance::event_descendentRemoving.connect(context, boost::bind(&ChangeHistoryService::onHistoryRemoving, this, _1), 10);
     connectionChanged = Instance::event_itemChanged.connect(context, boost::bind(&ChangeHistoryService::onHistoryChanged, this, _1, _2), 10);
 }
+
+namespace RBX {
+void ChangeHistoryService::initializeBase()
+{
+    if (enabled) {
+        commit("base");
+        while (history.size() > 1)
+            mergeFirst();
+    }
+}
+}
+

@@ -8,6 +8,8 @@
 #include "v8world/Primitive2008.h"
 #include "util/Math.h"
 
+#include "../native-headers/v8kernel/Body2008.h"
+
 namespace RBX
 {
 	// 005e5d00: Primitive::getCoordinateFrame 005e82c0 of prim0 (+0xc) / prim1 (+0x10) times jointCoord0 (+0x28) /
@@ -26,3 +28,15 @@ namespace RBX
 		return false;
 	}
 }
+
+namespace RBX {
+RBX::RevoluteLink* MotorJoint::resetLink()
+{
+	int reversed = getPrimitive(1)->getBody()->getParent() != getPrimitive(0)->getBody();
+	link->reset(reversed == 0 ? jointCoord0 : jointCoord1,
+	            reversed == 1 ? jointCoord0 : jointCoord1);
+	link->setJointAngle(currentAngle);
+	return link;
+}
+}
+

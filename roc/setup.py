@@ -336,6 +336,15 @@ def compilers():
     paths += [Path(p) for p in os.environ.get("ROC_CL", "").split(os.pathsep) if p]
     if not compiler_ready():
         return {}
+    # Each cl.exe banner is a process launch (~2 s for all, on every native-bulk gate): cache by path + mtime.
+    key = [[str(cl), cl.stat().st_mtime_ns] for cl in paths if cl.exists()]
+    cache = ROOT / "work" / "cache" / "compilers.json"
+    try:
+        saved = json.loads(cache.read_text())
+        if saved.get("key") == key:
+            return {int(k): v for k, v in saved["found"].items()}
+    except (OSError, ValueError, KeyError):
+        pass
     found = {}
     timeout = 30 if WINDOWS else 180  # the first Wine run initialises the prefix
     for cl in paths:
@@ -349,6 +358,14 @@ def compilers():
         m = re.search(r"Version \d+\.\d+\.(\d+)", banner)
         if m:
             found.setdefault(int(m.group(1)), str(cl))
+    if found:
+        try:
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            tmp = cache.with_suffix(".%d.tmp" % os.getpid())
+            tmp.write_text(json.dumps({"key": key, "found": found}))
+            os.replace(tmp, cache)
+        except OSError:
+            pass
     return found
 
 def download(url, dest, tries=6):
