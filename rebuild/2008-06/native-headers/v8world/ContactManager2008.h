@@ -19,9 +19,8 @@
 //            returns the ContactManager pointer at World +0x40.
 //            +0x8: a G3D::Array that ~ContactManager 0060ccf0 frees (alignedFree 00507d20, then +0x8 / +0xc / +0x10 = 0);
 //            its element type and the size of ContactManager are not proven here, so nothing after +0x8 is declared.
-//   pending  onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0 and getHit(Array) 0060d6e0 call World members
-//            that no native header declares; they are built by tests/record_native_contact_unit2008.py against a
-//            generated World declaration only (pending-build-only rows, see its proposals).
+//   world    onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0 and getHit(Array) 0060d6e0 call World::update
+//            005e9520, insertContact 005e9260 and destroyContact 005e9280, declared by native v8world/World2008.h.
 #include <set>
 #include <vector>
 #include <G3D/Vector3.h>

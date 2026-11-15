@@ -1,8 +1,8 @@
 // 2008-06 native rows of the original ContactManager unit (0060cae0..0060dd5f) that need no ContactManager, Primitive
 // or World layout (inactive): getHit(Ray, vector*, ...) 0060db10, intersectingOthers(Array, float) 0060dc10 and
 // intersectingOthers(Primitive*, float) 0060dcd0, plus the G3D::Array<Contact*> resize / append instances 0060cfd0 /
-// 0060d0d0 (used there by onPrimitiveGeometryTypeChanged 0060d8e0, which needs the Primitive contact list and is
-// not built), against native-headers/v8world/ContactManager2008.h. Verified by tests/record_native_contact_unit2008.py.
+// 0060d0d0 (used there by onPrimitiveGeometryTypeChanged 0060d8e0), and the World callers getHit(Ray, Array*, ...)
+// 0060d6e0, onNewPair 0060d8b0 and onPrimitiveGeometryTypeChanged 0060d8e0 (World members from World2008.h), against native-headers/v8world/ContactManager2008.h. Verified by tests/record_native_contact_unit2008.py.
 // Contact2008.h builds on the native 2008 Edge (AppUnit658/Edge.h -> IPipelined2008.h), shared with Primitive2008.h.
 #include <algorithm>
 #include "v8world/ContactManager2008.h"
@@ -10,11 +10,9 @@
 #include "leaves2008/BlockBlockContact2008.h"
 #include "v8world/Geometry2008.h"
 #include "v8world/Primitive2008.h"
-#ifdef NATIVE_CONTACTMANAGER_PENDING
-// No native header declares the 2008 World members these rows call: the recorder generates this declaration under
-// out/native-layouts/contact-unit2008-world-pending/ (pending-build-only rows; proposal in its receipt).
+// World::update 005e9520, insertContact 005e9260 and destroyContact 005e9280 (called by getHit 0060d6e0, onNewPair
+// 0060d8b0 and onPrimitiveGeometryTypeChanged 0060d8e0) are declared by the native World2008.h.
 #include "v8world/World2008.h"
-#endif
 
 // G3D vendor template members the original emits in this unit (evidence names 0060cfd0 / 0060d0d0).
 template void G3D::Array<RBX::Contact*>::resize(int, bool);
@@ -62,8 +60,9 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_CONTACTMANAGER_PENDING
-	// 0060d6e0
+	// 0060d6e0. PARKED near miss (141 bytes against 139): the target keeps `stopped` in the dead stack slot of the
+	// `inside` argument ([esp+0x20], after `inside` is loaded into ebx), this build adds a push ecx slot ([esp+0xf]);
+	// every call, constant and branch agrees. Rejected: declaring `stopped` before world->update() (same 141 bytes).
 	Primitive* ContactManager::getHit(const G3D::Ray& worldRay, const G3D::Array<const Primitive*>* ignorePrim,
 		const HitTestFilter* filter, G3D::Vector3& hitPoint, bool& inside) const
 	{
@@ -90,7 +89,8 @@ namespace RBX
 		world->insertContact(contact);
 	}
 
-	// 0060d8e0
+	// 0060d8e0. Same 278 bytes; not counted while identity-registry names 0060cfd0 / 0060d0d0 Array<void const*>
+	// resize / append (library replay) and binds Array<Contact*>::resize(int, bool) to 005025c0 (registry proposal).
 	void ContactManager::onPrimitiveGeometryTypeChanged(Primitive* p)
 	{
 		G3D::Array<Contact*> newContacts;
@@ -104,7 +104,6 @@ namespace RBX
 		for (int i = 0; i < newContacts.size(); i++)
 			world->insertContact(newContacts[i]);
 	}
-#endif
 
 	// 0060db10
 	Primitive* ContactManager::getHit(const G3D::Ray& worldRay, const std::vector<const Primitive*>* ignorePrim,
