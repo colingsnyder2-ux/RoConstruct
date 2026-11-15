@@ -97,6 +97,7 @@ namespace RBX
 		class ClassDescriptor;
 		class PropertyDescriptor;
 		class Property;
+		class ConstProperty;
 	}
 	namespace Profiling
 	{
@@ -197,6 +198,19 @@ namespace RBX
 		public:
 			Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer);      // 004b9bd0 (open)
 			virtual ~Replicator();                                                  // 004b96b0 (open)
+
+		protected:
+			// 004b4bb0 (donor Replicator::getDefault; thiscall, ret 4: looks the class name up in defaultObjects +0x2cfc). Open.
+			const Instance* getDefault(const Name& className);
+			// 004b7f20 (thiscall (const Instance*, RakNet::BitStream&), ret 8; callers Server::ClientProxy::sendTop 004a2bc4
+			// and 004b87ae). INFERRED name: the donor Replicator has no counterpart; the body writes every canStreamWrite
+			// property except Instance::propParent ("   write %s %s, ..." strings 008251b0 / 00825190 / 00825178), so the
+			// name follows Instance::writeProperties. Body in NetworkReplicator2008StatsItem.cpp.
+			void writeProperties(const Instance* instance, RakNet::BitStream& stream);
+
+		private:
+			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Open.
+			void serializeValue(const Reflection::ConstProperty& property, bool, RakNet::BitStream& stream);
 		};
 
 		class Replicator::ReplicatorStatsItem : public Stats::Item
