@@ -761,6 +761,36 @@ def file_globals(t):
             + '\n'.join(hits) + '\n') if hits else ''
 
 
+EXACT_ROWS = None
+
+
+def sibling_examples(t, limit=2, chars=1500):
+    """Up to LIMIT proven byte-exact bodies (earlier native_llm exacts) of the same class, else the same destination
+    file: the real house style (member names, casts, temporaries) for this target."""
+    global EXACT_ROWS
+    if EXACT_ROWS is None:
+        EXACT_ROWS = []
+        for line in LOG.read_text(encoding='utf-8').splitlines() if LOG.is_file() else []:
+            row = _json(line)
+            if row and row.get('status') == 'inactive_exact':
+                EXACT_ROWS.append(row)
+    picks = []
+    for same in (lambda r: r.get('owner') == t['owner'], lambda r: t.get('dest') and r.get('dest') == t['dest']):
+        for r in reversed(EXACT_ROWS):
+            if len(picks) >= limit:
+                break
+            if r['addr'] == t['addr'] or r['addr'] in {p[0] for p in picks} or not same(r):
+                continue
+            sub = {'cache': 'recheck', 'dest': 'dest'}.get(r.get('model'), 'try%s' % r.get('attempt'))
+            donor = folder(r) / sub / 'donor' / 'donor.cpp'
+            if donor.is_file():
+                picks.append((r['addr'], r['qual'], donor.read_text(errors='replace')[:chars]))
+    if not picks:
+        return ''
+    return ('\n--- PROVEN EXACT SIBLINGS (byte-exact against the original; follow their style and member names) ---\n'
+            + '\n'.join('// %s %s\n%s' % p for p in picks) + '\n')
+
+
 def bytes_identical(feedback):
     """Gate feedback whose every candidate is byte-identical (relocations masked): only references/identity differ."""
     lines = [x for x in (feedback or '').splitlines() if x.startswith('candidate ')]
@@ -1245,6 +1275,7 @@ def work(t, ladder, tries, start=0):
                  'specialization instead (`template<> Ret NS::Cls<Args>::f(...) {...}`) and no instantiation line.\n'
                  % (split_qual(t['qual'])[-1], t['template_inst']))
     names = annotate_asm(asm) + file_globals(t)
+    note += sibling_examples(t)
     t = dict(t, names=names)          # header-gap logging checks compile errors against these binary names
     prompt = (RULES.format(decl=t['decl'], qual=t['qual']) + note + '\n--- REAL HEADER %s ---\n%s\n--- REFERENCE ANALOG ---\n%s\n'
               '--- ORIGINAL ASSEMBLY (the target) ---\n%s\n%s%s' % (t['header'], header, analog, asm, names,
@@ -1361,6 +1392,11 @@ def work(t, ladder, tries, start=0):
             return t, folder(t) / ('try%d' % n)
         if status == 'draft' and bytes_identical(feedback):
             return t, None              # bytes exact, reference/identity gate open: another model try cannot help
+        first_error = next((line for line in (feedback or '').splitlines() if re.search(r'error C\d+', line)), '')
+        if status == 'compile_failed' and re.search(r'\.h(?:pp)?\(\d+\)\s*:\s*(?:fatal )?error', first_error):
+            # The first error sits inside a header (native or vendor): a header gap or include-order problem that
+            # another model answer cannot fix.  Logged to header-gaps.jsonl by the gate; skip the second try.
+            return t, None
         if body:
             history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                        % (body, feedback)]
@@ -1399,6 +1435,7 @@ def main():
     ap.add_argument('--retry-failed', action='store_true', help='also retry earlier targets that never became exact')
     ap.add_argument('--retry-older-than', type=float, default=0, metavar='HOURS',
                     help='retry non-exact targets whose last model try is older than HOURS (after harness fixes)')
+    ap.add_argument('--no-promote', action='store_true', help='skip the background promotion at run end')
     ap.add_argument('--regate-all', action='store_true', help='re-prove every earlier draft (after a gate fix)')
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
@@ -1532,6 +1569,12 @@ def main():
               % tp, flush=True)
     except Exception as error:          # reporting only
         print('throughput log failed:', error, flush=True)
+    if exact and not args.no_promote:
+        # Land new remaining-set exacts in native-classes (lease, draft, whole-TU proof) without blocking the next run.
+        subprocess.Popen([sys.executable, str(ROOT / 'work/native-client/native_llm_promote.py'), '--only-remaining'],
+                         cwd=ROOT / 'work/native-client', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0))
+        print('promotion started in background (native-llm/promoted.json)', flush=True)
     for t, d in exact if args.apply else []:
         # Serial: one destination edit at a time; the runner leases, drafts, re-proves the whole TU.
         run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_autorecover.py'), '--plan-file',
