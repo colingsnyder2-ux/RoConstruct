@@ -124,6 +124,16 @@ namespace RBX
 		{
 			geoPair.setBody(i, b);
 		}
+		// Forwarders to the GeoPair2008.h inlines setBallBlock (BallBlockContact::stepContact 00607150, 00607246..
+		// 00607252) and setBallBall (BallBallContact::stepContact 00606f80, 00606ff4..00607001), geoPair +0x8.
+		void setBallBlock(float radius0, const G3D::Vector3* offset1, NormalId normId, GeoPairType pairType)   // INFERRED: forwards to geoPair (+0x8)
+		{
+			geoPair.setBallBlock(radius0, offset1, normId, pairType);
+		}
+		void setBallBall(float radius0, float radius1)   // INFERRED: forwards to geoPair (+0x8)
+		{
+			geoPair.setBallBall(radius0, radius1);
+		}
 #endif
 
 		virtual void computeForce(const float dt, bool throttling);    // slot 1 (00606780)

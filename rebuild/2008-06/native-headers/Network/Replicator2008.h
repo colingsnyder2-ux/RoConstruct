@@ -200,7 +200,8 @@ namespace RBX
 			virtual ~Replicator();                                                  // 004b96b0 (open)
 
 		protected:
-			// 004b4bb0 (donor Replicator::getDefault; thiscall, ret 4: looks the class name up in defaultObjects +0x2cfc). Open.
+			// 004b4bb0 (donor Replicator::getDefault; thiscall, ret 4: looks the class name up in defaultObjects +0x2cfc).
+			// Body in NetworkReplicator2008StatsItem.cpp.
 			const Instance* getDefault(const Name& className);
 			// 004b7f20 (thiscall (const Instance*, RakNet::BitStream&), ret 8; callers Server::ClientProxy::sendTop 004a2bc4
 			// and 004b87ae). INFERRED name: the donor Replicator has no counterpart; the body writes every canStreamWrite
@@ -209,7 +210,12 @@ namespace RBX
 			void writeProperties(const Instance* instance, RakNet::BitStream& stream);
 
 		private:
-			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Open.
+			// 004b6730 (donor Replicator::getSharedDictionary; thiscall, ret 4: looks the descriptor up in strings +0x2b90,
+			// else new(0x2a24) SharedStringDictionary 004b3d10; only caller serializeValue 004b6890). Body in
+			// NetworkReplicator2008StatsItem.cpp.
+			SharedStringDictionary& getSharedDictionary(const Reflection::PropertyDescriptor& descriptor);
+			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Draft under NATIVE_REPLICATOR_SERIALIZEVALUE_PENDING in
+			// NetworkReplicator2008StatsItem.cpp (blocked on StringSender::serializeString 004a83e0 / IdSerializer::serializeRef 004a8b90).
 			void serializeValue(const Reflection::ConstProperty& property, bool, RakNet::BitStream& stream);
 		};
 

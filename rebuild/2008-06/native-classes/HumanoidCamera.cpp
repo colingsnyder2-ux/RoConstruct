@@ -2,7 +2,8 @@
 // 2008-06 native RBX::Humanoid (inactive), camera / Connector rows of the original Humanoid unit (005d74a0..005dccxx)
 // that need the 2008 PartInstance with the Primitive embedded at +0x228 (native-headers/part-embedded): getBody
 // 005d9310, tellCameraNear 005d9df0 (+ its helper collectAllDescendantCharacterPrims 005d9d10) and
-// cameraSetWalkOrientation 005dc7f0. Since batch 14 this unit defines NATIVE_PRIMITIVE_NATIVE_BODY: the part-embedded
+// cameraSetWalkOrientation 005dc7f0, and render3dAdorn 005d9c30 (reads the head's alphaModifier +0x328).
+// Since batch 14 this unit defines NATIVE_PRIMITIVE_NATIVE_BODY: the part-embedded
 // Primitive.h then reaches native-headers/v8kernel/Body2008.h (root +0x10, pv +0x94) instead of the donor Body (root
 // +0x4, pv +0x88), so getBody 005d9310 / getRootBody 005d9180 read the 2008 root. Nothing here may reach the donor
 // v8kernel/Body.h: Joint comes from the native v8world/Joints2008.h (Edge on IPipelined2008.h; otherPrimitive inline)
@@ -48,11 +49,55 @@ namespace RBX
 #include "v8datamodel/Tool.h"
 #include "v8world/Joints2008.h"
 #include "util/Math.h"
+#include "Network/Players.h"        // findLocalCharacter 0049aca0 (render3dAdorn 005d9c30)
+#include "v8datamodel/Workspace.h"  // native (read only): findWorkspace 005a3380 (render3dAdorn 005d9c30)
 #include <boost/bind.hpp>
 #include <vector>
 
 namespace RBX
 {
+	// 0045c600: defined in AppUnit454_2008WndServices.cpp (INFERRED name; registry placeholder func_0045c600).
+	void setCharacterRenderImportance(Instance* instance);
+
+	// 005d9c30 ?render3dAdorn@Humanoid@RBX@@EAEXPAVAdorn@2@@Z (222 B, IRenderable slot; `this` is the IRenderable
+	// subobject +0x13c: walkMode [this+0x7c] = +0x1b8, currentState [this+0xe4] = +0x220). Here rather than in
+	// Humanoid2008.cpp because it reads the head's alphaModifier at +0x328, which only the part-embedded PartInstance has.
+	// Donor body plus two additions read from the target: the waypoint is drawn only while that alphaModifier is non-zero,
+	// and the local character's parts are walked with for_eachChild 0045c470 (setCharacterRenderImportance 0045c600,
+	// defined in AppUnit454_2008WndServices.cpp). findLocalCharacter 0049aca0 + modelIsCharacter inlined
+	// (findModifierOfType 005d8690), findWorkspace 005a3380, hasWalkToPoint 005d79b0, getHead 005d8a10, renderWaypoint
+	// 005d7750, getCharacterFromHumanoid 005d7670, HumanoidState::render3dAdorn 00645060.
+	void Humanoid::render3dAdorn(Adorn* adorn)
+	{
+		if (walkMode == CLICK_TO_MOVE)
+		{
+			// modelIsCharacter 005d9a20 is inlined in the target; it is defined in Humanoid2008.cpp, so its body is
+			// spelled out here: dynamic_cast<const ModelInstance*> then findModifierOfType<Humanoid> 005d8690.
+			// Rejected: calling modelIsCharacter (out of line here, 186 B); nested ifs into a NULL-initialized local
+			// (222 B, the NULL lands in ebx and the adorn argument in ebp). These conditional expressions match.
+			const Instance* localCharacter = Network::Players::findLocalCharacter(this);
+			const ModelInstance* model = localCharacter ? dynamic_cast<const ModelInstance*>(localCharacter) : NULL;
+			Humanoid* localHumanoid = model ? model->findModifierOfType<Humanoid>() : NULL;
+
+			if (this == localHumanoid && Workspace::findWorkspace(this))
+			{
+				G3D::Vector3 worldPosition;
+				if (hasWalkToPoint(worldPosition))
+				{
+					PartInstance* head = getHead();
+					if (head && head->getAlphaModifier() != 0.0f)
+						renderWaypoint(adorn, worldPosition);
+				}
+
+				if (ModelInstance* character = getCharacterFromHumanoid(this))
+					character->for_eachChild(&setCharacterRenderImportance);
+			}
+		}
+
+		if (currentState.get())
+			currentState->render3dAdorn(adorn);
+	}
+
 	// 005d9310 (Connector slot, this adjusted by -0x130): torso primitive (+0x228) body (+0xa0 -> part+0x2c8),
 	// then Body::getRoot (+0x10, the 2008 Body of Body2008.h through NATIVE_PRIMITIVE_NATIVE_BODY).
 	Body* Humanoid::getBody(int i)
