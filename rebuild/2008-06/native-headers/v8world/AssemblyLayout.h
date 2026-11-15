@@ -84,6 +84,7 @@ namespace RBX
 	class Edge;
 	class Joint;
 	class Kernel;
+	class MotorJoint;
 	class SleepInfo;
 
 	// Declared as native-world/App/include/v8world/Clump.h declares it (that header also declares the WEBSERVICE
@@ -131,8 +132,48 @@ namespace RBX
 		static Primitive* findParent(Primitive* primitive, SearchType searchType);
 	};
 
+	// Declared as native-world/App/include/v8world/Clump.h declares it (SIZE 0x08). 2008 evidence: Clump 005e6ba0 calls
+	// begin 00647730 (?begin@EdgeIterator@RBX@@SA?AV12@PAVPrimitive@2@@Z, hidden return slot) and ++ 00647700
+	// (??EEdgeIterator@RBX@@QAEAAV01@XZ), compares {primitive +0x0, edge +0x4} against the function-local static of the
+	// inline end() (guard 0097abb4, value 0097abac / 0097abb0 zeroed on first use) and appends edge +0x4.
+	class EdgeIterator
+	{
+	public:
+		static EdgeIterator begin(Primitive* primitive); // 00647730
+
+		EdgeIterator() : primitive(NULL), edge(NULL) {}
+
+		EdgeIterator(Primitive* primitive, Edge* edge) : primitive(primitive), edge(edge) {}
+
+		static EdgeIterator& end();
+
+		EdgeIterator& operator++();                      // 00647700
+
+		Edge* operator*() const { return edge; }
+
+		bool operator==(const EdgeIterator& other) const { return edge == other.edge && primitive == other.primitive; }
+
+		bool operator!=(const EdgeIterator& other) const { return !(*this == other); }
+
+	private:
+		static Edge* getNextExternalUtil(Primitive* primitive, Edge* edge);
+
+		void findEdgeOnNextPrimitive();
+
+		Primitive* primitive; // 0x00
+		Edge* edge;           // 0x04
+	};
+
+	inline EdgeIterator& EdgeIterator::end()
+	{
+		static EdgeIterator temp;
+		return temp;
+	}
+
 	class Clump : public IPipelined, public boost::noncopyable
 	{
+		friend class Assembly; // INFERRED: Assembly::getMotor 005e6400 (registry) calls the private getMotorImp 005e6360
+
 	private:
 		G3D::Array<Edge*> externalEdges;                 // +0x08 (analog name; Array<T*>: data +0x8, num +0xc, numAllocated
 		                                                 // +0x10; ctor 005e6cf0 zeroes them, dtor 005e70a0 alignedFree
@@ -167,9 +208,14 @@ namespace RBX
 		void removePrimitiveImp(Primitive* p);           // 005e5ff0 (INFERRED name: children first through
 		                                                 // PrimIterator::findFirstChild IN_CLUMP, then Body::setParent(NULL)
 		                                                 // 006148b0 and Primitive::setClump(NULL) 005e7550)
+		static Joint* getJointToParent(Primitive* p);    // 005e6080 (analog name: openrbx Assembly::getJointToParent;
+		                                                 // cdecl, callers 005e62d0 / 005e6360)
+		const MotorJoint* getMotorImp(unsigned int& motorId) const;   // 005e6360 (analog name; caller getMotor 005e6400)
+		void computeExternalEdges(G3D::Array<Edge*>& edges);          // 005e6ba0 (INFERRED name: EdgeIterator from the root
+		                                                              // primitive, append; only caller 005e6c70)
 
 	public:
-		Clump(Primitive* root);                          // 005e6cf0 (Clump.cpp, pending Primitive::setClump 005e7550)
+		Clump(Primitive* root);                          // 005e6cf0 (Clump.cpp; calls Primitive::setClump 005e7550)
 		virtual ~Clump();                                // slot 0 (??_G 005e7280, body 005e70a0)
 		virtual void putInKernel(Kernel* kernel);        // slot 1 (00646970, `jmp 00645830`)
 		virtual void removeFromKernel();                 // slot 2 (005e60d0, `jmp 00645860`)
@@ -194,6 +240,12 @@ namespace RBX
 		void setParent(Clump* newParent);                // 005e6fd0 (analog name: openrbx Assembly::setParent)
 		void removePrimitive(Primitive* p);              // 005e6790 (INFERRED name: 005e5ff0, then onPrimitivesChanged)
 		void onPrimitiveCanSleepChanged(Primitive* p);   // 005e6530 (analog name: canSleep.setDirty())
+		bool getAnchored() const;                        // 005e60e0 (analog name: the root primitive's +0xa8 / +0xa9 / +0xaa;
+		                                                 // callers TreeStage::cleanAssembly 00668f20 / cleanEdge 00668fa0)
+		unsigned int numMotors() const;                  // 005e62d0 (analog name: openrbx Assembly::numMotors)
+		const G3D::Array<Edge*>& getExternalEdges();     // 005e6c70 (INFERRED name: refills externalEdges +0x8 when
+		                                                 // externalEdgesDirty +0x14; callers SleepStage 0064a790 / 0064a950
+		                                                 // / 0064c470)
 	};
 
 	// INFERRED: the 2008 binary has no RTTI for an RBX::Assembly and the assembly object is its root Clump (Clump()
@@ -208,6 +260,10 @@ namespace RBX
 		{
 			return Clump::getAssembly();
 		}
+		MotorJoint* getMotor(unsigned int index);        // 005e6400 ?getMotor@Assembly@RBX@@QAEPAVMotorJoint@2@I@Z (registry)
 	};
+
+	// 005e5f60 (analog name: openrbx lessAssembly; cdecl, the comparator addChild 005e6f70 passes to std::_Sort 005e6e90).
+	bool lessAssembly(const Assembly* a0, const Assembly* a1);
 }
 #endif
