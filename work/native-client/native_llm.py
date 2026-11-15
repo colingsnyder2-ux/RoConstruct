@@ -358,9 +358,11 @@ def learn_identities(t, res):
     if not objs:
         return False
     receipt = Path(res['manifest']).parent / 'alias-bind.json'
+    tick = time.time()
     subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_reference_alias_bind.py'), '--object', str(objs[-1]),
                     '--symbol', t['symbol'], '--address', t['addr'], '--closure', str(CLOSURE), '--output', str(receipt)],
                    cwd=ROOT, capture_output=True, text=True)
+    tool_time('identity_learn', time.time() - tick)
     try:
         found = json.loads(receipt.read_text()).get('identity_bindings', [])
     except (OSError, ValueError):
@@ -378,7 +380,43 @@ def learn_identities(t, res):
     return True
 
 
-def prove(t, body, out):
+import threading
+TOOL = threading.local()      # per-thread tool timings of the current try: {step: seconds}
+EXTRA_INCLUDES = {}           # addr -> headers found for names a compile error reported missing
+SEARCH_ROOTS = [ROOT / 'rebuild/2008-06/native-headers', ROOT / 'tools/rbxgs/Client/Network/raknet30/Source',
+                ROOT / 'tools/rbxgs/Client/Rendering/g3d/include']
+DECL_FILES = None
+
+
+def tool_time(step, seconds):
+    times = getattr(TOOL, 'times', None)
+    if times is not None:
+        times[step] = round(times.get(step, 0.0) + seconds, 1)
+
+
+def declaring_header(name):
+    """Header (native-headers first, then RakNet) that defines class/struct/enum NAME or declares a function NAME."""
+    global DECL_FILES
+    if DECL_FILES is None:
+        DECL_FILES = [(path, path.read_text(errors='replace')) for root in SEARCH_ROOTS for path in sorted(root.rglob('*.h'))]
+    leaf = re.escape(name.split('::')[-1])
+    kinds = [r'^\s*(?:class|struct|enum)\s+(?:__declspec\(\w+\)\s+)?%s\b[^;]*$' % leaf,
+             r'^[^/#\n]*[\w*&>]\s+%s\s*\([^;{]*\)\s*;' % leaf]
+    for pattern in kinds:
+        rx = re.compile(pattern, re.M)
+        for path, text in DECL_FILES:
+            if rx.search(text):
+                return str(path)
+    return None
+
+
+def missing_names(error):
+    names = re.findall(r"undefined (?:type|class) '([\w:]+)'|'([\w:]+)' : undeclared identifier|'(\w+)' : is not a member of"
+                       r"|identifier '(\w+)'|'(\w+)': identifier not found", error)
+    return [next(x for x in group if x) for group in names]
+
+
+def prove(t, body, out, depth=0):
     """Write donor + one-row plan, run the existing isolated gates. -> (status, feedback text)."""
     ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
     marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
@@ -394,8 +432,11 @@ def prove(t, body, out):
         native = (header_root / relative).resolve()
         if native.is_file() and native != (ROOT / t['header']).resolve():
             support_includes.append(str(native))
+    support_includes += [h for h in EXTRA_INCLUDES.get(t['addr'], []) if h not in support_includes]
     # A destination without its own profile would compile at /Od and can never match: use the analog's exact flags.
     base = flags_of(t['dest']) or analog_flags(t['addr'])
+    if '/MD' in base.split() and '/D_AFXDLL' not in base:
+        base += ' /D_AFXDLL'      # MFC headers reached through any include refuse /MD without it (C1189)
     flags = ' '.join(x for x in (base, header_include_flags(t['header'], t['dest'])) if x)
     plan = {'plans': [{'owner': t['owner'], 'headers': [t['header']],
                        'source': str((out / 'donor' / 'donor.cpp').relative_to(ROOT)),
@@ -409,6 +450,7 @@ def prove(t, body, out):
     for attempt in range(2):
         if not CLOSURE.is_file():
             CLOSURE.write_text(BASE_CLOSURE.read_text())
+        tick = time.time()
         run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_convert_run.py'), '--plan', str(out / 'plan.json'),
                               '--closure', str(CLOSURE), '--batch', '0', '--out', str(out / 'run'),
                               '--source-includes', '--add-flags', '/GS-'], cwd=ROOT, capture_output=True, text=True)
@@ -417,18 +459,30 @@ def prove(t, body, out):
         except (OSError, ValueError):
             return 'tool-error', (run.stdout + run.stderr)[-1500:]
         status = res['requested'][0]['status']
+        tool_time('compile_gate', time.time() - tick)
         # Byte-identical but blocked only by unproven callee names: prove them from the exact body, regate once.
         if status != 'draft' or attempt or not learn_identities(t, res):
             break
     if status == 'compile_failed':
         error = str(res.get('first_compile_error', ''))
+        if depth < 2:
+            tick = time.time()
+            have = set(EXTRA_INCLUDES.get(t['addr'], [])) | {str((ROOT / t['header']).resolve())}
+            found = [h for h in (declaring_header(n) for n in missing_names(error)) if h and h not in have]
+            tool_time('include_search', time.time() - tick)
+            if found:
+                EXTRA_INCLUDES.setdefault(t['addr'], []).extend(dict.fromkeys(found))
+                tool_time('include_retries', 1)
+                return prove(t, body, out, depth + 1)
         return status, 'Compile error:\n' + error[:1500] + declarations_for(error)
     if status == 'inactive_exact':
         return status, ''
     objs = sorted(Path(res['manifest']).parent.rglob('*.obj'))
+    tick = time.time()
     diff = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', t['addr'], '--obj', str(objs[0]),
                            '--sym', t['symbol'], '--context', '2', '--head', '80'],
                           cwd=ROOT, capture_output=True, text=True).stdout if objs else ''
+    tool_time('asm_diff', time.time() - tick)
     return status, 'Bytes differ (%s). Original vs your code, assembly diff:\n%s' % (status, diff[-3000:])
 
 
@@ -470,8 +524,9 @@ def work(t, ladder, tries, start=0):
     if cached:
         body = cached[-1].read_text(errors='replace')
         started = time.time()
+        TOOL.times = {}
         status, feedback = prove(t, body, folder(t) / 'recheck')
-        row = dict(t, model='cache', attempt=-1, status=status, time=round(time.time(), 1), llm_seconds=0.0,
+        row = dict(t, model='cache', attempt=-1, status=status, time=round(time.time(), 1), tool=TOOL.times, llm_seconds=0.0,
                    gate_seconds=round(time.time() - started, 1))
         with LOG.open('a') as log:
             log.write(json.dumps(row) + '\n')
@@ -485,6 +540,7 @@ def work(t, ladder, tries, start=0):
         if not live:
             break                                       # every quota spent: stop instead of burning attempts
         model = live[(start + n) % len(live)]           # each retry moves to the next provider's model
+        TOOL.times = {}
         started = time.time()
         try:
             body = ask(model, prompt + ''.join(history), t['qual'].rsplit('::', 1)[-1])
@@ -494,8 +550,10 @@ def work(t, ladder, tries, start=0):
         if not body:
             status, feedback = 'no-reply', ''
         else:
+            TOOL.times = {}
             status, feedback = prove(t, body, folder(t) / ('try%d' % n))
-        row = dict(t, model=model, attempt=n, status=status, time=round(time.time(), 1), llm_seconds=round(llm, 1),
+        row = dict(t, model=model, attempt=n, status=status, time=round(time.time(), 1),
+                   tool=dict(getattr(TOOL, 'times', None) or {}), llm_seconds=round(llm, 1),
                    gate_seconds=round(time.time() - started - llm, 1))
         with LOG.open('a') as log:
             log.write(json.dumps(row) + '\n')

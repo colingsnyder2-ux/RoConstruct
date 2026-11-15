@@ -24,7 +24,7 @@ def main():
         rows = [r for r in rows if r.get('time', cutoff) >= cutoff]
     author = {}                                    # addr -> last model that wrote an answer for it
     stats = collections.defaultdict(lambda: dict(tries=0, exact=0, exact_bytes=0, llm=0.0, gate=0.0,
-                                                 status=collections.Counter(), targets=set()))
+                                                 status=collections.Counter(), targets=set(), tool=collections.Counter()))
     credited = set()
     for r in rows:
         model = r['model']
@@ -36,6 +36,7 @@ def main():
         s['llm'] += r.get('llm_seconds', 0) or 0
         s['gate'] += r.get('gate_seconds', 0) or 0
         s['targets'].add(r['addr'])
+        s['tool'].update({k: v for k, v in (r.get('tool') or {}).items()})
         if r['status'] == 'inactive_exact' and r['addr'] not in credited:
             credited.add(r['addr'])
             owner = stats[author.get(r['addr'], model)]
@@ -50,15 +51,18 @@ def main():
                         draft_pct=round(100.0 * s['status']['draft'] / max(1, s['tries']), 1),
                         no_reply_pct=round(100.0 * s['status']['no-reply'] / max(1, s['tries']), 1),
                         llm_s=round(s['llm'] / max(1, s['tries']), 1), gate_s=round(s['gate'] / max(1, s['tries']), 1),
+                        compile_gate_s=round(s['tool']['compile_gate'] / max(1, s['tries']), 1),
+                        asm_diff_s=round(s['tool']['asm_diff'] / max(1, s['tries']), 1),
+                        include_retries=int(s['tool']['include_retries']),
                         exact_bytes=s['exact_bytes'],
                         bytes_per_hour=round(s['exact_bytes'] * 3600 / seconds, 1) if seconds else 0.0))
     out.sort(key=lambda r: (-r['bytes_per_hour'], -r['exact']))
-    print('%-46s %5s %5s %5s %6s %6s %6s %6s %6s %6s %7s %8s' % ('model', 'tries', 'tgts', 'exact', 'match%', 'cfail%',
-          'draft%', 'norep%', 'llm_s', 'gate_s', 'bytes', 'B/hour'))
+    print('%-46s %5s %5s %5s %6s %6s %6s %6s %6s %6s %6s %6s %5s %7s %8s' % ('model', 'tries', 'tgts', 'exact', 'match%', 'cfail%',
+          'draft%', 'norep%', 'llm_s', 'tool_s', 'gate_s', 'diff_s', 'incl', 'bytes', 'B/hour'))
     for r in out:
-        print('%-46s %5d %5d %5d %6.1f %6.1f %6.1f %6.1f %6.1f %6.1f %7d %8.1f' % (r['model'][-46:], r['tries'], r['targets'],
-              r['exact'], r['match_pct'], r['compile_failed_pct'], r['draft_pct'], r['no_reply_pct'], r['llm_s'],
-              r['gate_s'], r['exact_bytes'], r['bytes_per_hour']))
+        print('%-46s %5d %5d %5d %6.1f %6.1f %6.1f %6.1f %6.1f %6.1f %6.1f %6.1f %5d %7d %8.1f' % (r['model'][-46:], r['tries'],
+              r['targets'], r['exact'], r['match_pct'], r['compile_failed_pct'], r['draft_pct'], r['no_reply_pct'], r['llm_s'],
+              r['gate_s'], r['compile_gate_s'], r['asm_diff_s'], r['include_retries'], r['exact_bytes'], r['bytes_per_hour']))
     if args.json:
         args.json.write_text(json.dumps(out, indent=1) + '\n')
 
