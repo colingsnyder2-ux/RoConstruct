@@ -3,6 +3,9 @@
 // Layout from native-headers/part-embedded/v8datamodel/PartInstance.h (Primitive embedded at +0x228, IRenderable at
 // +0x1cc). Bodies follow the donor tools/rbxgs PartInstance.cpp shape, corrected to the 2008 bytes.
 #undef _RELEASEASSERT
+// The 2008 Body / Contact / ContactConnector / GeoPair path of part-embedded v8world/Primitive.h (render3dAdorn
+// showContactPoints loop: Contact slots 8 / 9, ContactConnector +0x8, GeoPair::computePosition 00599250).
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Workspace.h"
 #include "v8world/World.h"
@@ -10,16 +13,34 @@
 #include <G3D/g3dmath.h>
 #include <G3D/Sphere.h>
 #include <G3D/AABox.h>
-#include "v8world/Assembly.h"        // donor: Sim::AssemblyState (render3dAdorn 0059e4d0)
 #include "v8world/AssemblyLayout.h"  // 2008 sleepInfo +0x18 / root primitive views (render3dAdorn)
 #include "v8world/Controller.h"
 #include "AppDraw/Draw.h"
 #include "AppDraw/DrawAdorn.h"
 #include "RbxGraphics/Adorn.h"
 #include "util/Math.h"
+#include "v8world/Contact2008.h"     // 2008 Contact slot 8 numConnectors (+0x20) / slot 9 getConnector (+0x24)
+#include "v8kernel/Connector2008.h"  // ContactConnector::getGeoPair (+0x8), GeoPair2008.h computePosition 00599250
 
 namespace RBX
 {
+	// Unit-local redeclaration (pattern of BlockBlockContactStep.cpp): Sim::AssemblyState copied from the donor
+	// tools/rbxgs v8world/Assembly.h. That header reaches the donor IPipelined -> Kernel -> Body.h, which cannot sit
+	// next to the 2008 Body2008.h this unit takes through NATIVE_PRIMITIVE_NATIVE_BODY (C2011); the 2008 values are the
+	// same (AssemblyLayout::getSleepStatus, jump tables 0059eb28 / 0059eb3c).
+	namespace Sim
+	{
+		enum AssemblyState
+		{
+			ANCHORED,
+			RECURSIVE_WAKE_PENDING,
+			WAKE_PENDING,
+			AWAKE,
+			SLEEPING_CHECKING,
+			SLEEPING_DEEPLY
+		};
+	}
+
 	// 00976250: file-local UI "Size" descriptor raised by setPartSizeXml (donor prop_SizeUi).
 	static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_SizeUi(
 		"Size", "Part", &PartInstance::getPartSizeUi, &PartInstance::setPartSizeUi, Reflection::PropertyDescriptor::UI);
@@ -262,18 +283,9 @@ namespace RBX
 		}
 	}
 
-	// PARKED (not exact): render3dAdorn 0059e4d0 below compiles every section except the showContactPoints loop
-	// (0059e99e..0059eb0d), which is kept in the NATIVE_PARTINSTANCE_CONTACT_POINTS_PENDING block and never
-	// compiled. Remaining blockers, all in headers this unit may not edit: (1) the part-embedded Primitive.h path
-	// reaches the donor v8world/Contact.h, whose Contact has no slot 8 numConnectors (+0x20) / slot 9 getConnector
-	// (+0x24); the 2008 v8world/Contact2008.h declares them but collides with the donor RBX::Contact (usable only
-	// with NATIVE_PRIMITIVE_NATIVE_BODY); (2) ContactConnector::geoPair (+0x8) is protected in
-	// v8kernel/Connector2008.h with no accessor; (3) v8world/GeoPair2008.h has no inline for 00599250 (thiscall,
-	// `ret 4`, hidden return: zeroed PairParams, computeLengthNormalPosition, return position; getGeoPair /
-	// computePosition above are analog placeholders). Without the loop the candidate is 1252 B (target 1660 B); the
-	// compiled sections match the target instruction for instruction apart from the register / frame allocation
-	// the loop forces (ebx / edi saved, 0x94 frame) and two scheduling differences in the spanning-tree block
-	// (Adorn vtable slot loaded before the Color4::clear call; the box branch keeps a second copy of boxSize).
+	// The out-of-line GeoPair::computePosition 00599250 (GeoPair2008.h inline, emitted here by the showContactPoints
+	// loop) compiles byte-identical to the target, but the proof binder rejects it: its jump-table label $LN10 binds
+	// to 0064373a instead of the original 005992b1 (a tool label-identity limit, no codegen difference).
 
 	// 0059e4d0: IRenderable override (this = PartInstance + 0x1cc, like shouldRender3dAdorn 00599fa0). Donor rbxgs
 	// PartInstance::render3dAdorn with the 2008 callees: getTopPVController 0059a9e0, Controller::controllerTypeToColor
@@ -384,13 +396,11 @@ namespace RBX
 			}
 		}
 
-#ifdef NATIVE_PARTINSTANCE_CONTACT_POINTS_PENDING
-		// 0059e99e..0059eb0d, not compiled: blocked by read-only headers (see the pending note above the function).
-		// Per contact (Primitive::getContact 005e7af0), per connector (Contact slot 8 numConnectors +0x20, slot 9
-		// getConnector +0x24): the GeoPair inline 00599250 on connector +0x8 (zeroed PairParams,
-		// computeLengthNormalPosition, returns params.position), CoordinateFrame(position) through slot +0x38, then
-		// slot +0x44 with an inlined Sphere (vtable 00827404, inlined Vector3::zero static 0096f044 / guard 0096f050,
-		// radius 0.5f 00819bac), Color4(Color3::red() 005148b0) and Color4::clear() 007baf10.
+		// 0059e99e..0059eb0d: per contact (Primitive::getContact 005e7af0, count at Primitive +0x20), per connector
+		// (Contact slot 8 numConnectors +0x20, slot 9 getConnector +0x24): GeoPair::computePosition 00599250 on
+		// connector +0x8, CoordinateFrame(position) through slot +0x38, then slot +0x44 with an inlined Sphere (vtable
+		// 00827404, inlined Vector3::zero static 0096f044 / guard 0096f050, radius 0.5f 00819bac), Color4(Color3::red()
+		// 005148b0) and Color4::clear() 007baf10.
 		if (showContactPoints)
 		{
 			for (int i = 0; i < primitive.getNumContacts(); ++i)
@@ -404,6 +414,5 @@ namespace RBX
 				}
 			}
 		}
-#endif
 	}
 }
