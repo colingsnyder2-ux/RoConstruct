@@ -1,91 +1,24 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
 // 2008-06 native RBX::BodyGyro rows of the original BodyMovers unit (0062e090..00633101) that read 2008 Body fields
 // (inactive): BodyGyro::computeOrientation 0062e910 and BodyGyro::computeBalance 0062ec40. BodyGyro::computeForce
 // 006300d0 (their only caller) is in native-classes/BodyMovers.cpp.
 //
-// This unit does not include native-headers/v8datamodel/BodyMovers.h: that header reaches native-headers/v8kernel/
-// Connector2008.h, which includes the donor v8kernel/Body.h (root +0x4, simBody +0x20), while these bodies read the
-// 2008 Body (native-headers/v8kernel/Body2008.h: root +0x10, cofm +0x28, simBody +0x2c, moment +0x68, pv +0x94), and
-// the two Body declarations cannot share a unit (C2011). Following native-classes/ContactUnit2008ConnectorBody.cpp,
-// Connector, BodyMover and BodyGyro are redeclared here, unit-locally, exactly as Connector2008.h and BodyMovers.h
-// declare them (same bases, virtual slots, fields and offsets cited there). No constructor or vtable is emitted.
+// Batch 16: like native-classes/RocketControl.cpp, this unit defines NATIVE_PRIMITIVE_NATIVE_BODY, so the
+// part-embedded Primitive.h and native-headers/v8datamodel/BodyMovers.h (-> v8kernel/Connector.h -> Connector2008.h)
+// reach native-headers/v8kernel/Body2008.h (root +0x10, cofm +0x28, simBody +0x2c, moment +0x68, pv +0x94). The
+// unit-local Connector / BodyMover / BodyGyro redeclarations of earlier batches are gone.
 // Body::getBranchIBodyV3 (0062e100) and Body::getBranchTorque (0062e2e0) are now public inline members of
 // native-headers/v8kernel/Body2008.h (donor tools/rbxgs v8kernel/Body.h shapes). With them computeOrientation 0062e910
 // and the out-of-line COMDATs 0062e100 / 0062e2e0 / Body::accumulateTorque 006060b0 are prove.py inactive_exact
 // (batch 12); computeBalance 0062ec40 stays parked (x87 scheduling, see below).
-#include <G3D/Vector3.h>
-#include <G3D/CoordinateFrame.h>
+#define NATIVE_PRIMITIVE_NATIVE_BODY
+#include "v8datamodel/BodyMovers.h"
+#include "v8datamodel/PartInstance.h"
 #include <G3D/g3dmath.h>
-#include "v8kernel/KernelIndex.h"
-#include "v8kernel/Body2008.h"
-#include "v8tree/Instance.h"
-#include "util/RunStateOwner.h"
 #include "util/Math.h"
 
 namespace RBX
 {
-	class World;
-	class PartInstance;
-
-	class Connector : public KernelIndex
-	{
-	public:
-		virtual ~Connector() {}                                         // slot 0
-		virtual void computeForce(const float dt, bool throttling) = 0; // slot 1
-		virtual bool canThrottle() const                                // slot 2 (00565950)
-		{
-			return true;
-		}
-		virtual bool getBroken()                                        // slot 3 (0060a2f0)
-		{
-			return false;
-		}
-		virtual Body* getBody(int i) = 0;                               // slot 4 (analog name)
-		virtual float potentialEnergy()                                 // slot 5 (005e72c0)
-		{
-			return 0;
-		}
-	};
-
-	class BodyMover : public Instance, public Connector, public Listener<RunService, Stepped>
-	{
-	protected:
-		World* world;                                  // +0x13c
-		boost::weak_ptr<PartInstance> part;            // +0x140
-
-	protected:
-		BodyMover(const char* name);                   // 0062e320
-	public:
-		virtual ~BodyMover();                          // 0062e460
-		virtual bool askSetParent(const Instance* instance) const; // 0062e190
-	protected:
-		virtual void onAncestorChanged(const AncestorChanged& event); // 006308f0
-		virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 00632db0
-		virtual bool preventBodySleep() const          // slot 16
-		{
-			return true;
-		}
-		virtual void onEvent(const RunService* source, Stepped event); // 0062fae0
-	};
-
-	extern char sBodyGyro[];
-
-	class BodyGyro : public DescribedCreatable<BodyGyro, BodyMover, sBodyGyro>
-	{
-	private:
-		float kP;                                      // +0x148
-		float kD;                                      // +0x14c
-		G3D::Vector3 maxTorque;                        // +0x150
-		G3D::CoordinateFrame cframe;                   // +0x15c
-
-	private:
-		void computeBalance(Body* body);               // 0062ec40
-		void computeOrientation(Body* body);           // 0062e910
-	public:
-		BodyGyro();                                    // 00632070
-		virtual void computeForce(const float dt, bool throttling); // 006300d0
-	};
-
 	// 0062e910: donor tools/rbxgs Gyro.cpp BodyGyro::computeOrientation.
 	void BodyGyro::computeOrientation(Body* body)
 	{

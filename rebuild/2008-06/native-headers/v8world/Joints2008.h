@@ -284,6 +284,21 @@ namespace RBX
 		                                       const G3D::CoordinateFrame& c0, const G3D::CoordinateFrame& c1);   // 00645e40
 	public:
 		static RotateJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00645f60
+
+		// Donor v8world/RotateJoint.h inlines; no addresses of their own (inlined into getChannelValue 00645af0, whose
+		// Matrix3ToNormalId 005ec310 call is the getAxleId body, and into canBuildJoint / putInKernel 00646550).
+		Primitive* getAxlePrim()
+		{
+			return getPrimitive(0);
+		}
+		Primitive* getHolePrim()
+		{
+			return getPrimitive(1);
+		}
+		NormalId getAxleId()
+		{
+			return Matrix3ToNormalId(getJointCoord(0).rotation);
+		}
 	};
 
 	// No vtable of its own (RTTI-only base of RotatePJoint / RotateVJoint). The float at +0xc4 is cleared by the
@@ -391,6 +406,11 @@ namespace RBX
 
 	public:
 		static GlueJoint* canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);   // 00646f60
+
+	private:
+		// Donor v8world/GlueJoint.h private static; no address of its own (inlined into canBuildJoint 00646f60, which
+		// reads surfaceType +0xb8 + 4 * nId of both primitives; body in native-classes/GlueJointKernel.cpp).
+		static bool compatibleSurfaces(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);
 	};
 
 	// MotorJoint() 005e5bf0: Joint(), vtable, link +0x88 = new RevoluteLink (0xd0: Link() 00613d20, jointAngle +0xcc,

@@ -24,6 +24,7 @@
 //   The donor has maxBodies / maxPoints / maxConnectors after realTimeConnectors; 2008 has none (profilingKernel
 //   follows realTimeConnectors at +0x20).
 #include <G3D/Array.h>
+#include <G3D/Vector3.h>
 #include <boost/scoped_ptr.hpp>
 #include "v8kernel/IStage.h"
 
@@ -34,6 +35,7 @@ namespace RBX
 	class KernelData;
 	class Connector;
 	class Point;
+	class Body;
 	namespace Profiling
 	{
 		class CodeProfiler;
@@ -66,5 +68,12 @@ namespace RBX
 		int numConnectors() const;                                    // 005faa40
 		void insertConnector(Connector* connector);                    // 005fb160
 		void deletePoint(Point* point);                                // 005fb3c0
+		// Donor signatures; thiscall `ret 4` (005fad50 / 005fad80) and `ret 8` (005fb260). newPoint news 0x34 and calls
+		// the Point constructor 0064dc00 (native-classes/AppUnit5F8KernelArrays.cpp). Callers: BodyMover /
+		// Humanoid::onAncestorChanged 006308f0 / 005db560 through World::getKernel 005e9150, RotateJoint::putInKernel
+		// 00646550, GlueJoint::putInKernel 00647190.
+		void insertConnector2ndPass(Connector* connector);             // 005fad50
+		void removeConnector2ndPass(Connector* connector);             // 005fad80
+		Point* newPoint(Body* _body, const G3D::Vector3& worldPos);    // 005fb260
 	};
 }

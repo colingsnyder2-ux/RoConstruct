@@ -9,10 +9,9 @@
 // Batch 15: this unit defines NATIVE_PRIMITIVE_NATIVE_BODY, so the part-embedded Primitive.h and v8kernel/Connector2008.h
 // (through BodyMovers.h -> v8kernel/Connector.h) reach native-headers/v8kernel/Body2008.h (root +0x10, cofm +0x28,
 // simBody +0x2c, moment +0x68, mass +0x8c, pv +0x94; SimBody force +0x84 / torque +0x90) instead of the donor Body.
-// The computeForce slots live here rather than in BodyMovers.cpp because that unit also holds
-// BodyMover::onAncestorChanged 006308f0, which calls Kernel::insertConnector2ndPass 005fad50 /
-// removeConnector2ndPass 005fad80: only the donor v8kernel/Kernel.h declares them (native-headers/v8kernel/Kernel2008.h
-// does not), so BodyMovers.cpp stays on the donor Body.
+// The computeForce slots were placed here while BodyMovers.cpp had to stay on the donor Body (Kernel2008.h lacked
+// insertConnector2ndPass 005fad50 / removeConnector2ndPass 005fad80). Since batch 16 BodyMovers.cpp also defines
+// NATIVE_PRIMITIVE_NATIVE_BODY, so the slots could move back there (consolidation only).
 // Byte-exact (batch 15): BodyVelocity 006302d0, BodyAngularVelocity 00630420, and the Body2008.h COMDATs they pull in.
 // PARKED (x87 / stack-slot near misses, donor shapes kept; trials in the batch 15 result):
 //   BodyPosition 00630140: equal size; donor `pAccel = pAccel + vel * -kD` differs first in the -kD product operand
@@ -151,6 +150,10 @@ namespace RBX
 
 	// 00630140: Body::updatePV 00599360 twice (getCoordinateFrame, getVelocity), Cofm::getMass 0065ff10 (inline
 	// getBranchMass), Vector3::clamp 004a6100 into lastForce +0x168.
+	// Batch 16 trials (parked): `Vector3 accel = vel * -kD; accel += pAccel; lastForce = accel * mass` is the closest
+	// (396 B; the -kD products and the new +0x20 slot match, first divergence insn 75 0063022b: target `fld st(1); fmul
+	// accel.y` mass-first, candidate `fld accel.y; fmul st(2)`); `mass * accel` gives the same; `pAccel = vel * -kD +
+	// pAccel` is as the donor (insn 53).
 	void BodyPosition::computeForce(const float dt, bool throttling)
 	{
 		Body* body = part.lock()->getPrimitive()->getBody();
@@ -201,6 +204,9 @@ namespace RBX
 
 	// 00630610: Body::updatePV 00599360 twice (vectorToWorldSpace / pointToWorldSpace of pv +0x94, translation +0xb8),
 	// then the inline Body::accumulateForce (root +0x10 -> simBody +0x2c, SimBody::accumulateForce 00612fb0).
+	// Batch 16 trial (rejected): a default-constructed worldForce assigned from vectorToWorldSpace (373 B, adds a second
+	// zero-store block). The target's worldForce products equal the candidate's; only the Matrix3 * Vector3 kProd zero
+	// stores and the slot (+0x20 above worldPos +0x14) differ.
 	void BodyThrust::computeForce(const float dt, bool throttling)
 	{
 		Body* body = part.lock()->getPrimitive()->getBody();
