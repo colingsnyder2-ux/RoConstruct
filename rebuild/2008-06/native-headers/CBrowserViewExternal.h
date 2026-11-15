@@ -34,6 +34,10 @@ class ATL_NO_VTABLE CBrowserViewExternal
       public ATL::IDispatchImpl<IBrowserViewExternal, &IID_IBrowserViewExternal, &LIBID_RobloxLib, 1, 0> {
 public:
     DECLARE_REGISTRY_RESOURCEID(119)
+    // CComCreator<CComObject<CBrowserViewExternal>>::CreateInstance 0040f9a0 and the creator 0040fbf0 bracket the
+    // construct protocol with m_dwRef++ / m_dwRef-- (0040fa14 / 0040fa17), the InternalFinalConstructAddRef/Release
+    // pair this macro enables (as in CApp2008.h, CContent.h and CWorkspace.h).
+    DECLARE_PROTECT_FINAL_CONSTRUCT()
     CBrowserViewExternal() : isIDE(VARIANT_FALSE) {}
     STDMETHOD(get_IsIDE)(VARIANT_BOOL* result);
     STDMETHOD(GetApp)(IDispatch** result);
