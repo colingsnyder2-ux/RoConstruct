@@ -206,7 +206,8 @@ def native_exact_addresses():
 DONOR_INCLUDE = ROOT / 'tools/rbxgs/Client/App/include'
 # Not DONOR_INCLUDE: as an /I root its 2007 reflection/reflection.h (const char* const* templates) shadowed the native
 # one through relative lookups and broke util/Sound.h (C2440) for every Sound target.
-VENDOR_ROOTS = [ROOT / 'tools/rbxgs/Client/Network/raknet30/Source', ROOT / 'tools/rbxgs/Client/Network']
+VENDOR_ROOTS = [ROOT / 'tools/rbxgs/Client/Network/raknet30/Source', ROOT / 'tools/rbxgs/Client/Network',
+                ROOT / 'tools/libs/scintilla-mfc-1.20']    # CScriptEditor.h: ScintillaCtrl.h / Scintilla.h / Platform.h
 
 
 def header_include_flags(header, destination, extra=()):
@@ -1003,7 +1004,10 @@ def headers_compile(t):
         # The owner class itself invisible (e.g. inside `#ifdef NATIVE_SIMJOB_PENDING`: layout still pending) is a
         # header state too: no body can compile until the guard is lifted.
         hidden = re.search(r"error C2653: '%s' : is not a class or namespace name" % leaf, feedback)
-        if hidden or re.search(r'\.h\(\d+\)\s*:\s*(?:fatal )?error|fatal error C1083|error C1189', first, re.I):
+        is_ctor = t['qual'].rsplit('::', 1)[-1] == t['owner'].rsplit('::', 1)[-1]
+        if is_ctor and 'C2512' in first:
+            pass    # empty-body ctor default-constructs its base (Named<MouseCommand>): the real ctor has an initializer list
+        elif hidden or re.search(r'\.h\(\d+\)\s*:\s*(?:fatal )?error|fatal error C1083|error C1189', first, re.I):
             first = hidden.group(0) + ' (class hidden by a header #if guard?)' if hidden else first
             error = first.strip()
     with PREFLIGHT_LOCK:
