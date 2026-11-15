@@ -1,0 +1,252 @@
+{
+  "identities": [
+    {
+      "symbol": "?reserveBytes@BinaryOutput@G3D@@AAEXH@Z",
+      "address": "0050ab30",
+      "receipt": "work/2008-06/shared-layouts/g3d-output-writing-exact-20261114.json",
+      "receipt_sha256": "76b48d816bca952b9c38426140388d3a6df660f51a06caeeeca43fe911f4150c",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed original buffer field offsets, write widths and realloc call; see g3d-output-writing-identity-20261114.json."
+    },
+    {
+      "symbol": "?writeUInt16@BinaryOutput@G3D@@QAEXG@Z",
+      "address": "00519950",
+      "receipt": "work/2008-06/shared-layouts/g3d-output-writing-exact-20261114.json",
+      "receipt_sha256": "76b48d816bca952b9c38426140388d3a6df660f51a06caeeeca43fe911f4150c",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed original buffer field offsets, write widths and realloc call; see g3d-output-writing-identity-20261114.json."
+    },
+    {
+      "symbol": "?writeUInt32@BinaryOutput@G3D@@QAEXI@Z",
+      "address": "005199b0",
+      "receipt": "work/2008-06/shared-layouts/g3d-output-writing-exact-20261114.json",
+      "receipt_sha256": "76b48d816bca952b9c38426140388d3a6df660f51a06caeeeca43fe911f4150c",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed original buffer field offsets, write widths and realloc call; see g3d-output-writing-identity-20261114.json."
+    },
+    {
+      "symbol": "?setEndian@BinaryOutput@G3D@@QAEXW4G3DEndian@2@@Z",
+      "address": "00519810",
+      "receipt": "work/2008-06/shared-layouts/g3d-output-helpers-exact-20261114.json",
+      "receipt_sha256": "69785705e5714ba28748a75679172b454e39a118b9fdcf1489974ccd2a04cbf8",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed endian initialization and source/destination/length flow; see g3d-output-helpers-identity-20261114.json."
+    },
+    {
+      "symbol": "?writeString@BinaryOutput@G3D@@QAEXPBD@Z",
+      "address": "00519a30",
+      "receipt": "work/2008-06/shared-layouts/g3d-output-helpers-exact-20261114.json",
+      "receipt_sha256": "69785705e5714ba28748a75679172b454e39a118b9fdcf1489974ccd2a04cbf8",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed endian initialization and source/destination/length flow; see g3d-output-helpers-identity-20261114.json."
+    },
+    {
+      "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+      "address": "00519830",
+      "receipt": "work/2008-06/shared-layouts/g3d-output-realloc-exact-20261114.json",
+      "receipt_sha256": "7f50300c15b21ba944efaa4a31c925ef1291bd765314d9a0a5e0be4988aa2744",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed buffer growth and out-of-memory fallback; see g3d-output-realloc-identity-20261114.json."
+    },
+    {
+      "symbol": "?hashCode@Vector3@G3D@@QBEIXZ",
+      "address": "005183a0",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector3-core-exact-20261114.json",
+      "receipt_sha256": "bfafd4a31d83c8e47abe4ff833714326c44b548b65319b69b160ae1439de4bae",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed vector arithmetic and constants; see g3d-vector3-identity-20261114.json."
+    },
+    {
+      "symbol": "?unitize@Vector3@G3D@@QAEMM@Z",
+      "address": "00518470",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector3-core-exact-20261114.json",
+      "receipt_sha256": "bfafd4a31d83c8e47abe4ff833714326c44b548b65319b69b160ae1439de4bae",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed vector arithmetic and constants; see g3d-vector3-identity-20261114.json."
+    },
+    {
+      "symbol": "?generateOrthonormalBasis@Vector3@G3D@@SAXAAV12@00_N@Z",
+      "address": "005184c0",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector3-core-exact-20261114.json",
+      "receipt_sha256": "bfafd4a31d83c8e47abe4ff833714326c44b548b65319b69b160ae1439de4bae",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed vector arithmetic and constants; see g3d-vector3-identity-20261114.json."
+    },
+    {
+      "symbol": "??_0Vector3@G3D@@QAEAAV01@M@Z",
+      "address": "005183c0",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector3-divide-exact-20261114.json",
+      "receipt_sha256": "5579ad143a8d3182d98dd7ebc677a61890dacc12bb85487890e80a101af9f8ce",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed scalar infinity guard and data references; see g3d-vector3-identity-20261114.json."
+    },
+    {
+      "symbol": "??KVector3@G3D@@QBE?AV01@M@Z",
+      "address": "00518740",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector3-division-exact-20261114.json",
+      "receipt_sha256": "5b4d1df29ab07e50c1e8be45096ef3317d7ffd4d56aecb5f0229a0f1c052d1aa",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed infinity vector helper and division behavior; see g3d-vector3-identity-20261114.json."
+    },
+    {
+      "symbol": "??KVector2@G3D@@QBE?AV01@M@Z",
+      "address": "00509c30",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector2-division-unitize-exact-20261114.json",
+      "receipt_sha256": "783f17fa418a0dea81fbfaa27685a5f24ae547facb3b8d4062900bb550b7ffba",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed vector arithmetic and infinity helper; see g3d-vector2-division-unitize-identity-20261114.json."
+    },
+    {
+      "symbol": "?unitize@Vector2@G3D@@QAEMM@Z",
+      "address": "00509c80",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector2-division-unitize-exact-20261114.json",
+      "receipt_sha256": "783f17fa418a0dea81fbfaa27685a5f24ae547facb3b8d4062900bb550b7ffba",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed vector arithmetic and infinity helper; see g3d-vector2-division-unitize-identity-20261114.json."
+    },
+    {
+      "symbol": "?zero@Vector2@G3D@@SAABV12@XZ",
+      "address": "00509ba0",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector2-static-exact-20261114.json",
+      "receipt_sha256": "5d6c61312d668fdc1a35b7ba4231f01b89a6b4420a0bf36889538709b1067295",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed static guard and two vector components, plus scalar infinity initialization at 00476520; see g3d-vector2-static-reviewed-20261114.json."
+    },
+    {
+      "symbol": "?inf@Vector2@G3D@@SAABV12@XZ",
+      "address": "00509bd0",
+      "receipt": "work/2008-06/shared-layouts/g3d-vector2-static-exact-20261114.json",
+      "receipt_sha256": "5d6c61312d668fdc1a35b7ba4231f01b89a6b4420a0bf36889538709b1067295",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Reviewed static guard and two vector components, plus scalar infinity initialization at 00476520; see g3d-vector2-static-reviewed-20261114.json."
+    },
+    {
+      "symbol": "_adler32",
+      "address": "007a3c20",
+      "receipt": "work/2008-06/shared-layouts/zlib-proof-007a3c20-exact-20261114.json",
+      "receipt_sha256": "30e2fd9d1b5813965a2ca1ab6505d3a228866d90db4eabd6ab3de2e8bb0da075",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-missing-identity-20261114.json"
+    },
+    {
+      "symbol": "_crc32_little",
+      "address": "007a3e90",
+      "receipt": "work/2008-06/shared-layouts/zlib-proof-007a3e90-exact-20261114.json",
+      "receipt_sha256": "2edfc125defa16c0128e890284f6a8a6af33145c6f3742955bc4a168a6ec544d",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-missing-identity-20261114.json"
+    },
+    {
+      "symbol": "_longest_match",
+      "address": "0079fbc0",
+      "receipt": "work/2008-06/shared-layouts/zlib-proof-0079fbc0-exact-20261114.json",
+      "receipt_sha256": "61235acc42b30daee05420398c91a9521c7e931f255d7457fa529cdfe979bba1",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-missing-identity-20261114.json"
+    },
+    {
+      "symbol": "_longest_match_fast",
+      "address": "0079fd20",
+      "receipt": "work/2008-06/shared-layouts/zlib-proof-0079fbc0-exact-20261114.json",
+      "receipt_sha256": "61235acc42b30daee05420398c91a9521c7e931f255d7457fa529cdfe979bba1",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-missing-identity-20261114.json"
+    },
+    {
+      "symbol": "_inflate_fast",
+      "address": "007a32d0",
+      "receipt": "work/2008-06/shared-layouts/zlib-proof-007a32d0-exact-20261114.json",
+      "receipt_sha256": "58c5dfff07c50da6923c6dce5ef8ea9df12c3229c948e5114c0503f4da71d762",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-missing-identity-20261114.json"
+    },
+    {
+      "symbol": "_crc32",
+      "address": "007a4170",
+      "receipt": "work/2008-06/shared-layouts/zlib-crc32-exact-20261114.json",
+      "receipt_sha256": "0bb76d61331f9f2c519db450ff22038e780d8efac8487cb570194f7a7a4aa6c8",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-trees-raknet-identity-20261114.json"
+    },
+    {
+      "symbol": "__tr_stored_block",
+      "address": "007a5770",
+      "receipt": "work/2008-06/shared-layouts/zlib-trees-exact-20261114.json",
+      "receipt_sha256": "16fc754e625af897930a6e32a1d7be07eb9ba8ff08816ee159d904b0a539c3ad",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-trees-raknet-identity-20261114.json"
+    },
+    {
+      "symbol": "__tr_align",
+      "address": "007a5810",
+      "receipt": "work/2008-06/shared-layouts/zlib-trees-exact-20261114.json",
+      "receipt_sha256": "16fc754e625af897930a6e32a1d7be07eb9ba8ff08816ee159d904b0a539c3ad",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-trees-raknet-identity-20261114.json"
+    },
+    {
+      "symbol": "__tr_init",
+      "address": "007a53b0",
+      "receipt": "work/2008-06/shared-layouts/zlib-tree-init-exact-20261114.json",
+      "receipt_sha256": "5b2f2cc633b5285a056d2a84147b37c513f5de96285ad0a0b5e4e70b6303e680",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-flush-init-raknet-identity-20261114.json"
+    },
+    {
+      "symbol": "__tr_flush_block",
+      "address": "007a5a00",
+      "receipt": "work/2008-06/shared-layouts/zlib-flush-exact-20261114.json",
+      "receipt_sha256": "5ff493aabdf97729169d9870b06d7f56b42c2a95dfa6b6d7cb2a00224826356f",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "zlib-flush-init-raknet-identity-20261114.json"
+    },
+    {
+      "symbol": "_zcfree",
+      "address": "00530770",
+      "receipt": "work/2008-06/shared-layouts/zlib-zcfree-exact-20261114.json",
+      "receipt_sha256": "c9c9229fd3831b1845ed5d2127de293f2c1d6c0cb07709bc5beb4b28f45f027c",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Two original zlib stream initializers write 00530770 to zfree; its body calls CRT free."
+    },
+    {
+      "symbol": "_png_handle_as_unknown",
+      "address": "0051e1d0",
+      "receipt": "work/2008-06/shared-layouts/png-remaining-simple-exact-20261114.json",
+      "receipt_sha256": "6eb7f8193200801ef9c33bc62e7e2b8f235af29bf5bedd18296900c99b5f3702",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "png-remaining-identity-20261114.json"
+    },
+    {
+      "symbol": "_png_init_mmx_flags",
+      "address": "0051e220",
+      "receipt": "work/2008-06/shared-layouts/png-remaining-simple-exact-20261114.json",
+      "receipt_sha256": "6eb7f8193200801ef9c33bc62e7e2b8f235af29bf5bedd18296900c99b5f3702",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "png-remaining-identity-20261114.json"
+    },
+    {
+      "symbol": "_png_free_data",
+      "address": "0051ddd0",
+      "receipt": "work/2008-06/shared-layouts/png-destroy-exact-20261114.json",
+      "receipt_sha256": "16a62630053ade73eea0ace32115c38503923e7aaec53c59026bd376d972888d",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "png-remaining-identity-20261114.json"
+    },
+    {
+      "symbol": "_png_info_destroy",
+      "address": "0051e170",
+      "receipt": "work/2008-06/shared-layouts/png-destroy-exact-20261114.json",
+      "receipt_sha256": "16a62630053ade73eea0ace32115c38503923e7aaec53c59026bd376d972888d",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "png-remaining-identity-20261114.json"
+    },
+    {
+      "symbol": "?filter@CSelectionCaption@@UAE_NPBVSelection@RBX@@ABVSelectionChanged@3@01@Z",
+      "address": "00466670",
+      "receipt": "work/2008-06/shared-layouts/selection-caption-filter-exact-20261114.json",
+      "receipt_sha256": "d8178c40db00bec644bb5dc2605a5728c57b6b77520c98c512d284fdef8aa5ce",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "evidence": "Original CSelectionCaption RTTI vtable 0081bb90 slot 4 points to 00466670. Its return-true body cleans 16 bytes, consistent with the four-reference filter override in the declared FilteredListener chain; adjacent original slots occupy onEvent, destructor, onMarshaledEvent and marshal positions. No calls or data references. Independently compiled exact body is bound to this original slot; class ABI and runtime remain unproved."
+    }
+  ]
+}

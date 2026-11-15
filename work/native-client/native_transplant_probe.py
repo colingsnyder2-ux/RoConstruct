@@ -59,7 +59,8 @@ def method_start(text, marker, occurrence=0):
                 if depth == 0:
                     tail = text[pos + 1:].lstrip()
                     initializer = tail.startswith(':') and ('{' in tail) and (tail.find('{') < tail.find(';') if ';' in tail else True)
-                    if tail.startswith('{') or re.match(r'const\s*\{', tail) or initializer:
+                    # `void* f(int) throw()` / `... const throw()`: exception specs are part of real 2008 headers.
+                    if tail.startswith('{') or re.match(r'(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?\{', tail) or initializer:
                         matches.append(match)
                     break
     if not matches:

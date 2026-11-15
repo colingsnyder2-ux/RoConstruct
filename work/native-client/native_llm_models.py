@@ -19,6 +19,7 @@ def report(since=0):
     if since:
         cutoff = time.time() - since * 3600
         rows = [r for r in rows if r.get('time', cutoff) >= cutoff]
+    rows = [r for r in rows if r['model'] != 'preflight']     # header preflight: no model call
     author = {}                                    # addr -> last model that wrote an answer for it
     stats = collections.defaultdict(lambda: dict(tries=0, exact=0, exact_bytes=0, llm=0.0, gate=0.0,
                                                  status=collections.Counter(), targets=set(), tool=collections.Counter(), tok_in=0, tok_out=0, tok_n=0, usd=0.0, tok_bytes=0, tok_s=0.0))

@@ -1406,6 +1406,13 @@ def publish_pages(git_exe, log=print):
             if blob.returncode or git("update-index", "--add", "--cacheinfo", "100644", blob.stdout.strip(),
                                      relative).returncode:
                 return log("Pages staging failed: " + relative)
+        # Demos pushed straight to gh-pages (castle/ WASM build, ...) are not in docs/: carry every top-level
+        # folder docs/ does not produce over from the live branch, so this overwrite never deletes them.
+        git("fetch", "-q", "origin", "+refs/heads/gh-pages:refs/remotes/origin/gh-pages")
+        live = git("ls-tree", "-d", "--name-only", "refs/remotes/origin/gh-pages")
+        for keep in (live.stdout.split() if live.returncode == 0 else []):
+            if not (docs / keep).exists():
+                git("read-tree", "--prefix=" + keep + "/", "refs/remotes/origin/gh-pages:" + keep)
         empty = git("hash-object", "-w", "--stdin", input="")  # .nojekyll: serve files as-is
         git("update-index", "--add", "--cacheinfo", "100644", empty.stdout.strip(), ".nojekyll")
         tree = git("write-tree")
