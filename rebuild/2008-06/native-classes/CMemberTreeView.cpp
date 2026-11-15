@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CMemberTreeView | 2008-06 | 6 byte-exact, inactive (not link-selected)
-// 6/8 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+3) (mixed 4)
-// <<< native-status | src f17710cf | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /I{headers}/std-noinline-string
 // The original calls basic_string::c_str through msvcp90 (addEnumItem 00433eae, addSignal 004354b3, addProperty,
 // addFunction): same out-of-line std::string overlay as the CRobloxApp / CMainFrame units.

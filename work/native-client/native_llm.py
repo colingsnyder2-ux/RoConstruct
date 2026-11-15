@@ -20,6 +20,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -49,11 +50,27 @@ LADDER = ['claude:sonnet', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'opencode
           'opencode-go/qwen3.8-max', 'opencode-go/longcat-2.5-free']
 # Strongest NVIDIA NIM chat models for C++ rewrites (checked against the account's /v1/models list, 2026-11-14).
 # Each run adds a random sample of these after Sonnet so their quotas and strengths spread over the batch.
-CLAUDE_MODELS = ['claude:sonnet', 'claude:opus', 'claude:haiku']
-BEST_NIM = ['nvidia:mistralai/mistral-large-4-1t-a52b', 'nvidia:deepseek-ai/deepseek-v4.1-flash',
-            'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'nvidia:minimaxai/minimax-m3.1-flash', 'nvidia:z-ai/glm-5.3-flash',
-            'nvidia:nvidia/nemotron-3.5-super-vl-120b-a12b']
+CLAUDE_MODELS = ['claude:sonnet', 'claude:opus', 'claude:haiku', 'claude:fable']
+# nvidia deepseek-v4.1-flash and glm-5.3-flash dropped 2026-11-14: native_llm_probe.py ping timed out (120 s).
+BEST_NIM = ['nvidia:mistralai/mistral-large-4-1t-a52b', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b',
+            'nvidia:minimaxai/minimax-m3.1-flash', 'nvidia:nvidia/nemotron-3.5-super-vl-120b-a12b']
+# Free opencode models (longcat dropped: 120 s timeouts, no replies).  glm and beam have exacts.
+BEST_FREE = ['opencode/glm-5.3-flash-free', 'opencode/beam-free', 'opencode/deepseek-v4.1-flash-free',
+             'opencode/minimax-m3.1-flash-free', 'opencode/mimo-v2.6-flash-free', 'opencode/nemotron-3.5-super-vl-free']
 EXHAUSTED = set()          # models that reported a spent quota this run
+FAILS = collections.Counter()   # consecutive timeouts/errors (no reply text) per model; 3 in a row -> dropped
+
+
+def dead_models(min_tries=4):
+    """Models whose logged history is mostly timeouts/errors and never exact: skip them in the random picks."""
+    stats = collections.defaultdict(collections.Counter)
+    if LOG.is_file():
+        for line in LOG.read_text().splitlines():
+            row = _json(line) if line.strip() else None
+            if row:
+                stats[row['model']][row['status']] += 1
+                stats[row['model']]['tries'] += 1
+    return {m for m, c in stats.items() if c['tries'] >= min_tries and not c['inactive_exact'] and c['no-reply'] * 2 >= c['tries']}
 PREFLIGHT_BLOCKED = []
 SOURCE_DESTINATIONS = None
 SOURCE_LEAVES = None
@@ -72,8 +89,10 @@ uses invented names, raw pointer offsets and placeholder types. Rewrite it as th
 - Output ONE ```cpp block containing only the definition, qualified as `{qual}(` (no namespace block).
 - Never define or redeclare anything else: no other functions, enums, structs, classes, typedefs or
   globals. Functions the header already defines inline must not be written again (C2084).
-- Use only names the REAL HEADER (or a header it includes) declares. If the analog calls something the
-  header does not declare, call the header member at that address/offset instead; never invent it.
+- Prefer names the REAL HEADER declares. A class that is only forward-declared, or a callee in another
+  RBX class, may still be used by its real name (e.g. `humanoid->setJumping(...)`): the harness adds the
+  header that declares it and reports back any name it cannot find. Never invent placeholder names.
+- Never refuse, ask a question or call a tool: always answer with your best ```cpp definition.
 """
 
 
@@ -266,17 +285,23 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
 
 def ask(model, prompt, name):
     """-> the last ```cpp block of one model reply, or None."""
+    TOOL.reply, TOOL.tokens = '', {}
     if model.startswith('opencode'):
         text = ask_opencode(model, prompt)
     else:
         from roc import providers
         try:
-            text = providers.generate(model, prompt, {'allow_cloud': True, 'timeout': 120, 'max_tokens': 4096}).text
+            gen = providers.generate(model, prompt, {'allow_cloud': True, 'timeout': 120, 'max_tokens': 4096})
+            text = gen.text
+            TOOL.tokens = {'in': (gen.input_tokens or 0) + (gen.cached_tokens or 0), 'out': gen.output_tokens or 0}
+            if getattr(gen, 'cli_cost_usd', None) is not None:
+                TOOL.tokens['usd'] = round(gen.cli_cost_usd, 5)
         except providers.ProviderError as error:
             if providers.quota_exhausted(str(error)):
                 EXHAUSTED.add(model)
             print('provider error', model, name, str(error)[:200], flush=True)
             return None
+    TOOL.reply = text or ''
     # Only a block that defines the target counts; models sometimes echo header excerpts as code.
     blocks = re.findall(r'```(?:cpp|c\+\+)?\s*\n(.*?)```', text or '', re.S) or [text or '']   # codex CLI strips fences
     code = [c for c in blocks if re.search(r'::\s*%s\s*\(' % re.escape(name), c)]
@@ -299,6 +324,9 @@ def ask_opencode(model, prompt):
     if any(e.get('type') == 'error' and re.search(r'provider\.\w+-limit', json.dumps(e.get('error')))
            for e in events):                                        # free-limit / go-limit: quota spent
         EXHAUSTED.add(model)
+    used = [e['part']['tokens'] for e in events if isinstance(e.get('part'), dict) and isinstance(e['part'].get('tokens'), dict)]
+    TOOL.tokens = {'in': sum((u.get('input') or 0) + ((u.get('cache') or {}).get('read') or 0) for u in used),
+                   'out': sum((u.get('output') or 0) + (u.get('reasoning') or 0) for u in used)}
     return ''.join(e['part'].get('text', '') for e in events
                    if e.get('type') == 'text' and isinstance(e.get('part'), dict))
 
@@ -471,9 +499,15 @@ def prove(t, body, out, depth=0):
             found = [h for h in (declaring_header(n) for n in missing_names(error)) if h and h not in have]
             tool_time('include_search', time.time() - tick)
             if found:
+                before = list(EXTRA_INCLUDES.get(t['addr'], []))
                 EXTRA_INCLUDES.setdefault(t['addr'], []).extend(dict.fromkeys(found))
                 tool_time('include_retries', 1)
-                return prove(t, body, out, depth + 1)
+                retried = prove(t, body, out, depth + 1)
+                # An alternate header snapshot can redefine a class the destination already has (C2011): undo it.
+                if retried[0] == 'compile_failed' and 'C2011' in retried[1]:
+                    EXTRA_INCLUDES[t['addr']] = before
+                    return prove(t, body, out, 2)
+                return retried
         return status, 'Compile error:\n' + error[:1500] + declarations_for(error)
     if status == 'inactive_exact':
         return status, ''
@@ -490,16 +524,58 @@ def folder(t):
     return HERE / ('%s-%s' % (t['addr'], re.sub(r'\W+', '_', t['qual'].rsplit('::', 1)[-1])[:40]))
 
 
+RUN_ID = int(time.time())   # groups this process's attempt rows into one run (dashboard bytes-per-run table)
+SLOTS = {}                 # worker thread -> dashboard slot number
+GUI = bool(os.environ.get('ROC_GUI_EVENTS'))
+
+
+def gui(event, **fields):
+    """Dashboard event (roc gui Workers page live chat); no-op outside the dashboard."""
+    if GUI:
+        fields.setdefault('slot', SLOTS.setdefault(threading.get_ident(), len(SLOTS)))
+        if fields['slot'] is None:
+            del fields['slot']            # run-level event: shown as "roc", not a worker
+        print('ROC_EVENT ' + json.dumps(dict(event=event, **fields)), flush=True)
+
+
+PICK_STATE = HERE / 'pick-state.json'
+
+
+def pick_mode(mode):
+    """'auto' alternates explore / top runs (state in pick-state.json); the first auto run explores."""
+    if mode != 'auto':
+        return mode
+    last = json.loads(PICK_STATE.read_text()).get('last') if PICK_STATE.is_file() else 'top'
+    mode = 'top' if last == 'explore' else 'explore'
+    PICK_STATE.write_text(json.dumps({'last': mode}))
+    return mode
+
+
+def top_models(count):
+    """Best per-worker bytes/hour from native_llm_models.py (live models only; retired codex workers excluded)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import native_llm_models
+    dead = dead_models()
+    rows = [r for r in native_llm_models.report() if r['model'] != 'cache' and not r['model'].startswith('codex:')
+            and r['model'] not in dead and r['bytes_per_hour'] > 0]
+    best = {}
+    for r in rows:                       # one entry per model name (beam-free exists as opencode/ and opencode-go/)
+        best.setdefault(r['model'].split('/')[-1], r['model'])
+    return list(best.values())[:count] or ['claude:sonnet']
+
+
 def work(t, ladder, tries, start=0):
     analog = (ROOT / 'src/2008-06' / (t['addr'] + '.cpp')).read_text(errors='replace')
     directives = match.directives(analog)
     if 'lib' in directives:
         from roc import libs
         recipe, _, path = directives['lib'].partition(' ')
-        try:
-            expanded = libs.unit(recipe, path.strip(), 21022)
-        except (Exception, SystemExit) as error:  # one unbuildable library unit must not abort the batch
-            expanded = 'library unit did not preprocess: %s' % str(error)[:300]
+
+        def expanded():
+            try:
+                return libs.unit(recipe, path.strip(), 21022)
+            except (Exception, SystemExit) as error:  # one unbuildable library unit must not abort the batch
+                return 'library unit did not preprocess: %s' % str(error)[:300]
         # Recipe preprocessors can emit megabytes of dependency declarations.
         # Give the actual trailing analog body instead of an empty directive.
         if t.get('donor_body'):
@@ -507,7 +583,12 @@ def work(t, ladder, tries, start=0):
             analog += ('\n// 2007 donor source of THIS function (byte-exact in its own unit; 2008 header names may differ):\n'
                        + t['donor_body'][:12000])
         else:
-            analog += '\n// Expanded recipe trailing source excerpt (analog types are not native declarations):\n' + expanded[-32000:]
+            # The generated unit as written (before preprocessing) is the analog body; its 32 KB preprocessed tail
+            # is mostly STL/intrinsic declarations, so send that only when the raw unit is unavailable.
+            units = libs.units_used(analog)
+            raw = next(iter(next(iter(units.values())).values()), '') if units else ''
+            analog += ('\n// Analog unit source (analog types are not native declarations):\n' + raw[:12000] if raw else
+                       '\n// Expanded recipe trailing source excerpt (analog types are not native declarations):\n' + expanded()[-8000:])
     elif t.get('donor_body'):
         # Upstream/donor source this function was ported from (e.g. G3D GFont for Ogre::VRbxFont).
         analog += ('\n// Upstream source this function was ported from (types/API may differ; follow the asm):\n'
@@ -526,7 +607,7 @@ def work(t, ladder, tries, start=0):
         started = time.time()
         TOOL.times = {}
         status, feedback = prove(t, body, folder(t) / 'recheck')
-        row = dict(t, model='cache', attempt=-1, status=status, time=round(time.time(), 1), tool=TOOL.times, llm_seconds=0.0,
+        row = dict(t, model='cache', attempt=-1, status=status, time=round(time.time(), 1), run=RUN_ID, tool=TOOL.times, llm_seconds=0.0,
                    gate_seconds=round(time.time() - started, 1))
         with LOG.open('a') as log:
             log.write(json.dumps(row) + '\n')
@@ -542,21 +623,49 @@ def work(t, ladder, tries, start=0):
         model = live[(start + n) % len(live)]           # each retry moves to the next provider's model
         TOOL.times = {}
         started = time.time()
+        sent = prompt + ''.join(history)
+        gui('native_started', file=t['qual'], addr=t['addr'], method='%s | %d B | try %d | %s' % (t['qual'], t['size'], n, model),
+            message='Asking ' + model)
         try:
-            body = ask(model, prompt + ''.join(history), t['qual'].rsplit('::', 1)[-1])
+            body = ask(model, sent, t['qual'].rsplit('::', 1)[-1])
         except subprocess.TimeoutExpired:
             body = None
         llm = time.time() - started
         if not body:
             status, feedback = 'no-reply', ''
+            reply = getattr(TOOL, 'reply', '')
+            FAILS[model] = 0 if reply else FAILS[model] + 1
+            if FAILS[model] >= 3 and model not in EXHAUSTED:
+                EXHAUSTED.add(model)          # keeps timing out / erroring: stop using it this run
+                print('dropping model after 3 timeouts/errors:', model, flush=True)
+            if reply:   # tell the next model why: no definition, plus the declarations the reply wanted
+                asked = ' '.join("'%s'" % n for n in re.findall(r'`([A-Za-z_][\w:]*)`', reply))
+                history = ['\n--- PREVIOUS REPLY (no ```cpp definition of `%s(`) ---\n%s\n--- RESULT ---\nNo usable code.%s\n'
+                           'Answer with the definition now; unknown names are resolved by the harness.\n'
+                           % (t['qual'], reply[:1500], declarations_for(asked))]
         else:
+            FAILS[model] = 0
             TOOL.times = {}
             status, feedback = prove(t, body, folder(t) / ('try%d' % n))
-        row = dict(t, model=model, attempt=n, status=status, time=round(time.time(), 1),
-                   tool=dict(getattr(TOOL, 'times', None) or {}), llm_seconds=round(llm, 1),
+        row = dict(t, model=model, attempt=n, status=status, time=round(time.time(), 1), run=RUN_ID,
+                   tool=dict(getattr(TOOL, 'times', None) or {}), tokens=dict(getattr(TOOL, 'tokens', None) or {}),
+                   llm_seconds=round(llm, 1),
                    gate_seconds=round(time.time() - started - llm, 1))
         with LOG.open('a') as log:
             log.write(json.dumps(row) + '\n')
+        # Full conversation for the dashboard's Native LLM page.  ponytail: never pruned; add a keep-last-N if disk matters.
+        (HERE / 'chats').mkdir(exist_ok=True)
+        (HERE / 'chats' / ('%d-%s-%d.json' % (int(row['time'] * 1000), t['addr'], n))).write_text(json.dumps(dict(
+            addr=t['addr'], qual=t['qual'], size=t['size'], model=model, attempt=n, status=status, time=row['time'],
+            tokens=row['tokens'], llm_seconds=row['llm_seconds'], gate_seconds=row['gate_seconds'],
+            prompt=sent, reply=getattr(TOOL, 'reply', ''), result=(feedback or '')[:6000])), errors='replace')
+        if getattr(TOOL, 'reply', ''):
+            gui('log', message='%s reply | %s | %s tokens\n%s' % (model, t['qual'], row['tokens'] or '?', TOOL.reply[:8000]))
+        gui('native_result', file='%s [%s]' % (t['qual'], model.split('/')[-1]), addr=t['addr'],
+            local_exact=int(status == 'inactive_exact'), seconds=round(time.time() - started, 1),
+            error='' if status == 'inactive_exact' else (feedback or status)[:4000],
+            error_summary='%s | llm %.0fs gate %.0fs | %s tok' % (status, llm, row['gate_seconds'],
+                                                               sum(row['tokens'].get(k, 0) for k in ('in', 'out')) or '?'))
         print('%s %-34s %4dB try%d %-16s %-28s llm %5.1fs gate %5.1fs' % (t['addr'], t['qual'][-34:], t['size'], n,
               status, model.split('/')[-1][:28], row['llm_seconds'], row['gate_seconds']), flush=True)
         if status == 'inactive_exact':
@@ -584,6 +693,9 @@ def main():
     ap.add_argument('--max-size', type=int, default=512)
     ap.add_argument('--models', default=None, help='comma ladder (default: CLAUDE_MODELS + --nim random BEST_NIM)')
     ap.add_argument('--nim', type=int, default=3, help='random BEST_NIM models added after the Claude models when --models is not given')
+    ap.add_argument('--free', type=int, default=3, help='random BEST_FREE opencode models added after those')
+    ap.add_argument('--pick', choices=('auto', 'top', 'explore'), default='auto',
+                    help='auto alternates runs: explore (Claude + random NIM/free) then top 4 by bytes/hour')
     ap.add_argument('--owner-prefix', action='append', default=[])
     ap.add_argument('--queue', type=Path, default=QUEUE, help='identity-backed conversion queue')
     ap.add_argument('--closure', type=Path, default=CLOSURE, help='matching identity evidence for native gates')
@@ -592,18 +704,32 @@ def main():
                     help='probe real-header methods with no native .cpp; never promotes them')
     ap.add_argument('--retry-address', action='append', default=[], metavar='ADDR',
                     help='recheck cached donor only for this address after a driver/input repair')
+    ap.add_argument('--retry-failed', action='store_true', help='also retry earlier targets that never became exact')
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
     QUEUE, CLOSURE = args.queue.resolve(), args.closure.resolve()
+    picked = pick_mode(args.pick) if not args.models else 'given'
+    if picked == 'top':
+        args.models = ','.join(top_models(4))
+        print('pick: top 4 by bytes/hour (exploit run)', flush=True)
     if not args.models:
+        print('pick: Claude + random NIM/free (explore run)', flush=True)
         import random
-        args.models = ','.join(CLAUDE_MODELS + random.sample(BEST_NIM, min(args.nim, len(BEST_NIM))))
+        dead = dead_models()
+        nim = [m for m in BEST_NIM if m not in dead]
+        free = [m for m in BEST_FREE if m not in dead]
+        print('skipping dead models:', ','.join(sorted(dead & set(BEST_NIM + BEST_FREE))) or '-', flush=True)
+        args.models = ','.join(CLAUDE_MODELS + random.sample(nim, min(args.nim, len(nim)))
+                               + random.sample(free, min(args.free, len(free))))
     print('models:', args.models, flush=True)
+    gui('stage', slot=None, message='Native LLM | ' + args.models.replace(',', ', '))
     HERE.mkdir(parents=True, exist_ok=True)
     started = time.time()
     prior_log = LOG.read_text().count('\n') if LOG.is_file() else 0
     tried = {json.loads(l)['addr'] for l in LOG.open()} if LOG.is_file() else set()
+    if args.retry_failed:   # harness fixes since the last try (flags, includes, identities) help old misses too
+        tried = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'} if LOG.is_file() else set()
     for address in args.retry_address:
         tried.discard(address.lower())
     todo = targets(args.owner_prefix, args.max_size, tried, args.new_source)
@@ -635,6 +761,7 @@ def main():
             done += [r for r in pool.map(lambda t: _regate(t), again) if r]
     exact = [(t, d) for t, d in done if d]
     print('exact %d/%d (%d B)' % (len(exact), len(done), sum(t['size'] for t, _ in exact)), flush=True)
+    gui('benchmark', slot=None, completed=len(done), matched=len(exact), improved=0)
     attempts = [json.loads(line) for line in LOG.read_text().splitlines()[prior_log:]] if LOG.is_file() else []
     failures = collections.Counter(row['status'] for row in attempts if row['status'] != 'inactive_exact')
     calls = collections.Counter(row['model'] for row in attempts)

@@ -12,10 +12,6 @@
 // FILL) and the bodies are quad.c with GL calls replaced by ManualObject calls; colour and offset are Roblox's.
 // Enum value order follows the bodies' comparisons, not GL's constants.
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// RbxAdornState2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 0c2226f4 | roc native-status --write
 
 #include <OgreString.h>
 #include <OgreColourValue.h>

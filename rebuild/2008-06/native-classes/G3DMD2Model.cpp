@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DMD2Model (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/MD2Model.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// G3DMD2Model | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src c961b1d3 | roc native-status --write
 #line 1 ".\\glg3dcpp\\MD2Model.cpp"
 /**
  @file MD2Model.cpp

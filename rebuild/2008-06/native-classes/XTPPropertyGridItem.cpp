@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPPropertyGridItem | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src cfaa1564 | roc native-status --write
 #include "StdAfx.h"
 #include "Common/XTPVC80Helpers.h"
 #include "Common/XTPDrawHelpers.h"

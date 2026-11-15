@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ModelInstance | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 26d0b60e | roc native-status --write
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/ICameraOwner.h"
 #include "util/IRenderable.h"

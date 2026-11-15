@@ -9,10 +9,6 @@
 
 // For more information, see http://www.boost.org
 
-// >>> native-status (generated) -- do not edit >>>
-// Boostnamed_slot_map | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 948792ba | roc native-status --write
 #define BOOST_SIGNALS_SOURCE
 
 #include <boost/signals/detail/named_slot_map.hpp>

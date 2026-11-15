@@ -195,7 +195,20 @@ def coff_data_refs(obj, func_name, index=None):
 def _base_relocs(client):
     from roc.analyze import reloc_sites
     entry = clients.load()[client]
-    return frozenset(reloc_sites(pefile.PE(str(clients.exe_path(client, entry)))))
+    exe = Path(clients.exe_path(client, entry))
+    # pefile's full relocation parse costs ~4 s in every gate process; the exe never changes, so keep it on disk.
+    stat = exe.stat()
+    cache = Path(__file__).resolve().parent.parent / 'work' / 'cache' / ('base-relocs-%s-%d-%d.json' % (
+        re.sub(r'\W', '_', client), stat.st_size, stat.st_mtime_ns))
+    try:
+        return frozenset(json.loads(cache.read_text()))
+    except (OSError, ValueError):
+        sites = frozenset(reloc_sites(pefile.PE(str(exe))))
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        tmp = cache.with_suffix('.%d.tmp' % os.getpid())
+        tmp.write_text(json.dumps(sorted(sites)))
+        os.replace(tmp, cache)
+        return sites
 
 
 @functools.lru_cache(maxsize=4)

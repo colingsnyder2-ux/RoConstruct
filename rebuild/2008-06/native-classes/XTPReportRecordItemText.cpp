@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPReportRecordItemText | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7ec656c6 | roc native-status --write
 #include "stdafx.h"
 #include <math.h>
 #include "Common/XTPDrawHelpers.h"

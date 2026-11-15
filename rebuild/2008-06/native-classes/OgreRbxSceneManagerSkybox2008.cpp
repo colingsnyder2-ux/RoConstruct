@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// OgreRbxSceneManagerSkybox2008 | 2008-06 | 6 byte-exact, inactive (not link-selected)
-// 6/6 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto (+2) (mixed 2)
-// <<< native-status | src 945c5509 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
 #include <Ogre.h>

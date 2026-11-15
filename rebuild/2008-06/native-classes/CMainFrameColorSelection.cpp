@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameColorSelection | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 462d916f | roc native-status --write
 #include "CMainFrame.h"
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/ToolsPart.h"

@@ -2,10 +2,6 @@
 // The original unit 0062e090..00633101 also holds Rocket (native-classes/Rocket.cpp). Verified by
 // tests/record_native_body_movers.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// BodyMovers | 2008-06 | draft (no current byte proof)
-// 0/11 mapped addresses byte-exact | 11 unproved | 4 referenced strings (not rechecked) | by king_originala (+3) (mixed 5)
-// <<< native-status | src 3793eee6 | roc native-status --write
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
@@ -89,6 +85,16 @@ namespace RBX
 		}
 	}
 
+	// 0062fa10 (Connector slot 4, `ret 4`; `this` is the Connector subobject at +0x130): index 0 tests
+	// weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (the temporary is released under a construction flag), then
+	// locks again and returns the Body* at PartInstance +0x2c8 (embedded Primitive +0x228, body +0xa0); NULL otherwise.
+	Body* BodyMover::getBody(int i)
+	{
+		if (i == 0 && part.lock())
+			return part.lock()->getPrimitive()->getBody();
+		return NULL;
+	}
+
 	// ---- BodyGyro (dynamic initializers 007f81c0..007f8250) ----
 	Reflection::BoundProp<float, 1> BodyGyro::prop_kP("P", "Goals", &BodyGyro::kP, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<float, 1> BodyGyro::prop_kD("D", "Goals", &BodyGyro::kD, Reflection::PropertyDescriptor::STANDARD);
@@ -104,7 +110,9 @@ namespace RBX
 	{
 	}
 
-	// 006300d0
+	// 006300d0 (Connector slot 1; `this` is the Connector subobject at +0x130): weak_ptr<PartInstance>::lock 005cab00 on
+	// part +0x140, then the Body* at PartInstance +0x2c8 (embedded Primitive +0x228, Primitive body +0xa0; part-embedded
+	// PartInstance.h on the include path). Donor tools/rbxgs Gyro.cpp BodyGyro::computeForce.
 	void BodyGyro::computeForce(const float dt, bool throttling)
 	{
 		Body* body = part.lock()->getPrimitive()->getBody();

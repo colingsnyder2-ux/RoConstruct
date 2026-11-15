@@ -3,10 +3,6 @@
 // ~Part, Part's invalidate slot and the Decal / Texture property handlers (Texture's 004e6bc0 is a block-order
 // near-miss: recorded, not counted). Bodies that read PartInstance fields (+0x1c8 / +0x1dc / +0x224) or the view's
 // scene manager are not built; see native-headers/ViewNew/PartChunk.h.
-// >>> native-status (generated) -- do not edit >>>
-// ViewNewPart | 2008-06 | 5 byte-exact, inactive (not link-selected)
-// 5/5 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
-// <<< native-status | src ad3d68f9 | roc native-status --write
 #include "ViewNew/PartChunk.h"
 #include "RenderLib/ViewBase2008.h"
 #include "v8datamodel/PartInstance.h"

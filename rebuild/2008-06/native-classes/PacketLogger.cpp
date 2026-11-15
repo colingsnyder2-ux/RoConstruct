@@ -1,8 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
-// >>> native-status (generated) -- do not edit >>>
-// PacketLogger | 2008-06 | 2 byte-exact, inactive (not link-selected)
-// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto
-// <<< native-status | src b332b913 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h"
 
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/BitStream.h"
@@ -284,6 +280,9 @@ void PacketLogger::SetPrintAcks(bool print)
 {
 	printAcks=print;
 }
+// 004badc0 ?IDTOString@PacketLogger@@IAEPADE@Z (31 bytes). Laid out right after UserIDTOString 004badb0 in this unit;
+// calls BaseIDTOString 004baab0, then tail-jumps through vtable slot 0x48 (UserIDTOString) when it returns null.
+// Called by Exposer::IDTOString 0049f180. Body follows the RakNet 3.0 PacketLogger.cpp source.
 char* PacketLogger::IDTOString(unsigned char Id)
 {
 	char *out;

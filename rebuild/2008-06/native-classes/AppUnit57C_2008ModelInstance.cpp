@@ -25,10 +25,6 @@
 // isTopLevelPVInstance out of line in 00584310 / 00584360); {headers}/part-embedded for the 2008 PartInstance /
 // Primitive (005834f0, 00584d80); {headers}/pv-parent for the iterative noinline getTypedRoot<PVInstance> (005836d0).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT /I{headers}/part-embedded /I{headers}/pv-parent
-// >>> native-status (generated) -- do not edit >>>
-// AppUnit57C_2008ModelInstance | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/30 mapped addresses byte-exact | named 1 | 29 unproved | 2 referenced strings (not rechecked) | by king_originala (+5) (mixed 8)
-// <<< native-status | src 8fbfb5a5 | roc native-status --write
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/Primitive.h"

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CPropGrid | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 0e7580aa | roc native-status --write
 #include <XTToolkitPro.h>
 #include "util/Events.h"
 #include <boost/thread/recursive_mutex.hpp>

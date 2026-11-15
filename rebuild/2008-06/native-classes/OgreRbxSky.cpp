@@ -23,10 +23,6 @@
 // _Copy_backward_opt 0067f1d0, _Fill 0067f7c0).
 // Pending-build-only (NATIVE_OGRE_RBX_SKY_PENDING, with the proposal header that tests/record_native_ogre_rbx_sky.py
 // generates under rebuild/2008-06/out/): the RbxSky members.
-// >>> native-status (generated) -- do not edit >>>
-// OgreRbxSky | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 610e9bab | roc native-status --write
 #include <vector>
 #include <OgreVector3.h>
 

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// COutputView | 2008-06 | 9 byte-exact, inactive (not link-selected)
-// 9/9 mapped addresses byte-exact | 0 unproved | no mapped strings | by colin (+4) (mixed 4)
-// <<< native-status | src da05e7c6 | roc native-status --write
 #include "COutputView.h"
 #include <atlenc.h>
 #include <time.h>

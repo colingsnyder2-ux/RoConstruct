@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DSystem (inactive): G3D 6.09 with 2008 CPU-detection changes supported by original 00508110.
-// >>> native-status (generated) -- do not edit >>>
-// G3DSystem | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 8c8df9d5 | roc native-status --write
 #line 1 ".\\G3Dcpp\\System.cpp"
 /** 
   @file System.cpp

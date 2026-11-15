@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidStates3SimJob | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 60ea8380 | roc native-status --write
 #include "v8world/SimJob.h"
 #include <boost/signals/connection.hpp>
 

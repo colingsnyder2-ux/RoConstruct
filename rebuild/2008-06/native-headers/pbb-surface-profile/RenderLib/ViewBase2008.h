@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ViewBase2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src e31f6cc8 | roc native-status --write
 // 2008-06 native RBX::ViewBase (inactive). Named *2008.h so it never shadows the donor RbxViewBase/ViewBase.h (a later
 // source base whose ViewBase has no members).
 //   ViewBase     RTTI vtable 00826c24 (no bases); 11 slots: 0 ??_G 004d8ac0 (calls the dtor out of line), 1..10

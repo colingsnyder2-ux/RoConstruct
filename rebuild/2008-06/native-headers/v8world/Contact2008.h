@@ -1,13 +1,10 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Contact2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src d6d88c89 | roc native-status --write
 // 2008-06 native RBX::Contact, BallBallContact, BallBlockContact (inactive). Declared under a non-colliding name:
 // the original path v8world/Contact.h is reached through the donor World.h / CollisionStage.h and the maintainer
 // engine-world World.h; see the proposal in tests/record_native_world_shapes.py. The bases Edge / IPipelined come
-// from the donor v8world/Edge.h (no native header yet); their layout is checked here only through the Contact
-// field offsets (Edge ends at +0x20) and the Edge constructor 00659260 / setPrimitive 00659290.
+// from the native 2008 Edge, native-headers/AppUnit658/Edge.h (index0 / index1 at +0x14 / +0x18, Edge ends at +0x20,
+// constructor 00659260 / setPrimitive 00659290), over v8kernel/IPipelined2008.h; a unit that also reaches the donor
+// IPipelined defines NATIVE_IPIPELINED2008_DONOR before including this header (same 2008 layout).
 // Every Contact field, slot and size below is read from the 2008-06 binary:
 //   RTTI     BallBallContact vtable 008436bc, BallBlockContact 008436e8, BlockBlockContact 00843714: each
 //            -> Contact -> Edge -> IPipelined (all mdisp 0). Contact has no vtable of its own (no vtable store in
@@ -27,13 +24,14 @@
 //            only restore their vtable before operator delete.
 // BlockBlockContact (0x7c: two G3D::Arrays at +0x34 / +0x40, a float at +0x54 and int fields up to +0x7b) is not
 // declared here: its fields beyond the two arrays are not derived yet (see the recorder's report).
-#include "v8world/Edge.h"
+#include "AppUnit658/Edge.h"
 
 struct NativeWorldShapesLayout;
 namespace G3D { class Vector3; class Vector3int16; }
 
 namespace RBX
 {
+	class Body;
 	class ContactConnector;
 	class Kernel;
 
@@ -66,11 +64,30 @@ namespace RBX
 
 	protected:
 		void deleteConnector(ContactConnector*& c);     // 00606d10
+		// 00606e00 (`ret 8`, placeholder func_00606e00): new ContactConnector(jointK +0x28, elasticJointK +0x2c,
+		// kFriction +0x30) 00606d40, stores the two Body arguments at connector +0x14 / +0x18, then
+		// getKernel()->insertConnector 005fb160. Donor name Contact::createConnector() (the 2008 one takes the bodies);
+		// called by BallBallContact 00606f80, BallBlockContact 00607150 and BlockBlockContact 00607cc0.
+		ContactConnector* createConnector(Body* b0, Body* b1);   // 00606e00
 		virtual void deleteAllConnectors() = 0;         // slot 5
 		virtual bool stepContact() = 0;                 // slot 6
 
 	public:
 		Contact(Primitive* prim0, Primitive* prim1);    // 00606c20
+
+		// donor v8world/Contact.h; bodies in native-classes/ContactUnit2008Contact.cpp. step: stepContact slot 6, then
+		// Primitive::onNewTouch 005e7530 on the first touching step. computeIsAdjacent: computeIsColliding slot 7 with
+		// +space, then -space. The hit counters are read by contactPairHitRatio / contactFeatureHitRatio
+		// (DataModel::evaluate 005760a1 / 005760d5) and incremented by BlockBlockContact 00607d3b / 00607d07 /
+		// 00607588 / 00607548.
+		bool step(int uiStepId);                        // 00606c50
+		bool computeIsAdjacent(float spaceAllowed);     // 00606ca0
+		static int contactPairMatches;                  // 0097b880
+		static int contactPairMisses;                   // 0097b884
+		static int contactFeatureMatches;               // 0097b888
+		static int contactFeatureMisses;                // 0097b88c
+		static float contactPairHitRatio();             // 00606bc0
+		static float contactFeatureHitRatio();          // 00606bf0
 
 		virtual bool computeIsColliding(float overlapIgnored) = 0;   // slot 7
 		virtual int numConnectors() const = 0;                       // slot 8 (analog name)

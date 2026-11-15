@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafximageeditordialog | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src c150fabd | roc native-status --write
 #include "stdafx.h"
 #include <afxpriv.h>
 #include "afxribbonres.h"

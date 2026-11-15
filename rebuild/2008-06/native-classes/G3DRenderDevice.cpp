@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DRenderDevice (inactive): G3D 6.09 source with observed 2008 reset behavior.
-// >>> native-status (generated) -- do not edit >>>
-// G3DRenderDevice | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 8682a41d | roc native-status --write
 #line 1 ".\\glg3dcpp\\RenderDevice.cpp"
 /**
  @file RenderDevice.cpp

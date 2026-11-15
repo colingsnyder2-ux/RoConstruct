@@ -1,12 +1,13 @@
 """Host-owned recovery catalog, fenced cross-PC leases and independent native-body rechecks."""
 import json
+import os
 import re
 import threading
 import time
 import uuid
 from pathlib import Path
 
-from roc import integration, native_recovery as recovery, native_sweep as sweep, worker, native_methods
+from roc import integration, native_recovery as recovery, native_sweep as sweep, worker, native_methods, leases
 
 TTL = 120
 SCHEMA = '''
@@ -27,7 +28,7 @@ def integration_busy(db, now):
 
 class Host:
     def __init__(self, promotions, start=False, server=None):
-        self.server=server or worker.load_settings().get('server','http://127.0.0.1:8765')
+        self.server=os.environ.get('ROC_NATIVE_SELF_SERVER') or server or worker.load_settings().get('server','http://127.0.0.1:8765')
         self.promotions=promotions
         self.root=promotions.root
         self.store=promotions.store
@@ -39,6 +40,7 @@ class Host:
         self.stop=threading.Event()
         with self.store.lock,self.store.db as db:
             db.executescript(SCHEMA)
+            self.file_leases=leases.Leases(db)
             db.execute("UPDATE native_recovery_uploads SET state='queued' WHERE state='verifying'")
         if start:
             threading.Thread(target=self.loop,daemon=True).start()
@@ -53,17 +55,20 @@ class Host:
     def _catalog(self):
         manifest=self.root/'work/native-recovery/tasks.json'
         blocker_manifest=self.root/'work/native-recovery/blockers.json'
-        inputs={str(p):[p.stat().st_size,p.stat().st_mtime_ns] for scope in recovery.SCOPES
+        def stamp(path):
+            info=path.stat()
+            return [info.st_size,info.st_mtime_ns,recovery.digest(path.read_bytes())]
+        inputs={str(p):stamp(p) for scope in recovery.SCOPES
                 for p in (self.root/recovery.NATIVE/scope).rglob('*') if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.inl')}
         for p in [* (self.root/recovery.NATIVE/'tests').glob('Native*.cpp'),
                   * (self.root/recovery.NATIVE/'tests').glob('record_native_*.py'),manifest,blocker_manifest,
                   self.root/recovery.NATIVE/'out/native-names.json',self.root/'work/2008-06/functions.jsonl']:
-            if p.exists():inputs[str(p)]=[p.stat().st_size,p.stat().st_mtime_ns]
+            if p.exists():inputs[str(p)]=stamp(p)
         canonical=self.promotions.source_root
         registry=self.promotions.overlay
-        if registry.exists():inputs[str(registry)]=[registry.stat().st_size,registry.stat().st_mtime_ns]
+        if registry.exists():inputs[str(registry)]=stamp(registry)
         project_registry=self.root/'rebuild/2008-06/patches/rbxgs-client.json'
-        if project_registry.exists():inputs[str(project_registry)]=[project_registry.stat().st_size,project_registry.stat().st_mtime_ns]
+        if project_registry.exists():inputs[str(project_registry)]=stamp(project_registry)
         key=integration.digest(inputs)
         if key!=self.cache_key:
             blockers=json.loads(blocker_manifest.read_text(encoding='utf-8')) if blocker_manifest.exists() else []
@@ -76,21 +81,37 @@ class Host:
                         not 1<=len(blocker['reason'])<=2000 or \
                         not re.fullmatch(r'work/[\w./-]+\.json',blocker['evidence']) or '..' in Path(blocker['evidence']).parts:
                     raise ValueError('Invalid native blocker record')
-            files={Path(p).relative_to(self.root).as_posix():Path(p).read_text(encoding='utf-8-sig')
-                   for p in inputs if Path(p).suffix in ('.cpp','.h','.hpp','.inl')}
+            from roc.native_collaboration import source_text
+            source_rows={Path(p).relative_to(self.root).as_posix():source_text(p)
+                         for p in inputs if Path(p).suffix in ('.cpp','.h','.hpp','.inl')}
+            files={rel:row[0] for rel,row in source_rows.items()}
+            encodings={rel:row[1] for rel,row in source_rows.items() if row[1]!='utf-8'}
             names_path=self.root/recovery.NATIVE/'out/native-names.json'
             names=json.loads(names_path.read_text()) if names_path.exists() else {}
             texts={p:t for p,t in files.items() if '/tests/' not in p and '/native-classes/accepted/' not in p}
+            parse_failures=[]
+            for rel,text in list(texts.items()):
+                try:native_methods.methods(text)
+                except ValueError as error:
+                    parse_failures.append(dict(file=rel,reason=str(error)))
+                    del texts[rel]
             tasks=recovery.nominations(self.root,texts,names)
             patches=json.loads(registry.read_text(encoding='utf-8')) if registry.exists() else {}
-            canonical_headers={rel:integration.overlay_text(canonical/'tools/rbxgs/Client',rel,patches,workspace=canonical)
-                               for rel in patches if Path(rel).suffix in ('.h','.hpp','.inl')}
+            canonical_headers={};accepted_context_failures=[]
+            for rel in patches:
+                if Path(rel).suffix not in ('.h','.hpp','.inl'):continue
+                try:canonical_headers[rel]=integration.overlay_text(canonical/'tools/rbxgs/Client',rel,patches,workspace=canonical)
+                except (OSError,ValueError) as error:
+                    accepted_context_failures.append(dict(file=rel,reason=str(error)))
+            if accepted_context_failures:
+                canonical_headers={}  # Never publish a partial accepted declaration set.
             canonical_revision=integration.digest(canonical_headers)
             if manifest.exists():
                 extra=json.loads(manifest.read_text(encoding='utf-8'))
                 if not isinstance(extra,list):raise ValueError('Host task manifest must be a list')
                 from roc.native_collaboration import seed_missing
                 for task in extra:
+                    if accepted_context_failures and task.get('include_profile')=='accepted':continue
                     if task.get('include_profile')!='accepted':continue
                     name=task.get('canonical_file','')
                     if not re.fullmatch(r'App/[\w-]+/[\w-]+\.cpp',name) or Path(name).name.startswith('roc_'):
@@ -115,6 +136,7 @@ class Host:
             seen=set();clean=[]
             for task in tasks:
                 task=dict(task)
+                if accepted_context_failures and task.get('include_profile')=='accepted':continue
                 if task.get('include_profile','owner')=='owner' and task['file'] in {
                         (recovery.NATIVE/'native-classes'/name).as_posix() for name in recovery.MFC_CONVERSION_UNITS}:
                     task['include_profile']='owner-mfc-conversion'
@@ -122,7 +144,12 @@ class Host:
                 text=files.get(task['file'])
                 method=task.get('method')
                 if text is None or not re.fullmatch('[0-9a-f]{8}',task.get('addr','')):continue
-                if method not in native_methods.methods(text) and not task.get('add_method'):continue
+                try:methods=native_methods.methods(text)
+                except ValueError as error:
+                    if not any(row['file']==task['file'] for row in parse_failures):
+                        parse_failures.append(dict(file=task['file'],reason=str(error)))
+                    continue
+                if method not in methods and not task.get('add_method'):continue
                 if '(' in method and (not isinstance(task.get('expected_symbol'),str) or sweep.symbol_method(task['expected_symbol'])!=method.split('(',1)[0]):
                     raise ValueError('Overloaded recovery task needs an explicit matching MSVC symbol')
                 if path.suffix!='.cpp' and not task.get('translation_unit'):
@@ -164,7 +191,12 @@ class Host:
             sources.update(p.relative_to(tree).as_posix() for p in (tree/'App/include').rglob('*') if p.suffix in ('.h','.hpp','.inl'))
             sources.update(p for p in patches if p.startswith('App/include/') and Path(p).suffix in ('.h','.hpp','.inl'))
             for rel in sorted(sources):
-                for method in native_methods.methods(integration.overlay_text(tree,rel,patches,workspace=canonical)):
+                if accepted_context_failures:break  # Integration mapping stays blocked; owner-source recovery can continue.
+                try:methods=native_methods.methods(integration.overlay_text(tree,rel,patches,workspace=canonical))
+                except ValueError as error:
+                    parse_failures.append(dict(file='tools/rbxgs/Client/'+rel,reason=str(error)))
+                    continue
+                for method in methods:
                     mappings.setdefault(method,[]).append(rel)
             for task in clean:
                 paths=mappings.get(task['method'],[])
@@ -175,9 +207,9 @@ class Host:
                         raise ValueError('Invalid owner helper canonical unit')
                     task['integration_mapping']=rel
             clean.sort(key=lambda t:(not bool(t['integration_mapping']),len(files[t['file']][slice(*native_methods.methods(files[t['file']]).get(t['method'],(0,len(files[t['file']]))))]),t['file'],t['method']))
-            if any(not Path(p).exists() or [Path(p).stat().st_size,Path(p).stat().st_mtime_ns]!=stamp for p,stamp in inputs.items()):
+            if any(not Path(p).exists() or stamp(Path(p))!=expected for p,expected in inputs.items()):
                 raise ValueError('Native inputs changed while publishing; refresh catalog')
-            self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,blockers=blockers,probe_headers=probe_headers,probe_revision=probe_revision,
+            self.cached=dict(revision=integration.digest(files),files=files,file_encodings=encodings,tasks=clean,blockers=blockers,parse_failures=parse_failures,accepted_context_failures=accepted_context_failures,probe_headers=probe_headers,probe_revision=probe_revision,
                 canonical_headers=canonical_headers,canonical_revision=canonical_revision,
                 classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL,owner_append_mapping=1)
             self.cache_key=key
@@ -208,6 +240,8 @@ class Host:
         with self.store.lock,self.store.db as db:
             db.execute('BEGIN IMMEDIATE')
             now=time.time()
+            if leases.holder(task['file'],self.file_leases.active(now),user):
+                return dict(claimed=False,reason='file-leased')
             if task['addr'] in integration_busy(db,now):return dict(claimed=False,reason='integration-busy')
             busy=db.execute("SELECT 1 FROM native_method_leases WHERE ((state='claimed' AND expires>?) OR state='submitted') AND json_extract(packet,'$.task.addr')=? LIMIT 1",(now,task['addr'])).fetchone()
             if busy:return dict(claimed=False,reason='address-busy')

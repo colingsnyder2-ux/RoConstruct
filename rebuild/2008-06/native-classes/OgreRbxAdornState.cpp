@@ -1,10 +1,6 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native Ogre::RbxAdornState (inactive): SGI GLU quad.c (gluCylinder/gluPartialDisk/gluDisk/gluSphere) on
 // Ogre::ManualObject. Bodies follow the server-exact analog of each address; upstream: mesa glu src/libutil/quad.c.
-// >>> native-status (generated) -- do not edit >>>
-// OgreRbxAdornState | 2008-06 | 30 byte-exact, inactive (not link-selected)
-// 30/30 mapped addresses byte-exact | named 5 | 0 unproved | no mapped strings | by auto (+3) (mixed 3)
-// <<< native-status | src b8efe9b1 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #include "OgreRbx/RbxAdornState2008.h"
 #include <OgreManualObject.h>

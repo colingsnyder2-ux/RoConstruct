@@ -2,6 +2,7 @@
 import collections
 import json
 import mimetypes
+import re
 import os
 import secrets
 import socket
@@ -20,32 +21,16 @@ from roc.gui_worker import DEFAULTS, LIVE, validate
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "roc" / "web"
-COMMANDS = {
-    "mass": ("Mass match", "Runtime, STL, libraries, analysis and automatic matching", "all"),
-    "libs": ("Library match", "Compile registered source recipes and match fingerprints", "all"),
-    "analyze": ("Analyze", "Split a client binary into functions", "all"),
-    "auto": ("Auto match", "Match deterministic function shapes", "all"),
-    "xcopy": ("Cross-copy", "Reuse verified matches across compatible clients", "all"),
-    "shapes": ("Shapes", "Inspect the most common unmatched assembly shapes", "all"),
-    "repair": ("Repair", "Bounded compiler-backed mutations for partial matches", "one"),
-    "check": ("Check source", "Compile sources and compare bytes", "one"),
-    "pull": ("Pull sources", "Download shared sources; preserve existing files", "all"),
-    "client-fetch": ("Fetch client", "Download binaries and verify registered hashes", "all"),
-    "flags": ("Compiler flags", "Find compiler flags from known matches", "one"),
-    "doctor": ("Doctor", "Check installation and explain repairs", "none"),
-    "model-stats": ("Model stats", "Compare recorded worker performance", "none"),
-    "family-stats": ("Family stats", "Inspect family coverage and exact rate", "none"),
-    "failures": ("Failures", "Inspect recurring compile and provider failures", "none"),
-    "status": ("Server status", "Read server progress and worker leaderboard", "none"),
-    "install": ("Install tools", "Download exact compilers; no Ollama or Docker", "optional"),
-    "research": ("Research recipes", "Run recorded experiments", "none"),
-    "donor": ("Donor reuse", "Reuse verified donor functions", "all"),
-    "submit": ("Submit sources", "Submit recovered sources for server verification", "all"),
-    "lint": ("Source checks", "Check source and data coverage", "one"),
-    "vtables": ("Vtables", "Inspect recovered virtual methods", "one"),
-    "daily-stats": ("Daily gains", "Read verified daily results", "none"),
-    "agent": ("Agent", "Legacy CLI runs (saved history compatibility)", "none"),
-}
+NATIVE_LLM = ROOT / "work" / "native-client" / "native-llm"
+
+
+def native_llm_state():
+    """Native LLM panel data, computed by work/native-client/native_llm_models.py (reloaded per request: edits apply live)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("native_llm_models", ROOT / "work/native-client/native_llm_models.py")
+    models = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(models)
+    return models.dashboard_state()
 
 
 def command_args(data):
@@ -294,6 +279,20 @@ class Dashboard:
                 if config["user"]:
                     args += ["--user", config["user"]]
                 title = "Agent · " + config["cli"] + " · " + (config["client"] or "all clients")
+            elif kind == "native_llm":
+                # LLM native-recovery batch (work/native-client/native_llm.py): live chat + model stats on Workers.
+                numbers = {key: int(data.get(key, default)) for key, default in
+                           (("jobs", 8), ("limit", 48), ("max_size", 1024), ("tries", 3), ("nim", 3), ("free", 3))}
+                if not (1 <= numbers["jobs"] <= 16 and 1 <= numbers["limit"] <= 500 and 32 <= numbers["max_size"] <= 8192
+                        and 1 <= numbers["tries"] <= 9 and 0 <= numbers["nim"] <= 6 and 0 <= numbers["free"] <= 6):
+                    raise ValueError("Native LLM settings out of range")
+                args = ["--jobs", str(numbers["jobs"]), "--limit", str(numbers["limit"]), "--max-size", str(numbers["max_size"]),
+                        "--tries", str(numbers["tries"]), "--nim", str(numbers["nim"]), "--free", str(numbers["free"])]
+                if data.get("retry_failed", True):
+                    args.append("--retry-failed")
+                config = dict(numbers, client="2008-06", lease_mode="native", model="native-llm", workers=numbers["jobs"],
+                              retry_failed=bool(data.get("retry_failed", True)))
+                title = "Native LLM · 2008-06"
             elif kind == "command":
                 args, config = command_args(data), None
                 title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
@@ -349,7 +348,8 @@ class Dashboard:
         if job["kind"] == "agent_worker":
             self.next_agent_start = time.monotonic() + max(0, float(self.settings.get("agent_start_interval", 15)))
         argv = [sys.executable, "-u"] + (["-m", "roc.gui_worker"] if job["kind"] == "worker"
-                                         else [str(ROOT / "roc.py"), *job["args"]])
+                                         else [str(ROOT / "work/native-client/native_llm.py"), *job["args"]]
+                                         if job["kind"] == "native_llm" else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
         env.update(ROC_TASK_ID=job_id, ROC_TASK_OWNER=job["owner"])
         if job["kind"] == "agent_worker" and self.worker_token:
@@ -655,6 +655,8 @@ class Handler(BaseHTTPRequestHandler):
                     names = [client] if client and client != "all" else [name for name in clients.load()
                         if (ROOT / "work" / name / "functions.jsonl").exists()]
                     return self.send(200, agent_auto.public_plan(agent_auto.portfolio(names, max_size, profile)))
+                if parsed.path == "/api/native-llm":
+                    return self.send(200, native_llm_state())
                 if parsed.path == "/api/models":
                     return self.send(200, {"models": worker.draft.ollama_models()})
                 if parsed.path == "/api/daily-stats":

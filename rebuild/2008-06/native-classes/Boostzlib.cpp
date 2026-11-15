@@ -13,10 +13,6 @@
 // Define BOOST_IOSTREAMS_SOURCE so that <boost/iostreams/detail/config.hpp> 
 // knows that we are building the library (possibly exporting code), rather 
 // than using it (possibly importing code).
-// >>> native-status (generated) -- do not edit >>>
-// Boostzlib | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7b8fc1b9 | roc native-status --write
 #define BOOST_IOSTREAMS_SOURCE 
 
 #include <boost/iostreams/detail/config/dyn_link.hpp>

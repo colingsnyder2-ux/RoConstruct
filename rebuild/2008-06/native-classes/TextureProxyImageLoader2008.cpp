@@ -1,8 +1,4 @@
 // native-flags: /O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// TextureProxyImageLoader2008 | 2008-06 | 4 byte-exact, inactive (not link-selected)
-// 4/4 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto (+1) (mixed 2)
-// <<< native-status | src 3ff48fc6 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
 #include <winsock2.h>

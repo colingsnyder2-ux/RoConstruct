@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DBinaryInput (inactive): G3D 6.09 source with observed 2008 exception and tracker changes.
-// >>> native-status (generated) -- do not edit >>>
-// G3DBinaryInput | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 8fb4d9cc | roc native-status --write
 #line 1 ".\\G3Dcpp\\BinaryInput.cpp"
 /**
  @file BinaryInput.cpp

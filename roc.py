@@ -643,6 +643,7 @@ def cmd_integrator(a):
               "native_compile_workers": a.compile_workers, "native_context": a.context, "native_generation": a.generation,
               "native_compile_batch": a.compile_batch,
               "native_agent_submit": getattr(a,"agent_submit",True), "native_agent_minutes": getattr(a,"agent_minutes",4), "native_agent_checks": getattr(a,"agent_checks",6), "native_agent_tasks": getattr(a,"agent_tasks","") or "",
+              "native_source_only": getattr(a,"source_recovery_only",False),
               "native_selection": getattr(a, 'mode', 'balanced'),
               "native_escalation_model": getattr(a, 'escalation_model', '') or '',
               "native_escalate_after": getattr(a, 'escalate_after', 2),
@@ -651,6 +652,21 @@ def cmd_integrator(a):
               "max_cloud_cost": a.max_cloud_cost}
     config = gui_worker.validate(config)
     gui_worker.main({"config": config, "token": saved.get("token")}, receive_commands=False)
+
+
+def cmd_luna_workers(a):
+    """Simple profile for the existing synchronized, tool-enabled native agents."""
+    argv=['integrator','--generation','agent','--source-recovery-only','--model','codex:gpt-6-luna',
+          '--reasoning-effort','medium','--allow-cloud','--no-agent-submit',
+          '--workers',str(a.workers),'--compile-workers',str(a.compile_workers),
+          '--agent-minutes',str(a.agent_minutes),'--agent-checks',str(a.agent_checks)]
+    for name in ('max_cloud_requests','agent_tasks','user','server'):
+        value=getattr(a,name)
+        if value is not None:
+            if name == 'agent_tasks':
+                value = Path(value).resolve()
+            argv += ['--'+name.replace('_','-'),str(value)]
+    return main(argv)
 
 
 def cmd_work(a):
@@ -2730,6 +2746,12 @@ def cmd_donor_convert(a):
         raise SystemExit(1)
 
 
+def cmd_auto_native(a):
+    """Run a resumable native sweep; do not commit or publish."""
+    from roc.auto_native import run
+    raise SystemExit(run(a.client, a.followup_seconds, a.limit, a.plan_only))
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="roc", description=__doc__, usage="roc <command> [options]",
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -2967,6 +2989,11 @@ def main(argv=None):
         (["--local"], {"action": "store_true", "help": "also fingerprint local snapshots"}),
         (["--output"], {"type": str, "required": True, "help": "new JSON output path (refuses overwrite)"}),
         (["--map-output"], {"type": str, "help": "new generated browse-map JSON path (refuses overwrite)"}))
+    cmd("auto-native", cmd_auto_native, "sweep native sources, index verified proofs and recheck unresolved work",
+        (["client"], {"nargs": "?", "default": "2008-06"}),
+        (["--followup-seconds"], {"type": int, "default": 300}),
+        (["--limit"], {"type": int, "help": "pilot: maximum source files"}),
+        (["--plan-only"], {"action": "store_true"}))
     cmd("native-status", cmd_native_status, "generate native-status banners for native-classes/headers/world",
         (["--write"], {"action": "store_true", "help": "write banners"}),
         (["--check"], {"action": "store_true", "help": "fail if any banner missing/stale"}),
@@ -3253,6 +3280,7 @@ def main(argv=None):
     cmd("uninstall", cmd_uninstall, "remove what install put on this PC; asks before every step",
         (["--yes"], {"action": "store_true"}))
     cmd("integrator", cmd_integrator, "parallel AI native integration with independent server verification",
+        (["--source-recovery-only"], {"action":"store_true", "help":"recover owner sources without requiring the accepted player overlay; requires agent mode and --no-agent-submit"}),
         (["--escalation-model"], {"help": "explicit stronger model after failed approaches"}),
         (["--escalate-after"], {"type": int, "default": 2}),
         (["--max-no-improvement"], {"type": int, "default": 3}),
@@ -3276,6 +3304,13 @@ def main(argv=None):
         (["--max-cloud-requests"], {"type": int}), (["--max-cloud-tokens"], {"type": int}),
         (["--max-cloud-cost"], {"type": float}), (["--allow-cloud"], {"action": "store_true"}),
         (["--user"], {}), (["--server"], {}))
+    cmd("luna-workers", cmd_luna_workers, "15 synchronized Luna CLI workers with native tools and private task folders",
+        (["--workers"], {"type": int, "default": 15}),
+        (["--compile-workers"], {"type": int, "default": 3}),
+        (["--agent-minutes"], {"type": int, "default": 4}),
+        (["--agent-checks"], {"type": int, "default": 6}),
+        (["--max-cloud-requests"], {"type": int}),
+        (["--agent-tasks"], {}), (["--user"], {}), (["--server"], {}))
     cmd("worker", cmd_worker, "help automatically: AI drafts, compile, submit",
             (["--order"], {"choices": ["auto", "best", "matched", "unmatched", "easiest", "random"], "help": "which functions first: random named units (default), most-matched, unmatched, easiest, best evidence, or auto"}),
         (["--server"], {}), (["--user"], {}), (["--token"], {}), (["--model"], {}),

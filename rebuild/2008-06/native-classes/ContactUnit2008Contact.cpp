@@ -1,15 +1,9 @@
 // 2008-06 native RBX::Contact unit rows (inactive): Contact::step 00606c50, computeIsAdjacent 00606ca0 and the
 // hit-ratio statics contactPairHitRatio 00606bc0 / contactFeatureHitRatio 00606bf0 (DataModel::evaluate 005760a1 /
-// 005760d5 names them). Their declarations are not in the shared native-headers/v8world/Contact2008.h (owner: world
-// shapes), so every body is guarded by NATIVE_BODYPRIM_PENDING and built only against the generated Contact2008.h copy
-// of tests/record_native_contact_unit2008.py (pending-build-only rows, not counted; proposal in its receipt).
-// Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
+// 005760d5 names them). Their declarations are now in native-headers/v8world/Contact2008.h (batch 15; formerly the
+// NATIVE_BODYPRIM_PENDING proposal of tests/record_native_contact_unit2008.py).
+// Contact2008.h builds on the native 2008 Edge (AppUnit658/Edge.h -> IPipelined2008.h), shared with Primitive2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// ContactUnit2008Contact | 2008-06 | draft (no current byte proof)
-// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (mixed 4)
-// <<< native-status | src 7368f1e4 | roc native-status --write
-#define NATIVE_IPIPELINED2008_DONOR
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"
 #include "v8kernel/Constants.h"
@@ -45,7 +39,6 @@ namespace RBX
 	// of line, so it lost its exact match. Its home is the Constants unit (ConstantsJoint.cpp, beside
 	// getJointKMultiplier 00649390); the proven body is filed there as a proposal.
 
-#ifdef NATIVE_BODYPRIM_PENDING
 	int Contact::contactPairMatches;           // 0097b880 (++ by BlockBlockContact 00607d3b)
 	int Contact::contactPairMisses;            // 0097b884 (++ by 00607d07)
 	int Contact::contactFeatureMatches;        // 0097b888 (++ by 00607588)
@@ -96,7 +89,6 @@ namespace RBX
 		else
 			return computeIsColliding(-spaceAllowed);
 	}
-#endif
 }
 
 // Methods recovered from exact mined packets: field offsets mapped to this header by compiler layout.

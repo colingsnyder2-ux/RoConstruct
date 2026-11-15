@@ -27,10 +27,6 @@
 //   * the std::vector<float> and std::sort<float*> COMDATs of this block (the frame-history median uses them).
 // VisualEngine and its frame history: declared in OgreRbx/VisualEngine2008.h (one inferred member, see that header).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// OgreVisualEngine | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 08aace3c | roc native-status --write
 #include <windows.h>
 #include <ddraw.h>
 #include <vector>

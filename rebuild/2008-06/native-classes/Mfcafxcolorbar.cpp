@@ -11,10 +11,6 @@
 // Copyright (C) Microsoft Corporation
 // All rights reserved.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxcolorbar | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 6969c2cb | roc native-status --write
 #include "stdafx.h"
 
 #include <math.h>

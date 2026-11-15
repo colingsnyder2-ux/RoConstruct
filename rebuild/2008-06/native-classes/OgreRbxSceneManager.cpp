@@ -17,10 +17,6 @@
 // Not built (blocked): setSkyBox 00692a10 (constructs RbxSky, new(0xd4), ctor 0067fd60) and renderSingleObject
 // 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms).
 // _queueSkiesForRendering 0068d7d0 calls RbxSky::update through the minimal OgreRbx/RbxSky2008.h.
-// >>> native-status (generated) -- do not edit >>>
-// OgreRbxSceneManager | 2008-06 | draft (no current byte proof)
-// 0/203 mapped addresses byte-exact | 203 unproved | no mapped strings | by tester (+7) (mixed 5)
-// <<< native-status | src c93f82db | roc native-status --write
 #include "OgreSceneManager.h"
 #include "OgreCamera.h"
 #include "OgreRenderSystem.h"

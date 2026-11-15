@@ -1,9 +1,5 @@
 // native-flags: /O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/boost_1_34_1/libs/regex/src
 // 2008-06 native Boostcregex (inactive): upstream tools/libs/boost_1_34_1/libs/regex/src/cregex.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// Boostcregex | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src b69929e8 | roc native-status --write
 /*
  *
  * Copyright (c) 1998-2002

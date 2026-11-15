@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPDockingPaneAutoHidePanel | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 69d71ace | roc native-status --write
 #include "stdafx.h"
 #include "Common/Resource.h"
 

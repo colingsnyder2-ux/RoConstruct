@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// VerbBaseLifetime | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
-// <<< native-status | src 7326625f | roc native-status --write
 #include "v8tree/Verb.h"
 
 RBX::Verb::~Verb()

@@ -52,11 +52,12 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
-def atomic_json(path, value):
+def atomic_json(path, value, indent=1):
+    """indent=None writes compact JSON with the C encoder (~10x faster for large machine-read work files)."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_name(path.name + "." + uuid.uuid4().hex + ".tmp")
-    temp.write_text(json.dumps(value, indent=1) + "\n", encoding="utf-8")
+    temp.write_text(json.dumps(value, indent=indent) + "\n", encoding="utf-8")
     for attempt in range(8):
         try:
             temp.replace(path)

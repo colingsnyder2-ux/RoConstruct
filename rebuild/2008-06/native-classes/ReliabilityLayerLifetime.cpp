@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ReliabilityLayerLifetime | 2008-06 | draft (no current byte proof)
-// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto
-// <<< native-status | src de8cad86 | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include <malloc.h>
 /// \file

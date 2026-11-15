@@ -46,3 +46,8 @@ real.data.funcs[0][5][2] = "?method@SceneNode@Ogre@@QAEXXZ";
 assert.equal(vm.runInContext("classify(data)[0][0]", real), "Ogre");
 const defaultView = html.match(/views = \{libraries:"([^"]+)", remaining:"([^"]+)", daily:"([^"]+)"\}/);
 assert.deepEqual(defaultView && defaultView.slice(1), ["integration", "integration", "integration"]);
+
+// Verified MultiIndex helpers belong to Boost even when a RakNet recipe produced a match.
+const tree = {name:data.client,units:["Core"],funcs:[[6,73,100,0,true,["openrbx-raknet","trial.cpp"]]]};
+c.integrationData.inactive["00000006"] = ["boost::multi_index::detail::ordered_index_node_impl::increment",true];
+assert.equal(c.classify(tree)[0][0], "boost");

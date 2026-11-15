@@ -318,6 +318,7 @@ footer img { height: 30px; }
       <a href="#" data-nav="home">Home</a>
       <a href="#clients" data-nav="clients">Clients</a>
       <a href="#contributors" data-nav="contributors">Contributors</a>
+      <a href="castle/" data-nav="demo">Demo</a>
       <a href="sources.html" data-nav="sources">Sources</a>
       <a href="findings.html" data-nav="findings">Findings</a>
     </nav>
@@ -686,6 +687,13 @@ function overview() {
       <div class="tag">Old Roblox Client Decompilation</div>
       <p class="lede">A community-driven project to decompile and rebuild classic Roblox clients from
         ${esc(years[0])}–${esc(years[years.length - 1])}, preserving a piece of history.</p>
+    </section>
+    <section class="panel" id="demos" style="margin:0 0 28px">
+      <a href="castle/"><img src="castle/preview.png" alt="Floating studded castle island" width="1100" height="729" style="width:100%;height:240px;object-fit:cover;border-radius:8px;display:block"></a>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 6px 4px">
+        <div><h2 style="margin:0;font-family:var(--head)">Castle Island demo</h2><p style="margin:4px 0;color:var(--dim)">Explore a classic Roblox-style floating castle, right in your browser.</p></div>
+        <a class="btn" href="castle/">Play demo →</a>
+      </div>
     </section>
     <div class="stats">
       <div class="stat"><div class="ico">${ICON.code}</div><div><b>${fmt(matched)}</b><span>Functions matched</span></div></div>
@@ -1303,7 +1311,7 @@ async function client(name) {
   }};
 }
 
-const SECTIONS = ["clients", "contributors"];
+const SECTIONS = ["clients", "contributors", "demos"];
 
 function route(top = true) {
   liveView = null;

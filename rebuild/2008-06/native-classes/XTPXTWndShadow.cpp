@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPXTWndShadow | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src ee5be547 | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPDrawHelpers.h"

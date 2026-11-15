@@ -7,7 +7,27 @@
 // getSurfaceData), so this unit takes the part-embedded Primitive (first on the include path) with the donor
 // v8world/RotateJoint.h: same RotateJoint / MultiJoint / Joint fields and offsets as Joints2008.h (rotateConnector
 // +0xc0, MultiJoint +0x88..+0xbc, jointCoord0 +0x28 / jointCoord1 +0x58) and the same decorated names.
+//
+// NATIVE_KERNEL_NEWPOINT_PENDING (batch 15): the 2008 Body path. With NATIVE_PRIMITIVE_NATIVE_BODY the part-embedded
+// Primitive.h reaches native-headers/v8kernel/Body2008.h (pv +0x94) and IPipelined2008.h, so the unit takes
+// v8world/Joints2008.h, v8kernel/Kernel2008.h and v8kernel/Connector2008.h (whose switch half includes Body2008.h /
+// Point2008.h / GeoPair2008.h). The only missing declaration is Kernel::newPoint 005fb260 (`Point* newPoint(Body*,
+// const G3D::Vector3&)`, thiscall `ret 8`, called twice per loop here) in Kernel2008.h; with it added (scratch copy)
+// putInKernel 00646550 compiles IDENTICAL (835 bytes) and getChannelValue / canBuildJoint stay identical. Remove the
+// #else branch once Kernel2008.h declares newPoint. Without the macro the unit compiles exactly as before.
+// The bodies use getPrimitive(0) / getPrimitive(1) / Matrix3ToNormalId(getJointCoord(0).rotation), the inline bodies
+// of the donor getAxlePrim / getHolePrim / getAxleId, which Joints2008.h does not declare.
 #undef _RELEASEASSERT
+#ifdef NATIVE_KERNEL_NEWPOINT_PENDING
+#define NATIVE_PRIMITIVE_NATIVE_BODY
+#include "v8world/Primitive.h"
+#include "v8world/Joints2008.h"
+#include "v8world/SurfaceData.h"
+#include "v8world/Tolerance.h"
+#include "v8kernel/Constants.h"
+#include "v8kernel/Kernel2008.h"
+#include "v8kernel/Connector2008.h"
+#else
 #include "v8world/Primitive.h"
 #include "v8world/RotateJoint.h"
 #include "v8world/SurfaceData.h"
@@ -16,6 +36,7 @@
 #include "v8kernel/Body.h"
 #include "v8kernel/Kernel.h"
 #include "v8kernel/Connector.h"
+#endif
 #include "util/Face.h"
 #include "util/Math.h"
 
@@ -25,9 +46,11 @@ namespace RBX
 	// under guard 0097abd0), Controller slot 1 getValue, Constants::uiDt 006492f0 (folded), jump table on inputType.
 	float RotateJoint::getChannelValue(int uiStepId)
 	{
-		const SurfaceData& axleSurface = getAxlePrim()->getSurfaceData(getAxleId());
+		NormalId axleId = Matrix3ToNormalId(getJointCoord(0).rotation);   // getAxleId (005ec310 is called before the
+		                                                                 // axle primitive +0xc is loaded)
+		const SurfaceData& axleSurface = getPrimitive(0)->getSurfaceData(axleId);
 
-		Controller* controller = getAxlePrim()->getController();
+		Controller* controller = getPrimitive(0)->getController();
 
 		float value = controller->getValue(axleSurface.inputType);
 		float paramA = axleSurface.paramA;
@@ -134,4 +157,51 @@ namespace RBX
 		return NULL;
 	}
 
+	// 00646550: MultiJoint::putInKernel 00646970, Body::updatePV 00599360 (getCoordinateFrame inline, pv +0x94),
+	// IPipelined::getKernel 00645850, Kernel::newPoint 005fb260, new PointToPointBreakConnector (0x1c, constructor
+	// inline, vtable 0084ada8, Math::inf static), addToMultiJoint 00646980, getTorqueArmLength 00646460, new
+	// RotateConnector (0x34, constructor 00606170) on getPoint(0) / getPoint(2) 006469d0.
+	// Default path: the donor Body (pv +0x88) gives the wrong displacements; the NATIVE_KERNEL_NEWPOINT_PENDING path
+	// (Body2008.h, pv +0x94) compiles IDENTICAL once Kernel2008.h declares newPoint 005fb260 (scratch-validated).
+	void RotateJoint::putInKernel(Kernel* _kernel)
+	{
+		MultiJoint::putInKernel(_kernel);
+
+		Body* b0 = getPrimitive(0)->getBody();
+		Body* b1 = getPrimitive(1)->getBody();
+
+		G3D::CoordinateFrame cAxleWorld = b0->getCoordinateFrame() * jointCoord0;
+		G3D::CoordinateFrame cHoleWorld = b1->getCoordinateFrame() * jointCoord1;
+
+		G3D::Vector3 vAxleWorld = cAxleWorld.rotation.getColumn(2);
+		G3D::Vector3 vHoleWorld = cHoleWorld.rotation.getColumn(2);
+
+		for (int i = 0; i < 2; i++)
+		{
+			float multiplier = i == 0 ? -1.0f : 1.0f;
+
+			G3D::Vector3 pAxleWorldPos = vAxleWorld * multiplier + cAxleWorld.translation;
+			G3D::Vector3 pHoleWorldPos = vHoleWorld * multiplier + cHoleWorld.translation;
+
+			Point* pAxleWorld = getKernel()->newPoint(b0, pAxleWorldPos);
+			Point* pHoleWorld = getKernel()->newPoint(b1, pHoleWorldPos);
+
+			PointToPointBreakConnector* connector = new PointToPointBreakConnector(pAxleWorld, pHoleWorld, getJointK(), Math::inf());
+			addToMultiJoint(pAxleWorld, pHoleWorld, connector);
+		}
+
+		if (getJointType() == ROTATE_P_JOINT || getJointType() == ROTATE_V_JOINT)
+		{
+			G3D::Vector3 center0 = cAxleWorld.translation;
+			G3D::Vector3 perp = cAxleWorld.rotation.getColumn(0);
+			G3D::Vector3 marker0 = perp * 10.0f + center0;
+
+			Point* pMarker0 = getKernel()->newPoint(b0, marker0);
+			Point* pMarker1 = getKernel()->newPoint(b1, marker0);
+
+			RotateConnector* connector = new RotateConnector(getPoint(0), getPoint(2), pMarker0, pMarker1, getJointK(), getTorqueArmLength());
+			rotateConnector = connector;
+			addToMultiJoint(pMarker0, pMarker1, connector);
+		}
+	}
 }

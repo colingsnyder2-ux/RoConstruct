@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// BlockBlockContact2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 2129500e | roc native-status --write
 // 2008-06 RBX::BlockBlockContact (inactive native recovery). Non-colliding name: the original path v8world/Contact.h
 // is the donor header reached through World.h / Primitive.h; the bases come from the committed
 // native-headers/v8world/Contact2008.h (Contact 0x34, novtable, 10 slots), which is included, never edited.
@@ -64,6 +60,13 @@ namespace RBX
 		NormalId otherPlaneID;                      // +0x78
 
 		void deleteUnmatchedConnectors();                        // 00607e00 (`ret`; donor name, body not here)
+		// 00607cc0 (`ret 0x14`, placeholder func_00607cc0; donor v8world/Contact.h signature): GeoPair::match 00606a50
+		// on connectors[i] +0x8, contactPairMatches / contactPairMisses, createConnector 00606e00.
+		ContactConnector* matchContactConnector(Body* b0, Body* b1, GeoPairType _pairType, int param0, int param1);   // 00607cc0
+		// 00607280 (`ret 4`, one float argument, bool in al): writes cachedBody +0x58, planeContact +0x5c, cachedAxis
+		// +0x60 and feature[] +0x64; called by computeIsColliding 00607c20 / stepContact 00608830 after aaBoxCollide.
+		// Donor name (donor getBestPlaneEdge(bool& planeContact, float overlapIgnored); 2008 planeContact is +0x5c).
+		bool getBestPlaneEdge(float overlapIgnored);             // 00607280
 		void loadGeoPairEdgeEdge(int b0, int b1, int edge0, int edge1);   // 00607ea0 (`ret 0x10`; donor name)
 		int computePlaneContact();                               // 00608580 (`ret`; donor name, result unused)
 		void updateConnectors();                                 // 006087a0 (analog name; called by stepContact)

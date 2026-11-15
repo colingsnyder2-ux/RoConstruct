@@ -6,6 +6,7 @@ namespace RBX
 {
 	namespace Network
 	{
+		// 0049fe50
 		void Client::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 		{
 			Notifier<ServiceProvider, Closing>::disconnect(oldProvider, this);
@@ -13,6 +14,7 @@ namespace RBX
 			if (oldProvider)
 			{
 				removeAllChildren();
+				// disconnect(3000), inlined in the original.
 				rakPeer->CloseConnection(serverId, true, 0);
 				rakPeer->Shutdown(3000, 0);
 
