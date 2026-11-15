@@ -1,0 +1,11 @@
+{
+ "receipt": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\shared-layouts\\g3d-batch-c09c72ca37f1a2313490f64a.json",
+ "sha256": "4e29585971ec1c4be4fe30358825d466c7bf919ecaa2fdf8275de468c2ca455f",
+ "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PacketLogger.cpp",
+ "addresses": [
+  "004baa90",
+  "004baaa0"
+ ],
+ "original_path": "rebuild/2008-06/native-classes/PacketLogger.cpp",
+ "source_sha256": "2f509b0bd4afefe62007085e4b283987f08646fba744dc026669f6350d4a2e27"
+}
