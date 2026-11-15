@@ -1,9 +1,5 @@
 // native-flags: /O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/boost_1_34_1/libs/regex/src
 // 2008-06 native Boostcpp_regex_traits (inactive): upstream tools/libs/boost_1_34_1/libs/regex/src/cpp_regex_traits.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// Boostcpp_regex_traits | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src c8770ffb | roc native-status --write
 /*
  *
  * Copyright (c) 2004

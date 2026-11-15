@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// PluginInterface | 2008-06 | draft (no current byte proof)
-// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by auto
-// <<< native-status | src 327d5f8a | roc native-status --write
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/PluginInterface.h"
 
 PluginInterface::PluginInterface()

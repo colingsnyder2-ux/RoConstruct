@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// GuiDrawImage | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src f5a94f05 | roc native-status --write
 #include "gui/GuiDraw.h"
 #include "AppDraw/Textures.h"
 namespace RBX {

@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcdlgcore | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 18e43504 | roc native-status --write
 #include "stdafx.h"
 #include "occimpl.h"
 

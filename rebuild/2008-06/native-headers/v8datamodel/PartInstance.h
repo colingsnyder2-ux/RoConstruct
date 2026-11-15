@@ -1,10 +1,6 @@
 // 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PartInstance.h: class names are .data
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// PartInstance | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src a1c618a6 | roc native-status --write
 #include "AppDraw/Part.h"
 #include "AppDraw/SelectState.h"
 #include "v8datamodel/PVInstance.h"
@@ -85,6 +81,9 @@ namespace RBX
 		static const Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_Size;
 		static const Reflection::PropDescriptor<PartInstance, G3D::CoordinateFrame> prop_CFrame;
 		static Reflection::SignalDesc<PartInstance, void(boost::shared_ptr<Instance>)> event_Touched;
+		// Original descriptor 009761d4, initializer 007f4b90; dispatcher 0059e3a0.
+		static Reflection::SignalDesc<PartInstance, void()> event_OutfitChanged;
+		void outfitChanged();
 	  
 	private:
 		G3D::Vector3 xmlToUiSize(const G3D::Vector3&) const;

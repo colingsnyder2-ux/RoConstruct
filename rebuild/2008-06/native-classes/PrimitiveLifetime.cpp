@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// PrimitiveLifetime | 2008-06 | draft (no current byte proof)
-// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by tester (+3) (mixed 3)
-// <<< native-status | src b9d389d5 | roc native-status --write
 #undef _RELEASEASSERT
 // NATIVE_PRIMITIVE_NATIVE_BODY (batch 14): the part-embedded Primitive.h reaches native-headers/v8kernel/Body2008.h
 // (0xdc, pv +0x94) instead of the donor v8kernel/Body.h (pv +0x88); Contact / Joint come from the native

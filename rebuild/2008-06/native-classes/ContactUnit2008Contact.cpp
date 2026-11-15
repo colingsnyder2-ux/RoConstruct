@@ -4,10 +4,6 @@
 // NATIVE_BODYPRIM_PENDING proposal of tests/record_native_contact_unit2008.py).
 // Contact2008.h builds on the native 2008 Edge (AppUnit658/Edge.h -> IPipelined2008.h), shared with Primitive2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// ContactUnit2008Contact | 2008-06 | draft (no current byte proof)
-// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (mixed 4)
-// <<< native-status | src 7368f1e4 | roc native-status --write
 // The 2008 Body / GeoPair path of Connector2008.h (ContactConnector::setBody) for createConnector 00606e00, with the
 // 2008 Kernel2008.h (insertConnector 005fb160); Primitive2008.h / Contact2008.h already build on IPipelined2008.h.
 #define NATIVE_PRIMITIVE_NATIVE_BODY

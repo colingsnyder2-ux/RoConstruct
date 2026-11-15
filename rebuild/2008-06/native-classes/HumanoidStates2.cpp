@@ -1,10 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
 // Inactive native Freefall/Flying/Jumping/GettingUp methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid).
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidStates2 | 2008-06 | draft (no current byte proof)
-// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+1) (mixed 3)
-// <<< native-status | src bf8134f9 | roc native-status --write
 // Batch 15: the part-embedded PartInstance.h with NATIVE_PRIMITIVE_NATIVE_BODY (the HumanoidCamera.cpp context) reaches
 // native-headers/v8kernel/Body2008.h instead of the donor v8kernel/Body.h, so the constructors (getFriction 00598d50 /
 // setFriction 0059e090) and the Body2008 force body Freefall::onComputeForce 006675d0 share this unit again. The

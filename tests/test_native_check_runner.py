@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import os
 from pathlib import Path
 import tempfile
 import sys
@@ -14,6 +15,121 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def test_reviewed_global_reference_checks_symbol_base_and_addend(self):
+        import struct
+        raw = struct.pack('<IIH', 1, 0, 6)
+        section = (0, 0, 0, 0, 0, 0, 0, 1)
+        symbols = {0: ('?vector', 0, 0, 0)}
+        definitions = {'_caller': (0, 0)}
+        body = bytes.fromhex('b8 04000000 c3')
+        target = bytes.fromhex('b8 7c563412 c3')
+        expected = [{'offset': 1, 'target': '12345678', 'symbol': '?vector',
+                     'addend': 4, 'evidence': 'reviewed base and vector field'}]
+        with patch.object(runner.match, '_coff_data_index', return_value=([section], symbols, definitions, None)):
+            self.assertTrue(runner.check_noncall_refs(raw, '_caller', body, target, [], [], expected)['passed'])
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, target, [], [],
+                                                       [dict(expected[0], addend=0)])['passed'])
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, target, [], [],
+                                                       [dict(expected[0], target='1234567c')])['passed'])
+
+    def test_unreviewed_global_relocation_blocks_reference_proof(self):
+        import struct
+        raw = struct.pack('<IIH', 1, 0, 6)
+        sections = [(0, 0, 0, 0, 0, 0, 0, 1)]
+        symbols = {0: ('?version@API@@', 0, 0, 0)}
+        definitions = {'_caller': (0, 0)}
+        original = bytes.fromhex('b8 78563412 c3')
+        compiled = bytes.fromhex('b8 00000000 c3')
+        expectation = [{'offset': 1, 'target': '12345678', 'symbol': '?version@API@@',
+                        'evidence': 'independently identified global'}]
+        with patch.object(runner.match, '_coff_data_index', return_value=(sections, symbols, definitions, None)):
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', compiled, original, [], [], [])['passed'])
+            self.assertTrue(runner.check_noncall_refs(raw, '_caller', compiled, original, [], [], expectation)['passed'])
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', compiled, original, [], [],
+                                                       [dict(expectation[0], symbol='?other@@')])['passed'])
+
+    def test_only_verified_readonly_constants_are_implicitly_covered(self):
+        import struct
+        raw = struct.pack('<IIH', 1, 0, 6)
+        code = (0, 0, 0, 0, 0, 0, 0, 1, 0, 0x20)
+        readonly = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0x40)
+        writable = (*readonly[:9], 0x80000040)
+        symbols = {0: ('constant', 0, 2, 0)}
+        definitions = {'_caller': (0, 0)}
+        target = bytes.fromhex('b8 78563412 c3')
+        body = bytes.fromhex('b8 00000000 c3')
+        ref = (1, b'constant', [])
+        with patch.object(runner.match, '_coff_data_index', return_value=([code, readonly], symbols, definitions, None)), \
+             patch.object(runner.match, 'data_check', return_value=([(0x12345678, 8)], [])):
+            self.assertTrue(runner.check_noncall_refs(raw, '_caller', body, target, [ref], [], [], 0x1000)['passed'])
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, target, [(1, b'constant', [0])], [], [], 0x1000)['passed'])
+        with patch.object(runner.match, '_coff_data_index', return_value=([code, writable], symbols, definitions, None)), \
+             patch.object(runner.match, 'data_check', return_value=([(0x12345678, 8)], [])):
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, target, [ref], [], [], 0x1000)['passed'])
+        with patch.object(runner.match, '_coff_data_index', return_value=([code, readonly], symbols, definitions, None)), \
+             patch.object(runner.match, 'data_check', return_value=([], [])):
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, target, [ref], [], [], 0x1000)['passed'])
+
+    def test_local_labels_and_imported_data_need_exact_identity(self):
+        import struct
+        raw = struct.pack('<IIH', 1, 0, 6)
+        text = (0, 0, 0, 0, 0, 0, 0, 1, 0, 0x20)
+        body = bytes.fromhex('b8 06000000 c3 90')
+        target = bytes.fromhex('b8 06100000 c3 90')
+        defs = {'_caller': (0, 0)}
+        with patch.object(runner.match, '_coff_data_index', return_value=([text], {0: ('$LN1', 0, 1, 0)}, defs, None)):
+            self.assertTrue(runner.check_noncall_refs(raw, '_caller', body, target, [], [], [], 0x1000)['passed'])
+            wrong = bytes.fromhex('b8 07100000 c3 90')
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, wrong, [], [], [], 0x1000)['passed'])
+        symbols = {0: ('__imp__global', 0, 0, 0)}
+        imports = ({0x802000: 'TEST.dll!global'}, {('test.dll', 'global'): {'__imp__global'}}, {})
+        target = bytes.fromhex('b8 00208000 c3')
+        body = bytes.fromhex('b8 00000000 c3')
+        with patch.object(runner.match, '_coff_data_index', return_value=([text], symbols, defs, None)), \
+             patch.object(runner, 'import_evidence', return_value=imports):
+            self.assertTrue(runner.check_noncall_refs(raw, '_caller', body, target, [], [], [], 0x1000)['passed'])
+            self.assertFalse(runner.check_noncall_refs(raw, '_caller', body, bytes.fromhex('b8 04208000 c3'), [], [], [], 0x1000)['passed'])
+    def test_register_import_requires_dominating_unclobbered_load(self):
+        # mov edi,[0x802000]; call edi; ret
+        code = bytes.fromhex('8b3d00208000 ffd7 c3')
+        self.assertTrue(runner.register_import_flow(code, 0x1000, 0, 6, 'edi'))
+        # A branch can bypass the load and reach the call.
+        bypass = bytes.fromhex('eb06 8b3d00208000 ffd7 c3')
+        self.assertFalse(runner.register_import_flow(bypass, 0x1000, 2, 8, 'edi'))
+        # A register write invalidates the loaded pointer.
+        clobbered = bytes.fromhex('8b3d00208000 31ff ffd7 c3')
+        self.assertFalse(runner.register_import_flow(clobbered, 0x1000, 0, 8, 'edi'))
+        # Indirect branches make reachability unknowable; caller-saved registers are unsafe.
+        unknown_jump = bytes.fromhex('8b3d00208000 ffe0 ffd7 c3')
+        self.assertFalse(runner.register_import_flow(unknown_jump, 0x1000, 0, 8, 'edi'))
+        self.assertFalse(runner.register_import_flow(code, 0x1000, 0, 6, 'eax'))
+
+    def test_register_import_checks_iat_alias_relocation_and_all_call_paths(self):
+        import struct
+        raw = struct.pack('<IIH', 2, 0, 6)
+        sections = [(0, 0, 0, 0, 0, 0, 0, 1)]
+        symbols = [('__imp__rand',)]
+        definitions = {'_caller': (0, 0)}
+        original = bytes.fromhex('8b3d00208000 ffd7 ffd7 c3')
+        compiled = bytes.fromhex('8b3d00000000 ffd7 ffd7 c3')
+        expected = [{'offset': n, 'load_offset': 0, 'target': '00802000', 'symbol': '__imp__rand',
+                     'kind': 'import_reg', 'import': 'MSVCR90.dll!rand'} for n in (6, 8)]
+        imports = ({0x802000: 'MSVCR90.dll!rand'}, {('msvcr90.dll', 'rand'): {'__imp__rand'}}, {})
+        with patch.object(runner.match, '_coff_data_index', return_value=(sections, symbols, definitions, None)), \
+             patch.object(runner, 'import_evidence', return_value=imports):
+            self.assertTrue(runner.check_calls(raw, '_caller', compiled, original, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', compiled, original, 0x1000,
+                                                [dict(e, symbol='__imp__wrong') for e in expected])['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', compiled, original, 0x1000,
+                                                [dict(e, target='00802004') for e in expected])['passed'])
+            self.assertFalse(runner.check_calls(struct.pack('<IIH', 2, 0, 20), '_caller', compiled,
+                                                original, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', compiled, original, 0x1000,
+                                                expected[:1])['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', original, original, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', compiled, original, 0x1000,
+                                                [dict(e, **{'import': 'MSVCR90.dll!srand'}) for e in expected])['passed'])
+
     def test_oleaut_ordinal_import_matches_system_export(self):
         sdk = runner.rebuild.toolchain(21022).get('sdk_lib')
         if not sdk or not (Path(sdk) / 'OleAut32.Lib').is_file():
@@ -35,6 +151,7 @@ class RunnerTests(unittest.TestCase):
         expected = [{'offset': 0, 'target': '00001010', 'symbol': '_callee', 'kind': 'jump'}]
         with patch.object(runner.match, '_coff_data_index', return_value=(sections, symbols, defs, None)):
             self.assertTrue(runner.check_calls(raw, '_caller', body, target, 0x1000, expected)['passed'])
+            self.assertFalse(runner.check_calls(raw, '_caller', body, target, 0x1000, [])['passed'])
             self.assertFalse(runner.check_calls(raw, '_caller', b'\xe8'+body[1:], target, 0x1000, expected)['passed'])
             self.assertFalse(runner.check_calls(raw, '_caller', body, target, 0x1000, [dict(expected[0], target='00001011')])['passed'])
             self.assertFalse(runner.check_calls(raw, '_caller', body, target, 0x1000, [dict(expected[0], symbol='_wrong')])['passed'])
@@ -191,7 +308,8 @@ class RunnerTests(unittest.TestCase):
     def test_compile_once_unique_output_and_saved_log(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            source = root / 'Foo.cpp'
+            source = root / 'src' / 'Foo.cpp'
+            source.parent.mkdir()
             source.write_text('void foo() {}')
             calls = []
             def compiler(tc, tool, flags, cwd):
@@ -205,6 +323,63 @@ class RunnerTests(unittest.TestCase):
             self.assertEqual(Path(result['log']).read_text(), 'full compiler log')
             self.assertEqual(result['object_sha256'], runner.sha(root / 'unit/candidate.obj'))
             self.assertTrue((root / 'unit/receipt.json').exists())
+
+    def test_compile_cache_reuses_object_only_while_inputs_match(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, header = root / 'src' / 'Foo.cpp', root / 'src' / 'used.h'
+            source.parent.mkdir()
+            source.write_text('#include "used.h"\nvoid foo() {}')
+            header.write_text('// first')
+            # A freshly created Windows file can share the runner's start tick.
+            # The cache baseline represents an input from before compilation.
+            os.utime(header, ns=(1_000_000_000, 1_000_000_000))
+            job = {'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}
+            calls = []
+            def compiler(tc, tool, flags, cwd):
+                calls.append(1)
+                Path(next(flag[3:] for flag in flags if flag.startswith('/Fo'))).write_bytes(b'object')
+                return 0, 'Note: including file: ' + str(header)
+            def analysis(job, obj):
+                return {'checks': [], 'coverage': [], 'layouts': []}
+            # Keep this cache test independent of concurrently edited repository
+            # include trees; used.h and the compiler's source directory are real.
+            with patch.object(runner, 'compiler_flags', return_value=['/nologo', '/c', '/O2', '/I' + str(source.parent)]), \
+                 patch.dict(runner.os.environ, {'CL': '', '_CL_': '', 'INCLUDE': ''}), \
+                 patch.object(runner, 'CACHE', root / 'cache'), \
+                 patch.object(runner.rebuild, 'run', side_effect=compiler), \
+                 patch.object(runner, 'analyze_object', side_effect=analysis):
+                first = runner.compile_job(job, root / 'unit-1', {})
+                second = runner.compile_job(job, root / 'unit-2', {})
+                self.assertEqual(first['status'], 'complete', first.get('error'))
+                self.assertFalse(first['cache_hit'])
+                self.assertTrue(second['cache_hit'])
+                self.assertEqual(len(calls), 1)
+                header.write_text('// changed')
+                third = runner.compile_job(job, root / 'unit-3', {})
+            self.assertFalse(third['cache_hit'])
+            self.assertEqual(len(calls), 2)
+
+    def test_compile_cache_invalidates_on_new_higher_priority_header(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / 'src' / 'Foo.cpp'
+            source.parent.mkdir()
+            source.write_text('void foo() {}')
+            job = {'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}
+            calls = []
+            def compiler(tc, tool, flags, cwd):
+                calls.append(1)
+                Path(next(flag[3:] for flag in flags if flag.startswith('/Fo'))).write_bytes(b'object')
+                return 0, ''
+            with patch.object(runner, 'CACHE', root / 'cache'), \
+                 patch.object(runner.rebuild, 'run', side_effect=compiler), \
+                 patch.object(runner, 'analyze_object', return_value={'checks': [], 'coverage': [], 'layouts': []}):
+                runner.compile_job(job, root / 'unit-1', {})
+                (root / 'src' / 'new.h').write_text('// shadows newly added include')
+                result = runner.compile_job(job, root / 'unit-2', {})
+            self.assertFalse(result['cache_hit'])
+            self.assertEqual(len(calls), 2)
 
     def test_failed_compiler_never_analyzes_stale_object(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -314,6 +489,53 @@ class RunnerTests(unittest.TestCase):
                 obj.write_bytes(b'changed')
                 with self.assertRaisesRegex(ValueError, 'object failed or changed'):
                     runner.main()
+
+    def test_index_requires_fresh_complete_proof_and_never_overwrites(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            base = root / 'rebuild/2008-06'
+            source = base / 'native-classes/Foo.cpp'
+            source.parent.mkdir(parents=True)
+            source.write_text('void foo() {}')
+            obj = root / 'candidate.obj'
+            obj.write_bytes(b'object')
+            output = root / 'work/2008-06/shared-layouts/checked.json'
+            output.parent.mkdir(parents=True)
+            row = {'addr': '00400000', 'symbol': '?foo@@YAXXZ', 'status': 'exact',
+                   'data_errors': [], 'data_matches': [], 'metrics': {'raw_positional_percent': 100.0},
+                   'call_identity': {'passed': True, 'calls': []},
+                   'reference_identity': {'passed': True, 'references': []}}
+            analysis = [{'source': str(source), 'object': str(obj), 'changed_inputs': [], 'checks': [row]}]
+            receipt = {'source': str(source), 'object': str(obj), 'status': 'complete',
+                       'source_sha256': runner.sha(source), 'object_sha256': runner.sha(obj),
+                       'dependencies': {str(source): runner.sha(source)}}
+            with patch.object(runner, 'ROOT', root), patch.object(runner, 'BASE', base), \
+                 patch.object(runner, 'build_changes', return_value=[]):
+                runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, output, root / 'analysis.json')
+                saved = json.loads(output.read_text())
+                self.assertEqual(saved['checks'][0]['address'], '00400000')
+                self.assertTrue(saved['checks'][0]['exact'])
+                with self.assertRaises(FileExistsError):
+                    runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, output, root / 'analysis.json')
+                source.write_text('changed')
+                with self.assertRaisesRegex(ValueError, 'changed'):
+                    runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, output.with_name('stale.json'), root / 'analysis.json')
+                source.write_text('void foo() {}')
+                row['call_identity']['passed'] = False
+                with self.assertRaises(SystemExit):
+                    runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, output.with_name('unverified.json'), root / 'analysis.json')
+                self.assertFalse(output.with_name('unverified.json').exists())
+                row['call_identity']['passed'] = True
+                row['reference_identity']['passed'] = False
+                with self.assertRaises(SystemExit):
+                    runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, output.with_name('unknown-global.json'), root / 'analysis.json')
+                row['reference_identity']['passed'] = True
+                receipt['status'] = 'failed'
+                with self.assertRaisesRegex(ValueError, 'not complete'):
+                    runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, output.with_name('failed.json'), root / 'analysis.json')
+                receipt['status'] = 'complete'
+                with self.assertRaisesRegex(ValueError, 'shared-layouts'):
+                    runner.index_inactive(analysis, {str(source).casefold(): receipt}, {}, root / 'outside.json', root / 'analysis.json')
 
 
 if __name__ == '__main__':

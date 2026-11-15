@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPPropExchange | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 66686005 | roc native-status --write
 #include "stdafx.h"
 #include "XTPMacros.h"
 #include "XTPPropExchange.h"

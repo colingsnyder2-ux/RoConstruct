@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcdbcore | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 4bfac5e6 | roc native-status --write
 #include "stdafx.h"
 #include <wchar.h>
 #include "sal.h"

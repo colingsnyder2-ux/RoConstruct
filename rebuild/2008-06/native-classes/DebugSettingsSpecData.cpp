@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// DebugSettingsSpecData | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 8f0191ae | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "RenderLib/Profiler.h"
 

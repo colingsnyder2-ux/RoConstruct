@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3D::Sky: upstream G3D 6.09 source/GLG3Dcpp/Sky.cpp, verbatim (inactive).
-// >>> native-status (generated) -- do not edit >>>
-// G3DSky | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5fcde3e6 | roc native-status --write
 /** 
   @file Sky.cpp
 

@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// OgreRbxEntity | 2008-06 | draft (no current byte proof)
-// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by colin (chatgpt:gpt-6.1-sol)
-// <<< native-status | src 0dcbb938 | roc native-status --write
 #define NOMINMAX                 // VisualEngine2008.h pulls <windows.h>; std::max below
 #include "OgreRbx/RbxEntity2008.h"
 #include "AppUnit67C_2008/RbxSubEntity2008.h"

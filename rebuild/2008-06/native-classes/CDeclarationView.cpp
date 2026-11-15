@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
-// >>> native-status (generated) -- do not edit >>>
-// CDeclarationView | 2008-06 | 5 byte-exact, inactive (not link-selected)
-// 5/7 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+3) (mixed 3)
-// <<< native-status | src 6e9890a3 | roc native-status --write
 #include "CDeclarationView.h"
 #include "reflection/function.h"
 #include "reflection/property.h"

@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxmaskededit | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src a0cd07a5 | roc native-status --write
 #include "stdafx.h"
 #include "afxcontrolbarutil.h"
 #include "afxmaskededit.h"

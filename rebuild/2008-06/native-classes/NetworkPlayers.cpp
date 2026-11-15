@@ -3,10 +3,6 @@
 // Verified by tests/record_native_network_players.py. Network::Client / Network::Server come from the native 2008
 // headers Network/Client2008.h / Network/Server2008.h (clientIsPresent 0049fe20, serverIsPresent 004a40d0); they
 // replace the earlier declaration-only stand-ins "Client.h" / "Server.h" (tests/NativeNetworkPlayersPeers.h).
-// >>> native-status (generated) -- do not edit >>>
-// NetworkPlayers | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/9 mapped addresses byte-exact | 8 unproved | 1 referenced strings (not rechecked) | by king_originala (+4) (mixed 5)
-// <<< native-status | src 4da67c48 | roc native-status --write
 #include <RakPeer.h>
 #include <PluginInterface.h>
 #include "Network/Client2008.h"

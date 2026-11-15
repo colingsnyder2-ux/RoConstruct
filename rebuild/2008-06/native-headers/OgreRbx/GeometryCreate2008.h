@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// GeometryCreate2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src b3977b7f | roc native-status --write
 #include <OgreMesh.h>
 #include <OgreVector3.h>
 #include <boost/thread/recursive_mutex.hpp>

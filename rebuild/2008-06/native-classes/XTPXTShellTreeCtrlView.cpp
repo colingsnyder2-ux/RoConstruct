@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPXTShellTreeCtrlView | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src c24a63ed | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPSystemHelpers.h"

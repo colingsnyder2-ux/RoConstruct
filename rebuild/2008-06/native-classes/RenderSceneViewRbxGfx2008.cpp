@@ -6,10 +6,6 @@
 // 004dab50 lighting helper) and onWorkspaceDescendentAdded need declarations owned elsewhere and are not built.
 // suppressSkybox 004d9c90 uses the Lighting2008.h getters and the RenderNew::RenderScene shadowColor (+0x328).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partchunk-profile /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// RenderSceneViewRbxGfx2008 | 2008-06 | draft (no current byte proof)
-// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by tester (+1) (deepseek:deepseek-flash)
-// <<< native-status | src ecc3cb8a | roc native-status --write
 #define NOMINMAX
 #include "RenderLib/ViewNew2008.h"
 #include "RenderLib/RenderSceneNew2008.h"

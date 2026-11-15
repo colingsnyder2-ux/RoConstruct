@@ -6,10 +6,6 @@
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying 
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// >>> native-status (generated) -- do not edit >>>
-// Boostmutex | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 972fa88c | roc native-status --write
 #include <boost/thread/detail/config.hpp>
 
 #include <boost/thread/mutex.hpp>

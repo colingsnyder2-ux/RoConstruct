@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxstate | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5e10703a | roc native-status --write
 #include "stdafx.h"
 #include <stddef.h>
 

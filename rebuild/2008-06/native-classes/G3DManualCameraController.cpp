@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DManualCameraController (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/ManualCameraController.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// G3DManualCameraController | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 1130fb3b | roc native-status --write
 #line 1 ".\\glg3dcpp\\ManualCameraController.cpp"
 /**
   @file FirstPersonManipulator.cpp

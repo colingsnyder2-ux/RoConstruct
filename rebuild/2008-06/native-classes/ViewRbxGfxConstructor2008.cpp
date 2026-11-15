@@ -1,9 +1,5 @@
 // INFERRED: constructor identity from unique exact candidate, RTTI vtable and original caller.
 // native-flags: /O2 /GS- /EHsc /MD /I{headers}/viewrbx-ctor-profile /I{headers}/partchunk-profile /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// >>> native-status (generated) -- do not edit >>>
-// ViewRbxGfxConstructor2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 4ae9e76b | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
 #include "RenderLib/ViewNew2008.h"

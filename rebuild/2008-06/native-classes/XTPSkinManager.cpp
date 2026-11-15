@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPSkinManager | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 63843697 | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPWinThemeWrapper.h"

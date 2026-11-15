@@ -528,10 +528,11 @@ def _run(config, output, root=ROOT):
                           'server_accepted_addresses_per_hour': None},
               'scope': 'Local inactive body/data/reference proofs and preflight queue only. '
                        'No runtime activation, complete class ABI proof, server submission or credit.'}
-    integration.atomic_json(ledger_path, ledger)
-    integration.atomic_json(output / 'manifest.json', report)
-    integration.atomic_json(output / 'checks.json', {'jobs': [j for f in manifests for j in f['jobs']]})
-    integration.atomic_json(output / 'providers.json', promotion)
+    # Machine-read run outputs: compact JSON (indented encoding cost ~2 s per gate).
+    integration.atomic_json(ledger_path, ledger, indent=None)
+    integration.atomic_json(output / 'manifest.json', report, indent=None)
+    integration.atomic_json(output / 'checks.json', {'jobs': [j for f in manifests for j in f['jobs']]}, indent=None)
+    integration.atomic_json(output / 'providers.json', promotion, indent=None)
     return report
 
 

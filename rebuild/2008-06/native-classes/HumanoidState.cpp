@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded /I{headers}/engine-world
 // Inactive native HumanoidState base methods (2008-06). Not in any build list.
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidState | 2008-06 | draft (no current byte proof)
-// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by colin (+3) (mixed 3)
-// <<< native-status | src ff825017 | roc native-status --write
 // Flags and includes follow the sibling unit HumanoidStateFloor.cpp (same original HumanoidState.cpp, 00643xxx):
 // the limb flag setters need a complete part-embedded Primitive (Primitive::setCanSleep 005e75e0, +0xab).
 // Batch 13: switched from the native humanoid/Humanoid.h to humanoid/Humanoid2008.h, which declares setStrafe 005dc230

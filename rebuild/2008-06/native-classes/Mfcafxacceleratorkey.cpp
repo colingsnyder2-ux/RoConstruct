@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxacceleratorkey | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src d698b30e | roc native-status --write
 #include "stdafx.h"
 #include "afxacceleratorkey.h"
 

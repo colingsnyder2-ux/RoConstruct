@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxautohidebar | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 47aaa6f2 | roc native-status --write
 #include "stdafx.h"
 #include "afxcontrolbarutil.h"
 #include "afxautohidebar.h"

@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxeditbrowsectrl | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 4c55170d | roc native-status --write
 #include "stdafx.h"
 #include "afxcontrolbarutil.h"
 #include "afxglobals.h"

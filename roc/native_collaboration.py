@@ -13,6 +13,21 @@ from roc import integration, worker
 PREFIX = '/v1/integration/recovery/'
 
 
+def decode_source(raw):
+    encoding = 'utf-8-sig' if raw.startswith(b'\xef\xbb\xbf') else 'utf-8'
+    try:
+        text = raw.decode(encoding)
+    except UnicodeDecodeError:
+        encoding = 'cp1252'  # Original Windows headers contain legacy comments/literals.
+        text = raw.decode(encoding)
+    return text, encoding
+
+
+def source_text(path):
+    text,encoding=decode_source(Path(path).read_bytes())
+    return text.replace('\r\n', '\n').replace('\r', '\n'),encoding
+
+
 class Remote:
     def __init__(self, server, user, token=None, identity=None):
         self.api = worker.Api(server, token)
@@ -28,6 +43,10 @@ class Remote:
         from roc import native_recovery as recovery
         payload = self.call('catalog')
         files = payload['files']
+        encodings = payload.get('file_encodings', {})
+        if not isinstance(encodings, dict) or any(rel not in files or value not in ('utf-8','utf-8-sig','cp1252')
+                                                for rel, value in encodings.items()):
+            raise ValueError('Invalid native source encoding metadata')
         revision=payload.get('revision','')
         if not re.fullmatch('[0-9a-f]{64}',revision) or integration.digest(files)!=revision:
             raise ValueError('Invalid shared snapshot revision')
@@ -44,8 +63,9 @@ class Remote:
             path = snapshot_path(folder, rel)
             if not isinstance(text,str): raise ValueError('Invalid shared source')
             path.parent.mkdir(parents=True,exist_ok=True)
-            if not path.exists() or path.read_text(encoding='utf-8')!=text:
-                path.write_text(text,encoding='utf-8')
+            raw = text.encode(encodings.get(rel, 'utf-8'))
+            if not path.exists() or path.read_bytes()!=raw:
+                path.write_bytes(raw)
         return payload
 
     def claim(self, task):

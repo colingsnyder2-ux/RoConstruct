@@ -19,10 +19,6 @@
 // Object.h only declare the ServiceProvider index / find / create templates and Creator::create, so their template
 // definitions are given below (the same definitions as ServiceProvider.cpp, AppUnit480_2008PlayerTemplates.cpp and
 // AppUnit634_2008Value.cpp).
-// >>> native-status (generated) -- do not edit >>>
-// AppUnit424_2008ScriptContextTemplates | 2008-06 | draft (no current byte proof)
-// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (mixed 2)
-// <<< native-status | src efe7be4d | roc native-status --write
 #include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"   // first: MFC/ATL before windows.h; CLuaFunction
 #include "LuaArgs.h"
 #include "v8datamodel/DataModel.h"

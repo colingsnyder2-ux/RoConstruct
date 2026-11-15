@@ -8,10 +8,6 @@
 // same offsets; G3D's RenderDevice* member is absent here (texture is an Ogre::TexturePtr instead of TextureRef).
 // Non-polymorphic: the exe has no RTTI/vftable for RbxFont itself, only for SharedPtr<RbxFont>.
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// VRbxFont2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 54fadce3 | roc native-status --write
 
 #include <string>
 #include <OgreSharedPtr.h>

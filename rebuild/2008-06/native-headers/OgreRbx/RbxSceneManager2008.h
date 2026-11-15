@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// RbxSceneManager2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src a7dbc800 | roc native-status --write
 // Ogre::RbxSceneManager and Ogre::RbxSceneManagerFactory as compiled into the June 2008 client (inactive native
 // recovery; Roblox's fork of the Ogre 1.4.5 scene manager, source file ".\RbxSceneManager.cpp", string 0084e9e8).
 //

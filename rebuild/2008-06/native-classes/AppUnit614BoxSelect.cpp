@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// AppUnit614BoxSelect | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 51a852e6 | roc native-status --write
 #include "tool/ToolsArrow.h"
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/Workspace.h"

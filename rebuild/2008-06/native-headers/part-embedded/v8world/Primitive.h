@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Primitive | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src e587636e | roc native-status --write
 #include "G3D/Array.h"
 #ifdef NATIVE_PRIMITIVE_NATIVE_BODY
 // Opt-in switch (undefined by default, so every existing includer compiles exactly as before): a unit that needs the

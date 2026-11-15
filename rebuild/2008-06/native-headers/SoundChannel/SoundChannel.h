@@ -99,6 +99,8 @@ class SoundServiceStatsItem;
 
 namespace RBX
 {
+#ifndef RBX_SOUNDTYPE_DEFINED  // also declared by util/Sound.h; keep one definition per TU
+#define RBX_SOUNDTYPE_DEFINED
 	enum SoundType
 	{
 		NO_SOUND,
@@ -117,6 +119,7 @@ namespace RBX
 		SWOOSH_SOUND,
 		VICTORY_SOUND
 	};
+#endif
 
 	namespace Soundscape
 	{

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// MarshaledListener | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src be70aacb | roc native-status --write
 #include "util/Events.h"
 #include "util/MarshalWindow.h"
 #include "util/EventDataBase.h"

@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPXTOutBarCtrl | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src e844cabb | roc native-status --write
 #include "stdafx.h"
 #include "Common/XTPResourceManager.h"
 #include "Common/XTPColorManager.h"

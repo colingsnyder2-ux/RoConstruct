@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ThreadLogFactory | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 1812bccd | roc native-status --write
 #include "CRobloxApp.h"
 #include <boost/thread/once.hpp>
 #include <boost/thread/tss.hpp>

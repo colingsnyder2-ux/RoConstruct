@@ -77,9 +77,53 @@ def coverage(root, scores, native, owned=None):
     return groups, functions
 
 
+def bulk_manifest(path, cache_dir):
+    """Cache the small fields needed by the site; changed manifests are reread."""
+    stat = path.stat()
+    fingerprint = [stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns]
+    key = hashlib.sha256(str(path.resolve()).encode()).hexdigest()[:24]
+    cached = cache_dir / (key + ".json")
+    try:
+        value = json.loads(cached.read_text(encoding="utf-8"))
+        current = path.stat()
+        if (value.get("version") == 1 and value.get("fingerprint") == fingerprint and
+                fingerprint == [current.st_size, current.st_mtime_ns, current.st_ctime_ns] and
+                isinstance(value.get("families"), list)):
+            return value["families"]
+    except (OSError, ValueError, KeyError, AttributeError):
+        pass
+    data = json.loads(path.read_text(encoding="utf-8"))
+    families = []
+    for family in data.get("families", []):
+        jobs = [{"source": job["source"], "checks": [
+            {"addr": check["addr"], "symbol": check["symbol"]}
+            for check in job.get("checks", [])]} for job in family.get("jobs", [])]
+        symbols = [{"symbol": row["symbol"], "status": row.get("status"),
+                    "candidates": row.get("candidates")} for row in family.get("symbols", [])]
+        families.append({"jobs": jobs, "symbols": symbols})
+    after = path.stat()
+    if fingerprint != [after.st_size, after.st_mtime_ns, after.st_ctime_ns]:
+        raise OSError("manifest changed while reading")
+    try:
+        atomic_json(cached, {"version": 1, "fingerprint": fingerprint, "families": families})
+    except OSError:
+        pass  # Cache is optional; a read-only workspace can still refresh.
+    return families
+
+
 def inactive_code(root):
     """addr -> [symbol, exact, receipt] from inactive native trial receipts (code exists, not integrated)."""
     found = {}
+    review_path = root / 'docs/native-reference-review.json'
+    if review_path.exists():
+        data = json.loads(review_path.read_text(encoding='utf-8'))
+        if (not isinstance(data, dict) or not isinstance(data.get('addresses'), list)
+                or any(not isinstance(a, str) or not re.fullmatch(r'(?:0x)?[0-9a-fA-F]{8}', a)
+                       for a in data['addresses'])):
+            raise ValueError('invalid native reference review list')
+        review = {str(a).lower().removeprefix('0x').zfill(8) for a in data['addresses']}
+    else:
+        review = set()
     def walk(node, name, stamp):
         if isinstance(node, dict):
             addr = node.get("address") or node.get("original_address")
@@ -88,6 +132,10 @@ def inactive_code(root):
             if isinstance(addr, str) and isinstance(symbol, str) and isinstance(exact, bool):
                 exact = exact and receipt_valid
                 addr = addr.lower().removeprefix("0x").zfill(8)
+                if addr in review:
+                    refs, calls = node.get('verified_references'), node.get('verified_calls')
+                    exact = bool(exact and isinstance(refs, list) and isinstance(calls, list)
+                                 and all(r.get('status', '').startswith('verified_') for r in refs + calls))
                 old = found.get(addr)
                 # exact beats not-exact; otherwise the newest receipt wins
                 if not old or (exact, stamp) > (old[1], old[3]):
@@ -141,11 +189,11 @@ def inactive_code(root):
     single, bulk = {}, set()
     for path in manifests:
         try:
-            data = json.loads(path.read_text(encoding="utf-8"))
+            families = bulk_manifest(path, root / "work/integration/inactive-bulk-cache")
         except (ValueError, OSError):
             continue
         stamp = path.stat().st_mtime
-        for family in data.get("families", []):
+        for family in families:
             if len(family.get("jobs", [])) == 1:
                 try:
                     for row in family.get("symbols", []):
@@ -159,9 +207,10 @@ def inactive_code(root):
                 if not candidates or row["symbol"].startswith(("__", "$")) or (not exact and len(candidates) != 1):
                     continue
                 for addr in candidates:
+                    candidate_exact = exact and addr.lower().removeprefix('0x').zfill(8) not in review
                     old = found.get(addr)
-                    if not old or (exact, stamp) > (old[1], old[3]):
-                        found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp,
+                    if not old or (candidate_exact, stamp) > (old[1], old[3]):
+                        found[addr] = [row["symbol"], candidate_exact, "native-bulk:" + path.parent.name, stamp,
                                        source_of.get((addr, row["symbol"]))]
                         bulk.add(addr)
     for addr in bulk:

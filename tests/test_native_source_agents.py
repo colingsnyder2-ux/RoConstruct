@@ -235,12 +235,12 @@ def test_agent_config_requires_codex_and_no_dollar_budget():
         gui_worker.validate(dict(config,max_cloud_cost=1),check_model=False)
 
 
-@pytest.mark.parametrize('cap',[10,5,1])
-def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbors(tmp_path,monkeypatch,cap):
+@pytest.mark.parametrize('cap',[15,5,1])
+def test_fifteen_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbors(tmp_path,monkeypatch,cap):
     import re
     from roc import native_sweep as sweep, match
     shared=tmp_path/'shared'; private=tmp_path/'controller'
-    text='\n'.join('int A::f%d(){return %d;}'%(n,n) for n in range(10))+'\n'
+    text='\n'.join('int A::f%d(){return %d;}'%(n,n) for n in range(15))+'\n'
     source(shared,text)
     monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared));monkeypatch.setattr(recovery,'ROOT',private)
     monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(private/'work/native-recovery'))
@@ -257,7 +257,7 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     monkeypatch.setattr(recovery,'target_proof',lambda data,matcher,addr,method,expected_symbol=None:dict(
         target_exact=('A::f%d(){return %d;}'%(int(addr,16),int(addr,16)+100)).encode() in data,
         symbol='?f%d@A@@QAEHXZ'%int(addr,16),diff='fixture body diff'))
-    assignments=[dict(file=REL,method='A::f%d'%n,addr='%08x'%n) for n in range(10)]
+    assignments=[dict(file=REL,method='A::f%d'%n,addr='%08x'%n) for n in range(15)]
     monkeypatch.setattr(recovery,'nominations',lambda *a:assignments)
     monkeypatch.setattr(sweep,'model_evidence',lambda *a:{'asm':'genuine test fixture'})
     monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='pending-mapping'))
@@ -269,14 +269,14 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
         try:
             time.sleep(.003)
             src=(root/rel).read_text();obj=root/'test.obj';obj.write_bytes(src.encode())
-            found=[dict(addr='%08x'%n,symbol='?f%d@A@@QAEHXZ'%n) for n in range(10) if 'A::f%d(){return %d;}'%(n,n+100) in src]
+            found=[dict(addr='%08x'%n,symbol='?f%d@A@@QAEHXZ'%n) for n in range(15) if 'A::f%d(){return %d;}'%(n,n+100) in src]
             return dict(ok=True,error='',hits=found,object=str(obj),losses=sorted(set(baseline or ())-{h['addr'] for h in found}),
                         target_exact=bool(set(addresses)&{h['addr'] for h in found}))
         finally:
             with lock:active-=1
     monkeypatch.setattr(recovery,'compile_probe',compile)
     barrier=threading.Barrier(cap);seen=[]
-    def codex(folder,model,seconds,stopping,log):
+    def codex(folder,model,seconds,stopping,log,reasoning_effort=None):
         task=json.loads((folder/'task.json').read_text());n=int(task['addr'],16)
         full=json.loads(Path(task['full_evidence_file']).read_text())
         assert full['addr']==task['addr'] and full['source_excerpt']==task['source_excerpt']
@@ -290,7 +290,7 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
         return dict(input_tokens=10,output_tokens=10,cancelled=False)
     monkeypatch.setattr(recovery,'run_codex',codex)
     config={**gui_worker.DEFAULTS,**dict(lease_mode='native',native_generation='agent',model='codex:gpt-6-luna',
-             workers=10,user='test',server='localhost:8765',cloud_allowed=True,native_compile_workers=2,max_cloud_requests=cap)}
+             workers=15,user='test',server='localhost:8765',cloud_allowed=True,native_compile_workers=2,max_cloud_requests=cap)}
     control=gui_worker.Control(config,lambda *a,**kw:None)
     result=recovery.run(config,control,lambda *a,**kw:None)
     assert len(set(seen))==cap
@@ -298,7 +298,7 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     assert control.budget.requests==cap and peak<=2
     assert baseline_calls==[REL]
     final=(shared/REL).read_text()
-    assert all('A::f%d(){return %d;}'%(n,n+100 if n in seen else n) in final for n in range(10))
+    assert all('A::f%d(){return %d;}'%(n,n+100 if n in seen else n) in final for n in range(15))
     assert len(list((private/'work/native-recovery/receipts').glob('*.json')))==cap
     if cap==1:
         assert control.native_budget_blocked
@@ -532,12 +532,13 @@ def test_probe_client_returns_compact_verdict_and_failure_exit(tmp_path,exact):
     end=time.monotonic()+10
     while not list(checks.glob('*.request')) and time.monotonic()<end:time.sleep(.01)
     request=next(checks.glob('*.request'))
-    payload=dict(ok=True,target_exact=exact,losses=[],error='',diff='original diff',hits=[dict(addr='00400000')]*10000)
+    payload=dict(ok=True,target_exact=exact,losses=[],error='',diff='original diff',metrics={'fuzzy_percent':72.58,'positional_percent':30.96,'raw_positional_percent':28.04},hits=[dict(addr='00400000')]*10000)
     request.with_suffix('.json').write_text(json.dumps(payload))
     stdout,stderr=child.communicate(timeout=10)
     assert child.returncode==(0 if exact else 1),stderr
     summary=json.loads(stdout)
     assert summary['target_exact']==exact and summary['diff']=='original diff'
+    assert summary['metrics']==payload['metrics']
     assert 'hits' not in summary and len(stdout)<1000
     assert Path(summary['full_proof_file']).exists()
 
@@ -785,6 +786,23 @@ def test_mfc_profile_rejects_loss_of_owner_baseline_matches(tmp_path,monkeypatch
     assert result['error']=='MFC profile loses existing owner matches'
 
 
+@pytest.mark.parametrize('loses',[False,True])
+def test_annotated_float_profile_requires_no_loss_against_default(tmp_path,monkeypatch,loses):
+    source(tmp_path,'// native-flags: /O2 /fp:fast\n'+BEFORE)
+    calls=[]
+    def compile(client,sources,out,includes,defines,flags):
+        calls.append(flags);out.mkdir(parents=True,exist_ok=True)
+        obj=out/(sources[0].stem+'.obj');obj.write_bytes(flags.encode())
+        obj.with_suffix('.command.json').write_text(json.dumps(dict(source_sha256=recovery.digest(sources[0].read_bytes()))))
+        return {str(sources[0]):(True,'')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    matcher=SimpleNamespace(scan=lambda data:[] if loses and b'/fp:fast' in data else [dict(addr='00400000',symbol='sym')])
+    result=recovery.compile_probe(tmp_path,REL,SimpleNamespace(defines='',flags='/O2'),matcher,set(),'')
+    assert calls==['/O2','/O2 /fp:fast']
+    assert result['ok'] is not loses
+    if loses:assert result['error']=='Annotated float profile loses existing owner matches'
+
+
 def test_accepted_probe_uses_pinned_headers_and_original_profile_without_owner_overlays(tmp_path,monkeypatch):
     root=tmp_path/'shared';rel='rebuild/2008-06/native-classes/accepted/App/test/B.cpp'
     path=root/rel;path.parent.mkdir(parents=True);path.write_text('int B::f(){return 1;}')
@@ -832,6 +850,11 @@ def test_exact_or_unemitted_source_skips_ai_and_preserves_shared_files(tmp_path,
         return dict(job='queued',submitted_addresses=['00400000'])
     monkeypatch.setattr(recovery,'submit_batch',submit)
     monkeypatch.setattr(recovery,'run_codex',lambda *a:pytest.fail('Exact baseline must not invoke AI'))
+    copied=[];copy_sources=recovery.copy_sources
+    def record_copy(src,dst):
+        copied.append(dst)
+        return copy_sources(src,dst)
+    monkeypatch.setattr(recovery,'copy_sources',record_copy)
     config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True)
     control=gui_worker.Control(config,lambda *a,**kw:None)
     result=recovery.run(config,control,lambda *a,**kw:None)
@@ -839,6 +862,306 @@ def test_exact_or_unemitted_source_skips_ai_and_preserves_shared_files(tmp_path,
     assert result['baseline_blocked']==int(not emitted)
     assert result['recovered']==result['merged']==control.budget.requests==0
     assert path.read_bytes()==original
+    assert not any('agents' in path.parts for path in copied)
+
+
+def test_exact_baseline_cache_ignores_agent_budget_but_rechecks_changed_inputs(tmp_path):
+    claims=recovery.Claims(tmp_path)
+    owner=claims.take('method','budget-1',{'baseline_signature':'source-1'})
+    claims.update('method',owner,'already-exact',{'baseline_signature':'source-1'})
+    assert claims.take('method','budget-2',{'baseline_signature':'source-1'}) is None
+    assert claims.take('method','budget-2',{'baseline_signature':'source-2'})
+
+
+def test_parallel_source_tasks_spread_across_classes():
+    ordered=[('A',1),('A',2),('A',3),('B',4),('B',5),('C',6)]
+    assert recovery.spread_classes(ordered)==[('A',1),('B',4),('C',6),('A',2),('B',5),('A',3)]
+
+
+def test_high_similarity_targets_are_excluded_from_source_workers():
+    names={'a':{'score':97},'b':{'score':80},'c':{'score':79},'d':{'score':100}}
+    assert [recovery.high_similarity({'addr':addr},names) for addr in 'abcde']==[True,True,False,True,False]
+
+
+def test_current_similarity_uses_assigned_object_and_original(tmp_path,monkeypatch):
+    obj=tmp_path/'test.obj';obj.write_bytes(b'obj')
+    monkeypatch.setattr(recovery.match,'coff_functions',lambda raw:[('symbol',b'candidate',[2])])
+    monkeypatch.setattr(recovery.match,'target',lambda client,addr:(b'original',[1],{}))
+    monkeypatch.setattr(recovery.match,'comparison_metrics',lambda *args:{'fuzzy_percent':99.5,'raw_positional_percent':70,'positional_percent':95})
+    assert recovery.fresh_similarity({'object':str(obj),'symbol':'symbol'},{'addr':'00400000'})['fuzzy_percent']==99.5
+    assert recovery.too_similar({'fuzzy_percent':79.9,'positional_percent':80,'raw_positional_percent':12})
+    assert not recovery.too_similar({'fuzzy_percent':79.9,'positional_percent':12,'raw_positional_percent':11})
+    assert not recovery.needs_similarity_measurement({'add_method':True},{})
+    assert recovery.needs_similarity_measurement({'add_method':True},{'symbol':'existing'})
+    with pytest.raises(ValueError,match='unambiguously'):
+        recovery.needs_similarity_measurement({}, {})
+    with pytest.raises(ValueError,match='unambiguously'):
+        recovery.fresh_similarity({'object':str(obj),'symbol':'missing'},{'addr':'00400000'})
+
+
+def test_baseline_cache_rejects_changed_dependency_compiler_or_object(tmp_path):
+    obj=tmp_path/'unit.obj';obj.write_bytes(b'object')
+    compiler=tmp_path/'cl.exe';compiler.write_bytes(b'compiler')
+    header=tmp_path/'header.h';header.write_bytes(b'header')
+    command={'compiler':str(compiler),'dependencies':{str(header):recovery.digest(header.read_bytes())}}
+    obj.with_suffix('.command.json').write_text(json.dumps(command))
+    entry=recovery.cache_baseline({'object':str(obj),'ok':True})
+    assert entry and recovery.cached_baseline_valid(entry)
+    header.write_bytes(b'changed');assert not recovery.cached_baseline_valid(entry)
+    header.write_bytes(b'header');compiler.write_bytes(b'changed');assert not recovery.cached_baseline_valid(entry)
+    compiler.write_bytes(b'compiler');obj.write_bytes(b'changed');assert not recovery.cached_baseline_valid(entry)
+
+
+def test_failed_baseline_cache_retries_when_missing_header_appears(tmp_path):
+    obj=tmp_path/'unit.obj';compiler=tmp_path/'cl.exe';compiler.write_bytes(b'compiler')
+    source=tmp_path/'unit.cpp';source.write_bytes(b'source')
+    includes=tmp_path/'include';includes.mkdir()
+    command={'compiler':str(compiler),'source':str(source),'args':['/I'+str(includes)],'environment':{},
+             'dependencies':{str(source):recovery.digest(source.read_bytes())}}
+    obj.with_suffix('.command.json').write_text(json.dumps(command))
+    entry=recovery.cache_baseline({'object':str(obj),'ok':False,'error':"fatal error C1083: Cannot open include file: 'missing.h': No such file or directory"})
+    assert entry and recovery.cached_baseline_valid(entry)
+    (includes/'missing.h').write_text('now available')
+    assert not recovery.cached_baseline_valid(entry)
+
+
+def test_recovery_reuses_unchanged_snapshot_and_object_across_passes(tmp_path,monkeypatch):
+    from roc import native_sweep as sweep,match
+    shared=tmp_path/'shared';source(shared,'int A::f(){return 1;}\nint A::g(){return 2;}\n')
+    monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared))
+    monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/'proofs'))
+    class Api:
+        def __init__(self,*a):pass
+        def call(self,*a,**kw):return {'revision':'base'}
+        def close(self):pass
+    monkeypatch.setattr(recovery.worker,'Api',Api)
+    monkeypatch.setattr(recovery,'source_context',lambda *a:SimpleNamespace(names={},by_addr={},includes=[],defines='',flags=''))
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
+    monkeypatch.setattr(match,'_functions',lambda *a:{})
+    monkeypatch.setattr(match,'coff_functions',lambda *a:[])
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f',addr='00400000'),dict(file=REL,method='A::g',addr='00400001')])
+    monkeypatch.setattr(recovery,'target_proof',lambda *a:dict(target_exact=True,diff='',data_mismatches=[]))
+    compiler=tmp_path/'cl.exe';compiler.write_bytes(b'compiler')
+    header=tmp_path/'header.h';header.write_bytes(b'header')
+    calls=[]
+    def compile(root,*args,**kwargs):
+        calls.append(root);obj=root/'test.obj';obj.write_bytes(b'object')
+        obj.with_suffix('.command.json').write_text(json.dumps({'compiler':str(compiler),'dependencies':{str(header):recovery.digest(header.read_bytes())}}))
+        return dict(ok=True,target_exact=False,hits=[],object=str(obj))
+    monkeypatch.setattr(recovery,'compile_probe',compile)
+    config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True,native_source_only=True,native_agent_submit=False)
+    control=gui_worker.Control(config,lambda *a,**kw:None)
+    assert recovery.run(config,control,lambda *a,**kw:None)['already_exact']==1
+    assert recovery.run(config,control,lambda *a,**kw:None)['attempted']==0
+    assert len(calls)==1
+    assert len(list((tmp_path/'proofs'/'snapshots').iterdir()))==1
+
+
+def test_repair_plan_uses_actual_method_diff_and_data():
+    plan=recovery.repair_plan({'method':'A::f','addr':'00400000'},
+        {'diff':'--- target\n+++ rebuilt\n@@ -1 +1 @@\n-call eax\n+push ecx', 'data_mismatches':['string']})
+    assert 'A::f' in plan[0] and '00400000' in plan[0] and '-call eax' in plan[0] and '+push ecx' in plan[0]
+    assert any('callee identity' in step for step in plan)
+    assert any('argument evaluation' in step for step in plan)
+    assert any('data mismatch' in step for step in plan)
+    contextual=recovery.repair_plan({'method':'A::f','addr':'00400000'},
+        {'diff':'--- target\n+++ rebuilt\n@@ -1 +1 @@\n-sub esp, 0x5c\n+sub esp, 0x68'},
+        {'target_asm':['00400000  90  nop','00400001  83ec5c  sub esp, 0x5c','00400004  c3  ret']})
+    assert any('00400001' in step and '00400004' in step for step in contextual)
+
+
+def test_retry_hints_keep_unresolved_candidates_only(tmp_path):
+    claims=recovery.Claims(tmp_path)
+    a=claims.take('a','1',{});b=claims.take('b','1',{})
+    claims.update('a',a,'blocked',{'blocker':'Candidate not exact or regressed; private source/proofs retained','agent_blocker':'Need call identity'})
+    claims.update('b',b,'blocked',{'blocker':'Missing header'})
+    assert claims.retry_hints()=={'a':{'blocker':'Candidate not exact or regressed; private source/proofs retained','agent_blocker':'Need call identity'}}
+
+
+def test_agent_summary_uses_last_message_as_bounded_untrusted_data(tmp_path):
+    events=[{'item':{'type':'agent_message','text':'first'}},{'item':None},
+            {'item':{'type':'agent_message','text':'last finding'}}]
+    (tmp_path/'agent.jsonl').write_text('\n'.join(json.dumps(e) for e in events))
+    assert recovery.read_agent_summary(tmp_path)=='last finding'
+
+
+def test_exhausted_distinct_variants_wait_for_new_source_evidence(tmp_path):
+    checks=tmp_path/'checks';checks.mkdir()
+    values=[('original',False),('a',False),('a',False),('b',True),('c',False),('d',False)]
+    for i,(value,exact) in enumerate(values):
+        (checks/('%s.json'%i)).write_text(json.dumps({'candidate_source_sha256':value,'ok':True,'target_exact':exact,'losses':[]}))
+    assert recovery.failed_variant_hashes(tmp_path,'original')==['a','c','d']
+    claims=recovery.Claims(tmp_path);owner=claims.take('method','config-1',{'search_context_signature':'inputs-1'})
+    claims.update('method',owner,'blocked',{'hypotheses_exhausted':True,'search_context_signature':'inputs-1'})
+    assert claims.take('method','config-2',{'search_context_signature':'inputs-1'}) is None
+    assert claims.take('method','config-2',{'search_context_signature':'inputs-2'})
+
+
+def test_duplicate_exhaustion_requires_same_target_source_and_compiler_bytes(tmp_path):
+    claims=recovery.Claims(tmp_path);owner=claims.take('method','v1',{})
+    record={'task':{'addr':'00400000'},'hypotheses_exhausted':True,'shared_evidence_signature':'inputs',
+            'method_source_hash':'source','baseline_code_hash':'object'}
+    claims.update('method',owner,'blocked',record)
+    assert claims.exhausted_baselines()=={('00400000','inputs','source','object')}
+    record['hypotheses_exhausted']=False;claims.update('method',owner,'blocked',record)
+    assert not claims.exhausted_baselines()
+
+
+@pytest.mark.parametrize('private',[False,True])
+def test_unproven_original_identity_keeps_candidate_private(tmp_path,monkeypatch,private):
+    from roc import native_sweep as sweep,match
+    from contextlib import contextmanager
+    from roc import native_drafts
+    shared=tmp_path/'shared';path=source(shared,BEFORE)
+    monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared));monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/'proofs'))
+    class Api:
+        def __init__(self,*a):self.token=None
+        def call(self,*a,**kw):return {'revision':'base'}
+        def close(self):pass
+    monkeypatch.setattr(recovery.worker,'Api',Api)
+    monkeypatch.setattr(recovery,'source_context',lambda *a:SimpleNamespace(names={},by_addr={},includes=[],defines='',flags=''))
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
+    monkeypatch.setattr(match,'_functions',lambda *a:{})
+    monkeypatch.setattr(match,'coff_functions',lambda *a:[])
+    monkeypatch.setattr(sweep,'model_evidence',lambda *a:{'target_asm':['fixture']})
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f',addr='00400000',identity_unproven=True,private_discovery=private)])
+    leased=[]
+    @contextmanager
+    def lease(api,config,path):
+        leased.append(path)
+        yield
+    monkeypatch.setattr(recovery,'source_write_lease',lease)
+    monkeypatch.setattr(recovery,'prior_draft_server',lambda *a:'https://draft.example')
+    monkeypatch.setattr(native_drafts,'initialize',lambda *a,**kw:'a'*32)
+    monkeypatch.setattr(native_drafts,'checkpoint',lambda *a:None)
+    monkeypatch.setattr(native_drafts,'session_path',lambda *a:tmp_path/'empty-session')
+    monkeypatch.setattr(recovery,'target_proof',lambda data,*a:dict(target_exact=b'return 3;' in data,symbol='sym',diff='fixture'))
+    monkeypatch.setattr(recovery,'fresh_similarity',lambda *a:dict(fuzzy_percent=10,positional_percent=10,raw_positional_percent=10))
+    monkeypatch.setattr(recovery,'baseline_code_hash',lambda *a:'fingerprint')
+    def compile(root,rel,*args,**kwargs):
+        raw=(root/rel).read_bytes();obj=root/'test.obj';obj.write_bytes(raw)
+        return dict(ok=True,target_exact=b'return 3;' in raw,hits=[],object=str(obj),symbol='sym',losses=[],error='')
+    monkeypatch.setattr(recovery,'compile_probe',compile)
+    def codex(folder,*args,**kwargs):
+        (folder/REL).write_text(AFTER)
+        return dict(cancelled=False,usage_reported=False)
+    monkeypatch.setattr(recovery,'run_codex',codex)
+    config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True,native_source_only=True,native_agent_submit=False)
+    control=gui_worker.Control(config,lambda *a,**kw:None)
+    result=recovery.run(config,control,lambda *a,**kw:None)
+    assert result['identity_review']==1 and result['recovered']==result['merged']==0
+    assert path.read_text()==BEFORE
+    with recovery.Claims(shared).connect() as db:
+        state,raw=db.execute('SELECT state,record FROM tasks').fetchone()
+    record=json.loads(raw)
+    assert state=='identity-review' and record['identity_review_required'] and Path(record['candidate']).is_file()
+    assert leased==([REL] if private else [])
+
+
+def test_private_discovery_requires_missing_declared_method_and_matching_symbol(tmp_path):
+    rel='rebuild/2008-06/native-classes/A.cpp';header='rebuild/2008-06/native-headers/A.h'
+    source=tmp_path/rel;source.parent.mkdir(parents=True);source.write_text('#include "A.h"\nvoid A::other(){}\n')
+    declaration=tmp_path/header;declaration.parent.mkdir(parents=True);declaration.write_text('namespace RBX { class A { public: void f(); }; }')
+    symbol='?f@A@RBX@@QAEXXZ';task=dict(file=rel,method='A::f',addr='00400000',expected_symbol=symbol,
+        add_method=True,identity_unproven=True,declaration_header=header)
+    recovery.validate_private_discovery(task,tmp_path,{'00400000':{'symbol':symbol}})
+    assert task['private_discovery']
+    with pytest.raises(ValueError,match='symbol hint'):
+        recovery.validate_private_discovery(dict(task),tmp_path,{'00400000':{'symbol':'wrong'}})
+    declaration.write_text('namespace RBX { class A { public: void other(); }; }')
+    with pytest.raises(ValueError,match='declaration'):
+        recovery.validate_private_discovery(dict(task),tmp_path,{'00400000':{'symbol':symbol}})
+
+
+def test_private_drafts_use_same_contributors_https_server(tmp_path):
+    folder=tmp_path/'local/drafts/sessions';(folder/'other').mkdir(parents=True);(folder/'mine').mkdir()
+    (folder/'other/session.json').write_text(json.dumps({'user':'someone-else','server':'https://other.example'}))
+    (folder/'mine/session.json').write_text(json.dumps({'user':'colin','server':'https://mine.example'}))
+    assert recovery.prior_draft_server(tmp_path,'colin')=='https://mine.example'
+    with pytest.raises(ValueError,match='draft server'):
+        recovery.prior_draft_server(tmp_path,'nobody')
+
+
+def test_source_lease_retries_transient_failure_with_same_name(monkeypatch):
+    monkeypatch.setattr(recovery.time,'sleep',lambda _:None)
+    calls=[]
+    class Api:
+        def close(self):pass
+        def call(self,path,payload):
+            calls.append((path,payload['name']))
+            if len(calls)==1:raise recovery.worker.ApiFailure('offline','retry')
+            return {'name':payload['name'],'user':payload['user']}
+    with recovery.source_write_lease(Api(),{'native_source_only':True,'user':'colin'},REL):pass
+    assert len(calls)==3 and len({name for _,name in calls})==1
+
+
+def test_private_snapshot_draft_initializes_without_git(tmp_path,monkeypatch):
+    from roc import native_drafts
+    source(tmp_path,BEFORE)
+    (tmp_path/'roconstruct-package.json').write_text(json.dumps({'revision':'source-snapshot:abc'}))
+    monkeypatch.setattr(native_drafts.subprocess,'run',lambda *a,**kw:pytest.fail('Private snapshot must not invoke git'))
+    session=native_drafts.initialize(tmp_path,[REL],'colin','codex:gpt-6-luna','https://draft.example',baseline='source-snapshot:abc')
+    state=json.loads((native_drafts.session_path(tmp_path,session)/'session.json').read_text())
+    assert state['baseline']=='source-snapshot:abc' and state['base'][REL]==BEFORE
+
+
+def test_batch_precheck_never_overwrites_active_claim(tmp_path):
+    claims=recovery.Claims(tmp_path);owner=claims.take('active','v1',{})
+    assert not claims.note_existing('active','v1',{'existing_source':True})
+    assert claims.record('active',owner)=={}
+    assert claims.note_existing('other','v1',{'existing_source':True})
+    assert claims.note_existing('other','v2',{'baseline_signature':'fresh','source_provenance':'local baseline only'})
+    with claims.connect() as db:
+        state,raw=db.execute("SELECT state,record FROM tasks WHERE key='other'").fetchone()
+    assert state=='already-exact' and json.loads(raw)['existing_source'] and json.loads(raw)['baseline_signature']=='fresh'
+
+
+def test_private_blocked_draft_resumes_when_new_evidence_arrives(tmp_path):
+    claims=recovery.Claims(tmp_path);task={'method':'A::f','private_discovery':True}
+    owner=claims.take('method','old',{'task':task})
+    claims.update('method',owner,'blocked',{'task':task,'workspace':'saved-draft','original':BEFORE})
+    new=claims.take('method','new',{'task':task})
+    assert claims.record('method',new)['resume']['workspace']=='saved-draft'
+
+
+def test_resumed_private_draft_above_similarity_limit_never_reaches_model(tmp_path,monkeypatch):
+    from roc import native_sweep as sweep,match,native_drafts
+    from contextlib import nullcontext
+    shared=tmp_path/'shared';source(shared,BEFORE);saved=tmp_path/'saved';source(saved,AFTER)
+    task=dict(file=REL,method='A::f',addr='00400000',identity_unproven=True,private_discovery=True)
+    key=recovery.integration.digest([recovery.os.path.normcase(str(recovery.native_path(shared,REL))),'A::f'])
+    claims=recovery.Claims(shared);owner=claims.take(key,'old',{'task':task})
+    claims.update(key,owner,'blocked',{'task':task,'workspace':str(saved),'original':BEFORE})
+    monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared));monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/'proofs'))
+    class Api:
+        def __init__(self,*a):self.token=None
+        def call(self,*a,**kw):return {'revision':'base'}
+        def close(self):pass
+    monkeypatch.setattr(recovery.worker,'Api',Api)
+    monkeypatch.setattr(recovery,'source_context',lambda *a:SimpleNamespace(names={},by_addr={},includes=[],defines='',flags=''))
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None);monkeypatch.setattr(match,'_functions',lambda *a:{})
+    monkeypatch.setattr(match,'coff_functions',lambda *a:[])
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[task])
+    monkeypatch.setattr(recovery,'target_proof',lambda *a:dict(target_exact=False,symbol='sym',diff='fixture'))
+    monkeypatch.setattr(recovery,'baseline_code_hash',lambda *a:'fingerprint')
+    def compile(root,rel,*args,**kwargs):
+        raw=(root/rel).read_bytes();obj=root/'test.obj';obj.write_bytes(raw)
+        return dict(ok=True,target_exact=False,hits=[],object=str(obj),symbol='sym',losses=[],error='')
+    monkeypatch.setattr(recovery,'compile_probe',compile)
+    def metrics(result,*args):
+        score=90 if b'return 3;' in Path(result['object']).read_bytes() else 10
+        return dict(fuzzy_percent=score,positional_percent=score,raw_positional_percent=score)
+    monkeypatch.setattr(recovery,'fresh_similarity',metrics)
+    monkeypatch.setattr(recovery,'source_write_lease',lambda *a:nullcontext())
+    monkeypatch.setattr(recovery,'prior_draft_server',lambda *a:'https://draft.example')
+    monkeypatch.setattr(native_drafts,'initialize',lambda *a,**kw:'a'*32)
+    monkeypatch.setattr(native_drafts,'checkpoint',lambda *a:None)
+    monkeypatch.setattr(native_drafts,'session_path',lambda *a:tmp_path/'empty-session')
+    monkeypatch.setattr(recovery,'run_codex',lambda *a,**kw:pytest.fail('High-similarity draft must not reach model'))
+    config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True,native_source_only=True,native_agent_submit=False)
+    control=gui_worker.Control(config,lambda *a,**kw:None);recovery.run(config,control,lambda *a,**kw:None)
+    with claims.connect() as db: state,raw=db.execute('SELECT state,record FROM tasks WHERE key=?',(key,)).fetchone()
+    assert state=='high-similarity' and json.loads(raw)['resumed_metrics']['fuzzy_percent']==90
 
 
 @pytest.mark.parametrize('case',['valid','escape','parameters','invented-type','unchanged'])
@@ -931,3 +1254,74 @@ def test_codex_progress_shows_command_results_and_retains_raw_events(tmp_path,mo
     assert messages==['Probe: no exact match','Missing genuine declaration']
     assert 'private wrapper command' in (tmp_path/'agent.jsonl').read_text()
     assert result['input_tokens']==12 and result['output_tokens']==3
+
+
+def test_luna_cli_has_shell_tools_and_medium_reasoning_in_private_workspace(tmp_path,monkeypatch):
+    commands=[];environments=[];spawn=subprocess.Popen
+    monkeypatch.setenv('CODEX_WINDOWS_REGISTERED_CORE','desktop-only')
+    monkeypatch.setenv('CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY','desktop-only')
+    script='import sys;sys.stdin.readline();print(\'{"type":"turn.completed","usage":{}}\')'
+    monkeypatch.setattr(recovery.shutil,'which',lambda _:sys.executable)
+    def start(argv,**kwargs):
+        commands.append(argv)
+        environments.append(kwargs['env'])
+        return spawn([sys.executable,'-u','-c',script],**kwargs)
+    monkeypatch.setattr(recovery.subprocess,'Popen',start)
+    recovery.run_codex(tmp_path,'codex:gpt-6-luna',10,lambda:False,lambda text:None)
+    argv=commands[0]
+    assert 'model_reasoning_effort="medium"' in argv
+    assert argv[argv.index('-C')+1]==str(tmp_path)
+    assert 'workspace-write' in argv and 'shell_tool' not in argv
+    assert argv[argv.index('--model')+1]=='gpt-6-luna'
+    assert 'CODEX_WINDOWS_REGISTERED_CORE' not in environments[0]
+    assert 'CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY' not in environments[0]
+
+
+def test_source_context_does_not_build_or_require_accepted_overlay(tmp_path,monkeypatch):
+    monkeypatch.setattr(recovery.match,'_functions',lambda _: {'00400000':{'size':8}})
+    monkeypatch.setattr(recovery.sweep,'native_context',lambda *a:pytest.fail('Accepted overlay is unrelated to source recovery'))
+    context=recovery.source_context(tmp_path)
+    assert context.by_addr['00400000']['size']==8
+    assert not context.owned and not context.integrated
+
+
+def test_source_context_finds_donor_method_from_client_root(tmp_path,monkeypatch):
+    libs_root=tmp_path/'tools/libs';libs_root.mkdir(parents=True)
+    donor=tmp_path/'tools/rbxgs/Client/App/gui/GUI.cpp';donor.parent.mkdir(parents=True)
+    donor.write_text('namespace RBX { int RelativePanel::getPosition(){return 1;} }')
+    monkeypatch.setattr(recovery.libs,'LIBS',libs_root)
+    monkeypatch.setattr(recovery.match,'_functions',lambda _: {})
+    context=recovery.source_context(tmp_path)
+    found=recovery.canonical_methods(context,'RelativePanel::getPosition')
+    assert len(found)==1 and found[0][0]=='App/gui/GUI.cpp'
+
+
+def test_source_recovery_cannot_select_or_submit_client_code():
+    config=dict(gui_worker.DEFAULTS,lease_mode='native',native_generation='agent',model='codex:gpt-6-luna',
+        native_source_only=True,native_agent_submit=False,user='tester',server='localhost:8765',cloud_allowed=True)
+    assert gui_worker.validate(config,check_model=False)['native_source_only']
+    with pytest.raises(ValueError,match='local-only'):
+        gui_worker.validate(dict(config,native_agent_submit=True),check_model=False)
+
+
+def test_source_write_lease_is_released_after_failed_merge():
+    calls=[]
+    class Api:
+        def call(self,path,body):
+            calls.append(path)
+            return {'name':body['name'],'user':body['user']}
+    with pytest.raises(ValueError,match='failed proof'):
+        with recovery.source_write_lease(Api(),{'native_source_only':True,'user':'tester'},REL):
+            raise ValueError('failed proof')
+    assert calls==['/v1/leases/take','/v1/leases/release']
+
+
+@pytest.mark.parametrize('encoding',['cp1252','utf-8-sig'])
+def test_method_merge_preserves_source_encoding_and_unchanged_literals(tmp_path,encoding):
+    root=tmp_path/'root';path=source(root)
+    prefix='const char* label="\u2013";\n'
+    before=prefix+BEFORE;after=prefix+AFTER
+    path.write_bytes(before.encode(encoding))
+    result=recovery.merge(root,tmp_path/'probe',REL,before,after,'A::f',good,tmp_path/'receipt.json')
+    assert result['state']=='merged'
+    assert path.read_bytes()==after.encode(encoding)

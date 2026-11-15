@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPReportRows | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 6ed98b9a | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPVc50Helpers.h"

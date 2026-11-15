@@ -7,10 +7,6 @@
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 
-// >>> native-status (generated) -- do not edit >>>
-// Boostoptions_description | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5fd07194 | roc native-status --write
 #define BOOST_PROGRAM_OPTIONS_SOURCE
 #include <boost/program_options/config.hpp>
 #include <boost/program_options/options_description.hpp>

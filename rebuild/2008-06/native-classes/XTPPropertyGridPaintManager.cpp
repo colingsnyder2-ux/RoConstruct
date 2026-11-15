@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPPropertyGridPaintManager | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 55b0d312 | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPVC80Helpers.h"

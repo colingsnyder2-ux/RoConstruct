@@ -5,10 +5,6 @@
 // deleting destructor. getJointK 00646af0 follows the scalar deleting destructor 00646ac0 and reads the native
 // Primitive's computed joint-K property (ComputeProp<float> +0xec of native-headers/v8world/Primitive2008.h), so this
 // unit includes Primitive2008.h next to Joints2008.h (the pattern of AppUnit5E4MotorJoint.cpp).
-// >>> native-status (generated) -- do not edit >>>
-// WorldJointMulti | 2008-06 | draft (no current byte proof)
-// 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by auto (+1) (mixed 2)
-// <<< native-status | src 7501bcc1 | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "v8world/Primitive2008.h"
 #include "v8kernel/Kernel.h"

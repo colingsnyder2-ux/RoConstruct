@@ -2,10 +2,6 @@
 // The original unit 0062e090..00633101 also holds Rocket (native-classes/Rocket.cpp). Verified by
 // tests/record_native_body_movers.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// BodyMovers | 2008-06 | draft (no current byte proof)
-// 0/11 mapped addresses byte-exact | 11 unproved | 4 referenced strings (not rechecked) | by king_originala (+3) (mixed 5)
-// <<< native-status | src 3793eee6 | roc native-status --write
 // Batch 16: NATIVE_PRIMITIVE_NATIVE_BODY selects the 2008 Body (native-headers/v8kernel/Body2008.h) through the
 // part-embedded Primitive.h and BodyMovers.h -> v8kernel/Connector2008.h; v8kernel/Kernel2008.h declares
 // insertConnector2ndPass 005fad50 / removeConnector2ndPass 005fad80 for BodyMover::onAncestorChanged 006308f0.

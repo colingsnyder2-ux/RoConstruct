@@ -15,10 +15,6 @@
 
 // define BOOST_FILESYSTEM_SOURCE so that <boost/filesystem/config.hpp> knows
 // the library is being built (possibly exporting rather than importing code)
-// >>> native-status (generated) -- do not edit >>>
-// Boostoperations | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 35cdd1c1 | roc native-status --write
 #define BOOST_FILESYSTEM_SOURCE 
 
 #define _POSIX_PTHREAD_SEMANTICS  // Sun readdir_r() needs this

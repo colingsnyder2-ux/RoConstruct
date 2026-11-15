@@ -36,6 +36,59 @@ def claim(service,user='Colin',worker='pc1'):
     return service.claim(user,dict(target=task['target'],signature=task['signature'],worker=worker))
 
 
+def test_catalog_and_snapshot_preserve_legacy_source_encoding(service,tmp_path,monkeypatch):
+    rel='rebuild/2008-06/native-headers/Legacy.h'
+    (service.root/rel).write_text('// legacy \u2013 comment\n',encoding='cp1252')
+    bom='rebuild/2008-06/native-headers/Bom.h'
+    (service.root/bom).write_text('// utf8 \u00e9\n',encoding='utf-8-sig')
+    payload=service.catalog()
+    remote=object.__new__(client.Remote)
+    monkeypatch.setattr(remote,'call',lambda action:payload)
+    snapshot=remote.snapshot(tmp_path/'client')
+    root=Path(snapshot['workspace'])
+    assert b'\x96' in (root/rel).read_bytes()
+    assert (root/bom).read_bytes().startswith(b'\xef\xbb\xbf')
+    assert (root/rel).read_text(encoding='cp1252')=='// legacy \u2013 comment\n'
+
+
+def test_host_self_requests_can_use_unoccupied_loopback_alias(service,monkeypatch):
+    monkeypatch.setenv('ROC_NATIVE_SELF_SERVER','http://127.0.0.2:8765')
+    other=host.Host(service.promotions,server='http://127.0.0.1:8765')
+    assert other.server=='http://127.0.0.2:8765'
+
+
+def test_unfinished_source_is_reported_without_blocking_other_tasks(service,monkeypatch):
+    rel='rebuild/2008-06/native-classes/Unfinished.cpp'
+    (service.root/rel).write_text('void Unfinished::f() {')
+    def nominate(root,texts,names):
+        assert rel not in texts
+        return [dict(file=REL,method='A::f',addr='00400000')]
+    monkeypatch.setattr(recovery,'nominations',nominate)
+    payload=service.catalog()
+    assert payload['tasks'][0]['file']==REL
+    assert any(row['file']==rel for row in payload['parse_failures'])
+
+
+def test_broken_accepted_overlay_does_not_block_owner_source_recovery(service,tmp_path):
+    canonical=tmp_path/'accepted'
+    header=canonical/'tools/rbxgs/Client/App/include/Bad.h'
+    header.parent.mkdir(parents=True);header.write_text('struct Bad {};')
+    registry=canonical/'rebuild/2008-06/patches/rbxgs-client.json'
+    registry.parent.mkdir(parents=True);registry.write_text(json.dumps({'App/include/Bad.h':[['missing anchor','replacement']]}))
+    service.promotions.source_root=canonical;service.promotions.overlay=registry
+    payload=service.catalog()
+    assert payload['tasks'][0]['file']==REL
+    assert payload['accepted_context_failures'][0]['file']=='App/include/Bad.h'
+    assert payload['canonical_headers']=={}
+    assert payload['tasks'][0]['integration_mapping'] is None
+
+
+def test_method_claim_respects_other_contributors_file_lease(service):
+    service.file_leases.take('other-user','source-owner',[REL],hours=1)
+    assert claim(service)['reason']=='file-leased'
+    assert claim(service,user='other-user')['claimed']
+
+
 def body(lease,**extra):return dict(lease=lease['lease'],worker=lease['worker'],**extra)
 
 

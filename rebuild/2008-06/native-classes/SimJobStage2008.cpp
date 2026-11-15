@@ -7,10 +7,6 @@
 // NATIVE_CLUMP_DECL: +0x40 SimJob back-link); the erase calls the neighbour-job member 004cb480 (SimJobStage2008.h, inline) and the cdecl mechanism
 // transfer SimJob::transferMechanisms 005e53a0 (SimJob2008.cpp). 0064d200 / 0064d2a0 (add / remove an assembly) are
 // built below (the native Clump supplies getBody 005e6160 and getSimJob 005e6110). Also built: notifyMovingPrimitives 0064d3d0. 0064d410 is JointBuilder::canJoin (registry), not this unit.
-// >>> native-status (generated) -- do not edit >>>
-// SimJobStage2008 | 2008-06 | draft (no current byte proof)
-// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (gpt-6.1-sol)
-// <<< native-status | src 85b1689e | roc native-status --write
 #include <algorithm>
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SimJob2008.h"

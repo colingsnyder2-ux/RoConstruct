@@ -1,9 +1,5 @@
 // native-flags: /O2 /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native CylinderTransform (inactive): bodies of the server-exact analogs 004fdbd0.
-// >>> native-status (generated) -- do not edit >>>
-// OgreAutoCylinderTransform | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 4cbe93b8 | roc native-status --write
 #undef OGRE_NONCLIENT_BUILD
 #include "OgreAuto/CylinderTransform2008.h"
 #include <OgreVector2.h>
