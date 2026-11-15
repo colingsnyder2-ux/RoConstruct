@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "script/ScriptContext.h"
 #include <boost/date_time/posix_time/posix_time.hpp>
 RBX::ScriptContext::ScriptContext()

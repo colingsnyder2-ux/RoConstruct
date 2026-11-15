@@ -14,6 +14,28 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 
+def import_thunks(imports, duplicates):
+    """(symbol, 'addr') for every IAT slot with exactly one ``FF 25 <slot>`` thunk in the 2008-06 exe's .text."""
+    import re
+    import struct
+    import pefile
+    pe = pefile.PE(str(ROOT / 'clients/2008-06/Roblox.exe'), fast_load=True)
+    text = next(s for s in pe.sections if s.Name.rstrip(b'\0') == b'.text')
+    data, base = text.get_data(), pe.OPTIONAL_HEADER.ImageBase + text.VirtualAddress
+    thunks = {}
+    for found in re.finditer(rb'\xff\x25(....)', data, re.S):
+        at = found.start()
+        # A thunk sits between thunks, or after ret/padding; a dllimport tail call inside a body does not.
+        if not (data[at - 6:at - 4] == b'\xff\x25' or data[at + 6:at + 8] == b'\xff\x25' or data[at - 1:at] in (b'\xc3', b'\xcc', b'\x90')):
+            continue
+        thunks.setdefault(struct.unpack('<I', found.group(1))[0], []).append(base + found.start())
+    for symbol, slot in imports.items():
+        sites = thunks.get(slot, [])
+        if symbol not in duplicates and len(sites) == 1:
+            name = symbol[len('__imp_'):]
+            yield (name if name.startswith('?') else '_' + name), f'{sites[0]:08x}'
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--closure', type=Path, required=True)
@@ -25,7 +47,12 @@ def main():
     closure = args.closure.resolve()
     wanted = {f'{int(value, 16):08x}' for value in args.addr}
     closure_data = json.loads(closure.read_text())
-    bindings = {row['addr']: row for row in closure_data['bindings']}
+    # Folded identical bodies share one address (JointInstance/AutoJoint::askSetParent 005e3790): the
+    # function-start binding is the target; a later reference alias must not replace it.
+    bindings = {}
+    for row in closure_data['bindings']:
+        if row.get('function_start') or row['addr'] not in bindings:
+            bindings[row['addr']] = row
     missing = sorted(wanted - bindings.keys())
     if missing:
         raise ValueError('unbound addresses: ' + ', '.join(missing))
@@ -61,6 +88,16 @@ def main():
                  'identity_evidence': 'original-iAT', 'votes': 1}
                 for symbol, address in sorted(imports.items())
                 if symbol not in duplicates and symbol not in closure_symbols)
+    # A CRT/DLL import called directly (``call ___CxxFrameHandler3``) goes through the
+    # linker's one ``jmp dword ptr [IAT]`` thunk in .text.  A thunk that is the only
+    # jump through its slot proves the import's object-level symbol at that address
+    # (C exports gain the cdecl ``_`` prefix; mangled C++ names are unchanged).
+    # Already-bound: __purecall 006a16be agrees.  New: ___CxxFrameHandler3 006a14c0.
+    known = {row['symbol'] for row in rows}
+    taken = {row['address'].lower() for row in rows}
+    for symbol, address in import_thunks(imports, duplicates):
+        if symbol not in known and address not in taken:
+            rows.append({'symbol': symbol, 'address': address, 'identity_evidence': 'original-iAT-jmp-thunk', 'votes': 1})
     by_symbol = {row['symbol']: row['address'].lower() for row in rows}
     for path in args.extra_bindings:
         extra = json.loads(path.read_text())

@@ -3,7 +3,7 @@
 // methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid);
 // the MovingNoPhysicsBase family needs the proposed SimJob declaration (NATIVE_SIMJOB_PENDING).
-// v8world/SimJob.h is now a native header (SimJob vptr, noncopyable, vector +4, list iterator +0x1c), so the
+// v8world/SimJob2008.h is the native SimJob header (SimJob vptr, noncopyable, vector +4, list iterator +0x1c), so the
 // MovingNoPhysicsBase block is enabled here. Flags follow the sibling HumanoidStateFloor.cpp: getTorsoAssembly needs
 // the complete part-embedded Primitive (Primitive::getAssembly 005e7570); Dead needs ModelInstance::breakJoints.
 #define NATIVE_SIMJOB_PENDING
@@ -16,55 +16,7 @@
 #define NATIVE_HUMANOID2008_DONOR_CONNECTOR
 #include "humanoid/Humanoid2008.h"
 #include "v8datamodel/PhysicsService.h"
-#include <list>
-#include "v8world/IWorldStage.h"
-
-// Unit-local SimJobStage, exactly as native-headers/v8world/SimJobStage2008.h declares it (that header includes
-// v8world/SimJob2008.h, whose RBX::SimJob cannot share this unit with the native v8world/SimJob.h that
-// humanoid/HumanoidStates3.h includes: C2011; both declare stageIterator at +0x1c).
-struct NativeKernelStagesLayout;
-
-namespace RBX
-{
-	class SimJob;
-	class Edge;
-	class World;
-
-	class SimJobStage : public IWorldStage
-	{
-		friend struct ::NativeKernelStagesLayout; // tests/NativeKernelStagesLayout.cpp offset asserts
-
-	private:
-		std::list<SimJob*> simJobs;                       // +0x10
-
-	public:
-		SimJobStage(IStage* upstream, World* world);      // 0064d300 (SimJobStage2008Ctor.cpp: 2008 Kernel)
-		virtual ~SimJobStage()                            // slot 0 (??_G 0064d380)
-		{
-		}
-		virtual StageType getStageType();                 // slot 1 (005cb9d0; NATIVE_KERNEL_STAGES_PENDING)
-		virtual void onEdgeAdded(Edge* e);                // slot 4 (0064d060)
-		virtual void onEdgeRemoving(Edge* e);             // slot 5 (0064d090)
-
-		void addSimJob(SimJob* job);                      // 0064d1e0 (`jmp 0064d0f0`; analog name)
-		void removeSimJob(SimJob* job);                   // 0064d1f0 (`jmp 0064d180`; analog name)
-
-	private:
-		void insertSimJob(SimJob* job);                   // 0064d0f0 (analog name)
-		void eraseSimJob(SimJob* job);                    // 0064d180 (analog name)
-
-		SimJob* getNextSimJob(SimJob* job)                // 004cb480 (folded COMDAT; analog name)
-		{
-			std::list<SimJob*>::iterator it = job->stageIterator;
-			++it;
-			if (it == simJobs.end())
-			{
-				return *simJobs.begin();
-			}
-			return *it;
-		}
-	};
-}
+#include "v8world/SimJobStage2008.h" // SimJobStage::removeSimJob 0064d1f0 (MovingNoPhysicsBase::release 0066ed50)
 
 namespace RBX {
 namespace HUMAN {
@@ -123,12 +75,14 @@ __declspec(noinline) Assembly* MovingNoPhysicsBase::getTorsoAssembly()
     return primitive ? primitive->getAssembly() : 0;
 }
 
-Assembly* MovingNoPhysicsBase::getAssembly()
+// 00667160 (SimJob slot 1; `add ecx,-0xa0; jmp 0066eaa0`)
+Assembly* MovingNoPhysicsBase::getAssemblyConst()
 {
     return getTorsoAssembly();
 }
 
-Assembly* MovingNoPhysicsBase::getAssembly2()
+// 00667160 (SimJob slot 2; identical code, folded)
+Assembly* MovingNoPhysicsBase::getAssembly()
 {
     return getTorsoAssembly();
 }
@@ -153,6 +107,45 @@ void MovingNoPhysicsBase::release()
     torso.reset();
 }
 
+// 0066f070 (589 bytes; decorated ??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z in the identity registry).
+// Decoded order: HumanoidState(humanoid) 00643e00; SimJob() 005e50f0 at +0xa0; vtables 0084d168/0084d160/0084d150;
+// torso/physicsService/connection zeroed; CoordinateFrame() 004782d0 at +0xe4. Then torso = shared_from(
+// humanoid->005d76d0()) (00618a40; shared_count assignment 004025b0); if (torso): frame = torso->getCoordinateFrame()
+// (00598cb0, rep movsd 9 dwords + 3 fld/fstp), torso->getPrimitive() (lea +0x228, no null test)->setJointAnchored(true)
+// 005e8140; connection = Instance::event_ancestryChanged (00973c38).connect(torso, boost::bind(&0066edc0, this), 10)
+// (function ctor 0066ef70, TSignalDesc::connect 004a3340, scoped_connection::operator= 00595540); physicsService =
+// ServiceProvider::find<PhysicsService>(humanoid) 0066f020; physicsService->onAdded(torso) 005e8f70; humanoid world
+// +0x21c ->getSimJobStage() 005e93b0 ->addSimJob(this +0xa0) 0064d1e0. Always: Humanoid::event_Running.fire(humanoid,
+// 0.0f) (0097a504). getTorsoSlow 005d76d0 (Humanoid2008.h) and onTorsoAncestryChanged 0066edc0 are analog names.
+MovingNoPhysicsBase::MovingNoPhysicsBase(Humanoid* humanoid)
+    : Base(humanoid), physicsService(0)
+{
+    torso = shared_from(humanoid->getTorsoSlow());
+    if (torso)
+    {
+        frame = torso->getCoordinateFrame();
+        torso->getPrimitive()->setJointAnchored(true);
+        connection = Instance::event_ancestryChanged.connect(torso.get(),
+            boost::bind(&MovingNoPhysicsBase::onTorsoAncestryChanged, this), 10);
+        physicsService = ServiceProvider::find<PhysicsService>(humanoid);
+        physicsService->onAdded(torso.get());
+        humanoid->getWorld()->getSimJobStage().addSimJob(this);
+    }
+    Humanoid::event_Running.fire(humanoid, 0.0f);
+}
+
+// 0066edc0 (33 bytes, no arguments; bound by the constructor 0066f070 to event_ancestryChanged). The target calls
+// getHumanoid 00793d50 / getTorsoSlow 005d76d0 before it reads torso +0xc4 (`cmp [esi + 0xc4], eax`). Trial 1,
+// `torso.get() != getHumanoid()->getTorsoSlow()`: torso loaded into edi before the calls (rejected, 37 B); trial 2,
+// operands swapped: same edi preload (rejected, 37 B); trial 3, this local: 33 B, only `cmp eax, [esi + 0xc4]` where the
+// target has `cmp [esi + 0xc4], eax` (rejected, closest; parked).
+void MovingNoPhysicsBase::onTorsoAncestryChanged()
+{
+    PartInstance* current = getHumanoid()->getTorsoSlow();
+    if (current != torso.get())
+        release();
+}
+
 RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
 {
@@ -164,14 +157,13 @@ void RunningNoPhysics::onStep(float dt, Controller* controller)
     MovingNoPhysicsBase::onStep(dt, controller);
 }
 
-// 00667210. Pending header: humanoid/Humanoid.h declares no event_Strafing (0097a348; Humanoid2008.h does).
-#ifdef NATIVE_HUMANOID_EVENT_STRAFING_PENDING
+// 00667210: MovingNoPhysicsBase(humanoid) 0066f070, then event_Strafing (0097a348, declared by humanoid/Humanoid2008.h,
+// which this unit includes) fired with false through the argument.
 StrafingNoPhysics::StrafingNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
 {
     Humanoid::event_Strafing.fire(humanoid, false);
 }
-#endif
 
 void StrafingNoPhysics::onStep(float dt, Controller* controller)
 {
@@ -180,6 +172,26 @@ void StrafingNoPhysics::onStep(float dt, Controller* controller)
 #endif
 
 }
+
+#ifdef NATIVE_SIMJOB_PENDING
+// 0066f020 (65 bytes, cdecl): ServiceProvider::find<PhysicsService>(const Instance*), emitted in this unit for the
+// MovingNoPhysicsBase constructor 0066f070 (0066f23e, called with the humanoid). Walks the context up through
+// getParent (+0x104) until __RTDynamicCast(context, 0, Instance 0092907c, ServiceProvider 0092e15c, 0) succeeds,
+// then tail-jumps to the member find<PhysicsService>() const 004ccca0; NULL when no provider is found. Same shape as
+// the create<PhysicsService>(const Instance*) 004cd8d0 in AppUnit4C8_2008PhysicsServiceCreate.cpp.
+template<class Class> Class* ServiceProvider::find(const Instance* context)
+{
+    while (context)
+    {
+        if (const ServiceProvider* provider = dynamic_cast<const ServiceProvider*>(context))
+            return provider->find<Class>();
+        context = context->getParent();
+    }
+    return NULL;
+}
+
+template PhysicsService* ServiceProvider::find<PhysicsService>(const Instance* context);
+#endif
 template<> const Name& Named<HUMAN::HumanoidState, HUMAN::sSeated>::getName() const { return Name::declare<HUMAN::sSeated>(); }
 template<> const Name& Named<HUMAN::HumanoidState, HUMAN::sDead>::getName() const { return Name::declare<HUMAN::sDead>(); }
 template<> const Name& Named<HUMAN::HumanoidState, HUMAN::sFallingDown>::getName() const { return Name::declare<HUMAN::sFallingDown>(); }

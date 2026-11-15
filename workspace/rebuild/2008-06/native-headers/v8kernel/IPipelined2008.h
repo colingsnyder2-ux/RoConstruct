@@ -56,6 +56,12 @@ namespace RBX
 		{
 			return currentStage != NULL;
 		}
+		// Donor v8world/IPipelined.h inline (no code of its own): read by BallBallContact::stepContact 00606f93 and
+		// BallBlockContact::stepContact 00607150 (currentStage +0x4, IStage slot 1 getStageType, `cmp eax, 7`).
+		bool inStage(IStage::StageType stageType) const
+		{
+			return currentStage->getStageType() == stageType;
+		}
 		Kernel* getKernel() const;                     // 00645850
 		virtual void putInKernel(Kernel* kernel);      // slot 1 (00645830)
 		virtual void removeFromKernel();               // slot 2 (00645860)

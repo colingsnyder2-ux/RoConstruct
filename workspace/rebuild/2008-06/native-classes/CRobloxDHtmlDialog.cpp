@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "CRobloxDHtmlDialog.h"
 #include "util/Http.h"
 #include <exdispid.h>
@@ -29,14 +30,16 @@ CRobloxDHtmlDialog::CRobloxDHtmlDialog(UINT dialog, const char* location, CWnd* 
     SetHostFlags(m_dwHostFlags | 0x01844013);
 }
 
-BOOL CRobloxDHtmlDialog::OnInitDialog()
+int CRobloxDHtmlDialog::OnInitDialog(void)
 {
     CDHtmlDialog::OnInitDialog();
-    if (url.length() != 0) {
-        Navigate(url.c_str());
-        return FALSE;
+    if (url.length() != 0)
+    {
+        const char* (std::string::*pc)() const = &std::string::c_str;
+        Navigate((url.*pc)(), 0, 0, 0, 0, 0);
+        return 0;
     }
-    return TRUE;
+    return 1;
 }
 
 BOOL CRobloxDHtmlDialog::IsExternalDispatchSafe()

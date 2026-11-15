@@ -19,7 +19,7 @@
 // Object.h only declare the ServiceProvider index / find / create templates and Creator::create, so their template
 // definitions are given below (the same definitions as ServiceProvider.cpp, AppUnit480_2008PlayerTemplates.cpp and
 // AppUnit634_2008Value.cpp).
-#include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"
+#include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"   // first: MFC/ATL before windows.h; CLuaFunction
 #include "LuaArgs.h"
 #include "v8datamodel/DataModel.h"
 #include "util/standardout.h"
@@ -100,35 +100,36 @@ namespace RBX
 	template boost::shared_ptr<Object> FactoryProduct<ScriptContext, Instance, sScriptContext>::Creator::create() const;
 }
 
-extern void __cdecl valueToVariant(RBX::Reflection::Value*, VARIANT*);
-extern HRESULT __cdecl reportWorkspaceSiteError(REFCLSID, const std::exception&);
+extern void __cdecl valueToVariant(RBX::Reflection::Value*, VARIANT*);              // 00416370
+extern HRESULT __cdecl reportWorkspaceSiteError(REFCLSID, const std::exception&);   // 00429360
 
+// 0042e0c0 (ILuaFunction slot 7 of CComObject<CLuaFunction>, ret 0x48; catch funclet 0042e350).
 STDMETHODIMP CLuaFunction::Call(VARIANT arg1, VARIANT arg2, VARIANT arg3, VARIANT arg4, VARIANT* result)
 {
-    AFX_MANAGE_STATE(AfxGetAppModuleState());
-    try
-    {
-        LuaArgs args;
-        args.push(arg1);
-        args.push(arg2);
-        args.push(arg3);
-        args.push(arg4);
-        std::auto_ptr<RBX::Reflection::ValueCollection> values;
-        {
-            RBX::DataModel::Lock lock(dataModel);
-            RBX::ScriptContext* scriptContext = RBX::ServiceProvider::create<RBX::ScriptContext>(dataModel.get());
-            RBX::Security::Impersonator impersonate(identity);
-            values = scriptContext->call(function, args.values);
-        }
-        if (!values->empty())
-            valueToVariant(&values->front(), result);
-        return S_OK;
-    }
-    catch (std::exception& e)
-    {
-        RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "CLuaFunction::Call failed, %s", e.what());
-        return reportWorkspaceSiteError(CLSID_LuaFunction, e);
-    }
+	AFX_MANAGE_STATE(AfxGetAppModuleState());
+	try
+	{
+		LuaArgs args;
+		args.push(arg1);
+		args.push(arg2);
+		args.push(arg3);
+		args.push(arg4);
+		std::auto_ptr<RBX::Reflection::ValueCollection> values;
+		{
+			RBX::DataModel::Lock lock(dataModel);
+			RBX::ScriptContext* scriptContext = RBX::ServiceProvider::create<RBX::ScriptContext>(dataModel.get());
+			RBX::Security::Impersonator impersonate(identity);
+			values = scriptContext->call(function, args.values);
+		}
+		if (!values->empty())
+			valueToVariant(&values->front(), result);
+		return S_OK;
+	}
+	catch (std::exception& e)
+	{
+		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "CLuaFunction::Call failed, %s", e.what());
+		return reportWorkspaceSiteError(CLSID_LuaFunction, e);
+	}
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

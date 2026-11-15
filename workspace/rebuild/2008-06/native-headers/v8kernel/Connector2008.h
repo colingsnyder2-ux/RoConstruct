@@ -26,7 +26,6 @@
 //            ContactConnector 0x50 (constructor 00606d40 writes up to frictionOffset.z +0x4c).
 #include <G3D/Vector3.h>
 #include "v8kernel/KernelIndex.h"
-#include "v8kernel/KernelInput.h"
 #ifdef NATIVE_PRIMITIVE_NATIVE_BODY
 // The opt-in switch of native-headers/part-embedded/v8world/Primitive.h (undefined by default, so every existing
 // includer compiles exactly as before): a unit on the 2008 Body (native-headers/v8kernel/Body2008.h: root +0x10, pv
@@ -36,7 +35,12 @@
 #include "v8kernel/Body2008.h"
 #include "v8world/GeoPair2008.h"
 #include "v8kernel/Point2008.h"
+// The 2008 KernelInput (RotateConnector +0x24): its setGoal returns the goal before the increment is added
+// (RotateConnector::computeForce 006064a0, 006064e6..006064f0), unlike the donor v8kernel/KernelInput.h; same
+// 0x10-byte layout. The donor path keeps the donor header (WorldJointRotate.cpp uses its setGoalCalc / setDelta).
+#include "v8kernel/KernelInput2008.h"
 #else
+#include "v8kernel/KernelInput.h"
 // The donor path keeps the donor v8kernel/Pair.h: the donor v8world/Contact.h includes the donor v8world/Block.h, which
 // includes v8kernel/Pair.h, so a donor unit that reaches both this header and Contact.h (through World.h /
 // Primitive.h) would see two GeoPair definitions (C2011) if this path took GeoPair2008.h. Units on the 2008 Body
@@ -124,6 +128,16 @@ namespace RBX
 		{
 			geoPair.setBody(i, b);
 		}
+		// Forwarders to the GeoPair2008.h inlines setBallBlock (BallBlockContact::stepContact 00607150, 00607246..
+		// 00607252) and setBallBall (BallBallContact::stepContact 00606f80, 00606ff4..00607001), geoPair +0x8.
+		void setBallBlock(float radius0, const G3D::Vector3* offset1, NormalId normId, GeoPairType pairType)   // INFERRED: forwards to geoPair (+0x8)
+		{
+			geoPair.setBallBlock(radius0, offset1, normId, pairType);
+		}
+		void setBallBall(float radius0, float radius1)   // INFERRED: forwards to geoPair (+0x8)
+		{
+			geoPair.setBallBall(radius0, radius1);
+		}
 #endif
 
 		virtual void computeForce(const float dt, bool throttling);    // slot 1 (00606780)
@@ -132,6 +146,14 @@ namespace RBX
 		{
 			return geoPair.getBody(i);
 		}
+
+		// The active / inactive counters are incremented only by computeForce 00606780 (00606832 when the normal
+		// force is positive / 00606a1b otherwise) and read and reset by percentConnectorsActive 00606100
+		// (DataModel::evaluate 005762f3, "percentConnectorsActive"). Bodies: native-classes/
+		// ContactUnit2008ConnectorBody.cpp.
+		static int numActiveConnectors;                                 // 0097b878
+		static int numInactiveConnectors;                               // 0097b87c
+		static float percentConnectorsActive();                         // 00606100
 	};
 
 	// PointToPointBreakConnector: point0 +0x8, point1 +0xc, k +0x10 (potentialEnergy 006061f0), breakForce +0x14,
@@ -146,6 +168,14 @@ namespace RBX
 		float k;                          // +0x10
 		float breakForce;                 // +0x14
 		bool broken;                      // +0x18
+
+		// Donor member (tools/rbxgs v8kernel/Connector.h declares it); no address of its own: inlined into
+		// NormalBreakConnector::computeForce 00606670, -force to point0 (+0x8) and force to point1 (+0xc).
+		void forceToPoints(const G3D::Vector3& force)
+		{
+			point0->accumulateForce(-force);
+			point1->accumulateForce(force);
+		}
 
 	public:
 		PointToPointBreakConnector(Point* _point0, Point* _point1, float _k, float _breakForce)
@@ -198,6 +228,8 @@ namespace RBX
 		float lastRotation;               // +0x1c
 		int windings;                     // +0x20
 		KernelInput kernelInput;          // +0x24
+
+		void computeParams(G3D::Vector3& normal, float& rotation, float& rotVel);   // 006062e0
 
 	public:
 		RotateConnector(Point* base0, Point* ray0, Point* ref0, Point* ref1, float kValue, float armLength);   // 00606170

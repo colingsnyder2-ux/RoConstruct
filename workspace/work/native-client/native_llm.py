@@ -26,6 +26,18 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+_PRINT_LOCK = threading.Lock()
+
+
+def print(*args, sep=' ', end='\n', file=None, flush=False):
+    """Atomic line print: builtin print writes text and newline separately, so 8 worker threads interleaved
+    and split ROC_EVENT lines (the dashboard then showed raw JSON as a log line)."""
+    stream = file or sys.stdout
+    with _PRINT_LOCK:
+        stream.write(sep.join(map(str, args)) + end)
+        if flush:
+            stream.flush()
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from roc import match  # noqa: E402
@@ -133,13 +145,18 @@ def destination_for(owner):
     if SOURCE_DESTINATIONS is None:
         SOURCE_DESTINATIONS = collections.defaultdict(collections.Counter)
         SOURCE_LEAVES = collections.defaultdict(set)
-        pattern = re.compile(r'\b((?:[A-Za-z_]\w*::)+[A-Za-z_]\w*)::~?[A-Za-z_]\w*\s*\(')
+        # Definitions only: `Owner::m(args) [const] {` or a ctor initializer.  Calls such as
+        # RBX::DebugSettings::singleton() routed DebugSettings members into the MFC TU CApp2008.cpp (C1189).
+        body = r'\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?:\{|:[^:;])'
+        pattern = re.compile(r'\b((?:[A-Za-z_]\w*::)+[A-Za-z_]\w*)::~?[A-Za-z_]\w*' + body)
         for path in classes.glob('*.cpp'):
+            if path.name.startswith('Mined'):
+                continue        # verbatim mined analogs (func_XXXX, placeholder globals): never a class's home TU
             relative = path.relative_to(ROOT).as_posix()
             text = path.read_text(errors='replace')
             for found in pattern.findall(text):
                 SOURCE_DESTINATIONS[found][relative] += 1
-            for leaf in re.findall(r'\b([A-Za-z_]\w*)::~?[A-Za-z_]\w*\s*\(', text):
+            for leaf in re.findall(r'\b([A-Za-z_]\w*)::~?[A-Za-z_]\w*' + body, text):
                 SOURCE_LEAVES[leaf].add(relative)
     counts = SOURCE_DESTINATIONS.get(owner, collections.Counter())
     hits = sorted(counts)
@@ -149,7 +166,7 @@ def destination_for(owner):
         if len(leaf_hits) == 1:
             hits = leaf_hits
         named = [path.relative_to(ROOT).as_posix() for path in classes.glob('*.cpp')
-                 if path.stem.lower().endswith(leaf)]
+                 if path.stem.lower().endswith(leaf) and not path.name.startswith('Mined')]
         # Filename is a routing hint only; exact owner/body proof still gates promotion.
         if not hits and len(named) == 1:
             hits = named
@@ -194,7 +211,9 @@ VENDOR_ROOTS = [ROOT / 'tools/rbxgs/Client/Network/raknet30/Source', ROOT / 'too
 def header_include_flags(header, destination, extra=()):
     """Known vendor roots required by real native headers, never guessed from analog text."""
     native_headers = ROOT / 'rebuild/2008-06/native-headers'
-    paths = [ROOT / header] + [Path(p) for p in extra]      # auto-added includes can reach RakNet/Ogre headers too
+    # Auto-added includes can reach RakNet/Ogre headers too; they may be native-headers-relative
+    # ('OgreAuto/CylinderTransform2008.h' needs the Ogre root for <OgreVector2.h>).
+    paths = [ROOT / header] + [Path(p) if Path(p).is_absolute() else native_headers / p for p in extra]
     if destination:
         paths.append(ROOT / destination)
     seen, text = set(), ''
@@ -246,6 +265,87 @@ def unmapped_externs(packet, header, destination):
     return sorted(set(missing))
 
 
+REMAINING = None
+
+
+def remaining_set():
+    """Addresses the website counts as 'other remaining' (neither integrated nor native-owned): remaining-3901.json,
+    written from docs/integration.json; empty when absent."""
+    global REMAINING
+    if REMAINING is None:
+        path = ROOT / 'work/native-client/remaining-3901.json'
+        REMAINING = set(json.loads(path.read_text())) if path.is_file() else set()
+    return REMAINING
+
+
+def split_qual(name):
+    """'RBX::X<class std::a<char>,1>::f' -> ['RBX', 'X<class std::a<char>,1>', 'f'] (splits at template depth 0)."""
+    parts, depth, cur, i = [], 0, '', 0
+    while i < len(name):
+        ch = name[i]
+        depth += {'<': 1, '>': -1}.get(ch, 0)
+        if depth == 0 and name.startswith('::', i):
+            parts.append(cur)
+            cur, i = '', i + 2
+            continue
+        cur += ch
+        i += 1
+    return parts + [cur]
+
+
+def signature_qual(sig):
+    """Qualified function name of an undname signature (template args may contain spaces and parentheses)."""
+    depth = 0
+    for i, ch in enumerate(sig):
+        depth += {'<': 1, '>': -1}.get(ch, 0)
+        if ch == '(' and depth == 0 and not sig[:i].endswith('operator'):
+            head, start, depth2 = sig[:i], i, 0
+            for j in range(len(head) - 1, -1, -1):
+                depth2 += {'>': 1, '<': -1}.get(head[j], 0)
+                if head[j] == ' ' and depth2 == 0:
+                    return head[j + 1:]
+            return head
+    return sig
+
+
+TEMPLATE_VENDOR = ('std::', 'boost::', 'G3D::', 'ATL::', 'Ogre::', 'stdext::', 'CXTP', 'Wml::')
+
+
+def template_targets(tried, max_size):
+    """Template-member instantiations the free gate (native_template_gate.py) found without an exact header body:
+    the model writes the template definition plus the explicit instantiation."""
+    results_path = ROOT / 'work/native-client/template-gate/results.json'
+    if not results_path.is_file():
+        return []
+    results = json.loads(results_path.read_text())
+    registry = json.loads(REGISTRY.read_text())
+    out = []
+    for addr, res in results.items():
+        row = registry.get(addr) or {}
+        sig = row.get('signature') or ''
+        if res['status'] not in ('needs-body', 'draft') or addr in tried or not sig:
+            continue
+        headers = []
+        for name in dict.fromkeys(re.findall(r'\b((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)(?=\s*<|\s*::|\s*[\s*&>,)])', sig)):
+            if not name.startswith(TEMPLATE_VENDOR):
+                header = declaring_header(name)
+                if header and header not in headers:
+                    headers.append(header)
+        size = len(match.target('2008-06', addr)[0])
+        analog = ROOT / 'src/2008-06' / (addr + '.cpp')
+        if not headers or not (16 <= size <= max_size) or not analog.is_file():
+            continue
+        header = Path(headers[0])
+        EXTRA_INCLUDES[addr] = [str(Path(h).resolve()) for h in headers[1:]]
+        inst = re.sub(r'\b(?:virtual|static) |\b__(?:thiscall|cdecl|stdcall|fastcall) ', '',
+                      re.sub(r'^(?:public|private|protected): ', '', sig)).strip()
+        out.append(dict(addr=addr, symbol=row['name'], decl=sig, owner=row.get('owner_class') or '',
+                        qual=signature_qual(sig), header=header.relative_to(ROOT).as_posix() if header.is_absolute() else str(header),
+                        dest='', size=size, name_source=row.get('name_source', ''), placeholder=False, unmapped=[],
+                        new_source=True, template_inst='template ' + inst + ';'))
+    return out
+
+
 def registry_classes(queue_classes):
     """Extra conversion rows from the identity registry: named, non-template members of non-vendor classes that the
     queue never listed (766 at last count).  Header = the native (else donor) header that defines the class and
@@ -259,8 +359,7 @@ def registry_classes(queue_classes):
         name = row.get('name') or ''
         if (addr in listed or row.get('kind') != 'code' or row.get('placeholder') or not owner or '<' in owner
                 or name.startswith('??$') or names[name] > 1 or not row.get('signature')
-                or owner.startswith(('G3D::', 'std::', 'boost::', 'ATL::', 'Ogre::', 'XTPPaintThemes', 'Wml::'))
-                or (owner[:1] == 'C' and owner[1:2].isupper())):
+                or owner.startswith(('G3D::', 'std::', 'boost::', 'ATL::', 'Ogre::', 'XTPPaintThemes', 'Wml::'))):
             continue
         grouped[owner].append((addr, row))
     out = []
@@ -289,6 +388,9 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
     classes = json.loads(QUEUE.read_text())['classes']
     if allow_new_source:
         classes = classes + registry_classes(classes)
+        templates = template_targets(tried, max_size)
+    else:
+        templates = []
     registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
     native_exact = native_exact_addresses()
     solved = ({row['owner'] for row in json.loads(LAYOUTS.read_text()).get('rows', []) if row.get('accepted')}
@@ -325,7 +427,9 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
                 method_headers = used if len(used) == 1 else method_headers
             # 'name-only' = queue saw only reference votes; the identity registry's exact, non-placeholder name below
             # is the proof the gate needs (compiler-generated members stay out).
-            state_ok = m['state'] == 'convert' or (m['state'] == 'name-only' and '`' not in m['declaration'])
+            state_ok = (m['state'] == 'convert' or (m['state'] == 'name-only' and '`' not in m['declaration'])
+                        # Stale queue 'native-exact': the site counts it neither integrated nor owned (remaining set).
+                        or (m['state'] == 'native-exact' and m['addr'] in remaining_set()))
             if (m['addr'].lower() in native_exact or not state_ok or len(method_headers) != 1 or '$' in m['symbol'] or m['addr'] in tried
                     or shared[m['addr']] > 1 or not identity or identity['placeholder']
                     or identity['name'] != m['symbol'] or identity.get('owner_class') != cl['owner']):
@@ -368,7 +472,7 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
                                 name_source=identity['name_source'], placeholder=False, unmapped=missing,
                                 new_source=is_new))
     # ponytail: smallest first, highest pass rate; add a byte-weighted order once rates are measured
-    return sorted(out, key=lambda t: t['size'])
+    return sorted(out + templates, key=lambda t: t['size'])
 
 
 def ask(model, prompt, name):
@@ -482,9 +586,13 @@ def learn_identities(t, res):
     if not objs:
         return False
     receipt = Path(res['manifest']).parent / 'alias-bind.json'
+    # The gate's own snapshot binds the target itself (registry targets are absent from CLOSURE); with CLOSURE
+    # alias-bind refused every one of them ('requires closure-bound emitted owner').
+    snapshot = Path(res['manifest']).parent.parent / 'closure.json'
     tick = time.time()
     subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_reference_alias_bind.py'), '--object', str(objs[-1]),
-                    '--symbol', t['symbol'], '--address', t['addr'], '--closure', str(CLOSURE), '--output', str(receipt)],
+                    '--symbol', t['symbol'], '--address', t['addr'],
+                    '--closure', str(snapshot if snapshot.is_file() else CLOSURE), '--output', str(receipt)],
                    cwd=ROOT, capture_output=True, text=True)
     tool_time('identity_learn', time.time() - tick)
     try:
@@ -510,6 +618,7 @@ def learn_identities(t, res):
 import threading
 TOOL = threading.local()      # per-thread tool timings of the current try: {step: seconds}
 EXTRA_INCLUDES = {}           # addr -> headers found for names a compile error reported missing
+FORCE_INCLUDES = {}           # addr -> /FI headers an include-order guard (C1189) asked for
 SEARCH_ROOTS = [ROOT / 'rebuild/2008-06/native-headers', ROOT / 'tools/rbxgs/Client/Network/raknet30/Source',
                 ROOT / 'tools/rbxgs/Client/Rendering/g3d/include', DONOR_INCLUDE]   # donor last, included by name
 # No 2007 donor tree here: its v8datamodel/Surface.h etc. redefine native classes (C2011) and block the real include.
@@ -522,9 +631,17 @@ def tool_time(step, seconds):
         times[step] = round(times.get(step, 0.0) + seconds, 1)
 
 
+DECL_SPACES = {}
+DECL_MEMO = {}
+
+
 def declaring_header(name):
-    """Header (native-headers first, then RakNet) that defines class/struct/enum NAME or declares a function NAME."""
+    """Header (native-headers first, then RakNet) that defines class/struct/enum NAME or declares a function NAME.
+    Memoized; files without the name as plain text are skipped before any regex (startup took 8 min: 1426 names x
+    every header x 3 patterns)."""
     global DECL_FILES
+    if name in DECL_MEMO:
+        return DECL_MEMO[name]
     if DECL_FILES is None:
         # Per root, shallowest path first: canonical v8tree/Instance.h before snapshot copies such as
         # instance-ancestor-inline/v8tree/Instance.h, which redefine classes (C2011) when mixed in.
@@ -540,16 +657,24 @@ def declaring_header(name):
     # Namespace-aware: RBX::Primitive must not resolve to G3D's RenderDevice::Primitive enum.  Qualified names need
     # their namespaces in the file; unqualified ones try `namespace RBX` files first.
     spaces = [ns for ns in name.split('::')[:-1] if ns]
-    def in_spaces(text, wanted):
-        return all(re.search(r'\bnamespace\s+%s\b' % re.escape(ns), text) for ns in wanted)
+    if not DECL_SPACES:
+        for path, text in DECL_FILES:
+            DECL_SPACES[path] = set(re.findall(r'\bnamespace\s+(\w+)', text))
+    raw = name.split('::')[-1]
+    files = [(path, text) for path, text in DECL_FILES if raw in text] if raw else DECL_FILES
     passes = [spaces] if spaces else [['RBX'], []]
+    found = None
     for wanted in passes:
         for pattern in kinds:
             rx = re.compile(pattern, re.M)
-            for path, text in DECL_FILES:
-                if in_spaces(text, wanted) and rx.search(text):
-                    return str(path)
-    return None
+            found = next((str(path) for path, text in files
+                          if all(ns in DECL_SPACES[path] for ns in wanted) and rx.search(text)), None)
+            if found:
+                break
+        if found:
+            break
+    DECL_MEMO[name] = found
+    return found
 
 
 DONOR_CLASSES = {}
@@ -585,7 +710,9 @@ def missing_names(error):
                        r"|identifier '(\w+)'|'(\w+)': identifier not found"
                        # C3083 / C2653 / C2681: a class used through :: or dynamic_cast that is only forward-declared
                        r"|'(\w+)': the symbol to the left of a '::' must be a type|'(\w+)' : is not a class or namespace name"
-                       r"|'([\w:]+) \*' : invalid (?:expression|target) type", error)
+                       r"|'([\w:]+) \*' : invalid (?:expression|target) type"
+                       # C2514: `new ArrowTool` / temporaries of a class that is only forward-declared
+                       r"|'([\w:]+)' : class has no constructors", error)
     return [next(x for x in group if x) for group in names]
 
 
@@ -610,6 +737,44 @@ def file_globals(t):
     hits = [g for g in FILE_GLOBALS if (len(word) > 2 and word.lower() in g.lower()) or owner.lower() in g.lower()][:12]
     return ('--- KNOWN FILE GLOBALS (defined in the original .cpp; declare `extern` with the right type if used) ---\n'
             + '\n'.join(hits) + '\n') if hits else ''
+
+
+def bytes_identical(feedback):
+    """Gate feedback whose every candidate is byte-identical (relocations masked): only references/identity differ."""
+    lines = [x for x in (feedback or '').splitlines() if x.startswith('candidate ')]
+    return bool(lines) and all('IDENTICAL' in x for x in lines)
+
+
+def dest_body(t):
+    """The target's body already written in its native .cpp, prefixed by the file-local classes/structs it names
+    (with their out-of-class members), so it gates standalone.  '' when the .cpp has no such body."""
+    path = ROOT / t['dest'] if t.get('dest') else None
+    if not path or not path.is_file():
+        return ''
+    from native_transplant_probe import body_at
+    text = path.read_text(errors='replace')
+    marker = '::'.join(t['qual'].split('::')[-2:])
+    try:
+        body = body_at(text, marker)
+    except ValueError:
+        return ''
+    helpers = []
+    for found in re.finditer(r'^[ \t]*(?:class|struct)[ \t]+(\w+)[^;{(]*\{', text, re.M):
+        name = found.group(1)
+        if not re.search(r'\b%s\b' % name, body) or name == t['owner'].rsplit('::', 1)[-1]:
+            continue
+        depth, end = 0, found.end() - 1
+        for end in range(found.end() - 1, len(text)):
+            depth += {'{': 1, '}': -1}.get(text[end], 0)
+            if depth == 0:
+                break
+        helpers.append(text[found.start():text.find(';', end) + 1])
+        for member in re.finditer(r'^[ \t]*[\w:<>&* ]*\b%s::(operator\s*\(\)|~?\w+)\s*\(' % name, text, re.M):
+            try:
+                helpers.append(body_at(text[member.start():], name + '::' + member.group(1)))
+            except ValueError:
+                pass
+    return '\n\n'.join(dict.fromkeys(h.strip() for h in helpers + [body]))
 
 
 def class_block(leaf, limit=3000):
@@ -745,6 +910,26 @@ def type_defined(leaf):
     return TYPE_DEFINED[leaf]
 
 
+def implicit_member(t):
+    """A default/copy ctor, dtor or operator= the owner's header never declares is compiler-generated: no source can
+    define it (C2600 for Part::Part 00598f10, FunctionScriptSlot::FunctionScriptSlot 0061f960)."""
+    leaf, name = t['owner'].rsplit('::', 1)[-1], t['qual'].rsplit('::', 1)[-1]
+    path = ROOT / t['header']
+    text = path.read_text(errors='replace') if path.is_file() else ''
+    params = (re.search(r'\((.*)\)', t.get('decl') or '') or re.search('()', '')).group(1).strip()
+    if name == leaf and params in ('', 'void'):
+        declared = re.search(r'\b%s\s*\(\s*(?:void)?\s*\)' % re.escape(leaf), text)
+    elif name == leaf and re.fullmatch(r'(?:class|struct) [\w:]*\b%s const &' % re.escape(leaf), params):
+        declared = re.search(r'\b%s\s*\(\s*const\s+%s\s*&' % (re.escape(leaf), re.escape(leaf)), text)
+    elif name == '~' + leaf:
+        declared = re.search(r'~%s\s*\(' % re.escape(leaf), text)
+    elif name == 'operator=':
+        declared = re.search(r'\boperator\s*=\s*\(', text)
+    else:
+        return False
+    return not declared
+
+
 def headers_compile(t):
     """No-LLM preflight: the target's own signature with an empty body through the real gate.  -> '' when the
     headers compile, else the header-side error (every model answer would fail on it too).  Errors in the probe/donor
@@ -775,10 +960,26 @@ def headers_compile(t):
 
 
 def prove(t, body, out, depth=0):
+    """Gate, then drop the gate's bulk/object folders and closure copy (~5 MB + objects per gate; 98 GB filled the
+    disk on 2026-11-15).  The donor, plan and result stay for cache regates and promotion."""
+    import shutil
+    try:
+        return _prove(t, body, out, depth)
+    finally:
+        for junk in list(out.glob('run-bulk-*')) + list(out.glob('*-destination-*')):
+            shutil.rmtree(junk, ignore_errors=True)
+        (out / 'closure.json').unlink(missing_ok=True)
+
+
+def _prove(t, body, out, depth=0):
     """Write donor + one-row plan, run the existing isolated gates. -> (status, feedback text)."""
-    ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
-    marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
-    body = body.replace(t['qual'] + '(', marker + '(')          # definition goes inside the namespace block
+    if t.get('template_inst'):
+        # `template<class T> bool RBX::X<T>::f(...) {...}` + `template bool RBX::X<A>::f(...);` at global scope.
+        ns, marker = '', split_qual(t['qual'])[-1]
+    else:
+        ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
+        marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
+        body = body.replace(t['qual'] + '(', marker + '(')      # definition goes inside the namespace block
     # The donor's folder becomes an include dir; keep the gate's own output out of it, or the gate
     # sees the include search change mid-compile and voids an exact result as 'stale'.
     (out / 'donor').mkdir(parents=True, exist_ok=True)
@@ -796,6 +997,13 @@ def prove(t, body, out, depth=0):
     if '/MD' in base.split() and '/D_AFXDLL' not in base:
         base += ' /D_AFXDLL'      # MFC headers reached through any include refuse /MD without it (C1189)
     flags = ' '.join(x for x in (base, header_include_flags(t['header'], t['dest'], support_includes)) if x)
+    # Native opt-in guards (#ifdef NATIVE_CLUMP_DECL in v8world/AssemblyLayout.h hides EdgeIterator/Clump): the native
+    # .cpp files #define them before including the header, so the probe must too.
+    header_text = (ROOT / t['header']).read_text(errors='replace') if (ROOT / t['header']).is_file() else ''
+    for guard in dict.fromkeys(re.findall(r'^\s*#\s*ifdef\s+(NATIVE_\w+)', header_text, re.M)):
+        flags += ' /D' + guard
+    for forced in FORCE_INCLUDES.get(t['addr'], []):
+        flags += ' /FI' + forced
     plan = {'plans': [{'owner': t['owner'], 'headers': [t['header']],
                        'source': str((out / 'donor' / 'donor.cpp').relative_to(ROOT)),
                        'namespace': ns, 'roc_cl': 21022, 'roc_flags': flags, 'destination': t['dest'],
@@ -813,6 +1021,14 @@ def prove(t, body, out, depth=0):
             snapshot = out / 'closure.json'
             closure = json.loads(CLOSURE.read_text())
             own = [b for b in closure['bindings'] if (b.get('addr') or '').lower() == t['addr'].lower()]
+            if own and not any(b.get('symbol') == t['symbol'] for b in own):
+                # Closure binding (compiled from the real header) differs from the registry name only by access
+                # (005e83c0 clipToSafeSize: header protected IAE, registry guess private AAE): the header wins.
+                t['symbol'] = own[0]['symbol']
+                for one in plan['plans']:
+                    for row in one['rows']:
+                        row['symbol'] = t['symbol']
+                (out / 'plan.json').write_text(json.dumps(plan, indent=1))
             if not own:
                 # Registry-sourced targets: the identity registry names the target itself (the queue rows always
                 # came with a closure binding).  Snapshot-only; callee identities still need their own proof.
@@ -828,7 +1044,8 @@ def prove(t, body, out, depth=0):
         tick = time.time()
         run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_convert_run.py'), '--plan', str(out / 'plan.json'),
                               '--closure', str(snapshot), '--batch', '0', '--out', str(out / 'run'),
-                              '--source-includes', '--add-flags', '/GS-'], cwd=ROOT, capture_output=True, text=True)
+                              '--source-includes', '--source-preamble', '--add-flags', '/GS-'],
+                             cwd=ROOT, capture_output=True, text=True)
         try:
             res = json.loads((out / 'run' / 'result.json').read_text())
         except (OSError, ValueError):
@@ -841,12 +1058,23 @@ def prove(t, body, out, depth=0):
     if status == 'compile_failed':
         error = str(res.get('first_compile_error', ''))
         log_header_gaps(t, error)
+        # Include-order guards (C1189): MFC before windows.h (XTP property grid items), G3DAll before glut.
+        forced = ('afxwin.h' if 'WINDOWS.H already included' in error else
+                  'G3DAll.h' if 'G3DAll.h must be included' in error else '')
+        if forced and depth < 2 and forced not in FORCE_INCLUDES.get(t['addr'], []):
+            FORCE_INCLUDES.setdefault(t['addr'], []).append(forced)
+            return prove(t, body, out, depth + 1)
         if depth < 2:
             tick = time.time()
             have = set(EXTRA_INCLUDES.get(t['addr'], [])) | {str((ROOT / t['header']).resolve())}
             # A donor (2007 rbxgs) header is included by its relative name ("util/Math.h"): the gate searches
             # native-headers before rbxgs/Client/App/include, so a native override wins and nothing is defined twice.
-            found = [donor_relative(h) for h in (declaring_header(n) for n in missing_names(error)) if h]
+            # A name the destination TU defines itself (file-local helper such as HeadMesh's CylinderTransform) is not
+            # a header's: auto-including another class of that name only adds a wrong type and its includes.
+            local = (ROOT / t['dest']).read_text(errors='replace') if t.get('dest') and (ROOT / t['dest']).is_file() else ''
+            wanted = [n for n in missing_names(error)
+                      if not re.search(r'^\s*(?:class|struct)\s+%s\b' % re.escape(n.split('::')[-1]), local, re.M)]
+            found = [donor_relative(h) for h in (declaring_header(n) for n in wanted) if h]
             found = [h for h in found if h not in have]
             tool_time('include_search', time.time() - tick)
             if found:
@@ -987,6 +1215,13 @@ def work(t, ladder, tries, start=0):
                          capture_output=True, text=True).stdout[-6000:]
     note = ('\nThe analog uses placeholder globals %s. They stand for real statics/globals: use the name the REAL HEADER '
             '(or its includes) declares for that object; never declare a new one.\n' % ', '.join(t['unmapped'])) if t.get('unmapped') else ''
+    if t.get('template_inst'):
+        note += ('\nTEMPLATE MEMBER: this function is one instantiation of a class/function template member.  Write the '
+                 'TEMPLATE DEFINITION fully qualified at global scope (`template<class T, ...> Ret NS::Cls<T, ...>::%s(...) '
+                 '{...}`; the header only declares it), then on its own line the explicit instantiation exactly:\n%s\n'
+                 'If the compiler reports C3416 (the header already declares an explicit specialization), write the full '
+                 'specialization instead (`template<> Ret NS::Cls<Args>::f(...) {...}`) and no instantiation line.\n'
+                 % (split_qual(t['qual'])[-1], t['template_inst']))
     names = annotate_asm(asm) + file_globals(t)
     t = dict(t, names=names)          # header-gap logging checks compile errors against these binary names
     prompt = (RULES.format(decl=t['decl'], qual=t['qual']) + note + '\n--- REAL HEADER %s ---\n%s\n--- REFERENCE ANALOG ---\n%s\n'
@@ -994,7 +1229,8 @@ def work(t, ladder, tries, start=0):
                                                                  class_context(t, names, header, analog)))
     status, history = 'no-reply', []
     if ladder:     # model runs only (regates pass no ladder): skip targets whose headers cannot compile at all
-        broken = headers_compile(t)
+        broken = ('' if t.get('template_inst') else
+                  'implicit member: compiler-generated, the header never declares it' if implicit_member(t) else headers_compile(t))
         if broken:
             print('%s %-34s %4dB header-blocked: %s' % (t['addr'], t['qual'][-34:], t['size'], broken[-160:]), flush=True)
             gui('native_result', file=t['qual'], addr=t['addr'], local_exact=0, seconds=0, error=broken,
@@ -1006,6 +1242,29 @@ def work(t, ladder, tries, start=0):
     # Re-gate an already generated answer before spending another provider call.
     # Driver/header flag changes are valid new evidence; model text is not resent unchanged.
     cached = sorted((folder(t)).glob('try*/donor/donor.cpp'))
+    leaf = re.escape('::'.join(t['qual'].split('::')[-2:]))
+    if cached and not re.search(leaf + r'\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?::[^;{]*)?\{',
+                                cached[-1].read_text(errors='replace')):
+        cached = []         # an old reply with prose and no definition: regating it is a tool-error, not evidence
+    if not cached and ladder:
+        native = dest_body(t)
+        if native:
+            # The native .cpp already has this body (HeadBuilder::buildTop ...): gate it free first.
+            started = time.time()
+            TOOL.times = {}
+            status, feedback = prove(t, native, folder(t) / 'dest')
+            with LOG.open('a') as log:
+                log.write(json.dumps(dict(slim(t), model='dest', attempt=-1, status=status, time=round(time.time(), 1), run=RUN_ID,
+                                          tool=TOOL.times, llm_seconds=0.0, gate_seconds=round(time.time() - started, 1))) + '\n')
+            print('%s %-34s %4dB dest  %-16s' % (t['addr'], t['qual'][-34:], t['size'], status), flush=True)
+            gui('native_result', file=t['qual'] + ' [native .cpp]', addr=t['addr'], local_exact=int(status == 'inactive_exact'),
+                seconds=round(time.time() - started, 1), error='', error_summary=status + ' | existing native body, no model call')
+            if status == 'inactive_exact':
+                return t, folder(t) / 'dest'
+            if bytes_identical(feedback):
+                return t, None          # bytes already exact; only reference/identity proof is missing: no model can fix it
+            history =['\n--- CURRENT NATIVE .CPP BODY (with its file-local helpers) ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\n'
+                       'Fix it. Same output rules.\n' % (native, feedback)]
     if cached:
         body = cached[-1].read_text(errors='replace')
         started = time.time()
@@ -1078,6 +1337,8 @@ def work(t, ladder, tries, start=0):
               status, model.split('/')[-1][:28], row['llm_seconds'], row['gate_seconds']), flush=True)
         if status == 'inactive_exact':
             return t, folder(t) / ('try%d' % n)
+        if status == 'draft' and bytes_identical(feedback):
+            return t, None              # bytes exact, reference/identity gate open: another model try cannot help
         if body:
             history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                        % (body, feedback)]
@@ -1116,6 +1377,7 @@ def main():
     ap.add_argument('--retry-failed', action='store_true', help='also retry earlier targets that never became exact')
     ap.add_argument('--retry-older-than', type=float, default=0, metavar='HOURS',
                     help='retry non-exact targets whose last model try is older than HOURS (after harness fixes)')
+    ap.add_argument('--regate-all', action='store_true', help='re-prove every earlier draft (after a gate fix)')
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
@@ -1179,7 +1441,8 @@ def main():
         todo = [t for t in todo if t not in park]
     # Never-tried targets first (run 16 spent its whole budget on leftovers while 55 fresh ones waited), then owners
     # with exacts, then the rest; placeholder-global targets last.
-    rank = lambda t: (tries_of[t['addr']] > 0, bool(t.get('unmapped')),
+    # Website 'other remaining' functions first: an exact there moves the public count (others are already owned).
+    rank = lambda t: (t['addr'] not in remaining_set(), tries_of[t['addr']] > 0, bool(t.get('unmapped')),
                       0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, t['size'])
     todo = sorted(todo, key=rank)[:args.limit]
     if args.retry_address:
@@ -1201,6 +1464,19 @@ def main():
         # Drafts plus answers a harness bug stopped before gating (tool-error): re-gate them free after fixes.
         drafts = {r['addr'] for r in history if r['status'] in ('draft', 'tool-error')} - won - {t['addr'] for t, d in done if d}
         again = [t for t in targets(args.owner_prefix, args.max_size, set(), args.new_source) if t['addr'] in drafts]
+        # Only drafts with new evidence since their last gate (learned closure, header/destination or harness
+        # edit): re-proving all ~250 every run took 20+ minutes and blocked the next run.
+        gated = {}
+        for r in history:
+            gated[r['addr']] = max(gated.get(r['addr'], 0), r.get('time', 0))
+        # Harness edits no longer count: they made every run re-prove all ~250 drafts (20+ min, rarely a gain).
+        # After a real gate fix, pass --regate-all once.
+        harness = 0
+        def stale(t):
+            # Not CLOSURE: it changes on every learn, and learning already regates its own target at once.
+            inputs = [ROOT / t['header']] + ([ROOT / t['dest']] if t['dest'] else [])
+            return max([harness] + [p.stat().st_mtime for p in inputs if p.is_file()]) > gated.get(t['addr'], 0)
+        again = [t for t in again if args.regate_all or stale(t)]
         print('regate %d drafts' % len(again), flush=True)
         with ThreadPoolExecutor(args.jobs) as pool:
             done += [r for r in pool.map(lambda t: _regate(t), again) if r]

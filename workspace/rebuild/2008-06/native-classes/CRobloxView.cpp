@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "../native-headers/CRobloxView.h"
 
 class CRobloxDoc;
@@ -84,3 +85,9 @@ template class RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded>;
 template class RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving>;
 template class boost::scoped_ptr<RBX::Verb>;
 template class std::map<unsigned int,RBX::Name const *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const ,RBX::Name const *> > >;
+
+void CRobloxView::toggleToolbox()
+{
+    showToolbox(slot_1d8 == 0, true);
+}
+

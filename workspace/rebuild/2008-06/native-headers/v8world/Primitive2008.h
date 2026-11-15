@@ -127,8 +127,11 @@ namespace RBX
 		ComputeProp<float, Primitive> JointK;            // +0xec
 
 	protected:
-		G3D::Vector3 clipToSafeSize(const G3D::Vector3& newSize); // 005e83c0
 		float computeJointK() const;                     // 005e7580
+
+	private:
+		G3D::Vector3 clipToSafeSize(const G3D::Vector3& newSize); // 005e83c0 ?clipToSafeSize@Primitive@RBX@@AAE?AVVector3@G3D@@ABV34@@Z
+		                                                 // (registry: private)
 
 	public:
 		Primitive(Geometry::GeometryType geometryType);  // 005e8770
@@ -136,6 +139,8 @@ namespace RBX
 		virtual float getRadius() const;                 // slot 3 (005e7f10)
 
 		void setUnknown0x14(int value);                  // 005e7420 (evidence name)
+		const Guid& getGuid() const;                     // 005e7440 (`lea eax, [ecx + 8]`, out of line: called by
+		                                                 // lessAssembly 005e5f60 and biggerJointGuid 00668c60; donor name)
 		World* getWorld() const
 		{
 			return world;
@@ -144,6 +149,8 @@ namespace RBX
 		{
 			return clump;
 		}
+		void setClump(Clump* set);                       // 005e7550 (body in native-classes/AppUnit5E4PrimitiveParts.cpp;
+		                                                 // callers Clump(Primitive*) 005e6cf0 / 005e5ff0, out of line)
 		Assembly* getAssembly() const;                   // 005e7570 ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ
 		int getClumpDepth() const
 		{
@@ -172,6 +179,14 @@ namespace RBX
 		bool getDragging() const
 		{
 			return dragging;
+		}
+		// INFERRED: name of the donor Primitive.h accessor; body the anchored state `dragging || anchored ||
+		// jointAnchored` (+0xa8 / +0xa9 / +0xaa) that setDragging 005e8050 / setAnchor 005e80d0 recompute and
+		// Clump::getAnchored 005e60e0 reads on the root primitive (inlined there); its out-of-line copy is 005e5f00
+		// (Clump unit, byte-identical in native-classes/Clump.cpp).
+		bool getAnchor() const
+		{
+			return dragging || anchored || jointAnchored;
 		}
 		void setDragging(bool _dragging);                // 005e8050
 		void setAnchor(bool _anchored);                  // 005e80d0
@@ -216,13 +231,23 @@ namespace RBX
 		G3D::CoordinateFrame getFaceCoordInObject(NormalId objectFace); // 005e7680
 		const Extents& getFastFuzzyExtents() const;      // 005e7a50 (00606ce6 / 00606cee)
 
-		Joint* getFirstJoint() const;                    // 005e7b80
+		Joint* getFirstJoint() const;                    // 005e7b90 ?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ
 		Joint* getNextJoint(Joint* prev) const;          // 005e7ba0
 		Contact* getFirstContact();                      // 005e7bd0
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
-		static bool aaBoxCollide(const Primitive& p0, const Primitive& p1);
+		// Inline in the 2008 binary: BlockBlockContact::computeIsColliding 00607c20 and stepContact 00608830 read
+		// fuzzyExtents (+0x80) of both primitives directly (`sub reg, -0x80`) and call Extents::overlapsOrTouches
+		// 00606b60, with no state check and no call of their own. Name and parameters: the donor Primitive.h.
+		static bool aaBoxCollide(const Primitive& p0, const Primitive& p1)
+		{
+			return p0.fuzzyExtents.overlapsOrTouches(p1.fuzzyExtents);
+		}
+		// Donor names (tools/rbxgs v8world/Primitive.h); bodies in native-classes/PrimitiveState.cpp. setPrimitiveType
+		// calls newGeometry 005e7d80 and World::onPrimitiveGeometryTypeChanged 005e9230 (call at 005e874b).
+		void setPrimitiveType(Geometry::GeometryType geometryType);   // 005e86f0
+		static Geometry* newGeometry(Geometry::GeometryType geometryType);   // 005e7d80
 // Declarations proven by closure symbols of byte-exact recovered methods.
 public:
     void setCanSleep(bool);

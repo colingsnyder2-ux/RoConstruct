@@ -7,6 +7,7 @@ namespace RBX
 	class Primitive;
 	class Assembly;
 	class SimJobStage;
+	class Kernel;
 
 	class World
 	{
@@ -28,5 +29,12 @@ namespace RBX
 		void onPrimitiveAddedAnchor(Primitive* p);
 		void onPrimitiveRemovingAnchor(Primitive* p);
 		SimJobStage& getSimJobStage();                     // 005e93b0
+		// 005e9150 (13 bytes): the first stage (+0x88) -> IStage::getKernel (slot 3, tail jump). Reference return as the
+		// definition in native-classes/AppUnit5E8_2008World.cpp and the donor v8world/World.h (callers Humanoid /
+		// BodyMover::onAncestorChanged 005db560 / 006308f0 use it with Kernel::insert/removeConnector2ndPass).
+		Kernel& getKernel();
+		// 005e9230 (11 bytes): contactManager (+0x84) -> ContactManager::onPrimitiveGeometryTypeChanged 0060d8e0 (tail jump);
+		// donor name (only caller the Primitive method 005e86f0, call at 005e874b).
+		void onPrimitiveGeometryTypeChanged(Primitive* p);
 	};
 }

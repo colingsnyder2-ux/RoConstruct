@@ -17,9 +17,12 @@
 
 namespace RBX
 {
+	// 00607bd0 (slot 7): clip and projectionInBlock zeroed by their default constructors; onBorder is an uninitialized
+	// int (the compiler reuses the dead overlapIgnored argument slot for it, which the donor decompile shows as
+	// `*(int*)&overlapIgnored`), passed to computeIsColliding(int&, ...) 00607020.
 	bool BallBlockContact::computeIsColliding(float overlapIgnored)
 	{
-		short onBorder = 0;
+		int onBorder;
 		G3D::Vector3int16 clip;
 		G3D::Vector3 projectionInBlock;
 		return computeIsColliding(onBorder, clip, projectionInBlock, overlapIgnored);

@@ -42,6 +42,10 @@ namespace RBX
 		friend struct ::NativeKernelStagesLayout; // tests/NativeKernelStagesLayout.cpp offset asserts
 
 	private:
+		// 005fb1a0 (thiscall `ret 4`, called out of line by deletePoint 005fb3c0): KernelData points +0x18 swap-remove
+		// through the KernelIndex getter 005fa610 and Array<Point*>::resize 005fa870 (donor: private inline).
+		void removePoint(Point* point);                               // 005fb1a0
+
 		bool inStepCode;                                              // +0xc
 		KernelData* kernelData;                                       // +0x10
 		G3D::Array<Connector*> realTimeConnectors;                    // +0x14
@@ -53,6 +57,8 @@ namespace RBX
 		Kernel(IStage* upstream);                                     // 005fb650
 		virtual ~Kernel();                                            // 005faca0 (slot 0 ??_G 005fb0c0)
 		virtual StageType getStageType();                             // slot 1 (0077d800; NATIVE_KERNEL_STAGES_PENDING)
+		// 005fb3f0 is `ret 0x10` and tests a fourth bool argument first (true: 005fae00 with worldStepId, then return),
+		// so the 2008 IStage slot 2 takes four arguments; the donor IStage.h declares three. Not built.
 		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);   // slot 2 (005fb3f0, not built)
 		virtual Kernel* getKernel()                                   // slot 3 (007188c0)
 		{
@@ -62,7 +68,11 @@ namespace RBX
 		int numBodies() const;                                        // 005faa20
 		int numPoints() const;                                        // 005faa30
 		int numConnectors() const;                                    // 005faa40
+		float bodyKineticEnergy() const;                              // 005faa50 (`?bodyKineticEnergy@Kernel@RBX@@QBEMXZ`)
 		void insertConnector(Connector* connector);                    // 005fb160
+		// Callers: Contact::deleteConnector 00606d10, BlockBlockContact::deleteAllConnectors 00607c60 /
+		// deleteUnmatchedConnectors 00607e00 (thiscall `ret 4`; body native-classes/KernelStep.cpp, pending).
+		void removeConnector(Connector* connector);                    // 005fb1f0
 		void deletePoint(Point* point);                                // 005fb3c0
 		// Donor signatures; thiscall `ret 4` (005fad50 / 005fad80) and `ret 8` (005fb260). newPoint news 0x34 and calls
 		// the Point constructor 0064dc00 (native-classes/AppUnit5F8KernelArrays.cpp). Callers: BodyMover /

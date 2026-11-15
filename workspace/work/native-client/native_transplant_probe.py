@@ -133,6 +133,13 @@ def main():
     closed = ''.join('}\n' for _ in scopes)
     bodies = ('\n\n'.join('// native-transplant: %s\n%s' % (addr, body)
                            for addr, body in records) if records else '\n\n'.join(methods))
+    # Template member definitions are emitted only when instantiated: keep the answer's explicit instantiation
+    # lines (`template bool T<A>::f(int) const;`) that follow the bodies.
+    if records:
+        tail = text[max(text.find(body) + len(body) for _, body in records):]
+        explicit = re.findall(r'^[ \t]*template[ \t]+(?!<)[^;{}]+;[ \t]*$', tail, re.M)
+        if explicit:
+            bodies += '\n\n' + '\n'.join(line.strip() for line in explicit)
     supports = []
     if args.support_globals and records:
         used = set(re.findall(r'\b[A-Za-z_]\w*\b', bodies))
@@ -176,9 +183,10 @@ def main():
                             for bracket, value in dict.fromkeys(vendor_includes))
     if args.source_preamble and records:
         namespace = re.search(r'\bnamespace\s+' + re.escape(scopes[0]) + r'\s*\{', text) if scopes else None
-        if scopes and not namespace:
-            raise ValueError('source preamble needs a matching namespace')
-        support_text = text[namespace.end() if namespace else 0:min(starts)].strip() + '\n\n'
+        # No namespace block (LLM answers, extracted native bodies): the plain prefix (helper functors, extern file
+        # globals) already belongs inside the probe's opened namespaces.  Includes/using lines are handled above.
+        support_text = re.sub(r'^[ \t]*#[ \t]*(?:include|pragma)\b.*$|^[ \t]*using namespace [^;]*;[ \t]*$', '',
+                              text[namespace.end() if namespace else 0:min(starts)], flags=re.M).strip() + '\n\n'
         externs = active_externs(text[:min(starts)], used)
         if externs:
             support_text += '\n'.join('// native-support-global\n' + line for line in externs) + '\n\n'
