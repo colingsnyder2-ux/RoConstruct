@@ -1,6 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::Part::updateMesh 004ef930 (inactive; Part vtable 00826f94 slot 10, 2508 bytes, `ret`,
-// EH frame 007cace8). Not in any build list. DRAFT, NOT COMPILED: parked on the header gaps listed under BLOCKED.
+// EH frame 007cace8). Not in any build list. DRAFT: the body is parked behind NATIVE_PARTMESH_PENDING (pending-guard
+// pattern) until the header gaps listed under BLOCKED land; with the guard defined it still fails on blockers 1-4
+// (setSurfaceType, createCharacter + tables, findClothing, Clothing outfits) and on Instance children access.
 // Sibling bodies: Decal / Texture::updateMesh in native-classes/ViewNewPartSurfaceUpdate2008.cpp (same size / radius tail).
 //
 // Evidence (decoded from the 2008-06 bytes; every call below is an original call site):
@@ -53,6 +55,8 @@
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
 #define NATIVE_HUMANOID2008_DONOR_CONNECTOR
+#include <winsock2.h>
+#include "util/NativeContentProvider.h"   // first: renames the donor ContentProvider (ViewNewSurfaceMaterial2008.cpp pattern)
 #include "ViewNew/PartChunk.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/SpecialShape.h"
@@ -69,6 +73,8 @@
 #include "ViewNew/FileMesh.h"
 #include <cmath>
 
+// Pending guard: define to compile the parked draft once blockers 1-5 above are resolved in their owning headers.
+#ifdef NATIVE_PARTMESH_PENDING
 namespace RBX
 {
 	namespace ViewNew
@@ -193,3 +199,4 @@ namespace RBX
 		}
 	}
 }
+#endif // NATIVE_PARTMESH_PENDING

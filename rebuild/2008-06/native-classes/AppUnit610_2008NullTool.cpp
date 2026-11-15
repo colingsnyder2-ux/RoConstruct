@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // Inactive native recovery of the RBX::NullTool / RBX::NewNullTool unit 00617da0..00618377 (2008-06) in the application
 // range 00610000..0061c000, against the committed native tool/NullTool.h and v8datamodel/MouseCommand.h (read-only).
 // Layout evidence: NewNullTool::isSticky 00618277 news 0x48 before the constructor 00618160; NullTool::isSticky
