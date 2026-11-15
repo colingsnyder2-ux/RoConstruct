@@ -64,11 +64,9 @@ public:
 }
 
 #ifdef NATIVE_SIMJOB_PENDING
-// RBX::SimJob has no native header. tests/NativeHumanoidStates3SimJob.h is the proposed
-// declaration (vptr, boost::noncopyable, std::vector at +4, std::list iterator at +0x1c;
-// sizeof 0x24, constructor 005e50f0, destructor 005e5150). The recorder places it at
-// v8world/SimJob.h in its overlay.
-#include "v8world/SimJob.h"
+// RBX::SimJob is the native v8world/SimJob2008.h (vptr, boost::noncopyable, std::vector at +4,
+// std::list iterator at +0x1c; sizeof 0x24, constructor 005e50f0, inline destructor 005e5150).
+#include "v8world/SimJob2008.h"
 #include <boost/signals/connection.hpp>
 
 namespace RBX {
@@ -112,8 +110,8 @@ public:
     virtual bool query3() const { return false; }        // slot 3, 0060a2f0 (folded)
     virtual bool query4() const { return false; }        // slot 4, 0060a2f0 (folded)
     virtual bool query5() const { return false; }        // slot 5, 0060a2f0 (folded)
-    virtual Assembly* getAssembly();                     // SimJob slot 1, 00667160
-    virtual Assembly* getAssembly2();                    // SimJob slot 2, 00667160 (identical code)
+    virtual Assembly* getAssemblyConst();                // SimJob slot 1, 00667160
+    virtual Assembly* getAssembly();                     // SimJob slot 2, 00667160 (identical code)
     Assembly* getTorsoAssembly();                        // 0066eaa0
     void release();                                      // 0066ed50 (pending: World layout)
 };

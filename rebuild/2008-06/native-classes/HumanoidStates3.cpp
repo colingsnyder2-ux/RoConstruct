@@ -3,7 +3,7 @@
 // methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid);
 // the MovingNoPhysicsBase family needs the proposed SimJob declaration (NATIVE_SIMJOB_PENDING).
-// v8world/SimJob.h is now a native header (SimJob vptr, noncopyable, vector +4, list iterator +0x1c), so the
+// v8world/SimJob2008.h is the native SimJob header (SimJob vptr, noncopyable, vector +4, list iterator +0x1c), so the
 // MovingNoPhysicsBase block is enabled here. Flags follow the sibling HumanoidStateFloor.cpp: getTorsoAssembly needs
 // the complete part-embedded Primitive (Primitive::getAssembly 005e7570); Dead needs ModelInstance::breakJoints.
 #define NATIVE_SIMJOB_PENDING
@@ -16,55 +16,7 @@
 #define NATIVE_HUMANOID2008_DONOR_CONNECTOR
 #include "humanoid/Humanoid2008.h"
 #include "v8datamodel/PhysicsService.h"
-#include <list>
-#include "v8world/IWorldStage.h"
-
-// Unit-local SimJobStage, exactly as native-headers/v8world/SimJobStage2008.h declares it (that header includes
-// v8world/SimJob2008.h, whose RBX::SimJob cannot share this unit with the native v8world/SimJob.h that
-// humanoid/HumanoidStates3.h includes: C2011; both declare stageIterator at +0x1c).
-struct NativeKernelStagesLayout;
-
-namespace RBX
-{
-	class SimJob;
-	class Edge;
-	class World;
-
-	class SimJobStage : public IWorldStage
-	{
-		friend struct ::NativeKernelStagesLayout; // tests/NativeKernelStagesLayout.cpp offset asserts
-
-	private:
-		std::list<SimJob*> simJobs;                       // +0x10
-
-	public:
-		SimJobStage(IStage* upstream, World* world);      // 0064d300 (SimJobStage2008Ctor.cpp: 2008 Kernel)
-		virtual ~SimJobStage()                            // slot 0 (??_G 0064d380)
-		{
-		}
-		virtual StageType getStageType();                 // slot 1 (005cb9d0; NATIVE_KERNEL_STAGES_PENDING)
-		virtual void onEdgeAdded(Edge* e);                // slot 4 (0064d060)
-		virtual void onEdgeRemoving(Edge* e);             // slot 5 (0064d090)
-
-		void addSimJob(SimJob* job);                      // 0064d1e0 (`jmp 0064d0f0`; analog name)
-		void removeSimJob(SimJob* job);                   // 0064d1f0 (`jmp 0064d180`; analog name)
-
-	private:
-		void insertSimJob(SimJob* job);                   // 0064d0f0 (analog name)
-		void eraseSimJob(SimJob* job);                    // 0064d180 (analog name)
-
-		SimJob* getNextSimJob(SimJob* job)                // 004cb480 (folded COMDAT; analog name)
-		{
-			std::list<SimJob*>::iterator it = job->stageIterator;
-			++it;
-			if (it == simJobs.end())
-			{
-				return *simJobs.begin();
-			}
-			return *it;
-		}
-	};
-}
+#include "v8world/SimJobStage2008.h" // SimJobStage::removeSimJob 0064d1f0 (MovingNoPhysicsBase::release 0066ed50)
 
 namespace RBX {
 namespace HUMAN {
@@ -123,12 +75,14 @@ __declspec(noinline) Assembly* MovingNoPhysicsBase::getTorsoAssembly()
     return primitive ? primitive->getAssembly() : 0;
 }
 
-Assembly* MovingNoPhysicsBase::getAssembly()
+// 00667160 (SimJob slot 1; `add ecx,-0xa0; jmp 0066eaa0`)
+Assembly* MovingNoPhysicsBase::getAssemblyConst()
 {
     return getTorsoAssembly();
 }
 
-Assembly* MovingNoPhysicsBase::getAssembly2()
+// 00667160 (SimJob slot 2; identical code, folded)
+Assembly* MovingNoPhysicsBase::getAssembly()
 {
     return getTorsoAssembly();
 }
@@ -164,14 +118,13 @@ void RunningNoPhysics::onStep(float dt, Controller* controller)
     MovingNoPhysicsBase::onStep(dt, controller);
 }
 
-// 00667210. Pending header: humanoid/Humanoid.h declares no event_Strafing (0097a348; Humanoid2008.h does).
-#ifdef NATIVE_HUMANOID_EVENT_STRAFING_PENDING
+// 00667210: MovingNoPhysicsBase(humanoid) 0066f070, then event_Strafing (0097a348, declared by humanoid/Humanoid2008.h,
+// which this unit includes) fired with false through the argument.
 StrafingNoPhysics::StrafingNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
 {
     Humanoid::event_Strafing.fire(humanoid, false);
 }
-#endif
 
 void StrafingNoPhysics::onStep(float dt, Controller* controller)
 {
