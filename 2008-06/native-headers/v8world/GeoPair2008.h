@@ -162,6 +162,29 @@ namespace RBX
 			geoPairType = EDGE_EDGE_PAIR;
 		}
 
+		// inlined into BallBlockContact::stepContact 00607150 (00607246..00607252 store radius0 +0x18, offset1 +0x8,
+		// normalID1 +0x1c and geoPairType +0x0 of the GeoPair at connector +0x8, in that order; the bodies are not
+		// written there, Contact::createConnector 00606e00 stores them). Donor v8kernel/Pair.h setBallBlock without the
+		// body arguments.
+		void setBallBlock(float radius0, const G3D::Vector3* offset1, NormalId normId, GeoPairType pairType)   // INFERRED: 2008 signature from the stores above
+		{
+			pairData.radius0 = radius0;
+			this->offset1 = offset1;
+			pairData.normalID1 = normId;
+			geoPairType = pairType;
+		}
+
+		// inlined into BallBallContact::stepContact 00606f80 (00606ff4..00607001 store radius0 +0x18, geoPairType +0x0 =
+		// BALL_BALL_PAIR and radiusSum +0x1c of the GeoPair at connector +0x8; the bodies +0xc / +0x10 are not written
+		// there, Contact::createConnector 00606e00 stores them). Donor v8kernel/Pair.h setBallBall(Body*, Body*, float,
+		// float) without the body arguments.
+		void setBallBall(float radius0, float radius1)    // INFERRED: 2008 signature from the stores above
+		{
+			pairData.radius0 = radius0;
+			pairData.radiusSum = radius0 + radius1;
+			geoPairType = BALL_BALL_PAIR;
+		}
+
 		// body0 +0xc / body1 +0x10, written by matchContactConnector 00607cc0 (00607d47 / 00607d50, connector +0x14 /
 		// +0x18; connectors[i] is reloaded before each store, so one store per call) after a match and by
 		// Contact::createConnector 00606e00 (00606e5a / 00606e5d) for a new connector.

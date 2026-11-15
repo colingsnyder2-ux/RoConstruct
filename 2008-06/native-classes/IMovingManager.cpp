@@ -1,6 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include "v8world/IMoving.h"
 
+#include "../../../tools/rbxgs/Client/App/include/v8world/IMoving.h"
+
 namespace RBX
 {
 	// makeMoving and moved have no out-of-line copy in the image; inlined into notifyMoved / setMovingManager.
@@ -17,14 +19,16 @@ namespace RBX
 	}
 
 	// 00614be0
-	void IMoving::notifyMoved()
-	{
-		if (stepsToSleep == 0)
-		{
-			stepsToSleep = 30;
-			makeMoving();
+void IMoving::notifyMoved(void)
+{
+	if (stepsToSleep == 0) {
+		stepsToSleep = 30;
+		onCanAggregateChanged(false);
+		if (iMovingManager != 0) {
+			iMovingManager->moving.insert(this);
 		}
 	}
+}
 
 	// 00614c20
 	void IMovingManager::remove(IMoving* iMoving)
@@ -57,12 +61,18 @@ namespace RBX
 	}
 
 	// 00614d50
-	void IMoving::setMovingManager(IMovingManager* _iMovingManager)
-	{
-		if (iMovingManager)
-			iMovingManager->remove(this);
-		iMovingManager = _iMovingManager;
-		if (iMovingManager && stepsToSleep > 0)
-			makeMoving();
+void IMoving::setMovingManager(IMovingManager* _iMovingManager)
+{
+	if (iMovingManager != 0) {
+		iMovingManager->remove(this);
 	}
+	iMovingManager = _iMovingManager;
+	if (_iMovingManager != 0 && stepsToSleep > 0) {
+		onCanAggregateChanged(false);
+		if (iMovingManager != 0) {
+			IMoving* m = this;
+			iMovingManager->moving.insert(m);
+		}
+	}
+}
 }

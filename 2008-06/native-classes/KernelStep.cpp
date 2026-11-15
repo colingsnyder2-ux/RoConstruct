@@ -1,21 +1,16 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
 // 2008-06 native RBX::Kernel rows of the original Kernel unit (inactive): bodyKineticEnergy 005faa50, insertConnector
 // 005fb160, removeConnector 005fb1f0, deletePoint 005fb3c0 and stepWorld 005fb3f0. Flags copied from
 // AppUnit5F8KernelArrays.cpp / KernelConnector.cpp (the kernel-stage units are built with /fp:fast).
+// /U_RELEASEASSERT: the target rows carry no RBXASSERT code (insertConnector 005fb160 inlines IndexArray::fastAppend
+// without the donor asserts; with them it is 82 B out of line).
 //
-// PENDING (NATIVE_KERNEL_DATA_PENDING): every row needs declarations that no native header has yet, so the bodies are
-// compiled only with the proposed headers (see the header proposals of this batch):
-//   - v8kernel/KernelData2008.h: the 2008 KernelData is 0x3c with five index arrays (bodies +0x0, leaf bodies +0xc,
-//     points +0x18, connectors +0x24, connectors2ndPass +0x30); the donor v8kernel/KernelData.h (0x30, four arrays,
-//     points +0xc / connectors +0x18) and its donor Body.h cannot be used next to native-headers/v8kernel/Body2008.h.
-//     KernelData::005faff0 / 005fb050 (analog names onConnectorAdded / onConnectorRemoved) maintain Body +0x8 and the
-//     leaf body array; insertConnector / removeConnector call them.
-//   - Kernel2008.h: removeConnector 005fb1f0, bodyKineticEnergy 005faa50 and the private removePoint 005fb1a0 (called
-//     out of line by deletePoint) are not declared; stepWorld 005fb3f0 is `ret 0x10` and tests a fourth byte argument
-//     before anything else (a true value calls 005fae00 with worldStepId and returns), so the 2008 IStage slot 2 takes
-//     four arguments, not the donor three.
-// Validated against the target with those proposed headers (scratch copies): see the batch receipt.
-#ifdef NATIVE_KERNEL_DATA_PENDING
+// Declarations: v8kernel/Kernel2008.h (bodyKineticEnergy, removeConnector, the private removePoint) and
+// v8kernel/KernelData2008.h (the 0x3c KernelData: bodies +0x0, leafBodies +0xc, points +0x18, connectors +0x24,
+// connectors2ndPass +0x30; KernelData 005faff0 / 005fb050, analog names onConnectorAdded / onConnectorRemoved).
+// PENDING (NATIVE_KERNEL_STEP_PENDING): stepWorld 005fb3f0 is `ret 0x10` and tests a fourth byte argument before
+// anything else (a true value calls 005fae00 with worldStepId and returns), so the 2008 IStage slot 2 takes four
+// arguments, not the three of the donor v8kernel/IStage.h; it also needs 005fae00 (analog name stepMoveBodiesTest).
 #include <G3D/Array.h>
 #include "v8kernel/KernelIndex.h"
 #include "v8kernel/Body2008.h"
@@ -56,7 +51,8 @@ namespace RBX
 
 namespace RBX
 {
-	// 005faa50: Body::kineticEnergy 00614670 over KernelData +0x0 / +0x4.
+	// 005faa50: Body::kineticEnergy 00614670 over KernelData +0x0 / +0x4. Not exact while KernelData2008.h bodies is a
+	// G3D::Array (see there): the original indexes an IndexArray by value.
 	float Kernel::bodyKineticEnergy() const
 	{
 		float totalEnergy = 0.0;
@@ -84,6 +80,16 @@ namespace RBX
 		kernelData->connectors.fastRemove(c);
 	}
 
+#ifdef NATIVE_POINT_KERNEL_INDEX_PENDING
+	// 005fb1a0: points +0x18 fastRemove (getKernelIndex 005fa610, Array<Point*>::resize 005fa870). Needs Point::
+	// getKernelIndex (native-headers/v8kernel/Point2008.h has none) and KernelData2008.h points as
+	// IndexArray<Point, &Point::getKernelIndex>.
+	void Kernel::removePoint(Point* point)
+	{
+		kernelData->points.fastRemove(point);
+	}
+#endif
+
 	// 005fb3c0: numOwners +0x8; removePoint 005fb1a0 and the Point scalar deleting destructor (slot 0).
 	void Kernel::deletePoint(Point* point)
 	{
@@ -98,6 +104,7 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_KERNEL_STEP_PENDING
 	// 005fb3f0: inStepCode +0xc, Profiling::Mark (005c3f80 / 005c42d0) on profilingKernel +0x20; realTimeConnectors
 	// +0x14 rebuilt when throttling (canThrottle slot 2); Constants::kernelDt 00649310 and kernelStepsPerWorldStep
 	// 006492d0 (19) read after that block; per kernel step: Point::step 0064dc90, computeForce (slot 1) of the
@@ -177,5 +184,5 @@ namespace RBX
 			inStepCode = false;
 		}
 	}
-}
 #endif
+}

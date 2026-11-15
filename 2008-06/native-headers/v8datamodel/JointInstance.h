@@ -1,5 +1,6 @@
 #pragma once
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 #include "v8world/Joint.h"
 #include "v8tree/Instance.h"
 #include "v8datamodel/PartInstance.h"
@@ -8,32 +9,38 @@
 
 namespace RBX {
 extern const char sJointInstance[];
+// 2008 layout (bases: IRenderable +0x130, empty IJointOwner +0x140): the parts live on JointInstance, not AutoJoint.
+// JointInstance(Joint*) 005e3870 constructs the weak_ptr pair at +0x140 (eh vector ctor, 2 x 8 bytes) and stores
+// joint at +0x150; ~JointInstance 005e2e10 calls setPart(0/1, NULL) 005e2cd0, deletes joint +0x150 and destroys the
+// pair (eh vector dtor, element dtor 005576e0); the getters 005e2a10 / 005e2a70 lock +0x140 / +0x148 (005cab00).
+// VelocityMotor (Feature.h) derives from JointInstance and starts its fields at +0x154.
 class JointInstance : public DescribedNonCreatable<JointInstance, Instance, sJointInstance>, public IRenderable, public IJointOwner {
+private:
+    boost::weak_ptr<PartInstance> part[2];   // +0x140 / +0x148
 protected:
-    Joint* joint;
-    virtual bool shouldRender3dAdorn() const;
-    virtual void render3dAdorn(Adorn* adorn);
+    Joint* joint;                            // +0x150
+    void setPart(int i, PartInstance* value);                       // 005e2cd0
+    virtual bool askSetParent(const Instance* instance) const;      // 005e3790
+    virtual void onAncestorChanged(const AncestorChanged& event);   // 005e3a80
+    virtual bool shouldRender3dAdorn() const;                       // 005e27a0
+    virtual void render3dAdorn(Adorn* adorn);                       // 005e2af0
 public:
-    JointInstance(Joint* joint);
-    ~JointInstance();
+    JointInstance(Joint* joint);             // 005e3870
+    ~JointInstance();                        // 005e2e10
     Joint::JointType getJointType() const;
+    PartInstance* getPart0() const;          // 005e2a10
+    PartInstance* getPart1() const;          // 005e2a70
 };
 
 extern const char sAutoJoint[];
 class AutoJoint : public DescribedNonCreatable<AutoJoint, JointInstance, sAutoJoint> {
 private:
-    boost::shared_ptr<PartInstance> part[2];
-    void setPart(int i, PartInstance* value);
     void setPartNull(int);
     void setPrimitiveFromPart(int);
-    virtual bool askSetParent(const Instance* instance) const;
-    virtual void onAncestorChanged(const AncestorChanged& event);
     World* computeWorld();
 public:
     AutoJoint(Joint* joint);
     virtual ~AutoJoint();
-    PartInstance* getPart0() const;
-    PartInstance* getPart1() const;
     void setPart0(PartInstance* value);
     void setPart1(PartInstance* value);
     const G3D::CoordinateFrame& getC0() const;

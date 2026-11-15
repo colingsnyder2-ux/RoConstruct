@@ -35,9 +35,12 @@ namespace RBX
 		public:
 			ClientProxy(SystemAddress address, Server* server);                    // 004a1ed0 (body in NetworkClientServer2008Server.cpp)
 			virtual ~ClientProxy();                                                 // 004a18c0 (body in NetworkClientServer2008Server.cpp)
-			// 004a2ac0 (donor Server::ClientProxy::sendTop; open: it calls IdSerializer::serializeId 004a8ae0, not declared in
-			// IdSerializer.h, and the unnamed Replicator member 004b7f20 (const Instance*, BitStream&)). Server::OnReceive
-			// 004a4dc0 calls it non-virtually on the create<ClientProxy> 004a21c0 result.
+			// 004a2ac0 (donor Server::ClientProxy::sendTop; open). Body: BitStream; << (unsigned char)0x4b 004a6350;
+			// << Guid::getLocalScope() 005a82e0 name string 004a6560; serializeId 004a8ae0 (declared in IdSerializer.h,
+			// body blocked on util/GuidItem.h) for each replicationContainers entry; writeProperties 004b7f20 (declared in
+			// Replicator2008.h) on replicationContainers[0]; peer->Send(&bs, 2, 3, 0, remotePlayerId, false) (slot 0x34).
+			// Remaining blocker: util/Guid.h does not declare static const Name& Guid::getLocalScope() (005a82e0).
+			// Server::OnReceive 004a4dc0 calls it non-virtually on the create<ClientProxy> 004a21c0 result.
 			void sendTop();
 		};
 	}

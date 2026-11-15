@@ -4,27 +4,19 @@
 // setGridSize 005e8470, setPV 005e85b0, getAssembly 005e7570 and setCoordinateFrame 005e8200.
 // Flags: the sibling rows of native-classes/AppUnit5E4Primitive.cpp (/fp:fast).
 //
-// Unit-local redeclarations (pattern of ContactUnit2008ConnectorBody.cpp / BlockBlockContactStep.cpp), because the
-// shared headers lack members this unit defines or calls; proposals are in the batch result:
-//   - RBX::EdgeList / RBX::Primitive, copied from native-headers/v8world/Primitive2008.h (same bases, fields, offsets,
-//     slots), plus the out-of-line members named by the identity registry (decorated signatures): setAnchor,
-//     setCoordinateFrame, setPV, setGridSize, clipToSafeSize, and setMassInertia 005e8000 (called by setGridSize).
-//   - RBX::World, copied from native-headers/v8world/World2008.h (no fields), plus the four notifications these
-//     bodies call (005e91c0, 005e94a0, 005e94e0; names from the donor v8world/World.h by call site and order).
+// RBX::EdgeList / RBX::Primitive are native-headers/v8world/Primitive2008.h and RBX::World is
+// native-headers/v8world/World2008.h (they replaced the earlier unit-local redeclarations of this unit, batch 18).
 // RBX::Edge (getIndex), RBX::Joint and RBX::Contact for getNextJoint 005e7ba0 / getNextContact 005e7be0 come from
 // native-headers/AppUnit658/Edge.h, v8world/Joints2008.h and v8world/Contact2008.h (native 2008 Edge over
-// IPipelined2008.h), which replaced the earlier unit-local copies.
-// getAssembly 005e7570 and setCoordinateFrame 005e8200 (batch 14, prove.py inactive_exact) use the native 2008
-// RBX::Clump / RBX::Assembly of v8world/AssemblyLayout.h (NATIVE_CLUMP_DECL: Clump +0x24 assembly, the assembly's
-// +0x24 -> +0x1c root primitive, Clump-unit notifyMoved 005e6170), which replaced the unit-local placeholders (batch
-// 15). The donor Clump.h puts assembly at +0x20; the native-world openrbx port Clump.h / Assembly.h carries the
-// WEBSERVICE layout. Rejected first form: getAssembly as `clump ? reinterpret_cast<...>(clump)
-// ->assembly : NULL` -> 180 bytes, the `xor edi, edi` NULL arm was jump-threaded away; the nested inline
-// Clump::getAssembly reproduces it. IMoving::notifyMoved 00614be0 is the donor v8world/IMoving.h declaration (its body
-// is native-classes/IMovingManager.cpp). RBX::getJoint 0064ca60 belongs to the ClumpStage unit
-// (next to 0064cc40 / 0064ccf0) and already has a body in native-world/App/v8world/ClumpStage.cpp: not duplicated.
-// Primitive2008.h and World2008.h are therefore not included here. The Body is the native 2008 Body
-// (native-headers/v8kernel/Body2008.h): setVelocity 00614040.
+// IPipelined2008.h). getAssembly 005e7570 and setCoordinateFrame 005e8200 use the native 2008 RBX::Clump /
+// RBX::Assembly of v8world/AssemblyLayout.h (NATIVE_CLUMP_DECL: Clump +0x24 assembly, the assembly's +0x24 -> +0x1c
+// root primitive, Clump-unit notifyMoved 005e6170). The donor Clump.h puts assembly at +0x20; the native-world
+// openrbx port Clump.h / Assembly.h carries the WEBSERVICE layout. Rejected first form: getAssembly as
+// `clump ? reinterpret_cast<...>(clump)->assembly : NULL` -> 180 bytes, the `xor edi, edi` NULL arm was jump-threaded
+// away; the nested inline Clump::getAssembly reproduces it. IMoving::notifyMoved 00614be0 is the donor
+// v8world/IMoving.h declaration (its body is native-classes/IMovingManager.cpp). RBX::getJoint 0064ca60 belongs to the
+// ClumpStage unit (next to 0064cc40 / 0064ccf0) and already has a body in native-world/App/v8world/ClumpStage.cpp: not
+// duplicated. The Body is the native 2008 Body (native-headers/v8kernel/Body2008.h): setVelocity 00614040.
 #include <math.h>
 #include <G3D/Array.h>
 #include <G3D/Vector3.h>
@@ -45,196 +37,11 @@
 #define NATIVE_CLUMP_DECL // the native 2008 RBX::Clump / RBX::Assembly of v8world/AssemblyLayout.h
 #include "v8world/AssemblyLayout.h"
 #include "v8world/IMoving.h"
+#include "v8world/World2008.h"
+#include "v8world/Primitive2008.h"
 
 namespace RBX
 {
-	class Body;
-	class Contact;
-	class ContactConnector;
-	class Controller;
-	class IJointOwner;
-	class Kernel;
-	class Edge;
-	class IMoving;
-	class Joint;
-	class Primitive;
-	class SpatialNode;
-	class SurfaceData;
-
-	class World
-	{
-	public:
-		void onJointPrimitiveNulling(Joint* j, Primitive* p);
-		void onJointPrimitiveSet(Joint* j, Primitive* p);
-		void insertJoint(Joint* j);
-		void removeJoint(Joint* j);
-		void ticklePrimitive(Primitive* p, int value);   // 005e9410
-
-		// Not in World2008.h (proposal). 005e91d0: the assembly's primitives (005e5fc0 / 005e5fa0 iterator pair,
-		// ++ 00647640) each passed to contactManager (+0x84) 0060cc50 (donor World::onAssemblyExtentsChanged).
-		void onAssemblyExtentsChanged(Assembly* a);
-
-		// Not in World2008.h (proposal). 005e91c0: contactManager (+0x84) -> 0060cc50 (tail jump).
-		void onPrimitiveExtentsChanged(Primitive* p);
-		// Not in World2008.h (proposal). 005e9230: contactManager (+0x84) -> 0060d8e0 (tail jump).
-		void onPrimitiveGeometryTypeChanged(Primitive* p);
-		// Not in World2008.h (proposal). 005e94a0 / 005e94e0: walk the stage chain from +0x88 to stage type 2 and
-		// call 0064cc40 / 0064ccf0 (the "June anchor swap" pair of native-world ClumpStage).
-		void onPrimitiveAddedAnchor(Primitive* p);
-		void onPrimitiveRemovingAnchor(Primitive* p);
-	};
-
-	class EdgeList
-	{
-	public:
-		Primitive* owner;                                // +0x0
-		G3D::Array<Edge*> edges;                         // +0x4
-		G3D::Array<Primitive*> otherPrimitives;          // +0x10
-
-	public:
-		EdgeList(Primitive* owner) : owner(owner) {}
-		~EdgeList();                                     // 005e7910
-
-		void insertEdge(Edge* e);                        // 005e8990
-		void removeEdge(Edge* e);                        // 005e8610
-	};
-
-	class Primitive : public IPipelined
-	{
-	private:
-		Guid guid;                                       // +0x8
-		bool guidSetExternally;                          // +0x10
-		int unknown0x14;                                 // +0x14 (setUnknown0x14 005e7420)
-		EdgeList contacts;                               // +0x18
-		EdgeList joints;                                 // +0x34
-		int worldIndex;                                  // +0x50
-		int traverseId;                                  // +0x54
-		World* world;                                    // +0x58
-		Clump* clump;                                    // +0x5c
-		int clumpDepth;                                  // +0x60
-		SpatialNode* spatialNodes;                       // +0x64
-		Vector3int32 oldSpatialMin;                      // +0x68
-		Vector3int32 oldSpatialMax;                      // +0x74
-		mutable Extents fuzzyExtents;                    // +0x80
-		mutable int fuzzyExtentsStateId;                 // +0x98
-	protected:
-		Geometry* geometry;                              // +0x9c
-		Body* body;                                      // +0xa0
-		IMoving* myOwner;                                // +0xa4
-		bool dragging;                                   // +0xa8
-		bool anchored;                                   // +0xa9
-		bool jointAnchored;                              // +0xaa
-		bool canSleep;                                   // +0xab
-		bool canCollide;                                 // +0xac
-		float friction;                                  // +0xb0
-		float elasticity;                                // +0xb4
-		SurfaceType surfaceType[6];                      // +0xb8
-		SurfaceData* surfaceData[6];                     // +0xd0
-		Controller* controller;                          // +0xe8
-		ComputeProp<float, Primitive> JointK;            // +0xec
-
-	protected:
-		float computeJointK() const;                     // 005e7580
-
-	private:
-		// Not in Primitive2008.h (proposal): ?clipToSafeSize@Primitive@RBX@@AAE?AVVector3@G3D@@ABV34@@Z (private).
-		G3D::Vector3 clipToSafeSize(const G3D::Vector3& newSize);   // 005e83c0
-
-	public:
-		Primitive(Geometry::GeometryType geometryType);  // 005e8770
-		virtual ~Primitive();                            // 005e7df0 (slot 0 ??_G 005e83a0)
-		virtual float getRadius() const;                 // slot 3 (005e7f10)
-
-		void setUnknown0x14(int value);                  // 005e7420 (evidence name)
-		World* getWorld() const
-		{
-			return world;
-		}
-		Clump* getClump() const
-		{
-			return clump;
-		}
-		// Not in Primitive2008.h (proposal): ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ.
-		Assembly* getAssembly() const;                   // 005e7570
-		int getClumpDepth() const
-		{
-			return clumpDepth;
-		}
-		const Geometry* getGeometry() const
-		{
-			return geometry;
-		}
-		Geometry* getGeometry()
-		{
-			return geometry;
-		}
-		Body* getBody()
-		{
-			return body;
-		}
-		const Body* getBody() const
-		{
-			return body;
-		}
-		IMoving* getOwner() const
-		{
-			return myOwner;
-		}
-		bool getDragging() const
-		{
-			return dragging;
-		}
-		void setDragging(bool _dragging);                // 005e8050
-		const bool getCanCollide() const
-		{
-			return canCollide;
-		}
-		float getFriction() const
-		{
-			return friction;
-		}
-		float getElasticity() const
-		{
-			return elasticity;
-		}
-		float getJointK() const
-		{
-			return JointK;
-		}
-		void setSurfaceType(NormalId id, SurfaceType type);   // 005e7850
-		void setController(Controller* _controller);     // 005e85e0
-		Controller* getController()
-		{
-			return controller;
-		}
-
-		const G3D::CoordinateFrame& getCoordinateFrame() const;   // 005e82c0
-		const Extents& getFastFuzzyExtents() const;      // 005e7a50 (00606ce6 / 00606cee)
-
-		Contact* getFirstContact();                      // 005e7bd0
-		Contact* getNextContact(Contact* prev);          // 005e7be0
-		// Not in Primitive2008.h (proposal); decorated signatures from work/2008-06/identity-registry.json.
-		Joint* getFirstJoint() const;                    // 005e7b90 ?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ
-		Joint* getNextJoint(Joint* prev) const;          // 005e7ba0 ?getNextJoint@Primitive@RBX@@QBEPAVJoint@2@PAV32@@Z
-
-		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
-		void setCanSleep(bool);                          // closure symbol (Primitive2008.h)
-
-		// Not in Primitive2008.h (proposal); decorated signatures from work/2008-06/identity-registry.json.
-		void setAnchor(bool _anchored);                  // 005e80d0 ?setAnchor@Primitive@RBX@@QAEX_N@Z
-		// Not in Primitive2008.h (proposal): the +0xaa sibling of setDragging / setAnchor (analog name; placeholder
-		// func_005e8140 in the registry, caller HumanoidStates3.cpp evidence: torso primitive 005e8140(false)).
-		void setJointAnchored(bool _jointAnchored);      // 005e8140
-		void setCoordinateFrame(const G3D::CoordinateFrame& value);   // 005e8200
-		void setPV(const PV& pv);                        // 005e85b0 ?setPV@Primitive@RBX@@QAEXABVPV@2@@Z
-		void setMassInertia(float mass);                 // 005e8000 (donor name; Body::setMass 006140b0 /
-		                                                 // setMoment 00614110 of geometry slot 6 getMoment)
-		void setGridSize(const G3D::Vector3& gridSize);  // 005e8470 ?setGridSize@Primitive@RBX@@QAEXABVVector3@G3D@@@Z
-		// Not in Primitive2008.h (proposal): donor tools/rbxgs v8world/Primitive.h names.
-		void setPrimitiveType(Geometry::GeometryType geometryType);   // 005e86f0 (donor name)
-		static Geometry* newGeometry(Geometry::GeometryType geometryType);   // 005e7d80
-	};
-
 	// 005e7ba0: the index of prev in this primitive's list (+0x14 when this is prim0 +0xc, else +0x18) plus one, checked
 	// against joints.edges.size() (+0x3c), returns joints.edges[i] (+0x38) or NULL. Caller: RBX::getJoint 0064ca60.
 	Joint* Primitive::getNextJoint(Joint* prev) const

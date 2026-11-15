@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // Inactive native recovery of the RBX::NullTool / RBX::NewNullTool unit 00617da0..00618377 (2008-06) in the application
 // range 00610000..0061c000, against the committed native tool/NullTool.h and v8datamodel/MouseCommand.h (read-only).
 // Layout evidence: NewNullTool::isSticky 00618277 news 0x48 before the constructor 00618160; NullTool::isSticky
@@ -71,7 +72,7 @@ namespace RBX
 
 	void NewNullTool::onMouseIdle(const UIEvent& event)
 	{
-		PartInstance* part = getUnlockedPartByLocalCharacter(event, waypoint);
+		PartInstance* part = getPartByLocalCharacter(event, waypoint); // 00617ece calls 00615f90 getPartByLocalCharacter, not the Unlocked filter
 		bool clickable = queryClickDetectors(part, distanceFromCharacter(waypoint), false);
 		if (part)
 		{
@@ -91,7 +92,7 @@ namespace RBX
 
 	void NewNullTool::onMouseHover(const UIEvent& event)
 	{
-		PartInstance* part = getUnlockedPartByLocalCharacter(event, waypoint);
+		PartInstance* part = getPartByLocalCharacter(event, waypoint); // 00617f5e calls 00615f90
 		bool clickable = queryClickDetectors(part, distanceFromCharacter(waypoint), false);
 		if (part)
 		{
@@ -115,7 +116,7 @@ namespace RBX
 	MouseCommand* NewNullTool::onMouseDown(const UIEvent& event)
 	{
 		G3D::Vector3 point;
-		PartInstance* part = getUnlockedPartByLocalCharacter(event, point);
+		PartInstance* part = getPartByLocalCharacter(event, point); // 00618011 calls 00615f90
 		if (queryClickDetectors(part, distanceFromCharacter(point), true))
 			return this;
 		if (part && characterCanReach(point) && !isLocalHeadHidden())
