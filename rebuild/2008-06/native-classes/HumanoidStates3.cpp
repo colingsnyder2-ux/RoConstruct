@@ -138,13 +138,86 @@ MovingNoPhysicsBase::MovingNoPhysicsBase(Humanoid* humanoid)
 // getHumanoid 00793d50 / getTorsoSlow 005d76d0 before it reads torso +0xc4 (`cmp [esi + 0xc4], eax`). Trial 1,
 // `torso.get() != getHumanoid()->getTorsoSlow()`: torso loaded into edi before the calls (rejected, 37 B); trial 2,
 // operands swapped: same edi preload (rejected, 37 B); trial 3, this local: 33 B, only `cmp eax, [esi + 0xc4]` where the
-// target has `cmp [esi + 0xc4], eax` (rejected, closest; parked).
+// target has `cmp [esi + 0xc4], eax` (rejected); trial 4, the same local with `torso.get() != current`: exact.
 void MovingNoPhysicsBase::onTorsoAncestryChanged()
 {
     PartInstance* current = getHumanoid()->getTorsoSlow();
-    if (current != torso.get())
+    if (torso.get() != current)
         release();
 }
+
+#ifdef NATIVE_MOVING_NO_PHYSICS_ONSTEP_PENDING
+// Not compiled: three declarations outside this unit's files are missing (see below). No trials yet.
+// 0066eb90 (259 bytes, `ret 4`; analog name applyFloorImpulse). getHumanoid 00793d50 -> getRootBody 005d9180 (early out
+// on NULL), getFloorPrimitive 00643d30 (early out on NULL); masses: root body first (Cofm::getMass 0065ff10 or +0x8c),
+// then the floor primitive's body (+0xa0) branch mass, std::min(root, floor) (`fcomp; test ah, 5; jnp` keeps the floor
+// mass only when it is smaller); the guarded static (0, -9.81f [008438c0], 0) at 0097bec8 is initialised after the
+// min; Units::kmsAccelerationToRbx 00660180 (20.0f [008222f0]) .y * mass * dt * 0.5f [00819bac]; Vector3(0, y, 0); the
+// floor primitive body is reloaded (+0xa0) -> root +0x10 -> simBody +0x2c, tested, then 00629bb0(&impulse,
+// &floorTouchInWorld). 00629bb0 (167 bytes) is a second SimBody accumulator with the accumulateForce shape that adds
+// to the impulse accumulators +0x9c / +0xa8 (Body2008.h analog names) instead of force +0x84 / torque +0x90.
+// BLOCKER: v8kernel/Body2008.h declares neither SimBody 00629bb0 (e.g. `void accumulateImpulse(const G3D::Vector3&
+// impulse, const G3D::Vector3& worldPos); // 00629bb0`) nor the inline Body wrapper (root->simBody test, as the inline
+// Body::accumulateForce does), and this unit does not include Body2008.h / util/Units.h.
+void MovingNoPhysicsBase::applyFloorImpulse(float dt)
+{
+    Body* body = getHumanoid()->getRootBody();
+    if (!body)
+        return;
+    Primitive* floor = getFloorPrimitive();
+    if (!floor)
+        return;
+    float mass = std::min(body->getBranchMass(), floor->getBody()->getBranchMass());
+    static const G3D::Vector3 kmsGravity(0.0f, -9.81f, 0.0f);
+    G3D::Vector3 impulse(0.0f, Units::kmsAccelerationToRbx(kmsGravity).y * mass * dt * 0.5f, 0.0f);
+    floor->getBody()->accumulateImpulse(impulse, floorTouchInWorld);
+}
+
+// 0066f2c0 (581 bytes, vtable 0084d168 slot 1, `ret 8`; RunningNoPhysics / StrafingNoPhysics forward to it 006672b0).
+// getHumanoid()->getTorsoPrimitive() 005d90a0 (early out on NULL); getFloorVelocity 00643a70 (linear only),
+// computeWalkVelocity 00643b60, getDesiredAltitude 00643360 - 0.1f [0081e704]; the sum floor + walk is formed after the
+// altitude call; error = altitude - frame.translation.y (+0x10c); if fabs(error) > 0.025f [00837878] the inline
+// G3D::sign(error) (fld1 / -1.0f [0081c3b8] / 0) is added to v.y; frame.translation (+0x108..+0x110) += v * dt.
+// Humanoid strafe bit (+0x1e8 bit 4): 005df0c0(&frame, walkRotationalVelocity +0x1b0 * 16.0f [00826918] * dt); else when
+// Vector3::xz 005185f0 is not (0, 0) (fldz compares): getHumanoid() kept in ebx, Math::getHeading 005de650(v),
+// Humanoid::getTorsoHeading 005d91a0, Math::radWrap 005cbec0, * 8.0f [0082ca40] * dt, 005df0c0(&frame, ...).
+// primitive->setCoordinateFrame(frame) 005e8200; if (!v.isZero()) 006662f0: primitive->setVelocity 005e7760 with
+// 0066eb30(v); if speedSettled 00643330: Humanoid::event_Running (0097a504) fired with v.length(); applyFloorImpulse(dt).
+// 005df0c0 (120 bytes, cdecl (CoordinateFrame&, float)) lies in the Math unit (between orthonormalizeIfNecessary
+// 005df0a0 and sortVector3 005df1b0, followed by 005df140 = rotation = fromAxisAngle(unitY, a) * rotation); in the
+// donor Math.h order (rotateAboutYLocal, rotateAboutYGlobal) it is Math::rotateAboutYLocal (lookAt 00518e20 of
+// translation + lookVector (getColumn(2) * -1.0f [00828b60]) turned by the angle).
+// BLOCKERS: 0066eb30 (91 bytes, thiscall, `ret 4`) is a one-argument Velocity(const G3D::Vector3& linear) constructor
+// (rotational from the function-local static Vector3::zero() 0096f044, guard 0096f050) that the donor util/Velocity.h
+// (core) does not declare; applyFloorImpulse 0066eb90 above; the registry names 005df0c0 func_005df0c0.
+void MovingNoPhysicsBase::onStep(float dt, Controller* controller)
+{
+    Primitive* primitive = getHumanoid()->getTorsoPrimitive();
+    if (!primitive)
+        return;
+    Velocity floorVelocity = getFloorVelocity(dt);
+    G3D::Vector3 walk = computeWalkVelocity();
+    float altitude = getDesiredAltitude() - 0.1f;
+    G3D::Vector3 velocity = floorVelocity.linear + walk;
+    float error = altitude - frame.translation.y;
+    if (fabs(error) > 0.025f)
+        velocity.y += G3D::sign(error);
+    frame.translation += velocity * dt;
+    if (getHumanoid()->getStrafe())
+        Math::rotateAboutYLocal(frame, getHumanoid()->walkRotationalVelocity * 16.0f * dt);
+    else if (velocity.xz() != G3D::Vector2(0.0f, 0.0f))
+    {
+        Humanoid* humanoid = getHumanoid();
+        Math::rotateAboutYLocal(frame, Math::radWrap(Math::getHeading(velocity) - humanoid->getTorsoHeading()) * 8.0f * dt);
+    }
+    primitive->setCoordinateFrame(frame);
+    if (!velocity.isZero())
+        primitive->setVelocity(Velocity(velocity));
+    if (speedSettled())
+        Humanoid::event_Running.fire(getHumanoid(), velocity.length());
+    applyFloorImpulse(dt);
+}
+#endif
 
 RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid)
     : Base(humanoid)
