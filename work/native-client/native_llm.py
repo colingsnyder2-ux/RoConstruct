@@ -680,9 +680,10 @@ def declaring_header(name):
     # Namespace-aware: RBX::Primitive must not resolve to G3D's RenderDevice::Primitive enum.  Qualified names need
     # their namespaces in the file; unqualified ones try `namespace RBX` files first.
     spaces = [ns for ns in name.split('::')[:-1] if ns]
+    global DECL_SPACES
     if not DECL_SPACES:
-        for path, text in DECL_FILES:
-            DECL_SPACES[path] = set(re.findall(r'\bnamespace\s+(\w+)', text))
+        # Built aside and published in one assignment: worker threads read it concurrently (KeyError on a half-filled dict).
+        DECL_SPACES = {path: set(re.findall(r'\bnamespace\s+(\w+)', text)) for path, text in DECL_FILES}
     raw = name.split('::')[-1]
     files = [(path, text) for path, text in DECL_FILES if raw in text] if raw else DECL_FILES
     passes = [spaces] if spaces else [['RBX'], []]
