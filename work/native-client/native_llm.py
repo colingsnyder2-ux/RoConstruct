@@ -150,6 +150,8 @@ def destination_for(owner):
         body = r'\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?:\{|:[^:;])'
         pattern = re.compile(r'\b((?:[A-Za-z_]\w*::)+[A-Za-z_]\w*)::~?[A-Za-z_]\w*' + body)
         for path in classes.glob('*.cpp'):
+            if path.name.startswith('Mined'):
+                continue        # verbatim mined analogs (func_XXXX, placeholder globals): never a class's home TU
             relative = path.relative_to(ROOT).as_posix()
             text = path.read_text(errors='replace')
             for found in pattern.findall(text):
@@ -164,7 +166,7 @@ def destination_for(owner):
         if len(leaf_hits) == 1:
             hits = leaf_hits
         named = [path.relative_to(ROOT).as_posix() for path in classes.glob('*.cpp')
-                 if path.stem.lower().endswith(leaf)]
+                 if path.stem.lower().endswith(leaf) and not path.name.startswith('Mined')]
         # Filename is a routing hint only; exact owner/body proof still gates promotion.
         if not hits and len(named) == 1:
             hits = named
@@ -614,6 +616,7 @@ def learn_identities(t, res):
 import threading
 TOOL = threading.local()      # per-thread tool timings of the current try: {step: seconds}
 EXTRA_INCLUDES = {}           # addr -> headers found for names a compile error reported missing
+FORCE_INCLUDES = {}           # addr -> /FI headers an include-order guard (C1189) asked for
 SEARCH_ROOTS = [ROOT / 'rebuild/2008-06/native-headers', ROOT / 'tools/rbxgs/Client/Network/raknet30/Source',
                 ROOT / 'tools/rbxgs/Client/Rendering/g3d/include', DONOR_INCLUDE]   # donor last, included by name
 # No 2007 donor tree here: its v8datamodel/Surface.h etc. redefine native classes (C2011) and block the real include.
@@ -995,6 +998,8 @@ def _prove(t, body, out, depth=0):
     header_text = (ROOT / t['header']).read_text(errors='replace') if (ROOT / t['header']).is_file() else ''
     for guard in dict.fromkeys(re.findall(r'^\s*#\s*ifdef\s+(NATIVE_\w+)', header_text, re.M)):
         flags += ' /D' + guard
+    for forced in FORCE_INCLUDES.get(t['addr'], []):
+        flags += ' /FI' + forced
     plan = {'plans': [{'owner': t['owner'], 'headers': [t['header']],
                        'source': str((out / 'donor' / 'donor.cpp').relative_to(ROOT)),
                        'namespace': ns, 'roc_cl': 21022, 'roc_flags': flags, 'destination': t['dest'],
@@ -1049,6 +1054,12 @@ def _prove(t, body, out, depth=0):
     if status == 'compile_failed':
         error = str(res.get('first_compile_error', ''))
         log_header_gaps(t, error)
+        # Include-order guards (C1189): MFC before windows.h (XTP property grid items), G3DAll before glut.
+        forced = ('afxwin.h' if 'WINDOWS.H already included' in error else
+                  'G3DAll.h' if 'G3DAll.h must be included' in error else '')
+        if forced and depth < 2 and forced not in FORCE_INCLUDES.get(t['addr'], []):
+            FORCE_INCLUDES.setdefault(t['addr'], []).append(forced)
+            return prove(t, body, out, depth + 1)
         if depth < 2:
             tick = time.time()
             have = set(EXTRA_INCLUDES.get(t['addr'], [])) | {str((ROOT / t['header']).resolve())}
@@ -1199,6 +1210,8 @@ def work(t, ladder, tries, start=0):
         note += ('\nTEMPLATE MEMBER: this function is one instantiation of a class/function template member.  Write the '
                  'TEMPLATE DEFINITION fully qualified at global scope (`template<class T, ...> Ret NS::Cls<T, ...>::%s(...) '
                  '{...}`; the header only declares it), then on its own line the explicit instantiation exactly:\n%s\n'
+                 'If the compiler reports C3416 (the header already declares an explicit specialization), write the full '
+                 'specialization instead (`template<> Ret NS::Cls<Args>::f(...) {...}`) and no instantiation line.\n'
                  % (split_qual(t['qual'])[-1], t['template_inst']))
     names = annotate_asm(asm) + file_globals(t)
     t = dict(t, names=names)          # header-gap logging checks compile errors against these binary names
