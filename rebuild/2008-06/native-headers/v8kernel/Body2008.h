@@ -193,6 +193,13 @@ namespace RBX
 		static int getNextStateIndex();                   // 00613f20 (out of line: Link() 00613d20 calls it)
 		void advanceStateIndex();                         // 00613f40
 
+		// KernelData bodies IndexArray accessor (donor v8kernel/Body.h, public inline): kernelIndex +0x0 is read and
+		// written inline by Kernel::removeBody 005fb110 (`mov eax, [edi]` ... `mov [edx], eax`, then -1 into [edi]); no
+		// out-of-line copy is called.
+		int& getKernelIndex()
+		{
+			return kernelIndex;
+		}
 		Body* getParent() const
 		{
 			return parent;
