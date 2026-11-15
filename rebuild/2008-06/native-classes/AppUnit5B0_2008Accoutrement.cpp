@@ -7,10 +7,8 @@
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/Workspace.h"
 #include "v8xml/XmlElement.h"
-#ifdef NATIVE_APPUNIT5B0_PENDING
 #include "humanoid/Humanoid.h"
 #include "Network/Players.h"
-#endif
 
 namespace RBX
 {
@@ -130,10 +128,7 @@ namespace RBX
 		setAttachmentPoint(c);
 	}
 
-#ifdef NATIVE_APPUNIT5B0_PENDING
-	// The bodies below need Accoutrement members the committed native header does not declare (proposal: the
-	// static writeUnlocked 00976cad and the state-machine members). Built only against a generated header copy under
-	// out/app-unit5b0-2008/pending/ and recorded exact=false (pending-build-only).
+	// The state-machine members and writeUnlocked are declared in v8datamodel/Accoutrement.h (donor shape).
 
 	// @005b1480: writeUnlocked 00976cad; new(0x28) XmlElement(tag_External 00975358, InstanceHandle(this) 00594e00)
 	// 00417510; Instance::write 00558c50
@@ -143,6 +138,29 @@ namespace RBX
 			return new XmlElement(tag_External, InstanceHandle(this));
 		else
 			return Instance::write();
+	}
+
+	// Inlined into updateDesiredState 005b10a0: Humanoid::modelIsCharacter 005d9a20, Humanoid::getTorso 005d8b10
+	// (neg/sbb/and 4: EQUIPPED with a torso, else NOTHING); IN_WORKSPACE when the parent is no character.
+	Accoutrement::AccoutrementState Accoutrement::computeDesiredState(Instance* testParent)
+	{
+		Humanoid* humanoid = Humanoid::modelIsCharacter(testParent);
+		if (!humanoid)
+			return IN_WORKSPACE;
+		if (!humanoid->getTorso())
+			return NOTHING;
+		return EQUIPPED;
+	}
+
+	// Inlined into updateDesiredState 005b10a0: getHandleConst 005b08a0, Workspace::contextInWorkspace 005a33d0,
+	// then the parent (+0x104).
+	Accoutrement::AccoutrementState Accoutrement::computeDesiredState()
+	{
+		if (!getHandleConst())
+			return NOTHING;
+		if (!Workspace::contextInWorkspace(this))
+			return HAS_HANDLE;
+		return computeDesiredState(getParent());
 	}
 
 	// @005b10a0: getHandleConst, Workspace::contextInWorkspace 005a33d0, Humanoid::modelIsCharacter 005d9a20,
@@ -168,7 +186,6 @@ namespace RBX
 		if (newProvider && Network::Players::backendProcessing(newProvider, true))
 			updateDesiredState();
 	}
-#endif
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

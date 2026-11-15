@@ -75,6 +75,13 @@ namespace RBX
 		virtual const G3D::CoordinateFrame getLocation() const;          // 005b0b70
 		virtual void render3dSelect(Adorn* adorn, SelectState selectState);                      // 005b1020
 		void downFrom_InCharacter();                                     // 005b0920
+		AccoutrementState computeDesiredState(Instance* testParent);      // inlined into 005b10a0 (no out-of-line copy survives)
+		AccoutrementState computeDesiredState();                          // inlined into 005b10a0 (no out-of-line copy survives)
+		void updateDesiredState();                                        // 005b10a0
+		void setDesiredState(AccoutrementState desiredState, const ServiceProvider* serviceProvider);   // 005b2510
+	public:
+		static bool writeUnlocked;                                        // 00976cad (read by write 005b1480)
+	protected:
 	public:
 		Accoutrement();
 		virtual ~Accoutrement();                                         // 005b0da0
