@@ -64,8 +64,9 @@ LADDER = ['claude:sonnet', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'opencode
 # Strongest NVIDIA NIM chat models for C++ rewrites (checked against the account's /v1/models list, 2026-11-14).
 # Each run adds a random sample of these after Sonnet so their quotas and strengths spread over the batch.
 CLAUDE_MODELS = ['claude:sonnet', 'claude:opus', 'claude:haiku', 'claude:fable']
-# Owner choice 2026-11-14: every run uses this ladder (no alternating, no NIM/free models).
-DEFAULT_LADDER = ['claude:sonnet', 'claude:sonnet', 'claude:sonnet', 'claude:opus', 'claude:haiku']
+# Owner choice 2026-11-15: 2x Opus + 3x Sonnet, no Haiku (24 h: Opus 3068 B/worker-hour, Sonnet 1717, Haiku 954;
+# gate time ~26 s/try is the bottleneck, so cheap low-yield tries cost worker slots).  No NIM/free models.
+DEFAULT_LADDER = ['claude:opus', 'claude:sonnet', 'claude:opus', 'claude:sonnet', 'claude:sonnet']
 # Haiku-first went 0/21 in run 15: plain rotation again (Haiku ~1 in 5 tries, low effort).  --first-model to force one.
 FIRST_MODEL = ''
 LOW_EFFORT = {'claude:haiku'}    # most Haiku output was hidden thinking (4.4k tokens/try)
