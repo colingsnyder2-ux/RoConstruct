@@ -3,8 +3,7 @@
 // intersectingOthers(Primitive*, float) 0060dcd0, plus the G3D::Array<Contact*> resize / append instances 0060cfd0 /
 // 0060d0d0 (used there by onPrimitiveGeometryTypeChanged 0060d8e0, which needs the Primitive contact list and is
 // not built), against native-headers/v8world/ContactManager2008.h. Verified by tests/record_native_contact_unit2008.py.
-// Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
-#define NATIVE_IPIPELINED2008_DONOR
+// Contact2008.h builds on the native 2008 Edge (AppUnit658/Edge.h -> IPipelined2008.h), shared with Primitive2008.h.
 #include <algorithm>
 #include "v8world/ContactManager2008.h"
 #include "v8world/Contact2008.h"

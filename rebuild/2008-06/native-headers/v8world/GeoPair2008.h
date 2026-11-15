@@ -142,6 +142,13 @@ namespace RBX
 
 		bool match(Body* _b0, Body* _b1, GeoPairType _pairType, int param0, int param1);   // 00606a50
 
+		// 00606270 (placeholder func_00606270, out of line in the Connector unit; `cmp dword ptr [ecx], 4`): true unless
+		// geoPairType == POINT_PLANE_PAIR; then a zeroed PairParams (normal +0x0 / position +0x10), computePointPlane
+		// 00613560 and `length < 0.02f` (00827488, read back from PairParams +0xc). Called only through
+		// ContactConnector::isGeoPairWithinTolerance 00606770 (BlockBlockContact::deleteUnmatchedConnectors 00607e00).
+		// No donor or registry name: analog name. Body: native-classes/ContactUnit2008Connector.cpp.
+		bool isWithinPointPlaneTolerance();               // 00606270
+
 		// inlined into BlockBlockContact::loadGeoPairEdgeEdge 00607ea0 (00607f70..00607f81 store offset0 +0x4,
 		// normalID0 +0x18, normalID1 +0x1c, offset1 +0x8 and geoPairType +0x0 = EDGE_EDGE_PAIR of the GeoPair at
 		// connector +0x8). Donor v8kernel/Pair.h setEdgeEdge without the bodies: the 2008 bodies are written by

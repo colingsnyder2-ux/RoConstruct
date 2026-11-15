@@ -1,5 +1,21 @@
 #pragma once
 #include "G3D/Array.h"
+#ifdef NATIVE_PRIMITIVE_NATIVE_BODY
+// Opt-in switch (undefined by default, so every existing includer compiles exactly as before): a unit that needs the
+// 2008 Body layout behind Primitive::getBody() (native-headers/v8kernel/Body2008.h: root +0x10, pv +0x94; Primitive
+// body +0xa0) defines NATIVE_PRIMITIVE_NATIVE_BODY before its first include. This header then reaches neither the
+// donor v8kernel/Body.h nor anything that includes it: the donor v8world/IPipelined.h (Kernel.h -> KernelData.h ->
+// Body.h) is replaced by the native native-headers/v8kernel/IPipelined2008.h (same layout: novtable, three slots,
+// currentStage +0x4), and Anchor / Clump / Contact / Edge / RigidJoint, which this header uses only through
+// pointers, are forward-declared instead of included (their donor headers reach Edge.h -> IPipelined.h). Such a
+// unit must not include the donor Body.h, Edge.h, Joint.h, Kernel.h or a header that reaches them.
+#include "v8kernel/IPipelined2008.h"
+#include "v8kernel/Body2008.h"
+#include "v8world/Geometry.h"
+#include "v8world/IMoving.h"
+#include "v8world/SurfaceData.h"
+#include "util/PV.h"
+#else
 #include "v8world/Anchor.h"
 #include "v8world/Clump.h"
 #include "v8world/Contact.h"
@@ -9,6 +25,7 @@
 #include "v8world/IPipelined.h"
 #include "v8world/SurfaceData.h"
 #include "v8world/RigidJoint.h"
+#endif
 #include "util/Guid.h"
 #include "util/Vector3int32.h"
 #include "util/Extents.h"
@@ -175,6 +192,8 @@ namespace RBX
 		{
 			return anchored;
 		}
+		void setJointAnchored(bool _jointAnchored);  // 005e8140 (analog name; +0xaa sibling of setDragging 005e8050 /
+		                                             // setAnchor 005e80d0, body in PrimitiveState.cpp)
 		void setCanCollide(bool value);
 		const bool getCanCollide() const
 		{

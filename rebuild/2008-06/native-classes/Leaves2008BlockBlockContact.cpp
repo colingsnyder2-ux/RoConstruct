@@ -44,11 +44,33 @@ namespace RBX
 		connectors.fastClear();
 		matched.fastClear();
 	}
+
+	// 00607e00: from the last connector down; connector i is removed unless matched[i] and its GeoPair test
+	// ContactConnector::isGeoPairWithinTolerance 00606770 holds (the donor removes only !matched[i]). Removal is
+	// G3D::Array::fastRemove on both arrays (resize 006078f0 / 0047ff20 with shrink), then Contact::deleteConnector
+	// 00606d10 inlined as in deleteAllConnectors: Kernel::removeConnector 005fb1f0 and the deleting destructor.
+	void BlockBlockContact::deleteUnmatchedConnectors()
+	{
+		for (int i = connectors.size() - 1; i >= 0; i--)
+		{
+			if (!matched[i] || !connectors[i]->isGeoPairWithinTolerance())
+			{
+				ContactConnector* connector = connectors[i];
+				connectors.fastRemove(i);
+				matched.fastRemove(i);
+				getKernel()->removeConnector(connector);
+				delete connector;
+			}
+		}
+	}
 }
 
 #ifdef NATIVE_BLOCKBLOCKCONTACT_PENDING
 // 006087a0 compares IPipelined::currentStage->getStageType() with 7, the 2008 KERNEL_STAGE; the donor IStage.h numbers
 // KERNEL_STAGE 8. Built only against the generated IStage.h copy of the recorder (2008 StageType values).
+// Rechecked (lf11): with a scratch IStage.h carrying the 2008 values (CLEAN 0 .. KERNEL 7) the compare becomes
+// `cmp eax, 7`, but the donor IPipelined::inKernel still emits its assertion (`cmp [..], 0` / call before 006087af,
+// 163 bytes vs 137) under /D_RELEASEASSERT; the 2008 body has none. Needs a 2008 inKernel (header proposal).
 namespace RBX
 {
 	void BlockBlockContact::updateConnectors()

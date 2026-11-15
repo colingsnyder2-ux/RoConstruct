@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // 2008-06 native RBX::Network::Peer (inactive); evidence in native-headers/Network/Peer2008.h.
 // Verified by tests/record_native_network_client_server2008.py. Original bodies: constructor 004b4640, destructor
 // 004ac830, deleting destructor 004ad7a0, classDescriptor 0049ea10 (atexit 007fba70).
@@ -21,7 +22,7 @@ namespace RBX
 			rakPeer->DetachPlugin(this);
 		}
 
-		// 00609a30
+		// 00609a30 (identical-code folded; donor Replicator.cpp Peer::peerInterface)
 		RakPeerInterface* Peer::peerInterface()
 		{
 			return rakPeer.get();
@@ -32,4 +33,3 @@ namespace RBX
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::scoped_ptr<PacketLogger>;
 template class boost::scoped_ptr<RBX::Profiling::CodeProfiler>;
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source

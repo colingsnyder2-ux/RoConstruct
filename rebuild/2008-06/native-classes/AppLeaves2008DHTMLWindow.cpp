@@ -1,15 +1,12 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 // Inactive native 2008-06 DHTMLWindow (native-headers/AppLeaves2008/DHTMLWindow2008.h): the reflected members of the
 // DHTMLWindowService translation unit, their descriptors and DHTMLWindowService::askAddChild. The service itself and
 // the Marshaller registry of the same unit stay in AppLeaves2008DHTMLWindowService.cpp.
 #include "AppLeaves2008/DHTMLWindow2008.h"
+#include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"   // CLuaHtmlView (CHtmlView base, CLuaFunction pointer +0xfc)
 #include <boost/bind.hpp>
 #include <stdexcept>
 #include <G3D/format.h>
-#ifdef NATIVE_DHTMLWINDOW_PENDING
-// Proposed native CLuaHtmlView declaration (see the record_native_app_leaves2008_dhtml.py receipt); the recorder
-// generates it under out/ for the pending build only.
-#include "CLuaHtmlView.h"
-#endif
 
 char sDHTMLWindow[] = "HtmlWindow";   // 0092c204
 
@@ -151,14 +148,16 @@ namespace RBX
 	}
 }
 
-#ifdef NATIVE_DHTMLWINDOW_PENDING
+// 0041b660: doWithView with CLuaHtmlView::unbindAll 0042b5f0.
 void DHTMLWindow::unbind()
 {
     htmlMarshaller->post(boost::bind(&DHTMLWindow::doWithView, RBX::shared_from(this), &CLuaHtmlView::unbindAll));
 }
 
-// The workers (pending: they need the CLuaHtmlView declaration). doSetCallback 00417b40 is not built at all: it
-// assigns the FunctionRef to +0x14 of the object CLuaHtmlView holds at +0xfc, whose type is not derived yet.
+// The workers. Each takes the view lock (do_lock 00563090 / do_unlock 005630e0 on this + 0x130) and does nothing
+// when the view pointer (+0x13c) is null.
+
+// 00417a10
 void DHTMLWindow::doShow()
 {
     boost::recursive_mutex::scoped_lock lock(viewLock);
@@ -169,6 +168,7 @@ void DHTMLWindow::doShow()
     }
 }
 
+// 00417aa0
 void DHTMLWindow::doResize(int x, int y)
 {
     boost::recursive_mutex::scoped_lock lock(viewLock);
@@ -176,6 +176,15 @@ void DHTMLWindow::doResize(int x, int y)
         view->GetParentFrame()->SetWindowPos(NULL, 0, 0, x, y, SWP_NOMOVE | SWP_NOZORDER);
 }
 
+// 00417b40 (ret 0x24): FunctionRef::operator= 00594310 on [view + 0xfc] + 0x14, then ~FunctionRef 00594470.
+void DHTMLWindow::doSetCallback(RBX::Lua::FunctionRef function)
+{
+    boost::recursive_mutex::scoped_lock lock(viewLock);
+    if (view)
+        view->callback->function = function;
+}
+
+// 00417bd0
 void DHTMLWindow::doNavigate(std::string url)
 {
     boost::recursive_mutex::scoped_lock lock(viewLock);
@@ -183,6 +192,7 @@ void DHTMLWindow::doNavigate(std::string url)
         view->Navigate(url.c_str());
 }
 
+// 00417c70: CLuaHtmlView::setBody 0042ae50.
 void DHTMLWindow::doSetBody(std::string html)
 {
     boost::recursive_mutex::scoped_lock lock(viewLock);
@@ -190,6 +200,7 @@ void DHTMLWindow::doSetBody(std::string html)
         view->setBody(html.c_str());
 }
 
+// 00417d10 (ret 0x28): CLuaHtmlView::bindElement 0042c8c0.
 void DHTMLWindow::doBind(boost::shared_ptr<RBX::Instance> object, const RBX::Reflection::PropertyDescriptor& property,
                          std::string htmlElementId)
 {
@@ -198,13 +209,13 @@ void DHTMLWindow::doBind(boost::shared_ptr<RBX::Instance> object, const RBX::Ref
         view->bindElement(object, property, htmlElementId.c_str());
 }
 
+// 004185c0
 void DHTMLWindow::doWithView(boost::function1<void, CLuaHtmlView*> function)
 {
     boost::recursive_mutex::scoped_lock lock(viewLock);
     if (view)
         function(view);
 }
-#endif
 
 using namespace RBX;
 
@@ -216,7 +227,5 @@ static Reflection::BoundFuncDesc<DHTMLWindow, void(int, int), 2> func_Resize(&DH
 static Reflection::BoundFuncDesc<DHTMLWindow, void(), 0> func_Show(&DHTMLWindow::show, "Show", Reflection::FunctionDescriptor::NeedTrustedCaller);   // 0096cd78
 static Reflection::BoundFuncDesc<DHTMLWindow, void(), 0> func_Close(&DHTMLWindow::close, "Close", Reflection::FunctionDescriptor::NeedTrustedCaller);   // 0096cdb8
 static Reflection::BoundFuncDesc<DHTMLWindow, void(boost::shared_ptr<Instance>, std::string, std::string), 3> func_Bind(&DHTMLWindow::bind, "Bind", "object", "property", "htmlElementId", Reflection::FunctionDescriptor::NeedTrustedCaller);   // 0096cdf8
-#ifdef NATIVE_DHTMLWINDOW_PENDING
 static Reflection::BoundFuncDesc<DHTMLWindow, void(), 0> func_Unbind(&DHTMLWindow::unbind, "Unbind", Reflection::FunctionDescriptor::NeedTrustedCaller);   // 0096ce50
-#endif
 static Reflection::SignalDesc<DHTMLWindow, void(std::string)> event_DocumentComplete("DocumentComplete", "url");   // 0096ce90

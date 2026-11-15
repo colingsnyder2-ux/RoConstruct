@@ -2,10 +2,15 @@
 // The original unit 0062e090..00633101 also holds Rocket (native-classes/Rocket.cpp). Verified by
 // tests/record_native_body_movers.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
+// Batch 16: NATIVE_PRIMITIVE_NATIVE_BODY selects the 2008 Body (native-headers/v8kernel/Body2008.h) through the
+// part-embedded Primitive.h and BodyMovers.h -> v8kernel/Connector2008.h; v8kernel/Kernel2008.h declares
+// insertConnector2ndPass 005fad50 / removeConnector2ndPass 005fad80 for BodyMover::onAncestorChanged 006308f0.
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Workspace.h"
+#include "v8kernel/Kernel2008.h"
 
 namespace RBX
 {

@@ -39,10 +39,13 @@ namespace RBX
 		setName(sFlagStand);
 	}
 
-	// 0062b900
+	// 0062b900: embedded Primitive +0x228, Primitive::getFirstRigid 005e7c80 / getNextRigid 005e7ca0, the joint's two
+	// primitives (+0xc, +0x10), PartInstance::fromPrimitive 00599f80, parent +0x104, __RTDynamicCast Instance -> Flag
+	// (RTTI 0092907c -> 0094be40). Donor tools/rbxgs v8datamodel/FlagStand.cpp FlagStand::GetFlag.
 	Flag* FlagStand::GetFlag()
 	{
 		Primitive* primitive = getPrimitive();
+
 		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
 		{
 			for (int i = 0; i < 2; i++)
@@ -52,6 +55,7 @@ namespace RBX
 					return flag;
 			}
 		}
+
 		return NULL;
 	}
 

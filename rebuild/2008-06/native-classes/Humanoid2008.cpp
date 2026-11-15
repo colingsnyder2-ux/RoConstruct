@@ -7,9 +7,7 @@
 #include "util/Object.h"
 #include "v8datamodel/ModelInstance.h"
 #include "AppDraw/DrawAdorn.h"
-#ifdef NATIVE_HUMANOID2008_PENDING
-#include "Network/Players.h"
-#endif
+#include "Network/Players.h"   // findLocalCharacter 0049aca0 (getLocalHumanoidFromContext 005d9bb0)
 #include <G3D/g3dmath.h>
 #include "v8datamodel/PartInstance.h"   // getIntendedMovementVector(bool) 005d9a50: getCoordinateFrame 00598cb0
 
@@ -103,9 +101,8 @@ namespace RBX
 		return NULL;
 	}
 
-#ifdef NATIVE_HUMANOID2008_PENDING
-	// ModelInstance::findModifierOfType<T> (005d8690 = <Humanoid>) is a proposal for the native ModelInstance.h owner;
-	// the pending build uses a generated copy with that member template.
+	// 005d9a20 (45 bytes): dynamic_cast<const ModelInstance*> then a tail jump to ModelInstance::findModifierOfType<Humanoid>
+	// 005d8690 (member template in the native v8datamodel/ModelInstance.h since batch 16).
 	Humanoid* Humanoid::modelIsCharacter(const Instance* testModel)
 	{
 		if (testModel)
@@ -117,9 +114,35 @@ namespace RBX
 		return NULL;
 	}
 
+	// 005d9bb0 (54 bytes): Network::Players::findLocalCharacter 0049aca0, then modelIsCharacter inlined.
 	Humanoid* Humanoid::getLocalHumanoidFromContext(const Instance* context)
 	{
 		return modelIsCharacter(Network::Players::findLocalCharacter(context));
+	}
+
+#ifdef NATIVE_HUMANOID_ANCESTOR_PENDING
+	// 005db560 (145 bytes; draft, not compiled). Blocked by declarations outside this family: World::getKernel 005e9150
+	// (thiscall, no arguments, returns Kernel*; v8world/World2008.h), Kernel::removeConnector2ndPass 005fad80 /
+	// insertConnector2ndPass 005fad50 (thiscall, Connector* = this + 0x130; v8kernel/Kernel2008.h), and the private
+	// Humanoid helper 005db4c0 (analog name updateCameraSubject; humanoid/Humanoid2008.h). Order read from the target:
+	// Instance::onAncestorChanged 0055acc0 first, Workspace::getWorldIfInWorkspace 005a3390, then the world swap; the new
+	// state is HumanoidState::createDefault 00643280 stored through auto_ptr::reset (delete old via slot 6 when different).
+	void Humanoid::onAncestorChanged(const AncestorChanged& event)
+	{
+		Instance::onAncestorChanged(event);
+		World* worldInWorkspace = Workspace::getWorldIfInWorkspace(this);
+		if (worldInWorkspace != world)
+		{
+			if (world)
+				world->getKernel()->removeConnector2ndPass(this);
+			world = worldInWorkspace;
+			if (world)
+			{
+				currentState.reset(HUMAN::HumanoidState::createDefault(this));
+				world->getKernel()->insertConnector2ndPass(this);
+				updateCameraSubject();
+			}
+		}
 	}
 #endif
 

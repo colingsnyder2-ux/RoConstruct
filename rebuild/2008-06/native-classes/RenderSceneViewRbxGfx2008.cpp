@@ -3,11 +3,16 @@
 // getWorkspace 004d7370 (shared with ViewG3D by ICF; dataModel->workspace +0x204 through the committed native
 // DataModel.h / Workspace.h). getShadingQuality 0064a390 and updateLighting 0047d410 are ICF-folded with unrelated
 // code and recorded as folded. The ctor / dtor (Lighting and workspace connections, mesh-cache flushes), render (its
-// 004dab50 lighting helper), suppressSkybox and onWorkspaceDescendentAdded need declarations owned elsewhere and are
-// not built.
+// 004dab50 lighting helper) and onWorkspaceDescendentAdded need declarations owned elsewhere and are not built.
+// suppressSkybox 004d9c90 uses the Lighting2008.h getters and the RenderNew::RenderScene shadowColor (+0x328).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partchunk-profile /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+#define NOMINMAX
 #include "RenderLib/ViewNew2008.h"
+#include "RenderLib/RenderSceneNew2008.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/Lighting2008.h"
+#include "v8tree/Service.h"
 
 namespace RBX
 {
@@ -26,6 +31,19 @@ namespace RBX
 		void ViewRbxGfx::updateSettings(float shadingQuality, float meshDetail, bool shadows, float cameraDistance)
 		{
 			renderLibScene->setThrottle(shadingQuality, meshDetail, shadows, cameraDistance);
+		}
+
+		// 004d9c90: Lighting from ServiceProvider::create<Lighting>() 004b3870 on dataModel (+0x14, null-checked);
+		// renderLibScene (+0x8) slot 1 presetLighting(NULL sky, skyParameters +0x130 (copy 004d7020), ambientTop +0x228,
+		// ambientBottom +0x234); colorClearValue (+0x14) = clearColor +0x244; then __RTDynamicCast RenderSceneBase
+		// 00941194 -> RenderNew::RenderScene 009411c4 and shadowColor (+0x328) = Lighting shadowColor +0x254.
+		void ViewRbxGfx::suppressSkybox()
+		{
+			Lighting* lighting = ServiceProvider::create<Lighting>(static_cast<ServiceProvider*>(dataModel.get()));
+			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(),
+			                               lighting->getAmbientTop(), lighting->getAmbientBottom());
+			renderLibScene->colorClearValue = lighting->getClearColor();
+			dynamic_cast<RenderNew::RenderScene*>(renderLibScene.get())->shadowColor = lighting->getShadowColor();
 		}
 
 		Instance* ViewRbxGfx::getWorkspace()

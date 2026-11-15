@@ -34,6 +34,8 @@ namespace RBX
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
 	// Dynamic initializers 007f5df0, 007f5e30, 007f5e70, 007f5e90, 007f5ec0, 007f5ef0 (in this order).
+	// desc_TextureId (00979cbc) and desc_Selected (00979d18) have external linkage so the split unit
+	// HopperBinSelect.cpp (setTextureId 005d11e0, onSelectScript 005d1240) can reference them.
 	Reflection::PropDescriptor<BackpackItem, TextureId> desc_TextureId("TextureId", "Data", &BackpackItem::getTextureId, &BackpackItem::setTextureId, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::EnumPropDescriptor<HopperBin, HopperBin::BinType> desc_BinType("BinType", "Data", &HopperBin::getBinType, &HopperBin::setBinType, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::SignalDesc<HopperBin, void(boost::shared_ptr<Instance>)> desc_Selected("Selected", "mouse");

@@ -2,23 +2,17 @@
 // 2008-06 RBX::RotateJoint members that read the native Primitive / Body (inactive): getChannelValue 00645af0,
 // canBuildJoint 00645f60 and putInKernel 00646550. The other rows of the RotateJoint unit live in WorldJointRotate.cpp.
 //
-// v8world/Joints2008.h cannot be included next to a Primitive declaration that has getSurfaceData / getController /
-// getBody (the part-embedded v8world/Primitive.h includes the donor v8world/RigidJoint.h, and Primitive2008.h has no
-// getSurfaceData), so this unit takes the part-embedded Primitive (first on the include path) with the donor
-// v8world/RotateJoint.h: same RotateJoint / MultiJoint / Joint fields and offsets as Joints2008.h (rotateConnector
-// +0xc0, MultiJoint +0x88..+0xbc, jointCoord0 +0x28 / jointCoord1 +0x58) and the same decorated names.
+// Earlier batches took the donor v8world/RotateJoint.h with the donor Body (pv +0x88, wrong displacements); with
+// NATIVE_PRIMITIVE_NATIVE_BODY the part-embedded Primitive.h no longer conflicts with v8world/Joints2008.h (same
+// RotateJoint / MultiJoint / Joint fields and decorated names: rotateConnector +0xc0, MultiJoint +0x88..+0xbc,
+// jointCoord0 +0x28 / jointCoord1 +0x58).
 //
-// NATIVE_KERNEL_NEWPOINT_PENDING (batch 15): the 2008 Body path. With NATIVE_PRIMITIVE_NATIVE_BODY the part-embedded
-// Primitive.h reaches native-headers/v8kernel/Body2008.h (pv +0x94) and IPipelined2008.h, so the unit takes
-// v8world/Joints2008.h, v8kernel/Kernel2008.h and v8kernel/Connector2008.h (whose switch half includes Body2008.h /
-// Point2008.h / GeoPair2008.h). The only missing declaration is Kernel::newPoint 005fb260 (`Point* newPoint(Body*,
-// const G3D::Vector3&)`, thiscall `ret 8`, called twice per loop here) in Kernel2008.h; with it added (scratch copy)
-// putInKernel 00646550 compiles IDENTICAL (835 bytes) and getChannelValue / canBuildJoint stay identical. Remove the
-// #else branch once Kernel2008.h declares newPoint. Without the macro the unit compiles exactly as before.
-// The bodies use getPrimitive(0) / getPrimitive(1) / Matrix3ToNormalId(getJointCoord(0).rotation), the inline bodies
-// of the donor getAxlePrim / getHolePrim / getAxleId, which Joints2008.h does not declare.
+// The 2008 Body path (batch 16): NATIVE_PRIMITIVE_NATIVE_BODY makes the part-embedded Primitive.h reach
+// native-headers/v8kernel/Body2008.h (pv +0x94) and IPipelined2008.h, so the unit takes v8world/Joints2008.h,
+// v8kernel/Kernel2008.h (newPoint 005fb260) and v8kernel/Connector2008.h (whose switch half includes Body2008.h /
+// Point2008.h / GeoPair2008.h). The donor RotateJoint inlines getAxlePrim / getHolePrim / getAxleId are in
+// Joints2008.h.
 #undef _RELEASEASSERT
-#ifdef NATIVE_KERNEL_NEWPOINT_PENDING
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8world/Primitive.h"
 #include "v8world/Joints2008.h"
@@ -27,16 +21,6 @@
 #include "v8kernel/Constants.h"
 #include "v8kernel/Kernel2008.h"
 #include "v8kernel/Connector2008.h"
-#else
-#include "v8world/Primitive.h"
-#include "v8world/RotateJoint.h"
-#include "v8world/SurfaceData.h"
-#include "v8world/Tolerance.h"
-#include "v8kernel/Constants.h"
-#include "v8kernel/Body.h"
-#include "v8kernel/Kernel.h"
-#include "v8kernel/Connector.h"
-#endif
 #include "util/Face.h"
 #include "util/Math.h"
 
@@ -44,13 +28,15 @@ namespace RBX
 {
 	// 00645af0: Matrix3ToNormalId 005ec310 (getAxleId), Primitive::getSurfaceData inline (SurfaceData::empty static
 	// under guard 0097abd0), Controller slot 1 getValue, Constants::uiDt 006492f0 (folded), jump table on inputType.
+	// Batch 16: on the native Body path the code bytes are unchanged, but prove.py reports "reference identity differs:
+	// $LN13 (bound 00643689)": the jump-table label is bound from a foreign receipt
+	// (work/native-client/reference-bindings-prove-prove-HumanoidState-1794711061.json, keyed by label name only).
 	float RotateJoint::getChannelValue(int uiStepId)
 	{
-		NormalId axleId = Matrix3ToNormalId(getJointCoord(0).rotation);   // getAxleId (005ec310 is called before the
-		                                                                 // axle primitive +0xc is loaded)
-		const SurfaceData& axleSurface = getPrimitive(0)->getSurfaceData(axleId);
+		NormalId axleId = getAxleId();   // Matrix3ToNormalId 005ec310 is called before the axle primitive +0xc is loaded
+		const SurfaceData& axleSurface = getAxlePrim()->getSurfaceData(axleId);
 
-		Controller* controller = getPrimitive(0)->getController();
+		Controller* controller = getAxlePrim()->getController();
 
 		float value = controller->getValue(axleSurface.inputType);
 		float paramA = axleSurface.paramA;
@@ -161,14 +147,12 @@ namespace RBX
 	// IPipelined::getKernel 00645850, Kernel::newPoint 005fb260, new PointToPointBreakConnector (0x1c, constructor
 	// inline, vtable 0084ada8, Math::inf static), addToMultiJoint 00646980, getTorqueArmLength 00646460, new
 	// RotateConnector (0x34, constructor 00606170) on getPoint(0) / getPoint(2) 006469d0.
-	// Default path: the donor Body (pv +0x88) gives the wrong displacements; the NATIVE_KERNEL_NEWPOINT_PENDING path
-	// (Body2008.h, pv +0x94) compiles IDENTICAL once Kernel2008.h declares newPoint 005fb260 (scratch-validated).
 	void RotateJoint::putInKernel(Kernel* _kernel)
 	{
 		MultiJoint::putInKernel(_kernel);
 
-		Body* b0 = getPrimitive(0)->getBody();
-		Body* b1 = getPrimitive(1)->getBody();
+		Body* b0 = getAxlePrim()->getBody();
+		Body* b1 = getHolePrim()->getBody();
 
 		G3D::CoordinateFrame cAxleWorld = b0->getCoordinateFrame() * jointCoord0;
 		G3D::CoordinateFrame cHoleWorld = b1->getCoordinateFrame() * jointCoord1;

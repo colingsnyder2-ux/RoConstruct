@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // 2008-06 native RBX::Network::Replicator::ReplicatorStatsItem rows that do not depend on the (partial) Replicator
 // layout (inactive); evidence in native-headers/Network/Replicator2008.h. Verified by
 // tests/record_native_network_replicator2008.py. Original bodies: Creatable<Instance>::create<ReplicatorStatsItem,

@@ -6,8 +6,8 @@
 // and the erase 0064d180 are built here through the native 2008 Clump / Assembly (v8world/AssemblyLayout.h,
 // NATIVE_CLUMP_DECL: +0x40 SimJob back-link); the erase calls the neighbour-job member 004cb480 (SimJobStage2008.h, inline) and the cdecl mechanism
 // transfer SimJob::transferMechanisms 005e53a0 (SimJob2008.cpp). 0064d200 / 0064d2a0 (add / remove an assembly) are
-// written below behind NATIVE_SIMJOBSTAGE_ASSEMBLY_PENDING until v8world/SimJobStage2008.h declares them (the native
-// Clump now supplies getBody 005e6160 and getSimJob 005e6110). Not built: 0064d3d0 / 0064d410.
+// built below (the native Clump supplies getBody 005e6160 and getSimJob 005e6110). Also built: notifyMovingPrimitives 0064d3d0. 0064d410 is JointBuilder::canJoin (registry), not this unit.
+#include <algorithm>
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SimJob2008.h"
 #include "v8world/Edge.h"
@@ -79,9 +79,7 @@ namespace RBX
 		eraseSimJob(job);
 	}
 
-#ifdef NATIVE_SIMJOBSTAGE_ASSEMBLY_PENDING
-	// Pending header proposal (v8world/SimJobStage2008.h owner): declare `void addAssembly(Assembly* a);` (0064d200)
-	// and `void removeAssembly(Assembly* a);` (0064d2a0), public, analog names (registry rows are placeholders).
+	// Declared in v8world/SimJobStage2008.h (public, analog names; registry rows are placeholders).
 	// Batch 15 scratch compile with those two declarations: both bodies IDENTICAL to the target (relocs masked), and
 	// every relocation names the target's callee (00645830 putInStage, 005e6160 Clump::getBody, 005fb0e0 / 005fb110
 	// Kernel::insertBody / removeBody, 005e51e0 AssemblySimJob(Assembly*), 0064d0f0, 005e6110 Clump::getSimJob,
@@ -110,5 +108,24 @@ namespace RBX
 		a->removeFromKernel();
 		a->removeFromStage(this);
 	}
-#endif
+
+	// 0064d3d0 (openrbx SimJobStage::notifyMovingPrimitives, there a for_each over the mechanisms; caller 005e9fd0):
+	// every job's assembly (SimJob slot 2, asked twice) is told Clump::notifyMoved 005e6170.
+	// The loop walks raw list nodes with no checked-iterator calls, as std::for_each does (it unwraps the checked
+	// iterators); openrbx uses std::mem_fun(&Mechanism::notifyMovingPrimitives) (SimJob2008.h has no such member).
+	// A function pointer gives the target's inlined loop (prove.py inactive_exact). Rejected: an explicit iterator
+	// loop (136 B, _SECURE_SCL checks on every ++ / *) and std::for_each with an empty functor (41 B: for_each stays
+	// out of line).
+	static void notifyJobMovingPrimitives(SimJob* job)
+	{
+		if (job->getAssembly())
+		{
+			job->getAssembly()->notifyMoved();
+		}
+	}
+
+	void SimJobStage::notifyMovingPrimitives()
+	{
+		std::for_each(simJobs.begin(), simJobs.end(), notifyJobMovingPrimitives);
+	}
 }

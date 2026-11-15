@@ -11,7 +11,10 @@ class Client { public: static bool clientIsPresent(const Instance*, bool); };
 
 InsertModelFromRobloxVerb::InsertModelFromRobloxVerb(CRobloxView* view, RBX::DataModel* model)
     : RBX::Verb(model, "ToggleToolbox"), view(view), model(model), createdAt(G3D::System::getTick()) {}
+// 00458ec0 ctor and 00458f50 isEnabled both call 005083d0 = G3D::System::getTick
+// (identity registry); the earlier getLocalTime (00508410) draft was rejected.
 
+// 00458f50
 bool InsertModelFromRobloxVerb::isEnabled() const
 {
     double now = G3D::System::getTick();

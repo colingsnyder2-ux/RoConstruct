@@ -55,6 +55,9 @@ namespace RBX
 			Peer();                                                                 // 004b4640
 			virtual ~Peer();                                                        // 004ac830 (deleting 004ad7a0)
 			virtual bool askAddChild(const Instance* instance) const;               // 0049ee20
+			// 00609a30 (donor Replicator.h Peer::peerInterface, out of line: Server::onServiceProvider 004a4100 and the
+			// ClientProxy constructor 004a1ed0 call it; its 7-byte body mov eax,[ecx+0x140]; ret is identical-code folded)
+			RakPeerInterface* peerInterface();
 			virtual void onEvent(const RunService* source, Heartbeat event);       // 004add50
 			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 004b5700
 		};

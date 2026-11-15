@@ -68,18 +68,6 @@ namespace RBX
 
 	public:
 		void replaceSky(Sky* newSky);                   // 005e0650
-		const G3D::LightingParameters& getSkyParameters() const { return skyParameters; }
-		G3D::Color3 getAmbientTop() const { return ambientTop; }
-		G3D::Color3 getAmbientBottom() const { return ambientBottom; }
-		G3D::Color4 getClearColor() const { return clearColor; }
-		G3D::Color4 getShadowColor() const { return shadowColor; }
-		G3D::Color3 getShadowColor3() const { return G3D::Color3(shadowColor.r, shadowColor.g, shadowColor.b); }
-
-		void setShadowColor(G3D::Color4 value);         // 005e2030
-		void setClearColor3(G3D::Color3 value);         // 005e2540
-		void setTime(const boost::posix_time::time_duration& value); // 005e2570
-		void setTimeStr(const std::string& value);       // 005e2730
-		void setMinutesAfterMidnight(double value);      // 005e26e0
 
 		// Inline const getters (donor shape). Readers: ViewRbxGfx::suppressSkybox 004d9c90 reads skyParameters +0x130,
 		// ambientTop +0x228, ambientBottom +0x234, clearColor +0x244 and shadowColor +0x254.

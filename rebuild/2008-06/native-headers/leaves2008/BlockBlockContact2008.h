@@ -40,6 +40,8 @@ struct NativeLeaves2008Layout;
 
 namespace RBX
 {
+	class Block;
+
 	class BlockBlockContact : public Contact
 	{
 		friend struct ::NativeLeaves2008Layout;
@@ -59,7 +61,7 @@ namespace RBX
 		NormalId planeID;                           // +0x74
 		NormalId otherPlaneID;                      // +0x78
 
-		void deleteUnmatchedConnectors();                        // 00607e00 (`ret`; donor name, body not here)
+		void deleteUnmatchedConnectors();                        // 00607e00 (`ret`; donor name)
 		// 00607cc0 (`ret 0x14`, placeholder func_00607cc0; donor v8world/Contact.h signature): GeoPair::match 00606a50
 		// on connectors[i] +0x8, contactPairMatches / contactPairMisses, createConnector 00606e00.
 		ContactConnector* matchContactConnector(Body* b0, Body* b1, GeoPairType _pairType, int param0, int param1);   // 00607cc0
@@ -68,6 +70,11 @@ namespace RBX
 		// Donor name (donor getBestPlaneEdge(bool& planeContact, float overlapIgnored); 2008 planeContact is +0x5c).
 		bool getBestPlaneEdge(float overlapIgnored);             // 00607280
 		void loadGeoPairEdgeEdge(int b0, int b1, int edge0, int edge1);   // 00607ea0 (`ret 0x10`; donor name)
+		// Donor v8world/Contact.h inline accessor (static_cast<Block*>(getPrimitive(i)->getGeometry()), Primitive +0x9c:
+		// 00607f3e..00607f42 in loadGeoPairEdgeEdge 00607ea0). Declared only: its body needs the complete 2008 Primitive,
+		// which this header cannot include (BlockBlockContactStep.cpp keeps a unit-local Primitive with the inline
+		// aaBoxCollide), so the unit that uses it defines it inline (BlockBlockContactStep.cpp).
+		Block* block(int i);
 		int computePlaneContact();                               // 00608580 (`ret`; donor name, result unused)
 		void updateConnectors();                                 // 006087a0 (analog name; called by stepContact)
 

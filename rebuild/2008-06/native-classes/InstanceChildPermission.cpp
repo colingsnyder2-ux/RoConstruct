@@ -11,7 +11,7 @@ bool Instance::canAddChild(const Instance* child) const
     return false;
 }
 
-// 0041f390
+// 0041f390: canAddChild 0041f340 stays an out-of-line call in the original.
 bool Instance::canSetParent(const Instance* newParent) const
 {
     return !newParent || newParent->canAddChild(this);

@@ -64,7 +64,12 @@ namespace RBX
 		void insertInstances(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent, InsertMode insertMode, PromptMode promptMode);
 		void setInsertPoint(const G3D::Vector3& topCenter);
 		void moveToPoint(PVInstance* pv, G3D::Vector3 point);
-		ControllerTypeArray getControllersUsed() const;
+		// Inline in 2008-06: no out-of-line RootInstance::getControllersUsed in the identity registry; ArrowPanel::isVisible
+		// 00656db0 reads Workspace +0x2a8 through ComputeProp<ControllerTypeArray, RootInstance>::getValue 00656c30.
+		ControllerTypeArray getControllersUsed() const
+		{
+			return ControllersUsed;
+		}
 		World* getWorld()
 		{
 			return world.get();
