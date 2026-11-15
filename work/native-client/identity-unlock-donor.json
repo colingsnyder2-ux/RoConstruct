@@ -1,0 +1,266 @@
+{
+ "004a1d80": {
+  "evidence": [
+   {
+    "donor": "RBX::Network::Server::start(int, int)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\start_3.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "Started network server %s"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?start@Server@Network@RBX@@QAEXHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?start@Server@Network@RBX@@QAEXHH@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::Network::Server",
+  "signature": "public: void __thiscall RBX::Network::Server::start(int,int)"
+ },
+ "004a70b0": {
+  "evidence": [
+   {
+    "donor": "RBX::Network::IdSerializer::deserializeId(RakNet::BitStream&, RBX::Guid::Data&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\deserializeId.c",
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\deserializeIdWithoutDictionary.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "BitStream >> RBX::Guid::Data failed"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?deserializeId@IdSerializer@Network@RBX@@QAEXAAVBitStream@RakNet@@AAUData@Guid@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?deserializeId@IdSerializer@Network@RBX@@QAEXAAVBitStream@RakNet@@AAUData@Guid@3@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::Network::IdSerializer",
+  "signature": "public: void __thiscall RBX::Network::IdSerializer::deserializeId(class RakNet::BitStream &,struct RBX::Guid::Data &)"
+ },
+ "004ae9a0": {
+  "evidence": [
+   {
+    "donor": "RBX::Network::Replicator::MarkerItem::write(RakNet::BitStream&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\write_9.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "Replication: Sending marker %d to %s"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?write@MarkerItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?write@MarkerItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::Network::Replicator::MarkerItem",
+  "signature": "public: virtual void __thiscall RBX::Network::Replicator::MarkerItem::write(class RakNet::BitStream &)"
+ },
+ "004b0800": {
+  "evidence": [
+   {
+    "donor": "RBX::Network::Replicator::readInstanceDelete(RakNet::BitStream&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\readInstanceDelete.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "Replication ~??? << %s",
+     "Replication: ~%s:%d << %s"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?readInstanceDelete@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?readInstanceDelete@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::Network::Replicator",
+  "signature": "private: void __thiscall RBX::Network::Replicator::readInstanceDelete(class RakNet::BitStream &)"
+ },
+ "004b47b0": {
+  "evidence": [
+   {
+    "donor": "RBX::Network::Replicator::DeleteInstanceItem::write(RakNet::BitStream&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\write_7.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "Replication: ~%s:%s >> %s",
+     "Replication: ~NULL >> %s"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?write@DeleteInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?write@DeleteInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::Network::Replicator::DeleteInstanceItem",
+  "signature": "public: virtual void __thiscall RBX::Network::Replicator::DeleteInstanceItem::write(class RakNet::BitStream &)"
+ },
+ "004b8490": {
+  "evidence": [
+   {
+    "donor": "RBX::Network::Replicator::readMarker(RakNet::BitStream&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\readMarker.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "Received marker %d from %s"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?readMarker@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?readMarker@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::Network::Replicator",
+  "signature": "private: void __thiscall RBX::Network::Replicator::readMarker(class RakNet::BitStream &)"
+ },
+ "00575890": {
+  "evidence": [
+   {
+    "donor": "RBX::DataModel::processAccelerators(RBX::InputObject const&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\processAccelerators.c",
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\processCameraCommands.c",
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\CameraZoomInCommand.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "CameraPanLeft",
+     "CameraPanRight",
+     "CameraTiltDown",
+     "CameraTiltUp"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?processAccelerators@DataModel@RBX@@QAE?AVGuiResponse@2@ABVGuiEvent@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?processAccelerators@DataModel@RBX@@QAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::DataModel",
+  "signature": "public: class RBX::GuiResponse __thiscall RBX::DataModel::processAccelerators(class RBX::GuiEvent const &)"
+ },
+ "00579db0": {
+  "evidence": [
+   {
+    "donor": "RBX::DataModel::loadContent(RBX::ContentId)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\loadContent.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "DataModel Loading %s"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?loadContent@DataModel@RBX@@QAEXVContentId@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?loadContent@DataModel@RBX@@QAEXVContentId@2@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::DataModel",
+  "signature": "public: void __thiscall RBX::DataModel::loadContent(class RBX::ContentId)"
+ },
+ "005a9140": {
+  "evidence": [
+   {
+    "donor": "RBX::ScriptContext::delay(lua_State*)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\delay.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "delay function requires 2 arguments"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?delay@ScriptContext@RBX@@CAHPAUlua_State@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?delay@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::ScriptContext",
+  "signature": "private: static int __cdecl RBX::ScriptContext::delay(struct lua_State *)"
+ },
+ "0064b8e0": {
+  "evidence": [
+   {
+    "donor": "RBX::SleepStage::SleepStage(RBX::IStage*, RBX::World*)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\SleepStage_1.c",
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\SleepStage.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "Collision",
+     "Collision"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0SleepStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0SleepStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::SleepStage",
+  "signature": "public: __thiscall RBX::SleepStage::SleepStage(class RBX::IStage *,class RBX::World *)"
+ },
+ "00675360": {
+  "evidence": [
+   {
+    "donor": "RBX::AdornRbxGfx::explosion(G3D::Sphere const&)",
+    "donor_files": [
+     "local\\references\\ios-2013-12_2.132.41333\\RBX\\explosion.c"
+    ],
+    "kind": "ios2013-donor-string",
+    "literals": [
+     "RBX Error creating psys",
+     "explosion/explosionMatl"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?explosion@AdornRbxGfx@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?explosion@AdornRbxGfx@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z",
+  "name_source": "identity-unlock-donor",
+  "owner_class": "RBX::AdornRbxGfx",
+  "signature": "public: virtual void __thiscall RBX::AdornRbxGfx::explosion(class G3D::Sphere const &,class G3D::Color4 const &,class G3D::Color4 const &)"
+ }
+}

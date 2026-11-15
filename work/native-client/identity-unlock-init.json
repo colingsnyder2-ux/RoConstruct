@@ -1,0 +1,3620 @@
+{
+ "007ee760": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009288dc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ee7b0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00928fd4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ee800": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00928fd8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ee850": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00928fdc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ee8a0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00928fe0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ee8f0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00928fe4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ee9b0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092aca8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eea00": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acac"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eea50": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acb0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eeaa0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acb4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eeaf0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acb8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eeb40": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acbc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eeb90": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acc0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eebe0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092acc4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eec30": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092bec0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eec80": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092bec4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eecd0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092bec8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eed20": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092becc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eedc0": {
+  "evidence": [
+   {
+    "kind": "source-address-comment",
+    "literal": [
+     "SetBody"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp:224",
+    "this": [
+     "0096cc98"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Efunc_SetBody@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Efunc_SetBody@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eedf0": {
+  "evidence": [
+   {
+    "kind": "source-address-comment",
+    "literal": [
+     "SetCallback"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp:225",
+    "this": [
+     "0096cce0"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Efunc_SetCallback@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Efunc_SetCallback@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eee50": {
+  "evidence": [
+   {
+    "kind": "source-address-comment",
+    "literal": [
+     "Show"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp:227",
+    "this": [
+     "0096cd78"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Efunc_Show@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Efunc_Show@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eeef0": {
+  "evidence": [
+   {
+    "kind": "source-address-comment",
+    "literal": [
+     "Unbind"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppLeaves2008DHTMLWindow.cpp:230",
+    "this": [
+     "0096ce50"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Efunc_Unbind@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Efunc_Unbind@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eef90": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092d96c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007eefe0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092dd70"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef030": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092dd74"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef080": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092dd78"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef0d0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092dd7c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef120": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092ec40"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef180": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092f124"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef1d0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0092f128"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef270": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00930030"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef2c0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00930034"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef870": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00931c30"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef930": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00932020"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef9a0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00932eb0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007ef9f0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00932eb4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efb60": {
+  "evidence": [
+   {
+    "global": "?tag_schema_version@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_schema_version@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_schema_version@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efb80": {
+  "evidence": [
+   {
+    "global": "?tag_color_map@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_color_map@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_color_map@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efba0": {
+  "evidence": [
+   {
+    "global": "?tag_color@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_color@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_color@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efbc0": {
+  "evidence": [
+   {
+    "global": "?tag_ldraw_code@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_ldraw_code@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_ldraw_code@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efbe0": {
+  "evidence": [
+   {
+    "global": "?tag_roblox_code@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_roblox_code@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_roblox_code@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efc00": {
+  "evidence": [
+   {
+    "global": "?tag_part_map@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_part_map@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_part_map@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efc20": {
+  "evidence": [
+   {
+    "global": "?tag_part@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_part@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_part@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efc40": {
+  "evidence": [
+   {
+    "global": "?tag_name@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_name@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_name@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efc60": {
+  "evidence": [
+   {
+    "global": "?tag_description@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_description@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_description@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efc80": {
+  "evidence": [
+   {
+    "global": "?tag_ldraw_filename@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_ldraw_filename@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_ldraw_filename@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efca0": {
+  "evidence": [
+   {
+    "global": "?tag_mapping_fidelity@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_mapping_fidelity@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_mapping_fidelity@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efcc0": {
+  "evidence": [
+   {
+    "global": "?tag_roblox_part@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_roblox_part@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_roblox_part@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efce0": {
+  "evidence": [
+   {
+    "global": "?tag_shape@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_shape@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_shape@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efd00": {
+  "evidence": [
+   {
+    "global": "?tag_form_factor@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_form_factor@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_form_factor@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efd20": {
+  "evidence": [
+   {
+    "global": "?tag_size_vect3@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_size_vect3@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_size_vect3@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efd40": {
+  "evidence": [
+   {
+    "global": "?tag_y_offset@@3ABVName@RBX@@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Etag_y_offset@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Etag_y_offset@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007efe20": {
+  "evidence": [
+   {
+    "kind": "registry-name",
+    "symbol": "??__F?_shareWindow@Win32Window@G3D@@0V?$auto_ptr@VWin32Window@G3D@@@std@@A@@YAXXZ"
+   },
+   {
+    "destructor": "007fb0c0",
+    "kind": "registers-atexit"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?_shareWindow@Win32Window@G3D@@0V?$auto_ptr@VWin32Window@G3D@@@std@@A@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?_shareWindow@Win32Window@G3D@@0V?$auto_ptr@VWin32Window@G3D@@@std@@A@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1310": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093780c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1360": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937810"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f13b0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937814"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1400": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937818"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1450": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093781c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f14a0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937820"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f14f0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937824"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1540": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937828"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1590": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093782c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f15e0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937830"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1630": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937834"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1680": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937838"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f16d0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093783c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1720": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937840"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1770": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00937844"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1a50": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00938ad8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1aa0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00938adc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1b10": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00938c6c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1d50": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093a2a0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1da0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093a2a4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f22c0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c728"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f2310": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c72c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f2360": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c730"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f23b0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c734"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f2400": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c738"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f2450": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c73c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f24a0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c740"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f24f0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0093c744"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f2570": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "00941230"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3440": {
+  "evidence": [
+   {
+    "global": "?event_itemChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?event_itemChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?event_itemChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f36d0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009479c0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3720": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009479c4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3770": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009479c8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3c60": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009481d4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3cb0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009481d8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3d00": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "009481dc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3e30": {
+  "evidence": [
+   {
+    "kind": "reflection-literal+ctor-owner",
+    "literal": [
+     "BreakJoints"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:63",
+    "this": [
+     "00975470"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Edesc_breakJoints@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Edesc_breakJoints@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3e70": {
+  "evidence": [
+   {
+    "kind": "reflection-literal+ctor-owner",
+    "literal": [
+     "MakeJoints"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:64",
+    "this": [
+     "00975508"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Edesc_makeJoints@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Edesc_makeJoints@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f44b0": {
+  "evidence": [
+   {
+    "kind": "reflection-literal+ctor-owner",
+    "literal": [
+     "BreakJoints"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:63",
+    "this": [
+     "00976208"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Edesc_breakJoints@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Edesc_breakJoints@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f44f0": {
+  "evidence": [
+   {
+    "kind": "reflection-literal+ctor-owner",
+    "literal": [
+     "MakeJoints"
+    ],
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:64",
+    "this": [
+     "00976060"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Edesc_makeJoints@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Edesc_makeJoints@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f4630": {
+  "evidence": [
+   {
+    "global": "?prop_Color@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VColor3@G3D@@@Reflection@2@B",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?prop_Color@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VColor3@G3D@@@Reflection@2@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?prop_Color@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VColor3@G3D@@@Reflection@2@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f4f00": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094c3fc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5510": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094e370"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5650": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f5e8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f56a0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f5ec"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f56f0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f5f0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5740": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f5f4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5790": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f5f8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f57e0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f5fc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5830": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f600"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5880": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f604"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f58d0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f608"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5920": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f60c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5970": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f610"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f59c0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f614"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5a10": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f618"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5a60": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f61c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5ab0": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f620"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5b00": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f624"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5b50": {
+  "evidence": [
+   {
+    "kind": "creator-map-store",
+    "object": "0094f628"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E?creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E?creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f62d0": {
+  "evidence": [
+   {
+    "global": "?propTorso@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EpropTorso@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EpropTorso@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f6330": {
+  "evidence": [
+   {
+    "global": "?propLeftLeg@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EpropLeftLeg@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EpropLeftLeg@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f6390": {
+  "evidence": [
+   {
+    "global": "?propRightLeg@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A",
+    "kind": "named-data-global"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EpropRightLeg@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EpropRightLeg@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f66f0": {
+  "evidence": [
+   {
+    "kind": "source-address-comment",
+    "literal": [
+     "Health"
+    ],
+    "source": "rebuild/2008-06/native-classes/Humanoid2008.cpp:67",
+    "this": [
+     "0097a460"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EpropHealth@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EpropHealth@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f6750": {
+  "evidence": [
+   {
+    "kind": "source-address-comment",
+    "literal": [
+     "MaxHealth"
+    ],
+    "source": "rebuild/2008-06/native-classes/Humanoid2008.cpp:68",
+    "this": [
+     "0097a3d0"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EpropMaxHealth@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EpropMaxHealth@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa0b0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009288dc",
+    "vtable": "??_7Creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa0f0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00928fe4",
+    "vtable": "??_7Creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa130": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00928fe0",
+    "vtable": "??_7Creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa170": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00928fdc",
+    "vtable": "??_7Creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa1b0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00928fd8",
+    "vtable": "??_7Creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa1f0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00928fd4",
+    "vtable": "??_7Creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa310": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acc4",
+    "vtable": "??_7Creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa350": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acc0",
+    "vtable": "??_7Creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa390": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acbc",
+    "vtable": "??_7Creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa3d0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acb8",
+    "vtable": "??_7Creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa410": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acb4",
+    "vtable": "??_7Creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa450": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acb0",
+    "vtable": "??_7Creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa490": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092acac",
+    "vtable": "??_7Creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa4d0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092aca8",
+    "vtable": "??_7Creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa510": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092becc",
+    "vtable": "??_7Creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa550": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092bec8",
+    "vtable": "??_7Creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa590": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092bec4",
+    "vtable": "??_7Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa5d0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092bec0",
+    "vtable": "??_7Creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa7a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092d96c",
+    "vtable": "??_7Creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa7e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092dd7c",
+    "vtable": "??_7Creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa820": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092dd78",
+    "vtable": "??_7Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa860": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092dd74",
+    "vtable": "??_7Creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa8a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092dd70",
+    "vtable": "??_7Creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa900": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092ec40",
+    "vtable": "??_7Creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa940": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092f128",
+    "vtable": "??_7Creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fa980": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0092f124",
+    "vtable": "??_7Creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007faa00": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00930034",
+    "vtable": "??_7Creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007faa40": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00930030",
+    "vtable": "??_7Creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fae70": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00931c30",
+    "vtable": "??_7Creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007faed0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00932020",
+    "vtable": "??_7Creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007faf40": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00932eb4",
+    "vtable": "??_7Creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007faf80": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00932eb0",
+    "vtable": "??_7Creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb3a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937844",
+    "vtable": "??_7Creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb3e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937840",
+    "vtable": "??_7Creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb420": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093783c",
+    "vtable": "??_7Creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb460": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937838",
+    "vtable": "??_7Creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb4a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937834",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb4e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937830",
+    "vtable": "??_7Creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb520": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093782c",
+    "vtable": "??_7Creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb560": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937828",
+    "vtable": "??_7Creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb5a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937824",
+    "vtable": "??_7Creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb5e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937820",
+    "vtable": "??_7Creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb620": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093781c",
+    "vtable": "??_7Creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb660": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937818",
+    "vtable": "??_7Creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb6a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937814",
+    "vtable": "??_7Creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb6e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00937810",
+    "vtable": "??_7Creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb720": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093780c",
+    "vtable": "??_7Creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb950": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00938adc",
+    "vtable": "??_7Creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fb990": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00938ad8",
+    "vtable": "??_7Creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fba90": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00938c6c",
+    "vtable": "??_7Creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fbc40": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093a2a4",
+    "vtable": "??_7Creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fbc80": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093a2a0",
+    "vtable": "??_7Creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc0e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c744",
+    "vtable": "??_7Creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc120": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c740",
+    "vtable": "??_7Creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc160": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c73c",
+    "vtable": "??_7Creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc1a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c738",
+    "vtable": "??_7Creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc1e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c734",
+    "vtable": "??_7Creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc220": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c730",
+    "vtable": "??_7Creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc260": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c72c",
+    "vtable": "??_7Creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc2a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0093c728",
+    "vtable": "??_7Creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fc390": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "00941230",
+    "vtable": "??_7Creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fd560": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009479c8",
+    "vtable": "??_7Creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fd5a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009479c4",
+    "vtable": "??_7Creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fd5e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009479c0",
+    "vtable": "??_7Creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fd6a0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009481dc",
+    "vtable": "??_7Creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fd6e0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009481d8",
+    "vtable": "??_7Creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fd720": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "009481d4",
+    "vtable": "??_7Creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe0f0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094c3fc",
+    "vtable": "??_7Creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe4c0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094e370",
+    "vtable": "??_7Creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe8b0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f628",
+    "vtable": "??_7Creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe8f0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f624",
+    "vtable": "??_7Creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe930": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f620",
+    "vtable": "??_7Creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe970": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f61c",
+    "vtable": "??_7Creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe9b0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f618",
+    "vtable": "??_7Creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fe9f0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f614",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fea30": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f610",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fea70": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f60c",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007feab0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f608",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007feaf0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f604",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007feb30": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f600",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007feb70": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f5fc",
+    "vtable": "??_7Creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007febb0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f5f8",
+    "vtable": "??_7Creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007febf0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f5f4",
+    "vtable": "??_7Creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fec30": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f5f0",
+    "vtable": "??_7Creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fec70": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f5ec",
+    "vtable": "??_7Creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007fecb0": {
+  "evidence": [
+   {
+    "kind": "creator-vtable-store",
+    "object": "0094f5e8",
+    "vtable": "??_7Creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@6B@"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__F?creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__F?creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ }
+}

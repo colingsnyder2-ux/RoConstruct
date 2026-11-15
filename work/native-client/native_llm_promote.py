@@ -3,6 +3,8 @@
 Usage: python native_llm_promote.py [--only-remaining] [--limit N]"""
 import argparse
 import json
+import os
+import time
 import subprocess
 import sys
 from pathlib import Path
@@ -14,6 +16,17 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--only-remaining', action='store_true', help='only addresses in remaining-3901.json')
 ap.add_argument('--limit', type=int, default=0)
 args = ap.parse_args(ARGS)
+# One promoter at a time (runs launch one at their end): a held lock means another is still promoting.
+LOCK = m.HERE / 'promote.lock'
+try:
+    lock_fd = os.open(str(LOCK), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+except FileExistsError:
+    if time.time() - LOCK.stat().st_mtime < 6 * 3600:
+        sys.exit('another promoter holds ' + str(LOCK))
+    LOCK.unlink(missing_ok=True)
+    lock_fd = os.open(str(LOCK), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+import atexit
+atexit.register(lambda: (os.close(lock_fd), LOCK.unlink(missing_ok=True)))
 remaining = set(json.loads((m.HERE.parent / 'remaining-3901.json').read_text())) if args.only_remaining else None
 DONE = m.HERE / 'promoted.json'
 done = json.loads(DONE.read_text()) if DONE.is_file() else {}
