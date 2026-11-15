@@ -1549,7 +1549,10 @@ def main():
             row = json.loads(line)
             if row['model'] not in ('cache', 'preflight'):
                 last[row['addr']] = max(last.get(row['addr'], 0), row.get('time', 0))
-        exact = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'}
+        rows = [json.loads(l) for l in LOG.open()]
+        # Retracted exacts (relied on invented names) must be re-proved honestly: not 'exact' here.
+        exact = ({r['addr'] for r in rows if r['status'] == 'inactive_exact'}
+                 - {r['addr'] for r in rows if r['status'] == 'retracted'})
         tried = {a for a in tried if a in exact or last.get(a, 0) >= cutoff}
     if args.retry_failed:   # harness fixes since the last try (flags, includes, identities) help old misses too
         tried = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'} if LOG.is_file() else set()
@@ -1648,7 +1651,9 @@ def main():
         # Land new remaining-set exacts in native-classes (lease, draft, whole-TU proof) without blocking the next run.
         subprocess.Popen([sys.executable, str(ROOT / 'work/native-client/native_llm_promote.py'), '--only-remaining'],
                          cwd=ROOT / 'work/native-client', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                         creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0))
+                         # below-normal: promotion re-proofs must not steal CPU from the next run's gates (bytes/hour)
+                         creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0)
+                         | getattr(subprocess, 'BELOW_NORMAL_PRIORITY_CLASS', 0))
         print('promotion started in background (native-llm/promoted.json)', flush=True)
     for t, d in exact if args.apply else []:
         # Serial: one destination edit at a time; the runner leases, drafts, re-proves the whole TU.
