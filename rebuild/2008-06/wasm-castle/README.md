@@ -32,7 +32,7 @@ gable roof, side sheds and spinning lattice sails using native RBX transforms. T
 
 Desktop browser with WebGL 2 recommended. Drag to orbit; wheel to zoom.
 Space: auto-orbit; R: reset; W: wireframe; S: shadows.
-P: pause clock; D: resume; hold T: run time five times faster; C: sun/moon view.
+P: pause clock; D: resume; hold T: run time fifteen times faster; C: sun/moon view.
 A full day takes 90 seconds. Escape stops the demo; reload to restart.
 Wireframe requires WEBGL_polygon_mode and may be unavailable on mobile.
 Help and camera readouts have been removed. V copies diagnostic state without displaying coordinates.

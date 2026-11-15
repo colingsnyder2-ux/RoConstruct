@@ -175,14 +175,24 @@ void CXTPCommandBar::Paint() {
     DrawCommandBar(&dc,{0,0,width,size.cy});
     if(embedded) {
         int statusTop=size.cy;
-        dc.FillSolidRect({0,statusTop,width,statusTop+25},GetXtremeColor(COLOR_BTNFACE));
-        dc.Draw3dRect({2,statusTop+2,width-2,statusTop+23},0x808080,0xffffff);
+        const char* hints[]={"Drag: orbit", "Wheel: zoom", "Space: auto-orbit", "R: reset", "Hold T: 15x time", "V: copy view", "S: shadows", "P / D: pause / run", "W: wireframe", "C: sun / moon"};
+        CRect hintRects[10];
+        int x=8,y=statusTop+23;
+        for(int i=0;i<10;++i) {
+            int length=dc.GetTextExtent(hints[i]).cx+18;
+            if(x>8&&x+length>width-8) {x=8;y+=18;}
+            hintRects[i]=CRect(x,y,x+length,y+18);x+=length;
+        }
+        int statusBottom=y+21;
+        dc.FillSolidRect({0,statusTop,width,statusBottom},GetXtremeColor(COLOR_BTNFACE));
+        dc.Draw3dRect({2,statusTop+2,width-2,statusBottom-2},0x808080,0xffffff);
         dc.SetTextColor(0);
         int seconds=int(displayClock);
-        char text[160];std::snprintf(text,sizeof(text),"%s  |  %02d:%02d %s  |  %.1f FPS  |  Drag: orbit   Wheel: zoom",displayScene?"WINDMILL ISLAND":"CASTLE ISLAND",seconds/3600,seconds/60%60,running?"Running":"Paused",displayFps);
+        char text[160];std::snprintf(text,sizeof(text),"%s  |  %02d:%02d %s  |  %.1f FPS",displayScene?"WINDMILL ISLAND":"CASTLE ISLAND",seconds/3600,seconds/60%60,running?"Running":"Paused",displayFps);
         dc.DrawText(text,{8,statusTop+4,width-8,statusTop+22},DT_SINGLELINE|DT_NOPREFIX);
-        int surfaceHeight=activePopup?std::max(statusTop+25,activePopup->originY+activePopup->clientHeight):statusTop+25;
-        EM_ASM({if(Module.reportHeight)Module.reportHeight($0,$1);},surfaceHeight,statusTop+25);
+        for(int i=0;i<10;++i) dc.DrawText(hints[i],hintRects[i],DT_SINGLELINE|DT_NOPREFIX);
+        int surfaceHeight=activePopup?std::max(statusBottom,activePopup->originY+activePopup->clientHeight):statusBottom;
+        EM_ASM({if(Module.reportHeight)Module.reportHeight($0,$1);},surfaceHeight,statusBottom);
         return;
     }
     dc.SetTextColor(0x333333);

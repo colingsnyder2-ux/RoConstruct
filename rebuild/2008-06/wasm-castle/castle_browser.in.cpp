@@ -113,7 +113,7 @@ public:
                 }
                 lastKeys[k] = pressed;
             }
-            if (cycle) clockSeconds = fmod(clockSeconds + dt * (keys['T'] ? 5 : 1) * 86400 / daySeconds, 86400.0);
+            if (cycle) clockSeconds = fmod(clockSeconds + dt * (keys['T'] ? 15 : 1) * 86400 / daySeconds, 86400.0);
             // NATIVE_FRAME
             if(cycle)windmillAngle=std::fmod(windmillAngle+dt*0.75f,Ogre::Math::TWO_PI);
             Ogre::Matrix4 rotorTransform;
