@@ -97,6 +97,9 @@ namespace RBX
 		Verb* verb;                                                  // +0x148 (00642370)
 
 	protected:
+		// The donor's protected accessor, inline: MenuItem::render2d 0064edb0 reads +0x148 directly; its emitted
+		// inline copy is 00609a40 (byte-exact).
+		Verb* getVerb() { return verb; }                             // 00609a40
 		virtual bool isEnabled();                                    // slot 30, 006423e0
 		virtual void onClick(const GuiEvent&);                       // slot 25, 00642270
 	public:
