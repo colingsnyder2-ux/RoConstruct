@@ -31,6 +31,8 @@ namespace G3D { class Vector3; class Vector3int16; }
 
 namespace RBX
 {
+	class Ball;
+	class Block;
 	class Body;
 	class ContactConnector;
 	class Kernel;
@@ -103,6 +105,11 @@ namespace RBX
 	private:
 		ContactConnector* ballBallConnector;            // +0x34
 
+		// Donor v8world/Contact.h inline accessor (rbx_static_cast of getGeometry; no code of its own). It needs the
+		// complete Ball (v8world/Ball2008.h), so it is only declared here and defined inline by the unit that uses it
+		// (BallBallContactStep.cpp: computeIsColliding 00606e90 / stepContact 00606f80).
+		Ball* ball(int i);
+
 	private:
 		virtual void deleteAllConnectors()              // slot 5 (0060cb50)
 		{
@@ -134,8 +141,25 @@ namespace RBX
 
 	private:
 		ContactConnector* ballBlockConnector;           // +0x34
-		bool computeIsColliding(short& onBorder, G3D::Vector3int16& clip,
+		// onBorder is int&: 00607020 passes the reference straight to Block::projectToFace 00647b90 (`int& onBorder`)
+		// and stepContact 00607150 reads it back as a dword (`mov edx, [esp + 0x18]; test edx, edx`).
+		bool computeIsColliding(int& onBorder, G3D::Vector3int16& clip,
 			G3D::Vector3& projectionInBlock, float overlapIgnored); // 00607020
+
+		// Donor v8world/Contact.h inline accessors (no code of their own). prim0 is the ball, prim1 the block: 00607150
+		// reads the radius through +0xc -> +0x9c and the block geometry through +0x10 -> +0x9c. ball() / block() need
+		// the complete Ball / Block (v8world/Ball2008.h, Block2008.h, which this header does not include), so they are
+		// only declared here and defined inline by the units that use them (BallBlockContactStep.cpp).
+		Primitive* ballPrim()
+		{
+			return getPrimitive(0);
+		}
+		Primitive* blockPrim()
+		{
+			return getPrimitive(1);
+		}
+		Ball* ball();
+		Block* block();
 
 	private:
 		virtual void deleteAllConnectors()              // slot 5 (0060cb50, folded with BallBallContact's)
