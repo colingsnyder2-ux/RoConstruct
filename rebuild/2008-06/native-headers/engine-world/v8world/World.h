@@ -20,6 +20,7 @@ namespace RBX
 	class ContactManager;
 	class SleepStage;
 	class JointStage;
+	class CleanStage;
 	class SimJobStage;
 	class ClumpStage;
 	class CollisionStage;
@@ -46,7 +47,14 @@ namespace RBX
 	private:
 		float throttlePercentage; // Name provisional; original constructor initializes this real float to 100.
 		ContactManager* contactManager;
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		// First 2008 stage (+0x88): World() 005ea920 news 0x10 and calls CleanStage(NULL, this) 0064a310;
+		// onJointPrimitiveNulling 005e9240 / onJointPrimitiveSet 005e9250 tail-call CleanStage 0064a420 / 0064a460.
+		// Only units that opt in to native-headers/kernel-stages (2008 StageType numbering) see this type.
+		CleanStage* jointStage;
+#else
 		JointStage* jointStage;
+#endif
 		G3D::Array<Primitive*> touch;
 		G3D::Array<Primitive*> touchOther;
 		bool inStepCode;
