@@ -33,6 +33,12 @@
 //            CoordinateFrame() 004782d0 at +0x28 and +0x58. Joint(p0, p1, c0, c1) 006455c0: the same, then
 //            Math::snapToGrid(c, 0.1f) 005deed0 copied into +0x28 / +0x58.
 //   dtor     ~Joint 00645490 only restores the vtable (no assertion in 2008).
+// Opt-in NATIVE_MOTOR_JOINT_DONOR_BASE: a unit that reaches the donor joint headers through v8datamodel/JointInstance.h
+// (donor v8world/Joint.h) defines it before including this header, which then declares only the 2008 MotorJoint below
+// over the donor Joint, in place of the donor v8world/MotorJoint.h (which keeps `int polarity`). The donor Joint is 0x88
+// bytes like the 2008 Joint: the donor-layout getter read maxVelocity at +0x94 = 0x88 + link + polarity + currentAngle.
+// Without the macro this header is unchanged.
+#ifndef NATIVE_MOTOR_JOINT_DONOR_BASE
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Vector2.h>
 #include "AppUnit658/Edge.h"
@@ -409,6 +415,15 @@ namespace RBX
 		static bool compatibleSurfaces(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1);
 	};
 
+#else
+#include "v8world/Joint.h"
+#include "v8kernel/Link.h"
+
+struct NativeWorldJointsLayout;
+
+namespace RBX
+{
+#endif
 	// MotorJoint() 005e5bf0: Joint(), vtable, link +0x88 = new RevoluteLink (0xd0: Link() 00613d20, jointAngle +0xcc,
 	// vtable 0083f75c), currentAngle +0x8c, maxVelocity +0x90, desiredAngle +0x94 = 0. No polarity field in 2008.
 	// ~MotorJoint 005e5e00 deletes the link (non-virtual ~Link 0047d410) before ~Joint.

@@ -3,15 +3,21 @@
 // VelocityMotor::setHole 0060c400 uses the 2008 SignalDesc::connect(source, slot, int group) of reflection/signal.h;
 // VelocityMotor::onAncestorChanged 0060a0f0 uses JointInstance::onAncestorChanged 005e3a80 (native JointInstance.h),
 // Workspace::getWorldIfInWorkspace 005a3390 and the inline IPipelined::getWorld with the 2008 KERNEL_STAGE 7 (opt-in
-// kernel-stages IStage.h on the flags line). The VelocityMotor bodies that read MotorJoint fields still use the donor
-// v8world/MotorJoint.h (with `polarity`); the 2008 MotorJoint (Joints2008.h) cannot be included next to the donor
-// v8world/Joint.h that native JointInstance.h includes.
+// kernel-stages IStage.h on the flags line). The VelocityMotor bodies that read MotorJoint fields use the 2008
+// MotorJoint of v8world/Joints2008.h (NATIVE_MOTOR_JOINT_DONOR_BASE: declared over the donor Joint that native
+// JointInstance.h reaches; no polarity, so currentAngle +0x8c / maxVelocity +0x90 / desiredAngle +0x94 as 005e2900,
+// 0060a240, 0060a250, 0060c580, 0060c5c0 and 0060c600 read them).
 // Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600), /I{headers}/kernel-stages and /U_RELEASEASSERT
-// (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
-// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
+// (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0), and
+// /I{headers}/part-embedded (the 2008 PartInstance embeds its Primitive at +0x228: setPart 0060a020 takes
+// `lea edi, [eax + 0x228]` for part->getPrimitive()).
+// native-flags: /I{headers}/kernel-stages /I{headers}/part-embedded /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /U_RELEASEASSERT
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
-#include "v8world/MotorJoint.h"
+// The 2008 MotorJoint (no polarity: currentAngle +0x8c, maxVelocity +0x90, desiredAngle +0x94, read by 0060a240 /
+// 0060a250 / 0060c580 / 0060c5c0 / 0060c600) over the donor Joint that JointInstance.h reaches.
+#define NATIVE_MOTOR_JOINT_DONOR_BASE
+#include "v8world/Joints2008.h"
 #include "reflection/enumconverter.h"
 #include "AppDraw/Draw.h"
 #include "AppDraw/DrawAdorn.h"
@@ -102,8 +108,8 @@ namespace RBX
 	}
 
 	// 0060a490: not exact (same instructions, the original allocates ecx/edx/eax for the temporaries).
-	// computeLocalCoordinateFrame 00609da0 is not recovered: it reads PartInstance's embedded Primitive (+0x228)
-	// geometry, a layout the shared PartInstance.h/Primitive.h do not have.
+	// computeLocalCoordinateFrame 00609da0 is not recovered here: it reads PartInstance's embedded Primitive (+0x228)
+	// geometry, which this unit now reaches through /I{headers}/part-embedded (not yet attempted).
 	// Parked (hard-leftover batch 8, 2026-11-13). Rejected variants, each recompiled and diffed against 0060a490:
 	//   1. c = part->getCoordinateFrame() * computeLocalCoordinateFrame(); -- worse: eax reused for the call
 	//      result as the operator* argument (no re-lea of the temporary).
@@ -218,6 +224,7 @@ namespace RBX
 		return static_cast<MotorJoint*>(joint);
 	}
 
+	// 0060bbb0: new MotorJoint (0x98 bytes, MotorJoint() 005e5bf0), DescribedCreatable(Joint*) 0060bab0, setName.
 	VelocityMotor::VelocityMotor()
 		: DescribedCreatable(new MotorJoint())
 	{
@@ -239,6 +246,7 @@ namespace RBX
 		return NULL;
 	}
 
+	// 0060a020: part->getPrimitive() is the embedded Primitive (+0x228, part-embedded profile).
 	void VelocityMotor::setPart(int i, Feature* feature)
 	{
 		Primitive* prim = getParentPrimitive(feature);
@@ -299,11 +307,14 @@ namespace RBX
 		}
 	}
 
+	// 0060a240: maxVelocity +0x90.
 	float VelocityMotor::getMaxVelocity() const
 	{
 		return motorJoint()->maxVelocity;
 	}
 
+	// 0060c580 (prop_MaxVelocity 0097be1c, paired with 0060a240 in its initializer 007f7b00). Same bytes as
+	// Motor::setMaxVelocity 005e4fe0 apart from the property.
 	void VelocityMotor::setMaxVelocity(float value)
 	{
 		if (value != motorJoint()->maxVelocity)
@@ -313,11 +324,15 @@ namespace RBX
 		}
 	}
 
+	// 0060a250: desiredAngle +0x94.
 	float VelocityMotor::getDesiredAngle() const
 	{
 		return motorJoint()->desiredAngle;
 	}
 
+	// 0060c5c0 (prop_DesiredAngle 0097be9c, paired with getDesiredAngle 0060a250 in its initializer 007f7b40). The identity
+	// registry still names 0060c5c0 setMaxVelocity and 0097be9c _prop_MaxVelocity: a closure from the donor layout, whose
+	// maxVelocity sits at +0x94 behind `polarity`.
 	void VelocityMotor::setDesiredAngle(float value)
 	{
 		if (value != motorJoint()->desiredAngle)
@@ -327,11 +342,13 @@ namespace RBX
 		}
 	}
 
+	// 005e2900 (currentAngle +0x8c; folded with an identical getter of the RotatePJoint unit).
 	float VelocityMotor::getCurrentAngle() const
 	{
 		return motorJoint()->getCurrentAngle();
 	}
 
+	// 0060c600: compares currentAngle +0x8c, calls MotorJoint::setCurrentAngle 005e5da0.
 	void VelocityMotor::setCurrentAngle(float value)
 	{
 		if (value != motorJoint()->getCurrentAngle())
