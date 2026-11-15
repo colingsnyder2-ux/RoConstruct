@@ -7,10 +7,8 @@
 // (AppUnit5E0JointReflection.cpp); the shared JointInstance.h declares getC0/setC0 on AutoJoint (the identity-registry
 // names ?setC0@AutoJoint@RBX@@), so the descriptors below take the AutoJoint member pointers as AutoJoint.cpp does for
 // Part0 / Part1. Only the setter bodies are claimed here.
-// PARKED (header layout): the 2008 joint pointer is at +0x150 (005e4497 `mov ecx, [esi + 0x150]`; JointInstanceAdorn.cpp:
-// IRenderable +0x130, IJointOwner +0x140, boost::weak_ptr<PartInstance> parts at +0x140 / +0x148), but the shared
-// v8datamodel/JointInstance.h places `joint` directly after the bases (+0x140), so both bodies differ only in that
-// displacement (closest diff: `mov ecx, [esi + 0x140]`). Proposal in the batch result.
+// The joint pointer is at +0x150 (005e4497 `mov ecx, [esi + 0x150]`): native v8datamodel/JointInstance.h carries the
+// 2008 layout (boost::weak_ptr<PartInstance> parts at +0x140 / +0x148 before joint).
 #include "v8datamodel/JointInstance.h"
 
 static RBX::Reflection::PropDescriptor<RBX::AutoJoint, G3D::CoordinateFrame> prop_C1("C1", "Data", &RBX::AutoJoint::getC1, &RBX::AutoJoint::setC1, RBX::Reflection::PropertyDescriptor::STANDARD);
