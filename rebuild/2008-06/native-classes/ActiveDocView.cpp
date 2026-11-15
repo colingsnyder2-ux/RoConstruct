@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "ActiveDocView.h"
 ActiveDocView::ActiveDocView() { activeDocViews.insert(this); }
 ActiveDocView::~ActiveDocView() { activeDocViews.erase(this); }

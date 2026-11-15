@@ -91,3 +91,9 @@ void CRobloxView::toggleToolbox()
     showToolbox(slot_1d8 == 0, true);
 }
 
+void CRobloxView::openToolboxPage()
+{
+    showToolbox(true, true);
+    slot_1d8->showPage(9);
+}
+

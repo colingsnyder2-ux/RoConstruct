@@ -265,6 +265,26 @@ def unmapped_externs(packet, header, destination):
     return sorted(set(missing))
 
 
+REGISTRY_EXTRA = [ROOT / 'work/native-client/unnamed-identities.json', ROOT / 'work/native-client/vtable-names.json']
+
+
+def load_registry():
+    """Identity registry plus identity-recovery side files (unnamed-identities.json from the identity session,
+    vtable-names.json); the main registry wins on any address both name.  Gates still prove every name."""
+    registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
+    for path in REGISTRY_EXTRA:
+        if path.is_file():
+            try:
+                extra = json.loads(path.read_text())
+            except ValueError:
+                continue
+            for addr, row in extra.items():
+                old = registry.get(addr) or {}
+                if not old.get('name') or old.get('placeholder') or old['name'].startswith('func_'):
+                    registry[addr] = dict(row, kind=row.get('kind', 'code'), placeholder=False)
+    return registry
+
+
 REMAINING = None
 
 
@@ -323,7 +343,8 @@ def template_targets(tried, max_size):
     for addr, res in results.items():
         row = registry.get(addr) or {}
         sig = row.get('signature') or ''
-        if res['status'] not in ('needs-body', 'draft') or addr in tried or not sig:
+        # 'draft' = the header already has a (different) body: a shared-header fix, not a probe definition.
+        if res['status'] != 'needs-body' or addr in tried or not sig:
             continue
         headers = []
         for name in dict.fromkeys(re.findall(r'\b((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)(?=\s*<|\s*::|\s*[\s*&>,)])', sig)):
@@ -350,7 +371,7 @@ def registry_classes(queue_classes):
     """Extra conversion rows from the identity registry: named, non-template members of non-vendor classes that the
     queue never listed (766 at last count).  Header = the native (else donor) header that defines the class and
     mentions the method; every later targets() filter (identity, 100% analog, preflight, gates) still applies."""
-    registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
+    registry = load_registry()
     listed = {m['addr'] for cl in queue_classes for m in cl['methods']}
     names = collections.Counter(row.get('name') for row in registry.values())
     grouped = collections.defaultdict(list)
@@ -391,7 +412,7 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
         templates = template_targets(tried, max_size)
     else:
         templates = []
-    registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
+    registry = load_registry()
     native_exact = native_exact_addresses()
     solved = ({row['owner'] for row in json.loads(LAYOUTS.read_text()).get('rows', []) if row.get('accepted')}
               if LAYOUTS.is_file() else set())
@@ -975,7 +996,7 @@ def _prove(t, body, out, depth=0):
     """Write donor + one-row plan, run the existing isolated gates. -> (status, feedback text)."""
     if t.get('template_inst'):
         # `template<class T> bool RBX::X<T>::f(...) {...}` + `template bool RBX::X<A>::f(...);` at global scope.
-        ns, marker = '', split_qual(t['qual'])[-1]
+        ns, marker = '', split_qual(t['qual'])[-1].split('<')[0]     # ctor `X<A>::X<A>`: definition spells `X(`
     else:
         ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
         marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
