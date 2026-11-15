@@ -1,7 +1,10 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/boost-function-pod-vtable
 #include "util/RunStateOwner.h"
+#include <boost/bind.hpp>
 
 namespace RBX {
+class DataModel;
+
 namespace Reflection {
 template<class S>
 SignalDescImpl<2, S>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)
@@ -25,6 +28,18 @@ boost::signals::connection SignalDescImpl<2, S>::connectGeneric(
 }
 }
 }
+
+// start() 00556520: boost::bind(&RunService::runProc, shared_from(this), dataModel) (bind 00555470), stored
+// in a function0<void> (ctor 005564a0) for the run thread.
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::RunService, boost::shared_ptr<RBX::DataModel> >,
+	boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::RunService> >,
+		boost::_bi::value<boost::shared_ptr<RBX::DataModel> > > > RunProcBind;
+
+template RunProcBind boost::bind<void, RBX::RunService, boost::shared_ptr<RBX::DataModel>,
+	boost::shared_ptr<RBX::RunService>, boost::shared_ptr<RBX::DataModel> >(
+	void (RBX::RunService::*)(boost::shared_ptr<RBX::DataModel>), boost::shared_ptr<RBX::RunService>,
+	boost::shared_ptr<RBX::DataModel>);
+template boost::function0<void, std::allocator<boost::function_base> >::function0(RunProcBind, int);
 
 template boost::scoped_ptr<boost::thread>::~scoped_ptr();
 template std::deque<boost::function<void()> >::~deque();

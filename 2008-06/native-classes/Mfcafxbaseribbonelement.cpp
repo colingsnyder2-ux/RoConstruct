@@ -11,10 +11,6 @@
 // Copyright (C) Microsoft Corporation
 // All rights reserved.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxbaseribbonelement | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 87599385 | roc native-status --write
 #include "stdafx.h"
 #include "afxbaseribbonelement.h"
 

@@ -21,9 +21,44 @@
             indices.push_back(index++);
         }
     }
+    // Slice all adjoining faces at the same atlas boundaries. The visible and
+    // shadow meshes then have identical cap triangles and watertight shared edges.
+    float surfaceX=0,surfaceZ=0,surfaceW=0,surfaceDepth=0;
+    bool texturedTop=false;
     void face(Ogre::Vector3 a,Ogre::Vector3 b,Ogre::Vector3 c,Ogre::Vector3 d,Ogre::Vector3 outward) {
         if((b-a).crossProduct(c-a).dotProduct(outward)<0) std::swap(b,d);
-        quad(a,b,c,d);
+        for(float start=0;start<surfaceDepth;start+=4) {
+            float low=surfaceZ-surfaceDepth/2+start,high=std::min(low+4,surfaceZ+surfaceDepth/2);
+            std::vector<Ogre::Vector3> polygon={a,b,c,d};
+            for(int side=0;side<2;++side) {
+                std::vector<Ogre::Vector3> clipped;
+                float boundary=side?high:low;
+                auto append=[&](Ogre::Vector3 v) {
+                    if(clipped.empty()||(clipped.back()-v).squaredLength()>1e-12f) clipped.push_back(v);
+                };
+                for(unsigned i=0;i<polygon.size();++i) {
+                    Ogre::Vector3 from=polygon[(i+polygon.size()-1)%polygon.size()],to=polygon[i];
+                    bool fromIn=side?from.z<=boundary:from.z>=boundary;
+                    bool toIn=side?to.z<=boundary:to.z>=boundary;
+                    if(fromIn!=toIn) {
+                        Ogre::Vector3 v=from+(to-from)*((boundary-from.z)/(to.z-from.z));
+                        v.z=boundary;append(v);
+                    }
+                    if(toIn) append(to);
+                }
+                if(clipped.size()>1&&(clipped.front()-clipped.back()).squaredLength()<1e-12f) clipped.pop_back();
+                polygon.swap(clipped);
+            }
+            for(unsigned i=1;i+1<polygon.size();++i) {
+                Ogre::Vector3 v[3]={polygon[0],polygon[i],polygon[i+1]};
+                if((v[1]-v[0]).crossProduct(v[2]-v[0]).squaredLength()<1e-12f) continue;
+                triangle(v[0],v[1],v[2],outward);
+                if(texturedTop&&outward.y==1&&outward.x==0&&outward.z==0) for(int q=0;q<3;++q) {
+                    texCoords[texCoords.size()-6+q*2]=-(v[q].x-(surfaceX-surfaceW/2))*0.5f;
+                    texCoords[texCoords.size()-5+q*2]=(v[q].z-low)*0.0625f;
+                }
+            }
+        }
     }
     void brick(float x,float y,float z,float w,float h,float depth,bool studs=true) {
         float grid[6]={x,y,z,w,h,depth};
@@ -31,11 +66,13 @@
             throw std::runtime_error("Castle block off half-stud grid");
         // Ogre 1.4 shadow extrusion duplicates vertices into 16-bit indices.
         // Flush between complete closed bricks, never through a solid's faces.
-        unsigned count=96;
+        unsigned count=132*unsigned(std::ceil(depth/4));
         if(index&&index+count>30000) finish(owner);
         unsigned firstVertex=index;
         ++castleBevelCount;
         castleBlocks.push_back({{x,y,z},{w,h,depth},material->getName(),studs});
+        surfaceX=x;surfaceZ=z;surfaceW=w;surfaceDepth=depth;texturedTop=studs;
+        if(studs)++castleStudCount;
         Ogre::Vector3 center(x,y,z),half(w/2,h/2,depth/2);
         float bevel=std::min(0.07f,std::min(w,std::min(h,depth))*0.16f);
         for(int axis=0;axis<3;++axis) {
@@ -47,29 +84,7 @@
                     p[q][j]+=(q==0||q==3?-1:1)*(half[j]-bevel);
                     p[q][k]+=(q<2?-1:1)*(half[k]-bevel);
                 }
-                if(axis==1&&s==1&&studs) {
-                    quad(p[0],p[1],p[2],p[3]);
-                    // Keep the closed, unsplit top in the native shadow mesh.
-                    // Visible atlas strips reset V every four studs, as in
-                    // LevelBuilder::buildFace. A plate remains one solid.
-                    vertices.resize(vertices.size()-12);normals.resize(normals.size()-12);
-                    texCoords.resize(texCoords.size()-8);indices.resize(indices.size()-6);index-=4;
-                    suppressShadow=true;
-                    for(float start=0;start<depth;start+=4) {
-                        float end=std::min(start+4,depth);
-                        float z0=std::max(z-depth/2+start,z-depth/2+bevel);
-                        float z1=std::min(z-depth/2+end,z+depth/2-bevel);
-                        Ogre::Vector3 v[4]={{x-w/2+bevel,y+h/2,z0},{x-w/2+bevel,y+h/2,z1},
-                                           {x+w/2-bevel,y+h/2,z1},{x+w/2-bevel,y+h/2,z0}};
-                        quad(v[0],v[1],v[2],v[3]);
-                        for(int q=0;q<4;++q) {
-                            texCoords[texCoords.size()-8+q*2]=-(v[q].x-(x-w/2))*0.5f;
-                            texCoords[texCoords.size()-7+q*2]=(v[q].z-(z-depth/2)-start)*0.0625f;
-                        }
-                    }
-                    suppressShadow=false;
-                    ++castleStudCount;
-                } else face(p[0],p[1],p[2],p[3],n);
+                face(p[0],p[1],p[2],p[3],n);
             }
             for(int si=-1;si<=1;si+=2) for(int sj=-1;sj<=1;sj+=2) {
                 Ogre::Vector3 p[4],n=Ogre::Vector3::ZERO;n[axis]=si;n[j]=sj;

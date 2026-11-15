@@ -1,10 +1,6 @@
 // 2008-06 Roblox G3D fork: identical to G3D 6.09 BinaryInput.h except getCArray throws std::exception.
 // Evidence: all 7 references in the 2008-06 exe to "Cannot getCArray for a huge file" (00820c68) construct
 // std::exception(const char* const&) and throw it (e.g. Ogre::VRbxFont ctor 00684b10).
-// >>> native-status (generated) -- do not edit >>>
-// BinaryInput | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src df29bc81 | roc native-status --write
 /**
  @file BinaryInput.h
  

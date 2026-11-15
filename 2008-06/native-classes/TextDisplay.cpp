@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// TextDisplay | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 338e0edf | roc native-status --write
 #include "gui/Gui.h"
 
 namespace RBX

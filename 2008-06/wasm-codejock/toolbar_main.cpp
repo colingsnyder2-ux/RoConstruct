@@ -16,12 +16,25 @@ int main() {
         bar.controls.m_pParent=&bar;
         bool embedded=EM_ASM_INT({return !!Module.toolbarEmbedded;});
         const char* demoLabels[]={"&Run","&Pause","&Reset","Disabled"};
-        const char* castleLabels[]={"Run","Pause","Reset camera","Shadows","Orbit","Sun / Moon","Wireframe","+3 hours","Help","Fullscreen","Copy view"};
-        int count=embedded?11:4;
+        const char* castleLabels[]={"Scene: Castle Island","Run","Pause","Reset camera","Shadows","Orbit","Sun / Moon","Wireframe","+3 hours","Fullscreen"};
+        const int castleCommands[]={120,100,101,102,103,104,105,106,107,109};
+        int count=embedded?10:4;
         for(int i=0;i<count;++i) {
-            auto* button=new DemoButton;
+            CXTPControl* button;
+            if(embedded&&i==0) {
+                auto* popup=new CXTPControlPopup;
+                popup->m_bShowShadow=FALSE;
+                auto* menu=new CXTPPopupBar;
+                menu->owner=&owner;
+                const char* scenes[]={"Castle Island","Windmill Island","Temple Island"};
+                for(int j=0;j<3;++j) {
+                    auto* item=new DemoButton;item->m_pParent=menu;item->m_nIndex=j;
+                    item->caption=scenes[j];item->id=200+j;menu->controls.controls.push_back(item);
+                }
+                popup->m_pCommandBar=menu;button=popup;
+            } else button=new DemoButton;
             button->m_pParent=&bar; button->m_nIndex=i;
-            button->caption=embedded?castleLabels[i]:demoLabels[i];button->id=100+i;
+            button->caption=embedded?castleLabels[i]:demoLabels[i];button->id=embedded?castleCommands[i]:100+i;
             button->enabled=embedded||i!=3;button->beginGroup=i==2||embedded&&i==7;
             bar.controls.controls.push_back(button);
         }

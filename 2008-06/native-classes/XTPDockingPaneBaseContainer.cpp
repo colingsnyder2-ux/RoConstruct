@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPDockingPaneBaseContainer | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 4bede9b3 | roc native-status --write
 #include "stdafx.h"
 
 #include "XTPDockingPanePaintManager.h"

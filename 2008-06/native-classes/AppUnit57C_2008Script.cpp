@@ -10,10 +10,6 @@
 // Unit profile: document-swap flags, /fp:fast and /U_RELEASEASSERT (the unit profile of the ModelInstance unit).
 // Codegen analog: bodies follow the donor tools/rbxgs script/Script.cpp; the recorder proves each against the bytes
 // and every call / data target.
-// >>> native-status (generated) -- do not edit >>>
-// AppUnit57C_2008Script | 2008-06 | draft (no current byte proof)
-// 0/7 mapped addresses byte-exact | 7 unproved | 1 referenced strings (not rechecked) | by Espeon (+2) (mixed 5)
-// <<< native-status | src 6a8c5a09 | roc native-status --write
 #include "script/Script.h"
 #include "script/ScriptContext.h"
 #include "v8tree/Service.h"
@@ -129,7 +125,10 @@ void Script::onAncestorChanged(const AncestorChanged& event)
     }
 }
 
-// 00586bf0: remove old provider script, then prefetch code on new provider.
+// 00586bf0: after find<ScriptContext>(old) 0042de90 / removeScript 005ad030 the original tests newProvider
+// (00586c0f), calls requestCode 00586b10 (00586c1d) into a discarded shared_ptr (released at 00586c22..00586c52)
+// and returns: no Instance::onServiceProvider call in 2008 (as BodyMover 00632db0 / DebrisService 0063c280).
+// Rejected: the donor tail `Instance::onServiceProvider(oldProvider, newProvider);` (call the original lacks).
 void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 {
 	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
@@ -137,7 +136,7 @@ void Script::onServiceProvider(const ServiceProvider* oldProvider, const Service
 		sc->removeScript(this);
 	}
 	if (newProvider)
-		requestCode();
+		requestCode();	// prefetch the script source when entering a provider
 }
 
 // 00586b10: NOT exact (see the receipt)

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Log | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 768e3747 | roc native-status --write
 #include "util/Debug.h"
 #include <string>
 #include <fstream>

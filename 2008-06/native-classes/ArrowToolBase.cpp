@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-explicit-shared-assignment
-// >>> native-status (generated) -- do not edit >>>
-// ArrowToolBase | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/5 mapped addresses byte-exact | 4 unproved | 2 referenced strings (not rechecked) | by tester (+4) (mixed 2)
-// <<< native-status | src d585137e | roc native-status --write
 #undef _RELEASEASSERT
 #include "tool/ToolsArrow.h"
 #include "tool/DragTool.h"
@@ -30,6 +26,9 @@ namespace RBX
 		onMouseIdle(uiEvent);
 	}
 
+	// 00617780. Frame 0x34: the shared_from temporary (frame +0) shares its slot with the by-value decal argument's
+	// unwind pointer (mov [esp+0x18], esp at 006178dc), so the FilteredSelection client and the DragTool call sit in
+	// their own block. Rejected (frame 0x38): no inner block; shift-first early return; `if (!isSelected) setSelection`.
 	MouseCommand* ArrowToolBase::onMouseDown(const UIEvent& uiEvent)
 	{
 		RBXASSERT(uiEvent.eventType == UIEvent::MOUSE_LEFT_BUTTON_DOWN);

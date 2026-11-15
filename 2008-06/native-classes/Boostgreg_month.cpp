@@ -1,9 +1,5 @@
 // native-flags: /O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/boost_1_34_1/libs/date_time/src/gregorian
 // 2008-06 native Boostgreg_month (inactive): upstream tools/libs/boost_1_34_1/libs/date_time/src/gregorian/greg_month.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// Boostgreg_month | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 9085c044 | roc native-status --write
 /* Copyright (c) 2002-2005 CrystalClear Software, Inc.
  * Use, modification and distribution is subject to the 
  * Boost Software License, Version 1.0. (See accompanying

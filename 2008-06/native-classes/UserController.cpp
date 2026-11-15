@@ -3,10 +3,6 @@
 // Unit profile: document-swap flags plus /fp:fast (x87 constant folding in chaseTarget/updateTarget and the keyboard
 // getValue bodies).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// UserController | 2008-06 | draft (no current byte proof)
-// 0/14 mapped addresses byte-exact | 14 unproved | no mapped strings | by auto (+3) (mixed 7)
-// <<< native-status | src c0b8003f | roc native-status --write
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/PVInstance.h"
 #include "util/Math.h"
@@ -338,6 +334,19 @@ namespace RBX
 		  stepsRotating(0)
 	{
 	}
+
+	// 005cb530 PlayerController::onEvent(const RunService*, Heartbeat) (748 bytes, Listener slot, this adjusted by
+	// -0xc, `ret 0xc`): NOT BUILT (parked, header gaps; no donor body). Decoded flow: hardware = getHardwareDevice()
+	// 005caba0; controlledInstance weak_ptr lock 005cab00 (released at once); character test
+	// Players::findLocalCharacter 0049aca0 == locked instance -> Humanoid::modelIsCharacter 005d9a20; Workspace
+	// find 00491e50; camera = workspace +0x288 vtable slot 1; MovementKeys keys; hardware->getMovementKeys 005ce960.
+	// Rotation keys (keys +0/+1 vs +2/+3) -> camera 005cc810(float: 005ca3e0 * heartbeat step * 008378c0) and
+	// ++stepsRotating (+0x1c from the Listener this), else stepsRotating = 0; walk keys -> Humanoid::setWalkDirection
+	// 005dbf80 from the camera lookVector 005187f0 / unitize 00518470 scaled by the MovementKeys float getters
+	// 005ca400 / 005ca3c0, Camera::isFirstPersonCamera 005ccb00 -> Humanoid::setStrafe 005dc230; keys.space ->
+	// setSit(false) 005dc2b0 + setJump(true) 005dc270; finally hardware 005ca390. Blockers (proposals):
+	// util/MovementKeys.h lacks the three float getters 005ca3c0 / 005ca3e0 / 005ca400 (any() is 005a0160);
+	// UserInputBase.h lacks 005ca390; the Camera member 005cc810 is unnamed in the registry.
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

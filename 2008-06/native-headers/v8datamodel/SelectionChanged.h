@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// SelectionChanged | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 90840113 | roc native-status --write
 #include <boost/shared_ptr.hpp>
 
 namespace RBX {

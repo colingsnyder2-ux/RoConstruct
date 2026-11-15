@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// RenderSpecData | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
-// <<< native-status | src 8683f3b0 | roc native-status --write
 #include "RenderLib/Profiler.h"
 #include <GLG3D/GLCaps.h>
 #include <GLG3D/DXCaps.h>
@@ -43,6 +39,8 @@ namespace RBX
 
 		typedef void (*DELAY_FUNC)(unsigned uiMS);
 
+		// 00501400 (reconciled with AppUnit500Profiler.cpp, which builds it with external linkage): the target
+		// multiplies t1Hi through _allmul (006a16d0) by 0x100000000 and shift-subtracts t0Hi.
 		static G3D::int64 GetCyclesDifference(DELAY_FUNC DelayFunction, unsigned uiParameter)
 		{
 			unsigned t0Hi, t0Lo;

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CBrowserView | 2008-06 | 47 byte-exact, inactive (not link-selected)
-// 47/48 mapped addresses byte-exact | named 3 | 1 unproved | no mapped strings | by auto (+4) (mixed 5)
-// <<< native-status | src d39eb600 | roc native-status --write
 #include "CBrowserView.h"
 #include "CBrowserDoc.h"
 #include "CBrowserViewExternal.h"
@@ -236,6 +232,15 @@ int CBrowserView::OnCreateControl(LPCREATECONTROLSTRUCT create)
     return FALSE;
 }
 
+// 0040fff0 (171 bytes). Parked: not exact. The original loads `object` once after __RTDynamicCast
+// (mov ecx,eax; mov eax,[esp+0x1c]; neg/sbb ecx; lea edi,[eax+0x14]; mov word [eax+0x1c],cx), so the
+// IDispatch* for `external` is formed from the pre-store value; this body reloads `object` after the
+// VARIANT_BOOL store (173 bytes). Rejected variants (lf01):
+//  1. VARIANT_BOOL local for the cast + `CBrowserViewExternal* created = object` copy: no reload, but adds
+//     movzx ax and swaps eax/ecx (172 bytes).
+//  2. `CIDEBrowserView* ide = dynamic_cast...` + `created` copy, store `ide ? VARIANT_TRUE : VARIANT_FALSE`:
+//     closest (169 bytes), only the eax/ecx role swap and the missing `mov ecx,eax` differ.
+//  3. `ide` pointer local with the store through `object`: same reload as this body (173 bytes).
 HRESULT CBrowserView::OnGetExternal(LPDISPATCH* dispatch)
 {
     if (!external) {

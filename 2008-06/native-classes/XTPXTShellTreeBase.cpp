@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPXTShellTreeBase | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7093482c | roc native-status --write
 #include "stdafx.h"
 #include "Common/XTPVC80Helpers.h"  // Visual Studio 2005 helper functions
 #include "Common/XTPResourceManager.h"

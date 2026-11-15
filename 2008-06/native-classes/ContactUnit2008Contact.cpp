@@ -1,17 +1,16 @@
 // 2008-06 native RBX::Contact unit rows (inactive): Contact::step 00606c50, computeIsAdjacent 00606ca0 and the
 // hit-ratio statics contactPairHitRatio 00606bc0 / contactFeatureHitRatio 00606bf0 (DataModel::evaluate 005760a1 /
-// 005760d5 names them). Their declarations are not in the shared native-headers/v8world/Contact2008.h (owner: world
-// shapes), so every body is guarded by NATIVE_BODYPRIM_PENDING and built only against the generated Contact2008.h copy
-// of tests/record_native_contact_unit2008.py (pending-build-only rows, not counted; proposal in its receipt).
-// Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
+// 005760d5 names them). Their declarations are now in native-headers/v8world/Contact2008.h (batch 15; formerly the
+// NATIVE_BODYPRIM_PENDING proposal of tests/record_native_contact_unit2008.py).
+// Contact2008.h builds on the native 2008 Edge (AppUnit658/Edge.h -> IPipelined2008.h), shared with Primitive2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// ContactUnit2008Contact | 2008-06 | draft (no current byte proof)
-// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (mixed 4)
-// <<< native-status | src 7368f1e4 | roc native-status --write
-#define NATIVE_IPIPELINED2008_DONOR
+// The 2008 Body / GeoPair path of Connector2008.h (ContactConnector::setBody) for createConnector 00606e00, with the
+// 2008 Kernel2008.h (insertConnector 005fb160); Primitive2008.h / Contact2008.h already build on IPipelined2008.h.
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"
+#include "v8kernel/Connector2008.h"
+#include "v8kernel/Kernel2008.h"
 #include "v8kernel/Constants.h"
 #include <G3D/Vector3int16.h>
 #include <algorithm>
@@ -45,7 +44,6 @@ namespace RBX
 	// of line, so it lost its exact match. Its home is the Constants unit (ConstantsJoint.cpp, beside
 	// getJointKMultiplier 00649390); the proven body is filed there as a proposal.
 
-#ifdef NATIVE_BODYPRIM_PENDING
 	int Contact::contactPairMatches;           // 0097b880 (++ by BlockBlockContact 00607d3b)
 	int Contact::contactPairMisses;            // 0097b884 (++ by 00607d07)
 	int Contact::contactFeatureMatches;        // 0097b888 (++ by 00607588)
@@ -69,6 +67,19 @@ namespace RBX
 			return -1.0f;
 		else
 			return (float)contactFeatureMatches / sum;
+	}
+
+	// 00606e00 (placeholder func_00606e00, `ret 8`; declared in Contact2008.h): operator new 0x50, the out of line
+	// ContactConnector(jointK +0x28, elasticJointK +0x2c, kFriction +0x30) 00606d40 inside the EH frame, the two Body
+	// arguments stored at connector +0x14 / +0x18 (no null test of the new pointer), then IPipelined::getKernel
+	// 00645850 -> Kernel::insertConnector 005fb160. Donor Contact::createConnector() without the bodies.
+	ContactConnector* Contact::createConnector(Body* b0, Body* b1)
+	{
+		ContactConnector* answer = new ContactConnector(jointK, elasticJointK, kFriction);
+		answer->setBody(0, b0);
+		answer->setBody(1, b1);
+		getKernel()->insertConnector(answer);
+		return answer;
 	}
 
 	// 00606c50
@@ -96,7 +107,6 @@ namespace RBX
 		else
 			return computeIsColliding(-spaceAllowed);
 	}
-#endif
 }
 
 // Methods recovered from exact mined packets: field offsets mapped to this header by compiler layout.

@@ -1,10 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // Inactive native recovery of RBX::CharacterAppearance / Clothing / Shirt / Pants / ShirtGraphic / Skin.
 // Layout and evidence: native-headers/v8datamodel/Clothing.h. Verified by tests/record_native_clothing.py.
-// >>> native-status (generated) -- do not edit >>>
-// Clothing | 2008-06 | 5 byte-exact, inactive (not link-selected)
-// 5/9 mapped addresses byte-exact | named 1 | 4 unproved | 2 referenced strings (not rechecked) | by king_originala (+2) (mixed 4)
-// <<< native-status | src b7b4a88d | roc native-status --write
 #include "v8datamodel/Clothing.h"
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
@@ -131,6 +127,14 @@ namespace RBX
 		if (PartInstance* part = humanoid->getRightArm()) part->outfitChanged();
 	}
 #endif
+
+	// 005d4b00 Clothing::resetLimbs (93 bytes, declared in Clothing.h): NOT BUILT (header proposal). For each limb
+	// helper of this unit, in this order, `if (PartInstance* part = helper()) part->outfitChanged()` (0059e3a0, the
+	// same pending PartInstance member as apply above; the last call is a tail jump): 005d4640 "Left Leg" (0083c4b8),
+	// 005d4770 "Right Leg" (0083c4c4), 005d4510 "Torso" (00832a1c), 005d48a0 "Left Arm" (0083c4d0), 005d49d0
+	// "Right Arm" (0083c4dc). Each helper is a Clothing thiscall: parent (+0x104) findFirstChildByName(literal)
+	// 00557950, shared_from_dynamic_cast<PartInstance> 005d42f0, returns the raw pointer. None of the five helpers
+	// is declared in Clothing.h, and PartInstance::outfitChanged is missing from PartInstance.h.
 
 	// Shirt / Pants
 	Shirt::Shirt() {}

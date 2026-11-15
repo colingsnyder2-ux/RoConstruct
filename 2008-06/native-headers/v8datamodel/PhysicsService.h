@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// PhysicsService | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7b207a58 | roc native-status --write
 // 2008-06 native RBX::PhysicsService (inactive). No donor header; names after the existing probe
 // tests/record_native_physics_array_lifetime.py. Every base, field and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00826aac .?AVPhysicsService@RBX@@ -> DescribedNonCreatable<PhysicsService, Instance,
@@ -35,6 +31,10 @@ namespace RBX
 	class PartInstance;
 	struct AssemblyPhysicsOn;
 	struct AssemblyPhysicsOff;
+	namespace HUMAN
+	{
+		class MovingNoPhysicsBase;
+	}
 
 	extern const char sPhysicsService[];
 
@@ -44,6 +44,7 @@ namespace RBX
 						   public Listener<World, AssemblyPhysicsOff>
 	{
 		friend struct ::NativeServicesLayout; // tests/NativeServicesLayout.cpp offset asserts
+		friend class HUMAN::MovingNoPhysicsBase; // release 0066ed50 calls the private onRemoved 005e9040 (decorated AAE)
 
 	private:
 		std::set<PartInstance*> parts;                                    // +0x138

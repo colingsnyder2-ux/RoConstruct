@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// InstanceChildPermission | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
-// <<< native-status | src 1ce6bbf1 | roc native-status --write
 #include "v8tree/Instance.h"
 
 namespace RBX {
@@ -15,7 +11,7 @@ bool Instance::canAddChild(const Instance* child) const
     return false;
 }
 
-// 0041f390
+// 0041f390: canAddChild 0041f340 stays an out-of-line call in the original.
 bool Instance::canSetParent(const Instance* newParent) const
 {
     return !newParent || newParent->canAddChild(this);

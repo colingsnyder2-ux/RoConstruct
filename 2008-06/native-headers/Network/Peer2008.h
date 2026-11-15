@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Peer2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 51822d04 | roc native-status --write
 // 2008-06 native RBX::Network::Peer (inactive). Shape after the donor tools/rbxgs Client/Network/Replicator.h (class
 // Peer); every base, field and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00824944 .?AVPeer@Network@RBX@@ (21 bases) -> Described<Peer, sPeer, Instance> (name mangled
@@ -59,6 +55,9 @@ namespace RBX
 			Peer();                                                                 // 004b4640
 			virtual ~Peer();                                                        // 004ac830 (deleting 004ad7a0)
 			virtual bool askAddChild(const Instance* instance) const;               // 0049ee20
+			// 00609a30 (donor Replicator.h Peer::peerInterface, out of line: Server::onServiceProvider 004a4100 and the
+			// ClientProxy constructor 004a1ed0 call it; its 7-byte body mov eax,[ecx+0x140]; ret is identical-code folded)
+			RakPeerInterface* peerInterface();
 			virtual void onEvent(const RunService* source, Heartbeat event);       // 004add50
 			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 004b5700
 		};

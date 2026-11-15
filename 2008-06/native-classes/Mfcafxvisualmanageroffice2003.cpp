@@ -12,10 +12,6 @@
 // All rights reserved.
 
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxvisualmanageroffice2003 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 47fd6d60 | roc native-status --write
 #include "stdafx.h"
 #include "afxcontrolbarutil.h"
 #include "afxvisualmanageroffice2003.h"

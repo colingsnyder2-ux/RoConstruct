@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcdlgprntx | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 6b632e73 | roc native-status --write
 #include "stdafx.h"
 #include <dlgs.h>       // for standard control IDs for commdlg
 

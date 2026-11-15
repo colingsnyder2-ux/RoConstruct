@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// GeoPair2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src d66b2bca | roc native-status --write
 // 2008-06 native RBX::GeoPair / PairParams / GeoPairType on the 2008 Body of native-headers/v8kernel/Body2008.h
 // (inactive). Declared under a non-colliding name (the original declaration is the donor v8kernel/Pair.h, which
 // includes the donor v8kernel/Body.h and is reached through native-headers/v8kernel/Connector2008.h); a unit must not
@@ -145,5 +141,36 @@ namespace RBX
 		}
 
 		bool match(Body* _b0, Body* _b1, GeoPairType _pairType, int param0, int param1);   // 00606a50
+
+		// 00606270 (placeholder func_00606270, out of line in the Connector unit; `cmp dword ptr [ecx], 4`): true unless
+		// geoPairType == POINT_PLANE_PAIR; then a zeroed PairParams (normal +0x0 / position +0x10), computePointPlane
+		// 00613560 and `length < 0.02f` (00827488, read back from PairParams +0xc). Called only through
+		// ContactConnector::isGeoPairWithinTolerance 00606770 (BlockBlockContact::deleteUnmatchedConnectors 00607e00).
+		// No donor or registry name: analog name. Body: native-classes/ContactUnit2008Connector.cpp.
+		bool isWithinPointPlaneTolerance();               // 00606270
+
+		// inlined into BlockBlockContact::loadGeoPairEdgeEdge 00607ea0 (00607f70..00607f81 store offset0 +0x4,
+		// normalID0 +0x18, normalID1 +0x1c, offset1 +0x8 and geoPairType +0x0 = EDGE_EDGE_PAIR of the GeoPair at
+		// connector +0x8). Donor v8kernel/Pair.h setEdgeEdge without the bodies: the 2008 bodies are written by
+		// matchContactConnector 00607cc0 / Contact::createConnector 00606e00 instead.
+		void setEdgeEdge(const G3D::Vector3* offset0, const G3D::Vector3* offset1, NormalId norm0, NormalId norm1)   // INFERRED: 2008 signature from the stores above
+		{
+			this->offset0 = offset0;
+			pairData.normalID0 = norm0;
+			pairData.normalID1 = norm1;
+			this->offset1 = offset1;
+			geoPairType = EDGE_EDGE_PAIR;
+		}
+
+		// body0 +0xc / body1 +0x10, written by matchContactConnector 00607cc0 (00607d47 / 00607d50, connector +0x14 /
+		// +0x18; connectors[i] is reloaded before each store, so one store per call) after a match and by
+		// Contact::createConnector 00606e00 (00606e5a / 00606e5d) for a new connector.
+		void setBody(int i, Body* b)   // INFERRED: analog name, from the stores above
+		{
+			if (i == 0)
+				body0 = b;
+			else
+				body1 = b;
+		}
 	};
 }

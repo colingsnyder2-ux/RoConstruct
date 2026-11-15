@@ -1,10 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 v8world/Primitive.cpp rows of the application range 005e4000..005e8000 (inactive native unit) that the native
-// v8world/Primitive2008.h declares (read-only; the Body/Primitive owner's 0xfc layout). Built with the donor-IPipelined
-// switch (NATIVE_IPIPELINED2008_DONOR) next to v8world/Contact2008.h, as ContactUnit2008Contact.cpp does, and /fp:fast.
+// v8world/Primitive2008.h declares (read-only; the Body/Primitive owner's 0xfc layout). Built next to v8world/Contact2008.h on the
+// native 2008 Edge / IPipelined2008.h (no donor-IPipelined switch since batch 13), and /fp:fast.
 // Verified by tests/record_native_app_unit5e4.py.
 #undef _RELEASEASSERT
-#define NATIVE_IPIPELINED2008_DONOR
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"
 #include "v8kernel/Constants.h"

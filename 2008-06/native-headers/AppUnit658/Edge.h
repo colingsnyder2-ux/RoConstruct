@@ -2,7 +2,8 @@
 // 2008-06 native RBX::Edge (inactive), declared under a non-colliding name: v8world/Edge.h is the donor header, whose
 // Edge keeps Edge* next0 / next1 links at +0x14 / +0x18 and whose base comes from the donor v8world/IPipelined.h. This
 // header builds on native-headers/v8kernel/IPipelined2008.h and must not be included in a unit that also reaches the
-// donor v8world/Edge.h (for example through v8world/Contact2008.h).
+// donor v8world/Edge.h (for example through the donor v8world/Primitive.h, World.h or Contact.h). The native
+// native-headers/v8world/Contact2008.h and Joints2008.h include this header themselves.
 //
 // Read from the 2008-06 binary (tests/record_native_app_unit658.py checks the offsets and the two bodies):
 //   RTTI     BallBallContact 008436bc -> Contact -> Edge -> IPipelined, all at mdisp 0. Edge has no vtable of its own:
@@ -62,5 +63,29 @@ namespace RBX
 
 		virtual EdgeType getEdgeType() const = 0;      // slot 3
 		virtual void setPrimitive(int i, Primitive* p);   // slot 4 (00659290)
+
+		// Inline accessors (no out-of-line copy in the binary; analog names after the donor Edge.h getNext / setNext /
+		// otherPrimitive). Each picks prim0's or prim1's slot with `cmp p, [e+0xc]`: getIndex reads +0x14 / +0x18 in
+		// Primitive::getNextJoint 005e7ba0 / getNextContact 005e7be0 and EdgeList::removeEdge 005e8610; setIndex writes
+		// them in removeEdge 005e8610 and insertEdge 005e8990; otherPrimitive reads +0x10 / +0xc in insertEdge 005e8990.
+		Primitive* getPrimitive(int i) const           // donor Edge.h inline; the Joints2008.h / Contact2008.h includers
+		{                                              // call it (exact bodies built against the donor copy)
+			return *(&this->prim0 + i);
+		}
+		Primitive* otherPrimitive(const Primitive* p) const
+		{
+			return p == prim0 ? prim1 : prim0;
+		}
+		int getIndex(const Primitive* p) const
+		{
+			return p == prim0 ? index0 : index1;
+		}
+		void setIndex(const Primitive* p, int index)
+		{
+			if (p == prim0)
+				index0 = index;
+			else
+				index1 = index;
+		}
 	};
 }

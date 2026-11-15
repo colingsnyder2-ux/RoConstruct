@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// >>> native-status (generated) -- do not edit >>>
-// XmlNameValuePair | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 0abe95fa | roc native-status --write
 #include "v8xml/XmlElement.h"
 
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const
@@ -53,7 +49,8 @@ bool XmlNameValuePair::getValue(const RBX::Name*& value) const
 	return false;
 }
 
-// 0057c3d0
+// 0057c3d0 ?getValue@XmlNameValuePair@@QBE_NAAVContentId@RBX@@@Z
+// STRING path: temporary ContentId(const std::string&) 00615440, assign, clearValue 0057c2d0, new ContentId copy (0x20).
 bool XmlNameValuePair::getValue(RBX::ContentId& value) const
 {
 	if (valueType == CONTENTID) {
@@ -72,7 +69,9 @@ bool XmlNameValuePair::getValue(RBX::ContentId& value) const
 	return false;
 }
 
-// 0057c550
+// getValue(int&) 0057c4f0 is defined in XmlElement.cpp; not repeated here.
+
+// 0057c550 ?getValue@XmlNameValuePair@@QBE_NAAI@Z  (StringConverter<unsigned>::convertToValue 005be610)
 bool XmlNameValuePair::getValue(unsigned& value) const
 {
 	if (valueType == UINT) {
@@ -92,7 +91,7 @@ bool XmlNameValuePair::getValue(unsigned& value) const
 	return false;
 }
 
-// 0057c5b0
+// 0057c5b0 ?getValue@XmlNameValuePair@@QBE_NAA_N@Z  (StringConverter<bool>::convertToValue 005bde60)
 bool XmlNameValuePair::getValue(bool& value) const
 {
 	if (valueType == BOOL) {
@@ -112,7 +111,7 @@ bool XmlNameValuePair::getValue(bool& value) const
 	return false;
 }
 
-// 0057c610
+// 0057c610 ?getValue@XmlNameValuePair@@QBE_NAAM@Z  (StringConverter<float>::convertToValue 005be790)
 bool XmlNameValuePair::getValue(float& value) const
 {
 	if (valueType == FLOAT) {
@@ -132,7 +131,9 @@ bool XmlNameValuePair::getValue(float& value) const
 	return false;
 }
 
-// 0057c6e0
+// 0057c6e0 ?getValue@XmlNameValuePair@@QBE_NAAVInstanceHandle@RBX@@@Z
+// Three separate new InstanceHandle(NULL) sites (EH states 0/1/2): NAME == value_IDREF_null (pointer compare),
+// STRING equal to value_IDREF_null's text (string::compare), STRING == "" (operator==(string, const char*)).
 bool XmlNameValuePair::getValue(RBX::InstanceHandle& value) const
 {
 	if (valueType == NAME && *nameValue == value_IDREF_null) {

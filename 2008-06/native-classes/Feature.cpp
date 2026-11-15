@@ -7,10 +7,6 @@
 // Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600) and /U_RELEASEASSERT
 // (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// Feature | 2008-06 | 2 byte-exact, inactive (not link-selected)
-// 2/16 mapped addresses byte-exact | 14 unproved | 1 referenced strings (not rechecked) | by king_originala (+4) (mixed 5)
-// <<< native-status | src 0d38d2b5 | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/MotorJoint.h"
@@ -108,6 +104,13 @@ namespace RBX
 	// 0060a490: not exact (same instructions, the original allocates ecx/edx/eax for the temporaries).
 	// computeLocalCoordinateFrame 00609da0 is not recovered: it reads PartInstance's embedded Primitive (+0x228)
 	// geometry, a layout the shared PartInstance.h/Primitive.h do not have.
+	// Parked (hard-leftover batch 8, 2026-11-13). Rejected variants, each recompiled and diffed against 0060a490:
+	//   1. c = part->getCoordinateFrame() * computeLocalCoordinateFrame(); -- worse: eax reused for the call
+	//      result as the operator* argument (no re-lea of the temporary).
+	//   2. const G3D::CoordinateFrame& local = computeLocalCoordinateFrame(); -- identical to this body
+	//      (lea eax / lea ecx / lea edx; the original uses lea ecx / lea edx / lea eax).
+	//   3. if (PartInstance* part = dynamic_cast<PartInstance*>(getParent())) -- identical to this body.
+	//   Remaining difference is register naming only; no further source-shape evidence.
 	bool Feature::getRenderCoord(G3D::CoordinateFrame& c) const
 	{
 		PartInstance* part = dynamic_cast<PartInstance*>(getParent());

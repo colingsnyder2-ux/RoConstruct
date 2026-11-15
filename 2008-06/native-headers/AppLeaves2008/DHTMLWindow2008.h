@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// DHTMLWindow2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 78de3abd | roc native-status --write
 // Inactive native 2008-06 recovery: DHTMLWindow, the scriptable HTML window of the DHTMLWindowService translation
 // unit (00416e60..0041d300, dynamic initializers 007eed70..007eef20, atexit 007fa620..007fa760).
 // Non-colliding name: no donor header declares this class.
@@ -11,8 +7,8 @@
 #include <boost/function.hpp>
 #include <boost/thread/recursive_mutex.hpp>
 
-// The browser view the window drives. Opaque here: its class (CHtmlView-based, with the Binder) is recovered by
-// another family; the bodies that use its members are built only with NATIVE_DHTMLWINDOW_PENDING.
+// The browser view the window drives. Opaque here: its (partial) declaration is in
+// native-headers/LuaHtmlBinder2008/LuaHtmlBinder2008.h, which the units that use its members include.
 class CLuaHtmlView;
 
 // Class name "HtmlWindow": a non-const char array in .data at 0092c204, next to "HtmlService" (0092c1f8);
@@ -43,9 +39,7 @@ public:
     // 0041d0a0 "Bind"("object", "property", "htmlElementId"), 0096cdf8: throws runtime_error 0080f058 for a nil
     // object and "Instance does not have property %s" (0080f034) for an unknown property name.
     void bind(boost::shared_ptr<RBX::Instance> object, std::string property, std::string htmlElementId);
-#ifdef NATIVE_DHTMLWINDOW_PENDING
-    void unbind();                                        // 0041b660 "Unbind", 0096ce50 (binds &CLuaHtmlView::X)
-#endif
+    void unbind();                                        // 0041b660 "Unbind", 0096ce50 (binds &CLuaHtmlView::unbindAll)
 
     // 0096cc49: tested by show 0041b2b0; CMainFrame 00432331 stores the registry value
     // "OverrideLockViewGamelayout" == 1 here (and into 0096d139 / 00976cad). Name provisional.
@@ -53,10 +47,11 @@ public:
 
 private:
     // Workers, run on the UI thread by the Marshaller (bind_t RTTI names give their signatures): each takes the
-    // view lock and does nothing when the view pointer is null. Their bodies need CLuaHtmlView (pending).
+    // view lock and does nothing when the view pointer is null. CLuaHtmlView is declared in
+    // LuaHtmlBinder2008/LuaHtmlBinder2008.h (setBody 0042ae50, bindElement 0042c8c0, unbindAll 0042b5f0).
     void doShow();                                        // 00417a10 GetParentFrame()->CenterWindow(0); ->ShowWindow(5)
     void doResize(int x, int y);                          // 00417aa0 GetParentFrame()->SetWindowPos(0, 0, 0, x, y, 6)
-    void doSetCallback(RBX::Lua::FunctionRef function);   // 00417b40
+    void doSetCallback(RBX::Lua::FunctionRef function);   // 00417b40 view->callback->function = function
     void doNavigate(std::string url);                     // 00417bd0 CHtmlView::Navigate(url.c_str(), 0, 0, 0, 0, 0)
     void doSetBody(std::string html);                     // 00417c70
     void doBind(boost::shared_ptr<RBX::Instance> object, const RBX::Reflection::PropertyDescriptor& property,

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// AggregateChunk2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7f43ff2a | roc native-status --write
 // 2008-06 native RBX::RenderBase::Chunk / AggregateChunk (inactive). Named *2008.h so it never shadows the donor
 // RenderLib/Chunk.h (a later source base whose Chunk lives in RBX::Render and has a different layout).
 //   Chunk          no RTTI vtable of its own: the constructor 004e8160 stores only the ReferenceCountedObject vtable
@@ -86,8 +82,8 @@ namespace RBX
 			virtual G3D::ReferenceCountedPointer<MaterialBase> getMaterial() = 0;
 			virtual G3D::ReferenceCountedPointer<Mesh> getMesh() = 0;
 			virtual const G3D::CoordinateFrame& cframe() = 0;
-			virtual void setSortValue(float value) { sortValue = value; } // 004e5b60; header-inline in Part ctor 004ebcc0
-			virtual float getSortValue() const { return sortValue; }     // 004e5b70
+			virtual void setSortValue(float value);                   // 004e5b60
+			virtual float getSortValue() const;                       // 004e5b70
 
 			// SimpleSceneManager::invalidateModel 004d7320 (inlined there)
 			void releaseEntity(); // Inline definition in SceneManager2008.cpp, its only caller unit.

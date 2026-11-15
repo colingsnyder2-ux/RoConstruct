@@ -627,9 +627,11 @@ def include_search_snapshot(source, flags, cwd, tc):
             snapshot[label] = None
             continue
         names = []
+        prefix = len(str(root)) + (0 if str(root).endswith(os.sep) else 1)
         for directory, folders, files in os.walk(root):
             folders.sort()
-            names.extend(str(Path(directory, name).relative_to(root)) for name in folders + files
+            # Same text as str(Path(directory, name).relative_to(root)), without 30k pathlib objects (~5 s per gate).
+            names.extend(os.path.join(directory, name)[prefix:] for name in folders + files
                          if not (label == '<working-directory>' and name in
                                  ('candidate.obj', 'compiler.pdb', 'compile.log', 'receipt.json')))
         snapshot[label] = hashlib.sha256('\n'.join(names).encode()).hexdigest()

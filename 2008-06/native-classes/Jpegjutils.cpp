@@ -1,9 +1,5 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjutils (inactive): IJG JPEG 6b with OpenRBX robust temporary-file helpers.
-// >>> native-status (generated) -- do not edit >>>
-// Jpegjutils | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 8f24316c | roc native-status --write
 /*
  * jutils.c
  *

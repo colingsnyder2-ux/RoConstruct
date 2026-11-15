@@ -7,10 +7,6 @@
 // std::numeric_limits<float> infinity at 0080250c), read by express / toWorldSpace.
 // Codegen analog: bodies follow the donor util/Extents.cpp shape; the recorder proves each against the bytes.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// AppUnit609_2008Extents | 2008-06 | draft (no current byte proof)
-// 0/10 mapped addresses byte-exact | 10 unproved | no mapped strings | by auto (+3) (mixed 5)
-// <<< native-status | src 74409360 | roc native-status --write
 #include "util/Extents.h"
 #include "util/Math.h"
 
@@ -170,6 +166,11 @@ namespace RBX
 		return result;
 	}
 
+	// 0060f9b0 (parked, same size 617): the only divergence is the x87 operand order of row 1 of the inlined
+	// myFrame.pointToWorldSpace (target r[1][1]*y + r[1][0]*x + r[1][2]*z at 0060fabb..0060facc, candidate
+	// r[1][1]*y + r[1][2]*z + r[1][0]*x). Rejected variants (lf11): a named `corner = getCorner(i)` temporary (same
+	// diff); the donor form `v1 = pointToWorldSpace(corner) - translation; inOther = v1 * rotation` (635 bytes, signed
+	// getCorner division); a named `world = pointToWorldSpace(getCorner(i))` temporary (same diff).
 	Extents Extents::express(const G3D::CoordinateFrame& myFrame, const G3D::CoordinateFrame& expressInFrame)
 	{
 		G3D::Vector3 minC(Math::inf(), Math::inf(), Math::inf());

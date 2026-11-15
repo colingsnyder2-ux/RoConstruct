@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// StringValueGet | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 672433de | roc native-status --write
 #include "reflection/type.h"
 #include <string>
 

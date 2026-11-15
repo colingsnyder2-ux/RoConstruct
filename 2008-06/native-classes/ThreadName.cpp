@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ThreadName | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 0a1f8666 | roc native-status --write
 #include <string>
 #include <boost/thread/once.hpp>
 #include <boost/thread/tss.hpp>

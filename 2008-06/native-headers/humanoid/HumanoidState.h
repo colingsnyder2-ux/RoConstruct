@@ -1,14 +1,11 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidState | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src c63f37d8 | roc native-status --write
 #include "util/Name.h"
 #include "util/HitTestFilter.h"
 #include <boost/shared_ptr.hpp>
 #include <G3D/Array.h>
 #include <G3D/Vector3.h>
 #include <G3D/CoordinateFrame.h>
+#include <memory>
 
 namespace RBX {
 class Humanoid;
@@ -16,6 +13,7 @@ class PartInstance;
 class Primitive;
 class Controller;
 class Velocity;
+class Adorn;
 namespace HUMAN {
 // Inactive native layout of the 2008-06 HumanoidState base. Do not instantiate
 // or use in the running player.
@@ -69,6 +67,18 @@ public:
 
     // Out of line: callers call the identical-code-folded getter 00793d50 (mov eax,[ecx+8]; ret).
     Humanoid* getHumanoid() const;                                    // 00793d50
+    Primitive* getFloorPrimitive() const;                             // 00643d30: floorPart +0x24 ? part + 0x228 (embedded
+                                                                      //   Primitive) : NULL (analog name)
+    void render3dAdorn(Adorn* adorn);                                 // 00645060 (thiscall; called by Humanoid::render3dAdorn
+                                                                      //   005d9c30 through currentState +0x220; analog name)
+    // 00645450 (cdecl, `ret`): (*state)->006451c0(dt), 006453a0(state, dt), then (*state)->onStep(dt, controller)
+    // (slot 1). Called by Humanoid::onEvent 005dc740 with &currentState (+0x220) (analog name).
+    static void stepState(std::auto_ptr<HumanoidState>& state, float dt, Controller* controller);
+    // State factories of the HumanoidState unit (cdecl statics; analog names: the registry has placeholders only).
+    static HumanoidState* create(int stateType, Humanoid* humanoid);  // 00643660: switch on the getStateType values 0..11
+                                                                      //   (FallingDown .. Dead), default Running
+    static HumanoidState* createDefault(Humanoid* humanoid);          // 00643280: new Running (Humanoid::onAncestorChanged
+                                                                      //   005db560)
     void setLimbFlag(bool value);                                     // 006431b0
     bool speedSettled() const;                                        // 00643330 (callers 00666b20/00666bc0 test al)
     // Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// MetadataClass | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (deepseek:deepseek-flash)
-// <<< native-status | src afa929f6 | roc native-status --write
 #include "reflection/Metadata.h"
 #include <algorithm>
 

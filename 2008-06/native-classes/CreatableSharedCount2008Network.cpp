@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // boost::detail::shared_count::shared_count<T*, RBX::Creatable<RBX::Instance>::Deleter>(T*, Deleter) instances (2008-06,
 // inactive). Each original is a 131-byte COMDAT (pinned extent: ret 8 at +0x6b, then the catch(...) funclet that
 // calls the deleter and rethrows) storing the sp_counted_impl_pd<T*, Deleter> vtable named by its RTTI; the
@@ -8,10 +9,6 @@
 // Network/Replicator2008.h / ClientProxy2008.h (record_native_network_replicator2008.py; Replicator and ClientProxy
 // are partial declarations there, which these instances do not depend on: each body only stores the T-specific
 // sp_counted_impl_pd vtable and converts T* to Instance* at offset 0). Nothing is declared here.
-// >>> native-status (generated) -- do not edit >>>
-// CreatableSharedCount2008Network | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src a2049729 | roc native-status --write
 #include "Network/Client2008.h"
 #include "Network/Server2008.h"
 #include "Network/ClientProxy2008.h"

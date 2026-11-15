@@ -6,10 +6,6 @@
 // need the native Primitive / Body; DynamicRotateJoint::stepUi 006463f0 needs World::ticklePrimitive (see
 // NATIVE_WORLD_JOINTS_PENDING_WORLD and the recorder's PROPOSALS).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// WorldJointRotate | 2008-06 | draft (no current byte proof)
-// 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by king_originala (+2) (mixed 3)
-// <<< native-status | src 9f4611f5 | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "v8kernel/Kernel.h"
 #include "v8kernel/Connector.h"
@@ -74,6 +70,9 @@ namespace RBX
 	// 006463f0 (slot 14 of RotatePJoint and RotateVJoint): getChannelValue 00645af0, IPipelined::getWorld inline
 	// (KERNEL_STAGE 7), World::ticklePrimitive 005e9410 for both primitives. Needs a World declaration reachable
 	// without the donor joint headers, and the 2008 IStage (see PROPOSALS).
+	// lf13: World2008.h now declares ticklePrimitive(Primitive*, int); the remaining blocker is the same as
+	// Joint::setPrimitive 006456e0 in WorldJoint.cpp: the donor IPipelined::getWorld is not inlined and uses
+	// KERNEL_STAGE 8, the 2008 inline compares with 7 (header proposal), so the guard stays.
 	void DynamicRotateJoint::stepUi(int uiStepId)
 	{
 		channelValue = getChannelValue(uiStepId);

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CScriptEditor | 2008-06 | 26 byte-exact, inactive (not link-selected)
-// 26/29 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+4) (mixed 5)
-// <<< native-status | src b5f5dcea | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/scintilla-mfc-1.20 /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // Include path for <Platform.h>/<Scintilla.h> (CScriptEditor.h): same Scintilla MFC 1.20 tree as CIDEDocManager.cpp.
 #include "CScriptEditor.h"

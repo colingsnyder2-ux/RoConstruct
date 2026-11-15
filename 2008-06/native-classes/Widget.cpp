@@ -1,10 +1,6 @@
 // 2008-06 native RBX::Widget / RBX::VerbWidget unit (inactive): the original gui/Widget.cpp, 00641ff0..006426f0.
 // Layout and addresses in native-headers/gui/Widget.h; verified by tests/record_native_widget.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// Widget | 2008-06 | 3 byte-exact, inactive (not link-selected)
-// 3/8 mapped addresses byte-exact | named 1 | 5 unproved | no mapped strings | by auto (+2) (mixed 4)
-// <<< native-status | src 2c5cc7da | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/widget-rect-2008
 #include "gui/Widget.h"
 
@@ -108,6 +104,10 @@ namespace RBX
 	{
 		// The 2008 build tests the mouse event range directly (cmp 1 / jl, cmp 7 / jg at 0064222e), not the chain of
 		// equalities in the donor UIEvent::isMouseEvent.
+		// PARKED 00642210 (only divergence: the notUsed() tail stores [eax+4] before [eax]; this body stores [eax]
+		// first). Rejected: (1) event.isMouseEvent() donor chain (107 bytes); (2) early-return form
+		// "if (!isEnabled() || out of range) return notUsed(); return processMouse(event);" (same store order);
+		// (3) else branch "return GuiTarget::process(event);" via the inline donor GuiTarget::process (same order).
 		if (isEnabled() && event.eventType >= UIEvent::MOUSE_RIGHT_BUTTON_DOWN && event.eventType <= UIEvent::MOUSE_IDLE)
 		{
 			return processMouse(event);

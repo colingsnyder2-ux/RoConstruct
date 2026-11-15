@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/file-mesh-provider
-// >>> native-status (generated) -- do not edit >>>
-// ViewNewFileMesh | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-chat)
-// <<< native-status | src 89145a8b | roc native-status --write
 #define NOMINMAX
 #include <winsock2.h>
 // 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98 (/fp:fast like the other ViewNew units).

@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DTextOutput (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/TextOutput.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// G3DTextOutput | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src c8ca01c7 | roc native-status --write
 #line 1 ".\\G3Dcpp\\TextOutput.cpp"
 /**
   @file TextOutput.cpp

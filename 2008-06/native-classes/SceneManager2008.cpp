@@ -4,10 +4,6 @@
 // SimpleSceneManager 004d7320 / 00458e90 (setSleeping, prerender). The chunk-array bodies (addToScene / addModel
 // 004d7db0, removeFromScene 004d8320, removeModel 004d8380, clear 004d8310) use the RenderSceneBase chunkArray +0x8
 // (RenderLib/RenderScene2008.h).
-// >>> native-status (generated) -- do not edit >>>
-// SceneManager2008 | 2008-06 | draft (no current byte proof)
-// 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by auto (+3) (mixed 3)
-// <<< native-status | src 9b7c0df3 | roc native-status --write
 #include "RenderLib/SceneManager2008.h"
 #include "OgreRbx/RbxEntity2008.h"
 #include "RenderLib/RenderScene2008.h"
@@ -39,6 +35,16 @@ namespace RBX
 			RenderStats::chunkCount--;
 			if (subEntity)
 				entity->removeSubEntity(subEntity);
+		}
+
+		void Chunk::setSortValue(float value)
+		{
+			sortValue = value;
+		}
+
+		float Chunk::getSortValue() const
+		{
+			return sortValue;
 		}
 
 #ifndef NATIVE_SCENE_MANAGER_EXTERNAL_CONSTRUCTORS

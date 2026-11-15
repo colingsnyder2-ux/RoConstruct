@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Body2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src d8674bd7 | roc native-status --write
 // 2008-06 native RBX::Body and RBX::Cofm (inactive). Declared under a non-colliding name: the original path
 // v8kernel/Body.h is reached through the donor v8kernel/KernelData.h <- Kernel.h <- IPipelined.h <- Edge.h by every
 // engine unit, and through v8kernel/Connector2008.h / Point.h / Pair.h, so a header at that path would shadow the donor
@@ -108,6 +104,11 @@ namespace RBX
 		{
 			updateIfDirty();
 			torque += _torque;
+		}
+		void accumulateForceCofm(const G3D::Vector3& _force)   // inline in Body::accumulateForceAtBranchCofm 0062e140
+		{                                                   // (force +0x84 after updateIfDirty 00658d20)
+			updateIfDirty();
+			force += _force;
 		}
 		void resetAccumulators()                          // out-of-line COMDAT 00613e80 (Body::step 0061421e)
 		{
@@ -261,6 +262,10 @@ namespace RBX
 		{
 			return cofm ? cofm->getMoment() : moment;
 		}
+		G3D::Vector3 getBranchIBodyV3() const             // out-of-line COMDAT 0062e100: Cofm::getMoment 00660170 or moment
+		{                                                 // +0x68, Matrix3 copy 00513220, Math::toDiagonal 005ddbb0
+			return Math::toDiagonal(getBranchIBody());
+		}
 		G3D::Matrix3 getBranchIWorld() const
 		{
 			updatePV();
@@ -281,10 +286,38 @@ namespace RBX
 			if (simBody)
 				simBody->accumulateForce(force, worldPos);
 		}
-		void accumulateTorque(const G3D::Vector3& torque) // out-of-line COMDAT 006060b0 (Connector unit)
+		void accumulateTorque(const G3D::Vector3& torque) // out-of-line COMDAT 006060b0 (Connector unit): root +0x10
+		{                                                 // and simBody +0x2c loaded once (006060b4 `mov esi, [eax+0x2c]`)
+			SimBody* simBody = root->simBody;
+			if (simBody)
+				simBody->accumulateTorque(torque);
+		}
+		void accumulateForceAtBranchCofm(const G3D::Vector3& force)   // out-of-line COMDAT 0062e140 (BodyMover range)
+		{
+			SimBody* simBody = root->simBody;
+			if (simBody)
+				simBody->accumulateForceCofm(force);
+		}
+		const G3D::Vector3& getBranchForce() const        // out-of-line COMDAT 0062e2a0: root +0x10 -> simBody +0x2c ->
+		{                                                 // force +0x84, else the Vector3::zero() static 0096f044
+			if (root->simBody)
+				return root->simBody->force;
+			else
+				return G3D::Vector3::zero();
+		}
+		const G3D::Vector3& getBranchTorque() const       // out-of-line COMDAT 0062e2e0: torque +0x90, else Vector3::zero()
 		{
 			if (root->simBody)
-				root->simBody->accumulateTorque(torque);
+				return root->simBody->torque;
+			else
+				return G3D::Vector3::zero();
+		}
+		const Velocity& getBranchVelocity() const         // inline in RunningBase::onComputeForce 006667d2..00666818: root
+		{                                                 // +0x10 -> simBody +0x2c -> pv.velocity +0x3c, else the
+			if (root->simBody)                            // Velocity::zero() static 0097d568 (guard 0097d580, Velocity()
+				return root->simBody->pv.velocity;        // 00614170) (analog name)
+			else
+				return Velocity::zero();
 		}
 		void setCoordinateFrame(const G3D::CoordinateFrame& worldCord);   // 00614400
 

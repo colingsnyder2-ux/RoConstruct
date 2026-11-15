@@ -28,3 +28,29 @@ void applyBrickSurface(Ogre::MaterialPtr material,Ogre::ColourValue colour) {
     unit->setTextureAddressingMode(Ogre::TextureUnitState::TAM_WRAP);
     unit->setTextureFiltering(Ogre::TFO_TRILINEAR);
 }
+
+// Original Roblox RenderLibNew/RenderScene.cpp reflection material setup:
+// skyspheremap.jpg + additive pass, ambient 2*reflectance, ENV_CURVED.
+// This adapter binds that setup to the demo's existing Ogre material.
+Ogre::ColourValue brickColour(int id);
+void applyWindowReflectance(Ogre::MaterialPtr material,float reflectance) {
+    Ogre::Technique* technique=material->getTechnique(0);
+    while(technique->getNumPasses()>1) technique->removePass(1);
+    Ogre::Pass* base=technique->getPass(0);
+    base->removeAllTextureUnitStates();
+    base->setDiffuse(brickColour(102)*(1-reflectance));base->setAmbient(brickColour(102)*(1-reflectance));
+    material->setReceiveShadows(false);
+    if(reflectance<=0) return;
+    Ogre::TexturePtr sky=Ogre::TextureManager::getSingleton().getByName("skysphmap");
+    if(sky.isNull()) {
+        Ogre::Image image;image.load("skyspheremap.jpg","General");
+        sky=Ogre::TextureManager::getSingleton().loadImage("skysphmap","General",image);
+    }
+    Ogre::Pass* reflection=technique->createPass();
+    reflection->setDiffuse(0,0,0,1);
+    reflection->setAmbient(Ogre::ColourValue(2,2,2,2)*reflectance);
+    reflection->setSceneBlending(Ogre::SBF_ONE,Ogre::SBF_ONE);
+    Ogre::TextureUnitState* unit=reflection->createTextureUnitState();
+    unit->setTextureName(sky->getName(),Ogre::TEX_TYPE_2D);
+    unit->setEnvironmentMap(true,Ogre::TextureUnitState::ENV_CURVED);
+}

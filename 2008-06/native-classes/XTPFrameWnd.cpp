@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPFrameWnd | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5ef50052 | roc native-status --write
 #include "stdafx.h"
 
 #include "XTPFrameWnd.h"

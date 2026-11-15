@@ -2,16 +2,10 @@
 // Layout and evidence: native-headers/v8datamodel/BodyColors.h. Verified by tests/record_native_appearance.py.
 // In the original, BodyColors shares the CharacterAppearance unit with Clothing/Shirt/Pants/ShirtGraphic/Skin
 // (native-classes/Clothing.cpp, another owner); CharacterAppearance::dataChanged 005d3b50 is defined there.
-// >>> native-status (generated) -- do not edit >>>
-// BodyColors | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | 1 referenced strings (not rechecked) | by EspClaude (deepseek:deepseek-chat)
-// <<< native-status | src a6da4090 | roc native-status --write
 #include "v8datamodel/BodyColors.h"
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
-#ifdef NATIVE_BODYCOLORS_PENDING
-#include "v8datamodel/ModelInstance.h"
-#endif
+#include "v8datamodel/ModelInstance.h"   // findModifierOfType<Skin> 005d4460 (BodyColors::apply 005d4b60)
 
 namespace RBX
 {
@@ -60,10 +54,9 @@ namespace RBX
 		setName("Body Colors");
 	}
 
-#ifdef NATIVE_BODYCOLORS_PENDING
 	// 005d4b60: skips when the parent model carries a Skin modifier. 005d4460 walks ModelInstance's
-	// vector<IModelModifier*> (+0x1ec) with dynamic_cast<Skin*>; needs a ModelInstance member template
-	// (proposal findModifierOfType<T>) and a native ModelInstance.h that compiles standalone.
+	// vector<IModelModifier*> (+0x1ec) with dynamic_cast<Skin*>: ModelInstance::findModifierOfType<Skin> (native
+	// v8datamodel/ModelInstance.h member template since batch 16).
 	void BodyColors::apply(Humanoid* humanoid)
 	{
 		if (Instance* parent = getParent())
@@ -77,7 +70,6 @@ namespace RBX
 		if (PartInstance* part = humanoid->getLeftArm()) part->setColor(leftArmColor);
 		if (PartInstance* part = humanoid->getRightArm()) part->setColor(rightArmColor);
 	}
-#endif
 }
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).

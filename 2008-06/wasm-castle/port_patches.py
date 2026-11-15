@@ -105,6 +105,15 @@ def castle_entry(root, template, output):
     first = prefix.index('LRESULT CALLBACK demoProc(')
     last = prefix.index('// Native GeometryBuilder', first)
     prefix = prefix[:first] + prefix[last:]
+    prefix = prefix.replace('    void skyLighting(',
+        '    float capDepthBias=0;\n'
+        '    void stencilBias(float bias) {capDepthBias=bias;}\n'
+        '    void skyLighting(')
+    prefix = prefix.replace('        Ogre::SceneManager::renderSingleObject(renderable,pass,iterate,lights);',
+        '        bool stencil=pass==mShadowStencilPass && capDepthBias!=0;\n'
+        '        if(stencil) mDestRenderSystem->_setDepthBias(capDepthBias,0);\n'
+        '        Ogre::SceneManager::renderSingleObject(renderable,pass,iterate,lights);\n'
+        '        if(stencil) mDestRenderSystem->_setDepthBias(0,0);')
     # Demo styling changes live beside the browser port; frozen native reference
     # remains byte-for-byte unchanged. All materials come from the 2008 palette.
     folder = template.parent
@@ -114,9 +123,10 @@ def castle_entry(root, template, output):
     colours = {int(i): (int(r), int(g), int(b)) for i, r, g, b in re.findall(
         r'insert\(lego_(\d+),\s*(\d+),\s*(\d+),\s*(\d+),', palette)}
     cases = '\n'.join(f'case {i}: return Ogre::ColourValue({colours[i][0]}/255.0f,{colours[i][1]}/255.0f,{colours[i][2]}/255.0f);'
-                      for i in (199,28,208,21,192,26,24,141))
+                      for i in (199,28,208,21,23,192,26,24,141,18,38,5,1,102))
     marker = '// Native GeometryBuilder'
     prefix = prefix.replace(marker, 'unsigned castleStudCount=0,castleBevelCount=0;\n'
+        'int sceneBuildId=0;\n'
         'struct CastleBlock {Ogre::Vector3 center,size;Ogre::String material;bool studs;};\n'
         'std::vector<CastleBlock> castleBlocks;\n'
         'Ogre::ColourValue brickColour(int id) { switch(id) {\n' + cases +
@@ -129,12 +139,34 @@ def castle_entry(root, template, output):
         '    std::vector<unsigned> shadowIndices;\n    unsigned index;')
     prefix = prefix.replace('        index+=4;',
         '        if(!suppressShadow) {shadowTriangle(a,b,c);shadowTriangle(a,c,d);}\n        index+=4;')
+    # Fixture meshes contain world-space positions, unlike centered game meshes.
+    # Native SubEntity's radius-at-transform-origin bound is therefore wrong.
+    # Supply the actual mesh bounds so near-plane z-fail and cap tests agree.
     prefix = prefix.replace('    void shadows(bool enabled) { mCastShadows=enabled; }',
+        '    Ogre::AxisAlignedBox localBounds;\n'
+        '    mutable Ogre::AxisAlignedBox worldBounds;\n'
+        '    void bounds(const Ogre::Vector3& minimum,const Ogre::Vector3& maximum) {localBounds.setExtents(minimum,maximum); }\n'
+        '    const Ogre::AxisAlignedBox& getWorldBoundingBox(bool derive=false) const override {\n'
+        '        worldBounds=localBounds;worldBounds.transformAffine(mTransform);return worldBounds;\n'
+        '    }\n'
+        '    void shadows(bool enabled) { mCastShadows=enabled; }')
+    prefix = prefix.replace('        object->setMaterial(material);',
+        '        object->bounds(minimum,maximum);\n        object->setMaterial(material);')
+    prefix = prefix.replace('    void shadows(bool enabled) { mCastShadows=enabled; }',
+        '    int sceneId=0;\n'
+        '    void transform(const Ogre::Matrix4& matrix) {mTransform=matrix;}\n'
         '    void shadows(bool enabled) { mCastShadows=enabled; }\n'
         '    void shadowMesh(Ogre::RbxSubMesh* mesh) {mShadowSubMesh=mesh;}')
+    prefix = prefix.replace('Ogre::AxisAlignedBox(-18,-12,-18,18,17,18)', 'Ogre::AxisAlignedBox(-30,-20,-30,200,30,50)')
+    prefix = prefix.replace('mesh->_setBoundingSphereRadius(32)', 'mesh->_setBoundingSphereRadius(250)')
+    prefix = prefix.replace('if(parts[i]->getCastShadows())', 'if(parts[i]->getCastShadows()&&parts[i]->isVisible())')
     prefix = prefix.replace('std::vector<float> vertices,normals;', 'std::vector<float> vertices,normals,texCoords;')
     prefix = prefix.replace('material->setDiffuse(colour); material->setAmbient(colour);',
-        'applyBrickSurface(material,colour);')
+        'if(fresh) applyBrickSurface(material,colour);')
+    prefix = prefix.replace('material=Ogre::MaterialManager::getSingleton().create(name,"General");',
+        'material=Ogre::MaterialManager::getSingleton().getByName(name);\n'
+        '        bool fresh=material.isNull();\n'
+        '        if(fresh) material=Ogre::MaterialManager::getSingleton().create(name,"General");')
     prefix = prefix.replace('normals.push_back(normal.x); normals.push_back(normal.y); normals.push_back(normal.z);',
         'normals.push_back(normal.x); normals.push_back(normal.y); normals.push_back(normal.z);\n'
         '            texCoords.push_back(0.125f);texCoords.push_back(0.25f);')
@@ -142,6 +174,7 @@ def castle_entry(root, template, output):
     prefix = prefix.replace(':index(0) {', ':index(0),owner(scene) {')
     prefix = prefix.replace('native->meshes.push_back(mesh); native->parts.push_back(object);',
         'native->meshes.push_back(mesh); native->parts.push_back(object);\n'
+        '        object->sceneId=sceneBuildId;\n'
         '        if(castShadows) {\n'
         '            Ogre::RbxSubMesh* shadow=builder.createIndexed(&shadowVertices[0],shadowVertices.size()/3,\n'
         '                &shadowNormals[0],0,0,0,&shadowIndices[0],shadowIndices.size()/3,&minimum,&maximum);\n'
@@ -155,6 +188,8 @@ def castle_entry(root, template, output):
     scene_start = setup.index('        static_cast<DemoSceneManager*>(scene)->createWorld();')
     scene_end = setup.index('        trees.finish(scene);', scene_start) + len('        trees.finish(scene);')
     setup = setup[:scene_start] + (folder / 'brick_scene.in.cpp').read_text() + setup[scene_end:]
+    setup += '\n' + (folder / 'windmill_scene.in.cpp').read_text()
+    setup += '\n' + (folder / 'temple_scene.in.cpp').read_text()
     setup = setup.replace('Ogre::Root root("","","ogre_demo.log");',
         'rootHandle = new Ogre::Root("", "", "castle_browser.log");\n'
         '        Ogre::Root& root = *rootHandle;\n        Ogre::registerBrowserImageCodecs();')
@@ -170,12 +205,83 @@ def castle_entry(root, template, output):
     first = source.index('            // Lighting::setTime uses whole seconds')
     end = source.index('            // Direct DLL render-target', first)
     frame = source[first:end]
+    first_hud=frame.index('            if(hudVisible) {')
+    end_hud=frame.index('            if(orbit',first_hud)
+    frame=frame[:first_hud]+frame[end_hud:]
+    setup=re.sub(r'^.*hud\.setup\([^\n]+\n|^.*scene->removeRenderQueueListener\(&hud\);\n', '',setup,flags=re.M)
     frame = frame.replace("focused && (GetAsyncKeyState('R')&0x8000)", "keys['R']")
     frame = frame.replace('celestial || (smoke && (frame==19 || frame==43))', 'celestial')
+    frame = frame.replace('camera->setPosition(zoom*cos(pitch)*sin(yaw),3+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));',
+        'camera->setPosition(activeScene*80+zoom*cos(pitch)*sin(yaw),(activeScene?9:3)+zoom*sin(pitch),zoom*cos(pitch)*cos(yaw));')
+    frame = frame.replace('camera->lookAt(0,3,0);','camera->lookAt(activeScene*80,activeScene?9:3,0);')
+    frame += '\n            for(auto* part:static_cast<DemoSceneManager*>(scene)->parts) part->setVisible(part->sceneId==activeScene);\n'
     frame = frame.replace('24,736,624,600,0,0,1,1', '24,window->getHeight()-24,624,window->getHeight()-160,0,0,1,1')
     frame = frame.replace('520+a', 'window->getHeight()-240+a').replace('520+b', 'window->getHeight()-240+b')
     text = template.read_text().replace('// NATIVE_PREFIX', prefix).replace('// NATIVE_SETUP', setup).replace('// NATIVE_FRAME', frame)
     output.parent.mkdir(exist_ok=True)
+    # The upstream integer cache truncates fractional blend colours. Preserve
+    # all four IEEE float values so reflectance changes select the right shader.
+    text = text.replace('keyView.next(this.env.key2);', '''GLEmulation.colourKeyFloats ||= new Float32Array(4);
+            GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
+            GLEmulation.colourKeyFloats.set(this.env.envColor);
+            for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);''')
+    # Generated reflection coordinates have no texcoord attribute location.
+    # Upstream's attribute-loop continue skipped their texture matrix upload,
+    # leaving a zero uniform and sampling only the texture's corner pixel.
+    text = text.replace('          var clientAttributes = GLImmediate.clientAttributes;', '''          for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {
+            var matrixIndex=2+unit;
+            if(this.textureMatrixLocations[unit] && this.textureMatrixVersion[matrixIndex] != GLImmediate.matrixVersion[matrixIndex]) {
+              this.textureMatrixVersion[matrixIndex]=GLImmediate.matrixVersion[matrixIndex];
+              GLctx.uniformMatrix4fv(this.textureMatrixLocations[unit],false,GLImmediate.matrix[matrixIndex]);
+            }
+          }
+          var clientAttributes = GLImmediate.clientAttributes;''')
+    text = re.sub(r'this.textureMatrixVersion = \[ [0, ]+ \];',
+        'this.textureMatrixVersion = new Array(GLImmediate.MAX_TEXTURES+2).fill(-1);',text)
+    # Complete the legacy GL reflection-map path used by Ogre environment maps.
+    # The upstream emulator advertises cubes but samples them as 2D textures and
+    # aborts on glTexGeni. Keep texgen state per active texture unit and shader key.
+    for operation, enabled in (('Enable','true'),('Disable','false')):
+        prefix = f'_gl{operation} = _emscripten_gl{operation} = (cap) => {{'
+        text = text.replace(prefix,prefix + f'''
+        if (cap >= 0x0C60 && cap <= 0x0C63) {{
+          GLImmediate.lastRenderer?.cleanup();
+          GLImmediate.currentRenderer=null;
+          GLEmulation.reflectionCoords ||= [];
+          var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+          var mask=GLEmulation.reflectionCoords[unit] || 0;
+          var bit=1 << (cap-0x0C60);
+          GLEmulation.reflectionCoords[unit]={enabled} ? mask|bit : mask&~bit;
+          return;
+        }}''')
+    text = text.replace("glTexGeni: (coord, pname, param) => abort('glTexGeni: TODO'),",'''
+  glTexGeni: (coord,pname,param) => {
+    if (pname != 0x2500 || (param != 0x8512 && param != 0x2402) || coord < 0x2000 || coord > 0x2002)
+      abort('Unsupported texgen mode: ' + param);
+    GLEmulation.reflectionMode ||= [];
+    GLEmulation.reflectionMode[GLImmediate.TexEnvJIT.getActiveTexture()]=param;
+  },''')
+    text = text.replace('var keyView = cacheMap.getStaticKeyView().reset();',
+        'var keyView = cacheMap.getStaticKeyView().reset();\n'
+        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);keyView.next(GLEmulation.reflectionMode?.[unit] || 0);}')
+    # Use the actual TexEnvJIT cube type for sampler declarations and coordinates.
+    text = text.replace("return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;",
+        "return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;")
+    text = text.replace("texUnitUniformList += 'uniform sampler2D ' + uTexUnitPrefix + texUnit + ';\\n';",
+        "texUnitUniformList += 'uniform ' + (GLImmediate.TexEnvJIT.getTexUnitType(texUnit)==0x8513 ? 'samplerCube ' : 'sampler2D ') + uTexUnitPrefix + texUnit + ';\\n';")
+    text = text.replace("vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';",'''
+              if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\\n';
+              } else if ((GLEmulation.reflectionCoords?.[texUnit] || 0)==3 && GLEmulation.reflectionMode?.[texUnit]==0x2402) {
+                vsTexCoordInits += 'vec3 sphereR'+texUnit+'=reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal));';
+                vsTexCoordInits += 'vec3 sphereM'+texUnit+'=sphereR'+texUnit+'+vec3(0.0,0.0,1.0);';
+                vsTexCoordInits += vTexCoordPrefix+texUnit+'=vec4(sphereR'+texUnit+'.xy/max(2.0*length(sphereM'+texUnit+'),0.00001)+vec2(0.5),0.0,1.0);';
+              } else {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';
+              }''')
+    text = text.replace("            var vsLightingDefs = '';",'''
+            var reflectionActive=this.usedTexUnitList.some(unit => [3,7].includes(GLEmulation.reflectionCoords?.[unit] || 0));
+            var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';''')
     output.write_text(text)
 
 def body(text, signature, replacement):
@@ -360,4 +466,68 @@ def emulation_library(sdk, output):
               }
 '''
     text = text[:begin] + declarations + lighting + text[end:]
+    # The upstream integer cache truncates fractional blend colours. Preserve
+    # all four IEEE float values so reflectance changes select the right shader.
+    text = text.replace('keyView.next(this.env.key2);', '''GLEmulation.colourKeyFloats ||= new Float32Array(4);
+            GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
+            GLEmulation.colourKeyFloats.set(this.env.envColor);
+            for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);''')
+    # Generated reflection coordinates have no texcoord attribute location.
+    # Upstream's attribute-loop continue skipped their texture matrix upload,
+    # leaving a zero uniform and sampling only the texture's corner pixel.
+    text = text.replace('          var clientAttributes = GLImmediate.clientAttributes;', '''          for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {
+            var matrixIndex=2+unit;
+            if(this.textureMatrixLocations[unit] && this.textureMatrixVersion[matrixIndex] != GLImmediate.matrixVersion[matrixIndex]) {
+              this.textureMatrixVersion[matrixIndex]=GLImmediate.matrixVersion[matrixIndex];
+              GLctx.uniformMatrix4fv(this.textureMatrixLocations[unit],false,GLImmediate.matrix[matrixIndex]);
+            }
+          }
+          var clientAttributes = GLImmediate.clientAttributes;''')
+    text = re.sub(r'this.textureMatrixVersion = \[ [0, ]+ \];',
+        'this.textureMatrixVersion = new Array(GLImmediate.MAX_TEXTURES+2).fill(-1);',text)
+    # Complete the legacy GL reflection-map path used by Ogre environment maps.
+    # The upstream emulator advertises cubes but samples them as 2D textures and
+    # aborts on glTexGeni. Keep texgen state per active texture unit and shader key.
+    for operation, enabled in (('Enable','true'),('Disable','false')):
+        prefix = f'_gl{operation} = _emscripten_gl{operation} = (cap) => {{'
+        text = text.replace(prefix,prefix + f'''
+        if (cap >= 0x0C60 && cap <= 0x0C63) {{
+          GLImmediate.lastRenderer?.cleanup();
+          GLImmediate.currentRenderer=null;
+          GLEmulation.reflectionCoords ||= [];
+          var unit=GLImmediate.TexEnvJIT.getActiveTexture();
+          var mask=GLEmulation.reflectionCoords[unit] || 0;
+          var bit=1 << (cap-0x0C60);
+          GLEmulation.reflectionCoords[unit]={enabled} ? mask|bit : mask&~bit;
+          return;
+        }}''')
+    text = text.replace("glTexGeni: (coord, pname, param) => abort('glTexGeni: TODO'),",'''
+  glTexGeni: (coord,pname,param) => {
+    if (pname != 0x2500 || (param != 0x8512 && param != 0x2402) || coord < 0x2000 || coord > 0x2002)
+      abort('Unsupported texgen mode: ' + param);
+    GLEmulation.reflectionMode ||= [];
+    GLEmulation.reflectionMode[GLImmediate.TexEnvJIT.getActiveTexture()]=param;
+  },''')
+    text = text.replace('var keyView = cacheMap.getStaticKeyView().reset();',
+        'var keyView = cacheMap.getStaticKeyView().reset();\n'
+        '      for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {keyView.next(GLEmulation.reflectionCoords?.[unit] || 0);keyView.next(GLEmulation.reflectionMode?.[unit] || 0);}')
+    # Use the actual TexEnvJIT cube type for sampler declarations and coordinates.
+    text = text.replace("return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.xy)`;",
+        "return `${func}(${TEX_UNIT_UNIFORM_PREFIX}${texUnitID}, ${texCoordExpr}.${texType == GL_TEXTURE_CUBE_MAP ? 'xyz' : 'xy'})`;")
+    text = text.replace("texUnitUniformList += 'uniform sampler2D ' + uTexUnitPrefix + texUnit + ';\\n';",
+        "texUnitUniformList += 'uniform ' + (GLImmediate.TexEnvJIT.getTexUnitType(texUnit)==0x8513 ? 'samplerCube ' : 'sampler2D ') + uTexUnitPrefix + texUnit + ';\\n';")
+    text = text.replace("vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';",'''
+              if ((GLEmulation.reflectionCoords?.[texUnit] || 0) == 7) {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = vec4(reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal)),0.0);\\n';
+              } else if ((GLEmulation.reflectionCoords?.[texUnit] || 0)==3 && GLEmulation.reflectionMode?.[texUnit]==0x2402) {
+                vsTexCoordInits += 'vec3 sphereR'+texUnit+'=reflect(normalize(ecPosition.xyz),normalize(u_normalMatrix*a_normal));';
+                vsTexCoordInits += 'vec3 sphereM'+texUnit+'=sphereR'+texUnit+'+vec3(0.0,0.0,1.0);';
+                vsTexCoordInits += vTexCoordPrefix+texUnit+'=vec4(sphereR'+texUnit+'.xy/max(2.0*length(sphereM'+texUnit+'),0.00001)+vec2(0.5),0.0,1.0);';
+              } else {
+                vsTexCoordInits += '  ' + vTexCoordPrefix + texUnit + ' = ' + aTexCoordPrefix + texUnit + ';\\n';
+              }''')
+    text = text.replace("            var vsLightingDefs = '';",'''
+            var reflectionActive=this.usedTexUnitList.some(unit => [3,7].includes(GLEmulation.reflectionCoords?.[unit] || 0));
+            var vsLightingDefs = reflectionActive && !GLEmulation.lightingEnabled ? 'attribute vec3 a_normal; uniform mat3 u_normalMatrix;' : '';''')
     output.write_text(text)
+

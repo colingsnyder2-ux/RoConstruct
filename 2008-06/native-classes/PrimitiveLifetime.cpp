@@ -1,16 +1,20 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// PrimitiveLifetime | 2008-06 | draft (no current byte proof)
-// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by tester (+3) (mixed 3)
-// <<< native-status | src b9d389d5 | roc native-status --write
 #undef _RELEASEASSERT
+// NATIVE_PRIMITIVE_NATIVE_BODY (batch 14): the part-embedded Primitive.h reaches native-headers/v8kernel/Body2008.h
+// (0xdc, pv +0x94) instead of the donor v8kernel/Body.h (pv +0x88); Contact / Joint come from the native
+// v8world/Contact2008.h / Joints2008.h (Edge on IPipelined2008.h) for the rbx_static_casts below, and Constants from
+// v8kernel/Constants.h (formerly reached through the donor kernel headers).
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8world/Primitive.h"
-#include "v8kernel/Body.h"
+#include "v8world/Contact2008.h"
+#include "v8world/Joints2008.h"
+#include "v8kernel/Constants.h"
 #include "v8world/Controller.h"
 
 namespace RBX {
 void newTouch(Primitive* touch, Primitive* touchOther);
 
+// 005e8770 (new Body: 0xdc and Body() 006149c0 with the 2008 Body of Body2008.h).
 Primitive::Primitive(Geometry::GeometryType geometryType)
     : guidSetExternally(false), edgeVersion(1), contacts(this), joints(this),
       worldIndex(-1), traverseId(-1), world(NULL), clump(NULL), clumpDepth(-1),
@@ -52,10 +56,8 @@ Edge* Primitive::getFirstEdge() const
     return joints.edges.size() > 0 ? joints.edges[0] : (contacts.edges.size() > 0 ? contacts.edges[0] : NULL);
 }
 
-// 005e82c0. PARKED on a header layout, not the body: the compiled code is the original sequence (body +0xa0,
-// Body::updatePV 00599360 through the getPV inline, lea eax,[body+pv]) except the donor v8kernel/Body.h puts pv at
-// +0x88 while the 2008-06 Body has it at +0x94 (Body2008.h: updatePV 00599360 / setCoordinateFrame 00614400).
-// Body2008.h cannot be included next to the donor Primitive.h (Edge.h -> Kernel.h reaches the donor Body.h).
+// 005e82c0: body +0xa0, Body::updatePV 00599360 through the getPV inline, lea eax,[body+pv] with the 2008 pv +0x94
+// (Body2008.h: updatePV 00599360 / setCoordinateFrame 00614400), reached through NATIVE_PRIMITIVE_NATIVE_BODY.
 const G3D::CoordinateFrame& Primitive::getCoordinateFrame() const
 {
     return body->getPV().position;

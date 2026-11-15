@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
 // 2008-06 native RBX::World rows of the World.cpp unit 005e9150..005eaeef (inactive), application range
 // 005e8000..005f4000. Built against Colin's native-headers/engine-world/v8world/World.h and ContactManager.h (read-only;
 // the recorder puts native-headers/engine-world first, as record_native_geometry_service.py does) and the native
@@ -7,10 +8,6 @@
 // touchOther +0x98, inJointNotification +0xa5, primitives +0xac (size +0xb0). Members past +0xb8 (numJoints +0xe4,
 // numContacts +0xe8, numLinkCalls +0xec) are off by 0xc in the header (see the recorder's PROPOSALS) and are not used.
 // Verified by tests/record_native_app_unit5e8_2008.py.
-// >>> native-status (generated) -- do not edit >>>
-// AppUnit5E8_2008World | 2008-06 | draft (no current byte proof)
-// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by auto (+3) (mixed 3)
-// <<< native-status | src df14a0e5 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8world/World.h"
 #include "v8world/ContactManager.h"

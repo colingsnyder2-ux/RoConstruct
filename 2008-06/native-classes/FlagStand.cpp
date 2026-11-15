@@ -3,10 +3,6 @@
 // (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470). The FlagStandService half lives in
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.
 // Verified by tests/record_native_flag_family.py.
-// >>> native-status (generated) -- do not edit >>>
-// FlagStand | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 66c1a3dd | roc native-status --write
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"
 #include "v8datamodel/Flag.h"
@@ -43,10 +39,13 @@ namespace RBX
 		setName(sFlagStand);
 	}
 
-	// 0062b900
+	// 0062b900: embedded Primitive +0x228, Primitive::getFirstRigid 005e7c80 / getNextRigid 005e7ca0, the joint's two
+	// primitives (+0xc, +0x10), PartInstance::fromPrimitive 00599f80, parent +0x104, __RTDynamicCast Instance -> Flag
+	// (RTTI 0092907c -> 0094be40). Donor tools/rbxgs v8datamodel/FlagStand.cpp FlagStand::GetFlag.
 	Flag* FlagStand::GetFlag()
 	{
 		Primitive* primitive = getPrimitive();
+
 		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
 		{
 			for (int i = 0; i < 2; i++)
@@ -56,6 +55,7 @@ namespace RBX
 					return flag;
 			}
 		}
+
 		return NULL;
 	}
 

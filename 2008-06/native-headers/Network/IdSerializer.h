@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// IdSerializer | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src b62f39fd | roc native-status --write
 // 2008-06 native RBX::Network::IdSerializer and its string dictionaries (inactive). Shape after the donor
 // tools/rbxgs/Client/Network/Streaming.h; every base, field and size below is read from the 2008-06 binary:
 //   RTTI       vtable 0082534c .?AVIdSerializer@Network@RBX@@ (18 bases): Instance only (no Described or
@@ -26,8 +22,15 @@
 
 struct NativeReplicatorLayout;
 
+namespace RakNet
+{
+	class BitStream;
+}
+
 namespace RBX
 {
+	class Name;
+
 	namespace Reflection
 	{
 		class RefPropertyDescriptor;
@@ -48,6 +51,10 @@ namespace RBX
 				: lastIndex(1)
 			{
 			}
+
+			// Bodies in native-classes/AppUnit49C_2008IdSerializerTemplates.cpp (Network/Streaming.cpp unit).
+			bool trySend(RakNet::BitStream& stream, const std::string& value);       // 004a7ba0
+			void send(RakNet::BitStream& stream, const std::string& value);          // 004a7e20
 		};
 
 		class StringReceiver
@@ -55,6 +62,11 @@ namespace RBX
 			friend struct ::NativeReplicatorLayout;
 		private:
 			std::string strings[256];                                                 // +0x00
+
+		public:
+			// Bodies in native-classes/AppUnit49C_2008IdSerializerTemplates.cpp (Network/Streaming.cpp unit).
+			void receive(RakNet::BitStream& stream, std::string& value);             // 004a6e20
+			void receive(RakNet::BitStream& stream, const Name*& value);             // 004a6f70
 		};
 
 		class SharedStringDictionary : public StringSender, public StringReceiver, private boost::noncopyable
@@ -80,6 +92,11 @@ namespace RBX
 
 		public:
 			IdSerializer() {}                                                         // 004b94a0
+
+			// 004a8ae0 (donor Streaming.cpp IdSerializer::serializeId; thiscall, ret 8). No body yet: it reads the
+			// argument's Guid after GuidItem<Instance>::registerGuid 0049bba0 (Guid::Data at +0x8/+0xc), and the
+			// GuidItem<Instance> accessor for that guid is not declared in util/GuidItem.h.
+			void serializeId(RakNet::BitStream& stream, const Instance* instance);
 		};
 	}
 }

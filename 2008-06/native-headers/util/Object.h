@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Object | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src f9023292 | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include <map>
 #include "util/Name.h"

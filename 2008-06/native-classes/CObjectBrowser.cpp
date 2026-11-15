@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CObjectBrowser | 2008-06 | 5 byte-exact, inactive (not link-selected)
-// 5/7 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+2) (mixed 3)
-// <<< native-status | src c7f8d5b8 | roc native-status --write
 #include "CObjectBrowser.h"
 #include <algorithm>
 
@@ -36,6 +32,10 @@ void CObjectBrowser::OnDraw(CDC* pDC)
 
 // Original 004339d0: keeps the member pane's height when the browser grows or shrinks (clamped to [50, cy - 150]).
 // Not exact (210 vs 212 bytes): the original evaluates cy - (bottom - top); this compiles to top - bottom + cy.
+// Parked after three rejected variants (2026-11-13; all other instructions already match):
+//   1. height = delta + current            -> unchanged (still top - bottom + cy, 210 B)
+//   2. delta = cy - rect.Size().cy         -> materialises bottom - top, but swaps edi/esi and folds cy late (209 B)
+//   3. delta = rect.Height() - cy; current - delta -> bottom - top - cy, then current - delta (209 B)
 void CObjectBrowser::OnSize(UINT nType, int cx, int cy)
 {
     CView::OnSize(nType, cx, cy);

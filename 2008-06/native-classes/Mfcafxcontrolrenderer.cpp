@@ -10,10 +10,6 @@
 // See these sources for detailed information regarding the
 // Microsoft Foundation Classes product.
 
-// >>> native-status (generated) -- do not edit >>>
-// Mfcafxcontrolrenderer | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src a87db502 | roc native-status --write
 #include "stdafx.h"
 #include "afxcontrolrenderer.h"
 #include "afxdrawmanager.h"

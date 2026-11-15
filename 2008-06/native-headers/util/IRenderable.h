@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// IRenderable | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 2fee5513 | roc native-status --write
 #include "RbxGraphics/Adorn.h"
 #include "AppDraw/SelectState.h"
 #include "util/IndexArray.h"

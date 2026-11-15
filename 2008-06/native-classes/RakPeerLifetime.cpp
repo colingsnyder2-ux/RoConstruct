@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASE /FImalloc.h /I{headers}/../../../tools/openrbx/Client/Network/raknet30/Source /I{headers}/../../../tools/openrbx/util
-// >>> native-status (generated) -- do not edit >>>
-// RakPeerLifetime | 2008-06 | draft (no current byte proof)
-// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by tester (+2) (deepseek:deepseek-flash)
-// <<< native-status | src 0dcb79f6 | roc native-status --write
 #include <malloc.h>
 /// \file
 ///

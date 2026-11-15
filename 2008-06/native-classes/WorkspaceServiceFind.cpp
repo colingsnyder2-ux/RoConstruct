@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// WorkspaceServiceFind | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by colin
-// <<< native-status | src pending | roc native-status --write
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor
 #include <boost/thread/once.hpp>
 #include "v8datamodel/Workspace.h"

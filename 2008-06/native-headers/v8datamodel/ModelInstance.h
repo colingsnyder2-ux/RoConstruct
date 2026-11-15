@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ModelInstance | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 26d0b60e | roc native-status --write
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/ICameraOwner.h"
 #include "util/IRenderable.h"
@@ -56,6 +52,20 @@ namespace RBX
 		ModelInstance();
 		virtual ~ModelInstance();
 	public:
+		// 005d8690 = <Humanoid> (162 bytes; callers Humanoid::modelIsCharacter 005d9a20, getLocalHumanoidFromContext 005d9bb0,
+		// render3dAdorn 005d9c30, 005db4c0, render2d 005db960), 005d4460 = <Skin> (BodyColors::apply 005d4b60): walks the
+		// modifiers vector (+0x1ec, first/last +0x1f8/+0x1fc) with checked const_iterators and dynamic_casts each entry
+		// from IModelModifier (RTTI 0x936908). Analog name (the registry has only placeholders for both instantiations).
+		template<class T> T* findModifierOfType() const
+		{
+			std::vector<IModelModifier*>::const_iterator end = modifiers.end();
+			for (std::vector<IModelModifier*>::const_iterator iter = modifiers.begin(); iter != end; ++iter)
+			{
+				if (T* result = dynamic_cast<T*>(*iter))
+					return result;
+			}
+			return NULL;
+		}
 		PartInstance* getPrimaryPartInternal() const;
 		void setPrimaryPart(PartInstance* set);
 		const G3D::CoordinateFrame& getModelInPrimary() const

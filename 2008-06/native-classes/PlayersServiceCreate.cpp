@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// PlayersServiceCreate | 2008-06 | 1 byte-exact, inactive (not link-selected)
-// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by colin
-// <<< native-status | src pending | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "Network/Players.h"
 

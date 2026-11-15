@@ -6,10 +6,6 @@
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying 
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// >>> native-status (generated) -- do not edit >>>
-// Boostonce | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src b7ddd341 | roc native-status --write
 #include <boost/thread/detail/config.hpp>
 
 #include <boost/detail/workaround.hpp>

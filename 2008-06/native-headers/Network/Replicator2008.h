@@ -1,18 +1,14 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Replicator2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src a2d95b40 | roc native-status --write
 // 2008-06 native RBX::Network::Replicator and Replicator::ReplicatorStatsItem (inactive). A new, non-colliding
 // header: the donor-path native-headers/Replicator.h (provisional donor layout) is neither used nor shadowed. Shape
 // after the donor tools/rbxgs Client/Network/Replicator.h; every base, field and size below is read from the 2008-06
 // binary (verified by tests/record_native_network_replicator2008.py).
 //
-// Replicator: PARTIAL DECLARATION. The bases and the members up to +0x2b90 are complete; the members from +0x2b90 to
-// the end (sizeof 0x2d68, ClientProxy places its first member at +0x2d68) are NOT declared yet, so sizeof(Replicator)
-// here is smaller than the original. Only code that does not depend on the Replicator size or on members past
-// +0x2b90 may be built from this header (shared_count<Replicator*>, dynamic_cast<const Replicator*>, the
-// ReplicatorStatsItem rows below); the constructor 004b9bd0 and destructor 004b96b0 stay open.
+// Replicator: members declared through sizeof 0x2d68 (the +0x2b90..+0x2d68 block below follows the donor member order;
+// element types and names that the binary does not prove are marked INFERRED). Virtual slots 16-21 are still NOT
+// declared (slot 16 has no name evidence), so a unit that emits the Replicator / ClientProxy vtables names them
+// differently from the original (see Server::ClientProxy in ClientProxy2008.h); the constructor 004b9bd0 and destructor
+// 004b96b0 stay open.
 //   RTTI       vtable 008254fc .?AVReplicator@Network@RBX@@ (23 bases): DescribedNonCreatable<Replicator,
 //              IdSerializer, sReplicator> (name mangled $1?sReplicator@23@3QBDB, a const char array in .rdata at
 //              008244e4 "NetworkReplicator", defined in native-classes/ReplicatorBases.cpp) and PluginInterface at
@@ -30,7 +26,7 @@
 //              +0x2b88 shared_ptr<ReplicatorStatsItem> statsItem (zeroed; the destructor releases the count at
 //              +0x2b8c; 004b82d0 assigns it create<ReplicatorStatsItem>(shared_from(this), peer->GetStatistics(
 //              remotePlayerId)) 004b7e50 and parents it to the "Network" stats item).
-//   pending    (not declared; layout read from ctor 004b9bd0 / dtor 004b96b0, element types not all proven):
+//   members    (layout read from ctor 004b9bd0 / dtor 004b96b0, element types not all proven):
 //              +0x2b90 std::map (const pointer key -> shared_ptr: destructor 004b16a0 is ICF-shared with
 //              map<const SignalDescriptor*, shared_ptr<SignalInstance> >), +0x2bb0 / +0x2bf4 two 0x44-byte name
 //              dictionaries (constructors 004b1570 / 004b1620: map + int bits +0x20 (004a8470 / 004a8580), vector
@@ -46,10 +42,17 @@
 //              (canSendItems 004aafc0), +0x2d4d bool (004aaf6f), +0x2d50 RakPeerInterface* peer (AttachPlugin slot
 //              58 in the ctor, DetachPlugin slot 59 in the dtor), +0x2d54 SystemAddress remotePlayerId, +0x2d5c /
 //              +0x2d60 two 4-byte counters (zeroed, not destroyed; 004b73e5, 004b8a18, 004b7d03), 4 bytes alignment.
-//   vtable     slots after Instance's: 16 00565ff0, 17 findTargetPlayer 004ab9a0, 18 wantReplicate 004aaf90, 19 pure,
-//              20 004ab960, 21 canSendItems 004aafc0; slot 12 onServiceProvider 004b87f0, slot 14 write 00416690;
-//              PluginInterface slot 4 Update 004b1240, slot 5 OnReceive 004b8c20. Not declared here (no vtable of
-//              Replicator is emitted from this header).
+//   vtable     008254fc, 22 slots; after Instance's 16: 16 00565ff0 (bool (const Instance*): ICF-shared `mov al,1;
+//              ret 4`; name not derived, no donor counterpart; ClientProxy overrides it with 004a3290, the Server
+//              script-name set lookup), 17 findTargetPlayer 004ab9a0, 18 wantReplicate 004aaf90, 19 onSentMarker(long)
+//              0070bdf0 (an empty `ret 4` ICF-shared with Instance's empty virtuals, not a pure call: donor order
+//              findTargetPlayer, wantReplicate, onSentMarker, remoteDeleteOnDisconnect, canSendItems), 20 004ab960
+//              (donor remoteDeleteOnDisconnect position; reads +0x2c70 Players*), 21 canSendItems 004aafc0 (reads
+//              +0x2d4c); ClientProxy vtable 00823474 keeps 18 and 20 and overrides 16, 17, 19, 21. Slot 12
+//              onServiceProvider 004b87f0, slot 14 write 00416690; PluginInterface (vtable 00825450) slot 4 Update
+//              004b1240, slot 5 OnReceive 004b8c20. Not declared here: slot 16 has no name evidence (declaring 17-21
+//              without it would shift every slot) and no unit emits the Replicator vtable before the constructor
+//              004b9bd0 / destructor 004b96b0 exist, so an inline wantReplicate would land in no object.
 //
 // ReplicatorStatsItem: complete.
 //   RTTI       vtable 00824fbc .?AVReplicatorStatsItem@Replicator@Network@RBX@@ (22 bases) -> Stats::Item (no other
@@ -75,11 +78,53 @@
 #include <G3D/System.h>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
+#include <list>
+#include <map>
+#include <queue>
+#include <set>
+#include <vector>
 
 class RakPeerInterface;
 struct RakNetStatistics;
 
 struct NativeNetworkReplicator2008Layout;
+
+namespace RBX
+{
+	class Name;
+	namespace Reflection
+	{
+		class ClassDescriptor;
+		class PropertyDescriptor;
+		class Property;
+	}
+	namespace Profiling
+	{
+		class CodeProfiler;
+		class CountProfiler;
+	}
+	namespace Network
+	{
+		class Players;
+		class Marker;
+
+		// INFERRED: 0x44-byte descriptor-name dictionaries at Replicator +0x2bb0 (classes, constructor 004b1570) and
+		// +0x2bf4 (properties, constructor 004b1620). Each constructor first calls 004a8470 / 004a8580, which fill a
+		// map at +0x0 with descriptor -> index (map size) for every registered descriptor (map operator[] 005644a0)
+		// and store the index bit count at +0x20, then constructs a vector at +0x24 (aux, _Myfirst +0x30). The
+		// Replicator destructor frees the vector, then the map (00553d80); +0x3c is a bit count (004b728c) and +0x40
+		// is never read in the cited bodies. Class name not derived.
+		template<class Descriptor>
+		class DescriptorDictionary
+		{
+			std::map<const Descriptor*, int> dictionary;                            // +0x00
+			int bits;                                                               // +0x20
+			std::vector<const Descriptor*> descriptors;                             // +0x24
+			int receiveBits;                                                        // +0x3c INFERRED name
+			int reserved;                                                           // +0x40 INFERRED: required by the 0x44 stride
+		};
+	}
+}
 
 namespace RBX
 {
@@ -93,13 +138,61 @@ namespace RBX
 
 		public:
 			class ReplicatorStatsItem;
+		protected:
+			class Item;                                                             // donor Replicator::Item (pendingItems element)
 
 		private:
 			G3D::RealTime lastSendTime;                                             // +0x2b78
 			boost::scoped_ptr<IPhysicsSender> physicsSender;                        // +0x2b80
 			boost::scoped_ptr<IPhysicsReceiver> physicsReceiver;                    // +0x2b84
 			boost::shared_ptr<ReplicatorStatsItem> statsItem;                       // +0x2b88
-			// +0x2b90 .. +0x2d68: pending (see the header comment); sizeof is partial.
+			// INFERRED: key/value types after the donor `strings` member; the destructor 004b16a0 is ICF-shared with
+			// map<const SignalDescriptor*, shared_ptr<SignalInstance> > (pointer key, shared_ptr value).
+			std::map<const Reflection::PropertyDescriptor*, boost::shared_ptr<SharedStringDictionary> > strings; // +0x2b90
+			DescriptorDictionary<Reflection::ClassDescriptor> classNames;            // +0x2bb0 (constructor 004b1570)
+			DescriptorDictionary<Reflection::PropertyDescriptor> propNames;          // +0x2bf4 (constructor 004b1620)
+			// INFERRED: per-container record (shared_ptr +0x0, boost::signals::connection +0x8 and +0x18, value
+			// destructor 004ab8c0); its exact type is not derived, so it stays incomplete here.
+			struct ContainerConnections;
+			std::map<const Instance*, ContainerConnections> containerConnections;   // +0x2c38 (constructor 004b0b90, destructor 004b14c0)
+
+		protected:
+			std::vector<Instance*> replicationContainers;                           // +0x2c58 (Server::ClientProxy::sendTop 004a2ac0)
+			Players* players;                                                       // +0x2c70 (findTargetPlayer 004ab9a0, slot 20 004ab960)
+			std::list<boost::shared_ptr<Item> > pendingItems;                       // +0x2c74 (004aefe0 / 004b0a80)
+			std::set<const Instance*> pendingNewInstances;                          // +0x2c90 (004b9d30 / 0064b230)
+			std::set<const Instance*> pendingDeleteInstances;                       // +0x2cb0
+			bool sendPhysicsEnabled;                                                // +0x2cd0 (constructor stores 0)
+			const Reflection::Property* deserializeProperty;                        // +0x2cd4 INFERRED: donor order, pointer zeroed by the constructor
+			Instance* removingInstance;                                             // +0x2cd8 INFERRED: donor order, pointer zeroed by the constructor
+			std::queue<boost::shared_ptr<Marker> > incomingMarkers;                 // +0x2cdc (deque _Tidy 004af1b0)
+			// INFERRED: key/value types after the donor `defaultObjects`; destructor 004b16a0 (pointer key, shared_ptr value).
+			std::map<const Name*, boost::shared_ptr<Instance> > defaultObjects;     // +0x2cfc
+			boost::scoped_ptr<Profiling::CodeProfiler> profileReplication;          // +0x2d1c "Replication" (CodeProfiler 005c43a0)
+			boost::scoped_ptr<Profiling::CodeProfiler> profileDataListening;        // +0x2d20 "Data Listening"
+			boost::scoped_ptr<Profiling::CodeProfiler> profileDataIn;               // +0x2d24 "Data In"
+			boost::scoped_ptr<Profiling::CodeProfiler> profileDataOut;              // +0x2d28 "Data Out"
+			boost::scoped_ptr<Profiling::CodeProfiler> profilePhysicsIn;            // +0x2d2c "Physics In"
+			boost::scoped_ptr<Profiling::CodeProfiler> profilePhysicsOut;           // +0x2d30 "Physics Out"
+			boost::scoped_ptr<Profiling::CodeProfiler> profileStep;                 // +0x2d34 "Step" (INFERRED name from the string)
+			boost::scoped_ptr<Profiling::CodeProfiler> profileWrite;                // +0x2d38 "Write" (INFERRED name from the string)
+			// INFERRED names from the strings; 005c43d0 stores the CountProfiler vtable 00838c64 and zeroes +0xc040.
+			boost::scoped_ptr<Profiling::CountProfiler> profileBitsReceived;        // +0x2d3c "Bits Received"
+			boost::scoped_ptr<Profiling::CountProfiler> profileBitsSent;            // +0x2d40 "Bits Sent"
+			boost::scoped_ptr<Profiling::CountProfiler> profileUnsplitMessagesSent; // +0x2d44 "Unsplit Messages Sent"
+			boost::scoped_ptr<Profiling::CountProfiler> profileSplitMessagesSent;   // +0x2d48 "Split Messages Sent"
+
+		private:
+			bool receivedGlobals;                                                   // +0x2d4c INFERRED: donor order (canSendItems 004aafc0 reads it)
+		public:
+			bool disconnected;                                                      // +0x2d4d (Peer heartbeat 004aaf6f removes disconnected replicators)
+			RakPeerInterface* peer;                                                 // +0x2d50 (AttachPlugin slot 58 in the constructor)
+			const SystemAddress remotePlayerId;                                     // +0x2d54
+		private:
+			// INFERRED: two 4-byte counters zeroed by the constructor and not destroyed (004b73e5, 004b8a18, 004b7d03);
+			// names not derived. sizeof 0x2d68 (8-aligned: lastSendTime is a double).
+			int counter0;                                                           // +0x2d5c
+			int counter1;                                                           // +0x2d60
 
 		public:
 			Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer);      // 004b9bd0 (open)

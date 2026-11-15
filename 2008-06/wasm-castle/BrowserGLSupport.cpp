@@ -1,6 +1,7 @@
 #include "OgreGLSupport.h"
 #include "OgreGLContext.h"
 #include "OgreGLRenderSystem.h"
+#include "OgreGLRenderTexture.h"
 #include "OgreRenderWindow.h"
 #include "OgreViewport.h"
 #include "OgreException.h"
@@ -89,7 +90,12 @@ public:
     void getCustomAttribute(const String& name, void* output) {
         if (name == "GLCONTEXT") *static_cast<GLContext**>(output) = &context;
         else if(name == "FBO") *static_cast<GLFrameBufferObject**>(output) = nullptr;
-        else RenderTarget::getCustomAttribute(name, output);
+        else if(name == "TARGET") {
+            // The canvas is the default framebuffer, not a render-to-texture surface.
+            GLSurfaceDesc& surface=*static_cast<GLSurfaceDesc*>(output);
+            surface.buffer=nullptr;surface.zoffset=0;
+        }
+        else OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS,"Unsupported browser render-window attribute: "+name,"BrowserWindow::getCustomAttribute");
     }
     void writeContentsToFile(const String& filename) {
         std::vector<unsigned char> pixels(mWidth * mHeight * 4);

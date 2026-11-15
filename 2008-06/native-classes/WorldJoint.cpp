@@ -5,10 +5,6 @@
 // the native Primitive (getCoordinateFrame, getFaceInWorld) and is not part of this unit; setPrimitive 006456e0 and
 // setJointCoord 00645750 need a World declaration that does not drag the donor joint headers in (see
 // NATIVE_WORLD_JOINTS_PENDING_WORLD and the recorder's PROPOSALS).
-// >>> native-status (generated) -- do not edit >>>
-// WorldJoint | 2008-06 | draft (no current byte proof)
-// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by auto (+1) (claude-opus-5-5)
-// <<< native-status | src 5a41769b | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "util/Math.h"
 
@@ -42,6 +38,11 @@ namespace RBX
 
 #ifdef NATIVE_WORLD_JOINTS_PENDING_WORLD
 	// Needs a World declaration (v8world/World.h) reachable without the donor joint headers; see PROPOSALS.
+	// Trial (lf13): native-headers/v8world/World2008.h now provides that World declaration and the unit compiles with
+	// it, but the body stays non-exact: the donor IPipelined::getWorld (v8world/IPipelined.h, 85 bytes with its
+	// asserts, KERNEL_STAGE 8) is called out of line, while 006456e0 inlines it (currentStage +0x4, getStageType
+	// slot 1, `cmp eax, 7`, upstream +0x4, IWorldStage world +0xc). Header proposal (IStage/IPipelined owner), so the
+	// guard stays until the 2008 getWorld is reachable from Joints2008.h.
 	// 006456e0: IPipelined::getWorld inline (KERNEL_STAGE 7 -> upstream), World::onJointPrimitiveNulling 005e9240,
 	// Edge::setPrimitive 00659290, World::onJointPrimitiveSet 005e9250.
 	void Joint::setPrimitive(int i, Primitive* p)

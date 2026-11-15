@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// G3DToneMap | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 7dc6ded5 | roc native-status --write
 #include <GLG3D/ToneMap.h>
 #include <GLG3D/Draw.h>
 #include <G3D/Rect2D.h>

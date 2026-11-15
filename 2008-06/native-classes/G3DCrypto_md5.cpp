@@ -1,9 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // 2008-06 native G3DCrypto_md5 (inactive): upstream tools/libs/g3d-6.09/source/G3Dcpp/Crypto_md5.cpp, verbatim.
-// >>> native-status (generated) -- do not edit >>>
-// G3DCrypto_md5 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src fb2e1a21 | roc native-status --write
 #line 1 ".\\G3Dcpp\\Crypto_md5.cpp"
 /**
  @file Crypto_md5.cpp

@@ -6,10 +6,6 @@
 // Not built: the constructor 00668470 news a ClumpStage (0x30, 0064cfd0) and the donor v8world/ClumpStage.h declares a
 // 0x1cc-byte class (see the recorder's PROPOSALS); onPrimitiveAdded 006685b0 / onPrimitiveRemoving 00668850 walk the
 // primitive's edge lists through the native Primitive (not available).
-// >>> native-status (generated) -- do not edit >>>
-// JointStage2008 | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 5a55ec55 | roc native-status --write
 #include "v8world/JointStage2008.h"
 #include "v8world/Primitive.h"
 #include "v8world/Joint.h"
@@ -53,6 +49,10 @@ namespace RBX
 	}
 
 	// 00668280
+	// Parked (hard-leftover lf14): 188 bytes, same calls (lower_bound 00667fd0, iterator ++ 0068dfa0, erase 005539d0) and
+	// inline upper_bound; the only difference is that the original pushes esi in the prologue (ebx, ebp, esi, edi) while
+	// this build sinks it after the lower_bound call. Rejected: the iterator declared in the for-init (adds an esi early
+	// test, prologue changes), break instead of return (unchanged), postfix it++ (unchanged).
 	void JointStage::removeFromMap(Joint* j, Primitive* p)
 	{
 		if (p)
@@ -97,7 +97,13 @@ namespace RBX
 		e->removeFromStage(this);
 	}
 
-	// 00668af0
+	// 00668af0 RunningAverageState::withinTolerance. Codegen analog placement: the original unit is the small
+	// util/RunningAverage obj linked right after JointStage (rows 006689b0 Quaternion::maxComponent-shaped helper,
+	// 00668a20 update, 00668af0 withinTolerance), which no assigned native file represents. Callees: Math::vector3Abs
+	// 005de630, Math::maxAxisLength 005df220, Quaternion(const Matrix3&) 005dd570, maxComponent 006689b0 (all out
+	// of line); the `> tolerance` tests are `test ah, 0x41; jne`. Donor body: tools/rbxgs util/RunningAverage.cpp.
+	// /fp:fast (file flags) is required: without it the build is 218 bytes (spilled Quaternion temps, fcompp/test ah,5);
+	// the integer JointStage rows above stay exact under /fp:fast.
 	bool RunningAverageState::withinTolerance(const G3D::CoordinateFrame& cofm, float radius, float tolerance)
 	{
 		G3D::Vector3 deltaPos = Math::vector3Abs(this->position - cofm.translation);

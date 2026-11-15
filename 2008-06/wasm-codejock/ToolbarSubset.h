@@ -38,8 +38,12 @@ constexpr int COLOR_HIGHLIGHT = 13, COLOR_3DSHADOW = 16, COLOR_BTNHILIGHT = 20,
     COLOR_3DHIGHLIGHT = 20, COLOR_BTNFACE = 15, COLOR_BTNTEXT = 18;
 constexpr int COLOR_3DFACE=15,COLOR_3DDKSHADOW=21,COLOR_GRAYTEXT=17,COLOR_HIGHLIGHTTEXT=14;
 constexpr int TRUE_SPLITDROPDOWN=4;
+constexpr int TRUE_SPLITCOMMAND=3,TRUE_POPUP=2;
+constexpr UINT XTP_TID_HOVER=0xACB1,XTP_TID_EXPANDED_POPUP=0xACB2;
+constexpr int COLOR_3DLIGHT=22,SPI_GETWORKAREA=0x30,xtpHideScroll=8;
 constexpr UINT DT_SINGLELINE = 0x20, DT_CENTER = 1, DT_LEFT = 0, DT_VCENTER = 4,
     DT_NOPREFIX = 0x800, DT_NOCLIP = 0x100;
+constexpr UINT DT_END_ELLIPSIS=0x8000,DT_RIGHT=2,DT_WORDBREAK=0x10,DT_TOP=0,DT_CALCRECT=0x400;
 #define ASSERT assert
 #define VERIFY(x) assert(x)
 #define _T(x) x
@@ -80,6 +84,8 @@ struct CRect {
     }
     CPoint& TopLeft() { return *reinterpret_cast<CPoint*>(&left); }
 };
+using RECT=CRect;
+BOOL SystemParametersInfo(UINT,uintptr_t,RECT*,UINT);
 inline BOOL IsKeyboardSelected(int selected) { return selected>1; }
 class CString : public std::string {
 public:
@@ -87,6 +93,7 @@ public:
     CString(const std::string& s) : std::string(s) {}
     operator const char*() const { return c_str(); }
     BOOL IsEmpty() const { return empty(); }
+    int GetLength() const {return size();}
 };
 class CDC {
     COLORREF text = 0;
@@ -94,7 +101,9 @@ public:
     void FillSolidRect(CRect, COLORREF);
     void Draw3dRect(CRect, COLORREF, COLORREF);
     void DrawText(const CString&, CRect, UINT);
+    int DrawText(const CString&, CRect*, UINT);
     CSize GetTextExtent(const CString&);
+    CSize GetTextExtent(const CString& text,int count) {return GetTextExtent(CString(text.substr(0,count)));}
     COLORREF SetTextColor(COLORREF c) { auto old=text; text=c; return old; }
     COLORREF GetTextColor() const { return text; }
     void* GetSafeHdc() {return this;}
@@ -121,18 +130,24 @@ void ReleaseCapture();
 [[noreturn]] inline void Unported(const char* operation) { throw std::runtime_error(operation); }
 class CWnd {
 public:
+    HWND m_hWnd=this;
+    int references=1;
     virtual ~CWnd() = default;
     virtual LRESULT SendMessage(UINT, WPARAM=0, LPARAM=0);
     HWND GetSafeHwnd() { return this; }
     void SetCapture();
     void SetTimer(UINT, UINT, void*);
     void KillTimer(UINT);
+    void UpdateWindow();
+    void InternalRelease() {if(!--references)delete this;}
 };
 class CClientDC : public CDC {
 public:
     explicit CClientDC(CWnd*) {}
 };
 class CXTPCommandBar;
+class CXTPControlPopup;
+class CXTPPopupBar;
 class CXTPPaintManager;
 class CXTPImageManagerIcon {
 public:
@@ -169,13 +184,17 @@ public:
     BOOL GetChecked() const { return checked; }
     BOOL GetSelected() const { return m_bSelected; }
     BOOL GetPressed() const { return m_bPressed; }
-    BOOL GetPopuped() const { return FALSE; } // This subset has no popup controls.
+    virtual BOOL GetPopuped() const { return FALSE; }
+    virtual BOOL OnSetPopup(BOOL) {return FALSE;}
     XTPControlType GetType() const { return m_controlType; }
     CXTPCommandBar* GetParent() const { return m_pParent; }
     CRect GetRect() const { return m_rcControl; }
     CRect GetRowRect() const {return m_rcRow;}
     BOOL GetWrap() const {return wrap;}
     CString GetCaption() const { return caption; }
+    CString GetShortcutText() const {return "";}
+    CString GetDescription() const {return "";}
+    BOOL GetExpanded() const {return FALSE;}
     BOOL HasDwmCompositedRect() const { return FALSE; } // Canvas is not a DWM surface.
     BOOL IsVisible(int ignore=0) const { return visible&&!(hideFlags&~ignore); }
     BOOL GetBeginGroup() const { return beginGroup; }
@@ -198,6 +217,7 @@ public:
     CXTPCommandBar* GetCommandBar() const {return nullptr;}
     void SetHideWrap(BOOL b) { hideFlags=b?(hideFlags|xtpHideWrap):(hideFlags&~xtpHideWrap); }
     void SetHideFlags(DWORD flags) {hideFlags=flags;}
+    void SetHideFlag(DWORD flag,BOOL enabled) {hideFlags=enabled?(hideFlags|flag):(hideFlags&~flag);}
     void OnCalcDynamicSize(DWORD) {} // Fixed caption controls own no per-mode resources.
     void SetRowRect(CRect r) { m_rcRow=r; }
     void SetRect(CRect r) { m_rcControl=r; }
@@ -227,6 +247,9 @@ public:
     void _SizeFloatableBar(XTPBUTTONINFO*,int,DWORD,const CSize&);
     int GetVisibleCount(BOOL=FALSE) const;
     CSize CalcDynamicSize(CDC*,int,DWORD,const CRect&,int);
+    CSize CalcPopupSize(CDC*,int,const CRect&);
+    void _MakeSameWidth(int,int,int);
+    CXTPCommandBar* GetParent() const {return m_pParent;}
     CSize _WrapSmartLayoutToolBar(CDC*,XTPBUTTONINFO*,int,DWORD) {Unported("smart ribbon layout");}
     CXTPControl* FindControl(int id) const {
         for(auto* c:controls) if(c->GetID()==id) return c;
@@ -240,11 +263,13 @@ public:
     int m_bShowKeyboardCues=-1;
     BOOL m_bOffice2007Padding=FALSE;
     int m_nEditHeight=0,m_nTextHeight=16,m_nSplitButtonDropDownWidth=11,m_nPopupBarText=COLOR_BTNTEXT;
+    int m_nSplitButtonPopupWidth=20,m_nPopupBarTextPadding=8;
+    BOOL m_bOffsetPopupLabelText=TRUE,m_bSelectImageInPopupBar=FALSE;
     CFont m_fontRegular,m_fontRegularBold;
     virtual ~CXTPPaintManager() = default;
     virtual void DrawRectangle(CDC*,CRect,BOOL,BOOL,BOOL,BOOL,BOOL,XTPBarType,XTPBarPosition)=0;
     void DrawControlEntry(CDC*, CXTPControl*);
-    CRect GetCommandBarBorders(CXTPCommandBar*);
+    virtual CRect GetCommandBarBorders(CXTPCommandBar*);
     CSize DrawControlText(CDC*,CXTPControl*,CRect,BOOL,BOOL,BOOL,BOOL);
     void DrawControlText3(CDC*,CXTPControl*,const CString&,const CString&,CRect,BOOL,BOOL);
     CSize DrawControl(CDC*,CXTPControl*,BOOL=TRUE);
@@ -262,13 +287,23 @@ public:
     CSize DrawCommandBarGripper(CDC*,CXTPCommandBar*,BOOL=TRUE) { Unported("toolbar gripper"); }
     CSize DrawControlEdit(CDC*,class CXTPControlEdit*,BOOL) {Unported("edit control");}
     CSize DrawControlComboBox(CDC*,class CXTPControlComboBox*,BOOL) {Unported("combo control");}
-    CSize DrawControlPopupParent(CDC*,CXTPControl*,BOOL) {Unported("popup control");}
+    virtual CSize DrawControlPopupParent(CDC*,CXTPControl*,BOOL);
+    virtual CSize GetPopupBarImageSize(CXTPCommandBar*);
+    void DrawPopupBarText(CDC*,const CString&,CRect&,UINT,BOOL,BOOL,BOOL);
+    CFont* GetRegularBoldFont() {return &m_fontRegularBold;}
     CSize DrawControlCheckBoxMark(CDC*,CRect,BOOL,BOOL,BOOL,BOOL,BOOL) {Unported("checkbox");}
     CSize DrawControlRadioButtonMark(CDC*,CRect,BOOL,BOOL,BOOL,BOOL,BOOL) {Unported("radio button");}
     void DrawSplitButtonFrame(CDC*,CXTPControl*,CRect) {Unported("split button");}
     CSize DrawControlText2(CDC*,CXTPControl*,CRect,BOOL,BOOL,BOOL) {Unported("two-row caption");}
     void DrawImage(CDC*,CPoint,CSize,CXTPImageManagerIcon*,BOOL,BOOL,BOOL,BOOL,BOOL) {Unported("image manager");}
-    void DrawDropDownGlyph(CDC*,CXTPControl*,CPoint,BOOL,BOOL,BOOL,BOOL) { Unported("popup glyph"); }
+    void DrawDropDownGlyph(CDC*,CXTPControl*,CPoint,BOOL,BOOL,BOOL,BOOL);
+    void Triangle(CDC*,CPoint,CPoint,CPoint,COLORREF);
+    CRect GetSplitButtonCommandRect(CXTPControl*) {Unported("split button rectangle");}
+    void UpdateRTLCaption(CString&) {Unported("RTL menu caption");}
+    void DrawCheckMark(CDC*,CRect,COLORREF) {Unported("menu checkmark");}
+    void DrawRadioMark(CDC*,CRect,COLORREF) {Unported("menu radio mark");}
+    void VerticalLine(CDC*,int,int,int,COLORREF) {Unported("split menu divider");}
+    void DrawImage(CDC*,CPoint,CSize,CXTPImageManagerIcon*,BOOL,BOOL,BOOL,BOOL,BOOL,BOOL) {Unported("menu icon");}
     void DrawSpecialControl(CDC*,int,CXTPControl*,CXTPCommandBar*,BOOL,CSize*) {Unported("overflow control");}
     void Draw3dRect(CDC* dc,CRect r,int top,int bottom) { dc->Draw3dRect(r,GetXtremeColor(top),GetXtremeColor(bottom)); }
     void Rectangle(CDC* dc,CRect r,int border,int fill) {
@@ -283,17 +318,22 @@ public:
     void FillCommandBarEntry(CDC*,CXTPCommandBar*) override;
     CSize DrawCommandBarSeparator(CDC*,CXTPCommandBar*,CXTPControl*,BOOL=TRUE) override;
     COLORREF GetRectangleTextColor(BOOL,BOOL,BOOL,BOOL,BOOL,XTPBarType,XTPBarPosition) override;
+    CSize DrawControlPopupParent(CDC*,CXTPControl*,BOOL) override;
+    CSize GetPopupBarImageSize(CXTPCommandBar*) override;
+    CRect GetCommandBarBorders(CXTPCommandBar*) override;
     BOOL IsFlatToolBar(CXTPCommandBar*) {return FALSE;}
     BOOL IsVerticalPosition(XTPBarPosition p) {return p==xtpBarLeft||p==xtpBarRight;}
 };
 inline BOOL IsControlCommandEnabled(BOOL b) {return b!=FALSE&&b!=TRUE_SPLITDROPDOWN;}
 inline BOOL IsControlDropDownEnabled(BOOL b) {return b!=FALSE;}
+inline BOOL IsPopupControlType(XTPControlType type) {return type==xtpControlPopup||type==xtpControlButtonPopup||type==xtpControlSplitButtonPopup;}
 class CXTPCommandBars {
 public:
-    struct Options {BOOL bShowExpandButtonAlways=FALSE;} options;
+    struct Options {BOOL bShowExpandButtonAlways=FALSE,bShowFullAfterDelay=FALSE;} options;
     CXTPControl* m_pDragSelected=nullptr;
     BOOL IsCustomizeMode() const {return FALSE;}
     Options* GetCommandBarsOptions() {return &options;}
+    void SetDragControl(CXTPControl*) {Unported("menu customization");}
 };
 class CXTPCommandBar : public CWnd {
 public:
@@ -306,13 +346,26 @@ public:
     int clientWidth=960,clientHeight=30;
     CRect m_rcMarker;
     int m_nMRUWidth=0,m_nIdleFlags=0;
-    XTPBarType GetType() const { return xtpBarTypeNormal; }
-    XTPBarPosition GetPosition() const { return xtpBarTop; }
+    BOOL m_bMultiLine=FALSE,tracking=FALSE;
+    XTPBarType barType=xtpBarTypeNormal;
+    XTPBarPosition barPosition=xtpBarTop;
+    static const int s_nExpandDelay=5000;
+    XTPBarType GetType() const { return barType; }
+    XTPBarPosition GetPosition() const { return barPosition; }
     CXTPPaintManager* GetPaintManager() { return &painter; }
     CWnd* GetOwnerSite() { return owner; }
+    CWnd* GetSite() {return owner;}
     BOOL IsKeyboardCuesVisible() const { return TRUE; }
     BOOL IsTextBelowIcons() const {return FALSE;}
     CSize GetLargeIconSize(BOOL) const {return {32,32};}
+    CSize GetIconSize() const {return {16,16};}
+    BOOL IsPopupBar() const {return barType==xtpBarTypePopup;}
+    BOOL IsLayoutRTL() const {return FALSE;}
+    BOOL IsResizable() const {return FALSE;}
+    BOOL IsCustomizable() const {return FALSE;}
+    BOOL IsTrackingMode() const {return tracking;}
+    void SetTrackingMode(BOOL,BOOL=FALSE,BOOL=FALSE);
+    BOOL Popup(CXTPControlPopup*,BOOL);
     CXTPCommandBars* GetCommandBars() const {return nullptr;}
     int GetControlCount() const {return controls.GetCount();}
     CXTPControl* GetControl(int i) const {return controls.GetAt(i);}
@@ -323,8 +376,8 @@ public:
     void DrawCommandBar(CDC*,CRect);
     void CustomizeDrawMarker(CDC*) {Unported("customization marker");}
     BOOL IsCustomizeMode() const { return customize; }
-    void SetPopuped(int index) { if(index!=-1) Unported("popup tracking"); m_nPopuped=index; }
-    void SetSelected(int);
+    BOOL SetPopuped(int,BOOL=FALSE);
+    void SetSelected(int,BOOL=FALSE);
     void OnControlSelected(BOOL,CXTPControl*);
     void Paint();
     void Redraw();
@@ -340,7 +393,25 @@ public:
 };
 class CXTPControlPopup : public CXTPControlButton {
 public:
+    CXTPCommandBar* m_pCommandBar;
+    BOOL m_bPopup,m_bShowShadow;
+    DWORD m_dwCommandBarID;
+    CXTPControlPopup();
+    ~CXTPControlPopup();
+    void OnClick(BOOL,CPoint) override;
+    void OnLButtonUp(CPoint) override;
+    BOOL OnSetPopup(BOOL) override;
+    BOOL GetPopuped() const override {return m_bPopup;}
+    void UpdateShadow() {if(m_bShowShadow)Unported("popup drop shadow");}
     void OnExecute() override {Unported("popup execution");}
+};
+class CXTPPopupBar : public CXTPCommandBar {
+public:
+    static constexpr float m_dMaxWidthDivisor=0.3f;
+    int originX=0,originY=0;
+    CXTPControlPopup* control=nullptr;
+    CXTPPopupBar() {barType=xtpBarTypePopup;barPosition=xtpBarPopup;controls.m_pParent=this;}
+    BOOL IsDoubleGripper() const {return FALSE;}
 };
 class CXTPToolBar::CControlButtonExpand : public CXTPControlPopup {
 public:

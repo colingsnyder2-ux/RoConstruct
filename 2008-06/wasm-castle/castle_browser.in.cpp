@@ -18,6 +18,12 @@ public:
     G3D::LightingParameters lighting;
     Ogre::TwoDManager hud;
     Ogre::FrameHistory history;
+    int activeScene=0;
+    DemoSubEntity* windmillRotor=nullptr;
+    DemoSubEntity* windmillHub=nullptr;
+    unsigned windmillHubKey=0;
+    unsigned windmillTransformKey=0;
+    float windmillAngle=0;
     float yaw = 0.65f, pitch = 0.48f;
     bool orbit = false, dragging = false, hudVisible = false, wireframe = false;
     bool shadows = true, cycle = true, celestial = false;
@@ -56,7 +62,7 @@ public:
             emscripten_cancel_main_loop();
             EM_ASM({document.querySelector('#status').textContent = 'Stopped — reload to restart';});
         }
-        return code == 32 || code == 27 || code == 'H' || code == 'W' || code == 'S' ||
+        return code == 32 || code == 27 || code == 'W' || code == 'S' ||
             code == 'D' || code == 'T' || code == 'P' || code == 'C' || code == 'R';
     }
     static EM_BOOL mouse(int type, const EmscriptenMouseEvent* event, void* pointer) {
@@ -99,32 +105,41 @@ public:
             for (int k = 0; k < 7; ++k) {
                 bool pressed = keys[keyCodes[k]];
                 if (pressed && !lastKeys[k]) {
-                    if (k == 0) hudVisible = !hudVisible;
                     if (k == 1) { wireframe = !wireframe; camera->setPolygonMode(wireframe ? Ogre::PM_WIREFRAME : Ogre::PM_SOLID); }
                     if (k == 2) { shadows = !shadows; scene->setShadowTechnique(shadows ? Ogre::SHADOWTYPE_STENCIL_MODULATIVE : Ogre::SHADOWTYPE_NONE); }
                     if (k == 3) cycle = true;
-                    if (k == 4) clockSeconds = fmod(clockSeconds + 3 * 3600, 86400.0);
                     if (k == 5) cycle = false;
                     if (k == 6) celestial = !celestial;
                 }
                 lastKeys[k] = pressed;
             }
-            if (cycle) clockSeconds = fmod(clockSeconds + dt * 86400 / daySeconds, 86400.0);
+            if (cycle) clockSeconds = fmod(clockSeconds + dt * (keys['T'] ? 15 : 1) * 86400 / daySeconds, 86400.0);
             // NATIVE_FRAME
+            if(cycle)windmillAngle=std::fmod(windmillAngle+dt*0.75f,Ogre::Math::TWO_PI);
+            Ogre::Matrix4 rotorTransform;
+            rotorTransform.makeTransform(Ogre::Vector3(80,12,6.5f),Ogre::Vector3::UNIT_SCALE,
+                Ogre::Quaternion(Ogre::Radian(windmillAngle),Ogre::Vector3::UNIT_Z));
+            auto* world=static_cast<DemoSceneManager*>(scene);
+            world->worldNode->setTransform(windmillTransformKey,rotorTransform);
+            windmillRotor->transform(world->worldNode->getTransform(windmillTransformKey));
+            world->worldNode->setTransform(windmillHubKey,rotorTransform);
+            windmillHub->transform(world->worldNode->getTransform(windmillHubKey));
             window->Ogre::RenderTarget::update();
             bool repeatHud = false;
-            hud.renderQueueEnded(Ogre::RENDER_QUEUE_OVERLAY, "", repeatHud);
             window->swapBuffers(false);
             ++frameCount;
             EM_ASM({
                 Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2,
                     yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8,
-                    celestial: !!$9, hud: !!$10, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement});
+                    celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15});
+                var title=$14==2?'Temple Island':$14?'Windmill Island':'Castle Island';
+                document.querySelector('h1').textContent=title;
+                document.getElementById('game-name').textContent='ROCONSTRUCT / '+title.toUpperCase();
                 var seconds = Math.floor($0);
                 document.querySelector('#status').textContent = '';
             }, clockSeconds, cycle, shadows, yaw, pitch, zoom, frameCount,
                 static_cast<DemoSceneManager*>(scene)->parts.size(),
-                static_cast<DemoSceneManager*>(scene)->shadowQueries, celestial, hudVisible, wireframe,fps,orbit);
+                static_cast<DemoSceneManager*>(scene)->shadowQueries, celestial, hudVisible, wireframe,fps,orbit,activeScene,windmillAngle);
             Ogre::Vector3 cameraPosition=camera->getPosition();
             Ogre::Quaternion cameraRotation=camera->getOrientation();
             EM_ASM({Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]);},
@@ -145,17 +160,32 @@ CastleApp* castle;
 extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_time(double hour) {
     castle->clockSeconds = fmod(hour * 3600 + 86400, 86400.0);
 }
+extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_view(float yaw,float pitch,float distance,double seconds) {
+    castle->yaw=yaw;castle->pitch=pitch;zoom=distance;
+    castle->clockSeconds=seconds;castle->cycle=false;castle->orbit=false;castle->celestial=false;
+    castle->activeScene=0;
+}
+extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_scene_view(int scene,float yaw,float pitch,float distance,double seconds,float angle) {
+    castle_set_view(yaw,pitch,distance,seconds);
+    castle->activeScene=scene;castle->windmillAngle=angle;
+}
+extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_reflectance(float amount) {
+    applyWindowReflectance(Ogre::MaterialManager::getSingleton().getByName("Windmill glass"),amount);
+}
+extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_shadow_bias(float bias) {
+    static_cast<DemoSceneManager*>(castle->scene)->stencilBias(bias);
+}
 extern "C" EMSCRIPTEN_KEEPALIVE void castle_command(int command) {
     if(!castle)return;
     if(command==100)castle->cycle=true;
     if(command==101)castle->cycle=false;
-    if(command==102){castle->yaw=0.65f;castle->pitch=0.48f;zoom=42;castle->celestial=false;}
+    if(command==102){castle->yaw=0.65f;castle->pitch=0.48f;zoom=castle->activeScene==2?74:castle->activeScene?44:42;castle->celestial=false;}
     if(command==103){castle->shadows=!castle->shadows;castle->scene->setShadowTechnique(castle->shadows?Ogre::SHADOWTYPE_STENCIL_MODULATIVE:Ogre::SHADOWTYPE_NONE);}
     if(command==104)castle->orbit=!castle->orbit;
     if(command==105)castle->celestial=!castle->celestial;
     if(command==106){castle->wireframe=!castle->wireframe;castle->camera->setPolygonMode(castle->wireframe?Ogre::PM_WIREFRAME:Ogre::PM_SOLID);}
     if(command==107)castle->clockSeconds=fmod(castle->clockSeconds+10800,86400.0);
-    if(command==108)castle->hudVisible=!castle->hudVisible;
+    if(command>=200&&command<=202){castle->activeScene=command-200;castle->yaw=0.65f;castle->pitch=0.48f;zoom=castle->activeScene==2?74:castle->activeScene?44:42;castle->celestial=false;}
 }
 int main() {
     try {
@@ -166,3 +196,4 @@ int main() {
         return 1;
     }
 }
+

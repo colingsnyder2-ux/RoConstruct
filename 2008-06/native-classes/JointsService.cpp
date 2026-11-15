@@ -1,9 +1,5 @@
 // 2008-06 native RBX::JointsService (inactive); evidence in native-headers/v8datamodel/JointsService.h.
 // Verified by tests/record_native_services.py.
-// >>> native-status (generated) -- do not edit >>>
-// JointsService | 2008-06 | draft (no current byte proof)
-// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by colin (+2) (mixed 4)
-// <<< native-status | src 2a8df79d | roc native-status --write
 #include "v8datamodel/JointsService.h"
 #include "v8datamodel/Workspace.h"
 #include "v8tree/Service.h"
@@ -52,7 +48,11 @@ namespace RBX
 		ji->setParent(this);
 	}
 
-	// 005e5b50: semantic match; 156 bytes like the original. Evaluation order still differs.
+	// 005e5b50: the util/Events.h Notifier<World, E>::disconnect / connect helpers (each tests world +0x150 itself and
+	// takes the null-checked Listener upcast of this), the same shape as the exact sibling PhysicsService::
+	// onServiceProvider 005e8ec0. Rejected: one if (world) block around both calls per phase (156 bytes, world+0x20
+	// null-check arm); a separate if (world) per call with dynamic_cast<Listener*>(this) (140 bytes, no this null
+	// check before the first world test).
 	void JointsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
 		Notifier<World, AutoJoin>::disconnect(world, this);

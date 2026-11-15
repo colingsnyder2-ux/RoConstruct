@@ -20,10 +20,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-// >>> native-status (generated) -- do not edit >>>
-// XTPTabPaintManagerColors | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src db23647e | roc native-status --write
 #include "stdafx.h"
 #include "Common/XTPColorManager.h"
 #include "Common/XTPDrawHelpers.h"

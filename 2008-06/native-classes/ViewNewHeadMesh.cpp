@@ -1,10 +1,6 @@
 // INFERRED: buildFace EndcapTransform spelling at004ff1e0; unique714B body and original references verified.
 // 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive): the unit 004fdaf0..0050068f.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
-// >>> native-status (generated) -- do not edit >>>
-// ViewNewHeadMesh | 2008-06 | draft (no current byte proof)
-// no original address mapped to this file yet | by -
-// <<< native-status | src 31a636d8 | roc native-status --write
 #include "ViewNew/HeadMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 #include <algorithm>
@@ -91,24 +87,48 @@ namespace RBX
 			buildFace<NORM_Y_NEG>(EndcapTransform(bevel), G3D::Vector2int16(e, e), purpose);
 		}
 
+		// 00500080 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_X_NEG, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildLeft(Purpose purpose)
 		{
 			CylinderTransform transform(bevel, (elements + 1) / 2);
 			buildFace<NORM_X_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
+		// 005000c0 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_X, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildRight(Purpose purpose)
 		{
 			CylinderTransform transform(bevel, (elements + 1) / 2);
 			buildFace<NORM_X>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
+		// 00500100 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_Z_NEG, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildFront(Purpose purpose)
 		{
 			CylinderTransform transform(bevel, (elements + 1) / 2);
 			buildFace<NORM_Z_NEG>(transform, G3D::Vector2int16(elements, elements), purpose);
 		}
 
+		// 00500140 (PARKED, closest variant). Target: (elements + 1) / 2 and bevel first, then elements reloaded with
+		// a dword load (mov edx, [ecx+0x24]) and stored as two words; calls buildFace<NORM_Z, CylinderTransform>.
+		// This variant differs only at that reload (movzx edx, word ptr [ecx+0x24]; 59 vs 58 bytes).
+		// Rejected: (1) 'int e = elements' before an unnamed CylinderTransform argument (55 bytes, one load, size
+		// stored before bevel); (2) named transform then 'int e = elements' (60 bytes, load CSE'd into esi);
+		// (3) unnamed CylinderTransform with Vector2int16(elements, elements) (59 bytes, size built first via movzx).
 		void HeadBuilder::buildBack(Purpose purpose)
 		{
 			CylinderTransform transform(bevel, (elements + 1) / 2);

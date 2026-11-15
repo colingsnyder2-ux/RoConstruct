@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// MetadataMemberLookup | 2008-06 | draft (no current byte proof)
-// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (ntech:glm-4.5-air)
-// <<< native-status | src 5103578e | roc native-status --write
 #include "reflection/Metadata.h"
 #include "reflection/object.h"
 #include "reflection/property.h"
