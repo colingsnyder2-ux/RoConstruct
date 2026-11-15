@@ -139,6 +139,19 @@ def castle_entry(root, template, output):
         '    std::vector<unsigned> shadowIndices;\n    unsigned index;')
     prefix = prefix.replace('        index+=4;',
         '        if(!suppressShadow) {shadowTriangle(a,b,c);shadowTriangle(a,c,d);}\n        index+=4;')
+    # Fixture meshes contain world-space positions, unlike centered game meshes.
+    # Native SubEntity's radius-at-transform-origin bound is therefore wrong.
+    # Supply the actual mesh bounds so near-plane z-fail and cap tests agree.
+    prefix = prefix.replace('    void shadows(bool enabled) { mCastShadows=enabled; }',
+        '    Ogre::AxisAlignedBox localBounds;\n'
+        '    mutable Ogre::AxisAlignedBox worldBounds;\n'
+        '    void bounds(const Ogre::Vector3& minimum,const Ogre::Vector3& maximum) {localBounds.setExtents(minimum,maximum); }\n'
+        '    const Ogre::AxisAlignedBox& getWorldBoundingBox(bool derive=false) const override {\n'
+        '        worldBounds=localBounds;worldBounds.transformAffine(mTransform);return worldBounds;\n'
+        '    }\n'
+        '    void shadows(bool enabled) { mCastShadows=enabled; }')
+    prefix = prefix.replace('        object->setMaterial(material);',
+        '        object->bounds(minimum,maximum);\n        object->setMaterial(material);')
     prefix = prefix.replace('    void shadows(bool enabled) { mCastShadows=enabled; }',
         '    int sceneId=0;\n'
         '    void transform(const Ogre::Matrix4& matrix) {mTransform=matrix;}\n'
@@ -211,6 +224,19 @@ def castle_entry(root, template, output):
             GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
             GLEmulation.colourKeyFloats.set(this.env.envColor);
             for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);''')
+    # Generated reflection coordinates have no texcoord attribute location.
+    # Upstream's attribute-loop continue skipped their texture matrix upload,
+    # leaving a zero uniform and sampling only the texture's corner pixel.
+    text = text.replace('          var clientAttributes = GLImmediate.clientAttributes;', '''          for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {
+            var matrixIndex=2+unit;
+            if(this.textureMatrixLocations[unit] && this.textureMatrixVersion[matrixIndex] != GLImmediate.matrixVersion[matrixIndex]) {
+              this.textureMatrixVersion[matrixIndex]=GLImmediate.matrixVersion[matrixIndex];
+              GLctx.uniformMatrix4fv(this.textureMatrixLocations[unit],false,GLImmediate.matrix[matrixIndex]);
+            }
+          }
+          var clientAttributes = GLImmediate.clientAttributes;''')
+    text = re.sub(r'this.textureMatrixVersion = \[ [0, ]+ \];',
+        'this.textureMatrixVersion = new Array(GLImmediate.MAX_TEXTURES+2).fill(-1);',text)
     # Complete the legacy GL reflection-map path used by Ogre environment maps.
     # The upstream emulator advertises cubes but samples them as 2D textures and
     # aborts on glTexGeni. Keep texgen state per active texture unit and shader key.
@@ -445,6 +471,19 @@ def emulation_library(sdk, output):
             GLEmulation.colourKeyBits ||= new Int32Array(GLEmulation.colourKeyFloats.buffer);
             GLEmulation.colourKeyFloats.set(this.env.envColor);
             for(var component=0;component<4;component++) keyView.next(GLEmulation.colourKeyBits[component]);''')
+    # Generated reflection coordinates have no texcoord attribute location.
+    # Upstream's attribute-loop continue skipped their texture matrix upload,
+    # leaving a zero uniform and sampling only the texture's corner pixel.
+    text = text.replace('          var clientAttributes = GLImmediate.clientAttributes;', '''          for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {
+            var matrixIndex=2+unit;
+            if(this.textureMatrixLocations[unit] && this.textureMatrixVersion[matrixIndex] != GLImmediate.matrixVersion[matrixIndex]) {
+              this.textureMatrixVersion[matrixIndex]=GLImmediate.matrixVersion[matrixIndex];
+              GLctx.uniformMatrix4fv(this.textureMatrixLocations[unit],false,GLImmediate.matrix[matrixIndex]);
+            }
+          }
+          var clientAttributes = GLImmediate.clientAttributes;''')
+    text = re.sub(r'this.textureMatrixVersion = \[ [0, ]+ \];',
+        'this.textureMatrixVersion = new Array(GLImmediate.MAX_TEXTURES+2).fill(-1);',text)
     # Complete the legacy GL reflection-map path used by Ogre environment maps.
     # The upstream emulator advertises cubes but samples them as 2D textures and
     # aborts on glTexGeni. Keep texgen state per active texture unit and shader key.

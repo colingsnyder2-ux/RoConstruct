@@ -64,7 +64,7 @@
         for(int layer=0;layer<7;++layer) millRoof.brick(80,14.5f+layer,0,14-layer*2,1,11);
         for(int layer=0;layer<3;++layer) millRoof.brick(72,5.5f+layer*0.5f,0,7-layer,0.5f,8-layer);
         millRoof.finish(scene);
-        Builder millFrames(scene,"Light stone grey",brickColour(208));
+        Builder millFrames(scene,"Reddish brown",brickColour(192));
         for(int y=6;y<=10;y+=4) {
             for(int edge=-1;edge<=1;edge+=2) {
                 millFrames.brick(80+edge,y,3.5f,0.5f,2.5f,0.5f,false);
@@ -90,7 +90,7 @@
         }
         glass.brick(80,17,3,1.5f,1.5f,0.5f,false);
         glass.brick(72,3,2.5f,1.5f,1.5f,0.5f,false);
-        applyWindowReflectance(glass.material,0.8f);
+        applyWindowReflectance(glass.material,1.0f);
         glass.finish(scene);
         Builder millDoor(scene,"Reddish brown",brickColour(192));
         for(int plank=-1;plank<=1;plank+=2) {

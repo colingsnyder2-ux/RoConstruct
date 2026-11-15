@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\colin\AppData\Local\Temp\tmpzbe24176.js
+// include: C:\Users\colin\AppData\Local\Temp\tmp61m0c0pw.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -204,21 +204,21 @@ Module['FS_createPath']("/", "assets", true, true);
 
   })();
 
-// end include: C:\Users\colin\AppData\Local\Temp\tmpzbe24176.js
-// include: C:\Users\colin\AppData\Local\Temp\tmpha66c5s9.js
+// end include: C:\Users\colin\AppData\Local\Temp\tmp61m0c0pw.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpch_knhce.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER !== 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD !== 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET !== 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\colin\AppData\Local\Temp\tmpha66c5s9.js
-// include: C:\Users\colin\AppData\Local\Temp\tmp2br5da06.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpch_knhce.js
+// include: C:\Users\colin\AppData\Local\Temp\tmpsascbfxp.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (!Module['preRun'].includes(task)) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\colin\AppData\Local\Temp\tmp2br5da06.js
+  // end include: C:\Users\colin\AppData\Local\Temp\tmpsascbfxp.js
 
 
 var programArgs = [];
@@ -6913,7 +6913,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
             // Stores an array that remembers which matrix uniforms are up-to-date in this FFP renderer, so they don't need to be resubmitted
             // each time we render with this program.
-            this.textureMatrixVersion = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+            this.textureMatrixVersion = new Array(GLImmediate.MAX_TEXTURES+2).fill(-1);
   
             this.positionLocation = GLctx.getAttribLocation(this.program, 'a_position');
   
@@ -7069,6 +7069,13 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
               GLctx.uniformMatrix4fv(this.projectionLocation, false, GLImmediate.matrix[1/*p*/]);
             }
   
+            for(var unit=0;unit<GLImmediate.MAX_TEXTURES;unit++) {
+              var matrixIndex=2+unit;
+              if(this.textureMatrixLocations[unit] && this.textureMatrixVersion[matrixIndex] != GLImmediate.matrixVersion[matrixIndex]) {
+                this.textureMatrixVersion[matrixIndex]=GLImmediate.matrixVersion[matrixIndex];
+                GLctx.uniformMatrix4fv(this.textureMatrixLocations[unit],false,GLImmediate.matrix[matrixIndex]);
+              }
+            }
             var clientAttributes = GLImmediate.clientAttributes;
             var posAttr = clientAttributes[GL_IMMEDIATE_VERTEX];
   
@@ -14085,18 +14092,18 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('wasmBinary');
 }
 var ASM_CONSTS = {
-  347132: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
- 347217: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
- 347330: () => { return !!document.fullscreenElement; },  
- 347369: () => { document.exitFullscreen(); },  
- 347398: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
- 347481: () => { document.querySelector('#canvas').focus(); },  
- 347526: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
- 348093: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
- 348225: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
- 348379: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
- 348518: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
- 348647: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
+  347116: ($0, $1) => { Module.castleGeometry=({grid:0.5,studSurfaceFaces:$0,beveledBlocks:$1,blocks:[]}); },  
+ 347201: ($0, $1, $2, $3, $4, $5, $6, $7) => { Module.castleGeometry.blocks.push(({center:[$0,$1,$2],size:[$3,$4,$5],material:UTF8ToString($6),studs:!!$7})); },  
+ 347314: () => { return !!document.fullscreenElement; },  
+ 347353: () => { document.exitFullscreen(); },  
+ 347382: () => { document.querySelector('#status').textContent = 'Stopped — reload to restart'; },  
+ 347465: () => { document.querySelector('#canvas').focus(); },  
+ 347510: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) => { Module.castleState = ({clockSeconds: $0, cycle: !!$1, shadows: !!$2, yaw: $3, pitch: $4, zoom: $5, frames: $6, batches: $7, shadowQueries: $8, celestial: !!$9, hud: false, wireframe: !!$11, fps:$12, orbit:!!$13, fullscreen:!!document.fullscreenElement, scene:$14, windmillAngle:$15}); document.querySelector('h1').textContent=$14?'Windmill Island':'Castle Island'; document.getElementById('game-name').textContent=$14?'ROCONSTRUCT / WINDMILL ISLAND':'ROCONSTRUCT / CASTLE ISLAND'; var seconds = Math.floor($0); document.querySelector('#status').textContent = ''; },  
+ 348077: ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) => { Module.castleState.position=([$0,$1,$2]);Module.castleState.rotation=([$3,$4,$5]);Module.castleState.orientation=([$6,$7,$8,$9]); },  
+ 348209: () => { var frame=document.getElementById('toolbar');if(frame)frame.contentWindow.postMessage({type:'castle-status',state:Module.castleState},location.origin); },  
+ 348363: () => { Module['ctx'] = GLctx; Browser.useWebGL = true; Browser.moduleContextCreatedCallbacks.forEach(callback => callback()); Browser.init(); },  
+ 348502: ($0, $1) => { var c = document.querySelector('#canvas'); c.style.position = 'relative'; c.style.left = $0 + 'px'; c.style.top = $1 + 'px'; },  
+ 348631: ($0) => { GLImmediate.lastRenderer?.cleanup(); GLImmediate.currentRenderer = null; GLEmulation.colorMaterialMode = $0; }
 };
 function browserReadTexture(texture,face,level,width,height,output) { var draw = GLctx.getParameter(GLctx.DRAW_FRAMEBUFFER_BINDING); var read = GLctx.getParameter(GLctx.READ_FRAMEBUFFER_BINDING); var fbo = GLctx.createFramebuffer(); GLctx.bindFramebuffer(GLctx.FRAMEBUFFER, fbo); GLctx.framebufferTexture2D(GLctx.FRAMEBUFFER, GLctx.COLOR_ATTACHMENT0, face, GL.textures[texture], level); if (GLctx.checkFramebufferStatus(GLctx.FRAMEBUFFER) !== GLctx.FRAMEBUFFER_COMPLETE) abort('Texture readback framebuffer incomplete'); GLctx.readPixels(0, 0, width, height, GLctx.RGBA, GLctx.UNSIGNED_BYTE, HEAPU8.subarray(output, output + width * height * 4)); GLctx.bindFramebuffer(GLctx.DRAW_FRAMEBUFFER, draw); GLctx.bindFramebuffer(GLctx.READ_FRAMEBUFFER, read); GLctx.deleteFramebuffer(fbo); }
 
@@ -14106,6 +14113,7 @@ var _free = makeInvalidEarlyAccess('_free');
 var _malloc = makeInvalidEarlyAccess('_malloc');
 var _castle_set_time = Module['_castle_set_time'] = makeInvalidEarlyAccess('_castle_set_time');
 var _castle_set_view = Module['_castle_set_view'] = makeInvalidEarlyAccess('_castle_set_view');
+var _castle_set_scene_view = Module['_castle_set_scene_view'] = makeInvalidEarlyAccess('_castle_set_scene_view');
 var _castle_set_reflectance = Module['_castle_set_reflectance'] = makeInvalidEarlyAccess('_castle_set_reflectance');
 var _castle_set_shadow_bias = Module['_castle_set_shadow_bias'] = makeInvalidEarlyAccess('_castle_set_shadow_bias');
 var _castle_command = Module['_castle_command'] = makeInvalidEarlyAccess('_castle_command');
@@ -14137,6 +14145,7 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['malloc'] !== 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['castle_set_time'] !== 'undefined', 'missing Wasm export: castle_set_time');
   assert(typeof wasmExports['castle_set_view'] !== 'undefined', 'missing Wasm export: castle_set_view');
+  assert(typeof wasmExports['castle_set_scene_view'] !== 'undefined', 'missing Wasm export: castle_set_scene_view');
   assert(typeof wasmExports['castle_set_reflectance'] !== 'undefined', 'missing Wasm export: castle_set_reflectance');
   assert(typeof wasmExports['castle_set_shadow_bias'] !== 'undefined', 'missing Wasm export: castle_set_shadow_bias');
   assert(typeof wasmExports['castle_command'] !== 'undefined', 'missing Wasm export: castle_command');
@@ -14164,6 +14173,7 @@ function assignWasmExports(wasmExports) {
   _malloc = createExportWrapper('malloc', wasmExports['malloc'], 1);
   _castle_set_time = Module['_castle_set_time'] = createExportWrapper('castle_set_time', wasmExports['castle_set_time'], 1);
   _castle_set_view = Module['_castle_set_view'] = createExportWrapper('castle_set_view', wasmExports['castle_set_view'], 4);
+  _castle_set_scene_view = Module['_castle_set_scene_view'] = createExportWrapper('castle_set_scene_view', wasmExports['castle_set_scene_view'], 6);
   _castle_set_reflectance = Module['_castle_set_reflectance'] = createExportWrapper('castle_set_reflectance', wasmExports['castle_set_reflectance'], 1);
   _castle_set_shadow_bias = Module['_castle_set_shadow_bias'] = createExportWrapper('castle_set_shadow_bias', wasmExports['castle_set_shadow_bias'], 1);
   _castle_command = Module['_castle_command'] = createExportWrapper('castle_command', wasmExports['castle_command'], 1);
@@ -15519,6 +15529,17 @@ function invoke_vif(index,a1,a2) {
   }
 }
 
+function invoke_viiiiiif(index,a1,a2,a3,a4,a5,a6,a7) {
+  var sp = stackSave();
+  try {
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
+  } catch(e) {
+    stackRestore(sp);
+    if (!(e instanceof EmscriptenEH)) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_iidif(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {
@@ -15688,17 +15709,6 @@ function invoke_iiif(index,a1,a2,a3) {
   var sp = stackSave();
   try {
     return getWasmTableEntry(index)(a1,a2,a3);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_viiiiiif(index,a1,a2,a3,a4,a5,a6,a7) {
-  var sp = stackSave();
-  try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6,a7);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;

@@ -38,7 +38,8 @@ void applyWindowReflectance(Ogre::MaterialPtr material,float reflectance) {
     while(technique->getNumPasses()>1) technique->removePass(1);
     Ogre::Pass* base=technique->getPass(0);
     base->removeAllTextureUnitStates();
-    base->setDiffuse(brickColour(102));base->setAmbient(brickColour(102));
+    base->setDiffuse(brickColour(102)*(1-reflectance));base->setAmbient(brickColour(102)*(1-reflectance));
+    material->setReceiveShadows(false);
     if(reflectance<=0) return;
     Ogre::TexturePtr sky=Ogre::TextureManager::getSingleton().getByName("skysphmap");
     if(sky.isNull()) {
@@ -52,4 +53,9 @@ void applyWindowReflectance(Ogre::MaterialPtr material,float reflectance) {
     Ogre::TextureUnitState* unit=reflection->createTextureUnitState();
     unit->setTextureName(sky->getName(),Ogre::TEX_TYPE_2D);
     unit->setEnvironmentMap(true,Ogre::TextureUnitState::ENV_CURVED);
+    // Keep Roblox's sphere texture / additive pass, but let the reflected sky
+    // supply its own brightness rather than multiplying it by local ambient.
+    reflection->setLightingEnabled(false);
+    unit->setColourOperationEx(Ogre::LBX_MODULATE,Ogre::LBS_TEXTURE,Ogre::LBS_MANUAL,
+        Ogre::ColourValue::White,Ogre::ColourValue(reflectance,reflectance,reflectance,1));
 }

@@ -108,13 +108,12 @@ public:
                     if (k == 1) { wireframe = !wireframe; camera->setPolygonMode(wireframe ? Ogre::PM_WIREFRAME : Ogre::PM_SOLID); }
                     if (k == 2) { shadows = !shadows; scene->setShadowTechnique(shadows ? Ogre::SHADOWTYPE_STENCIL_MODULATIVE : Ogre::SHADOWTYPE_NONE); }
                     if (k == 3) cycle = true;
-                    if (k == 4) clockSeconds = fmod(clockSeconds + 3 * 3600, 86400.0);
                     if (k == 5) cycle = false;
                     if (k == 6) celestial = !celestial;
                 }
                 lastKeys[k] = pressed;
             }
-            if (cycle) clockSeconds = fmod(clockSeconds + dt * 86400 / daySeconds, 86400.0);
+            if (cycle) clockSeconds = fmod(clockSeconds + dt * (keys['T'] ? 5 : 1) * 86400 / daySeconds, 86400.0);
             // NATIVE_FRAME
             if(cycle)windmillAngle=std::fmod(windmillAngle+dt*0.75f,Ogre::Math::TWO_PI);
             Ogre::Matrix4 rotorTransform;
@@ -164,6 +163,10 @@ extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_view(float yaw,float pitch,float
     castle->yaw=yaw;castle->pitch=pitch;zoom=distance;
     castle->clockSeconds=seconds;castle->cycle=false;castle->orbit=false;castle->celestial=false;
     castle->activeScene=0;
+}
+extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_scene_view(int scene,float yaw,float pitch,float distance,double seconds,float angle) {
+    castle_set_view(yaw,pitch,distance,seconds);
+    castle->activeScene=scene;castle->windmillAngle=angle;
 }
 extern "C" EMSCRIPTEN_KEEPALIVE void castle_set_reflectance(float amount) {
     applyWindowReflectance(Ogre::MaterialManager::getSingleton().getByName("Windmill glass"),amount);

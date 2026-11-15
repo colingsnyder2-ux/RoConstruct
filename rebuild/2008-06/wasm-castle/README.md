@@ -15,8 +15,12 @@ triangles, with matching atlas-boundary subdivisions around adjoining faces.
 Windows and doors are recessed into openings between separate wall blocks.
 Glass follows Roblox RenderLibNew/RenderScene.cpp: an additive reflection pass,
 ambient 2*Reflectance, original skyspheremap.jpg and ENV_CURVED. The bridge
-implements sphere-map texgen. This reflects the sky, not nearby buildings. The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
-is zero. Generated vertex shaders declare invariant gl_Position to keep transforms
+implements sphere-map texgen and uploads its texture matrix independently of
+vertex UV arrays. Windows use full reflectance with unlit reflection brightness
+and brown frames. This reflects the original sky image, not nearby buildings. The native mShadowSubMesh path retains closed shadow volumes. Default depth bias
+is zero. Fixture shadow bounds are transformed from the mesh extents so off-origin
+scenes select the correct near-plane algorithm and include their shadow caps.
+Generated vertex shaders declare invariant gl_Position to keep transforms
 consistent between lit and stencil passes (GLSL ES invariance rules).
 
 The retro toolbar is the separate Codejock Wasm source subset described in
@@ -28,7 +32,7 @@ gable roof, side sheds and spinning lattice sails using native RBX transforms. T
 
 Desktop browser with WebGL 2 recommended. Drag to orbit; wheel to zoom.
 Space: auto-orbit; R: reset; W: wireframe; S: shadows.
-P: pause clock; D: resume; T: advance three hours; C: sun/moon view.
+P: pause clock; D: resume; hold T: run time five times faster; C: sun/moon view.
 A full day takes 90 seconds. Escape stops the demo; reload to restart.
 Wireframe requires WEBGL_polygon_mode and may be unavailable on mobile.
 Help and camera readouts have been removed. Copy view copies diagnostic state
