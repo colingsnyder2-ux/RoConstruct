@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include <afxwin.h>
 #include <afxole.h>
 #include <afxcmn.h>

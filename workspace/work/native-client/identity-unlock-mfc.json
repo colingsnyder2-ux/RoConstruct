@@ -1,0 +1,1002 @@
+{
+ "007f9170": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlComboBox",
+    "get_this_class": "006a6ab0",
+    "initializer": "007f9170",
+    "kind": "afx-classinit",
+    "runtime_class": "00965eac"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlComboBox@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlComboBox@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlComboBox",
+  "signature": null
+ },
+ "007f9180": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlComboBoxPopupBar",
+    "get_this_class": "006a6e90",
+    "initializer": "007f9180",
+    "kind": "afx-classinit",
+    "runtime_class": "00965ec8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlComboBoxPopupBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlComboBoxPopupBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlComboBoxPopupBar",
+  "signature": null
+ },
+ "007f9190": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlComboBoxList",
+    "get_this_class": "006a7000",
+    "initializer": "007f9190",
+    "kind": "afx-classinit",
+    "runtime_class": "00965ee4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlComboBoxList@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlComboBoxList@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlComboBoxList",
+  "signature": null
+ },
+ "007f91a0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControl",
+    "get_this_class": "006ab1b0",
+    "initializer": "007f91a0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966044"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControl@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControl@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControl",
+  "signature": null
+ },
+ "007f91c0": {
+  "evidence": [
+   {
+    "class_name": "CXTPCommandBar",
+    "get_this_class": "006b4ad0",
+    "initializer": "007f91c0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966184"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPCommandBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPCommandBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPCommandBar",
+  "signature": null
+ },
+ "007f9210": {
+  "evidence": [
+   {
+    "class_name": "CXTPToolBar",
+    "get_this_class": "006c1b10",
+    "initializer": "007f9210",
+    "kind": "afx-classinit",
+    "runtime_class": "009663d0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPToolBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPToolBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPToolBar",
+  "signature": null
+ },
+ "007f9220": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecordItem",
+    "get_this_class": "006c6c50",
+    "initializer": "007f9220",
+    "kind": "afx-classinit",
+    "runtime_class": "00966578"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecordItem@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecordItem@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecordItem",
+  "signature": null
+ },
+ "007f92a0": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecord",
+    "get_this_class": "006d7f10",
+    "initializer": "007f92a0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966f24"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecord@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecord@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecord",
+  "signature": null
+ },
+ "007f92b0": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecordItemText",
+    "get_this_class": "006d85f0",
+    "initializer": "007f92b0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966f78"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecordItemText@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecordItemText@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecordItemText",
+  "signature": null
+ },
+ "007f92c0": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecordItemNumber",
+    "get_this_class": "006d8690",
+    "initializer": "007f92c0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966f94"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecordItemNumber@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecordItemNumber@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecordItemNumber",
+  "signature": null
+ },
+ "007f92d0": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecordItemDateTime",
+    "get_this_class": "006d8810",
+    "initializer": "007f92d0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966fb0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecordItemDateTime@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecordItemDateTime@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecordItemDateTime",
+  "signature": null
+ },
+ "007f92e0": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecordItemPreview",
+    "get_this_class": "006d88b0",
+    "initializer": "007f92e0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966fcc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecordItemPreview@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecordItemPreview@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecordItemPreview",
+  "signature": null
+ },
+ "007f92f0": {
+  "evidence": [
+   {
+    "class_name": "CXTPReportRecordItemVariant",
+    "get_this_class": "006d89d0",
+    "initializer": "007f92f0",
+    "kind": "afx-classinit",
+    "runtime_class": "00966fec"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPReportRecordItemVariant@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPReportRecordItemVariant@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPReportRecordItemVariant",
+  "signature": null
+ },
+ "007f9300": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlPopup",
+    "get_this_class": "006e73d0",
+    "initializer": "007f9300",
+    "kind": "afx-classinit",
+    "runtime_class": "00967380"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlPopup@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlPopup@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlPopup",
+  "signature": null
+ },
+ "007f9310": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlPopupColor",
+    "get_this_class": "006e9190",
+    "initializer": "007f9310",
+    "kind": "afx-classinit",
+    "runtime_class": "00967404"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlPopupColor@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlPopupColor@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlPopupColor",
+  "signature": null
+ },
+ "007f9320": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlButtonColor",
+    "get_this_class": "006e9270",
+    "initializer": "007f9320",
+    "kind": "afx-classinit",
+    "runtime_class": "00967420"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlButtonColor@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlButtonColor@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlButtonColor",
+  "signature": null
+ },
+ "007f9820": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlColorSelector",
+    "get_this_class": "006e9370",
+    "initializer": "007f9820",
+    "kind": "afx-classinit",
+    "runtime_class": "0096743c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlColorSelector@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlColorSelector@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlColorSelector",
+  "signature": null
+ },
+ "007f9830": {
+  "evidence": [
+   {
+    "class_name": "CXTPPopupBar",
+    "get_this_class": "006ee1c0",
+    "initializer": "007f9830",
+    "kind": "afx-classinit",
+    "runtime_class": "009676c0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPPopupBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPPopupBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPPopupBar",
+  "signature": null
+ },
+ "007f9840": {
+  "evidence": [
+   {
+    "class_name": "CXTPPopupToolBar",
+    "get_this_class": "006ee710",
+    "initializer": "007f9840",
+    "kind": "afx-classinit",
+    "runtime_class": "009676dc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPPopupToolBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPPopupToolBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPPopupToolBar",
+  "signature": null
+ },
+ "007f9850": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlWindowList",
+    "get_this_class": "006f4e50",
+    "initializer": "007f9850",
+    "kind": "afx-classinit",
+    "runtime_class": "00967790"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlWindowList@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlWindowList@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlWindowList",
+  "signature": null
+ },
+ "007f9860": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlToolbars",
+    "get_this_class": "006f4ff0",
+    "initializer": "007f9860",
+    "kind": "afx-classinit",
+    "runtime_class": "009677ac"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlToolbars@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlToolbars@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlToolbars",
+  "signature": null
+ },
+ "007f9870": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlOleItems",
+    "get_this_class": "006f5020",
+    "initializer": "007f9870",
+    "kind": "afx-classinit",
+    "runtime_class": "009677c8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlOleItems@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlOleItems@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlOleItems",
+  "signature": null
+ },
+ "007f9880": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlRecentFileList",
+    "get_this_class": "006f5030",
+    "initializer": "007f9880",
+    "kind": "afx-classinit",
+    "runtime_class": "009677e4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlRecentFileList@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlRecentFileList@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlRecentFileList",
+  "signature": null
+ },
+ "007f9890": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlSelector",
+    "get_this_class": "006f5050",
+    "initializer": "007f9890",
+    "kind": "afx-classinit",
+    "runtime_class": "00967800"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlSelector@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlSelector@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlSelector",
+  "signature": null
+ },
+ "007f98a0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlWorkspaceActions",
+    "get_this_class": "006f50c0",
+    "initializer": "007f98a0",
+    "kind": "afx-classinit",
+    "runtime_class": "0096781c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlWorkspaceActions@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlWorkspaceActions@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlWorkspaceActions",
+  "signature": null
+ },
+ "007f98b0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlLabel",
+    "get_this_class": "006f5110",
+    "initializer": "007f98b0",
+    "kind": "afx-classinit",
+    "runtime_class": "00967838"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlLabel@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlLabel@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlLabel",
+  "signature": null
+ },
+ "007f98c0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlCheckBox",
+    "get_this_class": "006f5180",
+    "initializer": "007f98c0",
+    "kind": "afx-classinit",
+    "runtime_class": "00967854"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlCheckBox@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlCheckBox@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlCheckBox",
+  "signature": null
+ },
+ "007f98d0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlRadioButton",
+    "get_this_class": "006f51c0",
+    "initializer": "007f98d0",
+    "kind": "afx-classinit",
+    "runtime_class": "00967870"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlRadioButton@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlRadioButton@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlRadioButton",
+  "signature": null
+ },
+ "007f98f0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlTabWorkspace",
+    "get_this_class": "00701600",
+    "initializer": "007f98f0",
+    "kind": "afx-classinit",
+    "runtime_class": "00967d1c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlTabWorkspace@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlTabWorkspace@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlTabWorkspace",
+  "signature": null
+ },
+ "007f9940": {
+  "evidence": [
+   {
+    "class_name": "CXTPMenuBar",
+    "get_this_class": "00720010",
+    "initializer": "007f9940",
+    "kind": "afx-classinit",
+    "runtime_class": "00968da4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPMenuBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPMenuBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPMenuBar",
+  "signature": null
+ },
+ "007f9950": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonBar",
+    "get_this_class": "00721dd0",
+    "initializer": "007f9950",
+    "kind": "afx-classinit",
+    "runtime_class": "00968f0c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonBar",
+  "signature": null
+ },
+ "007f9960": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonBarControlQuickAccessPopup",
+    "get_this_class": "00722000",
+    "initializer": "007f9960",
+    "kind": "afx-classinit",
+    "runtime_class": "00968f28"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonBarControlQuickAccessPopup@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonBarControlQuickAccessPopup@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonBarControlQuickAccessPopup",
+  "signature": null
+ },
+ "007f9970": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlGallery",
+    "get_this_class": "0072dd30",
+    "initializer": "007f9970",
+    "kind": "afx-classinit",
+    "runtime_class": "009692b8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlGallery@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlGallery@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlGallery",
+  "signature": null
+ },
+ "007f9980": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlComboBoxGalleryPopupBar",
+    "get_this_class": "0072e370",
+    "initializer": "007f9980",
+    "kind": "afx-classinit",
+    "runtime_class": "009692d4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlComboBoxGalleryPopupBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlComboBoxGalleryPopupBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlComboBoxGalleryPopupBar",
+  "signature": null
+ },
+ "007f9990": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlEdit",
+    "get_this_class": "00741a80",
+    "initializer": "007f9990",
+    "kind": "afx-classinit",
+    "runtime_class": "009694a0"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlEdit@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlEdit@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlEdit",
+  "signature": null
+ },
+ "007f99a0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlButton",
+    "get_this_class": "00745630",
+    "initializer": "007f99a0",
+    "kind": "afx-classinit",
+    "runtime_class": "00969574"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlButton@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlButton@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlButton",
+  "signature": null
+ },
+ "007f9de0": {
+  "evidence": [
+   {
+    "class_name": "CXTPControlCustom",
+    "get_this_class": "00772790",
+    "initializer": "007f9de0",
+    "kind": "afx-classinit",
+    "runtime_class": "0096a6d4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPControlCustom@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPControlCustom@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPControlCustom",
+  "signature": null
+ },
+ "007f9e10": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonTab",
+    "get_this_class": "00793b40",
+    "initializer": "007f9e10",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b664"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonTab@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonTab@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonTab",
+  "signature": null
+ },
+ "007f9e20": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonGroupPopupToolBar",
+    "get_this_class": "00796870",
+    "initializer": "007f9e20",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b72c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonGroupPopupToolBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonGroupPopupToolBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonGroupPopupToolBar",
+  "signature": null
+ },
+ "007f9e30": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonGroup",
+    "get_this_class": "00797bb0",
+    "initializer": "007f9e30",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b804"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonGroup@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonGroup@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonGroup",
+  "signature": null
+ },
+ "007f9e40": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonGroupControlPopup",
+    "get_this_class": "00797e60",
+    "initializer": "007f9e40",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b820"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonGroupControlPopup@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonGroupControlPopup@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonGroupControlPopup",
+  "signature": null
+ },
+ "007f9e50": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonControlTab",
+    "get_this_class": "00799180",
+    "initializer": "007f9e50",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b8fc"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonControlTab@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonControlTab@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonControlTab",
+  "signature": null
+ },
+ "007f9e60": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonControlSystemButton",
+    "get_this_class": "0079a620",
+    "initializer": "007f9e60",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b93c"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonControlSystemButton@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonControlSystemButton@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonControlSystemButton",
+  "signature": null
+ },
+ "007f9e70": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonSystemPopupBar",
+    "get_this_class": "0079a6e0",
+    "initializer": "007f9e70",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b958"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonSystemPopupBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonSystemPopupBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonSystemPopupBar",
+  "signature": null
+ },
+ "007f9e80": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonControlSystemPopupBarButton",
+    "get_this_class": "0079a720",
+    "initializer": "007f9e80",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b974"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonControlSystemPopupBarButton@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonControlSystemPopupBarButton@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonControlSystemPopupBarButton",
+  "signature": null
+ },
+ "007f9e90": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonControlSystemPopupBarListItem",
+    "get_this_class": "0079a780",
+    "initializer": "007f9e90",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b990"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonControlSystemPopupBarListItem@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonControlSystemPopupBarListItem@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonControlSystemPopupBarListItem",
+  "signature": null
+ },
+ "007f9ea0": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonControlSystemPopupBarListCaption",
+    "get_this_class": "0079a7c0",
+    "initializer": "007f9ea0",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b9ac"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonControlSystemPopupBarListCaption@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonControlSystemPopupBarListCaption@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonControlSystemPopupBarListCaption",
+  "signature": null
+ },
+ "007f9eb0": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonControlSystemRecentFileList",
+    "get_this_class": "0079a860",
+    "initializer": "007f9eb0",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b9c8"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonControlSystemRecentFileList@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonControlSystemRecentFileList@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonControlSystemRecentFileList",
+  "signature": null
+ },
+ "007f9ec0": {
+  "evidence": [
+   {
+    "class_name": "CXTPRibbonSystemPopupBarPage",
+    "get_this_class": "0079a8c0",
+    "initializer": "007f9ec0",
+    "kind": "afx-classinit",
+    "runtime_class": "0096b9e4"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPRibbonSystemPopupBarPage@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPRibbonSystemPopupBarPage@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPRibbonSystemPopupBarPage",
+  "signature": null
+ },
+ "007f9ed0": {
+  "evidence": [
+   {
+    "class_name": "CXTPDialogBar",
+    "get_this_class": "0079ebc0",
+    "initializer": "007f9ed0",
+    "kind": "afx-classinit",
+    "runtime_class": "0096bb90"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__E_init_CXTPDialogBar@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__E_init_CXTPDialogBar@@YAXXZ",
+  "name_source": "identity-unlock-mfc",
+  "owner_class": "CXTPDialogBar",
+  "signature": null
+ }
+}

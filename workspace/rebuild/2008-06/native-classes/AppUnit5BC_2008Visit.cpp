@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // 2008-06 native RBX::Visit unit rows (v8datamodel/Visit.cpp, 005c4400..005c52ff of the application range
 // 005bc000..005c8000), inactive. Verified by tests/record_native_app_unit5bc_2008.py against the committed read-only
 // native v8datamodel/Visit.h (sizeof 0x150: uploadUrl +0x130, pingThread +0x14c, read from the constructor 005c5220,

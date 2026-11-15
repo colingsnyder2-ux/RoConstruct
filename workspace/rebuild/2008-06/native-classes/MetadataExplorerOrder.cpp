@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "reflection/Metadata.h"
 
 int RBX::Reflection::Metadata::Class::explorerOrder() const
@@ -10,3 +11,16 @@ int RBX::Reflection::Metadata::Class::explorerOrder() const
     }
     return 0;
 }
+
+namespace RBX {
+namespace Reflection {
+namespace Metadata {
+Class::Class()
+    : unknown_150(-1)
+    , unknown_154(0)
+{
+}
+}
+}
+}
+

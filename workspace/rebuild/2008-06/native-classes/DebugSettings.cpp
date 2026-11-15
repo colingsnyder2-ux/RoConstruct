@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNATIVE_DEBUGSETTINGS_PENDING /GS-
 // 2008-06 native RBX::DebugSettings (inactive); evidence in native-headers/v8datamodel/DebugSettings.h.
 // Verified by tests/record_native_settings_items.py (unit profile: document-swap flags). Bodies that need a declaration
 // the shared headers lack (World::EThrottle) are guarded by NATIVE_DEBUGSETTINGS_PENDING and checked only against a
@@ -8,6 +9,8 @@
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>
 #include <stdexcept>
+
+#include "../native-headers/AppUnit500/RenderSpecData.h"
 
 namespace RBX
 {
@@ -252,3 +255,39 @@ template class std::vector<enum RBX::Debugable::AssertAction,std::allocator<enum
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sDebugSettings>();
+
+namespace RBX {
+float DebugSettings::shaderModel() const
+{
+	return Render::SpecData().shaderModel;
+}
+}
+
+namespace RBX {
+int DebugSettings::ram(void) const
+{
+    return RBX::Render::SpecData().ram;
+}
+}
+
+namespace RBX {
+int DebugSettings::cpuSpeed() const
+{
+    return Render::SpecData().CPUSpeed;
+}
+}
+
+namespace RBX {
+int DebugSettings::cpuCount() const
+{
+    return Render::SpecData().cpuCount;
+}
+}
+
+namespace RBX {
+int DebugSettings::videoMemory() const
+{
+	return Render::SpecData().videoMemory;
+}
+}
+

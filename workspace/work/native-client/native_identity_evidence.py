@@ -6,6 +6,7 @@ symbol/address identity into native-bulk, with the closure hash as an input.
 import argparse
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -34,6 +35,36 @@ def import_thunks(imports, duplicates):
         if symbol not in duplicates and len(sites) == 1:
             name = symbol[len('__imp_'):]
             yield (name if name.startswith('?') else '_' + name), f'{sites[0]:08x}'
+
+
+CACHE = ROOT / 'work/cache/2008-06-exe-imports.json'
+
+
+def exe_facts():
+    """(imports {__imp_X: va}, duplicate spellings, [(thunk symbol, addr)]) from the 2008-06 exe, cached on disk by
+    exe size+mtime: standins._imports() parses every PE relocation (~5-10 s) on each gate otherwise."""
+    exe = ROOT / 'clients/2008-06/Roblox.exe'
+    key = '%d-%d' % (exe.stat().st_size, exe.stat().st_mtime_ns)
+    try:
+        cached = json.loads(CACHE.read_text())
+        if cached.get('key') == key:
+            return cached['imports'], set(cached['duplicates']), [tuple(row) for row in cached['thunks']]
+    except (OSError, ValueError, KeyError):
+        pass
+    from roc import standins
+    imports, duplicates = {}, set()
+    for address, imported in standins._imports('2008-06').items():
+        symbol = '__imp_' + imported.split('!', 1)[1]
+        if symbol in imports and imports[symbol] != address:
+            duplicates.add(symbol)
+        else:
+            imports[symbol] = address
+    thunks = list(import_thunks(imports, duplicates))
+    CACHE.parent.mkdir(parents=True, exist_ok=True)
+    tmp = CACHE.with_suffix('.%d.tmp' % os.getpid())
+    tmp.write_text(json.dumps({'key': key, 'imports': imports, 'duplicates': sorted(duplicates), 'thunks': thunks}))
+    os.replace(tmp, CACHE)
+    return imports, duplicates, thunks
 
 
 def main():
@@ -74,15 +105,7 @@ def main():
     # The PE import table proves an IAT slot's exported spelling and target VA.
     # Keep only one-slot spellings: duplicate import spellings stay unbound just
     # like closure conflicts.
-    from roc import standins
-    imports = {}
-    duplicates = set()
-    for address, imported in standins._imports('2008-06').items():
-        symbol = '__imp_' + imported.split('!', 1)[1]
-        if symbol in imports and imports[symbol] != address:
-            duplicates.add(symbol)
-        else:
-            imports[symbol] = address
+    imports, duplicates, thunk_rows = exe_facts()
     closure_symbols = {row['symbol'] for row in rows}
     rows.extend({'symbol': symbol, 'address': f'{address:08x}',
                  'identity_evidence': 'original-iAT', 'votes': 1}
@@ -95,7 +118,7 @@ def main():
     # Already-bound: __purecall 006a16be agrees.  New: ___CxxFrameHandler3 006a14c0.
     known = {row['symbol'] for row in rows}
     taken = {row['address'].lower() for row in rows}
-    for symbol, address in import_thunks(imports, duplicates):
+    for symbol, address in thunk_rows:
         if symbol not in known and address not in taken:
             rows.append({'symbol': symbol, 'address': address, 'identity_evidence': 'original-iAT-jmp-thunk', 'votes': 1})
     by_symbol = {row['symbol']: row['address'].lower() for row in rows}
@@ -117,7 +140,7 @@ def main():
            'identity_bindings': rows,
            'unbound_import_conflicts': sorted(duplicates)}
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(out, indent=1) + '\n')
+    args.output.write_text(json.dumps(out, separators=(',', ':')) + '\n')     # 33k rows: indent cost ~4 s/gate
     print('bindings', len(rows), 'output', args.output)
 
 

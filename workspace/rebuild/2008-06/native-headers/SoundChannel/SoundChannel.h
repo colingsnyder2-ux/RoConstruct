@@ -123,6 +123,8 @@ namespace RBX
 
 	namespace Soundscape
 	{
+#ifndef RBX_REVERBTYPE_DEFINED // util/Sound.h and SoundChannel/SoundChannel.h both declare it (C2011 when both are included)
+#define RBX_REVERBTYPE_DEFINED
 		enum ReverbType
 		{
 			NoReverb,
@@ -150,6 +152,7 @@ namespace RBX
 			SewerPipe,
 			UnderWater
 		};
+#endif
 
 		class SoundId : public ContentId
 		{

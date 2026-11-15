@@ -64,8 +64,9 @@ LADDER = ['claude:sonnet', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b', 'opencode
 # Strongest NVIDIA NIM chat models for C++ rewrites (checked against the account's /v1/models list, 2026-11-14).
 # Each run adds a random sample of these after Sonnet so their quotas and strengths spread over the batch.
 CLAUDE_MODELS = ['claude:sonnet', 'claude:opus', 'claude:haiku', 'claude:fable']
-# Owner choice 2026-11-14: every run uses this ladder (no alternating, no NIM/free models).
-DEFAULT_LADDER = ['claude:sonnet', 'claude:sonnet', 'claude:sonnet', 'claude:opus', 'claude:haiku']
+# Owner choice 2026-11-15: 2x Opus + 3x Sonnet, no Haiku (24 h: Opus 3068 B/worker-hour, Sonnet 1717, Haiku 954;
+# gate time ~26 s/try is the bottleneck, so cheap low-yield tries cost worker slots).  No NIM/free models.
+DEFAULT_LADDER = ['claude:opus', 'claude:sonnet', 'claude:opus', 'claude:sonnet', 'claude:sonnet']
 # Haiku-first went 0/21 in run 15: plain rotation again (Haiku ~1 in 5 tries, low effort).  --first-model to force one.
 FIRST_MODEL = ''
 LOW_EFFORT = {'claude:haiku'}    # most Haiku output was hidden thinking (4.4k tokens/try)
@@ -205,7 +206,8 @@ def native_exact_addresses():
 DONOR_INCLUDE = ROOT / 'tools/rbxgs/Client/App/include'
 # Not DONOR_INCLUDE: as an /I root its 2007 reflection/reflection.h (const char* const* templates) shadowed the native
 # one through relative lookups and broke util/Sound.h (C2440) for every Sound target.
-VENDOR_ROOTS = [ROOT / 'tools/rbxgs/Client/Network/raknet30/Source', ROOT / 'tools/rbxgs/Client/Network']
+VENDOR_ROOTS = [ROOT / 'tools/rbxgs/Client/Network/raknet30/Source', ROOT / 'tools/rbxgs/Client/Network',
+                ROOT / 'tools/libs/scintilla-mfc-1.20']    # CScriptEditor.h: ScintillaCtrl.h / Scintilla.h / Platform.h
 
 
 def header_include_flags(header, destination, extra=()):
@@ -263,6 +265,26 @@ def unmapped_externs(packet, header, destination):
             if name not in visible:
                 missing.append(name)
     return sorted(set(missing))
+
+
+REGISTRY_EXTRA = [ROOT / 'work/native-client/unnamed-identities.json', ROOT / 'work/native-client/vtable-names.json']
+
+
+def load_registry():
+    """Identity registry plus identity-recovery side files (unnamed-identities.json from the identity session,
+    vtable-names.json); the main registry wins on any address both name.  Gates still prove every name."""
+    registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
+    for path in REGISTRY_EXTRA:
+        if path.is_file():
+            try:
+                extra = json.loads(path.read_text())
+            except ValueError:
+                continue
+            for addr, row in extra.items():
+                old = registry.get(addr) or {}
+                if not old.get('name') or old.get('placeholder') or old['name'].startswith('func_'):
+                    registry[addr] = dict(row, kind=row.get('kind', 'code'), placeholder=False)
+    return registry
 
 
 REMAINING = None
@@ -323,7 +345,8 @@ def template_targets(tried, max_size):
     for addr, res in results.items():
         row = registry.get(addr) or {}
         sig = row.get('signature') or ''
-        if res['status'] not in ('needs-body', 'draft') or addr in tried or not sig:
+        # 'draft' = the header already has a (different) body: a shared-header fix, not a probe definition.
+        if res['status'] != 'needs-body' or addr in tried or not sig:
             continue
         headers = []
         for name in dict.fromkeys(re.findall(r'\b((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)(?=\s*<|\s*::|\s*[\s*&>,)])', sig)):
@@ -350,7 +373,7 @@ def registry_classes(queue_classes):
     """Extra conversion rows from the identity registry: named, non-template members of non-vendor classes that the
     queue never listed (766 at last count).  Header = the native (else donor) header that defines the class and
     mentions the method; every later targets() filter (identity, 100% analog, preflight, gates) still applies."""
-    registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
+    registry = load_registry()
     listed = {m['addr'] for cl in queue_classes for m in cl['methods']}
     names = collections.Counter(row.get('name') for row in registry.values())
     grouped = collections.defaultdict(list)
@@ -391,7 +414,7 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
         templates = template_targets(tried, max_size)
     else:
         templates = []
-    registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
+    registry = load_registry()
     native_exact = native_exact_addresses()
     solved = ({row['owner'] for row in json.loads(LAYOUTS.read_text()).get('rows', []) if row.get('accepted')}
               if LAYOUTS.is_file() else set())
@@ -570,6 +593,51 @@ def declarations_for(error, limit=6):
             'or the header member at the same offset) ---\n' + '\n\n'.join(out)[:4000])
 
 
+HEADER_TEXT = None
+REGISTRY_NAMES = None
+
+
+REGISTRY_LEAVES = None
+
+
+def invented_externs(code):
+    """`extern` variables/functions an answer declares whose name neither the registry (any decorated leaf) nor a
+    native/vendor header knows.  The gate does not check data-reference identities, so `extern int gCreatorTag;`
+    written to the right address would otherwise pass as exact (2026-11-15: 9 such 'exacts')."""
+    global REGISTRY_LEAVES
+    names = re.findall(r'\bextern\s+(?:"C"\s+)?[^;(]*?\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*(?:\([^;]*\))?\s*;', code)
+    if not names:
+        return []
+    plausible_binding('?x@', '0')               # loads HEADER_TEXT / REGISTRY_NAMES
+    if REGISTRY_LEAVES is None:
+        REGISTRY_LEAVES = {n[1:].split('@', 1)[0] for n in REGISTRY_NAMES if n and n.startswith('?') and not n.startswith('??')}
+        REGISTRY_LEAVES |= {n.lstrip('_') for n in REGISTRY_NAMES if n and not n.startswith('?')}
+        closure = json.loads(CLOSURE.read_text()) if CLOSURE.is_file() else {'bindings': []}
+        REGISTRY_LEAVES |= {b['symbol'][1:].split('@', 1)[0] for b in closure['bindings']
+                            if b['symbol'].startswith('?') and not b['symbol'].startswith('??')}     # e.g. luaL_unref
+    return [n for n in names if n not in HEADER_TEXT and n not in REGISTRY_LEAVES]
+
+
+def plausible_binding(symbol, addr):
+    """A learned reference identity is rejected only when it is a plain C++ name (`?leaf@...`) that no native/vendor
+    header declares and the registry never saw: the model's own invention (2026-11-15: an answer declared
+    `extern int g_factoryCreatorTag;` and learning bound it to whatever address the store hit).  Header-class
+    ctors/dtors/operators/templates (`??...`), C/import names and ICF-folded twins stay allowed."""
+    global HEADER_TEXT, REGISTRY_NAMES
+    if not symbol.startswith('?') or symbol.startswith('??'):
+        return True
+    if REGISTRY_NAMES is None:
+        REGISTRY_NAMES = {row.get('name') for row in load_registry().values()}
+    if symbol in REGISTRY_NAMES:
+        return True
+    if HEADER_TEXT is None:
+        declaring_header('')                                   # loads DECL_FILES
+        # identifiers declared anywhere in native/vendor headers (one set: O(1) per check)
+        vendor = '\n'.join(p.read_text(errors='replace') for root in VENDOR_ROOTS if root.is_dir() for p in root.glob('*.h'))
+        HEADER_TEXT = set(re.findall(r'[A-Za-z_]\w*', '\n'.join(text for _, text in DECL_FILES) + vendor))
+    return symbol[1:].split('@', 1)[0] in HEADER_TEXT
+
+
 def learn_identities(t, res):
     """If the target's only rejections are unproven callee identities, bind them from the exact candidate's relocations
     (native_reference_alias_bind.py) into CLOSURE. -> True when new bindings were added."""
@@ -604,7 +672,7 @@ def learn_identities(t, res):
         have = {(b['symbol'], b.get('addr')) for b in closure['bindings']}
         new = [dict(symbol=b['symbol'], addr=b['address'], address=b['address'], evidence=b.get('identity_evidence', 'llm-exact-reference'),
                     votes=b.get('votes', 1), body_exact=False, function_start=False)
-               for b in found if (b['symbol'], b['address']) not in have]
+               for b in found if (b['symbol'], b['address']) not in have and plausible_binding(b['symbol'], b['address'])]
         if not new:
             return False
         closure['bindings'] += new
@@ -657,9 +725,10 @@ def declaring_header(name):
     # Namespace-aware: RBX::Primitive must not resolve to G3D's RenderDevice::Primitive enum.  Qualified names need
     # their namespaces in the file; unqualified ones try `namespace RBX` files first.
     spaces = [ns for ns in name.split('::')[:-1] if ns]
+    global DECL_SPACES
     if not DECL_SPACES:
-        for path, text in DECL_FILES:
-            DECL_SPACES[path] = set(re.findall(r'\bnamespace\s+(\w+)', text))
+        # Built aside and published in one assignment: worker threads read it concurrently (KeyError on a half-filled dict).
+        DECL_SPACES = {path: set(re.findall(r'\bnamespace\s+(\w+)', text)) for path, text in DECL_FILES}
     raw = name.split('::')[-1]
     files = [(path, text) for path, text in DECL_FILES if raw in text] if raw else DECL_FILES
     passes = [spaces] if spaces else [['RBX'], []]
@@ -737,6 +806,36 @@ def file_globals(t):
     hits = [g for g in FILE_GLOBALS if (len(word) > 2 and word.lower() in g.lower()) or owner.lower() in g.lower()][:12]
     return ('--- KNOWN FILE GLOBALS (defined in the original .cpp; declare `extern` with the right type if used) ---\n'
             + '\n'.join(hits) + '\n') if hits else ''
+
+
+EXACT_ROWS = None
+
+
+def sibling_examples(t, limit=2, chars=1500):
+    """Up to LIMIT proven byte-exact bodies (earlier native_llm exacts) of the same class, else the same destination
+    file: the real house style (member names, casts, temporaries) for this target."""
+    global EXACT_ROWS
+    if EXACT_ROWS is None:
+        EXACT_ROWS = []
+        for line in LOG.read_text(encoding='utf-8').splitlines() if LOG.is_file() else []:
+            row = _json(line)
+            if row and row.get('status') == 'inactive_exact':
+                EXACT_ROWS.append(row)
+    picks = []
+    for same in (lambda r: r.get('owner') == t['owner'], lambda r: t.get('dest') and r.get('dest') == t['dest']):
+        for r in reversed(EXACT_ROWS):
+            if len(picks) >= limit:
+                break
+            if r['addr'] == t['addr'] or r['addr'] in {p[0] for p in picks} or not same(r):
+                continue
+            sub = {'cache': 'recheck', 'dest': 'dest'}.get(r.get('model'), 'try%s' % r.get('attempt'))
+            donor = folder(r) / sub / 'donor' / 'donor.cpp'
+            if donor.is_file():
+                picks.append((r['addr'], r['qual'], donor.read_text(errors='replace')[:chars]))
+    if not picks:
+        return ''
+    return ('\n--- PROVEN EXACT SIBLINGS (byte-exact against the original; follow their style and member names) ---\n'
+            + '\n'.join('// %s %s\n%s' % p for p in picks) + '\n')
 
 
 def bytes_identical(feedback):
@@ -840,9 +939,11 @@ ANNOTATE = {}            # lazily loaded: registry names + exe image
 def annotate_asm(asm):
     """Names for the raw addresses in the target assembly, so models stop guessing callees, RTTI casts and globals:
     identity-registry symbols (demangled with VC9 undname), RTTI TypeDescriptor names and string literals."""
-    if not ANNOTATE:
-        ANNOTATE['reg'] = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
-        ANNOTATE['base'], ANNOTATE['image'] = match._image('2008-06')
+    if 'image' not in ANNOTATE:
+        # Filled aside, published in one update: threads saw 'reg' present but 'base' missing (KeyError).
+        reg = load_registry()
+        base, image = match._image('2008-06')
+        ANNOTATE.update(reg=reg, base=base, image=image)
     reg, base, image = ANNOTATE['reg'], ANNOTATE['base'], ANNOTATE['image']
     notes, decorated = {}, {}
     for hexaddr in dict.fromkeys(re.findall(r'\b0x([0-9a-f]{6,8})\b', asm)):
@@ -951,7 +1052,10 @@ def headers_compile(t):
         # The owner class itself invisible (e.g. inside `#ifdef NATIVE_SIMJOB_PENDING`: layout still pending) is a
         # header state too: no body can compile until the guard is lifted.
         hidden = re.search(r"error C2653: '%s' : is not a class or namespace name" % leaf, feedback)
-        if hidden or re.search(r'\.h\(\d+\)\s*:\s*(?:fatal )?error|fatal error C1083|error C1189', first, re.I):
+        is_ctor = t['qual'].rsplit('::', 1)[-1] == t['owner'].rsplit('::', 1)[-1]
+        if is_ctor and 'C2512' in first:
+            pass    # empty-body ctor default-constructs its base (Named<MouseCommand>): the real ctor has an initializer list
+        elif hidden or re.search(r'\.h\(\d+\)\s*:\s*(?:fatal )?error|fatal error C1083|error C1189', first, re.I):
             first = hidden.group(0) + ' (class hidden by a header #if guard?)' if hidden else first
             error = first.strip()
     with PREFLIGHT_LOCK:
@@ -975,7 +1079,7 @@ def _prove(t, body, out, depth=0):
     """Write donor + one-row plan, run the existing isolated gates. -> (status, feedback text)."""
     if t.get('template_inst'):
         # `template<class T> bool RBX::X<T>::f(...) {...}` + `template bool RBX::X<A>::f(...);` at global scope.
-        ns, marker = '', split_qual(t['qual'])[-1]
+        ns, marker = '', split_qual(t['qual'])[-1].split('<')[0]     # ctor `X<A>::X<A>`: definition spells `X(`
     else:
         ns, cls = t['owner'].rsplit('::', 1) if '::' in t['owner'] else ('', t['owner'])
         marker = t['qual'][len(ns) + 2:] if ns and t['qual'].startswith(ns + '::') else t['qual']
@@ -1086,11 +1190,22 @@ def _prove(t, body, out, depth=0):
                 if retried[0] == 'compile_failed' and 'C2011' in retried[1]:
                     # Drop only the added header(s) that redefine a class; keep the ones that were needed.
                     clash = {Path(m).name.lower() for m in re.findall(r'([^\s(]+\.h)\(\d+\) : error C2011', retried[1])}
-                    keep = [h for h in found if Path(h).name.lower() not in clash]
+                    # A donor header (SimBody.h) drags in donor Body.h/IPipelined.h, so the C2011 points at the native
+                    # Body2008.h / IPipelined2008.h instead: drop every added header that is not a native-headers file.
+                    native_root = ROOT / 'rebuild/2008-06/native-headers'
+                    keep = [h for h in found if Path(h).name.lower() not in clash
+                            and ((native_root / h).is_file() or str(Path(h)).startswith(str(native_root)))]
                     EXTRA_INCLUDES[t['addr']] = before + keep
                     return prove(t, body, out, depth + 1 if keep and depth < 1 else 2)
                 return retried
-        return status, 'Compile error:\n' + error[:1500] + declarations_for(error)
+        # C2039 "'getBody' : is not a member of 'RBX::PartInstance'": most such members are invented (header-gaps.jsonl:
+        # 59 of 67 have no binary symbol).  Show the class's real members so the retry picks an existing one.
+        members = ''
+        for cls in dict.fromkeys(re.findall(r"is not a member of '([\w:]+)'", error)[:2]):
+            block = class_block(cls.split('::')[-1], limit=2500)
+            if block:
+                members += '\n--- REAL MEMBERS OF %s (use only these) ---\n%s\n' % (cls, block)
+        return status, 'Compile error:\n' + error[:1500] + declarations_for(error) + members
     if status == 'inactive_exact':
         return status, ''
     objs = sorted(Path(res['manifest']).parent.rglob('*.obj'))
@@ -1223,6 +1338,7 @@ def work(t, ladder, tries, start=0):
                  'specialization instead (`template<> Ret NS::Cls<Args>::f(...) {...}`) and no instantiation line.\n'
                  % (split_qual(t['qual'])[-1], t['template_inst']))
     names = annotate_asm(asm) + file_globals(t)
+    note += sibling_examples(t)
     t = dict(t, names=names)          # header-gap logging checks compile errors against these binary names
     prompt = (RULES.format(decl=t['decl'], qual=t['qual']) + note + '\n--- REAL HEADER %s ---\n%s\n--- REFERENCE ANALOG ---\n%s\n'
               '--- ORIGINAL ASSEMBLY (the target) ---\n%s\n%s%s' % (t['header'], header, analog, asm, names,
@@ -1279,7 +1395,9 @@ def work(t, ladder, tries, start=0):
             return t, folder(t) / 'recheck'
         history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                    % (body, feedback)]
-    for n in range(tries):
+    n, bonus = -1, True
+    while n + 1 < tries:
+        n += 1
         live = [m for m in ladder if m not in EXHAUSTED]
         if not live:
             break                                       # every quota spent: stop instead of burning attempts
@@ -1313,7 +1431,13 @@ def work(t, ladder, tries, start=0):
         else:
             FAILS[model] = 0
             TOOL.times = {}
-            status, feedback = prove(t, body, folder(t) / ('try%d' % n))
+            invented = invented_externs(body)
+            if invented:
+                # The gate cannot see invented data globals: refuse before gating (no exact may rest on them).
+                status, feedback = 'compile_failed', ('Rejected: `extern` names no header or binary symbol knows: %s. Use the '
+                                                      'real global the headers/KNOWN FILE GLOBALS name, or none.' % ', '.join(invented))
+            else:
+                status, feedback = prove(t, body, folder(t) / ('try%d' % n))
         row = dict(slim(t), model=model, attempt=n, status=status, time=round(time.time(), 1), run=RUN_ID,
                    tool=dict(getattr(TOOL, 'times', None) or {}), tokens=dict(getattr(TOOL, 'tokens', None) or {}),
                    llm_seconds=round(llm, 1),
@@ -1339,9 +1463,18 @@ def work(t, ladder, tries, start=0):
             return t, folder(t) / ('try%d' % n)
         if status == 'draft' and bytes_identical(feedback):
             return t, None              # bytes exact, reference/identity gate open: another model try cannot help
+        first_error = next((line for line in (feedback or '').splitlines() if re.search(r'error C\d+', line)), '')
+        if status == 'compile_failed' and re.search(r'\.h(?:pp)?\(\d+\)\s*:\s*(?:fatal )?error', first_error):
+            # The first error sits inside a header (native or vendor): a header gap or include-order problem that
+            # another model answer cannot fix.  Logged to header-gaps.jsonl by the gate; skip the second try.
+            return t, None
         if body:
             history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                        % (body, feedback)]
+        # Near-miss bonus: a last-try draft within 4 diff lines gets one extra try (a blanket 3rd try yielded ~1%).
+        diff_lines = sum(1 for line in (feedback or '').splitlines() if line[:1] in '+-' and line[:3] not in ('+++', '---'))
+        if n == tries - 1 and bonus and status == 'draft' and 0 < diff_lines <= 4 and body:
+            tries, bonus = tries + 1, False
     return t, None
 
 
@@ -1377,10 +1510,25 @@ def main():
     ap.add_argument('--retry-failed', action='store_true', help='also retry earlier targets that never became exact')
     ap.add_argument('--retry-older-than', type=float, default=0, metavar='HOURS',
                     help='retry non-exact targets whose last model try is older than HOURS (after harness fixes)')
+    ap.add_argument('--no-promote', action='store_true', help='skip the background promotion at run end')
     ap.add_argument('--regate-all', action='store_true', help='re-prove every earlier draft (after a gate fix)')
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
+    # One run at a time: two runs picked the same targets (55 of 58 'exacts' re-proved already-exact functions) and
+    # raced on the shared closure.  A dead PID's lock is taken over.
+    lock = HERE / 'run.lock'
+    try:
+        other = int(lock.read_text().split()[0])
+        alive = subprocess.run(['tasklist', '/FI', 'PID eq %d' % other, '/NH'], capture_output=True, text=True).stdout
+        if str(other) in alive and 'python' in alive.lower() and other != os.getpid():
+            print('another native_llm run is active (pid %d, %s): exiting' % (other, lock), flush=True)
+            return
+    except (OSError, ValueError, IndexError):
+        pass
+    lock.write_text('%d %d\n' % (os.getpid(), time.time()))
+    import atexit
+    atexit.register(lambda: lock.unlink(missing_ok=True) if lock.is_file() and lock.read_text().split()[0] == str(os.getpid()) else None)
     QUEUE, CLOSURE = args.queue.resolve(), args.closure.resolve()
     globals()['FIRST_MODEL'] = args.first_model
     picked = 'given' if args.models else 'claude' if args.pick == 'claude' else pick_mode(args.pick)
@@ -1415,7 +1563,10 @@ def main():
             row = json.loads(line)
             if row['model'] not in ('cache', 'preflight'):
                 last[row['addr']] = max(last.get(row['addr'], 0), row.get('time', 0))
-        exact = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'}
+        rows = [json.loads(l) for l in LOG.open()]
+        # Retracted exacts (relied on invented names) must be re-proved honestly: not 'exact' here.
+        exact = ({r['addr'] for r in rows if r['status'] == 'inactive_exact'}
+                 - {r['addr'] for r in rows if r['status'] == 'retracted'})
         tried = {a for a in tried if a in exact or last.get(a, 0) >= cutoff}
     if args.retry_failed:   # harness fixes since the last try (flags, includes, identities) help old misses too
         tried = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'} if LOG.is_file() else set()
@@ -1442,8 +1593,15 @@ def main():
     # Never-tried targets first (run 16 spent its whole budget on leftovers while 55 fresh ones waited), then owners
     # with exacts, then the rest; placeholder-global targets last.
     # Website 'other remaining' functions first: an exact there moves the public count (others are already owned).
+    # Bytes/hour: expected bytes per try = size x smoothed exact rate of its size bucket (history, Claude rows).
+    # Smallest-first left 128-512 B targets (~1400 B/worker-hour) behind 32-64 B ones (~650).
+    bucket = lambda size: min(7, max(0, size.bit_length() - 5))
+    seen_b = collections.Counter(bucket(r.get('size', 0)) for r in history if str(r.get('model', '')).startswith('claude'))
+    won_b = collections.Counter(bucket(r.get('size', 0)) for r in history
+                                if str(r.get('model', '')).startswith('claude') and r['status'] == 'inactive_exact')
+    expected = lambda t: t['size'] * (won_b[bucket(t['size'])] + 1) / (seen_b[bucket(t['size'])] + 10)
     rank = lambda t: (t['addr'] not in remaining_set(), tries_of[t['addr']] > 0, bool(t.get('unmapped')),
-                      0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, t['size'])
+                      0 if t['owner'] in owner_exact else 2 if owner_tries[t['owner']] >= 6 else 1, -expected(t))
     todo = sorted(todo, key=rank)[:args.limit]
     if args.retry_address:
         wanted = {address.lower() for address in args.retry_address}
@@ -1495,6 +1653,22 @@ def main():
                   top_failure_causes=failures.most_common(5))
     with METRICS.open('a') as stream:
         stream.write(json.dumps(metric, sort_keys=True) + '\n')
+    try:      # combined bytes/hour across all runs and sessions -> native-llm/throughput.jsonl + run log
+        sys.path.insert(0, str(ROOT / 'work/native-client'))
+        import native_llm_models
+        tp = native_llm_models.log_throughput(RUN_ID)
+        print('combined B/hour: 1h %(bytes_per_hour_1h)d  6h %(bytes_per_hour_6h)d  24h %(bytes_per_hour_24h)d  (%(exact_functions)d exact fns)'
+              % tp, flush=True)
+    except Exception as error:          # reporting only
+        print('throughput log failed:', error, flush=True)
+    if exact and not args.no_promote:
+        # Land new remaining-set exacts in native-classes (lease, draft, whole-TU proof) without blocking the next run.
+        subprocess.Popen([sys.executable, str(ROOT / 'work/native-client/native_llm_promote.py'), '--only-remaining'],
+                         cwd=ROOT / 'work/native-client', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         # below-normal: promotion re-proofs must not steal CPU from the next run's gates (bytes/hour)
+                         creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0)
+                         | getattr(subprocess, 'BELOW_NORMAL_PRIORITY_CLASS', 0))
+        print('promotion started in background (native-llm/promoted.json)', flush=True)
     for t, d in exact if args.apply else []:
         # Serial: one destination edit at a time; the runner leases, drafts, re-proves the whole TU.
         run = subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_autorecover.py'), '--plan-file',
