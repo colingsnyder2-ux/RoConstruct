@@ -8,13 +8,14 @@
 // 004b62c0 and update 004b6530 read Replicator members past +0x2b90 and stay open; the implicit destructor 004b6690,
 // deleting destructor 004b6710 and its thunks are only emitted with the constructor's vtable.
 // Replicator members here: getDefault 004b4bb0, getSharedDictionary 004b6730, writeProperties 004b7f20 (parked);
-// serializeValue 004b6890 is a guarded draft (see its comment).
+// serializeValue 004b6890.
 #include "Network/Replicator2008.h"
 #include "Network/NetworkSettings.h"
 #include "AppUnit49C_2008/Streaming2008.h"
 #include "util/standardout.h"
 #include "BitStream.h"
 #include "security/SecurityContext.h"
+#include "v8datamodel/PartInstance.h"
 #include <typeinfo>
 
 namespace RBX
@@ -76,54 +77,48 @@ namespace RBX
 			}
 		}
 
-#ifdef NATIVE_REPLICATOR_SERIALIZEVALUE_PENDING
-		// 004b6890 (donor Replicator::serializeValue). Draft, not compiled: Network/IdSerializer.h does not declare
-		// StringSender::serializeString(const ConstProperty&, BitStream&) 004a83e0 (thiscall, ret 8: descriptor slot 0x1c
-		// getStringValue, then send 004a7e20) nor IdSerializer::serializeRef(const ConstProperty&, BitStream&) 004a8b90
-		// (thiscall, ret 8: RefPropertyDescriptor slot 0x30, then serializeId 004a8ae0), and PartInstance::prop_Size
-		// (00976148) needs {headers}/part-embedded on this unit's flags. Branch order and callees read from the target:
+		// 004b6890 (donor Replicator::serializeValue). StringSender::serializeString 004a83e0 and IdSerializer::serializeRef
+		// 004a8b90 are in AppUnit49C_2008IdSerializerTemplates.cpp. Branch order and callees read from the target:
 		// singleton<std::string> 0056cdf0 -> getSharedDictionary 004b6730 + serializeString; <bool> 0056cc30 ->
 		// getValue<bool> 004ad000 + operator<<(bool) 004a5b10; <int> 0056cbc0 -> 004ad060 + 004a61a0; <float> 0056cca0
 		// -> 004ad0c0 + 004a6400; <double> 0056cd10 -> serialize<double> 004ae7b0; <BrickColor> 0056d120 -> 004a7570;
-		// <Color3> 0056cf40 -> 004ada80; <Vector3> 0056ce60 -> prop_Size ? writeBrickVector 004a6700 (getValue<Vector3>
-		// 004accd0) : serialize<Vector3> 004acd30; <CoordinateFrame> 00599a00 -> 004adaa0; dynamic_cast
-		// EnumPropertyDescriptor (0092fea4) -> serializeEnum 004a5a30; RefPropertyDescriptor (0092fe70) -> serializeRef;
-		// <ContentId> 0056cd80 -> 004a6d00 (serialize<std::string>: the ContentId instance is identical-code folded or
-		// the 2008 source streams the content string). The bool argument is never read in 2008.
+		// <Color3> 0056cf40 -> 004ada80; <Vector3> 0056ce60 -> PartInstance::prop_Size 00976148 ? writeBrickVector
+		// 004a6700 (getValue<Vector3> 004accd0) : serialize<Vector3> 004acd30; <CoordinateFrame> 00599a00 -> 004adaa0;
+		// dynamic_cast EnumPropertyDescriptor (0092fea4) -> serializeEnum 004a5a30; RefPropertyDescriptor (0092fe70) ->
+		// serializeRef; <ContentId> 0056cd80 -> 004a6d00 (serialize<std::string>: the ContentId instance is identical-code
+		// folded or the 2008 source streams the content string). The bool argument is never read in 2008.
 		void Replicator::serializeValue(const Reflection::ConstProperty& property, bool, RakNet::BitStream& stream)
 		{
-			const Reflection::PropertyDescriptor& descriptor = property.getDescriptor();
-			if (descriptor.type == Reflection::Type::singleton<std::string>())
-				getSharedDictionary(descriptor).serializeString(property, stream);
-			else if (descriptor.type == Reflection::Type::singleton<bool>())
+			if (property.getDescriptor().type == Reflection::Type::singleton<std::string>())
+				getSharedDictionary(property.getDescriptor()).serializeString(property, stream);
+			else if (property.getDescriptor().type == Reflection::Type::singleton<bool>())
 				stream << property.getValue<bool>();
-			else if (descriptor.type == Reflection::Type::singleton<int>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<int>())
 				stream << property.getValue<int>();
-			else if (descriptor.type == Reflection::Type::singleton<float>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<float>())
 				stream << property.getValue<float>();
-			else if (descriptor.type == Reflection::Type::singleton<double>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<double>())
 				serialize<double>(property, stream);
-			else if (descriptor.type == Reflection::Type::singleton<BrickColor>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<BrickColor>())
 				serialize<BrickColor>(property, stream);
-			else if (descriptor.type == Reflection::Type::singleton<G3D::Color3>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Color3>())
 				serialize<G3D::Color3>(property, stream);
-			else if (descriptor.type == Reflection::Type::singleton<G3D::Vector3>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Vector3>())
 			{
-				if (&descriptor == &PartInstance::prop_Size)
+				if (&property.getDescriptor() == &PartInstance::prop_Size)
 					writeBrickVector(stream, property.getValue<G3D::Vector3>());
 				else
 					serialize<G3D::Vector3>(property, stream);
 			}
-			else if (descriptor.type == Reflection::Type::singleton<G3D::CoordinateFrame>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::CoordinateFrame>())
 				serialize<G3D::CoordinateFrame>(property, stream);
-			else if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&descriptor))
+			else if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&property.getDescriptor()))
 				serializeEnum(property, stream);
-			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&descriptor))
+			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&property.getDescriptor()))
 				serializeRef(property, stream);
-			else if (descriptor.type == Reflection::Type::singleton<ContentId>())
+			else if (property.getDescriptor().type == Reflection::Type::singleton<ContentId>())
 				serialize<std::string>(property, stream);
 		}
-#endif
 
 		// 004b7f20 (name INFERRED, see Replicator2008.h; getDefault 004b4bb0, serializeValue 004b6890,
 		// operator<<(bool) 004a5b10, NetworkSettings::singleton 0049e890 +0x131 / +0x132, StandardOut::print 005693a0).
