@@ -1,0 +1,29 @@
+{
+  "worker": "sol8",
+  "client": "2008-06",
+  "revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_inactive_exact": [
+    "004a3640"
+  ],
+  "sound_drafts": [
+    "005bd4f0",
+    "005bda10"
+  ],
+  "sound_blocker": "KernelData.h requires Connector::getKernelIndex absent in canonical Connector2008.h; shared owner must resolve. No compiled object or first byte divergence available. playCountProperty descriptor type INFERRED.",
+  "network_proof": "work/native-client/prove-out/prove-NetworkClientServer2008Server/manifest.json",
+  "network_blockers": [
+    "missing reference receipt: work/native-client/ogre-registry-identities.json"
+  ],
+  "network_note": "serverIsPresent current emitted size 46; remains draft. Earlier commentary reporting it verified was premature. No preexisting exact regression claim without baseline object.",
+  "unattempted": [
+    "Server OnReceive/onServiceProvider",
+    "CRobloxWnd remaining methods",
+    "SoundChannel remaining eight methods"
+  ],
+  "existing_network_free_provider": "AppUnit49C_2008Streaming.cpp; not duplicated or reverified",
+  "next_class": "Network::Server OnReceive",
+  "draft_transport": "HTTP 501 Not Implemented at register; latest_receipt null, retain sessions/outbox",
+  "runtime_or_selection": false
+}

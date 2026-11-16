@@ -1,0 +1,8 @@
+Round 5 sol8 evidence: 00452c80 is cached find<RunService>(), not find-or-create.
+00452c9c passes static flag 0096dd70 and callback 00450860 to call_once; 00452cb0 obtains class index through 0044f3c0.
+It resizes serviceArray, returns cached non-null pointer, otherwise calls findServiceByClassName at 00572a90 (00452d35).
+A null shared_ptr returns null at 00452d5b; non-null is cached and returned. No allocation, constructor or setParent call occurs.
+Existing AppUnit448_2008Services.cpp lines 57-78 contain this lookup algorithm. Its create implementation (80-91) adds allocation and parent assignment.
+Registry establishes create<RunService>() const as 004530f0, but has no find<RunService>() identity. This missing identity explains why simply replacing create with find did not close prior proof.
+Owner next proof: compile existing Services provider and establish the find<RunService> 00452c80 identity from matching bytes and original direct callers. Then change SoundServiceLifecycle2008 calls to find, retaining genuine null guard.
+No shared core headers edited; no identity registry patched; SoundService body unchanged.

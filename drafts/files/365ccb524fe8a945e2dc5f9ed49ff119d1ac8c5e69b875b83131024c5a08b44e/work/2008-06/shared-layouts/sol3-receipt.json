@@ -1,0 +1,78 @@
+{
+  "worker": "sol3",
+  "model": "gpt-6.1-sol",
+  "baseline_commit": "unknown",
+  "revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "new_methods": [
+    "006457e0",
+    "00645820",
+    "00645830",
+    "00645840",
+    "00645850",
+    "00645860"
+  ],
+  "preexisting_verified": {
+    "Cofm": [
+      "0065fef0",
+      "0065ff10",
+      "00660160",
+      "00660170"
+    ],
+    "SimBody": [
+      "00612fb0",
+      "00658ae0",
+      "00658ca0"
+    ]
+  },
+  "remaining": {
+    "IPipelined": "owner ABI, provider selection and runtime gates",
+    "Cofm": "0065ff20 emitted 627B; needs original/object diff",
+    "SimBody": "00658d20 emitted 643B; needs original/object diff; 00658fb0 missing native body; donor step(float) differs from target step() plus impulses",
+    "World": "scoped compile blocked; existing layout mismatch documented in source",
+    "TreeStage": "existing native-world ClumpStage.cpp; scoped compile blocked; no duplicate provider created"
+  },
+  "draft_server_blocker": null,
+  "next_action": "Resume World/TreeStage compiler dependency investigation, then SimBody step natural donor adaptation with original-backed impulse accumulation. Do not import artificial mined locals.",
+  "proofs": {
+    "IPipelined2008": {
+      "path": "work\\native-client\\prove-out\\prove-IPipelined2008\\manifest.json",
+      "sha256": "d702a9a976e51ba96f9965147023b8ae6d1b769489929bde3907a99622237362"
+    },
+    "BodyPrimitive2008Cofm": {
+      "path": "work\\native-client\\prove-out\\prove-BodyPrimitive2008Cofm\\manifest.json",
+      "sha256": "663d1e326ed654ccccd730a040d2640eb128a96e31166e16427b027dcc7a6b40"
+    },
+    "AppUnit5E8_2008World": {
+      "path": "work\\native-client\\prove-out\\prove-AppUnit5E8_2008World\\manifest.json",
+      "sha256": "745307805019061235dcd010c859e12d37c1dccebd7816e631644fb3ce7564d8"
+    }
+  },
+  "source_sha256": "4a4e5619d5a3de104de6cb0fcdfdf352387c5167ad35e9bb76a54d94e2e44b2d",
+  "round2": {
+    "new_inactive_body_exact": [
+      "0065ff20"
+    ],
+    "identity": "Cofm::updateIfDirty identity inferred by prove.py, not independent symbol proof",
+    "Cofm": "5/5 class bodies exact; 4 pre-existing, 1 new, source-local undef _RELEASEASSERT removes two child-index assertion paths; original 575 bytes",
+    "SimBody": "3 pre-existing exacts; update 00658d20 643/643 first divergence 00658e1a; matrix-left expression variant rejected and reverted; step 00658fb0 untouched",
+    "remaining_queue": [
+      "SleepStage",
+      "Assembly",
+      "BodyGyro",
+      "Constants",
+      "SimBody step",
+      "World",
+      "TreeStage"
+    ],
+    "stop_reason": "context limit reached before requested 3 hours",
+    "session": "78437776453c4886a239727f6b252178",
+    "next_action": "SleepStage existing provider scoped compile, then Assembly/BodyGyro/Constants; SimBody needs authentic scoped Quaternion/Matrix3 evaluation proof",
+    "proofs": [
+      "work/native-client/prove-out/prove-BodyPrimitive2008Cofm/ledger.json",
+      "work/native-client/prove-out/prove-BodyPrimitive2008SimBody/ledger.json"
+    ],
+    "header_proposals": [],
+    "integration": "inactive only; call/ABI/selection/runtime gates unproved"
+  }
+}

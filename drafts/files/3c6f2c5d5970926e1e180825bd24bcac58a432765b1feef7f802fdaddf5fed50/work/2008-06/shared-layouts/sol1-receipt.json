@@ -1,0 +1,60 @@
+{
+  "worker": "sol1",
+  "model": "gpt-6.1-sol",
+  "client": "2008-06",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_exacts": 1,
+  "selected": false,
+  "runtime": "not run",
+  "changed_source": "rebuild\\2008-06\\native-classes\\Leaves2008BlockBlockContact.cpp",
+  "change": "Pending updateConnectors uses binary-proven stage type 7 rather than donor enum 8. Existing bodies preserved.",
+  "blockers": [
+    {
+      "address": "00607c20",
+      "proof": "Original direct Extents overlap at Primitive+0x80; Primitive2008 only exposes out-of-line getFastFuzzyExtents",
+      "proposal": "Primitive owner: add authentic inline getFuzzyExtents accessor returning existing fuzzyExtents; verify layout and call identity before implementing collision wrappers."
+    },
+    {
+      "address": "00608830",
+      "proof": "Same direct fuzzy extents gate, helper 00607280, stores -1 or 1e9 then calls updateConnectors",
+      "next": "Need accessor and established native declaration for 00607280."
+    },
+    {
+      "address": "006087a0",
+      "proof": "Baseline compile C2039 Connector::getKernelIndex in KernelData.h; alternate Kernel2008 compile C2011 Kernel redefinition. No byte divergence available because compilation fails.",
+      "proposal": "Connector/Kernel header owner: unify provider and restore proven index accessor; preserve six-slot Connector table."
+    },
+    {
+      "address": "00607e00",
+      "proof": "Matched connector also tested by direct helper 00606770 forwarding GeoPair validity 00606270; current donor connector declaration lacks helper.",
+      "proposal": "Connector/GeoPair owner: establish authentic validity declarations using original addresses before porting removal loop."
+    }
+  ],
+  "other_classes": {
+    "BallBlockContact": "Existing wrapper in ContactUnit2008Contact.cpp; complex step not attempted",
+    "Point": "Existing all three assigned bodies in BodyPrimitive2008Point.cpp; verification requested",
+    "ContactConnector": "Existing bodies in ContactUnit2008ConnectorBody.cpp; verification requested",
+    "PointToPointBreakConnector": "Existing force body in ContactUnit2008Connector.cpp and KernelConnector family; verification requested"
+  },
+  "next_class": "BallBlockContact after shared header provider repair; otherwise unleased RbxApp queue",
+  "round2": {
+    "connector_header": "rebuild/2008-06/App/include/v8kernel/Connector2008.h",
+    "accessor_address": "005fa610",
+    "accessor_evidence": "Kernel.obj selected-functions symbol maps folded getKernelIndex to 005fa610; original lea eax,[ecx+4]; ret; KernelIndex existing field at +4. Nonvirtual noinline int& accessor restored.",
+    "probe_run": "work/2008-06/native-check-runs/20261116-152805-377981a9",
+    "probe": "1/1 bytes/data/direct-call leaf checks passed with --require-proof; KernelData included",
+    "regressions": {
+      "ContactUnit2008Connector": 5,
+      "KernelConnector": 5,
+      "Humanoid2008Parts": 81,
+      "ContactUnit2008ConnectorBody": 16
+    },
+    "new_body": "BlockBlockContact::updateConnectors 006087a0, 137 bytes; canonical enabled, O2 contact flags and source-local _RELEASEASSERT undef (target has no assertion path)",
+    "new_exacts": 1,
+    "next": "BallBallContact computeIsColliding 00606e90; inspect original and native Primitive/Geometry accessors. BlockBlockContact fuzzy-extents and validity helper remain prior owner blockers.",
+    "selected": false,
+    "runtime": "not run"
+  }
+}

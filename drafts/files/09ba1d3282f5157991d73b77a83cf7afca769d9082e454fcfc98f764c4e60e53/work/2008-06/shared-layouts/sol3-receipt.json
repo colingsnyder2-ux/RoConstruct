@@ -1,0 +1,276 @@
+{
+  "worker": "sol3",
+  "model": "gpt-6.1-sol",
+  "baseline_commit": "unknown",
+  "revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "new_methods": [
+    "006457e0",
+    "00645820",
+    "00645830",
+    "00645840",
+    "00645850",
+    "00645860"
+  ],
+  "preexisting_verified": {
+    "Cofm": [
+      "0065fef0",
+      "0065ff10",
+      "00660160",
+      "00660170"
+    ],
+    "SimBody": [
+      "00612fb0",
+      "00658ae0",
+      "00658ca0"
+    ]
+  },
+  "remaining": {
+    "IPipelined": "owner ABI, provider selection and runtime gates",
+    "Cofm": "0065ff20 emitted 627B; needs original/object diff",
+    "SimBody": "00658d20 emitted 643B; needs original/object diff; 00658fb0 missing native body; donor step(float) differs from target step() plus impulses",
+    "World": "scoped compile blocked; existing layout mismatch documented in source",
+    "TreeStage": "existing native-world ClumpStage.cpp; scoped compile blocked; no duplicate provider created"
+  },
+  "draft_server_blocker": null,
+  "next_action": "Resume World/TreeStage compiler dependency investigation, then SimBody step natural donor adaptation with original-backed impulse accumulation. Do not import artificial mined locals.",
+  "proofs": {
+    "IPipelined2008": {
+      "path": "work\\native-client\\prove-out\\prove-IPipelined2008\\manifest.json",
+      "sha256": "d702a9a976e51ba96f9965147023b8ae6d1b769489929bde3907a99622237362"
+    },
+    "BodyPrimitive2008Cofm": {
+      "path": "work\\native-client\\prove-out\\prove-BodyPrimitive2008Cofm\\manifest.json",
+      "sha256": "663d1e326ed654ccccd730a040d2640eb128a96e31166e16427b027dcc7a6b40"
+    },
+    "AppUnit5E8_2008World": {
+      "path": "work\\native-client\\prove-out\\prove-AppUnit5E8_2008World\\manifest.json",
+      "sha256": "745307805019061235dcd010c859e12d37c1dccebd7816e631644fb3ce7564d8"
+    }
+  },
+  "source_sha256": "4a4e5619d5a3de104de6cb0fcdfdf352387c5167ad35e9bb76a54d94e2e44b2d",
+  "round2": {
+    "new_inactive_body_exact": [
+      "0065ff20"
+    ],
+    "identity": "Cofm::updateIfDirty identity inferred by prove.py, not independent symbol proof",
+    "Cofm": "5/5 class bodies exact; 4 pre-existing, 1 new, source-local undef _RELEASEASSERT removes two child-index assertion paths; original 575 bytes",
+    "SimBody": "3 pre-existing exacts; update 00658d20 643/643 first divergence 00658e1a; matrix-left expression variant rejected and reverted; step 00658fb0 untouched",
+    "remaining_queue": [
+      "SleepStage",
+      "Assembly",
+      "BodyGyro",
+      "Constants",
+      "SimBody step",
+      "World",
+      "TreeStage"
+    ],
+    "stop_reason": "context limit reached before requested 3 hours",
+    "session": "78437776453c4886a239727f6b252178",
+    "next_action": "SleepStage existing provider scoped compile, then Assembly/BodyGyro/Constants; SimBody needs authentic scoped Quaternion/Matrix3 evaluation proof",
+    "proofs": [
+      "work/native-client/prove-out/prove-BodyPrimitive2008Cofm/ledger.json",
+      "work/native-client/prove-out/prove-BodyPrimitive2008SimBody/ledger.json"
+    ],
+    "header_proposals": [],
+    "integration": "inactive only; call/ABI/selection/runtime gates unproved"
+  },
+  "round3": {
+    "new_inactive_exact": [
+      "00649320",
+      "00649390",
+      "00649730"
+    ],
+    "additional_inferred_exact": [
+      "006492c0",
+      "006492d0",
+      "006492e0"
+    ],
+    "Constants": "3/3 assigned bodies exact; native KernelConstants2008.cpp authentic donor implementation, fp:fast required; getKmsMaxJointForce masked match rejected for referenced data, not counted",
+    "BodyGyro": "0/3 assigned exact; native BodyMovers.h used; orientation 804B first divergence 0062e95d from donor Body layout; balance 1136B unproved; computeForce absent pending PartInstance layout",
+    "SleepStage": "0/5; compile blocked native-world declarations and SimJob dependency; include experiment reverted",
+    "Assembly": "0/3; same scoped header compile block; include experiment reverted",
+    "World": "not re-proved, retains prior receipt blocker",
+    "TreeStage": "not re-proved, retains prior receipt blocker",
+    "sources": [
+      "rebuild/2008-06/native-classes/KernelConstants2008.cpp",
+      "rebuild/2008-06/native-classes/BodyGyro2008.cpp"
+    ],
+    "header_proposals": [
+      "work/native-candidates/sol3/round3-header-proposals.txt"
+    ],
+    "sessions": [
+      "0d312c33f19040659fb822e70afb51fa",
+      "cd91170e51994b3b89989af3d08416f2",
+      "bb1f76e111a64982a86134c28c566f86",
+      "e024069ba8cd4792ac87b3a42de56bd5"
+    ],
+    "next_action": "Scoped authentic Body2008 behavior for BodyGyro; then native-world Assembly SimJob dependency; keep SimBody quaternion parked",
+    "integration": "inactive only; call/ABI/selection/runtime/server credit unproved",
+    "elapsed_note": "Ended before requested three hours to preserve context for durable cleanup"
+  },
+  "round4": {
+    "new_inactive_exact": [
+      "0062e910"
+    ],
+    "SimJob": "Existing binary-backed SimJob2008.h already supplies full declaration; added missing pointer forward declaration to native-world Assembly.h.",
+    "SleepStage": "0/5; native world selection resolves missing type; donor setMechanism(Mechanism*) cannot assign to SimJob*. Do not fabricate inheritance.",
+    "Assembly": "0/3; donor/native world dependency mismatch remains.",
+    "World": "0/8; selected engine-world native overlay; compiler now blocked by Connector2008.h GeoPair::setBallBall two-argument call mismatch (sol1-owned).",
+    "TreeStage": "0/5; ClumpStage.cpp donor declaration mismatch, assemblies/edges.",
+    "RunService": {
+      "existing_bodies_verified": [
+        "00554440",
+        "00554da0",
+        "00555350",
+        "005555e0",
+        "005557c0",
+        "00555830",
+        "00555900",
+        "005559a0"
+      ],
+      "new_bodies": 0
+    },
+    "Lighting": {
+      "existing_bodies_verified": [
+        "005df4d0",
+        "005df500",
+        "005df530",
+        "005e0650",
+        "005e2100",
+        "005e2160",
+        "005e2260"
+      ],
+      "new_bodies": 0
+    },
+    "Extents": {
+      "existing_bodies_verified": [
+        "0060f3e0",
+        "0060f480",
+        "0060f4e0",
+        "0060f750",
+        "0060f7b0",
+        "0060f820",
+        "0060f8e0",
+        "0060fc20",
+        "0060fe40"
+      ],
+      "parked": "0060f9b0 express: no mapped identity; need explicit objdiff symbol.",
+      "new_bodies": 0
+    },
+    "BodyGyro": "0062e910 new inactive exact after scoped Body2008 selection, PartInstance include removed. 0062ec40 first divergence 0062ef27, floating-point expression order; precise pragma hypothesis rejected and reverted (no gain). 006300d0 missing body pending PartInstance ABI.",
+    "sessions": [
+      "f883ad7aebb74b8196fcc891ebc8a1ed",
+      "bb1f76e111a64982a86134c28c566f86",
+      "d4201adf56404b7481c732647bfd2ab9",
+      "cd91170e51994b3b89989af3d08416f2",
+      "733d07869a6f491db5c62884565757e7",
+      "ca7542eaca554609a420f369e8349546"
+    ],
+    "header_proposals": [
+      "work/native-candidates/sol3/body-for-bodygyro.md"
+    ],
+    "next_action": "Resolve Assembly Mechanism/SimJob relationship from 2008 target; complete BodyGyro balance floating-point expression proof; add Lighting time methods with donor-backed declarations.",
+    "integration": "Inactive only; server credit, ABI, call selection and runtime gates unproved."
+  },
+  "round5": {
+    "new_inactive_exact": [
+      "005e0be0"
+    ],
+    "Lighting": "Added authentic donor getTimeStr body; inactive_exact with referenced data/calls checked by prove; seven assigned old exacts retained. Other time methods require declarations in Lighting header (not owned).",
+    "JointStage": "Added native onPrimitiveAdded/onPrimitiveRemoving donor-adapted bodies. Both compile, not exact (680/671 and 417/348 bytes); undef _RELEASEASSERT eliminates extra assertion calls and restores 4 existing exacts. Needs explicit symbol objdiff and Primitive/Joint call bindings. Constructor remains ClumpStage ABI gate.",
+    "World": "Bounded retry now compiles following sol1 fix. Existing methods inactive exact: 005e9150 005e9160 005e9190 005ea5d0 005ea4c0 005ea880 005e98c0. No new World bodies.",
+    "Ball": "Existing provider tested: no assigned body exact; 6 incidental object exacts. Address-only diff cannot map getGridVolume, needs explicit symbol objdiff. No edits.",
+    "Block": "Existing provider tested: 00647900 00647990 00647a20 00647c70 inactive exact; 59 including incidental templates. No edits.",
+    "Geometry": "Existing inline bodies/header found; no duplicate provider created.",
+    "sessions": [
+      "b4d4557649c44c25a367156d7fc9592a",
+      "7dbf62411d5b4b4781ad3e07e494f882",
+      "bb1f76e111a64982a86134c28c566f86"
+    ],
+    "next_action": "JointStage explicit-symbol callback diffs; then Extents express explicit-symbol diff. Lighting time methods need header ownership.",
+    "integration": "Inactive only; owner selection, ABI/runtime gates and independent server credit remain.",
+    "stop_reason": "Context economy limit; ended before requested three hours."
+  },
+  "round6": {
+    "new_inactive_exact": [
+      "00668850",
+      "005e26e0"
+    ],
+    "JointStage": "onPrimitiveRemoving 348B exact after noinline insertToListAndMap; preserves original out-of-line call 00668340. onPrimitiveAdded 680/671B parked; first shown divergence stage comparison call evaluation order; diff local/scratch/sol3/round6-added-diff.txt. removeFromMap currently draft; no claim of full no-loss gate.",
+    "Lighting": "9/9 assigned current exact; new setMinutesAfterMidnight 005e26e0 72B donor body, declared setTime(const time_duration&) and setMinutesAfterMidnight(double) in owned Lighting2008.h. Eight existing exacts retained.",
+    "World": "005d77b0 target mov eax,[eax+0x84] confirms pointer accessor already present in experiments/overlays/engine-world/v8world/World.h; 0x54 request is inconsistent with target. No header change made. 005e6110 is 4B load at +0x40 and source unit Clump; registry World identity requires reconciliation. 00732a20/40 disassembly attributed XTP; do not implement from registry names alone.",
+    "sessions": [
+      "7dbf62411d5b4b4781ad3e07e494f882",
+      "b4d4557649c44c25a367156d7fc9592a",
+      "f2d7b369430742baa4d8f5ca248ae866",
+      "bb1f76e111a64982a86134c28c566f86"
+    ],
+    "next_action": "Resolve JointStage addition callback stage evaluation order and preserve removeFromMap identity; then World missing member identity reconciliation, TreeStage, SleepStage/Assembly, Ball, Block, Extents.",
+    "stop_reason": "Context economy cleanup before requested three hours; remaining classes not retried.",
+    "integration": "Inactive exacts only; server exact credit 0; owner ABI/selection/runtime gates remain."
+  },
+  "round7": {
+    "results": {
+      "Ball": {
+        "exact": [
+          "00649130",
+          "00649170",
+          "00649190",
+          "006491a0"
+        ],
+        "exact_count": 4,
+        "emitted_methods": 4,
+        "proof": "work/native-client/prove-out/prove-Ball/manifest.json"
+      },
+      "Block": {
+        "exact": [
+          "006477b0",
+          "006478f0",
+          "00647900",
+          "00647990",
+          "00647a20",
+          "00647ab0",
+          "00647b90",
+          "00647c70",
+          "00647d10",
+          "00647f40",
+          "00648270",
+          "00648fd0"
+        ],
+        "exact_count": 12,
+        "emitted_methods": 13,
+        "proof": "work/native-client/prove-out/prove-Block/manifest.json"
+      },
+      "World": {
+        "exact": [
+          "005e9150",
+          "005e9160",
+          "005e9190",
+          "005ea5d0",
+          "005ea4c0",
+          "005ea880",
+          "005e98c0"
+        ],
+        "exact_count": 7,
+        "emitted_methods": 14,
+        "proof": "work/native-client/prove-out/prove-AppUnit5E8_2008World/manifest.json"
+      }
+    },
+    "new_bodies": 0,
+    "changes": [
+      "Added optimized native-flags with /fp:fast to organized Ball.cpp and Block.cpp; preserved existing bodies."
+    ],
+    "sessions": [
+      "79e7191db52a4861a42889e0271e53e4",
+      "ca7542eaca554609a420f369e8349546"
+    ],
+    "parked": {
+      "World": "No source changes; getNumHashNodes/getMaxBucketSize and onAssemblyExtentsChanged remain nonexact; pending methods unchanged.",
+      "Block": "getCornerPoint remains draft; no further hypotheses tried."
+    },
+    "stop_reason": "Explicit overseer stop",
+    "next_action": "Recover missing World bodies; TreeStage then SleepStage/Assembly.",
+    "integration": "Inactive byte proofs only; no server credit or runtime integration claimed."
+  }
+}

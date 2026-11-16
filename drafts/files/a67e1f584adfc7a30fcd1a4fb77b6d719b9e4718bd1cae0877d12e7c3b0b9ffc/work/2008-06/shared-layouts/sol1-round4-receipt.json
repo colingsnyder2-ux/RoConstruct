@@ -1,0 +1,45 @@
+{
+  "worker": "sol1",
+  "round": 4,
+  "model": "gpt-6.1-sol",
+  "new_exacts": 0,
+  "selected": false,
+  "runtime": "not run",
+  "proofs": {
+    "ContactUnit2008Contact": {
+      "exact": 11,
+      "exact_bytes": 759
+    },
+    "Contact_and_BlockBlock_regression": {
+      "exact": 29,
+      "exact_bytes": 2028
+    },
+    "Connector_family_regression": {
+      "exact": 21,
+      "exact_bytes": 1522,
+      "files": [
+        "ContactUnit2008Connector.cpp",
+        "KernelConnector.cpp",
+        "ContactUnit2008ConnectorBody.cpp"
+      ]
+    }
+  },
+  "changes": [
+    "BallBallContact::stepContact draft; direct qualified collision call, stage type 7, lazy create, ordered radii",
+    "Contact::createConnector declaration at 00606e00; native Body forward declaration after renamed donor Edge include",
+    "ContactConnector inline setBallBall delegates donor GeoPair setter",
+    "Primitive nonconst Face getFaceInObject/getFaceInWorld and CoordinateFrame getFaceCoordInObject declarations, inline const getSurfaceType"
+  ],
+  "parked": [
+    {
+      "address": "00606f80",
+      "target_bytes": 151,
+      "candidate_bytes": 167,
+      "first_divergence": "branch destinations differ due size; semantic divergence at connector radius update: donor setter reloads and rewrites body0/body1 at +0x14/+0x18, absent in target",
+      "next": "Use native GeoPair provider compatible with Connector header. Do not invent raw offset view. See local/scratch/sol1/step-source.json."
+    }
+  ],
+  "primitive_note": "sol2 proposal const ABI corrected to donor nonconst declarations. Existing contact+BlockBlock exacts preserved. Face implementations not yet added.",
+  "next": "Native Connector/GeoPair provider compatibility, then BallBlockContact; Primitive face implementations for sol2.",
+  "stop_reason": "Context conservation; requested three-hour campaign not completed."
+}

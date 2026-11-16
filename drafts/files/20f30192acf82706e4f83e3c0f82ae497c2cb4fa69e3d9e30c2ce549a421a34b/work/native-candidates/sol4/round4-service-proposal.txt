@@ -1,0 +1,6 @@
+Round 4 ServiceProvider declaration/identity blocker
+004b3960 is the find-or-create wrapper: thiscall preserves ECX in ESI, calls lookup 00490d70, tests result and skips construction when nonnull. Null branch creates shared service via 0048ea00, obtains class index, inserts into serviceArray and parents service to provider.
+Current Service.h declares only create<Class>() const, bound by reference evidence to lookup 00490d70. The authentic wrapper overload/name cannot be determined from these bytes alone. Do not rebind this existing lookup symbol globally. Owner needs source/decorated-symbol evidence distinguishing lookup from creation before adding the wrapper and changing DataModel::initializeContents 0057a9f0.
+DataModel.h alone cannot add a member of ServiceProvider, and a fabricated DataModel helper would not establish authentic identity. No shared Service.h edits made.
+Workspace getWorkspaceIfInWorkspace comment incorrectly claims 005a3410: original 90-byte function is EH-bearing thiscall destructor, incompatible with current 47-byte static lookup. Re-establish address using independent call references before changes.
+ModelInstance getPrimaryPartInternal at candidate 00584100: inline areaXZ gets 216-byte candidate, first actual divergence 00584192 reversed x87 X/Z load order; copy/reference variants 221 bytes. Parked after three hypotheses.

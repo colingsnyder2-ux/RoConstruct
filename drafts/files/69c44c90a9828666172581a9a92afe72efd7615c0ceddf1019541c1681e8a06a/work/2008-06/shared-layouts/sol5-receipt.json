@@ -1,0 +1,63 @@
+{
+  "worker": "sol5",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_inactive_exact": {
+    "Surfaces": [
+      "005ecbb0",
+      "005ecc00",
+      "005ecc50"
+    ]
+  },
+  "verified_existing": {
+    "ChangeHistoryService": [
+      "00587a90",
+      "00587b70",
+      "00588780",
+      "0058a130",
+      "0058b870",
+      "0058b970",
+      "0058ba70",
+      "0058bf80",
+      "0058c0f0",
+      "0058c2c0",
+      "0058c3c0",
+      "0058c4f0",
+      "0058c620",
+      "0058c8b0"
+    ],
+    "HistoryRecord": [
+      "00587a20",
+      "00588710",
+      "0058b6c0"
+    ],
+    "Selection": [
+      "005670f0"
+    ],
+    "Surface": []
+  },
+  "proofs": [
+    "work/native-client/prove-out/prove-Surfaces/manifest.json",
+    "work/native-client/prove-out/prove-HistoryRecordLifetime/manifest.json"
+  ],
+  "files_created": [
+    "rebuild/2008-06/native-classes/Surfaces.cpp"
+  ],
+  "headers_changed": [],
+  "source_sha256": "400108eec64c61b9b56f5f07879dada452f0086fac696d883509adb0ee612f3e",
+  "blocked": [
+    "draft registration HTTP501 at supplied server; local outbox retained",
+    "Surfaces descriptor methods require authentic descriptor objects/layout",
+    "HistoryRecord unplay0058a040 and merge0058bcb0 conflict in for_each reference identity; header const-key pair evidence in AppUnit588 comments",
+    "graph focus005ecc50 stalled and own process stopped"
+  ],
+  "next_action": "Restore draft transport; flush same session, inspect HistoryRecord const-key pair ABI proposal before editing; continue Surface getters with original primitive layout",
+  "remaining_gates": [
+    "full call identity",
+    "ABI/layout",
+    "provider selection/no-loss",
+    "P5/P6/runtime",
+    "independent server verification"
+  ]
+}

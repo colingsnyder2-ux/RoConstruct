@@ -1,0 +1,91 @@
+{
+  "worker": "sol1",
+  "round": 5,
+  "model": "gpt-6.1-sol",
+  "new_body_exacts": 9,
+  "new_body_bytes": 755,
+  "classes": {
+    "Primitive": {
+      "exact": [
+        {
+          "address": "005e76f0",
+          "bytes": 108,
+          "symbol": "?getFaceInObject@Primitive@RBX@@QAE?AVFace@2@W4NormalId@2@@Z"
+        },
+        {
+          "address": "005e81b0",
+          "bytes": 66,
+          "symbol": "?getFaceInWorld@Primitive@RBX@@QAE?AVFace@2@W4NormalId@2@@Z"
+        },
+        {
+          "address": "005e7680",
+          "bytes": 104,
+          "symbol": "?getFaceCoordInObject@Primitive@RBX@@QAE?AVCoordinateFrame@G3D@@W4NormalId@2@@Z"
+        },
+        {
+          "address": "005e7420",
+          "bytes": 21,
+          "symbol": "?setUnknown0x14@Primitive@RBX@@QAEXH@Z"
+        },
+        {
+          "address": "005e7bd0",
+          "bytes": 15,
+          "symbol": "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ"
+        }
+      ],
+      "total_bodies": 5,
+      "file": "rebuild/2008-06/native-classes/PrimitiveFaces2008.cpp",
+      "new": true
+    },
+    "MegaDragger": {
+      "exact": [
+        {
+          "address": "0060e100",
+          "bytes": 124,
+          "symbol": "?safeMoveYDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z"
+        },
+        {
+          "address": "0060e180",
+          "bytes": 124,
+          "symbol": "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z"
+        },
+        {
+          "address": "0060e310",
+          "bytes": 117,
+          "symbol": "?safeRotate@MegaDragger@RBX@@QAEXABVMatrix3@G3D@@@Z"
+        }
+      ],
+      "total_bodies": 3,
+      "file": "rebuild/2008-06/native-classes/MegaDraggerMoves2008.cpp",
+      "new": true
+    },
+    "RunDragger": {
+      "exact": [
+        {
+          "address": "0066c4c0",
+          "bytes": 76,
+          "symbol": "?adjacent@RunDragger@RBX@@AAE_NPAVPrimitive@2@0@Z"
+        }
+      ],
+      "total_bodies": 1,
+      "file": "rebuild/2008-06/native-classes/RunDraggerAdjacent2008.cpp",
+      "new": true
+    }
+  },
+  "headers_changed": [],
+  "selected": false,
+  "runtime": "not run",
+  "sessions": [
+    "a3365569ca134aa79404be0ee2536bf8",
+    "8687dec4ca1e47ed80da70e3238413c4",
+    "c2c33e90602c479e8d52a390ec4fc931"
+  ],
+  "remaining": {
+    "MegaDragger": "Lifecycle methods require established RootInstance selection/list helper providers; 0060de00 calls 0060ee30 and 00641f40. No speculative lifecycle body added.",
+    "RunDragger": "tooCloseToCamera, rayHitsCloserPart, snap not attempted.",
+    "AdornRbxGfx": "Existing provider inspected; VisualEngine/exe-local Ogre dependencies remain unattempted.",
+    "Kernel": "Existing provider inspected; KernelData/CodeProfiler native layout dependencies remain unattempted."
+  },
+  "next": "Primitive remaining methods, then MegaDragger lifecycle with RootInstance owner evidence",
+  "stop_reason": "Context conservation; three-hour duration not completed."
+}

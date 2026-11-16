@@ -1,0 +1,110 @@
+{
+  "worker": "sol2",
+  "model": "gpt-6.1-sol",
+  "client": "2008-06",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "face": {
+    "new_inactive_exact": [
+      {
+        "symbol": "?snapToGrid@Face@RBX@@QAEXM@Z",
+        "size": 70,
+        "body_sha256": "2b0df9aea8bac84b19ca6f140fccee38cde5f8215b5ad5fae96fbe655e3fcc22",
+        "candidates": [
+          "006497e0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006497e0",
+        "references": [
+          {
+            "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@M@Z",
+            "address": "005dee90",
+            "kind": 20,
+            "offset": 31,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "bcedb736455821ca8f0acb383c018d41828c46140257e05009ef62440f216645",
+        "verification_seconds": 0.000299
+      },
+      {
+        "symbol": "?toWorldSpace@Face@RBX@@QBE?AV12@ABVCoordinateFrame@G3D@@@Z",
+        "size": 384,
+        "body_sha256": "f23f6a45d5fb8b023f3d639c1841e3848ead70380169d583ec34614b99e79559",
+        "candidates": [
+          "00649970"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00649970",
+        "references": [],
+        "identity": "1b1e84557272e5a1b50189d296b4811a7f531779642afce0ab6b9d82eed694a4",
+        "verification_seconds": 0.000157
+      },
+      {
+        "symbol": "?toObjectSpace@Face@RBX@@QBE?AV12@ABVCoordinateFrame@G3D@@@Z",
+        "size": 402,
+        "body_sha256": "8f6fca8c527cb3e1c889078e02d128b645a182c646942f6d16e70753ff754658",
+        "candidates": [
+          "00649af0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00649af0",
+        "references": [],
+        "identity": "177b11b2e6bceb7110584bb2bf5ff3a015f347e1ae145277e4bebb33fa9a47af",
+        "verification_seconds": 0.000118
+      },
+      {
+        "symbol": "?fromExtentsSide@Face@RBX@@SA?AV12@ABVExtents@2@W4NormalId@2@@Z",
+        "size": 70,
+        "body_sha256": "303c9509e569288ff7edd69d7be81df5745c4185c4bba896c629ae9a9bb63a98",
+        "candidates": [
+          "00649920"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00649920",
+        "references": [
+          {
+            "symbol": "?getFaceCorners@Extents@RBX@@QBEXW4NormalId@2@AAVVector3@G3D@@111@Z",
+            "address": "0060f4e0",
+            "kind": 20,
+            "offset": 62,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "32b027980c8bf72a83663df8be6d9530a2926b8b508d2063c746a7dee29d62cf",
+        "verification_seconds": 0.000136
+      }
+    ],
+    "total_assigned": 4,
+    "source": "rebuild/2008-06/native-classes/Face.cpp",
+    "header": "rebuild/2008-06/native-headers/util/Face.h",
+    "evidence": "work\\native-client\\prove-out\\prove-Face\\manifest.json",
+    "manifest_sha256": "678a1faf912cbb31e2a9c5074328d5cdc76e424acb225ee906b3154a33ba2a49",
+    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+    "trials": [
+      "authentic loops without fp:fast: snapToGrid/fromExtentsSide exact; transforms differ",
+      "explicit corners without fp:fast: no improvement",
+      "explicit corners with fp:fast: x87 scheduling still differs",
+      "authentic loops with fp:fast: all four assigned addresses inactive_exact"
+    ]
+  },
+  "blocked_families": {
+    "MultiJoint": "Fresh existing-source compile blocked by KernelData.h getKernelIndex absent from native Connector. getJointK 00646af0 additionally requires authentic Primitive computed property at +0xec and compatibility with Joints2008.h. No files changed.",
+    "GlueJoint": "Fresh existing-source compile blocked by KernelData.h getKernelIndex absent from native Connector. Existing getMaxForce/default ctor preserved; canBuildJoint/putInKernel need Primitive and Body declaration compatibility. No files changed.",
+    "VelocityMotor": "Existing Feature.cpp already holds implementations; pending onAncestorChanged/setHole require shared 2008 declarations. Fresh compile blocked by KernelData/Connector conflict. No duplicated provider created."
+  },
+  "proof_limitations": [
+    "Family manifests report missing reference receipt work/native-client/ogre-registry-identities.json; report per-symbol inactive_exact only, not a clean family acceptance.",
+    "No linked selection, ABI closure, runtime gates or server credit.",
+    "Pre-existing joint exact totals not freshly verifiable due compile failure."
+  ],
+  "header_owner_proposal": "Connector owner: reconcile KernelData.h lines 20-21 getKernelIndex requirement using original index layout evidence. No shared header edited.",
+  "next_action": "After Connector owner repair, reprove existing WorldJointMulti.cpp, WorldJointGlue.cpp, Feature.cpp; implement getJointK with authentic Primitive header compatibility."
+}

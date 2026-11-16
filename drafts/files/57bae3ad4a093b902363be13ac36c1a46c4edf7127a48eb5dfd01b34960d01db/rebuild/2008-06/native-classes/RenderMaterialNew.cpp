@@ -1,0 +1,3 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/RenderMaterialNew.cpp"

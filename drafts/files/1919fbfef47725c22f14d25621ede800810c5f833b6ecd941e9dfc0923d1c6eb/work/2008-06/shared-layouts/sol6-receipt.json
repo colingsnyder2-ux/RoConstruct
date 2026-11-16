@@ -1,0 +1,116 @@
+{
+  "worker": "sol6",
+  "model": "gpt-6.1-sol",
+  "client": "2008-06",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "source": "G:\\Projects\\RoConstruct-main\\RoConstruct-Native-03f7a4f936b440a798364c7934021dfb\\rebuild\\2008-06\\native-classes\\ICharacterSubject.cpp",
+  "object_sha256": "e2afc945422ee081750f88b768fc9faa938f081a96c23d56612f02db916925cd",
+  "methods": [
+    {
+      "symbol": "?getFocusLookingAtGoal@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0@Z",
+      "size": 58,
+      "body_sha256": "8c9506fe4cbed51682c91e26dca45a7233b9a9e203a2d84ca0834178364c2cf1",
+      "candidates": [
+        "00641240"
+      ],
+      "rejections": [],
+      "status": "inactive_exact",
+      "addr": "00641240",
+      "references": [
+        {
+          "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+          "address": "00513220",
+          "kind": 20,
+          "offset": 14,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z",
+          "address": "00518e20",
+          "kind": 20,
+          "offset": 47,
+          "external": true,
+          "requires_provider": true
+        }
+      ],
+      "identity": "1f9fab87809fe272e2db501e0ecbe1274eef4d9f3d65c1947e11b3a6ae9dd116",
+      "verification_seconds": 0.000265
+    },
+    {
+      "symbol": "?goalFromDistance@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0M@Z",
+      "size": 155,
+      "body_sha256": "844c980f0d28b5fb3a8199c5d0f606bdf46c58a468971e34135d991724f88aa5",
+      "candidates": [
+        "00641280"
+      ],
+      "rejections": [],
+      "status": "inactive_exact",
+      "addr": "00641280",
+      "references": [
+        {
+          "symbol": "?getFocusLookingAtGoal@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0@Z",
+          "address": "00641240",
+          "kind": 20,
+          "offset": 20,
+          "external": false,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?zLookDirection@CoordinateFrame@G3D@@2MB",
+          "address": "00828b60",
+          "kind": 6,
+          "offset": 26,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+          "address": "00513240",
+          "kind": 20,
+          "offset": 46,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+          "address": "00513e20",
+          "kind": 20,
+          "offset": 109,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+          "address": "00513220",
+          "kind": 20,
+          "offset": 121,
+          "external": true,
+          "requires_provider": true
+        }
+      ],
+      "identity": "dd82e3444400b9a93f92389b0fd6753e0ff0592faa5188814754a18c7fbf7f2e",
+      "verification_seconds": 0.000242
+    }
+  ],
+  "rejected_trials": [
+    "Default floating-point mode: goalFromDistance 201 bytes, first instruction sub esp,0x48 versus target sub esp,0x3c.",
+    "noinline helper alone did not resolve vector spills."
+  ],
+  "proof_limits": [
+    "inactive local matches only",
+    "provider ABI, EH, linked selection, runtime and server credit unverified"
+  ],
+  "family_status": {
+    "ICharacterSubject": "2 new methods recovered; remaining methods unassessed",
+    "ShootTool": "existing methods preserved; not reverified",
+    "KeyButton": "existing implementation preserved; process uses different offsets in target vs current header; needs subobject/layout proof",
+    "BackpackItem": "existing Hopper.cpp preserved; unassessed",
+    "HopperBin": "existing Hopper.cpp preserved; unassessed",
+    "UnifiedWidget": "unassessed",
+    "RunningBase": "existing HumanoidStates1.cpp preserved; unassessed"
+  },
+  "next_class": "ICharacterSubject remaining camera methods"
+}

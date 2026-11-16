@@ -1,0 +1,109 @@
+{
+  "worker": "sol8",
+  "client": "2008-06",
+  "revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_inactive_exact": [
+    "004a3640"
+  ],
+  "sound_drafts": [
+    "005bd4f0",
+    "005bda10"
+  ],
+  "sound_blocker": "Resolved by sol1 Connector accessor; four control bodies compiled and inactive_exact.",
+  "network_proof": "work/native-client/prove-out/prove-NetworkClientServer2008Server/manifest.json",
+  "network_blockers": [
+    "missing reference receipt: work/native-client/ogre-registry-identities.json"
+  ],
+  "network_note": "serverIsPresent current emitted size 46; remains draft. Earlier commentary reporting it verified was premature. No preexisting exact regression claim without baseline object.",
+  "unattempted": [
+    "Server OnReceive/onServiceProvider",
+    "CRobloxWnd remaining methods",
+    "SoundChannel remaining eight methods"
+  ],
+  "existing_network_free_provider": "AppUnit49C_2008Streaming.cpp; not duplicated or reverified",
+  "next_class": "Network::Server OnReceive",
+  "draft_transport": "HTTP 501 Not Implemented at register; latest_receipt null, retain sessions/outbox",
+  "runtime_or_selection": false,
+  "round2": {
+    "sound": {
+      "source": "rebuild/2008-06/native-classes/SoundChannelControl2008.cpp",
+      "inactive_exact": [
+        "005bd4f0",
+        "005bd540",
+        "005bd590",
+        "005bda10"
+      ],
+      "bytes": 312,
+      "new_bodies": [
+        "005bd540",
+        "005bd590"
+      ],
+      "repaired_body": "005bd4f0 std::max argument order",
+      "preexisting_body_verified": "005bda10",
+      "proof": "work/native-client/prove-out/prove-SoundChannelControl2008/manifest.json"
+    },
+    "bucket": {
+      "source": "rebuild/2008-06/native-classes/ProfilingBucket2008.cpp",
+      "new_inactive_exact": [
+        "005c3f20",
+        "005c3f40",
+        "005c3f60"
+      ],
+      "bytes": 63,
+      "proof": "work/native-client/prove-out/prove-ProfilingBucket2008/manifest.json"
+    },
+    "network": {
+      "preexisting_exact": [
+        "004a3640"
+      ],
+      "presence_check": "004a40d0 46 bytes IDENTICAL relocs masked; verifier draft, no candidate identity",
+      "OnReceive": "004a4dc0 original assembly and donor source saved local/scratch/sol8/server-receive-evidence.json; not implemented"
+    },
+    "global_proof_blocker": "missing reference receipt work/native-client/ogre-registry-identities.json; no integrated or server credit",
+    "next_action": "Recover Network::Server OnReceive from saved evidence; then remaining SoundChannel methods, Peer, app windows",
+    "stop_reason": "context nearing limit; elapsed session much shorter than requested three hours",
+    "headers_changed": [],
+    "new_session": "4849b923f56f48fab3af44ca0b8c12a3"
+  },
+  "round3": {
+    "sound": {
+      "source": "rebuild/2008-06/native-classes/SoundChannelControl2008.cpp",
+      "member_exact": [
+        "005bd4f0",
+        "005bd540",
+        "005bd590",
+        "005bda10",
+        "005b9840",
+        "005b9890",
+        "005bd4b0"
+      ],
+      "new_member_exact": [
+        "005b9840",
+        "005b9890",
+        "005bd4b0"
+      ],
+      "member_total_implemented": 8,
+      "proof_exact_including_helpers": 11,
+      "proof_exact_bytes_including_helpers": 783,
+      "proof": "work/native-client/prove-out/prove-SoundChannelControl2008/manifest.json",
+      "parked": {
+        "005ba3d0": "54 vs 58 bytes: original caches complete SoundChannel this in edi before FMOD getPaused; candidate computes adjusted pointer later. Two source shapes tried."
+      }
+    },
+    "server": {
+      "004a4dc0": "OnReceive requires complete ClientProxy factory layout; existing ClientProxy2008 explicitly partial and cannot allocate authentic size"
+    },
+    "peer": {
+      "source": "rebuild/2008-06/native-classes/NetworkClientServer2008Peer.cpp",
+      "draft": "0049ee20 askAddChild with native dynamic_cast<const Replicator*>",
+      "compile_blocker": "Network/include/ReliabilityLayer.h missing DS_LinkedList.h; handoff recommends adding existing tools/rbxgs/Client/Network/raknet30/Source include profile"
+    },
+    "new_session": "9ed58cb7e54d43c6ad82de5536c24ff4",
+    "headers_changed": [],
+    "selection_runtime": false,
+    "next": "SoundService remaining methods; Peer include profile; app windows queue",
+    "stop_reason": "context conservation limit; elapsed far below requested three hours"
+  }
+}

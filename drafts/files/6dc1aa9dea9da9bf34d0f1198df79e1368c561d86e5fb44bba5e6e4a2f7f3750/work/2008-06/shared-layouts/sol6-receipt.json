@@ -1,0 +1,1221 @@
+{
+  "worker": "sol6",
+  "model": "gpt-6.1-sol",
+  "client": "2008-06",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "source": "G:\\Projects\\RoConstruct-main\\RoConstruct-Native-03f7a4f936b440a798364c7934021dfb\\rebuild\\2008-06\\native-classes\\ICharacterSubject.cpp",
+  "object_sha256": "e2afc945422ee081750f88b768fc9faa938f081a96c23d56612f02db916925cd",
+  "methods": [
+    {
+      "symbol": "?getFocusLookingAtGoal@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0@Z",
+      "size": 58,
+      "body_sha256": "8c9506fe4cbed51682c91e26dca45a7233b9a9e203a2d84ca0834178364c2cf1",
+      "candidates": [
+        "00641240"
+      ],
+      "rejections": [],
+      "status": "inactive_exact",
+      "addr": "00641240",
+      "references": [
+        {
+          "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+          "address": "00513220",
+          "kind": 20,
+          "offset": 14,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z",
+          "address": "00518e20",
+          "kind": 20,
+          "offset": 47,
+          "external": true,
+          "requires_provider": true
+        }
+      ],
+      "identity": "1f9fab87809fe272e2db501e0ecbe1274eef4d9f3d65c1947e11b3a6ae9dd116",
+      "verification_seconds": 0.000265
+    },
+    {
+      "symbol": "?goalFromDistance@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0M@Z",
+      "size": 155,
+      "body_sha256": "844c980f0d28b5fb3a8199c5d0f606bdf46c58a468971e34135d991724f88aa5",
+      "candidates": [
+        "00641280"
+      ],
+      "rejections": [],
+      "status": "inactive_exact",
+      "addr": "00641280",
+      "references": [
+        {
+          "symbol": "?getFocusLookingAtGoal@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0@Z",
+          "address": "00641240",
+          "kind": 20,
+          "offset": 20,
+          "external": false,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?zLookDirection@CoordinateFrame@G3D@@2MB",
+          "address": "00828b60",
+          "kind": 6,
+          "offset": 26,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+          "address": "00513240",
+          "kind": 20,
+          "offset": 46,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+          "address": "00513e20",
+          "kind": 20,
+          "offset": 109,
+          "external": true,
+          "requires_provider": true
+        },
+        {
+          "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+          "address": "00513220",
+          "kind": 20,
+          "offset": 121,
+          "external": true,
+          "requires_provider": true
+        }
+      ],
+      "identity": "dd82e3444400b9a93f92389b0fd6753e0ff0592faa5188814754a18c7fbf7f2e",
+      "verification_seconds": 0.000242
+    }
+  ],
+  "rejected_trials": [
+    "Default floating-point mode: goalFromDistance 201 bytes, first instruction sub esp,0x48 versus target sub esp,0x3c.",
+    "noinline helper alone did not resolve vector spills."
+  ],
+  "proof_limits": [
+    "inactive local matches only",
+    "provider ABI, EH, linked selection, runtime and server credit unverified"
+  ],
+  "family_status": {
+    "ICharacterSubject": "2 new methods recovered; remaining methods unassessed",
+    "ShootTool": "existing methods preserved; not reverified",
+    "KeyButton": "existing implementation preserved; process uses different offsets in target vs current header; needs subobject/layout proof",
+    "BackpackItem": "existing Hopper.cpp preserved; unassessed",
+    "HopperBin": "existing Hopper.cpp preserved; unassessed",
+    "UnifiedWidget": "unassessed",
+    "RunningBase": "existing HumanoidStates1.cpp preserved; unassessed"
+  },
+  "next_class": "ICharacterSubject remaining camera methods",
+  "round2": {
+    "new_exact_addresses": [
+      "00641320",
+      "00641390"
+    ],
+    "family_proofs": {
+      "FollowCameraCommand": {
+        "registry_total": 4,
+        "exact_addresses": [
+          "0057dd10",
+          "00581510",
+          "00582ea0"
+        ],
+        "exact": 3,
+        "drafts": []
+      },
+      "TrackCameraCommand": {
+        "registry_total": 4,
+        "exact_addresses": [
+          "0057dce0",
+          "005813f0",
+          "00582e50"
+        ],
+        "exact": 3,
+        "drafts": []
+      },
+      "AttachCameraCommand": {
+        "registry_total": 4,
+        "exact_addresses": [
+          "0057dcb0",
+          "00581360",
+          "00582d70"
+        ],
+        "exact": 3,
+        "drafts": []
+      },
+      "StatsCommand": {
+        "registry_total": 4,
+        "exact_addresses": [
+          "0057d9f0",
+          "0057db00",
+          "0057db90"
+        ],
+        "exact": 3,
+        "drafts": []
+      },
+      "ICameraSubject": {
+        "registry_total": 3,
+        "exact_addresses": [],
+        "exact": 0,
+        "drafts": []
+      },
+      "ICharacterSubject": {
+        "registry_total": 5,
+        "exact_addresses": [
+          "00641240",
+          "00641280",
+          "00641320",
+          "00641390"
+        ],
+        "exact": 4,
+        "drafts": []
+      },
+      "UserInputBase": {
+        "registry_total": 7,
+        "exact_addresses": [
+          "005cea00",
+          "005ceb00",
+          "005cec50",
+          "005cecc0"
+        ],
+        "exact": 4,
+        "drafts": []
+      },
+      "RunningBase": {
+        "registry_total": 5,
+        "exact_addresses": [
+          "00643400",
+          "00666980"
+        ],
+        "exact": 2,
+        "drafts": []
+      },
+      "KeyButton": {
+        "registry_total": 4,
+        "exact_addresses": [
+          "0064ef90",
+          "0064efd0",
+          "0064eff0",
+          "0064f110"
+        ],
+        "exact": 4,
+        "drafts": []
+      },
+      "BackpackItem": {
+        "registry_total": 7,
+        "exact_addresses": [
+          "005cf160",
+          "005cfe50",
+          "005d0c10"
+        ],
+        "exact": 3,
+        "drafts": [
+          {
+            "symbol": "?getSize@BackpackItem@RBX@@MBE?AVVector2@G3D@@XZ",
+            "size": 56,
+            "rejections": []
+          }
+        ]
+      },
+      "HopperBin": {
+        "registry_total": 7,
+        "exact_addresses": [
+          "005d1340",
+          "005d15a0",
+          "005d1670"
+        ],
+        "exact": 3,
+        "drafts": [
+          {
+            "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@3@XZ",
+            "size": 4,
+            "rejections": []
+          },
+          {
+            "symbol": "??0?$_Iterator_with_base@Ubidirectional_iterator_tag@std@@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@2@HPBU32@ABU32@V_Iterator_base_aux@2@@std@@QAE@XZ",
+            "size": 9,
+            "rejections": [
+              {
+                "addr": "004f0810",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@PAU342@@Z",
+            "size": 5,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Parent@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@PAU342@@Z",
+            "size": 8,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Right@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@PAU342@@Z",
+            "size": 8,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Isnil@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@@Z",
+            "size": 8,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@XZ",
+            "size": 4,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Root@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@XZ",
+            "size": 7,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Color@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@@Z",
+            "size": 8,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Rmost@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@XZ",
+            "size": 7,
+            "rejections": []
+          },
+          {
+            "symbol": "??0?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@std@@QAE@U?$auto_ptr_ref@VGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@1@@Z",
+            "size": 11,
+            "rejections": [
+              {
+                "addr": "006f6a20",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "??0?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@std@@QAE@PAVGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@Z",
+            "size": 11,
+            "rejections": [
+              {
+                "addr": "006f6a20",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "??0?$auto_ptr_ref@VGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@std@@QAE@PAVGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@Z",
+            "size": 11,
+            "rejections": [
+              {
+                "addr": "006f6a20",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "??0GetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@QAE@XZ",
+            "size": 9,
+            "rejections": [
+              {
+                "addr": "0049ed30",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004e5c00",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004f0810",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00665670",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "??0?$_Bidit@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@HPBU12@ABU12@@std@@QAE@XZ",
+            "size": 9,
+            "rejections": [
+              {
+                "addr": "004f0810",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@@Z",
+            "size": 3,
+            "rejections": []
+          },
+          {
+            "symbol": "?destroy@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@@Z",
+            "size": 3,
+            "rejections": []
+          },
+          {
+            "symbol": "??Econst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAEAAV012@XZ",
+            "size": 12,
+            "rejections": [
+              {
+                "addr": "0066a340",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00774730",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "007940e0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "?destroy@?$allocator@W4BinType@HopperBin@RBX@@@std@@QAEXPAW4BinType@HopperBin@RBX@@@Z",
+            "size": 3,
+            "rejections": []
+          },
+          {
+            "symbol": "??0const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@PBV12@@Z",
+            "size": 42,
+            "rejections": []
+          },
+          {
+            "symbol": "??Econst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE?AV012@H@Z",
+            "size": 26,
+            "rejections": []
+          },
+          {
+            "symbol": "??0iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@PBV12@@Z",
+            "size": 42,
+            "rejections": []
+          },
+          {
+            "symbol": "?begin@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@XZ",
+            "size": 19,
+            "rejections": []
+          },
+          {
+            "symbol": "?end@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@XZ",
+            "size": 17,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Make_iter@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QBE?AViterator@12@Vconst_iterator@12@@Z",
+            "size": 34,
+            "rejections": []
+          },
+          {
+            "symbol": "?clear@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAEXXZ",
+            "size": 43,
+            "rejections": []
+          },
+          {
+            "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+            "size": 220,
+            "rejections": [
+              {
+                "addr": "00414510",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004145f0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00424430",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00442270",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0046af90",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004983f0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004a3390",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004b0ca0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004b1160",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004b8a80",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004d8840",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004dde30",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004f1830",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00553ca0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00560960",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00588c10",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0058b550",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00592530",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005b34a0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005b4050",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005ba890",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00648a90",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0064ad30",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00653170",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00654470",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00654550",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00671830",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "006939b0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "?_Destroy@?$vector@W4BinType@HopperBin@RBX@@V?$allocator@W4BinType@HopperBin@RBX@@@std@@@std@@IAEXPAW4BinType@HopperBin@RBX@@0@Z",
+            "size": 3,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Tidy@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@IAEXXZ",
+            "size": 54,
+            "rejections": [
+              {
+                "addr": "0048d0b0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00588d70",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005a1850",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "006515a0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "?_Myval@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAAAU?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@@Z",
+            "size": 8,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Kfn@?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@SAABQBVName@RBX@@ABU?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@2@@Z",
+            "size": 5,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Key@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@KAABQBVName@RBX@@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@@Z",
+            "size": 8,
+            "rejections": []
+          },
+          {
+            "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@2@ABQBVName@RBX@@@Z",
+            "size": 41,
+            "rejections": []
+          },
+          {
+            "symbol": "?end@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QBE?AVconst_iterator@12@XZ",
+            "size": 17,
+            "rejections": []
+          },
+          {
+            "symbol": "?singleton@?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@SAABV123@XZ",
+            "size": 90,
+            "rejections": [
+              {
+                "addr": "0040ad20",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0042bbb0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00433860",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00438060",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00447da0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00447e10",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00447e80",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00447ef0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00447f60",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00447fd0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004a7ca0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004aa6a0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "004aa710",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00553910",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00565360",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005653d0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "00565440",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056b530",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056b690",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056be10",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056bf90",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056fe30",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056fef0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0056ff80",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0059c430",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0059c780",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0059fa60",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005b5c20",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005bb2c0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005bbe40",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005cd850",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005d0300",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005ed5c0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005ed630",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "005ef4c0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "006093a0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0060b770",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0060b7e0",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              },
+              {
+                "addr": "0060b850",
+                "errors": [
+                  "symbol identity not established by current reference evidence"
+                ]
+              }
+            ]
+          },
+          {
+            "symbol": "?get@?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@std@@QBEPAVGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@XZ",
+            "size": 3,
+            "rejections": []
+          },
+          {
+            "symbol": "??C?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@@std@@QBEPAVGetSet@?$TypedPropertyDescriptor@W4BinType@HopperBin@RBX@@@Reflection@RBX@@XZ",
+            "size": 3,
+            "rejections": []
+          },
+          {
+            "symbol": "?convertToIndex@?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@QBEIW4BinType@HopperBin@3@@Z",
+            "size": 92,
+            "rejections": []
+          },
+          {
+            "symbol": "?setValue@?$EnumPropDescriptor@VHopperBin@RBX@@W4BinType@12@@Reflection@RBX@@QBEXPAVDescribedBase@23@W4BinType@HopperBin@3@@Z",
+            "size": 23,
+            "rejections": []
+          },
+          {
+            "symbol": "?convertToValue@?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@QBE_NIAAW4BinType@HopperBin@3@@Z",
+            "size": 67,
+            "rejections": []
+          }
+        ]
+      },
+      "ShootTool": {
+        "registry_total": 6,
+        "exact_addresses": [
+          "0063e3b0",
+          "0063e400",
+          "0063ec10",
+          "0063ec40"
+        ],
+        "exact": 4,
+        "drafts": [
+          {
+            "symbol": "?shoot@ShootTool@RBX@@AAEXABVUIEvent@2@@Z",
+            "size": 403,
+            "rejections": [
+              {
+                "addr": "0063e890",
+                "errors": [
+                  "reference identity differs: ??$shared_static_cast@VPartInstance@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VPartInstance@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z (bound 004a2070, original reference 005a1680)"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "UnifiedWidget": {
+        "registry_total": 8,
+        "exact_addresses": [
+          "005cf4e0"
+        ],
+        "exact": 1,
+        "drafts": []
+      }
+    },
+    "keybutton_subobject_evidence": "Original KeyButton process 0064ef90 uses GuiTarget receiver; original RTTI base offset +0x130 verified by existing record_native_widget.py:173. Complete object keyCode +0x148 and keyIsDown +0x14c become receiver-relative +0x18/+0x1c. Existing three target methods byte exact; no header change needed.",
+    "parked": [
+      "ICharacterSubject stepGoalAndFocus 00641800 not attempted",
+      "UserInputBase lifetime methods remain draft",
+      "ShootTool shoot remains draft"
+    ],
+    "next_class": "ICharacterSubject::stepGoalAndFocus 00641800",
+    "stop_reason": "Context budget approaching limit; approximately 10 minutes worked, not three hours.",
+    "ICharacterSubject_methods": [
+      {
+        "symbol": "?getFocusLookingAtGoal@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0@Z",
+        "size": 58,
+        "body_sha256": "8c9506fe4cbed51682c91e26dca45a7233b9a9e203a2d84ca0834178364c2cf1",
+        "candidates": [
+          "00641240"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00641240",
+        "references": [
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 14,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?lookAt@CoordinateFrame@G3D@@QAEXABVVector3@2@@Z",
+            "address": "00518e20",
+            "kind": 20,
+            "offset": 47,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "1f9fab87809fe272e2db501e0ecbe1274eef4d9f3d65c1947e11b3a6ae9dd116",
+        "verification_seconds": 0.000292
+      },
+      {
+        "symbol": "?goalFromDistance@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0M@Z",
+        "size": 155,
+        "body_sha256": "844c980f0d28b5fb3a8199c5d0f606bdf46c58a468971e34135d991724f88aa5",
+        "candidates": [
+          "00641280"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00641280",
+        "references": [
+          {
+            "symbol": "?getFocusLookingAtGoal@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0@Z",
+            "address": "00641240",
+            "kind": 20,
+            "offset": 20,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?zLookDirection@CoordinateFrame@G3D@@2MB",
+            "address": "00828b60",
+            "kind": 6,
+            "offset": 26,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+            "address": "00513240",
+            "kind": 20,
+            "offset": 46,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 109,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 121,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "dd82e3444400b9a93f92389b0fd6753e0ff0592faa5188814754a18c7fbf7f2e",
+        "verification_seconds": 0.000227
+      },
+      {
+        "symbol": "??0ICharacterSubject@RBX@@QAE@XZ",
+        "size": 109,
+        "body_sha256": "0df1457a36958102d99f6da85746b60b75d587afb22ae06bd0790a888aaca06c",
+        "candidates": [
+          "00641320"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00641320",
+        "references": [
+          {
+            "symbol": "??_8ICharacterSubject@RBX@@7B@",
+            "address": "0084a5fc",
+            "kind": 6,
+            "offset": 13,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?reset@Vector3ERA@RBX@@QAEXXZ",
+            "address": "00666280",
+            "kind": 20,
+            "offset": 25,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?reset@Vector3ERA@RBX@@QAEXXZ",
+            "address": "00666280",
+            "kind": 20,
+            "offset": 37,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?ZERO@Vector3@G3D@@2V12@B",
+            "address": "00973810",
+            "kind": 6,
+            "offset": 43,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?ZERO@Vector3@G3D@@2V12@B",
+            "address": "00973810",
+            "kind": 6,
+            "offset": 55,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?ZERO@Vector3@G3D@@2V12@B",
+            "address": "00973810",
+            "kind": 6,
+            "offset": 64,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?reset@floatERA@RBX@@QAEXXZ",
+            "address": "00666240",
+            "kind": 20,
+            "offset": 76,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "cecafbe882b590c9e395b5dd357d83835bd9bf1f53da328c87573692c710fd44",
+        "verification_seconds": 0.000399
+      },
+      {
+        "symbol": "?zoom@ICharacterSubject@RBX@@EAE_NMAAVCoordinateFrame@G3D@@0@Z",
+        "size": 415,
+        "body_sha256": "a6269f42513a6ea209c9a053ade157d901be6a88567e59ca13fe65989d510aef",
+        "candidates": [
+          "00641390"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00641390",
+        "references": [
+          {
+            "symbol": "?goalFromDistance@ICharacterSubject@RBX@@AAE?AVCoordinateFrame@G3D@@ABV34@0M@Z",
+            "address": "00641280",
+            "kind": 20,
+            "offset": 52,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 68,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getNewZoomDistance@Camera@RBX@@SAMMM@Z",
+            "address": "005cc240",
+            "kind": 20,
+            "offset": 158,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@43c80000",
+            "address": "0083a31c",
+            "kind": 6,
+            "offset": 171,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "__real@358637bd",
+            "address": "00826e70",
+            "kind": 6,
+            "offset": 240,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?unitize@Vector3@G3D@@QAEMM@Z",
+            "address": "00518470",
+            "kind": 20,
+            "offset": 248,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3cf5c28f",
+            "address": "00837900",
+            "kind": 6,
+            "offset": 264,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "48d3d90be40e476c1377f63c910735dec69f78411c263387d8d1c2daa19ab007",
+        "verification_seconds": 0.000315
+      }
+    ],
+    "rejected_trials": [
+      "Upstream zoom lacks occlusion handling; replaced based on original assembly.",
+      "Occlusion-aware zoom with reassigned newDistance: 415 bytes; first divergence 00641456 stack slot +0x10 instead of +0x14. Separate clampedDistance resolved it."
+    ]
+  }
+}

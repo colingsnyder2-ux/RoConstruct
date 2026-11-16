@@ -1,0 +1,4346 @@
+{
+  "worker": "sol2",
+  "model": "gpt-6.1-sol",
+  "client": "2008-06",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "face": {
+    "new_inactive_exact": [
+      {
+        "symbol": "?snapToGrid@Face@RBX@@QAEXM@Z",
+        "size": 70,
+        "body_sha256": "2b0df9aea8bac84b19ca6f140fccee38cde5f8215b5ad5fae96fbe655e3fcc22",
+        "candidates": [
+          "006497e0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006497e0",
+        "references": [
+          {
+            "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@M@Z",
+            "address": "005dee90",
+            "kind": 20,
+            "offset": 31,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "bcedb736455821ca8f0acb383c018d41828c46140257e05009ef62440f216645",
+        "verification_seconds": 0.000299
+      },
+      {
+        "symbol": "?toWorldSpace@Face@RBX@@QBE?AV12@ABVCoordinateFrame@G3D@@@Z",
+        "size": 384,
+        "body_sha256": "f23f6a45d5fb8b023f3d639c1841e3848ead70380169d583ec34614b99e79559",
+        "candidates": [
+          "00649970"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00649970",
+        "references": [],
+        "identity": "1b1e84557272e5a1b50189d296b4811a7f531779642afce0ab6b9d82eed694a4",
+        "verification_seconds": 0.000157
+      },
+      {
+        "symbol": "?toObjectSpace@Face@RBX@@QBE?AV12@ABVCoordinateFrame@G3D@@@Z",
+        "size": 402,
+        "body_sha256": "8f6fca8c527cb3e1c889078e02d128b645a182c646942f6d16e70753ff754658",
+        "candidates": [
+          "00649af0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00649af0",
+        "references": [],
+        "identity": "177b11b2e6bceb7110584bb2bf5ff3a015f347e1ae145277e4bebb33fa9a47af",
+        "verification_seconds": 0.000118
+      },
+      {
+        "symbol": "?fromExtentsSide@Face@RBX@@SA?AV12@ABVExtents@2@W4NormalId@2@@Z",
+        "size": 70,
+        "body_sha256": "303c9509e569288ff7edd69d7be81df5745c4185c4bba896c629ae9a9bb63a98",
+        "candidates": [
+          "00649920"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00649920",
+        "references": [
+          {
+            "symbol": "?getFaceCorners@Extents@RBX@@QBEXW4NormalId@2@AAVVector3@G3D@@111@Z",
+            "address": "0060f4e0",
+            "kind": 20,
+            "offset": 62,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "32b027980c8bf72a83663df8be6d9530a2926b8b508d2063c746a7dee29d62cf",
+        "verification_seconds": 0.000136
+      }
+    ],
+    "total_assigned": 4,
+    "source": "rebuild/2008-06/native-classes/Face.cpp",
+    "header": "rebuild/2008-06/native-headers/util/Face.h",
+    "evidence": "work\\native-client\\prove-out\\prove-Face\\manifest.json",
+    "manifest_sha256": "678a1faf912cbb31e2a9c5074328d5cdc76e424acb225ee906b3154a33ba2a49",
+    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+    "trials": [
+      "authentic loops without fp:fast: snapToGrid/fromExtentsSide exact; transforms differ",
+      "explicit corners without fp:fast: no improvement",
+      "explicit corners with fp:fast: x87 scheduling still differs",
+      "authentic loops with fp:fast: all four assigned addresses inactive_exact"
+    ]
+  },
+  "blocked_families": {
+    "MultiJoint": "Connector blocker fixed by sol1. getJointK recovered round2; existing bodies preserved.",
+    "GlueJoint": "Fresh existing-source compile blocked by KernelData.h getKernelIndex absent from native Connector. Existing getMaxForce/default ctor preserved; canBuildJoint/putInKernel need Primitive and Body declaration compatibility. No files changed.",
+    "VelocityMotor": "Existing Feature.cpp already holds implementations; pending onAncestorChanged/setHole require shared 2008 declarations. Fresh compile blocked by KernelData/Connector conflict. No duplicated provider created."
+  },
+  "proof_limitations": [
+    "Family manifests report missing reference receipt work/native-client/ogre-registry-identities.json; report per-symbol inactive_exact only, not a clean family acceptance.",
+    "No linked selection, ABI closure, runtime gates or server credit.",
+    "Pre-existing joint exact totals not freshly verifiable due compile failure."
+  ],
+  "header_owner_proposal": "Connector owner: reconcile KernelData.h lines 20-21 getKernelIndex requirement using original index layout evidence. No shared header edited.",
+  "next_action": "Continue GlueJoint constructor00646cc0 with original-backed Primitive face-coordinate header proposal; independent queue fallback EffectSettings",
+  "round2": {
+    "new_inactive_exact": [
+      {
+        "symbol": "?isAligned@RigidJoint@RBX@@UAE_NXZ",
+        "size": 93,
+        "body_sha256": "3e46643184b5030fcbc1c7a0fd59a8e366741a52d4e8418a137a73b0b6b72fc5",
+        "candidates": [
+          "00645870"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645870",
+        "references": [
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 19,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 26,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 43,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 50,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3727c5ac",
+            "address": "0082b3b0",
+            "kind": 6,
+            "offset": 56,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?fuzzyEq@Math@RBX@@SA_NABVCoordinateFrame@G3D@@0MM@Z",
+            "address": "005de2a0",
+            "kind": 20,
+            "offset": 81,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "d9818b868a9f6b9954c67496a70fa62d8dc4ace396087b150864a296a0b227cf",
+        "verification_seconds": 0.000816
+      },
+      {
+        "symbol": "?align@RigidJoint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 91,
+        "body_sha256": "dbd1dedd38ba33b783ef34ae511ce8cab9dd26227688d2de3e6aff07c3d6fb04",
+        "candidates": [
+          "006458d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006458d0",
+        "references": [
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 44,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 51,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ",
+            "address": "00478330",
+            "kind": 20,
+            "offset": 63,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 78,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "ffe925dd92050ab4111ed85699eec3eae720bcbb7a46d994f9564d6e6aa5dda2",
+        "verification_seconds": 0.000131
+      },
+      {
+        "symbol": "?isAligned@MotorJoint@RBX@@EAE_NXZ",
+        "size": 155,
+        "body_sha256": "a79ebe7a9f0a623f7eb95f4e0f3eeaf9997f871d2cf018164e5aebda4e3a5312",
+        "candidates": [
+          "005e5d00"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5d00",
+        "references": [
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 19,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 26,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 43,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 50,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3727c5ac",
+            "address": "0082b3b0",
+            "kind": 6,
+            "offset": 56,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z",
+            "address": "005de1d0",
+            "kind": 20,
+            "offset": 75,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3727c5ac",
+            "address": "0082b3b0",
+            "kind": 6,
+            "offset": 89,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+            "address": "00513240",
+            "kind": 20,
+            "offset": 109,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+            "address": "00513240",
+            "kind": 20,
+            "offset": 126,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z",
+            "address": "005de1d0",
+            "kind": 20,
+            "offset": 132,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "4570e3e6ed993a77e69bd39a2ed025c0edd0489641bc07d72afe57a819ab1b51",
+        "verification_seconds": 0.000553
+      },
+      {
+        "symbol": "?stepUi@MotorJoint@RBX@@UAEXH@Z",
+        "size": 102,
+        "body_sha256": "563f5e670c17addd573a67b0f8bc4ce1f451cc01dab676499c29085fcb73cead",
+        "candidates": [
+          "005e5e70"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5e70",
+        "references": [
+          {
+            "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+            "address": "005e5da0",
+            "kind": 20,
+            "offset": 48,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+            "address": "005e5da0",
+            "kind": 20,
+            "offset": 77,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+            "address": "005e5da0",
+            "kind": 20,
+            "offset": 95,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "a3db4830eb59b34bb04ae55fc91dca7348ca5423fcc0b308663f48faecd87bcf",
+        "verification_seconds": 0.000326
+      },
+      {
+        "symbol": "?getJointK@MultiJoint@RBX@@IAEMXZ",
+        "size": 102,
+        "body_sha256": "d74fbaf6849e9967cf1750f32034554bc7dabe22d1c200a91c049b0a6a71a08c",
+        "candidates": [
+          "00646af0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646af0",
+        "references": [],
+        "identity": "67cd586426d95d6d7dbdfbad3b92c1b80743be8712051a7f9b591b2781b24bbd",
+        "verification_seconds": 0.000351
+      }
+    ],
+    "new_method_count": 5,
+    "new_method_bytes": 543,
+    "extended_files": [
+      "rebuild/2008-06/App/src/v8world/WorldJointMulti.cpp",
+      "rebuild/2008-06/App/src/v8world/WorldJointRigid.cpp",
+      "rebuild/2008-06/App/src/v8world/WorldJointMotor.cpp"
+    ],
+    "headers_edited": [],
+    "final_manifest": "work\\native-client\\prove-out\\prove-WorldJoint\\manifest.json",
+    "final_manifest_sha256": "c90d95e64c435fd33888e0015700a39c69d74e9a40c2780e9042a285269c3328",
+    "accepted_symbols": [
+      {
+        "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 0.000697
+      },
+      {
+        "symbol": "??4Vector3@G3D@@QAEAAV01@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 0.000148
+      },
+      {
+        "symbol": "??4Matrix3@G3D@@QAEAAV01@ABV01@@Z",
+        "size": 22,
+        "body_sha256": "ac71442886d53667c16363c863daae4cfb7a036fe684a6f0527ce17079f3ad29",
+        "candidates": [
+          "00513220"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00513220",
+        "references": [],
+        "identity": "25c88af8d2327a332c64bb96cc806d41d3ee910e4979eae4968e4bd0e9205514",
+        "verification_seconds": 0.000252
+      },
+      {
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 9.7e-05
+      },
+      {
+        "symbol": "?getJointType@Joint@RBX@@UBE?AW4JointType@12@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 7.8e-05
+      },
+      {
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 7.9e-05
+      },
+      {
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "size": 5,
+        "body_sha256": "8cad4061f7462df3586af0942fd0de860c94376587768a065839209dcaf67fd5",
+        "candidates": [
+          "005eed40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005eed40",
+        "references": [],
+        "identity": "18f256b09fdc97a523199c75008d60408eb26df37fcbc603e16e0fed2f6b1e61",
+        "verification_seconds": 8.6e-05
+      },
+      {
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 8.7e-05
+      },
+      {
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 7.9e-05
+      },
+      {
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 7.4e-05
+      },
+      {
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "size": 1,
+        "body_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+        "candidates": [
+          "0047d410"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0047d410",
+        "references": [],
+        "identity": "3a4c74b294a0f3202eda6df789eb627798b288904523e447c30854708c53fd2f",
+        "verification_seconds": 7.4e-05
+      },
+      {
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "size": 3,
+        "body_sha256": "e598d0c3ba86d917b177d7adde0556aa99bc355543c57aee0a3e50b684dd7e99",
+        "candidates": [
+          "0070bdf0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0070bdf0",
+        "references": [],
+        "identity": "c1ee4886c33042e79916172a564d0115cc5739e69c4f0c9fbc98e08aea369491",
+        "verification_seconds": 7.5e-05
+      },
+      {
+        "symbol": "?canBuildJointLoose@Joint@RBX@@KA_NPAVPrimitive@2@0W4NormalId@2@1@Z",
+        "size": 45,
+        "body_sha256": "265f292d90b7c8a02c725168e7939093113322dbf4f5c1bf9e0170bd9e92c09f",
+        "candidates": [
+          "00645560",
+          "00645590"
+        ],
+        "rejections": [
+          {
+            "addr": "00645560",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "00645590",
+        "references": [
+          {
+            "symbol": "__real@3d4ccccd",
+            "address": "0081c430",
+            "kind": 6,
+            "offset": 2,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?canBuildJoint@Joint@RBX@@CA_NPAVPrimitive@2@0W4NormalId@2@1MM@Z",
+            "address": "006454b0",
+            "kind": 20,
+            "offset": 37,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "1ec91a58e9708089298e927a3ec547121bd12d06430b4776845934f986e93d7a",
+        "verification_seconds": 0.000796
+      },
+      {
+        "symbol": "?canBuildJointTight@Joint@RBX@@KA_NPAVPrimitive@2@0W4NormalId@2@1@Z",
+        "size": 45,
+        "body_sha256": "265f292d90b7c8a02c725168e7939093113322dbf4f5c1bf9e0170bd9e92c09f",
+        "candidates": [
+          "00645560",
+          "00645590"
+        ],
+        "rejections": [
+          {
+            "addr": "00645590",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "00645560",
+        "references": [
+          {
+            "symbol": "__real@3c23d70a",
+            "address": "0082748c",
+            "kind": 6,
+            "offset": 2,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?canBuildJoint@Joint@RBX@@CA_NPAVPrimitive@2@0W4NormalId@2@1MM@Z",
+            "address": "006454b0",
+            "kind": 20,
+            "offset": 37,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "57ce8d3500e42e714fdcc344e064e4036a3a2208f0cfadb112349b13651e7ff0",
+        "verification_seconds": 0.000324
+      },
+      {
+        "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+        "size": 45,
+        "body_sha256": "436377e3552a244a5fdef21c32294c950d1476d8427ebc98d18a32e4b2868f1a",
+        "candidates": [
+          "004782a0",
+          "005149f0"
+        ],
+        "rejections": [
+          {
+            "addr": "005149f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "004782a0",
+        "references": [
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 7,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 29,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 35,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 40,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "da508da730ba697febd316b8c4d73c8aa54fbb12b043276b73dd89adbb471c66",
+        "verification_seconds": 0.000675
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+        "size": 86,
+        "body_sha256": "9968d6998392959c0564c54ad1205d8707e89c19c45015acb39660bad62b529c",
+        "candidates": [
+          "004782d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004782d0",
+        "references": [
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 12,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 33,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 45,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 51,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 57,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 68,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 77,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1a78085e1648b40610bbcb29da8b239fd8b61fb6dc3817648dc7c77b3b0071b8",
+        "verification_seconds": 0.000512
+      },
+      {
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 18,
+        "body_sha256": "cc16ac9dd9c5b33cc53dd820b8e103b14f7d12c53b93b9afc0d4cd42d602d7d8",
+        "candidates": [
+          "005e28c0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e28c0",
+        "references": [
+          {
+            "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+            "address": "004782d0",
+            "kind": 20,
+            "offset": 8,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fd06a87073d00985a1ab32a388f485894615543a9291d6d3e30abfe37346d955",
+        "verification_seconds": 0.000349
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@XZ",
+        "size": 13,
+        "body_sha256": "83d04366d74473df54fe60ebe30c20f49d55a2a8702a47f95c3a9d04b8b30e4e",
+        "candidates": [
+          "004377b0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004377b0",
+        "references": [],
+        "identity": "93571315ea34b2fb88a8b0249233842e8822b326741365df121615f105504853",
+        "verification_seconds": 0.000651
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 0.000106
+      },
+      {
+        "symbol": "??AVector3@G3D@@QBEABMH@Z",
+        "size": 10,
+        "body_sha256": "5d003c0ea62389be7bf7303b1dd1fe941b958887269927c5b14803ae78132f89",
+        "candidates": [
+          "0043d880"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0043d880",
+        "references": [],
+        "identity": "9164fbdca62314fadac8f17a6138f70150b31282fc5c0baea19ad0a6e76c4d00",
+        "verification_seconds": 0.00047
+      },
+      {
+        "symbol": "??4Vector3@G3D@@QAEAAV01@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 6.1e-05
+      },
+      {
+        "symbol": "??AMatrix3@G3D@@QBEPBMH@Z",
+        "size": 13,
+        "body_sha256": "e8f608e7cb772bed076980bb5fd8c4dc78671cba561e3a047cb368869a6e0659",
+        "candidates": [
+          "00476570"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00476570",
+        "references": [],
+        "identity": "f0d7f2f77f102dbf49573b4c0d6df20c61a48f3beb54dee27fbda7231733cb23",
+        "verification_seconds": 5.7e-05
+      },
+      {
+        "symbol": "??4Matrix3@G3D@@QAEAAV01@ABV01@@Z",
+        "size": 22,
+        "body_sha256": "ac71442886d53667c16363c863daae4cfb7a036fe684a6f0527ce17079f3ad29",
+        "candidates": [
+          "00513220"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00513220",
+        "references": [],
+        "identity": "25c88af8d2327a332c64bb96cc806d41d3ee910e4979eae4968e4bd0e9205514",
+        "verification_seconds": 5.6e-05
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@ABVMatrix3@1@ABVVector3@1@@Z",
+        "size": 40,
+        "body_sha256": "a718ab7c11d2568f9cce3905b45e04e44681503794fe32f513e83ab2b5ebfac6",
+        "candidates": [
+          "00476640"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00476640",
+        "references": [
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 9,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "bdebbfe939c8e0e76a391c45d0aeb6b74d5b25d9ffc720c783d12a663ee41651",
+        "verification_seconds": 0.001475
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@ABV01@@Z",
+        "size": 39,
+        "body_sha256": "b6b08aa7b6d479a8c8ada261d6f93e8116e581cf0616d23a164d3c1cd373167d",
+        "candidates": [
+          "00476670"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00476670",
+        "references": [
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 10,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "5c12d5a16e9eeeebc9c767b6b8a4808bec777cbdfda8b195b3a1f492e0fe9e22",
+        "verification_seconds": 0.000599
+      },
+      {
+        "symbol": "?isAligned@RigidJoint@RBX@@UAE_NXZ",
+        "size": 93,
+        "body_sha256": "3e46643184b5030fcbc1c7a0fd59a8e366741a52d4e8418a137a73b0b6b72fc5",
+        "candidates": [
+          "00645870"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645870",
+        "references": [
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 19,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 26,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 43,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 50,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3727c5ac",
+            "address": "0082b3b0",
+            "kind": 6,
+            "offset": 56,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?fuzzyEq@Math@RBX@@SA_NABVCoordinateFrame@G3D@@0MM@Z",
+            "address": "005de2a0",
+            "kind": 20,
+            "offset": 81,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "d9818b868a9f6b9954c67496a70fa62d8dc4ace396087b150864a296a0b227cf",
+        "verification_seconds": 0.000816
+      },
+      {
+        "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+        "size": 45,
+        "body_sha256": "436377e3552a244a5fdef21c32294c950d1476d8427ebc98d18a32e4b2868f1a",
+        "candidates": [
+          "004782a0",
+          "005149f0"
+        ],
+        "rejections": [
+          {
+            "addr": "005149f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "004782a0",
+        "references": [
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 7,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 29,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 35,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 40,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "da508da730ba697febd316b8c4d73c8aa54fbb12b043276b73dd89adbb471c66",
+        "verification_seconds": 0.000584
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+        "size": 86,
+        "body_sha256": "9968d6998392959c0564c54ad1205d8707e89c19c45015acb39660bad62b529c",
+        "candidates": [
+          "004782d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004782d0",
+        "references": [
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 12,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 33,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 45,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 51,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 57,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 68,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 77,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1a78085e1648b40610bbcb29da8b239fd8b61fb6dc3817648dc7c77b3b0071b8",
+        "verification_seconds": 0.000293
+      },
+      {
+        "symbol": "?align@RigidJoint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 91,
+        "body_sha256": "dbd1dedd38ba33b783ef34ae511ce8cab9dd26227688d2de3e6aff07c3d6fb04",
+        "candidates": [
+          "006458d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006458d0",
+        "references": [
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 44,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 51,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ",
+            "address": "00478330",
+            "kind": 20,
+            "offset": 63,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 78,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "ffe925dd92050ab4111ed85699eec3eae720bcbb7a46d994f9564d6e6aa5dda2",
+        "verification_seconds": 0.000131
+      },
+      {
+        "symbol": "?getChildInParent@RigidJoint@RBX@@QAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 67,
+        "body_sha256": "c719290cd58467901fb228995ee1bfaaa0ee8e15324fd588ff1e6370cb607b53",
+        "candidates": [
+          "00645930"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645930",
+        "references": [
+          {
+            "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ",
+            "address": "00478330",
+            "kind": 20,
+            "offset": 40,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 53,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "18ea2058bdd4b95491b62f6a8965c4761e89951865f8eaca585a768920690344",
+        "verification_seconds": 0.0002
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 0.000738
+      },
+      {
+        "symbol": "??AVector3@G3D@@QBEABMH@Z",
+        "size": 10,
+        "body_sha256": "5d003c0ea62389be7bf7303b1dd1fe941b958887269927c5b14803ae78132f89",
+        "candidates": [
+          "0043d880"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0043d880",
+        "references": [],
+        "identity": "9164fbdca62314fadac8f17a6138f70150b31282fc5c0baea19ad0a6e76c4d00",
+        "verification_seconds": 0.000731
+      },
+      {
+        "symbol": "??AMatrix3@G3D@@QBEPBMH@Z",
+        "size": 13,
+        "body_sha256": "e8f608e7cb772bed076980bb5fd8c4dc78671cba561e3a047cb368869a6e0659",
+        "candidates": [
+          "00476570"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00476570",
+        "references": [],
+        "identity": "f0d7f2f77f102dbf49573b4c0d6df20c61a48f3beb54dee27fbda7231733cb23",
+        "verification_seconds": 0.000244
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@ABVMatrix3@1@ABVVector3@1@@Z",
+        "size": 40,
+        "body_sha256": "a718ab7c11d2568f9cce3905b45e04e44681503794fe32f513e83ab2b5ebfac6",
+        "candidates": [
+          "00476640"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00476640",
+        "references": [
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 9,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "bdebbfe939c8e0e76a391c45d0aeb6b74d5b25d9ffc720c783d12a663ee41651",
+        "verification_seconds": 0.000785
+      },
+      {
+        "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+        "size": 90,
+        "body_sha256": "295a26ad106abb96359f2236a8a0b095b0a2a42a773cdd8fff7d2ff61b14ffc2",
+        "candidates": [
+          "004766a0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004766a0",
+        "references": [],
+        "identity": "dcad5a39e527996e277426ff3fb08c7391d33788a76c6bf395f30262c0d2f9bb",
+        "verification_seconds": 0.000334
+      },
+      {
+        "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+        "size": 147,
+        "body_sha256": "fccd1dd567b288f55c5e35a567556a878d815dcd65054386258ccc7813052628",
+        "candidates": [
+          "00476700"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00476700",
+        "references": [
+          {
+            "symbol": "??DMatrix3@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00513350",
+            "kind": 20,
+            "offset": 101,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 113,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "8d9a32b24716e04d9e8d791df02c72640312c6d2b50e01e59f118985be2e91b6",
+        "verification_seconds": 0.000187
+      },
+      {
+        "symbol": "?isAligned@MotorJoint@RBX@@EAE_NXZ",
+        "size": 155,
+        "body_sha256": "a79ebe7a9f0a623f7eb95f4e0f3eeaf9997f871d2cf018164e5aebda4e3a5312",
+        "candidates": [
+          "005e5d00"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5d00",
+        "references": [
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 19,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 26,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ",
+            "address": "005e82c0",
+            "kind": 20,
+            "offset": 43,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z",
+            "address": "00476700",
+            "kind": 20,
+            "offset": 50,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3727c5ac",
+            "address": "0082b3b0",
+            "kind": 6,
+            "offset": 56,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z",
+            "address": "005de1d0",
+            "kind": 20,
+            "offset": 75,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "__real@3727c5ac",
+            "address": "0082b3b0",
+            "kind": 6,
+            "offset": 89,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+            "address": "00513240",
+            "kind": 20,
+            "offset": 109,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+            "address": "00513240",
+            "kind": 20,
+            "offset": 126,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?fuzzyEq@Math@RBX@@SA_NABVVector3@G3D@@0M@Z",
+            "address": "005de1d0",
+            "kind": 20,
+            "offset": 132,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "4570e3e6ed993a77e69bd39a2ed025c0edd0489641bc07d72afe57a819ab1b51",
+        "verification_seconds": 0.000553
+      },
+      {
+        "symbol": "??0MotorJoint@RBX@@QAE@XZ",
+        "size": 151,
+        "body_sha256": "99010266339f806dc29cd2581331c358f33bf3e365e3e801c2ca9f4f7152156a",
+        "candidates": [
+          "005e5bf0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5bf0",
+        "references": [
+          {
+            "symbol": "__ehhandler$??0MotorJoint@RBX@@QAE@XZ",
+            "address": "007d6803",
+            "kind": 6,
+            "offset": 3,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Joint@RBX@@IAE@XZ",
+            "address": "006456a0",
+            "kind": 20,
+            "offset": 33,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7MotorJoint@RBX@@6B@",
+            "address": "0083f764",
+            "kind": 6,
+            "offset": 52,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??2@YAPAXI@Z",
+            "address": "006a0920",
+            "kind": 20,
+            "offset": 57,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Link@RBX@@QAE@XZ",
+            "address": "00613d20",
+            "kind": 20,
+            "offset": 86,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7RevoluteLink@RBX@@6B@",
+            "address": "0083f75c",
+            "kind": 6,
+            "offset": 100,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "682afa836b5b7849c70522e0e8ff11a3ccc0694a429d167848d76700bada577e",
+        "verification_seconds": 0.001887
+      },
+      {
+        "symbol": "__unwindfunclet$??0MotorJoint@RBX@@QAE@XZ$1",
+        "size": 11,
+        "body_sha256": "2d7c14040ac0e512714efecceabfdc3c4998c15b6fb781de34f3a91c96c3fd6e",
+        "candidates": [
+          "007d67f8"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "007d67f8",
+        "references": [
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "address": "006a067a",
+            "kind": 20,
+            "offset": 5,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "4ea5357dac6a4b75bd2aa9774872d9cf5f2be58130a92951fcf65f4a7cdc3a76",
+        "verification_seconds": 0.001973
+      },
+      {
+        "symbol": "__unwindfunclet$??0MotorJoint@RBX@@QAE@XZ$0",
+        "size": 8,
+        "body_sha256": "d636ea78311d06a8699db8f3459b2f65c2aa9aa2dcd3c6a08715c7ffab4c46c5",
+        "candidates": [
+          "007d67f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "007d67f0",
+        "references": [
+          {
+            "symbol": "??1Joint@RBX@@UAE@XZ",
+            "address": "00645490",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "54ce6446415236f03838352a8e3b141e54fac2a79f2cf1ba31725fb243202f2a",
+        "verification_seconds": 0.002044
+      },
+      {
+        "symbol": "__ehhandler$??0MotorJoint@RBX@@QAE@XZ",
+        "size": 10,
+        "body_sha256": "f81e1ba004685b5c78ae3e89fa323e54f1ef7578275fd4ef4b8a5c91536f3634",
+        "candidates": [
+          "007d6803"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "007d6803",
+        "references": [
+          {
+            "symbol": "__ehfuncinfo$??0MotorJoint@RBX@@QAE@XZ",
+            "address": "008f51e8",
+            "kind": 6,
+            "offset": 1,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "___CxxFrameHandler3",
+            "address": "006a14c0",
+            "kind": 20,
+            "offset": 6,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "8cad4be0e3e5604704bc333751dc7f929626a5c0881886b9d3a2ba164c918f67",
+        "verification_seconds": 0.001317
+      },
+      {
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 0.000105
+      },
+      {
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 9.4e-05
+      },
+      {
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "size": 5,
+        "body_sha256": "8cad4061f7462df3586af0942fd0de860c94376587768a065839209dcaf67fd5",
+        "candidates": [
+          "005eed40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005eed40",
+        "references": [],
+        "identity": "18f256b09fdc97a523199c75008d60408eb26df37fcbc603e16e0fed2f6b1e61",
+        "verification_seconds": 8.4e-05
+      },
+      {
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 7.6e-05
+      },
+      {
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "size": 1,
+        "body_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+        "candidates": [
+          "0047d410"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0047d410",
+        "references": [],
+        "identity": "3a4c74b294a0f3202eda6df789eb627798b288904523e447c30854708c53fd2f",
+        "verification_seconds": 8.4e-05
+      },
+      {
+        "symbol": "?getJointType@MotorJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "size": 6,
+        "body_sha256": "accecba762116532de10ac30681ff4b25ad91fe217568ec41c8ffd67b9ef2bcf",
+        "candidates": [
+          "0063e420"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0063e420",
+        "references": [],
+        "identity": "ed36ec2d133a27cb842c7a9a4e22a21eeecec83e3c5cead19b5f6a24a2041374",
+        "verification_seconds": 0.000863
+      },
+      {
+        "symbol": "?isBroken@MotorJoint@RBX@@EBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 0.000138
+      },
+      {
+        "symbol": "?canStepUi@MotorJoint@RBX@@EBE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 0.000107
+      },
+      {
+        "symbol": "?stepUi@MotorJoint@RBX@@UAEXH@Z",
+        "size": 102,
+        "body_sha256": "563f5e670c17addd573a67b0f8bc4ce1f451cc01dab676499c29085fcb73cead",
+        "candidates": [
+          "005e5e70"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5e70",
+        "references": [
+          {
+            "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+            "address": "005e5da0",
+            "kind": 20,
+            "offset": 48,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+            "address": "005e5da0",
+            "kind": 20,
+            "offset": 77,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+            "address": "005e5da0",
+            "kind": 20,
+            "offset": 95,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "a3db4830eb59b34bb04ae55fc91dca7348ca5423fcc0b308663f48faecd87bcf",
+        "verification_seconds": 0.000326
+      },
+      {
+        "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+        "size": 45,
+        "body_sha256": "436377e3552a244a5fdef21c32294c950d1476d8427ebc98d18a32e4b2868f1a",
+        "candidates": [
+          "004782a0",
+          "005149f0"
+        ],
+        "rejections": [
+          {
+            "addr": "005149f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "004782a0",
+        "references": [
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 7,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 29,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 35,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 40,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "da508da730ba697febd316b8c4d73c8aa54fbb12b043276b73dd89adbb471c66",
+        "verification_seconds": 0.000944
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+        "size": 86,
+        "body_sha256": "9968d6998392959c0564c54ad1205d8707e89c19c45015acb39660bad62b529c",
+        "candidates": [
+          "004782d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004782d0",
+        "references": [
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 12,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 33,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 45,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 51,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 57,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 68,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 77,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1a78085e1648b40610bbcb29da8b239fd8b61fb6dc3817648dc7c77b3b0071b8",
+        "verification_seconds": 0.000514
+      },
+      {
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 18,
+        "body_sha256": "cc16ac9dd9c5b33cc53dd820b8e103b14f7d12c53b93b9afc0d4cd42d602d7d8",
+        "candidates": [
+          "005e28c0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e28c0",
+        "references": [
+          {
+            "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+            "address": "004782d0",
+            "kind": 20,
+            "offset": 8,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fd06a87073d00985a1ab32a388f485894615543a9291d6d3e30abfe37346d955",
+        "verification_seconds": 0.00032
+      },
+      {
+        "symbol": "??1MotorJoint@RBX@@UAE@XZ",
+        "size": 102,
+        "body_sha256": "e1923d318491b89f3b1ff839d4084634eb42604d4ca7df1d440b46d0a95a10fd",
+        "candidates": [
+          "005e5e00"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5e00",
+        "references": [
+          {
+            "symbol": "__ehhandler$??1MotorJoint@RBX@@UAE@XZ",
+            "address": "007d6818",
+            "kind": 6,
+            "offset": 3,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7MotorJoint@RBX@@6B@",
+            "address": "0083f764",
+            "kind": 6,
+            "offset": 32,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??1Link@RBX@@QAE@XZ",
+            "address": "0047d410",
+            "kind": 20,
+            "offset": 57,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "address": "006a067a",
+            "kind": 20,
+            "offset": 63,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??1Joint@RBX@@UAE@XZ",
+            "address": "00645490",
+            "kind": 20,
+            "offset": 81,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "2d6b4c3f2b3c6deed54cb16ddc215a1b13eb2d3cdba3fcd075213cebaaab3c29",
+        "verification_seconds": 0.003321
+      },
+      {
+        "symbol": "__unwindfunclet$??1MotorJoint@RBX@@UAE@XZ$0",
+        "size": 8,
+        "body_sha256": "4dec9470b97a21d0b72fa46735fa7794d4f3bdf8cc1e8745084b20be6fe01429",
+        "candidates": [
+          "007d6810"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "007d6810",
+        "references": [
+          {
+            "symbol": "??1Joint@RBX@@UAE@XZ",
+            "address": "00645490",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "ba927d29b0fcd8b25c86da5c8a4ac4fb6b3be5fe7b63c91452c5dd62041279fc",
+        "verification_seconds": 0.000168
+      },
+      {
+        "symbol": "__ehhandler$??1MotorJoint@RBX@@UAE@XZ",
+        "size": 10,
+        "body_sha256": "f81e1ba004685b5c78ae3e89fa323e54f1ef7578275fd4ef4b8a5c91536f3634",
+        "candidates": [
+          "007d6818"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "007d6818",
+        "references": [
+          {
+            "symbol": "__ehfuncinfo$??1MotorJoint@RBX@@UAE@XZ",
+            "address": "008f5214",
+            "kind": 6,
+            "offset": 1,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "___CxxFrameHandler3",
+            "address": "006a14c0",
+            "kind": 20,
+            "offset": 6,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "6b1cfdf8f3703db767e839fc9067b95ba21d986a558a33372825049dc869c15d",
+        "verification_seconds": 0.000208
+      },
+      {
+        "symbol": "??_GMotorJoint@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "body_sha256": "b40481af87cc4bcd23da7d559dd5ce54f616e2f51cadc2008081b4c4e057f65d",
+        "candidates": [
+          "005e5ee0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e5ee0",
+        "references": [
+          {
+            "symbol": "??1MotorJoint@RBX@@UAE@XZ",
+            "address": "005e5e00",
+            "kind": 20,
+            "offset": 4,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "address": "006a067a",
+            "kind": 20,
+            "offset": 17,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "5b00d827552c0d13d717c33f29870e0bbef333d2638fe68a709c871191303664",
+        "verification_seconds": 0.000484
+      },
+      {
+        "symbol": "??0RotateJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 54,
+        "body_sha256": "410cfb56f03f14487db33fa06c349cac92e594ed28706b90438bde9cbeeceddf",
+        "candidates": [
+          "00645a90"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645a90",
+        "references": [
+          {
+            "symbol": "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z",
+            "address": "00646920",
+            "kind": 20,
+            "offset": 28,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7RotateJoint@RBX@@6B@",
+            "address": "0084adc4",
+            "kind": 6,
+            "offset": 34,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "be262805b7e8d23dc2c00a8a03a101209d433decf9fe10dca6cea18fc69e7644",
+        "verification_seconds": 0.001257
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 0.000153
+      },
+      {
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 0.000123
+      },
+      {
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 0.000102
+      },
+      {
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "size": 5,
+        "body_sha256": "8cad4061f7462df3586af0942fd0de860c94376587768a065839209dcaf67fd5",
+        "candidates": [
+          "005eed40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005eed40",
+        "references": [],
+        "identity": "18f256b09fdc97a523199c75008d60408eb26df37fcbc603e16e0fed2f6b1e61",
+        "verification_seconds": 7.4e-05
+      },
+      {
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 8e-05
+      },
+      {
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 7.9e-05
+      },
+      {
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 7.4e-05
+      },
+      {
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "size": 1,
+        "body_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+        "candidates": [
+          "0047d410"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0047d410",
+        "references": [],
+        "identity": "3a4c74b294a0f3202eda6df789eb627798b288904523e447c30854708c53fd2f",
+        "verification_seconds": 7.9e-05
+      },
+      {
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "size": 3,
+        "body_sha256": "e598d0c3ba86d917b177d7adde0556aa99bc355543c57aee0a3e50b684dd7e99",
+        "candidates": [
+          "0070bdf0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0070bdf0",
+        "references": [],
+        "identity": "c1ee4886c33042e79916172a564d0115cc5739e69c4f0c9fbc98e08aea369491",
+        "verification_seconds": 8e-05
+      },
+      {
+        "symbol": "?getJointType@RotateJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "size": 6,
+        "body_sha256": "2db31f4e09597946e56e859813bfdad7046d457c32332c3a882654d1e3ffdf67",
+        "candidates": [
+          "00501484",
+          "007286a0"
+        ],
+        "rejections": [
+          {
+            "addr": "00501484",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "007286a0",
+        "references": [],
+        "identity": "df4d83261dd01505a33fd7c4a0c2f51cd24a85e1b5c88544068cbe68f527025d",
+        "verification_seconds": 0.001203
+      },
+      {
+        "symbol": "??0RotateJoint@RBX@@QAE@XZ",
+        "size": 30,
+        "body_sha256": "0726b870a449d181195de636aa8e901c8a85f49280fef32e33934fb0f637cebc",
+        "candidates": [
+          "00645a70"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645a70",
+        "references": [
+          {
+            "symbol": "??0MultiJoint@RBX@@IAE@H@Z",
+            "address": "00646900",
+            "kind": 20,
+            "offset": 6,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7RotateJoint@RBX@@6B@",
+            "address": "0084adc4",
+            "kind": 6,
+            "offset": 12,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "44a75c472054ab49466aa11690625a36724ae9d36475f9d66dc4bbe33fde5991",
+        "verification_seconds": 0.000538
+      },
+      {
+        "symbol": "?removeFromKernel@RotateJoint@RBX@@EAEXXZ",
+        "size": 15,
+        "body_sha256": "b75650135b16f59eee17063dfa3bbbc123a3011b0ceb4b5368f29f6c2717ae77",
+        "candidates": [
+          "00645ae0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645ae0",
+        "references": [
+          {
+            "symbol": "?removeFromKernel@MultiJoint@RBX@@MAEXXZ",
+            "address": "006469e0",
+            "kind": 20,
+            "offset": 11,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "070f0051df393400bd3fde092776d09bf6a19de8f0bf0dc541aa8234efe98a75",
+        "verification_seconds": 0.000325
+      },
+      {
+        "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+        "size": 45,
+        "body_sha256": "436377e3552a244a5fdef21c32294c950d1476d8427ebc98d18a32e4b2868f1a",
+        "candidates": [
+          "004782a0",
+          "005149f0"
+        ],
+        "rejections": [
+          {
+            "addr": "005149f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "004782a0",
+        "references": [
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 7,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 29,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 35,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 40,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "da508da730ba697febd316b8c4d73c8aa54fbb12b043276b73dd89adbb471c66",
+        "verification_seconds": 0.000432
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+        "size": 86,
+        "body_sha256": "9968d6998392959c0564c54ad1205d8707e89c19c45015acb39660bad62b529c",
+        "candidates": [
+          "004782d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004782d0",
+        "references": [
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 12,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 33,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 45,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 51,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 57,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 68,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 77,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1a78085e1648b40610bbcb29da8b239fd8b61fb6dc3817648dc7c77b3b0071b8",
+        "verification_seconds": 0.000323
+      },
+      {
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 18,
+        "body_sha256": "cc16ac9dd9c5b33cc53dd820b8e103b14f7d12c53b93b9afc0d4cd42d602d7d8",
+        "candidates": [
+          "005e28c0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e28c0",
+        "references": [
+          {
+            "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+            "address": "004782d0",
+            "kind": 20,
+            "offset": 8,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fd06a87073d00985a1ab32a388f485894615543a9291d6d3e30abfe37346d955",
+        "verification_seconds": 0.000144
+      },
+      {
+        "symbol": "??0RotatePJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 62,
+        "body_sha256": "9829df5a95495e5aab8c7701a11419c27605a52ba3b557a1f2af969e3bf6e9f4",
+        "candidates": [
+          "00645d90",
+          "00645dd0"
+        ],
+        "rejections": [
+          {
+            "addr": "00645dd0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "00645d90",
+        "references": [
+          {
+            "symbol": "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z",
+            "address": "00646920",
+            "kind": 20,
+            "offset": 28,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7RotatePJoint@RBX@@6B@",
+            "address": "0083e13c",
+            "kind": 6,
+            "offset": 52,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "8d849fd592a23075291b52c4b1f696e33402c2e3566347921aa0fd06557d0581",
+        "verification_seconds": 0.000341
+      },
+      {
+        "symbol": "?canStepWorld@DynamicRotateJoint@RBX@@EBE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 6.8e-05
+      },
+      {
+        "symbol": "?canStepUi@DynamicRotateJoint@RBX@@EBE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 5.8e-05
+      },
+      {
+        "symbol": "?getJointType@RotatePJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "size": 6,
+        "body_sha256": "7140f35dee6220b79b12aecc27acf5105bf3b77d1588e89fce345de7c16c72b7",
+        "candidates": [
+          "0077d810"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0077d810",
+        "references": [],
+        "identity": "c9163800625aadc424aa72147acf579e798adb196bea8a735b932653435a51f9",
+        "verification_seconds": 6e-05
+      },
+      {
+        "symbol": "??0RotateVJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 62,
+        "body_sha256": "9829df5a95495e5aab8c7701a11419c27605a52ba3b557a1f2af969e3bf6e9f4",
+        "candidates": [
+          "00645d90",
+          "00645dd0"
+        ],
+        "rejections": [
+          {
+            "addr": "00645d90",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "00645dd0",
+        "references": [
+          {
+            "symbol": "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z",
+            "address": "00646920",
+            "kind": 20,
+            "offset": 28,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7RotateVJoint@RBX@@6B@",
+            "address": "0083e17c",
+            "kind": 6,
+            "offset": 52,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1e18e0ba36790c7d69b6fa2c94f79c73f4d840ab86b49447437252c8754bc0df",
+        "verification_seconds": 0.00037
+      },
+      {
+        "symbol": "?getJointType@RotateVJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "size": 6,
+        "body_sha256": "7adb2a5467d3718ab3b55c6851599af573d4fbeadcd90dd961cfd69d4f94cc9f",
+        "candidates": [
+          "005e2790"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e2790",
+        "references": [],
+        "identity": "c9bb25fc4e769d8aafcf9b1510740dc1a3a2ca43648f0bd7562afd331359f72b",
+        "verification_seconds": 0.000127
+      },
+      {
+        "symbol": "?surfaceTypeToJoint@RotateJoint@RBX@@CAPAV12@W4SurfaceType@2@PAVPrimitive@2@1ABVCoordinateFrame@G3D@@2@Z",
+        "size": 278,
+        "body_sha256": "d68ab3081ca043d1005120e3f3c31c7984b7d75c61e108edb112175fb6ee8032",
+        "candidates": [
+          "00645e40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00645e40",
+        "references": [
+          {
+            "symbol": "__ehhandler$?surfaceTypeToJoint@RotateJoint@RBX@@CAPAV12@W4SurfaceType@2@PAVPrimitive@2@1ABVCoordinateFrame@G3D@@2@Z",
+            "address": "007dad81",
+            "kind": 6,
+            "offset": 9,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??2@YAPAXI@Z",
+            "address": "006a0920",
+            "kind": 20,
+            "offset": 54,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0RotatePJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+            "address": "00645d90",
+            "kind": 20,
+            "offset": 104,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??2@YAPAXI@Z",
+            "address": "006a0920",
+            "kind": 20,
+            "offset": 128,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0RotateVJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+            "address": "00645dd0",
+            "kind": 20,
+            "offset": 174,
+            "external": false,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??2@YAPAXI@Z",
+            "address": "006a0920",
+            "kind": 20,
+            "offset": 198,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0RotateJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+            "address": "00645a90",
+            "kind": 20,
+            "offset": 244,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fd864499ee4b0dd4aa93a720fa9a46b923d6a697c7b00f8833a00b5395995191",
+        "verification_seconds": 0.000262
+      },
+      {
+        "symbol": "__ehhandler$?surfaceTypeToJoint@RotateJoint@RBX@@CAPAV12@W4SurfaceType@2@PAVPrimitive@2@1ABVCoordinateFrame@G3D@@2@Z",
+        "size": 10,
+        "body_sha256": "f81e1ba004685b5c78ae3e89fa323e54f1ef7578275fd4ef4b8a5c91536f3634",
+        "candidates": [
+          "007dad81"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "007dad81",
+        "references": [
+          {
+            "symbol": "__ehfuncinfo$?surfaceTypeToJoint@RotateJoint@RBX@@CAPAV12@W4SurfaceType@2@PAVPrimitive@2@1ABVCoordinateFrame@G3D@@2@Z",
+            "address": "008fbd98",
+            "kind": 6,
+            "offset": 1,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "___CxxFrameHandler3",
+            "address": "006a14c0",
+            "kind": 20,
+            "offset": 6,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "f33c4041d4182c9f4d9e7b45415592263c799c149dfd86176f1f865d5c6ba1f7",
+        "verification_seconds": 0.000245
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@XZ",
+        "size": 13,
+        "body_sha256": "83d04366d74473df54fe60ebe30c20f49d55a2a8702a47f95c3a9d04b8b30e4e",
+        "candidates": [
+          "004377b0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004377b0",
+        "references": [],
+        "identity": "93571315ea34b2fb88a8b0249233842e8822b326741365df121615f105504853",
+        "verification_seconds": 0.00052
+      },
+      {
+        "symbol": "??GVector3@G3D@@QBE?AV01@ABV01@@Z",
+        "size": 35,
+        "body_sha256": "1a00e192e69361239d581b18d888ff7d1c97515bdcfb2cde7735e90e6a45608b",
+        "candidates": [
+          "0045ac40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0045ac40",
+        "references": [],
+        "identity": "7cb938389a1bef906687487a09cfbb146f1e27995b4a7035bb9b287fa4086141",
+        "verification_seconds": 0.000211
+      },
+      {
+        "symbol": "??0GlueJoint@RBX@@QAE@XZ",
+        "size": 166,
+        "body_sha256": "8099de5f1c4b18d0ea8fab0eb4483404428553fd20cbd2baa767274573240bcd",
+        "candidates": [
+          "00646b60"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646b60",
+        "references": [
+          {
+            "symbol": "??0MultiJoint@RBX@@IAE@H@Z",
+            "address": "00646900",
+            "kind": 20,
+            "offset": 6,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7GlueJoint@RBX@@6B@",
+            "address": "0084ae7c",
+            "kind": 6,
+            "offset": 14,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "8e89e9adec01a6f676d10753d3802f5b85d6abb690fb57620eea4623274184ec",
+        "verification_seconds": 0.000228
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 7.4e-05
+      },
+      {
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 5.9e-05
+      },
+      {
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "size": 5,
+        "body_sha256": "8cad4061f7462df3586af0942fd0de860c94376587768a065839209dcaf67fd5",
+        "candidates": [
+          "005eed40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005eed40",
+        "references": [],
+        "identity": "18f256b09fdc97a523199c75008d60408eb26df37fcbc603e16e0fed2f6b1e61",
+        "verification_seconds": 5.1e-05
+      },
+      {
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 5.1e-05
+      },
+      {
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 5.1e-05
+      },
+      {
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 4.7e-05
+      },
+      {
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "size": 1,
+        "body_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+        "candidates": [
+          "0047d410"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0047d410",
+        "references": [],
+        "identity": "3a4c74b294a0f3202eda6df789eb627798b288904523e447c30854708c53fd2f",
+        "verification_seconds": 5e-05
+      },
+      {
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "size": 3,
+        "body_sha256": "e598d0c3ba86d917b177d7adde0556aa99bc355543c57aee0a3e50b684dd7e99",
+        "candidates": [
+          "0070bdf0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0070bdf0",
+        "references": [],
+        "identity": "c1ee4886c33042e79916172a564d0115cc5739e69c4f0c9fbc98e08aea369491",
+        "verification_seconds": 5e-05
+      },
+      {
+        "symbol": "?getJointType@GlueJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "size": 6,
+        "body_sha256": "e36623525b7c35b277173e56616b2d865cf6515aa2be1d12d6814ef725cecffb",
+        "candidates": [
+          "006fa3f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006fa3f0",
+        "references": [],
+        "identity": "fd4a799eddb80cac9bba0c59c59bd76f66b0c40a232e51da4dfe35f8b1727340",
+        "verification_seconds": 5.8e-05
+      },
+      {
+        "symbol": "?isBreakable@GlueJoint@RBX@@EBE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 4.9e-05
+      },
+      {
+        "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+        "size": 45,
+        "body_sha256": "436377e3552a244a5fdef21c32294c950d1476d8427ebc98d18a32e4b2868f1a",
+        "candidates": [
+          "004782a0",
+          "005149f0"
+        ],
+        "rejections": [
+          {
+            "addr": "005149f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "004782a0",
+        "references": [
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 7,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 29,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 35,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 40,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "da508da730ba697febd316b8c4d73c8aa54fbb12b043276b73dd89adbb471c66",
+        "verification_seconds": 0.000439
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+        "size": 86,
+        "body_sha256": "9968d6998392959c0564c54ad1205d8707e89c19c45015acb39660bad62b529c",
+        "candidates": [
+          "004782d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004782d0",
+        "references": [
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 12,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 33,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 45,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 51,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 57,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 68,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 77,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1a78085e1648b40610bbcb29da8b239fd8b61fb6dc3817648dc7c77b3b0071b8",
+        "verification_seconds": 0.000314
+      },
+      {
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 18,
+        "body_sha256": "cc16ac9dd9c5b33cc53dd820b8e103b14f7d12c53b93b9afc0d4cd42d602d7d8",
+        "candidates": [
+          "005e28c0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e28c0",
+        "references": [
+          {
+            "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+            "address": "004782d0",
+            "kind": 20,
+            "offset": 8,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fd06a87073d00985a1ab32a388f485894615543a9291d6d3e30abfe37346d955",
+        "verification_seconds": 0.000184
+      },
+      {
+        "symbol": "??_GGlueJoint@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "body_sha256": "b40481af87cc4bcd23da7d559dd5ce54f616e2f51cadc2008081b4c4e057f65d",
+        "candidates": [
+          "00646ca0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646ca0",
+        "references": [
+          {
+            "symbol": "??1MultiJoint@RBX@@MAE@XZ",
+            "address": "00646960",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "address": "006a067a",
+            "kind": 20,
+            "offset": 17,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "990510b9f523b7a3db6c826cf612f637b6a9eaba131c2a70ac8ddbf70a81fde8",
+        "verification_seconds": 0.000588
+      },
+      {
+        "symbol": "?init@MultiJoint@RBX@@AAEXH@Z",
+        "size": 93,
+        "body_sha256": "f9a9cb3d246f5efc3487ecb47d7b8fd4325fee455b8db74921c1f71ae1985740",
+        "candidates": [
+          "006468a0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006468a0",
+        "references": [],
+        "identity": "5ca80361d56a65ec801b3646fbea80f1a46d19873b79b8e0f0eec94da17b1228",
+        "verification_seconds": 0.000509
+      },
+      {
+        "symbol": "??0MultiJoint@RBX@@IAE@H@Z",
+        "size": 32,
+        "body_sha256": "6b649977aa1955eec03f79eb3b7f73ceb8aecb05e11a5f2405cdc519264b37dd",
+        "candidates": [
+          "00646900"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646900",
+        "references": [
+          {
+            "symbol": "??0Joint@RBX@@IAE@XZ",
+            "address": "006456a0",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7MultiJoint@RBX@@6B@",
+            "address": "0084ae14",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?init@MultiJoint@RBX@@AAEXH@Z",
+            "address": "006468a0",
+            "kind": 20,
+            "offset": 22,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "3645a6c568e1602775ee69374e6d5cfbe4aa59ccc8f26a5869147739927bd05c",
+        "verification_seconds": 0.001171
+      },
+      {
+        "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z",
+        "size": 25,
+        "body_sha256": "c7f5cdc3902b00863dfcdbc478f97e686bbd89d86ba7043675cb211c0421b772",
+        "candidates": [
+          "00514be0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00514be0",
+        "references": [],
+        "identity": "4243195c3be5d71b1bab41863c818fe4ce472948dba36f3f2b9bfdbc6a385b6b",
+        "verification_seconds": 0.000126
+      },
+      {
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 0.000102
+      },
+      {
+        "symbol": "?getJointType@Joint@RBX@@UBE?AW4JointType@12@XZ",
+        "size": 3,
+        "body_sha256": "4bc724f3b1d0caf4fe369c18cba3102e6c4ea057f63fe1587e3973134a7f755e",
+        "candidates": [
+          "00416690"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00416690",
+        "references": [],
+        "identity": "59d7845e1165b0a5d0063fc2a01df5889e5743f0c5df5e43cf146fc8a32d2960",
+        "verification_seconds": 8.6e-05
+      },
+      {
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 8.3e-05
+      },
+      {
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "size": 5,
+        "body_sha256": "8cad4061f7462df3586af0942fd0de860c94376587768a065839209dcaf67fd5",
+        "candidates": [
+          "005eed40"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005eed40",
+        "references": [],
+        "identity": "18f256b09fdc97a523199c75008d60408eb26df37fcbc603e16e0fed2f6b1e61",
+        "verification_seconds": 8e-05
+      },
+      {
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "size": 3,
+        "body_sha256": "e18aacce29affcdddaa5f641ac1ec12552e0fe9d066e6408941b1792818b8619",
+        "candidates": [
+          "00565950"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00565950",
+        "references": [],
+        "identity": "0e6a654ea37af98d4dd4addfbc0909954ccd33e27289f1c740e007395651f35e",
+        "verification_seconds": 8.2e-05
+      },
+      {
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 8.3e-05
+      },
+      {
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "size": 3,
+        "body_sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "candidates": [
+          "0060a2f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0060a2f0",
+        "references": [],
+        "identity": "6e0a3c12b6f38c90ff590b90038e49f42bc2afa45f9784888a48d360075eb7e4",
+        "verification_seconds": 8e-05
+      },
+      {
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "size": 1,
+        "body_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+        "candidates": [
+          "0047d410"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0047d410",
+        "references": [],
+        "identity": "3a4c74b294a0f3202eda6df789eb627798b288904523e447c30854708c53fd2f",
+        "verification_seconds": 8.3e-05
+      },
+      {
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "size": 3,
+        "body_sha256": "e598d0c3ba86d917b177d7adde0556aa99bc355543c57aee0a3e50b684dd7e99",
+        "candidates": [
+          "0070bdf0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "0070bdf0",
+        "references": [],
+        "identity": "c1ee4886c33042e79916172a564d0115cc5739e69c4f0c9fbc98e08aea369491",
+        "verification_seconds": 8.5e-05
+      },
+      {
+        "symbol": "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z",
+        "size": 54,
+        "body_sha256": "5ba1e6b24d2c48f5af5dfc9740a6b46f7994cebddc423023b0d16f42adac31f1",
+        "candidates": [
+          "00646920"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646920",
+        "references": [
+          {
+            "symbol": "??0Joint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+            "address": "006455c0",
+            "kind": 20,
+            "offset": 26,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_7MultiJoint@RBX@@6B@",
+            "address": "0084ae14",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?init@MultiJoint@RBX@@AAEXH@Z",
+            "address": "006468a0",
+            "kind": 20,
+            "offset": 44,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fb1a1955c2dcbbd99a0d7a31288c33da4dbc0725bc63a3477ecdcfbf36df0489",
+        "verification_seconds": 0.00038
+      },
+      {
+        "symbol": "??1MultiJoint@RBX@@MAE@XZ",
+        "size": 11,
+        "body_sha256": "01b1fcd329fa67d4211e72b4f783e6c91d0036165a955ec0b75bf63a21387313",
+        "candidates": [
+          "00411290",
+          "00412f30",
+          "004131b0",
+          "00422550",
+          "00430f40",
+          "00432e50",
+          "00465a80",
+          "004713b0",
+          "004baa40",
+          "004d8500",
+          "004d8510",
+          "004d8520",
+          "004d8530",
+          "004d8540",
+          "004d8550",
+          "004d9070",
+          "004d9080",
+          "004d9090",
+          "004d90a0",
+          "004d90b0",
+          "004d90c0",
+          "00645ad0",
+          "00646960",
+          "006a3180",
+          "006aec80",
+          "006b52a0",
+          "006bc160",
+          "006bc210",
+          "006bc290",
+          "006c4ca0",
+          "006cf080",
+          "006dda00",
+          "006e6010",
+          "006f7a10",
+          "006fa280",
+          "006fc9a0",
+          "007012f0",
+          "00713d50",
+          "00718990",
+          "0071c4c0",
+          "0071c500",
+          "0071eda0",
+          "0071f8c0",
+          "00720c80",
+          "00739de0",
+          "007464a0",
+          "0074eb30",
+          "00752ff0",
+          "00753990",
+          "00754f10",
+          "00754fd0",
+          "00755010",
+          "00759500",
+          "00761570",
+          "00767220",
+          "00767680",
+          "00768df0",
+          "00768e30",
+          "0076a6a0",
+          "0076a6e0",
+          "0076d0e0",
+          "0076f8a0",
+          "0077a3e0",
+          "00787520",
+          "00789fc0",
+          "0078a090",
+          "0078ef20",
+          "00790450",
+          "00798ee0",
+          "007a1100",
+          "007a1b10"
+        ],
+        "rejections": [
+          {
+            "addr": "00411290",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00412f30",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004131b0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00422550",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00430f40",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00432e50",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00465a80",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004713b0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004baa40",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d8500",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d8510",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d8520",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d8530",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d8540",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d8550",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d9070",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d9080",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d9090",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d90a0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d90b0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "004d90c0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00645ad0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006a3180",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006aec80",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006b52a0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006bc160",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006bc210",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006bc290",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006c4ca0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006cf080",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006dda00",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006e6010",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006f7a10",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006fa280",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "006fc9a0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "007012f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00713d50",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00718990",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0071c4c0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0071c500",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0071eda0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0071f8c0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00720c80",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00739de0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "007464a0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0074eb30",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00752ff0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00753990",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00754f10",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00754fd0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00755010",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00759500",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00761570",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00767220",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00767680",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00768df0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00768e30",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0076a6a0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0076a6e0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0076d0e0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0076f8a0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0077a3e0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00787520",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00789fc0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0078a090",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "0078ef20",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00790450",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "00798ee0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "007a1100",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          },
+          {
+            "addr": "007a1b10",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "00646960",
+        "references": [
+          {
+            "symbol": "??_7MultiJoint@RBX@@6B@",
+            "address": "0084ae14",
+            "kind": 6,
+            "offset": 2,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??1Joint@RBX@@UAE@XZ",
+            "address": "00645490",
+            "kind": 20,
+            "offset": 7,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "c172243b2b198995deafdac7e97146d8ca131b87074941693116bbdacfb61b17",
+        "verification_seconds": 0.006177
+      },
+      {
+        "symbol": "?putInKernel@MultiJoint@RBX@@MAEXPAVKernel@2@@Z",
+        "size": 5,
+        "body_sha256": "e8ebd827d1f36d7cfa5e5220610aa6370284d1589989363f48ac40166362d449",
+        "candidates": [
+          "00646970"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646970",
+        "references": [
+          {
+            "symbol": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+            "address": "00645830",
+            "kind": 20,
+            "offset": 1,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "930e21cd19c4a4c0b3da66e97be2fd48e6ae9f16d8715b6c8cddd6bb740fd8e7",
+        "verification_seconds": 0.000124
+      },
+      {
+        "symbol": "?addToMultiJoint@MultiJoint@RBX@@IAEXPAVPoint@2@0PAVConnector@2@@Z",
+        "size": 79,
+        "body_sha256": "7483061530b4563e8d0cde8ed5935136afad8bd5777a87fc3ff77c80eb2b0634",
+        "candidates": [
+          "00646980"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646980",
+        "references": [
+          {
+            "symbol": "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ",
+            "address": "00645850",
+            "kind": 20,
+            "offset": 58,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?insertConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z",
+            "address": "005fb160",
+            "kind": 20,
+            "offset": 65,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "f559e514d3f3bf250cc784cb20030432af35ed82115b47658b89754b95b643d9",
+        "verification_seconds": 0.000246
+      },
+      {
+        "symbol": "?getPoint@MultiJoint@RBX@@IAEPAVPoint@2@H@Z",
+        "size": 14,
+        "body_sha256": "9834919cbfa88e33bdec273903f9431215ae05221ecebb1ad98ffd6d1b07b927",
+        "candidates": [
+          "006469d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006469d0",
+        "references": [],
+        "identity": "2d1c40255e82dd5d6d466be97451823c32fa0ec46ad6ab2b3366719bdf8d4d66",
+        "verification_seconds": 0.000161
+      },
+      {
+        "symbol": "?removeFromKernel@MultiJoint@RBX@@MAEXXZ",
+        "size": 153,
+        "body_sha256": "e5be8d2f758f26e30f546b3e9650a395431e0c812fad332557459d8b4a8b735a",
+        "candidates": [
+          "006469e0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "006469e0",
+        "references": [
+          {
+            "symbol": "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ",
+            "address": "00645850",
+            "kind": 20,
+            "offset": 38,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?removeConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z",
+            "address": "005fb1f0",
+            "kind": 20,
+            "offset": 45,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ",
+            "address": "00645850",
+            "kind": 20,
+            "offset": 70,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?deletePoint@Kernel@RBX@@QAEXPAVPoint@2@@Z",
+            "address": "005fb3c0",
+            "kind": 20,
+            "offset": 77,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ",
+            "address": "00645850",
+            "kind": 20,
+            "offset": 87,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?deletePoint@Kernel@RBX@@QAEXPAVPoint@2@@Z",
+            "address": "005fb3c0",
+            "kind": 20,
+            "offset": 94,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+            "address": "00645860",
+            "kind": 20,
+            "offset": 149,
+            "external": true,
+            "requires_provider": true
+          }
+        ],
+        "identity": "7bda83617a6064bf7f928e5a7852b3a33f599b6156c8568686836ce673d01684",
+        "verification_seconds": 0.000215
+      },
+      {
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "size": 58,
+        "body_sha256": "bfaf4a6457794e99b470359e1726ad845c99db77d2e427f34b3e445e08e3ced4",
+        "candidates": [
+          "00646a80"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646a80",
+        "references": [],
+        "identity": "a82b7078041e0b3d324bb20ce2ddf1b27260a5a54c81bbd5e32fe766fc633ae2",
+        "verification_seconds": 0.000241
+      },
+      {
+        "symbol": "??$min@M@std@@YAABMABM0@Z",
+        "size": 24,
+        "body_sha256": "fc6dac18d99a4050e5b42d7e6f43822662b1c1db7521ee1896f6ab69ab92e806",
+        "candidates": [
+          "004452f0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004452f0",
+        "references": [],
+        "identity": "4fbfba1a72376723972f85cad23ec289bcc3f84af9377e4bc0a5b22da99b4c0a",
+        "verification_seconds": 0.000233
+      },
+      {
+        "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+        "size": 45,
+        "body_sha256": "436377e3552a244a5fdef21c32294c950d1476d8427ebc98d18a32e4b2868f1a",
+        "candidates": [
+          "004782a0",
+          "005149f0"
+        ],
+        "rejections": [
+          {
+            "addr": "005149f0",
+            "errors": [
+              "symbol identity not established by current reference evidence"
+            ]
+          }
+        ],
+        "status": "inactive_exact",
+        "addr": "004782a0",
+        "references": [
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 7,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 17,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 29,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 35,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 40,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "da508da730ba697febd316b8c4d73c8aa54fbb12b043276b73dd89adbb471c66",
+        "verification_seconds": 0.000501
+      },
+      {
+        "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+        "size": 86,
+        "body_sha256": "9968d6998392959c0564c54ad1205d8707e89c19c45015acb39660bad62b529c",
+        "candidates": [
+          "004782d0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "004782d0",
+        "references": [
+          {
+            "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+            "address": "00513e20",
+            "kind": 20,
+            "offset": 4,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+            "address": "00513220",
+            "kind": 20,
+            "offset": 12,
+            "external": true,
+            "requires_provider": true
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 23,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+            "address": "0096f050",
+            "kind": 6,
+            "offset": 33,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 39,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 45,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 51,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 57,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 68,
+            "external": false,
+            "requires_provider": false
+          },
+          {
+            "symbol": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+            "address": "0096f044",
+            "kind": 6,
+            "offset": 77,
+            "external": false,
+            "requires_provider": false
+          }
+        ],
+        "identity": "1a78085e1648b40610bbcb29da8b239fd8b61fb6dc3817648dc7c77b3b0071b8",
+        "verification_seconds": 0.000266
+      },
+      {
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 18,
+        "body_sha256": "cc16ac9dd9c5b33cc53dd820b8e103b14f7d12c53b93b9afc0d4cd42d602d7d8",
+        "candidates": [
+          "005e28c0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "005e28c0",
+        "references": [
+          {
+            "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+            "address": "004782d0",
+            "kind": 20,
+            "offset": 8,
+            "external": false,
+            "requires_provider": true
+          }
+        ],
+        "identity": "fd06a87073d00985a1ab32a388f485894615543a9291d6d3e30abfe37346d955",
+        "verification_seconds": 9.8e-05
+      },
+      {
+        "symbol": "?getJointK@MultiJoint@RBX@@IAEMXZ",
+        "size": 102,
+        "body_sha256": "d74fbaf6849e9967cf1750f32034554bc7dabe22d1c200a91c049b0a6a71a08c",
+        "candidates": [
+          "00646af0"
+        ],
+        "rejections": [],
+        "status": "inactive_exact",
+        "addr": "00646af0",
+        "references": [],
+        "identity": "67cd586426d95d6d7dbdfbad3b92c1b80743be8712051a7f9b591b2781b24bbd",
+        "verification_seconds": 0.000351
+      }
+    ],
+    "blockers": [
+      "missing reference receipt: work/native-client/ogre-registry-identities.json"
+    ],
+    "trials": [
+      "MultiJoint implicit std::min calls:108B, explicit locals:108B; explicit locals with fp:fast:102B exact",
+      "RigidJoint authentic isAligned/align + Primitive2008:both exact",
+      "MotorJoint authentic isAligned:155B exact; existing stepUi160B -> fp:fast102B exact"
+    ],
+    "remaining": [
+      "RigidJoint faceIdToCoords00645980 needs authentic Primitive face-coordinate declaration; shared Primitive2008 not edited",
+      "Joint setPrimitive006456e0/setJointCoord00645750 remain pending World header compatibility",
+      "RotateJoint canBuildJoint00645f60/putInKernel00646550 need Primitive/Body source recovery; pre-existing source preserved",
+      "GlueJoint face constructor00646cc0/canBuildJoint00646f60/putInKernel00647190 not implemented",
+      "EdgeIterator bodies already exist native-world/App/v8world/Clump.cpp; no duplicate provider",
+      "JointInstance005e3a80 and VelocityMotor ancestor/setHole depend on shared JointInstance/Workspace declarations"
+    ],
+    "sessions": [
+      "9fe84b303e63442cafd1149c7080c96a",
+      "aae21facee8c4acaa1bf5b7bc3db4dc9",
+      "7e83f86020014356be74894a7842ff0d",
+      "a0a308a404b245e98fccdec503eb7cc3"
+    ],
+    "next_class": "Continue GlueJoint constructor00646cc0 with original-backed Primitive face-coordinate header proposal; independent queue fallback EffectSettings",
+    "limitations": [
+      "Inactive object evidence only; family has missing ogre-registry-identities.json receipt; no linked selection ABI/runtime/server-credit claims"
+    ]
+  },
+  "round3": {
+    "new_exact_addresses": [
+      "00613f20",
+      "00613f40",
+      "00614040",
+      "006142d0",
+      "00614380",
+      "00613fb0",
+      "00614200"
+    ],
+    "new_exact_count": 7,
+    "new_exact_bytes": 794,
+    "change": "Body static p initializer zero -> 1, proven original PE DWORD0095a898",
+    "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp",
+    "header": "rebuild/2008-06/native-headers/v8kernel/Body2008.h",
+    "header_additions": [
+      "getStateIndex",
+      "getRootConst",
+      "getBranchTorque",
+      "getBranchIBodyV3"
+    ],
+    "header_evidence": "BodyGyro0062e95d root+10, simBody+2c, torque+90; updatePV0059936a and005993bc update then read stateIndex+90",
+    "proposal": "work/native-candidates/sol2/primitive-face-proposal.txt",
+    "parked": {
+      "GlueJoint": "Primitive face declarations absent; constructor/canBuild/putInKernel unchanged",
+      "Body.updatePV00599360": "first divergence prologue: candidate sub esp48; original static PV computation005991c0 writes output directly; donor return-by-value pvAtLocalCoord generates temporary. Trial removed; need authentic PV static output API declaration."
+    },
+    "sessions": [
+      "4ea0cfb865414227a00d63d391e7636d",
+      "9fe84b303e63442cafd1149c7080c96a",
+      "a6c6d76a26974a918e3a3a0e464209ed"
+    ],
+    "limitations": [
+      "inactive object proofs only; no linked/runtime/server credit",
+      "BodyGyro must select Body2008 without donor Body redefinition"
+    ],
+    "next_action": "sol3 BodyGyro header selection, then Primitive owner proposal for GlueJoint"
+  }
+}

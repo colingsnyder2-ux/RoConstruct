@@ -1,0 +1,1253 @@
+{
+  "worker": "sol7",
+  "model": "gpt-6.1-sol",
+  "revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_source": "rebuild/2008-06/native-classes/RenderEffectSettings2008.cpp",
+  "new_inactive_exact": [
+    "00506b80",
+    "00506dd0"
+  ],
+  "new_source_sha256": "0e39eb4590d98b54ee9fdcacb6a6444c37af0cf8f08abc3d476bf456cca93ec3",
+  "proofs": {
+    "ViewNewCylinderMesh": {
+      "manifest": "work\\native-client\\prove-out\\prove-ViewNewCylinderMesh\\manifest.json",
+      "sha256": "3f558d50ea1a9de22541507cfa3d7dd4021a7ff35a1c478dcfe44c801c56eed0",
+      "blockers": [
+        "missing reference receipt: work/native-client/ogre-registry-identities.json"
+      ],
+      "methods": [
+        {
+          "symbol": "?buildRight@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+          "addr": "004fd590",
+          "status": "inactive_exact",
+          "size": 36
+        },
+        {
+          "symbol": "?buildTop@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+          "addr": "004fd5c0",
+          "status": "inactive_exact",
+          "size": 42
+        },
+        {
+          "symbol": "?buildBack@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+          "addr": "004fd5f0",
+          "status": "inactive_exact",
+          "size": 42
+        },
+        {
+          "symbol": "?buildLeft@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+          "addr": "004fd620",
+          "status": "inactive_exact",
+          "size": 36
+        },
+        {
+          "symbol": "?buildBottom@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+          "addr": "004fd650",
+          "status": "inactive_exact",
+          "size": 42
+        },
+        {
+          "symbol": "?buildFront@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+          "addr": "004fd680",
+          "status": "inactive_exact",
+          "size": 42
+        },
+        {
+          "symbol": "??1CylinderBuilder@ViewNew@RBX@@QAE@XZ",
+          "addr": "004fab30",
+          "status": "inactive_exact",
+          "size": 56
+        }
+      ]
+    },
+    "ViewNewBrickMeshBuild2008": {
+      "manifest": "work\\native-client\\prove-out\\prove-ViewNewBrickMeshBuild2008\\manifest.json",
+      "sha256": "7760e53ea11f876e5f2533cbe4c56c7ec11080edb3f7fc651a1636417ec78644",
+      "blockers": [
+        "missing reference receipt: work/native-client/ogre-registry-identities.json"
+      ],
+      "methods": [
+        {
+          "symbol": "??0Cache@BrickMesh@ViewNew@RBX@@QAE@XZ",
+          "addr": "004e5300",
+          "status": "inactive_exact",
+          "size": 89
+        },
+        {
+          "symbol": "?initCache@BrickMesh@ViewNew@RBX@@CAXXZ",
+          "addr": "004e5360",
+          "status": "inactive_exact",
+          "size": 96
+        },
+        {
+          "symbol": "?flushCache@BrickMesh@ViewNew@RBX@@SAXXZ",
+          "addr": "004e5670",
+          "status": "inactive_exact",
+          "size": 147
+        },
+        {
+          "symbol": "?releaseUnused@BrickMesh@ViewNew@RBX@@CAXXZ",
+          "addr": "004e5710",
+          "status": "inactive_exact",
+          "size": 408
+        }
+      ]
+    },
+    "RenderSceneBase2008": {
+      "manifest": "work\\native-client\\prove-out\\prove-RenderSceneBase2008\\manifest.json",
+      "sha256": "d4a5b948eaeb0eeb61785ea0be8d4b5bcf1d7bdb7a5325c61bdaceee41c7ff86",
+      "blockers": [
+        "missing reference receipt: work/native-client/ogre-registry-identities.json"
+      ],
+      "methods": [
+        {
+          "symbol": "?materialDepthPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z",
+          "addr": "005051e0",
+          "status": "inactive_exact",
+          "size": 49
+        },
+        {
+          "symbol": "?materialPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z",
+          "addr": "00505220",
+          "status": "inactive_exact",
+          "size": 23
+        },
+        {
+          "symbol": "?depthPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z",
+          "addr": "00505240",
+          "status": "inactive_exact",
+          "size": 34
+        },
+        {
+          "symbol": "?setThrottle@RenderScene@Render@RBX@@UAEXMM_NM@Z",
+          "addr": "00502d30",
+          "status": "inactive_exact",
+          "size": 320
+        },
+        {
+          "symbol": "??0RenderSurface@Render@RBX@@QAE@XZ",
+          "addr": null,
+          "status": "draft",
+          "size": 19
+        },
+        {
+          "symbol": "??1RenderSurface@Render@RBX@@QAE@XZ",
+          "addr": "00485c60",
+          "status": "inactive_exact",
+          "size": 56
+        },
+        {
+          "symbol": "??0RenderSurface@Render@RBX@@QAE@ABV012@@Z",
+          "addr": "00502500",
+          "status": "inactive_exact",
+          "size": 81
+        },
+        {
+          "symbol": "??_GRenderSurface@Render@RBX@@QAEPAXI@Z",
+          "addr": null,
+          "status": "draft",
+          "size": 76
+        },
+        {
+          "symbol": "??1RenderScene@Render@RBX@@UAE@XZ",
+          "addr": "00503a60",
+          "status": "inactive_exact",
+          "size": 581
+        },
+        {
+          "symbol": "??_GRenderScene@Render@RBX@@UAEPAXI@Z",
+          "addr": "00503fc0",
+          "status": "inactive_exact",
+          "size": 30
+        },
+        {
+          "symbol": "??0RenderScene@Render@RBX@@QAE@XZ",
+          "addr": "00505040",
+          "status": "inactive_exact",
+          "size": 413
+        }
+      ]
+    },
+    "RenderEffectSettings2008": {
+      "manifest": "work\\native-client\\prove-out\\prove-RenderEffectSettings2008\\manifest.json",
+      "sha256": "c993d4ed5040665467e829bbd17e9787c2f2a7565423dc89e13dfb0865dd1405",
+      "blockers": [
+        "missing reference receipt: work/native-client/ogre-registry-identities.json"
+      ],
+      "methods": [
+        {
+          "symbol": "?getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ",
+          "addr": "00506b80",
+          "status": "inactive_exact",
+          "size": 117
+        },
+        {
+          "symbol": "?update@EffectSettings@Render@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z",
+          "addr": "00506dd0",
+          "status": "inactive_exact",
+          "size": 940
+        },
+        {
+          "symbol": "??__FtoneMap@?1??getToneMap@EffectSettings@Render@RBX@@SAPAVToneMap@G3D@@XZ@YAXXZ",
+          "addr": "007fc5b0",
+          "status": "inactive_exact",
+          "size": 29
+        }
+      ]
+    }
+  },
+  "owner_gates": "ABI, full EH graph, selected providers, closure and runtime remain unproved",
+  "draft_blocker": null,
+  "next_class": "Repair authentic LevelBuilder buildFace declaration under owner lease, then PBB/Torso; otherwise PartChunk/ViewRbxGfx leftovers.",
+  "parked": {
+    "TorsoBuilder": "compile failure C2244 missing template declaration and C2780 four-argument by-value overload; original 004faaf0 proves copy ABI",
+    "RenderBase::Mesh": "authentic global container declarations and vertex allocator overloads absent; no offset surrogates introduced",
+    "Render": "3/9 assigned namespace helpers verified existing; other address inventory not established in this pass",
+    "EffectSettings": "third assigned address 007afc60 is separate pre-existing RenderNew provider; not duplicated"
+  },
+  "round2": {
+    "proofs": {
+      "ViewNewSphereMesh": {
+        "manifest": "work\\native-client\\prove-out\\prove-ViewNewSphereMesh\\manifest.json",
+        "sha256": "f713f4704e02c0203ea1dc27e26c1cda327683d0b77fb3ea0cb617e07929ee51",
+        "blockers": [
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": [
+          {
+            "symbol": "?buildRight@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fce90",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildTop@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcec0",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildBack@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcef0",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildLeft@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcf20",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildBottom@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcf50",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildFront@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcf80",
+            "status": "inactive_exact",
+            "size": 36
+          }
+        ]
+      },
+      "ViewNewHeadMesh": {
+        "manifest": "work\\native-client\\prove-out\\prove-ViewNewHeadMesh\\manifest.json",
+        "sha256": "df74fac078c477dff6c83d11dd12ef3a497f38f30724a6deaad7ba58535da3cd",
+        "blockers": [
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": [
+          {
+            "symbol": "?buildTop@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500020",
+            "status": "inactive_exact",
+            "size": 47
+          },
+          {
+            "symbol": "?buildBottom@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500050",
+            "status": "inactive_exact",
+            "size": 47
+          },
+          {
+            "symbol": "?buildLeft@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 55
+          },
+          {
+            "symbol": "?buildRight@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 55
+          },
+          {
+            "symbol": "?buildFront@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 55
+          },
+          {
+            "symbol": "?buildBack@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 55
+          }
+        ]
+      },
+      "ViewNewPBBMesh": {
+        "manifest": "work\\native-client\\prove-out\\prove-ViewNewPBBMesh\\manifest.json",
+        "sha256": "a6f7d68eb55bd7bb5f2c94efe1e5b31052ec7ac830c8aec643c39b91310f6187",
+        "blockers": [
+          "compiler failed; see compile.log",
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": []
+      },
+      "DrawPrimitives2008": {
+        "manifest": "work\\native-client\\prove-out\\prove-DrawPrimitives2008\\manifest.json",
+        "sha256": "c07f6fd92c8bdfcc420040a2160390a5657705f1086848d99c3bf315aa99949b",
+        "blockers": [
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": [
+          {
+            "symbol": "?rawSphere@DrawPrimitives@RBX@@SAXMPAVRenderDevice@G3D@@@Z",
+            "addr": "00677de0",
+            "status": "inactive_exact",
+            "size": 58
+          },
+          {
+            "symbol": "?rawCylinderAlongX@DrawPrimitives@RBX@@SAXMMPAVRenderDevice@G3D@@@Z",
+            "addr": "00677e20",
+            "status": "inactive_exact",
+            "size": 318
+          },
+          {
+            "symbol": "?rawBox@DrawPrimitives@RBX@@SAXABVAABox@G3D@@PAVRenderDevice@4@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 242
+          },
+          {
+            "symbol": "?outlineRect2d@DrawPrimitives@RBX@@SAXABVRect@2@MPAVRenderDevice@G3D@@ABVColor4@5@@Z",
+            "addr": "00678080",
+            "status": "inactive_exact",
+            "size": 367
+          },
+          {
+            "symbol": "?line2d@DrawPrimitives@RBX@@SAXABVVector2@G3D@@0PAVRenderDevice@4@ABVColor4@4@@Z",
+            "addr": "006781f0",
+            "status": "inactive_exact",
+            "size": 134
+          },
+          {
+            "symbol": "?rect2d@DrawPrimitives@RBX@@SAXABVRect@2@PAVRenderDevice@G3D@@ABVColor4@5@@Z",
+            "addr": "00678280",
+            "status": "inactive_exact",
+            "size": 130
+          }
+        ]
+      },
+      "DrawAdorn2008": {
+        "manifest": "work\\native-client\\prove-out\\prove-DrawAdorn2008\\manifest.json",
+        "sha256": "70d4d42d205d6ad3298b3c69ebaa09646c63d20a10b7aef5639012ed1fb2445b",
+        "blockers": [
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": [
+          {
+            "symbol": "?cylinder@DrawAdorn@RBX@@SAXPAVAdorn@2@ABVCoordinateFrame@G3D@@HMMABVColor3@5@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 168
+          },
+          {
+            "symbol": "?surfaceBorder@DrawAdorn@RBX@@CAXPAVAdorn@2@ABVVector3@G3D@@MHABVColor4@5@@Z",
+            "addr": "006774a0",
+            "status": "inactive_exact",
+            "size": 394
+          },
+          {
+            "symbol": "?partSurface@DrawAdorn@RBX@@SAXABVPart@2@HPAVAdorn@2@ABVColor4@G3D@@@Z",
+            "addr": "00677630",
+            "status": "inactive_exact",
+            "size": 99
+          }
+        ]
+      },
+      "RenderMaterial": {
+        "manifest": "work\\native-client\\prove-out\\prove-RenderMaterial\\manifest.json",
+        "sha256": "507ede438f91a480fb0583fd6970540dcdf8aed2c8c0e1f0401acf8a15a0e774",
+        "blockers": [
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": [
+          {
+            "symbol": "?isEmptyLevel@Level@Material@Render@RBX@@UBE_NXZ",
+            "addr": "007acef0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?color@Level@Material@Render@RBX@@UBEABVColor3@G3D@@XZ",
+            "addr": "007b76a0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?specular@Level@Material@Render@RBX@@UBEMXZ",
+            "addr": "007b76b0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?shiny@Level@Material@Render@RBX@@UBEMXZ",
+            "addr": "007b76c0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?reflect@Level@Material@Render@RBX@@UBEMXZ",
+            "addr": "00503cb0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?transparent@Level@Material@Render@RBX@@UBEMXZ",
+            "addr": "007b76d0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?size@?$Array@VLevel@Material@Render@RBX@@@G3D@@QBEHXZ",
+            "addr": null,
+            "status": "draft",
+            "size": 4
+          },
+          {
+            "symbol": "?last@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEAAVLevel@Material@Render@RBX@@XZ",
+            "addr": null,
+            "status": "draft",
+            "size": 13
+          },
+          {
+            "symbol": "?inArray@?$Array@VLevel@Material@Render@RBX@@@G3D@@AAE_NPBVLevel@Material@Render@RBX@@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 35
+          },
+          {
+            "symbol": "?levelCount@Material@Render@RBX@@UBEIXZ",
+            "addr": "007acda0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?getLevel@Material@Render@RBX@@UAEAAVLevel@MaterialBase@RenderBase@3@H@Z",
+            "addr": "007b7590",
+            "status": "inactive_exact",
+            "size": 13
+          },
+          {
+            "symbol": "?detailLevel@Material@Render@RBX@@UBEPBVLevel@MaterialBase@RenderBase@3@M@Z",
+            "addr": "007b75a0",
+            "status": "inactive_exact",
+            "size": 91
+          },
+          {
+            "symbol": "?veryTransparent@Material@Render@RBX@@UBE_NXZ",
+            "addr": "007acd70",
+            "status": "inactive_exact",
+            "size": 34
+          },
+          {
+            "symbol": "??0Level@Material@Render@RBX@@QAE@ABV0123@@Z",
+            "addr": "007b7600",
+            "status": "inactive_exact",
+            "size": 158
+          },
+          {
+            "symbol": "?realloc@?$Array@VLevel@Material@Render@RBX@@@G3D@@AAEXH@Z",
+            "addr": "007b7740",
+            "status": "inactive_exact",
+            "size": 207
+          },
+          {
+            "symbol": "?baseTexture@Level@Material@Render@RBX@@UBE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@XZ",
+            "addr": "007b7810",
+            "status": "inactive_exact",
+            "size": 38
+          },
+          {
+            "symbol": "?baseTexture@Level@Material@Render@RBX@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@6@@Z",
+            "addr": "007ad0a0",
+            "status": "inactive_exact",
+            "size": 50
+          },
+          {
+            "symbol": "?setBaseTexture@Level@Material@Render@RBX@@UAEXV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@@Z",
+            "addr": "007ad0e0",
+            "status": "inactive_exact",
+            "size": 113
+          },
+          {
+            "symbol": "?matte@Level@Material@Render@RBX@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@6@@Z",
+            "addr": "007ad160",
+            "status": "inactive_exact",
+            "size": 50
+          },
+          {
+            "symbol": "??0Level@Material@Render@RBX@@QAE@XZ",
+            "addr": "007b7840",
+            "status": "inactive_exact",
+            "size": 110
+          },
+          {
+            "symbol": "??0Level@Material@Render@RBX@@QAE@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@VColor3@5@MMMM@Z",
+            "addr": "007b78b0",
+            "status": "inactive_exact",
+            "size": 421
+          },
+          {
+            "symbol": "??1Level@Material@Render@RBX@@UAE@XZ",
+            "addr": "007b7a60",
+            "status": "inactive_exact",
+            "size": 172
+          },
+          {
+            "symbol": "?configureRenderDevice@Level@Material@Render@RBX@@UBEXPAVRenderDevice@G3D@@@Z",
+            "addr": "007b7b10",
+            "status": "inactive_exact",
+            "size": 209
+          },
+          {
+            "symbol": "?resize@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEXH_N@Z",
+            "addr": "007b7c50",
+            "status": "inactive_exact",
+            "size": 368
+          },
+          {
+            "symbol": "?resize@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEXH@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 15
+          },
+          {
+            "symbol": "?append@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEXABVLevel@Material@Render@RBX@@@Z",
+            "addr": "007b7de0",
+            "status": "inactive_exact",
+            "size": 227
+          },
+          {
+            "symbol": "?next@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEAAVLevel@Material@Render@RBX@@XZ",
+            "addr": null,
+            "status": "draft",
+            "size": 29
+          },
+          {
+            "symbol": "?init@?$Array@VLevel@Material@Render@RBX@@@G3D@@AAEXHH@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 34
+          },
+          {
+            "symbol": "?appendEmptyLevel@Material@Render@RBX@@UAEABVLevel@MaterialBase@RenderBase@3@XZ",
+            "addr": "007b7ed0",
+            "status": "inactive_exact",
+            "size": 32
+          },
+          {
+            "symbol": "?appendLevel@Material@Render@RBX@@UAEABVLevel@MaterialBase@RenderBase@3@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@VColor3@8@MMMM@Z",
+            "addr": "007b7ef0",
+            "status": "inactive_exact",
+            "size": 245
+          },
+          {
+            "symbol": "?appendLevel@Material@Render@RBX@@UAEABVLevel@MaterialBase@RenderBase@3@VColor3@G3D@@MMMM@Z",
+            "addr": "007b7ff0",
+            "status": "inactive_exact",
+            "size": 176
+          }
+        ]
+      },
+      "RenderMaterialNew": {
+        "manifest": "work\\native-client\\prove-out\\prove-RenderMaterialNew\\manifest.json",
+        "sha256": "0f8140d0a5035a4dde81ac0eb2a25f6e9509373631d7df69a12fe5fe2b375c69",
+        "blockers": [
+          "missing reference receipt: work/native-client/ogre-registry-identities.json"
+        ],
+        "methods": [
+          {
+            "symbol": "?isEmptyLevel@Level@Material@RenderNew@RBX@@UBE_NXZ",
+            "addr": "007acef0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?color@Level@Material@RenderNew@RBX@@UBEABVColor3@G3D@@XZ",
+            "addr": "007b76a0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?specular@Level@Material@RenderNew@RBX@@UBEMXZ",
+            "addr": "007b76b0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?shiny@Level@Material@RenderNew@RBX@@UBEMXZ",
+            "addr": "007b76c0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?reflect@Level@Material@RenderNew@RBX@@UBEMXZ",
+            "addr": "00503cb0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?transparent@Level@Material@RenderNew@RBX@@UBEMXZ",
+            "addr": "007b76d0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?size@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QBEHXZ",
+            "addr": null,
+            "status": "draft",
+            "size": 4
+          },
+          {
+            "symbol": "?last@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QAEAAVLevel@Material@RenderNew@RBX@@XZ",
+            "addr": null,
+            "status": "draft",
+            "size": 19
+          },
+          {
+            "symbol": "?inArray@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@AAE_NPBVLevel@Material@RenderNew@RBX@@@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 45
+          },
+          {
+            "symbol": "?levelCount@Material@RenderNew@RBX@@UBEIXZ",
+            "addr": "007acda0",
+            "status": "inactive_exact",
+            "size": 4
+          },
+          {
+            "symbol": "?getLevel@Material@RenderNew@RBX@@UAEAAVLevel@MaterialBase@RenderBase@3@H@Z",
+            "addr": "007acdb0",
+            "status": "inactive_exact",
+            "size": 22
+          },
+          {
+            "symbol": "?detailLevel@Material@RenderNew@RBX@@UBEPBVLevel@MaterialBase@RenderBase@3@M@Z",
+            "addr": "007acdd0",
+            "status": "inactive_exact",
+            "size": 99
+          },
+          {
+            "symbol": "?veryTransparent@Material@RenderNew@RBX@@UBE_NXZ",
+            "addr": "007acd70",
+            "status": "inactive_exact",
+            "size": 34
+          },
+          {
+            "symbol": "??0Level@Material@RenderNew@RBX@@QAE@ABV0123@@Z",
+            "addr": "007ace40",
+            "status": "inactive_exact",
+            "size": 176
+          },
+          {
+            "symbol": "?realloc@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@AAEXH@Z",
+            "addr": "007acf70",
+            "status": "inactive_exact",
+            "size": 229
+          },
+          {
+            "symbol": "?baseTexture@Level@Material@RenderNew@RBX@@UBE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@XZ",
+            "addr": "007b7810",
+            "status": "inactive_exact",
+            "size": 38
+          },
+          {
+            "symbol": "?baseTexture@Level@Material@RenderNew@RBX@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@6@@Z",
+            "addr": "007ad0a0",
+            "status": "inactive_exact",
+            "size": 50
+          },
+          {
+            "symbol": "?setBaseTexture@Level@Material@RenderNew@RBX@@UAEXV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@@Z",
+            "addr": "007ad0e0",
+            "status": "inactive_exact",
+            "size": 113
+          },
+          {
+            "symbol": "?matte@Level@Material@RenderNew@RBX@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@6@@Z",
+            "addr": "007ad160",
+            "status": "inactive_exact",
+            "size": 50
+          },
+          {
+            "symbol": "??0Level@Material@RenderNew@RBX@@QAE@XZ",
+            "addr": "007ad1a0",
+            "status": "inactive_exact",
+            "size": 131
+          },
+          {
+            "symbol": "??0Level@Material@RenderNew@RBX@@QAE@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@VColor3@5@MMMM@Z",
+            "addr": "007ad230",
+            "status": "inactive_exact",
+            "size": 218
+          },
+          {
+            "symbol": "??1Level@Material@RenderNew@RBX@@UAE@XZ",
+            "addr": "007ad310",
+            "status": "inactive_exact",
+            "size": 319
+          },
+          {
+            "symbol": "?resize@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QAEXH_N@Z",
+            "addr": "007ad4b0",
+            "status": "inactive_exact",
+            "size": 390
+          },
+          {
+            "symbol": "?resize@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QAEXH@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 15
+          },
+          {
+            "symbol": "?append@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QAEXABVLevel@Material@RenderNew@RBX@@@Z",
+            "addr": "007ad660",
+            "status": "inactive_exact",
+            "size": 247
+          },
+          {
+            "symbol": "?next@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QAEAAVLevel@Material@RenderNew@RBX@@XZ",
+            "addr": null,
+            "status": "draft",
+            "size": 35
+          },
+          {
+            "symbol": "?init@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@AAEXHH@Z",
+            "addr": null,
+            "status": "draft",
+            "size": 34
+          },
+          {
+            "symbol": "?appendEmptyLevel@Material@RenderNew@RBX@@UAEABVLevel@MaterialBase@RenderBase@3@XZ",
+            "addr": "007ad760",
+            "status": "inactive_exact",
+            "size": 38
+          },
+          {
+            "symbol": "?appendLevel@Material@RenderNew@RBX@@UAEABVLevel@MaterialBase@RenderBase@3@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@VColor3@8@MMMM@Z",
+            "addr": "007ad790",
+            "status": "inactive_exact",
+            "size": 260
+          },
+          {
+            "symbol": "?appendLevel@Material@RenderNew@RBX@@UAEABVLevel@MaterialBase@RenderBase@3@VColor3@G3D@@MMMM@Z",
+            "addr": "007ad8a0",
+            "status": "inactive_exact",
+            "size": 188
+          }
+        ]
+      }
+    },
+    "new_files": [
+      "rebuild/2008-06/native-classes/DrawPrimitives2008.cpp",
+      "rebuild/2008-06/native-classes/DrawAdorn2008.cpp"
+    ],
+    "extended_files": [
+      "rebuild/2008-06/native-classes/RenderMaterial.cpp",
+      "rebuild/2008-06/native-classes/RenderMaterialNew.cpp"
+    ],
+    "notes": "Material changes only restore explicit compiler flags and Ogre include path; pre-existing implementations. New DrawAdorn source reproduces two pre-existing exact donor methods; no new exact claim for those. All are inactive; missing ogre-registry-identities.json prevents full family preflight.",
+    "parked": {
+      "00677f60": "284 original versus 242 candidate; first divergence original EH registration prologue absent. Need authentic exception/destructor lifetime declaration; do not fabricate destructor.",
+      "DrawAdorn::cylinder": "168-byte candidate remains draft; matrix temporary assignment differs; next original symbol/address inventory required.",
+      "HeadBuilder": "top/bottom exact; four 55-byte side methods draft; next inspect transform/helper call identity.",
+      "PBBBuilder": "C2244 QuadVolumeFace.h:98 seven-argument LevelBuilder template lacks declaration; shared-header owner repair required.",
+      "TorsoBuilder": "Prior C2244/C2780 proposal retained; not retried."
+    },
+    "next": "Repair authentic LevelBuilder buildFace declaration under owner lease, then PBB/Torso; otherwise PartChunk/ViewRbxGfx leftovers.",
+    "sessions": [
+      "3f7672c7d1334f52b5f17c87f6482e8e",
+      "45950fdc20da4874add2f766ddb17ae6",
+      "d36765d7dcba494496953a096a09b8a2",
+      "b10a47e269114443abcdeda57e6e08df"
+    ],
+    "limits": "Stopped before requested three hours at context limit; family not exhausted. PartChunk/ViewRbxGfx/IRenderableBucket and Mesh leftovers not rechecked this round."
+  },
+  "round3": {
+    "proofs": {
+      "ViewNewPBBMesh": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewPBBMesh\\ledger.json",
+        "sha256": "138d9b9d3333dabcc26ebc7025b060b7f1bd944d1dcedc708cbee047fa6bb518",
+        "object_sha256": "de9c13d95593c1a4d59b3561aeb6ba6c0ebd7eb622d0a5df14cee134923e0ab9",
+        "emitted_exact": 76,
+        "methods": [
+          {
+            "symbol": "?buildTop@PBBBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f4790",
+            "status": "inactive_exact",
+            "size": 83
+          },
+          {
+            "symbol": "?buildBottom@PBBBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f47f0",
+            "status": "inactive_exact",
+            "size": 83
+          },
+          {
+            "symbol": "?buildLeft@PBBBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f4850",
+            "status": "inactive_exact",
+            "size": 83
+          },
+          {
+            "symbol": "?buildRight@PBBBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f48b0",
+            "status": "inactive_exact",
+            "size": 83
+          },
+          {
+            "symbol": "?buildFront@PBBBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f4910",
+            "status": "inactive_exact",
+            "size": 83
+          },
+          {
+            "symbol": "?buildBack@PBBBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f4970",
+            "status": "inactive_exact",
+            "size": 83
+          }
+        ]
+      },
+      "ViewNewTorsoMesh": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewTorsoMesh\\ledger.json",
+        "sha256": "f96c285a52f900d6ecd3d1bb11aabb8298111ebe9968acc68d9a5da7e94a0bc2",
+        "object_sha256": "5be5f8f865e2022c5cc5ced3340e7c74a1573a29e6278e2eb76e3d1bc7b09e44",
+        "emitted_exact": 87,
+        "methods": [
+          {
+            "symbol": "?buildRight@TorsoBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fa050",
+            "status": "inactive_exact",
+            "size": 64
+          },
+          {
+            "symbol": "?buildTop@TorsoBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fa090",
+            "status": "inactive_exact",
+            "size": 64
+          },
+          {
+            "symbol": "?buildBack@TorsoBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fa0d0",
+            "status": "inactive_exact",
+            "size": 64
+          },
+          {
+            "symbol": "?buildLeft@TorsoBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fa110",
+            "status": "inactive_exact",
+            "size": 64
+          },
+          {
+            "symbol": "?buildFront@TorsoBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fa150",
+            "status": "inactive_exact",
+            "size": 64
+          },
+          {
+            "symbol": "?buildBottom@TorsoBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004faaf0",
+            "status": "inactive_exact",
+            "size": 54
+          }
+        ]
+      },
+      "ViewNewHeadMesh": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewHeadMesh\\ledger.json",
+        "sha256": "a18bef8bd35c88c3252b2b11022a89770509d08f63156edd06ad7b0df6fb8e70",
+        "object_sha256": "17a5424695d4213159135f6dc2d1397c1648b39f7e36baecc7e94192a0101e67",
+        "emitted_exact": 43,
+        "methods": [
+          {
+            "symbol": "?buildTop@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500020",
+            "status": "inactive_exact",
+            "size": 47
+          },
+          {
+            "symbol": "?buildBottom@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500050",
+            "status": "inactive_exact",
+            "size": 47
+          },
+          {
+            "symbol": "?buildLeft@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500080",
+            "status": "inactive_exact",
+            "size": 58
+          },
+          {
+            "symbol": "?buildRight@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "005000c0",
+            "status": "inactive_exact",
+            "size": 58
+          },
+          {
+            "symbol": "?buildFront@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500100",
+            "status": "inactive_exact",
+            "size": 58
+          },
+          {
+            "symbol": "?buildBack@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "00500140",
+            "status": "inactive_exact",
+            "size": 58
+          }
+        ]
+      },
+      "ViewNewSphereMesh": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewSphereMesh\\ledger.json",
+        "sha256": "a52f7939751d809d148ac0175f083ad1bd50b77423ab0abf76c9ec37e1583cda",
+        "object_sha256": "16fde5ac80015168c471cf255c4a781e839ee1983f524def998b065977067d28",
+        "emitted_exact": 44,
+        "methods": [
+          {
+            "symbol": "?buildRight@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fce90",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildTop@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcec0",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildBack@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcef0",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildLeft@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcf20",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildBottom@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcf50",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildFront@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fcf80",
+            "status": "inactive_exact",
+            "size": 36
+          }
+        ]
+      },
+      "ViewNewCylinderMesh": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewCylinderMesh\\ledger.json",
+        "sha256": "82bec1841000be2a940a95b86cff0fd4a6735229f436187f3486d53d3b586a16",
+        "object_sha256": "07517248e8f56400626d06735d09b4b0052c648c3e57083e5f6e818632aab0bc",
+        "emitted_exact": 57,
+        "methods": [
+          {
+            "symbol": "?buildRight@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fd590",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildTop@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fd5c0",
+            "status": "inactive_exact",
+            "size": 42
+          },
+          {
+            "symbol": "?buildBack@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fd5f0",
+            "status": "inactive_exact",
+            "size": 42
+          },
+          {
+            "symbol": "?buildLeft@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fd620",
+            "status": "inactive_exact",
+            "size": 36
+          },
+          {
+            "symbol": "?buildBottom@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fd650",
+            "status": "inactive_exact",
+            "size": 42
+          },
+          {
+            "symbol": "?buildFront@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004fd680",
+            "status": "inactive_exact",
+            "size": 42
+          }
+        ]
+      },
+      "ViewNewWedgeMesh": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewWedgeMesh\\ledger.json",
+        "sha256": "baf22df344195ecda87c3264f0d896bbb6dedcbac1b73d2f9cd82c157e26bda5",
+        "object_sha256": "1e5259e31b3cb215be01ec81178fac212cc8ff44785b2a35c5fc093dfeca4ffa",
+        "emitted_exact": 93,
+        "methods": [
+          {
+            "symbol": "?buildRight@WedgeBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f6e90",
+            "status": "inactive_exact",
+            "size": 67
+          },
+          {
+            "symbol": "?buildTop@WedgeBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f6ee0",
+            "status": "inactive_exact",
+            "size": 52
+          },
+          {
+            "symbol": "?buildLeft@WedgeBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f6f20",
+            "status": "inactive_exact",
+            "size": 63
+          },
+          {
+            "symbol": "?buildFront@WedgeBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f6f60",
+            "status": "inactive_exact",
+            "size": 52
+          },
+          {
+            "symbol": "?buildBack@WedgeBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f7d30",
+            "status": "inactive_exact",
+            "size": 48
+          },
+          {
+            "symbol": "?buildBottom@WedgeBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+            "addr": "004f7d60",
+            "status": "inactive_exact",
+            "size": 48
+          }
+        ]
+      },
+      "ViewNewPart": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewPart\\ledger.json",
+        "sha256": "04cce009a80f0c4e393d585cc70d0d5356aa296e68a9236b370935140380ec96",
+        "object_sha256": "bc56937c218ecd34de0ab1fffa4f8861fa45a472b625e6e8b905bd881c03f27c",
+        "emitted_exact": 59,
+        "methods": [
+          {
+            "symbol": "?onDecalPropertyChanged@Decal@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
+            "addr": "004e6b90",
+            "status": "inactive_exact",
+            "size": 48
+          },
+          {
+            "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+            "addr": "004e5ff0",
+            "status": "inactive_exact",
+            "size": 52
+          }
+        ]
+      },
+      "ViewNewPartChunk": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewPartChunk\\ledger.json",
+        "sha256": "09358c1d37c0d1ed3f1f57dac9d951b00bb8e9dea9c8f54d1b778ec06ed77986",
+        "object_sha256": "04924ecb0f65aa6983ed7e46ea02e020f9782347b23e65aa6e10a40c42b6589b",
+        "emitted_exact": 53,
+        "methods": [
+          {
+            "symbol": "??1Decal@ViewNew@RBX@@UAE@XZ",
+            "addr": "004e8550",
+            "status": "inactive_exact",
+            "size": 160
+          }
+        ]
+      },
+      "ViewNewPartChunkRecovery2008": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewNewPartChunkRecovery2008\\ledger.json",
+        "sha256": "69edd6b0e219c66edb8418bfdc5ee394e2fe489834f96d0ca753f0eadf533438",
+        "object_sha256": "4f52117bff26d16b1957fb330a840384c45b735347015509b0c3e4cbcdac126b",
+        "emitted_exact": 192,
+        "methods": [
+          {
+            "symbol": "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ",
+            "addr": "004e6740",
+            "status": "inactive_exact",
+            "size": 360
+          },
+          {
+            "symbol": "?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ",
+            "addr": "004e68b0",
+            "status": "inactive_exact",
+            "size": 367
+          },
+          {
+            "symbol": "?onPropertyChanged@PartChunk@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+            "addr": "004e6a30",
+            "status": "inactive_exact",
+            "size": 208
+          },
+          {
+            "symbol": "??0Decal@ViewNew@RBX@@QAE@PAV02@PAVPartInstance@2@PAVViewBase@2@@Z",
+            "addr": "004eae10",
+            "status": "inactive_exact",
+            "size": 442
+          }
+        ]
+      },
+      "RenderSceneViewRbxGfx2008": {
+        "ledger": "work\\native-client\\prove-out\\prove-RenderSceneViewRbxGfx2008\\ledger.json",
+        "sha256": "d7f6de8c7fce3858bbe5f45211d5735203b4228bb4c83372d6d6409796ef0864",
+        "object_sha256": "8e97e04dccf923276aa093a29a1251b79dc527e1050215dd1a1c92ac71632303",
+        "emitted_exact": 38,
+        "methods": [
+          {
+            "symbol": "?invalidateLighting@ViewRbxGfx@ViewNew@RBX@@EAEX_N@Z",
+            "addr": "004d7180",
+            "status": "inactive_exact",
+            "size": 17
+          },
+          {
+            "symbol": "?updateSettings@ViewRbxGfx@ViewNew@RBX@@UAEXMM_NM@Z",
+            "addr": "004db660",
+            "status": "inactive_exact",
+            "size": 44
+          }
+        ]
+      },
+      "ViewRbxGfxRender2008": {
+        "ledger": "work\\native-client\\prove-out\\prove-ViewRbxGfxRender2008\\ledger.json",
+        "sha256": "4386b0f46469b4c23dd75fd4062a092b4b37e7f9af4a7d5441b71cd58971d577",
+        "object_sha256": "129e59df17b72961458baf80661d06a4a6bb7b5ed5a2e0e6cccc1d620fc73f6a",
+        "emitted_exact": 2,
+        "methods": [
+          {
+            "symbol": "?render@ViewRbxGfx@ViewNew@RBX@@UAEXPAVRenderDevice@G3D@@@Z",
+            "addr": "004daf10",
+            "status": "inactive_exact",
+            "size": 63
+          }
+        ]
+      },
+      "AppUnit5DC_2008IRenderable": {
+        "ledger": "work\\native-client\\prove-out\\prove-AppUnit5DC_2008IRenderable\\ledger.json",
+        "sha256": "bb23834ecf2f0b3fd17e5e869bc3818c28f9d853750b5555ee395c6ad4dad5f2",
+        "object_sha256": "0257fdb4445d26e8c7b96ccec0e9cc3ffe2a2c59d9f5829b31e589ff8a55c111",
+        "emitted_exact": 17,
+        "methods": [
+          {
+            "symbol": "?render2dItems@IRenderableBucket@RBX@@QAEXPAVAdorn@2@@Z",
+            "addr": "005dd330",
+            "status": "inactive_exact",
+            "size": 41
+          },
+          {
+            "symbol": "?render3dAdornItems@IRenderableBucket@RBX@@QAEXPAVAdorn@2@@Z",
+            "addr": "005dd360",
+            "status": "inactive_exact",
+            "size": 42
+          },
+          {
+            "symbol": "?recomputeShouldRender@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z",
+            "addr": "005dd400",
+            "status": "inactive_exact",
+            "size": 192
+          },
+          {
+            "symbol": "?onAdded@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z",
+            "addr": "005dd4c0",
+            "status": "inactive_exact",
+            "size": 16
+          },
+          {
+            "symbol": "?onRemoving@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z",
+            "addr": "005dd4d0",
+            "status": "inactive_exact",
+            "size": 110
+          }
+        ]
+      }
+    },
+    "sessions": [
+      "983b6976ae22414b894d6795edfc59cd",
+      "ef97d9f1627c419d939f55788b59a0fa",
+      "d72c968490124225888424de700f0477",
+      "26ea821dd8a94fffa292434d6ac0fa8c",
+      "15eaeb31ac7d4a239117bbc521842bbd",
+      "a7b5ebc1b0334826897f4bb88a22884a",
+      "3f7672c7d1334f52b5f17c87f6482e8e"
+    ],
+    "new_face_exacts": {
+      "PBBBuilder": [
+        "004f4790",
+        "004f47f0",
+        "004f4850",
+        "004f48b0",
+        "004f4910",
+        "004f4970"
+      ],
+      "TorsoBuilder": [
+        "004fa050",
+        "004fa090",
+        "004fa0d0",
+        "004fa110",
+        "004fa150",
+        "004faaf0"
+      ],
+      "HeadBuilder": [
+        "00500080",
+        "005000c0",
+        "00500100",
+        "00500140"
+      ],
+      "WedgeBuilder": [
+        "004f6e90",
+        "004f6ee0",
+        "004f6f20",
+        "004f6f60",
+        "004f7d30",
+        "004f7d60"
+      ]
+    },
+    "changes": [
+      "LevelBuilder strip declaration restored from donor; unsigned division-count overload restored using 004faa30/004faaf0 copy ABI; offset declaration restored from donor.",
+      "BevelMesh::Builder deformation operator declaration restored from donor.",
+      "PBB/Torso/Wedge select existing partsurface-profile Mesh allocation declarations.",
+      "Head sides construct transform before second volatile elements read: target reload at 00500091; all four exact. Signed cast-only variant rejected (55 versus 58 bytes)."
+    ],
+    "no_loss": "Sphere 32 emitted exacts; Cylinder 36; Head increases 28 to 32. All six face methods preserved.",
+    "parked": {
+      "ViewRbxGfx": "004d7370 / 004d76d0 / 004db6f0 / 0064a390 matching candidate bytes but symbol identity not established; next original vtable/ICF reference closure. Render 004daf10, invalidateLighting 004d7180, updateSettings 004db660 exact.",
+      "Mesh canonical header": "Profile allocVertex/freeVertex declarations suffice for byte proofs; canonical merge and dependency/call-binding integration remain owner gates. Prior LevelBuilder proposal resolved."
+    },
+    "next_class": "BrickMesh (queue candidate); first inspect existing ViewNewBrickMeshBuild2008.cpp and lease status.",
+    "limits": "Stopped early near context limit; no three-hour runtime claim. No server credit or integrated-swap claim."
+  }
+}

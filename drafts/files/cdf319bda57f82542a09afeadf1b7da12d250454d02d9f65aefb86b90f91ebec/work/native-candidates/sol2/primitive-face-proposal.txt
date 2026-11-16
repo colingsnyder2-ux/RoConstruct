@@ -1,0 +1,10 @@
+sol1 Primitive2008.h proposal, round3 sol2
+Required authentic declarations (do not add fields):
+Face getFaceInObject(NormalId id) const; // 005e76f0, GlueJoint00646cc0 calls
+Face getFaceInWorld(NormalId id) const; // verify against00646f60
+G3D::CoordinateFrame getFaceCoordInObject(NormalId id) const; //005e7680, RigidJoint00645980 calls
+SurfaceType getSurfaceType(NormalId id) const; //verify00646f60 surfaceType inline read
+Include util/Face.h or forward declare RBX::Face.
+Glue constructor source evidence: local/scratch/sol2/glue-ctor.json source field.
+RigidJoint faceIdToCoords can then use existing authentic source.
+No Primitive files edited by sol2.

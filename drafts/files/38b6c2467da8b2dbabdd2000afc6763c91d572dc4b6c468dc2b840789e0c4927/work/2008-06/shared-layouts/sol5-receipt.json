@@ -1,0 +1,387 @@
+{
+  "worker": "sol5",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_inactive_exact": {
+    "Surfaces": [
+      "005ecbb0",
+      "005ecc00",
+      "005ecc50"
+    ]
+  },
+  "verified_existing": {
+    "ChangeHistoryService": [
+      "00587a90",
+      "00587b70",
+      "00588780",
+      "0058a130",
+      "0058b870",
+      "0058b970",
+      "0058ba70",
+      "0058bf80",
+      "0058c0f0",
+      "0058c2c0",
+      "0058c3c0",
+      "0058c4f0",
+      "0058c620",
+      "0058c8b0"
+    ],
+    "HistoryRecord": [
+      "00587a20",
+      "00588710",
+      "0058b6c0"
+    ],
+    "Selection": [
+      "005670f0"
+    ],
+    "Surface": []
+  },
+  "proofs": [
+    "work/native-client/prove-out/prove-Surfaces/manifest.json",
+    "work/native-client/prove-out/prove-HistoryRecordLifetime/manifest.json"
+  ],
+  "files_created": [
+    "rebuild/2008-06/native-classes/Surfaces.cpp"
+  ],
+  "headers_changed": [],
+  "source_sha256": "400108eec64c61b9b56f5f07879dada452f0086fac696d883509adb0ee612f3e",
+  "blocked": [
+    "draft registration HTTP501 at supplied server; local outbox retained",
+    "Surfaces descriptor methods require authentic descriptor objects/layout",
+    "HistoryRecord unplay0058a040 and merge0058bcb0 conflict in for_each reference identity; header const-key pair evidence in AppUnit588 comments",
+    "graph focus005ecc50 stalled and own process stopped"
+  ],
+  "next_action": "Restore draft transport; flush same session, inspect HistoryRecord const-key pair ABI proposal before editing; continue Surface getters with original primitive layout",
+  "remaining_gates": [
+    "full call identity",
+    "ABI/layout",
+    "provider selection/no-loss",
+    "P5/P6/runtime",
+    "independent server verification"
+  ],
+  "round2": {
+    "source": "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
+    "new_bodies": [
+      "005f1290",
+      "005f12a0",
+      "005f1300",
+      "005f1360",
+      "005f13e0",
+      "005f1430",
+      "005f14f0",
+      "005f15c0"
+    ],
+    "new_exact": [
+      "005f1290",
+      "005f13e0",
+      "005f1430",
+      "005f14f0",
+      "005f15c0"
+    ],
+    "verified_existing_surface": [
+      "005f1270",
+      "005f13c0"
+    ],
+    "surface_check": "work/2008-06/native-check-runs/20261116-153154-e1145c79/results.json",
+    "surface_prove": "work/native-client/prove-out/prove-AppUnit5F0_2008Surface/manifest.json",
+    "parked": {
+      "005f12a0": "byte 3: EDX instead of ECX for surfId; 97%; next proof source/compiler scheduling",
+      "005f1300": "byte 3: EDX instead of ECX for surfId; 97%; next proof source/compiler scheduling",
+      "005f1360": "byte 3: EDX instead of ECX for surfId; 97%; next proof source/compiler scheduling",
+      "00588440": "conflicting for_each reference identity; const-key ABI review required"
+    },
+    "verified_existing_historyitem": [
+      "005894c0",
+      "00589650",
+      "00589530",
+      "00588f60",
+      "00589410",
+      "00589a20"
+    ],
+    "verified_existing_partdrag": [
+      "006659a0",
+      "006659e0",
+      "00665c90",
+      "00665b60",
+      "00666100"
+    ],
+    "verified_existing_groupdrag": [
+      "0066a700",
+      "0066a570",
+      "0066a980",
+      "0066a7c0",
+      "0066a730",
+      "0066a930"
+    ],
+    "verified_existing_decal": [
+      "004e5be0",
+      "004e5bf0",
+      "004e5bb0",
+      "00598690",
+      "005986d0",
+      "00598610"
+    ],
+    "next_action": "Finish Surface getter register scheduling; then Selection/Color. HistoryRecord remains owner const-key identity blocker.",
+    "headers_changed": [],
+    "source_sha256": "2cfdd378107f5bc20d95162d3ce5991a032c9cd055da16e495385d323d8d42af",
+    "remaining_gates": [
+      "call identity",
+      "ABI/layout",
+      "provider selection",
+      "runtime",
+      "independent server verification"
+    ]
+  },
+  "round3": {
+    "new_exact": {
+      "Selection": [
+        "00424eb0"
+      ],
+      "Color": [
+        "00600500",
+        "0064f6b0",
+        "0064f6f0",
+        "0064f730",
+        "0064f770",
+        "0064f7b0",
+        "0064f7f0",
+        "0064f830"
+      ]
+    },
+    "proof_summary": {
+      "Color": {
+        "exact": [
+          "00600500",
+          "0064f6b0",
+          "0064f6f0",
+          "0064f730",
+          "0064f770",
+          "0064f7b0",
+          "0064f7f0",
+          "0064f830"
+        ],
+        "emitted_class_symbols": 8,
+        "proof": "work/native-client/prove-out/prove-Color/manifest.json"
+      },
+      "AppUnit564_2008Selection": {
+        "exact": [
+          "00424eb0",
+          "005670f0"
+        ],
+        "emitted_class_symbols": 2,
+        "proof": "work/native-client/prove-out/prove-AppUnit564_2008Selection/manifest.json"
+      },
+      "Mouse": {
+        "exact": [
+          "0064df60",
+          "00642f10",
+          "007cfeb0",
+          "007cfeb9",
+          "0064dfa0",
+          "0064dfc0",
+          "0064dfe0",
+          "0064e000",
+          "0064e020",
+          "00642f80",
+          "007db260",
+          "007db268",
+          "0064e1a0",
+          "0064e180",
+          "0064e660"
+        ],
+        "emitted_class_symbols": 16,
+        "proof": "work/native-client/prove-out/prove-Mouse/manifest.json"
+      },
+      "MouseCommand": {
+        "exact": [
+          "005c72e0",
+          "0070bdf0",
+          "0070bdf0",
+          "005c72e0",
+          "005f2310",
+          "0070bdf0",
+          "0070bdf0",
+          "005a0140",
+          "005a0150",
+          "005a04a0",
+          "00416690",
+          "005a0f80",
+          "00615940",
+          "007dae20",
+          "007dae28",
+          "006158f0",
+          "00615820",
+          "006157a0",
+          "00615a50",
+          "007d8f43",
+          "007d8f3b",
+          "007d8f32",
+          "007d8f29",
+          "007d8f20",
+          "007d8f62",
+          "00615c30",
+          "00615d00",
+          "00615cc0",
+          "00615d40",
+          "00615d90",
+          "007d8f80",
+          "007d8f78",
+          "007d8f70",
+          "007d8f88",
+          "00616080",
+          "00615f90",
+          "007d8fa0",
+          "007d8fa8",
+          "006160b0",
+          "007de998",
+          "007de990",
+          "007de9a0"
+        ],
+        "emitted_class_symbols": 42,
+        "proof": "work/native-client/prove-out/prove-MouseCommand/manifest.json"
+      },
+      "AppUnit660_2008PartDragTool": {
+        "exact": [
+          "006659a0",
+          "006659e0",
+          "00665c90",
+          "00665b60",
+          "007dae20",
+          "007dae28",
+          "00666100",
+          "007dc178",
+          "007dc170",
+          "007dc180"
+        ],
+        "emitted_class_symbols": 10,
+        "proof": "work/native-client/prove-out/prove-AppUnit660_2008PartDragTool/manifest.json"
+      }
+    },
+    "files_extended": [
+      "rebuild/2008-06/native-classes/AppUnit564_2008Selection.cpp"
+    ],
+    "files_created": [
+      "rebuild/2008-06/native-classes/Color.cpp",
+      "rebuild/2008-06/native-headers/util/Color.h"
+    ],
+    "parked": {
+      "006159f0": "reference identity render3dSelect bound 005ef400 vs original 00458e90",
+      "00665bd0": "same render3dSelect identity conflict",
+      "00665f20": "same render3dSelect identity conflict"
+    },
+    "rejected": [
+      "Color initial extraction missed fld1 for orange/yellow/pink; corrected to leading 1.0f before final proof"
+    ],
+    "sessions": [
+      "b5427a2bcf14425cb53ad3b1ff229021",
+      "1abe04f8e07c4d6fb3ac136edc628907",
+      "ff4eaad0ffa74f4593c90a4078567a10"
+    ],
+    "next_action": "Resolve shared IRenderable render3dSelect reference identity; Selection pending header bodies remain; History untouched without new evidence",
+    "remaining_gates": [
+      "independent server verification",
+      "provider selection/no-loss",
+      "data/ABI obligations",
+      "owner linked/runtime gates"
+    ],
+    "mouse_update": "0064e660 ultimately inactive_exact after proof inference rounds; initial diff concerned trailing table data only."
+  },
+  "round4": {
+    "new_exact": {
+      "Mouse": [
+        "0064e050"
+      ]
+    },
+    "verified_Mouse_methods": [
+      "0064df60",
+      "00642f10",
+      "0064dfa0",
+      "0064dfc0",
+      "0064dfe0",
+      "0064e000",
+      "0064e020",
+      "00642f80",
+      "0064e050",
+      "0064e1a0",
+      "0064e180",
+      "0064e660"
+    ],
+    "Mouse_count": "12/12 method bodies inactive_exact; unit total 155 including templates",
+    "change": "App/src/v8datamodel/Mouse.cpp: float_control(precise, off) before G3D header definitions",
+    "rejected": [
+      "Explicit Vector3 sum: still 240 bytes",
+      "Function-local fast float pragma: still 240 bytes; inline Vector3 operator defined in headers earlier"
+    ],
+    "verified_Camera": [
+      "005ccb00"
+    ],
+    "parked_Camera": {
+      "panUnits": "154B no candidate identity",
+      "tiltUnits": "181B no candidate identity"
+    },
+    "render3dSelect": "work/native-candidates/sol5/render3dSelect.md; vtable closure, constructors contain no direct call",
+    "Selection": "Existing SelectionMutations/SelectionRemove/SelectionBase providers discovered; do not enable duplicate pending AppUnit block. Batch proof output in local/scratch/sol5/selection-round4.txt; no source edits.",
+    "proofs": [
+      "work/native-client/prove-out/prove-Mouse/manifest.json",
+      "local/scratch/sol5/camera-round4.txt",
+      "local/scratch/sol5/lifetime-round4.txt"
+    ],
+    "sessions": [
+      "bbfe0689d60d409295dc5a4f0742e2e5",
+      "155426a8239c427583dd44c9e17d7b4f"
+    ],
+    "next": "Continue Camera recovery; do not duplicate existing CameraFirstPerson/CameraUnits providers or leased OgreAuto_RBX_Camera.cpp",
+    "remaining_gates": [
+      "independent verification",
+      "ABI/layout",
+      "provider selection",
+      "linked/runtime gates"
+    ]
+  },
+  "round5": {
+    "exact_Camera": [
+      "005cc930",
+      "005cc890",
+      "005cc010",
+      "005cc040",
+      "005cce40",
+      "005cc450",
+      "005cbf20",
+      "005cc420"
+    ],
+    "new_bodies_exact": [
+      "005cc010",
+      "005cc040",
+      "005cce40",
+      "005cc450",
+      "005cbf20",
+      "005cc420"
+    ],
+    "completed_existing_drafts": [
+      "005cc930",
+      "005cc890"
+    ],
+    "file_extended": "rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp",
+    "headers_changed": [],
+    "proof": "work/native-client/prove-out/prove-CameraUnits/manifest.json",
+    "parked": {
+      "005cbf90": "93B vs98B; first divergence insn7 005cbfb9 x87 product order; tried direct bool, guarded bool and reversed square order. Next prove authentic expression/return shape.",
+      "005cc240": "137B vs137B; first divergence insn19 005cc27c jnp to earlier common return vs later target return; tried direct returns and assigned result. Next compiler control-flow shape."
+    },
+    "NewNullTool_blocker": "Existing source fails compilation: incomplete Workspace/ModelInstance; no edits. Add authentic includes in a new registered session.",
+    "Tool": "Verified existing only; 198 unit exact including templates, no new edits.",
+    "sessions": [
+      "e7c926803d8b4609b64388203d876599",
+      "155426a8239c427583dd44c9e17d7b4f"
+    ],
+    "next": "Continue Camera getNewZoomDistance third hypothesis, remaining Camera methods, then Tool/NewNullTool/LocalBackpack/Accoutrement/Rocket.",
+    "remaining_gates": [
+      "independent server verification",
+      "provider selection/no-loss",
+      "ABI/data/call identity",
+      "owner linked/runtime gates"
+    ],
+    "source_sha256": "a2e8626d1965540c7b2d204680819d2e3dd3c9b82794d2af6e33d9bb79c2af68"
+  }
+}

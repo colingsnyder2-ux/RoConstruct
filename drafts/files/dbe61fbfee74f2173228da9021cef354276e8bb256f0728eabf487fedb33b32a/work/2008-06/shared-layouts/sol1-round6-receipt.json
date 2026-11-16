@@ -1,0 +1,71 @@
+{
+  "worker": "sol1",
+  "round": 6,
+  "model": "gpt-6.1-sol",
+  "new_body_exacts": 10,
+  "new_body_bytes": 657,
+  "classes": {
+    "Primitive": {
+      "body_exact": 14,
+      "body_total": 14,
+      "new": [
+        "005e82c0",
+        "005e7f10",
+        "005e7850",
+        "005e7580",
+        "005e7450",
+        "005e7550",
+        "005e7980",
+        "005e7a50",
+        "005e85e0"
+      ],
+      "preexisting": [
+        "005e76f0",
+        "005e81b0",
+        "005e7680",
+        "005e7420",
+        "005e7bd0"
+      ],
+      "prove_emitted_exact": 28,
+      "prove_emitted_exact_bytes": 1180,
+      "file": "rebuild/2008-06/native-classes/PrimitiveFaces2008.cpp",
+      "header": "rebuild/2008-06/native-headers/v8world/Primitive2008.h"
+    },
+    "RunDragger": {
+      "body_exact": 2,
+      "body_total": 3,
+      "new": [
+        "0066c510"
+      ],
+      "preexisting": [
+        "0066c4c0"
+      ],
+      "prove_emitted_exact": 12,
+      "prove_emitted_exact_bytes": 527,
+      "file": "rebuild/2008-06/native-classes/RunDraggerAdjacent2008.cpp"
+    }
+  },
+  "parked": [
+    {
+      "address": "0066d9f0",
+      "reason": "Donor candidate 253 bytes versus target 241; prove reports cand=[] and --diff reports no object/symbol. First instruction divergence not established; need explicitly bind existing candidate to target and inspect object disassembly. One hypothesis tried."
+    },
+    {
+      "address": "005e7be0",
+      "reason": "Native Edge header lacks index accessor; donor uses pointer links. Need native Edge provider owner to expose binary-proven index lookup."
+    }
+  ],
+  "flag_evidence": "work/native-candidates/sol1/primitive-flags-round6.md",
+  "flag_result": "PartInstance +0x2d3 = Primitive canSleep +0xab; adjacent +0x2d4 = canCollide +0xac. Native getCanSleep added; embedded overlay already has it.",
+  "sessions": [
+    "a3365569ca134aa79404be0ee2536bf8",
+    "c1da45cffbb5420e87010cc1decfff43",
+    "c2c33e90602c479e8d52a390ec4fc931",
+    "acfb61b371e64b30a0112b8e28c37b19",
+    "dbbd161659c24e2f82e9277daa676c04"
+  ],
+  "selected": false,
+  "runtime": "not run",
+  "next": "RunDragger snap, then AdornRbxGfx and Kernel; TextureProxyBase already has four accessor bodies. MegaDragger lifecycle awaits RootInstance providers.",
+  "stop_reason": "Explicit overseer stop; three-hour duration not completed."
+}

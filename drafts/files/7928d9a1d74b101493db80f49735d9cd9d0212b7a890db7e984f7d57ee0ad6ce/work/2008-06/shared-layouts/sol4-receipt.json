@@ -1,0 +1,184 @@
+{
+  "worker": "sol4",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_body": [
+    "00586bf0"
+  ],
+  "declaration_repair": [
+    "005756e0"
+  ],
+  "preexisting_verified": [
+    {
+      "symbol": "?getScriptId@Script@RBX@@QBEABVContentId@2@XZ",
+      "addr": "00463890",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onAncestorChanged@Script@RBX@@MAEXABUAncestorChanged@2@@Z",
+      "addr": "00586a70",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setScriptId@Script@RBX@@QAEXABVContentId@2@@Z",
+      "addr": "00586fc0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onServiceProvider@Script@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "addr": "00586bf0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setEmbeddedCode@Script@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "addr": "00586f30",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "__ehhandler$?setEmbeddedCode@Script@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "addr": "007deb3b",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getControllerType@PVInstance@RBX@@QBE?AW4ControllerType@Controller@2@XZ",
+      "addr": "0057d240",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getShowControllerFlag@PVInstance@RBX@@QBE_NXZ",
+      "addr": "00608950",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setShowControllerFlag@PVInstance@RBX@@QAEX_N@Z",
+      "addr": "00609a00",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?moveToPoint@PVInstance@RBX@@QAEXVVector3@G3D@@@Z",
+      "addr": "00608960",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?renderCoordinateFrame@PVInstance@RBX@@IAEXPAVAdorn@2@@Z",
+      "addr": "00608aa0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setControllerType@PVInstance@RBX@@QAEXW4ControllerType@Controller@2@@Z",
+      "addr": "006099c0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onDescendentAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z",
+      "addr": "00608ba0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onDescendentRemoving@PVInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "addr": "00608bd0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onExtentsChanged@PVInstance@RBX@@MBEXXZ",
+      "addr": "00608bf0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getTopPVController@PVInstance@RBX@@QBEPAVController@2@XZ",
+      "addr": "0059a9e0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onChildControllerChanged@PVInstance@RBX@@MAEXXZ",
+      "addr": "00608b60",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onParentControllerChanged@PVInstance@RBX@@MAEXXZ",
+      "addr": "00608d10",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?computeIsControllable@PVInstance@RBX@@ABE_NXZ",
+      "addr": "00608da0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+      "addr": "00609150",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "__unwindfunclet$?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z$0",
+      "addr": "007bf430",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "__ehhandler$?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+      "addr": "007bf43b",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "??__E?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ",
+      "addr": "007f7a60",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "??__F?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ",
+      "addr": "00800150",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?isTopLevelPVInstance@PVInstance@RBX@@QBE_NXZ",
+      "addr": "005840a0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getTopLevelPVParent@PVInstance@RBX@@QAEPAV12@XZ",
+      "addr": "00608e20",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?buildGui@DataModel@RBX@@QAEXPAVAdorn@2@@Z",
+      "addr": "005756e0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getGameTime@DataModel@RBX@@QBENXZ",
+      "addr": "005757d0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ",
+      "addr": "005757e0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getDutyCycle@DataModel@RBX@@QBENXZ",
+      "addr": "005757f0",
+      "status": "inactive_exact"
+    }
+  ],
+  "proofs": [
+    "work/native-client/prove-out/prove-AppUnit588_2008RootInstance/ledger.json",
+    "work/native-client/prove-out/prove-AppUnit57C_2008Script/ledger.json",
+    "work/native-client/prove-out/prove-ContactUnit2008PVInstance/ledger.json",
+    "work/native-client/prove-out/prove-DataModelGui/ledger.json",
+    "work/native-client/prove-out/prove-DataModelTiming/ledger.json"
+  ],
+  "parked": {
+    "RootInstance": "compile blocked: Connector::getKernelIndex absent in KernelData.h; owner header proof needed",
+    "DataModelInitialize": "Network::Players declaration plus Connector/KernelData dependency",
+    "Script_requestCode": "existing mismatch; ContentProvider ABI and EH proof needed",
+    "PVInstance": "unmatched clearLegacyOffset/computeIsTopFlag/computeTopPVController; original compare required; onChildAdded identity conflict"
+  },
+  "next_class": "BrickMap (check fresh leases first)",
+  "draft_sessions": [
+    "c6dfb5cdfc464403b55ab2e148916296",
+    "f6f5df7cb7ff4fdfb8185d2ea948cf81"
+  ],
+  "transport_blocker": "HTTP 501 Not Implemented on configured native-drafts register",
+  "selection_runtime_server_credit": "not established"
+}

@@ -1,0 +1,362 @@
+{
+  "worker": "sol4",
+  "package_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "source_revision": "1f8ce579aa766d06a8896fa0d3b7a3d09c5a7a0bd8be4ba6aeb233dd8ea3970c",
+  "baseline_commit": "unknown",
+  "new_body": [
+    "00586bf0"
+  ],
+  "declaration_repair": [
+    "005756e0"
+  ],
+  "preexisting_verified": [
+    {
+      "symbol": "?getScriptId@Script@RBX@@QBEABVContentId@2@XZ",
+      "addr": "00463890",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onAncestorChanged@Script@RBX@@MAEXABUAncestorChanged@2@@Z",
+      "addr": "00586a70",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setScriptId@Script@RBX@@QAEXABVContentId@2@@Z",
+      "addr": "00586fc0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onServiceProvider@Script@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "addr": "00586bf0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setEmbeddedCode@Script@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "addr": "00586f30",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "__ehhandler$?setEmbeddedCode@Script@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "addr": "007deb3b",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getControllerType@PVInstance@RBX@@QBE?AW4ControllerType@Controller@2@XZ",
+      "addr": "0057d240",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getShowControllerFlag@PVInstance@RBX@@QBE_NXZ",
+      "addr": "00608950",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setShowControllerFlag@PVInstance@RBX@@QAEX_N@Z",
+      "addr": "00609a00",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?moveToPoint@PVInstance@RBX@@QAEXVVector3@G3D@@@Z",
+      "addr": "00608960",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?renderCoordinateFrame@PVInstance@RBX@@IAEXPAVAdorn@2@@Z",
+      "addr": "00608aa0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setControllerType@PVInstance@RBX@@QAEXW4ControllerType@Controller@2@@Z",
+      "addr": "006099c0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onDescendentAdded@PVInstance@RBX@@MAEXPAVInstance@2@@Z",
+      "addr": "00608ba0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onDescendentRemoving@PVInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "addr": "00608bd0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onExtentsChanged@PVInstance@RBX@@MBEXXZ",
+      "addr": "00608bf0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getTopPVController@PVInstance@RBX@@QBEPAVController@2@XZ",
+      "addr": "0059a9e0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onChildControllerChanged@PVInstance@RBX@@MAEXXZ",
+      "addr": "00608b60",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?onParentControllerChanged@PVInstance@RBX@@MAEXXZ",
+      "addr": "00608d10",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?computeIsControllable@PVInstance@RBX@@ABE_NXZ",
+      "addr": "00608da0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+      "addr": "00609150",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "__unwindfunclet$?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z$0",
+      "addr": "007bf430",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "__ehhandler$?setPVGridOffsetLegacy@PVInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+      "addr": "007bf43b",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "??__E?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ",
+      "addr": "007f7a60",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "??__F?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ",
+      "addr": "00800150",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?isTopLevelPVInstance@PVInstance@RBX@@QBE_NXZ",
+      "addr": "005840a0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getTopLevelPVParent@PVInstance@RBX@@QAEPAV12@XZ",
+      "addr": "00608e20",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?buildGui@DataModel@RBX@@QAEXPAVAdorn@2@@Z",
+      "addr": "005756e0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getGameTime@DataModel@RBX@@QBENXZ",
+      "addr": "005757d0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ",
+      "addr": "005757e0",
+      "status": "inactive_exact"
+    },
+    {
+      "symbol": "?getDutyCycle@DataModel@RBX@@QBENXZ",
+      "addr": "005757f0",
+      "status": "inactive_exact"
+    }
+  ],
+  "proofs": [
+    "work/native-client/prove-out/prove-AppUnit588_2008RootInstance/ledger.json",
+    "work/native-client/prove-out/prove-AppUnit57C_2008Script/ledger.json",
+    "work/native-client/prove-out/prove-ContactUnit2008PVInstance/ledger.json",
+    "work/native-client/prove-out/prove-DataModelGui/ledger.json",
+    "work/native-client/prove-out/prove-DataModelTiming/ledger.json"
+  ],
+  "parked": {
+    "RootInstance": "compile blocked: Connector::getKernelIndex absent in KernelData.h; owner header proof needed",
+    "DataModelInitialize": "Network::Players declaration plus Connector/KernelData dependency",
+    "Script_requestCode": "existing mismatch; ContentProvider ABI and EH proof needed",
+    "PVInstance": "unmatched clearLegacyOffset/computeIsTopFlag/computeTopPVController; original compare required; onChildAdded identity conflict"
+  },
+  "next_class": "BrickMap (check fresh leases first)",
+  "draft_sessions": [
+    "c6dfb5cdfc464403b55ab2e148916296",
+    "f6f5df7cb7ff4fdfb8185d2ea948cf81"
+  ],
+  "transport_blocker": null,
+  "selection_runtime_server_credit": "not established",
+  "round2": {
+    "new_source": "rebuild/2008-06/native-classes/TextXmlWriter.cpp",
+    "new_exact_members": [
+      "0058d780",
+      "0058e810",
+      "0058eb10",
+      "0058ecb0"
+    ],
+    "new_exact_eh": [
+      "007d0f62",
+      "007d19b3"
+    ],
+    "TextXmlWriter": "4/7 implemented member overloads exact, 6 total emitted exacts/918 bytes; no headers changed",
+    "ContentIdAssets": "3 preexisting emitted exacts/249 bytes; no code edits",
+    "RootInstance": "compile unblocked by sol1; 47 emitted exacts include helpers and 16 inferred names; no RootInstance member marked exact by latest ledger",
+    "DataModelInitialize": "added Network/Players.h before LocalBackpack.h; 502-byte body equal with relocations masked; rejected call identities create<StarterPackService> bound 00490d70 vs 004b3960 and setNullMouseCommand bound 005a0610 vs 005a2730",
+    "parked": {
+      "TextXmlWriter::serialize(depth)": "0058d7e0 first instruction EBX vs EBP; source register allocation proof needed",
+      "TextXmlWriter::encodedWrite(char*)": "0058e4a0 first control-flow divergence at offset 25; target shares cleanup tails and places numeric entity branch first; three donor/condition variants retained in proof artifacts",
+      "RefPropertyDescriptor": "not implemented in round2; native declarations inspected; glue defines separate getStringValue/setStringValue; avoid duplicate providers",
+      "ScriptContext": "not changed; accepted source exists, reconcile provider ownership before extracting methods"
+    },
+    "draft_sessions": [
+      "1310766a86524fc5aa5cb5b2be2e73b2",
+      "ec370ccd727d402dace51ce56bb06fbb"
+    ],
+    "proofs": [
+      "work/native-client/prove-out/prove-TextXmlWriter/ledger.json",
+      "work/native-client/prove-out/prove-DataModelInitialize/ledger.json",
+      "work/native-client/prove-out/prove-AppUnit588_2008RootInstance/ledger.json",
+      "work/native-client/prove-out/prove-ContentIdAssets/ledger.json"
+    ],
+    "next": "Resolve DataModel call identity conflicts using independent provider/call evidence; then ScriptContext provider ownership review",
+    "status": "context-bound contributor handoff; all bodies inactive; no integration/runtime/server credit"
+  },
+  "round3": {
+    "new_exact_members": [
+      "005da5b0"
+    ],
+    "extended": [
+      "rebuild/2008-06/native-classes/DataModelInitialize.cpp"
+    ],
+    "created": [
+      "rebuild/2008-06/native-classes/RefPropertyDescriptor.cpp"
+    ],
+    "headers_changed": [],
+    "verified_preexisting": {
+      "prove-AppUnit57C_2008ModelInstance": {
+        "exact_unique_addresses": [
+          "0047d410",
+          "005834b0",
+          "005834c0",
+          "00583a20",
+          "00583a40",
+          "00583c90",
+          "00583cf0",
+          "00583da0",
+          "005841e0",
+          "00584280",
+          "005843c0",
+          "00584620",
+          "00584670",
+          "00584a50",
+          "00584aa0",
+          "00584b10"
+        ],
+        "emitted_named_members": 26,
+        "exact_member_rows": 17
+      },
+      "prove-AppUnit5A0_2008Workspace": {
+        "exact_unique_addresses": [
+          "00458e90",
+          "005a01e0",
+          "005a0210",
+          "005a0220",
+          "005a0240",
+          "005a0260",
+          "005a0530",
+          "005a0560",
+          "005a05a0",
+          "005a05d0",
+          "005a0610",
+          "005a0740",
+          "005a0d90",
+          "005a0de0",
+          "005a1b90",
+          "005a1bc0",
+          "005a1c20",
+          "005a1e80",
+          "005a2730",
+          "005a2760",
+          "005a27c0",
+          "005a2c30",
+          "005a2d90",
+          "005a2db0",
+          "005a3380",
+          "005a3390",
+          "005a33d0"
+        ],
+        "emitted_named_members": 35,
+        "exact_member_rows": 27
+      },
+      "prove-ScriptContextLifetime": {
+        "exact_unique_addresses": [],
+        "emitted_named_members": 0,
+        "exact_member_rows": 0
+      },
+      "prove-AppUnit588_2008RootInstance": {
+        "exact_unique_addresses": [],
+        "emitted_named_members": 19,
+        "exact_member_rows": 0
+      }
+    },
+    "proofs": [
+      "work/native-client/prove-out/prove-AppUnit57C_2008ModelInstance/ledger.json",
+      "work/native-client/prove-out/prove-AppUnit5A0_2008Workspace/ledger.json",
+      "work/native-client/prove-out/prove-DataModelInitialize/ledger.json",
+      "work/native-client/prove-out/prove-RefPropertyDescriptor/ledger.json",
+      "work/native-client/prove-out/prove-ScriptContextLifetime/ledger.json",
+      "work/native-client/prove-out/prove-ScriptContext/ledger.json",
+      "work/native-client/prove-out/prove-AppUnit588_2008RootInstance/ledger.json"
+    ],
+    "parked": {
+      "0057a9f0": "502 bytes identical with relocs masked after setDefaultMouseCommand repair; sole remaining rejection StarterPackService create const binding 00490d70 vs original 004b3960",
+      "00565960": "header missing delegate pointer/interface at +0x1c; target dispatch +4",
+      "00585420": "same missing delegate; target dispatch +8",
+      "005a1fc0": "IRenderable render3dSelect binding 005ef400 vs original 00458e90; Workspace inline override already exact at 00458e90",
+      "RootInstance": "0/19 emitted ordinary members exact; helper total 47 must not be reported as members"
+    },
+    "rejected_variants": {
+      "RefPropertyDescriptor::setVariant": [
+        "cast<shared_ptr<DescribedBase>>(): wrong conversion helper",
+        "inline get<shared_ptr<DescribedBase>>().get(): first divergence insn12 at 005da5d9; explicit named shared_ptr temporary fixes register/dataflow"
+      ]
+    },
+    "proposal": "work/native-candidates/sol4/round3-reflection-and-service-proposal.txt",
+    "draft_sessions": [
+      "1310766a86524fc5aa5cb5b2be2e73b2",
+      "ec370ccd727d402dace51ce56bb06fbb",
+      "c6dfb5cdfc464403b55ab2e148916296",
+      "3f15bb4083b348bbb32efbd007eba1db",
+      "171e782218ca40fe9e521624f9060bec"
+    ],
+    "next": "ModelInstance getPrimaryPartInternal: establish original address identity, then compare original assembly; retain both existing providers until owner reconciles compilation selection",
+    "status": "context-bound contributor handoff; no linked selection/runtime credit"
+  },
+  "round4": {
+    "new_exact_members": [
+      "00590030",
+      "00590070",
+      "005900d0",
+      "00590160",
+      "00590180",
+      "00590190",
+      "00590240",
+      "00590300",
+      "00590440",
+      "00590e70",
+      "0047d410",
+      "005907f0",
+      "00590c10",
+      "00590800",
+      "00590b50",
+      "00590d00",
+      "00590f90",
+      "005909e0"
+    ],
+    "RootInstance": "18/19 ordinary emitted members now exact; compilation repair of malformed prose native-flags, replacing it with actual document-swap optimization flags. Existing bodies preserved. No claim of newly authored bodies.",
+    "ModelInstance": "getPrimaryPartInternal 216-byte inline areaXZ candidate, parked first divergence 00584192 reversed x87 order; three variants tested",
+    "Workspace": "27/35 ordinary members verified preexisting; getWorkspaceIfInWorkspace claimed 005a3410 disproved by original EH destructor shape",
+    "service_proposal": "work/native-candidates/sol4/round4-service-proposal.txt",
+    "draft_sessions": [
+      "d1fbf264a8c54bb78524e5021f30e0ba",
+      "c553dc81fd764a28a81d6c0d2aa4004c",
+      "0f8d988c935a4ae686a3c1cf44863b1f"
+    ],
+    "status": "inactive exact; no selection/runtime/integration credit"
+  }
+}
