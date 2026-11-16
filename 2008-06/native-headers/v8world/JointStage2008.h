@@ -47,7 +47,7 @@ namespace RBX
 		JointStage(IStage* upstream, World* world);       // 00668470 (needs a ClumpStage declaration: PENDING)
 		~JointStage();                                    // 00668520
 
-		virtual StageType getStageType();                 // slot 1 (007286a0; NATIVE_KERNEL_STAGES_PENDING)
+		virtual StageType getStageType();                 // slot 1 (007286a0; opt-in kernel-stages IStage)
 		virtual void onEdgeAdded(Edge* e);                // slot 4 (006683b0)
 		virtual void onEdgeRemoving(Edge* e);             // slot 5 (006683f0)
 		void onPrimitiveAdded(Primitive* p);              // 006685b0 (not built)

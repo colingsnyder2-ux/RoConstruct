@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "v8tree/Service.h"
 
 size_t RBX::ServiceProvider::newIndex()
@@ -16,3 +17,12 @@ boost::shared_ptr<RBX::Instance> RBX::ServiceProvider::findServiceByClassName(co
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Tmap_traits<RBX::Name const *,boost::shared_ptr<RBX::Instance>,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,boost::shared_ptr<RBX::Instance> > >,0>;
 template class std::_Tree<std::_Tmap_traits<RBX::Name const *,boost::shared_ptr<RBX::Instance>,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,boost::shared_ptr<RBX::Instance> > >,0> >;
+
+namespace RBX {
+void ServiceProvider::clearServices(void)
+{
+    serviceArray.clear();
+    serviceMap.clear();
+}
+}
+

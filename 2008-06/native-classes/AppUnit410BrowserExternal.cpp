@@ -66,34 +66,9 @@ template HRESULT WINAPI ATL::CComCreator2<ATL::CComCreator<ATL::CComObject<CBrow
                                           ATL::CComCreator<ATL::CComAggObject<CBrowserViewExternal> > >::CreateInstance(
     void*, REFIID, LPVOID*);
 
-#ifdef NATIVE_APPUNIT410_PENDING
-// Pending (needs DECLARE_PROTECT_FINAL_CONSTRUCT() in CBrowserViewExternal.h; header-owner proposal): the creator
-// 0040fbf0 declared by the header. It allocates the 0x20-byte CComObjectNoLock, brackets FinalConstruct with
-// m_dwRef++ / m_dwRef-- (0040fc64 / 0040fc69) and stores the object through the first argument; the second argument
-// is unused. With the generated header copy the body is exact (174 B), and so is
-// CComCreator<CComObject<CBrowserViewExternal>>::CreateInstance 0040f9a0 + catch funclet 0040fa39.
-HRESULT __cdecl createBrowserViewExternal(ATL::CComObjectNoLock<CBrowserViewExternal>** result, int)
-{
-    HRESULT hr = E_OUTOFMEMORY;
-    ATL::CComObjectNoLock<CBrowserViewExternal>* object = NULL;
-    ATLTRY(object = new ATL::CComObjectNoLock<CBrowserViewExternal>())
-    if (object != NULL)
-    {
-        object->SetVoid(NULL);
-        object->InternalFinalConstructAddRef();
-        hr = object->_AtlInitialConstruct();
-        if (SUCCEEDED(hr))
-            hr = object->FinalConstruct();
-        if (SUCCEEDED(hr))
-            hr = object->_AtlFinalConstruct();
-        object->InternalFinalConstructRelease();
-        if (hr != S_OK)
-        {
-            delete object;
-            object = NULL;
-        }
-    }
-    *result = object;
-    return hr;
-}
-#endif
+// The creator createBrowserViewExternal 0040fbf0 (174 B) is owned by BrowserViewExternalFactory.cpp, where it is
+// exact; it is not repeated here (a second definition would collide in a linked set). With DECLARE_PROTECT_FINAL_CONSTRUCT()
+// now in CBrowserViewExternal.h, CComCreator<CComObject<CBrowserViewExternal>>::CreateInstance above builds the
+// m_dwRef++ / m_dwRef-- bracket (0040fa14 / 0040fa17): its 191-byte body matches instruction for instruction (branch and relocation targets aside) the
+// original's split range 0040f9a0 (0x99 B) + catch funclet / epilogue 0040fa39 (0x26 B), which prove.py (whole-function
+// candidates only) does not score; tests/record_native_app_unit410.py rows 234-235 describe that split.

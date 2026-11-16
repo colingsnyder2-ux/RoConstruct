@@ -77,6 +77,7 @@ public:
     virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
+    std::string getFullName() const;   // INFERRED: ?getFullName@Instance@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ (header gap, header_gap_fill.py proposal)
     Instance* getParent() const { return parent; }
     bool isDescendentOf(const Instance*) const; // 00422ae0
     // 00423700; name provisional

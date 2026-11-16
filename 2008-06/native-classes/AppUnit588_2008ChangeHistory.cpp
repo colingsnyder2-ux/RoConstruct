@@ -16,17 +16,11 @@
 #include <deque>
 #include <stdexcept>
 
-// The member-pointer argument type of applyProperty / unplayProperty / mergeProperty. The committed HistoryRecord.h
-// declares pair<const PropertyDescriptor* const, Value>; the std::for_each body 00588240 they are bound into (callers
-// 00588486 / 005884b1 / 0058a0de / 0058bdf4) converts each map element into a temporary
-// pair<const PropertyDescriptor*, Value> through 00587710 (copy of the key, Value clone through its vtable slot 2,
-// call, destroy), so the 2008 parameter type is pair<const PropertyDescriptor*, Value> (pending HistoryRecord.h
-// proposal; only the pending build uses it).
-#ifdef NATIVE_APPUNIT588_PENDING
+// The member-pointer argument type of applyProperty / unplayProperty / mergeProperty (v8datamodel/HistoryRecord.h):
+// the std::for_each body 00588240 they are bound into (callers 00588486 / 005884b1 / 0058a0de / 0058bdf4) converts
+// each map element into a temporary pair<const PropertyDescriptor*, Value> through 00587710 (copy of the key, Value
+// clone through its vtable slot 2, call, destroy), so the 2008 parameter type is pair<const PropertyDescriptor*, Value>.
 typedef std::pair<const RBX::Reflection::PropertyDescriptor*, RBX::Reflection::Value> HistoryPropertyArg;
-#else
-typedef std::pair<const RBX::Reflection::PropertyDescriptor* const, RBX::Reflection::Value> HistoryPropertyArg;
-#endif
 
 template<>
 inline RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Iterator&
@@ -493,6 +487,18 @@ void ChangeHistoryService::initializeBase()
         while (history.size() > 1)
             mergeFirst();
     }
+}
+}
+
+namespace RBX {
+HistoryRecord::~HistoryRecord()
+{
+}
+}
+
+namespace RBX {
+HistoryItem::~HistoryItem()
+{
 }
 }
 

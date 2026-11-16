@@ -19,9 +19,8 @@
 //            returns the ContactManager pointer at World +0x40.
 //            +0x8: a G3D::Array that ~ContactManager 0060ccf0 frees (alignedFree 00507d20, then +0x8 / +0xc / +0x10 = 0);
 //            its element type and the size of ContactManager are not proven here, so nothing after +0x8 is declared.
-//   pending  onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0 and getHit(Array) 0060d6e0 call World members
-//            that no native header declares; they are built by tests/record_native_contact_unit2008.py against a
-//            generated World declaration only (pending-build-only rows, see its proposals).
+//   world    onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0 and getHit(Array) 0060d6e0 call World::update
+//            005e9520, insertContact 005e9260 and destroyContact 005e9280, declared by native v8world/World2008.h.
 #include <set>
 #include <vector>
 #include <G3D/Vector3.h>
@@ -61,5 +60,13 @@ namespace RBX
 		bool intersectingOthers(Primitive* check, float overlapIgnored);                      // 0060dcd0
 		void onNewPair(Primitive* p0, Primitive* p1);                                         // 0060d8b0 (evidence name)
 		void onPrimitiveGeometryTypeChanged(Primitive* p);                                    // 0060d8e0 (evidence name)
-	};
+		public:
+		void doStats(void);   // INFERRED: ?doStats@ContactManager@RBX@@QAEXXZ (header gap, header_gap_fill.py)
+	public:
+		~ContactManager(void);   // INFERRED: ??1ContactManager@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+	private:
+		RBX::Primitive * getSlowHit(G3D::Array<RBX::Primitive *> const &,G3D::Ray const &,G3D::Array<RBX::Primitive const *> const *,RBX::HitTestFilter const *,G3D::Vector3 &,float,bool &,bool &)const;   // INFERRED: ?getSlowHit@ContactManager@RBX@@ABEPAVPrimitive@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVRay@5@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@MAA_N5@Z (header gap, header_gap_fill.py)
+	public:
+		RBX::Primitive * getHitLegacy(G3D::Ray const &,RBX::Primitive const *,RBX::HitTestFilter const *,G3D::Vector3 &,float &,float const &)const;   // INFERRED: ?getHitLegacy@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV32@PBVHitTestFilter@2@AAVVector3@5@AAMABM@Z (header gap, header_gap_fill.py)
+};
 }

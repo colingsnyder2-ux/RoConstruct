@@ -62,7 +62,12 @@ namespace RBX
 		~TreeStage();                                       // 00669390
 
 		virtual StageType getStageType();                   // slot 1 (005e2790; not built, see the recorder)
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		// slot 2 takes four arguments in 2008 (Kernel::stepWorld 005fb3f0 `ret 0x10`; kernel-stages v8kernel/IStage.h)
+		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest);   // slot 2 (00669780)
+#else
 		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);   // slot 2 (00669780)
+#endif
 		virtual void onEdgeAdded(Edge* e);                  // slot 4 (00669c00; not built)
 		virtual void onEdgeRemoving(Edge* e);               // slot 5 (00669c70; not built)
 		virtual int getMetric(MetricType metricType);       // slot 6 (00669030)
@@ -70,5 +75,11 @@ namespace RBX
 		void process();                                     // 00669410 (not built)
 		void onPrimitiveAdded(Primitive* p);                // 00668d30 (ClumpStage::onPrimitiveAdded 0064cb0d)
 		void onPrimitiveRemoving(Primitive* p);             // 00668d40 (ClumpStage 0064cc11)
-	};
+		private:
+		void cleanAssembly(RBX::Assembly *);   // INFERRED: ?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z (header gap, header_gap_fill.py)
+	private:
+		void cleanEdge(RBX::Edge *);   // INFERRED: ?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z (header gap, header_gap_fill.py)
+	private:
+		RBX::Joint * findLightestDownstream(RBX::Primitive *,RBX::Primitive * &);   // INFERRED: ?findLightestDownstream@TreeStage@RBX@@AAEPAVJoint@2@PAVPrimitive@2@AAPAV42@@Z (header gap, header_gap_fill.py)
+};
 }

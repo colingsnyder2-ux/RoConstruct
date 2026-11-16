@@ -16,9 +16,7 @@
 #include "CRenderSettings.h"
 #include "v8datamodel/Team.h"
 #include "Network/Player.h"
-#ifdef NATIVE_APPUNIT400_PENDING
 #include "v8datamodel/Selection.h"
-#endif
 #include "util/Object.h"
 
 namespace RBX
@@ -36,22 +34,17 @@ template boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::cr
 template boost::shared_ptr<CRenderSettings> RBX::Creatable<RBX::Instance>::create<CRenderSettings>();
 template boost::shared_ptr<RBX::Team> RBX::Creatable<RBX::Instance>::create<RBX::Team>();
 template boost::shared_ptr<RBX::Network::Player> RBX::Creatable<RBX::Instance>::create<RBX::Network::Player>();
-// Selection: create<Selection> 00409620 (with shared_ptr<Selection>(Selection*, Deleter) 00409570) and its Creator
-// 004096a0 need a Selection constructor; the native v8datamodel/Selection.h leaves Selection abstract (no
-// onEvent(AncestorChanged) override, no constructor), so they are built only with NATIVE_APPUNIT400_PENDING against a
-// generated header copy (proposal).
-#ifdef NATIVE_APPUNIT400_PENDING
+// Selection: create<Selection> 00409620 (malloc 0x174, Selection() 00568180; with shared_ptr<Selection>(Selection*,
+// Deleter) 00409570) and its Creator 004096a0. This unit is the one owner of the create<Selection> instance.
 template boost::shared_ptr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>();
-#endif
 
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::DebugSettings, RBX::GlobalSettings::Item, RBX::sDebugSettings>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<CRenderSettings, RBX::GlobalSettings::Item, sRenderSettings>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Team, RBX::Instance, RBX::sTeam>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Network::Player, RBX::Instance, RBX::Network::sPlayer>::Creator::create() const;
-#ifdef NATIVE_APPUNIT400_PENDING
+// 004096a0
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection>::Creator::create() const;
-#endif
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::shared_ptr<CRenderSettings>;

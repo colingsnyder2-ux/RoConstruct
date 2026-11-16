@@ -187,6 +187,8 @@ namespace RBX
 		private:
 			virtual void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
 			virtual void writeValue(const DescribedBase* instance, XmlElement* element) const;
+	public:
+		void sub_00564290(DescribedBase* instance, const Value& value) const;   // INFERRED: 00564290, placeholder name (identity tier), body byte-proved (Inferred_00564290.cpp)
 		};
 
 		class RefPropertyDescriptor : public PropertyDescriptor
@@ -232,6 +234,8 @@ namespace RBX
 				  enumDescriptor(enumDesc)
 			{
 			}
+	public:
+		void sub_00448b10(RBX::Reflection::DescribedBase* instance, const RBX::Reflection::Value& value) const;   // INFERRED: 00448b10, placeholder name (identity tier), body byte-proved (Inferred_00448b10.cpp)
 		};
 	}
 }

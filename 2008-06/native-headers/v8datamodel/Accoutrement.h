@@ -75,6 +75,30 @@ namespace RBX
 		virtual const G3D::CoordinateFrame getLocation() const;          // 005b0b70
 		virtual void render3dSelect(Adorn* adorn, SelectState selectState);                      // 005b1020
 		void downFrom_InCharacter();                                     // 005b0920
+		// State-machine steps called by setDesiredState 005b2510 (jump tables 005b25c8 up / 005b25d8 down; analog
+		// donor names; the target's slot order is NOTHING -> 005b1d70, IN_WORKSPACE -> 005b1e50, IN_CHARACTER ->
+		// 005b1830, EQUIPPED down -> 005b1fc0). Bodies are not recovered yet (placeholders func_005b1xxx).
+		void connectTouchEvent();                                        // 005b1d70 (handleTouched +0x188)
+		void upTo_Equipped();                                            // 005b1830
+		void upTo_InCharacter();                                         // 005b1e50
+		void downFrom_Equipped();                                        // 005b1fc0 (weld +0x134)
+		void upTo_InWorkspace()                                          // inlined empty into 005b2510 (HAS_HANDLE up slot)
+		{
+		}
+		void downFrom_InWorkspace()                                      // INFERRED: empty step inlined into 005b2510; its
+		{                                                                // IN_WORKSPACE slot keeps the 4-entry down jump
+		}                                                                // table 005b25d8 (Tool.h declares downFrom_InWorkspace)
+		void downFrom_HasHandle()                                        // inlined into 005b2510 (scoped_connection
+		{                                                                // disconnect 00595230 on +0x188)
+			handleTouched.disconnect();
+		}
+		AccoutrementState computeDesiredState(Instance* testParent);      // inlined into 005b10a0 (no out-of-line copy survives)
+		AccoutrementState computeDesiredState();                          // inlined into 005b10a0 (no out-of-line copy survives)
+		void updateDesiredState();                                        // 005b10a0
+		void setDesiredState(AccoutrementState desiredState, const ServiceProvider* serviceProvider);   // 005b2510
+	public:
+		static bool writeUnlocked;                                        // 00976cad (read by write 005b1480)
+	protected:
 	public:
 		Accoutrement();
 		virtual ~Accoutrement();                                         // 005b0da0

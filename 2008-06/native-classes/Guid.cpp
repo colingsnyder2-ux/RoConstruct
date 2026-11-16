@@ -1,8 +1,11 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // Inactive: globals and initializer require original data/link proof.
 #include "util/Guid.h"
 #include <windows.h>
 #include <objbase.h>
 #include <boost/thread/once.hpp>
+#include "../../../tools/rbxgs/Client/App/include/util/Guid.h"
+
 const RBX::Name* localScope = NULL;
 LONG nextIndex = 0;
 void initLocalScope()
@@ -41,3 +44,28 @@ Guid::Guid()
     data.index = InterlockedIncrement(&nextIndex);
 }
 }
+
+namespace RBX {
+int Guid::compare(const Guid* a, const Guid* b)
+{
+	Name* x = a ? const_cast<Name*>(a->data.scope) : 0;
+	Name* y = b ? const_cast<Name*>(b->data.scope) : 0;
+	int r = Name::compare(*x, *y);
+	switch (r)
+	{
+	case -1:
+		return -1;
+	case 0:
+	{
+		int i = a ? a->data.index : 0;
+		int j = b ? b->data.index : 0;
+		if (i > j)
+			return 1;
+		return i < j ? -1 : 0;
+	}
+	default:
+		return r == 1;
+	}
+}
+}
+

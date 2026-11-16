@@ -57,7 +57,7 @@ namespace RBX
 		virtual ~SimJobStage()                            // slot 0 (??_G 0064d380)
 		{
 		}
-		virtual StageType getStageType();                 // slot 1 (005cb9d0; NATIVE_KERNEL_STAGES_PENDING)
+		virtual StageType getStageType();                 // slot 1 (005cb9d0; opt-in kernel-stages IStage)
 		virtual void onEdgeAdded(Edge* e);                // slot 4 (0064d060)
 		virtual void onEdgeRemoving(Edge* e);             // slot 5 (0064d090)
 

@@ -1,9 +1,9 @@
 // 2008-06 native RBX::MotorJoint (inactive); evidence in native-headers/v8world/Joints2008.h.
 // Verified by tests/record_native_world_joints.py. Rows of the MotorJoint unit (005e5bf0..005e5ee0): the constructor
 // 005e5bf0, setCurrentAngle 005e5da0, the destructor 005e5e00, stepUi 005e5e70 and the scalar deleting destructor
-// 005e5ee0 (vtable 0083f764 is emitted here); setCurrentAngle 005e5da0 only in the pending build (KERNEL_STAGE). resetLink 005e5c90 and isAligned 005e5d00 read the native Primitive
+// 005e5ee0 (vtable 0083f764 is emitted here); setCurrentAngle 005e5da0 through the opt-in kernel-stages IStage (KERNEL_STAGE 7). resetLink 005e5c90 and isAligned 005e5d00 read the native Primitive
 // (body, coordinate frame) and are not part of this unit yet.
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Joints2008.h"
 
 namespace RBX
@@ -23,9 +23,8 @@ namespace RBX
 		delete link;
 	}
 
-#ifdef NATIVE_WORLD_JOINTS_PENDING
-	// 005e5da0: IPipelined::getWorld inline (the 2008 KERNEL_STAGE is 7: `cmp eax, 7` at 005e5dc8; the donor
-	// v8kernel/IStage.h has 8, see PROPOSALS); RevoluteLink::setJointAngle inline (+0xcc, Link::dirty 00613cb0).
+	// 005e5da0: IPipelined::getWorld inline (IPipelined2008.h, the 2008 KERNEL_STAGE 7 of the opt-in kernel-stages
+	// IStage: `cmp eax, 7` at 005e5dc8); RevoluteLink::setJointAngle inline (+0xcc, Link::dirty 00613cb0).
 	void MotorJoint::setCurrentAngle(float value)
 	{
 		if (currentAngle != value)
@@ -35,7 +34,6 @@ namespace RBX
 				link->setJointAngle(value);
 		}
 	}
-#endif
 
 	// 005e5e70
 	void MotorJoint::stepUi(int uiStepId)

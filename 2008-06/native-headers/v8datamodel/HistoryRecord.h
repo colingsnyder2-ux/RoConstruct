@@ -25,10 +25,14 @@ struct HistoryItem {
     void captureProperty(const Reflection::PropertyDescriptor*);
     void capture(const Reflection::Property&);
     HistoryItem();
-    void mergeProperty(const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>&);
+    // The bound property members take pair<const PropertyDescriptor*, Value> (non-const key): the original
+    // std::for_each 00588240 converts each map element into that temporary through 00587710 before the call.
+    void mergeProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);
     void update(const Reflection::PropertyDescriptor*);
-    void applyProperty(const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>&);
-    void unplayProperty(const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>&);
+    void applyProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);
+    void unplayProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);
+public:
+	~HistoryItem(void);   // INFERRED: ??1HistoryItem@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
 
 struct HistoryRecord : std::map<Instance*, HistoryItem> {
@@ -40,5 +44,7 @@ struct HistoryRecord : std::map<Instance*, HistoryItem> {
     void merge(HistoryRecord*);
     void play();
     void unplay();
+public:
+	~HistoryRecord(void);   // INFERRED: ??1HistoryRecord@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
 }

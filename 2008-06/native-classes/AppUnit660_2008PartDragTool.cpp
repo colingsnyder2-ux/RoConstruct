@@ -71,9 +71,9 @@ namespace RBX
 			onMouseIdle(uiEvent);
 	}
 
-#ifdef NATIVE_APPUNIT660_PENDING
-	// These three bodies call MegaDragger::getMousePart, which the original emits out of line at 00665aa0 (an inline
-	// member returning the weak_ptr copy); the committed native tool/MegaDragger.h does not declare it (proposal).
+	// These three bodies call the inline MegaDragger::getMousePart (tool/MegaDragger.h), which this unit emits out of
+	// line at 00665aa0 (returns the weak_ptr copy: weak count +8 incremented).
+	// 00665b00
 	void PartDragTool::onMouseDelta(const UIEvent& uiEvent)
 	{
 		if (!dragging && megaDragger->mousePartAlive())
@@ -87,6 +87,7 @@ namespace RBX
 		onMouseIdle(uiEvent);
 	}
 
+	// 00665ce0
 	MouseCommand* PartDragTool::onKeyDown(const UIEvent& uiEvent)
 	{
 		if (megaDragger->mousePartAlive())
@@ -108,12 +109,12 @@ namespace RBX
 		return NULL;
 	}
 
+	// 00665e20
 	void PartDragTool::render3dAdorn(Adorn* adorn)
 	{
 		if (megaDragger->mousePartAlive())
 			megaDragger->getMousePart().lock()->render3dSelect(adorn, SELECT_NORMAL);
 	}
-#endif
 
 	MouseCommand* PartDragTool::onMouseUp(const UIEvent& uiEvent)
 	{

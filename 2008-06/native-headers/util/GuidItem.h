@@ -15,6 +15,8 @@ protected:
     virtual void onGuidChanged() {}
     bool registeredGuid;
     Guid guid;
+	public:
+		void sub_004b3dd0(const RBX::Guid::Data& data);   // INFERRED: 004b3dd0, placeholder name (identity tier), body byte-proved (Inferred_004b3dd0.cpp)
 };
 }
 

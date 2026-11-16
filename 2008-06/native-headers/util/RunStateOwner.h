@@ -148,5 +148,7 @@ namespace RBX
 		virtual void onAncestorChanged(const AncestorChanged& event);
 	private:
 		void runProc(boost::shared_ptr<DataModel> dataModel);
+	public:
+		void sub_005550a0(double throttle);   // INFERRED: 005550a0, placeholder name (identity tier), body byte-proved (Inferred_005550a0.cpp)
 	};
 }

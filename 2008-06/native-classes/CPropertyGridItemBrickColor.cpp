@@ -41,9 +41,8 @@ void CPropertyGridItemBrickColor::SetValue(CString strValue)
     }
 }
 
-#ifdef NATIVE_BRICKCOLOR_SELECTOR_PENDING
-// Needs read access to CRobloxControlColorSelector::m_bColorPicked (+0x17c, protected);
-// proposed: `friend class CPropertyGridItemBrickColor;` in CRobloxControlColorSelector.h.
+// 004382b0: reads CRobloxControlColorSelector::m_bColorPicked (+0x17c) through the friend declaration in
+// CRobloxControlColorSelector.h.
 void CPropertyGridItemBrickColor::OnInplaceButtonDown(CXTPPropertyGridInplaceButton* pButton)
 {
     if (m_pGrid->SendNotifyMessage(XTP_PGN_INPLACEBUTTONDOWN, (LPARAM)pButton) == TRUE)
@@ -55,7 +54,7 @@ void CPropertyGridItemBrickColor::OnInplaceButtonDown(CXTPPropertyGridInplaceBut
     m_pGrid->ClientToScreen(&rcItem);
     rcItem.left = rcItem.right - 158;
 
-    CXTPPopupBar* pPopup = CXTPPopupBar::CreatePopupBar(0);
+    CXTPPopupBar* pPopup = CXTPPopupToolBar::CreatePopupToolBar(0);  // 006ee720 (CreateObject of CXTPPopupToolBar 0097e038)
     CRobloxControlColorSelector* pSelector = new CRobloxControlColorSelector;
     pPopup->GetControls()->Add(pSelector, 0);
     if (GetValue() != _T(""))
@@ -66,4 +65,3 @@ void CPropertyGridItemBrickColor::OnInplaceButtonDown(CXTPPropertyGridInplaceBut
         OnValueChanged(brickColorName(pSelector->GetColor()));
     pPopup->InternalRelease();
 }
-#endif

@@ -202,3 +202,12 @@ template void RBX::Name::callDoDeclare<RBX::sBoolValue>();
 template void RBX::Name::callDoDeclare<RBX::sStringValue>();
 template void RBX::Name::callDoDeclare<RBX::sCFrameValue>();
 template void RBX::Name::callDoDeclare<RBX::sBrickColorValue>();
+
+namespace RBX {
+ObjectValue::ObjectValue()
+{
+    std::string name("Value");
+    Instance::setName(name);
+}
+}
+

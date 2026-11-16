@@ -20,3 +20,17 @@ template class std::_Tree<std::_Tset_traits<RBX::Script *,std::less<RBX::Script 
 template class std::_Vector_val<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread> >;
 template class std::allocator<RBX::Script *>;
 template class std::allocator<std::_Tree_nod<std::_Tset_traits<RBX::Script *,std::less<RBX::Script *>,std::allocator<RBX::Script *>,0> >::_Node *>;
+
+namespace RBX {
+int ScriptContext::stats(lua_State* L)
+{
+    Security::Context::current().requirePermission((Security::Permissions)1, "Stats");
+    lua_pushlightuserdata(L, RBX_LUA_GLOBAL_SCRIPTCONTEXT);
+    lua_gettable(L, LUA_GLOBALSINDEX);
+    Instance* instance = (Instance*)lua_touserdata(L, -1);
+    lua_pop(L, 1);
+    Lua::SharedPtrBridge<Reflection::DescribedBase>::push(L, shared_from(ServiceProvider::create<Stats::StatsService>(instance)));
+    return 1;
+}
+}
+

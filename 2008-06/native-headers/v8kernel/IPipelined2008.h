@@ -30,12 +30,18 @@
 #else
 #include <stddef.h>
 #include "v8kernel/IStage.h"
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+#include "v8world/IWorldStage.h"   // donor IWorldStage (includes only v8kernel/IStage.h): world +0xc for getWorld
+#endif
 
 struct NativeBodyPrimitive2008Layout;
 
 namespace RBX
 {
 	class Kernel;
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+	class World;
+#endif
 
 	class __declspec(novtable) IPipelined
 	{
@@ -65,6 +71,33 @@ namespace RBX
 		Kernel* getKernel() const;                     // 00645850
 		virtual void putInKernel(Kernel* kernel);      // slot 1 (00645830)
 		virtual void removeFromKernel();               // slot 2 (00645860)
-	};
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		// Donor v8world/IPipelined.h inlines (no code of their own). They compare stage types, so they are declared
+		// only in units that opt in to the 2008 StageType (native-headers/kernel-stages v8kernel/IStage.h, KERNEL_STAGE 7).
+		// inKernel: BlockBlockContact::updateConnectors 006087a0 (currentStage +0x4, slot 1, `cmp eax, 7`, no assert).
+		bool inKernel() const
+		{
+			return inStage(IStage::KERNEL_STAGE);
+		}
+		// getWorld: Joint::setPrimitive 006456e0 / MotorJoint::setCurrentAngle 005e5da0 (NULL currentStage -> NULL;
+		// slot 1 == 7 -> upstream +0x4; IWorldStage world +0xc). static_cast: the 2008 bodies have no
+		// rbx_static_cast dynamic_cast assertion.
+		World* getWorld()
+		{
+			if (!currentStage)
+				return NULL;
+
+			IStage* upstream;
+			if (currentStage->getStageType() != IStage::KERNEL_STAGE)
+				upstream = currentStage;
+			else
+				upstream = currentStage->getUpstream();
+
+			return static_cast<IWorldStage*>(upstream)->getWorld();
+		}
+#endif
+		public:
+		void putInStage(RBX::IStage *);   // INFERRED: ?putInStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z (header gap, header_gap_fill.py)
+};
 }
 #endif

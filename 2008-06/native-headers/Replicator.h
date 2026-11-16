@@ -97,6 +97,9 @@ namespace RBX
 			public:
 				static void writeItemType(RakNet::BitStream& stream, ItemType value);
 				static void readItemType(RakNet::BitStream& stream, ItemType& value);
+			public:
+				float sub_005ca3e0() const;   // INFERRED: 005ca3e0, placeholder name (identity tier), body byte-proved (Inferred_005ca3e0.cpp)
+				float sub_005ca400() const;   // INFERRED: 005ca400, placeholder name (identity tier), body byte-proved (Inferred_005ca400.cpp)
 			};
 
 			class ItemSender : private boost::noncopyable

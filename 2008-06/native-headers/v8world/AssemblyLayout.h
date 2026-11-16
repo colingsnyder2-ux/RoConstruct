@@ -48,9 +48,18 @@ namespace RBX
 			Assembly* assembly;            // +0x24 (005e7570, 005e7560)
 		};
 
+		// The 2008 SleepInfo (SleepStage's per-assembly record): only its first field, the Sim::AssemblyState, is
+		// read through this view (PartInstance::render3dAdorn 0059e5b2 / 0059e664 `mov eax, [eax]`).
+		struct SleepInfoFields
+		{
+			int state;                     // +0x0 (Sim::AssemblyState: 0 ANCHORED .. 5 SLEEPING_DEEPLY)
+		};
+
 		struct AssemblyFields
 		{
-			char unknown0[0x1c];          // INFERRED: fields the views never read
+			char unknown0[0x18];          // INFERRED: fields the views never read
+			SleepInfoFields* sleepInfo;    // +0x18 (the 2008 Clump sleepInfo: ctor zero, setter 005e5fe0, SleepStage
+			                               // 0064c49b reads [[clump+0x18]]; render3dAdorn 0059e5a7 / 0059e659)
 			Primitive* primitive;          // +0x1c (005e6160, 005e6170)
 			char unknown20[0x4];           // INFERRED: unread here
 			ClumpFields* rootClump;        // +0x24 (0063c9ee, 005e8268)
@@ -61,6 +70,16 @@ namespace RBX
 		inline AssemblyFields* fields(Assembly* assembly)
 		{
 			return reinterpret_cast<AssemblyFields*>(assembly);
+		}
+
+		// The 2008 sleep status of an assembly (openrbx Assembly::getSleepStatus without the parent walk): the state of
+		// its SleepInfo, ANCHORED (0) when it has none. PartInstance::render3dAdorn 0059e5a7..0059e5b6 / 0059e659..
+		// 0059e668: load +0x18, test, load [0], test against 0 (ANCHORED). Returned as int so that units which do
+		// not reach the Sim::AssemblyState definition can include this view; callers cast to Sim::AssemblyState.
+		inline int getSleepStatus(Assembly* assembly)
+		{
+			SleepInfoFields* sleepInfo = fields(assembly)->sleepInfo;
+			return sleepInfo ? sleepInfo->state : 0;
 		}
 
 		// assembly->getRootClump()->getRootPrimitive() with the 2008 offsets (+0x24, then +0x1c).
@@ -246,6 +265,8 @@ namespace RBX
 		const G3D::Array<Edge*>& getExternalEdges();     // 005e6c70 (INFERRED name: refills externalEdges +0x8 when
 		                                                 // externalEdgesDirty +0x14; callers SleepStage 0064a790 / 0064a950
 		                                                 // / 0064c470)
+	public:
+		void sub_005e6ba0(G3D::Array<const void*>& edges);   // INFERRED: 005e6ba0, placeholder name (identity tier), body byte-proved (Inferred_005e6ba0.cpp)
 	};
 
 	// INFERRED: the 2008 binary has no RTTI for an RBX::Assembly and the assembly object is its root Clump (Clump()
@@ -261,7 +282,9 @@ namespace RBX
 			return Clump::getAssembly();
 		}
 		MotorJoint* getMotor(unsigned int index);        // 005e6400 ?getMotor@Assembly@RBX@@QAEPAVMotorJoint@2@I@Z (registry)
-	};
+		public:
+		RBX::PrimIterator assemblyPrimEnd(void)const;   // INFERRED: ?assemblyPrimEnd@Assembly@RBX@@QBE?AVPrimIterator@2@XZ (header gap, header_gap_fill.py)
+};
 
 	// 005e5f60 (analog name: openrbx lessAssembly; cdecl, the comparator addChild 005e6f70 passes to std::_Sort 005e6e90).
 	bool lessAssembly(const Assembly* a0, const Assembly* a1);

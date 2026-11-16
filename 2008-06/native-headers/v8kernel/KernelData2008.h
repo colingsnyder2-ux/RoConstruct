@@ -3,9 +3,9 @@
 // is the donor header reached through the donor v8kernel/Kernel.h by every engine unit (and it includes the donor
 // Body.h / Point.h / Connector.h, which cannot be declared next to native-headers/v8kernel/Body2008.h, C2011). A unit
 // must not include both this header and the donor v8kernel/KernelData.h or Kernel.h.
-// Connector must be complete before this header is included (it is the IndexArray getter owner): Connector2008.h
-// includes the donor Body.h, so the includer declares it the way native-classes/KernelStep.cpp does (unit-local
-// redeclaration identical to native-headers/v8kernel/Connector2008.h).
+// Connector must be complete before this header is included (it is the IndexArray getter owner): the includer defines
+// NATIVE_PRIMITIVE_NATIVE_BODY and includes native-headers/v8kernel/Connector2008.h first (its 2008 Body path takes
+// Body2008.h / Point2008.h instead of the donor Body.h / Point.h), as native-classes/KernelStep.cpp does.
 //
 // Every field, size and offset below is read from the 2008-06 binary:
 //   size     0x3c: Kernel(IStage*) 005fb650 `push 0x3c; call operator new`, then KernelData() 005fb5f0.
@@ -35,16 +35,14 @@ namespace RBX
 		KernelData();                                                       // 005fb5f0
 		~KernelData();                                                      // 005fa970
 
-		// INFERRED: Array<Body*> rather than the donor IndexArray<Body, &Body::getKernelIndex> (same single G3D::Array
-		// layout): native-headers/v8kernel/Body2008.h declares no getKernelIndex. The original is the IndexArray:
-		// bodyKineticEnergy 005faa50 reads the element by value (IndexArray::operator[] returns tInstance*); through
-		// G3D::Array::operator[] (T&) the build keeps an extra `lea eax, [eax + esi*4]` (57 B against 54 B).
-		G3D::Array<Body*> bodies;                                           // +0x0
+		// The donor IndexArray (single G3D::Array, same layout): bodyKineticEnergy 005faa50 reads the element by value
+		// (IndexArray::operator[] returns tInstance*); Body::getKernelIndex is inline (removeBody 005fb110).
+		IndexArray<Body, &Body::getKernelIndex> bodies;                     // +0x0
 		// INFERRED: Array<Body*> (005fabc0 / 005fa770); 005faff0 / 005fb050 maintain Body +0x4 inline.
 		G3D::Array<Body*> leafBodies;                                       // +0xc  (analog name)
-		// INFERRED: Array<Point*> rather than IndexArray<Point, &Point::getKernelIndex> (same layout): native-headers/
-		// v8kernel/Point2008.h declares no getKernelIndex (removePoint 005fb1a0 calls one out of line, 005fa610).
-		G3D::Array<Point*> points;                                          // +0x18
+		// The donor IndexArray: removePoint 005fb1a0 / newPoint 005fb260 index it through the out-of-line Point::
+		// getKernelIndex 005fa610 and grow / shrink it with Array<Point*>::append 005fac30 / resize 005fa870.
+		IndexArray<Point, &Point::getKernelIndex> points;                   // +0x18
 		IndexArray<Connector, &Connector::getKernelIndex> connectors;       // +0x24
 		IndexArray<Connector, &Connector::getKernelIndex> connectors2ndPass; // +0x30
 
@@ -55,5 +53,7 @@ namespace RBX
 		// 005fb050 (`ret 4`): for i in 0..1, getBody(i); --[body + 0x8]; when it drops to 0 and +0x4 >= 0 the body is
 		// swap-removed from leafBodies and +0x4 = -1 (analog name).
 		void onConnectorRemoved(Connector* c);                              // 005fb050
-	};
+		public:
+		~KernelData(void);   // INFERRED: ??1KernelData@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+};
 }

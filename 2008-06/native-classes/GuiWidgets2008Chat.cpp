@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/widget-rect-2008
 // 2008-06 native gui widget leaves (inactive): the ChatWidget / ChatButton rows of the Button unit 0064e840..0064eaf0
 // and EquationDisplay::getLabel 00656940, which native-classes/WidgetChat.cpp and EquationDisplay.cpp (verified by
 // tests/record_native_widget.py) do not compile. Classes and layouts in native-headers/gui/WidgetChat.h and
@@ -58,7 +59,8 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_GUIWIDGETS_PENDING
+	// 0064ead0: Rect::pointInRect(Vector2int16) out of line (call 00573130 at 0064eb3b) through the widget-rect-2008
+	// header profile of native-flags, as Widget.cpp's Widget::processMouse.
 	GuiResponse ChatWidget::process(const GuiEvent& event)
 	{
 		// The range test (cmp 1 / jl, cmp 7 / jg at 0064eb0e) is the inline isMouseEvent of the 2008 build, written out
@@ -78,6 +80,9 @@ namespace RBX
 		return UnifiedWidget::process(event);
 	}
 
+#ifdef NATIVE_GUIWIDGETS_PENDING
+	// 00656940: still needs the donor's inline Instance::getRootAncestor overloads in core v8tree/Instance.h (owner:
+	// Instance core header).
 	std::string EquationDisplay::getLabel() const
 	{
 		if (const Evaluator* evaluator = dynamic_cast<const Evaluator*>(Instance::getRootAncestor(this)))

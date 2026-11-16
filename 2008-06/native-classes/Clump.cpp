@@ -376,3 +376,11 @@ namespace RBX
 		std::sort(children.begin(), children.end(), lessAssembly);
 	}
 }
+
+namespace RBX {
+RBX::PrimIterator Assembly::assemblyPrimEnd(void) const
+{
+	return PrimIterator::end(PrimIterator::IN_ASSEMBLY);
+}
+}
+

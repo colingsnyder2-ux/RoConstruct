@@ -38,6 +38,14 @@ namespace RBX
 		G3D::Vector3 force;                               // +0x28
 
 	public:
+		// KernelData points IndexArray accessor. Out of line in the binary: Kernel::removePoint 005fb1a0 and newPoint
+		// 005fb260 call 005fa610 (`lea eax, [ecx + 4]`: kernelIndex after the vptr), ICF-folded with
+		// Connector::getKernelIndex; hence noinline, as Connector2008.h declares Connector's. The donor v8kernel/Point.h
+		// declares it inline.
+		__declspec(noinline) int& getKernelIndex()        // 005fa610 (folded)
+		{
+			return kernelIndex;
+		}
 		Point(Body* _body);                               // 0064dc00
 		virtual ~Point()                                  // slot 0 (??_G 0064dc50)
 		{
@@ -57,6 +65,12 @@ namespace RBX
 		const G3D::Vector3& getWorldPos()
 		{
 			return worldPos;
+		}
+		// Donor v8kernel/Point.h (static inline): Kernel::newPoint 005fb260 inlines it (005fb2d2..005fb2ff: body +0xc,
+		// then localPos +0x10 / +0x14 / +0x18 compared with fcomp).
+		static bool sameBodyAndOffset(const Point& p1, const Point& p2)
+		{
+			return p1.body == p2.body && p1.localPos == p2.localPos;
 		}
 	};
 }

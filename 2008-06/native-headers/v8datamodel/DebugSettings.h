@@ -18,7 +18,8 @@
 //              property, otherwise the 2008 property name (osVer / osPlatformId are evidence names).
 //   enums      EnumDesc<ErrorReporting> 00564a60 ("ErrorReporting": DontReport 0, Prompt 1, Report 2);
 //              EnumDesc<Debugable::AssertAction> 00564d70 ("AssertAction"); EnumDesc<World::EThrottle> 00564be0
-//              ("EnviromentalPhysicsThrottle"; needs a World.h declaration, NATIVE_DEBUGSETTINGS_PENDING only).
+//              ("EnviromentalPhysicsThrottle"; NATIVE_DEBUGSETTINGS_PENDING only: World2008.h declares EThrottle, but
+//              DebugSettings.cpp reaches the donor v8world/World.h through v8datamodel/PartInstance.h).
 #include "v8datamodel/GlobalSettings.h"
 #include "util/Debug.h"
 #include <string>

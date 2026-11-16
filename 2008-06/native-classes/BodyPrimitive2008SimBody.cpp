@@ -64,4 +64,13 @@ namespace RBX
 		force += _force;
 		torque += (worldPos - pv.position.translation).cross(_force);
 	}
+
+	// 00629bb0 (analog name; its out-of-line copy lies in the ClickDetector range, only caller MovingNoPhysicsBase
+	// 0066eb90 through the inline Body::accumulateImpulse): the 00612fb0 shape on impulse +0x9c / rotImpulse +0xa8.
+	void SimBody::accumulateImpulse(const G3D::Vector3& _impulse, const G3D::Vector3& worldPos)
+	{
+		updateIfDirty();
+		impulse += _impulse;
+		rotImpulse += (worldPos - pv.position.translation).cross(_impulse);
+	}
 }

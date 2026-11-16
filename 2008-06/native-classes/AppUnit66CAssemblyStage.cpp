@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #undef _RELEASEASSERT
 // 2008-06 native RBX::AssemblyStage (inactive); layout evidence in native-headers/AppUnit66C/AssemblyStage.h.
 // Verified by tests/record_native_app_unit66c.py. Built here: stepWorld 0066f570, the destructor 0066f790 and the scalar
@@ -7,22 +7,29 @@
 // wakeAssembly 0066f510 / onAssemblyAdded 0066f530 / onAssemblyRemoving 0066f550 call SleepStage members 0064b890 /
 // 0064aff0 / 0064b0a0; onEdgeAdded 0066f5f0 / onEdgeRemoving 0066f6e0 write the 2008 Assembly +0x14 flag and call the
 // 2008 Primitive::getContact / getJoint (005e7ce0 / 005e7d30) on the Edge primitives (see the recorder's proposals);
-// getStageType 006fa3f0 returns the 2008 ASSEMBLY_STAGE 4 (the donor IStage.h numbers it 3).
+// getStageType 006fa3f0 (ASSEMBLY_STAGE 4) is built through the kernel-stages opt-in (the donor IStage.h numbers it 3).
 #include "AppUnit66C/AssemblyStage.h"
 #include "v8world/Joints2008.h"
 
 namespace RBX
 {
+	// 006fa3f0 (folded `mov eax, 4`): ASSEMBLY_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h
+	// through the native-flags line).
+	IStage::StageType AssemblyStage::getStageType()
+	{
+		return ASSEMBLY_STAGE;
+	}
+
 	// 0066f790
 	AssemblyStage::~AssemblyStage()
 	{
 	}
 
 	// 0066f570: every joint's slot 13 (Joints2008.h stepWorld), then the downstream stage (IStage::stepWorld inline)
-	void AssemblyStage::stepWorld(int worldStepId, int uiStepId, bool throttling)
+	void AssemblyStage::stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest)
 	{
 		for (std::set<Joint*>::iterator it = joints.begin(); it != joints.end(); ++it)
 			(*it)->stepWorld();
-		IStage::stepWorld(worldStepId, uiStepId, throttling);
+		IStage::stepWorld(worldStepId, uiStepId, throttling, moveBodiesTest);
 	}
 }

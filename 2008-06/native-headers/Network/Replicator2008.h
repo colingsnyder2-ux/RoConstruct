@@ -214,8 +214,7 @@ namespace RBX
 			// else new(0x2a24) SharedStringDictionary 004b3d10; only caller serializeValue 004b6890). Body in
 			// NetworkReplicator2008StatsItem.cpp.
 			SharedStringDictionary& getSharedDictionary(const Reflection::PropertyDescriptor& descriptor);
-			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Draft under NATIVE_REPLICATOR_SERIALIZEVALUE_PENDING in
-			// NetworkReplicator2008StatsItem.cpp (blocked on StringSender::serializeString 004a83e0 / IdSerializer::serializeRef 004a8b90).
+			// 004b6890 (donor Replicator::serializeValue; thiscall, ret 0xc). Body in NetworkReplicator2008StatsItem.cpp.
 			void serializeValue(const Reflection::ConstProperty& property, bool, RakNet::BitStream& stream);
 		};
 

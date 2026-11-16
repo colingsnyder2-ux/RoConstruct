@@ -32,10 +32,20 @@ namespace RBX
             }
             virtual size_t size() const;
             virtual void get(int index, Reflection::Value& value) const;
+            // Inline at its only caller ObjectBridge::callMemberFunction 0061c0e0 (0061c22a..0061c234): the static
+            // push 005aba50 is called with (&returnValue at args+4, L at args+0x10) and its result is returned.
+            int pushReturnValue() const
+            {
+                return push(returnValue, L);
+            }
 
         public:
             // 005ad380 (ScriptContext unit, external target bound by its evidence name).
             static bool get(lua_State* L, int luaIndex, Reflection::Value& value, bool nested);
+            // 005aba50 (external target, outside this unit): cdecl (const Value& at [ebp+8], lua_State* at [ebp+0xc])
+            // returning the pushed count (type_info tests of the Value type, then e.g. 1 after a push); called only
+            // through pushReturnValue from 0061c234.
+            static int push(const Reflection::Value& value, lua_State* const L);
         };
     }
 }
