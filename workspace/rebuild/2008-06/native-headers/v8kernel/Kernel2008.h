@@ -7,7 +7,7 @@
 // Every Kernel field, slot and size below is read from the 2008-06 binary:
 //   RTTI     Kernel 0084105c -> IStage (mdisp 0).
 //   slots    4: 0 scalar deleting dtor (005fb0c0, calls ~Kernel 005faca0), 1 getStageType (0077d800 `mov eax, 7`),
-//            2 stepWorld(int, int, bool) (005fb3f0, evidence name), 3 getKernel (007188c0 `mov eax, ecx`).
+//            2 stepWorld(int, int, bool, bool) (005fb3f0 `ret 0x10`; 4 arguments with the opt-in kernel-stages IStage), 3 getKernel (007188c0 `mov eax, ecx`).
 //   size     0x24 (SimJobStage() 0064d300 news 0x24 and calls Kernel(this) 005fb650).
 //   ctor     005fb650: IStage(upstream, NULL), inStepCode +0xc = false, kernelData +0x10 = new KernelData (0x3c,
 //            constructor 005fb5f0), realTimeConnectors +0x14 (G3D::Array: data +0x14 / num +0x18 / numAllocated +0x1c
@@ -46,6 +46,13 @@ namespace RBX
 		// through the KernelIndex getter 005fa610 and Array<Point*>::resize 005fa870 (donor: private inline).
 		void removePoint(Point* point);                               // 005fb1a0
 
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		// 005fae00 (thiscall `ret 4`, 196 B; registry placeholder func_005fae00): called by stepWorld 005fb3f0 with
+		// worldStepId when its fourth argument is true. INFERRED: analog name and private access (no symbol or donor
+		// declaration; its only caller is stepWorld).
+		void stepMoveBodiesTest(int worldStepId);                     // 005fae00
+#endif
+
 		bool inStepCode;                                              // +0xc
 		KernelData* kernelData;                                       // +0x10
 		G3D::Array<Connector*> realTimeConnectors;                    // +0x14
@@ -56,10 +63,16 @@ namespace RBX
 	public:
 		Kernel(IStage* upstream);                                     // 005fb650
 		virtual ~Kernel();                                            // 005faca0 (slot 0 ??_G 005fb0c0)
-		virtual StageType getStageType();                             // slot 1 (0077d800; NATIVE_KERNEL_STAGES_PENDING)
+		virtual StageType getStageType();                             // slot 1 (0077d800; opt-in kernel-stages IStage)
 		// 005fb3f0 is `ret 0x10` and tests a fourth bool argument first (true: 005fae00 with worldStepId, then return),
-		// so the 2008 IStage slot 2 takes four arguments; the donor IStage.h declares three. Not built.
+		// so the 2008 IStage slot 2 takes four arguments. Units that opt in to native-headers/kernel-stages (its
+		// v8kernel/IStage.h defines NATIVE_KERNEL_STAGE_NUMBERING and declares that 4-argument slot 2) get the 2008
+		// override; other units keep the 3-argument override of the donor IStage.h slot 2.
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest);   // slot 2 (005fb3f0)
+#else
 		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);   // slot 2 (005fb3f0, not built)
+#endif
 		virtual Kernel* getKernel()                                   // slot 3 (007188c0)
 		{
 			return this;

@@ -5,7 +5,7 @@
 //   maxalloced +0x160, numSounds +0x164, numUnusedSounds +0x168; SoundService system +0x134, fmod_version +0x138,
 //   loadedSounds +0x180, loaded3DSounds +0x1a0; strings "fmod %08x" 008380a4 and "-disabled-" 00838098).
 // Not built here (declarations owned elsewhere; see the header proposals of this batch):
-//   ViewRbxGfx::suppressSkybox 004d9c90 needs the Lighting getters (v8datamodel/Lighting2008.h keeps the fields private).
+//   ViewRbxGfx::suppressSkybox 004d9c90 is defined (exact) in RenderSceneViewRbxGfx2008.cpp with the Lighting2008.h getters.
 //   Render::RenderScene::render 00504bf0 needs the private RenderScene helpers in RenderLib/RenderSceneRender2008.h.
 // Already defined elsewhere (not duplicated): ViewNew EndcapTransform 004fd4a0 / CylinderTransform 004fd530
 // (ViewNewCylinderMesh.cpp), LevelBuilder::offset 004f1ff0 (ViewNew/QuadVolume.h inline), CameraVerb::isEnabled

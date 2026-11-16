@@ -14,6 +14,12 @@
 #include "util/TextureId.h"
 #include "util/standardout.h"
 #include "v8tree/Instance.h"
+#ifdef NATIVE_LUABRIDGE_PENDING
+#include "v8datamodel/DataModel.h"
+#include "gui/Gui.h"
+#include "v8datamodel/Stats.h"
+#include "security/SecurityContext.h"
+#endif
 #include "G3D/format.h"
 #include "G3D/Vector3.h"
 
@@ -431,15 +437,56 @@ void ObjectBridge::on_newindex(boost::shared_ptr<DescribedBase>& object, const c
     throw std::runtime_error(G3D::format("%s is not a valid member of %s", name, object->classDescriptor().name.c_str()));
 }
 
+// NATIVE_LUABRIDGE_PENDING: the write-access check 0061bcd0 calls Instance::getRootAncestor() 0042a5f0 and
+// Instance::isAncestorOf(const Instance*) const 004c9c50, which the core native v8tree/Instance.h does not declare
+// (owner: v8tree/Instance.h). callMemberFunction 0061c0e0 calls 0061bcd0 at 0061c185, so it stays guarded with it.
+// Diagnostic compile with the check removed (2026-11-15): 451 B against 478 B; every difference is the missing
+// dynamic_cast + 0061bcd0 call and the register allocation that follows; the LuaArguments2008 construction, execute
+// and pushReturnValue -> push 005aba50 sequence (0061c1f6..0061c264) is identical. Even with the declarations, the
+// esi-argument convention of 0061bcd0 (whole-program code generation) keeps both bodies from being byte-exact.
 #ifdef NATIVE_LUABRIDGE_PENDING
+// 0061bcd0: write-access check called from 0061be19 (on_newindex) and 0061c185 (callMemberFunction) right after the
+// dynamic_cast<Instance*> of the object. Name not established (file-local; no registry name). Without Administrator
+// permission (Context::isInRole 005cf070 with identity and 1): StatsService (RTTI 0093244c) needs "modify a StatsService";
+// the root DataModel (getRootAncestor 0042a5f0 of the parent, the object itself when it has none; RTTI 0092e8a0) guards
+// guiRoot (+0x21c) "GuiRoot" and guiHooks (+0x224) "GuiHooks" and their descendants (isAncestorOf 004c9c50).
+// The target passes the Instance* in esi (whole-program code generation); a /c compile pushes it.
+static void checkWriteAccess(Instance* instance)
+{
+    if (Security::Context::current().hasPermission(Security::Administrator))
+        return;
+
+    if (dynamic_cast<Stats::StatsService*>(instance))
+        Security::Context::current().requirePermission(Security::Administrator, "modify a StatsService");
+
+    Instance* root = instance->getParent() ? instance->getParent()->getRootAncestor() : instance;
+    DataModel* dataModel = dynamic_cast<DataModel*>(root);
+    if (dataModel)
+    {
+        Instance* guiRoot = dataModel->guiRoot.get();
+        if (guiRoot == instance || guiRoot->isAncestorOf(instance))
+            Security::Context::current().requirePermission(Security::Administrator, "GuiRoot");
+
+        Instance* guiHooks = dataModel->guiHooks.get();
+        if (guiHooks == instance || guiHooks->isAncestorOf(instance))
+            Security::Context::current().requirePermission(Security::Administrator, "GuiHooks");
+    }
+}
+
+// 0061c0e0: the closure pushed by on_index 0061c2c0 (push 0x61c0e0 at 0061c476) for a member function. fd is the
+// light userdata upvalue (lua_touserdata(L, lua_upvalueindex(1)) 00612120); a nonzero security (+0x10) is passed as the
+// permission to Context::requirePermission 00489810 with the function name; getPtr<shared_ptr<DescribedBase>> 0061a720
+// of argument 1; isMemberOf 00570c40; LuaArguments (vtable 00844174, offset 1, L) built on the stack, execute (vtable
+// slot 1), then the static push 005aba50 of returnValue.
 int ObjectBridge::callMemberFunction(lua_State* L)
 {
-    int idx = lua_upvalueindex(1);
-    RBXASSERT(lua_type(L, idx) == LUA_TLIGHTUSERDATA);
-    Reflection::FunctionDescriptor* fd = static_cast<Reflection::FunctionDescriptor*>(lua_touserdata(L, idx));
+    const Reflection::FunctionDescriptor* fd =
+        static_cast<const Reflection::FunctionDescriptor*>(lua_touserdata(L, lua_upvalueindex(1)));
 
-    if (fd->security == FunctionDescriptor::NeedTrustedCaller)
-        Security::Context::current().requirePermission(Security::Administrator, fd->name.c_str());
+    // INFERRED: the 2008 security value is used directly as a Security::Permissions (cmp [fd+0x10], 0 then pushed
+    // unchanged at 0061c12e); the read-only native reflection/function.h names it FunctionDescriptor::Security.
+    if (fd->security)
+        Security::Context::current().requirePermission(static_cast<Security::Permissions>(fd->security), fd->name.c_str());
 
     boost::shared_ptr<Reflection::DescribedBase> instance;
 
@@ -448,13 +495,15 @@ int ObjectBridge::callMemberFunction(lua_State* L)
             "Did you forget a semicolon?  The first argument of member function %s must be an Object",
             fd->name.c_str()));
 
+    checkWriteAccess(dynamic_cast<Instance*>(instance.get()));
+
     if (!fd->isMemberOf(instance.get()))
         throw std::runtime_error(G3D::format(
-        "The function %s is not a member of \"%s\"",
-        fd->name.c_str(),
-        instance->classDescriptor().name.c_str()));
+            "The function %s is not a member of \"%s\"",
+            fd->name.c_str(),
+            instance->classDescriptor().name.c_str()));
 
-    LuaArguments args(L, 1);
+    LuaArguments2008 args(L, 1);
     fd->execute(instance.get(), args);
     return args.pushReturnValue();
 }

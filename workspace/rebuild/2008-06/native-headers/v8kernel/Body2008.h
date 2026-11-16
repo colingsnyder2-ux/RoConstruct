@@ -100,6 +100,11 @@ namespace RBX
 			dirty = true;
 		}
 		void accumulateForce(const G3D::Vector3& _force, const G3D::Vector3& worldPos);   // 00612fb0 (out of line)
+		// 00629bb0 (out of line, 167 bytes, `ret 8`; its copy lies in the ClickDetector range): the accumulateForce
+		// 00612fb0 shape on the impulse accumulators, impulse +0x9c += _impulse and rotImpulse +0xa8 += (worldPos -
+		// pv.position.translation).cross(_impulse) after updateIfDirty 00658d20. Caller: MovingNoPhysicsBase 0066eb90
+		// (0066ec85) through the inline Body::accumulateImpulse. No donor or registry name (placeholder func_00629bb0).
+		void accumulateImpulse(const G3D::Vector3& _impulse, const G3D::Vector3& worldPos);   // 00629bb0 (INFERRED: analog name)
 		void accumulateTorque(const G3D::Vector3& _torque)   // inline in Body::accumulateTorque 006060b0
 		{
 			updateIfDirty();
@@ -193,6 +198,13 @@ namespace RBX
 		static int getNextStateIndex();                   // 00613f20 (out of line: Link() 00613d20 calls it)
 		void advanceStateIndex();                         // 00613f40
 
+		// KernelData bodies IndexArray accessor (donor v8kernel/Body.h, public inline): kernelIndex +0x0 is read and
+		// written inline by Kernel::removeBody 005fb110 (`mov eax, [edi]` ... `mov [edx], eax`, then -1 into [edi]); no
+		// out-of-line copy is called.
+		int& getKernelIndex()
+		{
+			return kernelIndex;
+		}
 		Body* getParent() const
 		{
 			return parent;
@@ -285,6 +297,14 @@ namespace RBX
 			SimBody* simBody = root->simBody;
 			if (simBody)
 				simBody->accumulateForce(force, worldPos);
+		}
+		// inline in MovingNoPhysicsBase 0066eb90 (0066ec55..0066ec85: body +0xa0 reloaded, root +0x10 -> simBody +0x2c,
+		// null test, then SimBody::accumulateImpulse 00629bb0), the accumulateForce wrapper shape above.
+		void accumulateImpulse(const G3D::Vector3& impulse, const G3D::Vector3& worldPos)   // INFERRED: analog name
+		{
+			SimBody* simBody = root->simBody;
+			if (simBody)
+				simBody->accumulateImpulse(impulse, worldPos);
 		}
 		void accumulateTorque(const G3D::Vector3& torque) // out-of-line COMDAT 006060b0 (Connector unit): root +0x10
 		{                                                 // and simBody +0x2c loaded once (006060b4 `mov esi, [eax+0x2c]`)

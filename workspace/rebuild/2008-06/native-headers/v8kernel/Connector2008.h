@@ -101,6 +101,14 @@ namespace RBX
 		// createConnector 00606e00).
 		ContactConnector(float _k, float _kNeg, float _kFriction);      // 00606d40
 
+		// No code of its own: PartInstance::render3dAdorn passes connector + 0x8 straight to GeoPair::computePosition
+		// 00599250 as ecx (0059e9f1..0059e9f4). The donor v8kernel/Connector.h has no accessor (the mined analog reads
+		// the field directly).
+		GeoPair& getGeoPair()   // INFERRED: analog name, geoPair +0x8
+		{
+			return geoPair;
+		}
+
 		// Donor inline forwarder (tools/rbxgs v8kernel/Connector.h): no address of its own, inlined into
 		// BlockBlockContact::matchContactConnector 00607cc0 (00607cf5 `add ecx, 8; call 00606a50`: GeoPair::match
 		// 00606a50 on the GeoPair at +0x8, five arguments, `ret 0x14`).

@@ -4,6 +4,10 @@
 
 namespace RBX
 {
+	// The unit-local inline accessor of the other Verb users (RunStateCommands.cpp, ControllerActions.cpp): ImageButton
+	// reads the verb's name inline (mov edi, [edi+4]; add edi, 4 at 0064f3c4).
+	inline const Name& Verb::getName() const { return name; }
+
 	GuiResponse KeyButton::process(const GuiEvent& event)
 	{
 		if (event.eventType == UIEvent::KEY_DOWN && event.key == keyCode)
@@ -59,16 +63,13 @@ namespace RBX
 		return guiImageDraw.getImageSize();
 	}
 
-#ifdef NATIVE_WIDGET_PENDING
-	// Reads the verb's name inline (mov edi, [edi+4]; add edi, 4 at 0064f3c4): needs Verb::getName inline in
-	// v8tree/Verb.h (declared out of line there).
+	// 0064f340
 	ImageButton::ImageButton(Adorn* adorn, Verb* verb, const std::string& title)
 		: VerbWidget(verb),
 		  guiImageDraw(adorn, verb->getName().toString())
 	{
 		setName(title);
 	}
-#endif
 
 	G3D::Vector2 ImageButton::getSize() const
 	{

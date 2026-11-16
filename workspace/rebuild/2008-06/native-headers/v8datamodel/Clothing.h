@@ -33,6 +33,7 @@
 namespace RBX
 {
 	class Humanoid;
+	class PartInstance;
 
 	extern const char sShirt[];        // 0083c190 "Shirt"
 	extern const char sPants[];        // 0083c198 "Pants"
@@ -74,7 +75,18 @@ namespace RBX
 		static Reflection::BoundProp<TextureId, 1> prop_Outfit1;
 		static Reflection::BoundProp<TextureId, 1> prop_Outfit2;
 		Clothing();
+		// Read inline by ViewNew::Part::updateMesh 004ef930 (size checks +0x148 / +0x168, copies of +0x134 / +0x154).
+		const TextureId& getOutfit1() const { return outfit1; }
+		const TextureId& getOutfit2() const { return outfit2; }
 		void resetLimbs();                                               // 005d4b00 (called from onAncestorChanged)
+	private:
+		// Limb lookups called only by resetLimbs (analog names; no symbols): thiscall, parent (+0x104)
+		// findFirstChildByName(literal) 00557950 -> shared_from_dynamic_cast<PartInstance> 005d42f0 -> raw pointer.
+		PartInstance* getTorso();                                        // 005d4510 "Torso" (00832a1c)
+		PartInstance* getLeftLeg();                                      // 005d4640 "Left Leg" (0083c4b8)
+		PartInstance* getRightLeg();                                     // 005d4770 "Right Leg" (0083c4c4)
+		PartInstance* getLeftArm();                                      // 005d48a0 "Left Arm" (0083c4d0)
+		PartInstance* getRightArm();                                     // 005d49d0 "Right Arm" (0083c4dc)
 	protected:
 		virtual void apply(Humanoid* humanoid);                          // 005d3a30
 	};
@@ -82,7 +94,9 @@ namespace RBX
 	class Shirt : public DescribedCreatable<Shirt, Clothing, sShirt>
 	{
 	public:
-		Shirt();
+		// 004939b0: inline (a COMDAT of the Network/Player.cpp unit 0048c000..00498000, called out of line by
+		// create<Shirt> 00494250; stores the Shirt vtable 00822114 after DescribedCreatable<Shirt> 004933c0).
+		Shirt() {}
 		TextureId getTemplate() const;                                   // 005d3a00 (+0x154)
 		void setTemplate(TextureId value);                               // 005d40c0 (prop_Outfit2)
 	};
@@ -90,7 +104,9 @@ namespace RBX
 	class Pants : public DescribedCreatable<Pants, Clothing, sPants>
 	{
 	public:
-		Pants();
+		// 00493920: inline (a COMDAT of the Network/Player.cpp unit, called out of line by create<Pants> 004941d0;
+		// stores the Pants vtable 00822044 after DescribedCreatable<Pants> 004932c0).
+		Pants() {}
 		TextureId getTemplate() const;                                   // 005d3b90 (+0x134)
 		void setTemplate(TextureId value);                               // 005d4120 (prop_Outfit1)
 	};

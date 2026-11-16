@@ -39,7 +39,10 @@ namespace RBX
 			// << Guid::getLocalScope() 005a82e0 name string 004a6560; serializeId 004a8ae0 (declared in IdSerializer.h,
 			// body blocked on util/GuidItem.h) for each replicationContainers entry; writeProperties 004b7f20 (declared in
 			// Replicator2008.h) on replicationContainers[0]; peer->Send(&bs, 2, 3, 0, remotePlayerId, false) (slot 0x34).
-			// Remaining blocker: util/Guid.h does not declare static const Name& Guid::getLocalScope() (005a82e0).
+			// StringSender::serializeString 004a83e0 and IdSerializer::serializeRef 004a8b90 have landed (serializeValue
+			// 004b6890 is exact). Remaining blockers: util/Guid.h (core) does not declare static const Name&
+			// Guid::getLocalScope() (005a82e0), and the serializeId 004a8ae0 body waits on the util/GuidItem.h (core)
+			// GuidItem<Instance> guid accessor.
 			// Server::OnReceive 004a4dc0 calls it non-virtually on the create<ClientProxy> 004a21c0 result.
 			void sendTop();
 		};

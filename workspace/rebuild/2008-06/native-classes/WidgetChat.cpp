@@ -5,9 +5,12 @@
 
 namespace RBX
 {
-#ifdef NATIVE_WIDGET_PENDING
-	// Both read UnifiedWidget::menuState (+0x144) directly (0064e851, 0064e8a0): they need
-	// UnifiedWidget::getMenuState inline in gui/Gui.h (declared out of line there).
+	// Both bodies below read UnifiedWidget::menuState (+0x144) directly (0064e851, 0064e8a0): a unit-local inline
+	// accessor in the pattern of the unit-local Verb::getName (RunStateCommands.cpp), since gui/Gui.h declares it out of
+	// line (proposal for the Gui.h owner: make it inline there).
+	inline UnifiedWidget::MenuState UnifiedWidget::getMenuState() const { return menuState; }
+
+	// 0064e840
 	void UnifiedImageWidget::render2dMe(Adorn* adorn)
 	{
 		if (isVisible())
@@ -30,12 +33,12 @@ namespace RBX
 		}
 	}
 
+	// 0064e8a0
 	void ChatWidget::onMenuStateChanged()
 	{
 		if (getMenuState() == HOVER)
 			setMenuState(SHOWN);
 	}
-#endif
 
 	ChatWidget::ChatWidget(const std::string& title, std::string code)
 	{

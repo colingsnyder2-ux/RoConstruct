@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::JointStage (inactive); evidence in native-headers/v8world/JointStage2008.h.
 // Verified by tests/record_native_kernel_stages.py. Rows of the JointStage unit built here: edgeHasPrimitivesDownstream
 // 00667f70, removeFromMap 00668280, insertToListAndMap 00668340, onEdgeAdded 006683b0, onEdgeRemoving 006683f0, the
@@ -14,13 +14,12 @@
 
 namespace RBX
 {
-#ifdef NATIVE_KERNEL_STAGES_PENDING
-	// 007286a0 (folded `mov eax, 1`); needs the 2008 StageType (generated v8kernel/IStage.h).
+	// 007286a0 (folded `mov eax, 1`): JOINT_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h
+	// through the native-flags line).
 	IStage::StageType JointStage::getStageType()
 	{
 		return JOINT_STAGE;
 	}
-#endif
 
 	// 00668520
 	JointStage::~JointStage()

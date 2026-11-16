@@ -8,10 +8,34 @@ namespace RBX
 	class Assembly;
 	class SimJobStage;
 	class Kernel;
+	class Contact;
 
 	class World
 	{
 	public:
+		// EnumDesc<World::EThrottle> 00564be0 ("EnviromentalPhysicsThrottle") registers DefaultAuto, Disabled, Random and
+		// Always in this order; donor names (generated settings-items-pending World.h of tests/record_native_settings_items.py).
+		enum EThrottle
+		{
+			DefaultAuto,
+			Disabled,
+			Random,
+			Always
+		};
+		// The 4-byte global 0x97ac54: DebugSettings::getEnvironmentalThrottle 005631b0 returns it, and the setter 00565d40
+		// compares, stores it and raises prop_PhysicsEnviromentalThrottle (0x9744f4).
+		static EThrottle environmentalThrottle;
+
+		// 005e9520: walks the stage chain from +0x88 to stage type 2 and tail-jumps to 0064cad0; donor name (only caller
+		// ContactManager::getHit 0060d6e8, as donor ContactManager::getHit calls world->update()).
+		void update();
+		// 005e9260: passes the contact to the first stage (+0x88, vtable +0x10), then ++(+0xe8); donor name (callers
+		// ContactManager::onNewPair 0060d8c8 and onPrimitiveGeometryTypeChanged 0060d9c1).
+		void insertContact(Contact* c);
+		// 005e9280: first stage (+0x88, vtable +0x14), deletes the contact (virtual destructor), then --(+0xe8)
+		// (caller ContactManager::onPrimitiveGeometryTypeChanged 0060d995); donor name.
+		void destroyContact(Contact* c);
+
 		void onJointPrimitiveNulling(Joint* j, Primitive* p);
 		void onJointPrimitiveSet(Joint* j, Primitive* p);
 		void insertJoint(Joint* j);

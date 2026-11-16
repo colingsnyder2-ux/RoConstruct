@@ -124,7 +124,8 @@ namespace RBX
 			static void beginRender(G3D::RenderDevice*, bool, bool);   // 00548ec0
 			static void setShadowVertex(const G3D::Vector3&);          // 00548c60
 			void computeDirectionalShadowVolume(const G3D::CoordinateFrame&, const G3D::Vector3&,
-				G3D::Array<unsigned int>&, G3D::Array<G3D::Vector3>&, bool) const; // 00549050
+				G3D::Array<int>&, G3D::Array<G3D::Vector3>&, bool) const; // 00549050 (index type: AggregateChunk::renderShadows
+				// passes shadowIndexArray, which it sends through sendIndices<int> 005029c0)
 			static void endRender(G3D::RenderDevice*);                  // 00549030
 
 			// Donor signature; 0053f828 calls 00548f80 with hidden return and float argument.

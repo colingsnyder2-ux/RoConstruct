@@ -12,6 +12,9 @@ namespace RBX { class BrickColor; }
 // The class is a Roblox copy of CXTPControlColorSelector with a BrickColor palette.
 class CRobloxControlColorSelector : public CXTPControl {
     DECLARE_XTP_CONTROL(CRobloxControlColorSelector)
+    // INFERRED: CPropertyGridItemBrickColor::OnInplaceButtonDown 004382b0 reads m_bColorPicked (+0x17c) directly
+    // after TrackPopupMenu; no accessor exists in the binary, so the original granted access to that class.
+    friend class CPropertyGridItemBrickColor;
 public:
     // Element of the shared palette vector (12 bytes; copy 0044deb0, assignment loop 0044dee0).
     struct CColorInfo {

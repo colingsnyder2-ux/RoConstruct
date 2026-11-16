@@ -102,7 +102,9 @@ namespace RBX
 			bool _cullable;                                          // +0x61
 			G3D::GLight shadowSource;                                // +0x68
 			G3D::VAR shadowVAR;                                      // +0xb8
-			G3D::Array<unsigned int> shadowIndexArray;               // +0xd8
+			// Element type int: renderShadows 00552612 sends it through 005029c0, the G3D library
+			// RenderDevice::sendIndices<int>(Primitive, const Array<int>&) (library-replay identity).
+			G3D::Array<int> shadowIndexArray;                        // +0xd8
 			G3D::Array<unsigned short> shadowIndexArray16;           // +0xe4
 		public:
 			std::vector<G3D::ReferenceCountedPointer<Chunk> > components; // +0xf0

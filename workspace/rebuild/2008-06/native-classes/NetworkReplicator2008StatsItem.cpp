@@ -122,11 +122,14 @@ namespace RBX
 
 		// 004b7f20 (name INFERRED, see Replicator2008.h; getDefault 004b4bb0, serializeValue 004b6890,
 		// operator<<(bool) 004a5b10, NetworkSettings::singleton 0049e890 +0x131 / +0x132, StandardOut::print 005693a0).
-		// PARKED, not exact (839 of 938 bytes): same control flow and calls, but the target inlines the StandardOut
-		// shared_ptr release after the "1 bit" and "%d bits" prints and calls ~shared_ptr 00600660 after the
-		// "(default)" print, and keeps the iterator in ebp; this compile calls 00600660 for both later prints.
+		// PARKED, not exact (848 of 938 bytes): same control flow and calls, but the target inlines the StandardOut
+		// shared_ptr release after the "1 bit" and "%d bits" prints (lock xadd, ebx = -1) and calls ~shared_ptr
+		// 00600660 only after the "(default)" print; this compile calls 00600660 after all three prints.
+		// Building the ConstProperty first and reading the descriptor through it gives the target's stack slots
+		// (described instance at esp+0x14, end at the argument slot); first divergence is now insn 28 (004b7f75).
 		// Rejected: ConstProperty from *iter (does not compile: Describing is Property), RBXASSERT(isMemberOf)
-		// active (target has no 00570c40 call), "%d bits" branch written before the "(default)" branch (same object).
+		// active (target has no 00570c40 call), "%d bits" branch written before the "(default)" branch (same object,
+		// also with this form), a descriptor reference taken from property.getDescriptor() (first divergence insn 20).
 		void Replicator::writeProperties(const Instance* instance, RakNet::BitStream& stream)
 		{
 			const Instance* defaultInstance = getDefault(instance->getClassName());
@@ -135,21 +138,20 @@ namespace RBX
 			Reflection::ConstPropertyIterator end = instance->properties_end();
 			for (; iter != end; ++iter)
 			{
-				const Reflection::PropertyDescriptor& descriptor = iter.getDescriptor();
-				Reflection::ConstProperty property(descriptor, instance);
-				if (descriptor.canStreamWrite() && &descriptor != &Instance::propParent)
+				Reflection::ConstProperty property(iter.getDescriptor(), instance);
+				if (property.getDescriptor().canStreamWrite() && &property.getDescriptor() != &Instance::propParent)
 				{
-					if (typeid(bool) == descriptor.type.type)
+					if (typeid(bool) == property.getDescriptor().type.type)
 					{
 						serializeValue(property, false, stream);
 						if (NetworkSettings::singleton().printInstances && NetworkSettings::singleton().printProperties)
-							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, 1 bit", descriptor.type.name.c_str(), descriptor.name.c_str());
+							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, 1 bit", property.getDescriptor().type.name.c_str(), property.getDescriptor().name.c_str());
 					}
-					else if (defaultInstance && descriptor.equalValues(instance, defaultInstance))
+					else if (defaultInstance && property.getDescriptor().equalValues(instance, defaultInstance))
 					{
 						stream << true;
 						if (NetworkSettings::singleton().printInstances && NetworkSettings::singleton().printProperties)
-							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, 1 bit (default)", descriptor.type.name.c_str(), descriptor.name.c_str());
+							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, 1 bit (default)", property.getDescriptor().type.name.c_str(), property.getDescriptor().name.c_str());
 					}
 					else
 					{
@@ -157,7 +159,7 @@ namespace RBX
 						stream << false;
 						serializeValue(property, false, stream);
 						if (NetworkSettings::singleton().printInstances && NetworkSettings::singleton().printProperties)
-							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, %d bits", descriptor.type.name.c_str(), descriptor.name.c_str(), stream.GetNumberOfBitsUsed() - bits);
+							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, %d bits", property.getDescriptor().type.name.c_str(), property.getDescriptor().name.c_str(), stream.GetNumberOfBitsUsed() - bits);
 					}
 				}
 			}

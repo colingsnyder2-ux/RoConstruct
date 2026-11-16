@@ -62,7 +62,12 @@ namespace RBX
 		~TreeStage();                                       // 00669390
 
 		virtual StageType getStageType();                   // slot 1 (005e2790; not built, see the recorder)
+#ifdef NATIVE_KERNEL_STAGE_NUMBERING
+		// slot 2 takes four arguments in 2008 (Kernel::stepWorld 005fb3f0 `ret 0x10`; kernel-stages v8kernel/IStage.h)
+		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest);   // slot 2 (00669780)
+#else
 		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);   // slot 2 (00669780)
+#endif
 		virtual void onEdgeAdded(Edge* e);                  // slot 4 (00669c00; not built)
 		virtual void onEdgeRemoving(Edge* e);               // slot 5 (00669c70; not built)
 		virtual int getMetric(MetricType metricType);       // slot 6 (00669030)

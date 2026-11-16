@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
 // 2008-06 native RBX::World rows of the World.cpp unit 005e9150..005eaeef (inactive), application range
 // 005e8000..005f4000. Built against Colin's native-headers/engine-world/v8world/World.h and ContactManager.h (read-only;
 // the recorder puts native-headers/engine-world first, as record_native_geometry_service.py does) and the native
@@ -14,9 +14,7 @@
 #include "v8world/Contact.h"
 #include "v8world/IWorldStage.h"
 #include "v8world/JointStage2008.h"
-#ifdef NATIVE_APPUNIT5E8_PENDING
 #include "v8world/CleanStage2008.h"
-#endif
 
 namespace RBX
 {
@@ -122,31 +120,57 @@ namespace RBX
 	template void Notifier<World, AssemblyPhysicsOff>::raise(AssemblyPhysicsOff) const;
 }
 
-#ifdef NATIVE_APPUNIT5E8_PENDING
-// Pending-build-only bodies: they need the 2008 first-stage type at World +0x88 (CleanStage, not JointStage) and the
-// 2008 StageType values, both missing from the shared headers (proposals in tests/record_native_app_unit5e8_2008.py).
+// World +0x88 is a CleanStage under the kernel-stages opt-in (first native-flags include; 2008 StageType numbering).
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SleepStage.h"
+#include "v8world/ClumpStage.h"
 namespace RBX
 {
+	// 005e9240: mov ecx, [ecx+0x88]; jmp CleanStage::onJointPrimitiveNulling 0064a420
 	void World::onJointPrimitiveNulling(Joint* j, Primitive* p)
 	{
 		jointStage->onJointPrimitiveNulling(j, p);
 	}
 
+	// 005e9250: tail call of CleanStage::onJointPrimitiveSet 0064a460
 	void World::onJointPrimitiveSet(Joint* j, Primitive* p)
 	{
 		jointStage->onJointPrimitiveSet(j, p);
 	}
 
+	// 005e93b0: IStage::findStage walk (getStageType slot 1) for SIMJOB_STAGE 6
 	SimJobStage& World::getSimJobStage()
 	{
 		return *rbx_static_cast<SimJobStage*>(jointStage->findStage(IStage::SIMJOB_STAGE));
 	}
 
+	// 005e93e0: IStage::findStage walk for SLEEP_STAGE 5
 	SleepStage* World::getSleepStage()
 	{
 		return rbx_static_cast<SleepStage*>(jointStage->findStage(IStage::SLEEP_STAGE));
 	}
+
+	// 005e9460: findStage(CLUMP_STAGE 2) walk, then ClumpStage 0064cda0 (donor World.cpp order: onPrimitiveCanSleepChanged)
+	void World::onPrimitiveCanSleepChanged(Primitive* p)
+	{
+		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->onPrimitiveCanSleepChanged(p);
+	}
+
+	// 005e94a0: findStage(CLUMP_STAGE 2) walk, then ClumpStage::onPrimitiveAddedAnchor 0064cc40
+	void World::onPrimitiveAddedAnchor(Primitive* p)
+	{
+		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->onPrimitiveAddedAnchor(p);
+	}
+
+	// 005e94e0: findStage(CLUMP_STAGE 2) walk, then ClumpStage 0064ccf0 (anchor removal)
+	void World::onPrimitiveRemovingAnchor(Primitive* p)
+	{
+		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->onPrimitiveRemovingAnchor(p);
+	}
+
+	// 005e9520: findStage(CLUMP_STAGE 2) walk, then tail call of ClumpStage 0064cad0 (no argument: process)
+	void World::update()
+	{
+		rbx_static_cast<ClumpStage*>(jointStage->findStage(IStage::CLUMP_STAGE))->process();
+	}
 }
-#endif

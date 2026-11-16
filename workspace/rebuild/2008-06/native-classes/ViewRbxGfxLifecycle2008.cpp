@@ -18,7 +18,7 @@ ViewRbxGfx::~ViewRbxGfx()
     renderLibScene.reset();
     materialFactory.reset();
     textureManager.reset();
-    ServiceProvider::create<Lighting>(dataModel.get());
+    ServiceProvider::find<Lighting>(dataModel.get()); // 004db574..004db578: call 004b3380 (find; it calls findServiceByClassName 00572a90, and create 004b3870 calls it)
     CylinderAlongXMesh::flushCache();
     SphereMesh::flushCache();
     PBBMesh::flushCache();

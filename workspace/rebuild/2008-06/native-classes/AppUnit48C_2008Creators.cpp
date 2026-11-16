@@ -40,8 +40,7 @@ template boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::cr
 template boost::shared_ptr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>();
 template boost::shared_ptr<RBX::ShirtGraphic> RBX::Creatable<RBX::Instance>::create<RBX::ShirtGraphic>();
 template boost::shared_ptr<RBX::Clothing> RBX::Creatable<RBX::Instance>::create<RBX::Clothing>();
-template boost::shared_ptr<RBX::Pants> RBX::Creatable<RBX::Instance>::create<RBX::Pants>();
-template boost::shared_ptr<RBX::Shirt> RBX::Creatable<RBX::Instance>::create<RBX::Shirt>();
+// create<Pants> 004941d0 / create<Shirt> 00494250: explicitly instantiated in AppUnit48C_2008ClothingThunks.cpp.
 template boost::shared_ptr<RBX::BodyColors> RBX::Creatable<RBX::Instance>::create<RBX::BodyColors>();
 template boost::shared_ptr<RBX::Skin> RBX::Creatable<RBX::Instance>::create<RBX::Skin>();
 template boost::shared_ptr<RBX::Teams> RBX::Creatable<RBX::Instance>::create<RBX::Teams>();

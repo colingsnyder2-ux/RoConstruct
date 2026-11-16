@@ -128,6 +128,17 @@ namespace RBX
 				break;
 			}
 		}
+		// 00599250 (out of line in the PartInstance unit, thiscall `ret 4` with a hidden return slot): a zeroed PairParams
+		// (six fst of fldz: normal +0x0 / position +0x10), computeLengthNormalPosition (jump table 005992e4: 0 ->
+		// 00613290, 1 -> 006131e0, 2 -> 00613320, 3 -> 00613440, 4 -> 00613560, 5 -> 006136a0, 6 -> 006139c0), then
+		// params.position (+0x10..+0x18) copied to the return slot. Its only caller is PartInstance::render3dAdorn
+		// 0059e9f4 (showContactPoints loop, ContactConnector +0x8). No donor or registry name.
+		G3D::Vector3 computePosition()   // INFERRED: analog name (mined analog roc_unit_1d9b5609956f3c96 ExeGeoPair)
+		{
+			PairParams params;
+			computeLengthNormalPosition(params);
+			return params.position;
+		}
 		void computeNormalPerpVel(float& normalVel, G3D::Vector3& perpVel, const PairParams& _params);   // 006130e0
 		void forceToBodies(const G3D::Vector3& _force, const G3D::Vector3& _position);                 // 00613080
 

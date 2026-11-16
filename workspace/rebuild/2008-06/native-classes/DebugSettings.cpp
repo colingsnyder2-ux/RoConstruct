@@ -1,8 +1,10 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNATIVE_DEBUGSETTINGS_PENDING /GS-
 // 2008-06 native RBX::DebugSettings (inactive); evidence in native-headers/v8datamodel/DebugSettings.h.
-// Verified by tests/record_native_settings_items.py (unit profile: document-swap flags). Bodies that need a declaration
-// the shared headers lack (World::EThrottle) are guarded by NATIVE_DEBUGSETTINGS_PENDING and checked only against a
-// generated header copy (recorded pending-build-only, not counted).
+// Verified by tests/record_native_settings_items.py (unit profile: document-swap flags). Bodies that need World::EThrottle
+// stay guarded by NATIVE_DEBUGSETTINGS_PENDING and are checked only against a generated header copy (pending-build-only,
+// not counted). Remaining blocker: native v8world/World2008.h now declares EThrottle / environmentalThrottle, but this
+// unit needs PartInstance::showAnchoredParts etc. and v8datamodel/PartInstance.h includes the donor v8world/World.h
+// (class RBX::World redefinition, C2011, when World2008.h is also included); PartInstance.h only needs `class World;`.
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/ModelInstance.h" // showModelCoord for setShowModelCoordinateFrames (same include as DebugSettingsCoordinateGetters.cpp)

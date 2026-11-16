@@ -1,3 +1,4 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::BlockBlockContact (inactive); evidence in native-headers/leaves2008/BlockBlockContact2008.h.
 // Verified by tests/record_native_leaves2008.py: constructor 0060d500, destructor 0060d5a0 (??_G 0060d610),
 // deleteAllConnectors 00607c60, numConnectors 0060d580, getConnector 0060d590. stepContact 00608830 and
@@ -65,12 +66,9 @@ namespace RBX
 	}
 }
 
-#ifdef NATIVE_BLOCKBLOCKCONTACT_PENDING
-// 006087a0 compares IPipelined::currentStage->getStageType() with 7, the 2008 KERNEL_STAGE; the donor IStage.h numbers
-// KERNEL_STAGE 8. Built only against the generated IStage.h copy of the recorder (2008 StageType values).
-// Rechecked (lf11): with a scratch IStage.h carrying the 2008 values (CLEAN 0 .. KERNEL 7) the compare becomes
-// `cmp eax, 7`, but the donor IPipelined::inKernel still emits its assertion (`cmp [..], 0` / call before 006087af,
-// 163 bytes vs 137) under /D_RELEASEASSERT; the 2008 body has none. Needs a 2008 inKernel (header proposal).
+// 006087a0: inKernel compares IPipelined::currentStage->getStageType() with 7, the 2008 KERNEL_STAGE, with no assertion:
+// the IPipelined2008.h inKernel inline (no RBXASSERT) under the opt-in kernel-stages IStage (native-flags).
+// Earlier trial (lf11): the donor IPipelined::inKernel emitted its assertion (163 bytes vs 137).
 namespace RBX
 {
 	void BlockBlockContact::updateConnectors()
@@ -99,4 +97,3 @@ namespace RBX
 		}
 	}
 }
-#endif
