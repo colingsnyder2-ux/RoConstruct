@@ -149,7 +149,10 @@ def seed_evidence(root, paths, strict_conflicts=True):
                     symbols.setdefault(reference, set()).add(address(hit[1]))
     for symbol, target in bindings.items():
         if target is None:
-            symbols.pop(symbol, None)
+            # Non-strict (census) runs keep the evidence's address list: harvest() accepts a byte/reference-exact body
+            # only at an address the evidence names for that symbol (identical instances in several static libraries).
+            if strict_conflicts:
+                symbols.pop(symbol, None)
             if strict_conflicts:
                 blockers.append('conflicting reference identity: ' + symbol)
     return symbols, bindings, blockers, inputs
@@ -387,7 +390,10 @@ def harvest(raw, targets, names, bindings):
                 continue
             analogs.append(addr)
             # Exact bytes alone cannot assign a constructor, tiny alias or library helper an identity.
-            if symbol in bindings and bindings[symbol] is None:
+            # One symbol at several addresses is a conflict - unless the evidence names this very address for it: the
+            # same template instance compiled into several static libraries (std::swap<std::string> at 4 addresses).
+            # Bytes, relocations and every reference identity are still checked per address below.
+            if symbol in bindings and bindings[symbol] is None and addr not in names.get(symbol, ()):
                 rejections.append({'addr': addr, 'errors': ['conflicting symbol identity: ' + symbol]})
                 continue
             if addr not in names.get(symbol, ()):

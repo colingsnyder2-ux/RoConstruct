@@ -26,6 +26,7 @@ import native_creator_gate as cg    # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument('--limit', type=int, default=0)
 ap.add_argument('--jobs', type=int, default=8)
+ap.add_argument('--max-size', type=int, default=8192, help='largest target in bytes (was a fixed 2048)')
 ap.add_argument('--named', default='', help='JSON list of addresses with real registry names (free functions): '
                 'the model writes that exact function; the gate requires its decorated symbol')
 ap.add_argument('--regate', action='store_true', help='replay saved compile_failed answers through the gate (no model calls)')
@@ -90,7 +91,7 @@ def placeholder_targets():
             continue
         size = len(m.match.target('2008-06', addr)[0])
         # 007e0000-007fffff: compiler-generated initializer/atexit/EH thunks (initializer lane), not authored functions
-        if 8 <= size <= 2048 and not 0x7e0000 <= int(addr, 16) < 0x800000:
+        if 8 <= size <= args.max_size and not 0x7e0000 <= int(addr, 16) < 0x800000:
             out.append((addr, size, row))
     return sorted(out, key=lambda x: x[1])
 
@@ -160,6 +161,8 @@ def shadow_file(work, header):
 
 def shadow(work, header, cls, decl, addr):
     """Copy HEADER under work/shadow/<same relative path> with DECL inserted before the class's closing brace."""
+    if not Path(header).is_relative_to(HEADERS):          # mirror covers native-headers only
+        return None
     existing = shadow_file(work, header)
     text = existing.read_text(errors='replace')
     leaf = cls.split('::')[-1]
@@ -434,7 +437,10 @@ def run(item):
         code = re.findall(r'```(?:cpp|c\+\+)\s*\n(.*?)```', reply, re.S)
         if not code:
             continue
-        status, detail, cls, decl = judge(work, addr, reply, code[-1])
+        try:
+            status, detail, cls, decl = judge(work, addr, reply, code[-1])
+        except Exception as error:                          # noqa: BLE001 - one bad target must not kill the pool
+            status, detail, cls, decl = 'harness-error', 'harness error: %r' % (error,), '', 
         (work / ('try%d.cpp' % n)).parent.mkdir(parents=True, exist_ok=True)
         (work / ('try%d.cpp' % n)).write_text(reply)
         (work / ('err%d.txt' % n)).write_text('%s\n%s' % (status, detail))     # full text for error census

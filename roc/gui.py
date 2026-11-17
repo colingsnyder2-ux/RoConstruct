@@ -326,6 +326,18 @@ class Dashboard:
                               retry_failed=bool(data.get("retry_failed", False)), new_source=bool(data.get("new_source")),
                               pick=data.get("pick") if data.get("pick") in ("claude", "auto", "top", "explore") else "claude")
                 title = "Native LLM · 2008-06"
+            elif kind == "native_lane":
+                # Automatic native lanes (work/native-client/lane_runner.py): header-add failures, regate, vendor,
+                # class layout, promotion, census + publish, classify.
+                lane = data.get("lane")
+                if lane not in ("failures", "regate", "vendor", "layout", "promote", "census", "classify"):
+                    raise ValueError("Unknown native lane")
+                jobs = int(data.get("jobs", 8))
+                if not 1 <= jobs <= 16:
+                    raise ValueError("Native lane jobs out of range")
+                args = [lane, "--jobs", str(jobs)]
+                config = dict(lane=lane, jobs=jobs, client="2008-06")
+                title = "Native lane · " + lane
             elif kind == "command":
                 args, config = command_args(data), None
                 title = COMMANDS[args[0]][0] + (" · " + data["client"] if data.get("client") else "")
@@ -382,7 +394,9 @@ class Dashboard:
             self.next_agent_start = time.monotonic() + max(0, float(self.settings.get("agent_start_interval", 15)))
         argv = [sys.executable, "-u"] + (["-m", "roc.gui_worker"] if job["kind"] == "worker"
                                          else [str(ROOT / "work/native-client/native_llm.py"), *job["args"]]
-                                         if job["kind"] == "native_llm" else [str(ROOT / "roc.py"), *job["args"]])
+                                         if job["kind"] == "native_llm"
+                                         else [str(ROOT / "work/native-client/lane_runner.py"), *job["args"]]
+                                         if job["kind"] == "native_lane" else [str(ROOT / "roc.py"), *job["args"]])
         env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", ROC_GUI_EVENTS="1")
         env.update(ROC_TASK_ID=job_id, ROC_TASK_OWNER=job["owner"])
         if job["kind"] == "agent_worker" and self.worker_token:
