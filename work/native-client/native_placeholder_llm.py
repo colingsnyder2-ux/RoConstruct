@@ -222,19 +222,51 @@ def proven_examples(limit=2):
     return ('\n--- PROVEN EXAMPLES (accepted answers for other addresses) ---\n' + '\n\n'.join(picks) + '\n') if picks else ''
 
 
+VENDOR_INDEX = None
+VENDOR_ROOTS = [('boost', 'tools/rbxgs/Client/boost_1_34_1/src/boost'), ('', 'tools/libs/mfc-9.0-rtm/atlmfc/include')]
+
+
+def vendor_header(name):
+    """`<boost/pool/singleton_pool.hpp>` / `<atlcom.h>` for a class only a vendor tree declares (declaring_header() searches
+    native/RakNet/G3D/donor roots, so boost::singleton_pool and ATL::CComObject were never auto-included)."""
+    global VENDOR_INDEX
+    if VENDOR_INDEX is None:
+        VENDOR_INDEX = {}
+        for prefix, root in VENDOR_ROOTS:
+            base = ROOT / root
+            if not base.is_dir():
+                continue
+            for h in base.rglob('*.h*'):
+                if h.suffix.lower() not in ('.h', '.hpp'):
+                    continue
+                try:
+                    text = h.read_text(errors='replace')
+                except OSError:
+                    continue
+                for cls in re.findall(r'^\s*(?:template\s*<[^>]*>\s*)?(?:class|struct)\s+(?:\w+\s+)?(\w+)\s*(?::[^;{]*)?\{', text, re.M):
+                    rel = h.relative_to(base).as_posix()
+                    VENDOR_INDEX.setdefault(cls, (prefix + '/' if prefix else '') + rel)
+    return VENDOR_INDEX.get(name)
+
+
 def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=None):
     """Discover the sub_<addr> symbol and gate it.  Model-written #includes are resolved against the real header tree
     (unknown ones dropped); headers' #ifdef NATIVE_* guards become defines; a compile error naming undeclared types or
     functions adds their declaring native headers and recompiles, twice at most (no model call), as the main lane does."""
     raw = list(raw_includes) if raw_includes is not None else None
-    for inc in re.findall(r'^\s*#\s*include\s*[<"]([^>"]+)[>"]', body, re.M):
+    # The model's own includes go FIRST: they often supply a name an earlier header uses without including it
+    # (CScriptDoc.h needs RBX::DataModel).
+    for inc in reversed(re.findall(r'^\s*#\s*include\s*[<"]([^>"]+)[>"]', body, re.M)):
         if (HEADERS / inc).is_file() and str(HEADERS / inc) not in headers:
-            headers = headers + [str(HEADERS / inc)]
+            headers = [str(HEADERS / inc)] + headers
             if raw is not None:
-                raw.append(inc)
+                raw.insert(0, inc)
     body = re.sub(r'^\s*#\s*include\s*[<"][^>"]+[>"].*$', '', body, flags=re.M)
     added, banned = [], set()
-    for _ in range(4):
+    for _ in range(5):
+        if raw:      # SDK include-order guards: afxwin.h, then atlbase.h, before everything else (C1189)
+            raw = ([r for r in raw if r == 'afxwin.h'] + [r for r in raw if r == 'atlbase.h']
+                   + [r for r in dict.fromkeys(raw) if r not in ('afxwin.h', 'atlbase.h')])
         text = '\n'.join(Path(h).read_text(errors='replace') for h in headers if Path(h).is_file())
         defines = sorted(set(re.findall(r'^\s*#\s*ifdef\s+(NATIVE_\w+)', text, re.M)))
         needle = 'sub_' + addr
@@ -253,7 +285,7 @@ def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=N
         error = cg.LAST_ERROR.get(addr) or ''
         # Include-order guards / SDK namespaces (main lane does the same): MFC before windows.h, ATL for ATL::.
         sdk = ('afxwin.h' if 'WINDOWS.H already included' in error else
-               'atlbase.h' if "'ATL' : is not a class or namespace name" in error else '')
+               'atlbase.h' if ("'ATL' : is not a class or namespace name" in error or 'requires atlbase.h' in error) else '')
         if sdk and sdk not in (raw or []):
             raw = [sdk] + (raw if raw is not None else [Path(h).resolve().as_posix() for h in headers])
             continue
@@ -267,16 +299,25 @@ def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=N
                     raw = [r for r in raw if Path(r).resolve().as_posix() not in {Path(d).as_posix() for d in drop}]
                 added = []
                 continue
-        found = [h for h in (m.declaring_header(n) for n in m.missing_names(error)) if h]
+        names = m.missing_names(error)
+        found = [h for h in (m.declaring_header(n) for n in names) if h]
         found = [str(Path(h).resolve()) for h in found if str(Path(h).resolve()) not in map(lambda x: str(Path(x).resolve()), headers)
                  and str(Path(h).resolve()) not in banned]
-        if not found:
+        vendor = [v for v in dict.fromkeys(vendor_header(n) for n in names if not m.declaring_header(n)) if v]
+        vendor = [v for v in vendor if v not in (raw or [])]
+        if any(re.match(r'atl\w*\.h$', v) for v in vendor) and 'atlbase.h' not in (raw or []):
+            vendor = ['atlbase.h'] + vendor                     # atlcom.h & co. require atlbase.h first (C1189)
+        if not found and not vendor:
             break
         added = found[:3]
-        headers = headers + found[:3]
-        if raw is not None:
-            raw += [Path(h).resolve().relative_to(HEADERS).as_posix() if Path(h).resolve().is_relative_to(HEADERS)
-                    else Path(h).resolve().as_posix() for h in found[:3]]
+        # Prepend: the missing name is often used INSIDE an earlier header (CScriptDoc.h uses RBX::DataModel without
+        # including it), so a header appended after it never helped.
+        headers = found[:3] + headers
+        raw = (vendor + [Path(h).resolve().relative_to(HEADERS).as_posix() if Path(h).resolve().is_relative_to(HEADERS)
+                         else Path(h).resolve().as_posix() for h in found[:3]]
+               + (raw if raw is not None else [Path(h).resolve().relative_to(HEADERS).as_posix()
+                                               if Path(h).resolve().is_relative_to(HEADERS) else Path(h).resolve().as_posix()
+                                               for h in headers[len(found[:3]):]]))
     return 'compile_failed', 'Compile error: ' + (cg.LAST_ERROR.get(addr) or 'no sub_%s symbol emitted' % addr) \
         + m.declarations_for(cg.LAST_ERROR.get(addr) or '')
 
