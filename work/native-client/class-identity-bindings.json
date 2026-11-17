@@ -1,0 +1,125 @@
+{
+ "scope": "RBX::DxUserInput (native-headers/util/DxUserInput.h, native-classes/DxUserInput.cpp)",
+ "identity_bindings": [
+  {
+   "symbol": "?setKeyState@DxUserInput@RBX@@UAEXW4SDLKey@@_N@Z",
+   "address": "00467530",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?createMouse@DxUserInput@RBX@@QAEXXZ",
+   "address": "00467550",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?createKeyboard@DxUserInput@RBX@@QAEXXZ",
+   "address": "004675e0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?acquireKeyboard@DxUserInput@RBX@@QAEXXZ",
+   "address": "00467720",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?syncKeyboard@DxUserInput@RBX@@QAEXXZ",
+   "address": "004677f0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?getGameCursor@DxUserInput@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z",
+   "address": "00467a90",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?getWindowCursorPosition@DxUserInput@RBX@@QAE?AVVector2@G3D@@XZ",
+   "address": "00467bf0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?getCursorPosition@DxUserInput@RBX@@UAE?AVVector2@G3D@@XZ",
+   "address": "00467c50",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?keyDown@DxUserInput@RBX@@UBE_NW4SDLKey@@@Z",
+   "address": "00467cb0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?setKeyboardWanted@DxUserInput@RBX@@QAEX_N@Z",
+   "address": "00468050",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?releaseMouse@DxUserInput@RBX@@QAEXXZ",
+   "address": "004680c0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?updateMouseAcquisition@DxUserInput@RBX@@QAEXABVVector2@G3D@@@Z",
+   "address": "00468520",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?updateMouseWanted@DxUserInput@RBX@@QAEXABVVector2@G3D@@@Z",
+   "address": "00468a60",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?updateMouse@DxUserInput@RBX@@QAEXXZ",
+   "address": "00468b20",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?onEvent@DxUserInput@RBX@@UAEXPBVRunService@2@VStepped@2@@Z",
+   "address": "00468e70",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?setWrapMode@DxUserInput@RBX@@UAEXW4WrapMode@UserInputBase@2@@Z",
+   "address": "00469070",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?getWrapMode@DxUserInput@RBX@@UBE?AW4WrapMode@UserInputBase@2@XZ",
+   "address": "00469080",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?centerCursor@DxUserInput@RBX@@UAEXXZ",
+   "address": "00469090",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "?onEvent@DxUserInput@RBX@@UAEXPBVRunService@2@VHeartbeat@2@@Z",
+   "address": "004689c0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  },
+  {
+   "symbol": "??_GDxUserInput@RBX@@UAEPAXI@Z",
+   "address": "004690d0",
+   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+   "votes": 1
+  }
+ ]
+}
