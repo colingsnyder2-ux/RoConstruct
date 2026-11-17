@@ -24,7 +24,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix'])
 ap.add_argument('--jobs', type=int, default=8)
 ap.add_argument('--model', default='sonnet', help='agents lane: sonnet or haiku')
 args = ap.parse_args()
@@ -186,7 +186,8 @@ elif args.lane == 'census':
                'inferred-identity-bindings.json', 'identity-session-bindings.json', 'creator-reference-bindings.json',
                'creator-identity-bindings.json', 'vtable-identity-bindings.json', 'lane-identity-bindings.json', 'order-identity-bindings.json',
                'eh-identity-bindings.json', 'unique-identity-bindings.json',
-               'ref-alias-bindings.json', 'template-identity-bindings-round4.json']:
+               'ref-alias-bindings.json', 'template-identity-bindings-round4.json',
+               'clone-identity-bindings.json']:
         rel = 'work/native-client/' + ev
         if (HERE / ev).is_file() and rel not in fam['evidence']:
             fam['evidence'].append(rel)
@@ -223,8 +224,21 @@ elif args.lane == 'agents':
     # N headless Claude Code (Sonnet) class-recovery sessions in parallel, one class each, from the generated queue
     # (build_agent_queue.py: remaining functions by owner class).  Same rules as the session's class agents.
     import concurrent.futures
+    # Daily spend cap (ROC_AGENT_DAILY_USD, default 60): sum of today's session costs from the lane's own logs.
+    cap = float(os.environ.get('ROC_AGENT_DAILY_USD') or 'inf')    # owner 2026-11-17: no daily cap (set the env var to restore one)
+    today = time.strftime('%Y-%m-%d')
+    spent = 0.0
+    for log in (HERE / 'agent-logs').glob('*.log'):
+        if time.strftime('%Y-%m-%d', time.localtime(log.stat().st_mtime)) == today:
+            hit = re.search(r'cost \$([0-9.]+)', log.read_text(encoding='utf-8', errors='replace'))
+            spent += float(hit.group(1)) if hit else (3.0 if log.name.startswith('haiku') else 6.0)   # unknown: assume the cap
+    if spent >= cap:
+        print('agents: daily cap reached ($%.2f spent of $%.2f today): skipping' % (spent, cap), flush=True)
+        sys.exit(0)
+    print('agents: $%.2f spent today of $%.2f cap' % (spent, cap), flush=True)
     run([PY, 'header_gaps.py', '--top', '0'], cwd=HERE)
     run([PY, 'build_agent_queue.py'], cwd=HERE)
+    run([PY, 'ghidra_struct.py'], cwd=HERE)              # headless Ghidra this-struct offsets per queued class
     queue = json.loads((HERE / 'agent-class-queue.json').read_text())
     done_path = HERE / 'agent-class-done.json'
     done = json.loads(done_path.read_text()) if done_path.is_file() else []
@@ -259,6 +273,9 @@ elif args.lane == 'agents':
         blocks.append(cur)
         return '\n'.join('\n'.join(b[:70] + (['... (%d more lines)' % (len(b) - 70)] if len(b) > 70 else [])) for b in blocks)
 
+    sys.path.insert(0, str(HERE))
+    import ghidra_hint
+
     def evidence(task):
         """Header, donor sources and last model attempts in the prompt: the transcript audit showed sessions spending
         most turns (each re-reading the whole growing context) on cat/grep/sed of exactly these files."""
@@ -270,10 +287,27 @@ elif args.lane == 'agents':
             donor = ROOT / 'src/2008-06' / (a + '.cpp')
             if donor.is_file():
                 parts.append('--- donor analog %s (first 2.5 KB) ---\n%s' % (a, donor.read_text(errors='replace')[:2500]))
+            gh = ghidra_hint.hint(a, 1800)
+            if gh:
+                parts.append(gh)
             tries = sorted((HERE / 'placeholder-lane' / a).glob('try*.cpp'))
             if tries:
                 parts.append('--- last model attempt %s (first 1.5 KB; it did not match) ---\n%s'
                              % (a, tries[-1].read_text(errors='replace')[:1500]))
+        try:                                  # Ghidra-observed member offsets/widths for the class (ghidra_layouts.py)
+            import ghidra_layouts
+            import ghidra_struct
+            for cls in task['class'].split(' + ')[:2]:
+                hs = ghidra_struct.hint(cls, 1600)
+                if hs:
+                    parts.append('--- Ghidra headless this-struct of %s (offset, type/width, functions touching it; '
+                                 'sizes are lower bounds; verify) ---\n%s' % (cls, hs))
+                    continue
+                lh = ghidra_layouts.layout_hint(cls, 1500)
+                if lh:
+                    parts.append('--- Ghidra-observed layout of %s (offsets seen in decompiled methods; verify) ---\n%s' % (cls, lh))
+        except Exception:                     # noqa: BLE001 - a hint only
+            pass
         gaps_path = HERE / 'header-gaps.json'
         if gaps_path.is_file():               # members the model lane found missing for this class (header_gaps.py)
             leaf = task['class'].split(' + ')[0].split('::')[-1]
@@ -288,7 +322,7 @@ elif args.lane == 'agents':
     EMPTY_MCP = HERE / 'agent-empty-mcp.json'
     EMPTY_MCP.write_text('{"mcpServers": {}}')
 
-    STALL_TOOLS = 18                # tool calls without any Write/Edit -> the session is only reading: stop it
+    STALL_TOOLS = 25                # tool calls without any Write/Edit -> the session is only reading: stop it
 
     def one(task):
         # Shared rules FIRST, task-specific text LAST: parallel sessions then share one cached prompt prefix.
@@ -324,7 +358,8 @@ elif args.lane == 'agents':
             if ev.get('type') == 'result':
                 result = ev.get('result') or ''
                 note = 'cost $%.2f, %s turns' % (ev.get('total_cost_usd') or 0, ev.get('num_turns'))
-            if (tools >= STALL_TOOLS and not writes) or time.time() - started > 90 * 60:
+            census = (HERE / 'prove-out/CENSUS.lock').is_file()       # sessions must not write during a census
+            if (tools >= STALL_TOOLS and not writes and not census) or time.time() - started > 90 * 60:
                 note = 'stopped: %s' % ('%d tool calls without writing a file' % tools if not writes else '90 min')
                 proc.kill()
                 break
@@ -364,6 +399,13 @@ elif args.lane == 'templates':
     run([PY, 'vtable_disambiguate.py'], cwd=HERE)
     run([PY, 'order_identity.py'], cwd=HERE)              # identical-body runs bound by registry name + address order        # byte-equal ledger candidates picked by vtable/caller class
 
+elif args.lane == 'compilefix':
+    # compile -> errors + where each name is declared -> minimal fix, up to 4 rounds (Haiku, then Sonnet)
+    run([PY, 'compile_fix_lane.py', '--jobs', args.jobs], cwd=HERE)
+
+elif args.lane == 'clones':
+    run([PY, 'clone_propagate.py', '--jobs', args.jobs], cwd=HERE)   # masked-asm twins of exact functions
+
 elif args.lane == 'names':
     # Name::callDoDeclare<sX> forwarders: explicit instantiations in the TU defining sX, proven by bytes, jump target
     # and sX data identity (native_name_declare_probe.py); applied with lease + re-prove + restore on any lost exact.
@@ -389,11 +431,11 @@ elif args.lane == 'auto':
     # repeated; each cycle counts its gains on the site (census takes minutes since the parallel/per-file cache work).
     for cycle in range(1, 100):
         print('=== auto cycle %d ===' % cycle, flush=True)
-        for lane in ('regate', 'names', 'templates', 'donor', 'inferred', 'untried', 'agents', 'polish', 'layout', 'promote', 'census'):   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
+        for lane in ('regate', 'names', 'templates', 'clones', 'donor', 'inferred', 'untried', 'agents', 'compilefix', 'polish', 'layout', 'promote', 'census'):   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
             if lane == 'census' and not inputs_changed():
                 print('census skipped: no native source or evidence changed since the last census', flush=True)
                 continue
-            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', 4 if lane == 'agents' else args.jobs])
+            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', int(os.environ.get('ROC_AUTO_AGENTS') or 8) if lane == 'agents' else args.jobs])
         if (HERE / 'native-llm' / 'STOP').is_file():
             print('STOP file present: ending auto cycles', flush=True)
             break

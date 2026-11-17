@@ -9,6 +9,7 @@ compile against the real native headers and byte-match; the decorated name is re
 Exacts go to native-llm/attempts.jsonl (name_source inferred-placeholder; decl recorded for header promotion).
 Usage: python native_placeholder_llm.py [--limit N] [--jobs J]"""
 import argparse
+import os
 import collections
 import json
 import re
@@ -21,6 +22,7 @@ from pathlib import Path
 ARGS = sys.argv[1:]
 sys.argv = sys.argv[:1]
 import native_llm as m              # noqa: E402
+import ghidra_hint  # noqa: E402 - 2008 decompile of the target itself (owner's Ghidra DB)
 import native_creator_gate as cg    # noqa: E402
 
 ap = argparse.ArgumentParser()
@@ -45,7 +47,9 @@ results = results_store.load() if RESULTS.is_file() else {}
 
 def pending(addr):
     return results.get(addr, {}).get('status') in (None, 'requeue')
-LADDER = ['claude:sonnet', 'claude:opus']
+# Haiku drafts first (most attempts fail fast at compile, the cheap part); Sonnet only for the second try, and the
+# polish step finishes compiling near-misses with Sonnet.  ROC_LADDER=sonnet,opus restores the old ladder.
+LADDER = [x if (':' in x or '/' in x) else 'claude:' + x for x in (os.environ.get('ROC_LADDER') or 'haiku,sonnet').split(',')]
 
 OFFSET_HACK = m.OFFSET_HACK
 RULES = """You recover one unnamed function of the 2008 Roblox client as REAL native C++ against the real native headers.
@@ -540,7 +544,7 @@ def run(item):
     prompt = (rules + HEADER_RULE + '\n--- LINK-ORDER NEIGHBOURS (likely same source file / owner) ---\n' + neighbours +
               neighbour_source(row) + proven_examples() +
               '\n--- ORIGINAL ASSEMBLY ---\n' + asm + m.annotate_asm(asm) + '\n--- REFERENCE ANALOG (placeholder names/types) ---\n'
-              + analog + ios_hint(addr))
+              + analog + ios_hint(addr) + ('\n' + ghidra_hint.hint(addr) if ghidra_hint.hint(addr) else ''))
     history, status, detail, used, decl, cls = '', 'no-reply', '', '', '', ''
     for n, model in enumerate(LADDER):
         m.ask(model, prompt + history, 'sub_' + addr)
@@ -552,7 +556,7 @@ def run(item):
         try:
             status, detail, cls, decl = judge(work, addr, reply, code[-1])
         except Exception as error:                          # noqa: BLE001 - one bad target must not kill the pool
-            status, detail, cls, decl = 'harness-error', 'harness error: %r' % (error,), '', 
+            status, detail, cls, decl = 'harness-error', 'harness error: %r' % (error,), '', ''
         (work / ('try%d.cpp' % n)).parent.mkdir(parents=True, exist_ok=True)
         (work / ('try%d.cpp' % n)).write_text(reply)
         (work / ('err%d.txt' % n)).write_text('%s\n%s' % (status, detail))     # full text for error census
@@ -604,9 +608,18 @@ def record(addr, size, status, model, cls, decl):
                                   time=round(time.time(), 1), run=m.RUN_ID, tool={}, llm_seconds=0.0, gate_seconds=0.0)) + '\n')
 
 
+if __name__ == 'native_placeholder_llm':
+    # Imported as a module (2026-11-17: an import ran the whole model lane by accident).  Helper scripts exec the
+    # definitions above the mode dispatch under their own __name__ instead (see pattern_lane.py).
+    raise ImportError('native_placeholder_llm.py is a script; exec its definitions as pattern_lane.py does')
 if args.polish:
     # Saved drafts get one diff-guided Sonnet try (the full prompt is rebuilt from the saved answer, not re-asked).
     drafts = [a for a, v in results.items() if v.get('status') == 'draft' and not v.get('polished')]
+    # Smallest byte diff first: near-misses that differ in a few instructions are the cheapest Sonnet wins.
+    def diff_lines(a):
+        errs = sorted((OUT / a).glob('err*.txt'))
+        return sum(1 for l in errs[-1].read_text(errors='replace').splitlines() if l[:1] in '+-' and l[1:2] != '-') if errs else 999
+    drafts.sort(key=diff_lines)
     for a in drafts:
         reg_row = m.load_registry().get(a) or {}
         if reg_row.get('name') and 'sub_%s' % a not in reg_row['name'] and not reg_row['name'].startswith(('func_', 'sub_')):

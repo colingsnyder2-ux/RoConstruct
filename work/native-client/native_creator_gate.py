@@ -90,8 +90,10 @@ def discover_symbol(work, headers, code, addr, needle, include_first=(), raw_inc
     try:
         manifest = json.loads((bulk / 'manifest.json').read_text())
         logs = list(bulk.rglob('compile.log'))
-        LAST_ERROR[addr] = next((line for log in logs for line in log.read_text(errors='replace').splitlines()
-                                 if re.search(r'error C\d+', line)), '')[-400:]
+        error_lines = [line for log in logs for line in log.read_text(errors='replace').splitlines()
+                       if re.search(r'error C\d+', line)]
+        LAST_ERROR[addr] = (error_lines[0] if error_lines else '')[-400:]
+        LAST_ERRORS[addr] = [l[-300:] for l in error_lines[:12]]      # compile-fix lane feeds these back
     except (OSError, ValueError):
         return None
     finally:
@@ -103,6 +105,7 @@ def discover_symbol(work, headers, code, addr, needle, include_first=(), raw_inc
 
 
 LAST_ERROR = {}
+LAST_ERRORS = {}
 
 
 GATE_PORT = int(__import__('os').environ.get('ROC_GATE_PORT', 8799))

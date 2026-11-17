@@ -32,7 +32,12 @@ done |= {'RBX::AdornRbxGfx', 'RBX::Render::RenderScene', 'RBX::Network::Replicat
          'RBX::Accoutrement'}           # this session's first agent batch
 
 
+INFERRED_OWNERS = json.loads((HERE / 'owner-classes.json').read_text()) if (HERE / 'owner-classes.json').is_file() else {}
+
+
 def owner(addr):
+    if addr in INFERRED_OWNERS:      # owner_classes.py: neighbours/vtable/thiscall agreement (>=91% on known owners)
+        return INFERRED_OWNERS[addr]['class']
     row = reg.get(addr) or {}
     sig = row.get('signature') or ''
     hit = re.search(r'__\w+ ((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)::~?[A-Za-z_]\w*\(', re.sub(r'<[^<>]*>', '', re.sub(r'<[^<>]*>', '', sig)))
@@ -41,6 +46,8 @@ def owner(addr):
     return row.get('owner_class') or None
 
 
+DONE_LEAVES = {d.split(' + ')[0].split('::')[-1] for d in done}
+NOT_CLASSES = {'RBX', 'std', 'boost', 'G3D', 'const_iterator', 'iterator', 'Descriptor', 'Creator', 'FactoryProduct'}
 groups = collections.defaultdict(list)
 for a, v in remaining.items():
     if v.get('bucket') == 'vendor-library':
@@ -50,7 +57,7 @@ for a, v in remaining.items():
         groups[cls].append(a)
 queue = []
 for cls, addrs in sorted(groups.items(), key=lambda kv: -sum(remaining[a]['size'] for a in kv[1])):
-    if len(addrs) < args.min or cls in done:
+    if len(addrs) < args.min or cls in done or cls.split('::')[-1] in DONE_LEAVES or cls.split('::')[-1] in NOT_CLASSES:
         continue
     header = m.declaring_header(cls)
     queue.append({'class': cls, 'addresses': sorted(addrs), 'bytes': sum(remaining[a]['size'] for a in addrs),

@@ -71,6 +71,8 @@ namespace RBX
 			// Bodies in native-classes/AppUnit49C_2008IdSerializerTemplates.cpp (Network/Streaming.cpp unit).
 			void receive(RakNet::BitStream& stream, std::string& value);             // 004a6e20
 			void receive(RakNet::BitStream& stream, const Name*& value);             // 004a6f70
+		public:
+			void deserializeString(Reflection::Property& property, RakNet::BitStream& bitStream);   // INFERRED (header-add): evidence: ?deserializeString@StringReceiver@Network@RBX@@QAEXAAVProperty@Reflection@3@AAVBitStream@RakNet@@@Z - byte-proved by 004a7150
 		};
 
 		class SharedStringDictionary : public StringSender, public StringReceiver, private boost::noncopyable

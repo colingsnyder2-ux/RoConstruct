@@ -95,8 +95,8 @@ def from_probe(addr):
             r = rel_dir(tok[2:])
             if r is None:
                 return None
-            if not r.startswith('{headers}') or r != '{headers}':
-                flags.append('/I' + r)
+            flags.append('/I' + r)      # keep /I{headers} too: it must precede vendor/donor roots (App/include
+                                        # holds 2007 donor reflection headers that shadow the native ones)
             idirs.append(Path(tok[2:]).as_posix())
         else:
             flags.append(tok)
