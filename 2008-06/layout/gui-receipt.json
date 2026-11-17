@@ -1,0 +1,88 @@
+{
+ "family": "gui",
+ "manifest": "work/native-client/layout/families/gui-export.json",
+ "files": {
+  "rebuild/2008-06/native-classes/ArrowPanel.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/ArrowPanel.cpp",
+   "source_sha256": "89683b07ce6b8cf22614d0ad53530251b01644df367863eb853367c7b15646e1",
+   "export_sha256": "89683b07ce6b8cf22614d0ad53530251b01644df367863eb853367c7b15646e1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ChatOutput.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/ChatOutput.cpp",
+   "source_sha256": "5d1939524cbef744ecbe4d2a32254c1af1183a9d0e3468395c0e25a87c6aa742",
+   "export_sha256": "5d1939524cbef744ecbe4d2a32254c1af1183a9d0e3468395c0e25a87c6aa742",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/EquationDisplay.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/EquationDisplay.cpp",
+   "source_sha256": "a0e4313cdb337f01bac76a9b68103d4ac6a5c59cf3500f5b4c5b9800678de7a3",
+   "export_sha256": "a0e4313cdb337f01bac76a9b68103d4ac6a5c59cf3500f5b4c5b9800678de7a3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/HealthHud.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/HealthHud.cpp",
+   "source_sha256": "867e9c566b1a51dce5aa916aac45131b5face3e9fbf88c5fd0e1d9a1953a7bb3",
+   "export_sha256": "867e9c566b1a51dce5aa916aac45131b5face3e9fbf88c5fd0e1d9a1953a7bb3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ProfanityFilter.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/ProfanityFilter.cpp",
+   "source_sha256": "0859ece3ffe4c4a291e22858924a8a45e64db4c151b38068f087625247f5ba40",
+   "export_sha256": "7776aa2d18ef3e6a7a01f4ae098e977b5c2eecdbd2f0fe0810a8ecd5a14ca354",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/App/include/gui/ProfanityFilter.h",
+     "new": "../../../../../../tools/rbxgs/Client/App/include/gui/ProfanityFilter.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Widget.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/Widget.cpp",
+   "source_sha256": "1647b1b4db50af68925c31181885a185f8fa28b175a99b2dddc2c54d9e3c5497",
+   "export_sha256": "1647b1b4db50af68925c31181885a185f8fa28b175a99b2dddc2c54d9e3c5497",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/ArrowPanel.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/ArrowPanel.h",
+   "source_sha256": "75a5fb32dd1e9b17e504ad08ab4edd8409231450e9a4dc5753067fbe514bfb05",
+   "export_sha256": "75a5fb32dd1e9b17e504ad08ab4edd8409231450e9a4dc5753067fbe514bfb05",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/ChatOutput.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/ChatOutput.h",
+   "source_sha256": "3c6e245c8f491f523070df25f52159547652610b26e78788e46f6fa2de4d02f7",
+   "export_sha256": "3c6e245c8f491f523070df25f52159547652610b26e78788e46f6fa2de4d02f7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/EquationDisplay.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/EquationDisplay.h",
+   "source_sha256": "9bc1f5fe0591cdc7f3a7a8baa28ff3b03bd043dd7e15067e50841b61e2773f84",
+   "export_sha256": "9bc1f5fe0591cdc7f3a7a8baa28ff3b03bd043dd7e15067e50841b61e2773f84",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/HealthHud.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/HealthHud.h",
+   "source_sha256": "d66742d2f53fd6165247c3e9f156332f3dae4f527caf9630aaffb21abbdd6a30",
+   "export_sha256": "d66742d2f53fd6165247c3e9f156332f3dae4f527caf9630aaffb21abbdd6a30",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/Widget.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/Widget.h",
+   "source_sha256": "9f3da570158f8b2303ec6501ab2ea319fd8b0dcba1f187629959320df40b35bf",
+   "export_sha256": "9f3da570158f8b2303ec6501ab2ea319fd8b0dcba1f187629959320df40b35bf",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  }
+ }
+}

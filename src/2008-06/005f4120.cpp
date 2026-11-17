@@ -1,4 +1,4 @@
-// from server: 100% by king_originala
+// from server: 92% by king_originala
 typedef void* (__thiscall *AppendFunction)(void*, const char*, unsigned int);
 typedef int (__thiscall *SyncFunction)(void*);
 

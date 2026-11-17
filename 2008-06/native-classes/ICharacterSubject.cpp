@@ -104,7 +104,10 @@ namespace RBX
 
 	void ICharacterSubject::onHeartBeat(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
 	{
-		cursorLocked = (cameraGoal.translation - cameraFocus.translation).magnitude() < 2.75f;
+		float dx = cameraGoal.translation.x - cameraFocus.translation.x;
+		float dy = cameraGoal.translation.y - cameraFocus.translation.y;
+		float dz = cameraGoal.translation.z - cameraFocus.translation.z;
+		cursorLocked = sqrtf(dx * dx + dy * dy + dz * dz) < 2.75f;
 
 		Instance* thisInstance = dynamic_cast<Instance*>(this);
 		if (Workspace* workspace = ServiceProvider::find<Workspace>(thisInstance))

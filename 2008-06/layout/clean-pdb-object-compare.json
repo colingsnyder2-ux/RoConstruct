@@ -1,0 +1,29 @@
+{
+ "run": "20261117-122618-0f507498",
+ "standard": "unchanged-TU (tu_signature; discardable .debug$S excluded)",
+ "result": {
+  "ArrowPanel": true,
+  "Backpack": true,
+  "ChatOutput": true,
+  "DragTool": true,
+  "Explosion": true,
+  "FileSystem": true,
+  "Guid": true,
+  "Matrix3": true,
+  "MegaDragger": true,
+  "ModelInstance": true,
+  "NullTool": true,
+  "PluginInterface": true,
+  "ProfanityFilter": true,
+  "Profiling": true,
+  "ReliabilityLayer": true,
+  "SecurityContext": true,
+  "StringCompressor": true,
+  "ToolMouseCommand": true,
+  "Verb": true,
+  "Widget": true,
+  "XmlElement": true
+ },
+ "all_identical": true,
+ "cache_note": "runner may reuse validated cached objects for unchanged live sources"
+}

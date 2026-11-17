@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers}/../../../tools/rbxgs/Client/App/include
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include
 // INFERRED: sub_005a2330 (placeholder name for 005a2330 from the identity tier; body byte-proved by the placeholder lane, includes as the lane resolved them)
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"

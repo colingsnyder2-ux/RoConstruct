@@ -1,4 +1,4 @@
-// from server: 100% by colin
+// from server: 88% by colin
 // from server: 88% by king_originala
 struct Buffer {
     char unused;

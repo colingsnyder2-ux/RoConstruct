@@ -78,6 +78,14 @@ namespace RBX
 		{
 			edgeState = state;
 		}
+		bool getInEdgeList() const                     // INFERRED: donor Edge.h inline over +0x1c (TreeStage 00669340 reads / sets it)
+		{
+			return inEdgeList;
+		}
+		void setInEdgeList(bool value)
+		{
+			inEdgeList = value;
+		}
 		Primitive* getPrimitive(int i) const           // donor Edge.h inline; the Joints2008.h / Contact2008.h includers
 		{                                              // call it (exact bodies built against the donor copy)
 			return *(&this->prim0 + i);

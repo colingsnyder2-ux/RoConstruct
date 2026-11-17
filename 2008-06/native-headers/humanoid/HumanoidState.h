@@ -80,6 +80,13 @@ public:
                                                                       //   (FallingDown .. Dead), default Running
     static HumanoidState* createDefault(Humanoid* humanoid);          // 00643280: new Running (Humanoid::onAncestorChanged
                                                                       //   005db560)
+    // 00644670 (thiscall, ret 4): switch over the 17 transition event ids (analog name).
+    bool canTransition(int event);
+    // 006451c0 (thiscall, ret 4): per-step update (analog name).
+    void preStep(float dt);
+    // 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name).
+    static void transition(std::auto_ptr<HumanoidState>& state, float dt);
+    static const int transitionTable[][18];                           // 0084a92c (INFERRED: stride 0x48 from asm)
     void setLimbFlag(bool value);                                     // 006431b0
     bool speedSettled() const;                                        // 00643330 (callers 00666b20/00666bc0 test al)
     // Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;

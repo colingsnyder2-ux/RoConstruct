@@ -1,4 +1,4 @@
-// from server: 100% by king_originala
+// from server: 91% by king_originala
 namespace std {
     class exception {};
 }

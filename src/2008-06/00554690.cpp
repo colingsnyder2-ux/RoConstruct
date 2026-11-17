@@ -1,4 +1,4 @@
-// from server: 100% by king_originala
+// from server: 57% by king_originala
 struct Callback {
     virtual void invoke(void *, void *, void *) = 0;
 };

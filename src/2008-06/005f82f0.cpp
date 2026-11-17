@@ -1,4 +1,4 @@
-// from server: 100% by auto
+// from server: 0% by auto
 // roc 2008-06 005f82f0  unit: std::D::V?$allocator::V?$basic_gzip_compressor::?$stream_buffer  size: 88 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005f82f0
 //

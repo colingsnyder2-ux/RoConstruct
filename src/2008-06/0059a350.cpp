@@ -1,4 +1,4 @@
-// from server: 100% by colin
+// from server: 58% by colin
 struct Flag {
     bool value;
     Flag(const Flag &other) : value(other.value) {}
