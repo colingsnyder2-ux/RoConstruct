@@ -28,3 +28,22 @@ boost::shared_ptr<boost::recursive_mutex> __cdecl DataModel::getMutex(Instance* 
 }
 
 }
+
+namespace RBX {
+extern template boost::shared_ptr<DataModel> Creatable<Instance>::create<DataModel>();
+
+boost::shared_ptr<DataModel> DataModel::createDataModel(bool start) {
+    boost::shared_ptr<DataModel> result = Creatable<Instance>::create<DataModel>();
+    Lock lock(result);
+    result->initializeContents(start);
+    result->renderEnabled = true;
+    return result;
+}
+}
+
+#include "util/RunStateOwner.h"
+
+double RBX::DataModel::getDutyCycle() const { return runService->dutyCycle(); }
+
+double RBX::DataModel::getGameTime() const { return runService->gameTime(); }
+double RBX::DataModel::getFrameRate() const { return runService->frameRate(); }

@@ -1,3 +1,29 @@
+#include "humanoid/HumanoidStates1.h"
+#include "humanoid/Humanoid.h"
+
+namespace RBX {
+namespace HUMAN {
+
+RunningBase::RunningBase(Humanoid* humanoid)
+    : Balancing(humanoid, 300.0f, 50.0f),
+      floorVelocity(0.0f, 0.0f, 0.0f), floorRotationalVelocity(0.0f),
+      desiredVelocity(0.0f, 0.0f, 0.0f), desiredYRotation(0.0f), desiredAltitude(0.0f)
+{
+    Humanoid::event_Running.fire(humanoid, 0.0f);
+}
+
+RunningBase::~RunningBase()
+{
+}
+
+float RunningBase::getIntendedRotationAboutYAxis() const
+{
+    return desiredYRotation;
+}
+
+}
+}
+
 #include "tool/NullTool.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
