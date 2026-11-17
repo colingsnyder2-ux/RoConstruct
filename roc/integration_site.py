@@ -492,9 +492,18 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     layout = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
     exact_inactive = {a for a, v in data["inactive"].items() if v[1]}
     authentic = sorted(a for a in layout if a in functions and (a in native or a in exact_inactive))
-    data["authentic"] = {a: layout[a] for a in authentic}
+    # addr -> [original-path file on the layout branch, line of the definition (1 when not found)]
+    texts = {}
+    for path in {layout[a] for a in authentic}:
+        blob = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/" + path],
+                              cwd=root, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        texts[path] = blob.stdout if blob.returncode == 0 else ""
+    data["authentic"] = {a: [layout[a], function_line(texts[layout[a]], readable(inactive[a][0]) if a in inactive
+                                                      else data["names"].get(a, ["", ""])[0] or "")]
+                         for a in authentic}
     data.setdefault("native_code", {})["authentic"] = {
         "functions": len(authentic), "bytes": sum(functions[a]["size"] for a in authentic),
+        "integrated_functions": sum(a in native for a in authentic),
         "integrated_bytes": sum(functions[a]["size"] for a in authentic if a in native),
         "inactive_bytes": sum(functions[a]["size"] for a in authentic if a not in native)}
     for key, exact in (("native_inactive", True), ("native_draft", False)):

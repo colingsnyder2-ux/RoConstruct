@@ -364,6 +364,8 @@ const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
   const candidate = integrationData?.client === client && integrationData.inactive_sources?.[hex(f[0])];
   const links = [];
+  const au = integrationData?.client === client && integrationData.authentic?.[hex(f[0])];
+  if (au) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${au[0].split('/').map(encodeURIComponent).join('/')}#L${au[1]}" target="_blank" rel="noopener">${short ? "Authentic" : "Authentic source"} ↗</a>`);
   if (!indexed && candidate) links.push(`<a href="${FINDINGS}/blob/work/${candidate.path.split('/').map(encodeURIComponent).join('/')}#L${candidate.line}" target="_blank" rel="noopener">${integrationData.inactive?.[hex(f[0])]?.[1] ? "Inactive native" : "Draft native"}${short ? "" : " source"} ↗</a>`);
   if (indexed) links.push(`<a href="${esc(indexed.url || FINDINGS + "/blob/work/" + indexed.path.split('/').map(encodeURIComponent).join('/'))}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
@@ -485,14 +487,14 @@ function dailyGraph(days, integration = false, switcher = false) {
   const last = days.at(-1);
   const gain = d => d.gain === null ? "—" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
   const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting + (d.nearly || 0) : 0));
-  const series = integration ? [["integrated", "Integrated", NC.integrated], ["inactive", "Inactive native", NC.inactive], ["draft", "Draft native", NC.draft], ["waiting", "Source analogs", NC.exact]] : [["source", "Original source", "#58a6ff"],
+  const series = integration ? [["authentic", "Authentic", NC.authentic], ["integrated", "Integrated", NC.integrated], ["inactive", "Inactive native", NC.inactive], ["draft", "Draft native", NC.draft], ["rest", "Source analogs / not exact", NC.none]] : [["source", "Original source", "#58a6ff"],
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
     <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes (integrated + inactive exact)" : "complete"}.
     One stack per day (US Eastern), toward 100%. Repeated completed days hidden from chart and table. History since ${days[0].day}.</p></div>
     ${switcher ? sectionMode("daily", "Daily progress view") : ""}
-    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, chartDays.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, inactive / draft native, source analogs and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
+    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, chartDays.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "authentic, integrated, inactive / draft native, source analogs and not exact" : "original source, mined, partial and remaining"}, zero to one hundred percent">
       ${[0, 20, 40, 60, 80, 100].map(p => `<line x1="56" x2="${width - 32}" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
         <text x="46" y="${y(p) + 4}" text-anchor="end">${p}%</text>`).join("")}
       ${chartDays.map((d, i) => {
@@ -500,7 +502,7 @@ function dailyGraph(days, integration = false, switcher = false) {
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
         return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% ${integration ? "of target bytes integrated" : "matched"}">
-          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Inactive / draft native: ${count(d.nearly)}; source analogs: ${count(d.waiting)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
+          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Authentic: ${count(d.authentic)}; inactive / draft native: ${count(d.nearly)}; source analogs / not exact: ${count(d.rest)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
           <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
           ${segments.map(([key, label, color]) => {
             const value = d[key] || 0, fraction = integration ? 100 * (d.byteGroups[key] || 0) / (d.bytes || 1) : 100 * value / d.functions, height = Math.min(100 - bottom, fraction);
@@ -510,11 +512,11 @@ function dailyGraph(days, integration = false, switcher = false) {
       }).join("")}
       ${chartDays.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}${d.estimated ? "*" : ""}</text>`).join("")}
       <text x="${width - 32}" y="354" text-anchor="end">${days[0].day.slice(0, 4)} · US Eastern</text>
-    </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(remaining(last))}</span></div></div>
+    </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}${integration ? "" : `<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(remaining(last))}</span>`}</div></div>
     ${days.some(d => d.estimated) ? '<p class="note">* Source/mined split estimated from nearby days. Recorded matched and partial totals unchanged.</p>' : ""}
     <details class="mining-days"><summary>Daily function counts</summary><p class="note">${integration ? "Recorded native snapshots only; earlier unrecorded totals are not reconstructed." : "Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; * marks estimated splits, unavailable counts show —."} Changes include inventory corrections. First recorded total has no daily change.</p>
-      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Inactive native</th><th>Draft native</th><th>Source analogs</th><th>Remaining</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
-      ${chartDays.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.inactive)}</td><td>${count(d.draft)}</td><td>${count(d.waiting)}</td><td>${fmt(remaining(d))}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
+      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Authentic</th><th>Inactive native</th><th>Draft native</th><th>Source analogs / not exact</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
+      ${chartDays.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.authentic)}</td><td>${count(d.inactive)}</td><td>${count(d.draft)}</td><td>${count(d.rest)}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
       </tbody></table></div></details>`;
 }
 
@@ -616,8 +618,12 @@ function integrationDaily(i, switcher = false) {
     const integrated = row.groups.integrated.functions, waiting = row.groups.exact_waiting.functions;
     const bytes = Object.values(row.groups).reduce((sum,g) => sum + g.bytes, 0);
     const inactive = row.native_code?.inactive, draft = row.native_code?.draft;
-    return {day:row.day,functions,integrated,waiting,inactive:inactive?.functions,draft:draft?.functions,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
-      byteGroups:{integrated:row.groups.integrated.bytes,inactive:inactive?.bytes || 0,draft:draft?.bytes || 0,waiting:row.groups.exact_waiting.bytes},
+    const au = row.native_code?.authentic || {functions: 0, bytes: 0, integrated_functions: 0, integrated_bytes: 0, inactive_bytes: 0};
+    const auI = au.integrated_functions ?? 0;
+    const restFunctions = functions - integrated - (inactive?.functions || 0) - (draft?.functions || 0);
+    const restBytes = bytes - row.groups.integrated.bytes - (inactive?.bytes || 0) - (draft?.bytes || 0);
+    return {day:row.day,functions,authentic:au.functions,integrated:integrated - auI,waiting,inactive:inactive ? inactive.functions - (au.functions - auI) : undefined,draft:draft?.functions,rest:restFunctions,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
+      byteGroups:{authentic:au.bytes,integrated:row.groups.integrated.bytes - (au.integrated_bytes || 0),inactive:(inactive?.bytes || 0) - (au.inactive_bytes || 0),draft:draft?.bytes || 0,waiting:row.groups.exact_waiting.bytes,rest:restBytes},
       percent:bytes ? 100 * (row.groups.integrated.bytes + (inactive?.bytes || 0)) / bytes : 0,
       gain:index ? integrated - rows[index-1].groups.integrated.functions : null};
   });
@@ -1226,7 +1232,7 @@ async function client(name) {
     const named=native?.names[hex(f[0])], integrated=nativeSet.has(hex(f[0]));
     const readable=named && !named[0].startsWith("?") ? named[0] : "";
     document.getElementById("detail").innerHTML=`<div class="function-card"><strong>${esc(readable || units[f[3]])}</strong><br>
-      <span class="function-status">${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
+      <span class="function-status">${native?.authentic?.[hex(f[0])] ? "Authentic · original path " + esc(native.authentic[hex(f[0])][0]) + " · " : ""}${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
       <div class="function-meta">${hex(f[0])} · ${fmt(f[1])} bytes · ${f[2]}% matched</div>${sourceLinks(name,f)}
       ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Integrated source location not indexed yet.</p>' : ""}
       ${named || f[6] ? `<details><summary>Technical details</summary>${named ? `<p>Symbol <code>${esc(named[1])}</code></p>` : ""}${f[6] ? `<p>Family <code>${esc(f[6])}</code></p>` : ""}</details>` : ""}
