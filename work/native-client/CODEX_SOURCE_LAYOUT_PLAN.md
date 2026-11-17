@@ -17,14 +17,25 @@ generated code** and without disturbing the naming / LLM lanes running in parall
 - `tools/openrbx/Client/**` — public OpenRBX decompilation of the same era: original-case file
   names (PDB paths are lower-case), file-level style, `#pragma once` / include conventions.
 - `work/native-client/identity_unlock_pdb.py` — reads WebService.pdb publics + module procs.
-  Extend it (see "Line info" below) instead of writing a new PDB reader.
+  Read-only for Codex: import its `streams()` / `procs()` from a new
+  `work/native-client/layout/pdb_lines.py` instead of editing it.
 - Do not use the 2016 leak for layout; the 2007 PDB paths are authentic and closer in time.
 
 ## Hard rules
 
-1. Codegen must not change. Every move/merge/cleanup batch proves, per translation unit, that the
-   compiled `.obj` code+data sections and symbol tables are identical before and after
-   (relocation targets compared by symbol name). Any diff → revert that file.
+1. Codegen must not change. Two verification standards:
+   - **Move / rename / comment or style cleanup (TU unchanged):** the compiled `.obj` code+data
+     sections and symbol tables are identical before and after (relocation targets compared by
+     symbol name).
+   - **Merge or split of TUs:** object-level symbol tables may legitimately change (section and
+     COMDAT order, symbol order, anonymous-namespace `?A0x...` names, file-static names). Prove
+     instead, per function and per data symbol: the union of defined symbols is unchanged
+     (externally visible names identical; statics matched by body); every function's code bytes
+     are identical with relocations compared by target symbol; every data symbol's bytes and
+     relocations are identical; dynamic initializers keep their original relative order
+     (`.CRT$XCU` order, checked against the exe); and a link of the full object set places every
+     function/data symbol at the same address as before.
+   Any diff → revert that file or merge.
 2. Lease before touching: `roc.cmd lease take <family> <globs> --hours 4`. One family per batch.
    Core headers (`v8tree/Instance.h`, `v8datamodel/DataModel.h`, `util/Events.h`,
    `reflection/*.h`) only through their lease owner.
@@ -47,8 +58,9 @@ generated code** and without disturbing the naming / LLM lanes running in parall
    lease globs, the Integration Digest scanner (`roc native-files scan`). For each: file, how the
    path is used (literal, glob, derived), and how it must be rewritten.
 2. **Function → original file map** → `work/native-client/layout/function-files.json`.
-   - Extend `identity_unlock_pdb.py` to read C13 line info (DEBUG_S_LINES + DEBUG_S_FILECHKSMS in
-     each module stream): every WebService function → source file + first line.
+   - Write `work/native-client/layout/pdb_lines.py` (imports `streams()` from
+     `identity_unlock_pdb.py`, which stays unedited) to read C13 line info (DEBUG_S_LINES +
+     DEBUG_S_FILECHKSMS in each module stream): every WebService function → source file + first line.
    - Exe functions with the same decorated name (registry + `unnamed-identities.json`) inherit
      that file and line. Order within a file = PDB line order (cross-check with link order in the
      exe; they should agree).
@@ -99,7 +111,7 @@ removes them.
    rewrite includes, rewrite every consumer from consumers.json, update lease globs in its own
    lease only).
 2. `layout_verify.py --family X`: compile each touched TU before/after with the recorded flags,
-   compare sections + symbols + reloc targets; run `python rebuild/2008-06/tests/verify_native_checkpoint.py`
+   apply the matching standard from hard rule 1 (TU-unchanged or merge/split); run `python rebuild/2008-06/tests/verify_native_checkpoint.py`
    (never two instances at once); report P5/P6 status unchanged.
 3. Make the native LLM lane / transplant tools **write new files at the mapped target path**
    (send the proposal to the owner of `native_llm.py`; do not edit it).
