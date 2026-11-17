@@ -246,6 +246,264 @@
    "address": "0065b4e0",
    "identity_evidence": "INFERRED:donor-exact name SpatialHash (ContactManager 2008 news SpatialHash(world, this)) and byte-exact native body (SpatialHash2008.cpp)",
    "votes": 1
+  },
+  {
+   "symbol": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ",
+   "address": "0066f900",
+   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+   "address": "0066f910",
+   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?drawFont2D@AdornRbxGfx@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z",
+   "address": "0066fda0",
+   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?font2d@RBX@@3PAVRbxFont@Ogre@@A",
+   "address": "00962dac",
+   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?draw2D@RbxFont@Ogre@@QBE?AVVector2@G3D@@PAVVisualEngine@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z",
+   "address": "00684730",
+   "identity_evidence": "INFERRED:RbxFont::draw2D (VRbxFont2008.h: only caller AdornRbxGfx 0066fe0c; byte-exact native body in OgreVRbxFont.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?erase@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAEIABQAVJoint@RBX@@@Z",
+   "address": "005e9f60",
+   "identity_evidence": "INFERRED:set<Joint*>::erase(key): identical-code folded body of the registry's erase at 005e9f60 (CRobloxTreeCtrlNode*); SleepStage::changeJointState 0064ae10 passes &joint with the steppingJoints container at +0x1b8 and the native body (SleepStage2008.cpp) is byte-exact",
+   "votes": 1
+  },
+  {
+   "symbol": "?turnOnLights@RenderScene@Render@RBX@@ABEXPAVRenderDevice@G3D@@_N@Z",
+   "address": "00502100",
+   "identity_evidence": "INFERRED:donor RenderScene.cpp body (tools/rbxgs RenderLib), decorated name in registry and byte-exact native body in RenderSceneLights2008.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?font2d@RBX@@3V?$SharedPtr@VRbxFont@Ogre@@@Ogre@@A",
+   "address": "00962da8",
+   "identity_evidence": "INFERRED:SharedPtr<RbxFont> global at 00962da8 (ctor 00674210 assigns fromFile result via 00670670; pRep at 00962dac read by drawFont2D 0066fe01)",
+   "votes": 1
+  },
+  {
+   "symbol": "?changeJointState@SleepStage@RBX@@AAEXABV?$vector@PAVJoint@RBX@@V?$allocator@PAVJoint@RBX@@@std@@@std@@W4EdgeState@Sim@2@@Z",
+   "address": "0064b7f0",
+   "identity_evidence": "INFERRED:the vector<Joint*> loop of SleepStage (donor changeJointState(const vector&)) calls the byte-exact changeJointState(Joint*) 0064ae10; native body byte-exact (SleepStage2008.cpp). The registry gives the same name to 0064b840/0064c230, which call 0064ae90/0064bf90",
+   "votes": 1
+  },
+  {
+   "symbol": "?changeAssemblyState@SleepStage@RBX@@AAEXABV?$vector@PAVAssembly@RBX@@V?$allocator@PAVAssembly@RBX@@@std@@@std@@W4AssemblyState@Sim@2@@Z",
+   "address": "0064b840",
+   "identity_evidence": "INFERRED:vector<Assembly*> loop of SleepStage (donor changeAssemblyState(const vector&)) calling changeAssemblyState(Assembly*, state) 0064ae90 (state -> SimJobStage add/remove); native body byte-exact (SleepStage2008.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?changeContactState@SleepStage@RBX@@AAEXABV?$vector@PAVContact@RBX@@V?$allocator@PAVContact@RBX@@@std@@@std@@W4EdgeState@Sim@2@@Z",
+   "address": "0064c230",
+   "identity_evidence": "INFERRED:vector<Contact*> loop of SleepStage (donor changeContactState(const vector&)) calling changeContactState(Contact*, state) 0064bf90; native body byte-exact (SleepStage2008.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeNormalPerpVel@GeoPair@RBX@@QAEXAAMAAVVector3@G3D@@ABVPairParams@2@@Z",
+   "address": "006130e0",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeBallPoint@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "006131e0",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeBallBall@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "00613290",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeBallEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "00613320",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeBallPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "00613440",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computePointPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "00613560",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeEdgeEdgePlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "006136a0",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?computeEdgeEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+   "address": "006139c0",
+   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?getAssemblyNoCheck@Primitive@RBX@@QBEPAVAssembly@2@XZ",
+   "address": "005e7560",
+   "identity_evidence": "INFERRED:placeholder func_005e7560 is `[[prim+0x5c]+0x24]` (Clump assembly without the NULL check of getAssembly 005e7570); called by SleepStage::onEdgeAdded 0064b1b0 and touchEvent 0064b7c0; byte-exact native body (SleepStage2008.cpp); name is an analog",
+   "votes": 1
+  },
+  {
+   "symbol": "?stateToSet@SleepStage@RBX@@AAEPAV?$set@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@@std@@W4AssemblyState@Sim@2@@Z",
+   "address": "0064a550",
+   "identity_evidence": "INFERRED:donor SleepStage::stateToSet (state -> assembly set, jump table of 6 over state 1..6, default +0x120); called by changeAssemblyState 0064ae90 and the wake events with the set erase/insert; byte-exact native body (SleepStage2008.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?getHeadingElevationDistance@Camera@RBX@@AAEXAAM00@Z",
+   "address": "005cc0c0",
+   "identity_evidence": "INFERRED:called by Camera::panRadians/tiltRadians; Camera unit 005cbf20-005ce6e0 (RTTI .?AVCamera@RBX@@); byte-exact native body (Camera.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?setHeadingElevationDistance@Camera@RBX@@AAEXMMM@Z",
+   "address": "005cc690",
+   "identity_evidence": "INFERRED:called by Camera::panRadians/tiltRadians; Camera unit (RTTI .?AVCamera@RBX@@); byte-exact native body (Camera.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?alwaysMode@Camera@RBX@@QAEXXZ",
+   "address": "005cc000",
+   "identity_evidence": "INFERRED:Camera unit 005cbf20-005ce6e0, sets animationType ALWAYS beside autoMode 005cc450; byte-exact native body (Camera.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?goalToCamera@Camera@RBX@@QAEXXZ",
+   "address": "005cdf70",
+   "identity_evidence": "INFERRED:Camera unit (RTTI .?AVCamera@RBX@@), called by tryZoomExtents 005cdff0; byte-exact native body (Camera.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?setCameraCoordinateFrameNoLerp@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+   "address": "005ce440",
+   "identity_evidence": "INFERRED:Camera unit, PropDescriptor setter for CoordinateFrame; byte-exact native body (Camera.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?setImageServerViewNoLerp@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@ABVRect2D@4@@Z",
+   "address": "005ce480",
+   "identity_evidence": "INFERRED:Camera unit after setCameraCoordinateFrameNoLerp 005ce440; byte-exact native body (Camera.cpp, /fp:fast)",
+   "votes": 1
+  },
+  {
+   "symbol": "?PreCreateWindow@CRobloxWnd@@UAEHAAUtagCREATESTRUCTA@@@Z",
+   "address": "0045b330",
+   "identity_evidence": "INFERRED:CRobloxWnd vtable 008199f4 / RTTI .?AVCRobloxWnd@@ (MFC PreCreateWindow override calling CWnd::PreCreateWindow); byte-exact native body (CRobloxWndWindow.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?OnSetFocus@CRobloxWnd@@QAEXPAVCWnd@@@Z",
+   "address": "0045b5d0",
+   "identity_evidence": "INFERRED:CRobloxWnd unit (calls CWnd::OnSetFocus then DxUserInput::setKeyboardWanted(true) 00468050); byte-exact native body (CRobloxWndWindow.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?getMetric@World@RBX@@QBEHW4MetricType@IWorldStage@2@@Z",
+   "address": "005e9160",
+   "identity_evidence": "INFERRED:donor World::getMetric (forwards to the first stage's getMetric, slot 6): 13-byte body byte-exact in native-classes/AppUnit5E8_2008World.cpp; the owning unit is the World.cpp range 005e9150..005eaeef (World::getKernel 005e9150 precedes it)",
+   "votes": 1
+  },
+  {
+   "symbol": "?getSleepStage@World@RBX@@QAEPAVSleepStage@2@XZ",
+   "address": "005e93e0",
+   "identity_evidence": "INFERRED:donor World::getSleepStage: IStage::findStage walk (getStageType slot 1 against 5 = SLEEP_STAGE) from the first stage +0x88, the same walk as ticklePrimitive 005e9410 before SleepStage 0064b890; byte-exact in native-classes/AppUnit5E8_2008World.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?onPrimitiveTouched@World@RBX@@QAEXPAVPrimitive@2@0@Z",
+   "address": "005e98c0",
+   "identity_evidence": "INFERRED:donor World::onPrimitiveTouched (touch.append(p); touchOther.append(other)); byte-exact in native-classes/AppUnit5E8_2008World.cpp; the two G3D::Array appends are at +0x8c / +0x98 (World() 005ea920)",
+   "votes": 1
+  },
+  {
+   "symbol": "?OnSize@CRobloxWnd@@QAEXIHH@Z",
+   "address": "0045b010",
+   "identity_evidence": "INFERRED:CRobloxWnd unit (registry resize(UINT,UINT,UINT)): GetClientRect + VisualEngine camera aspect + RenderWindow::windowMovedOrResized; byte-exact native body (CRobloxWndWindow.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?shutdownGraphics@CRobloxWnd@@QAEXXZ",
+   "address": "0045bde0",
+   "identity_evidence": "INFERRED:CRobloxWnd unit (registry f(void)): GWindow m_current 0096eff4 makeCurrent, RenderDevice::cleanup 0047c3e0 / ~RenderDevice 0047bec0, GWindow deleting dtor; byte-exact native body (CRobloxWndWindow.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?handle@CRobloxWnd@@QAEXH@Z",
+   "address": "0045cba0",
+   "identity_evidence": "INFERRED:CRobloxWnd unit (registry handle(int)): switch calling 0045beb0/0045c890 or DxUserInput::updateMouse 00468b20 then CWnd::Default; byte-exact native body (CRobloxWndWindow.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?sub_0045beb0@CRobloxWnd@@QAEXXZ",
+   "address": "0045beb0",
+   "identity_evidence": "INFERRED:CRobloxWnd unit, thiscall on CRobloxWnd called from handle 0045cba0; placeholder name, body not recovered (identity only for the call reference)",
+   "votes": 1
+  },
+  {
+   "symbol": "?sub_0045c890@CRobloxWnd@@QAEXXZ",
+   "address": "0045c890",
+   "identity_evidence": "INFERRED:CRobloxWnd unit, thiscall on CRobloxWnd called from handle 0045cba0; placeholder name, body not recovered (identity only for the call reference)",
+   "votes": 1
+  },
+  {
+   "symbol": "?onEvent_AddedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+   "address": "005b1110",
+   "identity_evidence": "INFERRED:donor/openrbx Accoutrement::onEvent_AddedBackend (updateDesiredState 005b10a0 unless child==this); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?onEvent_RemovedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+   "address": "005b1190",
+   "identity_evidence": "INFERRED:donor/openrbx Accoutrement::onEvent_RemovedBackend (weld +0x134 compare); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?dropAllOthers@Accoutrement@RBX@@SAXPAVModelInstance@2@PAV12@@Z",
+   "address": "005b15e0",
+   "identity_evidence": "INFERRED:openrbx Accoutrement::dropAllOthers (findWorkspace 005a3380, findFirstChildOfType<Accoutrement> 005b1520, setParent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?upTo_Equipped@Accoutrement@RBX@@IAEXXZ",
+   "address": "005b1830",
+   "identity_evidence": "INFERRED:donor Accoutrement::upTo_Equipped (handleTouched.disconnect, findParts, unJoinFromOutsiders, buildWeld \"HeadWeld\"); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?connectTouchEvent@Accoutrement@RBX@@IAEXXZ",
+   "address": "005b1d70",
+   "identity_evidence": "INFERRED:donor Accoutrement::connectTouchEvent (PartInstance::event_Touched.connect group 10); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "?downFrom_Equipped@Accoutrement@RBX@@IAEXXZ",
+   "address": "005b1fc0",
+   "identity_evidence": "INFERRED:donor Accoutrement::downFrom_Equipped (weld teardown, drop at character, connectTouchEvent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+   "votes": 1
   }
  ]
 }

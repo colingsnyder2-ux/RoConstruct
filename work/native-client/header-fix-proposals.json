@@ -28,5 +28,37 @@
  {
   "header": "v8tree/Instance.h",
   "note": "PDB 2007 Instance methods absent in header (non-virtual helpers): findChildIndex, findFirstChildByNameRecursive, isAncestorOf2, isDescendentOf2, promoteChildren, signalDescendentAdded/Removing, setParent2, raiseChanged, getChildren2. Add only on demand by a blocked function with 2008 symbol evidence."
+ },
+ {
+  "header": "v8tree/Instance.h (core; GuidItem<Instance> primary base, util/GuidItem.h)",
+  "note": "Replicator::NewInstanceItem::write 004b8620, DeleteInstanceItem::write 004b47b0, ChangePropertyItem::write 004b6d10 print instance->getGuid().readableString(4): the target does `lea ecx,[instance+8]; call Guid::readableString 004aadd0` inline (GuidItem<Instance>::guid at +8, protected). Needs a public inline `const Guid& getGuid() const { return guid; }` on GuidItem<T> (or Instance). Owner: Instance.h/GuidItem.h. Also util/Guid.h readableString(int) is declared by the donor header only.",
+  "by": "cls3:Replicator"
+ },
+ {
+  "header": "v8tree/Instance.h + util/Object.h",
+  "note": "tmpl4:Deleter. Creatable<Instance>::Deleter::operator()(Instance*) 00405e30 (41 B, no definition anywhere): calls the 9-byte cdecl thunk 0055b770 (mov ecx,[esp+4]; jmp 0055b060 = private Instance::predelete()) then the deleting dtor of the Creatable<Instance> sub-object at +0x10 (delete (Creatable<Instance>*)obj). Needs Instance.h to declare a static Instance::predelete(Instance*) wrapper reachable from Deleter (or friend Creatable<Instance>::Deleter) and the Deleter body in a new native .cpp; definition is `template<typename T> void Creatable<T>::Deleter::operator()(T* object) { T::predelete(object); delete object; }` with explicit instantiation for T=Instance. Not written: core headers not editable by tmpl4."
+ },
+ {
+  "header": "v8tree/Instance.h (core)",
+  "note": "Replicator::remoteDeleteOnDisconnect 004ab960 inlines isDescendentOf one level (`ancestor == parent || (parent && parent->isDescendentOf(ancestor))`, then call 00422ae0 on the parent): the donor header defines isDescendentOf inline and the recursion keeps the out-of-line copy 00422ae0, as for getRootAncestor. Propose an inline definition in Instance.h instead of the bare declaration.",
+  "by": "cls3:Replicator"
+ },
+ {
+  "header": "stats/Stats.h (TypedStatsItem)",
+  "note": "tmpl4:TypedStatsItem. Remaining ctors 005a3f30 (<int>), 005a4050 (<unsigned int>), 005a4190 (<G3D::Stopwatch>), 227 B each, take a boost::function0<T> by value (mangled ??0?$TypedStatsItem@H@Stats@RBX@@QAE@V?$function0@H...@Z), plus Creatable<Instance>::create<TypedStatsItem<T>, function0<T>> 005a4af0/005a4bd0 (215 B). Stats.h only declares TypedStatsItem(const T*) (bind(&deref,value)); needs an added `TypedStatsItem(boost::function0<T> func) : func(func) {}` overload. Not written: also the known boost::function0 assign_to inlining gap (original 194-227 B vs this build 120 B, see AppUnit4B4Templates.cpp), so byte exactness is not expected."
+ },
+ {
+  "header": "reflection/member.h (MemberDescriptorContainer::mergeMembers)",
+  "note": "tmpl4:mergeMembers 005703a0/00570440/005704e0 (148 B) are 144 B with the current header: the do { ... } while (source = source->base) tail compiles to mov ebp,[ebp+0x30]; test; jne, the original is mov eax,[ebp+0x30]; test eax,eax; je exit; mov ebp,eax; jmp top. An overlay probe (while(true){...; source=source->base; if(!source) break;}) gave the identical 144 B, so the loop form alone is not the cause (overlay may not have taken precedence); unresolved."
+ },
+ {
+  "header": "v8tree/Instance.h (core)",
+  "class": "RBX::Instance",
+  "note": "upTo_InCharacter 005b1e50 (Accoutrement) needs static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded (global 00973e90, connected first into characterChildAdded +0x19c) and event_childRemoved (00973c6c, characterChildRemoved +0x1b0), both connect(parent, bind(&Accoutrement::onEvent_AddedBackend/RemovedBackend, this, _1), 10); Instance.h only declares event_descendentAdded/Removing/ancestryChanged/itemChanged. Target connect passes parent+0x14 object, group 10 (same shape as connectTouchEvent 005b1d70 which is byte-identical)."
+ },
+ {
+  "header": "v8world World (no 2008 native header)",
+  "class": "RBX::World",
+  "note": "Workspace::reset 005a0df0 (52 B) is isolated-compile near-miss: body `isSimulating=false; getCamera()->autoMode(); world->reset();` but the donor/include-path World::reset stores worldStepId at +0x64 (and the donor build emits a debug-assert load), the target stores 0 at World+0xa8. Needs a 2008 World layout header (+0xa8 member, inline reset())."
  }
 ]
