@@ -169,7 +169,9 @@ def work(root, limit=3, apply=False):
         except Exception as error:
             result = dict(state='blocked', path=review['target'], blockers=[type(error).__name__ + ': ' + str(error)])
         result['reviewed_methods'] = [row['signature'] for row in review['methods']]
-        native_drafts.atomic(artifact, result)
+        # Lock contention is transient infrastructure, not a review outcome: never cache it.
+        if not any('Already running:' in blocker for blocker in result.get('blockers', [])):
+            native_drafts.atomic(artifact, result)
         results.append(result)
         return result
 
