@@ -59,10 +59,7 @@ namespace RBX
 
 		virtual G3D::Vector3 getCenterToCorner(const G3D::Matrix3& rotation) const;   // 00648270
 
-		virtual G3D::Matrix3 getMoment(float mass) const // 005e7390
-		{
-			return getMomentHollow(mass);
-		}
+		virtual G3D::Matrix3 getMoment(float mass) const; // 005e7390 (body in native-classes/Block.cpp)
 
 		virtual float getGridVolume() const;             // 006478f0
 
