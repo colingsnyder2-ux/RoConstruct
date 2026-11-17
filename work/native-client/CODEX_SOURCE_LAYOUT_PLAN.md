@@ -214,6 +214,19 @@ Each item gets its own proof report; no post-link patching (owner rule: never pa
 | Timestamps | COFF header, debug dir, resource dir, export dir | same clock shim |
 | Signature | Authenticode certificate table (if the original is signed) | cannot be reproduced; compare the hash with the certificate table excluded and document it |
 
+Facts from the original `clients/2008-06/Roblox.exe` (checked 2026-11-16):
+- Not Authenticode-signed (certificate table size 0): a full-file SHA-256 match is possible.
+- Linker 9.0; TimeDateStamp 0x485b465d; PDB path `d:\Roblox\Releases\2008.06.17\bin\Release\Roblox.pdb`.
+- Rich header (prodid, build, count): (132 C++, 21022, 627), (131 C, 21022, 89), (123, 50727, 40),
+  (109, 50727, 17), (150, 20413, 7), (149, 21022, 13), (147, 21022, 8), (148, 21022, 1),
+  (145, 21022, 1), (93/95/96, 4035, 3/2/1), (4, 8447, 2), (1 imports, 0, 3146).
+  So the original app link had exactly **627 VS2008 C++ objects and 89 C objects** plus VS2005
+  (50727) objects: the cleaned tree must end with exactly that many translation units per
+  compiler. This is a hard target for the Phase 3 merges (today: 1,653 .cpp files).
+- The RSDS GUID is random per link (not clock-derived): reproducing it needs a build-environment
+  hook on the linker's GUID source; that is an owner decision, since post-link patching is
+  forbidden.
+
 Tooling for Phase 6: `exe_diff.py` (section-by-section, symbol-aware first-difference report,
 Rich header decode, import table diff, resource tree diff) and a CI job that rebuilds and reports
 the distance to the original hash.
