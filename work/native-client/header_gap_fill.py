@@ -114,7 +114,7 @@ def plan():
             decl = declaration(plain.get(symbol, ''), owner)
             name = decl and re.search(r'(~?\w+)\s*\(', decl)
             # Skip names the class already mentions (overloads need judgement) and anything undname left mangled.
-            if not decl or not name or '?' in decl or re.search(r'\b%s\s*\(' % re.escape(name.group(1)), text[span[0]:span[1]]):
+            if not decl or not name or '?' in decl or re.search(r'(?<!\w)%s\s*\(' % re.escape(name.group(1)), text[span[0]:span[1]]):
                 continue
             if name.group(1) in ('f', 'g', 'h', 'method', 'fn', 'func', 'call', 'helper') or name.group(1).startswith(('func_', 'sub_', 'FUN_')):
                 continue                                     # analog placeholder names, not binary symbols
