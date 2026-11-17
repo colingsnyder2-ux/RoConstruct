@@ -75,5 +75,15 @@
   "header": "util/Sound.h (core)",
   "class": "RBX::Soundscape::SoundService",
   "note": "soundDisabled must be `static bool` (global 00976fc9, tested by openFmod 005ba060 `cmp byte ptr [0x976fc9], 0`), not a member at +0x1c1. SoundChannel/SoundChannel.h already has it static."
+ },
+ {
+  "header": "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h",
+  "class": "RBX::PartInstance",
+  "note": "RunDragger 0066d430 smartPtrHackPre and 0066d4f0 init convert PartInstance* to Primitive* with a plain add 0x228 (no getPrimitive call). Native header declares boost::scoped_ptr<Primitive> primitive (line 58), so the header cannot express the binary conversion. Owner: confirm the 2008 Primitive subobject (base or embedded at +0x228) and state it in the header; affects RunDragger rows 0066d430/0066d4f0."
+ },
+ {
+  "header": "rebuild/2008-06/native-headers/engine-world/v8world/World.h",
+  "class": "RBX::World",
+  "note": "RunDragger 0066e3d0 snap loads World::contactManager from [World+0x84] (via Workspace+0x2e4); native World.h places ContactManager* contactManager at +0x40 (line 49). Owner: reconcile the World layout offset; affects snap and colliding callers."
  }
 ]

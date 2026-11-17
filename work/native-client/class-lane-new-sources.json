@@ -126,5 +126,6 @@
  "rebuild/2008-06/native-classes/LuaBridgeGetValue2008.cpp",
  "rebuild/2008-06/native-classes/SoundServiceFmod.cpp",
  "rebuild/2008-06/native-classes/SoundServiceOpen.cpp",
- "rebuild/2008-06/native-classes/SoundServiceReverb.cpp"
+ "rebuild/2008-06/native-classes/SoundServiceReverb.cpp",
+ "rebuild/2008-06/native-classes/BoundFuncDescInstances2008.cpp"
 ]

@@ -220,6 +220,11 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
     def reference(index, stored, original, depth=0):
         name, value, number, _ = symbols[index]
         base = (original - stored) & 0xffffffff
+        # Compiler-local switch labels ($LN<n>) share names across objects, so evidence receipts merge them into a
+        # conflicted binding; checked before the conflict tests, as an offset into the audited function's own section
+        # (the same rule as below), a label placed at the same offset in object and original is the body's own.
+        if number - 1 == section and re.fullmatch(r'\$LN\d+', name) and base == (va + value - start) & 0xffffffff:
+            return
         known = bindings.get(name)
         # One symbol at several addresses (the same template instance in several static libraries, each copy calling
         # its own callee copy): the reference is proven when the evidence names the referenced address for that symbol.
