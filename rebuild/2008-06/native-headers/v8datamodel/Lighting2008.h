@@ -119,5 +119,7 @@ namespace RBX
 		{
 			event_LightingChanged.fire(this, value);
 		}
+	public:
+		G3D::Color3 getAmbient() const;   // INFERRED (header-add): evidence: ?getAmbient@Lighting@RBX@@QBE?AVColor3@G3D@@XZ - byte-proved by 004d6ff0
 	};
 }
