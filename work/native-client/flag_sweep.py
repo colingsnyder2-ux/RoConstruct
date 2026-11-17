@@ -20,10 +20,10 @@ VARIANTS = [BASE.replace('/Ob2', '/Ob1'), BASE + ' /Oy-', BASE + ' /fp:fast', BA
 WORKER = r'''
 import json, os, re, sys
 from pathlib import Path
+addr, variant = sys.argv[1], sys.argv[2]
 sys.path.insert(0, %(here)r); sys.argv = ['x', '--limit', '0']
 src = open(%(lane)r, encoding='utf-8').read(); src = src[:src.index('if args.regate:')]
 ns = {'__name__': 'sweep'}; exec(compile(src, %(lane)r, 'exec'), ns)
-addr, variant = sys.argv[1], sys.argv[2]
 out = ns['OUT'] / addr
 answer = sorted(out.glob('try*.cpp'))[-1].read_text(errors='replace')
 body = re.findall(r'```(?:cpp|c\+\+)\s*\n(.*?)```', answer, re.S)[-1]
