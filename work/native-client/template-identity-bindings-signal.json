@@ -1,0 +1,59 @@
+{
+ "scope": "EH handler identities from original prologues",
+ "identity_bindings": [
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+   "address": "007c6489",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00491090",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "address": "007be061",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 004b35e0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007be061",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0041b5a0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+   "address": "007d98c0",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0049a770",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXN@Z@Reflection@RBX@@QAEXN@Z",
+   "address": "007c64a8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00636430",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXVVector3@G3D@@@Z@Reflection@RBX@@QAEXVVector3@G3D@@@Z",
+   "address": "007c64a8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 006364f0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXVCoordinateFrame@G3D@@@Z@Reflection@RBX@@QAEXVCoordinateFrame@G3D@@@Z",
+   "address": "007c64a8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 006365c0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXVColor3@G3D@@@Z@Reflection@RBX@@QAEXVColor3@G3D@@@Z",
+   "address": "007c64a8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00636670",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXVBrickColor@RBX@@@Z@Reflection@RBX@@QAEXVBrickColor@3@@Z",
+   "address": "007c64a8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00636740",
+   "votes": 1
+  }
+ ]
+}
