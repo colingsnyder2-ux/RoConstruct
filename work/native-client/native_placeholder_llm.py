@@ -263,10 +263,22 @@ def judge(work, addr, reply, body):
         else:
             root, rel = made
             status, detail = compile_and_gate(work, [str(header)], body, addr, include_first=[str(root)], raw_includes=[rel])
+            fallback = class_header(cls)
+            # A snapshot copy can redefine a class the other headers already pull in (C2011): retry with the default.
+            if status == 'compile_failed' and 'C2011' in detail and fallback and fallback != header:
+                made = shadow(work, fallback, cls, decl, addr)
+                if made:
+                    status, detail = compile_and_gate(work, [str(fallback)], body, addr, include_first=[str(made[0])],
+                                                      raw_includes=[made[1]])
     else:
         headers = [h for h in (class_header(c, body) for c in dict.fromkeys(re.findall(r'\b(RBX::\w+(?:::\w+)?)', body))) if h][:4]
         headers = [str(h) for h in headers] or [str(HEADERS / 'util/Name.h')]
         status, detail = compile_and_gate(work, headers, body, addr)
+        if status == 'compile_failed' and 'C2011' in detail:      # snapshot copy clash: retry with default copies
+            plain = [str(h) for h in (class_header(c) for c in dict.fromkeys(re.findall(r'(RBX::\w+(?:::\w+)?)', body))) if h][:4]
+            plain = plain or [str(HEADERS / 'util/Name.h')]
+            if plain != headers:
+                status, detail = compile_and_gate(work, plain, body, addr)
     return status, detail, cls, decl
 
 
