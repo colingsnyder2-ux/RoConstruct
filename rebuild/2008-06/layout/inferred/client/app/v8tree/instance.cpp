@@ -1,0 +1,26 @@
+#include "v8tree/Instance.h"
+#include "v8xml/XmlElement.h"
+
+namespace RBX {
+XmlElement* Instance::write() {
+    if (archivable && getClassName() != Name::getNullName()) {
+        XmlElement* element = new XmlElement(tag_Item);
+        element->addAttribute(tag_class, &getClassName());
+        element->addAttribute(name_referent, InstanceHandle(this));
+        writeProperties(element->addChild(tag_Properties));
+        writeChildren(element);
+        return element;
+    }
+    return new XmlElement(tag_External, InstanceHandle(this));
+}
+
+void Instance::writeChildren(XmlElement* container) {
+    if (children) {
+        const std::vector<boost::shared_ptr<Instance> >& list = *children;
+        for (std::vector<boost::shared_ptr<Instance> >::const_iterator it = list.begin(); it != list.end(); ++it) {
+            XmlElement* element = (*it)->write();
+            if (element) container->pushBackChild(element);
+        }
+    }
+}
+}

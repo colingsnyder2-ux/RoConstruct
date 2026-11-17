@@ -18,5 +18,12 @@ embeds the object path, is excluded). A tidied file that does not reproduce the 
 verbatim instead. Tidied headers are token-identical to the original and contain no line-sensitive
 macros. `receipt.json` lists every file with its status and why other files are held back.
 
+`inferred/` holds files whose original path is a best guess, not a PDB match: the name comes from
+OpenRBX, or from the original file that the PDB assigns to the target addresses the unit mentions.
+Folder and file-name case there can be wrong. Merged units also live there: several recovery
+pieces joined into the one original file they map to, kept only when every function and data symbol
+of the pieces reappears byte-identical (same relocation targets). Link and initializer order of
+merged units are not proven.
+
 Not here yet: files with no original path evidence (most recovery units), merged or split units,
 and files with open case or identity review. This is not a source-only client and not a P5/P6 gate.
