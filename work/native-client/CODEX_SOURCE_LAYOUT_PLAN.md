@@ -182,6 +182,48 @@ Survey numbers: 23 header file names exist twice under `native-headers`; 19 file
     every later batch compares against them, and a warn-only pre-commit check runs
     `layout_verify` on touched native files.
 
+## Phase 5 — build it and make it run (functional client)
+
+1. One build entry point over the cleaned tree (`.sln`/`.vcproj` per original project + a script
+   wrapper calling the pinned toolchains), producing `Roblox.exe` from source only: no donor
+   objects, no extracted original bytes, no stub shells.
+2. Track what is still not source: per-section list of functions/data still supplied by
+   donor/replay/stub objects; it must reach zero.
+3. Runtime gates beyond P5/P6: launch, open/save a place, physics steps, render a frame, run Lua,
+   join a local server (rbxgs/RCC era), IDE/MFC windows, crash-free soak. Compare behaviour with the
+   original exe on the same inputs (log/trace diffs).
+
+## Phase 6 — byte-exact executable (SHA-256 of the rebuilt Roblox.exe == original)
+
+Matching functions is necessary, not sufficient. Everything the linker writes must match too.
+Each item gets its own proof report; no post-link patching (owner rule: never patch target bytes).
+
+| Area | What must match | How |
+|---|---|---|
+| Code layout | every function at its exact address, CC/NOP padding between them | object order on the link line + COMDAT order; reconstruct from address order (per-TU groups from PDB line info); `/ORDER` only if evidence shows it was used |
+| ICF / OPT:REF | which symbol survives each fold, which unreferenced COMDATs are dropped | same `/OPT:REF,ICF` settings, same object set; check folded addresses |
+| .rdata | strings (`/GF` pooling order), floats, vtables, RTTI (`??_R0..R4`), switch tables, EH tables (FuncInfo, unwind/try maps), `__real@`/`__xmm@` constants | data comes from source, not blobs; verify per-symbol placement + bytes |
+| .data / .bss | initial values, order, alignment, virtual size | globals defined in the right TU with exact initializers |
+| Imports | DLL order, function order, hint/name table, bound/unbound IAT, delay imports | same import libs (VC9 RTM SDK libs), same link order |
+| Exports / TLS / load config | `/SAFESEH` handler table, security cookie, TLS callbacks | same CRT + linker version |
+| .reloc | base relocation blocks | follows from identical layout |
+| .rsrc | dialogs, menus, accelerators, string tables, icons, bitmaps, version info, manifest, resource directory timestamps | recover `.rc` + assets from the original resources (authored source, compiled with the original `rc.exe`) |
+| PE header | linker version, subsystem/OS versions, stack/heap reserve, section alignment, DllCharacteristics, checksum | same linker + flags (`/STACK`, `/HEAP`, `/RELEASE`) |
+| Rich header | `@comp.id` + count for every object/lib (compiler build per TU: VS2008 RTM, VS2005 50727 for the zlib copy, MASM, CVTRES, linker) | exact toolchain per TU and exact object/lib set; it is a hash-sensitive census of the build |
+| Debug directory | CodeView RSDS: PDB path, GUID, age; timestamps | build at the original path (`subst` a drive to match); GUID/timestamps come from build time: reproduce with a clock shim at link time, never by patching |
+| Timestamps | COFF header, debug dir, resource dir, export dir | same clock shim |
+| Signature | Authenticode certificate table (if the original is signed) | cannot be reproduced; compare the hash with the certificate table excluded and document it |
+
+Tooling for Phase 6: `exe_diff.py` (section-by-section, symbol-aware first-difference report,
+Rich header decode, import table diff, resource tree diff) and a CI job that rebuilds and reports
+the distance to the original hash.
+
+Not done yet (as of 2026-11-16), roughly in order of size: remaining unnamed / inferred functions
+and their source; data recovery (globals, .rdata objects, EH tables as source-side products);
+link-order reconstruction; resources (.rc); Rich-header-exact toolchain mix; import order; build
+path / timestamp reproduction; rgmain.dll (Ogre 1.4.5 DLL) and the other shipped DLLs if the goal
+is the whole client package.
+
 ## More ideas worth doing
 
 - **PDB line info → exact TU membership** also gives link order per object; use it to split
