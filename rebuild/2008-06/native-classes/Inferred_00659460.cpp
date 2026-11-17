@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers}/../../../tools/rbxgs/Client/App/include
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include
 // INFERRED: sub_00659460 (placeholder name for 00659460 from the identity tier; body byte-proved by the placeholder lane, includes as the lane resolved them)
 #include "util/Vector3int32.h"
 #include "v8world/SpatialHash2008.h"

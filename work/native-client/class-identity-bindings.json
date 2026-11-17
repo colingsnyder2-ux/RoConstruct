@@ -852,6 +852,84 @@
    "address": "004aa0d0",
    "identity_evidence": "INFERRED:vtable 00832db8 slot 1 of EnumDesc<PartInstance::FormFactor> points here (shared with CameraType/BinType)",
    "votes": 1
+  },
+  {
+   "symbol": "?transition@HumanoidState@HUMAN@RBX@@SAXAAV?$auto_ptr@VHumanoidState@HUMAN@RBX@@@std@@M@Z",
+   "address": "006453a0",
+   "identity_evidence": "INFERRED:analog name; byte-identical by native-asm --obj diff (HumanoidStateStep.cpp); called from stepState 00645450",
+   "votes": 1
+  },
+  {
+   "symbol": "?stepState@HumanoidState@HUMAN@RBX@@SAXAAV?$auto_ptr@VHumanoidState@HUMAN@RBX@@@std@@MPAVController@3@@Z",
+   "address": "00645450",
+   "identity_evidence": "INFERRED:header-declared stepState (called by Humanoid::onEvent 005dc740); byte-identical by native-asm --obj diff",
+   "votes": 1
+  },
+  {
+   "symbol": "?reconcile@TreeStage@RBX@@QAEXPAVPrimitive@2@0HHAAPAVJoint@2@AAH@Z",
+   "address": "00669090",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): reconcile (ascend-both-sides tree walk)",
+   "votes": 1
+  },
+  {
+   "symbol": "?dirtyAssemblyAndRemove@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
+   "address": "006691e0",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): assembly insert into +0x38 set after AssemblyStage::onAssemblyRemoving",
+   "votes": 1
+  },
+  {
+   "symbol": "?eraseDirtyAssembly@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
+   "address": "00669290",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): erase from +0x38 set + removeFromPipeline",
+   "votes": 1
+  },
+  {
+   "symbol": "?eraseDirtyAssemblyAndDelete@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
+   "address": "006692e0",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): eraseDirtyAssembly then scalar delete",
+   "votes": 1
+  },
+  {
+   "symbol": "?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z",
+   "address": "00668f20",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): header-gap cleanAssembly; registry signature",
+   "votes": 1
+  },
+  {
+   "symbol": "?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z",
+   "address": "00668fa0",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): header-gap cleanEdge; registry signature",
+   "votes": 1
+  },
+  {
+   "symbol": "?collectTopJoints@TreeStage@RBX@@QAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z",
+   "address": "00669150",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): recursive joint walk into a pointer set; identical except the self-recursive call relocation",
+   "votes": 1
+  },
+  {
+   "symbol": "??0TreeStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+   "address": "00669870",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): ctor; RTTI TreeStage 0084cf94",
+   "votes": 1
+  },
+  {
+   "symbol": "?addPendingEdge@TreeStage@RBX@@QAEXPAVEdge@2@@Z",
+   "address": "00669340",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): edge insert into +0x58 set / cleanEdge fallback",
+   "votes": 1
+  },
+  {
+   "symbol": "?onEdgeAdded@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
+   "address": "00669c00",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): vtable 0084cf94 slot 4",
+   "votes": 1
+  },
+  {
+   "symbol": "?walkEdges@TreeStage@RBX@@QAEXPAVEdge@2@PAVPrimitive@2@H@Z",
+   "address": "006697a0",
+   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): identical except the self-recursive call relocation",
+   "votes": 1
   }
  ]
 }

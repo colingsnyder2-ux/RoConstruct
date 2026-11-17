@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers}/../../../tools/rbxgs/Client/App/include
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include
 // INFERRED: sub_005e7490 (placeholder name for 005e7490 from the identity tier; body byte-proved by the placeholder lane, includes as the lane resolved them)
 #include "util/Name.h"
 #include "v8world/Contact2008.h"
