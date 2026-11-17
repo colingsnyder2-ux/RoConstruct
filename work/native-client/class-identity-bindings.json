@@ -1104,6 +1104,54 @@
       "address": "0060d2d0",
       "identity_evidence": "INFERRED:ContactManager unit 0060cae0..0060dd5f, called by getHit 0060d6e0 (ContactManager2008.h); byte-exact native body (donor rbxgs getFastHit analog)",
       "votes": 1
+    },
+    {
+      "symbol": "?equalValues@?$TypedPropertyDescriptor@N@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "address": "00563ff0",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?writeValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+      "address": "0056e720",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?readValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+      "address": "0056e760",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getVariant@?$TypedPropertyDescriptor@VContentId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+      "address": "00586330",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setVariant@?$TypedPropertyDescriptor@VContentId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z",
+      "address": "005864d0",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+      "address": "00597c90",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?readValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+      "address": "0059acb0",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setStringValue@?$TypedPropertyDescriptor@VCoordinateFrame@G3D@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "address": "005eedf0",
+      "identity_evidence": "INFERRED:TypedPropertyDescriptor registry/identity name (inferred tier); byte-exact native body, native-classes/TPD_*.cpp",
+      "votes": 1
     }
   ]
 }
