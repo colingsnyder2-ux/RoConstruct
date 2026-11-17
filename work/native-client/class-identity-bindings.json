@@ -1098,6 +1098,12 @@
       "address": "004582f0",
       "identity_evidence": "INFERRED:CRobloxReportView vtable 0081888c MarshaledListener<Instance,ChildAdded> thunk; byte-exact native body with record layout (CRuntimeClass/RTTI 00818a74)",
       "votes": 1
+    },
+    {
+      "symbol": "?getFastHit@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@AA_N4@Z",
+      "address": "0060d2d0",
+      "identity_evidence": "INFERRED:ContactManager unit 0060cae0..0060dd5f, called by getHit 0060d6e0 (ContactManager2008.h); byte-exact native body (donor rbxgs getFastHit analog)",
+      "votes": 1
     }
   ]
 }
