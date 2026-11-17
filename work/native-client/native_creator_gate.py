@@ -101,10 +101,14 @@ def discover_symbol(work, headers, code, addr, needle, include_first=(), raw_inc
         shutil.rmtree(bulk, ignore_errors=True)
     found = [s['symbol'] for fam in manifest['families'] for s in fam['symbols'] if needle in s.get('symbol', '')
              and not s['symbol'].startswith(('__', '$'))]
+    emitted = {s.get('symbol') for fam in manifest['families'] for s in fam['symbols']}
+    if EXPECT.get(addr) in emitted:            # named target: its exact decorated symbol was emitted (the needle
+        return EXPECT[addr]                    # search fails on operators and on names several symbols contain)
     return found[0] if len(found) == 1 else None
 
 
 LAST_ERROR = {}
+EXPECT = {}          # addr -> expected decorated symbol (set by the named lane)
 LAST_ERRORS = {}
 
 

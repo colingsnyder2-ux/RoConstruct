@@ -485,6 +485,18 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
         data["sources"][addr] = link
     follow_wrappers(root, {a: s for a, s in data["sources"].items() if "url" not in s},
                     {a: v[0] for a, v in data["names"].items()})
+    # Authentic: integrated or inactive-exact bodies whose source is published at its original path on
+    # the layout branch with an identical object. A subset of those two groups; the site draws it first.
+    shown = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/authentic.json"],
+                           cwd=root, capture_output=True, text=True, encoding="utf-8")
+    layout = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
+    exact_inactive = {a for a, v in data["inactive"].items() if v[1]}
+    authentic = sorted(a for a in layout if a in functions and (a in native or a in exact_inactive))
+    data["authentic"] = {a: layout[a] for a in authentic}
+    data.setdefault("native_code", {})["authentic"] = {
+        "functions": len(authentic), "bytes": sum(functions[a]["size"] for a in authentic),
+        "integrated_bytes": sum(functions[a]["size"] for a in authentic if a in native),
+        "inactive_bytes": sum(functions[a]["size"] for a in authentic if a not in native)}
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site

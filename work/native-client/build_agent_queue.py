@@ -12,7 +12,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 ap = argparse.ArgumentParser()
-ap.add_argument('--min', type=int, default=3, help='least remaining functions for a class to get an agent')
+ap.add_argument('--min', type=int, default=2, help='least remaining functions for a class to get an agent')
 ap.add_argument('--max', type=int, default=40, help='queue length')
 args = ap.parse_args()
 sys.argv = sys.argv[:1]
@@ -79,6 +79,37 @@ for q in queue:
     if h:
         by_header[h] = q
 queue = merged
+# Address-range tasks for functions without an owner class: neighbours in the image usually come from one original
+# source file, so runs of nearby owner-less functions go to one session together with the names of the known
+# functions around them (their likely class / file).  Initializer thunks (0x7e0000..) and vendor code are left out.
+claimed = {a for q in queue for a in q['addresses']}
+loose = sorted(a for a, v in remaining.items() if a not in claimed and v.get('bucket') != 'vendor-library'
+               and not 0x7e0000 <= int(a, 16) < 0x800000 and 24 <= v['size'] <= 4096 and not owner(a))
+named = sorted((int(a, 16), (r or {}).get('signature') or '') for a, r in reg.items()
+               if (r or {}).get('signature') and '::' in (r or {}).get('signature', ''))
+import bisect
+keys = [n[0] for n in named]
+run_ = []
+
+
+def flush_run():
+    if not run_:
+        return
+    name = 'range %s-%s' % (run_[0], run_[-1])
+    if name not in done:
+        lo, hi = int(run_[0], 16), int(run_[-1], 16)
+        i, j = bisect.bisect_left(keys, lo), bisect.bisect_right(keys, hi)
+        near = [named[k][1].split('(')[0].split(' ')[-1] for k in list(range(max(0, i - 3), i)) + list(range(j, min(len(named), j + 3)))]
+        queue.append({'class': name, 'addresses': list(run_), 'bytes': sum(remaining[a]['size'] for a in run_), 'header': None,
+                      'neighbours': near})
+    run_.clear()
+
+
+for a in loose:
+    if run_ and (int(a, 16) - int(run_[-1], 16) > 0x600 or len(run_) >= 8):
+        flush_run()
+    run_.append(a)
+flush_run()
 (HERE / 'agent-class-queue.json').write_text(json.dumps(queue, indent=1))
 print('queued %d classes (%d functions); top: %s' % (len(queue), sum(len(q['addresses']) for q in queue),
                                                      ', '.join('%s(%d)' % (q['class'], len(q['addresses'])) for q in queue[:10])))

@@ -21,9 +21,9 @@ IDENTITY = 'symbol identity not established by current reference evidence'
 out, stat = [], {}
 # Lane files on disk (not ledger state): a binding is kept for as long as its file exists.
 LIVE = {re.search(r'_([0-9a-f]{8})\.cpp$', p.name).group(1)
-        for p in (ROOT / 'rebuild/2008-06/native-classes').glob('*_*.cpp') if re.match(r'(?:TmplInst|Inferred)_[0-9a-f]{8}\.cpp$', p.name)}
+        for p in (ROOT / 'rebuild/2008-06/native-classes').glob('*_*.cpp') if re.match(r'(?:TmplInst|Inferred|DonorCtx|CloneProp)_[0-9a-f]{8}\.cpp$', p.name)}
 for key, entry in ledger.items():
-    hit = re.search(r'native-classes/(?:TmplInst|Inferred)_([0-9a-f]{8})\.cpp$', key)
+    hit = re.search(r'native-classes/(?:TmplInst|Inferred|DonorCtx|CloneProp)_([0-9a-f]{8})\.cpp$', key)
     if not hit or hit.group(1) not in LIVE:
         continue
     addr = hit.group(1)

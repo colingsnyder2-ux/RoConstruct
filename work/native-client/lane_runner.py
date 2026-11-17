@@ -20,13 +20,17 @@ import sys
 import time
 from pathlib import Path
 
+sys.stdout.reconfigure(errors='backslashreplace')
+
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix', 'donorunits', 'donorctx'])
 ap.add_argument('--jobs', type=int, default=8)
-ap.add_argument('--model', default='sonnet', help='agents lane: sonnet or haiku')
+ap.add_argument('--model', default='codex', help='agents lane: codex (default, owner 2026-11-17: Codex agents only), sonnet, haiku or fable')
+ap.add_argument('--codex', type=int, default=int(os.environ.get('ROC_AGENT_CODEX') or 6),
+                help='agents lane: additional Codex CLI sessions run in parallel with the Claude ones')
 args = ap.parse_args()
 
 
@@ -127,7 +131,16 @@ if args.lane == 'failures':
                                                                      and r[a]['status'] == 'inactive_exact')), flush=True)
 
 elif args.lane == 'regate':
-    run([PY, 'native_placeholder_llm.py', '--regate', '--jobs', args.jobs], cwd=HERE)
+    # Re-judging ~1,800 saved answers takes over an hour: only worth it when a native header changed since the last run.
+    stamp = HERE / 'placeholder-lane/regate.stamp'
+    last = stamp.stat().st_mtime if stamp.is_file() else 0
+    changed = [p for p in (ROOT / 'rebuild/2008-06/native-headers').rglob('*.h') if p.stat().st_mtime > last]
+    if last and not changed:
+        print('regate skipped: no native header changed since the last regate', flush=True)
+    else:
+        print('regate: %d native headers changed since the last run' % len(changed), flush=True)
+        stamp.write_text(time.strftime('%Y-%m-%d %H:%M:%S'))
+        run([PY, 'native_placeholder_llm.py', '--regate', '--jobs', args.jobs], cwd=HERE)
 
 elif args.lane == 'vendor':
     run([PY, 'vendor_i.py'], cwd=HERE)
@@ -175,9 +188,37 @@ elif args.lane == 'census':
         sys.exit('a census is already running')
     # Register what the lanes and subagents produced: evidence files and new native sources.
     run([PY, 'lane_identity.py'], cwd=HERE)            # identity rows for lane-proven files (before the lock)
-    run([PY, 'ehbind.py', 'OgreNativeFull', 'eh-identity-bindings.json'], cwd=HERE)   # __ehhandler$ from prologue push
-    run([PY, 'ref_alias.py'], cwd=HERE)                # census rejections' original reference addresses
-    run([PY, 'unique_identity.py'], cwd=HERE)          # INFERRED tier: symmetric unique byte-equal bodies (>=24 B)
+    run([PY, 'donor_identity.py'], cwd=HERE)           # donor-unit wrappers -> the addresses they were mined for
+    # These binders derive rows from the CURRENT census state.  A function they bind becomes exact, leaves the remaining
+    # set, and the next run would no longer emit its row - the function then loses its identity again (2026-11-17:
+    # elimination 48 -> 9, unique -> 0, vtable-slot 5 -> 1, census -468).  So their rows accumulate: an earlier row is
+    # kept unless the new run binds the same address (or the same real symbol) differently.
+    def binder(script_args, out_name):
+        path = HERE / out_name
+        try:
+            old = json.loads(path.read_text()).get('identity_bindings') or []
+        except (OSError, ValueError):
+            old = []
+        run([PY, *script_args], cwd=HERE)
+        try:
+            doc = json.loads(path.read_text())
+        except (OSError, ValueError):
+            return
+        new = doc.get('identity_bindings') or []
+        addrs = {r.get('address') for r in new}
+        syms = {r.get('symbol') for r in new if not str(r.get('symbol')).startswith('$')}
+        kept = [r for r in old if r.get('address') not in addrs and r.get('symbol') not in syms]
+        if kept:
+            doc['identity_bindings'] = new + kept
+            path.write_text(json.dumps(doc, indent=1))
+        print('  %s: %d new + %d kept from earlier runs' % (out_name, len(new), len(kept)), flush=True)
+
+    binder(['ehbind.py', 'OgreNativeFull', 'eh-identity-bindings.json'], 'eh-identity-bindings.json')   # __ehhandler$ from prologue push
+    binder(['ref_alias.py'], 'ref-alias-bindings.json')                    # census rejections' original reference addresses
+    binder(['ref_consistent_identity.py'], 'ref-consistent-bindings.json') # identity from callee consistency (real evidence)
+    binder(['vtable_slot_identity.py'], 'vtable-slot-bindings.json')       # identity from vftable slot position
+    binder(['unique_identity.py'], 'unique-identity-bindings.json')        # INFERRED tier: symmetric unique byte-equal bodies (>=24 B)
+    binder(['elimination_identity.py'], 'elimination-identity-bindings.json')   # INFERRED tier: sole uncredited byte-equal pair
     inv_path = HERE / 'ogre-native-full-inventory-all.json'
     inv = json.loads(inv_path.read_text())
     fam = inv['families'][0]
@@ -187,13 +228,16 @@ elif args.lane == 'census':
                'creator-identity-bindings.json', 'vtable-identity-bindings.json', 'lane-identity-bindings.json', 'order-identity-bindings.json',
                'eh-identity-bindings.json', 'unique-identity-bindings.json',
                'ref-alias-bindings.json', 'template-identity-bindings-round4.json',
-               'clone-identity-bindings.json']:
+               'clone-identity-bindings.json', 'elimination-identity-bindings.json',
+               'ref-consistent-bindings.json', 'vtable-slot-bindings.json', 'donor-identity-bindings.json']:
         rel = 'work/native-client/' + ev
         if (HERE / ev).is_file() and rel not in fam['evidence']:
             fam['evidence'].append(rel)
     new_src = HERE / 'class-lane-new-sources.json'
     extra = json.loads(new_src.read_text()) if new_src.is_file() else []
     extra += json.loads((HERE / 'creator-partition/vendor-i-wrappers.json').read_text()).get('written', [])         if (HERE / 'creator-partition/vendor-i-wrappers.json').is_file() else []
+    donor = HERE / 'creator-partition/donor-i-wrappers.json'
+    extra += json.loads(donor.read_text()).get('written', []) if donor.is_file() else []
     for src in extra:
         if (ROOT / src).is_file() and src not in fam['sources']:
             fam['sources'].append(src)
@@ -242,7 +286,32 @@ elif args.lane == 'agents':
     queue = json.loads((HERE / 'agent-class-queue.json').read_text())
     done_path = HERE / 'agent-class-done.json'
     done = json.loads(done_path.read_text()) if done_path.is_file() else []
-    batch = queue[:max(1, args.jobs)]
+    codex = shutil.which('codex')
+    if args.model == 'codex':                 # Codex only: --jobs is the number of Codex sessions
+        if not codex:
+            sys.exit('codex CLI not found')
+        # Preflight (a few tokens): a spent Codex quota must not consume the queue (tasks are marked done at launch).
+        ping = subprocess.run([codex, 'exec', '--json', '--skip-git-repo-check', '--ephemeral', '-'], input='Reply with exactly: ok',
+                              text=True, encoding='utf-8', errors='replace', capture_output=True, timeout=180, cwd=os.environ.get('TEMP') or None)
+        limit = re.search(r'usage limit[^"]*', ping.stdout or '')
+        if limit or ping.returncode:
+            sys.exit('RESULT agents: Codex unavailable (%s); nothing started' % (limit.group(0)[:160] if limit else 'exit %s' % ping.returncode))
+        batch = queue[:max(1, args.jobs)]
+        for task in batch:
+            task['engine'] = 'codex'
+        n_claude = 0
+    else:
+        n_codex = args.codex if codex else 0
+        n_claude = max(1, args.jobs)
+        batch = queue[:n_claude + n_codex]
+        for task in batch[n_claude:]:
+            task['engine'] = 'codex'
+    # Owner 2026-11-17: half the Claude sessions run Fable at low effort ("Fable light") on the harder tasks
+    # (largest remaining code first), the other half Sonnet.  ROC_FABLE_SHARE=0 turns it off, 1 = all Fable light.
+    claude_tasks = sorted(batch[:n_claude], key=lambda t: -t.get('bytes', 0))
+    share = float(os.environ.get('ROC_FABLE_SHARE') or 0.5) if args.model == 'sonnet' else 0
+    for task in claude_tasks[:int(round(len(claude_tasks) * share))]:
+        task['engine'] = 'fable-light'
     done += [t['class'] for t in batch]
     done_path.write_text(json.dumps(done, indent=1))
     rules = (HERE / 'agent-brief.md').read_text()
@@ -308,6 +377,14 @@ elif args.lane == 'agents':
                     parts.append('--- Ghidra-observed layout of %s (offsets seen in decompiled methods; verify) ---\n%s' % (cls, lh))
         except Exception:                     # noqa: BLE001 - a hint only
             pass
+        drift_path = HERE / 'layout-drift.json'
+        if drift_path.is_file():              # drafts identical except member displacements: the header layout is off
+            drift = json.loads(drift_path.read_text())
+            rows = ['%s: target `%s` but the current header compiles `%s`' % (a, p['target'], p['ours'])
+                    for a in task['addresses'] if a in drift for p in drift[a]['pairs'][:4]]
+            if rows:
+                parts.append('--- layout drift (a saved answer is byte-identical except these member offsets: fix the '
+                             'header layout or pick the member at the target offset) ---\n' + '\n'.join(rows))
         gaps_path = HERE / 'header-gaps.json'
         if gaps_path.is_file():               # members the model lane found missing for this class (header_gaps.py)
             leaf = task['class'].split(' + ')[0].split('::')[-1]
@@ -331,10 +408,42 @@ elif args.lane == 'agents':
                  'Evidence already loaded below - do not re-read these files:\n%s\n'
                  % (rules, task['class'], ' '.join(task['addresses']), task.get('header') or 'none found',
                     asm_for(task['addresses']), evidence(task)))
-        log = HERE / 'agent-logs' / ('%s-%s.log' % (args.model, re.sub(r'\W+', '_', task['class'])))
+        if task.get('neighbours'):
+            brief += ('\nNo owner class is known for these functions. The named functions around them in the image (likely '
+                      'the same class or source file) are: %s. Work out the class from the assembly and that context '
+                      'first; functions with no class stay free functions named sub_<addr>.\n'
+                      % ', '.join(n for n in task['neighbours'] if n))
+        engine = task.get('engine') or args.model
+        log = HERE / 'agent-logs' / ('%s-%s.log' % (engine, re.sub(r'\W+', '_', task['class'])[:80]))
         log.parent.mkdir(exist_ok=True)
-        cmd = [claude, '-p', '--model', args.model, '--effort', 'medium',
-               '--max-budget-usd', '3' if args.model == 'haiku' else '6',
+        if engine == 'codex':
+            # Codex CLI, sandboxed: writes only inside the repo, network on (lease server), medium effort.  Its sandbox
+            # keeps .git read-only, so Codex sessions do not commit (the brief says so; files are committed later).
+            last = log.with_suffix('.last.txt')
+            codex_brief = brief + ('\n\nCODEX SESSION NOTE: `git add`/`git commit` are blocked by your sandbox - do not '
+                                   'try; leave your files uncommitted and list them in the final report.\n'
+                                   'PROOF COMMANDS: this is a one-shot non-interactive session. Do NOT use the wake-run '
+                                   'watcher or any background/deferred job (AGENTS.md "Long native gates" does not apply '
+                                   'here: the sandbox blocks ~/.codex/wake-runs and the session ends before a watcher '
+                                   'reports). Run every compile/prove/gate command directly in the foreground and wait '
+                                   'for its output; single-source proofs take under 3 minutes. A function counts only '
+                                   'when you saw the proof output say inactive_exact in this session.\n')
+            started = time.time()
+            try:
+                done_proc = subprocess.run([codex, 'exec', '-s', 'workspace-write', '-c', 'sandbox_workspace_write.network_access=true',
+                                            '-c', 'model_reasoning_effort="medium"', '-C', str(ROOT), '-o', str(last), '-'],
+                                           input=codex_brief, text=True, encoding='utf-8', errors='replace', cwd=ROOT,
+                                           capture_output=True, timeout=90 * 60)
+                used = re.findall(r'tokens used\s*\n?\s*([\d,]+)', done_proc.stdout or '')
+                note = 'codex exit %s, %d min, tokens %s' % (done_proc.returncode, (time.time() - started) / 60, used[-1] if used else '?')
+            except subprocess.TimeoutExpired:
+                note = 'codex stopped after 90 min'
+            text = last.read_text(encoding='utf-8', errors='replace') if last.is_file() else ''
+            log.write_text('%s\n[agents lane] %s\n' % (text, note), encoding='utf-8')
+            return task['class'], log.read_text(encoding='utf-8', errors='replace')[-600:]
+        model = 'claude-fable-5-2' if engine in ('fable', 'fable-light') else engine
+        cmd = [claude, '-p', '--model', model, '--effort', 'low' if engine == 'fable-light' else 'medium',
+               '--max-budget-usd', {'haiku': '3', 'sonnet': '6'}.get(engine, '10'),
                '--permission-mode', 'bypassPermissions',
                # lean context: no MCP tools, no skills list, no user-level plugins/hooks (~80% cheaper start)
                '--strict-mcp-config', '--mcp-config', str(EMPTY_MCP), '--disable-slash-commands',
@@ -366,7 +475,7 @@ elif args.lane == 'agents':
         proc.wait()
         log.write_text('%s\n[agents lane] %d tool calls, %d writes; %s\n' % (result, tools, writes, note), encoding='utf-8')
         return task['class'], log.read_text(encoding='utf-8', errors='replace')[-600:]
-    print('agents: %s' % ', '.join(t['class'] for t in batch), flush=True)
+    print('agents: %s' % ', '.join('%s%s' % (t['class'], ' [%s]' % t['engine'] if t.get('engine') else '') for t in batch), flush=True)
     with concurrent.futures.ThreadPoolExecutor(len(batch)) as pool:
         for cls, tail in pool.map(one, batch):
             print('=== %s ===\n%s' % (cls, tail), flush=True)
@@ -396,12 +505,22 @@ elif args.lane == 'templates':
     run([PY, 'template_instances.py', '--creators', '--jobs', args.jobs], cwd=HERE)
     run([PY, 'create_classes.py'], cwd=HERE)
     run([PY, 'template_instances.py', '--create', '--jobs', args.jobs], cwd=HERE)
+    run([PY, 'generic_templates.py', '--jobs', args.jobs], cwd=HERE)   # any class-template member: template class X<args>;
     run([PY, 'vtable_disambiguate.py'], cwd=HERE)
     run([PY, 'order_identity.py'], cwd=HERE)              # identical-body runs bound by registry name + address order        # byte-equal ledger candidates picked by vtable/caller class
 
 elif args.lane == 'compilefix':
     # compile -> errors + where each name is declared -> minimal fix, up to 4 rounds (Haiku, then Sonnet)
     run([PY, 'compile_fix_lane.py', '--jobs', args.jobs], cwd=HERE)
+
+elif args.lane == 'donorunits':
+    # donor-unit wrappers: the exact rbxgs/OpenRBX-context unit the server mined, compiled as a native file (no model)
+    run([PY, 'donor_i.py'], cwd=HERE)
+
+elif args.lane == 'donorctx':
+    # translate the byte-exact mined analog against the 2007 donor headers (11% exact vs 0% native-context on hard cases)
+    # owner 2026-11-17: Codex only for model work
+    run([PY, 'donor_translate.py', '--jobs', args.jobs, '--model', os.environ.get('ROC_DONORCTX_MODEL') or 'codex:gpt-6.1-terra'], cwd=HERE)
 
 elif args.lane == 'clones':
     run([PY, 'clone_propagate.py', '--jobs', args.jobs], cwd=HERE)   # masked-asm twins of exact functions
@@ -431,11 +550,11 @@ elif args.lane == 'auto':
     # repeated; each cycle counts its gains on the site (census takes minutes since the parallel/per-file cache work).
     for cycle in range(1, 100):
         print('=== auto cycle %d ===' % cycle, flush=True)
-        for lane in ('regate', 'names', 'templates', 'clones', 'donor', 'inferred', 'untried', 'agents', 'compilefix', 'polish', 'layout', 'promote', 'census'):   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
+        for lane in ('regate', 'names', 'templates', 'clones', 'donor', 'inferred', 'untried', 'agents', 'donorctx', 'layout', 'promote'):   # census: manual only (owner 2026-11-17: too slow, stop running it so much)   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
             if lane == 'census' and not inputs_changed():
                 print('census skipped: no native source or evidence changed since the last census', flush=True)
                 continue
-            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', int(os.environ.get('ROC_AUTO_AGENTS') or 8) if lane == 'agents' else args.jobs])
+            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', int(os.environ.get('ROC_AUTO_AGENTS') or 12) if lane == 'agents' else args.jobs])
         if (HERE / 'native-llm' / 'STOP').is_file():
             print('STOP file present: ending auto cycles', flush=True)
             break

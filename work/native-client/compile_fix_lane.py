@@ -19,8 +19,7 @@ ap.add_argument('--limit', type=int, default=0)
 ap.add_argument('--rounds', type=int, default=4)
 ap.add_argument('--only', default='', help='JSON list of addresses')
 args, _ = ap.parse_known_args()
-if (HERE / 'prove-out/CENSUS.lock').is_file():
-    sys.exit('a census is running: try again when it finishes')
+# Safe during a census: this lane writes only lane scratch and results.json, never census inputs.
 sys.argv = [sys.argv[0], '--limit', '0']
 sys.path.insert(0, str(HERE))
 src = (HERE / 'native_placeholder_llm.py').read_text(encoding='utf-8')

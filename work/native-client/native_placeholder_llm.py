@@ -341,6 +341,8 @@ def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=N
         if addr in NAMED:       # leaf of the signature (`...Desc<...>::call<int>(...)` -> call; ctors -> class name)
             qual = re.sub(r'<[^<>]*>', '', re.sub(r'<[^<>]*>', '', re.sub(r'<[^<>]*>', '', NAMED[addr][1].split('(')[0])))
             needle = re.sub(r'\W', '', qual.split()[-1].rsplit('::', 1)[-1]) or needle
+        if addr in NAMED:
+            cg.EXPECT[addr] = NAMED[addr][0]
         sym = cg.discover_symbol(work, headers, body, addr, needle, include_first=include_first,
                                  raw_includes=raw, defines=defines)
         if sym and addr in NAMED and sym != NAMED[addr][0]:

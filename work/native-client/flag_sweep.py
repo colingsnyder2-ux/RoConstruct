@@ -17,6 +17,9 @@ BASE = '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL'
 VARIANTS = [BASE.replace('/Ob2', '/Ob1'), BASE + ' /Oy-', BASE + ' /fp:fast', BASE.replace('/O2', '/O1'),
             BASE.replace('/GS-', '/GS'), BASE.replace('/Ob2', '/Ob1') + ' /Oy-', BASE + ' /Os', BASE.replace('/Ob2', '/Ob0')]
 
+if os.environ.get('ROC_SWEEP_VARIANTS'):      # ';'-separated suffixes appended to BASE (targeted sweep)
+    VARIANTS = [BASE + ' ' + v.strip() for v in os.environ['ROC_SWEEP_VARIANTS'].split(';') if v.strip()]
+
 WORKER = r'''
 import json, os, re, sys
 from pathlib import Path
