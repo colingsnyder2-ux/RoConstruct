@@ -56,6 +56,10 @@ public:
 	public:
 		void sub_00562530(const ContentId& id, boost::function<void(RequestResult, std::istream&)> callback);   // INFERRED: 00562530, placeholder name (identity tier), body byte-proved (Inferred_00562530.cpp)
 public:
+	void sub_00562670(const ContentId& id, RequestResult& result, std::string& filename);   // INFERRED: 00562670, placeholder name, body from assembly
+public:
+	boost::shared_ptr<const std::string> sub_00562730(const ContentId& id);   // INFERRED: 00562730, placeholder name, body from assembly
+public:
 	bool hasContent(ContentId id);   // INFERRED (header-add): evidence: ?hasContent@ContentProvider@RBX@@QAE_NVContentId@2@@Z - byte-proved by 005624b0
 };
 typedef char ProviderSize[sizeof(ContentProvider) == 0x19c ? 1 : -1];
