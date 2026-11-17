@@ -23,5 +23,7 @@ namespace RBX
 		const Reflection::PropertyDescriptor& getParamB(NormalId) const;
 		const bool isStandardPart() const;
 		static bool isSurfaceDescriptor(const Reflection::PropertyDescriptor&);
+	public:
+		void readProperties(const XmlElement* element, IReferenceBinder& binder);   // INFERRED (header-add): evidence: 005eece0 call 0x5f17a0 with ecx = result of PartInstance::getSurfaces (Surfaces&), args (const XmlElement*, IReferenceBinder&) - byte-proved by 005eecc0
 	};
 }

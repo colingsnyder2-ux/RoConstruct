@@ -29,6 +29,7 @@ ap.add_argument('--jobs', type=int, default=8)
 ap.add_argument('--max-size', type=int, default=8192, help='largest target in bytes (was a fixed 2048)')
 ap.add_argument('--named', default='', help='JSON list of addresses with real registry names (free functions): '
                 'the model writes that exact function; the gate requires its decorated symbol')
+ap.add_argument('--polish', action='store_true', help='one diff-guided Sonnet try on each saved draft (bytes near-miss)')
 ap.add_argument('--regate', action='store_true', help='replay saved compile_failed answers through the gate (no model calls)')
 args = ap.parse_args(ARGS)
 ROOT = m.ROOT
@@ -38,7 +39,12 @@ OUT.mkdir(parents=True, exist_ok=True)
 RESULTS = OUT / 'results.json'
 HERE_PH = ROOT / 'work/native-client'
 NAMED = {}                         # addr -> (decorated name, signature) in --named mode
-results = json.loads(RESULTS.read_text()) if RESULTS.is_file() else {}
+import results_store  # noqa: E402 - row-level locked writes (lanes run concurrently)
+results = results_store.load() if RESULTS.is_file() else {}
+
+
+def pending(addr):
+    return results.get(addr, {}).get('status') in (None, 'requeue')
 LADDER = ['claude:sonnet', 'claude:opus']
 
 OFFSET_HACK = m.OFFSET_HACK
@@ -98,7 +104,7 @@ def placeholder_targets():
     for addr in (json.loads(extra.read_text()) if extra.is_file() else []):
         rows.setdefault(addr, {'confidence': 'placeholder', 'evidence': []})
     for addr, row in rows.items():
-        if row.get('confidence') != 'placeholder' or addr in done or addr in results:
+        if row.get('confidence') != 'placeholder' or addr in done or not pending(addr):
             continue
         if not (ROOT / 'src/2008-06' / (addr + '.cpp')).is_file():
             continue
@@ -199,6 +205,38 @@ def shadow(work, header, cls, decl, addr):
     return root, header.relative_to(HEADERS).as_posix()
 
 
+IOS_DIR = ROOT / 'local/references/ios-2013-12_2.132.41333'
+_IOS = None
+
+
+def ios_hint(addr):
+    """iOS 2013 symbolized pseudo-C for a NAMED target (docs/GHIDRA_REFERENCE.md): behaviour hint only, never proof."""
+    global _IOS
+    if addr not in NAMED or not (IOS_DIR / 'functions.csv').is_file():
+        return ''
+    if _IOS is None:
+        import csv
+        _IOS = {}
+        with (IOS_DIR / 'functions.csv').open(encoding='utf-8-sig') as f:
+            for r in csv.DictReader(f):
+                ns = re.sub(r'<.*', '', r['namespace']).replace('/', '::')
+                _IOS.setdefault((ns.rsplit('::', 1)[-1], r['name']), []).append(r['file'])
+    qual = re.sub(r'<[^<>]*>', '', NAMED[addr][1].split('(')[0]).split()[-1].split('::')
+    if len(qual) < 2:
+        return ''
+    files = _IOS.get((qual[-2], qual[-1])) or []
+    for f in files[:1]:
+        member = f.split('/ios-2013-12_2.132.41333/', 1)[-1]
+        if '..' in member or ':' in member:
+            continue
+        path = IOS_DIR / member
+        if path.is_file():
+            text = path.read_text(errors='replace')
+            return ('\n--- iOS 2013 PSEUDO-C OF THE SAME METHOD (later version, ARM; behaviour hint only, 2008 may differ) ---\n'
+                    + text[:2500])
+    return ''
+
+
 def neighbour_source(row, limit=2500):
     """Native source of the link-order neighbours (usually the same original .cpp): its includes, helpers, real member
     names and style are the best context for an unnamed function between them."""
@@ -262,6 +300,19 @@ def vendor_header(name):
     return VENDOR_INDEX.get(name)
 
 
+STD_PRELUDE = [(r"'shared_ptr' : is not a member of 'boost'|'weak_ptr' : is not a member of 'boost'", 'boost/shared_ptr.hpp'),
+               (r"'weak_ptr' : is not a member of 'boost'", 'boost/weak_ptr.hpp'),
+               (r"'(?:polymorphic_cast|polymorphic_downcast|numeric_cast)' : is not a member of 'boost'", 'boost/cast.hpp'),
+               (r"'singleton_pool' : is not a member of 'boost'", 'boost/pool/singleton_pool.hpp'),
+               (r"'(?:any|any_cast)' : is not a member of 'boost'", 'boost/any.hpp'),
+               (r"'(?:function|bind)' : is not a member of 'boost'", 'boost/bind.hpp'),
+               (r"'vector' : is not a member of 'std'", 'vector'), (r"'(?:string|wstring)' : is not a member of 'std'", 'string'),
+               (r"'map' : is not a member of 'std'", 'map'), (r"'set' : is not a member of 'std'", 'set'),
+               (r"'list' : is not a member of 'std'", 'list'), (r"'(?:min|max|sort|find)' : is not a member of 'std'", 'algorithm'),
+               (r"'CString[AW]?' : undeclared identifier|'CStringT'", 'atlstr.h'),
+               (r"'IUnknown' : undeclared identifier", 'unknwn.h')]
+
+
 def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=None):
     """Discover the sub_<addr> symbol and gate it.  Model-written #includes are resolved against the real header tree
     (unknown ones dropped); headers' #ifdef NATIVE_* guards become defines; a compile error naming undeclared types or
@@ -301,6 +352,14 @@ def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=N
                'atlbase.h' if ("'ATL' : is not a class or namespace name" in error or 'requires atlbase.h' in error) else '')
         if sdk and sdk not in (raw or []):
             raw = [sdk] + (raw if raw is not None else [Path(h).resolve().as_posix() for h in headers])
+            continue
+        # Template/function names vendor_header() cannot map (it indexes class names): about 60% of first errors.
+        std = [inc for pat, inc in STD_PRELUDE if re.search(pat, error)]
+        std = [inc for inc in dict.fromkeys(std) if inc not in (raw or [])]
+        if std:
+            base = raw if raw is not None else [Path(h).resolve().as_posix() for h in headers]
+            lead = [r for r in base if r in ('afxwin.h', 'atlbase.h')]
+            raw = lead + std + [r for r in base if r not in lead]
             continue
         # A donor header added for a missing name can redefine a native class (SimBody.h vs Body2008.h): drop it.
         if 'C2011' in error and added:
@@ -481,7 +540,7 @@ def run(item):
     prompt = (rules + HEADER_RULE + '\n--- LINK-ORDER NEIGHBOURS (likely same source file / owner) ---\n' + neighbours +
               neighbour_source(row) + proven_examples() +
               '\n--- ORIGINAL ASSEMBLY ---\n' + asm + m.annotate_asm(asm) + '\n--- REFERENCE ANALOG (placeholder names/types) ---\n'
-              + analog)
+              + analog + ios_hint(addr))
     history, status, detail, used, decl, cls = '', 'no-reply', '', '', '', ''
     for n, model in enumerate(LADDER):
         m.ask(model, prompt + history, 'sub_' + addr)
@@ -501,7 +560,35 @@ def run(item):
             break
         history = ('\n--- YOUR PREVIOUS ANSWER ---\n%s\n--- RESULT: %s ---\n%s\nFix it. Same output rules.\n'
                    % (reply[-3000:], status, detail[-2500:]))
+    if status == 'draft' and size <= 2048:
+        status, detail, cls, decl, used = polish(work, addr, prompt, reply, detail, status, cls, decl, used)
     return addr, size, status, used, detail, cls, decl
+
+
+POLISH = ('\nThe code above COMPILES; only codegen differs from the original (diff above: - target, + yours). Make the '
+          'bytes identical by changing source shape only: statement order, temporaries, early return vs if/else, loop '
+          'form, inline accessor vs call, signed/unsigned and int/char/bool types, const refs vs copies, argument order. '
+          'Keep the same names and headers. Same output rules.\n')
+
+
+def polish(work, addr, prompt, reply, detail, status, cls, decl, used):
+    """Diff-guided cheap third try (Sonnet) for a compiling near-miss: tries/err files as numbered after the ladder."""
+    history = '\n--- YOUR PREVIOUS ANSWER ---\n%s\n--- RESULT: draft ---\n%s\n' % (reply[-3000:], detail[-3000:])
+    m.ask('claude:sonnet', prompt + history + POLISH, 'sub_' + addr)
+    new = getattr(m.TOOL, 'reply', '') or ''
+    code = re.findall(r'```(?:cpp|c\+\+)\s*\n(.*?)```', new, re.S)
+    if not code:
+        return status, detail, cls, decl, used
+    try:
+        st, det, c2, d2 = judge(work, addr, new, code[-1])
+    except Exception as error:                              # noqa: BLE001
+        return status, detail, cls, decl, used
+    n = len(list(work.glob('try*.cpp')))
+    (work / ('try%d.cpp' % n)).write_text(new)
+    (work / ('err%d.txt' % n)).write_text('%s\n%s' % (st, det))
+    if st in ('inactive_exact', 'draft'):
+        return st, det, c2, d2, 'claude:sonnet' if st == 'inactive_exact' else used
+    return status, detail, cls, decl, used
 
 
 def record(addr, size, status, model, cls, decl):
@@ -517,6 +604,58 @@ def record(addr, size, status, model, cls, decl):
                                   time=round(time.time(), 1), run=m.RUN_ID, tool={}, llm_seconds=0.0, gate_seconds=0.0)) + '\n')
 
 
+if args.polish:
+    # Saved drafts get one diff-guided Sonnet try (the full prompt is rebuilt from the saved answer, not re-asked).
+    drafts = [a for a, v in results.items() if v.get('status') == 'draft' and not v.get('polished')]
+    for a in drafts:
+        reg_row = m.load_registry().get(a) or {}
+        if reg_row.get('name') and 'sub_%s' % a not in reg_row['name'] and not reg_row['name'].startswith(('func_', 'sub_')):
+            NAMED[a] = (reg_row['name'], reg_row.get('signature') or reg_row['name'])
+    drafts = drafts[:args.limit or None]
+    print('drafts to polish', len(drafts), flush=True)
+
+    def polish_one(a):
+        work = OUT / a
+        tries = sorted(work.glob('try*.cpp'), key=lambda p: int(re.sub(r'\D', '', p.stem) or 0))
+        errs = sorted(work.glob('err*.txt'), key=lambda p: int(re.sub(r'\D', '', p.stem) or 0))
+        size = len(m.match.target('2008-06', a)[0])
+        if not tries or size > 2048:
+            return a, 'skip', '', '', '', ''
+        last = tries[-1].read_text(errors='replace')
+        if errs:
+            diff = errs[-1].read_text(errors='replace')
+        else:                                           # older drafts kept no diff: re-judge the last answer for it
+            code = re.findall(r'```(?:cpp|c\+\+)\s*\n(.*?)```', last, re.S)
+            if not code:
+                return a, 'skip', '', '', '', ''
+            try:
+                st0, diff, _, _ = judge(work, a, last, code[-1])
+            except Exception:                           # noqa: BLE001
+                return a, 'skip', '', '', '', ''
+            if st0 == 'inactive_exact':
+                return a, st0, '', results[a].get('class') or '', results[a].get('decl') or '', results[a].get('model') or ''
+            if st0 != 'draft':
+                return a, 'skip', '', '', '', ''
+        asm = target_asm(a)
+        prompt = (RULES.format(addr=a) if a not in NAMED else 'Recover %s (%s) as real native C++.\n' % NAMED[a]) + \
+            '\n--- ORIGINAL ASSEMBLY ---\n' + asm + ios_hint(a)
+        row = results[a]
+        st, det, c, d, used = polish(work, a, prompt, last, diff, 'draft', row.get('class') or '', row.get('decl') or '',
+                                     row.get('model') or '')
+        return a, st, det, c, d, used
+    with ThreadPoolExecutor(args.jobs) as pool:
+        for a, st, det, c, d, used in pool.map(polish_one, drafts):
+            row = results[a]
+            if st == 'skip':
+                continue
+            row['polished'] = True
+            if st == 'inactive_exact':
+                row.update(status=st, model=used, detail='', **{'class': c or row.get('class', ''), 'decl': d or row.get('decl', '')})
+                record(a, len(m.match.target('2008-06', a)[0]), st, used, row['class'], row['decl'])
+            results_store.save({a: row})
+            print(a, st, flush=True)
+    print(collections.Counter(r['status'] for r in results.values()))
+    sys.exit(0)
 if args.regate:
     def regate(addr):
         tries = sorted((OUT / addr).glob('try*.cpp'))
@@ -539,14 +678,14 @@ if args.regate:
                 print(addr, results[addr]['status'], '->', status, (detail.strip().splitlines() or [''])[0][:120], flush=True)
             if status == 'inactive_exact':
                 results[addr].update(status=status, detail='', **{'class': cls, 'decl': decl})
-                RESULTS.write_text(json.dumps(results, indent=1))
+                results_store.save({addr: results[addr]})
                 record(addr, len(m.match.target('2008-06', addr)[0]), status, results[addr]['model'], cls, decl)
     sys.exit(0)
 if args.named:
     reg = m.load_registry()
     for a in json.loads(Path(args.named).read_text()):
         NAMED[a] = (reg[a]['name'], reg[a].get('signature') or reg[a]['name'])
-    todo = [(a, len(m.match.target('2008-06', a)[0]), {}) for a in NAMED if a not in results]
+    todo = [(a, len(m.match.target('2008-06', a)[0]), {}) for a in NAMED if pending(a)]
 else:
     todo = placeholder_targets()
 todo = todo[:args.limit or None]
@@ -556,7 +695,7 @@ with ThreadPoolExecutor(args.jobs) as pool:
         runs = results.get(addr, {}).get('runs', 0) + 1     # lane runs on this target (token budget)
         results[addr] = {'status': status, 'model': model, 'class': cls, 'decl': decl, 'detail': detail[-500:], 'runs': runs,
                          'header_add': [list(a) for a in LAST_ADDS.get(addr, [])]}
-        RESULTS.write_text(json.dumps(results, indent=1))
+        results_store.save({addr: results[addr]})
         record(addr, size, status, model, cls, decl)
         print(addr, size, status, cls or 'free', (detail.strip().splitlines() or [''])[0][:120], flush=True)
 print(collections.Counter(r['status'] for r in results.values()))

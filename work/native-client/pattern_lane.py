@@ -33,7 +33,7 @@ SETTER = re.compile(r'^mov (?:dword|byte|word) ptr \[ecx \+ (0x[0-9a-f]+)\], (?:
 
 def shape(addr):
     asm = lane['target_asm'](addr)
-    ins = [re.sub(r'\s+', ' ', l.split('  ', 2)[-1].split(';')[0].strip()) for l in asm.splitlines()
+    ins = [re.sub(r'\s+', ' ', l.split('  ', 1)[1].split(';')[0].strip()) for l in asm.splitlines()
            if re.match(r'^[0-9a-f]{8}\s', l)]
     ins = [i for i in ins if i and i != 'int3' and i != 'nop']
     if len(ins) == 2 and ins[1] == 'ret':

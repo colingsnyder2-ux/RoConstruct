@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates'])
 ap.add_argument('--jobs', type=int, default=8)
 args = ap.parse_args()
 
@@ -46,7 +46,9 @@ def census_running():
 
 
 def results():
-    return json.loads((HERE / 'placeholder-lane/results.json').read_text())
+    sys.path.insert(0, str(HERE))
+    import results_store
+    return results_store.load()
 
 
 def counts(addrs=None):
@@ -58,7 +60,24 @@ def counts(addrs=None):
     return out
 
 
-if args.lane in ('failures', 'regate', 'promote', 'vendor', 'layout') and census_running():
+def ensure_gate_server():
+    # Resident native-bulk workers (gate_server.py): every gate in this lane skips process start + target index load.
+    import urllib.request
+    try:
+        urllib.request.urlopen('http://127.0.0.1:8799/', timeout=2).read()
+        return
+    except OSError:
+        pass
+    subprocess.Popen([PY, str(HERE / 'gate_server.py'), '--jobs', str(max(4, args.jobs))], cwd=ROOT,
+                     stdout=open(HERE / 'gate-server.log', 'a'), stderr=subprocess.STDOUT,
+                     creationflags=getattr(subprocess, 'CREATE_NEW_PROCESS_GROUP', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0))
+    print('started gate server (port 8799)', flush=True)
+
+
+if args.lane not in ('census', 'classify', 'agent', 'auto'):
+    ensure_gate_server()
+
+if args.lane in ('failures', 'regate', 'promote', 'vendor', 'layout', 'polish', 'inferred', 'names', 'templates') and census_running():
     sys.exit('a census is running (prove-out/CENSUS.lock): try again when it finishes')
 
 if args.lane == 'failures':
@@ -76,9 +95,9 @@ if args.lane == 'failures':
     # header change instead of burning more model calls.
     fail = [a for a, v in r.items() if v['status'] in ('compile_failed', 'rejected-header-add') and a in cl
             and v.get('runs', 1) < 3]
-    for a in fail:
-        del r[a]
-    (HERE / 'placeholder-lane/results.json').write_text(json.dumps(r, indent=1))
+    # Marked 'requeue' (not deleted) so the run count survives: the 3-run budget used to reset every cycle.
+    import results_store
+    results_store.save({a: dict(r[a], status='requeue') for a in fail})
     nm = [a for a in fail if a in named]
     (HERE / 'creator-partition/named-all-fail.json').write_text(json.dumps(nm))
     print('re-queued %d compile failures (%d named) for the header-add lane' % (len(fail), len(nm)), flush=True)
@@ -112,6 +131,7 @@ elif args.lane == 'layout':
 
 elif args.lane == 'promote':
     # No-model lane exacts (flag sweep, donor transplant, pattern lane) live in their own hits files: merge them.
+    import results_store
     for name in ('flag-sweep-hits.json', 'donor-transplant-hits.json', 'pattern-lane-hits.json'):
         hits_path = HERE / name
         if not hits_path.is_file():
@@ -122,7 +142,7 @@ elif args.lane == 'promote':
             row = r.setdefault(addr, {'model': hit.get('model', name.split('-hits')[0])})
             row.update(status='inactive_exact', **({'flags': hit['flags']} if hit.get('flags') else {}),
                        **({'class': hit['cls'], 'decl': hit['decl']} if hit.get('cls') else {}))
-        (HERE / 'placeholder-lane/results.json').write_text(json.dumps(r, indent=1))
+        results_store.save({a: r[a] for a in hits})
         print('merged %d exacts from %s' % (len(hits), name), flush=True)
     run([PY, 'promote_header_adds.py'], cwd=HERE)
     run([PY, 'native_placeholder_promote.py'], cwd=HERE)
@@ -136,12 +156,14 @@ elif args.lane == 'census':
     if census_running():
         sys.exit('a census is already running')
     # Register what the lanes and subagents produced: evidence files and new native sources.
+    run([PY, 'lane_identity.py'], cwd=HERE)            # identity rows for lane-proven files (before the lock)
     inv_path = HERE / 'ogre-native-full-inventory-all.json'
     inv = json.loads(inv_path.read_text())
     fam = inv['families'][0]
     for ev in ['class-identity-bindings.json', 'template-identity-bindings.json', 'template-identity-bindings-round3.json',
                'template-identity-bindings-netser.json', 'template-identity-bindings-signal.json', 'vendor-identity-bindings.json',
-               'inferred-identity-bindings.json', 'identity-session-bindings.json', 'creator-reference-bindings.json']:
+               'inferred-identity-bindings.json', 'identity-session-bindings.json', 'creator-reference-bindings.json',
+               'creator-identity-bindings.json', 'vtable-identity-bindings.json', 'lane-identity-bindings.json', 'order-identity-bindings.json']:
         rel = 'work/native-client/' + ev
         if (HERE / ev).is_file() and rel not in fam['evidence']:
             fam['evidence'].append(rel)
@@ -158,6 +180,43 @@ elif args.lane == 'census':
                    'r = integration_site.build(); print({k: v["functions"] for k, v in r["groups"].items()}); '
                    'server.publish_pages(shutil.which("git"))'])
 
+elif args.lane == 'inferred':
+    # Functions whose registry name comes from the identity-unlock tier (sole-authentic-candidate, one-of-N) were never
+    # queued: placeholder_targets() takes only 'placeholder' rows.  Named lane, most certain names first, then smallest.
+    cl = json.loads((HERE / 'remaining-classified.json').read_text())
+    inf = json.loads((HERE / 'unnamed-identities-inferred.json').read_text())
+    rank = {'sole-authentic-candidate': 0, 'one-of-2-authentic': 1, 'one-of-3-authentic': 2, 'one-of-4-authentic': 3}
+    r = results()
+    queue = sorted((a for a, v in cl.items() if v['bucket'] == 'inferred name only' and 8 <= v['size'] <= 2048
+                    and r.get(a, {}).get('status') in (None, 'requeue')),
+                   key=lambda a: (rank.get((inf.get(a) or {}).get('confidence'), 9), cl[a]['size']))
+    (HERE / 'creator-partition/named-inferred.json').write_text(json.dumps(queue))
+    print('inferred-name functions queued: %d' % len(queue), flush=True)
+    run([PY, 'native_placeholder_llm.py', '--named', 'creator-partition/named-inferred.json', '--jobs', args.jobs], cwd=HERE)
+    r = results()
+    print('RESULT %s' % counts(set(queue)), flush=True)
+
+elif args.lane == 'templates':
+    # Explicit template instantiations (Creatable::create<X>, FactoryProduct Creator::create, boost::any_cast), no model.
+    run([PY, 'creator_classes.py'], cwd=HERE)
+    run([PY, 'template_instances.py', '--jobs', args.jobs], cwd=HERE)
+    run([PY, 'template_instances.py', '--creators', '--jobs', args.jobs], cwd=HERE)
+    run([PY, 'create_classes.py'], cwd=HERE)
+    run([PY, 'template_instances.py', '--create', '--jobs', args.jobs], cwd=HERE)
+    run([PY, 'vtable_disambiguate.py'], cwd=HERE)
+    run([PY, 'order_identity.py'], cwd=HERE)              # identical-body runs bound by registry name + address order        # byte-equal ledger candidates picked by vtable/caller class
+
+elif args.lane == 'names':
+    # Name::callDoDeclare<sX> forwarders: explicit instantiations in the TU defining sX, proven by bytes, jump target
+    # and sX data identity (native_name_declare_probe.py); applied with lease + re-prove + restore on any lost exact.
+    run([PY, 'native_name_declare_probe.py', '--apply'], cwd=HERE)
+
+elif args.lane == 'polish':
+    run([PY, 'native_placeholder_llm.py', '--polish', '--jobs', args.jobs], cwd=HERE)
+
+elif args.lane == 'gateserver':
+    print('gate server is up on 127.0.0.1:8799', flush=True)
+
 elif args.lane == 'donor':
     run([PY, 'donor_transplant.py', '--jobs', args.jobs], cwd=HERE)
 
@@ -172,7 +231,7 @@ elif args.lane == 'auto':
     # repeated; each cycle counts its gains on the site (census takes minutes since the parallel/per-file cache work).
     for cycle in range(1, 100):
         print('=== auto cycle %d ===' % cycle, flush=True)
-        for lane in ('regate', 'donor', 'pattern', 'failures', 'layout', 'flags', 'promote', 'census'):
+        for lane in ('regate', 'names', 'templates', 'donor', 'inferred', 'polish', 'layout', 'promote', 'census'):   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
             run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', args.jobs])
         if (HERE / 'native-llm' / 'STOP').is_file():
             print('STOP file present: ending auto cycles', flush=True)

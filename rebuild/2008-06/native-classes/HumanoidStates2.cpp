@@ -188,3 +188,15 @@ template void RBX::Name::callDoDeclare<RBX::HUMAN::sFlying>();
 template void RBX::Name::callDoDeclare<RBX::HUMAN::sFreefall>();
 template void RBX::Name::callDoDeclare<RBX::HUMAN::sJumping>();
 template void RBX::Name::callDoDeclare<RBX::HUMAN::sGettingUp>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFlying>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFreefall>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sJumping>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sGettingUp>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFlying>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFreefall>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sJumping>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sGettingUp>();

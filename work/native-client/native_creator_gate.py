@@ -105,6 +105,32 @@ def discover_symbol(work, headers, code, addr, needle, include_first=(), raw_inc
 LAST_ERROR = {}
 
 
+GATE_PORT = int(__import__('os').environ.get('ROC_GATE_PORT', 8799))
+
+
+def bulk_run(config, bulk):
+    """native-bulk CONFIG --out BULK through the resident gate server (gate_server.py) when it is up, else a fresh
+    `roc.cmd native-bulk` process.  Same code and output folder either way."""
+    import time
+    import urllib.request
+    lock = Path(bulk) / 'run.lock'                         # left by a killed run: every later gate here would fail
+    try:
+        if time.time() - lock.stat().st_mtime > 1800:
+            lock.unlink()
+    except OSError:
+        pass
+    try:
+        req = urllib.request.Request('http://127.0.0.1:%d/' % GATE_PORT, method='POST', data=json.dumps(
+            {'config': str(Path(config).resolve()), 'out': str(Path(bulk).resolve())}).encode())
+        with urllib.request.urlopen(req, timeout=1800) as reply:
+            if json.loads(reply.read()).get('ok'):
+                return
+    except OSError:
+        pass
+    subprocess.run([str(ROOT / 'roc.cmd'), 'native-bulk', str(config), '--out', str(bulk)], cwd=ROOT,
+                   capture_output=True, text=True)
+
+
 def gate_code(work, headers, code, want, keep=False, include_first=(), raw_includes=None, defines=()):
     """Compile HEADERS + CODE as one probe and prove the WANT {addr: symbol} functions through native-bulk with closure
     identity evidence, learning callee identities from the candidate object (3 rounds).  -> ({addr: status}, detail).
@@ -137,8 +163,7 @@ def gate_code(work, headers, code, want, keep=False, include_first=(), raw_inclu
         {'name': 'creator-gate', 'sources': [rel(probe)], 'evidence': [rel(evidence)]}]}))
     bulk = OUT / (work.name + '-bulk')
     for _ in range(3):
-        subprocess.run([str(ROOT / 'roc.cmd'), 'native-bulk', str(config), '--out', str(bulk)], cwd=ROOT,
-                       capture_output=True, text=True)
+        bulk_run(config, bulk)
         try:
             manifest = json.loads((bulk / 'manifest.json').read_text())
         except (OSError, ValueError):
@@ -176,8 +201,7 @@ def gate_code(work, headers, code, want, keep=False, include_first=(), raw_inclu
         subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_identity_evidence.py'), '--closure',
                         str(work / 'closure.json'), '--output', str(evidence), *sum((['--addr', a] for a in want), [])],
                        cwd=ROOT, capture_output=True, text=True)
-        subprocess.run([str(ROOT / 'roc.cmd'), 'native-bulk', str(config), '--out', str(bulk)], cwd=ROOT,
-                       capture_output=True, text=True)
+        bulk_run(config, bulk)
         try:
             manifest = json.loads((bulk / 'manifest.json').read_text())
             symbols = {s['symbol']: s for fam in manifest['families'] for s in fam['symbols']}

@@ -20,6 +20,7 @@ import native_creator_gate as cg    # noqa: E402
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--limit', type=int, default=0)
+ap.add_argument('--retry-missing', action='store_true', help='only rows that failed re-proof before')
 args = ap.parse_args(ARGS)
 ROOT = m.ROOT
 HEADERS = ROOT / 'rebuild/2008-06/native-headers'
@@ -65,8 +66,100 @@ def insert_decl(header, cls, decl, addr):
     return text, text[:start] + line + text[start:]
 
 
+def from_probe(addr):
+    """Free-function TU from the probe the lane actually proved (placeholder-lane/<addr>/probe.cpp): its includes and
+    /I roots, made repo-relative ({headers} token), and its body.  The last try file alone loses the includes the lane
+    resolved (vendor/App headers), so ~60 exacts failed re-proof as 'reproof-missing'."""
+    probe = LANE / addr / 'probe.cpp'
+    if not probe.is_file():
+        return None
+    text = probe.read_text(errors='replace')
+    first, rest = text.split('\n', 1)
+    if not first.startswith('// native-flags:'):
+        return None
+    hdr = HEADERS.as_posix()
+    root = ROOT.as_posix()
+
+    def rel_dir(path):
+        q = Path(path).as_posix()
+        if q.lower().startswith(hdr.lower()):
+            return '{headers}' + q[len(hdr):]
+        if q.lower().startswith(root.lower()):
+            return '{headers}/../../..' + q[len(root):]
+        return None
+    flags, idirs = [], []
+    for tok in first[len('// native-flags:'):].split():
+        if tok.startswith('/I') and '/shadow' in Path(tok[2:]).as_posix():
+            continue                           # private header copy with the inferred declaration (promote edits the real one)
+        if tok.startswith('/I'):
+            r = rel_dir(tok[2:])
+            if r is None:
+                return None
+            if not r.startswith('{headers}') or r != '{headers}':
+                flags.append('/I' + r)
+            idirs.append(Path(tok[2:]).as_posix())
+        else:
+            flags.append(tok)
+    includes = []
+    for inc in re.findall(r'^#include "([^"]+)"', rest, re.M):
+        q = Path(inc).as_posix()
+        if q.lower().startswith(hdr.lower() + '/'):
+            includes.append(q[len(hdr) + 1:])
+            continue
+        if '/include/' in q:                   # vendor tree (g3d, boost, ...): the compiler profile has these roots
+            includes.append(q.rsplit('/include/', 1)[1])
+            continue
+        base = next((d for d in sorted(idirs, key=len, reverse=True) if q.lower().startswith(d.lower() + '/')), None)
+        if base is None:                       # header outside every /I root: add its folder as one
+            r = rel_dir(str(Path(q).parent))
+            if r is None:
+                return None
+            flags.append('/I' + r)
+            includes.append(Path(q).name)
+        else:
+            includes.append(q[len(base) + 1:])
+    body = re.sub(r'^#include .*$', '', rest, flags=re.M).strip()
+    return ' '.join(flags), includes, body
+
+
+def promote_probe(addr, flags, includes, body):
+    if m.invented_externs(body) or m.OFFSET_HACK.search(body):
+        return 'no-clean-body'
+    tu = CLASSES / ('Inferred_%s.cpp' % addr)
+    lease = 'inferred-%s' % addr
+    if roc('lease', 'take', lease, tu.relative_to(ROOT).as_posix(), '--hours', '1').returncode:
+        return 'blocked-lease'
+    try:
+        named = 'sub_' + addr not in body
+        note = ('// %08x: real name from the identity registry; body byte-proved against the native headers (named lane)'
+                % int(addr, 16) if named else
+                '// INFERRED: sub_%s (placeholder name for %08x from the identity tier; body byte-proved by the placeholder '
+                'lane, includes as the lane resolved them)' % (addr, int(addr, 16)))
+        tu.write_text('// native-flags: %s\n%s\n%s\n%s\n' % (flags, note, ''.join('#include "%s"\n' % i for i in includes), body))
+        needle = 'sub_' + addr
+        if named:
+            real = (m.load_registry().get(addr) or {}).get('name') or ''
+            hit = re.match(r'\?(\w+)@', real)
+            needle = hit.group(1) if hit else needle
+        work = LANE / addr / 'promote'
+        sym = cg.discover_symbol(work, [str(tu)], '', addr, needle)
+        status = cg.gate_code(work, [str(tu)], '', {addr: sym})[0][addr] if sym else 'missing'
+        if status != 'inactive_exact':
+            tu.unlink(missing_ok=True)
+            return 'reproof-' + status
+        return 'promoted'
+    finally:
+        roc('lease', 'release', lease)
+
+
 def promote(addr, row):
+    probe = from_probe(addr)
+    if probe and not (row.get('class') and row.get('decl')):   # free function: exactly the source the lane proved
+        return promote_probe(addr, *probe)
     body = last_body(addr)
+    if probe:                                   # member: the proved body and its resolved includes; decl goes below
+        body = ''.join('#include "%s"\n' % i for i in probe[1]) + probe[2]
+        row = dict(row, flags=row.get('flags') or probe[0])
     if not body or m.invented_externs(body) or m.OFFSET_HACK.search(body):
         return 'no-clean-body'
     # Keep the answer's includes the lane compiled with: native ones by tree path, SDK/vendor (<boost/...>, afxwin.h) as is.
@@ -135,7 +228,8 @@ for r in map(m._json, m.LOG.read_text(encoding='utf-8').splitlines()):
     if r and r.get('status') in ('inactive_exact', 'retracted'):
         verdict[r['addr']] = r['status']          # latest wins: a fresh honest exact supersedes a retraction
 retracted = {a for a, s in verdict.items() if s == 'retracted'}
-todo = [(a, r) for a, r in results.items() if r['status'] == 'inactive_exact' and a not in retracted and done.get(a) != 'promoted']
+todo = [(a, r) for a, r in results.items() if r['status'] == 'inactive_exact' and a not in retracted and done.get(a) != 'promoted'
+        and not (args.retry_missing and done.get(a) not in ('reproof-missing', 'reproof-draft'))]
 todo = todo[:args.limit or None]
 print('placeholder exacts to promote', len(todo), flush=True)
 for addr, row in todo:

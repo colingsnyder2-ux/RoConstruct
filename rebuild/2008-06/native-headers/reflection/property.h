@@ -236,6 +236,8 @@ namespace RBX
 			}
 	public:
 		void sub_00448b10(RBX::Reflection::DescribedBase* instance, const RBX::Reflection::Value& value) const;   // INFERRED: 00448b10, placeholder name (identity tier), body byte-proved (Inferred_00448b10.cpp)
+		public:
+			void sub_004485b0(const DescribedBase* instance, Value& value) const;   // INFERRED: 004485b0, placeholder name (identity tier), body byte-proved (Inferred_004485b0.cpp)
 		};
 	}
 }

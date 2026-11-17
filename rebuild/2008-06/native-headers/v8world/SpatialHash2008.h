@@ -61,5 +61,7 @@ namespace RBX
 	public:
 		SpatialHash(World* world, ContactManager* contactManager);   // 0065b4e0
 		~SpatialHash();                                              // 0065b1b0
+	public:
+		static int gridSize;   // INFERRED (header-add): evidence: asm dword ptr [0x9625ac] loaded and shifted left by cl - byte-proved by 00659460
 	};
 }

@@ -1,0 +1,124 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers}/../../../tools/rbxgs/Client/App/include
+// INFERRED: sub_004697e0 (placeholder name for 004697e0 from the identity tier; body byte-proved by the placeholder lane, includes as the lane resolved them)
+#include "util/Name.h"
+
+int sub_004697e0(int key)
+{
+	static int table[323];
+	static bool initialized;
+	if (!initialized)
+	{
+		for (int i = 0; i < 323; ++i)
+			table[i] = 0;
+		table[27] = 0x01;
+		table[49] = 0x02;
+		table[50] = 0x03;
+		table[51] = 0x04;
+		table[52] = 0x05;
+		table[53] = 0x06;
+		table[54] = 0x07;
+		table[55] = 0x08;
+		table[56] = 0x09;
+		table[57] = 0x0a;
+		table[48] = 0x0b;
+		table[45] = 0x0c;
+		table[61] = 0x0d;
+		table[8] = 0x0e;
+		table[9] = 0x0f;
+		table[113] = 0x10;
+		table[119] = 0x11;
+		table[101] = 0x12;
+		table[114] = 0x13;
+		table[116] = 0x14;
+		table[121] = 0x15;
+		table[117] = 0x16;
+		table[105] = 0x17;
+		table[111] = 0x18;
+		table[112] = 0x19;
+		table[91] = 0x1a;
+		table[93] = 0x1b;
+		table[13] = 0x1c;
+		table[306] = 0x1d;
+		table[97] = 0x1e;
+		table[115] = 0x1f;
+		table[100] = 0x20;
+		table[102] = 0x21;
+		table[103] = 0x22;
+		table[104] = 0x23;
+		table[106] = 0x24;
+		table[107] = 0x25;
+		table[108] = 0x26;
+		table[59] = 0x27;
+		table[39] = 0x28;
+		table[96] = 0x29;
+		table[304] = 0x2a;
+		table[92] = 0x56;
+		table[122] = 0x2c;
+		table[120] = 0x2d;
+		table[99] = 0x2e;
+		table[118] = 0x2f;
+		table[98] = 0x30;
+		table[110] = 0x31;
+		table[109] = 0x32;
+		table[44] = 0x33;
+		table[46] = 0x34;
+		table[47] = 0x35;
+		table[303] = 0x36;
+		table[268] = 0x37;
+		table[308] = 0x38;
+		table[32] = 0x39;
+		table[301] = 0x3a;
+		table[282] = 0x3b;
+		table[283] = 0x3c;
+		table[284] = 0x3d;
+		table[285] = 0x3e;
+		table[286] = 0x3f;
+		table[287] = 0x40;
+		table[288] = 0x41;
+		table[289] = 0x42;
+		table[290] = 0x43;
+		table[291] = 0x44;
+		table[300] = 0x45;
+		table[302] = 0x46;
+		table[263] = 0x47;
+		table[264] = 0x48;
+		table[265] = 0x49;
+		table[269] = 0x4a;
+		table[260] = 0x4b;
+		initialized = true;
+		table[261] = 0x4c;
+		table[262] = 0x4d;
+		table[270] = 0x4e;
+		table[257] = 0x4f;
+		table[258] = 0x50;
+		table[259] = 0x51;
+		table[256] = 0x52;
+		table[266] = 0x53;
+		table[292] = 0x57;
+		table[293] = 0x58;
+		table[294] = 0x64;
+		table[295] = 0x65;
+		table[296] = 0x66;
+		table[272] = 0x8d;
+		table[271] = 0x9c;
+		table[305] = 0x9d;
+		table[267] = 0xb5;
+		table[317] = 0xb7;
+		table[307] = 0xb8;
+		table[19] = 0xc5;
+		table[278] = 0xc7;
+		table[273] = 0xc8;
+		table[280] = 0xc9;
+		table[276] = 0xcb;
+		table[275] = 0xcd;
+		table[279] = 0xcf;
+		table[274] = 0xd0;
+		table[281] = 0xd1;
+		table[277] = 0xd2;
+		table[127] = 0xd3;
+		table[310] = 0xdb;
+		table[309] = 0xdc;
+		table[319] = 0xdd;
+	}
+	return table[key];
+}
