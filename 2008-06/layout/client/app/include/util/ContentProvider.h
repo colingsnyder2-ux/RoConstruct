@@ -20,7 +20,7 @@ namespace RBX
 
 	public:
 		ContentId()
-			: id(), 
+			: id(),
 			  mimeTypePtr(&Name::getNullName())
 		{
 		}
@@ -100,7 +100,7 @@ namespace RBX
 		public:
 			std::string url;
 			boost::posix_time::ptime expiration;
-		  
+
 		public:
 			FailedUrl(const char* url);
 			bool expired() const;
@@ -114,7 +114,7 @@ namespace RBX
 		std::map<ContentId, CachedContent> contentCache;
 		std::string assetFolderPath;
 		boost::scoped_ptr<worker_thread> requestProcessor;
-	  
+
 	private:
 		ContentProvider();
 		~ContentProvider();
@@ -144,7 +144,7 @@ namespace RBX
 		std::string findAsset(ContentId contentId);
 		std::string findHashFile(ContentId contentId);
 		bool registerFile(CachedContent* item);
-	  
+
 	public:
 		static ContentProvider& singleton()
 		{
@@ -162,7 +162,7 @@ namespace RBX
 		virtual void addData(std::istream& data) = 0;
 		virtual void addData(const std::string& data) = 0;
 		virtual void addData(const char* data, size_t nBytes) = 0;
-		
+
 		virtual std::string toString() = 0;
 		virtual const char* c_str() = 0;
 

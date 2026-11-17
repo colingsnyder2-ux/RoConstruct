@@ -16,7 +16,7 @@ namespace RBX
 		public:
 			const Name& category;
 			const ClassDescriptor& owner;
-		  
+
 		protected:
 			MemberDescriptor(const ClassDescriptor& owner, const char* name, const char* category)
 				: Descriptor(name),
@@ -49,7 +49,7 @@ namespace RBX
 			private:
 				DescribedBase* instance;
 				typename CollectionType::const_iterator iter;
-			  
+
 			public:
 				Iterator(const typename CollectionType::const_iterator& iter, DescribedBase* instance)
 					: instance(instance),
@@ -81,7 +81,7 @@ namespace RBX
 			private:
 				const DescribedBase* instance;
 				typename CollectionType::const_iterator iter;
-		  
+
 			public:
 				ConstIterator(const typename CollectionType::const_iterator& iter, const DescribedBase* instance)
 					: instance(instance),
@@ -172,12 +172,12 @@ namespace RBX
 							found = true;
 							break;
 						}
-						
+
 						int compare = name.compare(descName);
 
 						if (compare < 0)
 						{
-							posEnd = i;	
+							posEnd = i;
 						}
 						else
 						{

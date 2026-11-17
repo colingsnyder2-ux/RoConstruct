@@ -67,18 +67,17 @@ namespace RBX
         boost::scoped_ptr<Lua::YieldingThreads> yieldEvent;
         bool scriptsDisabled;
         boost::shared_ptr<Stats::Item> statsItem;
-        // Provisional member types; 005ae490/005ae730 establish offsets, not full ABI.
         double exeTime0;
         double exeTime1;
         int exeState;
         boost::scoped_ptr<boost::thread> exeThread;
         boost::mutex exeMutex;
         boost::condition exeCondition;
-    
+
     public:
         boost::scoped_ptr<LuaAllocator> allocator;
         static Reflection::BoundProp<bool, true> propScriptsDisabled;
-    
+
     public:
         ScriptContext();
         virtual ~ScriptContext();
@@ -100,27 +99,27 @@ namespace RBX
         bool hasState() const;
         lua_State* state();
         virtual XmlElement* write();
-    
+
     protected:
         virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);
         virtual void onEvent(const RunService* source, Heartbeat event);
         virtual void onEvent(const RunService* source, RunTransition event);
-      
+
     private:
         void onChangedScriptEnabled(const Reflection::PropertyDescriptor&);
-      
+
     public:
         void closeState();
         void addScript(Script* script);
         void removeScript(Script* script);
-      
+
     private:
         void disassociateState(Script* script);
         void openState();
         void startScript(boost::shared_ptr<Script> script);
         void startPendingScripts();
-    
-    public: 
+
+    public:
         static ScriptContext& getContext(lua_State* thread);
 
     private:
@@ -130,7 +129,7 @@ namespace RBX
         {
             lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_IDENTITY);
             lua_gettable(thread, LUA_GLOBALSINDEX);
-        
+
             if (!lua_isnumber(thread, -1))
             {
                 return Security::Anonymous;

@@ -1,4 +1,3 @@
-// Inactive typed candidate: destructor matches; SpatialHash allocation and scratch element type remain open.
 #pragma once
 #include <set>
 #include <vector>

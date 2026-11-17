@@ -20,8 +20,6 @@ class IMetric;
 class Selection;
 extern char sDataModel[];
 
-// Inactive candidate: RTTI, constructor and recovered 0057a1b0 source define
-// these bases and members. Complete virtual methods and lifetimes remain open.
 class DataModel : public DescribedNonCreatable<DataModel, ServiceProvider, sDataModel>,
                   public VerbContainer, public IDataState, public Evaluator,
                   public Listener<RunService, RunTransition> {

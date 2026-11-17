@@ -62,7 +62,8 @@ public:
 		INT = 5,
 		UINT = 6,
 		FLOAT = 7,
-		HANDLE = 8
+		HANDLE = 8,
+		DOUBLE = 9 // INFERRED: 0056e720 stores tag 9 with a double at +8
 	};
 
 private:
@@ -162,6 +163,7 @@ public:
 	bool getValue(const RBX::Name*&) const;
 	bool getValue(bool&) const;
 	bool getValue(float&) const;
+	bool getValue(double&) const;   // INFERRED: 0056e760 reads a double through XmlNameValuePair
 	bool getValue(unsigned&) const;
 	bool getValue(int&) const;
 	bool getValue(RBX::ContentId&) const;
@@ -179,6 +181,12 @@ public:
 		clearValue();
 		floatValue = value;
 		valueType = FLOAT;
+	}
+	void setValue(double value)   // INFERRED: 0056e720
+	{
+		clearValue();
+		doubleValue = value;
+		valueType = DOUBLE;
 	}
 	void setValue(bool value)
 	{

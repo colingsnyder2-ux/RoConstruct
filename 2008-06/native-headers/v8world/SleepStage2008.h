@@ -136,5 +136,11 @@ namespace RBX
 		void touchEvent(Contact* c);                                            // 0064b7c0
 		void wakeEvent(Edge* e);                                                // 0064bf60
 		void wakeEdge(Edge* e);                                                 // 0064c1d0
+	public:
+		void sub_0064b840(const std::vector<Joint*>& joints, Sim::EdgeState state);   // INFERRED: 0064b840, placeholder name (identity tier), body byte-proved (Inferred_0064b840.cpp)
+	public:
+		void sub_0064c230(const std::vector<Joint*>& joints, Sim::EdgeState newState);   // INFERRED: 0064c230, placeholder name (identity tier), body byte-proved (Inferred_0064c230.cpp)
+	public:
+		void sub_0064b7f0(const std::vector<RBX::Joint*>& joints, RBX::Sim::EdgeState state);   // INFERRED: 0064b7f0, placeholder name (identity tier), body byte-proved (Inferred_0064b7f0.cpp)
 	};
 }

@@ -58,7 +58,16 @@ public:
 // view uses is declared; the record body is a separate recovery. Its layout is blocked on +0xa4: MutexRef is
 // 8 bytes (CNameItem 004564a0: MutexRef +0x7c, Stats::Item* +0x84, size 0x88), so the record has 4 bytes at +0xa4
 // that its constructor 00457ca0, destructor 00457ff0 and listeners 00457f30/004581a0 never touch.
-class CRobloxReportView::CStatsItemRecord : public CXTPReportRecord {
+class CRobloxReportView::CStatsItemRecord : public CXTPReportRecord,
+                                            public RBX::MarshaledListener<RBX::Instance, RBX::ChildAdded>,
+                                            public RBX::MarshaledListener<RBX::Instance, RBX::ChildRemoved> {
 public:
     CStatsItemRecord(boost::shared_ptr<RBX::Stats::Item> item, boost::shared_ptr<RBX::DataModel> dataModel); // 00457ca0
+    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildAdded event);   // 00457f30 (not recovered)
+    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event); // 004581a0 (not recovered)
+
+private:
+    struct MutexRef { void* mutex; int refs; } mutexRef;       // +0x9c, 8 bytes (CNameItem 004564a0)
+    int unused;                                                // INFERRED: +0xa4, size 0xb0 requires 4 bytes the record never touches
+    boost::shared_ptr<RBX::Stats::Item> item;                  // +0xa8, stored by 00457ca0
 };

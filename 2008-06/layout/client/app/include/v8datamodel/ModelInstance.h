@@ -41,9 +41,6 @@ namespace RBX
 		virtual void render3dAdorn(Adorn* adorn);
 		virtual void render3dSelect(Adorn* adorn, SelectState selectState);
 	protected:
-		// 00585050 / 00584fc0: ModelInstance's own entries in vtable slots 7 / 8 of 00830dc4 (also inherited unchanged by
-		// the RootInstance / Workspace vtables 00831d68, 008337f0, 00833a70 and 00833db0); they override the PVInstance
-		// declarations, so the slot order is unchanged.
 		virtual void onChildAdded(Instance* child);
 		virtual void onChildRemoving(Instance* child);
 		virtual void onDescendentAdded(Instance* instance);
@@ -57,10 +54,6 @@ namespace RBX
 		ModelInstance();
 		virtual ~ModelInstance();
 	public:
-		// 005d8690 = <Humanoid> (162 bytes; callers Humanoid::modelIsCharacter 005d9a20, getLocalHumanoidFromContext 005d9bb0,
-		// render3dAdorn 005d9c30, 005db4c0, render2d 005db960), 005d4460 = <Skin> (BodyColors::apply 005d4b60): walks the
-		// modifiers vector (+0x1ec, first/last +0x1f8/+0x1fc) with checked const_iterators and dynamic_casts each entry
-		// from IModelModifier (RTTI 0x936908). Analog name (the registry has only placeholders for both instantiations).
 		template<class T> T* findModifierOfType() const
 		{
 			std::vector<IModelModifier*>::const_iterator end = modifiers.end();
@@ -113,4 +106,3 @@ namespace RBX
 		virtual void legacyTraverseState(const G3D::CoordinateFrame& parentState);
 	};
 }
-

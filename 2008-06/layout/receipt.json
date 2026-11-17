@@ -1,0 +1,1289 @@
+{
+ "files": 304,
+ "merged_units": {
+  "rebuild/2008-06/layout/inferred/client/app/util/IRenderable.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SpatialHashStats.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5DC_2008IRenderable.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ObjectBrowser.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+    "rebuild/2008-06/native-classes/COutputView.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/VersionInfo.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CFileVersionInfo.cpp",
+    "rebuild/2008-06/native-classes/CVersionInfo.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/ClumpStage2.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit668TreeStage.cpp",
+    "rebuild/2008-06/native-classes/Inferred_0064ca60.cpp"
+   ],
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/UserInputBase.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
+    "rebuild/2008-06/native-classes/UserInputMovement.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast",
+   "status": "merged (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/tool/Dragger.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp",
+    "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
+    "rebuild/2008-06/native-classes/DraggerPlacement.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ExtentsOverlap.cpp",
+    "rebuild/2008-06/native-classes/AppUnit609_2008Extents.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8kernel/Pair.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
+    "rebuild/2008-06/native-classes/Boostnamed_slot_map.cpp",
+    "rebuild/2008-06/native-classes/GeoPair.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/SleepStage2.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SleepStage2008.cpp",
+    "rebuild/2008-06/native-classes/Inferred_00668d30.cpp",
+    "rebuild/2008-06/native-classes/Inferred_00668d40.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Math.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/MathClosestRay.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_Math.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/renderlib/TextureProxy.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+    "rebuild/2008-06/native-classes/TextureProxyResolve2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  }
+ },
+ "inferred_path_files": 91,
+ "status": {
+  "clean-identical": 179,
+  "verbatim-identical": 11,
+  "clean (token-identical)": 67,
+  "verbatim (line-sensitive macros)": 11,
+  "verbatim": 25
+ },
+ "held_back": {
+  "merge or conflict": 470,
+  "no original path": 1825,
+  "requires_inline_placement_review": 9,
+  "inferred path with no folder evidence": 14,
+  "requires_identity_review": 20,
+  "requires_split_review": 5,
+  "requires_case_review": 23
+ },
+ "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
+ "cache_note": "the runner may reuse validated cached objects for unchanged live sources",
+ "per_file": {
+  "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.cpp": {
+   "source": "rebuild/2008-06/native-classes/ActiveDocView.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/network/CrashReporter.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppLeftovers.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/DepthBlur.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit504DepthBlur.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/reflection/signal.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit568Signal.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/reflection/reflection_object.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Visit.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5BC_2008Visit.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/Quaternion.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Lighting.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/Mechanism.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5E4Mechanism.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/MotorJoint.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5E4MotorJoint.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/World.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/NormalId.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5ECNormalId.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Timer.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5F0_2008Timer.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/Edge.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit658Edge.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/ExponentialRunningAverage.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit660_2008ERA.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/tool/GroupDragTool.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit660_2008GroupDragTool.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Units.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit660_2008Units.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/IWorldStage.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit668IWorldStage.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/tool/ToolsArrow.cpp": {
+   "source": "rebuild/2008-06/native-classes/ArrowToolBase.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Backpack.cpp": {
+   "source": "rebuild/2008-06/native-classes/Backpack.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8datamodel/CharacterAppearance.cpp": {
+   "source": "rebuild/2008-06/native-classes/BodyColors.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8kernel/Cofm.cpp": {
+   "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8kernel/Point.cpp": {
+   "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8kernel/SimBody.cpp": {
+   "source": "rebuild/2008-06/native-classes/BodyPrimitive2008SimBody.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/boost_1_34_1/libs/iostreams/src/zlib.cpp": {
+   "source": "rebuild/2008-06/native-classes/Boostzlib.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/AboutRobloxDialog.cpp": {
+   "source": "rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/NullDoc.cpp": {
+   "source": "rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ChildFrm.cpp": {
+   "source": "rebuild/2008-06/native-classes/CChildFrame.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ScriptDoc.cpp": {
+   "source": "rebuild/2008-06/native-classes/CScriptEditor.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/SettingsDialog.cpp": {
+   "source": "rebuild/2008-06/native-classes/CSettingsDialog.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/RobloxDoc.cpp": {
+   "source": "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Color.cpp": {
+   "source": "rebuild/2008-06/native-classes/ColorNamed.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8kernel/Constants.cpp": {
+   "source": "rebuild/2008-06/native-classes/ConstantsJoint.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/Controller.cpp": {
+   "source": "rebuild/2008-06/native-classes/ControllerValue.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/DataBlockEncryptor.cpp": {
+   "source": "rebuild/2008-06/native-classes/DataBlockEncryptor2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Debug.cpp": {
+   "source": "rebuild/2008-06/native-classes/DebugableDump.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/app/tool/DragTool.cpp": {
+   "source": "rebuild/2008-06/native-classes/DragTool.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/FileSystem.cpp": {
+   "source": "rebuild/2008-06/native-classes/FileSystem.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Capsule.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DCapsule.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/CollisionDetection.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DCollisionDetection.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Color3uint8.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DColor3uint8.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Color4.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DColor4.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Crypto.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DCrypto.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/glg3dcpp/DDSTexture.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DDDSTexture.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/glg3dcpp/DXCaps.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DDXCaps.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Draw.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DDraw.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GCamera.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DGCamera.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GLight.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DGLight.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/GPUProgram.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DGPUProgram.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/GWindow.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DGWindow.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/LightingParameters.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DLightingParameters.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Line.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DLine.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/LineSegment.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DLineSegment.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Log.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DLog.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Matrix4.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DMatrix4.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/MeshAlg.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DMeshAlg.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/MeshAlgAdjacency.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DMeshAlgAdjacency.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/MeshAlgWeld.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DMeshAlgWeld.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Milestone.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DMilestone.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Plane.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DPlane.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Shader.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DShader.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Sky.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DSky.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Sphere.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DSphere.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Stopwatch.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DStopwatch.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Texture.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DTexture.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/TextureFormat.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DTextureFormat.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/TextureManager.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DTextureManager.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/VARArea.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DVARArea.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Vector3int16.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DVector3int16.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Vector4.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DVector4.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/debugAssert.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DdebugAssert.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/fileutils.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3Dfileutils.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/format.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3Dformat.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/g3dmath.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3Dg3dmath.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/getOpenGLState.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3DgetOpenGLState.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/glcalls.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3Dglcalls.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/prompt.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3Dprompt.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/stringutils.cpp": {
+   "source": "rebuild/2008-06/native-classes/G3Dstringutils.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/GlueJoint.cpp": {
+   "source": "rebuild/2008-06/native-classes/GlueJointKernel.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/GuiBuilder.cpp": {
+   "source": "rebuild/2008-06/native-classes/GuiHudBuilder2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/Guid.cpp": {
+   "source": "rebuild/2008-06/native-classes/Guid.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp": {
+   "source": "rebuild/2008-06/native-classes/HitTestShapes.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/DS_HuffmanEncodingTree.cpp": {
+   "source": "rebuild/2008-06/native-classes/HuffmanEncodingTree.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/humanoid/Humanoid.cpp": {
+   "source": "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/IMoving.cpp": {
+   "source": "rebuild/2008-06/native-classes/IMovingManager.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8world/IPipelined.cpp": {
+   "source": "rebuild/2008-06/native-classes/IPipelined2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/RobloxView.cpp": {
+   "source": "rebuild/2008-06/native-classes/Inferred_00458ea0.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/renderlib/RenderSurface.cpp": {
+   "source": "rebuild/2008-06/native-classes/Inferred_00503ea0.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/clump.cpp": {
+   "source": "rebuild/2008-06/native-classes/Inferred_005e6240.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcapimin.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcapimin.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcapistd.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcapistd.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jccoefct.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjccoefct.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcdctmgr.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcdctmgr.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jchuff.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjchuff.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcinit.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcinit.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcmainct.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcmainct.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcmarker.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcmarker.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcmaster.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcmaster.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcomapi.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcomapi.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcparam.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcparam.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcphuff.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcphuff.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcprepct.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcprepct.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcsample.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjcsample.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdapimin.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdapimin.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdapistd.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdapistd.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdcolor.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdcolor.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jddctmgr.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjddctmgr.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdhuff.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdhuff.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdinput.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdinput.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdmainct.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdmainct.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdmarker.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdmarker.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdmaster.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdmaster.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdmerge.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdmerge.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdphuff.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdphuff.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdpostct.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdpostct.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdsample.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjdsample.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jerror.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjerror.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jfdctflt.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjfdctflt.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jfdctfst.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjfdctfst.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jfdctint.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjfdctint.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jidctflt.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjidctflt.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jidctfst.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjidctfst.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jidctint.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjidctint.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jidctred.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjidctred.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jmemansi.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjmemansi.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jmemmgr.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjmemmgr.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jquant1.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjquant1.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jquant2.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjquant2.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/ijg/jutils.c": {
+   "source": "rebuild/2008-06/native-classes/Jpegjutils.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/LDrawParser.cpp": {
+   "source": "rebuild/2008-06/native-classes/LDrawParser.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/IndexBox.cpp": {
+   "source": "rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Log.cpp": {
+   "source": "rebuild/2008-06/native-classes/Leaves2008Log.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/standardout.cpp": {
+   "source": "rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/script/LuaAtomicClasses.cpp": {
+   "source": "rebuild/2008-06/native-classes/LuaBridge2008Atomic.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/script/LuaInstanceBridge.cpp": {
+   "source": "rebuild/2008-06/native-classes/LuaBridge2008Instance.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/script/LuaSignalBridge.cpp": {
+   "source": "rebuild/2008-06/native-classes/LuaBridge2008Signal.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/lua-5.1.1/src/lapi.c": {
+   "source": "rebuild/2008-06/native-classes/LuaRobloxLapi.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/lua-5.1.1/src/lauxlib.c": {
+   "source": "rebuild/2008-06/native-classes/LuaRobloxLauxlib.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Matrix3.cpp": {
+   "source": "rebuild/2008-06/native-classes/Matrix3.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/boost_1_34_1/libs/python/src/object/class.cpp": {
+   "source": "rebuild/2008-06/native-classes/MetadataClass.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/RakNetTypes.cpp": {
+   "source": "rebuild/2008-06/native-classes/NetworkID.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/network/raknet30/source/NetworkIDManager.cpp": {
+   "source": "rebuild/2008-06/native-classes/NetworkIDManager2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Rect.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreAuto_RBX_Rect.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxEntity.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreRbxEntityCamera2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/resource.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreRbxEntityClear2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/PluginInterface.cpp": {
+   "source": "rebuild/2008-06/native-classes/PluginInterface.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngrio.c": {
+   "source": "rebuild/2008-06/native-classes/Png5pngrio.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngwio.c": {
+   "source": "rebuild/2008-06/native-classes/Png5pngwio.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/png.c": {
+   "source": "rebuild/2008-06/native-classes/Png6png.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngerror.c": {
+   "source": "rebuild/2008-06/native-classes/Png6pngerror.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/pngget.c": {
+   "source": "rebuild/2008-06/native-classes/Png6pngget.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngmem.c": {
+   "source": "rebuild/2008-06/native-classes/Png6pngmem.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngread.c": {
+   "source": "rebuild/2008-06/native-classes/Png6pngread.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngrutil.c": {
+   "source": "rebuild/2008-06/native-classes/Png6pngrutil.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngset.c": {
+   "source": "rebuild/2008-06/native-classes/Png6pngset.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngrtran.c": {
+   "source": "rebuild/2008-06/native-classes/Png7pngrtran.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/pngtrans.c": {
+   "source": "rebuild/2008-06/native-classes/Png7pngtrans.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngwtran.c": {
+   "source": "rebuild/2008-06/native-classes/Png7pngwtran.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/png/pngwutil.c": {
+   "source": "rebuild/2008-06/native-classes/Png7pngwutil.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/gui/ProfanityFilter.cpp": {
+   "source": "rebuild/2008-06/native-classes/ProfanityFilter.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/client/app/util/Profiling.cpp": {
+   "source": "rebuild/2008-06/native-classes/Profiling.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/BitStream.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakBitStream2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/network/raknet30/source/CheckSum.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakCheckSum2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/GetTime.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakGetTime2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/RPCMap.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakRPCMap2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/Rand.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakRand2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/rijndael.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakRijndael2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/SHA1.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakSHA12008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/network/raknet30/source/RakSleep.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakSleep2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/StringTable.cpp": {
+   "source": "rebuild/2008-06/native-classes/RakStringTable.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/appdraw/DrawAdorn.cpp": {
+   "source": "rebuild/2008-06/native-classes/ResizeToolRender.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/Chunk.cpp": {
+   "source": "rebuild/2008-06/native-classes/SceneManager2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ScintillaCtrl.cpp": {
+   "source": "rebuild/2008-06/native-classes/ScintillaCtrl.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/IEquipable.cpp": {
+   "source": "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/security/SecurityContext.cpp": {
+   "source": "rebuild/2008-06/native-classes/SecurityContext.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/SimpleMutex.cpp": {
+   "source": "rebuild/2008-06/native-classes/SimpleMutex.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/SocketLayer.cpp": {
+   "source": "rebuild/2008-06/native-classes/SocketLayer.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/spatialhash.cpp": {
+   "source": "rebuild/2008-06/native-classes/SpatialHash2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/StringCompressor.cpp": {
+   "source": "rebuild/2008-06/native-classes/StringCompressor.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/boost.cpp": {
+   "source": "rebuild/2008-06/native-classes/ThreadNameStorage.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/ToolMouseCommand.cpp": {
+   "source": "rebuild/2008-06/native-classes/ToolMouseCommand.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rbxview/BrickMesh.cpp": {
+   "source": "rebuild/2008-06/native-classes/ViewNewBrickMeshBuild2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rbxview/FileMesh.cpp": {
+   "source": "rebuild/2008-06/native-classes/ViewNewFileMesh.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rbxview/MaterialFactory.cpp": {
+   "source": "rebuild/2008-06/native-classes/ViewNewMaterialFactory2008.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/rbxview/TorsoMesh.cpp": {
+   "source": "rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/gui/Widget.cpp": {
+   "source": "rebuild/2008-06/native-classes/Widget.cpp",
+   "status": "verbatim-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/gui/Button.cpp": {
+   "source": "rebuild/2008-06/native-classes/WidgetButtons.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8world/mutiljoint.cpp": {
+   "source": "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.h": {
+   "source": "rebuild/2008-06/native-headers/ActiveDocView.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/base64.hpp": {
+   "source": "rebuild/2008-06/native-headers/AppUnit58C/base64.hpp",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ChatEnter.h": {
+   "source": "rebuild/2008-06/native-headers/ChatEnter.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ClipboardVerbs.h": {
+   "source": "rebuild/2008-06/native-headers/ClipboardVerbs.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/glg3d/RenderDevice.h": {
+   "source": "rebuild/2008-06/native-headers/GLG3D/RenderDevice.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/win/LogManager.h": {
+   "source": "rebuild/2008-06/native-headers/LogManager.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/MTUSize.h": {
+   "source": "rebuild/2008-06/native-headers/MTUSize.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreSceneManager.h": {
+   "source": "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreMath.h": {
+   "source": "rebuild/2008-06/native-headers/OgreRbxEntityImports/OgreMath.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreVector3.h": {
+   "source": "rebuild/2008-06/native-headers/OgreRbxEntityImports/OgreVector3.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/rakpeer.h": {
+   "source": "rebuild/2008-06/native-headers/RakPeer.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/RakPeerInterface.h": {
+   "source": "rebuild/2008-06/native-headers/RakPeerInterface.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/Adorn.h": {
+   "source": "rebuild/2008-06/native-headers/RbxGraphics/Adorn.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.h": {
+   "source": "rebuild/2008-06/native-headers/ReliabilityLayer.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/Profiler.h": {
+   "source": "rebuild/2008-06/native-headers/RenderLib/Profiler.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/network/replicator.h": {
+   "source": "rebuild/2008-06/native-headers/Replicator.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/VerbBinder.h": {
+   "source": "rebuild/2008-06/native-headers/VerbBinder.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/win/VersionInfo.h": {
+   "source": "rebuild/2008-06/native-headers/VersionInfo.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/rbxview/BevelMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/CylinderMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/FileMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/FileMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/HeadMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/MeshFactory.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/PBBMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/QuadVolume.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/SphereMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/TorsoMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rbxview/WedgeMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.h": {
+   "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl": {
+   "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/detail/shared_count.hpp": {
+   "source": "rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/function/function_base.hpp": {
+   "source": "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/function/function_template.hpp": {
+   "source": "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Utilities.h": {
+   "source": "rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8world/contactmanager.h": {
+   "source": "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8world/World.h": {
+   "source": "rebuild/2008-06/native-headers/engine-world/v8world/World.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/BinaryOutput.h": {
+   "source": "rebuild/2008-06/native-headers/g3d-binary-output-2008/G3D/BinaryOutput.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/GImage.h": {
+   "source": "rebuild/2008-06/native-headers/g3d-image-2008/G3D/GImage.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/ArrowPanel.h": {
+   "source": "rebuild/2008-06/native-headers/gui/ArrowPanel.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/ChatOutput.h": {
+   "source": "rebuild/2008-06/native-headers/gui/ChatOutput.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/EquationDisplay.h": {
+   "source": "rebuild/2008-06/native-headers/gui/EquationDisplay.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/GUI.h": {
+   "source": "rebuild/2008-06/native-headers/gui/Gui.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/HealthHud.h": {
+   "source": "rebuild/2008-06/native-headers/gui/HealthHud.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/gui/ScoreHud.h": {
+   "source": "rebuild/2008-06/native-headers/gui/ScoreHud.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/humanoid/Humanoid.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/Humanoid.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/IStage.h": {
+   "source": "rebuild/2008-06/native-headers/kernel-stages/v8kernel/IStage.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/script/ThreadRef.h": {
+   "source": "rebuild/2008-06/native-headers/luafunction-threadref/script/ThreadRef.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8xml/SerializerV2.h": {
+   "source": "rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8world/Primitive.h": {
+   "source": "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Matrix3.h": {
+   "source": "rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/TextureProxyBase.h": {
+   "source": "rebuild/2008-06/native-headers/partchunk-profile/RbxGraphics/TextureProxyBase.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/reflection/descriptor.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/descriptor.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/reflection/enumconverter.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/enumconverter.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/app/include/reflection/function.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/function.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/reflection/member.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/member.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/security/SecurityContext.h": {
+   "source": "rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/script/Script.h": {
+   "source": "rebuild/2008-06/native-headers/script/Script.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/script/ScriptContext.h": {
+   "source": "rebuild/2008-06/native-headers/script/ScriptContext.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/ContentProvider.h": {
+   "source": "rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/tool/DragTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/DragTool.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/tool/GroupDragTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/GroupDragTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/tool/MegaDragger.h": {
+   "source": "rebuild/2008-06/native-headers/tool/MegaDragger.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/tool/NullTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/NullTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/tool/PartDragTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/PartDragTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/tool/ToolsArrow.h": {
+   "source": "rebuild/2008-06/native-headers/tool/ToolsArrow.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/DxUserInput.h": {
+   "source": "rebuild/2008-06/native-headers/util/DxUserInput.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Events.h": {
+   "source": "rebuild/2008-06/native-headers/util/Events.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/FileSystem.h": {
+   "source": "rebuild/2008-06/native-headers/util/FileSystem.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Handle.h": {
+   "source": "rebuild/2008-06/native-headers/util/Handle.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/IRenderable.h": {
+   "source": "rebuild/2008-06/native-headers/util/IRenderable.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/LDrawParser.h": {
+   "source": "rebuild/2008-06/native-headers/util/LDrawParser.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/MarshalWindow.h": {
+   "source": "rebuild/2008-06/native-headers/util/MarshalWindow.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.h": {
+   "source": "rebuild/2008-06/native-headers/util/MarshaledListener.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Name.h": {
+   "source": "rebuild/2008-06/native-headers/util/Name.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Profiling.h": {
+   "source": "rebuild/2008-06/native-headers/util/Profiling.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/RunStateOwner.h": {
+   "source": "rebuild/2008-06/native-headers/util/RunStateOwner.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Sound.h": {
+   "source": "rebuild/2008-06/native-headers/util/Sound.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/UserInputBase.h": {
+   "source": "rebuild/2008-06/native-headers/util/UserInputBase.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Vector6.h": {
+   "source": "rebuild/2008-06/native-headers/util/Vector6.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/scopedassign.h": {
+   "source": "rebuild/2008-06/native-headers/util/scopedassign.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Backpack.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Backpack.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Camera.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Camera.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Explosion.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Explosion.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/ICharacterSubject.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/ICharacterSubject.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/LocalBackpack.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/LocalBackpack.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/ModelInstance.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Mouse.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Mouse.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/PVInstance.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Surface.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Surface.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Surfaces.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Surfaces.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Tool.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Tool.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/ToolMouseCommand.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/ToolMouseCommand.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Visit.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Visit.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Workspace.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Workspace.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/custommesh.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/custommesh.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8kernel/Connector.h": {
+   "source": "rebuild/2008-06/native-headers/v8kernel/Connector.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8tree/Service.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/Service.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8tree/Verb.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/Verb.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8xml/XmlElement.h": {
+   "source": "rebuild/2008-06/native-headers/v8xml/XmlElement.h",
+   "status": "clean (token-identical)"
+  }
+ }
+}

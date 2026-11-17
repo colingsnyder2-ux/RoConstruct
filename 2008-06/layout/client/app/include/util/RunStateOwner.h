@@ -1,4 +1,3 @@
-// Inactive candidate: fields follow recovered 00556b00 constructor.
 #pragma once
 #include "reflection/reflection.h"
 #include "reflection/signal.h"

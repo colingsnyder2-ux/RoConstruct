@@ -1,6 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// Donor-derived TU (rbxgs v8datamodel/ToolMouseCommand.cpp) on the native headers with the 2008 compiler; exact functions verified by
-// check_native_class.py (inactive range evidence, not identity/layout gated).
 #include "v8datamodel/ToolMouseCommand.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Tool.h"
@@ -47,7 +44,7 @@ namespace RBX
 	void ToolMouseCommand::updateTargetPoint(const UIEvent& uiEvent)
 	{
 		G3D::Vector3 hitWorld;
-		
+
 		Humanoid* humanoid = Humanoid::getLocalHumanoidFromContext(tool.get());
 		if (!humanoid)
 			return;
