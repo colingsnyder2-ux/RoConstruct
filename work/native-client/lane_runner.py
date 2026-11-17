@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent'])
 ap.add_argument('--jobs', type=int, default=8)
 args = ap.parse_args()
 
@@ -72,7 +72,10 @@ if args.lane == 'failures':
         except (ValueError, OSError):
             pass
     r = results()
-    fail = [a for a, v in r.items() if v['status'] in ('compile_failed', 'rejected-header-add', 'no-class-header') and a in cl]
+    # Token budget: no-class-header needs class recovery (agent/subagent), and a target with 3+ lane runs waits for a
+    # header change instead of burning more model calls.
+    fail = [a for a, v in r.items() if v['status'] in ('compile_failed', 'rejected-header-add') and a in cl
+            and v.get('runs', 1) < 3]
     for a in fail:
         del r[a]
     (HERE / 'placeholder-lane/results.json').write_text(json.dumps(r, indent=1))
@@ -108,6 +111,14 @@ elif args.lane == 'layout':
     run([PY, 'native_class_lane.py', '--jobs', args.jobs], cwd=HERE)
 
 elif args.lane == 'promote':
+    hits_path = HERE / 'flag-sweep-hits.json'          # flag-sweep exacts: merge into results.json with their flags
+    if hits_path.is_file():
+        r = results()
+        for addr, hit in json.loads(hits_path.read_text()).items():
+            r.setdefault(addr, {'model': 'flag-sweep'}).update(status='inactive_exact', flags=hit['flags'],
+                                                                **({'class': hit['cls'], 'decl': hit['decl']} if hit.get('cls') else {}))
+        (HERE / 'placeholder-lane/results.json').write_text(json.dumps(r, indent=1))
+        print('merged %d flag-sweep exacts' % len(json.loads(hits_path.read_text())), flush=True)
     run([PY, 'promote_header_adds.py'], cwd=HERE)
     run([PY, 'native_placeholder_promote.py'], cwd=HERE)
     _, status = run(['git', 'status', '--short', 'rebuild/2008-06/native-classes'])
@@ -141,6 +152,45 @@ elif args.lane == 'census':
     run([PY, '-c', 'from roc import integration_site, server; import shutil; '
                    'r = integration_site.build(); print({k: v["functions"] for k, v in r["groups"].items()}); '
                    'server.publish_pages(shutil.which("git"))'])
+
+elif args.lane == 'flags':
+    run([PY, 'flag_sweep.py', '--jobs', args.jobs], cwd=HERE)
+
+elif args.lane == 'auto':
+    # Unattended cycle: regate -> header-add failures -> class layout -> flag sweep -> promote -> census + publish,
+    # repeated; each cycle counts its gains on the site (census takes minutes since the parallel/per-file cache work).
+    for cycle in range(1, 100):
+        print('=== auto cycle %d ===' % cycle, flush=True)
+        for lane in ('regate', 'failures', 'layout', 'flags', 'promote', 'census'):
+            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', args.jobs])
+        if (HERE / 'native-llm' / 'STOP').is_file():
+            print('STOP file present: ending auto cycles', flush=True)
+            break
+
+elif args.lane == 'agent':
+    # One headless Claude Code (Sonnet) class-recovery task per run, from work/native-client/agent-class-queue.json
+    # (list of {"class": ..., "brief": ...}); same constrained brief as the class subagents; tool allowlist only.
+    queue_path = HERE / 'agent-class-queue.json'
+    queue = json.loads(queue_path.read_text()) if queue_path.is_file() else []
+    if not queue:
+        sys.exit('agent-class-queue.json is empty')
+    task = queue.pop(0)
+    queue_path.write_text(json.dumps(queue, indent=1))
+    brief = (task.get('brief') or '') + '''
+
+Rules (from CLAUDE.md): real native headers and member names, `// INFERRED: <evidence>` on inferred members, no padding
+arrays, no (char*)this+offset access, no invented globals, no __emit/asm. Lease files with `roc.cmd lease take`. Prove
+with `python work/native-client/prove.py <file> --rounds 1 --no-register` (never --all). Never edit roc/native_bulk.py,
+roc/match.py, roc/rebuild.py, rebuild/2008-06/tests/native_check_runner.py, the core headers v8tree/Instance.h,
+v8datamodel/DataModel.h, util/Events.h, reflection/*.h, or ogre-native-full-inventory-all.json. Append addr->symbol pairs
+of exact functions to work/native-client/class-identity-bindings.json and new .cpp paths to
+work/native-client/class-lane-new-sources.json. Commit locally (message ending with
+`Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`), never push. Stop after about 2 hours.'''
+    tools = ['Read', 'Edit', 'Write', 'Grep', 'Glob', 'Bash(python:*)', 'Bash(roc.cmd:*)', 'Bash(./roc.cmd:*)',
+             'Bash(git add:*)', 'Bash(git commit:*)', 'Bash(git status:*)', 'Bash(git diff:*)', 'Bash(ls:*)', 'Bash(cat:*)']
+    print('agent task: %s' % task.get('class'), flush=True)
+    run(['claude', '-p', 'Class recovery task for %s.\n%s' % (task.get('class'), brief), '--model', 'sonnet',
+         '--permission-mode', 'acceptEdits', '--allowedTools', *tools])
 
 elif args.lane == 'classify':
     run([PY, 'work/native-client/classify_remaining.py', '--refresh'])

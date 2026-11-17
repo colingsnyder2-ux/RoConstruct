@@ -110,7 +110,7 @@ def promote(addr, row):
                 '// INFERRED: %s (placeholder name for %08x from the identity tier; body byte-proved against the native '
                 'headers by the placeholder lane)' % ((cls + '::' if cls else '') + 'sub_' + addr, int(addr, 16)))
         tu.write_text('// native-flags: %s%s\n%s\n%s%s\n%s\n'
-                      % (FLAGS, ''.join(' /D' + g for g in guards), note,
+                      % (row.get('flags') or FLAGS, ''.join(' /D' + g for g in guards), note,
                          ''.join('#define %s\n' % g for g in guards), text, body.strip()))
         work = LANE / addr / 'promote'
         needle = 'sub_' + addr

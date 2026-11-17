@@ -553,7 +553,8 @@ todo = todo[:args.limit or None]
 print('placeholder targets', len(todo), flush=True)
 with ThreadPoolExecutor(args.jobs) as pool:
     for addr, size, status, model, detail, cls, decl in pool.map(run, todo):
-        results[addr] = {'status': status, 'model': model, 'class': cls, 'decl': decl, 'detail': detail[-500:],
+        runs = results.get(addr, {}).get('runs', 0) + 1     # lane runs on this target (token budget)
+        results[addr] = {'status': status, 'model': model, 'class': cls, 'decl': decl, 'detail': detail[-500:], 'runs': runs,
                          'header_add': [list(a) for a in LAST_ADDS.get(addr, [])]}
         RESULTS.write_text(json.dumps(results, indent=1))
         record(addr, size, status, model, cls, decl)

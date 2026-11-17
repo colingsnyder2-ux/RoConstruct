@@ -1,0 +1,14 @@
+[
+ {
+  "class": "RBX::SleepStage",
+  "brief": "Recover RBX::SleepStage's remaining functions (0064a660, 0064a5f0, 0064a790 and others in work/native-client/remaining-classified.json). The fuller header is rebuild/2008-06/native-world/App/include/v8world/SleepStage.h; it needs Assembly::getMaxRadius / getSleepInfo (a 2008 'Assembly' is really a Clump, no Assembly RTTI)."
+ },
+ {
+  "class": "RBX::Render::RenderScene",
+  "brief": "Recover RBX::Render::RenderScene functions (00504290, 00502b00 and others): the native header is RenderLib/RenderScene2008.h (not the Ogre RenderSceneNew2008.h)."
+ },
+ {
+  "class": "RBX::World",
+  "brief": "Recover RBX::World::step (005e9fd0) and 005ea920 using the fuller rebuild/2008-06/native-headers/engine-world/v8world/World.h."
+ }
+]
