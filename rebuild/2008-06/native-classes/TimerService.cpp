@@ -90,3 +90,6 @@ template class std::allocator<std::_List_nod<RBX::TimerService::Item,std::alloca
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sTimerService>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sTimerService>();
