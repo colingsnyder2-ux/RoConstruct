@@ -3,5 +3,6 @@
  "rebuild/2008-06/native-classes/SpatialHash2008.cpp",
  "rebuild/2008-06/native-classes/BoostFunctionBindTemplates2008.cpp",
  "rebuild/2008-06/native-classes/BoostFunctionBindCtors2008.cpp",
- "rebuild/2008-06/native-classes/CreatableServiceTemplates2008.cpp"
+ "rebuild/2008-06/native-classes/CreatableServiceTemplates2008.cpp",
+ "rebuild/2008-06/native-classes/BoundFuncDescDHTMLBind2008.cpp"
 ]

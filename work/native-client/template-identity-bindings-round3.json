@@ -138,6 +138,78 @@
    "address": "007c2b60",
    "identity_evidence": "push -1; push handler prologue immediate of original body 0045b790",
    "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?execute@?$BoundFuncDesc@VScriptContext@RBX@@$$A6AXN@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "007d2ce8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 005ada90",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?execute@?$BoundFuncDesc@VInstance@RBX@@$$A6A_NV?$shared_ptr@VInstance@RBX@@@boost@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "007d2ce8",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0055a390",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?classDescriptor@?$Described@VServer@Network@RBX@@$1?sServer@23@3PADAV?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+   "address": "007c768e",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0049eba0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$list2@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@_bi@boost@@V?$value@P8CLuaHtmlView@@AEXXZ@23@@_bi@boost@@QAE@V?$value@V?$shared_ptr@VDHTMLWindow@@@boost@@@12@V?$value@P8CLuaHtmlView@@AEXXZ@12@@Z",
+   "address": "007c6168",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 004180c0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXHH@ZPBD11W4Security@FunctionDescriptor@12@@Z",
+   "address": "007ce39e",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 005c5050",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "007be140",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0041c2b0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?bind@DHTMLWindow@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z",
+   "address": "007be29d",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0041d0a0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?execute@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "007be188",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0041c610",
+   "votes": 1
+  },
+  {
+   "symbol": "??$call@X@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@ABEXPAVDHTMLWindow@@AAVValue@12@111@Z",
+   "address": "0041c560",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$call@X@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@ABEXPAVDHTMLWindow@@AAVValue@12@111@Z",
+   "address": "007be162",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0041c560",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXHH@ZPBD11W4Security@FunctionDescriptor@12@@Z",
+   "address": "0041c220",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "?declareSignature@?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@AAEXPBD0@Z",
+   "address": "00416eb0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
   }
  ]
 }
