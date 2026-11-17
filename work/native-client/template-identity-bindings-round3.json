@@ -1,0 +1,143 @@
+{
+ "scope": "template-instantiation identity evidence (callee addresses read from the original calls of exact-by-bytes owners)",
+ "identity_bindings": [
+  {
+   "symbol": "??$assign_to@V?$bind_t@XV?$mf1@XVAccoutrement@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVAccoutrement@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVAccoutrement@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVAccoutrement@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "005b17d0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$assign_to@V?$bind_t@XV?$mf1@XVTool@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTool@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVTool@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTool@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "005fe440",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$assign_to@V?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "00618df0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$assign_to@V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@AAEXABV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "0063cd30",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVAccoutrement@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVAccoutrement@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "005b1720",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "00618cd0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVTool@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTool@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "00618cd0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "0063cc30",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVAccoutrement@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVAccoutrement@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "007c0418",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 005b1720",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVTool@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTool@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "007c0418",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00618cd0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "007c0418",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00618cd0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?invoke@?$void_function_obj_invoker1@V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@@Z",
+   "address": "007c0418",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0063cc30",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0V?$bind_t@XV?$mf1@XVAccoutrement@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVAccoutrement@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVAccoutrement@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVAccoutrement@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "007d919e",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 005b1ca0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0V?$bind_t@XV?$mf1@XVTool@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTool@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVTool@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTool@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "007d919e",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 005febb0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0V?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "007d919e",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00619290",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+   "address": "007d919e",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0063ce60",
+   "votes": 1
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf0@XVFlag@RBX@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VFlag@RBX@@@boost@@@_bi@boost@@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+   "address": "00618e50",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$create@VControllerService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VControllerService@RBX@@@boost@@XZ",
+   "address": "0045c580",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0VControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VControllerService@RBX@@@boost@@QAE@PAVControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+   "address": "0045c1a0",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$create@VControllerService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VControllerService@RBX@@@boost@@XZ",
+   "address": "007d463b",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0045c580",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0PAVControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "address": "0045b790",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0VControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VControllerService@RBX@@@boost@@QAE@PAVControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+   "address": "007bfdab",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0045c1a0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0PAVControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVControllerService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "address": "007c2b60",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0045b790",
+   "votes": 1
+  }
+ ]
+}
