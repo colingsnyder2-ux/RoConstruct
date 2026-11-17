@@ -132,6 +132,10 @@ namespace RBX
 		{
 			geoPair.setEdgeEdge(offset0, offset1, norm0, norm1);
 		}
+		void setEdgeEdgePlane(const G3D::Vector3* offset0, const G3D::Vector3* offset1, NormalId norm0, NormalId norm1, NormalId planeID, float edgeLength)   // INFERRED: forwards to geoPair (+0x8)
+		{
+			geoPair.setEdgeEdgePlane(offset0, offset1, norm0, norm1, planeID, edgeLength);
+		}
 		void setBody(int i, Body* b)   // INFERRED: analog name, forwards to geoPair (+0x8)
 		{
 			geoPair.setBody(i, b);

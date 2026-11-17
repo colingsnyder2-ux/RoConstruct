@@ -122,6 +122,36 @@ namespace RBX
 			edgeNormal1);
 	}
 
+	// 00608030: donor v8world/Contact.cpp body; the 2008 setEdgeEdgePlane leaves the bodies to matchContactConnector.
+	// Not exact yet: 296 B, same size; edgeLength / planeID are spilled as in the original ([esp+0x14] / [esp+0x10]
+	// slots swapped) but the second getEdgeVertex argument load and the +0xc / +0x10 store order are scheduled
+	// differently. Rejected: no locals (292 B, no spill), only the block pointer in a local (same diff), offset1 in
+	// a named local (308 B), local declaration order swapped (296 B, planeID load moves before the block load).
+	void BlockBlockContact::loadGeoPairEdgeEdgePlane(int edgeBody, int planeBody, int edge0, int edge1)
+	{
+		NormalId edgeNormal0 = block(edgeBody)->getEdgeNormal(edge0);
+		NormalId edgeNormal1 = block(planeBody)->getEdgeNormal(edge1);
+
+		ContactConnector* matched = matchContactConnector(
+			getPrimitive(edgeBody)->getBody(),
+			getPrimitive(planeBody)->getBody(),
+			EDGE_EDGE_PLANE_PAIR,
+			edgeNormal0,
+			edgeNormal1);
+
+		const G3D::Vector3& gridSize = getPrimitive(edgeBody)->getGeometry()->getGridSize();
+		float edgeLength = gridSize[edgeNormal0 % 3];
+		NormalId plane = planeID;
+
+		matched->setEdgeEdgePlane(
+			block(edgeBody)->getEdgeVertex(edge0),
+			block(planeBody)->getEdgeVertex(edge1),
+			edgeNormal0,
+			edgeNormal1,
+			plane,
+			edgeLength);
+	}
+
 	// 00608830: separation -1.0f (0081c3b8) when colliding, else 1e9 (0082d030); then updateConnectors 006087a0.
 	bool BlockBlockContact::stepContact()
 	{
