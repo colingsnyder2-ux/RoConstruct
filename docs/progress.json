@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15 05:40 UTC",
+ "updated": "2026-11-17 15:21 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -289,10 +289,10 @@
    "partial": 0,
    "source_matched": 13824,
    "mined_matched": 8469,
-   "bytes": 3738870,
-   "matched_bytes": 3738870,
+   "bytes": 3738895,
+   "matched_bytes": 3738895,
    "source_bytes": 2787314,
-   "mined_bytes": 951556,
+   "mined_bytes": 951581,
    "partial_bytes": 0,
    "data_bytes": 1559926,
    "leaderboard": [
@@ -479,7 +479,7 @@
    ],
    "data_matched_bytes": 207065,
    "classes": 1488,
-   "generated": 18903
+   "generated": 18902
   },
   {
    "name": "2009-06",
