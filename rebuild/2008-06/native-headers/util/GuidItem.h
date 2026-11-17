@@ -11,6 +11,8 @@ public:
     GuidItem() : registeredGuid(false) {}
     ~GuidItem();
     void registerGuid();
+    // INFERRED: Replicator item writers 004b47b0/004b8620/004b6d10 read the guid inline (`lea ecx,[instance+8]`)
+    const Guid& getGuid() const { return guid; }
 protected:
     virtual void onGuidChanged() {}
     bool registeredGuid;

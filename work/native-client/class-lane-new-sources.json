@@ -120,5 +120,6 @@
  "rebuild/2008-06/native-classes/NotifierRaiseTemplatesB2008.cpp",
  "rebuild/2008-06/native-classes/PXEnumTemplates2008.cpp",
  "rebuild/2008-06/native-classes/NetworkReplicator2008Items.cpp",
- "rebuild/2008-06/native-classes/ScriptContext2008State.cpp"
+ "rebuild/2008-06/native-classes/ScriptContext2008State.cpp",
+ "rebuild/2008-06/native-classes/CRobloxWndWindow.cpp"
 ]

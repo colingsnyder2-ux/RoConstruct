@@ -58,6 +58,8 @@ public:
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded;     // 00973e90 (registry symbol)
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childRemoved;   // 00973c6c (registry symbol)
     Instance();
     explicit Instance(const char*);
     virtual ~Instance();
@@ -84,6 +86,9 @@ public:
     const Instance* getRootAncestor() const { return parent ? parent->getRootAncestor() : this; }
     Instance* getRootAncestor() { return parent ? parent->getRootAncestor() : this; }
     bool isDescendentOf(const Instance*) const; // 00422ae0
+private:
+    void predelete();   // 0055b060 ?predelete@Instance@RBX@@AAEXXZ (private, registry symbol)
+public:
     // 00423700; name provisional
     bool canAcceptChildren(std::vector<boost::shared_ptr<Instance> >::const_iterator,
                            std::vector<boost::shared_ptr<Instance> >::const_iterator);
