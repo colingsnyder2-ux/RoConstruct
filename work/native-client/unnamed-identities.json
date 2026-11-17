@@ -400,11 +400,11 @@
     "sample": [
      [
       "callee",
-      "6"
+      "7"
      ],
      [
       "callee",
-      "7"
+      "6"
      ]
     ],
     "votes": {
@@ -534,6 +534,36 @@
   "name_source": "identity-unlock-bodyhash",
   "owner_class": "CComAggObject",
   "signature": "public: __thiscall ATL::CComAggObject<class CApp>::CComAggObject<class CApp>(void *)"
+ },
+ "004087e0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ",
+     "??1S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7?$CComAggObject@VCApp@@@ATL@@6B@",
+     "?_pAtlModule@ATL@@3PAVCAtlModule@1@A"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "CComAggObject"
+   }
+  ],
+  "kind": "code",
+  "name": "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "CComAggObject",
+  "signature": "public: virtual __thiscall ATL::CComAggObject<class CApp>::~CComAggObject<class CApp>(void)"
  },
  "00408a70": {
   "evidence": [
@@ -963,6 +993,97 @@
   "owner_class": "CComAggObject",
   "signature": "public: __thiscall ATL::CComAggObject<class CContent>::CComAggObject<class CContent>(void *)"
  },
+ "00416ca0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
+     "??1S@@UAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7?$CComAggObject@VCContent@@@ATL@@6B@",
+     "?_pAtlModule@ATL@@3PAVCAtlModule@1@A",
+     "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "CComAggObject"
+   }
+  ],
+  "kind": "code",
+  "name": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "CComAggObject",
+  "signature": "public: virtual __thiscall ATL::CComAggObject<class CContent>::~CComAggObject<class CContent>(void)"
+ },
+ "00417360": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0FunctionRef@Lua@RBX@@QAE@XZ",
+     "??0S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7FunctionRef@Lua@RBX@@6B@",
+     "??_7ThreadRef@Lua@RBX@@6B@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0FunctionRef@Lua@RBX@@QAE@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "FunctionRef"
+   }
+  ],
+  "kind": "code",
+  "name": "??0FunctionRef@Lua@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "FunctionRef",
+  "signature": "public: __thiscall RBX::Lua::FunctionRef::FunctionRef(void)"
+ },
+ "004179b0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0CLuaFunction@@QAE@XZ",
+     "??0S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7FunctionRef@Lua@RBX@@6B@",
+     "??_7ThreadRef@Lua@RBX@@6B@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0CLuaFunction@@QAE@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "CLuaFunction"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CLuaFunction@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "CLuaFunction",
+  "signature": "public: __thiscall CLuaFunction::CLuaFunction(void)"
+ },
  "0041b660": {
   "evidence": [
    {
@@ -1171,6 +1292,35 @@
   "name_source": "identity-unlock-align",
   "owner_class": "LogManager",
   "signature": "public: class RBX::Log * __thiscall LogManager::getLog(void)"
+ },
+ "0042a5c0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "?apply@MainLogManager@@QAEXXZ",
+     "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp__GetCurrentThreadId@0"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "MainLogManager"
+   }
+  ],
+  "kind": "code",
+  "name": "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "MainLogManager",
+  "signature": "public: virtual class RBX::Log * __thiscall MainLogManager::provideLog(void)"
  },
  "0042a8a0": {
   "evidence": [
@@ -1956,13 +2106,13 @@
     "sample": [
      [
       "caller",
-      "005a6ef0",
-      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
+      "0058d7e0",
+      "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z"
      ],
      [
       "caller",
-      "005a6ef0",
-      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
+      "0058d7e0",
+      "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z"
      ],
      [
       "caller",
@@ -2653,6 +2803,165 @@
   "name_source": "identity-unlock-align",
   "owner_class": "CSettingsDialog",
   "signature": "public: struct Vector2int16 __thiscall CSettingsDialog::getSize(void)"
+ },
+ "00467530": {
+  "evidence": [
+   {
+    "kind": "object-alignment-vtable",
+    "round": 1,
+    "sample": [
+     [
+      "vtable",
+      "??_7DxUserInput@@6B@",
+      "6"
+     ]
+    ],
+    "votes": {
+     "vtable": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setKeyState@DxUserInput@@UAEXW4SDLKey@@_N@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "DxUserInput"
+   }
+  ],
+  "kind": "code",
+  "name": "?setKeyState@DxUserInput@@UAEXW4SDLKey@@_N@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": "DxUserInput",
+  "signature": "public: virtual void __thiscall DxUserInput::setKeyState(enum SDLKey,bool)"
+ },
+ "00467ad0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "4"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getPosition@DxUserInput@@QAE?AVVector2@G3D@@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "DxUserInput"
+   }
+  ],
+  "kind": "code",
+  "name": "?getPosition@DxUserInput@@QAE?AVVector2@G3D@@XZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": "DxUserInput",
+  "signature": "public: class G3D::Vector2 __thiscall DxUserInput::getPosition(void)"
+ },
+ "00467c50": {
+  "evidence": [
+   {
+    "kind": "object-alignment-vtable",
+    "round": 1,
+    "sample": [
+     [
+      "vtable",
+      "??_7DxUserInput@@6B@",
+      "0"
+     ]
+    ],
+    "votes": {
+     "vtable": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getCursorPosition@DxUserInput@@MAE?AVVector2@G3D@@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "DxUserInput"
+   }
+  ],
+  "kind": "code",
+  "name": "?getCursorPosition@DxUserInput@@MAE?AVVector2@G3D@@XZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": "DxUserInput",
+  "signature": "protected: virtual class G3D::Vector2 __thiscall DxUserInput::getCursorPosition(void)"
+ },
+ "00467cb0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-vtable",
+    "round": 1,
+    "sample": [
+     [
+      "vtable",
+      "??_7DxUserInput@@6B@",
+      "5"
+     ]
+    ],
+    "votes": {
+     "vtable": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?keyDown@DxUserInput@@UBE_NW4SDLKey@@@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "DxUserInput"
+   }
+  ],
+  "kind": "code",
+  "name": "?keyDown@DxUserInput@@UBE_NW4SDLKey@@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": "DxUserInput",
+  "signature": "public: virtual bool __thiscall DxUserInput::keyDown(enum SDLKey)const "
+ },
+ "00469090": {
+  "evidence": [
+   {
+    "kind": "object-alignment-vtable",
+    "round": 1,
+    "sample": [
+     [
+      "vtable",
+      "??_7DxUserInput@@6B@",
+      "4"
+     ]
+    ],
+    "votes": {
+     "vtable": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?centerCursor@DxUserInput@@UAEXXZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "DxUserInput"
+   }
+  ],
+  "kind": "code",
+  "name": "?centerCursor@DxUserInput@@UAEXXZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": "DxUserInput",
+  "signature": "public: virtual void __thiscall DxUserInput::centerCursor(void)"
  },
  "00469fa0": {
   "evidence": [
@@ -3615,6 +3924,35 @@
   "owner_class": "RBX::FactoryProduct<class RBX::NetworkSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sNetworkSettings>::Creator",
   "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::NetworkSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sNetworkSettings>::Creator::create(void)const "
  },
+ "0049ef60": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ",
+     "??1S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": false,
+    "owner_leaf": "args3"
+   }
+  ],
+  "kind": "code",
+  "name": "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "args3",
+  "signature": "public: __thiscall boost::signals::detail::args3<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int>::~args3<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int>(void)"
+ },
  "004a0a70": {
   "evidence": [
    {
@@ -4029,6 +4367,35 @@
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": "void __cdecl checkDisconnect(class RBX::Instance *)"
+ },
+ "004ab090": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+     "??0S@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": false,
+    "owner_leaf": "args2"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "args2",
+  "signature": "public: __thiscall boost::signals::detail::args2<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,int>::args2<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,int>(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)"
  },
  "004ab7f0": {
   "evidence": [
@@ -5645,6 +6012,36 @@
   "owner_class": "BinaryOutput",
   "signature": "private: void __thiscall G3D::BinaryOutput::reserveBytesWhenOutOfMemory(unsigned int)"
  },
+ "00545ca0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@Render@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@Render@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
+     "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
+     "??0Vertex@MeshAlg@G3D@@QAE@ABV012@@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "___security_cookie"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "pair"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "pair",
+  "signature": "public: __thiscall std::pair<struct RBX::RenderBase::AggregatingSceneManager::BucketKey const ,class G3D::ReferenceCountedPointer<class RBX::RenderBase::AggregatingSceneManager::Bucket> >::pair<struct RBX::RenderBase::AggregatingSceneManager::BucketKey const ,class G3D::ReferenceCountedPointer<class RBX::RenderBase::AggregatingSceneManager::Bucket> >(struct std::pair<struct RBX::RenderBase::AggregatingSceneManager::BucketKey const ,class G3D::ReferenceCountedPointer<class RBX::RenderBase::AggregatingSceneManager::Bucket> > const &)"
+ },
  "00559250": {
   "evidence": [
    {
@@ -5773,6 +6170,35 @@
   "owner_class": "Instance",
   "signature": "public: void __thiscall RBX::Instance::promoteChildren(void)"
  },
+ "0055de10": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z",
+     "?Combine@@YA?AUString@@ABU1@PBD@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "?g_strmgr@ATL@@3VCAtlStringMgr@1@A"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "ATL"
+   }
+  ],
+  "kind": "code",
+  "name": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "ATL",
+  "signature": "class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > > __cdecl ATL::operator+(class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > > const &,char const *)"
+ },
  "00560f00": {
   "evidence": [
    {
@@ -5869,6 +6295,35 @@
   "name_source": "identity-unlock-align",
   "owner_class": "ContentProvider",
   "signature": "public: class RBX::ContentId __thiscall RBX::ContentProvider::readContent(char const *,class std::basic_istream<char,struct std::char_traits<char> > &,unsigned long)"
+ },
+ "005631c0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1S@@QAE@XZ",
+     "??1SpecData@Render@RBX@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1SpecData@Render@RBX@@QAE@XZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "SpecData"
+   }
+  ],
+  "kind": "code",
+  "name": "??1SpecData@Render@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "SpecData",
+  "signature": "public: __thiscall RBX::Render::SpecData::~SpecData(void)"
  },
  "00568760": {
   "evidence": [
@@ -6534,18 +6989,18 @@
     "sample": [
      [
       "caller",
-      "0058b6c0",
-      "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      "0058bba0",
+      "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
      ],
      [
       "caller",
-      "0058b6c0",
-      "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      "0058bba0",
+      "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
      ],
      [
       "caller",
-      "0058b6c0",
-      "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      "0058bba0",
+      "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
      ]
     ],
     "votes": {
@@ -6659,6 +7114,41 @@
   "name_source": "identity-unlock-upgrade",
   "owner_class": "FunctionRef",
   "signature": "public: class RBX::Lua::FunctionRef & __thiscall RBX::Lua::FunctionRef::operator=(class RBX::Lua::FunctionRef const &)"
+ },
+ "00599020": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??$?0PBD@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@IAE@PBD@Z",
+     "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z",
+     "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "FactoryProduct"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "FactoryProduct",
+  "signature": "protected: __thiscall RBX::FactoryProduct<class RBX::PartInstance,class RBX::PVInstance,&char * RBX::sPart>::FactoryProduct<class RBX::PartInstance,class RBX::PVInstance,&char * RBX::sPart><char const *>(char const *)"
  },
  "00599250": {
   "evidence": [
@@ -7284,6 +7774,40 @@
   "owner_class": "Association",
   "signature": "public: class boost::shared_ptr<class RBX::Lua::ThreadRef::Node> & __thiscall RBX::Association<class RBX::Instance>::get<class boost::shared_ptr<class RBX::Lua::ThreadRef::Node> >(void)"
  },
+ "005ad810": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0Item@Stats@RBX@@QAE@PBD@Z",
+     "??0S@@QAE@H@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7Item@Stats@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@",
+     "??_7Item@Stats@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0Item@Stats@RBX@@QAE@PBD@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "Item"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Item@Stats@RBX@@QAE@PBD@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "Item",
+  "signature": "public: __thiscall RBX::Stats::Item::Item(char const *)"
+ },
  "005ada90": {
   "evidence": [
    {
@@ -7317,8 +7841,8 @@
     "sample": [
      [
       "caller",
-      "005af940",
-      "?executeInNewThread@ScriptContext@RBX@@QAEXW4Identities@Security@2@PBD1V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@6@@Z"
+      "005aed40",
+      "?call@ScriptContext@RBX@@QAEXABVFunctionRef@Lua@2@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@6@@Z"
      ],
      [
       "caller",
@@ -7904,15 +8428,10 @@
       "caller",
       "005bc2c0",
       "?onEvent@SoundService@Soundscape@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z"
-     ],
-     [
-      "caller",
-      "005bc2c0",
-      "?onEvent@SoundService@Soundscape@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z"
      ]
     ],
     "votes": {
-     "caller": 8
+     "caller": 2
     }
    },
    {
@@ -7961,8 +8480,8 @@
     "other_candidates": []
    },
    {
-    "caller": "005bd590",
-    "caller_name": "?stop@SoundChannel@Soundscape@RBX@@QAEXXZ",
+    "caller": "005bd540",
+    "caller_name": "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ",
     "kind": "named-caller-call-site"
    },
    {
@@ -9458,18 +9977,18 @@
     "sample": [
      [
       "caller",
-      "0066ed50",
-      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
-     ],
-     [
-      "caller",
-      "0066ed50",
-      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
-     ],
-     [
-      "caller",
       "0066f070",
       "??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z"
+     ],
+     [
+      "caller",
+      "0066ed50",
+      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
+     ],
+     [
+      "caller",
+      "0066ed50",
+      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
      ]
     ],
     "votes": {
@@ -10418,8 +10937,8 @@
     "sample": [
      [
       "caller",
-      "005af940",
-      "?executeInNewThread@ScriptContext@RBX@@QAEXW4Identities@Security@2@PBD1V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@6@@Z"
+      "005a9140",
+      "?delay@ScriptContext@RBX@@CAHPAUlua_State@@@Z"
      ],
      [
       "caller",
@@ -10557,8 +11076,8 @@
     "other_candidates": []
    },
    {
-    "caller": "00599250",
-    "caller_name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
+    "caller": "00606780",
+    "caller_name": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
     "kind": "named-caller-call-site"
    },
    {
@@ -10669,8 +11188,8 @@
     "other_candidates": []
    },
    {
-    "caller": "00599250",
-    "caller_name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
+    "caller": "00606780",
+    "caller_name": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
     "kind": "named-caller-call-site"
    },
    {
@@ -10697,8 +11216,8 @@
     "other_candidates": []
    },
    {
-    "caller": "00599250",
-    "caller_name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
+    "caller": "00606780",
+    "caller_name": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
     "kind": "named-caller-call-site"
    },
    {
@@ -12183,6 +12702,36 @@
   "owner_class": "SimJobStage",
   "signature": "public: void __thiscall RBX::SimJobStage::removeSimJob(class RBX::SimJob *)"
  },
+ "006582b0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z",
+     "?function@@YAXPAXUValue@@@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1locale@std@@QAE@XZ",
+     "__imp_?_Incref@facet@locale@std@@QAEXXZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "algorithm"
+   }
+  ],
+  "kind": "code",
+  "name": "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "algorithm",
+  "signature": "void __cdecl boost::algorithm::trim_if<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct boost::algorithm::detail::is_classifiedF>(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,struct boost::algorithm::detail::is_classifiedF)"
+ },
  "006584e0": {
   "evidence": [
    {
@@ -12689,6 +13238,64 @@
   "owner_class": "AssemblyStage",
   "signature": "public: virtual void __thiscall RBX::AssemblyStage::onEdgeRemoving(class RBX::Edge *)"
  },
+ "0066f900": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+     "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "?getActualWidth@@3P6EHPBX@ZA"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "AdornRbxGfx"
+   }
+  ],
+  "kind": "code",
+  "name": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "AdornRbxGfx",
+  "signature": "public: virtual int __thiscall RBX::AdornRbxGfx::getWidth(void)const "
+ },
+ "0066f910": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+     "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "?getActualHeight@@3P6EHPBX@ZA"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ"
+   },
+   {
+    "kind": "header-known",
+    "known": true,
+    "owner_leaf": "AdornRbxGfx"
+   }
+  ],
+  "kind": "code",
+  "name": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": "AdornRbxGfx",
+  "signature": "public: virtual int __thiscall RBX::AdornRbxGfx::getHeight(void)const "
+ },
  "0066fda0": {
   "evidence": [
    {
@@ -12910,18 +13517,18 @@
     "sample": [
      [
       "caller",
-      "006afae0",
-      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
+      "006ac4e0",
+      "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z"
      ],
      [
       "caller",
-      "006afae0",
-      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
+      "006ac4e0",
+      "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z"
      ],
      [
       "caller",
-      "006afae0",
-      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
+      "006ac4e0",
+      "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z"
      ]
     ],
     "votes": {
@@ -12984,18 +13591,18 @@
     "sample": [
      [
       "caller",
-      "006bf9b0",
-      "?SetIcon@CXTPImageManagerIconSet@@AAEXVCXTPImageManagerIconHandle@@I@Z"
+      "006bdc00",
+      "??1CXTPImageManagerIcon@@UAE@XZ"
      ],
      [
       "caller",
-      "006bf9b0",
-      "?SetIcon@CXTPImageManagerIconSet@@AAEXVCXTPImageManagerIconHandle@@I@Z"
+      "006bdc00",
+      "??1CXTPImageManagerIcon@@UAE@XZ"
      ],
      [
       "caller",
-      "006be6c0",
-      "?SetIcon@CXTPImageManagerIcon@@QAEHVCXTPImageManagerIconHandle@@@Z"
+      "006bdc00",
+      "??1CXTPImageManagerIcon@@UAE@XZ"
      ]
     ],
     "votes": {
@@ -13067,11 +13674,11 @@
     "sample": [
      [
       "callee",
-      "4"
+      "3"
      ],
      [
       "callee",
-      "3"
+      "4"
      ]
     ],
     "votes": {
@@ -13102,13 +13709,13 @@
     "sample": [
      [
       "caller",
-      "00745cf0",
-      "?Stretch@CXTPDockContext@@IAEXVCPoint@@@Z"
+      "00745bd0",
+      "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z"
      ],
      [
       "caller",
-      "00745bd0",
-      "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z"
+      "00745cf0",
+      "?Stretch@CXTPDockContext@@IAEXVCPoint@@@Z"
      ]
     ],
     "votes": {
@@ -13207,17 +13814,17 @@
     "sample": [
      [
       "caller",
-      "006df810",
-      "?_GetWinThemeWrapperTheme@CXTPColorManager@@AAE?AW4XTPCurrentSystemTheme@@XZ"
-     ],
-     [
-      "caller",
       "00718620",
       "?IsAppThemeReady@CXTPWinThemeWrapper@@QBEHXZ"
      ],
      [
+      "caller",
+      "006df810",
+      "?_GetWinThemeWrapperTheme@CXTPColorManager@@AAE?AW4XTPCurrentSystemTheme@@XZ"
+     ],
+     [
       "callee",
-      "4"
+      "3"
      ]
     ],
     "votes": {
@@ -13249,18 +13856,18 @@
     "sample": [
      [
       "caller",
-      "006ec8d0",
-      "??0CXTPGroupLine@@QAE@XZ"
+      "007a19c0",
+      "?UseWinXPThemes@CXTButtonTheme@@UAEHPAVCXTButton@@@Z"
      ],
      [
       "caller",
-      "006ec8d0",
-      "??0CXTPGroupLine@@QAE@XZ"
+      "0073c940",
+      "?RefreshMetrics@CXTPOffice2003Theme@XTPPaintThemes@@MAEXXZ"
      ],
      [
       "caller",
-      "006ec8d0",
-      "??0CXTPGroupLine@@QAE@XZ"
+      "00764ce0",
+      "?RefreshMetrics@CXTPDockingPaneExplorerTheme@XTPDockingPanePaintThemes@@UAEXXZ"
      ]
     ],
     "votes": {

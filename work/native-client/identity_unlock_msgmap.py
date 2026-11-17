@@ -20,7 +20,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, IMG, BASE, pe, u32, unnamed, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, IMG, BASE, pe, u32, unnamed, undname_many, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-msgmap.json'
@@ -200,7 +200,7 @@ def main():
                   'evidence': [{'kind': 'message-map-entry', 'table': tab, 'class': c, 'handler': h,
                                 'source': str(Path(path).relative_to(ROOT)).replace('\\', '/')},
                                {'kind': 'decorated-signature', 'symbol': s, 'from': 'compiled-object index'}]}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('named', len(out), 'no unique symbol', nosym)
 
 

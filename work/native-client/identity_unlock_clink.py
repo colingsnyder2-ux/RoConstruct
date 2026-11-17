@@ -16,7 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG  # noqa: E402
+from identity_unlock_common import ROOT, REG, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-clink.json'
@@ -74,7 +74,7 @@ def main():
     for a, r in out.items():
         used[r['name']].append(a)
     out = {a: r for a, r in out.items() if len(used[r['name']]) == 1}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('C-linkage names', len(out))
 
 

@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import identity_unlock_merge as M  # noqa: E402
-from identity_unlock_common import ROOT, REG, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, undname_many, dump_json  # noqa: E402
 from identity_unlock_vtable import head_of  # noqa: E402
 from identity_unlock_vtsib import load  # noqa: E402
 
@@ -208,7 +208,7 @@ def main(validate=False):
     per = Counter(r['name'] for r in out.values())
     out = {a: r for a, r in out.items() if per[r['name']] == 1}
     if not validate:
-        json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+        dump_json(out, OUT)
     print('named', len(out), dict(st))
 
 

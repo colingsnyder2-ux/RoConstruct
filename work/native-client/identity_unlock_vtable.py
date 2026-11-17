@@ -18,7 +18,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, u32, unnamed, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, u32, unnamed, undname_many, dump_json  # noqa: E402
 
 OUT = ROOT / 'work/native-client/identity-unlock-vtable.json'
 CODE = {a for a, v in REG.items() if v['kind'] == 'code'}
@@ -151,7 +151,7 @@ def main():
         out[t] = {'name': new, 'owner_class': D, 'signature': und[new], 'kind': 'code',
                   'name_source': 'identity-unlock-vtable',
                   'evidence': [ev, {'kind': 'decorated-signature', 'symbol': new}]}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print(len(out), dict(stats))
 
 

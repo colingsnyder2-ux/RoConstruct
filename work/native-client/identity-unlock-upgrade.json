@@ -179,6 +179,24 @@
   "owner_class": null,
   "signature": "protected: void __thiscall CScintillaView::OnEditRepeat(void)"
  },
+ "00462890": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body-sole-authentic-candidate",
+    "other_candidates": []
+   },
+   {
+    "kind": "link-order-neighbour-same-owner",
+    "neighbour": "00462c10",
+    "neighbour_name": "?OnSize@CScintillaView@@IAEXIHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnFindReplaceCmd@CScintillaView@@IAEJIJ@Z",
+  "name_source": "identity-unlock-upgrade",
+  "owner_class": null,
+  "signature": "protected: long __thiscall CScintillaView::OnFindReplaceCmd(unsigned int,long)"
+ },
  "00463160": {
   "evidence": [
    {
@@ -196,6 +214,24 @@
   "name_source": "identity-unlock-upgrade",
   "owner_class": null,
   "signature": "public: static class CObject * __stdcall Scintilla::CScintillaView::CreateObject(void)"
+ },
+ "00463430": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body-sole-authentic-candidate",
+    "other_candidates": []
+   },
+   {
+    "kind": "link-order-neighbour-same-owner",
+    "neighbour": "004633b0",
+    "neighbour_name": "?CreateFindReplaceDialog@CScintillaView@Scintilla@@MAEPAVCScintillaFindReplaceDlg@2@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnFilePageSetup@CScintillaView@Scintilla@@IAEXXZ",
+  "name_source": "identity-unlock-upgrade",
+  "owner_class": null,
+  "signature": "protected: void __thiscall Scintilla::CScintillaView::OnFilePageSetup(void)"
  },
  "00467380": {
   "evidence": [
@@ -526,6 +562,24 @@
   "owner_class": null,
   "signature": "public: void __thiscall RBX::UnifiedWidget::setMenuState(enum RBX::UnifiedWidget::MenuState)"
  },
+ "00574280": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body-sole-authentic-candidate",
+    "other_candidates": []
+   },
+   {
+    "kind": "link-order-neighbour-same-owner",
+    "neighbour": "00574170",
+    "neighbour_name": "?render2dMe@UnifiedWidget@RBX@@MAEXPAVAdorn@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?render2dChildren@UnifiedWidget@RBX@@AAEXPAVAdorn@2@@Z",
+  "name_source": "identity-unlock-upgrade",
+  "owner_class": null,
+  "signature": "private: void __thiscall RBX::UnifiedWidget::render2dChildren(class RBX::Adorn *)"
+ },
  "00574cb0": {
   "evidence": [
    {
@@ -742,6 +796,24 @@
   "owner_class": null,
   "signature": "public: static void __cdecl RBX::Accoutrement::dropAllOthers(class RBX::ModelInstance *,class RBX::Accoutrement *)"
  },
+ "005b97b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body-sole-authentic-candidate",
+    "other_candidates": []
+   },
+   {
+    "kind": "link-order-neighbour-same-owner",
+    "neighbour": "005b8880",
+    "neighbour_name": "?updateAmbientReverb@SoundService@Soundscape@RBX@@AAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?update3DSettings@SoundService@Soundscape@RBX@@AAEXXZ",
+  "name_source": "identity-unlock-upgrade",
+  "owner_class": null,
+  "signature": "private: void __thiscall RBX::Soundscape::SoundService::update3DSettings(void)"
+ },
  "005b9920": {
   "evidence": [
    {
@@ -803,8 +875,8 @@
     "other_candidates": []
    },
    {
-    "caller": "005bd590",
-    "caller_name": "?stop@SoundChannel@Soundscape@RBX@@QAEXXZ",
+    "caller": "005bd540",
+    "caller_name": "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ",
     "kind": "named-caller-call-site"
    }
   ],
@@ -1232,8 +1304,8 @@
     "other_candidates": []
    },
    {
-    "caller": "00599250",
-    "caller_name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
+    "caller": "00606780",
+    "caller_name": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
     "kind": "named-caller-call-site"
    },
    {
@@ -1255,8 +1327,8 @@
     "other_candidates": []
    },
    {
-    "caller": "00599250",
-    "caller_name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
+    "caller": "00606780",
+    "caller_name": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
     "kind": "named-caller-call-site"
    },
    {
@@ -1278,8 +1350,8 @@
     "other_candidates": []
    },
    {
-    "caller": "00599250",
-    "caller_name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
+    "caller": "00606780",
+    "caller_name": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
     "kind": "named-caller-call-site"
    },
    {
@@ -1388,6 +1460,24 @@
   "name_source": "identity-unlock-upgrade",
   "owner_class": null,
   "signature": "public: void __thiscall RBX::ICharacterSubject::onHeartBeat(class G3D::CoordinateFrame &,class G3D::CoordinateFrame &)"
+ },
+ "00643eb0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body-sole-authentic-candidate",
+    "other_candidates": []
+   },
+   {
+    "kind": "link-order-neighbour-same-owner",
+    "neighbour": "00643c80",
+    "neighbour_name": "?setTorsoHeadFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sub_00643eb0@HumanoidState@HUMAN@RBX@@QBE_NXZ",
+  "name_source": "identity-unlock-upgrade",
+  "owner_class": null,
+  "signature": "public: bool __thiscall RBX::HUMAN::HumanoidState::sub_00643eb0(void)const "
  },
  "00649670": {
   "evidence": [

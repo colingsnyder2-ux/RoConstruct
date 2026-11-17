@@ -1565,7 +1565,6 @@
 "004674a0": [
 "?sub_004674a0@UserInputBase@RBX@@QAE_NXZ"
 ],
-"00467530": [],
 "00467550": [],
 "004675e0": [],
 "00467670": [],
@@ -1574,11 +1573,8 @@
 "00467880": [],
 "00467a00": [],
 "00467a90": [],
-"00467ad0": [],
 "00467b50": [],
 "00467bf0": [],
-"00467c50": [],
-"00467cb0": [],
 "00467d50": [],
 "00467f10": [],
 "00468050": [],
@@ -1595,8 +1591,9 @@
 "00468e90": [
 "??1S@@QAE@XZ"
 ],
-"00469090": [],
-"004690f0": [],
+"004690f0": [
+"??0DxUserInput@@QAE@PAUNativeFrameView@@PAVDataModel@RBX@@@Z"
+],
 "004692f0": [],
 "00469320": [
 "?Add@@YAXPAUDxUserInput@@0@Z"
@@ -6367,7 +6364,9 @@
 "??$PX_Enum@W4XTPBarType@@@@YAHPAVCXTPPropExchange@@PBDAAW4XTPBarType@@W41@@Z",
 "??$PX_Enum@W4XTPButtonStyle@@@@YAHPAVCXTPPropExchange@@PBDAAW4XTPButtonStyle@@W41@@Z"
 ],
-"00643eb0": [],
+"00643eb0": [
+"?sub_00643eb0@HumanoidState@HUMAN@RBX@@QBE_NXZ"
+],
 "00643f10": [],
 "00644000": [],
 "00644420": [

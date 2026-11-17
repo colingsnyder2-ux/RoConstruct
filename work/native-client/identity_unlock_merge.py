@@ -15,7 +15,7 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, unnamed, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, unnamed, undname_many, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 ROUTES = [('init', 'identity-unlock-init.json'), ('mfc', 'identity-unlock-mfc.json'),
@@ -168,7 +168,7 @@ def main():
         out[a] = r
         per[src[a]] += 1
         hk[src[a]] += ok
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print(json.dumps({'unnamed_targets': len(targets), 'named': len(out), 'per_route': dict(per),
                       'header_known_per_route': dict(hk), 'header_known_total': sum(hk.values())}))
 

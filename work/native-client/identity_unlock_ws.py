@@ -20,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from identity_unlock_align import target_refs  # noqa: E402
-from identity_unlock_common import ROOT, REG, CODE_STARTS, unnamed  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, unnamed, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT, OUT_INF = NC / 'identity-unlock-ws.json', NC / 'identity-unlock-ws-inferred.json'
@@ -85,8 +85,8 @@ def main():
     per = Counter(r['name'] for r in list(out.values()) + list(inf.values()))
     out = {a: r for a, r in out.items() if per[r['name']] == 1}
     inf = {a: r for a, r in inf.items() if per[r['name']] == 1}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
-    json.dump(inf, open(OUT_INF, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
+    dump_json(inf, OUT_INF)
     print('ws real', len(out), 'inferred', len(inf), dict(st))
 
 

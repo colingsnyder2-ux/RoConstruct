@@ -122,3 +122,21 @@ def show(a, n=12):
         print(' ', hex(i.address), i.mnemonic, i.op_str, t)
         if i.mnemonic in ('ret', 'jmp'):
             break
+
+
+def dump_json(obj, path):
+    """Atomic JSON write (tmp + replace), retried while another process holds the file open
+    (Windows refuses the replace, or the open, with EACCES / EINVAL meanwhile)."""
+    import os
+    import time
+    path = str(path)
+    tmp = path + '.tmp%d' % os.getpid()
+    for k in range(60):
+        try:
+            with open(tmp, 'w') as fh:
+                json.dump(obj, fh, indent=1, sort_keys=True)
+            os.replace(tmp, path)
+            return
+        except OSError:
+            time.sleep(1)
+    raise OSError('could not write %s (held open by another process)' % path)

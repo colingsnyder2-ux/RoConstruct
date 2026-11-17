@@ -8,6 +8,7 @@ unnamed-identities.json stops changing, then writes the inferred tier.
 """
 import argparse
 import json
+from identity_unlock_common import dump_json  # noqa: E402
 import sys
 import time
 from pathlib import Path
@@ -40,7 +41,7 @@ def step(name, fn):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--bodyhash', action='store_true')
-    ap.add_argument('--max-rounds', type=int, default=2)
+    ap.add_argument('--max-rounds', type=int, default=3)
     a = ap.parse_args()
     sys.argv = [sys.argv[0]] + [str(p) for p in sorted(NC.glob('identity-unlock-objindex*.pkl.gz'))]
     if a.bodyhash:
@@ -67,7 +68,7 @@ def main():
             rows = json.load(open(REAL))
             keep = {k: r for k, r in rows.items() if prev.get(k) == r['name']}
             print('[cycle] unstable names dropped: %d' % (len(rows) - len(keep)), flush=True)
-            json.dump(keep, open(REAL, 'w'), indent=1, sort_keys=True)
+            dump_json(keep, REAL)
         prev = cur
     step('wsgraph', WG.main)
     step('inferred', INF.main)

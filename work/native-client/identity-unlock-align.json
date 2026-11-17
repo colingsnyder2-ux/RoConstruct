@@ -147,11 +147,11 @@
     "sample": [
      [
       "callee",
-      "6"
+      "7"
      ],
      [
       "callee",
-      "7"
+      "6"
      ]
     ],
     "votes": {
@@ -717,13 +717,13 @@
     "sample": [
      [
       "caller",
-      "005a6ef0",
-      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
+      "0058d7e0",
+      "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z"
      ],
      [
       "caller",
-      "005a6ef0",
-      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
+      "0058d7e0",
+      "?serialize@TextXmlWriter@@IAEXPBVXmlElement@@H@Z"
      ],
      [
       "caller",
@@ -972,58 +972,6 @@
   ],
   "kind": "code",
   "name": "?GetSelText@CScintillaCtrl@Scintilla@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00462890": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "7"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?OnFindReplaceCmd@CScintillaView@Scintilla@@IAEJIJ@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?OnFindReplaceCmd@CScintillaView@Scintilla@@IAEJIJ@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00463430": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "7"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?OnFilePageSetup@CScintillaView@@IAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?OnFilePageSetup@CScintillaView@@IAEXXZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -3128,32 +3076,6 @@
   "owner_class": null,
   "signature": null
  },
- "00574280": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "6"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?render2d@GuiRoot@RBX@@UAEXPAVAdorn@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?render2d@GuiRoot@RBX@@UAEXPAVAdorn@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00575300": {
   "evidence": [
    {
@@ -3313,18 +3235,18 @@
     "sample": [
      [
       "caller",
-      "0058b6c0",
-      "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      "0058bba0",
+      "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
      ],
      [
       "caller",
-      "0058b6c0",
-      "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      "0058bba0",
+      "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
      ],
      [
       "caller",
-      "0058b6c0",
-      "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      "0058bba0",
+      "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
      ]
     ],
     "votes": {
@@ -3612,8 +3534,8 @@
     "sample": [
      [
       "caller",
-      "005af940",
-      "?executeInNewThread@ScriptContext@RBX@@QAEXW4Identities@Security@2@PBD1V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@6@@Z"
+      "005aed40",
+      "?call@ScriptContext@RBX@@QAEXABVFunctionRef@Lua@2@V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@6@@Z"
      ],
      [
       "caller",
@@ -3968,7 +3890,60 @@
   "owner_class": null,
   "signature": null
  },
- "005ba2e0": {
+ "005b65b0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 1,
+    "sample": [
+     [
+      "caller",
+      "005b6fe0",
+      "?checkResult@@YAXW4FMOD_RESULT@@@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?FMOD_ErrorString@@YAPADW4FMOD_RESULT@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?FMOD_ErrorString@@YAPADW4FMOD_RESULT@@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "005b6fe0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "6"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?checkResult@@YAXH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?checkResult@@YAXH@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "005b70c0": {
   "evidence": [
    {
     "kind": "object-alignment-caller",
@@ -3991,7 +3966,66 @@
      ]
     ],
     "votes": {
+     "callee": 2,
      "caller": 8
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?convert@@YA_NABVVector3@G3D@@AAUFMOD_VECTOR@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?convert@@YA_NABVVector3@G3D@@AAUFMOD_VECTOR@@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "005b8880": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "12"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?updateAmbientReverb@SoundService@Soundscape@RBX@@AAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?updateAmbientReverb@SoundService@Soundscape@RBX@@AAEXXZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ba2e0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 1,
+    "sample": [
+     [
+      "caller",
+      "005bc2c0",
+      "?onEvent@SoundService@Soundscape@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z"
+     ],
+     [
+      "caller",
+      "005bc2c0",
+      "?onEvent@SoundService@Soundscape@RBX@@MAEXPBVRunService@3@VHeartbeat@3@@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 2
     }
    },
    {
@@ -4687,18 +4721,18 @@
     "sample": [
      [
       "caller",
-      "0066ed50",
-      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
-     ],
-     [
-      "caller",
-      "0066ed50",
-      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
-     ],
-     [
-      "caller",
       "0066f070",
       "??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z"
+     ],
+     [
+      "caller",
+      "0066ed50",
+      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
+     ],
+     [
+      "caller",
+      "0066ed50",
+      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
      ]
     ],
     "votes": {
@@ -5221,40 +5255,6 @@
   "owner_class": null,
   "signature": null
  },
- "00607020": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?computeIsColliding@BallBlockContact@NativeContactABI@@QAE_NAAHAAVVector3int16@G3D@@AAVVector3@4@M@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?computeIsColliding@BallBlockContact@NativeContactABI@@QAE_NAAHAAVVector3int16@G3D@@AAVVector3@4@M@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00607cc0": {
   "evidence": [
    {
@@ -5419,8 +5419,8 @@
     "sample": [
      [
       "caller",
-      "005af940",
-      "?executeInNewThread@ScriptContext@RBX@@QAEXW4Identities@Security@2@PBD1V?$function1@IPAUlua_State@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$function2@XPAUlua_State@@IV?$allocator@Vfunction_base@boost@@@std@@@6@@Z"
+      "005a9140",
+      "?delay@ScriptContext@RBX@@CAHPAUlua_State@@@Z"
      ],
      [
       "caller",
@@ -6588,18 +6588,18 @@
     "sample": [
      [
       "caller",
-      "006afae0",
-      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
+      "006ac4e0",
+      "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z"
      ],
      [
       "caller",
-      "006afae0",
-      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
+      "006ac4e0",
+      "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z"
      ],
      [
       "caller",
-      "006afae0",
-      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
+      "006ac4e0",
+      "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z"
      ]
     ],
     "votes": {
@@ -6684,18 +6684,18 @@
     "sample": [
      [
       "caller",
-      "006bf9b0",
-      "?SetIcon@CXTPImageManagerIconSet@@AAEXVCXTPImageManagerIconHandle@@I@Z"
+      "006bdc00",
+      "??1CXTPImageManagerIcon@@UAE@XZ"
      ],
      [
       "caller",
-      "006bf9b0",
-      "?SetIcon@CXTPImageManagerIconSet@@AAEXVCXTPImageManagerIconHandle@@I@Z"
+      "006bdc00",
+      "??1CXTPImageManagerIcon@@UAE@XZ"
      ],
      [
       "caller",
-      "006be6c0",
-      "?SetIcon@CXTPImageManagerIcon@@QAEHVCXTPImageManagerIconHandle@@@Z"
+      "006bdc00",
+      "??1CXTPImageManagerIcon@@UAE@XZ"
      ]
     ],
     "votes": {
@@ -6757,11 +6757,11 @@
     "sample": [
      [
       "callee",
-      "4"
+      "3"
      ],
      [
       "callee",
-      "3"
+      "4"
      ]
     ],
     "votes": {
@@ -6787,13 +6787,13 @@
     "sample": [
      [
       "caller",
-      "00745cf0",
-      "?Stretch@CXTPDockContext@@IAEXVCPoint@@@Z"
+      "00745bd0",
+      "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z"
      ],
      [
       "caller",
-      "00745bd0",
-      "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z"
+      "00745cf0",
+      "?Stretch@CXTPDockContext@@IAEXVCPoint@@@Z"
      ]
     ],
     "votes": {
@@ -6856,17 +6856,17 @@
     "sample": [
      [
       "caller",
-      "006df810",
-      "?_GetWinThemeWrapperTheme@CXTPColorManager@@AAE?AW4XTPCurrentSystemTheme@@XZ"
-     ],
-     [
-      "caller",
       "00718620",
       "?IsAppThemeReady@CXTPWinThemeWrapper@@QBEHXZ"
      ],
      [
+      "caller",
+      "006df810",
+      "?_GetWinThemeWrapperTheme@CXTPColorManager@@AAE?AW4XTPCurrentSystemTheme@@XZ"
+     ],
+     [
       "callee",
-      "4"
+      "3"
      ]
     ],
     "votes": {
@@ -6893,18 +6893,18 @@
     "sample": [
      [
       "caller",
-      "006ec8d0",
-      "??0CXTPGroupLine@@QAE@XZ"
+      "007a19c0",
+      "?UseWinXPThemes@CXTButtonTheme@@UAEHPAVCXTButton@@@Z"
      ],
      [
       "caller",
-      "006ec8d0",
-      "??0CXTPGroupLine@@QAE@XZ"
+      "0073c940",
+      "?RefreshMetrics@CXTPOffice2003Theme@XTPPaintThemes@@MAEXXZ"
      ],
      [
       "caller",
-      "006ec8d0",
-      "??0CXTPGroupLine@@QAE@XZ"
+      "00764ce0",
+      "?RefreshMetrics@CXTPDockingPaneExplorerTheme@XTPDockingPanePaintThemes@@UAEXXZ"
      ]
     ],
     "votes": {
@@ -7004,32 +7004,6 @@
   ],
   "kind": "code",
   "name": "??0CAtlWinModule@ATL@@QAE@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "007a621c": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0CAtlModule@ATL@@QAE@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??0CAtlModule@ATL@@QAE@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null

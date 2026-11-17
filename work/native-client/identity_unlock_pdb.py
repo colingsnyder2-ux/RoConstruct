@@ -6,6 +6,7 @@ OUT-procs.json {"%08x" va: [[qualified name, length, global|static], ...]} from 
 Used for WebService.pdb (RBXGS 0.3.676, Dec 2007), which ships in tools/rbxgs_msi/rbxgs676.msi.
 """
 import json
+from identity_unlock_common import dump_json  # noqa: E402
 import struct
 import sys
 
@@ -88,14 +89,14 @@ def main(pdb, dll, outp):
         if not s.Characteristics & 0x20000000:  # executable sections only
             continue
         res['%08x' % (pe.OPTIONAL_HEADER.ImageBase + s.VirtualAddress + off)] = name
-    json.dump(res, open(outp, 'w'), indent=0, sort_keys=True)
+    dump_json(res, outp)
     print('code publics', len(res))
     pr = {}
     for seg, off, plen, kind, name in procs(pdb):
         if 1 <= seg <= len(secs):
             pr.setdefault('%08x' % (pe.OPTIONAL_HEADER.ImageBase + secs[seg - 1].VirtualAddress + off),
                           []).append([name, plen, kind])
-    json.dump(pr, open(outp.replace('.json', '-procs.json'), 'w'), indent=0, sort_keys=True)
+    dump_json(pr, outp.replace('.json', '-procs.json'))
     print('procs', sum(len(v) for v in pr.values()), 'addresses', len(pr),
           'not public', len(set(pr) - set(res)))
 

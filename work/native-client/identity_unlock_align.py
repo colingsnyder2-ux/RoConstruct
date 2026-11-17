@@ -24,7 +24,7 @@ from collections import defaultdict, Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, BASE, IMG, MD, end_of, unnamed, CODE_STARTS  # noqa: E402
+from identity_unlock_common import ROOT, REG, BASE, IMG, MD, end_of, unnamed, CODE_STARTS, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-align.json'
@@ -204,7 +204,7 @@ def main():
                   'evidence': [{'kind': 'object-alignment-' + kinds.most_common(1)[0][0], 'round': r,
                                 'votes': dict(kinds), 'sample': [list(map(str, e)) for e in ev[:3]]},
                                {'kind': 'decorated-signature', 'symbol': s}]}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('bound', len(out), Counter(v['evidence'][0]['kind'] for v in out.values()))
 
 

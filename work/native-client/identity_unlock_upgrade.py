@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import identity_unlock_merge as M  # noqa: E402
-from identity_unlock_common import ROOT, REG, CODE_STARTS, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, undname_many, dump_json  # noqa: E402
 from identity_unlock_align import target_refs  # noqa: E402
 
 NC = ROOT / 'work/native-client'
@@ -115,7 +115,7 @@ def main():
                                     'other_candidates': [x for x in cands[a] if x != s][:6]}] + ev}
     per = Counter(out[a]['name'] for a in out)
     out = {a: r for a, r in out.items() if per[r['name']] == 1}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('promoted', len(out), Counter(e['kind'] for r in out.values() for e in r['evidence'][1:]))
 
 

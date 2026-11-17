@@ -21,7 +21,7 @@ import capstone
 import pefile
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, CODE_STARTS, insns, refs, unnamed  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, insns, refs, unnamed, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 DLL = ROOT / 'tools/rbxgs_msi/WebService.dll'
@@ -158,8 +158,8 @@ def main(validate=False):
     per = Counter(r['name'] for r in list(out.values()) + list(inf.values()))
     out = {a: r for a, r in out.items() if per[r['name']] == 1}
     inf = {a: r for a, r in inf.items() if per[r['name']] == 1}
-    json.dump(out, open(NC / 'identity-unlock-wsfp.json', 'w'), indent=1, sort_keys=True)
-    json.dump(inf, open(NC / 'identity-unlock-wsfp-inferred.json', 'w'), indent=1, sort_keys=True)
+    dump_json(out, NC / 'identity-unlock-wsfp.json')
+    dump_json(inf, NC / 'identity-unlock-wsfp-inferred.json')
     print('wsfp real', len(out), 'inferred', len(inf))
 
 

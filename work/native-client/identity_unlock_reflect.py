@@ -20,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import identity_unlock_init as I  # noqa: E402
-from identity_unlock_common import ROOT, REG, CODE_STARTS, refs  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, refs, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-reflect.json'
@@ -92,8 +92,8 @@ def main():
                     inf[t] = {'name': 'RBX::%s::%s' % (tmpl[1], guess), 'inferred': True,
                               'confidence': 'api-name-convention', 'kind': 'code',
                               'name_source': 'identity-unlock-reflect', 'evidence': [ev]}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
-    json.dump(inf, open(OUT_INF, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
+    dump_json(inf, OUT_INF)
     print('real', len(out), 'inferred', len(inf))
 
 

@@ -22,7 +22,7 @@ import capstone
 import pefile
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, CODE_STARTS, IMG, BASE, insns, refs, unnamed  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, IMG, BASE, insns, refs, unnamed, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 DLL = ROOT / 'tools/rbxgs_msi/WebService.dll'
@@ -183,8 +183,8 @@ def main(validate=False):
             inf[a] = {'name': n[7:] if n.startswith('static:') else n, 'signature': None, 'kind': 'code',
                       'inferred': True, 'confidence': 'webservice-pdb-graph-match',
                       'name_source': 'identity-unlock-wsgraph', 'alternatives': [], 'evidence': ev}
-    json.dump(out, open(NC / 'identity-unlock-wsgraph.json', 'w'), indent=1, sort_keys=True)
-    json.dump(inf, open(NC / 'identity-unlock-wsgraph-inferred.json', 'w'), indent=1, sort_keys=True)
+    dump_json(out, NC / 'identity-unlock-wsgraph.json')
+    dump_json(inf, NC / 'identity-unlock-wsgraph-inferred.json')
     print('wsgraph matched', len(got), 'real', len(out), 'inferred', len(inf))
 
 

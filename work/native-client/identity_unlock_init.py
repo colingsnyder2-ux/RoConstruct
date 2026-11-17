@@ -21,7 +21,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, insns, named, refs, unnamed, IMG, BASE  # noqa: E402
+from identity_unlock_common import ROOT, REG, insns, named, refs, unnamed, IMG, BASE, dump_json  # noqa: E402
 
 ATEXIT = 0x6a17af
 OUT = ROOT / 'work/native-client/identity-unlock-init.json'
@@ -249,7 +249,7 @@ def main():
         t = '%08x' % f['atexit'] if f['atexit'] is not None else None
         if t in glob_of and glob_of[t][0] == 'F' and pushers[f['atexit']] == 1:
             emit(a, 'E', glob_of[t][1], [glob_of[t][2], {'kind': 'registers-atexit', 'destructor': t}])
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     from collections import Counter
     print(len(out), Counter(r['evidence'][0]['kind'] for r in out.values()))
 

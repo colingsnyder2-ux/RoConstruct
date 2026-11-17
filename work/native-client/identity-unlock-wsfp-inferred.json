@@ -194,6 +194,27 @@
   "owner_class": null,
   "signature": null
  },
+ "005bd330": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z",
+     "?updateAmbientReverb@SoundService@Soundscape@RBX@@AAEXXZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?setAmbientReverb@SoundService@Soundscape@RBX@@QAEXABW4ReverbType@23@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
  "005e6420": {
   "alternatives": [],
   "confidence": "webservice-pdb-fingerprint",

@@ -19,7 +19,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, CODE_STARTS, insns, refs, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, insns, refs, undname_many, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-dupctor.json'
@@ -115,7 +115,7 @@ def main(validate=False):
     per = Counter(r['name'] for r in out.values())
     out = {a: r for a, r in out.items() if per[r['name']] == 1}
     if not validate:
-        json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+        dump_json(out, OUT)
     print('tasks', len(tasks), 'named', len(out), dict(st))
 
 

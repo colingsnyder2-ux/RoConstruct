@@ -21,7 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from identity_unlock_align import target_refs  # noqa: E402
-from identity_unlock_common import ROOT, REG  # noqa: E402
+from identity_unlock_common import ROOT, REG, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-dupref.json'
@@ -63,11 +63,11 @@ def main(validate=False):
         tasks = {a: n for a, n in name.items() if a not in bogus and once[n] == 1 and REG.get(a, {}).get('kind') == 'code'
                  and key(n) and len(peers.get(key(n), ())) > 1 and n in rows}
     else:
-        tasks = {a: (REG.get(a) or {}).get('name') for a in bogus if a not in real}
+        tasks = {a: (REG.get(a) or {}).get('name') for a in bogus if a not in real or real[a]['name_source'] == 'identity-unlock-dupref'}
         tasks = {a: n for a, n in tasks.items() if n and key(n)}
         # unnamed addresses whose exact-body twins are several authentic template peers
         multi = {a: c for a, c in json.load(open(NC / 'identity-unlock-bodyhash-candidates.json')).items()
-                 if 2 <= len(c) < 10 and a not in real}
+                 if 2 <= len(c) < 10 and (a not in real or real[a]['name_source'] == 'identity-unlock-dupref')}
         tasks.update({a: c[0] for a, c in multi.items()})
     st, out = Counter(), {}
     for a, n in tasks.items():
@@ -118,7 +118,7 @@ def main(validate=False):
     per = Counter(r['name'] for r in out.values())
     out = {a: r for a, r in out.items() if per[r['name']] == 1 and (a in multi or r['name'] != tasks[a])}
     if not validate:
-        json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+        dump_json(out, OUT)
     print('tasks', len(tasks), 'named', len(out), dict(st))
 
 

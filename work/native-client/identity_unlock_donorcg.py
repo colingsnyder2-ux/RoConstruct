@@ -20,7 +20,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, CODE_STARTS, unnamed, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, CODE_STARTS, unnamed, undname_many, dump_json  # noqa: E402
 from identity_unlock_align import target_refs  # noqa: E402
 
 NC = ROOT / 'work/native-client'
@@ -177,7 +177,7 @@ def main():
                   'evidence': [{'kind': 'donor-callgraph', 'donor_qual': q, 'anchors': an[:6],
                                 'anchor_count': len(an), 'round': r},
                                {'kind': 'decorated-signature', 'symbol': s, 'from': 'compiled-object index'}]}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('bound quals', len(accepted), 'with msvc symbol', len(out), 'no unique symbol', miss)
 
 

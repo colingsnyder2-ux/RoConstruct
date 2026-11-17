@@ -703,29 +703,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": "public: static long __stdcall ATL::CComCreator<class ATL::CComObject<class CApp> >::CreateInstance(void *,struct _GUID const &,void * *)"
  },
- "004087e0": {
-  "alternatives": [
-   "??1S@@QAE@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 3,
-    "kind": "exact-masked-body-candidates",
-    "length": 102,
-    "neighbour_owners": [
-     "CUrl@ATL"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: virtual __thiscall ATL::CComAggObject<class CApp>::~CComAggObject<class CApp>(void)"
- },
  "00408870": {
   "alternatives": [],
   "confidence": "placeholder",
@@ -1416,29 +1393,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": "int __cdecl PX_Enum<enum XTPBarType>(class CXTPPropExchange *,char const *,enum XTPBarType &,enum XTPBarType)"
  },
- "00416ca0": {
-  "alternatives": [
-   "??1S@@UAE@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 3,
-    "kind": "exact-masked-body-candidates",
-    "length": 96,
-    "neighbour_owners": [
-     "StandardOut@RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: virtual __thiscall ATL::CComAggObject<class CContent>::~CComAggObject<class CContent>(void)"
- },
  "00416d20": {
   "alternatives": [],
   "confidence": "sole-authentic-candidate",
@@ -1596,51 +1550,6 @@
   "name": "??$PX_Enum@W4XTPCalendarEventRecurrenceType@@@@YAHPAVCXTPPropExchange@@PBDAAW4XTPCalendarEventRecurrenceType@@W41@@Z",
   "name_source": "identity-unlock-inferred",
   "signature": "int __cdecl PX_Enum<enum XTPCalendarEventRecurrenceType>(class CXTPPropExchange *,char const *,enum XTPCalendarEventRecurrenceType &,enum XTPCalendarEventRecurrenceType)"
- },
- "00417360": {
-  "alternatives": [
-   "??0S@@QAE@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 5,
-    "kind": "exact-masked-body-candidates",
-    "length": 73,
-    "neighbour_owners": []
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??0FunctionRef@Lua@RBX@@QAE@XZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall RBX::Lua::FunctionRef::FunctionRef(void)"
- },
- "004179b0": {
-  "alternatives": [
-   "??0S@@QAE@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 5,
-    "kind": "exact-masked-body-candidates",
-    "length": 85,
-    "neighbour_owners": [
-     "ATL",
-     "DHTMLWindow"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??0CLuaFunction@@QAE@XZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall CLuaFunction::CLuaFunction(void)"
  },
  "00417b30": {
   "alternatives": [
@@ -2891,30 +2800,6 @@
   "name_source": "identity-unlock-wsfp",
   "owner_class": null,
   "signature": null
- },
- "0042a5c0": {
-  "alternatives": [
-   "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 2,
-    "kind": "exact-masked-body-candidates",
-    "length": 36,
-    "neighbour_owners": [
-     "Instance@RBX",
-     "boost_detail@RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "?apply@MainLogManager@@QAEXXZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: void __thiscall MainLogManager::apply(void)"
  },
  "0042a610": {
   "alternatives": [
@@ -8291,7 +8176,7 @@
     "length": 144,
     "neighbour_owners": [
      "CSettingsDialog",
-     "RBX"
+     "DxUserInput"
     ]
    }
   ],
@@ -8300,30 +8185,6 @@
   "name": "?sub_004674a0@UserInputBase@RBX@@QAE_NXZ",
   "name_source": "identity-unlock-inferred",
   "signature": "public: bool __thiscall RBX::UserInputBase::sub_004674a0(void)"
- },
- "00467530": {
-  "alternatives": [],
-  "confidence": "placeholder",
-  "evidence": [
-   {
-    "kind": "link-order-neighbours",
-    "library": "G3D / Roblox (RBX)",
-    "next": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "prev": [
-     "004672d0",
-     "G3D::AtomicInt32::increment"
-    ],
-    "reach": "no caller: vtable slot (virtual)"
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "sub_00467530",
-  "name_source": "identity-unlock-inferred",
-  "signature": null
  },
  "00467550": {
   "alternatives": [],
@@ -8517,30 +8378,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": null
  },
- "00467ad0": {
-  "alternatives": [],
-  "confidence": "placeholder",
-  "evidence": [
-   {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "called only by unnamed functions"
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "sub_00467ad0",
-  "name_source": "identity-unlock-inferred",
-  "signature": null
- },
  "00467b50": {
   "alternatives": [],
   "confidence": "placeholder",
@@ -8586,54 +8423,6 @@
   "inferred": true,
   "kind": "code",
   "name": "sub_00467bf0",
-  "name_source": "identity-unlock-inferred",
-  "signature": null
- },
- "00467c50": {
-  "alternatives": [],
-  "confidence": "placeholder",
-  "evidence": [
-   {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "no caller: vtable slot (virtual)"
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "sub_00467c50",
-  "name_source": "identity-unlock-inferred",
-  "signature": null
- },
- "00467cb0": {
-  "alternatives": [],
-  "confidence": "placeholder",
-  "evidence": [
-   {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "no caller: vtable slot (virtual)"
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "sub_00467cb0",
   "name_source": "identity-unlock-inferred",
   "signature": null
  },
@@ -8973,53 +8762,27 @@
   "name_source": "identity-unlock-inferred",
   "signature": null
  },
- "00469090": {
-  "alternatives": [],
-  "confidence": "placeholder",
-  "evidence": [
-   {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "no caller: vtable slot (virtual)"
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "sub_00469090",
-  "name_source": "identity-unlock-inferred",
-  "signature": null
- },
  "004690f0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX) / other app classes (no namespace)",
-    "next": [
-     "0046a200",
-     "CVersionInfo::CVersionInfo"
-    ],
-    "prev": [
-     "00467770",
-     "RBX::UserInputBase::~UserInputBase"
-    ],
-    "reach": "called by a named function"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 2,
+    "kind": "exact-masked-body-candidates",
+    "length": 503,
+    "neighbour_owners": [
+     "DxUserInput",
+     "Vector2@G3D"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_004690f0",
+  "name": "??0DxUserInput@@QAE@PAUNativeFrameView@@PAVDataModel@RBX@@@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "public: __thiscall DxUserInput::DxUserInput(struct NativeFrameView *,class RBX::DataModel *)"
  },
  "004692f0": {
   "alternatives": [],
@@ -9056,7 +8819,7 @@
     "kind": "exact-masked-body-candidates",
     "length": 24,
     "neighbour_owners": [
-     "RBX",
+     "DxUserInput",
      "Vector2@G3D"
     ]
    }
@@ -9078,7 +8841,7 @@
     "kind": "exact-masked-body-candidates",
     "length": 30,
     "neighbour_owners": [
-     "RBX",
+     "DxUserInput",
      "Vector2@G3D"
     ]
    }
@@ -11087,30 +10850,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": "protected: virtual __thiscall RBX::FactoryProduct<class RBX::Network::Client,class RBX::Network::Peer,&char * RBX::Network::sClient>::~FactoryProduct<class RBX::Network::Client,class RBX::Network::Peer,&char * RBX::Network::sClient>(void)"
  },
- "0049ef60": {
-  "alternatives": [
-   "??1S@@QAE@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 5,
-    "kind": "exact-masked-body-candidates",
-    "length": 78,
-    "neighbour_owners": [
-     "Exposer",
-     "RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall boost::signals::detail::args3<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int>::~args3<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int>(void)"
- },
  "0049efb0": {
   "alternatives": [
    "??0S@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H0@Z"
@@ -11124,8 +10863,7 @@
     "kind": "exact-masked-body-candidates",
     "length": 127,
     "neighbour_owners": [
-     "Exposer",
-     "RBX"
+     "Exposer"
     ]
    }
   ],
@@ -12435,27 +12173,6 @@
   "name": "RBX::RunService::closeConnection",
   "name_source": "identity-unlock-reflect",
   "signature": null
- },
- "004ab090": {
-  "alternatives": [
-   "??0S@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 4,
-    "kind": "exact-masked-body-candidates",
-    "length": 88,
-    "neighbour_owners": []
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall boost::signals::detail::args2<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,int>::args2<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,int>(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)"
  },
  "004ab630": {
   "alternatives": [],
@@ -17374,28 +17091,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": "public: __thiscall S::S(int,int,int,struct Part const &,bool)"
  },
- "00545ca0": {
-  "alternatives": [
-   "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
-   "??0Vertex@MeshAlg@G3D@@QAE@ABV012@@Z"
-  ],
-  "confidence": "one-of-3-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 3,
-    "caller_votes": {},
-    "candidates": 4,
-    "kind": "exact-masked-body-candidates",
-    "length": 102,
-    "neighbour_owners": []
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@Render@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@Render@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall std::pair<struct RBX::Render::AggregatingSceneManager::BucketKey const ,class G3D::ReferenceCountedPointer<class RBX::Render::AggregatingSceneManager::Bucket> >::pair<struct RBX::Render::AggregatingSceneManager::BucketKey const ,class G3D::ReferenceCountedPointer<class RBX::Render::AggregatingSceneManager::Bucket> >(struct std::pair<struct RBX::Render::AggregatingSceneManager::BucketKey const ,class G3D::ReferenceCountedPointer<class RBX::Render::AggregatingSceneManager::Bucket> > const &)"
- },
  "00546290": {
   "alternatives": [],
   "confidence": "sole-authentic-candidate",
@@ -19191,13 +18886,15 @@
  },
  "0055d840": {
   "alternatives": [
-   "?Concatenate@?$CSimpleStringT@D$0A@@ATL@@KAXAAV12@PBDH1H@Z"
+   "?Concatenate@?$CSimpleStringT@D$00@ATL@@KAXAAV12@PBDH1H@Z"
   ],
   "confidence": "one-of-2-authentic",
   "evidence": [
    {
     "authentic_candidates": 2,
-    "caller_votes": {},
+    "caller_votes": {
+     "?Concatenate@?$CSimpleStringT@D$0A@@ATL@@KAXAAV12@PBDH1H@Z": 1
+    },
     "candidates": 3,
     "kind": "exact-masked-body-candidates",
     "length": 127,
@@ -19206,9 +18903,9 @@
   ],
   "inferred": true,
   "kind": "code",
-  "name": "?Concatenate@?$CSimpleStringT@D$00@ATL@@KAXAAV12@PBDH1H@Z",
+  "name": "?Concatenate@?$CSimpleStringT@D$0A@@ATL@@KAXAAV12@PBDH1H@Z",
   "name_source": "identity-unlock-inferred",
-  "signature": "protected: static void __cdecl ATL::CSimpleStringT<char,1>::Concatenate(class ATL::CSimpleStringT<char,1> &,char const *,int,char const *,int)"
+  "signature": "protected: static void __cdecl ATL::CSimpleStringT<char,0>::Concatenate(class ATL::CSimpleStringT<char,0> &,char const *,int,char const *,int)"
  },
  "0055db60": {
   "alternatives": [],
@@ -19233,27 +18930,6 @@
   "name": "sub_0055db60",
   "name_source": "identity-unlock-inferred",
   "signature": null
- },
- "0055de10": {
-  "alternatives": [
-   "?Combine@@YA?AUString@@ABU1@PBD@Z"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 3,
-    "kind": "exact-masked-body-candidates",
-    "length": 208,
-    "neighbour_owners": []
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z",
-  "name_source": "identity-unlock-inferred",
-  "signature": "class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > > __cdecl ATL::operator+(class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > > const &,char const *)"
  },
  "0055e270": {
   "alternatives": [],
@@ -19600,33 +19276,6 @@
   "name": "sub_00562f70",
   "name_source": "identity-unlock-inferred",
   "signature": null
- },
- "005631c0": {
-  "alternatives": [
-   "??1S@@QAE@XZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {
-     "??1SpecData@Render@RBX@@QAE@XZ": 35,
-     "func_005631c0": 8
-    },
-    "candidates": 5,
-    "kind": "exact-masked-body-candidates",
-    "length": 107,
-    "neighbour_owners": [
-     "DebugSettings@RBX",
-     "G3D"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??1SpecData@Render@RBX@@QAE@XZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall RBX::Render::SpecData::~SpecData(void)"
  },
  "00563f60": {
   "alternatives": [],
@@ -22403,28 +22052,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": "public: class RBX::Soundscape::SoundId __thiscall RBX::Reflection::Value::get<class RBX::Soundscape::SoundId>(void)const "
  },
- "00599020": {
-  "alternatives": [
-   "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z",
-   "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z"
-  ],
-  "confidence": "one-of-3-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 3,
-    "caller_votes": {},
-    "candidates": 5,
-    "kind": "exact-masked-body-candidates",
-    "length": 166,
-    "neighbour_owners": []
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??$?0PBD@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@IAE@PBD@Z",
-  "name_source": "identity-unlock-inferred",
-  "signature": "protected: __thiscall RBX::FactoryProduct<class RBX::ModelInstance,class RBX::PVInstance,&char const * const RBX::sModel>::FactoryProduct<class RBX::ModelInstance,class RBX::PVInstance,&char const * const RBX::sModel><char const *>(char const *)"
- },
  "0059a350": {
   "alternatives": [],
   "confidence": "placeholder",
@@ -24112,30 +23739,6 @@
   "name_source": "identity-unlock-inferred",
   "signature": null
  },
- "005ad810": {
-  "alternatives": [
-   "??0S@@QAE@H@Z"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 4,
-    "kind": "exact-masked-body-candidates",
-    "length": 165,
-    "neighbour_owners": [
-     "LuaArguments2008@Lua@RBX",
-     "ScriptContext@RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??0Item@Stats@RBX@@QAE@PBD@Z",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: __thiscall RBX::Stats::Item::Item(char const *)"
- },
  "005adbf0": {
   "alternatives": [],
   "confidence": "placeholder",
@@ -24588,27 +24191,26 @@
  },
  "005b87a0": {
   "alternatives": [],
-  "confidence": "webservice-pdb-alignment",
+  "confidence": "placeholder",
   "evidence": [
    {
-    "caller_names": [
-     "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ",
-     "?setVolume@SoundChannel@Soundscape@RBX@@QAEXM@Z",
-     "?stop@SoundChannel@Soundscape@RBX@@QAEXXZ"
+    "kind": "link-order-neighbours",
+    "library": "STL (MSVC 9) / Roblox (RBX)",
+    "next": [
+     "005b9840",
+     "RBX::Soundscape::SoundChannel::onServiceProvider"
     ],
-    "callers": [
-     "005bd430",
-     "005bd540",
-     "005bd590"
+    "prev": [
+     "005b84b0",
+     "std::_Tree::_Insert"
     ],
-    "kind": "webservice-pdb-caller-alignment",
-    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+    "reach": "called by a named function"
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "?checkResultNoThrow@@YAXW4FMOD_RESULT@@@Z",
-  "name_source": "identity-unlock-ws",
+  "name": "sub_005b87a0",
+  "name_source": "identity-unlock-inferred",
   "signature": null
  },
  "005b8880": {
@@ -32638,27 +32240,25 @@
  },
  "00643eb0": {
   "alternatives": [],
-  "confidence": "placeholder",
+  "confidence": "sole-authentic-candidate",
   "evidence": [
    {
-    "kind": "link-order-neighbours",
-    "library": "Roblox (RBX)",
-    "next": [
-     "00643ed0",
-     "RBX::Name::mutex"
-    ],
-    "prev": [
-     "00643e00",
-     "RBX::HUMAN::HumanoidState::HumanoidState"
-    ],
-    "reach": "called only by unnamed functions"
+    "authentic_candidates": 1,
+    "caller_votes": {},
+    "candidates": 3,
+    "kind": "exact-masked-body-candidates",
+    "length": 26,
+    "neighbour_owners": [
+     "HUMAN@RBX",
+     "Name@RBX"
+    ]
    }
   ],
   "inferred": true,
   "kind": "code",
-  "name": "sub_00643eb0",
+  "name": "?sub_00643eb0@HumanoidState@HUMAN@RBX@@QBE_NXZ",
   "name_source": "identity-unlock-inferred",
-  "signature": null
+  "signature": "public: bool __thiscall RBX::HUMAN::HumanoidState::sub_00643eb0(void)const "
  },
  "00643f10": {
   "alternatives": [],
@@ -33856,29 +33456,6 @@
   "name": "??0ChatOption@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
   "name_source": "identity-unlock-inferred",
   "signature": "public: __thiscall RBX::ChatOption::ChatOption(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)"
- },
- "006582b0": {
-  "alternatives": [
-   "?function@@YAXPAXUValue@@@Z"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 3,
-    "kind": "exact-masked-body-candidates",
-    "length": 144,
-    "neighbour_owners": [
-     "RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z",
-  "name_source": "identity-unlock-inferred",
-  "signature": "void __cdecl boost::algorithm::trim_if<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct boost::algorithm::detail::is_classifiedF>(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,struct boost::algorithm::detail::is_classifiedF)"
  },
  "00658360": {
   "alternatives": [],
@@ -35514,54 +35091,6 @@
   "name": "sub_0066f800",
   "name_source": "identity-unlock-inferred",
   "signature": null
- },
- "0066f900": {
-  "alternatives": [
-   "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 6,
-    "kind": "exact-masked-body-candidates",
-    "length": 12,
-    "neighbour_owners": [
-     "AdornRbxGfx@RBX",
-     "RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: virtual int __thiscall RBX::AdornRbxGfx::getHeight(void)const "
- },
- "0066f910": {
-  "alternatives": [
-   "?getHeight@AdornRbxGfx@RBX@@UBEHXZ"
-  ],
-  "confidence": "one-of-2-authentic",
-  "evidence": [
-   {
-    "authentic_candidates": 2,
-    "caller_votes": {},
-    "candidates": 6,
-    "kind": "exact-masked-body-candidates",
-    "length": 12,
-    "neighbour_owners": [
-     "AdornRbxGfx@RBX",
-     "RBX"
-    ]
-   }
-  ],
-  "inferred": true,
-  "kind": "code",
-  "name": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ",
-  "name_source": "identity-unlock-inferred",
-  "signature": "public: virtual int __thiscall RBX::AdornRbxGfx::getWidth(void)const "
  },
  "0066fe30": {
   "alternatives": [],

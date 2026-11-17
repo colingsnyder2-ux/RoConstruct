@@ -20,7 +20,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, BASE, IMG, insns, refs, unnamed, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, BASE, IMG, insns, refs, unnamed, undname_many, dump_json  # noqa: E402
 
 DONOR = ROOT / 'local/references/ios-2013-12_2.132.41333'
 OUT = ROOT / 'work/native-client/identity-unlock-donor.json'
@@ -149,7 +149,7 @@ def main():
                                {'kind': 'decorated-signature', 'symbol': s}]}
     names = Counter(r['name'] for r in out.values())
     out = {a: r for a, r in out.items() if names[r['name']] == 1}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('with-literals', len(lits), 'donor-candidates', len(cands), 'bound', len(out), dict(stats))
 
 

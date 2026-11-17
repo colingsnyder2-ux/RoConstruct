@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, BASE, IMG, CODE_STARTS, insns, refs, u32, unnamed  # noqa: E402
+from identity_unlock_common import ROOT, REG, BASE, IMG, CODE_STARTS, insns, refs, u32, unnamed, dump_json  # noqa: E402
 
 OUT = ROOT / 'work/native-client/identity-unlock-mfc.json'
 AFXCLASSINIT = next(int(a, 16) for a, v in REG.items() if v['name'] == '?AfxClassInit@@YGXPAUCRuntimeClass@@@Z')
@@ -70,7 +70,7 @@ def main():
         if rc:
             emit(a, '?GetThisClass@%s@@SGPAUCRuntimeClass@@XZ' % rc[0],
                  [{'kind': 'runtime-class-accessor', 'runtime_class': '%08x' % rc[1], 'class_name': rc[0]}])
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print(len(out))
 
 

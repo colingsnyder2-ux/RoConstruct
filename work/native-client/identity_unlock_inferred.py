@@ -27,7 +27,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import identity_unlock_bodyhash as B  # noqa: E402
 import identity_unlock_merge as M  # noqa: E402
-from identity_unlock_common import ROOT, REG, IMG, BASE, CODE_STARTS, end_of, unnamed, undname_many  # noqa: E402
+from identity_unlock_common import ROOT, REG, IMG, BASE, CODE_STARTS, end_of, unnamed, undname_many, dump_json  # noqa: E402
 from identity_unlock_align import target_refs  # noqa: E402
 
 NC = ROOT / 'work/native-client'
@@ -37,7 +37,7 @@ RX = re.compile(r'\?(?:\?[0-9A-Z_]{1,2})?\w+@((?:\w+@)*?\w+)@@')
 
 def main():
     real = json.load(open(NC / 'unnamed-identities.json'))
-    promoted = {a for a, r in real.items() if r['name_source'] in ('identity-unlock-upgrade', 'identity-unlock-reflect')}
+    promoted = {a for a, r in real.items() if r['name_source'] in ('identity-unlock-upgrade', 'identity-unlock-reflect', 'identity-unlock-dupref')}
     att = json.load(open(NC / 'unnamed-remaining-attribution.json'))
     rem = sorted(a for a in unnamed() if a not in real or a in promoted)  # upgrade re-derives its rows
     rows = [r for p in sorted(NC.glob('identity-unlock-bodyhash*.pkl.gz')) for r in pickle.load(gzip.open(p))['funcs']]
@@ -194,7 +194,7 @@ def main():
         for a, r in json.load(open(p_dc)).items():
             if a not in real:
                 out[a] = dict(r, inferred=True, confidence='descriptor-member-pointer', alternatives=[])
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print(json.dumps({'remaining': len(rem) - len(promoted), 'inferred': len(out),
                       'confidence': Counter(r['confidence'] for r in out.values())}))
 
