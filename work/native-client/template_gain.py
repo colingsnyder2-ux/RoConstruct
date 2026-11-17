@@ -8,7 +8,11 @@ got = {}
 for fam in sys.argv[1:]:
     led = json.load(open(W / 'prove-out' / fam / 'ledger.json'))
     for e in led.values():
-        for r in e.get('harvest_rows', []):
+        rows = e.get('harvest_rows')
+        if rows is None and e.get('harvest_ref'):
+            import gzip
+            rows = json.load(gzip.open(W / 'prove-out' / fam / 'rows' / e['harvest_ref'], 'rt'))
+        for r in rows or []:
             if r['status'] == 'inactive_exact':
                 for a in r.get('candidates') or []:
                     if a in rem and rem[a]['name'] == r['symbol']: got[a] = fam
