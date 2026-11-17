@@ -9,6 +9,12 @@
 
 namespace RBX
 {
+	// 005e7400: vtable slot 6, tail of getMomentSolid (was inline in Ball2008.h).
+	G3D::Matrix3 Ball::getMoment(float mass) const
+	{
+		return getMomentSolid(mass);
+	}
+
 	// 00649130: the diagonal is written x, y, z from one product; Math::fromDiagonal 005ddbd0.
 	G3D::Matrix3 Ball::getMomentSolid(float mass) const
 	{

@@ -18,3 +18,12 @@ void Explosion::onServiceProvider(const ServiceProvider* oldProvider, const Serv
 	Notifier<RunService, Stepped>::connect(ServiceProvider::find<RunService>(newProvider), dynamic_cast<Listener<RunService, Stepped>*>(this));
 }
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sExplosion>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sExplosion>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sExplosion>();

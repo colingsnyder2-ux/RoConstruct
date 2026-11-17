@@ -92,3 +92,12 @@ template class RBX::Reflection::TSignalDesc<void __cdecl(void)>;
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sClickDetector>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sClickDetector>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sClickDetector>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sClickDetector>();

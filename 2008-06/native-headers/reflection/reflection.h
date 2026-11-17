@@ -431,6 +431,10 @@ namespace RBX
 			{
 				element->setValue(getValue(instance));
 			}
+		public:
+			const EnumDescriptor* enumDescPtr;   // INFERRED (header-add): evidence: asm +0x20 loaded into ecx before call to EnumDescriptor::isValue(int) 0x448450 - byte-proved by 00448c20
+		public:
+			bool sub_00448c20(DescribedBase* instance, int intValue) const;   // INFERRED: 00448c20, placeholder name (identity tier), body byte-proved (Inferred_00448c20.cpp)
 		};
 
 		// BoundFuncDesc

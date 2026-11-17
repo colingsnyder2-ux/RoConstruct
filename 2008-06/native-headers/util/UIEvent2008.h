@@ -39,7 +39,6 @@ namespace RBX
 			{
 				G3D::Vector2int16 mousePosition;
 				G3D::Vector2int16 mouseDelta;
-				G3D::Vector2int16 windowSize;
 			};
 			struct
 			{
@@ -47,14 +46,29 @@ namespace RBX
 				SDLMod mod;
 			};
 		};
+		G3D::Vector2int16 windowSize;
 
-		// 004672a0: position and delta zero, windowSize = argument
-		UIEvent(UserInputBase* userInput, EventType eventType, G3D::Vector2int16 windowSize)
+		// 004672a0 (out of line): position and delta zero, windowSize = argument
+		UIEvent(UserInputBase* userInput, EventType eventType, G3D::Vector2int16 windowSize);
+
+		// inlined by DxUserInput 004684a0: all three vectors given
+		UIEvent(UserInputBase* userInput, EventType eventType, const G3D::Vector2int16& mousePosition,
+				const G3D::Vector2int16& mouseDelta, const G3D::Vector2int16& windowSize)
 			: eventType(eventType),
 			  userInput(userInput),
-			  mousePosition(0, 0),
-			  mouseDelta(0, 0),
+			  mousePosition(mousePosition),
+			  mouseDelta(mouseDelta),
 			  windowSize(windowSize)
+		{
+		}
+
+		// inlined by DxUserInput 004681b0: key events carry a zero windowSize
+		UIEvent(UserInputBase* userInput, EventType eventType, SDLKey key, SDLMod mod)
+			: eventType(eventType),
+			  userInput(userInput),
+			  key(key),
+			  mod(mod),
+			  windowSize(0, 0)
 		{
 		}
 	};

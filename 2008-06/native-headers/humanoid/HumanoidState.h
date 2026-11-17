@@ -69,6 +69,7 @@ public:
     Humanoid* getHumanoid() const;                                    // 00793d50
     Primitive* getFloorPrimitive() const;                             // 00643d30: floorPart +0x24 ? part + 0x228 (embedded
                                                                       //   Primitive) : NULL (analog name)
+    bool sub_00643eb0() const;   // INFERRED: 00643eb0, placeholder name (identity tier), body byte-proved (Inferred_00643eb0.cpp)
     void render3dAdorn(Adorn* adorn);                                 // 00645060 (thiscall; called by Humanoid::render3dAdorn
                                                                       //   005d9c30 through currentState +0x220; analog name)
     // 00645450 (cdecl, `ret`): (*state)->006451c0(dt), 006453a0(state, dt), then (*state)->onStep(dt, controller)

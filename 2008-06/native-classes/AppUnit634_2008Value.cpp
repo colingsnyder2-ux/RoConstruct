@@ -211,3 +211,23 @@ ObjectValue::ObjectValue()
 }
 }
 
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sIntValue>();
+template void RBX::Name::callDoDeclare<RBX::sBoolValue>();
+template void RBX::Name::callDoDeclare<RBX::sStringValue>();
+template void RBX::Name::callDoDeclare<RBX::sCFrameValue>();
+template void RBX::Name::callDoDeclare<RBX::sBrickColorValue>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sIntValue>();
+template void RBX::Name::callDoDeclare<RBX::sBoolValue>();
+template void RBX::Name::callDoDeclare<RBX::sStringValue>();
+template void RBX::Name::callDoDeclare<RBX::sCFrameValue>();
+template void RBX::Name::callDoDeclare<RBX::sBrickColorValue>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sIntValue>();
+template void RBX::Name::callDoDeclare<RBX::sBoolValue>();
+template void RBX::Name::callDoDeclare<RBX::sStringValue>();
+template void RBX::Name::callDoDeclare<RBX::sCFrameValue>();
+template void RBX::Name::callDoDeclare<RBX::sBrickColorValue>();

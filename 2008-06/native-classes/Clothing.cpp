@@ -236,3 +236,18 @@ void Clothing::resetLimbs()
 template void RBX::Name::callDoDeclare<RBX::sShirtGraphic>();
 template void RBX::Name::callDoDeclare<RBX::sClothing>();
 template void RBX::Name::callDoDeclare<RBX::sSkin>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sShirtGraphic>();
+template void RBX::Name::callDoDeclare<RBX::sClothing>();
+template void RBX::Name::callDoDeclare<RBX::sSkin>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sShirtGraphic>();
+template void RBX::Name::callDoDeclare<RBX::sClothing>();
+template void RBX::Name::callDoDeclare<RBX::sSkin>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sShirtGraphic>();
+template void RBX::Name::callDoDeclare<RBX::sClothing>();
+template void RBX::Name::callDoDeclare<RBX::sSkin>();

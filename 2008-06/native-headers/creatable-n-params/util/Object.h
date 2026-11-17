@@ -1,0 +1,194 @@
+#pragma once
+#include <boost/shared_ptr.hpp>
+#include <map>
+#include "util/Name.h"
+
+namespace RBX
+{
+	template<typename Class>
+	boost::shared_ptr<Class> shared_from(Class* r)
+	{
+		return r ? boost::shared_static_cast<Class>(r->shared_from_this()) : boost::shared_ptr<Class>();
+	}
+
+	template<typename To, typename From>
+	boost::shared_ptr<To> shared_from_dynamic_cast(boost::enable_shared_from_this<From>* r)
+	{
+		return r ? boost::shared_dynamic_cast<To, From>(r->shared_from_this()) : boost::shared_ptr<To>();
+	}
+
+	template<typename To, typename From>
+	boost::shared_ptr<To> shared_from_polymorphic_downcast(boost::enable_shared_from_this<From>* r)
+	{
+		return r ? boost::shared_polymorphic_downcast<To, From>(r->shared_from_this()) : boost::shared_ptr<To>();
+	}
+
+	class Object
+	{
+	public:
+		virtual ~Object()
+		{
+		}
+	};
+
+	class ICreator
+	{
+	public:
+		virtual boost::shared_ptr<Object> create() const = 0;
+	};
+
+	template<typename T>
+	class Creatable : public Object
+	{
+	public:
+		class Deleter
+		{
+		public:
+			void operator()(T*);
+		};
+
+	protected:
+		Creatable()
+		{
+		}
+		virtual ~Creatable()
+		{
+		}
+
+	public:
+		template<typename Class>
+		static boost::shared_ptr<Class> create()
+		{
+			return boost::shared_ptr<Class>(new Class(), Deleter());
+		}
+		template<typename Class, typename Parameter1>
+		static boost::shared_ptr<Class> create(Parameter1 p1)
+		{
+			return boost::shared_ptr<Class>(new Class(p1), Deleter());
+		}
+		template<typename Class, typename Parameter1, typename Parameter2>
+		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)
+		{
+			return boost::shared_ptr<Class>(new Class(p1, p2), Deleter());
+		}
+		// 3 and 5 parameter forms: create<ArrowPanel> 00602650, create<PercentPanel> 006021e0, create<ImageButton> 00601f00
+		// (three by-value arguments) and create<ArrowButton> 00657190 (five), declared by the pending GUI units.
+		template<typename Class, typename Parameter1, typename Parameter2, typename Parameter3>
+		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)
+		{
+			return boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());
+		}
+		template<typename Class, typename Parameter1, typename Parameter2, typename Parameter3, typename Parameter4, typename Parameter5>
+		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3, Parameter4 p4, Parameter5 p5)
+		{
+			return boost::shared_ptr<Class>(new Class(p1, p2, p3, p4, p5), Deleter());
+		}
+	private:
+		static void* operator new(size_t size)
+		{
+			return malloc(size);
+		}
+		static void operator delete(void* ptr)
+		{
+			free(ptr);
+		}
+	};
+
+	template<typename T>
+	class AbstractFactoryProduct : public Creatable<T>
+	{
+	protected:
+		AbstractFactoryProduct()
+		{
+		}
+	public:
+		virtual const Name& getClassName() const = 0;
+	  
+	protected:
+		static std::map<const Name*, const ICreator*>& getCreators()
+		{
+			static std::map<const Name*, const ICreator*> creators;
+			return creators;
+		}
+	public:
+		static boost::shared_ptr<T> create(const Name& name)
+		{
+			std::map<const Name*, const ICreator*>::iterator iter = getCreators().find(&name);
+			if (iter == getCreators().end())
+			{
+				return boost::shared_ptr<T>();
+			}
+			else
+			{
+				return boost::shared_dynamic_cast<T>(iter->second->create());
+			}
+		}
+	};
+
+	template<typename Class, typename DerivedClass, const char* ClassName>
+	class FactoryProduct : public DerivedClass
+	{
+	private:
+		class Creator : public ICreator
+		{
+		public:
+			virtual boost::shared_ptr<Object> create() const;
+			const Name& getClassName() const;
+
+		public:
+			Creator();
+			~Creator();
+			// INFERRED: Object.h Creator::wasConstructed() asserts isConstructed == 0x29a (iOS 2013 reference: getClassName /
+			// static getCreator); each 2008 creator initializer stores 0x29a to its own instantiation's copy (0096c864 for
+			// Properties, 0096c5f8, 00978a68, ...), right after the creators-map insert of Creator().
+			static int isConstructed;
+			static bool wasConstructed() { return isConstructed == 666; }
+		};
+
+	private:
+		static const Creator creator;
+	  
+	protected:
+		FactoryProduct();
+		template<typename T> FactoryProduct(T value) : DerivedClass(value) {}
+		virtual ~FactoryProduct()
+		{
+		}
+
+	public:
+		const ICreator& getCreator()
+		{
+			return creator;
+		}
+		virtual const Name& getClassName() const;
+	  
+	public:
+		static const Name& className();
+	};
+
+	template<typename Class, typename DerivedClass, const char* ClassName>
+	int FactoryProduct<Class, DerivedClass, ClassName>::Creator::isConstructed;
+
+	template<typename DerivedClass, const char* ClassName>
+	class NonFactoryProduct : public DerivedClass
+	{
+	public:
+		NonFactoryProduct()
+			: DerivedClass()
+		{
+		}
+
+		template<typename T0>
+		NonFactoryProduct(T0 arg0)
+			: DerivedClass(arg0)
+		{
+		}
+
+		// Override an inherited virtual without adding a slot to DescribedBase
+		// specializations (Marker's original vtable has only its destructor).
+		const Name& getClassName() const;
+
+	public:
+		static const Name& className();
+	};
+}

@@ -237,3 +237,27 @@ template void RBX::Name::callDoDeclare<RBX::sBodyThrust>();
 template void RBX::Name::callDoDeclare<RBX::sBodyPosition>();
 template void RBX::Name::callDoDeclare<RBX::sBodyVelocity>();
 template void RBX::Name::callDoDeclare<RBX::sBodyAngularVelocity>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sBodyGyro>();
+template void RBX::Name::callDoDeclare<RBX::sBodyForce>();
+template void RBX::Name::callDoDeclare<RBX::sBodyThrust>();
+template void RBX::Name::callDoDeclare<RBX::sBodyPosition>();
+template void RBX::Name::callDoDeclare<RBX::sBodyVelocity>();
+template void RBX::Name::callDoDeclare<RBX::sBodyAngularVelocity>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sBodyGyro>();
+template void RBX::Name::callDoDeclare<RBX::sBodyForce>();
+template void RBX::Name::callDoDeclare<RBX::sBodyThrust>();
+template void RBX::Name::callDoDeclare<RBX::sBodyPosition>();
+template void RBX::Name::callDoDeclare<RBX::sBodyVelocity>();
+template void RBX::Name::callDoDeclare<RBX::sBodyAngularVelocity>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sBodyGyro>();
+template void RBX::Name::callDoDeclare<RBX::sBodyForce>();
+template void RBX::Name::callDoDeclare<RBX::sBodyThrust>();
+template void RBX::Name::callDoDeclare<RBX::sBodyPosition>();
+template void RBX::Name::callDoDeclare<RBX::sBodyVelocity>();
+template void RBX::Name::callDoDeclare<RBX::sBodyAngularVelocity>();

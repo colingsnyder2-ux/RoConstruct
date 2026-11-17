@@ -124,3 +124,12 @@ template class std::vector<enum RBX::SpecialShape::MeshType,std::allocator<enum 
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sSpecialShape>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sSpecialShape>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sSpecialShape>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sSpecialShape>();
