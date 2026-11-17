@@ -20,5 +20,13 @@
  {
   "header": "lane include selection",
   "note": "Of 44 named-donor probes recompiled against current headers (cl /Zs, no lane run), 6 now compile. Remaining header-side blockers: SleepStage 0064a660/0064a5f0/0064a790 need native-world SleepStage.h plus Assembly::getMaxRadius/getSleepInfo (native-world Assembly.h; 2008 Assembly is Clump, no RTTI), World 005e9fd0/005ea920 need engine-world World.h, Ball/Block/Face getMoment/getAxis C2084 because Ball2008.h/Block2008.h define the bodies inline (005e7400/005e7390 need out-of-line decl + cpp body), DataModel 007f3470/007f34a0/00579db0 (core DataModel.h; also NativeContentProvider.h redefines ContentProvider), Lighting 005e22c0/005e2370 need prop_AmbientTop/Bottom descriptors + RunService decl, SoundChannel.h redefines SoundId/Sound/SoundChannel (005ba060), Stats.h redefines Stats::Item (005a5c90)."
+ },
+ {
+  "header": "v8datamodel/DataModel.h",
+  "note": "PDB 2007 DataModel members absent in header: isInitialized bool +493, timeState scoped_ptr<TimeState> +504 (pdb-layout-gaps.json). Unverified against 2008 asm; 2008 DataModel layout differs. Owner review only."
+ },
+ {
+  "header": "v8tree/Instance.h",
+  "note": "PDB 2007 Instance methods absent in header (non-virtual helpers): findChildIndex, findFirstChildByNameRecursive, isAncestorOf2, isDescendentOf2, promoteChildren, signalDescendentAdded/Removing, setParent2, raiseChanged, getChildren2. Add only on demand by a blocked function with 2008 symbol evidence."
  }
 ]
