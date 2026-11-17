@@ -23,6 +23,25 @@ def verification_files(root):
                ('native_class_layout', 'native_vftable_check', 'native_conversion_queue')])
 
 
+def input_snapshot(root):
+    from roc.integration_verify import file_hash, input_paths
+    return {path: file_hash(path) for path in input_paths(root)[0]}
+
+
+def unrelated_addition(path, tokens):
+    """A concurrently added native unit that never names a reviewed owner or method cannot define or
+    alter the reviewed symbols; the provider-collision scan skips such units by the same filter."""
+    path = Path(path)
+    return (path.suffix.lower() == '.cpp' and 'native-classes' in path.parts
+            and not any(token.encode() in path.read_bytes() for token in tokens))
+
+
+def only_unrelated_additions(before, after, tokens):
+    """Changed or removed inputs invalidate the proof; only unrelated added native units are tolerated."""
+    return (all(after.get(path) == sha for path, sha in before.items())
+            and all(unrelated_addition(path, tokens) for path in set(after) - set(before)))
+
+
 def scoped_item(namespace, source):
     if namespace and not re.fullmatch(r'[A-Za-z_]\w*(?:::[A-Za-z_]\w*)*', namespace):
         raise ValueError('Invalid reviewed namespace')
@@ -140,13 +159,18 @@ def prove(root, review_file, apply=False):
             draft_methods.build(root)
             index = json.loads((root / 'work/draft-merger/method-index.json').read_text())
             actual = {p.relative_to(root).as_posix() for p in draft_methods.source_paths(root)}
-            if actual != set(index['inventory']) or any(content_hash((root / name).read_bytes()) != sha
-                                                       for name, sha in index['inventory'].items()):
+            tokens = ({row['signature'].split('(')[0].rsplit('::', 2)[-2] for row in methods}
+                      | {row['signature'].split('(')[0].rsplit('::', 1)[-1] for row in methods})
+            if (set(index['inventory']) - actual
+                    or not all(unrelated_addition(root / name, tokens) for name in actual - set(index['inventory']))
+                    or any(content_hash((root / name).read_bytes()) != sha for name, sha in index['inventory'].items())):
                 raise ValueError('Provider index changed while checking source improvement')
             for method in methods:
                 if any(not row['shadow'] for row in index['index'].get(method['signature'], [])):
                     raise ValueError('Method already has a canonical body: ' + method['signature'])
-            pinned = input_hash(root)
+            from roc.integration_verify import digest_paths
+            snapshot = input_snapshot(root)
+            pinned = digest_paths(root, list(snapshot), snapshot)
             gate_paths = verification_files(root)
             gates = {str(name): content_hash(name.read_bytes()) for name in gate_paths}
             frozen, _ = draft_native.freeze_headers(root, output)
@@ -217,7 +241,7 @@ def prove(root, review_file, apply=False):
                 providers.append(name)
 
             def fresh():
-                return (input_hash(root) == pinned and review_file.read_bytes() == review_raw
+                return (only_unrelated_additions(snapshot, input_snapshot(root), tokens) and review_file.read_bytes() == review_raw
                         and closure.read_bytes() == closure_raw
                         and (not target.exists() if new_file else content_hash(target.read_bytes()) == content_hash(before))
                         and all(content_hash(Path(name).read_bytes()) == sha for name, sha in gates.items()))

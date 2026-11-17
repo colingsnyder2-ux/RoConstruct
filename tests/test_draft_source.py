@@ -58,3 +58,23 @@ class SourceMethodContractTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+def test_only_unrelated_native_additions_keep_proof_fresh(tmp_path):
+    from roc.draft_source import only_unrelated_additions
+    folder = tmp_path / 'native-classes'
+    folder.mkdir()
+    old, unrelated, related = folder / 'A.cpp', folder / 'Inferred_1.cpp', folder / 'Inferred_2.cpp'
+    old.write_text('x')
+    unrelated.write_text('void f() {}')
+    related.write_text('FlagStandService::FindStandWithFlag')
+    before = {old: b'1'}
+    tokens = {'FlagStandService', 'FindStandWithFlag'}
+    assert only_unrelated_additions(before, {old: b'1', unrelated: b'2'}, tokens)
+    assert not only_unrelated_additions(before, {old: b'1', related: b'3'}, tokens)
+    assert not only_unrelated_additions(before, {old: b'changed'}, tokens)
+    assert not only_unrelated_additions(before, {}, tokens)
+    header = tmp_path / 'native-headers' / 'New.h'
+    header.parent.mkdir()
+    header.write_text('')
+    assert not only_unrelated_additions(before, {old: b'1', header: b'4'}, tokens)
