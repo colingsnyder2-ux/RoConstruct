@@ -84,6 +84,7 @@ namespace RBX
 					 public Listener<RunService, Stepped>
 	{
 		friend struct ::NativeHumanoid2008Layout; // tests/NativeHumanoid2008Layout.cpp offset asserts
+		friend class HUMAN::HumanoidState; // INFERRED: 00644670 reads the private flag byte +0x1e8 (imDead bit 1)
 
 	private:
 		enum WalkMode
