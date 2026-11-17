@@ -73,6 +73,26 @@ generated code** and without disturbing the naming / LLM lanes running in parall
 5. **Plan report** → `work/native-client/layout/PLAN_REPORT.md`: counts per category, the merge
    groups, expected file count after cleanup, risky items.
 
+## Artifact taxonomy (survey 2026-11-16, native-classes + native-headers)
+
+| Artifact | Files | What it is | Removal rule |
+|---|---|---|---|
+| Explicit class instantiations `template class X<...>;` under "Template members emitted by this unit" | 248 | Scaffolding: forces this TU to emit template members the original emitted implicitly from code not recovered yet | Remove a line only when a build without it still defines every member it emitted (per-symbol check against the final link map / object set). Mostly Phase 4. `template class` also emits members the original never used; harmless under /OPT:REF but not authentic. |
+| Explicit function instantiations `template R T<...>::f<...>();` | 158 | Same, for single members (e.g. `Creatable<Instance>::create<RunService>`) | Same rule |
+| `#pragma auto_inline/optimize/intrinsic` | 72 | Codegen steering to reach byte match | Keep only with donor/OpenRBX evidence (e.g. rbxgs). Otherwise flag: usually a wrong per-TU flag set or wrong TU grouping; retry without after Phase 3 merges |
+| `__declspec(noinline)` | 82 | Same; some already marked `INFERRED` with donor evidence | Same |
+| Placeholder identifiers in code (`entity->func_0067d3d0()`) | 6 | Calls to functions with no real name yet | Replace with identity-tier names (`unnamed-identities.json`, then inferred tier, flagged) |
+| Placeholder names in comments (`func_`, `sub_`, `FUN_`) | ~127 | Recovery notes | Move to sidecar evidence |
+| Address / evidence comments (`// Original 00405aa0 ...`, batch notes, "Batch 17 rejected") | 715 | Proof notes | Move into a per-function sidecar (`<file>.evidence.json`: address, size, proof receipt, notes); keep short `// INFERRED:` lines in source |
+| Provenance banners ("mined exact source ... verbatim", `roc_*` source ids) | ~66 | Tool provenance | Sidecar / build table |
+| `#if 0` blocks | 18 | Dead experiments | Remove (codegen-neutral, still verify) |
+| File names `AppUnit*`, `AppLeaves2008*`, `*2008*.cpp`, `Mined*`, `vendor_i*`, `accepted/` subtree | ~140+ | Recovery-unit names | Phase 2 rename map |
+| Ghidra residue (`undefined4`, `CONCAT`, `unaff_`) | ~0 | none found in code (matches were prose) | lint keeps watching |
+
+Explicit instantiations and codegen pragmas are load-bearing today: removing them can break the
+link or change bytes. They are the last artifacts to go, and only per-symbol / per-function proof
+removes them.
+
 ## Phase 1 — tooling (now; still no moves)
 
 1. `layout_apply.py --dry-run|--apply --family X`: applies one family from the map (git mv,
