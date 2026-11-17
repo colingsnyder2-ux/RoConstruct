@@ -696,6 +696,162 @@
    "address": "005bb5f0",
    "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
    "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4NormalId@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "0056fc60",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "0059bc70",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4PartType@Part@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "0059c1f0",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "005cd240",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "005cff90",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "005ed170",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4InputType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "005ed3f0",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
+   "address": "006091f0",
+   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "0041c3e0",
+   "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "0058b020",
+   "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "005c4f80",
+   "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+   "address": "00553d80",
+   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4CameraType@Camera@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4CameraType@Camera@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+   "address": "00553d80",
+   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ControllerType@Controller@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ControllerType@Controller@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+   "address": "00553d80",
+   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ShadowMode@CRenderSettings@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ShadowMode@CRenderSettings@@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+   "address": "00553d80",
+   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4NormalId@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "0056fdf0",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "0059c0f0",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4PartType@Part@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "0059c380",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "005cd3d0",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "005d0120",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "005ed580",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4InputType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "005ed5a0",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00609380",
+   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+   "votes": 1
+  },
+  {
+   "symbol": "?lookup@?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
+   "address": "004aa0d0",
+   "identity_evidence": "INFERRED:vtable 0083a450 slot 1 of EnumDesc<Camera::CameraType> points here; the same 004aa0d0 sits in the BinType vtable 0083aeb4 slot 1",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4FormFactor@PartInstance@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4FormFactor@PartInstance@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+   "address": "00553d80",
+   "identity_evidence": "INFERRED:std::_Tree dtor called twice from the EnumDesc<FormFactor> dtor 0059bc70; shared body of the other EnumDesc map instances",
+   "votes": 1
+  },
+  {
+   "symbol": "?lookup@?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
+   "address": "004aa0d0",
+   "identity_evidence": "INFERRED:vtable 00832db8 slot 1 of EnumDesc<PartInstance::FormFactor> points here (shared with CameraType/BinType)",
+   "votes": 1
   }
  ]
 }

@@ -416,3 +416,6 @@ namespace RBX
 		}
 	}
 }
+
+// Template member emitted by this unit (0059bc70 deleting-dtor thunk 0059c0f0, body byte-identical to the 2008-06 client).
+template class RBX::Reflection::EnumDesc<enum RBX::PartInstance::FormFactor>;
