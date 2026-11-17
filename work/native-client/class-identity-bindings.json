@@ -228,6 +228,24 @@
    "address": "005ed0e0",
    "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
    "votes": 1
+  },
+  {
+   "symbol": "??0ClumpStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+   "address": "0064cfd0",
+   "identity_evidence": "INFERRED:ClumpStage vtable 0084b14c (stage chain CleanStage->JointStage->ClumpStage: JointStage ctor 00668470 news 0x30 bytes and calls 0064cfd0) and byte-exact native body (ClumpStage2008.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1ClumpStage@RBX@@UAE@XZ",
+   "address": "0064cf50",
+   "identity_evidence": "INFERRED:ClumpStage vtable 0084b14c and byte-exact native body (ClumpStage2008.cpp)",
+   "votes": 1
+  },
+  {
+   "symbol": "??0SpatialHash@RBX@@QAE@PAVWorld@1@PAVContactManager@1@@Z",
+   "address": "0065b4e0",
+   "identity_evidence": "INFERRED:donor-exact name SpatialHash (ContactManager 2008 news SpatialHash(world, this)) and byte-exact native body (SpatialHash2008.cpp)",
+   "votes": 1
   }
  ]
 }
