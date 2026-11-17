@@ -18,7 +18,7 @@ G3D::Vector3 Math::closestPointOnRay(const G3D::Ray& pointOnRay, const G3D::Ray&
 }
 }
 
-#include "../../../../../../tools/rbxgs/Client/App/include/util/Math.h"
+#include "../../../../../../../tools/rbxgs/Client/App/include/util/Math.h"
 
 namespace RBX {
 const G3D::Matrix3& Math::getAxisRotationMatrix(int face)
