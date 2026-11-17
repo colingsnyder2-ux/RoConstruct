@@ -19,7 +19,7 @@ from identity_unlock_common import ROOT, REG, unnamed, undname_many  # noqa: E40
 
 NC = ROOT / 'work/native-client'
 ROUTES = [('init', 'identity-unlock-init.json'), ('mfc', 'identity-unlock-mfc.json'),
-          ('vtable', 'identity-unlock-vtable.json'), ('dupfix', 'identity-unlock-dupfix.json'), ('vtsib', 'identity-unlock-vtsib.json'),
+          ('vtable', 'identity-unlock-vtable.json'), ('dupfix', 'identity-unlock-dupfix.json'), ('dupref', 'identity-unlock-dupref.json'), ('vtsib', 'identity-unlock-vtsib.json'),
           ('vthdr', 'identity-unlock-vthdr.json'), ('align', 'identity-unlock-align.json'), ('wsfp', 'identity-unlock-wsfp.json'), ('ws', 'identity-unlock-ws.json'),
           ('objvt', 'identity-unlock-objvt.json'), ('donorcg', 'identity-unlock-donorcg.json'),
           ('strlit', 'identity-unlock-strlit.json'),
@@ -144,14 +144,14 @@ def main():
             per[src[a] + ':undname-failed'] += 1
             continue
         # compiled-object names can come from LLM drafts: every name part must be authentic
-        if src[a] in ('align', 'objvt', 'vthdr', 'calls', 'strlit', 'bodyhash', 'upgrade', 'reflect') and not all(x in idents and len(x) > 1 and not PLACEHOLDER.match(x)
+        if src[a] in ('align', 'objvt', 'vthdr', 'dupref', 'calls', 'strlit', 'bodyhash', 'upgrade', 'reflect') and not all(x in idents and len(x) > 1 and not PLACEHOLDER.match(x)
                                                                                                                 for x in qual_parts(sig)):
             per[src[a] + ':not-in-headers'] += 1
             continue
         # a compiled-object member name must belong to a class (exact namespace path) that the
         # original binary already has other named members of; drafts invent classes like 'S'
         om = re.match(r'\?(?:\?[0-9A-Z_]{1,2})?\w+@((?:\w+@)*?\w+)@@', r['name'])
-        if src[a] in ('align', 'objvt', 'vthdr', 'calls', 'strlit', 'bodyhash', 'upgrade', 'reflect') and om and om.group(1) not in reg_owners                 and not vendor_owner(om.group(1), vendor)                 and 'V%s@@' % om.group(1) not in reg_text and 'U%s@@' % om.group(1) not in reg_text:
+        if src[a] in ('align', 'objvt', 'vthdr', 'dupref', 'calls', 'strlit', 'bodyhash', 'upgrade', 'reflect') and om and om.group(1) not in reg_owners                 and not vendor_owner(om.group(1), vendor)                 and 'V%s@@' % om.group(1) not in reg_text and 'U%s@@' % om.group(1) not in reg_text:
             per[src[a] + ':owner-not-in-binary'] += 1
             continue
         r['signature'] = r.get('signature') or sig

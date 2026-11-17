@@ -51,6 +51,9 @@ namespace RBX
 
 	private:
 		ICameraOwner* getCameraOwner();
+	public:
+		G3D::Vector3 sub_004d6fb0() const;   // INFERRED: 004d6fb0, placeholder name (identity tier), body byte-proved (Inferred_004d6fb0.cpp)
+	private:
 		void updateFocus();
 		void updateGoal();
 		bool characterZoom(float in);

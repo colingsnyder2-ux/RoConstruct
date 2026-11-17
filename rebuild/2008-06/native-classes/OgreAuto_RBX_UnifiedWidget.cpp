@@ -35,3 +35,16 @@ void UnifiedWidget::setMenuState(MenuState value)
 }
 }
 
+namespace RBX {
+void UnifiedWidget::render2dChildren(Adorn* adorn)
+{
+	if (menuState >= SHOWN_APPEARING) {
+		for (unsigned int i = 0; i < numChildren(); ++i) {
+			GuiItem* item = dynamic_cast<GuiItem*>(getChild(i));
+			if (item)
+				item->render2d(adorn);
+		}
+	}
+}
+}
+

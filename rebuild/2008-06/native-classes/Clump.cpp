@@ -376,3 +376,32 @@ namespace RBX
 		std::sort(children.begin(), children.end(), lessAssembly);
 	}
 }
+
+namespace RBX {
+RBX::PrimIterator Assembly::assemblyPrimEnd(void) const
+{
+	return PrimIterator::end(PrimIterator::IN_ASSEMBLY);
+}
+}
+
+namespace RBX {
+RBX::Primitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* child, SearchType searchType)
+{
+	Joint* found = NULL;
+	Joint* joint = parent->getFirstJoint();
+	while (joint)
+	{
+		Primitive* other = joint->otherPrimitive(parent);
+		if (isParent(parent, other, joint, searchType))
+		{
+			if (other == child)
+				found = joint;
+			else if (found)
+				return other;
+		}
+		joint = parent->getNextJoint(joint);
+	}
+	return NULL;
+}
+}
+

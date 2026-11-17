@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import identity_unlock_align as A  # noqa: E402
 import identity_unlock_dupctor as DC  # noqa: E402
 import identity_unlock_dupfix as DF  # noqa: E402
+import identity_unlock_dupref as DR  # noqa: E402
 import identity_unlock_inferred as INF  # noqa: E402
 import identity_unlock_merge as M  # noqa: E402
 import identity_unlock_reflect as R  # noqa: E402
@@ -50,7 +51,7 @@ def main():
     prev = None
     for rnd in range(a.max_rounds):
         for name, fn in (('align', A.main), ('merge', M.main), ('inferred', INF.main), ('upgrade', UP.main),
-                         ('reflect', R.main), ('vtsib', VS.main), ('vthdr', VH.main), ('ws', WS.main), ('wsfp', WF.main), ('merge', M.main)):
+                         ('reflect', R.main), ('vtsib', VS.main), ('vthdr', VH.main), ('ws', WS.main), ('wsfp', WF.main), ('dupref', DR.main), ('merge', M.main)):
             step(name, fn)
         cur = {k: v['name'] for k, v in json.load(open(REAL)).items()}
         print('[cycle] round %d: %d real' % (rnd + 1, len(cur)), flush=True)

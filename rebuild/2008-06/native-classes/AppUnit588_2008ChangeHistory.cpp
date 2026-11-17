@@ -490,3 +490,15 @@ void ChangeHistoryService::initializeBase()
 }
 }
 
+namespace RBX {
+HistoryRecord::~HistoryRecord()
+{
+}
+}
+
+namespace RBX {
+HistoryItem::~HistoryItem()
+{
+}
+}
+

@@ -141,6 +141,10 @@ namespace RBX
 				this->_type = &Type::singleton<T>();
 				this->value = value;
 			}
+		public:
+			Value& sub_005ad270(const std::vector<RBX::Reflection::Value>& v);   // INFERRED: 005ad270, placeholder name (identity tier), body byte-proved (Inferred_005ad270.cpp)
+		public:
+			Value& sub_00443590(const std::string& v);   // INFERRED: 00443590, placeholder name (identity tier), body byte-proved (Inferred_00443590.cpp)
 		};
 
 		class SignatureDescriptor

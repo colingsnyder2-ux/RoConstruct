@@ -50,11 +50,13 @@ BOOL CRobloxDHtmlDialog::IsExternalDispatchSafe()
 void CRobloxDHtmlDialog::BeforeNavigate2(LPDISPATCH browser, VARIANT* location,
     VARIANT*, VARIANT*, VARIANT*, VARIANT*, BOOL* cancel)
 {
+    extern long __cdecl checkDialogUrl(const char*);
     CString address(location->bstrVal);
-    if (checkDialogUrl(address))
-        *cancel = TRUE;
+    const char* (ATL::CSimpleStringT<char, 1>::*text)() const = &ATL::CSimpleStringT<char, 1>::operator const char*;
+    if (checkDialogUrl((address.*text)()))
+        *cancel = 1;
     else
-        OnBeforeNavigate(browser, address);
+        OnBeforeNavigate(browser, (address.*text)());
 }
 
 void CRobloxDHtmlDialog::WindowClosing(BOOL, BOOL* cancel)
