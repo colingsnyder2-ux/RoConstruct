@@ -39,7 +39,7 @@ RESULTS = OUT / 'results.json'
 HERE_PH = ROOT / 'work/native-client'
 NAMED = {}                         # addr -> (decorated name, signature) in --named mode
 results = json.loads(RESULTS.read_text()) if RESULTS.is_file() else {}
-LADDER = ['claude:opus', 'claude:sonnet']
+LADDER = ['claude:sonnet', 'claude:opus']
 
 OFFSET_HACK = m.OFFSET_HACK
 RULES = """You recover one unnamed function of the 2008 Roblox client as REAL native C++ against the real native headers.
@@ -68,6 +68,19 @@ RBX::Class | declaration;   // evidence: <decorated symbol from the annotations,
 One member per line (method declaration or data member), at most 6 lines. Add only what the binary proves; never padding
 arrays, never placeholder fields, never redeclare a member the class already has. The harness puts the lines in a
 private copy of that class's header for this compile only; they reach the real header only if the function is byte-exact."""
+
+
+def target_asm(addr):
+    """`roc native-asm` text for ADDR, cached in the lane folder (about 5 s per call; every try and run repeated it)."""
+    cache = OUT / addr / 'asm.txt'
+    if cache.is_file():
+        return cache.read_text(errors='replace')
+    text = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', addr], cwd=ROOT, capture_output=True,
+                          text=True).stdout
+    if text.strip():
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(text)
+    return text
 
 
 def placeholder_targets():
@@ -186,7 +199,7 @@ def shadow(work, header, cls, decl, addr):
     return root, header.relative_to(HEADERS).as_posix()
 
 
-def neighbour_source(row, limit=3500):
+def neighbour_source(row, limit=2500):
     """Native source of the link-order neighbours (usually the same original .cpp): its includes, helpers, real member
     names and style are the best context for an unnamed function between them."""
     out, seen = [], set()
@@ -209,7 +222,7 @@ def neighbour_source(row, limit=3500):
             'member names) ---\n' + '\n\n'.join(out[:2]) + '\n') if out else ''
 
 
-def proven_examples(limit=2):
+def proven_examples(limit=1):
     """Short proven placeholder answers (free and member) as format/style examples."""
     picks = []
     for a, r in sorted(results.items()):
@@ -441,8 +454,7 @@ def judge(work, addr, reply, body):
 def run(item):
     addr, size, row = item
     work = OUT / addr
-    asm = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', addr], cwd=ROOT, capture_output=True,
-                         text=True).stdout[-5000:]
+    asm = target_asm(addr)[-5000:]
     analog = (ROOT / 'src/2008-06' / (addr + '.cpp')).read_text(errors='replace')[:5000]
     if 'lib' in m.match.directives(analog):
         # `// lib rbxgs <path>`: the analog is the authentic 2007 donor unit that matches 100% - send its source text

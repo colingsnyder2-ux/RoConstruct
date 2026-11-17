@@ -59,8 +59,7 @@ def class_step(cls, addrs):
     block = text[found.start():found.start() + 6000] if found else text[:6000]
     parts = []
     for addr in addrs[:8]:
-        asm = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', addr], cwd=ROOT, capture_output=True,
-                             text=True).stdout[-2500:]
+        asm = lane['target_asm'](addr)[-2500:]
         err = (results[addr].get('detail') or '')[-600:]
         parts.append('=== %s (last result: %s)\n--- assembly ---\n%s%s\n--- last error ---\n%s\n'
                      % (addr, results[addr].get('status'), asm, m.annotate_asm(asm)[:1500], err))
