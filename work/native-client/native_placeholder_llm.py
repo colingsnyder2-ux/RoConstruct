@@ -127,10 +127,41 @@ def class_header(cls, body=''):
     return best[0]
 
 
+def shadow_file(work, header):
+    """Writable shadow path for HEADER inside a full hardlink mirror of native-headers (work/shadow).  MSVC resolves a
+    quoted include in the INCLUDING file's folder first, so a lone shadow copy let other headers pull the real copy in
+    beside it (C2953/C2011); with the whole tree mirrored every include stays inside the mirror.  The returned file is
+    unlinked from the original before anything writes to it (a write through a hardlink would edit the real header)."""
+    import os
+    import shutil
+    root = work / 'shadow'
+    if not (root / '.mirror').is_file():
+        shutil.rmtree(root, ignore_errors=True)
+        for src in HEADERS.rglob('*'):
+            if src.is_file():
+                dst = root / src.relative_to(HEADERS)
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                try:
+                    os.link(src, dst)
+                except OSError:
+                    shutil.copyfile(src, dst)
+        (root / '.mirror').write_text('hardlink mirror of native-headers')
+    target = root / header.relative_to(HEADERS)
+    own = target.parent / ('.own-' + target.name)
+    if not own.is_file():
+        text = target.read_text(errors='replace') if target.is_file() else header.read_text(errors='replace')
+        if target.exists():
+            target.unlink()                               # break the hardlink before anything writes to it
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text)
+        own.write_text('')
+    return target
+
+
 def shadow(work, header, cls, decl, addr):
     """Copy HEADER under work/shadow/<same relative path> with DECL inserted before the class's closing brace."""
-    existing = work / 'shadow' / header.relative_to(HEADERS)
-    text = (existing if existing.is_file() else header).read_text(errors='replace')
+    existing = shadow_file(work, header)
+    text = existing.read_text(errors='replace')
     leaf = cls.split('::')[-1]
     found = re.search(r'^[ \t]*(?:class|struct)\s+(?:__declspec\(\w+\)\s+)?%s\b[^;{]*\{' % re.escape(leaf), text, re.M)
     if not found:
@@ -148,9 +179,7 @@ def shadow(work, header, cls, decl, addr):
                  or flat(decl) in flat(text[found.end():end])):
         line = ''
     root = work / 'shadow'
-    target = root / header.relative_to(HEADERS)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(text[:end] + line + text[end:])
+    existing.write_text(text[:end] + line + text[end:])
     return root, header.relative_to(HEADERS).as_posix()
 
 
@@ -282,8 +311,8 @@ def apply_header_adds(work, adds):
         header = class_header(cls)
         if not header or not header.is_relative_to(HEADERS):
             return None, 'header-add: class %s has no native header' % cls
-        target = work / 'shadow' / header.relative_to(HEADERS)
-        text = (target if target.is_file() else header).read_text(errors='replace')
+        target = shadow_file(work, header)
+        text = target.read_text(errors='replace')
         leaf = cls.rsplit('::', 1)[-1]
         found = re.search(r'^[ \t]*(?:class|struct)\s+(?:__declspec\(\w+\)\s+)?%s\b[^;{]*\{' % re.escape(leaf), text, re.M)
         if not found:
@@ -296,7 +325,6 @@ def apply_header_adds(work, adds):
         name = re.search(r'(~?\w+)\s*(?:\(|;|\[)', decl)
         if name and re.search(r'\b%s\s*[\(;\[]' % re.escape(name.group(1)), text[found.end():end]):
             continue                                               # the class already declares it
-        target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text[:end] + '\tpublic:\n\t\t%s   // INFERRED (header-add): %s\n' % (decl, ev.lstrip('/ ')) + text[end:])
         rel = header.relative_to(HEADERS).as_posix()
         if rel not in rels:
