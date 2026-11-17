@@ -10,8 +10,26 @@
 // because the native RunService header places that Notifier at 0x150).
 // Not recovered: 00467a00 postEvent (needs a DataModel method taking const UIEvent&, 00577460, not in the shared
 // DataModel.h), 004681b0 processKeyboard, 004685b0 processMouse, 00467d50, 00468b90 window message handler,
-// 004690f0 constructor.
+// 004690f0 constructor: recovered below, byte-identical to the target except the Stepped addListener offset (0x150 here
+// vs 0x170, the native RunService header places that Notifier differently); also built here: DxCriticalSection 004328c0
+// (exact). postEvent / processKeyboard (needs CMainFrame member +0x104) / processMouse / 00468b90 / 00467d50 stay open.
+// (the last two lines of the old list: 004690f0 is no longer open)
 #include "util/DxUserInput.h"
+#include "v8datamodel/DataModel.h"
+#include "util/Object.h"
+
+// 004328c0
+DxCriticalSection::DxCriticalSection()
+{
+	__try
+	{
+		InitializeCriticalSection(&m_sec);
+	}
+	__except (STATUS_NO_MEMORY == GetExceptionCode())
+	{
+		AtlThrow(E_OUTOFMEMORY);
+	}
+}
 
 namespace RBX
 {
@@ -76,7 +94,7 @@ namespace RBX
 	// 004677f0
 	void DxUserInput::syncKeyboard()
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		if (keyboard && keyboardAcquired != keyboardWanted)
 		{
 			if (keyboardWanted)
@@ -129,7 +147,7 @@ namespace RBX
 	// 00467bf0
 	G3D::Vector2 DxUserInput::getWindowCursorPosition()
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		POINT point;
 		::GetCursorPos(&point);
 		window->ScreenToClient(&point);
@@ -148,7 +166,7 @@ namespace RBX
 	// 00467cb0 (slot 5)
 	bool DxUserInput::keyDown(SDLKey key) const
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		if (heldKey && key == heldKey)
 			return true;
 		if (keyState[sub_004697e0(key)] & 0x80)
@@ -159,7 +177,7 @@ namespace RBX
 	// 00468050
 	void DxUserInput::setKeyboardWanted(bool wanted)
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		keyboardWanted = wanted;
 		syncKeyboard();
 	}
@@ -182,7 +200,7 @@ namespace RBX
 	// 00468520
 	void DxUserInput::updateMouseAcquisition(const G3D::Vector2& position)
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		if (!mouse)
 		{
 			mouseAcquired = false;
@@ -212,7 +230,7 @@ namespace RBX
 	// 00468b20
 	void DxUserInput::updateMouse()
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		if (mouseAcquired)
 		{
 			G3D::Vector2 position = getCenteredPosition();
@@ -230,7 +248,7 @@ namespace RBX
 	// 00467880: read buffered device data; DI_BUFFEROVERFLOW is logged but not fatal
 	bool DxUserInput::readDeviceData(DxDeviceObjectData* data, DWORD* count, IDxInputDevice* device)
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		switch (device->GetDeviceData(sizeof(DxDeviceObjectData), data, count, 0))
 		{
 		case 0:
@@ -298,7 +316,7 @@ namespace RBX
 	// 004689c0 (Heartbeat listener at +0x2c): poll both devices
 	void DxUserInput::onEvent(const RunService*, Heartbeat)
 	{
-		CComCritSecLock<CComAutoCriticalSection> lock(mutex);
+		CComCritSecLock<DxCriticalSection> lock(mutex);
 		syncKeyboard();
 		if (mouseAcquired)
 			processMouse();
@@ -306,6 +324,52 @@ namespace RBX
 			keyboard->GetDeviceState(sizeof(keyState), keyState);
 		if (keyboardAcquired)
 			processKeyboard();
+	}
+
+	static inline HWND topLevelHwnd(CWnd* window)
+	{
+		return window->GetTopLevelFrame()->GetSafeHwnd();
+	}
+
+	// 004690f0
+	DxUserInput::DxUserInput(CWnd* wnd, DataModel* dataModel)
+		: UserInputBase(),
+		  accelerators(NULL),
+		  numAccelerators(0),
+		  ignoreNextLeftClick(false),
+		  dragging(false),
+		  wrapMode(WRAP_AUTO),
+		  lastPosition(0, 0),
+		  heldKey((SDLKey)0),
+		  window(wnd),
+		  hwnd(topLevelHwnd(wnd)),
+		  dataModel(shared_from(dataModel)),
+		  runService(shared_from(dataModel ? dataModel->create<RunService>() : NULL)),
+		  mouseWanted(false),
+		  keyboardWanted(false),
+		  mouseAcquired(false),
+		  keyboardAcquired(false)
+	{
+		mainFrame = this->window->GetParentFrame();
+		while (mainFrame)
+		{
+			numAccelerators = ::CopyAcceleratorTableA(mainFrame->GetDefaultAccelerator(), NULL, 0);
+			if (numAccelerators)
+			{
+				accelerators = new ACCEL[numAccelerators];
+				::CopyAcceleratorTableA(mainFrame->GetDefaultAccelerator(), accelerators, numAccelerators);
+				break;
+			}
+			mainFrame = mainFrame->GetParentFrame();
+		}
+		memset(keyState, 0, sizeof(keyState));
+		check(DirectInput8Create(GetModuleHandleA(NULL), 0x800, IID_IDirectInput8A, (void**)&directInput, NULL));
+		createMouse();
+		createKeyboard();
+		if (runService)
+			runService->Notifier<RunService, Heartbeat>::addListener(static_cast<Listener<RunService, Heartbeat>*>(this));
+		if (runService)
+			runService->Notifier<RunService, Stepped>::addListener(static_cast<Listener<RunService, Stepped>*>(this));
 	}
 
 	// 00468e90

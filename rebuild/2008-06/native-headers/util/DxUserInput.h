@@ -64,6 +64,21 @@ extern "C" const GUID GUID_SysKeyboard;
 extern "C" const GUID GUID_SysMouse;
 extern "C" const char c_dfDIKeyboard[];
 extern "C" const char c_dfDIMouse2[];
+extern "C" const GUID IID_IDirectInput8A;   // 0081f028
+extern "C" HRESULT __stdcall DirectInput8Create(HINSTANCE, DWORD, const GUID&, void**, IUnknown*);   // dinput8.lib import, 0x800 = DIRECTINPUT_VERSION
+
+// INFERRED: the constructor 004328c0 (shared with other critical-section owners) is out of line, SEH-guarded
+// InitializeCriticalSection and AtlThrow(E_OUTOFMEMORY), with no zeroing before it; the destructor is an inline
+// DeleteCriticalSection (0046903e). It is not CComAutoCriticalSection (inline ctor, memset, Term in the dtor).
+class DxCriticalSection
+{
+public:
+	__declspec(noinline) DxCriticalSection();
+	~DxCriticalSection() { DeleteCriticalSection(&m_sec); }   // 00469042 inline in ~DxUserInput
+	HRESULT Lock() { EnterCriticalSection(&m_sec); return S_OK; }
+	HRESULT Unlock() { LeaveCriticalSection(&m_sec); return S_OK; }
+	CRITICAL_SECTION m_sec;
+};
 
 namespace RBX
 {
@@ -75,8 +90,8 @@ namespace RBX
 	{
 	public:
 		int reserved30;                                      // +0x30 INFERRED: the critical section at +0x34 needs 4 bytes before it; nothing reads it
-		mutable CComAutoCriticalSection mutex;               // +0x34: ctor 004328c0 is the SEH-guarded CComCriticalSection::Init (0x18 bytes)
-		CWnd* mainFrame;                                     // +0x4c: PostMessage target for accelerator commands
+		mutable DxCriticalSection mutex;                     // +0x34 (0x18 bytes, ctor 004328c0)
+		CFrameWnd* mainFrame;                                // +0x4c: PostMessage target for accelerator commands (GetParentFrame, ctor 004690f0)
 		ACCEL* accelerators;                                 // +0x50: 6-byte ACCEL entries, freed with operator delete[] in the dtor
 		unsigned int numAccelerators;                        // +0x54
 		bool ignoreNextLeftClick;                            // +0x58: 00468bde sets, 00468c62 clears on WM_LBUTTONDOWN
@@ -109,7 +124,7 @@ namespace RBX
 		virtual void onEvent(const RunService*, Stepped);              // 00468e70 (thunk 004690b0 adjusts this by -0x28)
 		virtual void onEvent(const RunService*, Heartbeat);            // 004689c0 (thunk 004690c0 adjusts this by -0x2c)
 		virtual ~DxUserInput();                                        // 00468e90 (deleting form 004690d0)
-		DxUserInput(CWnd* window, boost::shared_ptr<DataModel> dataModel); // 004690f0
+		DxUserInput(CWnd* window, DataModel* dataModel);                // 004690f0 (ret 8: the DataModel arrives as a raw pointer, shared_from<DataModel> 00618a40)
 
 		void createMouse();                                            // 00467550
 		void createKeyboard();                                         // 004675e0
