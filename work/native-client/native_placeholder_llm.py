@@ -57,6 +57,17 @@ Its name is unknown: call it `sub_{addr}` (an inferred placeholder).  Decide fro
 Use only types, members and functions the native headers declare (access fields by their real member names, never by casting `this` and adding offsets); never define your own classes/structs or padding layouts; never invent globals or `extern`s; no __emit/asm.
 Reply with nothing else."""
 
+# Header recovery inside the lane (owner 2026-11-16: the automatic integrator should do header/layout work too).
+HEADER_RULE = """
+If a native class LACKS a member this function needs (a compile error said "'x' : is not a member of 'Y'", or the
+assembly calls/reads something the header does not declare), add it with ONE extra block:
+```header-add
+RBX::Class | declaration;   // evidence: <decorated symbol from the annotations, asm offset +0xNN, or donor header line>
+```
+One member per line (method declaration or data member), at most 6 lines. Add only what the binary proves; never padding
+arrays, never placeholder fields, never redeclare a member the class already has. The harness puts the lines in a
+private copy of that class's header for this compile only; they reach the real header only if the function is byte-exact."""
+
 
 def placeholder_targets():
     rows = json.loads((ROOT / 'work/native-client/unnamed-identities-inferred.json').read_text())
@@ -118,7 +129,8 @@ def class_header(cls, body=''):
 
 def shadow(work, header, cls, decl, addr):
     """Copy HEADER under work/shadow/<same relative path> with DECL inserted before the class's closing brace."""
-    text = header.read_text(errors='replace')
+    existing = work / 'shadow' / header.relative_to(HEADERS)
+    text = (existing if existing.is_file() else header).read_text(errors='replace')
     leaf = cls.split('::')[-1]
     found = re.search(r'^[ \t]*(?:class|struct)\s+(?:__declspec\(\w+\)\s+)?%s\b[^;{]*\{' % re.escape(leaf), text, re.M)
     if not found:
@@ -237,12 +249,76 @@ def compile_and_gate(work, headers, body, addr, include_first=(), raw_includes=N
         + m.declarations_for(cg.LAST_ERROR.get(addr) or '')
 
 
+LAST_ADDS = {}       # addr -> accepted header-add lines of the latest judged answer
+
+
+def parse_header_adds(reply):
+    """[(class, declaration, evidence)] from a ```header-add block, or (None, reason) when a line breaks the rules."""
+    block = re.search(r'```header-add\s*\n(.*?)```', reply, re.S)
+    if not block:
+        return [], None
+    out = []
+    for line in block.group(1).splitlines():
+        if not line.strip():
+            continue
+        hit = re.match(r'\s*([\w:]+)\s*\|\s*([^;]+;)\s*(//.*)?$', line)
+        if not hit:
+            return None, 'header-add line not "Class | declaration;   // evidence: ...": %s' % line.strip()[:120]
+        cls, decl, ev = hit.group(1), hit.group(2).strip(), (hit.group(3) or '').strip()
+        if not ev or len(ev) < 12:
+            return None, 'header-add line without evidence comment: %s' % line.strip()[:120]
+        if re.search(r'\b\w*pad\w*\s*\[|\bunk\w*\s*[;\[]|\bfield_[0-9a-fA-F]+', decl):
+            return None, 'header-add placeholder/padding member rejected: %s' % decl[:120]
+        out.append((cls, decl, ev))
+    if len(out) > 6:
+        return None, 'header-add has more than 6 lines'
+    return out, None
+
+
+def apply_header_adds(work, adds):
+    """Write the lines into work/shadow copies of each class's default native header -> [relative header paths]."""
+    rels = []
+    for cls, decl, ev in adds:
+        header = class_header(cls)
+        if not header or not header.is_relative_to(HEADERS):
+            return None, 'header-add: class %s has no native header' % cls
+        target = work / 'shadow' / header.relative_to(HEADERS)
+        text = (target if target.is_file() else header).read_text(errors='replace')
+        leaf = cls.rsplit('::', 1)[-1]
+        found = re.search(r'^[ \t]*(?:class|struct)\s+(?:__declspec\(\w+\)\s+)?%s\b[^;{]*\{' % re.escape(leaf), text, re.M)
+        if not found:
+            return None, 'header-add: class %s body not found in %s' % (cls, header.name)
+        depth, end = 0, found.end() - 1
+        for end in range(found.end() - 1, len(text)):
+            depth += {'{': 1, '}': -1}.get(text[end], 0)
+            if depth == 0:
+                break
+        name = re.search(r'(~?\w+)\s*(?:\(|;|\[)', decl)
+        if name and re.search(r'\b%s\s*[\(;\[]' % re.escape(name.group(1)), text[found.end():end]):
+            continue                                               # the class already declares it
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text[:end] + '\tpublic:\n\t\t%s   // INFERRED (header-add): %s\n' % (decl, ev.lstrip('/ ')) + text[end:])
+        rel = header.relative_to(HEADERS).as_posix()
+        if rel not in rels:
+            rels.append(rel)
+    return rels, None
+
+
 def judge(work, addr, reply, body):
     cls, decl = '', ''
     cls_m = re.search(r'CLASS:\s*([\w:]+)', reply)
     decl_m = re.search(r'```decl\s*\n(.*?)```', reply, re.S)
+    import shutil
+    shutil.rmtree(work / 'shadow', ignore_errors=True)          # every answer starts from the real headers
+    adds, why = parse_header_adds(reply)
+    add_rels = []
+    if adds:
+        add_rels, why = apply_header_adds(work, adds)
+    LAST_ADDS[addr] = adds or []
     invented = m.invented_externs(body)
-    if invented:
+    if why:
+        status, detail = 'rejected-header-add', 'Rejected: ' + why
+    elif invented:
         status, detail = 'rejected-invented', 'invented extern: ' + ', '.join(invented)
     elif re.search(r'^\s*(?:class|struct)\s+\w+[^;()]*\{', body, re.M) or re.search(r'\b\w*pad\w*\s*\[', body):
         # Real-header rule (2026-11-16 audit: 28 'exacts' defined their own Edge/IStage/... with `char pad[0x1b8]`).
@@ -262,7 +338,8 @@ def judge(work, addr, reply, body):
             status, detail = 'no-class-header', 'class %s has no native header with that class body' % cls
         else:
             root, rel = made
-            status, detail = compile_and_gate(work, [str(header)], body, addr, include_first=[str(root)], raw_includes=[rel])
+            status, detail = compile_and_gate(work, [str(header)], body, addr, include_first=[str(root)],
+                                              raw_includes=list(dict.fromkeys(add_rels + [rel])))
             fallback = class_header(cls)
             # A snapshot copy can redefine a class the other headers already pull in (C2011): retry with the default.
             if status == 'compile_failed' and 'C2011' in detail and fallback and fallback != header:
@@ -273,8 +350,15 @@ def judge(work, addr, reply, body):
     else:
         headers = [h for h in (class_header(c, body) for c in dict.fromkeys(re.findall(r'\b(RBX::\w+(?:::\w+)?)', body))) if h][:4]
         headers = [str(h) for h in headers] or [str(HEADERS / 'util/Name.h')]
-        status, detail = compile_and_gate(work, headers, body, addr)
-        if status == 'compile_failed' and 'C2011' in detail:      # snapshot copy clash: retry with default copies
+        if add_rels:
+            # Shadow copies first on the include path; every native header by relative path so the copies win.
+            raw = list(add_rels) + [Path(h).resolve().relative_to(HEADERS).as_posix() if Path(h).resolve().is_relative_to(HEADERS)
+                                    else Path(h).resolve().as_posix() for h in headers]
+            status, detail = compile_and_gate(work, headers, body, addr, include_first=[str(work / 'shadow')],
+                                              raw_includes=list(dict.fromkeys(raw)))
+        else:
+            status, detail = compile_and_gate(work, headers, body, addr)
+        if status == 'compile_failed' and 'C2011' in detail and not add_rels:      # snapshot copy clash: retry with default copies
             plain = [str(h) for h in (class_header(c) for c in dict.fromkeys(re.findall(r'(RBX::\w+(?:::\w+)?)', body))) if h][:4]
             plain = plain or [str(HEADERS / 'util/Name.h')]
             if plain != headers:
@@ -310,7 +394,7 @@ def run(item):
         'headers declare (real member names, never `this`/pointer + numeric offsets); never define your own '
         'classes/structs or padding layouts; never invent globals or `extern`s; no __emit/asm. Reply with nothing else.'
         % (NAMED[addr][0], NAMED[addr][1]))
-    prompt = (rules + '\n--- LINK-ORDER NEIGHBOURS (likely same source file / owner) ---\n' + neighbours +
+    prompt = (rules + HEADER_RULE + '\n--- LINK-ORDER NEIGHBOURS (likely same source file / owner) ---\n' + neighbours +
               neighbour_source(row) + proven_examples() +
               '\n--- ORIGINAL ASSEMBLY ---\n' + asm + m.annotate_asm(asm) + '\n--- REFERENCE ANALOG (placeholder names/types) ---\n'
               + analog)
@@ -376,7 +460,8 @@ todo = todo[:args.limit or None]
 print('placeholder targets', len(todo), flush=True)
 with ThreadPoolExecutor(args.jobs) as pool:
     for addr, size, status, model, detail, cls, decl in pool.map(run, todo):
-        results[addr] = {'status': status, 'model': model, 'class': cls, 'decl': decl, 'detail': detail[-500:]}
+        results[addr] = {'status': status, 'model': model, 'class': cls, 'decl': decl, 'detail': detail[-500:],
+                         'header_add': [list(a) for a in LAST_ADDS.get(addr, [])]}
         RESULTS.write_text(json.dumps(results, indent=1))
         record(addr, size, status, model, cls, decl)
         print(addr, size, status, cls or 'free', (detail.strip().splitlines() or [''])[0][:120], flush=True)
