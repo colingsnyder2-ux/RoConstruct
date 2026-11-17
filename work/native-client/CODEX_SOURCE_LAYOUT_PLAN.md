@@ -138,6 +138,50 @@ Per family: lease → `layout_apply --apply` → `layout_verify` → commit
 4. Write `docs/SOURCE_LAYOUT.md`: mapping rules, evidence types, how new files get their path.
 5. Repeat for 2009-12 with its own PDB/OpenRBX evidence (separate map; never mix clients).
 
+## Additional rules and checks (added 2026-11-16)
+
+Survey numbers: 23 header file names exist twice under `native-headers`; 19 files have
+`pad_/field_/unk_` style members; 222 files include `stdafx.h`; sources are CRLF/ASCII.
+
+1. **Move and edit in separate commits.** A pure `git mv` commit per family, then content commits,
+   so `git log --follow` and rename detection keep history. Case-only renames on Windows need two
+   steps (`a.cpp -> a.tmp -> A.cpp`).
+2. **Reversible.** Write `layout/reverse-map.json` with every move; one command undoes a family.
+3. **Permalinks.** The Integration Digest and website link to current paths: add old→new entries
+   to `docs/source-links.json` (or a redirect map) in the same family commit.
+4. **Leases follow files.** After a family moves, release the old-path lease and take one on the
+   new globs; tell lease holders of overlapping families before the freeze.
+5. **Duplicate headers (23 names).** Pick one canonical header per class (the PDB path), turn the
+   others into one-line forwarding includes, then remove them after all includers switch.
+   Copies of vendor headers (e.g. `native-headers/part-resize/G3D/*.h`) should point at
+   `tools/libs` / the recipe include paths instead of living as edited copies; a needed Roblox
+   edit to a vendor header goes in a documented patch, not a silent copy.
+6. **Vendor vs app split.** Ogre, XTP, boost, G3D, Lua, RakNet, zlib sources go under their PDB
+   vendor folders (`client/rendering/g3d`, `client/boost_1_34_1`, `client/network/raknet30`,
+   ...) or the XTP/Ogre library roots, not under `client/app`.
+7. **Inline placement.** Members the original defined inline in the header (vtable/COMDAT
+   evidence, PDB line info pointing at a `.h`) move to the header; out-of-line ones to the
+   `.cpp`. Moving a body between header and .cpp can change inlining: verify per function.
+8. **Precompiled header.** The original app units used `stdafx.h`; keep one authentic
+   `stdafx.h` per project area (check PDB include lists) instead of per-unit variants.
+9. **Layout artifacts in classes.** Replace `pad_/field_/unk_` members with named members when
+   evidence exists (PDB types, OpenRBX, rbxgs headers); otherwise keep with `// INFERRED:`
+   size/alignment note. Replace raw offset casts and magic constants with members / enum names
+   where headers have them. Verify layout with `sizeof`/`offsetof` static asserts in a test TU,
+   not in the shipped source.
+10. **File-local helpers.** Name `static` helpers with the 1,897 WebService.pdb static names
+    (`identity-unlock-wspublics-procs.json`) where the body matches; keep them `static` in the
+    file the PDB places them in.
+11. **Resources.** MFC app units need `resource.h` / `.rc` IDs at original paths
+    (`client/rbxview` / app `res/`); replace numeric command IDs in message maps with `ID_*`
+    names from the recovered `resource.h`.
+12. **Encoding.** Keep CRLF + Windows-1252/ASCII (original); add `.gitattributes` for the native
+    tree so tools do not flip line endings (current commits warn LF->CRLF).
+13. **No invented banners.** Do not add Roblox copyright headers or fake history comments.
+14. **Golden objects.** Store per-TU object hashes before Phase 2 (`layout/golden-objects.json`);
+    every later batch compares against them, and a warn-only pre-commit check runs
+    `layout_verify` on touched native files.
+
 ## More ideas worth doing
 
 - **PDB line info → exact TU membership** also gives link order per object; use it to split
