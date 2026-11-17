@@ -62,7 +62,7 @@ libraryTable = function (data, integration = false, switcher = false) {
       bySize(r.parts).map(([part,p],j) => (data.groups.set(`${i}.${j}`,[`${lib} \u203a ${part}`,p.fs]),
         `<tr class="part" data-of="${i}" hidden><td>${esc(part)} <button class="mapbtn" data-g="${i}.${j}">Map</button></td>${cells(p)}</tr>`)).join("")).join("")}
     </tbody></table></div>
-    <div class="legend">${integration ? '<span>pale pink: authentic \u00b7 purple: integrated \u00b7 violet: inactive native \u00b7 pink: draft native \u00b7 slate blue: source analogs \u00b7 dark: not exact</span>' : '<span>blue: source recipe \u00b7 green: mined \u00b7 striped: partial source</span>'}</div>
+    <div class="legend">${integration ? '<span>pale pink: authentic \u00b7 purple: integrated \u00b7 violet: inactive native \u00b7 pink: draft native \u00b7 dark: source analogs / not exact</span>' : '<span>blue: source recipe \u00b7 green: mined \u00b7 striped: partial source</span>'}</div>
     <p class="note">Native integration requires provider, ABI, dependency and runtime gates after a body matches. Inactive and draft counts do not grant server credit. <a href="findings.html">Native integration and downloads →</a></p>`;
 };
 
