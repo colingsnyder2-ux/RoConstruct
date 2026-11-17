@@ -1,1073 +1,1103 @@
 {
- "scope": "RBX::DxUserInput (native-headers/util/DxUserInput.h, native-classes/DxUserInput.cpp)",
- "identity_bindings": [
-  {
-   "symbol": "?setKeyState@DxUserInput@RBX@@UAEXW4SDLKey@@_N@Z",
-   "address": "00467530",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?createMouse@DxUserInput@RBX@@QAEXXZ",
-   "address": "00467550",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?createKeyboard@DxUserInput@RBX@@QAEXXZ",
-   "address": "004675e0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?acquireKeyboard@DxUserInput@RBX@@QAEXXZ",
-   "address": "00467720",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?syncKeyboard@DxUserInput@RBX@@QAEXXZ",
-   "address": "004677f0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?getGameCursor@DxUserInput@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z",
-   "address": "00467a90",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?getWindowCursorPosition@DxUserInput@RBX@@QAE?AVVector2@G3D@@XZ",
-   "address": "00467bf0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?getCursorPosition@DxUserInput@RBX@@UAE?AVVector2@G3D@@XZ",
-   "address": "00467c50",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?keyDown@DxUserInput@RBX@@UBE_NW4SDLKey@@@Z",
-   "address": "00467cb0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?setKeyboardWanted@DxUserInput@RBX@@QAEX_N@Z",
-   "address": "00468050",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?releaseMouse@DxUserInput@RBX@@QAEXXZ",
-   "address": "004680c0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?updateMouseAcquisition@DxUserInput@RBX@@QAEXABVVector2@G3D@@@Z",
-   "address": "00468520",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?updateMouseWanted@DxUserInput@RBX@@QAEXABVVector2@G3D@@@Z",
-   "address": "00468a60",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?updateMouse@DxUserInput@RBX@@QAEXXZ",
-   "address": "00468b20",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?onEvent@DxUserInput@RBX@@UAEXPBVRunService@2@VStepped@2@@Z",
-   "address": "00468e70",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?setWrapMode@DxUserInput@RBX@@UAEXW4WrapMode@UserInputBase@2@@Z",
-   "address": "00469070",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?getWrapMode@DxUserInput@RBX@@UBE?AW4WrapMode@UserInputBase@2@XZ",
-   "address": "00469080",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?centerCursor@DxUserInput@RBX@@UAEXXZ",
-   "address": "00469090",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?onEvent@DxUserInput@RBX@@UAEXPBVRunService@2@VHeartbeat@2@@Z",
-   "address": "004689c0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "??_GDxUserInput@RBX@@UAEPAXI@Z",
-   "address": "004690d0",
-   "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
-   "address": "005ecd60",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
-   "address": "005ecd90",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$00M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
-   "address": "005ecdc0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
-   "address": "005ecdf0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$03M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
-   "address": "005ece20",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
-   "address": "005ece50",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
-   "address": "005ece90",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
-   "address": "005eced0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$02M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
-   "address": "005ecf00",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
-   "address": "005ecf30",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
-   "address": "005ecf60",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$0A@M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
-   "address": "005ecfa0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
-   "address": "005ecfd0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$04M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
-   "address": "005ed000",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
-   "address": "005ed030",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
-   "address": "005ed070",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
-   "address": "005ed0b0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$01M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
-   "address": "005ed0e0",
-   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "??0ClumpStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
-   "address": "0064cfd0",
-   "identity_evidence": "INFERRED:ClumpStage vtable 0084b14c (stage chain CleanStage->JointStage->ClumpStage: JointStage ctor 00668470 news 0x30 bytes and calls 0064cfd0) and byte-exact native body (ClumpStage2008.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1ClumpStage@RBX@@UAE@XZ",
-   "address": "0064cf50",
-   "identity_evidence": "INFERRED:ClumpStage vtable 0084b14c and byte-exact native body (ClumpStage2008.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "??0SpatialHash@RBX@@QAE@PAVWorld@1@PAVContactManager@1@@Z",
-   "address": "0065b4e0",
-   "identity_evidence": "INFERRED:donor-exact name SpatialHash (ContactManager 2008 news SpatialHash(world, this)) and byte-exact native body (SpatialHash2008.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ",
-   "address": "0066f900",
-   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
-   "address": "0066f910",
-   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?drawFont2D@AdornRbxGfx@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z",
-   "address": "0066fda0",
-   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?font2d@RBX@@3PAVRbxFont@Ogre@@A",
-   "address": "00962dac",
-   "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?draw2D@RbxFont@Ogre@@QBE?AVVector2@G3D@@PAVVisualEngine@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z",
-   "address": "00684730",
-   "identity_evidence": "INFERRED:RbxFont::draw2D (VRbxFont2008.h: only caller AdornRbxGfx 0066fe0c; byte-exact native body in OgreVRbxFont.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?erase@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAEIABQAVJoint@RBX@@@Z",
-   "address": "005e9f60",
-   "identity_evidence": "INFERRED:set<Joint*>::erase(key): identical-code folded body of the registry's erase at 005e9f60 (CRobloxTreeCtrlNode*); SleepStage::changeJointState 0064ae10 passes &joint with the steppingJoints container at +0x1b8 and the native body (SleepStage2008.cpp) is byte-exact",
-   "votes": 1
-  },
-  {
-   "symbol": "?turnOnLights@RenderScene@Render@RBX@@ABEXPAVRenderDevice@G3D@@_N@Z",
-   "address": "00502100",
-   "identity_evidence": "INFERRED:donor RenderScene.cpp body (tools/rbxgs RenderLib), decorated name in registry and byte-exact native body in RenderSceneLights2008.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?font2d@RBX@@3V?$SharedPtr@VRbxFont@Ogre@@@Ogre@@A",
-   "address": "00962da8",
-   "identity_evidence": "INFERRED:SharedPtr<RbxFont> global at 00962da8 (ctor 00674210 assigns fromFile result via 00670670; pRep at 00962dac read by drawFont2D 0066fe01)",
-   "votes": 1
-  },
-  {
-   "symbol": "?changeJointState@SleepStage@RBX@@AAEXABV?$vector@PAVJoint@RBX@@V?$allocator@PAVJoint@RBX@@@std@@@std@@W4EdgeState@Sim@2@@Z",
-   "address": "0064b7f0",
-   "identity_evidence": "INFERRED:the vector<Joint*> loop of SleepStage (donor changeJointState(const vector&)) calls the byte-exact changeJointState(Joint*) 0064ae10; native body byte-exact (SleepStage2008.cpp). The registry gives the same name to 0064b840/0064c230, which call 0064ae90/0064bf90",
-   "votes": 1
-  },
-  {
-   "symbol": "?changeAssemblyState@SleepStage@RBX@@AAEXABV?$vector@PAVAssembly@RBX@@V?$allocator@PAVAssembly@RBX@@@std@@@std@@W4AssemblyState@Sim@2@@Z",
-   "address": "0064b840",
-   "identity_evidence": "INFERRED:vector<Assembly*> loop of SleepStage (donor changeAssemblyState(const vector&)) calling changeAssemblyState(Assembly*, state) 0064ae90 (state -> SimJobStage add/remove); native body byte-exact (SleepStage2008.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?changeContactState@SleepStage@RBX@@AAEXABV?$vector@PAVContact@RBX@@V?$allocator@PAVContact@RBX@@@std@@@std@@W4EdgeState@Sim@2@@Z",
-   "address": "0064c230",
-   "identity_evidence": "INFERRED:vector<Contact*> loop of SleepStage (donor changeContactState(const vector&)) calling changeContactState(Contact*, state) 0064bf90; native body byte-exact (SleepStage2008.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeNormalPerpVel@GeoPair@RBX@@QAEXAAMAAVVector3@G3D@@ABVPairParams@2@@Z",
-   "address": "006130e0",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeBallPoint@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "006131e0",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeBallBall@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "00613290",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeBallEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "00613320",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeBallPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "00613440",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computePointPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "00613560",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeEdgeEdgePlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "006136a0",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?computeEdgeEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-   "address": "006139c0",
-   "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?getAssemblyNoCheck@Primitive@RBX@@QBEPAVAssembly@2@XZ",
-   "address": "005e7560",
-   "identity_evidence": "INFERRED:placeholder func_005e7560 is `[[prim+0x5c]+0x24]` (Clump assembly without the NULL check of getAssembly 005e7570); called by SleepStage::onEdgeAdded 0064b1b0 and touchEvent 0064b7c0; byte-exact native body (SleepStage2008.cpp); name is an analog",
-   "votes": 1
-  },
-  {
-   "symbol": "?stateToSet@SleepStage@RBX@@AAEPAV?$set@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@@std@@W4AssemblyState@Sim@2@@Z",
-   "address": "0064a550",
-   "identity_evidence": "INFERRED:donor SleepStage::stateToSet (state -> assembly set, jump table of 6 over state 1..6, default +0x120); called by changeAssemblyState 0064ae90 and the wake events with the set erase/insert; byte-exact native body (SleepStage2008.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?getHeadingElevationDistance@Camera@RBX@@AAEXAAM00@Z",
-   "address": "005cc0c0",
-   "identity_evidence": "INFERRED:called by Camera::panRadians/tiltRadians; Camera unit 005cbf20-005ce6e0 (RTTI .?AVCamera@RBX@@); byte-exact native body (Camera.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?setHeadingElevationDistance@Camera@RBX@@AAEXMMM@Z",
-   "address": "005cc690",
-   "identity_evidence": "INFERRED:called by Camera::panRadians/tiltRadians; Camera unit (RTTI .?AVCamera@RBX@@); byte-exact native body (Camera.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?alwaysMode@Camera@RBX@@QAEXXZ",
-   "address": "005cc000",
-   "identity_evidence": "INFERRED:Camera unit 005cbf20-005ce6e0, sets animationType ALWAYS beside autoMode 005cc450; byte-exact native body (Camera.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?goalToCamera@Camera@RBX@@QAEXXZ",
-   "address": "005cdf70",
-   "identity_evidence": "INFERRED:Camera unit (RTTI .?AVCamera@RBX@@), called by tryZoomExtents 005cdff0; byte-exact native body (Camera.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?setCameraCoordinateFrameNoLerp@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
-   "address": "005ce440",
-   "identity_evidence": "INFERRED:Camera unit, PropDescriptor setter for CoordinateFrame; byte-exact native body (Camera.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?setImageServerViewNoLerp@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@ABVRect2D@4@@Z",
-   "address": "005ce480",
-   "identity_evidence": "INFERRED:Camera unit after setCameraCoordinateFrameNoLerp 005ce440; byte-exact native body (Camera.cpp, /fp:fast)",
-   "votes": 1
-  },
-  {
-   "symbol": "?PreCreateWindow@CRobloxWnd@@UAEHAAUtagCREATESTRUCTA@@@Z",
-   "address": "0045b330",
-   "identity_evidence": "INFERRED:CRobloxWnd vtable 008199f4 / RTTI .?AVCRobloxWnd@@ (MFC PreCreateWindow override calling CWnd::PreCreateWindow); byte-exact native body (CRobloxWndWindow.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?OnSetFocus@CRobloxWnd@@QAEXPAVCWnd@@@Z",
-   "address": "0045b5d0",
-   "identity_evidence": "INFERRED:CRobloxWnd unit (calls CWnd::OnSetFocus then DxUserInput::setKeyboardWanted(true) 00468050); byte-exact native body (CRobloxWndWindow.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?getMetric@World@RBX@@QBEHW4MetricType@IWorldStage@2@@Z",
-   "address": "005e9160",
-   "identity_evidence": "INFERRED:donor World::getMetric (forwards to the first stage's getMetric, slot 6): 13-byte body byte-exact in native-classes/AppUnit5E8_2008World.cpp; the owning unit is the World.cpp range 005e9150..005eaeef (World::getKernel 005e9150 precedes it)",
-   "votes": 1
-  },
-  {
-   "symbol": "?getSleepStage@World@RBX@@QAEPAVSleepStage@2@XZ",
-   "address": "005e93e0",
-   "identity_evidence": "INFERRED:donor World::getSleepStage: IStage::findStage walk (getStageType slot 1 against 5 = SLEEP_STAGE) from the first stage +0x88, the same walk as ticklePrimitive 005e9410 before SleepStage 0064b890; byte-exact in native-classes/AppUnit5E8_2008World.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?onPrimitiveTouched@World@RBX@@QAEXPAVPrimitive@2@0@Z",
-   "address": "005e98c0",
-   "identity_evidence": "INFERRED:donor World::onPrimitiveTouched (touch.append(p); touchOther.append(other)); byte-exact in native-classes/AppUnit5E8_2008World.cpp; the two G3D::Array appends are at +0x8c / +0x98 (World() 005ea920)",
-   "votes": 1
-  },
-  {
-   "symbol": "?OnSize@CRobloxWnd@@QAEXIHH@Z",
-   "address": "0045b010",
-   "identity_evidence": "INFERRED:CRobloxWnd unit (registry resize(UINT,UINT,UINT)): GetClientRect + VisualEngine camera aspect + RenderWindow::windowMovedOrResized; byte-exact native body (CRobloxWndWindow.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?shutdownGraphics@CRobloxWnd@@QAEXXZ",
-   "address": "0045bde0",
-   "identity_evidence": "INFERRED:CRobloxWnd unit (registry f(void)): GWindow m_current 0096eff4 makeCurrent, RenderDevice::cleanup 0047c3e0 / ~RenderDevice 0047bec0, GWindow deleting dtor; byte-exact native body (CRobloxWndWindow.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?handle@CRobloxWnd@@QAEXH@Z",
-   "address": "0045cba0",
-   "identity_evidence": "INFERRED:CRobloxWnd unit (registry handle(int)): switch calling 0045beb0/0045c890 or DxUserInput::updateMouse 00468b20 then CWnd::Default; byte-exact native body (CRobloxWndWindow.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?sub_0045beb0@CRobloxWnd@@QAEXXZ",
-   "address": "0045beb0",
-   "identity_evidence": "INFERRED:CRobloxWnd unit, thiscall on CRobloxWnd called from handle 0045cba0; placeholder name, body not recovered (identity only for the call reference)",
-   "votes": 1
-  },
-  {
-   "symbol": "?sub_0045c890@CRobloxWnd@@QAEXXZ",
-   "address": "0045c890",
-   "identity_evidence": "INFERRED:CRobloxWnd unit, thiscall on CRobloxWnd called from handle 0045cba0; placeholder name, body not recovered (identity only for the call reference)",
-   "votes": 1
-  },
-  {
-   "symbol": "?onEvent_AddedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
-   "address": "005b1110",
-   "identity_evidence": "INFERRED:donor/openrbx Accoutrement::onEvent_AddedBackend (updateDesiredState 005b10a0 unless child==this); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?onEvent_RemovedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
-   "address": "005b1190",
-   "identity_evidence": "INFERRED:donor/openrbx Accoutrement::onEvent_RemovedBackend (weld +0x134 compare); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?dropAllOthers@Accoutrement@RBX@@SAXPAVModelInstance@2@PAV12@@Z",
-   "address": "005b15e0",
-   "identity_evidence": "INFERRED:openrbx Accoutrement::dropAllOthers (findWorkspace 005a3380, findFirstChildOfType<Accoutrement> 005b1520, setParent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?upTo_Equipped@Accoutrement@RBX@@IAEXXZ",
-   "address": "005b1830",
-   "identity_evidence": "INFERRED:donor Accoutrement::upTo_Equipped (handleTouched.disconnect, findParts, unJoinFromOutsiders, buildWeld \"HeadWeld\"); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?connectTouchEvent@Accoutrement@RBX@@IAEXXZ",
-   "address": "005b1d70",
-   "identity_evidence": "INFERRED:donor Accoutrement::connectTouchEvent (PartInstance::event_Touched.connect group 10); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?downFrom_Equipped@Accoutrement@RBX@@IAEXXZ",
-   "address": "005b1fc0",
-   "identity_evidence": "INFERRED:donor Accoutrement::downFrom_Equipped (weld teardown, drop at character, connectTouchEvent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
-   "votes": 1
-  },
-  {
-   "symbol": "?closeReplicationItem@Replicator@Network@RBX@@KAXABU?$pair@QBVInstance@RBX@@UReplicationData@Replicator@Network@2@@std@@@Z",
-   "address": "004ab850",
-   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
-   "votes": 1
-  },
-  {
-   "symbol": "?writeItemType@Item@Replicator@Network@RBX@@SAXAAVBitStream@RakNet@@W4ItemType@1234@@Z",
-   "address": "004ab5d0",
-   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator); called by MarkerItem::write 004ae9a0 (ItemTypeMarker=4) and ItemSender dtor 004aba60 (ItemTypeEnd=0)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1ItemSender@Replicator@Network@RBX@@QAE@XZ",
-   "address": "004aba60",
-   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
-   "votes": 1
-  },
-  {
-   "symbol": "?write@MarkerItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
-   "address": "004ae9a0",
-   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
-   "votes": 1
-  },
-  {
-   "symbol": "?removeScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z",
-   "address": "005ad030",
-   "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
-   "votes": 1
-  },
-  {
-   "symbol": "?disassociateState@ScriptContext@RBX@@AAEXPAVScript@2@@Z",
-   "address": "005ad000",
-   "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
-   "votes": 1
-  },
-  {
-   "symbol": "?readValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAE?AVColor3@G3D@@XZ",
-   "address": "00437920",
-   "identity_evidence": "INFERRED:XItem<Color3,CXTPPropertyGridItemColor,TypedPropertyDescriptor<Color3>> slots 57/58 SetColor/GetColor (same as CPropertyGridItemBrickColor header evidence); byte-exact native body in XItemBoolColor3.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?displayValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXABVColor3@G3D@@@Z",
-   "address": "00437970",
-   "identity_evidence": "INFERRED:XItem<Color3,CXTPPropertyGridItemColor,TypedPropertyDescriptor<Color3>> slots 57/58 SetColor/GetColor (same as CPropertyGridItemBrickColor header evidence); byte-exact native body in XItemBoolColor3.cpp",
-   "votes": 1
-  },
-  {
-   "symbol": "?writeValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXPAVInstance@RBX@@AB_N@Z",
-   "address": "0043a280",
-   "identity_evidence": "INFERRED: byte-exact native body; same lock+setValue shape as EnumItemBase::writeValue",
-   "votes": 1
-  },
-  {
-   "symbol": "__ehhandler$?writeValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXPAVInstance@RBX@@AB_N@Z",
-   "address": "007c0500",
-   "identity_evidence": "push -1; push handler prologue immediate of original body 0043a280",
-   "votes": 1
-  },
-  {
-   "symbol": "?releaseSound@Soundscape@RBX@@YAXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@Z",
-   "address": "005ba2b0",
-   "identity_evidence": "INFERRED:SoundService::closeFmod 005ba970 pushes callback 005ba2b0 into for_each 005b7940 over loadedSounds/loaded3DSounds; releaseSound body = Sound::release inline",
-   "votes": 1
-  },
-  {
-   "symbol": "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@P6AXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@3@@Z@std@@YAP6AXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@0@@ZViterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@0@1P6AX0@Z@Z",
-   "address": "005b7940",
-   "identity_evidence": "INFERRED:SoundService::closeFmod 005ba970 pushes callback 005ba2b0 into for_each 005b7940 over loadedSounds/loaded3DSounds; releaseSound body = Sound::release inline",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4AASamples@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
-   "address": "00446570",
-   "identity_evidence": "INFERRED:vtable 815ec8 is stored by the EnumDesc<CRenderSettings::AASamples> ctor (name string 'AASamples' pushed to EnumDescriptor ctor)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
-   "address": "00446700",
-   "identity_evidence": "INFERRED:vtable 815ed4 is stored by the EnumDesc<CRenderSettings::GraphicsMode> ctor (name string 'GraphicsMode' pushed to EnumDescriptor ctor)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
-   "address": "00446890",
-   "identity_evidence": "INFERRED:vtable 815ee0 is stored by the EnumDesc<CRenderSettings::FrameRateManagerMode> ctor (name string 'FrameRateManagerMode' pushed to EnumDescriptor ctor)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
-   "address": "00446a20",
-   "identity_evidence": "INFERRED:vtable 815eec is stored by the EnumDesc<CRenderSettings::AntialiasingMode> ctor (name string 'AntialiasingMode' pushed to EnumDescriptor ctor)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
-   "address": "00446bb0",
-   "identity_evidence": "INFERRED:vtable 815ef8 is stored by the EnumDesc<CRenderSettings::BevelMode> ctor (name string 'BevelMode' pushed to EnumDescriptor ctor)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
-   "address": "00446d90",
-   "identity_evidence": "INFERRED:vtable 815f04 is stored by the EnumDesc<CRenderSettings::ShadowMode> ctor (name string 'ShadowMode' pushed to EnumDescriptor ctor)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4AASamples@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00446fa0",
-   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00446fc0",
-   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00446fe0",
-   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00447000",
-   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00447020",
-   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00447040",
-   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
-   "votes": 1
-  },
-  {
-   "symbol": "?soundDisabled@SoundService@Soundscape@RBX@@2_NA",
-   "address": "00976fc9",
-   "identity_evidence": "INFERRED:openFmod 005ba060 `cmp byte ptr [0x976fc9],0` is the static SoundService::soundDisabled; byte-identical body",
-   "votes": 1
-  },
-  {
-   "symbol": "_FMOD_System_Create@4",
-   "address": "0069fbd6",
-   "identity_evidence": "import thunk: native-asm 005ba0c0 call 0x69fbd6 ; fmodex.dll!FMOD_System_Create",
-   "votes": 1
-  },
-  {
-   "symbol": "__ehhandler$?openFmod@SoundService@Soundscape@RBX@@AAEXXZ",
-   "address": "007d3b21",
-   "identity_evidence": "INFERRED:openFmod 005ba060 pushes 0x7d3b21 as its SEH handler (push at 005ba065); byte-identical body",
-   "votes": 1
-  },
-  {
-   "symbol": "?update3DSettings@SoundService@Soundscape@RBX@@AAEXXZ",
-   "address": "005b97b0",
-   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
-   "votes": 1
-  },
-  {
-   "symbol": "?on3DSettingChanged@SoundService@Soundscape@RBX@@AAEXABVPropertyDescriptor@Reflection@3@@Z",
-   "address": "005ba020",
-   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
-   "votes": 1
-  },
-  {
-   "symbol": "?gcSounds@SoundService@Soundscape@RBX@@CAXAAV?$map@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@@std@@@Z",
-   "address": "005ba2e0",
-   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
-   "votes": 1
-  },
-  {
-   "symbol": "?closeFmod@SoundService@Soundscape@RBX@@AAEXXZ",
-   "address": "005ba970",
-   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
-   "votes": 1
-  },
-  {
-   "symbol": "?loadSound@SoundService@Soundscape@RBX@@QAE?AV?$shared_ptr@VSound@Soundscape@RBX@@@boost@@VSoundId@23@_N@Z",
-   "address": "005bb5f0",
-   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4NormalId@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "0056fc60",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "0059bc70",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4PartType@Part@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "0059c1f0",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "005cd240",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "005cff90",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "005ed170",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4InputType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "005ed3f0",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
-   "address": "006091f0",
-   "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
-   "address": "0041c3e0",
-   "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
-   "votes": 1
-  },
-  {
-   "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
-   "address": "0058b020",
-   "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
-   "votes": 1
-  },
-  {
-   "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
-   "address": "005c4f80",
-   "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
-   "address": "00553d80",
-   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4CameraType@Camera@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4CameraType@Camera@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
-   "address": "00553d80",
-   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ControllerType@Controller@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ControllerType@Controller@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
-   "address": "00553d80",
-   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ShadowMode@CRenderSettings@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ShadowMode@CRenderSettings@@@std@@@6@$0A@@std@@@std@@QAE@XZ",
-   "address": "00553d80",
-   "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4NormalId@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "0056fdf0",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "0059c0f0",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4PartType@Part@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "0059c380",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "005cd3d0",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "005d0120",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "005ed580",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4InputType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "005ed5a0",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "??_E?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
-   "address": "00609380",
-   "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
-   "votes": 1
-  },
-  {
-   "symbol": "?lookup@?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
-   "address": "004aa0d0",
-   "identity_evidence": "INFERRED:vtable 0083a450 slot 1 of EnumDesc<Camera::CameraType> points here; the same 004aa0d0 sits in the BinType vtable 0083aeb4 slot 1",
-   "votes": 1
-  },
-  {
-   "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4FormFactor@PartInstance@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4FormFactor@PartInstance@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
-   "address": "00553d80",
-   "identity_evidence": "INFERRED:std::_Tree dtor called twice from the EnumDesc<FormFactor> dtor 0059bc70; shared body of the other EnumDesc map instances",
-   "votes": 1
-  },
-  {
-   "symbol": "?lookup@?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
-   "address": "004aa0d0",
-   "identity_evidence": "INFERRED:vtable 00832db8 slot 1 of EnumDesc<PartInstance::FormFactor> points here (shared with CameraType/BinType)",
-   "votes": 1
-  },
-  {
-   "symbol": "?transition@HumanoidState@HUMAN@RBX@@SAXAAV?$auto_ptr@VHumanoidState@HUMAN@RBX@@@std@@M@Z",
-   "address": "006453a0",
-   "identity_evidence": "INFERRED:analog name; byte-identical by native-asm --obj diff (HumanoidStateStep.cpp); called from stepState 00645450",
-   "votes": 1
-  },
-  {
-   "symbol": "?stepState@HumanoidState@HUMAN@RBX@@SAXAAV?$auto_ptr@VHumanoidState@HUMAN@RBX@@@std@@MPAVController@3@@Z",
-   "address": "00645450",
-   "identity_evidence": "INFERRED:header-declared stepState (called by Humanoid::onEvent 005dc740); byte-identical by native-asm --obj diff",
-   "votes": 1
-  },
-  {
-   "symbol": "?reconcile@TreeStage@RBX@@QAEXPAVPrimitive@2@0HHAAPAVJoint@2@AAH@Z",
-   "address": "00669090",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): reconcile (ascend-both-sides tree walk)",
-   "votes": 1
-  },
-  {
-   "symbol": "?dirtyAssemblyAndRemove@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
-   "address": "006691e0",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): assembly insert into +0x38 set after AssemblyStage::onAssemblyRemoving",
-   "votes": 1
-  },
-  {
-   "symbol": "?eraseDirtyAssembly@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
-   "address": "00669290",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): erase from +0x38 set + removeFromPipeline",
-   "votes": 1
-  },
-  {
-   "symbol": "?eraseDirtyAssemblyAndDelete@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
-   "address": "006692e0",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): eraseDirtyAssembly then scalar delete",
-   "votes": 1
-  },
-  {
-   "symbol": "?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z",
-   "address": "00668f20",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): header-gap cleanAssembly; registry signature",
-   "votes": 1
-  },
-  {
-   "symbol": "?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z",
-   "address": "00668fa0",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): header-gap cleanEdge; registry signature",
-   "votes": 1
-  },
-  {
-   "symbol": "?collectTopJoints@TreeStage@RBX@@QAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z",
-   "address": "00669150",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): recursive joint walk into a pointer set; identical except the self-recursive call relocation",
-   "votes": 1
-  },
-  {
-   "symbol": "??0TreeStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
-   "address": "00669870",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): ctor; RTTI TreeStage 0084cf94",
-   "votes": 1
-  },
-  {
-   "symbol": "?addPendingEdge@TreeStage@RBX@@QAEXPAVEdge@2@@Z",
-   "address": "00669340",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): edge insert into +0x58 set / cleanEdge fallback",
-   "votes": 1
-  },
-  {
-   "symbol": "?onEdgeAdded@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
-   "address": "00669c00",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): vtable 0084cf94 slot 4",
-   "votes": 1
-  },
-  {
-   "symbol": "?walkEdges@TreeStage@RBX@@QAEXPAVEdge@2@PAVPrimitive@2@H@Z",
-   "address": "006697a0",
-   "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): identical except the self-recursive call relocation",
-   "votes": 1
-  },
-  {
-   "symbol": "?flushCache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAXXZ",
-   "address": "004daf50",
-   "votes": 1,
-   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8dc0 stores vtable 00826bf4 = ??_7 Table<Vector3,Variations<MeshFactory<PBBMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9750; byte-exact native body in ViewNewPartMesh2008.cpp"
-  },
-  {
-   "symbol": "?flushCache@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
-   "address": "004db040",
-   "votes": 1,
-   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8e30 stores vtable 00826bfc = ??_7 Table<Vector3,Variations<MeshFactory<SphereMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d97b0; byte-exact native body in ViewNewPartMesh2008.cpp"
-  },
-  {
-   "symbol": "?flushCache@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
-   "address": "004db130",
-   "votes": 1,
-   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8ea0 stores vtable 00826c04 = ??_7 Table<Vector3,Variations<MeshFactory<CylinderAlongXMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9810; byte-exact native body in ViewNewPartMesh2008.cpp"
-  },
-  {
-   "symbol": "?flushCache@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
-   "address": "004db220",
-   "votes": 1,
-   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8f10 stores vtable 00826c0c = ??_7 Table<Vector3,Variations<MeshFactory<TorsoMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9870; byte-exact native body in ViewNewPartMesh2008.cpp"
-  },
-  {
-   "symbol": "?flushCache@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
-   "address": "004db310",
-   "votes": 1,
-   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8f80 stores vtable 00826c14 = ??_7 Table<Vector3,Variations<MeshFactory<HeadMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d98d0; byte-exact native body in ViewNewPartMesh2008.cpp"
-  },
-  {
-   "symbol": "?flushCache@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
-   "address": "004db400",
-   "votes": 1,
-   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8ff0 stores vtable 00826c1c = ??_7 Table<Vector3,Variations<MeshFactory<WedgeMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9930; byte-exact native body in ViewNewPartMesh2008.cpp"
-  },
-  {
-   "symbol": "?loadCharacterAppearance@Player@Network@RBX@@QAEX_N@Z",
-   "address": "00495380",
-   "identity_evidence": "INFERRED:Network::Player member (declared Player.h, vtable 0082220c RTTI .?AVPlayer@Network@RBX@@); body candidate-matched byte-exact by rbxgs donor analog src/2008-06/00495380.cpp wrapped in native-classes/PlayerLoadDonor.cpp; called from loadCharacter 004957a0 and string 'LoadCharacterAppearance can only be called by the backend server'",
-   "votes": 1
-  },
-  {
-   "symbol": "?loadCharacter@Player@Network@RBX@@QAEX_N@Z",
-   "address": "004957a0",
-   "identity_evidence": "INFERRED:Network::Player member (declared Player.h, vtable 0082220c RTTI .?AVPlayer@Network@RBX@@); body candidate-matched byte-exact by rbxgs donor analog src/2008-06/004957a0.cpp wrapped in native-classes/PlayerLoadDonorB.cpp; string 'LoadCharacter can only be called when Player is in the world'",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_dwAllocatedObjects@CXTPReportRow_BatchData@@2JA",
-   "address": "0097e13c",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_bDestroyEmptyBlocksOnFree@CXTPReportRow_BatchData@@2HA",
-   "address": "0097e140",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_bDestroyLastEmptyBlockOnFree@CXTPReportRow_BatchData@@2HA",
-   "address": "0097e144",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_pFreeBlocks@CXTPReportRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
-   "address": "0097e148",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_pBusyBlocks@CXTPReportRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
-   "address": "0097e14c",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_nBlockSize@CXTPReportRow_BatchData@@2HA",
-   "address": "009666c4",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_dwAllocatedObjects@CXTPReportGroupRow_BatchData@@2JA",
-   "address": "0097e154",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_bDestroyEmptyBlocksOnFree@CXTPReportGroupRow_BatchData@@2HA",
-   "address": "0097e158",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_bDestroyLastEmptyBlockOnFree@CXTPReportGroupRow_BatchData@@2HA",
-   "address": "0097e15c",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_pFreeBlocks@CXTPReportGroupRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
-   "address": "0097e160",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_pBusyBlocks@CXTPReportGroupRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
-   "address": "0097e164",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?m_nBlockSize@CXTPReportGroupRow_BatchData@@2HA",
-   "address": "009666c8",
-   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
-   "votes": 1
-  },
-  {
-   "symbol": "?CreateHeapIfNeed@?$CXTPHeapAllocatorT@UCXTPReportRowAllocatorData@@@@SAXXZ",
-   "address": "006cb580",
-   "identity_evidence": "INFERRED:XTP CXTPHeapAllocatorT<CXTPReportRowAllocatorData>::CreateHeapIfNeed called before HeapAlloc in AllocData",
-   "votes": 1
-  },
-  {
-   "symbol": "?FreeExtraData@?$CXTPBatchAllocManagerT@VCXTPReportRowAllocator@@UCXTPReportGroupRow_BatchData@@@@SAXXZ",
-   "address": "006cf4a0",
-   "identity_evidence": "INFERRED:byte-exact native instantiation of XTP CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>; uses group-row statics 0097e160/009666c8",
-   "votes": 1
-  },
-  {
-   "symbol": "?AllocData@?$CXTPBatchAllocManagerT@VCXTPReportRowAllocator@@UCXTPReportGroupRow_BatchData@@@@SAPAXI@Z",
-   "address": "006d0460",
-   "identity_evidence": "INFERRED:byte-exact native instantiation of XTP CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>; uses group-row statics 0097e160/009666c8",
-   "votes": 1
-  }
- ]
+  "scope": "RBX::DxUserInput (native-headers/util/DxUserInput.h, native-classes/DxUserInput.cpp)",
+  "identity_bindings": [
+    {
+      "symbol": "?setKeyState@DxUserInput@RBX@@UAEXW4SDLKey@@_N@Z",
+      "address": "00467530",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?createMouse@DxUserInput@RBX@@QAEXXZ",
+      "address": "00467550",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?createKeyboard@DxUserInput@RBX@@QAEXXZ",
+      "address": "004675e0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?acquireKeyboard@DxUserInput@RBX@@QAEXXZ",
+      "address": "00467720",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?syncKeyboard@DxUserInput@RBX@@QAEXXZ",
+      "address": "004677f0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?getGameCursor@DxUserInput@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z",
+      "address": "00467a90",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?getWindowCursorPosition@DxUserInput@RBX@@QAE?AVVector2@G3D@@XZ",
+      "address": "00467bf0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?getCursorPosition@DxUserInput@RBX@@UAE?AVVector2@G3D@@XZ",
+      "address": "00467c50",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?keyDown@DxUserInput@RBX@@UBE_NW4SDLKey@@@Z",
+      "address": "00467cb0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?setKeyboardWanted@DxUserInput@RBX@@QAEX_N@Z",
+      "address": "00468050",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?releaseMouse@DxUserInput@RBX@@QAEXXZ",
+      "address": "004680c0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?updateMouseAcquisition@DxUserInput@RBX@@QAEXABVVector2@G3D@@@Z",
+      "address": "00468520",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?updateMouseWanted@DxUserInput@RBX@@QAEXABVVector2@G3D@@@Z",
+      "address": "00468a60",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?updateMouse@DxUserInput@RBX@@QAEXXZ",
+      "address": "00468b20",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?onEvent@DxUserInput@RBX@@UAEXPBVRunService@2@VStepped@2@@Z",
+      "address": "00468e70",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?setWrapMode@DxUserInput@RBX@@UAEXW4WrapMode@UserInputBase@2@@Z",
+      "address": "00469070",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?getWrapMode@DxUserInput@RBX@@UBE?AW4WrapMode@UserInputBase@2@XZ",
+      "address": "00469080",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?centerCursor@DxUserInput@RBX@@UAEXXZ",
+      "address": "00469090",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?onEvent@DxUserInput@RBX@@UAEXPBVRunService@2@VHeartbeat@2@@Z",
+      "address": "004689c0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "??_GDxUserInput@RBX@@UAEPAXI@Z",
+      "address": "004690d0",
+      "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+      "address": "005ecd60",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+      "address": "005ecd90",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$00M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+      "address": "005ecdc0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+      "address": "005ecdf0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$03M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+      "address": "005ece20",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+      "address": "005ece50",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+      "address": "005ece90",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+      "address": "005eced0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$02M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+      "address": "005ecf00",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+      "address": "005ecf30",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+      "address": "005ecf60",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$0A@M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+      "address": "005ecfa0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+      "address": "005ecfd0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$04M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+      "address": "005ed000",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+      "address": "005ed030",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+      "address": "005ed070",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+      "address": "005ed0b0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$01M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+      "address": "005ed0e0",
+      "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "??0ClumpStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+      "address": "0064cfd0",
+      "identity_evidence": "INFERRED:ClumpStage vtable 0084b14c (stage chain CleanStage->JointStage->ClumpStage: JointStage ctor 00668470 news 0x30 bytes and calls 0064cfd0) and byte-exact native body (ClumpStage2008.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1ClumpStage@RBX@@UAE@XZ",
+      "address": "0064cf50",
+      "identity_evidence": "INFERRED:ClumpStage vtable 0084b14c and byte-exact native body (ClumpStage2008.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "??0SpatialHash@RBX@@QAE@PAVWorld@1@PAVContactManager@1@@Z",
+      "address": "0065b4e0",
+      "identity_evidence": "INFERRED:donor-exact name SpatialHash (ContactManager 2008 news SpatialHash(world, this)) and byte-exact native body (SpatialHash2008.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ",
+      "address": "0066f900",
+      "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+      "address": "0066f910",
+      "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?drawFont2D@AdornRbxGfx@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z",
+      "address": "0066fda0",
+      "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?font2d@RBX@@3PAVRbxFont@Ogre@@A",
+      "address": "00962dac",
+      "identity_evidence": "INFERRED:AdornRbxGfx vtable 0084d2a4 slots 5/6/13 / RTTI .?AVAdornRbxGfx@RBX@@ and byte-exact native body in AdornRbxGfx3.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?draw2D@RbxFont@Ogre@@QBE?AVVector2@G3D@@PAVVisualEngine@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z",
+      "address": "00684730",
+      "identity_evidence": "INFERRED:RbxFont::draw2D (VRbxFont2008.h: only caller AdornRbxGfx 0066fe0c; byte-exact native body in OgreVRbxFont.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?erase@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAEIABQAVJoint@RBX@@@Z",
+      "address": "005e9f60",
+      "identity_evidence": "INFERRED:set<Joint*>::erase(key): identical-code folded body of the registry's erase at 005e9f60 (CRobloxTreeCtrlNode*); SleepStage::changeJointState 0064ae10 passes &joint with the steppingJoints container at +0x1b8 and the native body (SleepStage2008.cpp) is byte-exact",
+      "votes": 1
+    },
+    {
+      "symbol": "?turnOnLights@RenderScene@Render@RBX@@ABEXPAVRenderDevice@G3D@@_N@Z",
+      "address": "00502100",
+      "identity_evidence": "INFERRED:donor RenderScene.cpp body (tools/rbxgs RenderLib), decorated name in registry and byte-exact native body in RenderSceneLights2008.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?font2d@RBX@@3V?$SharedPtr@VRbxFont@Ogre@@@Ogre@@A",
+      "address": "00962da8",
+      "identity_evidence": "INFERRED:SharedPtr<RbxFont> global at 00962da8 (ctor 00674210 assigns fromFile result via 00670670; pRep at 00962dac read by drawFont2D 0066fe01)",
+      "votes": 1
+    },
+    {
+      "symbol": "?changeJointState@SleepStage@RBX@@AAEXABV?$vector@PAVJoint@RBX@@V?$allocator@PAVJoint@RBX@@@std@@@std@@W4EdgeState@Sim@2@@Z",
+      "address": "0064b7f0",
+      "identity_evidence": "INFERRED:the vector<Joint*> loop of SleepStage (donor changeJointState(const vector&)) calls the byte-exact changeJointState(Joint*) 0064ae10; native body byte-exact (SleepStage2008.cpp). The registry gives the same name to 0064b840/0064c230, which call 0064ae90/0064bf90",
+      "votes": 1
+    },
+    {
+      "symbol": "?changeAssemblyState@SleepStage@RBX@@AAEXABV?$vector@PAVAssembly@RBX@@V?$allocator@PAVAssembly@RBX@@@std@@@std@@W4AssemblyState@Sim@2@@Z",
+      "address": "0064b840",
+      "identity_evidence": "INFERRED:vector<Assembly*> loop of SleepStage (donor changeAssemblyState(const vector&)) calling changeAssemblyState(Assembly*, state) 0064ae90 (state -> SimJobStage add/remove); native body byte-exact (SleepStage2008.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?changeContactState@SleepStage@RBX@@AAEXABV?$vector@PAVContact@RBX@@V?$allocator@PAVContact@RBX@@@std@@@std@@W4EdgeState@Sim@2@@Z",
+      "address": "0064c230",
+      "identity_evidence": "INFERRED:vector<Contact*> loop of SleepStage (donor changeContactState(const vector&)) calling changeContactState(Contact*, state) 0064bf90; native body byte-exact (SleepStage2008.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeNormalPerpVel@GeoPair@RBX@@QAEXAAMAAVVector3@G3D@@ABVPairParams@2@@Z",
+      "address": "006130e0",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeBallPoint@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "006131e0",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeBallBall@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "00613290",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeBallEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "00613320",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeBallPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "00613440",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computePointPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "00613560",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeEdgeEdgePlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "006136a0",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?computeEdgeEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
+      "address": "006139c0",
+      "identity_evidence": "INFERRED:GeoPair compute* from donor v8kernel/Pair.cpp (rbxgs / openrbx-client analog) on the 2008 Body (getPVUnsafe); native body byte-exact (GeoPair.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?getAssemblyNoCheck@Primitive@RBX@@QBEPAVAssembly@2@XZ",
+      "address": "005e7560",
+      "identity_evidence": "INFERRED:placeholder func_005e7560 is `[[prim+0x5c]+0x24]` (Clump assembly without the NULL check of getAssembly 005e7570); called by SleepStage::onEdgeAdded 0064b1b0 and touchEvent 0064b7c0; byte-exact native body (SleepStage2008.cpp); name is an analog",
+      "votes": 1
+    },
+    {
+      "symbol": "?stateToSet@SleepStage@RBX@@AAEPAV?$set@PAVAssembly@RBX@@U?$less@PAVAssembly@RBX@@@std@@V?$allocator@PAVAssembly@RBX@@@4@@std@@W4AssemblyState@Sim@2@@Z",
+      "address": "0064a550",
+      "identity_evidence": "INFERRED:donor SleepStage::stateToSet (state -> assembly set, jump table of 6 over state 1..6, default +0x120); called by changeAssemblyState 0064ae90 and the wake events with the set erase/insert; byte-exact native body (SleepStage2008.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?getHeadingElevationDistance@Camera@RBX@@AAEXAAM00@Z",
+      "address": "005cc0c0",
+      "identity_evidence": "INFERRED:called by Camera::panRadians/tiltRadians; Camera unit 005cbf20-005ce6e0 (RTTI .?AVCamera@RBX@@); byte-exact native body (Camera.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?setHeadingElevationDistance@Camera@RBX@@AAEXMMM@Z",
+      "address": "005cc690",
+      "identity_evidence": "INFERRED:called by Camera::panRadians/tiltRadians; Camera unit (RTTI .?AVCamera@RBX@@); byte-exact native body (Camera.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?alwaysMode@Camera@RBX@@QAEXXZ",
+      "address": "005cc000",
+      "identity_evidence": "INFERRED:Camera unit 005cbf20-005ce6e0, sets animationType ALWAYS beside autoMode 005cc450; byte-exact native body (Camera.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?goalToCamera@Camera@RBX@@QAEXXZ",
+      "address": "005cdf70",
+      "identity_evidence": "INFERRED:Camera unit (RTTI .?AVCamera@RBX@@), called by tryZoomExtents 005cdff0; byte-exact native body (Camera.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?setCameraCoordinateFrameNoLerp@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@@Z",
+      "address": "005ce440",
+      "identity_evidence": "INFERRED:Camera unit, PropDescriptor setter for CoordinateFrame; byte-exact native body (Camera.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?setImageServerViewNoLerp@Camera@RBX@@QAEXABVCoordinateFrame@G3D@@ABVRect2D@4@@Z",
+      "address": "005ce480",
+      "identity_evidence": "INFERRED:Camera unit after setCameraCoordinateFrameNoLerp 005ce440; byte-exact native body (Camera.cpp, /fp:fast)",
+      "votes": 1
+    },
+    {
+      "symbol": "?PreCreateWindow@CRobloxWnd@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "address": "0045b330",
+      "identity_evidence": "INFERRED:CRobloxWnd vtable 008199f4 / RTTI .?AVCRobloxWnd@@ (MFC PreCreateWindow override calling CWnd::PreCreateWindow); byte-exact native body (CRobloxWndWindow.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?OnSetFocus@CRobloxWnd@@QAEXPAVCWnd@@@Z",
+      "address": "0045b5d0",
+      "identity_evidence": "INFERRED:CRobloxWnd unit (calls CWnd::OnSetFocus then DxUserInput::setKeyboardWanted(true) 00468050); byte-exact native body (CRobloxWndWindow.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?getMetric@World@RBX@@QBEHW4MetricType@IWorldStage@2@@Z",
+      "address": "005e9160",
+      "identity_evidence": "INFERRED:donor World::getMetric (forwards to the first stage's getMetric, slot 6): 13-byte body byte-exact in native-classes/AppUnit5E8_2008World.cpp; the owning unit is the World.cpp range 005e9150..005eaeef (World::getKernel 005e9150 precedes it)",
+      "votes": 1
+    },
+    {
+      "symbol": "?getSleepStage@World@RBX@@QAEPAVSleepStage@2@XZ",
+      "address": "005e93e0",
+      "identity_evidence": "INFERRED:donor World::getSleepStage: IStage::findStage walk (getStageType slot 1 against 5 = SLEEP_STAGE) from the first stage +0x88, the same walk as ticklePrimitive 005e9410 before SleepStage 0064b890; byte-exact in native-classes/AppUnit5E8_2008World.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?onPrimitiveTouched@World@RBX@@QAEXPAVPrimitive@2@0@Z",
+      "address": "005e98c0",
+      "identity_evidence": "INFERRED:donor World::onPrimitiveTouched (touch.append(p); touchOther.append(other)); byte-exact in native-classes/AppUnit5E8_2008World.cpp; the two G3D::Array appends are at +0x8c / +0x98 (World() 005ea920)",
+      "votes": 1
+    },
+    {
+      "symbol": "?OnSize@CRobloxWnd@@QAEXIHH@Z",
+      "address": "0045b010",
+      "identity_evidence": "INFERRED:CRobloxWnd unit (registry resize(UINT,UINT,UINT)): GetClientRect + VisualEngine camera aspect + RenderWindow::windowMovedOrResized; byte-exact native body (CRobloxWndWindow.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?shutdownGraphics@CRobloxWnd@@QAEXXZ",
+      "address": "0045bde0",
+      "identity_evidence": "INFERRED:CRobloxWnd unit (registry f(void)): GWindow m_current 0096eff4 makeCurrent, RenderDevice::cleanup 0047c3e0 / ~RenderDevice 0047bec0, GWindow deleting dtor; byte-exact native body (CRobloxWndWindow.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?handle@CRobloxWnd@@QAEXH@Z",
+      "address": "0045cba0",
+      "identity_evidence": "INFERRED:CRobloxWnd unit (registry handle(int)): switch calling 0045beb0/0045c890 or DxUserInput::updateMouse 00468b20 then CWnd::Default; byte-exact native body (CRobloxWndWindow.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?sub_0045beb0@CRobloxWnd@@QAEXXZ",
+      "address": "0045beb0",
+      "identity_evidence": "INFERRED:CRobloxWnd unit, thiscall on CRobloxWnd called from handle 0045cba0; placeholder name, body not recovered (identity only for the call reference)",
+      "votes": 1
+    },
+    {
+      "symbol": "?sub_0045c890@CRobloxWnd@@QAEXXZ",
+      "address": "0045c890",
+      "identity_evidence": "INFERRED:CRobloxWnd unit, thiscall on CRobloxWnd called from handle 0045cba0; placeholder name, body not recovered (identity only for the call reference)",
+      "votes": 1
+    },
+    {
+      "symbol": "?onEvent_AddedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "005b1110",
+      "identity_evidence": "INFERRED:donor/openrbx Accoutrement::onEvent_AddedBackend (updateDesiredState 005b10a0 unless child==this); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?onEvent_RemovedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "005b1190",
+      "identity_evidence": "INFERRED:donor/openrbx Accoutrement::onEvent_RemovedBackend (weld +0x134 compare); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?dropAllOthers@Accoutrement@RBX@@SAXPAVModelInstance@2@PAV12@@Z",
+      "address": "005b15e0",
+      "identity_evidence": "INFERRED:openrbx Accoutrement::dropAllOthers (findWorkspace 005a3380, findFirstChildOfType<Accoutrement> 005b1520, setParent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?upTo_Equipped@Accoutrement@RBX@@IAEXXZ",
+      "address": "005b1830",
+      "identity_evidence": "INFERRED:donor Accoutrement::upTo_Equipped (handleTouched.disconnect, findParts, unJoinFromOutsiders, buildWeld \"HeadWeld\"); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?connectTouchEvent@Accoutrement@RBX@@IAEXXZ",
+      "address": "005b1d70",
+      "identity_evidence": "INFERRED:donor Accoutrement::connectTouchEvent (PartInstance::event_Touched.connect group 10); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?downFrom_Equipped@Accoutrement@RBX@@IAEXXZ",
+      "address": "005b1fc0",
+      "identity_evidence": "INFERRED:donor Accoutrement::downFrom_Equipped (weld teardown, drop at character, connectTouchEvent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
+      "votes": 1
+    },
+    {
+      "symbol": "?closeReplicationItem@Replicator@Network@RBX@@KAXABU?$pair@QBVInstance@RBX@@UReplicationData@Replicator@Network@2@@std@@@Z",
+      "address": "004ab850",
+      "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
+      "votes": 1
+    },
+    {
+      "symbol": "?writeItemType@Item@Replicator@Network@RBX@@SAXAAVBitStream@RakNet@@W4ItemType@1234@@Z",
+      "address": "004ab5d0",
+      "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator); called by MarkerItem::write 004ae9a0 (ItemTypeMarker=4) and ItemSender dtor 004aba60 (ItemTypeEnd=0)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1ItemSender@Replicator@Network@RBX@@QAE@XZ",
+      "address": "004aba60",
+      "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
+      "votes": 1
+    },
+    {
+      "symbol": "?write@MarkerItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+      "address": "004ae9a0",
+      "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
+      "votes": 1
+    },
+    {
+      "symbol": "?removeScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z",
+      "address": "005ad030",
+      "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
+      "votes": 1
+    },
+    {
+      "symbol": "?disassociateState@ScriptContext@RBX@@AAEXPAVScript@2@@Z",
+      "address": "005ad000",
+      "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
+      "votes": 1
+    },
+    {
+      "symbol": "?readValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAE?AVColor3@G3D@@XZ",
+      "address": "00437920",
+      "identity_evidence": "INFERRED:XItem<Color3,CXTPPropertyGridItemColor,TypedPropertyDescriptor<Color3>> slots 57/58 SetColor/GetColor (same as CPropertyGridItemBrickColor header evidence); byte-exact native body in XItemBoolColor3.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?displayValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXABVColor3@G3D@@@Z",
+      "address": "00437970",
+      "identity_evidence": "INFERRED:XItem<Color3,CXTPPropertyGridItemColor,TypedPropertyDescriptor<Color3>> slots 57/58 SetColor/GetColor (same as CPropertyGridItemBrickColor header evidence); byte-exact native body in XItemBoolColor3.cpp",
+      "votes": 1
+    },
+    {
+      "symbol": "?writeValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXPAVInstance@RBX@@AB_N@Z",
+      "address": "0043a280",
+      "identity_evidence": "INFERRED: byte-exact native body; same lock+setValue shape as EnumItemBase::writeValue",
+      "votes": 1
+    },
+    {
+      "symbol": "__ehhandler$?writeValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXPAVInstance@RBX@@AB_N@Z",
+      "address": "007c0500",
+      "identity_evidence": "push -1; push handler prologue immediate of original body 0043a280",
+      "votes": 1
+    },
+    {
+      "symbol": "?releaseSound@Soundscape@RBX@@YAXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@Z",
+      "address": "005ba2b0",
+      "identity_evidence": "INFERRED:SoundService::closeFmod 005ba970 pushes callback 005ba2b0 into for_each 005b7940 over loadedSounds/loaded3DSounds; releaseSound body = Sound::release inline",
+      "votes": 1
+    },
+    {
+      "symbol": "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@P6AXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@3@@Z@std@@YAP6AXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@0@@ZViterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@0@1P6AX0@Z@Z",
+      "address": "005b7940",
+      "identity_evidence": "INFERRED:SoundService::closeFmod 005ba970 pushes callback 005ba2b0 into for_each 005b7940 over loadedSounds/loaded3DSounds; releaseSound body = Sound::release inline",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4AASamples@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+      "address": "00446570",
+      "identity_evidence": "INFERRED:vtable 815ec8 is stored by the EnumDesc<CRenderSettings::AASamples> ctor (name string 'AASamples' pushed to EnumDescriptor ctor)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+      "address": "00446700",
+      "identity_evidence": "INFERRED:vtable 815ed4 is stored by the EnumDesc<CRenderSettings::GraphicsMode> ctor (name string 'GraphicsMode' pushed to EnumDescriptor ctor)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+      "address": "00446890",
+      "identity_evidence": "INFERRED:vtable 815ee0 is stored by the EnumDesc<CRenderSettings::FrameRateManagerMode> ctor (name string 'FrameRateManagerMode' pushed to EnumDescriptor ctor)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+      "address": "00446a20",
+      "identity_evidence": "INFERRED:vtable 815eec is stored by the EnumDesc<CRenderSettings::AntialiasingMode> ctor (name string 'AntialiasingMode' pushed to EnumDescriptor ctor)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+      "address": "00446bb0",
+      "identity_evidence": "INFERRED:vtable 815ef8 is stored by the EnumDesc<CRenderSettings::BevelMode> ctor (name string 'BevelMode' pushed to EnumDescriptor ctor)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+      "address": "00446d90",
+      "identity_evidence": "INFERRED:vtable 815f04 is stored by the EnumDesc<CRenderSettings::ShadowMode> ctor (name string 'ShadowMode' pushed to EnumDescriptor ctor)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4AASamples@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00446fa0",
+      "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00446fc0",
+      "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00446fe0",
+      "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00447000",
+      "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00447020",
+      "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00447040",
+      "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+      "votes": 1
+    },
+    {
+      "symbol": "?soundDisabled@SoundService@Soundscape@RBX@@2_NA",
+      "address": "00976fc9",
+      "identity_evidence": "INFERRED:openFmod 005ba060 `cmp byte ptr [0x976fc9],0` is the static SoundService::soundDisabled; byte-identical body",
+      "votes": 1
+    },
+    {
+      "symbol": "_FMOD_System_Create@4",
+      "address": "0069fbd6",
+      "identity_evidence": "import thunk: native-asm 005ba0c0 call 0x69fbd6 ; fmodex.dll!FMOD_System_Create",
+      "votes": 1
+    },
+    {
+      "symbol": "__ehhandler$?openFmod@SoundService@Soundscape@RBX@@AAEXXZ",
+      "address": "007d3b21",
+      "identity_evidence": "INFERRED:openFmod 005ba060 pushes 0x7d3b21 as its SEH handler (push at 005ba065); byte-identical body",
+      "votes": 1
+    },
+    {
+      "symbol": "?update3DSettings@SoundService@Soundscape@RBX@@AAEXXZ",
+      "address": "005b97b0",
+      "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+      "votes": 1
+    },
+    {
+      "symbol": "?on3DSettingChanged@SoundService@Soundscape@RBX@@AAEXABVPropertyDescriptor@Reflection@3@@Z",
+      "address": "005ba020",
+      "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+      "votes": 1
+    },
+    {
+      "symbol": "?gcSounds@SoundService@Soundscape@RBX@@CAXAAV?$map@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@@std@@@Z",
+      "address": "005ba2e0",
+      "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+      "votes": 1
+    },
+    {
+      "symbol": "?closeFmod@SoundService@Soundscape@RBX@@AAEXXZ",
+      "address": "005ba970",
+      "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+      "votes": 1
+    },
+    {
+      "symbol": "?loadSound@SoundService@Soundscape@RBX@@QAE?AV?$shared_ptr@VSound@Soundscape@RBX@@@boost@@VSoundId@23@_N@Z",
+      "address": "005bb5f0",
+      "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4NormalId@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "0056fc60",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "0059bc70",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4PartType@Part@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "0059c1f0",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "005cd240",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "005cff90",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "005ed170",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4InputType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "005ed3f0",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAE@XZ",
+      "address": "006091f0",
+      "identity_evidence": "INFERRED:vtable stored by EnumDesc ctor; vtable slot0 deleting-dtor thunk calls this body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "address": "0041c3e0",
+      "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
+      "votes": 1
+    },
+    {
+      "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "address": "0058b020",
+      "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
+      "votes": 1
+    },
+    {
+      "symbol": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "address": "005c4f80",
+      "identity_evidence": "exact-masked-identical: explicit BoundFuncDesc<RunService,void(void),0> instance IDENTICAL to ctor body; symbol from original decorated name",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4BinType@HopperBin@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4BinType@HopperBin@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+      "address": "00553d80",
+      "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4CameraType@Camera@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4CameraType@Camera@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+      "address": "00553d80",
+      "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ControllerType@Controller@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ControllerType@Controller@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+      "address": "00553d80",
+      "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ShadowMode@CRenderSettings@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ShadowMode@CRenderSettings@@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+      "address": "00553d80",
+      "identity_evidence": "INFERRED:std::_Tree dtor called twice (nameToEnum/nameToEnumLegacy) from EnumDesc dtor, same shared body as the other EnumDesc map instances",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4NormalId@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "0056fdf0",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "0059c0f0",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4PartType@Part@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "0059c380",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "005cd3d0",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4BinType@HopperBin@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "005d0120",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4SurfaceType@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "005ed580",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4InputType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "005ed5a0",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "??_E?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "address": "00609380",
+      "identity_evidence": "INFERRED:vtable slot0 deleting-dtor thunk of this EnumDesc calls the dtor body (rtti-dtor-identities.json)",
+      "votes": 1
+    },
+    {
+      "symbol": "?lookup@?$EnumDesc@W4CameraType@Camera@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
+      "address": "004aa0d0",
+      "identity_evidence": "INFERRED:vtable 0083a450 slot 1 of EnumDesc<Camera::CameraType> points here; the same 004aa0d0 sits in the BinType vtable 0083aeb4 slot 1",
+      "votes": 1
+    },
+    {
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4FormFactor@PartInstance@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4FormFactor@PartInstance@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+      "address": "00553d80",
+      "identity_evidence": "INFERRED:std::_Tree dtor called twice from the EnumDesc<FormFactor> dtor 0059bc70; shared body of the other EnumDesc map instances",
+      "votes": 1
+    },
+    {
+      "symbol": "?lookup@?$EnumDesc@W4FormFactor@PartInstance@RBX@@@Reflection@RBX@@UBEPBVItem@EnumDescriptor@23@PBD@Z",
+      "address": "004aa0d0",
+      "identity_evidence": "INFERRED:vtable 00832db8 slot 1 of EnumDesc<PartInstance::FormFactor> points here (shared with CameraType/BinType)",
+      "votes": 1
+    },
+    {
+      "symbol": "?transition@HumanoidState@HUMAN@RBX@@SAXAAV?$auto_ptr@VHumanoidState@HUMAN@RBX@@@std@@M@Z",
+      "address": "006453a0",
+      "identity_evidence": "INFERRED:analog name; byte-identical by native-asm --obj diff (HumanoidStateStep.cpp); called from stepState 00645450",
+      "votes": 1
+    },
+    {
+      "symbol": "?stepState@HumanoidState@HUMAN@RBX@@SAXAAV?$auto_ptr@VHumanoidState@HUMAN@RBX@@@std@@MPAVController@3@@Z",
+      "address": "00645450",
+      "identity_evidence": "INFERRED:header-declared stepState (called by Humanoid::onEvent 005dc740); byte-identical by native-asm --obj diff",
+      "votes": 1
+    },
+    {
+      "symbol": "?reconcile@TreeStage@RBX@@QAEXPAVPrimitive@2@0HHAAPAVJoint@2@AAH@Z",
+      "address": "00669090",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): reconcile (ascend-both-sides tree walk)",
+      "votes": 1
+    },
+    {
+      "symbol": "?dirtyAssemblyAndRemove@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
+      "address": "006691e0",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): assembly insert into +0x38 set after AssemblyStage::onAssemblyRemoving",
+      "votes": 1
+    },
+    {
+      "symbol": "?eraseDirtyAssembly@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
+      "address": "00669290",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): erase from +0x38 set + removeFromPipeline",
+      "votes": 1
+    },
+    {
+      "symbol": "?eraseDirtyAssemblyAndDelete@TreeStage@RBX@@QAEXPAVAssembly@2@@Z",
+      "address": "006692e0",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): eraseDirtyAssembly then scalar delete",
+      "votes": 1
+    },
+    {
+      "symbol": "?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z",
+      "address": "00668f20",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): header-gap cleanAssembly; registry signature",
+      "votes": 1
+    },
+    {
+      "symbol": "?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z",
+      "address": "00668fa0",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): header-gap cleanEdge; registry signature",
+      "votes": 1
+    },
+    {
+      "symbol": "?collectTopJoints@TreeStage@RBX@@QAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z",
+      "address": "00669150",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): recursive joint walk into a pointer set; identical except the self-recursive call relocation",
+      "votes": 1
+    },
+    {
+      "symbol": "??0TreeStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+      "address": "00669870",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): ctor; RTTI TreeStage 0084cf94",
+      "votes": 1
+    },
+    {
+      "symbol": "?addPendingEdge@TreeStage@RBX@@QAEXPAVEdge@2@@Z",
+      "address": "00669340",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): edge insert into +0x58 set / cleanEdge fallback",
+      "votes": 1
+    },
+    {
+      "symbol": "?onEdgeAdded@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
+      "address": "00669c00",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): vtable 0084cf94 slot 4",
+      "votes": 1
+    },
+    {
+      "symbol": "?walkEdges@TreeStage@RBX@@QAEXPAVEdge@2@PAVPrimitive@2@H@Z",
+      "address": "006697a0",
+      "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): identical except the self-recursive call relocation",
+      "votes": 1
+    },
+    {
+      "symbol": "?flushCache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAXXZ",
+      "address": "004daf50",
+      "votes": 1,
+      "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8dc0 stores vtable 00826bf4 = ??_7 Table<Vector3,Variations<MeshFactory<PBBMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9750; byte-exact native body in ViewNewPartMesh2008.cpp"
+    },
+    {
+      "symbol": "?flushCache@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+      "address": "004db040",
+      "votes": 1,
+      "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8e30 stores vtable 00826bfc = ??_7 Table<Vector3,Variations<MeshFactory<SphereMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d97b0; byte-exact native body in ViewNewPartMesh2008.cpp"
+    },
+    {
+      "symbol": "?flushCache@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+      "address": "004db130",
+      "votes": 1,
+      "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8ea0 stores vtable 00826c04 = ??_7 Table<Vector3,Variations<MeshFactory<CylinderAlongXMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9810; byte-exact native body in ViewNewPartMesh2008.cpp"
+    },
+    {
+      "symbol": "?flushCache@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+      "address": "004db220",
+      "votes": 1,
+      "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8f10 stores vtable 00826c0c = ??_7 Table<Vector3,Variations<MeshFactory<TorsoMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9870; byte-exact native body in ViewNewPartMesh2008.cpp"
+    },
+    {
+      "symbol": "?flushCache@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+      "address": "004db310",
+      "votes": 1,
+      "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8f80 stores vtable 00826c14 = ??_7 Table<Vector3,Variations<MeshFactory<HeadMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d98d0; byte-exact native body in ViewNewPartMesh2008.cpp"
+    },
+    {
+      "symbol": "?flushCache@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+      "address": "004db400",
+      "votes": 1,
+      "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8ff0 stores vtable 00826c1c = ??_7 Table<Vector3,Variations<MeshFactory<WedgeMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9930; byte-exact native body in ViewNewPartMesh2008.cpp"
+    },
+    {
+      "symbol": "?loadCharacterAppearance@Player@Network@RBX@@QAEX_N@Z",
+      "address": "00495380",
+      "identity_evidence": "INFERRED:Network::Player member (declared Player.h, vtable 0082220c RTTI .?AVPlayer@Network@RBX@@); body candidate-matched byte-exact by rbxgs donor analog src/2008-06/00495380.cpp wrapped in native-classes/PlayerLoadDonor.cpp; called from loadCharacter 004957a0 and string 'LoadCharacterAppearance can only be called by the backend server'",
+      "votes": 1
+    },
+    {
+      "symbol": "?loadCharacter@Player@Network@RBX@@QAEX_N@Z",
+      "address": "004957a0",
+      "identity_evidence": "INFERRED:Network::Player member (declared Player.h, vtable 0082220c RTTI .?AVPlayer@Network@RBX@@); body candidate-matched byte-exact by rbxgs donor analog src/2008-06/004957a0.cpp wrapped in native-classes/PlayerLoadDonorB.cpp; string 'LoadCharacter can only be called when Player is in the world'",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_dwAllocatedObjects@CXTPReportRow_BatchData@@2JA",
+      "address": "0097e13c",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_bDestroyEmptyBlocksOnFree@CXTPReportRow_BatchData@@2HA",
+      "address": "0097e140",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_bDestroyLastEmptyBlockOnFree@CXTPReportRow_BatchData@@2HA",
+      "address": "0097e144",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_pFreeBlocks@CXTPReportRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+      "address": "0097e148",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_pBusyBlocks@CXTPReportRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+      "address": "0097e14c",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_nBlockSize@CXTPReportRow_BatchData@@2HA",
+      "address": "009666c4",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_dwAllocatedObjects@CXTPReportGroupRow_BatchData@@2JA",
+      "address": "0097e154",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_bDestroyEmptyBlocksOnFree@CXTPReportGroupRow_BatchData@@2HA",
+      "address": "0097e158",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_bDestroyLastEmptyBlockOnFree@CXTPReportGroupRow_BatchData@@2HA",
+      "address": "0097e15c",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_pFreeBlocks@CXTPReportGroupRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+      "address": "0097e160",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_pBusyBlocks@CXTPReportGroupRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+      "address": "0097e164",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?m_nBlockSize@CXTPReportGroupRow_BatchData@@2HA",
+      "address": "009666c8",
+      "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+      "votes": 1
+    },
+    {
+      "symbol": "?CreateHeapIfNeed@?$CXTPHeapAllocatorT@UCXTPReportRowAllocatorData@@@@SAXXZ",
+      "address": "006cb580",
+      "identity_evidence": "INFERRED:XTP CXTPHeapAllocatorT<CXTPReportRowAllocatorData>::CreateHeapIfNeed called before HeapAlloc in AllocData",
+      "votes": 1
+    },
+    {
+      "symbol": "?FreeExtraData@?$CXTPBatchAllocManagerT@VCXTPReportRowAllocator@@UCXTPReportGroupRow_BatchData@@@@SAXXZ",
+      "address": "006cf4a0",
+      "identity_evidence": "INFERRED:byte-exact native instantiation of XTP CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>; uses group-row statics 0097e160/009666c8",
+      "votes": 1
+    },
+    {
+      "symbol": "?AllocData@?$CXTPBatchAllocManagerT@VCXTPReportRowAllocator@@UCXTPReportGroupRow_BatchData@@@@SAPAXI@Z",
+      "address": "006d0460",
+      "identity_evidence": "INFERRED:byte-exact native instantiation of XTP CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>; uses group-row statics 0097e160/009666c8",
+      "votes": 1
+    },
+    {
+      "symbol": "?canTransition@HumanoidState@HUMAN@RBX@@QAE_NH@Z",
+      "address": "00644670",
+      "votes": 1,
+      "identity_evidence": "INFERRED:HumanoidState 17-event switch (jump table 0064476c); code bytes 320/320 equal via native-asm --obj"
+    },
+    {
+      "symbol": "?OnReplaceSel@CScintillaView@Scintilla@@MAEXPBDHHHH0@Z",
+      "address": "00461750",
+      "votes": 1,
+      "identity_evidence": "INFERRED:Scintilla::CScintillaView PJN wrapper (vtable 0081aa74 slot, ScintillaDocView.cpp upstream); code bytes equal via native-asm --obj against CScintillaViewPrint.cpp with mfc-noinline-pcxstr-len"
+    },
+    {
+      "symbol": "?PrintFooter@CScintillaView@Scintilla@@MAEXPAVCDC@@PAUCPrintInfo@@AAURangeToFormat@2@@Z",
+      "address": "004622e0",
+      "votes": 1,
+      "identity_evidence": "INFERRED:Scintilla::CScintillaView PJN wrapper (vtable 0081aa74 slot, ScintillaDocView.cpp upstream); code bytes equal via native-asm --obj against CScintillaViewPrint.cpp with mfc-noinline-pcxstr-len"
+    },
+    {
+      "symbol": "?PrintHeader@CScintillaView@Scintilla@@MAEXPAVCDC@@PAUCPrintInfo@@AAURangeToFormat@2@@Z",
+      "address": "004636e0",
+      "votes": 1,
+      "identity_evidence": "INFERRED:Scintilla::CScintillaView PJN wrapper (vtable 0081aa74 slot, ScintillaDocView.cpp upstream); code bytes equal via native-asm --obj against CScintillaViewPrint.cpp with mfc-noinline-pcxstr-len"
+    },
+    {
+      "symbol": "?onMarshaledEvent@CRobloxReportView@@UAEXPBVInstance@RBX@@UChildAdded@3@@Z",
+      "address": "004582f0",
+      "identity_evidence": "INFERRED:CRobloxReportView vtable 0081888c MarshaledListener<Instance,ChildAdded> thunk; byte-exact native body with record layout (CRuntimeClass/RTTI 00818a74)",
+      "votes": 1
+    }
+  ]
 }
