@@ -5,6 +5,10 @@
 #include <vector>
 #include "reflection/descriptor.h"
 
+// INFERRED: forward declaration for the Value::sub_00584750(const G3D::CoordinateFrame&) placeholder declaration
+// below (byte-proved in Inferred_00584750.cpp); every other includer of this header lacks G3D.
+namespace G3D { class CoordinateFrame; }
+
 namespace RBX
 {
 	namespace Reflection
@@ -145,6 +149,8 @@ namespace RBX
 			Value& sub_005ad270(const std::vector<RBX::Reflection::Value>& v);   // INFERRED: 005ad270, placeholder name (identity tier), body byte-proved (Inferred_005ad270.cpp)
 		public:
 			Value& sub_00443590(const std::string& v);   // INFERRED: 00443590, placeholder name (identity tier), body byte-proved (Inferred_00443590.cpp)
+		public:
+			Value& sub_00584750(const G3D::CoordinateFrame& cf);   // INFERRED: 00584750, placeholder name (identity tier), body byte-proved (Inferred_00584750.cpp)
 		};
 
 		class SignatureDescriptor

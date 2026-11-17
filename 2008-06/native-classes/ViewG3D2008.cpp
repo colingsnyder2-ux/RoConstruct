@@ -5,11 +5,24 @@
 #include "ViewG3D2008/ViewG3D2008.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/Lighting2008.h"
+#include "v8tree/Service.h"
+#include "RenderLib/RenderScene2008.h"
 
 namespace RBX
 {
 	namespace ViewNew
 	{
+		// 004dbf00: presetLighting slot 1 with a NULL sky (004dbfbe), sky = NULL after it, then the clear colour copy.
+		void ViewG3D::suppressSkybox()
+		{
+			Lighting* lighting = ServiceProvider::create<Lighting>(static_cast<ServiceProvider*>(dataModel.get()));
+			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(),
+			                               lighting->getAmbientTop(), lighting->getAmbientBottom());
+			sky = NULL;
+			renderLibScene->colorClearValue = lighting->clearColor;
+		}
+
 		void ViewG3D::render(G3D::RenderDevice* rd)
 		{
 			updateLighting();

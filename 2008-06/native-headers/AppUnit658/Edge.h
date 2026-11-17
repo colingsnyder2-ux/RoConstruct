@@ -68,6 +68,16 @@ namespace RBX
 		// otherPrimitive). Each picks prim0's or prim1's slot with `cmp p, [e+0xc]`: getIndex reads +0x14 / +0x18 in
 		// Primitive::getNextJoint 005e7ba0 / getNextContact 005e7be0 and EdgeList::removeEdge 005e8610; setIndex writes
 		// them in removeEdge 005e8610 and insertEdge 005e8990; otherPrimitive reads +0x10 / +0xc in insertEdge 005e8990.
+		// Donor Edge.h inline accessors of the +0x8 state (no code of their own): SleepStage 0064ae10 reads [edge+8] and
+		// stores the new state back to it.
+		Sim::EdgeState getEdgeState() const
+		{
+			return edgeState;
+		}
+		void setEdgeState(Sim::EdgeState state)
+		{
+			edgeState = state;
+		}
 		Primitive* getPrimitive(int i) const           // donor Edge.h inline; the Joints2008.h / Contact2008.h includers
 		{                                              // call it (exact bodies built against the donor copy)
 			return *(&this->prim0 + i);

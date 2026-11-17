@@ -255,6 +255,10 @@ namespace RBX
 		Body* getBody();                                 // 005e6160 (analog name)
 		void notifyMoved();                              // 005e6170 (analog name)
 		void setSleepInfo(SleepInfo* value);             // 005e5fe0 (analog name: openrbx Assembly::setSleepInfo)
+		SleepInfo* getSleepInfo() const                  // inline (donor Assembly::getSleepInfo): SleepStage 0064ae90 reads
+		{                                                // [clump+0x18] directly
+			return sleepInfo;
+		}
 		Assembly* getRootAssembly();                     // 005e6070 (analog name: parent ? parent->getRootAssembly() : this)
 		void setParent(Clump* newParent);                // 005e6fd0 (analog name: openrbx Assembly::setParent)
 		void removePrimitive(Primitive* p);              // 005e6790 (INFERRED name: 005e5ff0, then onPrimitivesChanged)
@@ -267,6 +271,8 @@ namespace RBX
 		                                                 // / 0064c470)
 	public:
 		void sub_005e6ba0(G3D::Array<const void*>& edges);   // INFERRED: 005e6ba0, placeholder name (identity tier), body byte-proved (Inferred_005e6ba0.cpp)
+	public:
+		void sub_005e6240(Assembly* value);   // INFERRED: 005e6240, placeholder name (identity tier), body byte-proved (Inferred_005e6240.cpp)
 	};
 
 	// INFERRED: the 2008 binary has no RTTI for an RBX::Assembly and the assembly object is its root Clump (Clump()

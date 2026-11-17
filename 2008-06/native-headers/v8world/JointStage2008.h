@@ -52,5 +52,9 @@ namespace RBX
 		virtual void onEdgeRemoving(Edge* e);             // slot 5 (006683f0)
 		void onPrimitiveAdded(Primitive* p);              // 006685b0 (not built)
 		void onPrimitiveRemoving(Primitive* p);           // 00668850 (not built)
+	public:
+		void sub_00668d30(Edge* e);   // INFERRED: 00668d30, placeholder name (identity tier), body byte-proved (Inferred_00668d30.cpp)
+	public:
+		void sub_00668d40(RBX::Primitive* primitive);   // INFERRED: 00668d40, placeholder name (identity tier), body byte-proved (Inferred_00668d40.cpp)
 	};
 }

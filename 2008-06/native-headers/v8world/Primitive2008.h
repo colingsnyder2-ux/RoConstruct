@@ -152,6 +152,9 @@ namespace RBX
 		void setClump(Clump* set);                       // 005e7550 (body in native-classes/AppUnit5E4PrimitiveParts.cpp;
 		                                                 // callers Clump(Primitive*) 005e6cf0 / 005e5ff0, out of line)
 		Assembly* getAssembly() const;                   // 005e7570 ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ
+		// 005e7560 (placeholder func_005e7560): `[[prim+0x5c]+0x24]` without the NULL check; SleepStage::onEdgeAdded 0064b1b0 and
+		// touchEvent 0064b7c0 call it while wakeEvent(Edge*) 0064bf60 calls the checked getAssembly 005e7570. INFERRED name.
+		Assembly* getAssemblyNoCheck() const;
 		int getClumpDepth() const
 		{
 			return clumpDepth;

@@ -173,6 +173,20 @@ namespace RBX
 			geoPairType = EDGE_EDGE_PAIR;
 		}
 
+		// inlined into BlockBlockContact::loadGeoPairEdgeEdgePlane 00608030 (00608131..00608148 store offset0 +0x4,
+		// edgeLength0 +0x14, offset1 +0x8, normalID0 +0x18, normalID1 +0x1c, planeID +0x20, geoPairType +0x0 = 5 of the
+		// GeoPair at connector +0x8). Donor v8kernel/Pair.h setEdgeEdgePlane without the bodies.
+		void setEdgeEdgePlane(const G3D::Vector3* offset0, const G3D::Vector3* offset1, NormalId norm0, NormalId norm1, NormalId planeID, float edgeLength)   // INFERRED: 2008 signature from the stores above
+		{
+			this->offset0 = offset0;
+			edgeLength0 = edgeLength;
+			this->offset1 = offset1;
+			pairData.normalID0 = norm0;
+			pairData.normalID1 = norm1;
+			pairData.planeID = planeID;
+			geoPairType = EDGE_EDGE_PLANE_PAIR;
+		}
+
 		// inlined into BallBlockContact::stepContact 00607150 (00607246..00607252 store radius0 +0x18, offset1 +0x8,
 		// normalID1 +0x1c and geoPairType +0x0 of the GeoPair at connector +0x8, in that order; the bodies are not
 		// written there, Contact::createConnector 00606e00 stores them). Donor v8kernel/Pair.h setBallBlock without the

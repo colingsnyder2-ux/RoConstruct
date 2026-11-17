@@ -68,6 +68,16 @@ namespace RBX
 		{
 			return currentStage->getStageType() == stageType;
 		}
+		// Donor v8world/IPipelined.h inlines (no code of their own): SleepStage 0064ae90 / 0064b5e0 / 0064b6d0 compare
+		// currentStage->getStageType() (slot 1) with the stage's own. Opt-in StageType numbering only (see getWorld below).
+		bool inOrDownstreamOfStage(IStage* stage) const
+		{
+			return (int)currentStage->getStageType() >= (int)stage->getStageType();
+		}
+		bool downstreamOfStage(IStage* stage) const
+		{
+			return (int)currentStage->getStageType() > (int)stage->getStageType();
+		}
 		Kernel* getKernel() const;                     // 00645850
 		virtual void putInKernel(Kernel* kernel);      // slot 1 (00645830)
 		virtual void removeFromKernel();               // slot 2 (00645860)

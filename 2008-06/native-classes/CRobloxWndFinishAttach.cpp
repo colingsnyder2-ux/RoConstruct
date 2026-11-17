@@ -20,6 +20,6 @@ void CRobloxWnd::finishAttach() {
     //   Blocked: DataModel.h does not declare buildGui (core header) and CRobloxView.h types 0x70/0xa4/0xb4 wrongly.
     // STUB (not authentic): none of the calls above are made yet. Reference members to keep layout meaningful; renderer wiring comes later.
     (void)this->dataModel;
-    (void)this->gWindow;
+    (void)this->dataModelPtr;
     (void)this->adorn;
 }

@@ -2,6 +2,13 @@
 // Layout and evidence: native-headers/v8datamodel/Accoutrement.h. Verified by tests/record_native_appearance.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/Accoutrement.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/JointInstance.h"
+#include "v8datamodel/PartInstance.h"
+#include "humanoid/Humanoid.h"
+#include "tool/DragUtilities.h"
+#include <boost/bind.hpp>
 
 namespace RBX
 {
@@ -170,6 +177,101 @@ namespace RBX
 		} while (desiredState != backendAccoutrementState);
 	}
 
+	// 005b1830 (donor Accoutrement::upTo_Equipped)
+	void Accoutrement::upTo_Equipped()
+	{
+		handleTouched.disconnect();
+
+		std::vector<boost::weak_ptr<PartInstance> > parts;
+		PartInstance::findParts(this, parts);
+		DragUtilities::unJoinFromOutsiders(parts);
+
+		Humanoid* humanoid = Humanoid::modelIsCharacter(getParent());
+		PartInstance* head = humanoid->getHead();
+		PartInstance* handle = getHandle();
+		if (handle)
+			handle->setCanCollide(false);   // 0059dd80, 2008 addition to the donor body
+
+		buildWeld(head, handle, humanoid->getTopOfHead(), attachmentPoint, "HeadWeld");
+	}
+
+	// 005b1fc0 (donor Accoutrement::downFrom_Equipped)
+	void Accoutrement::downFrom_Equipped()
+	{
+		ModelInstance* character = NULL;
+
+		if (weld)
+		{
+			PartInstance* part = weld->getPart0();
+			if (part)
+				character = dynamic_cast<ModelInstance*>(part->getParent());
+
+			weld->setParent(NULL);
+			weld.reset();
+		}
+
+		if (Humanoid::modelIsCharacter(character))
+		{
+			G3D::CoordinateFrame cf = character->getLocation();
+			G3D::Vector3 pos = cf.translation;
+			pos.y += 4.0f;
+			pos += cf.lookVector() * 8.0f;
+
+			PartInstance* handle = getHandle();
+			if (handle)
+			{
+				handle->setCanCollide(true);   // 0059dd80, 2008 addition to the donor body
+				handle->moveToPoint(pos);
+				handle->setRotationalVelocity(G3D::Vector3(1.0f, 1.0f, 1.0f));
+			}
+		}
+
+		onCameraNear(999.0f);
+		connectTouchEvent();
+	}
+
+	// 005b1d70 (donor Accoutrement::connectTouchEvent)
+	void Accoutrement::connectTouchEvent()
+	{
+		if (PartInstance* handle = getHandle())
+			handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Accoutrement::onEvent_HandleTouched, this, _1), 10);
+		else
+			handleTouched.disconnect();
+	}
+
+	// 005b1110 (openrbx 0x005baec0): updateDesiredState 005b10a0 unless the child is this; the by-value child
+	// shared_ptr is released on return.
+	void Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)
+	{
+		if (child.get() != this)
+			updateDesiredState();
+	}
+
+	// 005b1190 (openrbx 0x005baf40): the removed child being the weld (+0x134) drops the state to NOTHING first.
+	void Accoutrement::onEvent_RemovedBackend(boost::shared_ptr<Instance> child)
+	{
+		if (child.get() != this)
+		{
+			if (child.get() == weld.get())
+				setDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));
+			updateDesiredState();
+		}
+	}
+
+	// 005b15e0 (openrbx 0x005bb390)
+	void Accoutrement::dropAllOthers(ModelInstance* model, Accoutrement* accoutrement)
+	{
+		Workspace* workspace = Workspace::findWorkspace(model);
+		if (workspace)
+		{
+			while (Accoutrement* other = model->findFirstChildOfType<Accoutrement>())
+			{
+				if (other != accoutrement)
+					other->setParent(workspace);
+			}
+		}
+	}
+
 	void Accoutrement::setAttachmentPos(const G3D::Vector3& v)
 	{
 		setAttachmentPoint(G3D::CoordinateFrame(attachmentPoint.rotation, v));
@@ -180,6 +282,22 @@ namespace RBX
 		setName("Hat");
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sAccoutrement>();
+template void RBX::Name::callDoDeclare<RBX::sHat>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sAccoutrement>();
+template void RBX::Name::callDoDeclare<RBX::sHat>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sAccoutrement>();
+template void RBX::Name::callDoDeclare<RBX::sHat>();
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sAccoutrement>();
+template void RBX::Name::callDoDeclare<RBX::sHat>();
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<RBX::sAccoutrement>();

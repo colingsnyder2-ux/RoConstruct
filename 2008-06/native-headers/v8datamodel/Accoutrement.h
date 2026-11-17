@@ -78,6 +78,11 @@ namespace RBX
 		// State-machine steps called by setDesiredState 005b2510 (jump tables 005b25c8 up / 005b25d8 down; analog
 		// donor names; the target's slot order is NOTHING -> 005b1d70, IN_WORKSPACE -> 005b1e50, IN_CHARACTER ->
 		// 005b1830, EQUIPPED down -> 005b1fc0). Bodies are not recovered yet (placeholders func_005b1xxx).
+		void onEvent_HandleTouched(boost::shared_ptr<Instance> other);   // 005b1620 bind target (donor name; body not recovered)
+		PartInstance* getHandle()   // donor inline (getHandleConst const_cast)
+		{
+			return const_cast<PartInstance*>(getHandleConst());
+		}
 		void connectTouchEvent();                                        // 005b1d70 (handleTouched +0x188)
 		void upTo_Equipped();                                            // 005b1830
 		void upTo_InCharacter();                                         // 005b1e50
@@ -95,6 +100,8 @@ namespace RBX
 		AccoutrementState computeDesiredState(Instance* testParent);      // inlined into 005b10a0 (no out-of-line copy survives)
 		AccoutrementState computeDesiredState();                          // inlined into 005b10a0 (no out-of-line copy survives)
 		void updateDesiredState();                                        // 005b10a0
+		void onEvent_AddedBackend(boost::shared_ptr<Instance> child);     // 005b1110 (donor name; openrbx 0x005baec0)
+		void onEvent_RemovedBackend(boost::shared_ptr<Instance> child);   // 005b1190 (donor name; openrbx 0x005baf40)
 		void setDesiredState(AccoutrementState desiredState, const ServiceProvider* serviceProvider);   // 005b2510
 	public:
 		static bool writeUnlocked;                                        // 00976cad (read by write 005b1480)
@@ -104,6 +111,7 @@ namespace RBX
 		virtual ~Accoutrement();                                         // 005b0da0
 		virtual XmlElement* write();                                     // 005b1480
 		const PartInstance* getHandleConst() const;                      // 005b08a0 (ICF name Tool)
+		static void dropAllOthers(ModelInstance* model, Accoutrement* accoutrement);   // 005b15e0 (openrbx 0x005bb390)
 		void setBackendAccoutrementState(int value);                     // 005b24e0
 		int getBackendAccoutrementState() const                          // 005b0820 (folded getter)
 		{

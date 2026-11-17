@@ -80,6 +80,8 @@ namespace RBX
 			bool shadows;                                                             // +0x2f0
 			float cameraDistance;                                                     // +0x2f4
 			G3D::Array<unsigned int> shadowIndexArray;                                // +0x2f8
+
+			void turnOnLights(G3D::RenderDevice* rd, bool allLights) const;            // 00502100 (private in the donor RenderScene.h)
 		public:
 			bool debugShadowVolumes;                                                  // +0x304
 			G3D::ReferenceCountedPointer<G3D::Sky> sky;                               // +0x308

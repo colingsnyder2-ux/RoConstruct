@@ -71,12 +71,14 @@
 //              IdSerializer::waitItems.size() (Replicator +0x2b70), packetLoss (+0x15c) from statistics +0x5c / +0x78,
 //              instanceSize (+0x164) = formatMem(instanceBits / (instanceCount * 8)).
 #include "PluginInterface.h"
+#include "BitStream.h"
 #include "RakNetTypes.h"
 #include "Network/IdSerializer.h"
 #include "Network/PhysicsReplication.h"
 #include "stats/Stats.h"
 #include <G3D/System.h>
 #include <boost/scoped_ptr.hpp>
+#include <boost/signals/connection.hpp>
 #include <boost/shared_ptr.hpp>
 #include <list>
 #include <map>
@@ -107,6 +109,7 @@ namespace RBX
 	namespace Network
 	{
 		class Players;
+		class Player;
 		class Marker;
 
 		// INFERRED: 0x44-byte descriptor-name dictionaries at Replicator +0x2bb0 (classes, constructor 004b1570) and
@@ -140,7 +143,67 @@ namespace RBX
 		public:
 			class ReplicatorStatsItem;
 		protected:
-			class Item;                                                             // donor Replicator::Item (pendingItems element)
+			// Donor Replicator::Item (pendingItems element). Layout +0 vtable (novtable base: slot 0 destructor, slot 1
+			// write), +4 replicator reference (read by MarkerItem::write 004ae9a0, ItemSender dtor 004aba60).
+			class __declspec(novtable) Item
+			{
+			public:
+				enum ItemType
+				{
+					ItemTypeEnd,
+					ItemTypeDelete,
+					ItemTypeNew,
+					ItemTypeChangeProperty,
+					ItemTypeMarker
+				};
+
+			protected:
+				Replicator& replicator;                                             // +0x04
+
+			protected:
+				Item(Replicator& replicator)
+					: replicator(replicator)
+				{
+				}
+			public:
+				virtual ~Item()
+				{
+				}
+				virtual void write(RakNet::BitStream& bitStream) = 0;
+
+			public:
+				static void writeItemType(RakNet::BitStream& stream, ItemType value); // 004ab5d0
+
+			private:
+				Item(const Item&);
+				Item& operator=(const Item&);
+			};
+
+			// Donor Replicator::ItemSender: replicator +0, peer +4, bitStream +8 (the destructor 004aba60 resets and
+			// destroys the BitStream at this+8). Remaining members are not read by the destructor.
+			class ItemSender
+			{
+			private:
+				Replicator& replicator;                                             // +0x00
+				RakPeerInterface* peer;                                             // +0x04
+				RakNet::BitStream bitStream;                                        // +0x08
+			public:
+				~ItemSender();                                                      // 004aba60
+			};
+
+			class MarkerItem : public Item
+			{
+			private:
+				int id;                                                             // +0x08
+
+			public:
+				MarkerItem(Replicator& replicator, int id)
+					: Item(replicator),
+					  id(id)
+				{
+				}
+				virtual void write(RakNet::BitStream& bitStream);                   // 004ae9a0
+			};
 
 		private:
 			G3D::RealTime lastSendTime;                                             // +0x2b78
@@ -152,10 +215,23 @@ namespace RBX
 			std::map<const Reflection::PropertyDescriptor*, boost::shared_ptr<SharedStringDictionary> > strings; // +0x2b90
 			DescriptorDictionary<Reflection::ClassDescriptor> classNames;            // +0x2bb0 (constructor 004b1570)
 			DescriptorDictionary<Reflection::PropertyDescriptor> propNames;          // +0x2bf4 (constructor 004b1620)
-			// INFERRED: per-container record (shared_ptr +0x0, boost::signals::connection +0x8 and +0x18, value
-			// destructor 004ab8c0); its exact type is not derived, so it stays incomplete here.
-			struct ContainerConnections;
-			std::map<const Instance*, ContainerConnections> containerConnections;   // +0x2c38 (constructor 004b0b90, destructor 004b14c0)
+		public:
+			// Per-instance record of the +0x2c38 map (std::pair<const Instance* const, ReplicationData>, 0x30 bytes with the
+			// key). A struct in the binary (mangled U: closeReplicationItem 004ab850 takes a pair of it). Layout from the
+			// value destructor 004ab8c0 (releases the two connections, then the shared_ptr) and closeReplicationItem:
+			// shared_ptr +0x00, boost::signals::connection +0x08 and +0x18, bool +0x28. Member names INFERRED: the
+			// destructor/close rows only disconnect both connections and, for the flag, call Instance::setParent(NULL)
+			// (055a8f0 with a null argument) on the instance.
+			struct ReplicationData
+			{
+				boost::shared_ptr<Instance> instance;                               // +0x00 INFERRED name
+				boost::signals::connection connection0;                             // +0x08 INFERRED name (disconnected first)
+				boost::signals::connection connection1;                             // +0x18 INFERRED name
+				bool removeOnClose;                                                 // +0x28 INFERRED name (closeReplicationItem tests it)
+			};
+
+		private:
+			std::map<const Instance*, ReplicationData> containerConnections;        // +0x2c38 (constructor 004b0b90, destructor 004b14c0)
 
 		protected:
 			std::vector<Instance*> replicationContainers;                           // +0x2c58 (Server::ClientProxy::sendTop 004a2ac0)
@@ -198,6 +274,23 @@ namespace RBX
 		public:
 			Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer);      // 004b9bd0 (open)
 			virtual ~Replicator();                                                  // 004b96b0 (open)
+
+		protected:
+			// Virtual slots 16..21 (see the vtable notes above). Slot 16 has no donor counterpart: INFERRED name from its
+			// signature (bool (const Instance*), ICF-shared `mov al,1; ret 4`; ClientProxy overrides it with 004a3290).
+			virtual bool replicates(const Instance* instance) const;                // slot 16 00565ff0 INFERRED name
+			virtual Player* findTargetPlayer();                                     // slot 17 004ab9a0
+			virtual bool wantReplicate(const Instance* source) const;               // slot 18 004aaf90
+			virtual void onSentMarker(long id);                                     // slot 19 0070bdf0 (empty)
+		private:
+			// Access follows the name table (?remoteDeleteOnDisconnect...EBE_N = private virtual; donor: canSendItems private).
+			virtual bool remoteDeleteOnDisconnect(const Instance* instance) const;  // slot 20 004ab960
+			virtual bool canSendItems();                                            // slot 21 004aafc0
+
+		protected:
+
+			// 004ab850: for_each callback over containerConnections (disconnects both connections of one record).
+			static void closeReplicationItem(const std::pair<const Instance* const, ReplicationData>& item);
 
 		protected:
 			// 004b4bb0 (donor Replicator::getDefault; thiscall, ret 4: looks the class name up in defaultObjects +0x2cfc).

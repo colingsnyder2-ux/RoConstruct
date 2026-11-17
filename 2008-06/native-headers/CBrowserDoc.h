@@ -9,6 +9,9 @@ class CNullDoc : public CDocument {
     DECLARE_DYNCREATE(CNullDoc)
 public:
     CNullDoc();
+protected:
+    // INFERRED: name from draft (coldek-fork); 004332f0, protected non-virtual (?...@IAE...) per mangled symbol.
+    afx_msg void OnUpdateDisabledCommand(CCmdUI* command);
 };
 
 // Declarations only. RTTI of vtable 0080d2c4: CBrowserDoc : CNullDoc : CDocument. CRuntimeClass 0080cfac
