@@ -514,6 +514,12 @@ if args.regate:
             return addr, 'no-reply', '', '', ''
         return (addr,) + judge(OUT / addr, addr, reply, code[-1])
     redo = [a for a, r in results.items() if r['status'] in ('compile_failed', 'rejected-invented', 'no-class-header')]
+    # Also remaining addresses with a saved answer but no result row (a stopped run had re-queued them).
+    _cl = HERE_PH / 'remaining-classified.json'
+    _left = set(json.loads(_cl.read_text())) if _cl.is_file() else set()
+    redo += [a for a in sorted(_left) if a not in results and (OUT / a).is_dir() and any((OUT / a).glob('try*.cpp'))]
+    for a in redo:
+        results.setdefault(a, {'status': 'compile_failed', 'model': 'regate', 'class': '', 'decl': '', 'detail': ''})
     print('regate', len(redo), flush=True)
     with ThreadPoolExecutor(args.jobs) as pool:
         for addr, status, detail, cls, decl in pool.map(regate, redo):
