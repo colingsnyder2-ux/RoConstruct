@@ -12,7 +12,8 @@ inc = r['build_inputs'] if isinstance(r['build_inputs'], dict) else eval(r['buil
 cl = [k for k in inc['compiler'] if k.endswith('cl.exe')][0]
 out = os.path.join(os.environ.get('TEMP', '/tmp'), 'qc'); os.makedirs(out, exist_ok=True)
 extra = ['/I' + v for v in inc['includes'].values()]
-cmd = [cl] + flags + extra + ['/Fo' + out + os.sep + 'q.obj', src]
+pre = ['/I' + x for x in os.environ.get('QC_I', '').split(';') if x]
+cmd = [cl] + pre + flags + extra + ['/Fo' + out + os.sep + 'q.obj', src]
 env = dict(os.environ); env['PATH'] = os.path.dirname(cl) + os.pathsep + os.path.join(os.path.dirname(cl), '..', '..', 'Common7', 'IDE') + os.pathsep + env['PATH']
 p = subprocess.run(cmd, capture_output=True, text=True, env=env)
 for l in (p.stdout + p.stderr).splitlines():
