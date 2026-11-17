@@ -504,6 +504,42 @@
    "address": "005b1fc0",
    "identity_evidence": "INFERRED:donor Accoutrement::downFrom_Equipped (weld teardown, drop at character, connectTouchEvent); Accoutrement vtable 00834bf4 / setDesiredState 005b2510 jump tables; native body byte-exact (Accoutrement.cpp)",
    "votes": 1
+  },
+  {
+   "symbol": "?closeReplicationItem@Replicator@Network@RBX@@KAXABU?$pair@QBVInstance@RBX@@UReplicationData@Replicator@Network@2@@std@@@Z",
+   "address": "004ab850",
+   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
+   "votes": 1
+  },
+  {
+   "symbol": "?writeItemType@Item@Replicator@Network@RBX@@SAXAAVBitStream@RakNet@@W4ItemType@1234@@Z",
+   "address": "004ab5d0",
+   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator); called by MarkerItem::write 004ae9a0 (ItemTypeMarker=4) and ItemSender dtor 004aba60 (ItemTypeEnd=0)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1ItemSender@Replicator@Network@RBX@@QAE@XZ",
+   "address": "004aba60",
+   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
+   "votes": 1
+  },
+  {
+   "symbol": "?write@MarkerItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+   "address": "004ae9a0",
+   "identity_evidence": "INFERRED:Replicator vtable 008254fc / RTTI .?AVReplicator@Network@RBX@@ and byte-exact native body in NetworkReplicator2008Items.cpp (cls3:Replicator)",
+   "votes": 1
+  },
+  {
+   "symbol": "?removeScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z",
+   "address": "005ad030",
+   "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
+   "votes": 1
+  },
+  {
+   "symbol": "?disassociateState@ScriptContext@RBX@@AAEXPAVScript@2@@Z",
+   "address": "005ad000",
+   "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
+   "votes": 1
   }
  ]
 }
