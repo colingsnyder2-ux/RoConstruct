@@ -3,6 +3,9 @@
 #define NATIVE_CLUMP_DECL
 #include "v8world/AssemblyLayout.h"
 
+#include "../native-headers/v8world/Primitive2008.h"
+#include "../native-headers/v8kernel/Body2008.h"
+
 void RBX::Clump::sub_005e6ba0(G3D::Array<const void*>& edges)
 {
 	RBX::EdgeIterator it = RBX::EdgeIterator::begin(rootPrimitive);
@@ -14,3 +17,18 @@ void RBX::Clump::sub_005e6ba0(G3D::Array<const void*>& edges)
 		++it;
 	}
 }
+
+namespace RBX {
+void Clump::removePrimitiveImp(RBX::Primitive* p)
+{
+	RBX::Primitive* child = RBX::PrimIterator::findFirstChild(p, RBX::PrimIterator::IN_CLUMP);
+	while (child) {
+		removePrimitiveImp(child);
+		onPrimitivesChanged();
+		child = RBX::PrimIterator::findFirstChild(p, RBX::PrimIterator::IN_CLUMP);
+	}
+	p->getBody()->setParent(NULL);
+	p->setClump(NULL);
+}
+}
+

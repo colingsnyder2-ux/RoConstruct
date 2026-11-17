@@ -125,13 +125,16 @@ def compiler_flags(source, override=None):
     headers = str(BASE / 'native-headers')
     pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig'), re.M)
     profile = override or os.environ.get('NATIVE_FLAGS') or (pinned[1] if pinned else '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS')
-    flags = ['/nologo', '/c'] + profile.replace('{headers}', headers).split()
+    # {libs}: tools/libs, for native-vendor wrappers that #include an authentic library unit with its recipe's /I list.
+    flags = ['/nologo', '/c'] + profile.replace('{headers}', headers).replace('{libs}', str(libs.LIBS.resolve())).split()
     # Runner owns output paths; reject overrides that could collide with other work.
     if any(flag.lower().startswith(('/fo', '/fd', '/yc', '/yu'))
            or flag.lower().startswith('/fp') and not flag.lower().startswith('/fp:')
            or flag.lower().startswith('/fa') and not flag.lower().startswith('/favor:')
            or flag.startswith('@') for flag in flags):
         raise ValueError('profile output/PCH/response flags unsupported in isolated runner')
+    if re.search(r'^// native-profile: vendor\s*$', source.read_text(encoding='utf-8-sig'), re.M):
+        return flags  # vendor wrappers: only the pinned native-flags, no rbxgs defines/includes/native-headers
     flags = ['/DBOOST_ALL_NO_LIB'] + ['/D' + v for v in recipe['defines'].split()] + flags
     flags += ['/I' + headers, '/I' + str(ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include')]
     flags += ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']
