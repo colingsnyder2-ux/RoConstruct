@@ -120,6 +120,114 @@
    "address": "004690d0",
    "identity_evidence": "INFERRED:DxUserInput vtable 0081c404 / RTTI .?AVDxUserInput@@ (locators 00885d9c, 00885ed8, 00885ec4) and byte-exact native body",
    "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+   "address": "005ecd60",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+   "address": "005ecd90",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$00M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+   "address": "005ecdc0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+   "address": "005ecdf0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$03M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+   "address": "005ece20",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+   "address": "005ece50",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+   "address": "005ece90",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+   "address": "005eced0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$02M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+   "address": "005ecf00",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+   "address": "005ecf30",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+   "address": "005ecf60",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$0A@M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+   "address": "005ecfa0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+   "address": "005ecfd0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$04M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+   "address": "005ed000",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+   "address": "005ed030",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?getValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@UBE?AW4SurfaceType@3@PBVDescribedBase@Reflection@3@@Z",
+   "address": "005ed070",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BE?AW4SurfaceType@2@XZP812@AEXW432@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@UBEXPAVDescribedBase@Reflection@3@ABW4SurfaceType@3@@Z",
+   "address": "005ed0b0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetSetImpl@P8Surface@RBX@@BEMXZP812@AEXM@Z@?$SurfacePropDescriptor@$01M@RBX@@UBEXPAVDescribedBase@Reflection@3@ABM@Z",
+   "address": "005ed0e0",
+   "identity_evidence": "INFERRED:SurfaceEnumPropDescriptor/SurfacePropDescriptor GetSetImpl (decorated name in registry, vtables 0083fe94..00840340) and byte-exact native body in AppUnit5ECSurfaces.cpp",
+   "votes": 1
   }
  ]
 }
