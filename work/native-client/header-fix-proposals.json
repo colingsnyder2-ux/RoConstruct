@@ -60,5 +60,20 @@
   "header": "v8world World (no 2008 native header)",
   "class": "RBX::World",
   "note": "Workspace::reset 005a0df0 (52 B) is isolated-compile near-miss: body `isSimulating=false; getCamera()->autoMode(); world->reset();` but the donor/include-path World::reset stores worldStepId at +0x64 (and the donor build emits a debug-assert load), the target stores 0 at World+0xa8. Needs a 2008 World layout header (+0xa8 member, inline reset())."
+ },
+ {
+  "header": "util/Object.h (core, owner)",
+  "class": "RBX::Creatable<T>",
+  "note": "Add 3-parameter static create<Class,P1,P2,P3>(p1,p2,p3) (same shape as the 2-param overload; variant already in rebuild/2008-06/native-headers/creatable-n-params/util/Object.h:76). Blocks GuiHudBuilder2008.cpp NATIVE_GUIHUD_PENDING bodies: buildControlHud 00603c60 (create<ArrowPanel> 00602650), buildChatMenu(Adorn*) 00603730 (create<PercentPanel> 006021e0), buildRightPalette 00604070 and buildRightPaletteItems 00602cb0 (create<ImageButton> 00601f00). Agent-side compile fails C2780 without it."
+ },
+ {
+  "header": "reflection/enumconverter.h (core)",
+  "class": "RBX::Reflection::EnumDesc<Enum>",
+  "note": "2008 EnumDesc::singleton is call_once based: boost::call_once(&doSingleton, flag) then return the local static (doSingleton 005bb2c0 holds the guarded static 0x9771e0, callDoSingleton thunk 005bb320, once flag 0x977524, call_once 00557330). Blocks SoundService::loadStockSounds(SoundType,string) 005bd6d0 (body otherwise identical: only the call_once call before singleton differs)."
+ },
+ {
+  "header": "util/Sound.h (core)",
+  "class": "RBX::Soundscape::SoundService",
+  "note": "soundDisabled must be `static bool` (global 00976fc9, tested by openFmod 005ba060 `cmp byte ptr [0x976fc9], 0`), not a member at +0x1c1. SoundChannel/SoundChannel.h already has it static."
  }
 ]

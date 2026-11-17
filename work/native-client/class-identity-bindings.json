@@ -540,6 +540,162 @@
    "address": "005ad000",
    "identity_evidence": "INFERRED:ScriptContext vtable 0083465c / RTTI DescribedCreatable<ScriptContext> and byte-exact native body in ScriptContext2008State.cpp (cls3:ScriptContext)",
    "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAE?AVColor3@G3D@@XZ",
+   "address": "00437920",
+   "identity_evidence": "INFERRED:XItem<Color3,CXTPPropertyGridItemColor,TypedPropertyDescriptor<Color3>> slots 57/58 SetColor/GetColor (same as CPropertyGridItemBrickColor header evidence); byte-exact native body in XItemBoolColor3.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?displayValue@?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@UAEXABVColor3@G3D@@@Z",
+   "address": "00437970",
+   "identity_evidence": "INFERRED:XItem<Color3,CXTPPropertyGridItemColor,TypedPropertyDescriptor<Color3>> slots 57/58 SetColor/GetColor (same as CPropertyGridItemBrickColor header evidence); byte-exact native body in XItemBoolColor3.cpp",
+   "votes": 1
+  },
+  {
+   "symbol": "?writeValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXPAVInstance@RBX@@AB_N@Z",
+   "address": "0043a280",
+   "identity_evidence": "INFERRED: byte-exact native body; same lock+setValue shape as EnumItemBase::writeValue",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?writeValue@?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@UAEXPAVInstance@RBX@@AB_N@Z",
+   "address": "007c0500",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 0043a280",
+   "votes": 1
+  },
+  {
+   "symbol": "?releaseSound@Soundscape@RBX@@YAXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@Z",
+   "address": "005ba2b0",
+   "identity_evidence": "INFERRED:SoundService::closeFmod 005ba970 pushes callback 005ba2b0 into for_each 005b7940 over loadedSounds/loaded3DSounds; releaseSound body = Sound::release inline",
+   "votes": 1
+  },
+  {
+   "symbol": "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@P6AXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@3@@Z@std@@YAP6AXABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@0@@ZViterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@0@1P6AX0@Z@Z",
+   "address": "005b7940",
+   "identity_evidence": "INFERRED:SoundService::closeFmod 005ba970 pushes callback 005ba2b0 into for_each 005b7940 over loadedSounds/loaded3DSounds; releaseSound body = Sound::release inline",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4AASamples@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+   "address": "00446570",
+   "identity_evidence": "INFERRED:vtable 815ec8 is stored by the EnumDesc<CRenderSettings::AASamples> ctor (name string 'AASamples' pushed to EnumDescriptor ctor)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+   "address": "00446700",
+   "identity_evidence": "INFERRED:vtable 815ed4 is stored by the EnumDesc<CRenderSettings::GraphicsMode> ctor (name string 'GraphicsMode' pushed to EnumDescriptor ctor)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+   "address": "00446890",
+   "identity_evidence": "INFERRED:vtable 815ee0 is stored by the EnumDesc<CRenderSettings::FrameRateManagerMode> ctor (name string 'FrameRateManagerMode' pushed to EnumDescriptor ctor)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+   "address": "00446a20",
+   "identity_evidence": "INFERRED:vtable 815eec is stored by the EnumDesc<CRenderSettings::AntialiasingMode> ctor (name string 'AntialiasingMode' pushed to EnumDescriptor ctor)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+   "address": "00446bb0",
+   "identity_evidence": "INFERRED:vtable 815ef8 is stored by the EnumDesc<CRenderSettings::BevelMode> ctor (name string 'BevelMode' pushed to EnumDescriptor ctor)",
+   "votes": 1
+  },
+  {
+   "symbol": "??1?$EnumDesc@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@EAE@XZ",
+   "address": "00446d90",
+   "identity_evidence": "INFERRED:vtable 815f04 is stored by the EnumDesc<CRenderSettings::ShadowMode> ctor (name string 'ShadowMode' pushed to EnumDescriptor ctor)",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4AASamples@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00446fa0",
+   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00446fc0",
+   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00446fe0",
+   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00447000",
+   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00447020",
+   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumDesc@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@EAEPAXI@Z",
+   "address": "00447040",
+   "identity_evidence": "INFERRED:vtable thunk slot0 of EnumDesc<CRenderSettings::X> calls dtor; thunk unit label and ctor name string name the enum",
+   "votes": 1
+  },
+  {
+   "symbol": "?soundDisabled@SoundService@Soundscape@RBX@@2_NA",
+   "address": "00976fc9",
+   "identity_evidence": "INFERRED:openFmod 005ba060 `cmp byte ptr [0x976fc9],0` is the static SoundService::soundDisabled; byte-identical body",
+   "votes": 1
+  },
+  {
+   "symbol": "_FMOD_System_Create@4",
+   "address": "0069fbd6",
+   "identity_evidence": "import thunk: native-asm 005ba0c0 call 0x69fbd6 ; fmodex.dll!FMOD_System_Create",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?openFmod@SoundService@Soundscape@RBX@@AAEXXZ",
+   "address": "007d3b21",
+   "identity_evidence": "INFERRED:openFmod 005ba060 pushes 0x7d3b21 as its SEH handler (push at 005ba065); byte-identical body",
+   "votes": 1
+  },
+  {
+   "symbol": "?update3DSettings@SoundService@Soundscape@RBX@@AAEXXZ",
+   "address": "005b97b0",
+   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+   "votes": 1
+  },
+  {
+   "symbol": "?on3DSettingChanged@SoundService@Soundscape@RBX@@AAEXABVPropertyDescriptor@Reflection@3@@Z",
+   "address": "005ba020",
+   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+   "votes": 1
+  },
+  {
+   "symbol": "?gcSounds@SoundService@Soundscape@RBX@@CAXAAV?$map@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@@std@@@Z",
+   "address": "005ba2e0",
+   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+   "votes": 1
+  },
+  {
+   "symbol": "?closeFmod@SoundService@Soundscape@RBX@@AAEXXZ",
+   "address": "005ba970",
+   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+   "votes": 1
+  },
+  {
+   "symbol": "?loadSound@SoundService@Soundscape@RBX@@QAE?AV?$shared_ptr@VSound@Soundscape@RBX@@@boost@@VSoundId@23@_N@Z",
+   "address": "005bb5f0",
+   "identity_evidence": "byte-exact inactive native body (prove.py SoundServiceFmod.cpp), registry identity",
+   "votes": 1
   }
  ]
 }

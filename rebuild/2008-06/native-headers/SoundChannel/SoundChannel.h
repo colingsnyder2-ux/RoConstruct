@@ -277,7 +277,7 @@ namespace RBX
 			std::map<SoundId, boost::shared_ptr<Sound>> loaded3DSounds;
 			bool mySoundDisabled;
 		public:
-			bool soundDisabled;
+			static bool soundDisabled; // 00976fc9: openFmod 005ba060 tests `cmp byte ptr [0x976fc9], 0` (a global, not a member at +0x1c1)
 			static Reflection::BoundProp<float, 1> prop_dopplerscale;
 			static Reflection::BoundProp<float, 1> prop_distancefactor;
 			static Reflection::BoundProp<float, 1> prop_rolloffscale;
