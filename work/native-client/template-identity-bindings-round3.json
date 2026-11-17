@@ -210,6 +210,24 @@
    "address": "00416eb0",
    "identity_evidence": "original call target of byte-identical owner body",
    "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?raise@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@IBEXUChildAdded@2@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z",
+   "address": "007ce1a9",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00557a00",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?raise@?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@IBEXUServiceRemoving@2@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@2@@Z",
+   "address": "007d0339",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 005727d0",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$?raise@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@IBEXUChildRemoved@2@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z",
+   "address": "007ce1d9",
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00557b20",
+   "votes": 1
   }
  ]
 }
