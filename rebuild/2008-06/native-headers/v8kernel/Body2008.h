@@ -306,6 +306,15 @@ namespace RBX
 			if (simBody)
 				simBody->accumulateImpulse(impulse, worldPos);
 		}
+		// Inline in SleepStage::changeAssemblyState 0064ae90 (0064af0a..0064af20) / onAssemblyAdded 0064aff0 / wakeEvent
+		// 0064b5e0 / recursiveWakeEvent 0064b6d0: root +0x10 -> simBody +0x2c, null test, then SimBody::resetAccumulators
+		// 00613e80 (the accumulateForce wrapper shape above). INFERRED: analog name (donor Body::resetAccumulators).
+		void resetAccumulators()
+		{
+			SimBody* simBody = root->simBody;
+			if (simBody)
+				simBody->resetAccumulators();
+		}
 		void accumulateTorque(const G3D::Vector3& torque) // out-of-line COMDAT 006060b0 (Connector unit): root +0x10
 		{                                                 // and simBody +0x2c loaded once (006060b4 `mov esi, [eax+0x2c]`)
 			SimBody* simBody = root->simBody;

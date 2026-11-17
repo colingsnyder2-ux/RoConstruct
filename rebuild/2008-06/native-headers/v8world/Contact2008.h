@@ -41,6 +41,14 @@ namespace RBX
 	{
 		friend struct ::NativeWorldShapesLayout;
 
+	public:
+		// Donor Contact.h inline (steppingIndexFunc is the IndexArray accessor of +0x24): SleepStage's steppingContacts /
+		// touchingContacts (IndexArray<Contact, &Contact::steppingIndexFunc>) read and write it in 0064b1b0 / 0064bf90.
+		int& steppingIndexFunc()
+		{
+			return steppingIndex;
+		}
+
 	private:
 		int lastContactStep;   // +0x20
 		int steppingIndex;     // +0x24
