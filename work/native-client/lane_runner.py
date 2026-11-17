@@ -119,6 +119,24 @@ elif args.lane == 'promote':
 elif args.lane == 'census':
     if census_running():
         sys.exit('a census is already running')
+    # Register what the lanes and subagents produced: evidence files and new native sources.
+    inv_path = HERE / 'ogre-native-full-inventory-all.json'
+    inv = json.loads(inv_path.read_text())
+    fam = inv['families'][0]
+    for ev in ['class-identity-bindings.json', 'template-identity-bindings.json', 'template-identity-bindings-round3.json',
+               'template-identity-bindings-netser.json', 'template-identity-bindings-signal.json', 'vendor-identity-bindings.json',
+               'inferred-identity-bindings.json', 'identity-session-bindings.json', 'creator-reference-bindings.json']:
+        rel = 'work/native-client/' + ev
+        if (HERE / ev).is_file() and rel not in fam['evidence']:
+            fam['evidence'].append(rel)
+    new_src = HERE / 'class-lane-new-sources.json'
+    extra = json.loads(new_src.read_text()) if new_src.is_file() else []
+    extra += json.loads((HERE / 'creator-partition/vendor-i-wrappers.json').read_text()).get('written', [])         if (HERE / 'creator-partition/vendor-i-wrappers.json').is_file() else []
+    for src in extra:
+        if (ROOT / src).is_file() and src not in fam['sources']:
+            fam['sources'].append(src)
+    inv_path.write_text(json.dumps(inv, indent=1))
+    print('registered evidence and %d candidate sources' % len(extra), flush=True)
     run([PY, 'work/native-client/prove.py', '--all', '--rounds', '2', '--quiet'])
     run([PY, '-c', 'from roc import integration_site, server; import shutil; '
                    'r = integration_site.build(); print({k: v["functions"] for k, v in r["groups"].items()}); '
