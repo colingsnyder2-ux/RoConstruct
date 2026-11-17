@@ -13,7 +13,7 @@ namespace RBX
 	class ICameraSubject;
 	class ICameraOwner;
 
-	extern const char sCamera[];
+	extern char sCamera[];   // INFERRED: ??__E?creator@?$FactoryProduct@...$1?sCamera@...@3PADA (2008 binary) = char array
 	class Camera : public DescribedCreatable<Camera, Instance, sCamera>
 	{
 	private:

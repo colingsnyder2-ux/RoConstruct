@@ -13,3 +13,11 @@ bool RBX::UserInputBase::sub_004674a0()
            keyDown(SDLK_LEFT) ||
            keyDown(SDLK_RIGHT);
 }
+
+namespace RBX {
+bool UserInputBase::ctrlKeyDown() const
+{
+    return keyDown(SDLK_RCTRL) || keyDown(SDLK_LCTRL);
+}
+}
+

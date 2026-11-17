@@ -24,3 +24,14 @@ void UnifiedWidget::render2dMe(Adorn* adorn)
 	label2d(adorn, getName(), G3D::Color4(G3D::Color3::black(), 1.0f), G3D::Color4::zero(), Adorn::XALIGN_CENTER);
 }
 }
+
+namespace RBX {
+void UnifiedWidget::setMenuState(MenuState value)
+{
+	if (menuState != value) {
+		menuState = value;
+		onMenuStateChanged();
+	}
+}
+}
+
