@@ -930,6 +930,144 @@
    "address": "006697a0",
    "identity_evidence": "INFERRED:TreeStage vtable 0084cf94 / RTTI; byte-identical by native-asm --obj diff (AppUnit668TreeStage2.cpp): identical except the self-recursive call relocation",
    "votes": 1
+  },
+  {
+   "symbol": "?flushCache@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAXXZ",
+   "address": "004daf50",
+   "votes": 1,
+   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8dc0 stores vtable 00826bf4 = ??_7 Table<Vector3,Variations<MeshFactory<PBBMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9750; byte-exact native body in ViewNewPartMesh2008.cpp"
+  },
+  {
+   "symbol": "?flushCache@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+   "address": "004db040",
+   "votes": 1,
+   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8e30 stores vtable 00826bfc = ??_7 Table<Vector3,Variations<MeshFactory<SphereMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d97b0; byte-exact native body in ViewNewPartMesh2008.cpp"
+  },
+  {
+   "symbol": "?flushCache@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+   "address": "004db130",
+   "votes": 1,
+   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8ea0 stores vtable 00826c04 = ??_7 Table<Vector3,Variations<MeshFactory<CylinderAlongXMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9810; byte-exact native body in ViewNewPartMesh2008.cpp"
+  },
+  {
+   "symbol": "?flushCache@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+   "address": "004db220",
+   "votes": 1,
+   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8f10 stores vtable 00826c0c = ??_7 Table<Vector3,Variations<MeshFactory<TorsoMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9870; byte-exact native body in ViewNewPartMesh2008.cpp"
+  },
+  {
+   "symbol": "?flushCache@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+   "address": "004db310",
+   "votes": 1,
+   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8f80 stores vtable 00826c14 = ??_7 Table<Vector3,Variations<MeshFactory<HeadMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d98d0; byte-exact native body in ViewNewPartMesh2008.cpp"
+  },
+  {
+   "symbol": "?flushCache@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAXXZ",
+   "address": "004db400",
+   "votes": 1,
+   "identity_evidence": "INFERRED:flushCache clears the variations Table (clear helper 004d8ff0 stores vtable 00826c1c = ??_7 Table<Vector3,Variations<MeshFactory<WedgeMesh>>> in the RTTI-ordered vtable run 00826bf4..00826c1c) and initCache 004d9930; byte-exact native body in ViewNewPartMesh2008.cpp"
+  },
+  {
+   "symbol": "?loadCharacterAppearance@Player@Network@RBX@@QAEX_N@Z",
+   "address": "00495380",
+   "identity_evidence": "INFERRED:Network::Player member (declared Player.h, vtable 0082220c RTTI .?AVPlayer@Network@RBX@@); body candidate-matched byte-exact by rbxgs donor analog src/2008-06/00495380.cpp wrapped in native-classes/PlayerLoadDonor.cpp; called from loadCharacter 004957a0 and string 'LoadCharacterAppearance can only be called by the backend server'",
+   "votes": 1
+  },
+  {
+   "symbol": "?loadCharacter@Player@Network@RBX@@QAEX_N@Z",
+   "address": "004957a0",
+   "identity_evidence": "INFERRED:Network::Player member (declared Player.h, vtable 0082220c RTTI .?AVPlayer@Network@RBX@@); body candidate-matched byte-exact by rbxgs donor analog src/2008-06/004957a0.cpp wrapped in native-classes/PlayerLoadDonorB.cpp; string 'LoadCharacter can only be called when Player is in the world'",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_dwAllocatedObjects@CXTPReportRow_BatchData@@2JA",
+   "address": "0097e13c",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_bDestroyEmptyBlocksOnFree@CXTPReportRow_BatchData@@2HA",
+   "address": "0097e140",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_bDestroyLastEmptyBlockOnFree@CXTPReportRow_BatchData@@2HA",
+   "address": "0097e144",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_pFreeBlocks@CXTPReportRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+   "address": "0097e148",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_pBusyBlocks@CXTPReportRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+   "address": "0097e14c",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_nBlockSize@CXTPReportRow_BatchData@@2HA",
+   "address": "009666c4",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_dwAllocatedObjects@CXTPReportGroupRow_BatchData@@2JA",
+   "address": "0097e154",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_bDestroyEmptyBlocksOnFree@CXTPReportGroupRow_BatchData@@2HA",
+   "address": "0097e158",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_bDestroyLastEmptyBlockOnFree@CXTPReportGroupRow_BatchData@@2HA",
+   "address": "0097e15c",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_pFreeBlocks@CXTPReportGroupRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+   "address": "0097e160",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_pBusyBlocks@CXTPReportGroupRow_BatchData@@1PAUXTP_BATCHALLOC_BLOCK_HEADER@@A",
+   "address": "0097e164",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?m_nBlockSize@CXTPReportGroupRow_BatchData@@2HA",
+   "address": "009666c8",
+   "identity_evidence": "INFERRED:XTP 11.2.2 CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData> static (Common/XTPCustomHeap.h); native instantiation bytes match at 006cf2c0/006cf4a0/006d02f0/006d0460 using this address",
+   "votes": 1
+  },
+  {
+   "symbol": "?CreateHeapIfNeed@?$CXTPHeapAllocatorT@UCXTPReportRowAllocatorData@@@@SAXXZ",
+   "address": "006cb580",
+   "identity_evidence": "INFERRED:XTP CXTPHeapAllocatorT<CXTPReportRowAllocatorData>::CreateHeapIfNeed called before HeapAlloc in AllocData",
+   "votes": 1
+  },
+  {
+   "symbol": "?FreeExtraData@?$CXTPBatchAllocManagerT@VCXTPReportRowAllocator@@UCXTPReportGroupRow_BatchData@@@@SAXXZ",
+   "address": "006cf4a0",
+   "identity_evidence": "INFERRED:byte-exact native instantiation of XTP CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>; uses group-row statics 0097e160/009666c8",
+   "votes": 1
+  },
+  {
+   "symbol": "?AllocData@?$CXTPBatchAllocManagerT@VCXTPReportRowAllocator@@UCXTPReportGroupRow_BatchData@@@@SAPAXI@Z",
+   "address": "006d0460",
+   "identity_evidence": "INFERRED:byte-exact native instantiation of XTP CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>; uses group-row statics 0097e160/009666c8",
+   "votes": 1
   }
  ]
 }
