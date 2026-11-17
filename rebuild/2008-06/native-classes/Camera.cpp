@@ -1,4 +1,5 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /U_RELEASEASSERT
+// /U_RELEASEASSERT: the recipe's _RELEASEASSERT keeps RBXASSERT live, but the 2008 exe has no assert code in these bodies.
 // Donor-derived Camera TU (rbxgs v8datamodel/Camera.cpp) built against the native Camera.h with the 2008 VS2008 compiler;
 // every function below that is byte-exact is verified by check_native_class.py range=005c0000-005d4000. The class-name
 // global is const char[] to match the native header.
@@ -202,7 +203,7 @@ namespace RBX
 			static float rad = G3D::toRadians(81);
 			float newElevation = G3D::clamp(elevation + angle, -rad, rad);
 
-			if (elevation != newElevation)
+			if (newElevation != elevation)
 			{
 				setHeadingElevationDistance(heading, newElevation, distance);
 				tellCameraMoved();

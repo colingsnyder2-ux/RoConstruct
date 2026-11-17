@@ -17,8 +17,11 @@ class ServiceProvider;
 class Name;
 class Verb;
 class DataModel;
+class DxUserInput;
 namespace Network { class Players; }
 }
+namespace G3D { class GWindow; class RenderDevice; }
+namespace Ogre { class VisualEngine; }
 
 // Original RTTI (0081933c complete object locator) and constructor 00459eb0 prove
 // the bases and member offsets below. Names for members the constructor only
@@ -41,23 +44,38 @@ public:
     int retries_60;       // incremented once after a renderer failure
     void* slots_64_6b[2]; // zeroed by the constructor (0x64 through 0x6b)
     void* dataModel;      // 0x6c, set by setDataModel(void*)
-    void* gWindow;        // 0x70, ServiceProvider this-pointer in finishAttach
-    void* slots_74_7c[3]; // zeroed by the constructor (0x74 through 0x7c)
+    // INFERRED: 0x70/0x74 is a boost::shared_ptr pair: run (0045bc80) copies both words and bumps the control
+    // block count at +4 with lock xadd; finishAttach/handle only test the pointer word.
+    boost::shared_ptr<RBX::DataModel> dataModelPtr;   // 0x70
+    void* slot_78;        // 0x78, zeroed by the constructor; run/doRender test it and call 005555e0(this+0x54)
+    void* slot_7c;        // 0x7c, zeroed by the constructor
     bool flag_80;         // set to 1
-    void* slot_84;
+    RBX::DxUserInput* userInput;   // 0x84, 0045b5d0 calls setKeyboardWanted(true) (00468050), 0045cba0 updateMouse (00468b20)
     bool flags_88_8b[4];  // 0x88 depends on startup context, 0x8b set to 1
-    unsigned unaccessed_8c[3]; // no constructor write and no read in 53 mined CRobloxWnd methods; size from CRuntimeClass 0xc0
-    void* source_98;      // 005c43a0 result
+    unsigned unaccessed_8c;    // no constructor write and no read in 53 mined CRobloxWnd methods; size from CRuntimeClass 0xc0
+    double pendingThrottle;    // 0x90, ctor loads it from 008199d0, written by AdjustThrottle 0045ba60
+    void* source_98;      // 005c43a0 CodeProfiler result
     bool flag_9c;
     void* slot_a0;        // 0xa0
-    void* adorn;          // 0xa4, virtual method called in finishAttach
+    G3D::GWindow* adorn;  // 0xa4, makeCurrent (vtable +0x98) and deleting dtor (vtable +0x9c) in 0045bde0
     bool flag_a8;
-    void* slots_ac_b8[4]; // 0xac through 0xbf
+    G3D::RenderDevice* renderDevice;   // 0xac, cleanup 0047c3e0 / ~RenderDevice 0047bec0 in 0045bde0
+    void* slot_b0;
+    void* slot_b4;
+    Ogre::VisualEngine* visualEngine;  // 0xb8, new(0x808) in CRobloxView 0045cc9c (VisualEngine2008.h)
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     explicit CRobloxWnd(int);
     void finishAttach();       // 0045ead0
     void windowCommand();      // 0045bf90
     void setDataModel(void*); // 0045f7b0, argument is compared with +0x6c
+    // Window message handlers (message map not recovered; names inferred from MFC signatures at the bodies).
+    afx_msg void OnSize(UINT, int, int);   // 0045b010, INFERRED name (registry: resize)
+    virtual BOOL PreCreateWindow(CREATESTRUCT&);   // 0045b330
+    afx_msg void OnSetFocus(CWnd*);        // 0045b5d0, INFERRED name (registry: f(int))
+    void handle(int);                      // 0045cba0, 0 = run 0045beb0 then 0045c890, 1 = update the mouse; always ends in CWnd::Default
+    void sub_0045beb0();                   // INFERRED placeholder name: restores the window state when flags_88_8b[2] (0x8a) is set; body not recovered
+    void sub_0045c890();                   // INFERRED placeholder name: applies pendingThrottle under the shared lock; body not recovered
+    void shutdownGraphics();               // 0045bde0, INFERRED name (registry: f(void)): releases renderDevice (0xac) and adorn (0xa4)
     __declspec(noinline) void setActive(bool); // 0070bdf0, shared empty stub (ret 4); called from 004591e0/004593b0
     virtual ~CRobloxWnd(); // 0045fbe0, called out of line from 00459ba0
     // Interface overrides; bodies not recovered here. IRunView vtable 008199e8, IMetric 008199dc.
