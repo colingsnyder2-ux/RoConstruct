@@ -1,0 +1,1362 @@
+{
+ "0042a4f0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100034b0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getCurrent@ThreadLogManager@@SAPAV1@XZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "0049ba80": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10194230"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?lookupByGuid@?$GuidItem@VInstance@RBX@@@RBX@@SA_NABUData@Guid@2@AAPAVInstance@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004a0f00": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10198a10"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?fire@?$SignalDescImpl@$01$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004a8ae0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101adac0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?serializeId@IdSerializer@Network@RBX@@QAEXAAVBitStream@RakNet@@PBVInstance@3@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004a8cc0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101adce0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?trySerializeId@IdSerializer@Network@RBX@@QAE_NAAVBitStream@RakNet@@PBVInstance@3@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004a9250": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101adf70"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?resolvePendingReferences@IdSerializer@Network@RBX@@QAEXPAVInstance@3@UData@Guid@3@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004ab850": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1019ca00"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?closeReplicationItem@Replicator@Network@RBX@@KAXABU?$pair@QBVInstance@RBX@@UReplicationData@Replicator@Network@2@@std@@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004ab8c0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1019cc70"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??1ReplicationData@Replicator@Network@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004aba60": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1019cdf0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??1ItemSender@Replicator@Network@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004abd20": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1019ce80"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??0ReplicationData@Replicator@Network@RBX@@QAE@ABU0123@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004afd00": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101a1410"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?disconnectReplicationData@Replicator@Network@RBX@@IAE_NV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004b3e00": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101a4210"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??0?$SignalDesc@VReplicator@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@Reflection@RBX@@QAE@PBD00@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004b52b0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101a78c0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?addReplicationData@Replicator@Network@RBX@@AAEAAUReplicationData@123@V?$shared_ptr@VInstance@RBX@@@boost@@_N@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004b6d10": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "101a76d0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?write@ChangePropertyItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004b8620": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "101a9890"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "004ca7b0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1019d990"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "writePosition",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00502100": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101ef6c0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?turnOnLights@RenderScene@Render@RBX@@ABEXPAVRenderDevice@G3D@@_N@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005631c0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100b2dc0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??1SpecData@Render@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "0056dfe0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "100402c0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$any_cast@VVector3@G3D@@@boost@@YA?AVVector3@G3D@@AAVany@0@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "0056eff0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10041080"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$convert@VContentId@RBX@@@Value@Reflection@RBX@@QAEAAVContentId@2@XZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00579600": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1007a4d0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@0_N@Z$02@Reflection@RBX@@QAE@P8DataModel@2@AE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V45@0_N@ZPBD3331W4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005796d0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1007a5a0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$call@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$BoundFuncDesc@VDataModel@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@0_N@Z$02@Reflection@RBX@@ABEXPAVDataModel@2@AAVValue@12@111@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00592350": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10096ba0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?insert@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@V312@ABU?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00595e40": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "10032730"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?threadProc@worker_thread@RBX@@CAXV?$shared_ptr@Udata@worker_thread@RBX@@@boost@@ABV?$function0@W4work_result@worker_thread@RBX@@V?$allocator@Vfunction_base@boost@@@std@@@4@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00596e60": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10034040"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?get_thread_name@RBX@@YAPBDXZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005a2290": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1006c130"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::wrapper2<1>",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005a2330": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1006c1d0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::wrapper2<0>",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005ac560": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10063550"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$getValue@VValue@Reflection@RBX@@@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005aeea0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "10066f20"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?stats@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005b10a0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100dbc60"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?rebuildBackendState@Accoutrement@RBX@@IAEXXZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005b6fe0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1007d490"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?checkResult@@YAXW4FMOD_RESULT@@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005b7940": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1007dd60"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@P6AXABU?$pair@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@3@@Z@std@@YAP6AXABU?$pair@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@0@@ZViterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@0@1P6AX0@Z@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005bc6f0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1007fdf0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?get@Sound@Soundscape@RBX@@QAEPAV1FMOD@@XZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005ce6e0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100c4d80"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?doFly@Camera@RBX@@QAEXABVNavKeys@2@H@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e3e60": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100d9440"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$?0PAVSnapJoint@RBX@@@?$DescribedCreatable@VSnap@RBX@@VAutoJoint@2@$1?sSnap@2@3QBDB@RBX@@IAE@PAVSnapJoint@1@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e3f10": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100d94e0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$?0PAVWeldJoint@RBX@@@?$DescribedCreatable@VWeld@RBX@@VAutoJoint@2@$1?sWeld@2@3QBDB@RBX@@IAE@PAVWeldJoint@1@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e4010": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100d95c0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$?0PAVGlueJoint@RBX@@@?$DescribedCreatable@VGlue@RBX@@VAutoJoint@2@$1?sGlue@2@3QBDB@RBX@@IAE@PAVGlueJoint@1@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e4100": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100d96d0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??$?0PAVRotateJoint@RBX@@@?$DescribedCreatable@VRotate@RBX@@VAutoJoint@2@$1?sRotate@2@3QBDB@RBX@@IAE@PAVRotateJoint@1@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e6420": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10102f60"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?computeMaxRadius@Assembly@RBX@@ABEMXZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e7050": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10103910"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?addMotorChild@Assembly@RBX@@SAXPAVPrimitive@2@PAVMotorJoint@2@0@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005e7ce0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100a80c0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getJoint@Primitive@RBX@@SAPAVJoint@2@PAV12@0@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005ea320": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "100d0020"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?insertJoint@World@RBX@@QAEXPAVJoint@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "005eaef0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "10094490"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "testImage",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00649d30": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1010b3c0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?minMax@Face@RBX@@ABEXABVVector3@G3D@@0AAM1@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "0064bf90": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1011a500"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?changeContactState@SleepStage@RBX@@AAEXPAVContact@2@W4EdgeState@Sim@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "0064cae0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1011b740"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?onPrimitiveAdded@ClumpStage@RBX@@QAEXPAVPrimitive@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00659c20": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10123500"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getNextGrid@SpatialHash@RBX@@QAE_NAAVVector3int32@2@ABVRay@G3D@@M@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00668bb0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1011b330"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getPrimitiveSize@RBX@@YAMPBVPrimitive@1@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00669410": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1011bcc0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?process@TreeStage@RBX@@QAEXXZ",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00669940": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1011c6e0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?swap@TreeStage@RBX@@AAEXPAVJoint@2@0PAVPrimitive@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00669c70": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1011c840"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?onEdgeRemoving@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "006a15fd": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101e821c"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007b45e0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "101d83a0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?setNumStars@Sky@G3D@@QAEXH@Z",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f2170": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021fb20"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::Network::Replicator::event_Disconnection''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f3570": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "102191a0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'httpPostFunction''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f3e30": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "102189b0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_breakJoints''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f3e70": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "102189f0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_makeJoints''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f44b0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021a990"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_unjoin''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f44f0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021a9d0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_join''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f5ba0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021daa0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'UploadUrlFunction''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f5bd0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021dad0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'getUploadUrl''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f7000": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021dde0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_LegacyTop''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f7040": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021de20"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_LegacyBottom''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f7080": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021de60"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_LegacyLeft''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f70c0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021dea0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_LegacyRight''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f7100": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021dee0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_LegacyFront''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f7140": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": true,
+    "webservice_va": "1021df20"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::`dynamic initializer for 'desc_LegacyBack''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f88e0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1021d8a0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::FactoryProduct<RBX::Value<int,&RBX::sIntValue>,RBX::Instance,&RBX::sIntValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f8930": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1021d8e0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::FactoryProduct<RBX::Value<bool,&RBX::sBoolValue>,RBX::Instance,&RBX::sBoolValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f8980": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1021d920"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::FactoryProduct<RBX::Value<double,&RBX::sDoubleValue>,RBX::Instance,&RBX::sDoubleValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f89d0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1021d960"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::FactoryProduct<RBX::Value<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,&RBX::sStringValue>,RBX::Instance,&RBX::sStringValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f8a70": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1021d9e0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::FactoryProduct<RBX::Value<G3D::CoordinateFrame,&RBX::sCFrameValue>,RBX::Instance,&RBX::sCFrameValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "007f8b10": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "1021da60"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic initializer for 'RBX::FactoryProduct<RBX::Value<RBX::BrickColor,&RBX::sBrickColorValue>,RBX::Instance,&RBX::sBrickColorValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00800c20": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10224950"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'RBX::FactoryProduct<RBX::Value<RBX::BrickColor,&RBX::sBrickColorValue>,RBX::Instance,&RBX::sBrickColorValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00800ca0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "102249d0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'RBX::FactoryProduct<RBX::Value<G3D::CoordinateFrame,&RBX::sCFrameValue>,RBX::Instance,&RBX::sCFrameValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00800d20": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10224a50"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'RBX::FactoryProduct<RBX::Value<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,&RBX::sStringValue>,RBX::Instance,&RBX::sStringValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00800d60": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10224a90"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'RBX::FactoryProduct<RBX::Value<double,&RBX::sDoubleValue>,RBX::Instance,&RBX::sDoubleValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00800da0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10224ad0"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'RBX::FactoryProduct<RBX::Value<bool,&RBX::sBoolValue>,RBX::Instance,&RBX::sBoolValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00800de0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10224b10"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'RBX::FactoryProduct<RBX::Value<int,&RBX::sIntValue>,RBX::Instance,&RBX::sIntValue>::creator''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ },
+ "00801400": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-graph-match",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-graph-match",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "string_literal": false,
+    "webservice_va": "10225560"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "`dynamic atexit destructor for 'sing''",
+  "name_source": "identity-unlock-wsgraph",
+  "signature": null
+ }
+}

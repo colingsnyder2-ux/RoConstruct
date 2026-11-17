@@ -4,7 +4,7 @@
 
 namespace RBX
 {
-	const char sSky[] = "Sky"; // 00955bd4 (classDescriptor 005eb290)
+	char sSky[] = "Sky"; // 00955bd4 (classDescriptor 005eb290)
 
 	// Template members the shared headers only declare (same definitions as Team.cpp / DecalBases.cpp).
 	template<class C, class D, const char* N>

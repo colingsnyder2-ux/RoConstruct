@@ -41,6 +41,8 @@ protected:
 	bool operatorEqual(const InstanceHandle&) const;
 	bool operatorLess(const InstanceHandle& other) const;
 	bool operatorGreater(const InstanceHandle&) const;
+public:
+	~InstanceHandle(void);   // INFERRED: ??1InstanceHandle@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
 
 } // namespace RBX

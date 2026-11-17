@@ -346,5 +346,7 @@ namespace RBX
 		G3D::Matrix3 getIWorldAtPoint(const G3D::Vector3& point) const;   // 00614560
 		G3D::Matrix3 getBranchIWorldAtPoint(const G3D::Vector3& point) const;   // 006145e0
 		float kineticEnergy() const;                      // 00614670
+	public:
+		int sub_005e7370() const;   // INFERRED: 005e7370, placeholder name (identity tier), body byte-proved (Inferred_005e7370.cpp)
 	};
 }

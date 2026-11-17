@@ -86,7 +86,7 @@ def record(addr, row, status, model):
     if status != 'inactive_exact':
         return
     size = len(m.match.target('2008-06', addr)[0])
-    with m.LOG.open('a') as log:
+    with m.atomic_append(m.LOG) as log:
         log.write(json.dumps(dict(addr=addr, symbol=row['name'], decl=row.get('signature', ''), owner=row.get('owner_class', ''),
                                   qual=global_name(row), header='', dest='', size=size, name_source='identity-unlock-init',
                                   placeholder=False, unmapped=[], new_source=True, model=model, attempt=0, status=status,

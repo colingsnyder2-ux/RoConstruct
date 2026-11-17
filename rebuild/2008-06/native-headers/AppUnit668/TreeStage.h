@@ -75,5 +75,11 @@ namespace RBX
 		void process();                                     // 00669410 (not built)
 		void onPrimitiveAdded(Primitive* p);                // 00668d30 (ClumpStage::onPrimitiveAdded 0064cb0d)
 		void onPrimitiveRemoving(Primitive* p);             // 00668d40 (ClumpStage 0064cc11)
-	};
+		private:
+		void cleanAssembly(RBX::Assembly *);   // INFERRED: ?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z (header gap, header_gap_fill.py)
+	private:
+		void cleanEdge(RBX::Edge *);   // INFERRED: ?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z (header gap, header_gap_fill.py)
+	private:
+		RBX::Joint * findLightestDownstream(RBX::Primitive *,RBX::Primitive * &);   // INFERRED: ?findLightestDownstream@TreeStage@RBX@@AAEPAVJoint@2@PAVPrimitive@2@AAPAV42@@Z (header gap, header_gap_fill.py)
+};
 }

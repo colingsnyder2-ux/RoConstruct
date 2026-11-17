@@ -1,0 +1,184 @@
+{
+ "00407500": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_0BD@IHMANNBL@Untrusted?5Site?3?5?$CFs?$AA@",
+     "??_C@_0BG@NIIBBDPD@Failed?5to?5get?5SiteUrl?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_00407500"
+   }
+  ],
+  "kind": "code",
+  "name": "func_00407500",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ },
+ "0044f500": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_0BB@BOINFNNL@?1IDE?1Upload?4aspx?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0CPublishAsPlaceDialog@@QAE@HH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CPublishAsPlaceDialog@@QAE@HH@Z",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ },
+ "00575d90": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_03EKCLOMJE@FRM?$AA@",
+     "??_C@_03JNOOAHCF@FPS?$AA@",
+     "??_C@_05JEEMABE@UiCpu?$AA@",
+     "??_C@_06BJDGOJIL@bevels?$AA@",
+     "??_C@_06HHOADKIJ@drawId?$AA@",
+     "??_C@_06HLCIDOAP@GfxCpu?$AA@",
+     "??_C@_06LBOPCMPF@SimCpu?$AA@",
+     "??_C@_07GFKKALAC@GfxTime?$AA@",
+     "??_C@_07HCAKLEIK@IdleCpu?$AA@",
+     "??_C@_09CDGJHILH@numJoints?$AA@",
+     "??_C@_09DEBGFDCG@eThrottle?$AA@",
+     "??_C@_09GICFADJP@numBodies?$AA@",
+     "??_C@_09NCLMNOLJ@Particles?$AA@",
+     "??_C@_09OAMHLLDH@numPoints?$AA@",
+     "??_C@_0BA@CAKJDMOG@energyConnector?$AA@",
+     "??_C@_0BB@NODGHFKE@solverIterations?$AA@",
+     "??_C@_0BC@PLLNJJGM@numProjectileJobs?$AA@",
+     "??_C@_0BE@FMKNHFLI@numSteppingContacts?$AA@",
+     "??_C@_0BE@HAHGOPJP@numTouchingContacts?$AA@",
+     "??_C@_0BE@PDNMKKFE@contactPairHitRatio?$AA@",
+     "??_C@_0BH@KJMLALBL@contactFeatureHitRatio?$AA@",
+     "??_C@_0BI@GCMGNGHP@percentConnectorsActive?$AA@",
+     "??_C@_0BM@EPFKIDKJ@numContactsInCollisionStage?$AA@",
+     "??_C@_0L@BADNHBPB@energyBody?$AA@",
+     "??_C@_0L@PDAJAHDK@matrixSize?$AA@",
+     "??_C@_0M@HFHNMHLH@videoMemory?$AA@",
+     "??_C@_0M@JBOAOOOE@numContacts?$AA@",
+     "??_C@_0M@JEEBJPIB@energyTotal?$AA@",
+     "??_C@_0N@CBAEOPK@numLinkCalls?$AA@",
+     "??_C@_0N@DBJFKBII@maxTreeDepth?$AA@",
+     "??_C@_0N@DPKGHFO@numGroupJobs?$AA@",
+     "??_C@_0N@ICAGEFNO@antiAliasing?$AA@",
+     "??_C@_0N@KHOMIAPI@graphicsMode?$AA@",
+     "??_C@_0N@KPLOMMCA@numHashNodes?$AA@",
+     "??_C@_0O@FHONHLJH@numPrimitives?$AA@",
+     "??_C@_0O@IEIABFAC@numLeafBodies?$AA@",
+     "??_C@_0O@KDCHDBIG@maxBucketSize?$AA@",
+     "??_C@_0P@KKNHPHIJ@numConstraints?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?evaluate@DataModelMetricView@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?evaluate@DataModelMetricView@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ae490": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_0P@FCFPOBEJ@Script?5Context?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_005ae490"
+   }
+  ],
+  "kind": "code",
+  "name": "func_005ae490",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ },
+ "0061bda0": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_0BM@CBLLOHBM@The?5object?5has?5been?5deleted?$AA@",
+     "??_C@_0BP@CLDEPOPI@?$CFs?5should?5not?5be?5a?5child?5of?5?$CFs?$AA@",
+     "??_C@_0BP@JEBCEAGI@?$CFs?5is?5not?5a?5valid?5member?5of?5?$CFs?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?on_newindex@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAXAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?on_newindex@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAXAAV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PBDPAUlua_State@@@Z",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5bd0": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_0N@FGKPHJLB@GetUploadUrl?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EgetUploadUrl@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EgetUploadUrl@@YAXXZ",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5c00": {
+  "evidence": [
+   {
+    "kind": "unique-string-literal",
+    "note": "only compiled function (outside registry) referencing every literal; body size within 0.5-2x",
+    "strings": [
+     "??_C@_07BOIBJECO@SetPing?$AA@",
+     "??_C@_07FDKBBKEC@pingUrl?$AA@",
+     "??_C@_08CBFCMNKF@interval?$AA@"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_007f5c00"
+   }
+  ],
+  "kind": "code",
+  "name": "func_007f5c00",
+  "name_source": "identity-unlock-strlit",
+  "owner_class": null,
+  "signature": null
+ }
+}

@@ -104,6 +104,8 @@ namespace RBX
 			// Donor Streaming.h IdSerializer::serializeRef (thiscall, ret 8; caller Replicator::serializeValue 004b6890
 			// passes the Replicator this unadjusted: IdSerializer at +0). Body in AppUnit49C_2008IdSerializerTemplates.cpp.
 			void serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& stream); // 004a8b90
-		};
+				public:
+			void deserializeId(RakNet::BitStream &,RBX::Guid::Data &);   // INFERRED: ?deserializeId@IdSerializer@Network@RBX@@QAEXAAVBitStream@RakNet@@AAUData@Guid@3@@Z (header gap, header_gap_fill.py)
+};
 	}
 }

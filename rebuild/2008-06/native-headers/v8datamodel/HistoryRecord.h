@@ -31,6 +31,8 @@ struct HistoryItem {
     void update(const Reflection::PropertyDescriptor*);
     void applyProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);
     void unplayProperty(const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>&);
+public:
+	~HistoryItem(void);   // INFERRED: ??1HistoryItem@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
 
 struct HistoryRecord : std::map<Instance*, HistoryItem> {
@@ -42,5 +44,7 @@ struct HistoryRecord : std::map<Instance*, HistoryItem> {
     void merge(HistoryRecord*);
     void play();
     void unplay();
+public:
+	~HistoryRecord(void);   // INFERRED: ??1HistoryRecord@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
 }

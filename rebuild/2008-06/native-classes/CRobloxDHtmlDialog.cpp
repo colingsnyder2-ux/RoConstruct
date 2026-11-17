@@ -62,7 +62,8 @@ void CRobloxDHtmlDialog::WindowClosing(BOOL, BOOL* cancel)
     *cancel = -1;
     CString result;
     DDX_DHtml_ElementText("DialogResult", DISPID_A_VALUE, result, TRUE);
-    if (result.Compare("") != 0 && atoi(result) == 1)
+    const char* (ATL::CSimpleStringT<char, 1>::*text)() const = &ATL::CSimpleStringT<char, 1>::operator const char*;
+    if (result.Compare("") != 0 && atoi((result.*text)()) == 1)
         OnOK();
     else
         OnCancel();

@@ -95,6 +95,13 @@ namespace RBX
 		void setTimeStr(const std::string& value);      // 005e2730 (prop_Time setter: duration_from_string 005e0c20)
 		void setMinutesAfterMidnight(double value);     // 005e26e0
 
+		// INFERRED: decorated registry names ?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z 005e2490, ?setAmbientTop@... 005e22c0,
+		// ?setAmbientBottom@... 005e2370 (remaining-classified.json); each stores the Color3 field (ambient +0x28c / ambientTop
+		// +0x228 / ambientBottom +0x234), raises its property and fires event_LightingChanged.
+		void setAmbient(G3D::Color3 value);
+		void setAmbientTop(G3D::Color3 value);
+		void setAmbientBottom(G3D::Color3 value);
+
 		G3D::Vector3 getMoonPosition();                 // 005df4d0
 		G3D::Vector3 getSunPosition();                  // 005df500
 		std::string getTimeStr() const;                 // 005e0be0

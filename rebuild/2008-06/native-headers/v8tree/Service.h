@@ -45,6 +45,10 @@ public:
     template<class Class> static Class* create(const ServiceProvider* provider) {
         return provider ? provider->create<Class>() : NULL;
     }
+public:
+	ServiceProvider(void);   // INFERRED: ??0ServiceProvider@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+protected:
+	void clearServices(void);   // INFERRED: ?clearServices@ServiceProvider@RBX@@IAEXXZ (header gap, header_gap_fill.py)
 };
 
 // Layout recovered from the existing ServiceClient declaration. Method bodies

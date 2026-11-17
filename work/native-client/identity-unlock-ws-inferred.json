@@ -1,0 +1,141 @@
+{
+ "00595a80": {
+  "alternatives": [
+   "?f@@YAXXZ"
+  ],
+  "confidence": "webservice-pdb-alignment",
+  "evidence": [
+   {
+    "caller_names": [
+     "?set_thread_name@RBX@@YAXPBD@Z"
+    ],
+    "callers": [
+     "00596db0"
+    ],
+    "kind": "webservice-pdb-caller-alignment",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?SetThreadName@RBX@@YAXKPBD@Z",
+  "name_source": "identity-unlock-ws",
+  "signature": null
+ },
+ "005b10a0": {
+  "alternatives": [
+   "?rebuildBackendState@Accoutrement@RBX@@IAEXXZ",
+   "?updateDesiredState@Accoutrement@RBX@@IAEXXZ"
+  ],
+  "confidence": "webservice-pdb-alignment",
+  "evidence": [
+   {
+    "caller_names": [
+     "?onAncestorChanged@Accoutrement@RBX@@MAEXABUAncestorChanged@2@@Z",
+     "?onEvent_RemovedBackend@Accoutrement@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+    ],
+    "callers": [
+     "005b1190",
+     "005b25f0"
+    ],
+    "kind": "webservice-pdb-caller-alignment",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?rebuildBackendState@Accoutrement@RBX@@IAEXXZ",
+  "name_source": "identity-unlock-ws",
+  "signature": null
+ },
+ "005b87a0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-alignment",
+  "evidence": [
+   {
+    "caller_names": [
+     "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ",
+     "?setVolume@SoundChannel@Soundscape@RBX@@QAEXM@Z",
+     "?stop@SoundChannel@Soundscape@RBX@@QAEXXZ"
+    ],
+    "callers": [
+     "005bd430",
+     "005bd540",
+     "005bd590"
+    ],
+    "kind": "webservice-pdb-caller-alignment",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?checkResultNoThrow@@YAXW4FMOD_RESULT@@@Z",
+  "name_source": "identity-unlock-ws",
+  "signature": null
+ },
+ "00607020": {
+  "alternatives": [
+   "?computeIsColliding@BallBlockContact@RBX@@QAE_NAAHAAVVector3int16@G3D@@AAVVector3@4@M@Z"
+  ],
+  "confidence": "webservice-pdb-alignment",
+  "evidence": [
+   {
+    "caller_names": [
+     "?stepContact@BallBlockContact@RBX@@EAE_NXZ"
+    ],
+    "callers": [
+     "00607150"
+    ],
+    "kind": "webservice-pdb-caller-alignment",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?computeIsColliding@BallBlockContact@RBX@@AAE_NAAHAAVVector3int16@G3D@@AAVVector3@4@M@Z",
+  "name_source": "identity-unlock-ws",
+  "signature": null
+ },
+ "0064ae10": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-alignment",
+  "evidence": [
+   {
+    "caller_names": [
+     "?onEdgeRemoving@SleepStage@RBX@@UAEXPAVEdge@2@@Z"
+    ],
+    "callers": [
+     "0064c130"
+    ],
+    "kind": "webservice-pdb-caller-alignment",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?changeJointState@SleepStage@RBX@@AAEXPAVJoint@2@W4EdgeState@Sim@2@@Z",
+  "name_source": "identity-unlock-ws",
+  "signature": null
+ },
+ "0064bf90": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-alignment",
+  "evidence": [
+   {
+    "caller_names": [
+     "?onEdgeRemoving@SleepStage@RBX@@UAEXPAVEdge@2@@Z"
+    ],
+    "callers": [
+     "0064c130"
+    ],
+    "kind": "webservice-pdb-caller-alignment",
+    "pdb": "WebService.pdb (RBXGS 0.3.676)"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?changeContactState@SleepStage@RBX@@AAEXPAVContact@2@W4EdgeState@Sim@2@@Z",
+  "name_source": "identity-unlock-ws",
+  "signature": null
+ }
+}

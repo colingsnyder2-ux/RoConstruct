@@ -1,6 +1,7 @@
 """Prepare inactive, private overlays for native family draft review."""
 import argparse
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import importlib.util
 import json
@@ -215,15 +216,32 @@ def layout_variants(log, parse):
     return variants
 
 
+def _compile(toolchain, args, cwd):
+    """cl with rebuild.run's default timeout; a timeout fails this unit, not the whole measurement."""
+    from roc import rebuild
+    try:
+        return rebuild.run(toolchain, 'cl', args, cwd)
+    except subprocess.TimeoutExpired:
+        return 'timeout', 'cl timed out'
+
+
+_LAYOUT_TOOLS = {}
+
+
+def _layout_tools(root):
+    if not _LAYOUT_TOOLS:
+        for name in ('native_class_layout', 'native_vftable_check'):
+            path = root / 'work/native-client' / (name + '.py')
+            spec = importlib.util.spec_from_file_location('_draft_family_' + name, path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            _LAYOUT_TOOLS[name] = module
+    return _LAYOUT_TOOLS
+
+
 def measure_layout_preservation(root, unit, output):
     from roc import rebuild
-    tools = {}
-    for name in ('native_class_layout', 'native_vftable_check'):
-        path = root / 'work/native-client' / (name + '.py')
-        spec = importlib.util.spec_from_file_location('_draft_family_' + name, path)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        tools[name] = module
+    tools = _layout_tools(root)
     layouts, tables, builds = {}, {}, {}
     for kind, build in unit['builds'].items():
         if build.get('exit') != 0:
@@ -232,8 +250,7 @@ def measure_layout_preservation(root, unit, output):
                  and not flag.startswith('/Fo')]
         folder = output / ('layout-' + kind)
         folder.mkdir(parents=True)
-        code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Zs', '/d1reportAllClassLayout'],
-                                folder, timeout=120)
+        code, log = _compile(rebuild.toolchain(21022), flags + ['/Zs', '/d1reportAllClassLayout'], folder)
         (folder / 'compiler.log').write_text(log)
         builds[kind] = dict(exit=code, log=str(folder / 'compiler.log'))
         if code:
@@ -426,8 +443,10 @@ def measure(root, output, profile='default'):
                     claims_from(json.loads(change['text']), hypotheses)
                 except (ValueError, UnicodeError):
                     pass
-    original = binder = None
-    for row in candidates:
+    toolchain = rebuild.toolchain(21022)
+
+    def build(row):
+        """Compile one unit's baseline/candidate objects and layout dumps; units share no outputs."""
         path = row['path']
         unit = dict(path=path, builds={}, removed_symbols=[], changed_symbols=[], added_symbols=[])
         bodies = {}
@@ -446,7 +465,7 @@ def measure(root, output, profile='default'):
             if profile == 'partchunk-fast-fp':
                 configuration.insert(0, '/I' + str(tree / 'rebuild/2008-06/native-headers/partchunk-profile'))
             configuration += ['/showIncludes', '/Fo' + str(obj), str(source)]
-            code, log = rebuild.run(rebuild.toolchain(21022), 'cl', configuration, directory, timeout=120)
+            code, log = _compile(toolchain, configuration, directory)
             (directory / 'compiler.log').write_text(log)
             unit['builds'][kind] = dict(exit=code, log=str(directory / 'compiler.log'), flags=configuration)
             if code == 0:
@@ -461,6 +480,17 @@ def measure(root, output, profile='default'):
         unit['original_methods'] = []
         if unit['builds'].get('candidate', {}).get('exit') == 0:
             unit['layout_preservation'] = measure_layout_preservation(root, unit, run / draft_merger.proof_key(path)[:16])
+        return unit, bodies
+
+    # One unit per path: later rows for the same path read the same overlay file.
+    candidates = list({row['path']: row for row in candidates}.values())
+    jobs = int(os.environ.get('ROC_FAMILY_JOBS') or min(8, max(1, (os.cpu_count() or 2) // 2)))
+    with ThreadPoolExecutor(max(1, min(jobs, len(candidates) or 1))) as pool:
+        built = list(pool.map(build, candidates))
+    original = binder = None
+    for unit, bodies in built:
+        path = unit['path']
+        obj = run / draft_merger.proof_key(path)[:16] / 'candidate' / 'unit.obj'
         if 'candidate' in bodies and hypotheses:
             if original is None:
                 original, binder = original_view(root)

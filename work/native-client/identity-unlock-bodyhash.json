@@ -1,0 +1,3568 @@
+{
+ "00403650": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 657,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?PreProcessBuffer@CRegParser@ATL@@QAEJPADPAPAD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?PreProcessBuffer@CRegParser@ATL@@QAEJPADPAPAD@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00403dd0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 366,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?Add@CExpansionVector@ATL@@QAEHPBDPB_W@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?Add@CExpansionVector@ATL@@QAEHPBDPB_W@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00404e30": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 244,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?CreateInstance@?$CComCreator@V?$CComObjectNoLock@VCComClassFactory@ATL@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?CreateInstance@?$CComCreator@V?$CComObjectNoLock@VCComClassFactory@ATL@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004053a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 585,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?RegisterFromResource@CRegObject@ATL@@IAEJPB_WPBD1H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?RegisterFromResource@CRegObject@ATL@@IAEJPB_WPBD1H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004061e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 120,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?Function@@YA_NXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?Function@@YA_NXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00406da0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 220,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func_00406da0@@YAJPAPAUS@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?func_00406da0@@YAJPAPAUS@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00407720": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 119,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "_update@16"
+   }
+  ],
+  "kind": "code",
+  "name": "_update@16",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004078a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 745,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?create@AppFacet@@QAGJHPAPAUIUnknown@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@AppFacet@@QAGJHPAPAUIUnknown@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004086f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 125,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0?$CComAggObject@VCApp@@@ATL@@QAE@PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$CComAggObject@VCApp@@@ATL@@QAE@PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00408a70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 590,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?RobloxAuthenticate@CApp@@QAGJPA_W0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?RobloxAuthenticate@CApp@@QAGJPA_W0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004097c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 397,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?create@Creator@@QAE?AUString@@PBD0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@@QAE?AUString@@PBD0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00411640": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 118,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?Initialize@CBrush@@QAEHPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?Initialize@CBrush@@QAEHPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00416ac0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 239,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00416bb0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 124,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0?$CComAggObject@VCContent@@@ATL@@QAE@PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$CComAggObject@VCContent@@@ATL@@QAE@PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00418800": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 115,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004191d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 193,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?Create@Creator@@SGJPAXPBXPAPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?Create@Creator@@SGJPAXPBXPAPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0041a080": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 70,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf1@XVDHTMLWindowService@@V?$function@$$A6AXPAVCLuaHtmlView@@@ZV?$allocator@X@std@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindowService@@@boost@@@_bi@boost@@V?$value@P8CLuaHtmlView@@AEXXZ@23@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?invoke@?$void_function_obj_invoker0@V?$bind_t@XV?$mf1@XVDHTMLWindowService@@V?$function@$$A6AXPAVCLuaHtmlView@@@ZV?$allocator@X@std@@@boost@@@_mfi@boost@@V?$list2@V?$value@V?$shared_ptr@VDHTMLWindowService@@@boost@@@_bi@boost@@V?$value@P8CLuaHtmlView@@AEXXZ@23@@_bi@3@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0041b660": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 138,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?append@DHTMLWindowService@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?append@DHTMLWindowService@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0041c8f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 134,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@UArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@UArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042a8a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 75,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?manage@@YAXPBTBuffer@@PAT1@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?manage@@YAXPBTBuffer@@PAT1@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042b800": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 110,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?attach@EventHandler@@QAEPAU1@UTriple@@I@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?attach@EventHandler@@QAEPAU1@UTriple@@I@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042b9a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 164,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0Holder@@QAE@ABUTriple@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Holder@@QAE@ABUTriple@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042c000": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 202,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?changed@Binder@@QAE_NXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?changed@Binder@@QAE_NXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042c630": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 295,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0NativeBinding@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PAVBinder@CLuaHtmlView@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0NativeBinding@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@PAVBinder@CLuaHtmlView@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042c8c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1026,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?bindElement@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@HPBD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?bindElement@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@HPBD@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043b400": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 179,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@PAUSource@@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@PAUSource@@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043e3a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 281,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0EnumItem@@QAE@PBUDescriptor@@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0EnumItem@@QAE@PBUDescriptor@@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043e4c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 892,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setValue@?$ValueItem@VGridItemBase@@VContentId@RBX@@@@QAEXABVContentId@RBX@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setValue@?$ValueItem@VGridItemBase@@VContentId@RBX@@@@QAEXABVContentId@RBX@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043e960": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 183,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXUArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXUArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043f530": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 862,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setValue@?$ValueItem@VIntGridItemBase@@VVector3@G3D@@@@QAEXABVVector3@G3D@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setValue@?$ValueItem@VIntGridItemBase@@VVector3@G3D@@@@QAEXABVVector3@G3D@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043f890": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 875,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setValue@?$ValueItem@VIntGridItemBase@@H@@QAEXABH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setValue@?$ValueItem@VIntGridItemBase@@H@@QAEXABH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043fc00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 874,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setValue@?$ValueItem@VGridItemBase@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setValue@?$ValueItem@VGridItemBase@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0043ff70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 862,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setValue@?$ValueItem@VGridItemBase@@VVector3@G3D@@@@QAEXABVVector3@G3D@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setValue@?$ValueItem@VGridItemBase@@VVector3@G3D@@@@QAEXABVVector3@G3D@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004402d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 875,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setValue@?$ValueItem@VEnumGridItemBase@@H@@QAEXABH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setValue@?$ValueItem@VEnumGridItemBase@@H@@QAEXABH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00440e30": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1321,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@Grid@@QAEXPAXPAUProperty@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@Grid@@QAEXPAXPAUProperty@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004416e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 133,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func_004416e0@S@@QAEXUCString@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?func_004416e0@S@@QAEXUCString@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0044ce70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 318,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?handleError@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?handleError@@YAXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00457ca0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 621,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0CStatsItemRecord@CRobloxReportView@@QAE@U?$shared_ptr@UItem@Stats@RBX@@@boost@@U?$shared_ptr@UDataModel@RBX@@@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CStatsItemRecord@CRobloxReportView@@QAE@U?$shared_ptr@UItem@Stats@RBX@@@boost@@U?$shared_ptr@UDataModel@RBX@@@3@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004581a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 335,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXIUShared@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXIUShared@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045bc80": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 351,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?run@CRobloxWnd@@QAEX_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?run@CRobloxWnd@@QAEX_N@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045cbf0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1674,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?initialize@CRobloxWndRenderer@@QAEXHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?initialize@CRobloxWndRenderer@@QAEXHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045d280": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 563,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?initialize@CRobloxWndNative@@QAEXHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?initialize@CRobloxWndNative@@QAEXHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045d4c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 86,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@S@@QAEXHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@S@@QAEXHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045d550": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 255,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?create@S@@QAEHPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@S@@QAEHPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045d650": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 354,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?apply@Table@@QAEXIII@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?apply@Table@@QAEXIII@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045d7c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 86,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@Table@@QAEXPAXHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@Table@@QAEXPAXHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045df10": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1244,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getMetric@WindowMetricView@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?getMetric@WindowMetricView@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045e3f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 710,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?doRender@CRobloxWnd@@QAEXH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?doRender@CRobloxWnd@@QAEXH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045e6c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 220,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?draw@CRobloxWnd@@QAEXPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?draw@CRobloxWnd@@QAEXPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045e7a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 356,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAE_NXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAE_NXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0045e910": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 394,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?draw@Window@@QAE_NXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?draw@Window@@QAE_NXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00467000": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 44,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@CSettingsPropGrid@@QAEXHPAUItem@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@CSettingsPropGrid@@QAEXHPAUItem@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00467550": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 139,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004675e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 139,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00467f10": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 312,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@DxUserInput@@QAEXPAM0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@DxUserInput@@QAEXPAM0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004685b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1026,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?processMouseInput@DxUserInput@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?processMouseInput@DxUserInput@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004689c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 152,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXHHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXHHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00469fa0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 107,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?clamp@Vector2@G3D@@QBE?AV12@ABV12@0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?clamp@Vector2@G3D@@QBE?AV12@ABV12@0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004802a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 504,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?remove@?$Table@II@G3D@@QAEXABI@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?remove@?$Table@II@G3D@@QAEXABI@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00490a60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 141,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEPAU1@KUArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEPAU1@KUArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004917f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 242,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?get@Value@@QAE?AUShared@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?get@Value@@QAE?AUShared@@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00492360": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 382,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?dispatch@@YAXV?$shared_ptr@X@boost@@V?$shared_ptr@UReceiver@@@2@H0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?dispatch@@YAXV?$shared_ptr@X@boost@@V?$shared_ptr@UReceiver@@@2@H0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00492ea0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 141,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEPAU1@KUArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEPAU1@KUArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004930d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 305,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXPAUReceiver@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXPAUReceiver@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00494ed0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 134,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@UArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@UArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004965a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 215,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?dispatch@Plugin@@QAEXUMessage@@PAUCallback@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?dispatch@Plugin@@QAEXUMessage@@PAUCallback@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0049c440": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 162,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0Creator@@QAE@HUCallback@@I@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Creator@@QAE@HUCallback@@I@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0049d630": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 318,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXPBUE@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXPBUE@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0049d770": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 805,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004a0a70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 534,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?connect@Client@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?connect@Client@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004a2c20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 648,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?process@ClientProxyRecovery@@QAEHPAXPAUPacket@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?process@ClientProxyRecovery@@QAEHPAXPAUPacket@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004a4020": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 172,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004abaf0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 266,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?report@@YAXPBUName@@0H0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?report@@YAXPBUName@@0H0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004ad7c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 134,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_004ad7c0"
+   }
+  ],
+  "kind": "code",
+  "name": "func_004ad7c0",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004aff70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 613,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onDescendentAdded@Replicator@@QAEXV?$shared_ptr@VInstance@@@boost@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onDescendentAdded@Replicator@@QAEXV?$shared_ptr@VInstance@@@boost@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b4410": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 172,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b44c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 239,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$?0V?$bind_t@XV?$mf2@XUReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list3@V?$value@PAUReplicator@Network@RBX@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XV?$mf2@XUReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list3@V?$value@PAUReplicator@Network@RBX@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$arg@$00@3@@_bi@3@@_bi@1@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0V?$bind_t@XV?$mf2@XUReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list3@V?$value@PAUReplicator@Network@RBX@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XV?$mf2@XUReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list3@V?$value@PAUReplicator@Network@RBX@@@_bi@boost@@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@23@V?$arg@$00@3@@_bi@3@@_bi@1@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b52b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1098,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?addReplicationData@Replicator@Network@RBX@@QAEAAUTrackedInstance@23@V?$shared_ptr@UInstance@RBX@@@boost@@_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?addReplicationData@Replicator@Network@RBX@@QAEAAUTrackedInstance@23@V?$shared_ptr@UInstance@RBX@@@boost@@_N@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b5ed0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 106,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@S@@QAEXPAUTarget@@I@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@S@@QAEXPAUTarget@@I@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b62c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 495,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0Receiver@@QAE@PBV?$shared_ptr@USource@@@boost@@PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Receiver@@QAE@PBV?$shared_ptr@USource@@@boost@@PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b6d10": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 490,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?write@ChangePropertyItem@Replicator@RBX@@QAEXAAUBitStream@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?write@ChangePropertyItem@Replicator@RBX@@QAEXAAUBitStream@3@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b6f00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 846,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?readProperties@Replicator@@QAEXAAUBitStream@@PAUInstance@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?readProperties@Replicator@@QAEXAAUBitStream@@PAUInstance@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b7250": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 2006,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?readInstanceNew@Replicator@Network@RBX@@QAEXAAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?readInstanceNew@Replicator@Network@RBX@@QAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b7a30": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 758,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?readChangedProperty@Replicator@Network@RBX@@QAEXAAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?readChangedProperty@Replicator@Network@RBX@@QAEXAAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b7f20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 938,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?writeProperties@Replicator@Network@RBX@@QAEXPBVInstance@3@AAVBitStream@RakNet@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?writeProperties@Replicator@Network@RBX@@QAEXPBVInstance@3@AAVBitStream@RakNet@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b82d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 443,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXPAUSource@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXPAUSource@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b8620": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 464,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?write@Item@@QAEXPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?write@Item@@QAEXPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b87f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 374,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@S@@QAEXIPAUObject@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@S@@QAEXIPAUObject@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b8970": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 272,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?process@ClientProxy@@QAEXAAUReader@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?process@ClientProxy@@QAEXAAUReader@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b8c20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1307,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnReceive@Replicator@Network@RBX@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnReceive@Replicator@Network@RBX@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004b9210": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 437,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sendMarker@Replicator@Network@RBX@@QAE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?sendMarker@Replicator@Network@RBX@@QAE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004c83b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1890,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?receivePacket@DirectPhysicsReceiver@Network@RBX@@QAEXAAVBitStream@RakNet@@I@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?receivePacket@DirectPhysicsReceiver@Network@RBX@@QAEXAAVBitStream@RakNet@@I@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004c8b70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 379,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?modify_@?$hashed_index@U?$identity@UItem@@@multi_index@boost@@U?$hash@UItem@@@3@U?$equal_to@UItem@@@std@@U?$nth_layer@$00UItem@@U?$indexed_by@U?$hashed_unique@U?$identity@UItem@@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UItem@@H$0CHM@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UItem@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$index_node_base@UItem@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?modify_@?$hashed_index@U?$identity@UItem@@@multi_index@boost@@U?$hash@UItem@@@3@U?$equal_to@UItem@@@std@@U?$nth_layer@$00UItem@@U?$indexed_by@U?$hashed_unique@U?$identity@UItem@@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UItem@@H$0CHM@@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UItem@@@std@@@detail@23@U?$vector0@Una@mpl@boost@@@mpl@3@Uhashed_unique_tag@823@@detail@multi_index@boost@@IAE_NPAU?$hashed_index_node@U?$ordered_index_node@U?$index_node_base@UItem@@@detail@multi_index@boost@@@detail@multi_index@boost@@@234@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004c8da0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 132,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_004c8da0"
+   }
+  ],
+  "kind": "code",
+  "name": "func_004c8da0",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004c9120": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1641,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?receivePacket@InterpolatingPhysicsReceiver@Network@RBX@@UAEXAAVBitStream@RakNet@@I@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?receivePacket@InterpolatingPhysicsReceiver@Network@RBX@@UAEXAAVBitStream@RakNet@@I@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004cc720": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 192,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?run@@YA?AUFunctor@@UPosition@@0U1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?run@@YA?AUFunctor@@UPosition@@0U1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004cce00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 880,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sendPhysicsPackets@PhysicsSender@Network@RBX@@QAEHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sendPhysicsPackets@PhysicsSender@Network@RBX@@QAEHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004cd170": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 385,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXV?$shared_ptr@UThing@@@boost@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXV?$shared_ptr@UThing@@@boost@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004cd370": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 172,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004cd920": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 921,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@PhysicsSender@Network@RBX@@UAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@PhysicsSender@Network@RBX@@UAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004ea490": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 172,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0V?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@UInstance@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XUState@@V?$shared_ptr@UInstance@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAUState@@@_bi@boost@@U?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004f1a60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 506,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getMegaMaterial@MaterialFactory@View@RBX@@QAE?AV?$ReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@UAttributes@123@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?getMegaMaterial@MaterialFactory@View@RBX@@QAE?AV?$ReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@UAttributes@123@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "004f1c60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 592,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getMaterial@MaterialFactory@View@RBX@@QAE?AV?$ReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@UAttributes@123@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?getMaterial@MaterialFactory@View@RBX@@QAE?AV?$ReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@UAttributes@123@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00503fe0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 687,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00504290": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 2147,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?allocateProxies@RenderScene@Render@RBX@@QAEXPAVRenderDevice@G3D@@ABVGCamera@5@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?allocateProxies@RenderScene@Render@RBX@@QAEXPAVRenderDevice@G3D@@ABVGCamera@5@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00504b60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 133,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005469e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 101,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_005469e0"
+   }
+  ],
+  "kind": "code",
+  "name": "func_005469e0",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00549610": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1083,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?makeHWSubMesh@NativeMeshLevel@@QAEXPAVVisualEngine@Ogre@@AAVAxisAlignedBox@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?makeHWSubMesh@NativeMeshLevel@@QAEXPAVVisualEngine@Ogre@@AAVAxisAlignedBox@3@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00549a50": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 3779,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?upload@NativeMeshLevel@RBX@@QAEXPAVVisualEngine@Ogre@@AAVAxisAlignedBox@4@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?upload@NativeMeshLevel@RBX@@QAEXPAVVisualEngine@Ogre@@AAVAxisAlignedBox@4@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00554880": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 224,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@RunService@@QAEXUShared@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@RunService@@QAEXUShared@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00555190": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 437,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?run@S@@QAEXUShared@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?run@S@@QAEXUShared@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005564a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 85,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?initialize@S@@QAEPAU1@UPair@@UValue@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?initialize@S@@QAEPAU1@UPair@@UValue@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00557150": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 96,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@RunService@@QAEXM@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@RunService@@QAEXM@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005571b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 113,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?step@S@@QAEXM@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?step@S@@QAEXM@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00560f00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 146,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?manage@@YAXPBQBXPAPAXH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?manage@@YAXPBQBXPAPAXH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00562f70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 220,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXABUString@@UFunction@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXABUString@@UFunction@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005641e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 173,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?get@S@@QBENXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?get@S@@QBENXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00575d90": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1528,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?evaluate@DataModelMetricView@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?evaluate@DataModelMetricView@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00576f90": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 81,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??4?$Array@VVector4@G3D@@@G3D@@QAEAAV01@ABV01@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??4?$Array@VVector4@G3D@@@G3D@@QAEAAV01@ABV01@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00578a20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 164,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@HUString@@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@HUString@@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00578ad0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 162,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0Creator@@QAE@HUCallback@@I@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Creator@@QAE@HUCallback@@I@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00578c20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 128,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?copyFrom@S@@QAEXPAU1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?copyFrom@S@@QAEXPAU1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00578ca0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 428,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?step@DataModel@@QAEXM@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?step@DataModel@@QAEXM@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00578e50": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 155,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?exeStep@DataModel@RBX@@QAEXM@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?exeStep@DataModel@RBX@@QAEXM@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0057a6c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 239,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?notify@S@@QAEXPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?notify@S@@QAEXPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0057b630": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 80,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func_0057b630@DataModel@@QAEXHPAH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?func_0057b630@DataModel@@QAEXHPAH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00584c90": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 236,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?get@Value@@QBE?AUFrame@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?get@Value@@QBE?AUFrame@@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0058b630": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 142,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$call@UText@@@?$BoundFuncDesc@VVisit@RBX@@$$A6A?AUText@@XZ$0A@@Reflection@RBX@@ABEXPAVVisit@2@AAVValue@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$call@UText@@@?$BoundFuncDesc@VVisit@RBX@@$$A6A?AUText@@XZ$0A@@Reflection@RBX@@ABEXPAVVisit@2@AAVValue@12@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00596ea0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 227,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?run_in_background@RBX@@YAXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?run_in_background@RBX@@YAXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00596f90": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 162,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@PAXIUArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@PAXIUArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00597080": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 134,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0S@@QAE@UArgument@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0S@@QAE@UArgument@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a19f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 205,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0ArrowTool@@QAE@PAX0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0ArrowTool@@QAE@PAX0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a3d40": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 205,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@Descriptor@@QAEXPAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@Descriptor@@QAEXPAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a85b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 167,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?convert@@YAHPAPAUNode@@PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?convert@@YAHPAPAUNode@@PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a8720": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 39,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getVersion@RBX@@YAHPAUlua_State@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?getVersion@RBX@@YAHPAUlua_State@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a92d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 78,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@@YAHPAUlua_State@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@@YAHPAUlua_State@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005aaf20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 221,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?clear@Context@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?clear@Context@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ac610": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 703,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?reportError@ScriptContext@RBX@@CAXPAUlua_State@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?reportError@ScriptContext@RBX@@CAXPAUlua_State@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005acd70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 273,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$get@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@@?$Association@VInstance@RBX@@@RBX@@QAEAAV?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??$get@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@@?$Association@VInstance@RBX@@@RBX@@QAEAAV?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ae0d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 318,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sub_5ae0d0@S@@QAEHPAUScriptState@@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sub_5ae0d0@S@@QAEHPAUScriptState@@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ae280": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 524,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?closeState@S@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?closeState@S@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ae490": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body-one-free",
+    "length": 504,
+    "other_symbols": [
+     "??0ScriptContext@RBX@@QAE@XZ"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "func_005ae490"
+   }
+  ],
+  "kind": "code",
+  "name": "func_005ae490",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ae8f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 506,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setTimeout@ScriptContext@@QAEXN@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setTimeout@ScriptContext@@QAEXN@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005af830": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 259,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?execute@ScriptContext@@QAE?AV?$auto_ptr@UValues@@@std@@PAUlua_State@@ABUValues@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?execute@ScriptContext@@QAE?AV?$auto_ptr@UValues@@@std@@PAUlua_State@@ABUValues@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005affa0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1035,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?startScript@ScriptContext@RBX@@QAEXV?$shared_ptr@UScript@RBX@@@boost@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?startScript@ScriptContext@RBX@@QAEXV?$shared_ptr@UScript@RBX@@@boost@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005b6ed0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 152,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?clamp@Vector3@G3D@@QBE?AV12@MM@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?clamp@Vector3@G3D@@QBE?AV12@MM@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ba060": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 585,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?openFmod@SoundService@Soundscape@RBX@@AAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?openFmod@SoundService@Soundscape@RBX@@AAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005cd100": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 283,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onHeartbeat@Camera@RBX@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?onHeartbeat@Camera@RBX@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005d2b80": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1084,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?SpawnPlayer@SpawnerService@RBX@@QAEXV?$shared_ptr@VModelInstance@RBX@@@boost@@PAVPlayer@Network@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?SpawnPlayer@SpawnerService@RBX@@QAEXV?$shared_ptr@VModelInstance@RBX@@@boost@@PAVPlayer@Network@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e4c60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 205,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0Factory@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Factory@@QAE@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e4dd0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 205,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0Factory@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Factory@@QAE@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e9410": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 74,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?ticklePrimitive@World@RBX@@QAEXPAVPrimitive@2@_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?ticklePrimitive@World@RBX@@QAEXPAVPrimitive@2@_N@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ebbb0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1460,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?getG3DSky@Sky@RBX@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@PAV12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?getG3DSky@Sky@RBX@@SA?AV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@PAV12@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00607f90": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 148,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEPAUContact@@HHHHH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEPAUContact@@HHHHH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0061b190": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 2168,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?assignLuaValue@@YAXVProperty@Reflection@RBX@@PAUlua_State@@H@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?assignLuaValue@@YAXVProperty@Reflection@RBX@@PAUlua_State@@H@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00629d60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 717,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?explode@Explosion@@QAEXPAUParts@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?explode@Explosion@@QAEXPAUParts@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0062cf40": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 324,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onServiceProvider@FlagStand@RBX@@UAEXPBVServiceProvider@2@0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onServiceProvider@FlagStand@RBX@@UAEXPBVServiceProvider@2@0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00644a30": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 585,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?check@Climbing@@QAE_NPAUAdorn@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?check@Climbing@@QAE_NPAUAdorn@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00644c80": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 985,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?detectClimb@HumanoidState@HUMAN@RBX@@QAE_NPAVAdorn@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?detectClimb@HumanoidState@HUMAN@RBX@@QAE_NPAVAdorn@3@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "006451c0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 472,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@Climbing@@QAEXM@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@Climbing@@QAEXM@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "006453a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 170,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?transition@@YAXPAV?$auto_ptr@UState@@@std@@M@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?transition@@YAXPAV?$auto_ptr@UState@@@std@@M@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064b1b0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 115,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onEdgeAdded@SleepStage@RBX@@UAEXPAVEdge@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onEdgeAdded@SleepStage@RBX@@UAEXPAVEdge@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064b5e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 234,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064b6d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 225,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064b890": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 78,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func_0064b890@S@@QAEXPAUArg@@_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?func_0064b890@S@@QAEXPAUArg@@_N@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064bc60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 282,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?stepJoints@SleepStage@RBX@@AAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?stepJoints@SleepStage@RBX@@AAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064bd80": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 248,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?stepAssembliesAwake@SleepStage@RBX@@AAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?stepAssembliesAwake@SleepStage@RBX@@AAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064be80": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 210,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?stepAssembliesSleepingChecking@SleepStage@RBX@@AAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?stepAssembliesSleepingChecking@SleepStage@RBX@@AAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064c280": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 492,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064c8a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 342,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?stepWorld@SleepStage@RBX@@QAEXH@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?stepWorld@SleepStage@RBX@@QAEXH@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0064ca00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 85,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?set@SleepStage@@QAEXHH_N0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?set@SleepStage@@QAEXHH_N0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0065abf0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 48,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXPAUItemList@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXPAUItemList@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669290": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 76,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?undirtyAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?undirtyAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669560": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 427,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?process@Stage@@QAEXPAUEdge@@PAUNode@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?process@Stage@@QAEXPAUEdge@@PAUNode@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669940": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 92,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?change@TreeStage@@QAEXPAUNode@@0PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?change@TreeStage@@QAEXPAUNode@@0PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669b60": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 160,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?update@TreeStage@@QAEXPAUEdge@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?update@TreeStage@@QAEXPAUEdge@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669c00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 100,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?process@TreeStage@@QAEXPAUObject@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?process@TreeStage@@QAEXPAUObject@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669c70": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 121,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?process@TreeStage@@QAEXPAUPrimitive@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?process@TreeStage@@QAEXPAUPrimitive@@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0066f5f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 237,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onEdgeAdded@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onEdgeAdded@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "0066f6e0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 161,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onEdgeRemoving@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onEdgeRemoving@AssemblyStage@RBX@@UAEXPAVEdge@2@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00670d50": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 903,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?updateParticleBudget@AdornRbxGfx@RBX@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?updateParticleBudget@AdornRbxGfx@RBX@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00671f00": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 139,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?f@S@@QAEXABUMeshRef@@ABUMatrix@@PAX@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?f@S@@QAEXABUMeshRef@@ABUMatrix@@PAX@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00671fd0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1734,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?box@AdornRbxGfx@RBX@@UAEXABVAABox@G3D@@ABVColor4@4@1@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?box@AdornRbxGfx@RBX@@UAEXABVAABox@G3D@@ABVColor4@4@1@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "006726a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1274,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?cylinderAlongX@AdornRbxGfx@RBX@@UAEXMMABVColor4@G3D@@0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?cylinderAlongX@AdornRbxGfx@RBX@@UAEXMMABVColor4@G3D@@0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00672ba0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 931,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sphere@AdornRbxGfx@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sphere@AdornRbxGfx@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00672f50": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1614,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?quad@AdornRbxGfx@RBX@@UAEXABVVector3@G3D@@000ABVColor4@4@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?quad@AdornRbxGfx@RBX@@UAEXABVVector3@G3D@@000ABVColor4@4@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "006735a0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1251,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?ray@AdornRbxGfx@RBX@@UAEXABVRay@G3D@@ABVColor4@4@M@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?ray@AdornRbxGfx@RBX@@UAEXABVRay@G3D@@ABVColor4@4@M@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00674210": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 1401,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0AdornRbxGfx@RBX@@QAE@PAVAdornContextView@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0AdornRbxGfx@RBX@@QAE@PAVAdornContextView@1@@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "00674790": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 3012,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sparkle@ParticleAdornRecovery@@QAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?sparkle@ParticleAdornRecovery@@QAEXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "006a18e6": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 479,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "___tmainCRTStartup"
+   }
+  ],
+  "kind": "code",
+  "name": "___tmainCRTStartup",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "006a2250": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 189,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "__IsNonwritableInCurrentImage"
+   }
+  ],
+  "kind": "code",
+  "name": "__IsNonwritableInCurrentImage",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007a5cd2": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 64,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0CAtlBaseModule@ATL@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CAtlBaseModule@ATL@@QAE@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007a621c": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 71,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0CAtlComModule@ATL@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CAtlComModule@ATL@@QAE@XZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007b80f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 142,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?freshScaled@Render@RBX@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?freshScaled@Render@RBX@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f1c20": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 42,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func_007f1c20@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?func_007f1c20@@YAXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f42d0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 24,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?func@@YAXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f42f0": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 24,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?func@@YAXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f4310": {
+  "evidence": [
+   {
+    "kind": "exact-masked-body",
+    "length": 24,
+    "note": "only compiled symbol with this reloc-masked body"
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?func@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?func@@YAXXZ",
+  "name_source": "identity-unlock-bodyhash",
+  "owner_class": null,
+  "signature": null
+ }
+}

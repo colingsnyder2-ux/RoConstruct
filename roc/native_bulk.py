@@ -24,9 +24,23 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
+_SHA = {}
+
+
 def sha(path):
+    # Memoized on (size, mtime): a census hashes the same few thousand headers for every one of ~1,100 sources.
     path = Path(path)
-    return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+    try:
+        st = path.stat()
+    except OSError:
+        return None
+    if not path.is_file():
+        return None
+    key = (str(path), st.st_size, st.st_mtime_ns)
+    hit = _SHA.get(key)
+    if hit is None:
+        hit = _SHA[key] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return hit
 
 
 # Only files an #include can resolve to may shadow a fallback include. New .cpp/.obj/.log files cannot, and counting them
@@ -34,15 +48,29 @@ def sha(path):
 INCLUDABLE = ('.h', '.hpp', '.hxx', '.inl', '.inc', '.tlh', '.tli', '.rc', '.idl')
 
 
+_TREE = {}
+
+
+def _tree_digest(path):
+    # One walk per include directory per short window (re-walked after 60 s, so files created during a long run are
+    # still seen); the census walked boost/G3D/MFC trees again for every source.
+    hit = _TREE.get(str(path))
+    if hit and time.monotonic() - hit[1] < 60:
+        return hit[0]
+    files = [os.path.relpath(os.path.join(folder, name), path)
+             for folder, _, names in os.walk(path) for name in names
+             if name.lower().endswith(INCLUDABLE) or '.' not in name]
+    value = digest(sorted(files))
+    _TREE[str(path)] = (value, time.monotonic())
+    return value
+
+
 def search_inventory(directories):
     # File creation can shadow an unchanged fallback include without changing it.
     result = {}
     for path in sorted(set(Path(d).resolve() for d in directories)):
         if path.is_dir():
-            files = [os.path.relpath(os.path.join(folder, name), path)
-                     for folder, _, names in os.walk(path) for name in names
-                     if name.lower().endswith(INCLUDABLE) or '.' not in name]
-            result[str(path)] = digest(sorted(files))
+            result[str(path)] = _tree_digest(path)
     return result
 
 
@@ -277,6 +305,71 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
     return references, sorted(set(errors))
 
 
+def object_symbols(raw):
+    """Every symbol name in a COFF object's symbol table (functions, data, externals): what harvest() can consult."""
+    _, _, _, symptr, nsym, _, _ = struct.unpack_from("<HHIIIHH", raw, 0)
+    strtab = symptr + nsym * 18
+    out, i = set(), 0
+    while i < nsym:
+        name, _, _, _, _, naux = struct.unpack_from("<8sIhHBB", raw, symptr + 18 * i)
+        if name[:4] == b"\0\0\0\0":
+            off = strtab + struct.unpack_from("<I", name, 4)[0]
+            name = raw[off:raw.index(b"\0", off)]
+        out.add(name.rstrip(b"\0").decode("latin-1"))
+        i += 1 + naux
+    return out
+
+
+def harvest_signature(raw, object_sha, targets, names, bindings, tools):
+    """Per-object cache key: only the evidence for symbols this object contains or references.  (The key covered the
+    whole family's names/bindings, so one new name re-matched all ~1,100 census objects.)"""
+    syms = object_symbols(raw)
+    return digest([object_sha, targets.identity, {k: sorted(names[k]) for k in sorted(syms) if k in names},
+                   {k: bindings[k] for k in sorted(syms) if k in bindings}, tools])
+
+
+def rows_path(output, object_sha, signature):
+    return Path(output) / 'rows' / (digest([object_sha, signature])[:32] + '.json.gz')
+
+
+def save_rows(path, rows):
+    import gzip
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.tmp')
+    with gzip.open(tmp, 'wt', encoding='utf-8') as out:
+        json.dump(rows, out, separators=(',', ':'))
+    os.replace(tmp, path)
+
+
+def load_rows(path):
+    import gzip
+    with gzip.open(path, 'rt', encoding='utf-8') as stream:
+        return json.load(stream)
+
+
+def ledger_rows(entry, ledger_path):
+    """Harvest rows of one ledger entry: inline (older ledgers) or the compressed rows file next to the ledger."""
+    if 'harvest_rows' in entry:
+        return entry['harvest_rows']
+    ref = entry.get('harvest_ref')
+    path = Path(ledger_path).parent / 'rows' / ref if ref else None
+    return load_rows(path) if path and path.is_file() else []
+
+
+_WORKER = {}
+
+
+def _harvest_init(client, selected, names, bindings):
+    _WORKER.update(targets=Targets(client, selected), names=names, bindings=bindings)
+
+
+def _harvest_job(item):
+    object_path, out_path = item
+    rows = harvest(Path(object_path).read_bytes(), _WORKER['targets'], _WORKER['names'], _WORKER['bindings'])
+    save_rows(Path(out_path), rows)
+    return out_path
+
+
 def harvest(raw, targets, names, bindings):
     rows = []
     for symbol, body, relocs in match.coff_functions(raw):
@@ -373,6 +466,62 @@ def _run(config, output, root=ROOT):
         providers, requires, jobs = [], set(spec.get('requires', [])), []
         family_rows, family_inputs, family_exact = [], dict(evidence_inputs), set()
         per_source_inputs = {}
+        # Stale sources compile in parallel first (the loop below compiled one cl.exe at a time: a 700-source census
+        # took hours on a 20-core machine).  Each job has its own folder (/Fo, /Fd), so the compiles are independent;
+        # the loop then consumes the results in source order, exactly as before.  ROC_JOBS overrides the pool size.
+        pending = []
+        for source_name in spec['sources']:
+            source = project_path(root, source_name)
+            if source.suffix != '.cpp' or not source.is_file():
+                continue
+            key = name + ':' + source_name
+            flags = runner.compiler_flags(source)
+            search = search_inventory([source.parent] + [Path(f[2:]) for f in flags if f.startswith('/I')])
+            prior = ledger.get(key, {})
+            control = digest([VERSION, source_name, flags, tools, search])
+            fresh = prior.get('control') == control and prior.get('inputs') and all(
+                sha(Path(p)) == expected for p, expected in prior['inputs'].items())
+            if fresh and (prior.get('status') == 'failed' or sha(prior.get('object', '')) == prior.get('object_sha256')):
+                continue
+            pending.append((key, source))
+        precompiled = {}
+        if len(pending) > 1:
+            import concurrent.futures
+            pool_size = int(os.environ.get('ROC_JOBS') or min(16, max(4, (os.cpu_count() or 4) - 2)))
+
+            def precompile(item):
+                key, source = item
+                folder = output / 'objects' / (digest([key, time.time_ns(), os.getpid()])[:16])
+                folder.parent.mkdir(parents=True, exist_ok=True)
+                return key, (folder, runner.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []},
+                                                        folder, tc))
+            with concurrent.futures.ThreadPoolExecutor(max_workers=pool_size) as pool:
+                precompiled = dict(pool.map(precompile, pending))
+        # Parallel matching: harvest() is pure per object (bytes vs the original image + evidence), so objects whose
+        # rows are not cached for their per-object signature are matched in worker processes first; the source loop
+        # below then only loads row files.  ROC_HARVEST_JOBS overrides (0/1 = serial in the loop, as before).
+        to_match = {}
+        for source_name in spec['sources']:
+            key = name + ':' + source_name
+            entry = precompiled[key][1] if key in precompiled else ledger.get(key, {})
+            obj = entry.get('object')
+            if entry.get('status') != 'complete' or not obj or not Path(obj).is_file():
+                continue
+            obj_sha = entry.get('object_sha256')
+            raw_obj = Path(obj).read_bytes()
+            sig = harvest_signature(raw_obj, obj_sha, targets, names, bindings, tools)
+            out_rows = rows_path(output, obj_sha, sig)
+            if not out_rows.is_file() and not (entry.get('harvest_signature') == sig and 'harvest_rows' in entry):
+                to_match[str(out_rows)] = obj
+        harvest_jobs = int(os.environ.get('ROC_HARVEST_JOBS') or min(16, max(1, (os.cpu_count() or 4) - 4)))
+        if len(to_match) > 4 and harvest_jobs > 1:
+            import concurrent.futures
+            proof_started = time.monotonic()
+            with concurrent.futures.ProcessPoolExecutor(
+                    max_workers=min(harvest_jobs, len(to_match)), initializer=_harvest_init,
+                    initargs=('2008-06', config.get('targets'), names, bindings)) as pool:
+                list(pool.map(_harvest_job, [(obj, out) for out, obj in to_match.items()]))
+            proof_seconds += time.monotonic() - proof_started
         for source_name in spec['sources']:
             source = project_path(root, source_name)
             if source.suffix != '.cpp' or not source.is_file():
@@ -403,9 +552,12 @@ def _run(config, output, root=ROOT):
             if fresh and sha(prior.get('object', '')) == prior.get('object_sha256'):
                 reused += 1
             else:
-                folder = output / 'objects' / (digest([key, time.time_ns()])[:16])
-                folder.parent.mkdir(parents=True, exist_ok=True)
-                result = runner.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}, folder, tc)
+                if key in precompiled:
+                    folder, result = precompiled.pop(key)
+                else:
+                    folder = output / 'objects' / (digest([key, time.time_ns()])[:16])
+                    folder.parent.mkdir(parents=True, exist_ok=True)
+                    result = runner.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}, folder, tc)
                 compiles += 1
                 compile_seconds += result.get('compile_seconds', 0)
                 inputs = dict(result.get('dependencies', {}))
@@ -430,14 +582,22 @@ def _run(config, output, root=ROOT):
                 blockers.append('source changed between draft copy and compile: ' + source_name)
                 continue
             raw = Path(result['object']).read_bytes()
-            signature = digest([result['object_sha256'], targets.identity,
-                                {k: sorted(v) for k, v in names.items()}, bindings, tools])
-            rows = result.get('harvest_rows') if result.get('harvest_signature') == signature else None
+            signature = harvest_signature(raw, result['object_sha256'], targets, names, bindings, tools)
+            out_rows = rows_path(output, result['object_sha256'], signature)
+            rows = None
+            if out_rows.is_file():
+                rows = load_rows(out_rows)
+            elif result.get('harvest_signature') == signature and 'harvest_rows' in result:
+                rows = result['harvest_rows']
             if rows is None:
                 proof_started = time.monotonic()
                 rows = harvest(raw, targets, names, bindings)
                 proof_seconds += time.monotonic() - proof_started
-                result.update(harvest_rows=rows, harvest_signature=signature)
+            if not out_rows.is_file():
+                save_rows(out_rows, rows)
+            # Rows live in output/rows/*.json.gz (the inline copies made ledger.json 1.2 GB, rewritten every run).
+            result.pop('harvest_rows', None)
+            result.update(harvest_ref=out_rows.name, harvest_signature=signature)
             total_symbols += len(rows)
             family_rows.extend(rows)
             checks = []

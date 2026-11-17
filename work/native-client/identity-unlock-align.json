@@ -1,30 +1,4 @@
 {
- "00402750": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?CreateInstance@?$CComCreator@V?$CComObject@VCWorkspace@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?CreateInstance@?$CComCreator@V?$CComObject@VCWorkspace@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "004035a0": {
   "evidence": [
    {
@@ -55,28 +29,34 @@
   "owner_class": null,
   "signature": null
  },
- "00404e30": {
+ "00403610": {
   "evidence": [
    {
-    "kind": "object-alignment-callee",
+    "kind": "object-alignment-caller",
     "round": 1,
     "sample": [
      [
-      "callee",
-      "3"
+      "caller",
+      "00403650",
+      "?PreProcessBuffer@CRegParser@ATL@@QAEJPADPAPAD@Z"
+     ],
+     [
+      "caller",
+      "00403650",
+      "?PreProcessBuffer@CRegParser@ATL@@QAEJPADPAPAD@Z"
      ]
     ],
     "votes": {
-     "callee": 1
+     "caller": 2
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "?CreateInstance@?$CComCreator@V?$CComObjectNoLock@VCComClassFactory@ATL@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
+    "symbol": "?StrFromMap@CRegObject@ATL@@QAEPB_WPAD@Z"
    }
   ],
   "kind": "code",
-  "name": "?CreateInstance@?$CComCreator@V?$CComObjectNoLock@VCComClassFactory@ATL@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z",
+  "name": "?StrFromMap@CRegObject@ATL@@QAEPB_WPAD@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -241,7 +221,7 @@
   "owner_class": null,
   "signature": null
  },
- "00416ac0": {
+ "00411c30": {
   "evidence": [
    {
     "kind": "object-alignment-callee",
@@ -249,54 +229,20 @@
     "sample": [
      [
       "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
+      "9"
      ]
     ],
     "votes": {
-     "callee": 2
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z"
+    "symbol": "?sub_00411c30@CChatPrompt@@QAEXIII@Z"
    }
   ],
   "kind": "code",
-  "name": "?CreateInstance@?$CComCreator@V?$CComObject@VCContent@@@ATL@@@ATL@@SGJPAXABU_GUID@@PAPAX@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00416ca0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
+  "name": "?sub_00411c30@CChatPrompt@@QAEXIII@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -327,36 +273,6 @@
   "owner_class": null,
   "signature": null
  },
- "00427660": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "4"
-     ],
-     [
-      "callee",
-      "4"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?manager@?$functor_manager@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$list1@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@@_bi@boost@@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$0A@@mpl@4@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?manager@?$functor_manager@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$list1@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@@_bi@boost@@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$0A@@mpl@4@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00427950": {
   "evidence": [
    {
@@ -379,6 +295,32 @@
   ],
   "kind": "code",
   "name": "?getLog@LogManager@@QAEPAVLog@RBX@@XZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "004282a0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "5"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sub_004282a0@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?sub_004282a0@@YAXXZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -491,74 +433,6 @@
   "owner_class": null,
   "signature": null
  },
- "00438160": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?readValue@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAEHXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?readValue@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAEHXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004384b0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?readValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAE?AVVector3@G3D@@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?readValue@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAE?AVVector3@G3D@@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00438630": {
   "evidence": [
    {
@@ -567,11 +441,11 @@
     "sample": [
      [
       "callee",
-      "5"
+      "6"
      ],
      [
       "callee",
-      "6"
+      "5"
      ],
      [
       "callee",
@@ -589,450 +463,6 @@
   ],
   "kind": "code",
   "name": "?getCategory@CPropGrid@@QAEPAVCXTPPropertyGridItem@@ABVName@RBX@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043a650": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 5
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@M@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@M@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043ab10": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "4"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 5
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@H@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@H@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043af00": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "4"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043b400": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043b860": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 5
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043c020": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043c440": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043c9b0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043cfa0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043d930": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?readValue@Vector3ComponentItem@@UAE?AVVector3@G3D@@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?readValue@Vector3ComponentItem@@UAE?AVVector3@G3D@@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043e3a0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 2,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0EnumItem@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0EnumItem@@QAE@PBVEnumPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043e840": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00440d30",
-      "??0SoundItem@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-     ],
-     [
-      "caller",
-      "00440d30",
-      "??0SoundItem@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-     ],
-     [
-      "caller",
-      "00440d30",
-      "??0SoundItem@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$ContentItem@VSoundId@Soundscape@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$ContentItem@VSoundId@Soundscape@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0043ea20": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00440db0",
-      "??0TextureItem@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-     ],
-     [
-      "caller",
-      "00440db0",
-      "??0TextureItem@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-     ],
-     [
-      "caller",
-      "00440db0",
-      "??0TextureItem@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$ContentItem@VTextureId@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$ContentItem@VTextureId@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -1128,7 +558,7 @@
      ]
     ],
     "votes": {
-     "caller": 3
+     "caller": 4
     }
    },
    {
@@ -1187,18 +617,18 @@
     "sample": [
      [
       "caller",
-      "00462a70",
-      "?FindTextA@CScintillaView@Scintilla@@MAEHPBDHHHH@Z"
+      "006ce180",
+      "?Copy@CXTPReportControl@@UAEXXZ"
      ],
      [
       "caller",
-      "00462a70",
-      "?FindTextA@CScintillaView@Scintilla@@MAEHPBDHHHH@Z"
+      "006ce180",
+      "?Copy@CXTPReportControl@@UAEXXZ"
      ],
      [
       "caller",
-      "006d4140",
-      "?Paste@CXTPReportControl@@UAEXXZ"
+      "006ce180",
+      "?Copy@CXTPReportControl@@UAEXXZ"
      ]
     ],
     "votes": {
@@ -1242,6 +672,43 @@
   "owner_class": null,
   "signature": null
  },
+ "00449f50": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 1,
+    "sample": [
+     [
+      "caller",
+      "0044b590",
+      "?AtlRegisterTypeLib@ATL@@YGJPAUHINSTANCE__@@PB_W@Z"
+     ],
+     [
+      "caller",
+      "0044b590",
+      "?AtlRegisterTypeLib@ATL@@YGJPAUHINSTANCE__@@PB_W@Z"
+     ],
+     [
+      "caller",
+      "0044b590",
+      "?AtlRegisterTypeLib@ATL@@YGJPAUHINSTANCE__@@PB_W@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 4
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?AtlGetDirLen@ATL@@YGIPB_W@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?AtlGetDirLen@ATL@@YGIPB_W@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
  "0044a640": {
   "evidence": [
    {
@@ -1250,22 +717,22 @@
     "sample": [
      [
       "caller",
-      "005e06b0",
-      "??$to_simple_string_type@D@posix_time@boost@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Vtime_duration@01@@Z"
+      "005a6ef0",
+      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
      ],
      [
       "caller",
-      "0058d780",
-      "?writeCloseTag@TextXmlWriter@@IAEXPBVXmlElement@@H@Z"
+      "005a6ef0",
+      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
      ],
      [
       "caller",
-      "0058d780",
-      "?writeCloseTag@TextXmlWriter@@IAEXPBVXmlElement@@H@Z"
+      "005a6ef0",
+      "?writeEntry@Log@RBX@@QAEXW4Severity@12@PBD@Z"
      ]
     ],
     "votes": {
-     "caller": 29
+     "caller": 34
     }
    },
    {
@@ -1451,98 +918,28 @@
   "owner_class": null,
   "signature": null
  },
- "0044d050": {
+ "0045c600": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
-      "caller",
-      "0044d540",
-      "?dispose@?$sp_counted_impl_p@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@GU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@std@@@2@@std@@@detail@boost@@UAEXXZ"
-     ],
-     [
-      "caller",
-      "0044d490",
-      "??$checked_delete@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@GU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@std@@@2@@std@@@boost@@YAXPAV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@GU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@std@@@2@@std@@@Z"
+      "callee",
+      "6"
      ]
     ],
     "votes": {
-     "caller": 2
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@GU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@std@@@2@$0A@@std@@@std@@QAE@XZ"
+    "symbol": "?setCharacterRenderImportance@RBX@@YAXPAVInstance@1@@Z"
    }
   ],
   "kind": "code",
-  "name": "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@GU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@std@@@2@$0A@@std@@@std@@QAE@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0045aec0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "005ca500",
-      "?getValue@KeyboardPrimaryController@RBX@@UBEMW4InputType@Controller@2@@Z"
-     ],
-     [
-      "caller",
-      "005ca500",
-      "?getValue@KeyboardPrimaryController@RBX@@UBEMW4InputType@Controller@2@@Z"
-     ],
-     [
-      "caller",
-      "005ca500",
-      "?getValue@KeyboardPrimaryController@RBX@@UBEMW4InputType@Controller@2@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?ctrlKeyDown@UserInputBase@RBX@@QBE_NXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?ctrlKeyDown@UserInputBase@RBX@@QBE_NXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0045beb0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0045bf60",
-      "?OnEnable@CXTPSyntaxEditColorSampleText@@QAEXH@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?Refresh@CXTPSyntaxEditColorSampleText@@QAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?Refresh@CXTPSyntaxEditColorSampleText@@QAEXXZ",
+  "name": "?setCharacterRenderImportance@RBX@@YAXPAVInstance@1@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -1575,6 +972,58 @@
   ],
   "kind": "code",
   "name": "?GetSelText@CScintillaCtrl@Scintilla@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "00462890": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "7"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnFindReplaceCmd@CScintillaView@Scintilla@@IAEJIJ@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnFindReplaceCmd@CScintillaView@Scintilla@@IAEJIJ@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "00463430": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "7"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?OnFilePageSetup@CScintillaView@@IAEXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?OnFilePageSetup@CScintillaView@@IAEXXZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -1992,6 +1441,32 @@
   "owner_class": null,
   "signature": null
  },
+ "00492a90": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "7"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$polymorphic_cast@PAVPlayer@Network@RBX@@VDescribedBase@Reflection@3@@boost@@YAPAVPlayer@Network@RBX@@PAVDescribedBase@Reflection@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$polymorphic_cast@PAVPlayer@Network@RBX@@VDescribedBase@Reflection@3@@boost@@YAPAVPlayer@Network@RBX@@PAVDescribedBase@Reflection@3@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
  "004930d0": {
   "evidence": [
    {
@@ -2045,36 +1520,6 @@
   "owner_class": null,
   "signature": null
  },
- "0049bcd0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "6"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?_Tidy@?$deque@UAbuseReport@Network@RBX@@V?$allocator@UAbuseReport@Network@RBX@@@std@@@std@@IAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?_Tidy@?$deque@UAbuseReport@Network@RBX@@V?$allocator@UAbuseReport@Network@RBX@@@std@@@std@@IAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "0049cb30": {
   "evidence": [
    {
@@ -2098,7 +1543,7 @@
      ]
     ],
     "votes": {
-     "caller": 4
+     "caller": 5
     }
    },
    {
@@ -2108,43 +1553,6 @@
   ],
   "kind": "code",
   "name": "?chat@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0049fc50": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0049fe20",
-      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z"
-     ],
-     [
-      "caller",
-      "0049fe20",
-      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z"
-     ],
-     [
-      "caller",
-      "0049fe20",
-      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$find@VClient@Network@RBX@@@ServiceProvider@RBX@@QBEPAVClient@Network@1@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??$find@VClient@Network@RBX@@@ServiceProvider@RBX@@QBEPAVClient@Network@1@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -2175,76 +1583,28 @@
   "owner_class": null,
   "signature": null
  },
- "004a1580": {
+ "004a3290": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
-      "caller",
-      "004a3540",
-      "??1Server@Network@RBX@@UAE@XZ"
-     ],
-     [
-      "caller",
-      "004a3540",
-      "??1Server@Network@RBX@@UAE@XZ"
-     ],
-     [
-      "caller",
-      "004a3540",
-      "??1Server@Network@RBX@@UAE@XZ"
+      "callee",
+      "7"
      ]
     ],
     "votes": {
-     "caller": 3
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??1?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@MAE@XZ"
+    "symbol": "?sub_004a3290@@YI_NPAUProxyView@@HPAVInstance@RBX@@@Z"
    }
   ],
   "kind": "code",
-  "name": "??1?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@MAE@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004a3e40": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "004a40d0",
-      "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z"
-     ],
-     [
-      "caller",
-      "004a40d0",
-      "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z"
-     ],
-     [
-      "caller",
-      "004a40d0",
-      "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$find@VServer@Network@RBX@@@ServiceProvider@RBX@@QBEPAVServer@Network@1@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??$find@VServer@Network@RBX@@@ServiceProvider@RBX@@QBEPAVServer@Network@1@XZ",
+  "name": "?sub_004a3290@@YI_NPAUProxyView@@HPAVInstance@RBX@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -2339,10 +1699,15 @@
       "caller",
       "004b6890",
       "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
+     ],
+     [
+      "caller",
+      "004b6890",
+      "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 2
     }
    },
    {
@@ -2435,58 +1800,6 @@
   "owner_class": null,
   "signature": null
  },
- "004ab7f0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??_GFilePacketLogger@@UAEPAXI@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??_GFilePacketLogger@@UAEPAXI@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004ab850": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?cleanupConnections@@YAXPAUConnectionCleanup@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?cleanupConnections@@YAXPAUConnectionCleanup@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "004acd30": {
   "evidence": [
    {
@@ -2497,10 +1810,15 @@
       "caller",
       "004b6890",
       "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
+     ],
+     [
+      "caller",
+      "004b6890",
+      "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 2
     }
    },
    {
@@ -2551,10 +1869,15 @@
       "caller",
       "004b6890",
       "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
+     ],
+     [
+      "caller",
+      "004b6890",
+      "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 2
     }
    },
    {
@@ -2578,10 +1901,15 @@
       "caller",
       "004b6890",
       "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
+     ],
+     [
+      "caller",
+      "004b6890",
+      "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 2
     }
    },
    {
@@ -2686,10 +2014,15 @@
       "caller",
       "004b6890",
       "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
+     ],
+     [
+      "caller",
+      "004b6890",
+      "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 2
     }
    },
    {
@@ -2768,17 +2101,22 @@
     "sample": [
      [
       "caller",
+      "004b6ab0",
+      "?deserializeValue@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@AAVProperty@Reflection@3@@Z"
+     ],
+     [
+      "caller",
       "004b6890",
       "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ],
      [
       "caller",
-      "004b6ab0",
-      "?deserializeValue@Replicator@Network@RBX@@AAEXAAVBitStream@RakNet@@AAVProperty@Reflection@3@@Z"
+      "004b6890",
+      "?serializeValue@Replicator@Network@RBX@@AAEXABVConstProperty@Reflection@3@_NAAVBitStream@RakNet@@@Z"
      ]
     ],
     "votes": {
-     "caller": 2
+     "caller": 3
     }
    },
    {
@@ -2801,10 +2139,14 @@
      [
       "callee",
       "20"
+     ],
+     [
+      "callee",
+      "20"
      ]
     ],
     "votes": {
-     "callee": 1
+     "callee": 2
     }
    },
    {
@@ -2900,11 +2242,11 @@
   "evidence": [
    {
     "kind": "object-alignment-callee",
-    "round": 1,
+    "round": 2,
     "sample": [
      [
       "callee",
-      "3"
+      "7"
      ]
     ],
     "votes": {
@@ -3000,186 +2342,6 @@
   ],
   "kind": "code",
   "name": "?f@S@@QAEXPAUStream@@PAUSource@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004d8dc0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004d8e30": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004d8ea0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004d8f10": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004d8f80": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "004d8ff0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?freeMemory@?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@@G3D@@AAEXXZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -3499,20 +2661,28 @@
  "00502b00": {
   "evidence": [
    {
-    "kind": "object-alignment-callee",
+    "kind": "object-alignment-caller",
     "round": 1,
     "sample": [
      [
-      "callee",
-      "6"
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
      ],
      [
-      "callee",
-      "6"
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
+     ],
+     [
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
      ]
     ],
     "votes": {
-     "callee": 2
+     "callee": 2,
+     "caller": 6
     }
    },
    {
@@ -3526,7 +2696,7 @@
   "owner_class": null,
   "signature": null
  },
- "005035e0": {
+ "005032a0": {
   "evidence": [
    {
     "kind": "object-alignment-caller",
@@ -3534,31 +2704,68 @@
     "sample": [
      [
       "caller",
-      "00503ea0",
-      "?append@?$Array@VRenderSurface@Render@RBX@@@G3D@@QAEXABVRenderSurface@Render@RBX@@@Z"
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
      ],
      [
       "caller",
-      "00503ea0",
-      "?append@?$Array@VRenderSurface@Render@RBX@@@G3D@@QAEXABVRenderSurface@Render@RBX@@@Z"
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
      ],
      [
-      "callee",
-      "11"
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
      ]
     ],
     "votes": {
-     "callee": 1,
-     "caller": 2
+     "caller": 3
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "?resize@?$Array@VRenderSurface@Render@RBX@@@G3D@@QAEXH_N@Z"
+    "symbol": "?computeShadowVolumeGeometry@RenderScene@Render@RBX@@ABEXAAV?$Array@I@G3D@@AAV?$Array@VVector3@G3D@@@5@ABVGLight@5@_NM@Z"
    }
   ],
   "kind": "code",
-  "name": "?resize@?$Array@VRenderSurface@Render@RBX@@@G3D@@QAEXH_N@Z",
+  "name": "?computeShadowVolumeGeometry@RenderScene@Render@RBX@@ABEXAAV?$Array@I@G3D@@AAV?$Array@VVector3@G3D@@@5@ABVGLight@5@_NM@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "005033e0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 1,
+    "sample": [
+     [
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
+     ],
+     [
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
+     ],
+     [
+      "caller",
+      "00503fe0",
+      "?markStencilShadows@RenderScene@Render@RBX@@AAEXPAVRenderDevice@G3D@@ABVGCamera@5@ABVGLight@5@@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 3
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?updateShadowVAR@RenderScene@Render@RBX@@AAEXABV?$Array@VVector3@G3D@@@G3D@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?updateShadowVAR@RenderScene@Render@RBX@@AAEXABV?$Array@VVector3@G3D@@@G3D@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -3684,22 +2891,16 @@
  "005196b0": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
-     [
-      "caller",
-      "00519830",
-      "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z"
-     ],
      [
       "callee",
       "8"
      ]
     ],
     "votes": {
-     "callee": 1,
-     "caller": 1
+     "callee": 1
     }
    },
    {
@@ -3833,62 +3034,6 @@
   "owner_class": null,
   "signature": null
  },
- "0055d840": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ],
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?Concatenate@?$CSimpleStringT@D$0A@@ATL@@KAXAAV12@PBDH1H@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?Concatenate@?$CSimpleStringT@D$0A@@ATL@@KAXAAV12@PBDH1H@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0055de10": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 2,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "005624b0": {
   "evidence": [
    {
@@ -3912,6 +3057,36 @@
   ],
   "kind": "code",
   "name": "?hasContent@ContentProvider@RBX@@QAE_NVContentId@2@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "00562530": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "7"
+     ],
+     [
+      "callee",
+      "7"
+     ]
+    ],
+    "votes": {
+     "callee": 2
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sub_00562530@ContentProvider@RBX@@QAEXABVContentId@2@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sub_00562530@ContentProvider@RBX@@QAEXABVContentId@2@V?$function@$$A6AXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@ZV?$allocator@X@4@@boost@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -3953,177 +3128,28 @@
   "owner_class": null,
   "signature": null
  },
- "005631c0": {
+ "00574280": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
-      "caller",
-      "00563a50",
-      "?shaderModel@DebugSettings@RBX@@QBEMXZ"
-     ],
-     [
-      "caller",
-      "00563a50",
-      "?shaderModel@DebugSettings@RBX@@QBEMXZ"
-     ],
-     [
-      "caller",
-      "00563a50",
-      "?shaderModel@DebugSettings@RBX@@QBEMXZ"
+      "callee",
+      "6"
      ]
     ],
     "votes": {
-     "caller": 35
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??1SpecData@Render@RBX@@QAE@XZ"
+    "symbol": "?render2d@GuiRoot@RBX@@UAEXPAVAdorn@2@@Z"
    }
   ],
   "kind": "code",
-  "name": "??1SpecData@Render@RBX@@QAE@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0056b700": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0056bab0",
-      "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z"
-     ],
-     [
-      "caller",
-      "0056bab0",
-      "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z"
-     ],
-     [
-      "caller",
-      "0056bab0",
-      "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?declare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVSignalDescriptor@23@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?declare@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVSignalDescriptor@23@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0056c170": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0056c650",
-      "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z"
-     ],
-     [
-      "caller",
-      "0056c650",
-      "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?declare@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVPropertyDescriptor@23@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?declare@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVPropertyDescriptor@23@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0056fff0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "00595790",
-      "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z"
-     ],
-     [
-      "caller",
-      "00595790",
-      "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z"
-     ],
-     [
-      "caller",
-      "00595790",
-      "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?declare@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVFunctionDescriptor@23@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?declare@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAEXPAVFunctionDescriptor@23@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00573570": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "00600540",
-      "??0UnifiedWidget@RBX@@QAE@XZ"
-     ],
-     [
-      "caller",
-      "00600540",
-      "??0UnifiedWidget@RBX@@QAE@XZ"
-     ]
-    ],
-    "votes": {
-     "caller": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?init@UnifiedWidget@RBX@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?init@UnifiedWidget@RBX@@AAEXXZ",
+  "name": "?render2d@GuiRoot@RBX@@UAEXPAVAdorn@2@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -4137,10 +3163,14 @@
      [
       "callee",
       "6"
+     ],
+     [
+      "callee",
+      "6"
      ]
     ],
     "votes": {
-     "callee": 1
+     "callee": 2
     }
    },
    {
@@ -4181,40 +3211,6 @@
   "owner_class": null,
   "signature": null
  },
- "00578790": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "13"
-     ],
-     [
-      "callee",
-      "13"
-     ],
-     [
-      "callee",
-      "13"
-     ]
-    ],
-    "votes": {
-     "callee": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@RBX@@QAE@PBD00@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@RBX@@QAE@PBD00@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "0057b3a0": {
   "evidence": [
    {
@@ -4249,40 +3245,6 @@
   "owner_class": null,
   "signature": null
  },
- "0057f310": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "15"
-     ],
-     [
-      "callee",
-      "15"
-     ],
-     [
-      "callee",
-      "15"
-     ]
-    ],
-    "votes": {
-     "callee": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??1?$FilteredSelection@VModelInstance@RBX@@@RBX@@UAE@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??1?$FilteredSelection@VModelInstance@RBX@@@RBX@@UAE@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00584100": {
   "evidence": [
    {
@@ -4292,10 +3254,18 @@
      [
       "callee",
       "9"
+     ],
+     [
+      "callee",
+      "9"
+     ],
+     [
+      "callee",
+      "9"
      ]
     ],
     "votes": {
-     "callee": 1
+     "callee": 3
     }
    },
    {
@@ -4305,6 +3275,32 @@
   ],
   "kind": "code",
   "name": "?getPrimaryPartInternal@ModelInstance@RBX@@QBEPAVPartInstance@2@XZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "00585310": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "7"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$polymorphic_cast@PAVPartInstance@RBX@@VDescribedBase@Reflection@2@@boost@@YAPAVPartInstance@RBX@@PAVDescribedBase@Reflection@2@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$polymorphic_cast@PAVPartInstance@RBX@@VDescribedBase@Reflection@2@@boost@@YAPAVPartInstance@RBX@@PAVDescribedBase@Reflection@2@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -4346,32 +3342,6 @@
   "owner_class": null,
   "signature": null
  },
- "0058bb40": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "7"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?invoke@Holder@@QAEXPAVDescribedBase@Reflection@RBX@@PAUArg@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?invoke@Holder@@QAEXPAVDescribedBase@Reflection@RBX@@PAUArg@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00595a80": {
   "evidence": [
    {
@@ -4409,39 +3379,28 @@
   "owner_class": null,
   "signature": null
  },
- "0059d130": {
+ "00599250": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
-      "caller",
-      "007f45d0",
-      "??__Eprop_shapeUi@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f45d0",
-      "??__Eprop_shapeUi@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f45d0",
-      "??__Eprop_shapeUi@RBX@@YAXXZ"
+      "callee",
+      "3"
      ]
     ],
     "votes": {
-     "caller": 3
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z"
+    "symbol": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ"
    }
   ],
   "kind": "code",
-  "name": "??$?0P8PartInstance@RBX@@BE?AW4PartType@Part@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@RBX@@QAE@PBD0P8PartInstance@2@BE?AW4PartType@Part@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+  "name": "?computePosition@GeoPair@RBX@@QAE?AVVector3@G3D@@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -4510,6 +3469,33 @@
   "owner_class": null,
   "signature": null
  },
+ "005a3970": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 1,
+    "sample": [
+     [
+      "caller",
+      "00641c40",
+      "?onHeartBeat@ICharacterSubject@RBX@@QAEXAAVCoordinateFrame@G3D@@0@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?setInMouselookMode@Workspace@RBX@@QAEX_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?setInMouselookMode@Workspace@RBX@@QAEX_N@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
  "005a3cb0": {
   "evidence": [
    {
@@ -4532,32 +3518,6 @@
   ],
   "kind": "code",
   "name": "??$polymorphic_cast@PAVCamera@RBX@@VDescribedBase@Reflection@2@@boost@@YAPAVCamera@RBX@@PAVDescribedBase@Reflection@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005a8ec0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "3"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?exe_on_tostring@Lua@RBX@@YAHABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?exe_on_tostring@Lua@RBX@@YAHABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@PAUlua_State@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -4618,76 +3578,28 @@
   "owner_class": null,
   "signature": null
  },
- "005aba50": {
+ "005add30": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
-      "caller",
-      "005ac2f0",
-      "??$pushTable@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@LuaArguments@Lua@RBX@@SAHV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0QAUlua_State@@@Z"
-     ],
-     [
-      "caller",
-      "005ac2f0",
-      "??$pushTable@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@LuaArguments@Lua@RBX@@SAHV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0QAUlua_State@@@Z"
-     ],
-     [
-      "caller",
-      "005ac2f0",
-      "??$pushTable@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@LuaArguments@Lua@RBX@@SAHV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0QAUlua_State@@@Z"
+      "callee",
+      "7"
      ]
     ],
     "votes": {
-     "caller": 3
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "?push@LuaArguments@Lua@RBX@@SAHABVValue@Reflection@3@QAUlua_State@@@Z"
+    "symbol": "?sub_005add30@RBX@@YAHPAUlua_State@@@Z"
    }
   ],
   "kind": "code",
-  "name": "?push@LuaArguments@Lua@RBX@@SAHABVValue@Reflection@3@QAUlua_State@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005acb00": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "00442140",
-      "??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z"
-     ],
-     [
-      "caller",
-      "00442140",
-      "??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z"
-     ],
-     [
-      "caller",
-      "00442140",
-      "??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z",
+  "name": "?sub_005add30@RBX@@YAHPAUlua_State@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -4826,38 +3738,6 @@
   "owner_class": null,
   "signature": null
  },
- "005b10a0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "005b25f0",
-      "?onAncestorChanged@Accoutrement@RBX@@MAEXABUAncestorChanged@2@@Z"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 1,
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?rebuildBackendState@Accoutrement@RBX@@IAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?rebuildBackendState@Accoutrement@RBX@@IAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "005b17d0": {
   "evidence": [
    {
@@ -4888,17 +3768,16 @@
  "005b1830": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
-    "round": 2,
+    "kind": "object-alignment-callee",
+    "round": 1,
     "sample": [
      [
-      "caller",
-      "005b2510",
-      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
+      "callee",
+      "11"
      ]
     ],
     "votes": {
-     "caller": 1
+     "callee": 1
     }
    },
    {
@@ -4951,13 +3830,19 @@
       "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
      ],
      [
-      "callee",
-      "6"
+      "caller",
+      "005b2510",
+      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
+     ],
+     [
+      "caller",
+      "005b2510",
+      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
      ]
     ],
     "votes": {
      "callee": 1,
-     "caller": 1
+     "caller": 3
     }
    },
    {
@@ -4983,13 +3868,19 @@
       "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
      ],
      [
-      "callee",
-      "12"
+      "caller",
+      "005b2510",
+      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
+     ],
+     [
+      "caller",
+      "005b2510",
+      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
      ]
     ],
     "votes": {
      "callee": 1,
-     "caller": 1
+     "caller": 3
     }
    },
    {
@@ -5013,10 +3904,20 @@
       "caller",
       "005b2510",
       "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
+     ],
+     [
+      "caller",
+      "005b2510",
+      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
+     ],
+     [
+      "caller",
+      "005b2510",
+      "?setDesiredState@Accoutrement@RBX@@IAEXW4AccoutrementState@12@PBVServiceProvider@2@@Z"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 3
     }
    },
    {
@@ -5033,9 +3934,14 @@
  "005b2510": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
+     [
+      "caller",
+      "005b25f0",
+      "?onAncestorChanged@Accoutrement@RBX@@MAEXABUAncestorChanged@2@@Z"
+     ],
      [
       "caller",
       "005b25f0",
@@ -5047,8 +3953,8 @@
      ]
     ],
     "votes": {
-     "callee": 1,
-     "caller": 1
+     "callee": 3,
+     "caller": 2
     }
    },
    {
@@ -5099,144 +4005,6 @@
   "owner_class": null,
   "signature": null
  },
- "005bc5b0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "005bd540",
-      "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ"
-     ],
-     [
-      "caller",
-      "005bd540",
-      "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ"
-     ],
-     [
-      "caller",
-      "005bd590",
-      "?stop@SoundChannel@Soundscape@RBX@@QAEXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?updateListenState@SoundChannel@Soundscape@RBX@@AAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?updateListenState@SoundChannel@Soundscape@RBX@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005bdf70": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0056f0b0",
-      "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
-     ],
-     [
-      "caller",
-      "0056f0b0",
-      "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
-     ],
-     [
-      "caller",
-      "0056f0b0",
-      "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?convertToString@?$StringConverter@N@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABN@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?convertToString@?$StringConverter@N@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABN@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005be040": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0056f0b0",
-      "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
-     ],
-     [
-      "caller",
-      "0056f0b0",
-      "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
-     ],
-     [
-      "caller",
-      "0056f0b0",
-      "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?convertToString@?$StringConverter@M@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABM@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?convertToString@?$StringConverter@M@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABM@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005be610": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0057c550",
-      "?getValue@XmlNameValuePair@@QBE_NAAI@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?convertToValue@?$StringConverter@I@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAI@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?convertToValue@?$StringConverter@I@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAI@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "005be8a0": {
   "evidence": [
    {
@@ -5254,37 +4022,11 @@
    },
    {
     "kind": "decorated-signature",
-    "symbol": "?convertToString@?$StringConverter@VVector2int16@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector2int16@G3D@@@Z"
+    "symbol": "?sub_005be8a0@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBF@Z"
    }
   ],
   "kind": "code",
-  "name": "?convertToString@?$StringConverter@VVector2int16@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector2int16@G3D@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005beaf0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "4"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?convertToString@?$StringConverter@VCoordinateFrame@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCoordinateFrame@G3D@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?convertToString@?$StringConverter@VCoordinateFrame@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCoordinateFrame@G3D@@@Z",
+  "name": "?sub_005be8a0@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBF@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -5334,17 +4076,12 @@
     "sample": [
      [
       "caller",
-      "005cc930",
-      "?panUnits@Camera@RBX@@QAEXH@Z"
-     ],
-     [
-      "caller",
       "005cb530",
       "?onEvent@PlayerController@RBX@@EAEXPBVRunService@2@VHeartbeat@2@@Z"
      ]
     ],
     "votes": {
-     "caller": 2
+     "caller": 1
     }
    },
    {
@@ -5366,15 +4103,15 @@
     "sample": [
      [
       "callee",
-      "8"
+      "12"
      ],
      [
       "callee",
-      "8"
+      "12"
      ],
      [
       "callee",
-      "8"
+      "12"
      ]
     ],
     "votes": {
@@ -5388,98 +4125,6 @@
   ],
   "kind": "code",
   "name": "?updateGoal@Camera@RBX@@AAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005cdcf0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f5cf0",
-      "??__Edesc_cameraType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f5cf0",
-      "??__Edesc_cameraType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Camera@RBX@@BE?AW4CameraType@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VCamera@RBX@@W4CameraType@12@@Reflection@RBX@@QAE@PBD0P8Camera@2@BE?AW4CameraType@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Camera@RBX@@BE?AW4CameraType@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VCamera@RBX@@W4CameraType@12@@Reflection@RBX@@QAE@PBD0P8Camera@2@BE?AW4CameraType@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005d4640": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "6"
-     ],
-     [
-      "callee",
-      "6"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?getLeftLeg@HumanoidX@RBX@@QAEPAVPartInstance@2@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?getLeftLeg@HumanoidX@RBX@@QAEPAVPartInstance@2@XZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005d48a0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "6"
-     ],
-     [
-      "callee",
-      "6"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?getLeftArm@HumanoidX@RBX@@QAEPAVPartInstance@2@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?getLeftArm@HumanoidX@RBX@@QAEPAVPartInstance@2@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -5514,22 +4159,16 @@
  "005db4c0": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
-     [
-      "caller",
-      "005db560",
-      "?onAncestorChanged@Humanoid@RBX@@EAEXABUAncestorChanged@2@@Z"
-     ],
      [
       "callee",
       "7"
      ]
     ],
     "votes": {
-     "callee": 1,
-     "caller": 1
+     "callee": 1
     }
    },
    {
@@ -5588,10 +4227,14 @@
      [
       "callee",
       "3"
+     ],
+     [
+      "callee",
+      "3"
      ]
     ],
     "votes": {
-     "callee": 2
+     "callee": 3
     }
    },
    {
@@ -5601,33 +4244,6 @@
   ],
   "kind": "code",
   "name": "?pan@@YAXAAVCoordinateFrame@G3D@@M@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005e3f10": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "005e4810",
-      "??0Weld@RBX@@QAE@XZ"
-     ]
-    ],
-    "votes": {
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0PAVWeldJoint@RBX@@@?$DescribedCreatable@VWeld@RBX@@VAutoJoint@2@$1?sWeld@2@3QBDB@RBX@@IAE@PAVWeldJoint@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0PAVWeldJoint@RBX@@@?$DescribedCreatable@VWeld@RBX@@VAutoJoint@2@$1?sWeld@2@3QBDB@RBX@@IAE@PAVWeldJoint@1@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -5667,17 +4283,16 @@
  "005e5ff0": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
-    "round": 2,
+    "kind": "object-alignment-callee",
+    "round": 1,
     "sample": [
      [
-      "caller",
-      "005e70a0",
-      "??1Clump@RBX@@UAE@XZ"
+      "callee",
+      "3"
      ]
     ],
     "votes": {
-     "caller": 1
+     "callee": 1
     }
    },
    {
@@ -5731,8 +4346,8 @@
     "sample": [
      [
       "caller",
-      "005e70a0",
-      "??1Clump@RBX@@UAE@XZ"
+      "005e5ff0",
+      "?removePrimitiveImp@Clump@RBX@@AAEXPAVPrimitive@2@@Z"
      ],
      [
       "caller",
@@ -5746,7 +4361,7 @@
      ]
     ],
     "votes": {
-     "caller": 5
+     "caller": 6
     }
    },
    {
@@ -5760,7 +4375,7 @@
   "owner_class": null,
   "signature": null
  },
- "005e6420": {
+ "005e6ba0": {
   "evidence": [
    {
     "kind": "object-alignment-callee",
@@ -5768,7 +4383,37 @@
     "sample": [
      [
       "callee",
-      "5"
+      "6"
+     ],
+     [
+      "callee",
+      "6"
+     ]
+    ],
+    "votes": {
+     "callee": 2
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sub_005e6ba0@Clump@RBX@@QAEXAAV?$Array@PBX@G3D@@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sub_005e6ba0@Clump@RBX@@QAEXAAV?$Array@PBX@G3D@@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e6cf0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 3,
+    "sample": [
+     [
+      "callee",
+      "3"
      ]
     ],
     "votes": {
@@ -5777,11 +4422,11 @@
    },
    {
     "kind": "decorated-signature",
-    "symbol": "?computeMaxRadius@Assembly@RBX@@ABEMXZ"
+    "symbol": "??0Clump@RBX@@QAE@PAVPrimitive@1@@Z"
    }
   ],
   "kind": "code",
-  "name": "?computeMaxRadius@Assembly@RBX@@ABEMXZ",
+  "name": "??0Clump@RBX@@QAE@PAVPrimitive@1@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -5988,22 +4633,12 @@
     "sample": [
      [
       "caller",
-      "005e8470",
-      "?setGridSize@Primitive@RBX@@QAEXABVVector3@G3D@@@Z"
-     ],
-     [
-      "caller",
-      "005e8470",
-      "?setGridSize@Primitive@RBX@@QAEXABVVector3@G3D@@@Z"
-     ],
-     [
-      "caller",
       "005e8200",
       "?setCoordinateFrame@Primitive@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
      ]
     ],
     "votes": {
-     "caller": 6
+     "caller": 1
     }
    },
    {
@@ -6027,20 +4662,10 @@
       "caller",
       "005e8200",
       "?setCoordinateFrame@Primitive@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
-     ],
-     [
-      "caller",
-      "005e8200",
-      "?setCoordinateFrame@Primitive@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
-     ],
-     [
-      "caller",
-      "005e8200",
-      "?setCoordinateFrame@Primitive@RBX@@QAEXABVCoordinateFrame@G3D@@@Z"
      ]
     ],
     "votes": {
-     "caller": 4
+     "caller": 1
     }
    },
    {
@@ -6054,60 +4679,6 @@
   "owner_class": null,
   "signature": null
  },
- "005e9240": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "006456e0",
-      "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?onJointPrimitiveNulling@World@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?onJointPrimitiveNulling@World@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005e9250": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "006456e0",
-      "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?onJointPrimitiveSet@World@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?onJointPrimitiveSet@World@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "005e93b0": {
   "evidence": [
    {
@@ -6116,17 +4687,22 @@
     "sample": [
      [
       "caller",
-      "0066f070",
-      "??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z"
+      "0066ed50",
+      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
      ],
      [
       "caller",
       "0066ed50",
       "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
+     ],
+     [
+      "caller",
+      "0066f070",
+      "??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z"
      ]
     ],
     "votes": {
-     "caller": 2
+     "caller": 3
     }
    },
    {
@@ -6314,492 +4890,11 @@
   "owner_class": null,
   "signature": null
  },
- "005ed6c0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7180",
-      "??__Edesc_TopType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7180",
-      "??__Edesc_TopType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7180",
-      "??__Edesc_TopType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$00W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005eda40": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f71b0",
-      "??__Edesc_TopSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f71b0",
-      "??__Edesc_TopSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f71b0",
-      "??__Edesc_TopSurfaceInput@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$00W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$00W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005edde0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7240",
-      "??__Edesc_BottomType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7240",
-      "??__Edesc_BottomType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7240",
-      "??__Edesc_BottomType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$03W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005edf00": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7270",
-      "??__Edesc_BottomSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7270",
-      "??__Edesc_BottomSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7270",
-      "??__Edesc_BottomSurfaceInput@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$03W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$03W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ee120": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7300",
-      "??__Edesc_LeftType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7300",
-      "??__Edesc_LeftType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7300",
-      "??__Edesc_LeftType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$02W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ee260": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7330",
-      "??__Edesc_LeftSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7330",
-      "??__Edesc_LeftSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7330",
-      "??__Edesc_LeftSurfaceInput@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$02W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$02W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ee4a0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f73c0",
-      "??__Edesc_RightType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f73c0",
-      "??__Edesc_RightType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f73c0",
-      "??__Edesc_RightType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$0A@W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ee650": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f73f0",
-      "??__Edesc_RightSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f73f0",
-      "??__Edesc_RightSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f73f0",
-      "??__Edesc_RightSurfaceInput@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$0A@W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$0A@W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ee7a0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7480",
-      "??__Edesc_FrontType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7480",
-      "??__Edesc_FrontType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7480",
-      "??__Edesc_FrontType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$04W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ee8c0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f74b0",
-      "??__Edesc_FrontSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f74b0",
-      "??__Edesc_FrontSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f74b0",
-      "??__Edesc_FrontSurfaceInput@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$04W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$04W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005eea70": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7540",
-      "??__Edesc_BackType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7540",
-      "??__Edesc_BackType@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7540",
-      "??__Edesc_BackType@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4SurfaceType@1@XZP801@AEXW421@@Z@?$SurfaceEnumPropDescriptor@$01W4SurfaceType@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4SurfaceType@1@XZP821@AEXW431@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005eeb20": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7570",
-      "??__Edesc_BackSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7570",
-      "??__Edesc_BackSurfaceInput@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7570",
-      "??__Edesc_BackSurfaceInput@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$01W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Surface@RBX@@BE?AW4InputType@Controller@1@XZP801@AEXW4231@@Z@?$SurfaceEnumPropDescriptor@$01W4InputType@Controller@RBX@@@RBX@@QAE@PBD0P8Surface@1@BE?AW4InputType@Controller@1@XZP821@AEXW4341@@ZW4Functionality@PropertyDescriptor@Reflection@1@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005ef690": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7600",
-      "??__E?prop_Face@FaceInstance@RBX@@2V?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@2@B@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7600",
-      "??__E?prop_Face@FaceInstance@RBX@@2V?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@2@B@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7600",
-      "??__E?prop_Face@FaceInstance@RBX@@2V?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@2@B@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 5
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8FaceInstance@RBX@@BE?AW4NormalId@1@XZP801@AEXW421@@Z@?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@RBX@@QAE@PBD0P8FaceInstance@2@BE?AW4NormalId@2@XZP832@AEXW442@@ZW4Functionality@PropertyDescriptor@12@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8FaceInstance@RBX@@BE?AW4NormalId@1@XZP801@AEXW421@@Z@?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@RBX@@QAE@PBD0P8FaceInstance@2@BE?AW4NormalId@2@XZP832@AEXW442@@ZW4Functionality@PropertyDescriptor@12@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "005fad50": {
   "evidence": [
    {
     "kind": "object-alignment-caller",
-    "round": 1,
+    "round": 2,
     "sample": [
      [
       "caller",
@@ -6826,7 +4921,7 @@
   "evidence": [
    {
     "kind": "object-alignment-caller",
-    "round": 1,
+    "round": 2,
     "sample": [
      [
       "caller",
@@ -6882,43 +4977,6 @@
   ],
   "kind": "code",
   "name": "?newPoint@Kernel@RBX@@QAEPAVPoint@2@PAVBody@2@ABVVector3@G3D@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "005fb5f0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "005fb650",
-      "??0Kernel@RBX@@QAE@PAVIStage@1@@Z"
-     ],
-     [
-      "caller",
-      "005fb650",
-      "??0Kernel@RBX@@QAE@PAVIStage@1@@Z"
-     ],
-     [
-      "caller",
-      "005fb650",
-      "??0Kernel@RBX@@QAE@PAVIStage@1@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0KernelData@RBX@@QAE@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??0KernelData@RBX@@QAE@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -7039,7 +5097,7 @@
  "005fed60": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 3,
     "sample": [
      [
@@ -7049,11 +5107,15 @@
      ],
      [
       "callee",
-      "12"
+      "10"
+     ],
+     [
+      "callee",
+      "10"
      ]
     ],
     "votes": {
-     "callee": 1,
+     "callee": 3,
      "caller": 1
     }
    },
@@ -7159,6 +5221,40 @@
   "owner_class": null,
   "signature": null
  },
+ "00607020": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "5"
+     ],
+     [
+      "callee",
+      "5"
+     ],
+     [
+      "callee",
+      "5"
+     ]
+    ],
+    "votes": {
+     "callee": 4
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?computeIsColliding@BallBlockContact@NativeContactABI@@QAE_NAAHAAVVector3int16@G3D@@AAVVector3@4@M@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?computeIsColliding@BallBlockContact@NativeContactABI@@QAE_NAAHAAVVector3int16@G3D@@AAVVector3@4@M@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
  "00607cc0": {
   "evidence": [
    {
@@ -7230,69 +5326,6 @@
   "owner_class": null,
   "signature": null
  },
- "00608890": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?render@RegionRenderer@@QAEXPAVAdorn@@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?render@RegionRenderer@@QAEXPAVAdorn@@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00609590": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7a60",
-      "??__E?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7a60",
-      "??__E?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7a60",
-      "??__E?prop_ControllerType@PVInstance@RBX@@2V?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@2@B@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8PVInstance@RBX@@BE?AW4ControllerType@Controller@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8PVInstance@RBX@@BE?AW4ControllerType@Controller@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "0060b970": {
   "evidence": [
    {
@@ -7319,150 +5352,29 @@
   "owner_class": null,
   "signature": null
  },
- "0060bd80": {
+ "0060cc00": {
   "evidence": [
    {
     "kind": "object-alignment-caller",
-    "round": 1,
+    "round": 2,
     "sample": [
      [
       "caller",
-      "007f7bc0",
-      "??__Eprop_FaceId@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7bc0",
-      "??__Eprop_FaceId@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7bc0",
-      "??__Eprop_FaceId@RBX@@YAXXZ"
+      "0065a870",
+      "?sub_0065a870@RBX@@YIXPAUHashLayout@1@HPAVPrimitive@1@@Z"
      ]
     ],
     "votes": {
-     "caller": 4
+     "caller": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??$?0P8Feature@RBX@@BE?AW4NormalId@1@XZP801@AEXW421@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4NormalId@2@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4NormalId@2@XZP832@AEXW442@@ZW4Functionality@PropertyDescriptor@12@@Z"
+    "symbol": "?onPair@PairSink@RBX@@QAEXPAVPrimitive@2@0@Z"
    }
   ],
   "kind": "code",
-  "name": "??$?0P8Feature@RBX@@BE?AW4NormalId@1@XZP801@AEXW421@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4NormalId@2@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4NormalId@2@XZP832@AEXW442@@ZW4Functionality@PropertyDescriptor@12@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0060c040": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7c00",
-      "??__Eprop_TopBottom@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7c00",
-      "??__Eprop_TopBottom@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7c00",
-      "??__Eprop_TopBottom@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Feature@RBX@@BE?AW4TopBottom@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4TopBottom@12@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4TopBottom@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Feature@RBX@@BE?AW4TopBottom@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4TopBottom@12@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4TopBottom@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0060c180": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7c40",
-      "??__Eprop_LeftRight@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7c40",
-      "??__Eprop_LeftRight@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7c40",
-      "??__Eprop_LeftRight@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Feature@RBX@@BE?AW4LeftRight@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4LeftRight@12@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4LeftRight@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Feature@RBX@@BE?AW4LeftRight@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4LeftRight@12@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4LeftRight@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0060c260": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "007f7c80",
-      "??__Eprop_InOut@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7c80",
-      "??__Eprop_InOut@RBX@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f7c80",
-      "??__Eprop_InOut@RBX@@YAXXZ"
-     ]
-    ],
-    "votes": {
-     "caller": 4
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??$?0P8Feature@RBX@@BE?AW4InOut@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4InOut@12@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4InOut@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??$?0P8Feature@RBX@@BE?AW4InOut@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VFeature@RBX@@W4InOut@12@@Reflection@RBX@@QAE@PBD0P8Feature@2@BE?AW4InOut@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+  "name": "?onPair@PairSink@RBX@@QAEXPAVPrimitive@2@0@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -7495,43 +5407,6 @@
   ],
   "kind": "code",
   "name": "?onPrimitiveExtentsChanged@ContactManager@RBX@@QAEXPAVPrimitive@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0060e450": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0060e630",
-      "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVRootInstance@1@@Z"
-     ],
-     [
-      "caller",
-      "0060e630",
-      "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVRootInstance@1@@Z"
-     ],
-     [
-      "caller",
-      "0060e630",
-      "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVRootInstance@1@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??0?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "??0?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -7573,85 +5448,11 @@
   "owner_class": null,
   "signature": null
  },
- "00613080": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 7
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?forceToBodies@GeoPair@RBX@@QAEXABVVector3@G3D@@0@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?forceToBodies@GeoPair@RBX@@QAEXABVVector3@G3D@@0@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "006130e0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 7
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?computeNormalPerpVel@GeoPair@RBX@@QAEXAAMAAVVector3@G3D@@ABVPairParams@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?computeNormalPerpVel@GeoPair@RBX@@QAEXAAMAAVVector3@G3D@@ABVPairParams@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "006131e0": {
   "evidence": [
    {
     "kind": "object-alignment-caller",
-    "round": 2,
+    "round": 1,
     "sample": [
      [
       "caller",
@@ -7684,48 +5485,11 @@
   "owner_class": null,
   "signature": null
  },
- "00613290": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 7
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?computeBallBall@GeoPair@RBX@@AAEXAAVPairParams@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?computeBallBall@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "00613320": {
   "evidence": [
    {
     "kind": "object-alignment-caller",
-    "round": 2,
+    "round": 1,
     "sample": [
      [
       "caller",
@@ -7762,7 +5526,7 @@
   "evidence": [
    {
     "kind": "object-alignment-caller",
-    "round": 2,
+    "round": 1,
     "sample": [
      [
       "caller",
@@ -7795,93 +5559,31 @@
   "owner_class": null,
   "signature": null
  },
- "00613560": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 7
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?computePointPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?computePointPlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "006136a0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 2,
-    "sample": [
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ],
-     [
-      "caller",
-      "00606780",
-      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 7
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?computeEdgeEdgePlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?computeEdgeEdgePlane@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "006139c0": {
   "evidence": [
    {
-    "kind": "object-alignment-callee",
+    "kind": "object-alignment-caller",
     "round": 1,
     "sample": [
      [
-      "callee",
-      "3"
+      "caller",
+      "00606780",
+      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
+     ],
+     [
+      "caller",
+      "00606780",
+      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
+     ],
+     [
+      "caller",
+      "00606780",
+      "?computeForce@ContactConnector@RBX@@UAEXM_N@Z"
      ]
     ],
     "votes": {
-     "callee": 1
+     "callee": 1,
+     "caller": 7
     }
    },
    {
@@ -7891,72 +5593,6 @@
   ],
   "kind": "code",
   "name": "?computeEdgeEdge@GeoPair@RBX@@AAEXAAVPairParams@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00613cb0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "005e5c90",
-      "?resetLink@MotorJoint@RBX@@QAEPAVRevoluteLink@2@XZ"
-     ],
-     [
-      "caller",
-      "005e5c90",
-      "?resetLink@MotorJoint@RBX@@QAEPAVRevoluteLink@2@XZ"
-     ]
-    ],
-    "votes": {
-     "caller": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?dirty@Link@RBX@@IAEXXZ"
-   }
-  ],
-  "kind": "code",
-  "name": "?dirty@Link@RBX@@IAEXXZ",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "00616da0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ],
-     [
-      "callee",
-      "5"
-     ]
-    ],
-    "votes": {
-     "callee": 3
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "??1?$FilteredSelection@VInstance@RBX@@@RBX@@UAE@XZ"
-   }
-  ],
-  "kind": "code",
-  "name": "??1?$FilteredSelection@VInstance@RBX@@@RBX@@UAE@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -8064,11 +5700,11 @@
      ],
      [
       "callee",
-      "6"
+      "5"
      ]
     ],
     "votes": {
-     "callee": 2,
+     "callee": 3,
      "caller": 1
     }
    },
@@ -8079,66 +5715,6 @@
   ],
   "kind": "code",
   "name": "?AffixFlag@FlagStand@RBX@@QAEXPAVFlag@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "006328f0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "9"
-     ],
-     [
-      "callee",
-      "9"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?execute@?$BoundFuncDesc@VBodyPosition@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?execute@?$BoundFuncDesc@VBodyPosition@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "006329e0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-callee",
-    "round": 1,
-    "sample": [
-     [
-      "callee",
-      "9"
-     ],
-     [
-      "callee",
-      "9"
-     ]
-    ],
-    "votes": {
-     "callee": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?execute@?$BoundFuncDesc@VBodyVelocity@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?execute@?$BoundFuncDesc@VBodyVelocity@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -8245,6 +5821,86 @@
   "owner_class": null,
   "signature": null
  },
+ "0063cd30": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 3,
+    "sample": [
+     [
+      "caller",
+      "0063ce60",
+      "??$?0V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$assign_to@V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@AAEXV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$assign_to@V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@AAEXV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "0063ce60": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 2,
+    "sample": [
+     [
+      "caller",
+      "0063d0d0",
+      "?onServiceProvider@Seat@RBX@@MAEXPBVServiceProvider@2@0@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??$?0V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0V?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVSeat@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "0063d0d0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "6"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?onServiceProvider@Seat@RBX@@MAEXPBVServiceProvider@2@0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?onServiceProvider@Seat@RBX@@MAEXPBVServiceProvider@2@0@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
  "0063dda0": {
   "evidence": [
    {
@@ -8298,6 +5954,33 @@
   ],
   "kind": "code",
   "name": "?getFloorVelocity@HumanoidState@HUMAN@RBX@@QAE?AVVelocity@3@M@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "00645060": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 1,
+    "sample": [
+     [
+      "caller",
+      "005d9c30",
+      "?render3dAdorn@Humanoid@RBX@@EAEXPAVAdorn@2@@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?render3dAdorn@HumanoidState@HUMAN@RBX@@QAEXPAVAdorn@3@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?render3dAdorn@HumanoidState@HUMAN@RBX@@QAEXPAVAdorn@3@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -8380,13 +6063,13 @@
     "sample": [
      [
       "caller",
-      "006474e0",
-      "?findParent@PrimIterator@RBX@@SAPAVPrimitive@2@PAV32@W4SearchType@12@@Z"
+      "00647540",
+      "?findFirstChild@PrimIterator@RBX@@CAPAVPrimitive@2@PAV32@W4SearchType@12@@Z"
      ],
      [
       "caller",
-      "00647540",
-      "?findFirstChild@PrimIterator@RBX@@CAPAVPrimitive@2@PAV32@W4SearchType@12@@Z"
+      "006474e0",
+      "?findParent@PrimIterator@RBX@@SAPAVPrimitive@2@PAV32@W4SearchType@12@@Z"
      ]
     ],
     "votes": {
@@ -8412,11 +6095,6 @@
     "sample": [
      [
       "caller",
-      "00647600",
-      "?findNextRelative@PrimIterator@RBX@@CAPAVPrimitive@2@PAV32@0W4SearchType@12@@Z"
-     ],
-     [
-      "caller",
       "00647680",
       "?findEdgeOnNextPrimitive@EdgeIterator@RBX@@AAEXXZ"
      ],
@@ -8427,7 +6105,7 @@
      ]
     ],
     "votes": {
-     "caller": 3
+     "caller": 2
     }
    },
    {
@@ -8464,38 +6142,6 @@
   ],
   "kind": "code",
   "name": "?changeJointState@SleepStage@RBX@@AAEXPAVJoint@2@W4EdgeState@Sim@2@@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
- "0064b5e0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "0064bf60",
-      "?wakeEvent@SleepStage@RBX@@AAEXPAVEdge@2@@Z"
-     ],
-     [
-      "caller",
-      "0064bf60",
-      "?wakeEvent@SleepStage@RBX@@AAEXPAVEdge@2@@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 2
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -8590,10 +6236,15 @@
       "caller",
       "0066ed50",
       "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
+     ],
+     [
+      "caller",
+      "0066ed50",
+      "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ"
      ]
     ],
     "votes": {
-     "caller": 1
+     "caller": 2
     }
    },
    {
@@ -8603,6 +6254,33 @@
   ],
   "kind": "code",
   "name": "?removeSimJob@SimJobStage@RBX@@QAEXPAVSimJob@2@@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "006593d0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-caller",
+    "round": 2,
+    "sample": [
+     [
+      "caller",
+      "0065a870",
+      "?sub_0065a870@RBX@@YIXPAUHashLayout@1@HPAVPrimitive@1@@Z"
+     ]
+    ],
+    "votes": {
+     "caller": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?overlaps@@YG_NPAUNode@@0@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?overlaps@@YG_NPAUNode@@0@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -8633,6 +6311,32 @@
   ],
   "kind": "code",
   "name": "?getNextGrid@SpatialHash@RBX@@QAE_NAAVVector3int32@2@ABVRay@G3D@@M@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "0065a870": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "5"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "?sub_0065a870@RBX@@YIXPAUHashLayout@1@HPAVPrimitive@1@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "?sub_0065a870@RBX@@YIXPAUHashLayout@1@HPAVPrimitive@1@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -8884,18 +6588,18 @@
     "sample": [
      [
       "caller",
-      "006eddf0",
-      "?AddCategories@CXTPCustomizeCommandsPage@@QAEHIH@Z"
+      "006afae0",
+      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
      ],
      [
       "caller",
-      "006eddf0",
-      "?AddCategories@CXTPCustomizeCommandsPage@@QAEHIH@Z"
+      "006afae0",
+      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
      ],
      [
       "caller",
-      "006eddf0",
-      "?AddCategories@CXTPCustomizeCommandsPage@@QAEHIH@Z"
+      "006afae0",
+      "?DrawControlText2@CXTPPaintManager@@IAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHH@Z"
      ]
     ],
     "votes": {
@@ -8980,18 +6684,18 @@
     "sample": [
      [
       "caller",
-      "006be840",
-      "?SetPressedIcon@CXTPImageManagerIcon@@QAEXVCXTPImageManagerIconHandle@@@Z"
+      "006bf9b0",
+      "?SetIcon@CXTPImageManagerIconSet@@AAEXVCXTPImageManagerIconHandle@@I@Z"
      ],
      [
       "caller",
-      "006be840",
-      "?SetPressedIcon@CXTPImageManagerIcon@@QAEXVCXTPImageManagerIconHandle@@@Z"
+      "006bf9b0",
+      "?SetIcon@CXTPImageManagerIconSet@@AAEXVCXTPImageManagerIconHandle@@I@Z"
      ],
      [
       "caller",
-      "006be760",
-      "?SetHotIcon@CXTPImageManagerIcon@@QAEXVCXTPImageManagerIconHandle@@@Z"
+      "006be6c0",
+      "?SetIcon@CXTPImageManagerIcon@@QAEHVCXTPImageManagerIconHandle@@@Z"
      ]
     ],
     "votes": {
@@ -9009,37 +6713,10 @@
   "owner_class": null,
   "signature": null
  },
- "006c26f0": {
-  "evidence": [
-   {
-    "kind": "object-alignment-caller",
-    "round": 1,
-    "sample": [
-     [
-      "caller",
-      "006c4670",
-      "?LoadToolBar@CXTPToolBar@@UAEHIH@Z"
-     ]
-    ],
-    "votes": {
-     "caller": 1
-    }
-   },
-   {
-    "kind": "decorated-signature",
-    "symbol": "?LoadToolBar@CXTPCommandBar@@UAEHIH@Z"
-   }
-  ],
-  "kind": "code",
-  "name": "?LoadToolBar@CXTPCommandBar@@UAEHIH@Z",
-  "name_source": "identity-unlock-align",
-  "owner_class": null,
-  "signature": null
- },
  "006d8600": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
@@ -9048,19 +6725,17 @@
       "??0CInstanceRecord@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
      ],
      [
-      "caller",
-      "006d9980",
-      "?CreateObject@CXTPReportRecordItemText@@SGPAVCObject@@XZ"
+      "callee",
+      "3"
      ],
      [
-      "caller",
-      "006d9980",
-      "?CreateObject@CXTPReportRecordItemText@@SGPAVCObject@@XZ"
+      "callee",
+      "4"
      ]
     ],
     "votes": {
      "callee": 2,
-     "caller": 3
+     "caller": 1
     }
    },
    {
@@ -9074,6 +6749,36 @@
   "owner_class": null,
   "signature": null
  },
+ "006d88c0": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "4"
+     ],
+     [
+      "callee",
+      "3"
+     ]
+    ],
+    "votes": {
+     "callee": 2
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0CXTPReportRecordItemPreview@@QAE@PBD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CXTPReportRecordItemPreview@@QAE@PBD@Z",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
  "006e8c20": {
   "evidence": [
    {
@@ -9082,13 +6787,13 @@
     "sample": [
      [
       "caller",
-      "00745bd0",
-      "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z"
+      "00745cf0",
+      "?Stretch@CXTPDockContext@@IAEXVCPoint@@@Z"
      ],
      [
       "caller",
-      "00745cf0",
-      "?Stretch@CXTPDockContext@@IAEXVCPoint@@@Z"
+      "00745bd0",
+      "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z"
      ]
     ],
     "votes": {
@@ -9151,17 +6856,17 @@
     "sample": [
      [
       "caller",
-      "00718620",
-      "?IsAppThemeReady@CXTPWinThemeWrapper@@QBEHXZ"
-     ],
-     [
-      "caller",
       "006df810",
       "?_GetWinThemeWrapperTheme@CXTPColorManager@@AAE?AW4XTPCurrentSystemTheme@@XZ"
      ],
      [
+      "caller",
+      "00718620",
+      "?IsAppThemeReady@CXTPWinThemeWrapper@@QBEHXZ"
+     ],
+     [
       "callee",
-      "3"
+      "4"
      ]
     ],
     "votes": {
@@ -9188,23 +6893,23 @@
     "sample": [
      [
       "caller",
-      "007a17f0",
-      "?RefreshMetrics@CXTButtonTheme@@UAEXXZ"
+      "006ec8d0",
+      "??0CXTPGroupLine@@QAE@XZ"
      ],
      [
       "caller",
-      "006ae0f0",
-      "?RefreshMetrics@CXTPPaintManager@@UAEXXZ"
+      "006ec8d0",
+      "??0CXTPGroupLine@@QAE@XZ"
      ],
      [
       "caller",
-      "006ae0f0",
-      "?RefreshMetrics@CXTPPaintManager@@UAEXXZ"
+      "006ec8d0",
+      "??0CXTPGroupLine@@QAE@XZ"
      ]
     ],
     "votes": {
      "callee": 2,
-     "caller": 39
+     "caller": 37
     }
    },
    {
@@ -9277,34 +6982,54 @@
   "owner_class": null,
   "signature": null
  },
- "007a5dd3": {
+ "007a6196": {
   "evidence": [
    {
-    "kind": "object-alignment-caller",
+    "kind": "object-alignment-callee",
     "round": 1,
     "sample": [
      [
-      "caller",
-      "007f9f34",
-      "??__E?m_strINIFileName@CXTRegistryManager@@1V?$CStringT@DV?$StrTraitMFC@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@A@@YAXXZ"
-     ],
-     [
-      "caller",
-      "007f9f34",
-      "??__E?m_strINIFileName@CXTRegistryManager@@1V?$CStringT@DV?$StrTraitMFC@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@A@@YAXXZ"
+      "callee",
+      "3"
      ]
     ],
     "votes": {
-     "caller": 2
+     "callee": 1
     }
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??0?$CStringT@DV?$StrTraitMFC@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z"
+    "symbol": "??0CAtlWinModule@ATL@@QAE@XZ"
    }
   ],
   "kind": "code",
-  "name": "??0?$CStringT@DV?$StrTraitMFC@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+  "name": "??0CAtlWinModule@ATL@@QAE@XZ",
+  "name_source": "identity-unlock-align",
+  "owner_class": null,
+  "signature": null
+ },
+ "007a621c": {
+  "evidence": [
+   {
+    "kind": "object-alignment-callee",
+    "round": 1,
+    "sample": [
+     [
+      "callee",
+      "3"
+     ]
+    ],
+    "votes": {
+     "callee": 1
+    }
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??0CAtlModule@ATL@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CAtlModule@ATL@@QAE@XZ",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null
@@ -9341,7 +7066,7 @@
   "owner_class": null,
   "signature": null
  },
- "007f3440": {
+ "007b8180": {
   "evidence": [
    {
     "kind": "object-alignment-callee",
@@ -9349,7 +7074,7 @@
     "sample": [
      [
       "callee",
-      "4"
+      "3"
      ]
     ],
     "votes": {
@@ -9358,11 +7083,11 @@
    },
    {
     "kind": "decorated-signature",
-    "symbol": "??__E?event_itemChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A@@YAXXZ"
+    "symbol": "?sub_007b8180@Render@RBX@@YAXABVGImage@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
    }
   ],
   "kind": "code",
-  "name": "??__E?event_itemChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A@@YAXXZ",
+  "name": "?sub_007b8180@Render@RBX@@YAXABVGImage@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
   "name_source": "identity-unlock-align",
   "owner_class": null,
   "signature": null

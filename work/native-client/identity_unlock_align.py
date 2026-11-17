@@ -15,6 +15,8 @@ A symbol voted to two addresses, or an address with two symbols, is rejected.
 Output: work/native-client/identity-unlock-align.json
 """
 import gzip
+from functools import lru_cache
+import re
 import json
 import pickle
 import sys
@@ -29,6 +31,7 @@ OUT = NC / 'identity-unlock-align.json'
 CODESET = set(CODE_STARTS)
 
 
+@lru_cache(None)
 def target_refs(va):
     """(direct call targets in order, registry names of referenced non-code data)"""
     o = va - BASE
@@ -65,7 +68,28 @@ def main():
     print('index funcs', len(funcs), 'vtables', len(tabs), flush=True)
     targets = set(unnamed())
     name = {a: v['name'] for a, v in REG.items() if not v.get('placeholder')}
+    # names other identity-unlock routes proved are anchors too (cross-route fixpoint)
+    prior = NC / 'unnamed-identities.json'
+    if prior.exists():
+        for a, r in json.load(open(prior)).items():
+            if r['name_source'] != 'identity-unlock-align':
+                name[a] = r['name']
     regnames = set(name.values())
+    # template peers (same method of another instantiation) compile to the same shape, so
+    # callee alignment cannot tell them apart (cross-validation: all wrong picks were these)
+    peer_key = re.compile(r'^\?(\w+)@\?\$(\w+)@|^\?\?([0-9]|_[EG])\?\$(\w+)@')
+    peers = Counter()
+    for row in {r[0] for r in funcs}:
+        m = peer_key.match(row)
+        if m:
+            peers[m.groups()] += 1
+
+    def peer_ambiguous(sym):
+        if sym.startswith(('??_E', '??_G')):
+            return True
+        m = peer_key.match(sym)
+        return bool(m) and peers[m.groups()] > 1
+
     by_symbol = defaultdict(list)
     by_ref = defaultdict(list)
     for row in funcs:
@@ -98,6 +122,8 @@ def main():
         # vtable slots
         if rnd == 1:
             for vname, slots in tabs:
+                if vname not in vt_slots:
+                    continue  # registry renamed this vtable since the index was built
                 base = vt_slots[vname]
                 at = {off: '%08x' % int.from_bytes(IMG[base + off - BASE:base + off - BASE + 4], 'little')
                       for off, _ in slots if off >= 0}
@@ -126,9 +152,11 @@ def main():
                             break
                         anchors += 1
                 else:
-                    if anchors:
+                    # cross-validated on named functions: >=2 anchors and no template peers
+                    # keep the caller rule at ~97.5% (most misses are ICF-folded aliases)
+                    if anchors >= 2:
                         for t, o in zip(tc, oc):
-                            if t in work:
+                            if t in work and not peer_ambiguous(o):
                                 votes[t][o].append(('caller', c, known(c)))
         # callee alignment
         for t in work:
@@ -150,7 +178,7 @@ def main():
                 if any(oc[i] != k for i, k in named_calls):
                     continue
                 anchors = len(named_calls) + len(td & set(od))
-                if anchors >= 3 and sym not in regnames:
+                if anchors >= 3 and sym not in regnames and not peer_ambiguous(sym):
                     votes[t][sym].append(('callee', anchors))
         # resolve
         used = Counter(s for v in accepted.values() for s in [v[0]])

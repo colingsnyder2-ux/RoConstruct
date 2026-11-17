@@ -38,5 +38,7 @@ public:
     bool queryUnplay(std::string&, int);
     bool queryPlay(std::string&, int);
     void initializeBase();
+	public:
+		void sub_0058c540(std::string name);   // INFERRED: 0058c540, placeholder name (identity tier), body byte-proved (Inferred_0058c540.cpp)
 };
 }

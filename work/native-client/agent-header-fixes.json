@@ -1,0 +1,36 @@
+[
+ {
+  "header": "rebuild/2008-06/native-headers/v8datamodel/Lighting2008.h",
+  "class": "RBX::Lighting",
+  "members_added": [
+   "setAmbient(Color3)",
+   "setAmbientTop(Color3)",
+   "setAmbientBottom(Color3)"
+  ],
+  "evidence": "decorated names in remaining-classified.json at 005e2490/005e22c0/005e2370; fields ambient/ambientTop/ambientBottom already in header",
+  "unblocked_addrs": [
+   "005e2490",
+   "005e22c0",
+   "005e2370"
+  ],
+  "verified_exact_before": 439,
+  "verified_exact_after": 439
+ },
+ {
+  "header": "rebuild/2008-06/native-headers/v8world/World2008.h",
+  "class": "RBX::World",
+  "members_added": [
+   "onPrimitiveCanCollideChanged(Primitive*)",
+   "onPrimitiveContactParametersChanged(Primitive*)",
+   "step(float)"
+  ],
+  "evidence": "identity registry decorated symbols 00732a20/00732a40/007356f0, 005e9190; remaining-classified ?step@World@RBX@@QAEMM@Z 005e9fd0 (step body still needs the full engine-world/World.h fields)",
+  "unblocked_addrs": [
+   "00732a20",
+   "00732a40",
+   "007356f0"
+  ],
+  "verified_exact_before": 439,
+  "verified_exact_after": 439
+ }
+]

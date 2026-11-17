@@ -30,6 +30,8 @@ public:
 
 protected:
     virtual bool askAddChild(const RBX::Instance* instance) const;   // 00416e60 (DHTMLWindow unit)
+public:
+	void append(void);   // INFERRED: ?append@DHTMLWindowService@@QAEXXZ (header gap, header_gap_fill.py)
 };
 
 // The Marshaller registry (names provisional; the binary has no symbol names for them):

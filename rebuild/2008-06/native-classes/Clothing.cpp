@@ -5,6 +5,8 @@
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
 #include "Network/Players.h"
+#include "../native-headers/v8datamodel/ChangeHistoryService.h"
+
 #include "v8datamodel/ModelInstance.h"   // complete type for the askSetParent dynamic_cast (005d7640)
 #include "v8datamodel/Decal.h"   // native Decal (ShirtGraphic::apply 005d4240, findFirstChildOfType<Decal> 005d41a0)
 
@@ -166,14 +168,28 @@ namespace RBX
 	}
 
 	// 005d4b00 (93 B): outfitChanged (0059e3a0) on each limb; the last call is a tail jump.
-	void Clothing::resetLimbs()
-	{
-		if (PartInstance* part = getLeftLeg()) part->outfitChanged();
-		if (PartInstance* part = getRightLeg()) part->outfitChanged();
-		if (PartInstance* part = getTorso()) part->outfitChanged();
-		if (PartInstance* part = getLeftArm()) part->outfitChanged();
-		if (PartInstance* part = getRightArm()) part->outfitChanged();
-	}
+void Clothing::resetLimbs()
+{
+	PartInstance* p = getLeftLeg();
+	if (p)
+		p->outfitChanged();
+
+	p = getRightLeg();
+	if (p)
+		p->outfitChanged();
+
+	p = getTorso();
+	if (p)
+		p->outfitChanged();
+
+	p = getLeftArm();
+	if (p)
+		p->outfitChanged();
+
+	p = getRightArm();
+	if (p)
+		p->outfitChanged();
+}
 
 	// Shirt / Pants
 	// Shirt() 004939b0 / Pants() 00493920 are inline in Clothing.h (emitted by the Network/Player.cpp unit).

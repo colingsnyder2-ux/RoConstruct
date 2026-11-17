@@ -1,0 +1,1149 @@
+{
+ "boost-1.34.1|libs/program_options/src/cmdline.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "0055a460",
+   "00637ad0",
+   "005dab40",
+   "00637a00"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/RenderDevice.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 9,
+  "missing": [
+   "00479840",
+   "007efe00",
+   "00479820",
+   "007ef840",
+   "007f90b0",
+   "007f9010",
+   "007f86a0",
+   "007f2c10",
+   "007f8fd0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|roc_codex_pending_visible_readonly_28fdcf6581cac7d7.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00426900"
+  ]
+ },
+ "xtp-11.2.2|Source/ReportControl/XTPReportControl.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 20,
+  "missing": [
+   "006d0f00",
+   "006d7ec0",
+   "00456fc0",
+   "00801750",
+   "008016c0",
+   "00752a30",
+   "006d0f50",
+   "00458150",
+   "008016f0",
+   "006d8590",
+   "0074f400",
+   "00801790",
+   "006cf0e0",
+   "006cf090",
+   "006d1590",
+   "0074f160",
+   "006d9b30",
+   "006db770",
+   "00801720",
+   "006cf810"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/Texture.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 3,
+  "target_total": 10,
+  "missing": [
+   "0047b4e0",
+   "004b35d0",
+   "0055b770",
+   "004807d0",
+   "00515ed0",
+   "0048c9c0",
+   "00479a60"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/PropertyGrid/XTPPropertyGridItem.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00711300",
+   "00711440"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-string-calls|roc_report_paint_native_mbcs_build_prelude_238cbffbc32a0a3a.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0074b1a0"
+  ]
+ },
+ "boost-1.35.0|roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "005b03b0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\Ribbon\\XTPRibbonTab.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006dbd20",
+   "00794170"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/Draw.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "007fc550",
+   "00801510",
+   "008019f0",
+   "00801a30"
+  ]
+ },
+ "xtp-11.2.2|Source/CommandBars/XTPControlComboBoxExt.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0072f840",
+   "0079a8d0"
+  ]
+ },
+ "xtp-11.2.2-lib-imports|roc_espclaude_569602479ecc41f0.cpp|/O2 /GS- /EHsc /MD /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0044c760"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/MeshAlgWeld.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "007bacc0",
+   "00615a20",
+   "00472880",
+   "004815a0"
+  ]
+ },
+ "xtp-11.2.2|Source/CommandBars/XTPControlScrollBar.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006dbac0",
+   "00716fd0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/Ribbon/XTPRibbonSystemButton.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 13,
+  "missing": [
+   "006f6720",
+   "006adcb0",
+   "00745740",
+   "006f63c0",
+   "006f55d0",
+   "006f6680",
+   "006f5c80",
+   "0079ae70",
+   "0079b440",
+   "0079b1d0",
+   "006f5200",
+   "006f5970",
+   "0079b030"
+  ]
+ },
+ "xtp-11.2.2|Source/CommandBars/XTPControlExt.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 5,
+  "missing": [
+   "0079a870",
+   "006ea260",
+   "006ea220",
+   "0079a730",
+   "006f5000"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_espclaude_dd992e6b9a44b58d.cpp|/O2 /Ob0 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00459420"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\Calendar\\XTPCalendarControl.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 7,
+  "missing": [
+   "006ada60",
+   "006c8290",
+   "006bdce0",
+   "007963a0",
+   "007134a0",
+   "007735c0",
+   "00720ce0"
+  ]
+ },
+ "xtp-11.2.2|Source/PropertyGrid/XTPPropertyGridPaintManager.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00777fd0",
+   "007785a0"
+  ]
+ },
+ "mfc-9.0|atlmfc/src/mfc/dlgdhtml.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "004010a0",
+   "0045fe20",
+   "0045fef0",
+   "00401290"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\Common\\XTPWinThemeWrapper.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 10,
+  "missing": [
+   "00718660",
+   "007184d0",
+   "00718390",
+   "00718220",
+   "007182e0",
+   "007180b0",
+   "00718730",
+   "00718010",
+   "00718430",
+   "00718160"
+  ]
+ },
+ "xtp-11.2.2-lib|Source\\CommandBars\\XTPDockState.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006e3880"
+  ]
+ },
+ "?|?||": {
+  "target_exact": 4,
+  "target_total": 22,
+  "missing": [
+   "006e9080",
+   "006c0e80",
+   "0070b1a0",
+   "0078e670",
+   "006a74a0",
+   "0055c500",
+   "006e8a50",
+   "006e8b50",
+   "0076d2e0",
+   "006dfd40",
+   "0070b200",
+   "0070b0e0",
+   "00570fe0",
+   "0070b080",
+   "00594e20",
+   "007a0c80",
+   "007a0bf0",
+   "00710cc0"
+  ]
+ },
+ "ogre-1.4.5-dll|roc_claudeC_rbxsubentitypool_2457577142b8f41d.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00671d60"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-string-calls|Source\\CommandBars\\XTPControlComboBox.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 8,
+  "missing": [
+   "00742f10",
+   "006a9640",
+   "00742780",
+   "00742d90",
+   "006a8380",
+   "006a80a0",
+   "006a96f0",
+   "00742fc0"
+  ]
+ },
+ "boost-1.35.0|roc_espeon_scriptthreadbind1357faa61c775a47f40.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "005af830"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/ReportControl/XTPReportRecordItemText.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "006d9980",
+   "006d9150",
+   "006d9ba0"
+  ]
+ },
+ "wildmagic-2-core|Geometry/WmlConvexClipper.cpp|/Od /Ob0 /GS- /MD|21022": {
+  "target_exact": 1,
+  "target_total": 4,
+  "missing": [
+   "0054f170",
+   "00550880",
+   "00550d60"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/roc_claude_gimage_smooth_b6205ab30eea6e87.cpp|/O2 /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0050eef0"
+  ]
+ },
+ "mfc-9.0-shared|roc_ui_network_window_ee9082b9a35d3d1a.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0045c730"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/TextInput.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "005b6b40",
+   "0043ca60"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-string-calls|Source\\Controls\\XTMaskEdit.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00774530",
+   "00775150"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-internals-string-calls|Source\\Common\\XTPDrawHelpers.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 1,
+  "target_total": 4,
+  "missing": [
+   "006f74e0",
+   "006f7120",
+   "006f8bf0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/Ribbon/XTPRibbonBar.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 5,
+  "missing": [
+   "00722010",
+   "00722e60",
+   "00721f40",
+   "006e7aa0",
+   "0079a980"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\Controls\\XTMaskEdit.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "00774a50",
+   "007737b0",
+   "007748f0",
+   "00774cd0"
+  ]
+ },
+ "xtp-11.2.2-lib-imports|roc_espeon_nativepngrowsourcea42c1dc54d2add70.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0042f0a0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-internals|Source\\Common\\XTPDrawHelpers.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 3,
+  "target_total": 4,
+  "missing": [
+   "006f7ff0"
+  ]
+ },
+ "xtp-11.2.2|Source/SkinFramework/XTPSkinManager.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "007faff0",
+   "007fadf0"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/roc_line_d3a5963a6289e8b9.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0050e440"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/roc_header_9b0b2c52f3f29871.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00480dd0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/CommandBars/XTPControlComboBox.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006a8690",
+   "00730d30"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\PropertyGrid\\XTPPropertyGridItem.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00712b90",
+   "0075d7a0"
+  ]
+ },
+ "boost-1.34.1-dll|roc_unit_c054a2084880d614.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "00419de0",
+   "00418fb0",
+   "00419010"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\CommandBars\\XTPPaintManager.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006b3fe0"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/Framebuffer.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "004b6290"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen-rtm|Source/ReportControl/XTPReportControl.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006ce180"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\CommandBars\\XTPControl.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006ab6e0"
+  ]
+ },
+ "boost-1.35.0-dll|roc_espeon_humanoidstateslotff087c81fef193c1.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 8,
+  "missing": [
+   "0058aa30",
+   "004b4410",
+   "004cd370",
+   "0066ef70",
+   "004a4020",
+   "004ea490",
+   "0058aae0",
+   "0060b650"
+  ]
+ },
+ "xtp-11.2.2|Source/CommandBars/XTPControl.cpp|/O1 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006acf60",
+   "007733a0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/CommandBars/XTPPopupBar.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 6,
+  "missing": [
+   "006a8500",
+   "0079b890",
+   "0079b730",
+   "00732970",
+   "006f1910",
+   "006f1860"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0047fbe0"
+  ]
+ },
+ "g3d-6.09|roc_g3d_bmp_exception_38498d93767fe727.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 1,
+  "target_total": 1,
+  "missing": []
+ },
+ "xtp-11.2.2-shared-mfc-internals-string-calls|Source\\CommandBars\\XTPCustomizeSheet.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 1,
+  "target_total": 3,
+  "missing": [
+   "006ea280",
+   "006ebed0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-string-calls|Source\\CommandBars\\XTPDockState.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "006e27f0",
+   "006e2340",
+   "006e35e0"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\CommandBars\\XTPCommandBar.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006b7510",
+   "006b5fa0"
+  ]
+ },
+ "scintilla-mfc-1.20-shared-imports|roc_unit_12569bebdebed9e1.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "00462cb0",
+   "00462890",
+   "00462560"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/CommandBars/XTPControlPopupColor.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006ea020",
+   "006b6c90"
+  ]
+ },
+ "xtp-11.2.2|Source/Calendar/XTPCalendarDayView.cpp|/O1 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "0074f0e0",
+   "006c7de0",
+   "00712b70"
+  ]
+ },
+ "mfc-9.0|atlmfc/src/mfc/afxmdiclientareawnd.cpp|/O1 /GS- /MD|30729": {
+  "target_exact": 1,
+  "target_total": 1,
+  "missing": []
+ },
+ "xtp-11.2.2-shared-mfc|Source/ReportControl/XTPReportInplaceControls.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "006dba30",
+   "0076cd90",
+   "006ec5c0"
+  ]
+ },
+ "wildmagic-2-core|Containment/WmlConvexHull3.cpp|/Od /Ob0 /GS- /MD|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0054f870",
+   "0054dbf0"
+  ]
+ },
+ "boost-1.40.0|libs/regex/src/instances.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 13,
+  "missing": [
+   "00728030",
+   "007913f0",
+   "00798ec0",
+   "00798d80",
+   "007a0c60",
+   "0077d530",
+   "0074f3e0",
+   "0077da00",
+   "0078c290",
+   "006c7db0",
+   "007a0bd0",
+   "0074d1c0",
+   "00768dd0"
+  ]
+ },
+ "xtp-15.2.1-shared-mfc|Source/Controls/Deprecated/XTButtonTheme.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 5,
+  "missing": [
+   "0078c360",
+   "007a0cf0",
+   "007914a0",
+   "007a1ec0",
+   "00791930"
+  ]
+ },
+ "xtp-11.2.2-lib-imports|roc_claudeM_55bb15a72a4fb4db.cpp|/O2 /GS- /EHsc /MD /arch:SSE2|21022": {
+  "target_exact": 2,
+  "target_total": 3,
+  "missing": [
+   "0042f290"
+  ]
+ },
+ "xtp-11.2.2|Source/ReportControl/XT|/O2 /GS- /MD|30729": {
+  "target_exact": 1,
+  "target_total": 2,
+  "missing": [
+   "006d0110"
+  ]
+ },
+ "g3d-6.09|roc_unit_624aff18becba205.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0065aac0"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_espclaude_43b5b584c2f00b13.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0044b9a0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/CommandBars/XTPCommandBars.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006c0ab0",
+   "00755d90"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/CommandBars/XTPToolBar.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006f67c0",
+   "006c2150"
+  ]
+ },
+ "atl-9.0|roc_espeon_bstransiasign6671a088facdff20.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 1,
+  "target_total": 1,
+  "missing": []
+ },
+ "wildmagic-2-core|Containment/WmlConvexHull3.cpp|/Od /Ob0 /GS /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00550a30"
+  ]
+ },
+ "wildmagic-2-core|Geometry/WmlConvexClipper.cpp|/Od /Ob0 /GS /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "0054da80",
+   "0054fa00",
+   "0054c390"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen-rtm|Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00775880",
+   "00773b80"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/roc_export_2e510945f61df65f.cpp|/O2 /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "005b6ed0",
+   "007f25e0",
+   "007f2640"
+  ]
+ },
+ "mfc-9.0|atlmfc/src/mfc/dlgcore.cpp|/O1 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00459550",
+   "0044f180"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\CommandBars\\XTPHookManager.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "007941e0",
+   "00774da0",
+   "0071c670"
+  ]
+ },
+ "xtp-15.2.1-shared-mfc|Source/Common/XTPImageManager.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006bcd20",
+   "006bcea0"
+  ]
+ },
+ "atl-9.0-dll|roc_espeon_propertylistimportedf7def85c6a9d6756.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0042be20"
+  ]
+ },
+ "raknet-4.081|RakString.cpp|/O1 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "005bbeb0"
+  ]
+ },
+ "ogre-1.4.5-dll|roc_sparkle_native_context_accessord3483aed579e6edb.cpp|/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00674790"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_espclaude_ef514ace34b2232d.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0042e0c0"
+  ]
+ },
+ "g3d-6.09|roc_espclaude_bfbc69262bc77fbf.cpp|/O2 /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00644c80"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-internals-string-calls|Source\\PropertyGrid\\XTPPropertyGridInplaceEdit.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00773e10"
+  ]
+ },
+ "boost-1.34.1-dll|roc_unit_eb19028a18c4f9d1.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0048be80",
+   "004180c0"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/CollisionDetection.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "007fb0f0",
+   "00801ab0",
+   "007fc590",
+   "007fd3c0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-internals-string-calls|Source\\CommandBars\\XTPCommandBar.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006b6820"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\Common\\XTPWinThemeWrapper.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "007187e0",
+   "00718570"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/CommandBars/XTPControls.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 3,
+  "missing": [
+   "006f4860",
+   "00798f00",
+   "006f47f0"
+  ]
+ },
+ "boost-1.34.1-dll|libs/program_options/src/positional_options.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00658100"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/DockingPane/XTPDockingPaneManager.cpp|/O2 /MD /GS /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0070dc60",
+   "006e5200"
+  ]
+ },
+ "xtp-11.2.2|Source/CommandBars/XTPShadowsManager.cpp|/O1 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 6,
+  "missing": [
+   "004d87e0",
+   "004d8800",
+   "004d8830",
+   "004d87f0",
+   "004d8810",
+   "004d8820"
+  ]
+ },
+ "?|?|/O2 /GS- /EHsc /MD /Od /Ob0 /GS|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00547250"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-internals|Source\\Common\\XTPDrawHelpers.cpp|/O2 /MD /GS- /Ob1|21022": {
+  "target_exact": 1,
+  "target_total": 1,
+  "missing": []
+ },
+ "xtp-11.2.2-shared-mfc|Source\\DockingPane\\XTPDockingPaneAutoHidePanel.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0074f1b0",
+   "00758d40"
+  ]
+ },
+ "boost-1.35.0-dll|roc_espeon_dhtmlnativefunction034ab6d87e50f0c3f.cpp|/O2 /Ob2 /Oy /GF /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0041a080",
+   "0041b660"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source/ReportControl/XTPReportControl.cpp|/O2 /GS- /MD /EHsc|30729": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00449460"
+  ]
+ },
+ "xtp-11.2.2|Source/Common/XTPSystemHelpers.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006e8340",
+   "006e8320"
+  ]
+ },
+ "boost-1.34.1|libs/thread/src/tss_hooks.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0061a260"
+  ]
+ },
+ "mfc-9.0|atlmfc/src/mfc/ctlcore.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0076efd0",
+   "0077a450"
+  ]
+ },
+ "boost-1.34.1-dll|roc_espeon_replicatornativevectore25554b5975257eb.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "004b5ed0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\Calendar\\XTPCalendarEventLabel.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "0074f120",
+   "0074f100"
+  ]
+ },
+ "g3d-6.09-dll|roc_unit_9b45941eceb68c25.cpp|/O2 /Ob2 /Oy /GF /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "004815d0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-internals-string-calls|Source/CommandBars/XTPStatusBar.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0070fb30"
+  ]
+ },
+ "g3d-6.09|G3Dcpp/roc_export_5ac1dc0db0a820d6.cpp|/O2 /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00469fa0"
+  ]
+ },
+ "mfc-9.0|atlmfc/src/mfc/afxstate.cpp|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 6,
+  "missing": [
+   "0075abe0",
+   "006d14e0",
+   "0071f9d0",
+   "0071d850",
+   "0070dbe0",
+   "0071ce70"
+  ]
+ },
+ "xtp-11.2.2-vc8-shared-mfc|Source/ReportControl/XTPReportRecordItemText.cpp|/O2 /MD /GS /EHsc|50727": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006d8600",
+   "006d88c0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-string-calls|Source\\CommandBars\\XTPPaintManager.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006b0460"
+  ]
+ },
+ "ogre-1.4.5-dll|roc_espeon_textureboundsnative288799b152876954.cpp|/O2 /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00670210"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc-string-calls|roc_espclaude_3b1ba1467e3c49e0.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006f4e60"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\CommandBars\\XTPStatusBar.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0070e4e0"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_espclaude_da5a2b380f6d46c8.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "004237d0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\Common\\XTPImageManager.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 5,
+  "missing": [
+   "006bfa30",
+   "006bfab0",
+   "006bfb30",
+   "006bfbb0",
+   "006bf9b0"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_king_originala_browser_dispatch_4935761f6beb402b.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0040fff0"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|roc_claudeM_03fc5222fed44800.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00426450"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/roc_export_8532835146de6118.cpp|/O2 /GS- /EHsc /MD /fp:fast|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00576f90"
+  ]
+ },
+ "boost-1.34.1-dll|roc_bind_factory_triples_3ef9d3fdf85fc7a5.cpp|/O2 /Ob2 /Oy /GF /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0043bb50"
+  ]
+ },
+ "scintilla-mfc-1.20-shared|roc_unit_119daf9071ba1c44.cpp|/O2 /GS- /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00462af0"
+  ]
+ },
+ "g3d-6.09|roc_espclaude_4e0b061628ffee6c.cpp|/O2 /Ob2 /Oy /GF /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00578ca0"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|roc_espeon_propertylistchangedf88b1516a00dfb5a.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0042c000"
+  ]
+ },
+ "boost-1.34.1-dll|roc_bind_factory_pairs_b0adafe46fc3a2a5.cpp|/O2 /Ob2 /Oy /GF /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0048cd60"
+  ]
+ },
+ "atl-9.0|roc_espclaude_14507603bc13e812.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0055fa70"
+  ]
+ },
+ "xtp-11.2.2-lib|Source\\CommandBars\\XTPCustomizeSheet.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "006eab20"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/roc_header_0bc5fec577e8514a.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0047e1d0"
+  ]
+ },
+ "g3d-6.09|GLG3Dcpp/roc_line_5c11b1e85d2d772f.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00481f40"
+  ]
+ },
+ "boost-1.35.0|roc_espeon_scriptargumentbind135bf95ed9e0b65612b.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "005b0480"
+  ]
+ },
+ "xtp-11.2.2-lib-strlen|Source\\Common\\XTPDrawHelpers.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 4,
+  "missing": [
+   "006f9070",
+   "006f8e20",
+   "006f9460",
+   "006f6b90"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_espeon_nativeatldirabi3272e783e3521ab9.cpp|/O2 /GS- /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0044b590"
+  ]
+ },
+ "xtp-11.2.2-shared-mfc|Source\\CommandBars\\XTPPaintManager.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "00763260",
+   "006af510"
+  ]
+ },
+ "xtp-11.2.2-lib|roc_tooltip_native_mbcs_compare_56c2ddd2d5b0e4ac.cpp|/O2 /MD /GS /EHsc /Ob1|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "0070c410"
+  ]
+ },
+ "lua-5.1.4|lstrlib.c|/O2 /GS- /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "005b17c0"
+  ]
+ },
+ "xtp-11.2.2|Source/ReportControl/XTPReportCon|/O2 /GS- /MD|30729": {
+  "target_exact": 0,
+  "target_total": 2,
+  "missing": [
+   "006d06f0",
+   "006d06a0"
+  ]
+ },
+ "atl-9.0-dll-rtm|roc_espclaude_188c2f09ea8697a7.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00408a70"
+  ]
+ },
+ "mfc-9.0-shared|roc_king_originala_dxinput_ctor_e0e5fafa00b66f00.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "004690f0"
+  ]
+ },
+ "mfc-9.0-shared-rtm|roc_espeon_replaceangleimportcast4a016e70e72eb016.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00462710"
+  ]
+ },
+ "boost-1.34.1-dll|roc_claudeS3_18320aa5e3e6405f.cpp|/O2 /GS- /EHsc /MD|21022": {
+  "target_exact": 0,
+  "target_total": 1,
+  "missing": [
+   "00595e40"
+  ]
+ }
+}

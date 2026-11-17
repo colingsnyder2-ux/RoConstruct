@@ -1,0 +1,1522 @@
+{
+ "00406020": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::RunService,class RBX::Instance,&char * RBX::sRunService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VRunService@RBX@@VInstance@2@$1?sRunService@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::RunService,class RBX::Instance,&char * RBX::sRunService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::RunService,class RBX::Instance,&char * RBX::sRunService>::Creator::create(void)const "
+ },
+ "00408ce0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::DebugSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sDebugSettings>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VDebugSettings@RBX@@VItem@GlobalSettings@2@$1?sDebugSettings@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::DebugSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sDebugSettings>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::DebugSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sDebugSettings>::Creator::create(void)const "
+ },
+ "00408f50": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class CRenderSettings,class RBX::GlobalSettings::Item,&char const * const sRenderSettings>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class CRenderSettings,class RBX::GlobalSettings::Item,&char const * const sRenderSettings>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class CRenderSettings,class RBX::GlobalSettings::Item,&char const * const sRenderSettings>::Creator::create(void)const "
+ },
+ "004091c0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Team,class RBX::Instance,&char const * const RBX::sTeam>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Team,class RBX::Instance,&char const * const RBX::sTeam>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Team,class RBX::Instance,&char const * const RBX::sTeam>::Creator::create(void)const "
+ },
+ "00409430": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Network::Player,class RBX::Instance,&char * RBX::Network::sPlayer>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Network::Player,class RBX::Instance,&char * RBX::Network::sPlayer>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Network::Player,class RBX::Instance,&char * RBX::Network::sPlayer>::Creator::create(void)const "
+ },
+ "004096a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Selection,class RBX::Instance,&char * RBX::sSelection>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSelection@RBX@@VInstance@2@$1?sSelection@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Selection,class RBX::Instance,&char * RBX::sSelection>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Selection,class RBX::Instance,&char * RBX::sSelection>::Creator::create(void)const "
+ },
+ "0040b3a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Reflection,class RBX::Instance,&char * RBX::Reflection::Metadata::sReflection>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VReflection@Metadata@1RBX@@VInstance@3@$1?sReflection@213@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Reflection,class RBX::Instance,&char * RBX::Reflection::Metadata::sReflection>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Reflection,class RBX::Instance,&char * RBX::Reflection::Metadata::sReflection>::Creator::create(void)const "
+ },
+ "0040d5e0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Classes,class RBX::Instance,&char * RBX::Reflection::Metadata::sClasses>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VClasses@Metadata@Reflection@RBX@@VInstance@4@$1?sClasses@234@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Classes,class RBX::Instance,&char * RBX::Reflection::Metadata::sClasses>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Classes,class RBX::Instance,&char * RBX::Reflection::Metadata::sClasses>::Creator::create(void)const "
+ },
+ "0040d690": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Properties,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sProperties>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VProperties@Metadata@Reflection@RBX@@VMembers@234@$1?sProperties@234@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Properties,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sProperties>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Properties,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sProperties>::Creator::create(void)const "
+ },
+ "0040d740": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Functions,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sFunctions>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VFunctions@Metadata@Reflection@RBX@@VMembers@234@$1?sFunctions@234@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Functions,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sFunctions>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Functions,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sFunctions>::Creator::create(void)const "
+ },
+ "0040d7f0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Events,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sEvents>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VEvents@Metadata@Reflection@RBX@@VMembers@234@$1?sEvents@234@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Events,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sEvents>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Events,class RBX::Reflection::Metadata::Members,&char * RBX::Reflection::Metadata::sEvents>::Creator::create(void)const "
+ },
+ "0040d8a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class AuthoringSettings,class RBX::GlobalSettings::Item,&char const * const sAuthoringSettings>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class AuthoringSettings,class RBX::GlobalSettings::Item,&char const * const sAuthoringSettings>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class AuthoringSettings,class RBX::GlobalSettings::Item,&char const * const sAuthoringSettings>::Creator::create(void)const "
+ },
+ "0040dd60": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Class,class RBX::Reflection::Metadata::Item,&char * RBX::Reflection::Metadata::sClass>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VClass@Metadata@Reflection@RBX@@VItem@234@$1?sClass@234@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Class,class RBX::Reflection::Metadata::Item,&char * RBX::Reflection::Metadata::sClass>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Class,class RBX::Reflection::Metadata::Item,&char * RBX::Reflection::Metadata::sClass>::Creator::create(void)const "
+ },
+ "0040de90": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Member,class RBX::Reflection::Metadata::Item,&char * RBX::Reflection::Metadata::sMember>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VMember@Metadata@Reflection@RBX@@VItem@234@$1?sMember@234@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Reflection::Metadata::Member,class RBX::Reflection::Metadata::Item,&char * RBX::Reflection::Metadata::sMember>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Reflection::Metadata::Member,class RBX::Reflection::Metadata::Item,&char * RBX::Reflection::Metadata::sMember>::Creator::create(void)const "
+ },
+ "004149e0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ModelInstance,class RBX::PVInstance,&char * RBX::sModel>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ModelInstance,class RBX::PVInstance,&char * RBX::sModel>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ModelInstance,class RBX::PVInstance,&char * RBX::sModel>::Creator::create(void)const "
+ },
+ "00414ec0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::LocalScript,class RBX::Script,&char * RBX::sLocalScript>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VLocalScript@RBX@@VScript@2@$1?sLocalScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::LocalScript,class RBX::Script,&char * RBX::sLocalScript>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::LocalScript,class RBX::Script,&char * RBX::sLocalScript>::Creator::create(void)const "
+ },
+ "00415150": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ChangeHistoryService,class RBX::Instance,&char * RBX::sChangeHistoryService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ChangeHistoryService,class RBX::Instance,&char * RBX::sChangeHistoryService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ChangeHistoryService,class RBX::Instance,&char * RBX::sChangeHistoryService>::Creator::create(void)const "
+ },
+ "0041ceb0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class DHTMLWindowService,class RBX::Instance,&char * sDHTMLWindowService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VDHTMLWindowService@@VInstance@RBX@@$1?sDHTMLWindowService@@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class DHTMLWindowService,class RBX::Instance,&char * sDHTMLWindowService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class DHTMLWindowService,class RBX::Instance,&char * sDHTMLWindowService>::Creator::create(void)const "
+ },
+ "0041e720": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Decal,class RBX::FaceInstance,&char * RBX::sDecal>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Decal,class RBX::FaceInstance,&char * RBX::sDecal>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Decal,class RBX::FaceInstance,&char * RBX::sDecal>::Creator::create(void)const "
+ },
+ "0041e7d0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Texture,class RBX::Decal,&char * RBX::sTexture>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Texture,class RBX::Decal,&char * RBX::sTexture>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Texture,class RBX::Decal,&char * RBX::sTexture>::Creator::create(void)const "
+ },
+ "0041ea40": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::PartInstance,class RBX::PVInstance,&char * RBX::sPart>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::PartInstance,class RBX::PVInstance,&char * RBX::sPart>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::PartInstance,class RBX::PVInstance,&char * RBX::sPart>::Creator::create(void)const "
+ },
+ "0041ecb0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::SpecialShape,class RBX::Instance,&char * RBX::sSpecialShape>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::SpecialShape,class RBX::Instance,&char * RBX::sSpecialShape>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::SpecialShape,class RBX::Instance,&char * RBX::sSpecialShape>::Creator::create(void)const "
+ },
+ "0042dde0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ScriptContext,class RBX::Instance,&char * RBX::sScriptContext>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ScriptContext,class RBX::Instance,&char * RBX::sScriptContext>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ScriptContext,class RBX::Instance,&char * RBX::sScriptContext>::Creator::create(void)const "
+ },
+ "004325a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Accoutrement,class RBX::Instance,&char const * const RBX::sAccoutrement>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VAccoutrement@RBX@@VInstance@2@$1?sAccoutrement@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Accoutrement,class RBX::Instance,&char const * const RBX::sAccoutrement>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Accoutrement,class RBX::Instance,&char const * const RBX::sAccoutrement>::Creator::create(void)const "
+ },
+ "00432810": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Hat,class RBX::Accoutrement,&char const * const RBX::sHat>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VHat@RBX@@VAccoutrement@2@$1?sHat@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Hat,class RBX::Accoutrement,&char const * const RBX::sHat>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Hat,class RBX::Accoutrement,&char const * const RBX::sHat>::Creator::create(void)const "
+ },
+ "00440a00": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Soundscape::SoundService,class RBX::Instance,&char * RBX::Soundscape::sSoundService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Soundscape::SoundService,class RBX::Instance,&char * RBX::Soundscape::sSoundService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Soundscape::SoundService,class RBX::Instance,&char * RBX::Soundscape::sSoundService>::Creator::create(void)const "
+ },
+ "00440c70": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Soundscape::SoundChannel,class RBX::Instance,&char * RBX::Soundscape::sSoundChannel>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Soundscape::SoundChannel,class RBX::Instance,&char * RBX::Soundscape::sSoundChannel>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Soundscape::SoundChannel,class RBX::Instance,&char * RBX::Soundscape::sSoundChannel>::Creator::create(void)const "
+ },
+ "0044d560": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::GameSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sGameSettings>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::GameSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sGameSettings>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::GameSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sGameSettings>::Creator::create(void)const "
+ },
+ "00452950": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Visit,class RBX::Instance,&char * RBX::sVisit>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Visit,class RBX::Instance,&char * RBX::sVisit>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Visit,class RBX::Instance,&char * RBX::sVisit>::Creator::create(void)const "
+ },
+ "0045d950": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ControllerService,class RBX::Instance,&char * RBX::sControllerService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VControllerService@RBX@@VInstance@2@$1?sControllerService@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ControllerService,class RBX::Instance,&char * RBX::sControllerService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ControllerService,class RBX::Instance,&char * RBX::sControllerService>::Creator::create(void)const "
+ },
+ "0045dbc0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Camera,class RBX::Instance,&char * RBX::sCamera>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VCamera@RBX@@VInstance@2@$1?sCamera@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Camera,class RBX::Instance,&char * RBX::sCamera>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Camera,class RBX::Instance,&char * RBX::sCamera>::Creator::create(void)const "
+ },
+ "0048e810": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::HopperBin,class RBX::BackpackItem,&char const * const RBX::sHopperBin>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VHopperBin@RBX@@VBackpackItem@2@$1?sHopperBin@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::HopperBin,class RBX::BackpackItem,&char const * const RBX::sHopperBin>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::HopperBin,class RBX::BackpackItem,&char const * const RBX::sHopperBin>::Creator::create(void)const "
+ },
+ "0048ea80": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::StarterPackService,class RBX::Hopper,&char const * const RBX::sStarterPackService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VStarterPackService@RBX@@VHopper@2@$1?sStarterPackService@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::StarterPackService,class RBX::Hopper,&char const * const RBX::sStarterPackService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::StarterPackService,class RBX::Hopper,&char const * const RBX::sStarterPackService>::Creator::create(void)const "
+ },
+ "0048ecf0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::LegacyHopperService,class RBX::Hopper,&char const * const RBX::sLegacyHopperService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VLegacyHopperService@RBX@@VHopper@2@$1?sLegacyHopperService@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::LegacyHopperService,class RBX::Hopper,&char const * const RBX::sLegacyHopperService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::LegacyHopperService,class RBX::Hopper,&char const * const RBX::sLegacyHopperService>::Creator::create(void)const "
+ },
+ "0048eda0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Backpack,class RBX::Hopper,&char const * const RBX::sBackpack>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBackpack@RBX@@VHopper@2@$1?sBackpack@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Backpack,class RBX::Hopper,&char const * const RBX::sBackpack>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Backpack,class RBX::Hopper,&char const * const RBX::sBackpack>::Creator::create(void)const "
+ },
+ "0048f030": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::SpawnLocation,class RBX::PartInstance,&char * RBX::sSpawnLocation>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSpawnLocation@RBX@@VPartInstance@2@$1?sSpawnLocation@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::SpawnLocation,class RBX::PartInstance,&char * RBX::sSpawnLocation>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::SpawnLocation,class RBX::PartInstance,&char * RBX::sSpawnLocation>::Creator::create(void)const "
+ },
+ "0048f2a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::SpawnerService,class RBX::Instance,&char const * const RBX::sSpawnerService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::SpawnerService,class RBX::Instance,&char const * const RBX::sSpawnerService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::SpawnerService,class RBX::Instance,&char const * const RBX::sSpawnerService>::Creator::create(void)const "
+ },
+ "0048f510": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ShirtGraphic,class RBX::CharacterAppearance,&char const * const RBX::sShirtGraphic>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ShirtGraphic,class RBX::CharacterAppearance,&char const * const RBX::sShirtGraphic>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ShirtGraphic,class RBX::CharacterAppearance,&char const * const RBX::sShirtGraphic>::Creator::create(void)const "
+ },
+ "0048f780": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Clothing,class RBX::CharacterAppearance,&char const * const RBX::sClothing>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Clothing,class RBX::CharacterAppearance,&char const * const RBX::sClothing>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Clothing,class RBX::CharacterAppearance,&char const * const RBX::sClothing>::Creator::create(void)const "
+ },
+ "0048fff0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyColors,class RBX::CharacterAppearance,&char const * const RBX::sBodyColors>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyColors@RBX@@VCharacterAppearance@2@$1?sBodyColors@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyColors,class RBX::CharacterAppearance,&char const * const RBX::sBodyColors>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyColors,class RBX::CharacterAppearance,&char const * const RBX::sBodyColors>::Creator::create(void)const "
+ },
+ "00490260": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Skin,class RBX::CharacterAppearance,&char const * const RBX::sSkin>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Skin,class RBX::CharacterAppearance,&char const * const RBX::sSkin>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Skin,class RBX::CharacterAppearance,&char const * const RBX::sSkin>::Creator::create(void)const "
+ },
+ "004904d0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Teams,class RBX::Instance,&char const * const RBX::sTeams>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Teams,class RBX::Instance,&char const * const RBX::sTeams>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Teams,class RBX::Instance,&char const * const RBX::sTeams>::Creator::create(void)const "
+ },
+ "00490580": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::TimerService,class RBX::Instance,&char * RBX::sTimerService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::TimerService,class RBX::Instance,&char * RBX::sTimerService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::TimerService,class RBX::Instance,&char * RBX::sTimerService>::Creator::create(void)const "
+ },
+ "004907f0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Humanoid,class RBX::Instance,&char * RBX::sHumanoid>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Humanoid,class RBX::Instance,&char * RBX::sHumanoid>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Humanoid,class RBX::Instance,&char * RBX::sHumanoid>::Creator::create(void)const "
+ },
+ "00494940": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Pants,class RBX::Clothing,&char const * const RBX::sPants>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Pants,class RBX::Clothing,&char const * const RBX::sPants>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Pants,class RBX::Clothing,&char const * const RBX::sPants>::Creator::create(void)const "
+ },
+ "004949f0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Shirt,class RBX::Clothing,&char const * const RBX::sShirt>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Shirt,class RBX::Clothing,&char const * const RBX::sShirt>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Shirt,class RBX::Clothing,&char const * const RBX::sShirt>::Creator::create(void)const "
+ },
+ "0049a260": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Network::Client,class RBX::Network::Peer,&char * RBX::Network::sClient>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VClient@Network@RBX@@VPeer@23@$1?sClient@23@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Network::Client,class RBX::Network::Peer,&char * RBX::Network::sClient>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Network::Client,class RBX::Network::Peer,&char * RBX::Network::sClient>::Creator::create(void)const "
+ },
+ "0049a4d0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Network::Server,class RBX::Network::Peer,&char * RBX::Network::sServer>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VServer@Network@RBX@@VPeer@23@$1?sServer@23@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Network::Server,class RBX::Network::Peer,&char * RBX::Network::sServer>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Network::Server,class RBX::Network::Peer,&char * RBX::Network::sServer>::Creator::create(void)const "
+ },
+ "0049ea80": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::NetworkSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sNetworkSettings>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VNetworkSettings@RBX@@VItem@GlobalSettings@2@$1?sNetworkSettings@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::NetworkSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sNetworkSettings>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::NetworkSettings,class RBX::GlobalSettings::Item,&char const * const RBX::sNetworkSettings>::Creator::create(void)const "
+ },
+ "004a38d0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Message,class RBX::Instance,&char const * const RBX::sMessage>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Message,class RBX::Instance,&char const * const RBX::sMessage>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Message,class RBX::Instance,&char const * const RBX::sMessage>::Creator::create(void)const "
+ },
+ "004a4fa0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Hint,class RBX::Message,&char const * const RBX::sHint>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Hint,class RBX::Message,&char const * const RBX::sHint>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Hint,class RBX::Message,&char const * const RBX::sHint>::Creator::create(void)const "
+ },
+ "004b21c0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Lighting,class RBX::Instance,&char * RBX::sLighting>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VLighting@RBX@@VInstance@2@$1?sLighting@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Lighting,class RBX::Instance,&char * RBX::sLighting>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Lighting,class RBX::Instance,&char * RBX::sLighting>::Creator::create(void)const "
+ },
+ "004b2430": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Snap,class RBX::JointInstance,&char const * const RBX::sSnap>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSnap@RBX@@VJointInstance@2@$1?sSnap@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Snap,class RBX::JointInstance,&char const * const RBX::sSnap>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Snap,class RBX::JointInstance,&char const * const RBX::sSnap>::Creator::create(void)const "
+ },
+ "004b26a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Weld,class RBX::JointInstance,&char const * const RBX::sWeld>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Weld,class RBX::JointInstance,&char const * const RBX::sWeld>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Weld,class RBX::JointInstance,&char const * const RBX::sWeld>::Creator::create(void)const "
+ },
+ "004b2910": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Glue,class RBX::JointInstance,&char const * const RBX::sGlue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VGlue@RBX@@VJointInstance@2@$1?sGlue@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Glue,class RBX::JointInstance,&char const * const RBX::sGlue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Glue,class RBX::JointInstance,&char const * const RBX::sGlue>::Creator::create(void)const "
+ },
+ "004b2b80": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Rotate,class RBX::JointInstance,&char const * const RBX::sRotate>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VRotate@RBX@@VJointInstance@2@$1?sRotate@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Rotate,class RBX::JointInstance,&char const * const RBX::sRotate>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Rotate,class RBX::JointInstance,&char const * const RBX::sRotate>::Creator::create(void)const "
+ },
+ "004b2df0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::RotateP,class RBX::JointInstance,&char const * const RBX::sRotateP>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VRotateP@RBX@@VJointInstance@2@$1?sRotateP@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::RotateP,class RBX::JointInstance,&char const * const RBX::sRotateP>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::RotateP,class RBX::JointInstance,&char const * const RBX::sRotateP>::Creator::create(void)const "
+ },
+ "004b3060": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::RotateV,class RBX::JointInstance,&char const * const RBX::sRotateV>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VRotateV@RBX@@VJointInstance@2@$1?sRotateV@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::RotateV,class RBX::JointInstance,&char const * const RBX::sRotateV>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::RotateV,class RBX::JointInstance,&char const * const RBX::sRotateV>::Creator::create(void)const "
+ },
+ "004b32d0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Motor,class RBX::JointInstance,&char const * const RBX::sMotor>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VMotor@RBX@@VJointInstance@2@$1?sMotor@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Motor,class RBX::JointInstance,&char const * const RBX::sMotor>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Motor,class RBX::JointInstance,&char const * const RBX::sMotor>::Creator::create(void)const "
+ },
+ "004d8d10": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Sky,class RBX::Instance,&char * RBX::sSky>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Sky,class RBX::Instance,&char * RBX::sSky>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Sky,class RBX::Instance,&char * RBX::sSky>::Creator::create(void)const "
+ },
+ "00578160": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::LocalBackpackItem,class RBX::Widget,&char const * const RBX::sLocalBackpackItem>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VLocalBackpackItem@RBX@@VWidget@2@$1?sLocalBackpackItem@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::LocalBackpackItem,class RBX::Widget,&char const * const RBX::sLocalBackpackItem>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::LocalBackpackItem,class RBX::Widget,&char const * const RBX::sLocalBackpackItem>::Creator::create(void)const "
+ },
+ "00578210": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::LocalBackpack,class RBX::RelativePanel,&char const * const RBX::sLocalBackpack>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VLocalBackpack@RBX@@VRelativePanel@2@$1?sLocalBackpack@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::LocalBackpack,class RBX::RelativePanel,&char const * const RBX::sLocalBackpack>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::LocalBackpack,class RBX::RelativePanel,&char const * const RBX::sLocalBackpack>::Creator::create(void)const "
+ },
+ "00578480": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Tool,class RBX::BackpackItem,&char const * const RBX::sTool>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Tool,class RBX::BackpackItem,&char const * const RBX::sTool>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Tool,class RBX::BackpackItem,&char const * const RBX::sTool>::Creator::create(void)const "
+ },
+ "00580040": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::MotorFeature,class RBX::Feature,&char const * const RBX::sMotorFeature>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::MotorFeature,class RBX::Feature,&char const * const RBX::sMotorFeature>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::MotorFeature,class RBX::Feature,&char const * const RBX::sMotorFeature>::Creator::create(void)const "
+ },
+ "005802b0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Hole,class RBX::Feature,&char const * const RBX::sHole>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Hole,class RBX::Feature,&char const * const RBX::sHole>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Hole,class RBX::Feature,&char const * const RBX::sHole>::Creator::create(void)const "
+ },
+ "00580520": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::VelocityMotor,class RBX::JointInstance,&char const * const RBX::sVelocityMotor>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VVelocityMotor@RBX@@VJointInstance@2@$1?sVelocityMotor@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::VelocityMotor,class RBX::JointInstance,&char const * const RBX::sVelocityMotor>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::VelocityMotor,class RBX::JointInstance,&char const * const RBX::sVelocityMotor>::Creator::create(void)const "
+ },
+ "0058b1c0": {
+  "evidence": [
+   {
+    "bogus_name": "?clone@?$holder@V?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@any@boost@@UBEPAVplaceholder@23@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "boost::any::holder<struct RBX::Reflection::Tuple>",
+    "old_owner": "boost::any::holder<class std::vector<class RBX::Reflection::Value,class std::allocator<class RBX::Reflection::Value> > >",
+    "vtable": "??_7?$holder@UTuple@Reflection@RBX@@@any@boost@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?clone@?$holder@UTuple@Reflection@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "boost::any::holder<struct RBX::Reflection::Tuple>",
+  "signature": "public: virtual class boost::any::placeholder * __thiscall boost::any::holder<struct RBX::Reflection::Tuple>::clone(void)const "
+ },
+ "005a3230": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Flag,class RBX::Tool,&char const * const RBX::sFlag>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Flag,class RBX::Tool,&char const * const RBX::sFlag>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Flag,class RBX::Tool,&char const * const RBX::sFlag>::Creator::create(void)const "
+ },
+ "005bda60": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class StockSound,class RBX::Soundscape::SoundChannel,&char * sStockSound>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class StockSound,class RBX::Soundscape::SoundChannel,&char * sStockSound>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class StockSound,class RBX::Soundscape::SoundChannel,&char * sStockSound>::Creator::create(void)const "
+ },
+ "005c0be0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ClickDetector,class RBX::Instance,&char * RBX::sClickDetector>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ClickDetector,class RBX::Instance,&char * RBX::sClickDetector>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ClickDetector,class RBX::Instance,&char * RBX::sClickDetector>::Creator::create(void)const "
+ },
+ "005c0e50": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Explosion,class RBX::Instance,&char * RBX::sExplosion>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Explosion,class RBX::Instance,&char * RBX::sExplosion>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Explosion,class RBX::Instance,&char * RBX::sExplosion>::Creator::create(void)const "
+ },
+ "005c10c0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::FlagStand,class RBX::PartInstance,&char * RBX::sFlagStand>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VFlagStand@RBX@@VPartInstance@2@$1?sFlagStand@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::FlagStand,class RBX::PartInstance,&char * RBX::sFlagStand>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::FlagStand,class RBX::PartInstance,&char * RBX::sFlagStand>::Creator::create(void)const "
+ },
+ "005c1330": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::FlagStandService,class RBX::Instance,&char const * const RBX::sFlagStandService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::FlagStandService,class RBX::Instance,&char const * const RBX::sFlagStandService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::FlagStandService,class RBX::Instance,&char const * const RBX::sFlagStandService>::Creator::create(void)const "
+ },
+ "005c15a0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ForceField,class RBX::Instance,&char * RBX::sForceField>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VForceField@RBX@@VInstance@2@$1?sForceField@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ForceField,class RBX::Instance,&char * RBX::sForceField>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ForceField,class RBX::Instance,&char * RBX::sForceField>::Creator::create(void)const "
+ },
+ "005c1810": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::GeometryService,class RBX::Instance,&char * RBX::sGeometryService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::GeometryService,class RBX::Instance,&char * RBX::sGeometryService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::GeometryService,class RBX::Instance,&char * RBX::sGeometryService>::Creator::create(void)const "
+ },
+ "005c1a80": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyGyro,class RBX::BodyMover,&char * RBX::sBodyGyro>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyGyro@RBX@@VBodyMover@2@$1?sBodyGyro@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyGyro,class RBX::BodyMover,&char * RBX::sBodyGyro>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyGyro,class RBX::BodyMover,&char * RBX::sBodyGyro>::Creator::create(void)const "
+ },
+ "005c1cf0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyForce,class RBX::BodyMover,&char * RBX::sBodyForce>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyForce@RBX@@VBodyMover@2@$1?sBodyForce@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyForce,class RBX::BodyMover,&char * RBX::sBodyForce>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyForce,class RBX::BodyMover,&char * RBX::sBodyForce>::Creator::create(void)const "
+ },
+ "005c1f60": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyThrust,class RBX::BodyMover,&char * RBX::sBodyThrust>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyThrust@RBX@@VBodyMover@2@$1?sBodyThrust@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyThrust,class RBX::BodyMover,&char * RBX::sBodyThrust>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyThrust,class RBX::BodyMover,&char * RBX::sBodyThrust>::Creator::create(void)const "
+ },
+ "005c21d0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyPosition,class RBX::BodyMover,&char * RBX::sBodyPosition>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyPosition@RBX@@VBodyMover@2@$1?sBodyPosition@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyPosition,class RBX::BodyMover,&char * RBX::sBodyPosition>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyPosition,class RBX::BodyMover,&char * RBX::sBodyPosition>::Creator::create(void)const "
+ },
+ "005c2440": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyVelocity,class RBX::BodyMover,&char * RBX::sBodyVelocity>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyVelocity@RBX@@VBodyMover@2@$1?sBodyVelocity@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyVelocity,class RBX::BodyMover,&char * RBX::sBodyVelocity>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyVelocity,class RBX::BodyMover,&char * RBX::sBodyVelocity>::Creator::create(void)const "
+ },
+ "005c26b0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::BodyAngularVelocity,class RBX::BodyMover,&char * RBX::sBodyAngularVelocity>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VBodyAngularVelocity@RBX@@VBodyMover@2@$1?sBodyAngularVelocity@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::BodyAngularVelocity,class RBX::BodyMover,&char * RBX::sBodyAngularVelocity>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::BodyAngularVelocity,class RBX::BodyMover,&char * RBX::sBodyAngularVelocity>::Creator::create(void)const "
+ },
+ "005c2920": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Rocket,class RBX::BodyMover,&char * RBX::sRocket>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VRocket@RBX@@VBodyMover@2@$1?sRocket@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Rocket,class RBX::BodyMover,&char * RBX::sRocket>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Rocket,class RBX::BodyMover,&char * RBX::sRocket>::Creator::create(void)const "
+ },
+ "005c2e90": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::DebrisService,class RBX::Instance,&char * RBX::sDebrisService>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::DebrisService,class RBX::Instance,&char * RBX::sDebrisService>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::DebrisService,class RBX::Instance,&char * RBX::sDebrisService>::Creator::create(void)const "
+ },
+ "005c3100": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Seat,class RBX::PartInstance,&char * RBX::sSeat>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSeat@RBX@@VPartInstance@2@$1?sSeat@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Seat,class RBX::PartInstance,&char * RBX::sSeat>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Seat,class RBX::PartInstance,&char * RBX::sSeat>::Creator::create(void)const "
+ },
+ "005c3370": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Sparkles,class RBX::Instance,&char const * const RBX::sSparkles>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Sparkles,class RBX::Instance,&char const * const RBX::sSparkles>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Sparkles,class RBX::Instance,&char const * const RBX::sSparkles>::Creator::create(void)const "
+ },
+ "005c3e20": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::ObjectValue,class RBX::Instance,&char * RBX::sObjectValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@VObjectValue@RBX@@VInstance@2@$1?sObjectValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::ObjectValue,class RBX::Instance,&char * RBX::sObjectValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::ObjectValue,class RBX::Instance,&char * RBX::sObjectValue>::Creator::create(void)const "
+ },
+ "0061f900": {
+  "evidence": [
+   {
+    "bogus_name": "??_G?$TGenericSlotWrapper@VFunctionScriptSlot@@@Reflection@RBX@@UAEPAXI@Z",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::Reflection::TGenericSlotWrapper<class WaitScriptSlot>",
+    "old_owner": "RBX::Reflection::TGenericSlotWrapper<class FunctionScriptSlot>",
+    "vtable": "??_7?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "??_G?$TGenericSlotWrapper@VWaitScriptSlot@@@Reflection@RBX@@UAEPAXI@Z",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::Reflection::TGenericSlotWrapper<class WaitScriptSlot>",
+  "signature": "public: virtual void * __thiscall RBX::Reflection::TGenericSlotWrapper<class WaitScriptSlot>::`scalar deleting destructor'(unsigned int)"
+ },
+ "00639f20": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<int,&char * RBX::sIntValue>,class RBX::Instance,&char * RBX::sIntValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@H$1?sIntValue@RBX@@3PADA@RBX@@VInstance@2@$1?sIntValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@H$1?sIntValue@RBX@@3PADA@RBX@@VInstance@2@$1?sIntValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<int,&char * RBX::sIntValue>,class RBX::Instance,&char * RBX::sIntValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<int,&char * RBX::sIntValue>,class RBX::Instance,&char * RBX::sIntValue>::Creator::create(void)const "
+ },
+ "00639fd0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<bool,&char * RBX::sBoolValue>,class RBX::Instance,&char * RBX::sBoolValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@_N$1?sBoolValue@RBX@@3PADA@RBX@@VInstance@2@$1?sBoolValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@_N$1?sBoolValue@RBX@@3PADA@RBX@@VInstance@2@$1?sBoolValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<bool,&char * RBX::sBoolValue>,class RBX::Instance,&char * RBX::sBoolValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<bool,&char * RBX::sBoolValue>,class RBX::Instance,&char * RBX::sBoolValue>::Creator::create(void)const "
+ },
+ "0063a080": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<double,&char * RBX::sDoubleValue>,class RBX::Instance,&char * RBX::sDoubleValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@VInstance@2@$1?sDoubleValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<double,&char * RBX::sDoubleValue>,class RBX::Instance,&char * RBX::sDoubleValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<double,&char * RBX::sDoubleValue>,class RBX::Instance,&char * RBX::sDoubleValue>::Creator::create(void)const "
+ },
+ "0063a130": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,&char * RBX::sStringValue>,class RBX::Instance,&char * RBX::sStringValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$1?sStringValue@RBX@@3PADA@RBX@@VInstance@2@$1?sStringValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$1?sStringValue@RBX@@3PADA@RBX@@VInstance@2@$1?sStringValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,&char * RBX::sStringValue>,class RBX::Instance,&char * RBX::sStringValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,&char * RBX::sStringValue>,class RBX::Instance,&char * RBX::sStringValue>::Creator::create(void)const "
+ },
+ "0063a1e0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<class G3D::Vector3,&char * RBX::sVector3Value>,class RBX::Instance,&char * RBX::sVector3Value>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sVector3Value@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sVector3Value@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<class G3D::Vector3,&char * RBX::sVector3Value>,class RBX::Instance,&char * RBX::sVector3Value>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<class G3D::Vector3,&char * RBX::sVector3Value>,class RBX::Instance,&char * RBX::sVector3Value>::Creator::create(void)const "
+ },
+ "0063a290": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<class G3D::CoordinateFrame,&char * RBX::sCFrameValue>,class RBX::Instance,&char * RBX::sCFrameValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@VCoordinateFrame@G3D@@$1?sCFrameValue@RBX@@3PADA@RBX@@VInstance@2@$1?sCFrameValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@VCoordinateFrame@G3D@@$1?sCFrameValue@RBX@@3PADA@RBX@@VInstance@2@$1?sCFrameValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<class G3D::CoordinateFrame,&char * RBX::sCFrameValue>,class RBX::Instance,&char * RBX::sCFrameValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<class G3D::CoordinateFrame,&char * RBX::sCFrameValue>,class RBX::Instance,&char * RBX::sCFrameValue>::Creator::create(void)const "
+ },
+ "0063a340": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<class G3D::Color3,&char * RBX::sColor3Value>,class RBX::Instance,&char * RBX::sColor3Value>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sColor3Value@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sColor3Value@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<class G3D::Color3,&char * RBX::sColor3Value>,class RBX::Instance,&char * RBX::sColor3Value>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<class G3D::Color3,&char * RBX::sColor3Value>,class RBX::Instance,&char * RBX::sColor3Value>::Creator::create(void)const "
+ },
+ "0063a3f0": {
+  "evidence": [
+   {
+    "bogus_name": "?create@Creator@?$FactoryProduct@VScript@RBX@@VInstance@2@$1?sScript@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+    "kind": "vtable-slot-owner-rewrite",
+    "new_owner": "RBX::FactoryProduct<class RBX::Value<class RBX::BrickColor,&char * RBX::sBrickColorValue>,class RBX::Instance,&char * RBX::sBrickColorValue>::Creator",
+    "old_owner": "RBX::FactoryProduct<class RBX::Script,class RBX::Instance,&char * RBX::sScript>::Creator",
+    "vtable": "??_7Creator@?$FactoryProduct@V?$Value@VBrickColor@RBX@@$1?sBrickColorValue@2@3PADA@RBX@@VInstance@2@$1?sBrickColorValue@2@3PADA@RBX@@6B@"
+   }
+  ],
+  "kind": "code",
+  "name": "?create@Creator@?$FactoryProduct@V?$Value@VBrickColor@RBX@@$1?sBrickColorValue@2@3PADA@RBX@@VInstance@2@$1?sBrickColorValue@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+  "name_source": "identity-unlock-dupfix",
+  "owner_class": "RBX::FactoryProduct<class RBX::Value<class RBX::BrickColor,&char * RBX::sBrickColorValue>,class RBX::Instance,&char * RBX::sBrickColorValue>::Creator",
+  "signature": "public: virtual class boost::shared_ptr<class RBX::Object> __thiscall RBX::FactoryProduct<class RBX::Value<class RBX::BrickColor,&char * RBX::sBrickColorValue>,class RBX::Instance,&char * RBX::sBrickColorValue>::Creator::create(void)const "
+ }
+}

@@ -33,7 +33,7 @@ DEFINITIONS = '''namespace RBX {
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 	template<class C, class D, const char* N>
-	FactoryProduct<C, D, N>::Creator::Creator() { getCreators()[&className()] = this; }
+	FactoryProduct<C, D, N>::Creator::Creator() { getCreators()[&className()] = this; isConstructed = 666; }
 	template<class C, class D, const char* N>
 	FactoryProduct<C, D, N>::Creator::~Creator() { getCreators().erase(&className()); }
 	template<class C, class D, const char* N>
@@ -81,16 +81,45 @@ def gate(pair):
     return cls, status, detail
 
 
-def gate_code(work, headers, code, want, keep=False):
+def discover_symbol(work, headers, code, addr, needle, include_first=(), raw_includes=None, defines=()):
+    """Compile once and return the decorated symbol of the function whose name contains NEEDLE (placeholder targets
+    have no known decorated name: `sub_00401ab0` -> `?sub_00401ab0@S@RBX@@QAEXXZ`)."""
+    gate_code(work, headers, code, {addr: '?__discover_%s@@YAXXZ' % addr}, keep=True, include_first=include_first,
+              raw_includes=raw_includes, defines=defines)
+    bulk = OUT / (work.name + '-bulk')
+    try:
+        manifest = json.loads((bulk / 'manifest.json').read_text())
+        logs = list(bulk.rglob('compile.log'))
+        LAST_ERROR[addr] = next((line for log in logs for line in log.read_text(errors='replace').splitlines()
+                                 if re.search(r'error C\d+', line)), '')[-400:]
+    except (OSError, ValueError):
+        return None
+    finally:
+        import shutil
+        shutil.rmtree(bulk, ignore_errors=True)
+    found = [s['symbol'] for fam in manifest['families'] for s in fam['symbols'] if needle in s.get('symbol', '')
+             and not s['symbol'].startswith(('__', '$'))]
+    return found[0] if len(found) == 1 else None
+
+
+LAST_ERROR = {}
+
+
+def gate_code(work, headers, code, want, keep=False, include_first=(), raw_includes=None, defines=()):
     """Compile HEADERS + CODE as one probe and prove the WANT {addr: symbol} functions through native-bulk with closure
-    identity evidence, learning callee identities from the candidate object (3 rounds).  -> ({addr: status}, detail)."""
+    identity evidence, learning callee identities from the candidate object (3 rounds).  -> ({addr: status}, detail).
+    INCLUDE_FIRST: /I dirs searched before native-headers (shadow headers with inferred member declarations);
+    RAW_INCLUDES: #include strings to emit instead of the absolute header paths."""
     work.mkdir(parents=True, exist_ok=True)
     probe = work / 'probe.cpp'
-    flags = '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I%s /I%s' % (ROOT / 'rebuild/2008-06/native-headers', m.DONOR_INCLUDE)
+    flags = ''.join('/I%s ' % d for d in include_first)
+    flags = '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL %s/I%s /I%s' % (flags, ROOT / 'rebuild/2008-06/native-headers', m.DONOR_INCLUDE)
     vendor = m.header_include_flags(Path(headers[0]).resolve().relative_to(ROOT).as_posix(), '', [str(Path(h).resolve()) for h in headers[1:]])
     flags += (' ' + vendor) if vendor else ''      # RakNet (DS_LinkedList.h), Ogre, Scintilla roots the headers need
-    probe.write_text('// native-flags: %s\n%s\n%s\n'
-                     % (flags, ''.join('#include "%s"\n' % Path(h).resolve().as_posix() for h in dict.fromkeys(headers)), code))
+    flags += ''.join(' /D' + d for d in defines)    # native opt-in guards (#ifdef NATIVE_CLUMP_DECL ...)
+    includes = (''.join('#include "%s"\n' % h for h in raw_includes) if raw_includes is not None else
+                ''.join('#include "%s"\n' % Path(h).resolve().as_posix() for h in dict.fromkeys(headers)))
+    probe.write_text('// native-flags: %s\n%s\n%s\n' % (flags, includes, code))
     closure = json.loads(m.CLOSURE.read_text())
     closure['bindings'] = [b for b in closure['bindings'] if b['addr'] not in want] + [
         dict(symbol=n, addr=a, address=a, votes=1, evidence='identity-unlock-init', body_exact=False, function_start=True)

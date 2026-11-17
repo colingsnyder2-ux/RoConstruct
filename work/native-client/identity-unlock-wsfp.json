@@ -1,0 +1,45 @@
+{
+ "005b6fe0": {
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ",
+     "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+     "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+     "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+     "__CxxThrowException@8"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": [
+     "FMOD %d: %s"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?checkResult@@YAXW4FMOD_RESULT@@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "005b87a0": {
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+     "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": [
+     "FMOD %d: %s"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?checkResultNoThrow@@YAXW4FMOD_RESULT@@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ }
+}

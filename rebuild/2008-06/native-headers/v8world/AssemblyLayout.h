@@ -265,6 +265,8 @@ namespace RBX
 		const G3D::Array<Edge*>& getExternalEdges();     // 005e6c70 (INFERRED name: refills externalEdges +0x8 when
 		                                                 // externalEdgesDirty +0x14; callers SleepStage 0064a790 / 0064a950
 		                                                 // / 0064c470)
+	public:
+		void sub_005e6ba0(G3D::Array<const void*>& edges);   // INFERRED: 005e6ba0, placeholder name (identity tier), body byte-proved (Inferred_005e6ba0.cpp)
 	};
 
 	// INFERRED: the 2008 binary has no RTTI for an RBX::Assembly and the assembly object is its root Clump (Clump()
@@ -280,7 +282,9 @@ namespace RBX
 			return Clump::getAssembly();
 		}
 		MotorJoint* getMotor(unsigned int index);        // 005e6400 ?getMotor@Assembly@RBX@@QAEPAVMotorJoint@2@I@Z (registry)
-	};
+		public:
+		RBX::PrimIterator assemblyPrimEnd(void)const;   // INFERRED: ?assemblyPrimEnd@Assembly@RBX@@QBE?AVPrimIterator@2@XZ (header gap, header_gap_fill.py)
+};
 
 	// 005e5f60 (analog name: openrbx lessAssembly; cdecl, the comparator addChild 005e6f70 passes to std::_Sort 005e6e90).
 	bool lessAssembly(const Assembly* a0, const Assembly* a1);

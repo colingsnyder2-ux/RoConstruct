@@ -1,0 +1,393 @@
+{
+ "0042a4f0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?call_once@boost@@YAXP6AXXZAAJ@Z",
+     "?get@tss@detail@boost@@QBEPAXXZ",
+     "?get@tss@detail@boost@@QBEPAXXZ",
+     "?set@tss@detail@boost@@QAEXPAX@Z",
+     "?cleanup@tss@detail@boost@@QAEXPAX@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getCurrent@ThreadLogManager@@SAPAV1@XZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "004ab8c0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "??1connection@signals@boost@@QAE@XZ",
+     "??1connection@signals@boost@@QAE@XZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??1ReplicationData@Replicator@Network@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "004ab960": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?isDescendentOf@Instance@RBX@@QBE_NPBV12@@Z",
+     "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?remoteDeleteOnDisconnect@Replicator@Network@RBX@@EBE_NPBVInstance@3@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "004aba60": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?Reset@BitStream@RakNet@@QAEXXZ",
+     "??1BitStream@RakNet@@QAE@XZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??1ItemSender@Replicator@Network@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "004abd20": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "??0connection@signals@boost@@QAE@ABV012@@Z",
+     "??0connection@signals@boost@@QAE@ABV012@@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "??0ReplicationData@Replicator@Network@RBX@@QAE@ABU0123@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "004ca7b0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@_N@Z",
+     "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+     "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+     "?WriteBits@BitStream@RakNet@@QAEXPBEH_N@Z",
+     "??6Network@RBX@@YAAAVBitStream@RakNet@@AAV23@_N@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?writePosition@@YAXPAUStream@@ABUVector@@_N@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "00596e60": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?call_once@boost@@YAXP6AXXZAAJ@Z",
+     "?get@tss@detail@boost@@QBEPAXXZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?get_thread_name@RBX@@YAPBDXZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a02e0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?getData@Profiler@Profiling@RBX@@QBE?AUBucket@23@N@Z",
+     "?getActualFPS@Bucket@Profiling@RBX@@QBENXZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getFPS@RBX@@YANPAVCodeProfiler@Profiling@1@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "005bbeb0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+     "?classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?registerSound@RBX@@YAXXZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e6420": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?getBranchCofmPos@Body@RBX@@QBE?AVVector3@G3D@@XZ",
+     "?updatePV@Body@RBX@@ABEXXZ",
+     "?vector3Abs@Math@RBX@@SA?AVVector3@G3D@@ABV34@@Z",
+     "??EPrimIterator@RBX@@QAEAAV01@XZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?computeMaxRadius@Assembly@RBX@@ABEMXZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e7050": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?setParent@Assembly@RBX@@QAEXPAV12@@Z",
+     "?setParent@Body@RBX@@QAEXPAV12@@Z",
+     "?resetLink@MotorJoint@RBX@@QAEPAVRevoluteLink@2@XZ",
+     "?setMeInParent@Body@RBX@@QAEXPAVLink@2@@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?addMotorChild@Assembly@RBX@@SAXPAVPrimitive@2@PAVMotorJoint@2@0@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "006439b0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?updatePV@Body@RBX@@ABEXXZ",
+     "?transpose@Matrix3@G3D@@QBE?AV12@XZ"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getYAxis@Balancing@RBX@@IBE?AVVector3@G3D@@XZ",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "00659510": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?floor@Vector3int32@RBX@@SA?AV12@ABVVector3@G3D@@@Z",
+     "?floor@Vector3int32@RBX@@SA?AV12@ABVVector3@G3D@@@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?computeMinMax@SpatialHash@RBX@@CAXABVExtents@2@AAVVector3int32@2@1@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "00659c20": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?collisionLocationForMovingPointFixedAABox@CollisionDetection@G3D@@SA_NABVVector3@2@0ABVAABox@2@AAV32@AA_N2@Z",
+     "_floor",
+     "_floor",
+     "_floor"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getNextGrid@SpatialHash@RBX@@QAE_NAAVVector3int32@2@ABVRay@G3D@@M@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "00668bb0": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "_floor",
+     "__allmul"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?getPrimitiveSize@RBX@@YAMPBVPrimitive@1@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669940": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?dirtyAssemblies@TreeStage@RBX@@AAEXPAVJoint@2@@Z",
+     "?dirtyAssemblies@TreeStage@RBX@@AAEXPAVJoint@2@@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?swap@TreeStage@RBX@@AAEXPAVJoint@2@0PAVPrimitive@2@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "00669c70": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "?findLightestDownstream@TreeStage@RBX@@AAEPAVJoint@2@PAVPrimitive@2@AAPAV42@@Z",
+     "?removeFromStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z",
+     "?removeEdge@Primitive@RBX@@SAXPAVEdge@2@@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?onEdgeRemoving@TreeStage@RBX@@UAEXPAVEdge@2@@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ },
+ "007a5ecf": {
+  "alternatives": [],
+  "confidence": "webservice-pdb-fingerprint",
+  "evidence": [
+   {
+    "kind": "webservice-pdb-fingerprint",
+    "named_callees": [
+     "??$AtlMultiply@I@ATL@@YAJPAIII@Z",
+     "??$AtlAdd@K@ATL@@YAJPAKKK@Z"
+    ],
+    "pdb": "WebService.pdb (RBXGS 0.3.676)",
+    "strings": []
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "?Allocate@CAtlStringMgr@ATL@@UAEPAUCStringData@2@HH@Z",
+  "name_source": "identity-unlock-wsfp",
+  "owner_class": null,
+  "signature": null
+ }
+}

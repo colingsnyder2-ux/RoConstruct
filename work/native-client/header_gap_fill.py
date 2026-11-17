@@ -56,6 +56,12 @@ def class_span(text, leaf):
     return None
 
 
+# Core headers have one owner (CLAUDE.md): additions there become proposals (header-gap-proposals.json), not edits.
+CORE = {'v8tree/Instance.h', 'v8datamodel/DataModel.h', 'util/Events.h', 'reflection/reflection.h',
+        'reflection/property.h', 'reflection/type.h', 'reflection/member.h', 'reflection/function.h', 'reflection/event.h'}
+PROPOSALS = []
+
+
 def plan():
     queue = json.loads(n.QUEUE.read_text())
     n.declaring_header('')
@@ -77,6 +83,28 @@ def plan():
             code = re.search(r'%s@(?:\w+@)*@([A-Z])' % re.escape(leaf), m['symbol'])
             if code and code.group(1) in ACCESS:
                 wanted[(defs[0], owner)].append((m['symbol'], ACCESS[code.group(1)]))
+    # Also every registry / identity-session name (load_registry: proven + inferred tiers) of a function the website
+    # still counts as remaining, whose class lives in exactly one native header but does not declare the member.
+    remaining = n.remaining_set()
+    by_owner = collections.defaultdict(list)
+    for addr, row in n.load_registry().items():
+        name, owner = row.get('name') or '', row.get('owner_class') or ''
+        if (addr not in remaining or row.get('kind') != 'code' or not owner or '<' in owner or owner.startswith(VENDOR)
+                or not name.startswith('?') or name.startswith('??$')
+                or row.get('inferred') or 'inferred' in str(row.get('name_source', ''))):   # proven names only
+            continue
+        by_owner[owner].append(name)
+    for owner, symbols in by_owner.items():
+        leaf = owner.rsplit('::', 1)[-1]
+        spaces = owner.split('::')[:-1]
+        defs = [p for p, t in native if class_span(t, leaf)
+                and all(re.search(r'\bnamespace\s+%s\b' % re.escape(ns), t) for ns in spaces)]
+        if len(defs) != 1:
+            continue
+        for symbol in symbols:
+            code = re.search(r'%s@(?:\w+@)*@([A-Z])' % re.escape(leaf), symbol)
+            if code and code.group(1) in ACCESS and (symbol, ACCESS[code.group(1)]) not in wanted[(defs[0], owner)]:
+                wanted[(defs[0], owner)].append((symbol, ACCESS[code.group(1)]))
     plain = undname({s for rows in wanted.values() for s, _ in rows})
     edits = collections.defaultdict(list)           # header -> [(owner, access, decl, symbol)]
     for (header, owner), rows in wanted.items():
@@ -87,6 +115,14 @@ def plan():
             name = decl and re.search(r'(~?\w+)\s*\(', decl)
             # Skip names the class already mentions (overloads need judgement) and anything undname left mangled.
             if not decl or not name or '?' in decl or re.search(r'\b%s\s*\(' % re.escape(name.group(1)), text[span[0]:span[1]]):
+                continue
+            if name.group(1) in ('f', 'g', 'h', 'method', 'fn', 'func', 'call', 'helper') or name.group(1).startswith(('func_', 'sub_', 'FUN_')):
+                continue                                     # analog placeholder names, not binary symbols
+            if re.search(r'[\w>]::~?\w+\s*\(', decl):           # owner/class mismatch left a qualified name
+                continue
+            if header.relative_to(HEADERS).as_posix() in CORE:
+                PROPOSALS.append(dict(header=header.relative_to(HEADERS).as_posix(), owner=owner, access=access,
+                                      declaration=decl, symbol=symbol))
                 continue
             edits[header].append((owner, access, decl, symbol))
     return edits
@@ -125,6 +161,8 @@ def main():
     ap.add_argument('--limit-headers', type=int, default=0)
     args = ap.parse_args()
     edits = plan()
+    (ROOT / 'work/native-client/header-gap-proposals.json').write_text(json.dumps(PROPOSALS, indent=1))
+    print('%d core-header proposals -> work/native-client/header-gap-proposals.json' % len(PROPOSALS))
     total = sum(len(v) for v in edits.values())
     print('%d declarations in %d headers' % (total, len(edits)))
     for header, rows in sorted(edits.items(), key=lambda kv: -len(kv[1])):

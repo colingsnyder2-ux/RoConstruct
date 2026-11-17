@@ -1,0 +1,144 @@
+{
+ "00567fe0": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?setSelection@Selection@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VSelection@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@QAE@P8Selection@2@AEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VSelection@RBX@@$$A6AXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z$00@Reflection@RBX@@QAE@P8Selection@2@AEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Selection,void __cdecl(class boost::shared_ptr<class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > const >),1>::BoundFuncDesc<class RBX::Selection,void __cdecl(class boost::shared_ptr<class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > const >),1>(void (__thiscall RBX::Selection::*)(class boost::shared_ptr<class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > const >),char const *,char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ },
+ "00572f00": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?findServiceByClassNameString@ServiceProvider@RBX@@AAE?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VServiceProvider@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8ServiceProvider@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VServiceProvider@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8ServiceProvider@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::ServiceProvider,class boost::shared_ptr<class RBX::Instance> __cdecl(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >),1>::BoundFuncDesc<class RBX::ServiceProvider,class boost::shared_ptr<class RBX::Instance> __cdecl(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >),1>(class boost::shared_ptr<class RBX::Instance> (__thiscall RBX::ServiceProvider::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >),char const *,char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ },
+ "00579920": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?clearContents@DataModel@RBX@@QAEXXZ"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VDataModel@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DataModel@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VDataModel@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8DataModel@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::DataModel,void __cdecl(void),0>::BoundFuncDesc<class RBX::DataModel,void __cdecl(void),0>(void (__thiscall RBX::DataModel::*)(void),char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ },
+ "005a4a00": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VModelInstance@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8ModelInstance@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?zoomToExtents@Workspace@RBX@@QAEXXZ"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Workspace@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VWorkspace@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Workspace@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Workspace,void __cdecl(void),0>::BoundFuncDesc<class RBX::Workspace,void __cdecl(void),0>(void (__thiscall RBX::Workspace::*)(void),char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ },
+ "005bc090": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?pause@SoundChannel@Soundscape@RBX@@QAEXXZ",
+     "?play@SoundChannel@Soundscape@RBX@@QAEXXZ",
+     "?stop@SoundChannel@Soundscape@RBX@@QAEXXZ"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VSoundChannel@Soundscape@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8SoundChannel@Soundscape@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VSoundChannel@Soundscape@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8SoundChannel@Soundscape@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Soundscape::SoundChannel,void __cdecl(void),0>::BoundFuncDesc<class RBX::Soundscape::SoundChannel,void __cdecl(void),0>(void (__thiscall RBX::Soundscape::SoundChannel::*)(void),char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ },
+ "005c4f80": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VRunService@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8RunService@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?getUploadUrl@Visit@RBX@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VVisit@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ$0A@@Reflection@RBX@@QAE@P8Visit@2@AE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZPBDW4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VVisit@RBX@@$$A6A?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ$0A@@Reflection@RBX@@QAE@P8Visit@2@AE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Visit,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl(void),0>::BoundFuncDesc<class RBX::Visit,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl(void),0>(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > (__thiscall RBX::Visit::*)(void),char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ },
+ "005e18c0": {
+  "evidence": [
+   {
+    "bogus_name": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+    "kind": "descriptor-ctor-member-pointers",
+    "member_functions": [
+     "?setMinutesAfterMidnight@Lighting@RBX@@QAEXN@Z"
+    ]
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6AXN@Z$00@Reflection@RBX@@QAE@P8Lighting@2@AEXN@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+  "name_source": "identity-unlock-dupctor",
+  "owner_class": null,
+  "signature": "public: __thiscall RBX::Reflection::BoundFuncDesc<class RBX::Lighting,void __cdecl(double),1>::BoundFuncDesc<class RBX::Lighting,void __cdecl(double),1>(void (__thiscall RBX::Lighting::*)(double),char const *,char const *,enum RBX::Reflection::FunctionDescriptor::Security)"
+ }
+}

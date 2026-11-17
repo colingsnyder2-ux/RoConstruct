@@ -1,0 +1,2100 @@
+{
+ "004117b0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Name"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f2a90",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setName",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004451e0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "minShadingQuality"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef5f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004451f0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "maxShadingQuality"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef630",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00445200": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "minMeshDetail"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef670",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00445210": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "maxMeshDetail"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef6b0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00448f40": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "minShadingQuality"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef5f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00448fd0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "maxShadingQuality"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef630",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00449060": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "minMeshDetail"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef670",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004490c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Qaulity",
+     "maxMeshDetail"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007ef6b0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setQaulity",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0045aef0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Focus"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f5d70",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setFocus",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00463890": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "LinkedSource"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f3f70",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setLinkedSource",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00489960": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Team",
+     "Neutral"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f1280",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setNeutral",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004899a0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "userId"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f1080",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setData",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00495e50": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "MaxPlayers"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f17f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setMaxPlayers",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00497f40": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "userID",
+     "GetPlayerByID"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f1860",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::getPlayerByID",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00498030": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "character",
+     "GetPlayerFromCharacter"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f19e0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::getPlayerFromCharacter",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0049d450": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "MaxPlayers"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f17f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setMaxPlayers",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0049d480": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "userId",
+     "CreateLocalPlayer"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f1950",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::createLocalPlayer",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0049e1d0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "url",
+     "SetAbuseReportUrl"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f1980",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::setAbuseReportUrl",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004a1560": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Port"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f1cf0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setPort",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004a2250": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetClientCount"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f1cc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getClientCount",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004aafd0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "CloseConnection"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f2200",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::closeConnection",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004ac9e0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "LogPackets"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f2260",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::logPackets",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004ae860": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetPlayer"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f2230",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getPlayer",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004b49e0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "RequestCharacter"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f21d0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::requestCharacter",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004d6f80": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "ColorShift_Top"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6bc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setColorShift_Top",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004d6fb0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "ColorShift_Bottom"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6c00",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setColorShift_Bottom",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004d6fe0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Brightness"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6b80",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setBrightness",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004e5ba0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "VertexColor"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4d20",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setVertexColor",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004e5be0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Specular"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f41d0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setSpecular",
+  "name_source": "identity-unlock-reflect"
+ },
+ "004e5bf0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Shiny"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4210",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setShiny",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00557630": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Name"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f2a90",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setName",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00557640": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "descendant",
+     "IsAncestorOf"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f2a30",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::isAncestorOf",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00557890": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "ancestor",
+     "IsDescendantOf"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f2a00",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::isDescendantOf",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005580e0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetChildren"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f29d0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getChildren",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00566a80": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Get"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f3330",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00574f10": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "message",
+     "SetMessage"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f3610",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::setMessage",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00574f60": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "ClearMessage"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f3640",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::clearMessage",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00574f80": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "SetMessageBrickCount"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f3670",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::setMessageBrickCount",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00575270": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Close"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f35e0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::close",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00579c10": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "url",
+     "Save"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f3500",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::save",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0057bc00": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "synchronous",
+     "url",
+     "HttpGet"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Instance",
+    "initializer": "007f3530",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::httpGet",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00589d60": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetCanUndo"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f40b0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getCanUndo",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00589ed0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetCanRedo"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f40e0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getCanRedo",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0058c540": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "name",
+     "SetWaypoint"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f4020",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::setWaypoint",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00597350": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "StudsPerTileU"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4250",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setStudsPerTileU",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00597360": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "StudsPerTileV"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4290",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setStudsPerTileV",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00598690": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Specular"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f41d0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setSpecular",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005986d0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Shiny"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4210",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setShiny",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00598710": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "StudsPerTileU"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4250",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setStudsPerTileU",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00598750": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "StudsPerTileV"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f4290",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setStudsPerTileV",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00598c90": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "MakeJoints"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "ModelInstance",
+    "initializer": "007f44f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::ModelInstance::makeJoints",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00598cc0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetMass"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "ModelInstance",
+    "initializer": "007f4530",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::ModelInstance::getMass",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005a39d0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "url",
+     "InsertContent"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "ModelInstance",
+    "initializer": "007f4d60",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::ModelInstance::insertContent",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005ae8f0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "seconds",
+     "SetTimeout"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f4f80",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::setTimeout",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b0820": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Hole"
+    ],
+    "descriptor": "RefPropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f7ac0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setHole",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b6590": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Character"
+    ],
+    "descriptor": "RefPropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f1000",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setCharacter",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b65a0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "PlayCount"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f5370",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setPlayCount",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b6960": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "IsPaused"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f5420",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setIsPaused",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b6990": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "IsPlaying"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f53f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setIsPlaying",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b69c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Volume"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f5330",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setVolume",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005b69d0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Behavior",
+     "Looped"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f53b0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setLooped",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005bd360": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "SoundId"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f52f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setSoundId",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005cc410": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Camera",
+     "CameraSubject"
+    ],
+    "descriptor": "RefPropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f5db0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setCameraSubject",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005ce440": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "CoordinateFrame"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f5d30",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setCoordinateFrame",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005d40c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "ShirtTemplate"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f60a0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setShirtTemplate",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005dcad0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Text"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f6970",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setText",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005df480": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetMoonPhase"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f6a50",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getMoonPhase",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005df490": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "GeographicLatitude"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6a10",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setGeographicLatitude",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005df4a0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "ShadowColor"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6b40",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setShadowColor",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e0610": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetMinutesAfterMidnight"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f6ae0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getMinutesAfterMidnight",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e2420": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Brightness"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6b80",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setBrightness",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e2670": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "GeographicLatitude"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6a10",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Lighting::get/setGeographicLatitude",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e27b0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "C0"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f6d40",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setC0",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e27c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "C1"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f6d00",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setC1",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e2a10": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Part0"
+    ],
+    "descriptor": "RefPropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f6c80",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setPart0",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e2a70": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "Part1"
+    ],
+    "descriptor": "RefPropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f6cc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setPart1",
+  "name_source": "identity-unlock-reflect"
+ },
+ "005e5020": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "DesiredAngle"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f6dc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setDesiredAngle",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00609a50": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Goals",
+     "Target"
+    ],
+    "descriptor": "RefPropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f7f10",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setTarget",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00629ba0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "BlastRadius"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f7dc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setBlastRadius",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0062b5c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "BlastRadius"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Instance",
+    "initializer": "007f7dc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Instance::get/setBlastRadius",
+  "name_source": "identity-unlock-reflect"
+ },
+ "0063b330": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Data",
+     "MaxItems"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "DebrisService",
+    "initializer": "007f8b60",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::DebrisService::get/setMaxItems",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800050": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Activated"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Tool",
+    "initializer": "007f7960",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Tool::get/setActivated",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800090": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Deactivated"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Tool",
+    "initializer": "007f7990",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Tool::get/setDeactivated",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008000d0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Unequipped"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Tool",
+    "initializer": "007f7930",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Tool::get/setUnequipped",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800110": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "mouse",
+     "Equipped"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f7910",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setEquipped",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800370": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "MouseClick"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "ClickDetector",
+    "initializer": "007f7d20",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::ClickDetector::get/setMouseClick",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800410": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "distance",
+     "part",
+     "Hit"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f7e60",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setHit",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800470": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Player",
+     "FlagCaptured"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f7ef0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setFlagCaptured",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008008a0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetLastForce"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8370",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getLastForce",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008008e0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "GetLastForce"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8460",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::getLastForce",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800920": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Abort"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8160",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::abort",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008009e0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Fire"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8130",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::fire",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800a20": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "ReachedTarget"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Rocket",
+    "initializer": "007f8190",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Rocket::get/setReachedTarget",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800e20": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8630",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800e60": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8680",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800ea0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f86f0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800ee0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8740",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800f20": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f87b0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800f60": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8800",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800fa0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8860",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00800fe0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f88c0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801020": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "Changed"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f85e0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setChanged",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008011c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Idle"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8c70",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setIdle",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801200": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Button1Down"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8ca0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setButton1Down",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801240": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Button2Down"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8cd0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setButton2Down",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801280": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Button1Up"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8d00",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setButton1Up",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008012c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Button2Up"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8d30",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setButton2Up",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801300": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "WheelForward"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8d60",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setWheelForward",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801340": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "WheelBackward"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8d90",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setWheelBackward",
+  "name_source": "identity-unlock-reflect"
+ },
+ "00801380": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Key",
+     "KeyDown"
+    ],
+    "descriptor": "SignalDesc",
+    "descriptor_class": "RunService",
+    "initializer": "007f8dc0",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::RunService::get/setKeyDown",
+  "name_source": "identity-unlock-reflect"
+ },
+ "008013c0": {
+  "confidence": "api-name-convention",
+  "evidence": [
+   {
+    "api_strings": [
+     "Move"
+    ],
+    "descriptor": "Described",
+    "descriptor_class": "Mouse",
+    "initializer": "007f8c40",
+    "kind": "reflection-descriptor"
+   }
+  ],
+  "inferred": true,
+  "kind": "code",
+  "name": "RBX::Mouse::get/setMove",
+  "name_source": "identity-unlock-reflect"
+ }
+}

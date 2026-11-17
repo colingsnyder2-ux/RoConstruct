@@ -1,0 +1,18 @@
+{
+ "scope": "template-instantiation identity evidence: IRenderable::render3dSelect empty body is shared by identical code at 00458e90 and 005ef400 (original FillTool-style vtables reference 00458e90)",
+ "identity_bindings": [
+  {
+   "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+   "address": "00458e90",
+   "identity_evidence": "identical-body alias of 005ef400 (ret 8)",
+   "votes": 1
+  }
+ ],
+ "rejected_identities": [
+  {
+   "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+   "address": "005ef400"
+  }
+ ],
+ "rejected_note": "005ef400 was a single reference vote (ogre-reference-bindings-loop2); 161 original references across proved units point to 00458e90"
+}

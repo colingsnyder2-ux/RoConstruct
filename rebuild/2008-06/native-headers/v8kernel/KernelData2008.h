@@ -53,5 +53,7 @@ namespace RBX
 		// 005fb050 (`ret 4`): for i in 0..1, getBody(i); --[body + 0x8]; when it drops to 0 and +0x4 >= 0 the body is
 		// swap-removed from leafBodies and +0x4 = -1 (analog name).
 		void onConnectorRemoved(Connector* c);                              // 005fb050
-	};
+		public:
+		~KernelData(void);   // INFERRED: ??1KernelData@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+};
 }

@@ -19,9 +19,21 @@ def run(args):
     return subprocess.run([str(ROOT / 'roc.cmd'), *map(str, args)], cwd=ROOT, check=True)
 
 
-def rows(ledger):
+def entry_rows(entry, ledger_path):
+    """Harvest rows of a native_bulk ledger entry: inline (older ledgers) or its compressed rows file (rows/<ref>)."""
+    if 'harvest_rows' in entry:
+        return entry['harvest_rows']
+    path = Path(ledger_path).parent / 'rows' / entry['harvest_ref'] if entry.get('harvest_ref') else None
+    if not path or not path.is_file():
+        return []
+    import gzip
+    with gzip.open(path, 'rt', encoding='utf-8') as stream:
+        return json.load(stream)
+
+
+def rows(ledger, ledger_path):
     for family in ledger.values():
-        yield from family.get('harvest_rows', [])
+        yield from entry_rows(family, ledger_path)
 
 
 def main():
@@ -41,7 +53,7 @@ def main():
     run(['native-bulk', args.config.resolve(), '--out', first])
     ledger = json.loads((first / 'ledger.json').read_text())
     owner = next((family for family in ledger.values()
-                  if any(row.get('symbol') == args.symbol for row in family.get('harvest_rows', []))), None)
+                  if any(row.get('symbol') == args.symbol for row in entry_rows(family, first / 'ledger.json'))), None)
     if not owner or not owner.get('object'):
         raise SystemExit('requested symbol was not emitted by first pass')
     alias = out / 'alias.json'
@@ -65,7 +77,7 @@ def main():
     second = out / 'second'
     run(['native-bulk', second_config, '--out', second])
     final = json.loads((second / 'ledger.json').read_text())
-    target = next((row for row in rows(final)
+    target = next((row for row in rows(final, second / 'ledger.json')
                    if row.get('symbol') == args.symbol and row.get('addr', '').lower() == address), None)
     result = {'address': address, 'symbol': args.symbol, 'aliases': len(bindings),
               'status': target.get('status') if target else 'not-proved',

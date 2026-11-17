@@ -1,0 +1,44 @@
+{
+ "005731d0": {
+  "evidence": [
+   {
+    "kind": "source-definition-order",
+    "next": "RBX::GuiItem::menuSelect",
+    "prev": "RBX::GuiItem::disabledFill",
+    "qual": "RBX::GuiItem::menuEnabledFill",
+    "source": "tools/rbxgs/Client/App/gui/GUI.cpp"
+   },
+   {
+    "from": "compiled-object index",
+    "kind": "decorated-signature",
+    "symbol": "?menuEnabledFill@GuiItem@RBX@@SAABVColor4@G3D@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?menuEnabledFill@GuiItem@RBX@@SAABVColor4@G3D@@XZ",
+  "name_source": "identity-unlock-srcorder",
+  "owner_class": null,
+  "signature": "public: static class G3D::Color4 const & __cdecl RBX::GuiItem::menuEnabledFill(void)"
+ },
+ "00573210": {
+  "evidence": [
+   {
+    "kind": "source-definition-order",
+    "next": "RBX::GuiItem::menuSelect",
+    "prev": "RBX::GuiItem::disabledFill",
+    "qual": "RBX::GuiItem::menuDisabledFill",
+    "source": "tools/rbxgs/Client/App/gui/GUI.cpp"
+   },
+   {
+    "from": "compiled-object index",
+    "kind": "decorated-signature",
+    "symbol": "?menuDisabledFill@GuiItem@RBX@@SAABVColor4@G3D@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?menuDisabledFill@GuiItem@RBX@@SAABVColor4@G3D@@XZ",
+  "name_source": "identity-unlock-srcorder",
+  "owner_class": null,
+  "signature": "public: static class G3D::Color4 const & __cdecl RBX::GuiItem::menuDisabledFill(void)"
+ }
+}

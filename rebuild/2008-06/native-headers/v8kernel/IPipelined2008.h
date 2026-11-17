@@ -96,6 +96,8 @@ namespace RBX
 			return static_cast<IWorldStage*>(upstream)->getWorld();
 		}
 #endif
-	};
+		public:
+		void putInStage(RBX::IStage *);   // INFERRED: ?putInStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z (header gap, header_gap_fill.py)
+};
 }
 #endif

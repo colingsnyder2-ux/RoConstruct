@@ -1438,6 +1438,52 @@
   "owner_class": null,
   "signature": null
  },
+ "007f3500": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "Save"
+    ],
+    "source": "tools/rbxgs/Client/App/v8datamodel/DataModel.cpp:25",
+    "this": [
+     "00975110"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EsaveFunction@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EsaveFunction@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f3530": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "HttpGet"
+    ],
+    "source": "tools/rbxgs/Client/App/v8datamodel/DataModel.cpp:26",
+    "this": [
+     "00974e68"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__EhttpGetFunction@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__EhttpGetFunction@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
  "007f36d0": {
   "evidence": [
    {
@@ -1547,7 +1593,7 @@
     "literal": [
      "BreakJoints"
     ],
-    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:63",
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:58",
     "this": [
      "00975470"
     ]
@@ -1570,7 +1616,7 @@
     "literal": [
      "MakeJoints"
     ],
-    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:64",
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:59",
     "this": [
      "00975508"
     ]
@@ -1593,7 +1639,7 @@
     "literal": [
      "BreakJoints"
     ],
-    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:63",
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:58",
     "this": [
      "00976208"
     ]
@@ -1616,7 +1662,7 @@
     "literal": [
      "MakeJoints"
     ],
-    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:64",
+    "source": "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp:59",
     "this": [
      "00976060"
     ]
@@ -1662,6 +1708,98 @@
   ],
   "kind": "code",
   "name": "??__E?creator@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@0VCreator@12@B@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5370": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "PlayCount"
+    ],
+    "source": "tools/rbxgs/Client/App/util/Sound.cpp:92",
+    "this": [
+     "00977010"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Esound_desc_PlayCount@Soundscape@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Esound_desc_PlayCount@Soundscape@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f53f0": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "IsPlaying"
+    ],
+    "source": "tools/rbxgs/Client/App/util/Sound.cpp:94",
+    "this": [
+     "00977080"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Esound_desc_IsPlaying@Soundscape@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Esound_desc_IsPlaying@Soundscape@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5420": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "IsPaused"
+    ],
+    "source": "tools/rbxgs/Client/App/util/Sound.cpp:95",
+    "this": [
+     "00977048"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Esound_desc_isPaused@Soundscape@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Esound_desc_isPaused@Soundscape@RBX@@YAXXZ",
+  "name_source": "identity-unlock-init",
+  "owner_class": null,
+  "signature": null
+ },
+ "007f5480": {
+  "evidence": [
+   {
+    "kind": "reflection-literal-unique",
+    "literal": [
+     "Play"
+    ],
+    "source": "tools/rbxgs/Client/App/util/Sound.cpp:97",
+    "this": [
+     "00976fd0"
+    ]
+   },
+   {
+    "kind": "decorated-signature",
+    "symbol": "??__Esound_playFunction@Soundscape@RBX@@YAXXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??__Esound_playFunction@Soundscape@RBX@@YAXXZ",
   "name_source": "identity-unlock-init",
   "owner_class": null,
   "signature": null
