@@ -57,7 +57,8 @@ for r in relocs:
         points_to[dw(r)].append(r)
     except struct.error:
         pass
-code_lo, code_hi = starts[0], starts[-1] + 0x10000
+code_lo = starts[0]
+code_hi = starts[-1] + len(match.target('2008-06', '%08x' % starts[-1])[0])   # end of .text (was +64 KB: ate .rdata vtables)
 
 
 def owner(va):
@@ -198,11 +199,47 @@ def owners_of(a, depth=2, seen=None):
     return owners
 
 
+def runtime_class_name(a):
+    """MFC CRuntimeClass {m_lpszClassName, m_nObjectSize, m_wSchema, m_pfnCreateObject, ...}: a data slot holding A
+    whose slot-12 points to a C string names the class whose CreateObject A is."""
+    for slot in points_to.get(a, []):
+        if code_lo <= slot < code_hi or slot - 12 not in reloc_set:
+            continue
+        try:
+            p = dw(slot - 12) - base
+            name = image[p:image.index(0, p)].decode('ascii')
+        except (ValueError, UnicodeDecodeError, struct.error):
+            continue
+        if re.fullmatch(r'C\w+', name):
+            return name
+    return None
+
+
 for addr, symbols in cands.items():
     a = int(addr, 16)
+    if any(s.startswith('?CreateObject@') for s in symbols):
+        cname = runtime_class_name(a)
+        pick = [s for s in symbols if cname and s.startswith('?CreateObject@%s@@' % cname)]
+        if len(pick) == 1:
+            stat['runtime-class'] += 1
+            out.append({'symbol': pick[0], 'address': addr, 'votes': 1,
+                        'identity_evidence': 'CRuntimeClass at the CreateObject slot names %s; ledger body byte-equal' % cname})
+            continue
     INSTALLERS.clear()
     owners = owners_of(a)
     if not owners and not INSTALLERS:
+        # Template bodies (`??$?0...` ctors, STL helpers) with no vtable: the template-argument list of an exact caller
+        # within two calls (its full name), picked only when exactly one candidate shares the longest argument prefix.
+        near = set(callers.get(a, ()))
+        near |= {c2 for c in list(near) if c not in EXACT for c2 in callers.get(int(c, 16), ())}
+        names = {EXACT[c] for c in near if c in EXACT}
+        t = template_pick(symbols, names) if names else None
+        if t:
+            stat['caller-template'] += 1
+            out.append({'symbol': t, 'address': addr, 'votes': 1,
+                        'identity_evidence': 'template arguments shared with exact caller %s; ledger body byte-equal'
+                                             % sorted(names)[0][:100]})
+            continue
         stat['no-owner'] += 1
         continue
     pick = [s for s in symbols if classes_in(s) & owners]

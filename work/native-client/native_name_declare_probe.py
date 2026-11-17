@@ -125,6 +125,8 @@ def main():
     targets, check = native_bulk.Targets('2008-06'), probe.runner()
     total = applied = 0
     for source, lines in sorted(rows_by_source().items()):
+        if do_apply and (HERE / 'prove-out/CENSUS.lock').is_file():
+            sys.exit('a census started: stopping --apply (source edits would void it)')
         if only and source.stem not in only:
             continue
         out = HERE / 'claude-name-declare' / source.stem

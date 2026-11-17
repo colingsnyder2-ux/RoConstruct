@@ -28,7 +28,7 @@
 
 namespace RBX
 {
-	namespace ViewNew { class ViewRbxGfx; }
+	namespace ViewNew { class ViewRbxGfx; class ViewG3D; }
 	class Sky;
 
 	extern char sLighting[];
@@ -39,6 +39,8 @@ namespace RBX
 	{
 		// INFERRED access relationship; 004dab50 directly reads the proven lighting fields.
 		friend class ViewNew::ViewRbxGfx;
+		// INFERRED access relationship; 004dbf00 ViewG3D::suppressSkybox reads clearColor +0x244 directly.
+		friend class ViewNew::ViewG3D;
 	private:
 		G3D::LightingParameters skyParameters;          // +0x130
 		G3D::Color3 ambientTop;                         // +0x228

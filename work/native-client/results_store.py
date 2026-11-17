@@ -45,7 +45,14 @@ def save(updates=None, deletes=()):
             current.pop(addr, None)
         tmp = PATH.with_suffix('.tmp%d' % os.getpid())
         tmp.write_text(json.dumps(current, indent=1))
-        os.replace(tmp, PATH)
+        for attempt in range(40):                       # a reader holding results.json open blocks the rename
+            try:
+                os.replace(tmp, PATH)
+                break
+            except PermissionError:
+                time.sleep(0.05)
+        else:
+            os.replace(tmp, PATH)
         return current
     finally:
         os.close(fd)

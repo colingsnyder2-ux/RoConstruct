@@ -503,7 +503,7 @@ def judge(work, addr, reply, body):
         else:
             status, detail = compile_and_gate(work, headers, body, addr)
         if status == 'compile_failed' and 'C2011' in detail and not add_rels:      # snapshot copy clash: retry with default copies
-            plain = [str(h) for h in (class_header(c) for c in dict.fromkeys(re.findall(r'(RBX::\w+(?:::\w+)?)', body))) if h][:4]
+            plain = [str(h) for h in (class_header(c) for c in dict.fromkeys(re.findall(r'\b(RBX::\w+(?:::\w+)?)', body))) if h][:4]
             plain = plain or [str(HEADERS / 'util/Name.h')]
             if plain != headers:
                 status, detail = compile_and_gate(work, plain, body, addr)
@@ -634,8 +634,8 @@ if args.polish:
                 return a, 'skip', '', '', '', ''
             if st0 == 'inactive_exact':
                 return a, st0, '', results[a].get('class') or '', results[a].get('decl') or '', results[a].get('model') or ''
-            if st0 != 'draft':
-                return a, 'skip', '', '', '', ''
+            if st0 != 'draft':                          # today's rules reject it: record that, not a stale 'draft'
+                return a, 'restatus:' + st0, (diff or '')[:500], '', '', ''
         asm = target_asm(a)
         prompt = (RULES.format(addr=a) if a not in NAMED else 'Recover %s (%s) as real native C++.\n' % NAMED[a]) + \
             '\n--- ORIGINAL ASSEMBLY ---\n' + asm + ios_hint(a)
@@ -645,8 +645,15 @@ if args.polish:
         return a, st, det, c, d, used
     with ThreadPoolExecutor(args.jobs) as pool:
         for a, st, det, c, d, used in pool.map(polish_one, drafts):
-            row = results[a]
+            row = results_store.load().get(a) or results[a]       # fresh: another lane may have moved it meanwhile
+            if row.get('status') != 'draft':
+                continue
             if st == 'skip':
+                continue
+            if st.startswith('restatus:'):
+                row.update(status=st.split(':', 1)[1], detail=det, polished=True)
+                results_store.save({a: row})
+                print(a, 'draft ->', row['status'], flush=True)
                 continue
             row['polished'] = True
             if st == 'inactive_exact':

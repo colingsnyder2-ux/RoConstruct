@@ -106,6 +106,9 @@ def from_probe(addr):
         if q.lower().startswith(hdr.lower() + '/'):
             includes.append(q[len(hdr) + 1:])
             continue
+        if not Path(q).is_absolute():          # already tree-relative (native header or vendor root in the profile)
+            includes.append(q)
+            continue
         if '/include/' in q:                   # vendor tree (g3d, boost, ...): the compiler profile has these roots
             includes.append(q.rsplit('/include/', 1)[1])
             continue
@@ -137,12 +140,14 @@ def promote_probe(addr, flags, includes, body):
                 'lane, includes as the lane resolved them)' % (addr, int(addr, 16)))
         tu.write_text('// native-flags: %s\n%s\n%s\n%s\n' % (flags, note, ''.join('#include "%s"\n' % i for i in includes), body))
         needle = 'sub_' + addr
+        real = ''
         if named:
             real = (m.load_registry().get(addr) or {}).get('name') or ''
             hit = re.match(r'\?(\w+)@', real)
             needle = hit.group(1) if hit else needle
         work = LANE / addr / 'promote'
-        sym = cg.discover_symbol(work, [str(tu)], '', addr, needle)
+        # Template instantiations (`??$create@...`) have no plain leaf to search for: gate the registry symbol itself.
+        sym = real if named and real.startswith('??$') else cg.discover_symbol(work, [str(tu)], '', addr, needle)
         status = cg.gate_code(work, [str(tu)], '', {addr: sym})[0][addr] if sym else 'missing'
         if status != 'inactive_exact':
             tu.unlink(missing_ok=True)
@@ -192,6 +197,14 @@ def promote(addr, row):
             old, new = insert_decl(header, cls, decl, addr)
             if new is None:
                 return 'class-not-found'
+            # A declaration naming a namespace the header never mentions compiles in the promoted TU (which includes
+            # it first) but breaks every other includer (G3D::CoordinateFrame in reflection/type.h broke ~600 sources).
+            unknown = [ns for ns in dict.fromkeys(re.findall(r'\b([A-Za-z_]\w*)::', decl))
+                       if ns not in ('std', 'boost', 'RBX') and not re.search(r'\bnamespace\s+%s\b|\b%s::' % (ns, ns), old)]
+            idents = set(re.findall(r'\b([A-Z]\w+)\b', re.sub(r'\bsub_[0-9a-f]{8}\b', '', decl)))
+            unknown += sorted(i for i in idents if not re.search(r'\b%s\b' % re.escape(i), old))
+            if unknown:
+                return 'decl-needs-' + unknown[0]
             header.write_text(new)
         includes += [i for i in native_inc if i not in includes]
         text = sdk + ''.join('#include "%s"\n' % i for i in includes)
@@ -233,6 +246,8 @@ todo = [(a, r) for a, r in results.items() if r['status'] == 'inactive_exact' an
 todo = todo[:args.limit or None]
 print('placeholder exacts to promote', len(todo), flush=True)
 for addr, row in todo:
+    if (ROOT / 'work/native-client/prove-out/CENSUS.lock').is_file():
+        sys.exit('a census started: stopping (header/source writes would void it)')
     done[addr] = promote(addr, row)
     DONE.write_text(json.dumps(done, indent=1))
     print(addr, row.get('class') or 'free', done[addr], flush=True)

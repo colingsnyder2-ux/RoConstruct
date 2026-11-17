@@ -19,22 +19,24 @@ FAMILY = HERE / 'prove-out/OgreNativeFull'
 ledger = json.loads((FAMILY / 'ledger.json').read_text())
 IDENTITY = 'symbol identity not established by current reference evidence'
 out, stat = [], {}
-LIVE = set()
+# Lane files on disk (not ledger state): a binding is kept for as long as its file exists.
+LIVE = {re.search(r'_([0-9a-f]{8})\.cpp$', p.name).group(1)
+        for p in (ROOT / 'rebuild/2008-06/native-classes').glob('*_*.cpp') if re.match(r'(?:TmplInst|Inferred)_[0-9a-f]{8}\.cpp$', p.name)}
 for key, entry in ledger.items():
     hit = re.search(r'native-classes/(?:TmplInst|Inferred)_([0-9a-f]{8})\.cpp$', key)
-    if not hit or not entry.get('harvest_ref'):
+    if not hit or hit.group(1) not in LIVE:
         continue
     addr = hit.group(1)
-    if not (ROOT / key.split(':', 1)[1]).is_file():          # promote deleted the TU after a failed re-proof
-        stat['file-gone'] = stat.get('file-gone', 0) + 1
-        continue
-    LIVE.add(addr)
-    rows_path = FAMILY / 'rows' / entry['harvest_ref']
-    if not rows_path.is_file():
+    if entry.get('harvest_ref') and (FAMILY / 'rows' / entry['harvest_ref']).is_file():
+        rows = json.load(gzip.open(FAMILY / 'rows' / entry['harvest_ref']))
+    else:                                                     # rows kept inline for freshly compiled entries
+        rows = entry.get('harvest_rows') or []
+        rows = json.loads(rows) if isinstance(rows, str) else rows
+    if not rows:
         stat['no-rows'] = stat.get('no-rows', 0) + 1
         continue
     picks = []
-    for row in json.load(gzip.open(rows_path)):
+    for row in rows:
         rej = row.get('rejections') or '[]'
         rej = json.loads(rej) if isinstance(rej, str) else rej
         cands = row.get('candidates') or '[]'
@@ -66,12 +68,17 @@ for key, entry in ledger.items():
 # Callee / EH-handler identities the lane gate proved for its own object (native_reference_alias_bind output,
 # exact-target-coff-reference-alias): the census rejects these bodies only for those references.
 alias = []
-for f in list(HERE.glob('template-instances/*/alias-*.json')) + list(HERE.glob('placeholder-lane/*/alias-*.json')):
-    if f.parent.name not in LIVE:
+sys.argv = sys.argv[:1]
+sys.path.insert(0, str(HERE))
+import native_llm as m  # noqa: E402
+for f in (list(HERE.glob('template-instances/*/alias-*.json')) + list(HERE.glob('placeholder-lane/*/alias-*.json'))
+          + list(HERE.glob('placeholder-lane/*/promote/alias-*.json'))):
+    owner_addr = f.parent.parent.name if f.parent.name == 'promote' else f.parent.name
+    if owner_addr not in LIVE:
         continue
     try:
-        alias += [dict(b, identity_evidence='lane gate alias for %s: %s' % (f.parent.name, b.get('identity_evidence', '')))
-                  for b in json.loads(f.read_text()).get('identity_bindings', [])]
+        alias += [dict(b, identity_evidence='lane gate alias for %s: %s' % (owner_addr, b.get('identity_evidence', '')))
+                  for b in json.loads(f.read_text()).get('identity_bindings', []) if m.plausible_binding(b['symbol'], b['address'])]
     except (OSError, ValueError):
         pass
 seen = {(b['symbol'], b['address']) for b in out}
@@ -88,13 +95,19 @@ prev = json.loads(prev_path.read_text()).get('identity_bindings', []) if prev_pa
 have = {(b['symbol'], b['address']) for b in out}
 taken = {b['symbol'] for b in out}
 for b in prev:
-    if (b['identity_evidence'].startswith('lane gate byte-proof') and b['address'] in LIVE
+    if (b.get('identity_evidence', '').startswith('lane gate byte-proof') and b['address'] in LIVE
             and (b['symbol'], b['address']) not in have and b['symbol'] not in taken):
         out.append(b)
         have.add((b['symbol'], b['address']))
         taken.add(b['symbol'])
 stat['own-kept'] = len(out)
 out += [b for b in alias if (b['symbol'], b['address']) not in have]
+have = {(b['symbol'], b['address']) for b in out}
+for b in prev:                                  # earlier alias rows of files that still exist
+    owner = re.search(r'lane gate alias for ([0-9a-f]{8})', b.get('identity_evidence', ''))
+    if owner and owner.group(1) in LIVE and (b['symbol'], b['address']) not in have:
+        out.append(b)
+        have.add((b['symbol'], b['address']))
 print(stat, 'kept', len(out))
 (HERE / 'lane-identity-bindings.json').write_text(json.dumps(
     {'scope': 'identity evidence only: lane-proven single-address files (lane_identity.py)', 'sources': {},

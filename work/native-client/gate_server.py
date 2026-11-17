@@ -51,7 +51,13 @@ class Pool:
                     print('tools changed: workers restarted', flush=True)
                 self.pool, self.stamp = ProcessPoolExecutor(self.jobs, initializer=_init), now
             future = self.pool.submit(_job, config_path, out)
-        return future.result()
+        try:
+            return future.result()
+        except Exception as error:                  # noqa: BLE001 - BrokenProcessPool: a worker died
+            with self.lock:
+                self.pool = None                    # next submit builds a fresh pool
+            print('worker pool broken (%r): rebuilt on next request' % error, flush=True)
+            return {'ok': False, 'error': repr(error)[-300:]}
 
 
 def main():

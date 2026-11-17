@@ -24,7 +24,10 @@ for addr, symbols in cands.items():
         groups[tuple(symbols)].append(addr)
 out, stat = [], collections.Counter()
 for symbols, addrs in groups.items():
-    if len(addrs) < 3:                                   # order evidence needs a run, not a pair
+    if True:   # DISABLED: audit found 96 of 105 exact identical-body groups NOT in sorted-name order
+        stat['disabled'] += 1
+        continue
+    if len(addrs) < 3:
         stat['group-too-small'] += 1
         continue
     addrs.sort()

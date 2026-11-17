@@ -26,6 +26,8 @@ import native_llm as m  # noqa: E402
 
 results = json.loads((HERE / 'placeholder-lane/results.json').read_text())
 by_header = collections.defaultdict(list)
+if (Path(__file__).resolve().parent / 'prove-out/CENSUS.lock').is_file():
+    sys.exit('a census is running: header edits would void it')
 for addr, row in results.items():
     if row.get('status') != 'inactive_exact' or not row.get('header_add'):
         continue

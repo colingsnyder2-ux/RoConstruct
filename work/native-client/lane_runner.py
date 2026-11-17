@@ -10,6 +10,9 @@ LANE:
   classify  refresh remaining-classified.json and print the buckets
 Every step prints progress lines; the dashboard streams them."""
 import argparse
+import os
+import shutil
+import re
 import glob
 import json
 import subprocess
@@ -21,8 +24,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents'])
 ap.add_argument('--jobs', type=int, default=8)
+ap.add_argument('--model', default='sonnet', help='agents lane: sonnet or haiku')
 args = ap.parse_args()
 
 
@@ -39,6 +43,20 @@ def run(cmd, cwd=ROOT, tail=8):
     proc.wait()
     print('  (exit %s, %ds)' % (proc.returncode, time.time() - started), flush=True)
     return proc.returncode, lines
+
+
+def inputs_changed():
+    """True when a census input (native sources/headers, binding/evidence JSON) is newer than the last census manifest."""
+    manifest = HERE / 'prove-out/OgreNativeFull/manifest.json'
+    if not manifest.is_file():
+        return True
+    last = manifest.stat().st_mtime
+    roots = [ROOT / 'rebuild/2008-06/native-classes', ROOT / 'rebuild/2008-06/native-headers']
+    for root in roots:
+        for p in root.rglob('*'):
+            if p.suffix in ('.cpp', '.h', '.hpp') and p.stat().st_mtime > last:
+                return True
+    return any(p.stat().st_mtime > last for p in HERE.glob('*bindings*.json'))
 
 
 def census_running():
@@ -77,7 +95,7 @@ def ensure_gate_server():
 if args.lane not in ('census', 'classify', 'agent', 'auto'):
     ensure_gate_server()
 
-if args.lane in ('failures', 'regate', 'promote', 'vendor', 'layout', 'polish', 'inferred', 'names', 'templates') and census_running():
+if args.lane in ('failures', 'regate', 'promote', 'vendor', 'layout', 'polish', 'inferred', 'names', 'templates', 'untried') and census_running():
     sys.exit('a census is running (prove-out/CENSUS.lock): try again when it finishes')
 
 if args.lane == 'failures':
@@ -157,13 +175,18 @@ elif args.lane == 'census':
         sys.exit('a census is already running')
     # Register what the lanes and subagents produced: evidence files and new native sources.
     run([PY, 'lane_identity.py'], cwd=HERE)            # identity rows for lane-proven files (before the lock)
+    run([PY, 'ehbind.py', 'OgreNativeFull', 'eh-identity-bindings.json'], cwd=HERE)   # __ehhandler$ from prologue push
+    run([PY, 'ref_alias.py'], cwd=HERE)                # census rejections' original reference addresses
+    run([PY, 'unique_identity.py'], cwd=HERE)          # INFERRED tier: symmetric unique byte-equal bodies (>=24 B)
     inv_path = HERE / 'ogre-native-full-inventory-all.json'
     inv = json.loads(inv_path.read_text())
     fam = inv['families'][0]
     for ev in ['class-identity-bindings.json', 'template-identity-bindings.json', 'template-identity-bindings-round3.json',
                'template-identity-bindings-netser.json', 'template-identity-bindings-signal.json', 'vendor-identity-bindings.json',
                'inferred-identity-bindings.json', 'identity-session-bindings.json', 'creator-reference-bindings.json',
-               'creator-identity-bindings.json', 'vtable-identity-bindings.json', 'lane-identity-bindings.json', 'order-identity-bindings.json']:
+               'creator-identity-bindings.json', 'vtable-identity-bindings.json', 'lane-identity-bindings.json', 'order-identity-bindings.json',
+               'eh-identity-bindings.json', 'unique-identity-bindings.json',
+               'ref-alias-bindings.json', 'template-identity-bindings-round4.json']:
         rel = 'work/native-client/' + ev
         if (HERE / ev).is_file() and rel not in fam['evidence']:
             fam['evidence'].append(rel)
@@ -194,6 +217,141 @@ elif args.lane == 'inferred':
     print('inferred-name functions queued: %d' % len(queue), flush=True)
     run([PY, 'native_placeholder_llm.py', '--named', 'creator-partition/named-inferred.json', '--jobs', args.jobs], cwd=HERE)
     r = results()
+    print('RESULT %s' % counts(set(queue)), flush=True)
+
+elif args.lane == 'agents':
+    # N headless Claude Code (Sonnet) class-recovery sessions in parallel, one class each, from the generated queue
+    # (build_agent_queue.py: remaining functions by owner class).  Same rules as the session's class agents.
+    import concurrent.futures
+    run([PY, 'header_gaps.py', '--top', '0'], cwd=HERE)
+    run([PY, 'build_agent_queue.py'], cwd=HERE)
+    queue = json.loads((HERE / 'agent-class-queue.json').read_text())
+    done_path = HERE / 'agent-class-done.json'
+    done = json.loads(done_path.read_text()) if done_path.is_file() else []
+    batch = queue[:max(1, args.jobs)]
+    done += [t['class'] for t in batch]
+    done_path.write_text(json.dumps(done, indent=1))
+    rules = (HERE / 'agent-brief.md').read_text()
+    # CLI 2.x patterns use a space ("Bash(python *)"); headless sessions on Windows run PowerShell, so both tools.
+    tools = ['Read', 'Edit', 'Write', 'Grep', 'Glob'] + [
+        '%s(%s *)' % (shell, cmd) for shell in ('Bash', 'PowerShell')
+        for cmd in ('python', 'git add', 'git commit', 'git status', 'git diff', 'git log', 'ls', 'cat', 'head', 'Get-Content',
+                    'Select-String', 'Test-Path')] + ['PowerShell(.\roc.cmd *)', 'Bash(./roc.cmd *)']
+
+    # Owner 2026-11-17: unattended sessions run with permission checks off, minus a deny list; spend is capped.
+    deny = ['%s(%s*)' % (shell, cmd) for shell in ('Bash', 'PowerShell')
+            for cmd in ('git push', 'git reset', 'git checkout', 'git clean', 'git rebase', 'git branch -D', 'git stash',
+                        'git filter', 'git worktree', 'rm -rf', 'rm -r', 'Remove-Item', 'del ', 'rmdir', 'curl', 'wget',
+                        'Invoke-WebRequest', 'Invoke-RestMethod', 'python roc.py submit', 'roc.cmd submit', 'npm', 'pip')]
+    deny += ['WebFetch', 'WebSearch']
+    claude = shutil.which('claude') or 'claude'
+
+    def asm_for(addrs):
+        """Target assembly up front (saves the session's own native-asm round trips, the bulk of its tokens)."""
+        out = subprocess.run([PY, str(ROOT / 'roc.py'), 'native-asm', '2008-06', *addrs[:12]], cwd=ROOT,
+                             capture_output=True, text=True, encoding='utf-8', errors='replace').stdout
+        blocks, cur = [], []
+        for line in out.splitlines():
+            if line.startswith('== ') and cur:
+                blocks.append(cur)
+                cur = []
+            cur.append(line)
+        blocks.append(cur)
+        return '\n'.join('\n'.join(b[:70] + (['... (%d more lines)' % (len(b) - 70)] if len(b) > 70 else [])) for b in blocks)
+
+    def evidence(task):
+        """Header, donor sources and last model attempts in the prompt: the transcript audit showed sessions spending
+        most turns (each re-reading the whole growing context) on cat/grep/sed of exactly these files."""
+        parts = []
+        if task.get('header') and (ROOT / task['header']).is_file():
+            parts.append('--- declaring header %s (first 8 KB) ---\n%s'
+                         % (task['header'], (ROOT / task['header']).read_text(errors='replace')[:8000]))
+        for a in task['addresses'][:6]:
+            donor = ROOT / 'src/2008-06' / (a + '.cpp')
+            if donor.is_file():
+                parts.append('--- donor analog %s (first 2.5 KB) ---\n%s' % (a, donor.read_text(errors='replace')[:2500]))
+            tries = sorted((HERE / 'placeholder-lane' / a).glob('try*.cpp'))
+            if tries:
+                parts.append('--- last model attempt %s (first 1.5 KB; it did not match) ---\n%s'
+                             % (a, tries[-1].read_text(errors='replace')[:1500]))
+        gaps_path = HERE / 'header-gaps.json'
+        if gaps_path.is_file():               # members the model lane found missing for this class (header_gaps.py)
+            leaf = task['class'].split(' + ')[0].split('::')[-1]
+            gaps = [g for g in json.loads(gaps_path.read_text()).get('members', [])
+                    if g['class'].split('::')[-1] == leaf][:15]
+            if gaps:
+                parts.append('--- members earlier compiles found missing (verify against the asm before adding) ---\n' +
+                             '\n'.join('%s::%s (blocks %s)' % (g['class'], g['member'], ' '.join(g['functions'][:4]))
+                                       for g in gaps))
+        return '\n'.join(parts)
+
+    EMPTY_MCP = HERE / 'agent-empty-mcp.json'
+    EMPTY_MCP.write_text('{"mcpServers": {}}')
+
+    STALL_TOOLS = 18                # tool calls without any Write/Edit -> the session is only reading: stop it
+
+    def one(task):
+        # Shared rules FIRST, task-specific text LAST: parallel sessions then share one cached prompt prefix.
+        brief = ('%s\n\n=== TASK ===\nClass recovery task for %s. Remaining addresses: %s. Declaring header: %s.\n\n'
+                 'Target assembly (first 12 addresses, up to 70 lines each; fetch the rest with python roc.py native-asm):\n%s\n\n'
+                 'Evidence already loaded below - do not re-read these files:\n%s\n'
+                 % (rules, task['class'], ' '.join(task['addresses']), task.get('header') or 'none found',
+                    asm_for(task['addresses']), evidence(task)))
+        log = HERE / 'agent-logs' / ('%s-%s.log' % (args.model, re.sub(r'\W+', '_', task['class'])))
+        log.parent.mkdir(exist_ok=True)
+        cmd = [claude, '-p', '--model', args.model, '--effort', 'medium',
+               '--max-budget-usd', '3' if args.model == 'haiku' else '6',
+               '--permission-mode', 'bypassPermissions',
+               # lean context: no MCP tools, no skills list, no user-level plugins/hooks (~80% cheaper start)
+               '--strict-mcp-config', '--mcp-config', str(EMPTY_MCP), '--disable-slash-commands',
+               '--exclude-dynamic-system-prompt-sections', '--setting-sources', 'project',
+               '--output-format', 'stream-json', '--verbose', '--disallowedTools', *deny]
+        started, tools, writes, result, note = time.time(), 0, 0, '', ''
+        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                                encoding='utf-8', errors='replace', cwd=ROOT)
+        proc.stdin.write(brief)
+        proc.stdin.close()
+        for line in proc.stdout:
+            try:
+                ev = json.loads(line)
+            except ValueError:
+                continue
+            for c in ((ev.get('message') or {}).get('content') or []) if isinstance((ev.get('message') or {}).get('content'), list) else []:
+                if c.get('type') == 'tool_use':
+                    tools += 1
+                    if c.get('name') in ('Write', 'Edit', 'MultiEdit', 'NotebookEdit'):
+                        writes += 1
+            if ev.get('type') == 'result':
+                result = ev.get('result') or ''
+                note = 'cost $%.2f, %s turns' % (ev.get('total_cost_usd') or 0, ev.get('num_turns'))
+            if (tools >= STALL_TOOLS and not writes) or time.time() - started > 90 * 60:
+                note = 'stopped: %s' % ('%d tool calls without writing a file' % tools if not writes else '90 min')
+                proc.kill()
+                break
+        proc.wait()
+        log.write_text('%s\n[agents lane] %d tool calls, %d writes; %s\n' % (result, tools, writes, note), encoding='utf-8')
+        return task['class'], log.read_text(encoding='utf-8', errors='replace')[-600:]
+    print('agents: %s' % ', '.join(t['class'] for t in batch), flush=True)
+    with concurrent.futures.ThreadPoolExecutor(len(batch)) as pool:
+        for cls, tail in pool.map(one, batch):
+            print('=== %s ===\n%s' % (cls, tail), flush=True)
+    print('RESULT agents finished: %d classes' % len(batch), flush=True)
+
+elif args.lane == 'untried':
+    # Every remaining named function the model lane never saw (any bucket but vendor-library, 8..2048 B), smallest first.
+    sys.path.insert(0, str(HERE))
+    sys.argv = sys.argv[:1]
+    import native_llm as m
+    reg = m.load_registry()
+    cl = json.loads((HERE / 'remaining-classified.json').read_text())
+    r = results()
+    queue = sorted((a for a, v in cl.items() if v['bucket'] != 'vendor-library' and 8 <= v['size'] <= 2048
+                    and r.get(a, {}).get('status') in (None, 'requeue')
+                    and (reg.get(a) or {}).get('name') and not reg[a]['name'].startswith(('func_', 'sub_', '?sub_'))
+                    and reg[a].get('signature')), key=lambda a: cl[a]['size'])
+    (HERE / 'creator-partition/named-untried.json').write_text(json.dumps(queue))
+    print('untried named functions queued: %d' % len(queue), flush=True)
+    run([PY, 'native_placeholder_llm.py', '--named', 'creator-partition/named-untried.json', '--jobs', args.jobs], cwd=HERE)
     print('RESULT %s' % counts(set(queue)), flush=True)
 
 elif args.lane == 'templates':
@@ -231,8 +389,11 @@ elif args.lane == 'auto':
     # repeated; each cycle counts its gains on the site (census takes minutes since the parallel/per-file cache work).
     for cycle in range(1, 100):
         print('=== auto cycle %d ===' % cycle, flush=True)
-        for lane in ('regate', 'names', 'templates', 'donor', 'inferred', 'polish', 'layout', 'promote', 'census'):   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
-            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', args.jobs])
+        for lane in ('regate', 'names', 'templates', 'donor', 'inferred', 'untried', 'agents', 'polish', 'layout', 'promote', 'census'):   # failures: 3.8% yield, manual only   # flags: 0 of 29 drafts, slow - manual only
+            if lane == 'census' and not inputs_changed():
+                print('census skipped: no native source or evidence changed since the last census', flush=True)
+                continue
+            run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', 4 if lane == 'agents' else args.jobs])
         if (HERE / 'native-llm' / 'STOP').is_file():
             print('STOP file present: ending auto cycles', flush=True)
             break
