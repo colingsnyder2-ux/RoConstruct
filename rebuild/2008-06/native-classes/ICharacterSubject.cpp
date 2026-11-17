@@ -104,51 +104,22 @@ namespace RBX
 
 	void ICharacterSubject::onHeartBeat(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
 	{
-		if ((cameraGoal.translation - cameraFocus.translation).magnitude() < 2.75f)
-		{
-			Instance* thisInstance = dynamic_cast<Instance*>(this);
-			if (ControllerService* controllerService = ServiceProvider::find<ControllerService>(thisInstance))
-			{
-				if (Workspace* workspace = ServiceProvider::find<Workspace>(thisInstance))
-				{
-					UserInputBase* device = controllerService->getHardwareDevice();
-					if (device)
-					{
-						device->centerCursor();
-						device->setWrapMode(UserInputBase::WRAP_CENTER);
-						cursorLocked = true;
-					}
-				}
-			}
-		}
-		else
-		{
-			Instance* thisInstance = dynamic_cast<Instance*>(this);
-			if (ControllerService* controllerService = ServiceProvider::find<ControllerService>(thisInstance))
-			{
-				if (Workspace* workspace = ServiceProvider::find<Workspace>(thisInstance))
-				{
-					UserInputBase* device = controllerService->getHardwareDevice();
-					if (device && cursorLocked)
-					{
-						if (!workspace->getInMouselookMode())
-							device->setWrapMode(UserInputBase::WRAP_AUTO);
+		float dx = cameraGoal.translation.x - cameraFocus.translation.x;
+		float dy = cameraGoal.translation.y - cameraFocus.translation.y;
+		float dz = cameraGoal.translation.z - cameraFocus.translation.z;
+		cursorLocked = sqrtf(dx * dx + dy * dy + dz * dz) < 2.75f;
 
-						cursorLocked = false;
-					}
-				}
-			}
-		}
+		Instance* thisInstance = dynamic_cast<Instance*>(this);
+		if (Workspace* workspace = ServiceProvider::find<Workspace>(thisInstance))
+			workspace->setInMouselookMode(cursorLocked);
 
 		float angle = 0.0f;
-
 		if (cursorLocked)
 		{
-			G3D::Vector3 v = cameraFocus.translation - cameraGoal.translation;
-			v.y = 0.0f;
-			v = v.direction();
-
-			angle = Math::angleToE0(G3D::Vector2(v.z, v.x));
+			float vx = cameraFocus.translation.x - cameraGoal.translation.x;
+			float vz = cameraFocus.translation.z - cameraGoal.translation.z;
+			float inv = 1.0f / sqrtf(vx * vx + vz * vz);
+			angle = Math::angleToE0(G3D::Vector2(vz * inv, vx * inv));
 		}
 
 		cameraSetWalkOrientation(angle, !cursorLocked);
