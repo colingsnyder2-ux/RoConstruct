@@ -208,6 +208,9 @@ def import_slots():
     return _IMPORT_SLOTS
 
 
+REF_NAMES = {}       # symbol -> addresses the evidence names (set per harvest() call)
+
+
 def audit_references(raw, symbol, body, target, target_relocs, va, targets, bindings):
     """Check every relocation and initialized-data edge; unknown is a blocker."""
     sections, symbols, definitions, _ = match._coff_data_index(raw)
@@ -218,6 +221,11 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         name, value, number, _ = symbols[index]
         base = (original - stored) & 0xffffffff
         known = bindings.get(name)
+        # One symbol at several addresses (the same template instance in several static libraries, each copy calling
+        # its own callee copy): the reference is proven when the evidence names the referenced address for that symbol.
+        named_here = '%08x' % base in REF_NAMES.get(name, ())
+        if named_here:
+            known = '%08x' % base
         if name in bindings and known is None:
             errors.append('conflicting reference identity: ' + name)
             return
@@ -374,6 +382,8 @@ def _harvest_job(item):
 
 
 def harvest(raw, targets, names, bindings):
+    REF_NAMES.clear()
+    REF_NAMES.update(names)
     rows = []
     for symbol, body, relocs in match.coff_functions(raw):
         started = time.monotonic()
