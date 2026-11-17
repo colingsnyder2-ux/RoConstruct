@@ -330,7 +330,7 @@ class Dashboard:
                 # Automatic native lanes (work/native-client/lane_runner.py): header-add failures, regate, vendor,
                 # class layout, promotion, census + publish, classify.
                 lane = data.get("lane")
-                if lane not in ("failures", "regate", "vendor", "layout", "promote", "census", "classify", "flags", "auto", "agent"):
+                if lane not in ("failures", "regate", "vendor", "layout", "promote", "census", "classify", "flags", "auto", "agent", "donor", "pattern"):
                     raise ValueError("Unknown native lane")
                 jobs = int(data.get("jobs", 8))
                 if not 1 <= jobs <= 16:

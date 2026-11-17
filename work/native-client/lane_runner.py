@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern'])
 ap.add_argument('--jobs', type=int, default=8)
 args = ap.parse_args()
 
@@ -111,14 +111,19 @@ elif args.lane == 'layout':
     run([PY, 'native_class_lane.py', '--jobs', args.jobs], cwd=HERE)
 
 elif args.lane == 'promote':
-    hits_path = HERE / 'flag-sweep-hits.json'          # flag-sweep exacts: merge into results.json with their flags
-    if hits_path.is_file():
+    # No-model lane exacts (flag sweep, donor transplant, pattern lane) live in their own hits files: merge them.
+    for name in ('flag-sweep-hits.json', 'donor-transplant-hits.json', 'pattern-lane-hits.json'):
+        hits_path = HERE / name
+        if not hits_path.is_file():
+            continue
         r = results()
-        for addr, hit in json.loads(hits_path.read_text()).items():
-            r.setdefault(addr, {'model': 'flag-sweep'}).update(status='inactive_exact', flags=hit['flags'],
-                                                                **({'class': hit['cls'], 'decl': hit['decl']} if hit.get('cls') else {}))
+        hits = json.loads(hits_path.read_text())
+        for addr, hit in hits.items():
+            row = r.setdefault(addr, {'model': hit.get('model', name.split('-hits')[0])})
+            row.update(status='inactive_exact', **({'flags': hit['flags']} if hit.get('flags') else {}),
+                       **({'class': hit['cls'], 'decl': hit['decl']} if hit.get('cls') else {}))
         (HERE / 'placeholder-lane/results.json').write_text(json.dumps(r, indent=1))
-        print('merged %d flag-sweep exacts' % len(json.loads(hits_path.read_text())), flush=True)
+        print('merged %d exacts from %s' % (len(hits), name), flush=True)
     run([PY, 'promote_header_adds.py'], cwd=HERE)
     run([PY, 'native_placeholder_promote.py'], cwd=HERE)
     _, status = run(['git', 'status', '--short', 'rebuild/2008-06/native-classes'])
@@ -153,6 +158,12 @@ elif args.lane == 'census':
                    'r = integration_site.build(); print({k: v["functions"] for k, v in r["groups"].items()}); '
                    'server.publish_pages(shutil.which("git"))'])
 
+elif args.lane == 'donor':
+    run([PY, 'donor_transplant.py', '--jobs', args.jobs], cwd=HERE)
+
+elif args.lane == 'pattern':
+    run([PY, 'pattern_lane.py', '--jobs', args.jobs], cwd=HERE)
+
 elif args.lane == 'flags':
     run([PY, 'flag_sweep.py', '--jobs', args.jobs], cwd=HERE)
 
@@ -161,7 +172,7 @@ elif args.lane == 'auto':
     # repeated; each cycle counts its gains on the site (census takes minutes since the parallel/per-file cache work).
     for cycle in range(1, 100):
         print('=== auto cycle %d ===' % cycle, flush=True)
-        for lane in ('regate', 'failures', 'layout', 'flags', 'promote', 'census'):
+        for lane in ('regate', 'donor', 'pattern', 'failures', 'layout', 'flags', 'promote', 'census'):
             run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', args.jobs])
         if (HERE / 'native-llm' / 'STOP').is_file():
             print('STOP file present: ending auto cycles', flush=True)
