@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include "ReliabilityLayer.h"
 
 bool ReliabilityLayer::AckTimeout(RakNetTimeNS curTime)
@@ -25,7 +24,6 @@ bool ReliabilityLayer::IsOutgoingDataWaiting(void)
 			return true;
 	}
 
-
 	return acknowlegements.Size() > 0 || resendList.IsEmpty()==false;// || outputQueue.Size() > 0 || orderingList.Size() > 0 || splitPacketChannelList.Size() > 0;
 }
 
@@ -34,7 +32,6 @@ bool ReliabilityLayer::AreAcksWaiting(void)
 	return acknowlegements.Size() > 0;
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class DataStructures::Queue<InternalPacket *>;
 
 int ReliabilityLayer::WriteToBitStreamFromInternalPacket( RakNet::BitStream *bitStream, const InternalPacket *const internalPacket, RakNetTimeNS curTime )
@@ -63,9 +60,7 @@ int ReliabilityLayer::WriteToBitStreamFromInternalPacket( RakNet::BitStream *bit
 //		int a=5;
 //	}
 
-
 	// Acknowledgment packets have no more data than the messageNumber and whether it is anacknowledgment
-
 
 #ifdef _DEBUG
 	assert( internalPacket->dataBitLength > 0 );
@@ -130,7 +125,6 @@ RakNetTimeNS ReliabilityLayer::GetAckPing(void) const
 	return ackPing;
 }
 
-// Methods recovered from exact mined packets: field offsets mapped to this header by compiler layout.
 unsigned int ReliabilityLayer::GetTimeoutTime() { return timeoutTime; }
 bool ReliabilityLayer::IsCheater() const { return cheater; }
 bool ReliabilityLayer::IsDeadConnection() const { return deadConnection; }

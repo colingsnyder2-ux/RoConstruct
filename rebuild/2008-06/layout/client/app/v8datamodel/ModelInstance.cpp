@@ -1,4 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/ModelInstance.h"
 namespace RBX {
 void ModelInstance::onDescendentAdded(Instance* instance) {
@@ -23,5 +22,4 @@ void ModelInstance::onDescendentRemoving(const boost::shared_ptr<Instance>& inst
 }
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::ComputeProp<RBX::Extents,RBX::ModelInstance>;

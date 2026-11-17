@@ -1,0 +1,1297 @@
+{
+ "rebuild/2008-06/layout/client/app/gui/ArrowPanel.cpp": {
+  "source": "rebuild/2008-06/native-classes/ArrowPanel.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
+     "// 2008-06 native RBX::ArrowPanel / RBX::ArrowButton unit (inactive): 00656bf0..00657c00.",
+     "// Layout and addresses in native-headers/gui/ArrowPanel.h; verified by tests/record_native_widget.py."
+    ]
+   },
+   {
+    "line": 25,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/v8datamodel/Backpack.cpp": {
+  "source": "rebuild/2008-06/native-classes/Backpack.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
+     "// 2008-06 native RBX::Backpack (inactive): the Backpack part of the original Hopper unit (005d16d0..005d1b70).",
+     "// Evidence in native-headers/v8datamodel/Backpack.h (IScriptOwner from the native script/Script.h)."
+    ]
+   },
+   {
+    "line": 30,
+    "text": [
+     "// 005d18e0"
+    ]
+   },
+   {
+    "line": 54,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/gui/ChatOutput.cpp": {
+  "source": "rebuild/2008-06/native-classes/ChatOutput.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 native RBX::ChatOutput unit (inactive): 0064fb60..00651000.",
+     "// Layout and addresses in native-headers/gui/ChatOutput.h; verified by tests/record_native_hud.py.",
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+    ]
+   },
+   {
+    "line": 56,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/tool/DragTool.cpp": {
+  "source": "rebuild/2008-06/native-classes/DragTool.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/v8datamodel/Explosion.cpp": {
+  "source": "rebuild/2008-06/native-classes/Explosion.cpp",
+  "build": {},
+  "notes": [
+   {
+    "line": 11,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 22,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 25,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 28,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 31,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 34,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 37,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 40,
+    "text": [
+     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/util/FileSystem.cpp": {
+  "source": "rebuild/2008-06/native-classes/FileSystem.cpp",
+  "build": {},
+  "notes": [
+   {
+    "line": 135,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/util/Guid.cpp": {
+  "source": "rebuild/2008-06/native-classes/Guid.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
+     "// Inactive: globals and initializer require original data/link proof."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/v8datamodel/ModelInstance.cpp": {
+  "source": "rebuild/2008-06/native-classes/ModelInstance.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+    ]
+   },
+   {
+    "line": 26,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/tool/NullTool.cpp": {
+  "source": "rebuild/2008-06/native-classes/NullTool.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/util/Profiling.cpp": {
+  "source": "rebuild/2008-06/native-classes/Profiling.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.cpp": {
+  "source": "rebuild/2008-06/native-classes/ReliabilityLayer.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source"
+    ]
+   },
+   {
+    "line": 37,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 133,
+    "text": [
+     "// Methods recovered from exact mined packets: field offsets mapped to this header by compiler layout."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/security/SecurityContext.cpp": {
+  "source": "rebuild/2008-06/native-classes/SecurityContext.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/network/raknet30/source/StringCompressor.cpp": {
+  "source": "rebuild/2008-06/native-classes/StringCompressor.cpp",
+  "build": {
+   "flags": "/O2 /GS- /EHsc /MD /GS- /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /GS- /EHsc /MD /GS- /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source"
+    ]
+   },
+   {
+    "line": 34,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb860",
+     "// FUNCTION: ROBLOX 0x004d4cf0"
+    ]
+   },
+   {
+    "line": 43,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb8e0",
+     "// FUNCTION: ROBLOX 0x004d4d70"
+    ]
+   },
+   {
+    "line": 59,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb0c0",
+     "// FUNCTION: ROBLOX 0x004d4550"
+    ]
+   },
+   {
+    "line": 321,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb730",
+     "// FUNCTION: ROBLOX 0x004d4bc0"
+    ]
+   },
+   {
+    "line": 360,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb7d0",
+     "// FUNCTION: ROBLOX 0x004d4c60"
+    ]
+   },
+   {
+    "line": 368,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb3b0",
+     "// FUNCTION: ROBLOX 0x004d4840"
+    ]
+   },
+   {
+    "line": 403,
+    "text": [
+     "// FUNCTION: WEBSERVICE 0x101bb530",
+     "// FUNCTION: ROBLOX 0x004d49c0"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/v8datamodel/ToolMouseCommand.cpp": {
+  "source": "rebuild/2008-06/native-classes/ToolMouseCommand.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+     "// Donor-derived TU (rbxgs v8datamodel/ToolMouseCommand.cpp) on the native headers with the 2008 compiler; exact functions verified by",
+     "// check_native_class.py (inactive range evidence, not identity/layout gated)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/v8tree/Verb.cpp": {
+  "source": "rebuild/2008-06/native-classes/Verb.cpp",
+  "build": {},
+  "notes": [
+   {
+    "line": 4,
+    "text": [
+     "// 005833e0: intern the name, remember the container, register in its verb map."
+    ]
+   },
+   {
+    "line": 13,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/util/base64.hpp": {
+  "source": "rebuild/2008-06/native-headers/AppUnit58C/base64.hpp",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Konstantin Pilipchuk's base64.hpp (upstream form, as in tools/openrbx/Client/App/include/util/base64.hpp), used by the",
+     "// 2008-06 XmlSerializer unit for its Roblox-instantiated base64<char> templates, which only that unit references:",
+     "//   put<istreambuf_iterator, ostreambuf_iterator, int, crlf> 0058df70 (called by TextXmlWriterWithEmbeddedContent::",
+     "//   serializeNode 0058f4ad; ends each 72-character line through `_To = _Endl(_To)`: the crlf functor call keeps the",
+     "//   8-byte iterator copy that makes the original frame 0x1c, where the donor util/base64.hpp writes '\\n' inline: 0x14),",
+     "//   get<istreambuf_iterator, ostreambuf_iterator, int> 0058d900 and _getCharType 0058d530 (parse 0058fb1b).",
+     "// A different path from the donor util/base64.hpp, so it shadows nothing.",
+     "//  base64.hpp",
+     "//  Autor Konstantin Pilipchuk",
+     "//  mailto:lostd@ukr.net",
+     "//",
+     "//"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/network/raknet30/source/rakpeer.h": {
+  "source": "rebuild/2008-06/native-headers/RakPeer.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/network/raknet30/source/RakPeerInterface.h": {
+  "source": "rebuild/2008-06/native-headers/RakPeerInterface.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.h": {
+  "source": "rebuild/2008-06/native-headers/ReliabilityLayer.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/network/replicator.h": {
+  "source": "rebuild/2008-06/native-headers/Replicator.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/rbxview/BevelMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::BevelMesh / BevelMesh::Builder (inactive).",
+     "//   BevelMesh  RTTI base of WedgeMesh 008270e8 and TorsoMesh 00827124 (-> RenderBase::Mesh -> ReferenceCountedObject,",
+     "//              all mdisp 0); no vtable of its own is referenced (never constructed as a complete object).",
+     "//   Builder    vtable 00827088 .?AVBuilder@BevelMesh@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slot 0 build 00501040,",
+     "//              slots 1..6 pure (_purecall). Base of WedgeBuilder 008270a8 and TorsoBuilder 00827100.",
+     "//              bevel +0x20 (float; build 00501040 tests 0 < [this+0x20]); sizeof 0x24 (implicit copy constructor",
+     "//              004f6e30 copies +0x04..+0x20 and stores 00827088)."
+    ]
+   },
+   {
+    "line": 32,
+    "text": [
+     "// The builder as its own vertex function (the builder-as-functor grid instances 004f6fa0 / 004f7390 /",
+     "// 004fa190 pass a copy of it): inline, no out-of-line copy in the image (the strips 004f66d0.. compare",
+     "// x and y with 0 and step them towards the centre by bevel)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/CylinderMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::CylinderBuilder / CylinderAlongXMesh (inactive).",
+     "//   CylinderBuilder  vtable 00827164 .?AVCylinderBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30",
+     "//                    (inherited), 1 buildTop 004fd5c0, 2 buildBottom 004fd650, 3 buildLeft 004fd620, 4 buildRight 004fd590,",
+     "//                    5 buildFront 004fd680, 6 buildBack 004fd5f0. ctor 004fd430 out of line (ret 0x18): elements +0x20 =",
+     "//                    max(slices / 4, 1) (unsigned; shr 2 / jb); sizeof 0x24.",
+     "//   CylinderAlongXMesh  vtable 00827184 -> RenderBase::Mesh, MeshFactory<CylinderAlongXMesh, 1>; one slot (??_G 004e54c0).",
+     "//                    ctors 004fd6b0 (size, surfaceTypes), 004fd800 (size, decal face), 004fd960 (size, texture face,",
+     "//                    studsPerTile); each stores meshKind 3 and builds with 12 slices."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/FileMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/FileMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98.",
+     "//   vtable 008271cc .?AVFileMesh@ViewNew@RBX@@ -> RenderBase::Mesh -> G3D::ReferenceCountedObject (all mdisp 0; no",
+     "//            MeshFactory base); one slot (??_G 004e54c0, the scalar deleting dtor shared by every ViewNew mesh).",
+     "//   size     0x88: create 00500b90 pushes 0x88 before the Mesh ctor 00548570 and then stores 008271cc (header-inline",
+     "//            FileMesh()); no fields of its own.",
+     "//   create   00500b90 (cdecl, hidden ReferenceCountedPointer<RenderBase::Mesh> result): ContentProvider* [esp+8],",
+     "//            const Vector3& [esp+0xc], MeshId by value [esp+0x10] (0x20 bytes: std::string copied by the imported copy",
+     "//            ctor, then the dword at +0x1c copied by mov; only the string is destroyed: the donor ContentId layout",
+     "//            std::string id + const Name* mimeTypePtr).",
+     "//   loadFromMeshFile 00500780 (thiscall, ret 0x28 = provider 4 + scale 4 + MeshId 0x20). It calls",
+     "//            ContentProvider 00562670 (thiscall, three pointer arguments: the MeshId, the status out slot, the file name",
+     "//            string), which the native util/NativeContentProvider.h does not declare (see the unit)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/HeadMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive).",
+     "//   HeadBuilder  vtable 00827194 .?AVHeadBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30",
+     "//                (inherited), 1 buildTop 00500020, 2 buildBottom 00500050 (EndcapTransform), 3 buildLeft 00500080,",
+     "//                4 buildRight 005000c0, 5 buildFront 00500100, 6 buildBack 00500140 (CylinderTransform).",
+     "//                ctor 004fdaf0 out of line (ret 0x1c; level by value): LevelBuilder(level, Vector3(min(x, z), y,",
+     "//                min(x, z)), surfaceTypes), bevel +0x20 (float), elements +0x24; sizeof 0x28.",
+     "//   EndcapTransform  { const float bevel; } operator() 004fdcc0 (thiscall, ret 0x14).",
+     "//   CylinderTransform { const float bevel; const int halfVertexCount; } operator() 004fdbd0; the face slots pass",
+     "//                (elements + 1) / 2.",
+     "//   HeadMesh     vtable 008271b8 -> RenderBase::Mesh, MeshFactory<HeadMesh, 1>; one slot (??_G 004e54c0). ctors 00500180",
+     "//                (size, surfaceTypes), 00500350 (decal face), 005004d0 (texture face, studsPerTile): bevel =",
+     "//                min(size.x, size.z) * 0.25f (0083a3e4), 9 elements."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/MeshFactory.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::MeshFactory<Mesh, numMeshes> (inactive): the empty second base of the cached meshes.",
+     "//   RTTI     .?AV?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@ (and WedgeMesh / TorsoMesh / HeadMesh /",
+     "//            CylinderAlongXMesh with $00 = 1, PBBMesh with $03 = 4) is the last base class descriptor of each mesh,",
+     "//            mdisp 0x89, no fields (the meshes are 0x8c: the factories push 0x8c before their constructors).",
+     "//   Static caches: only declared here (no instance fields). The nested types are proven by the RTTI of the cache",
+     "//   tables, e.g. 00826b84 .?AV?$Table@VRenderSurfaceTypes@ViewNew@RBX@@V?$Table@VVector3@G3D@@UVariations@?$MeshFactory@",
+     "//   VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@@G3D@@. Their definitions and the create / flush bodies are in",
+     "//   native-headers/ViewNewPartMesh2008/MeshFactoryCache2008.h (included by native-classes/ViewNewPartMesh2008.cpp)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/PBBMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::PBBBuilder / PBBMesh (inactive).",
+     "//   PBBBuilder  vtable 0082704c .?AVPBBBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30",
+     "//               (inherited), 1 buildTop 004f4790, 2 buildBottom 004f47f0, 3 buildLeft 004f4850, 4 buildRight 004f48b0,",
+     "//               5 buildFront 004f4910, 6 buildBack 004f4970. ctor 004f1eb0 out of line (ret 0x14: level&, Vector3 by",
+     "//               value, RenderSurfaceTypes): strips +0x20 / +0x22 / +0x24 (int16 each, zeroed first by the",
+     "//               Vector3int16 default ctor, then clamped to 1..4 of size / 6).",
+     "//   PBBMesh     vtable 00827070 -> RenderBase::Mesh, MeshFactory<PBBMesh, 4>; one slot (??_G 004e54c0).",
+     "//               ctors 004f49d0 (size, decal face), 004f4b20 (size, texture face, studsPerTile), 004f4cb0 (size,",
+     "//               surfaceTypes; also builds the shadow box 004e3570 when the shadows flag 0096de64 is set: body in",
+     "//               native-classes/ViewNewPartMesh2008PBB.cpp, pending the ViewBase::getShadowsEnabled() declaration)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/QuadVolume.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::LevelBuilder / RenderSurfaceTypes (inactive).",
+     "//   LevelBuilder  vtable 008270c8 .?AVLevelBuilder@ViewNew@RBX@@ (no bases); 7 slots: 0 build 00500d30, 1..6 the",
+     "//                 pure buildTop / buildBottom / buildLeft / buildRight / buildFront / buildBack (_purecall).",
+     "//                 Not novtable: the ctor 00500d80 stores 008270c8.",
+     "//   ctor 00500d80 (level&, Vector3 size by value, RenderSurfaceTypes; ret 0x14): halfSize +0x04 = size * 0.5f,",
+     "//                 surfaceTypes +0x10, level +0x14 (ReferenceCountedPointer, setPointer 00598fa0 ICF),",
+     "//                 textureScale +0x18 = (2, 2) (constant 0081c434); sizeof 0x20 (BevelMesh::Builder adds +0x20).",
+     "//   buildFace 00500ca0 switches (jump table) NormalId -> the face slot; build 00500d30 calls the six face slots in order 1..6; appendQuadFromVertexIndices 00500de0 (3) / 00500eb0 (4)",
+     "//   switch on level->primitive (TRIANGLES 2, QUADS 5) and append Mesh::allocVertex(i, 1) results to",
+     "//   level->indexArray (Array<unsigned>::append 00500690 / 004dc6a0); appendQuadFromIndexArray 00500fd0 / 00501000",
+     "//   map through level->indexArray and tail-jump to them.",
+     "//   RenderSurfaceTypes  one 32-bit word (+0x10), three bits per face (the buildFace templates read (data >> 3*face) & 7)."
+    ]
+   },
+   {
+    "line": 73,
+    "text": [
+     "// Per-face grid builder (template instances 004fbdb0.., one per face and vertex function). The bodies of",
+     "// this and the strip overload below are in ViewNew/QuadVolumeFace.h, which the builder units include."
+    ]
+   },
+   {
+    "line": 78,
+    "text": [
+     "// One strip of the grid (inner instances 004fac10.., ret 0x30 plus the functor size): one vertex per grid",
+     "// point through the vertex function, then a quad per cell, then the vertex references are released."
+    ]
+   },
+   {
+    "line": 83,
+    "text": [
+     "// Builder-as-functor overload (instances 004f7bd0 / 004f7c80 WedgeBuilder, 004faa30 TorsoBuilder): copies",
+     "// the builder argument, narrows the two counts to a Vector2int16 in the first count's slot and calls the",
+     "// grid template (ret 0x30 / 0x34: builder by value, two counts, purpose)."
+    ]
+   },
+   {
+    "line": 92,
+    "text": [
+     "// 004f1ff0: one out-of-line copy (jump table 004f2018: STUDS 0, INLET 0.5, WELD 1, GLUE 1.5, default 0),",
+     "// called by every per-face grid instance of every builder unit, so a header-inline static (COMDAT)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/SphereMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::SphereBuilder / SphereMesh (inactive).",
+     "//   SphereBuilder  vtable 00827134 .?AVSphereBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30",
+     "//                  (inherited), 1 buildTop 004fcec0, 2 buildBottom 004fcf50, 3 buildLeft 004fcf20, 4 buildRight 004fce90,",
+     "//                  5 buildFront 004fcf80, 6 buildBack 004fcef0. elements +0x20 (int; 6 in every SphereMesh ctor);",
+     "//                  sizeof 0x24; header-inline ctor (00500d80 then vtable 00827134, +0x20).",
+     "//   SphereMesh     vtable 00827154 .?AVSphereMesh@ViewNew@RBX@@ -> RenderBase::Mesh, MeshFactory<SphereMesh, 1>;",
+     "//                  one slot (??_G 004e54c0, shared by every ViewNew mesh). ctors 004fcfb0 (diameter, surfaceTypes;",
+     "//                  meshKind 2), 004fd110 (size, decal face), 004fd270 (size, texture face, studsPerTile)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/TorsoMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::TorsoBuilder / TorsoMesh (inactive).",
+     "//   TorsoBuilder  vtable 00827100 .?AVTorsoBuilder@ViewNew@RBX@@ -> BevelMesh::Builder -> LevelBuilder (mdisp 0);",
+     "//                 slots 0 build 00501040 (BevelMesh::Builder), 1 buildTop 004fa090, 2 buildBottom 004faaf0,",
+     "//                 3 buildLeft 004fa110, 4 buildRight 004fa050, 5 buildFront 004fa150, 6 buildBack 004fa0d0.",
+     "//                 shoulderInset +0x24 (float; the face slots pass [this+0x20], [this+0x24]); sizeof 0x28 (the by-value",
+     "//                 copies in 004faaf0 / 004faa30: sub esp, 0x28; copy ctor 004f6e30, vtable 00827100, +0x24).",
+     "//   TorsoMesh     vtable 00827124 -> BevelMesh -> RenderBase::Mesh, MeshFactory<TorsoMesh, 1>; one slot (??_G 004e54c0).",
+     "//                 ctors 004fa590 (size, surfaceTypes; bevel 0), 004fa700 (size, decal face), 004fa880 (size, texture",
+     "//                 face, studsPerTile); shoulderInset = size.z * 0.3f, bevel 0.065f (unit constant 008270f8)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rbxview/WedgeMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::WedgeBuilder / WedgeMesh (inactive).",
+     "//   WedgeBuilder  vtable 008270a8 .?AVWedgeBuilder@ViewNew@RBX@@ -> BevelMesh::Builder -> LevelBuilder (mdisp 0);",
+     "//                 slots 0 build 00501040 (BevelMesh::Builder), 1 buildTop 004f6ee0, 2 buildBottom 004f7d60,",
+     "//                 3 buildLeft 004f6f20, 4 buildRight 004f6e90, 5 buildFront 004f6f60, 6 buildBack 004f7d30.",
+     "//                 No fields of its own: the by-value copies in 004f7bd0 / 004f7c80 are 0x24 bytes (sub esp, 0x24;",
+     "//                 BevelMesh::Builder copy ctor 004f6e30, then vtable 008270a8). Header-inline ctor (WedgeMesh",
+     "//                 ctors: LevelBuilder ctor 00500d80, vtable 008270a8, bevel +0x20).",
+     "//   WedgeMesh     vtable 008270e8 -> BevelMesh -> RenderBase::Mesh, MeshFactory<WedgeMesh, 1>; one slot (??_G 004e54c0).",
+     "//                 ctors 004f7780 (size, surfaceTypes; bevel 0), 004f78d0 (size, decal face), 004f7a30 (size, texture",
+     "//                 face, studsPerTile); the last two use the unit constant bevel 0.065f (00827080). No meshKind store."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.h": {
+  "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl": {
+  "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/detail/shared_count.hpp": {
+  "source": "rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/util/Utilities.h": {
+  "source": "rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/v8world/contactmanager.h": {
+  "source": "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive typed candidate: destructor matches; SpatialHash allocation and scratch element type remain open."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/gui/ArrowPanel.h": {
+  "source": "rebuild/2008-06/native-headers/gui/ArrowPanel.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ArrowPanel and RBX::ArrowButton (inactive). Shape after the donor tools/rbxgs gui/ArrowPanel.h",
+     "// (the donor includes gui/Button.h; the 2008 button classes are in gui/WidgetButtons.h). Read from the binary",
+     "// (tests/record_native_widget.py checks it):",
+     "//   ArrowPanel   vtable 0084c164 .?AVArrowPanel@RBX@@ -> TopMenuBar -> GuiItem. dataModel +0x15c, controller +0x160",
+     "//                (isVisible 00656db0 reads both). getSize 00656bf0 (slot 23: TopMenuBar::getSize 00573e30 while",
+     "//                visible, else Vector2::zero). Constructor 00657780 / init 00657240 and isVisible not attempted.",
+     "//   ArrowButton  vtable 0084bffc .?AVArrowButton@RBX@@ -> ImageKeyButton. Constructor 006570a0 (Adorn*, const",
+     "//                std::string&, SDLKey, Controller::ControllerType, DataModel*; ret 0x14): ImageKeyButton(adorn, name,",
+     "//                key) 0064f500, the 11 vtables, dataModel +0x188, controller +0x18c. isEnabled 00657be0 (slot 30;",
+     "//                not attempted). Size 0x190."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/gui/ChatOutput.h": {
+  "source": "rebuild/2008-06/native-headers/gui/ChatOutput.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ChatLine and RBX::ChatOutput (inactive). Shape after the donor tools/rbxgs gui/ChatOutput.h.",
+     "// Read from the binary (tests/record_native_hud.py checks it):",
+     "//   ChatLine    non-polymorphic, 0x4c bytes (ChatOutput::onEvent 00650cc0 allocates 0x4c). Constructor 00650560",
+     "//               (Player*, const std::string&, float; ret 0xc): userColor +0x00 (three floats stored last), user",
+     "//               +0x0c (default-constructed, then assigned the player's name), message +0x28 (copy), dieTime +0x44,",
+     "//               profane +0x48 (= false). Implicit destructor 0064f8c0 (called by removeOldest 0064fded).",
+     "//   ChatOutput  vtable 0084bb84 .?AVChatOutput@RBX@@ -> GuiItem -> Instance (+ GuiTarget +0x130),",
+     "//               Listener<Players, ChatMessage> +0x144 (vtable 0084baf4), Listener<RunService, Heartbeat> +0x148",
+     "//               (vtable 0084bae8). Constructor 0064fb60: GuiItem() 005739d0, the 13 vtables, runService (+0x14c)",
+     "//               and players (+0x150) = 0, filter +0x154 (ProfanityFilter() 0066a340), fifo +0x174",
+     "//               (std::deque<ChatLine*>), time +0x194 = 0.0f. Size 0x198 (006020a0 allocates 0x198).",
+     "//               Destructor 00650440 (removeOldest 0064fd70 until fifo is empty, ~deque, ~ProfanityFilter 0066a060,",
+     "//               ~GuiItem 00411540), deleting destructor 00650540.",
+     "//               onServiceProvider 00650c00 (slot 12), onEvent(Heartbeat) 0064fe10 (Listener<RunService, Heartbeat>",
+     "//               slot 0; the unit needs /fp:fast for its x87 compare order), onEvent(ChatMessage) 00650cc0 (Listener<Players, ChatMessage> slot 0; not attempted),",
+     "//               ParseCommand 00650660 (not attempted), render2d 0064fe90 (slot 24; not attempted)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/gui/EquationDisplay.h": {
+  "source": "rebuild/2008-06/native-headers/gui/EquationDisplay.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::EquationDisplay (inactive). Shape after the donor tools/rbxgs gui/EquationDisplay.h. Read from the",
+     "// binary (tests/record_native_widget.py checks it):",
+     "//   EquationDisplay  vtable 0084becc .?AVEquationDisplay@RBX@@ -> TextDisplay -> GuiItem. Constructor 00656a50",
+     "//                    (const std::string& name, const std::string& equation; ret 8): TextDisplay(name, name) 005744a0,",
+     "//                    the 11 vtables, equation +0x188 copy-constructed. Destructor 00656b80 (~std::string, ~TextDisplay",
+     "//                    00574630); its evidence extent also covers the deleting destructor 00656bd0 (bounds). getLabel",
+     "//                    00656940 (slot 25; not attempted). Size 0x1a4 (006025a0.. allocation).",
+     "//                    The donor's three-string constructor has no 2008 evidence and is left out."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/gui/GUI.h": {
+  "source": "rebuild/2008-06/native-headers/gui/Gui.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive native candidate; getChildPosition follows original 00411810."
+    ]
+   },
+   {
+    "line": 184,
+    "text": [
+     "// Inline in 2008-06: the GuiBuilder stats hud loops store fontSize +0x160, guiSize +0x13c/+0x140 (fontSize * 10,",
+     "// fontSize * 2), fontColor +0x164 and borderColor +0x174 directly (00604dd8..00604e4e)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/gui/HealthHud.h": {
+  "source": "rebuild/2008-06/native-headers/gui/HealthHud.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::HealthHud (inactive). Shape after the donor tools/rbxgs gui/HealthHud.h. Read from the binary",
+     "// (tests/record_native_widget.py checks it):",
+     "//   HealthHud  vtable 0084bdcc .?AVHealthHud@RBX@@ -> GuiItem -> Instance (+ GuiTarget +0x130). Constructor 00656490:",
+     "//              GuiItem() 005739d0, the 11 vtables, visit (+0x144/+0x148, boost::shared_ptr) empty, guiSize (+0x13c) =",
+     "//              (10.0f 00827490, 100.0f 008163a4). Size 0x14c (00602414 allocates 0x14c). Destructor 006565a0 (release",
+     "//              visit, ~GuiItem 00411540), deleting destructor 00656620. render2d 00656690 (slot 24, recovered in native-classes/HealthHud.cpp; fills visit from",
+     "//              ServiceProvider::find<Visit> 00656640 and draws the local Humanoid's health).",
+     "//              .?AVVisit@RBX@@ is in the binary's RTTI."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/gui/ScoreHud.h": {
+  "source": "rebuild/2008-06/native-headers/gui/ScoreHud.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ScoreHud (inactive). Shape after the donor tools/rbxgs gui/ScoreHud.h. Read from the binary",
+     "// (tests/record_native_hud.py checks it):",
+     "//   ScoreHud  vtable 0084bcb4 .?AVScoreHud@RBX@@ -> GuiItem -> Instance (+ GuiTarget +0x130), Listener<Instance,",
+     "//             ChildAdded> +0x144 (vtable 0084bc20), Listener<Instance, ChildRemoved> +0x148 (vtable 0084bc14).",
+     "//             Constructor 00652510 (const ServiceProvider*; ret 4): GuiItem() 005739d0, the 13 vtables, runService",
+     "//             (+0x14c) and players (+0x150) = 0, then ServiceProvider::find<RunService>() 00452c80 and",
+     "//             find<Players>() 004125d0 of the argument. Size 0x154 (00602350 allocates 0x154).",
+     "//             Destructor 00650f80 (vtables, then ~GuiItem 00411540), deleting destructor 006511f0.",
+     "//             onServiceProvider 00652600 (slot 12; the same two finds, no Instance::onServiceProvider call).",
+     "//             Both listener onEvent slots hold 00651210 (empty bodies: only the by-value event's shared_ptr is",
+     "//             released). ChildAdded comes from native v8tree/InstanceEvents.h; ChildRemoved is only declared in native",
+     "//             v8tree/Instance.h, so its body is NATIVE_SCOREHUD_PENDING and its slot binds to 00651210 by address.",
+     "//             render2d 00656430 (slot 24) dispatches on DetermineBoardType 006512e0 (Players::getPlayers 004974c0,",
+     "//             findFirstChildByName(\"leaderstats\") 00557950, Player::neutral +0x17c) to renderFFALeaderboard 006551e0",
+     "//             and renderTeamDeathmatchLeaderboard 00655a20 (native-classes/ScoreHudLeaderboard2008.cpp, verified by",
+     "//             tests/record_native_scorehud_leaderboard.py with BoardData / LeaderboardData below)."
+    ]
+   },
+   {
+    "line": 34,
+    "text": [
+     "// The player-name hash renderFFALeaderboard 0065556e and the ChatLine constructor 0065061e pass to",
+     "// Color::colorFromIndex8 (low three bits): 00669f60, cdecl, one const std::string&, returns the 31-bit hash of the",
+     "// characters (00669f10, seed 0xf8c9, multiplier 0x5c6b7). No evidence name; this name is a codegen analog."
+    ]
+   },
+   {
+    "line": 39,
+    "text": [
+     "// BoardData: the FFA / player-list table built by ScoreHud::BuildBoardData 00654d20. Not polymorphic; 0x30 bytes",
+     "// (00654080 constructs data at +0x00 and fields at +0x18, the two 0x18-byte std::vectors of this STL build;",
+     "// SetSize 00654630 resizes data (00654170), each row (vector<string>::resize 00446190) and fields)."
+    ]
+   },
+   {
+    "line": 67,
+    "text": [
+     "// LeaderboardData: the team table renderTeamDeathmatchLeaderboard 00655a20 builds on its stack. Not polymorphic;",
+     "// constructor 00655970, destructor 006558f0. CompileData 00654860 reads context [this + 0x78] and the members at",
+     "// +0x00 (statNamesList), +0x18 / +0x38 / +0x58 (the three 0x20-byte maps of this STL build); 0x7c bytes."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/humanoid/Humanoid.h": {
+  "source": "rebuild/2008-06/native-headers/humanoid/Humanoid.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/v8kernel/IStage.h": {
+  "source": "rebuild/2008-06/native-headers/kernel-stages/v8kernel/IStage.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::IStage with the 2008 StageType numbering (inactive, OPT-IN). This file sits at the original",
+     "// include path v8kernel/IStage.h, but only inside the kernel-stages overlay directory. A unit opts in by putting",
+     "// '/I{headers}/kernel-stages' on its '// native-flags:' line before any other /I entry. The runner adds those flags",
+     "// before /I{headers} and the donor include roots, so every '#include \"v8kernel/IStage.h\"' in that unit (native or",
+     "// donor: v8world/IPipelined.h, v8world/IWorldStage.h, v8kernel/Kernel.h) resolves here. Units that do not opt in keep",
+     "// the donor tools/rbxgs v8kernel/IStage.h unchanged. Never place a copy at native-headers/v8kernel/IStage.h, because",
+     "// that would shadow the donor for every unit.",
+     "//",
+     "// Layout and slots (the same in every 2008 stage vtable, native-headers/v8world/CleanStage2008.h:11-14):",
+     "//   fields   vptr +0x0, upstream +0x4, downstream +0x8 (CleanStage() 0064a310; IStage::stepWorld 0064a380 /",
+     "//            getKernel 0064a390 read downstream +0x8; IPipelined::removeFromStage 00645840 reads upstream +0x4).",
+     "//   slots    0 scalar deleting destructor, 1 getStageType, 2 stepWorld, 3 getKernel (the IWorldStage slots 4-6 follow).",
+     "//   novtable no IStage vtable exists (RTTI CleanStage 0084b05c -> IWorldStage -> IStage; only the most derived vtable",
+     "//            is stored), as in the donor.",
+     "//   ~IStage  00587050 (the donor body: delete downstream through its slot 0).",
+     "//   slot 2   Kernel::stepWorld 005fb3f0 (Kernel vtable 0084105c slot 2) is `ret 0x10` and reads a fourth argument",
+     "//            (`cmp byte ptr [esp + 0x38], 0` at 005fb408, before the SEH frame and the push ebp: that is argument 4).",
+     "//            So the 2008 slot 2 takes four arguments. The forwarding bodies (IStage::stepWorld 0064a380, TreeStage",
+     "//            00669780, AssemblyStage 0066f570) end in a tail jmp through downstream slot 2 and do not show the count.",
+     "//            moveBodiesTest is an analog name: a true value makes Kernel call 005fae00 (analog name",
+     "//            stepMoveBodiesTest) instead of the kernel step.",
+     "//   bodies   IStage::stepWorld 0064a380 and getKernel 0064a390 are 10-byte tail calls through downstream (+0x8) slot 2 /",
+     "//            slot 3, with no assertion code. The donor RBXASSERT(downstream) is left out (the 2008 bodies have none).",
+     "//",
+     "// 2008 StageType values. Each value is the constant returned by the stage's getStageType (slot 1):",
+     "//   CLEAN_STAGE    0  CleanStage    00416690 `xor eax, eax`   (no donor stage; the donor enum starts at JOINT_STAGE 0)",
+     "//   JOINT_STAGE    1  JointStage    007286a0 `mov eax, 1`",
+     "//   CLUMP_STAGE    2  ClumpStage    0077d810 `mov eax, 2`",
+     "//   TREE_STAGE     3  TreeStage     005e2790 `mov eax, 3`",
+     "//   ASSEMBLY_STAGE 4  AssemblyStage 006fa3f0 `mov eax, 4`",
+     "//   SLEEP_STAGE    5  SleepStage    007359e0 `mov eax, 5`",
+     "//   SIMJOB_STAGE   6  SimJobStage   005cb9d0 `mov eax, 6`",
+     "//   KERNEL_STAGE   7  Kernel        0077d800 `mov eax, 7` (also IPipelined::getKernel 00645850 `push 7`, and the",
+     "//                     inline getWorld / inKernel compares `cmp eax, 7` at 006456e0 / 005e5da0 / 005e3a80 / 006087a0)",
+     "// The donor COLLISION_STAGE and SEPARATE_STAGE have no 2008 stage class or getStageType body, so they are not declared.",
+     "// Several of these bodies are identical-code folds that share an address with other 0/1/2/5/6/7 returners (registry",
+     "// names such as NullController / SlingshotTool / PlayerController); the stage names above come from the vtables."
+    ]
+   },
+   {
+    "line": 74,
+    "text": [
+     "// slot 2 (0064a380: tail call of downstream slot 2; Kernel 005fb3f0 `ret 0x10`)"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/script/ThreadRef.h": {
+  "source": "rebuild/2008-06/native-headers/luafunction-threadref/script/ThreadRef.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/v8world/Primitive.h": {
+  "source": "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 4,
+    "text": [
+     "// Opt-in switch (undefined by default, so every existing includer compiles exactly as before): a unit that needs the",
+     "// 2008 Body layout behind Primitive::getBody() (native-headers/v8kernel/Body2008.h: root +0x10, pv +0x94; Primitive",
+     "// body +0xa0) defines NATIVE_PRIMITIVE_NATIVE_BODY before its first include. This header then reaches neither the",
+     "// donor v8kernel/Body.h nor anything that includes it: the donor v8world/IPipelined.h (Kernel.h -> KernelData.h ->",
+     "// Body.h) is replaced by the native native-headers/v8kernel/IPipelined2008.h (same layout: novtable, three slots,",
+     "// currentStage +0x4), and Anchor / Clump / Contact / Edge / RigidJoint, which this header uses only through",
+     "// pointers, are forward-declared instead of included (their donor headers reach Edge.h -> IPipelined.h). Such a",
+     "// unit must not include the donor Body.h, Edge.h, Joint.h, Kernel.h or a header that reaches them."
+    ]
+   },
+   {
+    "line": 196,
+    "text": [
+     "// setAnchor 005e80d0, body in PrimitiveState.cpp)"
+    ]
+   },
+   {
+    "line": 279,
+    "text": [
+     "// 005e7af0 (registry placeholder func_005e7af0; analog name, INFERRED): out of line, `ret 4`, returns",
+     "// contacts.edges[i] (edge data at Primitive +0x1c, count at +0x20 as getNumContacts reads it); caller",
+     "// PartInstance::render3dAdorn 0059e9c8 (showContactPoints loop)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/reflection/descriptor.h": {
+  "source": "rebuild/2008-06/native-headers/reflection/descriptor.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 override of Source/App/include/reflection/descriptor.h: the 2008 Descriptor(const char*)",
+     "// constructor has no RBXASSERT (inlined copies in Type 004897a0 and EnumDesc::addPair 0064d530 are",
+     "// just the vtable store and Name::declare(name, -1))."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/reflection/function.h": {
+  "source": "rebuild/2008-06/native-headers/reflection/function.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/reflection/member.h": {
+  "source": "rebuild/2008-06/native-headers/reflection/member.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/script/Script.h": {
+  "source": "rebuild/2008-06/native-headers/script/Script.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/script/ScriptContext.h": {
+  "source": "rebuild/2008-06/native-headers/script/ScriptContext.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 70,
+    "text": [
+     "// Provisional member types; 005ae490/005ae730 establish offsets, not full ABI."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/util/ContentProvider.h": {
+  "source": "rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/tool/DragTool.h": {
+  "source": "rebuild/2008-06/native-headers/tool/DragTool.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 14,
+    "text": [
+     "// Six parameters, from the mangled name the Grab/Clone tools call at 00660550:",
+     "// ...ABVUIEvent@2@PAVWorkspace@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/util/IRenderable.h": {
+  "source": "rebuild/2008-06/native-headers/util/IRenderable.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/util/Profiling.h": {
+  "source": "rebuild/2008-06/native-headers/util/Profiling.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/util/RunStateOwner.h": {
+  "source": "rebuild/2008-06/native-headers/util/RunStateOwner.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive candidate: fields follow recovered 00556b00 constructor."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/util/Sound.h": {
+  "source": "rebuild/2008-06/native-headers/util/Sound.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/util/UserInputBase.h": {
+  "source": "rebuild/2008-06/native-headers/util/UserInputBase.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 11,
+    "text": [
+     "// INFERRED: __declspec(novtable) - the ctor 005ceaa0 never stores a vftable pointer (only the string member at +4,",
+     "// ContentId +0x20 and currentCursor +0x24 are written); MSVC omits that store only for novtable classes."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/util/scopedassign.h": {
+  "source": "rebuild/2008-06/native-headers/util/scopedassign.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/Backpack.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Backpack.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Backpack (inactive). Shape after the donor tools/rbxgs v8datamodel/Backpack.h; the one change is",
+     "// the class-name template argument (a const char array, RTTI $1?sBackpack@2@3QBDB). From the 2008-06 binary:",
+     "//   RTTI       vtable 0083b9bc .?AVBackpack@RBX@@ -> DescribedCreatable<Backpack, Hopper, sBackpack> -> Hopper, plus",
+     "//              IScriptOwner at +0x168 (vtable 0083b924, slot 0 scriptShouldRun 005d18e0).",
+     "//   size       0x16c: factory 0048bc20 allocates 0x16c and calls the constructor 005d1a80 (setName(\"Backpack\") with",
+     "//              the literal 0083ba20; the class-name array is 0083b738).",
+     "// IScriptOwner is declared by the native script/Script.h (included read-only)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/Camera.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Camera.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 69,
+    "text": [
+     "// Out of line in the original (005cc0c0 / 005cc690 are called, not inlined, from panRadians/tiltRadians)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 23,
+    "text": [
+     "// Inactive candidate: RTTI, constructor and recovered 0057a1b0 source define",
+     "// these bases and members. Complete virtual methods and lifetimes remain open."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 override of Source/App/include/v8datamodel/GlobalSettings.h: class-name template parameters take the",
+     "// char array itself (const char*), as the 2008 binary pushes .data name arrays directly."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/ModelInstance.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 44,
+    "text": [
+     "// 00585050 / 00584fc0: ModelInstance's own entries in vtable slots 7 / 8 of 00830dc4 (also inherited unchanged by",
+     "// the RootInstance / Workspace vtables 00831d68, 008337f0, 00833a70 and 00833db0); they override the PVInstance",
+     "// declarations, so the slot order is unchanged."
+    ]
+   },
+   {
+    "line": 60,
+    "text": [
+     "// 005d8690 = <Humanoid> (162 bytes; callers Humanoid::modelIsCharacter 005d9a20, getLocalHumanoidFromContext 005d9bb0,",
+     "// render3dAdorn 005d9c30, 005db4c0, render2d 005db960), 005d4460 = <Skin> (BodyColors::apply 005d4b60): walks the",
+     "// modifiers vector (+0x1ec, first/last +0x1f8/+0x1fc) with checked const_iterators and dynamic_casts each entry",
+     "// from IModelModifier (RTTI 0x936908). Analog name (the registry has only placeholders for both instantiations)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/Mouse.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Mouse.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Mouse (inactive). Shape after the donor tools/rbxgs v8datamodel/Mouse.h. The changes are the",
+     "// class-name template argument, a const char array (RTTI $1?sMouse@2@3QBDB; \"Mouse\" at 0084b260 in .rdata), and the",
+     "// descriptor set of the 2008 binary. Every base, field and size below is read from the 2008-06 binary",
+     "// (tests/record_native_mouse.py checks them):",
+     "//   RTTI       vtable 00841cdc .?AVMouse@RBX@@ (21 bases) -> DescribedNonCreatable<Mouse, Instance, sMouse> ->",
+     "//              Described<Mouse, sMouse, NonFactoryProduct<Instance, sMouse>> -> NonFactoryProduct<Instance, sMouse>",
+     "//              -> Instance. The 16 slots of the Mouse vtable equal the Instance vtable 0082d884: no virtual overrides.",
+     "//   size       0x168: Creatable<Instance>::create<Mouse> 005ff600 allocates 0x168 and calls the constructor 005ff3b0.",
+     "//   fields     constructor 005ff3b0 (the inline donor constructor, emitted in the Tool unit): lastEvent +0x130",
+     "//              (UIEvent(): eventType +0x130 = NO_EVENT, userInput +0x134 = NULL, three Vector2int16 +0x138/+0x13c/",
+     "//              +0x140 = 0), icon +0x144 (TextureId: std::string +0x144, mimeTypePtr +0x160 = &Name::getNullName()),",
+     "//              command +0x164 = NULL. The destructor 005ff520 (implicit: no vtable stores) destroys the icon string",
+     "//              and runs ~Instance.",
+     "//   accessors  getX 0064dfa0 / getY 0064dfc0 read mousePosition +0x138 / +0x13a, getViewSizeX 0064dfe0 / getViewSizeY",
+     "//              0064e000 read windowSize +0x140 / +0x142, each after checkActive 00642f10 (command +0x164 == NULL ->",
+     "//              runtime_error \"This Mouse is no longer active\"). cacheUIEvent 0064df60 copies the 0x14-byte event and",
+     "//              clears eventType; it is out of line (called by update 0064e660).",
+     "//   descriptors (dynamic initializers 007f8c40..007f8f30 in this order, category \"Data\" 00822490, Functionality 5):",
+     "//              SignalDesc<Mouse, void()> Move, Idle, Button1Down, Button2Down, Button1Up, Button2Up, WheelForward,",
+     "//              WheelBackward; SignalDesc<Mouse, void(std::string)> KeyDown (\"Key\"); PropDescriptor<Mouse,",
+     "//              CoordinateFrame> Hit / Origin (read only), RefPropDescriptor<Mouse, PartInstance> Target (read only),",
+     "//              PropDescriptor<Mouse, int> X, Y, ViewSizeX, ViewSizeY (read only), PropDescriptor<Mouse, TextureId>",
+     "//              Icon (getIcon 00642f80, setIcon 0064e180)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 95,
+    "text": [
+     "// Recovered distance helper; original method name unproven."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/PVInstance.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PVInstance.h: class names are .data",
+     "// char arrays passed directly as template arguments (see native-headers/util/Name.h)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 67,
+    "text": [
+     "// Inline in 2008-06: no out-of-line RootInstance::getControllersUsed in the identity registry; ArrowPanel::isVisible",
+     "// 00656db0 reads Workspace +0x2a8 through ComputeProp<ControllerTypeArray, RootInstance>::getValue 00656c30."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/Tool.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Tool.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Tool (inactive). Shape after the donor tools/rbxgs v8datamodel/Tool.h; the one change is the",
+     "// class-name template argument (a const char array, RTTI $1?sTool@2@3QBDB). Every base, field and size below is read",
+     "// from the 2008-06 binary (tests/record_native_hopper.py checks them):",
+     "//   RTTI       vtable 00841a4c .?AVTool@RBX@@ (32 bases) -> DescribedCreatable<Tool, BackpackItem, sTool> ->",
+     "//              BackpackItem (non-virtual part 0x1a0) + IEquipable +0x1a0 + IRenderable +0x1b0, virtual ILocation and",
+     "//              ISelectable3d through the vbptr at +0x1c0 (vbtable offsets 4 and 8).",
+     "//   size       0x270: Creatable<Instance>::create<Tool> 00578400 allocates 0x270 and calls 00600240 with the",
+     "//              most-derived flag; the non-virtual part ends at +0x268 (Flag's fields start there), the virtual bases",
+     "//              are at +0x268 / +0x26c (vtable 0084199c, vtordisp thunk 005fe6a0 for getLocation).",
+     "//   fields     constructor 00600240 / destructor 005fe4b0: backendToolState +0x1c4 = NOTHING, frontendActivationState",
+     "//              +0x1c8 = 0, grip +0x1cc (CoordinateFrame() 004782d0), enabled +0x1fc = true, toolMouseCommand +0x200",
+     "//              = NULL, scoped_connections handleTouched +0x204, characterChildAdded +0x218, characterChildRemoved",
+     "//              +0x22c, torsoChildAdded +0x240, torsoChildRemoved +0x254 (~scoped_connection 005954b0 in reverse",
+     "//              order); setName(sTool) with the class-name array 008416d0. No asserts in the 2008 destructor.",
+     "//   accessors  getBackendToolState 005fd3b0 (+0x1c4), getFrontendActivationState 005fd3a0 (+0x1c8), getGrip 005fd3c0",
+     "//              (+0x1cc), getGripPos 005fd500 (+0x1f0), drawSelected 005fe600 (backendToolState >= EQUIPPED).",
+     "//   descriptors (dynamic initializers 007f7640..007f7990, category \"Appearance\" 008329ac): prop_Grip (STREAMING),",
+     "//              prop_GripPos, prop_GripForward, prop_GripUp, prop_GripRight (UI), prop_BackendToolState and",
+     "//              prop_FrontendActivationState (\"ActivationState\", STREAMING), Tool::prop_Enabled (BoundProp<bool,1> 0097b84c,",
+     "//              \"Enabled\"/\"State\", member +0x1fc, STANDARD), event_Equipped (\"Equipped\"/\"mouse\"), event_Unequipped,",
+     "//              event_Activated, event_Deactivated.",
+     "// The unit needs /fp:fast (getGripForward 005fd530 keeps the -1.0f product in x87 registers)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/ToolMouseCommand.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/ToolMouseCommand.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 25,
+    "text": [
+     "// No getMouse override: the ToolMouseCommand vtable 0084183c has the same 16 slots as ScriptMouseCommand's",
+     "// 0084a894, and Tool::getMouse 005ff680 calls the inherited non-virtual ScriptMouseCommand::getMouse 005cf8d0",
+     "// directly (005ff6c7), as the donor ToolMouseCommand.h (which declares none)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/Visit.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Visit.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/Visit.h: class names are .data",
+     "// char arrays passed directly as template arguments (see native-headers/util/Name.h)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8kernel/Connector.h": {
+  "source": "rebuild/2008-06/native-headers/v8kernel/Connector.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Canonical 2008 Connector provider.  The donor header has five virtual slots;",
+     "// this target-proved declaration has the sixth getBody(int) slot."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8tree/Service.h": {
+  "source": "rebuild/2008-06/native-headers/v8tree/Service.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 23,
+    "text": [
+     "// Original RTTI and 00568bf0 establish the three notifier bases. Existing",
+     "// source supplies the service vector/map types; behavioral ABI remains open."
+    ]
+   },
+   {
+    "line": 54,
+    "text": [
+     "// Layout recovered from the existing ServiceClient declaration. Method bodies",
+     "// require the native service-creation path and are intentionally unresolved."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8tree/Verb.h": {
+  "source": "rebuild/2008-06/native-headers/v8tree/Verb.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 9,
+    "text": [
+     "// novtable: 005833e0 never stores a vtable; the derived constructor does (View+0x10 sets 00819140 after the call)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8xml/XmlElement.h": {
+  "source": "rebuild/2008-06/native-headers/v8xml/XmlElement.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Recovered header from roc_unit_28e31b0627a2d865.cpp; native value union includes double."
+    ]
+   }
+  ]
+ }
+}

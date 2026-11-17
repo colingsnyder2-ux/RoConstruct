@@ -198,7 +198,7 @@ public:
         r.release();
     }
 
-#endif 
+#endif
 
     ~shared_count() // nothrow
     {
@@ -266,7 +266,6 @@ public:
         return pi_? pi_->get_deleter( ti ): 0;
     }
 };
-
 
 class weak_count
 {

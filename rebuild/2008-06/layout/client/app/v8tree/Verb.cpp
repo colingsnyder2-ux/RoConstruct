@@ -1,7 +1,6 @@
 #include "v8tree/Verb.h"
 #include "StandardVerbs.h"
 
-// 005833e0: intern the name, remember the container, register in its verb map.
 RBX::Verb::Verb(VerbContainer* container, std::string name)
     : name(Name::declare(name.c_str(), -1)), container(container) {
     container->verbs[&this->name] = this;
@@ -10,7 +9,6 @@ RBX::Verb::Verb(VerbContainer* container, std::string name)
 RBX::RunStateVerb::~RunStateVerb() {}
 RBX::EditSelectionVerb::~EditSelectionVerb() {}
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0>;
 template class std::_Tree<std::_Tmap_traits<RBX::Name const *,RBX::Verb *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >,0> >;
 template class std::allocator<std::pair<RBX::Name const * const,RBX::Verb *> >;

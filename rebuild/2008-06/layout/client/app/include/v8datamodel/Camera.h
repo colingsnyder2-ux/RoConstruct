@@ -66,7 +66,6 @@ namespace RBX
 		}
 		void setGCameraCoordinateFrame(const G3D::CoordinateFrame& coord);
 		G3D::CoordinateFrame computeLineOfSiteGoal();
-		// Out of line in the original (005cc0c0 / 005cc690 are called, not inlined, from panRadians/tiltRadians).
 		__declspec(noinline) void getHeadingElevationDistance(float& heading, float& elevation, float& distance);
 		__declspec(noinline) void setHeadingElevationDistance(float, float, float);
 		void tellCameraMoved();

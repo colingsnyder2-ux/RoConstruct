@@ -1,4 +1,3 @@
-// Inactive native candidate; getChildPosition follows original 00411810.
 #pragma once
 #include "RbxGraphics/Adorn.h"
 #include "v8tree/Instance.h"
@@ -16,7 +15,7 @@ namespace RBX
 	private:
 		boost::shared_ptr<GuiItem> focus;
 		G3D::Vector2 guiSize;
-	  
+
 	private:
 		GuiResponse processNonFocus(const GuiEvent& event);
 		void switchFocus(GuiItem*);
@@ -119,7 +118,7 @@ namespace RBX
 		static const G3D::Color4& translucentBackdrop();
 		static const G3D::Color4& toolboxColor();
 	};
-	
+
 	class UnifiedWidget : public GuiItem
 	{
 	public:
@@ -181,8 +180,6 @@ namespace RBX
 		TextDisplay();
 		virtual void render2d(Adorn*);
 		void setLabel(const std::string&);
-		// Inline in 2008-06: the GuiBuilder stats hud loops store fontSize +0x160, guiSize +0x13c/+0x140 (fontSize * 10,
-		// fontSize * 2), fontColor +0x164 and borderColor +0x174 directly (00604dd8..00604e4e).
 		void setFontSize(int fontSize)
 		{
 			this->fontSize = fontSize;
@@ -234,7 +231,7 @@ namespace RBX
 		Rect::Location xLocation;
 		Rect::Location yLocation;
 		G3D::Vector2int16 offset;
-	  
+
 	protected:
 		void init(const Layout& layout);
 	public:
@@ -276,7 +273,7 @@ namespace RBX
 		virtual void render2d(Adorn*);
 	protected:
 		virtual bool askSetParent(const Instance*) const;
-	
+
 	private:
 		static bool preProcess(const GuiEvent&);
 	public:

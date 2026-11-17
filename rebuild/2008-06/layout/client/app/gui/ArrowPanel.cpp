@@ -1,6 +1,3 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
-// 2008-06 native RBX::ArrowPanel / RBX::ArrowButton unit (inactive): 00656bf0..00657c00.
-// Layout and addresses in native-headers/gui/ArrowPanel.h; verified by tests/record_native_widget.py.
 #include "gui/ArrowPanel.h"
 
 namespace RBX
@@ -22,7 +19,6 @@ namespace RBX
 	}
 }
 
-// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class G3D::ReferenceCountedPointer<RBX::TextureProxyBase>;
 
 namespace RBX {
@@ -44,4 +40,3 @@ ArrowPanel::ArrowPanel(Adorn* adorn, DataModel* model, Controller::ControllerTyp
     }
 }
 }
-

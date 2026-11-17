@@ -11,8 +11,6 @@ namespace RBX
 	class UIEvent;
 	class Workspace;
 
-	// Six parameters, from the mangled name the Grab/Clone tools call at 00660550:
-	// ...ABVUIEvent@2@PAVWorkspace@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z
 	class DragTool
 	{
 	public:

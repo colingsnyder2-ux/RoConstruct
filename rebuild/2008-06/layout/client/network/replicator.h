@@ -93,7 +93,7 @@ namespace RBX
 			public:
 				virtual ~Item();
 				virtual void write(RakNet::BitStream& bitStream) = 0;
-				
+
 			public:
 				static void writeItemType(RakNet::BitStream& stream, ItemType value);
 				static void readItemType(RakNet::BitStream& stream, ItemType& value);
@@ -340,7 +340,7 @@ class FilePacketLogger : public PacketLogger
 {
 private:
 	FILE* packetLogFile;
-	
+
 public:
 	FilePacketLogger(RBX::Network::Peer*);
 	virtual ~FilePacketLogger();

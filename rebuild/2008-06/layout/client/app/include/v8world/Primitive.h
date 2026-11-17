@@ -1,14 +1,6 @@
 #pragma once
 #include "G3D/Array.h"
 #ifdef NATIVE_PRIMITIVE_NATIVE_BODY
-// Opt-in switch (undefined by default, so every existing includer compiles exactly as before): a unit that needs the
-// 2008 Body layout behind Primitive::getBody() (native-headers/v8kernel/Body2008.h: root +0x10, pv +0x94; Primitive
-// body +0xa0) defines NATIVE_PRIMITIVE_NATIVE_BODY before its first include. This header then reaches neither the
-// donor v8kernel/Body.h nor anything that includes it: the donor v8world/IPipelined.h (Kernel.h -> KernelData.h ->
-// Body.h) is replaced by the native native-headers/v8kernel/IPipelined2008.h (same layout: novtable, three slots,
-// currentStage +0x4), and Anchor / Clump / Contact / Edge / RigidJoint, which this header uses only through
-// pointers, are forward-declared instead of included (their donor headers reach Edge.h -> IPipelined.h). Such a
-// unit must not include the donor Body.h, Edge.h, Joint.h, Kernel.h or a header that reaches them.
 #include "v8kernel/IPipelined2008.h"
 #include "v8kernel/Body2008.h"
 #include "v8world/Geometry.h"
@@ -103,9 +95,9 @@ namespace RBX
 		static bool disableSleep;
 	private:
 		static bool ignoreBool;
-  
+
 	public:
-		int& worldIndexFunc() 
+		int& worldIndexFunc()
 		{
 			return worldIndex;
 		}
@@ -120,12 +112,12 @@ namespace RBX
 		Primitive(Geometry::GeometryType);
 		virtual ~Primitive();
 	public:
-		const Guid& getGuid() const 
+		const Guid& getGuid() const
 		{
 			return guid;
 		}
 		void setGuid(const Guid&);
-		World* getWorld() const 
+		World* getWorld() const
 		{
 			return world;
 		}
@@ -193,7 +185,6 @@ namespace RBX
 			return anchored;
 		}
 		void setJointAnchored(bool _jointAnchored);  // 005e8140 (analog name; +0xaa sibling of setDragging 005e8050 /
-		                                             // setAnchor 005e80d0, body in PrimitiveState.cpp)
 		void setCanCollide(bool value);
 		const bool getCanCollide() const
 		{
@@ -219,7 +210,7 @@ namespace RBX
 		{
 			return geometry->getGridSize();
 		}
-		virtual float getRadius() const 
+		virtual float getRadius() const
 		{
 			return geometry->getRadius();
 		}
@@ -277,8 +268,6 @@ namespace RBX
 			return contacts.edges.size();
 		}
 		// 005e7af0 (registry placeholder func_005e7af0; analog name, INFERRED): out of line, `ret 4`, returns
-		// contacts.edges[i] (edge data at Primitive +0x1c, count at +0x20 as getNumContacts reads it); caller
-		// PartInstance::render3dAdorn 0059e9c8 (showContactPoints loop).
 		Contact* getContact(int i);
 		int getNumEdges() const;
 		bool hasEdge();
@@ -291,7 +280,7 @@ namespace RBX
 		RigidJoint* getFirstRigid();
 		RigidJoint* getNextRigid(RigidJoint* prev);
 		//Primitive& operator=(const Primitive&);
-  
+
 	private:
 		static const int fuzzyExtentsReset();
 	protected:
@@ -309,4 +298,3 @@ namespace RBX
 		static Primitive* downstreamPrimitive(Joint*);
 	};
 }
-
