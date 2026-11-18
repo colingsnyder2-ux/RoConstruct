@@ -145,7 +145,8 @@ def input_paths(root, live_only=False):
     paths.extend(p for name in NATIVE_CODE if (p := root / "roc" / (name + ".py")).exists())
     paths.extend(p for p in (root / "research/template-units.json", root / "research/libs-bundle.json") if p.exists())
     parent = root / "rebuild" / CLIENT
-    paths.extend(input_files(parent, ("out", "__pycache__")))
+    # layout/ is the git-excluded, regenerated original-layout export: derived output, not an input.
+    paths.extend(input_files(parent, ("out", "__pycache__", "layout")))
     work = root / "work" / CLIENT
     paths.extend(p for p in (work / "functions.jsonl", work / "bounds.json", work / "vtables.json") if p.is_file())
     out = root / "rebuild" / CLIENT / "out"

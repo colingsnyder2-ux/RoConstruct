@@ -26,7 +26,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix', 'donorunits', 'donorctx'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix', 'donorunits', 'donorctx', 'thunks', 'workflow', 'mechanical'])
 ap.add_argument('--jobs', type=int, default=8)
 ap.add_argument('--model', default='codex', help='agents lane: codex (default, owner 2026-11-17: Codex agents only), sonnet, haiku or fable')
 ap.add_argument('--codex', type=int, default=int(os.environ.get('ROC_AGENT_CODEX') or 6),
@@ -287,6 +287,11 @@ elif args.lane == 'agents':
     done_path = HERE / 'agent-class-done.json'
     done = json.loads(done_path.read_text()) if done_path.is_file() else []
     codex = shutil.which('codex')
+    # Workflow first, agents for its leftovers: tasks the text-only class workflow tried and failed go to the front
+    # (their last file and verdict are added to the brief); tasks it has not tried yet go last.
+    wf_fail = {f.stem for f in (HERE / 'workflow-fail').glob('*.txt')} if (HERE / 'workflow-fail').is_dir() else set()
+    wf_key = lambda t: re.sub(r'\W+', '_', t['class'])[:80]
+    queue.sort(key=lambda t: 0 if wf_key(t) in wf_fail else 1)
     if args.model == 'codex':                 # Codex only: --jobs is the number of Codex sessions
         if not codex:
             sys.exit('codex CLI not found')
@@ -363,6 +368,9 @@ elif args.lane == 'agents':
             if tries:
                 parts.append('--- last model attempt %s (first 1.5 KB; it did not match) ---\n%s'
                              % (a, tries[-1].read_text(errors='replace')[:1500]))
+        wf = HERE / 'workflow-fail' / (re.sub(r'\W+', '_', task['class'])[:80] + '.txt')
+        if wf.is_file():                      # the workflow's closest file and why it failed: start from it
+            parts.append('--- class workflow result (text-only model, 3 rounds) ---\n' + wf.read_text(errors='replace')[:6000])
         try:                                  # Ghidra-observed member offsets/widths for the class (ghidra_layouts.py)
             import ghidra_layouts
             import ghidra_struct
@@ -399,7 +407,7 @@ elif args.lane == 'agents':
     EMPTY_MCP = HERE / 'agent-empty-mcp.json'
     EMPTY_MCP.write_text('{"mcpServers": {}}')
 
-    STALL_TOOLS = 25                # tool calls without any Write/Edit -> the session is only reading: stop it
+    STALL_TOOLS = 40                # tool calls without any Write/Edit -> the session is only reading: stop it
 
     def one(task):
         # Shared rules FIRST, task-specific text LAST: parallel sessions then share one cached prompt prefix.
@@ -460,9 +468,15 @@ elif args.lane == 'agents':
             except ValueError:
                 continue
             for c in ((ev.get('message') or {}).get('content') or []) if isinstance((ev.get('message') or {}).get('content'), list) else []:
+                if not isinstance(c, dict):                   # content items can be plain strings
+                    continue
                 if c.get('type') == 'tool_use':
                     tools += 1
-                    if c.get('name') in ('Write', 'Edit', 'MultiEdit', 'NotebookEdit'):
+                    # Sessions mostly write through Bash (python heredoc) and prove there: that is work, not reading
+                    # (2026-11-17: 6 of 11 productive sessions were stopped at 25 calls with "0 writes").
+                    cmd_text = str((c.get('input') or {}).get('command') or '')
+                    if c.get('name') in ('Write', 'Edit', 'MultiEdit', 'NotebookEdit') or re.search(
+                            r"prove\.py|write_text|open\([^)]*['\"]w|lease take|>\s*\S+\.(?:cpp|h)", cmd_text):
                         writes += 1
             if ev.get('type') == 'result':
                 result = ev.get('result') or ''
@@ -516,6 +530,22 @@ elif args.lane == 'compilefix':
 elif args.lane == 'donorunits':
     # donor-unit wrappers: the exact rbxgs/OpenRBX-context unit the server mined, compiled as a native file (no model)
     run([PY, 'donor_i.py'], cwd=HERE)
+
+elif args.lane == 'thunks':
+    # 5-byte jump thunks: forwarders generated from the proven jump target (no model)
+    run([PY, 'thunk_survey.py'], cwd=HERE)
+    run([PY, 'thunk_lane.py', '--jobs', min(int(args.jobs), 3)], cwd=HERE)
+
+elif args.lane == 'workflow':
+    # text-only class workflow: one model call per round, everything else scripted
+    run([PY, 'class_workflow.py', '--jobs', min(int(args.jobs), 4), '--rounds', '5'], cwd=HERE)
+
+elif args.lane == 'mechanical':
+    # every no-model lane in turn (owner goal 2026-11-17: finish without models where possible); no census
+    for lane in ('classify', 'thunks', 'names', 'templates', 'clones', 'donorunits', 'donor', 'promote'):
+        print('=== mechanical: %s ===' % lane, flush=True)
+        subprocess.run([PY, str(HERE / 'lane_runner.py'), lane, '--jobs', str(args.jobs)], cwd=ROOT)
+    run([PY, 'cluster_survey.py'], cwd=HERE)
 
 elif args.lane == 'donorctx':
     # translate the byte-exact mined analog against the 2007 donor headers (11% exact vs 0% native-context on hard cases)

@@ -107,6 +107,10 @@ def apply(source, proved, flags, out, targets):
     base = probe.exact((out / 'before/candidate.obj').read_bytes(), targets)
     original = source.read_bytes()
     nl = b'\r\n' if b'\r\n' in original else b'\n'
+    # idempotent: never append a line the file already has (2026-11-17: every run re-added the same instantiations)
+    proved = [row for row in proved if row[0].encode() not in original]
+    if not proved:
+        return 'already present'
     source.write_bytes(original.rstrip(b'\r\n') + nl + nl.join([b'', BLOCK.encode()] + [l.encode() for l, _, _ in proved]) + nl)
     code, _, _ = probe.compile_tu(flags, source, out / 'after')
     raw = b'' if code else (out / 'after/candidate.obj').read_bytes()

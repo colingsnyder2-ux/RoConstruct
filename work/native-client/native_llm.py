@@ -561,7 +561,7 @@ def ask(model, prompt, name):
     else:
         from roc import providers
         try:
-            options = {'allow_cloud': True, 'timeout': 120, 'max_tokens': 4096}
+            options = {'allow_cloud': True, 'timeout': int(os.environ.get('ROC_LLM_TIMEOUT') or 120), 'max_tokens': 4096}
             if model in LOW_EFFORT:
                 options['reasoning_effort'] = 'low'
             gen = providers.generate(model, prompt, options)
@@ -590,10 +590,14 @@ def ask_opencode(model, prompt):
     with tempfile.TemporaryDirectory(prefix='roc-native-llm-') as folder:
         task = Path(folder) / 'task.txt'
         task.write_text(prompt, encoding='utf-8')
-        run = subprocess.run([str(OPENCODE), 'run', '-m', model, '--format', 'json', '--file', str(task),
-                              'Follow the attached task exactly. Return only the requested code. Do not use tools.'],
-                             cwd=folder, capture_output=True, text=True, encoding='utf-8', errors='replace',
-                             timeout=120)
+        try:
+            run = subprocess.run([str(OPENCODE), 'run', '-m', model, '--format', 'json', '--file', str(task),
+                                  'Follow the attached task exactly. Return only the requested code. Do not use tools.'],
+                                 cwd=folder, capture_output=True, text=True, encoding='utf-8', errors='replace',
+                                 timeout=int(os.environ.get('ROC_LLM_TIMEOUT') or 120))
+        except subprocess.TimeoutExpired:                           # slow free model: no reply, never a lane crash
+            print('opencode timeout', model, flush=True)
+            return ''
     events = [e for e in map(_json, run.stdout.splitlines()) if isinstance(e, dict)]
     if any(e.get('type') == 'error' and re.search(r'provider\.\w+-limit', json.dumps(e.get('error')))
            for e in events):                                        # free-limit / go-limit: quota spent
@@ -1351,9 +1355,17 @@ def pick_mode(mode):
 QUOTA = HERE / 'quota-spent.json'      # model -> time its free/plan quota ran out (skipped for 12 h)
 
 
+def quota_read():
+    """Lanes run in parallel and may tear this small file: a broken file counts as empty, never a crash."""
+    try:
+        return json.loads(QUOTA.read_text()) if QUOTA.is_file() else {}
+    except (OSError, ValueError):
+        return {}
+
+
 def spent_quota(model, seconds=12 * 3600):
     """Record when MODEL's quota comes back (provider retry time when given)."""
-    spent = json.loads(QUOTA.read_text()) if QUOTA.is_file() else {}
+    spent = quota_read()
     spent[model] = time.time() + seconds
     QUOTA.write_text(json.dumps(spent, indent=1))
 
@@ -1362,7 +1374,7 @@ def fast_ladder():
     """Fast (exploit) runs: Sonnet x3 + Opus + the best free (OpenCode or NVIDIA NIM) model by bytes/hour that answers a ping now."""
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import native_llm_models
-    spent = json.loads(QUOTA.read_text()) if QUOTA.is_file() else {}
+    spent = quota_read()
     dead = dead_models()
     ranked = [r['model'] for r in native_llm_models.report()
               if r['model'].startswith(('opencode', 'nvidia:')) and r['model'] not in dead and time.time() > spent.get(r['model'], 0)]

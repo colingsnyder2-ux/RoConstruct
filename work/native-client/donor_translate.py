@@ -195,7 +195,7 @@ else:
                    and not 0x7e0000 <= int(a, 16) < 0x800000        # initializer/atexit thunks, not authored functions
                    and not (OUT / a).is_dir()), key=lambda a: cl[a]['size'])
 todo = todo[:args.limit or None]
-if todo and not args.model.startswith('claude:'):              # preflight: a spent quota must not burn the target list
+if todo and not args.model.startswith(('claude:', 'opencode')):   # OpenCode goes through native_llm's desktop CLI path              # preflight: a spent quota must not burn the target list
     from roc import providers
     try:
         providers.generate(args.model, 'Reply with exactly: ok', {'allow_cloud': True, 'timeout': 120, 'max_tokens': 16})

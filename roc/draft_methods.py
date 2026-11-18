@@ -23,7 +23,8 @@ def source_paths(root):
     root=Path(root).resolve()
     paths=[]
     for directory,dirs,files in os.walk(root/'rebuild/2008-06'):
-        dirs[:]=sorted(d for d in dirs if d.lower() not in ('out','__pycache__','.git')
+        # layout/ is the git-excluded, regenerated original-layout export (derived copies, not providers).
+        dirs[:]=sorted(d for d in dirs if d.lower() not in ('out','__pycache__','.git','layout')
             and not (Path(directory)/d).is_symlink()
             and not (hasattr(Path(directory)/d,'is_junction') and (Path(directory)/d).is_junction()))
         for name in sorted(files):
