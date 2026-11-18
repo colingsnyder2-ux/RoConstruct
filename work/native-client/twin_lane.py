@@ -97,16 +97,27 @@ BRIDGE_MAP = {
 }
 
 
-def spell(identity):
+def spell(identity, addr=None):
     if identity in BRIDGE_MAP:
         identity = BRIDGE_MAP[identity][0]
     text = re.sub(r'\s*\[subobject [^\]]*\]', '', identity).strip()
     text = NONTYPE.sub(r'\1', text)
     text = re.sub(r'^(?:class|struct)\s+', '', text)
     # Handle descriptive RTTI identities like "map/set<T> too long | >+R"
-    # by stripping the trailing " too long | >+R" suffix and mapping to std::set
+    # by stripping the trailing " too long | >+R" suffix and mapping to the correct STL container
     if 'map/set' in text.lower():
-        text = 'std::set'
+        # Determine whether this is std::set or std::map based on the rule
+        # if addr is given, look up the rule from identities.json
+        if addr and addr in unique:
+            rule = unique[addr].get('rule', '')
+            if 'via-callee' in rule:
+                text = 'std::set'
+            elif 'via-caller' in rule:
+                text = 'std::map'
+            else:
+                text = 'std::set'  # default fallback
+        else:
+            text = 'std::set'  # default fallback without addr
     return text
 
 
@@ -141,6 +152,50 @@ def includes(cls):
     return extra, out[:10]
 
 
+def prop_descriptor_parts(identity):
+    """PropDescriptor<Class,Ret>::GetImpl<GetFn> is the vftable stored by the byte-equal body at the address; the body
+    itself is the static member function template PropDescriptor<Class,Ret>::getset<GetFn>(GetFn, int), which does
+    `new GetImpl<GetFn>(get)`.  `template class ...GetImpl<...>;` never emits getset, so recover the outer class and
+    the member-function-pointer type from the RTTI identity and instantiate getset explicitly instead."""
+    t = identity.strip()
+    if t.startswith(('class ', 'struct ')):
+        t = t.split(' ', 1)[1]
+    m = re.search(r'::GetImpl\s*<', t)
+    if not m:
+        return None
+    outer = t[:m.start()]
+    if 'PropDescriptor<' not in outer:
+        return None
+    depth = 0
+    end = None
+    for i in range(m.end() - 1, len(t)):
+        if t[i] == '<':
+            depth += 1
+        elif t[i] == '>':
+            depth -= 1
+            if depth == 0:
+                end = i
+                break
+    if end is None:
+        return None
+    getfn = t[m.end():end].strip()
+    args = template_args(outer)
+    if len(args) != 2:
+        return None
+    return {'outer': outer, 'class': plain(args[0]).strip(), 'ret': plain(args[1]).strip(), 'getfn': getfn}
+
+
+def raknet_aliases(identity):
+    """INFERRED: native-headers/{BitStream,RakNetTypes,RakPeerInterface}.h are inference stubs that shadow the real
+    RakNet headers of tools/rbxgs when a unit includes Network/Server2008.h (its Peer -> RakPeer -> ReliabilityLayer
+    chain does `#include "BitStream.h"`).  Remap them for this unit only; no shared header is edited."""
+    if 'RBX::Network::Server' not in identity:
+        return []
+    src = (ROOT / 'tools/rbxgs/Client/Network/raknet30/Source').as_posix()
+    return ['#pragma include_alias("%s.h", "%s/%s.h")' % (h, src, h)
+            for h in ('BitStream', 'RakNetTypes', 'RakPeerInterface')]
+
+
 def template_args(cls):
     if '<' not in cls or '>' not in cls:
         return []
@@ -161,10 +216,15 @@ def plain(arg):
     return re.sub(r'^(?:class|struct|enum)\s+', '', arg)
 
 
-def member_templates(cls, leaf):
+def member_templates(cls, leaf, pd=None):
     """Explicit instantiations of constructor TEMPLATES (`template class X;` does not emit those).  The property
     descriptor constructors are templates over the getter/setter pointer TYPES, which follow from the class and
     value type; the usual spellings are all requested and the proof picks the one at the address."""
+    if leaf == 'PropDescriptor' and pd:
+        # INFERRED: the byte-equal body is getset<GetFn>(GetFn, int), not the GetImpl class it allocates.
+        gs = 'RBX::Reflection::TypedPropertyDescriptor<%s >::GetSet' % pd['ret']
+        gf = pd['getfn']
+        return ['template std::auto_ptr<%s> %s::getset<%s>(%s, int);' % (gs, cls, gf, gf)]
     a = template_args(cls)
     func = 'RBX::Reflection::PropertyDescriptor::Functionality'
     if leaf == 'EnumPropDescriptor' and len(a) == 2:
@@ -208,7 +268,9 @@ def member_templates(cls, leaf):
             lines.append('template class RBX::Lua::SharedPtrBridge<%s>;' % u)
             lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);' % u)
             lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<boost::any>(lua_State*, size_t, boost::any&);' % u)
-            lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<%s>(lua_State*, size_t, %s&);' % (u, u, u))
+            # INFERRED: SharedPtrBridge<T>::getPtr<ValueType> assigns boost::shared_ptr<T>() to value, so
+            # ValueType must be shared_ptr-assignable; the raw pointee T& cannot compile (C2679 at LuaBridge.h).
+            lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<boost::shared_ptr<%s>>(lua_State*, size_t, boost::shared_ptr<%s>&);' % (u, u, u))
         return lines
     return []
 
@@ -297,7 +359,8 @@ def one(item):
     extra_headers = BRIDGE_MAP.get(identity, (None, []))[1] if identity in BRIDGE_MAP else []
     if identity in BRIDGE_MAP:
         extra_headers = extra_headers + ['reflection/reflection.h', 'LuaBridge2008/LuaInstanceBridge2008.h', '<boost/any.hpp>']
-    cls = spell(identity)
+    pd = prop_descriptor_parts(identity)
+    cls = pd['outer'] if pd else spell(identity, addr)
     leaf = re.sub(r'<.*', '', cls).rsplit('::', 1)[-1]
     # Allow classes not in INDEX/UNITS if they have STD_INCLUDES entries (e.g., STL templates)
     stl_leaves = set()
@@ -308,11 +371,19 @@ def one(item):
         return addr, 'no native header declares ' + leaf, ''
     # Map STL template leaf to explicit instantiation with default argument
     # e.g., std::set -> template class std::set<int>; 
+    # std::map -> template class std::map<int, int>;
     # Try different template arguments to find byte-exact match
+    # The binary uses type 'H' in _Tset_traits@H and std::map@HH
+    # We'll try multiple types across runs to find the match
     if leaf in stl_leaves:
-        # Check if cls already has template args; if not, add <int> as default
+        # Check if cls already has template args; if not, determine correct T
         if '<' not in cls:
-            cls = cls + '<int>'
+            # For set/map templates, add default template arguments
+            # Try float next based on @G mangling observation
+            if 'std::map' in cls:
+                cls = cls + '<float, float>'
+            else:
+                cls = cls + '<float>'
     extra, hdrs = includes(cls)
     _seen = set()
     _deduped = []
@@ -342,9 +413,11 @@ def one(item):
     while LOCK.is_file():
         time.sleep(30)
     write = lambda hdrs: unit.write_text(flags + '\n// %s: explicit instantiation of the class the body at %s stores the vftable of (RTTI identity, twin_lane.py, '
-                    'no model)\n' % (addr, addr) + ''.join('#include %s\n' % e for e in extra)
-                    + ''.join(('#include %s\n' if h.startswith('<') else '#include "%s"\n') % h for h in hdrs) + 'template class %s;\n' % cls
-                    + ''.join(line + '\n' for line in member_templates(cls, leaf)), encoding='utf-8')
+                    'no model)\n' % (addr, addr) + ''.join(a + '\n' for a in raknet_aliases(identity))
+                    + ''.join('#include %s\n' % e for e in extra)
+                    + ''.join(('#include %s\n' if h.startswith('<') else '#include "%s"\n') % h for h in hdrs)
+                    + ('' if pd else 'template class %s;\n' % cls)
+                    + ''.join(line + '\n' for line in member_templates(cls, leaf, pd)), encoding='utf-8')
     write(hdrs)
 
     def fail(status, text=''):
