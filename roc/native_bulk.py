@@ -25,10 +25,47 @@ def digest(value):
 
 
 _SHA = {}
+_DISK = ROOT / 'work' / 'native-client' / 'prove-cache' / 'filehash.json'
+_DISK_ROWS = None
+_DISK_NEW = {}
+
+
+def _disk_rows():
+    global _DISK_ROWS
+    if _DISK_ROWS is None:
+        try:
+            _DISK_ROWS = json.loads(_DISK.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            _DISK_ROWS = {}
+        if not isinstance(_DISK_ROWS, dict):
+            _DISK_ROWS = {}
+        import atexit
+        atexit.register(_disk_save)
+    return _DISK_ROWS
+
+
+def _disk_save():
+    # Merge with whatever other workers saved meanwhile; a lost write only costs a rehash.
+    if not _DISK_NEW:
+        return
+    try:
+        try:
+            rows = json.loads(_DISK.read_text(encoding='utf-8'))
+            if not isinstance(rows, dict):
+                rows = {}
+        except (OSError, ValueError):
+            rows = {}
+        rows.update(_DISK_NEW)
+        _DISK.parent.mkdir(parents=True, exist_ok=True)
+        tmp = _DISK.with_name('filehash.%d.tmp' % os.getpid())
+        tmp.write_text(json.dumps(rows), encoding='utf-8')
+        os.replace(tmp, _DISK)
+    except OSError:
+        pass
 
 
 def sha(path):
-    # Memoized on (size, mtime): a census hashes the same few thousand headers for every one of ~1,100 sources.
+    # Memoized on (size, mtime), in memory and in prove-cache/filehash.json (path -> [mtime_ns, size, sha256]).
     path = Path(path)
     try:
         st = path.stat()
@@ -39,7 +76,13 @@ def sha(path):
     key = (str(path), st.st_size, st.st_mtime_ns)
     hit = _SHA.get(key)
     if hit is None:
-        hit = _SHA[key] = hashlib.sha256(path.read_bytes()).hexdigest()
+        row = _disk_rows().get(key[0])
+        if isinstance(row, list) and row[:2] == [st.st_mtime_ns, st.st_size]:
+            hit = row[2]
+        else:
+            hit = hashlib.sha256(path.read_bytes()).hexdigest()
+            _DISK_NEW[key[0]] = _DISK_ROWS[key[0]] = [st.st_mtime_ns, st.st_size, hit]
+        _SHA[key] = hit
     return hit
 
 
@@ -57,9 +100,28 @@ def _tree_digest(path):
     hit = _TREE.get(str(path))
     if hit and time.monotonic() - hit[1] < 60:
         return hit[0]
-    files = [os.path.relpath(os.path.join(folder, name), path)
-             for folder, _, names in os.walk(path) for name in names
-             if name.lower().endswith(INCLUDABLE) or '.' not in name]
+    files = []
+
+    def walk(folder):
+        # Per-directory listing cached on the directory mtime (adding/removing an entry changes it).
+        key = 'dir:' + folder
+        try:
+            mt = os.stat(folder).st_mtime_ns
+        except OSError:
+            return
+        row = _disk_rows().get(key)
+        if not (isinstance(row, list) and row[0] == mt):
+            names, subs = [], []
+            with os.scandir(folder) as it:
+                for e in it:
+                    (subs if e.is_dir() else names).append(e.name)
+            row = [mt, [n for n in names if n.lower().endswith(INCLUDABLE) or '.' not in n], subs]
+            _DISK_NEW[key] = _DISK_ROWS[key] = row
+        files.extend(os.path.relpath(os.path.join(folder, n), path) for n in row[1])
+        for sub in row[2]:
+            walk(os.path.join(folder, sub))
+
+    walk(str(path))
     value = digest(sorted(files))
     _TREE[str(path)] = (value, time.monotonic())
     return value

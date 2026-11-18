@@ -2,6 +2,7 @@
 Replaces the hand-written manifest.json walks + obj diffs that cost class agents ~8 tool calls per session.
 
   python work/native-client/agent_prove.py FILE.cpp ADDR[=NAME] [ADDR[=NAME] ...]
+  python work/native-client/agent_prove.py --batch FILE1.cpp:ADDR[=NAME][,ADDR...] FILE2.cpp:ADDR ...   (one process, sequential)
 
 Per address: EXACT | REJECTED (byte-equal, with the identity/reference reason) | DIFF (closest emitted symbol +
 assembly diff) | COMPILE FAILED (first errors).  NAME is a substring of the function name when it is not sub_<addr>.
@@ -99,6 +100,21 @@ def verdict(source, targets):
 
 
 def main():
+    if len(sys.argv) > 2 and sys.argv[1] == '--batch':
+        for spec in sys.argv[2:]:
+            path, _, addrs = spec.rpartition(':')
+            if not path or not addrs:
+                print('== %s BAD SPEC (want FILE:ADDR[,ADDR])' % spec)
+                continue
+            print('#### %s' % path, flush=True)
+            try:
+                res = verdict(path, dict((a.split('=', 1) + [''])[:2] for a in addrs.split(',')))
+            except (Exception, SystemExit) as exc:     # one bad unit must not lose the rest of the batch
+                print('== ERROR %s: %s' % (type(exc).__name__, str(exc)[:300]), flush=True)
+                continue
+            for addr, (status, text) in res.items():
+                print('== %s %s\n%s' % (addr, status, text), flush=True)
+        return
     if len(sys.argv) < 3:
         sys.exit(__doc__)
     targets = dict((a.split('=', 1) + [''])[:2] for a in sys.argv[2:])
