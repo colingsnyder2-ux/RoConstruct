@@ -13,6 +13,7 @@ import collections
 import json
 import re
 import shutil
+import subprocess
 import sys
 import time
 import uuid
@@ -41,6 +42,7 @@ LOCK = HERE / 'prove-out/CENSUS.lock'
 FLAGS = '// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS'
 NONTYPE = re.compile(r'&[^,<>]*?((?:\w+::)*\w+)(?=\s*[,>])')
 DEFINES = re.compile(r'^\s*(?:template\s*<[^;{]*>\s*)?(?:class|struct)\s+(?:\w+\s+)?(\w+)\s*(?:<[^;{]*?>\s*)?(?:final\s*)?(?::[^;{]*)?\{', re.M)   # <...>: partial specializations
+DIFFERS = re.compile(r'reference identity differs: (\S+) \(bound ([0-9a-f]{8}), original reference ([0-9a-f]{8})\)')
 STD_INCLUDES = [('boost::any', '<boost/any.hpp>'), ('boost::_bi', '<boost/bind.hpp>'), ('boost::function', '<boost/function.hpp>'),
                 ('boost::shared_ptr', '<boost/shared_ptr.hpp>'), ('std::basic_string', '<string>'), ('std::vector', '<vector>')]
 
@@ -53,7 +55,8 @@ def header_index():
             text = path.read_text(errors='replace')
         except OSError:
             continue
-        for name in set(DEFINES.findall(text)):
+        # classes, and the class-name arrays used as template arguments (`extern const char sSnap[];`)
+        for name in set(DEFINES.findall(text)) | set(re.findall(r'\bextern\s+(?:const\s+)?char\s+(\w+)\s*\[', text)):
             index[name].append(path.relative_to(HEADERS).as_posix())
     # classes that exist only inside a native unit (SurfaceDescriptor ...): include that unit, with its flags
     for path in sorted(CLASSES.glob('*.cpp'), key=lambda p: p.stat().st_size):
@@ -81,7 +84,7 @@ def spell(identity):
 
 def includes(cls):
     out = []
-    for name in dict.fromkeys(re.findall(r'[A-Za-z_]\w*', cls)):
+    for name in dict.fromkeys(re.findall(r'(?<!std::)(?<!boost::)\b[A-Za-z_]\w*', cls)):   # std/boost names: STD_INCLUDES
         if name in UNITS and UNITS[name].name not in out:
             out.append(UNITS[name].name)
         for header in INDEX.get(name, [])[:1]:
@@ -170,6 +173,45 @@ def symbols_at(manifest, addr):
     return out
 
 
+def primary_vftables(manifest, addr):
+    """The registry names the offset-0 vftable `??_7X@@6B@` (rtti-primary-vtable).  For a class with several vftables
+    MSVC gives that name to a secondary one (the others carry a base path): a byte-equal constructor stores it where
+    the original stores a vftable whose RTTI locator has a non-zero offset and the same type.  Bind it there."""
+    registry = json.loads((ROOT / 'work/2008-06/identity-registry.json').read_text())
+    rows = []
+    for r in json.loads(manifest.read_text(encoding='utf-8'))['families'][0]['symbols']:
+        for rej in r.get('rejections') or []:
+            for sym, was, orig in DIFFERS.findall(' '.join(rej.get('errors', [])) if rej.get('addr') == addr else ''):
+                a, b = registry.get(was) or {}, registry.get(orig) or {}
+                col = lambda row: next((e for e in row.get('evidence', []) if e.get('kind') == 'rtti-complete-object-locator'), {})
+                if (sym.startswith('??_7') and sym.endswith('@6B@') and a.get('name_source') == 'rtti-primary-vtable'
+                        and col(b).get('offset') and col(b).get('raw_type') == col(a).get('raw_type')):
+                    rows.append({'symbol': sym, 'address': orig, 'votes': 1, 'identity_evidence':
+                                 'vftable stored by the byte-equal constructor %s at the offset of RTTI locator %s (offset %d, '
+                                 'same type as the primary vftable %s)' % (addr, col(b)['locator'], col(b)['offset'], was)})
+    return rows
+
+
+def reference_aliases(manifest, addr):
+    """Identities of what the byte-equal body references (base constructor, vftable slots: adjustor thunks, virtuals),
+    read from the ORIGINAL relocation/data words at the same edges by native_reference_alias_bind.py."""
+    objs = sorted(manifest.parent.glob('objects/*/candidate.obj'), key=lambda q: q.stat().st_mtime)
+    mine = [sym for ok, sym in symbols_at(manifest, addr)]
+    if not objs or not mine:
+        return []
+    receipt = manifest.parent / 'alias-bind.json'
+    receipt.unlink(missing_ok=True)
+    subprocess.run([sys.executable, str(HERE / 'native_reference_alias_bind.py'), '--object', str(objs[-1]), '--symbol', mine[0],
+                    '--address', addr, '--closure', str(HERE / 'claude-identity-closure-llm.json'),
+                    '--owner-evidence', str(HERE / 'class-identity-bindings.json'), '--output', str(receipt)],
+                   cwd=ROOT, capture_output=True, text=True)
+    try:
+        return [dict(b, votes=1, identity_evidence='twin lane alias for %s: %s' % (addr, b.get('identity_evidence', 'exact-target-coff-reference-alias')))
+                for b in json.loads(receipt.read_text()).get('identity_bindings', [])]
+    except (OSError, ValueError):
+        return []
+
+
 def one(item):
     addr, identity = item
     cls = spell(identity)
@@ -221,6 +263,12 @@ def one(item):
                'RTTI: the body at this address stores the vftable of %s; byte-equal member of that instantiation' % cls[:160]}])
         status, text = agent_prove.verdict(unit, {addr: leaf})[addr]
         found = symbols_at(manifest, addr)
+    for learn in (primary_vftables, reference_aliases):         # constructors: the vftables they store and their slots
+        rows = [] if any(ok for ok, _ in found) else learn(manifest, addr)
+        if rows:
+            bind(rows)
+            status, text = agent_prove.verdict(unit, {addr: leaf})[addr]
+            found = symbols_at(manifest, addr)
     if not any(ok for ok, _ in found):
         return fail('byte-equal, not proven: ' + status, text)
     shutil.move(str(unit), str(final))
