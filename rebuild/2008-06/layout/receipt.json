@@ -1,5 +1,5 @@
 {
- "files": 454,
+ "files": 498,
  "merged_units": {
   "rebuild/2008-06/layout/inferred/client/app/gui/ArrowPanel.cpp": {
    "sources": [
@@ -1340,12 +1340,12 @@
    ]
   }
  },
- "inferred_path_files": 138,
+ "inferred_path_files": 152,
  "status": {
-  "clean-identical": 183,
+  "clean-identical": 190,
   "verbatim-identical": 14,
-  "clean (token-identical)": 90,
-  "verbatim (line-sensitive macros)": 12,
+  "clean (token-identical)": 126,
+  "verbatim (line-sensitive macros)": 13,
   "verbatim": 45
  },
  "held_back": {
@@ -1353,9 +1353,8 @@
   "no original path": 1866,
   "requires_inline_placement_review": 1,
   "inferred path with no folder evidence": 12,
-  "requires_identity_review": 30,
-  "wrapper around donor or library source": 15,
-  "requires_case_review": 19
+  "requires_identity_review": 5,
+  "wrapper around donor or library source": 15
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
  "cache_note": "the runner may reuse validated cached objects for unchanged live sources",
@@ -1380,8 +1379,16 @@
    "source": "rebuild/2008-06/native-classes/AppUnit504DepthBlur.cpp",
    "status": "clean-identical"
   },
+  "rebuild/2008-06/layout/client/app/v8datamodel/GlobalSettings.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit568GlobalSettings.cpp",
+   "status": "clean-identical"
+  },
   "rebuild/2008-06/layout/client/app/reflection/signal.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit568Signal.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/script/Script.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp",
    "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/util/Quaternion.cpp": {
@@ -1394,6 +1401,10 @@
   },
   "rebuild/2008-06/layout/client/app/util/NormalId.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit5ECNormalId.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Surfaces.cpp": {
+   "source": "rebuild/2008-06/native-classes/AppUnit5ECSurfaces.cpp",
    "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/app/util/Timer.cpp": {
@@ -1478,6 +1489,10 @@
   },
   "rebuild/2008-06/layout/inferred/client/win/MultiPlayerPane.cpp": {
    "source": "rebuild/2008-06/native-classes/CMultiPlayerPane.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/RenderSettings.cpp": {
+   "source": "rebuild/2008-06/native-classes/CRenderSettings.cpp",
    "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/win/SaveToRobloxDialog.cpp": {
@@ -2092,6 +2107,10 @@
    "source": "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp",
    "status": "clean-identical"
   },
+  "rebuild/2008-06/layout/inferred/client/app/util/SoundWorld.cpp": {
+   "source": "rebuild/2008-06/native-classes/ScriptApp2008SoundType.cpp",
+   "status": "clean-identical"
+  },
   "rebuild/2008-06/layout/client/app/security/SecurityContext.cpp": {
    "source": "rebuild/2008-06/native-classes/SecurityContext.cpp",
    "status": "clean-identical"
@@ -2102,6 +2121,14 @@
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/SocketLayer.cpp": {
    "source": "rebuild/2008-06/native-classes/SocketLayer.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/custommesh.cpp": {
+   "source": "rebuild/2008-06/native-classes/SpecialShape.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/client/app/v8datamodel/Stats.cpp": {
+   "source": "rebuild/2008-06/native-classes/StatsService.cpp",
    "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/StringCompressor.cpp": {
@@ -2156,6 +2183,14 @@
    "source": "rebuild/2008-06/native-headers/AppUnit58C/base64.hpp",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/app/include/v8world/Edge.h": {
+   "source": "rebuild/2008-06/native-headers/AppUnit658/Edge.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8world/assemblystage.h": {
+   "source": "rebuild/2008-06/native-headers/AppUnit66C/AssemblyStage.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/inferred/client/win/ChatEnter.h": {
    "source": "rebuild/2008-06/native-headers/ChatEnter.h",
    "status": "clean (token-identical)"
@@ -2182,6 +2217,14 @@
   },
   "rebuild/2008-06/layout/inferred/client/network/include/network/PhysicsReplication.h": {
    "source": "rebuild/2008-06/native-headers/Network/PhysicsReplication.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/network/include/network/Player.h": {
+   "source": "rebuild/2008-06/native-headers/Network/Player.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/network/include/network/Players.h": {
+   "source": "rebuild/2008-06/native-headers/Network/Players.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/network/include/network/ReplicatorMarker.h": {
@@ -2336,6 +2379,10 @@
    "source": "rebuild/2008-06/native-headers/gui/ScoreHud.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/app/include/gui/Widget.h": {
+   "source": "rebuild/2008-06/native-headers/gui/Widget.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetButtons.h": {
    "source": "rebuild/2008-06/native-headers/gui/WidgetButtons.h",
    "status": "clean (token-identical)"
@@ -2360,8 +2407,16 @@
    "source": "rebuild/2008-06/native-headers/humanoid/HumanoidState.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates1.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates2.h": {
    "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates3.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates3SimJob.h": {
@@ -2391,6 +2446,10 @@
   "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/TextureProxyBase.h": {
    "source": "rebuild/2008-06/native-headers/partchunk-profile/RbxGraphics/TextureProxyBase.h",
    "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/reflection/Metadata.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/Metadata.h",
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/reflection/descriptor.h": {
    "source": "rebuild/2008-06/native-headers/reflection/descriptor.h",
@@ -2596,8 +2655,20 @@
    "source": "rebuild/2008-06/native-headers/util/scopedassign.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Accoutrement.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Backpack.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Backpack.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/BodyColors.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/BodyColors.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/BodyMovers.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Camera.h": {
@@ -2608,17 +2679,57 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/ClickDetector.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Clothing.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Clothing.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
    "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/DebrisService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/DebugSettings.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h",
+   "status": "verbatim (line-sensitive macros)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Explosion.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Explosion.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Feature.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Feature.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Flag.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Flag.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/FlagStand.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/FlagStand.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/FlagStandService.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h",
    "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/ForceField.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/ForceField.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/GameSettings.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/GeometryService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h",
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h",
@@ -2628,13 +2739,29 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Hopper.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Hopper.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/ICharacterSubject.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/ICharacterSubject.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/JointInstance.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/JointsService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/JointsService.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/LocalBackpack.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/LocalBackpack.h",
    "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Message.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Message.h",
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/ModelInstance.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h",
@@ -2656,8 +2783,20 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Rocket.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Rocket.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Seat.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Seat.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Selection.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Selection.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SelectionChanged.h": {
@@ -2668,6 +2807,22 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/Sky.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Sparkles.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/SpawnLocation.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SpawnerService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SpecialShape.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Surface.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Surface.h",
    "status": "verbatim"
@@ -2676,12 +2831,28 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/Surfaces.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Team.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Team.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Teams.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Teams.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/TimerService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/TimerService.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Tool.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Tool.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/ToolMouseCommand.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/ToolMouseCommand.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/UserController.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/UserController.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Value.h": {
@@ -2728,6 +2899,10 @@
    "source": "rebuild/2008-06/native-headers/v8tree/VerbContainer.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8world/AssemblyLayout.h": {
+   "source": "rebuild/2008-06/native-headers/v8world/AssemblyLayout.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/inferred/client/app/include/v8world/SimJob.h": {
    "source": "rebuild/2008-06/native-headers/v8world/SimJob.h",
    "status": "clean (token-identical)"
@@ -2740,18 +2915,18 @@
  "coverage": {
   "note": "code bytes whose native source is in this export; not a link or runtime claim",
   "executable_code_bytes": 3742156,
-  "exported_bytes": 590317,
-  "exported_percent": 15.77,
+  "exported_bytes": 602728,
+  "exported_percent": 16.11,
   "tiers": {
    "inferred path": {
-    "files": 83,
-    "functions": 526,
-    "bytes": 102146
+    "files": 85,
+    "functions": 549,
+    "bytes": 104653
    },
    "original path": {
-    "files": 114,
-    "functions": 995,
-    "bytes": 216966
+    "files": 119,
+    "functions": 1138,
+    "bytes": 226870
    },
    "merged unit, partial": {
     "files": 81,
