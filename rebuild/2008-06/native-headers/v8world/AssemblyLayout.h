@@ -262,6 +262,9 @@ namespace RBX
 		Assembly* getRootAssembly();                     // 005e6070 (analog name: parent ? parent->getRootAssembly() : this)
 		void setParent(Clump* newParent);                // 005e6fd0 (analog name: openrbx Assembly::setParent)
 		void removePrimitive(Primitive* p);              // 005e6790 (INFERRED name: 005e5ff0, then onPrimitivesChanged)
+		// INFERRED names: cdecl (parent, joint, child) Clump-unit helpers called by TreeStage::processEdge 00669560.
+		static void updateRigidChild(Primitive* parent, Joint* j, Primitive* child);         // INFERRED: 005e6040 (child body setMeInParent only)
+		static void addRigidChild(Primitive* parent, Joint* j, Primitive* child);      // INFERRED: 005e67c0 (setClump, Body::setParent, onPrimitivesChanged, setMeInParent)
 		void onPrimitiveCanSleepChanged(Primitive* p);   // 005e6530 (analog name: canSleep.setDirty())
 		bool getAnchored() const;                        // 005e60e0 (analog name: the root primitive's +0xa8 / +0xa9 / +0xaa;
 		                                                 // callers TreeStage::cleanAssembly 00668f20 / cleanEdge 00668fa0)
@@ -287,6 +290,7 @@ namespace RBX
 		{
 			return Clump::getAssembly();
 		}
+		static void addMotorChild(Primitive* parent, MotorJoint* motor, Primitive* child);   // 005e7050 ?addMotorChild@Assembly@RBX@@SAXPAVPrimitive@2@PAVMotorJoint@2@0@Z (registry; caller TreeStage::processEdge 00669560)
 		MotorJoint* getMotor(unsigned int index);        // 005e6400 ?getMotor@Assembly@RBX@@QAEPAVMotorJoint@2@I@Z (registry)
 		public:
 		RBX::PrimIterator assemblyPrimEnd(void)const;   // INFERRED: ?assemblyPrimEnd@Assembly@RBX@@QBE?AVPrimIterator@2@XZ (header gap, header_gap_fill.py)

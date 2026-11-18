@@ -142,38 +142,26 @@ namespace RBX
 		return Joint::NO_JOINT;
 	}
 
-	static inline int bodyDepthOf(Primitive* p)
-	{
-		return p ? p->getBodyDepth() : 0;
-	}
-
-	void TreeStage::addJointEdgeB(Joint* j) // TEMPVARIANT
-	{
-		Primitive* p1 = j->getPrimitive(1);
-		Primitive* p0 = j->getPrimitive(0);
-		Joint* lightest = 0;
-		int which = 0;
-		int depth0 = p0 ? p0->getBodyDepth() : 0;
-		int depth1 = p1 ? p1->getBodyDepth() : 0;
-		reconcile(p0, p1, depth0, depth1, lightest, which);
-		if (!lightest || JointSort::lighterJoint(j, lightest))
-		{
-			replaceLightest(lightest, j, j->getPrimitive((which + 1) % 2));
-			dirty = true;
-		}
-	} // ENDTEMP
-
 	// 00669b60
 	void TreeStage::addJointEdge(Joint* j)
 	{
 		Primitive* p1 = j->getPrimitive(1);
 		Primitive* p0 = j->getPrimitive(0);
-		int which = 0;
-		Joint* lightest = 0;
-		reconcile(p0, p1, bodyDepthOf(p0), bodyDepthOf(p1), lightest, which);
-		if (!lightest || JointSort::lighterJoint(j, lightest))
+		// INFERRED: the two reconcile outputs sit in one 8-byte local (joint +0, side +4; side is zeroed first) and
+		// depth0 takes j's home slot; separate Joint* / int locals put the joint in j's home slot instead.
+		struct
 		{
-			replaceLightest(lightest, j, j->getPrimitive((which + 1) % 2));
+			Joint* joint;
+			int side;
+		} lightest;
+		lightest.side = 0;
+		lightest.joint = 0;
+		int depth0 = p0 ? p0->getBodyDepth() : 0;
+		int depth1 = p1 ? p1->getBodyDepth() : 0;
+		reconcile(p0, p1, depth0, depth1, lightest.joint, lightest.side);
+		if (!lightest.joint || JointSort::lighterJoint(j, lightest.joint))
+		{
+			replaceLightest(lightest.joint, j, j->getPrimitive((lightest.side + 1) % 2));
 			dirty = true;
 		}
 	}
@@ -270,7 +258,7 @@ namespace RBX
 		{
 			dirtyAssemblyAndRemove(from->getAssembly());
 			eraseDirtyAssembly(a);
-			Clump::addMotorChild(from, static_cast<Joint*>(e), other);
+			Assembly::addMotorChild(from, static_cast<MotorJoint*>(static_cast<Joint*>(e)), other);
 			return;
 		}
 		Joint::JointType type = static_cast<Joint*>(e)->getJointType();
