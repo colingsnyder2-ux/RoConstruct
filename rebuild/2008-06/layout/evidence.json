@@ -6160,386 +6160,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/LDraw2RobloxMapRoot.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp",
-   "rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS"
-  },
-  "notes": [
-   {
-    "line": 108,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 129,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/SelectionCaption.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/CSelectionCaption.cpp",
-   "rebuild/2008-06/native-classes/CSelectionCaptionUpdate.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 71,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8world/MotorJoint.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AppUnit5E4MotorJoint.cpp",
-   "rebuild/2008-06/native-classes/WorldJointMotor.cpp"
-  ],
-  "build": {
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 v8world/MotorJoint.cpp row MotorJoint::isAligned 005e5d00 (vtable 0083f764 slot 9; inactive native unit),",
-     "// against the native v8world/Joints2008.h and v8world/Primitive2008.h (read-only; both now build on the native 2008",
-     "// Edge / IPipelined2008.h, so no donor-IPipelined switch). /fp:fast. The other MotorJoint rows are in",
-     "// native-classes/WorldJointMotor.cpp (world-joints owner). Verified by tests/record_native_app_unit5e4.py."
-    ]
-   },
-   {
-    "line": 14,
-    "text": [
-     "// 005e5d00: Primitive::getCoordinateFrame 005e82c0 of prim0 (+0xc) / prim1 (+0x10) times jointCoord0 (+0x28) /",
-     "// jointCoord1 (+0x58) (CoordinateFrame::operator* 00476700), Math::fuzzyEq(Vector3, Vector3, float) 005de1d0 on the",
-     "// translations, then on Matrix3::getColumn(2) 00513240; tolerance 1e-5 (0082b3b0)."
-    ]
-   },
-   {
-    "line": 42,
-    "text": [
-     "// 2008-06 native RBX::MotorJoint (inactive); evidence in native-headers/v8world/Joints2008.h.",
-     "// Verified by tests/record_native_world_joints.py. Rows of the MotorJoint unit (005e5bf0..005e5ee0): the constructor",
-     "// 005e5bf0, setCurrentAngle 005e5da0, the destructor 005e5e00, stepUi 005e5e70 and the scalar deleting destructor",
-     "// 005e5ee0 (vtable 0083f764 is emitted here); setCurrentAngle 005e5da0 through the opt-in kernel-stages IStage (KERNEL_STAGE 7). resetLink 005e5c90 and isAligned 005e5d00 read the native Primitive",
-     "// (body, coordinate frame) and are not part of this unit yet."
-    ]
-   },
-   {
-    "line": 50,
-    "text": [
-     "// 005e5bf0: new RevoluteLink (0xd0; Link() 00613d20, RevoluteLink vtable 0083f75c)."
-    ]
-   },
-   {
-    "line": 59,
-    "text": [
-     "// 005e5e00: non-virtual ~Link (0047d410, folded empty body) then operator delete."
-    ]
-   },
-   {
-    "line": 65,
-    "text": [
-     "// 005e5da0: IPipelined::getWorld inline (IPipelined2008.h, the 2008 KERNEL_STAGE 7 of the opt-in kernel-stages",
-     "// IStage: `cmp eax, 7` at 005e5dc8); RevoluteLink::setJointAngle inline (+0xcc, Link::dirty 00613cb0)."
-    ]
-   },
-   {
-    "line": 77,
-    "text": [
-     "// 005e5e70"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/AboutRobloxDialog.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp",
-   "rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /I{headers}/std-noinline-string"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 00401390 calls std::string::c_str through msvcp90, so use the matching",
-     "// no-inline-string header profile."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/InstanceExplorer.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/CInstanceExplorer.cpp",
-   "rebuild/2008-06/native-classes/InsertDecalAction.cpp",
-   "rebuild/2008-06/native-classes/InsertObjectAction.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string"
-  },
-  "notes": [
-   {
-    "line": 10,
-    "text": [
-     "// Entry order from the AFX_MSGMAP_ENTRY table at 0080fa88 (base 006c6890 CXTPReportView::GetThisMessageMap)."
-    ]
-   },
-   {
-    "line": 17,
-    "text": [
-     "// Local guard: 00421a50 keeps {&populating, old value} on the stack (EH state 0) and writes the old value back",
-     "// on exit. Shared-header note: a util ScopedAssign<T> would own this."
-    ]
-   },
-   {
-    "line": 29,
-    "text": [
-     "// Original 00421940."
-    ]
-   },
-   {
-    "line": 35,
-    "text": [
-     "// Original 00421bc0."
-    ]
-   },
-   {
-    "line": 41,
-    "text": [
-     "// Original 00420990: one tree column \"Name\" (300 wide)."
-    ]
-   },
-   {
-    "line": 56,
-    "text": [
-     "// Original 00421a50."
-    ]
-   },
-   {
-    "line": 69,
-    "text": [
-     "// Original 00420fb0."
-    ]
-   },
-   {
-    "line": 76,
-    "text": [
-     "// Original 00420c20."
-    ]
-   },
-   {
-    "line": 90,
-    "text": [
-     "// Original 00421d00 (exact, with Selection::setSelection<vector<Instance*>::iterator> 00420d20, once the shared",
-     "// v8datamodel/Selection.h template reads addToSelection(boost::get_pointer(*first)); its current first->get()",
-     "// cannot be instantiated for raw Instance* iterators). The vector holds raw pointers: push_back stores 4 bytes."
-    ]
-   },
-   {
-    "line": 106,
-    "text": [
-     "// Original 00420db0."
-    ]
-   },
-   {
-    "line": 114,
-    "text": [
-     "// Original 00420ee0."
-    ]
-   },
-   {
-    "line": 119,
-    "text": [
-     "// Original 00420790."
-    ]
-   },
-   {
-    "line": 127,
-    "text": [
-     "// Original 00466d40 (both listener slots): only GlobalSettings items are explored."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/LDrawParser.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/LDrawParser.cpp",
-   "rebuild/2008-06/native-classes/LDrawParserParse.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/std-noinline-ldraw-parse"
-  },
-  "notes": []
- },
- "rebuild/2008-06/layout/inferred/client/app/gui/ChatOutput.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/ChatOutputCommands.cpp",
-   "rebuild/2008-06/native-classes/ChatOutput.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::ChatOutput::render2d (0064fe90) and ChatOutput::ParseCommand (00650660), rows of the ChatOutput",
-     "// unit 0064fb60..00651000 (inactive). Class in the read-only native gui/ChatOutput.h: fifo std::deque<ChatLine*> +0x174",
-     "// (offset +0x18c, size +0x190), time +0x194; ChatLine user +0x0c, message +0x28, profane +0x48.",
-     "//   render2d: getMyRect 00573310; font size 12.0 (double 0084bbf0); Adorn::get2DStringBounds (slot 0x30) and",
-     "//     drawFont2D (slot 0x34, XALIGN_LEFT / YALIGN_TOP / PROPORTIONAL_SPACING); separator \"; \" 00820f94; minimum",
-     "//     width 20.0f 008222f0, padding 4.0f 00826e6c, 2.0f 0081c434, line step 14.0f 0084bbe8; Rect2D::xyxy 004f35d0,",
-     "//     translucentBackdrop 00573290, Color3::white 00514a60 / red 005148b0 (folded with Vector3::unitX), Color4::clear",
-     "//     007baf10. The deque is indexed through operator[] (checked iterator deref 00436420) for each use.",
-     "//   ParseCommand: boost::char_separator(\" -_/,\") 0084bbfc over chat.message; parts std::vector<std::string>; empty",
-     "//     -> false; to_lower(parts[0]) with std::locale() (0064fd00); parts[0] == \"sc\" 0084bbf8; SafeChat::singleton",
-     "//     00658880, getMessage 006584e0 (vector by value), new ChatLine (0x4c) 00650560 with time + 60, push_back."
-    ]
-   },
-   {
-    "line": 20,
-    "text": [
-     "// 0064fe90 (PARKED). Pass 1 closest 1451 of 1452 bytes with corners (-2,-2)/(+1,+1); tried corner constants",
-     "// (-2,+1)/(+2,-1) read off the target stack and reassociated width + messageSize.x + position.x.",
-     "// Pass 2 (workflow 53): decoding the target x87 at 006500b8..00650121 (after the three pushes, position at +0x3c,",
-     "// userSize at +0x9c, messageSize at +0xec) gives low = (position.x - 2, position.y + 1) and high =",
-     "// ((width + messageSize.x) + position.x + 2, (position.y + userSize.y) - 1): one 2.0f (0081c434) is subtracted and",
-     "// added, one fld1 is added and subtracted. The pass-1 corners computed different values (y0 = position.y - 2), so",
-     "// the semantically decoded corners are ADOPTED (1453 B, 199 diff lines vs 202). The remaining byte gap is not the x87",
-     "// order: the frame-slot coloring differs from the first deque operator[] temporary on (target iterator temps at",
-     "// +0x64/+0xa4, the two corner Vector2s adjacent at +0xac/+0xb4 and stored low first; candidate +0xa4/+0xb4 and",
-     "// non-adjacent corners), which changes disp8/disp32 encodings. Rejected in pass 2: position.x + width +",
-     "// messageSize.x + 2 (1455 B), named locals low/high in either association (1455 B, low stored first but slots still",
-     "// non-adjacent), VS2005 50727 and /Ob1, /Oy profiles (see the result notes; no effect on slot coloring)."
-    ]
-   },
-   {
-    "line": 63,
-    "text": [
-     "// 00650660"
-    ]
-   },
-   {
-    "line": 88,
-    "text": [
-     "// 2008-06 native RBX::ChatOutput unit (inactive): 0064fb60..00651000.",
-     "// Layout and addresses in native-headers/gui/ChatOutput.h; verified by tests/record_native_hud.py."
-    ]
-   },
-   {
-    "line": 141,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/gui/ChatWidget.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/GuiWidgets2008Chat.cpp",
-   "rebuild/2008-06/native-classes/WidgetChat.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/widget-rect-2008"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native gui widget leaves (inactive): the ChatWidget / ChatButton rows of the Button unit 0064e840..0064eaf0",
-     "// and EquationDisplay::getLabel 00656940, which native-classes/WidgetChat.cpp and EquationDisplay.cpp (verified by",
-     "// tests/record_native_widget.py) do not compile. Classes and layouts in native-headers/gui/WidgetChat.h and",
-     "// gui/EquationDisplay.h (read-only here); verified by tests/record_native_gui_widgets2008.py.",
-     "//",
-     "//   ChatButton::isVisible 0064ea90 (slot 21 of 0084232c): ServiceProvider::find<Network::Players>(this) 00491d50, the",
-     "//   inline Players::getLocalPlayer (localPlayer +0x1a0, 0064eaa0), then Players::clientIsPresent(this, true) 00495e60.",
-     "//",
-     "// NATIVE_GUIWIDGETS_PENDING bodies need declarations the owners' headers lack (the generated overlay under",
-     "// out/native-layouts/gui-widgets2008-pending supplies them; see the recorder):",
-     "//   * util/Rect.h (donor)  `bool pointInRect(G3D::Vector2int16)` out of line: ChatWidget::process 0064ead0 calls",
-     "//                          00573130 (0064eb3b) like Widget::processMouse (record_native_widget.py, same proposal);",
-     "//   * v8tree/Instance.h    the donor's inline Instance::getRootAncestor() / getRootAncestor() const and static",
-     "//                          getRootAncestor(const Instance*): EquationDisplay::getLabel 00656940 tests this (00656963),",
-     "//                          inlines two parent steps (+0x104) and calls the out-of-line one 0042a5f0 (0065697b)."
-    ]
-   },
-   {
-    "line": 30,
-    "text": [
-     "// 00574e70 (slot of the GuiTarget base at +0x130, so `this` arrives adjusted: lea esi, [edi - 0x130]). Read from the",
-     "// original: isVisible (Instance-side slot 21, +0x54), the inline mouse-event range test (cmp 1 / jl, cmp 7 / jg, as",
-     "// in Widget::process), then a jump table on menuState (+0x144): NOTHING -> 00574860, HOVER -> 00574760,",
-     "// SHOWN_APPEARING and SHOWN -> 00574de0 (both table entries 00574ed2); otherwise GuiResponse::notUsed() ({0, 0}).",
-     "// The three callees are registry placeholders; they are bound here as processNothing / processHover /",
-     "// processShown of gui/Gui.h by their switch cases. The default case and the else branch each return notUsed()",
-     "// (target stores +4 before +0, as Widget::process 00642251); rejected: one trailing `return notUsed()` after the",
-     "// if, which stores +0 first."
-    ]
-   },
-   {
-    "line": 61,
-    "text": [
-     "// 0064ead0: Rect::pointInRect(Vector2int16) out of line (call 00573130 at 0064eb3b) through the widget-rect-2008",
-     "// header profile of native-flags, as Widget.cpp's Widget::processMouse."
-    ]
-   },
-   {
-    "line": 65,
-    "text": [
-     "// The range test (cmp 1 / jl, cmp 7 / jg at 0064eb0e) is the inline isMouseEvent of the 2008 build, written out",
-     "// as in Widget::process (native-classes/Widget.cpp): the donor UIEvent::isMouseEvent compares each type."
-    ]
-   },
-   {
-    "line": 83,
-    "text": [
-     "// 00656940: still needs the donor's inline Instance::getRootAncestor overloads in core v8tree/Instance.h (owner:",
-     "// Instance core header)."
-    ]
-   },
-   {
-    "line": 97,
-    "text": [
-     "// 2008-06 native gui ChatWidget unit (inactive): ChatWidget 0064e8a0..0064ea70, UnifiedImageWidget::render2dMe",
-     "// 0064e840, and the UnifiedImageWidget / ChatButton constructors 00601c50 / 00601d00.",
-     "// Layout and addresses in native-headers/gui/WidgetChat.h; verified by tests/record_native_widget.py."
-    ]
-   },
-   {
-    "line": 103,
-    "text": [
-     "// Both bodies below read UnifiedWidget::menuState (+0x144) directly (0064e851, 0064e8a0): a unit-local inline",
-     "// accessor in the pattern of the unit-local Verb::getName (RunStateCommands.cpp), since gui/Gui.h declares it out of",
-     "// line (proposal for the Gui.h owner: make it inline there)."
-    ]
-   },
-   {
-    "line": 108,
-    "text": [
-     "// 0064e840"
-    ]
-   },
-   {
-    "line": 131,
-    "text": [
-     "// 0064e8a0"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/gui/MenuItem.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/GuiWidgets2008MenuItem.cpp",
@@ -6584,252 +6204,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/gui/ScoreHud.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AppUnit650LeaderboardTemplates.cpp",
-   "rebuild/2008-06/native-classes/ScoreHud.cpp",
-   "rebuild/2008-06/native-classes/ScoreHudLeaderboard2008.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native std template instances of the ScoreHud unit's leaderboard tables, in the application range",
-     "// 00650000..00654000 (inactive). Verified by tests/record_native_app_unit650.py (receipt app-unit650-working.json).",
-     "//",
-     "// The element types are the members of BoardData / LeaderboardData in the read-only native gui/ScoreHud.h (owner:",
-     "// ScoreHud / ChatOutput): BoardData::data (vector<vector<string>>, +0x00), LeaderboardData::playersByTeamList",
-     "// (map<Team*, vector<string>>, +0x18), statMap (map<string, map<string, int>>, +0x38) and teamTotals",
-     "// (map<Team*, map<string, int>>, +0x58). Every instance below is called only from rows of this unit",
-     "// (AddTuple 006546d0, CompileData 00654860, SetSize 00654630, ~BoardData 00654100, ~LeaderboardData 006558f0,",
-     "// renderFFALeaderboard 006551e0, renderTeamDeathmatchLeaderboard 00655a20), from each other, or from their EH",
-     "// funclets (the recorder checks every caller).",
-     "//",
-     "// Explicit instantiations only (no helper function that the binary does not contain)."
-    ]
-   },
-   {
-    "line": 33,
-    "text": [
-     "// AddTuple 006546d0 searches statNamesList / playersByTeamList[team] with std::find; the checked iterators unwrap to",
-     "// _Find<string*, string> (00650eb0)."
-    ]
-   },
-   {
-    "line": 37,
-    "text": [
-     "// 2008-06 native RBX::ScoreHud unit (inactive): 00650f80..00656488.",
-     "// Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_hud.py."
-    ]
-   },
-   {
-    "line": 122,
-    "text": [
-     "// 2008-06 native RBX::ScoreHud leaderboards (inactive): BoardData, BuildBoardData 00654d20, renderFFALeaderboard",
-     "// 006551e0. Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_scorehud_leaderboard.py."
-    ]
-   },
-   {
-    "line": 367,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/tool/Dragger.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp",
-   "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
-   "rebuild/2008-06/native-classes/DraggerPlacement.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive native 2008-06 recovery: rows of the RBX::Dragger unit 0060fea0..00610bee (after the Extents unit",
-     "// 0060f3e0..0060fe95; the Lua 5.1.1 library starts at luaL_where 00610bf0). Declarations are the donor",
-     "// tool/Dragger.h (read-only; no native header shadows it). Bodies written here:",
-     "//   toGrid 0060fea0, intersectingWorldOrOthers 00610130, movePrimitivesDelta 00610270, searchUpFine 00610310,",
-     "//   searchDownFine 006103a0, searchUpGross 00610440, searchDownGross 006104e0, safeMoveYDrop 00610830,",
-     "//   safeMoveNoDrop 00610930.",
-     "// Out-of-unit-recovered rows called here: movePrimitives 0060fef0 and computeExtents(Array) 00610070 (bound by the",
-     "// recorder at the original call sites). Step constants from .rdata: 0.1f 0081e704, -0.1f 00843764, 1.2f 00827278,",
-     "// -1.2f 00830b6c; the world floor -0.01f 00843760 and the overlap 0.01f 0082748c (intersectingWorldOrOthers).",
-     "// The 2008 search functions are not in the donor: their shapes are read from the bytes (one step, then repeat while",
-     "// the moved vector is finite and the intersection test keeps the same answer; a Gross search hands over to the",
-     "// Fine search in the opposite direction).",
-     "// Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations."
-    ]
-   },
-   {
-    "line": 130,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/tool/DragUtilities.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/Inferred_0060ec60.cpp",
-   "rebuild/2008-06/native-classes/Inferred_0060ecd0.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL"
-  },
-  "notes": []
- },
- "rebuild/2008-06/layout/client/app/tool/MegaDragger.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/MegaDraggerMoves.cpp",
-   "rebuild/2008-06/native-classes/MegaDragger.cpp",
-   "rebuild/2008-06/native-classes/MegaDraggerMovement.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// MegaDragger drag/move methods (2008-06). Identities from work/2008-06/identity-registry.json",
-     "// (decorated-signature + identity-closure votes); callees: DragUtilities 0060eb30/0060ead0/0060f2d0,",
-     "// Dragger::safeMoveYDrop 00610830, Dragger::safeMoveNoDrop 00610930, MouseCommand::getUnitMouseRay 00615c30,",
-     "// ICameraOwner::setCameraIgnoreParts 00641f40, RootInstance::setInsertPoint 00590030."
-    ]
-   },
-   {
-    "line": 15,
-    "text": [
-     "// 0060de00"
-    ]
-   },
-   {
-    "line": 27,
-    "text": [
-     "// 0060dd60"
-    ]
-   },
-   {
-    "line": 33,
-    "text": [
-     "// 0060e780"
-    ]
-   },
-   {
-    "line": 45,
-    "text": [
-     "// 0060dec0"
-    ]
-   },
-   {
-    "line": 55,
-    "text": [
-     "// 0060df80"
-    ]
-   },
-   {
-    "line": 72,
-    "text": [
-     "// 0060e100"
-    ]
-   },
-   {
-    "line": 82,
-    "text": [
-     "// 0060e180"
-    ]
-   },
-   {
-    "line": 92,
-    "text": [
-     "// 0060e310"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/tool/NullTool.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
-   "rebuild/2008-06/native-classes/NullTool.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive native RunningBase methods (2008-06). Not in any build list.",
-     "// Balancing's constructor is in HumanoidStates1Leaves.cpp: RunningBase(Humanoid*) 00666980 calls",
-     "// Balancing(Humanoid*, float, float) 0066e660 out of line, so its body is not visible here."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/ExtentsOverlap.cpp",
-   "rebuild/2008-06/native-classes/AppUnit609_2008Extents.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive native 2008-06 recovery: two out-of-line RBX::Extents members emitted outside the Extents unit",
-     "// (AppUnit609_2008Extents.cpp holds 0060f3e0..0060fe95):",
-     "//   unionWith 0057dee0 (?unionWith@Extents@RBX@@QAEXABV12@@Z), overlapsOrTouches 00606b60",
-     "//   (?overlapsOrTouches@Extents@RBX@@QBE_NABV12@@Z).",
-     "// Layout (low +0, high +0xc) is the committed native util/Extents.h (read-only here)."
-    ]
-   },
-   {
-    "line": 10,
-    "text": [
-     "// 0057dee0"
-    ]
-   },
-   {
-    "line": 17,
-    "text": [
-     "// 00606b60"
-    ]
-   },
-   {
-    "line": 28,
-    "text": [
-     "// Inactive native 2008-06 recovery: the RBX::Extents unit 0060f3e0..0060fe95 (between DragUtilities getPrimitives 0060f3d0 and",
-     "// Dragger::toGrid 0060fea0). Out-of-line Extents members, in the order of the image:",
-     "//   closestFace 0060f3e0 (called from 0066c3ec), getCorner 0060f480, getFaceCorners 0060f4e0, separatedByMoreThan 0060f750, faceCenter 0060f7b0,",
-     "//   containedByFrustum 0060f820, vv 0060f8e0, express 0060f9b0, toWorldSpace 0060fc20, getPlane 0060fe40.",
-     "// Layout (low +0, high +0xc, 0x18) is the committed native util/Extents.h (read-only here). Math::inf is the donor",
-     "// util/Math.h function-local static (guard 0097b894, value 0097b890, initialized from the imported",
-     "// std::numeric_limits<float> infinity at 0080250c), read by express / toWorldSpace.",
-     "// Codegen analog: bodies follow the donor util/Extents.cpp shape; the recorder proves each against the bytes."
-    ]
-   },
-   {
-    "line": 194,
-    "text": [
-     "// 0060f9b0 (parked, same size 617): the only divergence is the x87 operand order of row 1 of the inlined",
-     "// myFrame.pointToWorldSpace (target r[1][1]*y + r[1][0]*x + r[1][2]*z at 0060fabb..0060facc, candidate",
-     "// r[1][1]*y + r[1][2]*z + r[1][0]*x). Rejected variants (lf11): a named `corner = getCorner(i)` temporary (same",
-     "// diff); the donor form `v1 = pointToWorldSpace(corner) - translation; inOther = v1 * rotation` (635 bytes, signed",
-     "// getCorner division); a named `world = pointToWorldSpace(getCorner(i))` temporary (same diff)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/util/IRenderable.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/SpatialHashStats.cpp",
@@ -6854,44 +6228,6 @@
     ]
    }
   ]
- },
- "rebuild/2008-06/layout/inferred/client/app/util/UserInputBase.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
-   "rebuild/2008-06/native-classes/UserInputMovement.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast"
-  },
-  "notes": []
- },
- "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Lighting.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/Inferred_004d6ff0.cpp",
-   "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 004d6ff0: real name from the identity registry; body byte-proved against the native headers (named lane)"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Surface.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
-   "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
-   "rebuild/2008-06/native-classes/SurfaceProperties.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded"
-  },
-  "notes": []
  },
  "rebuild/2008-06/layout/inferred/client/app/v8tree/enumproperty.cpp": {
   "sources": [
@@ -7092,6 +6428,449 @@
    }
   ]
  },
+ "rebuild/2008-06/layout/inferred/client/win/VersionInfo.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/CFileVersionInfo.cpp",
+   "rebuild/2008-06/native-classes/CVersionInfo.cpp"
+  ],
+  "build": {
+   "flags": ""
+  },
+  "notes": [
+   {
+    "line": 3,
+    "text": [
+     "// Create reuses roc_espclaude_43f0d040995d240c.cpp (0046a220)."
+    ]
+   },
+   {
+    "line": 73,
+    "text": [
+     "// Recovered against 2008-06, based on available PJ Naughter/OpenRBX implementation."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/v8world/ClumpStage2.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AppUnit668TreeStage.cpp",
+   "rebuild/2008-06/native-classes/Inferred_0064ca60.cpp"
+  ],
+  "build": {
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::TreeStage (inactive); layout evidence in native-headers/AppUnit668/TreeStage.h.",
+     "// Verified by tests/record_native_app_unit668.py. Built here: onPrimitiveAdded 00668d30, onPrimitiveRemoving 00668d40,",
+     "// getMetric 00669030, dirtyAssemblies 00669240, the destructor 00669390, the scalar deleting destructor 00669760 and",
+     "// stepWorld 00669780 (vtable 0084cf94 is emitted here).",
+     "// Not built: TreeStage() 00669870 news a 0x50-byte AssemblyStage (0066f800) that no native header declares;",
+     "// getStageType 005e2790 (TREE_STAGE 3) is built through the kernel-stages opt-in (donor numbers it 2); process 00669410,",
+     "// onEdgeAdded 00669c00, onEdgeRemoving 00669c70 and the other TreeStage rows read the 2008 Edge / Joint / Assembly /",
+     "// Clump layouts (see the recorder's unit map)."
+    ]
+   },
+   {
+    "line": 16,
+    "text": [
+     "// 005e2790 (folded `mov eax, 3`): TREE_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h",
+     "// through the native-flags line)."
+    ]
+   },
+   {
+    "line": 23,
+    "text": [
+     "// 00668d30"
+    ]
+   },
+   {
+    "line": 29,
+    "text": [
+     "// 00668d40"
+    ]
+   },
+   {
+    "line": 35,
+    "text": [
+     "// 00669030"
+    ]
+   },
+   {
+    "line": 43,
+    "text": [
+     "// 00669240"
+    ]
+   },
+   {
+    "line": 56,
+    "text": [
+     "// 00669390"
+    ]
+   },
+   {
+    "line": 61,
+    "text": [
+     "// 00669780"
+    ]
+   },
+   {
+    "line": 69,
+    "text": [
+     "// 0064ca60: real name from the identity registry; body byte-proved against the native headers (named lane)"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/tool/DragUtilities.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/Inferred_0060ec60.cpp",
+   "rebuild/2008-06/native-classes/Inferred_0060ecd0.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL"
+  },
+  "notes": []
+ },
+ "rebuild/2008-06/layout/inferred/client/win/LDraw2RobloxMapRoot.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp",
+   "rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS"
+  },
+  "notes": [
+   {
+    "line": 108,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 129,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/util/UserInputBase.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
+   "rebuild/2008-06/native-classes/UserInputMovement.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast"
+  },
+  "notes": []
+ },
+ "rebuild/2008-06/layout/inferred/client/app/gui/ChatWidget.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/GuiWidgets2008Chat.cpp",
+   "rebuild/2008-06/native-classes/WidgetChat.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/widget-rect-2008"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 native gui widget leaves (inactive): the ChatWidget / ChatButton rows of the Button unit 0064e840..0064eaf0",
+     "// and EquationDisplay::getLabel 00656940, which native-classes/WidgetChat.cpp and EquationDisplay.cpp (verified by",
+     "// tests/record_native_widget.py) do not compile. Classes and layouts in native-headers/gui/WidgetChat.h and",
+     "// gui/EquationDisplay.h (read-only here); verified by tests/record_native_gui_widgets2008.py.",
+     "//",
+     "//   ChatButton::isVisible 0064ea90 (slot 21 of 0084232c): ServiceProvider::find<Network::Players>(this) 00491d50, the",
+     "//   inline Players::getLocalPlayer (localPlayer +0x1a0, 0064eaa0), then Players::clientIsPresent(this, true) 00495e60.",
+     "//",
+     "// NATIVE_GUIWIDGETS_PENDING bodies need declarations the owners' headers lack (the generated overlay under",
+     "// out/native-layouts/gui-widgets2008-pending supplies them; see the recorder):",
+     "//   * util/Rect.h (donor)  `bool pointInRect(G3D::Vector2int16)` out of line: ChatWidget::process 0064ead0 calls",
+     "//                          00573130 (0064eb3b) like Widget::processMouse (record_native_widget.py, same proposal);",
+     "//   * v8tree/Instance.h    the donor's inline Instance::getRootAncestor() / getRootAncestor() const and static",
+     "//                          getRootAncestor(const Instance*): EquationDisplay::getLabel 00656940 tests this (00656963),",
+     "//                          inlines two parent steps (+0x104) and calls the out-of-line one 0042a5f0 (0065697b)."
+    ]
+   },
+   {
+    "line": 30,
+    "text": [
+     "// 00574e70 (slot of the GuiTarget base at +0x130, so `this` arrives adjusted: lea esi, [edi - 0x130]). Read from the",
+     "// original: isVisible (Instance-side slot 21, +0x54), the inline mouse-event range test (cmp 1 / jl, cmp 7 / jg, as",
+     "// in Widget::process), then a jump table on menuState (+0x144): NOTHING -> 00574860, HOVER -> 00574760,",
+     "// SHOWN_APPEARING and SHOWN -> 00574de0 (both table entries 00574ed2); otherwise GuiResponse::notUsed() ({0, 0}).",
+     "// The three callees are registry placeholders; they are bound here as processNothing / processHover /",
+     "// processShown of gui/Gui.h by their switch cases. The default case and the else branch each return notUsed()",
+     "// (target stores +4 before +0, as Widget::process 00642251); rejected: one trailing `return notUsed()` after the",
+     "// if, which stores +0 first."
+    ]
+   },
+   {
+    "line": 61,
+    "text": [
+     "// 0064ead0: Rect::pointInRect(Vector2int16) out of line (call 00573130 at 0064eb3b) through the widget-rect-2008",
+     "// header profile of native-flags, as Widget.cpp's Widget::processMouse."
+    ]
+   },
+   {
+    "line": 65,
+    "text": [
+     "// The range test (cmp 1 / jl, cmp 7 / jg at 0064eb0e) is the inline isMouseEvent of the 2008 build, written out",
+     "// as in Widget::process (native-classes/Widget.cpp): the donor UIEvent::isMouseEvent compares each type."
+    ]
+   },
+   {
+    "line": 83,
+    "text": [
+     "// 00656940: still needs the donor's inline Instance::getRootAncestor overloads in core v8tree/Instance.h (owner:",
+     "// Instance core header)."
+    ]
+   },
+   {
+    "line": 97,
+    "text": [
+     "// 2008-06 native gui ChatWidget unit (inactive): ChatWidget 0064e8a0..0064ea70, UnifiedImageWidget::render2dMe",
+     "// 0064e840, and the UnifiedImageWidget / ChatButton constructors 00601c50 / 00601d00.",
+     "// Layout and addresses in native-headers/gui/WidgetChat.h; verified by tests/record_native_widget.py."
+    ]
+   },
+   {
+    "line": 103,
+    "text": [
+     "// Both bodies below read UnifiedWidget::menuState (+0x144) directly (0064e851, 0064e8a0): a unit-local inline",
+     "// accessor in the pattern of the unit-local Verb::getName (RunStateCommands.cpp), since gui/Gui.h declares it out of",
+     "// line (proposal for the Gui.h owner: make it inline there)."
+    ]
+   },
+   {
+    "line": 108,
+    "text": [
+     "// 0064e840"
+    ]
+   },
+   {
+    "line": 131,
+    "text": [
+     "// 0064e8a0"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/gui/ChatOutput.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/ChatOutputCommands.cpp",
+   "rebuild/2008-06/native-classes/ChatOutput.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 native RBX::ChatOutput::render2d (0064fe90) and ChatOutput::ParseCommand (00650660), rows of the ChatOutput",
+     "// unit 0064fb60..00651000 (inactive). Class in the read-only native gui/ChatOutput.h: fifo std::deque<ChatLine*> +0x174",
+     "// (offset +0x18c, size +0x190), time +0x194; ChatLine user +0x0c, message +0x28, profane +0x48.",
+     "//   render2d: getMyRect 00573310; font size 12.0 (double 0084bbf0); Adorn::get2DStringBounds (slot 0x30) and",
+     "//     drawFont2D (slot 0x34, XALIGN_LEFT / YALIGN_TOP / PROPORTIONAL_SPACING); separator \"; \" 00820f94; minimum",
+     "//     width 20.0f 008222f0, padding 4.0f 00826e6c, 2.0f 0081c434, line step 14.0f 0084bbe8; Rect2D::xyxy 004f35d0,",
+     "//     translucentBackdrop 00573290, Color3::white 00514a60 / red 005148b0 (folded with Vector3::unitX), Color4::clear",
+     "//     007baf10. The deque is indexed through operator[] (checked iterator deref 00436420) for each use.",
+     "//   ParseCommand: boost::char_separator(\" -_/,\") 0084bbfc over chat.message; parts std::vector<std::string>; empty",
+     "//     -> false; to_lower(parts[0]) with std::locale() (0064fd00); parts[0] == \"sc\" 0084bbf8; SafeChat::singleton",
+     "//     00658880, getMessage 006584e0 (vector by value), new ChatLine (0x4c) 00650560 with time + 60, push_back."
+    ]
+   },
+   {
+    "line": 20,
+    "text": [
+     "// 0064fe90 (PARKED). Pass 1 closest 1451 of 1452 bytes with corners (-2,-2)/(+1,+1); tried corner constants",
+     "// (-2,+1)/(+2,-1) read off the target stack and reassociated width + messageSize.x + position.x.",
+     "// Pass 2 (workflow 53): decoding the target x87 at 006500b8..00650121 (after the three pushes, position at +0x3c,",
+     "// userSize at +0x9c, messageSize at +0xec) gives low = (position.x - 2, position.y + 1) and high =",
+     "// ((width + messageSize.x) + position.x + 2, (position.y + userSize.y) - 1): one 2.0f (0081c434) is subtracted and",
+     "// added, one fld1 is added and subtracted. The pass-1 corners computed different values (y0 = position.y - 2), so",
+     "// the semantically decoded corners are ADOPTED (1453 B, 199 diff lines vs 202). The remaining byte gap is not the x87",
+     "// order: the frame-slot coloring differs from the first deque operator[] temporary on (target iterator temps at",
+     "// +0x64/+0xa4, the two corner Vector2s adjacent at +0xac/+0xb4 and stored low first; candidate +0xa4/+0xb4 and",
+     "// non-adjacent corners), which changes disp8/disp32 encodings. Rejected in pass 2: position.x + width +",
+     "// messageSize.x + 2 (1455 B), named locals low/high in either association (1455 B, low stored first but slots still",
+     "// non-adjacent), VS2005 50727 and /Ob1, /Oy profiles (see the result notes; no effect on slot coloring)."
+    ]
+   },
+   {
+    "line": 63,
+    "text": [
+     "// 00650660"
+    ]
+   },
+   {
+    "line": 88,
+    "text": [
+     "// 2008-06 native RBX::ChatOutput unit (inactive): 0064fb60..00651000.",
+     "// Layout and addresses in native-headers/gui/ChatOutput.h; verified by tests/record_native_hud.py."
+    ]
+   },
+   {
+    "line": 141,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/gui/ScoreHud.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AppUnit650LeaderboardTemplates.cpp",
+   "rebuild/2008-06/native-classes/ScoreHud.cpp",
+   "rebuild/2008-06/native-classes/ScoreHudLeaderboard2008.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 native std template instances of the ScoreHud unit's leaderboard tables, in the application range",
+     "// 00650000..00654000 (inactive). Verified by tests/record_native_app_unit650.py (receipt app-unit650-working.json).",
+     "//",
+     "// The element types are the members of BoardData / LeaderboardData in the read-only native gui/ScoreHud.h (owner:",
+     "// ScoreHud / ChatOutput): BoardData::data (vector<vector<string>>, +0x00), LeaderboardData::playersByTeamList",
+     "// (map<Team*, vector<string>>, +0x18), statMap (map<string, map<string, int>>, +0x38) and teamTotals",
+     "// (map<Team*, map<string, int>>, +0x58). Every instance below is called only from rows of this unit",
+     "// (AddTuple 006546d0, CompileData 00654860, SetSize 00654630, ~BoardData 00654100, ~LeaderboardData 006558f0,",
+     "// renderFFALeaderboard 006551e0, renderTeamDeathmatchLeaderboard 00655a20), from each other, or from their EH",
+     "// funclets (the recorder checks every caller).",
+     "//",
+     "// Explicit instantiations only (no helper function that the binary does not contain)."
+    ]
+   },
+   {
+    "line": 33,
+    "text": [
+     "// AddTuple 006546d0 searches statNamesList / playersByTeamList[team] with std::find; the checked iterators unwrap to",
+     "// _Find<string*, string> (00650eb0)."
+    ]
+   },
+   {
+    "line": 37,
+    "text": [
+     "// 2008-06 native RBX::ScoreHud unit (inactive): 00650f80..00656488.",
+     "// Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_hud.py."
+    ]
+   },
+   {
+    "line": 122,
+    "text": [
+     "// 2008-06 native RBX::ScoreHud leaderboards (inactive): BoardData, BuildBoardData 00654d20, renderFFALeaderboard",
+     "// 006551e0. Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_scorehud_leaderboard.py."
+    ]
+   },
+   {
+    "line": 367,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/tool/Dragger.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp",
+   "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
+   "rebuild/2008-06/native-classes/DraggerPlacement.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive native 2008-06 recovery: rows of the RBX::Dragger unit 0060fea0..00610bee (after the Extents unit",
+     "// 0060f3e0..0060fe95; the Lua 5.1.1 library starts at luaL_where 00610bf0). Declarations are the donor",
+     "// tool/Dragger.h (read-only; no native header shadows it). Bodies written here:",
+     "//   toGrid 0060fea0, intersectingWorldOrOthers 00610130, movePrimitivesDelta 00610270, searchUpFine 00610310,",
+     "//   searchDownFine 006103a0, searchUpGross 00610440, searchDownGross 006104e0, safeMoveYDrop 00610830,",
+     "//   safeMoveNoDrop 00610930.",
+     "// Out-of-unit-recovered rows called here: movePrimitives 0060fef0 and computeExtents(Array) 00610070 (bound by the",
+     "// recorder at the original call sites). Step constants from .rdata: 0.1f 0081e704, -0.1f 00843764, 1.2f 00827278,",
+     "// -1.2f 00830b6c; the world floor -0.01f 00843760 and the overlap 0.01f 0082748c (intersectingWorldOrOthers).",
+     "// The 2008 search functions are not in the donor: their shapes are read from the bytes (one step, then repeat while",
+     "// the moved vector is finite and the intersection test keeps the same answer; a Gross search hands over to the",
+     "// Fine search in the opposite direction).",
+     "// Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations."
+    ]
+   },
+   {
+    "line": 130,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/ExtentsOverlap.cpp",
+   "rebuild/2008-06/native-classes/AppUnit609_2008Extents.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive native 2008-06 recovery: two out-of-line RBX::Extents members emitted outside the Extents unit",
+     "// (AppUnit609_2008Extents.cpp holds 0060f3e0..0060fe95):",
+     "//   unionWith 0057dee0 (?unionWith@Extents@RBX@@QAEXABV12@@Z), overlapsOrTouches 00606b60",
+     "//   (?overlapsOrTouches@Extents@RBX@@QBE_NABV12@@Z).",
+     "// Layout (low +0, high +0xc) is the committed native util/Extents.h (read-only here)."
+    ]
+   },
+   {
+    "line": 10,
+    "text": [
+     "// 0057dee0"
+    ]
+   },
+   {
+    "line": 17,
+    "text": [
+     "// 00606b60"
+    ]
+   },
+   {
+    "line": 28,
+    "text": [
+     "// Inactive native 2008-06 recovery: the RBX::Extents unit 0060f3e0..0060fe95 (between DragUtilities getPrimitives 0060f3d0 and",
+     "// Dragger::toGrid 0060fea0). Out-of-line Extents members, in the order of the image:",
+     "//   closestFace 0060f3e0 (called from 0066c3ec), getCorner 0060f480, getFaceCorners 0060f4e0, separatedByMoreThan 0060f750, faceCenter 0060f7b0,",
+     "//   containedByFrustum 0060f820, vv 0060f8e0, express 0060f9b0, toWorldSpace 0060fc20, getPlane 0060fe40.",
+     "// Layout (low +0, high +0xc, 0x18) is the committed native util/Extents.h (read-only here). Math::inf is the donor",
+     "// util/Math.h function-local static (guard 0097b894, value 0097b890, initialized from the imported",
+     "// std::numeric_limits<float> infinity at 0080250c), read by express / toWorldSpace.",
+     "// Codegen analog: bodies follow the donor util/Extents.cpp shape; the recorder proves each against the bytes."
+    ]
+   },
+   {
+    "line": 194,
+    "text": [
+     "// 0060f9b0 (parked, same size 617): the only divergence is the x87 operand order of row 1 of the inlined",
+     "// myFrame.pointToWorldSpace (target r[1][1]*y + r[1][0]*x + r[1][2]*z at 0060fabb..0060facc, candidate",
+     "// r[1][1]*y + r[1][2]*z + r[1][0]*x). Rejected variants (lf11): a named `corner = getCorner(i)` temporary (same",
+     "// diff); the donor form `v1 = pointToWorldSpace(corner) - translation; inOther = v1 * rotation` (635 bytes, signed",
+     "// getCorner division); a named `world = pointToWorldSpace(getCorner(i))` temporary (same diff)."
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/inferred/client/app/v8world/RigidJoint.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/RigidJointAlign.cpp",
@@ -7151,6 +6930,252 @@
    }
   ]
  },
+ "rebuild/2008-06/layout/inferred/client/win/SelectionCaption.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/CSelectionCaption.cpp",
+   "rebuild/2008-06/native-classes/CSelectionCaptionUpdate.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
+  },
+  "notes": [
+   {
+    "line": 71,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/tool/NullTool.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+   "rebuild/2008-06/native-classes/NullTool.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive native RunningBase methods (2008-06). Not in any build list.",
+     "// Balancing's constructor is in HumanoidStates1Leaves.cpp: RunningBase(Humanoid*) 00666980 calls",
+     "// Balancing(Humanoid*, float, float) 0066e660 out of line, so its body is not visible here."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Lighting.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/Inferred_004d6ff0.cpp",
+   "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 004d6ff0: real name from the identity registry; body byte-proved against the native headers (named lane)"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/boost_1_34_1/libs/python/src/object/class.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/MetadataClass.cpp",
+   "rebuild/2008-06/native-classes/MetadataClassesRegister.cpp",
+   "rebuild/2008-06/native-classes/MetadataExplorerOrder.cpp"
+  ],
+  "build": {
+   "flags": ""
+  },
+  "notes": [
+   {
+    "line": 8,
+    "text": [
+     "// 0041fb30: an unset (-1) index defers to the parent Class; the target keeps the bool-valued",
+     "// recursion result (setne/movzx), so the expression is preserved as compiled."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/v8world/MotorJoint.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AppUnit5E4MotorJoint.cpp",
+   "rebuild/2008-06/native-classes/WorldJointMotor.cpp"
+  ],
+  "build": {
+   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 v8world/MotorJoint.cpp row MotorJoint::isAligned 005e5d00 (vtable 0083f764 slot 9; inactive native unit),",
+     "// against the native v8world/Joints2008.h and v8world/Primitive2008.h (read-only; both now build on the native 2008",
+     "// Edge / IPipelined2008.h, so no donor-IPipelined switch). /fp:fast. The other MotorJoint rows are in",
+     "// native-classes/WorldJointMotor.cpp (world-joints owner). Verified by tests/record_native_app_unit5e4.py."
+    ]
+   },
+   {
+    "line": 14,
+    "text": [
+     "// 005e5d00: Primitive::getCoordinateFrame 005e82c0 of prim0 (+0xc) / prim1 (+0x10) times jointCoord0 (+0x28) /",
+     "// jointCoord1 (+0x58) (CoordinateFrame::operator* 00476700), Math::fuzzyEq(Vector3, Vector3, float) 005de1d0 on the",
+     "// translations, then on Matrix3::getColumn(2) 00513240; tolerance 1e-5 (0082b3b0)."
+    ]
+   },
+   {
+    "line": 42,
+    "text": [
+     "// 2008-06 native RBX::MotorJoint (inactive); evidence in native-headers/v8world/Joints2008.h.",
+     "// Verified by tests/record_native_world_joints.py. Rows of the MotorJoint unit (005e5bf0..005e5ee0): the constructor",
+     "// 005e5bf0, setCurrentAngle 005e5da0, the destructor 005e5e00, stepUi 005e5e70 and the scalar deleting destructor",
+     "// 005e5ee0 (vtable 0083f764 is emitted here); setCurrentAngle 005e5da0 through the opt-in kernel-stages IStage (KERNEL_STAGE 7). resetLink 005e5c90 and isAligned 005e5d00 read the native Primitive",
+     "// (body, coordinate frame) and are not part of this unit yet."
+    ]
+   },
+   {
+    "line": 50,
+    "text": [
+     "// 005e5bf0: new RevoluteLink (0xd0; Link() 00613d20, RevoluteLink vtable 0083f75c)."
+    ]
+   },
+   {
+    "line": 59,
+    "text": [
+     "// 005e5e00: non-virtual ~Link (0047d410, folded empty body) then operator delete."
+    ]
+   },
+   {
+    "line": 65,
+    "text": [
+     "// 005e5da0: IPipelined::getWorld inline (IPipelined2008.h, the 2008 KERNEL_STAGE 7 of the opt-in kernel-stages",
+     "// IStage: `cmp eax, 7` at 005e5dc8); RevoluteLink::setJointAngle inline (+0xcc, Link::dirty 00613cb0)."
+    ]
+   },
+   {
+    "line": 77,
+    "text": [
+     "// 005e5e70"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/win/AboutRobloxDialog.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp",
+   "rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /I{headers}/std-noinline-string"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 00401390 calls std::string::c_str through msvcp90, so use the matching",
+     "// no-inline-string header profile."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/win/InstanceExplorer.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/CInstanceExplorer.cpp",
+   "rebuild/2008-06/native-classes/InsertDecalAction.cpp",
+   "rebuild/2008-06/native-classes/InsertObjectAction.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string"
+  },
+  "notes": [
+   {
+    "line": 10,
+    "text": [
+     "// Entry order from the AFX_MSGMAP_ENTRY table at 0080fa88 (base 006c6890 CXTPReportView::GetThisMessageMap)."
+    ]
+   },
+   {
+    "line": 17,
+    "text": [
+     "// Local guard: 00421a50 keeps {&populating, old value} on the stack (EH state 0) and writes the old value back",
+     "// on exit. Shared-header note: a util ScopedAssign<T> would own this."
+    ]
+   },
+   {
+    "line": 29,
+    "text": [
+     "// Original 00421940."
+    ]
+   },
+   {
+    "line": 35,
+    "text": [
+     "// Original 00421bc0."
+    ]
+   },
+   {
+    "line": 41,
+    "text": [
+     "// Original 00420990: one tree column \"Name\" (300 wide)."
+    ]
+   },
+   {
+    "line": 56,
+    "text": [
+     "// Original 00421a50."
+    ]
+   },
+   {
+    "line": 69,
+    "text": [
+     "// Original 00420fb0."
+    ]
+   },
+   {
+    "line": 76,
+    "text": [
+     "// Original 00420c20."
+    ]
+   },
+   {
+    "line": 90,
+    "text": [
+     "// Original 00421d00 (exact, with Selection::setSelection<vector<Instance*>::iterator> 00420d20, once the shared",
+     "// v8datamodel/Selection.h template reads addToSelection(boost::get_pointer(*first)); its current first->get()",
+     "// cannot be instantiated for raw Instance* iterators). The vector holds raw pointers: push_back stores 4 bytes."
+    ]
+   },
+   {
+    "line": 106,
+    "text": [
+     "// Original 00420db0."
+    ]
+   },
+   {
+    "line": 114,
+    "text": [
+     "// Original 00420ee0."
+    ]
+   },
+   {
+    "line": 119,
+    "text": [
+     "// Original 00420790."
+    ]
+   },
+   {
+    "line": 127,
+    "text": [
+     "// Original 00466d40 (both listener slots): only GlobalSettings items are explored."
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/inferred/client/win/LogManager.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp",
@@ -7188,25 +7213,125 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/VersionInfo.cpp": {
+ "rebuild/2008-06/layout/inferred/client/win/LDrawParser.cpp": {
   "sources": [
-   "rebuild/2008-06/native-classes/CVersionInfo.cpp",
-   "rebuild/2008-06/native-classes/CFileVersionInfo.cpp"
+   "rebuild/2008-06/native-classes/LDrawParser.cpp",
+   "rebuild/2008-06/native-classes/LDrawParserParse.cpp"
   ],
   "build": {
-   "flags": ""
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/std-noinline-ldraw-parse"
+  },
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/tool/MegaDragger.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/MegaDraggerMoves.cpp",
+   "rebuild/2008-06/native-classes/MegaDragger.cpp",
+   "rebuild/2008-06/native-classes/MegaDraggerMovement.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS"
   },
   "notes": [
    {
     "line": 1,
     "text": [
-     "// Recovered against 2008-06, based on available PJ Naughter/OpenRBX implementation."
+     "// MegaDragger drag/move methods (2008-06). Identities from work/2008-06/identity-registry.json",
+     "// (decorated-signature + identity-closure votes); callees: DragUtilities 0060eb30/0060ead0/0060f2d0,",
+     "// Dragger::safeMoveYDrop 00610830, Dragger::safeMoveNoDrop 00610930, MouseCommand::getUnitMouseRay 00615c30,",
+     "// ICameraOwner::setCameraIgnoreParts 00641f40, RootInstance::setInsertPoint 00590030."
     ]
    },
    {
-    "line": 78,
+    "line": 15,
     "text": [
-     "// Create reuses roc_espclaude_43f0d040995d240c.cpp (0046a220)."
+     "// 0060de00"
+    ]
+   },
+   {
+    "line": 27,
+    "text": [
+     "// 0060dd60"
+    ]
+   },
+   {
+    "line": 33,
+    "text": [
+     "// 0060e780"
+    ]
+   },
+   {
+    "line": 45,
+    "text": [
+     "// 0060dec0"
+    ]
+   },
+   {
+    "line": 55,
+    "text": [
+     "// 0060df80"
+    ]
+   },
+   {
+    "line": 72,
+    "text": [
+     "// 0060e100"
+    ]
+   },
+   {
+    "line": 82,
+    "text": [
+     "// 0060e180"
+    ]
+   },
+   {
+    "line": 92,
+    "text": [
+     "// 0060e310"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Surface.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
+   "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
+   "rebuild/2008-06/native-classes/SurfaceProperties.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded"
+  },
+  "notes": []
+ },
+ "rebuild/2008-06/layout/inferred/client/app/v8datamodel/BrickColor.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/BrickColorProviders.cpp",
+   "rebuild/2008-06/native-classes/BrickColorMapSingleton.cpp",
+   "rebuild/2008-06/native-classes/BrickColorMapPopulation.cpp",
+   "rebuild/2008-06/native-classes/BrickColorMapAccess.cpp",
+   "rebuild/2008-06/native-classes/BrickColorConversions.cpp",
+   "rebuild/2008-06/native-classes/BrickColorColor3.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
+  },
+  "notes": [
+   {
+    "line": 91,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 107,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 344,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
     ]
    }
   ]
