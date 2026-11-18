@@ -1,5 +1,5 @@
 {
- "files": 470,
+ "files": 488,
  "merged_units": {
   "rebuild/2008-06/layout/inferred/client/app/gui/ArrowPanel.cpp": {
    "sources": [
@@ -1340,14 +1340,14 @@
    ]
   }
  },
- "inferred_path_files": 148,
+ "inferred_path_files": 151,
  "status": {
   "clean-identical": 190,
   "verbatim-identical": 14,
-  "clean (token-identical)": 109,
-  "dropped": 28,
-  "verbatim (line-sensitive macros)": 11,
-  "verbatim": 36
+  "clean (token-identical)": 122,
+  "dropped": 10,
+  "verbatim (line-sensitive macros)": 12,
+  "verbatim": 40
  },
  "held_back": {
   "merge or conflict": 822,
@@ -1356,7 +1356,7 @@
   "inferred path with no folder evidence": 12,
   "requires_identity_review": 5,
   "wrapper around donor or library source": 15,
-  "variant header that shadows the one other units build with": 28
+  "variant header that shadows the one other units build with": 10
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
  "cache_note": "the runner may reuse validated cached objects for unchanged live sources",
@@ -2199,7 +2199,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/win/ClipboardVerbs.h": {
    "source": "rebuild/2008-06/native-headers/ClipboardVerbs.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/include/glg3d/RenderDevice.h": {
    "source": "rebuild/2008-06/native-headers/GLG3D/RenderDevice.h",
@@ -2399,7 +2399,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/humanoid/Humanoid.h": {
    "source": "rebuild/2008-06/native-headers/humanoid/Humanoid.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidFloorFields.h": {
    "source": "rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h",
@@ -2435,7 +2435,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8xml/SerializerV2.h": {
    "source": "rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h",
-   "status": "dropped"
+   "status": "verbatim (line-sensitive macros)"
   },
   "rebuild/2008-06/layout/client/app/include/v8world/Primitive.h": {
    "source": "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h",
@@ -2503,7 +2503,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/tool/DragTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/DragTool.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/tool/FlatTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/FlatTool.h",
@@ -2511,7 +2511,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/tool/GroupDragTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/GroupDragTool.h",
-   "status": "dropped"
+   "status": "verbatim"
   },
   "rebuild/2008-06/layout/client/app/include/tool/MegaDragger.h": {
    "source": "rebuild/2008-06/native-headers/tool/MegaDragger.h",
@@ -2531,7 +2531,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/tool/PartDragTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/PartDragTool.h",
-   "status": "dropped"
+   "status": "verbatim"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/tool/ResizeTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/ResizeTool.h",
@@ -2555,7 +2555,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/tool/ToolsArrow.h": {
    "source": "rebuild/2008-06/native-headers/tool/ToolsArrow.h",
-   "status": "dropped"
+   "status": "verbatim"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/util/ContentRequest.h": {
    "source": "rebuild/2008-06/native-headers/util/ContentRequest.h",
@@ -2595,7 +2595,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/app/include/util/ImageContent.h": {
    "source": "rebuild/2008-06/native-headers/util/ImageContent.h",
-   "status": "dropped"
+   "status": "verbatim"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/util/LDrawEntities.h": {
    "source": "rebuild/2008-06/native-headers/util/LDrawEntities.h",
@@ -2643,7 +2643,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/util/Sound.h": {
    "source": "rebuild/2008-06/native-headers/util/Sound.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/util/UserInputBase.h": {
    "source": "rebuild/2008-06/native-headers/util/UserInputBase.h",
@@ -2723,7 +2723,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/ForceField.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/ForceField.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/GameSettings.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h",
@@ -2731,7 +2731,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/GeometryService.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h",
@@ -2751,11 +2751,11 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/JointInstance.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/JointsService.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/JointsService.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/LocalBackpack.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/LocalBackpack.h",
@@ -2771,7 +2771,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Mouse.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Mouse.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h",
@@ -2823,7 +2823,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SpecialShape.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Surface.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Surface.h",
@@ -2847,15 +2847,15 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Tool.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Tool.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/ToolMouseCommand.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/ToolMouseCommand.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/UserController.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/UserController.h",
-   "status": "dropped"
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Value.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Value.h",
@@ -2957,11 +2957,15 @@
   "units_checked": 204,
   "units_same": 178,
   "units_without_verdict": 0,
-  "exported_headers": 156,
-  "headers_proven_by_a_passing_unit": 84,
-  "suspect_headers": [
-   "inferred/client/network/../../../../native-donor-2007/LogManager.h"
-  ],
+  "exported_headers": 174,
+  "headers_proven_by_a_passing_unit": 98,
+  "suspect_headers": {
+   "client/app/include/v8datamodel/UserController.h": 1,
+   "client/app/include/v8xml/SerializerV2.h": 1,
+   "inferred/client/app/include/util/ImageContent.h": 1,
+   "inferred/client/network/../../../../native-donor-2007/LogManager.h": 1,
+   "inferred/client/win/ClipboardVerbs.h": 1
+  },
   "failing_units": [
    "client/app/gui/Widget.cpp",
    "client/app/script/LuaAtomicClasses.cpp",
@@ -2991,34 +2995,16 @@
    "inferred/client/win/SettingsDialog.cpp"
   ],
   "held_variant_headers": [
-   "client/app/include/humanoid/Humanoid.h",
-   "client/app/include/tool/DragTool.h",
-   "client/app/include/tool/GroupDragTool.h",
    "client/app/include/tool/MegaDragger.h",
-   "client/app/include/tool/PartDragTool.h",
-   "client/app/include/tool/ToolsArrow.h",
-   "client/app/include/util/Sound.h",
    "client/app/include/util/Vector6.h",
-   "client/app/include/v8datamodel/ForceField.h",
-   "client/app/include/v8datamodel/GeometryService.h",
-   "client/app/include/v8datamodel/JointInstance.h",
-   "client/app/include/v8datamodel/JointsService.h",
-   "client/app/include/v8datamodel/Mouse.h",
    "client/app/include/v8datamodel/MouseCommand.h",
    "client/app/include/v8datamodel/Selection.h",
    "client/app/include/v8datamodel/Surface.h",
    "client/app/include/v8datamodel/Surfaces.h",
-   "client/app/include/v8datamodel/Tool.h",
-   "client/app/include/v8datamodel/ToolMouseCommand.h",
-   "client/app/include/v8datamodel/UserController.h",
    "client/app/include/v8world/Edge.h",
    "client/app/include/v8world/Primitive.h",
    "client/app/include/v8world/World.h",
-   "client/app/include/v8xml/SerializerV2.h",
-   "inferred/client/app/include/util/ImageContent.h",
-   "inferred/client/app/include/v8datamodel/SelectionChanged.h",
-   "inferred/client/app/include/v8datamodel/SpecialShape.h",
-   "inferred/client/win/ClipboardVerbs.h"
+   "inferred/client/app/include/v8datamodel/SelectionChanged.h"
   ]
  }
 }
