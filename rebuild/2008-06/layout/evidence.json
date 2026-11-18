@@ -3844,11 +3844,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl": {
-  "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl",
-  "build": {},
-  "notes": []
- },
  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/detail/shared_count.hpp": {
   "source": "rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp",
   "build": {},
@@ -4768,6 +4763,18 @@
      "//              CoordinateFrame> Hit / Origin (read only), RefPropDescriptor<Mouse, PartInstance> Target (read only),",
      "//              PropDescriptor<Mouse, int> X, Y, ViewSizeX, ViewSizeY (read only), PropDescriptor<Mouse, TextureId>",
      "//              Icon (getIcon 00642f80, setIcon 0064e180)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 95,
+    "text": [
+     "// Recovered distance helper; original method name unproven."
     ]
    }
   ]
