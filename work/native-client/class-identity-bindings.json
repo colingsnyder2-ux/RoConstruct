@@ -1,24 +1,6 @@
 {
  "scope": "RBX::DxUserInput (native-headers/util/DxUserInput.h, native-classes/DxUserInput.cpp)",
  "identity_bindings": [
- {
-  "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXH@Z@Reflection@RBX@@QAEXH@Z",
-  "address": "00636370",
-  "votes": 1,
-  "identity_evidence": "RTTI identity from research-twins/evidence.json: holder<int>; INFERRED: byte-equal body at 00636370 stores holder<int> vftable 0x8106cc into boost::any; reference analog src/2008-06/00636370.cpp names GenericSlotAdapter<SignalDescImpl<1, void(int)>>::operator()(int)"
- },
- {
-  "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXH@Z@Reflection@RBX@@QAEXH@Z",
-  "address": "007c64a8",
-  "votes": 1,
-  "identity_evidence": "INFERRED: original reloc at 00636370+3 pushes 0x007c64a8; template-identity-bindings-signal.json binds the same EH-handler pattern (A6AXN@Z, A6AXVBrickColor@RBX@@@Z, etc.) to 007c64a8; shared EH handler for SignalDescImpl<1,...>::GenericSlotAdapter::operator()"
- },
- {
-  "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAEXPBVPropertyDescriptor@23@@Z",
-  "address": "00559a50",
-  "votes": 1,
-  "identity_evidence": "RTTI identity holder<PropertyDescriptor const*> in research-twins/evidence.json; byte-equal body at 00559a50 is the same SignalDescImpl<1, void(arg)>::GenericSlotAdapter::operator() pattern proved at 00636370"
- },
   {
    "symbol": "?setKeyState@DxUserInput@RBX@@UAEXW4SDLKey@@_N@Z",
    "address": "00467530",
@@ -10290,6 +10272,1410 @@
    "address": "00422430",
    "votes": 1,
    "identity_evidence": "INFERRED: CComCtlWrapper GetProcAddress_ImageList_DragShowNolock cached proc at 0x7c"
+  },
+  {
+   "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXM@Z@Reflection@RBX@@@?$function1@XMV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXM@Z@Reflection@RBX@@H@Z",
+   "address": "00493620",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(RBX::Reflection::SignalDescImpl<1,void (float)>::GenericSlotAdapter) (functor); byte-equal ctor of that functor; INFERRED: allocator/class ('functionN', 'void') chosen over byte-identical [('ctor', 'functionN', 'fb')] (caller 00493b40 is the signal slot/function<Sig> constructor)"
+  },
+  {
+   "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXH@Z@Reflection@RBX@@QAEXH@Z",
+   "address": "00636370",
+   "votes": 1,
+   "identity_evidence": "RTTI identity from research-twins/evidence.json: holder<int>; INFERRED: byte-equal body at 00636370 stores holder<int> vftable 0x8106cc into boost::any; reference analog src/2008-06/00636370.cpp names GenericSlotAdapter<SignalDescImpl<1, void(int)>>::operator()(int)"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AE?AVVector3@G3D@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "005e1690",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::BoundFuncDesc<class RBX::Lighting,class G3D::Vector3 __cdecl(void),0>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??_E?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "0041bdf0",
+   "identity_evidence": "twin lane alias for 005e1690: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "005e1700",
+   "identity_evidence": "twin lane alias for 005e1690: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VLighting@RBX@@$$A6A?AVVector3@G3D@@XZ$0A@@Reflection@RBX@@QAE@P8Lighting@2@AE?AVVector3@G3D@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "007d2d08",
+   "identity_evidence": "twin lane alias for 005e1690: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXH@Z@Reflection@RBX@@QAEXH@Z",
+   "address": "007c64a8",
+   "votes": 1,
+   "identity_evidence": "INFERRED: original reloc at 00636370+3 pushes 0x007c64a8; template-identity-bindings-signal.json binds the same EH-handler pattern (A6AXN@Z, A6AXVBrickColor@RBX@@@Z, etc.) to 007c64a8; shared EH handler for SignalDescImpl<1,...>::GenericSlotAdapter::operator()"
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005aaa30",
+   "votes": 1,
+   "identity_evidence": "ptr-string identity: shared_ptr<ThreadRef::Node>"
+  },
+  {
+   "symbol": "??$create@V?$TypedStatsItem@N@Stats@RBX@@V?$function0@NV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@N@Stats@RBX@@@boost@@V?$function0@NV?$allocator@Vfunction_base@boost@@@std@@@3@@Z",
+   "address": "005a4af0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Stats::TypedStatsItem<double>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAEXPBVPropertyDescriptor@23@@Z",
+   "address": "00559a50",
+   "votes": 1,
+   "identity_evidence": "RTTI identity holder<PropertyDescriptor const*> in research-twins/evidence.json; byte-equal body at 00559a50 is the same SignalDescImpl<1, void(arg)>::GenericSlotAdapter::operator() pattern proved at 00636370"
+  },
+  {
+   "symbol": "??$?0V?$TypedStatsItem@N@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@N@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@N@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "address": "005a13c0",
+   "identity_evidence": "twin lane alias for 005a4af0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$create@V?$TypedStatsItem@N@Stats@RBX@@V?$function0@NV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@N@Stats@RBX@@@boost@@V?$function0@NV?$allocator@Vfunction_base@boost@@@std@@@3@@Z",
+   "address": "007d2d4c",
+   "identity_evidence": "twin lane alias for 005a4af0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$create@V?$TypedStatsItem@M@Stats@RBX@@V?$function0@MV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@M@Stats@RBX@@@boost@@V?$function0@MV?$allocator@Vfunction_base@boost@@@std@@@3@@Z",
+   "address": "005a4bd0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Stats::TypedStatsItem<float>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$?0V?$TypedStatsItem@M@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@M@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@M@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "address": "005a1470",
+   "identity_evidence": "twin lane alias for 005a4bd0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$create@V?$TypedStatsItem@M@Stats@RBX@@V?$function0@MV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@M@Stats@RBX@@@boost@@V?$function0@MV?$allocator@Vfunction_base@boost@@@std@@@3@@Z",
+   "address": "007d2d4c",
+   "identity_evidence": "twin lane alias for 005a4bd0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$02$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H0@Z@Reflection@RBX@@@?$function3@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@V?$allocator@X@2@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$02$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H0@Z@Reflection@RBX@@H@Z",
+   "address": "004a0900",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(RBX::Reflection::SignalDescImpl<3,void (std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int,std::basic_string<char,std::char_trai) (functor); byte-equal ctor of that functor; INFERRED: allocator/class ('functionN', 'void') chosen over byte-identical [('ctor', 'functionN', 'fb')] (caller 004a0e50 is the signal slot/function<Sig> constructor)"
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker3@VGenericSlotAdapter@?$SignalDescImpl@$02$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H0@Z@Reflection@RBX@@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV56@@function@detail@boost@@SAXAATfunction_buffer@234@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H1@Z",
+   "address": "0049fd90",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 004a0900 references it here)"
+  },
+  {
+   "symbol": "?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$02$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H0@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+   "address": "0049f920",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 004a0900 references it here)"
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005a9c70",
+   "votes": 1,
+   "identity_evidence": "ptr-string identity: EnumItem comparable"
+  },
+  {
+   "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@@?$function0@XV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@H@Z",
+   "address": "004b45b0",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(RBX::Reflection::SignalDescImpl<0,void (void)>::GenericSlotAdapter) (functor); byte-equal ctor of that functor; INFERRED: allocator/class ('functionN', 'void') chosen over byte-identical [('ctor', 'functionN', 'fb')] (caller 004b5050 is the signal slot/function<Sig> constructor)"
+  },
+  {
+   "symbol": "??$create@V?$TypedStatsItem@H@Stats@RBX@@V?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@H@Stats@RBX@@@boost@@V?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@3@@Z",
+   "address": "005a4cb0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Stats::TypedStatsItem<int>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$?0V?$TypedStatsItem@H@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@H@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@H@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "address": "0045c300",
+   "identity_evidence": "twin lane alias for 005a4cb0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$create@V?$TypedStatsItem@H@Stats@RBX@@V?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$TypedStatsItem@H@Stats@RBX@@@boost@@V?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@3@@Z",
+   "address": "007d2d4c",
+   "identity_evidence": "twin lane alias for 005a4cb0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@@?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@V?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@H@Z",
+   "address": "0057a870",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(RBX::Reflection::SignalDescImpl<2,void (boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const *)>::GenericSlotAdapter) (functor); byte-equal ctor of that functor; INFERRED: allocator/class ('functionN', 'void') chosen over byte-identical [('ctor', 'functionN', 'fb')] (caller 0057a900 is the signal slot/function<Sig> constructor)"
+  },
+  {
+   "symbol": "?luaL_newmetatable@@YAHPAUlua_State@@PBD@Z",
+   "address": "00610c90",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?lua_pushcclosure@@YAXPAUlua_State@@P6AH0@ZH@Z",
+   "address": "00612350",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?lua_pushstring@@YAXPAUlua_State@@PBD@Z",
+   "address": "00612280",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a8c10",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a8b70",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a8be0",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a8bb0",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a8b90",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+   "address": "00577e80",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 0057a870 references it here)"
+  },
+  {
+   "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@@?$function2@XV?$shared_ptr@VInstance@RBX@@@boost@@MV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@H@Z",
+   "address": "0062b130",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(RBX::Reflection::SignalDescImpl<2,void (boost::shared_ptr<RBX::Instance>,float)>::GenericSlotAdapter) (functor); byte-equal ctor of that functor; INFERRED: allocator/class ('functionN', 'void') chosen over byte-identical [('ctor', 'functionN', 'fb')] (caller 0062b390 is the signal slot/function<Sig> constructor)"
+  },
+  {
+   "symbol": "?invoke@?$void_function_obj_invoker2@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@XV?$shared_ptr@VInstance@RBX@@@boost@@M@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@M@Z",
+   "address": "0062aad0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 0062b130 references it here)"
+  },
+  {
+   "symbol": "?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@M@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+   "address": "0062a640",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 0062b130 references it here)"
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005aa860",
+   "votes": 1,
+   "identity_evidence": "ptr-string identity: Color3 comparable"
+  },
+  {
+   "symbol": "?className@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@1PBDB",
+   "address": "0095b1bc",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9940",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a98a0",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9910",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a98e0",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a98c0",
+   "identity_evidence": "exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8NetworkSettings@RBX@@BE?AW4PhysicsSendMethod@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@QAE@PBD0P8NetworkSettings@2@BE?AW4PhysicsSendMethod@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "004aa9a0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::EnumPropDescriptor<class RBX::NetworkSettings,enum RBX::NetworkSettings::PhysicsSendMethod>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?className@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@1PBDB",
+   "address": "0095b1dc",
+   "identity_evidence": "twin lane alias for 005a9c70: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$getset@P8NetworkSettings@RBX@@BE?AW4PhysicsSendMethod@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4PhysicsSendMethod@NetworkSettings@RBX@@@Reflection@RBX@@@std@@P8NetworkSettings@2@BE?AW4PhysicsSendMethod@52@XZP852@AEXW4652@@Z@Z",
+   "address": "004a9c50",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "00631180",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?callDoSingleton@?$EnumDesc@W4PhysicsSendMethod@NetworkSettings@RBX@@@Reflection@RBX@@CAXXZ",
+   "address": "004aa700",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?doSingleton@?$EnumDesc@W4PhysicsSendMethod@NetworkSettings@RBX@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "004aa6a0",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getEnumValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+   "address": "005ee850",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getIndexValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+   "address": "004aaa80",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+   "address": "004483e0",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?hasStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE_NXZ",
+   "address": "0059d490",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+   "address": "00565970",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setEnumValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+   "address": "00448c20",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setIndexValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+   "address": "005d0e60",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0060c120",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+   "address": "00448740",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0P8NetworkSettings@RBX@@BE?AW4PhysicsSendMethod@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsSendMethod@12@@Reflection@RBX@@QAE@PBD0P8NetworkSettings@2@BE?AW4PhysicsSendMethod@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "007c0fa3",
+   "identity_evidence": "twin lane alias for 004aa9a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8NetworkSettings@RBX@@BE?AW4PhysicsReceiveMethod@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@QAE@PBD0P8NetworkSettings@2@BE?AW4PhysicsReceiveMethod@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "004aaae0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::EnumPropDescriptor<class RBX::NetworkSettings,enum RBX::NetworkSettings::PhysicsReceiveMethod>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$getset@P8NetworkSettings@RBX@@BE?AW4PhysicsReceiveMethod@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@Reflection@RBX@@@std@@P8NetworkSettings@2@BE?AW4PhysicsReceiveMethod@52@XZP852@AEXW4652@@Z@Z",
+   "address": "004a9ca0",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "00631180",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?callDoSingleton@?$EnumDesc@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@Reflection@RBX@@CAXXZ",
+   "address": "004aa770",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getEnumValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+   "address": "005ee850",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getIndexValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+   "address": "004aaa80",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+   "address": "004483e0",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?hasStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE_NXZ",
+   "address": "0059d490",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+   "address": "00565970",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setEnumValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+   "address": "00448c20",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setIndexValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+   "address": "005d0e60",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0060c120",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+   "address": "00448740",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0P8NetworkSettings@RBX@@BE?AW4PhysicsReceiveMethod@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VNetworkSettings@RBX@@W4PhysicsReceiveMethod@12@@Reflection@RBX@@QAE@PBD0P8NetworkSettings@2@BE?AW4PhysicsReceiveMethod@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "007c0fa3",
+   "identity_evidence": "twin lane alias for 004aaae0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005aa660",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<boost::signals::connection, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?className@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@1PBDB",
+   "address": "0095b1e8",
+   "identity_evidence": "twin lane alias for 005aa660: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a97c0",
+   "identity_evidence": "twin lane alias for 005aa660: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9710",
+   "identity_evidence": "twin lane alias for 005aa660: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9790",
+   "identity_evidence": "twin lane alias for 005aa660: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9760",
+   "identity_evidence": "twin lane alias for 005aa660: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@Vconnection@signals@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9730",
+   "identity_evidence": "twin lane alias for 005aa660: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8DebugSettings@RBX@@BE?AW4EThrottle@World@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@QAE@PBD0P8DebugSettings@2@BE?AW4EThrottle@World@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "005656b0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::EnumPropDescriptor<class RBX::DebugSettings,enum RBX::World::EThrottle>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$getset@P8DebugSettings@RBX@@BE?AW4EThrottle@World@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4EThrottle@World@RBX@@@Reflection@RBX@@@std@@P8DebugSettings@2@BE?AW4EThrottle@World@2@XZP852@AEXW4672@@Z@Z",
+   "address": "00563dd0",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "00631180",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?callDoSingleton@?$EnumDesc@W4EThrottle@World@RBX@@@Reflection@RBX@@CAXXZ",
+   "address": "00565430",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?doSingleton@?$EnumDesc@W4EThrottle@World@RBX@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "005653d0",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?equalValues@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+   "address": "005ee1d0",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getEnumValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+   "address": "005ee850",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getIndexValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+   "address": "004aaa80",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+   "address": "004483e0",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?hasStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NXZ",
+   "address": "0059d490",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+   "address": "00565970",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setEnumValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+   "address": "00448c20",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setIndexValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+   "address": "005d0e60",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0060c120",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+   "address": "00448740",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?writeValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+   "address": "0059d4a0",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0P8DebugSettings@RBX@@BE?AW4EThrottle@World@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VDebugSettings@RBX@@W4EThrottle@World@2@@Reflection@RBX@@QAE@PBD0P8DebugSettings@2@BE?AW4EThrottle@World@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "007c0fa3",
+   "identity_evidence": "twin lane alias for 005656b0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005aabf0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptorsPtr, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@1PBDB",
+   "address": "0095b1d4",
+   "identity_evidence": "twin lane alias for 005aabf0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9e90",
+   "identity_evidence": "twin lane alias for 005aabf0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9de0",
+   "identity_evidence": "twin lane alias for 005aabf0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9e60",
+   "identity_evidence": "twin lane alias for 005aabf0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9e30",
+   "identity_evidence": "twin lane alias for 005aabf0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9e00",
+   "identity_evidence": "twin lane alias for 005aabf0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@QAE@P8ChangeHistoryService@2@AE?AUTuple@12@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "0058b0f0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::BoundFuncDesc<class RBX::ChangeHistoryService,struct RBX::Reflection::Tuple __cdecl(void),0>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$singleton@UTuple@Reflection@RBX@@@Type@Reflection@RBX@@SAABV012@XZ",
+   "address": "0056d020",
+   "identity_evidence": "twin lane alias for 0058b0f0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "0041bdf0",
+   "identity_evidence": "twin lane alias for 0058b0f0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "0058bb40",
+   "identity_evidence": "twin lane alias for 0058b0f0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VChangeHistoryService@RBX@@$$A6A?AUTuple@Reflection@2@XZ$0A@@Reflection@RBX@@QAE@P8ChangeHistoryService@2@AE?AUTuple@12@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "007d2d08",
+   "identity_evidence": "twin lane alias for 0058b0f0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8DebugSettings@RBX@@BE?AW4ErrorReporting@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@QAE@PBD0P8DebugSettings@2@BE?AW4ErrorReporting@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "00565870",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::EnumPropDescriptor<class RBX::DebugSettings,enum RBX::DebugSettings::ErrorReporting>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$getset@P8DebugSettings@RBX@@BE?AW4ErrorReporting@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4ErrorReporting@DebugSettings@RBX@@@Reflection@RBX@@@std@@P8DebugSettings@2@BE?AW4ErrorReporting@52@XZP852@AEXW4652@@Z@Z",
+   "address": "00563ec0",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "00631180",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?callDoSingleton@?$EnumDesc@W4ErrorReporting@DebugSettings@RBX@@@Reflection@RBX@@CAXXZ",
+   "address": "005653c0",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getEnumValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+   "address": "005ee850",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getIndexValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+   "address": "004aaa80",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+   "address": "004483e0",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?hasStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE_NXZ",
+   "address": "0059d490",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+   "address": "00565970",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setEnumValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+   "address": "00448c20",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setIndexValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+   "address": "005d0e60",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0060c120",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+   "address": "00448740",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0P8DebugSettings@RBX@@BE?AW4ErrorReporting@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VDebugSettings@RBX@@W4ErrorReporting@12@@Reflection@RBX@@QAE@PBD0P8DebugSettings@2@BE?AW4ErrorReporting@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "007c0fa3",
+   "identity_evidence": "twin lane alias for 00565870: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8DebugSettings@RBX@@BE?AW4AssertAction@Debugable@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@QAE@PBD0P8DebugSettings@2@BE?AW4AssertAction@Debugable@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "00565790",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::EnumPropDescriptor<class RBX::DebugSettings,enum RBX::Debugable::AssertAction>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$getset@P8DebugSettings@RBX@@BE?AW4AssertAction@Debugable@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4AssertAction@Debugable@RBX@@@Reflection@RBX@@@std@@P8DebugSettings@2@BE?AW4AssertAction@Debugable@2@XZP852@AEXW4672@@Z@Z",
+   "address": "00563e70",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "00631180",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?callDoSingleton@?$EnumDesc@W4AssertAction@Debugable@RBX@@@Reflection@RBX@@CAXXZ",
+   "address": "005654a0",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?doSingleton@?$EnumDesc@W4AssertAction@Debugable@RBX@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "00565440",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getEnumValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+   "address": "005ee850",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getIndexValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+   "address": "004aaa80",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+   "address": "004483e0",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?hasStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE_NXZ",
+   "address": "0059d490",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+   "address": "00565970",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setEnumValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+   "address": "00448c20",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setIndexValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+   "address": "005d0e60",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0060c120",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+   "address": "00448740",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0P8DebugSettings@RBX@@BE?AW4AssertAction@Debugable@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VDebugSettings@RBX@@W4AssertAction@Debugable@2@@Reflection@RBX@@QAE@PBD0P8DebugSettings@2@BE?AW4AssertAction@Debugable@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "007c0fa3",
+   "identity_evidence": "twin lane alias for 00565790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005aa930",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::BrickColor, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9a50",
+   "identity_evidence": "twin lane alias for 005aa930: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a99b0",
+   "identity_evidence": "twin lane alias for 005aa930: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9a20",
+   "identity_evidence": "twin lane alias for 005aa930: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a99f0",
+   "identity_evidence": "twin lane alias for 005aa930: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a99d0",
+   "identity_evidence": "twin lane alias for 005aa930: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0P8PVInstance@RBX@@BE?AW4ControllerType@Controller@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "00609590",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::EnumPropDescriptor<class RBX::PVInstance,enum RBX::Controller::ControllerType>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$getset@P8PVInstance@RBX@@BE?AW4ControllerType@Controller@2@XZP812@AEXW4342@@Z@?$PropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4ControllerType@Controller@RBX@@@Reflection@RBX@@@std@@P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP852@AEXW4672@@Z@Z",
+   "address": "00608f40",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "00631180",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?callDoSingleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@CAXXZ",
+   "address": "00609400",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?doSingleton@?$EnumDesc@W4ControllerType@Controller@RBX@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "006093a0",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getEnumValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBEHPBVDescribedBase@23@@Z",
+   "address": "005ee850",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getIndexValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBEIPBVDescribedBase@23@@Z",
+   "address": "004aaa80",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?getStringValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+   "address": "004483e0",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?hasStringValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NXZ",
+   "address": "0059d490",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?readValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+   "address": "00565970",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setEnumValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@H@Z",
+   "address": "00448c20",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setIndexValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@I@Z",
+   "address": "005d0e60",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0060c120",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setStringValue@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABVName@3@@Z",
+   "address": "00448740",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$?0P8PVInstance@RBX@@BE?AW4ControllerType@Controller@1@XZP801@AEXW4231@@Z@?$EnumPropDescriptor@VPVInstance@RBX@@W4ControllerType@Controller@2@@Reflection@RBX@@QAE@PBD0P8PVInstance@2@BE?AW4ControllerType@Controller@2@XZP832@AEXW4452@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "address": "007c0fa3",
+   "identity_evidence": "twin lane alias for 00609590: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005aacc0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::Lua::EnumDescriptorPtr, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@1PBDB",
+   "address": "0095b1d8",
+   "identity_evidence": "twin lane alias for 005aacc0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9fa0",
+   "identity_evidence": "twin lane alias for 005aacc0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9ed0",
+   "identity_evidence": "twin lane alias for 005aacc0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9f70",
+   "identity_evidence": "twin lane alias for 005aacc0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9f40",
+   "identity_evidence": "twin lane alias for 005aacc0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9ef0",
+   "identity_evidence": "twin lane alias for 005aacc0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Replicator@Network@2@AE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "004b3f30",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,class boost::shared_ptr<class RBX::Reflection::DescribedBase> __cdecl(void),0>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$singleton@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ",
+   "address": "0056ca70",
+   "identity_evidence": "twin lane alias for 004b3f30: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??_E?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "0041bdf0",
+   "identity_evidence": "twin lane alias for 004b3f30: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3PADAV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+   "address": "004b3800",
+   "identity_evidence": "twin lane alias for 004b3f30: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "004b4040",
+   "identity_evidence": "twin lane alias for 004b3f30: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Replicator@Network@2@AE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "007d2d08",
+   "identity_evidence": "twin lane alias for 004b3f30: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005aad90",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::DescribedBase>, false>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Replicator@Network@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "004b40a0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,void __cdecl(void),0>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?on_gc@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005aade0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::SignalInstance>, false>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??_E?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "0041bdf0",
+   "identity_evidence": "twin lane alias for 004b40a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "004b4110",
+   "identity_evidence": "twin lane alias for 004b40a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Replicator@Network@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "007d2d08",
+   "identity_evidence": "twin lane alias for 004b40a0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?manager@?$functor_manager@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@CAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@U?$bool_@$00@mpl@4@@Z",
+   "address": "0048e470",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::RunService>,RBX::ContentProvider::RequestResult,boost::shared) (typeid); byte-equal manager of that functor; INFERRED: allocator/class ('', 'fb') chosen over byte-identical [('manager', '', 'void')] (boost default)"
+  },
+  {
+   "symbol": "??1?$storage2@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@@_bi@boost@@QAE@XZ",
+   "address": "00422c60",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 0048e470 references it here)"
+  },
+  {
+   "symbol": "??0?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@boost@@QAE@ABV012@@Z",
+   "address": "0048cd10",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 0048e470 references it here)"
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005ab6c0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<boost::shared_ptr<RBX::Lua::ThreadRef::Node>, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?className@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@1PBDB",
+   "address": "00949730",
+   "identity_evidence": "twin lane alias for 005ab6c0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_eq@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005aaa80",
+   "identity_evidence": "twin lane alias for 005ab6c0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9870",
+   "identity_evidence": "twin lane alias for 005ab6c0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9840",
+   "identity_evidence": "twin lane alias for 005ab6c0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@V?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@$00@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9810",
+   "identity_evidence": "twin lane alias for 005ab6c0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Replicator@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "004b4170",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Reflection::BoundFuncDesc<class RBX::Network::Replicator,class boost::shared_ptr<class RBX::Instance> __cdecl(void),0>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??_E?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UAEPAXI@Z",
+   "address": "0041bdf0",
+   "identity_evidence": "twin lane alias for 004b4170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "004b41e0",
+   "identity_evidence": "twin lane alias for 004b4170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??0?$BoundFuncDesc@VReplicator@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Replicator@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+   "address": "007d2d08",
+   "identity_evidence": "twin lane alias for 004b4170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$?0V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@boost@@@?$function@$$A6AXW4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@1@H@Z",
+   "address": "00493210",
+   "votes": 1,
+   "identity_evidence": "typeid: the boost::function manager for this body compares typeid(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::RunService>,RBX::ContentProvider::RequestResult,boost::shared) (via-callee 00492ea0); byte-equal ctor of that functor; INFERRED: allocator/class ('function', 'void') chosen over byte-identical [('ctor', 'function', 'fb')] (boost default)"
+  },
+  {
+   "symbol": "__ehhandler$??$?0V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@boost@@@?$function@$$A6AXW4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@ZV?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@1@H@Z",
+   "address": "007c6668",
+   "votes": 1,
+   "identity_evidence": "push -1; push handler prologue immediate of original body 00493210"
+  },
+  {
+   "symbol": "??$?0V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@boost@@@?$function2@XW4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@V?$allocator@X@std@@@boost@@QAE@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$shared_ptr@VRunService@RBX@@@2@W4RequestResult@ContentProvider@RBX@@V?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@2@@ZV?$list4@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$value@V?$shared_ptr@VRunService@RBX@@@boost@@@23@V?$arg@$00@3@V?$arg@$01@3@@_bi@2@@_bi@1@H@Z",
+   "address": "00492ea0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 00493210 references it here)"
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005ab790",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::DescribedBase>, false>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?getValue@?$GetImpl@P8Instance@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@34@@Z",
+   "address": "0048ab70",
+   "votes": 1,
+   "identity_evidence": "vtable slot: original vftable 0082d6cc holds this address in the slot where the compiled vftable references this symbol; body byte-equal (128 B)"
+  },
+  {
+   "symbol": "?className@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@1PBDB",
+   "address": "0095af74",
+   "identity_evidence": "twin lane alias for 005ab790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_index@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a8a00",
+   "identity_evidence": "twin lane alias for 005ab790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a89d0",
+   "identity_evidence": "twin lane alias for 005ab790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9d40",
+   "identity_evidence": "twin lane alias for 005ab790: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?registerClass@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "address": "005ab840",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::SignalInstance>, false>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?on_index@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9db0",
+   "identity_evidence": "twin lane alias for 005ab840: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_newindex@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9d80",
+   "identity_evidence": "twin lane alias for 005ab840: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?on_tostring@?$Bridge@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@$0A@@Lua@RBX@@KAHPAUlua_State@@@Z",
+   "address": "005a9d60",
+   "identity_evidence": "twin lane alias for 005ab840: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$GetImpl@P8Instance@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "votes": 1,
+   "identity_evidence": "vtable slot: original vftable 0082d6cc slot 0 holds this folded mov al,1; ret for GetImpl<Instance,string>; compiled body byte-equal"
+  },
+  {
+   "symbol": "?isWriteOnly@?$GetImpl@P8Instance@RBX@@BE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@UBE_NXZ",
+   "address": "0060a2f0",
+   "votes": 1,
+   "identity_evidence": "vtable slot: original vftable 0082d6cc slot 1 holds this folded xor al,al; ret for GetImpl<Instance,string>; compiled body byte-equal"
+  },
+  {
+   "symbol": "??$getValue@VValue@Reflection@RBX@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z",
+   "address": "005ac0d0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<G3D::CoordinateFrame, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??$getValue@Vany@boost@@@?$Bridge@VCoordinateFrame@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVany@boost@@@Z",
+   "address": "005ac0d0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<G3D::CoordinateFrame, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??4any@boost@@QAEAAV01@ABV01@@Z",
+   "address": "0048bca0",
+   "identity_evidence": "corrected to original reference 0048bca0",
+   "votes": 1
+  },
+  {
+   "symbol": "?lua_getmetatable@@YAHPAUlua_State@@H@Z",
+   "address": "006125b0",
+   "identity_evidence": "twin lane alias for 005ac0d0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?lua_rawequal@@YAHPAUlua_State@@HH@Z",
+   "address": "00611ee0",
+   "identity_evidence": "twin lane alias for 005ac0d0: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$get@VTextureId@RBX@@@Value@Reflection@RBX@@QBE?AVTextureId@2@XZ",
+   "address": "00597e40",
+   "votes": 1,
+   "identity_evidence": "typeid: class RBX::TextureId"
+  },
+  {
+   "symbol": "??$getValue@Vany@boost@@@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVany@boost@@@Z",
+   "address": "005ac270",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::BrickColor, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WBA@AEPAXI@Z",
+   "address": "005e3fe0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f240 is 005e3fe0, already RTTI-bound as FactoryProduct/DescribedCreatable<Weld,JointInstance,sWeld> deleting dtor WBA"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WBE@AEPAXI@Z",
+   "address": "005e4800",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f238 is 005e4800 (WBE)"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WCE@AEPAXI@Z",
+   "address": "005e47e0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f220 is 005e47e0 (WCE)"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WEE@AEPAXI@Z",
+   "address": "005e47f0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f210 is 005e47f0 (WEE)"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WGE@AEPAXI@Z",
+   "address": "005e3fc0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f200 is 005e3fc0 (WGE)"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WIE@AEPAXI@Z",
+   "address": "005e3fd0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f1f0 is 005e3fd0 (WIE)"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WKE@AEPAXI@Z",
+   "address": "005e30c0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f1e0 is 005e30c0 (WKE)"
+  },
+  {
+   "symbol": "??_EWeld@RBX@@WME@AEPAXI@Z",
+   "address": "005e30d0",
+   "votes": 1,
+   "identity_evidence": "slot 0 of Weld vftable 0083f1d0 is 005e30d0 (WME)"
+  },
+  {
+   "symbol": "??$?0PAVWeldJoint@RBX@@@?$DescribedCreatable@VWeld@RBX@@VJointInstance@2@$1?sWeld@2@3QBDB@RBX@@IAE@PAVWeldJoint@1@@Z",
+   "address": "005e3f10",
+   "votes": 1,
+   "identity_evidence": "our default ctor's base ctor relocation resolves to 005e3f10, the RTTI-bound DescribedCreatable<Weld,JointInstance,sWeld> ctor (the Joint* argument instantiation); the arg is only a pointer so the body is byte-equal"
+  },
+  {
+   "symbol": "??_EWeldJoint@RBX@@UAEPAXI@Z",
+   "address": "005e2760",
+   "votes": 1,
+   "identity_evidence": "slot 0 of original WeldJoint vftable 0083e0bc is 005e2760"
+  },
+  {
+   "symbol": "?getJointType@WeldJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+   "address": "005cb9d0",
+   "votes": 1,
+   "identity_evidence": "slot +0x14 of original WeldJoint vftable 0083e0bc is 005cb9d0"
+  },
+  {
+   "symbol": "?isBroken@RigidJoint@RBX@@EBE_NXZ",
+   "address": "0060a2f0",
+   "votes": 1,
+   "identity_evidence": "slot +0x1c of original WeldJoint vftable 0083e0bc is 0060a2f0"
+  },
+  {
+   "symbol": "??$any_cast@ABVTextureId@RBX@@@boost@@YAABVTextureId@RBX@@ABVany@0@@Z",
+   "address": "00597a00",
+   "votes": 1,
+   "identity_evidence": "referenced by byte-equal body at 00597e40 (Value::get<TextureId>)"
+  },
+  {
+   "symbol": "??$convert@VTextureId@RBX@@@Value@Reflection@RBX@@QAEAAVTextureId@2@XZ",
+   "address": "00597a90",
+   "votes": 1,
+   "identity_evidence": "referenced by byte-equal body at 00597e40 (Value::get<TextureId>)"
+  },
+  {
+   "symbol": "__ehhandler$??$get@VTextureId@RBX@@@Value@Reflection@RBX@@QBE?AVTextureId@2@XZ",
+   "address": "007d3ad1",
+   "votes": 1,
+   "identity_evidence": "EH handler prologue immediate of 00597e40"
   }
  ]
 }
