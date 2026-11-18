@@ -133,6 +133,7 @@ namespace RBX
 				return userId;
 			}
 			void setUserID(int value);                                // 00494830
+			static void onLocalPlayerNotIdle(ServiceProvider* serviceProvider); // 00492320; INFERRED: name from the 2007 donor Player.h declaration (body: find<Players>, local player, lastActivityTime = getLocalTime)
 			void setUnder13(bool value)                               // 0048b910 (folded copy outside the unit)
 			{
 				prop_Under13.setValue(this, value);
