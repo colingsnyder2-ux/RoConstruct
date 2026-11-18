@@ -1,10 +1,5 @@
 #pragma once
-// INFERRED: stub for missing RakNet BitStream.h; used by value (RakNet::BitStream bitStream;) in Replicator::ItemSender/JobSender
-// Only member-by-value usage in the header; no inline method bodies call BitStream methods.
-namespace RakNet {
-class BitStream {
-public:
-    BitStream();
-    ~BitStream();
-};
-}
+// The vendor RakNet BitStream.h exists (tools/rbxgs/Client/Network/raknet30/Source). RakPeer.h and ReliabilityLayer.h
+// include "BitStream.h" from this directory first, so forward to the real header: a separate by-value-only class
+// definition here redefines RakNet::BitStream in every unit that also sees the vendor header.
+#include "../../../tools/rbxgs/Client/Network/raknet30/Source/BitStream.h"

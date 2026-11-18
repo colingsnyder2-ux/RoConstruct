@@ -1,3 +1,3 @@
 #pragma once
-// INFERRED: stub for missing RakNet PacketLogger.h; used as boost::scoped_ptr<PacketLogger> in Network::Peer
-class PacketLogger {};
+// Vendor header exists; forward (RakPeer.h and friends include "PacketLogger.h" from this directory first).
+#include "../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h"

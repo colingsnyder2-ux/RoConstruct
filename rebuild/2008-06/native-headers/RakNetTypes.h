@@ -1,22 +1,4 @@
 #pragma once
-// INFERRED: stub for missing RakNet RakNetTypes.h; defines SystemAddress and PacketPriority used by Replicator.h
+// Vendor header exists; forward (RakPeer.h and friends include "RakNetTypes.h" from this directory first).
 #include <set>
-// SystemAddress: RakNet network address, passed by value in PluginInterface callbacks
-class SystemAddress {
-public:
-    SystemAddress();
-    SystemAddress(const char*);
-    bool operator==(const SystemAddress&) const;
-    bool operator!=(const SystemAddress&) const;
-protected:
-    unsigned char data[16];
-};
-
-// PacketPriority: send priority levels for RakNet packets
-enum PacketPriority
-{
-    HIGH_PRIORITY,
-    MEDIUM_PRIORITY,
-    LOW_PRIORITY,
-    NUMBER_OF_PRIORITIES
-};
+#include "../../../tools/rbxgs/Client/Network/raknet30/Source/RakNetTypes.h"

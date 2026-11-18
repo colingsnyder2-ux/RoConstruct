@@ -1,3 +1,3 @@
 #pragma once
-// INFERRED: stub for missing RakNet RakNetStatistics.h; used as const RakNetStatistics* in Replicator::ReplicatorStatsItem (unqualified)
-struct RakNetStatistics {};
+// Vendor header exists; forward (RakPeer.h and friends include "RakNetStatistics.h" from this directory first).
+#include "../../../tools/rbxgs/Client/Network/raknet30/Source/RakNetStatistics.h"

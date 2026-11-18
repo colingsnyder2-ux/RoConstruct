@@ -11976,6 +11976,60 @@
    "address": "007f54e0",
    "votes": 1,
    "identity_evidence": "donor Sound.cpp name; initializer args"
+  },
+  {
+   "symbol": "??$getValue@VValue@Reflection@RBX@@@?$Bridge@VVector3@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z",
+   "address": "005ac150",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<G3D::Vector3, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?_Incsize@?$list@V?$bitset@$0KAA@@std@@V?$allocator@V?$bitset@$0KAA@@std@@@2@@std@@IAEXI@Z",
+   "address": "004288f0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name _Incsize is a placeholder)"
+  },
+  {
+   "symbol": "?_Buynode@?$list@V?$bitset@$0KAA@@std@@V?$allocator@V?$bitset@$0KAA@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$bitset@$0KAA@@std@@V?$allocator@V?$bitse",
+   "address": "00428eb0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name _Buynode is a placeholder)"
+  },
+  {
+   "symbol": "?_Buynode@?$list@V?$bitset@$0KAA@@std@@V?$allocator@V?$bitset@$0KAA@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$bitset@$0KAA@@std@@V?$allocator@V?$bitse",
+   "address": "00428ed0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name _Buynode is a placeholder)"
+  },
+  {
+   "symbol": "?getValue@?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@UBEHPBVDescribedBase@34@@Z",
+   "address": "005cf660",
+   "identity_evidence": "twin lane alias for 004a2030: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isReadOnly@?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@UBE_NXZ",
+   "address": "00565950",
+   "identity_evidence": "twin lane alias for 004a2030: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?isWriteOnly@?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@UBE_NXZ",
+   "address": "0060a2f0",
+   "identity_evidence": "twin lane alias for 004a2030: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?setValue@?$GetImpl@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@UBEXPAVDescribedBase@34@ABH@Z",
+   "address": "004a1b70",
+   "identity_evidence": "twin lane alias for 004a2030: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??$getValue@VValue@Reflection@RBX@@@?$Bridge@VColor3@G3D@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z",
+   "address": "005ac1e0",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<G3D::Color3, true>; byte-equal member of that instantiation"
   }
  ]
 }
