@@ -1,5 +1,6 @@
 #include "v8kernel/IPipelined2008.h"
 #include "v8kernel/Kernel2008.h"
+
 namespace RBX {
 IStage* IPipelined::getStage(IStage::StageType stageType) const
 {
