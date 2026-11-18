@@ -1,203 +1,257 @@
-#define NATIVE_HUMANOID2008_DONOR_CONNECTOR
+#define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "util/NativeContentProvider.h"
 #include "v8datamodel/PartInstance.h"
-#include "v8datamodel/ForceField.h"
-#include "humanoid/Humanoid2008.h"
-#include "util/Object.h"
-#include "util/Math.h"
-#include <stdexcept>
-#include "v8datamodel/ModelInstance.h"
-#include "v8datamodel/JointInstance.h"
-#include "v8datamodel/Workspace.h"   // native (read only): findWorkspace 005a3380, contextInWorkspace 005a33d0
+#include "v8kernel/KernelIndex.h"
 
 namespace RBX
 {
-	extern Reflection::PropDescriptor<Humanoid, G3D::Vector3> propTargetPoint;   // Humanoid2008.cpp (0097a4b0), setTargetPoint
+	class Body;
 
-	Reflection::RefPropDescriptor<Humanoid, PartInstance> propTorso("Torso", "Data", &Humanoid::getTorso, &Humanoid::setTorso, Reflection::PropertyDescriptor::UI);                // 0097a538
-	Reflection::RefPropDescriptor<Humanoid, PartInstance> propLeftLeg("LeftLeg", "Data", &Humanoid::getLeftLeg, &Humanoid::setLeftLeg, Reflection::PropertyDescriptor::UI);        // 0097a3b0
-	Reflection::RefPropDescriptor<Humanoid, PartInstance> propRightLeg("RightLeg", "Data", &Humanoid::getRightLeg, &Humanoid::setRightLeg, Reflection::PropertyDescriptor::UI);    // 0097a5dc
-	Reflection::RefPropDescriptor<Humanoid, PartInstance> propWalkToPart("WalkToPart", "Control", &Humanoid::getWalkToPart, &Humanoid::setWalkToPart, Reflection::PropertyDescriptor::STREAMING); // 0097a328
-
-	PartInstance* Humanoid::getHead() const
+	class Connector : public KernelIndex
 	{
-		if (!head && getParent())
-			head = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Head"));
-
-		return head.get();
-	}
-
-	PartInstance* Humanoid::getTorso() const
-	{
-		if (!torso && getParent())
-			torso = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Torso"));
-
-		return torso.get();
-	}
-
-	PartInstance* Humanoid::getLeftLeg() const
-	{
-		if (!leftLeg && getParent())
-			leftLeg = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Left Leg"));
-
-		return leftLeg.get();
-	}
-
-	PartInstance* Humanoid::getRightLeg() const
-	{
-		if (!rightLeg && getParent())
-			rightLeg = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Right Leg"));
-
-		return rightLeg.get();
-	}
-
-	PartInstance* Humanoid::getLeftArm() const
-	{
-		if (!leftArm && getParent())
-			leftArm = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Left Arm"));
-
-		return leftArm.get();
-	}
-
-	PartInstance* Humanoid::getRightArm() const
-	{
-		if (!rightArm && getParent())
-			rightArm = shared_from_dynamic_cast<PartInstance>(getParent()->findFirstChildByName("Right Arm"));
-
-		return rightArm.get();
-	}
-
-	void Humanoid::takeDamage(float amount)
-	{
-		if (getTorso() && !ForceField::isProtected(getTorso()))
-			setHealth(health - amount);
-	}
-
-	void Humanoid::setWalkToPart(PartInstance* value)
-	{
-		if (walkToPart.get() != value)
+	public:
+		Connector() {}
+		__declspec(noinline) int& getKernelIndex() { return kernelIndex; }
+		virtual ~Connector() {}                                         // slot 0 (??_G 006062c0)
+		virtual void computeForce(const float dt, bool throttling) = 0; // slot 1
+		virtual bool canThrottle() const                                // slot 2 (00565950)
 		{
-			walkToPart = shared_from(value);
-			raisePropertyChanged(propWalkToPart);
-		}
-
-		walkMode = (walkMode == HAS_POINT) ? CLICK_TO_MOVE : HAS_PART;
-		walkTimer = (walkMode == CLICK_TO_MOVE) ? 240 : 0;
-	}
-
-	void Humanoid::setLeftLeg(PartInstance* value)
-	{
-		if (leftLeg.get() != value)
-		{
-			leftLeg = shared_from(value);
-			raisePropertyChanged(propLeftLeg);
-		}
-	}
-
-	void Humanoid::setRightLeg(PartInstance* value)
-	{
-		if (rightLeg.get() != value)
-		{
-			rightLeg = shared_from(value);
-			raisePropertyChanged(propRightLeg);
-		}
-	}
-
-	void Humanoid::setTorso(PartInstance* value)
-	{
-		if (torso.get() != value)
-		{
-			torso = shared_from(value);
-			raisePropertyChanged(propTorso);
-		}
-	}
-
-	ContactManager* Humanoid::getContactManager()
-	{
-		return world ? &world->getContactManager() : NULL;
-	}
-
-	void Humanoid::moveTo2(G3D::Vector3 worldPosition, boost::shared_ptr<Instance> part)
-	{
-		PartInstance* p = dynamic_cast<PartInstance*>(part.get());
-		if (!p)
-			throw std::runtime_error("Argument error: A Part is required");
-
-		moveTo(worldPosition, p);
-	}
-
-	const G3D::CoordinateFrame Humanoid::getLocation() const
-	{
-		return getHead() ? getHead()->getCoordinateFrame() : G3D::CoordinateFrame();
-	}
-
-	void Humanoid::moveTo(const G3D::Vector3& worldPosition, PartInstance* part)
-	{
-		if (part)
-		{
-			G3D::Vector3 local = part->getCoordinateFrame().pointToObjectSpace(worldPosition);
-
-			walkToPoint = local + G3D::Vector3::unitX();
-			walkToPart.reset();
-			setWalkToPart(part);
-			setWalkToPoint(local);
-		}
-	}
-
-	void Humanoid::setTargetPoint(const G3D::Vector3& value)
-	{
-		float tolerance = 1.0f;
-		if (getTorso())
-		{
-			float distance = Math::taxiCabMagnitude(getTorso()->getCoordinateFrame().translation - value);
-			tolerance = std::max(2.0f, distance) * 0.01f;
-		}
-
-		if (Math::taxiCabMagnitude(value - targetPoint) > tolerance)
-		{
-			targetPoint = value;
-			raisePropertyChanged(propTargetPoint);
-		}
-	}
-
-	bool Humanoid::hasWalkToPoint(G3D::Vector3& worldPosition) const
-	{
-		if (walkToPart && Workspace::findWorkspace(this) && Workspace::contextInWorkspace(walkToPart.get()))
-		{
-			worldPosition = walkToPart->getCoordinateFrame().pointToWorldSpace(walkToPoint);
 			return true;
 		}
-		else
+		virtual bool getBroken()                                        // slot 3 (0060a2f0)
 		{
 			return false;
 		}
-	}
-
-	PartInstance* Humanoid::getHeadFromCharacter(const ModelInstance* character)
-	{
-		return character ? dynamic_cast<PartInstance*>(character->findFirstChildByName("Head")) : NULL;
-	}
-
-	JointInstance* Humanoid::findRightShoulder() const
-	{
-		PartInstance* torso = getTorso();
-		return torso ? rbx_static_cast<JointInstance*>(torso->findFirstChildByName("Right Shoulder")) : NULL;
-	}
-
-	boost::shared_ptr<AutoJoint> newJoint(bool animated)
-	{
-		if (animated)
+		virtual Body* getBody(int i) = 0;                               // slot 4 (analog name)
+		virtual float potentialEnergy()                                 // slot 5 (005e72c0)
 		{
-			boost::shared_ptr<Motor> m = Creatable<Instance>::create<Motor>();
-			m->setMaxVelocity(0.1f);
-			return m;
+			return 0;
+		}
+	};
+}
+#define NATIVE_HUMANOID_UNIT_CONNECTOR
+#include "humanoid/Humanoid2008.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/Tool.h"
+#include "v8world/Joints2008.h"
+#include "util/Math.h"
+#include "Network/Players.h"        // findLocalCharacter 0049aca0 (render3dAdorn 005d9c30)
+#include "v8datamodel/Workspace.h"  // native (read only): findWorkspace 005a3380 (render3dAdorn 005d9c30)
+#include <boost/bind.hpp>
+#include <vector>
+
+namespace RBX
+{
+	// 0045c600: defined in AppUnit454_2008WndServices.cpp (INFERRED name; registry placeholder func_0045c600).
+	void setCharacterRenderImportance(Instance* instance);
+
+	void Humanoid::render3dAdorn(Adorn* adorn)
+	{
+		if (walkMode == CLICK_TO_MOVE)
+		{
+			const Instance* localCharacter = Network::Players::findLocalCharacter(this);
+			const ModelInstance* model = localCharacter ? dynamic_cast<const ModelInstance*>(localCharacter) : NULL;
+			Humanoid* localHumanoid = model ? model->findModifierOfType<Humanoid>() : NULL;
+
+			if (this == localHumanoid && Workspace::findWorkspace(this))
+			{
+				G3D::Vector3 worldPosition;
+				if (hasWalkToPoint(worldPosition))
+				{
+					PartInstance* head = getHead();
+					if (head && head->getAlphaModifier() != 0.0f)
+						renderWaypoint(adorn, worldPosition);
+				}
+
+				if (ModelInstance* character = getCharacterFromHumanoid(this))
+					character->for_eachChild(&setCharacterRenderImportance);
+			}
+		}
+
+		if (currentState.get())
+			currentState->render3dAdorn(adorn);
+	}
+
+	Body* Humanoid::getBody(int i)
+	{
+		if (i == 0)
+		{
+			PartInstance* part = getTorso();
+			Body* body = part ? part->getPrimitive()->getBody() : NULL;
+			if (body)
+				return body->getRoot();
+		}
+
+		return NULL;
+	}
+
+	Primitive* Humanoid::getTorsoPrimitive() const
+	{
+		PartInstance* part = getTorso();
+		return part ? part->getPrimitive() : NULL;
+	}
+
+	Primitive* Humanoid::getLeftLegPrimitive() const
+	{
+		PartInstance* part = getLeftLeg();
+		return part ? part->getPrimitive() : NULL;
+	}
+
+	Primitive* Humanoid::getRightLegPrimitive() const
+	{
+		PartInstance* part = getRightLeg();
+		return part ? part->getPrimitive() : NULL;
+	}
+
+	Primitive* Humanoid::getHeadPrimitive() const
+	{
+		PartInstance* part = getHead();
+		return part ? part->getPrimitive() : NULL;
+	}
+
+	Primitive* Humanoid::getLeftArmPrimitive() const
+	{
+		PartInstance* part = getLeftArm();
+		return part ? part->getPrimitive() : NULL;
+	}
+
+	Primitive* Humanoid::getRightArmPrimitive() const
+	{
+		PartInstance* part = getRightArm();
+		return part ? part->getPrimitive() : NULL;
+	}
+
+	Body* Humanoid::getTorsoBody()
+	{
+		PartInstance* part = getTorso();
+		return part ? part->getPrimitive()->getBody() : NULL;
+	}
+
+	Body* Humanoid::getRootBody()
+	{
+		Body* body = getTorsoBody();
+		return body ? body->getRoot() : NULL;
+	}
+
+	float Humanoid::getTorsoHeading() const
+	{
+		if (Primitive* primitive = getTorsoPrimitive())
+		{
+			return Math::getHeading(primitive->getCoordinateFrame().lookVector());
 		}
 		else
 		{
-			boost::shared_ptr<Snap> s = Creatable<Instance>::create<Snap>();
-			return s;
+			return 0.0f;
+		}
+	}
+
+	void Humanoid::checkForJointDeath()
+	{
+		if (Primitive* headPrimitive = getHeadPrimitive())
+		{
+			if (Primitive* torsoPrimitive = getTorsoPrimitive())
+			{
+				for (Joint* current = headPrimitive->getFirstJoint(); current != NULL; current = headPrimitive->getNextJoint(current))
+				{
+					if (current->otherPrimitive(headPrimitive) == torsoPrimitive)
+					{
+						hadHeadJoint = true;
+						return;
+					}
+				}
+			}
+		}
+
+		if (hadHeadJoint)
+		{
+			setHealth(0.0f);
+		}
+	}
+
+	void Humanoid::onEvent(const RunService* source, Stepped event)
+	{
+		if (world)
+		{
+			if (ModelInstance* character = dynamic_cast<ModelInstance*>(getParent()))
+				HUMAN::HumanoidState::stepState(currentState, event.step, character->getTopPVController());
+
+			if (getTorsoPrimitive())
+				getTorsoPrimitive()->setCanCollide(false);
+
+			checkForJointDeath();
+
+			if (walkTimer > 0)
+			{
+				if (--walkTimer == 0)
+					walkMode = DIRECTION_MOVE;
+			}
+		}
+	}
+
+	void collectAllDescendantCharacterPrims(boost::shared_ptr<Instance> descendent, std::vector<Primitive*>& primitives)
+	{
+		if (PartInstance* part = dynamic_cast<PartInstance*>(descendent.get()))
+			primitives.push_back(part->getPrimitive());
+	}
+
+	void Humanoid::tellCameraNear(float distance)
+	{
+		std::vector<Primitive*> primitives;
+		Humanoid* humanoid = this;
+		ModelInstance* character = NULL;
+		if (humanoid)
+			character = dynamic_cast<ModelInstance*>(humanoid->getParent());
+		if (character)
+			character->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref(primitives)));
+
+		float alphaModifier = 1.0f;
+		if (distance < 3.0f)
+		{
+			alphaModifier = 0.0f;
+		}
+		else if (distance < 6.0f)
+		{
+			alphaModifier = 0.5f;
+		}
+
+		for (size_t i = 0; i < primitives.size(); i++)
+		{
+			PartInstance* part = PartInstance::fromPrimitive(primitives[i]);
+
+			if (!dynamic_cast<Tool*>(part->getParent()))
+				part->setAlphaModifier(alphaModifier);
+		}
+	}
+
+	void Humanoid::cameraSetWalkOrientation(float rad, bool noAdjust)
+	{
+		if (noAdjust)
+		{
+			setWalkRotationalVelocity(0.0f);
+		}
+		else
+		{
+			PartInstance* torso = getTorso();
+			Body* body = (torso) ? torso->getPrimitive()->getBody() : NULL;
+
+			if (body)
+			{
+				if (Body* root = body->getRoot())
+				{
+					G3D::Vector3 look = root->getPV().position.lookVector();
+					look.y = 0.0f;
+
+					look.unitize();
+
+					float lookAng = Math::radWrap(Math::angleToE0(G3D::Vector2(look.z, look.x)));
+					float value = Math::radWrap(Math::radWrap(rad) - lookAng);
+
+					if (fabs(value) < 0.1f)
+						value = 0.0f;
+
+					setWalkRotationalVelocity(value);
+				}
+			}
 		}
 	}
 }
-
-template class boost::shared_ptr<RBX::AutoJoint>;

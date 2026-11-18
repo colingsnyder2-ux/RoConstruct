@@ -76,159 +76,174 @@ int CObjectBrowser::OnCreate(LPCREATESTRUCT cs)
     return 0;
 }
 
-#include "COutputView.h"
-#include <atlenc.h>
-#include <time.h>
+#include "CClassTreeView.h"
+#include "reflection/object.h"
+#include "reflection/enumconverter.h"
+#include "reflection/Metadata.h"
+#include "AuthoringSettings.h"
+#include <boost/bind.hpp>
+#include <boost/ref.hpp>
 
-#define WM_STANDARD_OUT_MESSAGE (WM_USER + 0x65)
+IMPLEMENT_DYNCREATE(CMemberTreeView, CXTTreeView)
 
-IMPLEMENT_DYNAMIC(COutputView, CSecureHtmlView)
-
-COutputView::COutputView()
-{
-}
-
-void COutputView::OnInitialUpdate()
-{
-    CSecureHtmlView::OnInitialUpdate();
-    LoadFromResource(134);
-}
-
-void COutputView::OnDocumentComplete(LPCTSTR)
-{
-    document = GetHtmlDocument();
-    if (document) {
-        CComPtr<IHTMLElementCollection> all;
-        document->get_all(&all);
-        CComPtr<IDispatch> item;
-        all->item(CComVariant("output"), CComVariant(), &item);
-        output = item;
-    } else {
-        output.Release();
-    }
-}
-
-void COutputView::appendElement(IHTMLElement* element)
-{
-    CComQIPtr<IHTMLDOMNode> node(element);
-    CComPtr<IHTMLDOMNode> appended;
-    if (output->appendChild(node, &appended) == S_OK) {
-        element->scrollIntoView(CComVariant((short)0));
-        nodes.push_back(node);
-        if (nodes.size() > 250) {
-            CComPtr<IHTMLDOMNode> removed;
-            output->removeChild(nodes.front(), &removed);
-            nodes.pop_front();
-        }
-    }
-}
-
-IMPLEMENT_DYNCREATE(CStandardOutputView, COutputView)
-
-BEGIN_MESSAGE_MAP(CStandardOutputView, COutputView)
-    ON_MESSAGE(WM_STANDARD_OUT_MESSAGE, OnStandardOutMessage)
+BEGIN_MESSAGE_MAP(CMemberTreeView, CXTTreeView)
+    ON_WM_CREATE()
+    ON_NOTIFY_REFLECT(TVN_SELCHANGED, OnSelChanged)
 END_MESSAGE_MAP()
 
-CStandardOutputView::CStandardOutputView()
+CMemberTreeView::CMemberTreeView()
+    : showInherited(true), current(NULL)
 {
-    flag_f4 = true;
-    boost::mutex::scoped_lock lock(RBX::StandardOut::singleton()->sync);
-    RBX::Notifier<RBX::StandardOut, RBX::StandardOutMessage>::connect(RBX::StandardOut::singleton(), this);
 }
 
-CStandardOutputView::~CStandardOutputView()
+CMemberTreeView::~CMemberTreeView()
 {
-    boost::mutex::scoped_lock lock(RBX::StandardOut::singleton()->sync);
-    RBX::Notifier<RBX::StandardOut, RBX::StandardOutMessage>::disconnect(RBX::StandardOut::singleton(), this);
 }
 
-void CStandardOutputView::onEvent(const RBX::StandardOut*, RBX::StandardOutMessage message)
+void CMemberTreeView::OnInitialUpdate()
 {
-    boost::mutex::scoped_lock lock(messagesLock);
-    if (messages.empty())
-        ::PostMessage(m_hWnd, WM_STANDARD_OUT_MESSAGE, 0, 0);
-    messages.push_back(message);
-    if (messages.size() > 250)
-        messages.pop_front();
+    CXTTreeView::OnInitialUpdate();
 }
 
-void CStandardOutputView::appendMessage(RBX::MessageType type, const char* message, __time64_t time)
+static BOOL createImageList(CImageList& list, UINT id)
 {
-    CStringW text(message);
-    CStringW escaped;
-    int length = ATL::EscapeXML(text, text.GetLength(), NULL, 0);
-    ATL::EscapeXML(text, text.GetLength(), escaped.GetBufferSetLength(length), length);
-    escaped.ReleaseBuffer();
-
-    CStringW html;
-    if (type != RBX::MESSAGE_OUTPUT && time != 0) {
-        char buffer[32];
-        _ctime64_s(buffer, 32, &time);
-        html = buffer;
-        html += " - ";
-    }
-    switch (type) {
-    case RBX::MESSAGE_INFO:
-        html += "<FONT color=\"blue\">";
-        html += escaped;
-        html += "</FONT>";
-        break;
-    case RBX::MESSAGE_WARNING:
-        html += "<STRONG><FONT color=\"orange\">";
-        html += escaped;
-        html += "</FONT>";
-        break;
-    case RBX::MESSAGE_ERROR:
-        html += "<STRONG><FONT color=\"red\">";
-        html += escaped;
-        html += "</FONT>";
-        break;
-    case RBX::MESSAGE_OUTPUT:
-        html += escaped;
-        break;
-    }
-
-    CComPtr<IHTMLElement> element;
-    if (document) {
-        document->createElement(CComBSTR("DIV"), &element);
-        element->put_innerHTML(CComBSTR(html));
-        appendElement(element);
-    }
+    if (!list.Create(16, 16, ILC_COLOR24 | ILC_MASK, 0, 1))
+        return FALSE;
+    CBitmap bitmap;
+    bitmap.Attach(::LoadBitmap(AfxFindResourceHandle(MAKEINTRESOURCE(id), RT_BITMAP), MAKEINTRESOURCE(id)));
+    list.Add(&bitmap, CXTPImageManager::GetBitmapMaskColor(bitmap, CPoint(0, 0)));
+    return TRUE;
 }
 
-LRESULT CStandardOutputView::OnStandardOutMessage(WPARAM, LPARAM)
+int CMemberTreeView::OnCreate(LPCREATESTRUCT cs)
 {
-    for (;;) {
-        std::string text;
-        RBX::MessageType type;
-        __time64_t time;
-        {
-            boost::mutex::scoped_lock lock(messagesLock);
-            if (messages.empty())
-                break;
-            if (messages.size() > 250) {
-                messages.pop_front();
-                continue;
-            }
-            type = messages.front().type;
-            text = messages.front().message;
-            time = messages.front().time;
-            messages.pop_front();
-        }
-        appendMessage(type, text.c_str(), time);
-    }
+    if (CXTTreeView::OnCreate(cs) == -1)
+        return -1;
+    if (!createImageList(images, 0xc4))
+        return -1;
+    GetTreeCtrl().SetImageList(&images, TVSIL_NORMAL);
     return 0;
 }
 
-template class ATL::CComPtrBase<IDispatch>;
-template class ATL::CComPtrBase<IHTMLDOMNode>;
-template class ATL::CComPtrBase<IHTMLDocument2>;
-template class ATL::CComPtrBase<IHTMLElement>;
-template class ATL::CComPtrBase<IHTMLElementCollection>;
-template class RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage>;
-template class std::_Deque_const_iterator<ATL::CComPtr<IHTMLDOMNode>,std::allocator<ATL::CComPtr<IHTMLDOMNode> >,1>;
-template class std::_Deque_const_iterator<RBX::StandardOutMessage,std::allocator<RBX::StandardOutMessage>,1>;
-template class std::_Deque_iterator<RBX::StandardOutMessage,std::allocator<RBX::StandardOutMessage>,1>;
-template class std::_Vector_const_iterator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *,std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;
-template class std::_Vector_iterator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *,std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;
-template class std::vector<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *,std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;
+void CMemberTreeView::OnSelChanged(NMHDR* nm, LRESULT* result)
+{
+    if (declarationView)
+        declarationView->showDescriptor(
+            reinterpret_cast<const RBX::Reflection::Descriptor*>(reinterpret_cast<NMTREEVIEW*>(nm)->itemNew.lParam));
+    *result = 0;
+}
+
+void CMemberTreeView::addEnumItem(const RBX::Reflection::Descriptor* item)
+{
+    HTREEITEM handle = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, item->name.c_str(), 10, 10, 0, 0, 0, TVI_ROOT, TVI_LAST);
+    GetTreeCtrl().SetItem(handle, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)item);
+}
+
+void CMemberTreeView::showEnum(const RBX::Reflection::EnumDescriptor* descriptor)
+{
+    GetTreeCtrl().DeleteAllItems();
+    current = descriptor;
+    boost::recursive_mutex::scoped_lock lock(RBX::Reflection::sync());
+    std::for_each(descriptor->begin(), descriptor->end(), boost::bind(&CMemberTreeView::addEnumItem, this, _1));
+    TVSORTCB sort;
+    sort.hParent = TVI_ROOT;
+    sort.lpfnCompare = CClassTreeView::compareItems;
+    GetTreeCtrl().SortChildrenCB(&sort);
+}
+
+void CMemberTreeView::addProperty(const RBX::Reflection::PropertyDescriptor* descriptor)
+{
+    if (!showInherited && &descriptor->owner != current)
+        return;
+    RBX::Reflection::Metadata::Member* metadata = RBX::Metadata::Reflection::singleton()->lookup(*descriptor);
+    if (metadata) {
+        AuthoringSettings& settings = AuthoringSettings::singleton();
+        if (metadata->unknown_131 && !settings.showDepricatedObjects)
+            return;
+        if (metadata->unknown_132 && !settings.showPreliminaryObjects)
+            return;
+        if (!metadata->unknown_130)
+            return;
+    }
+    if (!descriptor->isPublic())
+        return;
+    HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, descriptor->name.c_str(), 6, 6, 0, 0, 0, TVI_ROOT, TVI_LAST);
+    GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);
+    setItemStyle(item, metadata);
+}
+
+void CMemberTreeView::addSignal(const RBX::Reflection::SignalDescriptor* descriptor)
+{
+    if (!showInherited && &descriptor->owner != current)
+        return;
+    RBX::Reflection::Metadata::Member* metadata = RBX::Metadata::Reflection::singleton()->lookup(*descriptor);
+    if (metadata) {
+        AuthoringSettings& settings = AuthoringSettings::singleton();
+        if (metadata->unknown_131 && !settings.showDepricatedObjects)
+            return;
+        if (metadata->unknown_132 && !settings.showPreliminaryObjects)
+            return;
+        if (!metadata->unknown_130)
+            return;
+    }
+    HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, descriptor->name.c_str(), 8, 8, 0, 0, 0, TVI_ROOT, TVI_LAST);
+    GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);
+    setItemStyle(item, metadata);
+}
+
+static void appendArgument(int& count, std::string& text, const RBX::Reflection::SignatureDescriptor::Item& argument)
+{
+    if (count > 0)
+        text += ", ";
+    text += argument.name->c_str();
+    ++count;
+}
+
+void CMemberTreeView::addFunction(const RBX::Reflection::FunctionDescriptor* descriptor)
+{
+    if (!showInherited && &descriptor->owner != current)
+        return;
+    RBX::Reflection::Metadata::Member* metadata = RBX::Metadata::Reflection::singleton()->lookup(*descriptor);
+    if (metadata) {
+        AuthoringSettings& settings = AuthoringSettings::singleton();
+        if (metadata->unknown_131 && !settings.showDepricatedObjects)
+            return;
+        if (metadata->unknown_132 && !settings.showPreliminaryObjects)
+            return;
+        if (!metadata->unknown_130)
+            return;
+    }
+    std::string text(descriptor->name.toString());
+    text += "(";
+    int count = 0;
+    std::for_each(descriptor->getSignature().arguments.begin(), descriptor->getSignature().arguments.end(), boost::bind(&appendArgument, boost::ref(count), boost::ref(text), _1));
+    text += ")";
+    int image = (descriptor->security != RBX::Reflection::FunctionDescriptor::NeedTrustedCaller) + 4;
+    LPCTSTR label = text.c_str();
+    HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, label, image, image, 0, 0, 0, TVI_ROOT, TVI_LAST);
+    GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);
+    setItemStyle(item, metadata);
+}
+
+void CMemberTreeView::showClass(const RBX::Reflection::ClassDescriptor* descriptor)
+{
+    using namespace RBX::Reflection;
+    GetTreeCtrl().DeleteAllItems();
+    current = descriptor;
+    boost::recursive_mutex::scoped_lock lock(sync());
+    std::for_each(descriptor->MemberDescriptorContainer<PropertyDescriptor>::descriptors_begin(),
+                  descriptor->MemberDescriptorContainer<PropertyDescriptor>::descriptors_end(),
+                  boost::bind(&CMemberTreeView::addProperty, this, _1));
+    std::for_each(descriptor->MemberDescriptorContainer<FunctionDescriptor>::descriptors_begin(),
+                  descriptor->MemberDescriptorContainer<FunctionDescriptor>::descriptors_end(),
+                  boost::bind(&CMemberTreeView::addFunction, this, _1));
+    std::for_each(descriptor->MemberDescriptorContainer<SignalDescriptor>::descriptors_begin(),
+                  descriptor->MemberDescriptorContainer<SignalDescriptor>::descriptors_end(),
+                  boost::bind(&CMemberTreeView::addSignal, this, _1));
+    TVSORTCB sort;
+    sort.hParent = TVI_ROOT;
+    sort.lpfnCompare = CClassTreeView::compareItems;
+    GetTreeCtrl().SortChildrenCB(&sort);
+}
+
+template class boost::_bi::value<CMemberTreeView *>;

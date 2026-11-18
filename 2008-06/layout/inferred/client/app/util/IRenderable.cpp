@@ -1,4 +1,5 @@
 #include "v8world/SpatialHash.h"
+
 void RBX::SpatialHash::doStats() const {}
 
 #undef _RELEASEASSERT

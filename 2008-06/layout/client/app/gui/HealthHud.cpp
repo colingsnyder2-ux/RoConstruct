@@ -1,5 +1,3 @@
-// 2008-06 native RBX::HealthHud unit (inactive): 00656490..00656940.
-// Layout and addresses in native-headers/gui/HealthHud.h; verified by tests/record_native_widget.py.
 #include "gui/HealthHud.h"
 #include "v8datamodel/Visit.h"
 #include "humanoid/Humanoid2008.h"
@@ -12,7 +10,6 @@ namespace RBX
 		setGuiSize(G3D::Vector2(10.0f, 100.0f));
 	}
 
-	// 00656690
 	void HealthHud::render2d(Adorn* adorn)
 	{
 		G3D::Rect2D viewport = adorn->getViewport();
@@ -46,4 +43,3 @@ namespace RBX
 		}
 	}
 }
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast

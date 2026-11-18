@@ -1,73 +1,6 @@
-#include <sstream>
-#include "RenderLib/TextureProxy2008.h"
-
-namespace RBX
-{
-	namespace RenderNew
-	{
-		G3D::Vector2 TextureProxy::getSize()
-		{
-			G3D::Vector2 out;
-			if (!ogreTexture.isNull())
-			{
-				out.x = ogreTexture->getWidth();
-				out.y = ogreTexture->getHeight();
-			}
-			else
-			{
-				out.y = 0.0f;
-				out.x = 0.0f;
-			}
-			return out;
-		}
-
-		std::string stringify(double x)
-		{
-			std::ostringstream o;
-			if (!(o << x))
-				throw BadConversion("stringify(double)");
-			return o.str();
-		}
-
-		TextureProxy::TextureProxy(const std::string& name)
-			: loaded(false)
-		{
-			filename = name;
-		}
-
-		TextureProxy::TextureProxy(G3D::ReferenceCountedPointer<TextureProxy> root)
-			: loaded(false),
-			  textureManager(NULL),
-			  root(root)
-		{
-			this->filename = "";
-		}
-
-		TextureProxyBaseRef TextureProxy::shade(const G3D::Color3& color, const TextureProxyBaseRef& base)
-		{
-			TextureProxy* baseTex = dynamic_cast<TextureProxy*>(base.getPointer());
-			TextureProxy* newTex = new TextureProxy(baseTex);
-			newTex->textureManager = textureManager;
-			newTex->root = baseTex;
-			newTex->shadeColor = color;
-			newTex->shadeTexture = this;
-			return newTex;
-		}
-
-		TextureProxy::~TextureProxy()
-		{
-		}
-
-		MegaTextureProxy::MegaTextureProxy(G3D::TextureManager& textureManager, const std::string& filename)
-			: TextureProxy(textureManager, filename, false),
-			  scalar(0.0f)
-		{
-		}
-	}
-}
-
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
+#include "RenderLib/TextureProxy2008.h"
 #include "OgreRbx/VisualEngine2008.h"
 #include <G3D/GImage.h>
 #include <OgreImage.h>
@@ -81,11 +14,13 @@ namespace RBX
 #include <vector>
 #include <cstdio>
 #include <cstring>
+
 // INFERRED: helper names/signatures from server-exact resolve analog; require original reference proof.
 #define NDEBUG 1
 #include <assert.h>
 #include <windows.h>
 #include <GL/gl.h>
+
 static void halve1Dimage_ubyte(GLint components, GLuint width, GLuint height,
 			       const GLubyte *dataIn, GLubyte *dataOut,
 			       GLint element_size, GLint ysize,
@@ -330,3 +265,61 @@ G3D::TextureRef TextureProxy::resolve(G3D::RenderDevice* rd) {
     return texture;
 }
 } }
+
+namespace RBX
+{
+	namespace Render
+	{
+		TextureProxy::TextureProxy(G3D::ReferenceCountedPointer<TextureProxy> root)
+			: loaded(false),
+			  textureManager(NULL),
+			  root(root)
+		{
+			this->filename = "";
+		}
+
+		TextureProxyBaseRef TextureProxy::shade(const G3D::Color3& color, const TextureProxyBaseRef& base)
+		{
+			TextureProxy* baseTex = dynamic_cast<TextureProxy*>(base.getPointer());
+			TextureProxy* newTex = new TextureProxy(baseTex);
+			newTex->textureManager = textureManager;
+			newTex->root = baseTex;
+			newTex->shadeColor = color;
+			newTex->shadeTexture = this;
+			return newTex;
+		}
+
+		G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::getIfResolved() const
+		{
+			return texture;
+		}
+
+		G3D::ReferenceCountedPointer<TextureProxy> TextureProxy::alphaOnlyVersion()
+		{
+			return new TextureProxy(this);
+		}
+
+		G3D::Vector2 TextureProxy::getSize()
+		{
+			G3D::ReferenceCountedPointer<G3D::Texture> t = getIfResolved();
+			G3D::Vector2 out;
+			if (t.notNull())
+			{
+				out.x = t->texelWidth();
+				out.y = t->texelHeight();
+			}
+			else
+			{
+				out.y = 0.0f;
+				out.x = 0.0f;
+			}
+			return out;
+		}
+
+		MegaTextureProxy::MegaTextureProxy(G3D::TextureManager& textureManager, const std::string& filename)
+			: TextureProxy(textureManager, filename, false),
+			  scalar(0.0f)
+		{
+		}
+	}
+}
