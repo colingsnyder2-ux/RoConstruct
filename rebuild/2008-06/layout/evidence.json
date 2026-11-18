@@ -13,119 +13,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/app/reflection/signal.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit568Signal.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-     "// 2008-06 native rows of the reflection/signal.cpp translation unit 0056a590..0056bd8f of the application range",
-     "// 00568000..0056c000 (inactive). Verified by tests/record_native_app_unit568.py; the unit map is in its receipt.",
-     "//",
-     "// The unit defines the SignalDescriptor / Signal / SignalSource members (evidence names):",
-     "//   SignalDescriptor(ClassDescriptor&, const char*) 0056bab0 (MemberDescriptor 0056b480 with category \"Signals\"",
-     "//   0082f624, SignatureDescriptor() 00594bf0, MemberDescriptorContainer<SignalDescriptor>::declare 0056b700 on the",
-     "//   container at ClassDescriptor+0x3c), findSignalInstance 0056b620, getSignalInstance 0056bb20,",
-     "//   Signal::getSignalInstance 0056bd10, ~SignalSource 0056bd40 and disconnect_all_slots 0056bd60.",
-     "// It is also the first unit to emit the header-inline MemberDescriptor(ClassDescriptor&, const char*, const char*)",
-     "// 0056b480 and MemberDescriptorContainer<SignalDescriptor>::compare 0056b500 (identical-code folded: the same body",
-     "// is pushed by the property / class containers 0056c1cc, 0057004c, 005709fa). The boost::signals named_slot_map /",
-     "// signal_base instances 0056a590..0056b480 are library code and are not recovered.",
-     "// Headers are read-only here (reflection/signal.h, reflection/object.h)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/reflection/reflection_object.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit570_2008Reflection.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
-     "// Inactive 2008-06 native recovery: the reflection_object unit of the application range 00570000..0057c000.",
-     "// Rows (verified by tests/record_native_app_unit570_2008.py):",
-     "//   MemberDescriptorContainer<Property/Signal/FunctionDescriptor>::mergeMembers 005703a0 / 00570440 / 005704e0 and",
-     "//   their constructors 00570580 / 00570660 / 00570740 (the member.h templates, first instantiated by this unit),",
-     "//   ClassDescriptor() 00570820 (\"<<<ROOT>>>\", base +0xbc = NULL), ClassDescriptor::`scalar deleting destructor'",
-     "//   005708d0 (~ClassDescriptor 0040abc0), MemberDescriptor::isMemberOf(const ClassDescriptor&) 00570ba0 (owner +0xc,",
-     "//   base +0xbc, inline rootDescriptor() static 0096c3a0) and isMemberOf(const DescribedBase*) 00570c40 (descriptor +8).",
-     "// ClassDescriptor and DescribedBase are the donor reflection/object.h declarations (read-only); MemberDescriptor and",
-     "// MemberDescriptorContainer are the native reflection/member.h ones (read-only)."
-    ]
-   },
-   {
-    "line": 50,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8datamodel/Visit.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit5BC_2008Visit.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
-     "// 2008-06 native RBX::Visit unit rows (v8datamodel/Visit.cpp, 005c4400..005c52ff of the application range",
-     "// 005bc000..005c8000), inactive. Verified by tests/record_native_app_unit5bc_2008.py against the committed read-only",
-     "// native v8datamodel/Visit.h (sizeof 0x150: uploadUrl +0x130, pingThread +0x14c, read from the constructor 005c5220,",
-     "// the destructor 005c4790 and setPing 005c4bb0).",
-     "// Evidence:",
-     "//   * dynamic initializers 007f5ba0 (SetUploadUrl, \"url\"), 007f5bd0 (GetUploadUrl) and the SetPing descriptor",
-     "//     (\"pingUrl\", \"interval\"), BoundFuncDesc vtables 00838ed0 / 00838edc / 00838ee8;",
-     "//   * Visit() 005c5220: DescribedCreatable<Visit>() 005c4d10, uploadUrl(\"NoVisit\") (literal 00817f00), pingThread = 0,",
-     "//     setName(\"Visit\");",
-     "//   * setPing 005c4bb0: url != \"\" (operator!= import 008023cc), new worker_thread(boost::bind(&Visit::ping, url, interval),",
-     "//     \"rbx_visit\") (0x14 bytes, ctor 005971d0), else pingThread.reset()."
-    ]
-   },
-   {
-    "line": 69,
-    "text": [
-     "// 005c4692: the 2008 handler is an empty catch(...) that resumes at 005c464b (no failure message)"
-    ]
-   },
-   {
-    "line": 83,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/util/Quaternion.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::Quaternion rows of the util/Quaternion.cpp unit 005dd550..005dd77f inside the application range",
-     "// 005dc000..005e8000 (inactive). Declarations: the donor util/Quaternion.h (read-only; no native header declares",
-     "// RBX::Quaternion). Layout: four floats x, y, z, w (0x10): operator= 005dd550 copies +0xc, +0x0, +0x4, +0x8 in that",
-     "// order (w, x, y, z), the Matrix3 constructor 005dd570 and toRotationMatrix 005dd6d0 read / write only those four.",
-     "// The unit holds only these three bodies, in this order; built with /fp:fast. Verified by",
-     "// tests/record_native_app_unit5dc_2008.py.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/v8world/Mechanism.cpp": {
   "source": "rebuild/2008-06/native-classes/AppUnit5E4Mechanism.cpp",
   "build": {
@@ -146,115 +33,6 @@
     "line": 13,
     "text": [
      "// 005e50c0"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8world/MotorJoint.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit5E4MotorJoint.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-     "// 2008-06 v8world/MotorJoint.cpp row MotorJoint::isAligned 005e5d00 (vtable 0083f764 slot 9; inactive native unit),",
-     "// against the native v8world/Joints2008.h and v8world/Primitive2008.h (read-only; both now build on the native 2008",
-     "// Edge / IPipelined2008.h, so no donor-IPipelined switch). /fp:fast. The other MotorJoint rows are in",
-     "// native-classes/WorldJointMotor.cpp (world-joints owner). Verified by tests/record_native_app_unit5e4.py."
-    ]
-   },
-   {
-    "line": 15,
-    "text": [
-     "// 005e5d00: Primitive::getCoordinateFrame 005e82c0 of prim0 (+0xc) / prim1 (+0x10) times jointCoord0 (+0x28) /",
-     "// jointCoord1 (+0x58) (CoordinateFrame::operator* 00476700), Math::fuzzyEq(Vector3, Vector3, float) 005de1d0 on the",
-     "// translations, then on Matrix3::getColumn(2) 00513240; tolerance 1e-5 (0082b3b0)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8world/World.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp",
-  "build": {
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world",
-     "// 2008-06 native RBX::World rows of the World.cpp unit 005e9150..005eaeef (inactive), application range",
-     "// 005e8000..005f4000. Built against Colin's native-headers/engine-world/v8world/World.h and ContactManager.h (read-only;",
-     "// the recorder puts native-headers/engine-world first, as record_native_geometry_service.py does) and the native",
-     "// v8world/JointStage2008.h. Layout evidence used by these bodies (World() 005ea920): four Notifier bases at +0x0 /",
-     "// +0x20 / +0x40 / +0x60 (vtables 0083f8d8 / 0083f8c8 / 0083f8b8 / 0083f8a8), contactManager +0x84 (new 0x14,",
-     "// ContactManager(World*) 0060d260), first stage +0x88 (new 0x10, CleanStage(NULL, this) 0064a310), touch +0x8c,",
-     "// touchOther +0x98, inJointNotification +0xa5, primitives +0xac (size +0xb0). Members past +0xb8 (numJoints +0xe4,",
-     "// numContacts +0xe8, numLinkCalls +0xec) are off by 0xc in the header (see the recorder's PROPOSALS) and are not used.",
-     "// Verified by tests/record_native_app_unit5e8_2008.py."
-    ]
-   },
-   {
-    "line": 60,
-    "text": [
-     "// Not exact (recorded with the reason): the 2008 SpatialHash / Assembly::PrimIterator differ from the donor."
-    ]
-   },
-   {
-    "line": 123,
-    "text": [
-     "// World +0x88 is a CleanStage under the kernel-stages opt-in (first native-flags include; 2008 StageType numbering)."
-    ]
-   },
-   {
-    "line": 129,
-    "text": [
-     "// 005e9240: mov ecx, [ecx+0x88]; jmp CleanStage::onJointPrimitiveNulling 0064a420"
-    ]
-   },
-   {
-    "line": 135,
-    "text": [
-     "// 005e9250: tail call of CleanStage::onJointPrimitiveSet 0064a460"
-    ]
-   },
-   {
-    "line": 141,
-    "text": [
-     "// 005e93b0: IStage::findStage walk (getStageType slot 1) for SIMJOB_STAGE 6"
-    ]
-   },
-   {
-    "line": 147,
-    "text": [
-     "// 005e93e0: IStage::findStage walk for SLEEP_STAGE 5"
-    ]
-   },
-   {
-    "line": 153,
-    "text": [
-     "// 005e9460: findStage(CLUMP_STAGE 2) walk, then ClumpStage 0064cda0 (donor World.cpp order: onPrimitiveCanSleepChanged)"
-    ]
-   },
-   {
-    "line": 159,
-    "text": [
-     "// 005e94a0: findStage(CLUMP_STAGE 2) walk, then ClumpStage::onPrimitiveAddedAnchor 0064cc40"
-    ]
-   },
-   {
-    "line": 165,
-    "text": [
-     "// 005e94e0: findStage(CLUMP_STAGE 2) walk, then ClumpStage 0064ccf0 (anchor removal)"
-    ]
-   },
-   {
-    "line": 171,
-    "text": [
-     "// 005e9520: findStage(CLUMP_STAGE 2) walk, then tail call of ClumpStage 0064cad0 (no argument: process)"
     ]
    }
   ]
@@ -474,191 +252,6 @@
     "line": 82,
     "text": [
      "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8datamodel/Backpack.cpp": {
-  "source": "rebuild/2008-06/native-classes/Backpack.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
-     "// 2008-06 native RBX::Backpack (inactive): the Backpack part of the original Hopper unit (005d16d0..005d1b70).",
-     "// Evidence in native-headers/v8datamodel/Backpack.h (IScriptOwner from the native script/Script.h)."
-    ]
-   },
-   {
-    "line": 30,
-    "text": [
-     "// 005d18e0"
-    ]
-   },
-   {
-    "line": 54,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8kernel/Cofm.cpp": {
-  "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::Cofm (inactive): the Cofm unit rows 0065fef0..0066017c against native-headers/v8kernel/Body2008.h.",
-     "// Verified by tests/record_native_body_primitive2008.py.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   },
-   {
-    "line": 8,
-    "text": [
-     "// 0065fef0"
-    ]
-   },
-   {
-    "line": 16,
-    "text": [
-     "// 0065ff10"
-    ]
-   },
-   {
-    "line": 23,
-    "text": [
-     "// 0065ff20"
-    ]
-   },
-   {
-    "line": 48,
-    "text": [
-     "// 00660160"
-    ]
-   },
-   {
-    "line": 55,
-    "text": [
-     "// 00660170"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8kernel/Point.cpp": {
-  "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::Point rows of the original Point unit (0064dc00..0064dde3) that read 2008 Body fields",
-     "// (inactive): forceToBody 0064dc70, step 0064dc90 and setWorldPos 0064dd40, against native-headers/v8kernel/",
-     "// Point2008.h and Body2008.h. Point(Body*) 0064dc00 and the scalar deleting destructor 0064dc50 are counted by",
-     "// leaves2008-working.json (native-classes/Leaves2008Point.cpp, donor Point.h) and are not rebuilt here.",
-     "// Verified by tests/record_native_body_primitive2008.py.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   },
-   {
-    "line": 11,
-    "text": [
-     "// 0064dc70"
-    ]
-   },
-   {
-    "line": 17,
-    "text": [
-     "// 0064dc90"
-    ]
-   },
-   {
-    "line": 24,
-    "text": [
-     "// 0064dd40"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/v8kernel/SimBody.cpp": {
-  "source": "rebuild/2008-06/native-classes/BodyPrimitive2008SimBody.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::SimBody rows (inactive) against native-headers/v8kernel/Body2008.h (the 0xb4 SimBody):",
-     "// SimBody(Body*) 00658ae0, getOwnerPV 00658ca0 (SimBody unit 00658a30..0065925e) and accumulateForce 00612fb0 (its",
-     "// out-of-line copy precedes the GeoPair unit 00613060). Verified by tests/record_native_body_primitive2008.py.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   },
-   {
-    "line": 16,
-    "text": [
-     "// 00658ae0: dt +0x4 = 0, dirty +0x8, PV() +0xc, Quaternion() +0x54 = (0, 0, 0, 1), angMomentum / momentRecip zeroed by",
-     "// Vector3(), constantForceY +0x80 = 0, then the four accumulators from the Vector3::zero() static (0096f044)."
-    ]
-   },
-   {
-    "line": 30,
-    "text": [
-     "// 00658d20",
-     "// Parked (hard-leftover lf14): same size (643 bytes), calls and stores match; two x87 scheduling differences remain.",
-     "// 1) the unit-quaternion scale: the original loads the reciprocal first for x and y (fld st(0); fmul [q.x]) where",
-     "//    this build loads the component (fld [q.x]; fmul st(1)); z and w already agree. 2) angMomentum = rotational *",
-     "//    IWorld (Vector3 * Matrix3 inline): the original sums x*m00 + z*m20 + y*m10 per column, this build z, y, x.",
-     "// Rejected: qOrientation = qOrientation * s (Quaternion::operator* plus out-of-line operator=, 660 bytes);",
-     "// component-wise q.x *= s ... (same component-first pattern). Both depend on the donor util/Quaternion.h and G3D",
-     "// Matrix3.h inline bodies, not on this body (header question)."
-    ]
-   },
-   {
-    "line": 53,
-    "text": [
-     "// 00658ca0"
-    ]
-   },
-   {
-    "line": 60,
-    "text": [
-     "// 00612fb0"
-    ]
-   },
-   {
-    "line": 68,
-    "text": [
-     "// 00629bb0 (analog name; its out-of-line copy lies in the ClickDetector range, only caller MovingNoPhysicsBase",
-     "// 0066eb90 through the inline Body::accumulateImpulse): the 00612fb0 shape on impulse +0x9c / rotImpulse +0xa8."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/boost_1_34_1/libs/iostreams/src/zlib.cpp": {
-  "source": "rebuild/2008-06/native-classes/Boostzlib.cpp",
-  "build": {
-   "flags": "/O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/boost_1_34_1/libs/iostreams/src"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /GS- /EHsc /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/boost_1_34_1/libs/iostreams/src",
-     "// 2008-06 native Boostzlib (inactive): upstream tools/libs/boost_1_34_1/libs/iostreams/src/zlib.cpp, verbatim.",
-     "// (C) Copyright Jonathan Turkanis 2003.",
-     "// Distributed under the Boost Software License, Version 1.0. (See accompanying",
-     "// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)"
     ]
    }
   ]
@@ -992,21 +585,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Sky.cpp": {
-  "source": "rebuild/2008-06/native-classes/G3DSky.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
-     "// 2008-06 native G3D::Sky: upstream G3D 6.09 source/GLG3Dcpp/Sky.cpp, verbatim (inactive)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/TextureFormat.cpp": {
   "source": "rebuild/2008-06/native-classes/G3DTextureFormat.cpp",
   "build": {
@@ -1127,60 +705,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/app/v8datamodel/GuiBuilder.cpp": {
-  "source": "rebuild/2008-06/native-classes/GuiHudBuilder2008.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::GuiBuilder unit (inactive): 006023d0..00606100 (the player GUI hud builder).",
-     "// Layout and addresses in native-headers/GuiHud2008/GuiBuilder2008.h; verified by tests/record_native_gui_hud_builder.py.",
-     "// Unit profile + /fp:fast (the Layout / Vector2 x87 stores of every build method).",
-     "//",
-     "// NATIVE_GUIHUD_PENDING bodies need a declaration the core header lacks (the generated overlay under",
-     "// out/native-layouts/gui-hud-builder-pending supplies it; see the recorder):",
-     "//   * util/Object.h  Creatable<T>::create with three parameters (create<ArrowPanel> 00602650, create<PercentPanel>",
-     "//                    006021e0, create<ImageButton> 00601f00 take three by-value arguments).",
-     "// native-headers/gui/Gui.h (pass 2) declares TopMenuBar(const std::string&, Layout::Style, bool = false) (00601fd0 pushes",
-     "// 0 at 00602027) and TextDisplay setFontSize / setFontColor / setBorderColor inline (00604dd8, 00604e16, 00604e2e).",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   },
-   {
-    "line": 302,
-    "text": [
-     "// The two-parameter create<...> instances whose only callers in this unit are the NATIVE_GUIHUD_PENDING bodies",
-     "// (create<ChatButton> 00602280 from buildChatMenu(Adorn*) 006037c9, create<TopMenuBar> 00601fd0 from",
-     "// buildRightPaletteItems 00602e66, create<MenuSpacer> 006026e0 from buildControlHud 00603da5): instantiated",
-     "// explicitly so that the main build compiles them from the current headers."
-    ]
-   },
-   {
-    "line": 311,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/util/Guid.cpp": {
-  "source": "rebuild/2008-06/native-classes/Guid.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
-     "// Inactive: globals and initializer require original data/link proof."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp": {
   "source": "rebuild/2008-06/native-classes/HitTestShapes.cpp",
   "build": {
@@ -1258,47 +782,6 @@
      "// Insertion sort.  Slow but easy to write in this case",
      "// FUNCTION: WEBSERVICE 0x101c1aa0",
      "// FUNCTION: ROBLOX 0x004e1320"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/humanoid/Humanoid.cpp": {
-  "source": "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native RBX::Humanoid (inactive), second translation unit of the original Humanoid unit: the bodies that",
-     "// need a complete PartInstance. The native v8datamodel/PartInstance.h reaches the donor v8kernel/Connector.h (through",
-     "// v8world/Primitive.h), which cannot share a translation unit with v8kernel/Connector2008.h, so this file selects the",
-     "// donor Connector for the Humanoid base (NATIVE_HUMANOID2008_DONOR_CONNECTOR, see Humanoid2008.h). Only bodies and the",
-     "// four reference-property descriptors live here (no constructor, so no vtable is emitted): the Humanoid layout is the",
-     "// same with either Connector (vptr + KernelIndex), and every vtable is built and checked from Humanoid2008.cpp. The two",
-     "// virtual bodies here (getContactManager, getLocation) do not depend on Connector slot order. The recorder builds this unit",
-     "// with native-headers/engine-world ahead of the donor dirs (the 2008 World: contactManager at +0x84).",
-     "// Verified by tests/record_native_humanoid2008.py.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   },
-   {
-    "line": 173,
-    "text": [
-     "// 005d79b0: Workspace::findWorkspace 005a3380 / contextInWorkspace 005a33d0 (native v8datamodel/Workspace.h)."
-    ]
-   },
-   {
-    "line": 198,
-    "text": [
-     "// Free helper of the original unit (buildJoints 005d9340 calls it five times); name and linkage after the donor."
-    ]
-   },
-   {
-    "line": 215,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
     ]
    }
   ]
@@ -1949,20 +1432,6 @@
     "text": [
      "// native-flags: /O2 /GS- /MD /DZLIB_WINAPI /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.7 /TC",
      "// 2008-06 native Png7pngwutil (inactive): upstream tools/libs/libpng-1.2.7/pngwutil.c, verbatim."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/util/Profiling.cpp": {
-  "source": "rebuild/2008-06/native-classes/Profiling.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
     ]
    }
   ]
@@ -3681,26 +3150,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.cpp": {
-  "source": "rebuild/2008-06/native-classes/ActiveDocView.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-"
-    ]
-   },
-   {
-    "line": 6,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/network/CrashReporter.cpp": {
   "source": "rebuild/2008-06/native-classes/AppLeftovers.cpp",
   "build": {
@@ -3774,20 +3223,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Lighting.cpp": {
-  "source": "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/util/Timer.cpp": {
   "source": "rebuild/2008-06/native-classes/AppUnit5F0_2008Timer.cpp",
   "build": {
@@ -3819,96 +3254,6 @@
      "// hidden return pointer at 00660180; float in st0 at 006601b0). Callers: 0063e5bb, 00658f82, 0066ec49 (Vector3) and",
      "// 00646c91 (float). See tests/record_native_app_unit660_2008.py.",
      "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8datamodel/CharacterAppearance.cpp": {
-  "source": "rebuild/2008-06/native-classes/BodyColors.cpp",
-  "build": {},
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive native recovery of RBX::BodyColors (CharacterAppearance subclass).",
-     "// Layout and evidence: native-headers/v8datamodel/BodyColors.h. Verified by tests/record_native_appearance.py.",
-     "// In the original, BodyColors shares the CharacterAppearance unit with Clothing/Shirt/Pants/ShirtGraphic/Skin",
-     "// (native-classes/Clothing.cpp, another owner); CharacterAppearance::dataChanged 005d3b50 is defined there."
-    ]
-   },
-   {
-    "line": 14,
-    "text": [
-     "// Factory/reflection template members (the generic definitions are not in the shared headers yet;",
-     "// same local definitions as native-classes/Clothing.cpp)."
-    ]
-   },
-   {
-    "line": 38,
-    "text": [
-     "// Property descriptors (static initializers 007f6150..007f6240)."
-    ]
-   },
-   {
-    "line": 57,
-    "text": [
-     "// 005d4b60: skips when the parent model carries a Skin modifier. 005d4460 walks ModelInstance's",
-     "// vector<IModelModifier*> (+0x1ec) with dynamic_cast<Skin*>: ModelInstance::findModifierOfType<Skin> (native",
-     "// v8datamodel/ModelInstance.h member template since batch 16)."
-    ]
-   },
-   {
-    "line": 75,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 78,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 81,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 84,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 87,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 90,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 93,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 96,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 99,
-    "text": [
-     "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
     ]
    }
   ]
@@ -4276,32 +3621,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/RobloxDoc.cpp": {
-  "source": "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr"
-    ]
-   },
-   {
-    "line": 4,
-    "text": [
-     "// Original 004060d0 returns the application-owned base URL CString."
-    ]
-   },
-   {
-    "line": 7,
-    "text": [
-     "// Original 0044f5c0; only caller 004553b2 constructs it on the stack."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/util/Color.cpp": {
   "source": "rebuild/2008-06/native-classes/ColorNamed.cpp",
   "build": {
@@ -4360,29 +3679,6 @@
     "line": 67,
     "text": [
      "// 0064f7f0"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8kernel/Constants.cpp": {
-  "source": "rebuild/2008-06/native-classes/ConstantsJoint.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-     "// RBX::Constants::getJointKMultiplier, 2008-06 v8kernel Constants unit (getElasticMultiplier 00649320,",
-     "// getJointKMultiplier 00649390, getKmsMaxJointForce 00649670). The size is truncated to G3D::Vector3int16",
-     "// (Vector3int16(const Vector3&) 007bbdc0); ball sizes use a jump table on x, blocks switch on x, y and z."
-    ]
-   },
-   {
-    "line": 10,
-    "text": [
-     "// 00649390"
     ]
    }
   ]
@@ -4551,106 +3847,23 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/v8world/GlueJoint.cpp": {
-  "source": "rebuild/2008-06/native-classes/GlueJointKernel.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
-     "// 2008-06 RBX::GlueJoint members that read the native Primitive / Body (inactive): canBuildJoint 00646f60 and",
-     "// putInKernel 00647190. The other rows of the GlueJoint unit (default constructor 00646b60, getMaxForce 00646c10,",
-     "// ??_G 00646ca0) live in WorldJointGlue.cpp. Donor bodies: tools/rbxgs v8world/GlueJoint.cpp.",
-     "//",
-     "// The 2008 Body path (batch 16), as in RotateJointChannel.cpp: NATIVE_PRIMITIVE_NATIVE_BODY makes the part-embedded",
-     "// Primitive.h reach native-headers/v8kernel/Body2008.h (pv +0x94), so the unit takes v8world/Joints2008.h (GlueJoint",
-     "// overlapInP0 +0xc0, overlapInP1 +0xf0, size 0x120, private static compatibleSurfaces), v8kernel/Kernel2008.h",
-     "// (newPoint 005fb260) and v8kernel/Connector2008.h (switch half: Body2008.h / Point2008.h / GeoPair2008.h)."
-    ]
-   },
-   {
-    "line": 21,
-    "text": [
-     "// No address of its own: inlined into canBuildJoint 00646f60 (00646f93..00646fb1 read surfaceType +0xb8 + 4 * nId",
-     "// of both primitives, `cmp eax, 1` = GLUE). Defined in this unit so that it can be inlined there, as in the donor."
-    ]
-   },
-   {
-    "line": 30,
-    "text": [
-     "// 00646f60: compatibleSurfaces inline (surfaceType +0xb8 == GLUE), canBuildJointLoose 00645590, getFaceInWorld",
-     "// 005e81b0, Face::projectOverlapOnMe 00649f20 / toObjectSpace 00649af0 / snapToGrid 006497e0 / toWorldSpace",
-     "// 00649970 / cornersAligned 006498b0, getFaceCoordInObject 005e7680, Math::snapToGrid 005deed0, new 0x120 and the",
-     "// face constructor 00646cc0."
-    ]
-   },
-   {
-    "line": 65,
-    "text": [
-     "// 00647190: MultiJoint::putInKernel 00646970, Matrix3ToNormalId 005ec310, Body::updatePV 00599360 (getPV inline,",
-     "// pv +0x94), Face::operator[] 00476570, IPipelined::getKernel 00645850, Kernel::newPoint 005fb260, new",
-     "// NormalBreakConnector (0x20, constructor inline, vtable 0084ae5c), getJointK 00646af0, getMaxForce 00646c10,",
-     "// addToMultiJoint 00646980.",
-     "// PARKED (x87 operand order). On the 2008 Body path (batch 16; pv +0x94, translation +0xb8) every displacement",
-     "// matches and the size is 580 B both; the first divergence is insn 32 (006471f9): every x87 product of the two",
-     "// inline pointToWorldSpace blocks loads its operands in the opposite order (target `fld [esi + 0x98]; fmul [eax + 4]`,",
-     "// candidate `fld [eax + 4]; fmul [esi + 0x98]`, and so on through both blocks). Rejected: the donor-Body path (wrong",
-     "// displacements +0x8c/+0xac), without /fp:fast (632 bytes, worse), getCoordinateFrame() for getPV().position (same",
-     "// diff)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/RobloxView.cpp": {
-  "source": "rebuild/2008-06/native-classes/Inferred_00458ea0.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include",
-     "// 00458ea0: real name from the identity registry; body byte-proved against the native headers (named lane)"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/rendering/renderlib/RenderSurface.cpp": {
-  "source": "rebuild/2008-06/native-classes/Inferred_00503ea0.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
-     "// 00503ea0: real name from the identity registry; body byte-proved against the native headers (named lane)"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8world/clump.cpp": {
-  "source": "rebuild/2008-06/native-classes/Inferred_005e6240.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include /DNATIVE_CLUMP_DECL /DNATIVE_CLUMP_DECL"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include /DNATIVE_CLUMP_DECL /DNATIVE_CLUMP_DECL",
-     "// INFERRED: RBX::Clump::sub_005e6240 (placeholder name for 005e6240 from the identity tier; body byte-proved against the native headers by the placeholder lane)"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jccoefct.c": {
   "source": "rebuild/2008-06/native-classes/Jpegjccoefct.cpp",
+  "build": {
+   "flags": "/O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC",
+     "// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jccolor.c": {
+  "source": "rebuild/2008-06/native-classes/Jpegjccolor.cpp",
   "build": {
    "flags": "/O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC"
   },
@@ -4780,6 +3993,21 @@
     "text": [
      "// native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/jpeg-6b /TC",
      "// IJG JPEG 6b encoder pipeline; inactive pending reference, provider, ABI and runtime checks."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdcoefct.c": {
+  "source": "rebuild/2008-06/native-classes/Jpegjdcoefct.cpp",
+  "build": {
+   "flags": "/O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC",
+     "// 2008-06 native Jpegjdcoefct (inactive): upstream tools/libs/jpeg-6b/jdcoefct.c, verbatim."
     ]
    }
   ]
@@ -5109,99 +4337,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/script/LuaInstanceBridge.cpp": {
-  "source": "rebuild/2008-06/native-classes/LuaBridge2008Instance.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive 2008-06 native recovery: RBX::Lua instance bridge (ObjectBridge).",
-     "// Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.",
-     "// NATIVE_LUABRIDGE_PENDING guards code that needs declarations the shared native headers lack",
-     "// (RBX::Instances / Instance::setParent2 in v8tree/Instance.h, and the donor LuaArguments.h that needs Instances).",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-    ]
-   },
-   {
-    "line": 42,
-    "text": [
-     "// 0061a5f0 / 0061bcb0: LuaArguments size() / get(int, Value&) (vtable 00844174 slots 0 / 1)."
-    ]
-   },
-   {
-    "line": 440,
-    "text": [
-     "// NATIVE_LUABRIDGE_PENDING: the write-access check 0061bcd0 calls Instance::getRootAncestor() 0042a5f0 and",
-     "// Instance::isAncestorOf(const Instance*) const 004c9c50, which the core native v8tree/Instance.h does not declare",
-     "// (owner: v8tree/Instance.h). callMemberFunction 0061c0e0 calls 0061bcd0 at 0061c185, so it stays guarded with it.",
-     "// Diagnostic compile with the check removed (2026-11-15): 451 B against 478 B; every difference is the missing",
-     "// dynamic_cast + 0061bcd0 call and the register allocation that follows; the LuaArguments2008 construction, execute",
-     "// and pushReturnValue -> push 005aba50 sequence (0061c1f6..0061c264) is identical. Even with the declarations, the",
-     "// esi-argument convention of 0061bcd0 (whole-program code generation) keeps both bodies from being byte-exact."
-    ]
-   },
-   {
-    "line": 448,
-    "text": [
-     "// 0061bcd0: write-access check called from 0061be19 (on_newindex) and 0061c185 (callMemberFunction) right after the",
-     "// dynamic_cast<Instance*> of the object. Name not established (file-local; no registry name). Without Administrator",
-     "// permission (Context::isInRole 005cf070 with identity and 1): StatsService (RTTI 0093244c) needs \"modify a StatsService\";",
-     "// the root DataModel (getRootAncestor 0042a5f0 of the parent, the object itself when it has none; RTTI 0092e8a0) guards",
-     "// guiRoot (+0x21c) \"GuiRoot\" and guiHooks (+0x224) \"GuiHooks\" and their descendants (isAncestorOf 004c9c50).",
-     "// The target passes the Instance* in esi (whole-program code generation); a /c compile pushes it."
-    ]
-   },
-   {
-    "line": 476,
-    "text": [
-     "// 0061c0e0: the closure pushed by on_index 0061c2c0 (push 0x61c0e0 at 0061c476) for a member function. fd is the",
-     "// light userdata upvalue (lua_touserdata(L, lua_upvalueindex(1)) 00612120); a nonzero security (+0x10) is passed as the",
-     "// permission to Context::requirePermission 00489810 with the function name; getPtr<shared_ptr<DescribedBase>> 0061a720",
-     "// of argument 1; isMemberOf 00570c40; LuaArguments (vtable 00844174, offset 1, L) built on the stack, execute (vtable",
-     "// slot 1), then the static push 005aba50 of returnValue."
-    ]
-   },
-   {
-    "line": 486,
-    "text": [
-     "// INFERRED: the 2008 security value is used directly as a Security::Permissions (cmp [fd+0x10], 0 then pushed",
-     "// unchanged at 0061c12e); the read-only native reflection/function.h names it FunctionDescriptor::Security."
-    ]
-   },
-   {
-    "line": 512,
-    "text": [
-     "// Template instances of this unit whose callers are the pending property paths (0061abe0 / 0061b190 / 0061c0e0, guarded",
-     "// by NATIVE_LUABRIDGE_PENDING above or not yet recovered): instantiated explicitly so that the unit emits them.",
-     "//   0061a720 SharedPtrBridge<DescribedBase>::getPtr<shared_ptr<DescribedBase>> (called from 0061c152), which calls",
-     "//   0061a560 Bridge<shared_ptr<DescribedBase>>::getValue<shared_ptr<DescribedBase>> (0061a78b);",
-     "//   0061a470 Bridge<EnumItem>::getValue<const EnumDescriptor::Item*> (EnumItem className 0095b1dc; called from 0061b6db);",
-     "//   0061a7b0 TypedPropertyDescriptor<ContentId>::getValue (ICF-folded getset forwarder; called from this unit's",
-     "//   0061a834 / 0061a8a4 / 0061a914 / 0061a984 and from other units)."
-    ]
-   },
-   {
-    "line": 527,
-    "text": [
-     "// pass 4: ConstProperty::getValue<T> / Property::setValue<T> (declared in the read-only native reflection/property.h,",
-     "// defined in no native header): checked pointer dynamic_cast of the descriptor to TypedPropertyDescriptor<T> (the type",
-     "// descriptor pushed in each body names T), std::bad_cast on failure, then the getset getValue / setValue slot. Defined",
-     "// after the property paths above so that, as in the target, they stay out of line. The instances are the forwarders",
-     "// 0061a600..0061aa60 (callers 0061ad51 / 0061adba / 0061af11 / 0061af6b / 0061b30d / 0061b36d / 0061b3d0 / 0061b433 /",
-     "// 0061b5c2 / 0061b669 in the pending property paths)."
-    ]
-   },
-   {
-    "line": 565,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/lua-5.1.1/src/lauxlib.c": {
   "source": "rebuild/2008-06/native-classes/LuaRobloxLauxlib.cpp",
   "build": {
@@ -5213,19 +4348,6 @@
     "text": [
      "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/../../../tools/openrbx/Client/App/lua-5.1.1/src /TP",
      "// Roblox Lua 5.1.1 API; inactive pending reference, provider, ABI and runtime checks."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/boost_1_34_1/libs/python/src/object/class.cpp": {
-  "source": "rebuild/2008-06/native-classes/MetadataClass.cpp",
-  "build": {},
-  "notes": [
-   {
-    "line": 8,
-    "text": [
-     "// 0041fb30: an unset (-1) index defers to the parent Class; the target keeps the bool-valued",
-     "// recursion result (setne/movzx), so the expression is preserved as compiled."
     ]
    }
   ]
@@ -5314,175 +4436,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Ogre::RbxSceneNode method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/RbxSceneNode2008.h.",
-     "// Bodies 00681190..006823ff. Built with the Ogre 1.4.5 client headers; record_native_ogre_rbx_node.py verifies them.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   },
-   {
-    "line": 14,
-    "text": [
-     "// 00681190: the node keeps its local transform as the derived one and a fixed +/-10000 world box."
-    ]
-   },
-   {
-    "line": 23,
-    "text": [
-     "// 006817e0"
-    ]
-   },
-   {
-    "line": 35,
-    "text": [
-     "// 00681560: SceneNode::_findVisibleObjects without the camera visibility test."
-    ]
-   },
-   {
-    "line": 74,
-    "text": [
-     "// 00681f90"
-    ]
-   },
-   {
-    "line": 87,
-    "text": [
-     "// 006818e0: key 0 is the node's own full transform."
-    ]
-   },
-   {
-    "line": 105,
-    "text": [
-     "// 00681a00"
-    ]
-   },
-   {
-    "line": 112,
-    "text": [
-     "// 006822e0"
-    ]
-   },
-   {
-    "line": 119,
-    "text": [
-     "// 00682350"
-    ]
-   },
-   {
-    "line": 133,
-    "text": [
-     "// 00682040"
-    ]
-   },
-   {
-    "line": 142,
-    "text": [
-     "// 00682100"
-    ]
-   },
-   {
-    "line": 149,
-    "text": [
-     "// 006821c0"
-    ]
-   },
-   {
-    "line": 158,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Ogre::TwoDManager method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/TwoDManager2008.h.",
-     "// Bodies 00682560..006843e6 except render 006832b0. Built with the Ogre 1.4.5 client headers (/fp:fast);",
-     "// record_native_ogre_rbx_node.py verifies them.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   },
-   {
-    "line": 17,
-    "text": [
-     "// 006831d0"
-    ]
-   },
-   {
-    "line": 22,
-    "text": [
-     "// 00683240"
-    ]
-   },
-   {
-    "line": 27,
-    "text": [
-     "// 00682560"
-    ]
-   },
-   {
-    "line": 39,
-    "text": [
-     "// 00682d60"
-    ]
-   },
-   {
-    "line": 84,
-    "text": [
-     "// 00683000"
-    ]
-   },
-   {
-    "line": 101,
-    "text": [
-     "// 006830b0"
-    ]
-   },
-   {
-    "line": 117,
-    "text": [
-     "// 006843b0"
-    ]
-   },
-   {
-    "line": 124,
-    "text": [
-     "// 006843d0"
-    ]
-   },
-   {
-    "line": 130,
-    "text": [
-     "// INFERRED (owner rule 2026-11-11): Batch, createVertexBuffer 006829a0 and prepareRenderState 006825b0 names;",
-     "// bodies follow the server-exact fork analog roc_espclaude_610f7f834b7be5f0.cpp.",
-     "// PARKED drafts: render 4554/4309 B (original calls out-of-line list iterator operator*/++ 0042a8f0/00682ad0; the fork",
-     "// forces them with noinline wrappers, not plausible source). prepareRenderState: body from its own 100% app analog 006825b0 (the fork variant is 999 B)",
-     "// under the native runner (rbxgs prelude) but 1007 B under the ogre-1.4.5-dll recipe build -> runner prelude difference."
-    ]
-   },
-   {
-    "line": 258,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/png.c": {
   "source": "rebuild/2008-06/native-classes/Png6png.cpp",
   "build": {
@@ -5563,60 +4516,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/ScintillaCtrl.cpp": {
-  "source": "rebuild/2008-06/native-classes/ScintillaCtrl.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/../../../tools/openrbx/Client/win /I{headers}/../../../tools/openrbx/3rdparty/scintilla/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/../../../tools/openrbx/Client/win /I{headers}/../../../tools/openrbx/3rdparty/scintilla/include",
-     "// 2008-06 native Scintilla::CScintillaCtrl (inactive): upstream tools/openrbx/Client/win/ScintillaCtrl.cpp, verbatim (the PJN Naughter MFC wrapper in namespace Scintilla, as the exe's unit names show)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8world/spatialhash.cpp": {
-  "source": "rebuild/2008-06/native-classes/SpatialHash2008.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
-     "// 2008-06 native RBX::SpatialHash (inactive); evidence in native-headers/v8world/SpatialHash2008.h."
-    ]
-   },
-   {
-    "line": 9,
-    "text": [
-     "// 0065b4e0"
-    ]
-   },
-   {
-    "line": 21,
-    "text": [
-     "// 0065b1b0"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/util/boost.cpp": {
-  "source": "rebuild/2008-06/native-classes/ThreadNameStorage.cpp",
-  "build": {},
-  "notes": [
-   {
-    "line": 16,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/rbxview/MaterialFactory.cpp": {
   "source": "rebuild/2008-06/native-classes/ViewNewMaterialFactory2008.cpp",
   "build": {
@@ -5629,32 +4528,6 @@
      "// Native 2008 MaterialFactory destructor draft. The scoped profile contains inferred",
      "// member types; canonical header, full ABI and runtime behavior remain unverified.",
      "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/gui/Button.cpp": {
-  "source": "rebuild/2008-06/native-classes/WidgetButtons.cpp",
-  "build": {},
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 native gui Button unit (inactive): KeyButton, ImageWidget, ImageButton, ImageKeyButton, 0064ef90..0064f6a0.",
-     "// Layout and addresses in native-headers/gui/WidgetButtons.h; verified by tests/record_native_widget.py."
-    ]
-   },
-   {
-    "line": 7,
-    "text": [
-     "// The unit-local inline accessor of the other Verb users (RunStateCommands.cpp, ControllerActions.cpp): ImageButton",
-     "// reads the verb's name inline (mov edi, [edi+4]; add edi, 4 at 0064f3c4)."
-    ]
-   },
-   {
-    "line": 66,
-    "text": [
-     "// 0064f340"
     ]
    }
   ]
@@ -5876,268 +4749,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/util/IRenderable.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/SpatialHashStats.cpp",
-   "rebuild/2008-06/native-classes/AppUnit5DC_2008IRenderable.cpp"
-  ],
-  "build": {
-   "flags": ""
-  },
-  "notes": [
-   {
-    "line": 2,
-    "text": [
-     "// Original 0047d410 is a single ret instruction."
-    ]
-   },
-   {
-    "line": 5,
-    "text": [
-     "// 2008-06 native RBX::IRenderable / IRenderableBucket rows of the util/IRenderable.cpp unit 005dd2c0..005dd54f inside",
-     "// the application range 005dc000..005e8000 (inactive). Declarations: the native util/IRenderable.h (read-only).",
-     "// Verified by tests/record_native_app_unit5dc_2008.py."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/ObjectBrowser.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
-   "rebuild/2008-06/native-classes/COutputView.cpp"
-  ],
-  "build": {
-   "flags": ""
-  },
-  "notes": [
-   {
-    "line": 33,
-    "text": [
-     "// Original 004339d0: keeps the member pane's height when the browser grows or shrinks (clamped to [50, cy - 150]).",
-     "// Not exact (210 vs 212 bytes): the original evaluates cy - (bottom - top); this compiles to top - bottom + cy.",
-     "// Parked after three rejected variants (2026-11-13; all other instructions already match):",
-     "//   1. height = delta + current            -> unchanged (still top - bottom + cy, 210 B)",
-     "//   2. delta = cy - rect.Size().cy         -> materialises bottom - top, but swaps edi/esi and folds cy late (209 B)",
-     "//   3. delta = rect.Height() - cy; current - delta -> bottom - top - cy, then current - delta (209 B)"
-    ]
-   },
-   {
-    "line": 59,
-    "text": [
-     "// Original 00433b80. The original pushes the pane CRuntimeClass addresses directly (_RUNTIME_CLASS), not the",
-     "// out-of-line GetThisClass() calls that RUNTIME_CLASS expands to under _AFXDLL."
-    ]
-   },
-   {
-    "line": 91,
-    "text": [
-     "// Window message posted by onEvent 00437070 and handled by 00437520."
-    ]
-   },
-   {
-    "line": 96,
-    "text": [
-     "// Original 00436a30."
-    ]
-   },
-   {
-    "line": 101,
-    "text": [
-     "// Original 00436090: the page is the HTML resource 134."
-    ]
-   },
-   {
-    "line": 108,
-    "text": [
-     "// Original 004364b0."
-    ]
-   },
-   {
-    "line": 123,
-    "text": [
-     "// Original 00436b60."
-    ]
-   },
-   {
-    "line": 145,
-    "text": [
-     "// Original 004373a0."
-    ]
-   },
-   {
-    "line": 153,
-    "text": [
-     "// Original 00436ce0."
-    ]
-   },
-   {
-    "line": 160,
-    "text": [
-     "// Original 00437070."
-    ]
-   },
-   {
-    "line": 171,
-    "text": [
-     "// Original 00437150."
-    ]
-   },
-   {
-    "line": 216,
-    "text": [
-     "// Original 00437520."
-    ]
-   },
-   {
-    "line": 241,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/VersionInfo.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/CFileVersionInfo.cpp",
-   "rebuild/2008-06/native-classes/CVersionInfo.cpp"
-  ],
-  "build": {
-   "flags": ""
-  },
-  "notes": [
-   {
-    "line": 3,
-    "text": [
-     "// Create reuses roc_espclaude_43f0d040995d240c.cpp (0046a220)."
-    ]
-   },
-   {
-    "line": 73,
-    "text": [
-     "// Recovered against 2008-06, based on available PJ Naughter/OpenRBX implementation."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8world/ClumpStage2.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AppUnit668TreeStage.cpp",
-   "rebuild/2008-06/native-classes/Inferred_0064ca60.cpp"
-  ],
-  "build": {
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 2,
-    "text": [
-     "// 2008-06 native RBX::TreeStage (inactive); layout evidence in native-headers/AppUnit668/TreeStage.h.",
-     "// Verified by tests/record_native_app_unit668.py. Built here: onPrimitiveAdded 00668d30, onPrimitiveRemoving 00668d40,",
-     "// getMetric 00669030, dirtyAssemblies 00669240, the destructor 00669390, the scalar deleting destructor 00669760 and",
-     "// stepWorld 00669780 (vtable 0084cf94 is emitted here).",
-     "// Not built: TreeStage() 00669870 news a 0x50-byte AssemblyStage (0066f800) that no native header declares;",
-     "// getStageType 005e2790 (TREE_STAGE 3) is built through the kernel-stages opt-in (donor numbers it 2); process 00669410,",
-     "// onEdgeAdded 00669c00, onEdgeRemoving 00669c70 and the other TreeStage rows read the 2008 Edge / Joint / Assembly /",
-     "// Clump layouts (see the recorder's unit map)."
-    ]
-   },
-   {
-    "line": 16,
-    "text": [
-     "// 005e2790 (folded `mov eax, 3`): TREE_STAGE of the 2008 StageType (opt-in native-headers/kernel-stages v8kernel/IStage.h",
-     "// through the native-flags line)."
-    ]
-   },
-   {
-    "line": 23,
-    "text": [
-     "// 00668d30"
-    ]
-   },
-   {
-    "line": 29,
-    "text": [
-     "// 00668d40"
-    ]
-   },
-   {
-    "line": 35,
-    "text": [
-     "// 00669030"
-    ]
-   },
-   {
-    "line": 43,
-    "text": [
-     "// 00669240"
-    ]
-   },
-   {
-    "line": 56,
-    "text": [
-     "// 00669390"
-    ]
-   },
-   {
-    "line": 61,
-    "text": [
-     "// 00669780"
-    ]
-   },
-   {
-    "line": 69,
-    "text": [
-     "// 0064ca60: real name from the identity registry; body byte-proved against the native headers (named lane)"
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/util/UserInputBase.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
-   "rebuild/2008-06/native-classes/UserInputMovement.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast"
-  },
-  "notes": []
- },
- "rebuild/2008-06/layout/inferred/client/app/tool/Dragger.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp",
-   "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
-   "rebuild/2008-06/native-classes/DraggerPlacement.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive native 2008-06 recovery: rows of the RBX::Dragger unit 0060fea0..00610bee (after the Extents unit",
-     "// 0060f3e0..0060fe95; the Lua 5.1.1 library starts at luaL_where 00610bf0). Declarations are the donor",
-     "// tool/Dragger.h (read-only; no native header shadows it). Bodies written here:",
-     "//   toGrid 0060fea0, intersectingWorldOrOthers 00610130, movePrimitivesDelta 00610270, searchUpFine 00610310,",
-     "//   searchDownFine 006103a0, searchUpGross 00610440, searchDownGross 006104e0, safeMoveYDrop 00610830,",
-     "//   safeMoveNoDrop 00610930.",
-     "// Out-of-unit-recovered rows called here: movePrimitives 0060fef0 and computeExtents(Array) 00610070 (bound by the",
-     "// recorder at the original call sites). Step constants from .rdata: 0.1f 0081e704, -0.1f 00843764, 1.2f 00827278,",
-     "// -1.2f 00830b6c; the world floor -0.01f 00843760 and the overlap 0.01f 0082748c (intersectingWorldOrOthers).",
-     "// The 2008 search functions are not in the donor: their shapes are read from the bytes (one step, then repeat while",
-     "// the moved vector is finite and the intersection test keeps the same answer; a Gross search hands over to the",
-     "// Fine search in the opposite direction).",
-     "// Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations."
-    ]
-   },
-   {
-    "line": 130,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/ExtentsOverlap.cpp",
@@ -6194,188 +4805,80 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/v8kernel/Pair.cpp": {
+ "rebuild/2008-06/layout/inferred/client/app/v8world/RigidJoint.cpp": {
   "sources": [
-   "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
-   "rebuild/2008-06/native-classes/Boostnamed_slot_map.cpp",
-   "rebuild/2008-06/native-classes/GeoPair.cpp"
+   "rebuild/2008-06/native-classes/RigidJointAlign.cpp",
+   "rebuild/2008-06/native-classes/WorldJointRigid.cpp"
   ],
   "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast"
   },
   "notes": [
    {
     "line": 1,
     "text": [
-     "// RBX::AdornRbxGfx bodies as compiled into the June 2008 client (inactive native recovery).",
-     "// Declarations: native-headers/RbxGraphics/AdornRbxGfx2008.h. Verified by tests/record_native_adorn.py (VS2008 RTM",
-     "// 21022, document-swap flags + Ogre 1.4.5 client headers + /fp:fast).",
+     "// 2008-06 RBX::RigidJoint methods that read the native Primitive (inactive): isAligned 00645870, align 006458d0 and",
+     "// faceIdToCoords 00645980. getChildInParent 00645930 lives in WorldJointRigid.cpp.",
      "//",
-     "// Only bodies that need nothing beyond the AdornRbxGfx layout and the Ogre / std headers are built here. Everything",
-     "// that reads the Ogre::VisualEngine (+0x4: scene manager +0x4, 2D manager +0x14, viewport +0x10) or calls the exe-local",
-     "// RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont methods waits for those declarations (see the recorder receipt)."
+     "// Primitive is redeclared unit-locally (unit-local redeclaration as in ContactUnit2008ConnectorBody.cpp): the",
+     "// part-embedded v8world/Primitive.h includes the donor v8world/RigidJoint.h, which cannot be declared next to",
+     "// v8world/Joints2008.h, and the native v8world/Primitive2008.h (used by AppUnit5E4MotorJoint.cpp) does not declare",
+     "// getFaceCoordInObject 005e7680 (header proposal: add it there, then include Primitive2008.h instead). Only the two",
+     "// out-of-line members called here are declared, with the declarations of part-embedded/v8world/Primitive.h:",
+     "// getCoordinateFrame 005e82c0 and getFaceCoordInObject 005e7680."
     ]
    },
    {
-    "line": 17,
+    "line": 22,
     "text": [
-     "// The AdornRbxGfx image block (0066fc30..00671d5f) holds the out-of-line members of its four containers. Explicit",
-     "// instantiation emits the same COMDATs here: std::map<std::string, Ogre::MeshPtr> (+0x78), std::map<std::string,",
-     "// Ogre::SceneNode*> (+0xb8 / +0xf4), std::vector<Ogre::RbxSubEntity*> (+0x48 / +0x60), std::vector<Ogre::SceneNode*>",
-     "// (+0xa0 / +0xdc)."
+     "// 00645870: CoordinateFrame::operator* 00476700, Math::fuzzyEq(CoordinateFrame) 005de2a0, 1e-5f 0082b3b0"
     ]
    },
    {
-    "line": 32,
+    "line": 30,
     "text": [
-     "// 0097da58: incremented by uniqueName 0066fc00, reset to 0 by finishRenderPass 00671f90."
+     "// 006458d0: CoordinateFrame::inverse 00478330"
     ]
    },
    {
-    "line": 40,
+    "line": 39,
     "text": [
-     "// Slots 15 / 22 / 23 are empty: the image folds them onto the shared `ret 4` / `ret 0xc` / `ret 0x10` bodies",
-     "// 0070bdf0 / 006ad2a0 / 004e83a0."
+     "// 00645980: Primitive::getFaceCoordInObject 005e7680, CoordinateFrame::toObjectSpace 0060e8f0 (nId1 unused)"
     ]
    },
    {
-    "line": 86,
+    "line": 49,
     "text": [
-     "// RenderNew::TextureProxy(const std::string&) is out of line at 0066ffb0 (native-classes/TextureProxyRenderNew.cpp)."
+     "// 2008-06 native RBX::RigidJoint (inactive); evidence in native-headers/v8world/Joints2008.h.",
+     "// Verified by tests/record_native_world_joints.py. Rows of the RigidJoint unit (00645870..00645980): getChildInParent",
+     "// 00645930 (CoordinateFrame::inverse 00478330, CoordinateFrame::operator* 00476700). isAligned 00645870, align",
+     "// 006458d0 and faceIdToCoords 00645980 read the native Primitive (coordinate frame, face coordinates) and are not part",
+     "// of this unit yet."
     ]
    },
    {
-    "line": 93,
+    "line": 57,
     "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 118,
-    "text": [
-     "// 2008-06 native Boostnamed_slot_map (inactive): upstream tools/libs/boost_1_34_1/libs/signals/src/named_slot_map.cpp, verbatim.",
-     "// Boost.Signals library"
+     "// 00645930"
     ]
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/v8world/SleepStage2.cpp": {
+ "rebuild/2008-06/layout/inferred/client/app/tool/NullTool.cpp": {
   "sources": [
-   "rebuild/2008-06/native-classes/SleepStage2008.cpp",
-   "rebuild/2008-06/native-classes/Inferred_00668d30.cpp",
-   "rebuild/2008-06/native-classes/Inferred_00668d40.cpp"
+   "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+   "rebuild/2008-06/native-classes/NullTool.cpp"
   ],
   "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I{headers} /I{headers}/../../../tools/rbxgs/Client/App/include"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
   },
   "notes": [
    {
     "line": 1,
     "text": [
-     "// 2008-06 native RBX::SleepStage rows (inactive); layout evidence in native-headers/v8world/SleepStage2008.h.",
-     "// Bodies follow the donor v8world/SleepStage2.cpp shape; 2008 differences are listed per function."
-    ]
-   },
-   {
-    "line": 13,
-    "text": [
-     "// donor getState (inline in the 2008 bodies, e.g. 0064ae90..0064aebf)"
-    ]
-   },
-   {
-    "line": 19,
-    "text": [
-     "// 0064a550: jump table over state - 1 (states 1..5 -> +0xe0 / +0x100 / +0x140 / +0x160 / +0x180), default +0x120"
-    ]
-   },
-   {
-    "line": 41,
-    "text": [
-     "// 0064ae90"
-    ]
-   },
-   {
-    "line": 79,
-    "text": [
-     "// 0064ae10 (donor changeJointState: steppingJoints.erase / insert and the downstream edge notification)"
-    ]
-   },
-   {
-    "line": 101,
-    "text": [
-     "// 0064b7f0"
-    ]
-   },
-   {
-    "line": 110,
-    "text": [
-     "// 0064c230"
-    ]
-   },
-   {
-    "line": 119,
-    "text": [
-     "// 0064b840"
-    ]
-   },
-   {
-    "line": 128,
-    "text": [
-     "// 0064b5e0"
-    ]
-   },
-   {
-    "line": 139,
-    "text": [
-     "// 0064b6d0"
-    ]
-   },
-   {
-    "line": 150,
-    "text": [
-     "// 0064b7c0 (the donor loop calls getPrimitive(0) both times)"
-    ]
-   },
-   {
-    "line": 160,
-    "text": [
-     "// 0064bf60"
-    ]
-   },
-   {
-    "line": 169,
-    "text": [
-     "// 0064c1d0"
-    ]
-   },
-   {
-    "line": 191,
-    "text": [
-     "// 0064bf90"
-    ]
-   },
-   {
-    "line": 259,
-    "text": [
-     "// 0064b1b0"
-    ]
-   },
-   {
-    "line": 280,
-    "text": [
-     "// 0064c130"
-    ]
-   },
-   {
-    "line": 311,
-    "text": [
-     "// INFERRED: RBX::JointStage::sub_00668d30 (placeholder name for 00668d30 from the identity tier; body byte-proved against the native headers by the placeholder lane)"
-    ]
-   },
-   {
-    "line": 320,
-    "text": [
-     "// INFERRED: RBX::JointStage::sub_00668d40 (placeholder name for 00668d40 from the identity tier; body byte-proved against the native headers by the placeholder lane)"
+     "// Inactive native RunningBase methods (2008-06). Not in any build list.",
+     "// Balancing's constructor is in HumanoidStates1Leaves.cpp: RunningBase(Humanoid*) 00666980 calls",
+     "// Balancing(Humanoid*, float, float) 0066e660 out of line, so its body is not visible here."
     ]
    }
   ]
@@ -6390,39 +4893,87 @@
   },
   "notes": []
  },
- "rebuild/2008-06/layout/inferred/client/rendering/renderlib/TextureProxy.cpp": {
+ "rebuild/2008-06/layout/inferred/client/app/util/IRenderable.cpp": {
   "sources": [
-   "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
-   "rebuild/2008-06/native-classes/TextureProxyResolve2008.cpp"
+   "rebuild/2008-06/native-classes/AppUnit5DC_2008IRenderable.cpp",
+   "rebuild/2008-06/native-classes/SpatialHashStats.cpp"
   ],
   "build": {
-   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+   "flags": ""
   },
   "notes": [
    {
     "line": 1,
     "text": [
-     "// roc-cl: 21022",
-     "// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
-     "// RBX::RenderNew::TextureProxy / MegaTextureProxy / BadConversion, optimized RenderLib unit (2008-06, inactive native",
-     "// recovery). Image block 007ad9d0..007aee5f; recovered here: getSize 007adb70, stringify(double) 007adbe0 with the",
-     "// BadConversion copy constructor 007adcf0, the root constructor 007ade10, shade 007aded0, ~TextureProxy 007ae3b0,",
-     "// MegaTextureProxy(TextureManager&, name) 007ae4b0 and its ??_G 007aea40; also TextureProxy(const std::string&) 0066ffb0",
-     "// (emitted in the AdornRbxGfx image block, whose createTextureProxy 00670380 is its only caller). resolve 007aec70 /",
-     "// MegaTextureProxy::resolve 007ae4e0 and the shading helpers 007ad9d0 / 007ada80 / 007add10 are not built."
+     "// 2008-06 native RBX::IRenderable / IRenderableBucket rows of the util/IRenderable.cpp unit 005dd2c0..005dd54f inside",
+     "// the application range 005dc000..005e8000 (inactive). Declarations: the native util/IRenderable.h (read-only).",
+     "// Verified by tests/record_native_app_unit5dc_2008.py."
     ]
    },
    {
-    "line": 92,
+    "line": 87,
     "text": [
-     "// INFERRED: helper names/signatures from server-exact resolve analog; require original reference proof.",
-     "// SGI GLU mipmap helper implementation from donor, without analog noinline/volatile controls."
+     "// Original 0047d410 is a single ret instruction."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/win/VersionInfo.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/CVersionInfo.cpp",
+   "rebuild/2008-06/native-classes/CFileVersionInfo.cpp"
+  ],
+  "build": {
+   "flags": ""
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Recovered against 2008-06, based on available PJ Naughter/OpenRBX implementation."
     ]
    },
    {
-    "line": 301,
+    "line": 78,
     "text": [
-     "// Native deliberately calls getWidth twice at 007af654/679."
+     "// Create reuses roc_espclaude_43f0d040995d240c.cpp (0046a220)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/win/LogManager.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp",
+   "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
+   "rebuild/2008-06/native-classes/LogManagerGet.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Inactive native 2008-06 RobloxCrashReporter (native-headers/AppLeaves2008/RobloxCrashReporter2008.h).",
+     "// mfc-noinline-pcxstr: 00427ab4 calls CSimpleStringT::operator PCXSTR out of line (mfc90 #910), as in AppLeftovers.cpp."
+    ]
+   },
+   {
+    "line": 9,
+    "text": [
+     "// 00427a20 inlines the CrashReporter base constructor: its only effect is the store of this to CrashReporter::singleton",
+     "// 009706c0 (00427a3f), with no CrashReporter vptr store and no call. The read-only donor Network/CrashReporter.h",
+     "// declares CrashReporter() out of line and no native header defines it, so this unit supplies the definition as an",
+     "// inline member function (legal for a member declared without inline; it must precede its use). Codegen analog of",
+     "// the original inline base constructor, not a claim about its declaration."
+    ]
+   },
+   {
+    "line": 19,
+    "text": [
+     "// 00427a20 (MainLogManager::startCrashReporter 00428180 news 0x7d0 and calls it): minidumpType +0x7cc, vptr 00810320,",
+     "// actionToTake = 0xc, pathToMinidump +0x108 and appName +8 copied, appVersion +0x88 from",
+     "// CVersionInfo(_AtlBaseModule.m_hInst 0097f2ac).GetFileVersionAsString()."
     ]
    }
   ]

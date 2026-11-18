@@ -1,6 +1,3 @@
-#include "v8world/SpatialHash.h"
-void RBX::SpatialHash::doStats() const {}
-
 #undef _RELEASEASSERT
 #include "util/IRenderable.h"
 #include "util/Debug.h"
@@ -82,3 +79,6 @@ namespace RBX
 			bucket->recomputeShouldRender(this);
 	}
 }
+
+#include "v8world/SpatialHash.h"
+void RBX::SpatialHash::doStats() const {}

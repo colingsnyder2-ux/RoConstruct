@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
+// Inactive: globals and initializer require original data/link proof.
 #include "util/Guid.h"
 #include <windows.h>
 #include <objbase.h>
@@ -66,3 +68,4 @@ int Guid::compare(const Guid* a, const Guid* b)
 	}
 }
 }
+
