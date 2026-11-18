@@ -41,7 +41,7 @@ HEADERS = ROOT / 'rebuild/2008-06/native-headers'
 LOCK = HERE / 'prove-out/CENSUS.lock'
 FLAGS = '// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS'
 NONTYPE = re.compile(r'&[^,<>]*?((?:\w+::)*\w+)(?=\s*[,>])')
-DEFINES = re.compile(r'^\s*(?:template\s*<[^;{]*>\s*)?(?:class|struct)\s+(?:\w+\s+)?(\w+)\s*(?:<[^;{]*?>\s*)?(?:final\s*)?(?::[^;{]*)?\{', re.M)   # <...>: partial specializations
+DEFINES = re.compile(r'^\s*(?:template\s*<[^;{]*>\s*)?(?:class|struct)\s+(?:__declspec\s*\([^)]*\)\s*)*(?:\w+\s+)?(\w+)\s*(?:<[^;{]*?>\s*)?(?:final\s*)?(?::[^;{]*)?\{', re.M)   # <...>: partial specializations; __declspec(...) may sit between class/struct and the name
 DIFFERS = re.compile(r'reference identity differs: (\S+) \(bound ([0-9a-f]{8}), original reference ([0-9a-f]{8})\)')
 STD_INCLUDES = [('boost::any', '<boost/any.hpp>'), ('boost::_bi', '<boost/bind.hpp>'), ('boost::function', '<boost/function.hpp>'),
                 ('boost::shared_ptr', '<boost/shared_ptr.hpp>'), ('std::basic_string', '<string>'), ('std::vector', '<vector>'),
@@ -83,13 +83,13 @@ INDEX.setdefault('Bridge', ['lua/LuaBridge.h'])
 INDEX.setdefault('SharedPtrBridge', ['lua/LuaBridge.h'])
 
 BRIDGE_MAP = {
-    'EnumItem': ('RBX::Lua::Bridge<RBX::Lua::EnumDescriptorItemPtr, true>', ['LuaBridge2008/LuaEnumBridge2008.h']),
-    'Enums': ('RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptorsPtr, true>', ['LuaBridge2008/LuaEnumBridge2008.h']),
-    'Enum': ('RBX::Lua::Bridge<RBX::Lua::EnumDescriptorPtr, true>', ['LuaBridge2008/LuaEnumBridge2008.h']),
+    'EnumItem': ('RBX::Lua::Bridge<RBX::Lua::EnumDescriptorItemPtr, true>', ['lua/LuaBridge.h', 'LuaBridge2008/LuaEnumBridge2008.h']),
+    'Enums': ('RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptorsPtr, true>', ['lua/LuaBridge.h', 'LuaBridge2008/LuaEnumBridge2008.h']),
+    'Enum': ('RBX::Lua::Bridge<RBX::Lua::EnumDescriptorPtr, true>', ['lua/LuaBridge.h', 'LuaBridge2008/LuaEnumBridge2008.h']),
     'RBXScriptConnection': ('RBX::Lua::Bridge<boost::signals::connection, true>', ['lua/LuaBridge.h', '<boost/signals/connection.hpp>']),
     'Color3': ('RBX::Lua::Bridge<G3D::Color3, true>', ['lua/LuaBridge.h', '<g3d/color3.h>']),
-    'BrickColor': ('RBX::Lua::Bridge<RBX::BrickColor, true>', ['lua/LuaBridge.h']),
-    'shared_ptr<ThreadRef::Node>': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Lua::ThreadRef::Node>, true>', ['lua/LuaBridge.h', '"script/ThreadRef.h"']),
+    'BrickColor': ('RBX::Lua::Bridge<RBX::BrickColor, true>', ['lua/LuaBridge.h', 'v8datamodel/BrickColor.h']),
+    'shared_ptr<ThreadRef::Node>': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Lua::ThreadRef::Node>, true>', ['lua/LuaBridge.h', 'script/ThreadRef.h']),
     'Object': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::DescribedBase>, false>', ['lua/LuaBridge.h']),
     'RBXScriptSignal': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::SignalInstance>, false>', ['lua/LuaBridge.h']),
     'CFrame': ('RBX::Lua::Bridge<G3D::CoordinateFrame, true>', ['lua/LuaBridge.h', '<g3d/coordinateframe.h>']),
@@ -107,12 +107,30 @@ def spell(identity):
 
 def includes(cls):
     out = []
-    for name in dict.fromkeys(re.findall(r'(?<!std::)(?<!boost::)(?<!G3D::)\b[A-Za-z_]\w*', cls)):   # std/boost names: STD_INCLUDES
+    names = dict.fromkeys(re.findall(r'(?<!std::)(?<!boost::)(?<!G3D::)\b[A-Za-z_]\w*', cls))   # std/boost names: STD_INCLUDES
+    # Enum targets referenced as qualified members (Class::Enum).  Several native headers can declare the same
+    # class (a stub next to the full definition); pick the one that actually defines the enum the template needs,
+    # then the header whose stem matches the class, then the shortest path (previous behaviour).
+    enum_targets = set(re.findall(r'::([A-Z]\w*)', cls))
+    for name in names:
+        candidates = []
         if name in UNITS and UNITS[name].name not in out:
-            out.append(UNITS[name].name)
-        for header in INDEX.get(name, [])[:1]:
+            candidates.append(UNITS[name].name)
+        for header in INDEX.get(name, []):
             if header not in out:
-                out.append(header)
+                candidates.append(header)
+        if not candidates:
+            continue
+
+        def rank(h):
+            try:
+                text = (HEADERS / h).read_text(errors='replace')
+            except OSError:
+                text = ''
+            score = sum(1 for e in enum_targets if re.search(r'\benum\s+%s\b' % re.escape(e), text))
+            return (-score, int(Path(h).stem != name), len(h))
+
+        out.append(min(candidates, key=rank))
     extra = [inc for key, inc in STD_INCLUDES if key in cls]
     extra += ['<G3D/%s.h>' % n for n in dict.fromkeys(re.findall(r'G3D::(\w+)', cls))]   # G3D: one header per class
     return extra, out[:10]
@@ -266,12 +284,22 @@ def reference_aliases(manifest, addr):
 def one(item):
     addr, identity = item
     extra_headers = BRIDGE_MAP.get(identity, (None, []))[1] if identity in BRIDGE_MAP else []
+    if identity in BRIDGE_MAP:
+        extra_headers = extra_headers + ['reflection/reflection.h', 'LuaBridge2008/LuaInstanceBridge2008.h']
     cls = spell(identity)
     leaf = re.sub(r'<.*', '', cls).rsplit('::', 1)[-1]
     if leaf not in INDEX and leaf not in UNITS and leaf != 'CXTPBatchAllocManagerT':
         return addr, 'no native header declares ' + leaf, ''
     extra, hdrs = includes(cls)
-    hdrs = list(dict.fromkeys(extra_headers + hdrs))
+    _seen = set()
+    _deduped = []
+    for h in extra_headers + hdrs:
+        _name = Path(h).name
+        if _name in _seen:
+            continue
+        _seen.add(_name)
+        _deduped.append(h)
+    hdrs = _deduped
     flags = (unit_flags(hdrs) or FLAGS) + LEAF_FLAGS.get(leaf, '')
     if leaf == 'CXTPBatchAllocManagerT':
         hdrs = ['<XTToolkitPro.h>']
@@ -355,8 +383,8 @@ done = json.loads(done_path.read_text()) if done_path.is_file() else {}
 _family = collections.Counter(re.sub(r'<.*', '', spell(v['identity'])) for v in unique.values() if v['rule'] == 'rtti')
 # Family boost_functor_pieces_TypedStatsItem: also include these via-callee addresses (same template instantiations as rtti constructors)
 _via_callee_family = {'005a4af0', '005a4bd0', '005a4cb0'}
-todo = [(a, v['identity']) for a, v in sorted(unique.items(), key=lambda kv: (-_family[re.sub(r'<.*', '', spell(kv[1]['identity']))], kv[0]))
-        if (v['rule'] == 'rtti' or a in _via_callee_family) and '<' in v['identity']
+todo = [(a, v['identity']) for a, v in sorted(unique.items(), key=lambda kv: (-_family.get(re.sub(r'<.*', '', spell(kv[1]['identity'])), 0), kv[0]))
+        if ((v['rule'] == 'rtti' and '<' in v['identity']) or (v['rule'] == 'ptr-string' and v['identity'] in BRIDGE_MAP) or (a in _via_callee_family))
         and (a in args.only.split(',') if args.only else a not in done)]
 todo = todo[:args.limit or None]
 print('twin lane: %d addresses' % len(todo), flush=True)
