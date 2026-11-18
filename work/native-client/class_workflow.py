@@ -164,6 +164,12 @@ def pack(task):
     if sib:
         parts.append('=== A PROVED FILE OF THIS CLASS (copy its "// native-flags:" line and include style) ===\n' +
                      sib.read_text(errors='replace')[:4500])
+    try:                                                       # pre-computed per-address pack (no exploration needed)
+        import context_pack
+        for addr in task['addresses'][:3]:
+            parts.append(context_pack.pack(addr, header=header or None, cls=cls, layout_fn=layout_table))
+    except Exception:                                          # noqa: BLE001
+        pass
     parts.append('RULES: first line is the "// native-flags:" line. Use only real headers and declared members; a member '
                  'missing from the header may be declared by reopening nothing - instead mark it in a comment line '
                  '"// NEEDS-DECL: <declaration>" and still write the body. No __emit, no asm, no (char*)this+offset, no '

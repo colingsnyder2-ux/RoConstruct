@@ -288,6 +288,13 @@ def run(task):
                   % (task['family'], len(task['addresses']), slug, '\n'.join(task['lines'])))
     else:
         brief += FAMILY_TEXT % (task['family'], len(task['addresses']), slug, '\n'.join(task['lines']))
+    if task.get('class_task') or task.get('ownerless_task'):
+        try:                                                         # pre-computed context pack: read instead of exploring
+            import context_pack
+            for addr in task['addresses'][:3]:
+                brief += '\n\n' + context_pack.pack(addr)
+        except Exception:                                            # noqa: BLE001
+            pass
     previous = {}
     for filename in ('twin-lane-done.json', 'functor-lane-done.json'):
         try:
