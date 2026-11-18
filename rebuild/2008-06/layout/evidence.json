@@ -3596,11 +3596,6 @@
   "build": {},
   "notes": []
  },
- "rebuild/2008-06/layout/client/network/replicator.h": {
-  "source": "rebuild/2008-06/native-headers/Replicator.h",
-  "build": {},
-  "notes": []
- },
  "rebuild/2008-06/layout/client/rbxview/BevelMesh.h": {
   "source": "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h",
   "build": {},
@@ -4299,19 +4294,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 23,
-    "text": [
-     "// Inactive candidate: RTTI, constructor and recovered 0057a1b0 source define",
-     "// these bases and members. Complete virtual methods and lifetimes remain open."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/include/v8datamodel/DebrisService.h": {
   "source": "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h",
   "build": {},
@@ -4641,22 +4623,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/JointInstance.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 12,
-    "text": [
-     "// 2008 layout (bases: IRenderable +0x130, empty IJointOwner +0x140): the parts live on JointInstance, not AutoJoint.",
-     "// JointInstance(Joint*) 005e3870 constructs the weak_ptr pair at +0x140 (eh vector ctor, 2 x 8 bytes) and stores",
-     "// joint at +0x150; ~JointInstance 005e2e10 calls setPart(0/1, NULL) 005e2cd0, deletes joint +0x150 and destroys the",
-     "// pair (eh vector dtor, element dtor 005576e0); the getters 005e2a10 / 005e2a70 lock +0x140 / +0x148 (005cab00).",
-     "// VelocityMotor (Feature.h) derives from JointInstance and starts its fields at +0x154."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/include/v8datamodel/JointsService.h": {
   "source": "rebuild/2008-06/native-headers/v8datamodel/JointsService.h",
   "build": {},
@@ -4763,18 +4729,6 @@
      "//              CoordinateFrame> Hit / Origin (read only), RefPropDescriptor<Mouse, PartInstance> Target (read only),",
      "//              PropDescriptor<Mouse, int> X, Y, ViewSizeX, ViewSizeY (read only), PropDescriptor<Mouse, TextureId>",
      "//              Icon (getIcon 00642f80, setIcon 0064e180)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 95,
-    "text": [
-     "// Recovered distance helper; original method name unproven."
     ]
    }
   ]
@@ -10012,54 +9966,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/util/ContentProvider.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/Inferred_005624b0.cpp",
-   "rebuild/2008-06/native-classes/ContentIdAssets.cpp",
-   "rebuild/2008-06/native-classes/ContentProvider.cpp",
-   "rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp",
-   "rebuild/2008-06/native-classes/ContentProviderGetContent.cpp",
-   "rebuild/2008-06/native-classes/ContentProviderGetFile.cpp",
-   "rebuild/2008-06/native-classes/ContentProviderLoad.cpp",
-   "rebuild/2008-06/native-classes/ContentProviderRegisterFile.cpp",
-   "rebuild/2008-06/native-classes/ContentProviderUrl.cpp"
-  ],
-  "build": {
-   "flags": ""
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 005624b0: real name from the identity registry; body byte-proved against the native headers (named lane)"
-    ]
-   },
-   {
-    "line": 21,
-    "text": [
-     "// Isolated layout/lifetime trial; donor ContentProvider is a different singleton class."
-    ]
-   },
-   {
-    "line": 80,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 126,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 175,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/ExtentsOverlap.cpp",
@@ -11621,137 +11527,6 @@
     "line": 282,
     "text": [
      "// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/v8datamodel/JointInstance.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/JointInstanceAdorn.cpp",
-   "rebuild/2008-06/native-classes/GlueRotateCtors.cpp",
-   "rebuild/2008-06/native-classes/AutoJoint.cpp"
-  ],
-  "build": {
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded"
-  },
-  "notes": [
-   {
-    "line": 2,
-    "text": [
-     "// 2008-06 RBX::JointInstance IRenderable rows of the v8datamodel/JointInstance.cpp unit (inactive), built against the",
-     "// committed native v8datamodel/JointInstance.h (read-only; the getset factories of the same unit are in",
-     "// AppUnit5E0JointReflection.cpp): shouldRender3dAdorn 005e27a0.",
-     "//",
-     "// The 2008 JointInstance carries the AutoJoint parts (boost::weak_ptr<PartInstance> at +0x140 / +0x148, joint at",
-     "// +0x150; see native v8datamodel/JointInstance.h): part getters 005e2a10 / 005e2a70, askSetParent 005e3790 and",
-     "// render3dAdorn 005e2af0 (IRenderable +0x130 this; Primitive embedded in PartInstance at +0x228).",
-     "// Lifecycle rows: setPart 005e2cd0, JointInstance(Joint*) 005e3870, ~JointInstance 005e2e10 (both byte-identical with",
-     "// relocations masked; the identity registry names the +0 vtable 0083e354 ??_7JointInstance@RBX@@6B@, while this",
-     "// compile gives that unqualified name to the IRenderable vtable at +0x130, 0083e2bc, as VelocityMotor's 00842cbc), and",
-     "// onAncestorChanged 005e3a80 (the 2008 KERNEL_STAGE value through the opt-in kernel-stages IStage)."
-    ]
-   },
-   {
-    "line": 19,
-    "text": [
-     "// 005e27a0: reads PartInstance::showSpanningTree (00975f8f)."
-    ]
-   },
-   {
-    "line": 25,
-    "text": [
-     "// 005e2a10: locks part[0] (+0x140) through weak_ptr::lock 005cab00 and returns the raw pointer."
-    ]
-   },
-   {
-    "line": 31,
-    "text": [
-     "// 005e2a70: the same for part[1] (+0x148)."
-    ]
-   },
-   {
-    "line": 37,
-    "text": [
-     "// 005e3790: parent must be a plain Instance (0040ad80) or a PartInstance (0059c7f0), compared through the",
-     "// out-of-line descriptor operator== 0056fe10."
-    ]
-   },
-   {
-    "line": 45,
-    "text": [
-     "// 005e2af0: assembly joints (Joint::getJointType(e) >= ANCHOR_JOINT, inline in 2008) draw a 20-wide line between",
-     "// the two part positions, green (005148e0) when active and red (005148b0, folded with Vector3::unitX) otherwise."
-    ]
-   },
-   {
-    "line": 79,
-    "text": [
-     "// 005e3870: DescribedNonCreatable() (005e37d0, ICF-shared), IRenderable, the part[] weak_ptr pair (eh vector",
-     "// constructor 005e27d0 / 005576e0), joint +0x150, Joint::setJointOwner 006454a0 (IJointOwner base at +0x140), then",
-     "// both parts from the joint primitives (+0xc / +0x10, PartInstance::fromPrimitive 00599f80, shared_from 00618a40).",
-     "// Donor: tools/rbxgs v8datamodel/JointInstance.cpp JointInstance(Joint*) plus the AutoJoint(Joint*) part setup."
-    ]
-   },
-   {
-    "line": 95,
-    "text": [
-     "// 005e2e10: setPart(0 / 1, NULL) 005e2cd0, Joint::setJointOwner(NULL) 006454a0, delete joint (slot 0), joint = NULL;",
-     "// then ~weak_ptr[2] (005576e0), ~IRenderable 0047d410 and ~Instance 0055a540."
-    ]
-   },
-   {
-    "line": 107,
-    "text": [
-     "// 005e2cd0: compares the locked part (weak_ptr::lock 005cab00) with value; on a change stores shared_from(value)",
-     "// 00618a40 and calls Joint::setPrimitive (slot 4) with the embedded Primitive (PartInstance +0x228) or NULL."
-    ]
-   },
-   {
-    "line": 126,
-    "text": [
-     "// 005e3a80: Instance::onAncestorChanged 0055acc0; old world through IPipelined::getWorld (inline: currentStage +0x4,",
-     "// IStage slot 1 == KERNEL_STAGE 7 -> upstream +0x4, IWorldStage world +0xc); a parent that is a plain Instance",
-     "// (0040ad80, descriptor compare 0056fe10) uses ServiceProvider::find<Workspace> 00491e50 and its world (+0x2e4),",
-     "// anything else Workspace::getWorldIfInWorkspace 005a3390; then World::removeJoint 005ea3a0 / insertJoint 005ea320.",
-     "// Built with the 2008 StageType values of the opt-in kernel-stages IStage (native-flags): the donor",
-     "// v8kernel/IStage.h numbers KERNEL_STAGE 8, while the inline donor getWorld must compare with 7 (005e3aa9",
-     "// `cmp eax, 7`; ji03 found every other byte and relocation of the default build matching)."
-    ]
-   },
-   {
-    "line": 167,
-    "text": [
-     "// Glue/Rotate/RotateP/RotateV/Motor constructors from the 005e4000 unit. Byte-exact: Glue() 005e49a0, Rotate() 005e4ad0 and the",
-     "// (Joint*) constructors 005e4920/005e4a60/005e4b90/005e4d30 (identical bodies, one per class). Unlike Snap/Weld these set no",
-     "// name in the constructor. The RotateP()/RotateV()/Motor() defaults are not recovered here.",
-     "// /fp:fast: Motor::setMaxVelocity 005e4fe0 loads maxVelocity before the argument and compares with fucom / fstp st(1),",
-     "// the same x87 order as VelocityMotor::setMaxVelocity 0060c580 (Feature.cpp, /fp:fast); without it cl emits fucompp."
-    ]
-   },
-   {
-    "line": 175,
-    "text": [
-     "// The 2008 MotorJoint (no polarity; maxVelocity +0x90, stored by 005e4fe0) over the donor Joint that JointInstance.h",
-     "// reaches, in place of the donor v8world/MotorJoint.h."
-    ]
-   },
-   {
-    "line": 180,
-    "text": [
-     "// 005e4fe0 raises prop_MaxVelocity 0097ab74 (getset factory PropDescriptor<Motor, float> 005e29c0, constructor 005e36e0)."
-    ]
-   },
-   {
-    "line": 197,
-    "text": [
-     "// Motor::getMaxVelocity (inline in 005e4fe0): the joint +0x150 is a MotorJoint (maxVelocity +0x90 in 2008)."
-    ]
-   },
-   {
-    "line": 203,
-    "text": [
-     "// 005e4fe0: one load of joint +0x150, compare / store maxVelocity, then a tail jump to Instance::raisePropertyChanged",
-     "// 0040db00 with prop_MaxVelocity. Donor: tools/rbxgs v8datamodel/JointInstance.cpp Motor::setMaxVelocity."
     ]
    }
   ]

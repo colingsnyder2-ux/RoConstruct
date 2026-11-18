@@ -1,5 +1,5 @@
 {
- "files": 487,
+ "files": 479,
  "merged_units": {
   "rebuild/2008-06/layout/inferred/client/app/gui/ArrowPanel.cpp": {
    "sources": [
@@ -164,26 +164,6 @@
     "rebuild/2008-06/native-classes/HammerTool.cpp",
     "rebuild/2008-06/native-classes/LaserTool.cpp",
     "rebuild/2008-06/native-classes/SlingshotToolCore.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/inferred/client/app/util/ContentProvider.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/Inferred_005624b0.cpp",
-    "rebuild/2008-06/native-classes/ContentIdAssets.cpp",
-    "rebuild/2008-06/native-classes/ContentProvider.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderCacheSupport.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderGetContent.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderGetFile.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderLoad.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderRegisterFile.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderUrl.cpp"
-   ],
-   "flags": "",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "left_out": [
-    "rebuild/2008-06/native-classes/AppUnit55CContentTemplates.cpp",
-    "rebuild/2008-06/native-classes/MD5Hasher.cpp",
-    "rebuild/2008-06/native-classes/ContentProviderLoadContent.cpp"
    ]
   },
   "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
@@ -510,20 +490,6 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)",
    "left_out": [
     "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_king_originala_hopper_legacy_92722dc306f04fcf__O2GSEHscMD.cpp"
-   ]
-  },
-  "rebuild/2008-06/layout/inferred/client/app/v8datamodel/JointInstance.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/JointInstanceAdorn.cpp",
-    "rebuild/2008-06/native-classes/GlueRotateCtors.cpp",
-    "rebuild/2008-06/native-classes/AutoJoint.cpp"
-   ],
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8datamodel__JointInstance__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/AutoJointFrames.cpp",
-    "rebuild/2008-06/native-classes/SnapWeldCtors.cpp"
    ]
   },
   "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Lighting.cpp": {
@@ -1340,14 +1306,14 @@
    ]
   }
  },
- "inferred_path_files": 152,
+ "inferred_path_files": 151,
  "status": {
   "clean-identical": 190,
   "verbatim-identical": 14,
-  "clean (token-identical)": 121,
-  "dropped": 9,
+  "clean (token-identical)": 117,
+  "dropped": 11,
   "verbatim (line-sensitive macros)": 10,
-  "verbatim": 42
+  "verbatim": 40
  },
  "held_back": {
   "merge or conflict": 822,
@@ -1356,8 +1322,8 @@
   "inferred path with no folder evidence": 12,
   "requires_identity_review": 5,
   "wrapper around donor or library source": 15,
-  "changed since map": 2,
-  "variant header that shadows the one other units build with": 9
+  "changed since map": 6,
+  "variant header that shadows the one other units build with": 11
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
  "cache_note": "the runner may reuse validated cached objects for unchanged live sources",
@@ -2266,10 +2232,6 @@
    "source": "rebuild/2008-06/native-headers/RenderLib/Profiler.h",
    "status": "verbatim"
   },
-  "rebuild/2008-06/layout/client/network/replicator.h": {
-   "source": "rebuild/2008-06/native-headers/Replicator.h",
-   "status": "clean (token-identical)"
-  },
   "rebuild/2008-06/layout/inferred/client/win/VerbBinder.h": {
    "source": "rebuild/2008-06/native-headers/VerbBinder.h",
    "status": "clean (token-identical)"
@@ -2345,10 +2307,6 @@
   "rebuild/2008-06/layout/client/app/include/v8world/contactmanager.h": {
    "source": "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h",
    "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/v8world/World.h": {
-   "source": "rebuild/2008-06/native-headers/engine-world/v8world/World.h",
-   "status": "dropped"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/BinaryOutput.h": {
    "source": "rebuild/2008-06/native-headers/g3d-binary-output-2008/G3D/BinaryOutput.h",
@@ -2512,7 +2470,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/tool/MegaDragger.h": {
    "source": "rebuild/2008-06/native-headers/tool/MegaDragger.h",
-   "status": "verbatim"
+   "status": "dropped"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/tool/ModelTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/ModelTool.h",
@@ -2686,10 +2644,6 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/Clothing.h",
    "status": "clean (token-identical)"
   },
-  "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
-   "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
-   "status": "clean (token-identical)"
-  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/DebrisService.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h",
    "status": "clean (token-identical)"
@@ -2746,10 +2700,6 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/ICharacterSubject.h",
    "status": "verbatim"
   },
-  "rebuild/2008-06/layout/client/app/include/v8datamodel/JointInstance.h": {
-   "source": "rebuild/2008-06/native-headers/v8datamodel/JointInstance.h",
-   "status": "clean (token-identical)"
-  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/JointsService.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/JointsService.h",
    "status": "clean (token-identical)"
@@ -2772,7 +2722,7 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h",
-   "status": "clean (token-identical)"
+   "status": "dropped"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/PVInstance.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h",
@@ -2796,7 +2746,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SelectionChanged.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h",
-   "status": "verbatim"
+   "status": "dropped"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Sky.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Sky.h",
@@ -2910,8 +2860,8 @@
  "coverage": {
   "note": "code bytes whose native source is in this export; not a link or runtime claim",
   "executable_code_bytes": 3742156,
-  "exported_bytes": 602728,
-  "exported_percent": 16.11,
+  "exported_bytes": 596197,
+  "exported_percent": 15.93,
   "tiers": {
    "inferred path": {
     "files": 85,
@@ -2924,9 +2874,9 @@
     "bytes": 226870
    },
    "merged unit, partial": {
-    "files": 81,
-    "functions": 1476,
-    "bytes": 209631
+    "files": 79,
+    "functions": 1447,
+    "bytes": 203100
    },
    "merged unit, complete": {
     "files": 29,
@@ -2947,70 +2897,75 @@
    "inferred/client/network/include",
    "inferred/client/rendering/ogresdk/include"
   ],
-  "units_checked": 183,
-  "units_same": 174,
-  "units_without_verdict": 21,
-  "merged_checked": 110,
-  "merged_same": 93,
-  "passing": 267,
-  "exported_headers": 173,
-  "headers_proven_by_a_passing_unit": 104,
+  "units_checked": 204,
+  "units_same": 187,
+  "units_without_verdict": 0,
+  "merged_checked": 87,
+  "merged_same": 82,
+  "passing": 269,
+  "exported_headers": 167,
+  "headers_proven_by_a_passing_unit": 98,
   "suspect_headers": {
-   "client/app/include/tool/groupdragtool.h": 1,
-   "client/app/include/tool/partdragtool.h": 1,
    "client/app/include/v8datamodel/debrisservice.h": 1,
-   "client/app/include/v8datamodel/geometryservice.h": 1
+   "client/app/include/v8datamodel/geometryservice.h": 1,
+   "client/app/include/v8xml/serializerv2.h": 1,
+   "inferred/client/app/include/util/imagecontent.h": 1,
+   "inferred/client/app/include/v8datamodel/specialshape.h": 1,
+   "inferred/client/win/clipboardverbs.h": 1
   },
   "failing_use": {
-   "client/app/include/reflection/descriptor.h": 6,
-   "client/app/include/reflection/function.h": 6,
-   "client/app/include/reflection/member.h": 6,
-   "client/app/include/script/script.h": 5,
+   "client/app/include/reflection/descriptor.h": 11,
+   "client/app/include/reflection/function.h": 11,
+   "client/app/include/reflection/member.h": 11,
+   "client/app/include/util/contentprovider.h": 15,
+   "client/app/include/util/events.h": 12,
+   "client/app/include/util/filesystem.h": 1,
+   "client/app/include/util/handle.h": 12,
+   "client/app/include/util/name.h": 15,
+   "client/app/include/util/utilities.h": 15,
+   "client/app/include/v8datamodel/globalsettings.h": 2,
+   "client/app/include/v8tree/service.h": 11,
+   "client/app/include/v8xml/xmlelement.h": 12,
+   "inferred/client/app/include/reflection/property.h": 11,
+   "inferred/client/app/include/util/guiditem.h": 11,
+   "inferred/client/app/include/util/object.h": 12,
+   "client/app/include/script/script.h": 6,
    "client/app/include/script/scriptcontext.h": 1,
    "client/app/include/script/threadref.h": 1,
    "client/app/include/security/securitycontext.h": 1,
-   "client/app/include/util/contentprovider.h": 8,
-   "client/app/include/util/events.h": 6,
-   "client/app/include/util/handle.h": 6,
-   "client/app/include/util/name.h": 7,
-   "client/app/include/util/profiling.h": 4,
-   "client/app/include/util/runstateowner.h": 5,
-   "client/app/include/util/utilities.h": 8,
-   "client/app/include/v8tree/service.h": 7,
-   "client/app/include/v8xml/xmlelement.h": 6,
-   "inferred/client/app/include/reflection/property.h": 6,
-   "inferred/client/app/include/util/guiditem.h": 6,
-   "inferred/client/app/include/util/object.h": 7,
+   "client/app/include/util/profiling.h": 8,
+   "client/app/include/util/runstateowner.h": 7,
+   "client/app/include/v8kernel/connector.h": 5,
+   "client/app/include/v8kernel/istage.h": 6,
    "client/app/include/tool/groupdragtool.h": 1,
-   "client/app/include/tool/megadragger.h": 2,
-   "client/app/include/util/irenderable.h": 3,
-   "client/app/include/util/userinputbase.h": 4,
-   "client/app/include/v8datamodel/camera.h": 3,
-   "client/app/include/v8datamodel/modelinstance.h": 3,
-   "client/app/include/v8datamodel/mousecommand.h": 2,
-   "client/app/include/v8datamodel/pvinstance.h": 3,
-   "client/app/include/v8datamodel/rootinstance.h": 3,
-   "client/app/include/v8datamodel/workspace.h": 3,
-   "client/app/include/v8tree/verb.h": 4,
-   "client/rbxgraphics/include/rbxgraphics/adorn.h": 4,
-   "client/rbxgraphics/include/rbxgraphics/textureproxybase.h": 4,
-   "inferred/client/app/include/util/movementkeys.h": 4,
-   "inferred/client/app/include/v8tree/idatastate.h": 5,
-   "inferred/client/app/include/v8tree/verbcontainer.h": 5,
+   "client/app/include/util/irenderable.h": 6,
+   "client/app/include/util/userinputbase.h": 6,
+   "client/app/include/v8datamodel/camera.h": 4,
+   "client/app/include/v8datamodel/modelinstance.h": 4,
+   "client/app/include/v8datamodel/pvinstance.h": 6,
+   "client/app/include/v8datamodel/rootinstance.h": 4,
+   "client/app/include/v8datamodel/workspace.h": 4,
+   "client/app/include/v8tree/verb.h": 5,
+   "client/rbxgraphics/include/rbxgraphics/adorn.h": 7,
+   "client/rbxgraphics/include/rbxgraphics/textureproxybase.h": 9,
+   "inferred/client/app/include/util/movementkeys.h": 6,
+   "inferred/client/app/include/v8tree/idatastate.h": 8,
+   "inferred/client/app/include/v8tree/verbcontainer.h": 8,
    "client/app/include/tool/partdragtool.h": 1,
-   "client/app/include/v8kernel/connector.h": 2,
-   "client/app/include/v8kernel/istage.h": 2,
-   "inferred/client/app/include/v8datamodel/selectionchanged.h": 1,
    "client/app/include/v8datamodel/debrisservice.h": 1,
    "client/app/include/v8datamodel/timerservice.h": 1,
-   "client/rendering/g3d/include/g3d/binaryoutput.h": 1,
-   "client/rendering/g3d/include/g3d/gimage.h": 1,
-   "client/rendering/g3d/include/glg3d/renderdevice.h": 1,
+   "client/rendering/g3d/include/g3d/binaryoutput.h": 2,
+   "client/rendering/g3d/include/g3d/gimage.h": 2,
+   "client/rendering/g3d/include/glg3d/renderdevice.h": 2,
    "client/app/include/v8datamodel/geometryservice.h": 1,
+   "inferred/client/app/include/v8datamodel/specialshape.h": 1,
+   "inferred/client/app/include/util/contentrequest.h": 1,
    "client/app/include/gui/gui.h": 1,
    "client/app/include/gui/widget.h": 1,
-   "client/app/include/v8datamodel/datamodel.h": 1,
-   "client/app/include/v8datamodel/globalsettings.h": 1
+   "inferred/client/app/include/util/imagecontent.h": 1,
+   "inferred/client/app/include/util/log.h": 1,
+   "client/app/include/v8xml/serializerv2.h": 1,
+   "inferred/client/win/clipboardverbs.h": 1
   },
   "failing_units": [
    "client/app/gui/Widget.cpp",
@@ -3019,39 +2974,37 @@
    "client/app/tool/PartDragTool.cpp",
    "client/app/v8datamodel/DebrisService.cpp",
    "client/app/v8datamodel/GeometryService.cpp",
+   "client/app/v8datamodel/GlobalSettings.cpp",
+   "client/app/v8datamodel/IEquipable.cpp",
+   "client/app/v8datamodel/custommesh.cpp",
+   "client/app/v8world/Mechanism.cpp",
+   "client/rbxview/FileMesh.cpp",
    "client/rendering/g3d/glg3dcpp/GFont.cpp",
+   "inferred/client/network/CrashReporter.cpp",
+   "inferred/client/win/ClipboardVerbs.cpp",
+   "inferred/client/win/DxUserInput.cpp",
    "inferred/client/win/ScriptDoc.cpp",
    "inferred/client/win/SettingsDialog.cpp"
   ],
   "failing_merged_units": [
-   "client/app/v8datamodel/Feature.cpp",
    "client/app/v8datamodel/Teams.cpp",
    "client/rendering/g3d/g3dcpp/GImage.cpp",
-   "inferred/client/app/tool/NullTool.cpp",
-   "inferred/client/app/tool/ToolsSurface.cpp",
-   "inferred/client/app/v8datamodel/Commands.cpp",
-   "inferred/client/app/v8datamodel/DataModel.cpp",
-   "inferred/client/app/v8datamodel/Selection.cpp",
-   "inferred/client/app/v8datamodel/ToolsPart.cpp",
    "inferred/client/app/v8tree/Instance.cpp",
-   "inferred/client/win/InstanceExplorer.cpp",
-   "inferred/client/win/MainFrm.cpp",
    "inferred/client/win/ObjectBrowser.cpp",
-   "inferred/client/win/PropGrid.cpp",
-   "inferred/client/win/RobloxTreeCtrl.cpp",
-   "inferred/client/win/RobloxView.cpp",
-   "inferred/client/win/SelectionCaption.cpp"
+   "inferred/client/win/PropGrid.cpp"
   ],
   "held_variant_headers": [
+   "client/app/include/tool/MegaDragger.h",
    "client/app/include/util/Vector6.h",
+   "client/app/include/v8datamodel/MouseCommand.h",
    "client/app/include/v8datamodel/Surface.h",
    "client/app/include/v8datamodel/Surfaces.h",
    "client/app/include/v8world/Edge.h",
    "client/app/include/v8world/Primitive.h",
-   "client/app/include/v8world/World.h",
    "client/rendering/g3d/include/g3d/Matrix3.h",
    "client/rendering/g3d/include/g3d/Vector3.h",
-   "client/rendering/g3d/include/g3d/Vector3.inl"
+   "client/rendering/g3d/include/g3d/Vector3.inl",
+   "inferred/client/app/include/v8datamodel/SelectionChanged.h"
   ]
  }
 }
