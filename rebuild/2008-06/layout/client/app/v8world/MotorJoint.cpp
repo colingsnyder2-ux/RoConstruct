@@ -31,3 +31,41 @@ RBX::RevoluteLink* MotorJoint::resetLink()
 	return link;
 }
 }
+
+namespace RBX
+{
+	MotorJoint::MotorJoint()
+		: link(new RevoluteLink()),
+		  currentAngle(0.0f),
+		  maxVelocity(0.0f),
+		  desiredAngle(0.0f)
+	{
+	}
+
+	MotorJoint::~MotorJoint()
+	{
+		delete link;
+	}
+
+	void MotorJoint::setCurrentAngle(float value)
+	{
+		if (currentAngle != value)
+		{
+			currentAngle = value;
+			if (getWorld())
+				link->setJointAngle(value);
+		}
+	}
+
+	void MotorJoint::stepUi(int uiStepId)
+	{
+		float velocity = fabs(maxVelocity);
+		float delta = desiredAngle - currentAngle;
+		if (fabs(delta) < velocity)
+			setCurrentAngle(desiredAngle);
+		else if (delta > 0.0f)
+			setCurrentAngle(currentAngle + velocity);
+		else
+			setCurrentAngle(currentAngle - velocity);
+	}
+}
