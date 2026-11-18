@@ -184,7 +184,15 @@ def inactive_code(root):
             continue
     # native_bulk proofs (work/native-client/prove.py: full census + per-file runs). Byte-exact rows are inactive
     # (exact); a byte-matched body at one candidate still waiting for identity/reference proof is draft.
-    manifests = sorted((root / "work/native-client/prove-out").glob("*/manifest.json"), key=lambda p: p.stat().st_mtime)
+    # Another lane deletes and rewrites prove-out folders while this runs: read each time once and
+    # skip what vanished, instead of failing the whole site build.
+    times = {}
+    for found_path in (root / "work/native-client/prove-out").glob("*/manifest.json"):
+        try:
+            times[found_path] = found_path.stat().st_mtime
+        except OSError:
+            continue
+    manifests = sorted(times, key=times.get)
     # Collect the latest single-source mapping while processing each manifest once.
     single, bulk = {}, set()
     for path in manifests:
@@ -192,7 +200,7 @@ def inactive_code(root):
             families = bulk_manifest(path, root / "work/integration/inactive-bulk-cache")
         except (ValueError, OSError):
             continue
-        stamp = path.stat().st_mtime
+        stamp = times[path]
         for family in families:
             if len(family.get("jobs", [])) == 1:
                 try:

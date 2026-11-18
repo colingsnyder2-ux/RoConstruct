@@ -360,14 +360,17 @@ const libraryUrl = meta => {
   if (origin?.functions?.[meta[2]]) return origin.functions[meta[2]];
   return origin?.files?.includes(meta[1]) ? origin.url + (origin.kind === "file" ? meta[1].split("/").map(encodeURIComponent).join("/") : "") : "";
 };
+// integration.json stores an Authentic entry as [file, line]; older builds stored the file name alone.
+const authPath = e => Array.isArray(e) ? e[0] : e;
+const authLine = e => Array.isArray(e) && e[1] > 1 ? "#L" + e[1] : "";
 const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
   const candidate = integrationData?.client === client && integrationData.inactive_sources?.[hex(f[0])];
   const links = [];
   const au = integrationData?.client === client && integrationData.authentic?.[hex(f[0])];
   const og = integrationData?.client === client && integrationData.organized?.[hex(f[0])];
-  if (og) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${og[0].split('/').map(encodeURIComponent).join('/')}" target="_blank" rel="noopener">${short ? "Organized" : "Organized source"} ↗</a>`);
-  if (au) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${au[0].split('/').map(encodeURIComponent).join('/')}#L${au[1]}" target="_blank" rel="noopener">${short ? "Authentic" : "Authentic source"} ↗</a>`);
+  if (og) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${authPath(og).split('/').map(encodeURIComponent).join('/')}" target="_blank" rel="noopener">${short ? "Organized" : "Organized source"} ↗</a>`);
+  if (au) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${authPath(au).split('/').map(encodeURIComponent).join('/')}${authLine(au)}" target="_blank" rel="noopener">${short ? "Authentic" : "Authentic source"} ↗</a>`);
   if (!indexed && candidate) links.push(`<a href="${FINDINGS}/blob/work/${candidate.path.split('/').map(encodeURIComponent).join('/')}#L${candidate.line}" target="_blank" rel="noopener">${integrationData.inactive?.[hex(f[0])]?.[1] ? "Inactive native" : "Draft native"}${short ? "" : " source"} ↗</a>`);
   if (indexed) links.push(`<a href="${esc(indexed.url || FINDINGS + "/blob/work/" + indexed.path.split('/').map(encodeURIComponent).join('/'))}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
@@ -551,7 +554,7 @@ function integrationBar(i, name) {
     <div class="label">Native code coverage <small>(${mb(recovered)} of ${mb(total)}) — ${pct(recovered, total)}</small></div>
     <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * recovered / total).toFixed(2)}"><i class="a" style="width:${w(au.bytes)}"></i><i class="o" style="width:${w(og.bytes)}"></i><i class="n" style="width:${w(g.integrated.bytes - au.integrated_bytes - og.integrated_bytes)}"></i><i class="i" style="width:${w(inactiveB - au.inactive_bytes - og.inactive_bytes)}"></i><i class="d" style="width:${w(Math.max(0, nearly.bytes - inactiveB))}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
       <i class="u" style="width:${w(g.partial.bytes + g.unmined.bytes)}"></i></div>
-    <div class="legend"><span><i style="background:${NC.authentic}"></i>Authentic <small>${pct(au.bytes, total)}</small></span><span><i style="background:${NC.organized}"></i>Organized <small>${pct(og.bytes, total)}</small></span><span><i style="background:${NC.integrated}"></i>Integrated</span>
+    <div class="legend"><span><i style="background:${NC.authentic}"></i>Authentic <small>${pct(au.bytes, total)}</small></span>${og.bytes ? `<span><i style="background:${NC.organized}"></i>Organized <small>${pct(og.bytes, total)}</small></span>` : ""}<span><i style="background:${NC.integrated}"></i>Integrated</span>
       <span><i style="background:${NC.inactive}"></i>Inactive native</span><span><i style="background:${NC.draft}"></i>Draft native</span><span><i style="background:${NC.none}"></i>Source analogs / not exact</span></div>
     <p class="note">Authentic: native code published at its original 2007/08 file path (layout branch) whose object is identical to the live source; it is part of the integrated and inactive bytes. Organized: also published on the layout branch, but at an inferred path or as a merged unit proven symbol by symbol; not counted as Authentic. Coverage combines published integration and inactive receipt-exact native bodies without overlap. Drafts are separate and excluded from this percentage. Inactive exactness does not establish runtime safety, executable selection or server credit.</p>
 `;
@@ -1239,7 +1242,7 @@ async function client(name) {
     const named=native?.names[hex(f[0])], integrated=nativeSet.has(hex(f[0]));
     const readable=named && !named[0].startsWith("?") ? named[0] : "";
     document.getElementById("detail").innerHTML=`<div class="function-card"><strong>${esc(readable || units[f[3]])}</strong><br>
-      <span class="function-status">${native?.authentic?.[hex(f[0])] ? "Authentic · original path " + esc(native.authentic[hex(f[0])][0]) + " · " : native?.organized?.[hex(f[0])] ? "Organized · " + esc(native.organized[hex(f[0])][1]) + " · " + esc(native.organized[hex(f[0])][0]) + " · " : ""}${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
+      <span class="function-status">${native?.authentic?.[hex(f[0])] ? "Authentic · original path " + esc(authPath(native.authentic[hex(f[0])])) + " · " : native?.organized?.[hex(f[0])] ? "Organized · " + esc(native.organized[hex(f[0])][1] || "") + " · " + esc(authPath(native.organized[hex(f[0])])) + " · " : ""}${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
       <div class="function-meta">${hex(f[0])} · ${fmt(f[1])} bytes · ${f[2]}% matched</div>${sourceLinks(name,f)}
       ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Integrated source location not indexed yet.</p>' : ""}
       ${named || f[6] ? `<details><summary>Technical details</summary>${named ? `<p>Symbol <code>${esc(named[1])}</code></p>` : ""}${f[6] ? `<p>Family <code>${esc(f[6])}</code></p>` : ""}</details>` : ""}
