@@ -11724,6 +11724,258 @@
    "address": "00575240",
    "votes": 1,
    "identity_evidence": "ServiceProvider::askAddChild vtable slot 2, dynamic_cast<const Service*>; bytes equal to src/2008-06/00575240.cpp"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WBA@AEPAXI@Z",
+   "address": "00568d20",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WBDA@AEPAXI@Z",
+   "address": "0057a830",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WBE@AEPAXI@Z",
+   "address": "00568d30",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WBFA@AEPAXI@Z",
+   "address": "0057a840",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WBHA@AEPAXI@Z",
+   "address": "00568e80",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WCE@AEPAXI@Z",
+   "address": "00569060",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WEE@AEPAXI@Z",
+   "address": "00568e90",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WGE@AEPAXI@Z",
+   "address": "00568d10",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WIE@AEPAXI@Z",
+   "address": "00568e60",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WKE@AEPAXI@Z",
+   "address": "00568e70",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@WME@AEPAXI@Z",
+   "address": "0057aca0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getClassName@?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@UBEABVName@2@XZ",
+   "address": "00568eb0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?onAddListener@?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@MBEXPAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@2@@Z",
+   "address": "00572bc0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@RBX@@QAE@XZ (identified at 00568d70: ServiceProvider NonFactoryProduct ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WBA@AEPAXI@Z",
+   "address": "00568d20",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WBDA@AEPAXI@Z",
+   "address": "0057a830",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WBE@AEPAXI@Z",
+   "address": "00568d30",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WBFA@AEPAXI@Z",
+   "address": "0057a840",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WBHA@AEPAXI@Z",
+   "address": "00568e80",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WCE@AEPAXI@Z",
+   "address": "00569060",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WEE@AEPAXI@Z",
+   "address": "00568e90",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WGE@AEPAXI@Z",
+   "address": "00568d10",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WIE@AEPAXI@Z",
+   "address": "00568e60",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WKE@AEPAXI@Z",
+   "address": "00568e70",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_E?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@WME@AEPAXI@Z",
+   "address": "0057aca0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?classDescriptor@?$Described@VGlobalSettings@RBX@@$1?sGlobalSettings@2@3PADAV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sGlobalSettings@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+   "address": "0049ec10",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$DescribedNonCreatable@VGlobalSettings@RBX@@VServiceProvider@2@$1?sGlobalSettings@2@3PADA@RBX@@IAE@XZ (identified at 00568ed0: GlobalSettings DescribedNonCreatable ctor: vftable slots bound to the original image slots): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??$getset@P8Server@Network@RBX@@BEHXZ@?$PropDescriptor@VServer@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Server@Network@2@BEHXZH@Z",
+   "address": "004a2030",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at 004a2030 stores the vftable of RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (__thiscall RBX::Network::Server::*)(void)const>; byte-exact body is its getset getter factory"
+  },
+  {
+   "symbol": "??0?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@AAE@XZ",
+   "address": "00447380",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447e80: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::FrameRateMa): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??__Fs@?1??doSingleton@?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ@YAXXZ",
+   "address": "007fadb0",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447e80: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::FrameRateMa): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?doSingleton@?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "007c0ece",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447e80: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::FrameRateMa): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?onChildChanged@DataModel@RBX@@MAEXPAVInstance@2@ABVPropertyChanged@2@@Z",
+   "address": "0057b630",
+   "votes": 1,
+   "identity_evidence": "DataModel RTTI/vtable slot and authentic onChildChanged declaration identify 0057b630; target-order byte-equal body"
+  },
+  {
+   "symbol": "??0?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@AAE@XZ",
+   "address": "00447500",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447ef0: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::Antialiasin): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??__Fs@?1??doSingleton@?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ@YAXXZ",
+   "address": "007fada0",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447ef0: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::Antialiasin): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?doSingleton@?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "007c0eee",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447ef0: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::Antialiasin): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@AAE@XZ",
+   "address": "00447680",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447f60: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::BevelMode>): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??__Fs@?1??doSingleton@?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ@YAXXZ",
+   "address": "007fad90",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447f60: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::BevelMode>): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?doSingleton@?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ",
+   "address": "007c0f0e",
+   "votes": 1,
+   "identity_evidence": "reference of ?doSingleton@?$EnumDesc@W4BevelMode@CRenderSettings@@@Reflection@RBX@@CAAAV123@XZ (identified at 00447f60: The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<CRenderSettings::BevelMode>): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??__Ef_stop@@YAXXZ",
+   "address": "007f1c90",
+   "votes": 1,
+   "identity_evidence": "INFERRED: object name; initializer args, RTTI BoundFuncDesc<Server,void(int),1>"
+  },
+  {
+   "symbol": "??__E?prop_RenderImportance@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B@@YAXXZ",
+   "address": "007f48d0",
+   "votes": 1,
+   "identity_evidence": "donor PartInstance.cpp object name; initializer args"
+  },
+  {
+   "symbol": "??__E?prop_Color@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VColor3@G3D@@@Reflection@2@B@@YAXXZ",
+   "address": "007f4630",
+   "votes": 1,
+   "identity_evidence": "donor PartInstance.cpp object name; initializer args"
+  },
+  {
+   "symbol": "??__E?sound_desc_playOnRemove@SoundChannel@Soundscape@RBX@@2V?$BoundProp@_N$00@Reflection@3@A@@YAXXZ",
+   "address": "007f5450",
+   "votes": 1,
+   "identity_evidence": "donor Sound.cpp name; initializer args"
+  },
+  {
+   "symbol": "??__Esound_playFunction@Soundscape@RBX@@YAXXZ",
+   "address": "007f5480",
+   "votes": 1,
+   "identity_evidence": "donor Sound.cpp name; initializer args"
+  },
+  {
+   "symbol": "??__Esound_stopFunction@Soundscape@RBX@@YAXXZ",
+   "address": "007f54e0",
+   "votes": 1,
+   "identity_evidence": "donor Sound.cpp name; initializer args"
   }
  ]
 }

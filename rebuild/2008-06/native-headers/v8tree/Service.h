@@ -29,6 +29,7 @@ class __declspec(novtable) ServiceProvider :
     public Notifier<ServiceProvider, ServiceRemoving> {
 public:
     static const ServiceProvider* findServiceProvider(const Instance*);
+    virtual bool askAddChild(const Instance* instance) const;   // INFERRED: 00575240 vtable slot 2 override (__RTDynamicCast to Service)
     mutable std::vector<boost::shared_ptr<Instance> > serviceArray;
     std::map<const Name*, boost::shared_ptr<Instance> > serviceMap;
     boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;
