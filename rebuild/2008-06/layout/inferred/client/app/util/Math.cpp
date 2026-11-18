@@ -1,4 +1,5 @@
 #include "util/Math.h"
+
 namespace RBX {
 G3D::Vector3 Math::closestPointOnRay(const G3D::Ray& pointOnRay, const G3D::Ray& otherRay) {
     G3D::Vector3 pa = pointOnRay.origin;

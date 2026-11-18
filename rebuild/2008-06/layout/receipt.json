@@ -1,6 +1,157 @@
 {
- "files": 284,
+ "files": 310,
  "merged_units": {
+  "rebuild/2008-06/layout/inferred/client/app/gui/MenuItem.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/GuiWidgets2008MenuItem.cpp",
+    "rebuild/2008-06/native-classes/WidgetMenuItem.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/IRenderable.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/SpatialHashStats.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5DC_2008IRenderable.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8tree/enumproperty.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit564_2008ValueConvert.cpp",
+    "rebuild/2008-06/native-classes/TypedPropertySpecializations2008.cpp",
+    "rebuild/2008-06/native-classes/Inferred_0056f0b0.cpp",
+    "rebuild/2008-06/native-classes/Inferred_0056f8c0.cpp",
+    "rebuild/2008-06/native-classes/SoundValueConvertFloat.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8tree/Service.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit570_2008ServiceProvider.cpp",
+    "rebuild/2008-06/native-classes/ServiceLookup.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/ObjectBrowser.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+    "rebuild/2008-06/native-classes/COutputView.cpp"
+   ],
+   "flags": "",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/tool/DragUtilities.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Inferred_0060ec60.cpp",
+    "rebuild/2008-06/native-classes/Inferred_0060ecd0.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL",
+   "status": "merged (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/UserInputBase.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/UserInputBaseCursor.cpp",
+    "rebuild/2008-06/native-classes/UserInputMovement.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast",
+   "status": "merged (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/gui/ChatWidget.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/GuiWidgets2008Chat.cpp",
+    "rebuild/2008-06/native-classes/WidgetChat.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/widget-rect-2008",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/gui/ChatOutput.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/ChatOutputCommands.cpp",
+    "rebuild/2008-06/native-classes/ChatOutput.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/gui/ScoreHud.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit650LeaderboardTemplates.cpp",
+    "rebuild/2008-06/native-classes/ScoreHud.cpp",
+    "rebuild/2008-06/native-classes/ScoreHudLeaderboard2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/tool/Dragger.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp",
+    "rebuild/2008-06/native-classes/DraggerLineMove.cpp",
+    "rebuild/2008-06/native-classes/DraggerPlacement.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/win/Workspace.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/CWorkspace.cpp",
+    "rebuild/2008-06/native-classes/WorkspaceFinalConstruct.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/util/Math.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/MathClosestRay.cpp",
+    "rebuild/2008-06/native-classes/OgreAuto_RBX_Math.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Lighting.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Inferred_004d6ff0.cpp",
+    "rebuild/2008-06/native-classes/AppUnit5E0LightingReflection.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/client/app/tool/MegaDragger.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/MegaDraggerMoves.cpp",
+    "rebuild/2008-06/native-classes/MegaDragger.cpp",
+    "rebuild/2008-06/native-classes/MegaDraggerMovement.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Accoutrement.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/Inferred_005b1e50.cpp",
+    "rebuild/2008-06/native-classes/Accoutrement.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Surface.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
+    "rebuild/2008-06/native-classes/SurfaceFlat.cpp",
+    "rebuild/2008-06/native-classes/SurfaceProperties.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded",
+   "status": "merged (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/tool/NullTool.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+    "rebuild/2008-06/native-classes/NullTool.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
   "rebuild/2008-06/layout/inferred/client/app/util/Extents.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/ExtentsOverlap.cpp",
@@ -17,28 +168,13 @@
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast",
    "status": "merged and tidied (per-symbol identical; link order unproven)"
   },
-  "rebuild/2008-06/layout/inferred/client/app/tool/NullTool.cpp": {
+  "rebuild/2008-06/layout/inferred/client/win/LogManager.cpp": {
    "sources": [
-    "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
-    "rebuild/2008-06/native-classes/NullTool.cpp"
+    "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp",
+    "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
+    "rebuild/2008-06/native-classes/LogManagerGet.cpp"
    ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)"
-  },
-  "rebuild/2008-06/layout/inferred/client/app/util/Math.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/MathClosestRay.cpp",
-    "rebuild/2008-06/native-classes/OgreAuto_RBX_Math.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS",
-   "status": "merged (per-symbol identical; link order unproven)"
-  },
-  "rebuild/2008-06/layout/inferred/client/app/util/IRenderable.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AppUnit5DC_2008IRenderable.cpp",
-    "rebuild/2008-06/native-classes/SpatialHashStats.cpp"
-   ],
-   "flags": "",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
    "status": "merged and tidied (per-symbol identical; link order unproven)"
   },
   "rebuild/2008-06/layout/inferred/client/win/VersionInfo.cpp": {
@@ -48,32 +184,23 @@
    ],
    "flags": "",
    "status": "merged and tidied (per-symbol identical; link order unproven)"
-  },
-  "rebuild/2008-06/layout/inferred/client/win/LogManager.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AppLeaves2008CrashReporter.cpp",
-    "rebuild/2008-06/native-classes/LogManagerDestructor.cpp",
-    "rebuild/2008-06/native-classes/LogManagerGet.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string",
-   "status": "merged and tidied (per-symbol identical; link order unproven)"
   }
  },
- "inferred_path_files": 87,
+ "inferred_path_files": 93,
  "status": {
-  "clean-identical": 148,
-  "dropped": 12,
-  "verbatim-identical": 26,
+  "clean-identical": 164,
+  "verbatim-identical": 21,
+  "dropped": 1,
   "clean (token-identical)": 67,
   "verbatim (line-sensitive macros)": 11,
   "verbatim": 25
  },
  "held_back": {
-  "merge or conflict": 637,
-  "no original path": 2064,
+  "merge or conflict": 638,
+  "no original path": 2090,
   "requires_inline_placement_review": 8,
-  "requires_identity_review": 18,
-  "inferred path with no folder evidence": 15,
+  "requires_identity_review": 19,
+  "inferred path with no folder evidence": 17,
   "requires_split_review": 4,
   "requires_case_review": 22
  },
@@ -82,7 +209,7 @@
  "per_file": {
   "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.cpp": {
    "source": "rebuild/2008-06/native-classes/ActiveDocView.cpp",
-   "status": "verbatim-identical"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/network/CrashReporter.cpp": {
    "source": "rebuild/2008-06/native-classes/AppLeftovers.cpp",
@@ -94,11 +221,11 @@
   },
   "rebuild/2008-06/layout/client/app/reflection/signal.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit568Signal.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/util/Quaternion.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/v8world/Mechanism.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit5E4Mechanism.cpp",
@@ -106,7 +233,7 @@
   },
   "rebuild/2008-06/layout/client/app/v8world/MotorJoint.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit5E4MotorJoint.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/util/NormalId.cpp": {
    "source": "rebuild/2008-06/native-classes/AppUnit5ECNormalId.cpp",
@@ -142,19 +269,19 @@
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/Backpack.cpp": {
    "source": "rebuild/2008-06/native-classes/Backpack.cpp",
-   "status": "verbatim-identical"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/app/v8datamodel/CharacterAppearance.cpp": {
    "source": "rebuild/2008-06/native-classes/BodyColors.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/v8kernel/Cofm.cpp": {
    "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/v8kernel/Point.cpp": {
    "source": "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/win/AboutRobloxDialog.cpp": {
    "source": "rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp",
@@ -358,7 +485,7 @@
   },
   "rebuild/2008-06/layout/client/app/util/Guid.cpp": {
    "source": "rebuild/2008-06/native-classes/Guid.cpp",
-   "status": "verbatim-identical"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp": {
    "source": "rebuild/2008-06/native-classes/HitTestShapes.cpp",
@@ -378,7 +505,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/app/v8world/clump.cpp": {
    "source": "rebuild/2008-06/native-classes/Inferred_005e6240.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcapimin.c": {
    "source": "rebuild/2008-06/native-classes/Jpegjcapimin.cpp",
@@ -586,7 +713,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/boost_1_34_1/libs/python/src/object/class.cpp": {
    "source": "rebuild/2008-06/native-classes/MetadataClass.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/RakNetTypes.cpp": {
    "source": "rebuild/2008-06/native-classes/NetworkID.cpp",
@@ -610,11 +737,11 @@
   },
   "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
    "source": "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
    "source": "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/PluginInterface.cpp": {
    "source": "rebuild/2008-06/native-classes/PluginInterface.cpp",
@@ -674,7 +801,7 @@
   },
   "rebuild/2008-06/layout/client/app/util/Profiling.cpp": {
    "source": "rebuild/2008-06/native-classes/Profiling.cpp",
-   "status": "verbatim-identical"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/BitStream.cpp": {
    "source": "rebuild/2008-06/native-classes/RakBitStream2008.cpp",
@@ -722,7 +849,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/win/ScintillaCtrl.cpp": {
    "source": "rebuild/2008-06/native-classes/ScintillaCtrl.cpp",
-   "status": "verbatim-identical"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/app/v8datamodel/IEquipable.cpp": {
    "source": "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp",
@@ -770,7 +897,7 @@
   },
   "rebuild/2008-06/layout/inferred/client/app/gui/Button.cpp": {
    "source": "rebuild/2008-06/native-classes/WidgetButtons.cpp",
-   "status": "dropped"
+   "status": "clean-identical"
   },
   "rebuild/2008-06/layout/inferred/client/app/v8world/mutiljoint.cpp": {
    "source": "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
