@@ -6070,6 +6070,159 @@
    }
   ]
  },
+ "rebuild/2008-06/layout/inferred/client/network/include/network/IdSerializer.h": {
+  "source": "rebuild/2008-06/native-headers/Network/IdSerializer.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Network::IdSerializer and its string dictionaries (inactive). Shape after the donor",
+     "// tools/rbxgs/Client/Network/Streaming.h; every base, field and size below is read from the 2008-06 binary:",
+     "//   RTTI       vtable 0082534c .?AVIdSerializer@Network@RBX@@ (18 bases): Instance only (no Described or",
+     "//              factory base; slots 2 and 3 are _purecall 0068e880, so IdSerializer is abstract).",
+     "//   size       0x2b74: Replicator (RTTI 008254fc) places PluginInterface at +0x2b74, directly after it.",
+     "//   fields     constructor 004b94a0 / destructor 004b9440:",
+     "//              +0x130 SharedStringDictionary scopeNames (constructor 004b3d10, destructor 004b3d70),",
+     "//              +0x2b54 std::map<Guid::Data, std::vector<WaitItem> > waitItems (map constructor 00699b30 called",
+     "//              with key_compare/allocator temporaries, destructor 004b93d0; _Myhead at +0x18 of the map).",
+     "//   StringSender: constructor 004b3c90 / destructor 004b36f0: +0x00 std::map dictionary (0x20 bytes),",
+     "//              +0x20 std::string strings[128] (eh vector 0x1c x 0x80), +0xe20 int lastIndex (constructed as 1).",
+     "//   StringReceiver: 2008 keeps a plain array, std::string strings[256] (SharedStringDictionary constructor",
+     "//              004b3d10 eh-vector-constructs 0x100 x 0x1c at +0xe24, destructor 004b3d70 destroys it before",
+     "//              calling ~StringSender 004b36f0); the donor's map<unsigned char, std::string> is a later shape."
+    ]
+   },
+   {
+    "line": 56,
+    "text": [
+     "// Bodies in native-classes/AppUnit49C_2008IdSerializerTemplates.cpp (Network/Streaming.cpp unit)."
+    ]
+   },
+   {
+    "line": 59,
+    "text": [
+     "// Donor Streaming.h StringSender::serializeString (thiscall, ret 8; caller Replicator::serializeValue",
+     "// 004b6890 passes getSharedDictionary 004b6730's result, StringSender at +0 of SharedStringDictionary)."
+    ]
+   },
+   {
+    "line": 71,
+    "text": [
+     "// Bodies in native-classes/AppUnit49C_2008IdSerializerTemplates.cpp (Network/Streaming.cpp unit)."
+    ]
+   },
+   {
+    "line": 86,
+    "text": [
+     "// 0xc bytes: _Destroy_range<WaitItem> 004a79e0 (called from ~vector<WaitItem> 004a7fa0) steps by 0xc",
+     "// and releases the shared_ptr count at +8 (instance at +4)."
+    ]
+   },
+   {
+    "line": 102,
+    "text": [
+     "// 004a8ae0 (donor Streaming.cpp IdSerializer::serializeId; thiscall, ret 8). No body yet: it reads the",
+     "// argument's Guid after GuidItem<Instance>::registerGuid 0049bba0 (Guid::Data at +0x8/+0xc), and the",
+     "// GuidItem<Instance> accessor for that guid is not declared in util/GuidItem.h."
+    ]
+   },
+   {
+    "line": 106,
+    "text": [
+     "// Donor Streaming.h IdSerializer::serializeRef (thiscall, ret 8; caller Replicator::serializeValue 004b6890",
+     "// passes the Replicator this unadjusted: IdSerializer at +0). Body in AppUnit49C_2008IdSerializerTemplates.cpp."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/network/include/network/PhysicsReplication.h": {
+  "source": "rebuild/2008-06/native-headers/Network/PhysicsReplication.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Network physics replication interfaces and their two simple implementations (inactive).",
+     "// The donor tree has none of these classes (its Replicator.cpp sends physics itself); names follow the 2008 RTTI.",
+     "// This header has its own name, so no donor header is shadowed. Every base, field, slot and size below is read from",
+     "// the 2008-06 binary.",
+     "//",
+     "// Owner: Replicator (not recovered natively) constructor 004b9bd0 creates one sender and one receiver and keeps them in",
+     "// scoped_ptr-like slots at Replicator +0x2b80 (sender) / +0x2b84 (receiver); replacing one deletes the old object",
+     "// through vtable slot 0 with flag 1 (004ba0cc / 004ba142).",
+     "//   sender:   settings +0x134 == 0 -> new(0x74) PhysicsSender(this) 004ccb10; == 1 -> new(0x18)",
+     "//             RoundRobinPhysicsSender(this) 004c99c0.",
+     "//   receiver: settings +0x138 == 0 -> new(8) DirectPhysicsReceiver (constructor inlined at 004ba117: vtable 008247d0,",
+     "//             +4 = the Replicator); == 1 -> new(0x3c) InterpolatingPhysicsReceiver(this) 004b5e80.",
+     "//",
+     "// Interfaces (no vtable of their own exists in the binary: no complete-object locator names IPhysicsSender or",
+     "// IPhysicsReceiver, and no constructor or destructor stores one, hence __declspec(novtable)).",
+     "//   RTTI     every implementation's hierarchy is [Impl (2 contained), I* (1 contained), boost::noncopyable_::noncopyable",
+     "//            (mdisp 4, attributes 0x4d = private, non-polymorphic)], so the interface derives privately from",
+     "//            noncopyable and the implementation derives from the interface only.",
+     "//   IPhysicsSender slots (vtables 00826928 PhysicsSender, 00826760 RoundRobinPhysicsSender):",
+     "//            0 scalar deleting destructor; 1 no arguments, `ret` (RoundRobin 0047d410 is empty; PhysicsSender",
+     "//            004cd920); 2 one int argument, returns int: Replicator 004aba07 passes an int and keeps eax",
+     "//            (RoundRobin 004cd420 `ret 4`, PhysicsSender 004cce00 `ret 4`, compares the argument with jge).",
+     "//   IPhysicsReceiver slots (vtables 008247d0 DirectPhysicsReceiver, 00824ee4 InterpolatingPhysicsReceiver):",
+     "//            0 scalar deleting destructor; 1 one unsigned 4-byte argument (Interpolating 004c8fa0 forwards it to",
+     "//            004c6f70, which converts it with fild + 2^32 correction: unsigned; Direct 0070bdf0 is `ret 4`);",
+     "//            2 (RakNet::BitStream&, unsigned): Replicator 004abc00 calls it with the packet BitStream and the",
+     "//            timestamp it read (004a62d0) after packet id 0x50; Direct 004c83b0 / Interpolating 004c9120 `ret 8`.",
+     "//   Slot names are analog names (no symbol evidence).",
+     "//",
+     "// DirectPhysicsReceiver",
+     "//   size     8: Replicator 004ba117 allocates 8 and stores vtable 008247d0 and +4 = Replicator*.",
+     "//   slots    0 ??_G 004ab5b0 is the identical-code-folded trivial scalar deleting destructor (no members to destroy);",
+     "//            1 0070bdf0 `ret 4`; 2 004c83b0 (1890 bytes: needs the native Replicator / IdSerializer API; open).",
+     "//",
+     "// RoundRobinPhysicsSender",
+     "//   size     0x18: Replicator 004ba073 allocates 0x18 before the constructor 004c99c0.",
+     "//   ctor     004c99c0: +4 = replicator argument, vtable 00826760, +8 = 0 (EH state 0 from here: the tracker is the only",
+     "//            member with a destructor), then +0x10 = G3D::System::time() (inline; calls getLocalTime 00508410, fstp",
+     "//            qword: a double, so +0xc is the alignment gap before it).",
+     "//   dtor     ??_G 004ca010: `lea ecx, [esi+8]; call 005e5320` and delete. 005e5320 is the tracker cleanup: when its",
+     "//            single pointer is set it removes `this` from the 4-byte-pointer vector at pointer+4 (005e5200) and clears",
+     "//            the pointer: the donor v8world/Mechanism.h MechanismTracker shape (Mechanism* mechanism; inline",
+     "//            ~MechanismTracker() { stopTracking(); }). 004c99b0 `jmp 005e5320` is that inline destructor's",
+     "//            out-of-line copy (the constructor's unwind target).",
+     "//   slots    0 ??_G 004ca010; 1 0047d410 empty; 2 004cd420 (225 bytes: World::getSimJobStage 005e93b0 and an",
+     "//            unidentified 0x13c-byte local type 004cbd40/004c9a70; open).",
+     "//",
+     "// Not declared here (layouts known, member types not yet derived):",
+     "//   PhysicsSender 0x74 (ctor 004ccb10, dtor 004ccb90, ??_G 004ccde0): +4 a boost::multi_index_container (0x34 bytes;",
+     "//     constructor 004cc400 news a 0x78-byte header node, hashed index bucket array at +0xc, node_count +0x30,",
+     "//     destructor 004ccab0) whose 0x50-byte value starts with shared_ptr<PartInstance>, double, CoordinateFrame",
+     "//     (copy 004c9d90); +0x38 an uninitialized index iterator; +0x3c Replicator*; +0x40 int = 0; +0x44 shared_ptr",
+     "//     (set from shared_from 00618a40 in 004cd920); +0x4c and +0x60 boost::signals::scoped_connection (0x14 each,",
+     "//     destructor 005954b0).",
+     "//   InterpolatingPhysicsReceiver 0x3c (ctor 004b5e80, ??_G 004b6290): +4 Replicator*; +8 a multi_index_container",
+     "//     (0x34 bytes; constructor 004b0ae0 news a 0x298-byte header node, destructor 004b58f0)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/network/include/network/ReplicatorMarker.h": {
+  "source": "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Network::Marker (inactive). Shape after the donor tools/rbxgs/Client/Network/Replicator.h",
+     "// (where Marker lives with Replicator; kept in its own header so the donor Replicator.h is not shadowed).",
+     "// Every base, field and size below is read from the 2008-06 binary:",
+     "//   RTTI       vtable 0082529c .?AVMarker@Network@RBX@@ (7 bases): DescribedNonCreatable<Marker, DescribedBase,",
+     "//              sMarker> (name mangled $1?sMarker@23@3QBDB: a const char array), private noncopyable (mdisp 0xc).",
+     "//              One slot: scalar deleting destructor 004b8600 (calls ~SignalSource 0056bd40 directly).",
+     "//   size       0x10: newMarker 004b9190 allocates 0x10 and calls the constructor 004b9140.",
+     "//   fields     constructor 004b9140: NonFactoryProduct<DescribedBase, sMarker> 004b85b0, descriptor",
+     "//              (classDescriptor 004b18d0) at +0x8, then +0xc bool returned = false."
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreSceneManager.h": {
   "source": "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h",
   "build": {},
@@ -6092,6 +6245,316 @@
      "// view initialization 0045a4a0 establish unsigned command-ID -> Name* entries.",
      "// Not active until the containing classes and routing definitions are recovered.",
      "// Binder 004598f0 passes its UINT command parameter directly to map::find."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetButtons.h": {
+  "source": "rebuild/2008-06/native-headers/gui/WidgetButtons.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::KeyButton, ImageWidget, ImageButton and ImageKeyButton (inactive): the original gui Button unit",
+     "// 0064ef90..0064f6a0. Shape after the donor tools/rbxgs gui/Button.h (TextButton, ImageToggleButton and",
+     "// MultiImageButton are left out: the 2008-06 binary has no RTTI for them). A differently named header so that it does",
+     "// not shadow the donor gui/Button.h. Every base, field and size below is read from the binary",
+     "// (tests/record_native_widget.py checks them):",
+     "//   KeyButton       vtable 0084b70c .?AVKeyButton@RBX@@ -> Widget. Constructor 0064f110 (const std::string& name,",
+     "//                   SDLKey): Widget() 006422b0, keyCode +0x148, keyIsDown +0x14c = false, the 11 vtables, setName.",
+     "//                   process 0064ef90 (GuiTarget slot, vtable 0084b684), onDown 0064efd0 / onUp 0064eff0 (slots 27/28:",
+     "//                   UserInputBase::setKeyState, slot 6). isEnabled is Widget's (slot 30 = 005cf530), so no override.",
+     "//                   Size 0x150 (ImageKeyButton::imageDraw follows at +0x150).",
+     "//   ImageWidget     vtable 0084b814 -> Widget. guiImageDraw +0x148 (GuiDrawImage, 0x38 bytes). Constructor 0064f1c0",
+     "//                   (Adorn*, const std::string&): GuiDrawImage(Adorn*, const std::string&) 006010e0, then setName with",
+     "//                   the same string. render2d 0064f070 (slot 24), getSize 0064f280 (slot 23, GuiDrawImage::",
+     "//                   getImageSize 00642690). Implicit destructor 0064f2f0 (~GuiDrawImage 005cf360, ~GuiItem 00411540),",
+     "//                   deleting destructor 0064f670. Size 0x180.",
+     "//   ImageButton     vtable 0084b91c -> VerbWidget. guiImageDraw +0x14c. Constructor 0064f340 (Adorn*, Verb*,",
+     "//                   const std::string&): VerbWidget(verb) 00642370, GuiDrawImage(adorn, verb's name string)",
+     "//                   (Verb::getName inline, NATIVE_WIDGET_PENDING), setName(title). render2d 0064f0c0, getSize",
+     "//                   0064f410, destructor 0064f4b0 (~GuiDrawImage, ~VerbWidget 006424a0), deleting 0064f690. Size 0x184.",
+     "//   ImageKeyButton  vtable 0084ba24 -> KeyButton. imageDraw +0x150. Constructor 0064f500 (Adorn*, const std::string&,",
+     "//                   SDLKey): KeyButton(name, key) 0064f110, GuiDrawImage(adorn, name). render2d 0064f010 (DOWN_OVER",
+     "//                   image while the key is down), getSize 0064f5c0, destructor 0064f600, deleting 0064f650. Size",
+     "//                   0x188 (ArrowButton derives from it)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetChat.h": {
+  "source": "rebuild/2008-06/native-headers/gui/WidgetChat.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ChatWidget, RBX::UnifiedImageWidget and RBX::ChatButton (inactive). Shape after the donor",
+     "// tools/rbxgs gui/ChatWidget.h (a differently named header so that it does not shadow the donor one). Every base,",
+     "// field and size below is read from the binary (tests/record_native_widget.py checks them):",
+     "//   ChatWidget          vtable 0084b4e4 .?AVChatWidget@RBX@@ -> UnifiedWidget -> GuiItem. Constructor 0064e8c0",
+     "//                       (const std::string& title, std::string code; ret 0x20): UnifiedWidget() 00600540, the 11",
+     "//                       vtables, code +0x148 (std::string), setName(title), code = argument. onMenuStateChanged",
+     "//                       0064e8a0 (slot 25; reads menuState +0x144 directly: NATIVE_WIDGET_PENDING), process 0064ead0",
+     "//                       (GuiTarget slot, vtable 0084b45c; not attempted: Players / chat). Destructor 0064ea20 (its",
+     "//                       extent also covers the deleting destructor 0064ea70: bounds). Size 0x164.",
+     "//   UnifiedImageWidget  vtable 0084222c -> UnifiedWidget. guiImageDraw +0x148 (GuiDrawImage, 0x38 bytes). Constructor",
+     "//                       00601c50 (Adorn*, const std::string&): UnifiedWidget() 00600540, GuiDrawImage(adorn, name)",
+     "//                       006010e0 (no setName). render2dMe 0064e840 (slot 28; menuState +0x144 read directly:",
+     "//                       NATIVE_WIDGET_PENDING), getSize 0064f280 (slot 23, shared with ImageWidget::getSize).",
+     "//                       Destructor 0064f2f0 (shared with ImageWidget). Size 0x180.",
+     "//   ChatButton          vtable 0084232c -> UnifiedImageWidget. Constructor 00601d00 (Adorn*, const std::string&).",
+     "//                       isVisible 0064ea90 (slot 21; local Player lookup, not attempted)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetMenuItem.h": {
+  "source": "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::MenuItem (inactive). Shape after the donor tools/rbxgs gui/MenuItem.h (a differently named",
+     "// header so that it does not shadow the donor one). Read from the binary (tests/record_native_widget.py checks it):",
+     "//   MenuItem  vtable 0084b5f4 .?AVMenuItem@RBX@@ -> VerbWidget -> Widget. Constructor 0064ebf0 (Verb*, const",
+     "//             std::string&; ret 8): VerbWidget(verb) 00642370, the 11 vtables, accelerator +0x14c (std::string),",
+     "//             setName(title), guiSize = (200.0f 00819ba8, 24.0f 0082f85c). Destructor 0064ecd0 (~std::string,",
+     "//             ~VerbWidget 006424a0), deleting destructor 0064ed90. canLoseFocus (slot 17) = 00565950 (`return true`,",
+     "//             shared). render2d 0064edb0 (slot 24; not attempted). Size 0x168."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidFloorFields.h": {
+  "source": "rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 9,
+    "text": [
+     "// Inactive relative layout of HumanoidState +0x20 through +0x9f.",
+     "// PartInstance identity and float semantics need independent native proof."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidState.h": {
+  "source": "rebuild/2008-06/native-headers/humanoid/HumanoidState.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 18,
+    "text": [
+     "// Inactive native layout of the 2008-06 HumanoidState base. Do not instantiate",
+     "// or use in the running player.",
+     "//",
+     "// Evidence (2008-06 Roblox.exe):",
+     "// - RTTI .?AVHumanoidState@HUMAN@RBX@@: INamed at +0, HitTestFilter at +4.",
+     "// - primary vtable 0084ad00 (9 slots), HitTestFilter vtable 0084acf8 (1 slot).",
+     "// - constructor 00643e00: stores +0x08 (Humanoid* argument), +0x0c (0.0f),",
+     "//   +0x10/+0x11 (false), +0x14/+0x18/+0x1c (G3D::Array data/num/numAllocated),",
+     "//   +0x24/+0x28 (shared_ptr px/pn), five zero floats +0x2c..+0x3c, and",
+     "//   CoordinateFrame constructor calls at +0x40 and +0x70.",
+     "// - destructor 006435c0: shared_ptr release at +0x24/+0x28, then",
+     "//   System::alignedFree(+0x14) and +0x14/+0x18/+0x1c = 0 (G3D::Array of a",
+     "//   trivially destructible element).",
+     "// - 00644a30 passes &array14 to the geometry query 0062db60 and reads each",
+     "//   element's +0x104 (Instance::parent), so the elements are PartInstance*.",
+     "// - 006451c0 clears +0x20, resets the +0x24 shared_ptr, stores Vector3::inf()",
+     "//   at +0x2c and copies 0x30-byte CoordinateFrames +0x70 -> +0x40.",
+     "// - 00643b60 moves +0x38 to +0x3c and stores a vector length in +0x38.",
+     "// - Subclass storage starts at +0xa0 (MovingNoPhysicsBase SimJob base at",
+     "//   +0xa0; Seated/Dead/FallingDown factory allocations are exactly 0xa0).",
+     "// Member names after flag11 are analog names, not original declarations."
+    ]
+   },
+   {
+    "line": 55,
+    "text": [
+     "// vtable 0084ad00 slot order: 0 getName (pure, INamed), 1 onStep,",
+     "// 2 getStateType (pure), 3..5 bool queries, 6 scalar deleting destructor,",
+     "// 7 getIntendedRotationAboutYAxis, 8 onComputeForce."
+    ]
+   },
+   {
+    "line": 68,
+    "text": [
+     "// Out of line: callers call the identical-code-folded getter 00793d50 (mov eax,[ecx+8]; ret)."
+    ]
+   },
+   {
+    "line": 74,
+    "text": [
+     "//   005d9c30 through currentState +0x220; analog name)",
+     "// 00645450 (cdecl, `ret`): (*state)->006451c0(dt), 006453a0(state, dt), then (*state)->onStep(dt, controller)",
+     "// (slot 1). Called by Humanoid::onEvent 005dc740 with &currentState (+0x220) (analog name)."
+    ]
+   },
+   {
+    "line": 82,
+    "text": [
+     "//   005db560)",
+     "// 00644670 (thiscall, ret 4): switch over the 17 transition event ids (analog name)."
+    ]
+   },
+   {
+    "line": 87,
+    "text": [
+     "// 006451c0 (thiscall, ret 4): per-step update (analog name)."
+    ]
+   },
+   {
+    "line": 89,
+    "text": [
+     "// 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name)."
+    ]
+   },
+   {
+    "line": 94,
+    "text": [
+     "// Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;",
+     "// analog names):"
+    ]
+   },
+   {
+    "line": 98,
+    "text": [
+     "//   writes 6 floats (static Velocity::zero() 0097d568 fallback)"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates2.h": {
+  "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 8,
+    "text": [
+     "// Inactive native layouts of the 2008-06 humanoid states Freefall, Flying, Jumping and",
+     "// GettingUp. Do not instantiate or use in the running player. Balancing (the shared",
+     "// intermediate base, kP +0xa0 / kD +0xa4, ctor 0066e660) comes from HumanoidStates1.h.",
+     "// Member names are analog names, not original declarations.",
+     "//",
+     "// Named<> template arguments: RTTI spells them $1?sFreefall@23@3QBDB etc. (const char arrays);",
+     "// the Name::doDeclare<> instantiations 00667560/00667430/00667ba0/00667d80 read them."
+    ]
+   },
+   {
+    "line": 20,
+    "text": [
+     "// Freefall : Named<Balancing, sFreefall> (RTTI .?AVFreefall@HUMAN@RBX@@, 6 bases).",
+     "// - primary vtable 0084cea0, HitTestFilter vtable 0084ce98 (filterResult 006432e0 inherited).",
+     "// - constructor 00667810: Balancing(humanoid, 300.0f [0084cc5c], 50.0f [00819ba4]); zero",
+     "//   floats +0xac, +0xb0, +0xb4..+0xbc (+0xa8 is not initialized); fires",
+     "//   Humanoid::event_FreeFalling(true); saves head friction (PartInstance::getFriction",
+     "//   00598d50) to +0xb0 and torso friction to +0xac, then sets both parts' friction to 0",
+     "//   (PartInstance::setFriction 0059e090).",
+     "// - destructor 00667930 fires event_FreeFalling(false) and restores +0xb0 (head) and +0xac",
+     "//   (torso); deleting destructor 00667a20. Allocation size 0xc0 (factory 00643660).",
+     "// - onStep 00667510 stores controller->getValue(RIGHT_LEFT_INPUT) * 6.0f [0084ce80] at +0xa8",
+     "//   and the computeWalkVelocity() result at +0xb4..+0xbc.",
+     "// - onComputeForce 006675d0 calls Balancing::onComputeForce 0066e6a0 and reads +0xa8 and",
+     "//   +0xb4..+0xbc (Body/Cofm/SimBody layouts pending).",
+     "// - slots 3/4 0060a2f0 (return false), slot 5 inherited (true), getStateType 3 (005e2790)."
+    ]
+   },
+   {
+    "line": 50,
+    "text": [
+     "// Flying : Named<Balancing, sFlying> (RTTI .?AVFlying@HUMAN@RBX@@).",
+     "// - primary vtable 0084ce54, HitTestFilter vtable 0084ce4c.",
+     "// - constructor 006674b0: Balancing(humanoid, 300.0f, 50.0f) and the two vptr stores only.",
+     "//   Allocation size 0xa8 (factory 00643660). Slot 6 is the base's deleting destructor",
+     "//   00643d10 (implicit destructor, identical code).",
+     "// - slot 8 is 0070bdf0 (ret 4): Flying replaces Balancing::onComputeForce with an empty body;",
+     "//   Jumping's onComputeForce 00667a40 calls it directly. getStateType 4 (006fa3f0)."
+    ]
+   },
+   {
+    "line": 64,
+    "text": [
+     "// Jumping : Named<Flying, sJumping> (RTTI .?AVJumping@HUMAN@RBX@@, 8 bases).",
+     "// - primary vtable 0084ceec, HitTestFilter vtable 0084cee4.",
+     "// - constructor 00667c40: Flying(humanoid) 006674b0, value0c = 0.5f [00819bac], fires",
+     "//   Humanoid::event_Jumping(true). Allocation size 0xa8 (no members of its own).",
+     "// - destructor 00667cd0 fires event_Jumping(false); deleting destructor 00667d60.",
+     "// - onComputeForce 00667a40 calls Flying::onComputeForce, tests flag11 and uses Body/Cofm/",
+     "//   SimBody (pending). Slots 3/4 return false, getStateType 2 (0077d810)."
+    ]
+   },
+   {
+    "line": 81,
+    "text": [
+     "// GettingUp : Named<Balancing, sGettingUp> (RTTI .?AVGettingUp@HUMAN@RBX@@).",
+     "// - primary vtable 0084cf30, HitTestFilter vtable 0084cf28.",
+     "// - constructor 00667e20: Balancing(humanoid, 5000.0f [00826de0], 300.0f [0084cc5c]), fires",
+     "//   Humanoid::event_GettingUp(true) through the stored humanoid. Allocation size 0xa8.",
+     "// - destructor 00667ec0 fires event_GettingUp(false); deleting destructor 00667f50.",
+     "// - slot 8 inherited from Balancing (0066e6a0); slots 3/4 return false; getStateType 1 (007286a0)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates3SimJob.h": {
+  "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 8,
+    "text": [
+     "// RBX::SimJob has no native header. tests/NativeHumanoidStates3SimJob.h is the proposed",
+     "// declaration (vptr, boost::noncopyable, std::vector at +4, std::list iterator at +0x1c;",
+     "// sizeof 0x24, constructor 005e50f0, destructor 005e5150). The recorder places it at",
+     "// v8world/SimJob.h in its overlay."
+    ]
+   },
+   {
+    "line": 20,
+    "text": [
+     "// MovingNoPhysicsBase : Named<HumanoidState, sMovingNoPhysicsBase>, SimJob",
+     "// (RTTI .?AVMovingNoPhysicsBase@HUMAN@RBX@@, 7 bases: SimJob at +0xa0, its",
+     "// boost::noncopyable base at +0xa4).",
+     "// - primary vtable 0084d168 (9 slots), HitTestFilter vtable 0084d160, SimJob vtable 0084d150",
+     "//   (slot 0 compiler adjustor thunk 00667400 'sub ecx,0xa0; jmp 00667410'; slots 1 and 2 are",
+     "//   00667160 'add ecx,-0xa0; jmp 0066eaa0': SimJob overrides that tail-call a nonvirtual helper).",
+     "// - constructor 0066f070 (pending): HumanoidState(humanoid), SimJob() 005e50f0, zeroes",
+     "//   +0xc4/+0xc8 (shared_ptr), +0xcc, and the scoped_connection +0xd0 (+0xd4/+0xd8 px/pn,",
+     "//   +0xdc controlling flag, +0xe0 released flag); CoordinateFrame() 004782d0 at +0xe4;",
+     "//   stores shared_from(torso part) in +0xc4, copies its CoordinateFrame to +0xe4, stores",
+     "//   the ServiceProvider-created PhysicsService (0066f020, 005e8f70) in +0xcc and the",
+     "//   connection result of 004a3340 into +0xd0.",
+     "// - destructor 0066ee10: if (+0xc4) 0066ed50; ~scoped_connection 005954b0 (+0xd0);",
+     "//   shared_ptr release (+0xc4/+0xc8); inline ~SimJob (vptr 0083f72c, vector +0xb0/+0xa4);",
+     "//   ~HumanoidState 006435c0. Deleting destructor 00667410. Allocation size of the leaves 0x114.",
+     "// - onStep 0066f2c0 (pending: World/Body layouts) adds to the +0xe4 frame translation",
+     "//   (+0x108..+0x110). Slots 3..5 return false; getStateType 7 (0077d800, also inherited",
+     "//   by RunningNoPhysics).",
+     "// - 0066eaa0 (nonvirtual, this = MovingNoPhysicsBase): getHumanoid()->getTorsoPrimitive()",
+     "//   ? ->getAssembly() : 0; both SimJob overrides (00667160, identical code) return it."
+    ]
+   },
+   {
+    "line": 60,
+    "text": [
+     "// RunningNoPhysics : Named<MovingNoPhysicsBase, sRunningNoPhysics> (9 bases).",
+     "// - vtables 0084ce10 / 0084ce08 / 0084cdf8; constructor 00667370: MovingNoPhysicsBase(humanoid),",
+     "//   then Humanoid::event_Running(0.0f) (0097a504) through the argument.",
+     "// - onStep 006672b0 forwards to MovingNoPhysicsBase::onStep 0066f2c0 (also StrafingNoPhysics'",
+     "//   slot 1: identical code). getStateType inherited (7). Implicit destructor: slot 6 is",
+     "//   00667410 (identical code to MovingNoPhysicsBase's deleting destructor)."
+    ]
+   },
+   {
+    "line": 72,
+    "text": [
+     "// StrafingNoPhysics : Named<MovingNoPhysicsBase, sStrafingNoPhysics> (9 bases).",
+     "// - vtables 0084cdb0 / 0084cda8 / 0084cd98; constructor 00667210: MovingNoPhysicsBase(humanoid),",
+     "//   then Humanoid::event_Strafing(false) (0097a348, name \"Strafing\") through the argument.",
+     "// - onStep 006672b0 (identical code), getStateType 8 (0063e420)."
     ]
    }
   ]
@@ -6146,6 +6609,38 @@
    }
   ]
  },
+ "rebuild/2008-06/layout/inferred/client/app/include/util/EventDataBase.h": {
+  "source": "rebuild/2008-06/native-headers/util/EventDataBase.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 4,
+    "text": [
+     "// Original vtable 0080f860 and scalar destructor 00421110: no owning members."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/util/GuidItem.h": {
+  "source": "rebuild/2008-06/native-headers/util/GuidItem.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 5,
+    "text": [
+     "// Original Instance RTTI has GuidItem<Instance> as its primary base.",
+     "// Virtual slot follows roc_instance_guid_callback_5e8a3f385d045a38.cpp; the active donor",
+     "// Instance stores Guid elsewhere and must not use this candidate yet."
+    ]
+   },
+   {
+    "line": 14,
+    "text": [
+     "// INFERRED: Replicator item writers 004b47b0/004b8620/004b6d10 read the guid inline (`lea ecx,[instance+8]`)"
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.h": {
   "source": "rebuild/2008-06/native-headers/util/MarshaledListener.h",
   "build": {},
@@ -6156,6 +6651,179 @@
      "// Inactive recovery. Original RTTI proves four template parameters and the",
      "// Listener base; selected Selection dispatch/filter bodies match. Global lifetime",
      "// and game integration remain open."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/util/MovementKeys.h": {
+  "source": "rebuild/2008-06/native-headers/util/MovementKeys.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 3,
+    "text": [
+     "// Original byte field order established by 005ce960 SDL key queries.",
+     "// Byte fields + bool predicate jointly reproduce reader, predicate and render caller.",
+     "// Descriptive type/member names; original symbols unproven."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/util/Object.h": {
+  "source": "rebuild/2008-06/native-headers/util/Object.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 129,
+    "text": [
+     "// INFERRED: Object.h Creator::wasConstructed() asserts isConstructed == 0x29a (iOS 2013 reference: getClassName /",
+     "// static getCreator); each 2008 creator initializer stores 0x29a to its own instantiation's copy (0096c864 for",
+     "// Properties, 0096c5f8, 00978a68, ...), right after the creators-map insert of Creator()."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/ChangeHistoryService.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 9,
+    "text": [
+     "// Original 004150d0 allocates 0x1a4; 0058ab90 and RTTI establish bases and fields.",
+     "// Candidate remains inactive until its constructor and destructor are both verified."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/HistoryRecord.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 28,
+    "text": [
+     "// The bound property members take pair<const PropertyDescriptor*, Value> (non-const key): the original",
+     "// std::for_each 00588240 converts each map element into that temporary through 00587710 before the call."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/PhysicsService.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::PhysicsService (inactive). No donor header; names after the existing probe",
+     "// tests/record_native_physics_array_lifetime.py. Every base, field and virtual below is read from the 2008-06 binary:",
+     "//   RTTI       vtable 00826aac .?AVPhysicsService@RBX@@ -> DescribedNonCreatable<PhysicsService, Instance,",
+     "//              sPhysicsService> (name mangled $1?sPhysicsService@2@3QBDB: a const char array in .rdata at 0083f858",
+     "//              holding \"PhysicsService\"), Listener<World, AssemblyPhysicsOn> (mdisp 0x130, vtable 00826a24:",
+     "//              onEvent 005e9110), Listener<World, AssemblyPhysicsOff> (mdisp 0x134, vtable 00826a18: onEvent",
+     "//              005e9130) and the empty Service (mdisp 0x138). AssemblyPhysicsOn/Off are structs in RBX",
+     "//              (RTTI U prefix) that the native World.h does not declare yet: forward-declared here.",
+     "//   size       0x158: Creatable<Instance>::create<PhysicsService> 004cd760 allocates 0x158; the constructor 004cd5b0",
+     "//              calls the DescribedNonCreatable constructor 004cd510, stores the twelve vtables, builds",
+     "//              std::set<PartInstance*> at +0x138 (_Tree(const less&, const allocator&) 0064b2a0; head +0x150, size",
+     "//              +0x154) and calls setName(\"PhysicsService\") (string 00826a04).",
+     "//   dtor       005e8d30 (out of line, PhysicsService unit): ~set 0064b230 on +0x138, ~Instance 0055a540; the deleting",
+     "//              destructor 004cd740 and the ten ??_E thunks 004cd6a0..004cd730 sit next to the constructor.",
+     "//   vtable     slot 12 onServiceProvider 005e8ec0 (Workspace world +0x2e4: Notifier<World, AssemblyPhysicsOn> at",
+     "//              World +0x40, Notifier<World, AssemblyPhysicsOff> at +0x60; no Instance::onServiceProvider call).",
+     "//   events     onEvent(AssemblyPhysicsOn) 005e9110 -> onAdded 005e8f70 (fires AssemblyAdded 0097abec, inserts the",
+     "//              part: set insert 005e8c40); onEvent(AssemblyPhysicsOff) 005e9130 -> onRemoved 005e9040 (erase",
+     "//              005e9f60, fires AssemblyRemoved 0097ac20). Both convert with PartInstance::fromPrimitive 00599f80."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Sky.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Sky.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::Sky (inactive). Shape after the donor tools/rbxgs Sky.h; every field, virtual and",
+     "// descriptor below is read from the 2008-06 binary:",
+     "//   RTTI       vtable 0083fc0c .?AVSky@RBX@@ -> DescribedCreatable<Sky, Instance, sSky> (21 bases, no other",
+     "//              base; name mangled $1?sSky@2@3PADA, a char array in .data at 00955bd4).",
+     "//   size       0x1f8: Creatable<Instance>::create<Sky> 004d8c90 allocates 0x1f8. Constructor 005eb640 builds six",
+     "//              TextureIds (std::string + mime Name*, 0x20 each) at +0x130/+0x150/+0x170/+0x190/+0x1b0/+0x1d0,",
+     "//              stores +0x1f0 (bool 1) and +0x1f4 (int 3000), then setName(\"Sky\") and assigns the six",
+     "//              ContentId::fromAssets defaults; destructor 005ebae0 destroys the six strings in reverse.",
+     "//   vtable     no Instance virtual is overridden (askAddChild/askSetParent stay 0068e880).",
+     "//   descriptors (dynamic initializers 007f6e80..007f6fd0, all \"Appearance\" 008329ac, STANDARD):",
+     "//              prop_SkyUp 0097adac (+0x130), prop_SkyLf 0097ad3c (+0x150), prop_SkyRt 0097adc8 (+0x170),",
+     "//              prop_SkyBk 0097ad58 (+0x190), prop_SkyFt 0097ade4 (+0x1b0), prop_SkyDn 0097ad90 (+0x1d0),",
+     "//              prop_StarCount 0097ad74 (BoundProp<int>, +0x1f4), prop_CelestialBodiesShown 0097ad20",
+     "//              (BoundProp<bool>, +0x1f0)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Value.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Value.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 override of Source/App/include/v8datamodel/Value.h: class-name template parameters take the",
+     "// char array itself (const char*), as the 2008 binary pushes .data name arrays directly."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8tree/IDataState.h": {
+  "source": "rebuild/2008-06/native-headers/v8tree/IDataState.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 4,
+    "text": [
+     "// Original DataModel RTTI has no StateStack base beneath IDataState.",
+     "// Vtable 0083030c has exactly setDirty/isDirty before the next RTTI locator."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8tree/PropertyChanged.h": {
+  "source": "rebuild/2008-06/native-headers/v8tree/PropertyChanged.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 6,
+    "text": [
+     "// Existing donor event declaration; original grid callback observes its descriptor."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8tree/VerbContainer.h": {
+  "source": "rebuild/2008-06/native-headers/v8tree/VerbContainer.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 9,
+    "text": [
+     "// Split from the recovered Verb.h so native IDataState can be used without",
+     "// importing the donor's incompatible StateStack-based IDataState declaration."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/app/include/v8world/SimJob.h": {
+  "source": "rebuild/2008-06/native-headers/v8world/SimJob.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::SimJob declaration (inactive). Proposed from RTTI and the",
+     "// MovingNoPhysicsBase family; see tests/NativeHumanoidStates3SimJob.h for evidence."
     ]
    }
   ]

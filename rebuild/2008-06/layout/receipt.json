@@ -1,5 +1,5 @@
 {
- "files": 339,
+ "files": 383,
  "merged_units": {
   "rebuild/2008-06/layout/inferred/client/app/gui/ChatOutput.cpp": {
    "sources": [
@@ -232,20 +232,20 @@
    "status": "merged and tidied (per-symbol identical; link order unproven)"
   }
  },
- "inferred_path_files": 108,
+ "inferred_path_files": 152,
  "status": {
   "clean-identical": 184,
   "verbatim-identical": 25,
   "dropped": 1,
-  "clean (token-identical)": 67,
-  "verbatim (line-sensitive macros)": 11,
-  "verbatim": 25
+  "clean (token-identical)": 90,
+  "verbatim (line-sensitive macros)": 12,
+  "verbatim": 45
  },
  "held_back": {
   "merge or conflict": 764,
-  "no original path": 1957,
+  "no original path": 1905,
   "requires_inline_placement_review": 8,
-  "requires_identity_review": 21,
+  "requires_identity_review": 33,
   "inferred path with no folder evidence": 17,
   "requires_case_review": 22,
   "requires_split_review": 3
@@ -1121,6 +1121,18 @@
    "source": "rebuild/2008-06/native-headers/MTUSize.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/inferred/client/network/include/network/IdSerializer.h": {
+   "source": "rebuild/2008-06/native-headers/Network/IdSerializer.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/network/include/network/PhysicsReplication.h": {
+   "source": "rebuild/2008-06/native-headers/Network/PhysicsReplication.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/network/include/network/ReplicatorMarker.h": {
+   "source": "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreSceneManager.h": {
    "source": "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h",
    "status": "clean (token-identical)"
@@ -1269,8 +1281,36 @@
    "source": "rebuild/2008-06/native-headers/gui/ScoreHud.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetButtons.h": {
+   "source": "rebuild/2008-06/native-headers/gui/WidgetButtons.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetChat.h": {
+   "source": "rebuild/2008-06/native-headers/gui/WidgetChat.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetMenuItem.h": {
+   "source": "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/humanoid/Humanoid.h": {
    "source": "rebuild/2008-06/native-headers/humanoid/Humanoid.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidFloorFields.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidState.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/HumanoidState.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates2.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates3SimJob.h": {
+   "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8kernel/IStage.h": {
@@ -1313,6 +1353,10 @@
    "source": "rebuild/2008-06/native-headers/reflection/member.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/reflection/property.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/property.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
   "rebuild/2008-06/layout/client/app/include/security/SecurityContext.h": {
    "source": "rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h",
    "status": "verbatim"
@@ -1329,9 +1373,25 @@
    "source": "rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/AxisMoveGrid.h": {
+   "source": "rebuild/2008-06/native-headers/tool/AxisMoveGrid.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/AxisMoveTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/AxisMoveTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/BasicMouseTools.h": {
+   "source": "rebuild/2008-06/native-headers/tool/BasicMouseTools.h",
+   "status": "verbatim"
+  },
   "rebuild/2008-06/layout/client/app/include/tool/DragTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/DragTool.h",
    "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/FlatTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/FlatTool.h",
+   "status": "verbatim"
   },
   "rebuild/2008-06/layout/client/app/include/tool/GroupDragTool.h": {
    "source": "rebuild/2008-06/native-headers/tool/GroupDragTool.h",
@@ -1339,6 +1399,14 @@
   },
   "rebuild/2008-06/layout/client/app/include/tool/MegaDragger.h": {
    "source": "rebuild/2008-06/native-headers/tool/MegaDragger.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/ModelTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/ModelTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/ModelTools.h": {
+   "source": "rebuild/2008-06/native-headers/tool/ModelTools.h",
    "status": "verbatim"
   },
   "rebuild/2008-06/layout/client/app/include/tool/NullTool.h": {
@@ -1349,12 +1417,40 @@
    "source": "rebuild/2008-06/native-headers/tool/PartDragTool.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/ResizeTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/ResizeTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/ShootTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/ShootTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/ShootTools.h": {
+   "source": "rebuild/2008-06/native-headers/tool/ShootTools.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/SurfaceTool.h": {
+   "source": "rebuild/2008-06/native-headers/tool/SurfaceTool.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/tool/SurfaceTools.h": {
+   "source": "rebuild/2008-06/native-headers/tool/SurfaceTools.h",
+   "status": "verbatim"
+  },
   "rebuild/2008-06/layout/client/app/include/tool/ToolsArrow.h": {
    "source": "rebuild/2008-06/native-headers/tool/ToolsArrow.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/ContentRequest.h": {
+   "source": "rebuild/2008-06/native-headers/util/ContentRequest.h",
+   "status": "verbatim"
+  },
   "rebuild/2008-06/layout/inferred/client/win/DxUserInput.h": {
    "source": "rebuild/2008-06/native-headers/util/DxUserInput.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/EventDataBase.h": {
+   "source": "rebuild/2008-06/native-headers/util/EventDataBase.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/util/Events.h": {
@@ -1365,6 +1461,14 @@
    "source": "rebuild/2008-06/native-headers/util/FileSystem.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/GuidItem.h": {
+   "source": "rebuild/2008-06/native-headers/util/GuidItem.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/GuidRegistry.h": {
+   "source": "rebuild/2008-06/native-headers/util/GuidRegistry.h",
+   "status": "verbatim"
+  },
   "rebuild/2008-06/layout/client/app/include/util/Handle.h": {
    "source": "rebuild/2008-06/native-headers/util/Handle.h",
    "status": "verbatim"
@@ -1373,8 +1477,24 @@
    "source": "rebuild/2008-06/native-headers/util/IRenderable.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/ImageContent.h": {
+   "source": "rebuild/2008-06/native-headers/util/ImageContent.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/LDrawEntities.h": {
+   "source": "rebuild/2008-06/native-headers/util/LDrawEntities.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/LDrawMapRoot.h": {
+   "source": "rebuild/2008-06/native-headers/util/LDrawMapRoot.h",
+   "status": "verbatim"
+  },
   "rebuild/2008-06/layout/inferred/client/win/LDrawParser.h": {
    "source": "rebuild/2008-06/native-headers/util/LDrawParser.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/Log.h": {
+   "source": "rebuild/2008-06/native-headers/util/Log.h",
    "status": "verbatim"
   },
   "rebuild/2008-06/layout/inferred/client/win/MarshalWindow.h": {
@@ -1385,9 +1505,17 @@
    "source": "rebuild/2008-06/native-headers/util/MarshaledListener.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/MovementKeys.h": {
+   "source": "rebuild/2008-06/native-headers/util/MovementKeys.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/util/Name.h": {
    "source": "rebuild/2008-06/native-headers/util/Name.h",
    "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/util/Object.h": {
+   "source": "rebuild/2008-06/native-headers/util/Object.h",
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/util/Profiling.h": {
    "source": "rebuild/2008-06/native-headers/util/Profiling.h",
@@ -1421,6 +1549,10 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/Camera.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/ChangeHistoryService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
    "status": "clean (token-identical)"
@@ -1429,8 +1561,16 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/Explosion.h",
    "status": "verbatim"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/FlagStandService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h",
+   "status": "verbatim"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/HistoryRecord.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/ICharacterSubject.h": {
@@ -1457,8 +1597,20 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/PhysicsService.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SelectionChanged.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Sky.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Sky.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Surface.h": {
@@ -1477,6 +1629,10 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/ToolMouseCommand.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Value.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Value.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Visit.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Visit.h",
    "status": "clean (token-identical)"
@@ -1493,12 +1649,32 @@
    "source": "rebuild/2008-06/native-headers/v8kernel/Connector.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8tree/IDataState.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/IDataState.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8tree/InstanceEvents.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/InstanceEvents.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8tree/PropertyChanged.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/PropertyChanged.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8tree/Service.h": {
    "source": "rebuild/2008-06/native-headers/v8tree/Service.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8tree/Verb.h": {
    "source": "rebuild/2008-06/native-headers/v8tree/Verb.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8tree/VerbContainer.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/VerbContainer.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/inferred/client/app/include/v8world/SimJob.h": {
+   "source": "rebuild/2008-06/native-headers/v8world/SimJob.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8xml/XmlElement.h": {
