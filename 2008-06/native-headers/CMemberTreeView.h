@@ -39,6 +39,7 @@ public:
     void addFunction(const RBX::Reflection::FunctionDescriptor* descriptor);  // 00435680; name provisional
     void addSignal(const RBX::Reflection::SignalDescriptor* descriptor);      // 004353e0; name provisional
     void addEnumItem(const RBX::Reflection::Descriptor* item);               // 00433ea0; name provisional
+    // void sub_00435860(const RBX::Reflection::Descriptor* descriptor);        // 00435860; PARKED: binary evidence shows this is CDeclarationView::showDescriptor (RTTI, call graph from OnSelChanged 00435e70, CDeclarationView.h declaration). CDeclarationView.cpp implementation is byte-exact matched.
 
     CImageList images;                                      // +0xa0, bitmap resource 0xc4
     bool showInherited;                                     // +0xa8, 1 after construction; name provisional

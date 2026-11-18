@@ -20,12 +20,13 @@
 //   +0x4c        a std::map of 0x20 bytes (VS2008 _Tree: proxy +0x0, head +0x18, size +0x1c). Its head node is 0x18 bytes
 //                (_Buynode 0056d3d0; isnil at node +0x15), so value_type is 8 bytes, 4-aligned, and trivially destructible
 //                (the erase 00553ca0 destroys no value). No 2008-06 code inserts, finds or iterates it: the ctor and dtor
-//                are its only users. Its key / mapped types are NOT derived, so it is not declared here (as in
-//                RenderLib/ViewNew2008.h): the class below is declared only through +0x4b, so sizeof(ViewG3D) is 0x4c, not
-//                the original 0x6c. Nothing here allocates or constructs a ViewG3D (the ctor / dtor are not built).
+//                are its only users. Its key / mapped types are NOT derived, so it is declared (2026-11-18, dtor work) as
+//                pointer-sized INFERRED placeholders: pair 8 bytes, value trivially destructible, 4-aligned, exactly what
+//                the binary requires. sizeof(ViewG3D) is 0x6c. Nothing constructs a ViewG3D yet (the ctor is not built).
 #include "RenderLib/ViewBase2008.h"
 #include <G3D/ReferenceCount.h>
 #include <GLG3D/Sky.h>
+#include <map>
 
 struct NativeViewG3D2008Layout;
 
@@ -38,7 +39,9 @@ namespace RBX
 			friend struct ::NativeViewG3D2008Layout;
 		private:
 			G3D::ReferenceCountedPointer<G3D::Sky> sky;                     // +0x48
-			// +0x4c std::map (0x20 bytes): key / mapped types not derived; not declared
+			// INFERRED: key / mapped types are NOT derived; declared as pointer-sized placeholders (pair 8 bytes,
+			// value trivially destructible, _Tree 0x20 bytes) so the ctor/dtor can own the +0x4c member. Never named.
+			std::map<void*, void*> map;                                     // +0x4c (INFERRED: layout from _Tree dtor 00553d80 call site)
 
 		public:
 			ViewG3D(boost::shared_ptr<DataModel> dataModel);                // 004dbbe0

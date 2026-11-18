@@ -63,9 +63,9 @@ public:
 class MutexRef {
 public:
     MutexRef(boost::shared_ptr<RBX::DataModel> dataModel);     // 00554810
-    ~MutexRef();
-private:
-    boost::shared_ptr<RBX::DataModel> dataModel;               // INFERRED: member name; 8 bytes copied by 00554810
+    // No user destructor: 004566f0 inlines the boost::shared_ptr release (strong control+4 / weak control+8),
+    // so the implicit destructor is the authentic one. CValueItem::GetCaption 00456770 reads +0x7c/+0x80.
+    boost::shared_ptr<RBX::DataModel> dataModel;               // INFERRED: member name; 8 bytes copied by 00554810; +0x7c
 };
 
 // Base order from the constructor 00457ca0 (CXTPReportRecord 006d7fd0, MutexRef +0x9c, listeners +0x54/+0x78) and
@@ -99,6 +99,8 @@ private:
 class CRobloxReportView::CStatsItemRecord::CValueItem : private MutexRef, public CXTPReportRecordItem {
 public:
     CValueItem(RBX::Stats::Item* item, boost::shared_ptr<RBX::DataModel> dataModel);     // 00456620
+    virtual ~CValueItem();                                     // 004566f0 (folded with CNameItem)
+    virtual CString GetCaption(CXTPReportColumn* column);     // 00456770, vtable 008185f4 slot 27; vftable-slot (exact tier)
 private:
     RBX::Stats::Item* item;                                    // +0x84
 };

@@ -88,6 +88,10 @@ namespace RBX
 			virtual bool askAddChild(const Instance* instance) const; // 0045ec80
 		};
 
+		// ProfilingItem::getTimes (005c9440) - builds Reflection::Tuple from Profiler::getData Bucket.
+		// Original: "needs a native 2008 util/Profiling.h"; body not recovered yet.
+		// INFERRED: returns Tuple(double) with sampleTimeSpan, wallTimeSpan, frames from Profiler bucket.
+		Reflection::Tuple getTimes(double window);
 		// Explicit specializations defined in the Stats unit (called out of line from other units).
 		template<> void Item::formatValue<double>(const double& value);             // 005c90b0
 		template<> void Item::formatValue<float>(const float& value);               // 005c90e0

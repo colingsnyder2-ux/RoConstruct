@@ -71,6 +71,9 @@ namespace RBX
 		bool getBestPlaneEdge(float overlapIgnored);             // 00607280
 		void loadGeoPairEdgeEdge(int b0, int b1, int edge0, int edge1);   // 00607ea0 (`ret 0x10`; donor name)
 		void loadGeoPairEdgeEdgePlane(int edgeBody, int planeBody, int edge0, int edge1);   // 00608030 (`ret 0x10`; donor name)
+		// 00607f90 (`ret 0x14`; POINT_PLANE_PAIR = 4): donor loadGeoPairPointPlane. Builds a point/plane pair from
+		// the block face-vertex table (0084aec8); param0 = pointID, param1 = planeFaceID (GeoPair pairData).
+		void loadGeoPairPointPlane(int pointBody, int planeBody, int pointID, NormalId pointFaceID, NormalId planeFaceID);   // 00607f90 (donor name)
 		// Donor v8world/Contact.h inline accessor (static_cast<Block*>(getPrimitive(i)->getGeometry()), Primitive +0x9c:
 		// 00607f3e..00607f42 in loadGeoPairEdgeEdge 00607ea0). Declared only: its body needs the complete 2008 Primitive,
 		// which this header cannot include (BlockBlockContactStep.cpp keeps a unit-local Primitive with the inline

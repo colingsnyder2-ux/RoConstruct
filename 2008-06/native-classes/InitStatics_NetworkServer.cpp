@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // 2008-06 Network/Server.cpp reflection static: dynamic initializer 007f1c90 ("Stop", "blockDuration", default 1000,
 // security 1; constructor by RTTI BoundFuncDesc<Network::Server, void(int), 1>).  Object name from the 2007 donor
-// Network/Server.cpp (f_disconnect); the default argument and the security value are the 2008 initializer's.
+// Network/Server.cpp (f_stop); the default argument and the security value are the 2008 initializer's.
 #include "Network/Server2008.h"
 #include "reflection/reflection.h"
 namespace RBX {
@@ -23,4 +23,4 @@ namespace RBX {
 		}
 	}
 }
-static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(int), 1> f_disconnect(&RBX::Network::Server::stop, "Stop", "blockDuration", 1000, RBX::Reflection::FunctionDescriptor::AnyCaller);   // 00970ef0
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(int), 1> f_stop(&RBX::Network::Server::stop, "Stop", "blockDuration", 1000, RBX::Reflection::FunctionDescriptor::AnyCaller);   // 00970ef0

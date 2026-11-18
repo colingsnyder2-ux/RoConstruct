@@ -86,5 +86,14 @@ namespace RBX
 		// 00606b00 (?getEdgeVertex@Block@RBX@@QBEPBVVector3@G3D@@H@Z, `ret 4`; called by loadGeoPairEdgeEdge 00607ea0
 		// on Primitive +0x9c). Body: native-classes/BlockBallShape.cpp.
 		const G3D::Vector3* getEdgeVertex(int edge) const;   // 00606b00
+
+		// INFERRED: donor v8world/Block.h declares BLOCK_FACE_TO_VERTEX[6][4]; loadGeoPairPointPlane 00607f90
+		// indexes the same 6x4 int table (binary address 0084aec8) with (face, vertex). The inline body is the
+		// donor one; no 2008 out-of-line copy exists.
+		static const int BLOCK_FACE_TO_VERTEX[6][4];   // INFERRED: donor Block.h, binary 0084aec8
+		const G3D::Vector3* getFaceVertex(NormalId normId, int edge) const   // donor Block.h inline
+		{
+			return &vertices[BLOCK_FACE_TO_VERTEX[normId][edge]];
+		}
 	};
 }

@@ -348,4 +348,6 @@ public:
 	virtual ~FilePacketLogger();
 	virtual void OnAttach(RakPeerInterface* peer);
 	virtual void WriteLog(const char*);
+	// INFERRED: 004aae00 is the UserIDTOString vftable override identified by class RTTI and link order.
+	virtual char* UserIDTOString(unsigned char id);
 };

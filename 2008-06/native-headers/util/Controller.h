@@ -1,7 +1,8 @@
 #pragma once
 // 2008-06 native RBX::Controller class and InputType enum. Used by PVInstance and reflection.
 
-#include "G3D/ReferenceCountedObject.h"
+#include "G3D/ReferenceCount.h"
+#include "G3D/Color3.h"
 
 namespace RBX
 {
