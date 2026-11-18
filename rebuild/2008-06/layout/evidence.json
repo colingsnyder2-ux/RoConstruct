@@ -3844,11 +3844,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.h": {
-  "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h",
-  "build": {},
-  "notes": []
- },
  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl": {
   "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl",
   "build": {},

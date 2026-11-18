@@ -1,5 +1,5 @@
 {
- "files": 488,
+ "files": 486,
  "merged_units": {
   "rebuild/2008-06/layout/inferred/client/app/gui/ArrowPanel.cpp": {
    "sources": [
@@ -1344,9 +1344,9 @@
  "status": {
   "clean-identical": 190,
   "verbatim-identical": 14,
-  "clean (token-identical)": 122,
-  "dropped": 10,
-  "verbatim (line-sensitive macros)": 12,
+  "clean (token-identical)": 121,
+  "dropped": 12,
+  "verbatim (line-sensitive macros)": 11,
   "verbatim": 40
  },
  "held_back": {
@@ -1356,7 +1356,7 @@
   "inferred path with no folder evidence": 12,
   "requires_identity_review": 5,
   "wrapper around donor or library source": 15,
-  "variant header that shadows the one other units build with": 10
+  "variant header that shadows the one other units build with": 12
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
  "cache_note": "the runner may reuse validated cached objects for unchanged live sources",
@@ -2319,7 +2319,7 @@
   },
   "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.h": {
    "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h",
-   "status": "clean (token-identical)"
+   "status": "dropped"
   },
   "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl": {
    "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl",
@@ -2443,7 +2443,7 @@
   },
   "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Matrix3.h": {
    "source": "rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h",
-   "status": "verbatim (line-sensitive macros)"
+   "status": "dropped"
   },
   "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/TextureProxyBase.h": {
    "source": "rebuild/2008-06/native-headers/partchunk-profile/RbxGraphics/TextureProxyBase.h",
@@ -2955,39 +2955,69 @@
    "inferred/client/rendering/ogresdk/include"
   ],
   "units_checked": 204,
-  "units_same": 178,
+  "units_same": 195,
   "units_without_verdict": 0,
-  "exported_headers": 174,
-  "headers_proven_by_a_passing_unit": 98,
+  "exported_headers": 172,
+  "headers_proven_by_a_passing_unit": 94,
   "suspect_headers": {
-   "client/app/include/v8datamodel/UserController.h": 1,
    "client/app/include/v8xml/SerializerV2.h": 1,
    "inferred/client/app/include/util/ImageContent.h": 1,
    "inferred/client/network/../../../../native-donor-2007/LogManager.h": 1,
    "inferred/client/win/ClipboardVerbs.h": 1
   },
+  "failing_use": {
+   "client/app/include/reflection/descriptor.h": 3,
+   "client/app/include/reflection/enumconverter.h": 4,
+   "client/app/include/reflection/function.h": 3,
+   "client/app/include/reflection/member.h": 3,
+   "client/app/include/script/script.h": 4,
+   "client/app/include/tool/groupdragtool.h": 1,
+   "client/app/include/util/contentprovider.h": 8,
+   "client/app/include/util/events.h": 4,
+   "client/app/include/util/handle.h": 4,
+   "client/app/include/util/irenderable.h": 3,
+   "client/app/include/util/name.h": 6,
+   "client/app/include/util/profiling.h": 3,
+   "client/app/include/util/runstateowner.h": 3,
+   "client/app/include/util/userinputbase.h": 4,
+   "client/app/include/util/utilities.h": 8,
+   "client/app/include/v8datamodel/camera.h": 3,
+   "client/app/include/v8datamodel/modelinstance.h": 3,
+   "client/app/include/v8datamodel/pvinstance.h": 3,
+   "client/app/include/v8datamodel/rootinstance.h": 3,
+   "client/app/include/v8datamodel/workspace.h": 3,
+   "client/app/include/v8tree/service.h": 6,
+   "client/app/include/v8tree/verb.h": 4,
+   "client/app/include/v8xml/xmlelement.h": 4,
+   "client/rbxgraphics/include/rbxgraphics/adorn.h": 4,
+   "client/rbxgraphics/include/rbxgraphics/textureproxybase.h": 5,
+   "inferred/client/app/include/reflection/property.h": 3,
+   "inferred/client/app/include/util/guiditem.h": 3,
+   "inferred/client/app/include/util/movementkeys.h": 4,
+   "inferred/client/app/include/util/object.h": 4,
+   "inferred/client/app/include/v8tree/idatastate.h": 6,
+   "inferred/client/app/include/v8tree/verbcontainer.h": 6,
+   "client/app/include/tool/partdragtool.h": 1,
+   "client/app/include/v8kernel/connector.h": 1,
+   "client/app/include/v8kernel/istage.h": 2,
+   "client/rendering/g3d/include/g3d/binaryoutput.h": 1,
+   "client/rendering/g3d/include/g3d/gimage.h": 1,
+   "client/rendering/g3d/include/glg3d/renderdevice.h": 1,
+   "client/app/include/gui/gui.h": 1,
+   "client/app/include/gui/widget.h": 1,
+   "client/app/include/v8datamodel/datamodel.h": 3,
+   "inferred/client/app/include/util/imagecontent.h": 1,
+   "inferred/client/app/include/util/log.h": 1,
+   "inferred/client/network/../../../../native-donor-2007/logmanager.h": 1,
+   "client/app/include/v8datamodel/globalsettings.h": 1,
+   "client/app/include/v8xml/serializerv2.h": 1,
+   "inferred/client/win/clipboardverbs.h": 1
+  },
   "failing_units": [
    "client/app/gui/Widget.cpp",
-   "client/app/script/LuaAtomicClasses.cpp",
    "client/app/tool/GroupDragTool.cpp",
    "client/app/tool/PartDragTool.cpp",
-   "client/app/v8datamodel/IEquipable.cpp",
-   "client/app/v8datamodel/UserController.cpp",
-   "client/app/v8kernel/Body.cpp",
-   "client/rendering/appdraw/HitTest.cpp",
-   "client/rendering/g3d/g3dcpp/Capsule.cpp",
-   "client/rendering/g3d/g3dcpp/CollisionDetection.cpp",
-   "client/rendering/g3d/g3dcpp/CoordinateFrame.cpp",
-   "client/rendering/g3d/g3dcpp/GCamera.cpp",
-   "client/rendering/g3d/g3dcpp/MeshAlg.cpp",
-   "client/rendering/g3d/g3dcpp/MeshAlgWeld.cpp",
-   "client/rendering/g3d/g3dcpp/Plane.cpp",
-   "client/rendering/g3d/g3dcpp/Quat.cpp",
-   "client/rendering/g3d/glg3dcpp/Draw.cpp",
    "client/rendering/g3d/glg3dcpp/GFont.cpp",
-   "client/rendering/g3d/glg3dcpp/LightingParameters.cpp",
-   "client/rendering/g3d/glg3dcpp/Shader.cpp",
-   "client/rendering/g3d/glg3dcpp/glcalls.cpp",
    "inferred/client/network/CrashReporter.cpp",
    "inferred/client/win/ClipboardVerbs.cpp",
    "inferred/client/win/RenderSettings.cpp",
@@ -3004,6 +3034,8 @@
    "client/app/include/v8world/Edge.h",
    "client/app/include/v8world/Primitive.h",
    "client/app/include/v8world/World.h",
+   "client/rendering/g3d/include/g3d/Matrix3.h",
+   "client/rendering/g3d/include/g3d/Vector3.h",
    "inferred/client/app/include/v8datamodel/SelectionChanged.h"
   ]
  }
