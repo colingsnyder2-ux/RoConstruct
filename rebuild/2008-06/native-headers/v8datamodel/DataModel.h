@@ -18,6 +18,9 @@ class GuiRoot;
 class GuiTarget;
 class IMetric;
 class Selection;
+class ContentId;
+class GuiEvent;
+class GuiResponse;
 extern char sDataModel[];
 
 // Inactive candidate: RTTI, constructor and recovered 0057a1b0 source define
@@ -51,18 +54,30 @@ public:
     bool renderEnabled;
     boost::shared_ptr<boost::recursive_mutex> mutex;
 
+    // INFERRED: 0057ad70 donor destructor and DataModel RTTI/vtable evidence.
+    virtual ~DataModel();
     virtual void setDirty(bool value) { dirty = value; }
     virtual bool isDirty() const { return dirty; }
+    // INFERRED: 00575d90 signature in the authentic DataModel declaration.
+    virtual std::string evaluate(const std::string& valueName) const;
     Workspace* getWorkspace() const { return workspace.get(); }
     GuiRoot* getGuiRoot() const { return guiRoot.get(); }
     double getGameTime() const;
     double getFrameRate() const;
     double getDutyCycle() const;
     void clearContents();
+    // INFERRED: 00579c10 authentic save(ContentId) declaration and call shape.
+    void save(ContentId contentId);
     void initializeContents(bool);
     boost::shared_ptr<boost::recursive_mutex> getMutex() const;
     static boost::shared_ptr<boost::recursive_mutex> getMutex(Instance*);
     static boost::shared_ptr<DataModel> createDataModel(bool);
     static void closeDataModel(boost::shared_ptr<DataModel>, bool);
+private:
+    // INFERRED: 00575890 analog and authentic private processAccelerators declaration.
+    GuiResponse processAccelerators(const GuiEvent& event);
+protected:
+    // INFERRED: 0057b630 target vtable slot and authentic onChildChanged signature.
+    virtual void onChildChanged(Instance* instance, const PropertyChanged& event);
 };
 }

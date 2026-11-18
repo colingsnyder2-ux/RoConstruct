@@ -92,7 +92,7 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 @keyframes progress-stripes { to { background-position: 14px 0; } }
 @media (prefers-reduced-motion: reduce) { .bar.code .p { animation: none; } }
 .bar.native i { border-radius: 0; }
-.bar.native .a { background: var(--nc-authentic); } .bar.native .n { background: var(--nc-integrated); } .bar.native .e { background: var(--nc-exact); }
+.bar.native .a { background: var(--nc-authentic); } .bar.native .o { background: var(--nc-organized); } .bar.native .n { background: var(--nc-integrated); } .bar.native .e { background: var(--nc-exact); }
 .bar.native .i { background: var(--nc-inactive); } .bar.native .d { background: var(--nc-draft); }
 .bar.native .y { background: linear-gradient(90deg, var(--nc-inactive), var(--nc-draft)); } .bar.native .u { background: var(--nc-none); }
 .integration-summary { margin-top: 12px; }
@@ -340,10 +340,10 @@ footer img { height: 30px; }
     </div>
   </div>
 </footer>
-<script src="library-coverage.js?v=20261117-authentic" defer></script>
+<script src="library-coverage.js?v=20261118-organized" defer></script>
 <script>
 // Native status colors: the one place to change them. CSS reads the same values as --nc-* variables.
-const NC = {authentic: "#f5d0fe", integrated: "#a855f7", inactive: "#6d5bd0", draft: "#db61a2", exact: "#3a3d45", none: "#3a3d45"};
+const NC = {authentic: "#f5d0fe", organized: "#c9a4f5", integrated: "#a855f7", inactive: "#6d5bd0", draft: "#db61a2", exact: "#3a3d45", none: "#3a3d45"};
 for (const [k, v] of Object.entries(NC)) document.documentElement.style.setProperty("--nc-" + k, v);
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
 const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct";
@@ -365,6 +365,8 @@ const sourceLinks = (client, f, short = false) => {
   const candidate = integrationData?.client === client && integrationData.inactive_sources?.[hex(f[0])];
   const links = [];
   const au = integrationData?.client === client && integrationData.authentic?.[hex(f[0])];
+  const og = integrationData?.client === client && integrationData.organized?.[hex(f[0])];
+  if (og) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${og[0].split('/').map(encodeURIComponent).join('/')}" target="_blank" rel="noopener">${short ? "Organized" : "Organized source"} ↗</a>`);
   if (au) links.push(`<a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${au[0].split('/').map(encodeURIComponent).join('/')}#L${au[1]}" target="_blank" rel="noopener">${short ? "Authentic" : "Authentic source"} ↗</a>`);
   if (!indexed && candidate) links.push(`<a href="${FINDINGS}/blob/work/${candidate.path.split('/').map(encodeURIComponent).join('/')}#L${candidate.line}" target="_blank" rel="noopener">${integrationData.inactive?.[hex(f[0])]?.[1] ? "Inactive native" : "Draft native"}${short ? "" : " source"} ↗</a>`);
   if (indexed) links.push(`<a href="${esc(indexed.url || FINDINGS + "/blob/work/" + indexed.path.split('/').map(encodeURIComponent).join('/'))}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
@@ -487,7 +489,7 @@ function dailyGraph(days, integration = false, switcher = false) {
   const last = days.at(-1);
   const gain = d => d.gain === null ? "—" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
   const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting + (d.nearly || 0) : 0));
-  const series = integration ? [["authentic", "Authentic", NC.authentic], ["integrated", "Integrated", NC.integrated], ["inactive", "Inactive native", NC.inactive], ["draft", "Draft native", NC.draft], ["rest", "Source analogs / not exact", NC.none]] : [["source", "Original source", "#58a6ff"],
+  const series = integration ? [["authentic", "Authentic", NC.authentic], ["organized", "Organized", NC.organized], ["integrated", "Integrated", NC.integrated], ["inactive", "Inactive native", NC.inactive], ["draft", "Draft native", NC.draft], ["rest", "Source analogs / not exact", NC.none]] : [["source", "Original source", "#58a6ff"],
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
@@ -502,7 +504,7 @@ function dailyGraph(days, integration = false, switcher = false) {
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
         return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% ${integration ? "of target bytes integrated" : "matched"}">
-          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Authentic: ${count(d.authentic)}; inactive / draft native: ${count(d.nearly)}; source analogs / not exact: ${count(d.rest)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
+          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Authentic: ${count(d.authentic)}; organized: ${count(d.organized)}; inactive / draft native: ${count(d.nearly)}; source analogs / not exact: ${count(d.rest)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
           <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
           ${segments.map(([key, label, color]) => {
             const value = d[key] || 0, fraction = integration ? 100 * (d.byteGroups[key] || 0) / (d.bytes || 1) : 100 * value / d.functions, height = Math.min(100 - bottom, fraction);
@@ -515,8 +517,8 @@ function dailyGraph(days, integration = false, switcher = false) {
     </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}${integration ? "" : `<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(remaining(last))}</span>`}</div></div>
     ${days.some(d => d.estimated) ? '<p class="note">* Source/mined split estimated from nearby days. Recorded matched and partial totals unchanged.</p>' : ""}
     <details class="mining-days"><summary>Daily function counts</summary><p class="note">${integration ? "Recorded native snapshots only; earlier unrecorded totals are not reconstructed." : "Last snapshot each day; days without snapshots carry the previous total. Historical source/mined counts recovered from archived function data; * marks estimated splits, unavailable counts show —."} Changes include inventory corrections. First recorded total has no daily change.</p>
-      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Authentic</th><th>Inactive native</th><th>Draft native</th><th>Source analogs / not exact</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
-      ${chartDays.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.authentic)}</td><td>${count(d.inactive)}</td><td>${count(d.draft)}</td><td>${count(d.rest)}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
+      <div class="table"><table><thead><tr><th>Day (US Eastern)</th>${integration ? "<th>Integrated</th><th>Authentic</th><th>Organized</th><th>Inactive native</th><th>Draft native</th><th>Source analogs / not exact</th>" : "<th>Matched</th><th>Source</th><th>Mined</th><th>Partial</th>"}<th>Daily change</th><th>${integration ? "Target bytes" : "Complete"}</th></tr></thead><tbody>
+      ${chartDays.map(d => `<tr><td>${d.day}${d.estimated ? "*" : ""}</td><td>${fmt(d.matched)}</td>${integration ? `<td>${count(d.authentic)}</td><td>${count(d.organized)}</td><td>${count(d.inactive)}</td><td>${count(d.draft)}</td><td>${count(d.rest)}</td>` : `<td>${count(d.source)}</td><td>${count(d.mined)}</td><td>${count(d.partial)}</td>`}<td>${gain(d)}</td><td>${d.percent.toFixed(2)}%</td></tr>`).join("")}
       </tbody></table></div></details>`;
 }
 
@@ -543,14 +545,15 @@ function integrationBar(i, name) {
   const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0}, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
   const inactiveB = Math.min(nearly.bytes, i.native_code?.inactive?.bytes || 0), recovered = g.integrated.bytes + inactiveB;
   const au = i.native_code?.authentic || {bytes: 0, integrated_bytes: 0, inactive_bytes: 0};
+  const og = i.native_code?.organized || {bytes: 0, integrated_bytes: 0, inactive_bytes: 0};
   const w = n => (100 * n / total).toFixed(3) + "%";
   return `
     <div class="label">Native code coverage <small>(${mb(recovered)} of ${mb(total)}) — ${pct(recovered, total)}</small></div>
-    <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * recovered / total).toFixed(2)}"><i class="a" style="width:${w(au.bytes)}"></i><i class="n" style="width:${w(g.integrated.bytes - au.integrated_bytes)}"></i><i class="i" style="width:${w(inactiveB - au.inactive_bytes)}"></i><i class="d" style="width:${w(Math.max(0, nearly.bytes - inactiveB))}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
+    <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * recovered / total).toFixed(2)}"><i class="a" style="width:${w(au.bytes)}"></i><i class="o" style="width:${w(og.bytes)}"></i><i class="n" style="width:${w(g.integrated.bytes - au.integrated_bytes - og.integrated_bytes)}"></i><i class="i" style="width:${w(inactiveB - au.inactive_bytes - og.inactive_bytes)}"></i><i class="d" style="width:${w(Math.max(0, nearly.bytes - inactiveB))}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
       <i class="u" style="width:${w(g.partial.bytes + g.unmined.bytes)}"></i></div>
-    <div class="legend"><span><i style="background:${NC.authentic}"></i>Authentic <small>${pct(au.bytes, total)}</small></span><span><i style="background:${NC.integrated}"></i>Integrated</span>
+    <div class="legend"><span><i style="background:${NC.authentic}"></i>Authentic <small>${pct(au.bytes, total)}</small></span><span><i style="background:${NC.organized}"></i>Organized <small>${pct(og.bytes, total)}</small></span><span><i style="background:${NC.integrated}"></i>Integrated</span>
       <span><i style="background:${NC.inactive}"></i>Inactive native</span><span><i style="background:${NC.draft}"></i>Draft native</span><span><i style="background:${NC.none}"></i>Source analogs / not exact</span></div>
-    <p class="note">Authentic: native code published at its original 2007/08 file path (layout branch) whose object is identical to the live source; it is part of the integrated and inactive bytes. Coverage combines published integration and inactive receipt-exact native bodies without overlap. Drafts are separate and excluded from this percentage. Inactive exactness does not establish runtime safety, executable selection or server credit.</p>
+    <p class="note">Authentic: native code published at its original 2007/08 file path (layout branch) whose object is identical to the live source; it is part of the integrated and inactive bytes. Organized: also published on the layout branch, but at an inferred path or as a merged unit proven symbol by symbol; not counted as Authentic. Coverage combines published integration and inactive receipt-exact native bodies without overlap. Drafts are separate and excluded from this percentage. Inactive exactness does not establish runtime safety, executable selection or server credit.</p>
 `;
 }
 
@@ -574,9 +577,10 @@ function integrationSummary(i, name, compact = false) {
   const percent = total ? 100 * (i.groups.integrated.bytes + inactive) / total : 0;
   const waiting = total ? 100 * (i.groups.exact_waiting?.bytes || 0) / total : 0;
   const nearly = total ? 100 * (i.groups.owned_waiting?.bytes || 0) / total : 0;
+  const og = i.native_code?.organized || {bytes: 0, integrated_bytes: 0, inactive_bytes: 0};
   const au = i.native_code?.authentic || {bytes: 0, integrated_bytes: 0, inactive_bytes: 0}, pc = b => total ? 100 * b / total : 0;
   return `<div class="integration-summary">${compact ? "" : `<div class="label">Native coverage · ${percent.toFixed(2)}%</div>`}
-    <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="a" style="width:${pc(au.bytes)}%"></i><i class="n" style="width:${selected - pc(au.integrated_bytes)}%"></i><i class="i" style="width:${pc(inactive - au.inactive_bytes)}%"></i><i class="d" style="width:${nearly - pc(inactive)}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
+    <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="a" style="width:${pc(au.bytes)}%"></i><i class="o" style="width:${pc(og.bytes)}%"></i><i class="n" style="width:${selected - pc(au.integrated_bytes + og.integrated_bytes)}%"></i><i class="i" style="width:${pc(inactive - au.inactive_bytes - og.inactive_bytes)}%"></i><i class="d" style="width:${nearly - pc(inactive)}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
 }
 
 function integrationDays(i) {
@@ -620,10 +624,12 @@ function integrationDaily(i, switcher = false) {
     const inactive = row.native_code?.inactive, draft = row.native_code?.draft;
     const au = row.native_code?.authentic || {functions: 0, bytes: 0, integrated_functions: 0, integrated_bytes: 0, inactive_bytes: 0};
     const auI = au.integrated_functions ?? 0;
+    const og = row.native_code?.organized || {functions: 0, bytes: 0, integrated_functions: 0, integrated_bytes: 0, inactive_bytes: 0};
+    const ogI = og.integrated_functions ?? 0;
     const restFunctions = functions - integrated - (inactive?.functions || 0) - (draft?.functions || 0);
     const restBytes = bytes - row.groups.integrated.bytes - (inactive?.bytes || 0) - (draft?.bytes || 0);
-    return {day:row.day,functions,authentic:au.functions,integrated:integrated - auI,waiting,inactive:inactive ? inactive.functions - (au.functions - auI) : undefined,draft:draft?.functions,rest:restFunctions,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
-      byteGroups:{authentic:au.bytes,integrated:row.groups.integrated.bytes - (au.integrated_bytes || 0),inactive:(inactive?.bytes || 0) - (au.inactive_bytes || 0),draft:draft?.bytes || 0,waiting:row.groups.exact_waiting.bytes,rest:restBytes},
+    return {day:row.day,functions,authentic:au.functions,organized:og.functions,integrated:integrated - auI - ogI,waiting,inactive:inactive ? inactive.functions - (au.functions - auI) - (og.functions - ogI) : undefined,draft:draft?.functions,rest:restFunctions,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
+      byteGroups:{authentic:au.bytes,organized:og.bytes,integrated:row.groups.integrated.bytes - (au.integrated_bytes || 0) - (og.integrated_bytes || 0),inactive:(inactive?.bytes || 0) - (au.inactive_bytes || 0) - (og.inactive_bytes || 0),draft:draft?.bytes || 0,waiting:row.groups.exact_waiting.bytes,rest:restBytes},
       percent:bytes ? 100 * (row.groups.integrated.bytes + (inactive?.bytes || 0)) / bytes : 0,
       gain:index ? integrated - rows[index-1].groups.integrated.functions : null};
   });
@@ -638,7 +644,7 @@ function integrationCoverageBar(row) {
   const w = bytes => row.bytes ? 100 * bytes / row.bytes : 0;
   const nearly = row.nearlyBytes || 0, draft = row.draftBytes || 0;
   return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(nearly, row.bytes)} inactive / draft native, ${pct(row.waitingBytes, row.bytes)} source analogs">
-    <i class="a" style="width:${w(row.authenticBytes || 0)}%"></i><i class="n" style="width:${w(row.integratedBytes - (row.authenticIntegrated || 0))}%"></i><i class="i" style="width:${w(nearly - draft - (row.authenticBytes || 0) + (row.authenticIntegrated || 0))}%"></i><i class="d" style="width:${w(draft)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - nearly - row.waitingBytes)}%"></i></div>`;
+    <i class="a" style="width:${w(row.authenticBytes || 0)}%"></i><i class="o" style="width:${w(row.organizedBytes || 0)}%"></i><i class="n" style="width:${w(row.integratedBytes - (row.authenticIntegrated || 0) - (row.organizedIntegrated || 0))}%"></i><i class="i" style="width:${w(nearly - draft - (row.authenticBytes || 0) + (row.authenticIntegrated || 0) - (row.organizedBytes || 0) + (row.organizedIntegrated || 0))}%"></i><i class="d" style="width:${w(draft)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - nearly - row.waitingBytes)}%"></i></div>`;
 }
 
 /* One click opens the console, which then asks the two things that matter:
@@ -798,7 +804,7 @@ function parseFilter(text, units) {
 
 const MINING_LEGEND = `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span>`;
-const NATIVE_LEGEND = `<span><i style="background:${NC.authentic}"></i>authentic</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:${NC.inactive}"></i>inactive native</span><span><i style="background:${NC.draft}"></i>draft native</span><span><i style="background:#d29922"></i>partial</span><span><i style="background:${NC.none}"></i>source analogs / unmined</span>`;
+const NATIVE_LEGEND = `<span><i style="background:${NC.authentic}"></i>authentic</span><span><i style="background:${NC.organized}"></i>organized</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:${NC.inactive}"></i>inactive native</span><span><i style="background:${NC.draft}"></i>draft native</span><span><i style="background:#d29922"></i>partial</span><span><i style="background:${NC.none}"></i>source analogs / unmined</span>`;
 
 function color(score, original, harness) {
   if (score === 100 && !original && !harness) return "#3a3d45";
@@ -941,7 +947,7 @@ function libraryTable(data, integration = false, switcher = false) {
       bySize(r.parts).map(([part, p], j) => (data.groups.set(`${i}.${j}`, [`${lib} › ${part}`, p.fs]),
         `<tr class="part" data-of="${i}" hidden><td>${esc(part)} <button class="mapbtn" data-g="${i}.${j}">Map</button></td>${cells(p)}</tr>`)).join("")).join("")}
     </tbody></table></div>
-    <div class="legend">${integration ? `<span><i style="background:${NC.authentic}"></i>authentic</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:linear-gradient(90deg,${NC.inactive},${NC.draft})"></i>inactive / draft native</span><span><i style="background:#58a6ff"></i>source analogs / not exact</span>` : `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span>`}</div>`;
+    <div class="legend">${integration ? `<span><i style="background:${NC.authentic}"></i>authentic</span><span><i style="background:${NC.organized}"></i>organized</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:linear-gradient(90deg,${NC.inactive},${NC.draft})"></i>inactive / draft native</span><span><i style="background:#58a6ff"></i>source analogs / not exact</span>` : `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span>`}</div>`;
 }
 
 function wireLibraries(onMap) {
@@ -956,6 +962,7 @@ function wireLibraries(onMap) {
 // Class tree: namespace > unit > function, grouped by status. Methods render lazily on open.
 const TREE_STATES = [
   ["authentic", "Authentic", NC.authentic, "at its original file path, object identical"],
+  ["organized", "Organized", NC.organized, "on the layout branch at an inferred path or in a merged unit"],
   ["integrated", "Integrated", NC.integrated, "in the linked rebuild"],
   ["working", "Working", "#3fb950", "an agent (Codex, Claude, …) holds a live claim"],
   ["inactive", "Inactive", NC.inactive, "native code exists, receipt-proven exact, not integrated"],
@@ -966,7 +973,7 @@ const TREE_STATES = [
 const TREE_COLOR = Object.fromEntries(TREE_STATES.map(([k, , c]) => [k, c]));
 function treeStatus(f, nativeSet, inactive, working) {
   const a = hex(f[0]);
-  return integrationData?.authentic?.[a] ? "authentic" : nativeSet.has(a) ? "integrated" : working[a] ? "working" : inactive[a] ? (inactive[a][1] ? "inactive" : "draft")
+  return integrationData?.authentic?.[a] ? "authentic" : integrationData?.organized?.[a] ? "organized" : nativeSet.has(a) ? "integrated" : working[a] ? "working" : inactive[a] ? (inactive[a][1] ? "inactive" : "draft")
     : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined";
 }
 function renderTree(data, byUnit, nativeSet, native) {
@@ -1232,7 +1239,7 @@ async function client(name) {
     const named=native?.names[hex(f[0])], integrated=nativeSet.has(hex(f[0]));
     const readable=named && !named[0].startsWith("?") ? named[0] : "";
     document.getElementById("detail").innerHTML=`<div class="function-card"><strong>${esc(readable || units[f[3]])}</strong><br>
-      <span class="function-status">${native?.authentic?.[hex(f[0])] ? "Authentic · original path " + esc(native.authentic[hex(f[0])][0]) + " · " : ""}${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
+      <span class="function-status">${native?.authentic?.[hex(f[0])] ? "Authentic · original path " + esc(native.authentic[hex(f[0])][0]) + " · " : native?.organized?.[hex(f[0])] ? "Organized · " + esc(native.organized[hex(f[0])][1]) + " · " + esc(native.organized[hex(f[0])][0]) + " · " : ""}${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
       <div class="function-meta">${hex(f[0])} · ${fmt(f[1])} bytes · ${f[2]}% matched</div>${sourceLinks(name,f)}
       ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Integrated source location not indexed yet.</p>' : ""}
       ${named || f[6] ? `<details><summary>Technical details</summary>${named ? `<p>Symbol <code>${esc(named[1])}</code></p>` : ""}${f[6] ? `<p>Family <code>${esc(f[6])}</code></p>` : ""}</details>` : ""}
@@ -1248,7 +1255,7 @@ async function client(name) {
     document.getElementById("maplegend").innerHTML = mapMode === "native" ? NATIVE_LEGEND : MINING_LEGEND;
     draw();
   };
-  const nativeKind = f => { const a = hex(f[0]), x = native?.inactive?.[a]; return native?.authentic?.[a] ? "authentic" : nativeSet.has(a) ? "integrated" : x ? (x[1] ? "inactive" : "draft") : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined"; };
+  const nativeKind = f => { const a = hex(f[0]), x = native?.inactive?.[a]; return native?.authentic?.[a] ? "authentic" : native?.organized?.[a] ? "organized" : nativeSet.has(a) ? "integrated" : x ? (x[1] ? "inactive" : "draft") : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined"; };
   const nativeColor = f => ({...NC, exact: NC.exact, partial: "#d29922", unmined: NC.none})[nativeKind(f)];
   onresize = layout;
   layout();

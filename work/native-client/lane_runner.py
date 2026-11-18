@@ -26,7 +26,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 PY = sys.executable
 ap = argparse.ArgumentParser()
-ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix', 'donorunits', 'donorctx', 'thunks', 'workflow', 'mechanical'])
+ap.add_argument('lane', choices=['failures', 'regate', 'vendor', 'layout', 'promote', 'census', 'classify', 'flags', 'auto', 'agent', 'donor', 'pattern', 'polish', 'gateserver', 'inferred', 'names', 'templates', 'untried', 'agents', 'clones', 'compilefix', 'donorunits', 'donorctx', 'thunks', 'workflow', 'mechanical', 'families', 'twins'])
 ap.add_argument('--jobs', type=int, default=8)
 ap.add_argument('--model', default='codex', help='agents lane: codex (default, owner 2026-11-17: Codex agents only), sonnet, haiku or fable')
 ap.add_argument('--codex', type=int, default=int(os.environ.get('ROC_AGENT_CODEX') or 6),
@@ -535,6 +535,14 @@ elif args.lane == 'thunks':
     # 5-byte jump thunks: forwarders generated from the proven jump target (no model)
     run([PY, 'thunk_survey.py'], cwd=HERE)
     run([PY, 'thunk_lane.py', '--jobs', min(int(args.jobs), 3)], cwd=HERE)
+
+elif args.lane == 'families':
+    # one headless session per family of byte-identical twins: fix one root cause, the lane does the rest
+    run([PY, 'family_agents.py', '--jobs', min(int(args.jobs), 3), '--model', args.model], cwd=HERE, tail=40)
+
+elif args.lane == 'twins':
+    # RTTI-identified template instantiations (no model)
+    run([PY, 'twin_lane.py', '--jobs', min(int(args.jobs), 3)], cwd=HERE)
 
 elif args.lane == 'workflow':
     # text-only class workflow: one model call per round, everything else scripted

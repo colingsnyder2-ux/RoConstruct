@@ -107,6 +107,10 @@ namespace RBX
 				: func(boost::bind(&deref, value))
 			{
 			}
+			TypedStatsItem(boost::function0<T> func) // 005a3f30 (double), 005a4050 (float), 005a4190 (int)
+				: func(func)
+			{
+			}
 
 		protected:
 			virtual void update() // 005bc930 (unsigned int)

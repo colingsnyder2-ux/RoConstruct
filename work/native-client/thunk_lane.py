@@ -218,6 +218,146 @@ def declare_variants(target):
     return out
 
 
+_VFT = None
+_HEADERS = None
+
+
+def enum_of_singleton(target):
+    """EnumDesc<T>::doSingleton (90 bytes in this client) constructs its static with EnumDesc<T>::EnumDesc; that
+    constructor installs the RTTI vftable of EnumDesc<T>, so the binary names T.  -> 'Scope::Enum' or None."""
+    global _VFT
+    from roc import match
+    import struct
+    try:
+        body = match.target('2008-06', target)[0]
+        if len(body) != 90 or body[0x35] != 0xe8:
+            return None
+        ctor = (int(target, 16) + 0x3a + struct.unpack('<i', body[0x36:0x3a])[0]) & 0xffffffff
+        code, relocs = match.target('2008-06', '%08x' % ctor)[:2]
+    except BaseException:                                        # noqa: BLE001  sys.exit inside match.target
+        return None
+    if _VFT is None:
+        sys.path.insert(0, str(HERE / 'research-owners'))
+        import rtti                                              # binary-derived RTTI vftable map (cached)
+        _VFT = {v['va']: v['cls'] for v in rtti.VTS if v['off'] == 0}
+    for off in relocs:
+        hit = re.fullmatch(r'RBX::Reflection::EnumDesc<(.+)>', _VFT.get(struct.unpack('<I', code[off:off + 4])[0], ''))
+        if hit:
+            return hit.group(1)
+    return None
+
+
+def native_headers():
+    global _HEADERS
+    headers = ROOT / 'rebuild/2008-06/native-headers'
+    if _HEADERS is None:
+        _HEADERS = [(p.relative_to(headers).as_posix(), p.read_text(errors='replace')) for p in sorted(headers.rglob('*.h'))
+                    if '-' not in p.relative_to(headers).parts[0]]
+    return _HEADERS
+
+
+def enum_header(enum):
+    """native header that defines the enum (and, when it is nested, its class)."""
+    parts = enum.split('::')
+    owner = parts[-2] if len(parts) > 1 and parts[-2] != 'RBX' else None
+    found = [name for name, text in native_headers()
+             if re.search(r'\benum\s+%s\b[^;]*?\{|\}\s*%s\s*;' % (parts[-1], parts[-1]), text)
+             and (not owner or re.search(r'\b(?:class|struct|namespace)\s+(?:\w+\s+)?%s\b' % owner, text))]
+    return min(found, key=len) if found else None
+
+
+def service_of_class_index(addr, target):
+    """ServiceProvider::doGetClassIndex<T> (91 bytes, calls newIndex) does not name T.  The thunk is
+    callDoGetClassIndex<T>, pushed by the inlined getClassIndex<T> of find<T>/create<T>; the same function then calls
+    T::className(), whose doDeclare<sT> (101 bytes) references the class-name string.  The native class whose base list
+    carries sT is T.  -> (qualified class, header, name string) | (None, None, reason) | None when not this shape."""
+    from roc import match
+    import struct
+    try:
+        body = match.target('2008-06', target)[0]
+    except BaseException:                                        # noqa: BLE001
+        return None
+    if len(body) != 91 or body[0x30] != 0xe8:
+        return None
+    callee = '%08x' % ((int(target, 16) + 0x35 + struct.unpack('<i', body[0x31:0x35])[0]) & 0xffffffff)
+    if 'newIndex@ServiceProvider@RBX' not in (PROVEN.get(callee) or ('',))[0]:
+        return None
+    sys.path.insert(0, str(HERE / 'research-owners'))
+    import rtti                                                  # REFS: relocated dword value -> where (binary-derived)
+    import common
+    names = set()
+    for ref in rtti.REFS.get(int(addr, 16), ()):
+        func = common.func_of(ref)
+        size = common.FUNCS[func][0] if func else 0
+        for off in range(max(size - 4, 0)):
+            if common.IMAGE[func - common.BASE + off] != 0xe8:
+                continue
+            to = (func + off + 5 + struct.unpack_from('<i', common.IMAGE, func - common.BASE + off + 1)[0]) & 0xffffffff
+            if common.FUNCS.get(to, (0,))[0] != 101:
+                continue
+            code, relocs = match.target('2008-06', '%08x' % to)[:2]
+            names |= {t for t in (image_string(struct.unpack('<I', code[o:o + 4])[0]) for o in relocs) if t}
+    if len(names) != 1:
+        return None, None, 'class-name strings of the callers: %s' % (sorted(names) or 'none')
+    text = names.pop()
+    for header, source in native_headers():
+        hit = re.search(r'\b(?:class|struct)\s+(?:__declspec\(\w+\)\s+)?(\w+)\s*:[^{;]*\bs%s\b' % re.escape(text), source)
+        if hit and re.fullmatch(r'\w+', text):
+            stack = []
+            for tok in SCOPE.finditer(source[:hit.start()]):
+                if tok.group(0) == '}':
+                    if stack:
+                        stack.pop()
+                else:
+                    stack.append(tok.group(1))
+            return '::'.join([x for x in stack if x] + [hit.group(1)]), header, text
+    return None, None, 'no native class is declared with name string "%s"' % text
+
+
+def instantiation(addr, target, kind, includes, line, needles, why):
+    """Thunk + its target from one explicit instantiation; the target's identity (why) comes from the binary, the names
+    it references are bound by root_ref_bind (addresses of the original image), the prover checks bytes and references."""
+    import subprocess
+    final = CLASSES / ('Thunk_%s.cpp' % addr)
+    folder = HERE / 'lane-drafts' / final.stem
+    folder.mkdir(parents=True, exist_ok=True)
+    unit = folder / final.name
+    unit.write_text('%s /I{headers}/../native-classes\n// %s: %s, a 5-byte jump to %s. %s (thunk_lane.py, no model)\n%s%s\n'
+                    % (DEFAULT_FLAGS, addr, kind, target, why, ''.join('#include "%s"\n' % i for i in includes), line),
+                    encoding='utf-8')
+    want = {addr: needles[0], target: needles[1]}
+    got = agent_prove.verdict(unit, want)
+    if got[target][0] == 'REJECTED':
+        subprocess.run([sys.executable, str(HERE / 'root_ref_bind.py'), str(unit), '%s=%s' % (target, needles[1]),
+                        '--why', why], cwd=str(ROOT), capture_output=True)
+        got = agent_prove.verdict(unit, want)
+    bad = [a for a in want if got[a][0] != 'EXACT']
+    if bad:
+        return addr, kind + ' -> ' + got[bad[0]][0], ('%s: %s' % (bad[0], got[bad[0]][1])).replace('\n', ' | ')[:260]
+    shutil.move(str(unit), str(final))
+    rel = final.relative_to(ROOT).as_posix()
+    shared_json.update(HERE / 'class-lane-new-sources.json', lambda lst: lst if rel in lst else lst + [rel], [])
+    return addr, kind + ' -> EXACT', ''
+
+
+def singleton_thunk(addr, target, enum):
+    header = enum_header(enum)
+    if not header:
+        return addr, 'skip: no native header defines enum ' + enum, ''
+    return instantiation(addr, target, 'EnumDesc<%s>::callDoSingleton' % enum, [header, 'reflection/enumconverter.h'],
+                         'template class RBX::Reflection::EnumDesc<%s>;' % enum, ('callDoSingleton', 'doSingleton'),
+                         'The constructor called by the target installs the RTTI vftable of RBX::Reflection::EnumDesc<%s>' % enum)
+
+
+def class_index_thunk(addr, target, cls, header, text):
+    if not cls:
+        return addr, 'skip: ' + text, ''
+    return instantiation(addr, target, 'ServiceProvider::callDoGetClassIndex<%s>' % cls, ['ServiceProvider.cpp', header],
+                         'template void RBX::ServiceProvider::callDoGetClassIndex<%s>();' % cls,
+                         ('callDoGetClassIndex', 'doGetClassIndex'),
+                         'The functions that pass this thunk to call_once then declare the class name "%s", the name of %s' % (text, cls))
+
+
 def bind(rows):
     while LOCK.is_file():
         time.sleep(30)
@@ -244,6 +384,12 @@ def one(row):
             if result[1].endswith('EXACT'):
                 break
         return result
+    enum = enum_of_singleton(target)
+    if enum:
+        return singleton_thunk(addr, target, enum)
+    service = service_of_class_index(addr, target)
+    if service:
+        return class_index_thunk(addr, target, *service)
     symbol, source = proven(target)
     if not symbol:
         return addr, 'target symbol unknown', ''

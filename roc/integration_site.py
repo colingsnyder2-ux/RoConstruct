@@ -506,6 +506,19 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
         "integrated_functions": sum(a in native for a in authentic),
         "integrated_bytes": sum(functions[a]["size"] for a in authentic if a in native),
         "inactive_bytes": sum(functions[a]["size"] for a in authentic if a not in native)}
+    # Organized: the wider tier next to Authentic. Source is on the layout branch too, but its path is
+    # inferred or it is a merged unit (per-symbol proof only). addr -> [file on the branch, tier].
+    shown = subprocess.run(["git", "show", "refs/remotes/origin/layout/2008-06:rebuild/2008-06/layout/organized.json"],
+                           cwd=root, capture_output=True, text=True, encoding="utf-8")
+    wider = json.loads(shown.stdout).get("addresses", {}) if shown.returncode == 0 else {}
+    organized = sorted(a for a in wider if a in functions and a not in data["authentic"]
+                       and (a in native or a in exact_inactive))
+    data["organized"] = {a: wider[a] for a in organized}
+    data["native_code"]["organized"] = {
+        "functions": len(organized), "bytes": sum(functions[a]["size"] for a in organized),
+        "integrated_functions": sum(a in native for a in organized),
+        "integrated_bytes": sum(functions[a]["size"] for a in organized if a in native),
+        "inactive_bytes": sum(functions[a]["size"] for a in organized if a not in native)}
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site

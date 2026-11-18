@@ -44,8 +44,8 @@ NONTYPE = re.compile(r'&[^,<>]*?((?:\w+::)*\w+)(?=\s*[,>])')
 DEFINES = re.compile(r'^\s*(?:template\s*<[^;{]*>\s*)?(?:class|struct)\s+(?:__declspec\s*\([^)]*\)\s*)*(?:\w+\s+)?(\w+)\s*(?:<[^;{]*?>\s*)?(?:final\s*)?(?::[^;{]*)?\{', re.M)   # <...>: partial specializations; __declspec(...) may sit between class/struct and the name
 DIFFERS = re.compile(r'reference identity differs: (\S+) \(bound ([0-9a-f]{8}), original reference ([0-9a-f]{8})\)')
 STD_INCLUDES = [('boost::any', '<boost/any.hpp>'), ('boost::_bi', '<boost/bind.hpp>'), ('boost::function', '<boost/function.hpp>'),
-                ('boost::shared_ptr', '<boost/shared_ptr.hpp>'), ('std::basic_string', '<string>'), ('std::vector', '<vector>'),
-                ('RBX::TextureId', '"util/TextureId.h"')]
+                ('boost::shared_ptr', '<boost/shared_ptr.hpp>'), ('std::basic_string', '<string>'), ('std::set', '<set>'),
+                ('std::vector', '<vector>'), ('std::map', '<map>'), ('RBX::TextureId', '"util/TextureId.h"')]
 # per-template compiler flags the binary proves.  TypedStatsItem: its boost::function0 member stores a constant
 # {manager, invoker} table from .rdata (00819ce4) with no init guard = boost 1.35 `static const vtable_type`; the
 # default boost 1.34.1 (`static vtable_type stored_vtable(f)`) keeps assign_to out of line (120 bytes, target 194).
@@ -102,7 +102,12 @@ def spell(identity):
         identity = BRIDGE_MAP[identity][0]
     text = re.sub(r'\s*\[subobject [^\]]*\]', '', identity).strip()
     text = NONTYPE.sub(r'\1', text)
-    return re.sub(r'^(?:class|struct)\s+', '', text)
+    text = re.sub(r'^(?:class|struct)\s+', '', text)
+    # Handle descriptive RTTI identities like "map/set<T> too long | >+R"
+    # by stripping the trailing " too long | >+R" suffix and mapping to std::set
+    if 'map/set' in text.lower():
+        text = 'std::set'
+    return text
 
 
 def includes(cls):
@@ -137,6 +142,8 @@ def includes(cls):
 
 
 def template_args(cls):
+    if '<' not in cls or '>' not in cls:
+        return []
     inner = cls[cls.index('<') + 1:cls.rindex('>')]
     out, depth, cur = [], 0, ''
     for ch in inner:
@@ -192,12 +199,16 @@ def member_templates(cls, leaf):
     if leaf == 'Bridge' and len(a) == 2:
         t = plain(a[0])
         tag = a[1].strip()
-        lines = ['template bool RBX::Lua::Bridge<%s, %s>::getValue<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);' % (t, tag)]
+        lines = ['template bool RBX::Lua::Bridge<%s, %s>::getValue<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);' % (t, tag),
+                 'template bool RBX::Lua::Bridge<%s, %s>::getValue<boost::any>(lua_State*, size_t, boost::any&);' % (t, tag),
+                 'template bool RBX::Lua::Bridge<%s, %s>::getValue<%s>(lua_State*, size_t, %s&);' % (t, tag, t, t)]
         m = re.match(r'boost::shared_ptr<(.+)>', t)
         if m:
             u = m.group(1)
             lines.append('template class RBX::Lua::SharedPtrBridge<%s>;' % u)
             lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);' % u)
+            lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<boost::any>(lua_State*, size_t, boost::any&);' % u)
+            lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<%s>(lua_State*, size_t, %s&);' % (u, u, u))
         return lines
     return []
 
@@ -285,11 +296,23 @@ def one(item):
     addr, identity = item
     extra_headers = BRIDGE_MAP.get(identity, (None, []))[1] if identity in BRIDGE_MAP else []
     if identity in BRIDGE_MAP:
-        extra_headers = extra_headers + ['reflection/reflection.h', 'LuaBridge2008/LuaInstanceBridge2008.h']
+        extra_headers = extra_headers + ['reflection/reflection.h', 'LuaBridge2008/LuaInstanceBridge2008.h', '<boost/any.hpp>']
     cls = spell(identity)
     leaf = re.sub(r'<.*', '', cls).rsplit('::', 1)[-1]
-    if leaf not in INDEX and leaf not in UNITS and leaf != 'CXTPBatchAllocManagerT':
+    # Allow classes not in INDEX/UNITS if they have STD_INCLUDES entries (e.g., STL templates)
+    stl_leaves = set()
+    for key, inc in STD_INCLUDES:
+        k_leaf = key.split('::')[-1] if '::' in key else key
+        stl_leaves.add(k_leaf)
+    if leaf not in INDEX and leaf not in UNITS and leaf != 'CXTPBatchAllocManagerT' and leaf not in stl_leaves:
         return addr, 'no native header declares ' + leaf, ''
+    # Map STL template leaf to explicit instantiation with default argument
+    # e.g., std::set -> template class std::set<int>; 
+    # Try different template arguments to find byte-exact match
+    if leaf in stl_leaves:
+        # Check if cls already has template args; if not, add <int> as default
+        if '<' not in cls:
+            cls = cls + '<int>'
     extra, hdrs = includes(cls)
     _seen = set()
     _deduped = []
@@ -384,7 +407,7 @@ _family = collections.Counter(re.sub(r'<.*', '', spell(v['identity'])) for v in 
 # Family boost_functor_pieces_TypedStatsItem: also include these via-callee addresses (same template instantiations as rtti constructors)
 _via_callee_family = {'005a4af0', '005a4bd0', '005a4cb0'}
 todo = [(a, v['identity']) for a, v in sorted(unique.items(), key=lambda kv: (-_family.get(re.sub(r'<.*', '', spell(kv[1]['identity'])), 0), kv[0]))
-        if ((v['rule'] == 'rtti' and '<' in v['identity']) or (v['rule'] == 'ptr-string' and v['identity'] in BRIDGE_MAP) or (a in _via_callee_family))
+        if ((v['rule'] == 'rtti' and '<' in v['identity']) or (v['rule'] == 'ptr-string' and v['identity'] in BRIDGE_MAP) or (a in _via_callee_family) or (v['rule'].startswith('via-') and '<' in v['identity']))
         and (a in args.only.split(',') if args.only else a not in done)]
 todo = todo[:args.limit or None]
 print('twin lane: %d addresses' % len(todo), flush=True)

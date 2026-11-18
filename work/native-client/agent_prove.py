@@ -51,6 +51,13 @@ def verdict(source, targets):
             blockers = []
         if not any('inputs changed' in str(b) for b in blockers):
             break
+        # the prover caches that refusal per source and would replay it forever: drop this source's cache row
+        try:
+            import hashlib
+            rel = Path(source).resolve().relative_to(ROOT).as_posix()
+            (HERE / 'prove-cache' / (hashlib.sha1(rel.encode()).hexdigest()[:20] + '.json')).unlink(missing_ok=True)
+        except (OSError, ValueError):
+            pass
     else:
         return {addr: ('RETRY LATER', 'inputs kept changing during the proof (other workers editing headers); '
                        'nothing is wrong with the file yet') for addr in targets}

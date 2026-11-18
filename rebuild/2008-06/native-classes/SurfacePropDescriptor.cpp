@@ -146,7 +146,11 @@ namespace RBX {
 		}
 		// Per-Enum overrides (vftable slots 4 / 5: 005ef1e0 / 005ef3a0 for SurfaceType, 005ef210 / 005ef3d0 for
 		// InputType; they read the getset at +0x1c). Bodies of the remaining overrides are not recovered in this unit.
-		virtual void getVariant(const Reflection::DescribedBase*, Reflection::Value&) const;
+		// 005ef1e0 (SurfaceType) / 005ef210 (InputType): Value::operator=<Enum> 005ef120 / 005ef180 on the getset's value.
+		virtual void getVariant(const Reflection::DescribedBase* instance, Reflection::Value& value) const
+		{
+			value = getset->getValue(instance);
+		}
 		virtual void setVariant(Reflection::DescribedBase*, const Reflection::Value&) const;
 		virtual bool equalValues(const Reflection::DescribedBase*, const Reflection::DescribedBase*) const;
 		virtual bool hasStringValue() const;

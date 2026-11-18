@@ -22,8 +22,9 @@ from roc import match  # noqa: E402
 from roc.native_bulk import Targets  # noqa: E402
 
 
-def reachable(raw, symbol, va, size, targets):
-    """{referenced code/external symbol: original address} for the body of SYMBOL placed at VA."""
+def reachable(raw, symbol, va, size, targets, data=None):
+    """{referenced code/external symbol: original address} for the body of SYMBOL placed at VA.
+    DATA (a dict) also collects {data symbol the body reaches (vftables): original address}."""
     sections, symbols, definitions, _ = match._coff_data_index(raw)
 
     def relocs(table):
@@ -36,6 +37,8 @@ def reachable(raw, symbol, va, size, targets):
         if number <= 0 or sections[number - 1][9] & 0x20:
             out.setdefault(name, set()).add(base)
             return
+        if data is not None:
+            data.setdefault(name, set()).add(base)
         if (index, base) in seen or depth > 6:
             return
         seen.add((index, base))
@@ -63,6 +66,13 @@ def reachable(raw, symbol, va, size, targets):
     return out
 
 
+def proved_object(out, family):
+    """The object the manifest was harvested from: a compile reused from the prover's cache lives in another
+    family's objects folder, so the manifest's job row wins over the newest object of this folder."""
+    named = [Path(j['object']) for j in family.get('jobs') or [] if j.get('object') and Path(j['object']).is_file()]
+    return named[0] if named else max(out.glob('objects/*/*.obj'), key=lambda p: p.stat().st_mtime)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('source')
@@ -70,8 +80,9 @@ def main():
     ap.add_argument('--why', required=True)
     args = ap.parse_args()
     out = HERE / 'prove-out' / ('prove-' + Path(args.source).stem)
-    rows = [r for r in json.loads((out / 'manifest.json').read_text(encoding='utf-8'))['families'][0]['symbols']]
-    raw = max(out.glob('objects/*/*.obj'), key=lambda p: p.stat().st_mtime).read_bytes()
+    family = json.loads((out / 'manifest.json').read_text(encoding='utf-8'))['families'][0]
+    rows = family['symbols']
+    raw = proved_object(out, family).read_bytes()
     targets = Targets('2008-06')
     new = []
     for item in args.roots:
