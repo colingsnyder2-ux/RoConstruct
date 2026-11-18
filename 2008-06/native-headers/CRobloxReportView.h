@@ -58,16 +58,47 @@ public:
 // view uses is declared; the record body is a separate recovery. Its layout is blocked on +0xa4: MutexRef is
 // 8 bytes (CNameItem 004564a0: MutexRef +0x7c, Stats::Item* +0x84, size 0x88), so the record has 4 bytes at +0xa4
 // that its constructor 00457ca0, destructor 00457ff0 and listeners 00457f30/004581a0 never touch.
+// MutexRef: global class named by the RTTI base descriptors of the record (.?AVMutexRef@@ at +0x9c) and of
+// CStatsItemRecord::CNameItem (+0x7c). Its constructor 00554810 copies an 8-byte by-value shared_ptr argument.
+class MutexRef {
+public:
+    MutexRef(boost::shared_ptr<RBX::DataModel> dataModel);     // 00554810
+    ~MutexRef();
+private:
+    boost::shared_ptr<RBX::DataModel> dataModel;               // INFERRED: member name; 8 bytes copied by 00554810
+};
+
+// Base order from the constructor 00457ca0 (CXTPReportRecord 006d7fd0, MutexRef +0x9c, listeners +0x54/+0x78) and
+// the RTTI base array; the compiler places the non-polymorphic MutexRef after the polymorphic bases.
 class CRobloxReportView::CStatsItemRecord : public CXTPReportRecord,
+                                            private MutexRef,
                                             public RBX::MarshaledListener<RBX::Instance, RBX::ChildAdded>,
                                             public RBX::MarshaledListener<RBX::Instance, RBX::ChildRemoved> {
 public:
+    class CNameItem;                                           // RTTI vtable 008184a4, constructor 004564a0
+    class CValueItem;                                          // vtable 008185f4, constructor 00456620
+
     CStatsItemRecord(boost::shared_ptr<RBX::Stats::Item> item, boost::shared_ptr<RBX::DataModel> dataModel); // 00457ca0
-    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildAdded event);   // 00457f30 (not recovered)
-    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event); // 004581a0 (not recovered)
+    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildAdded event);   // 004581a0, vtable 00818a5c slot 2 (not recovered)
+    virtual void onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event); // 00457f30, vtable 00818a48 slot 2 (not recovered)
 
 private:
-    struct MutexRef { void* mutex; int refs; } mutexRef;       // +0x9c, 8 bytes (CNameItem 004564a0)
     int unused;                                                // INFERRED: +0xa4, size 0xb0 requires 4 bytes the record never touches
     boost::shared_ptr<RBX::Stats::Item> item;                  // +0xa8, stored by 00457ca0
+};
+
+// Record items (size 0x88, operator new(0x88) in 00457ca0): MutexRef +0x7c is constructed before the
+// CXTPReportRecordItem base 006c7340; the Stats::Item pointer is stored at +0x84.
+class CRobloxReportView::CStatsItemRecord::CNameItem : private MutexRef, public CXTPReportRecordItem {
+public:
+    CNameItem(RBX::Stats::Item* item, boost::shared_ptr<RBX::DataModel> dataModel);      // 004564a0
+private:
+    RBX::Stats::Item* item;                                    // +0x84
+};
+
+class CRobloxReportView::CStatsItemRecord::CValueItem : private MutexRef, public CXTPReportRecordItem {
+public:
+    CValueItem(RBX::Stats::Item* item, boost::shared_ptr<RBX::DataModel> dataModel);     // 00456620
+private:
+    RBX::Stats::Item* item;                                    // +0x84
 };

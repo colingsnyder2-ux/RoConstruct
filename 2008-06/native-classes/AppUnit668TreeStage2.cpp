@@ -4,6 +4,7 @@
 #include <algorithm>
 #include "AppUnit668/TreeStage.h"
 #include "AppUnit66C/AssemblyStage.h"
+#include "v8kernel/Body2008.h"
 #include "v8world/Joints2008.h"
 #include "v8world/Primitive2008.h"
 #define NATIVE_CLUMP_DECL
@@ -146,12 +147,21 @@ namespace RBX
 	{
 		Primitive* p1 = j->getPrimitive(1);
 		Primitive* p0 = j->getPrimitive(0);
-		int which = 0;
-		Joint* lightest = 0;
-		reconcile(p0, p1, p0 ? p0->getBodyDepth() : 0, p1 ? p1->getBodyDepth() : 0, lightest, which);
-		if (!lightest || JointSort::lighterJoint(j, lightest))
+		// INFERRED: the two reconcile outputs sit in one 8-byte local (joint +0, side +4; side is zeroed first) and
+		// depth0 takes j's home slot; separate Joint* / int locals put the joint in j's home slot instead.
+		struct
 		{
-			replaceLightest(lightest, j, j->getPrimitive((which + 1) % 2));
+			Joint* joint;
+			int side;
+		} lightest;
+		lightest.side = 0;
+		lightest.joint = 0;
+		int depth0 = p0 ? p0->getBodyDepth() : 0;
+		int depth1 = p1 ? p1->getBodyDepth() : 0;
+		reconcile(p0, p1, depth0, depth1, lightest.joint, lightest.side);
+		if (!lightest.joint || JointSort::lighterJoint(j, lightest.joint))
+		{
+			replaceLightest(lightest.joint, j, j->getPrimitive((lightest.side + 1) % 2));
 			dirty = true;
 		}
 	}
@@ -194,6 +204,66 @@ namespace RBX
 		{
 			cleanEdge(e);
 		}
+	}
+
+	// 00669560
+	void TreeStage::processEdge(Edge* e, Primitive* from)
+	{
+		Primitive* other = e->getPrimitive(0);
+		if (from == other)
+			other = e->getPrimitive(1);
+		Assembly* a = static_cast<Assembly*>(other->getClump());
+		bool isRoot = a && a->getRootPrimitive() == other;
+		if (e->getEdgeType() == Edge::JOINT)
+		{
+			Joint::JointType type = static_cast<Joint*>(e)->getJointType();
+			if (type == Joint::WELD_JOINT || type == Joint::SNAP_JOINT)
+			{
+				if (a == from->getClump() && other->getBody()->getParent() == from->getBody() && !other->getBody()->getLink())
+				{
+					Clump::updateRigidChild(from, static_cast<Joint*>(e), other);
+					return;
+				}
+				if (a)
+				{
+					if (isRoot)
+						eraseDirtyAssemblyAndDelete(a);
+					else
+					{
+						dirtyAssemblyAndRemove(a->getAssembly());
+						a->removePrimitive(other);
+					}
+				}
+				dirtyAssemblyAndRemove(from->getAssembly());
+				Clump::addRigidChild(from, static_cast<Joint*>(e), other);
+				return;
+			}
+		}
+		if (isRoot)
+		{
+			dirtyAssemblyAndRemove(a->getAssembly());
+			other->getBody()->setParent(NULL);
+			a->setParent(NULL);
+		}
+		else
+		{
+			if (a)
+			{
+				dirtyAssemblyAndRemove(a->getAssembly());
+				a->removePrimitive(other);
+			}
+			a = createAssembly(other);
+		}
+		if (e->getEdgeType() == Edge::JOINT && static_cast<Joint*>(e)->getJointType() == Joint::MOTOR_JOINT)
+		{
+			dirtyAssemblyAndRemove(from->getAssembly());
+			eraseDirtyAssembly(a);
+			Assembly::addMotorChild(from, static_cast<MotorJoint*>(static_cast<Joint*>(e)), other);
+			return;
+		}
+		Joint::JointType type = static_cast<Joint*>(e)->getJointType();
+		if (type == Joint::FREE_JOINT || type == Joint::ANCHOR_JOINT)
+			dirtyAssembly(a);
 	}
 
 	// 006697a0

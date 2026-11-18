@@ -14,6 +14,7 @@ namespace RBX
 	class Primitive;
 	class World;
 	class ContactManager;
+	class Extents;
 }
 #include <vector>
 #include <G3D/Array.h>
@@ -61,6 +62,9 @@ namespace RBX
 	public:
 		SpatialHash(World* world, ContactManager* contactManager);   // 0065b4e0
 		~SpatialHash();                                              // 0065b1b0
+		// INFERRED: 0065abd0 passes Primitive::getFastFuzzyExtents (005e7a50) to 0065a950 (spatial node update, reads prim +0x64..+0x7c)
+		void onPrimitiveExtentsChanged(Primitive* p, const Extents& e);   // 0065a950
+		void onPrimitiveExtentsChanged(Primitive* p);                     // 0065abd0
 	public:
 		static int gridSize;   // INFERRED (header-add): evidence: asm dword ptr [0x9625ac] loaded and shifted left by cl - byte-proved by 00659460
 	};

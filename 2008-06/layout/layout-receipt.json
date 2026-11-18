@@ -1,0 +1,2352 @@
+{
+ "family": "layout",
+ "manifest": "C:/Users/colin/RoConstruct/work/native-client/layout/families/auto-export.json",
+ "files": {
+  "rebuild/2008-06/native-classes/AppUnit504DepthBlur.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/renderlib/DepthBlur.cpp",
+   "source_sha256": "cd510eec1abfd5eba0ed473925f17835bd468804950d702538a631cd987c03d5",
+   "export_sha256": "cd510eec1abfd5eba0ed473925f17835bd468804950d702538a631cd987c03d5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit568Signal.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/reflection/signal.cpp",
+   "source_sha256": "070f0396f646b5a5e507c4d6513a95741745df9216b0c4eb3a981b72f7ece51d",
+   "export_sha256": "070f0396f646b5a5e507c4d6513a95741745df9216b0c4eb3a981b72f7ece51d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit5DC_2008Quaternion.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/Quaternion.cpp",
+   "source_sha256": "7b2e577e4a475257877e1605f4fc810cc169e5703660c8f57cf0bbae4398adf1",
+   "export_sha256": "fc625e5fe8660ed3ee917cf3d293327891af0310704774b519889945733af3fb",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/App/include/util/Quaternion.h",
+     "new": "../../../../../../tools/rbxgs/Client/App/include/util/Quaternion.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit5E4Mechanism.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/Mechanism.cpp",
+   "source_sha256": "b10cf8374af9c87a121167991ee082efc9aaf56e3334bf1438b974df6f5afcd3",
+   "export_sha256": "b10cf8374af9c87a121167991ee082efc9aaf56e3334bf1438b974df6f5afcd3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit5ECNormalId.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/NormalId.cpp",
+   "source_sha256": "756d22b274923cd5fa2641bb80728cc0c7d994996aa92f00dc22eacbb3a8151f",
+   "export_sha256": "756d22b274923cd5fa2641bb80728cc0c7d994996aa92f00dc22eacbb3a8151f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit658Edge.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/Edge.cpp",
+   "source_sha256": "96d2c3db9fcf4455604e61294bc30dba5fb7ebbcec9dcd29bc7465291180a24e",
+   "export_sha256": "96d2c3db9fcf4455604e61294bc30dba5fb7ebbcec9dcd29bc7465291180a24e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit660_2008ERA.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/ExponentialRunningAverage.cpp",
+   "source_sha256": "7973773501342c606aaf94902ca39117240e84cec357062caaf0c62d13163bf3",
+   "export_sha256": "7973773501342c606aaf94902ca39117240e84cec357062caaf0c62d13163bf3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit660_2008GroupDragTool.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/tool/GroupDragTool.cpp",
+   "source_sha256": "803032c52d7c559b9581c397e60082df2f5ca475eb9fad5015f155dad785d5f8",
+   "export_sha256": "803032c52d7c559b9581c397e60082df2f5ca475eb9fad5015f155dad785d5f8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit660_2008PartDragTool.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/tool/PartDragTool.cpp",
+   "source_sha256": "4fe9051d8e7eef1642e997f1f576761858ee20e087a32910882be0d0e8f6e8fc",
+   "export_sha256": "4fe9051d8e7eef1642e997f1f576761858ee20e087a32910882be0d0e8f6e8fc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit668IWorldStage.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/IWorldStage.cpp",
+   "source_sha256": "89f4ce531427f831349459c354081f6ff7ebca5830a6e3b4a5a915dfaba00561",
+   "export_sha256": "89f4ce531427f831349459c354081f6ff7ebca5830a6e3b4a5a915dfaba00561",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ArrowToolBase.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/tool/ToolsArrow.cpp",
+   "source_sha256": "4d3f696fac278d9d8e3b9a26e525429b818b609906d3ace671999174fe3c6031",
+   "export_sha256": "4d3f696fac278d9d8e3b9a26e525429b818b609906d3ace671999174fe3c6031",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Backpack.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/Backpack.cpp",
+   "source_sha256": "c6948583102c6227f06f382686a965d8890a869883d6edb80855ad0c7b5ccb14",
+   "export_sha256": "c6948583102c6227f06f382686a965d8890a869883d6edb80855ad0c7b5ccb14",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8kernel/Body.cpp",
+   "source_sha256": "1161d495740f02d08f66be9bc02eb31b675fa115c7ad26726ebc4b48de8b17bf",
+   "export_sha256": "1161d495740f02d08f66be9bc02eb31b675fa115c7ad26726ebc4b48de8b17bf",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/BodyPrimitive2008Cofm.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8kernel/Cofm.cpp",
+   "source_sha256": "754585b65d3e85a8ac775b7935214d21c11ed6f67d8654b1987a2d312274f59f",
+   "export_sha256": "754585b65d3e85a8ac775b7935214d21c11ed6f67d8654b1987a2d312274f59f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/BodyPrimitive2008Point.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8kernel/Point.cpp",
+   "source_sha256": "14128fd32ecac3be3a92bcf7e215c3583007b4f2254774112f8bab9017b71799",
+   "export_sha256": "14128fd32ecac3be3a92bcf7e215c3583007b4f2254774112f8bab9017b71799",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/DataBlockEncryptor2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/DataBlockEncryptor.cpp",
+   "source_sha256": "6beb702282da9d00459ee7acad59f1773a252ece74a0f51c1d89dfc87eb7a92e",
+   "export_sha256": "6beb702282da9d00459ee7acad59f1773a252ece74a0f51c1d89dfc87eb7a92e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/DragTool.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/tool/DragTool.cpp",
+   "source_sha256": "35dba54a288fa27d597237635bda16cd91e0fcd8bc6465a2b7604dd5ca797831",
+   "export_sha256": "35dba54a288fa27d597237635bda16cd91e0fcd8bc6465a2b7604dd5ca797831",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/FileSystem.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/FileSystem.cpp",
+   "source_sha256": "457a7ae11c658c347f47e221f4fa02e5a6d61c37d51e19fa443580f3469692b1",
+   "export_sha256": "457a7ae11c658c347f47e221f4fa02e5a6d61c37d51e19fa443580f3469692b1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DBinaryInput.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/BinaryInput.cpp",
+   "source_sha256": "701d17ab177abeb8a365e77e4b6d897d31e10bf8060fedd0474288cace3cfd01",
+   "export_sha256": "701d17ab177abeb8a365e77e4b6d897d31e10bf8060fedd0474288cace3cfd01",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DBinaryOutput.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/BinaryOutput.cpp",
+   "source_sha256": "1b666c982027de7d5cb6266fd046597ba7be8f9876e1c3cc972ab5efa4caf417",
+   "export_sha256": "1b666c982027de7d5cb6266fd046597ba7be8f9876e1c3cc972ab5efa4caf417",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DCapsule.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Capsule.cpp",
+   "source_sha256": "f16300270397cc3ae56b432abf0fc4fadf2b8b0883a03c717973648005127058",
+   "export_sha256": "f16300270397cc3ae56b432abf0fc4fadf2b8b0883a03c717973648005127058",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DCollisionDetection.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/CollisionDetection.cpp",
+   "source_sha256": "33850ad1b951fb6db44fbb84549db6532d4584f93095d5fdd7475ff2a9b30790",
+   "export_sha256": "33850ad1b951fb6db44fbb84549db6532d4584f93095d5fdd7475ff2a9b30790",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DCoordinateFrame.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/CoordinateFrame.cpp",
+   "source_sha256": "4b20efe5499864eb2bf20311d4efd79f6bc0c95d810a5f7f7453addeda6821db",
+   "export_sha256": "4b20efe5499864eb2bf20311d4efd79f6bc0c95d810a5f7f7453addeda6821db",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DDraw.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Draw.cpp",
+   "source_sha256": "0427d3b77bbacdb0e555de39bb8b1c43575a22300a1898c985fe1b22fdffa769",
+   "export_sha256": "0427d3b77bbacdb0e555de39bb8b1c43575a22300a1898c985fe1b22fdffa769",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DGCamera.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GCamera.cpp",
+   "source_sha256": "8f377427388cdc98c8a232e024026be6048403904f3b3bf937e9d35bd311dd34",
+   "export_sha256": "8f377427388cdc98c8a232e024026be6048403904f3b3bf937e9d35bd311dd34",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DGFont.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/GFont.cpp",
+   "source_sha256": "bc59128b59943e82f7ce0111a08217e3fe99b858bcd7c780f4d2fec05ebe39de",
+   "export_sha256": "bc59128b59943e82f7ce0111a08217e3fe99b858bcd7c780f4d2fec05ebe39de",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DGLCaps.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/GLCaps.cpp",
+   "source_sha256": "d3193b27366e224f3702ae559416a709a772dea657ce48d8337893191332ed66",
+   "export_sha256": "d3193b27366e224f3702ae559416a709a772dea657ce48d8337893191332ed66",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DGLight.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GLight.cpp",
+   "source_sha256": "753b8c211885a5d31c90e869af6d794c51bc0f2f34f2a969fe12d0dd76a6e246",
+   "export_sha256": "753b8c211885a5d31c90e869af6d794c51bc0f2f34f2a969fe12d0dd76a6e246",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DGPUProgram.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/GPUProgram.cpp",
+   "source_sha256": "07070e4e6fd067e11d6f438b6f961cc965ead58a5ba8a237196074df71459458",
+   "export_sha256": "07070e4e6fd067e11d6f438b6f961cc965ead58a5ba8a237196074df71459458",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DGWindow.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/GWindow.cpp",
+   "source_sha256": "f41ba23c5f28e73398b37ce810241fcc789308b81f117d9961ffc4a3b93b9c9e",
+   "export_sha256": "f41ba23c5f28e73398b37ce810241fcc789308b81f117d9961ffc4a3b93b9c9e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DLightingParameters.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/LightingParameters.cpp",
+   "source_sha256": "6d6bcb1bbf1341c52452787deed7f5f8f6a68046d8c4c0d917e32620fb99bb36",
+   "export_sha256": "6d6bcb1bbf1341c52452787deed7f5f8f6a68046d8c4c0d917e32620fb99bb36",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DLineSegment.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/LineSegment.cpp",
+   "source_sha256": "106581d634b65948a0d8a60147f15891371d8404bbd8fa8c2aa81dc639cd5838",
+   "export_sha256": "106581d634b65948a0d8a60147f15891371d8404bbd8fa8c2aa81dc639cd5838",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DLog.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Log.cpp",
+   "source_sha256": "71b8483d6db17ed8da33e78030e2d97fd46300bd9ccbfe876eeb60dbd622bf73",
+   "export_sha256": "71b8483d6db17ed8da33e78030e2d97fd46300bd9ccbfe876eeb60dbd622bf73",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DMatrix4.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Matrix4.cpp",
+   "source_sha256": "d69d2a633c13f24acb4dfb03a3fe3bcc8025a50e68630f8b76fea9714325c920",
+   "export_sha256": "d69d2a633c13f24acb4dfb03a3fe3bcc8025a50e68630f8b76fea9714325c920",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DMeshAlg.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/MeshAlg.cpp",
+   "source_sha256": "afcc8492e0830d42810955cae12a3e470d412151f59817429da46e5c1e26cf6d",
+   "export_sha256": "afcc8492e0830d42810955cae12a3e470d412151f59817429da46e5c1e26cf6d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DMeshAlgAdjacency.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/MeshAlgAdjacency.cpp",
+   "source_sha256": "65b760275de795352d6ccf415fe65c8873e49b73b04e1c221d289baa070e3b56",
+   "export_sha256": "65b760275de795352d6ccf415fe65c8873e49b73b04e1c221d289baa070e3b56",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DMeshAlgWeld.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/MeshAlgWeld.cpp",
+   "source_sha256": "f8e2b568af3c6313a8a25d2df7d320bbfa4f2b877dca08a4094bfcdad515c476",
+   "export_sha256": "f8e2b568af3c6313a8a25d2df7d320bbfa4f2b877dca08a4094bfcdad515c476",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DMilestone.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Milestone.cpp",
+   "source_sha256": "a0c791f0e99d9cb01a4f904c03263c95667b492180dd1e115c6ea1d0551cfff0",
+   "export_sha256": "a0c791f0e99d9cb01a4f904c03263c95667b492180dd1e115c6ea1d0551cfff0",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DPlane.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Plane.cpp",
+   "source_sha256": "91007c52fa179efdad2663fc37a193ba3114de542fa9ca3aa08fd49eee266cc4",
+   "export_sha256": "91007c52fa179efdad2663fc37a193ba3114de542fa9ca3aa08fd49eee266cc4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DQuat.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Quat.cpp",
+   "source_sha256": "0a144a9750dbbef0936dbd4fed7c59d1b091b7cb10d7c0684f6479ca25d8ad3d",
+   "export_sha256": "0a144a9750dbbef0936dbd4fed7c59d1b091b7cb10d7c0684f6479ca25d8ad3d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DRegistryUtil.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/RegistryUtil.cpp",
+   "source_sha256": "efc7fc2ed20c394145be4cb19731e874f127b7507d10bfeb611ed623f10506fa",
+   "export_sha256": "efc7fc2ed20c394145be4cb19731e874f127b7507d10bfeb611ed623f10506fa",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DShader.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Shader.cpp",
+   "source_sha256": "82a5cc23b066c01b99e1904043419aef2f9502fc16e38ad9289d9d62b18b1b43",
+   "export_sha256": "82a5cc23b066c01b99e1904043419aef2f9502fc16e38ad9289d9d62b18b1b43",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DStopwatch.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/Stopwatch.cpp",
+   "source_sha256": "69bfecb01252f1cce7de1c5733384c68dab7eaa80d648d73e57c7345d439e7d0",
+   "export_sha256": "69bfecb01252f1cce7de1c5733384c68dab7eaa80d648d73e57c7345d439e7d0",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DSystem.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/System.cpp",
+   "source_sha256": "267dae76c8522edb381cfbf9ac7283bc44ca81955be565e040fdcbba40db327c",
+   "export_sha256": "267dae76c8522edb381cfbf9ac7283bc44ca81955be565e040fdcbba40db327c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DTextOutput.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/TextOutput.cpp",
+   "source_sha256": "38fe9e055c55b9c61f4aaa7251407b94a7026f0344c4d085ca39dccfe89edc95",
+   "export_sha256": "38fe9e055c55b9c61f4aaa7251407b94a7026f0344c4d085ca39dccfe89edc95",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DTexture.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/Texture.cpp",
+   "source_sha256": "efc87bd598fbe6916edc05b977829631dcd4634bbcf03464475bb35c318301e8",
+   "export_sha256": "efc87bd598fbe6916edc05b977829631dcd4634bbcf03464475bb35c318301e8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DTextureFormat.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/TextureFormat.cpp",
+   "source_sha256": "7026e1640417075376cb23dd725e711fe3bb955a46248032728819066d29d1e2",
+   "export_sha256": "7026e1640417075376cb23dd725e711fe3bb955a46248032728819066d29d1e2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DTextureManager.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/TextureManager.cpp",
+   "source_sha256": "3d6d29b54e5c24f6e8faab54e1011c74a72c280ffdd3f34c18926a8af6b00aba",
+   "export_sha256": "3d6d29b54e5c24f6e8faab54e1011c74a72c280ffdd3f34c18926a8af6b00aba",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DVAR.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/VAR.cpp",
+   "source_sha256": "1d20228fbb4239728788b0bac2b83d00fbff79f8f864dc01149a28b2356ff768",
+   "export_sha256": "1d20228fbb4239728788b0bac2b83d00fbff79f8f864dc01149a28b2356ff768",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DVARArea.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/VARArea.cpp",
+   "source_sha256": "7521347dcc28f475498f38e3bc5120a7b3500a01f4c5343af17c8708f296f0ea",
+   "export_sha256": "7521347dcc28f475498f38e3bc5120a7b3500a01f4c5343af17c8708f296f0ea",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DdebugAssert.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/debugAssert.cpp",
+   "source_sha256": "7db8f92b115aa0893f67044e966d739aaa2dbe49dfb00c9297c6c09317e1b39c",
+   "export_sha256": "7db8f92b115aa0893f67044e966d739aaa2dbe49dfb00c9297c6c09317e1b39c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3Dfileutils.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/fileutils.cpp",
+   "source_sha256": "a9611c478bf2ff5f5770e2aaa9932d6428876a2a720beff39d5666d03eb12071",
+   "export_sha256": "a9611c478bf2ff5f5770e2aaa9932d6428876a2a720beff39d5666d03eb12071",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3Dformat.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/format.cpp",
+   "source_sha256": "d1f3e6c93996b24a84976d2e9aa0eb6d597cda2cf6fc9d12bf54b0920299952d",
+   "export_sha256": "d1f3e6c93996b24a84976d2e9aa0eb6d597cda2cf6fc9d12bf54b0920299952d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DgetOpenGLState.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/getOpenGLState.cpp",
+   "source_sha256": "f72d9c6c2ab9a1d7788f8b22436b34b0dd85bddbf7254123f3bb153b4964d76e",
+   "export_sha256": "f72d9c6c2ab9a1d7788f8b22436b34b0dd85bddbf7254123f3bb153b4964d76e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3Dglcalls.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/glg3dcpp/glcalls.cpp",
+   "source_sha256": "67d1979591d62679716a2fa10ab6ba95ac4ac26daa513368f0b2c63a592c993a",
+   "export_sha256": "67d1979591d62679716a2fa10ab6ba95ac4ac26daa513368f0b2c63a592c993a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3Dprompt.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/prompt.cpp",
+   "source_sha256": "2c0d06ff3284075ca1f6ed3cc46e658d4a86b12d2f014a5cf4ef8c62726af8ec",
+   "export_sha256": "2c0d06ff3284075ca1f6ed3cc46e658d4a86b12d2f014a5cf4ef8c62726af8ec",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3Dstringutils.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/stringutils.cpp",
+   "source_sha256": "ba6f6d29360dcefa232ec44f2793c5aed2e57151621f2385ef8f4f7889cda3a1",
+   "export_sha256": "ba6f6d29360dcefa232ec44f2793c5aed2e57151621f2385ef8f4f7889cda3a1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Guid.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/Guid.cpp",
+   "source_sha256": "80fac8ee80a95235c26b56de142ee3bce0e189390a0e2b0eed1a17799e580ebd",
+   "export_sha256": "8d06214fb6d53e261b53235af35ca29b4d1667e41e4ed1427b8beff6001d0496",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/App/include/util/Guid.h",
+     "new": "../../../../../../tools/rbxgs/Client/App/include/util/Guid.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/HitTestShapes.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/appdraw/HitTest.cpp",
+   "source_sha256": "3756add126efe5f78ab335d7b798566d5a886336d30c64bf6cf7aae071d6bdf8",
+   "export_sha256": "3756add126efe5f78ab335d7b798566d5a886336d30c64bf6cf7aae071d6bdf8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/HuffmanEncodingTree.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/DS_HuffmanEncodingTree.cpp",
+   "source_sha256": "8f051b8e313fc495129d7ca1dbbaf4767540b0f66e753d357485c52de0cf136f",
+   "export_sha256": "04a7d48deecb2b06092628840af84a10e2373464cae233786efcac18876f722f",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/DS_HuffmanEncodingTree.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/DS_HuffmanEncodingTree.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/IMovingManager.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/IMoving.cpp",
+   "source_sha256": "f210ba8ea1494922607f6ddd18a1e141586f4ace0cc667a61cf1d22dad48bb76",
+   "export_sha256": "de8d4dda076761545bbe0f017d33d8498f45a0ffb50683fd953e9f70542661d6",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/App/include/v8world/IMoving.h",
+     "new": "../../../../../../tools/rbxgs/Client/App/include/v8world/IMoving.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/IPipelined2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/IPipelined.cpp",
+   "source_sha256": "4a4e5619d5a3de104de6cb0fcdfdf352387c5167ad35e9bb76a54d94e2e44b2d",
+   "export_sha256": "4a4e5619d5a3de104de6cb0fcdfdf352387c5167ad35e9bb76a54d94e2e44b2d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcapimin.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcapimin.c",
+   "source_sha256": "bf1efaf6090a19591ae2797b055ef569c09526fbb8008afa486628f692195a52",
+   "export_sha256": "bf1efaf6090a19591ae2797b055ef569c09526fbb8008afa486628f692195a52",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcapistd.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcapistd.c",
+   "source_sha256": "7c4b235296cb2912534f3600035805d0959453f6c3bdc8557e2078057aeaba54",
+   "export_sha256": "7c4b235296cb2912534f3600035805d0959453f6c3bdc8557e2078057aeaba54",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjchuff.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jchuff.c",
+   "source_sha256": "bfb838deece0ad2165976626b717bf45d56578e74f99f3325d360da830be564a",
+   "export_sha256": "bfb838deece0ad2165976626b717bf45d56578e74f99f3325d360da830be564a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcomapi.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcomapi.c",
+   "source_sha256": "6ebdc6bfe659069cb43cbe682d535a3758dbba7c146e6deea27ef32957b09a3b",
+   "export_sha256": "6ebdc6bfe659069cb43cbe682d535a3758dbba7c146e6deea27ef32957b09a3b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcparam.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jcparam.c",
+   "source_sha256": "d97a838c774706f01a55066ac1c6e261d86becbac39fdf95356563595bf77fba",
+   "export_sha256": "d97a838c774706f01a55066ac1c6e261d86becbac39fdf95356563595bf77fba",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdapimin.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdapimin.c",
+   "source_sha256": "edc60d9988e0aa35ace5b99f29d3903a2731e2f2cfde53ead65104cbbe231d60",
+   "export_sha256": "edc60d9988e0aa35ace5b99f29d3903a2731e2f2cfde53ead65104cbbe231d60",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdapistd.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdapistd.c",
+   "source_sha256": "8b4c4f653e5896f2d2b1b5e89a95fc789219957954e1143697743f01c670c233",
+   "export_sha256": "8b4c4f653e5896f2d2b1b5e89a95fc789219957954e1143697743f01c670c233",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdhuff.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdhuff.c",
+   "source_sha256": "84fe0e03593fd75db6898e657ee561fe79501681028a3bfb6f4a509e5771ee61",
+   "export_sha256": "84fe0e03593fd75db6898e657ee561fe79501681028a3bfb6f4a509e5771ee61",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdmarker.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdmarker.c",
+   "source_sha256": "deb6aff8e5b28efb518009b47b8039c5cda346b35054e01eccf2c9c3f68cffcd",
+   "export_sha256": "deb6aff8e5b28efb518009b47b8039c5cda346b35054e01eccf2c9c3f68cffcd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdmaster.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jdmaster.c",
+   "source_sha256": "8db5403be647e29b3f552c185894467edeb76c8c9c270f777c1ca7b3678fe933",
+   "export_sha256": "8db5403be647e29b3f552c185894467edeb76c8c9c270f777c1ca7b3678fe933",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjidctred.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jidctred.c",
+   "source_sha256": "700f11deacfc180c541b794a3104febb3b221de2b15cfb6be0434142bb8e0b39",
+   "export_sha256": "700f11deacfc180c541b794a3104febb3b221de2b15cfb6be0434142bb8e0b39",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjutils.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/ijg/jutils.c",
+   "source_sha256": "70ff0e10212aa5c20682a2bc0e0806686f3bda17b855d6c5497f2b18ab4b4964",
+   "export_sha256": "70ff0e10212aa5c20682a2bc0e0806686f3bda17b855d6c5497f2b18ab4b4964",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/IndexBox.cpp",
+   "source_sha256": "a37b8ef43d7f1329460bbda3778897d937331bf83ca0e674268496ddb3239613",
+   "export_sha256": "a37b8ef43d7f1329460bbda3778897d937331bf83ca0e674268496ddb3239613",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/standardout.cpp",
+   "source_sha256": "9fb71ba0c6499d3050019d399297af4eff803c98b55c19ed89c968f786a64e6b",
+   "export_sha256": "9fb71ba0c6499d3050019d399297af4eff803c98b55c19ed89c968f786a64e6b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/LuaBridge2008Atomic.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/script/LuaAtomicClasses.cpp",
+   "source_sha256": "b63954cf8fa4b5b61c8a389e34f2a7db05b73250cddd773ac067af52085e6504",
+   "export_sha256": "b63954cf8fa4b5b61c8a389e34f2a7db05b73250cddd773ac067af52085e6504",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/LuaBridge2008Signal.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/script/LuaSignalBridge.cpp",
+   "source_sha256": "086b4255e50d40ccd6cb31c8f45a4f12c5d1a2339339caff8e4586f7672752d2",
+   "export_sha256": "086b4255e50d40ccd6cb31c8f45a4f12c5d1a2339339caff8e4586f7672752d2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/LuaRobloxLapi.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/lua-5.1.1/src/lapi.c",
+   "source_sha256": "2f5e55819a3795b2e0b3af8c1750de8b4fffb1b853c9bc4540f4d9255eb13184",
+   "export_sha256": "2f5e55819a3795b2e0b3af8c1750de8b4fffb1b853c9bc4540f4d9255eb13184",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/NetworkID.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/RakNetTypes.cpp",
+   "source_sha256": "0f293b4b35827f7cc01fccc351f4269194ac70702e0a886dcc9b2c9b5f7cb974",
+   "export_sha256": "d93b8f69684a1279991dd9145f2eefd066bb6920ce72947af53f89774ded075c",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/RakNetTypes.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/RakNetTypes.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/PluginInterface.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/PluginInterface.cpp",
+   "source_sha256": "327d5f8aaa4d0d43ba3d8ea9c911b13231e060b9fe8669e04bbc8f695ab48c97",
+   "export_sha256": "dc7f0f790ea37cfbc8346182df5328317619f770b68d76a0dfaf9c2a17968765",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/PluginInterface.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/PluginInterface.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png5pngrio.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngrio.c",
+   "source_sha256": "b750bf537b16222bc05e77b205ac81ef29a39c4dc5802a14d9f29a21cdcb4639",
+   "export_sha256": "b750bf537b16222bc05e77b205ac81ef29a39c4dc5802a14d9f29a21cdcb4639",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png5pngwio.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngwio.c",
+   "source_sha256": "cadd060feb5d9577e8507363ad138a14cf8bd8074be371bfc705f26eecf487d6",
+   "export_sha256": "cadd060feb5d9577e8507363ad138a14cf8bd8074be371bfc705f26eecf487d6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6pngerror.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngerror.c",
+   "source_sha256": "39e7ba9ccf59c4ad513eb358e4253cb081a7cec737e68321ebb4a10ff347301a",
+   "export_sha256": "39e7ba9ccf59c4ad513eb358e4253cb081a7cec737e68321ebb4a10ff347301a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6pngmem.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngmem.c",
+   "source_sha256": "5a12c28dc7e2bfec3fc7dfca137118a3a29da4ae437e7f0f9c469ac9f33cb41c",
+   "export_sha256": "5a12c28dc7e2bfec3fc7dfca137118a3a29da4ae437e7f0f9c469ac9f33cb41c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6pngread.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngread.c",
+   "source_sha256": "73b46a545b46693631b4e86c80439bcbcd2ead4f97210ae50f4954c89cb20196",
+   "export_sha256": "73b46a545b46693631b4e86c80439bcbcd2ead4f97210ae50f4954c89cb20196",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6pngrutil.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngrutil.c",
+   "source_sha256": "987c7535488a5b50e6243697c807034856728ca4491536a5f3500d4b20c1c3de",
+   "export_sha256": "987c7535488a5b50e6243697c807034856728ca4491536a5f3500d4b20c1c3de",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6pngset.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngset.c",
+   "source_sha256": "3c7e11902951c77e728c6b4b6d6571c52fd9e56ea30d425866a4b14a39f317b2",
+   "export_sha256": "3c7e11902951c77e728c6b4b6d6571c52fd9e56ea30d425866a4b14a39f317b2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png7pngrtran.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngrtran.c",
+   "source_sha256": "97b0a43d14236377a111cc7c783f90053a86cece14afe5cc2bb0a405372653bb",
+   "export_sha256": "97b0a43d14236377a111cc7c783f90053a86cece14afe5cc2bb0a405372653bb",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png7pngwtran.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngwtran.c",
+   "source_sha256": "106a705539472d66324a20c832cdbce7bdd3a6f39eacd9edeadcf5ea07aec815",
+   "export_sha256": "106a705539472d66324a20c832cdbce7bdd3a6f39eacd9edeadcf5ea07aec815",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png7pngwutil.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngwutil.c",
+   "source_sha256": "e394169f7fa6d30c61dcae712b994b0c76a0dd9932269d78e86de5a5cf6ecee7",
+   "export_sha256": "e394169f7fa6d30c61dcae712b994b0c76a0dd9932269d78e86de5a5cf6ecee7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Profiling.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/util/Profiling.cpp",
+   "source_sha256": "d09f1d156e5d9cd290bd7d38f14a5bcf5fff7e8a3a6f03da76a77db361d65651",
+   "export_sha256": "d09f1d156e5d9cd290bd7d38f14a5bcf5fff7e8a3a6f03da76a77db361d65651",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakBitStream2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/BitStream.cpp",
+   "source_sha256": "47064d1b4a03e95bff12ca78e8acbc31bbda2bc5e033f2a03016ee1b85aab8f2",
+   "export_sha256": "47064d1b4a03e95bff12ca78e8acbc31bbda2bc5e033f2a03016ee1b85aab8f2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakGetTime2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/GetTime.cpp",
+   "source_sha256": "7f1edfa7ecca0a933107d07d7219ad9701f550e12f564c86f834596eabaeb661",
+   "export_sha256": "7f1edfa7ecca0a933107d07d7219ad9701f550e12f564c86f834596eabaeb661",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakRPCMap2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/RPCMap.cpp",
+   "source_sha256": "def4ceb3ed593d86c1219dc0abaf34931e12e5864a41a078ec9fef9e71f4f77a",
+   "export_sha256": "def4ceb3ed593d86c1219dc0abaf34931e12e5864a41a078ec9fef9e71f4f77a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakRand2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/Rand.cpp",
+   "source_sha256": "62a0b4e4a2afbcfca32b879e4fb61bf5684b1417aa6b2649c14960ca0b4b79c3",
+   "export_sha256": "62a0b4e4a2afbcfca32b879e4fb61bf5684b1417aa6b2649c14960ca0b4b79c3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakRijndael2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/rijndael.cpp",
+   "source_sha256": "bbcbd96173cb7b86bdaa5de6c8bb63b36393cb975b805bde58f29db7cf4aa09e",
+   "export_sha256": "bbcbd96173cb7b86bdaa5de6c8bb63b36393cb975b805bde58f29db7cf4aa09e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakSHA12008.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/SHA1.cpp",
+   "source_sha256": "c959c9d1d474189d95fae90eaadca0e310685e5a2e056270b718a53c5104e8c3",
+   "export_sha256": "c959c9d1d474189d95fae90eaadca0e310685e5a2e056270b718a53c5104e8c3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakStringTable.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/StringTable.cpp",
+   "source_sha256": "30bacf1bd3b2ede2fa71ccccbd5b0db87aff22c3deb07385c985a9f10899bf8f",
+   "export_sha256": "30bacf1bd3b2ede2fa71ccccbd5b0db87aff22c3deb07385c985a9f10899bf8f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/SceneManager2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/rendering/renderlib/Chunk.cpp",
+   "source_sha256": "d37acf634d0307eabb907055096964fc4a7248dd9a52ad20cf79e02090a58ff2",
+   "export_sha256": "d37acf634d0307eabb907055096964fc4a7248dd9a52ad20cf79e02090a58ff2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ScriptApp2008Equipable.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/IEquipable.cpp",
+   "source_sha256": "a8638bfde1dd602631bba0cc834332287e4b7987ca662b6ee20d34701fd7a139",
+   "export_sha256": "a8638bfde1dd602631bba0cc834332287e4b7987ca662b6ee20d34701fd7a139",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/SecurityContext.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/security/SecurityContext.cpp",
+   "source_sha256": "6eca1b0d98760b2c4ece95213b30f20bb8ed5a2ac31c366e1d95963a860530c6",
+   "export_sha256": "6eca1b0d98760b2c4ece95213b30f20bb8ed5a2ac31c366e1d95963a860530c6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/SimpleMutex.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/SimpleMutex.cpp",
+   "source_sha256": "62b5f8f36b947278bcfab27406ed3ae089a0e5f3e6cafd1c4a16e95c01400dcd",
+   "export_sha256": "aad096cbe98dc8a70711e24c7075b640ca1c82c46188f0702017bcaa937d7168",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/SimpleMutex.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/SimpleMutex.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/SocketLayer.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/SocketLayer.cpp",
+   "source_sha256": "aa234ab58131d6561676d8f557b3b60c2b36a40de1fc9ade5e62f7b1c9293da0",
+   "export_sha256": "c83f9d195be634930074bd692246314d5294e1d7e7e44782177ff47c6dae1127",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/SocketLayer.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/SocketLayer.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/MTUSize.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/MTUSize.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/ExtendedOverlappedPool.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/ExtendedOverlappedPool.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/StringCompressor.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/StringCompressor.cpp",
+   "source_sha256": "231d8fdd046592591927f2db3e24b888d2e6acfd7f1d1a9ff3db4bef653a9c6a",
+   "export_sha256": "78b62466669e4935ff67d636fb676aff3dd619574fdfec06b6aafcb2714f3c2a",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/StringCompressor.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/StringCompressor.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ToolMouseCommand.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/ToolMouseCommand.cpp",
+   "source_sha256": "aca8b4106f38369365f9db6604abdfa15588bcf1443860afcff66cd07bde9980",
+   "export_sha256": "aca8b4106f38369365f9db6604abdfa15588bcf1443860afcff66cd07bde9980",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ViewNewBrickMeshBuild2008.cpp": {
+   "export": "rebuild/2008-06/layout/client/rbxview/BrickMesh.cpp",
+   "source_sha256": "996e7d9813c11759c5a9ffec7385c945e60b1accff54a54361665f3358eab4ce",
+   "export_sha256": "996e7d9813c11759c5a9ffec7385c945e60b1accff54a54361665f3358eab4ce",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ViewNewFileMesh.cpp": {
+   "export": "rebuild/2008-06/layout/client/rbxview/FileMesh.cpp",
+   "source_sha256": "911a7a3cc8bc8970cf6abe9e64faca83d80f80c7014a62598c84463dbca8368f",
+   "export_sha256": "911a7a3cc8bc8970cf6abe9e64faca83d80f80c7014a62598c84463dbca8368f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp": {
+   "export": "rebuild/2008-06/layout/client/rbxview/TorsoMesh.cpp",
+   "source_sha256": "b2c0bd40fbe9956d4bccb516f43dde138364dac0ea108e7b269b6d63689cf255",
+   "export_sha256": "b2c0bd40fbe9956d4bccb516f43dde138364dac0ea108e7b269b6d63689cf255",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Widget.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/Widget.cpp",
+   "source_sha256": "1647b1b4db50af68925c31181885a185f8fa28b175a99b2dddc2c54d9e3c5497",
+   "export_sha256": "1647b1b4db50af68925c31181885a185f8fa28b175a99b2dddc2c54d9e3c5497",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8world__Clump2__O2Ob2OyGFGSE.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/Clump2.cpp",
+   "source_sha256": "8896201a24f77d3448ca07a7e07e0e93518f652f3a9cd0cb513609f4c7423162",
+   "export_sha256": "dd9ee7ba823574e452ee6367fdc77945f2cec05b38b0de6bf8f4d902ab2e970c",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/openrbx-client/21022/App__v8world__Clump2.cpp.i",
+     "new": "../../../../../../work/libcache/openrbx-client/21022/App__v8world__Clump2.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_kms_barrier_9872e41c7b51c383__O2Ob2OyGFGSE.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8kernel/Constants.cpp",
+   "source_sha256": "8b554fe19c192ef51cf3ef8b0c926f0529d6cf20b8cb10f496f756d56eb42658",
+   "export_sha256": "8af52a2e2bbffa1a401bffae437bca0ed5d33e5eec9347e9cdad583f2a3b4ebe",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/openrbx-client/21022/roc_kms_barrier_9872e41c7b51c383.cpp.i",
+     "new": "../../../../../../work/libcache/openrbx-client/21022/roc_kms_barrier_9872e41c7b51c383.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/AppUnit58C/base64.hpp": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/base64.hpp",
+   "source_sha256": "78701475c81a87f9bd39e8228ebf24daa20f2d6587149e9c3eea0b85d295604f",
+   "export_sha256": "78701475c81a87f9bd39e8228ebf24daa20f2d6587149e9c3eea0b85d295604f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/GLG3D/RenderDevice.h": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/include/glg3d/RenderDevice.h",
+   "source_sha256": "04e01b6b2cae552a772cd6975de335f110924421507418cc785f9b8b34cab313",
+   "export_sha256": "04e01b6b2cae552a772cd6975de335f110924421507418cc785f9b8b34cab313",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/LogManager.h": {
+   "export": "rebuild/2008-06/layout/client/win/LogManager.h",
+   "source_sha256": "5ecec9d8b576e3899d330827d18149413798e60eda6f8d7e959b26cd1bd0b169",
+   "export_sha256": "5ecec9d8b576e3899d330827d18149413798e60eda6f8d7e959b26cd1bd0b169",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/MTUSize.h": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/MTUSize.h",
+   "source_sha256": "228443a6ff099fb0b68156ba9b00219ee8b081329350809ea6ce431489042377",
+   "export_sha256": "228443a6ff099fb0b68156ba9b00219ee8b081329350809ea6ce431489042377",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/RakPeer.h": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/rakpeer.h",
+   "source_sha256": "72e04287643d3caa8328820ed8fd6d71609dae720a9d0eb1cf55b21a04a22d68",
+   "export_sha256": "72e04287643d3caa8328820ed8fd6d71609dae720a9d0eb1cf55b21a04a22d68",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/RakPeerInterface.h": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/RakPeerInterface.h",
+   "source_sha256": "ad5a7a33fb92e40059341bd276ba0565e991a19d6a079a6f9686eb055d7b71d4",
+   "export_sha256": "ad5a7a33fb92e40059341bd276ba0565e991a19d6a079a6f9686eb055d7b71d4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/RbxGraphics/Adorn.h": {
+   "export": "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/Adorn.h",
+   "source_sha256": "ee37aabb87ffa9cb108c3fe8a1b30fae819b240dfa49641087288854b59da007",
+   "export_sha256": "ee37aabb87ffa9cb108c3fe8a1b30fae819b240dfa49641087288854b59da007",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ReliabilityLayer.h": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/ReliabilityLayer.h",
+   "source_sha256": "943005a18f919def5882e964abbadad8b3e7d7ede4582e606b28e4364b15702b",
+   "export_sha256": "943005a18f919def5882e964abbadad8b3e7d7ede4582e606b28e4364b15702b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/RenderLib/Profiler.h": {
+   "export": "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/Profiler.h",
+   "source_sha256": "b9dfcd4f87b508530e1b1b333179dd6cf78c6068f3bba5cadbf545f082ff1435",
+   "export_sha256": "b9dfcd4f87b508530e1b1b333179dd6cf78c6068f3bba5cadbf545f082ff1435",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/Replicator.h": {
+   "export": "rebuild/2008-06/layout/client/network/replicator.h",
+   "source_sha256": "d476e65d61071e6c7ca2f4d71e94349c485fb93d6755591a2539ddb91a105571",
+   "export_sha256": "d476e65d61071e6c7ca2f4d71e94349c485fb93d6755591a2539ddb91a105571",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/VersionInfo.h": {
+   "export": "rebuild/2008-06/layout/client/win/VersionInfo.h",
+   "source_sha256": "f875c7693fd9ed14eed7cccfcf8251ad15c5faa28093b8eea9a3ed285a6b1a16",
+   "export_sha256": "f875c7693fd9ed14eed7cccfcf8251ad15c5faa28093b8eea9a3ed285a6b1a16",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/BevelMesh.h",
+   "source_sha256": "dc2af1891ff8966b7e2b9d690131615b49c8c095e8508825b184670e37393766",
+   "export_sha256": "dc2af1891ff8966b7e2b9d690131615b49c8c095e8508825b184670e37393766",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/CylinderMesh.h",
+   "source_sha256": "90470474ca552a40aefe589b572e2da6750cc8a3fba4f80906a580e69971af5d",
+   "export_sha256": "90470474ca552a40aefe589b572e2da6750cc8a3fba4f80906a580e69971af5d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/FileMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/FileMesh.h",
+   "source_sha256": "20338948d781b9d58c2afdbc1cfbb7f1c164eede5a168d96746ddc273fa6dd88",
+   "export_sha256": "20338948d781b9d58c2afdbc1cfbb7f1c164eede5a168d96746ddc273fa6dd88",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/HeadMesh.h",
+   "source_sha256": "921fe3e77831f5da7dc897336415c10c22f2316e74bce3b3da4ed2cb44603b7f",
+   "export_sha256": "921fe3e77831f5da7dc897336415c10c22f2316e74bce3b3da4ed2cb44603b7f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/MeshFactory.h",
+   "source_sha256": "35abb029faee45de6f6ab543d84f3f8541028ce3250b1738852da743b8bdf987",
+   "export_sha256": "35abb029faee45de6f6ab543d84f3f8541028ce3250b1738852da743b8bdf987",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/PBBMesh.h",
+   "source_sha256": "7c6eaf4020a0687e251d23b58eec4adccac439aeab3c944058853c68183e88cd",
+   "export_sha256": "7c6eaf4020a0687e251d23b58eec4adccac439aeab3c944058853c68183e88cd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/QuadVolume.h",
+   "source_sha256": "e47b2f921f72cbe01112d7d99839a22fb743dac1da37214acd4b01f318f495f5",
+   "export_sha256": "e47b2f921f72cbe01112d7d99839a22fb743dac1da37214acd4b01f318f495f5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/SphereMesh.h",
+   "source_sha256": "e90ea6f3276cdda9e2d61e89c90a8163cf67b50fb53ad5e5fd4204829e606358",
+   "export_sha256": "e90ea6f3276cdda9e2d61e89c90a8163cf67b50fb53ad5e5fd4204829e606358",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/TorsoMesh.h",
+   "source_sha256": "728fb35339cdd8f923f9ccc5b04ddb9667c5c4b19ff80c23eb60441eeb5f1163",
+   "export_sha256": "728fb35339cdd8f923f9ccc5b04ddb9667c5c4b19ff80c23eb60441eeb5f1163",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h": {
+   "export": "rebuild/2008-06/layout/client/rbxview/WedgeMesh.h",
+   "source_sha256": "475ce5fb9f0c8da529e9f5d117dfb8557dbea11f2f19fb3e0f8098e27cebb750",
+   "export_sha256": "475ce5fb9f0c8da529e9f5d117dfb8557dbea11f2f19fb3e0f8098e27cebb750",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.h",
+   "source_sha256": "2c74e5350ad9741a8b63555fe909b5f646e81045462a7dc388c3900459efb5da",
+   "export_sha256": "49d1f3ef48720da69351d46a6acf7107603cb8accecbeef3289f0c24dbb464ff",
+   "include_rewrites": [
+    {
+     "old": "Vector3.inl",
+     "new": "axis-vector-negation/G3D/Vector3.inl"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl",
+   "source_sha256": "35a0cae55d040299d5a7392599b05d0407048484fb1b5e4635468cffc8b6ce0a",
+   "export_sha256": "35a0cae55d040299d5a7392599b05d0407048484fb1b5e4635468cffc8b6ce0a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp": {
+   "export": "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/detail/shared_count.hpp",
+   "source_sha256": "53b144188b5bba6f06f24338a3ab5e2f730a59948f350d5e8537617f924ddc1e",
+   "export_sha256": "53b144188b5bba6f06f24338a3ab5e2f730a59948f350d5e8537617f924ddc1e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp": {
+   "export": "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/function/function_base.hpp",
+   "source_sha256": "e22caaa40609d9ec5e9ee4e4ead96d6904f00db4716883e880cb191ab5411ee3",
+   "export_sha256": "e22caaa40609d9ec5e9ee4e4ead96d6904f00db4716883e880cb191ab5411ee3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp": {
+   "export": "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/function/function_template.hpp",
+   "source_sha256": "819d4de1a4152486203863b53822e69b3f9028c974cb2f56777f582bd86284d4",
+   "export_sha256": "819d4de1a4152486203863b53822e69b3f9028c974cb2f56777f582bd86284d4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Utilities.h",
+   "source_sha256": "bd0d3134c2a1fcf1588c409d68a90921a52e4d6750e068349d8fb325a35eba2c",
+   "export_sha256": "bd0d3134c2a1fcf1588c409d68a90921a52e4d6750e068349d8fb325a35eba2c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8world/contactmanager.h",
+   "source_sha256": "0cf59fe265f64cbe90719cfbee7312bf0d45cad25e020ca79d15c7d9475f66b5",
+   "export_sha256": "0cf59fe265f64cbe90719cfbee7312bf0d45cad25e020ca79d15c7d9475f66b5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/engine-world/v8world/World.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8world/World.h",
+   "source_sha256": "6ec2a80cd4e119c281971c7670d08c36b8c363c4485ee688da014ba82ac45723",
+   "export_sha256": "6ec2a80cd4e119c281971c7670d08c36b8c363c4485ee688da014ba82ac45723",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/g3d-binary-output-2008/G3D/BinaryOutput.h": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/BinaryOutput.h",
+   "source_sha256": "e54a1de92b6831280f5bf599b974af97b1b14dfab3188271a62a00722c149a1b",
+   "export_sha256": "e54a1de92b6831280f5bf599b974af97b1b14dfab3188271a62a00722c149a1b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/g3d-image-2008/G3D/GImage.h": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/GImage.h",
+   "source_sha256": "d83fd9c2724ee92320fefba32c4615fb7123278ee20b32e1ef5249335ada10fc",
+   "export_sha256": "d83fd9c2724ee92320fefba32c4615fb7123278ee20b32e1ef5249335ada10fc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/ArrowPanel.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/ArrowPanel.h",
+   "source_sha256": "75a5fb32dd1e9b17e504ad08ab4edd8409231450e9a4dc5753067fbe514bfb05",
+   "export_sha256": "75a5fb32dd1e9b17e504ad08ab4edd8409231450e9a4dc5753067fbe514bfb05",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/ChatOutput.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/ChatOutput.h",
+   "source_sha256": "3c6e245c8f491f523070df25f52159547652610b26e78788e46f6fa2de4d02f7",
+   "export_sha256": "3c6e245c8f491f523070df25f52159547652610b26e78788e46f6fa2de4d02f7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/EquationDisplay.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/EquationDisplay.h",
+   "source_sha256": "9bc1f5fe0591cdc7f3a7a8baa28ff3b03bd043dd7e15067e50841b61e2773f84",
+   "export_sha256": "9bc1f5fe0591cdc7f3a7a8baa28ff3b03bd043dd7e15067e50841b61e2773f84",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/Gui.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/GUI.h",
+   "source_sha256": "3a3d33f9f3855e85989ca0c698c9bb96a6b4e0f4a7d1ce38beace864bee4f3ff",
+   "export_sha256": "3a3d33f9f3855e85989ca0c698c9bb96a6b4e0f4a7d1ce38beace864bee4f3ff",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/HealthHud.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/HealthHud.h",
+   "source_sha256": "d66742d2f53fd6165247c3e9f156332f3dae4f527caf9630aaffb21abbdd6a30",
+   "export_sha256": "d66742d2f53fd6165247c3e9f156332f3dae4f527caf9630aaffb21abbdd6a30",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/ScoreHud.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/ScoreHud.h",
+   "source_sha256": "e11dfafdc10ad67b4517291275a969a47da2eb43988ee16d69458adb7461d5e5",
+   "export_sha256": "e11dfafdc10ad67b4517291275a969a47da2eb43988ee16d69458adb7461d5e5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/Humanoid.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/humanoid/Humanoid.h",
+   "source_sha256": "94dabfe27150d501c100da2bcd076bc23e5e484393464f559cbb67ba741496ee",
+   "export_sha256": "94dabfe27150d501c100da2bcd076bc23e5e484393464f559cbb67ba741496ee",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/kernel-stages/v8kernel/IStage.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8kernel/IStage.h",
+   "source_sha256": "cc13995b90dac2484ac7889ae6570fd883a23d5c992b26fe44935cc9c443f114",
+   "export_sha256": "cc13995b90dac2484ac7889ae6570fd883a23d5c992b26fe44935cc9c443f114",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/luafunction-threadref/script/ThreadRef.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/script/ThreadRef.h",
+   "source_sha256": "1e20153408aceb74fad23b5d96ab3bf43127e84fc57b7c143611fbf7a33e6578",
+   "export_sha256": "1e20153408aceb74fad23b5d96ab3bf43127e84fc57b7c143611fbf7a33e6578",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8xml/SerializerV2.h",
+   "source_sha256": "052475e6485baee8b0dde2cf46f630243fce023afc7aebaa9152113e7eb6a3b5",
+   "export_sha256": "052475e6485baee8b0dde2cf46f630243fce023afc7aebaa9152113e7eb6a3b5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8world/Primitive.h",
+   "source_sha256": "0e8bd79a71d60e714dc5d9936e476a253e9870e1c0260d1ef499496fe6d7fcf6",
+   "export_sha256": "0e8bd79a71d60e714dc5d9936e476a253e9870e1c0260d1ef499496fe6d7fcf6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h": {
+   "export": "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Matrix3.h",
+   "source_sha256": "f69a904560d6c4c99e86396aa71084538add13ced1a72ae29eedd1a95a0e72dd",
+   "export_sha256": "f69a904560d6c4c99e86396aa71084538add13ced1a72ae29eedd1a95a0e72dd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/partchunk-profile/RbxGraphics/TextureProxyBase.h": {
+   "export": "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/TextureProxyBase.h",
+   "source_sha256": "61c0140e70261a836e357658bb1a196c593611bcdfbf396f00fe5cf8194d1343",
+   "export_sha256": "61c0140e70261a836e357658bb1a196c593611bcdfbf396f00fe5cf8194d1343",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/reflection/descriptor.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/reflection/descriptor.h",
+   "source_sha256": "ab76c748ef0163fd305c1794c80781c56431a64bb84b415af6ef4f5a9b6dafd6",
+   "export_sha256": "ab76c748ef0163fd305c1794c80781c56431a64bb84b415af6ef4f5a9b6dafd6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/reflection/enumconverter.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/reflection/enumconverter.h",
+   "source_sha256": "2bc378dd626b3fc5fdc273188161936226a1200c69d71b9f0e8bd7032e6c3b00",
+   "export_sha256": "2bc378dd626b3fc5fdc273188161936226a1200c69d71b9f0e8bd7032e6c3b00",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/reflection/function.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/reflection/function.h",
+   "source_sha256": "add014ca4df97c43359c4e82248d728f938e52dd8b0800fead985bf1b0b3237d",
+   "export_sha256": "add014ca4df97c43359c4e82248d728f938e52dd8b0800fead985bf1b0b3237d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/reflection/member.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/reflection/member.h",
+   "source_sha256": "e4647c28e9c3c1e5013e1e49411cd35541b04633d8960570e946b6c4465705bb",
+   "export_sha256": "e4647c28e9c3c1e5013e1e49411cd35541b04633d8960570e946b6c4465705bb",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/security/SecurityContext.h",
+   "source_sha256": "8235eeae46ce8169eda6cff869667f2ce88beec8481988226a8cc5b87b56e1b5",
+   "export_sha256": "8235eeae46ce8169eda6cff869667f2ce88beec8481988226a8cc5b87b56e1b5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/script/Script.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/script/Script.h",
+   "source_sha256": "08df28368e9233b159fdf80cb3ceea524409e09feacfb57c9dc4571778b3a7b5",
+   "export_sha256": "08df28368e9233b159fdf80cb3ceea524409e09feacfb57c9dc4571778b3a7b5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/script/ScriptContext.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/script/ScriptContext.h",
+   "source_sha256": "c3daab0c73f2fbe29ee647f6e8671ab73791d1df19c3ddc8baa6a3cf61755a7a",
+   "export_sha256": "c3daab0c73f2fbe29ee647f6e8671ab73791d1df19c3ddc8baa6a3cf61755a7a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/ContentProvider.h",
+   "source_sha256": "02d2e7d63faee8e40c83bebc9292da31d577a296e0e0ab043b0c9aa96ca8dde3",
+   "export_sha256": "02d2e7d63faee8e40c83bebc9292da31d577a296e0e0ab043b0c9aa96ca8dde3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/DragTool.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/tool/DragTool.h",
+   "source_sha256": "c5aa678ed0ffdd64f5484b43e1d2ec1c511f23f801e0f12194c32c606a4c543a",
+   "export_sha256": "c5aa678ed0ffdd64f5484b43e1d2ec1c511f23f801e0f12194c32c606a4c543a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/GroupDragTool.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/tool/GroupDragTool.h",
+   "source_sha256": "92d49c3492b2d5b4ada7398fe9189e38232efa2d518b19bfcb684581a47c2bc6",
+   "export_sha256": "92d49c3492b2d5b4ada7398fe9189e38232efa2d518b19bfcb684581a47c2bc6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/MegaDragger.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/tool/MegaDragger.h",
+   "source_sha256": "142d3f35cdf349d3470b68482a21c5625b279f9755e928794c87422c701f09c6",
+   "export_sha256": "142d3f35cdf349d3470b68482a21c5625b279f9755e928794c87422c701f09c6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/NullTool.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/tool/NullTool.h",
+   "source_sha256": "398dd63e3274e9b8ab09dac796736f451df026a4f422b434a60f920af477b764",
+   "export_sha256": "398dd63e3274e9b8ab09dac796736f451df026a4f422b434a60f920af477b764",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/PartDragTool.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/tool/PartDragTool.h",
+   "source_sha256": "fdd9b39c9c5abf8535ba64b63117b2b0b1297c9d7582e830b35322e0df2c926d",
+   "export_sha256": "fdd9b39c9c5abf8535ba64b63117b2b0b1297c9d7582e830b35322e0df2c926d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/ToolsArrow.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/tool/ToolsArrow.h",
+   "source_sha256": "20df2f24c2d8b5288d9d85a254ae86af4eae2b92dc804d99e9902bbda841d905",
+   "export_sha256": "20df2f24c2d8b5288d9d85a254ae86af4eae2b92dc804d99e9902bbda841d905",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Events.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Events.h",
+   "source_sha256": "0be2c5256a6909af1fa5f8ebfdf07e1443dc7addf911ecb93b5ea0a913459e66",
+   "export_sha256": "0be2c5256a6909af1fa5f8ebfdf07e1443dc7addf911ecb93b5ea0a913459e66",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/FileSystem.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/FileSystem.h",
+   "source_sha256": "cbcc0fa58f2b7f3a6d142199faaa6946ac67f973ae8153c3c464b258a3fd5689",
+   "export_sha256": "cbcc0fa58f2b7f3a6d142199faaa6946ac67f973ae8153c3c464b258a3fd5689",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Handle.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Handle.h",
+   "source_sha256": "74978d495c173e90d5e82bf4c4c69fea9105630e36e5af9d8e0375ac3898c729",
+   "export_sha256": "74978d495c173e90d5e82bf4c4c69fea9105630e36e5af9d8e0375ac3898c729",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/IRenderable.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/IRenderable.h",
+   "source_sha256": "2fee5513c5bcf9eeb28b49ae81ca4394651b094310a2b52e852d6b34c25f7935",
+   "export_sha256": "2fee5513c5bcf9eeb28b49ae81ca4394651b094310a2b52e852d6b34c25f7935",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Name.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Name.h",
+   "source_sha256": "05aa0aed5b377d06e899e0140c21335255244d05893d24e9e2e66fb77844e67a",
+   "export_sha256": "05aa0aed5b377d06e899e0140c21335255244d05893d24e9e2e66fb77844e67a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Profiling.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Profiling.h",
+   "source_sha256": "ce01754b9f320aa3e38eee7c3c3d9e296d11c1666aaed9601722dec5be7dc5c1",
+   "export_sha256": "ce01754b9f320aa3e38eee7c3c3d9e296d11c1666aaed9601722dec5be7dc5c1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/RunStateOwner.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/RunStateOwner.h",
+   "source_sha256": "e8331d7d0fa26f79d2fad219cd38ffdd951067894f95405b2934521879d5058c",
+   "export_sha256": "e8331d7d0fa26f79d2fad219cd38ffdd951067894f95405b2934521879d5058c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Sound.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Sound.h",
+   "source_sha256": "db638501454c259014d4c7d468625db6b8171caaa7a1f250e79d292cf9c7ff8a",
+   "export_sha256": "db638501454c259014d4c7d468625db6b8171caaa7a1f250e79d292cf9c7ff8a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/UserInputBase.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/UserInputBase.h",
+   "source_sha256": "491a70ac75947f437e061050f8e8bdac19e6c62c727cac60e6108ac87550cd11",
+   "export_sha256": "491a70ac75947f437e061050f8e8bdac19e6c62c727cac60e6108ac87550cd11",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Vector6.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/Vector6.h",
+   "source_sha256": "ff4281e380375a4aec076be1e5c6541812e49d9d3de3d235cae685e45025b62a",
+   "export_sha256": "ff4281e380375a4aec076be1e5c6541812e49d9d3de3d235cae685e45025b62a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/scopedassign.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/util/scopedassign.h",
+   "source_sha256": "603d85c056b87356613e15d0c1d6a5faed9398902f850d018ddbc166807d1251",
+   "export_sha256": "603d85c056b87356613e15d0c1d6a5faed9398902f850d018ddbc166807d1251",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Backpack.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Backpack.h",
+   "source_sha256": "b45208d4fb63a0a860116fd4d18168f5390058719472b45aa1f3eeeed8afb829",
+   "export_sha256": "b45208d4fb63a0a860116fd4d18168f5390058719472b45aa1f3eeeed8afb829",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Camera.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Camera.h",
+   "source_sha256": "102cad4b8dda892dbfcbf8546c52d5a3fcb45ad7af11ca438d3f303e7bd433fc",
+   "export_sha256": "102cad4b8dda892dbfcbf8546c52d5a3fcb45ad7af11ca438d3f303e7bd433fc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h",
+   "source_sha256": "62948b2b652adca92d6bfe7b9096e975156d235beeb4163d534f1d5bdef91636",
+   "export_sha256": "62948b2b652adca92d6bfe7b9096e975156d235beeb4163d534f1d5bdef91636",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Explosion.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Explosion.h",
+   "source_sha256": "e2c3532e2ca5933b34bd0bfcfb54f603f94f879194cfc78e25fde90b31657c84",
+   "export_sha256": "e2c3532e2ca5933b34bd0bfcfb54f603f94f879194cfc78e25fde90b31657c84",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h",
+   "source_sha256": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+   "export_sha256": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/ICharacterSubject.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/ICharacterSubject.h",
+   "source_sha256": "6367f8bc42d4a9a8312d303d29828e5bb91080cdfc5ab35b8c6f291a67be1cb4",
+   "export_sha256": "6367f8bc42d4a9a8312d303d29828e5bb91080cdfc5ab35b8c6f291a67be1cb4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/LocalBackpack.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/LocalBackpack.h",
+   "source_sha256": "b52b7e01a5a5e160073a3601ad012aa908cf883d50969ee68dc2e217f44c93bd",
+   "export_sha256": "b52b7e01a5a5e160073a3601ad012aa908cf883d50969ee68dc2e217f44c93bd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/ModelInstance.h",
+   "source_sha256": "2e4b0d45de08b8068bee167f219cbeea4b2b6b621109d054ad096ead16391f23",
+   "export_sha256": "2e4b0d45de08b8068bee167f219cbeea4b2b6b621109d054ad096ead16391f23",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Mouse.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Mouse.h",
+   "source_sha256": "6d93dba35b0ba23067f38f2cef0463b6d196495bd22dea7c0c61a353b3dff1dd",
+   "export_sha256": "6d93dba35b0ba23067f38f2cef0463b6d196495bd22dea7c0c61a353b3dff1dd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/MouseCommand.h",
+   "source_sha256": "2fc8fe3845f050cfb5d6da4d6757163382cc0d196a28278ece79edbeefe57a38",
+   "export_sha256": "2fc8fe3845f050cfb5d6da4d6757163382cc0d196a28278ece79edbeefe57a38",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/PVInstance.h",
+   "source_sha256": "5a19ac6839a2bbe017854f338c801824b2a90dd7b18076afeac62ca347cdccfc",
+   "export_sha256": "5a19ac6839a2bbe017854f338c801824b2a90dd7b18076afeac62ca347cdccfc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h",
+   "source_sha256": "5d387e9c0ff147dbb5f8c488534f288333f97af4e5b445bfc9ec4a5570e30651",
+   "export_sha256": "5d387e9c0ff147dbb5f8c488534f288333f97af4e5b445bfc9ec4a5570e30651",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Surface.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Surface.h",
+   "source_sha256": "f55f865dd3bc781d81a43198b99efa898249e9f5b661dae1db84ba6acdf8c0d6",
+   "export_sha256": "f55f865dd3bc781d81a43198b99efa898249e9f5b661dae1db84ba6acdf8c0d6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Surfaces.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Surfaces.h",
+   "source_sha256": "a15c3690d4a5b23efdbebd36df42e5420a473ec8e2d0a81ec760d4b310a2c3c7",
+   "export_sha256": "a15c3690d4a5b23efdbebd36df42e5420a473ec8e2d0a81ec760d4b310a2c3c7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Tool.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Tool.h",
+   "source_sha256": "e5c815a8b38cdef42eae6e57f929f17a128eb4829a06a038697e4194f0cf35dc",
+   "export_sha256": "e5c815a8b38cdef42eae6e57f929f17a128eb4829a06a038697e4194f0cf35dc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/ToolMouseCommand.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/ToolMouseCommand.h",
+   "source_sha256": "4e1dd7b77329ad159625ab8be72a64d3d95cef7dbd32e6fbbb4b0d3f257aa364",
+   "export_sha256": "4e1dd7b77329ad159625ab8be72a64d3d95cef7dbd32e6fbbb4b0d3f257aa364",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Visit.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Visit.h",
+   "source_sha256": "0c2060b872d54a67682602b9c9d05e5365a4be5e948ec72b20316f49e6b2194e",
+   "export_sha256": "0c2060b872d54a67682602b9c9d05e5365a4be5e948ec72b20316f49e6b2194e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Workspace.h",
+   "source_sha256": "5465b63591398a52f59daeff0640e069d895efe2621e9330ce31bfbb316a0b22",
+   "export_sha256": "5465b63591398a52f59daeff0640e069d895efe2621e9330ce31bfbb316a0b22",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/custommesh.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/custommesh.h",
+   "source_sha256": "f2009a067efe5e92ec07a65c90b110dde6af2e37c6111e0de9dbb1357d83fe1a",
+   "export_sha256": "f2009a067efe5e92ec07a65c90b110dde6af2e37c6111e0de9dbb1357d83fe1a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8kernel/Connector.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8kernel/Connector.h",
+   "source_sha256": "fe6892abc18ae49cc9ad99a5c9b59ccc1fa5840064a4792078212719f46e28c9",
+   "export_sha256": "fe6892abc18ae49cc9ad99a5c9b59ccc1fa5840064a4792078212719f46e28c9",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8tree/Service.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8tree/Service.h",
+   "source_sha256": "6cb4f21a5ebecbf148911ea96707239664486b6544c382ec317a6611bbaa7c0d",
+   "export_sha256": "6cb4f21a5ebecbf148911ea96707239664486b6544c382ec317a6611bbaa7c0d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8tree/Verb.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8tree/Verb.h",
+   "source_sha256": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
+   "export_sha256": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8xml/XmlElement.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8xml/XmlElement.h",
+   "source_sha256": "7785ade39c7a321146d8b01a6c342692cb0d91209c18aae8aa6841cd874a62b3",
+   "export_sha256": "7785ade39c7a321146d8b01a6c342692cb0d91209c18aae8aa6841cd874a62b3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ActiveDocView.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.cpp",
+   "source_sha256": "9cc580252055b0b4289b95ef4b3557b3a637d5dfd67cd4eb71fe43c8a24b7674",
+   "export_sha256": "9cc580252055b0b4289b95ef4b3557b3a637d5dfd67cd4eb71fe43c8a24b7674",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppLeaves2008EventHandler.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/LuaHtmlView.cpp",
+   "source_sha256": "299e6df060143598589ef92e12e32153a3ebde8612404bd21fcd6bae7191df7a",
+   "export_sha256": "299e6df060143598589ef92e12e32153a3ebde8612404bd21fcd6bae7191df7a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppLeaves2008RBXImage.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/RBXImage.cpp",
+   "source_sha256": "6c76a09ecd9bf925960e5b8c9282686f681f3f44e1fecb4aa2b5772a2ed0e90f",
+   "export_sha256": "6c76a09ecd9bf925960e5b8c9282686f681f3f44e1fecb4aa2b5772a2ed0e90f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppLeftovers.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/CrashReporter.cpp",
+   "source_sha256": "26235d2f395f024210335b91b87a19807e6e9c7913a4c887cf4ea559730ce8d4",
+   "export_sha256": "0817ea605b6373eec8098a28d8eb3772de36f86a5931544cd3f1fca549c7e4b8",
+   "include_rewrites": [
+    {
+     "old": "../native-donor-2007/LogManager.h",
+     "new": "../../../../native-donor-2007/LogManager.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit5F0_2008Timer.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/Timer.cpp",
+   "source_sha256": "0353ba0af73d640db16a3b8952145501b74d7b63f948d564c936e9a09e26e9f1",
+   "export_sha256": "0353ba0af73d640db16a3b8952145501b74d7b63f948d564c936e9a09e26e9f1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit660_2008Units.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/Units.cpp",
+   "source_sha256": "8d4ef920114b8d18902acd615d50827d1edfb44bc3ba91254b4a29790bdede21",
+   "export_sha256": "8d4ef920114b8d18902acd615d50827d1edfb44bc3ba91254b4a29790bdede21",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSubEntity.cpp",
+   "source_sha256": "d17c30c9f8b677d6382a4e6ed9518457476f501eeb97c0f9c80bfbbee81d1161",
+   "export_sha256": "d17c30c9f8b677d6382a4e6ed9518457476f501eeb97c0f9c80bfbbee81d1161",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Boostconnection.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/boost_1_34_1/libs/signals/src/connection.cpp",
+   "source_sha256": "1349a776d5bac8eaf4c5f5e54bb5e330c6081f02afcaa87f03ed065201ac76c4",
+   "export_sha256": "1349a776d5bac8eaf4c5f5e54bb5e330c6081f02afcaa87f03ed065201ac76c4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Boosttrackable.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/boost_1_34_1/libs/signals/src/trackable.cpp",
+   "source_sha256": "d507aef6c6aa0ed1212a568b8d3bd2a46f01662deeee43469657ac8c69df04aa",
+   "export_sha256": "d507aef6c6aa0ed1212a568b8d3bd2a46f01662deeee43469657ac8c69df04aa",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/NullDoc.cpp",
+   "source_sha256": "d7f8e4e2eb3024ff0fa942a0e43307d2c93139d5675cc594575eda132dec4796",
+   "export_sha256": "d7f8e4e2eb3024ff0fa942a0e43307d2c93139d5675cc594575eda132dec4796",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CChatPrompt.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ChatPrompt.cpp",
+   "source_sha256": "d910348a86bd3bf24fed355b84440b59615065d1512783fa5be7b297231de69f",
+   "export_sha256": "090f5ee0d2b4205dca9b6ee788c658ae532e2364e6bb94b92222ccbec88ff8ee",
+   "include_rewrites": [
+    {
+     "old": "../native-headers/CChatPrompt.h",
+     "new": "CChatPrompt.h"
+    },
+    {
+     "old": "../native-headers/ChatEnter.h",
+     "new": "ChatEnter.h"
+    },
+    {
+     "old": "../native-headers/v8datamodel/DataModel.h",
+     "new": "v8datamodel/DataModel.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CChildFrame.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ChildFrm.cpp",
+   "source_sha256": "3c630dd3db827c5a98defd6b0e7374d850fd283ced235b07ccb1a3c58d5002c0",
+   "export_sha256": "3c630dd3db827c5a98defd6b0e7374d850fd283ced235b07ccb1a3c58d5002c0",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CContentUpload.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/Content.cpp",
+   "source_sha256": "622e8cc3b31059b3c64e02a239ab68641edfc9f3026b83e7f1bf5c783a5337ce",
+   "export_sha256": "622e8cc3b31059b3c64e02a239ab68641edfc9f3026b83e7f1bf5c783a5337ce",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CMarshalWindow.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/MarshalWindow.cpp",
+   "source_sha256": "6d7d6e2e616289c6486991d286d6dc13345db9c4d5b53bf636fc47bbe775efb4",
+   "export_sha256": "6d7d6e2e616289c6486991d286d6dc13345db9c4d5b53bf636fc47bbe775efb4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CMultiPlayerPane.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/MultiPlayerPane.cpp",
+   "source_sha256": "e574b1bb9f58979b34175e900918f3ce6c23cbc05d52fe2f4af7d687aa4d2367",
+   "export_sha256": "339e342d4f66fc1f575f4e03b5d17e3d0122c59b214173ff7e8a963a08ce52e1",
+   "include_rewrites": [
+    {
+     "old": "../native-headers/CMultiPlayerPane.h",
+     "new": "CMultiPlayerPane.h"
+    },
+    {
+     "old": "../native-headers/CChatPrompt.h",
+     "new": "CChatPrompt.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/SaveToRobloxDialog.cpp",
+   "source_sha256": "6af6db54ce27c669055eb150a6a939ca7e0213ce7fe809c74c716dc14b12555d",
+   "export_sha256": "6af6db54ce27c669055eb150a6a939ca7e0213ce7fe809c74c716dc14b12555d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CScriptEditor.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ScriptDoc.cpp",
+   "source_sha256": "4e8ebf6765166c5e1b8e699925523fa5316ca4ad4e924d4c70c5a06ceaffd4dd",
+   "export_sha256": "4e8ebf6765166c5e1b8e699925523fa5316ca4ad4e924d4c70c5a06ceaffd4dd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CSecureHtmlView.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/SecureHtmlView.cpp",
+   "source_sha256": "4b2717bfcce6803163f29631bd22849cdf8f9484871d3d1a20e4abc6488e6f59",
+   "export_sha256": "4b2717bfcce6803163f29631bd22849cdf8f9484871d3d1a20e4abc6488e6f59",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CSettingsDialog.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/SettingsDialog.cpp",
+   "source_sha256": "7559a76b39b582ffe13b785acfc40f1fd7559068e4c79ac5d406f801ffb192d3",
+   "export_sha256": "7559a76b39b582ffe13b785acfc40f1fd7559068e4c79ac5d406f801ffb192d3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CWebToolbox.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/WebToolbox.cpp",
+   "source_sha256": "2cc6c7bf981c68479270494fd775c29604abf046dbcf9dfc4a6947e8244ec404",
+   "export_sha256": "2cc6c7bf981c68479270494fd775c29604abf046dbcf9dfc4a6947e8244ec404",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ClipboardActions.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ClipboardVerbs.cpp",
+   "source_sha256": "501c23ebee5687876af3d758df374979cba9a2a3a3fd46119e8e59c022cf4f31",
+   "export_sha256": "501c23ebee5687876af3d758df374979cba9a2a3a3fd46119e8e59c022cf4f31",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ColorNamed.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/Color.cpp",
+   "source_sha256": "ba1466146dd80a3314794762fb6705fe334e295b45bc98fa2eaee9e32f3d9dd8",
+   "export_sha256": "ba1466146dd80a3314794762fb6705fe334e295b45bc98fa2eaee9e32f3d9dd8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ControllerValue.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/v8world/Controller.cpp",
+   "source_sha256": "c0a50851a0f52d800607f9e295ea8ff6fe442f827f5e51fb5cc5fca405037e8a",
+   "export_sha256": "c0a50851a0f52d800607f9e295ea8ff6fe442f827f5e51fb5cc5fca405037e8a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/DebugableDump.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/Debug.cpp",
+   "source_sha256": "71d5beeed505e94d0c3702720a2235ca54b0a972c1b680fe05d50a9f4e3377d7",
+   "export_sha256": "71d5beeed505e94d0c3702720a2235ca54b0a972c1b680fe05d50a9f4e3377d7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/DxUserInput.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/DxUserInput.cpp",
+   "source_sha256": "7cf21d5e1ef9cdc5db02b83303bf77fb1f4f44dd1ef29c396ff978a4cf43d00c",
+   "export_sha256": "7cf21d5e1ef9cdc5db02b83303bf77fb1f4f44dd1ef29c396ff978a4cf43d00c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DColor3uint8.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Color3uint8.cpp",
+   "source_sha256": "ae65f5bf58dbdf7840e030b8a6cb53610a8e01e753aa7244d43914942b42f56d",
+   "export_sha256": "ae65f5bf58dbdf7840e030b8a6cb53610a8e01e753aa7244d43914942b42f56d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DColor4.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Color4.cpp",
+   "source_sha256": "fedc0bf4ae16fcafe9b60c34d6566b8a52e45adac55677ecd1daeaf2da886c46",
+   "export_sha256": "fedc0bf4ae16fcafe9b60c34d6566b8a52e45adac55677ecd1daeaf2da886c46",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DCrypto.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Crypto.cpp",
+   "source_sha256": "81596492420e5133840655e5a9509c274da17ed291aad74428348cfe0d1613a6",
+   "export_sha256": "81596492420e5133840655e5a9509c274da17ed291aad74428348cfe0d1613a6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DDDSTexture.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/glg3dcpp/DDSTexture.cpp",
+   "source_sha256": "dae6baf7ea587e44065cfa4c9f557c8de5c2d9c0cc6855f299fe0289eaa6de69",
+   "export_sha256": "dae6baf7ea587e44065cfa4c9f557c8de5c2d9c0cc6855f299fe0289eaa6de69",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DDXCaps.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/glg3dcpp/DXCaps.cpp",
+   "source_sha256": "a74a06e33e8ed4f17f10383383cbb51be4485c97ebffb3e4f48f030992affd9a",
+   "export_sha256": "a74a06e33e8ed4f17f10383383cbb51be4485c97ebffb3e4f48f030992affd9a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DLine.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Line.cpp",
+   "source_sha256": "6c12e9889cbae8451c1861e11f30b861287484c5a3672e84bb7d8ae054ed192a",
+   "export_sha256": "6c12e9889cbae8451c1861e11f30b861287484c5a3672e84bb7d8ae054ed192a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DSphere.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Sphere.cpp",
+   "source_sha256": "f93834c9a568a67f2c2a72963ea788515e25da8c848175b12181394c25b89cc8",
+   "export_sha256": "f93834c9a568a67f2c2a72963ea788515e25da8c848175b12181394c25b89cc8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DVector2int16.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Vector2int16.cpp",
+   "source_sha256": "86457c78ef80463d868e3c14087a26d3cc6acea5ca5902d4abeec38de9c4a8c6",
+   "export_sha256": "86457c78ef80463d868e3c14087a26d3cc6acea5ca5902d4abeec38de9c4a8c6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DVector3int16.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Vector3int16.cpp",
+   "source_sha256": "5e1fe6b9008d6e5943291a8b3f1330223a8de37016019cc89929b2a797019894",
+   "export_sha256": "5e1fe6b9008d6e5943291a8b3f1330223a8de37016019cc89929b2a797019894",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3DVector4.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/Vector4.cpp",
+   "source_sha256": "628130487deee758773c57f1d529ecf009af6c20034c04ec9f76bc5b0a84a754",
+   "export_sha256": "628130487deee758773c57f1d529ecf009af6c20034c04ec9f76bc5b0a84a754",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/G3Dg3dmath.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/g3dcpp/g3dmath.cpp",
+   "source_sha256": "63fe57feee233f6bd17712c58aff717bfa41169b95743cabd8c6954e5c459f77",
+   "export_sha256": "63fe57feee233f6bd17712c58aff717bfa41169b95743cabd8c6954e5c459f77",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Inferred_005e6240.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/v8world/clump.cpp",
+   "source_sha256": "c54a73d904bd5f14aa36b1f6c6c62ae522ea183cd108bfed2fd06b4b89bb6a37",
+   "export_sha256": "c54a73d904bd5f14aa36b1f6c6c62ae522ea183cd108bfed2fd06b4b89bb6a37",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjccoefct.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jccoefct.c",
+   "source_sha256": "fb31362949ab67817263a02a79d51347eb49bc14ded6c8d3b06fd8598cc0587d",
+   "export_sha256": "fb31362949ab67817263a02a79d51347eb49bc14ded6c8d3b06fd8598cc0587d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjccolor.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jccolor.c",
+   "source_sha256": "ebc25501ac9af869bde3c88b81f4518593adf485d393222acab3a5db956ae8c8",
+   "export_sha256": "ebc25501ac9af869bde3c88b81f4518593adf485d393222acab3a5db956ae8c8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcdctmgr.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcdctmgr.c",
+   "source_sha256": "c4b3f8dee3d4ea2aef739977d186d7e13fac4a615721737ae5177fb728574766",
+   "export_sha256": "c4b3f8dee3d4ea2aef739977d186d7e13fac4a615721737ae5177fb728574766",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcinit.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcinit.c",
+   "source_sha256": "e828011b811fc7ca715b73a0fff2b075a1e5da8c3902cdbf488fa8dd44a6613c",
+   "export_sha256": "e828011b811fc7ca715b73a0fff2b075a1e5da8c3902cdbf488fa8dd44a6613c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcmainct.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcmainct.c",
+   "source_sha256": "eef86a20387398668cf87c0cbe9541e2a86fc7cc70aaa4f926a40229ea8aa59d",
+   "export_sha256": "eef86a20387398668cf87c0cbe9541e2a86fc7cc70aaa4f926a40229ea8aa59d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcmarker.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcmarker.c",
+   "source_sha256": "696c034fedc30cc23528e2668dba63e7aeb7d639b04aad46fd7dd820cadb4513",
+   "export_sha256": "696c034fedc30cc23528e2668dba63e7aeb7d639b04aad46fd7dd820cadb4513",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcmaster.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcmaster.c",
+   "source_sha256": "7f9a6b2223ea7d5b584f3ba2d4c3d9ea40b7c0272daceaacb07f4b2a7eaa9702",
+   "export_sha256": "7f9a6b2223ea7d5b584f3ba2d4c3d9ea40b7c0272daceaacb07f4b2a7eaa9702",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcphuff.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcphuff.c",
+   "source_sha256": "3924852b69832c9ce81093f3ddf22cb3fd2b13438f9b83c11d80c2c08bdddf1f",
+   "export_sha256": "3924852b69832c9ce81093f3ddf22cb3fd2b13438f9b83c11d80c2c08bdddf1f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcprepct.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcprepct.c",
+   "source_sha256": "011e61ef57fc3882a8b69af1ec7bf31a8edd499f2a9b319104b3f79879e9d2f4",
+   "export_sha256": "011e61ef57fc3882a8b69af1ec7bf31a8edd499f2a9b319104b3f79879e9d2f4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjcsample.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jcsample.c",
+   "source_sha256": "fd323b960e2a41c19433786a7127e3cb65c1a2ad8e1463acd93dde7b518d2fc5",
+   "export_sha256": "fd323b960e2a41c19433786a7127e3cb65c1a2ad8e1463acd93dde7b518d2fc5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdcoefct.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdcoefct.c",
+   "source_sha256": "6ad97ed53ad266ff4e2385dfbed979f43beb2705c487a621cd8e77de5e257940",
+   "export_sha256": "6ad97ed53ad266ff4e2385dfbed979f43beb2705c487a621cd8e77de5e257940",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdcolor.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdcolor.c",
+   "source_sha256": "05e3ce2fed7deeefa2d50012ef5705de732ef81198a8398e5633293610f260e7",
+   "export_sha256": "05e3ce2fed7deeefa2d50012ef5705de732ef81198a8398e5633293610f260e7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjddctmgr.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jddctmgr.c",
+   "source_sha256": "d594eec44899f999685c1486c2e957be326fe44485a536edf06998670b84d3ed",
+   "export_sha256": "d594eec44899f999685c1486c2e957be326fe44485a536edf06998670b84d3ed",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdinput.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdinput.c",
+   "source_sha256": "abb04705246f8e4f09b5cdcf63d65433e72182a96cb720e76126020badde3c84",
+   "export_sha256": "abb04705246f8e4f09b5cdcf63d65433e72182a96cb720e76126020badde3c84",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdmainct.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdmainct.c",
+   "source_sha256": "561f8fbbf5d642f212fcb204371a6a000408978120ef32eb81ff6a2ac9dd58b7",
+   "export_sha256": "561f8fbbf5d642f212fcb204371a6a000408978120ef32eb81ff6a2ac9dd58b7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdmerge.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdmerge.c",
+   "source_sha256": "71d2af477b3fb5a9ccb2e7578a617bfa49ce937d133810a41345e548979e173b",
+   "export_sha256": "71d2af477b3fb5a9ccb2e7578a617bfa49ce937d133810a41345e548979e173b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdphuff.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdphuff.c",
+   "source_sha256": "19040064a852db6b3bb44163e7b8395f93031437e94306244b8c69fb0a873bb4",
+   "export_sha256": "19040064a852db6b3bb44163e7b8395f93031437e94306244b8c69fb0a873bb4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdpostct.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdpostct.c",
+   "source_sha256": "6e8251f7db06c04cb0a9ed4eb86e774ed16a41db58e9f2d34d3523c40ac391f1",
+   "export_sha256": "6e8251f7db06c04cb0a9ed4eb86e774ed16a41db58e9f2d34d3523c40ac391f1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjdsample.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jdsample.c",
+   "source_sha256": "bca623cf0491eb387c18ae71af61f81151c2427b54959e76d64bcf602c7ea43e",
+   "export_sha256": "bca623cf0491eb387c18ae71af61f81151c2427b54959e76d64bcf602c7ea43e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjerror.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jerror.c",
+   "source_sha256": "fb53f703ae3373e44f10fa9c85c37cc937119a0c28ba14471ec7bfaf23de64ef",
+   "export_sha256": "fb53f703ae3373e44f10fa9c85c37cc937119a0c28ba14471ec7bfaf23de64ef",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjfdctflt.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jfdctflt.c",
+   "source_sha256": "9b5bcd134345b1c457e1b0da922f6f9726a2fc2de4649eef42b241f0e57a6bf3",
+   "export_sha256": "9b5bcd134345b1c457e1b0da922f6f9726a2fc2de4649eef42b241f0e57a6bf3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjfdctfst.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jfdctfst.c",
+   "source_sha256": "a89a03144559c516a1607ece550621b8e422fb87be929fdc87b6f5362217d97a",
+   "export_sha256": "a89a03144559c516a1607ece550621b8e422fb87be929fdc87b6f5362217d97a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjfdctint.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jfdctint.c",
+   "source_sha256": "f5a5f9bb57cf7ba2dd201f00544ec317570a9bada3a3e7c9d66275eb378bfee7",
+   "export_sha256": "f5a5f9bb57cf7ba2dd201f00544ec317570a9bada3a3e7c9d66275eb378bfee7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjidctflt.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jidctflt.c",
+   "source_sha256": "1d914765ecb40829b81f213026756db7ced48f4ed0494b0d85c38724870c869c",
+   "export_sha256": "1d914765ecb40829b81f213026756db7ced48f4ed0494b0d85c38724870c869c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjidctfst.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jidctfst.c",
+   "source_sha256": "f24439f354b072d5c8c983a2a88361127367925adbb8e48fc8bfa7186671b580",
+   "export_sha256": "f24439f354b072d5c8c983a2a88361127367925adbb8e48fc8bfa7186671b580",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjidctint.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jidctint.c",
+   "source_sha256": "811dd70f0ca844f9463382893cf64ef584d5862b0f608a81ee3a8d2859ff2e86",
+   "export_sha256": "811dd70f0ca844f9463382893cf64ef584d5862b0f608a81ee3a8d2859ff2e86",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjmemansi.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jmemansi.c",
+   "source_sha256": "9b245abf2702891ae8bdd28f8c1b2376c77350f780df24035eb9a0b3503de653",
+   "export_sha256": "9b245abf2702891ae8bdd28f8c1b2376c77350f780df24035eb9a0b3503de653",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjmemmgr.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jmemmgr.c",
+   "source_sha256": "7942078d3b8748a0976e2dde59967934eb5cae9bbb5fc92ce5d3c04c5faef7c0",
+   "export_sha256": "7942078d3b8748a0976e2dde59967934eb5cae9bbb5fc92ce5d3c04c5faef7c0",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjquant1.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jquant1.c",
+   "source_sha256": "447af9e59de94f97b4b1f2d5a461bc4099fbe1ab956812f7d5cab5afff6f2adc",
+   "export_sha256": "447af9e59de94f97b4b1f2d5a461bc4099fbe1ab956812f7d5cab5afff6f2adc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Jpegjquant2.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/ijg/jquant2.c",
+   "source_sha256": "a65ad445ad88f833aa77a38cfe63096ff22d53056c3187340e2a189da1e3aba4",
+   "export_sha256": "a65ad445ad88f833aa77a38cfe63096ff22d53056c3187340e2a189da1e3aba4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Leaves2008Log.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/Log.cpp",
+   "source_sha256": "6ddaf5c440e18431ca03f25ca708a43d2eac44b5d3fb2e61ed46cd25a774596c",
+   "export_sha256": "6ddaf5c440e18431ca03f25ca708a43d2eac44b5d3fb2e61ed46cd25a774596c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/LuaAllocatorStats.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/script/LuaMemory.cpp",
+   "source_sha256": "3eed60f9417ace36e71ec84db671a896029629b2479ffec489b2fa2309008674",
+   "export_sha256": "3eed60f9417ace36e71ec84db671a896029629b2479ffec489b2fa2309008674",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/LuaRobloxLauxlib.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/lua-5.1.1/src/lauxlib.c",
+   "source_sha256": "ba6517d42c06557e0f608575ac99b29e1e525b4704e21f17bc171a1ab0ba59df",
+   "export_sha256": "ba6517d42c06557e0f608575ac99b29e1e525b4704e21f17bc171a1ab0ba59df",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ReflectionMetadata.cpp",
+   "source_sha256": "ab73efe3b44fd67482448071d2e73df8dc7134ace37397c87d2e11a1e8c5ced8",
+   "export_sha256": "ab73efe3b44fd67482448071d2e73df8dc7134ace37397c87d2e11a1e8c5ced8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/NetworkIDManager2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/raknet30/source/NetworkIDManager.cpp",
+   "source_sha256": "e1eab734961912782137fafa92c2597d595803bc0ea13c98f52a6c6c0386c74b",
+   "export_sha256": "e1eab734961912782137fafa92c2597d595803bc0ea13c98f52a6c6c0386c74b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreAuto_RBX_Rect.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/Rect.cpp",
+   "source_sha256": "88aaf9bd8412e431dcbf7686df42c3095e487ebffc135491e0c5ee0f3e861553",
+   "export_sha256": "f58c9b4069e091fa957a14cb3e86048f56d8af33528c40d09b67ef539fc82bdf",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/App/include/util/Rect.h",
+     "new": "../../../../../../../tools/rbxgs/Client/App/include/util/Rect.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreRbxEntityCamera2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxEntity.cpp",
+   "source_sha256": "ceb5c3e27f41b98b09a4a2ca4b86220fe5f92dc473bebbf348759beae87ec8d0",
+   "export_sha256": "ceb5c3e27f41b98b09a4a2ca4b86220fe5f92dc473bebbf348759beae87ec8d0",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreRbxEntityClear2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/resource.cpp",
+   "source_sha256": "5c89d3e863a9d319e05a2de395ad92824c724836138052692891ce9f0c881bbc",
+   "export_sha256": "5c89d3e863a9d319e05a2de395ad92824c724836138052692891ce9f0c881bbc",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp",
+   "source_sha256": "e17344aa7a2caf34c83cdc5f035b9a48225b0fd3c603069f1311ca1dd4f25782",
+   "export_sha256": "e17344aa7a2caf34c83cdc5f035b9a48225b0fd3c603069f1311ca1dd4f25782",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp",
+   "source_sha256": "07d62ed51feab5264e78b728ae8678be18e9da645b404655e3eed25bd868bcbd",
+   "export_sha256": "07d62ed51feab5264e78b728ae8678be18e9da645b404655e3eed25bd868bcbd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreRbxSceneManagerSkybox2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+   "source_sha256": "86f2f9a3b5a8913c0d9716845d71eed77319e66c288deebe7b78461d18e88c67",
+   "export_sha256": "86f2f9a3b5a8913c0d9716845d71eed77319e66c288deebe7b78461d18e88c67",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/OgreRbxSky.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSky.cpp",
+   "source_sha256": "25341bdba23f5b1f5f0a31d422a73314ef0eee4438bda666bb5313ae4b038f91",
+   "export_sha256": "25341bdba23f5b1f5f0a31d422a73314ef0eee4438bda666bb5313ae4b038f91",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6png.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/png.c",
+   "source_sha256": "a992d4690e01d2bd407fe77bd6cb0003b6f32579b7cd8a9d34443d20469e6e9e",
+   "export_sha256": "a992d4690e01d2bd407fe77bd6cb0003b6f32579b7cd8a9d34443d20469e6e9e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png6pngget.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/pngget.c",
+   "source_sha256": "1bcae5eb2330267fdecce603555dcc60ecb6260f259fad8ecba77c9d58a85914",
+   "export_sha256": "1bcae5eb2330267fdecce603555dcc60ecb6260f259fad8ecba77c9d58a85914",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Png7pngtrans.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/pngtrans.c",
+   "source_sha256": "ef56a00b071e7d085bb341b49841e02bd8192eb56f13052bec105b67008be0ac",
+   "export_sha256": "ef56a00b071e7d085bb341b49841e02bd8192eb56f13052bec105b67008be0ac",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakCheckSum2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/raknet30/source/CheckSum.cpp",
+   "source_sha256": "7d0466207502584d27a4b9b9b9eb7587743bead85e584c5b24171cd6d214df5a",
+   "export_sha256": "7d0466207502584d27a4b9b9b9eb7587743bead85e584c5b24171cd6d214df5a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/RakSleep2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/raknet30/source/RakSleep.cpp",
+   "source_sha256": "18a7d4e1de071470605a371ae1f2b376ab66c67efdce371e83e76a2e923d402d",
+   "export_sha256": "18a7d4e1de071470605a371ae1f2b376ab66c67efdce371e83e76a2e923d402d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ScintillaCtrl.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ScintillaCtrl.cpp",
+   "source_sha256": "6ad0b8287d1ce4b578851ce1f5726f8524abcf8aea5d15649a9da694c68a681d",
+   "export_sha256": "6ad0b8287d1ce4b578851ce1f5726f8524abcf8aea5d15649a9da694c68a681d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ViewNewMaterialFactory2008.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rbxview/MaterialFactory.cpp",
+   "source_sha256": "7fd4b48965e7b10bf0c29a3f6a970d61e5b6465ac3f8051ba05ec4e20a3d4262",
+   "export_sha256": "7fd4b48965e7b10bf0c29a3f6a970d61e5b6465ac3f8051ba05ec4e20a3d4262",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/WidgetButtons.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/gui/Button.cpp",
+   "source_sha256": "e2f72ecdac65bbd5078a51150e50eb3ad69b435585bbda178fa4833afa6a6002",
+   "export_sha256": "e2f72ecdac65bbd5078a51150e50eb3ad69b435585bbda178fa4833afa6a6002",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/WorldJointMulti.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/v8world/mutiljoint.cpp",
+   "source_sha256": "438a7b9348c8beb1baef697c95380f3d856455b81d97cc888054bb1c6238aa84",
+   "export_sha256": "438a7b9348c8beb1baef697c95380f3d856455b81d97cc888054bb1c6238aa84",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_jumpcomparison_6b4b2fffa050f82d__O2GSEHscMD.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/humanoid/Jumping.cpp",
+   "source_sha256": "534ec39a9420ede0e73fd41b19a7bc02ad064e290e8aadb6f42f18c88eaa40a4",
+   "export_sha256": "7c79795adcfa427b90985d38a6bf2a1740414ac4a748fd5b2df0ec5ffe5b0645",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/openrbx-client-dll/21022/roc_espeon_jumpcomparison_6b4b2fffa050f82d.cpp.i",
+     "new": "../../../../../../../work/libcache/openrbx-client-dll/21022/roc_espeon_jumpcomparison_6b4b2fffa050f82d.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8world__Assembly2__O2Ob2OyGFGSE.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/v8world/Assembly2.cpp",
+   "source_sha256": "6fc7e898e15aab0f8195dd039da0110843110b7b237e005ed9bea007412c05f6",
+   "export_sha256": "586c42cf30bb84b66d1a64697401a4d2242987a20038cd4faa386de2fcbb9d13",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/openrbx-client/21022/App__v8world__Assembly2.cpp.i",
+     "new": "../../../../../../../work/libcache/openrbx-client/21022/App__v8world__Assembly2.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/openrbx-client/Rendering__RenderLib__RenderStats__O2Ob2OyGFGSE.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/renderlib/RenderStats.cpp",
+   "source_sha256": "043ec21d4c48140a41f55243115fe3b2698269e0e2efd4f9721274a7b480556b",
+   "export_sha256": "04ebdbcdfcc02d9dda4d31747a19f6ab0cf8a5157c77f8c32c9a98b2b4c3b8b2",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/openrbx-client/21022/Rendering__RenderLib__RenderStats.cpp.i",
+     "new": "../../../../../../../work/libcache/openrbx-client/21022/Rendering__RenderLib__RenderStats.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_june_7ce3ac7e38f6702c__O2GSEHscMDfp.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/humanoid/Freefall.cpp",
+   "source_sha256": "9a1b68d62092c2b9f69a4d44d4d4f68ae41f3e114aabd68666fface26cae3dec",
+   "export_sha256": "8be82819a11849ae75ad618ad50d1baac4013e9e1328f4d71507c25893111ed9",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_codex_june_7ce3ac7e38f6702c.cpp.i",
+     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_codex_june_7ce3ac7e38f6702c.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_8bf60529a275bcc6__O2Ob2OiOtOyG.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rbxview/Part.cpp",
+   "source_sha256": "2c324aa8344ccb92a5f7fc3971e9fe734b47e0cf156a858c0808c0b06f3a739b",
+   "export_sha256": "35eb98d790037d0a9950a38a2055352dd217d893d4adb7b9fd1621b4ebdfcf6c",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_espclaude_8bf60529a275bcc6.cpp.i",
+     "new": "../../../../../../work/libcache/rbxgs-dll/21022/roc_espclaude_8bf60529a275bcc6.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_contenttexturenamed2399d7549f79d9cc__O2GSEHscMD.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/Textures.cpp",
+   "source_sha256": "064419d01f29c71429c60ead9ffb32017ff8c30f17136e2a70987cfb986ab97a",
+   "export_sha256": "6ab154c9d63c532c72727f69ee7de879329efc51fddcac28984b7c6821205858",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_contenttexturenamed2399d7549f79d9cc.cpp.i",
+     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_contenttexturenamed2399d7549f79d9cc.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_luanewindexnamesequence458b7ba623495716__O2Ob2OyGFGSE.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/script/luainstancebridge.cpp",
+   "source_sha256": "90948415e36dc085b65980db9d645acf4c750bada1ff37ef79b671a323189511",
+   "export_sha256": "1ab2a6b1ad05a04fc37b3a9133cf935fb45908d03b1e16c67aa47adb19c36216",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_luanewindexnamesequence458b7ba623495716.cpp.i",
+     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_luanewindexnamesequence458b7ba623495716.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_1d8338cf2f16d51c__O2GSEHscMDfp.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Sky.cpp",
+   "source_sha256": "4a7d723f65ac922aa7a95b6ddf013980ff63b736d6e18b63946e843c9bbf940c",
+   "export_sha256": "aba29cfc53761783922cadc6891d50c587c02073b5951d8a2e5885032babbc60",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_unit_1d8338cf2f16d51c.cpp.i",
+     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_1d8338cf2f16d51c.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_a7ba09e28ae2b551__O2Ob2OyGFGSE.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/boost.cpp",
+   "source_sha256": "6d1a4312be486cb54d32fedec619896e46fb0ab12e9591f2a71ff0fc2be1c794",
+   "export_sha256": "fa69163f4c8e3baefd31578800c3f741a4eac28d6db643429e3e3659ac47d2c7",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_unit_a7ba09e28ae2b551.cpp.i",
+     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_a7ba09e28ae2b551.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_bf96e0da3f42017e__O2GSEHscMDfp.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/v8datamodel/RootInstance.cpp",
+   "source_sha256": "cfeff78578d64eabb029a41554e9eb12178cad2076042836c112bd58726bcba5",
+   "export_sha256": "781da2f95b2b5d79ae64ac7f4cfcd1e3c9764f6dd4d11f3e0b86392cd56f0e0b",
+   "include_rewrites": [
+    {
+     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_unit_bf96e0da3f42017e.cpp.i",
+     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_bf96e0da3f42017e.cpp.i"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ActiveDocView.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.h",
+   "source_sha256": "63e432fbdedb9407a75e4e09b6cd5303120ad8977449238aea2b9b0b954bfc36",
+   "export_sha256": "63e432fbdedb9407a75e4e09b6cd5303120ad8977449238aea2b9b0b954bfc36",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ChatEnter.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ChatEnter.h",
+   "source_sha256": "42be5a74cba117030ede1fe3846887c7daad22a2ecab4392002eb4442b1b79d6",
+   "export_sha256": "42be5a74cba117030ede1fe3846887c7daad22a2ecab4392002eb4442b1b79d6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/ClipboardVerbs.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/ClipboardVerbs.h",
+   "source_sha256": "436576f2c04872ad01f250839275c8a7084e8e08d1f300dcbb1f569a34f6f6f1",
+   "export_sha256": "436576f2c04872ad01f250839275c8a7084e8e08d1f300dcbb1f569a34f6f6f1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreSceneManager.h",
+   "source_sha256": "6ea7b2e0bbcc860733bb169570dd6db84757013c4e78f2eb10bcd3328ce6c4ad",
+   "export_sha256": "6ea7b2e0bbcc860733bb169570dd6db84757013c4e78f2eb10bcd3328ce6c4ad",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/OgreRbxEntityImports/OgreMath.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreMath.h",
+   "source_sha256": "8d5ba0824ef037bd9b89bb4637fa381241175694af5d9c6f63f11bf17b20277d",
+   "export_sha256": "8d5ba0824ef037bd9b89bb4637fa381241175694af5d9c6f63f11bf17b20277d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/OgreRbxEntityImports/OgreVector3.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreVector3.h",
+   "source_sha256": "7e31041fae3a41ec5e412b4a79ba29e606732417efc0b32134fa0df9b8b69647",
+   "export_sha256": "04c1b8e963e5c591687885a18ae2969732a03a222dad04a3b0188d03dcf9fd17",
+   "include_rewrites": [
+    {
+     "old": "OgreMath.h",
+     "new": "OgreRbxEntityImports/OgreMath.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/VerbBinder.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/VerbBinder.h",
+   "source_sha256": "fc795f3dde4ba6d0522571c9831814e506159927e19866bb319acb646f71448d",
+   "export_sha256": "fc795f3dde4ba6d0522571c9831814e506159927e19866bb319acb646f71448d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/DxUserInput.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/DxUserInput.h",
+   "source_sha256": "676919483163d15027bbef00c1872344b8195a0fa2bd30511fdf0b25366ce3da",
+   "export_sha256": "676919483163d15027bbef00c1872344b8195a0fa2bd30511fdf0b25366ce3da",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/LDrawParser.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/LDrawParser.h",
+   "source_sha256": "72315261b7ee661c6fc3bbbd774cbac180ded00164a6988f266689f5c1b79a54",
+   "export_sha256": "72315261b7ee661c6fc3bbbd774cbac180ded00164a6988f266689f5c1b79a54",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/MarshalWindow.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/MarshalWindow.h",
+   "source_sha256": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+   "export_sha256": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/MarshaledListener.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.h",
+   "source_sha256": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+   "export_sha256": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  }
+ }
+}

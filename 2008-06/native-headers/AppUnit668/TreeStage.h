@@ -84,6 +84,7 @@ namespace RBX
 		void replaceLightest(Joint* oldJoint, Joint* newJoint, Primitive* p);   // INFERRED: 00669940
 		void addPendingEdge(Edge* e);                       // INFERRED: 00669340 (needs Edge::inEdgeList accessor, see proposals)
 		void processEdge(Edge* e, Primitive* from);         // INFERRED: 00669560
+		Assembly* createAssembly(Primitive* p);             // INFERRED: 00668cd0 (new(0x78) Clump(p) 005e6cf0; thiscall, `ret 4`, caller 00669560)
 		void walkEdges(Edge* e, Primitive* from, int depth);   // INFERRED: 006697a0
 		void dirtyAssemblyAndRemove(Assembly* a);           // INFERRED: 006691e0
 		void eraseDirtyAssembly(Assembly* a);               // INFERRED: 00669290

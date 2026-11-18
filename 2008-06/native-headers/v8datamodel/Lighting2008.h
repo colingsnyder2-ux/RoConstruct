@@ -97,12 +97,20 @@ namespace RBX
 		void setTimeStr(const std::string& value);      // 005e2730 (prop_Time setter: duration_from_string 005e0c20)
 		void setMinutesAfterMidnight(double value);     // 005e26e0
 
-		// INFERRED: decorated registry names ?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z 005e2490, ?setAmbientTop@... 005e22c0,
-		// ?setAmbientBottom@... 005e2370 (remaining-classified.json); each stores the Color3 field (ambient +0x28c / ambientTop
-		// +0x228 / ambientBottom +0x234), raises its property and fires event_LightingChanged.
+		// INFERRED: decorated registry name ?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z 005e2490 stores the Color3 at
+		// ambient +0x28c, raises its property and fires event_LightingChanged.
 		void setAmbient(G3D::Color3 value);
+		// Registry names ?setAmbientTop@ 005e22c0 and ?setAmbientBottom@ 005e2370 are refuted by the assembly: both bodies
+		// write the ColorShift groups (+0x270 / +0x27c), not ambientTop +0x228 / ambientBottom +0x234. Declared as
+		// ColorShift setters below; setAmbientTop/Bottom are kept only so existing names do not change.
 		void setAmbientTop(G3D::Color3 value);
 		void setAmbientBottom(G3D::Color3 value);
+		// INFERRED: 005e22c0 / 005e2370 store colorShiftTop +0x270 / colorShiftBottom +0x27c, raise desc 0097a900 / 0097a99c,
+		// fire event_LightingChanged(false), then RunService::invalidateRunViews. Getters are the descriptor getters (inferred).
+		void setColorShiftTop(G3D::Color3 value);
+		void setColorShiftBottom(G3D::Color3 value);
+		G3D::Color3 getColorShiftTop() const { return colorShiftTop; }
+		G3D::Color3 getColorShiftBottom() const { return colorShiftBottom; }
 
 		G3D::Vector3 getMoonPosition();                 // 005df4d0
 		G3D::Vector3 getSunPosition();                  // 005df500

@@ -1,0 +1,6 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../native-classes
+// 00561320: forwarding thunk generated from its proven jump target (thunk_lane.py, no model)
+#include "AppUnit55CContentTemplates.cpp"
+// INFERRED: 00561320 is a 5-byte jump to std::_Tree<class std::_Tmap_traits<class RBX::ContentId,struct RBX::ContentProvider::CachedContent,struct std::less<class RBX::ContentId>,class std::allocator<struct std::pair<class RBX::ContentId const ,struct RBX::ContentProvider::CachedContent> >,0> >::~_Tree<class std::_Tmap_traits<class RBX::ContentId,struct RBX::ContentProvider::CachedContent,struct std::less<class RBX::ContentId>,class std::allocator<struct std::pair<class RBX::ContentId const ,struct RBX::ContentProvider::CachedContent> >,0> >: the destructor of a derived class with nothing of its own to destroy; the class name is a placeholder.
+struct __declspec(novtable) Thunk_00561320 : std::_Tree<class std::_Tmap_traits<class RBX::ContentId,struct RBX::ContentProvider::CachedContent,struct std::less<class RBX::ContentId>,class std::allocator<struct std::pair<class RBX::ContentId const ,struct RBX::ContentProvider::CachedContent> >,0> > { ~Thunk_00561320(); };
+Thunk_00561320::~Thunk_00561320() {}

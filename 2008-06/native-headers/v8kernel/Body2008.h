@@ -209,6 +209,10 @@ namespace RBX
 		{
 			return parent;
 		}
+		Link* getLink() const                             // donor v8kernel/Body.h inline; TreeStage 00669560 tests +0x34
+		{
+			return link;
+		}
 		Body* getRoot()
 		{
 			return root;

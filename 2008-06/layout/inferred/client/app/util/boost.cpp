@@ -1,16 +1,6 @@
-#include <string>
-#include <boost/thread/once.hpp>
-#include <boost/thread/tss.hpp>
-
-namespace RBX { namespace boost_detail {
-boost::thread_specific_ptr<std::string>* foo;
-boost::once_flag once_init_foo = BOOST_ONCE_INIT;
-
-void init_foo()
-{
-    static boost::thread_specific_ptr<std::string> value;
-    foo = &value;
-}
-} }
-
-template class boost::function1<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> > *,std::allocator<boost::function_base> >;
+// native-profile: vendor
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /Gy
+// 2008-06 native donor unit (inactive): rbxgs-dll unit roc_unit_a7ba09e28ae2b551.cpp (mined byte-exact), preprocessed exactly as mined (roc/libs.py
+// unit(), roc-cl 21022; local cache - regenerate with work/native-client/vendor_i.py). 1 remaining functions:
+// 00596ea0
+#include "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_a7ba09e28ae2b551.cpp.i"
