@@ -8264,12 +8264,6 @@
    "identity_evidence": "the body at 0076efd0 installs the vftable(s) whose RTTI in the image is CXTPImageEditorPreview (research-twins/evidence.json); ??0CXTPImageEditorPreview@@QAE@XZ is the only byte-equal symbol of this vendor unit that installs exactly those"
   },
   {
-   "symbol": "?GetMessageMap@CXTPImageEditorPreview@@MBEPBUAFX_MSGMAP@@XZ",
-   "address": "006a06b0",
-   "votes": 1,
-   "identity_evidence": "reference of ??0CXTPImageEditorPreview@@QAE@XZ (identified at 0076efd0: the body at 0076efd0 installs the vftable(s) whose RTTI in the image is CXTPImageEditorPreview (research-twins/evidence.): the original image holds this address at the same relocation / vftable slot"
-  },
-  {
    "symbol": "__ehhandler$??$?0U?$tss_adapter@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@detail@boost@@@?$function1@XPAXV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@U?$tss_adapter@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@detail@1@H@Z",
    "address": "007bf478",
    "votes": 1,
@@ -8944,12 +8938,6 @@
   {
    "symbol": "?GetCurSel@CXTPControlComboBoxGalleryPopupBar@@MBEHXZ",
    "address": "006ef9a0",
-   "votes": 1,
-   "identity_evidence": "reference of ??0CXTPControlComboBoxGalleryPopupBar@@IAE@XZ (identified at 0072f840: the body at 0072f840 installs the vftable(s) whose RTTI in the image is CXTPControlComboBoxGalleryPopupBar (research-twi): the original image holds this address at the same relocation / vftable slot"
-  },
-  {
-   "symbol": "?GetMessageMap@CXTPControlComboBoxGalleryPopupBar@@MBEPBUAFX_MSGMAP@@XZ",
-   "address": "006a06b0",
    "votes": 1,
    "identity_evidence": "reference of ??0CXTPControlComboBoxGalleryPopupBar@@IAE@XZ (identified at 0072f840: the body at 0072f840 installs the vftable(s) whose RTTI in the image is CXTPControlComboBoxGalleryPopupBar (research-twi): the original image holds this address at the same relocation / vftable slot"
   },
@@ -12030,6 +12018,210 @@
    "address": "005ac1e0",
    "votes": 1,
    "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<G3D::Color3, true>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "?onSentMarker@ClientProxy@Server@Network@RBX@@UAEXJ@Z",
+   "address": "004a1570",
+   "votes": 1,
+   "identity_evidence": "slot 19 onSentMarker: sets inherited Replicator::sendPhysicsEnabled (+0x2cd0) to 1; body  matches target byte-for-byte"
+  },
+  {
+   "symbol": "?findTargetPlayer@ClientProxy@Server@Network@RBX@@UAEPAVPlayer@34@XZ",
+   "address": "004a1a30",
+   "votes": 1,
+   "identity_evidence": "slot 17 findTargetPlayer: returns remotePlayer (+0x2d68); body  matches target byte-for-byte"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPImageEditorPreview@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "00771570",
+   "votes": 1,
+   "identity_evidence": "ctor 0076efd0 references this own-class GetMessageMap thunk; original image reloc 00771570 (earlier 006a06b0 row was a misread vftable slot)"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPControlComboBoxGalleryPopupBar@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "006a06b0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0CXTPControlComboBoxGalleryPopupBar@@IAE@XZ (identified at 0072f840: vftable slots of RTTI class CXTPControlComboBoxGalleryPopupBar at the same slot in the original image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@QAE@XZ",
+   "address": "00638660",
+   "votes": 1,
+   "identity_evidence": "RTTI: identities.json unique[00638660] = class RBX::Value<class G3D::Vector3,&char * RBX::sVector3Value> [subobject +196]; byte-exact ctor emitted by AppUnit634_2008Value.cpp"
+  },
+  {
+   "symbol": "??0?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@QAE@XZ",
+   "address": "006388b0",
+   "votes": 1,
+   "identity_evidence": "RTTI: identities.json unique[006388b0] = class RBX::Value<class G3D::Color3,&char * RBX::sColor3Value> [subobject +196]; byte-exact ctor emitted by AppUnit634_2008Value.cpp"
+  },
+  {
+   "symbol": "??0RotateP@RBX@@QAE@PAVJoint@1@@Z",
+   "address": "005e4b90",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??0RotateP@RBX@@QAE@XZ",
+   "address": "005e4c60",
+   "identity_evidence": "original call target of byte-identical owner body",
+   "votes": 1
+  },
+  {
+   "symbol": "??0?$DescribedCreatable@V?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sVector3Value@2@3PADA@RBX@@IAE@XZ",
+   "address": "00637e50",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WBA@AEPAXI@Z",
+   "address": "00638780",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WBE@AEPAXI@Z",
+   "address": "00635ac0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WCE@AEPAXI@Z",
+   "address": "00638740",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WEE@AEPAXI@Z",
+   "address": "00638750",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WGE@AEPAXI@Z",
+   "address": "00638760",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WIE@AEPAXI@Z",
+   "address": "00638770",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WKE@AEPAXI@Z",
+   "address": "00637ef0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@WME@AEPAXI@Z",
+   "address": "00637f00",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "?askSetParent@?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@MBE_NPBVInstance@2@@Z",
+   "address": "00565ff0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "?getClassName@?$FactoryProduct@V?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sVector3Value@2@3PADA@RBX@@UBEABVName@2@XZ",
+   "address": "00635c20",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "__ehhandler$??0?$Value@VVector3@G3D@@$1?sVector3Value@RBX@@3PADA@RBX@@QAE@XZ",
+   "address": "007da3b1",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??0?$DescribedCreatable@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sColor3Value@2@3PADA@RBX@@IAE@XZ",
+   "address": "00637fe0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WBA@AEPAXI@Z",
+   "address": "00638990",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WBE@AEPAXI@Z",
+   "address": "00638080",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WCE@AEPAXI@Z",
+   "address": "00635f90",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WEE@AEPAXI@Z",
+   "address": "006389a0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WGE@AEPAXI@Z",
+   "address": "00635fa0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WIE@AEPAXI@Z",
+   "address": "006389b0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WKE@AEPAXI@Z",
+   "address": "006389c0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "??_E?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@WME@AEPAXI@Z",
+   "address": "00635fb0",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "?getClassName@?$FactoryProduct@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@VInstance@2@$1?sColor3Value@2@3PADA@RBX@@UBEABVName@2@XZ",
+   "address": "00636110",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "__ehhandler$??0?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@QAE@XZ",
+   "address": "007da3f1",
+   "votes": 1,
+   "identity_evidence": "exact-target-coff-reference-alias"
+  },
+  {
+   "symbol": "?reconstruct@@YAXPAPAU?$pair@P6AXPAX0V?$function@$$A6AXPAX0@ZV?$allocator@X@std@@@boost@@@ZV12@@std@@PAX1@Z",
+   "address": "0055edd0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name reconstruct is a placeholder)"
+  },
+  {
+   "symbol": "?fire@?$SignalDescImpl@$01$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@23@@Z",
+   "address": "0057b570",
+   "votes": 1,
+   "identity_evidence": "reference of ?onChildChanged@DataModel@RBX@@MAEXPAVInstance@2@ABVPropertyChanged@2@@Z (identified at 0057b630: DataModel RTTI/vtable slot and authentic onChildChanged declaration identify 0057b630; target-order byte-equal body): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?askSetParent@?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@MBE_NPBVInstance@2@@Z",
+   "address": "00565ff0",
+   "votes": 1,
+   "identity_evidence": "RTTI: identities.json unique[006388b0] = Value<G3D::Color3,&sColor3Value>; native_reference_alias_bind.py derived 00565ff0 from the original relocation in the byte-exact Color3 constructor at 006388b0 (twin of Vector3 askSetParent)"
   }
  ]
 }
