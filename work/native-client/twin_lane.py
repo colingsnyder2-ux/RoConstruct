@@ -44,7 +44,12 @@ NONTYPE = re.compile(r'&[^,<>]*?((?:\w+::)*\w+)(?=\s*[,>])')
 DEFINES = re.compile(r'^\s*(?:template\s*<[^;{]*>\s*)?(?:class|struct)\s+(?:\w+\s+)?(\w+)\s*(?:<[^;{]*?>\s*)?(?:final\s*)?(?::[^;{]*)?\{', re.M)   # <...>: partial specializations
 DIFFERS = re.compile(r'reference identity differs: (\S+) \(bound ([0-9a-f]{8}), original reference ([0-9a-f]{8})\)')
 STD_INCLUDES = [('boost::any', '<boost/any.hpp>'), ('boost::_bi', '<boost/bind.hpp>'), ('boost::function', '<boost/function.hpp>'),
-                ('boost::shared_ptr', '<boost/shared_ptr.hpp>'), ('std::basic_string', '<string>'), ('std::vector', '<vector>')]
+                ('boost::shared_ptr', '<boost/shared_ptr.hpp>'), ('std::basic_string', '<string>'), ('std::vector', '<vector>'),
+                ('RBX::TextureId', '"util/TextureId.h"')]
+# per-template compiler flags the binary proves.  TypedStatsItem: its boost::function0 member stores a constant
+# {manager, invoker} table from .rdata (00819ce4) with no init guard = boost 1.35 `static const vtable_type`; the
+# default boost 1.34.1 (`static vtable_type stored_vtable(f)`) keeps assign_to out of line (120 bytes, target 194).
+LEAF_FLAGS = {'TypedStatsItem': ' /I{headers}/../../../tools/libs/boost_1_35_0'}
 
 
 def header_index():
@@ -74,9 +79,27 @@ def header_index():
 
 UNITS = {}
 INDEX = header_index()
+INDEX.setdefault('Bridge', ['lua/LuaBridge.h'])
+INDEX.setdefault('SharedPtrBridge', ['lua/LuaBridge.h'])
+
+BRIDGE_MAP = {
+    'EnumItem': ('RBX::Lua::Bridge<RBX::Lua::EnumDescriptorItemPtr, true>', ['LuaBridge2008/LuaEnumBridge2008.h']),
+    'Enums': ('RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptorsPtr, true>', ['LuaBridge2008/LuaEnumBridge2008.h']),
+    'Enum': ('RBX::Lua::Bridge<RBX::Lua::EnumDescriptorPtr, true>', ['LuaBridge2008/LuaEnumBridge2008.h']),
+    'RBXScriptConnection': ('RBX::Lua::Bridge<boost::signals::connection, true>', ['lua/LuaBridge.h', '<boost/signals/connection.hpp>']),
+    'Color3': ('RBX::Lua::Bridge<G3D::Color3, true>', ['lua/LuaBridge.h', '<g3d/color3.h>']),
+    'BrickColor': ('RBX::Lua::Bridge<RBX::BrickColor, true>', ['lua/LuaBridge.h']),
+    'shared_ptr<ThreadRef::Node>': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Lua::ThreadRef::Node>, true>', ['lua/LuaBridge.h', '"script/ThreadRef.h"']),
+    'Object': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::DescribedBase>, false>', ['lua/LuaBridge.h']),
+    'RBXScriptSignal': ('RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::SignalInstance>, false>', ['lua/LuaBridge.h']),
+    'CFrame': ('RBX::Lua::Bridge<G3D::CoordinateFrame, true>', ['lua/LuaBridge.h', '<g3d/coordinateframe.h>']),
+    'Vector3': ('RBX::Lua::Bridge<G3D::Vector3, true>', ['lua/LuaBridge.h', '<g3d/vector3.h>']),
+}
 
 
 def spell(identity):
+    if identity in BRIDGE_MAP:
+        identity = BRIDGE_MAP[identity][0]
     text = re.sub(r'\s*\[subobject [^\]]*\]', '', identity).strip()
     text = NONTYPE.sub(r'\1', text)
     return re.sub(r'^(?:class|struct)\s+', '', text)
@@ -84,13 +107,14 @@ def spell(identity):
 
 def includes(cls):
     out = []
-    for name in dict.fromkeys(re.findall(r'(?<!std::)(?<!boost::)\b[A-Za-z_]\w*', cls)):   # std/boost names: STD_INCLUDES
+    for name in dict.fromkeys(re.findall(r'(?<!std::)(?<!boost::)(?<!G3D::)\b[A-Za-z_]\w*', cls)):   # std/boost names: STD_INCLUDES
         if name in UNITS and UNITS[name].name not in out:
             out.append(UNITS[name].name)
         for header in INDEX.get(name, [])[:1]:
             if header not in out:
                 out.append(header)
     extra = [inc for key, inc in STD_INCLUDES if key in cls]
+    extra += ['<G3D/%s.h>' % n for n in dict.fromkeys(re.findall(r'G3D::(\w+)', cls))]   # G3D: one header per class
     return extra, out[:10]
 
 
@@ -132,19 +156,46 @@ def member_templates(cls, leaf):
         types = dict.fromkeys(re.findall(r'\b%s\s*\(\s*([\w:]+(?:\s*[*&]|\s+(?=\w)))\s*\w*\s*\)\s*[;:{]' % name, text))
         ns = cls.split('<')[0].rpartition('::')[0]
         return ['namespace %s { template %s::%s(%s); }' % (ns, cls, leaf, t.strip()) for t in types] if ns else []
+    # INFERRED: boost::any::holder<ValueType> constructor template is not emitted by `template class holder<T>;`
+    # The holder class (from <boost/any.hpp>) has: holder(const ValueType&) : held(value) {}
+    # We must explicitly instantiate this constructor template for each ValueType.
+    # Note: parameter type is ValueType const& (not const ValueType&) to correctly handle pointer-to-const types.
+    if leaf == 'holder' and len(a) == 1:
+        vt = plain(a[0])
+        return ['template boost::any::holder<%s>::holder(%s const&);' % (vt, vt)]
+    # INFERRED: Creatable<Instance>::create<TypedStatsItem<T>, boost::function0<T>> is a static member function
+    # template not emitted by `template class TypedStatsItem<T>;`. The binary shows these at 005a4af0 (double),
+    # 005a4bd0 (float), 005a4cb0 (int) - byte-identical twins calling the respective constructors.
+    if leaf == 'TypedStatsItem' and len(a) == 1:
+        t = plain(a[0])
+        func0 = 'boost::function0<%s, std::allocator<boost::function_base> >' % t
+        shared_ptr = 'boost::shared_ptr<%s>' % cls
+        return ['template %s RBX::Creatable<RBX::Instance>::create<%s, %s>(%s);' % (shared_ptr, cls, func0, func0)]
+    if leaf == 'Bridge' and len(a) == 2:
+        t = plain(a[0])
+        tag = a[1].strip()
+        lines = ['template bool RBX::Lua::Bridge<%s, %s>::getValue<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);' % (t, tag)]
+        m = re.match(r'boost::shared_ptr<(.+)>', t)
+        if m:
+            u = m.group(1)
+            lines.append('template class RBX::Lua::SharedPtrBridge<%s>;' % u)
+            lines.append('template bool RBX::Lua::SharedPtrBridge<%s>::getPtr<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);' % u)
+        return lines
     return []
 
 
 def unit_flags(headers):
     """flags line of the smallest proved unit that already includes one of these headers (include order, /D, /FI)"""
     names = [Path(h).name for h in headers if h.endswith('.h')]
+    found = {}
     for path in sorted(CLASSES.glob('*.cpp'), key=lambda q: q.stat().st_size):
         if path.name.startswith(('Thunk_', 'WF_', 'TwinInst_')) or path.stat().st_size > 40000:
             continue
         head = path.read_text(errors='replace')[:3000]
-        if head.startswith('// native-flags:') and any('/' + n + '"' in head or '"' + n + '"' in head for n in names[-2:]):
-            return head.split('\n', 1)[0].rstrip()
-    return None
+        for n in names[-2:]:
+            if head.startswith('// native-flags:') and n not in found and ('/' + n + '"' in head or '"' + n + '"' in head):
+                found[n] = head.split('\n', 1)[0].rstrip()
+    return next((found[n] for n in reversed(names[-2:]) if n in found), None)   # the argument class's own header first (its include paths)
 
 
 def bind(rows):
@@ -214,12 +265,17 @@ def reference_aliases(manifest, addr):
 
 def one(item):
     addr, identity = item
+    extra_headers = BRIDGE_MAP.get(identity, (None, []))[1] if identity in BRIDGE_MAP else []
     cls = spell(identity)
     leaf = re.sub(r'<.*', '', cls).rsplit('::', 1)[-1]
-    if leaf not in INDEX and leaf not in UNITS:
+    if leaf not in INDEX and leaf not in UNITS and leaf != 'CXTPBatchAllocManagerT':
         return addr, 'no native header declares ' + leaf, ''
     extra, hdrs = includes(cls)
-    flags = unit_flags(hdrs) or FLAGS
+    hdrs = list(dict.fromkeys(extra_headers + hdrs))
+    flags = (unit_flags(hdrs) or FLAGS) + LEAF_FLAGS.get(leaf, '')
+    if leaf == 'CXTPBatchAllocManagerT':
+        hdrs = ['<XTToolkitPro.h>']
+        flags = (CLASSES / 'XTPBatchAllocManagerReport.cpp').read_text().splitlines()[0]
     units = [h for h in hdrs if h.endswith('.cpp')]
     if units:                                   # a class defined inside a unit: compile with that unit's flags
         first = (CLASSES / units[0]).read_text(errors='replace').split('\n', 1)[0]
@@ -234,10 +290,11 @@ def one(item):
     unit = folder / final.name
     while LOCK.is_file():
         time.sleep(30)
-    unit.write_text(flags + '\n// %s: explicit instantiation of the class the body at %s stores the vftable of (RTTI identity, twin_lane.py, '
+    write = lambda hdrs: unit.write_text(flags + '\n// %s: explicit instantiation of the class the body at %s stores the vftable of (RTTI identity, twin_lane.py, '
                     'no model)\n' % (addr, addr) + ''.join('#include %s\n' % e for e in extra)
-                    + ''.join('#include "%s"\n' % h for h in hdrs) + 'template class %s;\n' % cls
+                    + ''.join(('#include %s\n' if h.startswith('<') else '#include "%s"\n') % h for h in hdrs) + 'template class %s;\n' % cls
                     + ''.join(line + '\n' for line in member_templates(cls, leaf)), encoding='utf-8')
+    write(hdrs)
 
     def fail(status, text=''):
         unit.unlink(missing_ok=True)
@@ -250,6 +307,13 @@ def one(item):
         obj = Path(str(job.get('object') or ''))
     except Exception as error:                                   # noqa: BLE001
         return fail('compile harness error', repr(error))
+    if not obj.is_file() and len(hdrs) > 1:      # winsock/MFC include order: retry with the argument classes' headers first
+        write(hdrs[::-1])
+        job_dir = folder / ('job-%s' % uuid.uuid4().hex[:10])
+        try:
+            obj = Path(str(RUNNER.compile_job({'source': str(unit), 'checks': [], 'ranges': [], 'layouts': []}, job_dir, TC).get('object') or ''))
+        except Exception as error:                               # noqa: BLE001
+            return fail('compile harness error', repr(error))
     if not obj.is_file():
         return fail('COMPILE FAILED', ' | '.join(agent_prove.compile_errors(job_dir, '')[:3]))
     manifest = HERE / 'prove-out' / ('prove-' + final.stem) / 'manifest.json'
@@ -289,8 +353,10 @@ unique = json.loads((HERE / 'research-twins/identities.json').read_text())['uniq
 done_path = HERE / 'twin-lane-done.json'
 done = json.loads(done_path.read_text()) if done_path.is_file() else {}
 _family = collections.Counter(re.sub(r'<.*', '', spell(v['identity'])) for v in unique.values() if v['rule'] == 'rtti')
+# Family boost_functor_pieces_TypedStatsItem: also include these via-callee addresses (same template instantiations as rtti constructors)
+_via_callee_family = {'005a4af0', '005a4bd0', '005a4cb0'}
 todo = [(a, v['identity']) for a, v in sorted(unique.items(), key=lambda kv: (-_family[re.sub(r'<.*', '', spell(kv[1]['identity']))], kv[0]))
-        if v['rule'] == 'rtti' and '<' in v['identity']
+        if (v['rule'] == 'rtti' or a in _via_callee_family) and '<' in v['identity']
         and (a in args.only.split(',') if args.only else a not in done)]
 todo = todo[:args.limit or None]
 print('twin lane: %d addresses' % len(todo), flush=True)

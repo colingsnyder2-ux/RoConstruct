@@ -1,6 +1,24 @@
 {
  "scope": "RBX::DxUserInput (native-headers/util/DxUserInput.h, native-classes/DxUserInput.cpp)",
  "identity_bindings": [
+ {
+  "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXH@Z@Reflection@RBX@@QAEXH@Z",
+  "address": "00636370",
+  "votes": 1,
+  "identity_evidence": "RTTI identity from research-twins/evidence.json: holder<int>; INFERRED: byte-equal body at 00636370 stores holder<int> vftable 0x8106cc into boost::any; reference analog src/2008-06/00636370.cpp names GenericSlotAdapter<SignalDescImpl<1, void(int)>>::operator()(int)"
+ },
+ {
+  "symbol": "__ehhandler$??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXH@Z@Reflection@RBX@@QAEXH@Z",
+  "address": "007c64a8",
+  "votes": 1,
+  "identity_evidence": "INFERRED: original reloc at 00636370+3 pushes 0x007c64a8; template-identity-bindings-signal.json binds the same EH-handler pattern (A6AXN@Z, A6AXVBrickColor@RBX@@@Z, etc.) to 007c64a8; shared EH handler for SignalDescImpl<1,...>::GenericSlotAdapter::operator()"
+ },
+ {
+  "symbol": "??RGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAEXPBVPropertyDescriptor@23@@Z",
+  "address": "00559a50",
+  "votes": 1,
+  "identity_evidence": "RTTI identity holder<PropertyDescriptor const*> in research-twins/evidence.json; byte-equal body at 00559a50 is the same SignalDescImpl<1, void(arg)>::GenericSlotAdapter::operator() pattern proved at 00636370"
+ },
   {
    "symbol": "?setKeyState@DxUserInput@RBX@@UAEXW4SDLKey@@_N@Z",
    "address": "00467530",
