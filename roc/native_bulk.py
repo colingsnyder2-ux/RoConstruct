@@ -103,6 +103,20 @@ def records(value):
             yield from records(child)
 
 
+EVIDENCE_ROWS = {}      # identity-binding file -> (symbol, address) rows it held when this process read it
+
+
+def _binding_rows(path):
+    try:
+        data = json.loads(Path(path).read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return None
+    rows = data.get('identity_bindings') if isinstance(data, dict) else None
+    if not isinstance(rows, list):
+        return None
+    return {(r.get('symbol'), r.get('address')) for r in rows if isinstance(r, dict)}
+
+
 def seed_evidence(root, paths, strict_conflicts=True):
     symbols, bindings, blockers, inputs = {}, {}, [], {}
     receipts, rejected = [], set()
@@ -118,6 +132,8 @@ def seed_evidence(root, paths, strict_conflicts=True):
     for name in paths:
         path = project_path(root, name)
         inputs[str(path)] = sha(path)
+        if path.name.startswith('class-identity-bindings') and str(path) not in EVIDENCE_ROWS:
+            EVIDENCE_ROWS[str(path)] = _binding_rows(path)
         if not path.is_file():
             blockers.append('missing reference receipt: ' + name)
             continue
@@ -650,6 +666,10 @@ def _run(config, output, root=ROOT):
         # append-only evidence (inferred names, new reference bindings) never invalidates a byte-exact body.
         used = {p for inputs in per_source_inputs.values() for p in inputs}
         append_only = [p for p in changed if p not in used and Path(p).name.startswith(('inferred-name-identities', 'reference-bindings-'))]
+        # Parallel workers append identity rows to class-identity-bindings.json all day.  This process read the rows once
+        # at the start, so a proof is consistent with that snapshot as long as no row it read was removed or changed.
+        append_only += [p for p in changed if p not in used and p not in append_only and EVIDENCE_ROWS.get(p) is not None
+                        and _binding_rows(p) is not None and EVIDENCE_ROWS[p] <= _binding_rows(p)]
         hard = [p for p in changed if p not in used and p not in append_only]
         if changed and (hard or not per_source_inputs):
             blockers.append('inputs changed during batch: ' + ', '.join(changed))
