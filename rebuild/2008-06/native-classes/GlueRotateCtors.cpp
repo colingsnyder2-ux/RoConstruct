@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// Glue/Rotate/RotateP/RotateV/Motor constructors from the 005e4000 unit. Byte-exact: Glue() 005e49a0, Rotate() 005e4ad0 and the
-// (Joint*) constructors 005e4920/005e4a60/005e4b90/005e4d30 (identical bodies, one per class). Unlike Snap/Weld these set no
-// name in the constructor. The RotateP()/RotateV()/Motor() defaults are not recovered here.
+// Glue/Rotate/RotateP/RotateV/Motor constructors from the 005e4000 unit. Byte-exact: Glue() 005e49a0, Rotate() 005e4ad0,
+// RotateV() 005e4dd0 and the (Joint*) constructors 005e4920/005e4a60/005e4b90/005e4d30 (identical bodies, one per class).
+// Unlike Snap/Weld these set no name in the constructor. The RotateP()/Motor() defaults are not recovered here.
 // /fp:fast: Motor::setMaxVelocity 005e4fe0 loads maxVelocity before the argument and compares with fucom / fstp st(1),
 // the same x87 order as VelocityMotor::setMaxVelocity 0060c580 (Feature.cpp, /fp:fast); without it cl emits fucompp.
 #include "v8datamodel/JointInstance.h"
@@ -11,6 +11,7 @@
 // reaches, in place of the donor v8world/MotorJoint.h.
 #define NATIVE_MOTOR_JOINT_DONOR_BASE
 #include "v8world/Joints2008.h"
+#include "v8world/RotateVJoint2008.h"
 
 // 005e4fe0 raises prop_MaxVelocity 0097ab74 (getset factory PropDescriptor<Motor, float> 005e29c0, constructor 005e36e0).
 static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_MaxVelocity("MaxVelocity", "Data", &RBX::Motor::getMaxVelocity, &RBX::Motor::setMaxVelocity, RBX::Reflection::PropertyDescriptor::STANDARD);
@@ -25,6 +26,11 @@ RotateP::RotateP(Joint* joint)
 {
 }
 RotateV::RotateV(Joint* joint) : DescribedCreatable<RotateV, AutoJoint, sRotateV>(joint)
+{
+}
+// 005e4dd0: 2008 default ctor news a RotateVJoint (0xc8 bytes, channelValue at +0xc4 cleared inline) and forwards it
+// to the RotateV DescribedCreatable base, mirroring Rotate() 005e4ad0 / Glue() 005e49a0.
+RotateV::RotateV() : DescribedCreatable<RotateV, AutoJoint, sRotateV>(new RotateVJoint2008())
 {
 }
 Motor::Motor(Joint* joint) : DescribedCreatable<Motor, AutoJoint, sMotor>(joint) { }
