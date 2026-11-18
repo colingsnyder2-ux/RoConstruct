@@ -1,0 +1,28 @@
+{
+ "note": "code bytes whose native source is in this export; not a link or runtime claim",
+ "executable_code_bytes": 3742156,
+ "exported_bytes": 590317,
+ "exported_percent": 15.77,
+ "tiers": {
+  "inferred path": {
+   "files": 83,
+   "functions": 526,
+   "bytes": 102146
+  },
+  "original path": {
+   "files": 114,
+   "functions": 995,
+   "bytes": 216966
+  },
+  "merged unit, partial": {
+   "files": 81,
+   "functions": 1476,
+   "bytes": 209631
+  },
+  "merged unit, complete": {
+   "files": 29,
+   "functions": 287,
+   "bytes": 61574
+  }
+ }
+}
