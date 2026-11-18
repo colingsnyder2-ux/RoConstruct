@@ -9740,7 +9740,7 @@
    "identity_evidence": "typeid: the boost::function manager for this body compares typeid(boost::_bi::bind_t<void,boost::_mfi::mf0<void,DHTMLWindow>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<DHTMLWindow> > > >) (via-callee 00419fe0); byte-equal ctor of that functor; INFERRED: allocator/class ('functionN', 'fb') chosen over byte-identical [('ctor', 'functionN', 'void')] (boost default)"
   },
   {
-   "symbol": "??@VTextureId@RBX@@@Value@Reflection@RBX@@QAEAAVTextureId@2@XZ",
+   "symbol": "??$genericConvert@VTextureId@RBX@@@Value@Reflection@RBX@@QAEAAVTextureId@2@XZ",
    "address": "00597740",
    "votes": 1,
    "identity_evidence": "RTTI: body at 00597740 is Value::genericConvert<TextureId> (typeid TextureId + basic_string, byte-equal)"
@@ -11676,6 +11676,54 @@
    "address": "007d3ad1",
    "votes": 1,
    "identity_evidence": "EH handler prologue immediate of 00597e40"
+  },
+  {
+   "symbol": "??$any_cast@VTextureId@RBX@@@boost@@YAPAVTextureId@RBX@@PAVany@0@@Z",
+   "address": "00597370",
+   "votes": 1,
+   "identity_evidence": "reference of ??$genericConvert@VTextureId@RBX@@@Value@Reflection@RBX@@QAEAAVTextureId@2@XZ (identified at 00597740: RTTI typeid TextureId|string; references from original relocations): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??$genericConvert@VTextureId@RBX@@@Value@Reflection@RBX@@QAEAAVTextureId@2@XZ",
+   "address": "007d23e1",
+   "votes": 1,
+   "identity_evidence": "reference of ??$genericConvert@VTextureId@RBX@@@Value@Reflection@RBX@@QAEAAVTextureId@2@XZ (identified at 00597740: RTTI typeid TextureId|string; references from original relocations): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??$genericConvert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ",
+   "address": "006154e0",
+   "votes": 1,
+   "identity_evidence": "RTTI typeid 006154e0 names MeshId | std::string; byte-equal"
+  },
+  {
+   "symbol": "??$?4VMeshId@RBX@@@any@boost@@QAEAAV01@ABVMeshId@RBX@@@Z",
+   "address": "0059f190",
+   "votes": 1,
+   "identity_evidence": "reference of ??$genericConvert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ (identified at 006154e0: RTTI typeid MeshId|string; refs from original relocations): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??$any_cast@VMeshId@RBX@@@boost@@YAPAVMeshId@RBX@@PAVany@0@@Z",
+   "address": "006154a0",
+   "votes": 1,
+   "identity_evidence": "reference of ??$genericConvert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ (identified at 006154e0: RTTI typeid MeshId|string; refs from original relocations): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?convertToValue@?$StringConverter@VMeshId@RBX@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVMeshId@2@@Z",
+   "address": "00597480",
+   "votes": 1,
+   "identity_evidence": "reference of ??$genericConvert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ (identified at 006154e0: RTTI typeid MeshId|string; refs from original relocations): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??$genericConvert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ",
+   "address": "007d23e1",
+   "votes": 1,
+   "identity_evidence": "reference of ??$genericConvert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ (identified at 006154e0: RTTI typeid MeshId|string; refs from original relocations): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?askAddChild@ServiceProvider@RBX@@UBE_NPBVInstance@2@@Z",
+   "address": "00575240",
+   "votes": 1,
+   "identity_evidence": "ServiceProvider::askAddChild vtable slot 2, dynamic_cast<const Service*>; bytes equal to src/2008-06/00575240.cpp"
   }
  ]
 }
