@@ -146,8 +146,13 @@ public:
     void OnInsertFromFile();                                              // 00459560
     void OnInsertFromFileAt();                                            // 00459550
     LRESULT updateReflector(WPARAM, LPARAM);                              // 0045a140
+    // INFERRED: onEvent for ServiceRemoving (00459d60) posts window messages
+    // 0x46b/0x46c to trigger client-side network UI cleanup when a service is removed.
     virtual void onEvent(const RBX::Network::Players*, RBX::SuperSafeChanged);        // 00458ea0
+    // INFERRED: onEvent for ServiceAdded (0045a030) handles service connection events.
     virtual void onEvent(const RBX::ServiceProvider*, RBX::ServiceAdded);                       // 0045a030
+    // INFERRED: onEvent for ServiceRemoving (00459d60) posts window messages
+    // 0x46b/0x46c to trigger client-side network UI cleanup when a service is removed.
     virtual void onEvent(const RBX::ServiceProvider*, RBX::ServiceRemoving);                    // 00459d60
     DECLARE_MESSAGE_MAP()
 };

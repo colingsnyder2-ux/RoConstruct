@@ -9,6 +9,7 @@ Models: a ladder, one per round (free OpenCode first; add claude:sonnet as the l
   python work/native-client/class_workflow.py [--limit N] [--jobs 3] [--rounds 4] [--ladder a,b,c] [--only CLASS]
 Queue: agent-class-queue.json (class and address-range tasks); done tasks: workflow-done.json; log: workflow-log.jsonl"""
 import argparse
+import uuid
 import collections
 import json
 import re
@@ -24,7 +25,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--limit', type=int, default=0)
 ap.add_argument('--jobs', type=int, default=3)
 ap.add_argument('--rounds', type=int, default=5)
-ap.add_argument('--ladder', default='claude:haiku,codex:gpt-6.1-terra,claude:sonnet')   # a spent/failed model is skipped
+ap.add_argument('--ladder', default='openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,openrouter:cohere/north-mini-code:free,cloudflare:@cf/qwen/qwen2.5-coder-32b-instruct,cloudflare:@cf/openai/gpt-oss-120b,claude:sonnet')   # model_stats.py 2026-11-18: sonnet 4.8% exact per call, haiku 1.6%, codex 0.8% -> only sonnet after the free models   # a spent/failed model is skipped
 ap.add_argument('--only', default='')
 ap.add_argument('--replay', action='store_true', help='no model: re-judge saved workflow files whose bytes were equal '
                 '(rejected only on identity/references) with the inline reference aliases; keep them for the census')
@@ -219,6 +220,47 @@ def not_native(code):
     return ''
 
 
+HEADER_FILES = None
+
+
+def header_by_name(name):
+    """repo path under native-headers/ of a header file by base name (shallowest, no per-unit variant snapshots)."""
+    global HEADER_FILES
+    if HEADER_FILES is None:
+        HEADER_FILES = {}
+        root = ROOT / 'rebuild/2008-06/native-headers'
+        for path in sorted(root.rglob('*.h'), key=lambda q: (len(q.relative_to(root).parts), str(q))):
+            rel = path.relative_to(root).as_posix()
+            if '-' not in rel.split('/')[0]:
+                HEADER_FILES.setdefault(path.name.lower(), rel)
+    return HEADER_FILES.get(name.lower())
+
+
+def repair_includes(code, errs):
+    """(new code, [what was added]) from the compiler's missing-name / missing-file errors, or (code, [])."""
+    add, seen = [], set(re.findall(r'^\s*#\s*include\s*["<]([^">]+)[">]', code, re.M))
+    text = '\n'.join(errs)
+    if re.search(r"'(?:GUID_ATL|IID_I|CLSID_)\w*' : undeclared identifier", text) and 'atlbase.h' not in seen:
+        add.append('<atlbase.h>')
+    for name in dict.fromkeys(re.findall(r"'(\w+)' : (?:is not a member of '(?:RBX|`global namespace')'|is not a class or namespace name)", text)):
+        found = m.declaring_header(name)
+        if found and 'native-headers' in str(found):
+            rel = Path(str(found)).as_posix().split('native-headers/')[-1]
+            if rel not in seen and '-' not in rel.split('/')[0]:
+                add.append('"%s"' % rel)
+    for name in dict.fromkeys(re.findall(r"Cannot open include file: '([\w./-]+)'", text)):
+        rel = header_by_name(Path(name).name)
+        if rel and rel not in seen:
+            code = re.sub(r'^\s*#\s*include\s*["<]%s[">]\s*$' % re.escape(name), '', code, flags=re.M)
+            add.append('"%s"' % rel)
+    if not add:
+        return code, []
+    lines = code.split('\n')
+    at = next((i + 1 for i in range(len(lines) - 1, -1, -1) if re.match(r'\s*#\s*include', lines[i])), 1 if lines[0].startswith('// native-flags') else 0)
+    lines[at:at] = ['#include %s   // auto-added by class_workflow (compiler said a name or file was missing)' % a for a in dict.fromkeys(add)]
+    return '\n'.join(lines), add
+
+
 def restore_header(header, backup):
     path = ROOT / header
     if path.read_bytes() == backup:
@@ -321,6 +363,23 @@ def one(task):
                     errs = agent_prove.compile_errors(folder, '')
             except Exception:                                    # noqa: BLE001  harness trouble: let the proof decide
                 errs = []
+            for _fix in range(3):                                # scripted include repair: no model round for these
+                if not errs:
+                    break
+                fixed, added = repair_includes(reply, errs)
+                if not added:
+                    break
+                reply = fixed
+                source.write_text(reply.strip() + '\n', encoding='utf-8')
+                folder = HERE / 'workflow-compile' / ('%s-%d-%s' % (source.stem, rnd, uuid.uuid4().hex[:6]))
+                folder.parent.mkdir(exist_ok=True)
+                errs = []
+                try:
+                    job = RUNNER.compile_job({'source': str(source), 'checks': [], 'ranges': [], 'layouts': []}, folder, TC)
+                    if not Path(str(job.get('object') or '')).is_file():
+                        errs = agent_prove.compile_errors(folder, '')
+                except Exception:                                # noqa: BLE001
+                    errs = []
             if errs:                                             # only real compiler errors skip the proof
                 verdicts = {a: ('COMPILE FAILED', '\n'.join(errs)) for a in needles}
                 feedback = 'COMPILE FAILED\n' + '\n'.join(errs)

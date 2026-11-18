@@ -19,6 +19,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+import os
+os.environ.setdefault('PYTHONIOENCODING', 'utf-8')       # child sessions inherit it (a → print killed one)
 ROOT = HERE.parents[1]
 ap = argparse.ArgumentParser()
 ap.add_argument('--jobs', type=int, default=2)
@@ -30,6 +32,7 @@ ap.add_argument('--exact', action='store_true', help='match --only against the f
 ap.add_argument('--min', type=int, default=3, help='smallest family worth a session')
 ap.add_argument('--queue', default='twins', help='twins (template families) or owners (functions of one class, owner '
                 'and declarations recovered from the binary: research-owners/owners.json)')
+ap.add_argument('--force', action='store_true', help='also run families listed in family-known-failures.json')
 args = ap.parse_args()
 CLASSES = ROOT / 'rebuild/2008-06/native-classes'
 DONE = HERE / 'family-agents-done.json'
@@ -63,6 +66,26 @@ def proved(addr):
     return addr in BOUND or any((CLASSES / ('%s_%s.cpp' % (prefix, addr))).is_file() for prefix in ('TwinInst', 'FunctorInst', 'Thunk'))
 
 
+_HDR_CLASSES = None
+
+
+def native_has_class(leaf):
+    """True when some native header (not a per-unit variant snapshot) defines class/struct LEAF."""
+    global _HDR_CLASSES
+    if _HDR_CLASSES is None:
+        root = ROOT / 'rebuild/2008-06/native-headers'
+        pattern = re.compile(r'^[ 	]*(?:template\s*<[^;{]*>\s*)?(?:class|struct)\s+(\w+)[^;]*?[{:]', re.M)
+        _HDR_CLASSES = set()
+        for path in root.rglob('*.h'):
+            if '-' in path.relative_to(root).parts[0]:
+                continue
+            try:
+                _HDR_CLASSES.update(pattern.findall(path.read_text(errors='replace')))
+            except OSError:
+                pass
+    return leaf in _HDR_CLASSES
+
+
 def owner_queue():
     own = json.loads((HERE / 'research-owners/owners.json').read_text())
     twins = json.loads((HERE / 'research-twins/identities.json').read_text())['unique']
@@ -72,14 +95,20 @@ def owner_queue():
         if addr in remaining and addr not in twins and not proved(addr):
             groups[re.sub(r'<.*', '', fact['owner'])].append(addr)
     done = set(json.loads(DONE.read_text())) if DONE.is_file() else set()
-    out = []
+    out, needs_header = [], []
     for name, addrs in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+        if not args.force and not native_has_class(re.sub(r'<.*', '', name).rsplit('::', 1)[-1]):
+            needs_header.append(name)       # triage: no native header for the class, so no worker can compile a member of it
+            continue
         if len(addrs) < args.min or 'class ' + name in done or (args.only and (('class ' + name != args.only) if args.exact else not any(x in name for x in args.only.split(',')))):
             continue
         addrs.sort(key=lambda a: (remaining[a]['size'], a))
         lines = ['%s  %d bytes  %s  (%s)' % (a, remaining[a]['size'], own[a].get('declaration') or own[a].get('name') or
                                                'member, name unknown: use sub_' + a, own[a].get('method', '')) for a in addrs[:30]]
         out.append({'family': 'class ' + name, 'addresses': addrs, 'lines': lines, 'class_task': True})
+    if needs_header:                        # these go to the header lane first
+        (HERE / 'header-requests.json').write_text(json.dumps(sorted(needs_header), indent=1), encoding='utf-8')
+        print('  deferred to the header lane (no native header for the class): %d classes, see header-requests.json' % len(needs_header), flush=True)
     return out
 
 
@@ -88,6 +117,9 @@ def ownerless_queue():
     owners = json.loads((HERE / 'research-owners/owners.json').read_text(encoding='utf-8'))
     twins = json.loads((HERE / 'research-twins/identities.json').read_text(encoding='utf-8'))['unique']
     hints = json.loads((HERE / 'owner-classes.json').read_text(encoding='utf-8'))
+    # 61 rows are 5-byte jumps whose registry name says callDoDeclare<sX> but whose targets are mostly constructor / base-destructor
+    # forwarders (49 of 61); they belong to the thunk lane and need a native class, not an ownerless session (2026-11-18).
+    rows = [r for r in rows if 'callDoDeclare' not in str(r.get('name', '')) and not (r.get('size') == 5 and r.get('kind') == 'function')]
     rows.sort(key=lambda r: (r['size'], r['addr']))
     out = []
     for i in range(0, len(rows), 3):
@@ -118,7 +150,8 @@ def queue():
             groups[family_of(row)].append(addr)
     done = set(json.loads(DONE.read_text())) if DONE.is_file() else set()
     out = []
-    for name, addrs in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+    sizes = json.loads((HERE / 'remaining-classified.json').read_text())
+    for name, addrs in sorted(groups.items(), key=lambda kv: -sum(sizes.get(x, {}).get('size', 0) for x in kv[1])):   # bytes first
         if len(addrs) < args.min or name in done or (args.only and ((name != args.only) if args.exact else not any(x in name for x in args.only.split(',')))):
             continue
         lines = []
@@ -218,6 +251,21 @@ def run_opencode(task, brief, slug):
 def run(task):
     brief = ((ROOT / 'CLAUDE.md') if task.get('ownerless_task') or task.get('class_task') else (HERE / 'family-brief.md')).read_text(encoding='utf-8')
     slug = re.sub(r'\W+', '_', task['family'])[:60]
+    # Pre-fill (no model): run the lane on the family's first address now and put its verdict in the brief, so the
+    # session starts at the diff instead of spending its first 3-6 calls finding it.
+    if not (task.get('class_task') or task.get('ownerless_task')):
+        first = task['addresses'][0]
+        try:
+            lane_done = json.loads((HERE / 'twin-lane-done.json').read_text(encoding='utf-8'))
+            lane_done.pop(first, None)
+            (HERE / 'twin-lane-done.json').write_text(json.dumps(lane_done, indent=1), encoding='utf-8')
+            out = subprocess.run([sys.executable, str(HERE / 'twin_lane.py'), '--only', first, '--jobs', '1'], cwd=HERE,
+                                 capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=900).stdout
+            brief += '\n\n# PRE-RUN (no model, done for you): twin_lane.py on %s said:\n%s\n' % (first, out.strip()[-1800:])
+        except Exception as error:                                   # noqa: BLE001
+            brief += '\n\n# (pre-run of the lane failed: %s)\n' % repr(error)[:120]
+        brief += ('\nFor any address, `python work/native-client/family_status.py ADDR` prints identity, owner facts, '
+                  'existing units and the last lane verdict in one screen: use it instead of reading JSON files.\n')
     if task.get('ownerless_task'):
         brief += ('\n\n# OWNERLESS INVESTIGATION: %s\nThese are independent candidates, not a proven family. '
                   'Check each address is still unmatched and not already inactive before working. Recover real ownership '
@@ -325,6 +373,15 @@ def run(task):
 
 
 tasks = queue()
+try:
+    KNOWN = json.loads((HERE / 'family-known-failures.json').read_text(encoding='utf-8'))
+except (OSError, ValueError):
+    KNOWN = {}
+if not args.force:                      # families that failed the same way twice wait for their root-cause fix
+    skipped = [t['family'] for t in tasks if any(k in t['family'] for k in KNOWN)]
+    tasks = [t for t in tasks if t['family'] not in skipped]
+    for name in skipped:
+        print('  skipped (known failure): %s -> %s' % (name, next(v for k, v in KNOWN.items() if k in name)[:100]), flush=True)
 print('family queue: %d families, %d functions' % (len(tasks), sum(len(t['addresses']) for t in tasks)), flush=True)
 for t in tasks:
     print('  %3d  %s' % (len(t['addresses']), t['family']), flush=True)

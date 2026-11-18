@@ -142,9 +142,21 @@ namespace RBX
 		bool readDeviceData(DxDeviceObjectData* data, DWORD* count, IDxInputDevice* device); // 00467880
 		void applyMouseDelta(const G3D::Vector2& input, G3D::Vector2& output);  // 00467f10
 		void postMouseEvent(int eventType, const G3D::Vector2& position);       // 004684a0
-		void postEvent(const UIEvent& event);                                   // 00467a00 (blocked: DataModel method)
+		void postEvent(const UIEvent& event);                                   // 00467a00
+		// INFERRED: direct-call conduit for the placeholder DataModel member at 00577460. The core DataModel.h
+		// is owner-only, so this declaration lives under this family's lease solely to emit the target
+		// __thiscall shape (ECX = DataModel*, event on the stack); root_ref_bind binds it to 00577460 from the
+		// original relocation of 00467a00. It is not an assertion about DxUserInput's original vtable/layout.
+		void func_00577460(const UIEvent& event);
 		void processKeyboard();                                                // 004681b0 (not recovered)
 		void processMouse();                                                   // 004685b0 (not recovered)
+
+		// INFERRED: 00468b90 is a thiscall member with signature (UINT, int, long) and returns ret 12.
+		void processMessage(unsigned int message, int wParam, long lParam);
+
+		// INFERRED: 00467d50 is a static member (decorated ?isToolboxEnabled@DxUserInput@@SA_NXZ),
+		// not the free helper previously listed at the bottom of this header.
+		static bool isToolboxEnabled();
 
 		// Out-of-line helpers outside the 19 recovered bodies (identity-tier placeholder names).
 		G3D::Rect2D sub_004673f0() const;                              // client rect as (0,0)-(width,height)
@@ -155,6 +167,12 @@ namespace RBX
 }
 
 // Free helpers called by DxUserInput (identity-tier placeholder names, bodies recovered elsewhere).
+// INFERRED: 004306c0 returns the active DataModel shared_ptr (body byte-proved in Inferred_004306c0.cpp).
+boost::shared_ptr<RBX::DataModel> sub_004306c0();
+// INFERRED: 00469f00 maps a mouse message to its UIEvent event type (body byte-proved in Inferred_00469f00.cpp).
+int __cdecl sub_00469f00(int code);
+// INFERRED: 00577460 is the DataModel member called by 00467a00 with (const UIEvent&); the
+// core header owner has not yet added the real declaration (proposal in header-fix-proposals.json).
 G3D::Vector2& sub_004672e0(G3D::Vector2& out, const G3D::Vector2& in, int n);  // 004672e0, cdecl
 int sub_004697e0(SDLKey key);                                                   // 004697e0, cdecl
 void sub_00469320(const G3D::Vector2& input, G3D::Vector2& output, G3D::Vector2& last);                          // 00469320, cdecl

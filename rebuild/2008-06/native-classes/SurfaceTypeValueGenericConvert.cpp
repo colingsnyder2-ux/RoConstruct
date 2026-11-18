@@ -19,13 +19,7 @@ namespace RBX
 				return *id;
 			if (isType<std::string>())
 			{
-				SurfaceType v;
-				if (StringConverter<SurfaceType>::convertToValue(*boost::any_cast<std::string>(&value), v))
-				{
-					value = v;
-					_type = &Type::singleton<SurfaceType>();
-					return *boost::any_cast<SurfaceType>(&value);
-				}
+				boost::any_cast<std::string>(&value);
 			}
 			throw std::runtime_error(G3D::format("Unable to cast %s to %s", _type->tag.name.c_str(), Type::singleton<SurfaceType>().tag.name.c_str()));
 		}

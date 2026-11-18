@@ -561,7 +561,7 @@ def ask(model, prompt, name):
     else:
         from roc import providers
         try:
-            options = {'allow_cloud': True, 'timeout': int(os.environ.get('ROC_LLM_TIMEOUT') or 120), 'max_tokens': 4096}
+            options = {'allow_cloud': True, 'timeout': int(os.environ.get('ROC_LLM_TIMEOUT') or 120), 'max_tokens': int(os.environ.get('ROC_LLM_MAX_TOKENS') or 4096)}
             if model in LOW_EFFORT:
                 options['reasoning_effort'] = 'low'
             gen = providers.generate(model, prompt, options)

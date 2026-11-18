@@ -50,22 +50,24 @@ public:
 };
 
 extern const char sSnap[];
-class Snap : public DescribedCreatable<Snap, AutoJoint, sSnap> { public: Snap(Joint* joint); Snap(); };
+// INFERRED: binary RTTI/bindings bind DescribedCreatable<Snap, JointInstance, sSnap> (all 7 joint classes use
+// JointInstance as the 2nd template arg; AutoJoint declarations here do not match the 2008 binary).
+class Snap : public DescribedCreatable<Snap, JointInstance, sSnap> { public: Snap(Joint* joint); Snap(); };
 extern const char sWeld[];
 // INFERRED: 2008 binary RTTI binds the vftable/deleting-dtor thunks stored by Weld's ctors at 005e4710/005e4810 to
 // FactoryProduct<Weld, JointInstance, sWeld> and DescribedCreatable<Weld, JointInstance, sWeld> (class-identity-bindings.json),
 // so the template argument is JointInstance, not AutoJoint; the ctor bytes are unchanged.
 class Weld : public DescribedCreatable<Weld, JointInstance, sWeld> { public: Weld(Joint* joint); Weld(); };
 extern const char sGlue[];
-class Glue : public DescribedCreatable<Glue, AutoJoint, sGlue> { public: Glue(Joint* joint); Glue(); };
+class Glue : public DescribedCreatable<Glue, JointInstance, sGlue> { public: Glue(Joint* joint); Glue(); };
 extern const char sRotate[];
-class Rotate : public DescribedCreatable<Rotate, AutoJoint, sRotate> { public: Rotate(Joint* joint); Rotate(); };
+class Rotate : public DescribedCreatable<Rotate, JointInstance, sRotate> { public: Rotate(Joint* joint); Rotate(); };
 extern const char sRotateP[];
-class RotateP : public DescribedCreatable<RotateP, AutoJoint, sRotateP> { public: RotateP(Joint* joint); RotateP(); };
+class RotateP : public DescribedCreatable<RotateP, JointInstance, sRotateP> { public: RotateP(Joint* joint); RotateP(); };
 extern const char sRotateV[];
-class RotateV : public DescribedCreatable<RotateV, AutoJoint, sRotateV> { public: RotateV(Joint* joint); RotateV(); };
+class RotateV : public DescribedCreatable<RotateV, JointInstance, sRotateV> { public: RotateV(Joint* joint); RotateV(); };
 extern const char sMotor[];
-class Motor : public DescribedCreatable<Motor, AutoJoint, sMotor> {
+class Motor : public DescribedCreatable<Motor, JointInstance, sMotor> {
 private:
     const MotorJoint* getMotorJoint() const;
     MotorJoint* getMotorJoint();

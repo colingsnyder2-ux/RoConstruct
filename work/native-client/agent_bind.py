@@ -1,6 +1,7 @@
 """Add identity rows for byte-equal bodies in one command (replaces hand edits of class-identity-bindings.json).
 
   python work/native-client/agent_bind.py "SYMBOL" ADDR "evidence text" ["SYMBOL" ADDR "evidence" ...]
+  python work/native-client/agent_bind.py --file rows.json     # symbols containing $ must come from a file (or single quotes)
 
 Waits while a census runs, skips rows already present, refuses an address or real symbol already bound differently.
 Use `INFERRED: ...` evidence for placeholder/inferred names.  Then rerun agent_prove.py."""
@@ -13,6 +14,9 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 PATH = HERE / 'class-identity-bindings.json'
 args = sys.argv[1:]
+if len(args) == 2 and args[0] == '--file':          # rows from a JSON file: [{"symbol","address","evidence"}], no shell quoting
+    _rows = json.loads(Path(args[1]).read_text(encoding='utf-8'))
+    args = [x for r in _rows for x in (r['symbol'], r['address'], r.get('evidence') or r.get('identity_evidence') or 'INFERRED')]
 if not args or len(args) % 3:
     sys.exit(__doc__)
 while (HERE / 'prove-out/CENSUS.lock').is_file():

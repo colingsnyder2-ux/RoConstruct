@@ -8,6 +8,7 @@ Per address: EXACT | REJECTED (byte-equal, with the identity/reference reason) |
 assembly diff) | COMPILE FAILED (first errors).  NAME is a substring of the function name when it is not sub_<addr>.
 Also usable as a module: verdict(file, {addr: needle}) -> {addr: (status, text)}."""
 import json
+import os
 import re
 import subprocess
 import sys
@@ -17,7 +18,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT))
 PY = sys.executable
-MAX_DIFF = 70
+MAX_DIFF = int(os.environ.get("ROC_MAX_DIFF", "70"))
 
 
 def run(argv, timeout=900):
@@ -82,7 +83,7 @@ def verdict(source, targets):
                if q.get('addr') == addr]
         if rej:
             result[addr] = ('REJECTED', 'bytes are equal, identity/references are not proven:\n' +
-                            '\n'.join('  %s\n    %s' % (s[:150], e[:400]) for s, e in rej[:3]))
+                            '\n'.join('  %s\n    %s' % (s[:150], e[:3000]) for s, e in rej[:3]))
             continue
         size = len(match.target('2008-06', addr)[0])
         needle = needle or ('sub_' + addr)

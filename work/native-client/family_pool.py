@@ -16,18 +16,27 @@ LOGS.mkdir(exist_ok=True)
 
 MODELS = {
     'open': ['opencode:opencode/beam-free', 'opencode:opencode/big-pickle',
-             'opencode:opencode/deepseek-v4.1-flash-free', 'opencode:opencode/hy4-flash-free'],
+             'opencode:opencode/deepseek-v4.1-flash-free', 'opencode:opencode/hy4-flash-free',
+             # OpenCode's own free list (owner's screenshot 2026-11-18); the free limit looks per model, not per account:
+             'opencode:opencode/flint-40b-free', 'opencode:opencode/inkling-2-small-free', 'opencode:opencode/longcat-2.5-free',
+             'opencode:opencode/mimo-v2.6-flash-free', 'opencode:opencode/nemotron-3.5-lightning-free'],
     'nim': ['opencode:roc-nim/lightning', 'opencode:roc-nim/super-vl', 'opencode:roc-nim/nemotron',
             'opencode:roc-nim/kimi'],
 }
 PREFERRED = {
-    'open-1': 'opencode:opencode/beam-free',
+    'open-1': 'opencode:opencode/flint-40b-free',
     'open-2': 'opencode:opencode/big-pickle',
     'open-3': 'opencode:opencode/deepseek-v4.1-flash-free',
     'nim-1': 'opencode:roc-nim/lightning',
     'nim-2': 'opencode:roc-nim/super-vl',
     'nim-3': 'opencode:roc-nim/nemotron',
     'nim-4': 'opencode:roc-nim/kimi',
+    'open-4': 'opencode:opencode/longcat-2.5-free',
+    'open-5': 'opencode:opencode/mimo-v2.6-flash-free',
+    'open-6': 'opencode:opencode/inkling-2-small-free',
+    'nim-5': 'opencode:roc-nim/nemotron',
+    'nim-6': 'opencode:roc-nim/kimi',
+    'nim-7': 'opencode:roc-nim/super-vl',
 }
 slots = [
     {'id': 'open-1', 'kind': 'open', 'external': 42352, 'family': 'boost functor pieces: bind_t'},
@@ -37,10 +46,17 @@ slots = [
     {'id': 'nim-2', 'kind': 'nim'},
     {'id': 'nim-3', 'kind': 'nim'},
     {'id': 'nim-4', 'kind': 'nim', 'individual': True},
+    {'id': 'open-4', 'kind': 'open'},
+    {'id': 'open-5', 'kind': 'open'},
+    {'id': 'open-6', 'kind': 'open'},       # owner asked 2026-11-18: keep 8-12 model workers running at all times
+    {'id': 'nim-5', 'kind': 'nim'},
+    {'id': 'nim-6', 'kind': 'nim'},
+    {'id': 'nim-7', 'kind': 'nim'},
 ]
 attempted = set()
 model_offsets = {'open': 0, 'nim': 0}
 model_cooldown = {}
+model_stats = {}      # model -> [runs, runs with at least one proved function]; models that never deliver are dropped from rotation
 processes = {}
 last_scan = 0
 queue = []
@@ -56,6 +72,7 @@ try:
             slot['external'] = pid
     attempted.update(saved.get('attempted', []))
     model_cooldown.update(saved.get('model_cooldown', {}))
+    model_stats.update(saved.get('model_stats', {}))
 except (OSError, ValueError, KeyError):
     pass
 
@@ -77,6 +94,19 @@ def available_families():
     return sorted(found, key=lambda x: (0 if x['queue'] == 'twins' and x['size'] > 1 else
                                        1 if x['queue'] == 'owners' and x['size'] > 1 else
                                        2 if x['queue'] == 'ownerless' else 3, -x['size']))
+
+
+def record_result(model, path):
+    """count the finished run for its model: the log's last '[family agents] ... N of M proved' line"""
+    try:
+        text = path.read_text(encoding='utf-8', errors='replace')
+    except OSError:
+        return
+    found = re.findall(r'(\d+) of (\d+) (?:addresses )?(?:have a proved unit|proved)', text[-4000:])
+    if found and model:
+        row = model_stats.setdefault(model, [0, 0])
+        row[0] += 1
+        row[1] += int(int(found[-1][0]) > 0)
 
 
 def provider_error(path):
@@ -102,13 +132,15 @@ def choose_model(slot, now):
     candidates = [PREFERRED[slot['id']]] + [x for x in candidates[offset:] + candidates[:offset]
                                             if x != PREFERRED[slot['id']]]
     available = [x for x in candidates if model_cooldown.get(x, 0) <= now]
+    useful = [x for x in available if not (model_stats.get(x, [0, 0])[0] >= 6 and model_stats[x][1] == 0)]
+    available = useful or available          # a model with 6+ runs and no proved function is skipped unless nothing else is left
     in_use = {s.get('model') for s in slots if s.get('family')}
     return next((x for x in available if x not in in_use), available[0] if available else None)
 
 
 def save():
     STATE.write_text(json.dumps({'updated': time.time(), 'slots': slots, 'attempted': sorted(attempted),
-                                 'model_cooldown': model_cooldown}, indent=2))
+                                 'model_cooldown': model_cooldown, 'model_stats': model_stats}, indent=2))
 
 
 while True:
@@ -130,6 +162,7 @@ while True:
             if family and model:
                 label = family if slot.get('queue') else ('' if family.startswith('ownerless:') else 'class ') + family
                 path = LOGS / ('family-opencode-%s.log' % re.sub(r'\W+', '_', label)[:60])
+                record_result(model, path)
                 if provider_error(path):
                     model_cooldown[model] = now + 900
                     model_offsets[slot['kind']] += 1
@@ -147,6 +180,7 @@ while True:
             processes.pop(slot['id'])
             label = slot['family'] if slot.get('queue') else ('' if slot['family'].startswith('ownerless:') else 'class ') + slot['family']
             path = LOGS / ('family-opencode-%s.log' % re.sub(r'\W+', '_', label)[:60])
+            record_result(slot.get('model'), path)
             failed = code != 0 or provider_error(path)
             if failed:
                 model_cooldown[slot['model']] = now + 900

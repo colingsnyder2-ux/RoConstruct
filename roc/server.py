@@ -771,6 +771,15 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
             if url.path == '/v1/leases':
                 return self.send(200, {'leases': file_leases().active()})
+            if url.path == '/v1/native-queue':      # live queue of remaining native functions (work/native_queue.py, refreshed every 20 s)
+                try:
+                    queue_path = ROOT / 'work' / 'native-queue.json'
+                    queue = json.loads(queue_path.read_text(encoding='utf-8'))
+                    queue['age_seconds'] = round(time.time() - queue.get('generated_at', 0), 1)
+                    queue['stale'] = queue['age_seconds'] > 120
+                    return self.send(200, queue)
+                except (OSError, ValueError):
+                    return self.send(503, {'error': 'native queue not generated yet'})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})

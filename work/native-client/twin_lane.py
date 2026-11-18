@@ -106,19 +106,91 @@ def spell(identity, addr=None):
     # Handle descriptive RTTI identities like "map/set<T> too long | >+R"
     # by stripping the trailing " too long | >+R" suffix and mapping to the correct STL container
     if 'map/set' in text.lower():
-        # Determine whether this is std::set or std::map based on the rule
-        # if addr is given, look up the rule from identities.json
-        if addr and addr in unique:
-            rule = unique[addr].get('rule', '')
-            if 'via-callee' in rule:
-                text = 'std::set'
-            elif 'via-caller' in rule:
-                text = 'std::map'
+        # Parse the actual mangled name from remaining-classified.json to get correct container and template args
+        if addr:
+            mangled = parse_mangled_for_stl(addr)
+            if mangled:
+                container, type_codes = mangled
+                if container == 'map':
+                    key_type = msvc_type_code_to_cpp(type_codes[0]) if type_codes else 'int'
+                    val_type = msvc_type_code_to_cpp(type_codes[1]) if len(type_codes) > 1 else 'int'
+                    text = 'std::map<%s, %s>' % (key_type, val_type)
+                elif container == 'set':
+                    key_type = msvc_type_code_to_cpp(type_codes[0]) if type_codes else 'int'
+                    text = 'std::set<%s>' % key_type
+                else:
+                    text = 'std::map<int, int>'  # fallback
             else:
-                text = 'std::set'  # default fallback
+                # Fallback to rule-based detection
+                rule = unique[addr].get('rule', '') if addr and addr in unique else ''
+                if 'via-callee' in rule:
+                    text = 'std::set<int>'
+                elif 'via-caller' in rule:
+                    text = 'std::map<int, int>'
+                else:
+                    text = 'std::map<int, int>'
         else:
-            text = 'std::set'  # default fallback without addr
+            text = 'std::map<int, int>'
     return text
+
+
+# MSVC mangling type codes for built-in types (32-bit)
+MSVC_TYPE_CODES = {
+    'A': 'signed char',
+    'B': 'unsigned char',
+    'C': 'short',
+    'D': 'char',           # char (distinct from signed/unsigned char)
+    'E': 'unsigned char',  # MSVC fundamental type code; _Tmap_traits@GE is map<unsigned short, unsigned char>
+    'F': 'unsigned int',   # guess
+    'G': 'unsigned short', # observed as first param in _Tmap_traits@GE
+    'H': 'int',            # confirmed by _Tmap_traits@HH, _Tset_traits@H, less<H>
+    'I': 'unsigned int',
+    'J': 'long',
+    'K': 'unsigned long',
+    'M': 'float',
+    'N': 'double',
+    'O': 'long double',
+    'X': 'void',
+    '_': 'wchar_t',
+    'P': 'bool',           # sometimes
+    'S': 'signed char',    # sometimes
+    'U': 'unsigned char',  # sometimes
+}
+
+
+def msvc_type_code_to_cpp(code):
+    """Convert MSVC mangling type code to C++ type name."""
+    return MSVC_TYPE_CODES.get(code, 'int')  # default to int
+
+
+def parse_mangled_for_stl(addr):
+    """Parse the mangled name from remaining-classified.json to extract STL container type and template args.
+    Returns (container, [type_codes]) or None."""
+    try:
+        remaining = json.loads((HERE / 'remaining-classified.json').read_text(encoding='utf-8'))
+        entry = remaining.get(addr)
+        if not entry:
+            return None
+        name = entry.get('name', '')
+        if not name or name.startswith('func_') or name.startswith('sub_'):
+            return None
+        # Look for _Tmap_traits@ or _Tset_traits@
+        if '_Tmap_traits@' in name:
+            # Extract type codes after _Tmap_traits@
+            idx = name.index('_Tmap_traits@') + len('_Tmap_traits@')
+            # First two chars are key and value type codes (simple types)
+            if idx + 1 < len(name):
+                key_code = name[idx]
+                val_code = name[idx + 1]
+                return ('map', [key_code, val_code])
+        elif '_Tset_traits@' in name:
+            idx = name.index('_Tset_traits@') + len('_Tset_traits@')
+            if idx < len(name):
+                key_code = name[idx]
+                return ('set', [key_code])
+    except (OSError, ValueError, KeyError):
+        pass
+    return None
 
 
 def includes(cls):
@@ -395,6 +467,12 @@ def one(item):
         _deduped.append(h)
     hdrs = _deduped
     flags = (unit_flags(hdrs) or FLAGS) + LEAF_FLAGS.get(leaf, '')
+    if 'map/set' in identity.lower():
+        # These descriptive identities come from vendor STL bodies; use the mined analog's compile recipe.
+        analog = ROOT / 'src/2008-06' / ('%s.cpp' % addr)
+        match = re.search(r'^// roc-flags: (.+)$', analog.read_text(errors='replace'), re.M) if analog.is_file() else None
+        if match:
+            flags = '// native-flags: ' + match.group(1).strip()
     if leaf == 'CXTPBatchAllocManagerT':
         hdrs = ['<XTToolkitPro.h>']
         flags = (CLASSES / 'XTPBatchAllocManagerReport.cpp').read_text().splitlines()[0]

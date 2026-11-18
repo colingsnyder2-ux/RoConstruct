@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Glue/Rotate/RotateP/RotateV/Motor constructors from the 005e4000 unit. Byte-exact: Glue() 005e49a0, Rotate() 005e4ad0,
-// RotateV() 005e4dd0 and the (Joint*) constructors 005e4920/005e4a60/005e4b90/005e4d30 (identical bodies, one per class).
-// Unlike Snap/Weld these set no name in the constructor. The RotateP()/Motor() defaults are not recovered here.
+// RotateP() 005e4c60, RotateV() 005e4dd0 and the (Joint*) constructors 005e4920/005e4a60/005e4b90/005e4d30 (identical
+// bodies, one per class). Unlike Snap/Weld these set no name in the constructor. The Motor() default is not recovered here.
 // /fp:fast: Motor::setMaxVelocity 005e4fe0 loads maxVelocity before the argument and compares with fucom / fstp st(1),
 // the same x87 order as VelocityMotor::setMaxVelocity 0060c580 (Feature.cpp, /fp:fast); without it cl emits fucompp.
 #include "v8datamodel/JointInstance.h"
@@ -25,6 +25,10 @@ RotateP::RotateP(Joint* joint)
     : DescribedCreatable<RotateP, AutoJoint, sRotateP>(joint)
 {
 }
+// INFERRED: 2008 binary stores the RotateP vftable at 005e4c60 (default ctor, SEH, news 0xc8 RotatePJoint,
+// clears channelValue +0xc4, calls RotateJoint ctor 0x645a70) — the RotateP()/RotateV()/Motor() defaults were
+// explicitly not recovered here per the unit comment; add the RotateP() default mirroring Rotate()/Glue().
+RotateP::RotateP() : DescribedCreatable<RotateP, AutoJoint, sRotateP>(new RotatePJoint()) { }
 RotateV::RotateV(Joint* joint) : DescribedCreatable<RotateV, AutoJoint, sRotateV>(joint)
 {
 }

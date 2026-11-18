@@ -19,13 +19,7 @@ namespace RBX
 				return *id;
 			if (isType<std::string>())
 			{
-				Controller::InputType v;
-				if (StringConverter<Controller::InputType>::convertToValue(*boost::any_cast<std::string>(&value), v))
-				{
-					value = v;
-					_type = &Type::singleton<Controller::InputType>();
-					return *boost::any_cast<Controller::InputType>(&value);
-				}
+				boost::any_cast<std::string>(&value);
 			}
 			throw std::runtime_error(G3D::format("Unable to cast %s to %s", _type->tag.name.c_str(), Type::singleton<Controller::InputType>().tag.name.c_str()));
 		}

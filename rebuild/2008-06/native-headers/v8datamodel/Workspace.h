@@ -98,6 +98,10 @@ namespace RBX
 	public:
 		Workspace(IDataState* dataState);
 		virtual ~Workspace();
+		// INFERRED: 005a05c0, placeholder name (identity tier), body byte-proved
+		int sub_005a05c0() const;
+		// INFERRED: 005a0df0, callgraph-adjacency: neighbours=1
+		void sub_005a0df0();
 	public:
 		World* getWorld() const
 		{
