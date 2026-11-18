@@ -2944,6 +2944,25 @@
  },
  "tree_check": {
   "note": "exported sources compiled with exported headers first; same object as the live original",
+  "merged_checked": 110,
+  "merged_same": 95,
+  "failing_merged_units": [
+   "client/app/v8datamodel/Teams.cpp",
+   "client/rendering/g3d/g3dcpp/GImage.cpp",
+   "inferred/client/app/tool/NullTool.cpp",
+   "inferred/client/app/tool/ToolsSurface.cpp",
+   "inferred/client/app/v8datamodel/Commands.cpp",
+   "inferred/client/app/v8datamodel/DataModel.cpp",
+   "inferred/client/app/v8datamodel/Selection.cpp",
+   "inferred/client/app/v8datamodel/ToolsPart.cpp",
+   "inferred/client/app/v8tree/Instance.cpp",
+   "inferred/client/win/InstanceExplorer.cpp",
+   "inferred/client/win/MainFrm.cpp",
+   "inferred/client/win/ObjectBrowser.cpp",
+   "inferred/client/win/PropGrid.cpp",
+   "inferred/client/win/RobloxView.cpp",
+   "inferred/client/win/SelectionCaption.cpp"
+  ],
   "include_roots": [
    "client/app/include",
    "client/network/include",
