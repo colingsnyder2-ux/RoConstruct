@@ -110,9 +110,21 @@ function overview() {
   return heading("", "Overview", "Worker results and current activity.", button("Start worker", 'data-new-worker') + button("Run mass", 'data-open-command="mass"', true)) +
     `<div class="workflow"><span class="workflow-step">${icon("file")}Lease</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("code")}Draft C++</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("cpu")}Compile</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("branch")}Compare bytes</span><span class="workflow-arrow">→</span><span class="workflow-step">${icon("check")}Submit match</span></div>` +
     `<div class="stat-grid"><div class="stat"><div class="stat-icon">${icon("code")}</div><div class="stat-label">Exact matches</div><div class="stat-value">${total("matched")}</div><div class="stat-note">Recorded worker runs</div></div><div class="stat"><div class="stat-icon">${icon("file")}</div><div class="stat-label">Functions attempted</div><div class="stat-value">${total("attempted")}</div><div class="stat-note">${total("improved")} improved · ${total("failed")} failed</div></div><div class="stat"><div class="stat-icon">${icon("cpu")}</div><div class="stat-label">Worker loops</div><div class="stat-value">${workers.reduce((sum,job)=>sum+Object.keys(job.slots).length,0)}</div><div class="stat-note">${workers.reduce((sum,job)=>sum+(Number(job.config.workers)||Object.keys(job.slots).length),0)} requested · ${running.length} active runs</div></div><div class="stat"><div class="stat-icon">${icon("chart")}</div><div class="stat-label">Cloud requests</div><div class="stat-value">${jobs.reduce((sum,job)=>sum+(job.usage.requests||0),0)}</div><div class="stat-note">Usage appears after each function</div></div></div>` +
+    `<section id="family-pool" class="panel panel-pad" aria-label="Family supervisor workers"><p class="muted">Loading supervisor workers…</p></section>` +
     `<div class="section-heading"><h2>Current activity</h2><button class="text-button" data-page="history">View history →</button></div>` + runTable([...jobs].reverse().filter(active).slice(0,10), "No active runs") +
     `<p class="help-note">Runs execute one at a time to protect shared source and work files. Parallel worker loops run within a worker session.</p>`;
 }
+async function loadFamilyPool() {
+  const panel = $("#family-pool"); if (!panel) return;
+  try {
+    const state = await api("family-pool");
+    if (!panel.isConnected) return;
+    if (!state.available) { panel.innerHTML = `<h2>Family supervisor</h2><p class="muted">Supervisor status unavailable.</p>`; return; }
+    const running = state.slots.filter(slot => slot.running).length;
+    panel.innerHTML = `<div class="section-heading"><div><h2>Family supervisor</h2><p class="help-note">${running} / ${state.slots.length} workers running · ${state.fresh ? "updates every 10 seconds" : "supervisor status is stale"}</p></div></div><div class="table-scroll"><table class="run-list"><thead><tr><th>Worker</th><th>Status</th><th>Assignment</th><th>Model</th></tr></thead><tbody>${state.slots.map(slot => `<tr><td>${esc(slot.id)}</td><td>${badge(slot.running ? "running" : state.fresh ? "idle" : "unknown")}</td><td>${esc(slot.family || "Waiting")}</td><td>${esc(slot.model || (slot.kind === "nim" ? "NVIDIA NIM" : "OpenCode"))}</td></tr>`).join("")}</tbody></table></div>`;
+  } catch (_) { if (panel.isConnected) panel.innerHTML = `<h2>Family supervisor</h2><p class="muted">Could not load supervisor status.</p>`; }
+}
+setInterval(() => { if (page === "overview" && !document.hidden) loadFamilyPool(); }, 10000);
 function field(label, key, value, options={}) {
   const disabled = editing && !liveKeys.has(key) ? "disabled" : "";
   let input;
@@ -219,12 +231,39 @@ function workerForm(config) {
     `</div><p class="help-note">Budget edits preserve usage already spent. In-flight requests continue. Unknown prices cannot establish actual spend.</p></details><div class="consent">${check("Allow cloud prompts for this session", "cloud_allowed", config.cloud_allowed)}<p>Bounded assembly, symbols and source hints leave this PC. Provider keys and executable files stay local.</p></div><div class="form-footer"><span class="tiny muted">${editing ? "Edits apply before each loop's next function." : "Compilation and byte comparison stay local."}</span>${button(editing ? "Apply changes" : (native ? "Start Integrator" : "Start Worker"), 'type="submit"')}</div><div class="button-row form-section">${button("Install / sign in",'type="button" data-agent-setup="current"',true)}<button type="button" class="text-button" id="save-preset">Save preset</button><select id="saved-presets" aria-label="Load a saved preset"><option value="">Load saved preset…</option>${Object.keys(meta.preferences.presets).map(name=>`<option>${esc(name)}</option>`).join("")}</select><button type="button" class="text-button" id="refresh-models">Refresh models</button></div></form>`;
 }
 let matchProvider="codex";
-let workerMode="function", controlsOpen=true, workerRun="", chatFollow=true, chatSignature="", chatCompact=true, workerLoop="";
+let workerMode="function", controlsOpen=true, workerRun="", chatFollow=true, chatSignature="", chatMode="auto", workerLoop="";
+let familyPool = {slots:[]};
+let familyCompletions = [];
+let hiddenWorkerTabs = new Set(JSON.parse(localStorage.getItem("roc-hidden-worker-tabs") || "[]"));
+const visibleWorker = job => isWorker(job) && !hiddenWorkerTabs.has(job.id);
+async function refreshFamilyChat() {
+  if (page !== "workers" || document.hidden) return;
+  try {
+    const next = await api("family-pool?chat=1");
+    for (const old of familyPool.slots || []) {
+      const current = (next.slots || []).find(slot=>slot.id===old.id);
+      if (old.running && old.family && current && (!current.running || current.family!==old.family))
+        familyCompletions.push({job:'family:'+old.id,seq:Date.now()+':'+old.id,time:Date.now()/1000,event:'family',message:old.id+' · Run ended: '+old.family});
+    }
+    familyCompletions=familyCompletions.slice(-100);familyPool = next;
+    const select = $("#worker-run");
+    if (select) {
+      select.querySelectorAll('option[data-family]').forEach(option=>option.remove());
+      for (const slot of familyPool.slots || []) {
+        const option=document.createElement("option");option.dataset.family="1";option.value="family:"+slot.id;
+        option.textContent=slot.id+" · "+(slot.family || "Waiting");select.append(option);
+      }
+      select.value=workerRun;
+    }
+    chatSignature=""; renderWorkerChat();
+  } catch (_) {}
+}
+setInterval(refreshFamilyChat, 10000);
 function workers(config) {
   if(meta.agent_models===undefined)act(loadOpenCodeModels);
   const current=jobs.find(job=>job.id===editing);
   if(!current || !active(current))editing=null;
-  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(j=>isWorker(j)).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">${chatCompact ? "Regular" : "Compact"}</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-restart-workers>Restart offline / failed</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button ${workerMode==='function' ? 'active' : ''}" data-worker-mode="function">Worker</button><button class="text-button ${workerMode==='native' ? 'active' : ''}" data-worker-mode="native">Integrator</button><button class="text-button ${workerMode==='llm' ? 'active' : ''}" data-worker-mode="llm">LLM batch</button></div>`+(workerMode==="llm" ? nativeLlmPanel() : workerForm(config || {...meta.initial, lease_mode:workerMode==="native" ? "native" : "function", ...(workerMode==="native" ? {client:"2008-06",rounds:3,max_tokens:3072,thinking:"disabled",cloud_concurrency:"auto"} : {})}))}</aside>`;
+  return `<div id="worker-chat" class="worker-chat" tabindex="0" role="log" aria-label="Live worker activity"><div id="worker-chat-rows"></div></div><button id="jump-live" class="jump-live" hidden>↓ Jump back to live</button><footer class="worker-footer"><div id="worker-tabs" class="worker-tabs" role="tablist" aria-label="Worker sessions"></div><div class="worker-footer-controls"><div id="worker-status" class="worker-live-bar"></div><div class="chat-toolbar"><select id="worker-run" aria-label="Worker session"><option value="">All sessions</option>${jobs.filter(visibleWorker).map(j=>`<option value="${j.id}" ${workerRun===j.id ? "selected" : ""}>${esc(j.config.client)} · ${j.id.slice(0,6)}</option>`).join("")}</select><select id="worker-loop" aria-label="Worker loop"><option value="">All loops</option>${Array.from({length:Math.max(1,...jobs.filter(j=>isWorker(j)).map(j=>Math.max(Object.keys(j.slots).length,Number(j.config.workers)||1)))},(_,i)=>`<option value="${i}" ${workerLoop===String(i) ? "selected" : ""}>Worker ${i+1}</option>`).join("")}</select><button class="text-button" id="chat-compact">Compact</button><button class="text-button" id="chat-follow">${chatFollow ? "Live ↓" : "Latest ↓"}</button><button class="text-button" data-hide-finished>Hide finished / failed</button><button class="text-button" data-restart-workers>Restart offline / failed</button><button class="text-button" data-configure>Configure</button><button class="text-button" data-new-session>+ New</button></div></div></footer><aside class="worker-drawer ${controlsOpen ? "open" : ""}" aria-label="Worker configuration"><div class="drawer-heading"><h2>${editing ? "Session controls" : "New session"}</h2><button class="text-button" data-close-controls>Close ×</button></div>${editing ? workerForm(current.config) : `<div class="button-row form-section"><button class="text-button ${workerMode==='function' ? 'active' : ''}" data-worker-mode="function">Worker</button><button class="text-button ${workerMode==='native' ? 'active' : ''}" data-worker-mode="native">Integrator</button><button class="text-button ${workerMode==='llm' ? 'active' : ''}" data-worker-mode="llm">LLM batch</button></div>`+(workerMode==="llm" ? nativeLlmPanel() : workerForm(config || {...meta.initial, lease_mode:workerMode==="native" ? "native" : "function", ...(workerMode==="native" ? {client:"2008-06",rounds:3,max_tokens:3072,thinking:"disabled",cloud_concurrency:"auto"} : {})}))}</aside>`;
 }
 // Native LLM batches (work/native-client/native_llm.py): launcher plus per-model benchmark from attempts.jsonl.
 let nativeLlm=null, nativeLlmSort={key:"bytes_per_hour",dir:-1},nativeLlmConfig={jobs:8,limit:32,max_size:1024,tries:2,nim:3,free:3,retry_failed:false,new_source:true,pick:"claude"};
@@ -234,10 +273,10 @@ function nativeLlmPanel() {
   return `<form id="native-llm-form" class="panel panel-pad"><h2>Native LLM batch</h2><p class="help-note">3 Claude models plus random live NVIDIA NIM and free OpenCode models rewrite server-exact analogs as real member functions. Results are local inactive exacts. Replies and gate results stream into the chat.</p><div class="field-grid form-section">${field("Parallel jobs","jobs",c.jobs,{type:"number",min:1,max:16})}${field("Targets","limit",c.limit,{type:"number",min:1,max:500})}${field("Max size (B)","max_size",c.max_size,{type:"number",min:32,max:8192})}${field("Tries per target","tries",c.tries,{type:"number",min:1,max:9})}${field("NIM models","nim",c.nim,{type:"number",min:0,max:6})}${field("Free OpenCode models","free",c.free,{type:"number",min:0,max:6})}${field("Models","pick",c.pick,{choices:[["claude","3 Sonnet + Opus + Haiku"],["auto","Alternate explore / top 4"],["top","Top 4 by B/hour"],["explore","Claude + random NIM/free"]]})}</div>${check("Retry earlier misses (parks hopeless ones)","retry_failed",c.retry_failed)}${check("Include classes without a native .cpp (6.6k methods, probe only)","new_source",c.new_source)}<div class="form-footer">${button("Start batch",'type="submit"')}</div></form>${nativeLanesPanel()}<div id="native-llm-stats" class="panel panel-pad native-llm-stats">${nativeLlmStats()}</div>`;
 }
 // Automatic native lanes (work/native-client/lane_runner.py, job kind native_lane): one button per lane.
-const NATIVE_LANES=[["mechanical","Mechanical sweep (no model)","Every no-model lane in turn: classify, jump thunks, name registrations, template instances, clones, donor units, promote. No census"],["thunks","Jump thunks (no model)","Remaining 5-byte jump functions: forwarders generated from the proven jump target, proved by bytes and relocation"],["workflow","Text workflow (1 model call)","Scripted pack, compile check, proof and identity rows; the model only writes the function body, no tools"],["failures","Header-add lane","Re-queue every remaining compile failure; the model may add evidence-backed class members in a private header copy"],["layout","Class-layout lane","One class per run: all its failing functions plus a layout or new-header fix, kept only if more of them turn exact"],["vendor","Vendor from mined units","Vendor library code compiled from the exact preprocessed units the server mined, then reference learning"],["regate","Free regate","Re-check saved answers against today's headers, no model calls"],["promote","Promote","Apply proven header additions (before/after prove), move exacts into native source, prove the new files"],["census","Census + publish","Full census (parallel) and site publish (drop guard)"],["classify","Classify remaining","Refresh the remaining-function buckets"],["donor","Donor transplant","Compile the exact 2007 donor function text against native headers, no model calls"],["pattern","Tiny-function patterns","Getters/setters/&member under 32 bytes tried against every class member, no model calls"],["agents","Class agents (parallel)","Headless Sonnet sessions, one class each from the generated queue (remaining functions by owner class), N in parallel"],["untried","Never-tried lane","Every remaining named function the model lane never saw (606 queued), smallest first"],["inferred","Inferred-name lane","Functions named only by the identity-unlock tier (562), most certain names first"],["templates","Template instances","Creatable::create<T>, Creator::create (class from its vtable) and any_cast as explicit instantiations, no model calls"],["names","Name declares","callDoDeclare<sX> forwarders as explicit instantiations, byte + data proven, no model calls"],["polish","Diff-guided polish","One cheap Sonnet try per near-miss draft, fed the byte diff and iOS pseudo-C"],["gateserver","Gate server","Start the resident native-bulk workers (about 3x faster gates for every lane)"],["flags","Flag sweep","Re-judge near-miss drafts under nearby compiler flags, no model calls"],["agent","Class agent","Run the next class-recovery task from agent-class-queue.json as a headless Claude Code session"],["auto","Auto cycle","Unattended: regate, header-add, layout, flag sweep, promote, census+publish, repeated (touch native-llm/STOP to end)"]];
+const NATIVE_LANES=[["mechanical","Mechanical sweep (no model)","Every no-model lane in turn: classify, jump thunks, name registrations, template instances, clones, donor units, promote. No census"],["families","Family agents (root-cause batches)","One short session per family of byte-identical twins: it fixes one template or binding, then the no-model lane proves the whole family (25 and 7 functions per session measured)"],["twins","Twin instantiations (no model)","Template instantiations whose class the binary names through RTTI: explicit instantiation, proof, identity row"],["thunks","Jump thunks (no model)","Remaining 5-byte jump functions: forwarders generated from the proven jump target, proved by bytes and relocation"],["workflow","Text workflow (1 model call)","Scripted pack, compile check, proof and identity rows; the model only writes the function body, no tools"],["failures","Header-add lane","Re-queue every remaining compile failure; the model may add evidence-backed class members in a private header copy"],["layout","Class-layout lane","One class per run: all its failing functions plus a layout or new-header fix, kept only if more of them turn exact"],["vendor","Vendor from mined units","Vendor library code compiled from the exact preprocessed units the server mined, then reference learning"],["regate","Free regate","Re-check saved answers against today's headers, no model calls"],["promote","Promote","Apply proven header additions (before/after prove), move exacts into native source, prove the new files"],["census","Census + publish","Full census (parallel) and site publish (drop guard)"],["classify","Classify remaining","Refresh the remaining-function buckets"],["donor","Donor transplant","Compile the exact 2007 donor function text against native headers, no model calls"],["pattern","Tiny-function patterns","Getters/setters/&member under 32 bytes tried against every class member, no model calls"],["agents","Class agents (parallel)","Headless Sonnet sessions, one class each from the generated queue (remaining functions by owner class), N in parallel"],["untried","Never-tried lane","Every remaining named function the model lane never saw (606 queued), smallest first"],["inferred","Inferred-name lane","Functions named only by the identity-unlock tier (562), most certain names first"],["templates","Template instances","Creatable::create<T>, Creator::create (class from its vtable) and any_cast as explicit instantiations, no model calls"],["names","Name declares","callDoDeclare<sX> forwarders as explicit instantiations, byte + data proven, no model calls"],["polish","Diff-guided polish","One cheap Sonnet try per near-miss draft, fed the byte diff and iOS pseudo-C"],["gateserver","Gate server","Start the resident native-bulk workers (about 3x faster gates for every lane)"],["flags","Flag sweep","Re-judge near-miss drafts under nearby compiler flags, no model calls"],["agent","Class agent","Run the next class-recovery task from agent-class-queue.json as a headless Claude Code session"],["auto","Auto cycle","Unattended: regate, header-add, layout, flag sweep, promote, census+publish, repeated (touch native-llm/STOP to end)"]];
 let nativeLaneJobs=8;
 function nativeLanesPanel() {
-  return `<div class="panel panel-pad"><h2>Automatic lanes</h2><p class="help-note">Header and layout recovery, vendor code, promotion and census as dashboard runs. Progress streams into the run log.</p><div class="field-grid form-section">${field("Parallel jobs","native_lane_jobs",nativeLaneJobs,{type:"number",min:1,max:16})}</div><div class="button-row" style="flex-wrap:wrap;gap:.5rem">${NATIVE_LANES.map(([lane,label,help])=>`<button class="button" type="button" data-native-lane="${lane}" title="${esc(help)}">${esc(label)}</button>`).join("")}</div></div>`;
+  return `<div class="panel panel-pad"><h2>Automatic lanes</h2><p class="help-note">Header and layout recovery, vendor code, promotion and census as dashboard runs. Progress streams into the run log.</p><div class="field-grid form-section">${field("Parallel jobs","native_lane_jobs",nativeLaneJobs,{type:"number",min:1,max:16})}${field("Family model","native_family_model","opencode:opencode/big-pickle",{choices:[["opencode:opencode/big-pickle","OpenCode Big Pickle (free)"],["opencode:opencode/beam-free","OpenCode Beam (free)"],["opencode:roc-nim/nemotron","NVIDIA NIM ? Nemotron Ultra"],["codex","Codex"],["fable","Claude Fable"],["sonnet","Claude Sonnet"]]})}</div><div class="button-row" style="flex-wrap:wrap;gap:.5rem">${NATIVE_LANES.map(([lane,label,help])=>`<button class="button" type="button" data-native-lane="${lane}" title="${esc(help)}">${esc(label)}</button>`).join("")}</div></div>`;
 }
 function nativeLlmStats() {
   const s=nativeLlm;if(!s)return `<p class="muted">Loading model stats…</p>`;
@@ -272,7 +311,7 @@ setInterval(()=>{if((page==="workers"&&workerMode==="llm"&&!document.hidden)||po
 function nativeLlmClick(target) {
   if(target.dataset&&target.dataset.nativeLane) {
     const input=document.querySelector('[name="native_lane_jobs"]');nativeLaneJobs=Number(input?.value||8);
-    act(async()=>{const result=await api("start",{kind:"native_lane",lane:target.dataset.nativeLane,jobs:nativeLaneJobs});workerRun=result.id;toast("Started native lane: "+target.dataset.nativeLane);});
+    act(async()=>{const result=await api("start",{kind:"native_lane",lane:target.dataset.nativeLane,jobs:nativeLaneJobs,model:document.querySelector('[name="native_family_model"]')?.value});workerRun=result.id;toast("Started native lane: "+target.dataset.nativeLane);});
     return true;
   }
   if(target.hasAttribute("data-native-llm-refresh")) {act(loadNativeLlm);return true;}
@@ -337,6 +376,8 @@ function terminalMessage(row, functions, compact=false) {
   const limit=kind==="tool-call" ? 90 : 140;
   if(text.length>limit || text.includes("\n")) {if(!extra)extra=codeBlock(text,"Output");text=text.split("\n")[0].slice(0,limit)+(text.split("\n")[0].length>limit ? "…" : "");}
   const content=`<span class="terminal-marker">${marker}</span><span class="terminal-text">${esc(text.trim())}</span>`;
+  // lane output that reports a gain (a proved function) is shown green
+  if(/(->\s*EXACT|EXACT|inactive_exact|[1-9]\d* (?:functions )?exact|[1-9]\d* of \d+ proved)/.test(text)&&!/(?:^|[^0-9])0 (?:functions )?exact/.test(text))kind+=" gain";
   return `<article class="terminal-row ${esc(kind)}" data-key="${esc(row.job+":"+row.seq)}"><time>${stamp}</time><span class="terminal-worker">${worker}</span>${extra ? `<details ${!compact && ["draft","candidate"].includes(row.event) ? "open" : ""}><summary>${content}</summary>${extra}</details>` : `<div>${content}</div>`}</article>`;
 }
 function groupToolRows(rows) {
@@ -391,24 +432,26 @@ function tabModel(job) {
 }
 function renderWorkerChat() {
   const node=$("#worker-chat");if(!node)return;
-  const workerJobs=jobs.filter(j=>isWorker(j));
-  const tabs=$("#worker-tabs"),tabSignature=workerJobs.map(j=>j.id+j.status).join()+workerRun;
-  if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+workerJobs.slice(-12).map(j=>`<div class="worker-tab-group"><button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot ${esc(j.status)}"></span>${esc(j.config.client)} <span title="${esc(j.id)}">${esc(tabModel(j))}</span><small>${esc(j.status)}</small></button>${!active(j) ? `<button class="worker-tab-close" data-remove-run="${j.id}" aria-label="Remove finished run ${j.id}" title="Remove from run history">×</button>` : ""}</div>`).join("");tabs.dataset.signature=tabSignature;}
+  const workerJobs=jobs.filter(visibleWorker), familySlots=familyPool.slots || [];
+  const tabs=$("#worker-tabs"),tabSignature=workerJobs.map(j=>j.id+j.status).join()+familySlots.map(s=>s.id+s.running+s.family).join()+workerRun;
+  if(tabs.dataset.signature!==tabSignature) {tabs.innerHTML=`<button role="tab" aria-selected="${!workerRun}" class="worker-tab ${!workerRun ? "selected" : ""}" data-worker-tab="all">All workers</button>`+familySlots.map(s=>`<button role="tab" aria-selected="${workerRun==='family:'+s.id}" class="worker-tab ${workerRun==='family:'+s.id ? 'selected' : ''}" data-worker-tab="family:${esc(s.id)}"><span class="dot ${s.running ? 'running' : ''}"></span>${esc(s.id)} <span>${esc(s.family || 'Waiting')}</span></button>`).join("")+workerJobs.slice(-12).map(j=>`<div class="worker-tab-group"><button role="tab" aria-selected="${workerRun===j.id}" class="worker-tab ${workerRun===j.id ? "selected" : ""}" data-worker-tab="${j.id}"><span class="dot ${esc(j.status)}"></span>${esc(j.config.client)} <span title="${esc(j.id)}">${esc(tabModel(j))}</span><small>${esc(j.status)}</small></button>${!active(j) ? `<button class="worker-tab-close" data-remove-run="${j.id}" aria-label="Hide finished run ${j.id}" title="Hide tab (run remains in history)">×</button>` : ""}</div>`).join("");tabs.dataset.signature=tabSignature;}
   const status=$("#worker-status"),statusHTML=workerCards();if(status.innerHTML!==statusHTML)status.innerHTML=statusHTML;
-  const loopCount=workerJobs.filter(j=>active(j)&&(!workerRun||j.id===workerRun)).reduce((sum,j)=>sum+Object.keys(j.slots).length,0);
-  const supercompact=loopCount>3, compact=chatCompact || supercompact;
+  const selectedFamily=workerRun.startsWith('family:');
+  const loopCount=workerJobs.filter(j=>active(j)&&(!workerRun||j.id===workerRun)).reduce((sum,j)=>sum+Object.keys(j.slots).length,0)+familySlots.filter(s=>s.running&&(!workerRun||workerRun==='family:'+s.id)).length;
+  const supercompact=chatMode==='supercompact' || chatMode==='auto' && loopCount>3, compact=chatMode!=='regular' || supercompact;
   node.classList.toggle("compact",compact);node.classList.toggle("supercompact",supercompact);
-  $("#chat-compact").textContent=supercompact ? "Supercompact · auto" : chatCompact ? "Regular" : "Compact";
+  $("#chat-compact").textContent=supercompact ? "Supercompact · click for chat" : compact ? "Compact · click for supercompact" : "Regular · click for compact";
   const foldSource=compact;
   const ids=new Set(workerJobs.map(job=>job.id));
-  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||["native_recovery","benchmark","stage"].includes(r.event))&&(compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || r.event==="native_recovery" || r.event==="native_progress"&&jobs.find(j=>j.id===r.job)?.config?.native_generation==="agent" || r.event==="log"&&jobs.find(j=>j.id===r.job)?.config?.lease_mode==="native" || ["job_finished","native_started","native_result","native_partial","native_accepted","benchmark","stage","error","rejected"].includes(r.event)) : !["control","applied","usage"].includes(r.event))).slice(-180);
-  const signature=compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join();
+  const rows=logs.filter(r=>ids.has(r.job)&&(!workerRun||r.job===workerRun)&&(workerLoop===""||String(r.slot)===workerLoop||["native_recovery","benchmark","stage","state"].includes(r.event))&&(supercompact ? (r.event==='job_finished' && r.score>r.previous || r.event==='native_result' && r.local_exact>0 || r.event==='native_partial' && r.score>r.previous || r.event==='native_accepted' || r.event==='state' && /\b(completed|finished|failed|cancelled|interrupted)\b/i.test(r.message||'')) : compact ? (jobs.find(j=>j.id===r.job)?.kind==="agent_worker" || r.startup || r.event==="native_recovery" || r.event==="native_progress"&&jobs.find(j=>j.id===r.job)?.config?.native_generation==="agent" || r.event==="log"&&jobs.find(j=>j.id===r.job)?.config?.lease_mode==="native" || ["job_finished","native_started","native_result","native_partial","native_accepted","benchmark","stage","error","rejected"].includes(r.event)) : !["control","applied","usage"].includes(r.event))).slice(-180);
+  const familyRows=supercompact ? familyCompletions.filter(r=>!workerRun||r.job===workerRun) : familySlots.filter(s=>!workerRun||workerRun==='family:'+s.id).flatMap(s=>(s.events||[]).map((e,i)=>({job:'family:'+s.id,seq:e.time+':'+i,time:e.time/1000,event:'family',message:s.id+' · '+(e.kind==='result' ? 'Reported proof result: ' : '')+e.message})));
+  const signature=workerRun+":"+compact+":"+supercompact+":"+rows.map(r=>r.job+":"+r.seq).join()+":"+familyRows.map(r=>r.job+":"+r.seq).join();
   setChatFollow(chatFollow);
   const viewFilter=workerRun+":"+workerLoop+":"+compact+":"+supercompact;
   if(chatSignature===signature && $("#worker-chat-rows").children.length)return;
   const functions=new Map(),items=[];
   const grouped=[];
-  for(const row of groupToolRows(rows)) {
+  for(const row of groupToolRows([...rows,...familyRows].sort((a,b)=>a.time-b.time).slice(-180))) {
     const last=grouped[grouped.length-1];
     if(row.event==="compile" && last?.event==="compile" && row.slot===last.slot && row.job===last.job)last.compile_runs.push(row);
     else grouped.push(row.event==="compile" ? {...row,compile_runs:[row]} : row);
@@ -418,11 +461,12 @@ function renderWorkerChat() {
     if(row.event==="log" && !row.startup && /auto-think:|^\[.*best so far|Privacy:|Cloud model:|^thinking disabled for remaining rounds|^no improvement/.test(row.message.trim()))continue;
     items.push([row.job+":"+row.seq+":"+foldSource,terminalMessage(supercompact ? {...row,supercompact:true} : row,functions,foldSource)]);
   }
-  if(!items.length)items.push(["empty",empty(loopCount ? "Working…" : "Ready for work", compact ? "One line per completed function. Benchmarks every 30 seconds while functions finish." : "Configure a session. Function activity and verified source appear here.")]);
+  if(!items.length)items.push(["empty",empty(loopCount ? "Working…" : "Ready for work", supercompact ? "Chat hidden. New gains and completed runs appear here." : selectedFamily ? "Waiting for worker log output." : "Function activity and worker messages appear here.")]);
   updateFeed($("#worker-chat-rows"),items,chatFollow,!!chatSignature);
   chatSignature=signature;node.dataset.viewFilter=viewFilter;
 }
 function workerCards() {
+  if(workerRun.startsWith('family:')) { const slot=(familyPool.slots||[]).find(s=>'family:'+s.id===workerRun); return slot ? `<span class="session-summary">${badge(slot.running ? 'running' : 'idle')} ${esc(slot.id)} · ${esc(slot.family || 'Waiting')} · ${esc(slot.model || slot.kind)}</span>` : '<span class="muted">Worker unavailable</span>'; }
   const selected=jobs.find(j=>j.id===workerRun), current=selected || jobs.find(j=>isWorker(j)&&active(j));
   if(!current)return '<span class="muted">Idle</span>';
   const slotSummary=current.config.lease_mode==="native"
@@ -537,8 +581,9 @@ function render(config) {
   if (page==="workers") { $("#worker-status").innerHTML=workerCards();renderWorkerChat(); }
   if (page==="commands") {act(previewCommand);act(()=>loadCpu(true));}
   if(page==="history") {renderFunctionList();renderFunctionDetail();}
+  if(page==="overview") loadFamilyPool();
 }
-function navigate(next, config) { page=next; if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="history") {act(loadWorkerMemory);act(loadFunctions);} $("#main").scrollTop=0; }
+function navigate(next, config) { page=next; if(next==="workers") refreshFamilyChat(); if(next!=="workers") editing=null; render(config); if(next==="cpu")act(()=>loadCpu(true)); if(next==="history") {act(loadWorkerMemory);act(loadFunctions);} $("#main").scrollTop=0; }
 function readWorker() {
   const form=$("#worker-form"), config={...(editing ? jobs.find(job=>job.id===editing).config : meta.initial)};
   for(const input of form.querySelectorAll("[name]")) {
@@ -610,7 +655,7 @@ document.addEventListener("click", event=>act(async()=>{
   if(target.hasAttribute("data-restart-workers")) {
     target.disabled=true;
     try {
-      const stopped=jobs.filter(isWorker).slice(-12).filter(j=>!restartedWorkers.has(j.id)&&!["running","paused","stopping","queued"].includes(j.status));
+      const stopped=jobs.filter(visibleWorker).slice(-12).filter(j=>!restartedWorkers.has(j.id)&&!["running","paused","stopping","queued"].includes(j.status));
       let count=0;
       for(const job of stopped) {
         await restartWorker(job);
@@ -623,17 +668,24 @@ document.addEventListener("click", event=>act(async()=>{
   }
   if(target.hasAttribute("data-cpu-refresh")) {await loadCpu(true);return;}
   if(target.dataset.rocAction) {await api("roc-control",{id:target.dataset.rocId,action:target.dataset.rocAction});toast("Control applies at next target / compiler boundary");await loadCpu(true);return;}
+  if(target.hasAttribute("data-hide-finished")) {
+    const finished=jobs.filter(job=>isWorker(job)&&!["queued","running","paused","stopping"].includes(job.status));
+    for(const job of finished) hiddenWorkerTabs.add(job.id);
+    localStorage.setItem("roc-hidden-worker-tabs", JSON.stringify([...hiddenWorkerTabs]));
+    if(hiddenWorkerTabs.has(workerRun)) workerRun="";
+    for(const job of finished) $("#worker-run").querySelector(`option[value="${job.id}"]`)?.remove();
+    $("#worker-run").value=workerRun;chatSignature="";renderWorkerChat();return;
+  }
   if(target.dataset.removeRun) {
     const id=target.dataset.removeRun;
-    await api("control",{id,action:"remove"});
-    jobs=jobs.filter(job=>job.id!==id);logs=logs.filter(row=>row.job!==id);
+    hiddenWorkerTabs.add(id);localStorage.setItem("roc-hidden-worker-tabs", JSON.stringify([...hiddenWorkerTabs]));
     if(workerRun===id)workerRun="";
     $("#worker-run").querySelector(`option[value="${id}"]`)?.remove();
     $("#worker-run").value=workerRun;
     chatSignature="";renderWorkerChat();renderLogs();return;
   }
   if(target.dataset.workerTab) {await selectWorker(target.dataset.workerTab==="all" ? "" : target.dataset.workerTab);return;}
-  if(target.id==="chat-compact") {chatCompact=!chatCompact;target.textContent=chatCompact ? "Regular" : "Compact";renderWorkerChat();}
+  if(target.id==="chat-compact") {const isSuper=$("#worker-chat").classList.contains("supercompact");chatMode=isSuper ? "regular" : chatMode==="regular" ? "compact" : "supercompact";chatSignature="";renderWorkerChat();return;}
   if(target.hasAttribute("data-host-server")) {serverSetupOpen=!serverSetupOpen;render();return;}
   if(target.hasAttribute("data-server-uri")) {await navigator.clipboard.writeText("roconstruct://server");toast("Server setup URI copied");}
   if(target.dataset.page) navigate(target.dataset.page);
@@ -809,7 +861,7 @@ observeFeed.observe($("#main"),{childList:true});
 
 async function selectWorker(id) {
   workerRun=id;chatSignature="";$("#worker-run").value=id;renderWorkerChat();
-  if(!id)return;
+  if(!id || id.startsWith("family:"))return;
   try {await loadSessionLog(id);}
   catch(error) {console.warn("Session history unavailable", error);}
   if(page==="workers" && workerRun===id) {chatSignature="";renderWorkerChat();}

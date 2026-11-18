@@ -100,3 +100,5 @@
 .cost-section{margin:8px 0 12px}.cost-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.cost-grid div{border:1px solid var(--border);border-radius:8px;padding:8px}.cost-grid b{display:block;font-size:16px}.cost-grid small{color:var(--muted)}
 .native-llm-stats.stats-full{position:fixed;inset:0;z-index:200;margin:0;border-radius:0;overflow:auto;font-size:14px;padding:24px 32px}.stats-popout{padding:16px;overflow:auto}.stats-popout .native-llm-stats{font-size:14px;margin:0}
 .run-bar{display:inline-block;height:8px;border-radius:4px;background:var(--accent);min-width:2px}
+
+.terminal-row.gain,.terminal-row.gain div,.terminal-row.gain summary{color:var(--green)!important;font-weight:600}
