@@ -24,6 +24,10 @@ RotateP::RotateP(Joint* joint)
     : DescribedCreatable<RotateP, AutoJoint, sRotateP>(joint)
 {
 }
+// INFERRED: 2008 binary stores the RotateP vftable at 005e4c60 (default ctor, SEH, news 0xc8 RotatePJoint,
+// clears channelValue +0xc4, calls RotateJoint ctor 0x645a70) — the RotateP()/RotateV()/Motor() defaults were
+// explicitly not recovered here per the unit comment; add the RotateP() default mirroring Rotate()/Glue().
+RotateP::RotateP() : DescribedCreatable<RotateP, AutoJoint, sRotateP>(new RotatePJoint()) { }
 RotateV::RotateV(Joint* joint) : DescribedCreatable<RotateV, AutoJoint, sRotateV>(joint)
 {
 }

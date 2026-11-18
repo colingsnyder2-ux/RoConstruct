@@ -40,8 +40,8 @@ int S::sync()
             basic_streambuf_pubsync(streambuf);
     }
     catch (...) {
-        volatile int result = -1;
-        return result;
+        return -1;
     }
     return 0;
 }
+

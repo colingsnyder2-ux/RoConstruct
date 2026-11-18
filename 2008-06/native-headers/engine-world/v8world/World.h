@@ -184,5 +184,9 @@ namespace RBX
 		void onJointPrimitiveSet(Joint* j, Primitive* p);
 		void insertContact(Contact* c);
 		void destroyContact(Contact* c);
+		int get_78();
+		int get_7c();
+		void stepPhysics(class Assembly* assembly);
+		void processGeometry(class Geometry* geometry, class Filter* filter);
 	};
 }

@@ -6,6 +6,8 @@
 #include <BitStream.h>
 #include "Streaming.h"
 #include "Network/Players.h"
+#include "Network/IdSerializer.h"
+#include "RakNetTypes.h"
 #include "v8world/Assembly.h"
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"

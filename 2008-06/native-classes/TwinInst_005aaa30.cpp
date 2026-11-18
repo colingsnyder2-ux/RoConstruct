@@ -1,0 +1,11 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL
+// 005aaa30: explicit instantiation of the class the body at 005aaa30 stores the vftable of (RTTI identity, twin_lane.py, no model)
+#include <boost/shared_ptr.hpp>
+#include "lua/LuaBridge.h"
+#include "script/ThreadRef.h"
+#include "reflection/reflection.h"
+#include "LuaBridge2008/LuaInstanceBridge2008.h"
+template class RBX::Lua::Bridge<boost::shared_ptr<RBX::Lua::ThreadRef::Node>, true>;
+template bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Lua::ThreadRef::Node>, true>::getValue<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);
+template class RBX::Lua::SharedPtrBridge<RBX::Lua::ThreadRef::Node>;
+template bool RBX::Lua::SharedPtrBridge<RBX::Lua::ThreadRef::Node>::getPtr<RBX::Reflection::Value>(lua_State*, size_t, RBX::Reflection::Value&);

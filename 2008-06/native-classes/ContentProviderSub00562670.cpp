@@ -5,22 +5,22 @@
 #include <sstream>
 
 namespace RBX {
-void ContentProvider::sub_00562670(const ContentId& id, RequestResult& result, std::string& filename)
+void ContentProvider::sub_00562670(const ContentId& id, ::RBX::RequestResult& result, std::string& filename)
 {
     CachedContent* content = loadContent(id, 1, NULL);
     if (!content) {
         if (id.isHttp() && !isUrlBad(id.c_str())) {
-            result = (RequestResult)0;
+            result = (::RBX::RequestResult)0;
             return;
         }
-        result = (RequestResult)2;
+        result = (::RBX::RequestResult)2;
         return;
     }
     if (!registerFile(content)) {
-        result = (RequestResult)2;
+        result = (::RBX::RequestResult)2;
         return;
     }
     filename = *content->filename;
-    result = (RequestResult)1;
+    result = (::RBX::RequestResult)1;
 }
 }

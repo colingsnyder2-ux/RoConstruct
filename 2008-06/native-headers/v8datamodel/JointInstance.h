@@ -52,7 +52,10 @@ public:
 extern const char sSnap[];
 class Snap : public DescribedCreatable<Snap, AutoJoint, sSnap> { public: Snap(Joint* joint); Snap(); };
 extern const char sWeld[];
-class Weld : public DescribedCreatable<Weld, AutoJoint, sWeld> { public: Weld(Joint* joint); Weld(); };
+// INFERRED: 2008 binary RTTI binds the vftable/deleting-dtor thunks stored by Weld's ctors at 005e4710/005e4810 to
+// FactoryProduct<Weld, JointInstance, sWeld> and DescribedCreatable<Weld, JointInstance, sWeld> (class-identity-bindings.json),
+// so the template argument is JointInstance, not AutoJoint; the ctor bytes are unchanged.
+class Weld : public DescribedCreatable<Weld, JointInstance, sWeld> { public: Weld(Joint* joint); Weld(); };
 extern const char sGlue[];
 class Glue : public DescribedCreatable<Glue, AutoJoint, sGlue> { public: Glue(Joint* joint); Glue(); };
 extern const char sRotate[];

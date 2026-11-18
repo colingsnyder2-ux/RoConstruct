@@ -16,7 +16,7 @@ worker_thread::work_result ContentProvider::processRequests()
         request = requestQueue.front();
     }
     boost::shared_ptr<std::string> text(new std::string);
-    RequestResult result;
+    ::RBX::RequestResult result;
     try {
         try {
             Http(request.id.toString()).get(*text);

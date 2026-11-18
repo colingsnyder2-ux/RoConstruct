@@ -8,6 +8,6 @@
 namespace RBX {
 Snap::Snap(Joint* joint) : DescribedCreatable<Snap, AutoJoint, sSnap>(joint) { setName(sSnap); }
 Snap::Snap() : DescribedCreatable<Snap, AutoJoint, sSnap>(new SnapJoint()) { setName(sSnap); }
-Weld::Weld(Joint* joint) : DescribedCreatable<Weld, AutoJoint, sWeld>(joint) { setName(sWeld); }
-Weld::Weld() : DescribedCreatable<Weld, AutoJoint, sWeld>(new WeldJoint()) { setName(sWeld); }
+Weld::Weld(Joint* joint) : DescribedCreatable<Weld, JointInstance, sWeld>(joint) { setName(sWeld); }
+Weld::Weld() : DescribedCreatable<Weld, JointInstance, sWeld>(new WeldJoint()) { setName(sWeld); }
 }

@@ -3,6 +3,7 @@
 #pragma once
 #include <boost/type_traits.hpp>
 #include "reflection/object.h"
+#include "reflection/type.h"
 
 class ArchiveBinder;
 
@@ -67,7 +68,10 @@ namespace RBX
 		DescribedCreatable();
 
 		template<typename Arg0Type>
-		DescribedCreatable(Arg0Type arg0);
+		DescribedCreatable(Arg0Type arg0)
+			: Described(arg0)   // INFERRED: same shape as DescribedNonCreatable; constructor byte-equal at 005e3e60
+		{
+		}
 	};
 
 	template<typename Class, typename DerivedClass, const char* ClassName>
@@ -314,7 +318,8 @@ namespace RBX
 			template<typename GetFunction, typename SetFunction>
 			EnumPropDescriptor(char const* name, char const* category, typename GetFunction get, typename SetFunction set, Functionality flags)
 				: EnumPropertyDescriptor(Class::classDescriptor(), EnumDesc<Enum>::singleton(), name, category, flags),
-				  getset(PropDescriptor<Class, Enum>::getset<GetFunction, SetFunction>(get, set))
+				  getset(PropDescriptor<Class, Enum>::getset<GetFunction, SetFunction>(get, set)),
+				  enumDescPtr(&EnumDesc<Enum>::singleton())   // INFERRED: 00448220 stores a second EnumDesc<Enum>::singleton() (call_once + accessor) at +0x20 after the getset auto_ptr temporary is destroyed
 			{
 			}
 		public:
@@ -438,6 +443,15 @@ namespace RBX
 		};
 
 		// BoundFuncDesc
+		// INFERRED: RBX::Reflection::Tuple (RTTI .?AUTuple@Reflection@RBX@@, 0x18 bytes; vector<Value> at +0; explicit Tuple(size_t) ctor; used as BoundFuncDesc result_type at 0058b0f0; proposal in tests/record_native_stats_service.py)
+		struct Tuple
+		{
+			ValueCollection values;
+			explicit Tuple(size_t count)
+				: values(count)
+			{
+			}
+		};
 		template<typename Class, typename Function, int ArgCount>
 		class BoundFuncDesc;
 

@@ -9,10 +9,24 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/AppUnit568GlobalSettings.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/GlobalSettings.cpp",
+   "source_sha256": "7880e087cd50a7d2e92abe86e61b163ea3dc22fbb3ee1659e8e826f9389b74b5",
+   "export_sha256": "7880e087cd50a7d2e92abe86e61b163ea3dc22fbb3ee1659e8e826f9389b74b5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/AppUnit568Signal.cpp": {
    "export": "rebuild/2008-06/layout/client/app/reflection/signal.cpp",
    "source_sha256": "070f0396f646b5a5e507c4d6513a95741745df9216b0c4eb3a981b72f7ece51d",
    "export_sha256": "070f0396f646b5a5e507c4d6513a95741745df9216b0c4eb3a981b72f7ece51d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/script/Script.cpp",
+   "source_sha256": "e267ab91b0d9db137a14192d4fdfb858369ca8721007f1a94a02466165c8d32a",
+   "export_sha256": "e267ab91b0d9db137a14192d4fdfb858369ca8721007f1a94a02466165c8d32a",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -39,6 +53,13 @@
    "export": "rebuild/2008-06/layout/client/app/util/NormalId.cpp",
    "source_sha256": "756d22b274923cd5fa2641bb80728cc0c7d994996aa92f00dc22eacbb3a8151f",
    "export_sha256": "756d22b274923cd5fa2641bb80728cc0c7d994996aa92f00dc22eacbb3a8151f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/AppUnit5ECSurfaces.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/Surfaces.cpp",
+   "source_sha256": "b1fc18a1a5003ec9f4cc7ab53a75196dbb543580834d254df82fdc2f20eb29a2",
+   "export_sha256": "b1fc18a1a5003ec9f4cc7ab53a75196dbb543580834d254df82fdc2f20eb29a2",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -91,6 +112,13 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/Ball.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8world/Ball.cpp",
+   "source_sha256": "41aa0d2fc37a4a3620c199463314bc5258a65dfef6e7f052cdeaebba69d7ca98",
+   "export_sha256": "41aa0d2fc37a4a3620c199463314bc5258a65dfef6e7f052cdeaebba69d7ca98",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/BodyPrimitive2008Body.cpp": {
    "export": "rebuild/2008-06/layout/client/app/v8kernel/Body.cpp",
    "source_sha256": "1161d495740f02d08f66be9bc02eb31b675fa115c7ad26726ebc4b48de8b17bf",
@@ -119,6 +147,13 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/DebrisService.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/DebrisService.cpp",
+   "source_sha256": "67bc994a41751b9687de776b327e66489c4082bb84e4b3171214c7ce908315fe",
+   "export_sha256": "67bc994a41751b9687de776b327e66489c4082bb84e4b3171214c7ce908315fe",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/DragTool.cpp": {
    "export": "rebuild/2008-06/layout/client/app/tool/DragTool.cpp",
    "source_sha256": "35dba54a288fa27d597237635bda16cd91e0fcd8bc6465a2b7604dd5ca797831",
@@ -130,6 +165,20 @@
    "export": "rebuild/2008-06/layout/client/app/util/FileSystem.cpp",
    "source_sha256": "457a7ae11c658c347f47e221f4fa02e5a6d61c37d51e19fa443580f3469692b1",
    "export_sha256": "457a7ae11c658c347f47e221f4fa02e5a6d61c37d51e19fa443580f3469692b1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/Filters.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/Filters.cpp",
+   "source_sha256": "ca8a681fcac3eaa8585a591d19aba64744516f6ce0a5fde393c85599b8da18a1",
+   "export_sha256": "ca8a681fcac3eaa8585a591d19aba64744516f6ce0a5fde393c85599b8da18a1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/ForceField.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/ForceField.cpp",
+   "source_sha256": "a51db1ff81bb0d338d5430bf4eff1be4dd0d8e157853322dceb4ec9e153d776c",
+   "export_sha256": "a51db1ff81bb0d338d5430bf4eff1be4dd0d8e157853322dceb4ec9e153d776c",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -406,6 +455,20 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/GameSettings.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/GameSettings.cpp",
+   "source_sha256": "f92c477c4d2be37281d8d40ae7d7e120be5f05c3389bff331c467de97091c9df",
+   "export_sha256": "f92c477c4d2be37281d8d40ae7d7e120be5f05c3389bff331c467de97091c9df",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/GeometryService.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/GeometryService.cpp",
+   "source_sha256": "1231703ab342d2b3b02a630707bc45ec4c34d1c4fb310681a3a2b615d0809c32",
+   "export_sha256": "1231703ab342d2b3b02a630707bc45ec4c34d1c4fb310681a3a2b615d0809c32",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/Guid.cpp": {
    "export": "rebuild/2008-06/layout/client/app/util/Guid.cpp",
    "source_sha256": "80fac8ee80a95235c26b56de142ee3bce0e189390a0e2b0eed1a17799e580ebd",
@@ -416,6 +479,13 @@
      "new": "../../../../../../tools/rbxgs/Client/App/include/util/Guid.h"
     }
    ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/HealthHud.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/gui/HealthHud.cpp",
+   "source_sha256": "867e9c566b1a51dce5aa916aac45131b5face3e9fbf88c5fd0e1d9a1953a7bb3",
+   "export_sha256": "867e9c566b1a51dce5aa916aac45131b5face3e9fbf88c5fd0e1d9a1953a7bb3",
+   "include_rewrites": [],
    "line_ending_drift": false
   },
   "rebuild/2008-06/native-classes/HitTestShapes.cpp": {
@@ -437,6 +507,13 @@
    ],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/ICameraOwner.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/ICameraOwner.cpp",
+   "source_sha256": "d785740d2df3a20bbff7f0a7ba7038ccc0033e59efc6361564064c1e0c2887ac",
+   "export_sha256": "d785740d2df3a20bbff7f0a7ba7038ccc0033e59efc6361564064c1e0c2887ac",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/IMovingManager.cpp": {
    "export": "rebuild/2008-06/layout/client/app/v8world/IMoving.cpp",
    "source_sha256": "f210ba8ea1494922607f6ddd18a1e141586f4ace0cc667a61cf1d22dad48bb76",
@@ -449,10 +526,10 @@
    ],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/IPipelined2008.cpp": {
-   "export": "rebuild/2008-06/layout/client/app/v8world/IPipelined.cpp",
-   "source_sha256": "4a4e5619d5a3de104de6cb0fcdfdf352387c5167ad35e9bb76a54d94e2e44b2d",
-   "export_sha256": "4a4e5619d5a3de104de6cb0fcdfdf352387c5167ad35e9bb76a54d94e2e44b2d",
+  "rebuild/2008-06/native-classes/JointsService.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/JointsService.cpp",
+   "source_sha256": "53dce4728b917076d6507219446fab6146b2846d9e481d14d7f3d2ccde3b095c",
+   "export_sha256": "53dce4728b917076d6507219446fab6146b2846d9e481d14d7f3d2ccde3b095c",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -568,10 +645,10 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/LuaRobloxLapi.cpp": {
-   "export": "rebuild/2008-06/layout/client/app/lua-5.1.1/src/lapi.c",
-   "source_sha256": "2f5e55819a3795b2e0b3af8c1750de8b4fffb1b853c9bc4540f4d9255eb13184",
-   "export_sha256": "2f5e55819a3795b2e0b3af8c1750de8b4fffb1b853c9bc4540f4d9255eb13184",
+  "rebuild/2008-06/native-classes/Mouse.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/Mouse.cpp",
+   "source_sha256": "8a04330df1129cf3704c2eb5a30d7ac4d4e88f72c3a1d154526853238ea9b4f8",
+   "export_sha256": "8a04330df1129cf3704c2eb5a30d7ac4d4e88f72c3a1d154526853238ea9b4f8",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -583,6 +660,57 @@
     {
      "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/RakNetTypes.h",
      "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/RakNetTypes.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/NetworkSettings.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/NetworkSettings.cpp",
+   "source_sha256": "2cd430088e10950b877e84e2cde8a1a9f1523bb728bcd7b59645aba17cd725f1",
+   "export_sha256": "2cd430088e10950b877e84e2cde8a1a9f1523bb728bcd7b59645aba17cd725f1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/PacketLogger.cpp": {
+   "export": "rebuild/2008-06/layout/client/network/raknet30/source/PacketLogger.cpp",
+   "source_sha256": "4be64e59caf9ea133681e9bf433f9c0fbda55861f6d9e5f6e9b2fb759951363b",
+   "export_sha256": "e7c83a7bf6dc5fa8fbb4e2a0bfa18398f21a9c4d5518fbf5261fc5cbd8491bd4",
+   "include_rewrites": [
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/BitStream.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/BitStream.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/DS_List.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/DS_List.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/InternalPacket.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/InternalPacket.h"
+    },
+    {
+     "old": "../native-headers/RakPeerInterface.h",
+     "new": "RakPeerInterface.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/MessageIdentifiers.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/MessageIdentifiers.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/StringCompressor.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/StringCompressor.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/RPCMap.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/RPCMap.h"
+    },
+    {
+     "old": "../../../tools/rbxgs/Client/Network/raknet30/Source/GetTime.h",
+     "new": "../../../../../../../tools/rbxgs/Client/Network/raknet30/Source/GetTime.h"
     }
    ],
    "line_ending_drift": false
@@ -613,66 +741,10 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/Png6pngerror.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngerror.c",
-   "source_sha256": "39e7ba9ccf59c4ad513eb358e4253cb081a7cec737e68321ebb4a10ff347301a",
-   "export_sha256": "39e7ba9ccf59c4ad513eb358e4253cb081a7cec737e68321ebb4a10ff347301a",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png6pngmem.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngmem.c",
-   "source_sha256": "5a12c28dc7e2bfec3fc7dfca137118a3a29da4ae437e7f0f9c469ac9f33cb41c",
-   "export_sha256": "5a12c28dc7e2bfec3fc7dfca137118a3a29da4ae437e7f0f9c469ac9f33cb41c",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png6pngread.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngread.c",
-   "source_sha256": "73b46a545b46693631b4e86c80439bcbcd2ead4f97210ae50f4954c89cb20196",
-   "export_sha256": "73b46a545b46693631b4e86c80439bcbcd2ead4f97210ae50f4954c89cb20196",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png6pngrutil.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngrutil.c",
-   "source_sha256": "987c7535488a5b50e6243697c807034856728ca4491536a5f3500d4b20c1c3de",
-   "export_sha256": "987c7535488a5b50e6243697c807034856728ca4491536a5f3500d4b20c1c3de",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png6pngset.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngset.c",
-   "source_sha256": "3c7e11902951c77e728c6b4b6d6571c52fd9e56ea30d425866a4b14a39f317b2",
-   "export_sha256": "3c7e11902951c77e728c6b4b6d6571c52fd9e56ea30d425866a4b14a39f317b2",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png7pngrtran.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngrtran.c",
-   "source_sha256": "97b0a43d14236377a111cc7c783f90053a86cece14afe5cc2bb0a405372653bb",
-   "export_sha256": "97b0a43d14236377a111cc7c783f90053a86cece14afe5cc2bb0a405372653bb",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-classes/Png7pngwtran.cpp": {
    "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngwtran.c",
    "source_sha256": "106a705539472d66324a20c832cdbce7bdd3a6f39eacd9edeadcf5ea07aec815",
    "export_sha256": "106a705539472d66324a20c832cdbce7bdd3a6f39eacd9edeadcf5ea07aec815",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png7pngwutil.cpp": {
-   "export": "rebuild/2008-06/layout/client/rendering/g3d/png/pngwutil.c",
-   "source_sha256": "e394169f7fa6d30c61dcae712b994b0c76a0dd9932269d78e86de5a5cf6ecee7",
-   "export_sha256": "e394169f7fa6d30c61dcae712b994b0c76a0dd9932269d78e86de5a5cf6ecee7",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Profiling.cpp": {
-   "export": "rebuild/2008-06/layout/client/app/util/Profiling.cpp",
-   "source_sha256": "d09f1d156e5d9cd290bd7d38f14a5bcf5fff7e8a3a6f03da76a77db361d65651",
-   "export_sha256": "d09f1d156e5d9cd290bd7d38f14a5bcf5fff7e8a3a6f03da76a77db361d65651",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -778,6 +850,20 @@
    ],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/SpecialShape.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/custommesh.cpp",
+   "source_sha256": "8ea4907e14133c71d2510b6b15ea552c61725a368e86330478c3fad335710d38",
+   "export_sha256": "8ea4907e14133c71d2510b6b15ea552c61725a368e86330478c3fad335710d38",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/StatsService.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/Stats.cpp",
+   "source_sha256": "58bb4ed1c2df96ca3bc61ae4f93aea755614792db5b644dfc6112bb8fae4fd7f",
+   "export_sha256": "58bb4ed1c2df96ca3bc61ae4f93aea755614792db5b644dfc6112bb8fae4fd7f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/StringCompressor.cpp": {
    "export": "rebuild/2008-06/layout/client/network/raknet30/source/StringCompressor.cpp",
    "source_sha256": "231d8fdd046592591927f2db3e24b888d2e6acfd7f1d1a9ff3db4bef653a9c6a",
@@ -790,10 +876,24 @@
    ],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/TimerService.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/TimerService.cpp",
+   "source_sha256": "23004caa4f9c22c1b33e5ac63c189a6d1b46d4bf9db4257d59dc4701c75da011",
+   "export_sha256": "23004caa4f9c22c1b33e5ac63c189a6d1b46d4bf9db4257d59dc4701c75da011",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/ToolMouseCommand.cpp": {
    "export": "rebuild/2008-06/layout/client/app/v8datamodel/ToolMouseCommand.cpp",
    "source_sha256": "aca8b4106f38369365f9db6604abdfa15588bcf1443860afcff66cd07bde9980",
    "export_sha256": "aca8b4106f38369365f9db6604abdfa15588bcf1443860afcff66cd07bde9980",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/UserController.cpp": {
+   "export": "rebuild/2008-06/layout/client/app/v8datamodel/UserController.cpp",
+   "source_sha256": "b18b214bb14313180fc51cccd0321117b08f6a183fc016d8bc79f9437276921d",
+   "export_sha256": "b18b214bb14313180fc51cccd0321117b08f6a183fc016d8bc79f9437276921d",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -825,34 +925,24 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8world__Clump2__O2Ob2OyGFGSE.cpp": {
-   "export": "rebuild/2008-06/layout/client/app/v8world/Clump2.cpp",
-   "source_sha256": "8896201a24f77d3448ca07a7e07e0e93518f652f3a9cd0cb513609f4c7423162",
-   "export_sha256": "dd9ee7ba823574e452ee6367fdc77945f2cec05b38b0de6bf8f4d902ab2e970c",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/openrbx-client/21022/App__v8world__Clump2.cpp.i",
-     "new": "../../../../../../work/libcache/openrbx-client/21022/App__v8world__Clump2.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/openrbx-client/roc_kms_barrier_9872e41c7b51c383__O2Ob2OyGFGSE.cpp": {
-   "export": "rebuild/2008-06/layout/client/app/v8kernel/Constants.cpp",
-   "source_sha256": "8b554fe19c192ef51cf3ef8b0c926f0529d6cf20b8cb10f496f756d56eb42658",
-   "export_sha256": "8af52a2e2bbffa1a401bffae437bca0ed5d33e5eec9347e9cdad583f2a3b4ebe",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/openrbx-client/21022/roc_kms_barrier_9872e41c7b51c383.cpp.i",
-     "new": "../../../../../../work/libcache/openrbx-client/21022/roc_kms_barrier_9872e41c7b51c383.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-headers/AppUnit58C/base64.hpp": {
    "export": "rebuild/2008-06/layout/client/app/include/util/base64.hpp",
    "source_sha256": "78701475c81a87f9bd39e8228ebf24daa20f2d6587149e9c3eea0b85d295604f",
    "export_sha256": "78701475c81a87f9bd39e8228ebf24daa20f2d6587149e9c3eea0b85d295604f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/AppUnit658/Edge.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8world/Edge.h",
+   "source_sha256": "fe8519543014a1313b5a4fe42aebe5151dd7ccd954de7b419ed158b0aec80b6b",
+   "export_sha256": "fe8519543014a1313b5a4fe42aebe5151dd7ccd954de7b419ed158b0aec80b6b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/AppUnit66C/AssemblyStage.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8world/assemblystage.h",
+   "source_sha256": "102aec0b17b7c6d383d041eca549cd55e68cddf4f1b2e20398b35151c5f242e2",
+   "export_sha256": "102aec0b17b7c6d383d041eca549cd55e68cddf4f1b2e20398b35151c5f242e2",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -874,6 +964,20 @@
    "export": "rebuild/2008-06/layout/client/network/raknet30/source/MTUSize.h",
    "source_sha256": "228443a6ff099fb0b68156ba9b00219ee8b081329350809ea6ce431489042377",
    "export_sha256": "228443a6ff099fb0b68156ba9b00219ee8b081329350809ea6ce431489042377",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/Network/Player.h": {
+   "export": "rebuild/2008-06/layout/client/network/include/network/Player.h",
+   "source_sha256": "742f63f1dff411662bc8a825f759b68b8befd64fb33108c90abdcc2fbed6136a",
+   "export_sha256": "742f63f1dff411662bc8a825f759b68b8befd64fb33108c90abdcc2fbed6136a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/Network/Players.h": {
+   "export": "rebuild/2008-06/layout/client/network/include/network/Players.h",
+   "source_sha256": "5735f59ff438b67fcf38702606bca9cdaf0df2fdca96ec09da467901700f693e",
+   "export_sha256": "5735f59ff438b67fcf38702606bca9cdaf0df2fdca96ec09da467901700f693e",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -909,13 +1013,6 @@
    "export": "rebuild/2008-06/layout/client/rendering/renderlib/include/renderlib/Profiler.h",
    "source_sha256": "b9dfcd4f87b508530e1b1b333179dd6cf78c6068f3bba5cadbf545f082ff1435",
    "export_sha256": "b9dfcd4f87b508530e1b1b333179dd6cf78c6068f3bba5cadbf545f082ff1435",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-headers/Replicator.h": {
-   "export": "rebuild/2008-06/layout/client/network/replicator.h",
-   "source_sha256": "d476e65d61071e6c7ca2f4d71e94349c485fb93d6755591a2539ddb91a105571",
-   "export_sha256": "d476e65d61071e6c7ca2f4d71e94349c485fb93d6755591a2539ddb91a105571",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -1050,13 +1147,6 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-headers/engine-world/v8world/World.h": {
-   "export": "rebuild/2008-06/layout/client/app/include/v8world/World.h",
-   "source_sha256": "6ec2a80cd4e119c281971c7670d08c36b8c363c4485ee688da014ba82ac45723",
-   "export_sha256": "6ec2a80cd4e119c281971c7670d08c36b8c363c4485ee688da014ba82ac45723",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-headers/g3d-binary-output-2008/G3D/BinaryOutput.h": {
    "export": "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/BinaryOutput.h",
    "source_sha256": "e54a1de92b6831280f5bf599b974af97b1b14dfab3188271a62a00722c149a1b",
@@ -1113,6 +1203,13 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/gui/Widget.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/gui/Widget.h",
+   "source_sha256": "9f3da570158f8b2303ec6501ab2ea319fd8b0dcba1f187629959320df40b35bf",
+   "export_sha256": "9f3da570158f8b2303ec6501ab2ea319fd8b0dcba1f187629959320df40b35bf",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/humanoid/Humanoid.h": {
    "export": "rebuild/2008-06/layout/client/app/include/humanoid/Humanoid.h",
    "source_sha256": "94dabfe27150d501c100da2bcd076bc23e5e484393464f559cbb67ba741496ee",
@@ -1166,13 +1263,6 @@
    "export": "rebuild/2008-06/layout/client/app/include/reflection/descriptor.h",
    "source_sha256": "ab76c748ef0163fd305c1794c80781c56431a64bb84b415af6ef4f5a9b6dafd6",
    "export_sha256": "ab76c748ef0163fd305c1794c80781c56431a64bb84b415af6ef4f5a9b6dafd6",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-headers/reflection/enumconverter.h": {
-   "export": "rebuild/2008-06/layout/client/app/include/reflection/enumconverter.h",
-   "source_sha256": "2bc378dd626b3fc5fdc273188161936226a1200c69d71b9f0e8bd7032e6c3b00",
-   "export_sha256": "2bc378dd626b3fc5fdc273188161936226a1200c69d71b9f0e8bd7032e6c3b00",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -1337,6 +1427,13 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Accoutrement.h",
+   "source_sha256": "d3298cb7cab5831dd3fde2b4131d0160a74dbec2b9923f2dd0448a091085b22c",
+   "export_sha256": "d3298cb7cab5831dd3fde2b4131d0160a74dbec2b9923f2dd0448a091085b22c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/v8datamodel/Backpack.h": {
    "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Backpack.h",
    "source_sha256": "b45208d4fb63a0a860116fd4d18168f5390058719472b45aa1f3eeeed8afb829",
@@ -1351,10 +1448,17 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": {
-   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h",
-   "source_sha256": "62948b2b652adca92d6bfe7b9096e975156d235beeb4163d534f1d5bdef91636",
-   "export_sha256": "62948b2b652adca92d6bfe7b9096e975156d235beeb4163d534f1d5bdef91636",
+  "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/DebrisService.h",
+   "source_sha256": "18291808286483881f0e2226815894420fef36928e3db653ae38be5370184441",
+   "export_sha256": "18291808286483881f0e2226815894420fef36928e3db653ae38be5370184441",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/DebugSettings.h",
+   "source_sha256": "ed86f7694e90b82069124ab64fd07211c816fd9576ba756416efb25f536d1007",
+   "export_sha256": "ed86f7694e90b82069124ab64fd07211c816fd9576ba756416efb25f536d1007",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -1365,10 +1469,59 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/v8datamodel/Feature.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Feature.h",
+   "source_sha256": "44d125dd8324270c04453789d6ac09f495cdc8f019477fef0238e7c7d2fa3773",
+   "export_sha256": "44d125dd8324270c04453789d6ac09f495cdc8f019477fef0238e7c7d2fa3773",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Flag.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Flag.h",
+   "source_sha256": "9078b5bffdd2b3b7573180546692f908c280c075b9b0580173bda0543d208fad",
+   "export_sha256": "9078b5bffdd2b3b7573180546692f908c280c075b9b0580173bda0543d208fad",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/FlagStand.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/FlagStand.h",
+   "source_sha256": "0258cb0108a4a60132e6ed330d8f56d2d07a501cca345b2b9d4de8e376cd9c3a",
+   "export_sha256": "0258cb0108a4a60132e6ed330d8f56d2d07a501cca345b2b9d4de8e376cd9c3a",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/ForceField.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/ForceField.h",
+   "source_sha256": "cd0503dd99444b318f46d6445c75a3d4510b355d9fd14f2efd7e9131f3fd19bf",
+   "export_sha256": "cd0503dd99444b318f46d6445c75a3d4510b355d9fd14f2efd7e9131f3fd19bf",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/GameSettings.h",
+   "source_sha256": "bf2ca9e0c87d7fe688623950ce44018e6ad53665af0d15b9515f413ffbc8ae50",
+   "export_sha256": "bf2ca9e0c87d7fe688623950ce44018e6ad53665af0d15b9515f413ffbc8ae50",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/GeometryService.h",
+   "source_sha256": "f8cb711006853a69e4c19bcca9899af7fbd3190adecfe3c08302e2b9ea126f75",
+   "export_sha256": "f8cb711006853a69e4c19bcca9899af7fbd3190adecfe3c08302e2b9ea126f75",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h": {
    "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/GlobalSettings.h",
    "source_sha256": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
    "export_sha256": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Hopper.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Hopper.h",
+   "source_sha256": "cfb69ae53731cd6c73496f7b1948f37821dcec32b1d855c44c4e09ad153a4389",
+   "export_sha256": "cfb69ae53731cd6c73496f7b1948f37821dcec32b1d855c44c4e09ad153a4389",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -1379,10 +1532,24 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/v8datamodel/JointsService.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/JointsService.h",
+   "source_sha256": "c4ec748981e8480c58e945a8ad4285cdd4df4ecfb0bfa60cd84f8d0055db78d4",
+   "export_sha256": "c4ec748981e8480c58e945a8ad4285cdd4df4ecfb0bfa60cd84f8d0055db78d4",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/v8datamodel/LocalBackpack.h": {
    "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/LocalBackpack.h",
    "source_sha256": "b52b7e01a5a5e160073a3601ad012aa908cf883d50969ee68dc2e217f44c93bd",
    "export_sha256": "b52b7e01a5a5e160073a3601ad012aa908cf883d50969ee68dc2e217f44c93bd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Message.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Message.h",
+   "source_sha256": "d1295bb05b6ea8da65e281e6ae31155fe92a50117e0004a65e0e30543578c4b6",
+   "export_sha256": "d1295bb05b6ea8da65e281e6ae31155fe92a50117e0004a65e0e30543578c4b6",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -1421,6 +1588,20 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/v8datamodel/Seat.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Seat.h",
+   "source_sha256": "fa32d9a6bc8d1486daaeff88843a30df2027023508ceeb0a2416ad26a253f8d7",
+   "export_sha256": "fa32d9a6bc8d1486daaeff88843a30df2027023508ceeb0a2416ad26a253f8d7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/SpawnLocation.h",
+   "source_sha256": "4fadeb7e9328877945115c2da3234172121f9ef488b50467bb33f62138b89b18",
+   "export_sha256": "4fadeb7e9328877945115c2da3234172121f9ef488b50467bb33f62138b89b18",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/v8datamodel/Surface.h": {
    "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Surface.h",
    "source_sha256": "f55f865dd3bc781d81a43198b99efa898249e9f5b661dae1db84ba6acdf8c0d6",
@@ -1435,6 +1616,27 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/v8datamodel/Team.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Team.h",
+   "source_sha256": "5b3dba04280874af77e032030d7db02179689531ec63f4c94fc9bb11dc61195d",
+   "export_sha256": "5b3dba04280874af77e032030d7db02179689531ec63f4c94fc9bb11dc61195d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Teams.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Teams.h",
+   "source_sha256": "06ee51742b06c53999e5229bf2f4564e9f1526e2c92949ead77550971e6bf7ba",
+   "export_sha256": "06ee51742b06c53999e5229bf2f4564e9f1526e2c92949ead77550971e6bf7ba",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/TimerService.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/TimerService.h",
+   "source_sha256": "e1031807c184345fbd76b99354ba00b96a25d301362f0f60ad02a8e249c85efa",
+   "export_sha256": "e1031807c184345fbd76b99354ba00b96a25d301362f0f60ad02a8e249c85efa",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/v8datamodel/Tool.h": {
    "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/Tool.h",
    "source_sha256": "e5c815a8b38cdef42eae6e57f929f17a128eb4829a06a038697e4194f0cf35dc",
@@ -1446,6 +1648,13 @@
    "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/ToolMouseCommand.h",
    "source_sha256": "4e1dd7b77329ad159625ab8be72a64d3d95cef7dbd32e6fbbb4b0d3f257aa364",
    "export_sha256": "4e1dd7b77329ad159625ab8be72a64d3d95cef7dbd32e6fbbb4b0d3f257aa364",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/UserController.h": {
+   "export": "rebuild/2008-06/layout/client/app/include/v8datamodel/UserController.h",
+   "source_sha256": "15ae79f29552692a0ef1320215eb25d1cbe9a00745ddf4163b84e1dab68b530b",
+   "export_sha256": "15ae79f29552692a0ef1320215eb25d1cbe9a00745ddf4163b84e1dab68b530b",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -1538,13 +1747,6 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/AppUnit660_2008Units.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/util/Units.cpp",
-   "source_sha256": "8d4ef920114b8d18902acd615d50827d1edfb44bc3ba91254b4a29790bdede21",
-   "export_sha256": "8d4ef920114b8d18902acd615d50827d1edfb44bc3ba91254b4a29790bdede21",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp": {
    "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSubEntity.cpp",
    "source_sha256": "d17c30c9f8b677d6382a4e6ed9518457476f501eeb97c0f9c80bfbbee81d1161",
@@ -1628,6 +1830,13 @@
      "new": "CChatPrompt.h"
     }
    ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-classes/CRenderSettings.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/win/RenderSettings.cpp",
+   "source_sha256": "2154cdd72ee3c2c9569b3e9df7b2327f0eee96d8eb77e4bf9eab86d905834169",
+   "export_sha256": "2154cdd72ee3c2c9569b3e9df7b2327f0eee96d8eb77e4bf9eab86d905834169",
+   "include_rewrites": [],
    "line_ending_drift": false
   },
   "rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp": {
@@ -1994,24 +2203,10 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/Leaves2008Log.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/util/Log.cpp",
-   "source_sha256": "6ddaf5c440e18431ca03f25ca708a43d2eac44b5d3fb2e61ed46cd25a774596c",
-   "export_sha256": "6ddaf5c440e18431ca03f25ca708a43d2eac44b5d3fb2e61ed46cd25a774596c",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-classes/LuaAllocatorStats.cpp": {
    "export": "rebuild/2008-06/layout/inferred/client/app/script/LuaMemory.cpp",
    "source_sha256": "3eed60f9417ace36e71ec84db671a896029629b2479ffec489b2fa2309008674",
    "export_sha256": "3eed60f9417ace36e71ec84db671a896029629b2479ffec489b2fa2309008674",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/LuaRobloxLauxlib.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/lua-5.1.1/src/lauxlib.c",
-   "source_sha256": "ba6517d42c06557e0f608575ac99b29e1e525b4704e21f17bc171a1ab0ba59df",
-   "export_sha256": "ba6517d42c06557e0f608575ac99b29e1e525b4704e21f17bc171a1ab0ba59df",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -2083,20 +2278,6 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/Png6png.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/png.c",
-   "source_sha256": "a992d4690e01d2bd407fe77bd6cb0003b6f32579b7cd8a9d34443d20469e6e9e",
-   "export_sha256": "a992d4690e01d2bd407fe77bd6cb0003b6f32579b7cd8a9d34443d20469e6e9e",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/Png6pngget.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/pngget.c",
-   "source_sha256": "1bcae5eb2330267fdecce603555dcc60ecb6260f259fad8ecba77c9d58a85914",
-   "export_sha256": "1bcae5eb2330267fdecce603555dcc60ecb6260f259fad8ecba77c9d58a85914",
-   "include_rewrites": [],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-classes/Png7pngtrans.cpp": {
    "export": "rebuild/2008-06/layout/inferred/client/rendering/g3d/png/pngtrans.c",
    "source_sha256": "ef56a00b071e7d085bb341b49841e02bd8192eb56f13052bec105b67008be0ac",
@@ -2125,6 +2306,13 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-classes/ScriptApp2008SoundType.cpp": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/util/SoundWorld.cpp",
+   "source_sha256": "3752b6ab81d2d28432458fdcda2de2860154f5b620d0e1891d45c95104ca2703",
+   "export_sha256": "3752b6ab81d2d28432458fdcda2de2860154f5b620d0e1891d45c95104ca2703",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-classes/ViewNewMaterialFactory2008.cpp": {
    "export": "rebuild/2008-06/layout/inferred/client/rbxview/MaterialFactory.cpp",
    "source_sha256": "7fd4b48965e7b10bf0c29a3f6a970d61e5b6465ac3f8051ba05ec4e20a3d4262",
@@ -2146,126 +2334,6 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
-  "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espeon_jumpcomparison_6b4b2fffa050f82d__O2GSEHscMD.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/humanoid/Jumping.cpp",
-   "source_sha256": "534ec39a9420ede0e73fd41b19a7bc02ad064e290e8aadb6f42f18c88eaa40a4",
-   "export_sha256": "7c79795adcfa427b90985d38a6bf2a1740414ac4a748fd5b2df0ec5ffe5b0645",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/openrbx-client-dll/21022/roc_espeon_jumpcomparison_6b4b2fffa050f82d.cpp.i",
-     "new": "../../../../../../../work/libcache/openrbx-client-dll/21022/roc_espeon_jumpcomparison_6b4b2fffa050f82d.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/openrbx-client/App__v8world__Assembly2__O2Ob2OyGFGSE.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/v8world/Assembly2.cpp",
-   "source_sha256": "6fc7e898e15aab0f8195dd039da0110843110b7b237e005ed9bea007412c05f6",
-   "export_sha256": "586c42cf30bb84b66d1a64697401a4d2242987a20038cd4faa386de2fcbb9d13",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/openrbx-client/21022/App__v8world__Assembly2.cpp.i",
-     "new": "../../../../../../../work/libcache/openrbx-client/21022/App__v8world__Assembly2.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/openrbx-client/Rendering__RenderLib__RenderStats__O2Ob2OyGFGSE.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/rendering/renderlib/RenderStats.cpp",
-   "source_sha256": "043ec21d4c48140a41f55243115fe3b2698269e0e2efd4f9721274a7b480556b",
-   "export_sha256": "04ebdbcdfcc02d9dda4d31747a19f6ab0cf8a5157c77f8c32c9a98b2b4c3b8b2",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/openrbx-client/21022/Rendering__RenderLib__RenderStats.cpp.i",
-     "new": "../../../../../../../work/libcache/openrbx-client/21022/Rendering__RenderLib__RenderStats.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_june_7ce3ac7e38f6702c__O2GSEHscMDfp.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/humanoid/Freefall.cpp",
-   "source_sha256": "9a1b68d62092c2b9f69a4d44d4d4f68ae41f3e114aabd68666fface26cae3dec",
-   "export_sha256": "8be82819a11849ae75ad618ad50d1baac4013e9e1328f4d71507c25893111ed9",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_codex_june_7ce3ac7e38f6702c.cpp.i",
-     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_codex_june_7ce3ac7e38f6702c.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_8bf60529a275bcc6__O2Ob2OiOtOyG.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/rbxview/Part.cpp",
-   "source_sha256": "2c324aa8344ccb92a5f7fc3971e9fe734b47e0cf156a858c0808c0b06f3a739b",
-   "export_sha256": "35eb98d790037d0a9950a38a2055352dd217d893d4adb7b9fd1621b4ebdfcf6c",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_espclaude_8bf60529a275bcc6.cpp.i",
-     "new": "../../../../../../work/libcache/rbxgs-dll/21022/roc_espclaude_8bf60529a275bcc6.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_contenttexturenamed2399d7549f79d9cc__O2GSEHscMD.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/rendering/appdraw/Textures.cpp",
-   "source_sha256": "064419d01f29c71429c60ead9ffb32017ff8c30f17136e2a70987cfb986ab97a",
-   "export_sha256": "6ab154c9d63c532c72727f69ee7de879329efc51fddcac28984b7c6821205858",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_contenttexturenamed2399d7549f79d9cc.cpp.i",
-     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_contenttexturenamed2399d7549f79d9cc.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_luanewindexnamesequence458b7ba623495716__O2Ob2OyGFGSE.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/script/luainstancebridge.cpp",
-   "source_sha256": "90948415e36dc085b65980db9d645acf4c750bada1ff37ef79b671a323189511",
-   "export_sha256": "1ab2a6b1ad05a04fc37b3a9133cf935fb45908d03b1e16c67aa47adb19c36216",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_luanewindexnamesequence458b7ba623495716.cpp.i",
-     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_espeon_luanewindexnamesequence458b7ba623495716.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_1d8338cf2f16d51c__O2GSEHscMDfp.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/v8datamodel/Sky.cpp",
-   "source_sha256": "4a7d723f65ac922aa7a95b6ddf013980ff63b736d6e18b63946e843c9bbf940c",
-   "export_sha256": "aba29cfc53761783922cadc6891d50c587c02073b5951d8a2e5885032babbc60",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_unit_1d8338cf2f16d51c.cpp.i",
-     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_1d8338cf2f16d51c.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_a7ba09e28ae2b551__O2Ob2OyGFGSE.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/util/boost.cpp",
-   "source_sha256": "6d1a4312be486cb54d32fedec619896e46fb0ab12e9591f2a71ff0fc2be1c794",
-   "export_sha256": "fa69163f4c8e3baefd31578800c3f741a4eac28d6db643429e3e3659ac47d2c7",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_unit_a7ba09e28ae2b551.cpp.i",
-     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_a7ba09e28ae2b551.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
-  "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_unit_bf96e0da3f42017e__O2GSEHscMDfp.cpp": {
-   "export": "rebuild/2008-06/layout/inferred/client/app/v8datamodel/RootInstance.cpp",
-   "source_sha256": "cfeff78578d64eabb029a41554e9eb12178cad2076042836c112bd58726bcba5",
-   "export_sha256": "781da2f95b2b5d79ae64ac7f4cfcd1e3c9764f6dd4d11f3e0b86392cd56f0e0b",
-   "include_rewrites": [
-    {
-     "old": "../../../../../work/libcache/rbxgs-dll/21022/roc_unit_bf96e0da3f42017e.cpp.i",
-     "new": "../../../../../../../work/libcache/rbxgs-dll/21022/roc_unit_bf96e0da3f42017e.cpp.i"
-    }
-   ],
-   "line_ending_drift": false
-  },
   "rebuild/2008-06/native-headers/ActiveDocView.h": {
    "export": "rebuild/2008-06/layout/inferred/client/win/ActiveDocView.h",
    "source_sha256": "63e432fbdedb9407a75e4e09b6cd5303120ad8977449238aea2b9b0b954bfc36",
@@ -2284,6 +2352,27 @@
    "export": "rebuild/2008-06/layout/inferred/client/win/ClipboardVerbs.h",
    "source_sha256": "436576f2c04872ad01f250839275c8a7084e8e08d1f300dcbb1f569a34f6f6f1",
    "export_sha256": "436576f2c04872ad01f250839275c8a7084e8e08d1f300dcbb1f569a34f6f6f1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/Network/IdSerializer.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/include/network/IdSerializer.h",
+   "source_sha256": "b8c534a1ddfa00b8bbce04784c01a33af07b0a46da112ef1622e66e0f3b20438",
+   "export_sha256": "b8c534a1ddfa00b8bbce04784c01a33af07b0a46da112ef1622e66e0f3b20438",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/Network/PhysicsReplication.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/include/network/PhysicsReplication.h",
+   "source_sha256": "12082374c45f4c724efb39e1d7e79e6b85bfa8af9b126c684218fd846c4cb0f2",
+   "export_sha256": "12082374c45f4c724efb39e1d7e79e6b85bfa8af9b126c684218fd846c4cb0f2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/network/include/network/ReplicatorMarker.h",
+   "source_sha256": "36a6a0e16fd9606edca2f0e13cb905fcce950747bfa19f1faf5a27081e3ba340",
+   "export_sha256": "36a6a0e16fd9606edca2f0e13cb905fcce950747bfa19f1faf5a27081e3ba340",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -2320,6 +2409,167 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/gui/WidgetButtons.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetButtons.h",
+   "source_sha256": "9621fa65415cf60363ade5d6bde91e18ca6207f8306568013c5bb1a55f0fc5fd",
+   "export_sha256": "9621fa65415cf60363ade5d6bde91e18ca6207f8306568013c5bb1a55f0fc5fd",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/WidgetChat.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetChat.h",
+   "source_sha256": "681b0a8a97c8e3945def80a1c5051517c91af07ccdcb726813152f0f3bff5d0e",
+   "export_sha256": "681b0a8a97c8e3945def80a1c5051517c91af07ccdcb726813152f0f3bff5d0e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/gui/WidgetMenuItem.h",
+   "source_sha256": "062301cdd04476e97c4db0a3f097990edb2223707039a5a8f3abb97d4f10a40c",
+   "export_sha256": "062301cdd04476e97c4db0a3f097990edb2223707039a5a8f3abb97d4f10a40c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidFloorFields.h",
+   "source_sha256": "8bf0f0079ec70f459319121997be11088e3e9450a99d351ce721d56c401c2139",
+   "export_sha256": "8bf0f0079ec70f459319121997be11088e3e9450a99d351ce721d56c401c2139",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidState.h",
+   "source_sha256": "ff8f75f7d803472ae5738616379578d67ec0561a2188b96e2909c5f572b304d2",
+   "export_sha256": "ff8f75f7d803472ae5738616379578d67ec0561a2188b96e2909c5f572b304d2",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates1.h",
+   "source_sha256": "32b9517c75a3c6483da682106f43339909d8d39dcda018c539fe18c85390b1d3",
+   "export_sha256": "32b9517c75a3c6483da682106f43339909d8d39dcda018c539fe18c85390b1d3",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates2.h",
+   "source_sha256": "f3c59ee9e6ea9f35030c5e6b4ab225b292ad82391d25c64b3e9a1fb839a34dc5",
+   "export_sha256": "f3c59ee9e6ea9f35030c5e6b4ab225b292ad82391d25c64b3e9a1fb839a34dc5",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates3.h",
+   "source_sha256": "892b2a290aac52f60a7c46148df3e296d6c09c4709c2e19311ab361071380698",
+   "export_sha256": "892b2a290aac52f60a7c46148df3e296d6c09c4709c2e19311ab361071380698",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/humanoid/HumanoidStates3SimJob.h",
+   "source_sha256": "1d667fb6f9524f1c54e8090d1d8e28454440f339d7bd0707560c662d6c1ec508",
+   "export_sha256": "1d667fb6f9524f1c54e8090d1d8e28454440f339d7bd0707560c662d6c1ec508",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/reflection/Metadata.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/reflection/Metadata.h",
+   "source_sha256": "bddd45a154e1df0cb2e2a91cd15b659e49cba71ec225f8138225fa8c88161800",
+   "export_sha256": "bddd45a154e1df0cb2e2a91cd15b659e49cba71ec225f8138225fa8c88161800",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/reflection/property.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/reflection/property.h",
+   "source_sha256": "ac666dc8bda007c299927b342f0cc7aba5e995ceed4a40ba7f2f449df6adf6ac",
+   "export_sha256": "ac666dc8bda007c299927b342f0cc7aba5e995ceed4a40ba7f2f449df6adf6ac",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/AxisMoveGrid.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/AxisMoveGrid.h",
+   "source_sha256": "21262e849ca931bcdd9d1a7e83a058b998a87c8c3ed1ad4cad298cbb660e003f",
+   "export_sha256": "21262e849ca931bcdd9d1a7e83a058b998a87c8c3ed1ad4cad298cbb660e003f",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/AxisMoveTool.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/AxisMoveTool.h",
+   "source_sha256": "b2f10f01d1fbfc15b142d2e17983e5d87a67cafbb0b60ec863b42db94c4b177c",
+   "export_sha256": "b2f10f01d1fbfc15b142d2e17983e5d87a67cafbb0b60ec863b42db94c4b177c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/BasicMouseTools.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/BasicMouseTools.h",
+   "source_sha256": "08eec36ee801c302116fbeb33bb79212d1a16820adb39a857f79749c3d061e68",
+   "export_sha256": "08eec36ee801c302116fbeb33bb79212d1a16820adb39a857f79749c3d061e68",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/FlatTool.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/FlatTool.h",
+   "source_sha256": "afd658de8432e22b7d26767222554f4d3b58a5312e60d8fc1817ee70d3eef0f1",
+   "export_sha256": "afd658de8432e22b7d26767222554f4d3b58a5312e60d8fc1817ee70d3eef0f1",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/ModelTool.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/ModelTool.h",
+   "source_sha256": "d88189f51ccf56c69bc5f7f7aa948d2d9535863aa97b8572674632705876bef7",
+   "export_sha256": "d88189f51ccf56c69bc5f7f7aa948d2d9535863aa97b8572674632705876bef7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/ModelTools.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/ModelTools.h",
+   "source_sha256": "de886e47b49ee1e618fcee84c8e411faf9af6aa9ed157fa0516b685f4e06bdfe",
+   "export_sha256": "de886e47b49ee1e618fcee84c8e411faf9af6aa9ed157fa0516b685f4e06bdfe",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/ResizeTool.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/ResizeTool.h",
+   "source_sha256": "30338c4f3b00a4b4f7e1cef920f99cd2fb806b103288376f1f0629c26c80cb79",
+   "export_sha256": "30338c4f3b00a4b4f7e1cef920f99cd2fb806b103288376f1f0629c26c80cb79",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/ShootTool.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/ShootTool.h",
+   "source_sha256": "128fc40ef11ae5c0f61674095b57352292ecc6aa8cc348782bcef78d2f3df169",
+   "export_sha256": "128fc40ef11ae5c0f61674095b57352292ecc6aa8cc348782bcef78d2f3df169",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/ShootTools.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/ShootTools.h",
+   "source_sha256": "ca0d58a7e1e98e3eae3e138402923263cbc7c72c89435ee98d55040a933f0a72",
+   "export_sha256": "ca0d58a7e1e98e3eae3e138402923263cbc7c72c89435ee98d55040a933f0a72",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/SurfaceTool.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/SurfaceTool.h",
+   "source_sha256": "2b74d06bd30c9d4fbde9a900db5db4a350851086ac174e02f9d90b12a10768ee",
+   "export_sha256": "2b74d06bd30c9d4fbde9a900db5db4a350851086ac174e02f9d90b12a10768ee",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/tool/SurfaceTools.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/tool/SurfaceTools.h",
+   "source_sha256": "b09f824d3b7fb2638f98c1583dc7a9666a34f028cbc9a5273b977d6dac961de6",
+   "export_sha256": "b09f824d3b7fb2638f98c1583dc7a9666a34f028cbc9a5273b977d6dac961de6",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/ContentRequest.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/ContentRequest.h",
+   "source_sha256": "309d34f3ae7219d3f3375056c24da213dcea582238cc57d8b23bea6073f5c297",
+   "export_sha256": "309d34f3ae7219d3f3375056c24da213dcea582238cc57d8b23bea6073f5c297",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/util/DxUserInput.h": {
    "export": "rebuild/2008-06/layout/inferred/client/win/DxUserInput.h",
    "source_sha256": "676919483163d15027bbef00c1872344b8195a0fa2bd30511fdf0b25366ce3da",
@@ -2327,10 +2577,64 @@
    "include_rewrites": [],
    "line_ending_drift": false
   },
+  "rebuild/2008-06/native-headers/util/EventDataBase.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/EventDataBase.h",
+   "source_sha256": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+   "export_sha256": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/GuidItem.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/GuidItem.h",
+   "source_sha256": "1e908c1ab2e1e2752e36b0a47f3a86cd403bef4277563d3a2d08f57803f5ac7e",
+   "export_sha256": "1e908c1ab2e1e2752e36b0a47f3a86cd403bef4277563d3a2d08f57803f5ac7e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/GuidRegistry.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/GuidRegistry.h",
+   "source_sha256": "59e07e917de32a737777cdb6fc62c3aef250165b511d7c0b52b095d64108f039",
+   "export_sha256": "59e07e917de32a737777cdb6fc62c3aef250165b511d7c0b52b095d64108f039",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/ImageContent.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/ImageContent.h",
+   "source_sha256": "3663c46742239c561474634c9d6df57e665dcda622decd3201fa343ba1467aba",
+   "export_sha256": "3663c46742239c561474634c9d6df57e665dcda622decd3201fa343ba1467aba",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/LDrawEntities.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/LDrawEntities.h",
+   "source_sha256": "4ddb69368004619d7bc684457ae007f8cd8f7d2cd2298f1475ec0f9340fbbbea",
+   "export_sha256": "d4513e84a734cf0f14dede1ac989d037f9856673c6e43fe8e8d46a803919514a",
+   "include_rewrites": [
+    {
+     "old": "LDrawMapRoot.h",
+     "new": "util/LDrawMapRoot.h"
+    }
+   ],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/LDrawMapRoot.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/LDrawMapRoot.h",
+   "source_sha256": "e66abeca5f10d2c9d896468dcc791b1fe91c3166861e8b235e25201595ead493",
+   "export_sha256": "e66abeca5f10d2c9d896468dcc791b1fe91c3166861e8b235e25201595ead493",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
   "rebuild/2008-06/native-headers/util/LDrawParser.h": {
    "export": "rebuild/2008-06/layout/inferred/client/win/LDrawParser.h",
    "source_sha256": "72315261b7ee661c6fc3bbbd774cbac180ded00164a6988f266689f5c1b79a54",
    "export_sha256": "72315261b7ee661c6fc3bbbd774cbac180ded00164a6988f266689f5c1b79a54",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Log.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/Log.h",
+   "source_sha256": "3eca32f03f33ce0d70077f4393ab235b912227c77d0a61d61e1fe1cea5d9cf6d",
+   "export_sha256": "3eca32f03f33ce0d70077f4393ab235b912227c77d0a61d61e1fe1cea5d9cf6d",
    "include_rewrites": [],
    "line_ending_drift": false
   },
@@ -2345,6 +2649,167 @@
    "export": "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.h",
    "source_sha256": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
    "export_sha256": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/MovementKeys.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/MovementKeys.h",
+   "source_sha256": "d3929eaecde0e7a7bfbbf5037037dc03afc4598751e5b3e90b7e2d0e25cda821",
+   "export_sha256": "d3929eaecde0e7a7bfbbf5037037dc03afc4598751e5b3e90b7e2d0e25cda821",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/util/Object.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/util/Object.h",
+   "source_sha256": "108bdcdc6a9d7d0567e2bffff2ee8d4465bf04552d3479081fdd3fea320f05b9",
+   "export_sha256": "108bdcdc6a9d7d0567e2bffff2ee8d4465bf04552d3479081fdd3fea320f05b9",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/BodyColors.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/BodyColors.h",
+   "source_sha256": "16e0f94cd117b0a652ab81f3d5e8f34ab6e2fec856caf33ad402de01136810bb",
+   "export_sha256": "16e0f94cd117b0a652ab81f3d5e8f34ab6e2fec856caf33ad402de01136810bb",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/BodyMovers.h",
+   "source_sha256": "3e7fd998bba4318e1042aa1d18e2b9dcee7001c2f4e166f22ddf0d3ff4bd5e94",
+   "export_sha256": "3e7fd998bba4318e1042aa1d18e2b9dcee7001c2f4e166f22ddf0d3ff4bd5e94",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/ChangeHistoryService.h",
+   "source_sha256": "d89c892a41285df604a18a953c9236095226257d8ba166c9437e7ca6c4f5c49c",
+   "export_sha256": "d89c892a41285df604a18a953c9236095226257d8ba166c9437e7ca6c4f5c49c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/ClickDetector.h",
+   "source_sha256": "3779bae26f8cc7180019c885b8a6b38b553c04a2a9bfba958aaed4cb9ae41d28",
+   "export_sha256": "3779bae26f8cc7180019c885b8a6b38b553c04a2a9bfba958aaed4cb9ae41d28",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Clothing.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Clothing.h",
+   "source_sha256": "cd3e17d5404ee01be01863c5afeedc859c030a9dc93b97fa3577f537a08e336e",
+   "export_sha256": "cd3e17d5404ee01be01863c5afeedc859c030a9dc93b97fa3577f537a08e336e",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/FlagStandService.h",
+   "source_sha256": "cb947f6d83b2a8b2c019535e52c7bd4d57367ad4f977ad31bd20e11d6221521d",
+   "export_sha256": "cb947f6d83b2a8b2c019535e52c7bd4d57367ad4f977ad31bd20e11d6221521d",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/HistoryRecord.h",
+   "source_sha256": "b3ee2ef262c9953d00941c36f73bff5919f84331d3ad4b2d6204cc57f87e0b79",
+   "export_sha256": "b3ee2ef262c9953d00941c36f73bff5919f84331d3ad4b2d6204cc57f87e0b79",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/PhysicsService.h",
+   "source_sha256": "bcd1ce387714fd0573922a64c398f75d9c88ca7d2da86c9485d1252116919560",
+   "export_sha256": "bcd1ce387714fd0573922a64c398f75d9c88ca7d2da86c9485d1252116919560",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Rocket.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Rocket.h",
+   "source_sha256": "f8d9f9b23764e5ab52609736747337059ad5e106872f7e261106b9ee66929c4b",
+   "export_sha256": "f8d9f9b23764e5ab52609736747337059ad5e106872f7e261106b9ee66929c4b",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SelectionChanged.h",
+   "source_sha256": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+   "export_sha256": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Sky.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Sky.h",
+   "source_sha256": "2a956a953803e3a119dc9fa0623876d334b5ee8e121b9a47d7f8478f393b0b57",
+   "export_sha256": "2a956a953803e3a119dc9fa0623876d334b5ee8e121b9a47d7f8478f393b0b57",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Sparkles.h",
+   "source_sha256": "c5d84a0d956b6973ea955e7db7b145d844fc6b0d7a10f0f7b9819aec7ddc734c",
+   "export_sha256": "c5d84a0d956b6973ea955e7db7b145d844fc6b0d7a10f0f7b9819aec7ddc734c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SpawnerService.h",
+   "source_sha256": "ffb0e443b66cfc3fde92ecb842c5b67fe48ab42478f76b4b6ccd85c31dc22b4c",
+   "export_sha256": "ffb0e443b66cfc3fde92ecb842c5b67fe48ab42478f76b4b6ccd85c31dc22b4c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/SpecialShape.h",
+   "source_sha256": "8e48793ee0a3bd7e770c8c111f8b60ffac772f1df92d19292c0916b08c21b582",
+   "export_sha256": "8e48793ee0a3bd7e770c8c111f8b60ffac772f1df92d19292c0916b08c21b582",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8datamodel/Value.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/Value.h",
+   "source_sha256": "3613fcf51d61f49fc28705d173b50b15e31abbef4f7579970d1b226b408bd04c",
+   "export_sha256": "3613fcf51d61f49fc28705d173b50b15e31abbef4f7579970d1b226b408bd04c",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8tree/IDataState.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8tree/IDataState.h",
+   "source_sha256": "2ddd04b190e38f7c025ac3b8be5727624f96825305c77c41618c6914295d4062",
+   "export_sha256": "2ddd04b190e38f7c025ac3b8be5727624f96825305c77c41618c6914295d4062",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8tree/InstanceEvents.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8tree/InstanceEvents.h",
+   "source_sha256": "356ca6c7f9ce11d2cd2813e0e60e7478ef034f4f8d5ec14d726bd18517a02dce",
+   "export_sha256": "356ca6c7f9ce11d2cd2813e0e60e7478ef034f4f8d5ec14d726bd18517a02dce",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8tree/PropertyChanged.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8tree/PropertyChanged.h",
+   "source_sha256": "c5fc5062ea7482f19ed3875f42d9823f54bfbecafc2dacaf09212bee33c715ca",
+   "export_sha256": "c5fc5062ea7482f19ed3875f42d9823f54bfbecafc2dacaf09212bee33c715ca",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8tree/VerbContainer.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8tree/VerbContainer.h",
+   "source_sha256": "0bf3dd21fc0125202b1f91579ddaa025ea3e365c15d1f4da835c361c06de7b90",
+   "export_sha256": "0bf3dd21fc0125202b1f91579ddaa025ea3e365c15d1f4da835c361c06de7b90",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8world/AssemblyLayout.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8world/AssemblyLayout.h",
+   "source_sha256": "999d19a357cb8e6fce5ac52cf14d49b769c350c9b9e9e06b53a2ea189e96f143",
+   "export_sha256": "999d19a357cb8e6fce5ac52cf14d49b769c350c9b9e9e06b53a2ea189e96f143",
+   "include_rewrites": [],
+   "line_ending_drift": false
+  },
+  "rebuild/2008-06/native-headers/v8world/SimJob.h": {
+   "export": "rebuild/2008-06/layout/inferred/client/app/include/v8world/SimJob.h",
+   "source_sha256": "2ee283b5d2e3cca29538449b6488ca97b20d8f8d6b44113ba5af5eec7e42c46d",
+   "export_sha256": "2ee283b5d2e3cca29538449b6488ca97b20d8f8d6b44113ba5af5eec7e42c46d",
    "include_rewrites": [],
    "line_ending_drift": false
   }

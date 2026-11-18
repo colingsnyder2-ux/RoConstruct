@@ -114,6 +114,8 @@ namespace RBX
 		SleepStage(IStage* upstream, World* world);       // 0064b8e0 (not built: needs the 8-vector / 7-set EH layout)
 		virtual ~SleepStage();                            // slot 0 (0064b330)
 		virtual StageType getStageType();                 // slot 1 (007359e0)
+		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest); // INFERRED: vtable slot 2, 0064ca00
+		virtual int getMetric(MetricType metricType);     // INFERRED: vtable slot 6, 0064a8c0
 		virtual void onEdgeAdded(Edge* e);                // slot 4 (0064b1b0)
 		virtual void onEdgeRemoving(Edge* e);             // slot 5 (0064c130)
 
@@ -124,6 +126,8 @@ namespace RBX
 		{
 			a->getSleepInfo()->sleepCount = 0;
 		}
+		void sub_0064c850(); // INFERRED: 0064ca27 call
+		void sub_0064c8a0(int worldStepId); // INFERRED: 0064ca2f call
 		AssemblySet* stateToSet(Sim::AssemblyState state);                      // 0064a550
 		void changeAssemblyState(Assembly* a, Sim::AssemblyState state);        // 0064ae90
 		void changeAssemblyState(const std::vector<Assembly*>& assemblies, Sim::AssemblyState state);   // 0064b840
