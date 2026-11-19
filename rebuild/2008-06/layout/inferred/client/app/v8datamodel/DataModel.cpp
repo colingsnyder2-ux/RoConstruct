@@ -29,6 +29,15 @@ boost::shared_ptr<boost::recursive_mutex> __cdecl DataModel::getMutex(Instance* 
 
 }
 
+#include "v8tree/Service.h"
+
+namespace RBX {
+	bool ServiceProvider::askAddChild(const Instance* instance) const
+	{
+		return dynamic_cast<const Service*>(instance) != NULL;
+	}
+}
+
 namespace RBX {
 extern template boost::shared_ptr<DataModel> Creatable<Instance>::create<DataModel>();
 

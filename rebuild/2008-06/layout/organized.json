@@ -45,6 +45,62 @@
 "inferred/client/win/ActiveDocView.cpp",
 "inferred path"
 ],
+"00406110": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00406a80": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00406b10": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"004070e0": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"004073d0": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00407d90": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00407e20": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00407eb0": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00408090": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"004081e0": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00408770": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"004087e0": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00408890": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
+"00408cc0": [
+"inferred/client/win/App.cpp",
+"inferred path"
+],
 "0040a470": [
 "inferred/client/app/v8datamodel/Value.cpp",
 "merged unit, partial"
@@ -60,6 +116,110 @@
 "0040dba0": [
 "inferred/client/boost_1_34_1/libs/python/src/object/class.cpp",
 "merged unit, complete"
+],
+"0040df60": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040df70": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040dfb0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040dfd0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040dfe0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e040": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e0d0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e0f0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e110": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e230": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e290": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e320": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e560": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e5b0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e670": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e7d0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e7e0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e920": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e930": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040e940": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040eda0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"0040f810": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"00410950": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"00410d60": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"00410dc0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
+],
+"00410ea0": [
+"inferred/client/win/BrowserView.cpp",
+"inferred path"
 ],
 "00411350": [
 "inferred/client/win/ChatPrompt.cpp",
@@ -1625,6 +1785,166 @@
 "inferred/client/win/ScintillaCtrl.cpp",
 "inferred path"
 ],
+"004613c0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004613d0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004613e0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461400": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461450": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461520": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461540": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004615a0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004615b0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004615c0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004615d0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004615e0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004615f0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461600": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004618b0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461970": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004619b0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004619e0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461a10": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461e40": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461e90": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461ed0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00461f00": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462040": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462190": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004622a0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462470": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462a70": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462c60": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462e40": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00462eb0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00463160": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004631e0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00463380": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004633b0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00463430": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00463570": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00463580": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"00463600": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
+"004636d0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
+],
 "004638b0": [
 "inferred/client/win/ScriptDoc.cpp",
 "inferred path"
@@ -2025,6 +2345,26 @@
 "inferred/client/app/v8tree/Instance.cpp",
 "merged unit, partial"
 ],
+"0046b500": [
+"inferred/client/win/Workspace.cpp",
+"merged unit, partial"
+],
+"0046bc90": [
+"inferred/client/win/Workspace.cpp",
+"merged unit, partial"
+],
+"0046bd70": [
+"inferred/client/win/Workspace.cpp",
+"merged unit, partial"
+],
+"0046bfd0": [
+"inferred/client/win/Workspace.cpp",
+"merged unit, partial"
+],
+"0046c920": [
+"inferred/client/win/Workspace.cpp",
+"merged unit, partial"
+],
 "0046d590": [
 "inferred/client/win/LDraw2RobloxMapRoot.cpp",
 "merged unit, complete"
@@ -2221,6 +2561,10 @@
 "inferred/client/app/gui/ChatOutput.cpp",
 "merged unit, complete"
 ],
+"00497600": [
+"inferred/client/network/Players.cpp",
+"inferred path"
+],
 "00498770": [
 "inferred/client/network/Player.cpp",
 "merged unit, partial"
@@ -2280,6 +2624,10 @@
 "0049fe50": [
 "inferred/client/network/Client.cpp",
 "merged unit, partial"
+],
+"004a40d0": [
+"inferred/client/network/Server.cpp",
+"inferred path"
 ],
 "004a5a30": [
 "inferred/client/network/Streaming.cpp",
@@ -3761,6 +4109,90 @@
 "inferred/client/app/v8tree/Instance.cpp",
 "merged unit, partial"
 ],
+"0055bd10": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055bd80": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055cf30": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055d530": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055dbe0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055e0b0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055ead0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055f710": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"0055f7b0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"00560200": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"005612b0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"005613f0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"00561e30": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"00561f20": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"00562090": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"005620c0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"005620f0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"005624b0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"005628e0": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"00562c30": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
+"00562e60": [
+"inferred/client/app/util/ContentProvider.cpp",
+"merged unit, partial"
+],
 "00563100": [
 "inferred/client/app/v8datamodel/DebugSettings.cpp",
 "merged unit, partial"
@@ -4665,127 +5097,11 @@
 "inferred/client/app/v8datamodel/Decal.cpp",
 "merged unit, partial"
 ],
-"00598ad0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598c60": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598c70": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598c90": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598d10": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598d40": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598d50": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00598de0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599220": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"005993e0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"005994c0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
 "00599530": [
 "inferred/client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
-"005995f0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599640": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599690": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599730": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599770": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"005997c0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"005997f0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
 "00599890": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599eb0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"00599f80": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059a040": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059aa40": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059aa90": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059aae0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059ab80": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059abb0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059abe0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059b4d0": [
-"inferred/client/app/v8datamodel/partinstance.cpp",
-"merged unit, partial"
-],
-"0059bbf0": [
 "inferred/client/app/v8datamodel/partinstance.cpp",
 "merged unit, partial"
 ],
@@ -5775,6 +6091,30 @@
 ],
 "005e2900": [
 "client/app/v8datamodel/Feature.cpp",
+"merged unit, partial"
+],
+"005e2a10": [
+"inferred/client/app/v8datamodel/JointInstance.cpp",
+"merged unit, partial"
+],
+"005e2a70": [
+"inferred/client/app/v8datamodel/JointInstance.cpp",
+"merged unit, partial"
+],
+"005e2af0": [
+"inferred/client/app/v8datamodel/JointInstance.cpp",
+"merged unit, partial"
+],
+"005e2cd0": [
+"inferred/client/app/v8datamodel/JointInstance.cpp",
+"merged unit, partial"
+],
+"005e3790": [
+"inferred/client/app/v8datamodel/JointInstance.cpp",
+"merged unit, partial"
+],
+"005e3a80": [
+"inferred/client/app/v8datamodel/JointInstance.cpp",
 "merged unit, partial"
 ],
 "005e5bf0": [
@@ -7697,6 +8037,14 @@
 "inferred/client/app/gui/ArrowPanel.cpp",
 "merged unit, partial"
 ],
+"00658170": [
+"inferred/client/app/v8datamodel/SafeChat.cpp",
+"inferred path"
+],
+"0065b4e0": [
+"inferred/client/app/v8world/SpatialHash.cpp",
+"inferred path"
+],
 "00660180": [
 "inferred/client/app/util/Units.cpp",
 "merged unit, complete"
@@ -8017,473 +8365,9 @@
 "inferred/client/rendering/appdraw/RbxSceneManager.cpp",
 "inferred path"
 ],
-"007012f0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701300": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701310": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701340": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701350": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701370": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007013a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007013c0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007013f0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701410": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701420": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701500": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701530": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701580": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007015e0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701680": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701690": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007016b0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007016e0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701710": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701780": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007017e0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007017f0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701820": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701830": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701860": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701880": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007018a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007018e0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701950": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701970": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007019a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701b30": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701be0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701ca0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701da0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701e80": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701f20": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00701ff0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702040": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702060": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007021a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702210": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702280": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007023f0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007024a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702570": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007026d0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007028c0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702b30": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702c00": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702ce0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702d80": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702e00": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702e40": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702f20": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00702fe0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007030c0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703190": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007032c0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007033a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703400": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703430": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703490": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007035d0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703b10": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703b30": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703be0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703c30": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00703c90": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007042a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007043f0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00704460": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007048b0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007049c0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00704a10": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00704c60": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00704ca0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00704cf0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00704d50": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705290": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705400": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705440": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007054d0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007055c0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007056a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705b00": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705b40": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705c20": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00705db0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007061b0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"007063a0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00706450": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00706480": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"00706490": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
-"0078fd70": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"0078fdf0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"0078fe00": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"0078fe60": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"0078feb0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"0078ff00": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"0078ff50": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00790240": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007902f0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007903e0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00790450": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00790480": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00790580": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007905f0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00790640": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00790770": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007907a0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007907b0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00791220": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007912a0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"007912b0": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
-],
-"00791310": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
+"006c4ce0": [
+"inferred/client/win/ScintillaDocView.cpp",
+"inferred path"
 ],
 "007ad9d0": [
 "inferred/client/rendering/renderlib/TextureProxy.cpp",
@@ -8841,10 +8725,6 @@
 "inferred/client/app/v8datamodel/Explosion.cpp",
 "merged unit, partial"
 ],
-"007f98f0": [
-"inferred/client/win/Workspace.cpp",
-"merged unit, partial"
-],
 "007fa6d0": [
 "inferred/client/win/DHTMLWindow.cpp",
 "merged unit, partial"
@@ -8923,6 +8803,10 @@
 ],
 "007fc360": [
 "inferred/client/app/util/name.cpp",
+"merged unit, partial"
+],
+"007fcc00": [
+"inferred/client/app/util/ContentProvider.cpp",
 "merged unit, partial"
 ],
 "007fcdb0": [
@@ -9120,10 +9004,6 @@
 "00801590": [
 "inferred/client/rendering/appdraw/RbxSubEntity.cpp",
 "inferred path"
-],
-"00801930": [
-"inferred/client/rendering/g3d/glg3dcpp/Shape.cpp",
-"merged unit, partial"
 ],
 "00801990": [
 "inferred/client/rendering/renderlib/TextureProxy.cpp",

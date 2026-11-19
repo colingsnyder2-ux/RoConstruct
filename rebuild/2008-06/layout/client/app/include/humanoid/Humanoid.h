@@ -216,6 +216,12 @@ namespace RBX
 		virtual G3D::Vector3 getIntendedMovementVector();
 		virtual float getIntendedRotationAboutYAxis();
 
+	// INFERRED: float computePartRenderData() - computes part render/selection data involving PartInstance and camera/ray operations
+	virtual float computePartRenderData() const;
+
+	// INFERRED: void onAxisMoveToolInteraction() - virtual AxisMoveTool interaction handling part drag/tool operations
+	virtual void onAxisMoveToolInteraction();
+
 		virtual void getCameraIgnorePrimitives(std::vector<const Primitive*>& primitives)
 		{
 			getIgnorePrims(primitives);
