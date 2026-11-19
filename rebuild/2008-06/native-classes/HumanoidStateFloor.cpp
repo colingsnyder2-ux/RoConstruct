@@ -53,29 +53,8 @@ float HumanoidState::getDesiredAltitude()
     return altitude;
 }
 
-// 006444f0
-// PARKED (header proposal): humanoid/Humanoid.h declares Humanoid::getPrimitives (005d9db0) private and places
-// world at +0x218 (the 2008 Humanoid has it at +0x21c, Humanoid2008.h), while Humanoid2008.h declares neither
-// getPrimitives nor the primitive getters 005d90a0..005d9100. A trial with the access opened compiled 390 bytes against
-// 374: world offset 0x218, and the early `!world` return emitted its own epilogue (target branches to the shared one).
-#if 0
-bool HumanoidState::onFloorStep()
-{
-    World* world = humanoid->getWorld();
-    if (!world)
-        return false;
-    std::vector<Primitive*> primitives;
-    humanoid->getPrimitives(primitives);
-    std::set<Primitive*> ignore(primitives.begin(), primitives.end());
-    if (humanoid->getTorsoPrimitive()
-        && world->getContactManager().intersectingOthers(humanoid->getTorsoPrimitive(), ignore, 0.0f))
-        return true;
-    if (humanoid->getHeadPrimitive()
-        && world->getContactManager().intersectingOthers(humanoid->getHeadPrimitive(), ignore, 0.0f))
-        return true;
-    return false;
-}
-#endif
+// 006444f0 onFloorStep: byte-exact in native-classes/HumanoidState.cpp since batch 25 (that unit reaches
+// humanoid/Humanoid2008.h, world +0x21c, and Humanoid2008.h now declares getPrimitives 005d9db0). Not duplicated here.
 
 }
 }

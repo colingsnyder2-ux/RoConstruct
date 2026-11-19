@@ -15,6 +15,7 @@
 #include "humanoid/HumanoidStates2.h"
 #define NATIVE_SIMJOB_PENDING  // RunningNoPhysics / StrafingNoPhysics (humanoid/HumanoidStates3.h, v8world/SimJob.h)
 #include "humanoid/HumanoidStates3.h"
+#include "v8world/ContactManager.h"   // onFloorStep 006444f0: intersectingOthers 0060d630 (engine-world header)
 
 namespace RBX {
 namespace HUMAN {
@@ -110,6 +111,29 @@ void HumanoidState::setTorsoHeadFlag(bool value)
         bool disabled = !value;
         owner->getHeadPrimitive()->setCanSleep(disabled);
     }
+}
+
+// 006444f0 (374 bytes, plain `ret`): moved here from HumanoidStateFloor.cpp in batch 25, because this unit reaches
+// humanoid/Humanoid2008.h (world +0x21c, HumanoidState a friend) where humanoid/Humanoid.h has world at +0x218.
+// world (Humanoid +0x21c) tested first (shared epilogue); Humanoid::getPrimitives 005d9db0 into a local vector,
+// std::set range constructor 00644420, getTorsoPrimitive 005d90a0 / getHeadPrimitive 005d9100 (each called twice),
+// World contactManager +0x84, ContactManager::intersectingOthers(Primitive*, const set&, float) 0060d630 with 0.0f;
+// set destructor 0064b230 and vector destructor 0067fb10. Donor tools/rbxgs humanoid/HumanoidState.cpp.
+bool HumanoidState::onFloorStep()
+{
+    if (World* world = humanoid->getWorld())
+    {
+        std::vector<Primitive*> primitives;
+        humanoid->getPrimitives(primitives);
+        std::set<Primitive*> ignore(primitives.begin(), primitives.end());
+        if (humanoid->getTorsoPrimitive()
+            && world->getContactManager().intersectingOthers(humanoid->getTorsoPrimitive(), ignore, 0.0f))
+            return true;
+        if (humanoid->getHeadPrimitive()
+            && world->getContactManager().intersectingOthers(humanoid->getHeadPrimitive(), ignore, 0.0f))
+            return true;
+    }
+    return false;
 }
 
 // 00643660 (836 bytes, cdecl; analog name): the state factory. Jump table 00643974 for cases 0..11 in getStateType order
