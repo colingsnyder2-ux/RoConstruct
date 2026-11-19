@@ -59,6 +59,8 @@ namespace RBX
 			virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet); // 004a1070
 			virtual XmlElement* write();                                            // 00416690 (ICF)
 			void disconnect(int blockDuration);                                     // 0049f0f0 (inlined in 0049f130)
+			// 004a0a70 (donor Client::connect; ret 0x28). Body in ClientRecovery_004a0a70.cpp.
+			void connect(std::string server, int serverPort, int clientPort, int threadSleepTime);
 
 		protected:
 			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider); // 0049fe50
