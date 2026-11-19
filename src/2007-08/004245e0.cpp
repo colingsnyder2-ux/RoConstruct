@@ -1,11 +1,38 @@
-// from server: 57% by colin
+// from server: 100% by Intel_Inside
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: templates-boost-1_34_1 vector_sp.cpp
+// roc-flags: /O2 /GS /EHsc /MD
 
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-struct T; typedef boost::shared_ptr<T> E;
-#include <vector>
-template class std::vector<E>;
+extern "C" {
+    extern void* (__cdecl *allocate)(unsigned int);
+}
+
+inline void* __cdecl operator new(unsigned int size)
+{
+    return allocate(size);
+}
+
+void __cdecl operator delete(void*);
+
+struct Product {
+    unsigned char storage[0xec];
+    Product();
+};
+
+struct Deleter {
+    union {
+        unsigned int value;
+        unsigned char unused;
+    };
+};
+
+struct Result {
+    Result(Product*, Deleter);
+};
+
+Result __cdecl create()
+{
+    Deleter deleter = { 0 };
+    *(volatile unsigned char*)&deleter.unused = 0;
+    return Result(new Product, deleter);
+}

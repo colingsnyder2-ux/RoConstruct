@@ -134,5 +134,8 @@ namespace RBX
 	{
 	public:
 		Hat();
+		// INFERRED: 00575890 case '=' calls this with the ModelInstance* returned by
+		// Network::Players::findLocalCharacter; selected-image call target 0x5b17c0.
+		static void dropAll(ModelInstance*);
 	};
 }

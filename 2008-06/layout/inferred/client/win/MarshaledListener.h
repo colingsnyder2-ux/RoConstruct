@@ -8,6 +8,9 @@ namespace RBX {
 CMarshalWindow* __cdecl acquireMarshalWindow();
 void __cdecl releaseMarshalWindow(CMarshalWindow*);
 
+// INFERRED: from binary evidence at 00464af0 - EventData layout observation.
+}
+
 template<class Source, class Event, class Target = Source, class TargetEvent = Event>
 class MarshaledListener : public Listener<Source, Event> {
 public:

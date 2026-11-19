@@ -51,6 +51,12 @@ namespace RBX
 		mutable boost::shared_ptr<Camera> currentCamera;
 		boost::shared_ptr<Camera> cameraTemplate;
 		double unknown0x410, unknown0x418, unknown0x420;
+		// INFERRED: 005a00f0/005a0100/005a0110 read these three fields at +0x410/+0x418/+0x420;
+		// 005a0120 adds all three in the same order. Placeholder names (identity tier), bodies byte-proved.
+		double getUnknown0x410() const;                 // 005a00f0
+		double getUnknown0x418() const;                 // 005a0100
+		double getUnknown0x420() const;                 // 005a0110
+		double getUnknownSum() const;                   // 005a0120
 	public:
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner;
@@ -99,7 +105,7 @@ namespace RBX
 		Workspace(IDataState* dataState);
 		virtual ~Workspace();
 		// INFERRED: 005a05c0, placeholder name (identity tier), body byte-proved
-		int sub_005a05c0() const;
+		Camera* sub_005a05c0() const;   // INFERRED: reads currentCamera (+0x3fc, shared_ptr<Camera> px), proved against 005a05c0 asm
 		// INFERRED: 005a0df0, callgraph-adjacency: neighbours=1
 		void sub_005a0df0();
 	public:

@@ -36,8 +36,7 @@ class XBoolItem : public BoolItemBase {
 public:
     XBoolItem(const RBX::Reflection::TypedPropertyDescriptor<bool>* property, CPropGrid* grid); // defined in XBoolItemRecovery_0043d330.cpp
     virtual ~XBoolItem(); // INFERRED: binary evidence shows no custom cleanup required; base class handles destruction
-    bool IsEnabled() const;   // INFERRED: enabled flag at binary offset 0x11c; checked in OnDrawItemValue at 0043d3a6
-    virtual int OnDrawItemValue(CDC& dc, CRect rect); // INFERRED: vftable slot 22 (+0x58) from vtable 0x81469c; 325 bytes; primary virtual override
+    virtual int OnDrawItemValue(CDC& dc, CRect rect); // INFERRED: vftable slot 26 (+0x68) from vtable 0x81469c; 325 bytes; primary virtual override
 };
 
 // Native attachment algorithm; use the real descriptor map and SDK ownership.

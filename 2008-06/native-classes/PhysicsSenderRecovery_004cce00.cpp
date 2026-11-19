@@ -1,67 +1,146 @@
-// 2008-06 native RBX::Network::PhysicsSender recovery unit.
-// The class and its declared members come from the authentic native header
-// Network/PhysicsSenders2008.h (RTTI / vftable 00826928 / link order recovered by the owner).
-// This unit provides the step() and sendPackets() method bodies that were
-// declared open (needing the native Replicator) in the header.
-//
-// 004cce00 (880 bytes)  PhysicsSender::sendPackets(int maxPackets) - vftable slot 2
-//   passes maxPackets argument, compares with iterator at +0x38, advances through
-//   ordered index nodes, copies PartItem designations with 004c9d90, returns sent count
-// 004cd920 (921 bytes)  PhysicsSender::step() - vftable slot 1
-//   increments step counter at +0x40, creates PhysicsService via
-//   ServiceProvider::create<PhysicsService>(replicator) at +0x3c, iterates particle
-//   index, sends physics updates
-//
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// 2008-06 native RBX::Network::PhysicsSender step/sendPackets recovery (inactive).
+// Layout and virtual identities: native-headers/Network/PhysicsSenders2008.h.
+// Statement order follows the byte-exact mined analogs; all object access uses the native classes.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 #include "Network/PhysicsSenders2008.h"
+#include "Network/Replicator2008.h"
+#include "Network/NetworkSettings.h"
+#include "Network/Player.h"
+#include "AppUnit49C_2008/Streaming2008.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/PhysicsService.h"
+#include "v8tree/Service.h"
+#include "reflection/signal.h"
+#include <RakPeerInterface.h>
+#include <GetTime.h>
+#include <boost/bind.hpp>
+#include <algorithm>
+
+namespace
+{
+	// Mutable .data float 0093cc40 in the client.
+	float physicsResetValue = 2.0f;
+
+	// 004c9cf0: the modifier bound by sendPackets at 004cd02d.
+	void resetPhysicsItem(RBX::Network::PhysicsSender::PartItem& item)
+	{
+		item.lastFrame = item.part->getCoordinateFrame();
+		item.accumulated = physicsResetValue;
+		item.lastSendStep = 0;
+	}
+}
 
 namespace RBX
 {
 	namespace Network
 	{
-		void PhysicsSender::step()
-		{
-			// increment step counter at +0x40
-			stepCount++;
-
-			// create PhysicsService from replicator, passed at +0x3c in step 004cd920
-			physicsService = ServiceProvider::create<PhysicsService>(replicator);
-
-			// iterate through the ordered index (index 1: priority),
-			// advance iterator and send physics updates for each part
-			// (the ordered node at node +0x60 is walked, PartItem copied with 004c9d90)
-			for (auto it = nextItem; it.is_valid(); )
-			{
-				// copy the PartItem from the ordered index node (004c9d90)
-				PartItem item = *it;
-				++it;  // advance iterator through ordered index
-
-				// send physics update for this part -
-				// uses part.getCoordinateFrame (+0x10), accumulated (+0x40),
-				// lastSendStep (+0x44), error (+0x48)
-				(void)item;
-			}
-		}
-
 		int PhysicsSender::sendPackets(int maxPackets)
 		{
-			int sent = 0;
+			PartItems::nth_index<1>::type& index = items.get<1>();
+			PartItems::nth_index<1>::type::iterator& cursor = nextItem;
+			unsigned int maxBytes = this->replicator->peer->GetMTUSize(this->replicator->remotePlayerId);
+			maxBytes += NetworkSettings::singleton().physicsMtuAdjust;
+			RakNet::BitStream packet(maxBytes);
+			int packets = 0;
+			bool open = false;
 
-			// traverse the ordered index, copying PartItem designations
-			// until we've sent maxPackets or run out of parts
-			// (sendPackets 004cce00 compares with that index's header node,
-			//  advances through the ordered node at node +0x60, and copies the item)
-			for (auto it = nextItem; it.is_valid() && sent < maxPackets; )
+			while (cursor != index.end())
 			{
-				// copy the PartItem from the ordered index node (004c9d90)
-				PartItem item = *it;
-				++it;  // advance iterator
+				if (!open)
+				{
+					if (packets >= maxPackets)
+						break;
+					packet.Reset();
+					++packets;
+					open = true;
+					packet << (unsigned char)24;
+					packet << (int)RakNet::GetTime();
+					packet << (unsigned char)80;
+				}
 
-				// send packet for this part
-				sent++;
+				PartItem snapshot(*cursor);
+				if (!writePhysicsSnapshot(packet, snapshot))
+				{
+					++cursor;
+					continue;
+				}
+
+				if (snapshot.part->getPrimitive()->getAssembly())
+				{
+					snapshot.accumulated = physicsResetValue;
+					snapshot.lastFrame = snapshot.part->getCoordinateFrame();
+					index.modify(cursor, boost::bind(&resetPhysicsItem, _1));
+					++cursor;
+				}
+				else
+				{
+					cursor = index.erase(cursor);
+				}
+
+				if ((unsigned int)packet.GetNumberOfBytesUsed() > maxBytes)
+				{
+					this->replicator->serializeId(packet, 0);
+					this->replicator->peer->Send(&packet, MEDIUM_PRIORITY, RELIABLE_SEQUENCED, 0,
+						this->replicator->remotePlayerId, false);
+					open = false;
+				}
 			}
 
-			return sent;
+			if (open)
+			{
+				this->replicator->serializeId(packet, 0);
+				this->replicator->peer->Send(&packet, MEDIUM_PRIORITY, RELIABLE_SEQUENCED, 0,
+					this->replicator->remotePlayerId, false);
+			}
+			return packets;
+		}
+
+		void PhysicsSender::step()
+		{
+			if (!physicsService)
+			{
+				physicsService = shared_from(ServiceProvider::create<PhysicsService>(replicator));
+				std::for_each(physicsService->parts.begin(), physicsService->parts.end(),
+					boost::bind(&PhysicsSender::addPhysicsInstance, this,
+						boost::bind(&shared_from<Instance>, _1)));
+				partAddedConnection = PhysicsService::eventAdded.connect(physicsService.get(),
+					boost::bind(&PhysicsSender::addPhysicsInstance, this, _1), 10);
+			}
+
+			++stepCount;
+			ModelInstance* character = 0;
+			G3D::CoordinateFrame playerFrame;
+			Player* player = this->replicator->findTargetPlayer();
+			if (player)
+			{
+				character = player->getCharacter();
+				if (character)
+				{
+					PartInstance* primary = character->getPrimaryPart();
+					if (primary)
+						playerFrame = primary->getCoordinateFrame();
+				}
+			}
+
+			int budget = NetworkSettings::singleton().physicsReplicationUpdateRate / 30;
+			if (!budget)
+				budget = 1;
+			PartItems::nth_index<2>::type& index = items.get<2>();
+			while (budget > 0)
+			{
+				PartItems::nth_index<2>::type::iterator next = index.begin();
+				if (next == index.end())
+					break;
+				PartItem snapshot(*next);
+				if (snapshot.lastSendStep > 0)
+					--budget;
+				if (snapshot.update(playerFrame, character, stepCount))
+					index.replace(next, snapshot);
+				else
+					break;
+			}
+			nextItem = items.get<1>().begin();
 		}
 	}
 }

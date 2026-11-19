@@ -1,23 +1,18 @@
-// from server: 70% by EspClaude
-// from server: 56% by colin
+// from server: 100% by Intel_Inside
+// sibling shape from 00434700/0040c7b0: plain factory, ctor declared not defined
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 roc_claude_02ac2c519b299c11.cpp
+// roc-cl: 50727
 
-// Candidate translation unit (score above; library headers required).
-// Codegen analog of an IMPLEMENT_DYNCREATE CreateObject: `return new CPatchedControlComboBox;`
-// Object size 0x148 is the size the target passes to operator new.
-class CObject;
-class CPatchedControlComboBox
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
+
+struct CPatchedControlComboBox
 {
-public:
+    char storage[0x148];
     CPatchedControlComboBox();
-    static CObject* __stdcall CreateObject();
-private:
-    char storage_[0x148];
 };
-CObject* __stdcall CPatchedControlComboBox::CreateObject()
+
+CPatchedControlComboBox* createPatchedControlComboBox()
 {
-    return (CObject*)new CPatchedControlComboBox;
+    return new CPatchedControlComboBox;
 }

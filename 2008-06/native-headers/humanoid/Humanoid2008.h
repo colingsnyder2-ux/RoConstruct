@@ -126,6 +126,9 @@ namespace RBX
 	public:
 		float getHealth() const { return health; }           // 005d74b0
 		float getMaxHealth() const { return maxHealth; }     // 005d74c0
+		// INFERRED: donor humanoid/Humanoid.h declares this inline helper; renderMultiplayer 005db878..005db884
+		// divides +0x1a8 by +0x1ac directly, which is exactly this inline's codegen.
+		float relativeHealth() const { return health / maxHealth; }
 		G3D::Vector3 getWalkDirection() const { return walkDirection; }        // 005d74d0
 		float getWalkRotationalVelocity() const { return walkRotationalVelocity; } // 005d7500
 		const G3D::Vector3& getWalkToPoint() const { return walkToPoint; }     // 005d7510

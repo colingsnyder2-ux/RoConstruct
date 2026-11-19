@@ -1,5 +1,9 @@
-// from server: 91% by EspClaude
-// roc 2007-08 0043bf40  XItem setter: lock the data model, then forward to a virtual setter
+// from server: 100% by Intel_Inside
+// variant e: like d but through an inline accessor taking the base pointer
+// (mirrors sibling 0043bbe0: conversion at inline-call boundary)
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS /EHsc /MD
 struct DataModel;
 struct Lock {
     void* a; void* b; void* c;
@@ -15,7 +19,11 @@ struct Converter {
     virtual void slot1();
     virtual void set(const Base1* object, const Value& value) = 0;
 };
-struct Holder { char pad[0x18]; Converter* converter; };
+struct Holder {
+    char pad[0x18];
+    Converter* converter;
+    void forward(const Base1* object, const Value& value) { return converter->set(object, value); }
+};
 struct View { char pad[0x188]; DataModel* dataModel; };
 
 struct XItem {
@@ -28,8 +36,5 @@ struct XItem {
 void XItem::set(const Name* name, const Value& value)
 {
     Lock lock(view->dataModel);
-    const Base1* object = 0;
-    if (name)
-        object = name;
-    holder->converter->set(object, value);
+    holder->forward(name, value);
 }

@@ -44,10 +44,16 @@ namespace RBX
 			virtual void suppressSkybox();                                  // 004d9c90
 			virtual Instance* getWorkspace();                               // 004d7370
 			virtual RenderStats& getRenderStats();                          // 004db6f0
+			// 004d71a0: sets global debug flags showFrameRate and showProfile
+			static void setDebug(bool b);
 		private:
 			virtual void onWorkspaceDescendentAdded(boost::shared_ptr<Instance> descendent); // 004db7c0
 			virtual void updateLighting();                                  // 0047d410 (folded)
 			virtual void invalidateLighting(bool updateSkybox);             // 004d7180
 		};
+
+		// INFERRED: globals at 0x94065c and 0x9413c0 set by ViewRbxGfx::setDebug (004d71a0)
+		extern bool showFrameRate;
+		extern bool showProfile;
 	}
 }

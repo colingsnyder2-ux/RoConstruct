@@ -30,6 +30,9 @@ namespace RBX
     namespace Lua
     {
         class YieldingThreads;
+        // INFERRED: 0061c790 RBX::Lua::LuaArguments — lua_tolstring(thread, index, 0); on NULL falls back to
+        // the char* global at 0x95b1cc (called once by resume 005aeb80 in the error path)
+        const char* LuaArguments(lua_State* thread, int index);
     }
 
     extern char sScriptContext[];

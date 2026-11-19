@@ -11,9 +11,17 @@
 // The 005c3f80 / 005c42d0 COMDATs this unit emits are exact, so the 2008 Mark bodies equal the header ones.
 // include its native header; add missing declarations to that header under lease as // INFERRED: lines.
 
+#define NATIVE_PRIMITIVE_NATIVE_BODY
+#define NATIVE_KERNEL_STAGE_NUMBERING
+
+#include "v8kernel/Connector2008.h"
 #include "v8kernel/Kernel2008.h"
-#include "v8kernel/KernelData.h"
+#include "v8kernel/KernelData2008.h"
+#include "kernel/Constants2008.h"
+
+#pragma auto_inline(off)
 #include "util/Profiling.h"
+#pragma auto_inline(on)
 
 namespace RBX
 {

@@ -84,6 +84,7 @@ public:
     bool canTransition(int event);
     bool tipped() const;   // 00643a30 (analog name): sub-call 006439b0 float compared with 0x82f83c
     bool upright() const;  // 00643a50 (analog name): same float compared with 0x826fc8
+    float getRatio() const; // 006439b0 (INFERRED: helper called by tipped/upright)
     // 006451c0 (thiscall, ret 4): per-step update (analog name).
     void preStep(float dt);
     // 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name).
