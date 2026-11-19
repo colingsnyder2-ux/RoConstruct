@@ -814,7 +814,7 @@ function parseFilter(text, units) {
 
 const MINING_LEGEND = `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span>`;
-const NATIVE_LEGEND = `<span><i style="background:${NC.authentic}"></i>authentic</span><span><i style="background:${NC.organized}"></i>organized</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:${NC.inactive}"></i>inactive native</span><span><i style="background:${NC.draft}"></i>draft native</span><span><i style="background:#d29922"></i>partial</span><span><i style="background:${NC.none}"></i>source analogs / unmined</span>`;
+const NATIVE_LEGEND = `<span><i style="background:${NC.organized}"></i>organized</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:${NC.inactive}"></i>inactive native</span><span><i style="background:${NC.draft}"></i>draft native</span><span><i style="background:${NC.none}"></i>source analogs / unmined</span>`;
 
 const FILE_COLOR = {a: NC.organized, i: NC.organized, m: NC.none, g: "#3fb950", u: "#2b3a31", x: "#6b3a3a"};
 // Organized files are drawn in the Organized colour, darker the less of their code has native exact code (completion %).
@@ -1222,7 +1222,7 @@ async function client(name) {
     }
     frames = [...folders.entries()].map(([folder, items]) => ({folder, items, v: items.reduce((a, it) => a + it.v, 0)})).sort((a, b) => b.v - a.v);
     const sm = fileData.summary, own = fileData.summary_own, t = fileData.summary_source;
-    document.getElementById("filesummary").innerHTML = `A best guess of the original source tree: <b>${fmt(own.a + own.i + own.m)}</b> paths with code in the 2008 exe, listed by the 2007 server PDB, the 2008 exe, OpenRBX, the iOS 2013 and Android 2014 builds or the 2016 leak (${fmt(t.a + t.i + t.m)} are .c/.cpp files, the rest headers): <b>${fmt(own.a + own.i)}</b> organized · <b>${fmt(own.m)}</b> missing (we have functions for them but no source yet). Of the .c/.cpp files: ${fmt(t.a + t.i)} organized · ${fmt(t.m)} missing. ${fmt(fileData.hidden_unconnected || 0)} more listed paths are not drawn because none of our functions connect to them (compiler headers, 2013+ only files, RCCService and server code). No path here is proven for 2008 (there is no 2008 PDB); a path seen by several sources is a stronger guess. Hover a tile to see which sources listed the path; a path seen by several is the stronger guess, and paths seen only by 2013+ builds may not have existed in 2008. Tile size is the code tied to the path by census evidence (small tiles have none yet). Layout commit <code>${esc(fileData.commit)}</code>.`;
+    document.getElementById("filesummary").innerHTML = `Original source tree: <b>${fmt(own.a + own.i)}</b> organized · <b>${fmt(own.m)}</b> missing (${fmt(t.a + t.i)} / ${fmt(t.a + t.i + t.m)} .cpp files) · <b>${pct(own.a + own.i, own.a + own.i + own.m)}</b> of 2008 paths. Tile size = code bytes. <details style="display:inline"><summary style="cursor:pointer;color:var(--accent2)">Sources &amp; details</summary> <span class="note">${fmt(own.a + own.i + own.m)} paths with 2008 code from 2007 PDB, OpenRBX, mobile builds &amp; 2016 leak (${fmt(fileData.hidden_unconnected || 0)} unconnected paths omitted). No 2008 PDB exists; paths are best guesses. Layout commit <code>${esc(fileData.commit)}</code>.</span></details>`;
     squarify(frames, 0, 0, r.width, r.height);
     boxes = [];
     for (const fr of frames) {
@@ -1283,9 +1283,9 @@ async function client(name) {
     const {x, y, b} = hit(e);
     if (!b) { tip.style.display = "none"; return; }
     const named = !b.p && native && native.names[hex(b.f[0])];
-    tip.textContent = b.p ? `${b.p[0]} • ${FILE_STATUS[b.p[1]]}${b.p[2] ? " • " + fmt(b.p[2]) + " B" : ""}${(b.p[1] === "a" || b.p[1] === "i") && b.p[7] != null ? " • " + b.p[7] + "% complete" : ""}${b.p[4] && !b.p[0].startsWith("libraries/") ? " • seen by: " + tagText(b.p[4]) : ""}`
+    tip.textContent = b.p ? `${b.p[0]} • ${fmt(b.p[2] || 0)} B • ${b.p[7] != null ? b.p[7] + "%" : "0%"}`
       : mapMode === "native"
-      ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${({integrated: "integrated", inactive: "inactive native (exact)", draft: "draft native", exact: "source analog"})[nativeKind(b.f)] || (b.f[2] ? b.f[2] + "% mined" : "unmined")}`
+      ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${({organized: "organized", integrated: "integrated", inactive: "inactive native", draft: "draft native"})[nativeKind(b.f)] || "source analog / unmined"}`
       : `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
     tip.style.display = "block";
     tip.style.left = Math.max(0, Math.min(x + 12, cv.clientWidth - tip.offsetWidth)) + "px";
@@ -1296,7 +1296,11 @@ async function client(name) {
     const {b} = hit(e);
     if (b && b.p) {
       const [path, st, bytes, exp, tags, tiers, alt, pct] = b.p, lib = path.startsWith("libraries/");
-      document.getElementById("detail").innerHTML = `<div class="function-card"><strong>${esc(path)}</strong><br><span class="function-status">${esc(({a: "Organized · a single native file, object identical to the live source; its path is a best guess from the evidence below", i: "Organized · native source exists (a merged unit, an inferred path or a header); its path is a best guess from the evidence below", m: "Missing · no native source exported for this path", x: "Code the function map could not place in any file", g: "Library file · matched to upstream source by bytes", u: "Library file · no exe function matches it"})[st])}</span><div class="function-meta">${bytes ? fmt(bytes) + (lib ? " bytes matched" : " bytes of code tied to this path") : (lib ? "no exe function matches this file" : "no code tied to this path yet")}${(st === "a" || st === "i") && pct != null ? " · " + pct + "% of it has native exact code" : ""}</div>${lib || st === "x" ? "" : `<p class="note">Seen by: ${esc(tagText(tags))}</p>`}${tiers ? `<p class="note">Functions assigned to this file by: ${tiers.split(",").map(t => { const [k, n] = t.split(":"); return esc((fileData.tier_names || {})[k] || k) + " " + fmt(+n) + " B"; }).join(" · ")}</p>` : ""}${alt ? `<p class="note">Other places this file is listed or its functions are placed: ${alt.split(";").map(x => { const [p, n] = x.split("|"); return `<code>${esc(p)}</code> (${/^[a-z]+$/.test(n) ? "also listed by " + tagText(n) : n + " functions"})`; }).join(", ")}</p>` : ""}${exp ? `<p class="note">Native source: <a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${exp.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">${esc(exp)}</a> on the layout branch</p>` : ""}</div>`;
+      const statusText = ({a: "Organized", i: "Organized", m: "Missing · no native source", x: "Template machinery / unplaced", g: "Library file · matched", u: "Library file · unmatched"})[st] || "Missing";
+      const meta = `${fmt(bytes || 0)} bytes${(st === "a" || st === "i") && pct != null ? " · " + pct + "% native exact" : ""}`;
+      const srcLink = exp ? `<span class="source-links"><a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${exp.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">Native source ↗</a></span>` : "";
+      const techDetails = (tags || tiers || alt) ? `<details><summary style="cursor:pointer;color:var(--accent2)">Technical details</summary>${tags ? `<p class="note">Seen by: ${esc(tagText(tags))}</p>` : ""}${tiers ? `<p class="note">Functions assigned by: ${tiers.split(",").map(t => { const [k, n] = t.split(":"); return esc((fileData.tier_names || {})[k] || k) + " " + fmt(+n) + " B"; }).join(" · ")}</p>` : ""}${alt ? `<p class="note">Other places listed: ${alt.split(";").map(x => { const [p, n] = x.split("|"); return `<code>${esc(p)}</code> (${/^[a-z]+$/.test(n) ? "also listed by " + tagText(n) : n + " functions"})`; }).join(", ")}</p>` : ""}</details>` : "";
+      document.getElementById("detail").innerHTML = `<div class="function-card"><strong>${esc(path)}</strong><br><span class="function-status">${esc(statusText)}</span><div class="function-meta">${meta}</div>${srcLink}${techDetails}</div>`;
     }
     else if (b) showFunction(b.f);
   };
@@ -1304,7 +1308,7 @@ async function client(name) {
     const named=native?.names[hex(f[0])], integrated=nativeSet.has(hex(f[0]));
     const readable=named && !named[0].startsWith("?") ? named[0] : "";
     document.getElementById("detail").innerHTML=`<div class="function-card"><strong>${esc(readable || units[f[3]])}</strong><br>
-      <span class="function-status">${native?.authentic?.[hex(f[0])] ? "Authentic · original path " + esc(authPath(native.authentic[hex(f[0])])) + " · " : native?.organized?.[hex(f[0])] ? "Organized · " + esc(native.organized[hex(f[0])][1] || "") + " · " + esc(authPath(native.organized[hex(f[0])])) + " · " : ""}${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
+      <span class="function-status">${(native?.authentic?.[hex(f[0])] || native?.organized?.[hex(f[0])]) ? "Organized" : integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact" : "Draft native code") : f[2]===100 ? "Source analog · awaiting native code" : "Not exact"}</span>
       <div class="function-meta">${hex(f[0])} · ${fmt(f[1])} bytes · ${f[2]}% matched</div>${sourceLinks(name,f)}
       ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Integrated source location not indexed yet.</p>' : ""}
       ${named || f[6] ? `<details><summary>Technical details</summary>${named ? `<p>Symbol <code>${esc(named[1])}</code></p>` : ""}${f[6] ? `<p>Family <code>${esc(f[6])}</code></p>` : ""}</details>` : ""}
@@ -1325,8 +1329,8 @@ async function client(name) {
     if (fileish) { try { await loadFiles(); } catch (e) { document.getElementById("filesummary").textContent = "map data not published yet"; return; } }
     layout();
   };
-  const nativeKind = f => { const a = hex(f[0]), x = native?.inactive?.[a]; return native?.authentic?.[a] ? "authentic" : native?.organized?.[a] ? "organized" : nativeSet.has(a) ? "integrated" : x ? (x[1] ? "inactive" : "draft") : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined"; };
-  const nativeColor = f => ({...NC, exact: NC.exact, partial: "#d29922", unmined: NC.none})[nativeKind(f)];
+  const nativeKind = f => { const a = hex(f[0]), x = native?.inactive?.[a]; return (native?.authentic?.[a] || native?.organized?.[a]) ? "organized" : nativeSet.has(a) ? "integrated" : x ? (x[1] ? "inactive" : "draft") : "none"; };
+  const nativeColor = f => NC[nativeKind(f)] || NC.none;
   onresize = layout;
   layout();
   if (mapMode === "files") {      // first view: the source-file map, once its data arrives; fall back to Integration
