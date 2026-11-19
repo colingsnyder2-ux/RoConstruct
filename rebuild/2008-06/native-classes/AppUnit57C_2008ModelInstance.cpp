@@ -43,10 +43,7 @@ namespace RBX
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }   // 00584c10
 
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // 00585520
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) 00585520 is defined inline by reflection/reflection.h (an out-of-line copy here is C2995).
 
 	static const Name& partName = Name::declare(sModel, 2000);
 
@@ -272,18 +269,25 @@ namespace RBX
 		return biggestPart;
 	}
 
+	// Free function of the drag-utilities unit (defined in native-classes/DragPrimitiveBounds.cpp; identity registry
+	// ?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@...@Z). Local declaration: the donor
+	// tool/DragUtilities.h has no 2008 declaration of it.
+	void collectPrimitives(const Instance* object, std::vector<Primitive*>& output); // 0060f340
+
 	// 00584d80: exact only with the 2008 Primitive (geometry +0x9c, native-headers/part-embedded) and inline
 	// Extents::zero / negativeInfiniteExtents (00583860 / 00583920 are their COMDAT bodies; proposal).
+	// The original fills a vector<Primitive*> through collectPrimitives 0060f340 (cdecl, add esp 8), not the donor
+	// DragUtilities::getPrimitivesConst.
 	Extents ModelInstance::computeLocalGridExtents() const
 	{
-		std::vector<const Primitive*> primitives;
-		DragUtilities::getPrimitivesConst(this, primitives);
+		std::vector<Primitive*> primitives;
+		collectPrimitives(this, primitives);
 
 		Extents answer = Extents::negativeInfiniteExtents();
 
 		for (size_t i = 0; i < primitives.size(); i++)
 		{
-			const Primitive* primitive = primitives[i];
+			Primitive* primitive = primitives[i];
 			Extents localExtents = primitive->getExtentsLocal();
 			Extents childExtentsInMe = localExtents.express(primitive->getCoordinateFrame(), getLocation());
 			answer.unionWith(childExtentsInMe);

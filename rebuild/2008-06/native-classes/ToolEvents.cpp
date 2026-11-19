@@ -147,6 +147,10 @@ namespace RBX
 		}
 	}
 
+#if 0 // BLOCKED (batch 25): v8datamodel/JointInstance.h declares Weld : DescribedCreatable<Weld, JointInstance, sWeld>
+	// with no setC1; the original calls AutoJoint::setC1 005e44c0 on the weld (identity registry
+	// ?setC1@AutoJoint@RBX@@QAEXABVCoordinateFrame@G3D@@@Z). Needs a JointInstance.h owner decision (setC0/setC1 reachable
+	// from Weld); proposal in the batch 25 result. Guarded so the rest of this unit compiles.
 	// 005ffb70: CoordinateFrame != 004765e0, find<Workspace> 00491e50, raiseDrawChanged (Notifier raise 00576940 at
 	// Workspace +0x344), raisePropertyChanged 0040db00 (prop_Grip 0097b7a8), weld (+0x1a4) setC1 005e44c0
 	void Tool::setGrip(const G3D::CoordinateFrame& value)
@@ -164,4 +168,5 @@ namespace RBX
 				weld->setC1(grip);
 		}
 	}
+#endif
 }
