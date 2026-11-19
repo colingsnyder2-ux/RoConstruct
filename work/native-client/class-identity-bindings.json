@@ -1838,10 +1838,10 @@
    "identity_evidence": "callDoDeclare<sX> instantiation: 5-byte jump to the proven doDeclare<sX> at 00666a50"
   },
   {
-   "symbol": "??0FactoryProduct@RBX@@QAE@XZ",
+   "symbol": "??0RotateV@RBX@@QAE@XZ",
    "address": "005e4dd0",
    "votes": 1,
-   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name sub_005e4dd0 is a placeholder)"
+   "identity_evidence": "RTTI: identities.json unique[005e4dd0] = class RBX::RotateV [subobject +304]; byte-equal RotateV::RotateV() (replaces inferred FactoryProduct placeholder)"
   },
   {
    "symbol": "??1Thunk_005c2b80@@UAE@XZ",
@@ -10370,10 +10370,10 @@
    "identity_evidence": "exact-target-coff-reference-alias (functor_lane: byte-equal body at 004a0900 references it here)"
   },
   {
-   "symbol": "?registerClass@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "symbol": "?registerClass@?$Bridge@PBVItem@EnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
    "address": "005a9c70",
    "votes": 1,
-   "identity_evidence": "ptr-string identity: EnumItem comparable"
+   "identity_evidence": "ptr-string identity: EnumItem comparable | corrected to Bridge<T,false> (SingletonBridge base, ScriptContextRecovery_005aefa0)"
   },
   {
    "symbol": "??$?0VGenericSlotAdapter@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@@?$function0@XV?$allocator@X@std@@@boost@@QAE@VGenericSlotAdapter@?$SignalDescImpl@$0A@$$A6AXXZ@Reflection@RBX@@H@Z",
@@ -10862,10 +10862,10 @@
    "votes": 1
   },
   {
-   "symbol": "?registerClass@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "symbol": "?registerClass@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
    "address": "005aabf0",
    "votes": 1,
-   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptorsPtr, true>; byte-equal member of that instantiation"
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptorsPtr, true>; byte-equal member of that instantiation | corrected to Bridge<T,false> (SingletonBridge base, ScriptContextRecovery_005aefa0)"
   },
   {
    "symbol": "?className@?$Bridge@PBVAllEnumDescriptors@Lua@RBX@@$00@Lua@RBX@@1PBDB",
@@ -11252,10 +11252,10 @@
    "votes": 1
   },
   {
-   "symbol": "?registerClass@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@SAXPAUlua_State@@@Z",
+   "symbol": "?registerClass@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$0A@@Lua@RBX@@SAXPAUlua_State@@@Z",
    "address": "005aacc0",
    "votes": 1,
-   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::Lua::EnumDescriptorPtr, true>; byte-equal member of that instantiation"
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::Lua::EnumDescriptorPtr, true>; byte-equal member of that instantiation | corrected to Bridge<T,false> (SingletonBridge base, ScriptContextRecovery_005aefa0)"
   },
   {
    "symbol": "?className@?$Bridge@PBVEnumDescriptor@Reflection@RBX@@$00@Lua@RBX@@1PBDB",
@@ -11570,10 +11570,10 @@
    "identity_evidence": "typeid: class RBX::TextureId"
   },
   {
-   "symbol": "??$getValue@Vany@boost@@@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVany@boost@@@Z",
+   "symbol": "??$getValue@VValue@Reflection@RBX@@@?$Bridge@VBrickColor@RBX@@$00@Lua@RBX@@SA_NPAUlua_State@@IAAVValue@Reflection@2@@Z",
    "address": "005ac270",
    "votes": 1,
-   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::BrickColor, true>; byte-equal member of that instantiation"
+   "identity_evidence": "RTTI: the body at this address stores the vftable of RBX::Lua::Bridge<RBX::BrickColor, true>; byte-equal member of that instantiation | corrected: caller 005ad5ff passes Value& and body calls Value::operator=<BrickColor> 48bca0 (LuaArguments2008Recovery_005ad380)"
   },
   {
    "symbol": "??_EWeld@RBX@@WBA@AEPAXI@Z",
@@ -12222,6 +12222,1086 @@
    "address": "00565ff0",
    "votes": 1,
    "identity_evidence": "RTTI: identities.json unique[006388b0] = Value<G3D::Color3,&sColor3Value>; native_reference_alias_bind.py derived 00565ff0 from the original relocation in the byte-exact Color3 constructor at 006388b0 (twin of Vector3 askSetParent)"
+  },
+  {
+   "symbol": "?loadGeoPairPointPlane@BlockBlockContact@RBX@@AAEXHHHW4NormalId@2@0@Z",
+   "address": "00607f90",
+   "votes": 1,
+   "identity_evidence": "INFERRED: donor v8world/Contact.cpp loadGeoPairPointPlane body; byte-exact 148-byte body at 00607f90, owner class RBX::BlockBlockContact (RTTI vtable 00843714), POINT_PLANE_PAIR=4 face-vertex stores to GeoPair"
+  },
+  {
+   "symbol": "??_GFilePacketLogger@@UAEPAXI@Z",
+   "address": "004ab7f0",
+   "votes": 1,
+   "identity_evidence": "Owner-recovered FilePacketLogger vftable slots, RTTI and link order supplied by the class assignment; both are exact-tier vftable slots."
+  },
+  {
+   "symbol": "?UserIDTOString@FilePacketLogger@@UAEPADE@Z",
+   "address": "004aae00",
+   "votes": 1,
+   "identity_evidence": "Owner-recovered FilePacketLogger vftable slots, RTTI and link order supplied by the class assignment; both are exact-tier vftable slots."
+  },
+  {
+   "symbol": "?BLOCK_FACE_TO_VERTEX@Block@RBX@@2QAY03$$CBHA",
+   "address": "0084aec8",
+   "votes": 1,
+   "identity_evidence": "reference of ?loadGeoPairPointPlane@BlockBlockContact@RBX@@AAEXHHHW4NormalId@2@0@Z (identified at 00607f90: donor v8world/Contact.cpp loadGeoPairPointPlane body byte-exact at 00607f90; RTTI owner RBX::BlockBlockContact vtable 00): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$01@Re",
+   "address": "00559cb0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name BoundFuncDesc is a placeholder)"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VInstance@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$01@Re",
+   "address": "00579360",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name BoundFuncDesc is a placeholder)"
+  },
+  {
+   "symbol": "?sub_0064a420@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
+   "address": "0064a420",
+   "votes": 1,
+   "identity_evidence": "RBX::CleanStage RTTI 0084b05c -> IWorldStage -> IStage; owner-recovered class and declarations; 0064a510 is own-vft slot 5 (onEdgeRemoving), 0064a420/0064a460 callgraph-adjacent members; statement order from src/2008-06 analogs"
+  },
+  {
+   "symbol": "?sub_0064a460@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
+   "address": "0064a460",
+   "votes": 1,
+   "identity_evidence": "RBX::CleanStage RTTI 0084b05c -> IWorldStage -> IStage; owner-recovered class and declarations; 0064a510 is own-vft slot 5 (onEdgeRemoving), 0064a420/0064a460 callgraph-adjacent members; statement order from src/2008-06 analogs"
+  },
+  {
+   "symbol": "?sub_0064a510@CleanStage@RBX@@QAEXPAVEdge@2@@Z",
+   "address": "0064a510",
+   "votes": 1,
+   "identity_evidence": "RBX::CleanStage RTTI 0084b05c -> IWorldStage -> IStage; owner-recovered class and declarations; 0064a510 is own-vft slot 5 (onEdgeRemoving), 0064a420/0064a460 callgraph-adjacent members; statement order from src/2008-06 analogs"
+  },
+  {
+   "symbol": "?clear@InstanceView@?A0xf270ebab@@QAEXXZ",
+   "address": "0055afd0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?clearMouseCommand@WorkspaceView@?A0xf270ebab@@QAEXXZ",
+   "address": "0055afd0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?dispatcher@?A0xf270ebab@@3PAUDispatcherView@1@A",
+   "address": "00976b94",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?finish@ScriptView@?A0xf270ebab@@QAEXXZ",
+   "address": "005ae280",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getFirst@DataModelViews@?A0xf270ebab@@QAEPAUInstanceView@2@XZ",
+   "address": "0049a580",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getFourth@DataModelViews@?A0xf270ebab@@QAEPAUInstanceView@2@XZ",
+   "address": "004b3380",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getLast@DataModelViews@?A0xf270ebab@@QAEPAUScriptView@2@XZ",
+   "address": "0042de90",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getSecond@DataModelViews@?A0xf270ebab@@QAEPAUInstanceView@2@XZ",
+   "address": "00490c30",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getThird@DataModelViews@?A0xf270ebab@@QAEPAUInstanceView@2@XZ",
+   "address": "00452a00",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?reset@InstanceView@?A0xf270ebab@@QAEXXZ",
+   "address": "005d2320",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?setBoundCommand@WorkspaceView@?A0xf270ebab@@QAEXPAX@Z",
+   "address": "005a5200",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?setMouseCommand@WorkspaceView@?A0xf270ebab@@QAEXPAX@Z",
+   "address": "005a1fc0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?stop@InstanceView@?A0xf270ebab@@QAEXXZ",
+   "address": "0058c3c0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: identity-registry decorated signature ?clearContents@DataModel@RBX@@QAEXXZ, owner RBX::DataModel, plus task descriptor-p): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?clearContents@DataModel@RBX@@QAEXXZ",
+   "address": "00578ef0",
+   "votes": 1,
+   "identity_evidence": "identity registry decorated signature for RBX::DataModel::clearContents; task descriptor-ptm binding"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBA@AEPAXI@Z",
+   "address": "0057b140",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBDA@AEPAXI@Z",
+   "address": "0057b0a0",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBE@AEPAXI@Z",
+   "address": "0057b150",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBFA@AEPAXI@Z",
+   "address": "0057b0b0",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBHA@AEPAXI@Z",
+   "address": "0057b0c0",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBMI@AEPAXI@Z",
+   "address": "0057b160",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WBPI@AEPAXI@Z",
+   "address": "0057b100",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WCE@AEPAXI@Z",
+   "address": "0057b0d0",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WEE@AEPAXI@Z",
+   "address": "0057b0e0",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WGE@AEPAXI@Z",
+   "address": "0057b0f0",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WIE@AEPAXI@Z",
+   "address": "0057b110",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WKE@AEPAXI@Z",
+   "address": "0057b120",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_EDataModel@RBX@@WME@AEPAXI@Z",
+   "address": "0057b130",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?evaluate@DataModel@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z",
+   "address": "00575d90",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getClassName@?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PADA@RBX@@UBEABVName@2@XZ",
+   "address": "0057a850",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?isDirty@DataModel@RBX@@UBE_NXZ",
+   "address": "0057b030",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?setDirty@DataModel@RBX@@UAEX_N@Z",
+   "address": "0057b020",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??1DataModel@RBX@@UAE@XZ",
+   "address": "007d0b97",
+   "votes": 1,
+   "identity_evidence": "reference of ??1DataModel@RBX@@UAE@XZ (identified at 0057ad70: task RTTI/ctor-dtor identity for RBX::DataModel::~DataModel; original vftable slots read from selected-target image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??1DataModel@RBX@@UAE@XZ",
+   "address": "0057ad70",
+   "votes": 1,
+   "identity_evidence": "task RTTI/ctor-dtor identity: __thiscall RBX::DataModel::~DataModel(void); donor + original vftable stores"
+  },
+  {
+   "symbol": "?update@?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@UAEXPAVSelectionGroup@RBX@@@Z",
+   "address": "0043c170",
+   "votes": 1,
+   "identity_evidence": "reference of ?update@Vector3Item@@UAEXPAVSelectionGroup@RBX@@@Z (identified at 0043d790: Vector3Item property-grid row: binary relocation holds the original target at the same place; callee unit and RTTI confi): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?OnAfterEdit@Vector3Item@@MAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "007ce709",
+   "votes": 1,
+   "identity_evidence": "reference of ?OnAfterEdit@Vector3Item@@MAEHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z (identified at 0043d710: Vector3Item property-grid row: binary relocation holds the original target at the same place; callee unit and RTTI confi): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+   "address": "00575750",
+   "votes": 1,
+   "identity_evidence": "DataModel destructor vftable chain in selected 2008-06 image: slot resolves to 00575750 in byte-equal 0057ad70 object"
+  },
+  {
+   "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+   "address": "0057b040",
+   "votes": 1,
+   "identity_evidence": "DataModel destructor vftable chain in selected 2008-06 image: slot resolves to 0057b040 in byte-equal 0057ad70 object"
+  },
+  {
+   "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+   "address": "0057b070",
+   "votes": 1,
+   "identity_evidence": "DataModel destructor vftable chain in selected 2008-06 image: slot resolves to 0057b070 in byte-equal 0057ad70 object"
+  },
+  {
+   "symbol": "__purecall",
+   "address": "00575840",
+   "votes": 1,
+   "identity_evidence": "DataModel destructor pure-virtual vftable slot in selected 2008-06 image resolves to 00575840 in byte-equal 0057ad70 object"
+  },
+  {
+   "symbol": "??0?$ContentItem@VTextureId@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+   "address": "0043ea20",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name ContentItem is a placeholder)"
+  },
+  {
+   "symbol": "?get@LuaArguments2008@Lua@RBX@@SA_NPAUlua_State@@HAAVValue@Reflection@3@_N@Z",
+   "address": "005ad380",
+   "votes": 1,
+   "identity_evidence": "body byte-equal to native LuaArguments2008Recovery_005ad380.cpp; analog src/2008-06/005ad380.cpp"
+  },
+  {
+   "symbol": "??$?4N@Value@Reflection@RBX@@QAEAAV012@ABN@Z",
+   "address": "00564050",
+   "votes": 1,
+   "identity_evidence": "Value::operator=<double>: call at 005ad406 (ecx=Value, push &double from lua_tonumber)"
+  },
+  {
+   "symbol": "??$?4V?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@Value@Reflection@RBX@@QAEAAV012@ABV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@Z",
+   "address": "005ad270",
+   "votes": 1,
+   "identity_evidence": "Value::operator=<ValueCollection>: call at 005ad4b1 (ecx=Value, push vector built by ctor 589c40)"
+  },
+  {
+   "symbol": "?lua_objlen@@YAIPAUlua_State@@H@Z",
+   "address": "00612080",
+   "votes": 1,
+   "identity_evidence": "(L,idx)->size_t in table case at 005ad485"
+  },
+  {
+   "symbol": "?lua_rawgeti@@YAXPAUlua_State@@HH@Z",
+   "address": "00612530",
+   "votes": 1,
+   "identity_evidence": "3-arg call (L,idx,i) at 005ad514 before recursive get"
+  },
+  {
+   "symbol": "?lua_toboolean@@YAHPAUlua_State@@H@Z",
+   "address": "00611fe0",
+   "votes": 1,
+   "identity_evidence": "boolean case 005ad412, result tested setne"
+  },
+  {
+   "symbol": "?lua_tofunction@Lua@RBX@@YA?AVFunctionRef@12@PAUlua_State@@H@Z",
+   "address": "00594650",
+   "votes": 1,
+   "identity_evidence": "function case 005ad596 (hidden sret FunctionRef, then Value::operator=<FunctionRef> 5ab9a0, FunctionRef dtor 594470)"
+  },
+  {
+   "symbol": "??$any_cast@AAV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@boost@@YAAAV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@AAVany@0@@Z",
+   "address": "00416260",
+   "votes": 1,
+   "identity_evidence": "any_cast<ValueCollection&> at 005ad4ce, same 134 bytes as 004459f0 but typeinfo 0x92bf60; inferred row 004459f0 is wrong"
+  },
+  {
+   "symbol": "??$genericConvert@W4SurfaceType@RBX@@@Value@Reflection@RBX@@QAEAAW4SurfaceType@2@XZ",
+   "address": "005eef20",
+   "votes": 1,
+   "identity_evidence": "Binary typeid evidence names enum RBX::SurfaceType and std::string. Caller 005ef240 constructs a Value copy, calls 005eef20 as its conversion worker, and returns the SurfaceType value; the byte-equal native specialization has the matching Value::genericConvert<SurfaceType> signature."
+  },
+  {
+   "symbol": "__ehhandler$?get@LuaArguments2008@Lua@RBX@@SA_NPAUlua_State@@HAAVValue@Reflection@3@_N@Z",
+   "address": "007d3291",
+   "votes": 1,
+   "identity_evidence": "SEH handler pushed in the prologue of 005ad380 (push 0x7d3291)"
+  },
+  {
+   "symbol": "?clear@InstanceView@?A0x9c5562ce@@QAEXXZ",
+   "address": "0055afd0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?clearMouseCommand@WorkspaceView@?A0x9c5562ce@@QAEXXZ",
+   "address": "0055afd0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?dispatcher@?A0x9c5562ce@@3PAUDispatcherView@1@A",
+   "address": "00976b94",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?finish@ScriptView@?A0x9c5562ce@@QAEXXZ",
+   "address": "005ae280",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getFirst@DataModelViews@?A0x9c5562ce@@QAEPAUInstanceView@2@XZ",
+   "address": "0049a580",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getFourth@DataModelViews@?A0x9c5562ce@@QAEPAUInstanceView@2@XZ",
+   "address": "004b3380",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getLast@DataModelViews@?A0x9c5562ce@@QAEPAUScriptView@2@XZ",
+   "address": "0042de90",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getSecond@DataModelViews@?A0x9c5562ce@@QAEPAUInstanceView@2@XZ",
+   "address": "00490c30",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?getThird@DataModelViews@?A0x9c5562ce@@QAEPAUInstanceView@2@XZ",
+   "address": "00452a00",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?reset@InstanceView@?A0x9c5562ce@@QAEXXZ",
+   "address": "005d2320",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?setBoundCommand@WorkspaceView@?A0x9c5562ce@@QAEXPAX@Z",
+   "address": "005a5200",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?setMouseCommand@WorkspaceView@?A0x9c5562ce@@QAEXPAX@Z",
+   "address": "005a1fc0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?stop@InstanceView@?A0x9c5562ce@@QAEXXZ",
+   "address": "0058c3c0",
+   "votes": 1,
+   "identity_evidence": "reference of ?clearContents@DataModel@RBX@@QAEXXZ (identified at 00578ef0: same byte-equal DataModel::clearContents body at final native-classes path; slot addresses read from selected 2008-06 im): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBGE@2@@Z",
+   "address": "0054f170",
+   "votes": 1,
+   "identity_evidence": "RTTI: the body at this address stores the vftable of std::map<unsigned short, unsigned char>; byte-equal member of that instantiation"
+  },
+  {
+   "symbol": "??0?$pair@Viterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@_N@std@@QAE@ABViterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@1@AB_N@Z",
+   "address": "00550b20",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??0iterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@PBV12@@Z",
+   "address": "0054e320",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@QBE_NABV012@@Z",
+   "address": "00540ed0",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??Fiterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@QAEAAV012@XZ",
+   "address": "00542910",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "??R?$less@G@std@@QBE_NABG0@Z",
+   "address": "0044f2b0",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBGE@2@@Z",
+   "address": "0054f3f0",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Isnil@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@@Z",
+   "address": "00541d90",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Key@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@KAABGPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@@Z",
+   "address": "0054c610",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Kfn@?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@SAABGABU?$pair@$$CBGE@2@@Z",
+   "address": "0054c630",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@PAU342@@Z",
+   "address": "0054c630",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@3@XZ",
+   "address": "0054bf70",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Right@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@PAU342@@Z",
+   "address": "00541da0",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?_Root@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@2@XZ",
+   "address": "005423f0",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?begin@?$_Tree@V?$_Tmap_traits@GEU?$less@G@std@@V?$allocator@U?$pair@$$CBGE@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@XZ",
+   "address": "0054f140",
+   "identity_evidence": "twin lane alias for 0054f170: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "__ehhandler$??$genericConvert@W4SurfaceType@RBX@@@Value@Reflection@RBX@@QAEAAW4SurfaceType@2@XZ",
+   "address": "007cfeb9",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 005eef20's SEH prologue references 007cfeb9; the byte-equal Value::genericConvert<SurfaceType> specialization emits this corresponding compiler-generated exception handler."
+  },
+  {
+   "symbol": "??_GInterpolatingPhysicsReceiver@Network@RBX@@UAEPAXI@Z",
+   "address": "004b6290",
+   "votes": 1,
+   "identity_evidence": "RTTI/vftable 00824ee4 slot 0 of RBX::Network::InterpolatingPhysicsReceiver is the scalar deleting destructor at 004b6290 (owner-recovered class declaration in Network/PhysicsSenders2008.h; ~multi_index_container call at +8 and operator delete match)."
+  },
+  {
+   "symbol": "??$create@V?$TypedStatsItem@H@Stats@RBX@@V?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$share",
+   "address": "005a4af0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name  is a placeholder)"
+  },
+  {
+   "symbol": "??$create@V?$TypedStatsItem@H@Stats@RBX@@V?$function0@HV?$allocator@Vfunction_base@boost@@@std@@@boost@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$share",
+   "address": "005a4bd0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: class_workflow byte-equal body at this address (name  is a placeholder)"
+  },
+  {
+   "symbol": "??1?$multi_index_container@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@U?$indexed_by@U?$hashed_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@V?$shared_ptr@VPartInstance@RBX@@@boost@@$0A@@multi_index@boost@@Una@mpl@3@U453@U453@@multi_index@boost@@U?$ordered_non_unique@U?$member@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@I$07@multi_index@boost@@Una@mpl@3@U453@@23@Una@mpl@3@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@U563@@multi_index@boost@@V?$allocator@UPartItem@InterpolatingPhysicsReceiver@Network@RBX@@@std@@@multi_index@boost@@QAE@XZ",
+   "address": "004b58f0",
+   "votes": 1,
+   "identity_evidence": "reference of ??_GInterpolatingPhysicsReceiver@Network@RBX@@UAEPAXI@Z (identified at 004b6290: RTTI/vftable 00824ee4 slot 0; reference at +8 is the receiver PartItems multi_index_container destructor 004b58f0 record): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?postEvent@DxUserInput@RBX@@QAEXABVUIEvent@2@@Z",
+   "address": "00467a00",
+   "votes": 1,
+   "identity_evidence": "00467a00 DataModel::Lock ctor/dtor and target relocation at the call site identify the direct __thiscall reference as 00577460 (identity-registry placeholder func_00577460)"
+  },
+  {
+   "symbol": "?func_00577460@DxUserInput@RBX@@QAEXABVUIEvent@2@@Z",
+   "address": "00577460",
+   "votes": 1,
+   "identity_evidence": "reference of ?postEvent@DxUserInput@RBX@@QAEXABVUIEvent@2@@Z (identified at 00467a00: 00467a00 DataModel::Lock ctor/dtor and target relocation at the call site identify the direct __thiscall reference as 00): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?postEvent@DxUserInput@RBX@@QAEXABVUIEvent@2@@Z",
+   "address": "007c3928",
+   "votes": 1,
+   "identity_evidence": "reference of ?postEvent@DxUserInput@RBX@@QAEXABVUIEvent@2@@Z (identified at 00467a00: 00467a00 DataModel::Lock ctor/dtor and target relocation at the call site identify the direct __thiscall reference as 00): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??$genericConvert@W4InputType@Controller@RBX@@@Value@Reflection@RBX@@QAEAAW4InputType@Controller@2@XZ",
+   "address": "005ef020",
+   "votes": 1,
+   "identity_evidence": "Binary typeid evidence names enum RBX::Controller::InputType and std::string. Caller 005ef2f0 constructs a Value copy, calls 005ef020 as its conversion worker, and returns the Controller::InputType value; the byte-equal native specialization has the matching Value::genericConvert<Controller::InputType> signature."
+  },
+  {
+   "symbol": "?openState@ScriptContext@RBX@@AAEXXZ",
+   "address": "005aefa0",
+   "votes": 1,
+   "identity_evidence": "body byte-equal to native ScriptContextRecovery_005aefa0.cpp; donor script/ScriptContext.cpp shape"
+  },
+  {
+   "symbol": "__ehhandler$?openState@ScriptContext@RBX@@AAEXXZ",
+   "address": "007d357f",
+   "votes": 1,
+   "identity_evidence": "SEH handler pushed in the prologue of 005aefa0"
+  },
+  {
+   "symbol": "??0LuaAllocator@@QAE@XZ",
+   "address": "005c8920",
+   "votes": 1,
+   "identity_evidence": "allocator.reset(new LuaAllocator) in openState"
+  },
+  {
+   "symbol": "?alloc@LuaAllocator@@SAPAXPAX0II@Z",
+   "address": "005c8e30",
+   "votes": 1,
+   "identity_evidence": "function pointer passed to lua_newstate 623f40"
+  },
+  {
+   "symbol": "?lua_newstate@@YAPAUlua_State@@P6APAXPAX0II@Z0@Z",
+   "address": "00623f40",
+   "votes": 1,
+   "identity_evidence": "lua_newstate(alloc 5c8e30, allocator) in openState"
+  },
+  {
+   "symbol": "?luaL_register@@YAXPAUlua_State@@PBDPBUluaL_Reg@@@Z",
+   "address": "00611a70",
+   "votes": 1,
+   "identity_evidence": "(L, className, classLibrary) in inlined registerClassLibrary"
+  },
+  {
+   "symbol": "?lua_atpanic@@YAP6AHPAUlua_State@@@Z0P6AH0@Z@Z",
+   "address": "00611bf0",
+   "votes": 1,
+   "identity_evidence": "lua_atpanic(L, panic 5aa5b0)"
+  },
+  {
+   "symbol": "?panic@@YAHPAUlua_State@@@Z",
+   "address": "005aa5b0",
+   "votes": 1,
+   "identity_evidence": "file-static panic handler passed to lua_atpanic"
+  },
+  {
+   "symbol": "?luaopen_base@@YAHPAUlua_State@@@Z",
+   "address": "00628f50",
+   "votes": 1,
+   "identity_evidence": "luaopen_base then lua_pop(result)"
+  },
+  {
+   "symbol": "?luaopen_string@@YAHPAUlua_State@@@Z",
+   "address": "00627e00",
+   "votes": 1,
+   "identity_evidence": "_openLibInline string"
+  },
+  {
+   "symbol": "?luaopen_math@@YAHPAUlua_State@@@Z",
+   "address": "00626280",
+   "votes": 1,
+   "identity_evidence": "_openLibInline math"
+  },
+  {
+   "symbol": "?luaopen_table@@YAHPAUlua_State@@@Z",
+   "address": "00625b10",
+   "votes": 1,
+   "identity_evidence": "_openLibInline table"
+  },
+  {
+   "symbol": "?lua_getlocal@@YAPBDPAUlua_State@@PBUlua_Debug@@H@Z",
+   "address": "00622dd0",
+   "votes": 1,
+   "identity_evidence": "debug api block, 3rd call"
+  },
+  {
+   "symbol": "?lua_setlocal@@YAPBDPAUlua_State@@PBUlua_Debug@@H@Z",
+   "address": "00622e20",
+   "votes": 1,
+   "identity_evidence": "debug api block, 4th call"
+  },
+  {
+   "symbol": "?lua_getupvalue@@YAPBDPAUlua_State@@HH@Z",
+   "address": "00612ca0",
+   "votes": 1,
+   "identity_evidence": "debug api block, 5th call"
+  },
+  {
+   "symbol": "?lua_setupvalue@@YAPBDPAUlua_State@@HH@Z",
+   "address": "00612d30",
+   "votes": 1,
+   "identity_evidence": "debug api block, 6th call"
+  },
+  {
+   "symbol": "?lua_sethook@@YAHPAUlua_State@@P6AX0PAUlua_Debug@@@ZHH@Z",
+   "address": "00622c80",
+   "votes": 1,
+   "identity_evidence": "lua_sethook(L, 5ae230, 8, 1000) at 005af814; 7th debug block call"
+  },
+  {
+   "symbol": "?lua_gethook@@YAP6AXPAUlua_State@@PAUlua_Debug@@@Z0@Z",
+   "address": "00622cb0",
+   "votes": 1,
+   "identity_evidence": "debug api block, 8th call"
+  },
+  {
+   "symbol": "?lua_gethookmask@@YAHPAUlua_State@@@Z",
+   "address": "00622cc0",
+   "votes": 1,
+   "identity_evidence": "debug api block, 9th call"
+  },
+  {
+   "symbol": "?lua_gethookcount@@YAHPAUlua_State@@@Z",
+   "address": "00622cd0",
+   "votes": 1,
+   "identity_evidence": "debug api block, 10th call"
+  },
+  {
+   "symbol": "?scriptHook@ScriptContext@RBX@@CAXPAUlua_State@@PAUlua_Debug@@@Z",
+   "address": "005ae230",
+   "votes": 1,
+   "identity_evidence": "INFERRED: lua_Hook passed to lua_sethook mask 8 count 1000"
+  },
+  {
+   "symbol": "?print@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+   "address": "005a9320",
+   "votes": 1,
+   "identity_evidence": "registered as global 'print' (string 0x8348b0)"
+  },
+  {
+   "symbol": "?time@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+   "address": "005a92d0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: registered as global 'time' (string 0x822588)"
+  },
+  {
+   "symbol": "?printidentity@ScriptContext@RBX@@CAHPAUlua_State@@@Z",
+   "address": "005add30",
+   "votes": 1,
+   "identity_evidence": "INFERRED: registered as global 'printidentity' (string 0x834888)"
+  },
+  {
+   "symbol": "?push@?$SharedPtrBridge@VDescribedBase@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Z",
+   "address": "005aa730",
+   "votes": 1,
+   "identity_evidence": "SharedPtrBridge<DescribedBase>::push called for game/workspace in openState 005aefa0"
+  },
+  {
+   "symbol": "?push@?$SingletonBridge@PBVEnumDescriptor@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@PBVEnumDescriptor@Reflection@3@@Z",
+   "address": "005a9b30",
+   "votes": 1,
+   "identity_evidence": "Enum registerClassLibrary pushes &push 005a9b30"
+  },
+  {
+   "symbol": "?push@?$SharedPtrBridge@VSignalInstance@Reflection@RBX@@@Lua@RBX@@SAXPAUlua_State@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@Z",
+   "address": "005aaac0",
+   "votes": 1,
+   "identity_evidence": "SignalBridge registerClassLibrary pushes &push 005aaac0 (openState 005aefa0)"
+  },
+  {
+   "symbol": "?classLibrary@CoordinateFrameBridge@Lua@RBX@@0QBUluaL_Reg@@B",
+   "address": "00844450",
+   "votes": 1,
+   "identity_evidence": "luaL_register(L, className/\"Instance\", classLibrary) data pointer in openState 005aefa0 (call order CF, Vector3, Color3, BrickColor, Object)"
+  },
+  {
+   "symbol": "?classLibrary@Vector3Bridge@Lua@RBX@@0QBUluaL_Reg@@B",
+   "address": "008443d8",
+   "votes": 1,
+   "identity_evidence": "luaL_register(L, className/\"Instance\", classLibrary) data pointer in openState 005aefa0 (call order CF, Vector3, Color3, BrickColor, Object)"
+  },
+  {
+   "symbol": "?classLibrary@Color3Bridge@Lua@RBX@@0QBUluaL_Reg@@B",
+   "address": "008443c8",
+   "votes": 1,
+   "identity_evidence": "luaL_register(L, className/\"Instance\", classLibrary) data pointer in openState 005aefa0 (call order CF, Vector3, Color3, BrickColor, Object)"
+  },
+  {
+   "symbol": "?classLibrary@BrickColorBridge@Lua@RBX@@0QBUluaL_Reg@@B",
+   "address": "008443e8",
+   "votes": 1,
+   "identity_evidence": "luaL_register(L, className/\"Instance\", classLibrary) data pointer in openState 005aefa0 (call order CF, Vector3, Color3, BrickColor, Object)"
+  },
+  {
+   "symbol": "?classLibrary@ObjectBridge@Lua@RBX@@0QBUluaL_Reg@@B",
+   "address": "00844158",
+   "votes": 1,
+   "identity_evidence": "luaL_register(L, className/\"Instance\", classLibrary) data pointer in openState 005aefa0 (call order CF, Vector3, Color3, BrickColor, Object)"
+  },
+  {
+   "symbol": "?sub_00559350@Instance@RBX@@QAE?AUResult@@XZ",
+   "address": "00559350",
+   "votes": 1,
+   "identity_evidence": "Task assignment: member of RBX::Instance, owner class/vftable slots/RTTI/link order recovered from binary; registry owner RBX::Instance; body references SerializerV2::newRootElement 00591a30 and XML root convert 00559250."
+  },
+  {
+   "symbol": "??1Root@@QAE@XZ",
+   "address": "00413a70",
+   "votes": 1,
+   "identity_evidence": "reference of ?sub_00559350@Instance@RBX@@QAE?AUResult@@XZ (identified at 00559350: Task assignment: RBX::Instance member at 00559350; body references SerializerV2::newRootElement 00591a30, root convert 0): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?convertRoot@@YA?AUResult@@PAURoot@@@Z",
+   "address": "00559250",
+   "votes": 1,
+   "identity_evidence": "reference of ?sub_00559350@Instance@RBX@@QAE?AUResult@@XZ (identified at 00559350: Task assignment: RBX::Instance member at 00559350; body references SerializerV2::newRootElement 00591a30, root convert 0): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?makeRoot@@YAPAURoot@@XZ",
+   "address": "00591a30",
+   "votes": 1,
+   "identity_evidence": "reference of ?sub_00559350@Instance@RBX@@QAE?AUResult@@XZ (identified at 00559350: Task assignment: RBX::Instance member at 00559350; body references SerializerV2::newRootElement 00591a30, root convert 0): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?sub_00559350@Instance@RBX@@QAE?AUResult@@XZ",
+   "address": "007ce351",
+   "votes": 1,
+   "identity_evidence": "reference of ?sub_00559350@Instance@RBX@@QAE?AUResult@@XZ (identified at 00559350: Task assignment: RBX::Instance member at 00559350; body references SerializerV2::newRootElement 00591a30, root convert 0): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??$genericConvert@W4InputType@Controller@RBX@@@Value@Reflection@RBX@@QAEAAW4InputType@Controller@2@XZ",
+   "address": "007cfeb9",
+   "identity_evidence": "twin lane alias for 005ef020: exact-target-coff-reference-alias",
+   "votes": 1
+  },
+  {
+   "symbol": "?NII_acquire@NIIWriter@@YA?AV?$shared_ptr@I@nboost@@XZ",
+   "address": "00569620",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?NII_callbackTag@NIIWriter@@3QBDB",
+   "address": "00973d34",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?NII_message@NIIWriter@@3QBDB",
+   "address": "008251ec",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?NII_report@NIIWriter@@YAXPAIHPBD111@Z",
+   "address": "005693a0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?NII_settings@NIIWriter@@YAPAUNII_Settings@1@XZ",
+   "address": "0049e890",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?NII_writeFlag@NIIWriter@@YAPAXPAX_N@Z",
+   "address": "004a5b10",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?NII_writeKind@NIIWriter@@YAXPAXH@Z",
+   "address": "004ab5d0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?find@NII_Lookup@NIIWriter@@QAEHPAPAUNII_Object@2@@Z",
+   "address": "005e9f60",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?finishObject@NII_Owner@NIIWriter@@QAEXPAUNII_Object@2@PAX@Z",
+   "address": "004b7f20",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?format@NII_TextPart@NIIWriter@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
+   "address": "004aadd0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?get@NII_LabelProvider@NIIWriter@@QAEPBDH@Z",
+   "address": "004a98b0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?prepare@NII_Object@NIIWriter@@QAEXXZ",
+   "address": "0049bba0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?write@NII_IdentifierWriter@NIIWriter@@QAEXPAXI@Z",
+   "address": "004aeba0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?writeCallback@NII_Owner@NIIWriter@@QAEXPAUNII_Callback@2@HPAX@Z",
+   "address": "004b6890",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?writeObject@NII_Owner@NIIWriter@@QAEXPAXPAUNII_Object@2@@Z",
+   "address": "004a8ae0",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z",
+   "address": "007c8ae1",
+   "votes": 1,
+   "identity_evidence": "reference of ?write@NewInstanceItem@Replicator@Network@RBX@@UAEXAAVBitStream@RakNet@@@Z (identified at 004b8620: RBX::Network::Replicator::NewInstanceItem::write vftable slot; RTTI/own-vft tier, byte-exact analog src/2008-06/004b8620): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?GetCaption@CValueItem@CStatsItemRecord@CRobloxReportView@@UAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCXTPReportColumn@@@Z",
+   "address": "00456770",
+   "votes": 1,
+   "identity_evidence": "vftable 008185f4 slot 27 -> 00456770; RTTI COL 008185f0, type descriptor .?AVCValueItem@CStatsItemRecord@CRobloxReportView@@; sibling vftable 008184a4 (CNameItem) slot 27 = 00456570; vftable-slot (exact tier); overrides XTP report-item caption virtual (vtable 008185f4 slots 26/27 pattern)"
+  },
+  {
+   "symbol": "__ehhandler$?GetCaption@CValueItem@CStatsItemRecord@CRobloxReportView@@UAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCXTPReportColumn@@@Z",
+   "address": "007c2442",
+   "votes": 1,
+   "identity_evidence": "original relocation target at an exact owner: pushed at 00456772 (offset +2 in GetCaption 00456770) as the SEH unwind handler; sibling of fn_007c245b (004566f0's handler)"
+  },
+  {
+   "symbol": "?shared_from_out_of_line@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@1@@Z",
+   "address": "00618a40",
+   "votes": 1,
+   "identity_evidence": "reference of ?setParent@Instance@RBX@@QAEXPAV12@@Z (identified at 0055a8f0: Identity registry names ?setParent@Instance@RBX@@QAEXPAV12@@Z for 0055a8f0; body writes parent +0x104/children +0x108, c): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??_9Item@CPropGrid@@$BA@AE",
+   "address": "00438000",
+   "votes": 1,
+   "identity_evidence": "reference of ?OnUpdate@CPropGrid@@QAEJIJ@Z (identified at 00439d70: CPropGrid::OnUpdate WM_USER+101 message handler byte-exact at 00439d70; references (Item RTTI locator, EH handler) ident): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?OnUpdate@CPropGrid@@QAEJIJ@Z",
+   "address": "007c04b7",
+   "votes": 1,
+   "identity_evidence": "reference of ?OnUpdate@CPropGrid@@QAEJIJ@Z (identified at 00439d70: CPropGrid::OnUpdate WM_USER+101 message handler byte-exact at 00439d70; references (Item RTTI locator, EH handler) ident): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?lower_bound@JointMap@JointStage@RBX@@QAE?AViterator@?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPrimitive@RBX@@PAVJoint@2@@std@@@5@$00@std@@@std@@ABQAVPrimitive@3@@Z",
+   "address": "00667fd0",
+   "votes": 1,
+   "identity_evidence": "reference of ?removeFromMap@JointStage@RBX@@AAEXPAVJoint@2@PAVPrimitive@2@@Z (identified at 00668280: JointStage::removeFromMap 00668280: byte-equal with the byte-exact analog src/2008-06/00668280.cpp and the native header): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?SetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCApp@@$00@@UAGJABU_GUID@@KK@Z",
+   "address": "00407720",
+   "votes": 1,
+   "identity_evidence": "INFERRED: IObjectSafetyRobloxImpl<CApp,1> member; this=IObjectSafetyRobloxImpl subobject ptr; QI owner/CApp* read from [this+0x10]; currentSafety at [this+4]; FinalConstruct called on this unadjusted; mask validated (dwOptionSetMask & ~1 -> E_FAIL 0x80004005); QI failure -> E_NOINTERFACE 0x80004002; currentSafety=(currentSafety&~mask)|(mask&dwEnabledOptions); returns S_OK/FinalConstruct-hr. 119 bytes."
+  },
+  {
+   "symbol": "?GetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCApp@@$00@@UAGJABU_GUID@@PAK1@Z",
+   "address": "00407690",
+   "votes": 1,
+   "identity_evidence": "INFERRED: IObjectSafetyRobloxImpl<CApp,1> member; this=IObjectSafetyRobloxImpl subobject ptr; QI owner/CApp* read from [this+0x10]; currentSafety at [this+4]; FinalConstruct called on this unadjusted; null output pointers -> E_POINTER 0x80004003; *pdwSupportedOptions=1; *pdwEnabledOptions=currentSafety; returns QI hr. 137 bytes."
+  },
+  {
+   "symbol": "?upTo_Equipped@Tool@RBX@@AAEXXZ",
+   "address": "005fe6d0",
+   "votes": 1,
+   "identity_evidence": "reference of ?setDesiredState@Tool@RBX@@AAEXW4ToolState@12@PBVServiceProvider@2@@Z (identified at 005ff900: Byte-exact bodies from donor rbxgs Tool.cpp; root addresses and RBX::Tool owner from the Tool unit link order/RTTI; refe): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?sub_005fd3d0@Tool@RBX@@AAEXXZ",
+   "address": "005fd3d0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: 5-byte tail-call body byte-equal at 005fd3d0; RBX::Tool owner from Tool-unit link order/RTTI; original name not in registry"
+  },
+  {
+   "symbol": "?fn_00642fc0@RBX@@YAXXZ",
+   "address": "00642fc0",
+   "votes": 1,
+   "identity_evidence": "INFERRED: tail-call target read from the original jmp relocation at 005fd3d0; placeholder in identity registry"
+  },
+  {
+   "symbol": "?startScript@ScriptContext@RBX@@AAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z",
+   "address": "005affa0",
+   "votes": 1,
+   "identity_evidence": "body byte-equal to native ScriptContextRecovery_005affa0.cpp; donor script/ScriptContext.cpp shape, neighbour of openState 005aefa0"
+  },
+  {
+   "symbol": "??$?0VScript@RBX@@@?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@QAE@ABV?$shared_ptr@VScript@RBX@@@1@@Z",
+   "address": "00559a20",
+   "votes": 1,
+   "identity_evidence": "reference of ?startScript@ScriptContext@RBX@@AAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z (identified at 005affa0: references of byte-equal startScript body; same slots in original image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??1?$shared_ptr@VNode@ThreadRef@Lua@RBX@@@boost@@QAE@XZ",
+   "address": "00600660",
+   "votes": 1,
+   "identity_evidence": "reference of ?startScript@ScriptContext@RBX@@AAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z (identified at 005affa0: references of byte-equal startScript body; same slots in original image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$?startScript@ScriptContext@RBX@@AAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z",
+   "address": "007d3672",
+   "votes": 1,
+   "identity_evidence": "reference of ?startScript@ScriptContext@RBX@@AAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z (identified at 005affa0: references of byte-equal startScript body; same slots in original image): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "?get2DStringBounds@AdornRbxGfx@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@Adorn@2@@Z",
+   "address": "0066fe30",
+   "votes": 1,
+   "identity_evidence": "AdornRbxGfx vftable slot 12 (AdornRbxGfx2008.h get2DStringBounds); body calls RbxFont::get2DStringBounds 00684640 (header-declared) on font2d"
+  },
+  {
+   "symbol": "?clearProxyArrays@RenderScene@Render@RBX@@AAEXXZ",
+   "address": "00504b00",
+   "votes": 1,
+   "identity_evidence": "RenderScene::clearProxyArrays declared in RenderSceneRender2008.h; calls G3D::Array::resize(0,false) on six proxy arrays at +0x274/+0x298/+0x280/+0x28c/+0x268/+0x2a4, bytes equal"
+  },
+  {
+   "symbol": "?resize@?$Array@PAVRenderSurface@Render@RBX@@@G3D@@QAEXH_N@Z",
+   "address": "00502810",
+   "votes": 1,
+   "identity_evidence": "G3D::Array<RenderSurface*>::resize(int,bool): called from clearProxyArrays 00504b00 with (0,false) on arrays +0x274/+0x280/+0x28c; bytes of caller equal"
+  },
+  {
+   "symbol": "?execute@?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+   "address": "004a0780",
+   "votes": 1,
+   "identity_evidence": "reference of ??0?$BoundFuncDesc@VClient@Network@RBX@@$$A6AXH@Z$00@Reflection@RBX@@QAE@P8Client@Network@2@AEXH@ZPBD1HW4Security@Functi (identified at 004a06b0: BoundFuncDesc<C,void(int),1> constructors from RTTI/dynamic-initializer rows (vftable 008230ec); execute slot bound by v): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "??0?$BoundFuncDesc@VDHTMLWindow@@$$A6AXH@Z$00@Reflection@RBX@@QAE@P8DHTMLWindow@@AEXH@ZPBD1HW4Security@FunctionDescriptor@12@@Z",
+   "address": "004a4760",
+   "votes": 1,
+   "identity_evidence": "BoundFuncDesc<C,void(int),1> constructors from RTTI/dynamic-initializer rows (vftable 008230ec); execute slot bound by vftable slot"
+  },
+  {
+   "symbol": "??0RotateV@RBX@@QAE@PAVJoint@1@@Z",
+   "address": "005e4d30",
+   "votes": 1,
+   "identity_evidence": "RTTI: identities.json unique[005e4d30] = class RBX::RotateV [subobject +304]; byte-equal RotateV::RotateV(Joint*) emitted by GlueRotateCtors draft"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WBA@AEPAXI@Z",
+   "address": "005e4da0",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WBE@AEPAXI@Z",
+   "address": "005e33e0",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WCE@AEPAXI@Z",
+   "address": "005e4280",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WEE@AEPAXI@Z",
+   "address": "005e4290",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WGE@AEPAXI@Z",
+   "address": "005e33b0",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WIE@AEPAXI@Z",
+   "address": "005e42a0",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WKE@AEPAXI@Z",
+   "address": "005e33c0",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "??_ERotateV@RBX@@WME@AEPAXI@Z",
+   "address": "005e33d0",
+   "votes": 1,
+   "identity_evidence": "claude-identity-closure-llm.json reference-vote binding: scalar deleting destructor thunk of RBX::RotateV, referenced by the vftables stored in 005e4d30/005e4dd0"
+  },
+  {
+   "symbol": "?OnDrawItemValue@XBoolItem@@UAEHAAVCDC@@VCRect@@@Z",
+   "address": "0043d3a0",
+   "votes": 1,
+   "identity_evidence": "reference of ??0XBoolItem@@QAE@PBV?$TypedPropertyDescriptor@_N@Reflection@RBX@@PAVCPropGrid@@@Z (identified at 0043d330: Original RTTI identifies XBoolItem; 0043d330 installs primary vftable 0081469c whose slot 26 is 0043d3a0. Byte-equal nat): the original image holds this address at the same relocation / vftable slot"
   }
  ]
 }

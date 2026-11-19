@@ -50,6 +50,12 @@ STD_INCLUDES = [('boost::any', '<boost/any.hpp>'), ('boost::_bi', '<boost/bind.h
 # {manager, invoker} table from .rdata (00819ce4) with no init guard = boost 1.35 `static const vtable_type`; the
 # default boost 1.34.1 (`static vtable_type stored_vtable(f)`) keeps assign_to out of line (120 bytes, target 194).
 LEAF_FLAGS = {'TypedStatsItem': ' /I{headers}/../../../tools/libs/boost_1_35_0'}
+# Plain classes (no template arguments): the byte-equal twin bodies of the family are the class's own out-of-line
+# constructor definitions (the DescribedCreatable base installs the RTTI vftable, the ctor body then calls setName).
+PLAIN_CTOR_BODIES = {'Weld': [
+    'namespace RBX {\nWeld::Weld(Joint* joint) : DescribedCreatable<Weld, JointInstance, sWeld>(joint) { setName(sWeld); }\n}',
+    'namespace RBX {\nWeld::Weld() : DescribedCreatable<Weld, JointInstance, sWeld>(new WeldJoint()) { setName(sWeld); }\n}',
+]}
 
 
 def header_index():
@@ -297,6 +303,11 @@ def member_templates(cls, leaf, pd=None):
         gs = 'RBX::Reflection::TypedPropertyDescriptor<%s >::GetSet' % pd['ret']
         gf = pd['getfn']
         return ['template std::auto_ptr<%s> %s::getset<%s>(%s, int);' % (gs, cls, gf, gf)]
+    if pd is None and '<' not in cls:
+        # Plain (non-template) classes: no explicit instantiation exists and the byte-equal twin bodies are the
+        # class's own out-of-line constructor definitions (RBX::Weld ... installs the RTTI vftable via
+        # DescribedCreatable, then calls setName on the new instance).
+        return list(PLAIN_CTOR_BODIES.get(leaf, []))
     a = template_args(cls)
     func = 'RBX::Reflection::PropertyDescriptor::Functionality'
     if leaf == 'EnumPropDescriptor' and len(a) == 2:
@@ -457,6 +468,8 @@ def one(item):
             else:
                 cls = cls + '<float>'
     extra, hdrs = includes(cls)
+    if not pd and '<' not in cls and leaf in PLAIN_CTOR_BODIES:
+        hdrs = hdrs + ['v8world/WeldJoint.h']
     _seen = set()
     _deduped = []
     for h in extra_headers + hdrs:
@@ -490,12 +503,14 @@ def one(item):
     unit = folder / final.name
     while LOCK.is_file():
         time.sleep(30)
+    emission = ('template class %s;\n' % cls) if (not pd and '<' in cls) else ''
+    member_lines = ''.join(line + '\n' for line in member_templates(cls, leaf, pd))
     write = lambda hdrs: unit.write_text(flags + '\n// %s: explicit instantiation of the class the body at %s stores the vftable of (RTTI identity, twin_lane.py, '
                     'no model)\n' % (addr, addr) + ''.join(a + '\n' for a in raknet_aliases(identity))
                     + ''.join('#include %s\n' % e for e in extra)
                     + ''.join(('#include %s\n' if h.startswith('<') else '#include "%s"\n') % h for h in hdrs)
-                    + ('' if pd else 'template class %s;\n' % cls)
-                    + ''.join(line + '\n' for line in member_templates(cls, leaf, pd)), encoding='utf-8')
+                    + ('' if pd else emission)
+                    + member_lines, encoding='utf-8')
     write(hdrs)
 
     def fail(status, text=''):
@@ -558,7 +573,7 @@ _family = collections.Counter(re.sub(r'<.*', '', spell(v['identity'])) for v in 
 # Family boost_functor_pieces_TypedStatsItem: also include these via-callee addresses (same template instantiations as rtti constructors)
 _via_callee_family = {'005a4af0', '005a4bd0', '005a4cb0'}
 todo = [(a, v['identity']) for a, v in sorted(unique.items(), key=lambda kv: (-_family.get(re.sub(r'<.*', '', spell(kv[1]['identity'])), 0), kv[0]))
-        if ((v['rule'] == 'rtti' and '<' in v['identity']) or (v['rule'] == 'ptr-string' and v['identity'] in BRIDGE_MAP) or (a in _via_callee_family) or (v['rule'].startswith('via-') and '<' in v['identity']))
+        if ((v['rule'] == 'rtti' and ('<' in v['identity'] or '[subobject' in v['identity'])) or (v['rule'] == 'ptr-string' and v['identity'] in BRIDGE_MAP) or (a in _via_callee_family) or (v['rule'].startswith('via-') and '<' in v['identity']))
         and (a in args.only.split(',') if args.only else a not in done)]
 todo = todo[:args.limit or None]
 print('twin lane: %d addresses' % len(todo), flush=True)
