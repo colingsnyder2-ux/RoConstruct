@@ -1282,7 +1282,9 @@ async function client(name) {
     const {x, y, b} = hit(e);
     if (!b) { tip.style.display = "none"; return; }
     const named = !b.p && native && native.names[hex(b.f[0])];
-    tip.textContent = b.p ? `${b.p[0]} • ${fmt(b.p[2] || 0)} B • ${b.p[7] != null ? b.p[7] + "%" : "0%"}`
+    const isOrg = b.p && (b.p[1] === "a" || b.p[1] === "i");
+    tip.textContent = b.p
+      ? `${b.p[0]} • ${fmt(b.p[2] || 0)} B • ${isOrg ? (b.p[7] != null ? b.p[7] + "%" : "0%") : ({m: "missing", x: "unplaced", g: "library matched", u: "library unmatched"})[b.p[1]] || "missing"}`
       : mapMode === "native"
       ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${({organized: "organized", integrated: "integrated", inactive: "inactive native", draft: "draft native"})[nativeKind(b.f)] || "source analog / unmined"}`
       : `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
