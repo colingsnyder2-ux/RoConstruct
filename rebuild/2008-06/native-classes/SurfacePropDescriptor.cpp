@@ -6,7 +6,21 @@
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Surfaces.h"
 #include "reflection/reflection.h"
+// Type::singleton<SurfaceType> / <Controller::InputType> resolve to the call_once EnumDesc singletons in this unit:
+// Value::operator=<Enum> 005ef120 / 005ef180 inline call_once 00557330(&005ed620 / &005ed690) then 005ed5c0 / 005ed630.
+#include "util/SurfaceTypeType.h"
 namespace RBX {
+	namespace Reflection
+	{
+		// The same specialization as util/ControllerInputTypeType.h, which cannot be included here: its util/Controller.h
+		// redefines the RBX::Controller that v8world/Controller.h already declares through PartInstance.h.
+		template<>
+		inline const Type& Type::singleton<Controller::InputType>()
+		{
+			return EnumDesc<Controller::InputType>::singleton();
+		}
+	}
+
 	// 005ecc00. The templates below sit in the same translation unit and inline it (getValue 005ecd90 adds the face
 	// offset to the Surfaces* with no call).
 	Surface& Surfaces::operator[](NormalId face)
@@ -147,6 +161,7 @@ namespace RBX {
 		// Per-Enum overrides (vftable slots 4 / 5: 005ef1e0 / 005ef3a0 for SurfaceType, 005ef210 / 005ef3d0 for
 		// InputType; they read the getset at +0x1c). Bodies of the remaining overrides are not recovered in this unit.
 		// 005ef1e0 (SurfaceType) / 005ef210 (InputType): Value::operator=<Enum> 005ef120 / 005ef180 on the getset's value.
+		// (005ef120 / 005ef180 are Reflection::Value::operator=<SurfaceType> / <Controller::InputType> of reflection/type.h.)
 		virtual void getVariant(const Reflection::DescribedBase* instance, Reflection::Value& value) const
 		{
 			value = getset->getValue(instance);
