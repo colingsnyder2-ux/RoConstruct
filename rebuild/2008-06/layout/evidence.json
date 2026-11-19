@@ -5165,18 +5165,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/Camera.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/Camera.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 69,
-    "text": [
-     "// Out of line in the original (005cc0c0 / 005cc690 are called, not inlined, from panRadians/tiltRadians)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/include/v8datamodel/DataModel.h": {
   "source": "rebuild/2008-06/native-headers/v8datamodel/DataModel.h",
   "build": {},
@@ -5643,29 +5631,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/ModelInstance.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 44,
-    "text": [
-     "// 00585050 / 00584fc0: ModelInstance's own entries in vtable slots 7 / 8 of 00830dc4 (also inherited unchanged by",
-     "// the RootInstance / Workspace vtables 00831d68, 008337f0, 00833a70 and 00833db0); they override the PVInstance",
-     "// declarations, so the slot order is unchanged."
-    ]
-   },
-   {
-    "line": 60,
-    "text": [
-     "// 005d8690 = <Humanoid> (162 bytes; callers Humanoid::modelIsCharacter 005d9a20, getLocalHumanoidFromContext 005d9bb0,",
-     "// render3dAdorn 005d9c30, 005db4c0, render2d 005db960), 005d4460 = <Skin> (BodyColors::apply 005d4b60): walks the",
-     "// modifiers vector (+0x1ec, first/last +0x1f8/+0x1fc) with checked const_iterators and dynamic_casts each entry",
-     "// from IModelModifier (RTTI 0x936908). Analog name (the registry has only placeholders for both instantiations)."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/include/v8datamodel/Mouse.h": {
   "source": "rebuild/2008-06/native-headers/v8datamodel/Mouse.h",
   "build": {},
@@ -5696,51 +5661,6 @@
      "//              CoordinateFrame> Hit / Origin (read only), RefPropDescriptor<Mouse, PartInstance> Target (read only),",
      "//              PropDescriptor<Mouse, int> X, Y, ViewSizeX, ViewSizeY (read only), PropDescriptor<Mouse, TextureId>",
      "//              Icon (getIcon 00642f80, setIcon 0064e180)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/PVInstance.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PVInstance.h: class names are .data",
-     "// char arrays passed directly as template arguments (see native-headers/util/Name.h)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/PartInstance.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PartInstance.h: class names are .data",
-     "// char arrays passed directly as template arguments (see native-headers/util/Name.h)."
-    ]
-   },
-   {
-    "line": 84,
-    "text": [
-     "// Original descriptor 009761d4, initializer 007f4b90; dispatcher 0059e3a0."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h": {
-  "source": "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 67,
-    "text": [
-     "// Inline in 2008-06: no out-of-line RootInstance::getControllersUsed in the identity registry; ArrowPanel::isVisible",
-     "// 00656db0 reads Workspace +0x2a8 through ComputeProp<ControllerTypeArray, RootInstance>::getValue 00656c30."
     ]
    }
   ]
