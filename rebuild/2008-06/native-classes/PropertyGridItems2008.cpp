@@ -293,8 +293,7 @@ void ScriptItem::OnInplaceButtonDown(CXTPPropertyGridInplaceButton*)
 #endif
 
 // XItem<int, CXTPPropertyGridItemEnum, EnumPropertyDescriptor> specializations
-template<>
-void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::update(RBX::SelectionGroup*) {}
+// XItem<int,Enum>::update 0043c6a0 is defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::applyValue(int const&) {}
 
@@ -309,16 +308,12 @@ void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescripto
 {
     SetValue(v.c_str());
 }
-template<>
-void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::writeValue(RBX::Instance*, std::string const&) {}
-template<>
-void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::update(RBX::SelectionGroup*) {}
+// XItem<string>::writeValue 0043b9d0 and update 0043bc20 are defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::applyValue(std::string const&) {}
 
 // XItem<BrickColor, CPropertyGridItemBrickColor, TypedPropertyDescriptor<BrickColor>> specializations
-template<>
-void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::update(RBX::SelectionGroup*) {}
+// XItem<BrickColor>::update 0043b5b0 is defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::applyValue(RBX::BrickColor const&) {}
 
@@ -339,8 +334,7 @@ template<>
 void XItem<RBX::TextureId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId> >::writeValue(RBX::Instance*, RBX::TextureId const&) {}
 
 // XItem<Vector3, CXTPPropertyGridItem, TypedPropertyDescriptor<Vector3>> specializations
-template<>
-void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::update(RBX::SelectionGroup*) {}
+// XItem<Vector3>::update 0043c170 is defined in AppUnit438PropGrid.cpp.
 template<>
 void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::applyValue(G3D::Vector3 const&) {}
 template<>
