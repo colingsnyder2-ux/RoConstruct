@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // Inactive 2008-06 native recovery: the reflection_object unit of the application range 00570000..0057c000.
 // Rows (verified by tests/record_native_app_unit570_2008.py):
 //   MemberDescriptorContainer<Property/Signal/FunctionDescriptor>::mergeMembers 005703a0 / 00570440 / 005704e0 and
@@ -8,6 +9,8 @@
 // ClassDescriptor and DescribedBase are the donor reflection/object.h declarations (read-only); MemberDescriptor and
 // MemberDescriptorContainer are the native reflection/member.h ones (read-only).
 #include "reflection/reflection.h"
+
+#include "../../../tools/rbxgs/Client/App/include/reflection/object.h"
 
 namespace RBX
 {

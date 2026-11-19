@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "../native-headers/v8datamodel/DataModel.h"
 #include "../native-headers/StandardVerbs.h"
 
@@ -13,7 +14,10 @@ ForceAssertionCommand::ForceAssertionCommand(DataModel* model) : Verb(model, "Fo
 DeleteBase::DeleteBase(DataModel* model, std::string name, bool reward) : EditSelectionVerb(name, model), rewardHopper(reward) {}
 inline MoveUpSelectionVerb::MoveUpSelectionVerb(DataModel* dm, const std::string& name, float height)
     : EditSelectionVerb(name, dm), moveUpHeight(height) {}
-MoveUpPlateVerb::MoveUpPlateVerb(DataModel* dm) : MoveUpSelectionVerb(dm, "SelectionUpPlate", 0.4f) {}
+MoveUpPlateVerb::MoveUpPlateVerb(DataModel* dm)
+    : MoveUpSelectionVerb(dm, "SelectionUpPlate", 0.4f)
+{
+}
 MoveUpBrickVerb::MoveUpBrickVerb(DataModel* dm) : MoveUpSelectionVerb(dm, "SelectionUpBrick", 1.2f) {}
 
 }

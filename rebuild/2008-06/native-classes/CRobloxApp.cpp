@@ -33,6 +33,8 @@ int CRobloxApp::Run()
 #include <afxole.h>
 #include <afxdisp.h>
 #include <stdexcept>
+#include "../native-headers/CMainFrame.h"
+
 #include "VersionInfo.h" // PJ Naughter CVersionInfo (OpenRBX declaration)
 
 class CRobloxCommandLineInfo : public CCommandLineInfo {
@@ -164,3 +166,33 @@ int CRobloxApp::ExitInstance()
     ATL::AtlComModuleRevokeClassObjects(&ATL::_AtlComModule);
     return CWinApp::ExitInstance();
 }
+
+BOOL CRobloxApp::initializeFramework(bool maximized)
+{
+    if (m_pMainWnd != 0) {
+        if (!::IsWindowVisible(m_pMainWnd->m_hWnd))
+            ((CMainFrame*)m_pMainWnd)->showFrame(m_nCmdShow);
+        return ((CMainFrame*)m_pMainWnd)->m_hWnd != 0;
+    }
+
+    CMainFrame* frame = new CMainFrame;
+    if (!frame)
+        return 0;
+    if (!frame->LoadFrame(0x80, 0xcf8000, 0, 0))
+        return 0;
+
+    if (maximized)
+        frame->hideEditorChrome();
+    else
+        frame->showEditorChrome(false);
+
+    ::DragAcceptFiles(frame->m_hWnd, 1);
+    frame->showFrame(m_nCmdShow);
+    m_pMainWnd = frame;
+
+    if (m_atomApp == 0 && m_atomSystemTopic == 0)
+        EnableShellOpen();
+
+    return TRUE;
+}
+

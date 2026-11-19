@@ -28,6 +28,19 @@ struct UngroupOperation {
     void operator()(const boost::shared_ptr<Instance>&) const;
 };
 
+// INFERRED: implementation shape consistent with ungroup semantics (move children up, clear model, mark changed); see experiments/overlays/studio-verbs-ungroup evidence copy.
+void UngroupOperation::operator()(const boost::shared_ptr<Instance>& item) const {
+    if (item->numChildren() > 0) {
+        for (unsigned int i = 0; i < item->numChildren(); ++i) {
+            Instance* child = item->getChild(i);
+            children->push_back(child);
+        }
+        item->removeAllChildren();
+        item->setParent(NULL);
+        *changed = true;
+    }
+}
+
 void UngroupSelectionVerb::doIt(IDataState* state) {
     checkRunPermissions(dataModel);
     FilteredSelection<ModelInstance>* models = ServiceProvider::create<FilteredSelection<ModelInstance> >(static_cast<const ServiceProvider*>(dataModel));

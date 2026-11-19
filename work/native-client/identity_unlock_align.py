@@ -8,13 +8,15 @@ accepted in earlier rounds; repeated to a fixpoint.
             the original C, agreeing at every named callee (>=1 anchor), names the
             callee symbol at an unnamed position.
   callee  - an object function (symbol not yet a registry name) whose direct-call list has
-            the original's length and agrees at every named position, with >=2 anchors
+            the original's length and agrees at every named position, with >=3 anchors
             counting call and string/data references, is a candidate for the unnamed
             function itself.  Only a single surviving candidate symbol is accepted.
 A symbol voted to two addresses, or an address with two symbols, is rejected.
 Output: work/native-client/identity-unlock-align.json
 """
 import gzip
+from functools import lru_cache
+import re
 import json
 import pickle
 import sys
@@ -22,13 +24,14 @@ from collections import defaultdict, Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, BASE, IMG, MD, end_of, unnamed, CODE_STARTS  # noqa: E402
+from identity_unlock_common import ROOT, REG, BASE, IMG, MD, end_of, unnamed, CODE_STARTS, dump_json  # noqa: E402
 
 NC = ROOT / 'work/native-client'
 OUT = NC / 'identity-unlock-align.json'
 CODESET = set(CODE_STARTS)
 
 
+@lru_cache(None)
 def target_refs(va):
     """(direct call targets in order, registry names of referenced non-code data)"""
     o = va - BASE
@@ -65,7 +68,28 @@ def main():
     print('index funcs', len(funcs), 'vtables', len(tabs), flush=True)
     targets = set(unnamed())
     name = {a: v['name'] for a, v in REG.items() if not v.get('placeholder')}
+    # names other identity-unlock routes proved are anchors too (cross-route fixpoint)
+    prior = NC / 'unnamed-identities.json'
+    if prior.exists():
+        for a, r in json.load(open(prior)).items():
+            if r['name_source'] != 'identity-unlock-align':
+                name[a] = r['name']
     regnames = set(name.values())
+    # template peers (same method of another instantiation) compile to the same shape, so
+    # callee alignment cannot tell them apart (cross-validation: all wrong picks were these)
+    peer_key = re.compile(r'^\?(\w+)@\?\$(\w+)@|^\?\?([0-9]|_[EG])\?\$(\w+)@')
+    peers = Counter()
+    for row in {r[0] for r in funcs}:
+        m = peer_key.match(row)
+        if m:
+            peers[m.groups()] += 1
+
+    def peer_ambiguous(sym):
+        if sym.startswith(('??_E', '??_G')):
+            return True
+        m = peer_key.match(sym)
+        return bool(m) and peers[m.groups()] > 1
+
     by_symbol = defaultdict(list)
     by_ref = defaultdict(list)
     for row in funcs:
@@ -98,13 +122,19 @@ def main():
         # vtable slots
         if rnd == 1:
             for vname, slots in tabs:
+                if vname not in vt_slots:
+                    continue  # registry renamed this vtable since the index was built
                 base = vt_slots[vname]
+                at = {off: '%08x' % int.from_bytes(IMG[base + off - BASE:base + off - BASE + 4], 'little')
+                      for off, _ in slots if off >= 0}
+                # a compiled vtable whose virtual order differs from the original (imperfect
+                # header) shifts every slot: require agreement at every already-named slot
+                named_slots = [(at[off], sym) for off, sym in slots if off >= 0 and at[off] in name]
+                if not named_slots or any(name[t] != sym for t, sym in named_slots):
+                    continue
                 for off, sym in slots:
-                    if off < 0:
-                        continue
-                    t = '%08x' % int.from_bytes(IMG[base + off - BASE:base + off - BASE + 4], 'little')
-                    if t in targets:
-                        votes[t][sym].append(('vtable', vname, off // 4))
+                    if off >= 0 and at[off] in targets:
+                        votes[at[off]][sym].append(('vtable', vname, off // 4))
         # caller alignment
         work = {t for t in targets if t not in accepted}
         callers = {c for t in work for c in callers_of.get(t, ()) if known(c)}
@@ -122,9 +152,11 @@ def main():
                             break
                         anchors += 1
                 else:
-                    if anchors:
+                    # cross-validated on named functions: >=2 anchors and no template peers
+                    # keep the caller rule at ~97.5% (most misses are ICF-folded aliases)
+                    if anchors >= 2:
                         for t, o in zip(tc, oc):
-                            if t in work:
+                            if t in work and not peer_ambiguous(o):
                                 votes[t][o].append(('caller', c, known(c)))
         # callee alignment
         for t in work:
@@ -141,12 +173,12 @@ def main():
             size = end_of(int(t, 16)) - int(t, 16)
             for row in pool:
                 sym, ln, oc, od = row
-                if len(oc) != len(tc) or not (size // 2 <= ln <= size * 2):
+                if len(oc) != len(tc) or not (size * 3 // 4 <= ln <= size * 4 // 3):
                     continue
                 if any(oc[i] != k for i, k in named_calls):
                     continue
                 anchors = len(named_calls) + len(td & set(od))
-                if anchors >= 2 and sym not in regnames:
+                if anchors >= 3 and sym not in regnames and not peer_ambiguous(sym):
                     votes[t][sym].append(('callee', anchors))
         # resolve
         used = Counter(s for v in accepted.values() for s in [v[0]])
@@ -172,7 +204,7 @@ def main():
                   'evidence': [{'kind': 'object-alignment-' + kinds.most_common(1)[0][0], 'round': r,
                                 'votes': dict(kinds), 'sample': [list(map(str, e)) for e in ev[:3]]},
                                {'kind': 'decorated-signature', 'symbol': s}]}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('bound', len(out), Counter(v['evidence'][0]['kind'] for v in out.values()))
 
 

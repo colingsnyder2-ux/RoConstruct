@@ -29,6 +29,7 @@ class __declspec(novtable) ServiceProvider :
     public Notifier<ServiceProvider, ServiceRemoving> {
 public:
     static const ServiceProvider* findServiceProvider(const Instance*);
+    virtual bool askAddChild(const Instance* instance) const;   // INFERRED: 00575240 vtable slot 2 override (__RTDynamicCast to Service)
     mutable std::vector<boost::shared_ptr<Instance> > serviceArray;
     std::map<const Name*, boost::shared_ptr<Instance> > serviceMap;
     boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;
@@ -45,6 +46,10 @@ public:
     template<class Class> static Class* create(const ServiceProvider* provider) {
         return provider ? provider->create<Class>() : NULL;
     }
+public:
+	ServiceProvider(void);   // INFERRED: ??0ServiceProvider@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+protected:
+	void clearServices(void);   // INFERRED: ?clearServices@ServiceProvider@RBX@@IAEXXZ (header gap, header_gap_fill.py)
 };
 
 // Layout recovered from the existing ServiceClient declaration. Method bodies

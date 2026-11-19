@@ -3,9 +3,9 @@
 
 namespace RBX {
 PartTool::PartTool(Workspace* workspace) : MouseCommand(workspace) {}
-void PartTool::onMouseHover(const UIEvent& input)
+void PartTool::onMouseHover(const RBX::UIEvent& input)
 {
-    partInstance = shared_from(getPart(input, NULL));
+    partInstance = RBX::shared_from<RBX::PartInstance>(getPart(input, NULL));
 }
 void PartTool::render3dAdorn(Adorn* adorn)
 {

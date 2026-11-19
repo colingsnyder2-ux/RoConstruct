@@ -1,3 +1,4 @@
+// native-flags: /O2 /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Stats.h"
@@ -95,15 +96,16 @@ void CRobloxReportView::setDataModel(boost::shared_ptr<RBX::DataModel> dataModel
 
 // Original 004582f0 (open, 388 vs 391 bytes): identical except operator new(0xb0) - sizeof(CStatsItemRecord) needs
 // the record layout (see the header).
-void CRobloxReportView::onMarshaledEvent(const RBX::Instance*, RBX::ChildAdded event)
+void CRobloxReportView::onMarshaledEvent(const RBX::Instance* source, RBX::ChildRemoved event)
 {
-    CXTPReportControl& control = GetReportCtrl();
-    boost::shared_ptr<RBX::Stats::Item> item = boost::shared_dynamic_cast<RBX::Stats::Item>(event.child);
-    if (!item)
-        return;
-    CStatsItemRecord* record = new CStatsItemRecord(item, dataModel);
-    record->SetExpanded(TRUE);
-    control.AddRecord(record);
+    CXTPReportRecords* records = GetReportCtrl().GetRecords();
+    for (int i = records->GetCount() - 1; i >= 0; --i) {
+        RBX::Instance* recordValue = *(RBX::Instance* const*)((char*)records->GetAt(i) + 0xa8);
+        if (recordValue == event.child.get()) {
+            records->RemoveAt(i);
+            break;
+        }
+    }
 }
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).

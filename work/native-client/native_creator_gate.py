@@ -11,7 +11,8 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-sys.argv, ARGS = sys.argv[:1], sys.argv[1:]
+ARGS = sys.argv[1:] if __name__ == '__main__' else []
+sys.argv = sys.argv[:1]
 import native_llm as m  # noqa: E402
 
 ap = argparse.ArgumentParser()
@@ -32,7 +33,7 @@ DEFINITIONS = '''namespace RBX {
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 	template<class C, class D, const char* N>
-	FactoryProduct<C, D, N>::Creator::Creator() { getCreators()[&className()] = this; }
+	FactoryProduct<C, D, N>::Creator::Creator() { getCreators()[&className()] = this; isConstructed = 666; }
 	template<class C, class D, const char* N>
 	FactoryProduct<C, D, N>::Creator::~Creator() { getCreators().erase(&className()); }
 	template<class C, class D, const char* N>
@@ -57,7 +58,7 @@ def instance(sig):
             cur += ch
     parts.append(cur)
     parts = [re.sub(r'^(?:class|struct) ', '', p.strip()) for p in parts]
-    parts[-1] = re.sub(r'^&char const \* const ', '', parts[-1])
+    parts[-1] = re.sub(r'^&char(?: const)? \*(?: const)? ', '', parts[-1])     # QBDB (const) and PADA (non-const) names
     return ', '.join(parts), [p for p in parts[:2]]
 
 
@@ -73,16 +74,86 @@ def gate(pair):
     if not headers:
         return cls, {a: 'no-header' for a, _ in rows}, ''
     work = OUT / re.sub(r'\W+', '_', cls)[:60]
-    work.mkdir(parents=True, exist_ok=True)
-    probe = work / 'probe.cpp'
-    flags = '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /I%s /I%s' % (ROOT / 'rebuild/2008-06/native-headers', m.DONOR_INCLUDE)
     # `creator` and `Creator` are private (explicit instantiation of them is C2248): instantiating the public inline
     # getCreator(), which returns creator, instantiates the static member's definition implicitly.
-    probe.write_text('// native-flags: %s\n%s\n%s\ntemplate const RBX::ICreator& RBX::FactoryProduct<%s>::getCreator();\n'
-                     % (flags, ''.join('#include "%s"\n' % Path(h).resolve().as_posix() for h in dict.fromkeys(headers)),
-                        DEFINITIONS, targs))
+    code = '%s\ntemplate const RBX::ICreator& RBX::FactoryProduct<%s>::getCreator();\n' % (DEFINITIONS, targs)
+    status, detail = gate_code(work, headers, code, {a: r['name'] for a, r in rows})
+    return cls, status, detail
+
+
+def discover_symbol(work, headers, code, addr, needle, include_first=(), raw_includes=None, defines=()):
+    """Compile once and return the decorated symbol of the function whose name contains NEEDLE (placeholder targets
+    have no known decorated name: `sub_00401ab0` -> `?sub_00401ab0@S@RBX@@QAEXXZ`)."""
+    gate_code(work, headers, code, {addr: '?__discover_%s@@YAXXZ' % addr}, keep=True, include_first=include_first,
+              raw_includes=raw_includes, defines=defines)
+    bulk = OUT / (work.name + '-bulk')
+    try:
+        manifest = json.loads((bulk / 'manifest.json').read_text())
+        logs = list(bulk.rglob('compile.log'))
+        error_lines = [line for log in logs for line in log.read_text(errors='replace').splitlines()
+                       if re.search(r'error C\d+', line)]
+        LAST_ERROR[addr] = (error_lines[0] if error_lines else '')[-400:]
+        LAST_ERRORS[addr] = [l[-300:] for l in error_lines[:12]]      # compile-fix lane feeds these back
+    except (OSError, ValueError):
+        return None
+    finally:
+        import shutil
+        shutil.rmtree(bulk, ignore_errors=True)
+    found = [s['symbol'] for fam in manifest['families'] for s in fam['symbols'] if needle in s.get('symbol', '')
+             and not s['symbol'].startswith(('__', '$'))]
+    emitted = {s.get('symbol') for fam in manifest['families'] for s in fam['symbols']}
+    if EXPECT.get(addr) in emitted:            # named target: its exact decorated symbol was emitted (the needle
+        return EXPECT[addr]                    # search fails on operators and on names several symbols contain)
+    return found[0] if len(found) == 1 else None
+
+
+LAST_ERROR = {}
+EXPECT = {}          # addr -> expected decorated symbol (set by the named lane)
+LAST_ERRORS = {}
+
+
+GATE_PORT = int(__import__('os').environ.get('ROC_GATE_PORT', 8799))
+
+
+def bulk_run(config, bulk):
+    """native-bulk CONFIG --out BULK through the resident gate server (gate_server.py) when it is up, else a fresh
+    `roc.cmd native-bulk` process.  Same code and output folder either way."""
+    import time
+    import urllib.request
+    lock = Path(bulk) / 'run.lock'                         # left by a killed run: every later gate here would fail
+    try:
+        if time.time() - lock.stat().st_mtime > 1800:
+            lock.unlink()
+    except OSError:
+        pass
+    try:
+        req = urllib.request.Request('http://127.0.0.1:%d/' % GATE_PORT, method='POST', data=json.dumps(
+            {'config': str(Path(config).resolve()), 'out': str(Path(bulk).resolve())}).encode())
+        with urllib.request.urlopen(req, timeout=1800) as reply:
+            if json.loads(reply.read()).get('ok'):
+                return
+    except OSError:
+        pass
+    subprocess.run([str(ROOT / 'roc.cmd'), 'native-bulk', str(config), '--out', str(bulk)], cwd=ROOT,
+                   capture_output=True, text=True)
+
+
+def gate_code(work, headers, code, want, keep=False, include_first=(), raw_includes=None, defines=()):
+    """Compile HEADERS + CODE as one probe and prove the WANT {addr: symbol} functions through native-bulk with closure
+    identity evidence, learning callee identities from the candidate object (3 rounds).  -> ({addr: status}, detail).
+    INCLUDE_FIRST: /I dirs searched before native-headers (shadow headers with inferred member declarations);
+    RAW_INCLUDES: #include strings to emit instead of the absolute header paths."""
+    work.mkdir(parents=True, exist_ok=True)
+    probe = work / 'probe.cpp'
+    flags = ''.join('/I%s ' % d for d in include_first)
+    flags = '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL %s/I%s /I%s' % (flags, ROOT / 'rebuild/2008-06/native-headers', m.DONOR_INCLUDE)
+    vendor = m.header_include_flags(Path(headers[0]).resolve().relative_to(ROOT).as_posix(), '', [str(Path(h).resolve()) for h in headers[1:]])
+    flags += (' ' + vendor) if vendor else ''      # RakNet (DS_LinkedList.h), Ogre, Scintilla roots the headers need
+    flags += ''.join(' /D' + d for d in defines)    # native opt-in guards (#ifdef NATIVE_CLUMP_DECL ...)
+    includes = (''.join('#include "%s"\n' % h for h in raw_includes) if raw_includes is not None else
+                ''.join('#include "%s"\n' % Path(h).resolve().as_posix() for h in dict.fromkeys(headers)))
+    probe.write_text('// native-flags: %s\n%s\n%s\n' % (flags, includes, code))
     closure = json.loads(m.CLOSURE.read_text())
-    want = {a: r['name'] for a, r in rows}
     closure['bindings'] = [b for b in closure['bindings'] if b['addr'] not in want] + [
         dict(symbol=n, addr=a, address=a, votes=1, evidence='identity-unlock-init', body_exact=False, function_start=True)
         for a, n in want.items()]
@@ -92,19 +163,18 @@ def gate(pair):
                           str(work / 'closure.json'), '--output', str(evidence), *sum((['--addr', a] for a in want), [])],
                          cwd=ROOT, capture_output=True, text=True)
     if ran.returncode:
-        return cls, {a: 'tool-error' for a in want}, ran.stderr[-300:]
+        return {a: 'tool-error' for a in want}, ran.stderr[-300:]
     rel = lambda p: p.relative_to(ROOT).as_posix()
     config = work / 'bulk.json'
     config.write_text(json.dumps({'client': '2008-06', 'roc_cl': 21022, 'targets': sorted(want), 'families': [
         {'name': 'creator-gate', 'sources': [rel(probe)], 'evidence': [rel(evidence)]}]}))
     bulk = OUT / (work.name + '-bulk')
     for _ in range(3):
-        subprocess.run([str(ROOT / 'roc.cmd'), 'native-bulk', str(config), '--out', str(bulk)], cwd=ROOT,
-                       capture_output=True, text=True)
+        bulk_run(config, bulk)
         try:
             manifest = json.loads((bulk / 'manifest.json').read_text())
         except (OSError, ValueError):
-            return cls, {a: 'tool-error' for a in want}, 'no manifest'
+            return {a: 'tool-error' for a in want}, 'no manifest'
         if not any('inputs changed' in b for fam in manifest['families'] for b in fam.get('blockers', [])):
             break
     symbols = {s['symbol']: s for fam in manifest['families'] for s in fam['symbols']}
@@ -130,7 +200,7 @@ def gate(pair):
         have = {(b['symbol'], b['addr']) for b in closure['bindings']}
         new = [dict(symbol=b['symbol'], addr=b['address'], address=b['address'], votes=1,
                     evidence=b.get('identity_evidence', 'creator-gate-reference'), body_exact=False, function_start=False)
-               for b in learned if (b['symbol'], b['address']) not in have]
+               for b in learned if (b['symbol'], b['address']) not in have and m.plausible_binding(b['symbol'], b['address'])]
         if not new:
             break
         closure['bindings'] += new
@@ -138,8 +208,7 @@ def gate(pair):
         subprocess.run([sys.executable, str(ROOT / 'work/native-client/native_identity_evidence.py'), '--closure',
                         str(work / 'closure.json'), '--output', str(evidence), *sum((['--addr', a] for a in want), [])],
                        cwd=ROOT, capture_output=True, text=True)
-        subprocess.run([str(ROOT / 'roc.cmd'), 'native-bulk', str(config), '--out', str(bulk)], cwd=ROOT,
-                       capture_output=True, text=True)
+        bulk_run(config, bulk)
         try:
             manifest = json.loads((bulk / 'manifest.json').read_text())
             symbols = {s['symbol']: s for fam in manifest['families'] for s in fam['symbols']}
@@ -147,31 +216,43 @@ def gate(pair):
         except (OSError, ValueError):
             break
     detail = ''
+    objs = sorted(bulk.rglob('candidate.obj'))
+    if objs and any(v == 'draft' for v in status.values()):
+        # Byte drafts: the assembly diff is the model lane's feedback (native_init_llm.py).
+        a = next(a for a, v in status.items() if v == 'draft')
+        detail = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', a, '--obj', str(objs[-1]), '--sym', want[a],
+                                 '--context', '2', '--head', '60'], cwd=ROOT, capture_output=True, text=True).stdout[-2500:]
     if all(v == 'missing' for v in status.values()):
         logs = list(bulk.rglob('compile.log'))
         detail = next((line for log in logs for line in log.read_text(errors='replace').splitlines()
                        if re.search(r'error C\d+', line)), '')[-300:]
-    else:
+    elif not detail:
         detail = '; '.join(e for n in want.values() if n in symbols for j in symbols[n].get('rejections', [])
                            for e in j.get('errors', []))[:300]
     import shutil
-    if not __import__('os').environ.get('KEEP'): shutil.rmtree(bulk, ignore_errors=True)
+    if not (keep or __import__('os').environ.get('KEEP')):
+        shutil.rmtree(bulk, ignore_errors=True)
     (work / 'closure.json').unlink(missing_ok=True)
-    return cls, status, detail
+    return status, detail
 
 
-identities = json.loads((ROOT / 'work/native-client/unnamed-identities.json').read_text())
-pairs = collections.defaultdict(list)
-for addr, row in identities.items():
-    found = re.match(r'\?\?__[EF]\?creator@\?\$FactoryProduct@(.*)$', row['name'])
-    if found and addr not in results:
-        pairs[found.group(1)].append((addr, row))
-todo = list(pairs.items())[:args.limit or None]
-print('creator pairs', len(todo), flush=True)
-with ThreadPoolExecutor(args.jobs) as pool:
-    for cls, status, detail in pool.map(gate, todo):
-        for addr, st in status.items():
-            results[addr] = {'status': st, 'detail': detail, 'class': cls[:80]}
-        RESULTS.write_text(json.dumps(results, indent=1))
-        print(cls[:50], status, detail[:160], flush=True)
-print(collections.Counter(r['status'] for r in results.values()))
+def main():
+  identities = json.loads((ROOT / 'work/native-client/unnamed-identities.json').read_text())
+  pairs = collections.defaultdict(list)
+  for addr, row in identities.items():
+      found = re.match(r'\?\?__[EF]\?creator@\?\$FactoryProduct@(.*)$', row['name'])
+      if found and addr not in results:
+          pairs[found.group(1)].append((addr, row))
+  todo = list(pairs.items())[:args.limit or None]
+  print('creator pairs', len(todo), flush=True)
+  with ThreadPoolExecutor(args.jobs) as pool:
+      for cls, status, detail in pool.map(gate, todo):
+          for addr, st in status.items():
+              results[addr] = {'status': st, 'detail': detail, 'class': cls[:80]}
+          RESULTS.write_text(json.dumps(results, indent=1))
+          print(cls[:50], status, detail[:160], flush=True)
+  print(collections.Counter(r['status'] for r in results.values()))
+
+
+if __name__ == '__main__':
+    main()

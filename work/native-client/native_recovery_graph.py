@@ -11,6 +11,19 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 
+def _ledger_rows(entry, ledger_path):
+    """Harvest rows of a native_bulk ledger entry: inline (older ledgers) or its compressed rows file (rows/<ref>)."""
+    if 'harvest_rows' in entry:
+        return entry['harvest_rows']
+    ref = entry.get('harvest_ref')
+    path = Path(ledger_path).parent / 'rows' / ref if ref else None
+    if not path or not path.is_file():
+        return []
+    import gzip
+    with gzip.open(path, 'rt', encoding='utf-8') as stream:
+        return json.load(stream)
+
+
 def graph_id(kind, value):
     return kind + ':' + value.replace(':', '_').replace('?', '_').replace('$', '_')
 
@@ -36,7 +49,7 @@ def main():
     for path in args.ledger:
         data = json.loads(path.read_text())
         for receipt in data.values():
-            for row in receipt.get('harvest_rows', []):
+            for row in _ledger_rows(receipt, path):
                 address = row.get('addr', '').lower()
                 if row.get('status') == 'inactive_exact' and address:
                     proof[address] = {'symbol': row['symbol'], 'ledger': str(path),

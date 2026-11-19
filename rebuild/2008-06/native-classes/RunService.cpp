@@ -85,3 +85,30 @@ void RBX::RunService::invalidateRunViews() {
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::map<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> > >;
+
+namespace RBX {
+void RunService::runViewValid(IRunView* view)
+{
+	boost::mutex::scoped_lock lock(viewMutex);
+	if (invalidRunViewCount == 0)
+		return;
+	std::map<IRunView*, bool>::iterator it = views.find(view);
+	if (it != views.end() && !it->second)
+	{
+		--invalidRunViewCount;
+		it->second = true;
+	}
+	if (invalidRunViewCount == 0)
+		runViewsDoneCondition.notify_all();
+}
+}
+
+namespace RBX {
+void RunService::removeRunView(RBX::IRunView* view)
+{
+    boost::mutex::scoped_lock lock(viewMutex);
+    runViewValid(view);
+    views.erase(view);
+}
+}
+

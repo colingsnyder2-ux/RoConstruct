@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 #include "gui/Gui.h"
 namespace RBX {
 GuiItem::GuiItem() : guiSize(0, 0) { setName("Unnamed GuiItem"); }
@@ -68,3 +69,28 @@ const GuiItem* GuiItem::getGuiParent() const
     return dynamic_cast<const GuiItem*>(getParent());
 }
 }
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuSelect()
+{
+    static G3D::Color4 c(0.7f, 0.7f, 0.7f, 1.0f);
+    return c;
+}
+}
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuEnabledFill()
+{
+    static G3D::Color4 c(0.3f, 0.3f, 0.3f, 1.0f);
+    return c;
+}
+}
+
+namespace RBX {
+const G3D::Color4& GuiItem::menuDisabledFill()
+{
+    static G3D::Color4 c(0.6f, 0.6f, 0.6f, 1.0f);
+    return c;
+}
+}
+

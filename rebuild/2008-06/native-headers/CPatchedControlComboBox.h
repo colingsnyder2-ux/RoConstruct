@@ -12,4 +12,6 @@ class CPatchedControlComboBox : public CXTPControlComboBox {
     DECLARE_XTP_CONTROL(CPatchedControlComboBox)
 protected:
     virtual BOOL Compare(CXTPControl* pOther);
+public:
+	CPatchedControlComboBox(void);   // INFERRED: ??0CPatchedControlComboBox@@QAE@XZ (header gap, header_gap_fill.py)
 };

@@ -57,12 +57,33 @@ def undname(sym):
     return None
 
 
+_UND_CACHE = ROOT / 'work/native-client/identity-unlock-undname-cache.pkl'
+_UND = None
+
+
 def undname_many(syms):
-    """Batch undname (one process per 200 names)."""
-    syms = [s for s in dict.fromkeys(syms)]
+    """Batch undname (one process per <=200 names and <=24k command-line chars).
+    undname is a pure function of the symbol, so results persist in a disk cache."""
+    global _UND
+    import pickle
+    if _UND is None:
+        try:
+            _UND = pickle.load(open(_UND_CACHE, 'rb'))
+        except Exception:
+            _UND = {}
+    want = [s for s in dict.fromkeys(syms)]
+    syms = [s for s in want if s not in _UND]
     res = {}
-    for i in range(0, len(syms), 200):
-        chunk = syms[i:i + 200]
+    chunks, cur_chunk, size = [], [], 0
+    for s in syms:
+        if cur_chunk and (len(cur_chunk) == 200 or size + len(s) > 24000):
+            chunks.append(cur_chunk)
+            cur_chunk, size = [], 0
+        cur_chunk.append(s)
+        size += len(s) + 3
+    if cur_chunk:
+        chunks.append(cur_chunk)
+    for chunk in chunks:
         out = subprocess.run([str(UNDNAME)] + chunk, capture_output=True, text=True).stdout
         cur = None
         for line in out.splitlines():
@@ -70,7 +91,14 @@ def undname_many(syms):
                 cur = line[len('Undecoration of :- '):].strip().strip('"')
             elif line.startswith('is :- ') and cur is not None:
                 res[cur] = line[6:].strip().strip('"')
-    return res
+    if syms:
+        for x in syms:
+            _UND[x] = res.get(x)
+        tmp = str(_UND_CACHE) + '.tmp'
+        pickle.dump(_UND, open(tmp, 'wb'))
+        import os
+        os.replace(tmp, _UND_CACHE)
+    return {x: _UND[x] for x in want if _UND.get(x) is not None}
 
 
 def refs(i):
@@ -94,3 +122,21 @@ def show(a, n=12):
         print(' ', hex(i.address), i.mnemonic, i.op_str, t)
         if i.mnemonic in ('ret', 'jmp'):
             break
+
+
+def dump_json(obj, path):
+    """Atomic JSON write (tmp + replace), retried while another process holds the file open
+    (Windows refuses the replace, or the open, with EACCES / EINVAL meanwhile)."""
+    import os
+    import time
+    path = str(path)
+    tmp = path + '.tmp%d' % os.getpid()
+    for k in range(60):
+        try:
+            with open(tmp, 'w') as fh:
+                json.dump(obj, fh, indent=1, sort_keys=True)
+            os.replace(tmp, path)
+            return
+        except OSError:
+            time.sleep(1)
+    raise OSError('could not write %s (held open by another process)' % path)

@@ -7,6 +7,10 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "util/Quaternion.h"
 
+
+#include "../../../tools/rbxgs/Client/App/include/util/Quaternion.h"
+
+extern "C" double __cdecl sqrt(double);
 namespace RBX
 {
 	Quaternion& Quaternion::operator=(const Quaternion& other)               // 005dd550
@@ -93,3 +97,15 @@ namespace RBX
 		rot[2][2] = 1.0 - (fTxx + fTyy);
 	}
 }
+
+namespace RBX {
+void Quaternion::normalize()
+{
+    float inverse = 1.0f / (float)sqrt(x * x + y * y + z * z + w * w);
+    x *= inverse;
+    y *= inverse;
+    z *= inverse;
+    w *= inverse;
+}
+}
+

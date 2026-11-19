@@ -29,7 +29,9 @@ namespace RBX
 		virtual bool isVisible() const;                              // slot 21, 00656db0 (not attempted)
 		virtual G3D::Vector2 getSize() const;                        // slot 23, 00656bf0
 		friend struct ::NativeWidgetLayout;
-	};
+		public:
+		void init(RBX::Adorn *,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &,SDLKey,SDLKey,SDLKey,SDLKey);   // INFERRED: ?init@ArrowPanel@RBX@@QAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1111W4SDLKey@@222@Z (header gap, header_gap_fill.py)
+};
 
 	class ArrowButton : public ImageKeyButton
 	{

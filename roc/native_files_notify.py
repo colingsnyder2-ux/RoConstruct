@@ -17,7 +17,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / 'work' / 'native-files-state.json'
-NATIVE_DIRS = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/', 'rebuild/2008-06/native-world/')
+NATIVE_DIRS = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/', 'rebuild/2008-06/native-world/',
+               'rebuild/2008-06/layout/')   # organized original-layout export (branch layout/2008-06)
 EXTENSIONS = ('.cpp', '.h', '.hpp', '.inc', '.c')
 MAX_LINES = 25          # links per embed field
 MAX_FIELDS = 6          # fields per message

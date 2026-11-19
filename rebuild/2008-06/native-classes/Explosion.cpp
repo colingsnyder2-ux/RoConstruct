@@ -18,3 +18,4 @@ void Explosion::onServiceProvider(const ServiceProvider* oldProvider, const Serv
 	Notifier<RunService, Stepped>::connect(ServiceProvider::find<RunService>(newProvider), dynamic_cast<Listener<RunService, Stepped>*>(this));
 }
 }
+

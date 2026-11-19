@@ -60,5 +60,13 @@ namespace RBX
 		bool intersectingOthers(Primitive* check, float overlapIgnored);                      // 0060dcd0
 		void onNewPair(Primitive* p0, Primitive* p1);                                         // 0060d8b0 (evidence name)
 		void onPrimitiveGeometryTypeChanged(Primitive* p);                                    // 0060d8e0 (evidence name)
-	};
+		public:
+		void doStats(void);   // INFERRED: ?doStats@ContactManager@RBX@@QAEXXZ (header gap, header_gap_fill.py)
+	public:
+		~ContactManager(void);   // INFERRED: ??1ContactManager@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+	private:
+		RBX::Primitive * getSlowHit(G3D::Array<RBX::Primitive *> const &,G3D::Ray const &,G3D::Array<RBX::Primitive const *> const *,RBX::HitTestFilter const *,G3D::Vector3 &,float,bool &,bool &)const;   // INFERRED: ?getSlowHit@ContactManager@RBX@@ABEPAVPrimitive@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVRay@5@PBV?$Array@PBVPrimitive@RBX@@@5@PBVHitTestFilter@2@AAVVector3@5@MAA_N5@Z (header gap, header_gap_fill.py)
+	public:
+		RBX::Primitive * getHitLegacy(G3D::Ray const &,RBX::Primitive const *,RBX::HitTestFilter const *,G3D::Vector3 &,float &,float const &)const;   // INFERRED: ?getHitLegacy@ContactManager@RBX@@QBEPAVPrimitive@2@ABVRay@G3D@@PBV32@PBVHitTestFilter@2@AAVVector3@5@AAMABM@Z (header gap, header_gap_fill.py)
+};
 }

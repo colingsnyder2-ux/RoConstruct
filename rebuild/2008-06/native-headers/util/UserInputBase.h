@@ -8,7 +8,9 @@
 namespace RBX
 {
 	class Adorn;
-	class UserInputBase
+	// INFERRED: __declspec(novtable) - the ctor 005ceaa0 never stores a vftable pointer (only the string member at +4,
+	// ContentId +0x20 and currentCursor +0x24 are written); MSVC omits that store only for novtable classes.
+	class __declspec(novtable) UserInputBase
 	{
 	public:
 		enum WrapMode
@@ -42,5 +44,7 @@ namespace RBX
 		virtual void setKeyState(SDLKey, bool) = 0;
 		virtual void setCursorId(Adorn*, const TextureId&);
 		void renderGameCursor(Adorn*);
+	public:
+		bool sub_004674a0();   // INFERRED: 004674a0, placeholder name (identity tier), body byte-proved (Inferred_004674a0.cpp)
 	};
 }

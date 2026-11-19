@@ -18,15 +18,62 @@ namespace RBX
 	// getValue/setValue 005ecd60..005ed0e0. Only the declarations the Surfaces lookups need are recovered here.
 	// INFERRED: base classes Reflection::EnumPropertyDescriptor / TypedPropertyDescriptor<T>, by analogy with
 	// Reflection::EnumPropDescriptor / PropDescriptor (same GetSetImpl nesting and constructor shape).
+	// The descriptor GetSetImpl bodies add the face offset to the Surfaces* from getSurfaces 00598de0 with no
+	// switch (Top +0x00 Bottom +0x08 Left +0x10 Right +0x18 Front +0x20 Back +0x28), so the lookup is inline in
+	// this unit; the out-of-line copy at 005ecc00 stays what other units call.
+	inline Surface& Surfaces::operator[](NormalId face)
+	{
+		switch (face)
+		{
+		case NORM_Y: return Top;
+		case NORM_Y_NEG: return Bottom;
+		case NORM_X_NEG: return Left;
+		case NORM_X: return Right;
+		case NORM_Z_NEG: return Front;
+		default: return Back;
+		}
+	}
+
+	// INFERRED: nested GetSetImpl modelled on Reflection::PropDescriptor::GetSetImpl; the object is the PartInstance
+	// (DescribedBase +0x14, null-checked cast) and the member pointers (+4 getter, +8 setter) are Surface members.
 	template<NormalId face, typename Enum>
 	class SurfaceEnumPropDescriptor : public Reflection::EnumPropertyDescriptor
 	{
+	private:
+		template<typename GetFunction, typename SetFunction>
+		class GetSetImpl : public Reflection::TypedPropertyDescriptor<Enum>::GetSet
+		{
+		private:
+			GetFunction get;
+			SetFunction set;
+		public:
+			GetSetImpl(GetFunction get, SetFunction set) : get(get), set(set) {}
+			virtual bool isReadOnly() const { return false; }
+			virtual bool isWriteOnly() const { return false; }
+			virtual Enum getValue(const Reflection::DescribedBase* object) const
+			{
+				PartInstance* o = (PartInstance*)object;
+				return (o->getSurfaces()[face].*get)();
+			}
+			virtual void setValue(Reflection::DescribedBase* object, const Enum& value) const
+			{
+				PartInstance* o = (PartInstance*)object;
+				(o->getSurfaces()[face].*set)(value);
+			}
+		};
+		std::auto_ptr<typename Reflection::TypedPropertyDescriptor<Enum>::GetSet> getset;
 	public:
 		template<typename GetFunction, typename SetFunction>
 		SurfaceEnumPropDescriptor(char const* name, char const* category, GetFunction get, SetFunction set,
-			Reflection::PropertyDescriptor::Functionality flags);
-		// Overrides in vtables 0083fe94 / 0083fee4 (bodies not recovered in this unit).
+			Reflection::PropertyDescriptor::Functionality flags)
+			: Reflection::EnumPropertyDescriptor(PartInstance::classDescriptor(), Reflection::EnumDesc<Enum>::singleton(), name, category, flags),
+			  getset(new GetSetImpl<GetFunction, SetFunction>(get, set))
+		{
+		}
 		virtual bool isReadOnly() const;
+		virtual int getEnumValue(const Reflection::DescribedBase*) const;
+		virtual bool setEnumValue(Reflection::DescribedBase*, int) const;
+		// Remaining overrides (vtables 0083fe94 / 0083fee4): bodies not recovered in this unit.
 		virtual bool equalValues(const Reflection::DescribedBase*, const Reflection::DescribedBase*) const;
 		virtual bool hasStringValue() const;
 		virtual std::string getStringValue(const Reflection::DescribedBase*) const;
@@ -35,17 +82,41 @@ namespace RBX
 		virtual void readValue(Reflection::DescribedBase*, const XmlElement*, IReferenceBinder&) const;
 		virtual unsigned getIndexValue(const Reflection::DescribedBase*) const;
 		virtual bool setIndexValue(Reflection::DescribedBase*, unsigned) const;
-		virtual int getEnumValue(const Reflection::DescribedBase*) const;
-		virtual bool setEnumValue(Reflection::DescribedBase*, int) const;
 	};
 
 	template<NormalId face, typename T>
 	class SurfacePropDescriptor : public Reflection::TypedPropertyDescriptor<T>
 	{
+	private:
+		template<typename GetFunction, typename SetFunction>
+		class GetSetImpl : public Reflection::TypedPropertyDescriptor<T>::GetSet
+		{
+		private:
+			GetFunction get;
+			SetFunction set;
+		public:
+			GetSetImpl(GetFunction get, SetFunction set) : get(get), set(set) {}
+			virtual bool isReadOnly() const { return false; }
+			virtual bool isWriteOnly() const { return false; }
+			virtual T getValue(const Reflection::DescribedBase* object) const
+			{
+				PartInstance* o = (PartInstance*)object;
+				return (o->getSurfaces()[face].*get)();
+			}
+			virtual void setValue(Reflection::DescribedBase* object, const T& value) const
+			{
+				PartInstance* o = (PartInstance*)object;
+				(o->getSurfaces()[face].*set)(value);
+			}
+		};
 	public:
 		template<typename GetFunction, typename SetFunction>
 		SurfacePropDescriptor(char const* name, char const* category, GetFunction get, SetFunction set,
-			Reflection::PropertyDescriptor::Functionality flags);
+			Reflection::PropertyDescriptor::Functionality flags)
+			: Reflection::TypedPropertyDescriptor<T>(PartInstance::classDescriptor(), name, category,
+				std::auto_ptr<typename Reflection::TypedPropertyDescriptor<T>::GetSet>(new GetSetImpl<GetFunction, SetFunction>(get, set)), flags)
+		{
+		}
 	};
 
 	// Dynamic initializers 007f7180..007f75d0 (in this order); data 0097b128..0097b468.

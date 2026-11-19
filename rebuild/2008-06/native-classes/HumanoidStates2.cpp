@@ -182,3 +182,4 @@ template void RBX::Name::callDoDeclare<RBX::HUMAN::sFlying>();
 template void RBX::Name::callDoDeclare<RBX::HUMAN::sFreefall>();
 template void RBX::Name::callDoDeclare<RBX::HUMAN::sJumping>();
 template void RBX::Name::callDoDeclare<RBX::HUMAN::sGettingUp>();
+

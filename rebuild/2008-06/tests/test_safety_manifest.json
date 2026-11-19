@@ -1,0 +1,30 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/IObjectSafetyRobloxImplRecovery_00407690.cpp",
+      "checks": [
+        {
+          "addr": "00407720",
+          "symbol": "?GetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCApp@@$00@@UAGJABU_GUID@@PAK1@Z"
+        },
+        {
+          "addr": "00407690",
+          "symbol": "?SetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCApp@@$00@@UAGJABU_GUID@@KK@Z"
+        }
+      ],
+      "ranges": ["00407690-00407800"],
+      "layouts": [
+        {
+          "addr": "00407720",
+          "symbol": "?GetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCApp@@$00@@UAGJABU_GUID@@PAK1@Z",
+          "thiscall": true
+        },
+        {
+          "addr": "00407690",
+          "symbol": "?SetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCApp@@$00@@UAGJABU_GUID@@KK@Z",
+          "thiscall": true
+        }
+      ]
+    }
+  ]
+}

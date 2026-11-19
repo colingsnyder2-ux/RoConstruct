@@ -45,6 +45,12 @@ namespace RBX
 			// GuidItem<Instance> guid accessor.
 			// Server::OnReceive 004a4dc0 calls it non-virtually on the create<ClientProxy> 004a21c0 result.
 			void sendTop();
+			// slot 16 004a3290: overrides Replicator::replicates (Server script-name set lookup).
+			virtual bool replicates(const Instance* instance) const override;
+			// slot 17 004a1a30: returns remotePlayer (+0x2d68).
+			virtual Player* findTargetPlayer() override;
+			// slot 19 004a1570: sets the inherited Replicator::sendPhysicsEnabled (+0x2cd0).
+			virtual void onSentMarker(long id) override;
 		};
 	}
 }

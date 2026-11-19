@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /GS-
 // Inactive native 2008-06 DHTMLWindowService and the Marshaller registry
 // (native-headers/AppLeaves2008/DHTMLWindowService2008.h). The DHTMLWindow descriptors and methods of the same
 // original unit (Navigate / SetBody / SetCallback / Resize / Show / Close / Bind / Unbind, DocumentComplete) are not

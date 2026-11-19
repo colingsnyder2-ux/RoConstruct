@@ -235,3 +235,26 @@ namespace RBX
 		}
 	}
 }
+
+namespace RBX {
+namespace Soundscape {
+void SoundChannel::updateListenState()
+{
+	if (part != 0 && is3D && fmod_channel != 0)
+	{
+		Listener<RunService, Heartbeat>* self = this;
+		RunService* runService = ServiceProvider::create<RunService>(this);
+		if (runService)
+			runService->Notifier<RunService, Heartbeat>::addListener(self);
+	}
+	else
+	{
+		Listener<RunService, Heartbeat>* self = this;
+		RunService* runService = ServiceProvider::create<RunService>(this);
+		if (runService)
+			runService->Notifier<RunService, Heartbeat>::removeListener(self);
+	}
+}
+}
+}
+

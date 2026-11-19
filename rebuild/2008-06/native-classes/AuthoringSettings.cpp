@@ -28,7 +28,6 @@ template<> const Name& FactoryProduct<AuthoringSettings, GlobalSettings::Item, s
     return Name::declare<sAuthoringSettings>();
 }
 
-
 // 0041fcf0 (AuthoringSettings instance): create the item on first use and parent it to the
 // GlobalSettings service; the item's constructor publishes itself through sing.
 template<typename Class, const char* ClassName>
@@ -61,3 +60,4 @@ template class boost::shared_ptr<RBX::GlobalSettings>;
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
 template void RBX::Name::callDoDeclare<::sAuthoringSettings>();
+

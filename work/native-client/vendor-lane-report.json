@@ -1,0 +1,1222 @@
+{
+ "target_exact": 20,
+ "target_total": 361,
+ "target_byte_candidates": 321,
+ "units": [
+  {
+   "recipe": "boost-1.34.1",
+   "unit": "libs/program_options/src/cmdline.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1\\libs__program_options__src__cmdline__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/RenderDevice.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__RenderDevice__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 9,
+   "target_total": 9
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "roc_codex_pending_visible_readonly_28fdcf6581cac7d7.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\roc_codex_pending_visible_readonly_28fdcf6581cac7d7__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/ReportControl/XTPReportControl.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 20,
+   "target_total": 20
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/Texture.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__Texture__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 3,
+   "target_bytematch_unproven": 3,
+   "target_total": 10
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/PropertyGrid/XTPPropertyGridItem.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__PropertyGrid__XTPPropertyGridItem__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-string-calls",
+   "unit": "roc_report_paint_native_mbcs_build_prelude_238cbffbc32a0a3a.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-string-calls\\roc_report_paint_native_mbcs_build_prelude_238cbffbc32a0a3a__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.35.0",
+   "unit": "roc_espeon_scriptdefaultbind1358c320093deaa2206.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.35.0\\roc_espeon_scriptdefaultbind1358c320093deaa2206__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\Ribbon\\XTPRibbonTab.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Ribbon__XTPRibbonTab__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/Draw.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__Draw__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/CommandBars/XTPControlComboBoxExt.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__CommandBars__XTPControlComboBoxExt__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-imports",
+   "unit": "roc_espclaude_569602479ecc41f0.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-imports\\roc_espclaude_569602479ecc41f0__O2GSEHscMDOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/MeshAlgWeld.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__MeshAlgWeld__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/CommandBars/XTPControlScrollBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__CommandBars__XTPControlScrollBar__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/Ribbon/XTPRibbonSystemButton.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Ribbon__XTPRibbonSystemButton__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 13,
+   "target_total": 13
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/CommandBars/XTPControlExt.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 5,
+   "target_total": 5
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_espclaude_dd992e6b9a44b58d.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_espclaude_dd992e6b9a44b58d__O2Ob0GSEHscM.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\Calendar\\XTPCalendarControl.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Calendar__XTPCalendarControl__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 7,
+   "target_total": 7
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/PropertyGrid/XTPPropertyGridPaintManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__PropertyGrid__XTPPropertyGridPaintManager__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "mfc-9.0",
+   "unit": "atlmfc/src/mfc/dlgdhtml.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0\\atlmfc__src__mfc__dlgdhtml__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\Common\\XTPWinThemeWrapper.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Common__XTPWinThemeWrapper__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 10
+  },
+  {
+   "recipe": "xtp-11.2.2-lib",
+   "unit": "Source\\CommandBars\\XTPDockState.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib\\Source__CommandBars__XTPDockState__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "?",
+   "unit": "?",
+   "wrapper": null,
+   "status": "no recipe",
+   "target_exact": 4,
+   "target_bytematch_unproven": 13,
+   "target_total": 22
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "unit": "roc_claudeC_rbxsubentitypool_2457577142b8f41d.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\ogre-1.4.5-dll\\roc_claudeC_rbxsubentitypool_2457577142b8f41d__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-string-calls",
+   "unit": "Source\\CommandBars\\XTPControlComboBox.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-string-calls\\Source__CommandBars__XTPControlComboBox__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 8,
+   "target_total": 8
+  },
+  {
+   "recipe": "boost-1.35.0",
+   "unit": "roc_espeon_scriptthreadbind1357faa61c775a47f40.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.35.0\\roc_espeon_scriptthreadbind1357faa61c775a47f40__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/ReportControl/XTPReportRecordItemText.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__ReportControl__XTPReportRecordItemText__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 3
+  },
+  {
+   "recipe": "wildmagic-2-core",
+   "unit": "Geometry/WmlConvexClipper.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\wildmagic-2-core\\Geometry__WmlConvexClipper__OdOb0GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 3,
+   "target_total": 4
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/roc_claude_gimage_smooth_b6205ab30eea6e87.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__roc_claude_gimage_smooth_b6205ab30eea6e87__O2GSEHscMDfp.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "mfc-9.0-shared",
+   "unit": "roc_ui_network_window_ee9082b9a35d3d1a.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0-shared\\roc_ui_network_window_ee9082b9a35d3d1a__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/TextInput.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__TextInput__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-string-calls",
+   "unit": "Source\\Controls\\XTMaskEdit.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-string-calls\\Source__Controls__XTMaskEdit__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals-string-calls",
+   "unit": "Source\\Common\\XTPDrawHelpers.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals-string-calls\\Source__Common__XTPDrawHelpers__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 3,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/Ribbon/XTPRibbonBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Ribbon__XTPRibbonBar__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 5,
+   "target_total": 5
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\Controls\\XTMaskEdit.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__Controls__XTMaskEdit__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-imports",
+   "unit": "roc_espeon_nativepngrowsourcea42c1dc54d2add70.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-imports\\roc_espeon_nativepngrowsourcea42c1dc54d2add70__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals",
+   "unit": "Source\\Common\\XTPDrawHelpers.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals\\Source__Common__XTPDrawHelpers__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 3,
+   "target_bytematch_unproven": 0,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/SkinFramework/XTPSkinManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__SkinFramework__XTPSkinManager__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/roc_line_d3a5963a6289e8b9.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__roc_line_d3a5963a6289e8b9__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/roc_header_9b0b2c52f3f29871.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__roc_header_9b0b2c52f3f29871__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/CommandBars/XTPControlComboBox.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPControlComboBox__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\PropertyGrid\\XTPPropertyGridItem.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__PropertyGrid__XTPPropertyGridItem__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "roc_unit_c054a2084880d614.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\roc_unit_c054a2084880d614__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 3,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\CommandBars\\XTPPaintManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__CommandBars__XTPPaintManager__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/Framebuffer.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__Framebuffer__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen-rtm",
+   "unit": "Source/ReportControl/XTPReportControl.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen-rtm\\Source__ReportControl__XTPReportControl__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\CommandBars\\XTPControl.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__CommandBars__XTPControl__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.35.0-dll",
+   "unit": "roc_espeon_humanoidstateslotff087c81fef193c1.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.35.0-dll\\roc_espeon_humanoidstateslotff087c81fef193c1__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 8,
+   "target_total": 8
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/CommandBars/XTPControl.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__CommandBars__XTPControl__O1GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/CommandBars/XTPPopupBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPPopupBar__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 6,
+   "target_total": 6
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__roc_line_eb2a2907090c8b55__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "roc_g3d_bmp_exception_38498d93767fe727.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\roc_g3d_bmp_exception_38498d93767fe727__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals-string-calls",
+   "unit": "Source\\CommandBars\\XTPCustomizeSheet.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals-string-calls\\Source__CommandBars__XTPCustomizeSheet__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 2,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-string-calls",
+   "unit": "Source\\CommandBars\\XTPDockState.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-string-calls\\Source__CommandBars__XTPDockState__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 3,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\CommandBars\\XTPCommandBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__CommandBars__XTPCommandBar__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "scintilla-mfc-1.20-shared-imports",
+   "unit": "roc_unit_12569bebdebed9e1.cpp",
+   "wrapper": null,
+   "status": "recipe edits headers (patches/strip_header_asm)",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/CommandBars/XTPControlPopupColor.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPControlPopupColor__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/Calendar/XTPCalendarDayView.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__Calendar__XTPCalendarDayView__O1GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 3,
+   "target_total": 3
+  },
+  {
+   "recipe": "mfc-9.0",
+   "unit": "atlmfc/src/mfc/afxmdiclientareawnd.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0\\atlmfc__src__mfc__afxmdiclientareawnd__O1GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/ReportControl/XTPReportInplaceControls.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__ReportControl__XTPReportInplaceControls__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 3,
+   "target_total": 3
+  },
+  {
+   "recipe": "wildmagic-2-core",
+   "unit": "Containment/WmlConvexHull3.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\wildmagic-2-core\\Containment__WmlConvexHull3__OdOb0GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "boost-1.40.0",
+   "unit": "libs/regex/src/instances.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.40.0\\libs__regex__src__instances__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 13,
+   "target_total": 13
+  },
+  {
+   "recipe": "xtp-15.2.1-shared-mfc",
+   "unit": "Source/Controls/Deprecated/XTButtonTheme.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-15.2.1-shared-mfc\\Source__Controls__Deprecated__XTButtonTheme__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 5,
+   "target_total": 5
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-imports",
+   "unit": "roc_claudeM_55bb15a72a4fb4db.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-imports\\roc_claudeM_55bb15a72a4fb4db__O2GSEHscMDar.cpp",
+   "status": "wrapper",
+   "target_exact": 2,
+   "target_bytematch_unproven": 1,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/ReportControl/XT",
+   "wrapper": null,
+   "status": "missing vendor file",
+   "target_exact": 1,
+   "target_bytematch_unproven": 0,
+   "target_total": 2
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "roc_unit_624aff18becba205.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\roc_unit_624aff18becba205__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_espclaude_43b5b584c2f00b13.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_espclaude_43b5b584c2f00b13__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/CommandBars/XTPCommandBars.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPCommandBars__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/CommandBars/XTPToolBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPToolBar__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "atl-9.0",
+   "unit": "roc_espeon_bstransiasign6671a088facdff20.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0\\roc_espeon_bstransiasign6671a088facdff20__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "wildmagic-2-core",
+   "unit": "Containment/WmlConvexHull3.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\wildmagic-2-core\\Containment__WmlConvexHull3__OdOb0GSEHscM.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "wildmagic-2-core",
+   "unit": "Geometry/WmlConvexClipper.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\wildmagic-2-core\\Geometry__WmlConvexClipper__OdOb0GSEHscM.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen-rtm",
+   "unit": "Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen-rtm\\Source__PropertyGrid__XTPPropertyGridInplaceEdit__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/roc_export_2e510945f61df65f.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__roc_export_2e510945f61df65f__O2GSEHscMDfp.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 3
+  },
+  {
+   "recipe": "mfc-9.0",
+   "unit": "atlmfc/src/mfc/dlgcore.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0\\atlmfc__src__mfc__dlgcore__O1GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\CommandBars\\XTPHookManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPHookManager__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 3,
+   "target_total": 3
+  },
+  {
+   "recipe": "xtp-15.2.1-shared-mfc",
+   "unit": "Source/Common/XTPImageManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-15.2.1-shared-mfc\\Source__Common__XTPImageManager__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 2
+  },
+  {
+   "recipe": "atl-9.0-dll",
+   "unit": "roc_espeon_propertylistimportedf7def85c6a9d6756.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll\\roc_espeon_propertylistimportedf7def85c6a9d6756__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "raknet-4.081",
+   "unit": "RakString.cpp",
+   "wrapper": null,
+   "status": "missing vendor file",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "unit": "roc_sparkle_native_context_accessord3483aed579e6edb.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\ogre-1.4.5-dll\\roc_sparkle_native_context_accessord3483aed579e6edb__O2Ob2OiOtOyG.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_espclaude_ef514ace34b2232d.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_espclaude_ef514ace34b2232d__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "roc_espclaude_bfbc69262bc77fbf.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\roc_espclaude_bfbc69262bc77fbf__O2GSEHscMDfp.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals-string-calls",
+   "unit": "Source\\PropertyGrid\\XTPPropertyGridInplaceEdit.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals-string-calls\\Source__PropertyGrid__XTPPropertyGridInplaceEdit__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "roc_unit_eb19028a18c4f9d1.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\roc_unit_eb19028a18c4f9d1__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/CollisionDetection.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__CollisionDetection__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals-string-calls",
+   "unit": "Source\\CommandBars\\XTPCommandBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals-string-calls\\Source__CommandBars__XTPCommandBar__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\Common\\XTPWinThemeWrapper.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__Common__XTPWinThemeWrapper__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/CommandBars/XTPControls.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPControls__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 3,
+   "target_total": 3
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "libs/program_options/src/positional_options.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\libs__program_options__src__positional_options__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/DockingPane/XTPDockingPaneManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__DockingPane__XTPDockingPaneManager__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/CommandBars/XTPShadowsManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__CommandBars__XTPShadowsManager__O1GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 6,
+   "target_total": 6
+  },
+  {
+   "recipe": "?",
+   "unit": "?",
+   "wrapper": null,
+   "status": "no recipe",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals",
+   "unit": "Source\\Common\\XTPDrawHelpers.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals\\Source__Common__XTPDrawHelpers__O2MDGSOb1.cpp",
+   "status": "wrapper",
+   "target_exact": 1,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\DockingPane\\XTPDockingPaneAutoHidePanel.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__DockingPane__XTPDockingPaneAutoHidePanel__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "boost-1.35.0-dll",
+   "unit": "roc_espeon_dhtmlnativefunction034ab6d87e50f0c3f.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.35.0-dll\\roc_espeon_dhtmlnativefunction034ab6d87e50f0c3f__O2Ob2OyGFGSE.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source/ReportControl/XTPReportControl.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__ReportControl__XTPReportControl__O2GSMDEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/Common/XTPSystemHelpers.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2\\Source__Common__XTPSystemHelpers__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "boost-1.34.1",
+   "unit": "libs/thread/src/tss_hooks.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1\\libs__thread__src__tss_hooks__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "mfc-9.0",
+   "unit": "atlmfc/src/mfc/ctlcore.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0\\atlmfc__src__mfc__ctlcore__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "roc_espeon_replicatornativevectore25554b5975257eb.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\roc_espeon_replicatornativevectore25554b5975257eb__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\Calendar\\XTPCalendarEventLabel.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Calendar__XTPCalendarEventLabel__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "g3d-6.09-dll",
+   "unit": "roc_unit_9b45941eceb68c25.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09-dll\\roc_unit_9b45941eceb68c25__O2Ob2OyGFGSE.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-internals-string-calls",
+   "unit": "Source/CommandBars/XTPStatusBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-internals-string-calls\\Source__CommandBars__XTPStatusBar__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "G3Dcpp/roc_export_5ac1dc0db0a820d6.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\G3Dcpp__roc_export_5ac1dc0db0a820d6__O2GSEHscMDfp.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "mfc-9.0",
+   "unit": "atlmfc/src/mfc/afxstate.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0\\atlmfc__src__mfc__afxstate__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 6,
+   "target_total": 6
+  },
+  {
+   "recipe": "xtp-11.2.2-vc8-shared-mfc",
+   "unit": "Source/ReportControl/XTPReportRecordItemText.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-vc8-shared-mfc\\Source__ReportControl__XTPReportRecordItemText__O2MDGSEHsc.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-string-calls",
+   "unit": "Source\\CommandBars\\XTPPaintManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-string-calls\\Source__CommandBars__XTPPaintManager__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "ogre-1.4.5-dll",
+   "unit": "roc_espeon_textureboundsnative288799b152876954.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\ogre-1.4.5-dll\\roc_espeon_textureboundsnative288799b152876954__O2GSEHscMDfp.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc-string-calls",
+   "unit": "roc_espclaude_3b1ba1467e3c49e0.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc-string-calls\\roc_espclaude_3b1ba1467e3c49e0__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\CommandBars\\XTPStatusBar.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__CommandBars__XTPStatusBar__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_espclaude_da5a2b380f6d46c8.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_espclaude_da5a2b380f6d46c8__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\Common\\XTPImageManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__Common__XTPImageManager__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 5,
+   "target_total": 5
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_king_originala_browser_dispatch_4935761f6beb402b.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_king_originala_browser_dispatch_4935761f6beb402b__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "roc_claudeM_03fc5222fed44800.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\roc_claudeM_03fc5222fed44800__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/roc_export_8532835146de6118.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__roc_export_8532835146de6118__O2GSEHscMDfp.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "roc_bind_factory_triples_3ef9d3fdf85fc7a5.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\roc_bind_factory_triples_3ef9d3fdf85fc7a5__O2Ob2OyGFGSE.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "scintilla-mfc-1.20-shared",
+   "unit": "roc_unit_119daf9071ba1c44.cpp",
+   "wrapper": null,
+   "status": "recipe edits headers (patches/strip_header_asm)",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "roc_espclaude_4e0b061628ffee6c.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\roc_espclaude_4e0b061628ffee6c__O2Ob2OyGFGSE.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "roc_espeon_propertylistchangedf88b1516a00dfb5a.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\roc_espeon_propertylistchangedf88b1516a00dfb5a__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "roc_bind_factory_pairs_b0adafe46fc3a2a5.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\roc_bind_factory_pairs_b0adafe46fc3a2a5__O2Ob2OyGFGSE.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "atl-9.0",
+   "unit": "roc_espclaude_14507603bc13e812.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0\\roc_espclaude_14507603bc13e812__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib",
+   "unit": "Source\\CommandBars\\XTPCustomizeSheet.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib\\Source__CommandBars__XTPCustomizeSheet__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/roc_header_0bc5fec577e8514a.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__roc_header_0bc5fec577e8514a__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 0,
+   "target_total": 1
+  },
+  {
+   "recipe": "g3d-6.09",
+   "unit": "GLG3Dcpp/roc_line_5c11b1e85d2d772f.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\g3d-6.09\\GLG3Dcpp__roc_line_5c11b1e85d2d772f__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.35.0",
+   "unit": "roc_espeon_scriptargumentbind135bf95ed9e0b65612b.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.35.0\\roc_espeon_scriptargumentbind135bf95ed9e0b65612b__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-lib-strlen",
+   "unit": "Source\\Common\\XTPDrawHelpers.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib-strlen\\Source__Common__XTPDrawHelpers__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 4,
+   "target_total": 4
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_espeon_nativeatldirabi3272e783e3521ab9.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_espeon_nativeatldirabi3272e783e3521ab9__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2-shared-mfc",
+   "unit": "Source\\CommandBars\\XTPPaintManager.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-shared-mfc\\Source__CommandBars__XTPPaintManager__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "xtp-11.2.2-lib",
+   "unit": "roc_tooltip_native_mbcs_compare_56c2ddd2d5b0e4ac.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\xtp-11.2.2-lib\\roc_tooltip_native_mbcs_compare_56c2ddd2d5b0e4ac__O2MDGSEHscOb.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "lua-5.1.4",
+   "unit": "lstrlib.c",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\lua-5.1.4\\lstrlib__O2GSMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "xtp-11.2.2",
+   "unit": "Source/ReportControl/XTPReportCon",
+   "wrapper": null,
+   "status": "missing vendor file",
+   "target_exact": 0,
+   "target_bytematch_unproven": 2,
+   "target_total": 2
+  },
+  {
+   "recipe": "atl-9.0-dll-rtm",
+   "unit": "roc_espclaude_188c2f09ea8697a7.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\atl-9.0-dll-rtm\\roc_espclaude_188c2f09ea8697a7__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "mfc-9.0-shared",
+   "unit": "roc_king_originala_dxinput_ctor_e0e5fafa00b66f00.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0-shared\\roc_king_originala_dxinput_ctor_e0e5fafa00b66f00__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "mfc-9.0-shared-rtm",
+   "unit": "roc_espeon_replaceangleimportcast4a016e70e72eb016.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\mfc-9.0-shared-rtm\\roc_espeon_replaceangleimportcast4a016e70e72eb016__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  },
+  {
+   "recipe": "boost-1.34.1-dll",
+   "unit": "roc_claudeS3_18320aa5e3e6405f.cpp",
+   "wrapper": "rebuild\\2008-06\\native-classes\\vendor\\boost-1.34.1-dll\\roc_claudeS3_18320aa5e3e6405f__O2GSEHscMD.cpp",
+   "status": "wrapper",
+   "target_exact": 0,
+   "target_bytematch_unproven": 1,
+   "target_total": 1
+  }
+ ]
+}

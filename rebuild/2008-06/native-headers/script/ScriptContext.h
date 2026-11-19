@@ -30,6 +30,9 @@ namespace RBX
     namespace Lua
     {
         class YieldingThreads;
+        // INFERRED: 0061c790 RBX::Lua::LuaArguments — lua_tolstring(thread, index, 0); on NULL falls back to
+        // the char* global at 0x95b1cc (called once by resume 005aeb80 in the error path)
+        const char* LuaArguments(lua_State* thread, int index);
     }
 
     extern char sScriptContext[];
@@ -147,6 +150,9 @@ namespace RBX
         static int wait(lua_State* thread);
         static int delay(lua_State* thread);
         static int trustedThread(lua_State* thread);
+        static void scriptHook(lua_State* L, lua_Debug* ar); // INFERRED: 005ae230 (71 B) lua_Hook passed to lua_sethook(count 1000) by openState 005aefa0
+        static int time(lua_State* L);          // INFERRED: 005a92d0 registered as global 'time' by openState 005aefa0 (name from the global)
+        static int printidentity(lua_State* L); // INFERRED: 005add30 registered as global 'printidentity' by openState 005aefa0
         static int loadfile(lua_State* L);
         static int dofile(lua_State* L);
         static int settings(lua_State* thread);
@@ -155,4 +161,6 @@ namespace RBX
         static int onError(lua_State*);
         static void reportError(lua_State* thread);
     };
+    // INFERRED: 005a8720 (39 B) registered as global 'version' by ScriptContext::openState 005aefa0
+    int getVersion(lua_State* L);
 }

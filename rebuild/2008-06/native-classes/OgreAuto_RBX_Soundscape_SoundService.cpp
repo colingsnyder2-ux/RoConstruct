@@ -43,3 +43,24 @@ SoundService::~SoundService()
 }
 }
 
+namespace RBX {
+namespace Soundscape {
+SoundService::SoundService()
+	: system(0),
+	  fmod_version(0),
+	  stockSounds(),
+	  dopplerscale(1.0f),
+	  distancefactor(10.0f),
+	  rolloffscale(1.0f),
+	  statsItem(),
+	  ambientReverb(NoReverb),
+	  nextGarbageCollectTime(G3D::System::getTick()),
+	  loadedSounds(),
+	  loaded3DSounds(),
+	  mySoundDisabled(false)
+{
+	setName("Soundscape");
+}
+}
+}
+

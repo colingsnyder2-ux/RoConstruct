@@ -17,6 +17,12 @@ struct ContentRequest {
     ContentId id;
     std::vector<RequestCallback> callbacks;
     bool operator==(const ContentId& other) const { return id.toString() == other.toString(); }
+public:
+	ContentRequest(RBX::ContentRequest const &);   // INFERRED: ??0ContentRequest@RBX@@QAE@ABU01@@Z (header gap, header_gap_fill.py)
+public:
+	ContentRequest(void);   // INFERRED: ??0ContentRequest@RBX@@QAE@XZ (header gap, header_gap_fill.py)
+public:
+	~ContentRequest(void);   // INFERRED: ??1ContentRequest@RBX@@QAE@XZ (header gap, header_gap_fill.py)
 };
 class ContentProvider : public DescribedNonCreatable<ContentProvider, Instance, sContentProvider> {
 public:
@@ -45,6 +51,20 @@ public:
     static bool isUrl(const std::string&);
 private:
     bool registerFile(CachedContent*);
+public:
+	void load(RBX::ContentId,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > &);   // INFERRED: ?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z (header gap, header_gap_fill.py)
+	public:
+		void sub_00562530(const ContentId& id, boost::function<void(::RBX::RequestResult, std::istream&)> callback);   // INFERRED: 00562530, placeholder name (identity tier), body byte-proved (Inferred_00562530.cpp)
+public:
+	void sub_00562670(const ContentId& id, ::RBX::RequestResult& result, std::string& filename);   // INFERRED: 00562670, placeholder name, body from assembly
+public:
+	boost::shared_ptr<const std::string> sub_00562730(const ContentId& id);   // INFERRED: 00562730, placeholder name, body from assembly
+public:
+	bool hasContent(ContentId id);   // INFERRED (header-add): evidence: ?hasContent@ContentProvider@RBX@@QAE_NVContentId@2@@Z - byte-proved by 005624b0
+	// INFERRED: binary RTTI for the bind_t callbacks names the enum RBX::ContentProvider::RequestResult
+	// (typeinfo string W4RequestResult@ContentProvider@RBX@@ at 00935650, referenced by 0048e470). A nested
+	// declaration is required: a typedef to RBX::RequestResult keeps the outer mangling W4RequestResult@RBX@@.
+	enum RequestResult { RequestResultNested };
 };
 typedef char ProviderSize[sizeof(ContentProvider) == 0x19c ? 1 : -1];
 typedef char ProviderRequestSize[sizeof(ContentRequest) == 0x38 ? 1 : -1];

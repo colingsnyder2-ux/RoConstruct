@@ -36,6 +36,12 @@ namespace RBX
 		// (caller ContactManager::onPrimitiveGeometryTypeChanged 0060d995); donor name.
 		void destroyContact(Contact* c);
 
+		// INFERRED: decorated registry symbols ?onPrimitiveCanCollideChanged@World@RBX@@QAEXPAVPrimitive@2@@Z (00732a20/00732a40/
+		// 007356f0 are the same-name bodies), ?step@World@RBX@@QAEMM@Z 005e9fd0 and 005e9190 onPrimitiveContactParametersChanged.
+		void onPrimitiveCanCollideChanged(Primitive* p);
+		void onPrimitiveContactParametersChanged(Primitive* p);
+		float step(float desiredInterval);
+
 		void onJointPrimitiveNulling(Joint* j, Primitive* p);
 		void onJointPrimitiveSet(Joint* j, Primitive* p);
 		void insertJoint(Joint* j);

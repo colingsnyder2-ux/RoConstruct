@@ -43,10 +43,7 @@ namespace RBX
 			return G3D::Vector3(realRadius, realRadius, realRadius);
 		}
 
-		virtual G3D::Matrix3 getMoment(float mass) const // 005e7400
-		{
-			return getMomentSolid(mass);
-		}
+		virtual G3D::Matrix3 getMoment(float mass) const; // 005e7400 (body in native-classes/Ball.cpp)
 
 		virtual float getGridVolume() const;             // 00649170
 	};

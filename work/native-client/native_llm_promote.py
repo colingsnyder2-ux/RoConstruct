@@ -35,7 +35,8 @@ for line in m.LOG.read_text(encoding='utf-8').splitlines():
     row = m._json(line)
     if row and row.get('status') == 'inactive_exact':
         exact[row['addr']] = row
-todo = [t for a, t in exact.items() if a not in done and (remaining is None or a in remaining)]
+retracted = {r['addr'] for r in map(m._json, m.LOG.read_text(encoding='utf-8').splitlines()) if r and r.get('status') == 'retracted'}
+todo = [t for a, t in exact.items() if a not in retracted and a not in done and (remaining is None or a in remaining)]
 closure = json.loads(m.CLOSURE.read_text())
 for n, t in enumerate(todo[:args.limit or None]):
     attempt = t.get('attempt')

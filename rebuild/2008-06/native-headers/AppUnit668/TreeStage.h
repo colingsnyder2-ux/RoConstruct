@@ -75,5 +75,27 @@ namespace RBX
 		void process();                                     // 00669410 (not built)
 		void onPrimitiveAdded(Primitive* p);                // 00668d30 (ClumpStage::onPrimitiveAdded 0064cb0d)
 		void onPrimitiveRemoving(Primitive* p);             // 00668d40 (ClumpStage 0064cc11)
-	};
+		// Helpers read from the 2008 binary; names are INFERRED (registry has no names for them).
+		Primitive* ascend(int side, Primitive* p, Joint*& lightest, int& lightestSide);   // INFERRED: 00668ea0 (follows p's top joint)
+		void reconcile(Primitive* left, Primitive* right, int leftDepth, int rightDepth, Joint*& lightest, int& lightestSide);   // INFERRED: 00669090
+		void collectTopJoints(Primitive* p, std::set<Primitive*>* out);   // INFERRED: 00669150
+		static Primitive* getTopPrimitive(Joint* j);       // INFERRED: 005e7490 (cdecl, Joint*; picks prim0 or prim1 by their +0xa0 owner's +0x14)
+		void addJointEdge(Joint* j);                        // INFERRED: 00669b60
+		void replaceLightest(Joint* oldJoint, Joint* newJoint, Primitive* p);   // INFERRED: 00669940
+		void addPendingEdge(Edge* e);                       // INFERRED: 00669340 (needs Edge::inEdgeList accessor, see proposals)
+		void processEdge(Edge* e, Primitive* from);         // INFERRED: 00669560
+		Assembly* createAssembly(Primitive* p);             // INFERRED: 00668cd0 (new(0x78) Clump(p) 005e6cf0; thiscall, `ret 4`, caller 00669560)
+		void walkEdges(Edge* e, Primitive* from, int depth);   // INFERRED: 006697a0
+		void dirtyAssemblyAndRemove(Assembly* a);           // INFERRED: 006691e0
+		void eraseDirtyAssembly(Assembly* a);               // INFERRED: 00669290
+		void eraseDirtyAssemblyAndDelete(Assembly* a);      // INFERRED: 006692e0
+	private:
+		void cleanAssembly(RBX::Assembly *);   // INFERRED: ?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z (header gap, header_gap_fill.py)
+		void cleanEdge(RBX::Edge *);   // INFERRED: ?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z (header gap, header_gap_fill.py)
+		RBX::Joint * findLightestDownstream(RBX::Primitive *,RBX::Primitive * &);   // INFERRED: ?findLightestDownstream@TreeStage@RBX@@AAEPAVJoint@2@PAVPrimitive@2@AAPAV42@@Z (header gap, header_gap_fill.py)
+		void onEdgeRemovingNonJoint(Edge* e);   // INFERRED: 00669710 (cleanup for non-JOINT or jointType < ANCHOR_JOINT)
+	public:
+		Primitive* ascend(bool side, Primitive* edge, void* context0, void* context1);
+		void sub_00669090(Primitive* left, Primitive* right, int leftDepth, int rightDepth, void* context0, void* context1);   // INFERRED: 00669090, placeholder name (identity tier), body byte-proved (Inferred_00669090.cpp)
+};
 }

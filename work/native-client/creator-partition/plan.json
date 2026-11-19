@@ -1,0 +1,435 @@
+{
+ "main": [
+  [
+   [
+    "v8datamodel/Accoutrement.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Accoutrement, RBX::Instance, RBX::sAccoutrement>"
+  ],
+  [
+   [
+    "v8datamodel/Backpack.h",
+    "v8datamodel/Hopper.h"
+   ],
+   "RBX::FactoryProduct<RBX::Backpack, RBX::Hopper, RBX::sBackpack>"
+  ],
+  [
+   [
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyAngularVelocity, RBX::BodyMover, RBX::sBodyAngularVelocity>"
+  ],
+  [
+   [
+    "v8datamodel/BodyColors.h",
+    "v8datamodel/Clothing.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyColors, RBX::CharacterAppearance, RBX::sBodyColors>"
+  ],
+  [
+   [
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyForce, RBX::BodyMover, RBX::sBodyForce>"
+  ],
+  [
+   [
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyGyro, RBX::BodyMover, RBX::sBodyGyro>"
+  ],
+  [
+   [
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyPosition, RBX::BodyMover, RBX::sBodyPosition>"
+  ],
+  [
+   [
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyThrust, RBX::BodyMover, RBX::sBodyThrust>"
+  ],
+  [
+   [
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::BodyVelocity, RBX::BodyMover, RBX::sBodyVelocity>"
+  ],
+  [
+   [
+    "v8datamodel/Camera.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Camera, RBX::Instance, RBX::sCamera>"
+  ],
+  [
+   [
+    "v8datamodel/ChangeHistoryService.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ChangeHistoryService, RBX::Instance, RBX::sChangeHistoryService>"
+  ],
+  [
+   [
+    "reflection/Metadata.h"
+   ],
+   "RBX::FactoryProduct<RBX::Reflection::Metadata::Class, RBX::Reflection::Metadata::Item, RBX::Reflection::Metadata::sClass>"
+  ],
+  [
+   [
+    "reflection/Metadata.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Reflection::Metadata::Classes, RBX::Instance, RBX::Reflection::Metadata::sClasses>"
+  ],
+  [
+   [
+    "v8datamodel/ClickDetector.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ClickDetector, RBX::Instance, RBX::sClickDetector>"
+  ],
+  [
+   [
+    "v8datamodel/Clothing.h"
+   ],
+   "RBX::FactoryProduct<RBX::Clothing, RBX::CharacterAppearance, RBX::sClothing>"
+  ],
+  [
+   [
+    "v8datamodel/UserController.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ControllerService, RBX::Instance, RBX::sControllerService>"
+  ],
+  [
+   [
+    "v8datamodel/DebrisService.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::DebrisService, RBX::Instance, RBX::sDebrisService>"
+  ],
+  [
+   [
+    "v8datamodel/DebugSettings.h"
+   ],
+   "RBX::FactoryProduct<RBX::DebugSettings, RBX::GlobalSettings::Item, RBX::sDebugSettings>"
+  ],
+  [
+   [
+    "reflection/Metadata.h"
+   ],
+   "RBX::FactoryProduct<RBX::Reflection::Metadata::Events, RBX::Reflection::Metadata::Members, RBX::Reflection::Metadata::sEvents>"
+  ],
+  [
+   [
+    "v8datamodel/Explosion.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Explosion, RBX::Instance, RBX::sExplosion>"
+  ],
+  [
+   [
+    "v8datamodel/FlagStandService.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::FlagStandService, RBX::Instance, RBX::sFlagStandService>"
+  ],
+  [
+   [
+    "v8datamodel/FlagStand.h",
+    "v8datamodel/PartInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::FlagStand, RBX::PartInstance, RBX::sFlagStand>"
+  ],
+  [
+   [
+    "v8datamodel/Flag.h",
+    "v8datamodel/Tool.h"
+   ],
+   "RBX::FactoryProduct<RBX::Flag, RBX::Tool, RBX::sFlag>"
+  ],
+  [
+   [
+    "v8datamodel/ForceField.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ForceField, RBX::Instance, RBX::sForceField>"
+  ],
+  [
+   [
+    "reflection/Metadata.h"
+   ],
+   "RBX::FactoryProduct<RBX::Reflection::Metadata::Functions, RBX::Reflection::Metadata::Members, RBX::Reflection::Metadata::sFunctions>"
+  ],
+  [
+   [
+    "v8datamodel/GameSettings.h"
+   ],
+   "RBX::FactoryProduct<RBX::GameSettings, RBX::GlobalSettings::Item, RBX::sGameSettings>"
+  ],
+  [
+   [
+    "v8datamodel/GeometryService.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::GeometryService, RBX::Instance, RBX::sGeometryService>"
+  ],
+  [
+   [
+    "v8datamodel/Accoutrement.h"
+   ],
+   "RBX::FactoryProduct<RBX::Hat, RBX::Accoutrement, RBX::sHat>"
+  ],
+  [
+   [
+    "v8datamodel/Feature.h"
+   ],
+   "RBX::FactoryProduct<RBX::Hole, RBX::Feature, RBX::sHole>"
+  ],
+  [
+   [
+    "v8datamodel/Hopper.h"
+   ],
+   "RBX::FactoryProduct<RBX::HopperBin, RBX::BackpackItem, RBX::sHopperBin>"
+  ],
+  [
+   [
+    "humanoid/Humanoid.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Humanoid, RBX::Instance, RBX::sHumanoid>"
+  ],
+  [
+   [
+    "v8datamodel/Hopper.h"
+   ],
+   "RBX::FactoryProduct<RBX::LegacyHopperService, RBX::Hopper, RBX::sLegacyHopperService>"
+  ],
+  [
+   [
+    "v8datamodel/Lighting2008.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Lighting, RBX::Instance, RBX::sLighting>"
+  ],
+  [
+   [
+    "script/Script.h"
+   ],
+   "RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>"
+  ],
+  [
+   [
+    "reflection/Metadata.h"
+   ],
+   "RBX::FactoryProduct<RBX::Reflection::Metadata::Member, RBX::Reflection::Metadata::Item, RBX::Reflection::Metadata::sMember>"
+  ],
+  [
+   [
+    "v8datamodel/ModelInstance.h",
+    "v8datamodel/PVInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ModelInstance, RBX::PVInstance, RBX::sModel>"
+  ],
+  [
+   [
+    "v8datamodel/Feature.h"
+   ],
+   "RBX::FactoryProduct<RBX::MotorFeature, RBX::Feature, RBX::sMotorFeature>"
+  ],
+  [
+   [
+    "v8datamodel/JointInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Motor, RBX::JointInstance, RBX::sMotor>"
+  ],
+  [
+   [
+    "v8datamodel/Value.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ObjectValue, RBX::Instance, RBX::sObjectValue>"
+  ],
+  [
+   [
+    "v8datamodel/Clothing.h"
+   ],
+   "RBX::FactoryProduct<RBX::Pants, RBX::Clothing, RBX::sPants>"
+  ],
+  [
+   [
+    "v8datamodel/PartInstance.h",
+    "v8datamodel/PVInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::PartInstance, RBX::PVInstance, RBX::sPart>"
+  ],
+  [
+   [
+    "reflection/Metadata.h"
+   ],
+   "RBX::FactoryProduct<RBX::Reflection::Metadata::Properties, RBX::Reflection::Metadata::Members, RBX::Reflection::Metadata::sProperties>"
+  ],
+  [
+   [
+    "v8datamodel/Rocket.h",
+    "v8datamodel/BodyMovers.h"
+   ],
+   "RBX::FactoryProduct<RBX::Rocket, RBX::BodyMover, RBX::sRocket>"
+  ],
+  [
+   [
+    "script/ScriptContext.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::ScriptContext, RBX::Instance, RBX::sScriptContext>"
+  ],
+  [
+   [
+    "script/Script.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>"
+  ],
+  [
+   [
+    "v8datamodel/Seat.h",
+    "v8datamodel/PartInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Seat, RBX::PartInstance, RBX::sSeat>"
+  ],
+  [
+   [
+    "v8datamodel/Clothing.h"
+   ],
+   "RBX::FactoryProduct<RBX::ShirtGraphic, RBX::CharacterAppearance, RBX::sShirtGraphic>"
+  ],
+  [
+   [
+    "v8datamodel/Clothing.h"
+   ],
+   "RBX::FactoryProduct<RBX::Shirt, RBX::Clothing, RBX::sShirt>"
+  ],
+  [
+   [
+    "v8datamodel/Clothing.h"
+   ],
+   "RBX::FactoryProduct<RBX::Skin, RBX::CharacterAppearance, RBX::sSkin>"
+  ],
+  [
+   [
+    "v8datamodel/Sky.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Sky, RBX::Instance, RBX::sSky>"
+  ],
+  [
+   [
+    "v8datamodel/SpawnLocation.h",
+    "v8datamodel/PartInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::SpawnLocation, RBX::PartInstance, RBX::sSpawnLocation>"
+  ],
+  [
+   [
+    "v8datamodel/SpawnerService.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::SpawnerService, RBX::Instance, RBX::sSpawnerService>"
+  ],
+  [
+   [
+    "v8datamodel/SpecialShape.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::SpecialShape, RBX::Instance, RBX::sSpecialShape>"
+  ],
+  [
+   [
+    "v8datamodel/Hopper.h"
+   ],
+   "RBX::FactoryProduct<RBX::StarterPackService, RBX::Hopper, RBX::sStarterPackService>"
+  ],
+  [
+   [
+    "v8datamodel/Team.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Team, RBX::Instance, RBX::sTeam>"
+  ],
+  [
+   [
+    "v8datamodel/Teams.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Teams, RBX::Instance, RBX::sTeams>"
+  ],
+  [
+   [
+    "v8datamodel/TimerService.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::TimerService, RBX::Instance, RBX::sTimerService>"
+  ],
+  [
+   [
+    "v8datamodel/Tool.h",
+    "v8datamodel/Hopper.h"
+   ],
+   "RBX::FactoryProduct<RBX::Tool, RBX::BackpackItem, RBX::sTool>"
+  ],
+  [
+   [
+    "v8datamodel/Feature.h",
+    "v8datamodel/JointInstance.h"
+   ],
+   "RBX::FactoryProduct<RBX::VelocityMotor, RBX::JointInstance, RBX::sVelocityMotor>"
+  ],
+  [
+   [
+    "v8datamodel/Visit.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Visit, RBX::Instance, RBX::sVisit>"
+  ]
+ ],
+ "solo": [
+  [
+   [
+    "AppLeaves2008/DHTMLWindowService2008.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<DHTMLWindowService, RBX::Instance, sDHTMLWindowService>"
+  ],
+  [
+   [
+    "LocalBackpack2008/LocalBackpack2008.h",
+    "gui/Widget.h"
+   ],
+   "RBX::FactoryProduct<RBX::LocalBackpackItem, RBX::Widget, RBX::sLocalBackpackItem>"
+  ],
+  [
+   [
+    "LocalBackpack2008/LocalBackpack2008.h",
+    "gui/Gui.h"
+   ],
+   "RBX::FactoryProduct<RBX::LocalBackpack, RBX::RelativePanel, RBX::sLocalBackpack>"
+  ],
+  [
+   [
+    "SoundChannel/SoundChannel.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Soundscape::SoundChannel, RBX::Instance, RBX::Soundscape::sSoundChannel>"
+  ],
+  [
+   [
+    "SoundChannel/SoundChannel.h",
+    "v8tree/Instance.h"
+   ],
+   "RBX::FactoryProduct<RBX::Soundscape::SoundService, RBX::Instance, RBX::Soundscape::sSoundService>"
+  ]
+ ]
+}

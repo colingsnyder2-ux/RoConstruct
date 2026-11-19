@@ -255,9 +255,16 @@ namespace RBX
 		Body* getBody();                                 // 005e6160 (analog name)
 		void notifyMoved();                              // 005e6170 (analog name)
 		void setSleepInfo(SleepInfo* value);             // 005e5fe0 (analog name: openrbx Assembly::setSleepInfo)
+		SleepInfo* getSleepInfo() const                  // inline (donor Assembly::getSleepInfo): SleepStage 0064ae90 reads
+		{                                                // [clump+0x18] directly
+			return sleepInfo;
+		}
 		Assembly* getRootAssembly();                     // 005e6070 (analog name: parent ? parent->getRootAssembly() : this)
 		void setParent(Clump* newParent);                // 005e6fd0 (analog name: openrbx Assembly::setParent)
 		void removePrimitive(Primitive* p);              // 005e6790 (INFERRED name: 005e5ff0, then onPrimitivesChanged)
+		// INFERRED names: cdecl (parent, joint, child) Clump-unit helpers called by TreeStage::processEdge 00669560.
+		static void updateRigidChild(Primitive* parent, Joint* j, Primitive* child);         // INFERRED: 005e6040 (child body setMeInParent only)
+		static void addRigidChild(Primitive* parent, Joint* j, Primitive* child);      // INFERRED: 005e67c0 (setClump, Body::setParent, onPrimitivesChanged, setMeInParent)
 		void onPrimitiveCanSleepChanged(Primitive* p);   // 005e6530 (analog name: canSleep.setDirty())
 		bool getAnchored() const;                        // 005e60e0 (analog name: the root primitive's +0xa8 / +0xa9 / +0xaa;
 		                                                 // callers TreeStage::cleanAssembly 00668f20 / cleanEdge 00668fa0)
@@ -265,6 +272,10 @@ namespace RBX
 		const G3D::Array<Edge*>& getExternalEdges();     // 005e6c70 (INFERRED name: refills externalEdges +0x8 when
 		                                                 // externalEdgesDirty +0x14; callers SleepStage 0064a790 / 0064a950
 		                                                 // / 0064c470)
+	public:
+		void sub_005e6ba0(G3D::Array<const void*>& edges);   // INFERRED: 005e6ba0, placeholder name (identity tier), body byte-proved (Inferred_005e6ba0.cpp)
+	public:
+		void sub_005e6240(Assembly* value);   // INFERRED: 005e6240, placeholder name (identity tier), body byte-proved (Inferred_005e6240.cpp)
 	};
 
 	// INFERRED: the 2008 binary has no RTTI for an RBX::Assembly and the assembly object is its root Clump (Clump()
@@ -279,8 +290,11 @@ namespace RBX
 		{
 			return Clump::getAssembly();
 		}
+		static void addMotorChild(Primitive* parent, MotorJoint* motor, Primitive* child);   // 005e7050 ?addMotorChild@Assembly@RBX@@SAXPAVPrimitive@2@PAVMotorJoint@2@0@Z (registry; caller TreeStage::processEdge 00669560)
 		MotorJoint* getMotor(unsigned int index);        // 005e6400 ?getMotor@Assembly@RBX@@QAEPAVMotorJoint@2@I@Z (registry)
-	};
+		public:
+		RBX::PrimIterator assemblyPrimEnd(void)const;   // INFERRED: ?assemblyPrimEnd@Assembly@RBX@@QBE?AVPrimIterator@2@XZ (header gap, header_gap_fill.py)
+};
 
 	// 005e5f60 (analog name: openrbx lessAssembly; cdecl, the comparator addChild 005e6f70 passes to std::_Sort 005e6e90).
 	bool lessAssembly(const Assembly* a0, const Assembly* a1);

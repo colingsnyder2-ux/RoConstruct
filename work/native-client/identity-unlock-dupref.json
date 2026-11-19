@@ -1,0 +1,380 @@
+{
+ "004087e0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ",
+     "??1S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7?$CComAggObject@VCApp@@@ATL@@6B@",
+     "?_pAtlModule@ATL@@3PAVCAtlModule@1@A"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??1?$CComAggObject@VCApp@@@ATL@@UAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "00416ca0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
+     "??1S@@UAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7?$CComAggObject@VCContent@@@ATL@@6B@",
+     "?_pAtlModule@ATL@@3PAVCAtlModule@1@A",
+     "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??1?$CComAggObject@VCContent@@@ATL@@UAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "00417360": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0FunctionRef@Lua@RBX@@QAE@XZ",
+     "??0S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7FunctionRef@Lua@RBX@@6B@",
+     "??_7ThreadRef@Lua@RBX@@6B@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0FunctionRef@Lua@RBX@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0FunctionRef@Lua@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "004179b0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0CLuaFunction@@QAE@XZ",
+     "??0S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7FunctionRef@Lua@RBX@@6B@",
+     "??_7ThreadRef@Lua@RBX@@6B@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0CLuaFunction@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??0CLuaFunction@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "0042a5c0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "?apply@MainLogManager@@QAEXXZ",
+     "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp__GetCurrentThreadId@0"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?provideLog@MainLogManager@@UAEPAVLog@RBX@@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "0049ef60": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ",
+     "??1S@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??1?$args3@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HV12@H@detail@signals@boost@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "004ab090": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+     "??0S@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "00545ca0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@Render@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@Render@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
+     "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
+     "??0Vertex@MeshAlg@G3D@@QAE@ABV012@@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "___security_cookie"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@QAE@ABU01@@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "0055de10": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z",
+     "?Combine@@YA?AUString@@ABU1@PBD@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "?g_strmgr@ATL@@3VCAtlStringMgr@1@A"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@PBD@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "005631c0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??1S@@QAE@XZ",
+     "??1SpecData@Render@RBX@@QAE@XZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??1SpecData@Render@RBX@@QAE@XZ"
+   }
+  ],
+  "kind": "code",
+  "name": "??1SpecData@Render@RBX@@QAE@XZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "00599020": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??$?0PBD@?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@IAE@PBD@Z",
+     "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z",
+     "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PBDB@RBX@@IAE@PBD@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+     "??_7?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$?0PBD@?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@RBX@@IAE@PBD@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "005ad810": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??0Item@Stats@RBX@@QAE@PBD@Z",
+     "??0S@@QAE@H@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "??_7Item@Stats@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@",
+     "??_7Item@Stats@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@",
+     "??_7Item@Stats@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??0Item@Stats@RBX@@QAE@PBD@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??0Item@Stats@RBX@@QAE@PBD@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "006582b0": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z",
+     "?function@@YAXPAXUValue@@@Z"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "__imp_??1locale@std@@QAE@XZ",
+     "__imp_?_Incref@facet@locale@std@@QAEXXZ"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z"
+   }
+  ],
+  "kind": "code",
+  "name": "??$trim_if@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@algorithm@boost@@@algorithm@boost@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Uis_classifiedF@detail@01@@Z",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "0066f900": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+     "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "?getActualWidth@@3P6EHPBX@ZA"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ },
+ "0066f910": {
+  "evidence": [
+   {
+    "body_twin_candidates": [
+     "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+     "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+    ],
+    "bogus_name": null,
+    "distinguishing_refs": [
+     "?getActualHeight@@3P6EHPBX@ZA"
+    ],
+    "kind": "template-peer-reference-match"
+   },
+   {
+    "kind": "compiled-object-symbol",
+    "symbol": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ"
+   }
+  ],
+  "kind": "code",
+  "name": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ",
+  "name_source": "identity-unlock-dupref",
+  "owner_class": null,
+  "signature": null
+ }
+}

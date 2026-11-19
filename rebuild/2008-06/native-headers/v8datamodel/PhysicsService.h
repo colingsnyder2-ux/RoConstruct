@@ -29,11 +29,19 @@ namespace RBX
 {
 	class World;
 	class PartInstance;
+	namespace Network
+	{
+		class PhysicsSender;
+	}
 	struct AssemblyPhysicsOn;
 	struct AssemblyPhysicsOff;
 	namespace HUMAN
 	{
 		class MovingNoPhysicsBase;
+	}
+	namespace Reflection
+	{
+		template<typename Class, typename CallbackSignature> class SignalDesc;
 	}
 
 	extern const char sPhysicsService[];
@@ -45,9 +53,14 @@ namespace RBX
 	{
 		friend struct ::NativeServicesLayout; // tests/NativeServicesLayout.cpp offset asserts
 		friend class HUMAN::MovingNoPhysicsBase; // release 0066ed50 calls the private onRemoved 005e9040 (decorated AAE)
+		// INFERRED: PhysicsSender::step 004cd920 walks parts and connects eventAdded.
+		friend class Network::PhysicsSender;
 
 	private:
 		std::set<PartInstance*> parts;                                    // +0x138
+
+		static Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> eventAdded;   // 0097abec
+		static Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> eventRemoved; // 0097ac20
 
 		void onAdded(PartInstance* part);                                 // 005e8f70
 		void onRemoved(PartInstance* part);                               // 005e9040

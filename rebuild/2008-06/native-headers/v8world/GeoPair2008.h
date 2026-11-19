@@ -173,6 +173,33 @@ namespace RBX
 			geoPairType = EDGE_EDGE_PAIR;
 		}
 
+		// inlined into BlockBlockContact::loadGeoPairPointPlane 00607f90 (00608007..00608019 store normalID1 +0x1c,
+		// point0ID +0x20, offset0 +0x4, offset1 +0x8 and geoPairType +0x0 = 4 of the GeoPair at connector +0x8).
+		// INFERRED 2008 signature from the store order; the 2008 bodies are written by matchContactConnector 00607cc0
+		// instead of by the setter (donor v8kernel/Pair.h setPointPlane takes b0/b1 and stores in a different order).
+		void setPointPlane(NormalId planeID, int point0ID, const G3D::Vector3* offset0, const G3D::Vector3* offset1)   // INFERRED
+		{
+			pairData.normalID1 = planeID;
+			pairData.point0ID = point0ID;
+			this->offset0 = offset0;
+			this->offset1 = offset1;
+			geoPairType = POINT_PLANE_PAIR;
+		}
+
+		// inlined into BlockBlockContact::loadGeoPairEdgeEdgePlane 00608030 (00608131..00608148 store offset0 +0x4,
+		// edgeLength0 +0x14, offset1 +0x8, normalID0 +0x18, normalID1 +0x1c, planeID +0x20, geoPairType +0x0 = 5 of the
+		// GeoPair at connector +0x8). Donor v8kernel/Pair.h setEdgeEdgePlane without the bodies.
+		void setEdgeEdgePlane(const G3D::Vector3* offset0, const G3D::Vector3* offset1, NormalId norm0, NormalId norm1, NormalId planeID, float edgeLength)   // INFERRED: 2008 signature from the stores above
+		{
+			this->offset0 = offset0;
+			edgeLength0 = edgeLength;
+			this->offset1 = offset1;
+			pairData.normalID0 = norm0;
+			pairData.normalID1 = norm1;
+			pairData.planeID = planeID;
+			geoPairType = EDGE_EDGE_PLANE_PAIR;
+		}
+
 		// inlined into BallBlockContact::stepContact 00607150 (00607246..00607252 store radius0 +0x18, offset1 +0x8,
 		// normalID1 +0x1c and geoPairType +0x0 of the GeoPair at connector +0x8, in that order; the bodies are not
 		// written there, Contact::createConnector 00606e00 stores them). Donor v8kernel/Pair.h setBallBlock without the

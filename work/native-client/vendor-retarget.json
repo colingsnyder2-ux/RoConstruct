@@ -1,0 +1,736 @@
+{
+ "0078c360": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTSplitterWndThemeFactory@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTSplitterWndThemeFactory@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTSplitterWndThemeFactory"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Controls__XTSplitterWndTheme__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "00712b70": {
+  "status": "EXACT",
+  "symbol": "??0CXTPPropertyGridItems@@IAE@XZ",
+  "detail": "??0CXTPPropertyGridItems@@IAE@XZ",
+  "rtti": [
+   "CXTPPropertyGridItems"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Calendar__XTPCalendarDayView__O1GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__PropertyGrid__XTPPropertyGridItem__O1GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006c7de0": {
+  "status": "EXACT",
+  "symbol": "??0CXTPReportRecordItemConstraints@@QAE@XZ",
+  "detail": "??0CXTPReportRecordItemConstraints@@QAE@XZ",
+  "rtti": [
+   "CXTPReportRecordItemConstraints"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Calendar__XTPCalendarDayView__O1GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportRecordItem__O1GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006acf60": {
+  "status": "EXACT",
+  "symbol": "??0CXTPControlActions@@IAE@PAVCXTPCommandBars@@@Z",
+  "detail": "??0CXTPControlActions@@IAE@PAVCXTPCommandBars@@@Z",
+  "rtti": [
+   "CXTPControlActions"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControl__O1GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "0076efd0": {
+  "status": "EXACT",
+  "symbol": "??0CXTPImageEditorPreview@@QAE@XZ",
+  "detail": "",
+  "rtti": [
+   "CXTPImageEditorPreview"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/mfc-9.0/atlmfc__src__mfc__ctlcore__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPImageEditor__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__CommandBars__XTPImageEditor__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPImageEditor__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ]
+  ]
+ },
+ "0077a450": {
+  "status": "EXACT",
+  "symbol": "??0CXTPPropertyGridInplaceList@@QAE@XZ",
+  "detail": "??0CXTPPropertyGridInplaceList@@QAE@XZ",
+  "rtti": [
+   "CXTPPropertyGridInplaceList"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/mfc-9.0/atlmfc__src__mfc__ctlcore__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__PropertyGrid__XTPPropertyGridInplaceList__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "0074f0e0": {
+  "status": "REFERENCES UNPROVEN",
+  "symbol": "??0?$CXTPArrayT@PAVCXTPReportHyperlink@@PAV1@PAUIDispatch@@@@QAE@XZ",
+  "detail": "",
+  "rtti": [
+   "CXTPArrayT<CXTPReportHyperlink*,CXTPReportHyperlink*,IDispatch*>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/roc_claude_4bde575d130c94df__O1GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Calendar__XTPCalendarDatabaseDataProvider__O1GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportHyperlink__O1GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Common__XTPToolTipContext__O1GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Calendar__XTPCalendarDatabaseDataProvider__O1GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__ReportControl__XTPReportHyperlink__O1GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Common__XTPToolTipContext__O1GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__Calendar__XTPCalendarDatabaseDataProvider__O1GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__ReportControl__XTPReportHyperlink__O1GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__Common__XTPToolTipContext__O1GSMD.cpp",
+    "DIFF"
+   ]
+  ]
+ },
+ "007733a0": {
+  "status": "EXACT",
+  "symbol": "??0CXTPPropertyGridInplaceButtons@@QAE@PAVCXTPPropertyGridItem@@@Z",
+  "detail": "??0CXTPPropertyGridInplaceButtons@@QAE@PAVCXTPPropertyGridItem@@@Z",
+  "rtti": [
+   "CXTPPropertyGridInplaceButtons"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControl__O1GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__PropertyGrid__XTPPropertyGridInplaceButton__O1GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "0072f840": {
+  "status": "REFERENCES UNPROVEN",
+  "symbol": "??0CXTPControlComboBoxGalleryPopupBar@@IAE@XZ",
+  "detail": "",
+  "rtti": [
+   "CXTPControlComboBoxGalleryPopupBar"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlComboBoxExt__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlGallery__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControlGallery__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__CommandBars__XTPControlGallery__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ]
+  ]
+ },
+ "0079a8d0": {
+  "status": "REFERENCES UNPROVEN",
+  "symbol": "??0CXTPRibbonSystemPopupBarPage@@QAE@XZ",
+  "detail": "",
+  "rtti": [
+   "CXTPRibbonSystemPopupBarPage"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlComboBoxExt__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ]
+  ]
+ },
+ "006ea260": {
+  "status": "NO RTTI SYMBOL",
+  "symbol": "",
+  "detail": "bytes are equal, identity/references are not proven:\n  ??0CXTPControlWindowList@@QAE@XZ\n    conflicting reference identity: ?OnSetSelected@CXTPControl@@MAEHH@Z; unproven reference identity: ??_ECXTPControlWindowList@@UAEPAXI@Z; unproven reference identity: ??_ECXTPControlWindowList@@WCA@AEPAXI@Z; un",
+  "rtti": [
+   "CXTPCustomizeSheet::CCustomizeButton"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCustomizeSheet__O2GSMD.cpp",
+    "COMPILE FAILED"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCustomizeCommandsPage__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCustomizeKeyboardPage__O2GSMD.cpp",
+    "DIFF"
+   ]
+  ]
+ },
+ "0079a870": {
+  "status": "NO RTTI SYMBOL",
+  "symbol": "",
+  "detail": "bytes are equal, identity/references are not proven:\n  ??0CXTPControlWindowList@@QAE@XZ\n    conflicting reference identity: ??0CXTPControlButton@@QAE@XZ; conflicting reference identity: ?OnRButtonUp@CXTPControl@@MAEHVCPoint@@@Z; conflicting reference identity: ?OnSetSelected@CXTPControl@@MAEHH@Z; un",
+  "rtti": [
+   "CXTPRibbonControlSystemRecentFileList"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ]
+  ]
+ },
+ "0079a730": {
+  "status": "REFERENCES UNPROVEN",
+  "symbol": "??0CXTPRibbonControlSystemPopupBarButton@@QAE@XZ",
+  "detail": "",
+  "rtti": [
+   "CXTPRibbonControlSystemPopupBarButton"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__Ribbon__XTPRibbonSystemButton__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ]
+  ]
+ },
+ "006ea220": {
+  "status": "NO RTTI SYMBOL",
+  "symbol": "",
+  "detail": "bytes are equal, identity/references are not proven:\n  ??0CXTPControlWindowList@@QAE@XZ\n    conflicting reference identity: ?OnRButtonUp@CXTPControl@@MAEHVCPoint@@@Z; unproven reference identity: ??_ECXTPControlWindowList@@UAEPAXI@Z; unproven reference identity: ??_ECXTPControlWindowList@@WCA@AEPAXI",
+  "rtti": [
+   "CXTPCustomizeSheet::CCustomizeEdit"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCustomizeSheet__O2GSMD.cpp",
+    "COMPILE FAILED"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCustomizeCommandsPage__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCustomizeKeyboardPage__O2GSMD.cpp",
+    "DIFF"
+   ]
+  ]
+ },
+ "006f5000": {
+  "status": "REFERENCES UNPROVEN",
+  "symbol": "??0CXTPControlToolbars@@QAE@XZ",
+  "detail": "",
+  "rtti": [
+   "CXTPControlToolbars"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControls__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPCommandBars__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControls__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPCommandBars__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__CommandBars__XTPControlExt__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__CommandBars__XTPControls__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-lib-strlen/Source__CommandBars__XTPCommandBars__O2GSMD.cpp",
+    "DIFF"
+   ]
+  ]
+ },
+ "00716fd0": {
+  "status": "EXACT",
+  "symbol": "??1CXTColorPopup@@UAE@XZ",
+  "detail": "??1CXTColorPopup@@UAE@XZ",
+  "rtti": [
+   "CXTColorPopup"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlScrollBar__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Controls__XTColorPopup__O2GSMD.cpp",
+    "REFERENCES UNPROVEN"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__PropertyGrid__XTPPropertyGridItemColor__O2GSMD.cpp",
+    "DIFF"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Controls__XTColorPicker__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Controls__XTColorPopup__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006dbac0": {
+  "status": "NO RTTI SYMBOL",
+  "symbol": "",
+  "detail": "bytes are equal, identity/references are not proven:\n  ??1CXTPControlScrollBarCtrl@@UAE@XZ\n    conflicting reference identity: ?CalcWindowRect@CWnd@@UAEXPAUtagRECT@@I@Z; conflicting reference identity: ?WinHelpA@CWnd@@UAEXKI@Z; reference identity differs: ??1CXTPScrollBar@@UAE@XZ (bound 0078f070, or",
+  "rtti": [
+   "CXTTreeCtrl"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__CommandBars__XTPControlScrollBar__O2GSMD.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__Controls__XTTreeCtrlView__O2GSMD.cpp",
+    "DIFF"
+   ]
+  ]
+ },
+ "008016f0": {
+  "status": "EXACT",
+  "symbol": "??__Fg_objCXTPReportRowAllocator@@YAXXZ",
+  "detail": "??__Fg_objCXTPReportRowAllocator@@YAXXZ",
+  "rtti": [
+   "CXTPHeapAllocatorT<CXTPReportRowAllocatorData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006d06a0": {
+  "status": "EXACT",
+  "symbol": "",
+  "detail": "proved as TwinInst_006d06a0.cpp by twin_lane",
+  "rtti": [
+   "CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData>"
+  ],
+  "tried": []
+ },
+ "006cf810": {
+  "status": "AMBIGUOUS RTTI SYMBOL",
+  "symbol": "",
+  "detail": "bytes are equal, identity/references are not proven:\n  ??_G?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@UAEPAXI@Z\n    unproven reference identity: ??_E?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@UAEPAXI@Z\n  ??_G?$CXTPHeapAllocatorT@UCXTPReportRowAllocatorData@@@@UAEPAXI@Z\n    symbol",
+  "rtti": [
+   "CXTPHeapAllocatorT<CXTPReportRowAllocatorData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "AMBIGUOUS RTTI SYMBOL"
+   ]
+  ]
+ },
+ "008016c0": {
+  "status": "EXACT",
+  "symbol": "??__Fg_objCXTPReportDataAllocator@@YAXXZ",
+  "detail": "??__Fg_objCXTPReportDataAllocator@@YAXXZ",
+  "rtti": [
+   "CXTPHeapAllocatorT<CXTPReportDataAllocatorData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "00801720": {
+  "status": "EXACT",
+  "symbol": "??__Fg_objCXTPReportAllocatorDefault@@YAXXZ",
+  "detail": "??__Fg_objCXTPReportAllocatorDefault@@YAXXZ",
+  "rtti": [
+   "CXTPHeapAllocatorT<CXTPReportAllocatorDefaultData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006cf090": {
+  "status": "EXACT",
+  "symbol": "??_G?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@UAEPAXI@Z",
+  "detail": "??_G?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@UAEPAXI@Z",
+  "rtti": [
+   "CXTPHeapAllocatorT<CXTPReportDataAllocatorData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006d06f0": {
+  "status": "EXACT",
+  "symbol": "",
+  "detail": "proved as TwinInst_006d06f0.cpp by twin_lane",
+  "rtti": [
+   "CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>"
+  ],
+  "tried": []
+ },
+ "00801790": {
+  "status": "EXACT",
+  "symbol": "??__Fgs_CXTPReportGroupRow_Batch_BlocksManager@@YAXXZ",
+  "detail": "??__Fgs_CXTPReportGroupRow_Batch_BlocksManager@@YAXXZ",
+  "rtti": [
+   "CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportGroupRow_BatchData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006cf0e0": {
+  "status": "AMBIGUOUS RTTI SYMBOL",
+  "symbol": "",
+  "detail": "bytes are equal, identity/references are not proven:\n  ??_G?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@UAEPAXI@Z\n    reference identity differs: ??_E?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@UAEPAXI@Z (bound 006cf090, original reference 006cf0e0)\n  ??_G?$CXTPHeapAllocatorT@UCXTPR",
+  "rtti": [
+   "CXTPHeapAllocatorT<CXTPReportAllocatorDefaultData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "AMBIGUOUS RTTI SYMBOL"
+   ]
+  ]
+ },
+ "00801750": {
+  "status": "EXACT",
+  "symbol": "??__Fgs_CXTPReportRow_Batch_BlocksManager@@YAXXZ",
+  "detail": "??__Fgs_CXTPReportRow_Batch_BlocksManager@@YAXXZ",
+  "rtti": [
+   "CXTPBatchAllocManagerT<CXTPReportRowAllocator,CXTPReportRow_BatchData>"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2/Source__ReportControl__XTPReportControl__O2GSMD.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "00722010": {
+  "status": "EXACT",
+  "symbol": "??0CControlQuickAccessMorePopup@CXTPRibbonBar@@QAE@XZ",
+  "detail": "??0CControlQuickAccessMorePopup@CXTPRibbonBar@@QAE@XZ",
+  "rtti": [
+   "CXTPRibbonBar::CControlQuickAccessMorePopup"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonBar__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "00721f40": {
+  "status": "EXACT",
+  "symbol": "??0CXTPRibbonBarControlQuickAccessPopup@@QAE@XZ",
+  "detail": "??0CXTPRibbonBarControlQuickAccessPopup@@QAE@XZ",
+  "rtti": [
+   "CXTPRibbonBarControlQuickAccessPopup"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonBar__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006f63c0": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTPControlWorkspaceActions@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTPControlWorkspaceActions@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTPControlWorkspaceActions"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonSystemButton__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControlExt__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006f5970": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTPControlOleItems@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTPControlOleItems@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTPControlOleItems"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonSystemButton__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControlExt__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006f5c80": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTPControlRecentFileList@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTPControlRecentFileList@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTPControlRecentFileList"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonSystemButton__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControlExt__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006f5200": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTPControlWindowList@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTPControlWindowList@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTPControlWindowList"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Ribbon__XTPRibbonSystemButton__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__CommandBars__XTPControlExt__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "007914a0": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTCaptionThemeFactory@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTCaptionThemeFactory@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTCaptionThemeFactory"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-15.2.1-shared-mfc/Source__Controls__Deprecated__XTButtonTheme__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Controls__XTCaptionTheme__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "007a0cf0": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTColorSelectorCtrlThemeFactory@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTColorSelectorCtrlThemeFactory@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTColorSelectorCtrlThemeFactory"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-15.2.1-shared-mfc/Source__Controls__Deprecated__XTButtonTheme__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Controls__XTColorSelectorCtrlTheme__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "00791930": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTCaptionButtonThemeFactory@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTCaptionButtonThemeFactory@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTCaptionButtonThemeFactory"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-15.2.1-shared-mfc/Source__Controls__Deprecated__XTButtonTheme__O2MDGSEHsc.cpp",
+    "NO RTTI SYMBOL"
+   ],
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-11.2.2-shared-mfc/Source__Controls__XTCaptionTheme__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "007a1ec0": {
+  "status": "EXACT",
+  "symbol": "?CreateObject@CXTButtonThemeFactory@@SGPAVCObject@@XZ",
+  "detail": "?CreateObject@CXTButtonThemeFactory@@SGPAVCObject@@XZ",
+  "rtti": [
+   "CXTButtonThemeFactory"
+  ],
+  "tried": [
+   [
+    "rebuild/2008-06/native-classes/vendor_i/xtp-15.2.1-shared-mfc/Source__Controls__Deprecated__XTButtonTheme__O2MDGSEHsc.cpp",
+    "EXACT"
+   ]
+  ]
+ },
+ "006d8600": {
+  "status": "NO WRAPPER",
+  "symbol": "",
+  "detail": "",
+  "rtti": [
+   "CXTPReportRecordItemText"
+  ],
+  "tried": []
+ },
+ "006d88c0": {
+  "status": "NO WRAPPER",
+  "symbol": "",
+  "detail": "",
+  "rtti": [
+   "CXTPReportRecordItemPreview"
+  ],
+  "tried": []
+ }
+}

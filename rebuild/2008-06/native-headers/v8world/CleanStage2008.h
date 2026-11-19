@@ -54,5 +54,13 @@ namespace RBX
 		void onPrimitiveRemoving(Primitive* p);                      // 0064a400
 		void onJointPrimitiveNulling(Joint* j, Primitive* nulling);  // 0064a420
 		void onJointPrimitiveSet(Joint* j, Primitive* p);            // 0064a460
+	public:
+		void sub_0064a400(RBX::Primitive* p);   // INFERRED: 0064a400, placeholder name (identity tier), body byte-proved (Inferred_0064a400.cpp)
+	public:
+		void sub_0064a3e0(Primitive* p);   // INFERRED: 0064a3e0, placeholder name (identity tier), body byte-proved (Inferred_0064a3e0.cpp)
+	public:
+		void sub_0064a420(Joint* j, Primitive* nulling);   // INFERRED: 0064a420, placeholder name (identity tier); body in CleanStageRecovery_0064a420.cpp
+		void sub_0064a460(Joint* j, Primitive* p);         // INFERRED: 0064a460, placeholder name (identity tier); body in CleanStageRecovery_0064a420.cpp
+		void sub_0064a510(Edge* e);                        // INFERRED: 0064a510, placeholder name (identity tier); body in CleanStageRecovery_0064a420.cpp
 	};
 }

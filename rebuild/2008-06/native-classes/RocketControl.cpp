@@ -24,6 +24,12 @@
 //     pointToWorldSpace first, a named worldForce with an inline worldPos temporary still zero-stores.
 //   Rocket::turn 0062e530: equal size (992 B); differs only in the angVelBody row sums (target e02*vz + e01*vy first)
 //     and the inline accumulateTorque fadd operand order.
+//     Verified again (2008-11-17): the standalone donor Gyro.cpp stubs (own G3D Matrix3 operator* double row sum
+//     (p2+p1)+p0 and Vector3 operator+= with a read barrier) are byte-IDENTICAL (992 B) but their stub Body/SimBody
+//     references are 'unproven reference identity' (updatePV 00599360, SimBody::update 00658d20) so prove.py rejects
+//     them; with the real headers the only diffs are exactly those two inline shapes (Matrix3 * Vector3 row order at
+//     0062e783 and SimBody::accumulateTorque `fld torque; fadd added` at 0062e8c0). Fix needs additive header edits
+//     (G3D Matrix3::operator*, Body2008.h SimBody::accumulateTorque), not done: shared by exact BodyGyro rows.
 //   Rocket::computeForce 0062fc00: same calls and shape; the frame is 0xc bytes smaller than the target (one Vector3
 //     temporary fewer) and the maxSpeed block's fsub operand order differs.
 #define NATIVE_PRIMITIVE_NATIVE_BODY

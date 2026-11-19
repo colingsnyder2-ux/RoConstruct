@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/openrbx/3rdparty/fmod/api/inc
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/openrbx/Client/fmod/api/inc
 // 2008-06 native leftovers of the view / sound units (inactive):
 //   InstanceHandle::empty 004dc3d0 (util/Handle.h declaration; `target.px == NULL`).
 //   SoundServiceStatsItem::update 005bcd80 (util/Sound.h declaration; service +0x158, currentalloced +0x15c,
@@ -58,10 +58,13 @@ void SoundServiceStatsItem::update()
 			maxalloced = max;
 		}
 
-		numSounds = numUnusedSounds = 0;
+		size_t* unused = &numUnusedSounds;
+		size_t* sounds = &numSounds;
 		const RBX::Soundscape::SoundService* soundService = service;
-		countSounds(soundService->loadedSounds, numSounds, numUnusedSounds);
-		countSounds(soundService->loaded3DSounds, numSounds, numUnusedSounds);
+		*unused = 0;
+		*sounds = 0;
+		countSounds(soundService->loadedSounds, *sounds, *unused);
+		countSounds(soundService->loaded3DSounds, *sounds, *unused);
 	}
 	else
 	{

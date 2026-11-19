@@ -152,6 +152,10 @@ namespace RBX
 		void setClump(Clump* set);                       // 005e7550 (body in native-classes/AppUnit5E4PrimitiveParts.cpp;
 		                                                 // callers Clump(Primitive*) 005e6cf0 / 005e5ff0, out of line)
 		Assembly* getAssembly() const;                   // 005e7570 ?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ
+		// 005e7560 (placeholder func_005e7560): `[[prim+0x5c]+0x24]` without the NULL check; SleepStage::onEdgeAdded 0064b1b0 and
+		// touchEvent 0064b7c0 call it while wakeEvent(Edge*) 0064bf60 calls the checked getAssembly 005e7570. INFERRED name.
+		Assembly* getAssemblyNoCheck() const;
+		int getBodyDepth() const;                        // INFERRED: 005e7470 (body->parent ? 1 + depth(parent) : 1; callers TreeStage 00669b60)
 		int getClumpDepth() const
 		{
 			return clumpDepth;
@@ -233,6 +237,8 @@ namespace RBX
 
 		Joint* getFirstJoint() const;                    // 005e7b90 ?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ
 		Joint* getNextJoint(Joint* prev) const;          // 005e7ba0
+		Edge* getFirstEdge() const;                      // INFERRED: 005e7b00 (same shape as getFirstJoint 005e7b90 over all edges)
+		Edge* getNextEdge(Edge* prev) const;             // INFERRED: 005e7b20
 		Contact* getFirstContact();                      // 005e7bd0
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 

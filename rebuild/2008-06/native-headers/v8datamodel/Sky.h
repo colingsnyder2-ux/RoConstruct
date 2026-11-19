@@ -18,7 +18,7 @@
 
 namespace RBX
 {
-	extern const char sSky[];
+	extern char sSky[];   // INFERRED: ??__E?creator@?$FactoryProduct@...$1?sSky@...@3PADA (2008 binary) = char array
 
 	class Sky : public DescribedCreatable<Sky, Instance, sSky>
 	{

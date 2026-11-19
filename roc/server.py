@@ -771,6 +771,15 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
             if url.path == '/v1/leases':
                 return self.send(200, {'leases': file_leases().active()})
+            if url.path == '/v1/native-queue':      # live queue of remaining native functions (work/native_queue.py, refreshed every 20 s)
+                try:
+                    queue_path = ROOT / 'work' / 'native-queue.json'
+                    queue = json.loads(queue_path.read_text(encoding='utf-8'))
+                    queue['age_seconds'] = round(time.time() - queue.get('generated_at', 0), 1)
+                    queue['stale'] = queue['age_seconds'] > 120
+                    return self.send(200, queue)
+                except (OSError, ValueError):
+                    return self.send(503, {'error': 'native queue not generated yet'})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -1388,19 +1397,41 @@ def _publish_once(store, public_url, log=print):
 
 
 
+def stage_files(git, root, files):
+    """Stage `files` (paths under `root`) into the index `git` is bound to, as 100644 entries named relative
+    to `root`. Two git calls in all: one process per file made a 1,000-file publish take 20 minutes on a
+    busy machine. Returns an error string, or None."""
+    if not files:
+        return None
+    hashed = git("hash-object", "-w", "--stdin-paths", input="\n".join(str(f) for f in files) + "\n")
+    ids = hashed.stdout.split()
+    if hashed.returncode or len(ids) != len(files):
+        return "hash-object failed: " + (hashed.stderr.strip()[-200:] or "%d of %d hashed" % (len(ids), len(files)))
+    # NUL-terminated (-z): the callers run git in text mode, which turns "\n" into "\r\n" on Windows and
+    # would leave a carriage return on every path.
+    lines = "".join("100644 %s\t%s\0" % (blob, f.relative_to(root).as_posix()) for blob, f in zip(ids, files))
+    staged = git("update-index", "--add", "-z", "--index-info", input=lines)
+    if staged.returncode:
+        return staged.stderr.strip()[-200:] or "update-index failed"
+    return None
+
+
 def publish_pages(git_exe, log=print):
     """Overwrite the gh-pages branch with the whole website (docs/ minus guides) as one
     parentless commit: the hourly 20+ MB of function data never accumulates in any history."""
     # Guard: a local inventory loss (work/native-client/prove-out deleted 2026-11-15) once published
     # 8121 -> 2961 inactive/draft functions.  Never replace the live site with a >25% drop.
+    # Compared with a high-water mark (work/site-high-water.json), not the live site: a bad publish must not lower the
+    # bar for the next one (17:44 UTC published 2961 because the live copy it compared with was already wrong).
+    # Fail closed: an unreadable count blocks the publish.
+    mark = ROOT / "work" / "site-high-water.json"
     try:
         new = json.loads((ROOT / "docs/integration.json").read_text())["groups"]["owned_waiting"]["functions"]
-        live = json.loads(subprocess.run([git_exe, "show", "refs/remotes/origin/gh-pages:integration.json"], cwd=ROOT,
-                                         capture_output=True, text=True).stdout)["groups"]["owned_waiting"]["functions"]
-        if new < live * 0.75:
-            return log("Website NOT published: inactive/draft would drop %d -> %d (local proof inventory missing?)" % (live, new))
-    except (OSError, ValueError, KeyError, TypeError):
-        pass
+        best = json.loads(mark.read_text()).get("owned_waiting", 0) if mark.exists() else 0
+        if new < best * 0.9:
+            return log("Website NOT published: inactive/draft would drop %d -> %d (local proof inventory incomplete?)" % (best, new))
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        return log("Website NOT published: cannot read the inactive/draft count (%s)" % error)
     index = ROOT / "work" / ("pages-index-" + uuid.uuid4().hex)
     env = dict(os.environ, GIT_INDEX_FILE=str(index))
     git = lambda *a, **kw: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True, **kw)
@@ -1408,14 +1439,11 @@ def publish_pages(git_exe, log=print):
     try:
         if git("read-tree", "--empty").returncode:
             return log("Pages staging failed.")
-        for path in sorted(docs.rglob("*")):
-            if not path.is_file() or path.suffix == ".md" or path.name == "providers.example.json":
-                continue
-            relative = path.relative_to(docs).as_posix()
-            blob = git("hash-object", "-w", str(path))
-            if blob.returncode or git("update-index", "--add", "--cacheinfo", "100644", blob.stdout.strip(),
-                                     relative).returncode:
-                return log("Pages staging failed: " + relative)
+        site = [path for path in sorted(docs.rglob("*"))
+                if path.is_file() and path.suffix != ".md" and path.name != "providers.example.json"]
+        failure = stage_files(git, docs, site)
+        if failure:
+            return log("Pages staging failed: " + failure)
         # Demos pushed straight to gh-pages (castle/ WASM build, ...) are not in docs/: carry every top-level
         # folder docs/ does not produce over from the live branch, so this overwrite never deletes them.
         git("fetch", "-q", "origin", "+refs/heads/gh-pages:refs/remotes/origin/gh-pages")
@@ -1437,6 +1465,8 @@ def publish_pages(git_exe, log=print):
         pushed = git("push", "-f", "origin", commit.stdout.strip() + ":refs/heads/gh-pages")
         if pushed.returncode == 0:
             git("update-ref", "refs/remotes/origin/gh-pages", commit.stdout.strip())
+            if new > best:
+                mark.write_text(json.dumps({"owned_waiting": new, "time": time.time()}))
         log("Website published." if pushed.returncode == 0 else "Website push failed: %s" % pushed.stderr.strip()[-300:])
     finally:
         index.unlink(missing_ok=True)

@@ -58,6 +58,8 @@ public:
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childAdded;     // 00973e90 (registry symbol)
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_childRemoved;   // 00973c6c (registry symbol)
     Instance();
     explicit Instance(const char*);
     virtual ~Instance();
@@ -77,8 +79,16 @@ public:
     virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
+    std::string getFullName() const;   // INFERRED: ?getFullName@Instance@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ (header gap, header_gap_fill.py proposal)
     Instance* getParent() const { return parent; }
+    // INFERRED: 2007 donor v8tree/Instance.h defines both inline; the recursion keeps an out-of-line copy:
+    // ?getRootAncestor@Instance@RBX@@QAEPAV12@XZ at 0042a5f0 (header gap, header_gap_fill.py proposal).
+    const Instance* getRootAncestor() const { return parent ? parent->getRootAncestor() : this; }
+    Instance* getRootAncestor() { return parent ? parent->getRootAncestor() : this; }
     bool isDescendentOf(const Instance*) const; // 00422ae0
+private:
+    void predelete();   // 0055b060 ?predelete@Instance@RBX@@AAEXXZ (private, registry symbol)
+public:
     // 00423700; name provisional
     bool canAcceptChildren(std::vector<boost::shared_ptr<Instance> >::const_iterator,
                            std::vector<boost::shared_ptr<Instance> >::const_iterator);

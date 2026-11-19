@@ -79,6 +79,43 @@ Git SHA for `baseline_commit` only when known; otherwise record unknown. Report
 inactive candidates, selected matches, gated swaps, draft receipts and independent
 server credit separately. Unknown proof/progress stays unknown.
 
+## Working the remaining functions (live queue)
+
+About 830 functions (about 200 KB) still have no byte-exact native code. Anyone can work on them. Draft sharing needs no fork,
+branch or approval (see "Scope and initialize before editing").
+
+**Live queue.** `GET https://colinpc.tail2879d0.ts.net/v1/native-queue` (same host as the draft server and `/v1/leases`; no auth).
+It is rebuilt every 20 seconds and carries `generated_at`, `age_seconds` and `stale` (true after 120 s: then the owner machine is
+offline and the numbers are old). Fields:
+
+- `remaining`: functions and bytes still open, and when they were last classified (every 10 minutes).
+- `families`: open groups, largest by bytes first: template families (twins recovered from RTTI), `class X` groups (owner and
+  declaration recovered from the binary) and `ownerless` functions. Each has `status`: `open`, `known failure: <reason>`
+  (a header-owner fix is needed first) or `blocked: no native header for the class`. Take the biggest `open` family nobody holds.
+- `claims`: active leases. Claim a family with `roc.cmd lease take family:<name> "<globs>" --hours 4` before editing; renew or release it.
+- `recent_submissions` and `submissions_last_24h_by_user`: the last draft uploads. A new upload shows up here within about 20 seconds.
+
+What updates when, so nobody is misled: a draft upload proves durable storage only and appears in `recent_submissions` within
+seconds. The `remaining` count and byte total fall only after the owner machine proves the new code (per-source proof), at the
+next 10-minute classification. "Integrated" is decided only by the server verifier after the gates, never by an upload.
+
+**Rules for these functions (all measured on real failures)**
+
+- Native means real classes and real headers. Never define a class, struct, union, pad array or `extern` inside a native `.cpp`,
+  and never copy the stand-in structs of a mined analog (`src/2008-06/<addr>.cpp`): a file that matches bytes that way is an
+  analog in disguise and is removed. Use mined analogs only for statement order.
+- Inferred names and declarations are allowed when labelled `// INFERRED: <evidence>`. Missing members go into the class header
+  (non-core headers, under a lease). Core headers (`v8tree/Instance.h`, `v8datamodel/DataModel.h`, `util/Events.h`,
+  `reflection/*.h`) have one owner: propose the change instead of editing.
+- Prefer the largest functions and the template families first: one fixed template or binding unlocks many addresses.
+- Do not run a census, `roc auto`, `roc submit` or any bulk mining pass. Prove one source at a time and read the diff before the next
+  proof; change one thing per proof. Do not search recursively inside generated proof folders.
+- After three failed variants on one function, park it with the exact diff and take another.
+
+**Tools.** The owner checkout has helper scripts under `work/native-client/` (`family_status.py ADDR`, `agent_prove.py FILE ADDR`,
+`agent_bind.py`, `twin_lane.py`, `thunk_lane.py`, `family-brief.md`) that are not yet part of the Worker package. Until they are,
+use `roc.cmd native-asm 2008-06 ADDR`, the native check runner and the fast native tools below.
+
 ## Reuse a compatible workspace
 
 Use the current authorized workspace and nearby package markers. Preserve every

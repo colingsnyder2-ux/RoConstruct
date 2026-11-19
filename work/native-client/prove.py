@@ -197,6 +197,9 @@ def main():
             if s not in master['sources']:
                 master['sources'].append(s)
     evidence = master['evidence']
+    for _x in filter(None, os.environ.get('ROC_EXTRA_EVIDENCE', '').split(';')):   # trial-only evidence files (not registered)
+        if _x not in evidence:
+            evidence = evidence + [_x]
     out = HERE / ('prove-out/%s' % family)
     if args.all:        # native_commit.py refuses to touch native files while a census runs (edits void its results)
         LOCK.write_text(json.dumps({'pid': os.getpid(), 'started': time.time()}))

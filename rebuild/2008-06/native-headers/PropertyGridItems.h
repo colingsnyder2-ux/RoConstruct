@@ -34,11 +34,9 @@ public:
 typedef XItem<bool, CXTPPropertyGridItemBool, RBX::Reflection::TypedPropertyDescriptor<bool> > BoolItemBase;
 class XBoolItem : public BoolItemBase {
 public:
-    XBoolItem(const RBX::Reflection::TypedPropertyDescriptor<bool>* property, CPropGrid* grid)
-        : BoolItemBase(property, grid)
-    {
-        SetCheckBoxStyle(TRUE);
-    }
+    XBoolItem(const RBX::Reflection::TypedPropertyDescriptor<bool>* property, CPropGrid* grid); // defined in XBoolItemRecovery_0043d330.cpp
+    virtual ~XBoolItem(); // INFERRED: binary evidence shows no custom cleanup required; base class handles destruction
+    virtual int OnDrawItemValue(CDC& dc, CRect rect); // INFERRED: vftable slot 26 (+0x68) from vtable 0x81469c; 325 bytes; primary virtual override
 };
 
 // Native attachment algorithm; use the real descriptor map and SDK ownership.

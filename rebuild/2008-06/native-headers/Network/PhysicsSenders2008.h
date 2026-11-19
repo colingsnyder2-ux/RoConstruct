@@ -74,6 +74,8 @@ struct NativeNetworkPhysicsSendersLayout;
 
 namespace RBX
 {
+	class Instance;
+	class ModelInstance;
 	class PartInstance;
 	class PhysicsService;
 
@@ -96,6 +98,9 @@ namespace RBX
 				float accumulated;                                                 // +0x40
 				int lastSendStep;                                                  // +0x44 (index 2 key)
 				float error;                                                       // +0x48
+
+				// INFERRED: 004c9e30, called by step with the player frame, character and step counter.
+				bool update(const G3D::CoordinateFrame& reference, ModelInstance* character, int newSequence);
 			};
 			typedef boost::multi_index::multi_index_container<
 				PartItem,
@@ -117,6 +122,11 @@ namespace RBX
 			boost::shared_ptr<PhysicsService> physicsService;                      // +0x44
 			boost::signals::scoped_connection partAddedConnection;                 // +0x4c
 			boost::signals::scoped_connection secondConnection;                    // +0x60 (dtor 004ccb90)
+
+			// INFERRED: 004cd170; bound by step's initial parts walk and AssemblyAdded connection.
+			void addPhysicsInstance(boost::shared_ptr<Instance> instance);
+			// INFERRED: 004ca980; called by sendPackets before the assembly/reset update.
+			bool writePhysicsSnapshot(RakNet::BitStream& stream, const PartItem& item);
 
 		public:
 			PhysicsSender(Replicator* replicator);                                 // 004ccb10

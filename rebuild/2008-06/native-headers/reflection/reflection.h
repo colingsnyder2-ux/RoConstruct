@@ -3,6 +3,7 @@
 #pragma once
 #include <boost/type_traits.hpp>
 #include "reflection/object.h"
+#include "reflection/type.h"
 
 class ArchiveBinder;
 
@@ -67,7 +68,10 @@ namespace RBX
 		DescribedCreatable();
 
 		template<typename Arg0Type>
-		DescribedCreatable(Arg0Type arg0);
+		DescribedCreatable(Arg0Type arg0)
+			: Described(arg0)   // INFERRED: same shape as DescribedNonCreatable; constructor byte-equal at 005e3e60
+		{
+		}
 	};
 
 	template<typename Class, typename DerivedClass, const char* ClassName>
@@ -314,7 +318,8 @@ namespace RBX
 			template<typename GetFunction, typename SetFunction>
 			EnumPropDescriptor(char const* name, char const* category, typename GetFunction get, typename SetFunction set, Functionality flags)
 				: EnumPropertyDescriptor(Class::classDescriptor(), EnumDesc<Enum>::singleton(), name, category, flags),
-				  getset(PropDescriptor<Class, Enum>::getset<GetFunction, SetFunction>(get, set))
+				  getset(PropDescriptor<Class, Enum>::getset<GetFunction, SetFunction>(get, set)),
+				  enumDescPtr(&EnumDesc<Enum>::singleton())   // INFERRED: 00448220 stores a second EnumDesc<Enum>::singleton() (call_once + accessor) at +0x20 after the getset auto_ptr temporary is destroyed
 			{
 			}
 		public:
@@ -431,9 +436,21 @@ namespace RBX
 			{
 				element->setValue(getValue(instance));
 			}
+		public:
+			const EnumDescriptor* enumDescPtr;   // INFERRED (header-add): evidence: asm +0x20 loaded into ecx before call to EnumDescriptor::isValue(int) 0x448450 - byte-proved by 00448c20
+		public:
+			bool sub_00448c20(DescribedBase* instance, int intValue) const;   // INFERRED: 00448c20, placeholder name (identity tier), body byte-proved (Inferred_00448c20.cpp)
 		};
 
 		// BoundFuncDesc
+		// INFERRED: RBX::Reflection::Tuple (RTTI .?AUTuple@Reflection@RBX@@, 0x18 bytes; vector<Value> at +0; explicit Tuple(size_t) ctor; used as BoundFuncDesc result_type at 0058b0f0; proposal in tests/record_native_stats_service.py)
+		struct Tuple
+		{
+			ValueCollection values;
+			explicit Tuple(size_t count);   // INFERRED: 00589d60 calls an out-of-line ctor (0x589c40) with this = the Tuple itself
+			Tuple(const Tuple&);            // INFERRED: 00589d60 returns the local via an out-of-line copy ctor call (0x55fed0)
+			~Tuple();                       // INFERRED: 00589d60 destroys the local through a call with this = the Tuple (0x42d630)
+		};
 		template<typename Class, typename Function, int ArgCount>
 		class BoundFuncDesc;
 

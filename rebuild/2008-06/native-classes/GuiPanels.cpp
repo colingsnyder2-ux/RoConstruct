@@ -103,3 +103,11 @@ namespace RBX
 		return fromLowSize(newLow, childSize);
 	}
 }
+
+namespace RBX {
+PercentPanel::PercentPanel(Rect::Location xLoc, Rect::Location yLoc, const G3D::Vector2 pos)
+	: TopMenuBar(), xLocation(xLoc), yLocation(yLoc), position(pos)
+{
+}
+}
+

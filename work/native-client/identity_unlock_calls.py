@@ -18,7 +18,7 @@ from collections import defaultdict, Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from identity_unlock_common import ROOT, REG, BASE, IMG, MD, end_of, unnamed  # noqa: E402
+from identity_unlock_common import ROOT, REG, BASE, IMG, MD, end_of, unnamed, dump_json  # noqa: E402
 from native_identity_closure import functions  # noqa: E402  (read-only reuse)
 
 OUT = ROOT / 'work/native-client/identity-unlock-calls.json'
@@ -113,7 +113,7 @@ def main():
                                {'kind': 'decorated-signature', 'symbol': s}]}
     n = Counter(r['name'] for r in out.values())
     out = {a: r for a, r in out.items() if n[r['name']] == 1}
-    json.dump(out, open(OUT, 'w'), indent=1, sort_keys=True)
+    dump_json(out, OUT)
     print('bound', len(out))
 
 

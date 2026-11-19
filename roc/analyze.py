@@ -797,7 +797,11 @@ def analyze(client, exe):
     mark_catch_handlers(funcs, catches, read)
     # FuncInfo-proven catch funclets join their owner, even past a short bounds.json pin.
     from roc.bounds_proof import owned_catch_merges
-    owned_catch_merges(funcs, catches, read, locked={int(addr, 16) for addr in matched})
+    # Owner-approved (2026-11-17) unlock list: exact owners whose split catch funclet must be folded back so native
+    # sources (which emit the funclet inline) become comparable; their exacts re-verify against the merged extent.
+    unlock_file = ROOT / "work" / client / "catch-merge-unlock.json"
+    unlock = {int(a, 16) for a in json.loads(unlock_file.read_text())} if unlock_file.exists() else set()
+    owned_catch_merges(funcs, catches, read, locked={int(addr, 16) for addr in matched} - unlock)
     imports = import_symbols(pe, funcs, read)
     # Persist direct-call edges so source retrieval can use neighboring functions.
     by_addr = {int(f["addr"], 16): f for f in funcs}

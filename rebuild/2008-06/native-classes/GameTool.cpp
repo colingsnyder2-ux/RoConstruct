@@ -41,3 +41,11 @@ MouseCommand* GameTool::onMouseDown(const UIEvent& event)
     return NULL;
 }
 }
+
+namespace RBX {
+bool GameTool::canDrag(PartInstance* part, const G3D::Vector3& hitPoint)
+{
+    return !part->getPartLocked() && !part->lockedInPlace() && characterCanReach(hitPoint);
+}
+}
+

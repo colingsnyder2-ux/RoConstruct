@@ -6,6 +6,8 @@
 #include <BitStream.h>
 #include "Streaming.h"
 #include "Network/Players.h"
+#include "Network/IdSerializer.h"
+#include "RakNetTypes.h"
 #include "v8world/Assembly.h"
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"
@@ -97,6 +99,9 @@ namespace RBX
 			public:
 				static void writeItemType(RakNet::BitStream& stream, ItemType value);
 				static void readItemType(RakNet::BitStream& stream, ItemType& value);
+			public:
+				float sub_005ca3e0() const;   // INFERRED: 005ca3e0, placeholder name (identity tier), body byte-proved (Inferred_005ca3e0.cpp)
+				float sub_005ca400() const;   // INFERRED: 005ca400, placeholder name (identity tier), body byte-proved (Inferred_005ca400.cpp)
 			};
 
 			class ItemSender : private boost::noncopyable
@@ -343,4 +348,6 @@ public:
 	virtual ~FilePacketLogger();
 	virtual void OnAttach(RakPeerInterface* peer);
 	virtual void WriteLog(const char*);
+	// INFERRED: 004aae00 is the UserIDTOString vftable override identified by class RTTI and link order.
+	virtual char* UserIDTOString(unsigned char id);
 };

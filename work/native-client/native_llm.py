@@ -29,6 +29,43 @@ from pathlib import Path
 _PRINT_LOCK = threading.Lock()
 
 
+class atomic_append:
+    """Append text to a shared log as one locked write: several processes and threads append attempts.jsonl at once
+    and buffered appends split long rows (a corrupt line crashed every reader, twice on 2026-11-15)."""
+    def __init__(self, path):
+        self.path, self.parts = Path(path), []
+
+    def __enter__(self):
+        return self
+
+    def write(self, text):
+        self.parts.append(text)
+
+    def __exit__(self, *exc):
+        data = ''.join(self.parts).encode('utf-8')
+        if not data:
+            return
+        fd = os.open(str(self.path), os.O_RDWR | os.O_CREAT | getattr(os, 'O_BINARY', 0))
+        try:
+            if os.name == 'nt':
+                import msvcrt
+                os.lseek(fd, 0, 0)
+                msvcrt.locking(fd, msvcrt.LK_LOCK, 1)        # byte 0 as the cross-process append lock (retries ~10 s)
+                try:
+                    os.lseek(fd, 0, 2)
+                    os.write(fd, data)
+                finally:
+                    os.lseek(fd, 0, 0)
+                    msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(fd, fcntl.LOCK_EX)
+                os.lseek(fd, 0, 2)
+                os.write(fd, data)
+        finally:
+            os.close(fd)
+
+
 def print(*args, sep=' ', end='\n', file=None, flush=False):
     """Atomic line print: builtin print writes text and newline separately, so 8 worker threads interleaved
     and split ROC_EVENT lines (the dashboard then showed raw JSON as a log line)."""
@@ -69,6 +106,8 @@ CLAUDE_MODELS = ['claude:sonnet', 'claude:opus', 'claude:haiku', 'claude:fable']
 DEFAULT_LADDER = ['claude:opus', 'claude:sonnet', 'claude:opus', 'claude:sonnet', 'claude:sonnet']
 # Haiku-first went 0/21 in run 15: plain rotation again (Haiku ~1 in 5 tries, low effort).  --first-model to force one.
 FIRST_MODEL = ''
+RETRACTED = set()                # addresses whose latest verdict is a retraction (filled at run start)
+RETRY_MODEL = 'claude:opus'      # every attempt after the first (feedback with the compile/diff result)
 LOW_EFFORT = {'claude:haiku'}    # most Haiku output was hidden thinking (4.4k tokens/try)
 # nvidia deepseek-v4.1-flash and glm-5.3-flash dropped 2026-11-14: native_llm_probe.py ping timed out (120 s).
 BEST_NIM = ['nvidia:mistralai/mistral-large-4-1t-a52b', 'nvidia:nvidia/nemotron-3-ultra-550b-a55b',
@@ -267,7 +306,11 @@ def unmapped_externs(packet, header, destination):
     return sorted(set(missing))
 
 
-REGISTRY_EXTRA = [ROOT / 'work/native-client/unnamed-identities.json', ROOT / 'work/native-client/vtable-names.json']
+# Inferred tier last (owner decision 2026-11-15: the rest use inferred names): only rows with a real decorated
+# candidate (sole-authentic / one-of-N body twins); 'sub_<addr>' placeholders have no symbol to gate yet.
+INFERRED_NAMES = ROOT / 'work/native-client/unnamed-identities-inferred.json'
+REGISTRY_EXTRA = [ROOT / 'work/native-client/unnamed-identities.json', ROOT / 'work/native-client/vtable-names.json',
+                  INFERRED_NAMES]
 
 
 def load_registry():
@@ -282,6 +325,11 @@ def load_registry():
                 continue
             for addr, row in extra.items():
                 old = registry.get(addr) or {}
+                if path == INFERRED_NAMES:
+                    if 'sub_' in (row.get('name') or '') or not str(row.get('name', '')).startswith('?'):
+                        continue
+                    qual = (row.get('signature') or '').split('(')[0].split()[-1] if row.get('signature') else ''
+                    row = dict(row, owner_class=row.get('owner_class') or (qual.rsplit('::', 1)[0] if '::' in qual else ''))
                 if not old.get('name') or old.get('placeholder') or old['name'].startswith('func_'):
                     registry[addr] = dict(row, kind=row.get('kind', 'code'), placeholder=False)
     return registry
@@ -380,6 +428,11 @@ def registry_classes(queue_classes):
     for addr, row in registry.items():
         owner = row.get('owner_class') or ''
         name = row.get('name') or ''
+        # owner_class is the leaf for nested/namespaced classes (Binder for CLuaHtmlView::Binder, Reflection for
+        # RBX::Reflection::Metadata::Reflection: 103 targets failed the qual check): take it from the signature.
+        qual = (row.get('signature') or '').split('(')[0].split()[-1] if row.get('signature') else ''
+        if '::' in qual and qual.rsplit('::', 1)[0].endswith(owner or '\0'):
+            owner = qual.rsplit('::', 1)[0]
         if (addr in listed or row.get('kind') != 'code' or row.get('placeholder') or not owner or '<' in owner
                 or name.startswith('??$') or names[name] > 1 or not row.get('signature')
                 or owner.startswith(('G3D::', 'std::', 'boost::', 'ATL::', 'Ogre::', 'XTPPaintThemes', 'Wml::'))):
@@ -455,7 +508,9 @@ def targets(prefixes, max_size, tried, allow_new_source=False):
                         or (m['state'] == 'native-exact' and m['addr'] in remaining_set()))
             if (m['addr'].lower() in native_exact or not state_ok or len(method_headers) != 1 or '$' in m['symbol'] or m['addr'] in tried
                     or shared[m['addr']] > 1 or not identity or identity['placeholder']
-                    or identity['name'] != m['symbol'] or identity.get('owner_class') != cl['owner']):
+                    or identity['name'] != m['symbol']
+                    # owner_class is the leaf for nested classes (Binder for CLuaHtmlView::Binder): suffix match
+                    or not ('::' + cl['owner']).endswith('::' + (identity.get('owner_class') or '?'))):
                 continue
             analog = ROOT / 'src/2008-06' / (m['addr'] + '.cpp')
             packet = analog.read_text(errors='replace') if analog.is_file() else ''
@@ -506,7 +561,7 @@ def ask(model, prompt, name):
     else:
         from roc import providers
         try:
-            options = {'allow_cloud': True, 'timeout': 120, 'max_tokens': 4096}
+            options = {'allow_cloud': True, 'timeout': int(os.environ.get('ROC_LLM_TIMEOUT') or 120), 'max_tokens': int(os.environ.get('ROC_LLM_MAX_TOKENS') or 4096)}
             if model in LOW_EFFORT:
                 options['reasoning_effort'] = 'low'
             gen = providers.generate(model, prompt, options)
@@ -535,10 +590,14 @@ def ask_opencode(model, prompt):
     with tempfile.TemporaryDirectory(prefix='roc-native-llm-') as folder:
         task = Path(folder) / 'task.txt'
         task.write_text(prompt, encoding='utf-8')
-        run = subprocess.run([str(OPENCODE), 'run', '-m', model, '--format', 'json', '--file', str(task),
-                              'Follow the attached task exactly. Return only the requested code. Do not use tools.'],
-                             cwd=folder, capture_output=True, text=True, encoding='utf-8', errors='replace',
-                             timeout=120)
+        try:
+            run = subprocess.run([str(OPENCODE), 'run', '-m', model, '--format', 'json', '--file', str(task),
+                                  'Follow the attached task exactly. Return only the requested code. Do not use tools.'],
+                                 cwd=folder, capture_output=True, text=True, encoding='utf-8', errors='replace',
+                                 timeout=int(os.environ.get('ROC_LLM_TIMEOUT') or 120))
+        except subprocess.TimeoutExpired:                           # slow free model: no reply, never a lane crash
+            print('opencode timeout', model, flush=True)
+            return ''
     events = [e for e in map(_json, run.stdout.splitlines()) if isinstance(e, dict)]
     if any(e.get('type') == 'error' and re.search(r'provider\.\w+-limit', json.dumps(e.get('error')))
            for e in events):                                        # free-limit / go-limit: quota spent
@@ -593,6 +652,95 @@ def declarations_for(error, limit=6):
             'or the header member at the same offset) ---\n' + '\n\n'.join(out)[:4000])
 
 
+HEADER_TEXT = None
+REGISTRY_NAMES = None
+
+
+REGISTRY_LEAVES = None
+# Field access by cast + numeric offset is analog style, not recovered source (2026-11-15: 12 such 'exacts' retracted).
+OFFSET_HACK = re.compile(r'\(\s*(?:const\s+)?(?:unsigned\s+)?char\s*\*\s*\)\s*\(?\s*this'
+                         r'|reinterpret_cast<\s*(?:const\s+)?(?:unsigned\s+)?char\s*\*\s*>\s*\(\s*this'
+                         r'|\(\s*(?:const\s+)?(?:unsigned\s+)?char\s*\*\s*\)\s*\w+\s*\)?\s*\+\s*0x[0-9a-fA-F]+'
+                         # `char* base = static_cast<char*>(self); ... base + 0x248` (2026-11-16 placeholder audit)
+                         r'|(?:static|reinterpret)_cast<\s*(?:const\s+)?(?:unsigned\s+)?(?:char|BYTE)\s*\*\s*>'
+                         r'|\b(?:base|p|ptr|raw|bytes|self)\s*\+\s*0x[0-9a-fA-F]+')
+
+
+def invented_externs(code):
+    """`extern` variables/functions an answer declares whose name neither the registry (any decorated leaf) nor a
+    native/vendor header knows.  The gate does not check data-reference identities, so `extern int gCreatorTag;`
+    written to the right address would otherwise pass as exact (2026-11-15: 9 such 'exacts')."""
+    global REGISTRY_LEAVES
+    names = re.findall(r'\bextern\s+(?:"C"\s+)?[^;(]*?\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*(?:\([^;]*\))?\s*;', code)
+    # Defined file-scope scalars too (2026-11-16: 26 initializer 'exacts' defined `int g_creatorTag = 0;` and wrote
+    # the real global's address through it).  File scope = at most one tab / four spaces of indentation.
+    # File scope = outside every brace block except `namespace X {` (locals of a global function sit at one tab too).
+    scope, kinds = [], []
+    for line in code.splitlines():
+        if all(k == 'ns' for k in kinds):
+            hit = re.match(r'\s*(?:static\s+)?(?:volatile\s+)?(?:unsigned\s+)?(?:int|long|char|bool|short|DWORD|BOOL|void\s*\*)'
+                           r'\s+([A-Za-z_]\w*)\s*(?:=[^;{]*)?;', line)
+            if hit:
+                scope.append(hit.group(1))
+        for ch in line:
+            if ch == '{':
+                kinds.append('ns' if re.match(r'\s*namespace\b', line) else 'block')
+            elif ch == '}' and kinds:
+                kinds.pop()
+    names += scope
+    if not names:
+        return []
+    plausible_binding('?x@', '0')               # loads HEADER_TEXT / REGISTRY_NAMES
+    if REGISTRY_LEAVES is None:
+        REGISTRY_LEAVES = {n[1:].split('@', 1)[0] for n in REGISTRY_NAMES if n and n.startswith('?') and not n.startswith('??')}
+        REGISTRY_LEAVES |= {n.lstrip('_') for n in REGISTRY_NAMES if n and not n.startswith('?')}
+        closure = json.loads(CLOSURE.read_text()) if CLOSURE.is_file() else {'bindings': []}
+        REGISTRY_LEAVES |= {b['symbol'][1:].split('@', 1)[0] for b in closure['bindings']
+                            if b['symbol'].startswith('?') and not b['symbol'].startswith('??')}     # e.g. luaL_unref
+    # Compiler intrinsics (_InterlockedIncrement, __readfsdword, _BitScanForward, ...) are declared by hand in real
+    # 2008 source (`extern "C" long _InterlockedIncrement(...); #pragma intrinsic(...)`): not invented data.
+    intrinsic = re.compile(r'^(?:_Interlocked\w+|__\w+|_BitScan\w+|_rotl|_rotr|_byteswap_\w+|_ReturnAddress|_AddressOfReturnAddress|_ReadWriteBarrier|_ReadBarrier|_WriteBarrier)$')
+    bad = [n for n in names if n not in HEADER_TEXT and n not in REGISTRY_LEAVES and not intrinsic.match(n)]
+    # `extern T name;` data (no parameter list): a member or local of that name somewhere does not make it a global
+    # (2026-11-16: `extern std::string version;` passed because CRobloxApp has a member `version`).  It must be a
+    # namespace-scope data symbol of the binary (?name@...@@3...) or an `extern` a native/vendor header declares.
+    global DATA_LEAVES
+    if DATA_LEAVES is None:
+        leaves = {n[1:].split('@', 1)[0] for n in REGISTRY_NAMES if n and re.match(r'\?\w+@(?:\w+@)*@3', n)}
+        leaves |= {n.lstrip('_') for n in REGISTRY_NAMES if n and not n.startswith('?')}
+        declaring_header('')                                   # loads DECL_FILES (native + vendor header texts)
+        for _, text in DECL_FILES:
+            leaves |= set(re.findall(r'\bextern\s+(?:"C"\s+)?[^;(]*?\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*;', text))
+        DATA_LEAVES = leaves
+    for n in re.findall(r'\bextern\s+(?!"C"\s*\{)[^;(]*?\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*;', code):
+        if n not in bad and n not in DATA_LEAVES and not intrinsic.match(n):
+            bad.append(n)
+    return bad
+
+
+DATA_LEAVES = None
+
+
+def plausible_binding(symbol, addr):
+    """A learned reference identity is rejected only when it is a plain C++ name (`?leaf@...`) that no native/vendor
+    header declares and the registry never saw: the model's own invention (2026-11-15: an answer declared
+    `extern int g_factoryCreatorTag;` and learning bound it to whatever address the store hit).  Header-class
+    ctors/dtors/operators/templates (`??...`), C/import names and ICF-folded twins stay allowed."""
+    global HEADER_TEXT, REGISTRY_NAMES
+    if not symbol.startswith('?') or symbol.startswith('??'):
+        return True
+    if REGISTRY_NAMES is None:
+        REGISTRY_NAMES = {row.get('name') for row in load_registry().values()}
+    if symbol in REGISTRY_NAMES:
+        return True
+    if HEADER_TEXT is None:
+        declaring_header('')                                   # loads DECL_FILES
+        # identifiers declared anywhere in native/vendor headers (one set: O(1) per check)
+        vendor = '\n'.join(p.read_text(errors='replace') for root in VENDOR_ROOTS if root.is_dir() for p in root.glob('*.h'))
+        HEADER_TEXT = set(re.findall(r'[A-Za-z_]\w*', '\n'.join(text for _, text in DECL_FILES) + vendor))
+    return symbol[1:].split('@', 1)[0] in HEADER_TEXT
+
+
 def learn_identities(t, res):
     """If the target's only rejections are unproven callee identities, bind them from the exact candidate's relocations
     (native_reference_alias_bind.py) into CLOSURE. -> True when new bindings were added."""
@@ -627,7 +775,7 @@ def learn_identities(t, res):
         have = {(b['symbol'], b.get('addr')) for b in closure['bindings']}
         new = [dict(symbol=b['symbol'], addr=b['address'], address=b['address'], evidence=b.get('identity_evidence', 'llm-exact-reference'),
                     votes=b.get('votes', 1), body_exact=False, function_start=False)
-               for b in found if (b['symbol'], b['address']) not in have]
+               for b in found if (b['symbol'], b['address']) not in have and plausible_binding(b['symbol'], b['address'])]
         if not new:
             return False
         closure['bindings'] += new
@@ -894,9 +1042,11 @@ ANNOTATE = {}            # lazily loaded: registry names + exe image
 def annotate_asm(asm):
     """Names for the raw addresses in the target assembly, so models stop guessing callees, RTTI casts and globals:
     identity-registry symbols (demangled with VC9 undname), RTTI TypeDescriptor names and string literals."""
-    if not ANNOTATE:
-        ANNOTATE['reg'] = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
-        ANNOTATE['base'], ANNOTATE['image'] = match._image('2008-06')
+    if 'image' not in ANNOTATE:
+        # Filled aside, published in one update: threads saw 'reg' present but 'base' missing (KeyError).
+        reg = load_registry()
+        base, image = match._image('2008-06')
+        ANNOTATE.update(reg=reg, base=base, image=image)
     reg, base, image = ANNOTATE['reg'], ANNOTATE['base'], ANNOTATE['image']
     notes, decorated = {}, {}
     for hexaddr in dict.fromkeys(re.findall(r'\b0x([0-9a-f]{6,8})\b', asm)):
@@ -1143,7 +1293,11 @@ def _prove(t, body, out, depth=0):
                 if retried[0] == 'compile_failed' and 'C2011' in retried[1]:
                     # Drop only the added header(s) that redefine a class; keep the ones that were needed.
                     clash = {Path(m).name.lower() for m in re.findall(r'([^\s(]+\.h)\(\d+\) : error C2011', retried[1])}
-                    keep = [h for h in found if Path(h).name.lower() not in clash]
+                    # A donor header (SimBody.h) drags in donor Body.h/IPipelined.h, so the C2011 points at the native
+                    # Body2008.h / IPipelined2008.h instead: drop every added header that is not a native-headers file.
+                    native_root = ROOT / 'rebuild/2008-06/native-headers'
+                    keep = [h for h in found if Path(h).name.lower() not in clash
+                            and ((native_root / h).is_file() or str(Path(h)).startswith(str(native_root)))]
                     EXTRA_INCLUDES[t['addr']] = before + keep
                     return prove(t, body, out, depth + 1 if keep and depth < 1 else 2)
                 return retried
@@ -1201,9 +1355,17 @@ def pick_mode(mode):
 QUOTA = HERE / 'quota-spent.json'      # model -> time its free/plan quota ran out (skipped for 12 h)
 
 
+def quota_read():
+    """Lanes run in parallel and may tear this small file: a broken file counts as empty, never a crash."""
+    try:
+        return json.loads(QUOTA.read_text()) if QUOTA.is_file() else {}
+    except (OSError, ValueError):
+        return {}
+
+
 def spent_quota(model, seconds=12 * 3600):
     """Record when MODEL's quota comes back (provider retry time when given)."""
-    spent = json.loads(QUOTA.read_text()) if QUOTA.is_file() else {}
+    spent = quota_read()
     spent[model] = time.time() + seconds
     QUOTA.write_text(json.dumps(spent, indent=1))
 
@@ -1212,7 +1374,7 @@ def fast_ladder():
     """Fast (exploit) runs: Sonnet x3 + Opus + the best free (OpenCode or NVIDIA NIM) model by bytes/hour that answers a ping now."""
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import native_llm_models
-    spent = json.loads(QUOTA.read_text()) if QUOTA.is_file() else {}
+    spent = quota_read()
     dead = dead_models()
     ranked = [r['model'] for r in native_llm_models.report()
               if r['model'].startswith(('opencode', 'nvidia:')) and r['model'] not in dead and time.time() > spent.get(r['model'], 0)]
@@ -1300,7 +1462,7 @@ def work(t, ladder, tries, start=0):
             print('%s %-34s %4dB header-blocked: %s' % (t['addr'], t['qual'][-34:], t['size'], broken[-160:]), flush=True)
             gui('native_result', file=t['qual'], addr=t['addr'], local_exact=0, seconds=0, error=broken,
                 error_summary='header-blocked (no model call): ' + broken[-120:])
-            with LOG.open('a') as log:
+            with atomic_append(LOG) as log:
                 log.write(json.dumps(dict(slim(t), model='preflight', attempt=-2, status='header-blocked', time=round(time.time(), 1),
                                           run=RUN_ID, error=broken[-400:])) + '\n')
             return t, None
@@ -1311,6 +1473,10 @@ def work(t, ladder, tries, start=0):
     if cached and not re.search(leaf + r'\s*\([^;{}]*\)\s*(?:const\s*)?(?:throw\s*\([^)]*\)\s*)?(?::[^;{]*)?\{',
                                 cached[-1].read_text(errors='replace')):
         cached = []         # an old reply with prose and no definition: regating it is a tool-error, not evidence
+    if cached and (t['addr'] in RETRACTED or invented_externs(cached[-1].read_text(errors='replace'))):
+        # A retracted exact's cached answer is the invented one: re-gating it re-'proved' it every run (00563a20: 89
+        # cache exacts in 6 h).  It needs a fresh model answer under the current guards.
+        cached = []
     if not cached and ladder:
         native = dest_body(t)
         if native:
@@ -1318,7 +1484,7 @@ def work(t, ladder, tries, start=0):
             started = time.time()
             TOOL.times = {}
             status, feedback = prove(t, native, folder(t) / 'dest')
-            with LOG.open('a') as log:
+            with atomic_append(LOG) as log:
                 log.write(json.dumps(dict(slim(t), model='dest', attempt=-1, status=status, time=round(time.time(), 1), run=RUN_ID,
                                           tool=TOOL.times, llm_seconds=0.0, gate_seconds=round(time.time() - started, 1))) + '\n')
             print('%s %-34s %4dB dest  %-16s' % (t['addr'], t['qual'][-34:], t['size'], status), flush=True)
@@ -1337,20 +1503,25 @@ def work(t, ladder, tries, start=0):
         status, feedback = prove(t, body, folder(t) / 'recheck')
         row = dict(slim(t), model='cache', attempt=-1, status=status, time=round(time.time(), 1), run=RUN_ID, tool=TOOL.times, llm_seconds=0.0,
                    gate_seconds=round(time.time() - started, 1))
-        with LOG.open('a') as log:
+        with atomic_append(LOG) as log:
             log.write(json.dumps(row) + '\n')
         print('%s %-34s %4dB cache %-16s' % (t['addr'], t['qual'][-34:], t['size'], status), flush=True)
         if status == 'inactive_exact':
             return t, folder(t) / 'recheck'
         history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                    % (body, feedback)]
-    for n in range(tries):
+    n, bonus = -1, True
+    while n + 1 < tries:
+        n += 1
         live = [m for m in ladder if m not in EXHAUSTED]
         if not live:
             break                                       # every quota spent: stop instead of burning attempts
         rest = [m for m in live if m != FIRST_MODEL] or live
         if n == 0 and FIRST_MODEL in live:
             model = FIRST_MODEL                         # cheap first shot on every target (Haiku ~8x cheaper per exact)
+        elif n >= 1 and RETRY_MODEL in live:
+            # 48 h of attempts (2026-11-16): retry exact rate Opus 8.3% vs Sonnet 4.7%; first try 16% vs 14%.
+            model = RETRY_MODEL
         else:
             model = rest[(start + n) % len(rest)]       # retries rotate the stronger models
         TOOL.times = {}
@@ -1378,12 +1549,24 @@ def work(t, ladder, tries, start=0):
         else:
             FAILS[model] = 0
             TOOL.times = {}
-            status, feedback = prove(t, body, folder(t) / ('try%d' % n))
+            invented = invented_externs(body)
+            if OFFSET_HACK.search(body):
+                status, feedback = 'compile_failed', ('Rejected: raw pointer arithmetic with numeric offsets (`*(T*)((char*)this '
+                                                      '+ 0x94)`). Access fields by the real member names the headers declare.')
+            elif re.search(r'\b(?:char|BYTE|int)\s+\w*pad\w*\s*\[', body):
+                status, feedback = 'compile_failed', ('Rejected: padding arrays (`char pad[0x1b8]`) fake a class layout. Use the '
+                                                      'real classes the native headers declare.')
+            elif invented:
+                # The gate cannot see invented data globals: refuse before gating (no exact may rest on them).
+                status, feedback = 'compile_failed', ('Rejected: `extern` names no header or binary symbol knows: %s. Use the '
+                                                      'real global the headers/KNOWN FILE GLOBALS name, or none.' % ', '.join(invented))
+            else:
+                status, feedback = prove(t, body, folder(t) / ('try%d' % n))
         row = dict(slim(t), model=model, attempt=n, status=status, time=round(time.time(), 1), run=RUN_ID,
                    tool=dict(getattr(TOOL, 'times', None) or {}), tokens=dict(getattr(TOOL, 'tokens', None) or {}),
                    llm_seconds=round(llm, 1),
                    gate_seconds=round(time.time() - started - llm, 1))
-        with LOG.open('a') as log:
+        with atomic_append(LOG) as log:
             log.write(json.dumps(row) + '\n')
         # Full conversation for the dashboard's Native LLM page.  ponytail: never pruned; add a keep-last-N if disk matters.
         (HERE / 'chats').mkdir(exist_ok=True)
@@ -1412,6 +1595,10 @@ def work(t, ladder, tries, start=0):
         if body:
             history = ['\n--- YOUR PREVIOUS ANSWER ---\n```cpp\n%s\n```\n--- RESULT ---\n%s\nFix it. Same output rules.\n'
                        % (body, feedback)]
+        # Near-miss bonus: a last-try draft within 4 diff lines gets one extra try (a blanket 3rd try yielded ~1%).
+        diff_lines = sum(1 for line in (feedback or '').splitlines() if line[:1] in '+-' and line[:3] not in ('+++', '---'))
+        if n == tries - 1 and bonus and status == 'draft' and 0 < diff_lines <= 4 and body:
+            tries, bonus = tries + 1, False
     return t, None
 
 
@@ -1452,6 +1639,20 @@ def main():
     ap.add_argument('--no-regate', dest='regate', action='store_false',
                     help='skip the no-LLM regate of earlier drafts after the batch')
     args = ap.parse_args()
+    # One run at a time: two runs picked the same targets (55 of 58 'exacts' re-proved already-exact functions) and
+    # raced on the shared closure.  A dead PID's lock is taken over.
+    lock = HERE / 'run.lock'
+    try:
+        other = int(lock.read_text().split()[0])
+        alive = subprocess.run(['tasklist', '/FI', 'PID eq %d' % other, '/NH'], capture_output=True, text=True).stdout
+        if str(other) in alive and 'python' in alive.lower() and other != os.getpid():
+            print('another native_llm run is active (pid %d, %s): exiting' % (other, lock), flush=True)
+            return
+    except (OSError, ValueError, IndexError):
+        pass
+    lock.write_text('%d %d\n' % (os.getpid(), time.time()))
+    import atexit
+    atexit.register(lambda: lock.unlink(missing_ok=True) if lock.is_file() and lock.read_text().split()[0] == str(os.getpid()) else None)
     QUEUE, CLOSURE = args.queue.resolve(), args.closure.resolve()
     globals()['FIRST_MODEL'] = args.first_model
     picked = 'given' if args.models else 'claude' if args.pick == 'claude' else pick_mode(args.pick)
@@ -1478,6 +1679,36 @@ def main():
     model_tries = collections.Counter(json.loads(l)['addr'] for l in LOG.open()
                                       if json.loads(l)['model'] not in ('cache', 'preflight')) if LOG.is_file() else {}
     tried = {a for a, n in model_tries.items() if n >= args.tries}
+    # The identity session prunes wrong names from unnamed-identities.json: an exact built on a name that is gone or
+    # changed is retracted here at every run start (then retried under the current name, if any).
+    side = ROOT / 'work/native-client/unnamed-identities.json'
+    if side.is_file() and LOG.is_file():
+        names = {a: r.get('name') for a, r in json.loads(side.read_text()).items()}
+        if INFERRED_NAMES.is_file():       # inferred-tier names are valid too (they may be upgraded or re-ranked)
+            for a, r in json.loads(INFERRED_NAMES.read_text()).items():
+                names.setdefault(a, r.get('name'))
+        rows = [json.loads(l) for l in LOG.open()]
+        gone = {r['addr'] for r in rows if r['status'] == 'inactive_exact'
+                and str(r.get('name_source', '')).startswith('identity-unlock') and names.get(r['addr']) != r.get('symbol')}
+        gone -= {r['addr'] for r in rows if r['status'] == 'retracted'}
+        if gone:
+            with atomic_append(LOG) as log:
+                for a in sorted(gone):
+                    log.write(json.dumps(dict(addr=a, model='audit', attempt=-3, status='retracted', time=round(time.time(), 1),
+                                              error='identity name removed/changed in unnamed-identities.json')) + '\n')
+            print('retracted %d exacts whose identity name was removed' % len(gone), flush=True)
+    # Exact functions are done whatever their try count: an exact on try 1 / cache / dest had < 2 model tries and was
+    # re-picked every run (352 cache re-proofs of already-exact functions in one hour).  Retracted ones are not done.
+    if LOG.is_file():
+        _rows = [json.loads(l) for l in LOG.open()]
+        # Still retracted = the last retraction is not followed by a fresh model/dest exact (cache re-gates of the
+        # retracted answer do not count).
+        verdict = {}
+        for r in _rows:
+            if r['status'] == 'retracted' or (r['status'] == 'inactive_exact' and r.get('model') != 'cache'):
+                verdict[r['addr']] = r['status']
+        RETRACTED.update(a for a, s in verdict.items() if s == 'retracted')
+        tried |= {r['addr'] for r in _rows if r['status'] == 'inactive_exact'} - RETRACTED
     if args.retry_older_than:
         # Targets whose last model try predates harness fixes get a fresh chance (they failed under an older harness).
         cutoff = time.time() - args.retry_older_than * 3600
@@ -1486,7 +1717,10 @@ def main():
             row = json.loads(line)
             if row['model'] not in ('cache', 'preflight'):
                 last[row['addr']] = max(last.get(row['addr'], 0), row.get('time', 0))
-        exact = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'}
+        rows = [json.loads(l) for l in LOG.open()]
+        # Retracted exacts (relied on invented names) must be re-proved honestly: not 'exact' here.
+        exact = ({r['addr'] for r in rows if r['status'] == 'inactive_exact'}
+                 - {r['addr'] for r in rows if r['status'] == 'retracted'})
         tried = {a for a in tried if a in exact or last.get(a, 0) >= cutoff}
     if args.retry_failed:   # harness fixes since the last try (flags, includes, identities) help old misses too
         tried = {json.loads(l)['addr'] for l in LOG.open() if json.loads(l)['status'] == 'inactive_exact'} if LOG.is_file() else set()
@@ -1502,7 +1736,9 @@ def main():
     drafted = {r['addr'] for r in history if r['status'] in ('draft', 'inactive_exact')}
     last_try = {r['addr']: r.get('time', 0) for r in history}
     def parked(t):
-        if tries_of[t['addr']] < 6 or t['addr'] in drafted:
+        # 2026-11-16: exact rate per try is 30% fresh, 15% / 8% / 7% on tries 2-4, ~4% after: cap at 4 model tries
+        # (drafts too) until the header or destination changes; never-drafted targets park as before.
+        if tries_of[t['addr']] < 4:
             return False
         changed = max((ROOT / p).stat().st_mtime for p in (t['header'], t['dest']) if p and (ROOT / p).is_file())
         return changed < last_try.get(t['addr'], 0)
@@ -1585,7 +1821,9 @@ def main():
         # Land new remaining-set exacts in native-classes (lease, draft, whole-TU proof) without blocking the next run.
         subprocess.Popen([sys.executable, str(ROOT / 'work/native-client/native_llm_promote.py'), '--only-remaining'],
                          cwd=ROOT / 'work/native-client', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                         creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0))
+                         # below-normal: promotion re-proofs must not steal CPU from the next run's gates (bytes/hour)
+                         creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0) | getattr(subprocess, 'DETACHED_PROCESS', 0)
+                         | getattr(subprocess, 'BELOW_NORMAL_PRIORITY_CLASS', 0))
         print('promotion started in background (native-llm/promoted.json)', flush=True)
     for t, d in exact if args.apply else []:
         # Serial: one destination edit at a time; the runner leases, drafts, re-proves the whole TU.

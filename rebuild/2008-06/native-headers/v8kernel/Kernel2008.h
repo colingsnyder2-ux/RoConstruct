@@ -65,6 +65,7 @@ namespace RBX
 		virtual ~Kernel();                                            // 005faca0 (slot 0 ??_G 005fb0c0)
 		virtual StageType getStageType();                             // slot 1 (0077d800; opt-in kernel-stages IStage)
 		// 005fb3f0 is `ret 0x10` and tests a fourth bool argument first (true: 005fae00 with worldStepId, then return),
+		// INFERRED: the fourth bool argument controls whether moveBodiesTest is called; the donor uses a separate 3-argument decoration ?stepWorld@Kernel@RBX@@UAEXHH_N@Z while the 2008 binary has the 4-argument variant ?stepWorld@Kernel@RBX@@UAEXHH_N0@Z, proven by vftable slot 2 matching.
 		// so the 2008 IStage slot 2 takes four arguments. Units that opt in to native-headers/kernel-stages (its
 		// v8kernel/IStage.h defines NATIVE_KERNEL_STAGE_NUMBERING and declares that 4-argument slot 2) get the 2008
 		// override; other units keep the 3-argument override of the donor IStage.h slot 2.
@@ -81,6 +82,15 @@ namespace RBX
 		int numBodies() const;                                        // 005faa20
 		int numPoints() const;                                        // 005faa30
 		int numConnectors() const;                                    // 005faa40
+		// INFERRED: 005fa620 is the fourth 7-byte leaf getter, `mov eax,[ecx+0x10]; mov eax,[eax+0x28]; ret`.
+		// kernelData is +0x10; KernelData2008.h places the connectors IndexArray at +0x24, so +0x28 is its
+		// count (array data +0x24 / num +0x28 / numAllocated +0x2c). Placeholder name (identity tier); body byte-proved.
+		int getUnknownKernelData0x28() const;                         // 005fa620
+		// INFERRED: name from the 'matrixSize' stat key this feeds: RBX::DataModel 00575d90 calls World::getKernel
+		// (005e9150) and streams the result for the 'matrixSize' EquationDisplay (GuiBuilder::buildStatsHud2;
+		// GuiHudBuilder2008.cpp:261). Body byte-proved: connectors.num + 6 * bodies.num (2008 layout: bodies
+		// num +0x4, connectors IndexArray at +0x24 -> num +0x28). 6 * 6-DOF bodies plus one row per constraint.
+		int matrixSize() const;                                      // 005faa90
 		float bodyKineticEnergy() const;                              // 005faa50 (`?bodyKineticEnergy@Kernel@RBX@@QBEMXZ`)
 		void insertConnector(Connector* connector);                    // 005fb160
 		// Callers: Contact::deleteConnector 00606d10, BlockBlockContact::deleteAllConnectors 00607c60 /

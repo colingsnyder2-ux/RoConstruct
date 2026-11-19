@@ -1,0 +1,164 @@
+{
+ "0048b910": {
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "SetUnder13"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f0fa0",
+    "kind": "reflection-descriptor"
+   },
+   {
+    "api_name": "SetUnder13",
+    "convention": "lowerCamel",
+    "kind": "exact-masked-body-twin-matches-api-name",
+    "other_candidates": [
+     "?setSuperSafeChat@Player@Network@RBX@@QAEX_N@Z"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?setUnder13@Player@Network@RBX@@QAEX_N@Z",
+  "name_source": "identity-unlock-reflect",
+  "owner_class": null,
+  "signature": null
+ },
+ "0048b940": {
+  "evidence": [
+   {
+    "api_strings": [
+     "value",
+     "SetSuperSafeChat"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "Lighting",
+    "initializer": "007f0fd0",
+    "kind": "reflection-descriptor"
+   },
+   {
+    "api_name": "SetSuperSafeChat",
+    "convention": "lowerCamel",
+    "kind": "exact-masked-body-twin-matches-api-name",
+    "other_candidates": [
+     "?setUnder13@Player@Network@RBX@@QAEX_N@Z"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?setSuperSafeChat@Player@Network@RBX@@QAEX_N@Z",
+  "name_source": "identity-unlock-reflect",
+  "owner_class": null,
+  "signature": null
+ },
+ "004d6ff0": {
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Ambient"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6c40",
+    "kind": "reflection-descriptor"
+   },
+   {
+    "api_name": "Ambient",
+    "convention": "getter",
+    "kind": "exact-masked-body-twin-matches-api-name",
+    "other_candidates": [
+     "?getVector@CSHA1@@QBE?AUVector3@@XZ"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?getAmbient@Lighting@RBX@@QBE?AVColor3@G3D@@XZ",
+  "name_source": "identity-unlock-reflect",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a2420": {
+  "evidence": [
+   {
+    "api_strings": [
+     "objects",
+     "MakeJoints"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "ModelInstance",
+    "initializer": "007f4da0",
+    "kind": "reflection-descriptor"
+   },
+   {
+    "api_name": "MakeJoints",
+    "convention": "lowerCamel",
+    "kind": "exact-masked-body-twin-matches-api-name",
+    "other_candidates": [
+     "?breakJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?makeJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z",
+  "name_source": "identity-unlock-reflect",
+  "owner_class": null,
+  "signature": null
+ },
+ "005a24d0": {
+  "evidence": [
+   {
+    "api_strings": [
+     "objects",
+     "BreakJoints"
+    ],
+    "descriptor": "BoundFuncDesc",
+    "descriptor_class": "ModelInstance",
+    "initializer": "007f4de0",
+    "kind": "reflection-descriptor"
+   },
+   {
+    "api_name": "BreakJoints",
+    "convention": "lowerCamel",
+    "kind": "exact-masked-body-twin-matches-api-name",
+    "other_candidates": [
+     "?makeJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?breakJoints@Workspace@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z",
+  "name_source": "identity-unlock-reflect",
+  "owner_class": null,
+  "signature": null
+ },
+ "005e2490": {
+  "evidence": [
+   {
+    "api_strings": [
+     "Appearance",
+     "Ambient"
+    ],
+    "descriptor": "PropDescriptor",
+    "descriptor_class": "Lighting",
+    "initializer": "007f6c40",
+    "kind": "reflection-descriptor"
+   },
+   {
+    "api_name": "Ambient",
+    "convention": "setter",
+    "kind": "exact-masked-body-twin-matches-api-name",
+    "other_candidates": [
+     "?setLightColor@Lighting@RBX@@QAEXVColor3@G3D@@@Z"
+    ]
+   }
+  ],
+  "kind": "code",
+  "name": "?setAmbient@Lighting@RBX@@QAEXVColor3@G3D@@@Z",
+  "name_source": "identity-unlock-reflect",
+  "owner_class": null,
+  "signature": null
+ }
+}

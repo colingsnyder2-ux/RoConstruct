@@ -237,3 +237,4 @@ template void RBX::Name::callDoDeclare<RBX::sBodyThrust>();
 template void RBX::Name::callDoDeclare<RBX::sBodyPosition>();
 template void RBX::Name::callDoDeclare<RBX::sBodyVelocity>();
 template void RBX::Name::callDoDeclare<RBX::sBodyAngularVelocity>();
+
