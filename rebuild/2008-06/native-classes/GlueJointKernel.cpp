@@ -1,5 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
-// 2008-06 RBX::GlueJoint members that read the native Primitive / Body (inactive): canBuildJoint 00646f60 and
+// 2008-06 RBX::GlueJoint members that read the native Primitive / Body (inactive): the face constructor 00646cc0, canBuildJoint 00646f60 and
 // putInKernel 00647190. The other rows of the GlueJoint unit (default constructor 00646b60, getMaxForce 00646c10,
 // ??_G 00646ca0) live in WorldJointGlue.cpp. Donor bodies: tools/rbxgs v8world/GlueJoint.cpp.
 //
@@ -18,6 +18,31 @@
 
 namespace RBX
 {
+	// 00646cc0 (`ret 0x10`): donor v8world/GlueJoint.cpp face constructor. MultiJoint(p0, p1, jc0, jc1, 4) 00646920,
+	// the two Faces zeroed (+0xc0 / +0xf0), Matrix3ToNormalId 005ec310 of jointCoord0 (+0x28) / jointCoord1 (+0x58),
+	// normalIdOpposite 005ec180, Primitive::getFaceInObject 005e76f0, Face::toObjectSpace 00649af0 /
+	// projectOverlapOnMe 00649f20 / snapToGrid 006497e0 (0.1f, 0081e704) / toWorldSpace 00649970.
+	GlueJoint::GlueJoint(Primitive* p0, Primitive* p1, const G3D::CoordinateFrame& jointCoord0, const G3D::CoordinateFrame& jointCoord1)
+		: MultiJoint(p0, p1, jointCoord0, jointCoord1, 4),
+		  overlapInP0(),
+		  overlapInP1()
+	{
+		NormalId nId0 = Matrix3ToNormalId(this->jointCoord0.rotation);
+		Face face0inP0 = p0->getFaceInObject(nId0);
+
+		NormalId nId1 = normalIdOpposite(Matrix3ToNormalId(this->jointCoord1.rotation));
+		Face face1inP1 = p1->getFaceInObject(nId1);
+
+		Face face0inJoint0 = face0inP0.toObjectSpace(jointCoord0);
+		Face face1inJoint1 = face1inP1.toObjectSpace(jointCoord1);
+
+		Face overlapInJoint0 = face0inJoint0.projectOverlapOnMe(face1inJoint1);
+		overlapInJoint0.snapToGrid(0.1f);
+
+		this->overlapInP0 = overlapInJoint0.toWorldSpace(jointCoord0);
+		this->overlapInP1 = overlapInJoint0.toWorldSpace(jointCoord1);
+	}
+
 	// No address of its own: inlined into canBuildJoint 00646f60 (00646f93..00646fb1 read surfaceType +0xb8 + 4 * nId
 	// of both primitives, `cmp eax, 1` = GLUE). Defined in this unit so that it can be inlined there, as in the donor.
 	bool GlueJoint::compatibleSurfaces(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)
@@ -31,6 +56,11 @@ namespace RBX
 	// 005e81b0, Face::projectOverlapOnMe 00649f20 / toObjectSpace 00649af0 / snapToGrid 006497e0 / toWorldSpace
 	// 00649970 / cornersAligned 006498b0, getFaceCoordInObject 005e7680, Math::snapToGrid 005deed0, new 0x120 and the
 	// face constructor 00646cc0.
+	// Not exact (batch 25): 559 B both, the only difference is the GLUE constant (00646fa4 / 00646fa9 `cmp eax, 1` /
+	// `cmp ecx, 1`; this build `cmp eax, 4`). The engine's SurfaceType is the donor order (NO_SURFACE, GLUE, WELD,
+	// STUDS, INLET, SPAWN_deprecated, ROTATE ...; RotateJoint::canBuildJoint 00645f84 tests `>= 6` = ROTATE), but the
+	// core native util/SurfaceType.h says GLUE = 4. A trial compile with the donor util/SurfaceType.h shadowing it is
+	// IDENTICAL (559 B). Blocked on the util/SurfaceType.h owner (proposal).
 	GlueJoint* GlueJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)
 	{
 		if (!compatibleSurfaces(p0, p1, nId0, nId1) || !canBuildJointLoose(p0, p1, nId0, nId1))

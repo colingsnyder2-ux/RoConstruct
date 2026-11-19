@@ -4,8 +4,8 @@
 // Verified by tests/record_native_app_unit66c.py. Built here: stepWorld 0066f570, the destructor 0066f790 and the scalar
 // deleting destructor 0066f8b0 (vtable 0084d1a4 is emitted here).
 // Built since batch 24: AssemblyStage() 0066f800 and the SleepStage(IStage*, World*) 0064b8e0 it news (0x1ec).
-// Not built: wakeAssembly 0066f510 / onAssemblyAdded 0066f530 / onAssemblyRemoving 0066f550 call SleepStage members 0064b890 /
-// 0064aff0 / 0064b0a0; onEdgeAdded 0066f5f0 / onEdgeRemoving 0066f6e0 write the 2008 Assembly +0x14 flag and call the
+// Built since batch 25: wakeAssembly 0066f510 / onAssemblyAdded 0066f530 / onAssemblyRemoving 0066f550 (SleepStage members
+// 0064b890 / 0064aff0 / 0064b0a0 declared in v8world/SleepStage2008.h). Not built: onEdgeAdded 0066f5f0 / onEdgeRemoving 0066f6e0 write the 2008 Assembly +0x14 flag and call the
 // 2008 Primitive::getContact / getJoint (005e7ce0 / 005e7d30) on the Edge primitives (see the recorder's proposals);
 // getStageType 006fa3f0 (ASSEMBLY_STAGE 4) is built through the kernel-stages opt-in (the donor IStage.h numbers it 3).
 #include "AppUnit66C/AssemblyStage.h"
@@ -62,5 +62,25 @@ namespace RBX
 		for (std::set<Joint*>::iterator it = joints.begin(); it != joints.end(); ++it)
 			(*it)->stepWorld();
 		IStage::stepWorld(worldStepId, uiStepId, throttling, moveBodiesTest);
+	}
+
+	// 0066f510 (`ret 4`): donor AssemblyStage::wakeAssembly -> SleepStage::onWakeUpRequest(a, false) 0064b890.
+	void AssemblyStage::wakeAssembly(Assembly* assembly)
+	{
+		static_cast<SleepStage*>(getDownstream())->onWakeUpRequest(assembly, false);
+	}
+
+	// 0066f530 (`ret 4`): IPipelined::putInStage 00645830, then SleepStage::onAssemblyAdded 0064aff0.
+	void AssemblyStage::onAssemblyAdded(Assembly* assembly)
+	{
+		assembly->putInStage(this);
+		static_cast<SleepStage*>(getDownstream())->onAssemblyAdded(assembly);
+	}
+
+	// 0066f550 (`ret 4`): SleepStage::onAssemblyRemoving 0064b0a0, then IPipelined::removeFromStage 00645840.
+	void AssemblyStage::onAssemblyRemoving(Assembly* assembly)
+	{
+		static_cast<SleepStage*>(getDownstream())->onAssemblyRemoving(assembly);
+		assembly->removeFromStage(this);
 	}
 }

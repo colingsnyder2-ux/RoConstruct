@@ -17,6 +17,10 @@ namespace RBX
 	// second test calls p1's stage first, the order of the edgeHasPrimitivesDownstream 00667f70 body. Most likely the
 	// original called edgeHasPrimitivesDownstream(it->second) and it was inlined in the original single unit; that
 	// member is defined out of line in JointStage2008.cpp and cannot be repeated here.
+	// Batch 25 rejected: this body moved into JointStage2008.cpp (static_cast, condition through
+	// edgeHasPrimitivesDownstream(it->second)): 703 B, the multimap lower_bound / upper_bound stay out of line there
+	// (the target expands them, 006685ff..) and the frame grows by 0x10. The same one-expansion stage-type evaluation-order
+	// flip keeps SleepStage::changeAssemblyState 0064ae90 from matching (see SleepStage2008.cpp).
 	void JointStage::onPrimitiveAdded(Primitive* p)
 	{
 		p->putInStage(this);
