@@ -13302,6 +13302,12 @@
    "address": "0043d3a0",
    "votes": 1,
    "identity_evidence": "reference of ??0XBoolItem@@QAE@PBV?$TypedPropertyDescriptor@_N@Reflection@RBX@@PAVCPropGrid@@@Z (identified at 0043d330: Original RTTI identifies XBoolItem; 0043d330 installs primary vftable 0081469c whose slot 26 is 0043d3a0. Byte-equal nat): the original image holds this address at the same relocation / vftable slot"
+  },
+  {
+   "symbol": "__ehhandler$??0RotateV@RBX@@QAE@XZ",
+   "address": "007bf43b",
+   "votes": 1,
+   "identity_evidence": "original 005e4dd2 push 0x7bf43b is the SEH handler referenced by the byte-exact RotateV::RotateV() body; folded with existing __ehhandler$?initialize@@YAXXZ alias at the same address"
   }
  ]
 }
