@@ -6,6 +6,14 @@
 #include "util/Utilities.h"
 #include "v8tree/Instance.h"
 #include "DataModelLock.cpp"
+#include <algorithm>
+#include <boost/bind.hpp>
+
+namespace RBX {
+// 0058c5c0 (CameraHistory.cpp): commits a ChangeHistoryService waypoint; not declared in a shared header (same local
+// declaration as CSelectionTreeCtrl.cpp / AppUnit660_2008GroupDragTool.cpp).
+void recordCameraHistory(const char* name, const Instance* context);
+}
 
 // 0043b400: CPropertyGridItemBrickColor is built from the descriptor name and colour 0.
 template<>
@@ -298,6 +306,11 @@ template<>
 void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::applyValue(int const&) {}
 
 // XItem<string, CXTPPropertyGridItem, PropertyDescriptor> specializations
+// 00438450 (94 B): GetValue (00437ed0) into a temporary, CSimpleStringT::operator PCXSTR through mfc90 #910, then the
+// basic_string(const char*) import straight into the return slot. "return std::string((LPCTSTR)GetValue());" is
+// relocation-masked IDENTICAL here (verified 2026-11-19 xi06), but dropping CT2A also drops this unit's only
+// references to the ATL/MFC COMDATs AfxCrtErrorCheck 00401680 and Checked::tcsncpy_s 00401810 (exact here at
+// baseline), so the CT2A body stays until the lead accepts that trade (proposal in the batch 25 report).
 template<>
 std::string XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::readValue()
 {
@@ -343,3 +356,46 @@ void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDes
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>;
 template class std::_Vector_val<RBX::Reflection::ClassDescriptor const *,std::allocator<RBX::Reflection::ClassDescriptor const *> >;
+
+// XItem<T>::applyValue (non-virtual; called by OnValueChanged with readValue's result): 0043ead0 (bool),
+// 0043ee40 (float), 0043f1c0 (int). Collects every selected instance of the row's classes into a local vector
+// (push_back 00420110, ~vector 005a2fe0), writes the value to each through the virtual writeValue (vcall thunk, bound
+// with shared_ptr::get, std::for_each 0043c940), then under the DataModel lock records a ChangeHistoryService
+// waypoint named after the property (0058c5c0) and marks the DataModel dirty (IDataState::setDirty at +0x1f0, slot 0).
+// A std::exception is reported with AfxMessageBox(e.what()) (catch funclet 0043ee1d).
+// Parked near-miss (2026-11-19 xi06): all three instantiations are the target size (871 / 881 / 875 B) and differ
+// only in scheduling: the target loads grid ([this + 0x13c]) before pushing find's two arguments (0043ebb3) and uses
+// ecx/edx for the push_back argument (0043ec70); this unit pushes first and uses edx/eax. Accepted: end read before
+// begin. Rejected: grid->groups.find(*it) without the key copy (859 B, frame 0x70); inner const_iterator (no change).
+template<class T, class GridItem, class Descriptor>
+void XItem<T, GridItem, Descriptor>::applyValue(const T& value)
+{
+    try {
+        std::vector<boost::shared_ptr<RBX::Instance> > instances;
+        // grid->groups' end iterator is read once, before the loop (0043eb1e).
+        const RBX::SelectionGroup::iterator groupEnd = grid->groups.end();
+        // The classes end iterator is read before begin (0043eb2a: [this + 0x134] first).
+        const std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator end = classes.end();
+        for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(); it != end; ++it) {
+            const RBX::Reflection::ClassDescriptor* descriptor = *it;
+            RBX::SelectionGroup::iterator found = grid->groups.find(descriptor);
+            if (found == groupEnd)
+                continue;
+            for (std::vector<boost::shared_ptr<RBX::Instance> >::iterator i = found->second.begin(), iend = found->second.end(); i != iend; ++i)
+                instances.push_back(*i);
+        }
+        std::for_each(instances.begin(), instances.end(),
+                      boost::bind(&XItem::writeValue, this, boost::bind(&boost::shared_ptr<RBX::Instance>::get, _1), value));
+        if (grid->dataModel) {
+            RBX::DataModel::Lock lock(grid->dataModel);
+            RBX::recordCameraHistory(descriptor->name.c_str(), grid->dataModel);
+            grid->dataModel->setDirty(true);
+        }
+    } catch (std::exception& e) {
+        AfxMessageBox(e.what());
+    }
+}
+
+template void XItem<bool, CXTPPropertyGridItemBool, RBX::Reflection::TypedPropertyDescriptor<bool> >::applyValue(const bool&);
+template void XItem<float, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<float> >::applyValue(const float&);
+template void XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<int> >::applyValue(const int&);
