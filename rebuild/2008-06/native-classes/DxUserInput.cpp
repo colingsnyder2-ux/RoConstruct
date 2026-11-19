@@ -18,6 +18,16 @@
 #include "v8datamodel/DataModel.h"
 #include "util/Object.h"
 
+#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
+#include "CMainFrame.h"   // processKeyboard 004681b0 reads CMainFrame::state104 (+0x104) of the application main window
+#endif
+
+// Identity-tier placeholder helpers (bodies byte-proved in Inferred_00469f50.cpp / Inferred_00469360.cpp /
+// Inferred_00469c60.cpp), all cdecl: keyboard state -> SDLMod, DIK scan code -> SDLKey, SDLKey -> virtual key.
+int sub_00469f50(const unsigned char* keys);
+int sub_00469360(int key);
+int __cdecl sub_00469c60(int index);
+
 // 004328c0
 DxCriticalSection::DxCriticalSection()
 {
@@ -312,6 +322,74 @@ namespace RBX
 		UIEvent event(this, (UIEvent::EventType)eventType, mousePosition, G3D::Vector2int16(0, 0), sub_00467440());
 		postEvent(event);
 	}
+
+	// 004681b0 (registry placeholder func_004681b0; called only by the Heartbeat poll 004689c0, which the header names
+	// processKeyboard): drain the buffered keyboard data under the DataModel lock. While the main frame exists, a key
+	// press whose virtual key (MapVirtualKeyEx type 1, else sub_00469c60) is PrintScreen posts WM_COMMAND 0x80fc; for
+	// F1, F4, or any key while CMainFrame::state104 is clear, a matching ACCEL entry (type 2 character for non-FVIRTKEY
+	// entries, FSHIFT/FCONTROL/FALT from the SDLMod bits) is posted to the frame as WM_COMMAND instead of a key event.
+	// PENDING (NATIVE_DXUSERINPUT_KEYBOARD_PENDING): CMainFrame.h does not compile in this unit: XTP needs min/max
+	// (XTPVC50Helpers.h 542) and util/MarshaledListener.h closes namespace RBX before the MarshaledListener template
+	// (line 19 `}`), see the header proposals. Measured with a cast stand-in for the state104 read (trial only, not
+	// kept): 723 vs 738 bytes, same frame (0xa040). Remaining diff: the target walks the DIDEVICEOBJECTDATA array
+	// through &data[i].dwData (`mov ebx,[eax]; mov ebp,[eax-4]`, this build uses the element base), keeps the virtual
+	// key in a stack slot for the accelerator compare (`cmp eax,[esp+0x14]`), and places the PrintScreen post out of
+	// line after the return. Rejected: a materialized `same` bool / BYTE flags / char character (714 B, frame
+	// 0xa03c), `accel.key == vk : accel.key == (char)ch` ternary of comparisons (756 B, sete), a found-index loop
+	// (759 B), and `if (vk != VK_SNAPSHOT) {...} else post` (723 B, more diff lines).
+#ifdef NATIVE_DXUSERINPUT_KEYBOARD_PENDING
+	void DxUserInput::processKeyboard()
+	{
+		DWORD count = 0x800;
+		DxDeviceObjectData data[0x800];
+		{
+			CComCritSecLock<DxCriticalSection> lock(mutex);
+			if (!readDeviceData(data, &count, keyboard))
+			{
+				keyboardAcquired = false;
+				return;
+			}
+		}
+		DataModel::Lock lock(dataModel);
+		for (DWORD i = 0; i < count; ++i)
+		{
+			bool down = (data[i].dwData & 0x80) != 0;
+			UINT scanCode = data[i].dwOfs;
+			SDLMod mod = (SDLMod)sub_00469f50(keyState);
+			SDLKey key = (SDLKey)sub_00469360(scanCode);
+			if (down && mainFrame)
+			{
+				static HKL layout = GetKeyboardLayout(0);
+				UINT virtualKey = MapVirtualKeyEx(scanCode, 1, layout);
+				if (!virtualKey)
+					virtualKey = sub_00469c60(key);
+				if (virtualKey == VK_SNAPSHOT)
+					::PostMessage(mainFrame->m_hWnd, WM_COMMAND, MAKEWPARAM(0x80fc, 1), 0);
+				else if (virtualKey == VK_F1 || virtualKey == VK_F4 || !static_cast<CMainFrame*>(AfxGetApp()->m_pMainWnd)->state104)
+				{
+					UINT character = MapVirtualKeyEx(virtualKey, 2, layout);
+					int flags = ((mod & KMOD_ALT) ? FALT : 0) | ((mod & KMOD_CTRL) ? FCONTROL : 0) | ((mod & KMOD_SHIFT) ? FSHIFT : 0);
+					bool handled = false;
+					for (unsigned int j = 0; j < numAccelerators; ++j)
+					{
+						const ACCEL& accel = accelerators[j];
+						if (accel.key == ((accel.fVirt & FVIRTKEY) ? virtualKey : (char)character)
+							&& (accel.fVirt & (FSHIFT | FCONTROL | FALT)) == flags)
+						{
+							::PostMessage(mainFrame->m_hWnd, WM_COMMAND, MAKEWPARAM(accelerators[j].cmd, 1), 0);
+							handled = true;
+							break;
+						}
+					}
+					if (handled)
+						continue;
+				}
+			}
+			UIEvent event(this, down ? UIEvent::KEY_DOWN : UIEvent::KEY_UP, key, mod);
+			postEvent(event);
+		}
+	}
+#endif
 
 	// 004689c0 (Heartbeat listener at +0x2c): poll both devices
 	void DxUserInput::onEvent(const RunService*, Heartbeat)
