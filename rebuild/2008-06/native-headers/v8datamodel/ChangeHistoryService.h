@@ -5,6 +5,7 @@
 #include <string>
 namespace RBX {
 class HistoryRecord;
+namespace Reflection { struct Tuple; }
 extern char sChangeHistoryService[];
 // Original 004150d0 allocates 0x1a4; 0058ab90 and RTTI establish bases and fields.
 // Candidate remains inactive until its constructor and destructor are both verified.
@@ -40,5 +41,9 @@ public:
     void initializeBase();
 	public:
 		void sub_0058c540(std::string name);   // INFERRED: 0058c540, placeholder name (identity tier), body byte-proved (Inferred_0058c540.cpp)
+		// INFERRED: 00589d60, BoundFuncDesc N=0 registration at 007f40b0 pushes string "GetCanUndo" (0x8319a0); result Tuple (reflection.h; RTTI .?AUTuple@Reflection@RBX@@)
+		Reflection::Tuple getCanUndo();
+		// INFERRED: 00589ed0, BoundFuncDesc N=0 registration at 007f40e0 pushes string "GetCanRedo" (0x8319ac); result Tuple (reflection.h)
+		Reflection::Tuple getCanRedo();
 };
 }

@@ -67,6 +67,8 @@ class RotateP : public DescribedCreatable<RotateP, JointInstance, sRotateP> { pu
 extern const char sRotateV[];
 class RotateV : public DescribedCreatable<RotateV, JointInstance, sRotateV> { public: RotateV(Joint* joint); RotateV(); };
 extern const char sMotor[];
+// INFERRED: binary layout requires maxVelocity at offset +0x154, desiredAngle at +0x158, currentAngle at +0x15c
+// within the Motor class sub-object (following JointInstance base at +0x140/class size 0x144).
 class Motor : public DescribedCreatable<Motor, JointInstance, sMotor> {
 private:
     const MotorJoint* getMotorJoint() const;

@@ -65,6 +65,7 @@ namespace RBX
 		virtual ~Kernel();                                            // 005faca0 (slot 0 ??_G 005fb0c0)
 		virtual StageType getStageType();                             // slot 1 (0077d800; opt-in kernel-stages IStage)
 		// 005fb3f0 is `ret 0x10` and tests a fourth bool argument first (true: 005fae00 with worldStepId, then return),
+		// INFERRED: the fourth bool argument controls whether moveBodiesTest is called; the donor uses a separate 3-argument decoration ?stepWorld@Kernel@RBX@@UAEXHH_N@Z while the 2008 binary has the 4-argument variant ?stepWorld@Kernel@RBX@@UAEXHH_N0@Z, proven by vftable slot 2 matching.
 		// so the 2008 IStage slot 2 takes four arguments. Units that opt in to native-headers/kernel-stages (its
 		// v8kernel/IStage.h defines NATIVE_KERNEL_STAGE_NUMBERING and declares that 4-argument slot 2) get the 2008
 		// override; other units keep the 3-argument override of the donor IStage.h slot 2.
