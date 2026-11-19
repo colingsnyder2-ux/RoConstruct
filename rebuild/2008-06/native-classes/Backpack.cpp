@@ -22,6 +22,29 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
+	// Names the Hopper.cpp descriptor object (00979cf4, dynamic initializer 007f5e30). INFERRED: external linkage; in
+	// Hopper.cpp it is still `static` (proposal to its owner), so this declaration only fixes the relocation identity.
+	extern Reflection::EnumPropDescriptor<HopperBin, HopperBin::BinType> desc_BinType;
+
+	// 005d16d0 (setter of desc_BinType, first row of the Hopper unit tail with Backpack): raisePropertyChanged
+	// 0040db00(00979cf4); for a non-script bin, EnumDesc<BinType>::singleton() (call_once 00557330(005d0360, flag
+	// 00979cb4) then doSingleton 005d0300), convertToString 00448360 of the member, setLegacyTextureName 005d13d0.
+	// Trial 1 (`binType != value`, the string passed as a temporary) gave `cmp [edi+0x1a0], eax` and `push eax`; the
+	// target compares `cmp eax, [edi+0x1a0]` (value first) and re-materialises `lea edx, [esp+8]` (a named local).
+	void HopperBin::setBinType(const BinType value)
+	{
+		if (value != binType)
+		{
+			binType = value;
+			raisePropertyChanged(desc_BinType);
+			if (binType != SCRIPT_BIN)
+			{
+				std::string name = Reflection::EnumDesc<BinType>::singleton().convertToString(binType);
+				setLegacyTextureName(name);
+			}
+		}
+	}
+
 	Backpack::Backpack()
 	{
 		setName("Backpack");

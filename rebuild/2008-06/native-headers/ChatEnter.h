@@ -7,4 +7,6 @@ public:
     CChatPrompt* owner;
     ChatEnter();
     virtual ~ChatEnter();
+    // 00411300 (ChatEnterProcess.cpp): the "/" key focuses the chat prompt (GuiTarget slot, this = GuiTarget subobject).
+    virtual RBX::GuiResponse process(const RBX::GuiEvent& event);
 };
