@@ -1,0 +1,103 @@
+{
+ "_note": "Hand-curated original paths for native pieces the census cannot name. Folder evidence: the iOS 2.132 (Dec 2013) linker debug map carries the build agent's real source paths, and Roblox's Ogre-derived classes are in Client/Rendering/RbxOgre/ as Rbx<Class>.cpp there (RbxEntity, RbxSceneManager, RbxSceneNode, RbxSky, RbxSubEntity, RbxSubMesh, Quadric, RbxGeometryGenerator). OpenRBX, a Dec 2007 decompilation, put the same classes in AppDraw, which is the decompiler's arrangement, so the real build paths win. The 2008 exe's own file string is '.\\\\RbxSceneManager.cpp' (0084e9e8, no folder). Every entry is an inferred path (kept under inferred/), never Authentic.",
+ "OgreRbxEntity": [
+  "client/rendering/RbxOgre/RbxEntity.cpp",
+  "iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxEntity.cpp"
+ ],
+ "OgreRbxEntityAppend2008": [
+  "client/rendering/RbxOgre/RbxEntity.cpp",
+  "Ogre::RbxEntity member"
+ ],
+ "OgreRbxEntityCamera2008": [
+  "client/rendering/RbxOgre/RbxEntity.cpp",
+  "Ogre::RbxEntity member"
+ ],
+ "OgreRbxEntityClear2008": [
+  "client/rendering/RbxOgre/RbxEntity.cpp",
+  "Ogre::RbxEntity member (replaces a wrong class-rule path)"
+ ],
+ "OgreRbxEntitySetMesh2008": [
+  "client/rendering/RbxOgre/RbxEntity.cpp",
+  "Ogre::RbxEntity member"
+ ],
+ "OgreRbxSceneManager": [
+  "client/rendering/RbxOgre/RbxSceneManager.cpp",
+  "exe file string RbxSceneManager.cpp (0084e9e8), 24 of its functions; iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxSceneManager.cpp"
+ ],
+ "OgreRbxSceneManagerSkybox2008": [
+  "client/rendering/RbxOgre/RbxSceneManager.cpp",
+  "exe file string RbxSceneManager.cpp; same original file"
+ ],
+ "OgreRbxNodeSceneNode": [
+  "client/rendering/RbxOgre/RbxSceneNode.cpp",
+  "iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxSceneNode.cpp"
+ ],
+ "OgreSphereErase2008": [
+  "client/rendering/RbxOgre/RbxSceneNode.cpp",
+  "Ogre::RbxSceneNode member (RbxSceneNode2008.h)"
+ ],
+ "OgreRbxNodeTwoDManager": [
+  "client/rendering/RbxOgre/TwoDManager.cpp",
+  "TwoDManager; the 2013 tree has RbxGraphics2D.cpp, a later name"
+ ],
+ "OgreTwoDVertexBuffer2008": [
+  "client/rendering/RbxOgre/TwoDManager.cpp",
+  "TwoDManager member (TwoDManager2008.h)"
+ ],
+ "OgreRbxSky": [
+  "client/rendering/RbxOgre/RbxSky.cpp",
+  "iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxSky.cpp"
+ ],
+ "OgreVRbxFont": [
+  "client/rendering/RbxOgre/RbxFont.cpp",
+  "Ogre::RbxFont; the 2013 tree has RbxFontFactory.cpp, a later name"
+ ],
+ "OgreVisualEngine": [
+  "client/rendering/RbxOgre/VisualEngine.cpp",
+  "Ogre::VisualEngine; no 2013 file of that name (RbxGraphics.cpp is its likely successor)"
+ ],
+ "OgreSubMeshNames2008": [
+  "client/rendering/RbxOgre/VisualEngine.cpp",
+  "VisualEngine member (VisualEngine2008.h)"
+ ],
+ "OgreRbxSubMesh": [
+  "client/rendering/RbxOgre/RbxSubMesh.cpp",
+  "iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxSubMesh.cpp"
+ ],
+ "OgreRbxAdornState": [
+  "client/rendering/RbxOgre/Quadric.cpp",
+  "SGI GLU quad.c on Ogre::ManualObject; iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/Quadric.cpp"
+ ],
+ "OgreRbxAdornOffset2008": [
+  "client/rendering/RbxOgre/Quadric.cpp",
+  "Ogre::RbxAdornState member (RbxAdornState2008.h)"
+ ],
+ "OgreGeometryBuilder2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "OgreGeometryContext2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "OgreGeometryCreate2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "OgreGeometryIndexed2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "OgreGeometryIndices2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "OgreGeometryUpdate2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ],
+ "OgreGeometryVertexProvider2008": [
+  "client/rendering/RbxOgre/RbxGeometryGenerator.cpp",
+  "RBX::OgreUtil geometry creation (00679ae0); iOS 2.132 (Dec 2013) debug map lists Client/Rendering/RbxOgre/RbxGeometryGenerator.cpp"
+ ]
+}
