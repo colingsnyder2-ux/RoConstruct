@@ -1,25 +1,6 @@
 {
- "files": 533,
+ "files": 525,
  "merged_units": {
-  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/AdornRbxGfx.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
-    "rebuild/2008-06/native-classes/AdornRbxGfx3.cpp",
-    "rebuild/2008-06/native-classes/AdornRbxGfxBounds_0066fe30.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_context_snapshote7de5a5d309ab388__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_particle_localb0ade42fadd1538d__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_ray_native_orientation4aeecbaf163133f1__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeM_854f25b05ca3c1ba__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_alias_55cb3ee98c5c3f01__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_369ebbc72e42bae0__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_8ec9b5cde1252dbf__O2Ob2OiOtOyG.cpp",
-    "rebuild/2008-06/native-classes/AdornRbxGfx2d.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/inferred/client/app/gui/ArrowPanel.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp",
@@ -1085,6 +1066,25 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs-net-dll/roc_espclaude_b42954e24904c734__O2Ob2OyGFGSE.cpp"
    ]
   },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/AdornRbxGfx.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
+    "rebuild/2008-06/native-classes/AdornRbxGfx3.cpp",
+    "rebuild/2008-06/native-classes/AdornRbxGfxBounds_0066fe30.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "left_out": [
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_context_snapshote7de5a5d309ab388__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_owner_native_particle_localb0ade42fadd1538d__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_adorn_ray_native_orientation4aeecbaf163133f1__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_claudeM_854f25b05ca3c1ba__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_codex_alias_55cb3ee98c5c3f01__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_369ebbc72e42bae0__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_8ec9b5cde1252dbf__O2Ob2OiOtOyG.cpp",
+    "rebuild/2008-06/native-classes/AdornRbxGfx2d.cpp"
+   ]
+  },
   "rebuild/2008-06/layout/client/rendering/g3d/g3dcpp/GImage.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/G3DGImage.cpp",
@@ -1380,24 +1380,25 @@
    ]
   }
  },
- "inferred_path_files": 166,
+ "inferred_path_files": 163,
  "status": {
   "clean-identical": 211,
   "verbatim-identical": 18,
-  "dropped": 13,
-  "clean (token-identical)": 132,
-  "verbatim (line-sensitive macros)": 12,
-  "verbatim": 48
+  "dropped": 11,
+  "clean (token-identical)": 130,
+  "verbatim (line-sensitive macros)": 9,
+  "verbatim": 45
  },
  "held_back": {
-  "merge or conflict": 541,
+  "merge or conflict": 510,
   "no original path": 1837,
   "requires_inline_placement_review": 1,
   "inferred path with no folder evidence": 19,
   "library source (XTP, MFC, ATL): no Roblox path": 227,
   "requires_identity_review": 4,
   "wrapper around donor or library source": 335,
-  "variant header that shadows the one other units build with": 11
+  "profile overlay header (reached only through a unit /I flag)": 41,
+  "variant header that shadows the one other units build with": 9
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
  "cache_note": "the runner may reuse validated cached objects for unchanged live sources",
@@ -2354,6 +2355,10 @@
    "source": "rebuild/2008-06/native-headers/ClipboardVerbs.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/BinaryInput.h": {
+   "source": "rebuild/2008-06/native-headers/G3D/BinaryInput.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
   "rebuild/2008-06/layout/inferred/client/rendering/g3d/include/g3d/ReferenceCountedObject.h": {
    "source": "rebuild/2008-06/native-headers/G3D/ReferenceCountedObject.h",
    "status": "clean (token-identical)"
@@ -2388,10 +2393,6 @@
   },
   "rebuild/2008-06/layout/inferred/client/network/include/network/ReplicatorMarker.h": {
    "source": "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreSceneManager.h": {
-   "source": "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreMath.h": {
@@ -2458,6 +2459,10 @@
    "source": "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/rbxview/BrickMesh.h": {
+   "source": "rebuild/2008-06/native-headers/ViewNew/BrickMesh.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/rbxview/CylinderMesh.h": {
    "source": "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h",
    "status": "clean (token-identical)"
@@ -2501,38 +2506,6 @@
   "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Vector3.inl": {
    "source": "rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl",
    "status": "dropped"
-  },
-  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/detail/shared_count.hpp": {
-   "source": "rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/function/function_base.hpp": {
-   "source": "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp",
-   "status": "verbatim (line-sensitive macros)"
-  },
-  "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/function/function_template.hpp": {
-   "source": "rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_template.hpp",
-   "status": "verbatim (line-sensitive macros)"
-  },
-  "rebuild/2008-06/layout/client/app/include/util/Utilities.h": {
-   "source": "rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/v8world/contactmanager.h": {
-   "source": "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/v8world/World.h": {
-   "source": "rebuild/2008-06/native-headers/engine-world/v8world/World.h",
-   "status": "verbatim (line-sensitive macros)"
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/BinaryOutput.h": {
-   "source": "rebuild/2008-06/native-headers/g3d-binary-output-2008/G3D/BinaryOutput.h",
-   "status": "verbatim (line-sensitive macros)"
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/GImage.h": {
-   "source": "rebuild/2008-06/native-headers/g3d-image-2008/G3D/GImage.h",
-   "status": "verbatim (line-sensitive macros)"
   },
   "rebuild/2008-06/layout/client/app/include/gui/ArrowPanel.h": {
    "source": "rebuild/2008-06/native-headers/gui/ArrowPanel.h",
@@ -2602,33 +2575,9 @@
    "source": "rebuild/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h",
    "status": "clean (token-identical)"
   },
-  "rebuild/2008-06/layout/client/app/include/v8kernel/IStage.h": {
-   "source": "rebuild/2008-06/native-headers/kernel-stages/v8kernel/IStage.h",
-   "status": "clean (token-identical)"
-  },
   "rebuild/2008-06/layout/client/app/include/lua/LuaBridge.h": {
    "source": "rebuild/2008-06/native-headers/lua/LuaBridge.h",
    "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/script/ThreadRef.h": {
-   "source": "rebuild/2008-06/native-headers/luafunction-threadref/script/ThreadRef.h",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/v8xml/SerializerV2.h": {
-   "source": "rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h",
-   "status": "verbatim (line-sensitive macros)"
-  },
-  "rebuild/2008-06/layout/client/app/include/v8world/Primitive.h": {
-   "source": "rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h",
-   "status": "dropped"
-  },
-  "rebuild/2008-06/layout/client/rendering/g3d/include/g3d/Matrix3.h": {
-   "source": "rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h",
-   "status": "dropped"
-  },
-  "rebuild/2008-06/layout/client/rbxgraphics/include/rbxgraphics/TextureProxyBase.h": {
-   "source": "rebuild/2008-06/native-headers/partchunk-profile/RbxGraphics/TextureProxyBase.h",
-   "status": "verbatim"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/reflection/BoundFuncDesc.h": {
    "source": "rebuild/2008-06/native-headers/reflection/BoundFuncDesc.h",
@@ -2658,9 +2607,17 @@
    "source": "rebuild/2008-06/native-headers/reflection/property.h",
    "status": "verbatim (line-sensitive macros)"
   },
-  "rebuild/2008-06/layout/client/app/include/security/SecurityContext.h": {
-   "source": "rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h",
-   "status": "verbatim"
+  "rebuild/2008-06/layout/client/app/include/reflection/reflection.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/reflection.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
+  "rebuild/2008-06/layout/client/app/include/reflection/signal.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/signal.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/reflection/type.h": {
+   "source": "rebuild/2008-06/native-headers/reflection/type.h",
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/script/Script.h": {
    "source": "rebuild/2008-06/native-headers/script/Script.h",
@@ -2668,10 +2625,6 @@
   },
   "rebuild/2008-06/layout/client/app/include/script/ScriptContext.h": {
    "source": "rebuild/2008-06/native-headers/script/ScriptContext.h",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/util/ContentProvider.h": {
-   "source": "rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/tool/AxisMoveGrid.h": {
@@ -2768,6 +2721,10 @@
   },
   "rebuild/2008-06/layout/client/app/include/util/Events.h": {
    "source": "rebuild/2008-06/native-headers/util/Events.h",
+   "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/util/Extents.h": {
+   "source": "rebuild/2008-06/native-headers/util/Extents.h",
    "status": "verbatim"
   },
   "rebuild/2008-06/layout/client/app/include/util/FileSystem.h": {
@@ -2918,9 +2875,17 @@
    "source": "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h",
    "status": "verbatim (line-sensitive macros)"
   },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/Decal.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/Decal.h",
+   "status": "clean (token-identical)"
+  },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Explosion.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Explosion.h",
    "status": "verbatim"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/FaceInstance.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/FaceInstance.h",
+   "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/Feature.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/Feature.h",
@@ -2996,6 +2961,10 @@
   },
   "rebuild/2008-06/layout/client/app/include/v8datamodel/PVInstance.h": {
    "source": "rebuild/2008-06/native-headers/v8datamodel/PVInstance.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8datamodel/PartInstance.h": {
+   "source": "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h",
    "status": "clean (token-identical)"
   },
   "rebuild/2008-06/layout/inferred/client/app/include/v8datamodel/PhysicsService.h": {
@@ -3098,6 +3067,10 @@
    "source": "rebuild/2008-06/native-headers/v8tree/IDataState.h",
    "status": "clean (token-identical)"
   },
+  "rebuild/2008-06/layout/client/app/include/v8tree/Instance.h": {
+   "source": "rebuild/2008-06/native-headers/v8tree/Instance.h",
+   "status": "verbatim (line-sensitive macros)"
+  },
   "rebuild/2008-06/layout/inferred/client/app/include/v8tree/InstanceEvents.h": {
    "source": "rebuild/2008-06/native-headers/v8tree/InstanceEvents.h",
    "status": "verbatim"
@@ -3118,24 +3091,12 @@
    "source": "rebuild/2008-06/native-headers/v8tree/VerbContainer.h",
    "status": "clean (token-identical)"
   },
-  "rebuild/2008-06/layout/client/app/include/v8world/assembly.h": {
-   "source": "rebuild/2008-06/native-headers/v8world/Assembly.h",
-   "status": "verbatim"
-  },
-  "rebuild/2008-06/layout/inferred/client/app/include/v8world/AssemblyLayout.h": {
-   "source": "rebuild/2008-06/native-headers/v8world/AssemblyLayout.h",
-   "status": "clean (token-identical)"
-  },
-  "rebuild/2008-06/layout/client/app/include/v8world/Mechanism.h": {
-   "source": "rebuild/2008-06/native-headers/v8world/Mechanism.h",
-   "status": "verbatim"
-  },
-  "rebuild/2008-06/layout/inferred/client/app/include/v8world/SimJob.h": {
-   "source": "rebuild/2008-06/native-headers/v8world/SimJob.h",
-   "status": "clean (token-identical)"
-  },
   "rebuild/2008-06/layout/client/app/include/v8xml/XmlElement.h": {
    "source": "rebuild/2008-06/native-headers/v8xml/XmlElement.h",
+   "status": "clean (token-identical)"
+  },
+  "rebuild/2008-06/layout/client/app/include/v8xml/XmlSerializer.h": {
+   "source": "rebuild/2008-06/native-headers/v8xml/XmlSerializer.h",
    "status": "clean (token-identical)"
   }
  },
@@ -3282,8 +3243,6 @@
    "client/app/include/v8datamodel/Surface.h",
    "client/app/include/v8datamodel/Surfaces.h",
    "client/app/include/v8world/Edge.h",
-   "client/app/include/v8world/Primitive.h",
-   "client/rendering/g3d/include/g3d/Matrix3.h",
    "client/rendering/g3d/include/g3d/Vector3.h",
    "client/rendering/g3d/include/g3d/Vector3.inl",
    "inferred/client/app/include/v8datamodel/SelectionChanged.h"

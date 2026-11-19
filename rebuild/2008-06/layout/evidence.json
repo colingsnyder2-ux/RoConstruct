@@ -4466,6 +4466,28 @@
    }
   ]
  },
+ "rebuild/2008-06/layout/client/rbxview/BrickMesh.h": {
+  "source": "rebuild/2008-06/native-headers/ViewNew/BrickMesh.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 2,
+    "text": [
+     "// 2008-06 native RBX::ViewNew::BrickMesh (inactive; only what the ViewNew units here use).",
+     "//   vtable 00826e7c .?AVBrickMesh@ViewNew@RBX@@ -> RenderBase::Mesh -> ReferenceCountedObject (mdisp 0; no MeshFactory",
+     "//   base); one slot (??_G 004e54c0). ctor 004e53c0 (meshKind 1; ret 0x1c) and the cache in 004e54e0 / 004e5300 are not",
+     "//   recovered here (their helpers 004e2c80 / 004e3720 / 004e3570 and globals 0096de64 / 00942ec4 / 00972758 are",
+     "//   unnamed).",
+     "//   normalPerturbation  const float 0.05f at 00826e3c, read by the BrickMesh unit (004de50e..) and by the PBB",
+     "//                       perturbation ctor 004f2030 (fld [00826e3c]).",
+     "//   Static cache (pass 2; definitions and bodies in native-headers/ViewNewBrickBuild2008/BrickMeshCache2008.h):",
+     "//   cache 00972754 (new 0x30 in initCache 004e5360), once flag 00972870 (call_once 00557330), flushCache 004e5670",
+     "//   (called by the ViewG3D / ViewRbxGfx dtors 004dc2c0 / 004db58c), releaseUnused 004e5710. Cache, cache, cacheFlag,",
+     "//   initCache and releaseUnused are descriptive names (no symbols); flushCache follows the donor BrickMesh.h."
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/client/rbxview/CylinderMesh.h": {
   "source": "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h",
   "build": {},
@@ -4683,28 +4705,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/client/boost_1_34_1/src/boost/detail/shared_count.hpp": {
-  "source": "rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp",
-  "build": {},
-  "notes": []
- },
- "rebuild/2008-06/layout/client/app/include/util/Utilities.h": {
-  "source": "rebuild/2008-06/native-headers/cow-noinline-read/util/Utilities.h",
-  "build": {},
-  "notes": []
- },
- "rebuild/2008-06/layout/client/app/include/v8world/contactmanager.h": {
-  "source": "rebuild/2008-06/native-headers/engine-world/v8world/ContactManager.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Inactive typed candidate: destructor matches; SpatialHash allocation and scratch element type remain open."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/include/gui/ArrowPanel.h": {
   "source": "rebuild/2008-06/native-headers/gui/ArrowPanel.h",
   "build": {},
@@ -4903,60 +4903,6 @@
   "build": {},
   "notes": []
  },
- "rebuild/2008-06/layout/client/app/include/v8kernel/IStage.h": {
-  "source": "rebuild/2008-06/native-headers/kernel-stages/v8kernel/IStage.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 2,
-    "text": [
-     "// 2008-06 native RBX::IStage with the 2008 StageType numbering (inactive, OPT-IN). This file sits at the original",
-     "// include path v8kernel/IStage.h, but only inside the kernel-stages overlay directory. A unit opts in by putting",
-     "// '/I{headers}/kernel-stages' on its '// native-flags:' line before any other /I entry. The runner adds those flags",
-     "// before /I{headers} and the donor include roots, so every '#include \"v8kernel/IStage.h\"' in that unit (native or",
-     "// donor: v8world/IPipelined.h, v8world/IWorldStage.h, v8kernel/Kernel.h) resolves here. Units that do not opt in keep",
-     "// the donor tools/rbxgs v8kernel/IStage.h unchanged. Never place a copy at native-headers/v8kernel/IStage.h, because",
-     "// that would shadow the donor for every unit.",
-     "//",
-     "// Layout and slots (the same in every 2008 stage vtable, native-headers/v8world/CleanStage2008.h:11-14):",
-     "//   fields   vptr +0x0, upstream +0x4, downstream +0x8 (CleanStage() 0064a310; IStage::stepWorld 0064a380 /",
-     "//            getKernel 0064a390 read downstream +0x8; IPipelined::removeFromStage 00645840 reads upstream +0x4).",
-     "//   slots    0 scalar deleting destructor, 1 getStageType, 2 stepWorld, 3 getKernel (the IWorldStage slots 4-6 follow).",
-     "//   novtable no IStage vtable exists (RTTI CleanStage 0084b05c -> IWorldStage -> IStage; only the most derived vtable",
-     "//            is stored), as in the donor.",
-     "//   ~IStage  00587050 (the donor body: delete downstream through its slot 0).",
-     "//   slot 2   Kernel::stepWorld 005fb3f0 (Kernel vtable 0084105c slot 2) is `ret 0x10` and reads a fourth argument",
-     "//            (`cmp byte ptr [esp + 0x38], 0` at 005fb408, before the SEH frame and the push ebp: that is argument 4).",
-     "//            So the 2008 slot 2 takes four arguments. The forwarding bodies (IStage::stepWorld 0064a380, TreeStage",
-     "//            00669780, AssemblyStage 0066f570) end in a tail jmp through downstream slot 2 and do not show the count.",
-     "//            moveBodiesTest is an analog name: a true value makes Kernel call 005fae00 (analog name",
-     "//            stepMoveBodiesTest) instead of the kernel step.",
-     "//   bodies   IStage::stepWorld 0064a380 and getKernel 0064a390 are 10-byte tail calls through downstream (+0x8) slot 2 /",
-     "//            slot 3, with no assertion code. The donor RBXASSERT(downstream) is left out (the 2008 bodies have none).",
-     "//",
-     "// 2008 StageType values. Each value is the constant returned by the stage's getStageType (slot 1):",
-     "//   CLEAN_STAGE    0  CleanStage    00416690 `xor eax, eax`   (no donor stage; the donor enum starts at JOINT_STAGE 0)",
-     "//   JOINT_STAGE    1  JointStage    007286a0 `mov eax, 1`",
-     "//   CLUMP_STAGE    2  ClumpStage    0077d810 `mov eax, 2`",
-     "//   TREE_STAGE     3  TreeStage     005e2790 `mov eax, 3`",
-     "//   ASSEMBLY_STAGE 4  AssemblyStage 006fa3f0 `mov eax, 4`",
-     "//   SLEEP_STAGE    5  SleepStage    007359e0 `mov eax, 5`",
-     "//   SIMJOB_STAGE   6  SimJobStage   005cb9d0 `mov eax, 6`",
-     "//   KERNEL_STAGE   7  Kernel        0077d800 `mov eax, 7` (also IPipelined::getKernel 00645850 `push 7`, and the",
-     "//                     inline getWorld / inKernel compares `cmp eax, 7` at 006456e0 / 005e5da0 / 005e3a80 / 006087a0)",
-     "// The donor COLLISION_STAGE and SEPARATE_STAGE have no 2008 stage class or getStageType body, so they are not declared.",
-     "// Several of these bodies are identical-code folds that share an address with other 0/1/2/5/6/7 returners (registry",
-     "// names such as NullController / SlingshotTool / PlayerController); the stage names above come from the vtables."
-    ]
-   },
-   {
-    "line": 74,
-    "text": [
-     "// slot 2 (0064a380: tail call of downstream slot 2; Kernel 005fb3f0 `ret 0x10`)"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/client/app/include/lua/LuaBridge.h": {
   "source": "rebuild/2008-06/native-headers/lua/LuaBridge.h",
   "build": {},
@@ -4971,11 +4917,6 @@
     ]
    }
   ]
- },
- "rebuild/2008-06/layout/client/app/include/script/ThreadRef.h": {
-  "source": "rebuild/2008-06/native-headers/luafunction-threadref/script/ThreadRef.h",
-  "build": {},
-  "notes": []
  },
  "rebuild/2008-06/layout/client/app/include/reflection/descriptor.h": {
   "source": "rebuild/2008-06/native-headers/reflection/descriptor.h",
@@ -5001,6 +4942,40 @@
   "build": {},
   "notes": []
  },
+ "rebuild/2008-06/layout/client/app/include/reflection/signal.h": {
+  "source": "rebuild/2008-06/native-headers/reflection/signal.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 221,
+    "text": [
+     "// INFERRED: the 2008-06 binary's RTTI names SignalDescImpl<3, void(std::string,int,std::string)>::",
+     "// GenericSlotAdapter (004a0900), so the arity-3 instance fell back to this primary template's adapter.",
+     "// Declaration only: the functor is a shared_ptr holder, as in the 0/1/2 specialisations below."
+    ]
+   },
+   {
+    "line": 244,
+    "text": [
+     "// INFERRED: public, like the 1/2 specialisations: the binary emits the boost::function<void(void),",
+     "// std::allocator<void> > constructor for this adapter as a standalone body (004b45b0), which is only",
+     "// nameable outside the class with public access. Visibility only; layout and codegen unchanged."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/reflection/type.h": {
+  "source": "rebuild/2008-06/native-headers/reflection/type.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 79,
+    "text": [
+     "// Value constructors 0042d200/0042d240/0042d280 take const references."
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/client/app/include/script/Script.h": {
   "source": "rebuild/2008-06/native-headers/script/Script.h",
   "build": {},
@@ -5023,11 +4998,6 @@
     ]
    }
   ]
- },
- "rebuild/2008-06/layout/client/app/include/util/ContentProvider.h": {
-  "source": "rebuild/2008-06/native-headers/slingshot-load/util/ContentProvider.h",
-  "build": {},
-  "notes": []
  },
  "rebuild/2008-06/layout/client/app/include/tool/DragTool.h": {
   "source": "rebuild/2008-06/native-headers/tool/DragTool.h",
@@ -5282,6 +5252,16 @@
     ]
    }
   ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/Decal.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/Decal.h",
+  "build": {},
+  "notes": []
+ },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/FaceInstance.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/FaceInstance.h",
+  "build": {},
+  "notes": []
  },
  "rebuild/2008-06/layout/client/app/include/v8datamodel/Feature.h": {
   "source": "rebuild/2008-06/native-headers/v8datamodel/Feature.h",
@@ -5733,6 +5713,25 @@
    }
   ]
  },
+ "rebuild/2008-06/layout/client/app/include/v8datamodel/PartInstance.h": {
+  "source": "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PartInstance.h: class names are .data",
+     "// char arrays passed directly as template arguments (see native-headers/util/Name.h)."
+    ]
+   },
+   {
+    "line": 84,
+    "text": [
+     "// Original descriptor 009761d4, initializer 007f4b90; dispatcher 0059e3a0."
+    ]
+   }
+  ]
+ },
  "rebuild/2008-06/layout/client/app/include/v8datamodel/RootInstance.h": {
   "source": "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h",
   "build": {},
@@ -6136,6 +6135,18 @@
     "line": 1,
     "text": [
      "// Recovered header from roc_unit_28e31b0627a2d865.cpp; native value union includes double."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/client/app/include/v8xml/XmlSerializer.h": {
+  "source": "rebuild/2008-06/native-headers/v8xml/XmlSerializer.h",
+  "build": {},
+  "notes": [
+   {
+    "line": 27,
+    "text": [
+     "// 00415350/004147c0 construct and destroy this map at +0x28."
     ]
    }
   ]
@@ -9003,11 +9014,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreSceneManager.h": {
-  "source": "rebuild/2008-06/native-headers/OgreLightInline/OgreSceneManager.h",
-  "build": {},
-  "notes": []
- },
  "rebuild/2008-06/layout/inferred/client/rendering/ogresdk/include/OgreMath.h": {
   "source": "rebuild/2008-06/native-headers/OgreRbxEntityImports/OgreMath.h",
   "build": {},
@@ -10301,285 +10307,6 @@
     "text": [
      "// Split from the recovered Verb.h so native IDataState can be used without",
      "// importing the donor's incompatible StateStack-based IDataState declaration."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/include/v8world/AssemblyLayout.h": {
-  "source": "rebuild/2008-06/native-headers/v8world/AssemblyLayout.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 2,
-    "text": [
-     "// 2008-06 native Assembly / Clump (inactive). Two parts:",
-     "//   1. RBX::AssemblyLayout (always): a field-offset VIEW for units that also reach the donor v8world/Assembly.h /",
-     "//      Clump.h (through the donor or part-embedded v8world/Primitive.h, e.g. Seat.cpp), whose classes put the fields",
-     "//      elsewhere (donor Assembly::rootClump +0x8, donor Clump::assembly +0x20). It never collides with RBX::Assembly /",
-     "//      RBX::Clump. Padding members are INFERRED: only the named offsets are read from the binary.",
-     "//   2. The native 2008 RBX::Clump declaration (only when the unit defines NATIVE_CLUMP_DECL before including this",
-     "//      header, and so must not reach the donor v8world/Clump.h / Assembly.h). It needs a 2008 IPipelined: it includes",
-     "//      native-headers/v8kernel/IPipelined2008.h, so a unit that also reaches the donor v8world/IPipelined.h (through the",
-     "//      donor v8world/Edge.h) defines NATIVE_IPIPELINED2008_DONOR too (same layout, see IPipelined2008.h).",
-     "// Evidence (2008-06 binary):",
-     "//   RTTI     ??_7Clump 0083f7ac, COL 008ad504: Clump -> IPipelined (mdisp 0), boost::noncopyable (mdisp 8). Three",
-     "//            slots: 0 scalar deleting dtor 005e7280 (dtor body 005e70a0), 1 putInKernel 00646970 (`jmp 00645830`,",
-     "//            IPipelined::putInKernel), 2 removeFromKernel 005e60d0 (`jmp 00645860`, IPipelined::removeFromKernel).",
-     "//            The binary has NO RTTI type descriptor for an RBX::Assembly (only Clump and IPipelined among these; the",
-     "//            other IPipelined classes are Primitive and the Edge family), so in 2008 the pipelined \"assembly\" object",
-     "//            is a Clump: Clump(Primitive*) 005e6cf0 stores `this` at +0x24 (a root clump is its own assembly), and",
-     "//            SleepStage 0064ae90 hands the same object to SimJobStage 0064d200 / 0064d2a0, which call its slots 1 / 2,",
-     "//            IPipelined::putInStage / removeFromStage (00645830 / 00645840) and the Clump-unit members 005e6160 /",
-     "//            005e6110 on it.",
-     "//   size     0x78 (00668d06: `push 0x78; call new` then Clump(Primitive*) 005e6cf0).",
-     "//   Clump    +0x1c root primitive: ctor 005e6cf0 (the argument), Seat::seatCharacter 0063c9f1 and",
-     "//            Primitive::setCoordinateFrame 005e826b compare [[assembly+0x24]+0x1c] with the primitive.",
-     "//            +0x20 parent clump (ctor zero; dtor 005e70a0 removes this from [+0x20]+0x28 through fastRemoveShort",
-     "//            005e5200 and walks [+0x20]).",
-     "//            +0x24 assembly: ctor 005e6cf0 (`mov [esi+0x24], esi`); Primitive::getAssembly 005e7570 (`clump =",
-     "//            [prim+0x5c]; clump ? [clump+0x24] : 0`), 005e7560 (`[[prim+0x5c]+0x24]`).",
-     "//            +0x40 SimJob back-link: ctor zero; SimJobStage insert 0064d0f0 (`[job->slot2()+0x40] = job`), erase",
-     "//            0064d180 (`[job->slot2()+0x40] = 0`), getter 005e6110 (`mov eax, [ecx+0x40]`, folded with",
-     "//            World::getContactManager) called on the assembly by 0064d2a0 before the erase 0064d180.",
-     "//   members  005e6160 (`[[ecx+0x1c]+0xa0]`: the root primitive's body), 005e6170 (notifyMoved: primitive iterator",
-     "//            from [ecx+0x1c], myOwner +0xa4 IMoving::notifyMoved 00614be0 per primitive, ++ 00647640), 005e6120",
-     "//            (all primitives' +0xac flag, the ctor's computed-property callback at +0x70)."
-    ]
-   },
-   {
-    "line": 51,
-    "text": [
-     "// The 2008 SleepInfo (SleepStage's per-assembly record): only its first field, the Sim::AssemblyState, is",
-     "// read through this view (PartInstance::render3dAdorn 0059e5b2 / 0059e664 `mov eax, [eax]`)."
-    ]
-   },
-   {
-    "line": 62,
-    "text": [
-     "// 0064c49b reads [[clump+0x18]]; render3dAdorn 0059e5a7 / 0059e659)"
-    ]
-   },
-   {
-    "line": 75,
-    "text": [
-     "// The 2008 sleep status of an assembly (openrbx Assembly::getSleepStatus without the parent walk): the state of",
-     "// its SleepInfo, ANCHORED (0) when it has none. PartInstance::render3dAdorn 0059e5a7..0059e5b6 / 0059e659..",
-     "// 0059e668: load +0x18, test, load [0], test against 0 (ANCHORED). Returned as int so that units which do",
-     "// not reach the Sim::AssemblyState definition can include this view; callers cast to Sim::AssemblyState."
-    ]
-   },
-   {
-    "line": 109,
-    "text": [
-     "// Declared as native-world/App/include/v8world/Clump.h declares it (that header also declares the WEBSERVICE",
-     "// Clump / Assembly, so it cannot be included next to the 2008 Clump below). 2008 evidence: the Clump-unit loops",
-     "// 005e6120 / 005e6170 build {root primitive, 1 (IN_ASSEMBLY)} on the stack (`mov [esp], eax; mov [esp+4], 1`),",
-     "// call ++ 00647640 (??EPrimIterator@RBX@@QAEAAV01@XZ) and stop when the primitive is NULL; ++ 00647640 calls",
-     "// findFirstChild 00647540 / findParent 006474e0 / findNextRelative 00647600 with (primitive, searchType)."
-    ]
-   },
-   {
-    "line": 154,
-    "text": [
-     "// Declared as native-world/App/include/v8world/Clump.h declares it (SIZE 0x08). 2008 evidence: Clump 005e6ba0 calls",
-     "// begin 00647730 (?begin@EdgeIterator@RBX@@SA?AV12@PAVPrimitive@2@@Z, hidden return slot) and ++ 00647700",
-     "// (??EEdgeIterator@RBX@@QAEAAV01@XZ), compares {primitive +0x0, edge +0x4} against the function-local static of the",
-     "// inline end() (guard 0097abb4, value 0097abac / 0097abb0 zeroed on first use) and appends edge +0x4."
-    ]
-   },
-   {
-    "line": 198,
-    "text": [
-     "// +0x10; ctor 005e6cf0 zeroes them, dtor 005e70a0 alignedFree",
-     "// 00507d20 then zeroes; 005e6c70 resize 005e6540 and refills it",
-     "// through 005e6ba0 from EdgeIterator::begin 00647730 / ++ 00647700)"
-    ]
-   },
-   {
-    "line": 209,
-    "text": [
-     "// fastRemoveShort<Assembly*> 005e5200 is the registry name)"
-    ]
-   },
-   {
-    "line": 223,
-    "text": [
-     "// the ctor 005e6cf0 stores it at +0x70 with this at +0x6c)"
-    ]
-   },
-   {
-    "line": 228,
-    "text": [
-     "// PrimIterator::findFirstChild IN_CLUMP, then Body::setParent(NULL)",
-     "// 006148b0 and Primitive::setClump(NULL) 005e7550)"
-    ]
-   },
-   {
-    "line": 231,
-    "text": [
-     "// cdecl, callers 005e62d0 / 005e6360)"
-    ]
-   },
-   {
-    "line": 234,
-    "text": [
-     "// primitive, append; only caller 005e6c70)"
-    ]
-   },
-   {
-    "line": 265,
-    "text": [
-     "// INFERRED names: cdecl (parent, joint, child) Clump-unit helpers called by TreeStage::processEdge 00669560."
-    ]
-   },
-   {
-    "line": 270,
-    "text": [
-     "// callers TreeStage::cleanAssembly 00668f20 / cleanEdge 00668fa0)"
-    ]
-   },
-   {
-    "line": 273,
-    "text": [
-     "// externalEdgesDirty +0x14; callers SleepStage 0064a790 / 0064a950",
-     "// / 0064c470)"
-    ]
-   },
-   {
-    "line": 281,
-    "text": [
-     "// INFERRED: the 2008 binary has no RTTI for an RBX::Assembly and the assembly object is its root Clump (Clump()",
-     "// 005e6cf0 stores this at +0x24), while the registry names that carry the type (Primitive::getAssembly 005e7570,",
-     "// AssemblySimJob(Assembly*) 005e51e0) spell RBX::Assembly. Declared as a Clump that adds no members and no",
-     "// virtuals, never constructed (so no vtable or RTTI of its own, as in the binary): every member called on it is a",
-     "// Clump member, as 005e6110 / 005e6160 / 005e6170 are Clump-unit code."
-    ]
-   },
-   {
-    "line": 299,
-    "text": [
-     "// 005e5f60 (analog name: openrbx lessAssembly; cdecl, the comparator addChild 005e6f70 passes to std::_Sort 005e6e90)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/app/include/v8world/SimJob.h": {
-  "source": "rebuild/2008-06/native-headers/v8world/SimJob.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 2,
-    "text": [
-     "// 2008-06 native RBX::SimJob declaration (inactive). Proposed from RTTI and the",
-     "// MovingNoPhysicsBase family; see tests/NativeHumanoidStates3SimJob.h for evidence."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/AdornRbxGfx.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
-   "rebuild/2008-06/native-classes/AdornRbxGfx3.cpp",
-   "rebuild/2008-06/native-classes/AdornRbxGfxBounds_0066fe30.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// RBX::AdornRbxGfx bodies as compiled into the June 2008 client (inactive native recovery).",
-     "// Declarations: native-headers/RbxGraphics/AdornRbxGfx2008.h. Verified by tests/record_native_adorn.py (VS2008 RTM",
-     "// 21022, document-swap flags + Ogre 1.4.5 client headers + /fp:fast).",
-     "//",
-     "// Only bodies that need nothing beyond the AdornRbxGfx layout and the Ogre / std headers are built here. Everything",
-     "// that reads the Ogre::VisualEngine (+0x4: scene manager +0x4, 2D manager +0x14, viewport +0x10) or calls the exe-local",
-     "// RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont methods waits for those declarations (see the recorder receipt)."
-    ]
-   },
-   {
-    "line": 17,
-    "text": [
-     "// The AdornRbxGfx image block (0066fc30..00671d5f) holds the out-of-line members of its four containers. Explicit",
-     "// instantiation emits the same COMDATs here: std::map<std::string, Ogre::MeshPtr> (+0x78), std::map<std::string,",
-     "// Ogre::SceneNode*> (+0xb8 / +0xf4), std::vector<Ogre::RbxSubEntity*> (+0x48 / +0x60), std::vector<Ogre::SceneNode*>",
-     "// (+0xa0 / +0xdc)."
-    ]
-   },
-   {
-    "line": 32,
-    "text": [
-     "// 0097da58: incremented by uniqueName 0066fc00, reset to 0 by finishRenderPass 00671f90."
-    ]
-   },
-   {
-    "line": 40,
-    "text": [
-     "// Slots 15 / 22 / 23 are empty: the image folds them onto the shared `ret 4` / `ret 0xc` / `ret 0x10` bodies",
-     "// 0070bdf0 / 006ad2a0 / 004e83a0."
-    ]
-   },
-   {
-    "line": 86,
-    "text": [
-     "// RenderNew::TextureProxy(const std::string&) is out of line at 0066ffb0 (native-classes/TextureProxyRenderNew.cpp)."
-    ]
-   },
-   {
-    "line": 93,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   },
-   {
-    "line": 118,
-    "text": [
-     "// RBX::AdornRbxGfx viewport size / 2D text members as compiled into the June 2008 client (inactive native recovery).",
-     "// Same original unit as AdornRbxGfx.cpp (image block 0066f900..006743eb). Declarations: RbxGraphics/AdornRbxGfx2008.h."
-    ]
-   },
-   {
-    "line": 126,
-    "text": [
-     "// 00962da8: the 2D text font, an Ogre::SharedPtr<RbxFont> (vptr 0084d1d4, pRep at 00962dac) assigned from",
-     "// RbxFont::fromFile by the AdornRbxGfx constructor 00674210 (guard `[00962dac] == 0`, call 00670670 on 00962da8)."
-    ]
-   },
-   {
-    "line": 130,
-    "text": [
-     "// 0066f900 (slot 5): tail-jumps to Viewport::getActualWidth (rgmain import)."
-    ]
-   },
-   {
-    "line": 136,
-    "text": [
-     "// 0066f910 (slot 6)"
-    ]
-   },
-   {
-    "line": 142,
-    "text": [
-     "// 0066fda0 (slot 13): RbxFont::draw2D 00684730 with the y position flipped against the viewport height; the",
-     "// result is written back as (x, y) of the returned Vector2."
-    ]
-   },
-   {
-    "line": 164,
-    "text": [
-     "// 00673a90 (slot 0). NEAR MISS: 1613 B like the target, identical instruction stream; only the stack spill slot",
-     "// numbering (esp+0x10/0x14/0x1c vs the target's 0x14/0x10) and frame size (0x14 vs 0x18) differ. The",
-     "// explosion / sparkle nodes hold ParticleSystems (getAttachedObject(0) at -0x20, destroyParticleSystem slot",
-     "// 0x134, removeAndDestroyChild slot 0x170). Tried: single-expression sm loads, sm locals per call, sm",
-     "// local per if-block; none reproduced the extra temp."
-    ]
-   },
-   {
-    "line": 214,
-    "text": [
-     "// 0066fe30 (slot 12): AdornRbxGfx::get2DStringBounds -> RbxFont::get2DStringBounds 00684640 on font2d (pRep 00962dac).",
-     "// INFERRED: slot/signature from AdornRbxGfx2008.h; body shape (forward, copy x/y) mirrors drawFont2D 0066fda0."
     ]
    }
   ]
@@ -16295,6 +16022,114 @@
     "line": 383,
     "text": [
      "// 004a7150: real name from the identity registry; body byte-proved against the native headers (named lane)"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/AdornRbxGfx.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/AdornRbxGfx.cpp",
+   "rebuild/2008-06/native-classes/AdornRbxGfx3.cpp",
+   "rebuild/2008-06/native-classes/AdornRbxGfxBounds_0066fe30.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// RBX::AdornRbxGfx bodies as compiled into the June 2008 client (inactive native recovery).",
+     "// Declarations: native-headers/RbxGraphics/AdornRbxGfx2008.h. Verified by tests/record_native_adorn.py (VS2008 RTM",
+     "// 21022, document-swap flags + Ogre 1.4.5 client headers + /fp:fast).",
+     "//",
+     "// Only bodies that need nothing beyond the AdornRbxGfx layout and the Ogre / std headers are built here. Everything",
+     "// that reads the Ogre::VisualEngine (+0x4: scene manager +0x4, 2D manager +0x14, viewport +0x10) or calls the exe-local",
+     "// RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont methods waits for those declarations (see the recorder receipt)."
+    ]
+   },
+   {
+    "line": 17,
+    "text": [
+     "// The AdornRbxGfx image block (0066fc30..00671d5f) holds the out-of-line members of its four containers. Explicit",
+     "// instantiation emits the same COMDATs here: std::map<std::string, Ogre::MeshPtr> (+0x78), std::map<std::string,",
+     "// Ogre::SceneNode*> (+0xb8 / +0xf4), std::vector<Ogre::RbxSubEntity*> (+0x48 / +0x60), std::vector<Ogre::SceneNode*>",
+     "// (+0xa0 / +0xdc)."
+    ]
+   },
+   {
+    "line": 32,
+    "text": [
+     "// 0097da58: incremented by uniqueName 0066fc00, reset to 0 by finishRenderPass 00671f90."
+    ]
+   },
+   {
+    "line": 40,
+    "text": [
+     "// Slots 15 / 22 / 23 are empty: the image folds them onto the shared `ret 4` / `ret 0xc` / `ret 0x10` bodies",
+     "// 0070bdf0 / 006ad2a0 / 004e83a0."
+    ]
+   },
+   {
+    "line": 86,
+    "text": [
+     "// RenderNew::TextureProxy(const std::string&) is out of line at 0066ffb0 (native-classes/TextureProxyRenderNew.cpp)."
+    ]
+   },
+   {
+    "line": 93,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 118,
+    "text": [
+     "// RBX::AdornRbxGfx viewport size / 2D text members as compiled into the June 2008 client (inactive native recovery).",
+     "// Same original unit as AdornRbxGfx.cpp (image block 0066f900..006743eb). Declarations: RbxGraphics/AdornRbxGfx2008.h."
+    ]
+   },
+   {
+    "line": 126,
+    "text": [
+     "// 00962da8: the 2D text font, an Ogre::SharedPtr<RbxFont> (vptr 0084d1d4, pRep at 00962dac) assigned from",
+     "// RbxFont::fromFile by the AdornRbxGfx constructor 00674210 (guard `[00962dac] == 0`, call 00670670 on 00962da8)."
+    ]
+   },
+   {
+    "line": 130,
+    "text": [
+     "// 0066f900 (slot 5): tail-jumps to Viewport::getActualWidth (rgmain import)."
+    ]
+   },
+   {
+    "line": 136,
+    "text": [
+     "// 0066f910 (slot 6)"
+    ]
+   },
+   {
+    "line": 142,
+    "text": [
+     "// 0066fda0 (slot 13): RbxFont::draw2D 00684730 with the y position flipped against the viewport height; the",
+     "// result is written back as (x, y) of the returned Vector2."
+    ]
+   },
+   {
+    "line": 164,
+    "text": [
+     "// 00673a90 (slot 0). NEAR MISS: 1613 B like the target, identical instruction stream; only the stack spill slot",
+     "// numbering (esp+0x10/0x14/0x1c vs the target's 0x14/0x10) and frame size (0x14 vs 0x18) differ. The",
+     "// explosion / sparkle nodes hold ParticleSystems (getAttachedObject(0) at -0x20, destroyParticleSystem slot",
+     "// 0x134, removeAndDestroyChild slot 0x170). Tried: single-expression sm loads, sm locals per call, sm",
+     "// local per if-block; none reproduced the extra temp."
+    ]
+   },
+   {
+    "line": 214,
+    "text": [
+     "// 0066fe30 (slot 12): AdornRbxGfx::get2DStringBounds -> RbxFont::get2DStringBounds 00684640 on font2d (pRep 00962dac).",
+     "// INFERRED: slot/signature from AdornRbxGfx2008.h; body shape (forward, copy x/y) mirrors drawFont2D 0066fda0."
     ]
    }
   ]
