@@ -51,10 +51,7 @@ namespace RBX
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // VelocityMotor: 0060bab0
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) (VelocityMotor instance 0060bab0) is defined inline in reflection/reflection.h.
 
 	// Dynamic initializers 007f7ac0, 007f7b00, 007f7b40, 007f7b80 (before the Feature ones; Functionality 5).
 	static Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole("Hole", "Data", &VelocityMotor::getHole, &VelocityMotor::setHole, Reflection::PropertyDescriptor::STANDARD);

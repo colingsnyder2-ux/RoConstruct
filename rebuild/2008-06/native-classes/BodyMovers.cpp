@@ -29,10 +29,7 @@ namespace RBX
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 
-	template<class C, class D, const char* N>
-	template<class A>
-	DescribedCreatable<C, D, N>::DescribedCreatable(A arg0)
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) is defined inline in reflection/reflection.h.
 
 	// 00630860 (called from the factory registration unit 005c3d8e): declares each class name.
 	void registerBodyMovers()

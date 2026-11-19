@@ -18,10 +18,7 @@ namespace RBX
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 
-	template<class C, class D, const char* N>
-	template<class A>
-	DescribedCreatable<C, D, N>::DescribedCreatable(A arg0)
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) is defined inline in reflection/reflection.h.
 
 	// Dynamic initializers 007f7f10..007f8190 (in this order).
 	Reflection::RefPropDescriptor<Rocket, PartInstance> Rocket::prop_Target("Target", "Goals", &Rocket::getTarget, &Rocket::setTarget, Reflection::PropertyDescriptor::STANDARD);
