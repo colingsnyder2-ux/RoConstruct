@@ -105,7 +105,7 @@ namespace RBX
 		Workspace(IDataState* dataState);
 		virtual ~Workspace();
 		// INFERRED: 005a05c0, placeholder name (identity tier), body byte-proved
-		int sub_005a05c0() const;
+		Camera* sub_005a05c0() const;   // INFERRED: reads currentCamera (+0x3fc, shared_ptr<Camera> px), proved against 005a05c0 asm
 		// INFERRED: 005a0df0, callgraph-adjacency: neighbours=1
 		void sub_005a0df0();
 	public:

@@ -1,11 +1,13 @@
 #include "v8datamodel/Workspace.h"
 
+namespace RBX {
+
 // INFERRED: 005a05c0, placeholder name (identity tier), body byte-proved
-int Workspace::sub_005a05c0() const
+Camera* Workspace::sub_005a05c0() const
 {
-	// mov eax, dword ptr [ecx + 0x3fc]
+	// mov eax, dword ptr [ecx + 0x3fc]   ; currentCamera (shared_ptr<Camera>) px, a real field at +0x3fc
 	// ret
-	return *reinterpret_cast<const long*>(reinterpret_cast<const char*>(this) + 0x3fc);
+	return currentCamera.get();
 }
 
 // INFERRED: 005a0df0, callgraph-adjacency: neighbours=1
@@ -52,4 +54,5 @@ void Workspace::sub_005a0df0()
 
 	// *(DWORD*)[eax + 0xa8] = 0
 	*reinterpret_cast<DWORD*>(*eax2 + 0xa8) = 0;
+}
 }

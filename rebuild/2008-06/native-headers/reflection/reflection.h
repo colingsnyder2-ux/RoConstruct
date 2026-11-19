@@ -447,10 +447,9 @@ namespace RBX
 		struct Tuple
 		{
 			ValueCollection values;
-			explicit Tuple(size_t count)
-				: values(count)
-			{
-			}
+			explicit Tuple(size_t count);   // INFERRED: 00589d60 calls an out-of-line ctor (0x589c40) with this = the Tuple itself
+			Tuple(const Tuple&);            // INFERRED: 00589d60 returns the local via an out-of-line copy ctor call (0x55fed0)
+			~Tuple();                       // INFERRED: 00589d60 destroys the local through a call with this = the Tuple (0x42d630)
 		};
 		template<typename Class, typename Function, int ArgCount>
 		class BoundFuncDesc;
