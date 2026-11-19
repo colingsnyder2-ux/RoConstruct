@@ -14,15 +14,15 @@
    "functions": 1337,
    "bytes": 280536
   },
-  "merged unit, complete": {
-   "files": 30,
-   "functions": 287,
-   "bytes": 61574
-  },
   "merged unit, partial": {
    "files": 82,
    "functions": 1332,
    "bytes": 197026
+  },
+  "merged unit, complete": {
+   "files": 30,
+   "functions": 287,
+   "bytes": 61574
   }
  }
 }
