@@ -329,6 +329,74 @@ namespace RBX
 	}
 }
 
+#include "v8datamodel/DataModel.h"
+#include "tool/MegaDragger.h"
+#include "tool/AxisMoveTool.h"
+#include "tool/AxisMoveGrid.h"
+#include "StandardVerbs.h"
+
+namespace RBX {
+char sAxisMoveTool[] = "AxisMove";
+AxisMoveTool::AxisMoveTool(Workspace* w) : Named<ArrowToolBase, sAxisMoveTool>(w), cursor("ArrowCursor"), dragging(false) {}
+template<> MouseCommand* TToolVerb<AxisMoveTool, RunStateVerb>::newMouseCommand() {
+    return new AxisMoveTool(dataModel->getWorkspace());
+}
+template<> const Name& Named<ArrowToolBase, sAxisMoveTool>::getName() const { return NativeToolName<AxisMoveTool>::get(); }
+}
+
+#include "tool/ModelTools.h"
+
+namespace RBX {
+template<> MouseCommand* TToolVerb<AnchorTool, RunStateVerb>::newMouseCommand()
+{
+    return new AnchorTool(dataModel->getWorkspace());
+}
+
+template<> MouseCommand* TToolVerb<LockTool, RunStateVerb>::newMouseCommand()
+{
+    return new LockTool(dataModel->getWorkspace());
+}
+}
+
+#include "v8datamodel/ToolsPart.h"
+
+namespace RBX {
+template<> MouseCommand* TToolVerb<FillTool, RunStateVerb>::newMouseCommand() { return new FillTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<DropperTool, RunStateVerb>::newMouseCommand() { return new DropperTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<ModelSetPrimaryPartTool, RunStateVerb>::newMouseCommand() { return new ModelSetPrimaryPartTool(dataModel->getWorkspace()); }
+}
+
+#undef _RELEASEASSERT
+#include "tool/SurfaceTools.h"
+
+namespace RBX {
+#define RBX_SURFACE_FACTORY(T) \
+template<> MouseCommand* TToolVerb<T, RunStateVerb>::newMouseCommand() { return new T(dataModel->getWorkspace()); } \
+template<> const Name& Named<SurfaceTool, s##T>::getName() const { return NativeToolName<T>::get(); }
+RBX_SURFACE_FACTORY(GlueTool)
+RBX_SURFACE_FACTORY(WeldTool)
+RBX_SURFACE_FACTORY(StudsTool)
+RBX_SURFACE_FACTORY(InletTool)
+RBX_SURFACE_FACTORY(HingeTool)
+RBX_SURFACE_FACTORY(RightMotorTool)
+RBX_SURFACE_FACTORY(LeftMotorTool)
+RBX_SURFACE_FACTORY(OscillateMotorTool)
+#undef RBX_SURFACE_FACTORY
+}
+
+#undef _RELEASEASSERT
+#include "tool/BasicMouseTools.h"
+#include "tool/FlatTool.h"
+
+namespace RBX {
+template<> MouseCommand* TToolVerb<CloneTool, RunStateVerb>::newMouseCommand() { return new CloneTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<FlatTool, RunStateVerb>::newMouseCommand() { return new FlatTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<GameTool, RunStateVerb>::newMouseCommand() { return new GameTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<GrabTool, RunStateVerb>::newMouseCommand() { return new GrabTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<HammerTool, RunStateVerb>::newMouseCommand() { return new HammerTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<LaserTool, RunStateVerb>::newMouseCommand() { return new LaserTool(dataModel->getWorkspace()); }
+}
+
 #include "v8datamodel/ModelInstance.h"
 
 namespace RBX {
@@ -345,7 +413,6 @@ boost::shared_ptr<ModelInstance> Workspace::group(std::vector<boost::shared_ptr<
 
 }
 
-#include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"
 
 namespace RBX {

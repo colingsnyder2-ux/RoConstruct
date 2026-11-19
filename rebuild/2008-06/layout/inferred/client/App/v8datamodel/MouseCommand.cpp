@@ -166,3 +166,14 @@ Decal* MouseCommand::getDecal(PartInstance* part, const UIEvent& input)
     return NULL;
 }
 }
+
+namespace RBX {
+UnlockedPartByLocalCharacter::UnlockedPartByLocalCharacter(Instance* root)
+    : PartByLocalCharacter(root) {}
+
+PartInstance* MouseCommand::getUnlockedPartByLocalCharacter(const UIEvent& event, G3D::Vector3& hitWorld)
+{
+    UnlockedPartByLocalCharacter filter(workspace);
+    return getPart(event, &filter, hitWorld);
+}
+}
