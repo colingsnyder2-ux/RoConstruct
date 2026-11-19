@@ -6,10 +6,11 @@
 // Close but not exact (see comments at each body): 00467670 00467ad0 00467b50 (the target multiplies by a dword 0.5f
 // loaded into a register; every source form tried here makes MSVC load a qword constant and fimul one operand),
 // 00467880 (target calls the imported std::string::c_str), 00467f10 (stack frame), 004684a0 (UIEvent temporaries),
-// 00468e90 (target keeps a redundant test of the DirectInput pointer; the Stepped removeListener offset 0x170 differs
-// because the native RunService header places that Notifier at 0x150).
-// Not recovered: 00467a00 postEvent (needs a DataModel method taking const UIEvent&, 00577460, not in the shared
-// DataModel.h), 004681b0 processKeyboard, 004685b0 processMouse, 00467d50, 00468b90 window message handler,
+// 00468e90 (472 = 472 bytes since batch 25: the redundant DirectInput test comes from the inlined by-reference release
+// helper; the only remaining difference is the Stepped removeListener offset, 0x170 in the target vs 0x150 here,
+// because the core util/RunStateOwner.h RunService places that Notifier at 0x150).
+// 00467a00 postEvent: exact since batch 25 (through the header's func_00577460 conduit).
+// Not recovered: 004681b0 processKeyboard, 004685b0 processMouse, 00467d50, 00468b90 window message handler,
 // 004690f0 constructor: recovered below, byte-identical to the target except the Stepped addListener offset (0x150 here
 // vs 0x170, the native RunService header places that Notifier differently); also built here: DxCriticalSection 004328c0
 // (exact). postEvent / processKeyboard (needs CMainFrame member +0x104) / processMouse / 00468b90 / 00467d50 stay open.
@@ -311,6 +312,15 @@ namespace RBX
 		}
 	}
 
+	// 00467a00: hand the event to the DataModel under its lock (DataModel::Lock 00411b40 / ~Lock 005773c0 from a
+	// shared_ptr<const DataModel> copy of +0x180). The DataModel member at 00577460 has no declaration in the core
+	// DataModel.h, so the call goes through the header's INFERRED conduit func_00577460 (ECX = the DataModel pointer).
+	void DxUserInput::postEvent(const UIEvent& event)
+	{
+		DataModel::Lock lock(dataModel);
+		reinterpret_cast<DxUserInput*>(dataModel.get())->func_00577460(event);
+	}
+
 	// 004684a0: mouse button 3 / 4 toggle the drag flag, then the event goes to the DataModel
 	void DxUserInput::postMouseEvent(int eventType, const G3D::Vector2& position)
 	{
@@ -450,6 +460,17 @@ namespace RBX
 			runService->Notifier<RunService, Stepped>::addListener(static_cast<Listener<RunService, Stepped>*>(this));
 	}
 
+	// INFERRED helper (no address: always inlined): release through a reference so the inlined test reloads the
+	// member, which is what keeps the target's second test of +0x174 after the caller's own check.
+	template<class T> inline void releaseDxInterface(CComPtr<T>& ptr)
+	{
+		if (ptr)
+		{
+			ptr.p->Release();
+			ptr.p = NULL;
+		}
+	}
+
 	// 00468e90
 	DxUserInput::~DxUserInput()
 	{
@@ -475,11 +496,9 @@ namespace RBX
 				keyboard.p = NULL;
 			}
 		}
+		// The target tests +0x174 twice (`cmp [esi+0x174],0` then reload/test) with no call in between.
 		if (directInput)
-		{
-			directInput.p->Release();
-			directInput.p = NULL;
-		}
+			releaseDxInterface(directInput);
 		delete[] accelerators;
 	}
 
