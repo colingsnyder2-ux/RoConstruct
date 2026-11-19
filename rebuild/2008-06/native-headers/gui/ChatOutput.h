@@ -14,7 +14,7 @@
 //               ~GuiItem 00411540), deleting destructor 00650540.
 //               onServiceProvider 00650c00 (slot 12), onEvent(Heartbeat) 0064fe10 (Listener<RunService, Heartbeat>
 //               slot 0; the unit needs /fp:fast for its x87 compare order), onEvent(ChatMessage) 00650cc0 (Listener<Players, ChatMessage> slot 0; not attempted),
-//               ParseCommand 00650660 (not attempted), render2d 0064fe90 (slot 24; not attempted).
+//               ParseCommand 00650660 and render2d 0064fe90 (slot 24): native-classes/ChatOutputCommands.cpp.
 #include "gui/Gui.h"
 #include "gui/ProfanityFilter.h"
 #include "Network/Players.h"
@@ -52,11 +52,11 @@ namespace RBX
 	private:
 		void removeOldest();                                         // 0064fd70
 		bool frontIsOld();                                           // inlined into onEvent 0064fe10 (the loop condition; donor: void)
-		bool ParseCommand(Network::ChatMessage);                     // 00650660 (not attempted)
+		bool ParseCommand(Network::ChatMessage);                     // 00650660 (ChatOutputCommands.cpp)
 		virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);  // slot 12, 00650c00
 		virtual void onEvent(const Network::Players*, Network::ChatMessage);            // 00650cc0 (not attempted)
 		virtual void onEvent(const RunService*, Heartbeat);          // 0064fe10
-		virtual void render2d(Adorn*);                               // slot 24, 0064fe90 (not attempted)
+		virtual void render2d(Adorn*);                               // slot 24, 0064fe90 (ChatOutputCommands.cpp)
 	public:
 		ChatOutput();                                                // 0064fb60
 		virtual ~ChatOutput();                                       // 00650440
