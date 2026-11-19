@@ -156,3 +156,17 @@ template class std::list<std::pair<std::basic_string<char,std::char_traits<char>
 template class std::map<unsigned long,Ogre::Matrix4 *,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,Ogre::Matrix4 *> > >;
 template class stdext::_Hash<stdext::_Hmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,stdext::hash_compare<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >,0> >;
 template class stdext::_Hash<stdext::_Hmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::Node *,stdext::hash_compare<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Node *> >,0> >;
+
+#undef OGRE_NONCLIENT_BUILD
+namespace Ogre {
+// INFERRED: name and pointer type; original 00682150 erases from the sphere map.
+bool eraseSphere(const void* key) {
+ if (!RbxSceneNode::spheres) return false;
+ RbxSceneNode::SphereMap::iterator i = RbxSceneNode::spheres->find(key);
+ if (i != RbxSceneNode::spheres->end()) {
+  RbxSceneNode::spheres->erase(i);
+  return true;
+ }
+ return false;
+}
+}

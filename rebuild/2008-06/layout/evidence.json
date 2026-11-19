@@ -8184,236 +8184,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxEntity.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxEntityCamera2008.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
-     "// INFERRED: imported declarations match original 0067daf0 calls."
-    ]
-   },
-   {
-    "line": 18,
-    "text": [
-     "// INFERRED placeholder names (owner rule 2026-11-11): globals read by RbxEntity::collect 0067e2f0."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/win/resource.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxEntityClear2008.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   },
-   {
-    "line": 5,
-    "text": [
-     "// INFERRED name: original 0067d3d0 clears Entity::mSubEntityList."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Ogre::RbxSceneNode method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/RbxSceneNode2008.h.",
-     "// Bodies 00681190..006823ff. Built with the Ogre 1.4.5 client headers; record_native_ogre_rbx_node.py verifies them.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   },
-   {
-    "line": 14,
-    "text": [
-     "// 00681190: the node keeps its local transform as the derived one and a fixed +/-10000 world box."
-    ]
-   },
-   {
-    "line": 23,
-    "text": [
-     "// 006817e0"
-    ]
-   },
-   {
-    "line": 35,
-    "text": [
-     "// 00681560: SceneNode::_findVisibleObjects without the camera visibility test."
-    ]
-   },
-   {
-    "line": 74,
-    "text": [
-     "// 00681f90"
-    ]
-   },
-   {
-    "line": 87,
-    "text": [
-     "// 006818e0: key 0 is the node's own full transform."
-    ]
-   },
-   {
-    "line": 105,
-    "text": [
-     "// 00681a00"
-    ]
-   },
-   {
-    "line": 112,
-    "text": [
-     "// 006822e0"
-    ]
-   },
-   {
-    "line": 119,
-    "text": [
-     "// 00682350"
-    ]
-   },
-   {
-    "line": 133,
-    "text": [
-     "// 00682040"
-    ]
-   },
-   {
-    "line": 142,
-    "text": [
-     "// 00682100"
-    ]
-   },
-   {
-    "line": 149,
-    "text": [
-     "// 006821c0"
-    ]
-   },
-   {
-    "line": 158,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Ogre::TwoDManager method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/TwoDManager2008.h.",
-     "// Bodies 00682560..006843e6 except render 006832b0. Built with the Ogre 1.4.5 client headers (/fp:fast);",
-     "// record_native_ogre_rbx_node.py verifies them.",
-     "// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   },
-   {
-    "line": 17,
-    "text": [
-     "// 006831d0"
-    ]
-   },
-   {
-    "line": 22,
-    "text": [
-     "// 00683240"
-    ]
-   },
-   {
-    "line": 27,
-    "text": [
-     "// 00682560"
-    ]
-   },
-   {
-    "line": 39,
-    "text": [
-     "// 00682d60"
-    ]
-   },
-   {
-    "line": 84,
-    "text": [
-     "// 00683000"
-    ]
-   },
-   {
-    "line": 101,
-    "text": [
-     "// 006830b0"
-    ]
-   },
-   {
-    "line": 117,
-    "text": [
-     "// 006843b0"
-    ]
-   },
-   {
-    "line": 124,
-    "text": [
-     "// 006843d0"
-    ]
-   },
-   {
-    "line": 130,
-    "text": [
-     "// INFERRED (owner rule 2026-11-11): Batch, createVertexBuffer 006829a0 and prepareRenderState 006825b0 names;",
-     "// bodies follow the server-exact fork analog roc_espclaude_610f7f834b7be5f0.cpp.",
-     "// PARKED drafts: render 4554/4309 B (original calls out-of-line list iterator operator*/++ 0042a8f0/00682ad0; the fork",
-     "// forces them with noinline wrappers, not plausible source). prepareRenderState: body from its own 100% app analog 006825b0 (the fork variant is 999 B)",
-     "// under the native runner (rbxgs prelude) but 1007 B under the ogre-1.4.5-dll recipe build -> runner prelude difference."
-    ]
-   },
-   {
-    "line": 258,
-    "text": [
-     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
-    ]
-   }
-  ]
- },
- "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneManager.cpp": {
-  "source": "rebuild/2008-06/native-classes/OgreRbxSceneManagerSkybox2008.cpp",
-  "build": {
-   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
-    ]
-   },
-   {
-    "line": 6,
-    "text": [
-     "// INFERRED: fork field names from documented native offsets; source location from exact donor."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSky.cpp": {
   "source": "rebuild/2008-06/native-classes/OgreRbxSky.cpp",
   "build": {
@@ -8454,6 +8224,56 @@
     "line": 290,
     "text": [
      "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSubMesh.cpp": {
+  "source": "rebuild/2008-06/native-classes/OgreRbxSubMesh.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+    ]
+   },
+   {
+    "line": 19,
+    "text": [
+     "// 00682430"
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxFont.cpp": {
+  "source": "rebuild/2008-06/native-classes/OgreVRbxFont.cpp",
+  "build": {
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+    ]
+   },
+   {
+    "line": 4,
+    "text": [
+     "// 2008-06 native Ogre::RbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.",
+     "// Body order follows the original 00684b10 / 00684eb0 and upstream GLG3D/GFont.cpp."
+    ]
+   },
+   {
+    "line": 17,
+    "text": [
+     "// Unique texture names \"ft0\", \"ft1\", ... (original counter at 0097dbc8, format \"ft%d\" at 0084e808).",
+     "// External linkage: the original stores the increment after the _snprintf argument pushes, which an",
+     "// internal-linkage static does not reproduce. Name unknown (placeholder).",
+     "// INFERRED: counter spelling; original read/write address0097dbc8."
     ]
    }
   ]
@@ -9676,20 +9496,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.h": {
-  "source": "rebuild/2008-06/native-headers/util/MarshaledListener.h",
-  "build": {},
-  "notes": [
-   {
-    "line": 11,
-    "text": [
-     "// Inactive recovery. Original RTTI proves four template parameters and the",
-     "// Listener base; selected Selection dispatch/filter bodies match. Global lifetime",
-     "// and game integration remain open."
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/include/util/MeshIdType.h": {
   "source": "rebuild/2008-06/native-headers/util/MeshIdType.h",
   "build": {},
@@ -10227,6 +10033,324 @@
     "text": [
      "// Split from the recovered Verb.h so native IDataState can be used without",
      "// importing the donor's incompatible StateStack-based IDataState declaration."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxAdornState.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/OgreRbxAdornOffset2008.cpp",
+   "rebuild/2008-06/native-classes/OgreRbxAdornState.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 9,
+    "text": [
+     "// 2008-06 native Ogre::RbxAdornState (inactive): SGI GLU quad.c (gluCylinder/gluPartialDisk/gluDisk/gluSphere) on",
+     "// Ogre::ManualObject. Bodies follow the server-exact analog of each address; upstream: mesa glu src/libutil/quad.c."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
+   "rebuild/2008-06/native-classes/OgreSphereErase2008.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Ogre::RbxSceneNode method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/RbxSceneNode2008.h.",
+     "// Bodies 00681190..006823ff. Built with the Ogre 1.4.5 client headers; record_native_ogre_rbx_node.py verifies them."
+    ]
+   },
+   {
+    "line": 13,
+    "text": [
+     "// 00681190: the node keeps its local transform as the derived one and a fixed +/-10000 world box."
+    ]
+   },
+   {
+    "line": 22,
+    "text": [
+     "// 006817e0"
+    ]
+   },
+   {
+    "line": 34,
+    "text": [
+     "// 00681560: SceneNode::_findVisibleObjects without the camera visibility test."
+    ]
+   },
+   {
+    "line": 73,
+    "text": [
+     "// 00681f90"
+    ]
+   },
+   {
+    "line": 86,
+    "text": [
+     "// 006818e0: key 0 is the node's own full transform."
+    ]
+   },
+   {
+    "line": 104,
+    "text": [
+     "// 00681a00"
+    ]
+   },
+   {
+    "line": 111,
+    "text": [
+     "// 006822e0"
+    ]
+   },
+   {
+    "line": 118,
+    "text": [
+     "// 00682350"
+    ]
+   },
+   {
+    "line": 132,
+    "text": [
+     "// 00682040"
+    ]
+   },
+   {
+    "line": 141,
+    "text": [
+     "// 00682100"
+    ]
+   },
+   {
+    "line": 148,
+    "text": [
+     "// 006821c0"
+    ]
+   },
+   {
+    "line": 157,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 176,
+    "text": [
+     "// INFERRED: name and pointer type; original 00682150 erases from the sphere map."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
+   "rebuild/2008-06/native-classes/OgreTwoDVertexBuffer2008.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Ogre::TwoDManager method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/TwoDManager2008.h.",
+     "// Bodies 00682560..006843e6 except render 006832b0. Built with the Ogre 1.4.5 client headers (/fp:fast);",
+     "// record_native_ogre_rbx_node.py verifies them."
+    ]
+   },
+   {
+    "line": 16,
+    "text": [
+     "// 006831d0"
+    ]
+   },
+   {
+    "line": 21,
+    "text": [
+     "// 00683240"
+    ]
+   },
+   {
+    "line": 26,
+    "text": [
+     "// 00682560"
+    ]
+   },
+   {
+    "line": 38,
+    "text": [
+     "// 00682d60"
+    ]
+   },
+   {
+    "line": 83,
+    "text": [
+     "// 00683000"
+    ]
+   },
+   {
+    "line": 100,
+    "text": [
+     "// 006830b0"
+    ]
+   },
+   {
+    "line": 116,
+    "text": [
+     "// 006843b0"
+    ]
+   },
+   {
+    "line": 123,
+    "text": [
+     "// 006843d0"
+    ]
+   },
+   {
+    "line": 129,
+    "text": [
+     "// INFERRED (owner rule 2026-11-11): Batch, createVertexBuffer 006829a0 and prepareRenderState 006825b0 names;",
+     "// bodies follow the server-exact fork analog roc_espclaude_610f7f834b7be5f0.cpp.",
+     "// PARKED drafts: render 4554/4309 B (original calls out-of-line list iterator operator*/++ 0042a8f0/00682ad0; the fork",
+     "// forces them with noinline wrappers, not plausible source). prepareRenderState: body from its own 100% app analog 006825b0 (the fork variant is 999 B)",
+     "// under the native runner (rbxgs prelude) but 1007 B under the ogre-1.4.5-dll recipe build -> runner prelude difference."
+    ]
+   },
+   {
+    "line": 257,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 266,
+    "text": [
+     "// INFERRED: method name from original target 006829a0 and TwoDManager::render caller."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxEntity.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/OgreRbxEntityAppend2008.cpp",
+   "rebuild/2008-06/native-classes/OgreRbxEntity.cpp",
+   "rebuild/2008-06/native-classes/OgreRbxEntitySetMesh2008.cpp",
+   "rebuild/2008-06/native-classes/OgreRbxEntityClear2008.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 6,
+    "text": [
+     "// INFERRED spelling and derived argument from original caller 00671f69."
+    ]
+   },
+   {
+    "line": 31,
+    "text": [
+     "// INFERRED name: 0067c510 writes the non-owning FrameHistory pointer at +0x274."
+    ]
+   },
+   {
+    "line": 58,
+    "text": [
+     "// 0067c6a0: slot 54 of vtable 0084e45c.  The name remains an address",
+     "// placeholder; receiver, bool argument, base SubEntityList iteration and",
+     "// virtual setVisible call are all target-derived."
+    ]
+   },
+   {
+    "line": 76,
+    "text": [
+     "// 0067e2f0, from the server-exact fork analog (roc_espclaude_3a38bc51a49d03ed.cpp); RankedShadow name INFERRED."
+    ]
+   },
+   {
+    "line": 226,
+    "text": [
+     "// 0067d010 (slot 28): Entity::_updateRenderQueue without the skeleton / vertex-animation parts (Roblox's fork has none):",
+     "// a manual LOD hands over to its LOD entity, otherwise every visible sub-entity goes to the queue."
+    ]
+   },
+   {
+    "line": 250,
+    "text": [
+     "// 0067c570 (slot 24): the per-frame camera notification runs the camera work once until something clears the flag."
+    ]
+   },
+   {
+    "line": 263,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   },
+   {
+    "line": 269,
+    "text": [
+     "// INFERRED: member name from original assignment at 0067c520 and callers."
+    ]
+   },
+   {
+    "line": 275,
+    "text": [
+     "// INFERRED name: original 0067d3d0 clears Entity::mSubEntityList."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/OgreUtil.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/OgreGeometryBuilder2008.cpp",
+   "rebuild/2008-06/native-classes/OgreGeometryUpdate2008.cpp",
+   "rebuild/2008-06/native-classes/OgreGeometryIndexed2008.cpp",
+   "rebuild/2008-06/native-classes/OgreGeometryIndices2008.cpp",
+   "rebuild/2008-06/native-classes/OgreGeometryVertexProvider2008.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 9,
+    "text": [
+     "// INFERRED: source analog 00679ae0; actual receiver/signature identity still requires proof."
+    ]
+   },
+   {
+    "line": 68,
+    "text": [
+     "// INFERRED method name; 00679e70 replaces Mesh::sharedVertexData (+0x1e4),",
+     "// calls vertex creation at 00679ae0, then sets bounds and half-diagonal radius."
+    ]
+   },
+   {
+    "line": 110,
+    "text": [
+     "// INFERRED: 0067c130 inlines box construction but imports Vector3::length (unlike 0067bcc0)."
+    ]
+   },
+   {
+    "line": 119,
+    "text": [
+     "// INFERRED: method/signature from 0067c130 analog; fields from original allocation and stores."
+    ]
+   },
+   {
+    "line": 156,
+    "text": [
+     "// INFERRED: helper name and pointer types from original 0067c020 and indexed geometry donor."
     ]
    }
   ]
@@ -15415,49 +15539,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/app/v8world/World.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/RBXWorldRecovery_005e9170.cpp"
-  ],
-  "build": {
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// 005e9170: RBX::World::get_78() - double-indirection getter via World's internal data",
-     "// 005e9180: RBX::World::get_7c() - same shape, differs by 0x7c vs 0x78",
-     "// 005e91d0: RBX::World::stepPhysics() - PhysicsService::f() with iterator loop",
-     "// 005ea4d0: RBX::World::processGeometry() - PhysicsService complex method with Geometry iteration"
-    ]
-   },
-   {
-    "line": 11,
-    "text": [
-     "// 005e9170: mov eax, dword ptr [ecx + 0x84]; mov ecx, dword ptr [eax]; mov eax, dword ptr [ecx + 0x78]; ret"
-    ]
-   },
-   {
-    "line": 19,
-    "text": [
-     "// 005e9180: mov eax, dword ptr [ecx + 0x84]; mov ecx, dword ptr [eax]; mov eax, dword ptr [ecx + 0x7c]; ret"
-    ]
-   },
-   {
-    "line": 26,
-    "text": [
-     "// 005e91d0: PhysicsService::f() with iterator loop (87 bytes)"
-    ]
-   },
-   {
-    "line": 39,
-    "text": [
-     "// 005ea4d0: PhysicsService complex method with Geometry iteration (252 bytes)"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/app/v8xml/SerializerV2.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/ArchiveBinder.cpp",
@@ -16613,40 +16694,6 @@
    }
   ]
  },
- "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.cpp": {
-  "sources": [
-   "rebuild/2008-06/native-classes/MarshaledListenerRecovery_004649f0.cpp",
-   "rebuild/2008-06/native-classes/TmplInst_00464d70.cpp"
-  ],
-  "build": {
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast"
-  },
-  "notes": [
-   {
-    "line": 1,
-    "text": [
-     "// Autogenerated by native recovery for RBX::MarshaledListener.",
-     "// 004649f0: 67 bytes, member vftable-slot (own-vft tier), RBX::VInstance::?$MarshaledListener",
-     "// 00464af0: 105 bytes, EventData (rtti-ctor-dtor), RBX::VRunService::?$MarshaledListener"
-    ]
-   },
-   {
-    "line": 10,
-    "text": [
-     "// 00464af0 - EventData rtti-ctor-dtor for VRunService instantiation",
-     "// Evidence: assembly at 00464af0 sets vptr to 0x81b390 (MarshaledListener RTTI),",
-     "// initializes Slot structure fields [esi+0x0..0x14], and calls into native initialization.",
-     "// The constructor stores the owner listener pointer and event value."
-    ]
-   },
-   {
-    "line": 26,
-    "text": [
-     "// 00464d70 ?execute@EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXXZ: explicit template instantiation (generic_templates.py, class form, byte-proved standalone)"
-    ]
-   }
-  ]
- },
  "rebuild/2008-06/layout/inferred/client/win/ObjectBrowser.cpp": {
   "sources": [
    "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
@@ -17159,6 +17206,84 @@
   "notes": [
    {
     "line": 99,
+    "text": [
+     "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
+    ]
+   }
+  ]
+ },
+ "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneManager.cpp": {
+  "sources": [
+   "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp"
+  ],
+  "build": {
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/OgreLightInline /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+  },
+  "notes": [
+   {
+    "line": 1,
+    "text": [
+     "// Ogre::RbxSceneManager / RbxSceneManagerFactory as compiled into the June 2008 client (inactive native recovery).",
+     "//",
+     "// Roblox forked Ogre 1.4.5's OgreSceneManager.cpp into \".\\RbxSceneManager.cpp\" (string 0084e9e8) and overrode every",
+     "// SceneManager virtual. Declarations: native-headers/OgreRbx/RbxSceneManager2008.h. Profile: document-swap flags plus",
+     "// the Ogre 1.4.5 client include path, VS2008 RTM 21022, /fp:fast (the x87 ordering of _setPass 00694680,",
+     "// renderModulativeTextureShadowedQueueGroupObjects 00695420 and _populateLightList 0069e390 only matches with it).",
+     "//",
+     "// Most bodies are the Ogre 1.4.5 OgreSceneManager.cpp bodies unchanged (each is preceded by its line in that file).",
+     "// The fork's edits, each proven by the target bytes:",
+     "//   * exception sites: \"RbxSceneManager::...\" source names and the original file name / line constants (pushed with",
+     "//     the 0084e9e8 file string at every OGRE_EXCEPT site), reproduced with #line;",
+     "//   * _setPass stores pass->getLightingEnabled() at +0x8bb8; renderModulativeTextureShadowedQueueGroupObjects has no",
+     "//     isCustomProjectionMatrixEnabled() test; renderShadowVolumeObjects has no isVisible() test; the bodies after the",
+     "//     \"fork bodies\" marker (cameras, light list, animations, manualRender, the Ogre::Timer-instrumented basic queue",
+     "//     group and _renderScene, the findingShadowCasters guard) follow the fork's versions.",
+     "// Not built (blocked): setSkyBox 00692a10 (constructs RbxSky, new(0xd4), ctor 0067fd60) and renderSingleObject",
+     "// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms).",
+     "// _queueSkiesForRendering 0068d7d0 calls RbxSky::update through the minimal OgreRbx/RbxSky2008.h."
+    ]
+   },
+   {
+    "line": 66,
+    "text": [
+     "// Original sort bodies inline the 1.4.5 shadow comparator (006906d0, 00690460)."
+    ]
+   },
+   {
+    "line": 669,
+    "text": [
+     "// fork: remember the pass lighting state (_setPass 00694680 stores it at +0x8bb8)"
+    ]
+   },
+   {
+    "line": 3555,
+    "text": [
+     "// fork: no isVisible() test here (renderShadowVolumeObjects 00693420)"
+    ]
+   },
+   {
+    "line": 4593,
+    "text": [
+     "// Guard of findShadowCastersForLight; _renderScene 00698cc0 clears it (byte 0097dc38)."
+    ]
+   },
+   {
+    "line": 4920,
+    "text": [
+     "// RbxSky::update 0067f850 is declared in OgreRbx/RbxSky2008.h (minimal interface, no layout claimed)."
+    ]
+   },
+   {
+    "line": 4997,
+    "text": [
+     "// 0069bc50: upstream 1.4.5 renderSingleObject with the fork edits marked \"fork:\".",
+     "// Local byte/data exact (2391 B). Fork omits maximum-light clipping in the",
+     "// non-iterated light list and the manual-light type filter. The mutable list",
+     "// reference preserves iterator evaluation order and the original 0x54-byte frame."
+    ]
+   },
+   {
+    "line": 5298,
     "text": [
      "// Template members emitted by this unit (bodies byte-identical to the 2008-06 client)."
     ]

@@ -2401,6 +2401,10 @@
 "inferred/client/network/Player.cpp",
 "merged unit, partial"
 ],
+"0048a370": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
 "0048a910": [
 "inferred/client/network/Player.cpp",
 "merged unit, partial"
@@ -2447,6 +2451,10 @@
 ],
 "0048ce70": [
 "inferred/client/network/Player.cpp",
+"merged unit, partial"
+],
+"0048cf10": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
 "merged unit, partial"
 ],
 "0048d810": [
@@ -6257,6 +6265,10 @@
 "inferred/client/app/util/Http.cpp",
 "merged unit, partial"
 ],
+"005faa20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
 "005fd3a0": [
 "inferred/client/app/v8datamodel/tool.cpp",
 "merged unit, partial"
@@ -8097,17 +8109,69 @@
 "inferred/client/rendering/appdraw/AdornRbxGfx.cpp",
 "merged unit, partial"
 ],
+"00670710": [
+"inferred/client/rendering/appdraw/RbxFont.cpp",
+"inferred path"
+],
 "00671e20": [
 "inferred/client/rendering/appdraw/AdornRbxGfx.cpp",
 "merged unit, partial"
 ],
-"0067d3d0": [
-"inferred/client/win/resource.cpp",
+"00678470": [
+"inferred/client/rendering/appdraw/RbxSubMesh.cpp",
 "inferred path"
 ],
-"0067daf0": [
+"00679ae0": [
+"inferred/client/rendering/appdraw/OgreUtil.cpp",
+"merged unit, partial"
+],
+"00679e70": [
+"inferred/client/rendering/appdraw/OgreUtil.cpp",
+"merged unit, partial"
+],
+"0067c130": [
+"inferred/client/rendering/appdraw/OgreUtil.cpp",
+"merged unit, partial"
+],
+"0067c520": [
 "inferred/client/rendering/appdraw/RbxEntity.cpp",
-"inferred path"
+"merged unit, partial"
+],
+"0067c570": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067c6a0": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067d010": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067d1f0": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067d3d0": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067d420": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067d9b0": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067da50": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
+],
+"0067e2f0": [
+"inferred/client/rendering/appdraw/RbxEntity.cpp",
+"merged unit, partial"
 ],
 "0067f230": [
 "inferred/client/rendering/appdraw/RbxSky.cpp",
@@ -8139,110 +8203,150 @@
 ],
 "00681190": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00681250": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00681300": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00681360": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00681560": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006817e0": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006818e0": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00681a00": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00681b40": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
+],
+"00681f00": [
+"inferred/client/rendering/appdraw/RbxSceneNode.cpp",
+"merged unit, complete"
 ],
 "00681f90": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00682040": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00682100": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
+],
+"00682150": [
+"inferred/client/rendering/appdraw/RbxSceneNode.cpp",
+"merged unit, complete"
 ],
 "006821c0": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006822e0": [
 "inferred/client/rendering/appdraw/RbxSceneNode.cpp",
+"merged unit, complete"
+],
+"00682430": [
+"inferred/client/rendering/appdraw/RbxSubMesh.cpp",
+"inferred path"
+],
+"006824e0": [
+"inferred/client/rendering/appdraw/RbxSubMesh.cpp",
 "inferred path"
 ],
 "00682560": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006825b0": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
+],
+"006829a0": [
+"inferred/client/rendering/appdraw/TwoDManager.cpp",
+"merged unit, complete"
 ],
 "00682b20": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00682b90": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00682bd0": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00682d60": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00683000": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006830b0": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00683170": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006831d0": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "00683240": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006843b0": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
-"inferred path"
+"merged unit, complete"
 ],
 "006843d0": [
 "inferred/client/rendering/appdraw/TwoDManager.cpp",
+"merged unit, complete"
+],
+"006843f0": [
+"inferred/client/rendering/appdraw/RbxFont.cpp",
+"inferred path"
+],
+"00684640": [
+"inferred/client/rendering/appdraw/RbxFont.cpp",
+"inferred path"
+],
+"00684730": [
+"inferred/client/rendering/appdraw/RbxFont.cpp",
+"inferred path"
+],
+"00684b10": [
+"inferred/client/rendering/appdraw/RbxFont.cpp",
+"inferred path"
+],
+"00684eb0": [
+"inferred/client/rendering/appdraw/RbxFont.cpp",
 "inferred path"
 ],
 "00684fa0": [
@@ -8361,9 +8465,1281 @@
 "inferred/client/rendering/appdraw/RbxSubEntity.cpp",
 "inferred path"
 ],
-"00692a10": [
+"00685e10": [
+"inferred/client/rendering/appdraw/RbxAdornState.cpp",
+"merged unit, complete"
+],
+"00685e30": [
+"inferred/client/rendering/appdraw/RbxAdornState.cpp",
+"merged unit, complete"
+],
+"00685ea0": [
+"inferred/client/rendering/appdraw/RbxAdornState.cpp",
+"merged unit, complete"
+],
+"00687860": [
+"inferred/client/rendering/appdraw/RbxAdornState.cpp",
+"merged unit, complete"
+],
+"006892d0": [
+"inferred/client/rendering/appdraw/RbxAdornState.cpp",
+"merged unit, complete"
+],
+"0068b5c0": [
+"inferred/client/rendering/appdraw/RbxAdornState.cpp",
+"merged unit, complete"
+],
+"0068b610": [
 "inferred/client/rendering/appdraw/RbxSceneManager.cpp",
-"inferred path"
+"merged unit, partial"
+],
+"0068b650": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b690": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b6a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b6d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b6f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b7a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b7b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b7c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b7d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b800": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b820": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b840": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b860": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b880": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b8a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068b8b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ba40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ba60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ba80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068baa0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bac0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bae0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bb00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bb20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bb40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bb60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bb80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bba0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bbc0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bbe0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bc00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bc20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bc40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bc60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bc80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bc90": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bcb0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bcd0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bd00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bd20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bd40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bd60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bd80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bda0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068be30": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bec0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bef0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bf40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bf80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068bfe0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c070": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c0b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c1e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c230": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c240": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c250": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c260": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c270": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c290": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c2b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c2d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c2e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c370": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c410": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c480": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c4f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c530": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c540": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c550": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c560": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c570": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c650": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c730": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c740": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c7b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c8a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c900": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c910": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c930": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c940": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068c950": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ca00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ca40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ca80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ca90": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cab0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cad0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cb80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cc30": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cce0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cd90": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ce30": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ce50": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ce80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ceb0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cef0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cf00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068cf30": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d2c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d540": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d580": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d670": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d690": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d6d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d710": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d780": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d7d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068d980": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068db40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068dc60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e010": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e060": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e0b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e100": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e200": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e250": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e2b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e390": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e440": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e4a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e500": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e5f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e6a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e750": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e7c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e890": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e8a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e8c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e8d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e8e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e8f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e900": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e910": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e920": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e930": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e940": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e950": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e960": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e970": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e980": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e990": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e9a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e9b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e9c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e9d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e9e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068e9f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea10": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea30": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea50": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea70": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068ea90": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068eaa0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068eab0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068eac0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068efd0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068f360": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068f750": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068fa10": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0068fde0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006901b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006901e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00690250": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006902a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006902d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00690340": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006903a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00690460": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00690580": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00690620": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006906d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006907b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00690b20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00691900": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00691af0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00692260": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006922f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006924f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00692520": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00692550": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006925c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00692770": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00692880": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006929d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693060": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693130": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693200": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006932a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693360": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693420": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006935b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006936c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693780": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006938e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693a90": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693c90": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693dc0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693eb0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693ef0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00693f20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694020": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694080": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006940e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006941b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694280": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694320": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006943c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006944c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694510": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694630": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694680": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694e40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00694f60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695260": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695420": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695960": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695aa0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695bd0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695cd0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695d20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695ee0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00695fe0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006960e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00696290": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006966d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006967f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00696840": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00696960": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00696a80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00696fb0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697110": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006971a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697480": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697510": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006976f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006978d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697960": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697ca0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697cd0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00697e40": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698070": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006982a0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006983e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698520": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698540": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698560": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006985e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698710": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006987c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698890": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698a10": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00698cc0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006992c0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006993f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006994b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006994e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699560": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699610": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699690": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699740": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699930": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"006999f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699bb0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699c60": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699ee0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00699f70": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a000": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a260": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a300": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a470": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a6b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a7d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069a950": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069ac50": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069add0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069af50": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069b070": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069b140": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069b210": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069b2e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069b6d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069bc50": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069c5b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069c5d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069c5f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069c800": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d110": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d660": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d720": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d7e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d840": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d8d0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069d960": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069da20": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069daf0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069dc10": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069dd00": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069ddf0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069df80": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e020": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e110": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e140": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e180": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e1e0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e220": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e390": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"0069e630": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
 ],
 "006c4ce0": [
 "inferred/client/win/ScintillaDocView.cpp",
@@ -9004,6 +10380,18 @@
 "00801590": [
 "inferred/client/rendering/appdraw/RbxSubEntity.cpp",
 "inferred path"
+],
+"008015b0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"008015f0": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
+],
+"00801630": [
+"inferred/client/rendering/appdraw/RbxSceneManager.cpp",
+"merged unit, partial"
 ],
 "00801990": [
 "inferred/client/rendering/renderlib/TextureProxy.cpp",

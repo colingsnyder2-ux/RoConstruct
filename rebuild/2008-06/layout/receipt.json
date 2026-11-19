@@ -1,6 +1,57 @@
 {
  "files": 520,
  "merged_units": {
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxAdornState.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/OgreRbxAdornOffset2008.cpp",
+    "rebuild/2008-06/native-classes/OgreRbxAdornState.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
+    "rebuild/2008-06/native-classes/OgreSphereErase2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
+    "rebuild/2008-06/native-classes/OgreTwoDVertexBuffer2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxEntity.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/OgreRbxEntityAppend2008.cpp",
+    "rebuild/2008-06/native-classes/OgreRbxEntity.cpp",
+    "rebuild/2008-06/native-classes/OgreRbxEntitySetMesh2008.cpp",
+    "rebuild/2008-06/native-classes/OgreRbxEntityClear2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "left_out": [
+    "rebuild/2008-06/native-classes/OgreRbxEntityCamera2008.cpp"
+   ]
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/OgreUtil.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/OgreGeometryBuilder2008.cpp",
+    "rebuild/2008-06/native-classes/OgreGeometryUpdate2008.cpp",
+    "rebuild/2008-06/native-classes/OgreGeometryIndexed2008.cpp",
+    "rebuild/2008-06/native-classes/OgreGeometryIndices2008.cpp",
+    "rebuild/2008-06/native-classes/OgreGeometryVertexProvider2008.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "left_out": [
+    "rebuild/2008-06/native-classes/OgreGeometryCreate2008.cpp"
+   ]
+  },
   "rebuild/2008-06/layout/inferred/client/app/gui/ArrowPanel.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp",
@@ -922,21 +973,6 @@
     "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_e9459ee4124ecd0d__O2Ob2OyGFGSE.cpp"
    ]
   },
-  "rebuild/2008-06/layout/inferred/client/app/v8world/World.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/RBXWorldRecovery_005e9170.cpp"
-   ],
-   "flags": "/I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/openrbx-client-dll/roc_espclaude_9c71f42f11bab8d6__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espclaude_26d965918fecb544__O2GSEHscMDfp.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_movingprimitivesnativeset1fba8159194f33b8__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_espclaude_94b78efce9cfa189__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/donor_i/rbxgs/roc_unit_0ec1b5c0a1712ab3__O2Ob2OyGFGSE.cpp",
-    "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/inferred/client/app/v8xml/SerializerV2.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/ArchiveBinder.cpp",
@@ -1244,17 +1280,6 @@
     "rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp"
    ]
   },
-  "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.cpp": {
-   "sources": [
-    "rebuild/2008-06/native-classes/MarshaledListenerRecovery_004649f0.cpp",
-    "rebuild/2008-06/native-classes/TmplInst_00464d70.cpp"
-   ],
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
-   "status": "merged and tidied (per-symbol identical; link order unproven)",
-   "left_out": [
-    "rebuild/2008-06/native-classes/donor_i/rbxgs-dll/roc_espeon_marshaledpayloadargsd7986ef2083f67ca__O2GSEHscMD.cpp"
-   ]
-  },
   "rebuild/2008-06/layout/inferred/client/win/ObjectBrowser.cpp": {
    "sources": [
     "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
@@ -1378,26 +1403,37 @@
     "rebuild/2008-06/native-classes/WorkspaceEvents.cpp",
     "rebuild/2008-06/native-classes/WorkspaceExecUrl.cpp"
    ]
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneManager.cpp": {
+   "sources": [
+    "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp"
+   ],
+   "flags": "/O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/OgreLightInline /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+   "status": "merged and tidied (per-symbol identical; link order unproven)",
+   "left_out": [
+    "rebuild/2008-06/native-classes/OgreRbxSceneManagerSkybox2008.cpp"
+   ]
   }
  },
- "inferred_path_files": 164,
+ "inferred_path_files": 160,
  "status": {
-  "clean-identical": 211,
+  "clean-identical": 208,
   "verbatim-identical": 18,
   "dropped": 16,
-  "clean (token-identical)": 125,
+  "clean (token-identical)": 124,
   "verbatim (line-sensitive macros)": 8,
   "verbatim": 46
  },
  "held_back": {
-  "merge or conflict": 510,
-  "no original path": 1837,
+  "merge or conflict": 531,
+  "no original path": 1819,
   "requires_inline_placement_review": 1,
   "inferred path with no folder evidence": 19,
   "library source (XTP, MFC, ATL): no Roblox path": 227,
   "requires_identity_review": 4,
   "wrapper around donor or library source": 335,
   "profile overlay header (reached only through a unit /I flag)": 41,
+  "changed since map": 1,
   "variant header that shadows the one other units build with": 14
  },
  "standard": "object identity by tu_signature (code, data, relocations, symbols; discardable .debug$S excluded)",
@@ -2139,28 +2175,16 @@
    "source": "rebuild/2008-06/native-classes/OgreAuto_RBX_Rect.cpp",
    "status": "clean-identical"
   },
-  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxEntity.cpp": {
-   "source": "rebuild/2008-06/native-classes/OgreRbxEntityCamera2008.cpp",
-   "status": "clean-identical"
-  },
-  "rebuild/2008-06/layout/inferred/client/win/resource.cpp": {
-   "source": "rebuild/2008-06/native-classes/OgreRbxEntityClear2008.cpp",
-   "status": "clean-identical"
-  },
-  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneNode.cpp": {
-   "source": "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp",
-   "status": "clean-identical"
-  },
-  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/TwoDManager.cpp": {
-   "source": "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp",
-   "status": "clean-identical"
-  },
-  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSceneManager.cpp": {
-   "source": "rebuild/2008-06/native-classes/OgreRbxSceneManagerSkybox2008.cpp",
-   "status": "clean-identical"
-  },
   "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSky.cpp": {
    "source": "rebuild/2008-06/native-classes/OgreRbxSky.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxSubMesh.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreRbxSubMesh.cpp",
+   "status": "clean-identical"
+  },
+  "rebuild/2008-06/layout/inferred/client/rendering/appdraw/RbxFont.cpp": {
+   "source": "rebuild/2008-06/native-classes/OgreVRbxFont.cpp",
    "status": "clean-identical"
   },
   "rebuild/2008-06/layout/client/network/raknet30/source/PacketLogger.cpp": {
@@ -2771,10 +2795,6 @@
    "source": "rebuild/2008-06/native-headers/util/MarshalWindow.h",
    "status": "verbatim"
   },
-  "rebuild/2008-06/layout/inferred/client/win/MarshaledListener.h": {
-   "source": "rebuild/2008-06/native-headers/util/MarshaledListener.h",
-   "status": "clean (token-identical)"
-  },
   "rebuild/2008-06/layout/client/app/include/util/MeshId.h": {
    "source": "rebuild/2008-06/native-headers/util/MeshId.h",
    "status": "clean (token-identical)"
@@ -3103,28 +3123,28 @@
  "coverage": {
   "note": "code bytes whose native source is in this export; not a link or runtime claim",
   "executable_code_bytes": 3742156,
-  "exported_bytes": 651437,
-  "exported_percent": 17.41,
+  "exported_bytes": 749606,
+  "exported_percent": 20.03,
   "tiers": {
    "inferred path": {
-    "files": 95,
-    "functions": 634,
-    "bytes": 112301
+    "files": 92,
+    "functions": 613,
+    "bytes": 106037
    },
    "original path": {
     "files": 134,
     "functions": 1337,
     "bytes": 280536
    },
-   "merged unit, partial": {
-    "files": 82,
-    "functions": 1332,
-    "bytes": 197026
-   },
    "merged unit, complete": {
-    "files": 30,
-    "functions": 287,
-    "bytes": 61574
+    "files": 33,
+    "functions": 323,
+    "bytes": 90516
+   },
+   "merged unit, partial": {
+    "files": 83,
+    "functions": 1664,
+    "bytes": 272517
    }
   }
  },
@@ -4372,6 +4392,7 @@
    "inferred/client/win/RobloxView.cpp",
    "inferred/client/win/SelectionCaption.cpp"
   ],
+  "stale": "tree check not run this time (pass --tree); numbers are from the last full check",
   "held_variant_headers": [
    "client/app/include/tool/MegaDragger.h",
    "client/app/include/util/Vector6.h",

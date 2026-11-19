@@ -1,28 +1,28 @@
 {
  "note": "code bytes whose native source is in this export; not a link or runtime claim",
  "executable_code_bytes": 3742156,
- "exported_bytes": 651437,
- "exported_percent": 17.41,
+ "exported_bytes": 749606,
+ "exported_percent": 20.03,
  "tiers": {
   "inferred path": {
-   "files": 95,
-   "functions": 634,
-   "bytes": 112301
+   "files": 92,
+   "functions": 613,
+   "bytes": 106037
   },
   "original path": {
    "files": 134,
    "functions": 1337,
    "bytes": 280536
   },
-  "merged unit, partial": {
-   "files": 82,
-   "functions": 1332,
-   "bytes": 197026
-  },
   "merged unit, complete": {
-   "files": 30,
-   "functions": 287,
-   "bytes": 61574
+   "files": 33,
+   "functions": 323,
+   "bytes": 90516
+  },
+  "merged unit, partial": {
+   "files": 83,
+   "functions": 1664,
+   "bytes": 272517
   }
  }
 }
