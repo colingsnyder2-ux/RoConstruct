@@ -63,17 +63,28 @@ namespace RBX
 			replicator.onSentMarker(id);
 		}
 
-		// 004ab960 (virtual slot 20). NEAR MISS: same 59 bytes and instructions as the target; the target lays the
-		// `mov al,1; ret 4` block first (after the inlined ancestor test) where this compile puts it last (jne vs je).
-		// Rejected: raw member comparison, locals, single `return a || b` (63 bytes).
+		// 004ab960 (virtual slot 20): exact with the donor if/else inline isDescendentOf shape (helper above), which lays
+		// the `mov al,1; ret 4` block first. Rejected: raw member comparison with `if (...) return true` (59 B, block
+		// order swapped), locals, single `return a || b` (63 B), direct `return instance == findLocalCharacter` (63 B).
+		// INFERRED: the donor v8tree/Instance.h inline isDescendentOf body (if/else form); the native Instance.h declares
+		// it out of line only (00422ae0), so the inlined first level is spelled here.
+		static inline bool isDescendentOfInline(const Instance* self, const Instance* ancestor)
+		{
+			Instance* thisParent = self->getParent();
+			if (ancestor == thisParent)
+				return true;
+
+			if (thisParent)
+				return thisParent->isDescendentOf(ancestor);
+			else
+				return false;
+		}
+
 		bool Replicator::remoteDeleteOnDisconnect(const Instance* instance) const
 		{
-			// INFERRED: the target inlines the first level of Instance::isDescendentOf (004ab960 compares the +0x104
-			// parent with players, then calls 00422ae0 on the parent); the header declares it out of line only
-			// (see header-fix-proposals.json).
-			const Instance* ancestor = players;
-			Instance* parent = instance->parent;
-			if (ancestor == parent || (parent && parent->isDescendentOf(ancestor)))
+			// The target inlines the first level of Instance::isDescendentOf (004ab960 compares the +0x104 parent with
+			// players, then calls 00422ae0 on the parent).
+			if (isDescendentOfInline(instance, players))
 				return true;
 
 			if (instance == Players::findLocalCharacter(instance))
