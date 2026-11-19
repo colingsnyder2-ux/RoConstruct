@@ -350,7 +350,7 @@ const foldNC = nc => {
   const a = nc.authentic, o = nc.organized || ZERO_NC, sum = k => (a[k] || 0) + (o[k] || 0);
   return {...nc, organized: Object.fromEntries(Object.keys(ZERO_NC).map(k => [k, sum(k)])), authentic: ZERO_NC};
 };
-const NC = {authentic: "#f5d0fe", organized: "#c9a4f5", integrated: "#a855f7", inactive: "#6d5bd0", draft: "#db61a2", exact: "#3a3d45", none: "#3a3d45"};
+const NC = {authentic: "#fef08a", organized: "#e5a83b", integrated: "#a855f7", inactive: "#6366f1", draft: "#ec4899", exact: "#3a3d45", none: "#3a3d45"};
 for (const [k, v] of Object.entries(NC)) document.documentElement.style.setProperty("--nc-" + k, v);
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
 const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct";
@@ -816,8 +816,11 @@ const MINING_LEGEND = `<span><i style="background:#58a6ff"></i>original source</
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span>`;
 const NATIVE_LEGEND = `<span><i style="background:${NC.authentic}"></i>authentic</span><span><i style="background:${NC.organized}"></i>organized</span><span><i style="background:${NC.integrated}"></i>integrated</span><span><i style="background:${NC.inactive}"></i>inactive native</span><span><i style="background:${NC.draft}"></i>draft native</span><span><i style="background:#d29922"></i>partial</span><span><i style="background:${NC.none}"></i>source analogs / unmined</span>`;
 
-const FILE_COLOR = {a: NC.integrated, i: NC.integrated, m: NC.none, g: "#3fb950", u: "#2b3a31", x: "#6b3a3a"};
-const FILE_LEGEND = `<span><i style="background:${FILE_COLOR.i}"></i>organized · native source exported for this file (path evidence is listed per file)</span><span><i style="background:${FILE_COLOR.m}"></i>missing · no native source exported</span><span><i style="background:${FILE_COLOR.g}"></i>library file matched · an exe function is byte-identical to code from it</span><span><i style="background:${FILE_COLOR.u}"></i>library file, no match</span><span><i style="background:${FILE_COLOR.x}"></i>code with no file guess yet</span>`;
+const FILE_COLOR = {a: NC.organized, i: NC.organized, m: NC.none, g: "#3fb950", u: "#2b3a31", x: "#6b3a3a"};
+// Organized files are drawn in the Organized colour, darker the less of their code has native exact code (completion %).
+const mixHex = (a, b, t) => "#" + [1, 3, 5].map(i => Math.round(parseInt(a.slice(i, i + 2), 16) * (1 - t) + parseInt(b.slice(i, i + 2), 16) * t).toString(16).padStart(2, "0")).join("");
+const fileTileColor = p => (p[1] === "a" || p[1] === "i") ? mixHex("#161a24", NC.organized, 0.18 + 0.82 * ((p[7] ?? 100) / 100)) : FILE_COLOR[p[1]];
+const FILE_LEGEND = `<span><i style="background:linear-gradient(90deg,${mixHex("#161a24", NC.organized, 0.28)},${NC.organized})"></i>organized · native source exported; brighter = more of the file's code has native exact code (completion %)</span><span><i style="background:${FILE_COLOR.m}"></i>missing · no native source exported</span><span><i style="background:${FILE_COLOR.x}"></i>code with no file guess yet</span>`;
 function color(score, original, harness) {
   if (score === 100 && !original && !harness) return "#3a3d45";
   if (score === 100 && original) return "#58a6ff";
@@ -1219,7 +1222,7 @@ async function client(name) {
     }
     frames = [...folders.entries()].map(([folder, items]) => ({folder, items, v: items.reduce((a, it) => a + it.v, 0)})).sort((a, b) => b.v - a.v);
     const sm = fileData.summary, own = fileData.summary_own, t = fileData.summary_source;
-    document.getElementById("filesummary").innerHTML = `A best guess of the original source tree: <b>${fmt(own.a + own.i + own.m)}</b> paths seen by the 2007 server PDB, the 2008 exe, OpenRBX, the iOS 2013 and Android 2014 builds or the 2016 leak (${fmt(t.a + t.i + t.m)} are .c/.cpp files, the rest headers): <b>${fmt(own.a + own.i)}</b> organized · <b>${fmt(own.m)}</b> missing. Of the .c/.cpp files: ${fmt(t.a + t.i)} organized · ${fmt(t.m)} missing. No path here is proven for 2008 (there is no 2008 PDB); a path seen by several sources is a stronger guess. <b>${fmt(sm.g + sm.u)}</b> library files sit under <code>libraries/</code>, ${fmt(sm.g)} matched by bytes to upstream source. Hover a tile to see which sources listed the path; a path seen by several is the stronger guess, and paths seen only by 2013+ builds may not have existed in 2008. Tile size is the code tied to the path by census evidence (small tiles have none yet). Layout commit <code>${esc(fileData.commit)}</code>.`;
+    document.getElementById("filesummary").innerHTML = `A best guess of the original source tree: <b>${fmt(own.a + own.i + own.m)}</b> paths with code in the 2008 exe, listed by the 2007 server PDB, the 2008 exe, OpenRBX, the iOS 2013 and Android 2014 builds or the 2016 leak (${fmt(t.a + t.i + t.m)} are .c/.cpp files, the rest headers): <b>${fmt(own.a + own.i)}</b> organized · <b>${fmt(own.m)}</b> missing (we have functions for them but no source yet). Of the .c/.cpp files: ${fmt(t.a + t.i)} organized · ${fmt(t.m)} missing. ${fmt(fileData.hidden_unconnected || 0)} more listed paths are not drawn because none of our functions connect to them (compiler headers, 2013+ only files, RCCService and server code). No path here is proven for 2008 (there is no 2008 PDB); a path seen by several sources is a stronger guess. Hover a tile to see which sources listed the path; a path seen by several is the stronger guess, and paths seen only by 2013+ builds may not have existed in 2008. Tile size is the code tied to the path by census evidence (small tiles have none yet). Layout commit <code>${esc(fileData.commit)}</code>.`;
     squarify(frames, 0, 0, r.width, r.height);
     boxes = [];
     for (const fr of frames) {
@@ -1253,7 +1256,7 @@ async function client(name) {
     g.fillStyle = "#1d1f24"; g.fillRect(0, 0, cv.width, cv.height);
     for (const b of boxes) {
       g.globalAlpha = (b.p ? keepFile(b.p) : keep(b.f)) ? 1 : 0.2;
-      g.fillStyle = b.p ? FILE_COLOR[b.p[1]] : mapMode === "native" ? nativeColor(b.f) : color(b.f[2], b.f[5], b.f[4]);
+      g.fillStyle = b.p ? fileTileColor(b.p) : mapMode === "native" ? nativeColor(b.f) : color(b.f[2], b.f[5], b.f[4]);
       g.fillRect(b.x, b.y, b.w, b.h);
       if (b.w > 4 && b.h > 4) { g.strokeStyle = "#2a2c33"; g.lineWidth = 0.5; g.strokeRect(b.x, b.y, b.w, b.h); }
     }
@@ -1280,7 +1283,7 @@ async function client(name) {
     const {x, y, b} = hit(e);
     if (!b) { tip.style.display = "none"; return; }
     const named = !b.p && native && native.names[hex(b.f[0])];
-    tip.textContent = b.p ? `${b.p[0]} • ${FILE_STATUS[b.p[1]]}${b.p[2] ? " • " + fmt(b.p[2]) + " B" : ""}${b.p[4] && !b.p[0].startsWith("libraries/") ? " • seen by: " + tagText(b.p[4]) : ""}`
+    tip.textContent = b.p ? `${b.p[0]} • ${FILE_STATUS[b.p[1]]}${b.p[2] ? " • " + fmt(b.p[2]) + " B" : ""}${(b.p[1] === "a" || b.p[1] === "i") && b.p[7] != null ? " • " + b.p[7] + "% complete" : ""}${b.p[4] && !b.p[0].startsWith("libraries/") ? " • seen by: " + tagText(b.p[4]) : ""}`
       : mapMode === "native"
       ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${({integrated: "integrated", inactive: "inactive native (exact)", draft: "draft native", exact: "source analog"})[nativeKind(b.f)] || (b.f[2] ? b.f[2] + "% mined" : "unmined")}`
       : `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
@@ -1292,8 +1295,8 @@ async function client(name) {
   cv.onclick = e => {
     const {b} = hit(e);
     if (b && b.p) {
-      const [path, st, bytes, exp, tags, tiers, alt] = b.p, lib = path.startsWith("libraries/");
-      document.getElementById("detail").innerHTML = `<div class="function-card"><strong>${esc(path)}</strong><br><span class="function-status">${esc(({a: "Organized · a single native file, object identical to the live source; its path is a best guess from the evidence below", i: "Organized · native source exists (a merged unit, an inferred path or a header); its path is a best guess from the evidence below", m: "Missing · no native source exported for this path", x: "Code the function map could not place in any file", g: "Library file · matched to upstream source by bytes", u: "Library file · no exe function matches it"})[st])}</span><div class="function-meta">${bytes ? fmt(bytes) + (lib ? " bytes matched" : " bytes of code tied to this path") : (lib ? "no exe function matches this file" : "no code tied to this path yet")}</div>${lib || st === "x" ? "" : `<p class="note">Seen by: ${esc(tagText(tags))}</p>`}${tiers ? `<p class="note">Functions assigned to this file by: ${tiers.split(",").map(t => { const [k, n] = t.split(":"); return esc((fileData.tier_names || {})[k] || k) + " " + fmt(+n) + " B"; }).join(" · ")}</p>` : ""}${alt ? `<p class="note">Other places this file is listed or its functions are placed: ${alt.split(";").map(x => { const [p, n] = x.split("|"); return `<code>${esc(p)}</code> (${/^[a-z]+$/.test(n) ? "also listed by " + tagText(n) : n + " functions"})`; }).join(", ")}</p>` : ""}${exp ? `<p class="note">Native source: <a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${exp.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">${esc(exp)}</a> on the layout branch</p>` : ""}</div>`;
+      const [path, st, bytes, exp, tags, tiers, alt, pct] = b.p, lib = path.startsWith("libraries/");
+      document.getElementById("detail").innerHTML = `<div class="function-card"><strong>${esc(path)}</strong><br><span class="function-status">${esc(({a: "Organized · a single native file, object identical to the live source; its path is a best guess from the evidence below", i: "Organized · native source exists (a merged unit, an inferred path or a header); its path is a best guess from the evidence below", m: "Missing · no native source exported for this path", x: "Code the function map could not place in any file", g: "Library file · matched to upstream source by bytes", u: "Library file · no exe function matches it"})[st])}</span><div class="function-meta">${bytes ? fmt(bytes) + (lib ? " bytes matched" : " bytes of code tied to this path") : (lib ? "no exe function matches this file" : "no code tied to this path yet")}${(st === "a" || st === "i") && pct != null ? " · " + pct + "% of it has native exact code" : ""}</div>${lib || st === "x" ? "" : `<p class="note">Seen by: ${esc(tagText(tags))}</p>`}${tiers ? `<p class="note">Functions assigned to this file by: ${tiers.split(",").map(t => { const [k, n] = t.split(":"); return esc((fileData.tier_names || {})[k] || k) + " " + fmt(+n) + " B"; }).join(" · ")}</p>` : ""}${alt ? `<p class="note">Other places this file is listed or its functions are placed: ${alt.split(";").map(x => { const [p, n] = x.split("|"); return `<code>${esc(p)}</code> (${/^[a-z]+$/.test(n) ? "also listed by " + tagText(n) : n + " functions"})`; }).join(", ")}</p>` : ""}${exp ? `<p class="note">Native source: <a href="${REPO}/blob/layout/2008-06/rebuild/2008-06/layout/${exp.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">${esc(exp)}</a> on the layout branch</p>` : ""}</div>`;
     }
     else if (b) showFunction(b.f);
   };
