@@ -1156,7 +1156,7 @@ async function client(name) {
         `<option value="${u}">${esc(units[u])}</option>`).join("")}</select>
       <input id="filter" placeholder="Filter, e.g.: 'Instance <70% >1kb'">
     </div>
-    <div id="filesummary" class="mapgroup"${native ? "" : " hidden"}></div>
+    <div id="filesummary" class="mapgroup" hidden></div>
     <div class="map"><canvas id="cv"></canvas><div class="tip" id="tip"></div></div>
     <div class="legend" id="maplegend">${native ? FILE_LEGEND : MINING_LEGEND}</div>
     <div class="detail" id="detail">Click a tile to see its function address, match score, and recovered source.</div>
@@ -1221,8 +1221,7 @@ async function client(name) {
       folders.get(folder).push({p: row, v: Math.max(row[0].startsWith("libraries/") ? row[2] * 0.08 : row[2], 120)});
     }
     frames = [...folders.entries()].map(([folder, items]) => ({folder, items, v: items.reduce((a, it) => a + it.v, 0)})).sort((a, b) => b.v - a.v);
-    const sm = fileData.summary, own = fileData.summary_own, t = fileData.summary_source;
-    document.getElementById("filesummary").innerHTML = `Original source tree: <b>${fmt(own.a + own.i)}</b> organized · <b>${fmt(own.m)}</b> missing (${fmt(t.a + t.i)} / ${fmt(t.a + t.i + t.m)} .cpp files) · <b>${pct(own.a + own.i, own.a + own.i + own.m)}</b> of 2008 paths. Tile size = code bytes. <details style="display:inline"><summary style="cursor:pointer;color:var(--accent2)">Sources &amp; details</summary> <span class="note">${fmt(own.a + own.i + own.m)} paths with 2008 code from 2007 PDB, OpenRBX, mobile builds &amp; 2016 leak (${fmt(fileData.hidden_unconnected || 0)} unconnected paths omitted). No 2008 PDB exists; paths are best guesses. Layout commit <code>${esc(fileData.commit)}</code>.</span></details>`;
+    document.getElementById("filesummary").innerHTML = "";
     squarify(frames, 0, 0, r.width, r.height);
     boxes = [];
     for (const fr of frames) {
@@ -1324,7 +1323,7 @@ async function client(name) {
     mapMode = modeSel.value;
     const fileish = mapMode === "files";
     document.getElementById("maplegend").innerHTML = mapMode === "files" ? FILE_LEGEND : mapMode === "native" ? NATIVE_LEGEND : MINING_LEGEND;
-    document.getElementById("filesummary").hidden = !fileish;
+    document.getElementById("filesummary").hidden = true;
     unitSel.disabled = fileish;
     if (fileish) { try { await loadFiles(); } catch (e) { document.getElementById("filesummary").textContent = "map data not published yet"; return; } }
     layout();
