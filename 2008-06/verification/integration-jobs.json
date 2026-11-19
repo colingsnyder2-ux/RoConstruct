@@ -8818,5 +8818,135 @@
     "unit": "RBX::AIChaseController",
     "updated": 1793621812.642969,
     "user": "colin"
+  },
+  {
+    "created": 1795043739.2047524,
+    "id": "fb4c3f6d35a44bc3a256f1a0998378cb",
+    "model": "claude-opus-5-5",
+    "patches": {
+      "App/include/util/RunStateOwner.h": [
+        [
+          "\t\tvoid setPeriod(float);\n\t\tfloat getPeriod();\n",
+          "\t\tdouble dutyCycle() const { return (unknown0x1d8 + unknown0x1d0 + unknown0x1c8) * (1.0 / framePeriod); }\n\t\tvoid setPeriod(float);\n\t\tfloat getPeriod();\n"
+        ]
+      ],
+      "App/include/v8datamodel/DataModel.h": [
+        [
+          "\n\tprivate:\n\t\tboost::shared_ptr<LocalBackpack> localBackpack;\n",
+          "\n\tpublic:\n\t\tdouble getDutyCycle() const;\n\tprivate:\n\t\tboost::shared_ptr<LocalBackpack> localBackpack;\n"
+        ]
+      ],
+      "App/v8datamodel/DataModel.cpp": [
+        [
+          "\tDataModel::Lock::~Lock()\n\t{\n\t\tdelete lock;\n\t}\n",
+          "\tDataModel::Lock::~Lock()\n\t{\n\t\tdelete lock;\n\t}\n\n#pragma float_control(push)\n#pragma float_control(precise, off)\n\tdouble DataModel::getDutyCycle() const   // 005757f0\n\t{\n\t\treturn runService->dutyCycle();\n\t}\n#pragma float_control(pop)\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": false,
+      "baseline_revision": "89d7b35df09410b80fab64e4db5c052634e95d4c6ba2abb332f0f6c6a6014782",
+      "gains": [],
+      "input_hash": "949aa4f7b0968d0f120815f358ac3fecf7cbbd3093e3693e641055fd208d928c",
+      "losses": [],
+      "submitted_revision": "89d7b35df09410b80fab64e4db5c052634e95d4c6ba2abb332f0f6c6a6014782"
+    },
+    "state": "rejected",
+    "unit": "RBX::DataModel",
+    "updated": 1795045697.9915633,
+    "user": "colin"
+  },
+  {
+    "created": 1795045960.9432993,
+    "id": "02972b87c2de441abb0b5b12fce4858c",
+    "model": "claude-opus-5-5",
+    "patches": {
+      "Rendering/AppDraw/AdornG3D.cpp": [
+        [
+          "#include \"AppDraw/AdornG3D.h\"\n#include \"AppDraw/DrawPrimitives.h\"\n",
+          "#pragma float_control(precise, off)\n#include \"AppDraw/AdornG3D.h\"\n#include \"AppDraw/DrawPrimitives.h\"\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "89d7b35df09410b80fab64e4db5c052634e95d4c6ba2abb332f0f6c6a6014782",
+      "credits": 2,
+      "distinct_after": 10273,
+      "distinct_before": 10271,
+      "gains": [
+        "006764c0",
+        "00676500"
+      ],
+      "input_hash": "949aa4f7b0968d0f120815f358ac3fecf7cbbd3093e3693e641055fd208d928c",
+      "losses": [],
+      "new_distinct": [
+        "006764c0",
+        "00676500"
+      ],
+      "overlay_hash": "3dcdbda98df5da735b4a79a6e92716ad592e489493e4176376da67f3dbd13a0e",
+      "owned_after": 3782,
+      "owned_before": 3780,
+      "rebased": false,
+      "submitted_revision": "89d7b35df09410b80fab64e4db5c052634e95d4c6ba2abb332f0f6c6a6014782"
+    },
+    "state": "accepted",
+    "unit": "RBX::AdornG3D",
+    "updated": 1795046515.5006464,
+    "user": "colin"
+  },
+  {
+    "created": 1795047107.8955092,
+    "id": "b1d79447bd7a4b42b153d390de1dd028",
+    "model": "claude-opus-5-5",
+    "patches": {
+      "App/v8datamodel/Team.cpp": [
+        [
+          "#include \"v8datamodel/Team.h\"\n",
+          "#pragma float_control(precise, off)\n#include \"v8datamodel/Team.h\"\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": false,
+      "baseline_revision": "bc7d02b7cff6e31ae3dbe01acbd094f3179fa64223da3c2b8bde045c2c3ba8e9",
+      "gains": [],
+      "input_hash": "d1ead049d019bc62bb12c6d2df985408fb3b9922d0a5ccd6b8c4fe2ff2bcfacd",
+      "losses": [],
+      "submitted_revision": "bc7d02b7cff6e31ae3dbe01acbd094f3179fa64223da3c2b8bde045c2c3ba8e9"
+    },
+    "state": "rejected",
+    "unit": "RBX::Team",
+    "updated": 1795047964.9131997,
+    "user": "colin"
+  },
+  {
+    "created": 1795050868.2383404,
+    "id": "7406921cee254460ac000ceb2e058377",
+    "model": "claude-opus-5-5",
+    "patches": {
+      "App/v8world/JointStage.cpp": [
+        [
+          "#include \"v8world/JointStage.h\"\n",
+          "#pragma float_control(precise, off)\n#include \"v8world/JointStage.h\"\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": false,
+      "baseline_revision": "bc7d02b7cff6e31ae3dbe01acbd094f3179fa64223da3c2b8bde045c2c3ba8e9",
+      "gains": [],
+      "input_hash": "d1ead049d019bc62bb12c6d2df985408fb3b9922d0a5ccd6b8c4fe2ff2bcfacd",
+      "losses": [],
+      "submitted_revision": "bc7d02b7cff6e31ae3dbe01acbd094f3179fa64223da3c2b8bde045c2c3ba8e9"
+    },
+    "state": "rejected",
+    "unit": "RBX::JointStage",
+    "updated": 1795051394.8203673,
+    "user": "colin"
   }
 ]

@@ -1,4 +1,5 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+#include "util/NativeContentProvider.h"
 #include "SoundChannel/SoundChannel.h"
 #include "v8tree/Service.h"
 #include "util/standardout.h"

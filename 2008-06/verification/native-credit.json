@@ -3283,6 +3283,20 @@
     "user": "colin"
   },
   {
+    "addr": "006764c0",
+    "client": "2008-06",
+    "job": "02972b87c2de441abb0b5b12fce4858c",
+    "model": "claude-opus-5-5",
+    "user": "colin"
+  },
+  {
+    "addr": "00676500",
+    "client": "2008-06",
+    "job": "02972b87c2de441abb0b5b12fce4858c",
+    "model": "claude-opus-5-5",
+    "user": "colin"
+  },
+  {
     "addr": "00676750",
     "client": "2008-06",
     "job": "5786ceb57ace420ba860c55d28d15255",

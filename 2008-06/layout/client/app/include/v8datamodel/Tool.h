@@ -70,6 +70,8 @@ namespace RBX
 		void upTo_InCharacter();
 		void upTo_InWorkspace();
 		void upTo_HasHandle();
+		// INFERRED: 005fd3d0 is a Tool member whose 5-byte body tail-calls 00642fc0; the original
+		void sub_005fd3d0();
 		void downFrom_Activated();
 		void downFrom_Equipped();
 		void downFrom_HasTorso();

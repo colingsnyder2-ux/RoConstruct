@@ -5,6 +5,7 @@
 // (enumToString is the std::string one at +0x88); no string-keyed maps.
 #pragma once
 #include <boost/bind.hpp>
+#include <boost/thread/once.hpp>
 #include <vector>
 #include <algorithm>
 #include "reflection/type.h"
@@ -212,10 +213,26 @@ namespace RBX
 			}
 		  
 		public:
-			static const EnumDesc& singleton()
+			// INFERRED: 2008-06 guards the function-local singleton with boost::call_once, the same shape as
+			// Name::declare<> (util/Name.h). Evidence, EnumDesc<SurfaceType>: every inlined singleton() (005ed6c0,
+			// 005ee210 ...) is call_once 00557330(&005ed620, &flag 0097b11c) then a call to 005ed5c0; 005ed5c0 holds the
+			// guarded static (0097af40) and 005ed620 is a tail jump to it. The two helper names are inferred.
+		private:
+			static EnumDesc& doSingleton()
 			{
 				static EnumDesc s;
 				return s;
+			}
+			static void callDoSingleton()
+			{
+				doSingleton();
+			}
+		public:
+			static const EnumDesc& singleton()
+			{
+				static boost::once_flag flag = BOOST_ONCE_INIT;
+				boost::call_once(&callDoSingleton, flag);
+				return doSingleton();
 			}
 		};
 	}

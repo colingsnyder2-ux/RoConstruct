@@ -131,43 +131,6 @@ namespace RBX
 	}
 }
 
-#include "v8world/GlueJoint.h"
-#include "v8world/RotateJoint.h"
-
-#define NATIVE_MOTOR_JOINT_DONOR_BASE
-#include "v8world/Joints2008.h"
-
-static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_MaxVelocity("MaxVelocity", "Data", &RBX::Motor::getMaxVelocity, &RBX::Motor::setMaxVelocity, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-namespace RBX {
-Glue::Glue(Joint* joint) : DescribedCreatable<Glue, AutoJoint, sGlue>(joint) { }
-Glue::Glue() : DescribedCreatable<Glue, AutoJoint, sGlue>(new GlueJoint()) { }
-Rotate::Rotate(Joint* joint) : DescribedCreatable<Rotate, AutoJoint, sRotate>(joint) { }
-Rotate::Rotate() : DescribedCreatable<Rotate, AutoJoint, sRotate>(new RotateJoint()) { }
-RotateP::RotateP(Joint* joint)
-    : DescribedCreatable<RotateP, AutoJoint, sRotateP>(joint)
-{
-}
-RotateV::RotateV(Joint* joint) : DescribedCreatable<RotateV, AutoJoint, sRotateV>(joint)
-{
-}
-Motor::Motor(Joint* joint) : DescribedCreatable<Motor, AutoJoint, sMotor>(joint) { }
-
-float Motor::getMaxVelocity() const
-{
-	return static_cast<MotorJoint*>(joint)->maxVelocity;
-}
-
-void Motor::setMaxVelocity(float value)
-{
-	if (value != getMaxVelocity())
-	{
-		static_cast<MotorJoint*>(joint)->maxVelocity = value;
-		raisePropertyChanged(prop_MaxVelocity);
-	}
-}
-}
-
 static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part0("Part0", "Data", &RBX::AutoJoint::getPart0, &RBX::AutoJoint::setPart0, RBX::Reflection::PropertyDescriptor::STANDARD);
 static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part1("Part1", "Data", &RBX::AutoJoint::getPart1, &RBX::AutoJoint::setPart1, RBX::Reflection::PropertyDescriptor::STANDARD);
 

@@ -3069,6 +3069,18 @@
         ]
       },
       "timestamp": 1793621812.014254
+    },
+    {
+      "job": "02972b87c2de441abb0b5b12fce4858c",
+      "patches": {
+        "Rendering/AppDraw/AdornG3D.cpp": [
+          [
+            "#include \"AppDraw/AdornG3D.h\"\n#include \"AppDraw/DrawPrimitives.h\"\n",
+            "#pragma float_control(precise, off)\n#include \"AppDraw/AdornG3D.h\"\n#include \"AppDraw/DrawPrimitives.h\"\n"
+          ]
+        ]
+      },
+      "timestamp": 1795046515.3321524
     }
   ],
   "initial_patches": {}

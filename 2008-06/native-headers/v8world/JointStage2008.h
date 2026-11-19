@@ -33,9 +33,19 @@ namespace RBX
 	{
 		friend struct ::NativeKernelStagesLayout; // tests/NativeKernelStagesLayout.cpp offset asserts
 
+		// INFERRED: the byte-exact analog src/2008-06/00668280.cpp declares the map as a subclass with a
+		// noinline lower_bound wrapper; the binary call at 006682a1 reaches the tree's lower_bound (see
+		// AppUnit664JointMapTemplates.cpp). The wrapper adds no data members, so the +0x30 offset and 0x20
+		// size are unchanged; it only changes removeFromMap's register allocation (prologue esi push).
+		struct JointMap : public std::multimap<Primitive*, Joint*>
+		{
+			typedef std::multimap<Primitive*, Joint*> Base;
+			__declspec(noinline) iterator lower_bound(Primitive* const& p) { return Base::lower_bound(p); }
+		};
+
 	private:
 		std::set<Joint*> incompleteJoints;                // +0x10
-		std::multimap<Primitive*, Joint*> jointMap;       // +0x30
+		JointMap jointMap;                               // +0x30
 
 	private:
 		bool edgeHasPrimitivesDownstream(Edge* e);        // 00667f70

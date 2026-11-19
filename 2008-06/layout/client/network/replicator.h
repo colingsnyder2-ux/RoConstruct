@@ -6,6 +6,8 @@
 #include <BitStream.h>
 #include "Streaming.h"
 #include "Network/Players.h"
+#include "Network/IdSerializer.h"
+#include "RakNetTypes.h"
 #include "v8world/Assembly.h"
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"
@@ -346,4 +348,6 @@ public:
 	virtual ~FilePacketLogger();
 	virtual void OnAttach(RakPeerInterface* peer);
 	virtual void WriteLog(const char*);
+	// INFERRED: 004aae00 is the UserIDTOString vftable override identified by class RTTI and link order.
+	virtual char* UserIDTOString(unsigned char id);
 };

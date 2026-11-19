@@ -56,7 +56,8 @@ void ScriptContext::startScript(boost::shared_ptr<Script> script)
 
 	std::string name = std::string("=") + script->getFullName();
 
-	if (luaL_loadbuffer(thread, code->c_str(), code->length(), name.c_str()))
+	int loadResult = luaL_loadbuffer(thread, code->c_str(), code->length(), name.c_str());
+	if (loadResult)
 	{
 		StandardOut::singleton()->print(MESSAGE_ERROR, Lua::tostringOrEmpty(thread, -1));
 		lua_pop(thread, 1);

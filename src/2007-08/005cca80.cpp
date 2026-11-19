@@ -3,3 +3,7 @@
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: boost-1.34.1 roc_espeon_aug2007_boost_zlib_winapi_5a2e21828af0baae.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define ZLIB_WINAPI 1
+#include "libs/iostreams/src/zlib.cpp"

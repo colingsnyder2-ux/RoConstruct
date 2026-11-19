@@ -371,8 +371,6 @@ BrickColor BrickColor::closest(G3D::Color4uint8 color)
 }
 }
 
-#include "../../../../../../../tools/rbxgs/Client/App/include/v8datamodel/BrickColor.h"
-
 G3D::Color3uint8 RBX::BrickColor::color3uint8() const
 {
     G3D::Color4uint8 color = color4uint8();
