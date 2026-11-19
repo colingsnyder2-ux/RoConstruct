@@ -109,7 +109,13 @@ namespace RBX
 	// ~Mark 005c42d0 out of line (`push 0; push profiler; call`), while the inline Mark of the core util/Profiling.h is
 	// expanded here (TlsGetValue / getLocalTime inline, frame 0x20 vs 0x1c). The 005c3f80 / 005c42d0 COMDATs this unit
 	// emits are exact, so the 2008 Mark bodies equal the header ones. The blocker is a core-header question (Profiling.h
-	// owner), not this unit.
+	// owner), not this unit. st01 (b23): the out-of-line Mark calls are not specific to this body: SleepStage 0064c8a0
+	// also calls 005c3f80 / 005c42d0 for each of its three marks, and both bodies lie in the Profiling unit's own range
+	// (next to Profiler 005c43a0), not among COMDATs placed after their callers, so the 2008 util/Profiling.h most likely
+	// declared Mark::Mark / ~Mark and defined them in Profiling.cpp. Scratch proof (not kept): this exact body, built with
+	// -DNATIVE_KERNEL_STEP_PENDING against a copy of util/Profiling.h whose Mark constructor / destructor are only
+	// declared, is IDENTICAL to 005fb3f0 (502 B). Remaining blockers: that core-header change (Profiling.h owner) and the
+	// registry decoration ?stepWorld@Kernel@RBX@@UAEXHH_N0@Z for 005fb3f0.
 #ifdef NATIVE_KERNEL_STEP_PENDING
 	void Kernel::stepWorld(int worldStepId, int uiStepId, bool throttling, bool moveBodiesTest)
 	{

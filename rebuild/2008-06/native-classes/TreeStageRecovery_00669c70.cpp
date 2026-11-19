@@ -24,6 +24,10 @@ extern "C" void __cdecl removeEdgeFromPrimitiveLists(RBX::Edge* e);
 namespace RBX
 {
 
+// Superseded drafts (b23 verify): onEdgeRemoving 00669c70, onEdgeRemovingNonJoint 00669710 and process 00669410 are
+// byte-exact in AppUnit668TreeStage2.cpp, so these non-exact copies are kept out of the build to avoid duplicate
+// definitions. Guarding them loses none of this unit's exacts (re-proved).
+#ifdef TREE_STAGE_RECOVERY_SUPERSEDED
 // 00669c70: virtual void onEdgeRemoving(Edge* e) - vftable slot 5
 // Target: 121 bytes. Candidate: 111 bytes (DIFF - layout differs)
 void TreeStage::onEdgeRemoving(Edge* e)
@@ -145,6 +149,8 @@ void TreeStage::process()
     // Clear dirty flag
     dirty = false;
 }
+
+#endif
 
 // 006699a0: Joint* findLightestDownstream(Primitive* p, Primitive*& outLightestPrimitive) - callgraph-adjacency
 // Target: 446 bytes. Candidate: 314 bytes (DIFF - SEH frame and local set layout differs)

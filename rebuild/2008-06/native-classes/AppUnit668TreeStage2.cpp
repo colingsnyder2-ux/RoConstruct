@@ -128,6 +128,8 @@ namespace RBX
 
 	// INFERRED: 005e89f0 (Edge* cdecl): inserts the edge into its primitives' edge lists
 	void insertEdgeIntoPrimitives(Edge* e);
+	// INFERRED: 005e86a0 (Edge* cdecl): the removal counterpart, called last by onEdgeRemoving 00669c70
+	void removeEdgeFromPrimitives(Edge* e);
 
 	class JointSort
 	{
@@ -299,13 +301,16 @@ namespace RBX
 	}
 
 	// 006699a0
+	// The iterator is declared before the loop and assigned: 00669a02..00669a12 load begin() (`mov eax, [eax]`) and copy
+	// it into the loop register (`mov ebx, eax`); the for-init declaration form fuses the two (`mov ebx, [eax]`).
 	Joint* TreeStage::findLightestDownstream(Primitive* p, Primitive*& lightestOther)
 	{
 		std::set<Primitive*> reachable;
 		reachable.insert(p);
 		collectTopJoints(p, &reachable);
 		Joint* lightest = 0;
-		for (std::set<Primitive*>::iterator it = reachable.begin(); it != reachable.end(); ++it)
+		std::set<Primitive*>::iterator it;
+		for (it = reachable.begin(); it != reachable.end(); ++it)
 		{
 			Primitive* q = *it;
 			for (Joint* j = q->getFirstJoint(); j; j = q->getNextJoint(j))
@@ -325,5 +330,73 @@ namespace RBX
 			}
 		}
 		return lightest;
+	}
+
+	// 00669410: cleanAssembly 00668f20 over assemblies +0x38 (the iterator declared before the loop, as in
+	// findLightestDownstream), the inline clear (_Erase 00669050), then cleanEdge 00668fa0 / inEdgeList +0x1c = false /
+	// erase 0064aa20 of edges.begin() while edges +0x58 is non-empty (size +0x74), and dirty +0x14 = false.
+	void TreeStage::process()
+	{
+		if (dirty)
+		{
+			std::set<Assembly*>::iterator it;
+			for (it = assemblies.begin(); it != assemblies.end(); ++it)
+			{
+				cleanAssembly(*it);
+			}
+			assemblies.clear();
+
+			while (edges.size() != 0)
+			{
+				std::set<Edge*>::iterator e = edges.begin();
+				cleanEdge(*e);
+				(*e)->setInEdgeList(false);
+				edges.erase(e);
+			}
+
+			dirty = false;
+		}
+	}
+
+	// 00669c70: getTopPrimitive 005e7490 is called before lightestOther is zeroed (00669c9a..00669caa), so the top
+	// primitive is a named local ahead of it; findLightestDownstream 006699a0, replaceLightest 00669940, dirty +0x14;
+	// other edges go to 00669710; then IPipelined::removeFromStage 00645840 and 005e86a0.
+	void TreeStage::onEdgeRemoving(Edge* e)
+	{
+		if (jointTypeOf(e) >= Joint::ANCHOR_JOINT)
+		{
+			Joint* j = static_cast<Joint*>(e);
+			if (j->getActive())
+			{
+				Primitive* top = getTopPrimitive(j);
+				Primitive* lightestOther = 0;
+				Joint* lightest = findLightestDownstream(top, lightestOther);
+				replaceLightest(j, lightest, lightestOther);
+				dirty = true;
+			}
+		}
+		else
+		{
+			onEdgeRemovingNonJoint(e);
+		}
+		e->removeFromStage(this);
+		removeEdgeFromPrimitives(e);
+	}
+
+	// 00669710: edges that are not anchoring joints (onEdgeRemoving 00669c70): the downstream onEdgeRemoving (slot 5)
+	// when the edge is downstream of this stage, then edges +0x58 erase-by-key 005e9f60 and inEdgeList +0x1c = false.
+	// The key copy is stored before the inEdgeList test (00669741), as in walkEdges.
+	void TreeStage::onEdgeRemovingNonJoint(Edge* e)
+	{
+		if (e->downstreamOfStage(this))
+		{
+			static_cast<IWorldStage*>(getDownstream())->onEdgeRemoving(e);
+		}
+		Edge* value = e;
+		if (e->getInEdgeList())
+		{
+			edges.erase(value);
+			e->setInEdgeList(false);
+		}
 	}
 }

@@ -29,6 +29,7 @@
 #include <set>
 #include <vector>
 #include <G3D/Array.h>
+#include <boost/scoped_ptr.hpp>
 #include "v8world/IWorldStage.h"
 #include "AppUnit658/Edge.h"
 #include "v8world/Contact2008.h"
@@ -106,9 +107,11 @@ namespace RBX
 		JointSet steppingJoints;                          // +0x1b8
 		int field1d8;                                     // +0x1d8 INFERRED: ctor zero, unread by the recovered bodies
 		bool externalBodyForceAdded;                      // +0x1dc INFERRED: ctor false, donor field
-		Profiling::CodeProfiler* profilingCollision;      // +0x1e0 (owned; boost::scoped_ptr in the donor)
-		Profiling::CodeProfiler* profilingWake;           // +0x1e4
-		Profiling::CodeProfiler* profilingSleep;          // +0x1e8
+		// boost::scoped_ptr as in the donor: ~SleepStage 0064b330 deletes +0x1e8 / +0x1e4 / +0x1e0 through slot 0
+		// (`push 1; call [vtbl]`), each under its own EH state (0x13 / 0x12 / 0x11), i.e. three member destructors.
+		boost::scoped_ptr<Profiling::CodeProfiler> profilingCollision;   // +0x1e0
+		boost::scoped_ptr<Profiling::CodeProfiler> profilingWake;        // +0x1e4
+		boost::scoped_ptr<Profiling::CodeProfiler> profilingSleep;       // +0x1e8
 
 	public:
 		SleepStage(IStage* upstream, World* world);       // 0064b8e0 (not built: needs the 8-vector / 7-set EH layout)
@@ -118,6 +121,10 @@ namespace RBX
 		virtual int getMetric(MetricType metricType);     // INFERRED: vtable slot 6, 0064a8c0
 		virtual void onEdgeAdded(Edge* e);                // slot 4 (0064b1b0)
 		virtual void onEdgeRemoving(Edge* e);             // slot 5 (0064c130)
+
+		// 0064b890 (`ret 8`; donor SleepStage::onWakeUpRequest): the target of World::ticklePrimitive 005e9410. 2008 adds
+		// the externalBodyForceAdded +0x1dc store on the recursive path.
+		void onWakeUpRequest(Assembly* a, bool recursive);  // 0064b890
 
 	private:
 		// Donor SleepStage inlines (no code of their own): 0064ae90 / 0064b5e0 / 0064b6d0 test currentStage and its type.
@@ -129,6 +136,8 @@ namespace RBX
 		void sub_0064c850(); // INFERRED: 0064ca27 call
 		void sub_0064c8a0(int worldStepId); // INFERRED: 0064ca2f call
 		AssemblySet* stateToSet(Sim::AssemblyState state);                      // 0064a550
+		bool okNeighborSleep(Assembly* a);                                      // 0064a660 (donor name: RunningAverageState::withinTolerance 00668af0 on SleepInfo +0x8)
+		bool preventNeighborSleep(Assembly* a);                                 // 0064a740 (donor name)
 		void changeAssemblyState(Assembly* a, Sim::AssemblyState state);        // 0064ae90
 		void changeAssemblyState(const std::vector<Assembly*>& assemblies, Sim::AssemblyState state);   // 0064b840
 		void changeJointState(Joint* j, Sim::EdgeState state);                  // 0064ae10
