@@ -215,7 +215,8 @@ namespace RBX
 		public:
 			SoundChannel();
 			virtual ~SoundChannel();
-			void setSoundId(SoundId);
+			// INFERRED: from assembly at 005bd360, sets up PropDescriptor for soundId property
+		void setSoundId(SoundId);
 			SoundId getSoundId() const;
 			float getVolume() const;
 			void setVolume(float);

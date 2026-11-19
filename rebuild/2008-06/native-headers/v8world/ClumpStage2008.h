@@ -14,6 +14,7 @@
 //            subclass declarations.
 #include <set>
 #include "v8world/IWorldStage.h"
+#include "AppUnit658/Edge.h"
 #include "AppUnit668/TreeStage.h"
 
 namespace RBX
@@ -24,7 +25,7 @@ namespace RBX
 	class ClumpStage : public IWorldStage
 	{
 	private:
-		std::set<Primitive*> set10;                // +0x10 INFERRED: only the pointer-set shape is proven (constructor/destructor are the shared pointer-set bodies); no row of the recovered unit reads it
+		std::set<Edge*> set10;                       // +0x10 INFERRED: only the pointer-set shape is proven (constructor/destructor are the shared pointer-set bodies); the insert 005e8c40 / erase 005e9f60 calls in onEdgeAdded 0064cec0 / onEdgeRemoving 0064cf10 store the Edge* argument itself (mov [local], esi; lea arg, &local), so the value type is Edge* (or a derived pointer of identical bits)
 
 	public:
 		ClumpStage(IStage* upstream, World* world); // 0064cfd0

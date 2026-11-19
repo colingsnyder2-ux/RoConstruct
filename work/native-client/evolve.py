@@ -8,6 +8,7 @@ pad fields or change the function signature are discarded."""
 import argparse
 import os
 os.environ.setdefault('ROC_LLM_MAX_TOKENS', '24000')   # a reply holds several whole files; 4096 truncated them to nothing
+os.environ.setdefault('ROC_LLM_TIMEOUT', '600')   # free reasoning models need minutes; the 120 s default returned empty replies
 import re
 import sys
 import time
@@ -23,7 +24,8 @@ ap.add_argument('--permute-compiles', type=int, default=10, help='compile budget
 ap.add_argument('--name', default='')
 ap.add_argument('--rounds', type=int, default=6)
 ap.add_argument('--width', type=int, default=8)
-ap.add_argument('--model', default='openrouter:nvidia/nemotron-3-ultra-550b-a55b:free')
+ap.add_argument('--model', default='opencode/big-pickle,opencode/deepseek-v4.1-flash-free,opencode/mimo-v2.6-flash-free,opencode/nemotron-3.5-lightning-free,claude:sonnet',
+                help='comma list tried in order until one returns text (free first, Sonnet last)')
 args, _ = ap.parse_known_args()
 sys.argv = [sys.argv[0], '--limit', '0']
 sys.path.insert(0, str(HERE))
@@ -129,8 +131,8 @@ def evolve_one(addr, file):
     for rnd in range(1, args.rounds + 1):
         if cur['exact']:
             break
-        live = args.model if args.model not in m.EXHAUSTED else None
-        if not live:
+        pool = [x for x in args.model.split(',') if x not in m.EXHAUSTED]   # comma list = fallback ladder
+        if not pool:
             print('model exhausted'); break
         i = cur['i']
         prompt = '\n\n'.join([
@@ -140,9 +142,14 @@ def evolve_one(addr, file):
             'TARGET:\n%s\nCANDIDATE:\n%s' % (window(cur['t'], i), window(cur['c'], i) if i < len(cur['c']) else '(candidate ends before this point: statements are missing)'),
             '=== DRAFT FILE ===\n' + best_text[-9000:], LEVERS, RULES,
             'Produce %d DIFFERENT variants (different levers).' % args.width])
-        m.ask(live, prompt, 'x')
-        calls += 1
-        text = getattr(m.TOOL, 'reply', '') or ''
+        text = ''
+        for live in pool:                                   # empty reply (free limit, timeout) -> next model
+            m.ask(live, prompt, 'x')
+            calls += 1
+            text = getattr(m.TOOL, 'reply', '') or ''
+            if text.strip():
+                break
+            print('  empty reply from %s, trying next' % live, flush=True)
         print('  reply %d chars' % len(text), flush=True)
         variants = [v for v in BLOCK.findall(text) if '#include' in v][:args.width]
         scored = []

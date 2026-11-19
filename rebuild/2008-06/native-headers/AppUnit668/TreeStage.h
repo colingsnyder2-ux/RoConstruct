@@ -89,14 +89,13 @@ namespace RBX
 		void dirtyAssemblyAndRemove(Assembly* a);           // INFERRED: 006691e0
 		void eraseDirtyAssembly(Assembly* a);               // INFERRED: 00669290
 		void eraseDirtyAssemblyAndDelete(Assembly* a);      // INFERRED: 006692e0
-		private:
+	private:
 		void cleanAssembly(RBX::Assembly *);   // INFERRED: ?cleanAssembly@TreeStage@RBX@@AAEXPAVAssembly@2@@Z (header gap, header_gap_fill.py)
-	private:
 		void cleanEdge(RBX::Edge *);   // INFERRED: ?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z (header gap, header_gap_fill.py)
-	private:
 		RBX::Joint * findLightestDownstream(RBX::Primitive *,RBX::Primitive * &);   // INFERRED: ?findLightestDownstream@TreeStage@RBX@@AAEPAVJoint@2@PAVPrimitive@2@AAPAV42@@Z (header gap, header_gap_fill.py)
+		void onEdgeRemovingNonJoint(Edge* e);   // INFERRED: 00669710 (cleanup for non-JOINT or jointType < ANCHOR_JOINT)
 	public:
 		Primitive* ascend(bool side, Primitive* edge, void* context0, void* context1);
-void sub_00669090(Primitive* left, Primitive* right, int leftDepth, int rightDepth, void* context0, void* context1);   // INFERRED: 00669090, placeholder name (identity tier), body byte-proved (Inferred_00669090.cpp)
+		void sub_00669090(Primitive* left, Primitive* right, int leftDepth, int rightDepth, void* context0, void* context1);   // INFERRED: 00669090, placeholder name (identity tier), body byte-proved (Inferred_00669090.cpp)
 };
 }

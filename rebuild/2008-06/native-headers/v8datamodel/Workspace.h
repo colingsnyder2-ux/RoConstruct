@@ -51,6 +51,12 @@ namespace RBX
 		mutable boost::shared_ptr<Camera> currentCamera;
 		boost::shared_ptr<Camera> cameraTemplate;
 		double unknown0x410, unknown0x418, unknown0x420;
+		// INFERRED: 005a00f0/005a0100/005a0110 read these three fields at +0x410/+0x418/+0x420;
+		// 005a0120 adds all three in the same order. Placeholder names (identity tier), bodies byte-proved.
+		double getUnknown0x410() const;                 // 005a00f0
+		double getUnknown0x418() const;                 // 005a0100
+		double getUnknown0x420() const;                 // 005a0110
+		double getUnknownSum() const;                   // 005a0120
 	public:
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner;

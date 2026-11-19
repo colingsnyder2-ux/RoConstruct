@@ -20,8 +20,8 @@ namespace RBX
 	const Name& NonFactoryProduct<D, N>::getClassName() const { return className(); }
 
 	// Dynamic initializers 007f6e40, 007f6e60 (atexit 007ffa50 / 007ffa10 region).
-	static Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> event_AssemblyAdded("AssemblyAdded", "part");
-	static Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> event_AssemblyRemoved("AssemblyRemoved", "part");
+	Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> PhysicsService::eventAdded("AssemblyAdded", "part");
+	Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> PhysicsService::eventRemoved("AssemblyRemoved", "part");
 
 	PhysicsService::~PhysicsService()
 	{
@@ -29,7 +29,7 @@ namespace RBX
 
 	void PhysicsService::onAdded(PartInstance* part)
 	{
-		event_AssemblyAdded.fire(this, shared_from(part));
+		eventAdded.fire(this, shared_from(part));
 		// The named result keeps the original 0x18-byte frame (a discarded insert result uses 0x10).
 		std::pair<std::set<PartInstance*>::iterator, bool> result = parts.insert(part);
 	}
@@ -37,7 +37,7 @@ namespace RBX
 	void PhysicsService::onRemoved(PartInstance* part)
 	{
 		parts.erase(part);
-		event_AssemblyRemoved.fire(this, shared_from(part));
+		eventRemoved.fire(this, shared_from(part));
 	}
 
 	void PhysicsService::onEvent(const World* source, AssemblyPhysicsOn event)

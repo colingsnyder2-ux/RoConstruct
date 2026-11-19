@@ -68,6 +68,10 @@ public:
     void clearContents();
     // INFERRED: 00579c10 authentic save(ContentId) declaration and call shape.
     void save(ContentId contentId);
+    // INFERRED: 00579c10 passes this ? getContentProvider() : 0 as the first argument of the
+    // 2008-06 TextXmlWriterWithEmbeddedContent(RBX::ContentProvider*, std::ostream&) constructor;
+    // the selected image resolves the direct call to 0x41eea0.
+    ContentProvider* getContentProvider();
     void initializeContents(bool);
     boost::shared_ptr<boost::recursive_mutex> getMutex() const;
     static boost::shared_ptr<boost::recursive_mutex> getMutex(Instance*);

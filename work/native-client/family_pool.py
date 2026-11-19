@@ -39,19 +39,8 @@ PREFERRED = {
     'nim-7': 'opencode:roc-nim/super-vl',
 }
 slots = [
-    {'id': 'open-1', 'kind': 'open', 'external': 42352, 'family': 'boost functor pieces: bind_t'},
-    {'id': 'open-2', 'kind': 'open', 'external': 52308, 'family': 'boost functor pieces: basic_string'},
-    {'id': 'open-3', 'kind': 'open'},
-    {'id': 'nim-1', 'kind': 'nim', 'external': 45696, 'family': 'boost::any::holder'},
-    {'id': 'nim-2', 'kind': 'nim'},
-    {'id': 'nim-3', 'kind': 'nim'},
-    {'id': 'nim-4', 'kind': 'nim', 'individual': True},
-    {'id': 'open-4', 'kind': 'open'},
-    {'id': 'open-5', 'kind': 'open'},
-    {'id': 'open-6', 'kind': 'open'},       # owner asked 2026-11-18: keep 8-12 model workers running at all times
-    {'id': 'nim-5', 'kind': 'nim'},
-    {'id': 'nim-6', 'kind': 'nim'},
-    {'id': 'nim-7', 'kind': 'nim'},
+    {'id': 'open-1', 'kind': 'open'}, {'id': 'open-2', 'kind': 'open'}, {'id': 'open-3', 'kind': 'open'},
+    {'id': 'nim-1', 'kind': 'nim'}, {'id': 'nim-2', 'kind': 'nim'}, {'id': 'nim-4', 'kind': 'nim', 'individual': True},
 ]
 attempted = set()
 model_offsets = {'open': 0, 'nim': 0}
