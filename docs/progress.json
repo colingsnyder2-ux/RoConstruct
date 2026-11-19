@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 03:45 UTC",
+ "updated": "2026-11-19 13:19 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -101,15 +101,15 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19819,
-   "matched": 18443,
-   "partial": 1276,
+   "matched": 18449,
+   "partial": 1270,
    "source_matched": 12727,
-   "mined_matched": 5716,
+   "mined_matched": 5722,
    "bytes": 3196410,
-   "matched_bytes": 2632185,
+   "matched_bytes": 2632981,
    "source_bytes": 2241842,
-   "mined_bytes": 390343,
-   "partial_bytes": 479494,
+   "mined_bytes": 391139,
+   "partial_bytes": 478698,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -185,6 +185,15 @@
      "last": 1791753400.399643
     },
     {
+     "user": "Intel_Inside",
+     "matched": 7,
+     "mining_points": 332,
+     "points": 332,
+     "native_integrated": 0,
+     "submissions": 9,
+     "last": 1795087259.1593585
+    },
+    {
      "user": "sophus",
      "matched": 2,
      "mining_points": 438,
@@ -210,15 +219,6 @@
      "native_integrated": 0,
      "submissions": 19,
      "last": 1791477118.6140368
-    },
-    {
-     "user": "Intel_Inside",
-     "matched": 1,
-     "mining_points": 9,
-     "points": 9,
-     "native_integrated": 0,
-     "submissions": 1,
-     "last": 1795059781.4286404
     },
     {
      "user": "TrollStein",
@@ -284,7 +284,7 @@
      "last": 1791599062.0144148
     }
    ],
-   "data_matched_bytes": 129514,
+   "data_matched_bytes": 129539,
    "classes": 1391,
    "generated": 16565
   },
@@ -1058,6 +1058,15 @@
    "last": 1791569181.5408819
   },
   {
+   "user": "Intel_Inside",
+   "matched": 7,
+   "mining_points": 332,
+   "points": 332,
+   "native_integrated": 0,
+   "submissions": 9,
+   "last": 1795087259.1593585
+  },
+  {
    "user": "Gemini",
    "matched": 5,
    "mining_points": 22,
@@ -1137,15 +1146,6 @@
    "native_integrated": 0,
    "submissions": 21,
    "last": 1791477118.6140368
-  },
-  {
-   "user": "Intel_Inside",
-   "matched": 1,
-   "mining_points": 9,
-   "points": 9,
-   "native_integrated": 0,
-   "submissions": 1,
-   "last": 1795059781.4286404
   },
   {
    "user": "Bob535653",
