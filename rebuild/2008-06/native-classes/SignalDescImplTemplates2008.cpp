@@ -4,6 +4,7 @@
 // 2-argument one is declared only, so it is defined here exactly like AppUnit554RunServiceTemplates.cpp /
 // AppUnit628Explosion.cpp (vector<any>(2), args[0] = a, args[1] = b, wrapper->execute).
 #include "reflection/signal.h"
+#include "reflection/property.h"
 #include "v8datamodel/BrickColor.h"
 #include "v8tree/Instance.h"
 #include <G3D/CoordinateFrame.h>
@@ -41,4 +42,5 @@ ADAPTER1(G3D::Color3)               // 00636670
 ADAPTER1(BrickColor)                // 00636740
 template void SignalDescImpl<2, void(std::string, InstancePtr)>::GenericSlotAdapter::operator()(std::string, InstancePtr); // 00491090
 template void SignalDescImpl<2, void(std::string, bool)>::GenericSlotAdapter::operator()(std::string, bool);               // 004b35e0
+template void SignalDescImpl<2, void(InstancePtr, const PropertyDescriptor*)>::GenericSlotAdapter::operator()(InstancePtr, const PropertyDescriptor*); // 00578670
 template void SignalDescImpl<2, void(std::string, int)>::fire(SignalSource*, std::string, int);                            // 004a0f00

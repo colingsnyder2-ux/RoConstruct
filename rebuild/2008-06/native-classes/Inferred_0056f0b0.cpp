@@ -4,6 +4,9 @@
 #include "G3D/Vector3.h"
 #include "reflection/type.h"
 #include "util/Name.h"
+#include "G3D/Color3.h"
+#include "G3D/Vector2int16.h"
+#include "v8datamodel/BrickColor.h"
 
 namespace boost { template<> G3D::Vector3 any_cast<G3D::Vector3>(const any&); }
 
@@ -34,5 +37,24 @@ template<> std::string& Value::convert<std::string>() {
 	if (!result) throw std::runtime_error("Unable to cast value to std::string");
 	return *result;
 }
+
+// Value::get<T>() const (type.h declares it only): the stored value when the type matches (out-of-line
+// any_cast<const T&>), else convert<T>() on a copy. Instances used by TypedPropertyDescriptor<T>::setVariant:
+//   Color3 0059b650 (typeid 009463a4, any_cast 0059a880), Vector3 0059b730 (typeid 00946364, any_cast 0059a910),
+//   double 005641e0 (typeid 0092bee8, any_cast 00563f60, convert<double> 0056ee50; DebugSettings unit caller 0056429a),
+//   Vector2int16 00445e50 (typeid 00931034, any_cast 004459f0, caller 00445fd3), BrickColor 0048c5e0 (typeid 00935398,
+//   any_cast 0048b690, caller 0048ca83)
+template<class T> T Value::get() const
+{
+	if (isType<T>())
+		return boost::any_cast<const T&>(value);
+	Value copy(*this);
+	return copy.convert<T>();
+}
+template G3D::Color3 Value::get<G3D::Color3>() const;
+template G3D::Vector3 Value::get<G3D::Vector3>() const;
+template double Value::get<double>() const;
+template G3D::Vector2int16 Value::get<G3D::Vector2int16>() const;
+template BrickColor Value::get<BrickColor>() const;
 
 } }
