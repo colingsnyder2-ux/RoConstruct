@@ -51,6 +51,8 @@ namespace RBX
 #include "util/Math.h"
 #include "Network/Players.h"        // findLocalCharacter 0049aca0 (render3dAdorn 005d9c30)
 #include "v8datamodel/Workspace.h"  // native (read only): findWorkspace 005a3380 (render3dAdorn 005d9c30)
+#include "v8datamodel/Selection.h"  // FilteredSelection<PartInstance> (getIgnorePrims 005db9e0)
+#include <boost/thread/once.hpp>
 #include <boost/bind.hpp>
 #include <vector>
 
@@ -276,6 +278,92 @@ namespace RBX
 
 			if (!dynamic_cast<Tool*>(part->getParent()))
 				part->setAlphaModifier(alphaModifier);
+		}
+	}
+
+	// ServiceProvider templates the core v8tree/Service.h only declares; same definitions as FilteredSelectionFactory.cpp
+	// (find without a class-name fallback) and LocalBackpack2008.cpp (create(const Instance*)). This unit emits the
+	// FilteredSelection<PartInstance> instances that getIgnorePrims 005db9e0 calls: create(const Instance*) 005db230
+	// (parent walk with dynamic_cast<ServiceProvider> 0092e15c, tail jump to create() const), create() const 005daa50,
+	// find() const 005da370, doGetClassIndex 005d78f0 (guard 0097a25c, index 0097a258), callDoGetClassIndex 005d7c70.
+	template<class Class> size_t ServiceProvider::doGetClassIndex()
+	{
+		static size_t index = newIndex();
+		return index;
+	}
+	template<class Class> void ServiceProvider::callDoGetClassIndex() { doGetClassIndex<Class>(); }
+	template<class Class> size_t ServiceProvider::getClassIndex()
+	{
+		static boost::once_flag flag = BOOST_ONCE_INIT;
+		boost::call_once(&callDoGetClassIndex<Class>, flag);
+		return doGetClassIndex<Class>();
+	}
+	template<class Class> Class* ServiceProvider::find() const
+	{
+		size_t index = getClassIndex<Class>();
+		if (index + 1 > serviceArray.size())
+			serviceArray.resize(index + 1);
+		else
+		{
+			Class* service = static_cast<Class*>(serviceArray[index].get());
+			if (service)
+				return service;
+		}
+		// No class-name fallback in this specialization (005da370 returns NULL); the unreachable tail keeps the
+		// original exception-handling codegen (as in FilteredSelectionFactory.cpp).
+		if (true)
+			return NULL;
+		boost::shared_ptr<Instance> item;
+		if (!item)
+			return NULL;
+		serviceArray[index] = item;
+		return static_cast<Class*>(item.get());
+	}
+	template<class Class> Class* ServiceProvider::create() const
+	{
+		Class* service = find<Class>();
+		if (!service)
+		{
+			boost::shared_ptr<Class> value = Creatable<Instance>::create<Class>();
+			service = value.get();
+			size_t index = getClassIndex<Class>();
+			serviceArray[index] = value;
+			service->setParent(const_cast<ServiceProvider*>(this));
+		}
+		return service;
+	}
+	template<class Class> Class* ServiceProvider::create(const Instance* context)
+	{
+		while (context)
+		{
+			if (const ServiceProvider* provider = dynamic_cast<const ServiceProvider*>(context))
+				return provider->create<Class>();
+			context = context->getParent();
+		}
+		return NULL;
+	}
+
+	// 005db9e0 ?getIgnorePrims@Humanoid@RBX@@UAEXAAV?$vector@PBVPrimitive@RBX@@...@Z (238 B, ICharacterSubject slot, this
+	// adjusted by -0x14c, `ret 4`). Donor tools/rbxgs humanoid/Humanoid.cpp: getCharacterFromHumanoid inlined (null test,
+	// dynamic_cast<ModelInstance> 00932a40 of the parent), visitDescendents 005d8540 with collectAllDescendantCharacterPrims
+	// 005d9d10 bound to the ignore vector cast to vector<Primitive*>& (as the donor). 2008 addition (no donor): the service
+	// created by 005db230 is FilteredSelection<PartInstance> (create<T>() 005d9280 allocates 0x154 bytes, constructor
+	// 005d8740 stores vtable 0083d544 = ??_7?$FilteredSelection@VPartInstance@RBX@@@RBX@@6B@ and names it
+	// "FilteredSelection" 008308a4); every selected part's embedded Primitive (+0x228) is pushed (push_back 004213a0).
+	void Humanoid::getIgnorePrims(std::vector<const Primitive*>& ignore)
+	{
+		Humanoid* humanoid = this;
+		ModelInstance* character = NULL;
+		if (humanoid)
+			character = dynamic_cast<ModelInstance*>(humanoid->getParent());
+		if (character)
+			character->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));
+
+		if (FilteredSelection<PartInstance>* selection = ServiceProvider::create<FilteredSelection<PartInstance> >(this))
+		{
+			const std::vector<PartInstance*>& parts = selection->items();
+			for (std::vector<PartInstance*>::const_iterator it = parts.begin(); it != parts.end(); ++it)
+				ignore.push_back((*it)->getPrimitive());
 		}
 	}
 
