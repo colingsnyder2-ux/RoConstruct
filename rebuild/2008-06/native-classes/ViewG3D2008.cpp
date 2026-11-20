@@ -46,6 +46,10 @@ namespace RBX
 		// -> StandardOut::singleton 00569620 ->print(MESSAGE_ERROR 3, 00826dc4, e.reason.c_str() (+0x28)) and
 		// catch (...) -> print(3, 00826dac); then presetLighting (slot 1) with LightingParameters copy 004d7020, the
 		// clear colour (all four loads before the stores) and lightingValid = true.
+		// NEAR MISS (561 B vs 560 B; only the entry differs: `xor ebx,ebx; mov [ebp-0x1c],ebx`). Rejected in batch 30:
+		// a named RCP local for the getG3DSky result (562 B); `sky = G3D::ReferenceCountedPointer<G3D::Sky>()` in the
+		// !hasSky branch (532 B: it does create the zeroed -0x1c temporary and the ebx zero register, but setPointer
+		// stays out of line). Parked after 3 hypotheses.
 		void ViewG3D::updateLighting()
 		{
 			if (!lightingValid)
