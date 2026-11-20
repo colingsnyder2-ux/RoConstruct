@@ -1,28 +1,39 @@
-// from server: 27% by colin
-struct RBX_VBodyColors_FactoryProduct_Creator {
-    void construct();
-};
+// from server: 100% by Intel_Inside
+// from server: 100% by tester
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-extern "C" void* __cdecl malloc(unsigned int size);
+extern "C" {
+    extern void* (__cdecl *allocate)(unsigned int);
+}
 
-struct RBX_Name;
-
-struct CreatorBase {
-    void registerCreator(RBX_Name* name, RBX_VBodyColors_FactoryProduct_Creator* creator);
-};
-
-struct RBX_VBodyColors_FactoryProduct {
-    void init(RBX_VBodyColors_FactoryProduct_Creator* creator);
-};
-
-void RBX_VBodyColors_FactoryProduct_Creator::construct()
+inline void* __cdecl operator new(unsigned int size)
 {
-    void* mem = malloc(0xec);
-    RBX_VBodyColors_FactoryProduct_Creator* obj = 0;
-    if (mem) {
-        obj = (RBX_VBodyColors_FactoryProduct_Creator*)mem;
-        ((void (__thiscall*)(void*))0x5a29f0)(obj);
-    }
-    RBX_VBodyColors_FactoryProduct* self = (RBX_VBodyColors_FactoryProduct*)((char*)this - 0);
-    self->init(obj);
+    return allocate(size);
+}
+
+void __cdecl operator delete(void*);
+
+struct Product {
+    unsigned char storage[0xec];
+    Product();
+};
+
+struct Deleter {
+    union {
+        unsigned int value;
+        unsigned char unused;
+    };
+};
+
+struct Result {
+    Result(Product*, Deleter);
+};
+
+Result __cdecl create()
+{
+    Deleter deleter = { 0 };
+    *(volatile unsigned char*)&deleter.unused = 0;
+    return Result(new Product, deleter);
 }

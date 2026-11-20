@@ -90,22 +90,22 @@ namespace RBX
 
 	// Template members the shared headers only declare (same definitions as Team.cpp / Flag.cpp).
 	template<class C, class D, const char* N>
-	FactoryProduct<C, D, N>::FactoryProduct() : D() {}
+		FactoryProduct<C, D, N>::FactoryProduct() : D() {}
 
 	template<class C, class D, const char* N>
-	const Name& FactoryProduct<C, D, N>::className() { return Name::declare<N>(); }
+		const Name& FactoryProduct<C, D, N>::className() { return Name::declare<N>(); }
 
 	template<class C, class D, const char* N>
-	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
+		const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }
 
 	template<class D, const char* N>
-	const Name& NonFactoryProduct<D, N>::className() { return Name::declare<N>(); }
+		const Name& NonFactoryProduct<D, N>::className() { return Name::declare<N>(); }
 
 	template<class D, const char* N>
-	const Name& NonFactoryProduct<D, N>::getClassName() const { return className(); }
+		const Name& NonFactoryProduct<D, N>::getClassName() const { return className(); }
 
 	template<class C, class D, const char* N>
-	DescribedCreatable<C, D, N>::DescribedCreatable()
+		DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
 
 	Reflection::PropDescriptor<BackpackItem, TextureId> desc_TextureId("TextureId", "Data", &BackpackItem::getTextureId, &BackpackItem::setTextureId, Reflection::PropertyDescriptor::STANDARD);
@@ -211,23 +211,31 @@ namespace RBX
 
 	HopperBin::HopperBin()
 		: binType(SCRIPT_BIN),
-		  active(false)
+		active(false)
 	{
 		setName("HopperBin");
 	}
 }
 
+// Explicit instantiations. The exe contains these template symbols and no code in this file uses them,
+// so the compiler only emits them when asked to.
 template class RBX::Reflection::EnumDesc<enum RBX::HopperBin::BinType>;
-template class RBX::Reflection::SignalDescImpl<0,void __cdecl(void)>;
+template class RBX::Reflection::SignalDescImpl<0,void(void)>;
 template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::HopperBin::BinType>;
 template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::HopperBin::BinType> >;
-template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> > >;
-template class std::_Tmap_traits<RBX::Name const *,enum RBX::HopperBin::BinType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> >,0>;
-template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::HopperBin::BinType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> >,0> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,
+    enum RBX::HopperBin::BinType> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::HopperBin::BinType,std::less<RBX::Name const *>,
+    std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::HopperBin::BinType,
+    std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,
+    enum RBX::HopperBin::BinType> >,0> >;
 template class std::_Vector_val<enum RBX::HopperBin::BinType,std::allocator<enum RBX::HopperBin::BinType> >;
-template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::HopperBin::BinType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> >,0> >::_Node *>;
-template class std::map<RBX::Name const *,enum RBX::HopperBin::BinType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> > >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::HopperBin::BinType,
+    std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,
+    enum RBX::HopperBin::BinType> >,0> >::_Node *>;
+template class std::map<RBX::Name const *,enum RBX::HopperBin::BinType,std::less<RBX::Name const *>,
+    std::allocator<std::pair<RBX::Name const * const,enum RBX::HopperBin::BinType> > >;
 template class std::vector<enum RBX::HopperBin::BinType,std::allocator<enum RBX::HopperBin::BinType> >;
-
 template void RBX::Name::callDoDeclare<RBX::sHopperBin>();
 template void RBX::Name::callDoDeclare<RBX::sBackpackItem>();

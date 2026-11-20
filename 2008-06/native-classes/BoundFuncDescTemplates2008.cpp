@@ -10,6 +10,7 @@
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/DataModel.h"
 #include "script/ScriptContext.h"
+#include "v8datamodel/Selection.h"
 
 using namespace RBX;
 using namespace RBX::Reflection;
@@ -23,3 +24,6 @@ template class BoundFuncDesc<ScriptContext, void(double), 1>;
 template class BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > >), 1>;
 template class BoundFuncDesc<BodyPosition, G3D::Vector3(void), 0>;
 template class BoundFuncDesc<BodyVelocity, G3D::Vector3(void), 0>;
+// 00568080 execute (the Selection "Set" descriptor of AppUnit564_2008Selection.cpp, RTTI dynamic_cast to Selection
+// 009459f8; Workspace-shaped void(shared_ptr<const vector<shared_ptr<Instance> > >) argument, call through +0x38/+0x3c).
+template class BoundFuncDesc<Selection, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > >), 1>;

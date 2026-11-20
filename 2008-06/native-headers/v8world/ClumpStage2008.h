@@ -34,5 +34,10 @@ namespace RBX
 		virtual StageType getStageType();           // slot 1 (CLUMP_STAGE, folded constant)
 		virtual void onEdgeAdded(Edge* e);          // slot 4 (0064cec0)
 		virtual void onEdgeRemoving(Edge* e);       // slot 5 (0064cf10)
+
+		// 0064cc40 ?onPrimitiveAddedAnchor@ClumpStage@RBX@@QAEXPAVPrimitive@2@@Z / 0064ccf0
+		// ?onPrimitiveRemovedAnchor@ClumpStage@RBX@@QAEXPAVPrimitive@2@@Z (registry; callers World 005e94a0 / 005e94e0).
+		void onPrimitiveAddedAnchor(Primitive* p);
+		void onPrimitiveRemovedAnchor(Primitive* p);
 	};
 }

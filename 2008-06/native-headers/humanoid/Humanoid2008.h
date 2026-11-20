@@ -196,6 +196,10 @@ namespace RBX
 		// 005db680 (734 bytes, thiscall, `ret 8`; only caller render2d 005db960 with Workspace::getGCamera through
 		// ICameraOwner slot 2). Donor name (declared in tools/rbxgs humanoid/Humanoid.h; the donor has no body).
 		void renderMultiplayer(Adorn* adorn, const G3D::GCamera& camera);
+		// 005d9db0 (thiscall, one vector reference, `ret 4`): fills the vector with the character's primitives; only
+		// caller HumanoidState::onFloorStep 006444f0 (native-classes/HumanoidState.cpp, HumanoidState is a friend).
+		// Donor name, signature and access (tools/rbxgs humanoid/Humanoid.h: private). Declaration only.
+		void getPrimitives(std::vector<Primitive*>& primitives);
 
 	public:
 		// Dynamic initializers 007f6840 and 007f6870..007f6950 (in this order); names after the donor.

@@ -65,6 +65,16 @@ namespace RBX
 		// INFERRED: 0065abd0 passes Primitive::getFastFuzzyExtents (005e7a50) to 0065a950 (spatial node update, reads prim +0x64..+0x7c)
 		void onPrimitiveExtentsChanged(Primitive* p, const Extents& e);   // 0065a950
 		void onPrimitiveExtentsChanged(Primitive* p);                     // 0065abd0
+		// 005e9170 World::getNumHashNodes / 005e9180 World::getMaxBucketSize read [[contactManager]+0x78] / +0x7c through
+		// these (donor SpatialHash.h names; the 2008 offsets of nodesOut / maxBucket above).
+		int getNodesOut() const
+		{
+			return nodesOut;
+		}
+		int getMaxBucket() const
+		{
+			return maxBucket;
+		}
 	public:
 		static int gridSize;   // INFERRED (header-add): evidence: asm dword ptr [0x9625ac] loaded and shifted left by cl - byte-proved by 00659460
 	};

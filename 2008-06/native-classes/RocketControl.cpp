@@ -32,13 +32,38 @@
 //     (G3D Matrix3::operator*, Body2008.h SimBody::accumulateTorque), not done: shared by exact BodyGyro rows.
 //   Rocket::computeForce 0062fc00: same calls and shape; the frame is 0xc bytes smaller than the target (one Vector3
 //     temporary fewer) and the maxSpeed block's fsub operand order differs.
+//     Batch 23 (rejected, no change at all: 1223 B, same diff): a separate `maxVelocity = dir * maxSpeed` local instead of
+//     reassigning pAccel; a named `lowForce = low * mass` before `/ dt`. Target slots: force +0x14, pAccel +0x20, low
+//     +0x2c, targetDir +0x38; the low*mass temporary +0x44 and its quotient +0x50 sit above them, where the candidate
+//     packs the product into pAccel's dead slot. Other diffs: `fld st(0); fmulp st(4)` (kThrustP) and the dot sum order.
+//   BodyPosition 00630140, batch 23 (rejected): `Vector3 accel = vel * -kD + pAccel` (396 B) loses the -kD product
+//     order again (insn 53, `fld st(0); fmul vel.x`) as well as the mass products.
 #define NATIVE_PRIMITIVE_NATIVE_BODY
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
 #include "util/Math.h"
+#ifdef NATIVE_BODYMOVER_ONEVENT_PENDING
+#include "v8world/World2008.h"
+#endif
 
 namespace RBX
 {
+	// 0062fae0 (Listener<RunService, Stepped> slot 0; `this` is the Listener subobject at +0x138): world +0x13c,
+	// weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (twice), preventBodySleep (Instance slot 16), then
+	// World::ticklePrimitive 005e9410 (native v8world/World2008.h) with the embedded Primitive (PartInstance +0x228) and 1.
+	// Donor tools/rbxgs v8datamodel/Gyro.cpp with the 2008 weak_ptr part (mined analog roc_unit_e3d64f543a38d6a9).
+	// PENDING (b23, not compiled): part-embedded v8datamodel/PartInstance.h includes the donor v8world/World.h, whose
+	// ticklePrimitive takes one argument (the 2008 005e9410 takes (Primitive*, int), `ret 8`), and World2008.h cannot
+	// be added beside it (C2011 'RBX::World' redefinition). Needs PartInstance.h to forward-declare World (it only holds
+	// the World* myWorld) or to take World2008.h under NATIVE_PRIMITIVE_NATIVE_BODY.
+#ifdef NATIVE_BODYMOVER_ONEVENT_PENDING
+	void BodyMover::onEvent(const RunService* source, Stepped event)
+	{
+		if (world && part.lock() && preventBodySleep())
+			world->ticklePrimitive(part.lock()->getPrimitive(), true);
+	}
+#endif
+
 	// 00632e10: BodyMover::onEvent 0062fae0, then weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (twice),
 	// PartInstance::getCoordinateFrame 00598cb0, CoordinateFrame::pointToWorldSpace 004766a0 for the target,
 	// SignalDescriptor::findSignalInstance 0056b620 and signal0::operator() 004b5950 (event_ReachedTarget 0097c81c).
@@ -201,6 +226,9 @@ namespace RBX
 	}
 
 	// 00630570: force +0x148 added at the branch cofm of the root (no updatePV).
+	// Batch 27 (rejected): Body2008.h SimBody::accumulateForceCofm as `force = _force + force` loads all three
+	// operands before the stores (fxch) here and breaks the exact COMDAT 0062e140; header kept as `force += _force`.
+	// Only the x component's fadd operand order differs (target `fld [edi+0x18]; fadd [esi+0x84]`).
 	void BodyForce::computeForce(const float dt, bool throttling)
 	{
 		Body* root = part.lock()->getPrimitive()->getBody()->getRoot();

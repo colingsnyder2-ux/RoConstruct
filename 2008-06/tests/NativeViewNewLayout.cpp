@@ -5,6 +5,9 @@
 #include "ViewNew/SphereMesh.h"
 #include "ViewNew/CylinderMesh.h"
 #include "ViewNew/HeadMesh.h"
+#include "ViewNew/WedgeMesh.h"
+#include "ViewNew/TorsoMesh.h"
+#include "ViewNew/PBBMesh.h"
 #include <stddef.h>
 
 using namespace RBX;
@@ -45,6 +48,13 @@ struct NativeViewNewLayout
 	static int cylinderMeshSize() { return sizeof(CylinderAlongXMesh); }
 	static int headMeshSize() { return sizeof(HeadMesh); }
 	static int bevelMeshSize() { return sizeof(BevelMesh); }
+	static int wedgeBuilderSize() { return sizeof(WedgeBuilder); }
+	static int torsoBuilderSize() { return sizeof(TorsoBuilder); }
+	static int torsoBuilderShoulderInset() { return offsetof(TorsoBuilder, shoulderInset); }
+	static int pbbBuilderStrips() { return offsetof(PBBBuilder, strips); }
+	static int wedgeMeshSize() { return sizeof(WedgeMesh); }
+	static int torsoMeshSize() { return sizeof(TorsoMesh); }
+	static int pbbMeshSize() { return sizeof(PBBMesh); }
 };
 
 #define PROBE(name) int native##name() { return NativeViewNewLayout::name(); }
@@ -55,4 +65,5 @@ PROBE(levelBuilderSize) PROBE(levelBuilderHalfSize) PROBE(levelBuilderSurfaceTyp
 PROBE(levelBuilderTextureScale) PROBE(bevelBuilderSize) PROBE(bevelBuilderBevel) PROBE(sphereBuilderSize)
 PROBE(sphereBuilderElements) PROBE(cylinderBuilderSize) PROBE(cylinderBuilderElements) PROBE(headBuilderSize)
 PROBE(headBuilderBevel) PROBE(headBuilderElements) PROBE(sphereMeshSize) PROBE(cylinderMeshSize) PROBE(headMeshSize)
-PROBE(bevelMeshSize)
+PROBE(bevelMeshSize) PROBE(wedgeBuilderSize) PROBE(torsoBuilderSize) PROBE(torsoBuilderShoulderInset)
+PROBE(pbbBuilderStrips) PROBE(wedgeMeshSize) PROBE(torsoMeshSize) PROBE(pbbMeshSize)

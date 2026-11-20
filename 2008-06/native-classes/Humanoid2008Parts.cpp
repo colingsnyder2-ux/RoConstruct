@@ -195,8 +195,12 @@ namespace RBX
 		return torso ? rbx_static_cast<JointInstance*>(torso->findFirstChildByName("Right Shoulder")) : NULL;
 	}
 
-	// Free helper of the original unit (buildJoints 005d9340 calls it five times); name and linkage after the donor.
-	boost::shared_ptr<AutoJoint> newJoint(bool animated)
+	// 005d8420. Free helper of the original unit (buildJoints 005d9340 calls it five times); name and linkage after the
+	// donor. Batch 27: returns shared_ptr<JointInstance> because v8datamodel/JointInstance.h now derives Motor and Snap
+	// from JointInstance (2008 RTTI), so the donor's shared_ptr<AutoJoint> return no longer compiles (the whole unit
+	// failed with C2440). The body has no pointer adjustment either way (bases at offset 0); the registry's
+	// decorated name ?newJoint@RBX@@YA?AV?$shared_ptr@VAutoJoint@RBX@@@boost@@_N@Z comes from the donor signature.
+	boost::shared_ptr<JointInstance> newJoint(bool animated)
 	{
 		if (animated)
 		{

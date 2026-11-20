@@ -1,18 +1,25 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 // Inactive 2008-06 recovery of the CPropGrid translation unit rows in 00438000..0043c000
 // (one TU, as the original lays them out: CPropGrid members, CPropGrid::Item, SelectionGroup::remove,
 // the addItem<Editor> attachments and the XItem<T> constructors).
 // Built against the committed native headers, all included read-only: CPropGrid.h, SelectionGroup.h,
 // PropertyGridItems.h, v8datamodel/DataModel.h, v8tree/Instance.h, v8tree/PropertyChanged.h.
-// Current intake verifies 15 byte/data-exact rows. Other emitted rows remain useful near matches, not proof.
+// Other emitted rows remain useful near matches, not proof.
+// Flags: the XItem constructors call std::string::c_str through its import (0043a119), hence std-noinline-string.
 #include "PropertyGridItems.h"
+#include "CPropertyGridItemBrickColor.h"
+#include "v8datamodel/BrickColor.h"
+#include "util/TextureId.h"
+#include "util/Sound.h"
 #include "SelectionGroup.h"
 #include "reflection/object.h"
 #include "util/Name.h"
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"
 #include "v8datamodel/DataModel.h"
+#include "DataModelLock.cpp"
 #include <G3D/Color3.h>
+#include <G3D/Vector3.h>
 #include <algorithm>
 #include <functional>
 #include <boost/bind.hpp>
@@ -158,9 +165,110 @@ template XItem<G3D::Color3, CXTPPropertyGridItemColor, RBX::Reflection::TypedPro
     const RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>*, CPropGrid*);
 template XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::XItem(
     const RBX::Reflection::PropertyDescriptor*, CPropGrid*);
+// 0043c020 (Vector3), 0043c440 (enum), 0043c9b0 (SoundId), 0043cfa0 (TextureId); BrickColor 0043b400 is the explicit
+// specialization in PropertyGridItems2008.cpp.
+template XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::XItem(
+    const RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>*, CPropGrid*);
+template XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::XItem(
+    const RBX::Reflection::EnumPropertyDescriptor*, CPropGrid*);
+template XItem<RBX::Soundscape::SoundId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> >::XItem(
+    const RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>*, CPropGrid*);
+template XItem<RBX::TextureId, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId> >::XItem(
+    const RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>*, CPropGrid*);
 
 // CPropGrid::addItem<Editor> 00439810 (XBoolItem), 00439940 (Color3), 00439a70 (enum), 00439ba0 (float).
 template void CPropGrid::addItem(XBoolItem*);
 template void CPropGrid::addItem(XItem<G3D::Color3, CXTPPropertyGridItemColor, RBX::Reflection::TypedPropertyDescriptor<G3D::Color3> >*);
 template void CPropGrid::addItem(XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>*);
 template void CPropGrid::addItem(XItem<float, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<float> >*);
+
+// XItem<T>::getValue (non-virtual): the selected instance's value under the DataModel lock.
+// 0043a1e0 (bool), 0043a730 (float), 0043abc0 (int), 0043c0d0 (Vector3), 0043b510 (Color3; the BrickColor update
+// 0043b5b0 calls the same folded body); enum 0043c510 and string 0043b930 are specialized below.
+template<class T, class GridItem, class Descriptor>
+T XItem<T, GridItem, Descriptor>::getValue(RBX::Instance* instance)
+{
+    RBX::DataModel::Lock lock(grid->dataModel);
+    return descriptor->getValue(instance);
+}
+
+// 0043c510: EnumPropertyDescriptor::getEnumValue (descriptor slot 14).
+template<>
+int XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::getValue(RBX::Instance* instance)
+{
+    RBX::DataModel::Lock lock(grid->dataModel);
+    return descriptor->getEnumValue(instance);
+}
+
+// 0043b930: string rows read through PropertyDescriptor::getStringValue (descriptor slot 7).
+template<>
+std::string XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::getValue(RBX::Instance* instance)
+{
+    RBX::DataModel::Lock lock(grid->dataModel);
+    return descriptor->getStringValue(instance);
+}
+
+// 0043b9d0: string rows write through PropertyDescriptor::setStringValue (descriptor slot 8).
+template<>
+void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::writeValue(RBX::Instance* instance, const std::string& value)
+{
+    RBX::DataModel::Lock lock(grid->dataModel);
+    descriptor->setStringValue(instance, value);
+}
+
+// XItem<T>::update (CPropGrid::Item slot 0): shows the common value of every selected instance of the
+// row's classes, or an empty value when they differ; hides the row when nothing is selected.
+// 0043a3b0 (bool), 0043a870 (float), 0043ac60 (int), 0043b0d0 (Color3), 0043b5b0 (BrickColor),
+// 0043bc20 (string), 0043c170 (Vector3), 0043c6a0 (enum).
+template<class T, class GridItem, class Descriptor>
+void XItem<T, GridItem, Descriptor>::update(RBX::SelectionGroup* group)
+{
+    // value is constructed before found is cleared (0043b5d1: BrickColor 0xc2 store, then found = 0).
+    T value;
+    bool found = false;
+    // The originals read group's end iterator once, before the loop (0043a3c2).
+    const RBX::SelectionGroup::iterator groupEnd = group->end();
+    // Iterator constness is codegen evidence: const outer / non-const inner is the only combination that
+    // reproduces the outer-loop reload order (this, then end) of all eight instantiations (0043a5e1, 0043b319).
+    for (std::vector<const RBX::Reflection::ClassDescriptor*>::const_iterator it = classes.begin(), end = classes.end(); it != end; ++it) {
+        // The class key is copied to a local first (0043a43a: mov ecx, [ebx]; find takes its address).
+        const RBX::Reflection::ClassDescriptor* descriptor = *it;
+        RBX::SelectionGroup::iterator instances = group->find(descriptor);
+        if (instances == groupEnd)
+            continue;
+        for (std::vector<boost::shared_ptr<RBX::Instance> >::iterator i = instances->second.begin(), iend = instances->second.end(); i != iend; ++i) {
+            if (!found) {
+                value = getValue(i->get());
+                displayValue(value);
+            } else if (!equalValues(value, getValue(i->get()))) {
+                // Non-virtual SDK call in every instantiation (0043a618, 0043b350, 0043bf0f: call 007119f0).
+                CXTPPropertyGridItem::SetValue("");
+                SetHidden(FALSE);
+                return;
+            }
+            found = true;
+        }
+    }
+    SetHidden(!found);
+}
+
+template bool XItem<bool, CXTPPropertyGridItemBool, RBX::Reflection::TypedPropertyDescriptor<bool> >::getValue(RBX::Instance*);
+template float XItem<float, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<float> >::getValue(RBX::Instance*);
+template int XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<int> >::getValue(RBX::Instance*);
+template G3D::Vector3 XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::getValue(RBX::Instance*);
+
+template void XItem<bool, CXTPPropertyGridItemBool, RBX::Reflection::TypedPropertyDescriptor<bool> >::update(RBX::SelectionGroup*);
+template void XItem<float, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<float> >::update(RBX::SelectionGroup*);
+template void XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<int> >::update(RBX::SelectionGroup*);
+template void XItem<int, CXTPPropertyGridItemEnum, RBX::Reflection::EnumPropertyDescriptor>::update(RBX::SelectionGroup*);
+template void XItem<G3D::Color3, CXTPPropertyGridItemColor, RBX::Reflection::TypedPropertyDescriptor<G3D::Color3> >::update(RBX::SelectionGroup*);
+template void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::update(RBX::SelectionGroup*);
+template void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::update(RBX::SelectionGroup*);
+
+// XItem<T>::OnValueChanged (primary slot 25, inline in PropertyGridItems.h): 004414e0 (Color3), 00441560 (BrickColor),
+// 004415d0 (string), 00441660 (Vector3).
+template void XItem<G3D::Color3, CXTPPropertyGridItemColor, RBX::Reflection::TypedPropertyDescriptor<G3D::Color3> >::OnValueChanged(CString);
+template void XItem<RBX::BrickColor, CPropertyGridItemBrickColor, RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor> >::OnValueChanged(CString);
+template void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::OnValueChanged(CString);
+template void XItem<G3D::Vector3, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3> >::OnValueChanged(CString);
+template void XItem<std::string, CXTPPropertyGridItem, RBX::Reflection::PropertyDescriptor>::update(RBX::SelectionGroup*);

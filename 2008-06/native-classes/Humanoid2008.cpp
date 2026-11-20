@@ -237,14 +237,17 @@ namespace RBX
 				// Target: the distance test adds 3.0f (0081e380) to the y difference and the flattened delta
 				// (y = 0) is stored before the 2.0f (0081c434) comparison; the delta lives in worldPosition's slot.
 				// Rejected: donor body (delta.y = 0 before magnitude; separate delta, 308 bytes); separate
-				// G3D::Vector3 delta = worldPosition - torsoPosition with y += 3 (335 bytes, extra 12-byte local).
-				// PARKED (3 hypotheses): this in-place form is 339 bytes with the target's frame (0x18); it still
-				// stores x'/y'/z' as they are computed, while the target keeps y' + 3 in st only and sums
-				// z'*z' + x'*x' before (y' + 3)^2. Next lead: a magnitude over a temporary such as
-				// (worldPosition + G3D::Vector3(0, 3, 0)).magnitude() after flattening x/z in place.
-				worldPosition -= torso->getCoordinateFrame().translation;
-				worldPosition.y += 3.0f;
-				float distance = worldPosition.magnitude();
+				// G3D::Vector3 delta = worldPosition - torsoPosition with y += 3 (335 bytes, extra 12-byte local);
+				// in-place `worldPosition -= translation; worldPosition.y += 3.0f` (339 bytes, stores x'/y'/z' as
+				// computed). Batch 25: (1) `-=` with `(worldPosition + G3D::Vector3(0, 3, 0)).magnitude()` -> 337
+				// bytes, y' no longer stored but x'/z' stored before the subtractions finish; (2) this form
+				// (assignment from operator- plus the temporary magnitude) -> 337 bytes, first divergence insn 63
+				// (0x5d9b2f): z' is stored before `fadd 3.0f` and the flattened y = 0 store is scheduled before the
+				// squares (target: z' stored after the fadd, y = 0 after the sum, sum order z'^2 + x'^2 + Y^2);
+				// (3) assignment from operator- with `worldPosition.y += 3.0f; magnitude()` -> 339 bytes (y = 0
+				// placed as the target, but sum order Y^2 last via fld st(2)). PARKED after three hypotheses.
+				worldPosition = worldPosition - torso->getCoordinateFrame().translation;
+				float distance = (worldPosition + G3D::Vector3(0.0f, 3.0f, 0.0f)).magnitude();
 				worldPosition.y = 0.0f;
 
 				if (distance < 2.0f)

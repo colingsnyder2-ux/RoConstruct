@@ -14,6 +14,8 @@
 #include "AppUnit49C_2008/Streaming2008.h"
 #include "util/standardout.h"
 #include "BitStream.h"
+#include "RakPeerInterface.h"
+#include "RakNetStatistics.h"
 #include "security/SecurityContext.h"
 #include "v8datamodel/PartInstance.h"
 #include <typeinfo>
@@ -162,6 +164,33 @@ namespace RBX
 							StandardOut::singleton()->print(MESSAGE_INFO, "   write %s %s, %d bits", property.getDescriptor().type.name.c_str(), property.getDescriptor().name.c_str(), stream.GetNumberOfBitsUsed() - bits);
 					}
 				}
+			}
+		}
+
+		// 004b6530 (donor Replicator::ReplicatorStatsItem::update without the 2007 bps row): peer slots GetLowestPing
+		// 0x94, GetAveragePing 0x8c, GetLastPing 0x90 (twice), formatValue(double, const char*, ...) 005c8f20 with
+		// "%d avg:%d best:%d" 00825008, formatValue<unsigned int> 005c9140 on waitItems.size() (+0x2b70),
+		// "%.1g%%" 00825000, formatMem 005c8ea0.
+		void Replicator::ReplicatorStatsItem::update()
+		{
+			if (replicator->peer)
+			{
+				ping->formatValue(
+					replicator->peer->GetLastPing(replicator->remotePlayerId),
+					"%d avg:%d best:%d",
+					replicator->peer->GetLastPing(replicator->remotePlayerId),
+					replicator->peer->GetAveragePing(replicator->remotePlayerId),
+					replicator->peer->GetLowestPing(replicator->remotePlayerId)
+				);
+
+				waitingRefs->formatValue(replicator->waitItems.size());
+
+				// INFERRED: double holder (the donor has float ratio): the target divides with float conversions (fadd dword
+				// 2^32) but never rounds the quotient to a float before both uses.
+				double ratio = (float)statistics->messagesTotalBitsResent / statistics->totalBitsSent;
+				packetLoss->formatValue(ratio, "%.1g%%", ratio * 100.0);
+
+				instanceSize->formatMem(instanceCount != 0 ? instanceBits / (instanceCount * 8) : 0);
 			}
 		}
 	}

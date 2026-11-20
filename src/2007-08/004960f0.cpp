@@ -1,20 +1,39 @@
-// from server: 33% by colin
-struct VPlayersBoundFuncDesc {
-    void construct(int a, int b, int c, int d, int e, int f);
+// from server: 100% by Intel_Inside
+extern "C" void* __stdcall getDescriptor(const char*, int);
+
+struct Base {
+    char data[0x24];
+
+    Base(void*);
+    virtual ~Base();
 };
 
-extern "C" int __stdcall sub_494E80(int, int);
-extern "C" void __stdcall sub_570DB0(int);
-extern "C" void __stdcall sub_56D3C0(int);
-extern "C" void __stdcall sub_491660(int, int);
+struct Value {
+    unsigned long type;
+    unsigned long data;
 
-void VPlayersBoundFuncDesc::construct(int a, int b, int c, int d, int e, int f) {
-    int r = sub_494E80(e, f);
-    sub_570DB0(r);
-    *(int*)this = 0x79bbd4;
-    *(int*)((char*)this + 0x28) = c;
-    *(int*)((char*)this + 0x2c) = d;
-    sub_56D3C0((int)((char*)this + 0x30));
-    sub_56D3C0((int)((char*)this + 0x38));
-    sub_491660(a, b);
+    Value();
+    ~Value();
+};
+
+struct S : Base {
+    unsigned long first;
+    unsigned long second;
+    Value value1;
+    Value value2;
+
+    S(unsigned long, unsigned long, const char*, int, int, int);
+    virtual ~S();
+    void initialize(int, int);
+};
+
+S::S(unsigned long a, unsigned long b, const char* c,
+     int d, int e, int g)
+    : Base(getDescriptor(c, g)),
+      first(a),
+      second(b),
+      value1(),
+      value2()
+{
+    initialize(d, e);
 }

@@ -1,35 +1,39 @@
-// from server: 34% by colin
-// roc 2007-08 00426ab0  unit: RBX::Reflection::Metadata::Item  size: 134 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00426ab0
+// from server: 100% by Intel_Inside
+// from server: 100% by tester
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-extern "C" void* __cdecl malloc(unsigned int size);
+extern "C" {
+    extern void* (__cdecl *allocate)(unsigned int);
+}
 
-struct Descriptor {
-    Descriptor(const char* name, int attributes);
-};
-
-struct EnumDescriptor;
-
-struct Item : Descriptor {
-    const EnumDescriptor& owner;
-    const int value;
-    const unsigned int index;
-    Item(const char* name, int attributes, int value, unsigned int index, const EnumDescriptor& owner);
-};
-
-struct EnumDescriptor {
-    void addItem(const Item* item, int value) const;
-};
-
-Item::Item(const char* name, int attributes, int value, unsigned int index, const EnumDescriptor& owner)
-    : Descriptor(name, attributes)
-    , owner(owner)
-    , value(value)
-    , index(index)
+inline void* __cdecl operator new(unsigned int size)
 {
-    Item* p = (Item*)malloc(0xe8);
-    if (p) {
-        p->Item::Item(name, attributes, value, index, owner);
-    }
-    this->owner.addItem(p, value);
+    return allocate(size);
+}
+
+void __cdecl operator delete(void*);
+
+struct Product {
+    unsigned char storage[0xe8];
+    Product();
+};
+
+struct Deleter {
+    union {
+        unsigned int value;
+        unsigned char unused;
+    };
+};
+
+struct Result {
+    Result(Product*, Deleter);
+};
+
+Result __cdecl create()
+{
+    Deleter deleter = { 0 };
+    *(volatile unsigned char*)&deleter.unused = 0;
+    return Result(new Product, deleter);
 }

@@ -1,19 +1,53 @@
-// from server: 30% by colin
-struct RBX_VDebrisService_FactoryProduct_Creator {
-    void construct();
+// from server: 100% by Intel_Inside
+// from server: 100% by Intel
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+
+#include <stdlib.h>
+
+namespace boost {
+template<class T>
+class shared_ptr
+{
+    T* px;
+    void* pn;
+public:
+    template<class Y, class D> shared_ptr(Y* p, D d);
+    ~shared_ptr();
+};
+}
+
+namespace RBX {
+template<class T>
+class Creatable
+{
+public:
+    class Deleter
+    {
+    public:
+        void operator()(T* instance);
+    };
+
+    template<class U>
+    static boost::shared_ptr<U> create()
+    {
+        return boost::shared_ptr<U>(new U(), Deleter());
+    }
+
+protected:
+    static void* operator new(size_t size) { return malloc(size); }
 };
 
-extern "C" void* __stdcall malloc(unsigned int size);
-extern "C" void __stdcall sub_5FAE40(void* p, int flag);
-extern "C" void __stdcall sub_590980(void* self, void* a, void* b, void* c);
-
-void RBX_VDebrisService_FactoryProduct_Creator::construct()
+class Instance : public Creatable<Instance>
 {
-    void* mem = malloc(0x2dc);
-    if (mem != 0) {
-        sub_5FAE40(mem, 1);
-    } else {
-        mem = 0;
-    }
-    sub_590980(this, mem, 0, 0);
+public:
+    virtual ~Instance();
+};
+class Seat : public Instance
+{
+    char data[0x2dc - 4];
+public:
+    Seat(bool b = true);
+};
 }
+template boost::shared_ptr<RBX::Seat> RBX::Creatable<RBX::Instance>::create<RBX::Seat>();

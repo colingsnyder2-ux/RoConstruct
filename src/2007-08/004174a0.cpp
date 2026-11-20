@@ -1,23 +1,41 @@
-// from server: 39% by colin
-extern "C" int __cdecl func_0062fef6(int);
-extern "C" void __cdecl func_00415980(int, int, int);
-extern "C" void __cdecl func_004923a0(int);
-extern "C" bool __cdecl func_004879d0(int);
+// from server: 100% by Intel_Inside
 
-struct S {
-    int f(int, int, int, int, int, int, int, int, int, int, int, int, int);
+void* __cdecl operator new(unsigned int size);
+
+struct Bound {
+    ~Bound();
+    int storage[10];
 };
 
-int S::f(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12, int a13)
+struct Functor {
+    int head[2];
+    Bound bound;
+};
+
+bool __cdecl has_empty_target(const Functor* f);
+void __cdecl construct(Functor* p, const Functor& value);
+
+typedef void* (*Manager)();
+typedef void (*Invoker)();
+
+void* manage();
+void invoke();
+
+struct Function {
+    Manager manager;
+    void* functor;
+    Invoker invoker;
+
+    void assign_to(Functor f, int);
+};
+
+void Function::assign_to(Functor f, int)
 {
-    int local = 0;
-    if (!func_004879d0((int)&local)) {
-        *(int*)((char*)this + 8) = 0x416b40;
-        *(int*)this = 0x416b70;
-        int p = func_0062fef6(0x30);
-        func_00415980(p, (int)&local, 0);
-        *(int*)((char*)this + 4) = p;
+    if (!has_empty_target(&f)) {
+        invoker = &invoke;
+        manager = &manage;
+        Functor* copy = (Functor*)operator new(sizeof(Functor));
+        construct(copy, f);
+        functor = copy;
     }
-    func_004923a0((int)&local);
-    return 0;
 }

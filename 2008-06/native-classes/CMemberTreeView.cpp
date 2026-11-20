@@ -78,9 +78,11 @@ void CMemberTreeView::showEnum(const RBX::Reflection::EnumDescriptor* descriptor
     GetTreeCtrl().SortChildrenCB(&sort);
 }
 
-// 004352a0. Parked (header): the original tests the bIsPublic bit inline (test byte ptr [ebp + 0x10], 1 at
-// 0043536d); reflection/property.h declares PropertyDescriptor::isPublic out of line, so this body calls it.
-// Everything else matches once std::string::c_str is imported (std-noinline-string flags above).
+// 004352a0. The original tests the bIsPublic bit inline (test byte ptr [ebp + 0x10], 1 at 0043536d), while core
+// reflection/property.h declares PropertyDescriptor::isPublic out of line and the identity registry has no
+// out-of-line isPublic (proposal: "bool isPublic() const { return bIsPublic; }" for the core header owner).
+// Same inline test as CPropGrid::addProperty 00440e30 (CPropGridRecovery_00439d70.cpp) and the exact copy in
+// CMemberTreeViewRecovery_004352a0.cpp, which this class unit now supersedes.
 void CMemberTreeView::addProperty(const RBX::Reflection::PropertyDescriptor* descriptor)
 {
     if (!showInherited && &descriptor->owner != current)
@@ -95,7 +97,8 @@ void CMemberTreeView::addProperty(const RBX::Reflection::PropertyDescriptor* des
         if (!metadata->unknown_130)
             return;
     }
-    if (!descriptor->isPublic())
+    // INFERRED: inline bIsPublic test (bit 0 of the byte at descriptor + 0x10, 0043536d); see the comment above.
+    if (!(reinterpret_cast<const unsigned char*>(descriptor)[0x10] & 1))
         return;
     HTREEITEM item = GetTreeCtrl().InsertItem(TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE, descriptor->name.c_str(), 6, 6, 0, 0, 0, TVI_ROOT, TVI_LAST);
     GetTreeCtrl().SetItem(item, TVIF_PARAM, NULL, 0, 0, 0, 0, (LPARAM)descriptor);

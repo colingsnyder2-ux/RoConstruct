@@ -12,8 +12,7 @@ public:
     const Reflection::Property& getProperty() const { return property; }
     const Reflection::PropertyDescriptor& getDescriptor() { return property.getDescriptor(); }
     const Name& getName();
-    // INFERRED: 004649f0 copies the event's two dwords (descriptor, instance) inline, so the copy ctor is not out-of-line
-    PropertyChanged(const PropertyChanged& other) : property(other.property) {}
+    PropertyChanged(const PropertyChanged&);
 private:
     PropertyChanged(const Reflection::Property& value)
         : property(Reflection::Property(value.getDescriptor(), value.getInstance())) {}

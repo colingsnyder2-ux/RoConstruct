@@ -43,10 +43,7 @@ namespace RBX
 	template<class C, class D, const char* N>
 	const Name& FactoryProduct<C, D, N>::getClassName() const { return className(); }   // 00584c10
 
-	template<class C, class D, const char* N>
-	template<typename Arg0Type>
-	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // 00585520
-		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+	// DescribedCreatable(Arg0Type) 00585520 is defined inline by reflection/reflection.h (an out-of-line copy here is C2995).
 
 	static const Name& partName = Name::declare(sModel, 2000);
 
@@ -175,13 +172,24 @@ namespace RBX
 		}
 	}
 
-	// 00585b30: NOT exact (278 B against 294 B; with the pending inline isDescendentOf 294 B, but the original keeps
-	// `this` in ebp and that build in ebx). Parked: the original inlines one level of an inline (tail-recursive)
-	// Instance::isDescendentOf (set->parent == this, parent NULL test, then the out-of-line 00422ae0); the shared
-	// v8tree/Instance.h declares it out of line (header proposal), so no source-only fix applies here.
+	// 00585b30 ?setPrimaryPart@ModelInstance@RBX@@QAEXPAVPartInstance@2@@Z: the original inlines one level of the donor's
+	// inline (tail-recursive) Instance::isDescendentOf (set->parent compared with this as `cmp ebp, ecx`, parent NULL
+	// test, then the out-of-line 00422ae0), reproduced by the file-local helper below.
+	// INFERRED: file-local copy of the donor's inline Instance::isDescendentOf shape (parent == ancestor, NULL parent,
+	// then the out-of-line recursion 00422ae0); core v8tree/Instance.h declares it out of line only.
+	static inline bool isDescendentOfInline(const Instance* instance, const Instance* ancestor)
+	{
+		const Instance* thisParent = instance->getParent();
+		if (ancestor == thisParent)
+			return true;
+		if (thisParent == NULL)
+			return false;
+		return thisParent->isDescendentOf(ancestor);
+	}
+
 	void ModelInstance::setPrimaryPart(PartInstance* set)
 	{
-		if (!set || set->isDescendentOf(this))
+		if (!set || isDescendentOfInline(set, this))
 		{
 			candidatePrimaryPart.reset();
 			updatePrimaryPart(set);
@@ -272,18 +280,25 @@ namespace RBX
 		return biggestPart;
 	}
 
+	// Free function of the drag-utilities unit (defined in native-classes/DragPrimitiveBounds.cpp; identity registry
+	// ?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@...@Z). Local declaration: the donor
+	// tool/DragUtilities.h has no 2008 declaration of it.
+	void collectPrimitives(const Instance* object, std::vector<Primitive*>& output); // 0060f340
+
 	// 00584d80: exact only with the 2008 Primitive (geometry +0x9c, native-headers/part-embedded) and inline
 	// Extents::zero / negativeInfiniteExtents (00583860 / 00583920 are their COMDAT bodies; proposal).
+	// The original fills a vector<Primitive*> through collectPrimitives 0060f340 (cdecl, add esp 8), not the donor
+	// DragUtilities::getPrimitivesConst.
 	Extents ModelInstance::computeLocalGridExtents() const
 	{
-		std::vector<const Primitive*> primitives;
-		DragUtilities::getPrimitivesConst(this, primitives);
+		std::vector<Primitive*> primitives;
+		collectPrimitives(this, primitives);
 
 		Extents answer = Extents::negativeInfiniteExtents();
 
 		for (size_t i = 0; i < primitives.size(); i++)
 		{
-			const Primitive* primitive = primitives[i];
+			Primitive* primitive = primitives[i];
 			Extents localExtents = primitive->getExtentsLocal();
 			Extents childExtentsInMe = localExtents.express(primitive->getCoordinateFrame(), getLocation());
 			answer.unionWith(childExtentsInMe);

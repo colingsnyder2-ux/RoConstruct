@@ -78,6 +78,54 @@ namespace RBX
 namespace RBX {
 namespace HUMAN {
 
+// 0066e6a0 (Balancing slot 8, `ret 4`; it lies in the GettingUp / MovingNoPhysicsBase unit range, hosted here for the
+// Body2008.h setup). No donor body. getHumanoid 00793d50 -> getTorsoBody 005d9160 / getRootBody 005d9180 (early outs);
+// torso pv.position.rotation getColumn(1) 00513240 crossed into Vector3::unitY() (guarded static 00972898, guard
+// 009728a4) as unitY x up; torso pv.velocity.rotational (+0xd0); root getBranchTorque 0062e2e0; the root CoordinateFrame
+// (updatePV once, pv +0x94 kept) takes the three vectors to object space (Matrix3::transpose 00513510); getBranchIBody
+// (Cofm::getMoment 00660170 or moment +0x68, Matrix3 copy 00513220) scaled by -kP (+0xa0) through operator*(float,
+// Matrix3) 005134e0 and Matrix3 * Vector3 00476580; Math::toDiagonal 005ddbb0 of a second getBranchIBody; x and z take
+// the desired torque when |desired - current| < diag * 4000.0f [00847b7c]; minus (diag * kD (+0xa4)) * angular velocity;
+// back to world space, minus the old torque, inline Body::accumulateTorque (root +0x10 -> simBody +0x2c, SimBody::update
+// 00658d20 when dirty, torque +0x90).
+// PARKED near miss (batch 23): 1003 bytes = target size, two x87 operand-order residuals only: the first
+// vectorToObjectSpace row 0 (0066e7de: target `fld axis.x; fld st(0); fmul m00`, this compile `fld m00; fld axis.x;
+// fmul st(1), st(0)`) and the inline SimBody::accumulateTorque x add (0066ea4f: target `fld added.x; fadd torque.x`,
+// this compile `fld torque.x; fadd added.x`; Rocket::turn 0062e530 has the opposite residual, so not a header shape).
+// Accepted steps: a separate `up` local (getColumn before the unitY guard; frame 0x90 -> 0x9c) and an explicit
+// Math::toDiagonal(getBranchIBody()) (the out-of-line getBranchIBodyV3 0062e100 is inlined in the target). Rejected:
+// reusing `axis` for the object-space result (1009 B); a const `axis` (no change).
+void Balancing::onComputeForce(float dt)
+{
+    Body* torsoBody = getHumanoid()->getTorsoBody();
+    if (!torsoBody)
+        return;
+    Body* rootBody = getHumanoid()->getRootBody();
+    if (!rootBody)
+        return;
+
+    G3D::Vector3 up = torsoBody->getCoordinateFrame().rotation.getColumn(1);
+    G3D::Vector3 axis = G3D::Vector3::unitY().cross(up);
+    G3D::Vector3 angVel = torsoBody->getVelocity().rotational;
+    G3D::Vector3 oldTorque = rootBody->getBranchTorque();
+
+    const G3D::CoordinateFrame& frame = rootBody->getCoordinateFrame();
+    G3D::Vector3 axisBody = frame.vectorToObjectSpace(axis);
+    G3D::Vector3 angVelBody = frame.vectorToObjectSpace(angVel);
+    G3D::Vector3 torqueBody = frame.vectorToObjectSpace(oldTorque);
+
+    G3D::Vector3 desiredTorque = (-kP * rootBody->getBranchIBody()) * axisBody;
+    G3D::Vector3 newTorque = torqueBody + desiredTorque;
+    G3D::Vector3 iBody = Math::toDiagonal(rootBody->getBranchIBody());
+    for (int i = 0; i < 3; i += 2) {
+        if (fabs(desiredTorque[i] - torqueBody[i]) < iBody[i] * 4000.0f)
+            newTorque[i] = desiredTorque[i];
+    }
+    newTorque -= (iBody * kD) * angVelBody;
+
+    rootBody->accumulateTorque(frame.vectorToWorldSpace(newTorque) - oldTorque);
+}
+
 // 00666550
 void RunningBase::onComputeForce(float dt)
 {

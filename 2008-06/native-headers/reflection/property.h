@@ -107,7 +107,7 @@ namespace RBX
 		class Property : public ConstProperty
 		{
 		public:
-			Property(const Property& other) : ConstProperty(other) {}   // INFERRED: 004649f0 copies descriptor/instance inline
+			Property(const Property&);
 			Property(const PropertyDescriptor& descriptor, DescribedBase* instance)
 				: ConstProperty(descriptor, instance)
 			{

@@ -1,4 +1,7 @@
-// native-flags: document-swap profile, VS2008 RTM 21022, /fp:fast /U_RELEASEASSERT (tests/record_native_app_unit588_2008.py)
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX /fp:fast /U_RELEASEASSERT
+// Flags: document-swap profile (work/2008-06/shared-layouts/document-swap-current.json), VS2008 RTM 21022, /fp:fast
+// /U_RELEASEASSERT, as tests/record_native_app_unit588_2008.py builds it. The earlier flags line spelled the profile as
+// words, so prove.py compiled this unit with no /O2 (batch 26: 47 -> 131 exact with the explicit flags; 32 /Od-only Wml/STL COMDAT matches lost).
 // 2008-06 RBX::RootInstance unit 00590030..005917bb (inactive), against the committed native
 // v8datamodel/RootInstance.h (read-only). Bodies follow the donor tools/rbxgs RootInstance.cpp; every spelling below
 // that differs from the donor is read from the 2008-06 bytes:
@@ -16,8 +19,28 @@
 //     0xb8): not counted, World.h proposal in the receipt.
 //   * insertSpawnLocation 005910a0 reads SpawnLocation::neutral at +0x400, which needs the 2008 PartInstance of
 //     native-headers/part-embedded (pending build only).
-//   * insertInstances 005911d0 is not built: its 2008 shape (an early setParent loop for a foreign requestedParent,
-//     an extra dynamic_cast branch, a final ChangeHistory waypoint 0058c5c0 "Insert") differs from the donor.
+<<<<<<< HEAD
+//   * insertInstances 005911d0 is not built (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
+=======
+//   * insertInstances 005911d0 (decoded 2026-11-19, 825 bytes, ret 0x10): if requestedParent is set and
+>>>>>>> mew/claude/optimistic-shannon-0xccuy
+//     !contains(requestedParent) 005574b0, only std::for_each 005903f0 with boost::bind(&Instance::setParent 0055a8f0,
+//     _1, requestedParent) and return. Otherwise a local vector<shared_ptr<Instance>> (push_back 00420110, dtor
+//     005a2fe0) collects instances[i] by index: Sky -> create<Lighting>(this) 00590e20 ->replaceSky 005e0650; Team ->
+//     setParent(create<Teams>(this) 00590dd0); HopperBin -> setParent(Players::findLocalPlayer 0049ac80 ?
+//     getPlayerBackpack 0048c470 : create<StarterPackService>(this) 00590d80); SpawnLocation -> insertSpawnLocation
+//     005910a0 then collected; Decal -> only for insertMode == 2: ServiceProvider::find<Workspace>(this) 00491e50 and,
+//     when found, the Workspace member 005a3d40(Decal*) (Selection::setSelection 00567770 on the decal, then
+//     setMouseCommand 005a1fc0(new 0x50-byte command 005a19f0(workspace, decal))), then return with no waypoint;
+//     anything else is collected. If the collection is not empty (test 0xfffffff8): requestedParent defaults to this;
+//     insertMode 0 -> insertRaw 00590440 with a local vector<weak_ptr<PartInstance>>, 1 -> insertToTree 00590c10,
+//     2 -> insert3dView 00590f90 (promptMode); then recordCameraHistory("Insert" 00831e18, this) 0058c5c0 (local
+<<<<<<< HEAD
+//     declaration pattern of CSelectionTreeCtrl.cpp). Blocker: v8datamodel/Workspace.h (not this unit's) declares
+//     no member for 005a3d40 (placeholder sub_005a3d40 in inferred-identity-bindings.json); proposal there.
+=======
+//     declaration pattern of CSelectionTreeCtrl.cpp). 005a3d40 is Workspace::startDecalDrag (Workspace.h, batch 27).
+>>>>>>> mew/claude/optimistic-shannon-0xccuy
 #include "v8datamodel/RootInstance.h"
 #include "v8datamodel/PartInstance.h"
 #include "tool/Dragger.h"
@@ -48,8 +71,8 @@ namespace RBX
 		}
 		return NULL;
 	}
-	// 00590e20 is called only by insertInstances 005911d0 (not built here: 2008 shape), so it is instantiated
-	// explicitly.
+	// 00590e20 is called only by insertInstances 005911d0 (now built below as well); the explicit instantiation is kept
+	// for the ordering of the batch 26 proof.
 	template Lighting* ServiceProvider::create<Lighting>(const Instance* context);
 
 	RootInstance::~RootInstance()
@@ -269,6 +292,91 @@ namespace RBX
 			}
 		}
 	}
+}
+// 005911d0 RootInstance::insertInstances (825 bytes, ret 0x10). The Decal branch calls the Workspace member
+// 005a3d40 (thiscall, Decal*; Selection::setSelection 00567770 on the decal, then setMouseCommand 005a1fc0 with a new
+// 0x50-byte DecalTool 005a19f0(workspace, decal)), declared in v8datamodel/Workspace.h (batch 27) as
+// startDecalDrag(Decal*) (INFERRED name, later Roblox Workspace::startDecalDrag; body in WorkspaceUpdate.cpp).
+#include "v8datamodel/Decal.h"
+#include "v8datamodel/Workspace.h"
+namespace RBX
+{
+	void recordCameraHistory(const char* name, const Instance* context); // 0058c5c0 (CSelectionTreeCtrl.cpp pattern)
+
+	void RootInstance::insertInstances(const std::vector<boost::shared_ptr<Instance> >& instances, Instance* requestedParent, InsertMode insertMode, PromptMode promptMode)
+	{
+		if (requestedParent && !this->contains(requestedParent))
+		{
+			std::for_each(instances.begin(), instances.end(), boost::bind(&Instance::setParent, _1, requestedParent));
+			return;
+		}
+
+		std::vector<boost::shared_ptr<Instance> > remaining;
+		for (size_t i = 0; i < instances.size(); ++i)
+		{
+			Instance* instance = instances[i].get();
+			if (Sky* sky = dynamic_cast<Sky*>(instance))
+			{
+				Lighting* lighting = ServiceProvider::create<Lighting>(this);
+				lighting->replaceSky(sky);
+			}
+			else if (dynamic_cast<Team*>(instance))
+			{
+				instance->setParent(ServiceProvider::create<Teams>(this));
+			}
+			else if (HopperBin* hopperBin = dynamic_cast<HopperBin*>(instance))
+			{
+				if (Network::Player* player = Network::Players::findLocalPlayer(this))
+					hopperBin->setParent(player->getPlayerBackpack());
+				else
+					hopperBin->setParent(ServiceProvider::create<StarterPackService>(this));
+			}
+			else if (SpawnLocation* spawnLocation = dynamic_cast<SpawnLocation*>(instance))
+			{
+				insertSpawnLocation(spawnLocation);
+				remaining.push_back(instances[i]);
+			}
+			else if (Decal* decal = dynamic_cast<Decal*>(instance))
+			{
+				if (insertMode == INSERT_TO_3D_VIEW)
+				{
+					if (Workspace* workspace = ServiceProvider::find<Workspace>(this)) // 00491e50
+						workspace->startDecalDrag(decal);                             // 005a3d40
+					return;
+				}
+			}
+			else
+			{
+				remaining.push_back(instances[i]);
+			}
+		}
+
+		if (!remaining.empty())
+		{
+			if (!requestedParent)
+				requestedParent = this;
+
+			switch (insertMode)
+			{
+			case INSERT_RAW:
+				{
+					std::vector<boost::weak_ptr<PartInstance> > partArray;
+					insertRaw(remaining, requestedParent, partArray);
+				}
+				break;
+			case INSERT_TO_TREE:
+				insertToTree(remaining, requestedParent);
+				break;
+			case INSERT_TO_3D_VIEW:
+				insert3dView(remaining, promptMode);
+				break;
+			}
+			recordCameraHistory("Insert", this);
+		}
+	}
+}
+namespace RBX
+{
 	ControllerTypeArray RootInstance::computeControllersUsed() const
 	{
 		ControllerTypeArray array;

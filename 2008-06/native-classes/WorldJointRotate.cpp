@@ -1,3 +1,4 @@
+// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 native RBX::RotateJoint / DynamicRotateJoint / RotatePJoint / RotateVJoint (inactive); evidence in
 // native-headers/v8world/Joints2008.h. Verified by tests/record_native_world_joints.py. Rows of the RotateJoint unit
 // (00645a70..00646550): both RotateJoint constructors, the destructor, removeFromKernel, the RotateP / RotateV
@@ -5,7 +6,6 @@
 // surfaceTypeToJoint. getChannelValue 00645af0, canBuildJoint 00645f60, getTorqueArmLength and putInKernel 00646550
 // need the native Primitive / Body; DynamicRotateJoint::stepUi 006463f0 uses World::ticklePrimitive
 // (v8world/World2008.h) and the 2008 IPipelined::getWorld (opt-in kernel-stages IStage, KERNEL_STAGE 7).
-// native-flags: /I{headers}/kernel-stages /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Joints2008.h"
 #include "v8world/World2008.h"
 #include "v8kernel/Kernel.h"

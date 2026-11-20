@@ -34,14 +34,21 @@ namespace RBX
 		return G3D::CoordinateFrame(G3D::Matrix3::identity(), newCameraPt);
 	}
 
+	// 00641390 (415 bytes, `ret 0xc`; vtable ICameraSubject slot, registry ?zoom@ICharacterSubject@RBX@@EAE_NMAAVCoordinateFrame@G3D@@0@Z).
+	// The 2008 body differs from the donor: it works on a copy of the goal that starts from goalFromDistance 00641280
+	// (focus, goal, unoccludedDistance +0x40) while wasOccluded (+0x3d) is set (Matrix3 copy 00513220), and at the end
+	// either stores the new distance in unoccludedDistance (occluded) or writes the copy back to cameraGoal.
+	// Camera::getNewZoomDistance 005cc240, Vector3::unitize 00518470.
 	bool ICharacterSubject::zoom(const float in, G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus)
 	{
-		G3D::Vector3 focusToGoal = cameraGoal.translation - cameraFocus.translation;
+		G3D::CoordinateFrame goal = wasOccluded ? goalFromDistance(cameraFocus, cameraGoal, unoccludedDistance) : cameraGoal;
+
+		G3D::Vector3 focusToGoal = goal.translation - cameraFocus.translation;
 
 		float currentDistance = focusToGoal.magnitude();
-		float newDistance = Camera::getNewZoomDistance(currentDistance, in);
-
-		newDistance = G3D::min(400.0f, newDistance);
+		float zoomDistance = Camera::getNewZoomDistance(currentDistance, in);
+		// The clamped distance lives in the 400.0f temporary's slot (a separate variable from the unclamped one).
+		float newDistance = G3D::min(400.0f, zoomDistance);
 
 		if (newDistance == currentDistance)
 			return false;
@@ -50,7 +57,12 @@ namespace RBX
 		focusToGoal.unitize();
 		focusToGoal.y = newDistance * 0.03f;
 
-		cameraGoal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+		goal.translation = focusToGoal.direction() * newDistance + cameraFocus.translation;
+
+		if (wasOccluded)
+			unoccludedDistance = (goal.translation - cameraFocus.translation).magnitude();
+		else
+			cameraGoal = goal;
 
 		return true;
 	}
@@ -134,6 +146,11 @@ namespace RBX
 	// +0x3d, unoccludedDistance +0x40, tellCameraNear (slot 8). getLocation is ILocation slot 0 through the vbptr +4;
 	// getIntendedMovementVector slot 9, getIntendedRotationAboutYAxis slot 10 (result unused), rotationERA +0x34
 	// getAverage 00666270 / pushAndGetAverage 00666250 (results unused), CoordinateFrame::getHeading (getColumn 00513240).
+	// PARKED (b23, 3 hypotheses): the assigned focusOffset gives the target frame (sub esp, 0x10c; first divergence
+	// moves from insn 0 to insn 43) but 1145 B vs 1085 B (with the Camera::updateGoal forms below; 1155 B without). Remaining: the target calls Vector2::direction out of line
+	// (005cbe70, placeholder COMDAT) where this unit inlines it, and the getLocation return slots (0xbc / 0x8c) are
+	// swapped. Rejected alone: Camera::updateGoal forms (`goal += focus - old`, `.direction() * distance`): frame unchanged;
+	// `.fastDirection()`: still inlined.
 	void ICharacterSubject::stepGoalAndFocus(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus, bool cameraExternallyAdjusted)
 	{
 		float distance = 0.0f;
@@ -143,8 +160,7 @@ namespace RBX
 		{
 			G3D::Vector3 oldFocus = cameraFocus.translation;
 			cameraFocus = getLocation();
-			G3D::Vector3 focusMoved = cameraFocus.translation - oldFocus;
-			cameraGoal.translation += focusMoved;
+			cameraGoal.translation += cameraFocus.translation - oldFocus;
 		}
 		else
 		{
@@ -155,7 +171,8 @@ namespace RBX
 
 			G3D::Vector3 focusDelta = cameraFocus.translation - focusERA.getAverage() - movement;
 			focusDelta.y = 0.0f;
-			G3D::Vector3 focusOffset = focusOffsetERA.pushAndGetAverage(focusDelta);
+			G3D::Vector3 focusOffset; // assigned, not initialised: the target copies the returned average into its own slot
+			focusOffset = focusOffsetERA.pushAndGetAverage(focusDelta);
 			focusERA.pushAndGetAverage(cameraFocus.translation);
 
 			float rotation = getIntendedRotationAboutYAxis(); // INFERRED: result unused by the target
@@ -169,8 +186,8 @@ namespace RBX
 			cameraGoal.translation += focusOffset;
 
 			distance = offset.xz().length();
-			G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction();
-			cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x * distance, offset.y, direction.y * distance);
+			G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction() * distance;
+			cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x, offset.y, direction.y);
 
 			goalInFocus = focusSpace.pointToObjectSpace(cameraGoal.translation);
 			hasGoalInFocus = true;

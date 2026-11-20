@@ -63,16 +63,21 @@ namespace RBX
 		}
 	}
 
-	// 00609690: NOT exact (511 B against 573 B). The original inlines the top-level test as a dynamic_cast of the parent
-	// plus an out-of-line getTypedRoot<PVInstance> 005836d0 (and keeps one more RCP copy); here isTopLevelPVInstance()
-	// is called out of line, as in computeIsTopFlag 006090c0. Kept because it emits the exact
+	// 00609690: NOT exact (571 B against 573 B, batch 24). The original inlines the top-level test as a dynamic_cast of
+	// the parent plus an out-of-line getTypedRoot<PVInstance> 005836d0 compared with the raw parent +0x104, and reads
+	// TopPVController +0x170 of the raw parent (no rbx_static_cast check), so the test is written out here (the
+	// out-of-line isTopLevelPVInstance() of computeIsTopFlag 006090c0 gave 511 B). Remaining diff: the RCP copy is in
+	// ebx / edi swapped, and the original inlines the return copy constructor (`mov [ret], 0; push edi; call
+	// 00598fa0`) where this build passes &controller. Rejected: getTypedParent<PVInstance>() in the test and the
+	// TopPVController read (653 B: rbx_static_cast emits its dynamic_cast check twice), `return controller.pointer()`
+	// (567 B, esi / edi swapped from insn 11). Parked after three hypotheses. Kept because it emits the exact
 	// ComputeProp<RCP<Controller>>::operator RCP 00608e70 (TopPVController read). ControllerService::getController
 	// 005cbd10, ServiceProvider::create<ControllerService> 005a3330.
 	G3D::ReferenceCountedPointer<Controller> PVInstance::computeTopPVController() const
 	{
-		if (!isTopLevelPVInstance())
+		if (queryTypedParent<PVInstance>() && getTypedRoot<PVInstance>() != getParent())
 		{
-			G3D::ReferenceCountedPointer<RBX::Controller> controller = getTypedParent<PVInstance>()->TopPVController;
+			G3D::ReferenceCountedPointer<RBX::Controller> controller = static_cast<const PVInstance*>(getParent())->TopPVController;
 
 			if (controller.notNull())
 			{

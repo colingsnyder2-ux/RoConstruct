@@ -1,5 +1,12 @@
-// from server: 42% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/dumpstak.cpp
+// from server: 100% by Intel_Inside
+// roc 2007-08 00455d80  unit: CRobloxReportView  size: 103 bytes
+struct CRobloxReportView
+{
+    char storage[0x31c];
+    CRobloxReportView();
+};
+
+CRobloxReportView* createReportView()
+{
+    return new CRobloxReportView;
+}

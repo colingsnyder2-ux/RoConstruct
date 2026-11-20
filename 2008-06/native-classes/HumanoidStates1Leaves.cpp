@@ -52,7 +52,12 @@ namespace HUMAN {
 // Vector3::isZero 006662f0 (out-of-line G3D inline), getHumanoid 00793d50, Math::getHeading 005de650,
 // Humanoid::getTorsoHeading 005d91a0, Math::radWrap 005cbec0, 8.0f [0082ca40], 0.7f [008288b8];
 // floorFound is HumanoidState +0x20.
-// PARKED (not exact): all calls, stores and the getHumanoid-before-getHeading order match (the local
+// Batch 23: byte-exact with per-component scaling of the floorFound tail (x *= 0.7f; y = length * 0.7f; z *= 0.7f),
+// which reproduces the target's x reload/store, sqrt * 0.7 into +0xbc and `fmul [esi+0xc0]` for z. The earlier notes
+// below are kept as the trial record. Side effect: G3D::Vector3::operator*(float) 00485360 is no longer emitted in this
+// unit (the old Vector3(...) * 0.7f form called it out of line); it stays exact in RocketControl.cpp,
+// RunningBaseForce.cpp and ICharacterSubject.cpp.
+// Earlier record (batch 14), PARKED: all calls, stores and the getHumanoid-before-getHeading order match (the local
 // Humanoid* reproduces 00666493 push ebx / 0066649c mov ebx,eax). The only remaining difference is the
 // floorFound tail: the original 006664d4 loads z,y,x for the length, then reloads x, stores x*0.7, stores
 // sqrt*0.7 to y and multiplies z from memory (fmul [esi+0xc0]); this body loads x before the length and
@@ -80,7 +85,9 @@ void RunningBase::onStep(float dt, Controller* controller)
         if (floorFound)
         {
             float speed = desiredVelocity.length();
-            desiredVelocity = G3D::Vector3(desiredVelocity.x, speed, desiredVelocity.z) * 0.7f;
+            desiredVelocity.x *= 0.7f;
+            desiredVelocity.y = speed * 0.7f;
+            desiredVelocity.z *= 0.7f;
         }
     }
 }

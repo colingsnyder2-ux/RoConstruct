@@ -1,7 +1,7 @@
 #pragma once
 // 2008-06 native RBX::MeshId class. Inherits from ContentId.
 
-#include "slingshot-load/util/ContentProvider.h"
+#include "ContentProvider.h"
 
 namespace RBX
 {

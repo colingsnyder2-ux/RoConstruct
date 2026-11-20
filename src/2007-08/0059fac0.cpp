@@ -1,116 +1,37 @@
-// from server: 59% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by Intel_Inside
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc 2007-08 00544bd0  unit: RBX::Reflection::Metadata::VItem::?$BoundPropGetSet  size: 180 bytes
+#include <string>
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct S0  { virtual void s0(); };
+struct S4  { virtual void s4();  int pad[2]; };   // 0x04..0x10
+struct S10 { virtual void s10(); };               // 0x10..0x14
+struct S14 { virtual void s14(); int pad[5]; };   // 0x14..0x2c
+struct S2c { virtual void s2c(); int pad[5]; };   // 0x2c..0x44
+struct S44 { virtual void s44(); int pad[5]; };   // 0x44..0x5c
+struct S5c { virtual void s5c(); int pad[5]; };   // 0x5c..0x74
+struct S74 { virtual void s74(); int pad[5]; };   // 0x74..0x8c
+struct S8c { virtual void s8c(); };               // 0x8c
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Base : S0, S4, S10, S14, S2c, S44, S5c, S74, S8c {
+    Base();
+    ~Base();
+    void setName(const std::string &name);
+};
 
-boost::mutex& moo2()
+struct GameSettings : Base {
+    GameSettings();
+    virtual void s0();
+    static GameSettings *singleton;
+};
+
+GameSettings::GameSettings()
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	Name::NamMap::~NamMap()
-	{
-		for (std::map<std::string, Name*>::iterator iter = this->begin(); iter != this->end(); iter++)
-		{
-			delete iter->second;
-		}
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    {
+        std::string name("GameSettings");
+        setName(name);
+    }
+    singleton = this;
 }

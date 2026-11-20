@@ -1,29 +1,39 @@
-// from server: 33% by colin
-struct Descriptor {
-    Descriptor(const char*, unsigned int);
-};
+// from server: 100% by Intel_Inside
+// from server: 100% by tester
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-struct EnumDescriptor;
+extern "C" {
+    extern void* (__cdecl *allocate)(unsigned int);
+}
 
-struct Item : Descriptor {
-    const EnumDescriptor& owner;
-    const int value;
-    const unsigned int index;
-    Item(const char*, unsigned int, int, unsigned int, const EnumDescriptor&);
-};
-
-extern "C" void* __cdecl malloc(unsigned int);
-
-struct EnumDescriptor {
-    void constructItems(int, Item*);
-};
-
-Item::Item(const char* name, unsigned int attributes, int v, unsigned int idx, const EnumDescriptor& own)
-    : Descriptor(name, attributes), owner(own), value(v), index(idx)
+inline void* __cdecl operator new(unsigned int size)
 {
-    Item* items = (Item*)malloc(0xe8);
-    if (items) {
-        items->Item::Item(0, 0, 0, 0, own);
-    }
-    const_cast<EnumDescriptor&>(this->owner).constructItems(0, items);
+    return allocate(size);
+}
+
+void __cdecl operator delete(void*);
+
+struct Product {
+    unsigned char storage[0xe8];
+    Product();
+};
+
+struct Deleter {
+    union {
+        unsigned int value;
+        unsigned char unused;
+    };
+};
+
+struct Result {
+    Result(Product*, Deleter);
+};
+
+Result __cdecl create()
+{
+    Deleter deleter = { 0 };
+    *(volatile unsigned char*)&deleter.unused = 0;
+    return Result(new Product, deleter);
 }

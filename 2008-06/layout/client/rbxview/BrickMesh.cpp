@@ -103,17 +103,21 @@ namespace RBX
 	}
 }
 
+// Explicit instantiations. The exe contains these template symbols and no code in this file uses them,
+// so the compiler only emits them when asked to.
 template Variations& std::map<Lookup, Variations>::operator[](const Lookup&);
-
 template class G3D::ReferenceCountedPointer<RBX::RenderBase::Mesh>;
 template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<Lookup const ,Variations> > >;
-template class std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0>;
-template class std::_Tree<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0> >;
+template class std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,
+    Variations> >,0>;
+template class std::_Tree<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,
+    std::allocator<std::pair<Lookup const ,Variations> >,0> >;
 template class std::_Vector_const_iterator<G3D::Vector3,std::allocator<G3D::Vector3> >;
 template class std::_Vector_const_iterator<unsigned short,std::allocator<unsigned short> >;
 template class std::_Vector_iterator<G3D::Vector3,std::allocator<G3D::Vector3> >;
 template class std::_Vector_iterator<unsigned short,std::allocator<unsigned short> >;
-template class std::allocator<std::_Tree_nod<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,
+    std::allocator<std::pair<Lookup const ,Variations> >,0> >::_Node *>;
 template class std::allocator<std::pair<Lookup const ,Variations> >;
 template class std::vector<G3D::Vector3,std::allocator<G3D::Vector3> >;
 template class std::vector<unsigned short,std::allocator<unsigned short> >;

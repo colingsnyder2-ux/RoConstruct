@@ -14,6 +14,7 @@
 
 namespace RBX
 {
+	inline PropertyChanged::PropertyChanged(const PropertyChanged& other) : property(other.property) {}
 	inline CanAggregateChanged::CanAggregateChanged(const CanAggregateChanged& other) : canClump(other.canClump) {}
 
 	template void Notifier<Instance, PropertyChanged>::raise(PropertyChanged, Listener<Instance, PropertyChanged>*) const;

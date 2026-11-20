@@ -1357,7 +1357,7 @@ namespace Ogre {
 			emittedEmitters = &emittedEmitterPoolIterator->second;
 			fee = findFreeEmittedEmitter(name);
 
-			// If it´s not in the map, create an empty one
+			// If it�s not in the map, create an empty one
 			if (!fee)
 			{
 				FreeEmittedEmitterList empty;
@@ -1365,7 +1365,7 @@ namespace Ogre {
 				fee = findFreeEmittedEmitter(name);
 			}
 
-			// Check anyway if it´s ok now
+			// Check anyway if it�s ok now
 			if (!fee)
 				return; // forget it!
 
@@ -1392,7 +1392,7 @@ namespace Ogre {
 			e->clear();
         }
 
-		// Don´t leave any references behind
+		// Don�t leave any references behind
 		mEmittedEmitterPool.clear();
 		mFreeEmittedEmitters.clear();
 		mActiveEmittedEmitters.clear();
@@ -1439,7 +1439,7 @@ namespace Ogre {
 	void ParticleSystem::_notifyReorganiseEmittedEmitterData (void)
 	{
 		removeAllEmittedEmitters();
-		mEmittedEmitterPoolInitialised = false; // Don´t rearrange immediately; it will be performed in the regular flow
+		mEmittedEmitterPoolInitialised = false; // Don�t rearrange immediately; it will be performed in the regular flow
 	}
     //-----------------------------------------------------------------------
     String ParticleSystem::CmdCull::doGet(const void* target) const

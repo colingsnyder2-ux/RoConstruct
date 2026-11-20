@@ -1,46 +1,29 @@
-// from server: 100% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-extern "C" long __cdecl _InterlockedDecrement(volatile long*);
-#pragma intrinsic(_InterlockedDecrement)
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /I"C:\Users\colin\RoConstruct\2008-06\src\Client\boost_1_34_1\src"
+#include <new>
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
 
-struct Control {
-    virtual void unused();
-    virtual void dispose();
-    virtual void destroy();
-    volatile long strong;
-    volatile long weak;
-    void release();
-};
+namespace RBX { namespace Network { class Player { public: void foo(); }; } }
 
-__forceinline void Control::release()
+typedef std::allocator<boost::function_base> Fn0Alloc;
+typedef boost::_bi::bind_t<void,
+    boost::_mfi::mf0<void, RBX::Network::Player>,
+    boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player> > > > Value;
+
+namespace boost {
+template<> template<>
+function0<void, Fn0Alloc>::function0(Value target, int) throw()
+: function_base()
 {
-    if (_InterlockedDecrement(&strong) == 0) {
-        dispose();
-        if (_InterlockedDecrement(&weak) == 0)
-            destroy();
-    }
+    this->assign_to(target);
+}
 }
 
-struct Value {
-    unsigned long words[3];
-    Control* control;
-    unsigned long last;
-};
-
-struct S {
-    void* pointer;
-    void initialize(Value*);
-    S* f(Value);
-};
-
-S* S::f(Value value)
-{
-    pointer = 0;
-    initialize(&value);
-
-    if (value.control)
-        value.control->release();
-
-    return this;
+static void force_ctor() {
+    boost::shared_ptr<RBX::Network::Player> p;
+    Value v = boost::bind(&RBX::Network::Player::foo, p);
+    boost::function0<void, Fn0Alloc> f(v);
 }

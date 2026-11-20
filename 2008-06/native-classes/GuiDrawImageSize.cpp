@@ -19,6 +19,19 @@ namespace RBX
 			return NULL;
 	}
 
+	// 005cf870: TextureId currentTexture (std::string ctor, then the null-name Name* 00554270 at +0x1c), the four
+	// TextureProxyBase pointers +0x20..+0x2c zeroed, size +0x30 = (0, 0). Its row sits in the ChatEnter object range,
+	// so the original body was probably an inline COMDAT (gui/GuiDraw.h only declares it).
+	GuiDrawImage::GuiDrawImage()
+	{
+	}
+
+	// 006010e0 (ret 8): the same member construction, then setImageFromName 00642b90(adorn, name).
+	GuiDrawImage::GuiDrawImage(Adorn* adorn, const std::string& name)
+	{
+		setImageFromName(adorn, name);
+	}
+
 	// 00642690: caches normal->getSize() (TextureProxyBase slot 5) into size while size is zero.
 	G3D::Vector2 GuiDrawImage::getImageSize() const
 	{

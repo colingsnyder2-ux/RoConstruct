@@ -157,6 +157,9 @@ namespace RBX
 				// fstp qword +0x10), head and count (+0x18 / +0x1c); the eh vector constructor 006a1598 runs History()
 				// 004c76a0 over history[8]. The ordered key +8 is not written.
 				PartItem(const boost::shared_ptr<PartInstance>& part);
+				// 004c8150 (thiscall ret 0xc; only caller receivePacket 004c9120): pushes one received sample into the
+				// history ring (InterpolatingPhysicsReceiverRecovery_004b6290.cpp).
+				void receive(RakNet::BitStream& bitStream, unsigned int timestamp, ModelInstance* character);
 			};
 			typedef boost::multi_index::multi_index_container<
 				PartItem,

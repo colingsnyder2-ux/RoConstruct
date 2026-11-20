@@ -1,54 +1,67 @@
-// from server: 35% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Intel_Inside
+// roc 2007-08 0041e7a0  unit: RBX::VInstance::?$MarshaledListener  size: 155 bytes
+#include <intrin.h>
 
-struct EventInstance {
-    void* descriptor;
-    void* source;
-    void* a;
-    void* b;
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    long use_count_;
+    long weak_count_;
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_) _InterlockedIncrement(&pi_->use_count_); }
+    ~shared_count();
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+};
+}
+
+namespace RBX {
+class Instance;
+
+struct Event {
+    boost::shared_ptr<Instance> a;
+    boost::shared_ptr<Instance> b;
+    ~Event();
 };
 
-struct EventBridge {
-    void* vptr;
-    void* field4;
-    void* field8;
-    void* fieldC;
-    void* field10;
-    void* field14;
-    void* field18;
+struct Queue {
+    void push(void* const& item);
 };
 
-struct MarshaledListener {
-    void* field0;
-    EventBridge bridge;
-    void* field1C;
-
-    void cleanup();
+struct Item;
+struct Signal {
+    void post(Item* item);
 };
 
-extern "C" void* __cdecl operator_new(unsigned int size);
-extern "C" void __cdecl unknown_433140(void* conn);
-extern "C" void __cdecl unknown_464ec0(void* dest, void* src);
-extern "C" void __cdecl unknown_41da00(void* p);
-extern "C" void* __cdecl unknown_41e390(void* self, void* a, void* b);
+class MarshaledListener;
 
-void MarshaledListener::cleanup()
+struct Item {
+    char data[0x20];
+    Item(MarshaledListener* owner, int tag, Event e);
+};
+
+class MarshaledListener {
+public:
+    virtual void onEvent(int tag, Event e) throw();
+    Queue queue;
+    char pad[0x18 - 4 - sizeof(Queue)];
+    Signal* signal;
+};
+
+void MarshaledListener::onEvent(int tag, Event e) throw()
 {
-    void* mem = operator_new(0x20);
-    void* result;
-    if (mem != 0) {
-        EventInstance inst;
-        inst.descriptor = this;
-        inst.source = 0;
-        inst.a = 0;
-        inst.b = 0;
-        result = unknown_41e390(mem, this, &inst);
-    } else {
-        result = 0;
-    }
-    void* local = result;
-    unknown_464ec0(&bridge.field4, &local);
-    unknown_433140(bridge.field18);
-    unknown_41da00(&bridge.field4);
+    Item* item = new Item(this, tag, e);
+    queue.push(item);
+    signal->post(item);
+}
 }

@@ -1,41 +1,43 @@
-// from server: 37% by colin
+// from server: 100% by Intel_Inside
+// roc 2007-08 00460de0  variant l  size: 146 bytes
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
-struct RefCounted {
-    void AddRef();
-    void Release();
-};
-
-struct Listener {
-    void* vptr;
-    RefCounted* ptr8;
-    void* ptrC;
-    void Destroy();
-};
-
-struct Base {
-    void* vptr;
-};
-
-void __stdcall sub_437B80(Listener* self);
-
-void Listener::Destroy()
+struct Control
 {
-    this->vptr = (void*)0x794b88;
-    if (this->ptrC != 0) {
-        sub_437B80(this);
-    }
-    RefCounted* p = this->ptr8;
-    if (p != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1) == 1) {
-            void** vt = *(void***)p;
-            ((void (__thiscall*)(RefCounted*))vt[1])(p);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)p + 8), -1) == 1) {
-                void** vt2 = *(void***)p;
-                ((void (__thiscall*)(RefCounted*))vt2[2])(p);
-            }
+    virtual void unused();
+    virtual void dispose();
+    virtual void destroy();
+    volatile long strong;
+    volatile long weak;
+};
+
+struct Shared
+{
+    void* pointer;
+    Control* control;
+    ~Shared();
+};
+
+inline Shared::~Shared()
+{
+    Control* p = control;
+    if (p)
+    {
+        if (_InterlockedDecrement(&p->strong) == 0)
+        {
+            p->dispose();
+            if (_InterlockedDecrement(&p->weak) == 0)
+                p->destroy();
         }
     }
-    this->vptr = (void*)0x787f68;
 }
+
+struct S;
+struct Owner { void detach(S*); };
+struct Base { virtual ~Base(); };
+inline Base::~Base() {}
+struct S : Base { Shared connection; Owner* owner; virtual ~S(); };
+S::~S() { if (owner) owner->detach(this); }

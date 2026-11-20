@@ -88,15 +88,13 @@ namespace RBX
 		rot[2][1] = fTyz + fTwx;
 		rot[2][2] = 1.0 - (fTxx + fTyy);
 	}
-}
 
-namespace RBX {
-void Quaternion::normalize()
-{
-    float inverse = 1.0f / (float)sqrt(x * x + y * y + z * z + w * w);
-    x *= inverse;
-    y *= inverse;
-    z *= inverse;
-    w *= inverse;
-}
+	void Quaternion::normalize()
+	{
+		float inverse = 1.0f / (float)sqrt(x * x + y * y + z * z + w * w);
+		x *= inverse;
+		y *= inverse;
+		z *= inverse;
+		w *= inverse;
+	}
 }

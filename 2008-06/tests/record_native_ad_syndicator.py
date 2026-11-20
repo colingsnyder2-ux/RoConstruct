@@ -15,11 +15,9 @@ sections, symbols, definitions, _ = match._coff_data_index(raw)
 name = next(n for n in definitions if n.startswith('?isAdSyndicator@@'))
 _, candidate, cand_refs = next(x for x in match.coff_functions(raw) if x[0] == name)
 a, ar, _ = match.target('2008-06', '00465b50')
-b, br, _ = match.target('2008-06', '00465d30')
-assert 0x465b50 + len(a) == 0x465d30
-original = a + b
+original = a
 assert len(original) == len(candidate) == 533
-assert match.exact_match(original, list(ar) + [len(a) + x for x in br], candidate, cand_refs)
+assert match.exact_match(original, list(ar), candidate, cand_refs)
 start, section = definitions[name]
 table = sections[section]
 base, image = match._image('2008-06')
@@ -50,7 +48,7 @@ for prefix, want in [('??0Http@RBX@@', 0x409750), ('??1Http@RBX@@', 0x5df620),
 source = ROOT / 'rebuild/2008-06/native-classes/SecureHtmlAdSyndicator.cpp'
 receipt = {'scope': 'split original ranges, literal data and key call/global targets; no runtime proof',
            'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
-           'object_sha256': hashlib.sha256(raw).hexdigest(), 'original_ranges': ['00465b50', '00465d30'],
+           'object_sha256': hashlib.sha256(raw).hexdigest(), 'original_ranges': ['00465b50'],
            'bytes': len(original), 'verified_bindings': {k: [hex(x) for x in v] for k, v in bindings.items()}}
 (ROOT / 'work/2008-06/native-ad-syndicator-20261105.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS: ad-syndicator split body, data and key bindings')

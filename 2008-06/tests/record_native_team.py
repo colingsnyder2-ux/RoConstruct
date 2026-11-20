@@ -5,11 +5,10 @@ Builds (document-swap flags, VS2008 RTM 21022):
   * native-classes/Team.cpp         whole Team unit (00565e00..00566720, initializers 007f3240..007f3300,
                                     atexit 007fcfd0..007fd050) plus Team template instances folded elsewhere;
   * native-classes/Teams.cpp        Teams unit, including the Player-dependent bodies against the native
-                                    Network/Player.h and Network/Players.h, without getTeamColorForHumanoid;
-  * Teams.cpp with NATIVE_TEAMS_PENDING against generated headers in out/native-team-pending/:
-    declaration-only Humanoid/ModelInstance overlays (tests/NativeTeamPendingHumanoid.h,
-    tests/NativeTeamPendingModel.h) and a copy of native-headers/v8tree/Instance.h with the
-    proposed Instance::findFirstChildOfType<Type>() (PROPOSAL below; shared header not edited).
+                                    Network/Player.h and Network/Players.h, and getTeamColorForHumanoid 005d6180 /
+                                    findFirstChildOfType<Humanoid> 005d5f40 against the native ModelInstance.h,
+                                    Instance.h and humanoid/Humanoid2008.h (the former NATIVE_TEAMS_PENDING overlays
+                                    are no longer used).
 
 Every row must be relocation-masked exact against the original, and every relocation target is bound
 to the address the original instruction uses and verified: imports by DLL export / mfc ordinal name,
@@ -21,7 +20,6 @@ every row. Writes work/2008-06/shared-layouts/team-working.json.
 import hashlib
 import json
 import re
-import shutil
 import struct
 import sys
 from pathlib import Path
@@ -42,8 +40,7 @@ TEAMS_H = R / 'native-headers/v8datamodel/Teams.h'
 LAYOUT = R / 'tests/NativeTeamLayout.cpp'
 PLAYER_H = R / 'native-headers/Network/Player.h'
 PLAYERS_H = R / 'native-headers/Network/Players.h'
-HUMANOID_OVERLAY = R / 'tests/NativeTeamPendingHumanoid.h'
-MODEL_OVERLAY = R / 'tests/NativeTeamPendingModel.h'
+HUMANOID_H = R / 'native-headers/humanoid/Humanoid2008.h'
 
 # Proposed declaration for native-headers/v8tree/Instance.h (shared, not edited here): the original
 # emits the Humanoid instance 005d5f40 in the Teams unit (getTeamColorForHumanoid 005d6180 calls it
@@ -65,14 +62,7 @@ PROPOSAL = '''    template<class Type> Type* findFirstChildOfType() const // e.g
     }
 '''
 
-pending = OUT / 'native-team-pending'
-for sub in ('humanoid', 'v8tree', 'v8datamodel'):
-    (pending / sub).mkdir(parents=True, exist_ok=True)
-shutil.copyfile(HUMANOID_OVERLAY, pending / 'humanoid/Humanoid.h')
-shutil.copyfile(MODEL_OVERLAY, pending / 'v8datamodel/ModelInstance.h')
-instance_text = (R / 'native-headers/v8tree/Instance.h').read_text()
-assert instance_text.count('Type* findFirstChildOfType() const') == 1
-(pending / 'v8tree/Instance.h').write_text(instance_text)
+assert (R / 'native-headers/v8tree/Instance.h').read_text().count('Type* findFirstChildOfType() const') == 1   # adopted
 
 
 def build(name, src, extra=()):
@@ -88,7 +78,6 @@ def build(name, src, extra=()):
 layout_obj, layout_flags = build('NativeTeamLayout', LAYOUT)
 team_obj, team_flags = build('NativeTeam', TEAM_SRC)
 teams_obj, teams_flags = build('NativeTeams', TEAMS_SRC)
-pend_obj, pend_flags = build('NativeTeamsPending', TEAMS_SRC, ['/I' + str(pending), '/DNATIVE_TEAMS_PENDING'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -284,7 +273,7 @@ TEAMS_ROWS = [
     (0x5d60f0, '?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z'),
     (0x5d6250, '?assignNewPlayerToTeam@Teams@RBX@@'),
 ]
-PENDING_ROWS = [
+TEAMS_ROWS += [   # former NATIVE_TEAMS_PENDING rows
     (0x5d5f40, '??$findFirstChildOfType@VHumanoid@RBX@@@Instance@RBX@@'),
     (0x5d6180, '?getTeamColorForHumanoid@Teams@RBX@@'),
 ]
@@ -387,17 +376,13 @@ def verify(obj, rows, own):
 
 team_rows = resolve(team_obj, TEAM_ROWS)
 teams_rows = resolve(teams_obj, TEAMS_ROWS)
-pend_rows = resolve(pend_obj, PENDING_ROWS)
 own = {}
-for address, name in team_rows + teams_rows + pend_rows:
+for address, name in team_rows + teams_rows:
     own.setdefault(name, address)
 # rows sharing one address (ICF) are listed under each instance symbol; own keeps the first
 team_out = verify(team_obj, team_rows, own)
 teams_out = verify(teams_obj, teams_rows, own)
-pend_out = verify(pend_obj, pend_rows, own)
-for row in pend_out:  # exact only under NATIVE_TEAMS_PENDING with the overlays: not counted as exact
-    row['exact'] = False
-    row['exact_pending_build_only'] = True
+pend_out = []   # no pending build
 assert not UNBOUND, '\n'.join(UNBOUND)
 
 # ---- vtables, RTTI, allocation sizes and strings ------------------------------------------------------
@@ -427,20 +412,20 @@ bases = {original.string(d(item) + 8): struct.unpack('<i', original.data(item + 
 assert bases['.?AVService@RBX@@'] == 0x130, bases
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), TEAM_H, TEAMS_H, TEAM_SRC, TEAMS_SRC, LAYOUT, PLAYER_H, PLAYERS_H, HUMANOID_OVERLAY, MODEL_OVERLAY]
+paths = [Path(__file__).resolve(), TEAM_H, TEAMS_H, TEAM_SRC, TEAMS_SRC, LAYOUT, PLAYER_H, PLAYERS_H, HUMANOID_H]
 receipt = {
     'class': 'RBX::Team, RBX::Teams', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'team': team_flags, 'teams': teams_flags, 'pending': pend_flags},
+    'flags': {'layout': layout_flags, 'team': team_flags, 'teams': teams_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, team_obj, teams_obj, pend_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, team_obj, teams_obj)},
     'layout': {'Team': '0x13c (Creatable<Instance>::create<Team> 00409140); score +0x130, color +0x134, autoAssignable +0x138, autoColorCharacters +0x139',
                'Teams': '0x138 (00490450); Service empty base and CopyOnWrite<vector<shared_ptr<Instance>>> teams at +0x130'},
     'team_methods': team_out, 'teams_methods': teams_out,
     'pending_methods': pend_out,
-    'pending_note': 'NATIVE_TEAMS_PENDING bodies are exact only with the generated headers in out/native-team-pending: '
-                    'Instance::findFirstChildOfType<Type>() added to a copy of native-headers/v8tree/Instance.h (proposal), '
-                    'and declaration-only Humanoid/ModelInstance overlays; Network::Player/Players use the native headers.',
-    'proposal_instance_h': PROPOSAL,
+    'pending_note': 'No pending build: getTeamColorForHumanoid 005d6180 and findFirstChildOfType<Humanoid> 005d5f40 '
+                    'compile against the native ModelInstance.h, Instance.h (findFirstChildOfType adopted) and '
+                    'humanoid/Humanoid2008.h.',
+    'proposal_instance_h': 'adopted in native v8tree/Instance.h: ' + PROPOSAL,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/team-working.json').write_text(json.dumps(receipt, indent=2) + '\n')

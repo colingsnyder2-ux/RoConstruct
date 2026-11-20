@@ -8,6 +8,7 @@
 #include "v8world/Contact2008.h"
 #include "v8world/Joints2008.h"
 #include "v8world/Primitive2008.h"
+#include "util/Profiling.h"
 
 namespace RBX
 {
@@ -17,7 +18,51 @@ namespace RBX
 		return a->inPipeline() && a->inOrDownstreamOfStage(this) ? a->getSleepInfo()->state : Sim::ANCHORED;
 	}
 
+	// 0064b330: member destructors only (donor ~SleepStage is empty): the three scoped_ptr profilers (+0x1e8 / +0x1e4 /
+	// +0x1e0, virtual delete through slot 0), steppingJoints +0x1b8 (~_Tree 0064b230), the two IndexArrays +0x1ac /
+	// +0x1a0 (G3D alignedFree 00507d20), the six assembly sets, the eight vectors, then the donor ~IStage (delete
+	// downstream +0x8 through slot 0).
+	SleepStage::~SleepStage()
+	{
+	}
+
+	// 0064a740 (donor SleepStage::preventNeighborSleep; getState inline, okNeighborSleep 0064a660 out of line)
+	bool SleepStage::preventNeighborSleep(Assembly* a)
+	{
+		if (getState(a) == Sim::AWAKE)
+		{
+			if (!okNeighborSleep(a))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	// 0064b890 (donor SleepStage::onWakeUpRequest; 2008 sets externalBodyForceAdded +0x1dc before a recursive wake)
+	void SleepStage::onWakeUpRequest(Assembly* a, bool recursive)
+	{
+		if (a->inPipeline() && a->inOrDownstreamOfStage(this))
+		{
+			if (recursive)
+			{
+				externalBodyForceAdded = true;
+				recursiveWakeEvent(a);
+			}
+			else
+			{
+				wakeEvent(a);
+			}
+		}
+	}
+
+<<<<<<< HEAD
 	// 0064a550: jump table over state - 1 (states 1..5 -> +0xe0 / +0x100 / +0x140 / +0x160 / +0x180), default +0x120
+=======
+	// 0064a550: jump table 0064a598 over state - 1 (1 -> +0xe0, 2 -> +0x100, 4 -> +0x140, 5 -> +0x160, 6 -> +0x180;
+	// 3 shares the default block +0x120, the donor SleepStage2.cpp `default: return &awake`).
+>>>>>>> mew/claude/optimistic-shannon-0xccuy
 	SleepStage::AssemblySet* SleepStage::stateToSet(Sim::AssemblyState state)
 	{
 		switch (state)
@@ -26,20 +71,26 @@ namespace RBX
 			return &recursiveWakePending;
 		case Sim::WAKE_PENDING:
 			return &wakePending;
-		case Sim::AWAKE:
-			return &awake;
 		case Sim::SLEEPING_CHECKING:
 			return &sleepingChecking;
 		case Sim::SLEEPING_DEEPLY:
 			return &sleepingDeeply;
 		case Sim::REMOVED:
-			return &sleepingUnknown;
+			return &removed;
 		default:
-			return &sleepingUnknown;
+			return &awake;
 		}
 	}
 
 	// 0064ae90
+	// PARKED (batch 25, 2 hypotheses + the onAssemblyRemoving trial): 325 B against 337. The first getState expansion evaluates this->getStageType()
+	// first (`mov edi, [ebx + 4]` preloaded, this call, then the assembly's stage) where the target calls the
+	// assembly's stage first (0064aea3..0064aeba); in the REMOVED test the order is the other way round (target this
+	// first and a spill to [esp + 0x20], 0064af9e..0064afbd). Same calls, constants and stores otherwise. The same
+	// one-expansion order flip keeps wakeEvent 0064b5e0 / recursiveWakeEvent 0064b6d0 (inlined changeAssemblyState) and
+	// onAssemblyRemoving 0064b0a0 from matching. Rejected: getState as if / return instead of the ternary (unchanged),
+	// inOrDownstreamOfStage spelled `stage->getStageType() <= currentStage->getStageType()` in a shadow
+	// v8kernel/IPipelined2008.h trial (unchanged: still this first, only the jump sense flips).
 	void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 	{
 		Sim::AssemblyState oldState = getState(a);
@@ -306,5 +357,41 @@ namespace RBX
 
 		e->setEdgeState(Sim::UNDEFINED);
 		e->removeFromStage(this);
+	}
+
+}
+// Both bodies end in World 005e9b80 (`ret 8`, (Assembly*, bool):
+// raises the +0x40 / +0x60 notifier with assembly +0x24 -> +0x1c, i.e. the donor AssemblyPhysicsOn / AssemblyPhysicsOff
+// events of engine-world v8world/World.h). With a trial World2008.h declaring
+// `void notifyAssemblyPhysics(Assembly* a, bool on);  // 005e9b80` (INFERRED name) onAssemblyAdded 0064aff0 is
+// IDENTICAL (171 B) and onAssemblyRemoving 0064b0a0 is 263 B with only the getState evaluation-order flip of
+// changeAssemblyState 0064ae90 (target this->getStageType() first, `lea ebp, [edi + 0x180]` hoisted). The declaration
+// is now in native-headers/v8world/World2008.h (batch 27).
+#include "v8world/World2008.h"
+namespace RBX
+{
+	// 0064aff0 (donor openrbx SleepStage2.cpp onAssemblyAdded): putInStage 00645830, new 0x24 SleepInfo 005e5f30,
+	// setSleepInfo 005e5fe0, resetAccumulators 00613e80 inline test, wakePending (+0x100) insert 005e8c40, then the
+	// World notification 005e9b80 (world +0xc, true).
+	void SleepStage::onAssemblyAdded(Assembly* a)
+	{
+		a->putInStage(this);
+		a->setSleepInfo(new SleepInfo());
+		a->getRootClump()->getRootPrimitive()->getBody()->resetAccumulators();
+		wakePending.insert(a);
+		getWorld()->notifyAssemblyPhysics(a, true);
+	}
+
+	// 0064b0a0: changeAssemblyState(a, REMOVED) inline (insert into the state-6 set +0x180), the World notification
+	// 005e9b80 (false), erase from +0x180, delete the SleepInfo (~SleepInfo 0047d410, operator delete), setSleepInfo(NULL),
+	// removeFromStage 00645840.
+	void SleepStage::onAssemblyRemoving(Assembly* a)
+	{
+		changeAssemblyState(a, Sim::REMOVED);
+		getWorld()->notifyAssemblyPhysics(a, false);
+		removed.erase(a);
+		delete a->getSleepInfo();
+		a->setSleepInfo(NULL);
+		a->removeFromStage(this);
 	}
 }

@@ -15,6 +15,7 @@ namespace RBX
 	class MouseCommand;
 	class Camera;
 	class ModelInstance;
+	class Decal;
 
 	class DrawChanged
 	{
@@ -43,7 +44,7 @@ namespace RBX
 		std::auto_ptr<MouseCommand> currentCommand;
 		std::auto_ptr<MouseCommand> stickyCommand;
 		UIEvent idleMouseEvent;
-		void* unknown0x3cc;
+		int unknown0x3cc;   // INFERRED type: Heartbeat onEvent 005a3470 post-increments it as the movement-key repeat count and stores 0
 		bool isSimulating;
 		std::set<Script*> pendingScripts;
 		ScriptContext* scriptContext;
@@ -57,6 +58,10 @@ namespace RBX
 		double getUnknown0x418() const;                 // 005a0100
 		double getUnknown0x420() const;                 // 005a0110
 		double getUnknownSum() const;                   // 005a0120
+		// INFERRED (analog name; registry placeholder func_005a5710, 369 B): called first by setImageServerView 005a5890
+		// and render3dAdorn 005a59e0; keeps currentCamera (+0x3fc) a descendant, else finds/creates a Camera child
+		// and calls setCamera 005a5200 (the donor getCamera body).
+		void verifyCamera();
 	public:
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner;
@@ -106,8 +111,6 @@ namespace RBX
 		virtual ~Workspace();
 		// INFERRED: 005a05c0, placeholder name (identity tier), body byte-proved
 		Camera* sub_005a05c0() const;   // INFERRED: reads currentCamera (+0x3fc, shared_ptr<Camera> px), proved against 005a05c0 asm
-		// INFERRED: 005a0df0, callgraph-adjacency: neighbours=1
-		void sub_005a0df0();
 	public:
 		World* getWorld() const
 		{
@@ -126,6 +129,10 @@ namespace RBX
 		void setMouseCommand(MouseCommand* newMouseCommand);
 		void setDefaultMouseCommand();
 		void setNullMouseCommand();
+		// INFERRED: name (later Roblox Workspace::startDecalDrag). 005a3d40 (205 B, registry placeholder func_005a3d40):
+		// Selection::setSelection 00567770 on the decal, then setMouseCommand 005a1fc0(new DecalTool 005a19f0);
+		// called by RootInstance::insertInstances 005911d0 for an inserted Decal in INSERT_TO_3D_VIEW mode.
+		void startDecalDrag(Decal* decal);
 		bool getInMouselookMode()
 		{
 			return inMouselookMode;
@@ -173,6 +180,6 @@ namespace RBX
 	class WorkspaceStatsItem : public Stats::Item
 	{
 	public:
-		WorkspaceStatsItem(const Workspace*, const World*);
+		WorkspaceStatsItem(const Workspace*, const World*, const RunService*);   // 005a5c90; create<WorkspaceStatsItem> 005a6620 passes three arguments
 	};
 }

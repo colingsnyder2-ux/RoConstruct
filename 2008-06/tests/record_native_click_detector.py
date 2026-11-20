@@ -6,12 +6,9 @@ Builds (document-swap flags + /fp:fast, VS2008 RTM 21022):
   * native-classes/ClickDetector.cpp      the original unit (00629340..00629b9a, initializers 007f7d20..007f7d90,
                                           atexit 00800330..00800370) plus the ClickDetector template instances whose
                                           original bodies live elsewhere (COMDAT / ICF);
-  * ClickDetector.cpp again with NATIVE_CLICKDETECTOR_PENDING against out/native-layouts/click-detector-pending/:
-    generated copies of native-headers/v8tree/Instance.h (+ Instance::findFirstChildOfType<Type>, 006294a0),
-    native-headers/v8tree/Service.h (+ static ServiceProvider::findServiceProvider, 004898d0), the donor
-    v8datamodel/Camera.h (char sCamera[] instead of &sCamera, so the native ModelInstance.h compiles) and the
-    declaration-only Workspace overlay tests/NativeClickDetectorPendingWorkspace.h. Rows exact only in this build
-    are recorded exact=false (pending-build-only) and are not counted.
+    The former NATIVE_CLICKDETECTOR_PENDING rows (findFirstChildOfType<ClickDetector> 006294a0, askSetParent
+    006298d0, setFrontendMouseClick 00629a70, isClickable 00629b20) are built and counted from this object: the
+    committed native Instance.h, Service.h, Camera.h, ModelInstance.h and Workspace.h declare what they need.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, string literals by bytes,
@@ -23,7 +20,6 @@ one) is compared slot by slot with the original vtable it binds to. Writes
 work/2008-06/shared-layouts/click-detector-working.json.
 """
 import json
-import shutil
 import struct
 import sys
 from pathlib import Path
@@ -40,46 +36,13 @@ OUT.mkdir(parents=True, exist_ok=True)
 SRC = R / 'native-classes/ClickDetector.cpp'
 HDR = R / 'native-headers/v8datamodel/ClickDetector.h'
 LAYOUT = R / 'tests/NativeClickDetectorLayout.cpp'
-WORKSPACE_OVERLAY = R / 'tests/NativeClickDetectorPendingWorkspace.h'
 UNIT_FLAGS = ['/fp:fast']   # click 00629ac0 (`fld [esi+0x144]; fcomp [esp+0xc]`), isClickable 00629b20,
                             # BoundPropGetSet<ClickDetector>::setValue 005bd680
 
-# ---- generated header copies for the pending build (proposals; the shared headers are not edited) ----------
-PROPOSAL_INSTANCE_ANCHOR = '    void setParent(Instance*);\n'
-PROPOSAL_INSTANCE = '''    template<class Type> Type* findFirstChildOfType() const // e.g. 006294a0 (ClickDetector)
-    {
-        if (children)
-        {
-            std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
-            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = children->begin();
-            for (; iter != end; iter++)
-            {
-                if (Type* result = dynamic_cast<Type*>((*iter).get()))
-                    return result;
-            }
-        }
-        return NULL;
-    }
-'''
-PROPOSAL_SERVICE_ANCHOR = '    boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;\n'
-PROPOSAL_SERVICE = '    static const ServiceProvider* findServiceProvider(const Instance* context); // 004898d0\n'
-
-pending = OUT / 'click-detector-pending'
-for sub in ('v8tree', 'v8datamodel'):
-    (pending / sub).mkdir(parents=True, exist_ok=True)
-shutil.copyfile(WORKSPACE_OVERLAY, pending / 'v8datamodel/Workspace.h')
-text = (R / 'native-headers/v8tree/Instance.h').read_text()
-assert text.count('Type* findFirstChildOfType() const') == 1
-(pending / 'v8tree/Instance.h').write_text(text)
-text = (R / 'native-headers/v8tree/Service.h').read_text()
-assert text.count('static const ServiceProvider* findServiceProvider(const Instance*);') == 1
-(pending / 'v8tree/Service.h').write_text(text)
-text = (ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/Camera.h').read_text()
-for old, new in (('extern const char* sCamera;', 'extern char sCamera[];'),
-                 ('DescribedCreatable<Camera, Instance, &sCamera>', 'DescribedCreatable<Camera, Instance, sCamera>')):
-    assert text.count(old) == 1, old
-    text = text.replace(old, new)
-(pending / 'v8datamodel/Camera.h').write_text(text)
+# The former pending build (generated Instance.h / Service.h / Camera.h / Workspace.h copies) is folded into the main
+# build: the committed native headers declare findFirstChildOfType, findServiceProvider, Camera and Workspace.
+assert (R / 'native-headers/v8tree/Instance.h').read_text().count('Type* findFirstChildOfType() const') == 1
+assert (R / 'native-headers/v8tree/Service.h').read_text().count('static const ServiceProvider* findServiceProvider(const Instance*);') == 1
 
 
 def build(name, src, extra=()):
@@ -94,8 +57,6 @@ def build(name, src, extra=()):
 
 layout_obj, layout_flags = build('NativeClickDetectorLayout', LAYOUT)
 main_obj, main_flags = build('NativeClickDetector', SRC, UNIT_FLAGS)
-pend_obj, pend_flags = build('NativeClickDetectorPending', SRC,
-                             UNIT_FLAGS + ['/I' + str(pending), '/DNATIVE_CLICKDETECTOR_PENDING'])
 
 # ---- layout ---------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -210,7 +171,7 @@ for adj, address in sorted(THUNKS['base'].items(), key=lambda x: x[1]):
     ROWS.append((address, '??_E' + FP + 'O' + adj + '@AEPAXI@Z'))
     ROWS.append((address, '??_E' + DC + 'W' + adj + '@AEPAXI@Z'))
 
-# Rows exact only in the NATIVE_CLICKDETECTOR_PENDING build (generated headers); recorded exact=false, not counted.
+# Former pending rows (NATIVE_CLICKDETECTOR_PENDING removed): built and counted from the main object.
 PENDING_ROWS = [
     (0x6294a0, '??$findFirstChildOfType@VClickDetector@RBX@@@Instance@RBX@@QBEPAVClickDetector@1@XZ'),
     (0x6298d0, '?askSetParent@' + CD),
@@ -344,17 +305,13 @@ def verify(obj, rows, own):
     return result
 
 
+ROWS += PENDING_ROWS
 main_rows = resolve(main_obj, ROWS)
-pend_rows = resolve(pend_obj, PENDING_ROWS)
 own = {}
-for address, name in main_rows + pend_rows:
+for address, name in main_rows:
     own.setdefault(name, address)
 main_out = verify(main_obj, main_rows, own)
-pend_out = verify(pend_obj, pend_rows, own)
-for row in pend_out:  # exact only against the generated header copies: not counted as exact
-    row['exact'] = False
-    row['exact_pending_build_only'] = True
-    row['what'] = PENDING_REASON[row['address']]
+pend_out = []   # no pending build
 assert not UNBOUND, '\n'.join(UNBOUND)
 
 # ---- vtables of the main build, slot by slot against the original vtable each one binds to -----------
@@ -444,21 +401,21 @@ assert len(items) == 22 and bases['.?AVIRenderable@RBX@@'] == 0x130 and ('.?AV' 
 
 exact = [r['address'] for r in main_out]
 sha = nb.sha
-paths = [Path(__file__).resolve(), HDR, SRC, LAYOUT, WORKSPACE_OVERLAY]
+paths = [Path(__file__).resolve(), HDR, SRC, LAYOUT]
 receipt = {
     'class': 'RBX::ClickDetector', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'main': main_flags, 'pending': pend_flags},
+    'flags': {'layout': layout_flags, 'main': main_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
-    'objects': {p.name: sha(p) for p in (layout_obj, main_obj, pend_obj)},
+    'objects': {p.name: sha(p) for p in (layout_obj, main_obj)},
     'layout': {'ClickDetector': '0x14c (create<ClickDetector> 005c0b60 allocates 0x14c); IRenderable +0x130, '
                                 'int +0x140 (constructor stores 0; no other access found), maxActivationDistance '
                                 '+0x144, frontendMouseClick +0x148 (not initialized by the constructor); RTTI 22 bases'},
     'methods': main_out,
     'exact_count': len(main_out), 'exact_unique_addresses': len(set(exact)),
     'pending_methods': pend_out,
-    'pending_note': 'Pending rows are exact only with NATIVE_CLICKDETECTOR_PENDING against the generated headers under '
-                    'out/native-layouts/click-detector-pending/ (Instance.h + findFirstChildOfType, Service.h + '
-                    'findServiceProvider, donor Camera.h with char sCamera[], Workspace overlay); not counted as exact.',
+    'pending_note': 'No pending build: the former pending rows (former reasons in former_pending_reasons) compile '
+                    'against the committed native headers and are counted from the main build.',
+    'former_pending_reasons': PENDING_REASON,
     'non_exact': {},
     'proposals': PROPOSALS,
     'vtables': vtables,
