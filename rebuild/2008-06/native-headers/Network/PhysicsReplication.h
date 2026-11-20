@@ -69,6 +69,8 @@ namespace RakNet
 
 namespace RBX
 {
+	class Assembly;
+
 	namespace Network
 	{
 		class Replicator;
@@ -113,6 +115,16 @@ namespace RBX
 		class RoundRobinPhysicsSender : public IPhysicsSender
 		{
 			friend struct ::NativeNetworkPhysicsLayout; // tests/NativeNetworkPhysicsLayout.cpp offset asserts
+		public:
+			// The 0x134-byte packet writer local to sendPackets 004cd420 (constructor 004cbd40, destructor 004c9a70,
+			// close 004c9a10, report 004cac30): the 2008 form of the donor Replicator::JobSender. Defined in
+			// native-classes/NetworkPhysics.cpp.
+			class JobSender;
+		private:
+			// 004caaf0 (thiscall (BitStream&, Assembly*), the assembly a SimJob's slot 1 returns; null-checked; reads
+			// Assembly +0x24 root clump / Clump +0x1c root primitive, then PartInstance 00599f80). INFERRED name after
+			// the donor Replicator::sendPhysicsData(BitStream&, const Assembly&). Body not recovered.
+			void sendPhysicsData(RakNet::BitStream& bitStream, const Assembly* assembly);
 		private:
 			Replicator* replicator;                                               // +0x4
 			MechanismTracker tracker;                                             // +0x8
