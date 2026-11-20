@@ -1,33 +1,3 @@
-#include "v8tree/Instance.h"
-
-#ifndef NATIVE_INSTANCE_EXTERNAL_BASE_CALLBACKS
-void RBX::Instance::setName(const std::string& value) {
-    if (name != value) {
-        name = value;
-        raisePropertyChanged(desc_Name);
-    }
-}
-
-#endif
-
-bool RBX::Instance::askAddChild(const Instance*) const { return false; }
-bool RBX::Instance::askSetParent(const Instance*) const { return false; }
-
-void RBX::Instance::onChildAdded(Instance*) {}
-void RBX::Instance::onChildRemoving(Instance*) {}
-void RBX::Instance::onChildRemoved(Instance*) {}
-void RBX::Instance::onLastChildRemoved() {}
-// Original 00458e90 returns without modifying either service provider.
-#ifndef NATIVE_INSTANCE_EXTERNAL_BASE_CALLBACKS
-void RBX::Instance::onServiceProvider(const ServiceProvider*, const ServiceProvider*) {}
-#endif
-
-void RBX::Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
-{
-    Instance* p = parent;
-    if (p) p->onChildChanged(instance, event);
-}
-
 // 2008-06 native RBX::Workspace members (inactive), original unit v8datamodel/Workspace.cpp, 005a01e0..005a66af in
 // the application range 005a0000..005ac000. Built against the committed native v8datamodel/Workspace.h (read-only).
 // Verified by tests/record_native_app_unit5a0_2008.py (receipt app-unit5a0-2008-working.json).
@@ -437,64 +407,6 @@ template<> MouseCommand* TToolVerb<AxisMoveTool, RunStateVerb>::newMouseCommand(
 template<> const Name& Named<ArrowToolBase, sAxisMoveTool>::getName() const { return NativeToolName<AxisMoveTool>::get(); }
 }
 
-#include "tool/FlatTool.h"
-#include "v8datamodel/Surface.h"
-
-namespace RBX {
-char sFlatTool[] = "FlatTool";
-const std::string FlatTool::getCursorName() const { return "FlatCursor"; }
-MouseCommand* FlatTool::isSticky() const { return new FlatTool(workspace); }
-void FlatTool::applyToSurface(Surface* surface) {
-    surface->getPartInstance()->destroyJoints();
-    surface->flat();
-    surface->getPartInstance()->join();
-}
-template<> MouseCommand* TToolVerb<FlatTool, RunStateVerb>::newMouseCommand() {
-    return new FlatTool(dataModel->getWorkspace());
-}
-template<> const Name& Named<SurfaceTool, sFlatTool>::getName() const {
-    return NativeToolName<FlatTool>::get();
-}
-}
-
-#include "tool/SurfaceTools.h"
-#include "v8datamodel/ModelInstance.h"
-#include "util/Math.h"
-
-namespace RBX {
-char sModelSetFrontTool[] = "ModelSetFront";
-const std::string ModelSetFrontTool::getCursorName() const { return "DirectionCursor"; }
-MouseCommand* ModelSetFrontTool::isSticky() const { return NULL; }
-void ModelSetFrontTool::applyToSurface(Surface* surface)
-{
-    PartInstance* part = surface->getPartInstance();
-    if (ModelInstance* model = dynamic_cast<ModelInstance*>(part->getTopLevelPVParent()))
-        model->setFrontAndTop(Math::getWorldNormal(surface->getNormalId(), part->getCoordinateFrame()));
-}
-template<> const Name& Named<SurfaceTool, sModelSetFrontTool>::getName() const
-{
-    return NativeToolName<ModelSetFrontTool>::get();
-}
-template<> MouseCommand* TToolVerb<ModelSetFrontTool, RunStateVerb>::newMouseCommand()
-{
-    return new ModelSetFrontTool(dataModel->getWorkspace());
-}
-}
-
-#include "tool/ModelTools.h"
-
-namespace RBX {
-template<> MouseCommand* TToolVerb<AnchorTool, RunStateVerb>::newMouseCommand()
-{
-    return new AnchorTool(dataModel->getWorkspace());
-}
-
-template<> MouseCommand* TToolVerb<LockTool, RunStateVerb>::newMouseCommand()
-{
-    return new LockTool(dataModel->getWorkspace());
-}
-}
-
 #include "v8datamodel/ToolsPart.h"
 
 namespace RBX {
@@ -503,32 +415,8 @@ template<> MouseCommand* TToolVerb<DropperTool, RunStateVerb>::newMouseCommand()
 template<> MouseCommand* TToolVerb<ModelSetPrimaryPartTool, RunStateVerb>::newMouseCommand() { return new ModelSetPrimaryPartTool(dataModel->getWorkspace()); }
 }
 
-#include "tool/ResizeTool.h"
-
-namespace RBX {
-char sResizeTool[] = "Resize";
-ResizeTool::ResizeTool(Workspace* w) : Named<ArrowToolBase, sResizeTool>(w), overHandle(false), moveAxis(0), movePerp(0) {}
-
-template<> MouseCommand* TToolVerb<ResizeTool, RunStateVerb>::newMouseCommand() {
-    return new ResizeTool(dataModel->getWorkspace());
-}
-
-template<> const Name& Named<ArrowToolBase, sResizeTool>::getName() const {
-    return NativeToolName<ResizeTool>::get();
-}
-}
-
-#include "tool/ShootTools.h"
-
-namespace RBX {
-char sRocketTool[] = "Rocket";
-template<> MouseCommand* TToolVerb<RocketTool, RunStateVerb>::newMouseCommand() { return new RocketTool(dataModel->getWorkspace()); }
-template<> const Name& Named<ShootTool, sRocketTool>::getName() const { return NativeToolName<RocketTool>::get(); }
-MouseCommand* RocketTool::isSticky() const { return new RocketTool(workspace); }
-int RocketTool::getShootSound() { return 8; }
-}
-
 #undef _RELEASEASSERT
+#include "tool/SurfaceTools.h"
 
 namespace RBX {
 #define RBX_SURFACE_FACTORY(T) \
@@ -547,7 +435,18 @@ RBX_SURFACE_FACTORY(OscillateMotorTool)
 
 #undef _RELEASEASSERT
 #include "tool/BasicMouseTools.h"
+#include "tool/FlatTool.h"
 
+namespace RBX {
+template<> MouseCommand* TToolVerb<CloneTool, RunStateVerb>::newMouseCommand() { return new CloneTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<FlatTool, RunStateVerb>::newMouseCommand() { return new FlatTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<GameTool, RunStateVerb>::newMouseCommand() { return new GameTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<GrabTool, RunStateVerb>::newMouseCommand() { return new GrabTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<HammerTool, RunStateVerb>::newMouseCommand() { return new HammerTool(dataModel->getWorkspace()); }
+template<> MouseCommand* TToolVerb<LaserTool, RunStateVerb>::newMouseCommand() { return new LaserTool(dataModel->getWorkspace()); }
+}
+
+#include "v8datamodel/ModelInstance.h"
 
 namespace RBX {
 
@@ -560,11 +459,6 @@ boost::shared_ptr<ModelInstance> Workspace::group(std::vector<boost::shared_ptr<
     for (; first != last; ++first) (*first)->setParent(result.get());
     return result;
 }
-
-}
-
-
-namespace RBX {
 
 }
 
