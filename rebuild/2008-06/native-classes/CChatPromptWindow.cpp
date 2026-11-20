@@ -36,12 +36,14 @@ void CChatPrompt::OnSetFocusReflect()
         SetWindowText("");
 }
 
+// 00411640 (118 B): CChatPrompt::OnCreate (message-map ON_WM_CREATE entry). The binary reads the XTP paint
+// manager's bold font: XTPPaintManager() then &m_fontRegularBold (+0xf8), CFont::GetSafeHandle (+4), WM_SETFONT.
 int CChatPrompt::OnCreate(LPCREATESTRUCT cs)
 {
     brush.Attach(CreateSolidBrush(0x404040));
     if (CEditView::OnCreate(cs) == -1)
         return -1;
-    SetFont(XTPPaintManager()->GetRegularFont());
+    SetFont(XTPPaintManager()->GetRegularBoldFont());
     SetWindowText(chatPromptText);
     return 0;
 }

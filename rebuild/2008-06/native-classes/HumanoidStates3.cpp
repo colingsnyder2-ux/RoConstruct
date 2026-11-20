@@ -195,6 +195,13 @@ void MovingNoPhysicsBase::applyFloorImpulse(float dt)
 // BLOCKERS: 0066eb30 (91 bytes, thiscall, `ret 4`) is a one-argument Velocity(const G3D::Vector3& linear) constructor
 // (rotational from the function-local static Vector3::zero() 0096f044, guard 0096f050) that the donor util/Velocity.h
 // (core) does not declare; applyFloorImpulse 0066eb90 above; the registry names 005df0c0 func_005df0c0.
+// Measured batch 28 (scratch copies only): with `Velocity(const G3D::Vector3& _linear) : linear(_linear),
+// rotational(G3D::Vector3::zero()) {}` added to a copy of util/Velocity.h, this onStep (compiled with applyFloorImpulse
+// still guarded) emits ??0Velocity@RBX@@QAE@ABVVector3@G3D@@@Z out of line, IDENTICAL to 0066eb30 (91 B, relocations
+// masked). onStep itself also needs Humanoid::walkRotationalVelocity (+0x1b0) readable here (private in
+// humanoid/Humanoid2008.h) and then reaches 581 B with first divergence at 0066f2f1: the floorVelocity / walk locals
+// trade stack slots (target sums `fld [esp+0x2c]; fadd [esp+0x14]` into +0x20, candidate the mirror) and the target
+// loads the G3D::sign fldz before `test ah, 0x41`. Not tried further (blocked on the two headers above).
 void MovingNoPhysicsBase::onStep(float dt, Controller* controller)
 {
     Primitive* primitive = getHumanoid()->getTorsoPrimitive();

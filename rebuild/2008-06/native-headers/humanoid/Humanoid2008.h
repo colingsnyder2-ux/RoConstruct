@@ -185,6 +185,8 @@ namespace RBX
 		G3D::CoordinateFrame getRightArmGrip() const;                         // 005d7a30
 		JointInstance* findRightShoulder() const;                             // 005d9010
 		void checkForJointDeath();                                            // 005dc6c0 (called by onEvent 005dc740)
+		void buildJoints();                                                   // 005d9340 (donor humanoid/Humanoid.h; caller
+		                                                                      //   Player::loadCharacter, PlayerCharacter.cpp)
 
 	private:
 		// 005db4c0 (151 bytes, thiscall, no arguments; only caller onAncestorChanged 005db560 after the kernel insert):

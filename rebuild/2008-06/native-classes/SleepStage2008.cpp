@@ -391,3 +391,152 @@ namespace RBX
 		a->removeFromStage(this);
 	}
 }
+
+// Batch 28: the 2008 wake pass and computeAssemblyState (identity: SleepStage unit 0064a550..0064ca5f; callers and
+// callees cited per body; donor tools/openrbx v8world/SleepStage2.cpp shapes).
+namespace RBX
+{
+	// 0064c470 (registry func_0064c470; only caller 0064c6b0): donor wakeAssemblyAndNeighbors, breadth-first in 2008.
+	// getState inline, changeAssemblyState 0064ae90 to AWAKE, getExternalEdges 005e6c70, wakeEdge 0064c1d0,
+	// otherAssembly 005e61b0, getState 0064a5b0 out of line for the neighbour, deque push_back 00589330, and
+	// changeAssemblyState(other, SLEEPING_CHECKING) inline at the depth limit.
+	// PARKED (batch 28, 543 B against 568): same calls, constants and control flow. Residuals: (1) the inline
+	// edgeIsAwake and the inline getState(other) of the SLEEPING_DEEPLY test evaluate this->getStageType() first in the
+	// target (edge / other currentStage preloaded into ebp, this call, spill, then the other call), the same one-expansion
+	// order flip as changeAssemblyState 0064ae90 (parked batch 25); computeAssemblyState 0064a790 expands the same inlines
+	// edge first and matches; (2) the target materialises `getState(other) != AWAKE` (setne al / test al, al).
+	// Rejected: a named bool for the `externalBodyForceAdded || getState(other) != AWAKE` test (unchanged).
+	void SleepStage::wakeAssemblyAndNeighbors(Assembly* a, std::deque<Assembly*>& toWake, int recurseDepth)
+	{
+		Sim::AssemblyState state = getState(a);
+		int depth = a->sleepStepCount;
+
+		if (state != Sim::ANCHORED)
+		{
+			if (state != Sim::AWAKE)
+			{
+				changeAssemblyState(a, Sim::AWAKE);
+			}
+
+			const G3D::Array<Edge*>& edges = a->getExternalEdges();
+
+			for (int i = 0; i < edges.size(); i++)
+			{
+				Edge* edge = edges[i];
+
+				if (edgeIsAwake(edge))
+				{
+					wakeEdge(edge);
+
+					if (isAffecting(edge))
+					{
+						Assembly* other = a->otherAssembly(edge);
+
+						if (depth < recurseDepth)
+						{
+							if (externalBodyForceAdded || getState(other) != Sim::AWAKE)
+							{
+								if (other->sleepStepId != field1d8)
+								{
+									other->sleepStepId = field1d8;
+									other->sleepStepCount = depth + 1;
+									toWake.push_back(other);
+								}
+							}
+						}
+						else if (getState(other) == Sim::SLEEPING_DEEPLY)
+						{
+							changeAssemblyState(other, Sim::SLEEPING_CHECKING);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// 0064c6b0 (registry func_0064c6b0): ++field1d8, every assembly of the set marked (+0x44 pass id, +0x48 depth 0) and
+	// queued (std::deque<Assembly*>, push_back 00589330), then popped front first through 0064c470 with its depth reset
+	// to -1; externalBodyForceAdded (+0x1dc) cleared last; ~deque 0064fa10.
+	void SleepStage::wakeAssemblies(const AssemblySet& assemblies, int recurseDepth, Sim::AssemblyState state)
+	{
+		std::deque<Assembly*> toWake;
+
+		field1d8++;
+
+		for (AssemblySet::const_iterator it = assemblies.begin(); it != assemblies.end(); ++it)
+		{
+			Assembly* a = *it;
+			a->sleepStepId = field1d8;
+			a->sleepStepCount = 0;
+			toWake.push_back(a);
+		}
+
+		while (!toWake.empty())
+		{
+			Assembly* a = toWake.front();
+			toWake.pop_front();
+			wakeAssemblyAndNeighbors(a, toWake, recurseDepth);
+			a->sleepStepCount = -1;
+		}
+
+		externalBodyForceAdded = false;
+	}
+}
+
+// 0064a790 (registry func_0064a790; donor SleepStage::computeAssemblyState with computeCanSleep inline): the byte
+// 0097abc1 (only readers 0064a795 and 0064a95a; .bss between the Clump-unit statics 0097abb8 / 0097abbc and the
+// Primitive-unit statics from 0097abc4) is the donor trialDisableSleep, then the canSleep ComputeProp (+0x68).
+// GUARDED: native-headers/v8world/Primitive2008.h (not this batch's file) does not declare `static bool disableSleep;`
+// (proposal). Batch 28 trial: with a stand-in `extern bool` for that byte this exact body is IDENTICAL to 0064a790 (291 B,
+// relocations masked); the donor computeCanSleep spelling is required (written out as `disableSleep || !getCanSleep()`
+// the AWAKE return merges into the tail, 304 B; the ternary return gives setne / add, 293 B).
+#ifdef NATIVE_PRIMITIVE_DISABLE_SLEEP
+namespace RBX
+{
+	bool SleepStage::computeCanSleep(Assembly* a)
+	{
+		return !Primitive::disableSleep && a->getCanSleep();
+	}
+
+	Sim::AssemblyState SleepStage::computeAssemblyState(Assembly* a)
+	{
+		if (!computeCanSleep(a))
+		{
+			return Sim::AWAKE;
+		}
+
+		bool allNeighborsSleeping = true;
+		const G3D::Array<Edge*>& edges = a->getExternalEdges();
+
+		for (int i = 0; i < edges.size(); i++)
+		{
+			Edge* edge = edges[i];
+
+			if (edgeIsAwake(edge))
+			{
+				if (isAffecting(edge))
+				{
+					Assembly* other = a->otherAssembly(edge);
+
+					if (getState(other) == Sim::AWAKE)
+					{
+						allNeighborsSleeping = false;
+
+						if (forceNeighborAwake(other))
+						{
+							return Sim::AWAKE;
+						}
+					}
+				}
+			}
+		}
+
+		if (allNeighborsSleeping)
+		{
+			return Sim::SLEEPING_DEEPLY;
+		}
+
+		return Sim::SLEEPING_CHECKING;
+	}
+}
+#endif

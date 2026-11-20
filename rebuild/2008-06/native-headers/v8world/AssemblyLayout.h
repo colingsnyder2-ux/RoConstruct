@@ -192,6 +192,7 @@ namespace RBX
 	class Clump : public IPipelined, public boost::noncopyable
 	{
 		friend class Assembly; // INFERRED: Assembly::getMotor 005e6400 (registry) calls the private getMotorImp 005e6360
+		friend class SleepStage; // INFERRED: the SleepStage wake pass 0064c6b0 / 0064c470 stores +0x44 / +0x48 directly
 
 	private:
 		G3D::Array<Edge*> externalEdges;                 // +0x08 (analog name; Array<T*>: data +0x8, num +0xc, numAllocated
@@ -255,6 +256,10 @@ namespace RBX
 		Body* getBody();                                 // 005e6160 (analog name)
 		void notifyMoved();                              // 005e6170 (analog name)
 		void setSleepInfo(SleepInfo* value);             // 005e5fe0 (analog name: openrbx Assembly::setSleepInfo)
+		bool getCanSleep()                               // inline (openrbx Assembly2.h getCanSleep): SleepStage 0064a790
+		{                                                // tests canSleep +0x69 dirty, calls [+0x70] on [+0x6c]+[+0x74],
+			return canSleep;                             // stores +0x68 and clears the flag, then tests +0x68
+		}
 		SleepInfo* getSleepInfo() const                  // inline (donor Assembly::getSleepInfo): SleepStage 0064ae90 reads
 		{                                                // [clump+0x18] directly
 			return sleepInfo;
@@ -293,7 +298,13 @@ namespace RBX
 		static void addMotorChild(Primitive* parent, MotorJoint* motor, Primitive* child);   // 005e7050 ?addMotorChild@Assembly@RBX@@SAXPAVPrimitive@2@PAVMotorJoint@2@0@Z (registry; caller TreeStage::processEdge 00669560)
 		MotorJoint* getMotor(unsigned int index);        // 005e6400 ?getMotor@Assembly@RBX@@QAEPAVMotorJoint@2@I@Z (registry)
 		public:
+		RBX::PrimIterator assemblyPrimBegin(void)const; // 005e5fa0 (analog name: openrbx Assembly::assemblyPrimBegin; registry
+		                                                // func_005e5fa0: {[this+0x1c], IN_ASSEMBLY} in the hidden return slot,
+		                                                // next to assemblyPrimEnd 005e5fc0; caller World::onAssemblyExtentsChanged
+		                                                // 005e91d0 with ++ 00647640)
 		RBX::PrimIterator assemblyPrimEnd(void)const;   // INFERRED: ?assemblyPrimEnd@Assembly@RBX@@QBE?AVPrimIterator@2@XZ (header gap, header_gap_fill.py)
+		Assembly* otherAssembly(Edge* e) const;          // 005e61b0 ?otherAssembly@Assembly@RBX@@QBEPAV12@PAVEdge@2@@Z (registry):
+		                                                // getAssemblyNoCheck 005e7560 on edge prim0 +0xc and prim1 +0x10
 };
 
 	// 005e5f60 (analog name: openrbx lessAssembly; cdecl, the comparator addChild 005e6f70 passes to std::_Sort 005e6e90).

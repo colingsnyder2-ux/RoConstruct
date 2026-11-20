@@ -63,6 +63,9 @@ namespace RBX
 		public:
 			Server();                                                               // 004a4b30
 			virtual ~Server();                                                      // 004a3540
+			// 004a1560 (`mov eax, [ecx+0x144]; ret`; identical-code folded with Feature::getTopBottom): the getter of the
+			// "Port" PropDescriptor<Server, int> (static initializer 007f1cf0, AppUnit4A0ServerDescriptors.cpp).
+			int getPort() const { return outgoingPort; } // 004a1560
 			void stop(int blockDuration);                                           // 004a1880 (donor Server::stop, bound as "Stop")
 			int getClientCount();                                                   // 004a2250 (donor Server::getClientCount)
 			virtual XmlElement* write();                                            // 00416690 (ICF)

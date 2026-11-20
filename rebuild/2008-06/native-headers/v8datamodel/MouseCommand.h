@@ -18,6 +18,9 @@ namespace RBX
 
 	class MouseCommand : public INamed, public IRenderable
 	{
+		// Workspace::process 005a20e0 / onEvent 005a3470 call the protected onMouseIdle / onMouseHover / onKeyDown /
+		// onPeekKeyDown / onMouseMove / onMouseDelta / onMouseUp slots (+8..+0x20) directly.
+		friend class Workspace;
 	private:
 		bool capturedMouse;
 	protected:

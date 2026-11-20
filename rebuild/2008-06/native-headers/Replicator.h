@@ -8,7 +8,9 @@
 #include "Network/Players.h"
 #include "Network/IdSerializer.h"
 #include "RakNetTypes.h"
-#include "v8world/Assembly.h"
+// JobSender keeps a `const Assembly*`: a forward declaration of RBX::Assembly is enough (formerly the global stub
+// v8world/Assembly.h, which shadowed the donor header).
+namespace RBX { class Assembly; }
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"
 #include "stats/Stats.h"

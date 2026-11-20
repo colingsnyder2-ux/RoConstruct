@@ -7,26 +7,8 @@
 
 namespace RBX
 {
-	// Unit-local declarations as native-world/App/include/v8world/Joint.h declares them (AnchorJoint / FreeJoint, size
-	// 0x88, inline ctor Joint(p, NULL, CoordinateFrame(), CoordinateFrame()) 006455c0 then the vtable store: AnchorJoint
-	// ??_7 0084b0cc, FreeJoint ??_7 0084b10c). The native v8world/Joints2008.h does not declare them yet (proposal).
-	class AnchorJoint : public Joint
-	{
-	public:
-		AnchorJoint(Primitive* p) : Joint(p, NULL, G3D::CoordinateFrame(), G3D::CoordinateFrame()) {}
-
-	private:
-		virtual JointType getJointType() const { return ANCHOR_JOINT; } // slot 5
-	};
-
-	class FreeJoint : public Joint
-	{
-	public:
-		FreeJoint(Primitive* p) : Joint(p, NULL, G3D::CoordinateFrame(), G3D::CoordinateFrame()) {}
-
-	private:
-		virtual JointType getJointType() const { return FREE_JOINT; } // slot 5
-	};
+	// AnchorJoint / FreeJoint (size 0x88, vtables 0084b0cc / 0084b10c) are declared by v8world/Joints2008.h (batch 28;
+	// they were unit-local here).
 
 	// 0064ca60 ?getJoint@RBX@@YAPAVJoint@1@PAVPrimitive@1@W4JointType@21@@Z (body in native-classes/Inferred_0064ca60.cpp).
 	Joint* getJoint(Primitive* p, Joint::JointType jointType);

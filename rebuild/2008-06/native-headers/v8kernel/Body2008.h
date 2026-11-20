@@ -237,6 +237,10 @@ namespace RBX
 		{
 			return canThrottle;
 		}
+		void setCanThrottle(bool value)                   // inline: HumanoidState::setLimbFlag 006431b0 stores +0x30
+		{                                                 // directly (donor v8kernel/Body.h public inline)
+			canThrottle = value;
+		}
 		const G3D::Vector3& getCofmOffset() const         // inline in SimBody::getOwnerPV 00658ca0 (00658ca7..00658ce3:
 		{                                                 // Cofm::getCofmInBody 00660160 or the Vector3::zero() static)
 			return cofm ? cofm->getCofmInBody() : G3D::Vector3::zero();

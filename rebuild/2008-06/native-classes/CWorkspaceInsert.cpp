@@ -1,3 +1,6 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/ios-import-rdbuf
+// 0046b9d0: CWorkspace::insert(std::istream&, bool) (registry decorated name). stream.rdbuf() is the imported
+// msvcp90 basic_ios<char>::rdbuf (IAT 008023c4), hence the ios-import-rdbuf overlay.
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"
@@ -7,6 +10,7 @@
 #include <algorithm>
 #include <boost/bind.hpp>
 
+// 0046b9d0
 void CWorkspace::insert(std::istream& stream, bool tree)
 {
     if (dataModel->findFirstChildByClassName("NetworkClient")) return;

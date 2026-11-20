@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/part-embedded /I{headers}/engine-world
 // 2008-06 native RBX::Rocket control path (inactive): onEvent 00632e10 (Listener<RunService, Stepped> slot 0, `this`
 // is the Listener subobject at +0x138), computeForce 0062fc00 and turn 0062e530, plus the BodyMover computeForce slots
 // that read the 2008 Body (BodyPosition 00630140, BodyVelocity 006302d0, BodyAngularVelocity 00630420, BodyForce
@@ -42,9 +42,6 @@
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
 #include "util/Math.h"
-#ifdef NATIVE_BODYMOVER_ONEVENT_PENDING
-#include "v8world/World2008.h"
-#endif
 
 namespace RBX
 {
@@ -52,17 +49,13 @@ namespace RBX
 	// weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (twice), preventBodySleep (Instance slot 16), then
 	// World::ticklePrimitive 005e9410 (native v8world/World2008.h) with the embedded Primitive (PartInstance +0x228) and 1.
 	// Donor tools/rbxgs v8datamodel/Gyro.cpp with the 2008 weak_ptr part (mined analog roc_unit_e3d64f543a38d6a9).
-	// PENDING (b23, not compiled): part-embedded v8datamodel/PartInstance.h includes the donor v8world/World.h, whose
-	// ticklePrimitive takes one argument (the 2008 005e9410 takes (Primitive*, int), `ret 8`), and World2008.h cannot
-	// be added beside it (C2011 'RBX::World' redefinition). Needs PartInstance.h to forward-declare World (it only holds
-	// the World* myWorld) or to take World2008.h under NATIVE_PRIMITIVE_NATIVE_BODY.
-#ifdef NATIVE_BODYMOVER_ONEVENT_PENDING
+	// Batch 28: this unit now puts native-headers/engine-world first, so part-embedded v8datamodel/PartInstance.h reaches
+	// the 2008 engine-world v8world/World.h, which declares ticklePrimitive(Primitive*, int) 005e9410 (`ret 8`).
 	void BodyMover::onEvent(const RunService* source, Stepped event)
 	{
 		if (world && part.lock() && preventBodySleep())
 			world->ticklePrimitive(part.lock()->getPrimitive(), true);
 	}
-#endif
 
 	// 00632e10: BodyMover::onEvent 0062fae0, then weak_ptr<PartInstance>::lock 005cab00 on part +0x140 (twice),
 	// PartInstance::getCoordinateFrame 00598cb0, CoordinateFrame::pointToWorldSpace 004766a0 for the target,

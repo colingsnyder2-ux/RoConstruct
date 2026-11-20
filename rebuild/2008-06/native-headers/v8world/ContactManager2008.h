@@ -33,6 +33,7 @@ struct NativeContactUnit2008Layout;
 namespace RBX
 {
 	class Contact;
+	class Extents;
 	class Primitive;
 	class SpatialHash;
 	class World;
@@ -60,6 +61,12 @@ namespace RBX
 		bool intersectingOthers(Primitive* check, float overlapIgnored);                      // 0060dcd0
 		void onNewPair(Primitive* p0, Primitive* p1);                                         // 0060d8b0 (evidence name)
 		void onPrimitiveGeometryTypeChanged(Primitive* p);                                    // 0060d8e0 (evidence name)
+		// 0060d140 (registry func_0060d140; donor ContactManager.h name and signature): World::createJoints 005ea4d0 passes
+		// Primitive::getFastFuzzyExtents 005e7a50, the primitive itself and World::tempPrimitives (+0xf0).
+		void getPrimitivesTouchingExtents(const Extents& extents, const Primitive* ignore, G3D::Array<Primitive*>& found);
+		// 0060cc50 (registry func_0060cc50; donor name): `mov ecx, [ecx]` (spatialHash +0x0), `jmp` SpatialHash 0065abd0;
+		// callers World::onPrimitiveExtentsChanged 005e91c0 and onAssemblyExtentsChanged 005e91d0.
+		void onPrimitiveExtentsChanged(Primitive* p);
 		public:
 		void doStats(void);   // INFERRED: ?doStats@ContactManager@RBX@@QAEXXZ (header gap, header_gap_fill.py)
 	public:

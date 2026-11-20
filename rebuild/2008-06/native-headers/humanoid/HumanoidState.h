@@ -87,6 +87,12 @@ public:
     float getRatio() const; // 006439b0 (INFERRED: helper called by tipped/upright)
     // 006451c0 (thiscall, ret 4): per-step update (analog name).
     void preStep(float dt);
+    // Floor / climb probes called by preStep 006451c0 (thiscall; analog names, the registry has placeholders only):
+    void findFloor();                                                 // 00644000: plain ret; rays below the torso
+                                                                      //   through 00643f10, result into floorPart +0x24
+    bool findClimbable(Adorn* adorn);                                 // 00644c80: ret 4, al; preStep passes NULL
+    bool climbableInFront(Adorn* adorn);                              // 00644a30: ret 4, al; GeometryService
+                                                                      //   getPartsTouchingExtents 0062db60 into array14
     // 006453a0 (cdecl): scans transitionTable (0084a92c, 18 ints per state) for a pending transition (analog name).
     static void transition(std::auto_ptr<HumanoidState>& state, float dt);
     static const int transitionTable[][18];                           // 0084a92c (INFERRED: stride 0x48 from asm)

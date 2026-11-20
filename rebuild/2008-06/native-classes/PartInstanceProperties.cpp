@@ -41,6 +41,16 @@ namespace RBX
 		};
 	}
 
+	// 0097610c: "Color" descriptor (initializer 007f4630, getter getColor3, setter setColor3 0059e3d0, LEGACY). Moved
+	// here from InitStatics_PartInstance.cpp (batch 28): taking &setColor3 emits the inline setColor3 COMDAT 0059e3d0 in
+	// the unit that defines setColor 0059df40, which the original inlines into it (BrickColor::closest 005b62e0, then the
+	// color +0x1e4 compare and both raisePropertyChanged calls).
+	const Reflection::PropDescriptor<PartInstance, G3D::Color3> PartInstance::prop_Color(
+		"Color", "Appearance", &PartInstance::getColor3, &PartInstance::setColor3, Reflection::PropertyDescriptor::LEGACY);
+	// 009762d0: "BrickColor" descriptor (initializer 007f4690: getter 004e5b90 getColor, setter setColor 0059df40,
+	// strings 0082f710 / 008329ac, flags 5 = the default STANDARD; donor v8datamodel/PartInstance.cpp prop_BrickColor).
+	const Reflection::PropDescriptor<PartInstance, BrickColor> PartInstance::prop_BrickColor(
+		"BrickColor", "Appearance", &PartInstance::getColor, &PartInstance::setColor, Reflection::PropertyDescriptor::STANDARD);
 	// 00976250: file-local UI "Size" descriptor raised by setPartSizeXml (donor prop_SizeUi).
 	static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_SizeUi(
 		"Size", "Part", &PartInstance::getPartSizeUi, &PartInstance::setPartSizeUi, Reflection::PropertyDescriptor::UI);

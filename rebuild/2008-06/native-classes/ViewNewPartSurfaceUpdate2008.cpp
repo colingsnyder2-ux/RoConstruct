@@ -1,5 +1,5 @@
-// INFERRED: inline accessors from 004f0390 and 004f0605; Mesh member access from 004f0511.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/partsurface-profile /I{headers}/part-embedded /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// INFERRED: inline accessors from 004f0390 and 004f0605; Mesh member access from 004f0511.
 #undef OGRE_NONCLIENT_BUILD
 #define NOMINMAX
 #include "ViewNew/PartChunk.h"

@@ -38,6 +38,17 @@ namespace RBX
 	{
 	}
 
+	// 0060e700 ??1MegaDragger@RBX@@QAE@XZ (called by ~PartDragTool 00665bd0): when not joined, joinAndStopDragging
+	// 0060ef30 on dragParts (+8); then the vector destructor 00590550 and the mousePart weak_ptr (+0/+4) release.
+	// Donor tools/rbxgs tool/MegaDragger.cpp (RBXASSERT compiled out).
+	MegaDragger::~MegaDragger()
+	{
+		if (!joined)
+		{
+			DragUtilities::joinAndStopDragging(dragParts);
+		}
+	}
+
 	// 0060de00
 	void MegaDragger::startDragging()
 	{
