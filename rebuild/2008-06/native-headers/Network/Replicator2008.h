@@ -164,6 +164,9 @@ namespace RBX
 			friend struct ::NativeNetworkReplicator2008Layout; // layout probe of tests/record_native_network_replicator2008.py
 			// INFERRED: PhysicsSender::step 004cd920 calls the protected findTargetPlayer 004ab9a0.
 			friend class PhysicsSender;
+			// INFERRED: InterpolatingPhysicsReceiver::receivePacket 004c9120 calls the protected findTargetPlayer (slot 17,
+			// `call [eax+0x44]` on its replicator +0x4).
+			friend class InterpolatingPhysicsReceiver;
 
 		public:
 			class ReplicatorStatsItem;
